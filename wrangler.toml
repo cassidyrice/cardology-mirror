@@ -1,0 +1,4 @@
+name = "cardology-mirror"
+pages_build_output_dir = ".vercel/output/static"
+compatibility_date = "2025-05-01"
+compatibility_flags = ["nodejs_compat"]

@@ -1,0 +1,390 @@
+{
+  "archetype": {
+    "birth_card": "8♦",
+    "solar_value": 34,
+    "suit_domain": "Value/Resource Patterns",
+    "prc": "5♣",
+    "prc_secondary": null,
+    "description": {
+      "title": "The Businessman",
+      "core_identity": "You're the material strategist. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
+      "gifts": "- Strategic thinking about resources and power\n- Natural ability to leverage opportunities\n- Ambitious drive and determination\n- Talent for creating material success",
+      "shadow": "You treat resources as weapons. You're so focused on winning financially that you lose genuine relationships. Money becomes a way to control and dominate. The pattern: you're successful but isolated. You've won financially but lost relationally. People fear your power, not respect your character. You're winning money but losing meaning.",
+      "life_direction": "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
+      "algorithm_gateway": "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to give away money without strategic return, to experience generosity without control. This rewires you from controlling-strategist into generous-leader."
+    },
+    "prc_description": {
+      "title": "The Dynamic Innovator",
+      "core_identity": "You're the intellectual adventurer. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
+      "gifts": "- Quick thinking and fast adaptation\n- Ability to see multiple perspectives rapidly\n- Natural rebellion against outdated ideas\n- Refreshing honesty and directness",
+      "shadow": "You mistake changing your mind for growth. You jump from idea to idea without mastering any. You call it flexibility; it's actually flightiness. The pattern: you're scattered and inconsistent. People can't rely on your follow-through. Your intelligence is all over the place instead of focused.",
+      "life_direction": "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
+      "algorithm_gateway": "Your card operates in Clubs (behavioral habits). Algorithm Inoculation forces you to stay with one intellectual challenge instead of moving to the next. This rewires you from scattered-quick-thinker into focused-deep-thinker."
+    }
+  },
+  "timing": {
+    "age": 35,
+    "sy_nav": 36,
+    "crown": [
+      "K♠",
+      "K♣",
+      "2♦"
+    ]
+  },
+  "birth_card_spread": {
+    "anchor": "8♦",
+    "periods": {
+      "Mercury": "7♦",
+      "Venus": "8♠",
+      "Mars": "10♥",
+      "Jupiter": "2♠",
+      "Saturn": "J♠",
+      "Uranus": "J♣",
+      "Neptune": "5♥"
+    },
+    "periods_detailed": {
+      "Mercury": {
+        "card": "7♦",
+        "interpretation": {
+          "name": "7 OF DIAMONDS",
+          "under": "You're financially anxious, obsessed with lack while unable to trust abundance.",
+          "sweet_spot": "You're reflecting on worth deeply, finding meaning beyond material accumulation.",
+          "over": "You're financially paranoid and hoarder-like, seeing scarcity everywhere despite evidence of plenty."
+        },
+        "position_meaning": null
+      },
+      "Venus": {
+        "card": "8♠",
+        "interpretation": {
+          "name": "8 OF SPADES",
+          "under": "You're withdrawn from responsibility, avoiding leadership while secretly resenting powerlessness.",
+          "sweet_spot": "You're commanding transformation with clarity, leading through mastery and discipline.",
+          "over": "You're controlling and tyrannical, dominating others through intellectual superiority and force."
+        },
+        "position_meaning": null
+      },
+      "Mars": {
+        "card": "10♥",
+        "interpretation": {
+          "name": "10 OF HEARTS",
+          "under": "You're enmeshed in family obligation, overwhelmed by the emotional baggage you're carrying for everyone.",
+          "sweet_spot": "You're expanding love across community, creating belonging while maintaining healthy presence.",
+          "over": "You're responsible for everyone's emotional well-being, implementing guilt-based emotional systems disguised as care."
+        },
+        "position_meaning": null
+      },
+      "Jupiter": {
+        "card": "2♠",
+        "interpretation": {
+          "name": "2 OF SPADES",
+          "under": "You're paralyzed by indecision, intellectually thorough as an avoidance of commitment terror.",
+          "sweet_spot": "You're navigating opposing forces with balance, finding middle paths through complexity.",
+          "over": "You're aggressively indecisive, creating conflict through refusal to choose."
+        },
+        "position_meaning": null
+      },
+      "Saturn": {
+        "card": "J♠",
+        "interpretation": {
+          "name": "JACK OF SPADES",
+          "under": "You're communicating truth immaturely, sharing information without care for impact.",
+          "sweet_spot": "You're bringing clarity and honest perspective, inspiring others through truth-telling.",
+          "over": "You're brutally critical, using honesty as a weapon to dominate or shame."
+        },
+        "position_meaning": null
+      },
+      "Uranus": {
+        "card": "J♣",
+        "interpretation": {
+          "name": "JACK OF CLUBS",
+          "under": "You're mentally scattered, communicating ideas immaturely without grounding in reality.",
+          "sweet_spot": "You're bringing fresh intellectual perspectives and innovative communication.",
+          "over": "You're intellectually reckless, pitching ideas without vetting feasibility or considering consequences."
+        },
+        "position_meaning": null
+      },
+      "Neptune": {
+        "card": "5♥",
+        "interpretation": {
+          "name": "5 OF HEARTS",
+          "under": "You're collecting relationships like Pokémon cards, vanishing whenever intimacy requires staying still.",
+          "sweet_spot": "You're navigating emotional change with adaptability, learning that love deepens through transformation.",
+          "over": "You're using \"emotional freedom\" and \"polyamory\" as justifications for emotional tourism without commitment."
+        },
+        "position_meaning": null
+      }
+    },
+    "pluto": "3♦",
+    "pluto_meaning": null,
+    "result": "K♦",
+    "result_meaning": null
+  },
+  "prc_spread": {
+    "anchor": "5♣",
+    "periods": {
+      "Mercury": "8♥",
+      "Venus": "5♦",
+      "Mars": "Q♣",
+      "Jupiter": "2♦",
+      "Saturn": "K♣",
+      "Uranus": "K♠",
+      "Neptune": "K♥"
+    },
+    "periods_detailed": {
+      "Mercury": {
+        "card": "8♥",
+        "interpretation": {
+          "name": "8 OF HEARTS",
+          "under": "You're emotionally shutdown, using logic as a shield against the vulnerability of real power.",
+          "sweet_spot": "You're commanding emotional situations with strength and clarity, leading with confident compassion.",
+          "over": "You're emotionally controlling and possessive, wielding your power to dominate others into compliance."
+        },
+        "position_meaning": null
+      },
+      "Venus": {
+        "card": "5♦",
+        "interpretation": {
+          "name": "5 OF DIAMONDS",
+          "under": "You're financially paralyzed, afraid of loss while missing opportunities for growth.",
+          "sweet_spot": "You're navigating financial change with adaptability and resourcefulness.",
+          "over": "You're financially reckless and wasteful, addicted to spending while creating chaos."
+        },
+        "position_meaning": null
+      },
+      "Mars": {
+        "card": "Q♣",
+        "interpretation": {
+          "name": "QUEEN OF CLUBS",
+          "under": "You're mentally self-silencing, knowing more than you express while deferring to others.",
+          "sweet_spot": "You're stewarding knowledge wisely, teaching with intuitive authority and care.",
+          "over": "You're gatekeeping information, controlling what others are \"ready\" to know."
+        },
+        "position_meaning": null
+      },
+      "Jupiter": {
+        "card": "2♦",
+        "interpretation": {
+          "name": "2 OF DIAMONDS",
+          "under": "You're financially conflicted, afraid to negotiate, giving away value while secretly resenting it.",
+          "sweet_spot": "You're creating fair exchanges and mutual benefit through balanced partnership.",
+          "over": "You're manipulating financial situations to control or dominate others."
+        },
+        "position_meaning": null
+      },
+      "Saturn": {
+        "card": "K♣",
+        "interpretation": {
+          "name": "KING OF CLUBS",
+          "under": "You're mentally withdrawn, withholding authority while secretly believing you know best.",
+          "sweet_spot": "You're commanding intellectual systems with decisive clarity and integrity.",
+          "over": "You're intellectually tyrannical, brooking no dissent while building a throne of dogma."
+        },
+        "position_meaning": null
+      },
+      "Uranus": {
+        "card": "K♠",
+        "interpretation": {
+          "name": "KING OF SPADES",
+          "under": "You're emotionally withdrawn, using intellect to avoid vulnerability entirely.",
+          "sweet_spot": "You're commanding transformation with decisive authority, leading through integrated mastery.",
+          "over": "You're tyrannically rigid, brooking no emotion while enforcing compliance through fear."
+        },
+        "position_meaning": null
+      },
+      "Neptune": {
+        "card": "K♥",
+        "interpretation": {
+          "name": "KING OF HEARTS",
+          "under": "You're emotionally distant, ruling from safe analytical distance while avoiding vulnerability entirely.",
+          "sweet_spot": "You're commanding emotional authority with depth, leading with strength and authentic care.",
+          "over": "You're emotionally possessive and tyrannical, using your authority to control others' feelings."
+        },
+        "position_meaning": null
+      }
+    },
+    "pluto": "2♥",
+    "pluto_meaning": null,
+    "result": "9♠",
+    "result_meaning": null
+  },
+  "active_period": {
+    "planet": "Mars",
+    "domain": "action, drive, assertion, conflict",
+    "bc_card": "10♥",
+    "prc_card": "Q♣",
+    "interpretation_bc": {
+      "name": "10 OF HEARTS",
+      "under": "You're enmeshed in family obligation, overwhelmed by the emotional baggage you're carrying for everyone.",
+      "sweet_spot": "You're expanding love across community, creating belonging while maintaining healthy presence.",
+      "over": "You're responsible for everyone's emotional well-being, implementing guilt-based emotional systems disguised as care."
+    },
+    "interpretation_prc": {
+      "name": "QUEEN OF CLUBS",
+      "under": "You're mentally self-silencing, knowing more than you express while deferring to others.",
+      "sweet_spot": "You're stewarding knowledge wisely, teaching with intuitive authority and care.",
+      "over": "You're gatekeeping information, controlling what others are \"ready\" to know."
+    },
+    "position_meaning_bc": null,
+    "position_meaning_prc": null
+  },
+  "long_range": {
+    "bc": {
+      "card": "Q♠",
+      "planet": "Mercury",
+      "cycle": 5,
+      "spread_used": 6,
+      "all_7_in_cycle": [
+        "Q♠",
+        "7♠",
+        "Q♦",
+        "A♠",
+        "4♦",
+        "7♦",
+        "10♠"
+      ]
+    },
+    "prc": {
+      "card": "8♥",
+      "planet": "Mercury",
+      "cycle": 5,
+      "spread_used": 6,
+      "all_7_in_cycle": [
+        "8♥",
+        "K♥",
+        "K♣",
+        "A♥",
+        "5♥",
+        "3♠",
+        "3♦"
+      ]
+    }
+  },
+  "karma": {
+    "bc_lifetime": {
+      "environment": "7♣",
+      "displacement": "Q♠"
+    }
+  },
+  "inputs": {
+    "birthdate": "02/17/1991",
+    "birth_month": 2,
+    "birth_day": 17,
+    "birth_year": 1991,
+    "target_date": "2026-06-03",
+    "calculation_source": "local deterministic Cardology engine via cli/cardology_cli.py"
+  },
+  "deep_dive": {
+    "anchor": "8♦",
+    "life_spread_year": 1,
+    "life_path": {
+      "source": "birth-card anchor extracted from SPREADS['1']",
+      "cards": [
+        "K♠",
+        "3♥",
+        "A♣",
+        "Q♣",
+        "10♠",
+        "5♣",
+        "3♦"
+      ],
+      "periods": {
+        "Mercury": {
+          "planet": "Mercury",
+          "card": "K♠",
+          "interpretation": {
+            "name": "KING OF SPADES",
+            "under": "You're emotionally withdrawn, using intellect to avoid vulnerability entirely.",
+            "sweet_spot": "You're commanding transformation with decisive authority, leading through integrated mastery.",
+            "over": "You're tyrannically rigid, brooking no emotion while enforcing compliance through fear."
+          },
+          "position_meaning": null
+        },
+        "Venus": {
+          "planet": "Venus",
+          "card": "3♥",
+          "interpretation": {
+            "name": "3 OF HEARTS",
+            "under": "You're emotionally triangulating, keeping exes on the back burner while sabotaging real intimacy through \"incompatibilities.\"",
+            "sweet_spot": "You're expressing your emotional depth through creative exploration and healthy relational variety.",
+            "over": "You're love-bombing new connections, then suddenly discovering fatal flaws when real vulnerability becomes necessary."
+          },
+          "position_meaning": null
+        },
+        "Mars": {
+          "planet": "Mars",
+          "card": "A♣",
+          "interpretation": {
+            "name": "ACE OF CLUBS",
+            "under": "You're mentally restless and overthinking, drowning in self-doubt masquerading as thoroughness.",
+            "sweet_spot": "You're initiating fresh ideas with clarity and confidence, leading with innovation.",
+            "over": "You're intellectually grandiose, convinced of your rightness while dismissing others' perspectives."
+          },
+          "position_meaning": null
+        },
+        "Jupiter": {
+          "planet": "Jupiter",
+          "card": "Q♣",
+          "interpretation": {
+            "name": "QUEEN OF CLUBS",
+            "under": "You're mentally self-silencing, knowing more than you express while deferring to others.",
+            "sweet_spot": "You're stewarding knowledge wisely, teaching with intuitive authority and care.",
+            "over": "You're gatekeeping information, controlling what others are \"ready\" to know."
+          },
+          "position_meaning": null
+        },
+        "Saturn": {
+          "planet": "Saturn",
+          "card": "10♠",
+          "interpretation": {
+            "name": "10 OF SPADES",
+            "under": "You're overwhelmed by karmic burden, carrying everyone's pain while victimized.",
+            "sweet_spot": "You're mastering your karmic curriculum, integrating hard lessons into wisdom.",
+            "over": "You're workaholic and perfectionistic, crushing yourself and others through relentless demand."
+          },
+          "position_meaning": null
+        },
+        "Uranus": {
+          "planet": "Uranus",
+          "card": "5♣",
+          "interpretation": {
+            "name": "5 OF CLUBS",
+            "under": "You're mentally paralyzed, intellectualizing change without taking action, stuck in analysis paralysis.",
+            "sweet_spot": "You're challenging conventional wisdom, thriving in intellectual debate and exploration.",
+            "over": "You're argumentative for sport, creating conflict to prove your intellectual superiority."
+          },
+          "position_meaning": null
+        },
+        "Neptune": {
+          "planet": "Neptune",
+          "card": "3♦",
+          "interpretation": {
+            "name": "3 OF DIAMONDS",
+            "under": "You're financially scattered, creating multiple income streams but stabilizing none.",
+            "sweet_spot": "You're diversifying resources creatively, exploring multiple paths to abundance.",
+            "over": "You're recklessly chasing money everywhere, unstable and rootless in your approach to resources."
+          },
+          "position_meaning": null
+        }
+      },
+      "pluto": "A♠",
+      "result": "7♥"
+    },
+    "lifetime_karma": {
+      "source": "get_environment_displacement(birth_card, 1)",
+      "gift": {
+        "label": "Lifetime Gift",
+        "card": "7♣",
+        "source_field": "environment"
+      },
+      "challenge": {
+        "label": "Lifetime Challenge",
+        "card": "Q♠",
+        "source_field": "displacement"
+      },
+      "raw": {
+        "environment": "7♣",
+        "displacement": "Q♠"
+      }
+    }
+  }
+}

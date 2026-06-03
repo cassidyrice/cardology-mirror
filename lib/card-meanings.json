@@ -1,0 +1,314 @@
+{
+"A♥": {
+"name": "ACE OF HEARTS",
+"under": "You're flooding others with emotional need before they can abandon you, confusing emotional overwhelm for real intimacy.",
+"sweet_spot": "You're initiating authentic emotional connection with openness and courage, inviting genuine vulnerability.",
+"over": "You're weaponizing your feelings to manipulate others into meeting your emotional needs, using drama as control."
+},
+"2♥": {
+"name": "2 OF HEARTS",
+"under": "You're shape-shifting to please everyone, terrified there's no real \"you\" underneath the performance.",
+"sweet_spot": "You're balancing your needs with others' through genuine diplomacy and mutual understanding.",
+"over": "You're managing everyone's emotions like a hostage situation, sacrificing yourself while secretly resenting their ingratitude."
+},
+"3♥": {
+"name": "3 OF HEARTS",
+"under": "You're emotionally triangulating, keeping exes on the back burner while sabotaging real intimacy through \"incompatibilities.\"",
+"sweet_spot": "You're expressing your emotional depth through creative exploration and healthy relational variety.",
+"over": "You're love-bombing new connections, then suddenly discovering fatal flaws when real vulnerability becomes necessary."
+},
+"4♥": {
+"name": "4 OF HEARTS",
+"under": "You're mistaking emotional control for security, keeping everyone locked in scripted roles while you suffocate spontaneity.",
+"sweet_spot": "You're building reliable emotional foundations and trust through consistency and stability.",
+"over": "You're pathologizing authentic emotion as \"unhealthy,\" maintaining a controlled emotional museum instead of a living home."
+},
+"5♥": {
+"name": "5 OF HEARTS",
+"under": "You're collecting relationships like Pokémon cards, vanishing whenever intimacy requires staying still.",
+"sweet_spot": "You're navigating emotional change with adaptability, learning that love deepens through transformation.",
+"over": "You're using \"emotional freedom\" and \"polyamory\" as justifications for emotional tourism without commitment."
+},
+"6♥": {
+"name": "6 OF HEARTS",
+"under": "You're silencing your own needs for false harmony, harboring resentment while your martyrdom grows cancerous.",
+"sweet_spot": "You're integrating care and boundaries, serving others from a full cup rather than empty vessel.",
+"over": "You're performing \"the nice one,\" swallowing broken glass to avoid conflict while building narcissistic supply."
+},
+"7♥": {
+"name": "7 OF HEARTS",
+"under": "You're emotionally detached, intellectualizing feeling away to avoid the messiness of real connection.",
+"sweet_spot": "You're reflecting on love with wisdom, seeking truth beneath romantic illusions.",
+"over": "You're using emotional analysis as armor, staying in your head while claiming \"authenticity\" from a safe distance."
+},
+"8♥": {
+"name": "8 OF HEARTS",
+"under": "You're emotionally shutdown, using logic as a shield against the vulnerability of real power.",
+"sweet_spot": "You're commanding emotional situations with strength and clarity, leading with confident compassion.",
+"over": "You're emotionally controlling and possessive, wielding your power to dominate others into compliance."
+},
+"9♥": {
+"name": "9 OF HEARTS",
+"under": "You're drowning in idealism collapse, emotionally martyred while secretly resenting those you're \"helping.\"",
+"sweet_spot": "You're integrating compassion with wisdom, releasing what's not yours to carry.",
+"over": "You're savior-ing others while ignoring your own pain, emotional burnout disguised as sainthood."
+},
+"10♥": {
+"name": "10 OF HEARTS",
+"under": "You're enmeshed in family obligation, overwhelmed by the emotional baggage you're carrying for everyone.",
+"sweet_spot": "You're expanding love across community, creating belonging while maintaining healthy presence.",
+"over": "You're responsible for everyone's emotional well-being, implementing guilt-based emotional systems disguised as care."
+},
+"J♥": {
+"name": "JACK OF HEARTS",
+"under": "You're emotionally immature, projecting fantasy onto relationships while avoiding actual intimacy.",
+"sweet_spot": "You're bringing fresh emotional perspective and inspiration, innovating connection with authenticity.",
+"over": "You're romantic delusional, spinning emotional narratives that collapse the moment reality requires depth."
+},
+"Q♥": {
+"name": "QUEEN OF HEARTS",
+"under": "You're emotionally hypervigilant from childhood trauma, reading the room while sacrificing your own needs.",
+"sweet_spot": "You're embodying emotional wisdom, nurturing others through authentic presence and intuitive care.",
+"over": "You're the emotional tyrant, smothering with control while building guilt-debt systems masked as love."
+},
+"K♥": {
+"name": "KING OF HEARTS",
+"under": "You're emotionally distant, ruling from safe analytical distance while avoiding vulnerability entirely.",
+"sweet_spot": "You're commanding emotional authority with depth, leading with strength and authentic care.",
+"over": "You're emotionally possessive and tyrannical, using your authority to control others' feelings."
+},
+"A♣": {
+"name": "ACE OF CLUBS",
+"under": "You're mentally restless and overthinking, drowning in self-doubt masquerading as thoroughness.",
+"sweet_spot": "You're initiating fresh ideas with clarity and confidence, leading with innovation.",
+"over": "You're intellectually grandiose, convinced of your rightness while dismissing others' perspectives."
+},
+"2♣": {
+"name": "2 OF CLUBS",
+"under": "You're indecisive, afraid of being wrong, using intellectual debate to avoid committing to anything.",
+"sweet_spot": "You're building mental partnerships, exchanging ideas through genuine dialogue.",
+"over": "You're argumentative and combative, needing to win every intellectual debate while dismissing dissent."
+},
+"3♣": {
+"name": "3 OF CLUBS",
+"under": "You're mentally restless, creating multiple projects but finishing none, stuck in perpetual exploration.",
+"sweet_spot": "You're expressing ideas creatively across multiple channels, bringing innovation to life.",
+"over": "You're scattering your mental energy everywhere, unable to focus while justifying it as \"multifaceted thinking.\""
+},
+"4♣": {
+"name": "4 OF CLUBS",
+"under": "You're mentally rigid, using frameworks as control mechanisms to manage existential anxiety.",
+"sweet_spot": "You're organizing knowledge into reliable systems, building intellectual foundations.",
+"over": "You're dogmatically defensive of your ideas, treating them as untouchable doctrine."
+},
+"5♣": {
+"name": "5 OF CLUBS",
+"under": "You're mentally paralyzed, intellectualizing change without taking action, stuck in analysis paralysis.",
+"sweet_spot": "You're challenging conventional wisdom, thriving in intellectual debate and exploration.",
+"over": "You're argumentative for sport, creating conflict to prove your intellectual superiority."
+},
+"6♣": {
+"name": "6 OF CLUBS",
+"under": "You're mentally self-sacrificing, giving knowledge away while silencing your own expertise.",
+"sweet_spot": "You're integrating learning with service, teaching wisdom authentically.",
+"over": "You're pontificating, needing to be the smartest person in the room while positioning others as students."
+},
+"7♣": {
+"name": "7 OF CLUBS",
+"under": "You're intellectually isolated, skeptical to the point of mental paralysis and disconnection.",
+"sweet_spot": "You're analyzing deeply with wisdom, seeking truth beneath surface knowledge.",
+"over": "You're obsessed with complexity, complicating problems beyond actionability to avoid implementation."
+},
+"8♣": {
+"name": "8 OF CLUBS",
+"under": "You're mentally withdrawn, using intelligence as defense while avoiding taking intellectual leadership.",
+"sweet_spot": "You're commanding knowledge systems with authority, leading through clear thinking.",
+"over": "You're intellectually bullying, using mental power to dominate and silence others."
+},
+"9♣": {
+"name": "9 OF CLUBS",
+"under": "You're mentally burnt out, holding outdated beliefs while resisting new understanding.",
+"sweet_spot": "You're integrating knowledge into wisdom, releasing limiting paradigms gracefully.",
+"over": "You're dogmatic and preachy, forcing your understanding on others while dismissing their viewpoints."
+},
+"10♣": {
+"name": "10 OF CLUBS",
+"under": "You're intellectually stagnant, hoarding knowledge without sharing or applying it.",
+"sweet_spot": "You're carrying forward accumulated wisdom, embodying and teaching integrated knowledge.",
+"over": "You're a propagandist, controlling information to maintain intellectual authority."
+},
+"J♣": {
+"name": "JACK OF CLUBS",
+"under": "You're mentally scattered, communicating ideas immaturely without grounding in reality.",
+"sweet_spot": "You're bringing fresh intellectual perspectives and innovative communication.",
+"over": "You're intellectually reckless, pitching ideas without vetting feasibility or considering consequences."
+},
+"Q♣": {
+"name": "QUEEN OF CLUBS",
+"under": "You're mentally self-silencing, knowing more than you express while deferring to others.",
+"sweet_spot": "You're stewarding knowledge wisely, teaching with intuitive authority and care.",
+"over": "You're gatekeeping information, controlling what others are \"ready\" to know."
+},
+"K♣": {
+"name": "KING OF CLUBS",
+"under": "You're mentally withdrawn, withholding authority while secretly believing you know best.",
+"sweet_spot": "You're commanding intellectual systems with decisive clarity and integrity.",
+"over": "You're intellectually tyrannical, brooking no dissent while building a throne of dogma."
+},
+"A♦": {
+"name": "ACE OF DIAMONDS",
+"under": "You're financially anxious, clinging to security while fearing loss obsessively.",
+"sweet_spot": "You're initiating enterprise and resources with confidence and self-worth.",
+"over": "You're greedily acquisitive, using wealth to prove your value while seeing others as competition."
+},
+"2♦": {
+"name": "2 OF DIAMONDS",
+"under": "You're financially conflicted, afraid to negotiate, giving away value while secretly resenting it.",
+"sweet_spot": "You're creating fair exchanges and mutual benefit through balanced partnership.",
+"over": "You're manipulating financial situations to control or dominate others."
+},
+"3♦": {
+"name": "3 OF DIAMONDS",
+"under": "You're financially scattered, creating multiple income streams but stabilizing none.",
+"sweet_spot": "You're diversifying resources creatively, exploring multiple paths to abundance.",
+"over": "You're recklessly chasing money everywhere, unstable and rootless in your approach to resources."
+},
+"4♦": {
+"name": "4 OF DIAMONDS",
+"under": "You're financially controlling and hoarding, using money as security blanket against chaos.",
+"sweet_spot": "You're building lasting financial stability and structures for long-term security.",
+"over": "You're financially rigid and stingy, unable to release money even when it serves growth."
+},
+"5♦": {
+"name": "5 OF DIAMONDS",
+"under": "You're financially paralyzed, afraid of loss while missing opportunities for growth.",
+"sweet_spot": "You're navigating financial change with adaptability and resourcefulness.",
+"over": "You're financially reckless and wasteful, addicted to spending while creating chaos."
+},
+"6♦": {
+"name": "6 OF DIAMONDS",
+"under": "You're financially self-sacrificing, over-giving while silencing your own needs.",
+"sweet_spot": "You're stewarding resources generously, serving others' abundance authentically.",
+"over": "You're financially controlling through gifts, creating debt systems masked as generosity."
+},
+"7♦": {
+"name": "7 OF DIAMONDS",
+"under": "You're financially anxious, obsessed with lack while unable to trust abundance.",
+"sweet_spot": "You're reflecting on worth deeply, finding meaning beyond material accumulation.",
+"over": "You're financially paranoid and hoarder-like, seeing scarcity everywhere despite evidence of plenty."
+},
+"8♦": {
+"name": "8 OF DIAMONDS",
+"under": "You're financially withdrawn, afraid of power while avoiding resource leadership.",
+"sweet_spot": "You're commanding financial systems with authority and integrity.",
+"over": "You're financially controlling and power-hungry, seeing money as a tool for domination."
+},
+"9♦": {
+"name": "9 OF DIAMONDS",
+"under": "You're financially burned out, giving endlessly while unable to receive or rest.",
+"sweet_spot": "You're integrating generosity with sustainability, releasing abundant resources wisely.",
+"over": "You're financially exhausted from over-giving, building resentment while maintaining martyr role."
+},
+"10♦": {
+"name": "10 OF DIAMONDS",
+"under": "You're financially overwhelmed by family obligation, carrying everyone's financial burdens.",
+"sweet_spot": "You're actualizing complete financial success, creating stability and abundance.",
+"over": "You're ruthlessly acquisitive and greedy, seeing people as commodities and exploiting for gain."
+},
+"J♦": {
+"name": "JACK OF DIAMONDS",
+"under": "You're financially immature, enthusiastically chasing money schemes without follow-through.",
+"sweet_spot": "You're bringing fresh financial perspective and innovative approaches to resources.",
+"over": "You're financially reckless and overpromising, creating schemes without substance."
+},
+"Q♦": {
+"name": "QUEEN OF DIAMONDS",
+"under": "You're financially insecure despite resources, controlling money while afraid of loss.",
+"sweet_spot": "You're stewarding resources intuitively, protecting and nurturing abundance.",
+"over": "You're financially controlling and conditional, using money to manipulate others' behavior."
+},
+"K♦": {
+"name": "KING OF DIAMONDS",
+"under": "You're financially withdrawn, afraid to wield power while hoarding resources.",
+"sweet_spot": "You're commanding financial systems with authority and wise stewardship.",
+"over": "You're ruthlessly greedy and tyrannical, exploiting others for financial gain without conscience."
+},
+"A♠": {
+"name": "ACE OF SPADES",
+"under": "You're avoiding hard truth, stuck in illusions while refusing necessary clarity.",
+"sweet_spot": "You're cutting through illusion with courage, initiating truth-telling and authentic communication.",
+"over": "You're brutally blunt, using \"truth\" as a weapon to hurt others."
+},
+"2♠": {
+"name": "2 OF SPADES",
+"under": "You're paralyzed by indecision, intellectually thorough as an avoidance of commitment terror.",
+"sweet_spot": "You're navigating opposing forces with balance, finding middle paths through complexity.",
+"over": "You're aggressively indecisive, creating conflict through refusal to choose."
+},
+"3♠": {
+"name": "3 OF SPADES",
+"under": "You're stuck in grief, emotionally overwhelmed and unable to move through pain.",
+"sweet_spot": "You're working through sorrow authentically, integrating difficult emotion into wisdom.",
+"over": "You're weaponizing pain, playing victim while inflicting emotional damage on others."
+},
+"4♠": {
+"name": "4 OF SPADES",
+"under": "You're rigidly defended against change, mentally fortified in denial and fear.",
+"sweet_spot": "You're building structure to stabilize, creating containment for necessary change.",
+"over": "You're fortress-like and impenetrable, closed to all growth or adaptation."
+},
+"5♠": {
+"name": "5 OF SPADES",
+"under": "You're isolated and victimized, paralyzed by conflict while blaming circumstances.",
+"sweet_spot": "You're thriving in challenge, learning mastery through transformation and testing.",
+"over": "You're conflict-addicted, creating chaos to prove your strength and survivability."
+},
+"6♠": {
+"name": "6 OF SPADES",
+"under": "You're self-sacrificing through pain, healing others while ignoring your own wounds.",
+"sweet_spot": "You're integrating hardship into healing wisdom, serving from integrated wholeness.",
+"over": "You're martyr-like, requiring others' suffering to validate your self-worth."
+},
+"7♠": {
+"name": "7 OF SPADES",
+"under": "You're cynical and mistrustful, analyzing failure while missing opportunity.",
+"sweet_spot": "You're reflecting on karmic patterns with wisdom, seeking truth in difficulty.",
+"over": "You're obsessed with suffering, seeing persecution everywhere while justifying negativity."
+},
+"8♠": {
+"name": "8 OF SPADES",
+"under": "You're withdrawn from responsibility, avoiding leadership while secretly resenting powerlessness.",
+"sweet_spot": "You're commanding transformation with clarity, leading through mastery and discipline.",
+"over": "You're controlling and tyrannical, dominating others through intellectual superiority and force."
+},
+"9♠": {
+"name": "9 OF SPADES",
+"under": "You're stuck in completion, unable to finish cycles or release what's complete.",
+"sweet_spot": "You're integrating hard lessons, releasing burdens and completing transformation cycles.",
+"over": "You're obsessed with closure, forcing endings prematurely and preventing natural evolution."
+},
+"10♠": {
+"name": "10 OF SPADES",
+"under": "You're overwhelmed by karmic burden, carrying everyone's pain while victimized.",
+"sweet_spot": "You're mastering your karmic curriculum, integrating hard lessons into wisdom.",
+"over": "You're workaholic and perfectionistic, crushing yourself and others through relentless demand."
+},
+"J♠": {
+"name": "JACK OF SPADES",
+"under": "You're communicating truth immaturely, sharing information without care for impact.",
+"sweet_spot": "You're bringing clarity and honest perspective, inspiring others through truth-telling.",
+"over": "You're brutally critical, using honesty as a weapon to dominate or shame."
+},
+"Q♠": {
+"name": "QUEEN OF SPADES",
+"under": "You're self-silencing, knowing truth while deferring to others' narratives.",
+"sweet_spot": "You're stewarding truth wisely, protecting others through compassionate clarity.",
+"over": "You're cryptically controlling, withholding truth to maintain power over others."
+},
+"K♠": {
+"name": "KING OF SPADES",
+"under": "You're emotionally withdrawn, using intellect to avoid vulnerability entirely.",
+"sweet_spot": "You're commanding transformation with decisive authority, leading through integrated mastery.",
+"over": "You're tyrannically rigid, brooking no emotion while enforcing compliance through fear."
+}
+}
