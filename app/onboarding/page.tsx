@@ -11,18 +11,18 @@ import { ProfileForm } from "@/components/onboarding/ProfileForm";
 const SLIDES = [
   {
     eyebrow: "Mirror",
-    line: "This is a mirror, not a forecast.",
-    sub: "Nothing here predicts. It reflects how you already tend to move.",
+    line: "We don't read your future.",
+    sub: "We name the pattern you're already running — the one steering you whether you see it or not.",
   },
   {
     eyebrow: "The engine",
-    line: "Your birthday encodes a deck of patterns.",
-    sub: "A deterministic playing-card system — old, strange, and surprisingly precise about temperament.",
+    line: "Your birthday already dealt your hand.",
+    sub: "A deterministic card system. No AI, no vibes — same birthday, same cards, every time.",
   },
   {
     eyebrow: "The deal",
-    line: "We name the patterns. You decide what to do with them.",
-    sub: "Every pattern is one you can examine, work with, or set down.",
+    line: "We name the pattern. The rest is on you.",
+    sub: "Every pattern here is one you can own, work, or keep pretending you don't have.",
   },
 ] as const;
 

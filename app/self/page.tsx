@@ -92,7 +92,7 @@ export default function SelfPage() {
         <Divider />
 
         {/* WHO YOU ARE AT CORE */}
-        <Section eyebrow="The mirror, not the forecast" title="Who you are at core" index={0}>
+        <Section eyebrow="No forecast — just what you already are" title="Who you are at core" index={0}>
           <div className="prose-reading">
             <p>
               <span className="text-gold">{archetype.birth_card}</span> is the card of{" "}
@@ -103,10 +103,10 @@ export default function SelfPage() {
               pattern — <em>{prcDesc.title.replace(/^The /, "").toLowerCase()}</em>. {prcDesc.core_identity}
             </p>
             <p className="text-mist">
-              These two engines run at once: a {bc?.domain.toLowerCase()} instinct from{" "}
+              Two engines run at once: a {bc?.domain.toLowerCase()} instinct from{" "}
               {archetype.birth_card}, threaded through a {prc?.domain.toLowerCase()} temperament from{" "}
-              {archetype.prc}. None of it is fixed — it&rsquo;s the vocabulary for how you tend to
-              operate.
+              {archetype.prc}. This isn&rsquo;t a vibe. Same birthday, same cards, every time — this
+              is the default you run on until you decide otherwise.
             </p>
           </div>
         </Section>
@@ -124,7 +124,7 @@ export default function SelfPage() {
         </Section>
 
         {/* SHADOW */}
-        <Section eyebrow="A pattern to watch, not a flaw to fear" title="The tension you carry" index={2}>
+        <Section eyebrow="Where it costs you" title="The tension you carry" index={2}>
           <div className="space-y-5">
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
               <p className="eyebrow mb-2">
@@ -139,8 +139,8 @@ export default function SelfPage() {
               <p className="prose-reading mb-0 text-mist">{prcDesc.shadow}</p>
             </div>
             <p className="text-sm leading-relaxed text-faint">
-              Notice these are protections, not defects. The question isn&rsquo;t how to erase them
-              — it&rsquo;s whether they&rsquo;re still earning their keep.
+              These started as protection. The deck doesn&rsquo;t care whether they still serve you
+              — noticing that they don&rsquo;t is the part only you can do.
             </p>
           </div>
         </Section>
@@ -183,8 +183,8 @@ export default function SelfPage() {
         <Divider />
 
         <p className="pb-4 text-center text-sm leading-relaxed text-faint">
-          None of this is destiny. It&rsquo;s a mirror for noticing how you tend to operate — what
-          you do with the reflection is entirely yours.
+          None of this is destiny — it&rsquo;s the pattern you already run. Seeing it clearly is the
+          only part that was ever up to you.
         </p>
       </div>
     </Screen>

@@ -76,8 +76,8 @@ export default function BondsPage() {
             How two patterns meet
           </h1>
           <p className="text-sm text-faint">
-            A mirror for the space between you — not a verdict on it. Two birth
-            cards, read for where they share a language and where they pull.
+            Not a compatibility score. Two birth cards, read for where they
+            speak the same language — and where they grind.
           </p>
         </motion.header>
 
@@ -197,7 +197,7 @@ export default function BondsPage() {
 
             {/* How your patterns meet */}
             <div>
-              <Eyebrow className="mb-1">The meeting, not the verdict</Eyebrow>
+              <Eyebrow className="mb-1">Where you click, where you grind</Eyebrow>
               <h2 className="display mb-5 text-2xl text-bone">
                 How your patterns meet
               </h2>

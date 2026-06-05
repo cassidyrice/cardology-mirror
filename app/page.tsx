@@ -24,7 +24,7 @@ export default function SplashEntry() {
           Mirror
         </h1>
         <span className="text-[0.6rem] uppercase tracking-wider2 text-faint">
-          a reflection, not a forecast
+          what you already are — not what&rsquo;s coming
         </span>
       </div>
     </main>

@@ -187,7 +187,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           {reflectionPrompt(ap)}
         </p>
         <p className="mt-4 text-xs text-faint">
-          A mirror, not a forecast. Sit with whatever stings.
+          No forecast — just the pattern you&apos;re running today. Sit with whatever stings.
         </p>
       </motion.div>
 
