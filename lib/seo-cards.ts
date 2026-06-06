@@ -1,8 +1,8 @@
 // SEO data layer for the 52 birth-card pages. Combines the app's own card data
-// (engine descriptions + three-lens meanings) into a stable per-card record and
-// provides slug <-> code mapping. All public-facing copy is generated here from
-// the app's own data — no external sources.
+// (engine descriptions + three-lens meanings) into stable per-card and per-date
+// records. All public-facing copy is generated from deterministic local data.
 
+import { cardology } from "./engine-core/engine.js";
 import { parseCard, SUIT_GLYPH, SUIT_DOMAIN, SUIT_COLOR, type Suit } from "./cards";
 import THREE_LENS from "./card-meanings.json";
 import CARD_DESCRIPTIONS from "./engine-data/card-descriptions.json";
@@ -23,36 +23,53 @@ const DESC = CARD_DESCRIPTIONS as Record<string, Description>;
 const RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"] as const;
 const SUITS: Suit[] = ["hearts", "clubs", "diamonds", "spades"];
 
-const RANK_SLUG: Record<string, string> = {
-  A: "ace", J: "jack", Q: "queen", K: "king",
-};
-const RANK_TITLE: Record<string, string> = {
-  A: "Ace", J: "Jack", Q: "Queen", K: "King",
-};
+const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
+
+const MONTHS = [
+  { name: "January", slug: "january", days: 31 },
+  { name: "February", slug: "february", days: 29 },
+  { name: "March", slug: "march", days: 31 },
+  { name: "April", slug: "april", days: 30 },
+  { name: "May", slug: "may", days: 31 },
+  { name: "June", slug: "june", days: 30 },
+  { name: "July", slug: "july", days: 31 },
+  { name: "August", slug: "august", days: 31 },
+  { name: "September", slug: "september", days: 30 },
+  { name: "October", slug: "october", days: 31 },
+  { name: "November", slug: "november", days: 30 },
+  { name: "December", slug: "december", days: 31 },
+] as const;
 
 function code(rank: string, suit: Suit): string {
   return `${rank}${SUIT_GLYPH[suit]}`;
 }
 
 export interface CardSeo {
-  code: string; // "K♠"
-  slug: string; // "king-of-spades"
-  label: string; // "King of Spades"
-  rank: string; // "K"
+  code: string;
+  slug: string;
+  label: string;
+  rank: string;
   suit: Suit;
   glyph: string;
   color: string;
-  suitDomain: string; // "Work, will & transformation"
-  // Rich description (39 cards) — optional:
-  title: string | null; // "The One-Eyed Master of Acquisition"
+  suitDomain: string;
+  title: string | null;
   coreIdentity: string | null;
   gifts: string[];
   shadow: string | null;
   lifeDirection: string | null;
-  // Three-lens (all 52):
   under: string;
   sweetSpot: string;
   over: string;
+}
+
+export interface BirthdateSeo {
+  slug: string;
+  label: string;
+  month: number;
+  day: number;
+  card: CardSeo;
+  rulingCard: CardSeo | null;
 }
 
 function toBullets(text: string | undefined): string[] {
@@ -82,7 +99,7 @@ export function getCardSeo(c: string): CardSeo | null {
     glyph: p.glyph,
     color: p.color,
     suitDomain: SUIT_DOMAIN[p.suit],
-    title: d?.title ?? null,
+    title: d?.title ?? lens.name ?? null,
     coreIdentity: d?.core_identity ?? null,
     gifts: toBullets(d?.gifts),
     shadow: d?.shadow ?? null,
@@ -115,26 +132,66 @@ export function allCardSlugs(): string[] {
   return allCardSeo().map((c) => c.slug);
 }
 
-// Cards grouped by suit, for the hub/index page.
 export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[] {
-  return SUITS.map((suit) => ({
-    suit,
-    domain: SUIT_DOMAIN[suit],
-    cards: allCardSeo().filter((c) => c.suit === suit),
-  }));
+  return SUITS.map((suit) => ({ suit, domain: SUIT_DOMAIN[suit], cards: allCardSeo().filter((c) => c.suit === suit) }));
 }
 
-// Per-card SEO title + meta description, generated from the app's own data.
 export function cardMeta(card: CardSeo): { title: string; description: string } {
   const title = card.title
     ? `${card.label} (${card.title}) — Cardology Birth Card`
     : `${card.label} — Cardology Birth Card Meaning`;
   const seed = card.coreIdentity || card.sweetSpot;
+  const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
-    `${card.label} birth card meaning in Cardology: ${seed}`,
+    `${card.label} birth card meaning in Cardology: personality, strengths, shadow, relationships, work, and birth dates${dates ? ` including ${dates}` : ""}.`,
     158,
   );
   return { title: clamp(title, 64), description };
+}
+
+let _dates: BirthdateSeo[] | null = null;
+export function allBirthdateSeo(): BirthdateSeo[] {
+  if (_dates) return _dates;
+  const out: BirthdateSeo[] = [];
+  MONTHS.forEach((m, monthIndex) => {
+    for (let day = 1; day <= m.days; day++) {
+      const month = monthIndex + 1;
+      const [birthCode] = cardology.getBirthCard(month, day) as [string, number];
+      const prcRaw = cardology.getPlanetaryRulingCard(month, day) as string | string[] | null;
+      const prcCode = Array.isArray(prcRaw) ? prcRaw[0] : prcRaw;
+      const card = getCardSeo(birthCode);
+      if (!card) continue;
+      out.push({
+        slug: `${m.slug}-${day}`,
+        label: `${m.name} ${day}`,
+        month,
+        day,
+        card,
+        rulingCard: prcCode ? getCardSeo(prcCode) : null,
+      });
+    }
+  });
+  _dates = out;
+  return out;
+}
+
+export function allBirthdateSlugs(): string[] {
+  return allBirthdateSeo().map((d) => d.slug);
+}
+
+export function birthdateBySlug(slug: string): BirthdateSeo | null {
+  return allBirthdateSeo().find((d) => d.slug === slug) ?? null;
+}
+
+export function birthDatesForCard(card: CardSeo): BirthdateSeo[] {
+  return allBirthdateSeo().filter((d) => d.card.slug === card.slug);
+}
+
+export function dateMeta(date: BirthdateSeo): { title: string; description: string } {
+  return {
+    title: clamp(`${date.label} Birth Card: ${date.card.label} Meaning`, 64),
+    description: clamp(`${date.label} birth card is ${date.card.label}${date.card.title ? `, ${date.card.title}` : ""}. Read the Cardology meaning, ruling card, personality pattern, strengths, shadow, and growth edge.`, 158),
+  };
 }
 
 function clamp(s: string, n: number): string {

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
-import { allCardSlugs } from "@/lib/seo-cards";
+import { allBirthdateSlugs, allCardSlugs } from "@/lib/seo-cards";
 
 export const dynamic = "force-static";
 
@@ -29,7 +29,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/birth-card/${slug}`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.75,
+    });
+  }
+
+  for (const slug of allBirthdateSlugs()) {
+    entries.push({
+      url: `${SITE_URL}/birth-card/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.55,
     });
   }
 
