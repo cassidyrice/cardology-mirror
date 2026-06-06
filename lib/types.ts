@@ -121,6 +121,33 @@ export interface Reading {
   deep_dive: DeepDive;
 }
 
+export interface DailyCardSummary {
+  code: CardCode;
+  name: string;
+  spread_anchor: CardCode;
+  role: string;
+  under: string;
+  sweet_spot: string;
+  over: string;
+}
+
+export interface DailyCardResponse {
+  date: string;
+  pretty_date: string;
+  source: string;
+  active_period: Pick<ActivePeriod, "planet" | "domain">;
+  daily_card: DailyCardSummary;
+  ruling_card_support: DailyCardSummary;
+  person: {
+    birth_card: CardCode;
+    birth_card_title: string;
+    ruling_card: CardCode;
+    ruling_card_title: string;
+    age: number;
+  };
+  reading: Reading;
+}
+
 export const PLANET_ORDER: PlanetName[] = [
   "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune",
 ];

@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start -p 3577",
     "lint": "next lint",
+    "cardology": "bun cli/cardology_cli.ts",
+    "daily-card": "bun cli/cardology_cli.ts daily-card",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true"
   },

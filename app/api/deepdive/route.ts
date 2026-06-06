@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getReading, EngineError } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
+import { READING_INTERPRETATION_GUIDE } from "@/lib/interpretation-guidance";
 import { bearerFrom, verifyToken } from "@/lib/gate";
 import type { Reading, Interpretation, PlanetName } from "@/lib/types";
 
@@ -175,8 +176,9 @@ export async function POST(req: NextRequest) {
     {
       role: "user",
       content:
-        `Write the deep-dive mirror reading for this person, drawing ONLY on the engine data below.\n\n` +
-        `=== ENGINE DATA (verbatim — your only source) ===\n${context}\n=== END ENGINE DATA ===${focusLine}`,
+        `Write the deep-dive mirror reading for this person, drawing ONLY on the engine data below. Use the interpretation methodology markdown as reading-process guidance, but do not invent card facts beyond the engine data.\n\n` +
+        `=== INTERPRETATION METHODOLOGY MARKDOWN ===\n${READING_INTERPRETATION_GUIDE}\n=== END METHODOLOGY ===\n\n` +
+        `=== ENGINE DATA (verbatim — your only source for card identities/meanings) ===\n${context}\n=== END ENGINE DATA ===${focusLine}`,
     },
   ];
 
