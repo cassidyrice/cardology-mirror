@@ -2,7 +2,7 @@
 // Everything here is templated strictly from engine output (interpretation
 // names, domain words, sweet-spot text) — no invented meaning.
 
-import type { ActivePeriod } from "@/lib/types";
+import type { ActivePeriod, DailyCard } from "@/lib/types";
 
 // First clause of a sweet-spot line, lower-cased — used for the blunt one-liner.
 export function bluntLine(period: ActivePeriod): string {
@@ -37,6 +37,21 @@ function cardName(name: string): string {
     .toLowerCase()
     .replace(/\b\w/g, (c) => c.toUpperCase())
     .replace(/\bOf\b/i, "of");
+}
+
+// "Saturn sub-period · within your Mars chapter"
+export function dailyLabel(daily: DailyCard): string {
+  return `${daily.sub_planet} sub-period · within your ${daily.period_planet} chapter`;
+}
+
+// Blunt one-liner for the daily card, templated from its sweet-spot text.
+export function dailyLine(daily: DailyCard): string {
+  const interp = daily.bc.interpretation;
+  if (!interp) return "A quieter day in the pattern.";
+  const clause = interp.sweet_spot.trim().split(/[,.]/)[0].trim();
+  const stripped = clause.replace(/^you'?re\s+/i, "").trim();
+  if (!stripped) return interp.sweet_spot.trim();
+  return stripped.charAt(0).toUpperCase() + stripped.slice(1) + " — today's slice of it.";
 }
 
 // One introspective question built from the two active cards + domain.

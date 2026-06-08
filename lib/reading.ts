@@ -12,6 +12,8 @@ import { cardology } from "./engine-core/engine.js";
 import type {
   Archetype,
   ArchetypeDescription,
+  DailyCard,
+  DailyCardEntry,
   DeepDive,
   Inputs,
   Interpretation,
@@ -177,7 +179,7 @@ export function buildReading(birthdate: string, targetDate?: string): Reading {
   const bc9 = cardology.extractCards(bc, spreadNav, 9);
   const prc9 = prcPrimary ? cardology.extractCards(prcPrimary, spreadNav, 9) : null;
 
-  const [apPlanetRaw] = cardology.getActivePeriod(month, day, target);
+  const [apPlanetRaw, , dayInYear] = cardology.getActivePeriod(month, day, target);
   const apPlanet = apPlanetRaw as PlanetName;
 
   const bcPeriodsDetailed = buildPeriods(bc9);
@@ -238,6 +240,42 @@ export function buildReading(birthdate: string, targetDate?: string): Reading {
     position_meaning_prc: null,
   };
 
+  // --- Personal daily ("weekly") card -------------------------------------
+  // Drill one level past the active 52-day planetary period: each period is
+  // split into 7 sub-periods (~52/7 ≈ 7.43 days). The day's card is the
+  // sub_index-th card extracted from the active period card in the same
+  // current-age spread (spreadNav). Mirrors the engine's stubbed
+  // WEEKLY_CARD_MEANINGS granularity.
+  const apIdx = Math.max(0, PLANET_NAMES.indexOf(apPlanet));
+  const periodStart = 1 + apIdx * 52; // day-in-year where this period begins
+  const dayInPeriod = Math.max(0, dayInYear - periodStart);
+  const subLen = 52 / 7;
+  const subIndex = Math.min(6, Math.floor(dayInPeriod / subLen));
+  const subPlanet = PLANET_NAMES[subIndex];
+
+  function drillDaily(periodCard: string | undefined | null): DailyCardEntry {
+    const seven = periodCard ? cardology.extractCards(periodCard, spreadNav, 7) : null;
+    const card = seven && subIndex < seven.length ? seven[subIndex] : (null as unknown as string);
+    return {
+      card,
+      interpretation: lookupInterpretation(card),
+      source_period_card: (periodCard ?? null) as unknown as string,
+    };
+  }
+
+  const daily: DailyCard = {
+    sub_planet: subPlanet,
+    sub_index: subIndex,
+    domain: PLANET_DOMAINS_MAP[subPlanet],
+    period_planet: apPlanet,
+    day_in_period: dayInPeriod,
+    sub_length_days: subLen,
+    bc: drillDaily(apBcCard),
+    prc: drillDaily(apPrcCard),
+    method:
+      "active 52-day period card → 7 sub-period cards via SPREADS[sy_nav]; sub_index = floor(day_in_period / (52/7))",
+  };
+
   const longRange: LongRange = {
     bc: getLongRangeCard(bc, age) as LongRangeEntry,
     prc: (prcPrimary ? getLongRangeCard(prcPrimary, age) : null) as LongRangeEntry,
@@ -264,6 +302,7 @@ export function buildReading(birthdate: string, targetDate?: string): Reading {
     birth_card_spread: bcSpread,
     prc_spread: prcSpread,
     active_period: activePeriod,
+    daily,
     long_range: longRange,
     karma,
     inputs,

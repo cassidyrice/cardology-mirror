@@ -67,6 +67,26 @@ export interface ActivePeriod {
   position_meaning_prc: string | null;
 }
 
+export interface DailyCardEntry {
+  card: CardCode;
+  interpretation: Interpretation | null;
+  source_period_card: CardCode; // the active 52-day period card it was drilled from
+}
+
+// Personal daily ("weekly") card: the ~7.4-day sub-period card inside the
+// active 52-day planetary period of the current-age yearly spread.
+export interface DailyCard {
+  sub_planet: PlanetName; // ruling planet of the active sub-period
+  sub_index: number; // 0-6 position within the period
+  domain: string; // domain words for sub_planet
+  period_planet: PlanetName; // the active 52-day planet
+  day_in_period: number; // 0-indexed day within the 52-day period
+  sub_length_days: number; // ~7.43
+  bc: DailyCardEntry;
+  prc: DailyCardEntry;
+  method: string;
+}
+
 export interface LongRangeEntry {
   card: CardCode;
   planet: PlanetName;
@@ -115,37 +135,11 @@ export interface Reading {
   birth_card_spread: Spread;
   prc_spread: Spread;
   active_period: ActivePeriod;
+  daily: DailyCard;
   long_range: LongRange;
   karma: Karma;
   inputs: Inputs;
   deep_dive: DeepDive;
-}
-
-export interface DailyCardSummary {
-  code: CardCode;
-  name: string;
-  spread_anchor: CardCode;
-  role: string;
-  under: string;
-  sweet_spot: string;
-  over: string;
-}
-
-export interface DailyCardResponse {
-  date: string;
-  pretty_date: string;
-  source: string;
-  active_period: Pick<ActivePeriod, "planet" | "domain">;
-  daily_card: DailyCardSummary;
-  ruling_card_support: DailyCardSummary;
-  person: {
-    birth_card: CardCode;
-    birth_card_title: string;
-    ruling_card: CardCode;
-    ruling_card_title: string;
-    age: number;
-  };
-  reading: Reading;
 }
 
 export const PLANET_ORDER: PlanetName[] = [

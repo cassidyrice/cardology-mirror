@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { useProfile } from "@/lib/profile";
-import { useDailyCard } from "@/lib/useDailyCard";
+import { useReading } from "@/lib/useReading";
 import { todayISO, parseCard } from "@/lib/cards";
 import {
   Screen,
@@ -16,6 +16,7 @@ import {
   PositionStack,
 } from "@/components/ui";
 import { PlayingCard } from "@/components/PlayingCard";
+import { DailyCardBlock } from "@/components/today/DailyCard";
 import { TodaySkeleton } from "@/components/today/Skeleton";
 import {
   bluntLine,
@@ -45,7 +46,7 @@ export default function TodayPage() {
     if (ready && !profile) router.replace("/onboarding");
   }, [ready, profile, router]);
 
-  const { data, error, loading } = useDailyCard(profile?.birthdate, todayISO());
+  const { data, error, loading } = useReading(profile?.birthdate, todayISO());
 
   const showSkeleton = !ready || (profile && (loading || (!data && !error)));
 
@@ -79,9 +80,8 @@ export default function TodayPage() {
   );
 }
 
-function Today({ data }: { data: import("@/lib/types").DailyCardResponse }) {
-  const reading = data.reading;
-  const ap = reading.active_period;
+function Today({ data }: { data: import("@/lib/types").Reading }) {
+  const ap = data.active_period;
   const bc = parseCard(ap.bc_card);
   const prc = parseCard(ap.prc_card);
 
@@ -95,6 +95,14 @@ function Today({ data }: { data: import("@/lib/types").DailyCardResponse }) {
       }}
       className="space-y-2"
     >
+      {/* ---- Daily card ---- */}
+      <motion.div
+        variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+        className="pb-2"
+      >
+        <DailyCardBlock daily={data.daily} />
+      </motion.div>
+
       {/* ---- Hero ---- */}
       <motion.div
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
@@ -109,20 +117,6 @@ function Today({ data }: { data: import("@/lib/types").DailyCardResponse }) {
         <p className="mt-1 text-xs text-faint">
           {ap.domain}
         </p>
-        <div className="mt-5 rounded-2xl border border-gold/15 bg-gold/[0.04] p-4">
-          <p className="text-[10px] uppercase tracking-wider2 text-gold">
-            Cardology CLI daily card
-          </p>
-          <p className="mt-2 font-serif text-xl text-bone">
-            {data.daily_card.code} · {data.daily_card.name}
-          </p>
-          <p className="mt-2 text-sm leading-relaxed text-mist">
-            {data.daily_card.sweet_spot}
-          </p>
-          <p className="mt-3 text-xs text-faint">
-            Ruling support: {data.ruling_card_support.code} · {data.ruling_card_support.name}
-          </p>
-        </div>
       </motion.div>
 
       {/* ---- Governing cards ---- */}
