@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/what-is-cardology",
     "/52-card-astrology-explained",
     "/birth-card-vs-ruling-card",
+    "/cardology-agent-instructions",
   ];
 
   const entries: MetadataRoute.Sitemap = staticPaths.map((p) => ({
