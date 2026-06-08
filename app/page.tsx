@@ -63,6 +63,7 @@ export default function Home() {
             <Tile href="/cardology-compatibility" label="Compatibility" sub="How two birth cards connect" />
             <Tile href="/what-is-cardology" label="What is Cardology?" sub="The 52-card system, explained" />
             <Tile href="/birth-card-vs-ruling-card" label="Birth Card vs Ruling Card" sub="The two cards that define you" />
+            <Tile href="/cardology-agent-instructions" label="Shadow & Karma Guide" sub="Agent instructions for shadow, alignment, and karma patterns" />
           </div>
         </section>
 

@@ -58,6 +58,7 @@ function SeoFooter() {
         <li><Link href="/what-is-cardology" className="hover:text-mist">What is Cardology?</Link></li>
         <li><Link href="/52-card-astrology-explained" className="hover:text-mist">52-Card Astrology</Link></li>
         <li><Link href="/birth-card-vs-ruling-card" className="hover:text-mist">Birth vs Ruling Card</Link></li>
+        <li><Link href="/cardology-agent-instructions" className="hover:text-mist">Shadow & Karma Guide</Link></li>
         <li><Link href="/" className="hover:text-mist">Open the App</Link></li>
       </ul>
       <p className="mt-6 text-xs leading-relaxed text-faint/80">
