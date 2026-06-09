@@ -124,13 +124,13 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         {card.title && <span className="block text-lg text-gold">{card.title}</span>}
       </h1>
       <p className="prose-reading mt-3 text-mist">
-        The {card.label} is a Cardology birth card in the {suitWord(card)} suit. It describes a core life pattern: how you tend to move when centered, what you naturally notice, and where you may overreach or hold back. Use this page as a plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates.
+        The {card.label} is a Cardology birth card in the {suitWord(card)} suit — the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
       </p>
 
       <Section title="Quick meaning">
         <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
         <p>
-          In practical terms, this card is not a fixed fate or prediction. It is a mirror for recurring choices. When the {card.label} is balanced, the person tends to express the best of {suitWord(card).toLowerCase()} energy: {card.sweetSpot}
+          In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card).toLowerCase()} has to offer: {card.sweetSpot}
         </p>
       </Section>
 
@@ -150,7 +150,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <Lens label="Over-expressed" tone="#e0654a" text={card.over} />
         </div>
         <p className="mt-4 text-sm text-faint">
-          These three positions are useful for self-reflection because they turn the birth card into a range, not a box. The question is not “am I this card?” but “where am I sitting in the range today?”
+          Three positions, not a verdict. The birth card is a range, not a box — so the honest question isn&rsquo;t “am I this card?” but “which end of the range am I parked at today?”
         </p>
       </Section>
 
@@ -169,7 +169,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <Section title="Shadow and growth edge">
         <p>{card.shadow || card.over}</p>
         <p>
-          The growth edge is usually a return to proportion. If the card is under-expressed, the medicine is participation: say the true thing, make the choice, ask for what matters, or take the next clean step. If the card is over-expressed, the medicine is restraint: listen longer, soften control, simplify the agenda, and let the pattern breathe.
+          The growth edge is almost always a return to proportion — unglamorous, but it works. Under-expressed? The medicine is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The medicine is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
         </p>
       </Section>
 
@@ -238,7 +238,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <div className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Not sure this is your card?</p>
-        <p className="mt-1 text-sm text-faint">Your birth card is fixed by your birthday. Find yours in seconds, then use the app for today&rsquo;s timing, compatibility, and reflection prompts.</p>
+        <p className="mt-1 text-sm text-faint">Your birth card was fixed the day you were born — no choosing, no escaping it. Find yours in seconds, then let the app handle today&rsquo;s timing, compatibility, and the reflection prompts you&rsquo;ll pretend you didn&rsquo;t need.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Birth Card Calculator →</Link>
       </div>
 
@@ -307,11 +307,11 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </div>
       <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
       <p className="prose-reading mt-3 text-mist">
-        If your birthday is {date.label}, your Cardology birth card is the {card.label}
-        {card.title ? `, ${card.title}` : ""}. {date.label} sits in {zodiac.sign}, so this birthday
-        carries a second layer: {zodiac.planet} selects {ruling ? `the ${ruling.label}` : "a planetary ruling card"} as
-        the lens the {card.label} expresses through. This page covers both layers and what makes a {date.label} birthday
-        distinct from the other {card.label} dates.
+        Born on {date.label}? Your Cardology birth card is the {card.label}
+        {card.title ? `, ${card.title}` : ""} — same answer every year, no negotiation. {date.label} sits in {zodiac.sign}, so
+        this birthday carries a second layer: {zodiac.planet} selects {ruling ? `the ${ruling.label}` : "a planetary ruling card"}
+        as the lens the {card.label} expresses through. This page breaks down both layers and what makes a {date.label}
+        birthday distinct from the other {card.label} dates.
       </p>
 
       <Section title="Birthday card meaning">
@@ -379,7 +379,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 
       <div className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Want the full reading?</p>
-        <p className="mt-1 text-sm text-faint">Use the calculator to save your birth card and open the app experience.</p>
+        <p className="mt-1 text-sm text-faint">Save your birth card with the calculator and open the app — where the pattern gets specific and stops being flattering.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
 

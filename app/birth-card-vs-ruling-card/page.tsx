@@ -44,10 +44,11 @@ export default function BirthVsRuling() {
 
       <h1 className="display mb-3 text-3xl text-bone">Birth Card vs Ruling Card</h1>
       <p className="prose-reading mb-6 text-mist">
-        In Cardology you usually have two key cards. Your <strong>birth card</strong>{" "}
-        is the core — who you are at root. Your <strong>planetary ruling card</strong>{" "}
-        is a second layer that colors how that core expresses. Think of the birth
-        card as the engine and the ruling card as the tuning.
+        In Cardology you run on two cards, not one. Your <strong>birth card</strong>{" "}
+        is the core — who you are when no one&rsquo;s watching. Your{" "}
+        <strong>planetary ruling card</strong> is the second layer that colors how
+        that core actually comes out in public. Birth card is the engine; ruling
+        card is the paint job everyone meets first.
       </p>
 
       <section className="mt-8">

@@ -19,11 +19,11 @@ export default function CompatibilityPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
       <p className="prose-reading mb-6 text-mist">
-        Cardology reads compatibility as the meeting of two{" "}
-        <strong>operating systems</strong> — not a score out of ten. Each
-        person&rsquo;s birth card describes how they tend to move; putting two
-        cards side by side shows where they speak the same language and where
-        they pull in different directions.
+        Cardology reads compatibility as the collision of two{" "}
+        <strong>operating systems</strong> — not a score out of ten and not whether
+        you&rsquo;re &ldquo;meant to be.&rdquo; Each person&rsquo;s birth card describes how they
+        actually move; putting two side by side shows where you speak the same
+        language and where you&rsquo;re going to need subtitles.
       </p>
 
       <div className="card-surface rounded-2xl p-5">

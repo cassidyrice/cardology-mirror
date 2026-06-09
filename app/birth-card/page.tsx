@@ -21,8 +21,8 @@ export default function BirthCardIndex() {
       <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Cards</h1>
       <p className="prose-reading mb-6 text-mist">
         Every birthday maps to exactly one of the 52 playing cards — your{" "}
-        <strong>birth card</strong>. It&rsquo;s a fixed starting vocabulary for how you
-        tend to operate. Pick a card below, or{" "}
+        <strong>birth card</strong>. No quiz, no choosing: a fixed vocabulary for how you
+        operate, whether you&rsquo;ve noticed it or not. Pick a card below, or{" "}
         <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
           calculate yours
         </Link>

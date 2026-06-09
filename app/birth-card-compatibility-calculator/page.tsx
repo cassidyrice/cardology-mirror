@@ -27,8 +27,9 @@ export default function CompatibilityCalculatorPage() {
       <h1 className="display mb-3 text-3xl text-bone">Birth Card Compatibility Calculator</h1>
       <p className="prose-reading mb-6 text-mist">
         Enter two birthdays to find both <strong>birth cards</strong> and a first
-        read on how they connect. For the full picture of where two patterns
-        share a language and where they pull, open the bonds reading.
+        read on how they actually connect — not whether the stars approve. For the
+        full picture of where two patterns share a language and where they grind,
+        open the bonds reading.
       </p>
 
       <CompatibilityCalculator />

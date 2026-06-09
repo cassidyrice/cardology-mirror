@@ -44,9 +44,10 @@ export default function CardAstrology() {
 
       <h1 className="display mb-3 text-3xl text-bone">52-Card Astrology, Explained</h1>
       <p className="prose-reading mb-6 text-mist">
-        &ldquo;52-card astrology&rdquo; is another name for Cardology — a system that uses
-        an ordinary deck of playing cards as a map of personality and timing. The
-        deck&rsquo;s structure mirrors the calendar, which is what makes the link
+        &ldquo;52-card astrology&rdquo; is another name for Cardology — a system that turns
+        an ordinary deck of playing cards into a map of personality and timing. And
+        no, that&rsquo;s not as woo as it sounds: the deck&rsquo;s structure mirrors the
+        calendar almost suspiciously well, which is exactly what makes the link
         between a birthday and a card possible.
       </p>
 

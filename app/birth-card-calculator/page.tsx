@@ -71,8 +71,9 @@ export default function CalculatorPage() {
       <h1 className="display mb-3 text-3xl text-bone">Birth Card Calculator</h1>
       <p className="prose-reading mb-6 text-mist">
         Enter your birthday to find your <strong>Cardology birth card</strong> —
-        the one playing card your birth date maps to. It&rsquo;s deterministic:
-        the same birthday always gives the same card.
+        the one playing card your birth date locks you into. It&rsquo;s deterministic,
+        so don&rsquo;t bother refreshing for a better answer: same birthday, same card,
+        every time.
       </p>
 
       <BirthCardCalculator />

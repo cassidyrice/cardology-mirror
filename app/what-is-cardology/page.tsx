@@ -76,11 +76,12 @@ export default function WhatIsCardology() {
 
       <h1 className="display mb-3 text-3xl text-bone">What Is Cardology?</h1>
       <p className="prose-reading mb-6 text-mist">
-        Cardology is a system that maps your birthday to a single playing card —
-        your <strong>birth card</strong> — and uses the 52-card deck as a
-        language for personality, timing, and relationships. Unlike a horoscope,
-        it&rsquo;s <strong>deterministic</strong>: the same birthday always produces the
-        same card, through a fixed formula rather than interpretation.
+        Cardology maps your birthday to a single playing card — your{" "}
+        <strong>birth card</strong> — and uses the 52-card deck as a language for
+        personality, timing, and relationships. Here&rsquo;s the part that separates it
+        from your horoscope: it&rsquo;s <strong>deterministic</strong>. Same birthday,
+        same card, every time — a fixed formula, not a mood ring or someone&rsquo;s
+        interpretation of the stars.
       </p>
 
       <section className="mt-8">
