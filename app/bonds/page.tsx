@@ -73,11 +73,11 @@ export default function BondsPage() {
         >
           <Eyebrow className="mb-1">Bonds</Eyebrow>
           <h1 className="display mb-2 text-4xl text-bone">
-            How two patterns meet
+            Where two patterns collide
           </h1>
           <p className="text-sm text-faint">
             Not a compatibility score. Two birth cards, read for where they
-            speak the same language — and where they grind.
+            speak the same language — and where they quietly grind each other down.
           </p>
         </motion.header>
 
@@ -124,9 +124,9 @@ export default function BondsPage() {
                 </div>
                 <p className="prose-reading text-sm text-faint">
                   Enter two birthdates to lay the cards side by side. Cardology
-                  reads <em>compatibility</em> as the meeting of two operating
-                  systems — what you speak fluently together, and what needs
-                  translation.
+                  reads <em>compatibility</em> as the collision of two operating
+                  systems — what you speak fluently together, and what&rsquo;s
+                  going to need subtitles.
                 </p>
               </div>
             )}

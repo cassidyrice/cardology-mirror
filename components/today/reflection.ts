@@ -13,7 +13,7 @@ export function bluntLine(period: ActivePeriod): string {
   const stripped = clause.replace(/^you'?re\s+/i, "").trim();
   if (!stripped) return raw;
   const head = stripped.charAt(0).toUpperCase() + stripped.slice(1);
-  return `${head} — if you let it.`;
+  return `${head} — assuming you stay out of your own way.`;
 }
 
 // The first listed domain word, e.g. "action" from "action, drive, assertion".
@@ -59,5 +59,5 @@ export function reflectionPrompt(period: ActivePeriod): string {
   const bc = cardName(period.interpretation_bc.name);
   const prc = cardName(period.interpretation_prc.name);
   const domain = domainLead(period);
-  return `In the realm of ${domain} today, where does your ${bc} pattern drift toward "under" or "over" — and what would the balanced version of your ${prc} ask you to do instead?`;
+  return `In the realm of ${domain} today, where does your ${bc} pattern quietly slide into "under" or "over" while you tell yourself it's fine — and what would the balanced version of your ${prc} actually make you do about it?`;
 }

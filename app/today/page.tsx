@@ -196,7 +196,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           {reflectionPrompt(ap)}
         </p>
         <p className="mt-4 text-xs text-faint">
-          No forecast — just the pattern you&apos;re running today. Sit with whatever stings.
+          No forecast — just the pattern you&apos;re running today, whether you cop to it or not. Sit with whatever stings.
         </p>
       </motion.div>
 
@@ -209,7 +209,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           <span>
             <span className="eyebrow text-gold">Story Arc · Your Year</span>
             <span className="mt-1 block text-pretty font-serif text-base leading-snug text-bone">
-              Where this year is taking you — chapter, turn, and horizon.
+              Where this year is dragging you — chapter, turn, and the horizon you keep avoiding.
             </span>
           </span>
           <span className="shrink-0 text-gold transition-transform group-hover:translate-x-0.5">

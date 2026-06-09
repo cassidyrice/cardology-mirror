@@ -12,17 +12,17 @@ const SLIDES = [
   {
     eyebrow: "Mirror",
     line: "We don't read your future.",
-    sub: "We name the pattern you're already running — the one steering you whether you see it or not.",
+    sub: "We name the pattern you're already running on autopilot — the one driving while you're convinced you're in charge.",
   },
   {
     eyebrow: "The engine",
     line: "Your birthday already dealt your hand.",
-    sub: "A deterministic card system. No AI, no vibes — same birthday, same cards, every time.",
+    sub: "A deterministic card system. No vibes, no AI fortune-telling — same birthday, same cards, every time. Math, not magic.",
   },
   {
     eyebrow: "The deal",
     line: "We name the pattern. The rest is on you.",
-    sub: "Every pattern here is one you can own, work, or keep pretending you don't have.",
+    sub: "Every pattern here is one you can own, work with, or keep loudly pretending you don't have.",
   },
 ] as const;
 

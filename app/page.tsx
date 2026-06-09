@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 const offerItems = [
   {
     label: "Life Pattern Report",
-    detail: "A clear written mirror of your birth-card pattern, strengths, shadow, and timing language.",
+    detail: "Your birth-card pattern in writing — strengths, the shadow you keep explaining away, and the timing language behind your worst weeks.",
   },
   {
     label: "1 month Daily Card Pattern Pro",
-    detail: "Return each morning to the card pattern active in the day and how to work with it.",
+    detail: "Come back each morning to the card running the day — and the exact way you're about to overplay it.",
   },
   {
     label: "Card Comparison Tool",
-    detail: "Compare two people’s cards for attraction, friction, support, and growth themes.",
+    detail: "Run your cards against someone else's: attraction, friction, and the specific way you two will drive each other up a wall.",
   },
   {
     label: "Daily Mirror Prompt + Journal",
-    detail: "A practical reflection prompt and a private place to track what the pattern shows you.",
+    detail: "One pointed prompt a day, and a private place to admit you saw it coming.",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function Home() {
         <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-center gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-10 lg:py-14">
           <div className="max-w-3xl">
             <p className="oracle-eyebrow animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
-              deterministic 52-card mirror / limited launch offer
+              a 52-card mirror that won't flatter you / limited launch
             </p>
 
             <h1 className="hero-title mt-5 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.08s_both]">
@@ -69,8 +69,8 @@ export default function Home() {
                 <span>$</span>29
               </div>
               <p className="max-w-xl text-pretty font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
-                A birth-card report built like a private field guide: pattern, shadow,
-                relationship language, daily prompts, and a month of Card Pattern Pro access.
+                A birth-card report built like a private field guide to your own patterns:
+                shadow, relationship friction, daily prompts, and a month of Card Pattern Pro.
               </p>
             </div>
 
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.32s_both]">
-              Not a forecast. Not vague vibes. Your birthday maps to one card every time — then the report turns that pattern into something you can actually notice, compare, and journal with.
+              Not a forecast. Not vibes. Your birthday maps to exactly one card, every time — and the report turns that pattern into something you can actually catch yourself doing, compare, and journal about.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function Home() {
 
               <div className="report-slip">
                 <p className="slip-kicker">Life Pattern Report</p>
-                <p className="slip-title">Your card, read as a mirror.</p>
+                <p className="slip-title">Your card, read back without the flattery.</p>
                 <div className="slip-lines" aria-hidden="true">
                   <i />
                   <i />
@@ -131,9 +131,9 @@ export default function Home() {
         <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">why this offer works</p>
+              <p className="oracle-eyebrow text-[#c8bca8]">why it works</p>
               <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] tracking-[-0.03em] sm:text-5xl">
-                One report. Thirty days of pattern practice.
+                One report. Thirty days of catching yourself in the act.
               </h2>
             </div>
             <div className="grid gap-px overflow-hidden border border-[#f4f0e7]/20 bg-[#f4f0e7]/20 sm:grid-cols-2">

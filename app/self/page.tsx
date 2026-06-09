@@ -106,7 +106,7 @@ export default function SelfPage() {
               Two engines run at once: a {bc?.domain.toLowerCase()} instinct from{" "}
               {archetype.birth_card}, threaded through a {prc?.domain.toLowerCase()} temperament from{" "}
               {archetype.prc}. This isn&rsquo;t a vibe. Same birthday, same cards, every time — this
-              is the default you run on until you decide otherwise.
+              is the factory setting you&rsquo;ve been blaming on everyone else.
             </p>
           </div>
         </Section>
@@ -139,8 +139,8 @@ export default function SelfPage() {
               <p className="prose-reading mb-0 text-mist">{prcDesc.shadow}</p>
             </div>
             <p className="text-sm leading-relaxed text-faint">
-              These started as protection. The deck doesn&rsquo;t care whether they still serve you
-              — noticing that they don&rsquo;t is the part only you can do.
+              These started as protection. They&rsquo;ve long since stopped earning their keep, and
+              you&rsquo;ve kept paying rent on them anyway — noticing that is the part only you can do.
             </p>
           </div>
         </Section>
