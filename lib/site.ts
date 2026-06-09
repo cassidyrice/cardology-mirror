@@ -14,6 +14,27 @@ export const SITE_NAME = "Cardology Pro";
 export const SITE_TAGLINE =
   "Your Cardology birth card as a mirror, not a forecast.";
 
+export const APP_PATHS = [
+  "/today",
+  "/self",
+  "/timing",
+  "/bonds",
+  "/journal",
+  "/onboarding",
+];
+
+export const MARKETING_PATHS = [
+  "/",
+  "/birth-card",
+  "/birth-card-calculator",
+  "/birth-card-compatibility-calculator",
+  "/cardology-compatibility",
+  "/what-is-cardology",
+  "/52-card-astrology-explained",
+  "/birth-card-vs-ruling-card",
+  "/cardology-agent-instructions",
+];
+
 // Build an absolute URL for a path (always returns a clean absolute href).
 export function abs(path: string): string {
   if (!path.startsWith("/")) path = `/${path}`;

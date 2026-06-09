@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { SITE_NAME, APP_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, APP_URL } from "@/lib/site";
 
 // Shared content shell for public SEO pages: cosmic theme, top bar, readable
 // prose column, and an internal-link footer. Server component (no client JS).
@@ -16,9 +16,9 @@ export function SeoShell({
     <main className="starfield relative min-h-dvh overflow-hidden bg-cosmic">
       <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col px-5 pb-16 pt-6">
         <header className="mb-6 flex items-center justify-between">
-          <Link href="/" className="eyebrow text-gold">
+          <a href={SITE_URL} className="eyebrow text-gold">
             {SITE_NAME}
-          </Link>
+          </a>
           <div className="flex items-center gap-2">
             <Link
               href="/birth-card-calculator"
