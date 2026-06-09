@@ -5,8 +5,10 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://cardologypro.com"
 ).replace(/\/$/, "");
 
+// App and marketing are served from the same host. APP_URL stays overridable
+// via NEXT_PUBLIC_APP_URL but defaults to the main site.
 export const APP_URL = (
-  process.env.NEXT_PUBLIC_APP_URL || "https://app.cardologypro.com"
+  process.env.NEXT_PUBLIC_APP_URL || SITE_URL
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Cardology Pro";
