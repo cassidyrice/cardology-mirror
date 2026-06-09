@@ -79,7 +79,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <div className="mx-auto min-h-dvh w-full max-w-md">{children}</div>
+        <div className="min-h-dvh w-full">{children}</div>
       </body>
     </html>
   );

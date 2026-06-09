@@ -83,3 +83,359 @@ body {
   pointer-events: none;
   z-index: 0;
 }
+
+/* Cardology Pro product hero: editorial, forensic, playing-card inspired. */
+.landing-oracle {
+  --paper: #f4f0e7;
+  --paper-deep: #e2d6c2;
+  --ink: #14110d;
+  --rust: #9e3d24;
+  --gold: #b98c3d;
+  --club: #183f30;
+  isolation: isolate;
+}
+
+.oracle-grid {
+  position: absolute;
+  inset: -12% -10% auto -10%;
+  height: 76vh;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(72deg, transparent 49.85%, rgba(20, 17, 13, 0.13) 50%, transparent 50.15%),
+    linear-gradient(108deg, transparent 49.85%, rgba(20, 17, 13, 0.11) 50%, transparent 50.15%),
+    linear-gradient(0deg, transparent 31px, rgba(20, 17, 13, 0.06) 32px),
+    radial-gradient(circle at 50% 46%, transparent 0 108px, rgba(20, 17, 13, 0.1) 109px, transparent 110px);
+  background-size: 100% 100%, 100% 100%, 100% 32px, 520px 520px;
+  background-position: center top;
+  mix-blend-mode: multiply;
+}
+
+.oracle-grid::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  width: min(52vw, 640px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(20, 17, 13, 0.14);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.oracle-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(20, 17, 13, 0.6) 0 0.5px, transparent 0.8px),
+    radial-gradient(circle at 70% 70%, rgba(20, 17, 13, 0.38) 0 0.5px, transparent 0.8px);
+  background-size: 5px 7px, 8px 6px;
+}
+
+.brand-mark {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.oracle-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: rgba(20, 17, 13, 0.58);
+}
+
+.hero-title {
+  max-width: 12ch;
+  font-family: var(--font-serif);
+  font-size: clamp(4.2rem, 11vw, 10.6rem);
+  font-weight: 400;
+  letter-spacing: -0.08em;
+  line-height: 0.78;
+  text-wrap: balance;
+}
+
+.hero-title span {
+  display: block;
+  color: var(--rust);
+  font-style: italic;
+  letter-spacing: -0.09em;
+}
+
+.price-sigil {
+  display: grid;
+  min-width: 7.4rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(20, 17, 13, 0.55);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(244, 240, 231, 0.88), rgba(226, 214, 194, 0.74)),
+    linear-gradient(135deg, transparent 49%, rgba(20,17,13,0.28) 49.5% 50.5%, transparent 51%);
+  box-shadow: 0 1.2rem 3.5rem rgba(20, 17, 13, 0.16);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 3.1rem;
+  line-height: 1;
+  transform: rotate(-7deg);
+}
+
+.price-sigil span {
+  margin-bottom: -1.2rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+}
+
+.ink-button,
+.paper-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.ink-button {
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 0.85rem 2rem rgba(20, 17, 13, 0.18);
+}
+
+.paper-button {
+  background: rgba(244, 240, 231, 0.62);
+  color: var(--ink);
+}
+
+.ink-button:hover,
+.paper-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1.1rem 2.6rem rgba(20, 17, 13, 0.2);
+}
+
+.ink-button:focus-visible,
+.paper-button:focus-visible {
+  outline: 3px solid rgba(158, 61, 36, 0.35);
+  outline-offset: 3px;
+}
+
+.small-button { padding: 0.7rem 0.95rem; }
+.large-button { min-height: 3.5rem; padding: 0 1.35rem; }
+
+.hero-instrument {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 39rem);
+}
+
+.instrument-face {
+  position: relative;
+  min-height: 41rem;
+  overflow: hidden;
+  border: 1px solid rgba(20, 17, 13, 0.28);
+  background:
+    linear-gradient(90deg, rgba(20,17,13,0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(20,17,13,0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 18%, rgba(185, 140, 61, 0.25), transparent 34%),
+    rgba(244, 240, 231, 0.76);
+  background-size: 32px 32px, 32px 32px, auto, auto;
+  box-shadow: 0 2rem 5rem rgba(20, 17, 13, 0.18);
+}
+
+.instrument-face::before,
+.instrument-face::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid rgba(20, 17, 13, 0.22);
+  border-radius: 50%;
+}
+
+.instrument-face::before {
+  inset: 4.2rem 3.5rem auto 3.5rem;
+  aspect-ratio: 1;
+}
+
+.instrument-face::after {
+  left: 50%;
+  top: 7.4rem;
+  width: 12rem;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+}
+
+.instrument-topline {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(20, 17, 13, 0.22);
+  padding: 1rem 1.1rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.instrument-topline strong {
+  color: var(--rust);
+  font-size: 0.8rem;
+}
+
+.card-orbit {
+  position: absolute;
+  left: 50%;
+  top: 7rem;
+  width: 21rem;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  animation: slow-turn 28s linear infinite;
+}
+
+.card-orbit span {
+  --angle: calc(var(--i) * 72deg - 88deg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  width: 4.2rem;
+  height: 5.8rem;
+  place-items: center;
+  border: 1px solid rgba(20, 17, 13, 0.62);
+  background: rgba(244, 240, 231, 0.92);
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  box-shadow: 0 0.8rem 1.8rem rgba(20, 17, 13, 0.13);
+  transform: rotate(var(--angle)) translateY(-10.5rem) rotate(calc(var(--angle) * -1));
+}
+
+.card-orbit span:nth-child(2),
+.card-orbit span:nth-child(3) { color: var(--rust); }
+.card-orbit span:nth-child(4) { color: var(--club); }
+
+.report-slip {
+  position: relative;
+  z-index: 2;
+  margin: 9.4rem auto 0;
+  width: min(74%, 23rem);
+  border: 1px solid rgba(20, 17, 13, 0.42);
+  background: var(--paper);
+  padding: 1.2rem;
+  box-shadow: 0 1.5rem 3rem rgba(20, 17, 13, 0.16);
+  transform: rotate(1.8deg);
+}
+
+.slip-kicker {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(20, 17, 13, 0.56);
+}
+
+.slip-title {
+  margin-top: 0.7rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 4vw, 3.1rem);
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+}
+
+.slip-lines {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.48rem;
+}
+
+.slip-lines i {
+  display: block;
+  height: 1px;
+  background: rgba(20, 17, 13, 0.22);
+}
+
+.offer-list {
+  position: relative;
+  z-index: 2;
+  margin: 2.4rem 1.1rem 1.1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.offer-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  border: 1px solid rgba(20, 17, 13, 0.18);
+  background: rgba(244, 240, 231, 0.86);
+  padding: 0.95rem;
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--delay) both;
+}
+
+.offer-count {
+  font-size: 0.66rem;
+  font-weight: 900;
+  color: var(--rust);
+  letter-spacing: 0.18em;
+}
+
+.offer-list strong {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 1.16rem;
+  line-height: 1;
+}
+
+.offer-list small {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(20, 17, 13, 0.66);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+@keyframes slow-turn {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-orbit,
+  .offer-list li,
+  .hero-title,
+  .oracle-eyebrow,
+  .hero-instrument {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-title {
+    font-size: clamp(3.65rem, 19vw, 6rem);
+  }
+
+  .instrument-face {
+    min-height: 45rem;
+  }
+
+  .card-orbit {
+    width: 17rem;
+  }
+
+  .card-orbit span {
+    width: 3.4rem;
+    height: 4.8rem;
+    transform: rotate(var(--angle)) translateY(-8.5rem) rotate(calc(var(--angle) * -1));
+  }
+
+  .report-slip {
+    width: calc(100% - 2.2rem);
+  }
+}

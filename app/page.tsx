@@ -1,121 +1,151 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import type { Metadata } from "next";
-import { SeoShell } from "@/components/seo/SeoShell";
-import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { ReturningUserRedirect } from "@/components/seo/ReturningUserRedirect";
 
 export const metadata: Metadata = {
-  title: { absolute: "Cardology Pro: Find Your Birth Card & Read It as a Mirror" },
+  title: { absolute: "Cardology Pro Life Pattern Report — $29" },
   description:
-    "Find your Cardology birth card from your birthday, then read what it means — strengths, shadow, and pattern. Free calculator, all 52 cards, and compatibility.",
+    "Get your Cardology Pro Life Pattern Report for $29, including the report, one month of Daily Card Pattern Pro, the card comparison tool, daily mirror prompts, and journal access.",
   alternates: { canonical: "/" },
 };
+
+const offerItems = [
+  {
+    label: "Life Pattern Report",
+    detail: "A clear written mirror of your birth-card pattern, strengths, shadow, and timing language.",
+  },
+  {
+    label: "1 month Daily Card Pattern Pro",
+    detail: "Return each morning to the card pattern active in the day and how to work with it.",
+  },
+  {
+    label: "Card Comparison Tool",
+    detail: "Compare two people’s cards for attraction, friction, support, and growth themes.",
+  },
+  {
+    label: "Daily Mirror Prompt + Journal",
+    detail: "A practical reflection prompt and a private place to track what the pattern shows you.",
+  },
+];
+
+const cardStack = ["A♠", "7♥", "Q♦", "3♣", "9♠"];
 
 export default function Home() {
   return (
     <>
       <ReturningUserRedirect />
-      <SeoShell>
-        {/* Hero */}
-        <section className="pt-2">
-          <span className="eyebrow text-gold">Cardology</span>
-          <h1 className="display mt-2 text-balance text-4xl leading-[1.05] text-bone">
-            Find your birth card. Read it as a mirror, not a forecast.
-          </h1>
-          <p className="prose-reading mt-4 text-mist">
-            Your birthday maps to exactly one of the 52 playing cards. It&rsquo;s
-            deterministic — same birthday, same card, every time. Not a
-            prediction; a vocabulary for noticing how you already tend to
-            operate.
-          </p>
+      <main className="landing-oracle relative min-h-dvh overflow-hidden bg-[#f4f0e7] text-[#14110d]">
+        <div className="oracle-grid" aria-hidden="true" />
+        <div className="oracle-noise" aria-hidden="true" />
+
+        <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between border-b border-[#14110d]/15 px-5 py-4 sm:px-8 lg:px-10">
+          <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
+            Cardology Pro
+          </Link>
+          <nav className="hidden items-center gap-6 text-[0.66rem] uppercase tracking-[0.24em] text-[#14110d]/70 md:flex">
+            <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">Find Your Card</Link>
+            <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">Compare</Link>
+            <Link href="/journal" className="transition hover:text-[#14110d]">Journal</Link>
+          </nav>
+          <Link href="/onboarding" className="ink-button small-button">
+            Get the report
+          </Link>
+        </header>
+
+        <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-center gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-10 lg:py-14">
+          <div className="max-w-3xl">
+            <p className="oracle-eyebrow animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
+              deterministic 52-card mirror / limited launch offer
+            </p>
+
+            <h1 className="hero-title mt-5 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.08s_both]">
+              Cardology Pro <span>Life Pattern Report</span>
+            </h1>
+
+            <div className="mt-6 flex flex-wrap items-end gap-4 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.16s_both]">
+              <div className="price-sigil" aria-label="Price $29">
+                <span>$</span>29
+              </div>
+              <p className="max-w-xl text-pretty font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
+                A birth-card report built like a private field guide: pattern, shadow,
+                relationship language, daily prompts, and a month of Card Pattern Pro access.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.24s_both] sm:flex-row">
+              <Link href="/onboarding" className="ink-button large-button">
+                Start my $29 report <span aria-hidden="true">→</span>
+              </Link>
+              <Link href="/birth-card-calculator" className="paper-button large-button">
+                Find my card first
+              </Link>
+            </div>
+
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.32s_both]">
+              Not a forecast. Not vague vibes. Your birthday maps to one card every time — then the report turns that pattern into something you can actually notice, compare, and journal with.
+            </p>
+          </div>
+
+          <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Included in the $29 offer">
+            <div className="instrument-face">
+              <div className="instrument-topline">
+                <span>offer contains</span>
+                <strong>$29</strong>
+              </div>
+
+              <div className="card-orbit" aria-hidden="true">
+                {cardStack.map((card, index) => (
+                  <span key={card} style={{ "--i": index } as CSSProperties}>
+                    {card}
+                  </span>
+                ))}
+              </div>
+
+              <div className="report-slip">
+                <p className="slip-kicker">Life Pattern Report</p>
+                <p className="slip-title">Your card, read as a mirror.</p>
+                <div className="slip-lines" aria-hidden="true">
+                  <i />
+                  <i />
+                  <i />
+                </div>
+              </div>
+
+              <ul className="offer-list">
+                {offerItems.map((item, index) => (
+                  <li key={item.label} style={{ "--delay": `${0.28 + index * 0.08}s` } as CSSProperties}>
+                    <span className="offer-count">0{index + 1}</span>
+                    <span>
+                      <strong>{item.label}</strong>
+                      <small>{item.detail}</small>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
         </section>
 
-        {/* Calculator front-and-center */}
-        <section className="mt-7">
-          <BirthCardCalculator />
-        </section>
-
-        {/* Value props */}
-        <section className="mt-12">
-          <h2 className="eyebrow mb-3 text-gold">What you get</h2>
-          <ul className="space-y-3">
-            <Feature title="Your birth card, decoded">
-              Strengths, the shadow to watch, and the pattern in three positions —
-              balanced, under-expressed, and over-expressed.
-            </Feature>
-            <Feature title="No vibes, just math">
-              A deterministic system. The same birthday always returns the same
-              card — there&rsquo;s nothing to interpret in the calculation itself.
-            </Feature>
-            <Feature title="A mirror, not a forecast">
-              We don&rsquo;t predict events. We name the patterns you can examine,
-              work with, or set down.
-            </Feature>
-          </ul>
-        </section>
-
-        {/* Explore the system */}
-        <section className="mt-12">
-          <h2 className="eyebrow mb-3 text-gold">Explore the 52-card system</h2>
-          <div className="grid grid-cols-1 gap-2">
-            <Tile href="/birth-card-calculator" label="Birth Card Calculator" sub="Find your card from your birthday" />
-            <Tile href="/birth-card" label="All 52 Birth Cards" sub="Browse every card and its meaning" />
-            <Tile href="/cardology-compatibility" label="Compatibility" sub="How two birth cards connect" />
-            <Tile href="/what-is-cardology" label="What is Cardology?" sub="The 52-card system, explained" />
-            <Tile href="/birth-card-vs-ruling-card" label="Birth Card vs Ruling Card" sub="The two cards that define you" />
-            <Tile href="/cardology-agent-instructions" label="Shadow & Karma Guide" sub="Agent instructions for shadow, alignment, and karma patterns" />
+        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
+          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="oracle-eyebrow text-[#c8bca8]">why this offer works</p>
+              <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] tracking-[-0.03em] sm:text-5xl">
+                One report. Thirty days of pattern practice.
+              </h2>
+            </div>
+            <div className="grid gap-px overflow-hidden border border-[#f4f0e7]/20 bg-[#f4f0e7]/20 sm:grid-cols-2">
+              {offerItems.map((item) => (
+                <article key={item.label} className="bg-[#14110d] p-6">
+                  <h3 className="font-serif text-2xl tracking-[-0.02em]">{item.label}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#d7cdbc]">{item.detail}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
-
-        {/* Suits */}
-        <section className="mt-12">
-          <h2 className="eyebrow mb-3 text-gold">Four suits, four instincts</h2>
-          <ul className="prose-reading space-y-1.5 text-mist">
-            <li><span className="text-[#e0654a]">♥ Hearts</span> — relationships &amp; emotion</li>
-            <li><span className="text-[#d9b26a]">♦ Diamonds</span> — values &amp; resources</li>
-            <li><span className="text-[#7fae8f]">♣ Clubs</span> — mind &amp; communication</li>
-            <li><span className="text-[#7b6cf0]">♠ Spades</span> — work, will &amp; transformation</li>
-          </ul>
-        </section>
-
-        {/* App CTA */}
-        <section className="card-surface mt-12 rounded-2xl p-6 text-center">
-          <p className="font-serif text-lg text-bone">Want a daily reading?</p>
-          <p className="mt-1 text-sm text-faint">
-            Mirror turns your cards into a reflection you can return to each day.
-          </p>
-          <Link
-            href="/onboarding"
-            className="mt-4 inline-block rounded-full bg-foil px-6 py-3 font-serif text-base text-ink transition active:scale-[0.99]"
-          >
-            Start with Mirror →
-          </Link>
-        </section>
-      </SeoShell>
+      </main>
     </>
-  );
-}
-
-function Feature({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <li className="card-surface rounded-2xl p-4">
-      <p className="font-serif text-base text-bone">{title}</p>
-      <p className="mt-1 text-sm leading-relaxed text-mist">{children}</p>
-    </li>
-  );
-}
-
-function Tile({ href, label, sub }: { href: string; label: string; sub: string }) {
-  return (
-    <Link
-      href={href}
-      className="card-surface flex items-center justify-between rounded-xl px-4 py-3 transition hover:border-gold/40"
-    >
-      <span>
-        <span className="block font-serif text-base text-bone">{label}</span>
-        <span className="block text-xs text-faint">{sub}</span>
-      </span>
-      <span className="text-gold">→</span>
-    </Link>
   );
 }
