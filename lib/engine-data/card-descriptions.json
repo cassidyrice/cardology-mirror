@@ -310,5 +310,109 @@
     "shadow": "You confuse your perspective with universal truth. You think your thinking is the right thinking. You dismiss other perspectives as inferior. The pattern: you're commanding but not listening. You make mental judgments unilaterally. People follow your thinking out of respect for your authority, not genuine agreement.",
     "life_direction": "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
     "algorithm_gateway": "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to be intellectually wrong, to change your mind, to learn from people you're supposed to be teaching. This rewires you from authoritarian-certainty into collaborative-thinking."
+  },
+  "A♥": {
+    "title": "The Emotional Pioneer",
+    "core_identity": "You're the emotional initiator. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
+    "gifts": "- Courage to initiate genuine emotional connection\n- Openness that invites others into real vulnerability\n- Natural warmth and emotional directness\n- Capacity to start relationships from honesty",
+    "shadow": "You confuse intensity with intimacy. When you fear abandonment, you flood others with need before they can leave—or you weaponize your feelings, using drama and emotional pressure to control. The pattern: you reach so hard for connection that you overwhelm it. Your need arrives before the relationship can hold it, and people feel managed rather than met.",
+    "life_direction": "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to sit in the discomfort of an unanswered reach, to feel the fear of abandonment without acting on it. This rewires you from need-flooding into open-handed connection."
+  },
+  "2♥": {
+    "title": "The Loving Partner",
+    "core_identity": "You're the emotional partner. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
+    "gifts": "- Genuine diplomacy and emotional attunement\n- Ability to balance your needs with another's\n- Talent for creating mutual understanding and partnership\n- Sensitivity to what a relationship actually needs",
+    "shadow": "You lose yourself in the people you love. Terrified there's no real \"you\" underneath, you shape-shift to please—or you manage everyone's emotions like a hostage situation, sacrificing yourself and then quietly resenting their ingratitude. The pattern: you give until there's nothing left, then wonder why no one sees you. Your harmony is built on self-erasure.",
+    "life_direction": "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to state a need that might cause friction, to risk disappointing someone you love. This rewires you from self-erasing peacekeeper into a real partner with a self."
+  },
+  "3♥": {
+    "title": "The Creative Heart",
+    "core_identity": "You're the emotional artist. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
+    "gifts": "- Emotional depth expressed through creativity\n- Range and versatility in how you connect\n- Ability to bring vitality and play to relationships\n- Comfort with emotional complexity and nuance",
+    "shadow": "Your love of variety becomes a way to never land. You keep exes on the back burner and sabotage closeness by discovering \"incompatibilities\" right when vulnerability is required—or you love-bomb a new connection, then find its fatal flaw the moment depth is asked of you. The pattern: you mistake the thrill of the new for intimacy, and scatter your heart so widely that none of it has to be risked.",
+    "life_direction": "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay through the unglamorous middle of one relationship, past the point where you'd normally find the flaw. This rewires you from emotional novelty-seeker into someone capable of depth."
+  },
+  "4♥": {
+    "title": "The Emotional Foundation Builder",
+    "core_identity": "You're the emotional architect. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
+    "gifts": "- Building reliable emotional foundations and trust\n- Consistency and steadiness in relationships\n- Ability to make others feel safe and held\n- Loyalty and follow-through in love",
+    "shadow": "You confuse control with security. You keep everyone in scripted roles and call spontaneity a threat—or you pathologize authentic feeling as \"unhealthy,\" maintaining a controlled emotional museum instead of a living home. The pattern: you build such a fortress of stability that real, messy emotion can't get in. You're safe, and slowly suffocating, and so is everyone you love.",
+    "life_direction": "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let an emotional moment be messy and unscripted, to tolerate the insecurity of not controlling it. This rewires you from emotional warden into a builder of living, breathing trust."
+  },
+  "5♥": {
+    "title": "The Restless Heart",
+    "core_identity": "You're the emotional explorer. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
+    "gifts": "- Adaptability through emotional change and transition\n- Bringing freshness and movement to relationships\n- Understanding that love deepens through transformation\n- Openness to growth rather than stasis",
+    "shadow": "Your need for freedom becomes a way to never stay. You collect relationships and vanish the moment intimacy requires standing still—or you dress up emotional tourism as \"freedom\" and \"polyamory,\" using the language of growth to avoid commitment. The pattern: you mistake motion for aliveness, and leave before anything can ask something of you. The variety is real; the depth never arrives.",
+    "life_direction": "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to remain present through the part of a relationship that feels like confinement. This rewires you from emotional escape-artist into someone who can grow in place."
+  },
+  "6♥": {
+    "title": "The Devoted Caregiver",
+    "core_identity": "You're the emotional caretaker. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
+    "gifts": "- Integrating genuine care with healthy boundaries\n- Creating harmony and emotional safety for others\n- Devotion and willingness to show up for people\n- Capacity to serve from a full cup, not an empty one",
+    "shadow": "Your care curdles into martyrdom. You silence your own needs for a false peace, harboring resentment that grows cancerous—or you perform \"the nice one,\" swallowing broken glass to avoid conflict while quietly building up emotional debt. The pattern: you give to be needed, then resent the people who needed you. Your harmony is bought with your own erasure, and the bill always comes due.",
+    "life_direction": "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let a conflict happen instead of smoothing it over, to disappoint someone rather than self-erase. This rewires you from resentful martyr into someone who serves from real fullness."
+  },
+  "7♥": {
+    "title": "The Reflective Heart",
+    "core_identity": "You're the emotional contemplative. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
+    "gifts": "- Wisdom and insight into the nature of love\n- Ability to see beneath romantic illusion\n- Emotional reflection and self-awareness\n- Seeking what's true over what's comfortable",
+    "shadow": "You use understanding as a place to hide. You intellectualize feeling away to avoid the mess of real connection—turning emotional analysis into armor, staying in your head while calling it \"authenticity.\" The pattern: you know everything about love and risk none of it. Your insight keeps you at a safe, lonely distance, narrating intimacy instead of having it.",
+    "life_direction": "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay in a feeling without explaining it, to be vulnerable before you've understood it. This rewires you from detached analyst into a participant in your own emotional life."
+  },
+  "8♥": {
+    "title": "The Emotional Powerhouse",
+    "core_identity": "You're the emotional force. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
+    "gifts": "- Commanding emotional situations with strength and clarity\n- Charisma and emotional presence\n- Leading with confident compassion\n- Ability to steady and reassure others",
+    "shadow": "Your power over feeling becomes a way to avoid your own. You shut down and use logic as a shield against the vulnerability real strength requires—or you flip the other way and turn possessive and controlling, wielding emotional power to dominate others into compliance. The pattern: you'd rather command a feeling than be moved by one. Control is your defense against the risk of being affected.",
+    "life_direction": "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let yourself be emotionally affected, to surrender control of a feeling. This rewires you from controlling powerhouse into someone whose strength includes tenderness."
+  },
+  "9♥": {
+    "title": "The Compassionate Idealist",
+    "core_identity": "You're the universal lover. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
+    "gifts": "- Integrating compassion with hard-won wisdom\n- A capacity for love that extends beyond the self\n- Knowing what is yours to carry and what to release\n- Emotional generosity toward people and causes",
+    "shadow": "Your compassion turns into self-erasing sainthood. You drown in collapsed idealism, emotionally martyred while secretly resenting the people you're \"helping\"—or you save everyone but yourself and call burnout sainthood. The pattern: you give the love you can't accept, carry the pain that isn't yours, and call it virtue. Underneath the helping is a quiet refusal to tend your own wound.",
+    "life_direction": "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to receive care instead of only giving it, to put something down. This rewires you from burned-out savior into someone who loves from wholeness rather than depletion."
+  },
+  "10♥": {
+    "title": "The Community Heart",
+    "core_identity": "You're the emotional connector. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
+    "gifts": "- Expanding love and belonging across a community\n- Creating warmth and inclusion at scale\n- Holding many relationships with genuine presence\n- Making others feel part of something",
+    "shadow": "Your gift for collective care becomes an obligation that swallows you. You get enmeshed in family duty, overwhelmed by emotional baggage you're carrying for everyone—or you appoint yourself responsible for everyone's well-being and run guilt-based systems disguised as care. The pattern: you confuse being needed by many with being loved, and end up holding so much that you can't feel your own heart in the crowd.",
+    "life_direction": "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let someone in the group carry their own weight, to step back from the role of emotional hub. This rewires you from over-responsible caretaker into a genuine, unburdened member of your people."
+  },
+  "J♥": {
+    "title": "The Romantic Messenger",
+    "core_identity": "You're the emotional idealist. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
+    "gifts": "- Bringing fresh perspective and inspiration to connection\n- Youthful openness and emotional creativity\n- Innovating how relationships can work\n- Reawakening feeling and possibility in others",
+    "shadow": "Your idealism becomes a way to avoid the real thing. You stay emotionally immature, projecting fantasy onto people rather than meeting who they actually are—spinning romantic narratives that collapse the instant depth is required. The pattern: you're in love with the story of love. You'd rather keep the beautiful fantasy intact than risk the ordinary, demanding reality of an actual person.",
+    "life_direction": "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay with a relationship after the fantasy breaks, to love the real person in front of you. This rewires you from romantic dreamer into someone capable of mature connection."
+  },
+  "Q♥": {
+    "title": "The Devoted Nurturer",
+    "core_identity": "You're the emotional nurturer. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
+    "gifts": "- Nurturing others through authentic, intuitive presence\n- Deep emotional attunement and empathy\n- Embodied emotional wisdom\n- Making others feel genuinely seen and held",
+    "shadow": "Your attunement was forged in vigilance, and it can turn against you. You read the room while sacrificing your own needs, scanning for threat the way you learned to as a child—or you tip into emotional tyranny, smothering with control and building guilt-debt systems masked as love. The pattern: you give care so total that it becomes a leash. Your love comes with an invisible invoice, and the people you nurture feel both held and owned.",
+    "life_direction": "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let someone care for you, to drop the vigilance and need nothing in return. This rewires you from hypervigilant caretaker into a nurturer who is also nurtured."
+  },
+  "K♥": {
+    "title": "The Compassionate King",
+    "core_identity": "You're the emotional sovereign. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
+    "gifts": "- Commanding emotional authority with depth and care\n- Leading others through feeling with steadiness\n- Mature, grounded emotional presence\n- Holding space with both strength and compassion",
+    "shadow": "You rule love from a safe distance. You stay emotionally distant, governing from analytical remove while avoiding vulnerability entirely—or you swing into possessiveness and tyranny, using your authority to control how others feel. The pattern: you'll lead an emotional situation but won't be exposed by one. Mastery becomes a throne you hide behind, and the people closest to you feel managed by a king they can't actually reach.",
+    "life_direction": "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
+    "algorithm_gateway": "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to be vulnerable with someone you lead, to step off the throne and be affected. This rewires you from distant sovereign into a king whose strength is his openness."
   }
 }
