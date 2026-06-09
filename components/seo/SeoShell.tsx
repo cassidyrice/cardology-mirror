@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { SITE_NAME, APP_URL } from "@/lib/site";
+
 // Shared content shell for public SEO pages: cosmic theme, top bar, readable
 // prose column, and an internal-link footer. Server component (no client JS).
 export function SeoShell({
@@ -15,14 +17,22 @@ export function SeoShell({
       <div className="relative z-10 mx-auto flex min-h-dvh max-w-md flex-col px-5 pb-16 pt-6">
         <header className="mb-6 flex items-center justify-between">
           <Link href="/" className="eyebrow text-gold">
-            Cardology Pro
+            {SITE_NAME}
           </Link>
-          <Link
-            href="/birth-card-calculator"
-            className="rounded-full border border-white/15 px-3 py-1 text-[0.65rem] uppercase tracking-wider2 text-bone transition hover:border-gold hover:text-gold"
-          >
-            Find your card
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/birth-card-calculator"
+              className="rounded-full border border-white/10 px-3 py-1 text-[0.6rem] uppercase tracking-widest text-mist transition hover:border-gold hover:text-gold"
+            >
+              Search
+            </Link>
+            <a
+              href={APP_URL}
+              className="rounded-full bg-gold px-3 py-1 text-[0.6rem] uppercase tracking-widest text-ink transition active:scale-[0.98]"
+            >
+              App
+            </a>
+          </div>
         </header>
 
         {crumb && crumb.length > 0 && (
@@ -59,7 +69,7 @@ function SeoFooter() {
         <li><Link href="/52-card-astrology-explained" className="hover:text-mist">52-Card Astrology</Link></li>
         <li><Link href="/birth-card-vs-ruling-card" className="hover:text-mist">Birth vs Ruling Card</Link></li>
         <li><Link href="/cardology-agent-instructions" className="hover:text-mist">Shadow & Karma Guide</Link></li>
-        <li><Link href="/" className="hover:text-mist">Open the App</Link></li>
+        <li><a href={APP_URL} className="hover:text-mist">Open the App</a></li>
       </ul>
       <p className="mt-6 text-xs leading-relaxed text-faint/80">
         Calculated from the deterministic Cardology system. Same birthday, same

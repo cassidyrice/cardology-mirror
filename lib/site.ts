@@ -5,6 +5,10 @@ export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || "https://cardologypro.com"
 ).replace(/\/$/, "");
 
+export const APP_URL = (
+  process.env.NEXT_PUBLIC_APP_URL || "https://app.cardologypro.com"
+).replace(/\/$/, "");
+
 export const SITE_NAME = "Cardology Pro";
 
 export const SITE_TAGLINE =

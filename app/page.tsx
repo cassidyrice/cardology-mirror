@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { ReturningUserRedirect } from "@/components/seo/ReturningUserRedirect";
+import { APP_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Cardology Pro Life Pattern Report — $29" },
@@ -46,11 +47,11 @@ export default function Home() {
           <nav className="hidden items-center gap-6 text-[0.66rem] uppercase tracking-[0.24em] text-[#14110d]/70 md:flex">
             <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">Find Your Card</Link>
             <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">Compare</Link>
-            <Link href="/journal" className="transition hover:text-[#14110d]">Journal</Link>
+            <a href={`${APP_URL}/journal`} className="transition hover:text-[#14110d]">Journal</a>
           </nav>
-          <Link href="/onboarding" className="ink-button small-button">
+          <a href={`${APP_URL}/onboarding`} className="ink-button small-button">
             Get the report
-          </Link>
+          </a>
         </header>
 
         <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-center gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:px-10 lg:py-14">
@@ -74,9 +75,9 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.24s_both] sm:flex-row">
-              <Link href="/onboarding" className="ink-button large-button">
+              <a href={`${APP_URL}/onboarding`} className="ink-button large-button">
                 Start my $29 report <span aria-hidden="true">→</span>
-              </Link>
+              </a>
               <Link href="/birth-card-calculator" className="paper-button large-button">
                 Find my card first
               </Link>
