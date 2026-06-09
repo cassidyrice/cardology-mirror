@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
+import { PlayingCard } from "../PlayingCard";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -70,40 +71,52 @@ function PairResult({ a, b }: { a: string; b: string }) {
   const pa = parseCard(a);
   const pb = parseCard(b);
   const sameSuit = pa?.suit === pb?.suit;
+
   return (
-    <div className="mt-6 animate-fade-up">
-      <div className="flex items-center justify-center gap-6">
-        <CardChip code={a} />
-        <span className="text-faint">meets</span>
-        <CardChip code={b} />
+    <div className="mt-10 animate-fade-up">
+      <div className="flex items-center justify-center gap-2">
+        <div className="-rotate-6 translate-x-2">
+          <PlayingCard code={a} size="md" active />
+        </div>
+        <div className="z-10 bg-cosmos/80 px-2 py-1 text-xs uppercase tracking-widest text-gold backdrop-blur-sm">
+          meets
+        </div>
+        <div className="rotate-6 -translate-x-2">
+          <PlayingCard code={b} size="md" active />
+        </div>
       </div>
-      <p className="mt-4 text-center text-sm text-mist">
-        {sameSuit
-          ? `Same suit — ${pa?.domain.toLowerCase()}. You share a first instinct and speak a similar language.`
-          : `Different suits — ${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}. You lead from different instincts.`}
-      </p>
-      <p className="mt-4 text-center text-sm">
-        <Link href="/bonds" className="rounded-full bg-foil px-5 py-2 font-serif text-ink">
+
+      <div className="mt-8 text-center">
+        <p className="font-serif text-base leading-relaxed text-bone">
+          {sameSuit
+            ? `Same suit · ${pa?.domain.toLowerCase()}`
+            : `${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}`}
+        </p>
+        <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-mist">
+          {sameSuit
+            ? "You share a first instinct and speak a similar language. Communication tends to feel familiar."
+            : "You lead from different instincts. This can create a powerful balance or a recurring friction depending on awareness."}
+        </p>
+      </div>
+
+      <div className="mt-8 flex flex-col items-center gap-4">
+        <Link
+          href="/onboarding"
+          className="rounded-full bg-foil px-8 py-3 font-serif text-base text-ink transition active:scale-[0.99]"
+        >
           See the full connection →
         </Link>
-      </p>
-      <p className="mt-3 text-center text-xs text-faint">
-        The full reading shows where two patterns share a language and where they pull.
-      </p>
+        <p className="max-w-[200px] text-center text-[0.65rem] uppercase tracking-wider text-faint">
+          Open the bonds reading to see where the patterns share a language.
+        </p>
+      </div>
     </div>
   );
 }
 
 function CardChip({ code }: { code: string }) {
-  const p = parseCard(code);
-  const slug = slugFor(code);
-  const inner = (
-    <span className="flex flex-col items-center">
-      <span className="font-serif text-3xl" style={{ color: p?.color }}>{code}</span>
-      <span className="mt-1 text-xs text-faint">{p?.label}</span>
-    </span>
-  );
-  return slug ? <Link href={`/birth-card/${slug}`}>{inner}</Link> : inner;
+  // chip logic is now handled by PlayingCard, but keeping the helper if needed elsewhere
+  return null;
 }
 
 function slugFor(code: string): string | null {

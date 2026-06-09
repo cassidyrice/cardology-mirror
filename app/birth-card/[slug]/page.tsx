@@ -174,6 +174,25 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         {card.lifeDirection && <p>{card.lifeDirection}</p>}
       </Section>
 
+      {card.karma && (
+        <Section title="Karma connections">
+          <p className="mb-4">
+            In the Life Spread, the {card.label} has two primary karma connections. These are cards that represent shared energy, past-life patterns, or lessons the {card.label} is here to integrate.
+          </p>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {card.karma.environment && (
+              <KarmaLink label="Lifetime Gift" code={card.karma.environment} />
+            )}
+            {card.karma.displacement && (
+              <KarmaLink label="Lifetime Challenge" code={card.karma.displacement} />
+            )}
+          </div>
+          <p className="mt-4 text-sm text-faint">
+            The <strong>Lifetime Gift (Environment)</strong> represents a natural blessing or ease you bring into this life. The <strong>Lifetime Challenge (Displacement)</strong> represents a lesson or energy you are here to mature and integrate.
+          </p>
+        </Section>
+      )}
+
       {dates.length > 0 && (
         <Section title={`${card.label} birth dates`}>
           <p>The {card.label} appears for these birthdays in this deterministic Cardology system:</p>
@@ -312,6 +331,26 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
     </SeoShell>
+  );
+}
+
+function KarmaLink({ label, code }: { label: string; code: string }) {
+  const seo = allCardSeo().find((c) => c.code === code);
+  if (!seo) return null;
+  return (
+    <Link
+      href={`/birth-card/${seo.slug}`}
+      className="card-surface flex items-center gap-4 px-4 py-3 transition hover:border-gold/40"
+    >
+      <span className="font-serif text-3xl" style={{ color: seo.color }}>
+        {seo.code}
+      </span>
+      <div className="flex flex-col">
+        <span className="eyebrow text-[0.6rem] text-gold">{label}</span>
+        <span className="font-serif text-base text-bone">{seo.label}</span>
+      </div>
+      <span className="ml-auto text-gold/50">→</span>
+    </Link>
   );
 }
 

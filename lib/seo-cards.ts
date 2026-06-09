@@ -61,6 +61,7 @@ export interface CardSeo {
   under: string;
   sweetSpot: string;
   over: string;
+  karma?: { environment: string | null; displacement: string | null };
 }
 
 export interface BirthdateSeo {
@@ -90,6 +91,9 @@ export function getCardSeo(c: string): CardSeo | null {
   const d = DESC[c];
   const lens = LENS[c];
   if (!lens) return null;
+
+  const karmaRaw = cardology.getEnvironmentDisplacement(c, 1);
+
   return {
     code: c,
     slug: slugFor(p.rank, p.suit),
@@ -107,6 +111,7 @@ export function getCardSeo(c: string): CardSeo | null {
     under: lens.under,
     sweetSpot: lens.sweet_spot,
     over: lens.over,
+    karma: karmaRaw ? { environment: karmaRaw.environment, displacement: karmaRaw.displacement } : undefined,
   };
 }
 

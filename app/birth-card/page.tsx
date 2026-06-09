@@ -19,7 +19,7 @@ export default function BirthCardIndex() {
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth Cards", href: "/birth-card" }]}>
       <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Cards</h1>
-      <p className="prose-reading mb-8 text-mist">
+      <p className="prose-reading mb-6 text-mist">
         Every birthday maps to exactly one of the 52 playing cards — your{" "}
         <strong>birth card</strong>. It&rsquo;s a fixed starting vocabulary for how you
         tend to operate. Pick a card below, or{" "}
@@ -29,24 +29,47 @@ export default function BirthCardIndex() {
         .
       </p>
 
-      <div className="space-y-10">
+      <nav className="mb-10 flex flex-wrap gap-2 text-[0.65rem] uppercase tracking-wider2">
         {groups.map((g) => (
-          <section key={g.suit}>
-            <h2 className="eyebrow mb-3 text-gold">
+          <a
+            key={g.suit}
+            href={`#${g.suit}`}
+            className="rounded-full border border-white/10 px-3 py-1 text-faint transition hover:border-gold hover:text-gold"
+          >
+            {SUIT_GLYPHS[g.suit]} {g.suit}
+          </a>
+        ))}
+      </nav>
+
+      <div className="space-y-12">
+        {groups.map((g) => (
+          <section key={g.suit} id={g.suit} className="scroll-mt-10">
+            <h2 className="eyebrow mb-4 text-gold">
               {SUIT_GLYPHS[g.suit]} {cap(g.suit)} · {g.domain}
             </h2>
-            <ul className="grid grid-cols-1 gap-2">
+            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {g.cards.map((c) => (
                 <li key={c.slug}>
                   <Link
                     href={`/birth-card/${c.slug}`}
-                    className="card-surface flex items-baseline justify-between rounded-xl px-4 py-3 transition hover:border-gold/40"
+                    className="card-surface group relative flex aspect-[2.5/3.5] flex-col items-center justify-center overflow-hidden p-4 text-center transition-all hover:border-gold/50 hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
                   >
-                    <span className="font-serif text-base text-bone">
-                      <span style={{ color: c.color }}>{c.code}</span> {c.label}
+                    <div
+                      className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-10"
+                      style={{
+                        background: `radial-gradient(circle at 50% 50%, ${c.color}, transparent 70%)`,
+                      }}
+                    />
+                    <span className="font-serif text-4xl leading-none" style={{ color: c.color }}>
+                      {c.code}
+                    </span>
+                    <span className="mt-2 block font-serif text-sm text-bone">
+                      {c.label}
                     </span>
                     {c.title && (
-                      <span className="text-xs text-faint">{c.title}</span>
+                      <span className="mt-0.5 block text-[0.6rem] uppercase tracking-wider text-faint">
+                        {c.title}
+                      </span>
                     )}
                   </Link>
                 </li>

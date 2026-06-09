@@ -1,0 +1,36 @@
+# Cardology Pro (Full Context)
+
+This file provides the complete structural map and core knowledge for Cardology Pro, intended for AI agents and LLMs.
+
+## Knowledge Base
+
+### The 52-Card Suits
+- **Hearts (♥)**: Emotional domain, relationships, affection, and the inner child.
+- **Clubs (♣)**: Mental domain, ideas, communication, strategy, and knowledge.
+- **Diamonds (♦)**: Material domain, values, resources, security, and desire.
+- **Spades (♠)**: Work, discipline, health, transformation, and spiritual maturity.
+
+### The Ranks
+- **Aces**: Initiation, impulse, new beginnings.
+- **Twos**: Partnership, balance, exchange.
+- **Threes**: Creativity, choice, uncertainty.
+- **Fours**: Foundation, structure, stability.
+- **Fives**: Freedom, change, restlessness.
+- **Sixes**: Responsibility, recalibration, peace.
+- **Sevens**: Faith, refinement, inner testing.
+- **Eights**: Power, influence, mastery.
+- **Nines**: Completion, release, universal love.
+- **Tens**: Success, public expression, full manifestation.
+- **Jacks**: Youthful mastery, experimentation, cleverness.
+- **Queens**: Magnetic intelligence, nurturance, inner authority.
+- **Kings**: Command, leadership, mature stewardship.
+
+## Programmatic Access
+The site provides a deterministic engine for Cardology calculations.
+- Sitemap: [https://cardologypro.com/sitemap.xml](https://cardologypro.com/sitemap.xml)
+- RSS: N/A
+
+## Specific Card Meanings
+For detailed interpretations of any of the 52 cards, refer to:
+`https://cardologypro.com/birth-card/[card-slug]`
+Example: `https://cardologypro.com/birth-card/8-of-spades`

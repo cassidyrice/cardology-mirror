@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
+import { PlayingCard } from "../PlayingCard";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -92,35 +93,45 @@ export function BirthCardCalculator() {
 function ResultCard({ result }: { result: Result }) {
   const bc = parseCard(result.birthCard);
   const slug = slugOf(result.birthCard);
+
   return (
-    <div className="mt-6 animate-fade-up">
-      <p className="eyebrow text-faint">Your birth card</p>
-      <div className="mt-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: bc?.color }}>
-          {result.birthCard}
-        </span>
-        <span className="font-serif text-xl text-bone">{bc?.label}</span>
+    <div className="mt-8 animate-fade-up">
+      <p className="eyebrow mb-4 text-center text-faint">Your birth card</p>
+
+      <div className="flex flex-col items-center gap-6">
+        <PlayingCard
+          code={result.birthCard}
+          size="lg"
+          active
+          glow
+          float
+          className="scale-110"
+        />
+
+        <div className="text-center">
+          <p className="font-serif text-2xl text-bone">{bc?.label}</p>
+          {result.rulingCards.length > 0 && (
+            <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-faint">
+              <span className="uppercase tracking-widest text-gold/60">Ruling:</span>
+              {result.rulingCards.map((c) => (
+                <span key={c} className="flex items-center gap-1.5">
+                  <span style={{ color: parseCard(c)?.color }}>{c}</span>
+                  {parseCard(c)?.label}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {slug && (
+          <Link
+            href={`/birth-card/${slug}`}
+            className="mt-2 inline-block rounded-full border border-gold/30 px-6 py-2.5 font-serif text-sm text-gold transition hover:border-gold hover:bg-gold/5"
+          >
+            Read the {bc?.label} meaning →
+          </Link>
+        )}
       </div>
-      {result.rulingCards.length > 0 && (
-        <p className="mt-2 text-sm text-faint">
-          Planetary Ruling Card:{" "}
-          {result.rulingCards.map((c, i) => (
-            <span key={c}>
-              {i > 0 && " · "}
-              <span style={{ color: parseCard(c)?.color }}>{c}</span>{" "}
-              {parseCard(c)?.label}
-            </span>
-          ))}
-        </p>
-      )}
-      {slug && (
-        <Link
-          href={`/birth-card/${slug}`}
-          className="mt-4 inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold transition hover:border-gold"
-        >
-          Read the {bc?.label} meaning →
-        </Link>
-      )}
     </div>
   );
 }
