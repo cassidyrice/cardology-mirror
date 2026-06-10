@@ -27,12 +27,14 @@ export const metadata: Metadata = {
     title: "Cardology Pro — Your Birth Card, as a Mirror",
     description:
       "Find your Cardology birth card and read it as a mirror, not a forecast. Free calculator, 52-card meanings, and compatibility.",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cardology Pro — Your Birth Card, as a Mirror",
     description:
       "Find your Cardology birth card and read it as a mirror, not a forecast.",
+    images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
 };

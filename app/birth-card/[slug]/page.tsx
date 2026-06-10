@@ -11,6 +11,9 @@ import {
   cardBySlug,
   cardMeta,
   dateMeta,
+  neighborDates,
+  sameCardDates,
+  zodiacFor,
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
@@ -35,8 +38,14 @@ export async function generateMetadata({
       title,
       description,
       alternates: { canonical: `/birth-card/${card.slug}` },
-      openGraph: { title, description, url: `/birth-card/${card.slug}`, type: "article" },
-      twitter: { card: "summary", title, description },
+      openGraph: {
+        title,
+        description,
+        url: `/birth-card/${card.slug}`,
+        type: "article",
+        images: [{ url: `/og/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} birth card` }],
+      },
+      twitter: { card: "summary_large_image", title, description, images: [`/og/${card.slug}.png`] },
     };
   }
 
@@ -47,8 +56,14 @@ export async function generateMetadata({
       title,
       description,
       alternates: { canonical: `/birth-card/${date.slug}` },
-      openGraph: { title, description, url: `/birth-card/${date.slug}`, type: "article" },
-      twitter: { card: "summary", title, description },
+      openGraph: {
+        title,
+        description,
+        url: `/birth-card/${date.slug}`,
+        type: "article",
+        images: [{ url: `/og/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.label} birth card: ${date.card.label}` }],
+      },
+      twitter: { card: "summary_large_image", title, description, images: [`/og/${date.card.slug}.png`] },
     };
   }
 
@@ -105,7 +120,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <span className="eyebrow text-faint">{card.suitDomain}</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">
-        {card.label} Birth Card Meaning
+        {card.label} Birth Card Meaning{" "}
         {card.title && <span className="block text-lg text-gold">{card.title}</span>}
       </h1>
       <p className="prose-reading mt-3 text-mist">
@@ -248,11 +263,19 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
 function BirthdatePage({ date }: { date: BirthdateSeo }) {
   const card = date.card;
+  const ruling = date.rulingCard;
+  const zodiac = zodiacFor(date.month, date.day);
+  const { prev, next } = neighborDates(date);
+  const shared = sameCardDates(date);
+
   const faqs = [
-    { q: `What is the birth card for ${date.label}?`, a: `The birth card for ${date.label} is ${card.label}.` },
+    { q: `What is the birth card for ${date.label}?`, a: `The birth card for ${date.label} is ${card.label}${card.title ? `, known as ${card.title}` : ""}.` },
+    { q: `What is the ruling card for ${date.label}?`, a: ruling
+        ? `The planetary ruling card for ${date.label} is ${ruling.label}. ${date.label} falls in ${zodiac.sign}, ruled by ${zodiac.planet}, and that planetary position is what selects ${ruling.label} as the ruling card for this birthday.`
+        : `${date.label} births carry the ${card.label} as both birth card and primary expression. Use the calculator for the complete context.` },
     { q: `What does ${card.label} mean for a ${date.label} birthday?`, a: `${card.label} points to ${card.suitDomain.toLowerCase()} and the pattern of ${rankTheme(card.rank).toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
-    { q: `Is the ${date.label} birth card the same every year?`, a: `Yes. In this Cardology system, the birth card is calculated from month and day, so ${date.label} maps to ${card.label} every year.` },
-    { q: `What is the ruling card for ${date.label}?`, a: date.rulingCard ? `The primary ruling card shown here is ${date.rulingCard.label}.` : `Use the calculator for the complete ruling-card context.` },
+    { q: `Is the ${date.label} birth card the same every year?`, a: `Yes. The birth card is calculated from month and day only, so ${date.label} maps to ${card.label} every year, for every birth year.` },
+    { q: `What zodiac sign is ${date.label}?`, a: `${date.label} falls in ${zodiac.sign}. In Cardology, the sign matters because its ruling planet, ${zodiac.planet}, determines which card in the ${card.label}'s life spread becomes the planetary ruling card.` },
   ];
 
   const jsonLd = [
@@ -284,7 +307,11 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </div>
       <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
       <p className="prose-reading mt-3 text-mist">
-        If your birthday is {date.label}, your Cardology birth card is the {card.label}. This page explains the birthday mapping, the core meaning of the card, the ruling-card layer, and how to use the pattern for self-reflection.
+        If your birthday is {date.label}, your Cardology birth card is the {card.label}
+        {card.title ? `, ${card.title}` : ""}. {date.label} sits in {zodiac.sign}, so this birthday
+        carries a second layer: {zodiac.planet} selects {ruling ? `the ${ruling.label}` : "a planetary ruling card"} as
+        the lens the {card.label} expresses through. This page covers both layers and what makes a {date.label} birthday
+        distinct from the other {card.label} dates.
       </p>
 
       <Section title="Birthday card meaning">
@@ -302,24 +329,49 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         </div>
       </Section>
 
-      <Section title="Ruling card layer">
-        {date.rulingCard ? (
+      <Section title={`The ${zodiac.sign} layer: why ${date.label} differs from other ${card.label} birthdays`}>
+        <p>
+          Several birthdays share the {card.label} birth card, but they do not share a ruling card. The ruling card
+          is selected by the birthday&rsquo;s zodiac position: {date.label} falls in {zodiac.sign}, ruled by {zodiac.planet},
+          the planet of {zodiac.planetMeaning}. That planetary position in the {card.label}&rsquo;s life spread is what
+          singles out this birthday&rsquo;s expression.
+        </p>
+        {ruling && (
           <p>
-            The primary ruling card shown for {date.label} is <Link href={`/birth-card/${date.rulingCard.slug}`} className="text-gold underline underline-offset-4">{date.rulingCard.label}</Link>. In a full reading, the birth card describes the core archetype while the ruling card can color style, personality, attraction, and day-to-day expression.
+            For {date.label}, that makes <Link href={`/birth-card/${ruling.slug}`} className="text-gold underline underline-offset-4">{ruling.label}</Link>{ruling.title ? ` (${ruling.title})` : ""} the primary ruling card. The birth card is the engine; the ruling card is the steering. A {date.label} {card.label} tends to express the core pattern through {ruling.suitDomain.toLowerCase()} and the tone of {rankTheme(ruling.rank).toLowerCase()}.
           </p>
-        ) : (
-          <p>Use the calculator to see the ruling-card context for this birthday.</p>
         )}
       </Section>
 
+      {ruling && (
+        <Section title={`How the ${ruling.label} ruling card shows up`}>
+          <p>
+            When this birthday is centered, the ruling card adds: {ruling.sweetSpot}
+          </p>
+          <p>
+            Under pressure, the same lens can slide toward its over-expression: {ruling.over} If you were born {date.label} and the {card.label} description feels almost right but not quite, the {ruling.label} layer is usually the missing piece.
+          </p>
+        </Section>
+      )}
+
       <Section title="How to read this birthday pattern">
         <p>
-          Start with the birth card as the anchor, not a verdict. Ask where the {card.label} is centered in your life right now, where it is under-used, and where it becomes too loud. Then compare that with your timing, compatibility, and journal prompts inside Cardology Pro.
-        </p>
-        <p>
-          For SEO and clarity, this date page exists so people searching “{date.label} birth card” or “what is my birth card if I was born {date.label}” can land directly on the answer before opening the full calculator.
+          Start with the birth card as the anchor, not a verdict. Ask where the {card.label} is centered in your life right now, where it is under-used, and where it becomes too loud. Then check whether the {ruling ? ruling.label : "ruling card"} layer explains the style you bring to that pattern. The two cards together are a more honest mirror than either one alone.
         </p>
       </Section>
+
+      {shared.length > 0 && (
+        <Section title={`Other ${card.label} birthdays`}>
+          <p>These birthdays share the {card.label} birth card, each with its own ruling-card layer:</p>
+          <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
+            {shared.map((d) => (
+              <li key={d.slug}>
+                <Link href={`/birth-card/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
@@ -330,6 +382,12 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <p className="mt-1 text-sm text-faint">Use the calculator to save your birth card and open the app experience.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
+
+      <nav className="mt-8 flex items-center justify-between text-sm">
+        <Link href={`/birth-card/${prev.slug}`} className="text-gold underline underline-offset-4">← {prev.label}</Link>
+        <Link href={`/birth-card/${card.slug}`} className="text-faint hover:text-mist">{card.label} guide</Link>
+        <Link href={`/birth-card/${next.slug}`} className="text-gold underline underline-offset-4">{next.label} →</Link>
+      </nav>
     </SeoShell>
   );
 }

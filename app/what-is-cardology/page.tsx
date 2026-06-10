@@ -43,6 +43,30 @@ export default function WhatIsCardology() {
           text: "There are 52 birth cards — one for each card in a standard deck. Every birthday maps to exactly one of them.",
         },
       },
+      {
+        "@type": "Question",
+        name: "How is a birth card calculated?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "By formula. Each card carries a fixed numeric value based on its position in the deck, and a simple equation on your birth month and day resolves to exactly one of those values. No chart, no interpretation step, no randomness. Two people running the math on the same birthday will always get the same card.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Where does Cardology come from?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The system descends from a 19th-century work called The Mystic Test Book by Olney Richmond, later developed by authors including Florence Campbell, Edith Randall, and Robert Lee Camp. The structure itself is older than any of those books: the deck-to-calendar correspondences (52 cards, 52 weeks, 4 suits, 13 ranks) are built into the deck.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do I need to believe in Cardology for it to be useful?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Treat the card as a structured prompt. The descriptions name a specific pattern, and your job is to test it against your own behavior. If it doesn't match, discard it. The value is in the noticing, not the believing.",
+        },
+      },
     ],
   };
 
@@ -99,6 +123,83 @@ export default function WhatIsCardology() {
             birth card vs ruling card
           </Link>
           .
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">How the calculation actually works</h2>
+        <p className="prose-reading text-mist">
+          There is no chart to draw and no judgment call to make. Every card in
+          the deck carries a fixed numeric value based on its position, from the
+          Ace of Hearts through the King of Spades. A short equation on your
+          birth month and day resolves to exactly one of those values, and that
+          value is your card. Run it a thousand times and you get the same
+          answer a thousand times. That is the whole appeal: the input is your
+          birthday, the output is a card, and everything in between is
+          arithmetic.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          The same property makes the system easy to check. If a Cardology page
+          tells you March 15 is the 8 of Diamonds, you can verify it. Either
+          the math holds or it does not. Most personality systems cannot make
+          that offer.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">The structure behind it</h2>
+        <p className="prose-reading text-mist">
+          The deck and the calendar share an architecture, and Cardology takes
+          that correspondence seriously. 52 cards, 52 weeks. 4 suits, 4
+          seasons. 13 ranks, 13 weeks in a season. Add up the face values of
+          every card in the deck, counting Jack as 11, Queen as 12, and King as
+          13, and you get 364; with the Joker the deck rounds out a solar year.
+          You do not have to assign meaning to any of that to notice it is not
+          an accident of design. The deck was built as a calendar, and
+          Cardology is the practice of reading it as one.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">Where it comes from</h2>
+        <p className="prose-reading text-mist">
+          The modern system descends from <em>The Mystic Test Book</em>,
+          published by Olney Richmond in 1893, and was developed through the
+          20th century by Florence Campbell and Edith Randall
+          (<em>Sacred Symbols of the Ancients</em>) and more recently by Robert
+          Lee Camp. The lineage matters less than the structure: the
+          deck-to-calendar correspondences existed before any of those books
+          and will outlast all of them. The books are documentation. The deck
+          is the system.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">What Cardology is not</h2>
+        <p className="prose-reading text-mist">
+          It is not fortune telling, and on this site it is not treated as one.
+          A card cannot tell you what will happen on Tuesday. What it can do is
+          name a recurring pattern with enough precision that you start
+          catching yourself inside it: the specific way you avoid, overreach,
+          spend, withdraw, or take charge. Skeptics are right that no card
+          chooses your behavior. The claim here is smaller and more useful:
+          a fixed, specific description gives you something concrete to test
+          against your own life, and the testing is where the value is.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">How people actually use it</h2>
+        <p className="prose-reading text-mist">
+          Three ways, mostly. First, the birth card as a baseline: a standing
+          description of your default pattern, useful the way a personality
+          framework is useful, as a vocabulary for things you half-knew about
+          yourself. Second, compatibility: comparing two people&rsquo;s cards
+          to name where the friction and the attraction live, in language
+          neither person has to take personally. Third, timing: the same deck
+          mathematics produce daily and yearly cards, which work as structured
+          journal prompts. One pattern per day, checked against what actually
+          happened.
         </p>
       </section>
 

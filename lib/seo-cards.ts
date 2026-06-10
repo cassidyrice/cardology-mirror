@@ -207,3 +207,58 @@ function clamp(s: string, n: number): string {
 
 export const SUIT_LIST = SUITS;
 export { SUIT_COLOR };
+
+// --- Zodiac layer (date-specific context for birthday pages) ---
+
+export interface ZodiacInfo {
+  sign: string;
+  planet: string;
+  planetMeaning: string;
+}
+
+const ZODIAC: { sign: string; planet: string; planetMeaning: string; from: [number, number]; to: [number, number] }[] = [
+  { sign: "Capricorn", planet: "Saturn", planetMeaning: "structure, discipline, and long-term accountability", from: [12, 22], to: [1, 19] },
+  { sign: "Aquarius", planet: "Uranus", planetMeaning: "independence, originality, and sudden clarity", from: [1, 20], to: [2, 18] },
+  { sign: "Pisces", planet: "Neptune", planetMeaning: "imagination, sensitivity, and dissolving boundaries", from: [2, 19], to: [3, 20] },
+  { sign: "Aries", planet: "Mars", planetMeaning: "drive, initiative, and direct action", from: [3, 21], to: [4, 19] },
+  { sign: "Taurus", planet: "Venus", planetMeaning: "value, attraction, and what gets kept", from: [4, 20], to: [5, 20] },
+  { sign: "Gemini", planet: "Mercury", planetMeaning: "language, learning, and quick connection", from: [5, 21], to: [6, 20] },
+  { sign: "Cancer", planet: "the Moon", planetMeaning: "feeling, memory, and emotional rhythm", from: [6, 21], to: [7, 22] },
+  { sign: "Leo", planet: "the Sun", planetMeaning: "identity, expression, and visibility", from: [7, 23], to: [8, 22] },
+  { sign: "Virgo", planet: "Mercury", planetMeaning: "analysis, refinement, and useful precision", from: [8, 23], to: [9, 22] },
+  { sign: "Libra", planet: "Venus", planetMeaning: "balance, partnership, and aesthetic judgment", from: [9, 23], to: [10, 22] },
+  { sign: "Scorpio", planet: "Pluto", planetMeaning: "intensity, depth, and transformation under pressure", from: [10, 23], to: [11, 21] },
+  { sign: "Sagittarius", planet: "Jupiter", planetMeaning: "expansion, belief, and the long view", from: [11, 22], to: [12, 21] },
+];
+
+export function zodiacFor(month: number, day: number): ZodiacInfo {
+  for (const z of ZODIAC) {
+    const [fm, fd] = z.from;
+    const [tm, td] = z.to;
+    if (fm <= tm) {
+      if ((month > fm || (month === fm && day >= fd)) && (month < tm || (month === tm && day <= td))) {
+        return { sign: z.sign, planet: z.planet, planetMeaning: z.planetMeaning };
+      }
+    } else {
+      // wraps the year boundary (Capricorn)
+      if ((month === fm && day >= fd) || (month === tm && day <= td)) {
+        return { sign: z.sign, planet: z.planet, planetMeaning: z.planetMeaning };
+      }
+    }
+  }
+  return { sign: "Capricorn", planet: "Saturn", planetMeaning: "structure, discipline, and long-term accountability" };
+}
+
+// Previous/next calendar dates for a birthday page (wraps the year).
+export function neighborDates(date: BirthdateSeo): { prev: BirthdateSeo; next: BirthdateSeo } {
+  const all = allBirthdateSeo();
+  const i = all.findIndex((d) => d.slug === date.slug);
+  const prev = all[(i - 1 + all.length) % all.length];
+  const next = all[(i + 1) % all.length];
+  return { prev, next };
+}
+
+// Other birthdays that share this date's birth card (excluding itself).
+export function sameCardDates(date: BirthdateSeo): BirthdateSeo[] {
+  return allBirthdateSeo().filter((d) => d.card.slug === date.card.slug && d.slug !== date.slug);
+}

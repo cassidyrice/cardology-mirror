@@ -5,7 +5,7 @@ import { ReturningUserRedirect } from "@/components/seo/ReturningUserRedirect";
 import { APP_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Cardology Pro Life Pattern Report — $29" },
+  title: { absolute: "Cardology Pro — Birth Card Meanings, Calculator & Life Pattern Report" },
   description:
     "Get your Cardology Pro Life Pattern Report for $29, including the report, one month of Daily Card Pattern Pro, the card comparison tool, daily mirror prompts, and journal access.",
   alternates: { canonical: "/" },
@@ -146,6 +146,42 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <footer className="relative z-10 mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
+          <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Explore the system</p>
+          <div className="grid gap-8 text-sm text-[#3d352d] sm:grid-cols-3">
+            <div>
+              <p className="mb-2 font-serif text-base text-[#14110d]">Start here</p>
+              <ul className="space-y-1.5">
+                <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
+                <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
+                <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
+                <li><Link href="/52-card-astrology-explained" className="hover:text-[#14110d]">52-Card Astrology, Explained</Link></li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-serif text-base text-[#14110d]">Go deeper</p>
+              <ul className="space-y-1.5">
+                <li><Link href="/birth-card-vs-ruling-card" className="hover:text-[#14110d]">Birth Card vs Ruling Card</Link></li>
+                <li><Link href="/cardology-compatibility" className="hover:text-[#14110d]">Cardology Compatibility</Link></li>
+                <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
+                <li><Link href="/cardology-agent-instructions" className="hover:text-[#14110d]">Shadow &amp; Karma Guide</Link></li>
+              </ul>
+            </div>
+            <div>
+              <p className="mb-2 font-serif text-base text-[#14110d]">Popular cards</p>
+              <ul className="space-y-1.5">
+                <li><Link href="/birth-card/queen-of-hearts" className="hover:text-[#14110d]">Queen of Hearts</Link></li>
+                <li><Link href="/birth-card/ace-of-spades" className="hover:text-[#14110d]">Ace of Spades</Link></li>
+                <li><Link href="/birth-card/king-of-diamonds" className="hover:text-[#14110d]">King of Diamonds</Link></li>
+                <li><Link href="/birth-card/8-of-diamonds" className="hover:text-[#14110d]">8 of Diamonds</Link></li>
+              </ul>
+            </div>
+          </div>
+          <p className="mt-8 text-xs leading-relaxed text-[#5b5148]">
+            Calculated from the deterministic Cardology system. Same birthday, same card, every time. A mirror for noticing patterns, not a forecast.
+          </p>
+        </footer>
       </main>
     </>
   );

@@ -45,6 +45,22 @@ export default function CalculatorPage() {
           text: "Your birth card depends only on the month and day. The year is used for timing and yearly spreads, not for the birth card itself.",
         },
       },
+      {
+        "@type": "Question",
+        name: "What is the difference between a birth card and a ruling card?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The birth card is the core pattern; the planetary ruling card is the style it expresses through. The ruling card is selected by your zodiac sign's ruling planet acting on your birth card's position in the life spread. Two people with the same birth card but different signs will have different ruling cards.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can two people have the same birth card?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. With 366 possible birthdays and 52 cards, most cards cover several birthdays. Roughly 1 in 52 people share your card, though the ruling-card layer usually differs between them.",
+        },
+      },
     ],
   };
 
@@ -81,6 +97,26 @@ export default function CalculatorPage() {
             learn what Cardology is
           </Link>
           .
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">Reading your result</h2>
+        <p className="prose-reading text-mist">
+          The calculator returns two cards, and they do different jobs. The
+          birth card is the engine: the core pattern that stays fixed for life.
+          The planetary ruling card is the steering: the style that pattern
+          expresses through, selected by your zodiac sign&rsquo;s ruling planet.
+          If your birth card description feels almost right but the tone is
+          off, the ruling card is usually the missing piece. Read both pages,
+          then notice which one your behavior actually matches under pressure.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          One honest caveat: a card description cannot know your history,
+          your context, or your choices. Treat the result as a structured
+          hypothesis about your default pattern, not a verdict. Test it
+          against a real week of your life. Keep what matches; drop what
+          does not.
         </p>
       </section>
 

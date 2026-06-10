@@ -1,13 +1,20 @@
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-// App and marketing pages are served from a single host (cardologypro.com),
-// so no host-based redirecting is needed. Kept as a pass-through.
-export function middleware() {
+// Canonical host enforcement: 301 any www.* request to the apex domain,
+// preserving path and query. Everything else passes through.
+export function middleware(request: NextRequest) {
+  const host = request.headers.get("host") ?? "";
+  if (host.startsWith("www.")) {
+    const url = new URL(request.url);
+    url.host = host.slice(4);
+    return NextResponse.redirect(url, 301);
+  }
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
 };
