@@ -2,9 +2,9 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Screen } from "@/components/ui";
-import { saveProfile, loadProfile } from "@/lib/profile";
+import { saveProfile } from "@/lib/profile";
 import { IntroSlide } from "@/components/onboarding/IntroSlide";
 import { ProfileForm } from "@/components/onboarding/ProfileForm";
 
@@ -32,11 +32,6 @@ const FORM_STEP = SLIDES.length;
 export default function OnboardingPage() {
   const router = useRouter();
   const [step, setStep] = useState(0);
-
-  // If a profile already exists, skip straight to the app.
-  useEffect(() => {
-    if (loadProfile()) router.replace("/today");
-  }, [router]);
 
   const onForm = step === FORM_STEP;
   const progress = (step + 1) / (SLIDES.length + 1);

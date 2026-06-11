@@ -73,7 +73,17 @@ const TABS: Tab[] = [
   { href: "/journal", label: "Journal", Icon: JournalIcon },
 ];
 
-const HIDDEN = ["/", "/onboarding"];
+const HIDDEN = [
+  "/",
+  "/onboarding",
+  "/today",
+  "/self",
+  "/timing",
+  "/bonds",
+  "/reading",
+  "/story",
+  "/journal",
+];
 
 export default function BottomNav() {
   const pathname = usePathname() ?? "/";

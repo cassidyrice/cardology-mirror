@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { SITE_NAME, SITE_URL, APP_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 // Shared content shell for public SEO pages: cosmic theme, top bar, readable
 // prose column, and an internal-link footer. Server component (no client JS).
@@ -26,12 +26,12 @@ export function SeoShell({
             >
               Search
             </Link>
-            <a
-              href={APP_URL}
+            <Link
+              href="/today"
               className="rounded-full bg-gold px-3 py-1 text-[0.6rem] uppercase tracking-widest text-ink transition active:scale-[0.98]"
             >
-              App
-            </a>
+              Daily
+            </Link>
           </div>
         </header>
 
@@ -69,7 +69,13 @@ function SeoFooter() {
         <li><Link href="/52-card-astrology-explained" className="hover:text-mist">52-Card Astrology</Link></li>
         <li><Link href="/birth-card-vs-ruling-card" className="hover:text-mist">Birth vs Ruling Card</Link></li>
         <li><Link href="/cardology-agent-instructions" className="hover:text-mist">Shadow & Karma Guide</Link></li>
-        <li><a href={APP_URL} className="hover:text-mist">Open the App</a></li>
+        <li><Link href="/today" className="hover:text-mist">Daily Card Reading</Link></li>
+        <li><Link href="/self" className="hover:text-mist">Cardology Blueprint</Link></li>
+        <li><Link href="/timing" className="hover:text-mist">Yearly Spread</Link></li>
+        <li><Link href="/bonds" className="hover:text-mist">Bonds</Link></li>
+        <li><Link href="/reading" className="hover:text-mist">Deep Reading</Link></li>
+        <li><Link href="/story" className="hover:text-mist">Story Arc</Link></li>
+        <li><Link href="/journal" className="hover:text-mist">Journal</Link></li>
       </ul>
       <p className="mt-6 text-xs leading-relaxed text-faint/80">
         Calculated from the deterministic Cardology system. Same birthday, same

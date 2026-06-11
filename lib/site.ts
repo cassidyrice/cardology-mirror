@@ -21,6 +21,8 @@ export const APP_PATHS = [
   "/self",
   "/timing",
   "/bonds",
+  "/reading",
+  "/story",
   "/journal",
   "/onboarding",
 ];
