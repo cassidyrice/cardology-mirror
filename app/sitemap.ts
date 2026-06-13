@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/birth-card",
     "/birth-card-calculator",
+    "/52-day-period-meaning-tool",
     "/cardology-compatibility",
     "/birth-card-compatibility-calculator",
     "/what-is-cardology",

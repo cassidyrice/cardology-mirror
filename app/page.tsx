@@ -69,6 +69,9 @@ export default function Home() {
             <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
               Find Your Card
             </Link>
+            <Link href="/52-day-period-meaning-tool" className="transition hover:text-[#14110d]">
+              Period Tool
+            </Link>
             <Link href="/what-is-cardology" className="transition hover:text-[#14110d]">
               The Method
             </Link>
@@ -341,6 +344,7 @@ export default function Home() {
               <ul className="space-y-1.5">
                 <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
                 <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
+                <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Meaning Tool</Link></li>
                 <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
                 <li><Link href="/52-card-astrology-explained" className="hover:text-[#14110d]">52-Card Astrology, Explained</Link></li>
               </ul>

@@ -71,7 +71,7 @@ export function PlayingCard({
             : undefined
         }
         className={[
-          "relative rounded-xl border border-white/10",
+          "card-frame relative rounded-xl border border-white/10",
           "bg-gradient-to-br from-haze to-cosmos",
           "shadow-lg transition-transform duration-300",
           SIZES[size],
