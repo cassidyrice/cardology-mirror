@@ -1,0 +1,122 @@
+import { VIDEO_URL } from "@/lib/site";
+
+export type CardologyVideo = {
+  title: string;
+  card: string;
+  url: string;
+  uploadDate: string;
+  description: string;
+};
+
+export const CARDOLOGY_VIDEO_CHANNEL = VIDEO_URL;
+
+export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
+  {
+    title: "The Shadow of the K♣ - The Master Leader",
+    card: "K♣",
+    url: "https://youtu.be/IuAwNUL_8I8",
+    uploadDate: "2026-06-17",
+    description:
+      "A deterministic Cardology shadow reading for the King of Clubs, focused on clear thinking, leadership, certainty, and collaborative wisdom.",
+  },
+  {
+    title: "The Shadow of the 4♦ - The Financial Foundation Builder",
+    card: "4♦",
+    url: "https://youtu.be/J0dYBMytdz0",
+    uploadDate: "2026-06-13",
+    description:
+      "A Cardology shadow reading for the Four of Diamonds, focused on security, value, control, and learning to enjoy what has already been built.",
+  },
+  {
+    title: "The Shadow of the 5♦ - The Dynamic Entrepreneur",
+    card: "5♦",
+    url: "https://youtu.be/RkVJan1QOjE",
+    uploadDate: "2026-06-12",
+    description:
+      "A Cardology shadow reading for the Five of Diamonds, focused on freedom, money, restlessness, and material change.",
+  },
+  {
+    title: "The Shadow of the 6♦ - The Generous Provider",
+    card: "6♦",
+    url: "https://youtu.be/5T_5HaxwljY",
+    uploadDate: "2026-06-11",
+    description:
+      "A Cardology shadow reading for the Six of Diamonds, focused on generosity, responsibility, values, and balance.",
+  },
+  {
+    title: "The Shadow of the 8♦ - The Businessman",
+    card: "8♦",
+    url: "https://youtu.be/tk0AwQ7ByEs",
+    uploadDate: "2026-06-09",
+    description:
+      "A Cardology shadow reading for the Eight of Diamonds, focused on ambition, power, money, and responsible material influence.",
+  },
+  {
+    title: "The Shadow of the 9♦ - The Universal Provider",
+    card: "9♦",
+    url: "https://youtu.be/U8dP2OOh-BU",
+    uploadDate: "2026-06-08",
+    description:
+      "A Cardology shadow reading for the Nine of Diamonds, focused on generosity, release, value, and the cost of holding on too long.",
+  },
+  {
+    title: "The Shadow of the 10♦ - The Wealthy Master",
+    card: "10♦",
+    url: "https://youtu.be/3seQUWVkxnw",
+    uploadDate: "2026-06-07",
+    description:
+      "A Cardology shadow reading for the Ten of Diamonds, focused on public success, money, scale, and material visibility.",
+  },
+  {
+    title: "The Shadow of the J♦ - The Successful Messenger",
+    card: "J♦",
+    url: "https://youtu.be/Cfsv_D_tyXg",
+    uploadDate: "2026-06-06",
+    description:
+      "A Cardology shadow reading for the Jack of Diamonds, focused on charm, value, persuasion, and integrated material truth.",
+  },
+  {
+    title: "The Shadow of the Q♦ - The Prosperous Nurturer",
+    card: "Q♦",
+    url: "https://youtu.be/z4Yba6H-0Ug",
+    uploadDate: "2026-06-05",
+    description:
+      "A Cardology shadow reading for the Queen of Diamonds, focused on stewardship, prosperity, care, and values.",
+  },
+  {
+    title: "The Shadow of the K♦ - The Wealthy King",
+    card: "K♦",
+    url: "https://youtu.be/Bl4Vw0SGAw0",
+    uploadDate: "2026-06-04",
+    description:
+      "A Cardology shadow reading for the King of Diamonds, focused on authority, money, control, and collaborative stewardship.",
+  },
+  {
+    title: "The Shadow of the A♠ - The Truth Pioneer",
+    card: "A♠",
+    url: "https://youtu.be/FLGmz0XRVQQ",
+    uploadDate: "2026-06-03",
+    description:
+      "A Cardology shadow reading for the Ace of Spades, focused on truth, initiation, identity, and transformation.",
+  },
+  {
+    title: "The Shadow of the 2♠ - The Skeptical Partner",
+    card: "2♠",
+    url: "https://youtu.be/Cu4ao274PuQ",
+    uploadDate: "2026-06-02",
+    description:
+      "A Cardology shadow reading for the Two of Spades, focused on partnership, skepticism, work, and shared pressure.",
+  },
+];
+
+export function youtubeId(url: string): string {
+  return url.replace(/^https:\/\/youtu\.be\//, "");
+}
+
+export function youtubeThumbnail(url: string): string {
+  return `https://i.ytimg.com/vi/${youtubeId(url)}/hqdefault.jpg`;
+}
+
+export function youtubeEmbed(url: string): string {
+  return `https://www.youtube.com/embed/${youtubeId(url)}`;
+}

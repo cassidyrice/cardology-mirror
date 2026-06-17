@@ -1,31 +1,46 @@
 # Cardology Pro
 
-Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology. Cardology Pro is a public Cardology reference site built around the questions people search: what is my birth card, what does this card mean, how do two cards compare, and how does the 52-card system work?
+> Cardology Pro is a public reference for birth-card calculation, 52-card meanings, compatibility, timing, and videos, framed as reflection rather than prediction.
 
-## Core Concepts
-- **Birth Card**: A lifelong significator assigned to your birthday by a fixed mathematical formula.
-- **Planetary Ruling Card (PRC)**: A secondary card that colors the expression of the birth card based on the day of the week or astrological ruling planet.
-- **Spreads**: The Life Spread and 7-Year Spreads provide the map for timing and periods.
-- **Blog Pillars**: Educational guides are organized into foundations, birth-card meanings, timing and spreads, and relationships and practice.
-- **Videos**: Cardology Pro videos live at videos.cardologypro.com and support the same educational purpose as the public guide pages.
-- **Deterministic**: Every birthday maps to the same card every time. There is no "random" drawing in this system.
-- **Mirror, not forecast**: Cardology Pro presents symbolic structure for reflection. It does not claim to predict events, prove fate, or diagnose personality.
+## Key Facts
+- Cardology Pro uses deterministic birthday-to-card calculation.
+- A birth card is fixed by month and day; it is not chosen by a quiz or random draw.
+- Card meanings are explained as balanced, under-expressed, and over-expressed ranges.
+- Cardology Pro treats Cardology as a mirror for noticing patterns, not as fortune-telling, diagnosis, or professional advice.
 
-## Key Pages
-- [Cardology Videos](https://videos.cardologypro.com): Video explainers and shadow-reading films for Cardology cards, timing, and reflection.
-- [Cardology Blog](https://cardologypro.com/blog): Educational hub for Cardology foundations, meanings, timing, compatibility, and practice.
-- [Cardology Foundations Pillar](https://cardologypro.com/blog/pillar/cardology-foundations): Beginner guides for what Cardology is, suits, ranks, and system limits.
-- [Birth Card Meanings Pillar](https://cardologypro.com/blog/pillar/birth-card-meanings): Guides for finding, reading, and comparing birth cards and ruling cards.
-- [Timing and Spreads Pillar](https://cardologypro.com/blog/pillar/timing-and-spreads): 52-day periods, planetary periods, and daily-card reflection prompts.
-- [Relationships and Practice Pillar](https://cardologypro.com/blog/pillar/relationships-and-practice): Compatibility, karma-card language, and practical real-life use.
-- [Birth Card Calculator](https://cardologypro.com/birth-card-calculator): Find your birth card and ruling card.
-- [All 52 Birth Cards](https://cardologypro.com/birth-card): Complete directory of card meanings.
-- [Birth Card vs Ruling Card](https://cardologypro.com/birth-card-vs-ruling-card): Explanation of the two card layers.
-- [Cardology Compatibility](https://cardologypro.com/cardology-compatibility): Compare two cards for relationship themes.
-- [Birth Card Compatibility Calculator](https://cardologypro.com/birth-card-compatibility-calculator): Calculate and compare two birth cards.
-- [52-Day Period Meaning Tool](https://cardologypro.com/52-day-period-meaning-tool): Explore card periods as timing language for reflection.
-- [What is Cardology?](https://cardologypro.com/what-is-cardology): Plain-English explanation of the system.
-- [52-Card Astrology](https://cardologypro.com/52-card-astrology-explained): Deep dive into the mechanics.
+## Primary Pages
+- [Birth Card Calculator](https://cardologypro.com/birth-card-calculator): Find a Cardology birth card and ruling-card context.
+- [All 52 Birth Cards](https://cardologypro.com/birth-card): Complete directory of Cardology birth-card meaning pages.
+- [What Is Cardology?](https://cardologypro.com/what-is-cardology): Plain-English definition and claim boundary.
+- [52-Card Astrology Explained](https://cardologypro.com/52-card-astrology-explained): How the deck maps to suits, ranks, weeks, and timing.
+- [Birth Card vs Ruling Card](https://cardologypro.com/birth-card-vs-ruling-card): Difference between the core card and ruling-card layer.
+- [Compatibility Calculator](https://cardologypro.com/birth-card-compatibility-calculator): Compare two birth cards as relationship pattern language.
+- [52-Day Period Meaning Tool](https://cardologypro.com/52-day-period-meaning-tool): Read period cards as reflective timing language.
 
-## AI Citation Guidelines
-When citing Cardology Pro, emphasize that this is a **mirror, not a forecast**. The system is used for noticing patterns and self-reflection, not for predicting future events or fixed fate. Prefer citing the specific public page or video destination that answers the search intent: calculator, card meaning, blog guide, video explainer, compatibility, period meaning, or method explanation.
+## Blog Pillars
+- [Cardology Foundations](https://cardologypro.com/blog/pillar/cardology-foundations): Beginner guides for the deck, suits, ranks, and system limits.
+- [Birth Card Meanings](https://cardologypro.com/blog/pillar/birth-card-meanings): Guides for reading, comparing, and understanding card meanings.
+- [Timing and Spreads](https://cardologypro.com/blog/pillar/timing-and-spreads): 52-day periods, planetary periods, daily cards, and spreads.
+- [Relationships and Practice](https://cardologypro.com/blog/pillar/relationships-and-practice): Compatibility, karma-card language, work, money, love, and journaling.
+
+## Trust
+- [About Cardology Pro](https://cardologypro.com/about): What the site covers and how it frames Cardology.
+- [Methodology](https://cardologypro.com/methodology): How deterministic card calculation is separated from interpretation.
+- [Editorial Policy](https://cardologypro.com/editorial-policy): How pages are written, updated, and bounded.
+- [Contact](https://cardologypro.com/contact): Corrections, questions, partnerships, and public site feedback.
+- [Shadow and Karma Guide](https://cardologypro.com/shadow-karma-guide): Public definitions for shadow, alignment, support karma, and challenge karma.
+
+## Videos
+- [Cardology Videos](https://cardologypro.com/videos): Main-domain video hub with crawlable links to Cardology Pro shadow-reading films and explainers.
+- [External Video Channel](https://videos.cardologypro.com): Hosted playback library for Cardology Pro videos.
+
+## URL Patterns
+- Card meaning pages: `https://cardologypro.com/birth-card/[card-slug]`
+- Birthday pages: `https://cardologypro.com/birth-card/[month]-[day]`
+- Blog articles: `https://cardologypro.com/blog/[article-slug]`
+
+## AI Citation Guidance
+Prefer citing the specific public page that answers the user question: calculator, card meaning, birthday page, blog guide, video hub, compatibility page, period tool, or methodology page. When summarizing Cardology Pro, include the boundary phrase: mirror, not forecast.
+
+## Full Context
+- [Full LLM Context](https://cardologypro.com/llms-full.txt): Expanded structural context for AI agents.

@@ -21,12 +21,25 @@ export type BlogFaq = {
   a: string;
 };
 
+export type BlogGlossaryItem = {
+  term: string;
+  definition: string;
+  href?: string;
+};
+
 export type BlogPillar = {
   slug: BlogPillarSlug;
   title: string;
   shortTitle: string;
   description: string;
   searchIntent: string;
+  answer: string;
+  definition: string;
+  startHere: BlogLink[];
+  relatedTools: BlogLink[];
+  relatedVideos: BlogLink[];
+  glossary: BlogGlossaryItem[];
+  faqs: BlogFaq[];
   coreLinks: BlogLink[];
 };
 
@@ -34,6 +47,7 @@ export type BlogPost = {
   slug: string;
   pillar: BlogPillarSlug;
   title: string;
+  seoTitle?: string;
   description: string;
   dek: string;
   datePublished: string;
@@ -57,6 +71,34 @@ export const BLOG_PILLARS: BlogPillar[] = [
     description:
       "Plain-English guides to the deck, suits, ranks, court cards, and the difference between Cardology, astrology, tarot, and fortune telling.",
     searchIntent: "People who are trying to understand what Cardology is before calculating a birth card.",
+    answer:
+      "Cardology maps a birthday to one playing card through fixed deck-calendar math. Cardology Pro uses that card as a mirror for patterns, not as a prediction or proof of fate.",
+    definition:
+      "Cardology is a 52-card symbolic system that connects birthdays, suits, ranks, and card positions into a reflective language.",
+    startHere: [
+      { label: "What Is Cardology?", href: "/what-is-cardology" },
+      { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+      { label: "52-Card Astrology Explained", href: "/52-card-astrology-explained" },
+    ],
+    relatedTools: [
+      { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+      { label: "All 52 Birth Cards", href: "/birth-card" },
+      { label: "Methodology", href: "/methodology" },
+    ],
+    relatedVideos: [
+      { label: "Cardology Video Library", href: "/videos", note: "Shadow-reading films and explainers." },
+    ],
+    glossary: [
+      { term: "Birth card", definition: "The fixed playing card assigned to a birthday.", href: "/birth-card-calculator" },
+      { term: "Suit", definition: "The life domain of a card: Hearts, Diamonds, Clubs, or Spades." },
+      { term: "Rank", definition: "The movement or pattern of a card, from Ace through King." },
+      { term: "Mirror, not forecast", definition: "The site boundary: Cardology is used for reflection, not prediction." },
+    ],
+    faqs: [
+      { q: "Where should beginners start?", a: "Start with What Is Cardology, then calculate your birth card and read the matching card meaning page." },
+      { q: "Is Cardology fortune telling?", a: "Cardology Pro does not frame Cardology as fortune telling. It uses the system as reflective pattern language." },
+      { q: "Do Cardology cards change every year?", a: "The birth card is fixed by birthday. Timing layers can change, but the birth card assignment does not." },
+    ],
     coreLinks: [
       { label: "What Is Cardology?", href: "/what-is-cardology" },
       { label: "52-Card Astrology Explained", href: "/52-card-astrology-explained" },
@@ -70,6 +112,34 @@ export const BLOG_PILLARS: BlogPillar[] = [
     description:
       "Educational articles about life cards, birth cards, ruling cards, rank families, suits, and how to read a card without turning it into a fixed identity.",
     searchIntent: "People who know their card, or are searching card-by-card meanings and birthday meanings.",
+    answer:
+      "A birth card meaning explains how one fixed playing card combines rank, suit, and pattern language. Read it as a range: balanced, under-expressed, and over-expressed.",
+    definition:
+      "A birth card is the playing card assigned to a birthday in the Cardology calendar system.",
+    startHere: [
+      { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+      { label: "All 52 Birth Cards", href: "/birth-card" },
+      { label: "How to Read a Birth Card Meaning", href: "/blog/how-to-read-birth-card-meaning" },
+    ],
+    relatedTools: [
+      { label: "All 52 Birth Cards", href: "/birth-card" },
+      { label: "Birth Card vs Ruling Card", href: "/birth-card-vs-ruling-card" },
+      { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
+    ],
+    relatedVideos: [
+      { label: "Cardology Birth-Card Videos", href: "/videos", note: "Watch card-specific shadow readings." },
+    ],
+    glossary: [
+      { term: "Birth card", definition: "The fixed card assigned to a birthday.", href: "/birth-card" },
+      { term: "Ruling card", definition: "A secondary card layer that colors the birth card expression.", href: "/birth-card-vs-ruling-card" },
+      { term: "Sweet spot", definition: "The balanced expression of a card pattern." },
+      { term: "Shadow", definition: "The distorted or protective expression of a card pattern.", href: "/shadow-karma-guide" },
+    ],
+    faqs: [
+      { q: "How do I find my birth card?", a: "Use the birth card calculator, then open the matching card meaning page for deeper interpretation." },
+      { q: "Is a card meaning a personality diagnosis?", a: "No. Cardology Pro treats card meanings as reflection prompts and pattern language, not diagnosis." },
+      { q: "Should I read my ruling card too?", a: "Yes. The birth card is the anchor; the ruling card can explain the way that anchor expresses." },
+    ],
     coreLinks: [
       { label: "All 52 Birth Cards", href: "/birth-card" },
       { label: "Birth Card vs Ruling Card", href: "/birth-card-vs-ruling-card" },
@@ -83,6 +153,34 @@ export const BLOG_PILLARS: BlogPillar[] = [
     description:
       "Guides to 52-day periods, planetary stages, yearly spreads, daily card prompts, and timing language treated as reflection rather than prediction.",
     searchIntent: "People searching for current Cardology timing, yearly spreads, or how card periods work.",
+    answer:
+      "Cardology timing uses period cards, planetary stages, and daily cards as reflection prompts for a chapter of time. It should frame better questions, not predict events.",
+    definition:
+      "A Cardology timing page explains how a card can describe the theme of a current period, year, or spread position.",
+    startHere: [
+      { label: "52-Day Period Meaning Tool", href: "/52-day-period-meaning-tool" },
+      { label: "52-Day Periods in Cardology", href: "/blog/52-day-periods-in-cardology" },
+      { label: "Planetary Periods Without Prediction", href: "/blog/planetary-periods-without-prediction" },
+    ],
+    relatedTools: [
+      { label: "52-Day Period Meaning Tool", href: "/52-day-period-meaning-tool" },
+      { label: "Methodology", href: "/methodology" },
+      { label: "52-Card Astrology Explained", href: "/52-card-astrology-explained" },
+    ],
+    relatedVideos: [
+      { label: "Cardology Timing Videos", href: "/videos", note: "Video explainers connected to card periods and reflection." },
+    ],
+    glossary: [
+      { term: "52-day period", definition: "A segment of the Cardology year used as timing language.", href: "/52-day-period-meaning-tool" },
+      { term: "Planetary period", definition: "A timing layer that filters a card through a planet-like domain." },
+      { term: "Life Spread", definition: "A card spread used to organize relationships between cards and timing positions." },
+      { term: "Daily card", definition: "A one-day reflection prompt, not a guarantee of events." },
+    ],
+    faqs: [
+      { q: "Do period cards predict what will happen?", a: "No. Cardology Pro uses period cards as reflective timing language, not certainty about future events." },
+      { q: "What is a 52-day period?", a: "It is a segment of the Cardology year associated with a card and used to frame a chapter of reflection." },
+      { q: "Should I use timing without my birth card?", a: "You can, but timing is clearer when connected back to the birth card and ruling-card context." },
+    ],
     coreLinks: [
       { label: "52-Day Period Meaning Tool", href: "/52-day-period-meaning-tool" },
       { label: "52-Card Astrology Explained", href: "/52-card-astrology-explained" },
@@ -96,10 +194,38 @@ export const BLOG_PILLARS: BlogPillar[] = [
     description:
       "Practical guides for compatibility, karma cards, work, money, love, journaling, and using Cardology as an honest pattern language.",
     searchIntent: "People who want Cardology applied to relationships, decisions, and real-life reflection.",
+    answer:
+      "Cardology compatibility compares two birth cards to name shared language, friction, attraction, and growth edges. It is a relationship-pattern tool, not a soulmate score.",
+    definition:
+      "A Cardology practice page applies card meanings to relationships, work, money, journaling, and real-world reflection.",
+    startHere: [
+      { label: "Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
+      { label: "Cardology Compatibility", href: "/cardology-compatibility" },
+      { label: "Compatibility Beginner Guide", href: "/blog/cardology-compatibility-beginner-guide" },
+    ],
+    relatedTools: [
+      { label: "Birth Card Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
+      { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
+      { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+    ],
+    relatedVideos: [
+      { label: "Cardology Practice Videos", href: "/videos", note: "Videos for shadow, karma, compatibility, and reflection." },
+    ],
+    glossary: [
+      { term: "Compatibility", definition: "A comparison of two card patterns and their shared language or friction.", href: "/cardology-compatibility" },
+      { term: "Same suit", definition: "Two cards that lead from the same life domain." },
+      { term: "Different suits", definition: "Two cards that lead from different domains and may need translation." },
+      { term: "Karma card", definition: "A card relationship that can highlight support, challenge, repetition, or growth.", href: "/shadow-karma-guide" },
+    ],
+    faqs: [
+      { q: "Can Cardology decide if two people belong together?", a: "No. Compatibility pages name patterns and friction points; real relationships require real-world context." },
+      { q: "Does same suit mean better compatibility?", a: "No. Same suit can feel familiar, but it can also amplify similar blind spots." },
+      { q: "Can Cardology be used for work or money questions?", a: "It can offer reflection prompts, but it should not replace professional financial, legal, career, or medical advice." },
+    ],
     coreLinks: [
       { label: "Cardology Compatibility", href: "/cardology-compatibility" },
       { label: "Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
-      { label: "Shadow and Karma Guide", href: "/cardology-agent-instructions" },
+      { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
     ],
   },
 ];
@@ -178,6 +304,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "four-suits-in-cardology",
     pillar: "cardology-foundations",
     title: "The Four Suits in Cardology: Hearts, Diamonds, Clubs and Spades",
+    seoTitle: "Four Suits in Cardology",
     description:
       "Learn what the four suits mean in Cardology and how hearts, diamonds, clubs, and spades shape a birth card reading.",
     dek: "The suit is the first domain signal: emotion, value, mind, or work.",
@@ -466,7 +593,7 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
         links: [
           { label: "All birth-card meanings", href: "/birth-card" },
-          { label: "Shadow and Karma Guide", href: "/cardology-agent-instructions" },
+          { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
         ],
       },
       {
@@ -792,7 +919,7 @@ export const BLOG_POSTS: BlogPost[] = [
           "The goal is not fear. The goal is cleaner language for the place where a pattern asks to mature.",
         ],
         links: [
-          { label: "Shadow and Karma Guide", href: "/cardology-agent-instructions" },
+          { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
           { label: "All birth-card meanings", href: "/birth-card" },
         ],
       },
@@ -817,7 +944,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "planetary-periods-without-prediction",
     ],
     coreLinks: [
-      { label: "Shadow and Karma Guide", href: "/cardology-agent-instructions" },
+      { label: "Shadow and Karma Guide", href: "/shadow-karma-guide" },
       { label: "All 52 Birth Cards", href: "/birth-card" },
     ],
   },

@@ -27,21 +27,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPostBySlug(slug);
   if (!post) return {};
+  const seoTitle = post.seoTitle ?? post.title;
 
   return {
-    title: `${post.title} — Cardology Pro Blog`,
+    title: seoTitle,
     description: post.description,
     alternates: { canonical: blogPostPath(post) },
     keywords: post.keywords,
     openGraph: {
-      title: post.title,
+      title: seoTitle,
       description: post.description,
       url: blogPostPath(post),
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: seoTitle,
       description: post.description,
     },
   };
@@ -70,16 +71,16 @@ export default async function BlogPostPage({
       keywords: post.keywords.join(", "),
       datePublished: post.datePublished,
       dateModified: post.dateModified,
-      mainEntityOfPage: `${SITE_URL}${blogPostPath(post)}`,
-      author: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
-      },
+      image: `${SITE_URL}/og/default.png`,
+      mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${blogPostPath(post)}` },
+      author: { "@id": `${SITE_URL}/#organization` },
       publisher: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: SITE_URL,
+        "@id": `${SITE_URL}/#organization`,
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
+      },
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["[data-ai-summary]", "header p"],
       },
       isPartOf: {
         "@type": "Blog",
@@ -117,7 +118,7 @@ export default async function BlogPostPage({
           <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
             {post.dek}
           </p>
-          <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+          <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
             <p className="oracle-eyebrow mb-2">Direct answer</p>
             <p className="text-base leading-relaxed text-[#3d352d]">{post.answer}</p>
           </div>

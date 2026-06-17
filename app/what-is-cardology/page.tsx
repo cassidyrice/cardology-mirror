@@ -75,6 +75,14 @@ export default function WhatIsCardology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <h1 className="display mb-3 text-3xl text-bone">What Is Cardology?</h1>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="prose-reading text-mist">
+          Cardology is a deterministic 52-card system that maps a birthday to a
+          playing card and uses that card as symbolic self-reflection language.
+          Cardology Pro treats it as a mirror for patterns, not as a forecast.
+        </p>
+      </div>
       <p className="prose-reading mb-6 text-mist">
         Cardology maps your birthday to a single playing card — your{" "}
         <strong>birth card</strong> — and uses the 52-card deck as a language for

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
   allBirthdateSlugs,
   allCardSeo,
@@ -17,6 +17,8 @@ import {
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
+
+const SEO_UPDATED = "2026-06-17";
 
 export function generateStaticParams() {
   return [
@@ -123,9 +125,24 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         {card.label} Birth Card Meaning{" "}
         {card.title && <span className="block text-lg text-gold">{card.title}</span>}
       </h1>
+      <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Quick answer</p>
+        <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
+      </div>
       <p className="prose-reading mt-3 text-mist">
         The {card.label} is a Cardology birth card in the {suitWord(card)} suit — the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
       </p>
+
+      <Section title="At a glance">
+        <dl className="grid gap-3 text-sm sm:grid-cols-2">
+          <InfoItem label="Card" value={card.label} />
+          <InfoItem label="Suit domain" value={card.suitDomain} />
+          <InfoItem label="Rank theme" value={rankTheme(card.rank)} />
+          <InfoItem label="Balanced expression" value={card.sweetSpot} />
+          <InfoItem label="Shadow" value={card.shadow || card.over} />
+          <InfoItem label="Birth dates" value={dates.map((d) => d.label).join(", ")} />
+        </dl>
+      </Section>
 
       <Section title="Quick meaning">
         <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
@@ -232,6 +249,16 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </ul>
       </Section>
 
+      <Section title="Related videos">
+        <p>
+          Watch Cardology Pro shadow-reading films and explainers in the video library,
+          then return to this {card.label} meaning page for stable written context.
+        </p>
+        <Link href={VIDEO_PATH} className="mt-3 inline-block text-gold underline underline-offset-4">
+          Open Cardology videos →
+        </Link>
+      </Section>
+
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
       </Section>
@@ -306,6 +333,10 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <span className="eyebrow text-faint">{date.label} birth card</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
+      <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Quick answer</p>
+        <p className="prose-reading text-mist">{dateQuickAnswer(date)}</p>
+      </div>
       <p className="prose-reading mt-3 text-mist">
         Born on {date.label}? Your Cardology birth card is the {card.label}
         {card.title ? `, ${card.title}` : ""} — same answer every year, no negotiation. {date.label} sits in {zodiac.sign}, so
@@ -313,6 +344,17 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         as the lens the {card.label} expresses through. This page breaks down both layers and what makes a {date.label}
         birthday distinct from the other {card.label} dates.
       </p>
+
+      <Section title="At a glance">
+        <dl className="grid gap-3 text-sm sm:grid-cols-2">
+          <InfoItem label="Birthday" value={date.label} />
+          <InfoItem label="Birth card" value={card.label} />
+          <InfoItem label="Suit domain" value={card.suitDomain} />
+          <InfoItem label="Rank theme" value={rankTheme(card.rank)} />
+          <InfoItem label="Ruling card" value={ruling ? ruling.label : "Use the calculator for full context"} />
+          <InfoItem label="Zodiac layer" value={`${zodiac.sign}, ruled by ${zodiac.planet}`} />
+        </dl>
+      </Section>
 
       <Section title="Birthday card meaning">
         <p>
@@ -420,6 +462,15 @@ function Lens({ label, tone, text }: { label: string; tone: string; text: string
   return <div className="rounded-2xl border p-4" style={{ borderColor: `${tone}33`, background: `${tone}0d` }}><p className="eyebrow mb-1" style={{ color: tone }}>{label}</p><p className="mb-0 text-mist">{text}</p></div>;
 }
 
+function InfoItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+      <dt className="eyebrow mb-1 text-gold">{label}</dt>
+      <dd className="text-mist">{value}</dd>
+    </div>
+  );
+}
+
 function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
   return <div className="space-y-4">{faqs.map((f) => <div key={f.q}><h3 className="font-serif text-base text-bone">{f.q}</h3><p>{f.a}</p></div>)}</div>;
 }
@@ -437,7 +488,37 @@ function faqJsonLd(faqs: { q: string; a: string }[]) {
 }
 
 function articleJsonLd({ headline, description, url }: { headline: string; description: string; url: string }) {
-  return { "@context": "https://schema.org", "@type": "Article", headline, description, url, author: { "@type": "Organization", name: "Cardology Pro" }, publisher: { "@type": "Organization", name: "Cardology Pro" } };
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline,
+    description,
+    url,
+    image: `${SITE_URL}/og/default.png`,
+    datePublished: SEO_UPDATED,
+    dateModified: SEO_UPDATED,
+    articleSection: "Cardology birth card meanings",
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    author: { "@id": `${SITE_URL}/#organization` },
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-ai-summary]", ".prose-reading"],
+    },
+  };
+}
+
+function cardQuickAnswer(card: CardSeo, dates: BirthdateSeo[]) {
+  const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
+  return `The ${card.label} birth card combines ${card.suitDomain.toLowerCase()} with ${rankTheme(card.rank).toLowerCase()}. Balanced, it points to ${card.sweetSpot} Its shadow appears as ${card.shadow || card.over}. In this deterministic system, the ${card.label} appears for these birth dates: ${dateText}.`;
+}
+
+function dateQuickAnswer(date: BirthdateSeo) {
+  return `${date.label}'s birth card is ${date.card.label}. The birth card is fixed by month and day;${date.rulingCard ? ` the ruling card is ${date.rulingCard.label}, which adds the birthday's planetary expression.` : " use the calculator for the full ruling-card context."}`;
 }
 
 function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {

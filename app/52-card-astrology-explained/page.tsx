@@ -43,6 +43,14 @@ export default function CardAstrology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <h1 className="display mb-3 text-3xl text-bone">52-Card Astrology, Explained</h1>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="prose-reading text-mist">
+          52-card astrology is Cardology: a symbolic system that reads the ordinary
+          52-card deck as a calendar structure. It connects birthdays, suits, ranks,
+          and timing cards as reflection language, not prediction.
+        </p>
+      </div>
       <p className="prose-reading mb-6 text-mist">
         &ldquo;52-card astrology&rdquo; is another name for Cardology — a system that turns
         an ordinary deck of playing cards into a map of personality and timing. And
@@ -53,6 +61,18 @@ export default function CardAstrology() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The deck and the calendar</h2>
+        <div className="mb-4 grid gap-3 text-sm sm:grid-cols-3">
+          {[
+            ["52 cards", "52 weeks in a year"],
+            ["4 suits", "4 seasonal domains"],
+            ["13 ranks", "13 weeks in a season"],
+          ].map(([left, right]) => (
+            <div key={left} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+              <p className="eyebrow mb-1 text-gold">{left}</p>
+              <p className="text-mist">{right}</p>
+            </div>
+          ))}
+        </div>
         <p className="prose-reading text-mist">
           There are 52 cards in a deck and 52 weeks in a year. There are 13 ranks
           per suit and roughly 13 weeks per season. Add the values of all the

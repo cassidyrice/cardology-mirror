@@ -43,6 +43,14 @@ export default function BirthVsRuling() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <h1 className="display mb-3 text-3xl text-bone">Birth Card vs Ruling Card</h1>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="prose-reading text-mist">
+          In Cardology, the birth card is the fixed core card assigned to a
+          birthday. The ruling card is a second layer selected through the birthday&rsquo;s
+          planetary/zodiac context, and it colors how the birth card expresses.
+        </p>
+      </div>
       <p className="prose-reading mb-6 text-mist">
         In Cardology you run on two cards, not one. Your <strong>birth card</strong>{" "}
         is the core — who you are when no one&rsquo;s watching. Your{" "}

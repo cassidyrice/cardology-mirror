@@ -9,6 +9,7 @@ import {
   blogPillarPath,
   blogPostPath,
   blogPostsForPillar,
+  type BlogFaq,
 } from "@/lib/blog";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -26,11 +27,11 @@ export async function generateMetadata({
   if (!pillar) return {};
 
   return {
-    title: `${pillar.title} — Cardology Blog Pillar`,
+    title: pillar.title,
     description: pillar.description,
     alternates: { canonical: blogPillarPath(pillar) },
     openGraph: {
-      title: `${pillar.title} — Cardology Blog Pillar`,
+      title: pillar.title,
       description: pillar.description,
       url: blogPillarPath(pillar),
       type: "website",
@@ -48,27 +49,35 @@ export default async function BlogPillarPage({
   if (!pillar) notFound();
 
   const posts = blogPostsForPillar(pillar.slug);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: pillar.title,
-    description: pillar.description,
-    url: `${SITE_URL}${blogPillarPath(pillar)}`,
-    isPartOf: {
-      "@type": "Blog",
-      name: `${SITE_NAME} Blog`,
-      url: `${SITE_URL}/blog`,
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: pillar.title,
+      description: pillar.description,
+      url: `${SITE_URL}${blogPillarPath(pillar)}`,
+      isPartOf: {
+        "@type": "Blog",
+        name: `${SITE_NAME} Blog`,
+        url: `${SITE_URL}/blog`,
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: `${SITE_URL}${blogPostPath(post)}`,
+          name: post.title,
+        })),
+      },
     },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: posts.map((post, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        url: `${SITE_URL}${blogPostPath(post)}`,
-        name: post.title,
-      })),
-    },
-  };
+    breadcrumbJsonLd([
+      { name: "Home", item: SITE_URL },
+      { name: "Blog", item: `${SITE_URL}/blog` },
+      { name: pillar.shortTitle, item: `${SITE_URL}${blogPillarPath(pillar)}` },
+    ]),
+    faqJsonLd(pillar.faqs),
+  ];
 
   return (
     <SeoShell
@@ -89,13 +98,34 @@ export default async function BlogPillarPage({
           {pillar.description}
         </p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
-          <p className="oracle-eyebrow mb-2">Search intent</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">{pillar.searchIntent}</p>
+          <p className="oracle-eyebrow mb-2">Quick answer</p>
+          <p className="text-base leading-relaxed text-[#3d352d]">{pillar.answer}</p>
         </div>
       </header>
 
+      <section className="grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
+          <p className="oracle-eyebrow mb-2">Definition</p>
+          <p className="font-serif text-xl leading-relaxed text-[#3d352d]">{pillar.definition}</p>
+          <p className="mt-4 text-sm leading-relaxed text-[#5b5148]">{pillar.searchIntent}</p>
+        </div>
+        <div className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
+          <p className="oracle-eyebrow mb-3">Start here</p>
+          <ol className="space-y-3">
+            {pillar.startHere.map((link, index) => (
+              <li key={link.href} className="flex gap-3">
+                <span className="font-serif text-xl text-[#9e3d24]">{index + 1}</span>
+                <Link href={link.href} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#9e3d24]">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
       <section>
-        <h2 className="oracle-eyebrow mb-4">Guides in this pillar</h2>
+        <h2 className="oracle-eyebrow mb-4 mt-12">Guides in this pillar</h2>
         <div className="grid gap-4">
           {posts.map((post) => (
             <article key={post.slug} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5 transition hover:bg-[#fffaf0]">
@@ -114,9 +144,9 @@ export default async function BlogPillarPage({
       </section>
 
       <section className="mt-12">
-        <h2 className="oracle-eyebrow mb-4">Core site pages</h2>
+        <h2 className="oracle-eyebrow mb-4">Related tools</h2>
         <div className="grid gap-3 sm:grid-cols-3">
-          {pillar.coreLinks.map((link) => (
+          {pillar.relatedTools.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -127,6 +157,84 @@ export default async function BlogPillarPage({
           ))}
         </div>
       </section>
+
+      <section className="mt-12 grid gap-6 lg:grid-cols-2">
+        <div>
+          <h2 className="oracle-eyebrow mb-4">Glossary</h2>
+          <dl className="space-y-4">
+            {pillar.glossary.map((item) => (
+              <div key={item.term} className="border-t border-[#14110d]/15 pt-4">
+                <dt className="font-serif text-2xl text-[#14110d]">
+                  {item.href ? <Link href={item.href} className="hover:text-[#9e3d24]">{item.term}</Link> : item.term}
+                </dt>
+                <dd className="mt-1 text-sm leading-relaxed text-[#5b5148]">{item.definition}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div>
+          <h2 className="oracle-eyebrow mb-4">Related videos</h2>
+          <div className="space-y-3">
+            {pillar.relatedVideos.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]"
+              >
+                <span className="font-serif text-xl leading-none text-[#14110d]">{link.label}</span>
+                {link.note && <span className="mt-1 block text-sm leading-relaxed text-[#5b5148]">{link.note}</span>}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-12">
+        <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>
+        <FaqList faqs={pillar.faqs} />
+      </section>
     </SeoShell>
   );
+}
+
+function FaqList({ faqs }: { faqs: BlogFaq[] }) {
+  return (
+    <div className="mt-5 space-y-4">
+      {faqs.map((faq) => (
+        <div key={faq.q} className="border-t border-[#14110d]/15 pt-4">
+          <h3 className="font-serif text-2xl text-[#14110d]">{faq.q}</h3>
+          <p className="mt-2 text-base leading-relaxed text-[#5b5148]">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function breadcrumbJsonLd(items: { name: string; item: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.item,
+    })),
+  };
+}
+
+function faqJsonLd(faqs: BlogFaq[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    })),
+  };
 }

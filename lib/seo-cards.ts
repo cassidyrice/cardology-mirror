@@ -142,16 +142,13 @@ export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[
 }
 
 export function cardMeta(card: CardSeo): { title: string; description: string } {
-  const title = card.title
-    ? `${card.label} (${card.title}) — Cardology Birth Card`
-    : `${card.label} — Cardology Birth Card Meaning`;
-  const seed = card.coreIdentity || card.sweetSpot;
+  const title = `${card.label} Birth Card Meaning`;
   const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
     `${card.label} birth card meaning in Cardology: personality, strengths, shadow, relationships, work, and birth dates${dates ? ` including ${dates}` : ""}.`,
     158,
   );
-  return { title: clamp(title, 64), description };
+  return { title, description };
 }
 
 let _dates: BirthdateSeo[] | null = null;
@@ -194,7 +191,7 @@ export function birthDatesForCard(card: CardSeo): BirthdateSeo[] {
 
 export function dateMeta(date: BirthdateSeo): { title: string; description: string } {
   return {
-    title: clamp(`${date.label} Birth Card: ${date.card.label} Meaning`, 64),
+    title: `${date.label} Birth Card Meaning`,
     description: clamp(`${date.label} birth card is ${date.card.label}${date.card.title ? `, ${date.card.title}` : ""}. Read the Cardology meaning, ruling card, personality pattern, strengths, shadow, and growth edge.`, 158),
   };
 }

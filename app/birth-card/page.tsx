@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { cardsBySuit } from "@/lib/seo-cards";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "All 52 Cardology Birth Cards — Meanings & Personality",
@@ -16,8 +17,26 @@ const SUIT_GLYPHS: Record<string, string> = {
 
 export default function BirthCardIndex() {
   const groups = cardsBySuit();
+  const cards = groups.flatMap((group) => group.cards);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "The 52 Birth Cards",
+    description: metadata.description,
+    url: `${SITE_URL}/birth-card`,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: cards.map((card, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${card.label} Birth Card Meaning`,
+        url: `${SITE_URL}/birth-card/${card.slug}`,
+      })),
+    },
+  };
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth Cards", href: "/birth-card" }]}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Cards</h1>
       <p className="prose-reading mb-6 text-mist">
         Every birthday maps to exactly one of the 52 playing cards — your{" "}

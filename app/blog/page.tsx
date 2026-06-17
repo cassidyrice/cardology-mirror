@@ -12,12 +12,12 @@ import {
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cardology Blog — Educational Guides for Birth Cards and 52-Card Astrology",
+  title: "Cardology Blog: Birth Cards and 52-Card Astrology",
   description:
     "Read Cardology Pro's educational blog: birth cards, suits, ranks, compatibility, karma cards, 52-day periods, and practical reflection guides.",
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: "Cardology Blog — Educational Guides for Birth Cards and 52-Card Astrology",
+    title: "Cardology Blog: Birth Cards and 52-Card Astrology",
     description:
       "Educational Cardology articles organized by pillars: foundations, birth-card meanings, timing, spreads, compatibility, and practice.",
     url: "/blog",
@@ -28,25 +28,52 @@ export const metadata: Metadata = {
 export default function BlogIndexPage() {
   const pillars = allBlogPillars();
   const posts = allBlogPosts();
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Cardology Blog",
-    description: metadata.description,
-    url: `${SITE_URL}/blog`,
-    isPartOf: {
-      "@type": "WebSite",
-      name: SITE_NAME,
-      url: SITE_URL,
+  const faqs = [
+    {
+      q: "Where should beginners start on the Cardology blog?",
+      a: "Start with the Cardology Foundations pillar, then calculate your birth card and read the matching card meaning page.",
     },
-    hasPart: posts.map((post) => ({
-      "@type": "BlogPosting",
-      headline: post.title,
-      url: `${SITE_URL}${blogPostPath(post)}`,
-      articleSection: pillarTitle(post.pillar),
-      dateModified: post.dateModified,
-    })),
-  };
+    {
+      q: "Are Cardology Pro articles predictions?",
+      a: "No. The blog treats Cardology as reflective pattern language, not as certainty about future events.",
+    },
+    {
+      q: "How are the Cardology guides organized?",
+      a: "The blog is organized into pillars for foundations, birth-card meanings, timing and spreads, and relationships and practice.",
+    },
+  ];
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Cardology Blog",
+      description: metadata.description,
+      url: `${SITE_URL}/blog`,
+      isPartOf: {
+        "@type": "WebSite",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: post.title,
+          url: `${SITE_URL}${blogPostPath(post)}`,
+        })),
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  ];
 
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }]}>
@@ -61,12 +88,26 @@ export default function BlogIndexPage() {
           Educational guides for birth cards, suits, ranks, timing, spreads, compatibility, and practical reflection.
         </p>
         <div className="mt-6 rounded-2xl border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
-          <p className="oracle-eyebrow mb-2">AI answer summary</p>
+          <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             Cardology Pro organizes its blog into topic pillars so people and AI search systems can move from a broad question to a specific answer: what Cardology is, what a birth card means, how timing works, and how to use card patterns in relationships and real life.
           </p>
         </div>
       </header>
+
+      <section className="mb-10 grid gap-3 sm:grid-cols-2">
+        {[
+          ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology"],
+          ["Know your birthday?", "Use the Birth Card Calculator.", "/birth-card-calculator"],
+          ["Know your card?", "Open Birth Card Meanings.", "/birth-card"],
+          ["Comparing two people?", "Use the Compatibility Calculator.", "/birth-card-compatibility-calculator"],
+        ].map(([label, text, href]) => (
+          <Link key={href} href={href} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]">
+            <span className="oracle-eyebrow block text-[#9e3d24]">{label}</span>
+            <span className="mt-2 block font-serif text-xl leading-none text-[#14110d]">{text}</span>
+          </Link>
+        ))}
+      </section>
 
       <section className="mt-4">
         <h2 className="oracle-eyebrow mb-4">Pillar pages</h2>
@@ -123,6 +164,18 @@ export default function BlogIndexPage() {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →
         </Link>
+      </section>
+
+      <section className="mt-12 border-t border-[#14110d]/15 pt-8">
+        <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>
+        <div className="mt-5 space-y-4">
+          {faqs.map((faq) => (
+            <div key={faq.q} className="border-t border-[#14110d]/15 pt-4">
+              <h3 className="font-serif text-2xl text-[#14110d]">{faq.q}</h3>
+              <p className="mt-2 text-base leading-relaxed text-[#5b5148]">{faq.a}</p>
+            </div>
+          ))}
+        </div>
       </section>
     </SeoShell>
   );

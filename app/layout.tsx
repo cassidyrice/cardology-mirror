@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { SITE_URL, SITE_NAME, VIDEO_URL } from "@/lib/site";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cardology Pro — Birth Card Calculator and Meanings",
-    template: "%s · Cardology Pro",
+    default: "Cardology Pro | Birth Card Calculator and Meanings",
+    template: "%s | Cardology Pro",
   },
   description:
-    "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
+    "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system.",
+      "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system.",
+      "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
@@ -59,9 +59,21 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": `${SITE_URL}/#org`,
+        "@id": `${SITE_URL}/#organization`,
         name: SITE_NAME,
         url: SITE_URL,
+        logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
+        description: SITE_TAGLINE,
+        publishingPrinciples: `${SITE_URL}/about`,
+        knowsAbout: [
+          "Cardology",
+          "birth cards",
+          "52-card astrology",
+          "playing card symbolism",
+          "Cardology compatibility",
+          "52-day periods",
+          "self-reflection",
+        ],
         sameAs: [VIDEO_URL],
       },
       {
@@ -69,7 +81,7 @@ export default function RootLayout({
         "@id": `${SITE_URL}/#website`,
         url: SITE_URL,
         name: SITE_NAME,
-        publisher: { "@id": `${SITE_URL}/#org` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
         hasPart: [
           {
             "@type": "WebSite",

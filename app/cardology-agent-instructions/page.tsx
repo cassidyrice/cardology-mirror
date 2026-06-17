@@ -1,52 +1,36 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
+
 import { SeoShell } from "@/components/seo/SeoShell";
 
 export const metadata: Metadata = {
-  title: "Cardology Agent Instructions — Shadow, Alignment & Karma Guide",
+  title: "Cardology Internal Reference",
   description:
-    "A markdown instructional guide for generating Cardology shadow patterns, alignment patterns, Challenge Karma meanings, Support Karma meanings, and 52-card shadow interpretations.",
-  alternates: { canonical: "/cardology-agent-instructions" },
+    "This internal Cardology reference has moved out of the public SEO index. Read the public Shadow and Karma Guide instead.",
+  alternates: { canonical: "/shadow-karma-guide" },
+  robots: { index: false, follow: true },
 };
 
 export default function CardologyAgentInstructionsPage() {
-  const markdown = fs.readFileSync(
-    path.join(process.cwd(), "public", "cardology-agent-instructions.md"),
-    "utf8",
-  );
-
   return (
     <SeoShell
       crumb={[
         { label: "Home", href: "/" },
-        { label: "Cardology Agent Instructions", href: "/cardology-agent-instructions" },
+        { label: "Shadow & Karma Guide", href: "/shadow-karma-guide" },
       ]}
     >
-      <div className="mb-8">
-        <p className="eyebrow mb-2 text-gold">Cardology Pro reference</p>
-        <h1 className="display mb-3 text-3xl text-bone">
-          Cardology Agent Instructions: Shadow, Alignment & Karma Guide
-        </h1>
-        <p className="prose-reading text-mist">
-          This page preserves the full markdown instructional document from the working session, including the established shadow/alignment phrasing, Challenge and Support Karma meanings, special-card handling, January and February examples, and the 52-card shadow guide.
-        </p>
-        <p className="mt-4">
-          <Link
-            href="/cardology-agent-instructions.md"
-            className="rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
-          >
-            Open the raw Markdown document →
-          </Link>
-        </p>
-      </div>
-
-      <article className="card-surface rounded-2xl p-5 sm:p-8">
-        <pre className="whitespace-pre-wrap break-words font-sans text-sm leading-7 text-mist">
-          {markdown}
-        </pre>
-      </article>
+      <p className="oracle-eyebrow mb-4">Reference moved</p>
+      <h1 className="display text-4xl leading-none text-[#14110d] sm:text-5xl">
+        Cardology shadow and karma guidance now lives in a public guide.
+      </h1>
+      <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d]">
+        The old working-session instruction document is no longer part of the public SEO
+        structure. For human-readable definitions of shadow, alignment, support karma,
+        challenge karma, environment, and displacement, use the public guide.
+      </p>
+      <Link href="/shadow-karma-guide" className="ink-button large-button mt-7 inline-flex">
+        Read the Shadow & Karma Guide
+      </Link>
     </SeoShell>
   );
 }

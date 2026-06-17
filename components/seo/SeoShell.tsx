@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { SITE_NAME, SITE_URL, VIDEO_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
@@ -31,9 +31,9 @@ export function SeoShell({
           <Link href="/blog" className="transition hover:text-[#14110d]">
             Blog
           </Link>
-          <a href={VIDEO_URL} className="transition hover:text-[#14110d]">
+          <Link href={VIDEO_PATH} className="transition hover:text-[#14110d]">
             Videos
-          </a>
+          </Link>
           <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
             Compatibility
           </Link>
@@ -81,7 +81,7 @@ function SeoFooter() {
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
             <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
-            <li><a href={VIDEO_URL} className="hover:text-[#14110d]">Cardology Videos</a></li>
+            <li><Link href={VIDEO_PATH} className="hover:text-[#14110d]">Cardology Videos</Link></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
@@ -94,7 +94,8 @@ function SeoFooter() {
             <li><Link href="/birth-card-vs-ruling-card" className="hover:text-[#14110d]">Birth vs Ruling Card</Link></li>
             <li><Link href="/cardology-compatibility" className="hover:text-[#14110d]">Compatibility</Link></li>
             <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
-            <li><Link href="/cardology-agent-instructions" className="hover:text-[#14110d]">Shadow & Karma Guide</Link></li>
+            <li><Link href="/shadow-karma-guide" className="hover:text-[#14110d]">Shadow & Karma Guide</Link></li>
+            <li><Link href="/about" className="hover:text-[#14110d]">About Cardology Pro</Link></li>
           </ul>
         </div>
         <div>

@@ -13,7 +13,11 @@ export const APP_URL = (
 
 export const SITE_NAME = "Cardology Pro";
 
-export const VIDEO_URL = "https://videos.cardologypro.com";
+export const VIDEO_URL = (
+  process.env.NEXT_PUBLIC_VIDEO_URL || "https://videos.cardologypro.com"
+).replace(/\/$/, "");
+
+export const VIDEO_PATH = "/videos";
 
 export const SITE_TAGLINE =
   "Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology.";
@@ -31,6 +35,8 @@ export const APP_PATHS = [
 
 export const MARKETING_PATHS = [
   "/",
+  "/about",
+  "/videos",
   "/blog",
   "/birth-card",
   "/birth-card-calculator",
@@ -40,7 +46,10 @@ export const MARKETING_PATHS = [
   "/what-is-cardology",
   "/52-card-astrology-explained",
   "/birth-card-vs-ruling-card",
-  "/cardology-agent-instructions",
+  "/methodology",
+  "/editorial-policy",
+  "/contact",
+  "/shadow-karma-guide",
 ];
 
 // Build an absolute URL for a path (always returns a clean absolute href).
