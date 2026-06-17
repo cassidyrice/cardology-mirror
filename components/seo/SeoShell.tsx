@@ -21,12 +21,15 @@ export function SeoShell({
         <a href={SITE_URL} className="brand-mark" aria-label="Cardology Pro home">
           {SITE_NAME}
         </a>
-        <nav className="hidden items-center gap-6 text-[0.72rem] font-bold uppercase text-[#14110d]/70 sm:flex">
+        <nav className="hidden items-center gap-5 text-[0.72rem] font-bold uppercase text-[#14110d]/70 lg:flex">
           <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
             Calculator
           </Link>
           <Link href="/birth-card" className="transition hover:text-[#14110d]">
             Card Meanings
+          </Link>
+          <Link href="/blog" className="transition hover:text-[#14110d]">
+            Blog
           </Link>
           <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
             Compatibility
@@ -74,6 +77,7 @@ function SeoFooter() {
           <p className="mb-2 font-serif text-base text-[#14110d]">Start here</p>
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
+            <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>

@@ -14,7 +14,7 @@ export const APP_URL = (
 export const SITE_NAME = "Cardology Pro";
 
 export const SITE_TAGLINE =
-  "Birth card calculator, meanings, compatibility, and 52-card astrology.";
+  "Birth card calculator, meanings, educational guides, compatibility, and 52-card astrology.";
 
 export const APP_PATHS = [
   "/today",
@@ -29,6 +29,7 @@ export const APP_PATHS = [
 
 export const MARKETING_PATHS = [
   "/",
+  "/blog",
   "/birth-card",
   "/birth-card-calculator",
   "/52-day-period-meaning-tool",

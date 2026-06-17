@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { allBlogPaths } from "@/lib/blog";
 import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
 import { allBirthdateSlugs, allCardSlugs } from "@/lib/seo-cards";
 
@@ -11,8 +12,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}${p}`,
     lastModified: now,
     changeFrequency: p === "/" ? "daily" : "weekly",
-    priority: p === "/" ? 1 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : 0.8,
+    priority: p === "/" ? 1 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" ? 0.85 : 0.8,
   }));
+
+  for (const path of allBlogPaths().filter((p) => p !== "/blog")) {
+    entries.push({
+      url: `${SITE_URL}${path}`,
+      lastModified: now,
+      changeFrequency: path.startsWith("/blog/pillar/") ? "weekly" : "monthly",
+      priority: path.startsWith("/blog/pillar/") ? 0.78 : 0.72,
+    });
+  }
 
   for (const slug of allCardSlugs()) {
     entries.push({
