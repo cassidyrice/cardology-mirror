@@ -26,7 +26,7 @@ body {
 /* Co-Star-ish editorial heading */
 .eyebrow {
   font-size: 0.68rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: #6b6a78;
   font-weight: 500;
@@ -36,7 +36,7 @@ body {
   font-family: var(--font-serif);
   font-weight: 400;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
@@ -137,27 +137,27 @@ body {
 
 .brand-mark {
   font-family: var(--font-serif);
-  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-size: 1.6rem;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .oracle-eyebrow {
-  font-size: 0.68rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0;
   line-height: 1.6;
   text-transform: uppercase;
   color: rgba(20, 17, 13, 0.58);
 }
 
 .hero-title {
-  max-width: 12ch;
+  max-width: 11ch;
   font-family: var(--font-serif);
-  font-size: clamp(4.2rem, 11vw, 10.6rem);
+  font-size: 3.85rem;
   font-weight: 400;
-  letter-spacing: -0.08em;
-  line-height: 0.78;
+  letter-spacing: 0;
+  line-height: 0.86;
   text-wrap: balance;
 }
 
@@ -165,7 +165,7 @@ body {
   display: block;
   color: var(--rust);
   font-style: italic;
-  letter-spacing: -0.09em;
+  letter-spacing: 0;
 }
 
 .price-sigil {
@@ -189,7 +189,7 @@ body {
 .price-sigil span {
   margin-bottom: -1.2rem;
   font-size: 1.05rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
 .ink-button,
@@ -202,7 +202,7 @@ body {
   border-radius: 999px;
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
   text-transform: uppercase;
   transition: transform 180ms ease, background 180ms ease, color 180ms ease, box-shadow 180ms ease;
 }
@@ -282,7 +282,7 @@ body {
   padding: 1rem 1.1rem;
   font-size: 0.66rem;
   font-weight: 800;
-  letter-spacing: 0.22em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -337,7 +337,7 @@ body {
 .slip-kicker {
   font-size: 0.62rem;
   font-weight: 800;
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: rgba(20, 17, 13, 0.56);
 }
@@ -345,8 +345,8 @@ body {
 .slip-title {
   margin-top: 0.7rem;
   font-family: var(--font-serif);
-  font-size: clamp(1.85rem, 4vw, 3.1rem);
-  letter-spacing: -0.055em;
+  font-size: 2.35rem;
+  letter-spacing: 0;
   line-height: 0.95;
 }
 
@@ -384,7 +384,7 @@ body {
   font-size: 0.66rem;
   font-weight: 900;
   color: var(--rust);
-  letter-spacing: 0.18em;
+  letter-spacing: 0;
 }
 
 .offer-list strong {
@@ -457,7 +457,7 @@ body {
 .paper-shell .eyebrow {
   color: rgba(20, 17, 13, 0.58);
   font-weight: 700;
-  letter-spacing: 0.24em;
+  letter-spacing: 0;
 }
 
 .paper-shell .prose-reading {
@@ -577,7 +577,7 @@ body {
 
 @media (max-width: 720px) {
   .hero-title {
-    font-size: clamp(3.65rem, 19vw, 6rem);
+    font-size: 3.45rem;
   }
 
   .instrument-face {
@@ -596,5 +596,34 @@ body {
 
   .report-slip {
     width: calc(100% - 2.2rem);
+  }
+}
+
+@media (min-width: 640px) {
+  .brand-mark {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    max-width: 14ch;
+    font-size: 5.8rem;
+  }
+
+  .hero-title span {
+    white-space: nowrap;
+  }
+
+  .slip-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 7.1rem;
+  }
+
+  .slip-title {
+    font-size: 3.1rem;
   }
 }

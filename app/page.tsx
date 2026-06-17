@@ -4,51 +4,84 @@ import type { Metadata } from "next";
 import { APP_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Cardology Pro — Birth Card Meanings, Calculator & Life Pattern Report" },
+  title: { absolute: "Cardology Pro - Birth Card Calculator and Card Blueprint" },
   description:
-    "Cardology Pro is a structured self-reflection instrument built on deterministic cardology math: same birth date, same card structure, no randomness, no forecast claims.",
+    "Find your fixed birth card, test it as a practical pattern map, and turn it into a written Card Blueprint. Deterministic math, honest limits, no forecast claims.",
   alternates: { canonical: "/" },
 };
 
 const proofPoints = [
-  "same birth date, same card structure",
-  "open method that can be shown and checked",
-  "no random draw at the math layer",
-  "no reader-dependent result changes",
+  {
+    label: "fixed birth-card math",
+    detail: "Same birthday, same structure. No draw, mood, reader, or refresh changes the result.",
+  },
+  {
+    label: "free first read",
+    detail: "Start with the calculator and see whether the basic mirror earns more attention.",
+  },
+  {
+    label: "written pattern map",
+    detail: "The Card Blueprint turns the fixed structure into one fuller reading.",
+  },
+  {
+    label: "limits named clearly",
+    detail: "The system gives you a frame. You decide what clarifies and what does not.",
+  },
+];
+
+const pathSteps = [
+  {
+    label: "01",
+    title: "Calculate the fixed card.",
+    detail:
+      "Enter your birth date and get the card structure assigned to that date. Same input, same output.",
+  },
+  {
+    label: "02",
+    title: "Test the pattern.",
+    detail:
+      "Use the card meaning as a practical prompt for the patterns you recognize, avoid, repeat, or argue with.",
+  },
+  {
+    label: "03",
+    title: "Get the written Blueprint.",
+    detail:
+      "When the first mirror is useful, turn the structure into a clearer written report.",
+  },
 ];
 
 const reflectionFrames = [
-  "how you handle pressure",
-  "where you tend to overgive or withhold",
-  "what kinds of decisions repeat",
-  "how work, money, love, timing, and self-trust show up as reflection prompts",
-  "what you may already know but have not had language for yet",
+  "what repeats when you are under pressure",
+  "where work, money, love, and self-trust ask for attention",
+  "what you tend to overplay, withhold, defend, or miss",
+  "which timing language gives the current chapter a useful frame",
+  "what feels accurate enough to test, and what you can leave behind",
 ];
 
 const blueprintItems = [
   {
-    label: "Core card structure",
-    detail: "The fixed cards and positions generated from your birth date, presented as a clear symbolic frame.",
+    label: "Birth-card structure",
+    detail: "The fixed cards and positions generated from your birth date, kept separate from interpretation.",
   },
   {
-    label: "Challenge patterns",
-    detail: "Where the frame points your attention when pressure, repetition, or self-protection starts running the room.",
-  },
-  {
-    label: "Support patterns",
-    detail: "The strengths, stabilizers, and practical questions you can use without pretending the system proves anything about you.",
+    label: "Pattern map",
+    detail: "A written pass through pressure, decisions, relationships, money, work, and self-trust.",
   },
   {
     label: "Cycle frames",
-    detail: "Timing language for reflection — not prediction, not certainty, not manufactured stakes.",
+    detail: "Timing language for reflection, not prediction, certainty, or manufactured urgency.",
+  },
+  {
+    label: "Practical prompts",
+    detail: "Questions you can use after the reading, without pretending the system proves who you are.",
   },
 ];
 
 const notClaims = [
-  "predict your future",
-  "prove your destiny",
-  "reveal your true self",
-  "diagnose your personality",
+  "predict a future event",
+  "prove destiny",
+  "diagnose personality",
+  "use randomness at the calculation layer",
   "borrow scientific validation it does not have",
 ];
 
@@ -65,29 +98,29 @@ export default function Home() {
           <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
             Cardology Pro
           </Link>
-          <nav className="hidden items-center gap-6 text-[0.66rem] uppercase tracking-[0.24em] text-[#14110d]/70 md:flex">
+          <nav className="hidden items-center gap-6 text-[0.72rem] uppercase text-[#14110d]/70 md:flex">
             <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
               Find Your Card
             </Link>
-            <Link href="/52-day-period-meaning-tool" className="transition hover:text-[#14110d]">
-              Period Tool
-            </Link>
+            <a href={`${APP_URL}/onboarding`} className="transition hover:text-[#14110d]">
+              Card Blueprint
+            </a>
             <Link href="/what-is-cardology" className="transition hover:text-[#14110d]">
               The Method
             </Link>
             <Link href="/52-card-astrology-explained" className="transition hover:text-[#14110d]">
-              Honest Answer
+              Honest Limits
             </Link>
           </nav>
           <a href={`${APP_URL}/onboarding`} className="ink-button small-button">
-            Get a blueprint
+            Get Blueprint
           </a>
         </header>
 
-        <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-center gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1.03fr_0.97fr] lg:px-10 lg:py-14">
+        <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-start gap-10 px-5 py-8 sm:px-8 lg:grid-cols-[1.03fr_0.97fr] lg:px-10">
           <div className="max-w-3xl">
             <p className="oracle-eyebrow animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
-              structured self-reflection / deterministic math
+              free birth card calculator to written Card Blueprint
             </p>
 
             <h1 className="hero-title mt-5 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.08s_both]">
@@ -95,23 +128,19 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-pretty font-serif text-2xl leading-relaxed text-[#3d352d] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.16s_both] sm:text-3xl">
-              Every birth date maps to a fixed card structure. Same input. Same output. No randomness. No theater.
+              Find the card your birthday maps to. If the mirror is useful, turn it into a written pattern map.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] sm:text-lg">
-              Cardology Pro uses the 90-year spread system as a structured self-reflection instrument. The math is reproducible. The meanings are yours to judge.
+              Same birthday, same card structure; no draw, forecast, or borrowed certainty. Use the result as pattern language for pressure, timing, relationships, work, money, and self-trust.
             </p>
 
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.28s_both] sm:text-lg">
-              This is not here to tell you who you are. It is here to give you a mirror clear enough to argue with.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.34s_both] sm:flex-row">
+            <div className="mt-7 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.28s_both] sm:flex-row">
               <Link href="/birth-card-calculator" className="ink-button large-button">
                 Find your birth card <span aria-hidden="true">→</span>
               </Link>
               <a href={`${APP_URL}/onboarding`} className="paper-button large-button">
-                Get a Card Blueprint
+                Get the Card Blueprint
               </a>
             </div>
           </div>
@@ -119,8 +148,8 @@ export default function Home() {
           <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Cardology Pro mirror principles">
             <div className="instrument-face">
               <div className="instrument-topline">
-                <span>mirror / not forecast</span>
-                <strong>just math</strong>
+                <span>free card / written blueprint</span>
+                <strong>visible math</strong>
               </div>
 
               <div className="card-orbit" aria-hidden="true">
@@ -132,8 +161,8 @@ export default function Home() {
               </div>
 
               <div className="report-slip">
-                <p className="slip-kicker">Cardology Pro</p>
-                <p className="slip-title">A mirror with visible machinery.</p>
+                <p className="slip-kicker">Card Blueprint</p>
+                <p className="slip-title">Your fixed card, turned into a written pattern map.</p>
                 <div className="slip-lines" aria-hidden="true">
                   <i />
                   <i />
@@ -143,11 +172,11 @@ export default function Home() {
 
               <ul className="offer-list">
                 {proofPoints.map((item, index) => (
-                  <li key={item} style={{ "--delay": `${0.28 + index * 0.08}s` } as CSSProperties}>
+                  <li key={item.label} style={{ "--delay": `${0.28 + index * 0.08}s` } as CSSProperties}>
                     <span className="offer-count">0{index + 1}</span>
                     <span>
-                      <strong>{item}</strong>
-                      <small>The calculation can be re-run. The reflection is yours to test.</small>
+                      <strong>{item.label}</strong>
+                      <small>{item.detail}</small>
                     </span>
                   </li>
                 ))}
@@ -159,34 +188,53 @@ export default function Home() {
         <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">a symbolic system that shows its work</p>
-              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[0.98] tracking-[-0.03em] sm:text-5xl">
-                Most personality systems ask you to trust the result.
+              <p className="oracle-eyebrow text-[#c8bca8]">the focused purpose</p>
+              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[0.98] sm:text-5xl">
+                Answer the birthday question, then earn the deeper read.
               </h2>
             </div>
             <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
               <p>
-                Cardology Pro starts somewhere simpler: the calculation. Every birth date maps to one of 52 cards. That mapping is fixed. It can be shown, checked, and re-run.
+                Most people arrive asking a simple question: what card am I? Cardology Pro should answer that quickly, then show whether the answer gives them useful language for their patterns.
               </p>
               <p>
-                No random draw. No changing interpretation because of who is reading. No mystical fog around the math.
+                The free calculator is the first step. The Card Blueprint is the product: a written reading built from the fixed card structure, with the limits named out loud.
               </p>
               <p className="font-serif text-2xl leading-snug text-[#f4f0e7]">
-                That part is just arithmetic. What the structure means in your life is not something we pretend to prove. That part is the mirror.
+                Not a prophecy. Not a personality test wearing a costume. A structured mirror with visible machinery.
               </p>
             </div>
           </div>
         </section>
 
         <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <p className="oracle-eyebrow">from curiosity to clarity</p>
+            <div className="mt-6 grid gap-6 lg:grid-cols-3">
+              {pathSteps.map((step) => (
+                <article key={step.label} className="border border-[#14110d]/18 bg-[#f4f0e7]/74 p-6 shadow-[0_1.5rem_4rem_rgba(20,17,13,0.08)] sm:p-8">
+                  <p className="font-serif text-2xl text-[#9e3d24]">{step.label}</p>
+                  <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
+                    {step.title}
+                  </h2>
+                  <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
+                    {step.detail}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#eadfcd] px-5 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
-            <article className="border border-[#14110d]/18 bg-[#f4f0e7]/74 p-6 shadow-[0_1.5rem_4rem_rgba(20,17,13,0.08)] sm:p-8">
-              <p className="oracle-eyebrow">what this is</p>
-              <h2 className="mt-4 font-serif text-4xl leading-none tracking-[-0.04em] sm:text-5xl">
-                A card-based frame for reflection.
+            <article>
+              <p className="oracle-eyebrow">what the mirror can show</p>
+              <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
+                Patterns you can test in a real week.
               </h2>
-              <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                Cardology Pro takes your birth date, runs it through a fixed symbolic system, and returns a structure you can think with.
+              <p className="mt-5 text-base leading-relaxed text-[#4c4339] sm:text-lg">
+                Cardology Pro takes your birth date, runs it through a fixed symbolic system, and returns a structure you can think with, challenge, or discard.
               </p>
               <ul className="mt-6 grid gap-3 text-sm leading-relaxed text-[#3d352d] sm:text-base">
                 {reflectionFrames.map((item) => (
@@ -195,15 +243,12 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 font-serif text-2xl leading-snug text-[#14110d]">
-                It does not hand you certainty. It gives you structure. Sometimes structure is enough to see yourself more clearly.
-              </p>
             </article>
 
             <article className="border border-[#14110d]/18 bg-[#14110d] p-6 text-[#f4f0e7] shadow-[0_1.5rem_4rem_rgba(20,17,13,0.13)] sm:p-8">
-              <p className="oracle-eyebrow text-[#c8bca8]">what this is not</p>
-              <h2 className="mt-4 font-serif text-4xl leading-none tracking-[-0.04em] sm:text-5xl">
-                Not a fortune-telling machine.
+              <p className="oracle-eyebrow text-[#c8bca8]">the line we hold</p>
+              <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
+                No forecast claims. No borrowed certainty.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
                 Cardology Pro does not claim to:
@@ -216,71 +261,34 @@ export default function Home() {
                 ))}
               </ul>
               <p className="mt-6 font-serif text-2xl leading-snug text-[#f4f0e7]">
-                Nobody in this market likes saying that part out loud. We do. Because trust is the product.
+                The math is fixed. The interpretation is a frame. You keep what clarifies.
               </p>
             </article>
           </div>
         </section>
 
-        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#eadfcd] px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="oracle-eyebrow">the math is real. the meaning is yours.</p>
-              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[0.98] tracking-[-0.04em] sm:text-6xl">
-                Precision of calculation is not proof of interpretation.
-              </h2>
-            </div>
-            <div className="space-y-5 text-base leading-relaxed text-[#4c4339] sm:text-lg">
-              <p>
-                That is the sleight of hand hiding inside a lot of astrology, numerology, and symbolic systems.
-              </p>
-              <p>
-                Cardology Pro refuses that move. The math is fixed and reproducible. The reading is a frame.
-              </p>
-              <p>
-                You bring your life to it. You test it against what you actually know. You keep what clarifies. You leave what does not.
-              </p>
-              <p className="font-serif text-3xl leading-snug text-[#14110d]">
-                That is how a mirror works.
-              </p>
-            </div>
-          </div>
-        </section>
-
         <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-            <div className="border border-[#14110d]/18 bg-[#f4f0e7]/78 p-6 sm:p-8">
-              <p className="oracle-eyebrow">start with your birth card</p>
-              <h2 className="mt-4 font-serif text-4xl leading-none tracking-[-0.04em] sm:text-5xl">
-                Your first fixed point in the system.
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                Enter your birth date and Cardology Pro will show the card assigned to that date. From there, you can explore the basic meaning or order a deeper Card Blueprint.
-              </p>
-              <Link href="/birth-card-calculator" className="ink-button large-button mt-7">
-                Find your birth card <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr]">
             <div className="border border-[#14110d]/18 bg-[#f4f0e7]/78 p-6 sm:p-8">
               <p className="oracle-eyebrow">card blueprints</p>
-              <h2 className="mt-4 font-serif text-4xl leading-none tracking-[-0.04em] sm:text-5xl">
-                A written reading without borrowed authority.
+              <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
+                The Card Blueprint is the deeper product.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                A Card Blueprint is a written reading generated from your fixed card structure. Not a prediction. Not a destiny report. Not “the universe has a message for you.”
+                A Card Blueprint turns the fixed structure into a fuller pattern map. It is for people who want more than a card name without pretending the system proves who they are.
               </p>
-              <div className="mt-6 grid gap-px overflow-hidden border border-[#14110d]/15 bg-[#14110d]/15 sm:grid-cols-2">
-                {blueprintItems.map((item) => (
-                  <article key={item.label} className="bg-[#f4f0e7] p-5">
-                    <h3 className="font-serif text-2xl tracking-[-0.03em]">{item.label}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{item.detail}</p>
-                  </article>
-                ))}
-              </div>
               <a href={`${APP_URL}/onboarding`} className="ink-button large-button mt-7">
                 Get a Card Blueprint <span aria-hidden="true">→</span>
               </a>
+            </div>
+
+            <div className="grid gap-px overflow-hidden border border-[#14110d]/15 bg-[#14110d]/15 sm:grid-cols-2">
+              {blueprintItems.map((item) => (
+                <article key={item.label} className="bg-[#f4f0e7] p-5 sm:p-6">
+                  <h3 className="font-serif text-2xl">{item.label}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{item.detail}</p>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -289,7 +297,7 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
               <p className="oracle-eyebrow text-[#c8bca8]">why this exists</p>
-              <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] tracking-[-0.04em] sm:text-5xl">
+              <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] sm:text-5xl">
                 The system is too rich to throw away and too easy to overclaim.
               </h2>
             </div>
@@ -298,13 +306,10 @@ export default function Home() {
                 Cass was told at five years old that he was the Eight of Diamonds in the Crown Line. He spent decades living inside the symbols, then years reverse-engineering the structure underneath them.
               </p>
               <p>
-                That kind of mastery is real. But mastery of a system does not prove the system predicts your life.
+                That kind of mastery matters. It still does not prove that cardology predicts your life.
               </p>
               <p>
-                A chess master understands chess deeply. That does not mean chess predicts the future.
-              </p>
-              <p className="font-serif text-3xl leading-snug text-[#f4f0e7]">
-                So Cardology Pro takes the harder path: show the math, name the limits, sell the mirror.
+                So Cardology Pro takes the harder lane: show the math, name the limits, and let the reading stand or fall by whether it clarifies something real.
               </p>
             </div>
           </div>
@@ -312,25 +317,19 @@ export default function Home() {
 
         <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-4xl border border-[#14110d]/18 bg-[#f4f0e7]/82 p-6 text-center shadow-[0_1.5rem_4rem_rgba(20,17,13,0.1)] sm:p-10">
-            <p className="oracle-eyebrow">the honest disclaimer</p>
-            <h2 className="mt-4 font-serif text-4xl leading-none tracking-[-0.04em] sm:text-6xl">
-              No blind test has validated the symbolic meanings of cardology.
+            <p className="oracle-eyebrow">start free</p>
+            <h2 className="mt-4 font-serif text-4xl leading-none sm:text-6xl">
+              Find your birth card. Upgrade only if the mirror is useful.
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5b5148] sm:text-lg">
-              Ours included. That does not make the structure useless. It makes it honest.
-            </p>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5b5148] sm:text-lg">
-              Cardology Pro calculates a fixed symbolic frame from your birth date. What that frame reflects back to you is yours to judge.
-            </p>
-            <p className="mt-7 font-serif text-3xl leading-snug text-[#14110d]">
-              Mirror, not forecast. Just math.
+              No blind test has validated the symbolic meanings of cardology. That does not make the structure useless. It makes honesty part of the product.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/birth-card-calculator" className="ink-button large-button">
                 Find your birth card
               </Link>
               <a href={`${APP_URL}/onboarding`} className="paper-button large-button">
-                Get a Card Blueprint
+                Get the Card Blueprint
               </a>
             </div>
           </div>
@@ -343,6 +342,7 @@ export default function Home() {
               <p className="mb-2 font-serif text-base text-[#14110d]">Start here</p>
               <ul className="space-y-1.5">
                 <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
+                <li><a href={`${APP_URL}/onboarding`} className="hover:text-[#14110d]">Card Blueprint</a></li>
                 <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
                 <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Meaning Tool</Link></li>
                 <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>

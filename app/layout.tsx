@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s · Cardology Pro",
   },
   description:
-    "Find your Cardology birth card and read it as a mirror, not a forecast. Free birth card calculator, 52-card meanings, and compatibility — from a deterministic engine.",
+    "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint. Free calculator, deterministic engine, no forecast claims.",
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Cardology Pro — Your Birth Card, as a Mirror",
     description:
-      "Find your Cardology birth card and read it as a mirror, not a forecast. Free calculator, 52-card meanings, and compatibility.",
+      "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cardology Pro — Your Birth Card, as a Mirror",
     description:
-      "Find your Cardology birth card and read it as a mirror, not a forecast.",
+      "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
