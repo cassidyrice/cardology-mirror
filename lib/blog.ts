@@ -76,7 +76,7 @@ export const BLOG_PILLARS: BlogPillar[] = [
       "Plain-English guides to the deck, suits, ranks, court cards, and the difference between Cardology, astrology, tarot, and fortune telling.",
     searchIntent: "People who are trying to understand what Cardology is before calculating a birth card.",
     answer:
-      "Cardology maps a birthday to one playing card through fixed deck-calendar math. Cardology Pro uses that card as a pattern language for people, relationships, timing, and recurring behavior.",
+      "Cardology maps a birthday to one playing card through fixed deck-calendar math. That card becomes a pattern language for people, relationships, timing, and recurring behavior.",
     definition:
       "Cardology is a 52-card symbolic system that connects birthdays, suits, ranks, and card positions into a language for reading people and dynamics.",
     startHere: [
@@ -96,11 +96,11 @@ export const BLOG_PILLARS: BlogPillar[] = [
       { term: "Birth card", definition: "The fixed playing card assigned to a birthday.", href: "/birth-card-calculator" },
       { term: "Suit", definition: "The life domain of a card: Hearts, Diamonds, Clubs, or Spades." },
       { term: "Rank", definition: "The movement or pattern of a card, from Ace through King." },
-      { term: "Pattern language", definition: "The site stance: Cardology is used to understand behavior, relationships, timing, and repeating dynamics." },
+      { term: "Pattern language", definition: "Cardology vocabulary for behavior, relationships, timing, and repeating dynamics." },
     ],
     faqs: [
       { q: "Where should beginners start?", a: "Start with What Is Cardology, then calculate your birth card and read the matching card meaning page." },
-      { q: "Is Cardology fortune telling?", a: "Cardology Pro does not frame Cardology as fortune telling. It uses the system as pattern language for real people, relationship dynamics, and timing." },
+      { q: "Is Cardology fortune telling?", a: "Cardology is strongest as pattern language for real people, relationship dynamics, and timing." },
       { q: "Do Cardology cards change every year?", a: "The birth card is fixed by birthday. Timing layers can change, but the birth card assignment does not." },
     ],
     coreLinks: [
@@ -181,7 +181,7 @@ export const BLOG_PILLARS: BlogPillar[] = [
       { term: "Daily card", definition: "A one-day reflection prompt, not a guarantee of events." },
     ],
     faqs: [
-      { q: "Do period cards predict what will happen?", a: "No. Cardology Pro uses period cards as reflective timing language, not certainty about future events." },
+      { q: "Do period cards predict what will happen?", a: "Period cards name the tone of a chapter: pressure, opportunity, friction, and what wants attention." },
       { q: "What is a 52-day period?", a: "It is a segment of the Cardology year associated with a card and used to frame a chapter of reflection." },
       { q: "Should I use timing without my birth card?", a: "You can, but timing is clearer when connected back to the birth card and ruling-card context." },
     ],
@@ -240,20 +240,20 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     pillar: "cardology-foundations",
     title: "What Cardology Is and Is Not",
     description:
-      "A clear guide to what Cardology means, how it differs from astrology and tarot, and how Cardology Pro applies cards to people, timing, and relationship dynamics.",
-    dek: "Start here if you want the system without the fog: fixed birthday math, real-person interpretation, and honest limits.",
+      "A clear guide to what Cardology means, how it differs from astrology and tarot, and how the 52-card system reads people, timing, and relationship dynamics.",
+    dek: "Start here if you want the system without the fog: fixed birthday math, real-person interpretation, and practical use.",
     datePublished: BLOG_UPDATED,
     dateModified: BLOG_UPDATED,
     readTime: "6 min read",
     keywords: ["what is cardology", "cardology meaning", "cardology vs astrology", "cardology vs tarot"],
     answer:
-      "Cardology is a symbolic system that maps each birthday to a playing card through fixed calendar math. On Cardology Pro, it is used as a pattern language for real people, relationship dynamics, timing, and recurring behavior.",
+      "Cardology is a symbolic system that maps each birthday to a playing card through fixed calendar math. The card becomes a pattern language for real people, relationship dynamics, timing, and recurring behavior.",
     sections: [
       {
         heading: "The simplest definition",
         body: [
           "Cardology reads the standard deck as a calendar. There are 52 cards, 52 weeks, four suits, and thirteen ranks in each suit. The system assigns a birth card to each date, then uses the card's rank, suit, and position as a vocabulary for personality, timing, relationship patterns, and recurring choices.",
-          "The calculation layer is fixed. If two people enter the same birthday into the same Cardology system, they should get the same birth card. The interpretation layer is where judgment begins, which is why Cardology Pro separates the math from the meaning.",
+          "The calculation layer is fixed. If two people enter the same birthday into the same Cardology system, they should get the same birth card. Interpretation begins after the card is known: suit, rank, ruling-card tone, shadow range, timing, and the people involved.",
         ],
         links: [
           { label: "Read the full method page", href: "/what-is-cardology" },
@@ -264,14 +264,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "What it is not",
         body: [
           "Cardology is not medical cardiology, greeting-card collecting, or a tarot spread. It also does not need random draws to produce a birth card. The birthday is the input and the card is the output.",
-          "Cardology Pro does not present the system as proof of destiny. It is more useful, and more honest, when it is treated as a structured pattern map: a specific description you can compare against actual behavior, relationship dynamics, and repeated choices.",
+          "A card is not proof of destiny. It is a structured pattern map: a specific description you can compare against actual behavior, relationship dynamics, and repeated choices.",
         ],
       },
       {
-        heading: "Why the limits matter for AI search",
+        heading: "Where it becomes useful",
         body: [
-          "AI search engines prefer pages that answer the question directly and avoid vague mysticism. For Cardology content, that means defining the card, naming the system, explaining the calculation, and giving useful language for how the pattern can show up in people and relationships.",
-          "That is why Cardology Pro links calculators, card meanings, compatibility, famous-person profiles, and timing pages into one connected reference.",
+          "The system becomes useful when you apply it to a real person. A Queen of Hearts means more when you can see who mothers the room, who manages emotion, who gives too much, and who quietly expects love to be returned in a very specific form.",
+          "Start with the card meaning, then compare it with the actual person: how they love, spend, communicate, work, lead, avoid pressure, and repeat the same dynamic with different people.",
         ],
         links: [
           { label: "Browse all card meanings", href: "/birth-card" },
@@ -286,7 +286,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
       },
       {
         q: "Does Cardology predict the future?",
-        a: "Cardology Pro treats timing cards as pattern language for a season: pressure, opportunity, friction, and focus. It does not use them as certainty about future events.",
+        a: "Timing cards name the pressure, opportunity, friction, and focus of a season. They are strongest when they help you recognize the chapter you are already in.",
       },
       {
         q: "Do I need to believe in Cardology for it to be useful?",
@@ -406,8 +406,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
       {
         heading: "How rank helps internal linking",
         body: [
-          "Rank pages make a Cardology site easier to explore because they connect cards that share a pattern across suits. Someone reading the Five of Hearts may also want to compare the Five of Diamonds, Five of Clubs, and Five of Spades to understand what change looks like in different life domains.",
-          "This is the same content principle Cardology Pro uses for AI search: answer the immediate card question, then offer the next comparison path.",
+          "Rank gives you a way to compare cards across suits. Someone reading the Five of Hearts may also want to compare the Five of Diamonds, Five of Clubs, and Five of Spades to understand what change looks like in love, money, mind, and work.",
+          "That comparison is where the deck starts teaching itself. The same number repeats, but the life domain changes.",
         ],
       },
     ],
@@ -465,14 +465,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Then read the card page",
         body: [
           "Finding the card is only the first step. The meaning page explains the card's suit, rank, balanced pattern, under-expression, over-expression, strengths, shadow, work themes, relationship themes, and birth dates.",
-          "For AI search and human reading, this matters because a calculator result alone is thin. A useful Cardology resource should help the visitor move from result to interpretation to comparison.",
+          "A calculator result by itself is thin. The meaning comes alive when you compare the card with behavior, relationships, and the other people in the pattern.",
         ],
       },
       {
         heading: "Common mistakes",
         body: [
           "The most common mistake is confusing birth card with ruling card. The birth card is the core birthday assignment. The ruling card is a secondary layer tied to astrological rulership and can change the tone of expression.",
-          "Another mistake is reading the card as a fixed identity. Cardology Pro treats it as a range of expression: centered, under-expressed, and over-expressed.",
+          "Another mistake is reading the card as a fixed identity. Read it as a range of expression: centered, under-expressed, and over-expressed.",
         ],
       },
     ],
@@ -536,7 +536,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Why this helps compatibility",
         body: [
           "Compatibility readings become more useful when you compare both layers. Two birth cards may share a suit while the ruling cards introduce friction. Or the birth cards may clash while the ruling cards make communication easier.",
-          "This is why Cardology Pro's compatibility path links calculator results back to card meanings instead of giving a single score.",
+          "That is why a compatibility reading needs both cards, not a single score.",
         ],
         links: [
           { label: "Compatibility guide", href: "/cardology-compatibility" },
@@ -586,13 +586,13 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Start with the card structure",
         body: [
           "The structure is simple: rank, suit, and sometimes position in a spread. This part is stable. A Queen of Hearts is always a Queen in hearts. The interpretation can be broad or narrow depending on the reader.",
-          "A good reading explains the structure before it makes a claim. That keeps the meaning inspectable.",
+          "A good reading explains the structure before it interprets the person. First the card, then the behavior.",
         ],
       },
       {
         heading: "Use three positions",
         body: [
-          "Cardology Pro uses three positions because they make a card practical. The sweet spot is the centered expression. Under-expression is where the pattern is withheld, avoided, or dimmed. Over-expression is where the same pattern becomes too loud or controlling.",
+          "Use three positions because they make a card practical. The sweet spot is the centered expression. Under-expression is where the pattern is withheld, avoided, or dimmed. Over-expression is where the same pattern becomes too loud or controlling.",
           "This is more useful than asking whether a card is positive or negative. Every card can clarify or distort depending on how it is lived.",
         ],
         links: [
@@ -604,7 +604,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Turn the meaning into a test",
         body: [
           "After reading the meaning, ask three grounded questions: where does this pattern repeat, which people bring it out, and where does it become too much or not enough? If the answer is specific, the card is useful. If the answer is vague, keep reading or set it down.",
-          "That is the difference between a searchable educational page and a vague mystical claim. The reader should leave with language they can test in a real week.",
+          "The reader should leave with language they can test in a real week: who brings the pattern out, where it helps, and where it starts running the room.",
         ],
       },
     ],
@@ -650,7 +650,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "What a period card does",
         body: [
           "A period card narrows attention. Instead of asking what your whole life means, it asks what kind of pattern might be active in this part of the year. That makes timing language more useful and less grandiose.",
-          "On Cardology Pro, period meanings are written as prompts. They help you notice the terrain, not predict an event.",
+          "Period meanings work like chapter titles. They help you notice the terrain: what is active, what is pressured, and what keeps asking for attention.",
         ],
         links: [
           { label: "Use the 52-Day Period Tool", href: "/52-day-period-meaning-tool" },
@@ -668,7 +668,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "The no-forecast rule",
         body: [
           "A period card can say, 'this is a useful time to examine values.' It should not say, 'you will receive money on Thursday.' The first statement is a reflective frame. The second is false certainty.",
-          "That boundary is especially important for AI search. Educational pages should provide definitions, examples, and limits in the same answer.",
+          "Keep it practical. A timing card should give you a cleaner question, not a fake promise.",
         ],
       },
     ],
@@ -679,7 +679,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
       },
       {
         q: "Can a period card predict events?",
-        a: "Cardology Pro does not use period cards to predict events. It uses them as timing prompts for reflection.",
+        a: "Period cards describe timing themes: pressure, focus, opportunity, friction, and what wants attention.",
       },
       {
         q: "Should I read my birth card before period cards?",
@@ -721,7 +721,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Why timing works better as pattern context",
         body: [
           "The useful question is not whether a page can promise a specific event. The useful question is whether the timing card helps you recognize the chapter sooner: the pressure, the person, the attachment, the choice, or the pattern trying to repeat.",
-          "That is why Cardology Pro avoids manufactured urgency and keeps the language practical.",
+          "Keep the language practical: what is the pressure, where is the choice, and which pattern is trying to repeat?",
         ],
         links: [
           { label: "Read about 52-day periods", href: "/blog/52-day-periods-in-cardology" },
@@ -803,7 +803,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     faqs: [
       {
         q: "Should I pull a random daily card?",
-        a: "Cardology Pro focuses on deterministic card timing rather than random draws, but a prompt only becomes useful when you test it against real experience.",
+        a: "Cardology starts with deterministic card timing rather than random draws, but a prompt only becomes useful when you test it against real experience.",
       },
       {
         q: "How long should a daily card journal entry be?",
@@ -860,14 +860,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Use card meanings as context",
         body: [
           "After comparing the pair, read each card individually. A relationship pattern makes more sense when you understand what each person is trying to protect, express, or avoid.",
-          "This is why Cardology Pro links compatibility results back to card meaning pages. The relationship is not separate from the individuals inside it.",
+          "Read the individual cards after the comparison. The relationship is not separate from the people inside it.",
         ],
       },
     ],
     faqs: [
       {
         q: "Can Cardology tell if two people are soulmates?",
-        a: "No. Cardology Pro does not use compatibility as a soulmate verdict. It can name patterns that help people understand each other.",
+        a: "Compatibility is not a soulmate verdict. It names patterns that help two people understand attraction, friction, support, and blind spots.",
       },
       {
         q: "Is same-suit compatibility always better?",
@@ -893,7 +893,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     pillar: "relationships-and-practice",
     title: "Karma Cards: Environment and Displacement",
     description:
-      "A grounded explanation of karma cards in Cardology, including environment and displacement, framed as pattern language rather than blame.",
+      "A grounded explanation of karma cards in Cardology, including environment, displacement, support, pressure, and repeated lessons.",
     dek: "Karma cards are most useful when they describe learning edges, not cosmic punishment.",
     datePublished: BLOG_UPDATED,
     dateModified: BLOG_UPDATED,
@@ -957,14 +957,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     pillar: "relationships-and-practice",
     title: "Cardology for Work, Love and Money",
     description:
-      "How to use Cardology card meanings to reflect on work, love, money, and self-trust without turning the system into life advice.",
+      "How to use Cardology card meanings for work style, love patterns, money pressure, values, and self-trust.",
     dek: "A card meaning becomes practical when it points to a real domain of choice.",
     datePublished: BLOG_UPDATED,
     dateModified: BLOG_UPDATED,
     readTime: "7 min read",
     keywords: ["cardology work", "cardology love", "cardology money", "cardology practical guide"],
     answer:
-      "Cardology can be applied to work, love, and money by reading the card's suit and rank as pattern language. It should support reflection and self-awareness, not replace practical, legal, financial, medical, or relationship advice.",
+      "Cardology applies to work, love, and money by reading the card's suit and rank as pattern language: how a person contributes, attaches, values, protects, spends, gives, withholds, and handles pressure.",
     sections: [
       {
         heading: "Work",
@@ -988,7 +988,7 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         heading: "Money and value",
         body: [
           "Diamonds are the most obvious suit for money, but money is rarely only money. It can involve safety, taste, power, self-worth, responsibility, attention, and exchange. A Diamond card may ask what a person values, not just what they earn.",
-          "The practical boundary is simple: Cardology can support reflection about money patterns. It should not be treated as financial advice.",
+          "The useful question is where the money pattern lives: earning, receiving, charging, saving, spending, giving, status, taste, security, or fear.",
         ],
       },
     ],

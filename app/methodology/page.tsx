@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Methodology",
   description:
-    "How Cardology Pro explains deterministic birth-card calculation, 52-card structure, ruling cards, timing language, and interpretation limits.",
+    "How Cardology birth-card calculation works: the 52-card structure, suits, ranks, ruling cards, timing cards, and interpretation layers.",
   alternates: { canonical: "/methodology" },
 };
 
@@ -38,14 +38,14 @@ export default function MethodologyPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Calculation and interpretation</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          How Cardology Pro calculates cards and frames meaning.
+          How a birthday becomes a card, and how the card becomes a reading.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Cardology Pro uses deterministic birthday-to-card calculation and then
-            explains the result with symbolic interpretation. The calculation is fixed;
-            the reading is a reflection framework, not a prediction.
+            The birthday gives the card. The suit gives the life domain. The rank gives
+            the movement. The ruling card, timing card, and relationship context show
+            how the pattern expresses in a real person.
           </p>
         </div>
       </header>
@@ -64,20 +64,19 @@ export default function MethodologyPage() {
 
       <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
         <p>
-          A Cardology page should answer the calculation question first: which card,
-          which birthday, which suit, and which rank. Interpretation comes after that,
-          using the card as a range of expressions: balanced, under-expressed, and
-          over-expressed.
+          Start with what is fixed: the birthday, the card, the suit, and the rank.
+          Then read the range: balanced expression, under-expression, over-expression,
+          gift, shadow, timing, and the person or relationship involved.
         </p>
         <p>
-          Ruling-card and timing pages add context, but they do not change the site&rsquo;s
-          boundary. A period card can frame a chapter of time; it should not be used
-          as certainty about what will happen.
+          The ruling card colors how the birth card comes through. A period card names
+          the chapter. Compatibility adds another person&rsquo;s pattern, which is where
+          attraction, friction, support, and repetition become easier to see.
         </p>
         <p>
-          This is why Cardology Pro repeatedly links calculators, card meaning pages,
-          blog guides, and videos together. The goal is a clear educational map, not
-          a hidden or mystical claim.
+          A strong reading moves in that order: calculate the card, read the structure,
+          compare it with the person, then test whether it explains the behavior or
+          dynamic in front of you.
         </p>
       </section>
 

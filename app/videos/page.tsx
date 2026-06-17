@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
-      "A crawlable hub for Cardology Pro videos: birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
+      "Cardology Pro videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
     url: "/videos",
     type: "website",
   },
@@ -71,14 +71,14 @@ export default function VideosPage() {
           <p className="text-base leading-relaxed text-[#3d352d]">
             Cardology Pro videos explain birth-card meanings, shadow patterns, timing,
             compatibility, famous-person examples, and practical relationship dynamics.
-            The written pages on this site are the stable citation source; the hosted
-            video library is the place to watch.
+            Start with the card that is active in your life, then watch how the shadow
+            pattern shows up in choices, timing, and relationships.
           </p>
         </div>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d]">
-          Use this page as the crawlable main-domain video hub. It links each public
-          film back into the same educational system as the calculators, card meanings,
-          compatibility pages, and blog guides.
+          The videos are for the moments when a written meaning is not enough: when
+          you want to hear the card named out loud, with the gift, distortion, and
+          real-life behavior made obvious.
         </p>
         <p className="mt-5">
           <a href={CARDOLOGY_VIDEO_CHANNEL} className="ink-button large-button inline-flex">

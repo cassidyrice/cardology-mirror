@@ -14,7 +14,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cardology Blog: Birth Cards and 52-Card Astrology",
   description:
-    "Read Cardology Pro's educational blog: birth cards, suits, ranks, compatibility, karma cards, 52-day periods, and practical reflection guides.",
+    "Read Cardology Pro guides on birth cards, suits, ranks, compatibility, karma cards, famous-person profiles, 52-day periods, and real-life dynamics.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Cardology Blog: Birth Cards and 52-Card Astrology",
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
     },
     {
       q: "Are Cardology Pro articles predictions?",
-      a: "No. The blog treats Cardology as reflective pattern language, not as certainty about future events.",
+      a: "The guides read cards as pattern language for people, relationships, timing, and repeated behavior.",
     },
     {
       q: "How are the Cardology guides organized?",
@@ -85,12 +85,12 @@ export default function BlogIndexPage() {
           Cardology Blog
         </h1>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
-          Educational guides for birth cards, suits, ranks, timing, spreads, compatibility, and practical reflection.
+          Guides for birth cards, suits, ranks, timing, famous-person profiles, compatibility, karma cards, and the dynamics people keep repeating.
         </p>
         <div className="mt-6 rounded-2xl border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Cardology Pro organizes its blog into topic pillars so people and AI search systems can move from a broad question to a specific answer: what Cardology is, what a birth card means, how timing works, and how to use card patterns in relationships and real life.
+            Start with the basics, then follow the pattern into real life: what a card means, how two cards interact, what a timing card is pressing on, and why the same relationship dynamic keeps showing up.
           </p>
         </div>
       </header>

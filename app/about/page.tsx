@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Cardology Pro",
   description:
-    "Learn what Cardology Pro covers, how it treats Cardology as a deterministic people-and-pattern system, and how it applies cards to real relationship dynamics.",
+    "Learn how Cardology Pro calculates birth cards and reads people, relationships, timing, and recurring dynamics through the 52-card system.",
   alternates: { canonical: "/about" },
 };
 
@@ -35,36 +35,33 @@ export default function AboutPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">About the reference</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Cardology Pro is a public guide to birth cards, meanings, timing, and compatibility.
+          Cardology Pro reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            {SITE_NAME} treats Cardology as a deterministic 52-card birth-date system
-            for understanding people, relationship dynamics, timing, and recurring
-            patterns. The site explains calculations, card meanings, compatibility,
-            famous-person profiles, and real-life use cases in plain language.
+            {SITE_NAME} starts with a birth date, calculates the card, and turns the
+            card into language for people, relationships, timing, and repeated
+            dynamics.
           </p>
         </div>
       </header>
 
       <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
         <p>
-          The public site is organized around searchable Cardology questions: what is
-          my birth card, what does this card mean, how do two cards compare, and how
-          does the 52-card system work?
+          Start with the card your birthday maps to. Then compare it with the cards
+          of the people around you: partners, parents, friends, coworkers, public
+          figures, and the relationships that keep teaching you the same lesson.
         </p>
         <p>
-          The calculation layer is kept separate from interpretation. The birthday
-          mapping is deterministic; the meaning layer is written as pattern language
-          for people, relationship dynamics, journaling, timing, compatibility, and
-          personal inquiry.
+          The birthday mapping is fixed. The interpretation is where the system comes
+          alive: the suit shows the life domain, the rank shows the movement, and the
+          card shows the pattern that keeps trying to express through real behavior.
         </p>
         <p>
-          Cardology Pro does not present Cardology as medical, legal, financial, or
-          psychological advice. It also does not claim that one card explains all of
-          a person. The recurring editorial line is simple: apply the card to real
-          life, then keep what clarifies.
+          One card is not the whole person. It is the repeating shape: how someone
+          loves, thinks, values, works, avoids, reaches, gives, withholds, or takes
+          command when pressure rises.
         </p>
       </section>
 
@@ -72,13 +69,13 @@ export default function AboutPage() {
         <Link href="/methodology" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
           <p className="font-serif text-2xl text-[#14110d]">Methodology</p>
           <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
-            How the site separates fixed card calculation from interpretation.
+            How fixed birthday math becomes a card reading.
           </p>
         </Link>
         <Link href="/editorial-policy" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
           <p className="font-serif text-2xl text-[#14110d]">Editorial policy</p>
           <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
-            How pages are framed, updated, and bounded.
+            How the reference is maintained.
           </p>
         </Link>
         <Link href={VIDEO_PATH} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">

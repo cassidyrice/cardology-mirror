@@ -32,7 +32,7 @@ export default function WhatIsCardology() {
         name: "Does Cardology predict the future?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Cardology Pro treats cards as pattern language for people, relationship dynamics, timing, and recurring behavior, not as fixed forecasts of events.",
+          text: "Cardology reads timing as pattern language: pressure, opportunity, friction, and focus. The stronger use is recognizing the chapter you are in, not pretending the card can promise a specific event.",
         },
       },
       {
@@ -187,14 +187,12 @@ export default function WhatIsCardology() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What Cardology is not</h2>
         <p className="prose-reading text-mist">
-          It is not fortune telling, and on this site it is not treated as one.
-          A card cannot tell you what will happen on Tuesday. What it can do is
-          name a recurring pattern with enough precision that you start seeing it
-          in behavior: the specific way someone avoids, overreaches, spends,
-          withdraws, performs, bonds, or takes charge. Skeptics are right that no
-          card chooses anyone&rsquo;s behavior. The claim here is smaller and more
-          useful: a fixed, specific description gives you something concrete to
-          test against real people and real dynamics.
+          It is not a random draw, and it is not a personality costume. A card cannot
+          tell you what will happen on Tuesday. What it can do is name a recurring
+          pattern with enough precision that you start seeing it in behavior: the
+          specific way someone avoids, overreaches, spends, withdraws, performs,
+          bonds, or takes charge. The value is in the comparison between the card
+          and the person in front of you.
         </p>
       </section>
 

@@ -5,7 +5,7 @@ import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
 
 const title = "Daily Card Reading";
 const description =
-  "Use Cardology Pro's daily card reading to reflect on today's active card, birth-card lens, ruling-card lens, and a grounded prompt. It is a mirror for pattern recognition, not a forecast.";
+  "Use Cardology Pro's daily card reading to understand today's active card, birth-card lens, ruling-card lens, pressure pattern, and grounded prompt.";
 
 export const metadata: Metadata = {
   title: "Daily Card Reading: Your Cardology Card for Today",
@@ -27,9 +27,9 @@ export default function TodayPage() {
       canonicalPath="/today"
       eyebrow="Personalized tool"
       points={[
-        "A secondary tool for how Cardology Pro treats a daily card as reflection, not prediction.",
+        "A daily timing view for the card pattern active right now.",
         "A personalized daily card view when a local profile exists on this device.",
-        "A direct path to create a profile without sending returning visitors away from the website.",
+        "A direct path from today's card into your birth-card and ruling-card pattern.",
       ]}
     >
       <TodayClient />

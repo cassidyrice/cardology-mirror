@@ -105,7 +105,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
   const title = `${topic.name} Birth Card Profile: ${cardLabel}`;
   const seoTitle = `${topic.name} Birth Card Profile`;
   const answer =
-    `${topic.name}'s public birth date maps to the ${cardLabel} birth card in Cardology${rulingLabel ? `, with ${rulingLabel} as the planetary ruling card` : ""}. This profile uses a real public figure to make the card easier to recognize in people, creative choices, relationship dynamics, and repeated public patterns.`;
+    `${topic.name}'s public birth date maps to the ${cardLabel} birth card in Cardology${rulingLabel ? `, with ${rulingLabel} as the planetary ruling card` : ""}. The ${cardLabel} pattern points to ${topic.angle}: how choices, audience bonds, pressure, collaboration, and public role keep taking shape around the person.`;
 
   return {
     slug: topic.slug,
@@ -132,7 +132,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: `${topic.name}'s Cardology birth card`,
         body: [
           `${topic.name} is included here because Cardology is easiest to learn through actual people. The calculation starts with the public birth date, ${humanDate(topic.birthdate)}, which maps to the ${cardLabel} birth card in the local Cardology Pro engine.`,
-          `The Cardology Pro meaning for ${cardLabel}${birth.title ? `, ${birth.title},` : ""} emphasizes ${cleanGiftText(birth.gifts, topic.angle)}. In a famous-person profile, the card becomes a working lens: how ${topic.angle} may show up through choices, audience bonds, pressure, collaboration, and public role.`,
+          `The ${cardLabel}${birth.title ? `, ${birth.title},` : ""} emphasizes ${cleanGiftText(birth.gifts, topic.angle)}. The card becomes a working lens for ${topic.angle}: choices, audience bonds, pressure, collaboration, and public role.`,
         ],
         links: [
           { label: `${cardLabel} meaning`, href: `/birth-card/${cardSlug}` },
@@ -155,7 +155,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "Public-life interpretation",
         body: [
           `${topic.name}'s public frame is ${topic.publicFrame}. Through a Cardology lens, the ${cardLabel} profile is most useful when it asks what repeats: what the person builds, what they return to, how they bond with an audience, and what kind of friction their role tends to create.`,
-          `For this profile, the headline theme is ${topic.angle}. That theme is the bridge between the card and the person: not a cage, not a verdict, but a practical way to study why certain public dynamics keep forming around the same figure.`,
+          `For ${topic.name}, the headline theme is ${topic.angle}. That theme is the bridge between the card and the person: the practical way to study why certain dynamics keep forming around the same figure.`,
         ],
       },
       {
@@ -184,7 +184,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
       },
       {
         q: `Can a birth card explain why ${topic.name} behaves the way they do?`,
-        a: "It can give a strong pattern lens for public choices, relationship dynamics, and recurring themes. It should not reduce a whole person to one card or claim private facts that are not visible.",
+        a: "It can give a strong pattern lens for public choices, relationship dynamics, and recurring themes. The card is the entry point into the pattern, not the whole biography.",
       },
       {
         q: `Can I compare my card with ${topic.name}'s card?`,

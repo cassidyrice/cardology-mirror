@@ -9,22 +9,22 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Editorial Policy",
   description:
-    "How Cardology Pro writes, updates, and bounds its educational Cardology content for calculators, card meanings, blog guides, and videos.",
+    "How Cardology Pro keeps card calculations clear, meanings useful, and corrections easy to send.",
   alternates: { canonical: "/editorial-policy" },
 };
 
 const policies = [
   {
     title: "Calculation before interpretation",
-    body: "Pages separate fixed birthday-to-card outputs from symbolic interpretation, so readers can see what is calculated and what is editorial explanation.",
+    body: "A birth date maps to a fixed card first. Interpretation begins after the card, suit, rank, and timing layer are clear.",
   },
   {
     title: "Real people, not flat labels",
-    body: "Cardology Pro applies card meanings to people, compatibility, timing, and recurring dynamics without reducing a person to one card or replacing professional advice.",
+    body: "A card should help explain behavior, compatibility, timing, and recurring dynamics without pretending to be the whole person.",
   },
   {
-    title: "Searchable and answer-first",
-    body: "Important pages are written to answer the core question near the top before expanding into examples, FAQs, links, and related tools.",
+    title: "Direct and useful",
+    body: "A strong page answers the card question quickly, then gives examples, relationship cues, timing context, and next steps.",
   },
   {
     title: "Corrections and updates",
@@ -59,10 +59,9 @@ export default function EditorialPolicyPage() {
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Cardology Pro publishes educational Cardology pages that explain fixed
-            calculations, card meanings, relationship patterns, timing, and practical
-            examples. The content can name dynamics directly, but it should not replace
-            professional guidance.
+            Cardology Pro keeps the math visible and the interpretation practical:
+            calculate the card, read the pattern, compare the person, and correct what
+            needs correcting.
           </p>
         </div>
       </header>
@@ -78,16 +77,14 @@ export default function EditorialPolicyPage() {
 
       <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
         <p>
-          Blog posts, calculators, card pages, and video hubs are written to be useful
-          to people first and readable by search systems second. Direct answers,
-          glossary language, FAQ sections, and internal links are used to reduce
-          ambiguity.
+          Blog posts, calculators, card pages, and videos should leave the reader with
+          a clearer pattern: what the card means, where it shows up, which people bring
+          it out, and what the next useful comparison is.
         </p>
         <p>
           Where a page discusses relationships, work, money, health, or life choices,
-          it is framed as pattern language for real people and real dynamics. Cardology
-          Pro can name attraction, friction, pressure, support, and repeating roles; it
-          does not give medical, legal, financial, psychological, or relationship directives.
+          the language should stay concrete: attraction, friction, pressure, support,
+          repeating roles, and the choices available inside the pattern.
         </p>
       </section>
 

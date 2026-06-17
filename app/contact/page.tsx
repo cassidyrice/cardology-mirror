@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact Cardology Pro",
   description:
-    "Contact Cardology Pro for reading requests, corrections, Cardology content questions, video questions, partnerships, and public site feedback.",
+    "Contact Cardology Pro for readings, corrections, Cardology questions, video questions, and partnerships.",
   alternates: { canonical: "/contact" },
 };
 
@@ -29,15 +29,14 @@ export default function ContactPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Contact</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Send Cardology Pro corrections, questions, and partnership notes through the public channels.
+          Send a reading request, correction, question, or partnership note.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Use this page to identify the right kind of message for Cardology Pro:
-            correction requests, content questions, video questions, or partnership
-            inquiries. Official direct intake details can be added here when a public
-            inbox or form is configured.
+            For a reading, include the birth date, the person or relationship involved,
+            and the question you want answered. For corrections or partnerships, include
+            the page, topic, audience, and relevant context.
           </p>
         </div>
       </header>
@@ -64,7 +63,7 @@ export default function ContactPage() {
             <Link href="/editorial-policy" className="text-[#9e3d24] underline underline-offset-4">
               Editorial policy
             </Link>{" "}
-            explains the site&rsquo;s claim boundaries and correction posture.
+            explains how corrections are handled.
           </li>
           <li>
             <a href={VIDEO_URL} className="text-[#9e3d24] underline underline-offset-4">

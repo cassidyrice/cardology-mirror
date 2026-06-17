@@ -19,7 +19,7 @@ const proofPoints = [
   },
   {
     label: "all 52 card meanings",
-    detail: "Browse searchable pages for every card, from Ace of Spades to King of Diamonds.",
+    detail: "Read every card, from Ace of Spades to King of Diamonds, as a real pattern in people.",
   },
   {
     label: "compatibility tools",
@@ -42,7 +42,7 @@ const pathSteps = [
     label: "02",
     title: "Read the meaning.",
     detail:
-      "Move from the calculator into a public meaning page for the birth card, ruling card, and card language.",
+      "Move from the calculator into the birth card, ruling card, suit, rank, gift, and shadow pattern.",
   },
   {
     label: "03",
@@ -70,12 +70,12 @@ const searchEntryPoints = [
   {
     label: "All 52 Birth Cards",
     href: "/birth-card",
-    detail: "Browse the full searchable Cardology birth-card directory by rank, suit, and card name.",
+    detail: "Browse the full Cardology birth-card directory by rank, suit, and card name.",
   },
   {
     label: "Cardology Blog",
     href: "/blog",
-    detail: "Read educational guides organized by foundations, card meanings, timing, compatibility, and practice.",
+    detail: "Learn the suits, ranks, timing cycles, karma cards, compatibility patterns, and famous-person examples.",
   },
   {
     label: "Cardology Videos",
@@ -99,12 +99,12 @@ const searchEntryPoints = [
   },
 ];
 
-const notClaims = [
-  "predict a future event",
-  "prove destiny",
-  "reduce a person to one card",
-  "use randomness at the calculation layer",
-  "borrow scientific validation it does not have",
+const realLifeQuestions = [
+  "why a person feels familiar before you know them well",
+  "where attraction turns into friction",
+  "how family roles repeat through different people",
+  "why money, attention, or responsibility becomes the pressure point",
+  "what a current timing card is asking you to handle cleanly",
 ];
 
 const cardStack = ["A♠", "7♥", "Q♦", "3♣", "9♠"];
@@ -166,7 +166,7 @@ export default function Home() {
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] sm:text-lg">
-              Same birthday, same card structure. Cardology Pro is organized around the questions people actually search: what card am I, what does it mean, which cards belong to people close to me, and why do certain dynamics repeat?
+              Same birthday, same card structure. Start with your card, then look up the people around you: partners, parents, friends, coworkers, artists, leaders, and the dynamics that keep repeating.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.28s_both] sm:flex-row">
@@ -182,8 +182,8 @@ export default function Home() {
           <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Cardology Pro mirror principles">
             <div className="instrument-face">
               <div className="instrument-topline">
-                <span>calculator / meanings / method</span>
-                <strong>searchable Cardology</strong>
+                <span>calculator / meanings / people</span>
+                <strong>birth-card pattern map</strong>
               </div>
 
               <div className="card-orbit" aria-hidden="true">
@@ -195,8 +195,8 @@ export default function Home() {
               </div>
 
               <div className="report-slip">
-                <p className="slip-kicker">Cardology reference</p>
-                <p className="slip-title">Calculator, meanings, compatibility, and timing in one public guide.</p>
+                <p className="slip-kicker">Cardology map</p>
+                <p className="slip-title">Cards, people, compatibility, and timing in one place.</p>
                 <div className="slip-lines" aria-hidden="true">
                   <i />
                   <i />
@@ -222,20 +222,20 @@ export default function Home() {
         <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">one public purpose</p>
+              <p className="oracle-eyebrow text-[#c8bca8]">start with real people</p>
               <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[0.98] sm:text-5xl">
-                Make Cardology Pro the place people land when they search a card question.
+                The cards get interesting when you know whose card you are reading.
               </h2>
             </div>
             <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
               <p>
-                Most people arrive through a search: what is my birth card, what does Queen of Hearts mean, what card is my partner, why does this friend feel so familiar, or are these two cards compatible?
+                A birth card is not just a label for yourself. It becomes sharper when you compare it with a partner, parent, friend, client, collaborator, public figure, or the person who keeps getting under your skin.
               </p>
               <p>
-                Cardology Pro should answer those questions in one consistent public site. The app can exist for deeper personal work, but the searchable experience starts with calculators, meanings, compatibility, famous-person profiles, timing, and method pages.
+                Look up the card. Read the suit. Read the rank. Then ask where the pattern actually shows up: the way they love, compete, avoid, lead, spend, communicate, disappear, return, or try to control the room.
               </p>
               <p className="font-serif text-2xl leading-snug text-[#f4f0e7]">
-                The system gets useful when you apply it to actual people: partners, parents, friends, coworkers, artists, leaders, and the dynamics that keep repeating.
+                That is where Cardology stops being abstract and starts explaining why the dynamic feels the way it does.
               </p>
             </div>
           </div>
@@ -243,7 +243,7 @@ export default function Home() {
 
         <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-7xl">
-            <p className="oracle-eyebrow">from search to understanding</p>
+            <p className="oracle-eyebrow">from birthday to pattern</p>
             <div className="mt-6 grid gap-6 lg:grid-cols-3">
               {pathSteps.map((step) => (
                 <article key={step.label} className="border border-[#14110d]/18 bg-[#f4f0e7]/74 p-6 shadow-[0_1.5rem_4rem_rgba(20,17,13,0.08)] sm:p-8">
@@ -263,12 +263,12 @@ export default function Home() {
         <section className="relative z-10 border-y border-[#14110d]/15 bg-[#eadfcd] px-5 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-2">
             <article>
-              <p className="oracle-eyebrow">what the mirror can show</p>
+              <p className="oracle-eyebrow">what the cards can show</p>
               <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
-                Patterns you can test in a real week.
+                Patterns you can recognize in a real week.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#4c4339] sm:text-lg">
-                Cardology Pro takes a birth date, runs it through a fixed symbolic system, and returns a structure for reading behavior, attraction, friction, timing, and the roles people keep playing with each other.
+                A birth date gives you a card. The card gives you a pattern. The pattern gives you a way to read behavior, attraction, friction, timing, and the roles people keep playing with each other.
               </p>
               <ul className="mt-6 grid gap-3 text-sm leading-relaxed text-[#3d352d] sm:text-base">
                 {reflectionFrames.map((item) => (
@@ -280,22 +280,22 @@ export default function Home() {
             </article>
 
             <article className="border border-[#14110d]/18 bg-[#14110d] p-6 text-[#f4f0e7] shadow-[0_1.5rem_4rem_rgba(20,17,13,0.13)] sm:p-8">
-              <p className="oracle-eyebrow text-[#c8bca8]">the line we hold</p>
+              <p className="oracle-eyebrow text-[#c8bca8]">real-life questions</p>
               <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
-                No forecast claims. No borrowed certainty.
+                Use the card when the dynamic keeps repeating.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
-                Cardology Pro does not claim to:
+                A good card reading gives language to the thing everyone feels but nobody has named yet:
               </p>
               <ul className="mt-6 grid gap-3 text-sm leading-relaxed text-[#d7cdbc] sm:text-base">
-                {notClaims.map((item) => (
+                {realLifeQuestions.map((item) => (
                   <li key={item} className="border-t border-[#f4f0e7]/15 pt-3">
                     {item}
                   </li>
                 ))}
               </ul>
               <p className="mt-6 font-serif text-2xl leading-snug text-[#f4f0e7]">
-                The math is fixed. The interpretation is strongest when it clarifies real behavior and real dynamics.
+                The card is not the whole person. It is the recurring shape you finally have words for.
               </p>
             </article>
           </div>
@@ -304,12 +304,12 @@ export default function Home() {
         <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr]">
             <div className="border border-[#14110d]/18 bg-[#f4f0e7]/78 p-6 sm:p-8">
-              <p className="oracle-eyebrow">searchable site map</p>
+              <p className="oracle-eyebrow">choose the next door</p>
               <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
-                Every core question should have a clear public path.
+                Follow the question you already have.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                The site now points visitors to the pages that match how they actually search: calculator, card meanings, compatibility, timing, and the plain-English method.
+                If you know the birthday, calculate the card. If you know the card, read the meaning. If another person is involved, compare the cards. If the pressure is current, read the timing.
               </p>
               <Link href="/birth-card" className="ink-button large-button mt-7">
                 Browse card meanings <span aria-hidden="true">→</span>
@@ -331,13 +331,12 @@ export default function Home() {
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
               <div>
-                <p className="oracle-eyebrow">product ladder</p>
+                <p className="oracle-eyebrow">personal readings</p>
                 <h2 className="mt-4 max-w-xl font-serif text-4xl leading-none sm:text-5xl">
                   Three clean ways to turn a birth card into a personal reading.
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                The public site answers the searchable questions. The paid ladder handles
-                  personal context: your card, another person&rsquo;s card, the dynamic between you, and the question that keeps coming back.
+                  Bring the birth date, the person, and the question. The reading turns the card structure into a clear look at the dynamic: your pattern, their pattern, and what keeps repeating between you.
                 </p>
                 <Link href={READINGS_PATH} className="ink-button large-button mt-7">
                   Compare reading options <span aria-hidden="true">→</span>
@@ -365,7 +364,7 @@ export default function Home() {
             <div>
               <p className="oracle-eyebrow text-[#c8bca8]">why this exists</p>
               <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] sm:text-5xl">
-                The system is too rich to throw away and too easy to overclaim.
+                The deck becomes a map when someone has lived inside it long enough.
               </h2>
             </div>
             <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
@@ -376,7 +375,7 @@ export default function Home() {
                 That kind of mastery matters because the system becomes recognizable in lived experience: family roles, attraction, creative pressure, money habits, leadership style, and recurring relationship patterns.
               </p>
               <p>
-                So Cardology Pro takes the stronger lane: show the math, apply it to actual people, name the pattern clearly, and let the reading stand or fall by whether it explains something real.
+                The point is simple: calculate the card, apply it to actual people, name the pattern clearly, and see whether it explains something real.
               </p>
             </div>
           </div>
@@ -389,7 +388,7 @@ export default function Home() {
               Find your birth card, then follow the question it raises.
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5b5148] sm:text-lg">
-              The public site is the main path: calculator, meanings, compatibility, famous-person profiles, timing, and honest method pages. Deeper app screens stay secondary to the search experience.
+              Calculate the card, read the meaning, compare the people, and let the next question lead you deeper.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/birth-card-calculator" className="ink-button large-button">

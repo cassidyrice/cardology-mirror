@@ -25,7 +25,7 @@ const glossary = [
 const faqs = [
   {
     q: "Is shadow work in Cardology a prediction?",
-    a: "No. Cardology Pro uses shadow language to name where a card pattern gets distorted in real behavior, relationships, choices, and timing.",
+    a: "Shadow language names where a card pattern gets distorted in real behavior, relationships, choices, and timing.",
   },
   {
     q: "Are challenge karma cards bad?",
