@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/bonds",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function BondsPage() {
@@ -24,9 +25,9 @@ export default function BondsPage() {
       title={title}
       description={description}
       canonicalPath="/bonds"
-      eyebrow="Compatibility app page"
+      eyebrow="Compatibility tool"
       points={[
-        "A public relationship-pattern page that can be indexed on cardologypro.com.",
+        "A secondary relationship-pattern view after the public compatibility calculator and guide.",
         "A working comparison tool for two birthdays, with or without a saved profile.",
         "Internal links back to the birth-card calculator and core Cardology explainers.",
       ]}

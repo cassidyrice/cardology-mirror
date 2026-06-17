@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/timing",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function TimingPage() {
@@ -26,7 +27,7 @@ export default function TimingPage() {
       canonicalPath="/timing"
       eyebrow="Timing page"
       points={[
-        "An indexable explanation of the yearly spread and seven-period Cardology cycle.",
+        "A secondary timing view after the public 52-day period meaning tool.",
         "A personalized timing map when a visitor creates a local profile.",
         "A mobile-first timeline that keeps the app experience on the main website.",
       ]}

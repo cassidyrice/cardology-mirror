@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/reading",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function ReadingPage() {
@@ -26,7 +27,7 @@ export default function ReadingPage() {
       canonicalPath="/reading"
       eyebrow="Deep-dive report"
       points={[
-        "A crawlable page describing the deep reading before any personalized generation begins.",
+        "A secondary deep-reading page after the public calculator and card meaning pages.",
         "A profile-aware report area that stays on the website instead of acting like a separate app.",
         "Clear access-gate handling for paid or code-unlocked readings.",
       ]}

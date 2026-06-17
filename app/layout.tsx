@@ -5,11 +5,11 @@ import { SITE_URL, SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cardology Pro — Your Birth Card, as a Mirror",
+    default: "Cardology Pro — Birth Card Calculator and Meanings",
     template: "%s · Cardology Pro",
   },
   description:
-    "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint. Free calculator, deterministic engine, no forecast claims.",
+    "Find your Cardology birth card, browse all 52 birth card meanings, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -24,16 +24,16 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Cardology Pro — Your Birth Card, as a Mirror",
+    title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint.",
+      "Find your Cardology birth card, browse all 52 birth card meanings, compare compatibility, and learn the 52-card astrology system.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cardology Pro — Your Birth Card, as a Mirror",
+    title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, test it as a mirror, and turn it into a written Card Blueprint.",
+      "Find your Cardology birth card, browse all 52 birth card meanings, compare compatibility, and learn the 52-card astrology system.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },

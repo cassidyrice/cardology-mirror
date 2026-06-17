@@ -70,6 +70,8 @@ export function CompatibilityCalculator() {
 function PairResult({ a, b }: { a: string; b: string }) {
   const pa = parseCard(a);
   const pb = parseCard(b);
+  const aSlug = slugOf(a);
+  const bSlug = slugOf(b);
   const sameSuit = pa?.suit === pb?.suit;
 
   return (
@@ -99,26 +101,26 @@ function PairResult({ a, b }: { a: string; b: string }) {
         </p>
       </div>
 
-      <div className="mt-8 flex flex-col items-center gap-4">
+      <div className="mt-8 flex flex-col items-center gap-3">
         <Link
-          href="/onboarding"
+          href="/cardology-compatibility"
           className="rounded-full bg-foil px-8 py-3 font-serif text-base text-ink transition active:scale-[0.99]"
         >
-          See the full connection →
+          Read the compatibility guide →
         </Link>
-        <p className="max-w-[200px] text-center text-[0.65rem] uppercase tracking-wider text-faint">
-          Open the bonds reading to see where the patterns share a language.
-        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {aSlug && (
+            <Link href={`/birth-card/${aSlug}`} className="rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-wider text-gold">
+              {a} meaning
+            </Link>
+          )}
+          {bSlug && (
+            <Link href={`/birth-card/${bSlug}`} className="rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-wider text-gold">
+              {b} meaning
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
-}
-
-function CardChip({ code }: { code: string }) {
-  // chip logic is now handled by PlayingCard, but keeping the helper if needed elsewhere
-  return null;
-}
-
-function slugFor(code: string): string | null {
-  return slugOf(code);
 }

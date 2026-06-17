@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/journal",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function JournalPage() {
@@ -26,7 +27,7 @@ export default function JournalPage() {
       canonicalPath="/journal"
       eyebrow="Reflection page"
       points={[
-        "An indexable journal page that explains how prompts are generated from daily card patterns.",
+        "A secondary reflection page after the public daily, timing, and meaning content.",
         "Private on-device writing once a visitor creates a local profile.",
         "Mobile-first prompt and entry surfaces that remain part of the main website.",
       ]}

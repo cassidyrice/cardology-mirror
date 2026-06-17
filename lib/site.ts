@@ -14,7 +14,7 @@ export const APP_URL = (
 export const SITE_NAME = "Cardology Pro";
 
 export const SITE_TAGLINE =
-  "Your Cardology birth card as a mirror, not a forecast.";
+  "Birth card calculator, meanings, compatibility, and 52-card astrology.";
 
 export const APP_PATHS = [
   "/today",
@@ -31,6 +31,7 @@ export const MARKETING_PATHS = [
   "/",
   "/birth-card",
   "/birth-card-calculator",
+  "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
   "/what-is-cardology",

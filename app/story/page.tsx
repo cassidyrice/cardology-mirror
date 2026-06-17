@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/story",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function StoryPage() {
@@ -26,7 +27,7 @@ export default function StoryPage() {
       canonicalPath="/story"
       eyebrow="Annual arc page"
       points={[
-        "A public page for the annual Cardology story-arc feature.",
+        "A secondary annual-arc page after the public timing and method pages.",
         "A profile-aware arc rail and written reading that load without leaving the website.",
         "Plain-language framing that keeps timing reflective rather than predictive.",
       ]}

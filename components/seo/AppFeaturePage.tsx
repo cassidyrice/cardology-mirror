@@ -49,16 +49,16 @@ export function AppFeaturePage({
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link
-            href="/onboarding"
+            href="/birth-card-calculator"
             className="ink-button large-button"
           >
-            Create your profile
+            Find your birth card
           </Link>
           <Link
-            href="/birth-card-calculator"
+            href="/onboarding"
             className="paper-button large-button"
           >
-            Find your birth card
+            Create your profile
           </Link>
         </div>
       </header>

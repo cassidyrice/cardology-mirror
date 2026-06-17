@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/self",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function SelfPage() {
@@ -26,7 +27,7 @@ export default function SelfPage() {
       canonicalPath="/self"
       eyebrow="Birth-card profile"
       points={[
-        "A public, indexable overview of the Cardology blueprint feature.",
+        "A secondary profile view after the public birth-card calculator and meaning pages.",
         "A personalized birth-card and ruling-card reading when a local profile is present.",
         "Clear language that frames the result as reflective structure rather than destiny.",
       ]}

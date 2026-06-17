@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     description,
     url: "/today",
   },
+  robots: { index: false, follow: true },
 };
 
 export default function TodayPage() {
@@ -24,9 +25,9 @@ export default function TodayPage() {
       title={title}
       description={description}
       canonicalPath="/today"
-      eyebrow="Cardology app page"
+      eyebrow="Personalized tool"
       points={[
-        "A public explanation of how Cardology Pro treats a daily card as reflection, not prediction.",
+        "A secondary tool for how Cardology Pro treats a daily card as reflection, not prediction.",
         "A personalized daily card view when a local profile exists on this device.",
         "A direct path to create a profile without sending returning visitors away from the website.",
       ]}

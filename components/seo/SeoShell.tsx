@@ -23,20 +23,23 @@ export function SeoShell({
         </a>
         <nav className="hidden items-center gap-6 text-[0.72rem] font-bold uppercase text-[#14110d]/70 sm:flex">
           <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
-            Find Your Card
+            Calculator
           </Link>
-          <Link href="/onboarding" className="transition hover:text-[#14110d]">
-            Card Blueprint
+          <Link href="/birth-card" className="transition hover:text-[#14110d]">
+            Card Meanings
+          </Link>
+          <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
+            Compatibility
+          </Link>
+          <Link href="/52-day-period-meaning-tool" className="transition hover:text-[#14110d]">
+            Period Tool
           </Link>
           <Link href="/what-is-cardology" className="transition hover:text-[#14110d]">
             The Method
           </Link>
-          <Link href="/52-card-astrology-explained" className="transition hover:text-[#14110d]">
-            Honest Limits
-          </Link>
         </nav>
-        <Link href="/onboarding" className="ink-button small-button">
-          Get Blueprint
+        <Link href="/birth-card-calculator" className="ink-button small-button">
+          Find Your Card
         </Link>
       </header>
 
@@ -71,7 +74,6 @@ function SeoFooter() {
           <p className="mb-2 font-serif text-base text-[#14110d]">Start here</p>
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
-            <li><Link href="/onboarding" className="hover:text-[#14110d]">Card Blueprint</Link></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
@@ -88,15 +90,12 @@ function SeoFooter() {
           </ul>
         </div>
         <div>
-          <p className="mb-2 font-serif text-base text-[#14110d]">App pages</p>
+          <p className="mb-2 font-serif text-base text-[#14110d]">Popular cards</p>
           <ul className="space-y-1.5">
-            <li><Link href="/today" className="hover:text-[#14110d]">Daily Card Reading</Link></li>
-            <li><Link href="/self" className="hover:text-[#14110d]">Cardology Blueprint</Link></li>
-            <li><Link href="/timing" className="hover:text-[#14110d]">Yearly Spread</Link></li>
-            <li><Link href="/bonds" className="hover:text-[#14110d]">Bonds</Link></li>
-            <li><Link href="/reading" className="hover:text-[#14110d]">Deep Reading</Link></li>
-            <li><Link href="/story" className="hover:text-[#14110d]">Story Arc</Link></li>
-            <li><Link href="/journal" className="hover:text-[#14110d]">Journal</Link></li>
+            <li><Link href="/birth-card/queen-of-hearts" className="hover:text-[#14110d]">Queen of Hearts</Link></li>
+            <li><Link href="/birth-card/ace-of-spades" className="hover:text-[#14110d]">Ace of Spades</Link></li>
+            <li><Link href="/birth-card/king-of-diamonds" className="hover:text-[#14110d]">King of Diamonds</Link></li>
+            <li><Link href="/birth-card/8-of-diamonds" className="hover:text-[#14110d]">8 of Diamonds</Link></li>
           </ul>
         </div>
       </div>

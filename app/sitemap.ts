@@ -1,36 +1,17 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
 import { allBirthdateSlugs, allCardSlugs } from "@/lib/seo-cards";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = [
-    "/",
-    "/birth-card",
-    "/birth-card-calculator",
-    "/52-day-period-meaning-tool",
-    "/cardology-compatibility",
-    "/birth-card-compatibility-calculator",
-    "/what-is-cardology",
-    "/52-card-astrology-explained",
-    "/birth-card-vs-ruling-card",
-    "/cardology-agent-instructions",
-    "/today",
-    "/self",
-    "/timing",
-    "/bonds",
-    "/reading",
-    "/story",
-    "/journal",
-  ];
 
-  const entries: MetadataRoute.Sitemap = staticPaths.map((p) => ({
+  const entries: MetadataRoute.Sitemap = MARKETING_PATHS.map((p) => ({
     url: `${SITE_URL}${p}`,
     lastModified: now,
     changeFrequency: p === "/" ? "daily" : "weekly",
-    priority: p === "/" ? 1 : 0.8,
+    priority: p === "/" ? 1 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : 0.8,
   }));
 
   for (const slug of allCardSlugs()) {

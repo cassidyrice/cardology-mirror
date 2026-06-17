@@ -28,8 +28,8 @@ export default function CompatibilityCalculatorPage() {
       <p className="prose-reading mb-6 text-mist">
         Enter two birthdays to find both <strong>birth cards</strong> and a first
         read on how they actually connect — not whether the stars approve. For the
-        full picture of where two patterns share a language and where they grind,
-        open the bonds reading.
+        broader picture of where two patterns share a language and where they grind,
+        use the compatibility guide and each card meaning page.
       </p>
 
       <CompatibilityCalculator />
