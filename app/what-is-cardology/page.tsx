@@ -32,7 +32,7 @@ export default function WhatIsCardology() {
         name: "Does Cardology predict the future?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. We treat it as a mirror, not a forecast — a vocabulary for noticing how you tend to operate, not a prediction of events.",
+          text: "No. Cardology Pro treats cards as pattern language for people, relationship dynamics, timing, and recurring behavior, not as fixed forecasts of events.",
         },
       },
       {
@@ -64,7 +64,7 @@ export default function WhatIsCardology() {
         name: "Do I need to believe in Cardology for it to be useful?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Treat the card as a structured prompt. The descriptions name a specific pattern, and your job is to test it against your own behavior. If it doesn't match, discard it. The value is in the noticing, not the believing.",
+          text: "No. Treat the card as a structured pattern map. The descriptions name specific behavior and dynamics you can test against yourself, public figures, and people close to you. If it doesn't clarify anything real, discard it.",
         },
       },
     ],
@@ -79,8 +79,8 @@ export default function WhatIsCardology() {
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           Cardology is a deterministic 52-card system that maps a birthday to a
-          playing card and uses that card as symbolic self-reflection language.
-          Cardology Pro treats it as a mirror for patterns, not as a forecast.
+          playing card and uses that card as pattern language for people,
+          compatibility, timing, and recurring dynamics.
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
@@ -103,12 +103,13 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Why "a mirror, not a forecast"</h2>
+        <h2 className="eyebrow mb-2 text-gold">Why it works best on real people</h2>
         <p className="prose-reading text-mist">
-          We don&rsquo;t use the cards to predict events. We use them to reflect
-          patterns back to you — your strengths, the ways those strengths slip
-          under stress, and where they tip into excess. Nothing here is fixed
-          fate; it&rsquo;s a starting vocabulary for self-awareness.
+          The cards become useful when you apply them to actual lives: your own
+          patterns, the people closest to you, public figures, family roles,
+          attraction, friction, work chemistry, and the places a strength tips
+          into excess. Nothing here is fixed fate; it is a vocabulary for seeing
+          behavior and relationship dynamics with more precision.
         </p>
       </section>
 
@@ -188,12 +189,12 @@ export default function WhatIsCardology() {
         <p className="prose-reading text-mist">
           It is not fortune telling, and on this site it is not treated as one.
           A card cannot tell you what will happen on Tuesday. What it can do is
-          name a recurring pattern with enough precision that you start
-          catching yourself inside it: the specific way you avoid, overreach,
-          spend, withdraw, or take charge. Skeptics are right that no card
-          chooses your behavior. The claim here is smaller and more useful:
-          a fixed, specific description gives you something concrete to test
-          against your own life, and the testing is where the value is.
+          name a recurring pattern with enough precision that you start seeing it
+          in behavior: the specific way someone avoids, overreaches, spends,
+          withdraws, performs, bonds, or takes charge. Skeptics are right that no
+          card chooses anyone&rsquo;s behavior. The claim here is smaller and more
+          useful: a fixed, specific description gives you something concrete to
+          test against real people and real dynamics.
         </p>
       </section>
 
@@ -203,12 +204,13 @@ export default function WhatIsCardology() {
           Three ways, mostly. First, the birth card as a baseline: a standing
           description of your default pattern, useful the way a personality
           framework is useful, as a vocabulary for things you half-knew about
-          yourself. Second, compatibility: comparing two people&rsquo;s cards
-          to name where the friction and the attraction live, in language
-          neither person has to take personally. Third, timing: the same deck
-          mathematics produce daily and yearly cards, which work as structured
-          journal prompts. One pattern per day, checked against what actually
-          happened.
+          yourself. Second, other people: finding the cards of partners, parents,
+          friends, coworkers, artists, leaders, and public figures so the card
+          language becomes visible in real life. Third, compatibility: comparing
+          two people&rsquo;s cards to name where the friction and the attraction live,
+          in language neither person has to take personally. Fourth, timing: the
+          same deck mathematics produce daily and yearly cards, which show the
+          pressure and focus of a chapter.
         </p>
       </section>
 

@@ -19,8 +19,8 @@ const policies = [
     body: "Pages separate fixed birthday-to-card outputs from symbolic interpretation, so readers can see what is calculated and what is editorial explanation.",
   },
   {
-    title: "Mirror, not forecast",
-    body: "Cardology Pro does not present card meanings as predictions, fate, diagnosis, or professional advice.",
+    title: "Real people, not flat labels",
+    body: "Cardology Pro applies card meanings to people, compatibility, timing, and recurring dynamics without reducing a person to one card or replacing professional advice.",
   },
   {
     title: "Searchable and answer-first",
@@ -60,8 +60,9 @@ export default function EditorialPolicyPage() {
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             Cardology Pro publishes educational Cardology pages that explain fixed
-            calculations, symbolic meanings, and practical reflection. The content is
-            not predictive advice and should not replace professional guidance.
+            calculations, card meanings, relationship patterns, timing, and practical
+            examples. The content can name dynamics directly, but it should not replace
+            professional guidance.
           </p>
         </div>
       </header>
@@ -84,8 +85,9 @@ export default function EditorialPolicyPage() {
         </p>
         <p>
           Where a page discusses relationships, work, money, health, or life choices,
-          it is framed as pattern language for reflection. Cardology Pro does not give
-          medical, legal, financial, psychological, or relationship directives.
+          it is framed as pattern language for real people and real dynamics. Cardology
+          Pro can name attraction, friction, pressure, support, and repeating roles; it
+          does not give medical, legal, financial, psychological, or relationship directives.
         </p>
       </section>
 

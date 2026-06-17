@@ -15,12 +15,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Videos - Shadow Reading Films and Explainers",
   description:
-    "Watch Cardology Pro video explainers and shadow-reading films for birth cards, timing, compatibility, and self-reflection.",
+    "Watch Cardology Pro video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
   alternates: { canonical: "/videos" },
   openGraph: {
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
-      "A crawlable hub for Cardology Pro videos: birth-card shadow readings, explainers, timing, compatibility, and self-reflection.",
+      "A crawlable hub for Cardology Pro videos: birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
     url: "/videos",
     type: "website",
   },
@@ -64,14 +64,15 @@ export default function VideosPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Cardology video library</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Cardology videos for birth cards, shadow patterns, and self-reflection.
+          Cardology videos for birth cards, people, shadow patterns, and relationships.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             Cardology Pro videos explain birth-card meanings, shadow patterns, timing,
-            and practical self-reflection. The written pages on this site are the stable
-            citation source; the hosted video library is the place to watch.
+            compatibility, famous-person examples, and practical relationship dynamics.
+            The written pages on this site are the stable citation source; the hosted
+            video library is the place to watch.
           </p>
         </div>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d]">

@@ -8,7 +8,7 @@ import { READINGS_PATH, VIDEO_PATH } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Cardology Pro - Birth Card Calculator, Meanings and Compatibility" },
   description:
-    "Find your Cardology birth card, browse all 52 card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
+    "Find your Cardology birth card, browse all 52 card meanings, compare compatibility, study famous-person profiles, and use the 52-card astrology system to understand real relationship dynamics.",
   alternates: { canonical: "/" },
 };
 
@@ -23,11 +23,11 @@ const proofPoints = [
   },
   {
     label: "compatibility tools",
-    detail: "Compare two cards and read relationship themes without treating the result as fate.",
+    detail: "Compare two cards and read attraction, friction, support, and pressure patterns.",
   },
   {
     label: "timing references",
-    detail: "Use 52-day period language as a reflection frame, not a forecast.",
+    detail: "Use 52-day period language to understand the tone of a current chapter.",
   },
 ];
 
@@ -55,9 +55,10 @@ const pathSteps = [
 const reflectionFrames = [
   "the card your birthday maps to in the 52-card calendar",
   "how birth card and ruling card language differ",
+  "why certain people feel familiar, difficult, magnetic, or exhausting",
   "relationship patterns shown by two-card comparisons",
-  "what each 52-day period can frame for reflection",
-  "where Cardology is useful, limited, or easy to overclaim",
+  "what each 52-day period can reveal about the current chapter",
+  "where Cardology helps explain behavior without reducing a person to one label",
 ];
 
 const searchEntryPoints = [
@@ -79,7 +80,7 @@ const searchEntryPoints = [
   {
     label: "Cardology Videos",
     href: VIDEO_PATH,
-    detail: "Watch Cardology Pro video explainers and shadow-reading films for cards, timing, and self-reflection.",
+    detail: "Watch Cardology Pro video explainers and shadow-reading films for cards, people, timing, and relationship patterns.",
   },
   {
     label: "Personal Readings",
@@ -89,19 +90,19 @@ const searchEntryPoints = [
   {
     label: "Compatibility Calculator",
     href: "/birth-card-compatibility-calculator",
-    detail: "Compare two birth cards and read the relationship pattern without turning it into destiny.",
+    detail: "Compare two birth cards and read the relationship pattern: attraction, friction, shared language, and blind spots.",
   },
   {
     label: "52-Day Period Tool",
     href: "/52-day-period-meaning-tool",
-    detail: "Look up the current card period as timing language for reflection, not prediction.",
+    detail: "Look up the current card period as timing language for choices, pressure, and recurring themes.",
   },
 ];
 
 const notClaims = [
   "predict a future event",
   "prove destiny",
-  "diagnose personality",
+  "reduce a person to one card",
   "use randomness at the calculation layer",
   "borrow scientific validation it does not have",
 ];
@@ -161,11 +162,11 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-pretty font-serif text-2xl leading-relaxed text-[#3d352d] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.16s_both] sm:text-3xl">
-              Find the card your birthday maps to, read its meaning, compare compatibility, and use 52-card astrology as a practical mirror.
+              Find the card your birthday maps to, read its meaning, compare compatibility, and use 52-card astrology to understand real people.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] sm:text-lg">
-              Same birthday, same card structure; no draw, forecast, or borrowed certainty. Cardology Pro is organized around the questions people actually search: what card am I, what does it mean, and how do two cards relate?
+              Same birthday, same card structure. Cardology Pro is organized around the questions people actually search: what card am I, what does it mean, which cards belong to people close to me, and why do certain dynamics repeat?
             </p>
 
             <div className="mt-7 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.28s_both] sm:flex-row">
@@ -228,13 +229,13 @@ export default function Home() {
             </div>
             <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
               <p>
-                Most people arrive through a search: what is my birth card, what does Queen of Hearts mean, are these two cards compatible, or what is a 52-day period?
+                Most people arrive through a search: what is my birth card, what does Queen of Hearts mean, what card is my partner, why does this friend feel so familiar, or are these two cards compatible?
               </p>
               <p>
-                Cardology Pro should answer those questions in one consistent public site. The app can exist for deeper personal work, but the searchable experience starts with calculators, meanings, compatibility, timing, and method pages.
+                Cardology Pro should answer those questions in one consistent public site. The app can exist for deeper personal work, but the searchable experience starts with calculators, meanings, compatibility, famous-person profiles, timing, and method pages.
               </p>
               <p className="font-serif text-2xl leading-snug text-[#f4f0e7]">
-                Not a prophecy. Not a personality test wearing a costume. A structured mirror with visible machinery.
+                The system gets useful when you apply it to actual people: partners, parents, friends, coworkers, artists, leaders, and the dynamics that keep repeating.
               </p>
             </div>
           </div>
@@ -267,7 +268,7 @@ export default function Home() {
                 Patterns you can test in a real week.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-[#4c4339] sm:text-lg">
-                Cardology Pro takes your birth date, runs it through a fixed symbolic system, and returns a structure you can think with, challenge, or discard.
+                Cardology Pro takes a birth date, runs it through a fixed symbolic system, and returns a structure for reading behavior, attraction, friction, timing, and the roles people keep playing with each other.
               </p>
               <ul className="mt-6 grid gap-3 text-sm leading-relaxed text-[#3d352d] sm:text-base">
                 {reflectionFrames.map((item) => (
@@ -294,7 +295,7 @@ export default function Home() {
                 ))}
               </ul>
               <p className="mt-6 font-serif text-2xl leading-snug text-[#f4f0e7]">
-                The math is fixed. The interpretation is a frame. You keep what clarifies.
+                The math is fixed. The interpretation is strongest when it clarifies real behavior and real dynamics.
               </p>
             </article>
           </div>
@@ -335,8 +336,8 @@ export default function Home() {
                   Three clean ways to turn a birth card into a personal reading.
                 </h2>
                 <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                  The public site answers the searchable questions. The paid ladder handles
-                  personal context: one basic report, one focused reading, and one full deep dive.
+                The public site answers the searchable questions. The paid ladder handles
+                  personal context: your card, another person&rsquo;s card, the dynamic between you, and the question that keeps coming back.
                 </p>
                 <Link href={READINGS_PATH} className="ink-button large-button mt-7">
                   Compare reading options <span aria-hidden="true">→</span>
@@ -372,10 +373,10 @@ export default function Home() {
                 Cass was told at five years old that he was the Eight of Diamonds in the Crown Line. He spent decades living inside the symbols, then years reverse-engineering the structure underneath them.
               </p>
               <p>
-                That kind of mastery matters. It still does not prove that cardology predicts your life.
+                That kind of mastery matters because the system becomes recognizable in lived experience: family roles, attraction, creative pressure, money habits, leadership style, and recurring relationship patterns.
               </p>
               <p>
-                So Cardology Pro takes the harder lane: show the math, name the limits, and let the reading stand or fall by whether it clarifies something real.
+                So Cardology Pro takes the stronger lane: show the math, apply it to actual people, name the pattern clearly, and let the reading stand or fall by whether it explains something real.
               </p>
             </div>
           </div>
@@ -388,7 +389,7 @@ export default function Home() {
               Find your birth card, then follow the question it raises.
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5b5148] sm:text-lg">
-              The public site is the main path: calculator, meanings, compatibility, timing, and honest method pages. Deeper app screens stay secondary to the search experience.
+              The public site is the main path: calculator, meanings, compatibility, famous-person profiles, timing, and honest method pages. Deeper app screens stay secondary to the search experience.
             </p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link href="/birth-card-calculator" className="ink-button large-button">
@@ -438,7 +439,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mt-8 text-xs leading-relaxed text-[#5b5148]">
-            Calculated from the deterministic Cardology system. Same birthday, same card, every time. A mirror for noticing patterns, not a forecast.
+            Calculated from the deterministic Cardology system. Same birthday, same card, every time. A pattern language for people, relationships, timing, and recurring dynamics.
           </p>
         </footer>
       </main>

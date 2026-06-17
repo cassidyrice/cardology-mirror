@@ -72,7 +72,8 @@ export default function RootLayout({
           "playing card symbolism",
           "Cardology compatibility",
           "52-day periods",
-          "self-reflection",
+          "relationship dynamics",
+          "public figure birth card profiles",
         ],
         sameAs: [VIDEO_URL],
       },
@@ -87,7 +88,7 @@ export default function RootLayout({
             "@type": "WebSite",
             name: "Cardology Pro Videos",
             url: VIDEO_URL,
-            about: "Cardology birth cards, shadow readings, timing, and self-reflection videos.",
+            about: "Cardology birth cards, shadow readings, timing, famous-person examples, and relationship dynamics videos.",
           },
         ],
         potentialAction: {

@@ -5,10 +5,11 @@ The scheduled generator appends one SEO-safe article to `lib/generated-blog-post
 Rules for public-figure profiles:
 
 - Use only public figures with a verified public birth date.
-- Frame every profile as symbolic pattern language, not diagnosis, prediction, or private motive.
-- Do not claim a card caused a person to act, win, lose, marry, separate, endorse, or commit a public act.
+- Use actual people as teaching examples. The point is to make cards recognizable in public behavior, relationship dynamics, creative choices, leadership patterns, audience bonds, and repeated social roles.
+- Write with confidence about visible patterns. Keep the limits quiet and precise: do not reduce a whole person to one card, claim secret motives, or present the card as the only cause of an event.
+- Do not claim a card alone caused a person to act, win, lose, marry, separate, endorse, or commit a public act.
 - Avoid medical, mental-health, legal, criminal, sexual, or family claims.
-- Discuss public roles and public-facing creative/career patterns only.
+- Discuss public roles, public-facing creative/career patterns, known collaborations, visible conflicts, and relational dynamics that are already part of the public record.
 - Keep political figures neutral: no endorsement, no attack, no certainty about character.
 - Link back to the calculator, the matching birth-card page, and the readings product ladder.
 - Do not publish duplicate slugs, duplicate figure names, or near-identical keyword sets.

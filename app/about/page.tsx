@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Cardology Pro",
   description:
-    "Learn what Cardology Pro covers, how it treats Cardology as a deterministic self-reflection system, and where the site draws claim boundaries.",
+    "Learn what Cardology Pro covers, how it treats Cardology as a deterministic people-and-pattern system, and how it applies cards to real relationship dynamics.",
   alternates: { canonical: "/about" },
 };
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
       "@type": "Thing",
       name: "Cardology",
       description:
-        "A 52-card birth-date system used by Cardology Pro as symbolic self-reflection language.",
+        "A 52-card birth-date system used by Cardology Pro to read people, relationships, timing, and recurring patterns.",
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
@@ -41,9 +41,9 @@ export default function AboutPage() {
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             {SITE_NAME} treats Cardology as a deterministic 52-card birth-date system
-            for self-reflection. The site explains calculations, card meanings, timing
-            language, and compatibility patterns as a mirror, not as fortune-telling
-            or proof of fate.
+            for understanding people, relationship dynamics, timing, and recurring
+            patterns. The site explains calculations, card meanings, compatibility,
+            famous-person profiles, and real-life use cases in plain language.
           </p>
         </div>
       </header>
@@ -56,13 +56,15 @@ export default function AboutPage() {
         </p>
         <p>
           The calculation layer is kept separate from interpretation. The birthday
-          mapping is deterministic; the meaning layer is written as symbolic language
-          for reflection, journaling, pattern recognition, and personal inquiry.
+          mapping is deterministic; the meaning layer is written as pattern language
+          for people, relationship dynamics, journaling, timing, compatibility, and
+          personal inquiry.
         </p>
         <p>
           Cardology Pro does not present Cardology as medical, legal, financial, or
-          psychological advice. It also does not claim that cards predict events. The
-          recurring editorial line is simple: mirror, not forecast.
+          psychological advice. It also does not claim that one card explains all of
+          a person. The recurring editorial line is simple: apply the card to real
+          life, then keep what clarifies.
         </p>
       </section>
 

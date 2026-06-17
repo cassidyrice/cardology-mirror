@@ -105,7 +105,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
   const title = `${topic.name} Birth Card Profile: ${cardLabel}`;
   const seoTitle = `${topic.name} Birth Card Profile`;
   const answer =
-    `${topic.name}'s public birth date maps to the ${cardLabel} birth card in Cardology${rulingLabel ? `, with ${rulingLabel} as the planetary ruling card` : ""}. This profile reads that structure as symbolic pattern language for ${topic.publicFrame}, not as diagnosis or prediction.`;
+    `${topic.name}'s public birth date maps to the ${cardLabel} birth card in Cardology${rulingLabel ? `, with ${rulingLabel} as the planetary ruling card` : ""}. This profile uses a real public figure to make the card easier to recognize in people, creative choices, relationship dynamics, and repeated public patterns.`;
 
   return {
     slug: topic.slug,
@@ -113,9 +113,9 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     title,
     seoTitle,
     description:
-      `${topic.name} birth card profile in Cardology: ${cardLabel}, ruling-card context, public pattern language, and limits for reading a famous personality responsibly.`,
+      `${topic.name} birth card profile in Cardology: ${cardLabel}, ruling-card context, real-person pattern reading, public-facing behavior, and relationship dynamics.`,
     dek:
-      `A public-pattern Cardology profile for ${topic.name}: birth card, ruling card, strengths, shadow range, and how to read the symbolism without pretending it proves private truth.`,
+      `A Cardology profile for ${topic.name}: birth card, ruling card, strengths, shadow range, and how this card can show up in actual people and the dynamics around them.`,
     datePublished: postDate,
     dateModified: postDate,
     readTime: "6 min read",
@@ -131,8 +131,8 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
       {
         heading: `${topic.name}'s Cardology birth card`,
         body: [
-          `${topic.name} is included here because people search public figures to understand Cardology by example. The calculation starts with the public birth date, ${humanDate(topic.birthdate)}, which maps to the ${cardLabel} birth card in the local Cardology Pro engine.`,
-          `The useful reading is structural: the Cardology Pro meaning for ${cardLabel}${birth.title ? `, ${birth.title},` : ""} emphasizes ${cleanGiftText(birth.gifts, topic.angle)}. For a public figure, that does not become a claim about private psychology. It becomes a lens for noticing how ${topic.angle} can show up on a public stage.`,
+          `${topic.name} is included here because Cardology is easiest to learn through actual people. The calculation starts with the public birth date, ${humanDate(topic.birthdate)}, which maps to the ${cardLabel} birth card in the local Cardology Pro engine.`,
+          `The Cardology Pro meaning for ${cardLabel}${birth.title ? `, ${birth.title},` : ""} emphasizes ${cleanGiftText(birth.gifts, topic.angle)}. In a famous-person profile, the card becomes a working lens: how ${topic.angle} may show up through choices, audience bonds, pressure, collaboration, and public role.`,
         ],
         links: [
           { label: `${cardLabel} meaning`, href: `/birth-card/${cardSlug}` },
@@ -143,33 +143,33 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "The ruling-card layer",
         body: [
           rulingLabel
-            ? `The planetary ruling card adds tone. For this profile, the ruling card is ${rulingLabel}${ruling.title ? `, ${ruling.title}` : ""}. Read that as a secondary style layer, not as a second personality verdict.`
-            : "The ruling-card layer adds tone when the system returns one for the date. It should be read as style and expression, not as a second personality label.",
+            ? `The planetary ruling card adds tone. For this profile, the ruling card is ${rulingLabel}${ruling.title ? `, ${ruling.title}` : ""}. Read that as the style layer: the way the core card may come through in voice, timing, pressure, and social pattern.`
+            : "The ruling-card layer adds tone when the system returns one for the date. Read it as style, expression, and relational texture.",
           rulingLabel
             ? `That means the ${cardLabel} is the anchor, while ${rulingLabel} can describe the presentation layer: how the core pattern may appear through audience contact, creative choices, public pressure, and decision style.`
-            : `That means the ${cardLabel} remains the anchor for the public-pattern reading.`,
+            : `That means the ${cardLabel} remains the anchor for the real-person pattern reading.`,
         ],
         links: rulingSlug ? [{ label: `${rulingLabel} meaning`, href: `/birth-card/${rulingSlug}` }] : undefined,
       },
       {
         heading: "Public-life interpretation",
         body: [
-          `${topic.name}'s public frame is ${topic.publicFrame}. Through a Cardology lens, the ${cardLabel} profile is most useful when it asks what kind of repeated public pattern is visible: what the person builds, what they return to, what audience role they occupy, and what kind of pressure their category tends to create.`,
-          `For this profile, the headline theme is ${topic.angle}. A responsible reading keeps that theme connected to visible work and public role. It does not claim access to inner motives, private relationships, health, or destiny.`,
+          `${topic.name}'s public frame is ${topic.publicFrame}. Through a Cardology lens, the ${cardLabel} profile is most useful when it asks what repeats: what the person builds, what they return to, how they bond with an audience, and what kind of friction their role tends to create.`,
+          `For this profile, the headline theme is ${topic.angle}. That theme is the bridge between the card and the person: not a cage, not a verdict, but a practical way to study why certain public dynamics keep forming around the same figure.`,
         ],
       },
       {
         heading: "Strength and shadow range",
         body: [
           `Centered expression: ${cleanGiftText(birth.gifts, "a visible gift pattern")}`,
-          `Shadow range: every card can lose proportion. For ${cardLabel}, the public-safe shadow question is where the themes of ${topic.angle} become too scattered, too controlled, too performative, or too dependent on audience response. This is a symbolic caution, not a factual accusation about ${topic.name}.`,
+          `Shadow range: every card can lose proportion. For ${cardLabel}, the useful question is where the themes of ${topic.angle} become too scattered, too controlled, too performative, or too dependent on audience response. That is how the card becomes readable in real life: through recurring patterns, not one isolated headline.`,
         ],
       },
       {
         heading: "How to use this profile",
         body: [
-          `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card. The point is not celebrity certainty. The point is to make the card language easier to see through a familiar public reference.`,
-          "For a personal reading, start with your own birth date. A real reading should include your question, your context, the birth card, the ruling card, and the current timing layer.",
+          `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
+          "For a personal reading, start with the birth dates and the actual question: a partner, parent, friend, coworker, creative collaborator, or repeated relationship pattern. The best reading combines the card structure with the real context around it.",
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
@@ -183,8 +183,8 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         a: `${topic.name}'s public birth date maps to the ${cardLabel} birth card in the Cardology Pro engine.`,
       },
       {
-        q: `Is this ${topic.name} profile a prediction?`,
-        a: "No. It is symbolic pattern language based on a public birth date and public role. It is not diagnosis, fate, or a claim about private motives.",
+        q: `Can a birth card explain why ${topic.name} behaves the way they do?`,
+        a: "It can give a strong pattern lens for public choices, relationship dynamics, and recurring themes. It should not reduce a whole person to one card or claim private facts that are not visible.",
       },
       {
         q: `Can I compare my card with ${topic.name}'s card?`,

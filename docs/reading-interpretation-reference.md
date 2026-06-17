@@ -798,4 +798,4 @@ The PDF references these sources and systems as supporting material:
 
 ## 20. One-Sentence Summary
 
-A great cardology reading uses the Birth Card, Planetary Ruling Card, Karma Cards, Life Spread, yearly timing, relationship connections, and client interview context to turn unconscious patterns into conscious choices, while keeping the client empowered as the creator of their own destiny.
+A great cardology reading uses the Birth Card, Planetary Ruling Card, Karma Cards, Life Spread, yearly timing, relationship connections, actual people, and client interview context to turn unconscious patterns into conscious choices. It should explain why certain dynamics feel familiar, magnetic, difficult, or repetitive while keeping the client empowered as the creator of their own destiny.

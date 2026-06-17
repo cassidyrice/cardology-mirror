@@ -5,7 +5,7 @@ import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
 
 const title = "Cardology Yearly Spread";
 const description =
-  "Explore the Cardology yearly spread, seven 52-day periods, current planetary chapter, and timing cards as a reflection system rather than a prediction engine.";
+  "Explore the Cardology yearly spread, seven 52-day periods, current planetary chapter, and timing cards as pattern language for current pressure, choices, relationships, and recurring themes.";
 
 export const metadata: Metadata = {
   title: "Cardology Yearly Spread and 52-Day Periods",

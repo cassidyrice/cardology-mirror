@@ -60,7 +60,7 @@ Use warm, spiritual, psychologically meaningful language. Use the words:
 - **Challenge Karma Meaning**
 - **Support Karma Meaning**
 
-Avoid sounding too academic, mechanical, or overly mystical. The tone should feel usable for self-reflection, spiritual growth, journaling, cardology calendars, and personal development.
+Avoid sounding too academic, mechanical, or overly mystical. The tone should feel usable for reading real people, relationship dynamics, family roles, attraction, friction, spiritual growth, journaling, cardology calendars, and personal development.
 
 ## Established Shadow / Alignment phrasing examples
 

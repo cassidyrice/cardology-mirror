@@ -65,15 +65,15 @@ export default function ReadingsPage() {
           name: "Which Cardology reading should I start with?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Start with the $29 basic birth card report if you want the core structure. Choose the $99 one-question reading for one focused situation. Choose the $199 deep dive for the fullest personal map.",
+            text: "Start with the $29 basic birth card report if you want the core structure. Choose the $99 one-question reading for one focused person, relationship, or situation. Choose the $199 deep dive for the fullest personal and relational map.",
           },
         },
         {
           "@type": "Question",
-          name: "Are Cardology readings predictions?",
+          name: "Can a Cardology reading look at another person or relationship?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. Cardology Pro frames readings as symbolic pattern language and reflection, not as prediction, diagnosis, legal advice, medical advice, financial advice, or certainty about fate.",
+            text: "Yes. Cardology is often most useful when it compares real people: partners, family members, friends, coworkers, creative collaborators, or repeated dynamics. A reading can name the pattern without reducing anyone to one card.",
           },
         },
         {
@@ -95,7 +95,7 @@ export default function ReadingsPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Personal Cardology readings</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Choose the amount of mirror you actually need.
+          Choose the reading for the person, question, or dynamic you are trying to understand.
         </h1>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
           Cardology Pro has one clear product ladder: a $29 basic birth card report,
@@ -104,9 +104,10 @@ export default function ReadingsPage() {
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Start with the $29 report for your core birth-card structure. Move to
-            the $99 reading when you have one specific question. Choose the $199
-            deep dive when you want the fullest personal Cardology map.
+            Start with the $29 report for one person&rsquo;s core birth-card structure.
+            Move to the $99 reading when you have one specific question about a
+            person, relationship, or situation. Choose the $199 deep dive when you
+            want the fullest personal and relational Cardology map.
           </p>
         </div>
       </header>
@@ -153,20 +154,21 @@ export default function ReadingsPage() {
 
       <section className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
-          <h2 className="font-serif text-3xl text-[#14110d]">What every reading will and will not do</h2>
+          <h2 className="font-serif text-3xl text-[#14110d]">What every reading can look at</h2>
           <p className="mt-4 text-base leading-relaxed text-[#5b5148]">
             A Cardology Pro reading uses the deterministic birth-card system, then
-            turns it into useful language for self-reflection. It can name a pattern,
-            question, pressure point, or timing frame. It does not promise an event,
-            diagnose a person, or replace professional advice.
+            turns it into useful language for behavior, compatibility, attraction,
+            friction, family roles, creative pressure, money habits, timing, and the
+            patterns people keep repeating with each other. It should clarify the
+            person or dynamic without flattening anyone into a single card.
           </p>
         </div>
         <div className="border border-[#14110d]/15 bg-[#14110d] p-5 text-[#f4f0e7]">
           <h2 className="font-serif text-3xl">Start with the calculator if you are unsure.</h2>
           <p className="mt-4 text-base leading-relaxed text-[#d7cdbc]">
-            If you do not know your card yet, calculate it first. The report and
-            readings become stronger when you can already name the birth card and
-            ruling-card layer.
+            If you do not know the card yet, calculate it first. The report and
+            readings become stronger when you can name your card, another person&rsquo;s
+            card, and the real-life question between them.
           </p>
           <Link href="/birth-card-calculator" className="mt-5 inline-block text-[#d9b26a] underline underline-offset-4">
             Open the Birth Card Calculator →

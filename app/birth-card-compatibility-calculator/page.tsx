@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Can Cardology decide whether a relationship should continue?",
-    a: "No. It can name patterns and friction points, but relationship decisions need real-world context.",
+    a: "It can name the pattern with surprising clarity: where two people bond, where they trigger each other, and what each person tends to need. The actual decision still belongs to the people living it.",
   },
   {
     q: "Should I compare ruling cards too?",
@@ -67,13 +67,14 @@ export default function CompatibilityCalculatorPage() {
         <p className="prose-reading text-mist">
           The birth card compatibility calculator converts two birthdays into
           Cardology birth cards, then compares whether the cards share a suit or lead
-          from different life domains. It names relationship patterns; it does not
-          produce a soulmate score or relationship verdict.
+          from different life domains. Use it to read attraction, friction, support,
+          blind spots, and why the dynamic may feel the way it does.
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
         Enter two birthdays to find both <strong>birth cards</strong> and a first
-        read on how they actually connect — not whether the stars approve. For the
+        read on how they actually connect: what feels natural, what gets tense, and
+        where each person may be speaking a different symbolic language. For the
         broader picture of where two patterns share a language and where they grind,
         use the compatibility guide and each card meaning page.
       </p>
@@ -85,7 +86,8 @@ export default function CompatibilityCalculatorPage() {
         <p className="prose-reading text-mist">
           The calculator shows each person&rsquo;s birth card and whether they share
           a suit. Same suit means a shared first instinct; different suits mean
-          you lead from different places. It&rsquo;s a starting point, not a verdict —
+          you lead from different places. It&rsquo;s a starting point for reading the
+          dynamic with more precision —
           read more about{" "}
           <Link href="/cardology-compatibility" className="text-gold underline underline-offset-4">
             how Cardology compatibility works
