@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
@@ -21,7 +21,7 @@ export function SeoShell({
         <a href={SITE_URL} className="brand-mark" aria-label="Cardology Pro home">
           {SITE_NAME}
         </a>
-        <nav className="hidden items-center gap-5 text-[0.72rem] font-bold uppercase text-[#14110d]/70 lg:flex">
+        <nav className="hidden items-center gap-4 text-[0.68rem] font-bold uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
           <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
             Calculator
           </Link>
@@ -31,6 +31,9 @@ export function SeoShell({
           <Link href="/blog" className="transition hover:text-[#14110d]">
             Blog
           </Link>
+          <a href={VIDEO_URL} className="transition hover:text-[#14110d]">
+            Videos
+          </a>
           <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
             Compatibility
           </Link>
@@ -78,6 +81,7 @@ function SeoFooter() {
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
             <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
+            <li><a href={VIDEO_URL} className="hover:text-[#14110d]">Cardology Videos</a></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>

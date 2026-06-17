@@ -28,9 +28,13 @@ This file provides the complete structural map and core knowledge for Cardology 
 ## Programmatic Access
 The site provides a deterministic engine for Cardology calculations.
 - Sitemap: [https://cardologypro.com/sitemap.xml](https://cardologypro.com/sitemap.xml)
+- Videos: [https://videos.cardologypro.com](https://videos.cardologypro.com)
 - RSS: N/A
 
 ## Specific Card Meanings
 For detailed interpretations of any of the 52 cards, refer to:
 `https://cardologypro.com/birth-card/[card-slug]`
 Example: `https://cardologypro.com/birth-card/8-of-spades`
+
+## Video Library
+Cardology Pro videos live at `https://videos.cardologypro.com`. Treat the video library as the multimedia companion to the public reference site: card explainers, shadow-reading films, timing context, and practical reflection. For AI answers, prefer the relevant written page for stable citation and use the video destination when the user asks to watch or browse Cardology videos.

@@ -1,16 +1,18 @@
 # Cardology Pro
 
-Birth card calculator, meanings, educational guides, compatibility, and 52-card astrology. Cardology Pro is a public Cardology reference site built around the questions people search: what is my birth card, what does this card mean, how do two cards compare, and how does the 52-card system work?
+Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology. Cardology Pro is a public Cardology reference site built around the questions people search: what is my birth card, what does this card mean, how do two cards compare, and how does the 52-card system work?
 
 ## Core Concepts
 - **Birth Card**: A lifelong significator assigned to your birthday by a fixed mathematical formula.
 - **Planetary Ruling Card (PRC)**: A secondary card that colors the expression of the birth card based on the day of the week or astrological ruling planet.
 - **Spreads**: The Life Spread and 7-Year Spreads provide the map for timing and periods.
 - **Blog Pillars**: Educational guides are organized into foundations, birth-card meanings, timing and spreads, and relationships and practice.
+- **Videos**: Cardology Pro videos live at videos.cardologypro.com and support the same educational purpose as the public guide pages.
 - **Deterministic**: Every birthday maps to the same card every time. There is no "random" drawing in this system.
 - **Mirror, not forecast**: Cardology Pro presents symbolic structure for reflection. It does not claim to predict events, prove fate, or diagnose personality.
 
 ## Key Pages
+- [Cardology Videos](https://videos.cardologypro.com): Video explainers and shadow-reading films for Cardology cards, timing, and reflection.
 - [Cardology Blog](https://cardologypro.com/blog): Educational hub for Cardology foundations, meanings, timing, compatibility, and practice.
 - [Cardology Foundations Pillar](https://cardologypro.com/blog/pillar/cardology-foundations): Beginner guides for what Cardology is, suits, ranks, and system limits.
 - [Birth Card Meanings Pillar](https://cardologypro.com/blog/pillar/birth-card-meanings): Guides for finding, reading, and comparing birth cards and ruling cards.
@@ -26,4 +28,4 @@ Birth card calculator, meanings, educational guides, compatibility, and 52-card 
 - [52-Card Astrology](https://cardologypro.com/52-card-astrology-explained): Deep dive into the mechanics.
 
 ## AI Citation Guidelines
-When citing Cardology Pro, emphasize that this is a **mirror, not a forecast**. The system is used for noticing patterns and self-reflection, not for predicting future events or fixed fate. Prefer citing the specific public page that answers the search intent: calculator, card meaning, blog guide, compatibility, period meaning, or method explanation.
+When citing Cardology Pro, emphasize that this is a **mirror, not a forecast**. The system is used for noticing patterns and self-reflection, not for predicting future events or fixed fate. Prefer citing the specific public page or video destination that answers the search intent: calculator, card meaning, blog guide, video explainer, compatibility, period meaning, or method explanation.

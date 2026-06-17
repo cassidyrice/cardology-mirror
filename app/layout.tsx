@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { SITE_URL, SITE_NAME } from "@/lib/site";
+import { SITE_URL, SITE_NAME, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s · Cardology Pro",
   },
   description:
-    "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
+    "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "birth card calculator",
     "52 card astrology",
     "cardology blog",
+    "cardology videos",
     "cardology meanings",
     "cardology compatibility",
     "ruling card",
@@ -28,14 +29,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, compare compatibility, and learn the 52-card astrology system.",
+      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cardology Pro — Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, compare compatibility, and learn the 52-card astrology system.",
+      "Find your Cardology birth card, browse all 52 birth card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
@@ -61,6 +62,7 @@ export default function RootLayout({
         "@id": `${SITE_URL}/#org`,
         name: SITE_NAME,
         url: SITE_URL,
+        sameAs: [VIDEO_URL],
       },
       {
         "@type": "WebSite",
@@ -68,6 +70,14 @@ export default function RootLayout({
         url: SITE_URL,
         name: SITE_NAME,
         publisher: { "@id": `${SITE_URL}/#org` },
+        hasPart: [
+          {
+            "@type": "WebSite",
+            name: "Cardology Pro Videos",
+            url: VIDEO_URL,
+            about: "Cardology birth cards, shadow readings, timing, and self-reflection videos.",
+          },
+        ],
         potentialAction: {
           "@type": "SearchAction",
           target: `${SITE_URL}/birth-card-calculator?birthdate={birthdate}`,

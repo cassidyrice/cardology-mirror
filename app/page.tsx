@@ -2,10 +2,12 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 
+import { VIDEO_URL } from "@/lib/site";
+
 export const metadata: Metadata = {
   title: { absolute: "Cardology Pro - Birth Card Calculator, Meanings and Compatibility" },
   description:
-    "Find your Cardology birth card, browse all 52 card meanings, read educational guides, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
+    "Find your Cardology birth card, browse all 52 card meanings, read educational guides, watch videos, compare compatibility, and learn the 52-card astrology system. Mirror, not forecast.",
   alternates: { canonical: "/" },
 };
 
@@ -74,6 +76,11 @@ const searchEntryPoints = [
     detail: "Read educational guides organized by foundations, card meanings, timing, compatibility, and practice.",
   },
   {
+    label: "Cardology Videos",
+    href: VIDEO_URL,
+    detail: "Watch Cardology Pro video explainers and shadow-reading films for cards, timing, and self-reflection.",
+  },
+  {
     label: "Compatibility Calculator",
     href: "/birth-card-compatibility-calculator",
     detail: "Compare two birth cards and read the relationship pattern without turning it into destiny.",
@@ -106,7 +113,7 @@ export default function Home() {
           <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
             Cardology Pro
           </Link>
-          <nav className="hidden items-center gap-5 text-[0.72rem] uppercase text-[#14110d]/70 lg:flex">
+          <nav className="hidden items-center gap-4 text-[0.68rem] uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
             <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
               Calculator
             </Link>
@@ -116,6 +123,9 @@ export default function Home() {
             <Link href="/blog" className="transition hover:text-[#14110d]">
               Blog
             </Link>
+            <a href={VIDEO_URL} className="transition hover:text-[#14110d]">
+              Videos
+            </a>
             <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
               Compatibility
             </Link>
@@ -357,6 +367,7 @@ export default function Home() {
               <ul className="space-y-1.5">
                 <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
                 <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
+                <li><a href={VIDEO_URL} className="hover:text-[#14110d]">Cardology Videos</a></li>
                 <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
                 <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Meaning Tool</Link></li>
                 <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>

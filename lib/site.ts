@@ -13,8 +13,10 @@ export const APP_URL = (
 
 export const SITE_NAME = "Cardology Pro";
 
+export const VIDEO_URL = "https://videos.cardologypro.com";
+
 export const SITE_TAGLINE =
-  "Birth card calculator, meanings, educational guides, compatibility, and 52-card astrology.";
+  "Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology.";
 
 export const APP_PATHS = [
   "/today",
