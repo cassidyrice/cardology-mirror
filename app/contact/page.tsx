@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact Cardology Pro",
   description:
-    "Contact Cardology Pro for corrections, Cardology content questions, video questions, partnerships, and public site feedback.",
+    "Contact Cardology Pro for reading requests, corrections, Cardology content questions, video questions, partnerships, and public site feedback.",
   alternates: { canonical: "/contact" },
 };
 
@@ -44,6 +44,7 @@ export default function ContactPage() {
 
       <section className="grid gap-4 sm:grid-cols-2">
         {[
+          ["Reading requests", "Include the reading option, birth date, and question or focus area if you are requesting a $99 or $199 personal reading."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

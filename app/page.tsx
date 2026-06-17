@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 
-import { VIDEO_PATH } from "@/lib/site";
+import { READING_OFFERS } from "@/lib/products";
+import { READINGS_PATH, VIDEO_PATH } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "Cardology Pro - Birth Card Calculator, Meanings and Compatibility" },
@@ -81,6 +82,11 @@ const searchEntryPoints = [
     detail: "Watch Cardology Pro video explainers and shadow-reading films for cards, timing, and self-reflection.",
   },
   {
+    label: "Personal Readings",
+    href: READINGS_PATH,
+    detail: "Choose the $29 basic report, $99 one-question reading, or $199 full Cardology deep dive.",
+  },
+  {
     label: "Compatibility Calculator",
     href: "/birth-card-compatibility-calculator",
     detail: "Compare two birth cards and read the relationship pattern without turning it into destiny.",
@@ -125,6 +131,9 @@ export default function Home() {
             </Link>
             <Link href={VIDEO_PATH} className="transition hover:text-[#14110d]">
               Videos
+            </Link>
+            <Link href={READINGS_PATH} className="transition hover:text-[#14110d]">
+              Readings
             </Link>
             <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
               Compatibility
@@ -317,6 +326,39 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#eadfcd] px-5 py-16 sm:px-8 lg:px-10">
+          <div className="mx-auto max-w-7xl">
+            <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
+              <div>
+                <p className="oracle-eyebrow">product ladder</p>
+                <h2 className="mt-4 max-w-xl font-serif text-4xl leading-none sm:text-5xl">
+                  Three clean ways to turn a birth card into a personal reading.
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
+                  The public site answers the searchable questions. The paid ladder handles
+                  personal context: one basic report, one focused reading, and one full deep dive.
+                </p>
+                <Link href={READINGS_PATH} className="ink-button large-button mt-7">
+                  Compare reading options <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+              <div className="grid gap-4 lg:grid-cols-3">
+                {READING_OFFERS.map((offer) => (
+                  <Link
+                    key={offer.slug}
+                    href={`${READINGS_PATH}#${offer.slug}`}
+                    className="block border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5 transition hover:bg-[#fffaf0]"
+                  >
+                    <p className="font-serif text-3xl text-[#9e3d24]">{offer.priceLabel}</p>
+                    <h3 className="mt-3 font-serif text-2xl leading-none text-[#14110d]">{offer.name}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{offer.oneLine}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="relative z-10 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
@@ -368,6 +410,7 @@ export default function Home() {
                 <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
                 <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
                 <li><Link href={VIDEO_PATH} className="hover:text-[#14110d]">Cardology Videos</Link></li>
+                <li><Link href={READINGS_PATH} className="hover:text-[#14110d]">Personal Readings</Link></li>
                 <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
                 <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Meaning Tool</Link></li>
                 <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
@@ -381,6 +424,7 @@ export default function Home() {
                 <li><Link href="/cardology-compatibility" className="hover:text-[#14110d]">Cardology Compatibility</Link></li>
                 <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
                 <li><Link href="/shadow-karma-guide" className="hover:text-[#14110d]">Shadow &amp; Karma Guide</Link></li>
+                <li><Link href={READINGS_PATH} className="hover:text-[#14110d]">$29 / $99 / $199 Readings</Link></li>
               </ul>
             </div>
             <div>

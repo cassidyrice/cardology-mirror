@@ -18,6 +18,7 @@ export const VIDEO_URL = (
 ).replace(/\/$/, "");
 
 export const VIDEO_PATH = "/videos";
+export const READINGS_PATH = "/readings";
 
 export const SITE_TAGLINE =
   "Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology.";
@@ -37,6 +38,7 @@ export const MARKETING_PATHS = [
   "/",
   "/about",
   "/videos",
+  "/readings",
   "/blog",
   "/birth-card",
   "/birth-card-calculator",

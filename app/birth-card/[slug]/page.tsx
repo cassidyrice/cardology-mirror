@@ -92,6 +92,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const dates = birthDatesForCard(card);
   const related = relatedCards(card);
   const faqs = cardFaqs(card, dates);
+  const angles = interpretiveAngles(card);
 
   const jsonLd = [
     breadcrumbJsonLd([
@@ -149,6 +150,22 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p>
           In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card).toLowerCase()} has to offer: {card.sweetSpot}
         </p>
+      </Section>
+
+      <Section title="Interpretive variations to compare">
+        <p>
+          Different Cardology readers tend to emphasize different facets of the same card.
+          Use these original comparison lenses to broaden the {card.label} meaning without
+          turning the card into a fixed personality label.
+        </p>
+        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          {angles.map((angle) => (
+            <div key={angle.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <h3 className="font-serif text-base text-bone">{angle.label}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-mist">{angle.body}</p>
+            </div>
+          ))}
+        </div>
       </Section>
 
       <Section title={`${card.label} personality`}>
@@ -586,4 +603,53 @@ function rankTheme(rank: string): string {
     K: "leadership, command, and mature stewardship",
   };
   return themes[rank] ?? "card expression";
+}
+
+function interpretiveAngles(card: CardSeo): { label: string; body: string }[] {
+  const special = specialCardAngle(card);
+  return [
+    {
+      label: "Traditional birth-card lens",
+      body:
+        special ||
+        `Read the ${card.label} as ${rankTheme(card.rank).toLowerCase()} moving through ${card.suitDomain.toLowerCase()}. This is the stable, birth-date layer: it does not change with mood, age, or a random card draw.`,
+    },
+    {
+      label: "Modern personality lens",
+      body:
+        `In modern language, the ${card.label} describes a repeatable operating pattern: how someone tends to seek safety, power, connection, value, or meaning through ${suitDomainPlain(card)}.`,
+    },
+    {
+      label: "Relationship and work lens",
+      body:
+        `In relationships, this card often shows ${relationshipTheme(card)}. At work, it wants environments where ${workTheme(card)}. The same pattern can be magnetic when centered and exhausting when overused.`,
+    },
+    {
+      label: "Shadow-integration lens",
+      body:
+        `The shadow is not a flaw to dramatize; it is the card losing proportion. For the ${card.label}, integration means noticing when the gift becomes too quiet, too loud, or too hungry for control.`,
+    },
+  ];
+}
+
+function specialCardAngle(card: CardSeo): string | null {
+  const special: Record<string, string> = {
+    "ace-of-spades":
+      "The Ace of Spades is often treated as a threshold card: identity, transformation, mystery, ambition, and the pressure to make meaning out of intensity. Read it as initiation into deeper responsibility, not as automatic heaviness.",
+    "queen-of-hearts":
+      "The Queen of Hearts is often read through emotional authority: care, devotion, charisma, family feeling, and the skill of holding people without owning them. The mature form nurtures without building dependency.",
+    "king-of-diamonds":
+      "The King of Diamonds is often read as mastery of value: business judgment, resource stewardship, pricing power, and the challenge of using authority without reducing people to assets.",
+    "8-of-diamonds":
+      "The Eight of Diamonds is often read as concentrated value power: ambition, financial visibility, brand magnetism, and the lesson of using influence without becoming controlled by status.",
+    "jack-of-diamonds":
+      "The Jack of Diamonds is often read as the messenger of value: sales, taste, charm, opportunity, and the need to mature from clever exchange into honest worth.",
+    "queen-of-spades":
+      "The Queen of Spades is often read as inner discipline and self-mastery: spiritual labor, restraint, precision, and the ability to transform pressure into embodied wisdom.",
+    "king-of-clubs":
+      "The King of Clubs is often read as command of thought: teaching, strategy, mental authority, and the responsibility to use certainty in service of truth instead of dominance.",
+    "10-of-hearts":
+      "The Ten of Hearts is often read as social and emotional visibility: family, audience, belonging, celebration, and the pressure to carry the feeling of the room.",
+  };
+  return special[card.slug] ?? null;
 }

@@ -1,3 +1,5 @@
+import GENERATED_BLOG_POSTS from "./generated-blog-posts.json";
+
 export type BlogPillarSlug =
   | "cardology-foundations"
   | "birth-card-meanings"
@@ -62,6 +64,8 @@ export type BlogPost = {
 };
 
 export const BLOG_UPDATED = "2026-06-17";
+
+const GENERATED_POSTS = GENERATED_BLOG_POSTS as BlogPost[];
 
 export const BLOG_PILLARS: BlogPillar[] = [
   {
@@ -230,7 +234,7 @@ export const BLOG_PILLARS: BlogPillar[] = [
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+export const CORE_BLOG_POSTS: BlogPost[] = [
   {
     slug: "what-cardology-is-and-is-not",
     pillar: "cardology-foundations",
@@ -1013,6 +1017,8 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
 ];
+
+export const BLOG_POSTS: BlogPost[] = [...CORE_BLOG_POSTS, ...GENERATED_POSTS];
 
 export function allBlogPillars(): BlogPillar[] {
   return BLOG_PILLARS;
