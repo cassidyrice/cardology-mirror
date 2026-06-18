@@ -1,44 +1,30 @@
 import type { MetadataRoute } from "next";
-import { allBlogPaths } from "@/lib/blog";
+import { allBlogPaths, BLOG_UPDATED } from "@/lib/blog";
 import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
-import { allBirthdateSlugs, allCardSlugs } from "@/lib/seo-cards";
+import { normalizeSitemapUrl } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+const CORE_UPDATED = "2026-06-18";
 
+function date(value: string): Date {
+  return new Date(`${value}T00:00:00.000Z`);
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = MARKETING_PATHS.map((p) => ({
-    url: `${SITE_URL}${p}`,
-    lastModified: now,
+    url: normalizeSitemapUrl(`${SITE_URL}${p}`),
+    lastModified: date(CORE_UPDATED),
     changeFrequency: p === "/" ? "daily" : "weekly",
     priority: p === "/" ? 1 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" ? 0.85 : 0.8,
   }));
 
   for (const path of allBlogPaths().filter((p) => p !== "/blog")) {
     entries.push({
-      url: `${SITE_URL}${path}`,
-      lastModified: now,
+      url: normalizeSitemapUrl(`${SITE_URL}${path}`),
+      lastModified: date(BLOG_UPDATED),
       changeFrequency: path.startsWith("/blog/pillar/") ? "weekly" : "monthly",
       priority: path.startsWith("/blog/pillar/") ? 0.78 : 0.72,
-    });
-  }
-
-  for (const slug of allCardSlugs()) {
-    entries.push({
-      url: `${SITE_URL}/birth-card/${slug}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.75,
-    });
-  }
-
-  for (const slug of allBirthdateSlugs()) {
-    entries.push({
-      url: `${SITE_URL}/birth-card/${slug}`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.55,
     });
   }
 

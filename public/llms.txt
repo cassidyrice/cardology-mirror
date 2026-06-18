@@ -36,6 +36,8 @@
 - [External Video Channel](https://videos.cardologypro.com): Hosted playback library for Cardology Pro videos.
 
 ## URL Patterns
+- Primary sitemap: `https://cardologypro.com/sitemap.xml`
+- Birth-card meanings sitemap: `https://cardologypro.com/sitemap-birth-cards.xml`
 - Card meaning pages: `https://cardologypro.com/birth-card/[card-slug]`
 - Birthday pages: `https://cardologypro.com/birth-card/[month]-[day]`
 - Blog articles: `https://cardologypro.com/blog/[article-slug]`

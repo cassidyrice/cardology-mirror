@@ -7,7 +7,8 @@
 - Canonical domain: https://cardologypro.com
 - Video hub: https://cardologypro.com/videos
 - Hosted video channel: https://videos.cardologypro.com
-- Sitemap: https://cardologypro.com/sitemap.xml
+- Primary sitemap: https://cardologypro.com/sitemap.xml
+- Birth-card meanings sitemap: https://cardologypro.com/sitemap-birth-cards.xml
 - Robots: https://cardologypro.com/robots.txt
 - Short LLM file: https://cardologypro.com/llms.txt
 
