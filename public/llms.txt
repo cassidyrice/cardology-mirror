@@ -14,7 +14,7 @@
 - [What Is Cardology?](https://cardologypro.com/what-is-cardology): Plain-English definition and claim boundary.
 - [52-Card Astrology Explained](https://cardologypro.com/52-card-astrology-explained): How the deck maps to suits, ranks, weeks, and timing.
 - [Birth Card vs Ruling Card](https://cardologypro.com/birth-card-vs-ruling-card): Difference between the core card and ruling-card layer.
-- [Compatibility Calculator](https://cardologypro.com/birth-card-compatibility-calculator): Compare two birth cards for attraction, friction, support, blind spots, and relationship dynamics.
+- [Compatibility Calculator](https://cardologypro.com/birth-card-compatibility-calculator): Compare two birth cards, Moon-plus-13 Life Path constitutions, shared Life Path cards, and relationship cross-reference roles.
 - [52-Day Period Meaning Tool](https://cardologypro.com/52-day-period-meaning-tool): Read period cards as reflective timing language.
 - [Cardology Readings](https://cardologypro.com/readings): Product ladder for the $29 basic birth card report, $99 one-question reading, and $199 full deep dive.
 
@@ -22,7 +22,7 @@
 - [Cardology Foundations](https://cardologypro.com/blog/pillar/cardology-foundations): Beginner guides for the deck, suits, ranks, and system limits.
 - [Birth Card Meanings](https://cardologypro.com/blog/pillar/birth-card-meanings): Guides for reading, comparing, and understanding card meanings.
 - [Timing and Spreads](https://cardologypro.com/blog/pillar/timing-and-spreads): 52-day periods, planetary periods, daily cards, and spreads.
-- [Relationships and Practice](https://cardologypro.com/blog/pillar/relationships-and-practice): Compatibility, karma-card language, work, money, love, and journaling.
+- [Relationships and Practice](https://cardologypro.com/blog/pillar/relationships-and-practice): Compatibility, Life Path cross-references, karma-card language, work, money, love, and journaling.
 
 ## Trust
 - [About Cardology Pro](https://cardologypro.com/about): What the site covers and how it frames Cardology.

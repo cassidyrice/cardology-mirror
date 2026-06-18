@@ -5,13 +5,13 @@ import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculato
 import { SITE_URL, VIDEO_PATH } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Birth Card Compatibility Calculator — Compare Two Cards",
+  title: "Birth Card Compatibility Calculator — Life Path Cross-Reference",
   description:
-    "Free birth card compatibility calculator. Enter two birthdays to see both Cardology birth cards and how their patterns connect.",
+    "Free Cardology compatibility calculator. Enter two birthdays to compare birth cards, Life Path constitutions, shared cards, and relationship cross-references.",
   alternates: { canonical: "/birth-card-compatibility-calculator" },
   openGraph: {
     title: "Birth Card Compatibility Calculator",
-    description: "Enter two birthdays to see both birth cards and how their patterns connect.",
+    description: "Enter two birthdays to compare birth cards, Life Path constitutions, shared cards, and relationship cross-references.",
     url: "/birth-card-compatibility-calculator",
   },
 };
@@ -20,6 +20,10 @@ const faqs = [
   {
     q: "Does same suit mean better compatibility?",
     a: "No. Same suit can feel familiar, but it can also amplify the same blind spots.",
+  },
+  {
+    q: "What is a Life Path constitution?",
+    a: "It is the Moon support card plus the 13 Life Path cards starting from the birth card in the Life Spread. It shows the person's mental, love, action, growth, lesson, shadow, reward, responsibility, embodiment, and command lines.",
   },
   {
     q: "Can Cardology decide whether a relationship should continue?",
@@ -65,18 +69,17 @@ export default function CompatibilityCalculatorPage() {
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">
-          The birth card compatibility calculator converts two birthdays into
-          Cardology birth cards, then compares whether the cards share a suit or lead
-          from different life domains. Use it to read attraction, friction, support,
-          blind spots, and why the dynamic may feel the way it does.
+          Enter two birthdays to see both birth cards, each person&rsquo;s Moon-plus-13
+          Life Path constitution, where the other person&rsquo;s birth card lands inside
+          that spectrum, and which Life Path cards both people share.
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
-        Enter two birthdays to find both <strong>birth cards</strong> and a first
-        read on how they actually connect: what feels natural, what gets tense, and
-        where each person may be speaking a different symbolic language. For the
-        broader picture of where two patterns share a language and where they grind,
-        use the compatibility guide and each card meaning page.
+        The first layer is simple: two birth cards meeting. The deeper layer is the
+        Life Spread. Each person carries a spectrum: Moon support, primary birth-card
+        energy, Mercury mind, Venus love, Mars action, Jupiter growth, Saturn lesson,
+        Uranus pivot, Neptune dream, Pluto shadow, Princess reward, Prince
+        responsibility, Queen embodiment, and King command.
       </p>
 
       <CompatibilityCalculator />
@@ -84,10 +87,12 @@ export default function CompatibilityCalculatorPage() {
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">How to read the result</h2>
         <p className="prose-reading text-mist">
-          The calculator shows each person&rsquo;s birth card and whether they share
-          a suit. Same suit means a shared first instinct; different suits mean
-          you lead from different places. It&rsquo;s a starting point for reading the
-          dynamic with more precision —
+          Start with the birth-card chemistry, then read the Life Path
+          cross-reference. If the other person&rsquo;s birth card lands in your Venus,
+          Mars, Saturn, Neptune, or Pluto position, the relationship will feel very
+          different than if it lands nowhere in the first Life Path spectrum. Shared
+          Life Path cards show where both people are carrying the same card in
+          different roles. For the broader method,
           read more about{" "}
           <Link href="/cardology-compatibility" className="text-gold underline underline-offset-4">
             how Cardology compatibility works

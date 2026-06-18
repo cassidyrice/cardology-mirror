@@ -3,13 +3,13 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 
 export const metadata: Metadata = {
-  title: "Cardology Compatibility: How Two Birth Cards Connect",
+  title: "Cardology Compatibility: Birth Cards, Life Paths and Relationship Dynamics",
   description:
-    "How Cardology compatibility works — read the connection between two birth cards as the meeting of two operating systems. Compare any two birthdays free.",
+    "How Cardology compatibility works: compare birth cards, Life Path cards, shared cards, Venus/Mars chemistry, Saturn lessons, Pluto shadows, and relationship dynamics.",
   alternates: { canonical: "/cardology-compatibility" },
   openGraph: {
-    title: "Cardology Compatibility: How Two Birth Cards Connect",
-    description: "Read the connection between two birth cards as the meeting of two operating systems.",
+    title: "Cardology Compatibility: Birth Cards and Life Paths",
+    description: "Read the relationship through birth cards, Life Path cards, shared cards, and cross-referenced roles.",
     url: "/cardology-compatibility",
   },
 };
@@ -19,16 +19,18 @@ export default function CompatibilityPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
       <p className="prose-reading mb-6 text-mist">
-        Cardology reads compatibility as the collision of two{" "}
-        <strong>operating systems</strong> — not a score out of ten and not whether
-        you&rsquo;re &ldquo;meant to be.&rdquo; Each person&rsquo;s birth card describes how they
-        actually move; putting two side by side shows where you speak the same
-        language and where you&rsquo;re going to need subtitles.
+        Cardology compatibility starts with two birth cards, then gets sharper when
+        you read the Life Path underneath each person. The question is not just
+        &ldquo;are these cards compatible?&rdquo; The better question is: where does this person
+        land in my constitution, where do I land in theirs, and which cards are we
+        both carrying in different roles?
       </p>
 
       <div className="card-surface rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Compare two birthdays</p>
-        <p className="mt-1 text-sm text-faint">See both birth cards and how they connect.</p>
+        <p className="mt-1 text-sm text-faint">
+          See birth cards, Life Path constitutions, shared cards, and cross-reference roles.
+        </p>
         <Link
           href="/birth-card-compatibility-calculator"
           className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
@@ -43,9 +45,22 @@ export default function CompatibilityPage() {
           Two cards in the same suit tend to share a first instinct — both lead
           from relationships, or values, or mind, or will. Cards in different
           suits lead from different places, which can be friction or balance
-          depending on how aware each person is of the difference. The point
-          isn&rsquo;t to predict the relationship — it&rsquo;s to name the dynamic so
-          two people can work with it.
+          depending on how aware each person is of the difference. The Life Path
+          layer shows the deeper role: a person can land in your Venus and feel
+          beloved, your Mars and feel provocative, your Saturn and feel like a
+          lesson, your Neptune and feel like a dream, or your Pluto and expose the
+          shadow you would rather not name.
+        </p>
+      </section>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">The Life Path layer</h2>
+        <p className="prose-reading text-mist">
+          The Life Path is a constitution, not a single label. It includes Moon
+          support plus 13 cards: Primary, Mercury, Venus, Mars, Jupiter, Saturn,
+          Uranus, Neptune, Pluto, Princess, Prince, Queen, and King. Compatibility
+          gets more useful when you cross-reference those positions between two
+          birthdates.
         </p>
       </section>
 

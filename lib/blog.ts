@@ -829,14 +829,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     pillar: "relationships-and-practice",
     title: "Cardology Compatibility: A Beginner Guide",
     description:
-      "Learn how Cardology compatibility compares two birth cards without reducing a relationship to a score.",
-    dek: "Compatibility is a way to read attraction, friction, support, blind spots, and the roles two people keep playing.",
+      "Learn how Cardology compatibility compares birth cards, Life Path cards, shared roles, and relationship dynamics without reducing a relationship to a score.",
+    dek: "Compatibility is a way to read attraction, friction, support, blind spots, shared cards, and the roles two people keep playing.",
     datePublished: BLOG_UPDATED,
     dateModified: BLOG_UPDATED,
     readTime: "7 min read",
     keywords: ["cardology compatibility", "birth card compatibility", "relationship cardology", "cardology love cards"],
     answer:
-      "Cardology compatibility compares two cards by suit, rank, ruling-card context, and pattern interaction. It is best used to name attraction, friction, shared language, blind spots, and why a relationship feels the way it does.",
+      "Cardology compatibility compares birth cards, ruling-card context, Life Path roles, shared cards, and pattern interaction. It names attraction, friction, shared language, blind spots, and why a relationship feels the way it does.",
     sections: [
       {
         heading: "Start with both birth cards",
@@ -847,6 +847,16 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
         links: [
           { label: "Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
           { label: "Cardology Compatibility", href: "/cardology-compatibility" },
+        ],
+      },
+      {
+        heading: "Add the Life Path layer",
+        body: [
+          "The deeper read comes from the Life Spread. Each person carries a Moon support card plus 13 Life Path cards: Birth, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Princess, Prince, Queen, and King.",
+          "When another person's birth card lands in one of those positions, the relationship takes that role. A Venus hit can feel beloved or magnetic. A Mars hit can create heat and conflict. A Saturn hit can feel like a lesson. A Neptune hit can turn dreamy or confusing. A Pluto hit exposes shadow.",
+        ],
+        links: [
+          { label: "Life Path Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
         ],
       },
       {
@@ -876,6 +886,10 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
       {
         q: "Should I compare ruling cards too?",
         a: "Yes. Ruling cards can explain expression, attraction, and daily style that the birth card alone may not show.",
+      },
+      {
+        q: "What does it mean if we share Life Path cards?",
+        a: "Shared Life Path cards show that both people are carrying the same card in different roles. One person may carry a card as Venus while the other carries it as Saturn, Pluto, or King, which changes the feel of the dynamic.",
       },
     ],
     related: [
