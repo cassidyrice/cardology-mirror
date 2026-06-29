@@ -12,6 +12,70 @@ export const CARDOLOGY_VIDEO_CHANNEL = VIDEO_URL;
 
 export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
   {
+    title: "The Shadow of the 5♣ - The Dynamic Innovator",
+    card: "5♣",
+    url: "https://youtu.be/sqVZCoe6a4Q",
+    uploadDate: "2026-06-25",
+    description:
+      "A deterministic Cardology shadow reading for the Five of Clubs.",
+  },
+  {
+    title: "The Shadow of the 6♣ - The Nurturing Creator",
+    card: "6♣",
+    url: "https://youtu.be/tGs6j465Hss",
+    uploadDate: "2026-06-24",
+    description:
+      "A deterministic Cardology shadow reading for the Six of Clubs.",
+  },
+  {
+    title: "The Shadow of the 7♣ - The Analytical Creator",
+    card: "7♣",
+    url: "https://youtu.be/ZXNxnQdSR-s",
+    uploadDate: "2026-06-23",
+    description:
+      "A deterministic Cardology shadow reading for the Seven of Clubs.",
+  },
+  {
+    title: "The Shadow of the 8♣ - The Ambitious Builder",
+    card: "8♣",
+    url: "https://youtu.be/yqms4NwKgvo",
+    uploadDate: "2026-06-22",
+    description:
+      "A deterministic Cardology shadow reading for the Eight of Clubs.",
+  },
+  {
+    title: "The Shadow of the 9♣ - The Humanitarian Builder",
+    card: "9♣",
+    url: "https://youtu.be/yHwMLTWkRrY",
+    uploadDate: "2026-06-21",
+    description:
+      "A deterministic Cardology shadow reading for the Nine of Clubs.",
+  },
+  {
+    title: "The Shadow of the 10♣ - The Master Builder",
+    card: "10♣",
+    url: "https://youtu.be/hqppnuXTk1A",
+    uploadDate: "2026-06-20",
+    description:
+      "A deterministic Cardology shadow reading for the Ten of Clubs.",
+  },
+  {
+    title: "The Shadow of the J♣ - The Creative Messenger",
+    card: "J♣",
+    url: "https://youtu.be/963srdoLwm0",
+    uploadDate: "2026-06-19",
+    description:
+      "A deterministic Cardology shadow reading for the Jack of Clubs.",
+  },
+  {
+    title: "The Shadow of the Q♣ - The Nurturing Leader",
+    card: "Q♣",
+    url: "https://youtu.be/eee6fabWwEo",
+    uploadDate: "2026-06-18",
+    description:
+      "A deterministic Cardology shadow reading for the Queen of Clubs.",
+  },
+  {
     title: "The Shadow of the K♣ - The Master Leader",
     card: "K♣",
     url: "https://youtu.be/IuAwNUL_8I8",
