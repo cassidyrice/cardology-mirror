@@ -5,14 +5,16 @@ import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cardology Pro | Birth Card Calculator and Meanings",
+    default: "Cardology Pro | Readings, Birth Card Calculator and Meanings",
     template: "%s | Cardology Pro",
   },
   description:
-    "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
+    "Personal Cardology readings from your birth card, plus the free birth card calculator, all 52 card meanings, compatibility tools, and the 52-card astrology system — a mirror, not a forecast.",
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
+    "cardology reading",
+    "birth card reading",
     "birth card",
     "birth card calculator",
     "52 card astrology",
@@ -27,16 +29,16 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Cardology Pro — Birth Card Calculator and Meanings",
+    title: "Cardology Pro — Readings, Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
+      "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cardology Pro — Birth Card Calculator and Meanings",
+    title: "Cardology Pro — Readings, Birth Card Calculator and Meanings",
     description:
-      "Find your Cardology birth card, explore all 52 card meanings, compare compatibility, and learn the 52-card astrology system as a mirror, not a forecast.",
+      "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
@@ -74,6 +76,11 @@ export default function RootLayout({
           "52-day periods",
           "relationship dynamics",
           "public figure birth card profiles",
+        ],
+        makesOffer: [
+          { "@type": "Offer", price: 29, priceCurrency: "USD", url: `${SITE_URL}/readings#basic-birth-card-report`, itemOffered: { "@type": "Product", name: "Basic Birth Card Report" } },
+          { "@type": "Offer", price: 99, priceCurrency: "USD", url: `${SITE_URL}/readings#one-question-reading`, itemOffered: { "@type": "Product", name: "One-Question Personal Reading" } },
+          { "@type": "Offer", price: 199, priceCurrency: "USD", url: `${SITE_URL}/readings#full-deep-dive`, itemOffered: { "@type": "Product", name: "Full Deep Dive Reading" } },
         ],
         sameAs: [VIDEO_URL],
       },

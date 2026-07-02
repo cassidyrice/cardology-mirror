@@ -5,7 +5,7 @@ import { normalizeSitemapUrl } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-static";
 
-const CORE_UPDATED = "2026-06-18";
+const CORE_UPDATED = "2026-07-02";
 
 function date(value: string): Date {
   return new Date(`${value}T00:00:00.000Z`);
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: normalizeSitemapUrl(`${SITE_URL}${p}`),
     lastModified: date(CORE_UPDATED),
     changeFrequency: p === "/" ? "daily" : "weekly",
-    priority: p === "/" ? 1 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" ? 0.85 : 0.8,
+    priority: p === "/" ? 1 : p === "/readings" ? 0.95 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" ? 0.85 : 0.8,
   }));
 
   for (const path of allBlogPaths().filter((p) => p !== "/blog")) {

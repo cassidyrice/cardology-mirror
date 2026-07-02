@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import {
   allBlogPillars,
   allBlogPosts,
@@ -99,8 +100,8 @@ export default function BlogIndexPage() {
         {[
           ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology"],
           ["Know your birthday?", "Use the Birth Card Calculator.", "/birth-card-calculator"],
-          ["Know your card?", "Open Birth Card Meanings.", "/birth-card"],
           ["Comparing two people?", "Use the Compatibility Calculator.", "/birth-card-compatibility-calculator"],
+          ["Want it read for you?", "Choose a personal reading.", "/readings"],
         ].map(([label, text, href]) => (
           <Link key={href} href={href} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]">
             <span className="oracle-eyebrow block text-[#9e3d24]">{label}</span>
@@ -156,15 +157,7 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <section className="card-surface mt-12 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Start with your own card</p>
-        <p className="mt-1 text-sm leading-relaxed text-faint">
-          The blog is easier to use when you know your birth card first. Calculate it, then follow the pillar that matches your question.
-        </p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-          Birth Card Calculator →
-        </Link>
-      </section>
+      <ReadingBridge variant="general" className="mt-12" />
 
       <section className="mt-12 border-t border-[#14110d]/15 pt-8">
         <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>

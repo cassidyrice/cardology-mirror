@@ -5,6 +5,7 @@ import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { PlayingCard } from "../PlayingCard";
+import { ReadingBridge } from "./ReadingBridge";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -132,6 +133,8 @@ function ResultCard({ result }: { result: Result }) {
           </Link>
         )}
       </div>
+
+      <ReadingBridge variant="card" cardLabel={bc?.label} className="mt-8" />
     </div>
   );
 }

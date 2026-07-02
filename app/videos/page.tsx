@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_URL, VIDEO_URL } from "@/lib/site";
 import {
   CARDOLOGY_VIDEO_CHANNEL,
@@ -114,6 +115,8 @@ export default function VideosPage() {
           ))}
         </div>
       </section>
+
+      <ReadingBridge variant="general" className="mt-12" />
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
         <Link href="/birth-card" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">

@@ -13,6 +13,7 @@ import {
   type LifePathSharedCard,
 } from "@/lib/life-path";
 import { PlayingCard } from "../PlayingCard";
+import { ReadingBridge } from "./ReadingBridge";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -141,6 +142,8 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
           )}
         </div>
       </section>
+
+      <ReadingBridge variant="relationship" className="mt-8" />
 
       <div className="mt-8 flex flex-col items-center gap-3">
         <Link

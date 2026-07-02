@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_URL, VIDEO_PATH } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -131,6 +132,8 @@ export default function CompatibilityCalculatorPage() {
           ))}
         </ul>
       </section>
+
+      <ReadingBridge variant="relationship" className="mt-10" />
 
       <div className="card-surface mt-8 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Don&rsquo;t know your card yet?</p>

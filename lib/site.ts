@@ -21,7 +21,7 @@ export const VIDEO_PATH = "/videos";
 export const READINGS_PATH = "/readings";
 
 export const SITE_TAGLINE =
-  "Birth card calculator, meanings, educational guides, videos, compatibility, and 52-card astrology.";
+  "Personal Cardology readings, plus the free birth card calculator, all 52 card meanings, compatibility tools, and 52-card astrology.";
 
 export const APP_PATHS = [
   "/today",

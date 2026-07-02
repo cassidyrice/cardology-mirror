@@ -9,11 +9,13 @@ export type ReadingOffer = {
   turnaround: string;
   includes: string[];
   cta: string;
+  stripePriceEnv: "STRIPE_PRICE_BASIC" | "STRIPE_PRICE_QUESTION" | "STRIPE_PRICE_DEEP";
 };
 
 export const READING_OFFERS: ReadingOffer[] = [
   {
     slug: "basic-birth-card-report",
+    stripePriceEnv: "STRIPE_PRICE_BASIC",
     name: "Basic Birth Card Report",
     price: 29,
     priceLabel: "$29",
@@ -27,10 +29,11 @@ export const READING_OFFERS: ReadingOffer[] = [
       "Personal reflection prompts",
       "Links to matching Cardology Pro pages",
     ],
-    cta: "Request the $29 report",
+    cta: "Get the $29 report",
   },
   {
     slug: "one-question-reading",
+    stripePriceEnv: "STRIPE_PRICE_QUESTION",
     name: "One-Question Personal Reading",
     price: 99,
     priceLabel: "$99",
@@ -48,6 +51,7 @@ export const READING_OFFERS: ReadingOffer[] = [
   },
   {
     slug: "full-deep-dive",
+    stripePriceEnv: "STRIPE_PRICE_DEEP",
     name: "Full Deep Dive Reading",
     price: 199,
     priceLabel: "$199",
@@ -66,5 +70,9 @@ export const READING_OFFERS: ReadingOffer[] = [
 ];
 
 export function readingOfferHref(offer: ReadingOffer): string {
-  return `/contact?offer=${offer.slug}`;
+  return `/checkout/${offer.slug}`;
+}
+
+export function offerBySlug(slug: string): ReadingOffer | undefined {
+  return READING_OFFERS.find((o) => o.slug === slug);
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { cardsBySuit } from "@/lib/seo-cards";
 import { SITE_URL } from "@/lib/site";
 
@@ -97,6 +98,8 @@ export default function BirthCardIndex() {
           </section>
         ))}
       </div>
+
+      <ReadingBridge variant="card" className="mt-12" />
     </SeoShell>
   );
 }

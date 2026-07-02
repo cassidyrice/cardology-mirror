@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { PeriodMeaningTool } from "@/components/seo/PeriodMeaningTool";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { allCardPeriodMeanings } from "@/lib/period-meanings";
 import { SITE_URL } from "@/lib/site";
 
@@ -72,6 +73,8 @@ export default function PeriodMeaningToolPage() {
       <section className="app-paper-stage border-y border-[#14110d]/15 bg-[#eadfcd]/55">
         <PeriodMeaningTool cards={cards} />
       </section>
+
+      <ReadingBridge variant="timing" className="mt-12" />
     </SeoShell>
   );
 }

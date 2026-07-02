@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 
 export const metadata: Metadata = {
   title: "Cardology Compatibility: Birth Cards, Life Paths and Relationship Dynamics",
@@ -89,6 +90,8 @@ export default function CompatibilityPage() {
           .
         </p>
       </section>
+
+      <ReadingBridge variant="relationship" className="mt-10" />
     </SeoShell>
   );
 }

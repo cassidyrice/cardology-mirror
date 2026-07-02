@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
   allBirthdateSlugs,
@@ -206,6 +207,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           The growth edge is almost always a return to proportion — unglamorous, but it works. Under-expressed? The medicine is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The medicine is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
         </p>
       </Section>
+
+      <ReadingBridge variant="card" cardLabel={card.label} className="mt-10" />
 
       <Section title="Love and relationships">
         <p>
@@ -436,9 +439,11 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <FaqList faqs={faqs} />
       </Section>
 
-      <div className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Want the full reading?</p>
-        <p className="mt-1 text-sm text-faint">Save your birth card with the calculator and open the app — where the pattern gets specific and stops being flattering.</p>
+      <ReadingBridge variant="card" cardLabel={card.label} className="mt-10" />
+
+      <div className="card-surface mt-6 rounded-2xl p-5">
+        <p className="font-serif text-base text-bone">Just browsing birthdays?</p>
+        <p className="mt-1 text-sm text-faint">Run any birth date through the calculator to get the birth card and ruling card free — same deterministic answer, every time.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
 

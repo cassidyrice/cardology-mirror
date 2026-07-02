@@ -34,16 +34,19 @@ export default function ContactPage() {
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            For a reading, include the birth date, the person or relationship involved,
-            and the question you want answered. For corrections or partnerships, include
-            the page, topic, audience, and relevant context.
+            Buying a reading? You do not need this page —{" "}
+            <Link href="/readings" className="text-[#9e3d24] underline underline-offset-4">
+              checkout is instant
+            </Link>{" "}
+            and the intake form follows payment. This page is for corrections,
+            questions, partnerships, and anything a form fits better than a purchase.
           </p>
         </div>
       </header>
 
       <section className="grid gap-4 sm:grid-cols-2">
         {[
-          ["Reading requests", "Include the reading option, birth date, and question or focus area if you are requesting a $99 or $199 personal reading."],
+          ["Reading questions", "Not sure which reading fits, or have a question before or after buying? Include the reading option, the birth date, and the person or question involved."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],
