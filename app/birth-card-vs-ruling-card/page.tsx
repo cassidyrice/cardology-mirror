@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ReadingBridge } from "@/components/seo/ReadingBridge";
 
 export const metadata: Metadata = {
   title: "Birth Card vs Ruling Card: What's the Difference?",
@@ -88,9 +89,11 @@ export default function BirthVsRuling() {
         </p>
       </section>
 
-      <div className="card-surface mt-10 rounded-2xl p-5">
+      <ReadingBridge variant="card" className="mt-10" />
+
+      <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Find both of your cards</p>
-        <p className="mt-1 text-sm text-faint">The calculator returns your birth card and ruling card.</p>
+        <p className="mt-1 text-sm text-faint">The calculator returns your birth card and ruling card — free.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →
         </Link>
