@@ -1,145 +1,165 @@
 #!/usr/bin/env bun
 import { getReading } from "../lib/engine";
-import type { ActivePeriod, Reading } from "../lib/types";
+import { chatStream } from "../lib/llm";
+import { READING_INTERPRETATION_GUIDE } from "../lib/interpretation-guidance";
+import type { Reading } from "../lib/types";
+import THREE_LENS from "../lib/card-meanings.json";
+import CARD_DESCRIPTIONS from "../lib/engine-data/card-descriptions.json";
 
-type Mode = "reading" | "daily-card";
-
-interface Args {
-  mode: Mode;
-  birthdate?: string;
-  targetDate?: string;
-  json: boolean;
-}
+const MEANINGS = THREE_LENS as Record<string, { name: string; under: string; sweet_spot: string; over: string }>;
+const DESCRIPTIONS = CARD_DESCRIPTIONS as Record<string, { title: string; core_identity: string; gifts: string; shadow: string; life_direction: string }>;
 
 function usage(exitCode = 0): never {
   const out = exitCode === 0 ? console.log : console.error;
   out(`Cardology CLI
 
 Usage:
-  bun cli/cardology_cli.ts --birthdate YYYY-MM-DD [--target-date YYYY-MM-DD] [--json]
-  bun cli/cardology_cli.ts daily-card --birthdate YYYY-MM-DD [--target-date YYYY-MM-DD] [--json]
+  bun cli/cardology_cli.ts --birthdate YYYY-MM-DD [--target-date YYYY-MM-DD] [--reading] [--json]
 
-Modes:
-  reading     Emit the full deterministic Cardology reading JSON.
-  daily-card  Emit the active daily card summary used by cardologypro.com.
+Flags:
+  --reading   Stream a narrative reading synthesizing all four cards.
+  --json      Output structured JSON instead of plain text.
 `);
   process.exit(exitCode);
 }
 
-function parseArgs(argv: string[]): Args {
-  let mode: Mode = "reading";
-  const args: Args = { mode, json: false };
-  const rest = [...argv];
+function parseArgs(argv: string[]) {
+  let birthdate: string | undefined;
+  let targetDate: string | undefined;
+  let json = false;
+  let reading = false;
 
-  if (rest[0] === "daily-card" || rest[0] === "reading") {
-    args.mode = rest.shift() as Mode;
-  }
-
-  for (let i = 0; i < rest.length; i++) {
-    const a = rest[i];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
     if (a === "--help" || a === "-h") usage(0);
-    if (a === "--json") {
-      args.json = true;
-      continue;
-    }
-    if (a === "--birthdate") {
-      args.birthdate = rest[++i];
-      continue;
-    }
-    if (a === "--target-date" || a === "--date") {
-      args.targetDate = rest[++i];
-      continue;
-    }
+    if (a === "--json") { json = true; continue; }
+    if (a === "--reading") { reading = true; continue; }
+    if (a === "--birthdate") { birthdate = argv[++i]; continue; }
+    if (a === "--target-date" || a === "--date") { targetDate = argv[++i]; continue; }
     console.error(`Unknown argument: ${a}`);
     usage(1);
   }
 
-  if (!args.birthdate) {
-    console.error("Missing required --birthdate");
-    usage(1);
-  }
-  return args;
+  if (!birthdate) { console.error("Missing required --birthdate"); usage(1); }
+  return { birthdate: birthdate!, targetDate, json, reading };
 }
 
-function prettyDate(iso: string): string {
-  return new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${iso}T00:00:00Z`));
-}
-
-function cardTitle(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/\b\w/g, (c) => c.toUpperCase())
-    .replace(/\bOf\b/i, "of");
-}
-
-function buildDailyCard(reading: Reading) {
-  const ap: ActivePeriod = reading.active_period;
+function cardContext(code: string) {
+  const m = MEANINGS[code];
+  const d = DESCRIPTIONS[code];
   return {
-    date: reading.inputs.target_date,
-    pretty_date: prettyDate(reading.inputs.target_date),
-    source: "cardology CLI daily-card mode",
-    active_period: {
-      planet: ap.planet,
-      domain: ap.domain,
-    },
-    daily_card: {
-      code: ap.bc_card,
-      name: cardTitle(ap.interpretation_bc.name),
-      spread_anchor: reading.birth_card_spread.anchor,
-      role: "Birth-card spread card governing today’s active planetary period",
-      under: ap.interpretation_bc.under,
-      sweet_spot: ap.interpretation_bc.sweet_spot,
-      over: ap.interpretation_bc.over,
-    },
-    ruling_card_support: {
-      code: ap.prc_card,
-      name: cardTitle(ap.interpretation_prc.name),
-      spread_anchor: reading.prc_spread.anchor,
-      role: "Planetary-ruling-card spread support for the same active period",
-      under: ap.interpretation_prc.under,
-      sweet_spot: ap.interpretation_prc.sweet_spot,
-      over: ap.interpretation_prc.over,
-    },
-    person: {
-      birth_card: reading.archetype.birth_card,
-      birth_card_title: reading.archetype.description.title,
-      ruling_card: reading.archetype.prc,
-      ruling_card_title: reading.archetype.prc_description.title,
-      age: reading.timing.age,
-    },
-    reading,
+    code,
+    name: m?.name ?? code,
+    title: d?.title ?? null,
+    core_identity: d?.core_identity ?? null,
+    shadow: d?.shadow ?? null,
+    life_direction: d?.life_direction ?? null,
+    under: m?.under ?? null,
+    sweet_spot: m?.sweet_spot ?? null,
+    over: m?.over ?? null,
   };
 }
 
-async function main() {
-  const args = parseArgs(process.argv.slice(2));
-  const reading = await getReading(args.birthdate!, args.targetDate);
+function buildPrompt(r: Reading): string {
+  const birth = cardContext(r.archetype.birth_card);
+  const period52 = cardContext(r.active_period.bc_card);
+  const longRange = cardContext(r.long_range.bc.card);
+  const pluto = cardContext(r.birth_card_spread.pluto);
 
-  if (args.mode === "daily-card") {
-    const daily = buildDailyCard(reading);
-    if (args.json) {
-      console.log(JSON.stringify(daily, null, 2));
-    } else {
-      console.log(`${daily.pretty_date}: ${daily.daily_card.code} — ${daily.daily_card.name}`);
-      console.log(`${daily.active_period.planet} chapter · ${daily.active_period.domain}`);
-      console.log(`Sweet spot: ${daily.daily_card.sweet_spot}`);
-      console.log(`Ruling support: ${daily.ruling_card_support.code} — ${daily.ruling_card_support.name}`);
-    }
+  const planet = r.active_period.planet;
+  const domain = r.active_period.domain;
+  const longRangePlanet = r.long_range.bc.planet;
+
+  return `You are generating a Cardology reading for someone. Here are their four active cards with full contextual meanings.
+
+---
+
+## BIRTH CARD: ${birth.code} — ${birth.title ?? birth.name}
+This is their core identity anchor — who they fundamentally are.
+
+**Core identity:** ${birth.core_identity}
+**Shadow:** ${birth.shadow}
+**Life direction:** ${birth.life_direction}
+**Underuse pattern:** ${birth.under}
+**Sweet spot:** ${birth.sweet_spot}
+**Overuse pattern:** ${birth.over}
+
+---
+
+## CURRENT 52-DAY CARD: ${period52.code} — ${period52.name}
+Active during the ${planet} period (domain: ${domain}). This is the chapter they are currently living.
+
+**Underuse pattern:** ${period52.under}
+**Sweet spot:** ${period52.sweet_spot}
+**Overuse pattern:** ${period52.over}
+
+---
+
+## LONG RANGE (YEAR): ${longRange.code} — ${longRange.name}
+The overarching theme card for this year of their life, governed by ${longRangePlanet}.
+
+**Underuse pattern:** ${longRange.under}
+**Sweet spot:** ${longRange.sweet_spot}
+**Overuse pattern:** ${longRange.over}
+
+---
+
+## PLUTO CARD (YEAR): ${pluto.code} — ${pluto.name}
+The transformation card for this year — the unconscious pattern being pressured to change.
+
+**Underuse pattern:** ${pluto.under}
+**Sweet spot:** ${pluto.sweet_spot}
+**Overuse pattern:** ${pluto.over}
+
+---
+
+Write a cohesive reading that weaves all four cards together. Address the person directly in second person. Cover:
+1. Who they are through their Birth Card
+2. What the current 52-day chapter is asking of them
+3. How the year's Long Range theme shapes everything
+4. What the Pluto card is forcing them to transform — and what pattern they are probably avoiding right now
+
+Follow the reader voice and method from the interpretation guide. Be specific, direct, and avoid vague generalities.`;
+}
+
+async function generateReading(r: Reading) {
+  const prompt = buildPrompt(r);
+  process.stdout.write("\n");
+  for await (const chunk of chatStream(
+    [
+      { role: "system", content: READING_INTERPRETATION_GUIDE },
+      { role: "user", content: prompt },
+    ],
+    { temperature: 0.75, max_tokens: 1200 },
+  )) {
+    process.stdout.write(chunk);
+  }
+  process.stdout.write("\n");
+}
+
+async function main() {
+  const { birthdate, targetDate, json, reading: doReading } = parseArgs(process.argv.slice(2));
+  const r = await getReading(birthdate, targetDate);
+
+  const cards = {
+    birth_card: r.archetype.birth_card,
+    current_52_day_card: r.active_period.bc_card,
+    long_range_year: r.long_range.bc.card,
+    pluto_year: r.birth_card_spread.pluto,
+  };
+
+  if (json) {
+    console.log(JSON.stringify(cards, null, 2));
     return;
   }
 
-  if (args.json) {
-    console.log(JSON.stringify(reading, null, 2));
-  } else {
-    const a = reading.archetype;
-    const ap = reading.active_period;
-    console.log(`Birth Card: ${a.birth_card} | PRC: ${a.prc} | Active: ${ap.planet} ${ap.bc_card} / ${ap.prc_card}`);
+  console.log(`Birth Card:        ${cards.birth_card}`);
+  console.log(`52-Day Card:       ${cards.current_52_day_card}`);
+  console.log(`Long Range (Year): ${cards.long_range_year}`);
+  console.log(`Pluto (Year):      ${cards.pluto_year}`);
+
+  if (doReading) {
+    await generateReading(r);
   }
 }
 

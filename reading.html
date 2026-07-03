@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardology Reading</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0a;
+    color: #e8e0d0;
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 80px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: normal;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 40px;
+  }
+
+  form {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+  }
+
+  input[type="date"], input[type="text"] {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    color: #e8e0d0;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    font-family: 'Georgia', serif;
+    border-radius: 4px;
+    outline: none;
+    width: 180px;
+  }
+
+  input:focus { border-color: #c9a96e; }
+
+  button {
+    background: #c9a96e;
+    color: #0a0a0a;
+    border: none;
+    padding: 11px 24px;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+  }
+
+  button:hover { background: #dbbf85; }
+  button:disabled { background: #444; color: #888; cursor: default; }
+
+  #cards {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-chip {
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    padding: 14px 20px;
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .card-chip .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 6px;
+  }
+
+  .card-chip .code {
+    font-size: 1.6rem;
+    color: #c9a96e;
+  }
+
+  #reading {
+    max-width: 680px;
+    width: 100%;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  #reading h1, #reading h2, #reading h3 {
+    color: #c9a96e;
+    font-weight: normal;
+    letter-spacing: 0.05em;
+    margin: 1.6em 0 0.6em;
+    text-transform: none;
+    font-size: 1.1rem;
+  }
+
+  #reading p { margin-bottom: 1em; color: #d4ccc0; }
+
+  #reading strong { color: #e8e0d0; }
+
+  #reading em { color: #aaa; font-style: italic; }
+
+  #reading hr {
+    border: none;
+    border-top: 1px solid #222;
+    margin: 1.6em 0;
+  }
+
+  #error {
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    display: none;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #c9a96e;
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+</style>
+</head>
+<body>
+
+<h1>Cardology</h1>
+
+<form id="form">
+  <div class="field">
+    <label>Birthdate</label>
+    <input type="text" id="birthdate" placeholder="MM/DD/YYYY" required>
+  </div>
+  <div class="field">
+    <label>Target date (optional)</label>
+    <input type="text" id="targetdate" placeholder="MM/DD/YYYY">
+  </div>
+  <button type="submit" id="btn">Read</button>
+</form>
+
+<div id="error"></div>
+<div id="cards"></div>
+<div id="reading"></div>
+
+<script>
+// lib/engine-core/engine_data.js
+var P = [37, 34, 17, 42, 24, 7, 4, 5, 43, 27, 10, 47, 30, 0, 14, 51, 21, 18, 1, 38, 8, 22, 6, 44, 41, 11, 48, 31, 32, 15, 12, 35, 19, 2, 39, 40, 23, 20, 45, 28, 25, 50, 9, 46, 16, 13, 36, 33, 3, 49, 29, 26];
+var YEAR_0 = { crown: ["K♠", "Q♠", "J♠"], grid: [["7♥", "6♥", "5♥", "4♥", "3♥", "2♥", "A♥"], ["A♣", "K♥", "Q♥", "J♥", "10♥", "9♥", "8♥"], ["8♣", "7♣", "6♣", "5♣", "4♣", "3♣", "2♣"], ["2♦", "A♦", "K♣", "Q♣", "J♣", "10♣", "9♣"], ["9♦", "8♦", "7♦", "6♦", "5♦", "4♦", "3♦"], ["3♠", "2♠", "A♠", "K♦", "Q♦", "J♦", "10♦"], ["10♠", "9♠", "8♠", "7♠", "6♠", "5♠", "4♠"]] };
+var SOLAR_TO_CARD = { "0": "Joker", "1": "A♥", "2": "2♥", "3": "3♥", "4": "4♥", "5": "5♥", "6": "6♥", "7": "7♥", "8": "8♥", "9": "9♥", "10": "10♥", "11": "J♥", "12": "Q♥", "13": "K♥", "14": "A♣", "15": "2♣", "16": "3♣", "17": "4♣", "18": "5♣", "19": "6♣", "20": "7♣", "21": "8♣", "22": "9♣", "23": "10♣", "24": "J♣", "25": "Q♣", "26": "K♣", "27": "A♦", "28": "2♦", "29": "3♦", "30": "4♦", "31": "5♦", "32": "6♦", "33": "7♦", "34": "8♦", "35": "9♦", "36": "10♦", "37": "J♦", "38": "Q♦", "39": "K♦", "40": "A♠", "41": "2♠", "42": "3♠", "43": "4♠", "44": "5♠", "45": "6♠", "46": "7♠", "47": "8♠", "48": "9♠", "49": "10♠", "50": "J♠", "51": "Q♠", "52": "K♠" };
+var PRC_DATA = { "1/1": "5♣", "1/2": "K♣", "1/3": "10♦", "1/4": "7♦", "1/5": "4♣", "1/6": "3♣", "1/7": "4♦", "1/8": "3♥", "1/9": "K♥", "1/10": "A♦", "1/11": "J♣", "1/12": "10♣", "1/13": "9♣", "1/14": "8♣", "1/15": "7♣", "1/16": "6♣", "1/17": "5♥", "1/18": "4♥", "1/19": "10♠", "1/20": "2♥", "1/21": "A♥", "1/22": "K♣", "1/23": "10♣", "1/24": "9♣", "1/25": "10♦", "1/26": "7♣", "1/27": "6♣", "1/28": "7♦", "1/29": "4♥", "1/30": "10♠", "1/31": "4♣", "2/1": "8♠", "2/2": "5♠", "2/3": "2♦", "2/4": "3♠", "2/5": "2♠", "2/6": "A♣", "2/7": "K♦", "2/8": "Q♦", "2/9": "9♦", "2/10": "8♦", "2/11": "9♠", "2/12": "6♦", "2/13": "5♦", "2/14": "6♠", "2/15": "3♣", "2/16": "4♦", "2/17": "5♣", "2/18": "K♥", "2/19": "A♦", "2/20": ["K♣", "J♦"], "2/21": "8♦", "2/22": "9♠", "2/23": "8♠", "2/24": "5♦", "2/25": "6♠", "2/26": "5♠", "2/27": "4♦", "2/28": "5♣", "2/29": "2♦", "3/1": "J♠", "3/2": "9♥", "3/3": "8♥", "3/4": "Q♣", "3/5": "6♥", "3/6": "5♥", "3/7": "7♠", "3/8": "K♠", "3/9": "2♥", "3/10": "4♠", "3/11": "Q♠", "3/12": "Q♥", "3/13": "3♠", "3/14": "2♠", "3/15": "3♦", "3/16": "K♦", "3/17": "Q♦", "3/18": "J♦", "3/19": "8♦", "3/20": ["9♠", "7♦"], "3/21": ["8♠", "6♦"], "3/22": "3♣", "3/23": "4♦", "3/24": "3♦", "3/25": "2♣", "3/26": "3♥", "3/27": "K♥", "3/28": "10♥", "3/29": "J♣", "3/30": "10♣", "3/31": "7♥", "4/1": "J♦", "4/2": "8♦", "4/3": "9♠", "4/4": "8♠", "4/5": "5♦", "4/6": "6♠", "4/7": "5♠", "4/8": "2♦", "4/9": "3♠", "4/10": "2♠", "4/11": "A♦", "4/12": "K♣", "4/13": "A♣", "4/14": "9♣", "4/15": "10♦", "4/16": "9♦", "4/17": "6♣", "4/18": "7♦", "4/19": "6♦", "4/20": ["3♣", "5♥"], "4/21": ["4♦", "4♥"], "4/22": "5♣", "4/23": "7♠", "4/24": "K♠", "4/25": "2♥", "4/26": "4♠", "4/27": "Q♠", "4/28": "Q♥", "4/29": "A♠", "4/30": "J♠", "5/1": "9♣", "5/2": "10♦", "5/3": "7♣", "5/4": "6♣", "5/5": "7♦", "5/6": "4♣", "5/7": "3♣", "5/8": "4♦", "5/9": "A♥", "5/10": "2♣", "5/11": "3♥", "5/12": "J♥", "5/13": "10♥", "5/14": "J♣", "5/15": "8♥", "5/16": "7♥", "5/17": "8♣", "5/18": "5♥", "5/19": "4♥", "5/20": ["5♣", "10♠"], "5/21": ["7♠", "9♦"], "5/22": ["K♠", "8♦"], "5/23": "9♠", "5/24": "6♦", "5/25": "5♦", "5/26": "6♠", "5/27": "3♦", "5/28": "2♦", "5/29": "3♠", "5/30": "K♣", "5/31": "Q♣", "6/1": "9♥", "6/2": "8♥", "6/3": "7♥", "6/4": "6♥", "6/5": "5♥", "6/6": "4♥", "6/7": "8♠", "6/8": "7♠", "6/9": "K♠", "6/10": "5♠", "6/11": "4♠", "6/12": "Q♠", "6/13": "2♠", "6/14": "A♠", "6/15": "J♠", "6/16": "Q♦", "6/17": "J♦", "6/18": "10♠", "6/19": "9♠", "6/20": "8♦", "6/21": "9♠", "6/22": ["6♦", "J♠"], "6/23": "9♥", "6/24": "8♥", "6/25": "10♠", "6/26": "6♥", "6/27": "5♥", "6/28": "7♠", "6/29": "3♥", "6/30": "2♥", "7/1": "3♦", "7/2": "K♥", "7/3": "A♦", "7/4": "K♣", "7/5": "10♥", "7/6": "J♣", "7/7": "10♣", "7/8": "7♥", "7/9": "8♣", "7/10": "8♣", "7/11": "7♣", "7/12": "4♥", "7/13": "5♣", "7/14": "4♣", "7/15": "A♥", "7/16": "2♣", "7/17": "A♣", "7/18": "Q♠", "7/19": "Q♥", "7/20": "J♥", "7/21": "J♠", "7/22": "9♥", "7/23": "8♥", "7/24": ["10♠", "5♣"], "7/25": "4♣", "7/26": "3♣", "7/27": "2♣", "7/28": "A♣", "7/29": "K♥", "7/30": "Q♥", "7/31": "J♥", "8/1": "Q♦", "8/2": "J♦", "8/3": "10♦", "8/4": "9♦", "8/5": "8♦", "8/6": "7♦", "8/7": "6♦", "8/8": "5♦", "8/9": "4♦", "8/10": "3♦", "8/11": "2♦", "8/12": "A♦", "8/13": "K♣", "8/14": "Q♣", "8/15": "J♣", "8/16": "10♣", "8/17": "9♣", "8/18": "8♣", "8/19": "7♣", "8/20": "6♣", "8/21": "5♣", "8/22": ["4♣", "2♦"], "8/23": ["3♣", "3♠"], "8/24": "K♣", "8/25": "Q♣", "8/26": "K♦", "8/27": "10♣", "8/28": "9♣", "8/29": "10♦", "8/30": "7♣", "8/31": "6♣", "9/1": "8♠", "9/2": "7♠", "9/3": "K♠", "9/4": "5♠", "9/5": "4♠", "9/6": "Q♠", "9/7": "2♠", "9/8": "A♠", "9/9": "J♠", "9/10": "Q♦", "9/11": "J♦", "9/12": "10♠", "9/13": "9♦", "9/14": "8♦", "9/15": "9♠", "9/16": "6♦", "9/17": "5♦", "9/18": "6♠", "9/19": "3♦", "9/20": "2♦", "9/21": "3♠", "9/22": ["K♣", "J♦"], "9/23": ["Q♣", "10♠"], "9/24": "6♥", "9/25": "8♦", "9/26": "9♠", "9/27": "8♠", "9/28": "5♦", "9/29": "6♠", "9/30": "5♠", "10/1": "3♥", "10/2": "J♥", "10/3": "10♥", "10/4": "J♣", "10/5": "8♥", "10/6": "7♥", "10/7": "8♣", "10/8": "5♥", "10/9": "4♥", "10/10": "5♣", "10/11": "7♠", "10/12": "K♠", "10/13": "2♥", "10/14": "4♠", "10/15": "Q♠", "10/16": "Q♥", "10/17": "A♠", "10/18": "J♠", "10/19": "9♥", "10/20": "J♠", "10/21": "10♠", "10/22": "6♥", "10/23": ["8♦", "K♠", "5♣"], "10/24": ["9♥", "2♥", "2♦"], "10/25": ["A♥", "3♠"], "10/26": ["Q♠", "K♣"], "10/27": ["Q♥", "A♣"], "10/28": ["J♥", "K♦"], "10/29": ["J♠", "10♦"], "10/30": ["9♥", "9♦"], "10/31": ["8♥", "8♦"], "11/1": ["10♦", "5♥"], "11/2": ["9♦", "4♥"], "11/3": ["6♣", "K♠"], "11/4": ["7♦", "2♥"], "11/5": ["6♦", "A♥"], "11/6": ["3♣", "Q♠"], "11/7": ["4♦", "Q♥"], "11/8": ["3♦", "J♥"], "11/9": ["2♣", "2♦"], "11/10": ["3♥", "3♦"], "11/11": ["K♥", "J♠"], "11/12": ["10♥", "Q♦"], "11/13": ["J♣", "J♦"], "11/14": ["10♣", "Q♣"], "11/15": ["7♥", "9♠"], "11/16": ["8♣", "8♠"], "11/17": ["7♣", "7♠"], "11/18": ["4♥", "6♠"], "11/19": ["5♣", "5♠"], "11/20": ["4♣", "4♠"], "11/21": ["K♠", "5♣"], "11/22": ["2♥", "2♦"], "11/23": "A♦", "11/24": "J♣", "11/25": "10♣", "11/26": "9♣", "11/27": "8♣", "11/28": "7♣", "11/29": "6♣", "11/30": "5♣", "12/1": "6♠", "12/2": "5♠", "12/3": "4♠", "12/4": "3♠", "12/5": "2♠", "12/6": "A♠", "12/7": "K♣", "12/8": "A♣", "12/9": "K♦", "12/10": "10♦", "12/11": "9♦", "12/12": "8♦", "12/13": "7♦", "12/14": "6♦", "12/15": "5♦", "12/16": "4♦", "12/17": "3♦", "12/18": "2♦", "12/19": "3♥", "12/20": "K♥", "12/21": ["A♦", "Q♦"], "12/22": ["J♣", "9♦"], "12/23": "8♦", "12/24": "9♠", "12/25": "6♦", "12/26": "5♦", "12/27": "6♠", "12/28": "3♦", "12/29": "2♦", "12/30": "3♠", "12/31": "Joker" };
+var RANK_WORDS = { A: "Pioneer", "2": "Partner", "3": "Creator", "4": "Builder", "5": "Disruptor", "6": "Server", "7": "Seeker", "8": "Commander", "9": "Completer", "10": "Master", J: "Messenger", Q: "Sovereign", K: "Authority" };
+var SUIT_WORDS = { "♥": "Emotional", "♣": "Behavioral", "♦": "Material", "♠": "Intellectual" };
+var PLANET_WORDS = { Mercury: "Mind", Venus: "Relationships", Mars: "Action", Jupiter: "Growth", Saturn: "Limits", Uranus: "Disruption", Neptune: "Dissolution" };
+var PLANET_NAMES = ["Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
+var FIXED_CARDS = ["8♣", "J♥", "K♠"];
+var WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+
+// lib/engine-core/engine.js
+var cardology;
+{
+  let flattenSpread = function(spread) {
+    const flat = [];
+    for (const row of spread.grid)
+      flat.push.apply(flat, row);
+    flat.push.apply(flat, spread.crown);
+    return flat;
+  }, unflattenSpread = function(flat) {
+    const grid = [];
+    for (let r = 0;r < GRID_ROWS; r++) {
+      grid.push(flat.slice(r * GRID_COLS, (r + 1) * GRID_COLS));
+    }
+    return { grid, crown: flat.slice(GRID_CELLS, TOTAL_CELLS) };
+  }, applyPermutation = function(flat) {
+    const out = new Array(TOTAL_CELLS);
+    for (let i = 0;i < TOTAL_CELLS; i++)
+      out[i] = flat[P[i]];
+    return out;
+  }, generateSpreads = function(year0, count) {
+    const spreads = [year0];
+    let flat = flattenSpread(year0);
+    for (let i = 1;i < count; i++) {
+      flat = applyPermutation(flat);
+      spreads.push(unflattenSpread(flat));
+    }
+    return spreads;
+  }, getSpread = function(index) {
+    const k = (index % 90 + 90) % 90;
+    return SPREADS[String(k)];
+  }, cardsFrom = function(birthCard, spreadIndex, count) {
+    return extractCards(birthCard, getSpread(spreadIndex), count || 7);
+  }, getCardSuit = function(card) {
+    if (!card)
+      return null;
+    if (card.indexOf("♥") !== -1)
+      return "♥";
+    if (card.indexOf("♣") !== -1)
+      return "♣";
+    if (card.indexOf("♦") !== -1)
+      return "♦";
+    if (card.indexOf("♠") !== -1)
+      return "♠";
+    return null;
+  }, getCardRank = function(card) {
+    if (!card)
+      return null;
+    const suit = getCardSuit(card);
+    if (!suit)
+      return null;
+    return card.slice(0, card.length - suit.length);
+  }, interpret = function(card, planet) {
+    const rank = getCardRank(card);
+    const suit = getCardSuit(card);
+    const out = {
+      card: card || null,
+      rank,
+      rank_word: rank ? RANK_WORDS[rank] || null : null,
+      suit,
+      suit_word: suit ? SUIT_WORDS[suit] || null : null
+    };
+    if (planet != null) {
+      out.planet = planet;
+      out.planet_word = PLANET_WORDS[planet] || null;
+    }
+    return out;
+  }, calculateSolarValue = function(month, day) {
+    let sv = 55 - (2 * month + day);
+    if (sv <= 0)
+      sv += 52;
+    return sv;
+  }, getBirthCard = function(month, day) {
+    const sv = calculateSolarValue(month, day);
+    return [SOLAR_TO_CARD[String(sv)] || "Unknown", sv];
+  }, getPlanetaryRulingCard = function(month, day) {
+    const key = `${month}/${day}`;
+    return PRC_DATA[key] || null;
+  }, calculateAge = function(birthMonth, birthDay, birthYear, targetDate) {
+    let birthdayThisYear;
+    try {
+      birthdayThisYear = new Date(targetDate.getFullYear(), birthMonth - 1, birthDay);
+      if (birthdayThisYear.getMonth() !== birthMonth - 1) {
+        birthdayThisYear = new Date(targetDate.getFullYear(), birthMonth - 1, birthDay - 1);
+      }
+    } catch (e) {
+      birthdayThisYear = new Date(targetDate.getFullYear(), birthMonth - 1, birthDay - 1);
+    }
+    let age = targetDate >= birthdayThisYear ? targetDate.getFullYear() - birthYear : targetDate.getFullYear() - birthYear - 1;
+    return age;
+  }, findCardInGrid = function(card, grid) {
+    for (let r = 0;r < 7; r++) {
+      for (let c = 0;c < 7; c++) {
+        if (grid[r][c] === card)
+          return [r, c];
+      }
+    }
+    return null;
+  }, extractFromCrownStart = function(crownPos, crown, grid, count) {
+    const collected = [];
+    let ci = crownPos;
+    let inCrown = true;
+    let curRow, curCol;
+    for (let step = 0;step < count; step++) {
+      if (inCrown) {
+        ci -= 1;
+        if (ci < 0) {
+          inCrown = false;
+          curRow = 0;
+          curCol = 6;
+          collected.push(grid[curRow][curCol]);
+          continue;
+        }
+        collected.push(crown[ci]);
+      } else {
+        curCol -= 1;
+        if (curCol < 0) {
+          curRow += 1;
+          curCol = 6;
+          if (curRow > 6)
+            break;
+        }
+        collected.push(grid[curRow][curCol]);
+      }
+    }
+    return collected;
+  }, extractCards = function(card, spread, count) {
+    count = count || 9;
+    const grid = spread.grid;
+    const crown = spread.crown;
+    const pos = findCardInGrid(card, grid);
+    if (pos === null) {
+      for (let ci = 0;ci < crown.length; ci++) {
+        if (crown[ci] === card)
+          return extractFromCrownStart(ci, crown, grid, count);
+      }
+      return null;
+    }
+    let [curRow, curCol] = pos;
+    const collected = [];
+    let inCrown = false;
+    let crownIndex = null;
+    for (let step = 0;step < count; step++) {
+      if (!inCrown) {
+        curCol -= 1;
+        if (curCol < 0) {
+          curRow += 1;
+          curCol = 6;
+          if (curRow > 6) {
+            inCrown = true;
+            crownIndex = 2;
+            collected.push(crown[crownIndex]);
+            continue;
+          }
+        }
+        collected.push(grid[curRow][curCol]);
+      } else {
+        crownIndex -= 1;
+        if (crownIndex < 0) {
+          inCrown = false;
+          curRow = 0;
+          curCol = 6;
+          collected.push(grid[curRow][curCol]);
+          continue;
+        }
+        collected.push(crown[crownIndex]);
+      }
+    }
+    return collected;
+  }, getActivePeriod = function(birthMonth, birthDay, targetDate) {
+    let lastBirthday;
+    try {
+      lastBirthday = new Date(targetDate.getFullYear(), birthMonth - 1, birthDay);
+      if (lastBirthday > targetDate) {
+        lastBirthday = new Date(targetDate.getFullYear() - 1, birthMonth - 1, birthDay);
+      }
+    } catch (e) {
+      lastBirthday = new Date(targetDate.getFullYear() - 1, birthMonth - 1, birthDay - 1);
+    }
+    const daysSince = Math.floor((targetDate - lastBirthday) / (1000 * 60 * 60 * 24)) + 1;
+    const ranges = [
+      ["Mercury", 1, 52],
+      ["Venus", 53, 104],
+      ["Mars", 105, 156],
+      ["Jupiter", 157, 208],
+      ["Saturn", 209, 260],
+      ["Uranus", 261, 312],
+      ["Neptune", 313, 366]
+    ];
+    for (const [planet, start, end] of ranges) {
+      if (daysSince >= start && daysSince <= end) {
+        return [planet, PLANET_NAMES.indexOf(planet), daysSince];
+      }
+    }
+    return ["Neptune", 6, daysSince];
+  }, getEnvironmentDisplacement = function(card, spreadYear) {
+    if (FIXED_CARDS.indexOf(card) !== -1)
+      return null;
+    const spirit = SPREADS["0"];
+    const current = SPREADS[String(spreadYear)];
+    if (!current)
+      return null;
+    function findPos(c, s) {
+      for (let r = 0;r < 7; r++) {
+        for (let col = 0;col < 7; col++) {
+          if (s.grid[r][col] === c)
+            return ["grid", r, col];
+        }
+      }
+      for (let i = 0;i < s.crown.length; i++) {
+        if (s.crown[i] === c)
+          return ["crown", i];
+      }
+      return null;
+    }
+    function getAt(p, s) {
+      if (p[0] === "grid")
+        return s.grid[p[1]][p[2]];
+      return s.crown[p[1]];
+    }
+    const spiritPos = findPos(card, spirit);
+    if (!spiritPos)
+      return null;
+    const environment = getAt(spiritPos, current);
+    const currentPos = findPos(card, current);
+    if (!currentPos)
+      return null;
+    const displacement = getAt(currentPos, spirit);
+    return { environment, displacement };
+  }, getSeptennial = function(birthCard, age) {
+    const cycle = Math.floor(age / 7);
+    const position = age - cycle * 7;
+    const spreadIndex = cycle + 1;
+    const cards7 = cardsFrom(birthCard, spreadIndex, 7);
+    if (!cards7)
+      return null;
+    const years = cards7.map((c, i) => Object.assign({}, interpret(c), {
+      year_in_cycle: i + 1,
+      age_at_start: cycle * 7 + i
+    }));
+    return {
+      cycle,
+      spread_used: (spreadIndex % 90 + 90) % 90,
+      current_year_in_cycle: position + 1,
+      current_card: cards7[position],
+      current_meaning: interpret(cards7[position]),
+      years
+    };
+  }, getWeekly = function(birthCard, birthYear, birthMonth, birthDay, targetDate) {
+    let birth = new Date(birthYear, birthMonth - 1, birthDay);
+    if (birth.getMonth() !== birthMonth - 1) {
+      birth = new Date(birthYear, birthMonth - 1, birthDay - 1);
+    }
+    const daysDiff = Math.floor((targetDate - birth) / (1000 * 60 * 60 * 24));
+    const weeksLived = Math.floor(daysDiff / 7);
+    const spreadIndex = weeksLived + 1;
+    const cards7 = cardsFrom(birthCard, spreadIndex, 7);
+    if (!cards7)
+      return null;
+    const days = cards7.map((c, i) => Object.assign({}, interpret(c), { weekday: WEEKDAYS[i] }));
+    const jsDay = targetDate.getDay();
+    const todayIdx = (jsDay + 6) % 7;
+    return {
+      weeks_lived: weeksLived,
+      spread_used: (spreadIndex % 90 + 90) % 90,
+      current_weekday: WEEKDAYS[todayIdx],
+      current_card: cards7[todayIdx],
+      current_meaning: Object.assign({}, interpret(cards7[todayIdx]), { weekday: WEEKDAYS[todayIdx] }),
+      days
+    };
+  }, calculateBlueprint = function(birthMonth, birthDay, birthYear, targetDate) {
+    if (!targetDate)
+      targetDate = new Date;
+    if (typeof targetDate === "string")
+      targetDate = new Date(targetDate);
+    const [bc, sv] = getBirthCard(birthMonth, birthDay);
+    const prc = getPlanetaryRulingCard(birthMonth, birthDay);
+    const prcPrimary = Array.isArray(prc) ? prc[0] : prc;
+    const prcSecondary = Array.isArray(prc) && prc.length > 1 ? prc[1] : null;
+    const age = calculateAge(birthMonth, birthDay, birthYear, targetDate);
+    const syNav = (age % 90 + 90) % 90 + 1;
+    const spreadNav = getSpread(syNav);
+    const bc9 = extractCards(bc, spreadNav, 9);
+    const prc9 = extractCards(prcPrimary, spreadNav, 9);
+    const [apPlanet] = getActivePeriod(birthMonth, birthDay, targetDate);
+    function buildPeriods(cards) {
+      const periods = {};
+      const n = Math.min(7, (cards || []).length);
+      for (let i = 0;i < n; i++) {
+        const planet = PLANET_NAMES[i];
+        periods[planet] = interpret(cards[i], planet);
+      }
+      return periods;
+    }
+    const bcPeriodsDetailed = buildPeriods(bc9);
+    const prcPeriodsDetailed = buildPeriods(prc9);
+    const bcPeriods = {};
+    const prcPeriods = {};
+    for (const p of Object.keys(bcPeriodsDetailed))
+      bcPeriods[p] = bcPeriodsDetailed[p].card;
+    for (const p of Object.keys(prcPeriodsDetailed))
+      prcPeriods[p] = prcPeriodsDetailed[p].card;
+    return {
+      archetype: {
+        birth_card: bc,
+        solar_value: sv,
+        birth: interpret(bc),
+        prc: prcPrimary,
+        prc_secondary: prcSecondary,
+        prc_meaning: interpret(prcPrimary)
+      },
+      timing: { age, sy_nav: syNav, crown: spreadNav.crown },
+      birth_card_spread: {
+        anchor: bc,
+        periods: bcPeriods,
+        periods_detailed: bcPeriodsDetailed,
+        pluto: bc9 && bc9.length > 7 ? bc9[7] : null,
+        result: bc9 && bc9.length > 8 ? bc9[8] : null
+      },
+      prc_spread: {
+        anchor: prcPrimary,
+        periods: prcPeriods,
+        periods_detailed: prcPeriodsDetailed,
+        pluto: prc9 && prc9.length > 7 ? prc9[7] : null,
+        result: prc9 && prc9.length > 8 ? prc9[8] : null
+      },
+      active_period: {
+        planet: apPlanet,
+        planet_word: PLANET_WORDS[apPlanet] || null,
+        bc: bcPeriods[apPlanet] ? interpret(bcPeriods[apPlanet], apPlanet) : null,
+        prc: prcPeriods[apPlanet] ? interpret(prcPeriods[apPlanet], apPlanet) : null
+      },
+      septennial: {
+        bc: getSeptennial(bc, age),
+        prc: getSeptennial(prcPrimary, age)
+      },
+      weekly: {
+        bc: getWeekly(bc, birthYear, birthMonth, birthDay, targetDate),
+        prc: getWeekly(prcPrimary, birthYear, birthMonth, birthDay, targetDate)
+      },
+      karma: { bc_lifetime: getEnvironmentDisplacement(bc, 1) }
+    };
+  };
+  const TOTAL_CELLS = 52;
+  const GRID_ROWS = 7;
+  const GRID_COLS = 7;
+  const GRID_CELLS = GRID_ROWS * GRID_COLS;
+  const SPREADS = {};
+  (function() {
+    const all = generateSpreads(YEAR_0, 91);
+    for (let i = 0;i < 91; i++)
+      SPREADS[String(i)] = all[i];
+  })();
+  cardology = {
+    P,
+    SPREADS,
+    getSpread,
+    cardsFrom,
+    getCardSuit,
+    getCardRank,
+    interpret,
+    getBirthCard,
+    getPlanetaryRulingCard,
+    calculateAge,
+    extractCards,
+    getActivePeriod,
+    getEnvironmentDisplacement,
+    getSeptennial,
+    getWeekly,
+    calculateBlueprint,
+    RANK_WORDS,
+    SUIT_WORDS,
+    PLANET_WORDS,
+    PLANET_NAMES,
+    WEEKDAYS
+  };
+}
+
+// lib/card-meanings.json
+var card_meanings_default = {
+  "A♥": {
+    name: "ACE OF HEARTS",
+    under: "You're flooding others with emotional need before they can abandon you, confusing emotional overwhelm for real intimacy.",
+    sweet_spot: "You're initiating authentic emotional connection with openness and courage, inviting genuine vulnerability.",
+    over: "You're weaponizing your feelings to manipulate others into meeting your emotional needs, using drama as control."
+  },
+  "2♥": {
+    name: "2 OF HEARTS",
+    under: `You're shape-shifting to please everyone, terrified there's no real "you" underneath the performance.`,
+    sweet_spot: "You're balancing your needs with others' through genuine diplomacy and mutual understanding.",
+    over: "You're managing everyone's emotions like a hostage situation, sacrificing yourself while secretly resenting their ingratitude."
+  },
+  "3♥": {
+    name: "3 OF HEARTS",
+    under: `You're emotionally triangulating, keeping exes on the back burner while sabotaging real intimacy through "incompatibilities."`,
+    sweet_spot: "You're expressing your emotional depth through creative exploration and healthy relational variety.",
+    over: "You're love-bombing new connections, then suddenly discovering fatal flaws when real vulnerability becomes necessary."
+  },
+  "4♥": {
+    name: "4 OF HEARTS",
+    under: "You're mistaking emotional control for security, keeping everyone locked in scripted roles while you suffocate spontaneity.",
+    sweet_spot: "You're building reliable emotional foundations and trust through consistency and stability.",
+    over: `You're pathologizing authentic emotion as "unhealthy," maintaining a controlled emotional museum instead of a living home.`
+  },
+  "5♥": {
+    name: "5 OF HEARTS",
+    under: "You're collecting relationships like Pokémon cards, vanishing whenever intimacy requires staying still.",
+    sweet_spot: "You're navigating emotional change with adaptability, learning that love deepens through transformation.",
+    over: `You're using "emotional freedom" and "polyamory" as justifications for emotional tourism without commitment.`
+  },
+  "6♥": {
+    name: "6 OF HEARTS",
+    under: "You're silencing your own needs for false harmony, harboring resentment while your martyrdom grows cancerous.",
+    sweet_spot: "You're integrating care and boundaries, serving others from a full cup rather than empty vessel.",
+    over: `You're performing "the nice one," swallowing broken glass to avoid conflict while building narcissistic supply.`
+  },
+  "7♥": {
+    name: "7 OF HEARTS",
+    under: "You're emotionally detached, intellectualizing feeling away to avoid the messiness of real connection.",
+    sweet_spot: "You're reflecting on love with wisdom, seeking truth beneath romantic illusions.",
+    over: `You're using emotional analysis as armor, staying in your head while claiming "authenticity" from a safe distance.`
+  },
+  "8♥": {
+    name: "8 OF HEARTS",
+    under: "You're emotionally shutdown, using logic as a shield against the vulnerability of real power.",
+    sweet_spot: "You're commanding emotional situations with strength and clarity, leading with confident compassion.",
+    over: "You're emotionally controlling and possessive, wielding your power to dominate others into compliance."
+  },
+  "9♥": {
+    name: "9 OF HEARTS",
+    under: `You're drowning in idealism collapse, emotionally martyred while secretly resenting those you're "helping."`,
+    sweet_spot: "You're integrating compassion with wisdom, releasing what's not yours to carry.",
+    over: "You're savior-ing others while ignoring your own pain, emotional burnout disguised as sainthood."
+  },
+  "10♥": {
+    name: "10 OF HEARTS",
+    under: "You're enmeshed in family obligation, overwhelmed by the emotional baggage you're carrying for everyone.",
+    sweet_spot: "You're expanding love across community, creating belonging while maintaining healthy presence.",
+    over: "You're responsible for everyone's emotional well-being, implementing guilt-based emotional systems disguised as care."
+  },
+  "J♥": {
+    name: "JACK OF HEARTS",
+    under: "You're emotionally immature, projecting fantasy onto relationships while avoiding actual intimacy.",
+    sweet_spot: "You're bringing fresh emotional perspective and inspiration, innovating connection with authenticity.",
+    over: "You're romantic delusional, spinning emotional narratives that collapse the moment reality requires depth."
+  },
+  "Q♥": {
+    name: "QUEEN OF HEARTS",
+    under: "You're emotionally hypervigilant from childhood trauma, reading the room while sacrificing your own needs.",
+    sweet_spot: "You're embodying emotional wisdom, nurturing others through authentic presence and intuitive care.",
+    over: "You're the emotional tyrant, smothering with control while building guilt-debt systems masked as love."
+  },
+  "K♥": {
+    name: "KING OF HEARTS",
+    under: "You're emotionally distant, ruling from safe analytical distance while avoiding vulnerability entirely.",
+    sweet_spot: "You're commanding emotional authority with depth, leading with strength and authentic care.",
+    over: "You're emotionally possessive and tyrannical, using your authority to control others' feelings."
+  },
+  "A♣": {
+    name: "ACE OF CLUBS",
+    under: "You're mentally restless and overthinking, drowning in self-doubt masquerading as thoroughness.",
+    sweet_spot: "You're initiating fresh ideas with clarity and confidence, leading with innovation.",
+    over: "You're intellectually grandiose, convinced of your rightness while dismissing others' perspectives."
+  },
+  "2♣": {
+    name: "2 OF CLUBS",
+    under: "You're indecisive, afraid of being wrong, using intellectual debate to avoid committing to anything.",
+    sweet_spot: "You're building mental partnerships, exchanging ideas through genuine dialogue.",
+    over: "You're argumentative and combative, needing to win every intellectual debate while dismissing dissent."
+  },
+  "3♣": {
+    name: "3 OF CLUBS",
+    under: "You're mentally restless, creating multiple projects but finishing none, stuck in perpetual exploration.",
+    sweet_spot: "You're expressing ideas creatively across multiple channels, bringing innovation to life.",
+    over: `You're scattering your mental energy everywhere, unable to focus while justifying it as "multifaceted thinking."`
+  },
+  "4♣": {
+    name: "4 OF CLUBS",
+    under: "You're mentally rigid, using frameworks as control mechanisms to manage existential anxiety.",
+    sweet_spot: "You're organizing knowledge into reliable systems, building intellectual foundations.",
+    over: "You're dogmatically defensive of your ideas, treating them as untouchable doctrine."
+  },
+  "5♣": {
+    name: "5 OF CLUBS",
+    under: "You're mentally paralyzed, intellectualizing change without taking action, stuck in analysis paralysis.",
+    sweet_spot: "You're challenging conventional wisdom, thriving in intellectual debate and exploration.",
+    over: "You're argumentative for sport, creating conflict to prove your intellectual superiority."
+  },
+  "6♣": {
+    name: "6 OF CLUBS",
+    under: "You're mentally self-sacrificing, giving knowledge away while silencing your own expertise.",
+    sweet_spot: "You're integrating learning with service, teaching wisdom authentically.",
+    over: "You're pontificating, needing to be the smartest person in the room while positioning others as students."
+  },
+  "7♣": {
+    name: "7 OF CLUBS",
+    under: "You're intellectually isolated, skeptical to the point of mental paralysis and disconnection.",
+    sweet_spot: "You're analyzing deeply with wisdom, seeking truth beneath surface knowledge.",
+    over: "You're obsessed with complexity, complicating problems beyond actionability to avoid implementation."
+  },
+  "8♣": {
+    name: "8 OF CLUBS",
+    under: "You're mentally withdrawn, using intelligence as defense while avoiding taking intellectual leadership.",
+    sweet_spot: "You're commanding knowledge systems with authority, leading through clear thinking.",
+    over: "You're intellectually bullying, using mental power to dominate and silence others."
+  },
+  "9♣": {
+    name: "9 OF CLUBS",
+    under: "You're mentally burnt out, holding outdated beliefs while resisting new understanding.",
+    sweet_spot: "You're integrating knowledge into wisdom, releasing limiting paradigms gracefully.",
+    over: "You're dogmatic and preachy, forcing your understanding on others while dismissing their viewpoints."
+  },
+  "10♣": {
+    name: "10 OF CLUBS",
+    under: "You're intellectually stagnant, hoarding knowledge without sharing or applying it.",
+    sweet_spot: "You're carrying forward accumulated wisdom, embodying and teaching integrated knowledge.",
+    over: "You're a propagandist, controlling information to maintain intellectual authority."
+  },
+  "J♣": {
+    name: "JACK OF CLUBS",
+    under: "You're mentally scattered, communicating ideas immaturely without grounding in reality.",
+    sweet_spot: "You're bringing fresh intellectual perspectives and innovative communication.",
+    over: "You're intellectually reckless, pitching ideas without vetting feasibility or considering consequences."
+  },
+  "Q♣": {
+    name: "QUEEN OF CLUBS",
+    under: "You're mentally self-silencing, knowing more than you express while deferring to others.",
+    sweet_spot: "You're stewarding knowledge wisely, teaching with intuitive authority and care.",
+    over: `You're gatekeeping information, controlling what others are "ready" to know.`
+  },
+  "K♣": {
+    name: "KING OF CLUBS",
+    under: "You're mentally withdrawn, withholding authority while secretly believing you know best.",
+    sweet_spot: "You're commanding intellectual systems with decisive clarity and integrity.",
+    over: "You're intellectually tyrannical, brooking no dissent while building a throne of dogma."
+  },
+  "A♦": {
+    name: "ACE OF DIAMONDS",
+    under: "You're financially anxious, clinging to security while fearing loss obsessively.",
+    sweet_spot: "You're initiating enterprise and resources with confidence and self-worth.",
+    over: "You're greedily acquisitive, using wealth to prove your value while seeing others as competition."
+  },
+  "2♦": {
+    name: "2 OF DIAMONDS",
+    under: "You're financially conflicted, afraid to negotiate, giving away value while secretly resenting it.",
+    sweet_spot: "You're creating fair exchanges and mutual benefit through balanced partnership.",
+    over: "You're manipulating financial situations to control or dominate others."
+  },
+  "3♦": {
+    name: "3 OF DIAMONDS",
+    under: "You're financially scattered, creating multiple income streams but stabilizing none.",
+    sweet_spot: "You're diversifying resources creatively, exploring multiple paths to abundance.",
+    over: "You're recklessly chasing money everywhere, unstable and rootless in your approach to resources."
+  },
+  "4♦": {
+    name: "4 OF DIAMONDS",
+    under: "You're financially controlling and hoarding, using money as security blanket against chaos.",
+    sweet_spot: "You're building lasting financial stability and structures for long-term security.",
+    over: "You're financially rigid and stingy, unable to release money even when it serves growth."
+  },
+  "5♦": {
+    name: "5 OF DIAMONDS",
+    under: "You're financially paralyzed, afraid of loss while missing opportunities for growth.",
+    sweet_spot: "You're navigating financial change with adaptability and resourcefulness.",
+    over: "You're financially reckless and wasteful, addicted to spending while creating chaos."
+  },
+  "6♦": {
+    name: "6 OF DIAMONDS",
+    under: "You're financially self-sacrificing, over-giving while silencing your own needs.",
+    sweet_spot: "You're stewarding resources generously, serving others' abundance authentically.",
+    over: "You're financially controlling through gifts, creating debt systems masked as generosity."
+  },
+  "7♦": {
+    name: "7 OF DIAMONDS",
+    under: "You're financially anxious, obsessed with lack while unable to trust abundance.",
+    sweet_spot: "You're reflecting on worth deeply, finding meaning beyond material accumulation.",
+    over: "You're financially paranoid and hoarder-like, seeing scarcity everywhere despite evidence of plenty."
+  },
+  "8♦": {
+    name: "8 OF DIAMONDS",
+    under: "You're financially withdrawn, afraid of power while avoiding resource leadership.",
+    sweet_spot: "You're commanding financial systems with authority and integrity.",
+    over: "You're financially controlling and power-hungry, seeing money as a tool for domination."
+  },
+  "9♦": {
+    name: "9 OF DIAMONDS",
+    under: "You're financially burned out, giving endlessly while unable to receive or rest.",
+    sweet_spot: "You're integrating generosity with sustainability, releasing abundant resources wisely.",
+    over: "You're financially exhausted from over-giving, building resentment while maintaining martyr role."
+  },
+  "10♦": {
+    name: "10 OF DIAMONDS",
+    under: "You're financially overwhelmed by family obligation, carrying everyone's financial burdens.",
+    sweet_spot: "You're actualizing complete financial success, creating stability and abundance.",
+    over: "You're ruthlessly acquisitive and greedy, seeing people as commodities and exploiting for gain."
+  },
+  "J♦": {
+    name: "JACK OF DIAMONDS",
+    under: "You're financially immature, enthusiastically chasing money schemes without follow-through.",
+    sweet_spot: "You're bringing fresh financial perspective and innovative approaches to resources.",
+    over: "You're financially reckless and overpromising, creating schemes without substance."
+  },
+  "Q♦": {
+    name: "QUEEN OF DIAMONDS",
+    under: "You're financially insecure despite resources, controlling money while afraid of loss.",
+    sweet_spot: "You're stewarding resources intuitively, protecting and nurturing abundance.",
+    over: "You're financially controlling and conditional, using money to manipulate others' behavior."
+  },
+  "K♦": {
+    name: "KING OF DIAMONDS",
+    under: "You're financially withdrawn, afraid to wield power while hoarding resources.",
+    sweet_spot: "You're commanding financial systems with authority and wise stewardship.",
+    over: "You're ruthlessly greedy and tyrannical, exploiting others for financial gain without conscience."
+  },
+  "A♠": {
+    name: "ACE OF SPADES",
+    under: "You're avoiding hard truth, stuck in illusions while refusing necessary clarity.",
+    sweet_spot: "You're cutting through illusion with courage, initiating truth-telling and authentic communication.",
+    over: `You're brutally blunt, using "truth" as a weapon to hurt others.`
+  },
+  "2♠": {
+    name: "2 OF SPADES",
+    under: "You're paralyzed by indecision, intellectually thorough as an avoidance of commitment terror.",
+    sweet_spot: "You're navigating opposing forces with balance, finding middle paths through complexity.",
+    over: "You're aggressively indecisive, creating conflict through refusal to choose."
+  },
+  "3♠": {
+    name: "3 OF SPADES",
+    under: "You're stuck in grief, emotionally overwhelmed and unable to move through pain.",
+    sweet_spot: "You're working through sorrow authentically, integrating difficult emotion into wisdom.",
+    over: "You're weaponizing pain, playing victim while inflicting emotional damage on others."
+  },
+  "4♠": {
+    name: "4 OF SPADES",
+    under: "You're rigidly defended against change, mentally fortified in denial and fear.",
+    sweet_spot: "You're building structure to stabilize, creating containment for necessary change.",
+    over: "You're fortress-like and impenetrable, closed to all growth or adaptation."
+  },
+  "5♠": {
+    name: "5 OF SPADES",
+    under: "You're isolated and victimized, paralyzed by conflict while blaming circumstances.",
+    sweet_spot: "You're thriving in challenge, learning mastery through transformation and testing.",
+    over: "You're conflict-addicted, creating chaos to prove your strength and survivability."
+  },
+  "6♠": {
+    name: "6 OF SPADES",
+    under: "You're self-sacrificing through pain, healing others while ignoring your own wounds.",
+    sweet_spot: "You're integrating hardship into healing wisdom, serving from integrated wholeness.",
+    over: "You're martyr-like, requiring others' suffering to validate your self-worth."
+  },
+  "7♠": {
+    name: "7 OF SPADES",
+    under: "You're cynical and mistrustful, analyzing failure while missing opportunity.",
+    sweet_spot: "You're reflecting on karmic patterns with wisdom, seeking truth in difficulty.",
+    over: "You're obsessed with suffering, seeing persecution everywhere while justifying negativity."
+  },
+  "8♠": {
+    name: "8 OF SPADES",
+    under: "You're withdrawn from responsibility, avoiding leadership while secretly resenting powerlessness.",
+    sweet_spot: "You're commanding transformation with clarity, leading through mastery and discipline.",
+    over: "You're controlling and tyrannical, dominating others through intellectual superiority and force."
+  },
+  "9♠": {
+    name: "9 OF SPADES",
+    under: "You're stuck in completion, unable to finish cycles or release what's complete.",
+    sweet_spot: "You're integrating hard lessons, releasing burdens and completing transformation cycles.",
+    over: "You're obsessed with closure, forcing endings prematurely and preventing natural evolution."
+  },
+  "10♠": {
+    name: "10 OF SPADES",
+    under: "You're overwhelmed by karmic burden, carrying everyone's pain while victimized.",
+    sweet_spot: "You're mastering your karmic curriculum, integrating hard lessons into wisdom.",
+    over: "You're workaholic and perfectionistic, crushing yourself and others through relentless demand."
+  },
+  "J♠": {
+    name: "JACK OF SPADES",
+    under: "You're communicating truth immaturely, sharing information without care for impact.",
+    sweet_spot: "You're bringing clarity and honest perspective, inspiring others through truth-telling.",
+    over: "You're brutally critical, using honesty as a weapon to dominate or shame."
+  },
+  "Q♠": {
+    name: "QUEEN OF SPADES",
+    under: "You're self-silencing, knowing truth while deferring to others' narratives.",
+    sweet_spot: "You're stewarding truth wisely, protecting others through compassionate clarity.",
+    over: "You're cryptically controlling, withholding truth to maintain power over others."
+  },
+  "K♠": {
+    name: "KING OF SPADES",
+    under: "You're emotionally withdrawn, using intellect to avoid vulnerability entirely.",
+    sweet_spot: "You're commanding transformation with decisive authority, leading through integrated mastery.",
+    over: "You're tyrannically rigid, brooking no emotion while enforcing compliance through fear."
+  }
+};
+
+// lib/engine-data/card-descriptions.json
+var card_descriptions_default = {
+  "A♣": {
+    title: "The Creative Pioneer",
+    core_identity: "You're the intellectual initiator. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
+    gifts: `- Original thinking and idea generation
+- Ability to launch new concepts and projects
+- Natural curiosity and investigation
+- Intellectual courage to explore new territory`,
+    shadow: `You think starting is the same as finishing. You generate ideas but abandon them when they get difficult. You mistake brainstorming for action. The pattern: you're full of "what ifs" but empty on "what nows." People see you as a dreamer, not a doer. Your intellectual energy goes nowhere because you don't follow through.`,
+    life_direction: "Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to stay with one action sequence instead of jumping to the next idea. This rewires you from perpetual-brainstormer into actual-builder."
+  },
+  "2♣": {
+    title: "The Collaborative Builder",
+    core_identity: "You're the intellectual partner. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
+    gifts: `- Natural partnership and team-building ability
+- Excellent communication and articulation
+- Ability to synthesize different perspectives
+- Talent for collaborative problem-solving`,
+    shadow: "You lose yourself in collaboration. You adapt your thinking to match the other person's, then realize you have no idea what you actually think. The pattern: you're so good at partnership that you disappear into it. You have strong opinions but only voice them to please, then resent the person. You're a people-pleaser who masks it as collaboration.",
+    life_direction: "Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation forces you to think for yourself, to stand by your actual opinion even when it disrupts harmony. This rewires you from collaborative-disappearing into collaborative-grounded."
+  },
+  "3♣": {
+    title: "The Creative Communicator",
+    core_identity: "You're the intellectual translator. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
+    gifts: `- Ability to articulate complex ideas clearly
+- Creative problem-solving and unconventional thinking
+- Natural teaching and explaining ability
+- Talent for making ideas exciting`,
+    shadow: "You scatter your intellectual energy across multiple expressions. You talk about ideas more than you develop them. You're so focused on communicating clearly that you never go deep into any single idea. The pattern: your thinking is broad but shallow. People understand your ideas but don't respect the depth. You're an idea entertainer, not an idea master.",
+    life_direction: "Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to stay with one intellectual problem instead of explaining it away. This rewires you from surface-communicator into depth-creator."
+  },
+  "4♣": {
+    title: "The Systematic Builder",
+    core_identity: "You're the intellectual architect. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
+    gifts: `- Systematic thinking and organizational ability
+- Creating frameworks and sustainable structures
+- Clear thinking and logical progression
+- Ability to build something that lasts`,
+    shadow: "You confuse structure with rigidity. Your systems become prisons. You defend outdated frameworks because they're yours. The pattern: you're so committed to the structure that you can't adapt when reality shifts. Your thinking becomes dogmatic. You're right, and everyone else is wrong.",
+    life_direction: "Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to disrupt your own systems, to think outside the frameworks you've built. This rewires you from rigid-architect into adaptive-architect."
+  },
+  "5♣": {
+    title: "The Dynamic Innovator",
+    core_identity: "You're the intellectual adventurer. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
+    gifts: `- Quick thinking and fast adaptation
+- Ability to see multiple perspectives rapidly
+- Natural rebellion against outdated ideas
+- Refreshing honesty and directness`,
+    shadow: "You mistake changing your mind for growth. You jump from idea to idea without mastering any. You call it flexibility; it's actually flightiness. The pattern: you're scattered and inconsistent. People can't rely on your follow-through. Your intelligence is all over the place instead of focused.",
+    life_direction: "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation forces you to stay with one intellectual challenge instead of moving to the next. This rewires you from scattered-quick-thinker into focused-deep-thinker."
+  },
+  "6♣": {
+    title: "The Nurturing Creator",
+    core_identity: "You're the intellectual teacher. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
+    gifts: `- Natural teaching and mentoring ability
+- Desire to develop others intellectually
+- Wisdom and thoughtful guidance
+- Ability to balance thinking with caring`,
+    shadow: "You over-function as the teacher. You think everyone needs to learn what you've learned, the way you've learned it. You become prescriptive and lose the ability to listen. The pattern: you're the wise one, but you're not learning anymore because you're too busy teaching. Your intellectual growth stalls because you think you've already arrived.",
+    life_direction: "Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to be intellectually humble, to question what you're teaching, to stay curious. This rewires you from know-it-all-teacher into learning-teacher."
+  },
+  "7♣": {
+    title: "The Analytical Creator",
+    core_identity: "You're the intellectual analyst. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
+    gifts: `- Penetrating analysis and pattern recognition
+- Ability to see through surface explanations
+- Critical thinking and intellectual honesty
+- Natural skepticism that prevents self-deception`,
+    shadow: "You analyze instead of act. You can see every problem with any idea, so nothing moves forward. Your skepticism becomes cynicism. The pattern: you're brilliant but paralyzed. You think so much about what could go wrong that you don't try anything. Your analysis becomes an excuse for inaction.",
+    life_direction: "Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation forces you to act without complete analysis, to move forward despite doubt. This rewires you from analysis-paralysis into action-taking."
+  },
+  "8♣": {
+    title: "The Ambitious Builder",
+    core_identity: "You're the intellectual strategist. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
+    gifts: `- Strategic thinking and long-term planning
+- Ability to coordinate complex intellectual projects
+- Ambitious drive and determination
+- Talent for building intellectual authority`,
+    shadow: "You use intelligence as a weapon. You're so focused on winning intellectually that you lose genuine collaboration. Your ideas become tools for dominance. The pattern: you're intellectually accomplished but emotionally isolated. People respect your mind but don't trust your heart. You're winning arguments but losing relationships.",
+    life_direction: "Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to be vulnerable intellectually, to admit you don't know, to learn from others. This rewires you from aggressive-strategist into collaborative-thinker."
+  },
+  "9♣": {
+    title: "The Humanitarian Builder",
+    core_identity: "You're the visionary idealist. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
+    gifts: `- Visionary thinking and big-picture perspective
+- Ability to inspire others toward possibility
+- Universal principles and humanitarian ideals
+- Natural optimism about human potential`,
+    shadow: "You're so focused on the universal that you ignore the practical. You think about how the world should be but don't do the work to make it so. Your idealism becomes escapism. The pattern: you're full of grand ideas but empty on implementation. You inspire people but don't follow through. Your thinking is beautiful but useless.",
+    life_direction: "Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to act on your ideals, to focus on one practical change instead of universal transformation. This rewires you from idealistic-dreaming into practical-doing."
+  },
+  "10♣": {
+    title: "The Master Builder",
+    core_identity: "You're the intellectual master. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
+    gifts: `- Intellectual mastery and deep expertise
+- Ability to radiate confidence and competence
+- Wisdom from experience and reflection
+- Natural authority and leadership`,
+    shadow: "You rest on your intellectual accomplishments and stop growing. You think you've figured it out, so you stop questioning. Your thinking becomes stale. The pattern: you're respected for what you've done, but you're not evolving. You're defending your accomplishments instead of surpassing them. Your mastery is complete but dormant.",
+    life_direction: "Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to question what you know, to be a beginner again. This rewires you from fixed-master into evolving-master."
+  },
+  "J♣": {
+    title: "The Creative Messenger",
+    core_identity: `You're the intellectual catalyst. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the "aha moment."`,
+    gifts: `- Ability to inspire intellectual breakthroughs
+- Creative and unconventional perspective
+- Natural gift for shifting paradigms
+- Talent for generating excitement about ideas`,
+    shadow: `You deliver the insight but don't stick around for the integration. You move to the next person, the next idea. You think catalyzing is your whole job. The pattern: you're inspiring but unreliable. You generate "ahas" but don't follow up. People feel momentarily shifted but then abandoned.`,
+    life_direction: "Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to stay with one idea or one person long enough to see the change take root. This rewires you from catalyst-skipping into catalyst-grounded."
+  },
+  "Q♣": {
+    title: "The Nurturing Leader",
+    core_identity: "You're the intellectual queen. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
+    gifts: `- Deep wisdom and thoughtful guidance
+- Ability to create intellectual safety for growth
+- Natural mentoring and empowering ability
+- Talent for helping others develop their thinking`,
+    shadow: "You think you know what others need intellectually. You prescribe thinking instead of facilitating discovery. You over-function as the wise one and prevent others from developing their own wisdom. The pattern: you're helpful but controlling. People depend on your thinking instead of developing their own. You're the strong one holding everyone up.",
+    life_direction: "Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to not know, to question your own wisdom, to learn from those you mentor. This rewires you from controlling-mentor into facilitating-guide."
+  },
+  "K♣": {
+    title: "The Master Leader",
+    core_identity: "You're the intellectual king. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
+    gifts: `- Clear thinking and decisive action
+- Natural authority and command
+- Ability to direct complex intellectual projects
+- Confidence that inspires confidence in others`,
+    shadow: "You confuse clarity with being right. You think your thinking is the right thinking. You dismiss perspectives that differ from yours. The pattern: you're commanding but not listening. You're right, and everyone else is wrong. People follow you out of respect for your authority, not genuine agreement.",
+    life_direction: "Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
+    algorithm_gateway: "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to be wrong, to change your mind, to learn from people you're supposed to be teaching. This rewires you from authoritarian-certainty into collaborative-clarity."
+  },
+  "A♦": {
+    title: "The Wealth Pioneer",
+    core_identity: "You're the material initiator. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
+    gifts: `- Natural resource building and accumulation
+- Ability to see material opportunity
+- Entrepreneurial drive and initiative
+- Capacity to create wealth from ideas`,
+    shadow: "You confuse accumulation with worth. Your value equals your net worth in your own mind. You're always building because you're never done—never enough. The pattern: you're successful but anxious. You have resources but feel poor. You're running from scarcity even though you've created abundance. People feel your underlying anxiety despite your material success.",
+    life_direction: "Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to sit with scarcity, to feel the fear, to discover you survive it. This rewires you from scarcity-driven into abundance-grounded."
+  },
+  "2♦": {
+    title: "The Financial Partner",
+    core_identity: "You're the resource negotiator. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    gifts: `- Natural understanding of fair exchange
+- Ability to create balanced partnerships around resources
+- Diplomatic skill in financial negotiations
+- Talent for making partnerships feel equitable`,
+    shadow: "You lose yourself in material partnerships. You give too much to maintain the relationship. You track what you've contributed and build resentment when it's not reciprocated. The pattern: you're the financial giver, but nobody gives back to you. You enable financial dependence under the guise of partnership. You're exhausted from carrying the weight.",
+    life_direction: "Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to prioritize your own financial security over partnership harmony. This rewires you from self-sacrificing-partner into balanced-contributor."
+  },
+  "3♦": {
+    title: "The Success Communicator",
+    core_identity: "You're the material storyteller. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
+    gifts: `- Natural sales and persuasion ability
+- Talent for making things attractive and desirable
+- Ability to communicate material value clearly
+- Gift for inspiring desire and investment`,
+    shadow: "You oversell. You make things sound better than they are. You're so focused on the sale that you don't deliver on the promise. Your credibility eventually crumbles. The pattern: people feel deceived by the gap between your pitch and the reality. You're chasing the next sale instead of making the last one work. Your success is built on smoke.",
+    life_direction: "Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to tell the truth about what you're selling, including the limitations. This rewires you from deceptive-seller into trustworthy-vendor."
+  },
+  "4♦": {
+    title: "The Financial Foundation Builder",
+    core_identity: "You're the material architect. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
+    gifts: `- Strong financial planning and foresight
+- Ability to build lasting material security
+- Natural understanding of systems and structures
+- Talent for creating sustainable wealth`,
+    shadow: "You're so focused on security that you can't enjoy what you have. You hoard and restrict, afraid to spend. Your security feels like scarcity disguised as caution. The pattern: you have plenty but live like you're poor. You can't relax because there's always another threat to prepare for. Your financial stability is emotionally empty.",
+    life_direction: "Your curriculum is learning that some security is illusory and that money is meant to be used. You're learning to enjoy the abundance you've built.",
+    algorithm_gateway: `Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to spend on things that don't provide "return," to experience waste and survive it. This rewires you from scarcity-protection into abundance-enjoyment.`
+  },
+  "5♦": {
+    title: "The Dynamic Entrepreneur",
+    core_identity: "You're the material adventurer. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
+    gifts: `- Quick adaptation to market changes
+- Ability to explore multiple income streams
+- Natural entrepreneurial flexibility
+- Gift for finding new opportunities`,
+    shadow: "You jump before you've succeeded. You start ventures and abandon them for the next one. You have multiple half-built things instead of one solid thing. The pattern: you're scattered financially. You're never stable because you're always looking for the next opportunity. People can't trust your consistency, and you can't trust yourself to finish.",
+    life_direction: "Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation forces you to stay with one financial situation despite boredom, to see it through to success. This rewires you from scattered-entrepreneur into grounded-builder."
+  },
+  "6♦": {
+    title: "The Generous Provider",
+    core_identity: "You're the material caretaker. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
+    gifts: `- Generous and supportive nature with resources
+- Ability to provide stability for others
+- Natural understanding of needs and provision
+- Gift for creating material safety`,
+    shadow: "You over-give and under-receive. You provide until you're depleted. You enable dependence under the guise of generosity. People rely on you financially and you resent it but keep enabling. The pattern: you're the provider, but nobody provides for you. You're exhausted from giving. Your generosity is unsustainable.",
+    life_direction: "Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to say no to financial requests, to prioritize your own security. This rewires you from martyr-giver into sustainable-provider."
+  },
+  "7♦": {
+    title: "The Skeptical Investor",
+    core_identity: "You're the material analyst. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
+    gifts: `- Analytical thinking about financial decisions
+- Ability to identify financial risks
+- Deep skepticism that prevents poor choices
+- Natural caution and thoroughness`,
+    shadow: "You analyze instead of invest. You can see every problem with every opportunity, so you don't take any. Your skepticism prevents you from building wealth. The pattern: you're cautious to the point of paralysis. You miss opportunities because you're afraid they're bad. Your analysis becomes an excuse for inaction.",
+    life_direction: "Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to invest despite doubt, to move forward despite risk. This rewires you from analysis-paralysis into calculated-risk-taking."
+  },
+  "8♦": {
+    title: "The Businessman",
+    core_identity: "You're the material strategist. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
+    gifts: `- Strategic thinking about resources and power
+- Natural ability to leverage opportunities
+- Ambitious drive and determination
+- Talent for creating material success`,
+    shadow: "You treat resources as weapons. You're so focused on winning financially that you lose genuine relationships. Money becomes a way to control and dominate. The pattern: you're successful but isolated. You've won financially but lost relationally. People fear your power, not respect your character. You're winning money but losing meaning.",
+    life_direction: "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to give away money without strategic return, to experience generosity without control. This rewires you from controlling-strategist into generous-leader."
+  },
+  "9♦": {
+    title: "The Universal Provider",
+    core_identity: "You're the material idealist. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
+    gifts: `- Visionary thinking about resource distribution
+- Generous impulse toward universal good
+- Ability to inspire others to contribute
+- Natural idealism about abundance`,
+    shadow: "You're so focused on providing for everyone that you neglect your own security. You give away what you need. You're unsustainable in your generosity. The pattern: you're broke because you're always giving. You help others build while your own foundation crumbles. You inspire generosity but don't model financial health.",
+    life_direction: "Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to focus on your own financial security before trying to help others. This rewires you from self-sacrificing-idealist into grounded-provider."
+  },
+  "10♦": {
+    title: "The Wealthy Master",
+    core_identity: "You're the material elder. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
+    gifts: `- Integrated material mastery and security
+- Ability to radiate confidence about resources
+- Wisdom from building and maintaining wealth
+- Natural generosity from a place of abundance`,
+    shadow: "You rest on your material accomplishments and stop growing. You think you've figured it out, so you stop learning. Your wealth becomes a prison of protection. The pattern: you're secure but stagnant. You're defending what you have instead of expanding. Your mastery is complete but dormant.",
+    life_direction: "Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to risk what you've built, to expand despite comfort. This rewires you from stagnant-secure into dynamic-abundant."
+  },
+  "J♦": {
+    title: "The Successful Messenger",
+    core_identity: "You're the material catalyst. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
+    gifts: `- Ability to inspire financial awakening
+- Natural gift for shifting money mindsets
+- Talent for creating excitement about opportunity
+- Inspiring others to believe in abundance`,
+    shadow: "You talk about financial success more than you create it. You inspire others but your own finances are unstable. You're the messenger without the message integrated. The pattern: you inspire others to wealth but don't maintain your own. People feel deceived by the gap between what you preach and how you live.",
+    life_direction: "Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to focus on your own material security while you inspire others. This rewires you from preaching-without-practicing into living-what-you-teach."
+  },
+  "Q♦": {
+    title: "The Prosperous Nurturer",
+    core_identity: "You're the material queen. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
+    gifts: `- Natural ability to provide and nurture materially
+- Generosity and abundance consciousness
+- Talent for creating financial safety for others
+- Wisdom about resources and needs`,
+    shadow: "You control through provision. You give to keep people dependent. You need to be needed materially. The pattern: you're the provider, but people feel obligated rather than cared for. Your generosity has strings. You give but expect gratitude and loyalty in return.",
+    life_direction: "Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to stop providing, to let people struggle materially, to discover you survive their independence. This rewires you from controlling-provider into empowering-mentor."
+  },
+  "K♦": {
+    title: "The Wealthy King",
+    core_identity: "You're the material authority. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
+    gifts: `- Natural authority and command over resources
+- Confident decision-making about money
+- Ability to direct financial strategy
+- Inspiring confidence in your financial judgment`,
+    shadow: "You confuse financial authority with being right about everything. You dismiss perspectives that differ from yours. You control finances to maintain power. The pattern: you're commanding but not collaborative. You make money decisions unilaterally. People follow your financial direction out of deference, not genuine agreement.",
+    life_direction: "Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
+    algorithm_gateway: "Your card operates in Diamonds (material identities). Algorithm Inoculation challenges you to be financially wrong, to change your mind about money, to learn from others' financial wisdom. This rewires you from authoritarian-control into collaborative-stewardship."
+  },
+  "A♠": {
+    title: "The Truth Pioneer",
+    core_identity: "You're the seeker of truth. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
+    gifts: `- Ability to penetrate illusions and see truth
+- Courage to question what others accept
+- Sharp thinking and analytical power
+- Natural integrity and honesty`,
+    shadow: `You think you've found the truth and stop looking. You're so certain about what's real that you dismiss other perspectives. Your truth becomes dogma. The pattern: you're the truth-teller, but you're also the one who won't listen. You cut people down with your "honesty." Your truth is weaponized.`,
+    life_direction: "Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to question the truths you're most certain about, to discover you don't know what you thought you knew. This rewires you from dogmatic-certainty into curious-inquiry."
+  },
+  "2♠": {
+    title: "The Skeptical Partner",
+    core_identity: "You're the intellectual doubter. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
+    gifts: `- Ability to hold multiple perspectives simultaneously
+- Healthy skepticism toward claims
+- Balanced thinking and fairness
+- Natural understanding of complexity`,
+    shadow: "You doubt so much that you can't decide anything. Your balance becomes paralysis. You can see both sides so well that you commit to neither. The pattern: you're fair but indecisive. You understand everyone's perspective but have no perspective of your own. You're unable to take a stand.",
+    life_direction: "Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation forces you to pick a belief and defend it, to stand despite doubt. This rewires you from doubt-paralyzed into decision-making."
+  },
+  "3♠": {
+    title: "The Sorrowful Truth",
+    core_identity: "You're the realist. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
+    gifts: `- Ability to see what needs fixing
+- Honesty about difficulty and pain
+- Natural compassion for suffering
+- Courage to name injustice`,
+    shadow: "You're so focused on what's wrong that you can't see what's right. Your thinking is skewed toward darkness. You're a pessimist who calls it realism. The pattern: you drain people with your focus on problems. You see suffering everywhere and feel responsible for fixing it. Your realism is depressing.",
+    life_direction: "Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to focus on what's right, what's working, what's beautiful. This rewires you from problem-focused into solution-oriented."
+  },
+  "4♠": {
+    title: "The Rigid Truth",
+    core_identity: "You're the mental architect of belief systems. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
+    gifts: `- Ability to create coherent belief systems
+- Strong principles and ethical clarity
+- Organized thinking and clear logic
+- Natural integrity and consistency`,
+    shadow: "Your belief system becomes a prison. You defend outdated principles because they're yours. Your truth is rigid and won't flex. The pattern: you're principled to the point of cruelty. You value your beliefs more than people. You're right, and everyone else is wrong.",
+    life_direction: "Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to question your core principles, to discover they don't have to be so rigid. This rewires you from dogmatic-structure into flexible-principle."
+  },
+  "5♠": {
+    title: "The Restless Mind",
+    core_identity: "You're the intellectual wanderer. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
+    gifts: `- Quick thinking and mental flexibility
+- Openness to new perspectives
+- Natural curiosity and investigation
+- Ability to see things from fresh angles`,
+    shadow: "You chase ideas instead of developing them. You believe many things deeply and none of them fully. Your thinking is scattered across philosophies. The pattern: you're intellectually restless and unreliable. People can't count on your positions because you keep changing them. Your wisdom is shallow because you don't stay anywhere long enough.",
+    life_direction: "Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation forces you to commit to one belief system despite the urge to explore others. This rewires you from scattered-seeker into grounded-believer."
+  },
+  "6♠": {
+    title: "The Responsible Mind",
+    core_identity: "You're the mental guide. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
+    gifts: `- Natural ability to help others see truth
+- Responsibility toward honest guidance
+- Clear thinking and balanced perspective
+- Talent for helping others process difficulty`,
+    shadow: "You take responsibility for others' understanding. You think it's your job to make people see the truth. You become preachy and lose the ability to listen. The pattern: you're helpful but controlling. You think people need your truth more than their own discovery. Your guidance prevents their growth.",
+    life_direction: "Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to not know, to be unsure, to let others figure it out. This rewires you from guiding-control into facilitating-discovery."
+  },
+  "7♠": {
+    title: "The Questioning Mind",
+    core_identity: `You're the intellectual skeptic. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks "how do you know?" Your thinking is critical and probing.`,
+    gifts: `- Penetrating questions and inquiry
+- Ability to identify inconsistencies and flaws
+- Critical thinking and logical rigor
+- Natural skepticism that prevents deception`,
+    shadow: "Your questioning becomes cynicism. You question so much that nothing seems trustworthy. You undermine before you understand. The pattern: you're the one destroying ideas instead of building them. Your critical mind prevents you from ever fully committing to anything. You're brilliant but destructive.",
+    life_direction: "Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to stop questioning for a moment and just believe, to act on faith. This rewires you from cynical-questioner into constructive-thinker."
+  },
+  "8♠": {
+    title: "The Powerful Mind",
+    core_identity: "You're the intellectual warrior. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
+    gifts: `- Strategic and powerful thinking
+- Ability to win arguments through logic
+- Strong conviction and mental clarity
+- Talent for directing others' thinking`,
+    shadow: "Your powerful mind crushes others' perspectives. You think your logic is superior and dismiss other ways of knowing. You're intellectually dominating. The pattern: you're right and everyone else is wrong. You win arguments but lose relationships. People don't trust your thinking because it feels like a weapon.",
+    life_direction: "Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to admit you're wrong, to let someone else's thinking dominate, to experience intellectual surrender. This rewires you from dominating-power into collaborative-strength."
+  },
+  "9♠": {
+    title: "The Idealistic Mind",
+    core_identity: "You're the visionary thinker. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
+    gifts: `- Visionary thinking and universal perspective
+- Ability to see highest potential truth
+- Idealistic principles and ethics
+- Natural inspiration toward greater good`,
+    shadow: "Your idealism is disconnected from reality. You think about how the world should be but don't do the work to make it so. Your ideas are beautiful and useless. The pattern: you're full of lofty principles but empty on practical action. You inspire people toward ideals you don't implement. Your thinking is inspiring but ineffective.",
+    life_direction: "Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to focus on one practical application of your ideals instead of thinking universally. This rewires you from idealistic-dreaming into practical-implementation."
+  },
+  "10♠": {
+    title: "The Completed Mind",
+    core_identity: "You're the mental master. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
+    gifts: `- Deep wisdom and mental integration
+- Clarity and peace about beliefs
+- Ability to radiate confidence about truth
+- Natural authority and master perspective`,
+    shadow: "Your mental completion becomes stagnation. You think you've figured it out, so you stop evolving. Your beliefs calcify. The pattern: you're at peace but not growing. You're defending your wisdom instead of expanding it. Your mastery is complete but dormant.",
+    life_direction: "Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to question your deepest beliefs, to discover they might not be as true as you think. This rewires you from settled-master into evolving-seeker."
+  },
+  "J♠": {
+    title: "The Messenger of Truth",
+    core_identity: "You're the messenger who brings difficult truths. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    gifts: `- Courage to speak difficult truths
+- Ability to inspire others toward honesty
+- Gift for bringing necessary perspective
+- Talent for shifting how people think`,
+    shadow: "You deliver truth and disappear. You speak hard things and don't stay for the integration. Your honesty feels like attack. The pattern: you're the truth-teller, but people feel hurt by you. You inspire honesty by being hurtfully direct. You're brave about speaking but cowardly about relationship repair.",
+    life_direction: "Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to speak your truth AND care about how it lands. This rewires you from harsh-truth-teller into compassionate-messenger."
+  },
+  "Q♠": {
+    title: "The Wise Guide",
+    core_identity: "You're the mental queen. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
+    gifts: `- Deep wisdom and understanding
+- Ability to hold space for others' exploration
+- Natural mentoring and guidance
+- Talent for helping others discover their own truth`,
+    shadow: "You think you know what others need to understand. You guide people toward your truth instead of facilitating their discovery. You control through wisdom. The pattern: you're helpful but know-it-all. People depend on your thinking instead of developing their own. You're the strong mind holding everyone up.",
+    life_direction: "Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to not know, to let others figure it out, to be unsure alongside them. This rewires you from controlling-sage into facilitating-midwife."
+  },
+  "K♠": {
+    title: "The Master of Thought",
+    core_identity: "You're the mental king. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
+    gifts: `- Clear thinking and intellectual command
+- Natural authority and decisiveness
+- Ability to direct complex thinking
+- Confidence that inspires others' confidence`,
+    shadow: "You confuse your perspective with universal truth. You think your thinking is the right thinking. You dismiss other perspectives as inferior. The pattern: you're commanding but not listening. You make mental judgments unilaterally. People follow your thinking out of respect for your authority, not genuine agreement.",
+    life_direction: "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
+    algorithm_gateway: "Your card operates in Spades (intellectual beliefs). Algorithm Inoculation challenges you to be intellectually wrong, to change your mind, to learn from people you're supposed to be teaching. This rewires you from authoritarian-certainty into collaborative-thinking."
+  },
+  "A♥": {
+    title: "The Emotional Pioneer",
+    core_identity: "You're the emotional initiator. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
+    gifts: `- Courage to initiate genuine emotional connection
+- Openness that invites others into real vulnerability
+- Natural warmth and emotional directness
+- Capacity to start relationships from honesty`,
+    shadow: "You confuse intensity with intimacy. When you fear abandonment, you flood others with need before they can leave—or you weaponize your feelings, using drama and emotional pressure to control. The pattern: you reach so hard for connection that you overwhelm it. Your need arrives before the relationship can hold it, and people feel managed rather than met.",
+    life_direction: "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to sit in the discomfort of an unanswered reach, to feel the fear of abandonment without acting on it. This rewires you from need-flooding into open-handed connection."
+  },
+  "2♥": {
+    title: "The Loving Partner",
+    core_identity: `You're the emotional partner. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of "us." Connection isn't a luxury for you; it's how you locate yourself.`,
+    gifts: `- Genuine diplomacy and emotional attunement
+- Ability to balance your needs with another's
+- Talent for creating mutual understanding and partnership
+- Sensitivity to what a relationship actually needs`,
+    shadow: `You lose yourself in the people you love. Terrified there's no real "you" underneath, you shape-shift to please—or you manage everyone's emotions like a hostage situation, sacrificing yourself and then quietly resenting their ingratitude. The pattern: you give until there's nothing left, then wonder why no one sees you. Your harmony is built on self-erasure.`,
+    life_direction: "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to state a need that might cause friction, to risk disappointing someone you love. This rewires you from self-erasing peacekeeper into a real partner with a self."
+  },
+  "3♥": {
+    title: "The Creative Heart",
+    core_identity: "You're the emotional artist. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
+    gifts: `- Emotional depth expressed through creativity
+- Range and versatility in how you connect
+- Ability to bring vitality and play to relationships
+- Comfort with emotional complexity and nuance`,
+    shadow: 'Your love of variety becomes a way to never land. You keep exes on the back burner and sabotage closeness by discovering "incompatibilities" right when vulnerability is required—or you love-bomb a new connection, then find its fatal flaw the moment depth is asked of you. The pattern: you mistake the thrill of the new for intimacy, and scatter your heart so widely that none of it has to be risked.',
+    life_direction: "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay through the unglamorous middle of one relationship, past the point where you'd normally find the flaw. This rewires you from emotional novelty-seeker into someone capable of depth."
+  },
+  "4♥": {
+    title: "The Emotional Foundation Builder",
+    core_identity: "You're the emotional architect. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
+    gifts: `- Building reliable emotional foundations and trust
+- Consistency and steadiness in relationships
+- Ability to make others feel safe and held
+- Loyalty and follow-through in love`,
+    shadow: `You confuse control with security. You keep everyone in scripted roles and call spontaneity a threat—or you pathologize authentic feeling as "unhealthy," maintaining a controlled emotional museum instead of a living home. The pattern: you build such a fortress of stability that real, messy emotion can't get in. You're safe, and slowly suffocating, and so is everyone you love.`,
+    life_direction: "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let an emotional moment be messy and unscripted, to tolerate the insecurity of not controlling it. This rewires you from emotional warden into a builder of living, breathing trust."
+  },
+  "5♥": {
+    title: "The Restless Heart",
+    core_identity: "You're the emotional explorer. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
+    gifts: `- Adaptability through emotional change and transition
+- Bringing freshness and movement to relationships
+- Understanding that love deepens through transformation
+- Openness to growth rather than stasis`,
+    shadow: 'Your need for freedom becomes a way to never stay. You collect relationships and vanish the moment intimacy requires standing still—or you dress up emotional tourism as "freedom" and "polyamory," using the language of growth to avoid commitment. The pattern: you mistake motion for aliveness, and leave before anything can ask something of you. The variety is real; the depth never arrives.',
+    life_direction: "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to remain present through the part of a relationship that feels like confinement. This rewires you from emotional escape-artist into someone who can grow in place."
+  },
+  "6♥": {
+    title: "The Devoted Caregiver",
+    core_identity: "You're the emotional caretaker. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
+    gifts: `- Integrating genuine care with healthy boundaries
+- Creating harmony and emotional safety for others
+- Devotion and willingness to show up for people
+- Capacity to serve from a full cup, not an empty one`,
+    shadow: 'Your care curdles into martyrdom. You silence your own needs for a false peace, harboring resentment that grows cancerous—or you perform "the nice one," swallowing broken glass to avoid conflict while quietly building up emotional debt. The pattern: you give to be needed, then resent the people who needed you. Your harmony is bought with your own erasure, and the bill always comes due.',
+    life_direction: "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let a conflict happen instead of smoothing it over, to disappoint someone rather than self-erase. This rewires you from resentful martyr into someone who serves from real fullness."
+  },
+  "7♥": {
+    title: "The Reflective Heart",
+    core_identity: "You're the emotional contemplative. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
+    gifts: `- Wisdom and insight into the nature of love
+- Ability to see beneath romantic illusion
+- Emotional reflection and self-awareness
+- Seeking what's true over what's comfortable`,
+    shadow: 'You use understanding as a place to hide. You intellectualize feeling away to avoid the mess of real connection—turning emotional analysis into armor, staying in your head while calling it "authenticity." The pattern: you know everything about love and risk none of it. Your insight keeps you at a safe, lonely distance, narrating intimacy instead of having it.',
+    life_direction: "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay in a feeling without explaining it, to be vulnerable before you've understood it. This rewires you from detached analyst into a participant in your own emotional life."
+  },
+  "8♥": {
+    title: "The Emotional Powerhouse",
+    core_identity: "You're the emotional force. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
+    gifts: `- Commanding emotional situations with strength and clarity
+- Charisma and emotional presence
+- Leading with confident compassion
+- Ability to steady and reassure others`,
+    shadow: "Your power over feeling becomes a way to avoid your own. You shut down and use logic as a shield against the vulnerability real strength requires—or you flip the other way and turn possessive and controlling, wielding emotional power to dominate others into compliance. The pattern: you'd rather command a feeling than be moved by one. Control is your defense against the risk of being affected.",
+    life_direction: "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let yourself be emotionally affected, to surrender control of a feeling. This rewires you from controlling powerhouse into someone whose strength includes tenderness."
+  },
+  "9♥": {
+    title: "The Compassionate Idealist",
+    core_identity: "You're the universal lover. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
+    gifts: `- Integrating compassion with hard-won wisdom
+- A capacity for love that extends beyond the self
+- Knowing what is yours to carry and what to release
+- Emotional generosity toward people and causes`,
+    shadow: `Your compassion turns into self-erasing sainthood. You drown in collapsed idealism, emotionally martyred while secretly resenting the people you're "helping"—or you save everyone but yourself and call burnout sainthood. The pattern: you give the love you can't accept, carry the pain that isn't yours, and call it virtue. Underneath the helping is a quiet refusal to tend your own wound.`,
+    life_direction: "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to receive care instead of only giving it, to put something down. This rewires you from burned-out savior into someone who loves from wholeness rather than depletion."
+  },
+  "10♥": {
+    title: "The Community Heart",
+    core_identity: "You're the emotional connector. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
+    gifts: `- Expanding love and belonging across a community
+- Creating warmth and inclusion at scale
+- Holding many relationships with genuine presence
+- Making others feel part of something`,
+    shadow: "Your gift for collective care becomes an obligation that swallows you. You get enmeshed in family duty, overwhelmed by emotional baggage you're carrying for everyone—or you appoint yourself responsible for everyone's well-being and run guilt-based systems disguised as care. The pattern: you confuse being needed by many with being loved, and end up holding so much that you can't feel your own heart in the crowd.",
+    life_direction: "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let someone in the group carry their own weight, to step back from the role of emotional hub. This rewires you from over-responsible caretaker into a genuine, unburdened member of your people."
+  },
+  "J♥": {
+    title: "The Romantic Messenger",
+    core_identity: "You're the emotional idealist. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
+    gifts: `- Bringing fresh perspective and inspiration to connection
+- Youthful openness and emotional creativity
+- Innovating how relationships can work
+- Reawakening feeling and possibility in others`,
+    shadow: "Your idealism becomes a way to avoid the real thing. You stay emotionally immature, projecting fantasy onto people rather than meeting who they actually are—spinning romantic narratives that collapse the instant depth is required. The pattern: you're in love with the story of love. You'd rather keep the beautiful fantasy intact than risk the ordinary, demanding reality of an actual person.",
+    life_direction: "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to stay with a relationship after the fantasy breaks, to love the real person in front of you. This rewires you from romantic dreamer into someone capable of mature connection."
+  },
+  "Q♥": {
+    title: "The Devoted Nurturer",
+    core_identity: "You're the emotional nurturer. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
+    gifts: `- Nurturing others through authentic, intuitive presence
+- Deep emotional attunement and empathy
+- Embodied emotional wisdom
+- Making others feel genuinely seen and held`,
+    shadow: "Your attunement was forged in vigilance, and it can turn against you. You read the room while sacrificing your own needs, scanning for threat the way you learned to as a child—or you tip into emotional tyranny, smothering with control and building guilt-debt systems masked as love. The pattern: you give care so total that it becomes a leash. Your love comes with an invisible invoice, and the people you nurture feel both held and owned.",
+    life_direction: "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to let someone care for you, to drop the vigilance and need nothing in return. This rewires you from hypervigilant caretaker into a nurturer who is also nurtured."
+  },
+  "K♥": {
+    title: "The Compassionate King",
+    core_identity: "You're the emotional sovereign. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
+    gifts: `- Commanding emotional authority with depth and care
+- Leading others through feeling with steadiness
+- Mature, grounded emotional presence
+- Holding space with both strength and compassion`,
+    shadow: "You rule love from a safe distance. You stay emotionally distant, governing from analytical remove while avoiding vulnerability entirely—or you swing into possessiveness and tyranny, using your authority to control how others feel. The pattern: you'll lead an emotional situation but won't be exposed by one. Mastery becomes a throne you hide behind, and the people closest to you feel managed by a king they can't actually reach.",
+    life_direction: "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
+    algorithm_gateway: "Your card operates in Hearts (emotional patterns). Algorithm Inoculation challenges you to be vulnerable with someone you lead, to step off the throne and be affected. This rewires you from distant sovereign into a king whose strength is his openness."
+  }
+};
+
+// lib/engine-data/suit-domains.json
+var suit_domains_default = {
+  "♥": "Emotional Patterns",
+  "♣": "Behavioral/Intellectual Patterns",
+  "♦": "Value/Resource Patterns",
+  "♠": "Lifestyle/Transformation Patterns"
+};
+// lib/engine-data/planet-domains.json
+var planet_domains_default = {
+  Mercury: "mind, communication, perception",
+  Venus: "relationships, values, love",
+  Mars: "action, drive, assertion, conflict",
+  Jupiter: "expansion, growth, opportunity, abundance",
+  Saturn: "structure, limits, discipline, karma",
+  Uranus: "disruption, innovation, sudden change",
+  Neptune: "dissolution, dreams, spirituality, surrender"
+};
+
+// lib/reading.ts
+var THREE_LENS_INTERPRETATIONS = card_meanings_default;
+var CARD_DESCRIPTIONS_MAP = card_descriptions_default;
+var SUIT_DOMAINS_MAP = suit_domains_default;
+var PLANET_DOMAINS_MAP = planet_domains_default;
+var PLANET_NAMES2 = cardology.PLANET_NAMES;
+
+class ReadingError extends Error {
+}
+var ISO = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
+var US = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+var US_DASH = /^(\d{1,2})[ -](\d{1,2})[ -](\d{4})$/;
+function parseBirthdate(value) {
+  const v = value.trim();
+  let m = US.exec(v);
+  if (m)
+    return { month: +m[1], day: +m[2], year: +m[3] };
+  m = ISO.exec(v);
+  if (m)
+    return { month: +m[2], day: +m[3], year: +m[1] };
+  m = US_DASH.exec(v);
+  if (m)
+    return { month: +m[1], day: +m[2], year: +m[3] };
+  throw new ReadingError(`invalid birthdate: ${value}`);
+}
+function localDate(year, month, day) {
+  return new Date(year, month - 1, day, 12, 0, 0, 0);
+}
+function parseTargetDate(value) {
+  if (!value) {
+    const now = new Date;
+    const d = localDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
+    return { date: d, iso: toISO(d) };
+  }
+  const m = ISO.exec(value.trim());
+  if (!m)
+    throw new ReadingError(`invalid target date: ${value}`);
+  const year = +m[1];
+  const month = +m[2];
+  const day = +m[3];
+  return { date: localDate(year, month, day), iso: pad4(year) + "-" + pad2(month) + "-" + pad2(day) };
+}
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
+function pad4(n) {
+  return String(n).padStart(4, "0");
+}
+function toISO(d) {
+  return pad4(d.getFullYear()) + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
+}
+function lookupInterpretation(card) {
+  if (!card)
+    return null;
+  return THREE_LENS_INTERPRETATIONS[card] ?? null;
+}
+function lookupDescription(card) {
+  if (!card)
+    return null;
+  return CARD_DESCRIPTIONS_MAP[card] ?? null;
+}
+function getPositionMeaning() {
+  return null;
+}
+function buildPeriods(cards) {
+  const periods = {};
+  const list = cards || [];
+  const n = Math.min(7, list.length);
+  for (let i = 0;i < n; i++) {
+    const planet = PLANET_NAMES2[i];
+    const card = list[i];
+    periods[planet] = {
+      card,
+      interpretation: lookupInterpretation(card),
+      position_meaning: getPositionMeaning()
+    };
+  }
+  return periods;
+}
+function getLongRangeCard(card, age) {
+  const cycle = Math.floor(age / 7);
+  const position = age % 7;
+  const spreadKey = cycle + 1;
+  const spread = cardology.SPREADS[String(spreadKey)];
+  if (!spread)
+    return null;
+  const cards7 = cardology.extractCards(card, spread, 7);
+  if (!cards7 || position >= cards7.length)
+    return null;
+  return {
+    card: cards7[position],
+    planet: PLANET_NAMES2[position],
+    cycle,
+    spread_used: spreadKey,
+    all_7_in_cycle: cards7
+  };
+}
+function buildReading(birthdate, targetDate) {
+  const { month, day, year } = parseBirthdate(birthdate);
+  const { date: target, iso: targetISO } = parseTargetDate(targetDate);
+  const [bc, sv] = cardology.getBirthCard(month, day);
+  const prc = cardology.getPlanetaryRulingCard(month, day);
+  const prcPrimary = Array.isArray(prc) ? prc[0] : prc;
+  const prcSecondary = Array.isArray(prc) && prc.length > 1 ? prc[1] : null;
+  const age = cardology.calculateAge(month, day, year, target);
+  const syNav = Math.max(0, Math.min(90, age + 1));
+  const spreadNav = cardology.SPREADS[String(syNav)];
+  const bc9 = cardology.extractCards(bc, spreadNav, 9);
+  const prc9 = prcPrimary ? cardology.extractCards(prcPrimary, spreadNav, 9) : null;
+  const [apPlanetRaw, , dayInYear] = cardology.getActivePeriod(month, day, target);
+  const apPlanet = apPlanetRaw;
+  const bcPeriodsDetailed = buildPeriods(bc9);
+  const prcPeriodsDetailed = buildPeriods(prc9);
+  const bcPeriods = {};
+  const prcPeriods = {};
+  for (const p of Object.keys(bcPeriodsDetailed)) {
+    bcPeriods[p] = bcPeriodsDetailed[p].card;
+  }
+  for (const p of Object.keys(prcPeriodsDetailed)) {
+    prcPeriods[p] = prcPeriodsDetailed[p].card;
+  }
+  const bcSuit = cardology.getCardSuit(bc);
+  const archetype = {
+    birth_card: bc,
+    solar_value: sv,
+    suit_domain: (bcSuit ? SUIT_DOMAINS_MAP[bcSuit] : undefined) ?? null,
+    prc: prcPrimary,
+    prc_secondary: prcSecondary,
+    description: lookupDescription(bc),
+    prc_description: lookupDescription(prcPrimary)
+  };
+  const bcSpread = {
+    anchor: bc,
+    periods: bcPeriods,
+    periods_detailed: bcPeriodsDetailed,
+    pluto: bc9 && bc9.length > 7 ? bc9[7] : null,
+    pluto_meaning: null,
+    result: bc9 && bc9.length > 8 ? bc9[8] : null,
+    result_meaning: null
+  };
+  const prcSpread = {
+    anchor: prcPrimary,
+    periods: prcPeriods,
+    periods_detailed: prcPeriodsDetailed,
+    pluto: prc9 && prc9.length > 7 ? prc9[7] : null,
+    pluto_meaning: null,
+    result: prc9 && prc9.length > 8 ? prc9[8] : null,
+    result_meaning: null
+  };
+  const apBcCard = bcPeriods[apPlanet];
+  const apPrcCard = prcPeriods[apPlanet];
+  const activePeriod = {
+    planet: apPlanet,
+    domain: PLANET_DOMAINS_MAP[apPlanet],
+    bc_card: apBcCard ?? null,
+    prc_card: apPrcCard ?? null,
+    interpretation_bc: lookupInterpretation(apBcCard),
+    interpretation_prc: lookupInterpretation(apPrcCard),
+    position_meaning_bc: null,
+    position_meaning_prc: null
+  };
+  const apIdx = Math.max(0, PLANET_NAMES2.indexOf(apPlanet));
+  const periodStart = 1 + apIdx * 52;
+  const dayInPeriod = Math.max(0, dayInYear - periodStart);
+  const subLen = 52 / 7;
+  const subIndex = Math.min(6, Math.floor(dayInPeriod / subLen));
+  const subPlanet = PLANET_NAMES2[subIndex];
+  function drillDaily(periodCard) {
+    const seven = periodCard ? cardology.extractCards(periodCard, spreadNav, 7) : null;
+    const card = seven && subIndex < seven.length ? seven[subIndex] : null;
+    return {
+      card,
+      interpretation: lookupInterpretation(card),
+      source_period_card: periodCard ?? null
+    };
+  }
+  const daily = {
+    sub_planet: subPlanet,
+    sub_index: subIndex,
+    domain: PLANET_DOMAINS_MAP[subPlanet],
+    period_planet: apPlanet,
+    day_in_period: dayInPeriod,
+    sub_length_days: subLen,
+    bc: drillDaily(apBcCard),
+    prc: drillDaily(apPrcCard),
+    method: "active 52-day period card → 7 sub-period cards via SPREADS[sy_nav]; sub_index = floor(day_in_period / (52/7))"
+  };
+  const longRange = {
+    bc: getLongRangeCard(bc, age),
+    prc: prcPrimary ? getLongRangeCard(prcPrimary, age) : null
+  };
+  const karma = {
+    bc_lifetime: cardology.getEnvironmentDisplacement(bc, 1)
+  };
+  const inputs = {
+    birthdate: `${pad2(month)}/${pad2(day)}/${year}`,
+    birth_month: month,
+    birth_day: day,
+    birth_year: year,
+    target_date: targetISO,
+    calculation_source: "local deterministic Cardology engine via cli/cardology_cli.py"
+  };
+  const deepDive = buildDeepDive(bc, karma.bc_lifetime);
+  return {
+    archetype,
+    timing: { age, sy_nav: syNav, crown: spreadNav.crown },
+    birth_card_spread: bcSpread,
+    prc_spread: prcSpread,
+    active_period: activePeriod,
+    daily,
+    long_range: longRange,
+    karma,
+    inputs,
+    deep_dive: deepDive
+  };
+}
+function buildDeepDive(birthCard, bcLifetime) {
+  const spread = cardology.SPREADS["1"];
+  const lifeCards = (birthCard && spread ? cardology.extractCards(birthCard, spread, 9) : []) || [];
+  const periods = {};
+  for (let idx = 0;idx < PLANET_NAMES2.length; idx++) {
+    const planet = PLANET_NAMES2[idx];
+    const card = idx < lifeCards.length ? lifeCards[idx] : null;
+    periods[planet] = {
+      planet,
+      card,
+      interpretation: card ? lookupInterpretation(card) : null,
+      position_meaning: card ? getPositionMeaning() : null
+    };
+  }
+  let lifetimeRaw = bcLifetime;
+  if (lifetimeRaw == null && birthCard) {
+    lifetimeRaw = cardology.getEnvironmentDisplacement(birthCard, 1);
+  }
+  const raw = lifetimeRaw || {};
+  return {
+    anchor: birthCard,
+    life_spread_year: 1,
+    life_path: {
+      source: "birth-card anchor extracted from SPREADS['1']",
+      cards: lifeCards.slice(0, 7),
+      periods,
+      pluto: lifeCards.length > 7 ? lifeCards[7] : null,
+      result: lifeCards.length > 8 ? lifeCards[8] : null
+    },
+    lifetime_karma: {
+      source: "get_environment_displacement(birth_card, 1)",
+      gift: {
+        label: "Lifetime Gift",
+        card: raw.environment ?? null,
+        source_field: "environment"
+      },
+      challenge: {
+        label: "Lifetime Challenge",
+        card: raw.displacement ?? null,
+        source_field: "displacement"
+      },
+      raw: lifetimeRaw
+    }
+  };
+}
+
+// ../../../private/tmp/_cardology_html_entry.ts
+window.__cardology = { buildReading, THREE_LENS: card_meanings_default, CARD_DESCRIPTIONS: card_descriptions_default, PLANET_DOMAINS: planet_domains_default };
+
+</script>
+<script>
+(function() {
+const __c = window.__cardology;
+const THREE_LENS = __c.THREE_LENS;
+const CARD_DESCRIPTIONS = __c.CARD_DESCRIPTIONS;
+const PLANET_DOMAINS = __c.PLANET_DOMAINS;
+
+const SYSTEM_PROMPT = "# Cardology Reading Interpretation Reference\n\nUse this reference as the reading method behind cardologypro.com daily-card and deep-dive interpretations.\n\n## Core stance\n- A reading is a pattern map for real people, relationships, choices, opportunities, challenges, and subjective experience.\n- Never make fatalistic claims. Keep the client empowered as the creator of their choices.\n- Interpret every card through high/low expression: underuse, balanced sweet spot, and overuse.\n- Present shadow as protection or unconscious habit, not as a defect.\n- It is valid to apply cards to actual people and relationship dynamics. Compare cards to understand attraction, friction, familiarity, projection, family roles, creative collaboration, work chemistry, and recurring behavior.\n\n## Reading process\n1. Start with the person and their actual context, not abstract card lore.\n2. Interpret Birth Card and Planetary Ruling Card as the two core identity anchors.\n3. Use current active planetary period as the daily chapter.\n4. Connect the birth-card spread card and ruling-card spread card for the same period.\n5. When another person or relationship is part of the question, name the actual dynamic: what each person likely needs, where they trigger each other, what feels familiar, and what pattern is asking to mature.\n6. End with clear reflective questions and one grounded practice for the day.\n\n## Daily card method\n- The daily card is the Birth Card spread card governing the current active planetary period.\n- The ruling-card support card modifies the daily card and shows the personality/ruling-card part of the same chapter.\n- The planet names the life domain: Mercury communication/mind; Venus love/family/art; Mars action/conflict/desire; Jupiter growth/prosperity; Saturn responsibility/limits; Uranus freedom/groups/technology; Neptune hopes/fears/dreams/spiritual imagination.\n- For daily readings, keep the time horizon short: what to notice today, how the pattern may slip under or over, and how to practice the balanced center.\n\n## Life Spread and timing insights\n- When Life Spread, Karma, Saturn, Pluto, or Result cards appear in yearly/daily timing, treat them as personalized activations.\n- Saturn asks for maturity, responsibility, and constructive discipline.\n- Pluto asks for transformation of a compulsive or unconscious pattern.\n- Result/Cosmic Reward is the available gift after the transformation.\n- Environment tends to express the favorable side of the card.\n- Displacement colors the year as the place the person is standing in the spread.\n\n## Sevens\n- Sevens are faith and attachment tests, not punishments.\n- 7♥: fear of abandonment/betrayal/rejection.\n- 7♣: pessimism, critical mind, perfectionism, communication fear.\n- 7♦: poverty fear, money worry, control around value.\n- 7♠: health/work fear, accident/failure anxiety, faith in the body and path.\n- Remedy: name the fear, identify the attachment, practice appreciation in the same domain, then choose the balanced expression.\n\n## Fours\n- Fours seek security, home, structure, and stability.\n- The shadow is creating a prison out of fear-based security.\n- Ask: what structure supports life, and what structure is only protecting fear?\n\n## Money readings\n- Money cards show potential, not guaranteed cash.\n- Jupiter is expansion; Saturn is hard-earned responsibility; Uranus can involve groups/technology/real estate; Neptune can involve hopes, fears, film, foreignness, or fantasy.\n- Receiving matters: some people block prosperity by giving but not receiving.\n\n## Relationship readings\n- Check readiness and availability before compatibility.\n- Moon supports/reflects; Venus harmonizes; Mars heats and conflicts; Saturn teaches and can criticize; Pluto transforms and intensifies; Neptune idealizes; Jupiter blesses and expands; Uranus needs freedom and friendship.\n- Strong readings compare Birth Card and Planetary Ruling Card, not Birth Card alone.\n- Make compatibility concrete. Name attraction, irritation, emotional labor, power balance, role repetition, shared language, and the exact place two people may misread each other.\n\n## Reader voice\n- Smartass, razor-intelligent, no-bullshit. Dry, sarcastic, dark filter. Roast the reader's patterns to their face — mockery in service of insight, never cruelty, never aimed at what they can't change.\n- Second person, present tense, confident. No hedging, no cushioning, no inspirational uplift. Say the actual thing.\n- Bridge the symbols you're given — card number, suit, planet/period — to ordinary lived experience. Make the abstract concrete: what the pattern looks like on a real Tuesday, not in theory.\n- Land at least one funny, screenshot-worthy line; every laugh must carry a real observation.\n- Use markdown headings and concise paragraphs. Bold for card codes and key phrases; italics for reflective questions (which should have teeth).\n- Banned: horoscope clichés, \"the universe,\" \"energy/vibrations,\" doom, destiny/fate claims, \"manifest,\" invented symbolism or numerology beyond the engine data.\n- Prefer: \"Here's the pattern you're going to pretend you didn't read\" over \"This will happen.\"\n- Prefer: \"This is why that person gets under your skin\" over cautious language that keeps the reading trapped inside private journaling.";
+
+const CARD_LABELS = [
+  { key: 'birth',    label: 'Birth Card' },
+  { key: 'period52', label: '52-Day' },
+  { key: 'longRange',label: 'Long Range' },
+  { key: 'pluto',    label: 'Pluto (Year)' },
+];
+
+function cardCtx(code) {
+  const m = THREE_LENS[code] || {};
+  const d = CARD_DESCRIPTIONS[code] || {};
+  return { code, name: m.name || code, title: d.title || null,
+    core_identity: d.core_identity || null, shadow: d.shadow || null,
+    life_direction: d.life_direction || null,
+    under: m.under || null, sweet_spot: m.sweet_spot || null, over: m.over || null };
+}
+
+function toISO(val) {
+  val = val.trim();
+  // accept MM/DD/YYYY or YYYY-MM-DD
+  const us = val.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (us) return `${us[3]}-${us[1].padStart(2,'0')}-${us[2].padStart(2,'0')}`;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(val)) return val;
+  return null;
+}
+
+function buildPrompt(r) {
+  const birth    = cardCtx(r.archetype.birth_card);
+  const period52 = cardCtx(r.active_period.bc_card);
+  const longRange = cardCtx(r.long_range.bc.card);
+  const pluto    = cardCtx(r.birth_card_spread.pluto);
+  const planet   = r.active_period.planet;
+  const domain   = r.active_period.domain;
+  const lrPlanet = r.long_range.bc.planet;
+
+  return `You are generating a Cardology reading for someone. Here are their four active cards with full contextual meanings.
+
+---
+
+## BIRTH CARD: ${birth.code} — ${birth.title || birth.name}
+**Core identity:** ${birth.core_identity}
+**Shadow:** ${birth.shadow}
+**Life direction:** ${birth.life_direction}
+**Underuse:** ${birth.under}
+**Sweet spot:** ${birth.sweet_spot}
+**Overuse:** ${birth.over}
+
+---
+
+## CURRENT 52-DAY CARD: ${period52.code} — ${period52.name}
+Active during the ${planet} period (domain: ${domain}).
+**Underuse:** ${period52.under}
+**Sweet spot:** ${period52.sweet_spot}
+**Overuse:** ${period52.over}
+
+---
+
+## LONG RANGE (YEAR): ${longRange.code} — ${longRange.name}
+Governed by ${lrPlanet}.
+**Underuse:** ${longRange.under}
+**Sweet spot:** ${longRange.sweet_spot}
+**Overuse:** ${longRange.over}
+
+---
+
+## PLUTO CARD (YEAR): ${pluto.code} — ${pluto.name}
+The unconscious pattern being pressured to change this year.
+**Underuse:** ${pluto.under}
+**Sweet spot:** ${pluto.sweet_spot}
+**Overuse:** ${pluto.over}
+
+---
+
+Write a cohesive reading weaving all four cards. Second person, present tense. Cover:
+1. Who they are through their Birth Card
+2. What the current 52-day chapter is asking of them
+3. How the year's Long Range theme shapes everything
+4. What the Pluto card is forcing them to transform
+
+Be specific, direct, punchy. No vague generalities.`;
+}
+
+function renderCards(r) {
+  const items = [
+    { label: 'Birth Card',      code: r.archetype.birth_card },
+    { label: '52-Day',          code: r.active_period.bc_card },
+    { label: 'Long Range',      code: r.long_range.bc.card },
+    { label: 'Pluto (Year)',    code: r.birth_card_spread.pluto },
+  ];
+  const el = document.getElementById('cards');
+  el.innerHTML = items.map(c => `
+    <div class="card-chip">
+      <div class="label">${c.label}</div>
+      <div class="code">${c.code}</div>
+    </div>
+  `).join('');
+}
+
+function renderMarkdown(raw) {
+  return raw
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/^---$/gm, '<hr>')
+    .replace(/\n\n+/g, '</p><p>')
+    .replace(/^(?!<[hHpP]|<hr)(.+)$/gm, '$1');
+}
+
+async function streamReading(r) {
+  const readingEl = document.getElementById('reading');
+  readingEl.innerHTML = '<span class="cursor"></span>';
+
+  const prompt = buildPrompt(r);
+  let raw = '';
+
+  try {
+    const res = await fetch('http://localhost:11434/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'qwen3:8b',
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user',   content: prompt },
+        ],
+        stream: true,
+        think: false,
+      }),
+    });
+
+    if (!res.ok) throw new Error(`Ollama ${res.status}: ${await res.text()}`);
+
+    const reader = res.body.getReader();
+    const dec = new TextDecoder();
+    let buf = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop() || '';
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        try {
+          const json = JSON.parse(line);
+          const delta = json.message?.content || '';
+          raw += delta;
+          // strip qwen3 think blocks
+          const visible = raw.replace(/<think>[\s\S]*?<\/think>/g, '').trimStart();
+          readingEl.innerHTML = '<p>' + renderMarkdown(visible) + '</p><span class="cursor"></span>';
+          window.scrollTo(0, document.body.scrollHeight);
+        } catch { /* partial line */ }
+      }
+    }
+  } catch (e) {
+    readingEl.innerHTML = `<p style="color:#c0392b">Ollama error: ${e.message}<br>Make sure Ollama is running: <code>ollama serve</code></p>`;
+  }
+
+  // Remove cursor when done
+  const cursor = readingEl.querySelector('.cursor');
+  if (cursor) cursor.remove();
+}
+
+async function runReading() {
+  const errEl = document.getElementById('error');
+  errEl.style.display = 'none';
+
+  const bdRaw = document.getElementById('birthdate').value;
+  const tdRaw = document.getElementById('targetdate').value;
+
+  const birthISO = toISO(bdRaw);
+  if (!birthISO) {
+    errEl.textContent = 'Invalid birthdate — use MM/DD/YYYY';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const targetISO = tdRaw ? toISO(tdRaw) : undefined;
+  if (tdRaw && !targetISO) {
+    errEl.textContent = 'Invalid target date — use MM/DD/YYYY';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  const btn = document.getElementById('btn');
+  btn.disabled = true;
+  btn.textContent = 'Reading…';
+  document.getElementById('cards').innerHTML = '';
+  document.getElementById('reading').innerHTML = '';
+
+  try {
+    const reading = await __c.buildReading(birthISO, targetISO);
+    renderCards(reading);
+    await streamReading(reading);
+  } catch (err) {
+    errEl.textContent = err.message;
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Read';
+  }
+}
+
+document.getElementById('form').addEventListener('submit', (e) => { e.preventDefault(); runReading(); });
+document.getElementById('btn').addEventListener('click', (e) => { e.preventDefault(); runReading(); });
+})();
+</script>
+</body>
+</html>
