@@ -37,6 +37,10 @@ export async function GET(
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      // Request card explicitly. Without this, Checkout resolves methods from
+      // the dashboard's automatic-payment-methods config; if none are enabled
+      // Stripe throws "No valid payment method types for this Checkout Session".
+      payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}&offer=${offer.slug}`,
       cancel_url: `${SITE_URL}/readings`,
