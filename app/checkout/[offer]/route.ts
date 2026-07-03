@@ -11,9 +11,10 @@ export const dynamic = "force-dynamic";
 // Creates a Stripe Checkout Session for the requested offer and 303-redirects
 // the visitor to Stripe's hosted checkout. Each click creates a fresh session.
 //
-// Graceful fallback: if Stripe is not configured yet (env keys missing), we
-// fall back to /contact so the production site never serves a 500 to a buyer
-// while keys are being added to the Cloudflare environment.
+// Graceful fallback: if Stripe is not configured yet (env keys missing) or
+// session creation fails (e.g. payment capabilities still paused during
+// account review), we fall back to /contact so the production site never
+// serves a 500 to a buyer.
 export async function GET(
   _req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
@@ -32,23 +33,30 @@ export async function GET(
     );
   }
 
-  const stripe = getStripe();
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    line_items: [{ price: priceId, quantity: 1 }],
-    success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}&offer=${offer.slug}`,
-    cancel_url: `${SITE_URL}/readings`,
-    metadata: { offer_slug: offer.slug, offer_name: offer.name },
-    payment_intent_data: {
+  try {
+    const stripe = getStripe();
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      line_items: [{ price: priceId, quantity: 1 }],
+      success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}&offer=${offer.slug}`,
+      cancel_url: `${SITE_URL}/readings`,
       metadata: { offer_slug: offer.slug, offer_name: offer.name },
-    },
-    allow_promotion_codes: true,
-    billing_address_collection: "auto",
-    customer_creation: "always",
-  });
-
-  if (!session.url) {
-    return NextResponse.json({ error: "stripe session missing url" }, { status: 500 });
+      payment_intent_data: {
+        metadata: { offer_slug: offer.slug, offer_name: offer.name },
+      },
+      allow_promotion_codes: true,
+      billing_address_collection: "auto",
+      customer_creation: "always",
+    });
+    if (session.url) {
+      return NextResponse.redirect(session.url, 303);
+    }
+    console.error("[checkout] stripe session missing url", { offer: offer.slug });
+  } catch (e) {
+    console.error("[checkout] stripe session creation failed", e);
   }
-  return NextResponse.redirect(session.url, 303);
+  return NextResponse.redirect(
+    new URL(`/contact?offer=${offer.slug}`, SITE_URL),
+    303,
+  );
 }
