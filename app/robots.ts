@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { APP_PATHS, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -9,8 +9,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Keep machine endpoints out of the index; public app pages stay open.
-        disallow: ["/api/"],
+        // Anchor "/reading" with $ so it doesn't prefix-match "/readings"
+        // (the public sales page, which must stay indexable).
+        disallow: [
+          "/api/",
+          "/checkout/success",
+          ...APP_PATHS.map((p) => (p === "/reading" ? "/reading$" : p)),
+        ],
       },
     ],
     sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/sitemap-birth-cards.xml`],

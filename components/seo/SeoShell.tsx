@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { READING_OFFERS, readingOfferHref } from "@/lib/products";
-import { READINGS_PATH, SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
+import { READINGS_PATH, SITE_NAME, VIDEO_PATH } from "@/lib/site";
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
@@ -21,9 +21,9 @@ export function SeoShell({
       <div className="oracle-noise" aria-hidden="true" />
 
       <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between border-b border-[#14110d]/15 px-5 py-4 sm:px-8 lg:px-10">
-        <a href={SITE_URL} className="brand-mark" aria-label="Cardology Pro home">
+        <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
           {SITE_NAME}
-        </a>
+        </Link>
         <nav className="hidden items-center gap-4 text-[0.68rem] font-bold uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
           <Link href={READINGS_PATH} className="text-[#9e3d24] transition hover:text-[#14110d]">
             Readings
@@ -119,7 +119,12 @@ function SeoFooter() {
           </ul>
         </div>
       </div>
-      <p className="mt-8 text-xs leading-relaxed text-[#5b5148]">
+      <div className="mt-8 flex flex-wrap gap-4 text-xs text-[#5b5148]">
+        <Link href="/privacy-policy" className="hover:text-[#14110d]">Privacy Policy</Link>
+        <Link href="/refund-policy" className="hover:text-[#14110d]">Refund Policy</Link>
+        <Link href="/contact" className="hover:text-[#14110d]">Contact</Link>
+      </div>
+      <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
         Calculated from the deterministic Cardology system. Same birthday, same
         card, every time. A mirror for noticing patterns, not a forecast.
       </p>

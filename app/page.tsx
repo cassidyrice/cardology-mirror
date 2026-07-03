@@ -410,7 +410,12 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <p className="mt-8 text-xs leading-relaxed text-[#5b5148]">
+          <div className="mt-8 flex flex-wrap gap-4 text-xs text-[#5b5148]">
+            <Link href="/privacy-policy" className="hover:text-[#14110d]">Privacy Policy</Link>
+            <Link href="/refund-policy" className="hover:text-[#14110d]">Refund Policy</Link>
+            <Link href="/contact" className="hover:text-[#14110d]">Contact</Link>
+          </div>
+          <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
             Calculated from the deterministic Cardology system. Same birthday,
             same card, every time. A pattern language for people, relationships,
             timing, and recurring dynamics.

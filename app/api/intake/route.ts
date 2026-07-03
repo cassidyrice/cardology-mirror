@@ -26,7 +26,11 @@ export async function POST(req: NextRequest) {
   const offer = offerSlug ? offerBySlug(offerSlug) : undefined;
 
   if (!email || !subjectBirthdate) {
-    return NextResponse.json({ error: "missing required fields" }, { status: 400 });
+    const back = new URL("/checkout/success", SITE_URL);
+    if (sessionId) back.searchParams.set("session_id", sessionId);
+    if (offerSlug) back.searchParams.set("offer", offerSlug);
+    back.searchParams.set("error", "missing-fields");
+    return NextResponse.redirect(back, 303);
   }
 
   const to = process.env.INTAKE_EMAIL;

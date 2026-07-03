@@ -52,6 +52,8 @@ export const MARKETING_PATHS = [
   "/editorial-policy",
   "/contact",
   "/shadow-karma-guide",
+  "/privacy-policy",
+  "/refund-policy",
 ];
 
 // Build an absolute URL for a path (always returns a clean absolute href).

@@ -18,6 +18,7 @@ type SearchParams = Promise<{
   session_id?: string;
   offer?: string;
   intake?: string;
+  error?: string;
 }>;
 
 export default async function CheckoutSuccessPage({
@@ -29,6 +30,7 @@ export default async function CheckoutSuccessPage({
   const offer = sp.offer ? offerBySlug(sp.offer) : undefined;
   const sessionId = sp.session_id ?? "";
   const submitted = sp.intake === "ok";
+  const formError = sp.error === "missing-fields";
 
   // Try to enrich with Stripe session details (customer email, paid status).
   // Failure here is non-fatal — we still render the intake form.
@@ -74,6 +76,12 @@ export default async function CheckoutSuccessPage({
           </p>
         )}
       </header>
+
+      {formError && (
+        <div className="mb-5 border border-[#9e3d24]/40 bg-[#9e3d24]/10 p-4 text-sm text-[#9e3d24]">
+          Email and birth date are required. Please fill them in and resubmit.
+        </div>
+      )}
 
       {submitted ? (
         <ThankYou />
