@@ -18,6 +18,11 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: [`${SITE_URL}/sitemap.xml`, `${SITE_URL}/sitemap-birth-cards.xml`],
+    sitemap: [
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/sitemap-birth-cards.xml`,
+      `${SITE_URL}/sitemap-cardology.xml`,
+      `${SITE_URL}/sitemap-compatibility.xml`,
+    ],
   };
 }
