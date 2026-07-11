@@ -1,0 +1,472 @@
+{
+  "figures": [
+    {
+      "slug": "zendaya-birth-card-profile",
+      "name": "Zendaya",
+      "category": "actor and producer",
+      "birthdate": "1996-09-01",
+      "publicFrame": "actor, producer, and generational style icon",
+      "keywords": [
+        "Zendaya birth card",
+        "Zendaya Cardology",
+        "Zendaya personality profile"
+      ],
+      "angle": "poise under scrutiny, craft discipline, and quiet ambition"
+    },
+    {
+      "slug": "keanu-reeves-birth-card-profile",
+      "name": "Keanu Reeves",
+      "category": "actor",
+      "birthdate": "1964-09-02",
+      "publicFrame": "actor and long-arc career survivor",
+      "keywords": [
+        "Keanu Reeves birth card",
+        "Keanu Reeves Cardology",
+        "Keanu Reeves personality profile"
+      ],
+      "angle": "grief, groundedness, and public kindness as a practice"
+    },
+    {
+      "slug": "dwayne-johnson-birth-card-profile",
+      "name": "Dwayne Johnson",
+      "category": "actor and entrepreneur",
+      "birthdate": "1972-05-02",
+      "publicFrame": "actor, producer, and brand builder",
+      "keywords": [
+        "Dwayne Johnson birth card",
+        "Dwayne Johnson Cardology",
+        "Dwayne Johnson personality profile"
+      ],
+      "angle": "reinvention, work ethic, and the weight of relentless positivity"
+    },
+    {
+      "slug": "margot-robbie-birth-card-profile",
+      "name": "Margot Robbie",
+      "category": "actor and producer",
+      "birthdate": "1990-07-02",
+      "publicFrame": "actor and production company founder",
+      "keywords": [
+        "Margot Robbie birth card",
+        "Margot Robbie Cardology",
+        "Margot Robbie personality profile"
+      ],
+      "angle": "creative control, range, and betting on yourself"
+    },
+    {
+      "slug": "tom-holland-birth-card-profile",
+      "name": "Tom Holland",
+      "category": "actor",
+      "birthdate": "1996-06-01",
+      "publicFrame": "actor and franchise lead",
+      "keywords": [
+        "Tom Holland birth card",
+        "Tom Holland Cardology",
+        "Tom Holland personality profile"
+      ],
+      "angle": "youthful fame, sobriety, and growing up on camera"
+    },
+    {
+      "slug": "timothee-chalamet-birth-card-profile",
+      "name": "Timothee Chalamet",
+      "category": "actor",
+      "birthdate": "1995-12-27",
+      "publicFrame": "actor and leading man of his generation",
+      "keywords": [
+        "Timothee Chalamet birth card",
+        "Timothee Chalamet Cardology",
+        "Timothee Chalamet personality profile"
+      ],
+      "angle": "artistic intensity, image, and choosing roles like statements"
+    },
+    {
+      "slug": "jenna-ortega-birth-card-profile",
+      "name": "Jenna Ortega",
+      "category": "actor",
+      "birthdate": "2002-09-27",
+      "publicFrame": "actor and horror-generation lead",
+      "keywords": [
+        "Jenna Ortega birth card",
+        "Jenna Ortega Cardology",
+        "Jenna Ortega personality profile"
+      ],
+      "angle": "early fame, boundaries, and creative seriousness"
+    },
+    {
+      "slug": "pedro-pascal-birth-card-profile",
+      "name": "Pedro Pascal",
+      "category": "actor",
+      "birthdate": "1975-04-02",
+      "publicFrame": "actor and late-blooming leading man",
+      "keywords": [
+        "Pedro Pascal birth card",
+        "Pedro Pascal Cardology",
+        "Pedro Pascal personality profile"
+      ],
+      "angle": "patience, breakout timing, and warmth as strength"
+    },
+    {
+      "slug": "ryan-reynolds-birth-card-profile",
+      "name": "Ryan Reynolds",
+      "category": "actor and business figure",
+      "birthdate": "1976-10-23",
+      "publicFrame": "actor, marketer, and brand investor",
+      "keywords": [
+        "Ryan Reynolds birth card",
+        "Ryan Reynolds Cardology",
+        "Ryan Reynolds personality profile"
+      ],
+      "angle": "humor as armor, business instincts, and reinvention"
+    },
+    {
+      "slug": "leonardo-dicaprio-birth-card-profile",
+      "name": "Leonardo DiCaprio",
+      "category": "actor and producer",
+      "birthdate": "1974-11-11",
+      "publicFrame": "actor, producer, and environmental advocate",
+      "keywords": [
+        "Leonardo DiCaprio birth card",
+        "Leonardo DiCaprio Cardology",
+        "Leonardo DiCaprio personality profile"
+      ],
+      "angle": "craft obsession, privacy, and long-game choices"
+    },
+    {
+      "slug": "scarlett-johansson-birth-card-profile",
+      "name": "Scarlett Johansson",
+      "category": "actor",
+      "birthdate": "1984-11-22",
+      "publicFrame": "actor and producer",
+      "keywords": [
+        "Scarlett Johansson birth card",
+        "Scarlett Johansson Cardology",
+        "Scarlett Johansson personality profile"
+      ],
+      "angle": "range, negotiation, and owning your value"
+    },
+    {
+      "slug": "emma-watson-birth-card-profile",
+      "name": "Emma Watson",
+      "category": "actor and advocate",
+      "birthdate": "1990-04-15",
+      "publicFrame": "actor and public advocate",
+      "keywords": [
+        "Emma Watson birth card",
+        "Emma Watson Cardology",
+        "Emma Watson personality profile"
+      ],
+      "angle": "reinvention beyond a defining role, and stepping back on purpose"
+    },
+    {
+      "slug": "rihanna-birth-card-profile",
+      "name": "Rihanna",
+      "category": "singer and business figure",
+      "birthdate": "1988-02-20",
+      "publicFrame": "singer, founder, and beauty-empire builder",
+      "keywords": [
+        "Rihanna birth card",
+        "Rihanna Cardology",
+        "Rihanna personality profile"
+      ],
+      "angle": "creative pause, empire building, and doing it on your own clock"
+    },
+    {
+      "slug": "drake-birth-card-profile",
+      "name": "Drake",
+      "category": "rapper and executive",
+      "birthdate": "1986-10-24",
+      "publicFrame": "rapper, hitmaker, and label executive",
+      "keywords": [
+        "Drake birth card",
+        "Drake Cardology",
+        "Drake personality profile"
+      ],
+      "angle": "competitiveness, sentimentality, and public feuds"
+    },
+    {
+      "slug": "ariana-grande-birth-card-profile",
+      "name": "Ariana Grande",
+      "category": "singer and actor",
+      "birthdate": "1993-06-26",
+      "publicFrame": "singer, vocalist, and actor",
+      "keywords": [
+        "Ariana Grande birth card",
+        "Ariana Grande Cardology",
+        "Ariana Grande personality profile"
+      ],
+      "angle": "grief in public, vocal mastery, and softness as power"
+    },
+    {
+      "slug": "justin-bieber-birth-card-profile",
+      "name": "Justin Bieber",
+      "category": "singer",
+      "birthdate": "1994-03-01",
+      "publicFrame": "singer and former child star",
+      "keywords": [
+        "Justin Bieber birth card",
+        "Justin Bieber Cardology",
+        "Justin Bieber personality profile"
+      ],
+      "angle": "early fame, faith, and rebuilding in public"
+    },
+    {
+      "slug": "selena-gomez-birth-card-profile",
+      "name": "Selena Gomez",
+      "category": "singer and founder",
+      "birthdate": "1992-07-22",
+      "publicFrame": "singer, actor, and beauty founder",
+      "keywords": [
+        "Selena Gomez birth card",
+        "Selena Gomez Cardology",
+        "Selena Gomez personality profile"
+      ],
+      "angle": "health in public, reinvention, and emotional honesty"
+    },
+    {
+      "slug": "the-weeknd-birth-card-profile",
+      "name": "The Weeknd",
+      "category": "singer and producer",
+      "birthdate": "1990-02-16",
+      "publicFrame": "singer, producer, and world-builder",
+      "keywords": [
+        "The Weeknd birth card",
+        "The Weeknd Cardology",
+        "The Weeknd personality profile"
+      ],
+      "angle": "persona versus person, ambition, and the cost of the character"
+    },
+    {
+      "slug": "doja-cat-birth-card-profile",
+      "name": "Doja Cat",
+      "category": "singer and performer",
+      "birthdate": "1995-10-21",
+      "publicFrame": "rapper, singer, and internet-native performer",
+      "keywords": [
+        "Doja Cat birth card",
+        "Doja Cat Cardology",
+        "Doja Cat personality profile"
+      ],
+      "angle": "shape-shifting, provocation, and creative restlessness"
+    },
+    {
+      "slug": "dolly-parton-birth-card-profile",
+      "name": "Dolly Parton",
+      "category": "singer-songwriter",
+      "birthdate": "1946-01-19",
+      "publicFrame": "songwriter, performer, and quiet philanthropist",
+      "keywords": [
+        "Dolly Parton birth card",
+        "Dolly Parton Cardology",
+        "Dolly Parton personality profile"
+      ],
+      "angle": "generosity, longevity, and steel under sparkle"
+    },
+    {
+      "slug": "snoop-dogg-birth-card-profile",
+      "name": "Snoop Dogg",
+      "category": "rapper and entrepreneur",
+      "birthdate": "1971-10-20",
+      "publicFrame": "rapper, brand builder, and cultural ambassador",
+      "keywords": [
+        "Snoop Dogg birth card",
+        "Snoop Dogg Cardology",
+        "Snoop Dogg personality profile"
+      ],
+      "angle": "reinvention, ease, and playing the long game"
+    },
+    {
+      "slug": "lady-gaga-birth-card-profile",
+      "name": "Lady Gaga",
+      "category": "singer and actor",
+      "birthdate": "1986-03-28",
+      "publicFrame": "singer, songwriter, and actor",
+      "keywords": [
+        "Lady Gaga birth card",
+        "Lady Gaga Cardology",
+        "Lady Gaga personality profile"
+      ],
+      "angle": "theatricality, chronic resilience, and artistic control"
+    },
+    {
+      "slug": "adele-birth-card-profile",
+      "name": "Adele",
+      "category": "singer-songwriter",
+      "birthdate": "1988-05-05",
+      "publicFrame": "singer-songwriter and voice of heartbreak",
+      "keywords": [
+        "Adele birth card",
+        "Adele Cardology",
+        "Adele personality profile"
+      ],
+      "angle": "privacy, craft over volume, and singing the wound"
+    },
+    {
+      "slug": "bruno-mars-birth-card-profile",
+      "name": "Bruno Mars",
+      "category": "singer and performer",
+      "birthdate": "1985-10-08",
+      "publicFrame": "singer, producer, and showman",
+      "keywords": [
+        "Bruno Mars birth card",
+        "Bruno Mars Cardology",
+        "Bruno Mars personality profile"
+      ],
+      "angle": "perfectionism, retro craft, and stagecraft discipline"
+    },
+    {
+      "slug": "harry-styles-birth-card-profile",
+      "name": "Harry Styles",
+      "category": "singer and performer",
+      "birthdate": "1994-02-01",
+      "publicFrame": "singer, performer, and fashion figure",
+      "keywords": [
+        "Harry Styles birth card",
+        "Harry Styles Cardology",
+        "Harry Styles personality profile"
+      ],
+      "angle": "charm, ambiguity, and outgrowing the band"
+    },
+    {
+      "slug": "post-malone-birth-card-profile",
+      "name": "Post Malone",
+      "category": "singer-songwriter",
+      "birthdate": "1995-07-04",
+      "publicFrame": "singer, genre-blender, and touring artist",
+      "keywords": [
+        "Post Malone birth card",
+        "Post Malone Cardology",
+        "Post Malone personality profile"
+      ],
+      "angle": "softness under tattoos, genre freedom, and self-medication themes"
+    },
+    {
+      "slug": "sza-birth-card-profile",
+      "name": "SZA",
+      "category": "singer-songwriter",
+      "birthdate": "1989-11-08",
+      "publicFrame": "singer-songwriter and introspective star",
+      "keywords": [
+        "SZA birth card",
+        "SZA Cardology",
+        "SZA personality profile"
+      ],
+      "angle": "self-doubt, perfectionism, and late-bloom confidence"
+    },
+    {
+      "slug": "serena-williams-birth-card-profile",
+      "name": "Serena Williams",
+      "category": "athlete and investor",
+      "birthdate": "1981-09-26",
+      "publicFrame": "tennis great, founder, and investor",
+      "keywords": [
+        "Serena Williams birth card",
+        "Serena Williams Cardology",
+        "Serena Williams personality profile"
+      ],
+      "angle": "dominance, motherhood, and the second act"
+    },
+    {
+      "slug": "michael-jordan-birth-card-profile",
+      "name": "Michael Jordan",
+      "category": "athlete and owner",
+      "birthdate": "1963-02-17",
+      "publicFrame": "basketball icon and franchise owner",
+      "keywords": [
+        "Michael Jordan birth card",
+        "Michael Jordan Cardology",
+        "Michael Jordan personality profile"
+      ],
+      "angle": "competitive fire, control, and the price of greatness"
+    },
+    {
+      "slug": "stephen-curry-birth-card-profile",
+      "name": "Stephen Curry",
+      "category": "athlete",
+      "birthdate": "1988-03-14",
+      "publicFrame": "basketball star and long-range revolutionary",
+      "keywords": [
+        "Stephen Curry birth card",
+        "Stephen Curry Cardology",
+        "Stephen Curry personality profile"
+      ],
+      "angle": "joy in mastery, underdog beginnings, and faith"
+    },
+    {
+      "slug": "caitlin-clark-birth-card-profile",
+      "name": "Caitlin Clark",
+      "category": "athlete",
+      "birthdate": "2002-01-22",
+      "publicFrame": "basketball star and audience magnet",
+      "keywords": [
+        "Caitlin Clark birth card",
+        "Caitlin Clark Cardology",
+        "Caitlin Clark personality profile"
+      ],
+      "angle": "pressure, poise, and carrying a league's expectations"
+    },
+    {
+      "slug": "travis-kelce-birth-card-profile",
+      "name": "Travis Kelce",
+      "category": "athlete and entertainer",
+      "birthdate": "1989-10-05",
+      "publicFrame": "football star and media personality",
+      "keywords": [
+        "Travis Kelce birth card",
+        "Travis Kelce Cardology",
+        "Travis Kelce personality profile"
+      ],
+      "angle": "charisma, visibility, and life in two spotlights"
+    },
+    {
+      "slug": "novak-djokovic-birth-card-profile",
+      "name": "Novak Djokovic",
+      "category": "athlete",
+      "birthdate": "1987-05-22",
+      "publicFrame": "tennis champion and record chaser",
+      "keywords": [
+        "Novak Djokovic birth card",
+        "Novak Djokovic Cardology",
+        "Novak Djokovic personality profile"
+      ],
+      "angle": "discipline, conviction, and being the villain of the story"
+    },
+    {
+      "slug": "jeff-bezos-birth-card-profile",
+      "name": "Jeff Bezos",
+      "category": "business figure",
+      "birthdate": "1964-01-12",
+      "publicFrame": "founder, investor, and space entrepreneur",
+      "keywords": [
+        "Jeff Bezos birth card",
+        "Jeff Bezos Cardology",
+        "Jeff Bezos personality profile"
+      ],
+      "angle": "scale thinking, reinvention, and the post-empire chapter"
+    },
+    {
+      "slug": "oprah-winfrey-birth-card-profile",
+      "name": "Oprah Winfrey",
+      "category": "media figure",
+      "birthdate": "1954-01-29",
+      "publicFrame": "broadcaster, producer, and cultural interviewer",
+      "keywords": [
+        "Oprah Winfrey birth card",
+        "Oprah Winfrey Cardology",
+        "Oprah Winfrey personality profile"
+      ],
+      "angle": "self-made power, empathy as skill, and influence stewardship"
+    },
+    {
+      "slug": "sam-altman-birth-card-profile",
+      "name": "Sam Altman",
+      "category": "business figure",
+      "birthdate": "1985-04-22",
+      "publicFrame": "AI executive and startup investor",
+      "keywords": [
+        "Sam Altman birth card",
+        "Sam Altman Cardology",
+        "Sam Altman personality profile"
+      ],
+      "angle": "ambition, controversy, and betting on the future"
+    }
+  ]
+}
