@@ -45,6 +45,7 @@ export const MARKETING_PATHS = [
   "/blog",
   "/birth-card",
   "/birth-card-calculator",
+  "/card-of-the-day",
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",

@@ -14,6 +14,7 @@
 - [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms for written readings and AI voice access.
 
 ## Free Tools
+- [Card of the Day](https://cardblueprints.com/card-of-the-day): Today's card, updated daily — every calendar date maps to exactly one of the 52 cards, so the day's card is the birth card of today's date.
 - [Birth Card Calculator](https://cardblueprints.com/birth-card-calculator): Enter a birthday, get the birth card and ruling-card context.
 - [Compatibility Calculator](https://cardblueprints.com/birth-card-compatibility-calculator): Compare two birthdays: birth-card chemistry, Moon-plus-13 Life Path constitutions, shared Life Path cards, and relationship cross-reference roles.
 - [52-Day Period Meaning Tool](https://cardblueprints.com/52-day-period-meaning-tool): Read current 52-day period cards as reflective timing language.

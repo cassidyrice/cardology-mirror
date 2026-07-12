@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // NOTE: do not add headers() rules for pages here expecting them to reach
+  // responses — the compiled middleware route in the build output has
+  // override:true and wipes config-route headers for every path it matches
+  // (i.e. all pages). Per-route response headers belong in middleware.ts;
+  // /card-of-the-day's no-store header lives there.
   async redirects() {
     return [
       // /card-meanings is Google-indexed but has never been a route here —

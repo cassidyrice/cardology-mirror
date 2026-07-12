@@ -36,8 +36,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // post date (the daily generator moves it); every other marketing page
     // only changes when a deploy actually changes it.
     lastModified: date(p === "/blog" ? latestPostDate : CORE_UPDATED),
-    changeFrequency: p === "/" ? "daily" : "weekly",
-    priority: p === "/" ? 1 : p === "/readings" ? 0.95 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" ? 0.85 : 0.8,
+    // /card-of-the-day is edge-rendered per request and rotates its card at
+    // midnight America/Denver — genuinely daily, like the homepage.
+    changeFrequency: p === "/" || p === "/card-of-the-day" ? "daily" : "weekly",
+    priority: p === "/" ? 1 : p === "/readings" ? 0.95 : p === "/birth-card" || p === "/birth-card-calculator" ? 0.9 : p === "/blog" || p === "/card-of-the-day" ? 0.85 : 0.8,
   }));
 
   // The 52 card pages are the site's core SEO asset. This is their ONLY

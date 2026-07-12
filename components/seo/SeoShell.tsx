@@ -115,6 +115,7 @@ function SeoFooter() {
         <div>
           <p className="mb-2 font-serif text-base text-[#14110d]">Free tools</p>
           <ul className="space-y-1.5">
+            <li><Link href="/card-of-the-day" className="hover:text-[#14110d]">Card of the Day</Link></li>
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
             {/* /born-on/ and /compatibility/ are edge-rendered by the
                 cardology-unlock Worker, not this Next app — plain <a>. */}
