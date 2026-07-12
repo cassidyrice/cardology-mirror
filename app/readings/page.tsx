@@ -94,6 +94,9 @@ export default function ReadingsPage() {
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}${readingOfferHref(offer)}`,
+        hasMerchantReturnPolicy: {
+          "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
+        },
       },
     })),
     {

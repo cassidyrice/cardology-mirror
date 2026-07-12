@@ -69,6 +69,11 @@ export default function RootLayout({
         logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
         description: SITE_TAGLINE,
         publishingPrinciples: `${SITE_URL}/about`,
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
+          merchantReturnLink: `${SITE_URL}/refund-policy`,
+        },
         knowsAbout: [
           "Cardology",
           "birth cards",
@@ -84,6 +89,9 @@ export default function RootLayout({
           price: offer.price,
           priceCurrency: "USD",
           url: `${SITE_URL}${readingOfferHref(offer)}`,
+          hasMerchantReturnPolicy: {
+            "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
+          },
           // These are reading services. Marking each one as a Product here
           // made Google expect a second nested offer, review, or rating.
           itemOffered: {
