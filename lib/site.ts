@@ -12,6 +12,7 @@ export const APP_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Card Blueprints";
+export const CONTACT_EMAIL = "therealcassrice@gmail.com";
 
 export const VIDEO_URL = (
   process.env.NEXT_PUBLIC_VIDEO_URL || "https://www.youtube.com/@cardologypro"
@@ -32,6 +33,7 @@ export const APP_PATHS = [
   "/story",
   "/journal",
   "/onboarding",
+  "/access",
 ];
 
 export const MARKETING_PATHS = [
@@ -54,6 +56,7 @@ export const MARKETING_PATHS = [
   "/shadow-karma-guide",
   "/privacy-policy",
   "/refund-policy",
+  "/terms-of-service",
 ];
 
 // Build an absolute URL for a path (always returns a clean absolute href).

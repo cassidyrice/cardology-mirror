@@ -8,7 +8,7 @@ import { READINGS_PATH, SITE_URL, VIDEO_PATH } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "Cardology Readings and Birth Card Calculator | Card Blueprints" },
   description:
-    "Personal Cardology readings from your birth card: a $29 birth card report, $99 one-question reading, or $199 full deep dive. Start free with the birth card calculator, all 52 card meanings, and compatibility tools.",
+    "Personal Cardology readings from your birth card: a $29 birth card report, $99 AI voice reading with 90 days of calls, or $199 full deep dive. Start free with the birth card calculator, all 52 card meanings, and compatibility tools.",
   alternates: { canonical: "/" },
 };
 
@@ -17,19 +17,19 @@ const buySteps = [
     label: "01",
     title: "Pick the reading.",
     detail:
-      "The $29 report maps one person. The $99 reading answers one real question. The $199 deep dive maps the whole pattern. Checkout takes a minute.",
+      "The $29 report maps one person. The $99 pass opens the AI voice line for 90 days of readings and daily cards. The $199 deep dive maps the whole pattern. Checkout takes a minute.",
   },
   {
     label: "02",
     title: "Send the details.",
     detail:
-      "Right after payment you confirm the birth date, the person or relationship involved, and the question you actually want answered.",
+      "For written readings you confirm the birth date, the person or relationship involved, and the question right after payment. For the voice pass, your access arrives by email.",
   },
   {
     label: "03",
     title: "Read the answer.",
     detail:
-      "You get a written reading by email — birth card, ruling card, shadow range, timing when it matters — in plain language about your situation.",
+      "Written readings arrive by email — birth card, ruling card, shadow range, timing when it matters. The voice pass answers live, any time you call.",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function Home() {
         <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-start gap-10 px-5 py-8 sm:px-8 lg:grid-cols-[1.03fr_0.97fr] lg:px-10">
           <div className="max-w-3xl">
             <p className="oracle-eyebrow animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
-              $29 report / $99 one-question reading / $199 deep dive
+              $29 report / $99 AI voice reading + 90 days / $199 deep dive
             </p>
 
             <h1 className="hero-title mt-5 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.08s_both]">
@@ -413,6 +413,7 @@ export default function Home() {
           <div className="mt-8 flex flex-wrap gap-4 text-xs text-[#5b5148]">
             <Link href="/privacy-policy" className="hover:text-[#14110d]">Privacy Policy</Link>
             <Link href="/refund-policy" className="hover:text-[#14110d]">Refund Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-[#14110d]">Terms of Service</Link>
             <Link href="/contact" className="hover:text-[#14110d]">Contact</Link>
           </div>
           <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">

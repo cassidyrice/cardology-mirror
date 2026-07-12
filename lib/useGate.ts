@@ -19,6 +19,14 @@ function load(): Stored | null {
   }
 }
 
+// Store a token directly (magic-link flow) so every consumer of useGate
+// picks it up through the same storage + event path as unlock().
+export function storeGateToken(token: string, email: string): void {
+  const next: Stored = { token, email: email.trim().toLowerCase() };
+  localStorage.setItem(KEY, JSON.stringify(next));
+  window.dispatchEvent(new Event("cardology:gate"));
+}
+
 export function useGate() {
   const [stored, setStored] = useState<Stored | null>(null);
   const [ready, setReady] = useState(false);
@@ -44,9 +52,7 @@ export function useGate() {
       });
       const json = await res.json();
       if (!res.ok) return { ok: false as const, error: json.error || "Could not unlock." };
-      const next: Stored = { token: json.token, email: json.email };
-      localStorage.setItem(KEY, JSON.stringify(next));
-      window.dispatchEvent(new Event("cardology:gate"));
+      storeGateToken(json.token, json.email);
       return { ok: true as const };
     } catch {
       return { ok: false as const, error: "Network error. Try again." };

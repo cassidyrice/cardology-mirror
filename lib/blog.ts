@@ -63,7 +63,7 @@ export type BlogPost = {
   coreLinks: BlogLink[];
 };
 
-export const BLOG_UPDATED = "2026-06-17";
+export const BLOG_UPDATED = "2026-07-12";
 
 const GENERATED_POSTS = GENERATED_BLOG_POSTS as BlogPost[];
 
