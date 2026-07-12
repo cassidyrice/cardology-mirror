@@ -80,25 +80,6 @@ export default function ReadingsPage() {
         })),
       },
     },
-    ...READING_OFFERS.map((offer) => ({
-      "@context": "https://schema.org",
-      "@type": "Product",
-      name: offer.name,
-      description: offer.oneLine,
-      category: "Cardology reading",
-      brand: { "@id": `${SITE_URL}/#organization` },
-      url: `${SITE_URL}/readings#${offer.slug}`,
-      offers: {
-        "@type": "Offer",
-        price: offer.price,
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-        url: `${SITE_URL}${readingOfferHref(offer)}`,
-        hasMerchantReturnPolicy: {
-          "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
-        },
-      },
-    })),
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
