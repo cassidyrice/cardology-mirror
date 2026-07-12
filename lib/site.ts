@@ -48,6 +48,7 @@ export const MARKETING_PATHS = [
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
   "/what-is-cardology",
+  "/cartomancy-vs-tarot",
   "/52-card-astrology-explained",
   "/birth-card-vs-ruling-card",
   "/methodology",

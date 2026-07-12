@@ -21,10 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // The 52 card pages are the site's core SEO asset; list them here with a
-  // live lastmod instead of relying only on the static birth-cards sitemap.
-  // The 366 birthdate slugs are NOT listed: production 301s
-  // /birth-card/[date] to the Worker-served /born-on/[date] pages, which
-  // have their own sitemap.
+  // live lastmod instead of relying only on the birth-cards sitemap.
   for (const slug of allCardSlugs()) {
     entries.push({
       url: normalizeSitemapUrl(`${SITE_URL}/birth-card/${slug}`),
@@ -33,6 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     });
   }
+
+  // The 366 birthday routes are built here (generateStaticParams) but NOT
+  // listed: the cardology-unlock Worker in front of Pages 301s
+  // /birth-card/[month]-[day] to its own /born-on/[month]-[day] pages
+  // (curl-verified in production 2026-07-12), and those already have their
+  // own Worker-served sitemap-cardology.xml. Re-add them here only if that
+  // Worker redirect is removed.
 
   for (const path of allBlogPaths().filter((p) => p !== "/blog")) {
     entries.push({

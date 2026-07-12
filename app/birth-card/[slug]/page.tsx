@@ -3,7 +3,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_URL, VIDEO_PATH } from "@/lib/site";
+import {
+  videosForCard,
+  youtubeEmbed,
+  youtubeId,
+  youtubeThumbnail,
+  type CardologyVideo,
+} from "@/lib/videos";
 import {
   allBirthdateSlugs,
   allCardSeo,
@@ -94,6 +102,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const related = relatedCards(card);
   const faqs = cardFaqs(card, dates);
   const angles = interpretiveAngles(card);
+  const videos = videosForCard(card.slug);
 
   const jsonLd = [
     breadcrumbJsonLd([
@@ -107,6 +116,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
     }),
+    ...videos.map(videoJsonLd),
   ];
 
   return (
@@ -269,15 +279,35 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </ul>
       </Section>
 
-      <Section title="Related videos">
-        <p>
-          Watch Card Blueprints shadow-reading films and explainers in the video library,
-          then return to this {card.label} meaning page for stable written context.
-        </p>
-        <Link href={VIDEO_PATH} className="mt-3 inline-block text-gold underline underline-offset-4">
-          Open Cardology videos →
-        </Link>
-      </Section>
+      {videos.length > 0 ? (
+        <Section title={`Watch: ${card.label} shadow reading`}>
+          <p>
+            The same {card.label} pattern, read out loud — the gift, the distortion, and the
+            behavior it produces. The video is a companion to this page, not a replacement:
+            still a mirror, not a forecast.
+          </p>
+          <div className="mt-4 space-y-4">
+            {videos.map((v) => (
+              <VideoEmbed key={v.url} videoId={youtubeId(v.url)} title={v.title} />
+            ))}
+          </div>
+          <p className="mt-3 text-sm">
+            <Link href={VIDEO_PATH} className="text-gold underline underline-offset-4">
+              Browse all Cardology videos →
+            </Link>
+          </p>
+        </Section>
+      ) : (
+        <Section title="Related videos">
+          <p>
+            Watch Card Blueprints shadow-reading films and explainers in the video library,
+            then return to this {card.label} meaning page for stable written context.
+          </p>
+          <Link href={VIDEO_PATH} className="mt-3 inline-block text-gold underline underline-offset-4">
+            Open Cardology videos →
+          </Link>
+        </Section>
+      )}
 
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
@@ -531,6 +561,20 @@ function articleJsonLd({ headline, description, url }: { headline: string; descr
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-ai-summary]", ".prose-reading"],
     },
+  };
+}
+
+function videoJsonLd(video: CardologyVideo) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: video.title,
+    description: video.description,
+    thumbnailUrl: [youtubeThumbnail(video.url)],
+    uploadDate: video.uploadDate,
+    embedUrl: youtubeEmbed(video.url),
+    url: video.url,
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
 

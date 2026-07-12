@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { buildReading } from "../lib/reading";
-import type { BlogPost, BlogPillarSlug } from "../lib/blog";
+import type { BlogFaq, BlogLink, BlogPost, BlogPillarSlug, BlogSection } from "../lib/blog";
 
 type PublicFigureTopic = {
   slug: string;
@@ -15,9 +15,35 @@ type PublicFigureTopic = {
   angle: string;
 };
 
+type DefinitionalPillar = Exclude<BlogPillarSlug, "birth-card-meanings">;
+
+type DefinitionalTopic = {
+  slug: string;
+  pillar: DefinitionalPillar;
+  title: string;
+  seoTitle?: string;
+  description: string;
+  dek: string;
+  readTime: string;
+  keywords: string[];
+  answer: string;
+  sections: BlogSection[];
+  faqs: BlogFaq[];
+  related: string[];
+  coreLinks: BlogLink[];
+};
+
 type TopicsFile = {
   figures: PublicFigureTopic[];
 };
+
+type DefinitionalFile = {
+  topics: DefinitionalTopic[];
+};
+
+type Selection =
+  | { kind: "figure"; topic: PublicFigureTopic }
+  | { kind: "definitional"; topic: DefinitionalTopic };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,31 +53,60 @@ const generatedPath = path.join(root, "lib/generated-blog-posts.json");
 const coreBlogPath = path.join(root, "lib/blog.ts");
 const topicsPath = path.join(root, "content/daily-blog/topics.json");
 const trendingQueuePath = path.join(root, "content/daily-blog/trending-queue.json");
+const definitionalQueuePath = path.join(root, "content/daily-blog/definitional-queue.json");
+
+// Deterministic pillar rotation for the definitional lane. See content/daily-blog/README.md.
+const PILLAR_ROTATION: DefinitionalPillar[] = [
+  "cardology-foundations",
+  "timing-and-spreads",
+  "relationships-and-practice",
+];
 
 const postDate = process.env.POST_DATE || new Date().toISOString().slice(0, 10);
 const forcedSlug = process.env.DAILY_BLOG_TOPIC_SLUG;
+const dryRun = process.env.DRY_RUN === "1";
 
 const generated = readJson<BlogPost[]>(generatedPath, []);
-const topics = readTopicPool();
+const figures = readFigurePool();
+const definitionals = readDefinitionalPool();
 const existingSlugs = new Set([
   ...generated.map((post) => post.slug),
   ...extractCoreSlugs(fs.readFileSync(coreBlogPath, "utf8")),
 ]);
 const existingKeywordSets = generated.map((post) => new Set(post.keywords.map(normalizeKeyword)));
 
-const topic = selectTopic(topics);
-if (!topic) {
+const dayIndex = Math.floor(Date.parse(`${postDate}T00:00:00Z`) / 86_400_000);
+const figureCandidates = figures.filter((topic) => isEligible(topic.slug, topic.keywords));
+const definitionalCandidates = definitionals.filter((topic) => isEligible(topic.slug, topic.keywords));
+
+const selection = selectTopic();
+if (!selection) {
   console.log("No eligible daily blog topic found. Nothing to publish.");
   process.exit(0);
 }
 
-const post = buildPublicFigurePost(topic);
+const post =
+  selection.kind === "figure"
+    ? buildPublicFigurePost(selection.topic)
+    : buildDefinitionalPost(selection.topic);
+
+if (dryRun) {
+  const remaining = PILLAR_ROTATION.map(
+    (pillar) => `${pillar}=${definitionalCandidates.filter((topic) => topic.pillar === pillar).length}`,
+  ).join(" ");
+  console.log(
+    `[dry-run] date=${postDate} dayIndex=${dayIndex} lane=${selection.kind} pillar=${post.pillar} slug=${post.slug}`,
+  );
+  console.log(`[dry-run] eligible figures=${figureCandidates.length} definitional: ${remaining}`);
+  process.exit(0);
+}
+
 generated.push(post);
 fs.writeFileSync(generatedPath, `${JSON.stringify(generated, null, 2)}\n`);
 
 console.log(`Generated ${post.slug}`);
 
-function readTopicPool(): PublicFigureTopic[] {
+function readFigurePool(): PublicFigureTopic[] {
   const base = readJson<TopicsFile>(topicsPath, { figures: [] }).figures;
   const queued = fs.existsSync(trendingQueuePath)
     ? readJson<TopicsFile | PublicFigureTopic[]>(trendingQueuePath, { figures: [] })
@@ -63,31 +118,84 @@ function readTopicPool(): PublicFigureTopic[] {
 
   const bySlug = new Map<string, PublicFigureTopic>();
   for (const item of [...envQueue, ...queue, ...base]) {
-    if (!isValidTopic(item)) continue;
+    if (!isValidFigureTopic(item)) continue;
     bySlug.set(item.slug, item);
   }
   return [...bySlug.values()];
 }
 
-function selectTopic(pool: PublicFigureTopic[]): PublicFigureTopic | null {
-  const candidates = pool.filter((topic) => {
-    if (existingSlugs.has(topic.slug)) return false;
-    if (isKeywordDuplicate(topic.keywords)) return false;
-    return true;
-  });
-
-  if (forcedSlug) {
-    const forced = candidates.find((topic) => topic.slug === forcedSlug);
-    if (!forced) {
-      throw new Error(`Forced topic ${forcedSlug} is missing, already published, or too close to an existing topic.`);
+function readDefinitionalPool(): DefinitionalTopic[] {
+  const queue = readJson<DefinitionalFile>(definitionalQueuePath, { topics: [] }).topics;
+  const bySlug = new Map<string, DefinitionalTopic>();
+  for (const item of queue) {
+    if (!isValidDefinitionalTopic(item)) {
+      throw new Error(`Invalid definitional topic entry: ${JSON.stringify((item as DefinitionalTopic)?.slug ?? item)}`);
     }
-    return forced;
+    bySlug.set(item.slug, item);
+  }
+  return [...bySlug.values()];
+}
+
+function isEligible(slug: string, keywords: string[]): boolean {
+  if (existingSlugs.has(slug)) return false;
+  if (isKeywordDuplicate(keywords)) return false;
+  return true;
+}
+
+/**
+ * Deterministic rotation, keyed on the UTC day index of POST_DATE:
+ * - Even day index: celebrity birth-card profile (the proven traffic angle).
+ * - Odd day index: definitional post, cycling cardology-foundations ->
+ *   timing-and-spreads -> relationships-and-practice, one pillar per
+ *   definitional slot, so each thin pillar gets a post every six days.
+ * If the scheduled lane has no eligible topic, the other lane fills the day.
+ */
+function selectTopic(): Selection | null {
+  if (forcedSlug) {
+    const figure = figureCandidates.find((topic) => topic.slug === forcedSlug);
+    if (figure) return { kind: "figure", topic: figure };
+    const definitional = definitionalCandidates.find((topic) => topic.slug === forcedSlug);
+    if (definitional) return { kind: "definitional", topic: definitional };
+    throw new Error(`Forced topic ${forcedSlug} is missing, already published, or too close to an existing topic.`);
   }
 
-  if (candidates.length === 0) return null;
+  const lanes: Selection["kind"][] = dayIndex % 2 === 0 ? ["figure", "definitional"] : ["definitional", "figure"];
+  for (const lane of lanes) {
+    if (lane === "figure" && figureCandidates.length > 0) {
+      return { kind: "figure", topic: figureCandidates[dayIndex % figureCandidates.length] };
+    }
+    if (lane === "definitional") {
+      const start = Math.floor(dayIndex / 2) % PILLAR_ROTATION.length;
+      for (let offset = 0; offset < PILLAR_ROTATION.length; offset++) {
+        const pillar = PILLAR_ROTATION[(start + offset) % PILLAR_ROTATION.length];
+        const candidates = definitionalCandidates.filter((topic) => topic.pillar === pillar);
+        if (candidates.length > 0) {
+          return { kind: "definitional", topic: candidates[dayIndex % candidates.length] };
+        }
+      }
+    }
+  }
+  return null;
+}
 
-  const dayIndex = Math.floor(Date.parse(`${postDate}T00:00:00Z`) / 86_400_000);
-  return candidates[dayIndex % candidates.length];
+function buildDefinitionalPost(topic: DefinitionalTopic): BlogPost {
+  return {
+    slug: topic.slug,
+    pillar: topic.pillar,
+    title: topic.title,
+    seoTitle: topic.seoTitle,
+    description: topic.description,
+    dek: topic.dek,
+    datePublished: postDate,
+    dateModified: postDate,
+    readTime: topic.readTime,
+    keywords: unique(topic.keywords),
+    answer: topic.answer,
+    sections: topic.sections,
+    faqs: topic.faqs,
+    related: topic.related,
+    coreLinks: topic.coreLinks,
+  };
 }
 
 function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
@@ -267,9 +375,33 @@ function normalizeEnvQueue(value: string): PublicFigureTopic[] {
   return [parsed];
 }
 
-function isValidTopic(value: unknown): value is PublicFigureTopic {
+function isValidFigureTopic(value: unknown): value is PublicFigureTopic {
   const item = value as PublicFigureTopic;
   return Boolean(item?.slug && item?.name && item?.category && item?.birthdate && item?.publicFrame && Array.isArray(item?.keywords) && item?.angle);
+}
+
+function isValidDefinitionalTopic(value: unknown): value is DefinitionalTopic {
+  const item = value as DefinitionalTopic;
+  return Boolean(
+    item?.slug &&
+      PILLAR_ROTATION.includes(item?.pillar) &&
+      item?.title &&
+      item?.description &&
+      item?.dek &&
+      item?.readTime &&
+      Array.isArray(item?.keywords) &&
+      item.keywords.length > 0 &&
+      item?.answer &&
+      Array.isArray(item?.sections) &&
+      item.sections.length > 0 &&
+      item.sections.every((section) => section?.heading && Array.isArray(section?.body) && section.body.length > 0) &&
+      Array.isArray(item?.faqs) &&
+      item.faqs.length > 0 &&
+      item.faqs.every((faq) => faq?.q && faq?.a) &&
+      Array.isArray(item?.related) &&
+      Array.isArray(item?.coreLinks) &&
+      item.coreLinks.every((link) => link?.label && link?.href),
+  );
 }
 
 function unique(values: string[]): string[] {

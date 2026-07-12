@@ -1,3 +1,5 @@
+import { parseCard } from "@/lib/cards";
+import { slugFor } from "@/lib/seo-cards";
 import { VIDEO_URL } from "@/lib/site";
 
 export type CardologyVideo = {
@@ -183,4 +185,28 @@ export function youtubeThumbnail(url: string): string {
 
 export function youtubeEmbed(url: string): string {
   return `https://www.youtube.com/embed/${youtubeId(url)}`;
+}
+
+// NOTE: keep the helpers below AFTER youtubeId — scripts/sync_videos.ts
+// preserves everything from "export function youtubeId(" onward when it
+// rewrites this file; anything between the array and that marker is lost.
+
+// Map a video's glyph code ("5♣") into the same slug space as seo-cards
+// ("5-of-clubs"), so card pages can find their matching films.
+export function videoCardSlug(video: CardologyVideo): string | null {
+  const p = parseCard(video.card);
+  if (!p) return null;
+  return slugFor(p.rank, p.suit);
+}
+
+// Videos matched to one card. Accepts either a card slug ("5-of-clubs")
+// or a glyph code ("5♣"); returns [] when no film exists for that card.
+export function videosForCard(cardSlugOrCode: string): CardologyVideo[] {
+  let slug: string | null = cardSlugOrCode;
+  if (!cardSlugOrCode.includes("-of-")) {
+    const p = parseCard(cardSlugOrCode);
+    slug = p ? slugFor(p.rank, p.suit) : null;
+  }
+  if (!slug) return [];
+  return CARDOLOGY_VIDEOS.filter((v) => videoCardSlug(v) === slug);
 }

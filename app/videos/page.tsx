@@ -3,11 +3,14 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_URL, VIDEO_URL } from "@/lib/site";
 import {
   CARDOLOGY_VIDEO_CHANNEL,
   CARDOLOGY_VIDEOS,
+  videoCardSlug,
   youtubeEmbed,
+  youtubeId,
   youtubeThumbnail,
 } from "@/lib/videos";
 
@@ -91,28 +94,42 @@ export default function VideosPage() {
       <section>
         <h2 className="oracle-eyebrow mb-4">Recent shadow-reading films</h2>
         <div className="grid gap-4">
-          {CARDOLOGY_VIDEOS.map((video) => (
-            <article key={video.url} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
-                    {video.card} · published {video.uploadDate}
-                  </p>
-                  <h2 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
-                    <a href={video.url} className="hover:text-[#9e3d24]">
-                      {video.title}
-                    </a>
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5b5148]">
-                    {video.description}
-                  </p>
+          {CARDOLOGY_VIDEOS.map((video) => {
+            const cardSlug = videoCardSlug(video);
+            return (
+              <article key={video.url} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
+                <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+                  {video.card} · published {video.uploadDate}
+                </p>
+                <h2 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
+                  {video.title}
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5b5148]">
+                  {video.description}
+                </p>
+                <div className="mt-4 max-w-2xl">
+                  <VideoEmbed
+                    videoId={youtubeId(video.url)}
+                    title={video.title}
+                    frameClassName="border border-[#14110d]/20"
+                  />
                 </div>
-                <a href={video.url} className="paper-button small-button shrink-0">
-                  Watch
-                </a>
-              </div>
-            </article>
-          ))}
+                <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                  {cardSlug && (
+                    <Link href={`/birth-card/${cardSlug}`} className="paper-button small-button shrink-0">
+                      Read the {video.card} meaning
+                    </Link>
+                  )}
+                  <a
+                    href={video.url}
+                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#9e3d24]"
+                  >
+                    Watch on the channel
+                  </a>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 

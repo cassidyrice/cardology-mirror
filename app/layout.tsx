@@ -25,7 +25,12 @@ export const metadata: Metadata = {
     "cardology compatibility",
     "ruling card",
   ],
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: `${SITE_NAME} — Cardology Blog` }],
+    },
+  },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,

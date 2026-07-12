@@ -18,6 +18,11 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
+    // sitemap.xml and sitemap-birth-cards.xml are built by this app.
+    // sitemap-cardology.xml (367 /born-on/ pages) and
+    // sitemap-compatibility.xml (1,431 /compatibility/ pages) are served by
+    // the cardology-unlock Worker in front of Pages — they are NOT in this
+    // repo but are live in production (curl-verified 2026-07-12).
     sitemap: [
       `${SITE_URL}/sitemap.xml`,
       `${SITE_URL}/sitemap-birth-cards.xml`,
