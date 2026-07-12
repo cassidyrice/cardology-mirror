@@ -48,7 +48,11 @@ Generated first short (3♦ July 12) → judged (2 lenses) → improved the gene
 - **/card-of-the-day BUILT + judged 9/10 CLEAR** — edge-rendered per request (America/Denver), same date→card lib as the shorts, answer-first data-ai-summary with date-anchored year-invariant copy, FAQPage JSON-LD, Dec-31 Joker branch, yesterday/tomorrow /born-on/ links (all 366 verified), wired into sitemap (daily/0.85) + SeoShell footer + llms.txt. Infra finding recorded in-code: next-on-pages middleware `override:true` wipes next.config headers() — route no-store lives in middleware.ts.
 - Ships with the user's NEXT deploy.
 
-## Round 5 directives (was round 4)
+## Round 5 — COMPLETE (2026-07-12, ~15:05)
+
+- **Beginner cluster BUILT + judged 9/10 + 9/10 CLEAR:** /how-to-read-playing-cards, /playing-card-spreads hub + three-card/love/yes-or-no spokes, lib/spreads.ts (helpers character-identical to birth-card originals). All 8 worked-example cards verified against data — zero invented meanings; mustCard() fails builds loudly if data vanishes. Clean intent division vs cartomancy-vs-tarot. Judge's two polish nits applied inline (how-to summary rewritten around "suit = arena, rank = move"; three-card summary ≤50 words). Both builds green. Ships with next deploy.
+
+## Round 6 directives (was round 5)
 
 1. STILL BLOCKED ON HUMAN: production deploy (`bun run pages:build && bun run pages:deploy`). After it: curl-verify `/feed.xml` 200-xml, `/cartomancy-vs-tarot` new H2s, `/llms.txt` wording, new pins at `/pins/ace-of-spades.png`.
 2. UPLOADS = user_action (manual per README): 8 shorts ready; titles/captions in queue JSONs. Pinterest bulk upload of the 52 pins also pending user auth.

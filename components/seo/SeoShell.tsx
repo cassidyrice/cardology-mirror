@@ -130,6 +130,8 @@ function SeoFooter() {
           <p className="mb-2 font-serif text-base text-[#14110d]">Learn the system</p>
           <ul className="space-y-1.5">
             <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
+            <li><Link href="/how-to-read-playing-cards" className="hover:text-[#14110d]">How to Read Playing Cards</Link></li>
+            <li><Link href="/playing-card-spreads" className="hover:text-[#14110d]">Playing Card Spreads</Link></li>
             <li><Link href="/52-card-astrology-explained" className="hover:text-[#14110d]">52-Card Astrology</Link></li>
             <li><Link href="/birth-card-vs-ruling-card" className="hover:text-[#14110d]">Birth vs Ruling Card</Link></li>
             <li><Link href="/cardology-compatibility" className="hover:text-[#14110d]">Compatibility</Link></li>
