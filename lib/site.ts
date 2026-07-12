@@ -2,7 +2,7 @@
 // Override the domain at build time with NEXT_PUBLIC_SITE_URL if needed.
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "https://cardologypro.com"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://cardblueprints.com"
 ).replace(/\/$/, "");
 
 // App and marketing are served from the same host. APP_URL stays overridable
