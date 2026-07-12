@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Editorial Policy",
   description:
-    "How Cardology Pro keeps card calculations clear, meanings useful, and corrections easy to send.",
+    "How Card Blueprints keeps card calculations clear, meanings useful, and corrections easy to send.",
   alternates: { canonical: "/editorial-policy" },
 };
 
@@ -36,7 +36,7 @@ export default function EditorialPolicyPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Cardology Pro Editorial Policy",
+    name: "Card Blueprints Editorial Policy",
     url: `${SITE_URL}/editorial-policy`,
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: "Editorial policy for educational Cardology content.",
@@ -54,12 +54,12 @@ export default function EditorialPolicyPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Trust and boundaries</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Editorial policy for Cardology Pro.
+          Editorial policy for Card Blueprints.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Cardology Pro keeps the math visible and the interpretation practical:
+            Card Blueprints keeps the math visible and the interpretation practical:
             calculate the card, read the pattern, compare the person, and correct what
             needs correcting.
           </p>
@@ -90,7 +90,7 @@ export default function EditorialPolicyPage() {
 
       <p className="mt-10">
         <Link href="/contact" className="ink-button large-button inline-flex">
-          Contact Cardology Pro
+          Contact Card Blueprints
         </Link>
       </p>
     </SeoShell>

@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: "Cardology Pro refund terms for personal readings and reports.",
+  description: "Card Blueprints refund terms for personal readings and reports.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -35,7 +35,7 @@ export default function RefundPolicy() {
 
         <section className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Every Cardology Pro reading is custom written for your specific birth
+            Every Card Blueprints reading is custom written for your specific birth
             details and question. It cannot be restocked or resold. Our refund
             terms reflect that reality while keeping things simple and fair.
           </p>

@@ -5,7 +5,7 @@ import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
 
 const title = "Daily Card Reading";
 const description =
-  "Use Cardology Pro's daily card reading to understand today's active card, birth-card lens, ruling-card lens, pressure pattern, and grounded prompt.";
+  "Use Card Blueprints's daily card reading to understand today's active card, birth-card lens, ruling-card lens, pressure pattern, and grounded prompt.";
 
 export const metadata: Metadata = {
   title: "Daily Card Reading: Your Cardology Card for Today",

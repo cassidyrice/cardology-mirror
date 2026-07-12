@@ -5,8 +5,8 @@ import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Cardology Pro | Readings, Birth Card Calculator and Meanings",
-    template: "%s | Cardology Pro",
+    default: "Card Blueprints | Readings, Birth Card Calculator and Meanings",
+    template: "%s | Card Blueprints",
   },
   description:
     "Personal Cardology readings from your birth card, plus the free birth card calculator, all 52 card meanings, compatibility tools, and the 52-card astrology system — a mirror, not a forecast.",
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Cardology Pro — Readings, Birth Card Calculator and Meanings",
+    title: "Card Blueprints — Readings, Birth Card Calculator and Meanings",
     description:
       "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Cardology Pro" }],
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cardology Pro — Readings, Birth Card Calculator and Meanings",
+    title: "Card Blueprints — Readings, Birth Card Calculator and Meanings",
     description:
       "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: ["/og/default.png"],
@@ -92,7 +92,7 @@ export default function RootLayout({
         hasPart: [
           {
             "@type": "WebSite",
-            name: "Cardology Pro Videos",
+            name: "Card Blueprints Videos",
             url: VIDEO_URL,
             about: "Cardology birth cards, shadow readings, timing, famous-person examples, and relationship dynamics videos.",
           },

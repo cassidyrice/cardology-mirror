@@ -21,7 +21,7 @@ export function SeoShell({
       <div className="oracle-noise" aria-hidden="true" />
 
       <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between border-b border-[#14110d]/15 px-5 py-4 sm:px-8 lg:px-10">
-        <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
+        <Link href="/" className="brand-mark" aria-label="Card Blueprints home">
           {SITE_NAME}
         </Link>
         <nav className="hidden items-center gap-4 text-[0.68rem] font-bold uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
@@ -77,7 +77,7 @@ export function SeoShell({
 function SeoFooter() {
   return (
     <footer className="mt-16 border-t border-[#14110d]/15 pt-8 text-sm leading-relaxed text-[#3d352d]">
-      <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Cardology Pro</p>
+      <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Card Blueprints</p>
       <div className="grid gap-8 sm:grid-cols-3">
         <div>
           <p className="mb-2 font-serif text-base text-[#14110d]">Personal readings</p>
@@ -115,7 +115,7 @@ function SeoFooter() {
             <li><Link href="/shadow-karma-guide" className="hover:text-[#14110d]">Shadow &amp; Karma Guide</Link></li>
             <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
             <li><Link href={VIDEO_PATH} className="hover:text-[#14110d]">Cardology Videos</Link></li>
-            <li><Link href="/about" className="hover:text-[#14110d]">About Cardology Pro</Link></li>
+            <li><Link href="/about" className="hover:text-[#14110d]">About Card Blueprints</Link></li>
           </ul>
         </div>
       </div>

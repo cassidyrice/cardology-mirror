@@ -6,7 +6,7 @@ import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_URL, VIDEO_PATH } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Cardology Readings and Birth Card Calculator | Cardology Pro" },
+  title: { absolute: "Cardology Readings and Birth Card Calculator | Card Blueprints" },
   description:
     "Personal Cardology readings from your birth card: a $29 birth card report, $99 one-question reading, or $199 full deep dive. Start free with the birth card calculator, all 52 card meanings, and compatibility tools.",
   alternates: { canonical: "/" },
@@ -72,7 +72,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Cardology Pro personal readings",
+    name: "Card Blueprints personal readings",
     itemListElement: READING_OFFERS.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -89,8 +89,8 @@ export default function Home() {
         <div className="oracle-noise" aria-hidden="true" />
 
         <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between border-b border-[#14110d]/15 px-5 py-4 sm:px-8 lg:px-10">
-          <Link href="/" className="brand-mark" aria-label="Cardology Pro home">
-            Cardology Pro
+          <Link href="/" className="brand-mark" aria-label="Card Blueprints home">
+            Card Blueprints
           </Link>
           <nav className="hidden items-center gap-4 text-[0.68rem] uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
             <Link href={READINGS_PATH} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
@@ -152,7 +152,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Cardology Pro reading options">
+          <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Card Blueprints reading options">
             <div className="instrument-face">
               <div className="instrument-topline">
                 <span>written / personal / deterministic</span>
@@ -369,7 +369,7 @@ export default function Home() {
         </section>
 
         <footer className="relative z-10 mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
-          <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Cardology Pro</p>
+          <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Card Blueprints</p>
           <div className="grid gap-8 text-sm text-[#3d352d] sm:grid-cols-3">
             <div>
               <p className="mb-2 font-serif text-base text-[#14110d]">Personal readings</p>

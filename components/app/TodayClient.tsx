@@ -53,7 +53,7 @@ export default function TodayPage() {
         <div className="pt-12">
           <ProfilePrompt
             title="Your daily card needs a birth date."
-            body="The public page explains the daily-card method. Create a local profile when you want Cardology Pro to calculate today's cards for you."
+            body="The public page explains the daily-card method. Create a local profile when you want Card Blueprints to calculate today's cards for you."
           />
         </div>
       )}

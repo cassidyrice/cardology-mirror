@@ -7,9 +7,9 @@ import { SITE_URL, VIDEO_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Contact Cardology Pro",
+  title: "Contact Card Blueprints",
   description:
-    "Contact Cardology Pro for readings, corrections, Cardology questions, video questions, and partnerships.",
+    "Contact Card Blueprints for readings, corrections, Cardology questions, video questions, and partnerships.",
   alternates: { canonical: "/contact" },
 };
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Contact Cardology Pro",
+    name: "Contact Card Blueprints",
     url: `${SITE_URL}/contact`,
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
@@ -72,7 +72,7 @@ export default function ContactPage() {
             <a href={VIDEO_URL} className="text-[#9e3d24] underline underline-offset-4">
               Hosted video channel
             </a>{" "}
-            is the public destination for watching Cardology Pro videos.
+            is the public destination for watching Card Blueprints videos.
           </li>
         </ul>
       </section>

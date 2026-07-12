@@ -10,7 +10,7 @@ export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Reading purchase confirmed",
-  description: "Share the intake details for your Cardology Pro reading.",
+  description: "Share the intake details for your Card Blueprints reading.",
   robots: { index: false, follow: false },
 };
 

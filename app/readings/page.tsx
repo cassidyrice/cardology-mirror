@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Personal Cardology Readings and Reports",
     description:
-      "Choose a Cardology Pro report or personal reading: basic birth card report, one-question reading, or full deep dive.",
+      "Choose a Card Blueprints report or personal reading: basic birth card report, one-question reading, or full deep dive.",
     url: "/readings",
     type: "website",
   },
@@ -218,7 +218,7 @@ export default function ReadingsPage() {
         <div className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
           <h2 className="font-serif text-3xl text-[#14110d]">What every reading can look at</h2>
           <p className="mt-4 text-base leading-relaxed text-[#5b5148]">
-            A Cardology Pro reading uses the deterministic birth-card system, then
+            A Card Blueprints reading uses the deterministic birth-card system, then
             turns it into useful language for behavior, compatibility, attraction,
             friction, family roles, creative pressure, money habits, timing, and the
             patterns people keep repeating with each other. It should clarify the
@@ -229,7 +229,7 @@ export default function ReadingsPage() {
             Line, told so at five years old, with decades inside the symbols and
             years reverse-engineering the structure underneath them.{" "}
             <Link href="/about" className="text-[#9e3d24] underline underline-offset-4">
-              About Cardology Pro →
+              About Card Blueprints →
             </Link>
           </p>
         </div>

@@ -271,7 +271,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="Related videos">
         <p>
-          Watch Cardology Pro shadow-reading films and explainers in the video library,
+          Watch Card Blueprints shadow-reading films and explainers in the video library,
           then return to this {card.label} meaning page for stable written context.
         </p>
         <Link href={VIDEO_PATH} className="mt-3 inline-block text-gold underline underline-offset-4">

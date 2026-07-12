@@ -7,9 +7,9 @@ import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "About Cardology Pro",
+  title: "About Card Blueprints",
   description:
-    "Learn how Cardology Pro calculates birth cards and reads people, relationships, timing, and recurring dynamics through the 52-card system.",
+    "Learn how Card Blueprints calculates birth cards and reads people, relationships, timing, and recurring dynamics through the 52-card system.",
   alternates: { canonical: "/about" },
 };
 
@@ -17,13 +17,13 @@ export default function AboutPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About Cardology Pro",
+    name: "About Card Blueprints",
     url: `${SITE_URL}/about`,
     about: {
       "@type": "Thing",
       name: "Cardology",
       description:
-        "A 52-card birth-date system used by Cardology Pro to read people, relationships, timing, and recurring patterns.",
+        "A 52-card birth-date system used by Card Blueprints to read people, relationships, timing, and recurring patterns.",
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
@@ -35,7 +35,7 @@ export default function AboutPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">About the reference</p>
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Cardology Pro reads birth cards, timing, and compatibility through the 52-card system.
+          Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>

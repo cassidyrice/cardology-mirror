@@ -15,7 +15,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cardology Blog: Birth Cards and 52-Card Astrology",
   description:
-    "Read Cardology Pro guides on birth cards, suits, ranks, compatibility, karma cards, famous-person profiles, 52-day periods, and real-life dynamics.",
+    "Read Card Blueprints guides on birth cards, suits, ranks, compatibility, karma cards, famous-person profiles, 52-day periods, and real-life dynamics.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: "Cardology Blog: Birth Cards and 52-Card Astrology",
@@ -35,7 +35,7 @@ export default function BlogIndexPage() {
       a: "Start with the Cardology Foundations pillar, then calculate your birth card and read the matching card meaning page.",
     },
     {
-      q: "Are Cardology Pro articles predictions?",
+      q: "Are Card Blueprints articles predictions?",
       a: "The guides read cards as pattern language for people, relationships, timing, and repeated behavior.",
     },
     {

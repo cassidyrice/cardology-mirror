@@ -16,12 +16,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Videos - Shadow Reading Films and Explainers",
   description:
-    "Watch Cardology Pro video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
+    "Watch Card Blueprints video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
   alternates: { canonical: "/videos" },
   openGraph: {
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
-      "Cardology Pro videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
+      "Card Blueprints videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
     url: "/videos",
     type: "website",
   },
@@ -32,7 +32,7 @@ export default function VideosPage() {
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: "Cardology Pro Videos",
+      name: "Card Blueprints Videos",
       description: metadata.description,
       url: `${SITE_URL}/videos`,
       mainEntity: {
@@ -70,7 +70,7 @@ export default function VideosPage() {
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
-            Cardology Pro videos explain birth-card meanings, shadow patterns, timing,
+            Card Blueprints videos explain birth-card meanings, shadow patterns, timing,
             compatibility, famous-person examples, and practical relationship dynamics.
             Start with the card that is active in your life, then watch how the shadow
             pattern shows up in choices, timing, and relationships.

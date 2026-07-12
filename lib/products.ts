@@ -27,7 +27,7 @@ export const READING_OFFERS: ReadingOffer[] = [
       "Birth card and ruling-card calculation",
       "Plain-English meaning and shadow range",
       "Personal reflection prompts",
-      "Links to matching Cardology Pro pages",
+      "Links to matching Card Blueprints pages",
     ],
     cta: "Get the $29 report",
   },

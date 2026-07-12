@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Cardology Pro collects and uses your information.",
+  description: "How Card Blueprints collects and uses your information.",
   alternates: { canonical: "/privacy-policy" },
   robots: { index: true, follow: true },
 };
@@ -35,7 +35,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Who we are</h2>
           <p className="mt-3">
-            Cardology Pro is operated by Cassidy Rice (Cassidy Rice Company). We
+            Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
             offer personal Cardology readings and free birth card tools at{" "}
             <Link href="/" className="text-[#9e3d24] underline underline-offset-4">
               cardologypro.com
@@ -142,7 +142,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Cookies</h2>
           <p className="mt-3">
-            Cardology Pro does not use tracking cookies or advertising cookies.
+            Card Blueprints does not use tracking cookies or advertising cookies.
             Cloudflare may set security-related cookies (such as{" "}
             <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">__cf_bm</code>) as
             part of bot protection. These are functional, not advertising.

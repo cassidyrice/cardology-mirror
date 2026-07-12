@@ -24,7 +24,7 @@ export default function MethodologyPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TechArticle",
-    headline: "Cardology Pro Methodology",
+    headline: "Card Blueprints Methodology",
     description: metadata.description,
     url: `${SITE_URL}/methodology`,
     publisher: { "@id": `${SITE_URL}/#organization` },
