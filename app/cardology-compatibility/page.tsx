@@ -32,12 +32,20 @@ export default function CompatibilityPage() {
         <p className="mt-1 text-sm text-faint">
           See birth cards, Life Path constitutions, shared cards, and cross-reference roles.
         </p>
-        <Link
-          href="/birth-card-compatibility-calculator"
-          className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
-        >
-          Open the compatibility calculator →
-        </Link>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Link
+            href="/birth-card-compatibility-calculator"
+            className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
+          >
+            Open the compatibility calculator →
+          </Link>
+          <Link
+            href="/compatibility/"
+            className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold"
+          >
+            Browse every card pairing →
+          </Link>
+        </div>
       </div>
 
       <section className="mt-10">

@@ -25,9 +25,9 @@ export function ReadingBridge({
           The pages explain the system. A reading applies it to your life.
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#d7cdbc]">
-          Bring a birth date and a real question. You get a written reading
-          about the actual person, relationship, or decision — not a
-          horoscope, not a copy-paste of a card page.
+          Bring a birth date and a real question. Choose a written report or
+          talk with the AI voice guide for a reading about the actual person,
+          relationship, or decision.
         </p>
         <div className="mt-6 grid gap-3 sm:grid-cols-3">
           {READING_OFFERS.map((offer) => (
@@ -74,8 +74,9 @@ export function ReadingBridge({
         </Link>
       </div>
       <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
-        Secure checkout. You confirm the birth details and question right
-        after payment, and the reading is delivered by email.
+        {offer.href === "/unlock"
+          ? "Secure checkout. This $99 option is an AI voice guide, available by phone after payment with 90 days of access."
+          : "Secure checkout. You confirm the birth details after payment, and the written reading is delivered by email."}
       </p>
     </aside>
   );
@@ -98,15 +99,15 @@ function bridgeConfig(variant: Exclude<BridgeVariant, "general">, cardLabel?: st
       return {
         offerSlug: "one-question-reading",
         eyebrow: "This dynamic, read for you",
-        headline: "The calculator names the pattern. A reading answers your question about it.",
-        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $99 one-question reading takes both birthdays and your actual question and gives you a written answer about the dynamic itself.",
+        headline: "The calculator names the pattern. The AI voice guide lets you talk it through.",
+        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $99 AI voice guide can compare both birthdays, answer follow-up questions, and stay available for 90 days.",
       };
     case "timing":
       return {
         offerSlug: "one-question-reading",
         eyebrow: "Your timing, read for you",
-        headline: "This tool shows the lens. A reading tells you what your current period is pressing on.",
-        body: "The filters above are generic by design. The $99 one-question reading works from your real birth date and a real decision — what this chapter is asking you to handle, and how your card tends to respond under exactly this kind of pressure.",
+        headline: "This tool shows the lens. The AI voice guide helps you explore it.",
+        body: "The filters above are generic by design. The $99 AI voice guide works from your real birth date and questions — what this chapter may be asking you to notice, and how your card tends to respond under this kind of pressure.",
       };
   }
 }

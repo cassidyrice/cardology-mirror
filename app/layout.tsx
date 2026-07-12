@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -76,11 +77,13 @@ export default function RootLayout({
           "relationship dynamics",
           "public figure birth card profiles",
         ],
-        makesOffer: [
-          { "@type": "Offer", price: 29, priceCurrency: "USD", url: `${SITE_URL}/readings#basic-birth-card-report`, itemOffered: { "@type": "Product", name: "Basic Birth Card Report" } },
-          { "@type": "Offer", price: 99, priceCurrency: "USD", url: `${SITE_URL}/readings#one-question-reading`, itemOffered: { "@type": "Product", name: "One-Question Personal Reading" } },
-          { "@type": "Offer", price: 199, priceCurrency: "USD", url: `${SITE_URL}/readings#full-deep-dive`, itemOffered: { "@type": "Product", name: "Full Deep Dive Reading" } },
-        ],
+        makesOffer: READING_OFFERS.map((offer) => ({
+          "@type": "Offer",
+          price: offer.price,
+          priceCurrency: "USD",
+          url: `${SITE_URL}${readingOfferHref(offer)}`,
+          itemOffered: { "@type": "Product", name: offer.name },
+        })),
         sameAs: [VIDEO_URL],
       },
       {

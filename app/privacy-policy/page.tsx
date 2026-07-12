@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -11,8 +12,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 3, 2026";
-const CONTACT_EMAIL = "therealcassrice@gmail.com";
+const UPDATED = "July 12, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -62,6 +62,28 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">AI voice reading information</h3>
+              <p className="mt-1">
+                The paid AI voice reading uses the name, email address, phone
+                number, birth date, payment time, amount, and checkout session
+                tied to the purchase. The phone number is used to recognize paid
+                access when you call. This access profile is kept for up to 90 days.
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">What happens during an AI call</h3>
+              <p className="mt-1">
+                The AI voice service must process what you say so it can answer.
+                Card Blueprints uses xAI-based tools for the voice guide. Our website
+                and payment worker do not store call audio or transcripts, but the
+                provider may process or retain call data under its account settings
+                and privacy terms. Provider-side recording, transcript retention,
+                and model-training settings are still being confirmed. Until that
+                check is complete, do not share medical, legal, financial, account,
+                or other sensitive information during a call.
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Payment information</h3>
               <p className="mt-1">
                 Payments are processed by{" "}
@@ -75,7 +97,8 @@ export default function PrivacyPolicy() {
                 </a>
                 . We do not store your card number, CVV, or full payment details.
                 Stripe's own privacy policy governs how they handle your payment
-                data. We receive only your email address and the amount paid.
+                data. Depending on the product, we may receive your name, email,
+                phone number, birth date, amount paid, checkout session, and referral code.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -103,6 +126,8 @@ export default function PrivacyPolicy() {
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">To prepare and deliver the reading you purchased.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send you the finished reading by email.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To recognize paid AI voice access for 90 days.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To connect return calls with the correct paid profile.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To follow up on questions or clarifications about a delivered reading, if you ask.</li>
           </ul>
           <p className="mt-4">
@@ -131,6 +156,12 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>xAI</strong> — AI processing for the voice reading guide.{" "}
+              <a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
+                xAI Privacy Policy
+              </a>
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Cloudflare</strong> — hosting and edge infrastructure.{" "}
               <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
                 Cloudflare Privacy Policy
@@ -142,11 +173,22 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Cookies</h2>
           <p className="mt-3">
-            Card Blueprints does not use tracking cookies or advertising cookies.
-            Cloudflare may set security-related cookies (such as{" "}
+            Card Blueprints does not use advertising cookies. If you arrive through
+            an affiliate link, the site may store an affiliate code for up to 90 days
+            so the sale can be credited correctly. Cloudflare may also set
+            security-related cookies (such as{" "}
             <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">__cf_bm</code>) as
-            part of bot protection. These are functional, not advertising.
+            part of bot protection.
           </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">How long verified records are kept</h2>
+          <ul className="mt-3 space-y-2">
+            <li className="border-t border-[#14110d]/12 pt-2">AI voice access profiles: up to 90 days.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">Generated $29 report files: up to 90 days.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">Order and affiliate records: up to 400 days for support and accounting.</li>
+          </ul>
         </section>
 
         <section>
@@ -157,8 +199,9 @@ export default function PrivacyPolicy() {
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
-            with the email address you used at checkout. We will confirm deletion
-            within a reasonable time.
+            with the email address or phone number you used at checkout. We will
+            confirm deletion within a reasonable time, except for records we must
+            keep for legal, tax, fraud, or payment-dispute reasons.
           </p>
         </section>
 

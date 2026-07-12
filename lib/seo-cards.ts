@@ -3,6 +3,7 @@
 // records. All public-facing copy is generated from deterministic local data.
 
 import { cardology } from "./engine-core/engine.js";
+import { publicBirthCardCode } from "./birth-card-truth";
 import { parseCard, SUIT_GLYPH, SUIT_DOMAIN, SUIT_COLOR, type Suit } from "./cards";
 import THREE_LENS from "./card-meanings.json";
 import CARD_DESCRIPTIONS from "./engine-data/card-descriptions.json";
@@ -158,7 +159,7 @@ export function allBirthdateSeo(): BirthdateSeo[] {
   MONTHS.forEach((m, monthIndex) => {
     for (let day = 1; day <= m.days; day++) {
       const month = monthIndex + 1;
-      const [birthCode] = cardology.getBirthCard(month, day) as [string, number];
+      const birthCode = publicBirthCardCode(month, day);
       const prcRaw = cardology.getPlanetaryRulingCard(month, day) as string | string[] | null;
       const prcCode = Array.isArray(prcRaw) ? prcRaw[0] : prcRaw;
       const card = getCardSeo(birthCode);

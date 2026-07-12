@@ -8,14 +8,14 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Personal Cardology Readings: $29 Report, $99 Question, $199 Deep Dive",
+  title: "Cardology Readings: $29 Report, $99 AI Voice, $199 Deep Dive",
   description:
-    "Buy a personal Cardology reading: $29 basic birth card report, $99 one-question reading, or $199 full deep dive. Written from your birth date, delivered by email.",
+    "Choose a $29 written birth card report, $99 AI voice reading with 90 days of calls, or $199 human-written deep dive.",
   alternates: { canonical: "/readings" },
   openGraph: {
     title: "Personal Cardology Readings and Reports",
     description:
-      "Choose a Card Blueprints report or personal reading: basic birth card report, one-question reading, or full deep dive.",
+      "Choose a written Card Blueprints report, 90-day AI voice reading, or human-written deep dive.",
     url: "/readings",
     type: "website",
   },
@@ -24,11 +24,11 @@ export const metadata: Metadata = {
 const visibleFaqs = [
   {
     q: "Which Cardology reading should I start with?",
-    a: "Start with the $29 basic birth card report if you want the core structure for one person. Choose the $99 one-question reading when you have one specific person, relationship, or decision on the table. Choose the $199 deep dive for the fullest personal and relational map.",
+    a: "Start with the $29 written report for one person's core structure. Choose the $99 AI voice reading when you want a full reading now plus return calls for 90 days. Choose the $199 human-written deep dive for the fullest personal and relational map.",
   },
   {
     q: "What happens after I pay?",
-    a: "Checkout is instant and secure through Stripe. Right after payment you land on a short intake form: the birth date, the person or relationship involved, and your question. The written reading is then prepared for those exact details and delivered by email.",
+    a: "Checkout is secure through Stripe. For the $99 AI voice reading, call from the phone number used at checkout. For written options, confirm the birth details and focus on the intake form, then receive the finished reading by email.",
   },
   {
     q: "Can a reading look at another person or relationship?",
@@ -36,7 +36,7 @@ const visibleFaqs = [
   },
   {
     q: "What details are needed for a reading?",
-    a: "A birth date. The one-question and deep dive readings also need the question or area of focus, and a second birth date if the question is about a relationship.",
+    a: "A birth date. Written deep dives also need the question or area of focus. The AI voice guide can ask for a second birth date during the call when you want to discuss a relationship.",
   },
   {
     q: "Is this a prediction of the future?",
@@ -44,7 +44,7 @@ const visibleFaqs = [
   },
   {
     q: "What about refunds?",
-    a: "Before work on your reading begins, refunds are simple — just reply to your receipt. Because every reading is custom written for your birth details, refunds are limited once the work is underway. If anything in a delivered reading is unclear, ask and it gets clarified.",
+    a: "Written work can be fully refunded before it begins. AI voice access can be fully refunded before the first paid call. After a written reading begins or paid voice access is used, refunds are limited and reviewed fairly. See the refund policy for details.",
   },
 ];
 
@@ -104,17 +104,16 @@ export default function ReadingsPage() {
           Choose the reading for the person, question, or dynamic you are trying to understand.
         </h1>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
-          One clear ladder: a $29 basic birth card report, a $99 one-question
-          reading, and a $199 full deep dive. Written for your birth details,
-          delivered by email.
+          One clear ladder: a $29 written birth card report, a $99 AI voice
+          reading with 90 days of calls, and a $199 human-written deep dive.
         </p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             Start with the $29 report for one person&rsquo;s core birth-card structure.
-            Move to the $99 reading when you have one specific question about a
-            person, relationship, or situation. Choose the $199 deep dive when you
-            want the fullest personal and relational Cardology map.
+            Move to the $99 AI voice guide when you want a full reading now and
+            return calls for 90 days. Choose the $199 human-written deep dive when
+            you want the fullest personal and relational Cardology map.
           </p>
         </div>
       </header>
@@ -156,7 +155,7 @@ export default function ReadingsPage() {
               {offer.cta}
             </Link>
             <p className="mt-3 text-center text-xs text-[#5b5148]">
-              Instant secure checkout · intake right after payment
+              {offer.checkoutNote}
             </p>
           </article>
         ))}
@@ -164,9 +163,9 @@ export default function ReadingsPage() {
 
       <section className="mt-12 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="border border-[#14110d]/18 bg-[#f4f0e7]/82 p-6 shadow-[0_1.5rem_4rem_rgba(20,17,13,0.08)] sm:p-7">
-          <p className="oracle-eyebrow text-[#9e3d24]">What the writing sounds like</p>
+          <p className="oracle-eyebrow text-[#9e3d24]">What the written options sound like</p>
           <h2 className="mt-3 font-serif text-3xl leading-none text-[#14110d]">
-            An excerpt, so you know what you are buying.
+            A written excerpt, so you know what those options feel like.
           </h2>
           <blockquote className="mt-5 border-l-2 border-[#9e3d24]/40 pl-5 font-serif text-lg leading-relaxed text-[#3d352d]">
             <p>
@@ -180,8 +179,8 @@ export default function ReadingsPage() {
           </blockquote>
           <p className="mt-4 text-sm leading-relaxed text-[#5b5148]">
             Plain language about a real dynamic. No fog, no doom, no flattery.
-            Every reading names the pattern, the shadow range, and the next
-            clean step.
+            The written report and deep dive name the pattern, the shadow range,
+            and the next clean step.
           </p>
         </div>
 
@@ -193,22 +192,22 @@ export default function ReadingsPage() {
                 <strong className="text-[#9e3d24]">01</strong> — Pick the reading and check out securely through Stripe.
               </li>
               <li className="border-t border-[#14110d]/12 pt-3">
-                <strong className="text-[#9e3d24]">02</strong> — Confirm the birth date, the person or relationship, and your question on the intake form.
+                <strong className="text-[#9e3d24]">02</strong> — For AI voice access, use the phone number from checkout. For written options, confirm the birth details and focus on the intake form.
               </li>
               <li className="border-t border-[#14110d]/12 pt-3">
-                <strong className="text-[#9e3d24]">03</strong> — Receive the written reading by email, built for those exact details.
+                <strong className="text-[#9e3d24]">03</strong> — Call the AI guide right away, or receive the written option by email when it is ready.
               </li>
             </ol>
           </div>
           <div className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
             <h2 className="font-serif text-2xl text-[#14110d]">Straight terms</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#3d352d]">
-              Every reading is custom written for your birth details — nothing
-              is generated in bulk and resold. Refunds are simple before work
-              begins; once your reading is underway they are limited, because
-              the work cannot be restocked. If anything in a delivered reading
-              is unclear, <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">ask</Link> and
-              it gets clarified.
+              The $99 phone option is delivered by an AI voice guide. The $29 and
+              $199 options are written for your birth details. Refunds are simple
+              before written work begins or before the first paid AI call; after
+              use begins they are limited. Read the{" "}
+              <Link href="/refund-policy" className="text-[#9e3d24] underline underline-offset-4">refund policy</Link>
+              {" "}or <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">ask a question</Link>.
             </p>
           </div>
         </div>
@@ -225,9 +224,10 @@ export default function ReadingsPage() {
             person or dynamic without flattening anyone into a single card.
           </p>
           <p className="mt-4 text-base leading-relaxed text-[#5b5148]">
-            The readings are written by Cass — Eight of Diamonds in the Crown
-            Line, told so at five years old, with decades inside the symbols and
-            years reverse-engineering the structure underneath them.{" "}
+            The $29 and $199 written options are prepared by Cass — Eight of
+            Diamonds in the Crown Line, told so at five years old, with decades
+            inside the symbols and years reverse-engineering the structure
+            underneath them. The $99 phone option is delivered by an AI voice guide.{" "}
             <Link href="/about" className="text-[#9e3d24] underline underline-offset-4">
               About Card Blueprints →
             </Link>

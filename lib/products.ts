@@ -9,6 +9,8 @@ export type ReadingOffer = {
   turnaround: string;
   includes: string[];
   cta: string;
+  href?: string;
+  checkoutNote: string;
   stripePriceEnv: "STRIPE_PRICE_BASIC" | "STRIPE_PRICE_QUESTION" | "STRIPE_PRICE_DEEP";
 };
 
@@ -30,24 +32,27 @@ export const READING_OFFERS: ReadingOffer[] = [
       "Links to matching Card Blueprints pages",
     ],
     cta: "Get the $29 report",
+    checkoutNote: "Instant secure checkout · report prepared after payment",
   },
   {
     slug: "one-question-reading",
     stripePriceEnv: "STRIPE_PRICE_QUESTION",
-    name: "One-Question Personal Reading",
+    name: "AI Voice Reading + 90 Days",
     price: 99,
     priceLabel: "$99",
-    oneLine: "A focused Cardology reading around one real person, relationship, or question.",
-    bestFor: "People who already know the area they want clarity on: love, family, work, timing, money, compatibility, or a decision point.",
-    deliverable: "Personal written reading that ties one question to the birth card, ruling card, shadow range, relationship pattern, and current timing layer.",
-    turnaround: "Delivered digitally after question and birth details are confirmed.",
+    oneLine: "An AI voice guide for a complete Cardology reading, follow-up questions, and daily cards by phone.",
+    bestFor: "People who want to talk through their cards now and return with new questions over the next 90 days.",
+    deliverable: "Phone access to an AI reading guide for the full reading, relationship lookups, timing questions, and daily cards.",
+    turnaround: "Available by phone as soon as checkout is complete.",
     includes: [
-      "One focused client question about a person, relationship, or situation",
-      "Birth card and ruling-card synthesis",
-      "Current timing context when relevant",
-      "Practical reflection steps",
+      "Complete birth card and ruling-card reading",
+      "Unlimited return calls for 90 days",
+      "Relationship and compatibility lookups",
+      "Current timing and daily-card questions",
     ],
-    cta: "Book the $99 reading",
+    cta: "Unlock the AI voice guide",
+    href: "/unlock",
+    checkoutNote: "Instant secure checkout · call from the phone number used at checkout",
   },
   {
     slug: "full-deep-dive",
@@ -66,11 +71,12 @@ export const READING_OFFERS: ReadingOffer[] = [
       "Integration practices and follow-up prompts",
     ],
     cta: "Book the $199 deep dive",
+    checkoutNote: "Instant secure checkout · intake right after payment",
   },
 ];
 
 export function readingOfferHref(offer: ReadingOffer): string {
-  return `/checkout/${offer.slug}`;
+  return offer.href ?? `/checkout/${offer.slug}`;
 }
 
 export function offerBySlug(slug: string): ReadingOffer | undefined {

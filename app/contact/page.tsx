@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { SITE_URL, VIDEO_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -43,6 +43,20 @@ export default function ContactPage() {
           </p>
         </div>
       </header>
+
+      <section className="mb-10 border border-[#9e3d24]/25 bg-[#f4f0e7]/90 p-5">
+        <h2 className="font-serif text-3xl text-[#14110d]">Email Card Blueprints</h2>
+        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
+          The fastest way to reach us is email. Include the page URL or purchase
+          email when it helps us find the right answer.
+        </p>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          className="ink-button large-button mt-5 inline-flex"
+        >
+          {CONTACT_EMAIL}
+        </a>
+      </section>
 
       <section className="grid gap-4 sm:grid-cols-2">
         {[

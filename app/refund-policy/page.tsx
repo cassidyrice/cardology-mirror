@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { READINGS_PATH } from "@/lib/site";
+import { CONTACT_EMAIL, READINGS_PATH } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -12,8 +12,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 3, 2026";
-const CONTACT_EMAIL = "therealcassrice@gmail.com";
+const UPDATED = "July 12, 2026";
 
 export default function RefundPolicy() {
   return (
@@ -35,47 +34,53 @@ export default function RefundPolicy() {
 
         <section className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Every Card Blueprints reading is custom written for your specific birth
-            details and question. It cannot be restocked or resold. Our refund
-            terms reflect that reality while keeping things simple and fair.
+            Card Blueprints sells both written products and instant AI voice
+            access. The refund rule depends on which product you bought and
+            whether delivery or use has started.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Before work begins — full refund</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">AI voice access — before the first paid call</h2>
           <p className="mt-3">
-            If you contact us before Cass has started working on your reading,
-            you will receive a full refund. Simply reply to your receipt email
-            or send a note via the{" "}
+            If you have not used the paid AI voice access, ask for a full refund
+            by replying to your receipt or using the{" "}
             <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">
               contact page
             </Link>
-            . There is no time limit for this — if no intake has been received
-            and no work has started, the refund is straightforward.
+            . Include the phone number and email used at checkout.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">After work begins — limited</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">AI voice access — after use begins</h2>
           <p className="mt-3">
-            Once Cass has received your intake details and begun the reading,
-            refunds are limited because the work cannot be undone or reassigned.
-            If you are unhappy with a completed reading, contact us and we will
-            work toward a fair resolution — including a partial refund or a
-            follow-up clarification at no charge, depending on the circumstances.
+            Once a paid call has been used, refunds are limited because the service
+            has started. If the line did not work, access was not recognized, or a
+            technical problem stopped the paid service, contact us. We will review
+            the call-access record and offer restored access, a partial refund, or
+            a full refund when the service was not delivered.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Clarifications — always free</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Written products — before work begins</h2>
           <p className="mt-3">
-            If anything in a delivered reading is unclear or you feel a point
-            was missed, ask. Clarifications are always free — just reply to the
-            reading email or use the{" "}
+            If you contact us before work starts on a custom written reading,
+            you will receive a full refund. Reply to your receipt or use the{" "}
             <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">
               contact page
-            </Link>{" "}
-            and reference your purchase.
+            </Link>.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Written products — after work begins</h2>
+          <p className="mt-3">
+            Once a custom written reading is underway, refunds are limited because
+            the work cannot be reassigned. If something is unclear or a promised
+            part is missing, contact us. Clarifications are free, and a partial or
+            full refund may be offered when the product was not delivered as described.
           </p>
         </section>
 

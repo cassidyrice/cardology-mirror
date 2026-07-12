@@ -81,18 +81,20 @@ export function compareReadings(a: Person, b: Person): BondAnalysis {
   const giftsB = toLines(b.reading.archetype.description.gifts);
 
   const sharedSuit = cardA.suit === cardB.suit;
+  const sameCard = a.reading.archetype.birth_card === b.reading.archetype.birth_card;
   const opposite = OPPOSITE[cardA.suit] === cardB.suit;
 
   // 1. Suit relationship — shared language, complementary, or oppositional.
   if (sharedSuit) {
-    const stronger =
-      RANK_VALUE[cardA.rank] >= RANK_VALUE[cardB.rank] ? nameA : nameB;
+    const charge = sameCard
+      ? "Neither person carries a heavier charge just because the cards match; the pressure is shared."
+      : `${RANK_VALUE[cardA.rank] > RANK_VALUE[cardB.rank] ? nameA : nameB} tends to carry the heavier charge here.`;
     observations.push({
       kind: "shared",
       label: "Shared language",
       text: `You both run in ${cardA.suit} — ${lower(
         SUIT_DOMAIN[cardA.suit],
-      )}. ${nameA}'s ${cardA.label} and ${nameB}'s ${cardB.label} reach for the same domain, so you tend to ${SUIT_VERB[cardA.suit]} in the same key. The risk of sameness: you can amplify each other's instincts instead of balancing them. ${stronger} tends to carry the heavier charge here.`,
+      )}. ${nameA}'s ${cardA.label} and ${nameB}'s ${cardB.label} reach for the same domain, so you tend to ${SUIT_VERB[cardA.suit]} in the same key. The risk of sameness: you can amplify each other's instincts instead of balancing them. ${charge}`,
     });
   } else if (opposite) {
     observations.push({

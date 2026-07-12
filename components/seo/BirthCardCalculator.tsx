@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
+import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
 
@@ -21,7 +22,7 @@ interface Result {
 
 function compute(month: number, day: number): Result | null {
   try {
-    const [bc] = cardology.getBirthCard(month, day) as [string, number];
+    const bc = publicBirthCardCode(month, day);
     const prc = cardology.getPlanetaryRulingCard(month, day);
     const rulingCards = Array.isArray(prc) ? prc : prc ? [prc] : [];
     if (!bc || bc === "Unknown") return null;
@@ -92,6 +93,7 @@ export function BirthCardCalculator() {
 }
 
 function ResultCard({ result }: { result: Result }) {
+  const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = slugOf(result.birthCard);
 
@@ -100,17 +102,28 @@ function ResultCard({ result }: { result: Result }) {
       <p className="eyebrow mb-4 text-center text-faint">Your birth card</p>
 
       <div className="flex flex-col items-center gap-6">
-        <PlayingCard
-          code={result.birthCard}
-          size="lg"
-          active
-          glow
-          float
-          className="scale-110"
-        />
+        {isJoker ? (
+          <div className="flex h-56 w-40 items-center justify-center rounded-xl border border-gold/60 bg-gradient-to-br from-haze to-cosmos text-6xl text-gold shadow-lg">
+            ★
+          </div>
+        ) : (
+          <PlayingCard
+            code={result.birthCard}
+            size="lg"
+            active
+            glow
+            float
+            className="scale-110"
+          />
+        )}
 
         <div className="text-center">
-          <p className="font-serif text-2xl text-bone">{bc?.label}</p>
+          <p className="font-serif text-2xl text-bone">{isJoker ? "The Joker" : bc?.label}</p>
+          {isJoker && (
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-faint">
+              December 31 is the Joker position: the one birthday outside the 52 standard cards.
+            </p>
+          )}
           {result.rulingCards.length > 0 && (
             <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-faint">
               <span className="uppercase tracking-widest text-gold/60">Ruling:</span>
@@ -134,7 +147,7 @@ function ResultCard({ result }: { result: Result }) {
         )}
       </div>
 
-      <ReadingBridge variant="card" cardLabel={bc?.label} className="mt-8" />
+      <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
     </div>
   );
 }

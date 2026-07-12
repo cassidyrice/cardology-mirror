@@ -101,6 +101,7 @@ function SeoFooter() {
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
             <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
+            <li><Link href="/compatibility/" className="hover:text-[#14110d]">Compatibility Pair Library</Link></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
           </ul>
@@ -122,6 +123,7 @@ function SeoFooter() {
       <div className="mt-8 flex flex-wrap gap-4 text-xs text-[#5b5148]">
         <Link href="/privacy-policy" className="hover:text-[#14110d]">Privacy Policy</Link>
         <Link href="/refund-policy" className="hover:text-[#14110d]">Refund Policy</Link>
+        <Link href="/terms-of-service" className="hover:text-[#14110d]">Terms of Service</Link>
         <Link href="/contact" className="hover:text-[#14110d]">Contact</Link>
       </div>
       <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
