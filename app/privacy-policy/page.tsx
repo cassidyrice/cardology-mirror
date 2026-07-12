@@ -38,7 +38,7 @@ export default function PrivacyPolicy() {
             Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
             offer personal Cardology readings and free birth card tools at{" "}
             <Link href="/" className="text-[#9e3d24] underline underline-offset-4">
-              cardologypro.com
+              cardblueprints.com
             </Link>
             . Questions about this policy can be sent to{" "}
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
