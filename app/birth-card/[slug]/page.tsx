@@ -115,7 +115,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
     ]),
     faqJsonLd(faqs),
     articleJsonLd({
-      headline: `${card.label} Birth Card Meaning`,
+      headline: `${card.label} Meaning: In Readings & As a Birth Card`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
     }),
@@ -137,16 +137,32 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <span className="eyebrow text-faint">{card.suitDomain}</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">
-        {card.label} Birth Card Meaning{" "}
+        {card.label} Meaning{" "}
         {card.title && <span className="block text-lg text-gold">{card.title}</span>}
       </h1>
       <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
       </div>
-      <p className="prose-reading mt-3 text-mist">
-        The {card.label} is a Cardology birth card in the {suitWord(card)} suit — the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
-      </p>
+
+      <Section title="In a general reading">
+        <p>{generalReadingText(card)}</p>
+        <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
+        <p>
+          {loveReadingText(card)}{" "}
+          {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
+              not this Next app — plain <a>, hub href from the generated index. */}
+          <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
+            See {card.label} compatibility with all 52 cards →
+          </a>
+        </p>
+      </Section>
+
+      <Section title={`What does the ${card.label} mean as your birth card?`}>
+        <p>
+          A drawn card reads the moment; the birth card is the standing version — the {card.label} as a Cardology birth card in the {suitWord(card)} suit is the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
+        </p>
+      </Section>
 
       <Section title="At a glance">
         <dl className="grid gap-3 text-sm sm:grid-cols-2">
@@ -162,7 +178,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <Section title="Quick meaning">
         <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
         <p>
-          In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card).toLowerCase()} has to offer: {card.sweetSpot}
+          In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card)} has to offer: {card.sweetSpot}
         </p>
       </Section>
 
@@ -501,7 +517,10 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 
 // Fixed life-path connections rendered as links into the Worker-served
 // /compatibility/ pair library (1,378 pages + 52 per-card hubs, edge-rendered
-// by cardology-unlock). Data comes from lib/compat-pairs.json, generated from
+// by cardology-unlock). Pair selection is deterministic per card: its six
+// planetary life-path cards (Venus/Moon/Mars/Jupiter/Saturn/Mercury) plus the
+// two karma cards (Lifetime Gift/Challenge) plus its mirror pair — 7-9 links,
+// no editorial picks. Data comes from lib/compat-pairs.json, generated from
 // the Worker's own report_data.json, so every href is the canonical pair URL
 // (wrong-order slugs 301). Plain <a> instead of next/link: these routes are
 // not part of this Next app.
@@ -642,9 +661,36 @@ function videoJsonLd(video: CardologyVideo) {
   };
 }
 
+// First sentence answers the general "{card} meaning" query; the birth-card
+// layer is named second — mirroring the page's new section order.
 function cardQuickAnswer(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
-  return `The ${card.label} birth card combines ${card.suitDomain.toLowerCase()} with ${rankTheme(card.rank).toLowerCase()}. In balance, you're ${lensClause(card.sweetSpot)} In shadow, you're ${lensClause(card.over)} In this deterministic system, the ${card.label} appears for these birth dates: ${dateText}.`;
+  return `The ${card.label} means ${card.suitDomain.toLowerCase().replace(/\s*&\s*/g, " and ")} expressed through ${rankTheme(card.rank).toLowerCase()}. Drawn in a reading, its balanced message is: you're ${lensClause(card.sweetSpot)} In shadow, you're ${lensClause(card.over)} In Cardology it is also the birth card of people born on ${dateText}.`;
+}
+
+// --- Drawn-card copy (the general "{card} meaning" intent) ---
+// Both helpers compose ONLY existing data-layer strings — the card's title,
+// suit domain, rank theme, and three-lens meanings — reframed as drawn-card
+// language. No card meaning is authored here (same discipline as
+// lib/spreads.ts, which carries verbatim copies of this file's vocabulary).
+
+function generalReadingText(card: CardSeo): string {
+  const epithet = card.title ? ` — ${card.title} —` : "";
+  return (
+    `Drawn in a general reading, the ${card.label}${epithet} turns the question toward ${suitDomainPlain(card)}, with the tone of ${rankTheme(card.rank).toLowerCase()}. ` +
+    `At its best, the draw describes a moment where you're ${lensClause(card.sweetSpot)} ` +
+    `If the reading feels strained, check the card's over-expression first: you're ${lensClause(card.over)}`
+  );
+}
+
+function loveReadingText(card: CardSeo): string {
+  return `In a love reading, the ${card.label} speaks to ${relationshipTheme(card)}.`;
+}
+
+// The card's /compatibility/ hub on the Worker-served surface; falls back to
+// the pair-library index if the generated entry is ever missing.
+function compatHubHref(card: CardSeo): string {
+  return compatForCard(card.slug)?.hub ?? "/compatibility/";
 }
 
 // The three-lens strings are complete second-person sentences ("You're …").
@@ -662,6 +708,10 @@ function dateQuickAnswer(date: BirthdateSeo) {
 function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
   return [
+    // The first two mirror the visible "In a general reading" / "In love"
+    // sections — same helper output, so page copy and FAQ never drift.
+    { q: `What does the ${card.label} mean in a reading?`, a: generalReadingText(card) },
+    { q: `What does the ${card.label} mean in love?`, a: `${loveReadingText(card)} For two specific people, compatibility depends on both birth cards — the ${card.label} compatibility hub compares it with all 52 cards.` },
     { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern connected with ${card.suitDomain.toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },

@@ -52,7 +52,18 @@ Generated first short (3♦ July 12) → judged (2 lenses) → improved the gene
 
 - **Beginner cluster BUILT + judged 9/10 + 9/10 CLEAR:** /how-to-read-playing-cards, /playing-card-spreads hub + three-card/love/yes-or-no spokes, lib/spreads.ts (helpers character-identical to birth-card originals). All 8 worked-example cards verified against data — zero invented meanings; mustCard() fails builds loudly if data vanishes. Clean intent division vs cartomancy-vs-tarot. Judge's two polish nits applied inline (how-to summary rewritten around "suit = arena, rank = move"; three-card summary ≤50 words). Both builds green. Ships with next deploy.
 
-## Round 6 directives (was round 5)
+## Round 6 — COMPLETE (2026-07-12, ~15:55)
+
+- **52 card pages upgraded for general "{card} meaning" intent, judged 8/10 / regression LOW / CLEAR.** Widened titles ("Queen of Hearts Meaning: In Readings & As a Birth Card"), general-first quick answer, "In a general reading" + "In love" sections (template-composed from data-layer strings only; judge's automated sweep of all 52 rendered pages found zero splice failures), FAQ JSON-LD extended from the same array. Birth-card ranking assets preserved as a superset (dedicated H2 + dates intact). Compat-block link equity verified pre-existing (planetary/karma/mirror rule, 8-9 links/page) — documented, not duplicated; in-love hub link is new. Judge polish applied: " & "→" and " in the quotable lead, suit capitalization fix (52-page typo-look). Build green.
+- **Backlog now drained** except: funnel judge (needs deploy), blog trio (tattoo/love — daily-blog Action's definitional queue may cover organically), Year Pass/Gift (deferred to g2 triggers).
+
+## Standing state (loop cadence drops to standby)
+
+- **Awaiting user:** DEPLOY (`bun run pages:build && bun run pages:deploy` — ships card-of-the-day + 5 beginner pages + 52 upgraded card pages), shorts uploads (8 ready), Pinterest auth (52 pins), Trash'd parity CLI decision.
+- **On next deploy:** curl-verify card-of-the-day + one upgraded card page title, then run the FUNNEL judge (the one lens never run).
+- **Daily duty:** the shorts queue is rendered through 7/19; regenerate day N+7 as dates advance (or wire a LaunchAgent — user call).
+
+## Round 7+ directives (was round 5)
 
 1. STILL BLOCKED ON HUMAN: production deploy (`bun run pages:build && bun run pages:deploy`). After it: curl-verify `/feed.xml` 200-xml, `/cartomancy-vs-tarot` new H2s, `/llms.txt` wording, new pins at `/pins/ace-of-spades.png`.
 2. UPLOADS = user_action (manual per README): 8 shorts ready; titles/captions in queue JSONs. Pinterest bulk upload of the 52 pins also pending user auth.

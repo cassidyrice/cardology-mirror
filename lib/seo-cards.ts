@@ -143,10 +143,14 @@ export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[
 }
 
 export function cardMeta(card: CardSeo): { title: string; description: string } {
-  const title = `${card.label} Birth Card Meaning`;
+  // Widened toward the general "{card} meaning" query (searchers ask
+  // "queen of hearts meaning" far more than the birth-card phrasing):
+  // readings first, birth card second. The "| Card Blueprints" brand suffix
+  // comes from the root layout's title template — don't add it here.
+  const title = `${card.label} Meaning: In Readings & As a Birth Card`;
   const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
-    `${card.label} birth card meaning in Cardology: personality, strengths, shadow, relationships, work, and birth dates${dates ? ` including ${dates}` : ""}.`,
+    `${card.label} meaning in a reading and as a Cardology birth card: the drawn-card message, love, shadow, compatibility, and birth dates${dates ? ` like ${dates}` : ""}.`,
     158,
   );
   return { title, description };
