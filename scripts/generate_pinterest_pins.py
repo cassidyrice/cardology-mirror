@@ -36,6 +36,14 @@ RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 RANK_NAME = {"A": "Ace", "J": "Jack", "Q": "Queen", "K": "King"}
 SUITS = [("hearts", "♥"), ("clubs", "♣"), ("diamonds", "♦"), ("spades", "♠")]
 
+# one-line benefit/promise per suit -- the reason to click through
+BENEFIT = {
+    "hearts": "Love, loyalty & who you attract — decoded",
+    "clubs": "Your mind, words & big ideas — decoded",
+    "diamonds": "Money, values & what you build — decoded",
+    "spades": "Your work, drive & reinvention — decoded",
+}
+
 GLYPH_CANDIDATES = [
     os.environ.get("GLYPH_FONT", ""),
     "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
@@ -102,11 +110,17 @@ def pin_image(rank, suit, glyph, essence):
     d.text((px + pw / 2, py + ph - 68), "BIRTH CARD", font=font(MONO, 24),
            fill=GOLD, anchor="mm")
 
-    # card name, then essence line
+    # card name, then essence line (Bone + hairline stroke: holds contrast
+    # when Pinterest downscales the pin to ~236px feed width)
     d.text((W / 2, 900), label, font=fit(SERIF, 104, label, d, W - 180),
            fill=BONE, anchor="mm")
-    d.text((W / 2, 1010), essence, font=fit(SERIF, 50, essence, d, W - 180),
-           fill=MIST, anchor="mm")
+    d.text((W / 2, 1005), essence, font=fit(SERIF, 54, essence, d, W - 180),
+           fill=BONE, anchor="mm", stroke_width=1, stroke_fill=BONE)
+
+    # suit benefit line -- what clicking actually gets you
+    benefit = BENEFIT[suit]
+    d.text((W / 2, 1120), benefit, font=fit(SERIF, 52, benefit, d, W - 160),
+           fill=GOLD, anchor="mm")
 
     # footer
     d.text((W / 2, 1290), "A MIRROR, NOT A FORECAST", font=font(MONO, 24),

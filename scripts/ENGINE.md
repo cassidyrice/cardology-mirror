@@ -28,13 +28,28 @@ Generated first short (3♦ July 12) → judged (2 lenses) → improved the gene
 - **Validator finding:** `validate-engine.mjs` is a JS↔Python parity harness whose reference CLI (`/Users/clr/cardology-llm/engine/cardology_cli.py`) is MISSING — found in `~/.Trash/cardology-cli/`. 0/84 is vacuous (env, pre-existing). `validate-public-truth.ts` PASSes; build green. USER_ACTION: restore or re-point the reference CLI (env `CARDOLOGY_CLI`) if parity checking should live.
 - **Deploy: BLOCKED, awaiting the human.** Push-to-main = production deploy; the permission layer (correctly) refused to let the loop deploy on its own authority. The full stack (peer's 3 g4 commits + ENGINE.md + round-1 improvements) is committed locally, build-verified green, and deploy-ready. USER_ACTION: `git -C ~/cardology-mirror push origin main` when ready to ship, or tell the loop explicitly to push. Round-2 directive 1 (live verification) runs after that push.
 
-## Next-iteration directives (round 2)
+## Round 2 — COMPLETE (2026-07-12, ~13:00)
 
-1. Curl-verify live after deploy: `/feed.xml`, `/cartomancy-vs-tarot` (check new H2s render), `/llms.txt`, sitemap, one card page w/ video embed.
-2. **Re-judge the NEW short** (hook lens, round 2). Upload hold stays until hook ≥6/10. If it passes: generate the next 3 queue days and mark uploads as a user_action (manual per README).
-3. Apply the PIN fixes the hook judge flagged but round 1 didn't mandate: benefit/promise text overlay on pins (not just card name + epithet), fix gray-epithet contrast at feed size. Then regenerate a 3-pin sample and re-judge.
-4. Work the Remainder backlog top-down (og:image shallow-merge bug first — verify live now that deploy happened, then fix).
-5. Keep the one-writer coordination check at every wake.
+- **Short re-judge: hook 7/10, retention 6/10** (from 3/2). Verdict HOLD on one defect: pin art's baked domain footer ghosts through the 55% scrim / duplicates the watermark. Round-3 fixer dispatched (full-opacity footer bar OR crop baked strip; + visual beat at the 11.5s shadow turn; + caption-drift fix if trivial).
+- **Pin template: 8/10, CLEAR** (from 5/10) — per-suit gold benefit lines + Bone stroked epithet. **All 52 pins regenerated** in `public/pins/` (uncommitted until round-3 short lands; previews in `scripts/pins/preview/`).
+- **og:image backlog item CLOSED** — peer had already fixed it (`app/blog/[slug]/page.tsx:43` has explicit images).
+- **DEPLOY MECHANICS DISCOVERED (critical):** push-to-main does NOT deploy. Real deploy = `bun run pages:build && bun run pages:deploy` (next-on-pages → wrangler pages deploy, project `cardology-mirror`). The GitHub Actions are content generators only. Production is STILL the pre-g4 build; feed.xml self-301s and all new pages 404/stale until deployed. **The permission layer denied the loop deploy authority twice (push, then pages:deploy) — deploying is a HUMAN action, full stop.**
+- **USER_ACTION (the big one):** `cd ~/cardology-mirror && bun run pages:build && bun run pages:deploy` — ships the entire g4 wave + round 1-2 improvements. Everything is committed/pushed on main and build-verified.
+
+## Round 3 — COMPLETE (2026-07-12, ~13:15)
+
+- **Upload HOLD LIFTED.** Render fixer: (1) footer collision killed via feathered+opaque bottom band (crop alternative test-rendered and rejected — it clipped pin taglines); (2) shadow-turn visual beat (eq red-shift grade) with window DERIVED from caption timing (tracks any day's VO); (3) caption drift fixed via silencedetect — captions spread over speech time only, anchored to VO onset, absorb TTS pauses. Frame-verified at t=3.1/4/12/25/29.5.
+- **8 upload-ready shorts** rendered with the final template (2026-07-12 → 07-19, ~29-32s each, in `content/shorts/out/`, titles+captions in `content/shorts/queue/*.json`). The 7/16-19 old-template renders were regenerated so nothing kill-flagged remains in out/.
+- 52 pins live in `public/pins/` on the 8/10 template.
+
+## Round 4 directives
+
+1. STILL BLOCKED ON HUMAN: production deploy (`bun run pages:build && bun run pages:deploy`). After it: curl-verify `/feed.xml` 200-xml, `/cartomancy-vs-tarot` new H2s, `/llms.txt` wording, new pins at `/pins/ace-of-spades.png`.
+2. UPLOADS = user_action (manual per README): 8 shorts ready; titles/captions in queue JSONs. Pinterest bulk upload of the 52 pins also pending user auth.
+3. Build `/card-of-the-day` (ground-truth gap #1; peer did NOT build it — not in any commit stat). Answer-first, date-seeded daily draw, CTA → calculator + teaser line. Judge with citability lens before committing.
+4. Then: /how-to-read-playing-cards + spreads hub/spokes; then general-meaning sections on 52 card pages; then orphan link equity (compatibility blocks).
+5. The FUNNEL judge lens has never run — run it once /card-of-the-day + the deploy exist (it needs live CTAs to trace).
+6. One-writer coordination check every wake.
 
 ## Coordination rule
 
@@ -45,3 +60,5 @@ Two Claude sessions have driven these repos in parallel today. Before ANY mutati
 | Round | Hook (shorts) | Hook (pins) | Citability | Funnel | Notes |
 |---|---|---|---|---|---|
 | 1 (2026-07-12) | 3/10 hook · 2/10 retention → fixes applied | 5/10 (fixes pending) | 8/10 page · 9/10 llms.txt → fixes applied | not judged yet | old-template short KILLED for upload; new template awaits round-2 judge |
+| 2 (2026-07-12) | 7/10 hook · 6/10 retention → HOLD (footer collision) | 8/10 → CLEAR, 52 regenerated | — | — | pin template shipped; short's sole blocker mapped |
+| 3 (2026-07-12) | HOLD LIFTED — footer fix + shadow beat + caption sync, frame-verified | — | — | never run (needs live site) | 8 upload-ready shorts (7/12–7/19) |

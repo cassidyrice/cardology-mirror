@@ -5,8 +5,14 @@
 #   0.0-2.5s  "BORN ON <DATE>?" (~120px Antique Gold) over blurred, dimmed card art
 #   3.0s      sharp full-frame pin art reveals, Ken Burns 1.00 -> 1.12
 #   VO-synced burned-in phrase captions (Bone ~64px, centered in the lower third),
-#   timed by word-count proportion of the measured VO duration
-#   cardblueprints.com watermark; audio = VO + 0.8s tail.
+#   timed by word-count proportion of VO *speech* time (silencedetect anchors the
+#   first caption to the first spoken word, absorbs long TTS pauses, and ends the
+#   last caption when speech ends)
+#   shadow-turn beat: the art snaps darker/red-shifted across the "The shadow
+#   side?" phrases and snaps back when "Your gift?" lands
+#   opaque bottom band (y>=1728) hides the CARDBLUEPRINTS.COM footer baked into
+#   the pin art (it drifts through y=1740-1920 under the zoom) so the drawtext
+#   watermark is the single domain line; audio = VO + 0.8s tail.
 #
 # Usage: render.sh <meta.json> <vo_audio> <out.mp4>
 #
@@ -103,10 +109,10 @@ read -r IW IH <<< "$("$FFPROBE" -v error -select_streams v:0 -show_entries strea
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-CAPTION_COUNT="$(python3 - "$META" "$TMP" "$FONT" "$AUDIO_DUR" "$FPS" "$FRAMES" "$IW" "$IH" <<'PYEOF'
-import json, os, sys
+CAPTION_COUNT="$(python3 - "$META" "$TMP" "$FONT" "$AUDIO_DUR" "$FPS" "$FRAMES" "$IW" "$IH" "$VO" "$FFMPEG" <<'PYEOF'
+import json, os, re, subprocess, sys
 
-meta_path, tmp, font, aud_s, fps_s, frames_s, iw_s, ih_s = sys.argv[1:9]
+meta_path, tmp, font, aud_s, fps_s, frames_s, iw_s, ih_s, vo_path, ffmpeg = sys.argv[1:11]
 meta = json.load(open(meta_path))
 aud = float(aud_s)
 fps, frames = int(fps_s), int(frames_s)
@@ -133,7 +139,13 @@ date_draw = (
     f":line_spacing=24:x=(w-text_w)/2:y=(h-text_h)*0.40:enable='lt(t,2.5)'"
 )
 
-# --- VO-synced captions: word-count proportions of the measured VO duration ---
+# --- VO-synced captions: word-count proportions of VO *speech* time -----------
+# Spreading word proportions over the whole file drifted captions ~1s behind the
+# VO by mid-video (leading silence, long TTS pauses, trailing silence all got
+# allocated to words). silencedetect gives the speech segments; words are spread
+# over speech time only, then mapped back to wall-clock time, so the first
+# caption lands on the first spoken word, long pauses are absorbed at segment
+# boundaries, and the last caption ends when speech ends (no dead-air caption).
 phrases = meta.get("vo_phrases") or []
 if not phrases:
     sys.exit("error: vo_phrases missing/empty in meta json (regenerate with daily-script.ts)")
@@ -141,14 +153,54 @@ total = sum(int(p.get("words") or 0) for p in phrases)
 if total <= 0:
     sys.exit("error: vo_phrases word counts are all zero")
 
+sil = []
+try:
+    r = subprocess.run(
+        [ffmpeg, "-hide_banner", "-nostats", "-i", vo_path,
+         "-af", "silencedetect=noise=-35dB:d=0.3", "-f", "null", "-"],
+        capture_output=True, text=True, timeout=120)
+    s_starts = [float(x) for x in re.findall(r"silence_start:\s*([0-9.]+)", r.stderr)]
+    s_ends = [float(x) for x in re.findall(r"silence_end:\s*([0-9.]+)", r.stderr)]
+    for i, s in enumerate(s_starts):
+        e = s_ends[i] if i < len(s_ends) else aud
+        if e > s:
+            sil.append((s, min(e, aud)))
+except Exception:
+    sil = []  # fall back to whole-file proportions below
+
+segs, pos = [], 0.0
+for s, e in sil:
+    if s > pos:
+        segs.append((pos, s))
+    pos = max(pos, e)
+if pos < aud:
+    segs.append((pos, aud))
+if not segs:
+    segs = [(0.0, aud)]
+speech_total = sum(e - s for s, e in segs)
+
+def wall(cs):
+    # cumulative speech-time -> wall-clock time
+    for s, e in segs:
+        if cs <= (e - s) + 1e-9:
+            return s + cs
+        cs -= e - s
+    return segs[-1][1]
+
 caps = []
 cum = 0
+shadow_start = shadow_end = None
 for i, p in enumerate(phrases):
     text = (p.get("text") or "").strip()
     words = int(p.get("words") or 0)
-    start = aud * cum / total
+    start = wall(speech_total * cum / total)
     cum += words
-    end = aud if i == len(phrases) - 1 else aud * cum / total
+    end = wall(speech_total * cum / total)
+    low = text.lower()
+    if shadow_start is None and low.startswith("the shadow side"):
+        shadow_start = start
+    elif shadow_start is not None and shadow_end is None and low.startswith("your gift"):
+        shadow_end = start
     cap_txt = os.path.join(tmp, f"cap{i:02d}.txt")
     open(cap_txt, "w").write(text)
     fs = max(40, min(64, int(1000 / (0.52 * max(len(text), 1)))))  # ~64px, shrink to fit width
@@ -159,11 +211,29 @@ for i, p in enumerate(phrases):
         f":enable='between(t,{start:.3f},{end:.3f})'"
     )
 
-# Bottom scrim dims the baked-in pin footer (which drifts with the zoom) so the
-# fixed drawtext watermark reads as the single crisp domain line. NOTE: keep this
+# --- shadow-turn beat: snap the art darker + red-shifted for the shadow run ---
+# Starts on the caption that opens with "The shadow side" and snaps back the
+# moment the "Your gift?" caption lands (fallback: 5.5s window). Applied to the
+# composited art before scrim/captions/watermark, so text stays Bone and the
+# domain line stays gold.
+shadow_fx = ""
+if shadow_start is not None:
+    if shadow_end is None:
+        shadow_end = min(shadow_start + 5.5, aud)
+    shadow_fx = (
+        f"eq=gamma_r=1.18:gamma_g=0.84:gamma_b=0.76:brightness=-0.05:contrast=1.06"
+        f":saturation=1.15:enable='between(t,{shadow_start:.3f},{shadow_end:.3f})',"
+    )
+
+# The pin art bakes its own CARDBLUEPRINTS.COM footer into the bottom strip; it
+# drifts with the zoom but stays inside y=1740-1920. A 55% scrim let it ghost
+# through and stack a duplicate domain line against the drawtext watermark, so
+# the band is now opaque (with a soft 40px ramp above the edge): only the fixed
+# drawtext watermark reads as the single crisp domain line. NOTE: keep this
 # heredoc free of unbalanced single quotes — it lives inside a bash $( ).
 wm = (
-    f"drawbox=x=0:y=1740:w={W}:h={H-1740}:color=black@0.55:t=fill,"
+    f"drawbox=x=0:y=1688:w={W}:h=40:color=black@0.35:t=fill,"
+    f"drawbox=x=0:y=1728:w={W}:h={H-1728}:color=black@1.0:t=fill,"
     f"drawtext=fontfile='{font}':text='cardblueprints.com':fontcolor={GOLD}:fontsize=40"
     f":x=(w-text_w)/2:y=1804"
 )
@@ -177,8 +247,9 @@ filter_complex = ";".join([
     # Blurred art until the 3.0s reveal, then the sharp card.
     "[2:v][cb]overlay=enable='lt(t,3)'[b1]",
     "[b1][cs]overlay=enable='gte(t,3)'[b2]",
-    # Dark scrim under the date card, then date, captions, watermark.
-    "[b2]drawbox=color=black@0.55:t=fill:enable='lt(t,2.5)',"
+    # Shadow-turn grade, dark scrim under the date card, then date, captions,
+    # watermark.
+    "[b2]" + shadow_fx + "drawbox=color=black@0.55:t=fill:enable='lt(t,2.5)',"
     + date_draw + "," + ",".join(caps) + "," + wm + "[v]",
 ])
 open(os.path.join(tmp, "filter.txt"), "w").write(filter_complex)

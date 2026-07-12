@@ -84,7 +84,13 @@ export default function RootLayout({
           price: offer.price,
           priceCurrency: "USD",
           url: `${SITE_URL}${readingOfferHref(offer)}`,
-          itemOffered: { "@type": "Product", name: offer.name },
+          // These are reading services. Marking each one as a Product here
+          // made Google expect a second nested offer, review, or rating.
+          itemOffered: {
+            "@type": "Service",
+            name: offer.name,
+            provider: { "@id": `${SITE_URL}/#organization` },
+          },
         })),
         sameAs: [VIDEO_URL],
       },

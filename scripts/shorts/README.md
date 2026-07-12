@@ -54,9 +54,16 @@ Outputs (repo-relative):
    - **Visual:** vertical pin art `public/pins/<card_slug>.png` (1000x1500) cover-fills
      the 9:16 frame, Ken Burns 1.00→1.12. No card-name overlay (the pin carries it).
    - **Captions:** VO phrase chunks burned in (Bone ~64px, centered in the lower
-     third), each windowed by word-count proportion of the ffprobe-measured VO
-     duration via drawtext `enable='between(t,start,end)'`.
-   - `cardblueprints.com` watermark (Antique Gold) stays at the bottom; VO + 0.8 s tail.
+     third), each windowed by word-count proportion of VO **speech** time via
+     drawtext `enable='between(t,start,end)'` — ffmpeg `silencedetect` anchors the
+     first caption to the first spoken word, absorbs long TTS pauses, and ends the
+     last caption when speech ends (falls back to whole-file proportions if
+     detection fails).
+   - **Shadow-turn beat:** the art snaps darker + red-shifted (`eq` grade) from the
+     caption that opens "The shadow side" until the "Your gift?" caption lands.
+   - `cardblueprints.com` watermark (Antique Gold) sits on an opaque bottom band
+     (y≥1728, soft ramp above) that hides the domain footer baked into the pin art,
+     so exactly one domain line is on screen; VO + 0.8 s tail.
    Auto-selects `/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg` (the slim PATH ffmpeg lacks
    `drawtext`); override with `FFMPEG`/`FFPROBE` env vars. Writes the constructed
    filtergraph to `<out>.filter.log` for inspection.
