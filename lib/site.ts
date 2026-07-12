@@ -11,7 +11,7 @@ export const APP_URL = (
   process.env.NEXT_PUBLIC_APP_URL || SITE_URL
 ).replace(/\/$/, "");
 
-export const SITE_NAME = "Cardology Pro";
+export const SITE_NAME = "Card Blueprints";
 
 export const VIDEO_URL = (
   process.env.NEXT_PUBLIC_VIDEO_URL || "https://videos.cardologypro.com"
