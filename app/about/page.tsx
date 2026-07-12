@@ -26,6 +26,7 @@ export default function AboutPage() {
         "A 52-card birth-date system used by Card Blueprints to read people, relationships, timing, and recurring patterns.",
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    author: { "@type": "Person", name: "Cassidy Rice", jobTitle: "Founder", url: `${SITE_URL}/about` },
   };
 
   return (
@@ -62,6 +63,23 @@ export default function AboutPage() {
           One card is not the whole person. It is the repeating shape: how someone
           loves, thinks, values, works, avoids, reaches, gives, withholds, or takes
           command when pressure rises.
+        </p>
+      </section>
+
+      <section className="mt-12 max-w-3xl space-y-5">
+        <h2 className="font-serif text-3xl text-[#14110d]">Who runs Card Blueprints</h2>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Card Blueprints is built and maintained by <strong>Cassidy Rice</strong>, its
+          founder. Cassidy built the deterministic calculation engine behind every page
+          on this site — the same birthday always produces the same card, the same
+          spread, and the same timing math, so every reading can be checked by hand.
+          The interpretation layer is curated from the published cardology tradition
+          and labeled as interpretation, not fact.
+        </p>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Corrections and questions are welcome through the{" "}
+          <Link href="/contact" className="underline">contact page</Link>. Cardology is
+          a lens for self-awareness — it describes patterns, not fate.
         </p>
       </section>
 

@@ -14,7 +14,7 @@ export const APP_URL = (
 export const SITE_NAME = "Card Blueprints";
 
 export const VIDEO_URL = (
-  process.env.NEXT_PUBLIC_VIDEO_URL || "https://videos.cardologypro.com"
+  process.env.NEXT_PUBLIC_VIDEO_URL || "https://www.youtube.com/@cardologypro"
 ).replace(/\/$/, "");
 
 export const VIDEO_PATH = "/videos";
