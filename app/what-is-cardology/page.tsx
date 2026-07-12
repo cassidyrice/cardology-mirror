@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: "What Is Cardology? The 52-Card System, Explained",
     description: "A plain-English explanation of the deterministic 52-card system behind your birth card.",
     url: "/what-is-cardology",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

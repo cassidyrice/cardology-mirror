@@ -27,9 +27,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
-    types: {
-      "application/rss+xml": [{ url: "/feed.xml", title: `${SITE_NAME} — Cardology Blog` }],
-    },
   },
   openGraph: {
     type: "website",
@@ -116,6 +113,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-ink text-bone antialiased">
+        {/* Literal tag instead of metadata `alternates.types`: React hoists
+            <link> into <head>, so the feed stays discoverable on every page.
+            Pages that set their own `alternates` (canonical) shallow-replace
+            a layout-level alternates.types, which silently dropped this. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={`${SITE_NAME} — Cardology Blog`}
+          href={`${SITE_URL}/feed.xml`}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

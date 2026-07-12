@@ -9,7 +9,8 @@
 - The site frames Cardology as a pattern language for people, relationships, and timing — not prediction, fate, or medical/legal/financial advice.
 
 ## The Product: AI Phone Readings
-- [Cardology Readings](https://cardblueprints.com/readings): The reading line. Core offer is the $99 AI voice reading — phone access to an AI reading guide for a complete birth-card reading, relationship lookups, timing questions, and daily cards, with unlimited return calls for 90 days. A $29 written birth card report and a $199 human-written deep dive round out the ladder; current tiers and pricing live on this page.
+- The reading line: +1 (949) 368-2652 — call and the AI reader answers directly. Calls open with a free teaser reading; the complete reading unlocks with the Deck Pass.
+- [Cardology Readings](https://cardblueprints.com/readings): Core offer is the Deck Pass — $99 for a complete AI voice reading plus unlimited return calls for 90 days: birth-card readings, relationship lookups, timing questions, and daily cards. A $29 written birth card report and a $199 human-written deep dive round out the ladder; current tiers and pricing live on this page.
 - [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms for written readings and AI voice access.
 
 ## Free Tools
@@ -20,8 +21,8 @@
 ## Card Meanings and Birthday Pages
 - [All 52 Birth Cards](https://cardblueprints.com/birth-card): Directory of every card meaning page.
 - Card meaning pages: `https://cardblueprints.com/birth-card/[rank]-of-[suit]` — e.g. [ace-of-hearts](https://cardblueprints.com/birth-card/ace-of-hearts), [4-of-diamonds](https://cardblueprints.com/birth-card/4-of-diamonds), [king-of-clubs](https://cardblueprints.com/birth-card/king-of-clubs). 52 pages.
-- Birthday pages: `https://cardblueprints.com/born-on/[month]-[day]` — e.g. [january-1](https://cardblueprints.com/born-on/january-1), [june-17](https://cardblueprints.com/born-on/june-17). 366 pages, one per calendar date; hub at [/born-on/](https://cardblueprints.com/born-on/).
-- Compatibility pair pages: `https://cardblueprints.com/compatibility/[card]-and-[card]` — e.g. [ace-of-hearts-and-king-of-spades](https://cardblueprints.com/compatibility/ace-of-hearts-and-king-of-spades). Every card pairing; hub at [/compatibility/](https://cardblueprints.com/compatibility/).
+- Birthday pages: `https://cardblueprints.com/born-on/[month]-[day]` — e.g. [january-1](https://cardblueprints.com/born-on/january-1), [june-17](https://cardblueprints.com/born-on/june-17). 366 pages, one per calendar date including February 29; hub at [/born-on/](https://cardblueprints.com/born-on/).
+- Compatibility pair pages: `https://cardblueprints.com/compatibility/[card]-and-[card]` — e.g. [ace-of-hearts-and-king-of-spades](https://cardblueprints.com/compatibility/ace-of-hearts-and-king-of-spades). 1,378 pages, one for every pairing of the 52 cards (same-card pairs included), plus a hub per card at `https://cardblueprints.com/compatibility/[card-slug]` and the index at [/compatibility/](https://cardblueprints.com/compatibility/).
 
 ## Learn the System
 - [What Is Cardology?](https://cardblueprints.com/what-is-cardology): Plain-English definition and claim boundary.
@@ -43,7 +44,7 @@
 - [About](https://cardblueprints.com/about) · [Methodology](https://cardblueprints.com/methodology) · [Editorial Policy](https://cardblueprints.com/editorial-policy) · [Contact](https://cardblueprints.com/contact)
 
 ## Discovery
-- Sitemaps: `https://cardblueprints.com/sitemap.xml`, `https://cardblueprints.com/sitemap-birth-cards.xml`, `https://cardblueprints.com/sitemap-cardology.xml` (birthday pages), and `https://cardblueprints.com/sitemap-compatibility.xml` (compatibility pairs)
+- Sitemaps: `https://cardblueprints.com/sitemap.xml` (all site pages, including the 52 card meanings), `https://cardblueprints.com/sitemap-cardology.xml` (birthday pages), and `https://cardblueprints.com/sitemap-compatibility.xml` (compatibility pairs)
 - Blog RSS feed: `https://cardblueprints.com/feed.xml`
 - [Full LLM Context](https://cardblueprints.com/llms-full.txt): Expanded structural context for AI agents.
 

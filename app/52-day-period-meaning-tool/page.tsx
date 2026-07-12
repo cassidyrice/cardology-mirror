@@ -19,11 +19,13 @@ export const metadata: Metadata = {
     description,
     url: canonicalPath,
     type: "website",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
+    images: ["/og/default.png"],
   },
 };
 

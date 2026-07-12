@@ -9,7 +9,6 @@ import { statSync } from "node:fs";
 import { join } from "node:path";
 
 import {
-  BLOG_UPDATED,
   allBlogPosts,
   blogPillarBySlug,
   blogPostPath,
@@ -78,13 +77,18 @@ function feedImageFor(post: BlogPost): FeedImage {
 
 export function GET(): Response {
   const posts = [...allBlogPosts()].sort((a, b) =>
-    (b.datePublished || BLOG_UPDATED).localeCompare(a.datePublished || BLOG_UPDATED),
+    b.datePublished.localeCompare(a.datePublished),
   );
 
-  const lastBuild = posts.reduce((max, post) => {
-    const date = post.dateModified || post.datePublished || BLOG_UPDATED;
-    return date > max ? date : max;
-  }, BLOG_UPDATED);
+  // Newest real per-post date — never a site-wide constant, so the feed's
+  // lastBuildDate only moves when a post actually changes.
+  const lastBuild = posts.reduce(
+    (max, post) => {
+      const date = post.dateModified || post.datePublished;
+      return date > max ? date : max;
+    },
+    posts[0]?.datePublished ?? "1970-01-01",
+  );
 
   const items = posts
     .map((post) => {
@@ -97,7 +101,7 @@ export function GET(): Response {
 <link>${escapeXml(url)}</link>
 <guid isPermaLink="true">${escapeXml(url)}</guid>
 <description>${escapeXml(post.description)}</description>
-<pubDate>${escapeXml(rssDate(post.datePublished || BLOG_UPDATED))}</pubDate>${category}
+<pubDate>${escapeXml(rssDate(post.datePublished))}</pubDate>${category}
 <enclosure url="${escapeXml(image.url)}" length="${image.length}" type="image/png"/>
 <media:content url="${escapeXml(image.url)}" medium="image" type="image/png" width="${image.width}" height="${image.height}"/>
 </item>`;

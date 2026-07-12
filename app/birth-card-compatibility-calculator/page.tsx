@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     title: "Birth Card Compatibility Calculator",
     description: "Enter two birthdays to compare birth cards, Life Path constitutions, shared cards, and relationship cross-references.",
     url: "/birth-card-compatibility-calculator",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

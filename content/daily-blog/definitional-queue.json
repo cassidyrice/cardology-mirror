@@ -6,15 +6,15 @@
       "title": "Why the Deck Has 52 Cards and a Joker",
       "seoTitle": "Why a Deck Has 52 Cards and a Joker",
       "description": "Why the standard playing deck has 52 cards, four suits, thirteen ranks, and one Joker, and what that structure means in Cardology.",
-      "dek": "The deck is a calendar first: 52 cards for 52 weeks, four suits for four seasons, thirteen ranks for thirteen lunar cycles.",
+      "dek": "The deck is a calendar first: 52 cards for 52 weeks, four suits for four seasons, thirteen ranks for thirteen weeks of a season.",
       "readTime": "5 min read",
       "keywords": ["why 52 cards in a deck", "deck of cards calendar", "joker card structure", "playing card symbolism"],
-      "answer": "The standard deck mirrors the calendar: 52 cards for the 52 weeks of the year, four suits for the four seasons, and thirteen ranks in each suit for the thirteen lunar cycles. The Joker stands outside the count as the one card without a fixed value. Cardology reads that structure as a birthday map rather than a game.",
+      "answer": "The standard deck mirrors the calendar: 52 cards for the 52 weeks of the year, four suits for the four seasons, and thirteen ranks in each suit for the thirteen weeks of a season. The Joker stands outside the count as the one card without a fixed value. Cardology reads that structure as a birthday map rather than a game.",
       "sections": [
         {
           "heading": "The calendar hidden in the deck",
           "body": [
-            "Count the deck and the calendar keeps appearing. There are 52 cards and 52 weeks. There are four suits and four seasons. Each suit holds thirteen ranks, and a year holds thirteen lunar cycles.",
+            "Count the deck and the calendar keeps appearing. There are 52 cards and 52 weeks. There are four suits and four seasons. Each suit holds thirteen ranks, and a year holds thirteen weeks of a season.",
             "The number values line up too. Add the ranks of one suit, Ace through King, and you get 91. Multiply by four suits and you get 364. Add one for the Joker and you are at the length of a solar year."
           ],
           "links": [
@@ -43,7 +43,7 @@
       "faqs": [
         {
           "q": "Is the 52-card deck really based on the calendar?",
-          "a": "The correspondences are built into the deck's structure: 52 cards and weeks, four suits and seasons, thirteen ranks and lunar cycles, and rank values that sum to 364 plus the Joker."
+          "a": "The correspondences are built into the deck's structure: 52 cards and weeks, four suits and seasons, thirteen ranks and the thirteen weeks of a season, and rank values that sum to 364 plus the Joker."
         },
         {
           "q": "Does the Joker have a meaning in Cardology?",
@@ -261,7 +261,7 @@
         {
           "heading": "What is older than the books",
           "body": [
-            "The correspondences the books describe are structural: 52 cards and 52 weeks, four suits and four seasons, thirteen ranks and thirteen lunar cycles, rank values summing to 364 plus the Joker.",
+            "The correspondences the books describe are structural: 52 cards and 52 weeks, four suits and four seasons, thirteen ranks and thirteen weeks of a season, rank values summing to 364 plus the Joker.",
             "No one invented those numbers for the occasion. Whoever settled the deck's final form left a calendar inside it, and the Cardology literature is an attempt to read that calendar."
           ],
           "links": [
@@ -1142,7 +1142,7 @@
           "heading": "Neptune: the long view",
           "body": [
             "Neptune closes the year with soft focus: imagination, spiritual questions, fatigue with the concrete, and a pull toward rest and reflection.",
-            "It is traditionally a better season for envisioning than for signing. Boundaries and details blur here, which is a gift for dreaming and a hazard for contracts."
+            "It is traditionally a better season for envisioning than for signing. Boundaries and details blur here, which is a gift for dreaming and a season readers traditionally use for review rather than new commitments."
           ],
           "links": [
             { "label": "Planetary Periods Without Prediction", "href": "/blog/planetary-periods-without-prediction" }
@@ -1166,7 +1166,7 @@
         },
         {
           "q": "Is the Neptune period a bad time for decisions?",
-          "a": "It is traditionally better for reflection than for binding commitments, since its themes blur detail. Big decisions land more cleanly early in the new year."
+          "a": "It is traditionally better for reflection than for binding commitments, since its themes blur detail. Readers traditionally treat the early year as the season for decisions and the late year as the season for review."
         },
         {
           "q": "What comes after the Neptune period?",

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: "Cardology Compatibility: Birth Cards and Life Paths",
     description: "Read the relationship through birth cards, Life Path cards, shared cards, and cross-referenced roles.",
     url: "/cardology-compatibility",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

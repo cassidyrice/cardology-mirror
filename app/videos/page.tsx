@@ -27,6 +27,7 @@ export const metadata: Metadata = {
       "Card Blueprints videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
     url: "/videos",
     type: "website",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

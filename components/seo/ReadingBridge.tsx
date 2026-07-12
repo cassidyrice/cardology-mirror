@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+import {
+  READER_PHONE_DISPLAY,
+  READER_PHONE_TEL,
+  TRIAL_NAME,
+  TRIAL_OFFER,
+  TRIAL_PATH,
+  TRIAL_PRICE_LABEL,
+} from "@/lib/offers";
 import { READING_OFFERS, offerBySlug, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH } from "@/lib/site";
 
@@ -29,7 +37,21 @@ export function ReadingBridge({
           talk with the AI voice guide for a reading about the actual person,
           relationship, or decision.
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link
+            href={TRIAL_PATH}
+            className="block border border-[#d9b26a]/40 bg-[#f4f0e7]/[0.04] p-4 transition hover:bg-[#f4f0e7]/10"
+          >
+            <p className="font-serif text-2xl text-[#d9b26a]">
+              {TRIAL_OFFER.trialAvailable ? TRIAL_PRICE_LABEL : "Trial"}
+            </p>
+            <p className="mt-1 font-serif text-lg leading-tight text-[#f4f0e7]">{TRIAL_NAME}</p>
+            <p className="mt-2 text-xs leading-relaxed text-[#c8bca8]">
+              {TRIAL_OFFER.trialAvailable
+                ? "Seven days of unlimited AI readings by phone."
+                : "Opening soon — start with a free teaser call from the AI reader."}
+            </p>
+          </Link>
           {READING_OFFERS.map((offer) => (
             <Link
               key={offer.slug}
@@ -42,12 +64,20 @@ export function ReadingBridge({
             </Link>
           ))}
         </div>
-        <Link
-          href={READINGS_PATH}
-          className="mt-5 inline-block text-sm font-bold uppercase text-[#d9b26a] underline underline-offset-4"
-        >
-          Compare all three readings →
-        </Link>
+        <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+          <Link
+            href={READINGS_PATH}
+            className="inline-block text-sm font-bold uppercase text-[#d9b26a] underline underline-offset-4"
+          >
+            Compare all readings →
+          </Link>
+          <a
+            href={READER_PHONE_TEL}
+            className="inline-block text-sm font-bold uppercase text-[#c8bca8] underline underline-offset-4 transition hover:text-[#f4f0e7]"
+          >
+            Or call the AI reader free: {READER_PHONE_DISPLAY}
+          </a>
+        </div>
       </aside>
     );
   }
@@ -77,6 +107,17 @@ export function ReadingBridge({
         {offer.href === "/unlock"
           ? "Secure checkout. This $99 option is an AI voice guide, available by phone after payment with 90 days of access."
           : "Secure checkout. You confirm the birth details after payment, and the written reading is delivered by email."}
+      </p>
+      <p className="mt-2 text-xs leading-relaxed text-[#5b5148]">
+        Want to hear it first?{" "}
+        <a href={READER_PHONE_TEL} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
+          Call the AI reader free
+        </a>{" "}
+        — it reads your first card on the spot — or see the{" "}
+        <Link href={TRIAL_PATH} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
+          {TRIAL_PRICE_LABEL} seven-day Deck Pass trial
+        </Link>
+        .
       </p>
     </aside>
   );

@@ -40,11 +40,13 @@ export async function generateMetadata({
       description: post.description,
       url: blogPostPath(post),
       type: "article",
+      images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
     },
     twitter: {
       card: "summary_large_image",
       title: seoTitle,
       description: post.description,
+      images: ["/og/default.png"],
     },
   };
 }

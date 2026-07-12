@@ -13,7 +13,6 @@ import {
   type CardologyVideo,
 } from "@/lib/videos";
 import {
-  allBirthdateSlugs,
   allCardSeo,
   birthdateBySlug,
   birthDatesForCard,
@@ -26,14 +25,18 @@ import {
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
+import { compatForCard } from "@/lib/compat-pairs";
 
 const SEO_UPDATED = "2026-06-17";
 
+// Only the 52 card-meaning pages are prerendered here. The 366 birthday slugs
+// are deliberately NOT built: the cardology-unlock Worker in front of Pages
+// 301s /birth-card/[month]-[day] to its own /born-on/[month]-[day] pages
+// (curl-verified in production 2026-07-12), so building them shipped 366
+// unreachable shadow pages per deploy. The date-rendering branch below is kept
+// only as a fallback in case that Worker redirect is ever removed.
 export function generateStaticParams() {
-  return [
-    ...allCardSeo().map((c) => ({ slug: c.slug })),
-    ...allBirthdateSlugs().map((slug) => ({ slug })),
-  ];
+  return allCardSeo().map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
@@ -229,6 +232,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
       </Section>
 
+      <CompatPairsSection card={card} />
+
       <Section title="Career, work, and purpose">
         <p>
           At work, the {card.label} often wants roles where {workTheme(card)}. The best fit depends on the whole chart, but the birth card alone can show what kind of contribution feels meaningful and what kind of pressure creates distortion. If this card is repeatedly burned out, scattered, or controlling, the work may be asking for a cleaner expression of its suit and rank.
@@ -261,7 +266,10 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
             {dates.map((d) => (
               <li key={d.slug}>
-                <Link href={`/birth-card/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</Link>
+                {/* Plain <a> to /born-on/: birthday pages live on the
+                    Worker-served surface (the Worker 301s /birth-card/[date]
+                    there — link direct to skip the redirect hop). */}
+                <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
               </li>
             ))}
           </ul>
@@ -458,7 +466,10 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
             {shared.map((d) => (
               <li key={d.slug}>
-                <Link href={`/birth-card/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</Link>
+                {/* Plain <a> to /born-on/: birthday pages live on the
+                    Worker-served surface (the Worker 301s /birth-card/[date]
+                    there — link direct to skip the redirect hop). */}
+                <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
               </li>
             ))}
           </ul>
@@ -478,11 +489,64 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </div>
 
       <nav className="mt-8 flex items-center justify-between text-sm">
-        <Link href={`/birth-card/${prev.slug}`} className="text-gold underline underline-offset-4">← {prev.label}</Link>
+        {/* Prev/next birthdays live on the Worker-served /born-on/ surface —
+            link direct instead of /birth-card/[date], which 301s there. */}
+        <a href={`/born-on/${prev.slug}`} className="text-gold underline underline-offset-4">← {prev.label}</a>
         <Link href={`/birth-card/${card.slug}`} className="text-faint hover:text-mist">{card.label} guide</Link>
-        <Link href={`/birth-card/${next.slug}`} className="text-gold underline underline-offset-4">{next.label} →</Link>
+        <a href={`/born-on/${next.slug}`} className="text-gold underline underline-offset-4">{next.label} →</a>
       </nav>
     </SeoShell>
+  );
+}
+
+// Fixed life-path connections rendered as links into the Worker-served
+// /compatibility/ pair library (1,378 pages + 52 per-card hubs, edge-rendered
+// by cardology-unlock). Data comes from lib/compat-pairs.json, generated from
+// the Worker's own report_data.json, so every href is the canonical pair URL
+// (wrong-order slugs 301). Plain <a> instead of next/link: these routes are
+// not part of this Next app.
+const PAIR_NOTES: Record<string, string> = {
+  Venus: "the Venus bond — attraction that feels pre-arranged",
+  Moon: "the Moon bond — support, intimacy, and emotional home base",
+  Mars: "the Mars bond — sparks, stimulation, and productive friction",
+  Jupiter: "the Jupiter bond — the pairing that expands your life",
+  Saturn: "the Saturn bond — the teacher, with the resistance to match",
+  Mercury: "the Mercury bond — matched minds and easy conversation",
+  "Lifetime Gift": "your karmic gift card — ease you didn't have to earn",
+  "Lifetime Challenge": "your karmic challenge card — the lesson that matures you",
+  Mirror: "two of the same card — a mirror, for better and worse",
+};
+
+function CompatPairsSection({ card }: { card: CardSeo }) {
+  const compat = compatForCard(card.slug);
+  if (!compat) return null;
+  return (
+    <Section title="Compatibility with other cards">
+      <p>
+        Some pairings are structural. A fixed set of cards sits in the {card.label}&rsquo;s
+        life path, and the people who carry them tend to show up as the loves, teachers,
+        and mirrors of a lifetime. Each link opens the full two-card reading — suit
+        dynamics, number dynamics, and what the connection is actually for.
+      </p>
+      <ul className="mt-4 space-y-2">
+        {compat.pairs.map((p) => (
+          <li key={p.href} className="flex gap-2 text-sm text-mist">
+            <span className="text-gold">·</span>
+            <span>
+              <a href={p.href} className="text-gold underline underline-offset-4">
+                {card.label} + {p.label}
+              </a>
+              <span className="text-faint"> — {PAIR_NOTES[p.pos] ?? "a fixed connection in the life path"}</span>
+            </span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-sm">
+        <a href={compat.hub} className="text-gold underline underline-offset-4">
+          See how {card.label} pairs with all 52 cards →
+        </a>
+      </p>
+    </Section>
   );
 }
 
@@ -580,7 +644,15 @@ function videoJsonLd(video: CardologyVideo) {
 
 function cardQuickAnswer(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
-  return `The ${card.label} birth card combines ${card.suitDomain.toLowerCase()} with ${rankTheme(card.rank).toLowerCase()}. Balanced, it points to ${card.sweetSpot} Its shadow appears as ${card.shadow || card.over}. In this deterministic system, the ${card.label} appears for these birth dates: ${dateText}.`;
+  return `The ${card.label} birth card combines ${card.suitDomain.toLowerCase()} with ${rankTheme(card.rank).toLowerCase()}. In balance, you're ${lensClause(card.sweetSpot)} In shadow, you're ${lensClause(card.over)} In this deterministic system, the ${card.label} appears for these birth dates: ${dateText}.`;
+}
+
+// The three-lens strings are complete second-person sentences ("You're …").
+// Re-seat each one on an explicit "you're" so the splice stays grammatical for
+// every complement shape in the data (gerund, adjective, or noun phrase).
+function lensClause(text: string) {
+  const t = text.trim().replace(/^You(?:['’]re| are)\s+/, "");
+  return t.charAt(0).toLowerCase() + t.slice(1);
 }
 
 function dateQuickAnswer(date: BirthdateSeo) {

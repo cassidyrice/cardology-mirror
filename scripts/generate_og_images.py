@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate static Open Graph images (1200x630) for Cardology Pro.
+"""Generate static Open Graph images (1200x630) for Card Blueprints.
 
 Outputs:
   public/og/default.png          - site-wide fallback share image
@@ -29,6 +29,16 @@ RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 RANK_NAME = {"A": "Ace", "J": "Jack", "Q": "Queen", "K": "King"}
 SUITS = [("hearts", "\u2665"), ("clubs", "\u2663"), ("diamonds", "\u2666"), ("spades", "\u2660")]
 
+# Suit-glyph font: first existing candidate (Linux CI, then macOS), matching
+# scripts/generate_pinterest_pins.py so both renderers run on either OS.
+GLYPH_CANDIDATES = [
+    os.environ.get("GLYPH_FONT", ""),
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/System/Library/Fonts/Apple Symbols.ttf",
+    "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+]
+GLYPH_FONT = next(p for p in GLYPH_CANDIDATES if p and os.path.exists(p))
+
 
 def font(path, size):
     try:
@@ -54,13 +64,13 @@ def base_canvas():
 
 
 def footer(d):
-    d.text((72, H - 78), "CARDOLOGYPRO.COM", font=font(MONO, 26), fill=GOLD)
+    d.text((72, H - 78), "CARDBLUEPRINTS.COM", font=font(MONO, 26), fill=GOLD)
     d.text((W - 72, H - 78), "A MIRROR, NOT A FORECAST", font=font(MONO, 26), fill=MIST, anchor="ra")
 
 
 def default_image():
     img, d = base_canvas()
-    d.text((72, 150), "CARDOLOGY PRO", font=font(MONO, 30), fill=GOLD)
+    d.text((72, 150), "CARD BLUEPRINTS", font=font(MONO, 30), fill=GOLD)
     d.text((66, 210), "Your birth card,", font=font(SERIF, 96), fill=BONE)
     d.text((66, 318), "as a mirror.", font=font(SERIF, 96), fill=BONE)
     d.text((72, 460), "52 cards. One deterministic system. Same birthday, same card.",
@@ -81,7 +91,7 @@ def card_image(rank, suit, glyph):
     px, py, pw, ph = W - 420, 110, 300, 410
     d.rounded_rectangle([px, py, px + pw, py + ph], radius=28,
                         fill=(22, 20, 18), outline=GOLD, width=2)
-    glyph_font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 130)
+    glyph_font = ImageFont.truetype(GLYPH_FONT, 130)
     rank_font = font(SERIF, 150)
     rw = d.textlength(rank, font=rank_font)
     gw = d.textlength(glyph, font=glyph_font)
@@ -93,7 +103,7 @@ def card_image(rank, suit, glyph):
     d.text((px + pw / 2, py + ph - 64), "BIRTH CARD", font=font(MONO, 22),
            fill=GOLD, anchor="mm")
 
-    d.text((72, 150), "CARDOLOGY PRO  ·  BIRTH CARD", font=font(MONO, 28), fill=GOLD)
+    d.text((72, 150), "CARD BLUEPRINTS  ·  BIRTH CARD", font=font(MONO, 28), fill=GOLD)
     # title wraps onto two lines if needed
     f1 = font(SERIF, 88)
     if d.textlength(label, font=f1) > 620:

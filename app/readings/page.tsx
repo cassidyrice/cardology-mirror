@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import {
+  READER_PHONE_DISPLAY,
+  READER_PHONE_TEL,
+  TRIAL_OFFER,
+  TRIAL_PATH,
+} from "@/lib/offers";
 import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 
@@ -18,10 +24,17 @@ export const metadata: Metadata = {
       "Choose a written Card Blueprints report, 90-day AI voice reading, or human-written deep dive.",
     url: "/readings",
     type: "website",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 
 const visibleFaqs = [
+  {
+    q: "Can I try it free before paying?",
+    a: TRIAL_OFFER.trialAvailable
+      ? `Yes. Call ${READER_PHONE_DISPLAY} free — the AI reader answers, asks your birthday, and reads your first card on the spot. For a longer test drive, the $9 Deck Pass trial gives seven days of unlimited AI readings before you commit to the full pass.`
+      : `Yes. Call ${READER_PHONE_DISPLAY} free — the AI reader answers, asks your birthday, and reads your first card on the spot. A $9 seven-day trial is opening soon; until then the $99 pass opens unlimited calls for 90 days.`,
+  },
   {
     q: "Which Cardology reading should I start with?",
     a: "Start with the $29 written report for one person's core structure. Choose the $99 AI voice reading when you want a full reading now plus return calls for 90 days. Choose the $199 human-written deep dive for the fullest personal and relational map.",
@@ -117,6 +130,31 @@ export default function ReadingsPage() {
           </p>
         </div>
       </header>
+
+      <section className="mb-8 grid gap-5 border border-[#14110d]/18 bg-[#14110d] p-6 text-[#f4f0e7] sm:p-7 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+        <div>
+          <p className="oracle-eyebrow text-[#c8bca8]">Step zero — free</p>
+          <h2 className="mt-3 font-serif text-3xl leading-none sm:text-4xl">
+            Hear the AI reader before you buy anything.
+          </h2>
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#d7cdbc] sm:text-base">
+            Call free — the AI reader answers, asks your birthday, and reads
+            your first card on the spot. No account, no card. Then decide
+            whether the trial or the full pass comes next.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <a href={READER_PHONE_TEL} className="paper-button large-button text-center">
+            Call {READER_PHONE_DISPLAY}
+          </a>
+          <Link
+            href={TRIAL_PATH}
+            className="text-center text-sm font-bold uppercase text-[#d9b26a] underline underline-offset-4"
+          >
+            About the $9 seven-day Deck Pass trial →
+          </Link>
+        </div>
+      </section>
 
       <section className="grid gap-4 lg:grid-cols-3">
         {READING_OFFERS.map((offer) => (

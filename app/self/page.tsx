@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Cardology Blueprint: Birth Card and Ruling Card Reading",
     description,
     url: "/self",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   robots: { index: false, follow: true },
 };

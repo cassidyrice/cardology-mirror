@@ -63,7 +63,15 @@ export type BlogPost = {
   coreLinks: BlogLink[];
 };
 
-export const BLOG_UPDATED = "2026-07-12";
+// Real publication date of the 12 hand-written core posts below: git history
+// shows they shipped 2026-06-17 (commits 6019718..0da0d55) and their content
+// has not materially changed since. There is deliberately no site-wide
+// "updated" constant anymore — a moving constant stamped every post with a
+// fake-fresh lastmod, which teaches crawlers to distrust the sitemap. Sitemap
+// and feed freshness must come from each post's own datePublished /
+// dateModified; when a core post's content actually changes, bump that post's
+// dateModified by hand.
+const CORE_POSTS_PUBLISHED = "2026-06-17";
 
 const GENERATED_POSTS = GENERATED_BLOG_POSTS as BlogPost[];
 
@@ -242,8 +250,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "A clear guide to what Cardology means, how it differs from astrology and tarot, and how the 52-card system reads people, timing, and relationship dynamics.",
     dek: "Start here if you want the system without the fog: fixed birthday math, real-person interpretation, and practical use.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "6 min read",
     keywords: ["what is cardology", "cardology meaning", "cardology vs astrology", "cardology vs tarot"],
     answer:
@@ -312,8 +320,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "Learn what the four suits mean in Cardology and how hearts, diamonds, clubs, and spades shape a birth card reading.",
     dek: "The suit is the first domain signal: emotion, value, mind, or work.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "7 min read",
     keywords: ["cardology suits", "hearts diamonds clubs spades meaning", "cardology hearts", "cardology spades"],
     answer:
@@ -378,8 +386,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "A practical guide to what Aces, Twos, Threes, Fours, Fives, Sixes, Sevens, Eights, Nines, Tens, Jacks, Queens, and Kings mean in Cardology.",
     dek: "Rank gives the pattern; suit gives the arena.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "8 min read",
     keywords: ["cardology ranks", "aces in cardology", "jacks queens kings cardology", "cardology face value"],
     answer:
@@ -443,8 +451,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "Use a birth card calculator or fixed Cardology birthday math to find the card assigned to your birthday.",
     dek: "A birth card is not chosen. It is calculated from the month and day.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "5 min read",
     keywords: ["find my birth card", "birth card calculator", "cardology birthday card", "what card am I"],
     answer:
@@ -507,8 +515,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "Understand the difference between a Cardology birth card and planetary ruling card, and learn how to use both without confusing them.",
     dek: "The birth card names the core pattern. The ruling card colors how that pattern expresses.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "6 min read",
     keywords: ["birth card vs ruling card", "planetary ruling card", "cardology ruling card", "birth card meaning"],
     answer:
@@ -575,8 +583,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "A practical method for reading any Cardology birth card as a pattern map for people, behavior, and relationship dynamics.",
     dek: "Read the card as a range: centered, under-expressed, and over-expressed.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "7 min read",
     keywords: ["birth card meaning", "how to read cardology", "cardology interpretation", "cardology shadow"],
     answer:
@@ -639,8 +647,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "Learn what a 52-day period means in Cardology and how to use period cards as timing language without turning them into predictions.",
     dek: "A period card frames a chapter. It should not pretend to know the ending.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "6 min read",
     keywords: ["52-day period cardology", "cardology period meaning", "yearly spread cardology", "current card period"],
     answer:
@@ -703,8 +711,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "A grounded way to understand Cardology planetary periods, yearly spreads, and timing stages without using them as fortune telling.",
     dek: "Timing language is strongest when it gives a question, not a verdict.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "6 min read",
     keywords: ["cardology planetary periods", "planetary stages cardology", "yearly spread cardology", "cardology timing"],
     answer:
@@ -767,8 +775,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "How to use a daily Cardology card as a grounded writing prompt for reflection, pattern recognition, and weekly review.",
     dek: "The strongest daily reading is short, specific, and checked against the actual day.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "5 min read",
     keywords: ["daily card reading", "cardology journal prompt", "daily cardology", "cardology reflection"],
     answer:
@@ -831,8 +839,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "Learn how Cardology compatibility compares birth cards, Life Path cards, shared roles, and relationship dynamics without reducing a relationship to a score.",
     dek: "Compatibility is a way to read attraction, friction, support, blind spots, shared cards, and the roles two people keep playing.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "7 min read",
     keywords: ["cardology compatibility", "birth card compatibility", "relationship cardology", "cardology love cards"],
     answer:
@@ -909,8 +917,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "A grounded explanation of karma cards in Cardology, including environment, displacement, support, pressure, and repeated lessons.",
     dek: "Karma cards are most useful when they describe learning edges, not cosmic punishment.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "6 min read",
     keywords: ["karma cards cardology", "environment card", "displacement card", "cardology karma"],
     answer:
@@ -973,8 +981,8 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
     description:
       "How to use Cardology card meanings for work style, love patterns, money pressure, values, and self-trust.",
     dek: "A card meaning becomes practical when it points to a real domain of choice.",
-    datePublished: BLOG_UPDATED,
-    dateModified: BLOG_UPDATED,
+    datePublished: CORE_POSTS_PUBLISHED,
+    dateModified: CORE_POSTS_PUBLISHED,
     readTime: "7 min read",
     keywords: ["cardology work", "cardology love", "cardology money", "cardology practical guide"],
     answer:

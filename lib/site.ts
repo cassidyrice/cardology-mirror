@@ -41,6 +41,7 @@ export const MARKETING_PATHS = [
   "/about",
   "/videos",
   "/readings",
+  "/try",
   "/blog",
   "/birth-card",
   "/birth-card-calculator",

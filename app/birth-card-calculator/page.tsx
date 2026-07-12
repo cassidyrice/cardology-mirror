@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       "Enter your birthday to instantly find your Cardology birth card and ruling card.",
     url: "/birth-card-calculator",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

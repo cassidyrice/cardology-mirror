@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description:
       "How a 52-card deck maps to tarot's structure, and why Cardology reads playing cards deterministically — no shuffle, no draw.",
     url: "/cartomancy-vs-tarot",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 
@@ -20,7 +21,7 @@ export default function CartomancyVsTarot() {
   const faqs = [
     {
       q: "Can you read tarot with playing cards?",
-      a: "Mostly, yes. Each tarot suit has a playing-card equivalent — Cups become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords become Spades — so the 56 minor arcana translate to the 52-card deck with only the extra court card lost. What a playing-card deck does not have is the 22 Major Arcana. Cartomancy traditions either work without them or, as Cardology does, replace their symbolism with the deck's own calendar structure.",
+      a: "Mostly, yes. Each tarot suit has a playing-card equivalent — Cups become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords become Spades — so the 56 minor arcana translate to the 52-card deck with only the four extra court cards lost — one per suit, since tarot carries four courts where the playing deck carries three. What a playing-card deck does not have is the 22 Major Arcana. Cartomancy traditions either work without them or, as Cardology does, replace their symbolism with the deck's own calendar structure.",
     },
     {
       q: "Is cartomancy the same as tarot?",
@@ -85,7 +86,7 @@ export default function CartomancyVsTarot() {
           decorated tarot decks became the default image of card reading.
           When someone asks for the &ldquo;playing card tarot equivalent,&rdquo; the
           honest answer is that playing cards are not an imitation of tarot.
-          Tarot grew out of the same 52-card root and added trumps on top.
+          Tarot grew out of the same four-suit root and added trumps on top.
         </p>
       </section>
 

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: "Birth Card vs Ruling Card: What's the Difference?",
     description: "What each card is, how they differ, and how the ruling card colors your birth card.",
     url: "/birth-card-vs-ruling-card",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

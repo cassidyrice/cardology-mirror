@@ -23,6 +23,7 @@ export const metadata: Metadata = {
       "Educational Cardology articles organized by pillars: foundations, birth-card meanings, timing, spreads, compatibility, and practice.",
     url: "/blog",
     type: "website",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

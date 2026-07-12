@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     title: "52-Card Astrology Explained: Cards, Suits & Timing",
     description: "How a standard deck maps to the calendar — suits, ranks, and timing in Cardology.",
     url: "/52-card-astrology-explained",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 

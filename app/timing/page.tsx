@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Cardology Yearly Spread and 52-Day Periods",
     description,
     url: "/timing",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   robots: { index: false, follow: true },
 };

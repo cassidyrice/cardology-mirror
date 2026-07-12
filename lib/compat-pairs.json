@@ -1,0 +1,2467 @@
+{
+  "ace-of-hearts": {
+    "hub": "/compatibility/ace-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/ace-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Eight of Spades",
+        "href": "/compatibility/ace-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Five of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-5-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Three of Clubs",
+        "href": "/compatibility/ace-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Three of Spades",
+        "href": "/compatibility/ace-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Three of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-3-of-hearts"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-ace-of-hearts"
+      }
+    ]
+  },
+  "2-of-hearts": {
+    "hub": "/compatibility/2-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "King of Diamonds",
+        "href": "/compatibility/2-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Nine of Spades",
+        "href": "/compatibility/2-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Six of Hearts",
+        "href": "/compatibility/2-of-hearts-and-6-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Four of Clubs",
+        "href": "/compatibility/2-of-hearts-and-4-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/2-of-hearts-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "King of Hearts",
+        "href": "/compatibility/2-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-2-of-hearts"
+      }
+    ]
+  },
+  "3-of-hearts": {
+    "hub": "/compatibility/3-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/3-of-hearts-and-queen-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "King of Spades",
+        "href": "/compatibility/3-of-hearts-and-king-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ten of Spades",
+        "href": "/compatibility/3-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Five of Clubs",
+        "href": "/compatibility/3-of-hearts-and-5-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/3-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/3-of-hearts-and-ace-of-clubs"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-3-of-hearts"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-3-of-hearts"
+      }
+    ]
+  },
+  "4-of-hearts": {
+    "hub": "/compatibility/4-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Two of Spades",
+        "href": "/compatibility/4-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/4-of-hearts-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/4-of-hearts-and-8-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Six of Clubs",
+        "href": "/compatibility/4-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Six of Spades",
+        "href": "/compatibility/4-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Ten of Spades",
+        "href": "/compatibility/4-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Four of Spades",
+        "href": "/compatibility/4-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-4-of-hearts"
+      }
+    ]
+  },
+  "5-of-hearts": {
+    "hub": "/compatibility/5-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Three of Spades",
+        "href": "/compatibility/5-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/5-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/5-of-hearts-and-9-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/5-of-hearts-and-7-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/5-of-hearts-and-5-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Three of Clubs",
+        "href": "/compatibility/5-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-hearts-and-5-of-clubs"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/5-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-5-of-hearts"
+      }
+    ]
+  },
+  "6-of-hearts": {
+    "hub": "/compatibility/6-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-2-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "King of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Jack of Spades",
+        "href": "/compatibility/6-of-hearts-and-jack-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/6-of-hearts-and-8-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Four of Clubs",
+        "href": "/compatibility/6-of-hearts-and-4-of-clubs"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-6-of-hearts"
+      }
+    ]
+  },
+  "7-of-hearts": {
+    "hub": "/compatibility/7-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Five of Spades",
+        "href": "/compatibility/7-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ace of Spades",
+        "href": "/compatibility/7-of-hearts-and-ace-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/7-of-hearts-and-jack-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/7-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Nine of Spades",
+        "href": "/compatibility/7-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/7-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/7-of-hearts-and-8-of-hearts"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-7-of-hearts"
+      }
+    ]
+  },
+  "8-of-hearts": {
+    "hub": "/compatibility/8-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Six of Spades",
+        "href": "/compatibility/8-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Two of Spades",
+        "href": "/compatibility/8-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/8-of-hearts-and-queen-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/8-of-hearts-and-10-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/8-of-hearts-and-8-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Six of Clubs",
+        "href": "/compatibility/8-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-8-of-hearts"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Seven of Spades",
+        "href": "/compatibility/8-of-hearts-and-7-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-8-of-hearts"
+      }
+    ]
+  },
+  "9-of-hearts": {
+    "hub": "/compatibility/9-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/9-of-hearts-and-5-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Three of Spades",
+        "href": "/compatibility/9-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Queen of Spades",
+        "href": "/compatibility/9-of-hearts-and-queen-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/9-of-hearts-and-jack-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/9-of-hearts-and-9-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/9-of-hearts-and-7-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-9-of-hearts"
+      }
+    ]
+  },
+  "10-of-hearts": {
+    "hub": "/compatibility/10-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Eight of Spades",
+        "href": "/compatibility/10-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Four of Spades",
+        "href": "/compatibility/10-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-10-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/10-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/10-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Five of Spades",
+        "href": "/compatibility/10-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/10-of-hearts-and-jack-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-10-of-hearts"
+      }
+    ]
+  },
+  "jack-of-hearts": {
+    "hub": "/compatibility/jack-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Nine of Spades",
+        "href": "/compatibility/jack-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Five of Spades",
+        "href": "/compatibility/jack-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-jack-of-hearts"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "King of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Saturn",
+        "label": "King of Diamonds",
+        "href": "/compatibility/jack-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/jack-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-jack-of-hearts"
+      }
+    ]
+  },
+  "queen-of-hearts": {
+    "hub": "/compatibility/queen-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/queen-of-hearts-and-8-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Six of Spades",
+        "href": "/compatibility/queen-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "King of Spades",
+        "href": "/compatibility/queen-of-hearts-and-king-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-queen-of-hearts"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/queen-of-hearts-and-ace-of-clubs"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/queen-of-hearts-and-10-of-clubs"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/queen-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ten of Spades",
+        "href": "/compatibility/queen-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-queen-of-hearts"
+      }
+    ]
+  },
+  "king-of-hearts": {
+    "hub": "/compatibility/king-of-hearts",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Moon",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Mars",
+        "label": "Four of Clubs",
+        "href": "/compatibility/king-of-hearts-and-4-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/king-of-hearts-and-2-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Jack of Spades",
+        "href": "/compatibility/king-of-hearts-and-jack-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "King of Diamonds",
+        "href": "/compatibility/king-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Nine of Spades",
+        "href": "/compatibility/king-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Two of Clubs",
+        "href": "/compatibility/king-of-hearts-and-2-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-king-of-hearts"
+      }
+    ]
+  },
+  "ace-of-clubs": {
+    "hub": "/compatibility/ace-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ten of Spades",
+        "href": "/compatibility/ace-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-ace-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Five of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-5-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/ace-of-clubs-and-3-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ace of Spades",
+        "href": "/compatibility/ace-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-ace-of-clubs"
+      }
+    ]
+  },
+  "2-of-clubs": {
+    "hub": "/compatibility/2-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/2-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Seven of Spades",
+        "href": "/compatibility/2-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-2-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/2-of-clubs-and-4-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Two of Spades",
+        "href": "/compatibility/2-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "King of Clubs",
+        "href": "/compatibility/2-of-clubs-and-king-of-clubs"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-2-of-clubs"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ace of Spades",
+        "href": "/compatibility/2-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-2-of-clubs"
+      }
+    ]
+  },
+  "3-of-clubs": {
+    "hub": "/compatibility/3-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/3-of-clubs-and-7-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/3-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Queen of Spades",
+        "href": "/compatibility/3-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Three of Spades",
+        "href": "/compatibility/3-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "King of Diamonds",
+        "href": "/compatibility/3-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-3-of-clubs"
+      }
+    ]
+  },
+  "4-of-clubs": {
+    "hub": "/compatibility/4-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Jack of Spades",
+        "href": "/compatibility/4-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-4-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/4-of-clubs-and-8-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/4-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Four of Spades",
+        "href": "/compatibility/4-of-clubs-and-4-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/4-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Five of Clubs",
+        "href": "/compatibility/4-of-clubs-and-5-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-4-of-clubs"
+      }
+    ]
+  },
+  "5-of-clubs": {
+    "hub": "/compatibility/5-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ace of Spades",
+        "href": "/compatibility/5-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ten of Spades",
+        "href": "/compatibility/5-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-5-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/5-of-clubs-and-7-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Five of Spades",
+        "href": "/compatibility/5-of-clubs-and-5-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/5-of-clubs-and-3-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-5-of-clubs"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-5-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-5-of-clubs"
+      }
+    ]
+  },
+  "6-of-clubs": {
+    "hub": "/compatibility/6-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/6-of-clubs-and-10-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/6-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "King of Spades",
+        "href": "/compatibility/6-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Six of Spades",
+        "href": "/compatibility/6-of-clubs-and-6-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/6-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Eight of Spades",
+        "href": "/compatibility/6-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-6-of-clubs"
+      }
+    ]
+  },
+  "7-of-clubs": {
+    "hub": "/compatibility/7-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Queen of Spades",
+        "href": "/compatibility/7-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-7-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/7-of-clubs-and-jack-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/7-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Seven of Spades",
+        "href": "/compatibility/7-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/7-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Jack of Spades",
+        "href": "/compatibility/7-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/7-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-7-of-clubs"
+      }
+    ]
+  },
+  "8-of-clubs": {
+    "hub": "/compatibility/8-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Four of Spades",
+        "href": "/compatibility/8-of-clubs-and-4-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Jack of Spades",
+        "href": "/compatibility/8-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-8-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/8-of-clubs-and-10-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Eight of Spades",
+        "href": "/compatibility/8-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/8-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-8-of-clubs"
+      }
+    ]
+  },
+  "9-of-clubs": {
+    "hub": "/compatibility/9-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "King of Diamonds",
+        "href": "/compatibility/9-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Nine of Spades",
+        "href": "/compatibility/9-of-clubs-and-9-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/9-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-9-of-clubs"
+      }
+    ]
+  },
+  "10-of-clubs": {
+    "hub": "/compatibility/10-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "King of Spades",
+        "href": "/compatibility/10-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-10-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-10-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-10-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/10-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/10-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Four of Spades",
+        "href": "/compatibility/10-of-clubs-and-4-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Jack of Spades",
+        "href": "/compatibility/10-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-10-of-clubs"
+      }
+    ]
+  },
+  "jack-of-clubs": {
+    "hub": "/compatibility/jack-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Seven of Spades",
+        "href": "/compatibility/jack-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Queen of Spades",
+        "href": "/compatibility/jack-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-jack-of-clubs"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "King of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-king-of-clubs"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/jack-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/jack-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-jack-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-jack-of-clubs"
+      }
+    ]
+  },
+  "queen-of-clubs": {
+    "hub": "/compatibility/queen-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/queen-of-clubs-and-3-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ace of Spades",
+        "href": "/compatibility/queen-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ten of Spades",
+        "href": "/compatibility/queen-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/queen-of-clubs-and-10-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-queen-of-clubs"
+      }
+    ]
+  },
+  "king-of-clubs": {
+    "hub": "/compatibility/king-of-clubs",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-king-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-king-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/king-of-clubs-and-4-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Two of Spades",
+        "href": "/compatibility/king-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-king-of-clubs"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/king-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Eight of Spades",
+        "href": "/compatibility/king-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-king-of-clubs"
+      }
+    ]
+  },
+  "ace-of-diamonds": {
+    "hub": "/compatibility/ace-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Three of Spades",
+        "href": "/compatibility/ace-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-ace-of-diamonds"
+      }
+    ]
+  },
+  "2-of-diamonds": {
+    "hub": "/compatibility/2-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-6-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Four of Spades",
+        "href": "/compatibility/2-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Jack of Spades",
+        "href": "/compatibility/2-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-2-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-2-of-diamonds"
+      }
+    ]
+  },
+  "3-of-diamonds": {
+    "hub": "/compatibility/3-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-7-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Five of Spades",
+        "href": "/compatibility/3-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ace of Spades",
+        "href": "/compatibility/3-of-diamonds-and-ace-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-3-of-diamonds"
+      }
+    ]
+  },
+  "4-of-diamonds": {
+    "hub": "/compatibility/4-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-4-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Six of Spades",
+        "href": "/compatibility/4-of-diamonds-and-6-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Two of Spades",
+        "href": "/compatibility/4-of-diamonds-and-2-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Five of Spades",
+        "href": "/compatibility/4-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-4-of-diamonds"
+      }
+    ]
+  },
+  "5-of-diamonds": {
+    "hub": "/compatibility/5-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-9-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Seven of Spades",
+        "href": "/compatibility/5-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Queen of Spades",
+        "href": "/compatibility/5-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-5-of-diamonds"
+      }
+    ]
+  },
+  "6-of-diamonds": {
+    "hub": "/compatibility/6-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-6-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-10-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Eight of Spades",
+        "href": "/compatibility/6-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Four of Spades",
+        "href": "/compatibility/6-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Three of Spades",
+        "href": "/compatibility/6-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-6-of-diamonds"
+      }
+    ]
+  },
+  "7-of-diamonds": {
+    "hub": "/compatibility/7-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-7-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Nine of Spades",
+        "href": "/compatibility/7-of-diamonds-and-9-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Five of Spades",
+        "href": "/compatibility/7-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-7-of-diamonds"
+      }
+    ]
+  },
+  "8-of-diamonds": {
+    "hub": "/compatibility/8-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-8-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ten of Spades",
+        "href": "/compatibility/8-of-diamonds-and-10-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "King of Spades",
+        "href": "/compatibility/8-of-diamonds-and-king-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Queen of Spades",
+        "href": "/compatibility/8-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-8-of-diamonds"
+      }
+    ]
+  },
+  "9-of-diamonds": {
+    "hub": "/compatibility/9-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-9-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Seven of Spades",
+        "href": "/compatibility/9-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-9-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-9-of-diamonds"
+      }
+    ]
+  },
+  "10-of-diamonds": {
+    "hub": "/compatibility/10-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-10-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Eight of Spades",
+        "href": "/compatibility/10-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Queen of Spades",
+        "href": "/compatibility/10-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-10-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-10-of-diamonds"
+      }
+    ]
+  },
+  "jack-of-diamonds": {
+    "hub": "/compatibility/jack-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Two of Spades",
+        "href": "/compatibility/jack-of-diamonds-and-2-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Three of Spades",
+        "href": "/compatibility/jack-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/jack-of-diamonds-and-jack-of-diamonds"
+      }
+    ]
+  },
+  "queen-of-diamonds": {
+    "hub": "/compatibility/queen-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Three of Spades",
+        "href": "/compatibility/queen-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/queen-of-diamonds-and-queen-of-diamonds"
+      }
+    ]
+  },
+  "king-of-diamonds": {
+    "hub": "/compatibility/king-of-diamonds",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-king-of-diamonds"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Jack of Spades",
+        "href": "/compatibility/king-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Seven of Spades",
+        "href": "/compatibility/king-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mirror",
+        "label": "King of Diamonds",
+        "href": "/compatibility/king-of-diamonds-and-king-of-diamonds"
+      }
+    ]
+  },
+  "ace-of-spades": {
+    "hub": "/compatibility/ace-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-ace-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-ace-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Five of Spades",
+        "href": "/compatibility/ace-of-spades-and-5-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-ace-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-ace-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ace of Spades",
+        "href": "/compatibility/ace-of-spades-and-ace-of-spades"
+      }
+    ]
+  },
+  "2-of-spades": {
+    "hub": "/compatibility/2-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-2-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Six of Spades",
+        "href": "/compatibility/2-of-spades-and-6-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Two of Spades",
+        "href": "/compatibility/2-of-spades-and-2-of-spades"
+      }
+    ]
+  },
+  "3-of-spades": {
+    "hub": "/compatibility/3-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Queen of Spades",
+        "href": "/compatibility/3-of-spades-and-queen-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/jack-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-3-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Three of Spades",
+        "href": "/compatibility/3-of-spades-and-3-of-spades"
+      }
+    ]
+  },
+  "4-of-spades": {
+    "hub": "/compatibility/4-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Eight of Spades",
+        "href": "/compatibility/4-of-spades-and-8-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-4-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Four of Spades",
+        "href": "/compatibility/4-of-spades-and-4-of-spades"
+      }
+    ]
+  },
+  "5-of-spades": {
+    "hub": "/compatibility/5-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-5-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Nine of Spades",
+        "href": "/compatibility/5-of-spades-and-9-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Five of Spades",
+        "href": "/compatibility/5-of-spades-and-5-of-spades"
+      }
+    ]
+  },
+  "6-of-spades": {
+    "hub": "/compatibility/6-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-6-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-6-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-6-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "King of Spades",
+        "href": "/compatibility/6-of-spades-and-king-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Two of Spades",
+        "href": "/compatibility/2-of-spades-and-6-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Nine of Spades",
+        "href": "/compatibility/6-of-spades-and-9-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Six of Spades",
+        "href": "/compatibility/6-of-spades-and-6-of-spades"
+      }
+    ]
+  },
+  "7-of-spades": {
+    "hub": "/compatibility/7-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Jack of Diamonds",
+        "href": "/compatibility/jack-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-7-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-7-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "King of Diamonds",
+        "href": "/compatibility/king-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Seven of Spades",
+        "href": "/compatibility/7-of-spades-and-7-of-spades"
+      }
+    ]
+  },
+  "8-of-spades": {
+    "hub": "/compatibility/8-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Queen of Diamonds",
+        "href": "/compatibility/queen-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-8-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Eight of Spades",
+        "href": "/compatibility/8-of-spades-and-8-of-spades"
+      }
+    ]
+  },
+  "9-of-spades": {
+    "hub": "/compatibility/9-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-9-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "King of Diamonds",
+        "href": "/compatibility/king-of-diamonds-and-9-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-9-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Six of Spades",
+        "href": "/compatibility/6-of-spades-and-9-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Nine of Spades",
+        "href": "/compatibility/9-of-spades-and-9-of-spades"
+      }
+    ]
+  },
+  "10-of-spades": {
+    "hub": "/compatibility/10-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-10-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Ace of Spades",
+        "href": "/compatibility/ace-of-spades-and-10-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-10-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-10-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Ten of Spades",
+        "href": "/compatibility/10-of-spades-and-10-of-spades"
+      }
+    ]
+  },
+  "jack-of-spades": {
+    "hub": "/compatibility/jack-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Two of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Four of Spades",
+        "href": "/compatibility/4-of-spades-and-jack-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-jack-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Jack of Spades",
+        "href": "/compatibility/jack-of-spades-and-jack-of-spades"
+      }
+    ]
+  },
+  "queen-of-spades": {
+    "hub": "/compatibility/queen-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Seven of Spades",
+        "href": "/compatibility/7-of-spades-and-queen-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Lifetime Gift",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Lifetime Challenge",
+        "label": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "Queen of Spades",
+        "href": "/compatibility/queen-of-spades-and-queen-of-spades"
+      }
+    ]
+  },
+  "king-of-spades": {
+    "hub": "/compatibility/king-of-spades",
+    "pairs": [
+      {
+        "pos": "Venus",
+        "label": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "label": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-king-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "label": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Jupiter",
+        "label": "Ten of Spades",
+        "href": "/compatibility/10-of-spades-and-king-of-spades"
+      },
+      {
+        "pos": "Saturn",
+        "label": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Mercury",
+        "label": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-king-of-spades"
+      },
+      {
+        "pos": "Mirror",
+        "label": "King of Spades",
+        "href": "/compatibility/king-of-spades-and-king-of-spades"
+      }
+    ]
+  }
+}

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import {
+  READER_PHONE_DISPLAY,
+  READER_PHONE_TEL,
+  TRIAL_NAME,
+  TRIAL_PATH,
+} from "@/lib/offers";
 import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_NAME, VIDEO_PATH } from "@/lib/site";
 
@@ -82,6 +88,16 @@ function SeoFooter() {
         <div>
           <p className="mb-2 font-serif text-base text-[#14110d]">Personal readings</p>
           <ul className="space-y-1.5">
+            <li>
+              <a href={READER_PHONE_TEL} className="hover:text-[#14110d]">
+                <span className="text-[#9e3d24]">Free</span> teaser call: {READER_PHONE_DISPLAY}
+              </a>
+            </li>
+            <li>
+              <Link href={TRIAL_PATH} className="hover:text-[#14110d]">
+                <span className="text-[#9e3d24]">$9</span> {TRIAL_NAME}
+              </Link>
+            </li>
             {READING_OFFERS.map((offer) => (
               <li key={offer.slug}>
                 <Link href={readingOfferHref(offer)} className="hover:text-[#14110d]">
@@ -100,8 +116,11 @@ function SeoFooter() {
           <p className="mb-2 font-serif text-base text-[#14110d]">Free tools</p>
           <ul className="space-y-1.5">
             <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
+            {/* /born-on/ and /compatibility/ are edge-rendered by the
+                cardology-unlock Worker, not this Next app — plain <a>. */}
+            <li><a href="/born-on/" className="hover:text-[#14110d]">Birthday Card Lookup</a></li>
             <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
-            <li><Link href="/compatibility/" className="hover:text-[#14110d]">Compatibility Pair Library</Link></li>
+            <li><a href="/compatibility/" className="hover:text-[#14110d]">Compatibility Pair Library</a></li>
             <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Tool</Link></li>
             <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Cards</Link></li>
           </ul>

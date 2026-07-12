@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL, TRIAL_NAME, TRIAL_PATH } from "@/lib/offers";
 import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_URL, VIDEO_PATH } from "@/lib/site";
 
@@ -149,6 +150,22 @@ export default function Home() {
               <Link href="/birth-card-calculator" className="paper-button large-button">
                 Find your card free
               </Link>
+            </div>
+
+            <div className="mt-5 max-w-xl border border-[#14110d]/18 bg-[#eadfcd]/70 p-4 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.34s_both]">
+              <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+                Or hear it first — call free
+              </p>
+              <a
+                href={READER_PHONE_TEL}
+                className="mt-1 inline-block font-serif text-2xl text-[#14110d] transition hover:text-[#9e3d24] sm:text-3xl"
+              >
+                {READER_PHONE_DISPLAY}
+              </a>
+              <p className="mt-1 text-sm leading-relaxed text-[#5b5148]">
+                The AI reader answers, asks your birthday, and reads your card
+                on the spot. No account, no card — just call.
+              </p>
             </div>
           </div>
 
@@ -365,6 +382,12 @@ export default function Home() {
                 Find your card first — free
               </Link>
             </div>
+            <p className="mt-5 text-sm leading-relaxed text-[#5b5148]">
+              Prefer to hear it? Call the AI reader free:{" "}
+              <a href={READER_PHONE_TEL} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
+                {READER_PHONE_DISPLAY}
+              </a>
+            </p>
           </div>
         </section>
 
@@ -374,6 +397,16 @@ export default function Home() {
             <div>
               <p className="mb-2 font-serif text-base text-[#14110d]">Personal readings</p>
               <ul className="space-y-1.5">
+                <li>
+                  <a href={READER_PHONE_TEL} className="hover:text-[#14110d]">
+                    <span className="text-[#9e3d24]">Free</span> teaser call: {READER_PHONE_DISPLAY}
+                  </a>
+                </li>
+                <li>
+                  <Link href={TRIAL_PATH} className="hover:text-[#14110d]">
+                    <span className="text-[#9e3d24]">$9</span> {TRIAL_NAME}
+                  </Link>
+                </li>
                 {READING_OFFERS.map((offer) => (
                   <li key={offer.slug}>
                     <Link href={readingOfferHref(offer)} className="hover:text-[#14110d]">

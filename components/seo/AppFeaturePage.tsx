@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, abs } from "@/lib/site";
 
@@ -77,6 +78,8 @@ export function AppFeaturePage({
       <section className="app-paper-stage mt-10 border-y border-[#14110d]/15 bg-[#eadfcd]/55">
         {children}
       </section>
+
+      <OfferCta className="mt-10" />
     </SeoShell>
   );
 }

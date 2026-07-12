@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import {
   allBlogPillars,
@@ -35,6 +36,7 @@ export async function generateMetadata({
       description: pillar.description,
       url: blogPillarPath(pillar),
       type: "website",
+      images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
     },
   };
 }
@@ -194,6 +196,8 @@ export default async function BlogPillarPage({
         <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>
         <FaqList faqs={pillar.faqs} />
       </section>
+
+      <OfferCta className="mt-12" />
     </SeoShell>
   );
 }

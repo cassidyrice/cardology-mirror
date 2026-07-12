@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     title: "Cardology Story Arc: Your Year Reading",
     description,
     url: "/story",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   robots: { index: false, follow: true },
 };
