@@ -1,6 +1,6 @@
 # Card Blueprints — daily short pipeline
 
-One vertical video (1080x1920) per day: "Born on <date>? Your card is the <birth card>."
+One vertical video (1080x1920) per day: "Born on <date>? Your card is the <birth card> — and its shadow side explains a lot."
 
 ## One command
 
@@ -11,15 +11,22 @@ scripts/shorts/run-daily-short.sh 2026-07-12   # any date
 
 Outputs (repo-relative):
 
-- `content/shorts/queue/<date>.json` — meta: `vo_text`, `title`, `caption`, `card_slug`, `og_image`
+- `content/shorts/queue/<date>.json` — meta: `vo_text`, `vo_phrases` (3–6-word caption
+  chunks with word counts), `born_on_label`, `title`, `caption`, `card_slug`,
+  `pin_image` (render visual), `og_image` (thumbnails)
 - `content/shorts/out/<date>-vo.wav` — narration (24 kHz mono PCM16)
 - `content/shorts/out/<date>-daily-card.mp4` — final short (h264 + AAC, faststart)
+- `content/shorts/out/<date>-daily-card.filter.log` — the exact ffmpeg filtergraph used
 
 ## Stages
 
 1. **Script** — `bun scripts/shorts/daily-script.ts --date <date> --out <json>`
-   Pulls the birth card from `lib/seo-cards`, composes a 110–150-word VO
-   (hook → mirror-not-forecast frame → personality → shadow → CTA), plus title/caption.
+   Pulls the birth card from `lib/seo-cards`, composes an 85–110-word open-loop VO
+   targeting ~28–32s (hook that teases the shadow → identity punches → shadow turn
+   at ~second 12 → gift punches → growth line → CTA), plus caption phrase chunks,
+   title, and social caption. Page-copy tics ("You're diversifying resources
+   creatively", "Your curriculum is…", "mirror, not a forecast") are filtered from
+   the VO; "a mirror, not a forecast" survives only in the social caption.
    Dec 31 (Joker) and invalid dates throw.
 
 2. **TTS** — voicebox (Kokoro) at `http://127.0.0.1:17493`, profile
@@ -41,10 +48,18 @@ Outputs (repo-relative):
    Fallback audio is clearly noticeable — prefer restarting voicebox.
 
 3. **Render** — `bash scripts/shorts/render.sh <meta.json> <vo.wav> <out.mp4>`
-   Ken Burns zoom (1.00→1.06) over the card's og image, card label in Bone +
-   `cardblueprints.com` in Antique Gold (Georgia serif), VO + 0.8 s tail.
+   Retention template v2:
+   - **0–2.5s:** "BORN ON <DATE>?" (~120px Antique Gold, two lines) over the pin art
+     heavily blurred behind a dark scrim; the sharp card art reveals at 3.0s.
+   - **Visual:** vertical pin art `public/pins/<card_slug>.png` (1000x1500) cover-fills
+     the 9:16 frame, Ken Burns 1.00→1.12. No card-name overlay (the pin carries it).
+   - **Captions:** VO phrase chunks burned in (Bone ~64px, centered in the lower
+     third), each windowed by word-count proportion of the ffprobe-measured VO
+     duration via drawtext `enable='between(t,start,end)'`.
+   - `cardblueprints.com` watermark (Antique Gold) stays at the bottom; VO + 0.8 s tail.
    Auto-selects `/opt/homebrew/opt/ffmpeg-full/bin/ffmpeg` (the slim PATH ffmpeg lacks
-   `drawtext`); override with `FFMPEG`/`FFPROBE` env vars.
+   `drawtext`); override with `FFMPEG`/`FFPROBE` env vars. Writes the constructed
+   filtergraph to `<out>.filter.log` for inspection.
 
 ## Still manual
 

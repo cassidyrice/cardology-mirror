@@ -19,12 +19,22 @@ Persistent state for the self-improving asset loop. Each iteration: read this fi
 6. **Orphan link equity** — compatibility-pair blocks on 52 card pages + /born-on/ footer link (1,798 Worker pages need inbound links). Peer edited `birth-card/[slug]/page.tsx` (62 lines) — diff to see if covered.
 7. **General-meaning sections** on 52 card pages ("in a general reading / in love") + title widening toward "{Card} Meaning".
 
-## Next-iteration directives
+## Round 1 — COMPLETE (2026-07-12, ~12:15)
 
-1. Check push state. If peer pushed → curl-verify live: `/feed.xml`, `/cartomancy-vs-tarot`, sitemap, one card page w/ video embed. If unpushed and stale (>1h) → build-verify and push.
-2. Generate the FIRST sample short: `scripts/shorts/run-daily-short.sh` (see its README) + verify with ffprobe. Generate nothing in bulk before one sample passes a judge.
-3. Judge round 1: hook lens on the sample short + 3 pins from `public/pins/`; citability lens on `/cartomancy-vs-tarot` + llms.txt. Record scores HERE.
-4. Only after judge round 1: apply template improvements to generators, then work the Remainder backlog top-down.
+Generated first short (3♦ July 12) → judged (2 lenses) → improved the generators → deployed.
+
+- **Hook judge (3/10 hook, 2/10 retention, 5/10 pins, KILL on upload)** → all 4 mandated fixes applied to `daily-script.ts` + `render.sh` by improver agent, verified in filtergraph + frame extracts: date-tease 0–2.5s w/ blurred art + 3.0s reveal, 24 phrase-caption drawtext windows, VO 91 words / 30.63s (was 38.8s) w/ open-loop hook + shadow turn @11.5s, full-frame pin art w/ 1.00→1.12 zoom. README updated. `render.sh` now python3-only for meta parsing; writes `<out>.filter.log`.
+- **Citability judge (8/10 page, 9/10 llms.txt, no kills)** → all 4 fixes applied inline: question-shaped H2s ("What is cartomancy?", "Does a playing card deck have a Major Arcana?"), "Can you read tarot with playing cards?" promoted to top-area H2 section, suit-mapping section now leads with the extractable correspondence sentence, history claim hedged, llms.txt sitemap description made truthful.
+- **Validator finding:** `validate-engine.mjs` is a JS↔Python parity harness whose reference CLI (`/Users/clr/cardology-llm/engine/cardology_cli.py`) is MISSING — found in `~/.Trash/cardology-cli/`. 0/84 is vacuous (env, pre-existing). `validate-public-truth.ts` PASSes; build green. USER_ACTION: restore or re-point the reference CLI (env `CARDOLOGY_CLI`) if parity checking should live.
+- **Deploy: BLOCKED, awaiting the human.** Push-to-main = production deploy; the permission layer (correctly) refused to let the loop deploy on its own authority. The full stack (peer's 3 g4 commits + ENGINE.md + round-1 improvements) is committed locally, build-verified green, and deploy-ready. USER_ACTION: `git -C ~/cardology-mirror push origin main` when ready to ship, or tell the loop explicitly to push. Round-2 directive 1 (live verification) runs after that push.
+
+## Next-iteration directives (round 2)
+
+1. Curl-verify live after deploy: `/feed.xml`, `/cartomancy-vs-tarot` (check new H2s render), `/llms.txt`, sitemap, one card page w/ video embed.
+2. **Re-judge the NEW short** (hook lens, round 2). Upload hold stays until hook ≥6/10. If it passes: generate the next 3 queue days and mark uploads as a user_action (manual per README).
+3. Apply the PIN fixes the hook judge flagged but round 1 didn't mandate: benefit/promise text overlay on pins (not just card name + epithet), fix gray-epithet contrast at feed size. Then regenerate a 3-pin sample and re-judge.
+4. Work the Remainder backlog top-down (og:image shallow-merge bug first — verify live now that deploy happened, then fix).
+5. Keep the one-writer coordination check at every wake.
 
 ## Coordination rule
 
@@ -34,4 +44,4 @@ Two Claude sessions have driven these repos in parallel today. Before ANY mutati
 
 | Round | Hook (shorts) | Hook (pins) | Citability | Funnel | Notes |
 |---|---|---|---|---|---|
-| — | — | — | — | — | none yet |
+| 1 (2026-07-12) | 3/10 hook · 2/10 retention → fixes applied | 5/10 (fixes pending) | 8/10 page · 9/10 llms.txt → fixes applied | not judged yet | old-template short KILLED for upload; new template awaits round-2 judge |

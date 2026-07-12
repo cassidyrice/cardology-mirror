@@ -76,14 +76,13 @@ export default function CartomancyVsTarot() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What cartomancy actually is</h2>
+        <h2 className="eyebrow mb-2 text-gold">What is cartomancy?</h2>
         <p className="prose-reading text-mist">
           Cartomancy is any practice that assigns meaning to cards and reads
           them for insight — an umbrella term, not a single method. Tarot,
           Lenormand, oracle decks, and plain playing-card reading are all
-          cartomancy. The playing-card branch is the oldest of these in
-          Europe: people were reading the standard deck centuries before
-          decorated tarot decks became the default image of card reading.
+          cartomancy. In Europe, playing-card reading predates tarot&rsquo;s rise
+          as the default image of card reading.
           When someone asks for the &ldquo;playing card tarot equivalent,&rdquo; the
           honest answer is that playing cards are not an imitation of tarot.
           Tarot grew out of the same four-suit root and added trumps on top.
@@ -91,10 +90,25 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">Can you read tarot with playing cards?</h2>
+        <p className="prose-reading text-mist">
+          Mostly, yes. Each tarot suit has a playing-card equivalent — Cups
+          become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords
+          become Spades — so the 56 minor arcana translate to the 52-card deck
+          with only the four extra court cards lost. What a playing-card deck
+          does not have is the 22 Major Arcana; cartomancy traditions either
+          work without them or, as Cardology does, replace their symbolism
+          with the deck&rsquo;s own calendar structure.
+        </p>
+      </section>
+
+      <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How the 52-card deck maps to tarot</h2>
         <p className="prose-reading mb-2 text-mist">
-          Tarot&rsquo;s minor arcana are a costume over the deck you already own.
-          The four suits translate directly:
+          Hearts correspond to Cups, Clubs to Wands, Diamonds to Pentacles,
+          and Spades to Swords; Ace through Ten map one to one. Tarot&rsquo;s
+          minor arcana are a costume over the deck you already own — the four
+          suits translate directly:
         </p>
         <ul className="prose-reading space-y-1.5 text-mist">
           <li><span className="text-[#e0654a]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
@@ -113,7 +127,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What about the Major Arcana?</h2>
+        <h2 className="eyebrow mb-2 text-gold">Does a playing card deck have a Major Arcana?</h2>
         <p className="prose-reading text-mist">
           The 22 trumps — the Fool, the Tower, Death — have no playing-card
           equivalent, and this is where the two branches of cartomancy genuinely

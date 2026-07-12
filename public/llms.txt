@@ -44,7 +44,7 @@
 - [About](https://cardblueprints.com/about) · [Methodology](https://cardblueprints.com/methodology) · [Editorial Policy](https://cardblueprints.com/editorial-policy) · [Contact](https://cardblueprints.com/contact)
 
 ## Discovery
-- Sitemaps: `https://cardblueprints.com/sitemap.xml` (all site pages, including the 52 card meanings), `https://cardblueprints.com/sitemap-cardology.xml` (birthday pages), and `https://cardblueprints.com/sitemap-compatibility.xml` (compatibility pairs)
+- Sitemaps: `https://cardblueprints.com/sitemap.xml` (all core pages and the 52 card meanings; birthday and compatibility pages live in the two sitemaps below), `https://cardblueprints.com/sitemap-cardology.xml` (birthday pages), and `https://cardblueprints.com/sitemap-compatibility.xml` (compatibility pairs)
 - Blog RSS feed: `https://cardblueprints.com/feed.xml`
 - [Full LLM Context](https://cardblueprints.com/llms-full.txt): Expanded structural context for AI agents.
 
