@@ -57,6 +57,10 @@ Generated first short (3♦ July 12) → judged (2 lenses) → improved the gene
 - **52 card pages upgraded for general "{card} meaning" intent, judged 8/10 / regression LOW / CLEAR.** Widened titles ("Queen of Hearts Meaning: In Readings & As a Birth Card"), general-first quick answer, "In a general reading" + "In love" sections (template-composed from data-layer strings only; judge's automated sweep of all 52 rendered pages found zero splice failures), FAQ JSON-LD extended from the same array. Birth-card ranking assets preserved as a superset (dedicated H2 + dates intact). Compat-block link equity verified pre-existing (planetary/karma/mirror rule, 8-9 links/page) — documented, not duplicated; in-love hub link is new. Judge polish applied: " & "→" and " in the quotable lead, suit capitalization fix (52-page typo-look). Build green.
 - **Backlog now drained** except: funnel judge (needs deploy), blog trio (tattoo/love — daily-blog Action's definitional queue may cover organically), Year Pass/Gift (deferred to g2 triggers).
 
+## Round 7 (2026-07-12, ~18:20) — peer sweep
+
+Peer session built a **shorts studio** (local review/produce UI: `bun run shorts:studio`, tests `bun run test:shorts-studio`) then ended without committing; work sat stranded ~2h with 12/12 tests passing. Swept into its own commit (aca228c) per one-writer coordination — reciprocal of the peer sweeping this loop's stopped-fleet edits this morning. Tree clean, synced.
+
 ## Standing state (loop cadence drops to standby)
 
 - **Awaiting user:** DEPLOY (`bun run pages:build && bun run pages:deploy` — ships card-of-the-day + 5 beginner pages + 52 upgraded card pages), shorts uploads (8 ready), Pinterest auth (52 pins), Trash'd parity CLI decision.
