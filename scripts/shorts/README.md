@@ -2,6 +2,34 @@
 
 One vertical video (1080x1920) per day: "Born on <date>? Your card is the <birth card> — and its shadow side explains a lot."
 
+## Local Script Studio
+
+The local Script Studio creates on-brand, timed video scripts without changing or
+publishing the public website.
+
+```bash
+bun run shorts:studio
+```
+
+Open `http://localhost:3588`. The studio includes:
+
+- birthday reveals, card meanings, and compatibility scripts;
+- 15-second and 30-second versions;
+- free-calculator, $99 AI Voice Reading, and brand-awareness goals;
+- timed scenes, on-screen text, voiceover, visual directions, captions, and hashtags;
+- copy buttons and a phone preview using the existing vertical card art;
+- the real `lib/seo-cards.ts` data, including the December 31 Joker boundary;
+- guardrails for reflection-not-fate wording and balanced same-card compatibility.
+
+The studio is deterministic. Apify trend ideas can be pasted as pacing inspiration,
+but creator wording is never copied into the output.
+
+Run its focused checks with:
+
+```bash
+bun run test:shorts-studio
+```
+
 ## One command
 
 ```bash

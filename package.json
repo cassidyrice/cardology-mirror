@@ -12,6 +12,8 @@
     "daily-card": "bun cli/cardology_cli.ts daily-card",
     "generate:daily-blog": "bun scripts/generate_daily_blog_post.ts",
     "sync:videos": "bun scripts/sync_videos.ts",
+    "shorts:studio": "bun scripts/shorts/studio-server.ts",
+    "test:shorts-studio": "bun test scripts/shorts/studio-core.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true"
   },

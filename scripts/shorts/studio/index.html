@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Card Blueprints Script Studio</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="brand-bar">
+      <div class="suits" aria-hidden="true"><span>♥</span><span>♣</span><span>♦</span><span>♠</span></div>
+      <div>
+        <p class="eyebrow">Card Blueprints</p>
+        <h1>Video Script Studio</h1>
+      </div>
+      <p class="header-note">Fixed facts. On-brand words. Ready to record.</p>
+    </header>
+
+    <main class="workspace">
+      <section class="panel controls-panel" aria-labelledby="controls-title">
+        <div class="section-heading">
+          <p class="step">01 · Choose</p>
+          <h2 id="controls-title">What are we making?</h2>
+        </div>
+
+        <form id="generator-form">
+          <label>
+            Post type
+            <select id="post-type" name="postType"></select>
+          </label>
+
+          <div id="birthday-fields" class="subject-fields">
+            <label>
+              Birthday
+              <select id="date-slug" name="dateSlug"></select>
+            </label>
+          </div>
+
+          <div id="card-fields" class="subject-fields" hidden>
+            <label>
+              Card
+              <select id="card-slug" name="cardSlug"></select>
+            </label>
+          </div>
+
+          <div id="compatibility-fields" class="subject-fields two-up" hidden>
+            <label>
+              First card
+              <select id="card-a-slug" name="cardASlug"></select>
+            </label>
+            <label>
+              Second card
+              <select id="card-b-slug" name="cardBSlug"></select>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>Length</legend>
+            <div class="choice-row" id="duration-options">
+              <label class="choice"><input type="radio" name="duration" value="15" checked /> 15 seconds</label>
+              <label class="choice"><input type="radio" name="duration" value="30" /> 30 seconds</label>
+            </div>
+          </fieldset>
+
+          <label>
+            Goal
+            <select id="goal" name="goal"></select>
+          </label>
+
+          <details>
+            <summary>Add trend inspiration</summary>
+            <label class="detail-label">
+              Paste a hook or format idea
+              <textarea id="trend-idea" name="trendIdea" rows="3" placeholder="Example: POV reveal, question hook, quick list..."></textarea>
+            </label>
+            <p class="help">The tool borrows the pacing only. It does not copy creator wording.</p>
+          </details>
+
+          <div class="button-row">
+            <button class="primary" type="submit">Make my script</button>
+            <button class="quiet" type="button" id="surprise-button">Surprise me</button>
+          </div>
+          <p id="form-error" class="error" role="alert" hidden></p>
+        </form>
+      </section>
+
+      <section class="panel result-panel" aria-labelledby="result-title">
+        <div class="result-topline">
+          <div class="section-heading">
+            <p class="step">02 · Use</p>
+            <h2 id="result-title">Your finished post</h2>
+          </div>
+          <div class="button-row small-buttons">
+            <button class="quiet" type="button" id="copy-script" disabled>Copy full script</button>
+            <button class="quiet" type="button" id="copy-caption" disabled>Copy caption</button>
+            <button class="quiet" type="button" id="another-button" disabled>Make another</button>
+          </div>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-card" aria-hidden="true"><span>?</span><b>♠</b></div>
+          <p>Choose a post, then press <strong>Make my script</strong>.</p>
+          <small>The generator uses the real Card Blueprints card data.</small>
+        </div>
+
+        <div id="result" hidden>
+          <div class="result-grid">
+            <div>
+              <article class="hook-card">
+                <p class="eyebrow">Hook</p>
+                <h3 id="hook-output"></h3>
+                <p id="word-count" class="metric"></p>
+              </article>
+              <div id="scenes" class="scenes"></div>
+            </div>
+
+            <aside class="phone-wrap" aria-label="Phone preview">
+              <div class="phone">
+                <div class="phone-screen" id="phone-screen">
+                  <div class="phone-brand">♥♣♦♠ CARD BLUEPRINTS</div>
+                  <div class="phone-copy">
+                    <p id="phone-hook"></p>
+                    <strong id="phone-subject"></strong>
+                  </div>
+                  <div class="phone-cta" id="phone-cta"></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="deliverables">
+            <article>
+              <p class="eyebrow">Voiceover</p>
+              <p id="voiceover-output"></p>
+            </article>
+            <article>
+              <p class="eyebrow">Caption</p>
+              <pre id="caption-output"></pre>
+            </article>
+            <article>
+              <p class="eyebrow">Facts checked</p>
+              <ul id="facts-output"></ul>
+            </article>
+            <article id="warnings-card" hidden>
+              <p class="eyebrow">Notes</p>
+              <ul id="warnings-output"></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Card Blueprints supplies the truth. The studio packages it into a short video.</p>
+    </footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
+
