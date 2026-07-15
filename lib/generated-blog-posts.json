@@ -3095,5 +3095,86 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "reading-two-timing-layers-together",
+    "pillar": "timing-and-spreads",
+    "title": "Reading Two Timing Layers Together",
+    "description": "How to combine the Long Range card and the current 52-day period card into one coherent reflection instead of two competing fortunes.",
+    "dek": "Year theme plus period chapter: the skill is in the join.",
+    "datePublished": "2026-07-15",
+    "dateModified": "2026-07-15",
+    "readTime": "5 min read",
+    "keywords": [
+      "combining timing cards",
+      "long range and period together",
+      "layered card reading",
+      "timing synthesis"
+    ],
+    "answer": "The two timing layers most worth combining are the Long Range card, which themes the whole year, and the current period card, which themes the current 52 days. Read the Long Range card as the standing question and the period card as this chapter's version of it, filtered through the period's planetary arena.",
+    "sections": [
+      {
+        "heading": "The standing question and the chapter",
+        "body": [
+          "Start with the Long Range card and phrase it as a question the year keeps asking. A Four of Diamonds year keeps asking about financial and value foundations.",
+          "Then read the period card as the current chapter's angle on that question, in the current planet's arena. The same year-question sounds different in Venus's relational season than in Saturn's structural one."
+        ],
+        "links": [
+          {
+            "label": "What Is a Long Range Card?",
+            "href": "/blog/what-is-a-long-range-card"
+          }
+        ]
+      },
+      {
+        "heading": "When the layers agree and when they argue",
+        "body": [
+          "Sometimes the cards rhyme: a change-oriented year card meets a change-oriented period card, and the season's job is obvious.",
+          "Sometimes they pull opposite ways: a stability year card over a disruptive period card. Do not force a blend. Hold both: something is being stabilized, and something is being shaken, and they are usually not the same thing."
+        ]
+      },
+      {
+        "heading": "A one-paragraph method",
+        "body": [
+          "Write one paragraph at each period boundary: the year is asking X, this period puts it in the arena of Y, the card suggests the movement is Z, and here is what that could look like concretely this month.",
+          "One paragraph is enough. Layered timing goes wrong mainly by saying too much, not too little."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Which timing layer wins if they conflict?",
+        "a": "Neither. The Long Range card names the year's standing theme and the period card names the current chapter. Apparent conflict usually means two different things are true in two different arenas."
+      },
+      {
+        "q": "Should I add the daily card as a third layer?",
+        "a": "Only after the two main layers feel natural. More layers add noise faster than they add insight."
+      },
+      {
+        "q": "How often should I re-read the combination?",
+        "a": "At each period boundary, roughly every 52 days. Mid-period re-reads rarely change anything except your patience."
+      }
+    ],
+    "related": [
+      "what-is-a-long-range-card",
+      "how-52-day-periods-divide-your-year",
+      "daily-card-reading-as-journal-prompt"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
