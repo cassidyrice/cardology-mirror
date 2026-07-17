@@ -3292,5 +3292,92 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "naming-repeating-relationship-patterns",
+    "pillar": "relationships-and-practice",
+    "title": "Naming Repeating Relationship Patterns",
+    "description": "Using Cardology to see why the same relationship keeps happening with different people: the card behind the type, and the practice of naming it.",
+    "dek": "You do not keep meeting the same person. You keep running the same pattern.",
+    "datePublished": "2026-07-17",
+    "dateModified": "2026-07-17",
+    "readTime": "6 min read",
+    "keywords": [
+      "repeating relationship pattern",
+      "same dynamic different people",
+      "pattern recognition practice",
+      "why history repeats in love"
+    ],
+    "answer": "When the same relationship dynamic keeps recurring with different people, Cardology offers a structural first question: is there a repeated card, suit, or spread position among the people involved? Often there is. Naming the recurring position, and your own card's role in attracting it, turns a fate-flavored complaint into a workable pattern.",
+    "sections": [
+      {
+        "heading": "Collect the data first",
+        "body": [
+          "List the significant relationships where the pattern ran, and calculate each person's birth card. This takes ten minutes and replaces a mood with a dataset.",
+          "Then look for the repeat: the same card twice, the same suit throughout, or, most often, the same spread position: a run of people who all sat in your Saturn, or your Mars, or your Neptune."
+        ],
+        "links": [
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Read your own card into it",
+        "body": [
+          "The recurring position is half the story; your card's pattern is the other half. A card whose shadow gives too much will keep finding takers, and a card that avoids direct conflict will keep hiring people to have it anyway.",
+          "This is the least comfortable and most useful step. The people were different; the caster of the role was you, and the role is written in a range your own card describes."
+        ],
+        "links": [
+          {
+            "label": "How to Read a Birth Card Meaning",
+            "href": "/blog/how-to-read-birth-card-meaning"
+          }
+        ]
+      },
+      {
+        "heading": "From named to changed",
+        "body": [
+          "Naming is not fixing, but nothing gets fixed unnamed. Once the pattern has a card-language handle, you can catch it early: the familiar charge of a new person landing in the old position.",
+          "The choice at that moment is the actual work: run the pattern again with better awareness, or respond differently to it for once. The cards can only make the moment visible."
+        ],
+        "links": [
+          {
+            "label": "Shadow and Karma Guide",
+            "href": "/shadow-karma-guide"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is it really likely my exes share card patterns?",
+        "a": "It is common enough to be worth checking, especially at the level of spread positions rather than identical cards. And if no pattern shows up, that is also information."
+      },
+      {
+        "q": "Does a repeating pattern mean something karmic?",
+        "a": "The tradition would say the repetition is the lesson presenting itself again. You can drop the metaphysics and keep the practical core: repetition marks unfinished work."
+      },
+      {
+        "q": "Can I break a pattern the cards describe?",
+        "a": "The cards describe defaults, not sentences. People change their responses to a pattern all the time; that is the entire point of seeing it."
+      }
+    ],
+    "related": [
+      "karma-cards-in-relationships",
+      "why-some-birth-cards-clash",
+      "how-to-compare-two-birth-cards"
+    ],
+    "coreLinks": [
+      {
+        "label": "Shadow and Karma Guide",
+        "href": "/shadow-karma-guide"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      }
+    ]
   }
 ]
