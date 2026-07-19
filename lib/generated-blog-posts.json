@@ -3495,5 +3495,90 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "what-is-the-life-spread-in-cardology",
+    "pillar": "cardology-foundations",
+    "title": "What Is the Life Spread in Cardology?",
+    "description": "The Life Spread explained: the fixed arrangement of all 52 cards that gives every birth card its Life Path positions, from Mercury through King.",
+    "dek": "Every birth card sits inside a larger map. The Life Spread is that map.",
+    "datePublished": "2026-07-19",
+    "dateModified": "2026-07-19",
+    "readTime": "6 min read",
+    "keywords": [
+      "life spread cardology",
+      "life path cards",
+      "grand solar spread",
+      "card spread positions"
+    ],
+    "answer": "The Life Spread is a fixed arrangement of all 52 cards used in Cardology. Each birth card occupies one position in it, and the cards that fall in related positions become that card's Life Path cards: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and beyond. It is the structure behind compatibility roles and karma-card relationships.",
+    "sections": [
+      {
+        "heading": "One spread, every card",
+        "body": [
+          "Unlike a tarot spread, the Life Spread is not laid out fresh for each question. It is a single fixed grid holding all 52 cards, and it never changes.",
+          "Your birth card has a permanent address in that grid. The cards around and connected to that address form your Life Path: a Moon support card plus a sequence running Birth, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, and the crown positions."
+        ],
+        "links": [
+          {
+            "label": "What Is Cardology?",
+            "href": "/what-is-cardology"
+          }
+        ]
+      },
+      {
+        "heading": "Why the positions matter",
+        "body": [
+          "The positions are where Cardology gets its relational depth. When another person's birth card lands in your Venus position, the relationship tends to carry a Venus tone. When it lands in Saturn, it tends to feel like a teacher.",
+          "The same structure feeds the karma-card layer: environment and displacement describe how a card sits relative to its natural position."
+        ],
+        "links": [
+          {
+            "label": "Compatibility Calculator",
+            "href": "/birth-card-compatibility-calculator"
+          },
+          {
+            "label": "Shadow and Karma Guide",
+            "href": "/shadow-karma-guide"
+          }
+        ]
+      },
+      {
+        "heading": "What a beginner actually needs",
+        "body": [
+          "You do not need to memorize the grid. You need to know that it exists, that it is fixed, and that the roles it assigns are what make two-person readings specific instead of generic.",
+          "Start with your own birth card, then look up one important relationship and see which position each person occupies for the other. That single exercise teaches the spread faster than any diagram."
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is the Life Spread the same for everyone?",
+        "a": "The grid itself is the same for everyone. What differs is where your birth card sits in it, which determines your Life Path cards."
+      },
+      {
+        "q": "How is the Life Spread different from a yearly spread?",
+        "a": "The Life Spread is permanent and describes structure. Yearly spreads change with age and describe timing."
+      },
+      {
+        "q": "Do I need the Life Spread for compatibility?",
+        "a": "For the deeper layer, yes. Birth-card comparison starts the reading, but the Life Spread positions name the role each person plays for the other."
+      }
+    ],
+    "related": [
+      "cardology-compatibility-beginner-guide",
+      "karma-cards-environment-and-displacement",
+      "what-cardology-is-and-is-not"
+    ],
+    "coreLinks": [
+      {
+        "label": "Compatibility Calculator",
+        "href": "/birth-card-compatibility-calculator"
+      },
+      {
+        "label": "Shadow and Karma Guide",
+        "href": "/shadow-karma-guide"
+      }
+    ]
   }
 ]
