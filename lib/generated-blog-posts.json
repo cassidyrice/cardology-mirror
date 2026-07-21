@@ -3696,5 +3696,86 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "how-age-changes-your-yearly-spread",
+    "pillar": "timing-and-spreads",
+    "title": "How Age Changes Your Yearly Spread",
+    "description": "Why the same birth card gets different cards every year: age selects the yearly spread, and the cycle of spreads has its own structure.",
+    "dek": "Your card is fixed. Your year is not. Age is the variable that moves the spread.",
+    "datePublished": "2026-07-21",
+    "dateModified": "2026-07-21",
+    "readTime": "5 min read",
+    "keywords": [
+      "age and yearly spread",
+      "why year cards change",
+      "spread by age",
+      "cardology age cycle"
+    ],
+    "answer": "A yearly spread is selected by two inputs: your birth card and your age. The birth card never changes, so age is what moves you through the system's sequence of yearly spreads. Each birthday advances you to the next spread, which is why the same person gets a genuinely different card year every year.",
+    "sections": [
+      {
+        "heading": "Two inputs, one year",
+        "body": [
+          "Everything in the timing layer resolves from birth card plus age. Two Queens of Clubs who are both 40 share a yearly spread; the same person at 41 does not.",
+          "This is why Cardology can be specific about a year without asking anything beyond the birthday: the inputs are already sufficient."
+        ],
+        "links": [
+          {
+            "label": "Reading Your Yearly Spread",
+            "href": "/blog/reading-your-yearly-spread"
+          }
+        ]
+      },
+      {
+        "heading": "The long cycle",
+        "body": [
+          "The spreads are not random from year to year; they belong to a long repeating structure. The tradition treats the sequence as a cycle a person moves through across a lifetime, with certain ages marking notable turns.",
+          "You do not need the whole cycle theory to use the system. Knowing that each age has its own spread, and that the sequence is fixed, is enough to read any given year."
+        ]
+      },
+      {
+        "heading": "Using age well in a reading",
+        "body": [
+          "Always confirm the age before reading a year: the spread for age 39 is not the spread for age 40, and off-by-one errors produce confidently wrong readings.",
+          "Age in Cardology means completed years at the last birthday. If the birthday has not arrived yet this calendar year, you are still reading the previous spread."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Why did my cards change this year?",
+        "a": "Because your age changed. Each birthday advances you to the next yearly spread in the sequence for your birth card."
+      },
+      {
+        "q": "Do spreads ever repeat?",
+        "a": "The tradition organizes yearly spreads into a long cycle, so structures recur over a lifetime, but consecutive years always differ."
+      },
+      {
+        "q": "Which age do I use for a reading?",
+        "a": "Your age as of your most recent birthday. The spread changes on the birthday itself, not on January 1."
+      }
+    ],
+    "related": [
+      "when-does-your-cardology-year-begin",
+      "reading-your-yearly-spread",
+      "what-is-a-long-range-card"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      }
+    ]
   }
 ]
