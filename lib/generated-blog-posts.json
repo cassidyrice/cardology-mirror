@@ -3893,5 +3893,92 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "how-to-compare-two-birth-cards",
+    "pillar": "relationships-and-practice",
+    "title": "How to Compare Two Birth Cards",
+    "description": "A five-step order for comparing any two birth cards: suits, ranks, spread positions both directions, ruling cards, and the honest summary.",
+    "dek": "Any two cards can be compared in five steps, in order, without a score.",
+    "datePublished": "2026-07-23",
+    "dateModified": "2026-07-23",
+    "readTime": "6 min read",
+    "keywords": [
+      "compare two cards steps",
+      "two person card reading",
+      "compatibility method order",
+      "card pair analysis"
+    ],
+    "answer": "Compare two birth cards in a fixed order. First, suits: same domain or translation needed. Second, ranks: what movement each card wants. Third, spread positions in both directions, since the roles are rarely symmetrical. Fourth, ruling cards for tone. Fifth, a plain-language summary of where the pair flows and where it works. No step produces a score, and none should.",
+    "sections": [
+      {
+        "heading": "Steps one and two: the cards themselves",
+        "body": [
+          "Suits first. Same suit means shared currency and shared blind spots; different suits mean translation work and built-in balance. Neither is better; they are different jobs.",
+          "Ranks second. Ask what movement each card wants: starting, stabilizing, changing, completing, ruling. Matched speeds feel easy; mismatched speeds are where the pace arguments come from."
+        ],
+        "links": [
+          {
+            "label": "Card Rank Meanings",
+            "href": "/blog/card-rank-meanings-aces-through-kings"
+          }
+        ]
+      },
+      {
+        "heading": "Step three: positions, both directions",
+        "body": [
+          "Look up where each card sits in the other's Life Spread. This is the step people skip and the one carrying the most information: the positions are usually different in each direction.",
+          "You may be their Venus while they are your Saturn. Asymmetries like that explain relationships where the two people describe the same bond in bafflingly different terms."
+        ],
+        "links": [
+          {
+            "label": "Compatibility Calculator",
+            "href": "/birth-card-compatibility-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Steps four and five: tone, then honesty",
+        "body": [
+          "Ruling cards add each person's expressive style. Two compatible birth cards with clashing ruling cards feel harder day-to-day than the core comparison suggests; the reverse is also true.",
+          "Finish with three plain sentences: where this pair flows, where it grinds, and what each person would need to say out loud for the grind to soften. If you cannot write those sentences, the comparison is not done."
+        ],
+        "links": [
+          {
+            "label": "Birth Card vs Ruling Card",
+            "href": "/birth-card-vs-ruling-card"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Why not just use a compatibility score?",
+        "a": "A score hides the structure that makes the reading useful. Two pairs with the same number can have completely different work to do."
+      },
+      {
+        "q": "Do I need both birthdays exactly?",
+        "a": "Month and day for both people, yes. Birth cards cannot be guessed from personality, and a wrong card produces a confidently wrong comparison."
+      },
+      {
+        "q": "What if the comparison looks bad?",
+        "a": "No comparison is a verdict. Hard positions name where the work is; plenty of long, good relationships live on structurally demanding pairings."
+      }
+    ],
+    "related": [
+      "cardology-compatibility-beginner-guide",
+      "why-some-birth-cards-clash",
+      "birth-card-vs-ruling-card-how-to-read-both"
+    ],
+    "coreLinks": [
+      {
+        "label": "Compatibility Calculator",
+        "href": "/birth-card-compatibility-calculator"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      }
+    ]
   }
 ]
