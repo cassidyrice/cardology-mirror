@@ -4096,5 +4096,86 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "number-cards-vs-court-cards",
+    "pillar": "cardology-foundations",
+    "title": "Number Cards vs Court Cards",
+    "description": "The structural difference between Ace-through-Ten and Jack, Queen, King in Cardology: quantities of energy versus social roles.",
+    "dek": "Numbers describe how much and what kind. Courts describe who you become when you carry it.",
+    "datePublished": "2026-07-25",
+    "dateModified": "2026-07-25",
+    "readTime": "5 min read",
+    "keywords": [
+      "number cards vs face cards",
+      "court card people",
+      "pip cards meaning",
+      "jack queen king roles"
+    ],
+    "answer": "In Cardology, the number cards Ace through Ten describe stages and quantities of a suit's energy: beginnings, pairings, expansions, completions. The court cards, Jack, Queen, and King, describe social roles: the apprentice or trickster, the steward, and the master. A number card asks what is happening; a court card asks who you are being.",
+    "sections": [
+      {
+        "heading": "Two kinds of card",
+        "body": [
+          "Ace through Ten form a progression. Each number is a stage in the life of its suit, from the initiating Ace to the fully expressed Ten.",
+          "Jack, Queen, and King break the progression and become people. They are not more energy; they are energy with a role, a rank, and a responsibility attached."
+        ],
+        "links": [
+          {
+            "label": "Card Rank Meanings: Aces Through Kings",
+            "href": "/blog/card-rank-meanings-aces-through-kings"
+          }
+        ]
+      },
+      {
+        "heading": "How the role changes the question",
+        "body": [
+          "For a number card the working question is situational: where is this pattern of change, balance, or completion showing up right now?",
+          "For a court card the question is behavioral: how does this person handle influence? A Jack can create or con. A Queen can serve or smother. A King can govern or dominate. Same energy, different maturity."
+        ]
+      },
+      {
+        "heading": "Why the split matters in readings",
+        "body": [
+          "Mixed readings get sharper when you honor the split. A number-card person in a court-card season may be learning a role; a court-card person under a number-card period may be handling an event.",
+          "If you remember one line: numbers move, courts hold. The friction between moving and holding explains a surprising amount of card behavior."
+        ],
+        "links": [
+          {
+            "label": "All 52 Birth Cards",
+            "href": "/birth-card"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are court cards better than number cards?",
+        "a": "No. Courts carry authority themes and the distortions that come with them. Numbers carry movement themes and their own distortions. Neither outranks the other in worth."
+      },
+      {
+        "q": "Why do Jacks have a double reputation?",
+        "a": "The Jack is the youngest court: creative, quick, and unfinished. The same flexibility that makes Jacks inventive can make them evasive."
+      },
+      {
+        "q": "Is a Ten almost a court card?",
+        "a": "No. A Ten is the suit's energy at full public expression, but still an event pattern rather than a social role."
+      }
+    ],
+    "related": [
+      "card-rank-meanings-aces-through-kings",
+      "four-suits-in-cardology",
+      "how-to-read-birth-card-meaning"
+    ],
+    "coreLinks": [
+      {
+        "label": "All 52 Birth Cards",
+        "href": "/birth-card"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      }
+    ]
   }
 ]
