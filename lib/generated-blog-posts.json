@@ -4293,5 +4293,92 @@
         "note": "$29, $99, and $199 options."
       }
     ]
+  },
+  {
+    "slug": "when-does-your-cardology-year-begin",
+    "pillar": "timing-and-spreads",
+    "title": "When Does Your Cardology Year Begin?",
+    "description": "Why the Cardology year runs birthday to birthday rather than January to December, and what that means for reading your current cards.",
+    "dek": "January 1 is irrelevant here. Your cards turn over on your birthday.",
+    "datePublished": "2026-07-27",
+    "dateModified": "2026-07-27",
+    "readTime": "5 min read",
+    "keywords": [
+      "cardology year start",
+      "birthday to birthday year",
+      "personal year cards",
+      "when do cards change"
+    ],
+    "answer": "Your Cardology year begins on your birthday and runs until the day before your next one. All yearly timing layers, including the seven 52-day periods, the Long Range card, and the yearly spread itself, reset on that date. The calendar year plays no role in the system's timing.",
+    "sections": [
+      {
+        "heading": "Birthday as day zero",
+        "body": [
+          "The yearly spread is calculated from your age, and your age changes on your birthday. So the birthday is the hinge: the old year's cards retire and a new set takes over.",
+          "The birthday itself is often treated as day zero, a threshold day belonging to neither year, with the Mercury period beginning the day after."
+        ],
+        "links": [
+          {
+            "label": "How 52-Day Periods Divide Your Year",
+            "href": "/blog/how-52-day-periods-divide-your-year"
+          }
+        ]
+      },
+      {
+        "heading": "What resets and what does not",
+        "body": [
+          "Everything in the timing layer resets: period cards, Long Range card, Pluto and Result cards, environment and displacement for the year.",
+          "The structural layer never resets. Your birth card, ruling card, and Life Spread positions are fixed for life. Timing moves across structure; it does not replace it."
+        ],
+        "links": [
+          {
+            "label": "Birth Card vs Ruling Card",
+            "href": "/birth-card-vs-ruling-card"
+          }
+        ]
+      },
+      {
+        "heading": "Practical consequences",
+        "body": [
+          "If a reading feels stale, check the date: you may be reading last year's spread after your birthday has passed.",
+          "It also means late-December babies are not special and January feels like nothing. The only date the system cares about is yours."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Do my cards change on January 1?",
+        "a": "No. All yearly cards change on your birthday. The calendar new year has no standing in Cardology timing."
+      },
+      {
+        "q": "What if my birthday falls mid-period by the calendar?",
+        "a": "It cannot. Periods are counted from your birthday, so the first period always starts your year and the seventh always ends it."
+      },
+      {
+        "q": "Does my birth card ever change?",
+        "a": "Never. Only the timing layers turn over each year; the birth card is fixed by month and day."
+      }
+    ],
+    "related": [
+      "how-52-day-periods-divide-your-year",
+      "how-age-changes-your-yearly-spread",
+      "52-day-periods-in-cardology"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      }
+    ]
   }
 ]
