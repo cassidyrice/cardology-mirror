@@ -43,20 +43,26 @@
   --text-eyebrow: 0.75rem;
 }
 
-/* Selection stays inside the warm palette on every surface. */
-::selection {
+/* Selection stays inside the warm palette on paper surfaces; dark in-app
+   screens keep the adaptive browser default. */
+:where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper) ::selection {
   background: rgba(184, 137, 61, 0.32);
   color: #14110d;
 }
 
-/* One visible, consistent focus treatment site-wide. */
-:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+/* Visible focus rings per surface: oxblood on paper, paper on ink. Dark
+   in-app screens keep the browser's adaptive default ring. The dark rule
+   comes second so ink asides nested in paper shells resolve correctly. */
+:where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper)
+  :where(a, button, input, select, textarea, summary):focus-visible {
   outline: 2px solid var(--oxblood);
   outline-offset: 3px;
 }
 
-.shell-ink :where(a, button):focus-visible {
-  outline-color: var(--on-dark);
+:where(.shell-ink, [class*="bg-[#14110d]"])
+  :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--on-dark);
+  outline-offset: 3px;
 }
 
 html, body {
@@ -191,6 +197,7 @@ body {
   font-size: 1.6rem;
   line-height: 1;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 .oracle-eyebrow {
@@ -220,6 +227,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-wrap: balance;
   transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
 }
 

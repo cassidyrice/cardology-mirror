@@ -10,7 +10,7 @@ import { READINGS_PATH } from "@/lib/site";
 // surfaces. Server-safe: no client hooks.
 export function OfferCta({ className = "" }: { className?: string }) {
   return (
-    <aside className={`border border-[#f6f1e8]/15 bg-[#14110d] p-6 text-[#f6f1e8] sm:p-7 ${className}`}>
+    <aside className={`shell-ink border border-[#f6f1e8]/15 p-6 sm:p-7 ${className}`}>
       <p className="type-eyebrow-dark">Want to talk this pattern through?</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
         Ask the AI Cardology reader.

@@ -22,10 +22,14 @@ export function SiteHeader() {
         </Link>
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-6 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft md:flex"
+          className="hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft md:flex lg:gap-6"
         >
           {NAV_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="transition hover:text-brand-ink">
+            <Link
+              key={link.href}
+              href={link.href}
+              className="whitespace-nowrap transition hover:text-brand-ink"
+            >
               {link.label}
             </Link>
           ))}

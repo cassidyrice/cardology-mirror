@@ -93,10 +93,12 @@ export default function ReadingsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* 1 — Voice-first hero */}
-      <header className="max-w-[38em] pb-10">
+      <header className="pb-10">
         <Kicker className="mb-4">Voice readings &middot; by phone</Kicker>
-        <h1 className="type-display text-brand-ink">Choose how deep you want to go.</h1>
-        <p className="type-body-lg mt-6 text-brand-ink-soft">
+        <h1 className="type-display max-w-[44rem] text-brand-ink">
+          Choose how deep you want to go.
+        </h1>
+        <p className="type-body-lg mt-6 max-w-[38em] text-brand-ink-soft">
           Ask one focused question, hear your complete pattern, or keep the
           reader available for the next 90 days.
         </p>

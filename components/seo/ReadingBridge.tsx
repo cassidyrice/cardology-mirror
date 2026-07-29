@@ -24,7 +24,7 @@ export function ReadingBridge({
 }) {
   if (variant === "general") {
     return (
-      <aside className={`border border-[#14110d]/18 bg-[#14110d] p-6 text-[#f6f1e8] sm:p-8 ${className}`}>
+      <aside className={`shell-ink border border-[#14110d]/18 p-6 sm:p-8 ${className}`}>
         <p className="type-eyebrow-dark">Have it read for you</p>
         <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
           The pages explain the system. A reading applies it to your life.
@@ -105,7 +105,7 @@ function bridgeConfig(variant: Exclude<BridgeVariant, "general">, cardLabel?: st
         offerSlug: "complete-reading",
         eyebrow: "This dynamic, read for you",
         headline: "The calculator names the pattern. The reader lets you talk it through.",
-        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $39 Complete Reading compares both birthdays and gives the dynamic fifteen unhurried minutes.",
+        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $39 Complete Reading compares both birthdays and gives the dynamic up to fifteen unhurried minutes.",
       };
     case "timing":
       return {

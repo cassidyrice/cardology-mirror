@@ -139,6 +139,7 @@ export default function Home() {
       {/* 2 — Three free entry points */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
         <Kicker>Start free</Kicker>
+        <h2 className="sr-only">Start free</h2>
         <div className="mt-6 divide-y divide-brand-line border-y border-brand-line">
           {FREE_PATHS.map((item) =>
             item.external ? (

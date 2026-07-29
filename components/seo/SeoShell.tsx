@@ -29,7 +29,7 @@ export function SeoShell({
           <nav className="mb-7 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-brand-ink-faint">
             {crumb.map((c, i) => (
               <span key={c.href}>
-                {i > 0 && <span className="px-2 text-brand-ink-faint/50">/</span>}
+                {i > 0 && <span className="px-2 text-brand-line-strong">/</span>}
                 <Link href={c.href} className="transition hover:text-brand-ink">
                   {c.label}
                 </Link>

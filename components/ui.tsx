@@ -180,7 +180,7 @@ export function PricingCard({
       <div className="min-h-[1.25rem]">
         {shownBadge && <p className="type-eyebrow">{shownBadge}</p>}
       </div>
-      <h3 className="type-h3 mt-3">{offer.name}</h3>
+      <h3 className="type-h3 mt-3 lg:min-h-[2.6em]">{offer.name}</h3>
       <p className="mt-4 font-serif text-4xl leading-none">
         {offer.priceLabel}
         <span className={`ml-2 align-middle text-sm ${soft}`}>one time</span>
@@ -212,11 +212,13 @@ export function MobileActionBar({ readingHref = "/readings" }: { readingHref?: s
   return (
     <>
       <div aria-hidden="true" className="h-[4.5rem] md:hidden" />
+      {/* No oxblood here — the hero owns the accent; primary emphasis mirrors
+          the hero's free-call-first hierarchy. */}
       <nav aria-label="Quick actions" className="mobile-action-bar md:hidden">
-        <a href={READER_PHONE_TEL} className="paper-button">
+        <a href={READER_PHONE_TEL} className="ink-button">
           Call Free
         </a>
-        <Link href={readingHref} className="ink-button">
+        <Link href={readingHref} className="paper-button">
           Get a Reading
         </Link>
       </nav>

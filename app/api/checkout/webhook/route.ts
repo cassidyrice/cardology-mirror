@@ -14,6 +14,15 @@ export const dynamic = "force-dynamic";
 // Fallback access window when the offer can't be resolved from metadata.
 const DEFAULT_ACCESS_DAYS = 30;
 
+// Checkout sessions minted before the repricing can still complete (sessions
+// live 24h; Stripe retries webhooks ~3 days). Honor what those buyers were
+// sold instead of the generic fallback.
+const LEGACY_ACCESS_DAYS: Record<string, number> = {
+  "one-question-reading": 90,
+  "full-deep-dive": 90,
+  "basic-birth-card-report": 30,
+};
+
 // POST /api/checkout/webhook
 // Stripe webhook receiver. Verifies the signature (Web Crypto, edge-safe),
 // mints a gate token for the site's reading tools, emails the buyer how to
@@ -51,7 +60,8 @@ export async function POST(req: NextRequest) {
     const offerSlug = session.metadata?.offer_slug ?? "";
     const offer = offerBySlug(offerSlug);
     const offerName = offer?.name ?? session.metadata?.offer_name ?? offerSlug ?? "(unknown offer)";
-    const accessDays = offer?.accessDays ?? DEFAULT_ACCESS_DAYS;
+    const accessDays =
+      offer?.accessDays ?? LEGACY_ACCESS_DAYS[offerSlug] ?? DEFAULT_ACCESS_DAYS;
     const amount = session.amount_total != null
       ? `$${(session.amount_total / 100).toFixed(2)} ${session.currency?.toUpperCase() ?? ""}`
       : "(no amount)";
