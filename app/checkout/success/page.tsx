@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { Kicker, LinkButton } from "@/components/ui";
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { offerBySlug, type ReadingOffer } from "@/lib/products";
 import { getStripe } from "@/lib/stripe";
 
@@ -10,15 +12,13 @@ export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Reading purchase confirmed",
-  description: "Share the intake details for your Card Blueprints reading.",
+  description: "How to start your Card Blueprints voice reading.",
   robots: { index: false, follow: false },
 };
 
 type SearchParams = Promise<{
   session_id?: string;
   offer?: string;
-  intake?: string;
-  error?: string;
 }>;
 
 export default async function CheckoutSuccessPage({
@@ -29,11 +29,9 @@ export default async function CheckoutSuccessPage({
   const sp = await searchParams;
   const offer = sp.offer ? offerBySlug(sp.offer) : undefined;
   const sessionId = sp.session_id ?? "";
-  const submitted = sp.intake === "ok";
-  const formError = sp.error === "missing-fields";
 
   // Try to enrich with Stripe session details (customer email, paid status).
-  // Failure here is non-fatal — we still render the intake form.
+  // Failure here is non-fatal — the start-here instructions still render.
   let customerEmail = "";
   let paid = false;
   if (sessionId && process.env.STRIPE_SECRET_KEY) {
@@ -54,204 +52,87 @@ export default async function CheckoutSuccessPage({
         { label: "Confirmed", href: "/checkout/success" },
       ]}
     >
-      <header className="max-w-3xl pb-8">
-        <p className="oracle-eyebrow mb-4">Payment received</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          {submitted
-            ? "Intake received. Your reading is in the queue."
-            : offer
-              ? `Thank you. Your ${offer.priceLabel} ${offer.name} is paid.`
-              : "Thank you. Your reading is paid."}
+      <header className="max-w-[38em] pb-8">
+        <Kicker className="mb-4">Payment received</Kicker>
+        <h1 className="type-display text-brand-ink">
+          {offer ? `Your ${offer.name} is ready.` : "Your reading is ready."}
         </h1>
-        {!submitted && (
-          <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
-            {offer
-              ? offerInstructions(offer)
-              : "Share the birth details and focus so Cass can prepare your reading."}
-          </p>
-        )}
-        {paid && customerEmail && !submitted && (
-          <p className="mt-3 text-sm text-[#5b5148]">
-            Receipt sent to <strong>{customerEmail}</strong>.
+        <p className="type-body-lg mt-5 text-brand-ink-soft">
+          {offer ? offerInstructions(offer) : "Call the reading line from the phone number you used at checkout."}
+        </p>
+        {paid && customerEmail && (
+          <p className="mt-3 text-sm text-brand-ink-soft">
+            Receipt and start-here email sent to <strong>{customerEmail}</strong>.
           </p>
         )}
       </header>
 
-      {formError && (
-        <div className="mb-5 border border-[#9e3d24]/40 bg-[#9e3d24]/10 p-4 text-sm text-[#9e3d24]">
-          Email and birth date are required. Please fill them in and resubmit.
+      <section className="border-y border-brand-line py-8">
+        <div className="grid gap-8 lg:grid-cols-3">
+          <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
+            <p className="font-serif text-lg text-brand-bronze">01</p>
+            <h2 className="type-h3 mt-2 text-brand-ink">Use your checkout number.</h2>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+              Your access is tied to the phone number you entered at checkout.
+              The reader recognizes that number when you call.
+            </p>
+          </div>
+          <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
+            <p className="font-serif text-lg text-brand-bronze">02</p>
+            <h2 className="type-h3 mt-2 text-brand-ink">Call the reading line.</h2>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+              The AI Cardology reader answers directly — no menu, no
+              appointment. Have the birthday (or birthdays) ready.
+            </p>
+          </div>
+          <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
+            <p className="font-serif text-lg text-brand-bronze">03</p>
+            <h2 className="type-h3 mt-2 text-brand-ink">Take your time.</h2>
+            <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+              {offer ? sessionDetail(offer) : "Your session details are in your confirmation email."}
+            </p>
+          </div>
         </div>
-      )}
+        <div className="mt-9 text-center">
+          <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
+            Call {READER_PHONE_DISPLAY}
+          </LinkButton>
+          <p className="mt-3 text-xs text-brand-ink-soft">
+            Call from the number you used at checkout so the reader recognizes you.
+          </p>
+        </div>
+      </section>
 
-      {submitted ? (
-        <ThankYou />
-      ) : (
-        <IntakeForm
-          offer={offer}
-          sessionId={sessionId}
-          defaultEmail={customerEmail}
-        />
-      )}
+      <section className="mt-10 max-w-[38em]">
+        <h2 className="type-h3 text-brand-ink">If something doesn&rsquo;t work</h2>
+        <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+          If the line doesn&rsquo;t recognize your number or a call drops,
+          reply to your receipt email or{" "}
+          <Link href="/contact" className="editorial-link text-brand-ink">
+            send a note via contact
+          </Link>{" "}
+          with the email and phone number you used at checkout. Unused paid
+          sessions are covered by the{" "}
+          <Link href="/refund-policy" className="editorial-link text-brand-ink">
+            refund policy
+          </Link>
+          .
+        </p>
+      </section>
     </SeoShell>
   );
 }
 
 function offerInstructions(offer: ReadingOffer): string {
-  if (offer.slug === "basic-birth-card-report") {
-    return "Share the birth date the report should focus on. Anything else you want included is optional.";
+  if (offer.accessType === "season_pass") {
+    return "Call the reading line from the phone number you used at checkout — your pass is open for the next 90 days.";
   }
-  if (offer.slug === "one-question-reading") {
-    return "Share the birth date and the focused question — person, relationship, or situation.";
+  return `Call the reading line from the phone number you used at checkout. You have ${offer.accessDays} days to begin.`;
+}
+
+function sessionDetail(offer: ReadingOffer): string {
+  if (offer.accessType === "season_pass") {
+    return `Unlimited personal return calls for ${offer.accessDays} days, up to ${offer.durationMinutes} minutes per session. One payment — nothing renews.`;
   }
-  return "Share the birth details, the focus, and any context that will make the deep dive useful.";
-}
-
-function IntakeForm({
-  offer,
-  sessionId,
-  defaultEmail,
-}: {
-  offer?: ReadingOffer;
-  sessionId: string;
-  defaultEmail: string;
-}) {
-  const questionRequired = offer?.slug !== "basic-birth-card-report";
-
-  return (
-    <form
-      action="/api/intake"
-      method="POST"
-      className="grid gap-5 border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5"
-    >
-      <input type="hidden" name="session_id" value={sessionId} />
-      <input type="hidden" name="offer_slug" value={offer?.slug ?? ""} />
-      <input type="hidden" name="offer_name" value={offer?.name ?? ""} />
-
-      <Field
-        label="Your email"
-        name="email"
-        type="email"
-        required
-        defaultValue={defaultEmail}
-        hint="Where the finished reading will be sent."
-      />
-      <Field
-        label="Birth date for the reading"
-        name="subject_birthdate"
-        type="date"
-        required
-        hint="Full date the reading should focus on."
-      />
-      <Field
-        label="Other person's birth date (optional)"
-        name="other_birthdate"
-        type="date"
-        hint="If the reading involves a relationship or comparison."
-      />
-      <TextField
-        label={questionRequired ? "Your question or focus" : "Anything you want included (optional)"}
-        name="question"
-        required={questionRequired}
-        rows={4}
-        hint={
-          questionRequired
-            ? "One focused question about a person, relationship, or situation."
-            : "Optional context. The report is built from the birth date alone."
-        }
-      />
-      <TextField
-        label="Anything else"
-        name="notes"
-        rows={3}
-        hint="Optional. Names, context, timing, or what you want clarity on."
-      />
-
-      <button type="submit" className="paper-button large-button mt-2 text-center">
-        Send intake details
-      </button>
-    </form>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type,
-  required,
-  defaultValue,
-  hint,
-}: {
-  label: string;
-  name: string;
-  type: string;
-  required?: boolean;
-  defaultValue?: string;
-  hint?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="font-bold uppercase text-xs tracking-wider text-[#14110d]">
-        {label}
-        {required && <span className="text-[#9e3d24]"> *</span>}
-      </span>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        defaultValue={defaultValue}
-        className="mt-1.5 block w-full border border-[#14110d]/20 bg-white/70 px-3 py-2 font-serif text-base text-[#14110d] focus:border-[#14110d]/60 focus:outline-none"
-      />
-      {hint && <span className="mt-1 block text-xs leading-relaxed text-[#5b5148]">{hint}</span>}
-    </label>
-  );
-}
-
-function TextField({
-  label,
-  name,
-  required,
-  rows,
-  hint,
-}: {
-  label: string;
-  name: string;
-  required?: boolean;
-  rows: number;
-  hint?: string;
-}) {
-  return (
-    <label className="block">
-      <span className="font-bold uppercase text-xs tracking-wider text-[#14110d]">
-        {label}
-        {required && <span className="text-[#9e3d24]"> *</span>}
-      </span>
-      <textarea
-        name={name}
-        required={required}
-        rows={rows}
-        className="mt-1.5 block w-full border border-[#14110d]/20 bg-white/70 px-3 py-2 font-serif text-base leading-relaxed text-[#14110d] focus:border-[#14110d]/60 focus:outline-none"
-      />
-      {hint && <span className="mt-1 block text-xs leading-relaxed text-[#5b5148]">{hint}</span>}
-    </label>
-  );
-}
-
-function ThankYou() {
-  return (
-    <section className="border border-[#14110d]/15 bg-[#eadfcd]/70 p-6">
-      <h2 className="font-serif text-2xl text-[#14110d]">What happens next</h2>
-      <ul className="mt-3 space-y-2 text-base leading-relaxed text-[#3d352d]">
-        <li>Cass receives your intake immediately and confirms by email.</li>
-        <li>The reading is prepared from the deterministic birth-card system, then written for your question.</li>
-        <li>Delivered digitally to the email you provided.</li>
-      </ul>
-      <p className="mt-4 text-sm text-[#5b5148]">
-        Need to add or correct something?{" "}
-        <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">
-          Send a note via contact
-        </Link>{" "}
-        and reference your purchase email.
-      </p>
-    </section>
-  );
+  return `Your session covers up to ${offer.durationMinutes} minutes with the reader. One paid session — start it within ${offer.accessDays} days.`;
 }

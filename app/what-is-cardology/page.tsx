@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "What Is Cardology? The 52-Card System, Explained",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "What is Cardology? A plain-English explanation of the deterministic 52-card system that maps your birthday to a single playing card — your birth card.",
   alternates: { canonical: "/what-is-cardology" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "What Is Cardology? The 52-Card System, Explained",
     description: "A plain-English explanation of the deterministic 52-card system behind your birth card.",
     url: "/what-is-cardology",
@@ -119,10 +121,10 @@ export default function WhatIsCardology() {
         <h2 className="eyebrow mb-2 text-gold">The four suits</h2>
         <p className="prose-reading mb-2 text-mist">Each suit points at a different domain of life:</p>
         <ul className="prose-reading space-y-1.5 text-mist">
-          <li><span className="text-[#e0654a]">♥ Hearts</span> — relationships &amp; emotion</li>
-          <li><span className="text-[#d9b26a]">♦ Diamonds</span> — values &amp; resources</li>
-          <li><span className="text-[#7fae8f]">♣ Clubs</span> — mind &amp; communication</li>
-          <li><span className="text-[#7b6cf0]">♠ Spades</span> — work, will &amp; transformation</li>
+          <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
+          <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
+          <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
+          <li><span className="text-[#14110d]">♠ Spades</span> — work, will &amp; transformation</li>
         </ul>
       </section>
 

@@ -7,12 +7,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: "Card Blueprints refund terms for personal readings and reports.",
+  description: "Card Blueprints refund terms for voice readings.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 12, 2026";
+const UPDATED = "July 29, 2026";
 
 export default function RefundPolicy() {
   return (
@@ -32,55 +32,36 @@ export default function RefundPolicy() {
 
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
 
-        <section className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
+        <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells both written products and instant AI voice
-            access. The refund rule depends on which product you bought and
-            whether delivery or use has started.
+            Card Blueprints sells voice readings — a $19 Quick Question, a $39
+            Complete Reading, and a $199 90-Day Season Pass. The refund rule
+            depends on whether your paid access has been used.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">AI voice access — before the first paid call</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Before the first paid session</h2>
           <p className="mt-3">
-            If you have not used the paid AI voice access, ask for a full refund
-            by replying to your receipt or using the{" "}
-            <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">
+            If you have not used any paid session, ask for a full refund by
+            replying to your receipt or using the{" "}
+            <Link href="/contact" className="text-[#8e321f] underline underline-offset-4">
               contact page
             </Link>
-            . Include the phone number and email used at checkout.
+            . Include the phone number and email used at checkout. This applies
+            to all three readings, including the Season Pass.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">AI voice access — after use begins</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">After paid use begins</h2>
           <p className="mt-3">
-            Once a paid call has been used, refunds are limited because the service
-            has started. If the line did not work, access was not recognized, or a
-            technical problem stopped the paid service, contact us. We will review
-            the call-access record and offer restored access, a partial refund, or
-            a full refund when the service was not delivered.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Written products — before work begins</h2>
-          <p className="mt-3">
-            If you contact us before work starts on a custom written reading,
-            you will receive a full refund. Reply to your receipt or use the{" "}
-            <Link href="/contact" className="text-[#9e3d24] underline underline-offset-4">
-              contact page
-            </Link>.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Written products — after work begins</h2>
-          <p className="mt-3">
-            Once a custom written reading is underway, refunds are limited because
-            the work cannot be reassigned. If something is unclear or a promised
-            part is missing, contact us. Clarifications are free, and a partial or
-            full refund may be offered when the product was not delivered as described.
+            Once a paid session has been used, refunds are limited because the
+            service has started. If the line did not work, your access was not
+            recognized, or a technical problem interrupted a paid call, contact
+            us. We will review the access record and offer restored access, a
+            partial refund, or a full refund when the service was not delivered
+            as described.
           </p>
         </section>
 
@@ -92,20 +73,20 @@ export default function RefundPolicy() {
             </li>
             <li className="border-t border-[#14110d]/12 pt-3">
               Or email{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>{" "}
-              with the email address you used at checkout.
+              with the email address and phone number you used at checkout.
             </li>
           </ol>
           <p className="mt-4 text-sm text-[#5b5148]">
-            Refunds are processed through Stripe within 5–10 business days
-            depending on your bank.
+            Requests are reviewed personally, and approved refunds are processed
+            through Stripe — banks typically post them within 5–10 business days.
           </p>
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href={READINGS_PATH} className="text-[#9e3d24] underline underline-offset-4">
+          <Link href={READINGS_PATH} className="text-[#8e321f] underline underline-offset-4">
             ← Back to readings
           </Link>
         </div>

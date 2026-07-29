@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "52-Card Astrology Explained: Cards, Suits & Timing",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "52-card astrology explained: how a standard deck maps to the calendar, what the suits and ranks mean, and how Cardology uses the cards for personality and timing.",
   alternates: { canonical: "/52-card-astrology-explained" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "52-Card Astrology Explained: Cards, Suits & Timing",
     description: "How a standard deck maps to the calendar — suits, ranks, and timing in Cardology.",
     url: "/52-card-astrology-explained",
@@ -87,10 +89,10 @@ export default function CardAstrology() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Suits: four domains of life</h2>
         <ul className="prose-reading space-y-1.5 text-mist">
-          <li><span className="text-[#e0654a]">♥ Hearts</span> — relationships &amp; emotion</li>
-          <li><span className="text-[#d9b26a]">♦ Diamonds</span> — values &amp; resources</li>
-          <li><span className="text-[#7fae8f]">♣ Clubs</span> — mind &amp; communication</li>
-          <li><span className="text-[#7b6cf0]">♠ Spades</span> — work, will &amp; transformation</li>
+          <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
+          <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
+          <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
+          <li><span className="text-[#14110d]">♠ Spades</span> — work, will &amp; transformation</li>
         </ul>
       </section>
 

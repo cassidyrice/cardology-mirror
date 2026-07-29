@@ -2,18 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { FAIR_USE_COPY } from "@/lib/offers";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms for using Card Blueprints, its AI voice guide, tools, reports, and readings.",
+  description: "Terms for using Card Blueprints, its AI voice readings, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 12, 2026";
+const UPDATED = "July 29, 2026";
 
 export default function TermsOfService() {
   return (
@@ -32,56 +33,75 @@ export default function TermsOfService() {
       </header>
 
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
-        <section className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
+        <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
             Card Blueprints is for learning, reflection, and entertainment. By
-            using the site or buying a product, you agree to these terms.
+            using the site or buying a reading, you agree to these terms.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
-            Card Blueprints offers free Cardology tools, written reports, human-written
-            deep dives, and a paid AI voice guide. Card lookups use fixed formulas and
-            tables. Meanings and spoken explanations are interpretations.
+            Card Blueprints offers free Cardology tools and educational pages,
+            plus paid voice readings delivered by phone. Card lookups use fixed
+            formulas and tables — the same birthday always produces the same
+            card. Cardology is an esoteric reflection framework; meanings and
+            spoken explanations are interpretations, not facts about you.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">AI voice guide</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">The reader is AI</h2>
           <p className="mt-3">
-            The $99 phone product is delivered by an AI voice guide, not a human reader.
-            AI wording can be incomplete or wrong even when the card lookup is correct.
-            Check important facts for yourself and do not rely on the guide as your only
-            source for an important decision.
+            Every paid reading and the free first-card preview are delivered by
+            an AI voice reader, not a human. AI wording can be incomplete or
+            wrong even when the card lookup is correct. Check important facts
+            for yourself and do not rely on the reader as your only source for
+            an important decision.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Paid access and delivery</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Paid readings</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              Prices and delivery methods are shown before checkout.
+              <strong>Quick Question ($19)</strong> — one single paid voice
+              session of up to 5 minutes. Start it within 30 days of purchase.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              AI voice access is tied to the phone number used at checkout and lasts 90 days.
+              <strong>Complete Reading ($39)</strong> — one single paid voice
+              session of up to 15 minutes. Start it within 30 days of purchase.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              Written products need correct birth details and contact information from you.
+              <strong>90-Day Season Pass ($199)</strong> — a one-time purchase
+              covering unlimited personal return calls for 90 days, up to 15
+              minutes per session, one active session at a time. The pass does
+              not automatically renew and is subject to the fair-use rules
+              below.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              Do not share paid access, misuse the phone line, or try to bypass payment or security checks.
+              All access is tied to the phone number used at checkout — call
+              from that number so the reader recognizes your purchase.
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
+              Do not share paid access, misuse the phone line, or try to bypass
+              payment or security checks.
             </li>
           </ul>
         </section>
 
         <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Season Pass fair use</h2>
+          <p className="mt-3">{FAIR_USE_COPY}</p>
+        </section>
+
+        <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Refunds and privacy</h2>
           <p className="mt-3">
-            The <Link href="/refund-policy" className="text-[#9e3d24] underline underline-offset-4">refund policy</Link>
+            The <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">refund policy</Link>
             {" "}explains when refunds are available. The{" "}
-            <Link href="/privacy-policy" className="text-[#9e3d24] underline underline-offset-4">privacy policy</Link>
+            <Link href="/privacy-policy" className="text-[#8e321f] underline underline-offset-4">privacy policy</Link>
             {" "}explains what information is collected and why.
           </p>
         </section>
@@ -89,9 +109,11 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Not professional advice</h2>
           <p className="mt-3">
-            Card Blueprints does not provide medical, mental-health, legal, financial,
-            employment, or other professional advice. Do not use a reading to diagnose
-            a person, predict harm, or make a high-stakes decision for someone else.
+            Card Blueprints does not provide medical, mental-health, legal,
+            financial, employment, or other professional advice, and no reading
+            predicts or guarantees any outcome. Do not use a reading to
+            diagnose a person, predict harm, or make a high-stakes decision for
+            someone else.
           </p>
         </section>
 
@@ -117,7 +139,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Contact</h2>
           <p className="mt-3">
             Questions about these terms can be sent to{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>
             .

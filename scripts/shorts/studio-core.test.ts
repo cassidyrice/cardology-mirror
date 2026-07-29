@@ -69,8 +69,8 @@ describe("Card Blueprints Script Studio", () => {
       cardSlug: "king-of-hearts",
       goal: "ai_voice",
     });
-    expect(output.cta).toBe("The $99 AI Voice Reading includes 90 days of access.");
-    expect(output.caption).toContain("$99 AI Voice Reading includes 90 days of access");
+    expect(output.cta).toBe("Hear your first card free, then the $39 Complete Reading goes deeper.");
+    expect(output.caption).toContain("$39 Complete Reading goes deeper");
   });
 
   test("blocks risky trend promises", () => {

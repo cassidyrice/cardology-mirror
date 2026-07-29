@@ -32,6 +32,7 @@ export async function generateMetadata({
     description: pillar.description,
     alternates: { canonical: blogPillarPath(pillar) },
     openGraph: {
+      siteName: SITE_NAME,
       title: pillar.title,
       description: pillar.description,
       url: blogPillarPath(pillar),
@@ -116,8 +117,8 @@ export default async function BlogPillarPage({
           <ol className="space-y-3">
             {pillar.startHere.map((link, index) => (
               <li key={link.href} className="flex gap-3">
-                <span className="font-serif text-xl text-[#9e3d24]">{index + 1}</span>
-                <Link href={link.href} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#9e3d24]">
+                <span className="font-serif text-xl text-[#8e321f]">{index + 1}</span>
+                <Link href={link.href} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#8e321f]">
                   {link.label}
                 </Link>
               </li>
@@ -131,11 +132,11 @@ export default async function BlogPillarPage({
         <div className="grid gap-4">
           {posts.map((post) => (
             <article key={post.slug} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5 transition hover:bg-[#fffaf0]">
-              <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+              <p className="text-[0.68rem] font-bold uppercase text-[#8e321f]">
                 {post.readTime}
               </p>
               <h3 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
-                <Link href={blogPostPath(post)} className="hover:text-[#9e3d24]">
+                <Link href={blogPostPath(post)} className="hover:text-[#8e321f]">
                   {post.title}
                 </Link>
               </h3>
@@ -167,7 +168,7 @@ export default async function BlogPillarPage({
             {pillar.glossary.map((item) => (
               <div key={item.term} className="border-t border-[#14110d]/15 pt-4">
                 <dt className="font-serif text-2xl text-[#14110d]">
-                  {item.href ? <Link href={item.href} className="hover:text-[#9e3d24]">{item.term}</Link> : item.term}
+                  {item.href ? <Link href={item.href} className="hover:text-[#8e321f]">{item.term}</Link> : item.term}
                 </dt>
                 <dd className="mt-1 text-sm leading-relaxed text-[#5b5148]">{item.definition}</dd>
               </div>

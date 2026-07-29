@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
-import { SITE_URL, VIDEO_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_URL } from "@/lib/site";
 import {
   CARDOLOGY_VIDEO_CHANNEL,
   CARDOLOGY_VIDEOS,
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     "Watch Card Blueprints video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
   alternates: { canonical: "/videos" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
       "Card Blueprints videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
@@ -99,7 +100,7 @@ export default function VideosPage() {
             const cardSlug = videoCardSlug(video);
             return (
               <article key={video.url} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-                <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+                <p className="text-[0.68rem] font-bold uppercase text-[#8e321f]">
                   {video.card} · published {video.uploadDate}
                 </p>
                 <h2 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
@@ -123,7 +124,7 @@ export default function VideosPage() {
                   )}
                   <a
                     href={video.url}
-                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#9e3d24]"
+                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#8e321f]"
                   >
                     Watch on the channel
                   </a>

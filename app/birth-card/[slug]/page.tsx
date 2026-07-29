@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
-import { SITE_URL, VIDEO_PATH } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
   videosForCard,
   youtubeEmbed,
@@ -25,6 +25,7 @@ import {
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
+import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 
 const SEO_UPDATED = "2026-06-17";
@@ -53,6 +54,7 @@ export async function generateMetadata({
       description,
       alternates: { canonical: `/birth-card/${card.slug}` },
       openGraph: {
+        siteName: SITE_NAME,
         title,
         description,
         url: `/birth-card/${card.slug}`,
@@ -71,6 +73,7 @@ export async function generateMetadata({
       description,
       alternates: { canonical: `/birth-card/${date.slug}` },
       openGraph: {
+        siteName: SITE_NAME,
         title,
         description,
         url: `/birth-card/${date.slug}`,
@@ -133,7 +136,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <JsonLd data={jsonLd} />
 
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: card.color }}>{card.code}</span>
+        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         <span className="eyebrow text-faint">{card.suitDomain}</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">
@@ -209,9 +212,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="The pattern, in three positions">
         <div className="space-y-4">
-          <Lens label="Balanced" tone="#7fae8f" text={card.sweetSpot} />
-          <Lens label="Under-expressed" tone="#d9b26a" text={card.under} />
-          <Lens label="Over-expressed" tone="#e0654a" text={card.over} />
+          <Lens label="Balanced" position="balanced" text={card.sweetSpot} />
+          <Lens label="Under-expressed" position="under" text={card.under} />
+          <Lens label="Over-expressed" position="over" text={card.over} />
         </div>
         <p className="mt-4 text-sm text-faint">
           Three positions, not a verdict. The birth card is a range, not a box — so the honest question isn&rsquo;t “am I this card?” but “which end of the range am I parked at today?”
@@ -343,7 +346,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Birth Card Calculator →</Link>
       </div>
 
-      <nav className="mt-10">
+      <nav aria-label={`More ${suitWord(card)} cards`} className="mt-10">
         <h2 className="eyebrow mb-3 text-gold">More {suitWord(card)} cards</h2>
         <ul className="flex flex-wrap gap-2">
           {siblings.map((c) => (
@@ -403,7 +406,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
     >
       <JsonLd data={jsonLd} />
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: card.color }}>{card.code}</span>
+        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         <span className="eyebrow text-faint">{date.label} birth card</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
@@ -439,9 +442,9 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 
       <Section title="Balanced, under-expressed, and over-expressed">
         <div className="space-y-4">
-          <Lens label="Balanced" tone="#7fae8f" text={card.sweetSpot} />
-          <Lens label="Under-expressed" tone="#d9b26a" text={card.under} />
-          <Lens label="Over-expressed" tone="#e0654a" text={card.over} />
+          <Lens label="Balanced" position="balanced" text={card.sweetSpot} />
+          <Lens label="Under-expressed" position="under" text={card.under} />
+          <Lens label="Over-expressed" position="over" text={card.over} />
         </div>
       </Section>
 
@@ -504,7 +507,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
 
-      <nav className="mt-8 flex items-center justify-between text-sm">
+      <nav aria-label="Nearby birthdays" className="mt-8 flex items-center justify-between text-sm">
         {/* Prev/next birthdays live on the Worker-served /born-on/ surface —
             link direct instead of /birth-card/[date], which 301s there. */}
         <a href={`/born-on/${prev.slug}`} className="text-gold underline underline-offset-4">← {prev.label}</a>
@@ -577,7 +580,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
       href={`/birth-card/${seo.slug}`}
       className="card-surface flex items-center gap-4 px-4 py-3 transition hover:border-gold/40"
     >
-      <span className="font-serif text-3xl" style={{ color: seo.color }}>
+      <span className="font-serif text-3xl" style={{ color: SUIT_COLOR_PAPER[seo.suit] }}>
         {seo.code}
       </span>
       <div className="flex flex-col">
@@ -593,8 +596,32 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return <section className="mt-8"><h2 className="eyebrow mb-2 text-gold">{title}</h2><div className="prose-reading text-mist">{children}</div></section>;
 }
 
-function Lens({ label, tone, text }: { label: string; tone: string; text: string }) {
-  return <div className="rounded-2xl border p-4" style={{ borderColor: `${tone}33`, background: `${tone}0d` }}><p className="eyebrow mb-1" style={{ color: tone }}>{label}</p><p className="mb-0 text-mist">{text}</p></div>;
+// Position label colors. Inline styles outrank the .paper-shell class remaps,
+// so these hexes are what actually paint on cream — the dark palette's sage,
+// gold, and ember read at 1.7–3:1 there. These pass AA on paper (7.3 / 5.3 /
+// 7.1) while keeping the three positions distinguishable by hue.
+const LENS_TONES = {
+  balanced: { label: "#2c5740", tint: "#7fae8f" },
+  under: { label: "#7e5f29", tint: "#d9b26a" },
+  over: { label: "#8e321f", tint: "#e0654a" },
+} as const;
+
+function Lens({
+  label,
+  position,
+  text,
+}: {
+  label: string;
+  position: keyof typeof LENS_TONES;
+  text: string;
+}) {
+  const { label: labelColor, tint } = LENS_TONES[position];
+  return (
+    <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
+      <p className="eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
+      <p className="mb-0 text-mist">{text}</p>
+    </div>
+  );
 }
 
 function InfoItem({ label, value }: { label: string; value: string }) {

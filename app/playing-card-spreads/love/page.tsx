@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { compatForCard } from "@/lib/compat-pairs";
 import { rankTheme, relationshipTheme, suitWord, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "A playing card love spread for real relationships: the you-them-connection layout, a five-card variant, a worked example, and the birth-card compatibility layer underneath.",
   alternates: { canonical: "/playing-card-spreads/love" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Love Spread With Playing Cards: You, Them, the Connection",
     description:
       "Three cards for one relationship — you, them, the connection — plus a five-card variant and the deterministic compatibility layer underneath it.",

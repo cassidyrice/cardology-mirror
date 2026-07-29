@@ -47,21 +47,23 @@ export function CompatibilityCalculator() {
         <div>
           <label htmlFor="da" className="eyebrow block text-gold">First birthday</label>
           <input id="da" type="date" value={a} onChange={(e) => setA(e.target.value)} required
-            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40 focus:outline-none" />
+            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40" />
         </div>
         <div>
           <label htmlFor="db" className="eyebrow block text-gold">Second birthday</label>
           <input id="db" type="date" value={b} onChange={(e) => setB(e.target.value)} required
-            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40 focus:outline-none" />
+            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40" />
         </div>
         <button type="submit" className="w-full rounded-full bg-foil py-3 text-center font-serif text-base text-ink transition active:scale-[0.99]">
           Compare birth cards and Life Paths
         </button>
       </form>
 
-      {err && <p className="mt-4 text-sm text-ember">Enter two full birthdays to compare.</p>}
-
-      {pair && <PairResult a={pair.a} b={pair.b} />}
+      {/* One persistent live region, present before the result populates. */}
+      <div role="status" aria-live="polite">
+        {err && <p className="mt-4 text-sm text-ember">Enter two full birthdays to compare.</p>}
+        {pair && <PairResult a={pair.a} b={pair.b} />}
+      </div>
     </div>
   );
 }

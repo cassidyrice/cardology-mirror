@@ -83,13 +83,13 @@ export default function MethodologyPage() {
       <section className="mt-12 border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
         <h2 className="font-serif text-3xl text-[#14110d]">Use the method</h2>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#9e3d24]">
+          <Link href="/birth-card-calculator" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
             Birth Card Calculator
           </Link>
-          <Link href="/birth-card" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#9e3d24]">
+          <Link href="/birth-card" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
             All 52 Birth Cards
           </Link>
-          <Link href="/52-card-astrology-explained" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#9e3d24]">
+          <Link href="/52-card-astrology-explained" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
             52-Card Astrology Explained
           </Link>
         </div>

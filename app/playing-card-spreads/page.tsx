@@ -5,6 +5,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Playing Card Spreads: The Three Layouts Beginners Need",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
     "The three playing card spreads a beginner needs — three-card, love, and yes-or-no — when to use each, and the Cardology alternative that needs no spread at all.",
   alternates: { canonical: SPREADS_HUB_PATH },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Playing Card Spreads: The Three Layouts Beginners Need",
     description:
       "Three-card, love, and yes-or-no spreads for a standard 52-card deck — when to use each, and the deterministic method that skips spreads entirely.",

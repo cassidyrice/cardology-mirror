@@ -3,8 +3,9 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL, TRIAL_NAME, TRIAL_PATH } from "@/lib/offers";
-import { SITE_URL } from "@/lib/site";
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
 
 // Deploys are manual and infrequent, so "today" can never be baked in at
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     "Free card of the day from the standard 52-card deck. Every calendar date maps to exactly one playing card — see today's card, its meaning in love and work, and find your own.",
   alternates: { canonical: "/card-of-the-day" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Card of the Day: Free Daily Playing Card Reading",
     description:
       "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.",
@@ -124,7 +126,7 @@ export default function CardOfTheDayPage() {
       description:
         "Free daily playing-card reading: every calendar date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. Updates daily.",
       url: `${SITE_URL}/card-of-the-day`,
-      isPartOf: { "@id": `${SITE_URL}/#organization` },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["[data-ai-summary]"],
@@ -147,7 +149,7 @@ export default function CardOfTheDayPage() {
 
       <div className="mb-2 flex items-baseline gap-3">
         {card ? (
-          <span className="font-serif text-5xl" style={{ color: card.color }}>{card.code}</span>
+          <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         ) : (
           <span className="font-serif text-5xl text-gold">🃏</span>
         )}
@@ -202,9 +204,9 @@ export default function CardOfTheDayPage() {
           <section className="mt-8">
             <h2 className="eyebrow mb-2 text-gold">Quick reads: love, work, shadow</h2>
             <div className="space-y-4">
-              <QuickRead label="Love" tone="#7fae8f" text={`In relationships, the ${card.label} tends to reveal itself through ${relationshipTheme(card)}. Notice where that pull is running the room today.`} />
-              <QuickRead label="Work" tone="#d9b26a" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
-              <QuickRead label="Shadow" tone="#e0654a" text={card.shadow || card.over} />
+              <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} tends to reveal itself through ${relationshipTheme(card)}. Notice where that pull is running the room today.`} />
+              <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
+              <QuickRead label="Shadow" facet="shadow" text={card.shadow || card.over} />
             </div>
             <p className="mt-4 text-sm text-faint">
               A mirror, not a forecast: today&rsquo;s card describes a pattern in
@@ -251,8 +253,8 @@ export default function CardOfTheDayPage() {
           </a>
         </div>
         <p className="mt-3 text-xs text-faint">
-          The free call reads your first card on the spot. Want it daily? See the{" "}
-          <Link href={TRIAL_PATH} className="text-gold underline underline-offset-4">{TRIAL_NAME}</Link>.
+          The free call introduces your birth card on the spot. Want a season of daily cards?{" "}
+          <Link href="/readings" className="text-gold underline underline-offset-4">See the 90-Day Season Pass</Link>.
         </p>
       </section>
 
@@ -302,10 +304,29 @@ export default function CardOfTheDayPage() {
   );
 }
 
-function QuickRead({ label, tone, text }: { label: string; tone: string; text: string }) {
+// Label colors are inline, which outranks the .paper-shell class remaps — so
+// these are what actually paint on cream. The dark palette's sage/gold/ember
+// read at 2.2/1.7/3.0:1 there; these pass AA (7.3 / 5.3 / 7.1) and keep the
+// three facets distinguishable by hue. The tint keeps the original color.
+const QUICK_READ_TONES = {
+  love: { label: "#2c5740", tint: "#7fae8f" },
+  work: { label: "#7e5f29", tint: "#d9b26a" },
+  shadow: { label: "#8e321f", tint: "#e0654a" },
+} as const;
+
+function QuickRead({
+  label,
+  facet,
+  text,
+}: {
+  label: string;
+  facet: keyof typeof QUICK_READ_TONES;
+  text: string;
+}) {
+  const { label: labelColor, tint } = QUICK_READ_TONES[facet];
   return (
-    <div className="rounded-2xl border p-4" style={{ borderColor: `${tone}33`, background: `${tone}0d` }}>
-      <p className="eyebrow mb-1" style={{ color: tone }}>{label}</p>
+    <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
+      <p className="eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
       <p className="prose-reading mb-0 text-mist">{text}</p>
     </div>
   );

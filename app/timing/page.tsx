@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import TimingClient from "@/components/app/TimingClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
+import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Yearly Spread";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/timing" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Yearly Spread and 52-Day Periods",
     description,
     url: "/timing",

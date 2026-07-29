@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import TodayClient from "@/components/app/TodayClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
+import { SITE_NAME } from "@/lib/site";
 
 const title = "Daily Card Reading";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/today" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Daily Card Reading: Your Cardology Card for Today",
     description,
     url: "/today",

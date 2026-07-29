@@ -23,6 +23,26 @@ const config: Config = {
         diamonds: "#d9b26a",
         clubs: "#7fae8f",
         spades: "#7b6cf0",
+        // Semantic marketing tokens (see :root in globals.css). Namespaced so
+        // they never collide with the dark in-app palette above.
+        brand: {
+          paper: "var(--paper)",
+          "paper-deep": "var(--paper-deep)",
+          ivory: "var(--ivory)",
+          ink: "var(--ink)",
+          "ink-soft": "var(--ink-soft)",
+          "ink-faint": "var(--ink-faint)",
+          line: "var(--line)",
+          "line-strong": "var(--line-strong)",
+          bronze: "var(--bronze)",
+          gold: "var(--gold)",
+          "gold-soft": "var(--gold-soft)",
+          oxblood: "var(--oxblood)",
+          "oxblood-deep": "var(--oxblood-deep)",
+          "on-dark": "var(--on-dark)",
+          "on-dark-soft": "var(--on-dark-soft)",
+          "on-dark-line": "var(--on-dark-line)",
+        },
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cardology Compatibility: Birth Cards, Life Paths and Relationship Dynamics",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "How Cardology compatibility works: compare birth cards, Life Path cards, shared cards, Venus/Mars chemistry, Saturn lessons, Pluto shadows, and relationship dynamics.",
   alternates: { canonical: "/cardology-compatibility" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Compatibility: Birth Cards and Life Paths",
     description: "Read the relationship through birth cards, Life Path cards, shared cards, and cross-referenced roles.",
     url: "/cardology-compatibility",
@@ -77,10 +79,10 @@ export default function CompatibilityPage() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The four suits, four instincts</h2>
         <ul className="prose-reading space-y-1.5 text-mist">
-          <li><span className="text-[#e0654a]">♥ Hearts</span> — relationships &amp; emotion</li>
-          <li><span className="text-[#d9b26a]">♦ Diamonds</span> — values &amp; resources</li>
-          <li><span className="text-[#7fae8f]">♣ Clubs</span> — mind &amp; communication</li>
-          <li><span className="text-[#7b6cf0]">♠ Spades</span> — work, will &amp; transformation</li>
+          <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
+          <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
+          <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
+          <li><span className="text-[#14110d]">♠ Spades</span> — work, will &amp; transformation</li>
         </ul>
       </section>
 

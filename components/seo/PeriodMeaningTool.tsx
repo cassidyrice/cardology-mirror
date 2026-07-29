@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { cardColorOnPaper } from "@/lib/cards";
 import type { CardPeriodMeanings, PeriodMeaning } from "@/lib/period-meanings";
 
 interface PeriodMeaningToolProps {
@@ -29,7 +30,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
             <p className="oracle-eyebrow">choose a card + period filter</p>
             <div className="mt-5 grid gap-4">
               <label className="block">
-                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-[#14110d]/55">
+                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-ink-soft">
                   Card
                 </span>
                 <select
@@ -41,7 +42,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
                         selectedPeriod,
                     );
                   }}
-                  className="w-full rounded-full border border-[#14110d]/20 bg-[#fffaf0] px-4 py-3 font-serif text-lg text-[#14110d] outline-none transition focus:border-[#9e3d24] focus:ring-4 focus:ring-[#9e3d24]/10"
+                  className="w-full rounded-full border border-[#14110d]/20 bg-[#fffaf0] px-4 py-3 font-serif text-lg text-[#14110d] outline-none transition focus:border-[#8e321f] focus:ring-4 focus:ring-[#8e321f]/10"
                 >
                   {cards.map((entry) => (
                     <option key={entry.card.slug} value={entry.card.slug}>
@@ -52,7 +53,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
               </label>
 
               <div>
-                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-[#14110d]/55">
+                <span className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-brand-ink-soft">
                   52-day filter
                 </span>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">
@@ -71,7 +72,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
                         aria-pressed={activePeriod}
                       >
                         <span className="block font-serif text-lg leading-none">{meaning.period}</span>
-                        <span className={`mt-1 block text-[0.62rem] uppercase tracking-[0.16em] ${activePeriod ? "text-[#eadfcd]" : "text-[#14110d]/50"}`}>
+                        <span className={`mt-1 block text-[0.62rem] uppercase tracking-[0.16em] ${activePeriod ? "text-[#eadfcd]" : "text-brand-ink-soft"}`}>
                           {meaning.dayRange}
                         </span>
                       </button>
@@ -98,7 +99,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
         <section className="mt-8 rounded-[2rem] border border-[#14110d]/15 bg-[#14110d] p-5 text-[#f4f0e7] shadow-[0_1.5rem_4rem_rgba(20,17,13,0.16)] sm:p-6">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">all seven filters for this card</p>
+              <p className="oracle-eyebrow oracle-eyebrow-on-ink">all seven filters for this card</p>
               <h2 className="mt-2 font-serif text-3xl leading-none tracking-[-0.04em] sm:text-4xl">
                 {selected.card.code} {selected.card.label}
               </h2>
@@ -158,21 +159,21 @@ function MeaningPanel({ meaning }: { meaning: PeriodMeaning }) {
           <p className="oracle-eyebrow">interpretation output</p>
           <h2 className="mt-3 font-serif text-4xl leading-[0.9] tracking-[-0.06em] text-[#14110d] sm:text-5xl">
             {meaning.cardLabel}
-            <span className="block italic" style={{ color: meaning.cardColor }}>
+            <span className="block italic" style={{ color: cardColorOnPaper(meaning.cardCode) }}>
               {meaning.period}
             </span>
           </h2>
         </div>
         <div
           className="grid h-24 w-16 shrink-0 place-items-center rounded-xl border border-[#14110d]/18 bg-[#f4f0e7] font-serif text-3xl shadow-[0_1rem_2rem_rgba(20,17,13,0.12)]"
-          style={{ color: meaning.cardColor }}
+          style={{ color: cardColorOnPaper(meaning.cardCode) }}
           aria-label={meaning.cardLabel}
         >
           {meaning.cardCode}
         </div>
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2 text-[0.66rem] font-bold uppercase tracking-[0.18em] text-[#14110d]/60">
+      <div className="mt-5 flex flex-wrap gap-2 text-[0.66rem] font-bold uppercase tracking-[0.18em] text-brand-ink-soft">
         <span className="rounded-full border border-[#14110d]/15 px-3 py-1">{meaning.dayRange}</span>
         <span className="rounded-full border border-[#14110d]/15 px-3 py-1">{meaning.suitDomain}</span>
         <span className="rounded-full border border-[#14110d]/15 px-3 py-1">{meaning.periodDomain}</span>
@@ -189,8 +190,8 @@ function MeaningPanel({ meaning }: { meaning: PeriodMeaning }) {
         </div>
       </div>
 
-      <div className="mt-6 rounded-3xl border border-[#9e3d24]/25 bg-[#9e3d24]/[0.08] p-5">
-        <p className="oracle-eyebrow text-[#9e3d24]">reflection prompt</p>
+      <div className="mt-6 rounded-3xl border border-[#8e321f]/25 bg-[#8e321f]/[0.08] p-5">
+        <p className="oracle-eyebrow oracle-eyebrow-accent">reflection prompt</p>
         <p className="mt-3 font-serif text-2xl leading-snug tracking-[-0.03em] text-[#14110d]">
           {meaning.reflectionPrompt}
         </p>
@@ -210,7 +211,7 @@ function MeaningBlock({
 }) {
   return (
     <article className={`rounded-3xl border border-[#14110d]/12 bg-[#f4f0e7]/70 ${compact ? "p-4" : "p-5"}`}>
-      <h3 className="text-[0.66rem] font-bold uppercase tracking-[0.2em] text-[#14110d]/[0.52]">
+      <h3 className="text-[0.66rem] font-bold uppercase tracking-[0.2em] text-brand-ink-soft">
         {label}
       </h3>
       <p className="mt-3 text-sm leading-relaxed text-[#3d352d] sm:text-base">{text}</p>

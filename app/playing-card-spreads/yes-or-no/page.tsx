@@ -4,8 +4,8 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { READINGS_PATH, SITE_URL } from "@/lib/site";
-import { SUIT_COLOR, SUIT_GLYPH } from "@/lib/cards";
+import { READINGS_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SUIT_COLOR_PAPER, SUIT_GLYPH } from "@/lib/cards";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { rankTheme, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "How yes-or-no playing card readings traditionally work — red for yes, black for no, suits for nuance — and what a one-card draw honestly can and cannot tell you.",
   alternates: { canonical: "/playing-card-spreads/yes-or-no" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Yes or No Playing Card Reading: The Honest Version",
     description:
       "Red for yes, black for no, suits for nuance — the traditional method, plus the honest claim boundary most spread guides leave out.",
@@ -125,22 +126,22 @@ export default function YesOrNoReading() {
         </p>
         <ul className="prose-reading space-y-2 text-mist">
           <li>
-            <span style={{ color: SUIT_COLOR.hearts }}>{SUIT_GLYPH.hearts} Hearts</span>{" "}
+            <span style={{ color: SUIT_COLOR_PAPER.hearts }}>{SUIT_GLYPH.hearts} Hearts</span>{" "}
             — relationships &amp; emotion: a yes about feeling. The heart is
             already leaning in, whatever the logistics say.
           </li>
           <li>
-            <span style={{ color: SUIT_COLOR.diamonds }}>{SUIT_GLYPH.diamonds} Diamonds</span>{" "}
+            <span style={{ color: SUIT_COLOR_PAPER.diamonds }}>{SUIT_GLYPH.diamonds} Diamonds</span>{" "}
             — values &amp; resources: a practical yes, with conditions. Check
             what it costs and what supports it.
           </li>
           <li>
-            <span style={{ color: SUIT_COLOR.clubs }}>{SUIT_GLYPH.clubs} Clubs</span>{" "}
+            <span style={{ color: SUIT_COLOR_PAPER.clubs }}>{SUIT_GLYPH.clubs} Clubs</span>{" "}
             — mind &amp; communication: a not-yet. The question wants more
             information or a franker conversation before it deserves a verdict.
           </li>
           <li>
-            <span style={{ color: SUIT_COLOR.spades }}>{SUIT_GLYPH.spades} Spades</span>{" "}
+            <span style={{ color: SUIT_COLOR_PAPER.spades }}>{SUIT_GLYPH.spades} Spades</span>{" "}
             — work, will &amp; transformation: a no as things stand — or a yes
             priced in real work and change.
           </li>

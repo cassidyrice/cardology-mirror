@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { rankTheme, suitWord, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "How to read a three-card playing card spread: the past-present-future and situation-action-outcome variants, step-by-step instructions, and a worked example.",
   alternates: { canonical: "/playing-card-spreads/three-card" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Three-Card Spread With Playing Cards: Past, Present, Future",
     description:
       "The first spread to learn with a 52-card deck: both classic variants, a step-by-step method, and a worked example read from real card meanings.",

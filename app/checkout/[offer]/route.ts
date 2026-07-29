@@ -35,6 +35,19 @@ export async function GET(
 
   try {
     const stripe = getStripe();
+    // Entitlement metadata comes from the canonical offer definition in
+    // lib/products.ts — never from anything client-supplied. The external
+    // voice worker and webhook read these to grant access.
+    const entitlement: Record<string, string> = {
+      offer_slug: offer.slug,
+      offer_name: offer.name,
+      access_type: offer.accessType,
+      max_session_minutes: String(offer.durationMinutes),
+      access_days: String(offer.accessDays),
+      ...(offer.maxCompletedCalls != null
+        ? { max_completed_calls: String(offer.maxCompletedCalls) }
+        : {}),
+    };
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       // Request card explicitly. Without this, Checkout resolves methods from
@@ -44,10 +57,13 @@ export async function GET(
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}&offer=${offer.slug}`,
       cancel_url: `${SITE_URL}/readings`,
-      metadata: { offer_slug: offer.slug, offer_name: offer.name },
+      metadata: entitlement,
       payment_intent_data: {
-        metadata: { offer_slug: offer.slug, offer_name: offer.name },
+        metadata: entitlement,
       },
+      // The phone number is the access key: the reading line recognizes the
+      // caller by the number captured here.
+      phone_number_collection: { enabled: true },
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       customer_creation: "always",

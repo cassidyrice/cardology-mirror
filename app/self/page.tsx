@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import SelfClient from "@/components/app/SelfClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
+import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Blueprint";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/self" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Blueprint: Birth Card and Ruling Card Reading",
     description,
     url: "/self",

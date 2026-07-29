@@ -3,7 +3,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { PeriodMeaningTool } from "@/components/seo/PeriodMeaningTool";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { allCardPeriodMeanings } from "@/lib/period-meanings";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const canonicalPath = "/52-day-period-meaning-tool";
 const title = "52-Day Period Meaning Tool";
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: canonicalPath },
   openGraph: {
+    siteName: SITE_NAME,
     title,
     description,
     url: canonicalPath,

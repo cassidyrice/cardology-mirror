@@ -1,14 +1,11 @@
 import Link from "next/link";
 
 import {
+  FREE_PREVIEW_BLURB,
   READER_PHONE_DISPLAY,
   READER_PHONE_TEL,
-  TRIAL_NAME,
-  TRIAL_OFFER,
-  TRIAL_PATH,
-  TRIAL_PRICE_LABEL,
 } from "@/lib/offers";
-import { READING_OFFERS, offerBySlug, readingOfferHref } from "@/lib/products";
+import { offerBySlug, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH } from "@/lib/site";
 
 // Contextual bridge from free content into the paid reading ladder.
@@ -27,57 +24,28 @@ export function ReadingBridge({
 }) {
   if (variant === "general") {
     return (
-      <aside className={`border border-[#14110d]/18 bg-[#14110d] p-6 text-[#f4f0e7] sm:p-8 ${className}`}>
-        <p className="oracle-eyebrow text-[#c8bca8]">Have it read for you</p>
-        <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-none sm:text-4xl">
+      <aside className={`shell-ink border border-[#14110d]/18 p-6 sm:p-8 ${className}`}>
+        <p className="type-eyebrow-dark">Have it read for you</p>
+        <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
           The pages explain the system. A reading applies it to your life.
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#d7cdbc]">
-          Bring a birth date and a real question. Choose a written report or
-          talk with the AI voice guide for a reading about the actual person,
-          relationship, or decision.
+        <p className="mt-4 max-w-[38em] text-base leading-relaxed text-[#c8bca8]">
+          Call with a birthday and talk it through with the AI Cardology
+          reader — one focused question, the complete pattern, or a whole
+          season of return calls.
         </p>
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Link
-            href={TRIAL_PATH}
-            className="block border border-[#d9b26a]/40 bg-[#f4f0e7]/[0.04] p-4 transition hover:bg-[#f4f0e7]/10"
-          >
-            <p className="font-serif text-2xl text-[#d9b26a]">
-              {TRIAL_OFFER.trialAvailable ? TRIAL_PRICE_LABEL : "Trial"}
-            </p>
-            <p className="mt-1 font-serif text-lg leading-tight text-[#f4f0e7]">{TRIAL_NAME}</p>
-            <p className="mt-2 text-xs leading-relaxed text-[#c8bca8]">
-              {TRIAL_OFFER.trialAvailable
-                ? "Seven days of unlimited AI readings by phone."
-                : "Opening soon — start with a free teaser call from the AI reader."}
-            </p>
-          </Link>
-          {READING_OFFERS.map((offer) => (
-            <Link
-              key={offer.slug}
-              href={readingOfferHref(offer)}
-              className="block border border-[#f4f0e7]/20 bg-[#f4f0e7]/[0.04] p-4 transition hover:bg-[#f4f0e7]/10"
-            >
-              <p className="font-serif text-2xl text-[#d9b26a]">{offer.priceLabel}</p>
-              <p className="mt-1 font-serif text-lg leading-tight text-[#f4f0e7]">{offer.name}</p>
-              <p className="mt-2 text-xs leading-relaxed text-[#c8bca8]">{offer.oneLine}</p>
-            </Link>
-          ))}
-        </div>
-        <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-          <Link
-            href={READINGS_PATH}
-            className="inline-block text-sm font-bold uppercase text-[#d9b26a] underline underline-offset-4"
-          >
-            Compare all readings →
-          </Link>
-          <a
-            href={READER_PHONE_TEL}
-            className="inline-block text-sm font-bold uppercase text-[#c8bca8] underline underline-offset-4 transition hover:text-[#f4f0e7]"
-          >
-            Or call the AI reader free: {READER_PHONE_DISPLAY}
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href={READER_PHONE_TEL} className="accent-button large-button text-center">
+            Hear Your First Card Free
           </a>
+          <Link href={READINGS_PATH} className="on-dark-button large-button text-center">
+            Compare the Readings
+          </Link>
         </div>
+        <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-[#c8bca8]">
+          {FREE_PREVIEW_BLURB} Paid readings are one-time purchases tied to
+          your checkout phone number — no subscription.
+        </p>
       </aside>
     );
   }
@@ -87,37 +55,33 @@ export function ReadingBridge({
   if (!offer) return null;
 
   return (
-    <aside className={`border border-[#14110d]/18 bg-[#eadfcd]/70 p-6 sm:p-7 ${className}`}>
-      <p className="oracle-eyebrow text-[#9e3d24]">{config.eyebrow}</p>
-      <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-none text-[#14110d] sm:text-4xl">
+    <aside className={`border border-[#14110d]/18 bg-[#efe8dc]/70 p-6 sm:p-7 ${className}`}>
+      <p className="type-eyebrow">{config.eyebrow}</p>
+      <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-[#14110d] sm:text-4xl">
         {config.headline}
       </h2>
-      <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#3d352d]">
+      <p className="mt-4 max-w-[38em] text-base leading-relaxed text-[#3d352d]">
         {config.body}
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Link href={readingOfferHref(offer)} className="ink-button large-button">
+        {/* Plain anchor: /checkout/* mints a Stripe session per request. */}
+        <a href={readingOfferHref(offer)} className="ink-button large-button">
           {offer.cta} <span aria-hidden="true">→</span>
-        </Link>
+        </a>
         <Link href={READINGS_PATH} className="paper-button large-button">
-          Compare all readings
+          Compare the readings
         </Link>
       </div>
-      <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
-        {offer.href === "/unlock"
-          ? "Secure checkout. This $99 option is an AI voice guide, available by phone after payment with 90 days of access."
-          : "Secure checkout. You confirm the birth details after payment, and the written reading is delivered by email."}
+      <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-[#5b5148]">
+        Secure one-time checkout. The reading is delivered by phone by an AI
+        voice reader — call from your checkout number and it begins. {offer.checkoutNote}
       </p>
-      <p className="mt-2 text-xs leading-relaxed text-[#5b5148]">
+      <p className="mt-2 max-w-[38em] text-xs leading-relaxed text-[#5b5148]">
         Want to hear it first?{" "}
-        <a href={READER_PHONE_TEL} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
+        <a href={READER_PHONE_TEL} className="font-semibold text-[#8e321f] transition hover:text-[#14110d]">
           Call the AI reader free
         </a>{" "}
-        — it reads your first card on the spot — or see the{" "}
-        <Link href={TRIAL_PATH} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
-          {TRIAL_PRICE_LABEL} seven-day Deck Pass trial
-        </Link>
-        .
+        ({READER_PHONE_DISPLAY}) for a short introduction to your birth card.
       </p>
     </aside>
   );
@@ -127,28 +91,28 @@ function bridgeConfig(variant: Exclude<BridgeVariant, "general">, cardLabel?: st
   switch (variant) {
     case "card":
       return {
-        offerSlug: "basic-birth-card-report",
+        offerSlug: "complete-reading",
         eyebrow: "This card, read for you",
         headline: cardLabel
-          ? `Get the ${cardLabel} read as a person, not a page.`
-          : "Get this card read as a person, not a page.",
+          ? `Hear the ${cardLabel} read as a person, not a page.`
+          : "Hear this card read as a person, not a page.",
         body: cardLabel
-          ? `The page above is the general ${cardLabel} pattern. The $29 report reads it for one specific person — birth card, ruling card, shadow range, and the relational cues that only show up when a real birthday is on the table.`
-          : "A card page describes the pattern in general. The $29 report reads it for one specific person — birth card, ruling card, shadow range, and the relational cues that only show up when a real birthday is on the table.",
+          ? `The page above is the general ${cardLabel} pattern. The $39 Complete Reading connects it to a real birthday — birth card, ruling card, and the dynamics that only show up when the cards meet an actual life.`
+          : "A card page describes the pattern in general. The $39 Complete Reading connects it to a real birthday — birth card, ruling card, and the dynamics that only show up when the cards meet an actual life.",
       };
     case "relationship":
       return {
-        offerSlug: "one-question-reading",
+        offerSlug: "complete-reading",
         eyebrow: "This dynamic, read for you",
-        headline: "The calculator names the pattern. The AI voice guide lets you talk it through.",
-        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $99 AI voice guide can compare both birthdays, answer follow-up questions, and stay available for 90 days.",
+        headline: "The calculator names the pattern. The reader lets you talk it through.",
+        body: "If there is a real relationship behind this comparison — a partner, a parent, a friend, someone you can't quite figure out — the $39 Complete Reading compares both birthdays and gives the dynamic up to fifteen unhurried minutes.",
       };
     case "timing":
       return {
-        offerSlug: "one-question-reading",
+        offerSlug: "quick-question",
         eyebrow: "Your timing, read for you",
-        headline: "This tool shows the lens. The AI voice guide helps you explore it.",
-        body: "The filters above are generic by design. The $99 AI voice guide works from your real birth date and questions — what this chapter may be asking you to notice, and how your card tends to respond under this kind of pressure.",
+        headline: "This tool shows the lens. The reader points it at your life.",
+        body: "The filters above are generic by design. A $19 Quick Question works from your real birth date — what this chapter may be asking you to notice, and how your card tends to respond under this kind of pressure.",
       };
   }
 }

@@ -23,12 +23,35 @@ export const SUIT_DOMAIN: Record<Suit, string> = {
   spades: "Work, will & transformation",
 };
 
+// Suit colors for the dark in-app screens, where these read at full strength.
 export const SUIT_COLOR: Record<Suit, string> = {
   hearts: "#e0654a",
   diamonds: "#d9b26a",
   clubs: "#7fae8f",
   spades: "#7b6cf0",
 };
+
+// Suit colors for the warm-paper marketing and editorial pages. The dark
+// palette above is unusable on cream — diamonds land at 1.7:1, clubs at 2.2:1
+// — so paper uses the two inks a real deck uses: red for hearts and diamonds,
+// black for clubs and spades. The glyph carries the suit; the color does not
+// have to. Oxblood on paper is 7.1:1, ink 16.7:1.
+export const SUIT_COLOR_PAPER: Record<Suit, string> = {
+  hearts: "#8e321f",
+  diamonds: "#8e321f",
+  clubs: "#14110d",
+  spades: "#14110d",
+};
+
+export function suitColorOnPaper(suit: Suit): string {
+  return SUIT_COLOR_PAPER[suit];
+}
+
+// Paper-safe color for a card code like "8♦" (falls back to ink).
+export function cardColorOnPaper(code: string): string {
+  const parsed = parseCard(code);
+  return parsed ? SUIT_COLOR_PAPER[parsed.suit] : "#14110d";
+}
 
 export interface ParsedCard {
   rank: string; // "A","2"..."10","J","Q","K"

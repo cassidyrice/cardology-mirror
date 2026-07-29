@@ -1,79 +1,96 @@
 import Link from "next/link";
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL, TRIAL_NAME, TRIAL_PATH } from "@/lib/offers";
-import { READING_OFFERS, readingOfferHref } from "@/lib/products";
-import { READINGS_PATH, SITE_URL, VIDEO_PATH } from "@/lib/site";
+import { SiteFooter } from "@/components/seo/SiteFooter";
+import { SiteHeader } from "@/components/seo/SiteHeader";
+import { Kicker, LinkButton, MobileActionBar, PricingCard, SectionShell } from "@/components/ui";
+import {
+  MICROTRUST_LINE,
+  READER_PHONE_DISPLAY,
+  READER_PHONE_TEL,
+  SEASON_PASS_CLARIFIER,
+} from "@/lib/offers";
+import { READING_OFFERS } from "@/lib/products";
+import { READINGS_PATH, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Cardology Readings and Birth Card Calculator | Card Blueprints" },
+  title: { absolute: "AI Cardology Readings by Phone | Card Blueprints" },
   description:
-    "Personal Cardology readings from your birth card: a $29 birth card report, $99 AI voice reading with 90 days of calls, or $199 full deep dive. Start free with the birth card calculator, all 52 card meanings, and compatibility tools.",
+    "Call with a birthday and hear the pattern behind your birth card. A free first-card preview, then a $19 Quick Question, $39 Complete Reading, or $199 90-Day Season Pass — plus the free birth card calculator and all 52 card meanings.",
   alternates: { canonical: "/" },
 };
 
-const buySteps = [
+const FREE_PATHS = [
+  {
+    label: "Hear Your First Card",
+    href: READER_PHONE_TEL,
+    detail: "A brief introduction to your birth card by phone.",
+    external: true,
+  },
+  {
+    label: "Find Your Birth Card",
+    href: "/birth-card-calculator",
+    detail: "Enter a birthday and calculate the fixed birth card.",
+    external: false,
+  },
+  {
+    label: "Check Compatibility",
+    href: "/birth-card-compatibility-calculator",
+    detail: "Compare two birthdays and explore the relationship pattern.",
+    external: false,
+  },
+];
+
+const STEPS = [
   {
     label: "01",
-    title: "Pick the reading.",
-    detail:
-      "The $29 report maps one person. The $99 pass opens the AI voice line for 90 days of readings and daily cards. The $199 deep dive maps the whole pattern. Checkout takes a minute.",
+    title: "Choose your reading.",
+    detail: "Pick one focused question, a complete reading, or ongoing seasonal access.",
   },
   {
     label: "02",
-    title: "Send the details.",
-    detail:
-      "For written readings you confirm the birth date, the person or relationship involved, and the question right after payment. For the voice pass, your access arrives by email.",
+    title: "Check out with your phone number.",
+    detail: "That number becomes the key to your paid access.",
   },
   {
     label: "03",
-    title: "Read the answer.",
-    detail:
-      "Written readings arrive by email — birth card, ruling card, shadow range, timing when it matters. The voice pass answers live, any time you call.",
+    title: "Call from that number.",
+    detail: "The AI Cardology reader recognizes your access and begins.",
   },
 ];
 
-const freeTools = [
+const LIBRARY_PATHS = [
   {
-    label: "Birth Card Calculator",
-    href: "/birth-card-calculator",
-    detail: "Enter a birthday, get the fixed birth card and ruling card. The place every reading starts.",
+    intent: "I’m new to Cardology",
+    detail: "Start with the calculation, then read how the system works.",
+    links: [
+      { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+      { label: "What Is Cardology?", href: "/what-is-cardology" },
+    ],
   },
   {
-    label: "All 52 Birth Cards",
-    href: "/birth-card",
-    detail: "Every card meaning, from Ace of Hearts to King of Spades, written as a real pattern in people.",
+    intent: "I know my card",
+    detail: "Go deeper on your card’s pattern and the timing language around it.",
+    links: [
+      { label: "All 52 Card Meanings", href: "/birth-card" },
+      { label: "Timing Resources", href: "/52-day-period-meaning-tool" },
+    ],
   },
   {
-    label: "Compatibility Calculator",
-    href: "/birth-card-compatibility-calculator",
-    detail: "Compare two birthdays and see where the attraction, friction, and shared weather actually live.",
-  },
-  {
-    label: "52-Day Period Tool",
-    href: "/52-day-period-meaning-tool",
-    detail: "Run any card through the seven yearly period filters and learn the timing language.",
-  },
-  {
-    label: "Cardology Blog",
-    href: "/blog",
-    detail: "Guides for suits, ranks, karma cards, famous-person profiles, and recurring dynamics.",
-  },
-  {
-    label: "Cardology Videos",
-    href: VIDEO_PATH,
-    detail: "Shadow-reading films and explainers for cards, people, and relationship patterns.",
+    intent: "I’m exploring a relationship",
+    detail: "Compare two birthdays and read the dynamic between the cards.",
+    links: [
+      { label: "Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
+      { label: "Compatibility Guide", href: "/cardology-compatibility" },
+    ],
   },
 ];
-
-const cardStack = ["A♠", "7♥", "Q♦", "3♣", "9♠"];
 
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Card Blueprints personal readings",
+    name: "Card Blueprints voice readings",
     itemListElement: READING_OFFERS.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -83,379 +100,240 @@ export default function Home() {
   };
 
   return (
-    <>
-      <main className="landing-oracle relative min-h-dvh overflow-hidden bg-[#f4f0e7] text-[#14110d]">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <div className="oracle-grid" aria-hidden="true" />
-        <div className="oracle-noise" aria-hidden="true" />
+    <main className="bg-brand-paper text-brand-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        <header className="relative z-10 mx-auto flex w-full max-w-7xl items-center justify-between border-b border-[#14110d]/15 px-5 py-4 sm:px-8 lg:px-10">
-          <Link href="/" className="brand-mark" aria-label="Card Blueprints home">
-            Card Blueprints
-          </Link>
-          <nav className="hidden items-center gap-4 text-[0.68rem] uppercase text-[#14110d]/70 lg:flex xl:gap-5 xl:text-[0.72rem]">
-            <Link href={READINGS_PATH} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
-              Readings
-            </Link>
-            <Link href="/birth-card-calculator" className="transition hover:text-[#14110d]">
-              Calculator
-            </Link>
-            <Link href="/birth-card" className="transition hover:text-[#14110d]">
-              Card Meanings
-            </Link>
-            <Link href="/cardology-compatibility" className="transition hover:text-[#14110d]">
-              Compatibility
-            </Link>
-            <Link href="/52-day-period-meaning-tool" className="transition hover:text-[#14110d]">
-              Timing
-            </Link>
-            <Link href="/blog" className="transition hover:text-[#14110d]">
-              Blog
-            </Link>
-            <Link href="/what-is-cardology" className="transition hover:text-[#14110d]">
-              The Method
-            </Link>
-          </nav>
-          <Link href={READINGS_PATH} className="ink-button small-button">
-            Get a Reading
-          </Link>
-        </header>
+      <SiteHeader />
 
-        <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-69px)] w-full max-w-7xl items-start gap-10 px-5 py-8 sm:px-8 lg:grid-cols-[1.03fr_0.97fr] lg:px-10">
-          <div className="max-w-3xl">
-            <p className="oracle-eyebrow animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_both]">
-              $29 report / $99 AI voice reading + 90 days / $199 deep dive
-            </p>
-
-            <h1 className="hero-title mt-5 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.08s_both]">
-              Personal Cardology readings <span>from your birth card.</span>
+      {/* 1 — Hero */}
+      <section className="shell-paper">
+        <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.25rem,7vw,6rem)] sm:px-8 lg:px-10">
+          <div className="max-w-[54rem]">
+            <Kicker className="rise">AI Cardology readings &middot; by phone</Kicker>
+            <h1 className="type-display rise-2 mt-6">
+              Call with a birthday. Leave with the <em>pattern</em>.
             </h1>
-
-            <p className="mt-6 max-w-2xl text-pretty font-serif text-2xl leading-relaxed text-[#3d352d] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.16s_both] sm:text-3xl">
-              Bring a birth date and a real question. Get a written reading about
-              the actual person, relationship, or decision — not a horoscope.
+            <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
+              Talk with an AI Cardology reader about yourself, a relationship,
+              or the timing around a real decision.
             </p>
-
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5b5148] animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.22s_both] sm:text-lg">
-              Cardology is deterministic: same birthday, same card, every time.
-              Find your card free with the birth card calculator, then have it
-              read for your life — love, family, work, money, timing, and the
-              dynamics that keep repeating.
-            </p>
-
-            <div className="mt-7 flex flex-col gap-3 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.28s_both] sm:flex-row">
-              <Link href={READINGS_PATH} className="ink-button large-button">
-                Choose your reading <span aria-hidden="true">→</span>
-              </Link>
-              <Link href="/birth-card-calculator" className="paper-button large-button">
-                Find your card free
-              </Link>
+            <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
+              <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
+                Hear Your First Card Free
+              </LinkButton>
+              <LinkButton href={READINGS_PATH} variant="outline" size="large">
+                Choose a Reading
+              </LinkButton>
             </div>
+            <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
+              A free 60&ndash;90 second introduction to your birth card&mdash;no
+              full reading or personal question.
+            </p>
+            <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
+              AI reader &middot; deterministic birth-card calculation &middot; no subscription
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <div className="mt-5 max-w-xl border border-[#14110d]/18 bg-[#eadfcd]/70 p-4 animate-[fade-up_0.7s_cubic-bezier(0.22,1,0.36,1)_0.34s_both]">
-              <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
-                Or hear it first — call free
-              </p>
+      {/* 2 — Three free entry points */}
+      <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
+        <Kicker>Start free</Kicker>
+        <h2 className="sr-only">Start free</h2>
+        <div className="mt-6 divide-y divide-brand-line border-y border-brand-line">
+          {FREE_PATHS.map((item) =>
+            item.external ? (
               <a
-                href={READER_PHONE_TEL}
-                className="mt-1 inline-block font-serif text-2xl text-[#14110d] transition hover:text-[#9e3d24] sm:text-3xl"
+                key={item.label}
+                href={item.href}
+                className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
               >
-                {READER_PHONE_DISPLAY}
+                <FreeRowInner label={item.label} detail={item.detail} />
               </a>
-              <p className="mt-1 text-sm leading-relaxed text-[#5b5148]">
-                The AI reader answers, asks your birthday, and reads your card
-                on the spot. No account, no card — just call.
-              </p>
-            </div>
-          </div>
-
-          <aside className="hero-instrument animate-[fade-up_0.8s_cubic-bezier(0.22,1,0.36,1)_0.18s_both]" aria-label="Card Blueprints reading options">
-            <div className="instrument-face">
-              <div className="instrument-topline">
-                <span>written / personal / deterministic</span>
-                <strong>the reading ladder</strong>
-              </div>
-
-              <div className="card-orbit" aria-hidden="true">
-                {cardStack.map((card, index) => (
-                  <span key={card} style={{ "--i": index } as CSSProperties}>
-                    {card}
-                  </span>
-                ))}
-              </div>
-
-              <div className="report-slip">
-                <p className="slip-kicker">Delivered by email</p>
-                <p className="slip-title">One card. One question. One written answer.</p>
-                <div className="slip-lines" aria-hidden="true">
-                  <i />
-                  <i />
-                  <i />
-                </div>
-              </div>
-
-              <ul className="offer-list">
-                {READING_OFFERS.map((offer, index) => (
-                  <li key={offer.slug} style={{ "--delay": `${0.28 + index * 0.08}s` } as CSSProperties}>
-                    <span className="offer-count">{offer.priceLabel}</span>
-                    <span>
-                      <strong>{offer.name}</strong>
-                      <small>{offer.oneLine}</small>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-        </section>
-
-        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#eadfcd] px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-              <div>
-                <p className="oracle-eyebrow">the readings</p>
-                <h2 className="mt-4 max-w-xl font-serif text-4xl leading-none sm:text-5xl">
-                  Three readings. One clear ladder.
-                </h2>
-                <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                  Start with one person&rsquo;s card. Move up when there is a real
-                  question on the table. Go all the way when you want the full
-                  map. Every reading is written for your birth details — no
-                  templates reshuffled, no cold reading.
-                </p>
-                <Link href={READINGS_PATH} className="ink-button large-button mt-7">
-                  Compare the readings <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-              <div className="grid gap-4 lg:grid-cols-3">
-                {READING_OFFERS.map((offer) => (
-                  <article
-                    key={offer.slug}
-                    className="flex flex-col border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5"
-                  >
-                    <p className="font-serif text-3xl text-[#9e3d24]">{offer.priceLabel}</p>
-                    <h3 className="mt-3 font-serif text-2xl leading-none text-[#14110d]">{offer.name}</h3>
-                    <p className="mt-3 flex-1 text-sm leading-relaxed text-[#5b5148]">{offer.oneLine}</p>
-                    <p className="mt-3 text-xs font-bold uppercase leading-relaxed text-[#14110d]/60">
-                      {offer.bestFor}
-                    </p>
-                    <Link href={readingOfferHref(offer)} className="paper-button mt-5 py-3 text-center">
-                      {offer.cta}
-                    </Link>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-7xl">
-            <p className="oracle-eyebrow">from checkout to answer</p>
-            <div className="mt-6 grid gap-6 lg:grid-cols-3">
-              {buySteps.map((step) => (
-                <article key={step.label} className="border border-[#14110d]/18 bg-[#f4f0e7]/74 p-6 shadow-[0_1.5rem_4rem_rgba(20,17,13,0.08)] sm:p-8">
-                  <p className="font-serif text-2xl text-[#9e3d24]">{step.label}</p>
-                  <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
-                    {step.title}
-                  </h2>
-                  <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                    {step.detail}
-                  </p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-            <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">what a reading looks at</p>
-              <h2 className="mt-4 max-w-xl font-serif text-4xl leading-[0.98] sm:text-5xl">
-                The cards get interesting when you know whose card you are reading.
-              </h2>
-            </div>
-            <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
-              <p>
-                A birth card is not just a label for yourself. It becomes sharp
-                when it is compared with a partner, parent, friend, client,
-                collaborator, or the person who keeps getting under your skin —
-                the way they love, compete, avoid, lead, spend, disappear,
-                return, or try to control the room.
-              </p>
-              <p>
-                A good reading gives language to the thing everyone feels but
-                nobody has named yet: why a person feels familiar before you
-                know them, where attraction turns into friction, how family
-                roles repeat, why money or responsibility becomes the pressure
-                point, and what the current timing card is asking you to handle
-                cleanly.
-              </p>
-              <p className="font-serif text-2xl leading-snug text-[#f4f0e7]">
-                The card is not the whole person. It is the recurring shape you
-                finally have words for — and a reading points it at your life.
-              </p>
-              <Link href={READINGS_PATH} className="paper-button large-button mt-2">
-                Get that in writing <span aria-hidden="true">→</span>
+            ) : (
+              <Link
+                key={item.label}
+                href={item.href}
+                className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
+              >
+                <FreeRowInner label={item.label} detail={item.detail} />
               </Link>
-            </div>
-          </div>
-        </section>
+            ),
+          )}
+        </div>
+      </SectionShell>
 
-        <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr]">
-            <div className="border border-[#14110d]/18 bg-[#f4f0e7]/78 p-6 sm:p-8">
-              <p className="oracle-eyebrow">start free</p>
-              <h2 className="mt-4 font-serif text-4xl leading-none sm:text-5xl">
-                Not ready for a reading? Learn the system first.
-              </h2>
-              <p className="mt-5 text-base leading-relaxed text-[#5b5148] sm:text-lg">
-                Everything on this site is built from the same deterministic
-                engine as the paid readings. Calculate your card, read the
-                meaning, compare two people, study the timing language — free.
-                When a real question shows up, the reading is here.
-              </p>
-              <Link href="/birth-card-calculator" className="ink-button large-button mt-7">
-                Find your birth card <span aria-hidden="true">→</span>
-              </Link>
-            </div>
-
-            <div className="grid gap-px overflow-hidden border border-[#14110d]/15 bg-[#14110d]/15 sm:grid-cols-2">
-              {freeTools.map((item) => (
-                <Link key={item.label} href={item.href} className="block bg-[#f4f0e7] p-5 transition hover:bg-[#fffaf0] sm:p-6">
-                  <h3 className="font-serif text-2xl">{item.label}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{item.detail}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="relative z-10 border-y border-[#14110d]/15 bg-[#14110d] px-5 py-16 text-[#f4f0e7] sm:px-8 lg:px-10">
-          <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-            <div>
-              <p className="oracle-eyebrow text-[#c8bca8]">who writes the readings</p>
-              <h2 className="mt-4 max-w-lg font-serif text-4xl leading-[0.98] sm:text-5xl">
-                The deck becomes a map when someone has lived inside it long enough.
-              </h2>
-            </div>
-            <div className="space-y-5 text-base leading-relaxed text-[#d7cdbc] sm:text-lg">
-              <p>
-                Cass was told at five years old that he was the Eight of
-                Diamonds in the Crown Line. He spent decades living inside the
-                symbols, then years reverse-engineering the structure underneath
-                them.
-              </p>
-              <p>
-                That mastery matters because the system becomes recognizable in
-                lived experience: family roles, attraction, creative pressure,
-                money habits, leadership style, and recurring relationship
-                patterns. Every reading is built from that structure and written
-                for the actual birthday in front of it.
-              </p>
-              <p>
-                The point is simple: calculate the card, apply it to actual
-                people, name the pattern clearly, and see whether it explains
-                something real.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative z-10 px-5 py-16 sm:px-8 lg:px-10">
-          <div className="mx-auto max-w-4xl border border-[#14110d]/18 bg-[#f4f0e7]/82 p-6 text-center shadow-[0_1.5rem_4rem_rgba(20,17,13,0.1)] sm:p-10">
-            <p className="oracle-eyebrow">bring the question</p>
-            <h2 className="mt-4 font-serif text-4xl leading-none sm:text-6xl">
-              You already know the person. Get the pattern in writing.
-            </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5b5148] sm:text-lg">
-              A birth date and a real question are enough. The reading does the
-              rest: the card, the shadow, the dynamic, and what it keeps asking
-              you to handle.
-            </p>
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href={READINGS_PATH} className="ink-button large-button">
-                Choose your reading
-              </Link>
-              <Link href="/birth-card-calculator" className="paper-button large-button">
-                Find your card first — free
-              </Link>
-            </div>
-            <p className="mt-5 text-sm leading-relaxed text-[#5b5148]">
-              Prefer to hear it? Call the AI reader free:{" "}
-              <a href={READER_PHONE_TEL} className="font-bold text-[#9e3d24] transition hover:text-[#14110d]">
-                {READER_PHONE_DISPLAY}
-              </a>
-            </p>
-          </div>
-        </section>
-
-        <footer className="relative z-10 mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-10">
-          <p className="oracle-eyebrow mb-5 text-[#14110d]/60">Card Blueprints</p>
-          <div className="grid gap-8 text-sm text-[#3d352d] sm:grid-cols-3">
-            <div>
-              <p className="mb-2 font-serif text-base text-[#14110d]">Personal readings</p>
-              <ul className="space-y-1.5">
-                <li>
-                  <a href={READER_PHONE_TEL} className="hover:text-[#14110d]">
-                    <span className="text-[#9e3d24]">Free</span> teaser call: {READER_PHONE_DISPLAY}
-                  </a>
-                </li>
-                <li>
-                  <Link href={TRIAL_PATH} className="hover:text-[#14110d]">
-                    <span className="text-[#9e3d24]">$9</span> {TRIAL_NAME}
-                  </Link>
-                </li>
-                {READING_OFFERS.map((offer) => (
-                  <li key={offer.slug}>
-                    <Link href={readingOfferHref(offer)} className="hover:text-[#14110d]">
-                      <span className="text-[#9e3d24]">{offer.priceLabel}</span> {offer.name}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link href={READINGS_PATH} className="font-bold text-[#9e3d24] hover:text-[#14110d]">
-                    Compare all readings →
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-2 font-serif text-base text-[#14110d]">Free tools</p>
-              <ul className="space-y-1.5">
-                <li><Link href="/birth-card-calculator" className="hover:text-[#14110d]">Birth Card Calculator</Link></li>
-                <li><Link href="/birth-card-compatibility-calculator" className="hover:text-[#14110d]">Compatibility Calculator</Link></li>
-                <li><Link href="/52-day-period-meaning-tool" className="hover:text-[#14110d]">52-Day Period Meaning Tool</Link></li>
-                <li><Link href="/birth-card" className="hover:text-[#14110d]">All 52 Birth Card Meanings</Link></li>
-              </ul>
-            </div>
-            <div>
-              <p className="mb-2 font-serif text-base text-[#14110d]">Learn the system</p>
-              <ul className="space-y-1.5">
-                <li><Link href="/what-is-cardology" className="hover:text-[#14110d]">What Is Cardology?</Link></li>
-                <li><Link href="/52-card-astrology-explained" className="hover:text-[#14110d]">52-Card Astrology, Explained</Link></li>
-                <li><Link href="/birth-card-vs-ruling-card" className="hover:text-[#14110d]">Birth Card vs Ruling Card</Link></li>
-                <li><Link href="/cardology-compatibility" className="hover:text-[#14110d]">Cardology Compatibility</Link></li>
-                <li><Link href="/shadow-karma-guide" className="hover:text-[#14110d]">Shadow &amp; Karma Guide</Link></li>
-                <li><Link href="/blog" className="hover:text-[#14110d]">Cardology Blog</Link></li>
-                <li><Link href={VIDEO_PATH} className="hover:text-[#14110d]">Cardology Videos</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-4 text-xs text-[#5b5148]">
-            <Link href="/privacy-policy" className="hover:text-[#14110d]">Privacy Policy</Link>
-            <Link href="/refund-policy" className="hover:text-[#14110d]">Refund Policy</Link>
-            <Link href="/terms-of-service" className="hover:text-[#14110d]">Terms of Service</Link>
-            <Link href="/contact" className="hover:text-[#14110d]">Contact</Link>
-          </div>
-          <p className="mt-4 text-xs leading-relaxed text-[#5b5148]">
-            Calculated from the deterministic Cardology system. Same birthday,
-            same card, every time. A pattern language for people, relationships,
-            timing, and recurring dynamics.
+      {/* 3 — Three paid offers */}
+      <SectionShell tone="paperDeep" id="readings">
+        <div className="max-w-[38em]">
+          <Kicker>Readings</Kicker>
+          <h2 className="type-h2 mt-4">Choose how deep you want to go.</h2>
+          <p className="mt-5 leading-relaxed text-brand-ink-soft">
+            Ask one focused question, hear the complete pattern, or keep the
+            reader available through the next 90 days.
           </p>
-        </footer>
-      </main>
+        </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {READING_OFFERS.map((offer) => (
+            <PricingCard
+              key={offer.slug}
+              offer={offer}
+              emphasized={offer.slug === "complete-reading"}
+              goldAccent={offer.slug === "season-pass-90"}
+            />
+          ))}
+        </div>
+        <div className="mt-8 space-y-1 text-center text-xs leading-relaxed text-brand-ink-soft">
+          <p>{MICROTRUST_LINE}</p>
+          <p>{SEASON_PASS_CLARIFIER}</p>
+        </div>
+      </SectionShell>
+
+      {/* 4 — How it works */}
+      <SectionShell tone="paper">
+        <Kicker>How it works</Kicker>
+        <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
+          {STEPS.map((step) => (
+            <div key={step.label} className="border-t border-brand-line pt-5">
+              <p className="font-serif text-lg text-brand-bronze">{step.label}</p>
+              <h3 className="type-h3 mt-3">{step.title}</h3>
+              <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                {step.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </SectionShell>
+
+      {/* 5 — Method and trust */}
+      <SectionShell tone="paperDeep">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div>
+            <Kicker>The method</Kicker>
+            <h2 className="type-h2 mt-4">A real system under the symbols.</h2>
+          </div>
+          <div className="max-w-[38em] space-y-5 leading-relaxed text-brand-ink-soft lg:pt-2">
+            <p>
+              Cardology begins with a reproducible birth-card calculation: the
+              same birthday produces the same card. The reading uses that
+              structure as an esoteric reflection framework for people,
+              relationships, and timing&mdash;not as scientific diagnosis or
+              guaranteed prediction.
+            </p>
+            <p>
+              The reader on the line is an AI voice guide, and it says so. The
+              card math is fixed; the conversation is generated.
+            </p>
+            <p>
+              <Link href="/methodology" className="editorial-link text-brand-ink">
+                Read the methodology &rarr;
+              </Link>
+            </p>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* 6 — Guided library pathways */}
+      <SectionShell tone="paper">
+        <Kicker>The library</Kicker>
+        <h2 className="type-h2 mt-4">Explore the library.</h2>
+        <div className="mt-8 divide-y divide-brand-line border-y border-brand-line">
+          {LIBRARY_PATHS.map((path) => (
+            <div
+              key={path.intent}
+              className="grid gap-3 py-7 lg:grid-cols-[minmax(0,18rem)_1fr] lg:gap-10"
+            >
+              <h3 className="type-h3">{path.intent}</h3>
+              <div>
+                <p className="max-w-[38em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                  {path.detail}
+                </p>
+                <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
+                  {path.links.map((link) => (
+                    <Link key={link.href} href={link.href} className="editorial-link text-brand-ink">
+                      {link.label} &rarr;
+                    </Link>
+                  ))}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </SectionShell>
+
+      {/* 7 — Condensed credibility */}
+      <SectionShell tone="paperDeep" pad="small">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-16">
+          <div>
+            <Kicker>Who&rsquo;s behind this</Kicker>
+            <h2 className="type-h2 mt-4">Written from inside the system.</h2>
+          </div>
+          <div className="max-w-[38em] space-y-4 leading-relaxed text-brand-ink-soft lg:pt-2">
+            <p>
+              Cass was told at five years old that he was the Eight of Diamonds
+              in the Crown Line.
+            </p>
+            <p>
+              Decades inside the symbols followed, then years spent
+              reverse-engineering the structure underneath them.
+            </p>
+            <p>
+              The calculation is deterministic; the interpretation is a craft.
+              This site keeps the two clearly separate.
+            </p>
+            <p>
+              <Link href="/about" className="editorial-link text-brand-ink">
+                About Card Blueprints &rarr;
+              </Link>
+            </p>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* 8 — Final CTA */}
+      <SectionShell tone="ink">
+        <div className="mx-auto max-w-[40rem] py-[clamp(1rem,4vw,3rem)] text-center">
+          <h2 className="type-h2">Your card is already waiting.</h2>
+          <p className="mt-5 text-brand-on-dark-soft">
+            Call with your birthday and hear the first pattern free.
+          </p>
+          <div className="mt-8">
+            <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
+              Hear Your First Card Free
+            </LinkButton>
+          </div>
+          <p className="mt-6">
+            <a
+              href={READER_PHONE_TEL}
+              className="font-serif text-2xl text-brand-on-dark transition hover:text-brand-gold"
+            >
+              {READER_PHONE_DISPLAY}
+            </a>
+          </p>
+          <p className="mt-4 text-sm">
+            <Link href={READINGS_PATH} className="editorial-link text-brand-on-dark-soft">
+              Or compare the readings &rarr;
+            </Link>
+          </p>
+        </div>
+      </SectionShell>
+
+      {/* 9 — Footer */}
+      <SiteFooter />
+
+      <MobileActionBar readingHref={READINGS_PATH} />
+    </main>
+  );
+}
+
+function FreeRowInner({ label, detail }: { label: string; detail: string }) {
+  return (
+    <>
+      <h3 className="type-h3">{label}</h3>
+      <p className="max-w-[38em] text-[0.95rem] leading-relaxed text-brand-ink-soft">{detail}</p>
+      <span aria-hidden="true" className="hidden text-brand-bronze sm:block">
+        &rarr;
+      </span>
     </>
   );
 }
