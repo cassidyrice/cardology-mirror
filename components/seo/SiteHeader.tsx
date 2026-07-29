@@ -34,7 +34,10 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <a href={READER_PHONE_TEL} className="ink-button small-button whitespace-nowrap">
+        {/* shrink-0: between md and ~860px the row is tight enough that flex
+            compresses this button below its text width, which broke "Free
+            Call" onto two lines. */}
+        <a href={READER_PHONE_TEL} className="ink-button small-button shrink-0 whitespace-nowrap">
           Free Call
         </a>
       </div>
