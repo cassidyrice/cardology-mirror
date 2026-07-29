@@ -41,7 +41,7 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
                         selectedPeriod,
                     );
                   }}
-                  className="w-full rounded-full border border-[#14110d]/20 bg-[#fffaf0] px-4 py-3 font-serif text-lg text-[#14110d] outline-none transition focus:border-[#9e3d24] focus:ring-4 focus:ring-[#9e3d24]/10"
+                  className="w-full rounded-full border border-[#14110d]/20 bg-[#fffaf0] px-4 py-3 font-serif text-lg text-[#14110d] outline-none transition focus:border-[#8e321f] focus:ring-4 focus:ring-[#8e321f]/10"
                 >
                   {cards.map((entry) => (
                     <option key={entry.card.slug} value={entry.card.slug}>
@@ -189,8 +189,8 @@ function MeaningPanel({ meaning }: { meaning: PeriodMeaning }) {
         </div>
       </div>
 
-      <div className="mt-6 rounded-3xl border border-[#9e3d24]/25 bg-[#9e3d24]/[0.08] p-5">
-        <p className="oracle-eyebrow text-[#9e3d24]">reflection prompt</p>
+      <div className="mt-6 rounded-3xl border border-[#8e321f]/25 bg-[#8e321f]/[0.08] p-5">
+        <p className="oracle-eyebrow text-[#8e321f]">reflection prompt</p>
         <p className="mt-3 font-serif text-2xl leading-snug tracking-[-0.03em] text-[#14110d]">
           {meaning.reflectionPrompt}
         </p>

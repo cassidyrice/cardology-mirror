@@ -99,7 +99,7 @@ export default function VideosPage() {
             const cardSlug = videoCardSlug(video);
             return (
               <article key={video.url} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-                <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+                <p className="text-[0.68rem] font-bold uppercase text-[#8e321f]">
                   {video.card} · published {video.uploadDate}
                 </p>
                 <h2 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
@@ -123,7 +123,7 @@ export default function VideosPage() {
                   )}
                   <a
                     href={video.url}
-                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#9e3d24]"
+                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#8e321f]"
                   >
                     Watch on the channel
                   </a>

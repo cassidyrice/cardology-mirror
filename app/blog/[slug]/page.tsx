@@ -155,7 +155,7 @@ export default async function BlogPostPage({
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#9e3d24] transition hover:bg-[#eadfcd]"
+                      className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f] transition hover:bg-[#eadfcd]"
                     >
                       {link.label}
                     </Link>
@@ -193,7 +193,7 @@ export default async function BlogPostPage({
             <ul className="space-y-3">
               {related.map((item) => (
                 <li key={item.slug}>
-                  <Link href={blogPostPath(item)} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#9e3d24]">
+                  <Link href={blogPostPath(item)} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#8e321f]">
                     {item.title}
                   </Link>
                   <p className="mt-1 text-sm leading-relaxed text-[#5b5148]">{item.description}</p>

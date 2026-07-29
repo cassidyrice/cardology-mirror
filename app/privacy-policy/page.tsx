@@ -37,11 +37,11 @@ export default function PrivacyPolicy() {
           <p className="mt-3">
             Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
             offer personal Cardology readings and free birth card tools at{" "}
-            <Link href="/" className="text-[#9e3d24] underline underline-offset-4">
+            <Link href="/" className="text-[#8e321f] underline underline-offset-4">
               cardblueprints.com
             </Link>
             . Questions about this policy can be sent to{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>
             .
@@ -84,7 +84,7 @@ export default function PrivacyPolicy() {
                   href="https://stripe.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#9e3d24] underline underline-offset-4"
+                  className="text-[#8e321f] underline underline-offset-4"
                 >
                   Stripe
                 </a>
@@ -148,25 +148,25 @@ export default function PrivacyPolicy() {
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Stripe</strong> — payment processing.{" "}
-              <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
+              <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Stripe Privacy Policy
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Resend</strong> — transactional email delivery.{" "}
-              <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
+              <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Resend Privacy Policy
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>xAI</strong> — AI processing for the voice reading guide.{" "}
-              <a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
+              <a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 xAI Privacy Policy
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Cloudflare</strong> — hosting and edge infrastructure.{" "}
-              <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-[#9e3d24] underline underline-offset-4">
+              <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Cloudflare Privacy Policy
               </a>
             </li>
@@ -197,7 +197,7 @@ export default function PrivacyPolicy() {
           <p className="mt-3">
             You can request that we delete the information tied to your
             purchase at any time by emailing{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
             with the email address or phone number you used at checkout. We will
@@ -219,7 +219,7 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Contact</h2>
           <p className="mt-3">
             Privacy questions:{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#9e3d24] underline underline-offset-4">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>
           </p>

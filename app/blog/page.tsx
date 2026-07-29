@@ -105,7 +105,7 @@ export default function BlogIndexPage() {
           ["Want it read for you?", "Choose a personal reading.", "/readings"],
         ].map(([label, text, href]) => (
           <Link key={href} href={href} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]">
-            <span className="oracle-eyebrow block text-[#9e3d24]">{label}</span>
+            <span className="oracle-eyebrow block text-[#8e321f]">{label}</span>
             <span className="mt-2 block font-serif text-xl leading-none text-[#14110d]">{text}</span>
           </Link>
         ))}
@@ -122,7 +122,7 @@ export default function BlogIndexPage() {
             >
               <p className="font-serif text-2xl text-[#14110d]">{pillar.title}</p>
               <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">{pillar.description}</p>
-              <p className="mt-4 text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+              <p className="mt-4 text-[0.68rem] font-bold uppercase text-[#8e321f]">
                 {blogPostsForPillar(pillar.slug).length} guides
               </p>
             </Link>
@@ -137,11 +137,11 @@ export default function BlogIndexPage() {
             <article key={post.slug} className="border-t border-[#14110d]/15 pt-5">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <p className="text-[0.68rem] font-bold uppercase text-[#9e3d24]">
+                  <p className="text-[0.68rem] font-bold uppercase text-[#8e321f]">
                     {pillarTitle(post.pillar)} · {post.readTime}
                   </p>
                   <h3 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
-                    <Link href={blogPostPath(post)} className="hover:text-[#9e3d24]">
+                    <Link href={blogPostPath(post)} className="hover:text-[#8e321f]">
                       {post.title}
                     </Link>
                   </h3>

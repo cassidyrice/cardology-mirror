@@ -35,7 +35,7 @@ export default function ContactPage() {
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
             Buying a reading? You do not need this page —{" "}
-            <Link href="/readings" className="text-[#9e3d24] underline underline-offset-4">
+            <Link href="/readings" className="text-[#8e321f] underline underline-offset-4">
               checkout is instant
             </Link>{" "}
             and the intake form follows payment. This page is for corrections,
@@ -44,7 +44,7 @@ export default function ContactPage() {
         </div>
       </header>
 
-      <section className="mb-10 border border-[#9e3d24]/25 bg-[#f4f0e7]/90 p-5">
+      <section className="mb-10 border border-[#8e321f]/25 bg-[#f4f0e7]/90 p-5">
         <h2 className="font-serif text-3xl text-[#14110d]">Email Card Blueprints</h2>
         <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
           The fastest way to reach us is email. Include the page URL or purchase
@@ -77,13 +77,13 @@ export default function ContactPage() {
         <h2 className="font-serif text-3xl text-[#14110d]">Public channels</h2>
         <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[#5b5148]">
           <li>
-            <Link href="/editorial-policy" className="text-[#9e3d24] underline underline-offset-4">
+            <Link href="/editorial-policy" className="text-[#8e321f] underline underline-offset-4">
               Editorial policy
             </Link>{" "}
             explains how corrections are handled.
           </li>
           <li>
-            <a href={VIDEO_URL} className="text-[#9e3d24] underline underline-offset-4">
+            <a href={VIDEO_URL} className="text-[#8e321f] underline underline-offset-4">
               Hosted video channel
             </a>{" "}
             is the public destination for watching Card Blueprints videos.
