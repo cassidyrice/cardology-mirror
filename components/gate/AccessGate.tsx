@@ -8,8 +8,8 @@ import { useGate } from "@/lib/useGate";
 // Unlock screen for the AI deep-dive features. Shown when the reader has no
 // valid access token. On success it stores the token (useGate) and calls onUnlocked.
 export function AccessGate({
-  title = "Unlock your deep dive",
-  blurb = "The written reading is generated for you, one card at a time. Enter your email and access code to open it.",
+  title = "Unlock your reading",
+  blurb = "The on-site reading is generated for you, one card at a time. Enter your email and access code to open it.",
   onUnlocked,
 }: {
   title?: string;

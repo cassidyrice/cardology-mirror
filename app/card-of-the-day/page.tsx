@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL, TRIAL_NAME, TRIAL_PATH } from "@/lib/offers";
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SITE_URL } from "@/lib/site";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
 
@@ -251,8 +251,8 @@ export default function CardOfTheDayPage() {
           </a>
         </div>
         <p className="mt-3 text-xs text-faint">
-          The free call reads your first card on the spot. Want it daily? See the{" "}
-          <Link href={TRIAL_PATH} className="text-gold underline underline-offset-4">{TRIAL_NAME}</Link>.
+          The free call introduces your birth card on the spot. Want a season of daily cards?{" "}
+          <Link href="/readings" className="text-gold underline underline-offset-4">See the 90-Day Season Pass</Link>.
         </p>
       </section>
 

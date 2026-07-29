@@ -1,8 +1,15 @@
+// The public paid ladder: three voice readings, one recommended middle.
+// Every marketing surface, checkout route, and webhook reads from here —
+// entitlements are defined once and validated server-side against this file.
+
+export type ReadingAccessType = "single_session" | "season_pass";
+
 export type ReadingOffer = {
   slug: string;
   name: string;
   price: number;
   priceLabel: string;
+  badge?: string;
   oneLine: string;
   bestFor: string;
   deliverable: string;
@@ -11,67 +18,87 @@ export type ReadingOffer = {
   cta: string;
   href?: string;
   checkoutNote: string;
-  stripePriceEnv: "STRIPE_PRICE_BASIC" | "STRIPE_PRICE_QUESTION" | "STRIPE_PRICE_DEEP";
+  stripePriceEnv:
+    | "STRIPE_PRICE_QUICK_QUESTION"
+    | "STRIPE_PRICE_COMPLETE_READING"
+    | "STRIPE_PRICE_SEASON_PASS";
+  accessType: ReadingAccessType;
+  durationMinutes: number;
+  accessDays: number;
+  maxCompletedCalls?: number;
 };
 
 export const READING_OFFERS: ReadingOffer[] = [
   {
-    slug: "basic-birth-card-report",
-    stripePriceEnv: "STRIPE_PRICE_BASIC",
-    name: "Basic Birth Card Report",
-    price: 29,
-    priceLabel: "$29",
-    oneLine: "A clean written report for one person's fixed birth card and ruling-card context.",
-    bestFor: "New visitors who want the core Cardology structure for themselves or someone they are trying to understand.",
-    deliverable: "Written PDF-style report with birth card, ruling card, suit, rank, balanced expression, shadow range, relational cues, and next-step links.",
-    turnaround: "Delivered digitally after intake details are confirmed.",
+    slug: "quick-question",
+    stripePriceEnv: "STRIPE_PRICE_QUICK_QUESTION",
+    name: "Quick Question",
+    price: 19,
+    priceLabel: "$19",
+    oneLine: "Get clarity on one real question.",
+    bestFor:
+      "A focused question about one person, relationship, decision, or immediate situation.",
+    deliverable: "One live phone session with the AI Cardology reader.",
+    turnaround: "Available by phone immediately after checkout.",
     includes: [
-      "Birth card and ruling-card calculation",
-      "Plain-English meaning and shadow range",
-      "Personal reflection prompts",
-      "Links to matching Card Blueprints pages",
+      "One personalized Cardology question",
+      "Up to 5 minutes with the AI reader",
+      "Immediate phone access after checkout",
     ],
-    cta: "Get the $29 report",
-    checkoutNote: "Instant secure checkout · report prepared after payment",
+    cta: "Ask My Question — $19",
+    checkoutNote: "One-time purchase. Call within 30 days. One paid session.",
+    accessType: "single_session",
+    durationMinutes: 5,
+    accessDays: 30,
+    maxCompletedCalls: 1,
   },
   {
-    slug: "one-question-reading",
-    stripePriceEnv: "STRIPE_PRICE_QUESTION",
-    name: "AI Voice Reading + 90 Days",
-    price: 99,
-    priceLabel: "$99",
-    oneLine: "An AI voice guide for a complete Cardology reading, follow-up questions, and daily cards by phone.",
-    bestFor: "People who want to talk through their cards now and return with new questions over the next 90 days.",
-    deliverable: "Phone access to an AI reading guide for the full reading, relationship lookups, timing questions, and daily cards.",
-    turnaround: "Available by phone as soon as checkout is complete.",
+    slug: "complete-reading",
+    stripePriceEnv: "STRIPE_PRICE_COMPLETE_READING",
+    name: "Complete Reading",
+    price: 39,
+    priceLabel: "$39",
+    badge: "Most Popular",
+    oneLine: "Hear the complete pattern behind your cards.",
+    bestFor:
+      "A fuller personal or relationship reading with room to connect the cards to real life.",
+    deliverable: "One live phone session with the AI Cardology reader.",
+    turnaround: "Available by phone immediately after checkout.",
     includes: [
-      "Complete birth card and ruling-card reading",
-      "Unlimited return calls for 90 days",
-      "Relationship and compatibility lookups",
-      "Current timing and daily-card questions",
+      "Birth card and ruling-card interpretation",
+      "Love, work, money, timing, or relationship focus",
+      "Up to 15 minutes with the AI reader",
     ],
-    cta: "Unlock the AI voice guide",
-    href: "/unlock",
-    checkoutNote: "Instant secure checkout · call from the phone number used at checkout",
+    cta: "Get My Complete Reading — $39",
+    checkoutNote: "One-time purchase. Call within 30 days. One paid session.",
+    accessType: "single_session",
+    durationMinutes: 15,
+    accessDays: 30,
+    maxCompletedCalls: 1,
   },
   {
-    slug: "full-deep-dive",
-    stripePriceEnv: "STRIPE_PRICE_DEEP",
-    name: "Full Deep Dive Reading",
+    slug: "season-pass-90",
+    stripePriceEnv: "STRIPE_PRICE_SEASON_PASS",
+    name: "90-Day Season Pass",
     price: 199,
     priceLabel: "$199",
-    oneLine: "The complete Cardology map: birth card, ruling card, timing, relationships, and recurring dynamics.",
-    bestFor: "Clients who want the richest personal and relational map with a fuller explanation of how the system fits together.",
-    deliverable: "Expanded written deep dive covering core pattern, ruling-card expression, timing, compatibility themes, work/love/money patterns, and integration prompts.",
-    turnaround: "Delivered digitally after intake details are confirmed.",
+    badge: "Best Value",
+    oneLine: "Keep your Cardology reader available through an entire season.",
+    bestFor:
+      "Ongoing questions, changing situations, relationship dynamics, timing, and daily cards.",
+    deliverable:
+      "Unlimited personal return calls with the AI Cardology reader for 90 days.",
+    turnaround: "Available by phone immediately after checkout.",
     includes: [
-      "Full birth card and ruling-card interpretation",
-      "Shadow, alignment, support karma, and challenge karma",
-      "Timing and relationship-pattern notes",
-      "Integration practices and follow-up prompts",
+      "Unlimited return calls for 90 days",
+      "Compatibility, timing, and daily-card questions",
+      "One payment with no automatic renewal",
     ],
-    cta: "Book the $199 deep dive",
-    checkoutNote: "Instant secure checkout · intake right after payment",
+    cta: "Open My 90-Day Pass — $199",
+    checkoutNote: "One payment. No automatic renewal. Personal fair use applies.",
+    accessType: "season_pass",
+    durationMinutes: 15,
+    accessDays: 90,
   },
 ];
 

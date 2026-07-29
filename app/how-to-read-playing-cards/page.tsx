@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL, TRIAL_NAME, TRIAL_PATH } from "@/lib/offers";
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SUIT_COLOR, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
 
@@ -249,8 +249,8 @@ export default function HowToReadPlayingCards() {
           </a>
         </div>
         <p className="mt-3 text-xs text-faint">
-          Want it daily? See the{" "}
-          <Link href={TRIAL_PATH} className="text-gold underline underline-offset-4">{TRIAL_NAME}</Link>.
+          Want a season of daily cards?{" "}
+          <Link href="/readings" className="text-gold underline underline-offset-4">See the 90-Day Season Pass</Link>.
         </p>
       </section>
 

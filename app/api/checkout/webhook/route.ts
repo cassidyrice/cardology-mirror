@@ -3,25 +3,26 @@ import type Stripe from "stripe";
 
 import { sendIntakeEmail } from "@/lib/email";
 import { mintToken } from "@/lib/gate";
+import { READER_PHONE_DISPLAY } from "@/lib/offers";
+import { offerBySlug } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-// Access window per offer. The $99 tier is sold as 90 days of access; the
-// $199 deep dive should never get less than the cheaper tier.
-const TOKEN_TTL_DAYS: Record<string, number> = {
-  "one-question-reading": 90,
-  "full-deep-dive": 90,
-  "basic-birth-card-report": 30,
-};
+// Fallback access window when the offer can't be resolved from metadata.
+const DEFAULT_ACCESS_DAYS = 30;
 
 // POST /api/checkout/webhook
 // Stripe webhook receiver. Verifies the signature (Web Crypto, edge-safe),
-// mints a gate token and emails the buyer their access link, and notifies
-// Cass so they have a record independent of whether the buyer ever lands on
-// the post-purchase intake form.
+// mints a gate token for the site's reading tools, emails the buyer how to
+// start their voice session, and notifies Cass so there is a record
+// independent of whether the buyer ever calls.
+//
+// Access windows come from the canonical offer definition in lib/products.ts
+// (quick-question 30d, complete-reading 30d, season-pass-90 90d) — metadata is
+// informational; entitlement is always re-derived server-side.
 export async function POST(req: NextRequest) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!secret) {
@@ -46,30 +47,43 @@ export async function POST(req: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const email = session.customer_details?.email ?? session.customer_email ?? "(no email)";
+    const phone = session.customer_details?.phone ?? "(no phone)";
     const offerSlug = session.metadata?.offer_slug ?? "";
-    const offerName = session.metadata?.offer_name ?? offerSlug ?? "(unknown offer)";
+    const offer = offerBySlug(offerSlug);
+    const offerName = offer?.name ?? session.metadata?.offer_name ?? offerSlug ?? "(unknown offer)";
+    const accessDays = offer?.accessDays ?? DEFAULT_ACCESS_DAYS;
     const amount = session.amount_total != null
       ? `$${(session.amount_total / 100).toFixed(2)} ${session.currency?.toUpperCase() ?? ""}`
       : "(no amount)";
 
-    // Issue the buyer's access token and send their magic link. The token
-    // rides in the URL hash so it stays out of server and CDN logs.
+    const sessionLine = offer
+      ? offer.accessType === "season_pass"
+        ? `Your pass covers unlimited personal return calls for ${offer.accessDays} days — up to ${offer.durationMinutes} minutes per session, no automatic renewal.`
+        : `Your purchase covers one paid session of up to ${offer.durationMinutes} minutes. Call within ${offer.accessDays} days to begin.`
+      : "";
+
+    // Issue the buyer's access token for the site's reading tools and send
+    // their start-here email. The token rides in the URL hash so it stays out
+    // of server and CDN logs.
     let accessIssued = false;
     if (email !== "(no email)") {
       try {
-        const ttlDays = TOKEN_TTL_DAYS[offerSlug] ?? 30;
-        const token = await mintToken(email, ttlDays);
+        const token = await mintToken(email, accessDays);
         const link = `${SITE_URL}/access#token=${encodeURIComponent(token)}&email=${encodeURIComponent(email.trim().toLowerCase())}`;
         await sendIntakeEmail({
           to: email,
-          subject: "Your Card Blueprints access is ready",
+          subject: "Your Card Blueprints reading is ready — here's how to start",
           text: [
             `Thank you — your ${offerName} is confirmed.`,
             "",
-            "Open your reading access here:",
+            `To begin, call ${READER_PHONE_DISPLAY} from the phone number you used at checkout.`,
+            "The AI Cardology reader recognizes that number and starts your reading.",
+            ...(sessionLine ? ["", sessionLine] : []),
+            "",
+            "You can also open the site's reading tools here:",
             link,
             "",
-            `The link activates this browser for ${ttlDays} days. Open it on the device you want to read on.`,
+            `The link activates this browser for ${accessDays} days. Open it on the device you want to read on.`,
             "",
             "If anything doesn't work, just reply to this email.",
           ].join("\n"),
@@ -78,7 +92,7 @@ export async function POST(req: NextRequest) {
       } catch (e) {
         // Token or email failure must not fail the webhook — Cass's
         // notification below flags it for manual follow-up.
-        console.error("[webhook] access link issuance failed", e);
+        console.error("[webhook] access email issuance failed", e);
       }
     }
 
@@ -89,14 +103,15 @@ export async function POST(req: NextRequest) {
           to,
           subject: `Payment received: ${offerName} — ${email}`,
           text: [
-            `Offer: ${offerName}`,
+            `Offer: ${offerName} (${offerSlug || "unknown slug"})`,
             `Amount: ${amount}`,
             `Customer email: ${email}`,
+            `Customer phone: ${phone}`,
+            `Access window: ${accessDays} days`,
             `Stripe session: ${session.id}`,
-            `Access link emailed: ${accessIssued ? "yes" : "NO — send access manually"}`,
+            `Start-here email sent: ${accessIssued ? "yes" : "NO — send access manually"}`,
             "",
-            "The buyer should land on /checkout/success and submit intake.",
-            "If you have not received an intake form yet, reach out to them.",
+            "The buyer should call the reading line from their checkout number.",
           ].join("\n"),
           replyTo: email !== "(no email)" ? email : undefined,
         });
