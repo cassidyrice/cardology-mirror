@@ -18,6 +18,11 @@ const nextConfig = {
         destination: "/birth-card",
         statusCode: 301,
       },
+      {
+        source: "/cardology-agent-instructions",
+        destination: "/shadow-karma-guide",
+        statusCode: 301,
+      },
     ];
   },
 };
