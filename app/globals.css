@@ -572,7 +572,16 @@ body {
 .paper-shell .rounded-2xl,
 .paper-shell .rounded-xl,
 .paper-shell .rounded-lg,
+.paper-shell .rounded-3xl,
 .paper-shell .rounded-t-3xl {
+  border-radius: 0.25rem !important;
+}
+
+/* Pill CTAs and chips inherited from the dark app read as SaaS on paper. Only
+   links and buttons are squared — bare .rounded-full stays round so small
+   decorative dots and avatars keep their shape. */
+.paper-shell a.rounded-full,
+.paper-shell button.rounded-full {
   border-radius: 0.25rem !important;
 }
 

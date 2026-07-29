@@ -209,9 +209,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="The pattern, in three positions">
         <div className="space-y-4">
-          <Lens label="Balanced" tone="#7fae8f" text={card.sweetSpot} />
-          <Lens label="Under-expressed" tone="#d9b26a" text={card.under} />
-          <Lens label="Over-expressed" tone="#e0654a" text={card.over} />
+          <Lens label="Balanced" position="balanced" text={card.sweetSpot} />
+          <Lens label="Under-expressed" position="under" text={card.under} />
+          <Lens label="Over-expressed" position="over" text={card.over} />
         </div>
         <p className="mt-4 text-sm text-faint">
           Three positions, not a verdict. The birth card is a range, not a box — so the honest question isn&rsquo;t “am I this card?” but “which end of the range am I parked at today?”
@@ -439,9 +439,9 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 
       <Section title="Balanced, under-expressed, and over-expressed">
         <div className="space-y-4">
-          <Lens label="Balanced" tone="#7fae8f" text={card.sweetSpot} />
-          <Lens label="Under-expressed" tone="#d9b26a" text={card.under} />
-          <Lens label="Over-expressed" tone="#e0654a" text={card.over} />
+          <Lens label="Balanced" position="balanced" text={card.sweetSpot} />
+          <Lens label="Under-expressed" position="under" text={card.under} />
+          <Lens label="Over-expressed" position="over" text={card.over} />
         </div>
       </Section>
 
@@ -593,8 +593,32 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return <section className="mt-8"><h2 className="eyebrow mb-2 text-gold">{title}</h2><div className="prose-reading text-mist">{children}</div></section>;
 }
 
-function Lens({ label, tone, text }: { label: string; tone: string; text: string }) {
-  return <div className="rounded-2xl border p-4" style={{ borderColor: `${tone}33`, background: `${tone}0d` }}><p className="eyebrow mb-1" style={{ color: tone }}>{label}</p><p className="mb-0 text-mist">{text}</p></div>;
+// Position label colors. Inline styles outrank the .paper-shell class remaps,
+// so these hexes are what actually paint on cream — the dark palette's sage,
+// gold, and ember read at 1.7–3:1 there. These pass AA on paper (7.3 / 5.3 /
+// 7.1) while keeping the three positions distinguishable by hue.
+const LENS_TONES = {
+  balanced: { label: "#2c5740", tint: "#7fae8f" },
+  under: { label: "#7e5f29", tint: "#d9b26a" },
+  over: { label: "#8e321f", tint: "#e0654a" },
+} as const;
+
+function Lens({
+  label,
+  position,
+  text,
+}: {
+  label: string;
+  position: keyof typeof LENS_TONES;
+  text: string;
+}) {
+  const { label: labelColor, tint } = LENS_TONES[position];
+  return (
+    <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
+      <p className="eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
+      <p className="mb-0 text-mist">{text}</p>
+    </div>
+  );
 }
 
 function InfoItem({ label, value }: { label: string; value: string }) {

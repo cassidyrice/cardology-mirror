@@ -103,6 +103,17 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">On-site reading pages</h3>
+              <p className="mt-1">
+                The on-site reading, story, and deep-dive pages are different:
+                they send the birth date to our server so the text can be
+                generated for it. That request is processed to build your
+                response and is not saved to a database — we operate no birth
+                date store. Standard Cloudflare request logs still apply, as
+                described below.
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Server logs</h3>
               <p className="mt-1">
                 Our hosting infrastructure (Cloudflare) may log standard
