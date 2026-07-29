@@ -4,8 +4,9 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { SUIT_COLOR, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
+import { SUIT_COLOR_PAPER, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "How to Read Playing Cards: Cartomancy for Beginners",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     "How to read playing cards with a standard 52-card deck: the four suit meanings, the Ace-to-King rank arc, your first reading in five steps, and when to skip the shuffle.",
   alternates: { canonical: "/how-to-read-playing-cards" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "How to Read Playing Cards: Cartomancy for Beginners",
     description:
       "Suit meanings, the Ace-to-King rank arc, and your first reading in five steps — with an ordinary 52-card deck. No tarot deck required.",
@@ -109,7 +111,7 @@ export default function HowToReadPlayingCards() {
         <ul className="prose-reading space-y-2 text-mist">
           {SUITS.map((suit) => (
             <li key={suit}>
-              <span style={{ color: SUIT_COLOR[suit] }}>
+              <span style={{ color: SUIT_COLOR_PAPER[suit] }}>
                 {SUIT_GLYPH[suit]} {suit.charAt(0).toUpperCase() + suit.slice(1)}
               </span>{" "}
               — {SUIT_DOMAIN[suit].toLowerCase()}: {suitDomainPlain(suit)}.

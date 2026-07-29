@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cartomancy vs Tarot: Reading With Playing Cards, Explained",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "Cartomancy vs tarot: how a standard 52-card deck maps to tarot's suits, what replaces the Major Arcana, and why Cardology reads playing cards without a shuffle.",
   alternates: { canonical: "/cartomancy-vs-tarot" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cartomancy vs Tarot: Reading With Playing Cards, Explained",
     description:
       "How a 52-card deck maps to tarot's structure, and why Cardology reads playing cards deterministically — no shuffle, no draw.",
@@ -111,10 +113,10 @@ export default function CartomancyVsTarot() {
           suits translate directly:
         </p>
         <ul className="prose-reading space-y-1.5 text-mist">
-          <li><span className="text-[#e0654a]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
-          <li><span className="text-[#7fae8f]">♣ Clubs</span> ↔ Wands — energy, mind &amp; communication</li>
-          <li><span className="text-[#d9b26a]">♦ Diamonds</span> ↔ Pentacles — money, values &amp; resources</li>
-          <li><span className="text-[#7b6cf0]">♠ Spades</span> ↔ Swords — work, will &amp; transformation</li>
+          <li><span className="text-[#8e321f]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
+          <li><span className="text-[#14110d]">♣ Clubs</span> ↔ Wands — energy, mind &amp; communication</li>
+          <li><span className="text-[#8e321f]">♦ Diamonds</span> ↔ Pentacles — money, values &amp; resources</li>
+          <li><span className="text-[#14110d]">♠ Spades</span> ↔ Swords — work, will &amp; transformation</li>
         </ul>
         <p className="prose-reading mt-3 text-mist">
           Ace through Ten line up one to one. The courts almost do: tarot

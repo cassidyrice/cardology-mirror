@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import BondsClient from "@/components/app/BondsClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
+import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Bonds";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/bonds" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Bonds: Relationship Pattern Comparison",
     description,
     url: "/bonds",

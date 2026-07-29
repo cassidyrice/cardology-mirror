@@ -19,10 +19,12 @@
   --line: rgba(20, 17, 13, 0.12);
   --line-strong: rgba(20, 17, 13, 0.22);
 
-  --bronze: #87662c;
-  /* Bronze at 4.35:1 on paper-deep misses AA for small text; the deep
-     variant (4.85:1) keeps eyebrows accessible on that surface. */
-  --bronze-deep: #7e5f29;
+  /* Deeper than the #87662c the palette was specced at. That value clears AA
+     on flat paper (4.71:1) but not on the tinted quick-answer and callout
+     panels these eyebrows actually sit on, where it fell to 3.56–4.46:1. This
+     clears 4.5:1 on every light surface in use: paper 6.05, paper-deep 5.59,
+     ivory 6.65, and both panel tints. One value, no per-surface variant. */
+  --bronze: #735624;
   --gold: #b8893d;
   --gold-soft: rgba(184, 137, 61, 0.14);
 
@@ -212,6 +214,17 @@ body {
   color: var(--bronze);
 }
 
+/* Surface variants for .oracle-eyebrow. These must live after the base rule:
+   globals.css is emitted after @tailwind utilities, so a text-[#...] utility
+   on an .oracle-eyebrow element loses at equal specificity. Use these. */
+.oracle-eyebrow-accent {
+  color: var(--oxblood);
+}
+
+.oracle-eyebrow-on-ink {
+  color: var(--on-dark-soft);
+}
+
 /* Buttons — one calm system. Primary = ink, accent = oxblood (the single
    conversion color), outline = quiet. No gradients, no lift, no pill chrome. */
 .ink-button,
@@ -347,10 +360,6 @@ body {
   color: var(--bronze);
 }
 
-.shell-paper-deep .type-eyebrow {
-  color: var(--bronze-deep);
-}
-
 .shell-ink .type-eyebrow,
 .type-eyebrow-dark {
   font-size: var(--text-eyebrow);
@@ -426,6 +435,14 @@ body {
   background: var(--ivory);
   padding: 0.6rem max(0.75rem, env(safe-area-inset-right))
     calc(0.6rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
+}
+
+/* Reserve the fixed bar's height in the scroll port so sequential focus
+   scrolling lands links, and their ring, above the bar instead of behind it. */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-bottom: 5.5rem;
+  }
 }
 
 /* Public article/app pages use the homepage editorial system. The overrides are

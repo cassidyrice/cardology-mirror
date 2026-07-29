@@ -12,7 +12,7 @@ import {
   SEASON_PASS_CLARIFIER,
 } from "@/lib/offers";
 import { READING_OFFERS } from "@/lib/products";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     "Choose a voice reading with the AI Cardology reader: a $19 Quick Question, the $39 Complete Reading, or a $199 90-Day Season Pass. Hear your first card free before you buy.",
   alternates: { canonical: "/readings" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Voice Readings by Phone",
     description:
       "A $19 Quick Question, the $39 Complete Reading, or a $199 90-Day Season Pass — all by phone with the AI Cardology reader.",

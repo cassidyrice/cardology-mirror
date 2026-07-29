@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Birth Card vs Ruling Card: What's the Difference?",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "Birth card vs ruling card in Cardology: what each one is, how they differ, and how the planetary ruling card colors the way your birth card expresses.",
   alternates: { canonical: "/birth-card-vs-ruling-card" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Birth Card vs Ruling Card: What's the Difference?",
     description: "What each card is, how they differ, and how the ruling card colors your birth card.",
     url: "/birth-card-vs-ruling-card",

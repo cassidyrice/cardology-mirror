@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { cardsBySuit } from "@/lib/seo-cards";
 import { SITE_URL } from "@/lib/site";
 
@@ -80,7 +81,7 @@ export default function BirthCardIndex() {
                         background: `radial-gradient(circle at 50% 50%, ${c.color}, transparent 70%)`,
                       }}
                     />
-                    <span className="font-serif text-4xl leading-none" style={{ color: c.color }}>
+                    <span className="font-serif text-4xl leading-none" style={{ color: SUIT_COLOR_PAPER[c.suit] }}>
                       {c.code}
                     </span>
                     <span className="mt-2 block font-serif text-sm text-bone">

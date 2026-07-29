@@ -32,6 +32,7 @@ export async function generateMetadata({
     description: pillar.description,
     alternates: { canonical: blogPillarPath(pillar) },
     openGraph: {
+      siteName: SITE_NAME,
       title: pillar.title,
       description: pillar.description,
       url: blogPillarPath(pillar),

@@ -59,9 +59,11 @@ export function CompatibilityCalculator() {
         </button>
       </form>
 
-      {err && <p className="mt-4 text-sm text-ember">Enter two full birthdays to compare.</p>}
-
-      {pair && <PairResult a={pair.a} b={pair.b} />}
+      {/* One persistent live region, present before the result populates. */}
+      <div role="status" aria-live="polite">
+        {err && <p className="mt-4 text-sm text-ember">Enter two full birthdays to compare.</p>}
+        {pair && <PairResult a={pair.a} b={pair.b} />}
+      </div>
     </div>
   );
 }

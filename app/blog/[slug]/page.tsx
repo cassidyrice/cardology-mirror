@@ -36,6 +36,7 @@ export async function generateMetadata({
     alternates: { canonical: blogPostPath(post) },
     keywords: post.keywords,
     openGraph: {
+      siteName: SITE_NAME,
       title: seoTitle,
       description: post.description,
       url: blogPostPath(post),

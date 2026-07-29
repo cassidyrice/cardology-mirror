@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
-import { SITE_URL, VIDEO_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_URL } from "@/lib/site";
 import {
   CARDOLOGY_VIDEO_CHANNEL,
   CARDOLOGY_VIDEOS,
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
     "Watch Card Blueprints video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
   alternates: { canonical: "/videos" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
       "Card Blueprints videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",

@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { READING_OFFERS, readingOfferHref } from "@/lib/products";
-import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
+import { READING_OFFERS } from "@/lib/products";
+import { READINGS_PATH, SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -37,11 +37,12 @@ export const metadata: Metadata = {
       "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
+  // No title/description here on purpose. A page that sets its own openGraph
+  // does not set twitter, so a title pinned at this level would override the
+  // page's real one on every card — 21 routes, including /readings and /try,
+  // shared the homepage title. Omitting them lets Twitter fall back to og:*.
   twitter: {
     card: "summary_large_image",
-    title: "Card Blueprints — Readings, Birth Card Calculator and Meanings",
-    description:
-      "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: ["/og/default.png"],
   },
   robots: { index: true, follow: true },
@@ -88,7 +89,11 @@ export default function RootLayout({
           "@type": "Offer",
           price: offer.price,
           priceCurrency: "USD",
-          url: `${SITE_URL}${readingOfferHref(offer)}`,
+          // The offer's public page, not readingOfferHref() — that resolves to
+          // /checkout/<slug>, a GET route handler that mints a real Stripe
+          // session on every request and is robots-disallowed. Structured data
+          // must not point crawlers at it.
+          url: `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
           hasMerchantReturnPolicy: {
             "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
           },

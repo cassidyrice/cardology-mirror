@@ -26,10 +26,10 @@ export function SeoShell({
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-69px)] w-full max-w-5xl flex-col px-5 pb-16 pt-8 sm:px-8 sm:pt-12 lg:px-10">
         {crumb && crumb.length > 0 && (
-          <nav className="mb-7 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-brand-ink-faint">
+          <nav aria-label="Breadcrumb" className="mb-7 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-brand-ink-faint">
             {crumb.map((c, i) => (
               <span key={c.href}>
-                {i > 0 && <span className="px-2 text-brand-line-strong">/</span>}
+                {i > 0 && <span aria-hidden="true" className="px-2 text-brand-line-strong">/</span>}
                 <Link href={c.href} className="transition hover:text-brand-ink">
                   {c.label}
                 </Link>

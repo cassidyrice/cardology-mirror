@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import JournalClient from "@/components/app/JournalClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
+import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Journal";
 const description =
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/journal" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Journal: Daily Reflection Prompts",
     description,
     url: "/journal",

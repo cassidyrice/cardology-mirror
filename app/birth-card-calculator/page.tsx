@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Birth Card Calculator: Find Your Cardology Birth Card",
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     "Free birth card calculator. Enter your birthday to instantly find your Cardology birth card and planetary ruling card — then read what your card means.",
   alternates: { canonical: "/birth-card-calculator" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Birth Card Calculator: Find Your Cardology Birth Card",
     description:
       "Enter your birthday to instantly find your Cardology birth card and ruling card.",

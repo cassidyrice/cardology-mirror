@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
-import { SITE_URL, VIDEO_PATH } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
   videosForCard,
   youtubeEmbed,
@@ -25,6 +25,7 @@ import {
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
+import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 
 const SEO_UPDATED = "2026-06-17";
@@ -53,6 +54,7 @@ export async function generateMetadata({
       description,
       alternates: { canonical: `/birth-card/${card.slug}` },
       openGraph: {
+        siteName: SITE_NAME,
         title,
         description,
         url: `/birth-card/${card.slug}`,
@@ -71,6 +73,7 @@ export async function generateMetadata({
       description,
       alternates: { canonical: `/birth-card/${date.slug}` },
       openGraph: {
+        siteName: SITE_NAME,
         title,
         description,
         url: `/birth-card/${date.slug}`,
@@ -133,7 +136,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <JsonLd data={jsonLd} />
 
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: card.color }}>{card.code}</span>
+        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         <span className="eyebrow text-faint">{card.suitDomain}</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">
@@ -343,7 +346,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Birth Card Calculator →</Link>
       </div>
 
-      <nav className="mt-10">
+      <nav aria-label={`More ${suitWord(card)} cards`} className="mt-10">
         <h2 className="eyebrow mb-3 text-gold">More {suitWord(card)} cards</h2>
         <ul className="flex flex-wrap gap-2">
           {siblings.map((c) => (
@@ -403,7 +406,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
     >
       <JsonLd data={jsonLd} />
       <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: card.color }}>{card.code}</span>
+        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         <span className="eyebrow text-faint">{date.label} birth card</span>
       </div>
       <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
@@ -504,7 +507,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
       </div>
 
-      <nav className="mt-8 flex items-center justify-between text-sm">
+      <nav aria-label="Nearby birthdays" className="mt-8 flex items-center justify-between text-sm">
         {/* Prev/next birthdays live on the Worker-served /born-on/ surface —
             link direct instead of /birth-card/[date], which 301s there. */}
         <a href={`/born-on/${prev.slug}`} className="text-gold underline underline-offset-4">← {prev.label}</a>
@@ -577,7 +580,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
       href={`/birth-card/${seo.slug}`}
       className="card-surface flex items-center gap-4 px-4 py-3 transition hover:border-gold/40"
     >
-      <span className="font-serif text-3xl" style={{ color: seo.color }}>
+      <span className="font-serif text-3xl" style={{ color: SUIT_COLOR_PAPER[seo.suit] }}>
         {seo.code}
       </span>
       <div className="flex flex-col">

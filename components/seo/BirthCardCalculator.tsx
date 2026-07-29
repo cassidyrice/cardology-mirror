@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
-import { parseCard, type Suit } from "@/lib/cards";
+import { cardColorOnPaper, parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
@@ -81,13 +81,16 @@ export function BirthCardCalculator() {
         </button>
       </form>
 
-      {touched && !result && (
-        <p className="mt-4 text-sm text-ember">
-          Enter a full date (year, month, and day) to calculate your card.
-        </p>
-      )}
-
-      {result && <ResultCard result={result} />}
+      {/* One persistent live region: it has to be in the DOM before the
+          result populates, or the announcement never fires. */}
+      <div role="status" aria-live="polite">
+        {touched && !result && (
+          <p className="mt-4 text-sm text-ember">
+            Enter a full date (year, month, and day) to calculate your card.
+          </p>
+        )}
+        {result && <ResultCard result={result} />}
+      </div>
     </div>
   );
 }
@@ -129,7 +132,7 @@ function ResultCard({ result }: { result: Result }) {
               <span className="uppercase tracking-widest text-gold/60">Ruling:</span>
               {result.rulingCards.map((c) => (
                 <span key={c} className="flex items-center gap-1.5">
-                  <span style={{ color: parseCard(c)?.color }}>{c}</span>
+                  <span style={{ color: cardColorOnPaper(c) }}>{c}</span>
                   {parseCard(c)?.label}
                 </span>
               ))}

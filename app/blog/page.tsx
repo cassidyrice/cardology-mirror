@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "Read Card Blueprints guides on birth cards, suits, ranks, compatibility, karma cards, famous-person profiles, 52-day periods, and real-life dynamics.",
   alternates: { canonical: "/blog" },
   openGraph: {
+    siteName: SITE_NAME,
     title: "Cardology Blog: Birth Cards and 52-Card Astrology",
     description:
       "Educational Cardology articles organized by pillars: foundations, birth-card meanings, timing, spreads, compatibility, and practice.",

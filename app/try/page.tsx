@@ -9,7 +9,7 @@ import {
   READER_PHONE_DISPLAY,
   READER_PHONE_TEL,
 } from "@/lib/offers";
-import { READINGS_PATH, SITE_URL } from "@/lib/site";
+import { READINGS_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -22,10 +22,12 @@ export const metadata: Metadata = {
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/try" },
   openGraph: {
+    siteName: SITE_NAME,
     title: PAGE_TITLE,
     description: PAGE_DESCRIPTION,
     url: "/try",
     type: "website",
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
 };
 
@@ -52,7 +54,7 @@ export default function TryPage() {
       name: PAGE_TITLE,
       description: PAGE_DESCRIPTION,
       url: `${SITE_URL}/try`,
-      isPartOf: { "@id": `${SITE_URL}/#organization` },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
     },
     {
       "@context": "https://schema.org",
