@@ -1,14 +1,28 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+import { legacyCardDestination } from "@/lib/legacy-card-redirects";
+
 // Canonical host enforcement: 301 any www.* request to the apex domain,
 // preserving path and query. Everything else passes through.
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
+  const redirectUrl = new URL(request.url);
+  let shouldRedirect = false;
+
   if (host.startsWith("www.")) {
-    const url = new URL(request.url);
-    url.host = host.slice(4);
-    return NextResponse.redirect(url, 301);
+    redirectUrl.host = host.slice(4);
+    shouldRedirect = true;
+  }
+
+  const cardDestination = legacyCardDestination(request.nextUrl.pathname);
+  if (cardDestination) {
+    redirectUrl.pathname = cardDestination;
+    shouldRedirect = true;
+  }
+
+  if (shouldRedirect) {
+    return NextResponse.redirect(redirectUrl, 301);
   }
 
   // /card-of-the-day is edge-rendered per request and computes "today"

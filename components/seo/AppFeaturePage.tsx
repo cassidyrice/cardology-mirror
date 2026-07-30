@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { Kicker } from "@/components/ui";
 import { SITE_NAME, abs } from "@/lib/site";
 
 export function AppFeaturePage({
@@ -41,11 +42,9 @@ export function AppFeaturePage({
       />
 
       <header className="max-w-3xl pb-8">
-        <p className="oracle-eyebrow mb-4">{eyebrow}</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          {title}
-        </h1>
-        <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
+        <Kicker className="mb-4">{eyebrow}</Kicker>
+        <h1 className="type-display text-brand-ink">{title}</h1>
+        <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink-soft sm:text-2xl">
           {description}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -64,18 +63,18 @@ export function AppFeaturePage({
         </div>
       </header>
 
-      <section className="card-surface p-5 sm:p-6">
-        <h2 className="oracle-eyebrow mb-4">On this page</h2>
-        <ul className="space-y-3 text-sm leading-relaxed text-[#3d352d] sm:text-base">
+      <section className="rounded-[3px] border border-brand-line bg-brand-ivory p-5 sm:p-6">
+        <Kicker className="mb-4">On this page</Kicker>
+        <ul className="space-y-3 text-sm leading-relaxed text-brand-ink-soft sm:text-base">
           {points.map((point) => (
-            <li key={point} className="border-t border-[#14110d]/12 pt-3 first:border-t-0 first:pt-0">
+            <li key={point} className="border-t border-brand-line pt-3 first:border-t-0 first:pt-0">
               {point}
             </li>
           ))}
         </ul>
       </section>
 
-      <section className="app-paper-stage mt-10 border-y border-[#14110d]/15 bg-[#eadfcd]/55">
+      <section className="app-paper-stage mt-10 border-y border-brand-line bg-brand-paper-deep">
         {children}
       </section>
 

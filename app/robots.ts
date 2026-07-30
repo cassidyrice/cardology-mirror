@@ -13,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
         // (the public sales page, which must stay indexable).
         disallow: [
           "/api/",
-          "/checkout/success",
+          "/checkout/",
           ...APP_PATHS.map((p) => (p === "/reading" ? "/reading$" : p)),
         ],
       },

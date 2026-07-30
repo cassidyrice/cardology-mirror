@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   },
   description:
     "Personal Cardology readings from your birth card, plus the free birth card calculator, all 52 card meanings, compatibility tools, and the 52-card astrology system — a mirror, not a forecast.",
+  icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -89,10 +90,9 @@ export default function RootLayout({
           "@type": "Offer",
           price: offer.price,
           priceCurrency: "USD",
-          // The offer's public page, not readingOfferHref() — that resolves to
-          // /checkout/<slug>, a GET route handler that mints a real Stripe
-          // session on every request and is robots-disallowed. Structured data
-          // must not point crawlers at it.
+          // The indexable comparison section is the public offer URL.
+          // /checkout/<slug> is a robots-disallowed review page; only its
+          // explicit POST action creates a Stripe Checkout Session.
           url: `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
           hasMerchantReturnPolicy: {
             "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,

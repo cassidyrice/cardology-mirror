@@ -35,7 +35,7 @@ export default function TryPage() {
   const faqs = [
     {
       q: "Is the preview really free?",
-      a: `Yes. Calling ${READER_PHONE_DISPLAY} costs nothing and needs no account or card. The AI reader answers, asks your birthday, and introduces your birth card on the spot.`,
+      a: `Yes. Card Blueprints does not charge for the preview, and no account or payment card is required. Standard carrier charges may still apply when calling ${READER_PHONE_DISPLAY}. The AI reader answers, asks your birthday, and introduces your birth card on the spot.`,
     },
     {
       q: "What will I hear?",

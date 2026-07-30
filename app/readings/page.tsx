@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { Kicker, LinkButton, MobileActionBar, PricingCard } from "@/components/ui";
+import { Kicker, LinkButton, PricingCard } from "@/components/ui";
 import {
   FAIR_USE_COPY,
   FREE_PREVIEW_BLURB,
@@ -12,7 +12,7 @@ import {
   SEASON_PASS_CLARIFIER,
 } from "@/lib/offers";
 import { READING_OFFERS } from "@/lib/products";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -39,11 +39,19 @@ const visibleFaqs = [
   },
   {
     q: "What information do I need?",
-    a: "A birth date — yours, or the person the question is about. For relationship questions, bring both birthdays. The reader asks for what it needs during the call; no account or forms are required.",
+    a: "Bring a birth date — yours, or the person the question is about. For relationship questions, bring both birthdays. Stripe Checkout asks for your email, phone number, and payment details; Card Blueprints does not require a site account.",
+  },
+  {
+    q: "Will the reader ask for my payment card details?",
+    a: "No. Stripe handles payment during checkout. The AI reader never accepts payment card details by voice, so do not say them during a call.",
   },
   {
     q: "What counts as a paid session?",
-    a: "A completed paid call. The Quick Question and Complete Reading each include one paid session; a call that fails to connect or ends immediately is not meant to consume your session. Call from the phone number you used at checkout so the reader recognizes your access.",
+    a: "A completed paid call. The Quick Question and Complete Reading each include one paid session. Call from the phone number you used at checkout so the reader recognizes your access. If the line fails to connect or ends before the reading begins, call again from that same number.",
+  },
+  {
+    q: "What if my purchase is not recognized or a call disconnects?",
+    a: `Paid access begins after successful checkout and phone-number recognition, which can take a moment. Call again from the checkout number. If the purchase still is not recognized, or a paid reading is interrupted, email ${CONTACT_EMAIL} with the purchase email and offer name so we can help.`,
   },
   {
     q: "What does unlimited mean on the Season Pass?",
@@ -105,30 +113,16 @@ export default function ReadingsPage() {
         </p>
       </header>
 
-      {/* 2 — Free-preview callout */}
-      <section className="border-y border-brand-line py-7">
-        <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
-          <div>
-            <h2 className="type-h3 text-brand-ink">Hear your first card before you buy.</h2>
-            <p className="mt-2 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-              {FREE_PREVIEW_BLURB}
-            </p>
-          </div>
-          <LinkButton href={READER_PHONE_TEL} variant="primary" size="large">
-            Call Free: {READER_PHONE_DISPLAY}
-          </LinkButton>
-        </div>
-      </section>
-
-      {/* 3 — Three pricing cards */}
+      {/* 2 — Three pricing cards */}
       <section id="pricing" className="mt-12">
-        <div className="grid gap-5 lg:grid-cols-3">
+        <Kicker>Paid readings</Kicker>
+        <h2 className="type-h2 mt-4 text-brand-ink">Compare the three readings.</h2>
+        <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {READING_OFFERS.map((offer) => (
             <PricingCard
               key={offer.slug}
               offer={offer}
               emphasized={offer.slug === "complete-reading"}
-              goldAccent={offer.slug === "season-pass-90"}
             />
           ))}
         </div>
@@ -138,9 +132,30 @@ export default function ReadingsPage() {
         </div>
       </section>
 
+      {/* 3 — Free-preview callout */}
+      <section className="mt-14 border-y border-brand-line py-7">
+        <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-center">
+          <div>
+            <h2 className="type-h3 text-brand-ink">Want to hear the reader first?</h2>
+            <p className="mt-2 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
+              {FREE_PREVIEW_BLURB}
+            </p>
+            <p className="mt-3 text-sm">
+              <Link href="/try" className="editorial-link text-brand-ink">
+                How the free preview works &rarr;
+              </Link>
+            </p>
+          </div>
+          <LinkButton href={READER_PHONE_TEL} variant="primary" size="large">
+            Call Free: {READER_PHONE_DISPLAY}
+          </LinkButton>
+        </div>
+      </section>
+
       {/* 4 — How it works */}
       <section className="mt-16">
         <Kicker>How it works</Kicker>
+        <h2 className="type-h2 mt-4 text-brand-ink">From checkout to conversation.</h2>
         <div className="mt-6 grid gap-8 lg:grid-cols-3">
           {[
             {
@@ -168,7 +183,37 @@ export default function ReadingsPage() {
         </div>
       </section>
 
-      {/* 5 — Straight terms and fair use */}
+      {/* 5 — Call handoff and recovery */}
+      <section className="mt-16 border-y border-brand-line py-8">
+        <Kicker>Before you call</Kicker>
+        <h2 className="type-h2 mt-4 text-brand-ink">Your phone number is the access key.</h2>
+        <div className="mt-7 divide-y divide-brand-line border-y border-brand-line">
+          {[
+            {
+              title: "Use the checkout number.",
+              detail: `After successful checkout, call ${READER_PHONE_DISPLAY} from the same phone number you entered. Paid access begins when the line recognizes that number.`,
+            },
+            {
+              title: "Keep payment in checkout.",
+              detail:
+                "Stripe handles the payment before the call. The AI reader never accepts payment card details by voice.",
+            },
+            {
+              title: "If recognition is delayed or the call drops.",
+              detail: `Wait a moment and call again from the checkout number. If access still is not recognized, or a paid reading is interrupted, email ${CONTACT_EMAIL} with the purchase email and offer name.`,
+            },
+          ].map((item) => (
+            <div key={item.title} className="grid gap-2 py-5 sm:grid-cols-[minmax(0,15rem)_1fr] sm:gap-8">
+              <h3 className="type-h3 text-brand-ink">{item.title}</h3>
+              <p className="max-w-[38em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                {item.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 6 — Straight terms and fair use */}
       <section className="mt-16 border-t border-brand-line pt-8">
         <Kicker>Straight terms</Kicker>
         <div className="mt-5 grid gap-8 lg:grid-cols-2">
@@ -200,7 +245,7 @@ export default function ReadingsPage() {
         </div>
       </section>
 
-      {/* 6 — FAQs */}
+      {/* 7 — FAQs */}
       <section className="mt-16 border-t border-brand-line pt-8">
         <h2 className="type-h2 text-brand-ink">Frequently asked questions</h2>
         <div className="mt-6 divide-y divide-brand-line">
@@ -215,7 +260,7 @@ export default function ReadingsPage() {
         </div>
       </section>
 
-      {/* 7 — Final CTA */}
+      {/* 8 — Final CTA */}
       <section className="shell-ink mt-16 rounded-[3px] px-6 py-12 text-center sm:px-10 sm:py-16">
         <h2 className="type-h2">Still deciding? Hear it first.</h2>
         <p className="mt-4 text-brand-on-dark-soft">
@@ -236,7 +281,6 @@ export default function ReadingsPage() {
         </p>
       </section>
 
-      <MobileActionBar readingHref="#pricing" />
     </SeoShell>
   );
 }

@@ -127,8 +127,6 @@ body {
   color: transparent;
 }
 
-::-webkit-scrollbar { width: 0; height: 0; }
-
 /* star-field for cosmic backgrounds */
 .starfield::before {
   content: "";
@@ -302,6 +300,24 @@ body {
 .small-button { padding: 0.55rem 1rem; }
 .large-button { min-height: 3.25rem; padding: 0 1.6rem; }
 
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  transform: translateY(-200%);
+  border: 2px solid var(--oxblood);
+  border-radius: 3px;
+  background: var(--ivory);
+  color: var(--ink);
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* Inline editorial link — underline, no button chrome. */
 .editorial-link {
   color: inherit;
@@ -411,37 +427,6 @@ body {
   .rise, .rise-2, .rise-3, .rise-4,
   [class*="animate-"] {
     animation: none !important;
-  }
-}
-
-/* Fixed two-action bar for phone widths on / and /readings only. The media
-   query lives here (not only as an md:hidden utility) because this rule sits
-   after the utilities layer and would otherwise win the display cascade. */
-@media (min-width: 768px) {
-  .mobile-action-bar {
-    display: none !important;
-  }
-}
-
-.mobile-action-bar {
-  position: fixed;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 40;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  border-top: 1px solid var(--line);
-  background: var(--ivory);
-  padding: 0.6rem max(0.75rem, env(safe-area-inset-right))
-    calc(0.6rem + env(safe-area-inset-bottom)) max(0.75rem, env(safe-area-inset-left));
-}
-
-/* Reserve the fixed bar's height in the scroll port so sequential focus
-   scrolling lands links, and their ring, above the bar instead of behind it. */
-@media (max-width: 767px) {
-  html {
-    scroll-padding-bottom: 5.5rem;
   }
 }
 

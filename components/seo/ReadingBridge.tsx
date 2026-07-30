@@ -24,12 +24,12 @@ export function ReadingBridge({
 }) {
   if (variant === "general") {
     return (
-      <aside className={`shell-ink border border-[#14110d]/18 p-6 sm:p-8 ${className}`}>
+      <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-8 ${className}`}>
         <p className="type-eyebrow-dark">Have it read for you</p>
         <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
           The pages explain the system. A reading applies it to your life.
         </h2>
-        <p className="mt-4 max-w-[38em] text-base leading-relaxed text-[#c8bca8]">
+        <p className="mt-4 max-w-[38em] text-base leading-relaxed text-brand-on-dark-soft">
           Call with a birthday and talk it through with the AI Cardology
           reader — one focused question, the complete pattern, or a whole
           season of return calls.
@@ -42,7 +42,7 @@ export function ReadingBridge({
             Compare the Readings
           </Link>
         </div>
-        <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-[#c8bca8]">
+        <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-brand-on-dark-soft">
           {FREE_PREVIEW_BLURB} Paid readings are one-time purchases tied to
           your checkout phone number — no subscription.
         </p>
@@ -55,30 +55,30 @@ export function ReadingBridge({
   if (!offer) return null;
 
   return (
-    <aside className={`border border-[#14110d]/18 bg-[#efe8dc]/70 p-6 sm:p-7 ${className}`}>
+    <aside className={`border border-brand-line bg-brand-paper-deep p-6 sm:p-7 ${className}`}>
       <p className="type-eyebrow">{config.eyebrow}</p>
-      <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-[#14110d] sm:text-4xl">
+      <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight text-brand-ink sm:text-4xl">
         {config.headline}
       </h2>
-      <p className="mt-4 max-w-[38em] text-base leading-relaxed text-[#3d352d]">
+      <p className="mt-4 max-w-[38em] text-base leading-relaxed text-brand-ink-soft">
         {config.body}
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        {/* Plain anchor: /checkout/* mints a Stripe session per request. */}
-        <a href={readingOfferHref(offer)} className="ink-button large-button">
+        <Link href={readingOfferHref(offer)} className="ink-button large-button">
           {offer.cta} <span aria-hidden="true">→</span>
-        </a>
+        </Link>
         <Link href={READINGS_PATH} className="paper-button large-button">
           Compare the readings
         </Link>
       </div>
-      <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-[#5b5148]">
+      <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-brand-ink-soft">
         Secure one-time checkout. The reading is delivered by phone by an AI
-        voice reader — call from your checkout number and it begins. {offer.checkoutNote}
+        voice reader after successful payment and phone-number recognition.{" "}
+        Call from your checkout number. {offer.checkoutNote}
       </p>
-      <p className="mt-2 max-w-[38em] text-xs leading-relaxed text-[#5b5148]">
+      <p className="mt-2 max-w-[38em] text-xs leading-relaxed text-brand-ink-soft">
         Want to hear it first?{" "}
-        <a href={READER_PHONE_TEL} className="font-semibold text-[#8e321f] transition hover:text-[#14110d]">
+        <a href={READER_PHONE_TEL} className="editorial-link font-semibold text-brand-ink">
           Call the AI reader free
         </a>{" "}
         ({READER_PHONE_DISPLAY}) for a short introduction to your birth card.

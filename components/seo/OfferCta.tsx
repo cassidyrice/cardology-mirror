@@ -10,12 +10,12 @@ import { READINGS_PATH } from "@/lib/site";
 // surfaces. Server-safe: no client hooks.
 export function OfferCta({ className = "" }: { className?: string }) {
   return (
-    <aside className={`shell-ink border border-[#f6f1e8]/15 p-6 sm:p-7 ${className}`}>
+    <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
       <p className="type-eyebrow-dark">Want to talk this pattern through?</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
         Ask the AI Cardology reader.
       </h2>
-      <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-[#c8bca8] sm:text-base">
+      <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
         Call free and hear a short introduction to your birth card — no
         account, no payment. When there is a real question on the table, the
         paid readings go deeper.
@@ -26,7 +26,7 @@ export function OfferCta({ className = "" }: { className?: string }) {
         </a>
         <Link
           href={READINGS_PATH}
-          className="editorial-link text-center text-sm text-[#c8bca8] sm:text-left"
+          className="editorial-link text-center text-sm text-brand-on-dark-soft sm:text-left"
         >
           Compare the readings &rarr;
         </Link>
