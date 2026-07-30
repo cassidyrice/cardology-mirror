@@ -11,7 +11,7 @@ import { rankTheme, relationshipTheme, suitWord, SPREADS, SPREADS_HUB_PATH } fro
 export const metadata: Metadata = {
   title: "Love Spread With Playing Cards: You, Them, the Connection",
   description:
-    "A playing card love spread for real relationships: the you-them-connection layout, a five-card variant, a worked example, and the birth-card compatibility layer underneath.",
+    "Try a playing-card love spread for real relationships: you, them, the connection, a five-card variation, and the Cardology compatibility layer.",
   alternates: { canonical: "/playing-card-spreads/love" },
   openGraph: {
     siteName: SITE_NAME,

@@ -3,12 +3,17 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
+import {
+  COMPATIBILITY_DIRECTORY_PATH,
+  SITE_NAME,
+  SITE_URL,
+  VIDEO_PATH,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Birth Card Compatibility Calculator — Life Path Cross-Reference",
+  title: "Cardology Compatibility Calculator",
   description:
-    "Free Cardology compatibility calculator. Enter two birthdays to compare birth cards, Life Path constitutions, shared cards, and relationship cross-references.",
+    "Compare two birthdays with a free Cardology compatibility calculator covering birth cards, Life Path constitutions, shared cards, and relationship roles.",
   alternates: { canonical: "/birth-card-compatibility-calculator" },
   openGraph: {
     siteName: SITE_NAME,
@@ -132,6 +137,14 @@ export default function CompatibilityCalculatorPage() {
               </Link>
             </li>
           ))}
+          <li>
+            <a
+              href={COMPATIBILITY_DIRECTORY_PATH}
+              className="text-gold underline underline-offset-4"
+            >
+              Browse every card pairing
+            </a>
+          </li>
         </ul>
       </section>
 

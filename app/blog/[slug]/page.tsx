@@ -29,16 +29,17 @@ export async function generateMetadata({
   const post = blogPostBySlug(slug);
   if (!post) return {};
   const seoTitle = post.seoTitle ?? post.title;
+  const description = fitMetaDescription(post.description);
 
   return {
     title: seoTitle,
-    description: post.description,
+    description,
     alternates: { canonical: blogPostPath(post) },
     keywords: post.keywords,
     openGraph: {
       siteName: SITE_NAME,
       title: seoTitle,
-      description: post.description,
+      description,
       url: blogPostPath(post),
       type: "article",
       images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
@@ -46,10 +47,18 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: seoTitle,
-      description: post.description,
+      description,
       images: ["/og/default.png"],
     },
   };
+}
+
+function fitMetaDescription(value: string, maxLength = 155): string {
+  const clean = value.replace(/\s+/g, " ").trim();
+  if (clean.length <= maxLength) return clean;
+  const prefix = clean.slice(0, maxLength - 1);
+  const wordBoundary = prefix.lastIndexOf(" ");
+  return `${prefix.slice(0, wordBoundary > 100 ? wordBoundary : prefix.length).replace(/[,:;.\s]+$/, "")}…`;
 }
 
 export default async function BlogPostPage({

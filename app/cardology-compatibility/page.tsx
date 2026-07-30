@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { SITE_NAME } from "@/lib/site";
+import { COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cardology Compatibility: Birth Cards, Life Paths and Relationship Dynamics",
+  title: "Cardology Compatibility: Birth Cards & Life Paths",
   description:
-    "How Cardology compatibility works: compare birth cards, Life Path cards, shared cards, Venus/Mars chemistry, Saturn lessons, Pluto shadows, and relationship dynamics.",
+    "Compare birth cards, Life Path cards, shared cards, Venus and Mars chemistry, Saturn lessons, Pluto shadows, and relationship patterns.",
   alternates: { canonical: "/cardology-compatibility" },
   openGraph: {
     siteName: SITE_NAME,
@@ -42,12 +42,12 @@ export default function CompatibilityPage() {
           >
             Open the compatibility calculator →
           </Link>
-          <Link
-            href="/compatibility/"
+          <a
+            href={COMPATIBILITY_DIRECTORY_PATH}
             className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold"
           >
             Browse every card pairing →
-          </Link>
+          </a>
         </div>
       </div>
 

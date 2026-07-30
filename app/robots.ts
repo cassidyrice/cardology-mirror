@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { APP_PATHS, SITE_URL } from "@/lib/site";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -9,13 +9,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        // Anchor "/reading" with $ so it doesn't prefix-match "/readings"
-        // (the public sales page, which must stay indexable).
-        disallow: [
-          "/api/",
-          "/checkout/",
-          ...APP_PATHS.map((p) => (p === "/reading" ? "/reading$" : p)),
-        ],
+        // App and checkout pages publish route-level `noindex` metadata. They
+        // must remain crawlable so search engines can read that directive;
+        // robots.txt is not an access-control boundary.
+        disallow: ["/api/"],
       },
     ],
     // Exactly the sitemaps that exist in production, nothing else:

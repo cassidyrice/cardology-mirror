@@ -20,6 +20,11 @@ export const VIDEO_URL = (
 
 export const VIDEO_PATH = "/videos";
 export const READINGS_PATH = "/readings";
+// These directory pages are rendered by the cardology-unlock Worker in front
+// of Pages. Keep their trailing slashes and use plain anchors so the links
+// resolve through the Worker instead of Next's client router.
+export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
+export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
   "Personal Cardology readings, plus the free birth card calculator, all 52 card meanings, compatibility tools, and 52-card astrology.";

@@ -6,7 +6,13 @@ import {
   READER_PHONE_TEL,
 } from "@/lib/offers";
 import { READING_OFFERS, readingOfferHref } from "@/lib/products";
-import { READINGS_PATH, SITE_NAME, VIDEO_PATH } from "@/lib/site";
+import {
+  BIRTHDAY_DIRECTORY_PATH,
+  COMPATIBILITY_DIRECTORY_PATH,
+  READINGS_PATH,
+  SITE_NAME,
+  VIDEO_PATH,
+} from "@/lib/site";
 
 // One footer for every marketing/editorial surface. The header stays at five
 // destinations; everything long-tail lands here.
@@ -57,6 +63,8 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               <li><Link href="/52-day-period-meaning-tool" className="hover:text-brand-ink">52-Day Period Tool</Link></li>
               <li><Link href="/birth-card" className="hover:text-brand-ink">All 52 Card Meanings</Link></li>
               <li><Link href="/card-of-the-day" className="hover:text-brand-ink">Card of the Day</Link></li>
+              <li><a href={BIRTHDAY_DIRECTORY_PATH} className="hover:text-brand-ink">Birthdays by Date</a></li>
+              <li><a href={COMPATIBILITY_DIRECTORY_PATH} className="hover:text-brand-ink">All Card Pairings</a></li>
             </ul>
           </div>
           <div>

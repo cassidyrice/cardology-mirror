@@ -11,7 +11,7 @@ import { rankTheme, suitWord, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 export const metadata: Metadata = {
   title: "Three-Card Spread With Playing Cards: Past, Present, Future",
   description:
-    "How to read a three-card playing card spread: the past-present-future and situation-action-outcome variants, step-by-step instructions, and a worked example.",
+    "Learn past-present-future and situation-action-outcome three-card spreads, with step-by-step playing-card instructions and a worked example.",
   alternates: { canonical: "/playing-card-spreads/three-card" },
   openGraph: {
     siteName: SITE_NAME,

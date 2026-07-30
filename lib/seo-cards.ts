@@ -145,13 +145,13 @@ export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[
 export function cardMeta(card: CardSeo): { title: string; description: string } {
   // Widened toward the general "{card} meaning" query (searchers ask
   // "queen of hearts meaning" far more than the birth-card phrasing):
-  // readings first, birth card second. The "| Card Blueprints" brand suffix
-  // comes from the root layout's title template — don't add it here.
+  // readings first, birth card second. Keep this literal title under 60
+  // characters; the root layout deliberately does not append a brand suffix.
   const title = `${card.label} Meaning: In Readings & As a Birth Card`;
   const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
     `${card.label} meaning in a reading and as a Cardology birth card: the drawn-card message, love, shadow, compatibility, and birth dates${dates ? ` like ${dates}` : ""}.`,
-    158,
+    155,
   );
   return { title, description };
 }
@@ -197,7 +197,7 @@ export function birthDatesForCard(card: CardSeo): BirthdateSeo[] {
 export function dateMeta(date: BirthdateSeo): { title: string; description: string } {
   return {
     title: `${date.label} Birth Card Meaning`,
-    description: clamp(`${date.label} birth card is ${date.card.label}${date.card.title ? `, ${date.card.title}` : ""}. Read the Cardology meaning, ruling card, personality pattern, strengths, shadow, and growth edge.`, 158),
+    description: clamp(`${date.label} birth card is ${date.card.label}${date.card.title ? `, ${date.card.title}` : ""}. Read the Cardology meaning, ruling card, personality pattern, strengths, shadow, and growth edge.`, 155),
   };
 }
 

@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Yearly Spread";
 const description =
-  "Explore the Cardology yearly spread, seven 52-day periods, current planetary chapter, and timing cards as pattern language for current pressure, choices, relationships, and recurring themes.";
+  "Explore the Cardology yearly spread, seven 52-day periods, current planetary chapter, and timing cards as pattern language for choices and recurring themes.";
 
 export const metadata: Metadata = {
   title: "Cardology Yearly Spread and 52-Day Periods",

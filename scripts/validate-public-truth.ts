@@ -12,8 +12,14 @@ import {
 import { publicBirthCardCode } from "../lib/birth-card-truth";
 import { legacyCardDestination } from "../lib/legacy-card-redirects";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
+import { allPeriodCardSeeds } from "../lib/period-card-seeds";
+import { buildCardPeriodMeanings, PERIOD_FILTERS } from "../lib/period-meanings";
 import { READING_OFFERS, readingOfferFacts } from "../lib/products";
 import { allBirthdateSeo, allCardSeo, birthDatesForCard, cardBySlug } from "../lib/seo-cards";
+import {
+  BIRTHDAY_DIRECTORY_PATH,
+  COMPATIBILITY_DIRECTORY_PATH,
+} from "../lib/site";
 
 const DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -199,6 +205,72 @@ assert.deepEqual(
   },
 );
 
+const periodCardSeeds = allPeriodCardSeeds();
+assert.equal(periodCardSeeds.length, 52);
+assert.equal(new Set(periodCardSeeds.map((card) => card.code)).size, 52);
+assert.equal(new Set(periodCardSeeds.map((card) => card.slug)).size, 52);
+assert.equal(PERIOD_FILTERS.length, 7);
+
+const defaultPeriodCard = periodCardSeeds.find((card) => card.code === "8♦");
+assert.ok(defaultPeriodCard);
+assert.deepEqual(
+  Object.keys(defaultPeriodCard).sort(),
+  [
+    "code",
+    "color",
+    "label",
+    "over",
+    "rank",
+    "slug",
+    "suitDomain",
+    "sweetSpot",
+    "title",
+    "under",
+  ],
+);
+
+const defaultPeriodMeanings = buildCardPeriodMeanings(
+  defaultPeriodCard,
+  PERIOD_FILTERS,
+);
+assert.equal(defaultPeriodMeanings.meanings.length, 7);
+assert.deepEqual(
+  defaultPeriodMeanings.meanings.map((meaning) => meaning.period),
+  PERIOD_FILTERS.map((filter) => filter.planet),
+);
+assert.equal(
+  defaultPeriodMeanings.meanings[0].headline,
+  "8 of Diamonds through the Mercury filter",
+);
+assert.equal(
+  defaultPeriodMeanings.meanings[0].reflectionPrompt,
+  "What needs a clearer word, question, or conversation right now?",
+);
+
+for (const card of periodCardSeeds) {
+  const meanings = buildCardPeriodMeanings(card, PERIOD_FILTERS);
+  assert.equal(meanings.card.code, card.code);
+  assert.equal(meanings.card.slug, card.slug);
+  assert.equal(meanings.meanings.length, PERIOD_FILTERS.length);
+  assert.deepEqual(
+    meanings.meanings.map((meaning) => meaning.period),
+    PERIOD_FILTERS.map((filter) => filter.planet),
+  );
+}
+
+const compactPeriodPayload = JSON.stringify({
+  cards: periodCardSeeds,
+  filters: PERIOD_FILTERS,
+});
+const expandedPeriodPayload = JSON.stringify(
+  periodCardSeeds.map((card) => buildCardPeriodMeanings(card, PERIOD_FILTERS)),
+);
+assert.ok(compactPeriodPayload.length < 40_000);
+assert.ok(compactPeriodPayload.length * 10 < expandedPeriodPayload.length);
+
+assert.equal(BIRTHDAY_DIRECTORY_PATH, "/born-on/");
+assert.equal(COMPATIBILITY_DIRECTORY_PATH, "/compatibility/");
+
 console.log(
-  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 offers, and analytics validation",
+  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 offers, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
 );

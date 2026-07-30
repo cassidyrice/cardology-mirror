@@ -3,20 +3,30 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { parseCard } from "@/lib/cards";
-import type { CardPeriodMeanings, PeriodMeaning } from "@/lib/period-meanings";
+import {
+  buildCardPeriodMeanings,
+  type PeriodCardSeed,
+  type PeriodFilter,
+  type PeriodMeaning,
+} from "@/lib/period-meanings";
 
 interface PeriodMeaningToolProps {
-  cards: CardPeriodMeanings[];
+  cards: PeriodCardSeed[];
+  filters: readonly PeriodFilter[];
 }
 
-export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
-  const defaultCard = cards.find((entry) => entry.card.code === "8♦") ?? cards[0];
-  const [selectedSlug, setSelectedSlug] = useState(defaultCard.card.slug);
-  const [selectedPeriod, setSelectedPeriod] = useState(defaultCard.meanings[0].period);
+export function PeriodMeaningTool({ cards, filters }: PeriodMeaningToolProps) {
+  const defaultCard = cards.find((entry) => entry.code === "8♦") ?? cards[0];
+  const [selectedSlug, setSelectedSlug] = useState(defaultCard.slug);
+  const [selectedPeriod, setSelectedPeriod] = useState(filters[0].planet);
 
-  const selected = useMemo(
-    () => cards.find((entry) => entry.card.slug === selectedSlug) ?? defaultCard,
+  const selectedCard = useMemo(
+    () => cards.find((entry) => entry.slug === selectedSlug) ?? defaultCard,
     [cards, defaultCard, selectedSlug],
+  );
+  const selected = useMemo(
+    () => buildCardPeriodMeanings(selectedCard, filters),
+    [filters, selectedCard],
   );
 
   const active =
@@ -37,16 +47,13 @@ export function PeriodMeaningTool({ cards }: PeriodMeaningToolProps) {
                   value={selectedSlug}
                   onChange={(event) => {
                     setSelectedSlug(event.target.value);
-                    setSelectedPeriod(
-                      cards.find((entry) => entry.card.slug === event.target.value)?.meanings[0].period ??
-                        selectedPeriod,
-                    );
+                    setSelectedPeriod(filters[0].planet);
                   }}
                   className="w-full rounded-[3px] border border-brand-line-strong bg-brand-ivory px-4 py-3 font-serif text-lg text-brand-ink transition"
                 >
                   {cards.map((entry) => (
-                    <option key={entry.card.slug} value={entry.card.slug}>
-                      {entry.card.code} · {entry.card.label}
+                    <option key={entry.slug} value={entry.slug}>
+                      {entry.code} · {entry.label}
                     </option>
                   ))}
                 </select>

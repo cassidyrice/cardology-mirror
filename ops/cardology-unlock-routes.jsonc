@@ -1,0 +1,103 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cardology-unlock",
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // Trigger-only manifest. Apply with:
+  //   wrangler triggers deploy --config ops/cardology-unlock-routes.jsonc
+  //
+  // Do not use this file with `wrangler deploy`: the Worker source and secret
+  // bindings are managed separately in Cloudflare.
+  "routes": [
+    {
+      "pattern": "cardblueprints.com/compatibility",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/compatibility/*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/born-on",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/born-on/*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/sitemap-cardology.xml*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/sitemap-compatibility.xml*",
+      "zone_name": "cardblueprints.com"
+    },
+
+    // Cloudflare routes only support a trailing wildcard, not regex or infix
+    // wildcards. Month-specific prefixes reach the Worker's legacy date 301
+    // without intercepting the 52 canonical /birth-card/{card} pages.
+    {
+      "pattern": "cardblueprints.com/birth-card/january-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/february-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/march-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/april-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/may-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/june-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/july-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/august-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/september-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/october-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/november-*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/birth-card/december-*",
+      "zone_name": "cardblueprints.com"
+    },
+
+    {
+      "pattern": "cardblueprints.com/api/check-payment*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/api/activate*",
+      "zone_name": "cardblueprints.com"
+    },
+    {
+      "pattern": "cardblueprints.com/webhook/stripe*",
+      "zone_name": "cardblueprints.com"
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+# Cloudflare Pages serves these routes as deployment assets, but its default
+# response asks browsers and shared caches to revalidate every request. Keep
+# browser revalidation while allowing the CDN to reuse public SEO pages for one
+# day. Dynamic Functions, checkout, API, and private app routes are absent.
+
+/
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/about
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/videos
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/readings
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/try
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/blog
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/blog/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birth-card
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birth-card/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birth-card-calculator
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/52-day-period-meaning-tool
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birth-card-compatibility-calculator
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/cardology-compatibility
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/what-is-cardology
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/cartomancy-vs-tarot
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/how-to-read-playing-cards
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/playing-card-spreads
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/playing-card-spreads/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/52-card-astrology-explained
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birth-card-vs-ruling-card
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/methodology
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/editorial-policy
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/contact
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/shadow-karma-guide
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/privacy-policy
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/refund-policy
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/terms-of-service
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/robots.txt
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/sitemap.xml
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/feed.xml
+  Cache-Control: public, max-age=0, s-maxage=3600

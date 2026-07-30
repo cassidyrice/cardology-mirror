@@ -1,5 +1,17 @@
-import { allCardSeo, type CardSeo } from "./seo-cards";
 import type { PlanetName } from "./types";
+
+export interface PeriodCardSeed {
+  code: string;
+  label: string;
+  slug: string;
+  color: string;
+  title: string | null;
+  suitDomain: string;
+  rank: string;
+  under: string;
+  sweetSpot: string;
+  over: string;
+}
 
 export interface PeriodFilter {
   planet: PlanetName;
@@ -151,7 +163,7 @@ function cleanSecondPerson(text: string): string {
   return stripped.charAt(0).toUpperCase() + stripped.slice(1);
 }
 
-function rankTheme(card: CardSeo): string {
+function rankTheme(card: PeriodCardSeed): string {
   return RANK_THEMES[card.rank] ?? "a specific card pattern";
 }
 
@@ -159,7 +171,10 @@ function articleFor(word: string): string {
   return /^[aeiou]/i.test(word) ? "an" : "a";
 }
 
-export function buildPeriodMeaning(card: CardSeo, filter: PeriodFilter): PeriodMeaning {
+export function buildPeriodMeaning(
+  card: PeriodCardSeed,
+  filter: PeriodFilter,
+): PeriodMeaning {
   const rank = rankTheme(card);
   const suitDomain = card.suitDomain.toLowerCase();
   const title = card.title ? `, ${card.title}` : "";
@@ -186,7 +201,10 @@ export function buildPeriodMeaning(card: CardSeo, filter: PeriodFilter): PeriodM
   };
 }
 
-export function buildCardPeriodMeanings(card: CardSeo): CardPeriodMeanings {
+export function buildCardPeriodMeanings(
+  card: PeriodCardSeed,
+  filters: readonly PeriodFilter[] = PERIOD_FILTERS,
+): CardPeriodMeanings {
   return {
     card: {
       code: card.code,
@@ -196,10 +214,6 @@ export function buildCardPeriodMeanings(card: CardSeo): CardPeriodMeanings {
       title: card.title,
       suitDomain: card.suitDomain,
     },
-    meanings: PERIOD_FILTERS.map((filter) => buildPeriodMeaning(card, filter)),
+    meanings: filters.map((filter) => buildPeriodMeaning(card, filter)),
   };
-}
-
-export function allCardPeriodMeanings(): CardPeriodMeanings[] {
-  return allCardSeo().map(buildCardPeriodMeanings);
 }

@@ -10,7 +10,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Playing Card Spreads: The Three Layouts Beginners Need",
   description:
-    "The three playing card spreads a beginner needs — three-card, love, and yes-or-no — when to use each, and the Cardology alternative that needs no spread at all.",
+    "Learn three useful playing-card spreads—three-card, love, and yes-or-no—when to use each, plus the Cardology alternative that needs no spread.",
   alternates: { canonical: SPREADS_HUB_PATH },
   openGraph: {
     siteName: SITE_NAME,

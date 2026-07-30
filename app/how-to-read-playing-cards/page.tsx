@@ -11,7 +11,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How to Read Playing Cards: Cartomancy for Beginners",
   description:
-    "How to read playing cards with a standard 52-card deck: the four suit meanings, the Ace-to-King rank arc, your first reading in five steps, and when to skip the shuffle.",
+    "Learn how to read playing cards with suit meanings, Ace-to-King ranks, a five-step first reading, and guidance on when to skip the shuffle.",
   alternates: { canonical: "/how-to-read-playing-cards" },
   openGraph: {
     siteName: SITE_NAME,

@@ -7,7 +7,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: "52-Card Astrology Explained: Cards, Suits & Timing",
   description:
-    "52-card astrology explained: how a standard deck maps to the calendar, what the suits and ranks mean, and how Cardology uses the cards for personality and timing.",
+    "Learn how a 52-card deck maps to the calendar, what each suit and rank means, and how Cardology uses cards for personality and timing.",
   alternates: { canonical: "/52-card-astrology-explained" },
   openGraph: {
     siteName: SITE_NAME,
