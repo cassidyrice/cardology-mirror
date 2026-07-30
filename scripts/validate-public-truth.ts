@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 
 import { compareReadings } from "../components/bonds/compare";
 import { publicBirthCardCode } from "../lib/birth-card-truth";
+import { legacyCardDestination } from "../lib/legacy-card-redirects";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
 import { READING_OFFERS, readingOfferFacts } from "../lib/products";
 import { allBirthdateSeo, allCardSeo, birthDatesForCard, cardBySlug } from "../lib/seo-cards";
@@ -103,6 +104,42 @@ for (const offer of READING_OFFERS) {
   );
 }
 
+const legacyRanks = [
+  ["ace", "ace"],
+  ["two", "2"],
+  ["three", "3"],
+  ["four", "4"],
+  ["five", "5"],
+  ["six", "6"],
+  ["seven", "7"],
+  ["eight", "8"],
+  ["nine", "9"],
+  ["ten", "10"],
+  ["jack", "jack"],
+  ["queen", "queen"],
+  ["king", "king"],
+] as const;
+const suits = ["hearts", "clubs", "diamonds", "spades"] as const;
+let redirectsChecked = 0;
+for (const [legacyRank, canonicalRank] of legacyRanks) {
+  for (const suit of suits) {
+    const destination = `/birth-card/${canonicalRank}-of-${suit}`;
+    assert.equal(
+      legacyCardDestination(`/${canonicalRank}-of-${suit}-meaning/`),
+      destination,
+    );
+    assert.equal(
+      legacyCardDestination(`/cards/${legacyRank}-of-${suit}.html`),
+      destination,
+    );
+    redirectsChecked += 2;
+  }
+}
+assert.equal(redirectsChecked, 104);
+assert.equal(legacyCardDestination("/2-of/"), null);
+assert.equal(legacyCardDestination("/joker-of-spades-meaning/"), null);
+assert.equal(legacyCardDestination("/7-of-stars-meaning/"), null);
+
 console.log(
-  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, phone line, and 3 offers",
+  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, and 3 offers",
 );

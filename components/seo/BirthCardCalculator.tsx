@@ -5,6 +5,7 @@ import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
+import { FREE_PREVIEW_BLURB, READER_PHONE_TEL } from "@/lib/offers";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
 
@@ -144,14 +145,25 @@ function ResultCard({ result }: { result: Result }) {
           )}
         </div>
 
-        {slug && (
-          <Link
-            href={`/birth-card/${slug}`}
-            className="paper-button mt-2"
+        <div className="mt-2 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href={READER_PHONE_TEL}
+            className="accent-button large-button text-center"
           >
-            Read the {bc?.label} meaning →
-          </Link>
-        )}
+            Hear My First Card Free
+          </a>
+          {slug && (
+            <Link
+              href={`/birth-card/${slug}`}
+              className="paper-button large-button text-center"
+            >
+              Read the {bc?.label} meaning →
+            </Link>
+          )}
+        </div>
+        <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
+          {FREE_PREVIEW_BLURB}
+        </p>
       </div>
 
       <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
