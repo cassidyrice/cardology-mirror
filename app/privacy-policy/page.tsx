@@ -102,6 +102,25 @@ export default function PrivacyPolicy() {
                 these tools is transmitted to our servers or stored.
               </p>
             </div>
+            <div className="border-t border-brand-line pt-4">
+              <h3 className="font-bold text-brand-ink">Privacy-conscious site analytics</h3>
+              <p className="mt-1">
+                We use Cloudflare Web Analytics for page traffic and performance,
+                plus a first-party conversion event stream to understand whether
+                visitors use the calculator, click the free reading line, compare
+                offers, begin checkout, or complete a purchase. The event stream
+                uses a random identifier created for and reused only within the
+                current browser tab. It does not store analytics cookies, birthdays, calculated
+                cards, names, email addresses, phone numbers, full referrer URLs,
+                IP addresses, or user-agent strings. Cloudflare retains these
+                custom events for up to three months. If you begin checkout,
+                the same random identifier and non-personal source labels may
+                be attached to the Stripe Checkout Session solely to connect a
+                completed purchase to the earlier funnel. Stripe may retain
+                that checkout metadata under its own transaction-retention
+                rules and privacy policy.
+              </p>
+            </div>
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">On-site reading pages</h3>
               <p className="mt-1">
@@ -189,6 +208,8 @@ export default function PrivacyPolicy() {
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">Voice access profiles: for the access window you purchased, up to 90 days.</li>
             <li className="border-t border-[#14110d]/12 pt-2">Order records: up to 400 days for support and accounting.</li>
+            <li className="border-t border-brand-line pt-2">Tab-scoped conversion analytics: up to three months.</li>
+            <li className="border-t border-brand-line pt-2">Stripe checkout attribution metadata: under Stripe&rsquo;s transaction-retention rules.</li>
           </ul>
         </section>
 

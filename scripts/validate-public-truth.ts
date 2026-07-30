@@ -1,6 +1,14 @@
 import assert from "node:assert/strict";
 
 import { compareReadings } from "../components/bonds/compare";
+import {
+  analyticsMetadata,
+  inferTrafficChannel,
+  isClientFunnelEventName,
+  sanitizeAnalyticsId,
+  sanitizeAnalyticsPath,
+  sanitizeOfferSlug,
+} from "../lib/analytics";
 import { publicBirthCardCode } from "../lib/birth-card-truth";
 import { legacyCardDestination } from "../lib/legacy-card-redirects";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
@@ -140,6 +148,57 @@ assert.equal(legacyCardDestination("/2-of/"), null);
 assert.equal(legacyCardDestination("/joker-of-spades-meaning/"), null);
 assert.equal(legacyCardDestination("/7-of-stars-meaning/"), null);
 
+const analyticsSessionId = "ab119959-a913-4da6-9f50-a0378c613582";
+assert.ok(isClientFunnelEventName("free_call_clicked"));
+assert.ok(!isClientFunnelEventName("purchase_completed"));
+assert.equal(sanitizeAnalyticsId(analyticsSessionId), analyticsSessionId);
+assert.equal(sanitizeAnalyticsId("not-a-session"), "");
+assert.equal(
+  sanitizeAnalyticsPath("/birth-card/8-of-diamonds?email=private"),
+  "/birth-card/8-of-diamonds",
+);
+assert.equal(sanitizeAnalyticsPath("https://example.com/private"), "");
+assert.equal(sanitizeOfferSlug("complete-reading"), "complete-reading");
+assert.equal(sanitizeOfferSlug("invented-offer"), "");
+assert.equal(
+  inferTrafficChannel({
+    referrerHost: "www.google.com",
+    currentHost: "cardblueprints.com",
+    utmSource: "google",
+    utmMedium: "cpc",
+  }),
+  "campaign",
+);
+assert.equal(
+  inferTrafficChannel({
+    referrerHost: "www.google.com",
+    currentHost: "cardblueprints.com",
+    utmSource: "",
+    utmMedium: "",
+  }),
+  "organic",
+);
+assert.deepEqual(
+  analyticsMetadata({
+    sessionId: analyticsSessionId,
+    landingPath: "/birth-card-calculator",
+    referrerHost: "www.google.com",
+    trafficChannel: "organic",
+    utmSource: "google",
+    utmMedium: "organic",
+    utmCampaign: "card meanings",
+  }),
+  {
+    analytics_session_id: analyticsSessionId,
+    analytics_landing_path: "/birth-card-calculator",
+    analytics_referrer_host: "www.google.com",
+    analytics_traffic_channel: "organic",
+    analytics_utm_source: "google",
+    analytics_utm_medium: "organic",
+    analytics_utm_campaign: "card meanings",
+  },
+);
+
 console.log(
-  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, and 3 offers",
+  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 offers, and analytics validation",
 );

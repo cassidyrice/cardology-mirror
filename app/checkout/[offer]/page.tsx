@@ -98,7 +98,12 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
               same number. Paid access begins when the line recognizes it.
             </p>
           </div>
-          <form action={`/checkout/${offer.slug}/session`} method="post" className="mt-6">
+          <form
+            action={`/checkout/${offer.slug}/session`}
+            method="post"
+            className="mt-6"
+            data-analytics-checkout
+          >
             <button type="submit" className="accent-button large-button w-full">
               Continue to Secure Checkout &mdash; {offer.priceLabel}
             </button>
