@@ -8,6 +8,7 @@ import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import { offerBySlug, readingOfferFacts } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Review your Cardology reading",

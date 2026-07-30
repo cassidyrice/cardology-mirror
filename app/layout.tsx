@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   },
   description:
     "Personal Cardology readings from your birth card, plus the free birth card calculator, all 52 card meanings, compatibility tools, and the 52-card astrology system — a mirror, not a forecast.",
+  icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
