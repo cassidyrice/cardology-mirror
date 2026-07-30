@@ -7,7 +7,7 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cartomancy vs Tarot: Reading With Playing Cards, Explained",
   description:
-    "Cartomancy vs tarot: how a standard 52-card deck maps to tarot's suits, what replaces the Major Arcana, and why Cardology reads playing cards without a shuffle.",
+    "Compare cartomancy and tarot: how playing-card suits map to tarot, what replaces the Major Arcana, and why Cardology can read without a shuffle.",
   alternates: { canonical: "/cartomancy-vs-tarot" },
   openGraph: {
     siteName: SITE_NAME,

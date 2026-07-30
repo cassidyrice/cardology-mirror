@@ -7,7 +7,8 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: "Card Blueprints refund terms for voice readings.",
+  description:
+    "Read the Card Blueprints refund policy for AI voice readings, unused sessions, access problems, interrupted calls, and refund requests.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };

@@ -18,7 +18,7 @@ const PAGE_DESCRIPTION =
   "Call the AI Cardology reader free and hear a 60–90 second introduction to your birth card. No account, no payment, no personal question — just a birthday.";
 
 export const metadata: Metadata = {
-  title: { absolute: `${PAGE_TITLE} | Card Blueprints` },
+  title: PAGE_TITLE,
   description: PAGE_DESCRIPTION,
   alternates: { canonical: "/try" },
   openGraph: {

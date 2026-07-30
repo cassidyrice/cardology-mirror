@@ -6,12 +6,11 @@ import { READINGS_PATH, SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/l
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Card Blueprints | Readings, Birth Card Calculator and Meanings",
-    template: "%s | Card Blueprints",
-  },
+  // Keep child titles literal. The former automatic " | Card Blueprints"
+  // suffix pushed 74 sitemap titles beyond 60 characters.
+  title: "Card Blueprints | Cardology Readings & Birth Cards",
   description:
-    "Personal Cardology readings from your birth card, plus the free birth card calculator, all 52 card meanings, compatibility tools, and the 52-card astrology system — a mirror, not a forecast.",
+    "AI Cardology readings by phone, plus a free birth card calculator, all 52 card meanings, compatibility tools, and practical Cardology guides.",
   icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
@@ -34,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Card Blueprints — Readings, Birth Card Calculator and Meanings",
+    title: "Card Blueprints — Cardology Readings & Birth Cards",
     description:
       "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],

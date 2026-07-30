@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Card of the Day: Free Daily Playing Card Reading",
   description:
-    "Free card of the day from the standard 52-card deck. Every calendar date maps to exactly one playing card — see today's card, its meaning in love and work, and find your own.",
+    "See today's fixed Cardology card, its meaning in love and work, and the birth-card pattern for anyone born on this date. Updated daily.",
   alternates: { canonical: "/card-of-the-day" },
   openGraph: {
     siteName: SITE_NAME,

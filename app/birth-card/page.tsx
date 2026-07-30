@@ -4,12 +4,16 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { cardsBySuit } from "@/lib/seo-cards";
-import { SITE_URL } from "@/lib/site";
+import {
+  BIRTHDAY_DIRECTORY_PATH,
+  COMPATIBILITY_DIRECTORY_PATH,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "All 52 Cardology Birth Cards — Meanings & Personality",
   description:
-    "Browse all 52 Cardology birth cards. Find any card's meaning, personality, strengths, and shadow — grouped by suit. Don't know yours? Use the free calculator.",
+    "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.",
   alternates: { canonical: "/birth-card" },
 };
 
@@ -47,6 +51,17 @@ export default function BirthCardIndex() {
         <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
           calculate yours
         </Link>
+        .
+      </p>
+      <p className="prose-reading mb-6 text-mist">
+        Prefer to browse another way? Explore{" "}
+        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+          birthdays by date
+        </a>{" "}
+        or{" "}
+        <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+          every two-card pairing
+        </a>
         .
       </p>
 

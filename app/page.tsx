@@ -16,7 +16,7 @@ import { READINGS_PATH, SITE_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: { absolute: "AI Cardology Readings by Phone | Card Blueprints" },
   description:
-    "Call with a birthday and hear the pattern behind your birth card. A free first-card preview, then a $19 Quick Question, $39 Complete Reading, or $199 90-Day Season Pass — plus the free birth card calculator and all 52 card meanings.",
+    "Call with a birthday for an AI Cardology reading by phone, or use the free birth card calculator, compatibility tools, and all 52 card meanings.",
   alternates: { canonical: "/" },
 };
 

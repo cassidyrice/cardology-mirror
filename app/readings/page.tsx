@@ -17,9 +17,9 @@ import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Cardology Readings: $19 Question, $39 Complete Reading, $199 Season Pass",
+  title: "Cardology Voice Readings: $19, $39 & 90-Day Pass",
   description:
-    "Choose a voice reading with the AI Cardology reader: a $19 Quick Question, the $39 Complete Reading, or a $199 90-Day Season Pass. Hear your first card free before you buy.",
+    "Compare AI Cardology voice readings by phone: a $19 Quick Question, $39 Complete Reading, or $199 90-Day Season Pass. Hear your first card free.",
   alternates: { canonical: "/readings" },
   openGraph: {
     siteName: SITE_NAME,

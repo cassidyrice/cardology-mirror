@@ -12,7 +12,7 @@ import { rankTheme, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 export const metadata: Metadata = {
   title: "Yes or No Playing Card Reading: The Honest Version",
   description:
-    "How yes-or-no playing card readings traditionally work — red for yes, black for no, suits for nuance — and what a one-card draw honestly can and cannot tell you.",
+    "Learn traditional yes-or-no playing-card reading: red or black answers, suit nuance, and what a one-card draw can and cannot honestly tell you.",
   alternates: { canonical: "/playing-card-spreads/yes-or-no" },
   openGraph: {
     siteName: SITE_NAME,
