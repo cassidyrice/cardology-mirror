@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
-import { Kicker, LinkButton, MobileActionBar, PricingCard, SectionShell } from "@/components/ui";
+import { Kicker, LinkButton, PricingCard, SectionShell } from "@/components/ui";
 import {
   MICROTRUST_LINE,
   READER_PHONE_DISPLAY,
@@ -100,13 +100,14 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-brand-paper text-brand-ink">
+    <div className="bg-brand-paper text-brand-ink">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <SiteHeader />
 
-      {/* 1 — Hero */}
-      <section className="shell-paper">
+      <main id="main-content" tabIndex={-1}>
+        {/* 1 — Hero */}
+        <section className="shell-paper">
         <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.25rem,7vw,6rem)] sm:px-8 lg:px-10">
           <div className="max-w-[54rem]">
             <Kicker className="rise">AI Cardology readings &middot; by phone</Kicker>
@@ -114,8 +115,9 @@ export default function Home() {
               Call with a birthday. Leave with the <em>pattern</em>.
             </h1>
             <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-              Talk with an AI Cardology reader about yourself, a relationship,
-              or the timing around a real decision.
+              Talk with an AI Cardology reader about the fixed card behind a
+              birthday, then use the pattern for self-awareness around a
+              relationship, decision, or season of life.
             </p>
             <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
               <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
@@ -129,12 +131,17 @@ export default function Home() {
               A free 60&ndash;90 second introduction to your birth card&mdash;no
               full reading or personal question.
             </p>
+            <p className="rise-4 mt-3 text-sm">
+              <Link href="/try" className="editorial-link text-brand-ink">
+                How the free preview works &rarr;
+              </Link>
+            </p>
             <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
-              AI reader &middot; deterministic birth-card calculation &middot; no subscription
+              AI reader &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
             </p>
           </div>
         </div>
-      </section>
+        </section>
 
       {/* 2 — Three free entry points */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
@@ -179,7 +186,6 @@ export default function Home() {
               key={offer.slug}
               offer={offer}
               emphasized={offer.slug === "complete-reading"}
-              goldAccent={offer.slug === "season-pass-90"}
             />
           ))}
         </div>
@@ -192,6 +198,7 @@ export default function Home() {
       {/* 4 — How it works */}
       <SectionShell tone="paper">
         <Kicker>How it works</Kicker>
+        <h2 className="type-h2 mt-4">From checkout to conversation.</h2>
         <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
           {STEPS.map((step) => (
             <div key={step.label} className="border-t border-brand-line pt-5">
@@ -291,7 +298,7 @@ export default function Home() {
       </SectionShell>
 
       {/* 8 — Final CTA */}
-      <SectionShell tone="ink">
+        <SectionShell tone="ink">
         <div className="mx-auto max-w-[40rem] py-[clamp(1rem,4vw,3rem)] text-center">
           <h2 className="type-h2">Your card is already waiting.</h2>
           <p className="mt-5 text-brand-on-dark-soft">
@@ -316,13 +323,13 @@ export default function Home() {
             </Link>
           </p>
         </div>
-      </SectionShell>
+        </SectionShell>
+      </main>
 
       {/* 9 — Footer */}
       <SiteFooter />
 
-      <MobileActionBar readingHref={READINGS_PATH} />
-    </main>
+    </div>
   );
 }
 

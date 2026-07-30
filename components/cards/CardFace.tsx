@@ -44,13 +44,23 @@ function Corner({ rank, glyph, cls, glyphCls, rotated }: { rank: string; glyph: 
 
 // Court cards are vertically mirror-symmetric in a real deck — two rotated halves
 // of the same face. We honor that with a framed monogram split top/bottom.
-function CourtFace({ card, s }: { card: ParsedCard; s: (typeof SCALE)[SizeKey] }) {
+function CourtFace({
+  card,
+  s,
+  paper,
+}: {
+  card: ParsedCard;
+  s: (typeof SCALE)[SizeKey];
+  paper: boolean;
+}) {
   const half = (rotated: boolean) => (
     <div
       className={`flex flex-1 flex-col items-center justify-center gap-0.5 ${rotated ? "rotate-180" : ""}`}
     >
       <span className={`${s.court} leading-none`}>{card.glyph}</span>
-      <span className={`${s.courtLetter} foil-text font-serif font-semibold leading-none`}>
+      <span
+        className={`${s.courtLetter} ${paper ? "" : "foil-text"} font-serif font-semibold leading-none`}
+      >
         {card.rank}
       </span>
     </div>
@@ -67,7 +77,15 @@ function CourtFace({ card, s }: { card: ParsedCard; s: (typeof SCALE)[SizeKey] }
   );
 }
 
-export function CardFace({ card, size }: { card: ParsedCard; size: SizeKey }) {
+export function CardFace({
+  card,
+  size,
+  paper = false,
+}: {
+  card: ParsedCard;
+  size: SizeKey;
+  paper?: boolean;
+}) {
   const s = SCALE[size];
   const isCourt = COURT.has(card.rank);
   const isAce = card.rank === "A";
@@ -122,7 +140,7 @@ export function CardFace({ card, size }: { card: ParsedCard; size: SizeKey }) {
         // Court: framed, vertically mirrored monogram.
         <div className={`absolute inset-0 z-[5] flex ${s.pad}`}>
           <div className={`flex-1 ${size === "sm" ? "mx-1.5 my-3" : size === "md" ? "mx-3 my-5" : "mx-4 my-7"}`}>
-            <CourtFace card={card} s={s} />
+            <CourtFace card={card} s={s} paper={paper} />
           </div>
         </div>
       )}

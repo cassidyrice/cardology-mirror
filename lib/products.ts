@@ -28,6 +28,11 @@ export type ReadingOffer = {
   maxCompletedCalls?: number;
 };
 
+export type ReadingOfferFact = {
+  label: "Deliverable" | "Session" | "Calls" | "Access" | "Renewal";
+  value: string;
+};
+
 export const READING_OFFERS: ReadingOffer[] = [
   {
     slug: "quick-question",
@@ -39,11 +44,11 @@ export const READING_OFFERS: ReadingOffer[] = [
     bestFor:
       "A focused question about one person, relationship, decision, or immediate situation.",
     deliverable: "One live phone session with the AI Cardology reader.",
-    turnaround: "Available by phone immediately after checkout.",
+    turnaround: "Available after successful checkout and phone-number recognition.",
     includes: [
       "One personalized Cardology question",
       "Up to 5 minutes with the AI reader",
-      "Immediate phone access after checkout",
+      "Phone access after checkout and recognition",
     ],
     cta: "Ask My Question — $19",
     checkoutNote: "One-time purchase. Call within 30 days. One paid session.",
@@ -63,7 +68,7 @@ export const READING_OFFERS: ReadingOffer[] = [
     bestFor:
       "A fuller personal or relationship reading with room to connect the cards to real life.",
     deliverable: "One live phone session with the AI Cardology reader.",
-    turnaround: "Available by phone immediately after checkout.",
+    turnaround: "Available after successful checkout and phone-number recognition.",
     includes: [
       "Birth card and ruling-card interpretation",
       "Love, work, money, timing, or relationship focus",
@@ -88,7 +93,7 @@ export const READING_OFFERS: ReadingOffer[] = [
       "Ongoing questions, changing situations, relationship dynamics, timing, and daily cards.",
     deliverable:
       "Unlimited personal return calls with the AI Cardology reader for 90 days.",
-    turnaround: "Available by phone immediately after checkout.",
+    turnaround: "Available after successful checkout and phone-number recognition.",
     includes: [
       "Unlimited return calls for 90 days",
       "Compatibility, timing, and daily-card questions",
@@ -101,6 +106,42 @@ export const READING_OFFERS: ReadingOffer[] = [
     accessDays: 90,
   },
 ];
+
+// Customer-facing entitlement facts are derived from the same fields the
+// checkout and access layers use. Keep the pricing cards explicit without
+// creating a second, hand-maintained version of the offer contract.
+export function readingOfferFacts(offer: ReadingOffer): ReadingOfferFact[] {
+  const isSeasonPass = offer.accessType === "season_pass";
+
+  return [
+    {
+      label: "Deliverable",
+      value: offer.deliverable,
+    },
+    {
+      label: "Session",
+      value: `Up to ${offer.durationMinutes} minutes${isSeasonPass ? " per session" : ""}.`,
+    },
+    {
+      label: "Calls",
+      value: isSeasonPass
+        ? "Unlimited personal return calls under fair use."
+        : `${offer.maxCompletedCalls === 1 ? "One" : offer.maxCompletedCalls} completed call${
+            offer.maxCompletedCalls === 1 ? "" : "s"
+          }.`,
+    },
+    {
+      label: "Access",
+      value: isSeasonPass
+        ? `${offer.accessDays} days from purchase.`
+        : `Use within ${offer.accessDays} days.`,
+    },
+    {
+      label: "Renewal",
+      value: "No automatic renewal.",
+    },
+  ];
+}
 
 export function readingOfferHref(offer: ReadingOffer): string {
   return offer.href ?? `/checkout/${offer.slug}`;

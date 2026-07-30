@@ -1,13 +1,12 @@
 // Shared presentational primitives. Treat as read-only from feature agents.
 // Two systems live here: the dark in-app primitives (Eyebrow, SectionTitle,
 // Screen, PositionStack) and the warm-paper marketing system (LinkButton,
-// Kicker, SectionShell, Rule, PricingCard, MobileActionBar).
+// Kicker, SectionShell, Rule, PricingCard).
 import { ReactNode } from "react";
 import Link from "next/link";
 
 import type { ReadingOffer } from "@/lib/products";
-import { readingOfferHref } from "@/lib/products";
-import { READER_PHONE_TEL } from "@/lib/offers";
+import { readingOfferFacts, readingOfferHref } from "@/lib/products";
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <p className={`eyebrow ${className}`}>{children}</p>;
@@ -94,9 +93,7 @@ export function LinkButton({
   const sizeClass =
     variant === "text" ? "" : size === "small" ? "small-button" : size === "large" ? "large-button" : "";
   const cls = `${BUTTON_CLASS[variant]} ${sizeClass} ${className}`.trim();
-  // /checkout/* is a route handler that creates a Stripe session per request —
-  // a plain anchor keeps next/link prefetch from minting sessions on hover.
-  const external = /^(tel:|mailto:|https?:)/.test(href) || href.startsWith("/checkout/");
+  const external = /^(tel:|mailto:|https?:)/.test(href);
   if (external) {
     return (
       <a href={href} className={cls} aria-label={ariaLabel}>
@@ -150,27 +147,26 @@ export function Rule({ className = "" }: { className?: string }) {
 }
 
 // Pricing card. The emphasized card inverts to ink — inversion, not scale,
-// carries the recommendation. Structure: badge → name → price → one-line
-// outcome → up to 3 bullets → CTA → risk-reversal note.
+// carries the recommendation. Every entitlement detail is derived from the
+// canonical product object rather than duplicated in page copy.
 export function PricingCard({
   offer,
   emphasized = false,
   badge,
-  goldAccent = false,
   className = "",
 }: {
   offer: ReadingOffer;
   emphasized?: boolean;
   badge?: string;
-  goldAccent?: boolean;
   className?: string;
 }) {
   const shownBadge = badge ?? offer.badge;
   const surface = emphasized
     ? "shell-ink border border-brand-ink"
-    : `bg-brand-ivory border border-brand-line ${goldAccent ? "border-t-brand-gold" : ""}`;
+    : "bg-brand-ivory border border-brand-line";
   const soft = emphasized ? "text-brand-on-dark-soft" : "text-brand-ink-soft";
   const hair = emphasized ? "border-brand-on-dark-line" : "border-brand-line";
+  const facts = readingOfferFacts(offer);
 
   return (
     <article
@@ -182,17 +178,25 @@ export function PricingCard({
       </div>
       <h3 className="type-h3 mt-3 lg:min-h-[2.6em]">{offer.name}</h3>
       <p className="mt-4 font-serif text-4xl leading-none">
-        {offer.priceLabel}
+        {offer.priceLabel}{" "}
         <span className={`ml-2 align-middle text-sm ${soft}`}>one time</span>
       </p>
       <p className={`mt-4 text-[0.95rem] leading-relaxed ${soft}`}>{offer.oneLine}</p>
-      <ul className={`mt-6 flex-1 space-y-2.5 text-sm leading-relaxed ${soft}`}>
-        {offer.includes.slice(0, 3).map((item) => (
-          <li key={item} className={`border-t ${hair} pt-2.5`}>
-            {item}
-          </li>
+      <div className={`mt-5 border-t ${hair} pt-4`}>
+        <p className="type-eyebrow">Best for</p>
+        <p className={`mt-2 text-sm leading-relaxed ${soft}`}>{offer.bestFor}</p>
+      </div>
+      <dl className={`mt-5 flex-1 text-sm leading-relaxed ${soft}`}>
+        {facts.map((fact) => (
+          <div
+            key={fact.label}
+            className={`grid gap-1 border-t ${hair} py-3 sm:grid-cols-[5.25rem_1fr] sm:gap-3`}
+          >
+            <dt className="font-medium">{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
         ))}
-      </ul>
+      </dl>
       <LinkButton
         href={readingOfferHref(offer)}
         variant={emphasized ? "accent" : "outline"}
@@ -203,25 +207,5 @@ export function PricingCard({
       </LinkButton>
       <p className={`mt-3 text-center text-xs leading-relaxed ${soft}`}>{offer.checkoutNote}</p>
     </article>
-  );
-}
-
-// Fixed two-action bar for phone widths. Rendered only on / and /readings.
-// The in-flow spacer keeps the bar from covering content or the footer.
-export function MobileActionBar({ readingHref = "/readings" }: { readingHref?: string }) {
-  return (
-    <>
-      <div aria-hidden="true" className="h-[4.5rem] md:hidden" />
-      {/* No oxblood here — the hero owns the accent; primary emphasis mirrors
-          the hero's free-call-first hierarchy. */}
-      <nav aria-label="Quick actions" className="mobile-action-bar md:hidden">
-        <a href={READER_PHONE_TEL} className="ink-button">
-          Call Free
-        </a>
-        <Link href={readingHref} className="paper-button">
-          Get a Reading
-        </Link>
-      </nav>
-    </>
   );
 }

@@ -30,13 +30,16 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                   Free {FREE_PREVIEW_NAME}: {READER_PHONE_DISPLAY}
                 </a>
               </li>
-              {/* Plain anchors: /checkout/* mints a Stripe session per request,
-                  so next/link prefetch must not touch it. */}
+              <li>
+                <Link href="/try" className="editorial-link">
+                  How the free preview works →
+                </Link>
+              </li>
               {READING_OFFERS.map((offer) => (
                 <li key={offer.slug}>
-                  <a href={readingOfferHref(offer)} className="hover:text-brand-ink">
+                  <Link href={readingOfferHref(offer)} className="hover:text-brand-ink">
                     {offer.priceLabel} {offer.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
               <li>

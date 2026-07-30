@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 
 import { compareReadings } from "../components/bonds/compare";
 import { publicBirthCardCode } from "../lib/birth-card-truth";
+import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
+import { READING_OFFERS, readingOfferFacts } from "../lib/products";
 import { allBirthdateSeo, allCardSeo, birthDatesForCard, cardBySlug } from "../lib/seo-cards";
 
 const DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -56,4 +58,51 @@ for (const card of allCardSeo()) {
   assert.match(copy, /pressure is shared/i, card.code);
 }
 
-console.log("PASS: 366 birthdays, reverse card dates, and 52 same-card comparisons");
+assert.equal(READER_PHONE_DISPLAY, "+1 (949) 368-2652");
+assert.equal(READER_PHONE_TEL, "tel:+19493682652");
+assert.deepEqual(
+  READING_OFFERS.map((offer) => ({
+    slug: offer.slug,
+    price: offer.price,
+    accessType: offer.accessType,
+    durationMinutes: offer.durationMinutes,
+    accessDays: offer.accessDays,
+    maxCompletedCalls: offer.maxCompletedCalls,
+  })),
+  [
+    {
+      slug: "quick-question",
+      price: 19,
+      accessType: "single_session",
+      durationMinutes: 5,
+      accessDays: 30,
+      maxCompletedCalls: 1,
+    },
+    {
+      slug: "complete-reading",
+      price: 39,
+      accessType: "single_session",
+      durationMinutes: 15,
+      accessDays: 30,
+      maxCompletedCalls: 1,
+    },
+    {
+      slug: "season-pass-90",
+      price: 199,
+      accessType: "season_pass",
+      durationMinutes: 15,
+      accessDays: 90,
+      maxCompletedCalls: undefined,
+    },
+  ],
+);
+for (const offer of READING_OFFERS) {
+  assert.deepEqual(
+    readingOfferFacts(offer).map((fact) => fact.label),
+    ["Deliverable", "Session", "Calls", "Access", "Renewal"],
+  );
+}
+
+console.log(
+  "PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, phone line, and 3 offers",
+);

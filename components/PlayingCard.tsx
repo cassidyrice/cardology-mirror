@@ -1,7 +1,7 @@
 "use client";
 
 // Shared card visual. Agent 9 owns/enhances this; keep the prop contract stable.
-import { parseCard } from "@/lib/cards";
+import { parseCard, suitColorOnPaper } from "@/lib/cards";
 import { CardFace } from "@/components/cards/CardFace";
 import { CardBack } from "@/components/cards/CardBack";
 
@@ -11,6 +11,7 @@ export interface PlayingCardProps {
   subtitle?: string;       // e.g. "Birth Card"
   size?: "sm" | "md" | "lg";
   className?: string;
+  surface?: "dark" | "paper";
   // --- optional enhancements (all backward-compatible) ---
   active?: boolean;        // gold halo — marks the current period
   glow?: boolean;          // alias for active
@@ -34,6 +35,7 @@ export function PlayingCard({
   subtitle,
   size = "md",
   className = "",
+  surface = "dark",
   active = false,
   glow = false,
   float = false,
@@ -41,7 +43,11 @@ export function PlayingCard({
   flippable = false,
   onClick,
 }: PlayingCardProps) {
-  const c = parseCard(code);
+  const parsed = parseCard(code);
+  const c =
+    parsed && surface === "paper"
+      ? { ...parsed, color: suitColorOnPaper(parsed.suit) }
+      : parsed;
   const [flipped, setFlipped] = useState(false);
   if (!c) return null;
 
@@ -85,7 +91,7 @@ export function PlayingCard({
             : `0 8px 30px -12px ${c.color}66`,
         }}
       >
-        {showBack ? <CardBack /> : <CardFace card={c} size={size} />}
+        {showBack ? <CardBack /> : <CardFace card={c} size={size} paper={surface === "paper"} />}
       </div>
 
       {(title || subtitle) && (

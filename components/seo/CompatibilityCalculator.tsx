@@ -42,28 +42,28 @@ export function CompatibilityCalculator() {
   }
 
   return (
-    <div className="card-surface rounded-2xl p-5">
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
       <form onSubmit={onSubmit} className="space-y-4">
         <div>
-          <label htmlFor="da" className="eyebrow block text-gold">First birthday</label>
+          <label htmlFor="da" className="type-eyebrow block">First birthday</label>
           <input id="da" type="date" value={a} onChange={(e) => setA(e.target.value)} required
-            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40" />
+            className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <div>
-          <label htmlFor="db" className="eyebrow block text-gold">Second birthday</label>
+          <label htmlFor="db" className="type-eyebrow block">Second birthday</label>
           <input id="db" type="date" value={b} onChange={(e) => setB(e.target.value)} required
-            className="mt-1 w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40" />
+            className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
-        <button type="submit" className="w-full rounded-full bg-foil py-3 text-center font-serif text-base text-ink transition active:scale-[0.99]">
+        <button type="submit" className="accent-button large-button w-full">
           Compare birth cards and Life Paths
         </button>
       </form>
 
-      {/* One persistent live region, present before the result populates. */}
-      <div role="status" aria-live="polite">
-        {err && <p className="mt-4 text-sm text-ember">Enter two full birthdays to compare.</p>}
-        {pair && <PairResult a={pair.a} b={pair.b} />}
-      </div>
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {err ? "Enter two full birthdays to compare." : pair ? "Compatibility comparison ready." : ""}
+      </p>
+      {err && <p className="mt-4 text-sm text-brand-oxblood">Enter two full birthdays to compare.</p>}
+      {pair && <PairResult a={pair.a} b={pair.b} />}
     </div>
   );
 }
@@ -80,23 +80,23 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
     <div className="mt-10 animate-fade-up">
       <div className="flex items-center justify-center gap-2">
         <div className="-rotate-6 translate-x-2">
-          <PlayingCard code={a.birthCard} size="md" active />
+          <PlayingCard code={a.birthCard} size="md" active surface="paper" />
         </div>
-        <div className="z-10 bg-cosmos/80 px-2 py-1 text-xs uppercase tracking-widest text-gold backdrop-blur-sm">
+        <div className="z-10 bg-brand-ivory px-2 py-1 text-xs uppercase tracking-widest text-brand-bronze">
           meets
         </div>
         <div className="rotate-6 -translate-x-2">
-          <PlayingCard code={b.birthCard} size="md" active />
+          <PlayingCard code={b.birthCard} size="md" active surface="paper" />
         </div>
       </div>
 
       <div className="mt-8 text-center">
-        <p className="font-serif text-base leading-relaxed text-bone">
+        <p className="font-serif text-base leading-relaxed text-brand-ink">
           {sameSuit
             ? `Same suit · ${pa?.domain.toLowerCase()}`
             : `${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}`}
         </p>
-        <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-mist">
+        <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-brand-ink-soft">
           {sameSuit
             ? "You share a first instinct and speak a similar language. Communication tends to feel familiar."
             : "You lead from different instincts. This can create a powerful balance or a recurring friction depending on awareness."}
@@ -108,8 +108,8 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
         <ConstitutionPanel profile={b} />
       </section>
 
-      <section className="mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-        <p className="eyebrow mb-2 text-gold">Relationship cross-reference</p>
+      <section className="mt-8 rounded-[3px] border border-brand-line bg-brand-paper-deep p-5">
+        <p className="type-eyebrow mb-2">Relationship cross-reference</p>
         <div className="grid gap-4 lg:grid-cols-2">
           <RoleHit
             title={`${b.birthCardLabel} inside the first person`}
@@ -124,8 +124,8 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
         </div>
 
         <div className="mt-6">
-          <h3 className="font-serif text-lg text-bone">Shared Life Path cards</h3>
-          <p className="mt-1 text-sm leading-relaxed text-mist">
+          <h3 className="font-serif text-lg text-brand-ink">Shared Life Path cards</h3>
+          <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
             These are the cards that appear in both Life Path spectrums. Shared cards
             do not make the relationship easy by default; they show where both people
             are carrying the same symbolic weather in different roles.
@@ -137,7 +137,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
               ))}
             </div>
           ) : (
-            <p className="mt-4 rounded-xl border border-white/10 bg-void/30 p-4 text-sm leading-relaxed text-mist">
+            <p className="mt-4 rounded-[3px] border border-brand-line bg-brand-ivory p-4 text-sm leading-relaxed text-brand-ink-soft">
               No direct shared cards appear inside the Moon-plus-13 Life Path spectrum.
               Read the suit/rank chemistry and ruling cards first.
             </p>
@@ -150,18 +150,18 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
       <div className="mt-8 flex flex-col items-center gap-3">
         <Link
           href="/cardology-compatibility"
-          className="rounded-full bg-foil px-8 py-3 font-serif text-base text-ink transition active:scale-[0.99]"
+          className="ink-button large-button"
         >
           Read the compatibility guide →
         </Link>
         <div className="flex flex-wrap justify-center gap-2">
           {aSlug && (
-            <Link href={`/birth-card/${aSlug}`} className="rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-wider text-gold">
+            <Link href={`/birth-card/${aSlug}`} className="paper-button small-button">
               {a.birthCard} meaning
             </Link>
           )}
           {bSlug && (
-            <Link href={`/birth-card/${bSlug}`} className="rounded-full border border-white/15 px-4 py-2 text-xs uppercase tracking-wider text-gold">
+            <Link href={`/birth-card/${bSlug}`} className="paper-button small-button">
               {b.birthCard} meaning
             </Link>
           )}
@@ -183,24 +183,24 @@ function ConstitutionPanel({ profile }: { profile: LifePathProfile }) {
   ].filter(Boolean);
 
   return (
-    <article className="rounded-2xl border border-white/10 bg-void/35 p-5">
+    <article className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="eyebrow text-gold">{profile.label}</p>
-          <h2 className="mt-1 font-serif text-2xl leading-none text-bone">
+          <p className="type-eyebrow">{profile.label}</p>
+          <h2 className="mt-1 font-serif text-2xl leading-none text-brand-ink">
             {profile.birthCardLabel} Life Path constitution
           </h2>
         </div>
-        <PlayingCard code={profile.birthCard} size="sm" active />
+        <PlayingCard code={profile.birthCard} size="sm" active surface="paper" />
       </div>
 
-      <p className="mt-4 text-sm leading-relaxed text-mist">{constitutionSummary(profile)}</p>
+      <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">{constitutionSummary(profile)}</p>
 
       <div className="mt-5 grid grid-cols-2 gap-2 text-xs sm:grid-cols-4">
         {Object.entries(profile.suitCounts).map(([suit, count]) => (
-          <div key={suit} className="rounded-xl border border-white/10 bg-white/[0.03] p-3">
-            <p className="font-bold uppercase tracking-wider text-gold">{suit}</p>
-            <p className="mt-1 font-serif text-2xl text-bone">{count}</p>
+          <div key={suit} className="rounded-[3px] border border-brand-line bg-brand-paper p-3">
+            <p className="font-bold uppercase tracking-wider text-brand-bronze">{suit}</p>
+            <p className="mt-1 font-serif text-2xl text-brand-ink">{count}</p>
           </div>
         ))}
       </div>
@@ -211,8 +211,8 @@ function ConstitutionPanel({ profile }: { profile: LifePathProfile }) {
         ))}
       </div>
 
-      <details className="mt-5 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-        <summary className="cursor-pointer font-serif text-base text-bone">
+      <details className="mt-5 rounded-[3px] border border-brand-line bg-brand-paper p-4">
+        <summary className="cursor-pointer font-serif text-base text-brand-ink">
           Full Moon + 13-card spectrum
         </summary>
         <div className="mt-4 grid gap-3">
@@ -227,19 +227,19 @@ function ConstitutionPanel({ profile }: { profile: LifePathProfile }) {
 
 function LifePathCardRow({ card, compact = false }: { card: LifePathCard; compact?: boolean }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.035] p-3">
+    <div className="rounded-[3px] border border-brand-line bg-brand-paper p-3">
       <div className="flex items-start gap-3">
-        <div className="min-w-12 rounded-lg border border-white/10 bg-cosmos/60 px-2 py-2 text-center font-serif text-lg text-bone">
+        <div className={`min-w-12 rounded-[3px] border border-brand-line bg-brand-ivory px-2 py-2 text-center font-serif text-lg ${paperSuitClass(card.card)}`}>
           {card.card}
         </div>
         <div className="min-w-0">
-          <p className="text-xs font-bold uppercase tracking-wider text-gold">
+          <p className="text-xs font-bold uppercase tracking-wider text-brand-bronze">
             {card.position}. {card.shortTitle} · {card.phrase}
           </p>
-          <h3 className="mt-1 font-serif text-base leading-tight text-bone">
+          <h3 className="mt-1 font-serif text-base leading-tight text-brand-ink">
             {card.label} · {card.titleText}
           </h3>
-          <p className="mt-1 text-sm leading-relaxed text-mist">
+          <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
             {compact ? card.constitution : `${card.constitution} ${card.gift}`}
           </p>
         </div>
@@ -250,11 +250,11 @@ function LifePathCardRow({ card, compact = false }: { card: LifePathCard; compac
 
 function RoleHit({ title, text, card }: { title: string; text: string; card: LifePathCard | null }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
-      <p className="eyebrow text-gold">{title}</p>
-      <p className="mt-2 text-sm leading-relaxed text-mist">{text}</p>
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-4">
+      <p className="type-eyebrow">{title}</p>
+      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{text}</p>
       {card && (
-        <p className="mt-3 font-serif text-base text-bone">
+        <p className="mt-3 font-serif text-base text-brand-ink">
           {card.card} · {card.title} · {card.titleText}
         </p>
       )}
@@ -267,22 +267,29 @@ function SharedCardRow({ shared }: { shared: LifePathSharedCard }) {
   const bRoles = shared.bRoles.map((role) => `${role.shortTitle}`).join(", ");
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.035] p-4">
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <h4 className="font-serif text-lg text-bone">
+        <h4 className="font-serif text-lg text-brand-ink">
           {shared.card} · {shared.label}
         </h4>
         <Link
           href={`/birth-card/${slugOf(shared.card) ?? ""}`}
-          className="text-xs font-bold uppercase tracking-wider text-gold underline underline-offset-4"
+          className="editorial-link text-xs font-bold uppercase tracking-wider text-brand-ink"
         >
           Card meaning
         </Link>
       </div>
-      <p className="mt-2 text-sm leading-relaxed text-mist">
-        First person carries it as <span className="text-bone">{aRoles}</span>.
-        Second person carries it as <span className="text-bone">{bRoles}</span>.
+      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+        First person carries it as <span className="text-brand-ink">{aRoles}</span>.
+        Second person carries it as <span className="text-brand-ink">{bRoles}</span>.
       </p>
     </div>
   );
+}
+
+function paperSuitClass(code: string): string {
+  const card = parseCard(code);
+  return card?.suit === "hearts" || card?.suit === "diamonds"
+    ? "text-brand-oxblood"
+    : "text-brand-ink";
 }

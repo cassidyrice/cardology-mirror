@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import cardology from "@/lib/engine-core/engine.js";
-import { cardColorOnPaper, parseCard, type Suit } from "@/lib/cards";
+import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
@@ -60,9 +60,9 @@ export function BirthCardCalculator() {
   }
 
   return (
-    <div className="card-surface rounded-2xl p-5">
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
       <form onSubmit={onSubmit} className="space-y-3">
-        <label htmlFor="bd" className="eyebrow block text-gold">
+        <label htmlFor="bd" className="type-eyebrow block">
           Enter your birthday
         </label>
         <input
@@ -70,27 +70,30 @@ export function BirthCardCalculator() {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full rounded-lg border border-white/12 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40"
+          className="w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
           required
         />
         <button
           type="submit"
-          className="w-full rounded-full bg-foil py-3 text-center font-serif text-base text-ink transition active:scale-[0.99]"
+          className="accent-button large-button w-full"
         >
           Reveal my birth card
         </button>
       </form>
 
-      {/* One persistent live region: it has to be in the DOM before the
-          result populates, or the announcement never fires. */}
-      <div role="status" aria-live="polite">
-        {touched && !result && (
-          <p className="mt-4 text-sm text-ember">
-            Enter a full date (year, month, and day) to calculate your card.
-          </p>
-        )}
-        {result && <ResultCard result={result} />}
-      </div>
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {touched && !result
+          ? "Enter a full date, including year, month, and day."
+          : result
+            ? `Your birth card is ${parseCard(result.birthCard)?.label ?? result.birthCard}.`
+            : ""}
+      </p>
+      {touched && !result && (
+        <p className="mt-4 text-sm text-brand-oxblood">
+          Enter a full date (year, month, and day) to calculate your card.
+        </p>
+      )}
+      {result && <ResultCard result={result} />}
     </div>
   );
 }
@@ -102,11 +105,11 @@ function ResultCard({ result }: { result: Result }) {
 
   return (
     <div className="mt-8 animate-fade-up">
-      <p className="eyebrow mb-4 text-center text-faint">Your birth card</p>
+      <p className="type-eyebrow mb-4 text-center">Your birth card</p>
 
       <div className="flex flex-col items-center gap-6">
         {isJoker ? (
-          <div className="flex h-56 w-40 items-center justify-center rounded-xl border border-gold/60 bg-gradient-to-br from-haze to-cosmos text-6xl text-gold shadow-lg">
+          <div className="flex h-56 w-40 items-center justify-center rounded-[3px] border border-brand-line bg-brand-ivory text-6xl text-brand-oxblood">
             ★
           </div>
         ) : (
@@ -116,23 +119,24 @@ function ResultCard({ result }: { result: Result }) {
             active
             glow
             float
+            surface="paper"
             className="scale-110"
           />
         )}
 
         <div className="text-center">
-          <p className="font-serif text-2xl text-bone">{isJoker ? "The Joker" : bc?.label}</p>
+          <p className="font-serif text-2xl text-brand-ink">{isJoker ? "The Joker" : bc?.label}</p>
           {isJoker && (
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-faint">
+            <p className="mt-2 max-w-sm text-sm leading-relaxed text-brand-ink-soft">
               December 31 is the Joker position: the one birthday outside the 52 standard cards.
             </p>
           )}
           {result.rulingCards.length > 0 && (
-            <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-faint">
-              <span className="uppercase tracking-widest text-gold/60">Ruling:</span>
+            <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
+              <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>
               {result.rulingCards.map((c) => (
                 <span key={c} className="flex items-center gap-1.5">
-                  <span style={{ color: cardColorOnPaper(c) }}>{c}</span>
+                  <span className={paperSuitClass(c)}>{c}</span>
                   {parseCard(c)?.label}
                 </span>
               ))}
@@ -143,7 +147,7 @@ function ResultCard({ result }: { result: Result }) {
         {slug && (
           <Link
             href={`/birth-card/${slug}`}
-            className="mt-2 inline-block rounded-full border border-gold/30 px-6 py-2.5 font-serif text-sm text-gold transition hover:border-gold hover:bg-gold/5"
+            className="paper-button mt-2"
           >
             Read the {bc?.label} meaning →
           </Link>
@@ -153,4 +157,11 @@ function ResultCard({ result }: { result: Result }) {
       <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
     </div>
   );
+}
+
+function paperSuitClass(code: string): string {
+  const card = parseCard(code);
+  return card?.suit === "hearts" || card?.suit === "diamonds"
+    ? "text-brand-oxblood"
+    : "text-brand-ink";
 }

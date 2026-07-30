@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { Kicker, LinkButton } from "@/components/ui";
 import { CONTACT_EMAIL, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -27,64 +28,62 @@ export default function ContactPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="max-w-3xl pb-8">
-        <p className="oracle-eyebrow mb-4">Contact</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
-          Send a question, correction, or partnership note.
+        <Kicker className="mb-4">Contact</Kicker>
+        <h1 className="type-display text-brand-ink">
+          Get help with a reading, correction, or partnership.
         </h1>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
-          <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+        <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
+          <Kicker className="mb-2">Quick answer</Kicker>
+          <p className="text-base leading-relaxed text-brand-ink-soft">
             Buying a reading? You do not need this page —{" "}
-            <Link href="/readings" className="text-[#8e321f] underline underline-offset-4">
+            <Link href="/readings" className="editorial-link text-brand-ink">
               checkout is instant
             </Link>
-            , and you start the reading by calling the line from the phone
-            number you used at checkout. This page is for corrections,
-            questions, partnerships, and support after a purchase.
+            . After successful checkout, call from the same phone number you
+            entered so the line can recognize the purchase.
           </p>
         </div>
       </header>
 
-      <section className="mb-10 border border-[#8e321f]/25 bg-[#f4f0e7]/90 p-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Email Card Blueprints</h2>
-        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
-          The fastest way to reach us is email. Include the page URL or purchase
-          email when it helps us find the right answer.
+      <section className="mb-10 border border-brand-line-strong bg-brand-ivory p-5 sm:p-6">
+        <h2 className="type-h2 text-brand-ink">Email Card Blueprints</h2>
+        <p className="mt-3 max-w-[42rem] text-base leading-relaxed text-brand-ink-soft">
+          For purchase support, include the purchase email, offer name, and
+          what happened. Never send payment card details. For a correction,
+          include the page URL and the passage in question.
         </p>
-        <a
-          href={`mailto:${CONTACT_EMAIL}`}
-          className="ink-button large-button mt-5 inline-flex"
-        >
-          {CONTACT_EMAIL}
-        </a>
+        <LinkButton href={`mailto:${CONTACT_EMAIL}`} variant="primary" size="large" className="mt-5">
+          Email {CONTACT_EMAIL}
+        </LinkButton>
       </section>
 
       <section className="grid gap-4 sm:grid-cols-2">
         {[
-          ["Reading questions", "Not sure which reading fits, or have a question before or after buying? Include the reading option, the birth date, and the person or question involved."],
+          ["Purchase support", "If access is not recognized or a paid call disconnects, include the purchase email, offer name, and a short description of what happened."],
+          ["Reading questions", "Not sure which reading fits? Tell us whether you want one focused answer, a complete pattern, or ongoing seasonal access."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],
           ["Video questions", "Use the hosted video channel for playback-specific context and public video links."],
         ].map(([title, body]) => (
-          <article key={title} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-            <h2 className="font-serif text-2xl leading-none text-[#14110d]">{title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{body}</p>
+          <article key={title} className="border border-brand-line bg-brand-ivory p-5">
+            <h2 className="type-h3 text-brand-ink">{title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
           </article>
         ))}
       </section>
 
-      <section className="mt-10 border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Public channels</h2>
-        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-[#5b5148]">
+      <section className="mt-10 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
+        <h2 className="type-h2 text-brand-ink">Public channels</h2>
+        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-brand-ink-soft">
           <li>
-            <Link href="/editorial-policy" className="text-[#8e321f] underline underline-offset-4">
+            <Link href="/editorial-policy" className="editorial-link text-brand-ink">
               Editorial policy
             </Link>{" "}
             explains how corrections are handled.
           </li>
           <li>
-            <a href={VIDEO_URL} className="text-[#8e321f] underline underline-offset-4">
+            <a href={VIDEO_URL} className="editorial-link text-brand-ink">
               Hosted video channel
             </a>{" "}
             is the public destination for watching Card Blueprints videos.
