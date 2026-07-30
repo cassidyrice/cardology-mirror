@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
 
+import { funnelContextFromMetadata } from "@/lib/analytics";
+import { recordFunnelEvent } from "@/lib/analytics-server";
 import { sendIntakeEmail } from "@/lib/email";
 import { mintToken } from "@/lib/gate";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
@@ -65,6 +67,26 @@ export async function POST(req: NextRequest) {
     const amount = session.amount_total != null
       ? `$${(session.amount_total / 100).toFixed(2)} ${session.currency?.toUpperCase() ?? ""}`
       : "(no amount)";
+    const paymentSatisfied =
+      session.payment_status === "paid" ||
+      (session.payment_status === "no_payment_required" &&
+        session.amount_total === 0);
+
+    // This webhook can receive account-level Stripe events. Only canonical
+    // Card Blueprints offers belong in this site's conversion funnel.
+    if (paymentSatisfied && offer) {
+      recordFunnelEvent({
+        name: "purchase_completed",
+        source: "server",
+        ...funnelContextFromMetadata(session.metadata),
+        eventId: `stripe:${event.id}`,
+        path: "/api/checkout/webhook",
+        offerSlug,
+        outcome: "payment-confirmed",
+        currency: session.currency ?? "usd",
+        valueCents: session.amount_total ?? 0,
+      });
+    }
 
     const sessionLine = offer
       ? offer.accessType === "season_pass"

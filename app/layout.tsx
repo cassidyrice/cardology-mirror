@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { READING_OFFERS } from "@/lib/products";
 import { READINGS_PATH, SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
@@ -132,6 +133,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-ink text-bone antialiased">
+        <AnalyticsCapture />
         {/* Literal tag instead of metadata `alternates.types`: React hoists
             <link> into <head>, so the feed stays discoverable on every page.
             Pages that set their own `alternates` (canonical) shallow-replace

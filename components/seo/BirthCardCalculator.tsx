@@ -2,6 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import {
+  trackClientFunnelEvent,
+  trackClientFunnelEventOnce,
+} from "@/components/analytics/AnalyticsCapture";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
@@ -44,20 +48,38 @@ export function BirthCardCalculator() {
     if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) {
       setDate(q);
       const [, m, d] = q.split("-").map(Number);
-      setResult(compute(m, d));
+      const calculated = compute(m, d);
+      setResult(calculated);
       setTouched(true);
+      trackClientFunnelEventOnce("calculator_started", {
+        placement: "search-prefill",
+      });
+      if (calculated) {
+        trackClientFunnelEventOnce("calculator_completed", {
+          placement: "search-prefill",
+        });
+      }
     }
   }, []);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setTouched(true);
+    trackClientFunnelEventOnce("calculator_started", {
+      placement: "calculator-form",
+    });
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
       setResult(null);
       return;
     }
     const [, m, d] = date.split("-").map(Number);
-    setResult(compute(m, d));
+    const calculated = compute(m, d);
+    setResult(calculated);
+    if (calculated) {
+      trackClientFunnelEvent("calculator_completed", {
+        placement: "calculator-form",
+      });
+    }
   }
 
   return (
@@ -70,6 +92,11 @@ export function BirthCardCalculator() {
           id="bd"
           type="date"
           value={date}
+          onFocus={() =>
+            trackClientFunnelEventOnce("calculator_started", {
+              placement: "calculator-input",
+            })
+          }
           onChange={(e) => setDate(e.target.value)}
           className="w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
           required

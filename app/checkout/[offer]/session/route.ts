@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import {
+  analyticsMetadata,
+  funnelContextFromFormData,
+  type FunnelContext,
+} from "@/lib/analytics";
+import { recordFunnelEvent } from "@/lib/analytics-server";
 import { offerBySlug } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
@@ -26,6 +32,13 @@ export async function POST(
     return new NextResponse("Invalid checkout origin", { status: 403 });
   }
 
+  let analytics: FunnelContext = {};
+  try {
+    analytics = funnelContextFromFormData(await req.formData());
+  } catch {
+    // Attribution is optional and must never block checkout.
+  }
+
   const priceId = process.env[offer.stripePriceEnv];
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
     return checkoutUnavailable(req, offer.slug);
@@ -42,13 +55,17 @@ export async function POST(
         ? { max_completed_calls: String(offer.maxCompletedCalls) }
         : {}),
     };
+    const metadata = {
+      ...entitlement,
+      ...analyticsMetadata(analytics),
+    };
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/checkout/${offer.slug}`,
-      metadata: entitlement,
+      metadata,
       payment_intent_data: {
         metadata: entitlement,
       },
@@ -58,6 +75,17 @@ export async function POST(
       customer_creation: "always",
     });
     if (session.url) {
+      recordFunnelEvent({
+        name: "checkout_started",
+        source: "server",
+        ...analytics,
+        eventId: `checkout:${session.id}`,
+        path: `/checkout/${offer.slug}`,
+        offerSlug: offer.slug,
+        outcome: "stripe-session-created",
+        currency: session.currency ?? "usd",
+        valueCents: session.amount_total ?? offer.price * 100,
+      });
       return NextResponse.redirect(session.url, 303);
     }
     console.error("[checkout] stripe session missing url", { offer: offer.slug });
