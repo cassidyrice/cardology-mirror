@@ -281,7 +281,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       {dates.length > 0 && (
         <Section title={`${card.label} birth dates`}>
-          <p>The {card.label} appears for these birthdays in this deterministic Cardology system:</p>
+          <p>
+            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`} in this deterministic Cardology system:
+          </p>
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
             {dates.map((d) => (
               <li key={d.slug}>
@@ -292,6 +294,29 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
               </li>
             ))}
           </ul>
+        </Section>
+      )}
+
+      {/* The diagonal is the system's most legible proof that this is a
+          structure and not a lookup table, so it is derived here rather than
+          authored per card: value = 55 - 2M - D, so holding the value fixed
+          drops the day by exactly 2 for every month advanced. */}
+      {dates.length > 1 && (
+        <Section title="The calendar walk">
+          <p>
+            Every date resolves through one formula: <strong>Solar Value = 55 − (2 × Month + Day)</strong>,
+            and each card holds one fixed value. Advance one month and 2 × Month grows by two, so the day
+            has to drop by two to keep that value. That makes this card&rsquo;s birthdays a straight diagonal
+            across the calendar rather than a scatter:
+          </p>
+          <p className="mt-3 font-mono text-sm text-bone">
+            {dates.map((d) => d.label).join(" → ")}
+          </p>
+          <p className="mt-3">
+            The walk runs {dates.length} step{dates.length === 1 ? "" : "s"} and then stops, because the next
+            month would need a day number the calendar does not have. Every card in the deck traces its own
+            diagonal this way — which is why the cards cover between 1 and 12 dates each rather than an even share.
+          </p>
         </Section>
       )}
 
