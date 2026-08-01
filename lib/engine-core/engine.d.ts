@@ -34,6 +34,57 @@ export interface CardologyCore {
     spreadYear: number,
   ): { environment: string; displacement: string } | null;
 
+  interpret(
+    card: string | null,
+    planet?: string | null,
+  ): {
+    card: string | null;
+    rank: string | null;
+    rank_word: string | null;
+    suit: string | null;
+    suit_word: string | null;
+    planet?: string;
+    planet_word?: string | null;
+  };
+
+  getSeptennial(
+    birthCard: string,
+    age: number,
+  ): {
+    cycle: number;
+    spread_used: number;
+    current_year_in_cycle: number;
+    current_card: string;
+    current_meaning: Record<string, unknown>;
+    years: Record<string, unknown>[];
+  } | null;
+
+  // targetDate is intentionally REQUIRED in these signatures even though the
+  // runtime defaults to `new Date()`: an argless call from a static builder
+  // bakes build-time "today" into pages that then claim current timing.
+  // Timing output must always be attributed to an explicit date.
+  getWeekly(
+    birthCard: string,
+    birthYear: number,
+    birthMonth: number,
+    birthDay: number,
+    targetDate: Date,
+  ): {
+    weeks_lived: number;
+    spread_used: number;
+    current_weekday: string;
+    current_card: string;
+    current_meaning: Record<string, unknown>;
+    days: Record<string, unknown>[];
+  } | null;
+
+  calculateBlueprint(
+    birthMonth: number,
+    birthDay: number,
+    birthYear: number,
+    targetDate: Date | string,
+  ): Record<string, unknown>;
+
   PLANET_NAMES: string[];
 }
 

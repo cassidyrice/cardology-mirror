@@ -71,7 +71,14 @@ export interface BirthdateSeo {
   month: number;
   day: number;
   card: CardSeo;
+  // Primary ruling card, kept for existing call sites. Always rulingCards[0].
   rulingCard: CardSeo | null;
+  // Full planetary-ruling set: 47 dates carry more than one (45 dual, 2
+  // triple — 10/23, 10/24). The client calculator already renders the full
+  // array (BirthCardCalculator.tsx); indexable records must agree with it.
+  // Copy rule: multiple ruling cards are a fact of the PRC table — never
+  // present them as a zodiac-cusp claim.
+  rulingCards: CardSeo[];
 }
 
 function toBullets(text: string | undefined): string[] {
@@ -165,16 +172,20 @@ export function allBirthdateSeo(): BirthdateSeo[] {
       const month = monthIndex + 1;
       const birthCode = publicBirthCardCode(month, day);
       const prcRaw = cardology.getPlanetaryRulingCard(month, day) as string | string[] | null;
-      const prcCode = Array.isArray(prcRaw) ? prcRaw[0] : prcRaw;
+      const prcCodes = Array.isArray(prcRaw) ? prcRaw : prcRaw ? [prcRaw] : [];
       const card = getCardSeo(birthCode);
       if (!card) continue;
+      const rulingCards = prcCodes
+        .map((code) => getCardSeo(code))
+        .filter((seo): seo is CardSeo => seo !== null);
       out.push({
         slug: `${m.slug}-${day}`,
         label: `${m.name} ${day}`,
         month,
         day,
         card,
-        rulingCard: prcCode ? getCardSeo(prcCode) : null,
+        rulingCard: rulingCards[0] ?? null,
+        rulingCards,
       });
     }
   });
