@@ -43,6 +43,21 @@ const PLANET_NAMES = cardology.PLANET_NAMES as PlanetName[];
 
 export class ReadingError extends Error {}
 
+// Typed refusal for December 31 (solar value 0 = Joker). There is no Joker
+// reading product: no entry in card-meanings.json or card-descriptions.json,
+// and interpretation-guidance bans invented symbolism. Until cass defines the
+// product (block 12/31 checkout, or a hand-authored Joker reading treated as
+// content), the engine refuses with a machine-readable code instead of
+// silently building a K♠ reading. Never map Joker onto a card here.
+export class JokerNotSupportedError extends ReadingError {
+  readonly code = "JOKER_UNSUPPORTED";
+  constructor() {
+    super(
+      "December 31 resolves to the Joker, which has no defined reading product yet.",
+    );
+  }
+}
+
 // --- date parsing (mirrors cardology_cli.parse_birthdate) -------------------
 
 const ISO = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
@@ -166,6 +181,13 @@ function getLongRangeCard(card: string, age: number): LongRangeEntry | null {
 export function buildReading(birthdate: string, targetDate?: string): Reading {
   const { month, day, year } = parseBirthdate(birthdate);
   const { date: target, iso: targetISO } = parseTargetDate(targetDate);
+
+  // Dec 31 = Joker (solar value 0). The raw engine wraps 0 → 52 (K♠), which
+  // sold Dec-31 buyers a wrong-card reading. Refuse with a typed error; the
+  // API routes translate code JOKER_UNSUPPORTED into honest copy.
+  if (month === 12 && day === 31) {
+    throw new JokerNotSupportedError();
+  }
 
   const [bc, sv] = cardology.getBirthCard(month, day);
   const prc = cardology.getPlanetaryRulingCard(month, day);
