@@ -54,6 +54,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // The Joker is not one of the 52 (Dec 31 resolves to solar value 0), so it is
+  // absent from allCardSlugs() — but it is a real public page and the only
+  // answer we have for "december 31 birth card".
+  entries.push({
+    url: normalizeSitemapUrl(`${SITE_URL}/birth-card/joker`),
+    lastModified: date(CORE_UPDATED),
+    changeFrequency: "monthly",
+    priority: 0.85,
+  });
+
   // The 366 birthday routes are deliberately NOT listed (and no longer
   // prerendered): the cardology-unlock Worker in front of Pages 301s
   // /birth-card/[month]-[day] to its own /born-on/[month]-[day] pages
