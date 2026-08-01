@@ -1,6 +1,9 @@
-// Minimal type surface for the verified JS engine core (engine.js).
-// Only the primitives used by lib/reading.ts are typed; the math itself is in
-// engine.js and must not be modified.
+// Type surface for the verified JS engine core (engine.js). Everything declared
+// here is an official, supported import — it now covers the primitives used by
+// lib/reading.ts AND the ones public surfaces depend on (life-path spreads,
+// seo-cards, scripts/validate-public-truth.ts). The math itself lives in
+// engine.js and must not be modified; add declarations here when a public
+// consumer needs one, never widen engine.js to match a type.
 
 export interface Spread {
   grid: string[][];

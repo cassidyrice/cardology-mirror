@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getReading, EngineError } from "@/lib/engine";
+import { getReading, engineErrorResponse } from "@/lib/engine";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
@@ -13,8 +13,7 @@ export async function GET(req: NextRequest) {
     const reading = await getReading(birthdate, date);
     return NextResponse.json(reading);
   } catch (e) {
-    const msg = e instanceof EngineError ? e.message : "internal error";
-    const status = e instanceof EngineError && msg.startsWith("invalid") ? 400 : 500;
-    return NextResponse.json({ error: msg }, { status });
+    const { status, body } = engineErrorResponse(e);
+    return NextResponse.json(body, { status });
   }
 }

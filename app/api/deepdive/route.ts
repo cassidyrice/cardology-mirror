@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getReading, EngineError } from "@/lib/engine";
+import { getReading, engineErrorResponse } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
 import { READING_INTERPRETATION_GUIDE } from "@/lib/interpretation-guidance";
 import { bearerFrom, verifyToken } from "@/lib/gate";
@@ -165,9 +165,8 @@ export async function POST(req: NextRequest) {
   try {
     reading = await getReading(birthdate, date);
   } catch (e) {
-    const msg = e instanceof EngineError ? e.message : "internal error";
-    const status = e instanceof EngineError && msg.startsWith("invalid") ? 400 : 500;
-    return NextResponse.json({ error: msg }, { status });
+    const { status, body } = engineErrorResponse(e);
+    return NextResponse.json(body, { status });
   }
 
   const context = buildContext(reading);

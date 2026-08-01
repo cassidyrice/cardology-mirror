@@ -17,6 +17,35 @@ export class EngineError extends Error {
   }
 }
 
+export type EngineErrorResponse = {
+  status: number;
+  body: { error: string; code?: string };
+};
+
+/**
+ * Single mapping from a thrown engine error to the HTTP shape the API routes
+ * return. Framework-free on purpose (no next/server import) so lib/engine.ts
+ * stays edge- and test-importable; each route wraps this in NextResponse.json.
+ *
+ * - `JOKER_UNSUPPORTED` → **422**, never 500. Dec 31 is a valid date the
+ *   product does not cover; a 500 would report it as a server fault and is the
+ *   liability the typed refusal exists to remove.
+ * - invalid date strings → 400 (unchanged behaviour).
+ * - anything else → 500.
+ */
+export function engineErrorResponse(e: unknown): EngineErrorResponse {
+  if (e instanceof EngineError) {
+    if (e.code === "JOKER_UNSUPPORTED") {
+      return { status: 422, body: { error: e.message, code: e.code } };
+    }
+    if (e.message.startsWith("invalid")) {
+      return { status: 400, body: { error: e.message } };
+    }
+    return { status: 500, body: { error: e.message } };
+  }
+  return { status: 500, body: { error: "internal error" } };
+}
+
 /**
  * Run the deterministic engine for a birthdate (and optional target date).
  * Both dates are ISO `YYYY-MM-DD`. Returns the parsed structured Reading.
