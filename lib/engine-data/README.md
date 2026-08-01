@@ -7,7 +7,7 @@ reproduces the Python CLI output exactly.
 
 | file | source table | notes |
 |------|--------------|-------|
-| `card-descriptions.json` | `CARD_DESCRIPTIONS` | 39 cards have descriptions; others resolve to `null` (matching Python `.get()`). |
+| `card-descriptions.json` | `CARD_DESCRIPTIONS` | all 52 cards have descriptions; none resolve to `null`. |
 | `suit-domains.json` | `SUIT_DOMAINS` | keyed by suit glyph `♥ ♣ ♦ ♠`. |
 | `planet-domains.json` | `PLANET_DOMAINS` | keyed by planet name. |
 

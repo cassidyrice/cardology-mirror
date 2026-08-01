@@ -61,7 +61,7 @@ export default function CalculatorPage() {
         name: "Can two people have the same birth card?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes. With 366 possible birthdays and 52 cards, most cards cover several birthdays. Roughly 1 in 52 people share your card, though the ruling-card layer usually differs between them.",
+          text: "Yes. 364 of the 365 calendar dates map to the 52 cards, so most cards cover several birthdays — each card spans 1 to 12 dates. December 31 maps to the Joker, and February 29 has no card. The ruling-card layer usually differs even between people who share a birth card.",
         },
       },
     ],
@@ -74,7 +74,7 @@ export default function CalculatorPage() {
       <h1 className="display mb-3 text-3xl text-bone">Birth Card Calculator</h1>
       <p className="prose-reading mb-6 text-mist">
         Enter your birthday to find your <strong>Cardology birth card</strong> —
-        the one playing card your birth date locks you into. It&rsquo;s deterministic,
+        the one playing card the math maps your birth date to. It&rsquo;s deterministic,
         so don&rsquo;t bother refreshing for a better answer: same birthday, same card,
         every time.
       </p>
@@ -93,8 +93,9 @@ export default function CalculatorPage() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How it works</h2>
         <p className="prose-reading text-mist">
-          Cardology assigns every one of the 365 calendar dates to one of the 52
-          playing cards through a fixed formula. There&rsquo;s no astrology chart to
+          Cardology maps 364 of the 365 calendar dates to the 52 playing cards
+          through a fixed formula — December 31 gets the Joker, and February 29
+          sits outside the cycle. There&rsquo;s no astrology chart to
           draw and nothing random — your card is a function of your birthday.
           That&rsquo;s why we call it a mirror, not a forecast:{" "}
           <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">

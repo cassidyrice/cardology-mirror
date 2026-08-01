@@ -100,8 +100,8 @@ export default function WhatIsCardology() {
         <h2 className="eyebrow mb-2 text-gold">The core idea</h2>
         <p className="prose-reading text-mist">
           A standard deck has 52 cards, and the calendar has 52 weeks. Cardology
-          links the two: every one of the 365 dates is assigned to a card by a
-          set rule. Your birth card is your lifelong significator — the clearest
+          links the two: 364 of the 365 dates map to a card by a set rule —
+          December 31 gets the Joker, and February 29 sits outside the cycle. Your birth card is your lifelong significator — the clearest
           single description of how you tend to operate.
         </p>
       </section>
