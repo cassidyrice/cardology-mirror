@@ -5,7 +5,7 @@ import {
   READER_PHONE_DISPLAY,
   READER_PHONE_TEL,
 } from "@/lib/offers";
-import { READING_OFFERS, readingOfferHref } from "@/lib/products";
+import { READING_OFFERS, readingOfferPublicHref } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -43,7 +43,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               </li>
               {READING_OFFERS.map((offer) => (
                 <li key={offer.slug}>
-                  <Link href={readingOfferHref(offer)} className="hover:text-brand-ink">
+                  <Link href={readingOfferPublicHref(offer)} className="hover:text-brand-ink">
                     {offer.priceLabel} {offer.name}
                   </Link>
                 </li>

@@ -147,6 +147,16 @@ export function readingOfferHref(offer: ReadingOffer): string {
   return offer.href ?? `/checkout/${offer.slug}`;
 }
 
+/**
+ * Public, indexable link for an offer — the /readings anchor, not the noindex
+ * checkout route. Matches the Offer.url emitted in app/layout.tsx so sitewide
+ * chrome and structured data point at the same place. Use this in the footer
+ * and other always-present navigation; use readingOfferHref for real intent.
+ */
+export function readingOfferPublicHref(offer: ReadingOffer): string {
+  return `/readings#${offer.slug}`;
+}
+
 export function offerBySlug(slug: string): ReadingOffer | undefined {
   return READING_OFFERS.find((o) => o.slug === slug);
 }

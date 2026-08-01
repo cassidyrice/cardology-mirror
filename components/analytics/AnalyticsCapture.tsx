@@ -109,7 +109,11 @@ export function trackClientFunnelEventOnce(
   name: ClientFunnelEventName,
   context: FunnelContext = {},
 ) {
-  if (markOnce(name)) sendEvent(name, context);
+  // Keyed on name + placement, not name alone. Two CTAs for the same event on
+  // one page are distinct measurements; keying on the name let the first one
+  // fired silently suppress every other placement for the rest of the tab.
+  const onceKey = context.placement ? `${name}:${context.placement}` : name;
+  if (markOnce(onceKey)) sendEvent(name, context);
 }
 
 function sendEvent(name: ClientFunnelEventName, context: FunnelContext = {}) {

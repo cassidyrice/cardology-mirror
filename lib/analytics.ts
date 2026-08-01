@@ -198,6 +198,7 @@ function isSearchEngine(host: string): boolean {
     "ecosia.org",
     "brave.com",
     "perplexity.ai",
+    "kagi.com",
   ].some((needle) => host.includes(needle));
 }
 
