@@ -12,14 +12,21 @@ import { buildReading } from "../lib/reading.ts";
 const PYTHON = process.env.CARDOLOGY_PYTHON || "python3";
 const CLI = process.env.CARDOLOGY_CLI || "/Users/clr/cardology-llm/engine/cardology_cli.py";
 
+// Dec-31 birthdates are deliberately NOT parity cases. The Python CLI still
+// returns a K♠ reading for them; the JS engine now refuses with a typed
+// JOKER_UNSUPPORTED error (lib/reading.ts:52, patch 01b). That divergence is
+// the intended fix, not a regression — so these dates are asserted separately
+// below instead of deep-compared, which would throw out of buildReading().
+const JOKER_BIRTHDATES = ["1945-12-31", "2005-12-31"];
+
 const BIRTHDATES = [
-  "1940-01-01", "1942-07-04", "1945-12-31", "1948-02-29", "1950-06-15",
+  "1940-01-01", "1942-07-04", "1948-02-29", "1950-06-15",
   "1953-03-21", "1955-11-07", "1957-09-09", "1960-05-20", "1962-10-23",
   "1964-08-31", "1966-04-12", "1968-12-25", "1970-02-14", "1972-02-29",
   "1974-07-22", "1976-01-19", "1978-06-06", "1980-10-31", "1982-03-08",
   "1984-11-22", "1986-05-13", "1988-09-30", "1990-12-21", "1991-02-17",
   "1993-08-08", "1995-04-01", "1996-02-29", "1998-07-15", "2000-01-01",
-  "2001-10-10", "2003-06-18", "2005-12-31", "2007-03-03", "2009-09-23",
+  "2001-10-10", "2003-06-18", "2007-03-03", "2009-09-23",
   "2010-02-28", "1959-11-11", "1947-04-30", "1969-08-15", "1985-05-22",
   "2004-02-29", "1943-10-23",
 ];
@@ -93,6 +100,19 @@ for (const bd of BIRTHDATES) {
   }
 }
 
+// Joker dates: assert the refusal instead of parity. Python and JS are
+// SUPPOSED to disagree here — the harness must state that, not trip over it.
+let jokerPass = 0;
+for (const bd of JOKER_BIRTHDATES) {
+  try {
+    buildReading(bd, TARGET_DATES[0]);
+    console.log(`JOKER FAIL ${bd}: buildReading returned instead of refusing`);
+  } catch (e) {
+    if (e?.code === "JOKER_UNSUPPORTED") jokerPass++;
+    else console.log(`JOKER FAIL ${bd}: ${e?.code ?? e?.message}`);
+  }
+}
+
 if (mismatchSamples.length) {
   console.log("\n--- mismatch detail (first 60) ---");
   for (const m of mismatchSamples) {
@@ -103,7 +123,11 @@ if (mismatchSamples.length) {
 console.log("\n=========================================");
 console.log(`cases:  ${casePass}/${caseCount} passed`);
 console.log(`fields: ${matchedFields}/${totalFields} matched`);
-const ok = casePass === caseCount && matchedFields === totalFields;
+console.log(`joker:  ${jokerPass}/${JOKER_BIRTHDATES.length} refused (JS-only, no Python parity)`);
+const ok =
+  casePass === caseCount &&
+  matchedFields === totalFields &&
+  jokerPass === JOKER_BIRTHDATES.length;
 console.log(ok ? "RESULT: PASS" : "RESULT: FAIL");
 console.log("=========================================");
 process.exit(ok ? 0 : 1);

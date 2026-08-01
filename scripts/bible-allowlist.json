@@ -1,0 +1,4 @@
+{
+  "_doc": "Reviewed exceptions to the Bible language gate in validate-public-truth.ts. Each entry allows one exact phrase in one source. Adding an entry requires a human decision — the gate itself never interprets intent (e.g. negated uses like 'not fate' are NOT auto-allowed; whether negation is compliant is an open ruling for cass, see OUTBOX/cb-engine/DECISIONS_FOR_CASS.md).",
+  "entries": []
+}

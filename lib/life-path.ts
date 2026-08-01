@@ -1,6 +1,8 @@
 import cardology from "./engine-core/engine.js";
+import { resolvePublicBirth } from "./birth-card-truth";
 import { parseCard, toLines, type Suit } from "./cards";
-import type { ArchetypeDescription, Interpretation } from "./types";
+import { slugFor } from "./seo-cards";
+import type { ArchetypeDescription, Interpretation, PlanetName } from "./types";
 
 import CARD_DESCRIPTIONS from "./engine-data/card-descriptions.json";
 import THREE_LENS from "./card-meanings.json";
@@ -191,14 +193,22 @@ const SUITS: Suit[] = ["hearts", "diamonds", "clubs", "spades"];
 export function birthCardFromISODate(date: string): string | null {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
   const [, month, day] = date.split("-").map(Number);
-  const [birthCard] = cardology.getBirthCard(month, day) as [string, number];
-  return birthCard && birthCard !== "Unknown" ? birthCard : null;
+  const resolved = resolvePublicBirth(month, day);
+  // Joker has no Life Spread position (cardsFrom("Joker") is null). Callers
+  // (calculator UI) must branch on the Joker case explicitly rather than
+  // receiving a silently wrong K♠ profile.
+  if (resolved.kind === "joker") return null;
+  return resolved.code !== "Unknown" ? resolved.code : null;
 }
 
-export function buildLifePathProfile(date: string, label: string): LifePathProfile | null {
-  const birthCard = birthCardFromISODate(date);
-  if (!birthCard) return null;
+// Card-keyed profile: everything in LifePathProfile except the birthdate,
+// which a card-keyed caller does not have (no fake empty string).
+export type LifePathCardProfile = Omit<LifePathProfile, "birthdate">;
 
+export function buildLifePathProfileForCard(
+  birthCard: string,
+  label?: string,
+): LifePathCardProfile | null {
   const order = orderedLifeSpread();
   const birthIndex = order.indexOf(birthCard);
   if (birthIndex < 0) return null;
@@ -214,8 +224,7 @@ export function buildLifePathProfile(date: string, label: string): LifePathProfi
   const suitCounts = countSuits(pathCards);
 
   return {
-    birthdate: date,
-    label,
+    label: label ?? cardLabel(birthCard),
     birthCard,
     birthCardLabel: cardLabel(birthCard),
     moon,
@@ -223,6 +232,160 @@ export function buildLifePathProfile(date: string, label: string): LifePathProfi
     allCards: [moon, ...pathCards],
     suitCounts,
     dominantSuits: dominantSuits(suitCounts),
+  };
+}
+
+export function buildLifePathProfile(date: string, label: string): LifePathProfile | null {
+  const birthCard = birthCardFromISODate(date);
+  if (!birthCard) return null;
+  const profile = buildLifePathProfileForCard(birthCard, label);
+  if (!profile) return null;
+  return { ...profile, birthdate: date };
+}
+
+// --- Public Life Spread export (indexable surfaces) --------------------------
+//
+// Doc-sourced positions only (docs/reading-interpretation-reference.md §6–§7):
+// Moon + Mercury→Result (birth card is the page subject / root birthCard field,
+// not a positions[] row) + Environment/Displacement karma pair.
+// The Princess/Prince/Queen/King extension in LIFE_PATH_ROLES is calculator-only
+// pending a doctrine ruling — it must never appear in this export.
+// Vocabulary: "Result / Cosmic Reward" (doc), never "Princess".
+
+export type LifeSpreadRole =
+  | "moon"
+  | "mercury"
+  | "venus"
+  | "mars"
+  | "jupiter"
+  | "saturn"
+  | "uranus"
+  | "neptune"
+  | "pluto"
+  | "result";
+
+export type PublicLifeSpreadPosition = {
+  role: LifeSpreadRole;
+  // Only the seven 52-day period positions carry a planet. Pluto and Result
+  // are the lifetime transformation pair (doc §6), not planets or periods.
+  planet: PlanetName | null;
+  title: string;
+  code: string;
+  // Engine-owned link target for internal mesh into /birth-card/<slug>.
+  // null only if code is unparsable (should not happen for walk cards).
+  slug: string | null;
+  label: string;
+  suit: Suit | null;
+  gift: string;
+  shadow: string;
+  relationship: string;
+};
+
+function positionSlug(code: string): string | null {
+  const parsed = parseCard(code);
+  return parsed ? slugFor(parsed.rank, parsed.suit) : null;
+}
+
+export type PublicLifeSpread = {
+  birthCard: string;
+  birthCardLabel: string;
+  // Board text "Moon + birth + Mercury→Result" resolves to THIS shape: the
+  // birth card is the page subject on /birth-card/<slug>, so it is exposed at
+  // the root rather than as a self-linking row inside positions[].
+  birthCardSlug: string | null;
+  positions: PublicLifeSpreadPosition[]; // moon first, then Mercury→Result
+  // Same derivation the card pages already use via CardSeo.karma — owned here
+  // so one page never renders spread data from two different builders.
+  karma: { environment: string; displacement: string } | null;
+};
+
+const RESULT_TITLE = "Result / Cosmic Reward";
+
+// The seven 52-day period positions, in walk order. Typed as PlanetName so the
+// "exactly these seven planets" guarantee is enforced by the compiler, not only
+// by the count assert in scripts/validate-public-truth.ts.
+const PUBLIC_PLANETS: readonly PlanetName[] = [
+  "Mercury", "Venus", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune",
+];
+
+export function buildPublicLifeSpread(birthCard: string): PublicLifeSpread | null {
+  const profile = buildLifePathProfileForCard(birthCard);
+  if (!profile) return null;
+
+  // Mercury→Result must equal the engine walk exactly (one-walk invariant,
+  // asserted in scripts/validate-public-truth.ts for all 52 cards).
+  const line = cardology.cardsFrom(birthCard, 1, 9) as string[] | null;
+  if (!line || line.length < 9) return null;
+
+  const positions: PublicLifeSpreadPosition[] = [];
+
+  const moon = profile.moon;
+  positions.push({
+    role: "moon",
+    planet: null,
+    title: moon.title,
+    code: moon.card,
+    slug: positionSlug(moon.card),
+    label: moon.label,
+    suit: moon.suit,
+    gift: moon.gift,
+    shadow: moon.shadow,
+    // Doc §9 sources Moon as a relationship connection — public copy leads
+    // with the relationship line, not the self "constitution" line.
+    relationship: moon.relationship,
+  });
+
+  // Positions 2–9 in LIFE_PATH_ROLES are Mercury→Pluto; their walk cards are
+  // line[0..7]. line[8] is Result/Cosmic Reward (doc vocabulary — the
+  // LIFE_PATH_ROLES "Princess" copy is quarantined and not used here).
+  for (let index = 0; index < 8; index++) {
+    const role = LIFE_PATH_ROLES[index + 2];
+    const built = buildLifePathCard(role, line[index]);
+    positions.push({
+      role: role.key as LifeSpreadRole,
+      planet: PUBLIC_PLANETS[index] ?? null,
+      title: role.title,
+      code: built.card,
+      slug: positionSlug(built.card),
+      label: built.label,
+      suit: built.suit,
+      gift: built.gift,
+      shadow: built.shadow,
+      relationship: built.relationship,
+    });
+  }
+
+  const resultBuilt = buildLifePathCard(
+    { ...LIFE_PATH_ROLES[10], title: RESULT_TITLE, shortTitle: "Result" },
+    line[8],
+  );
+  positions.push({
+    role: "result",
+    planet: null,
+    title: RESULT_TITLE,
+    code: resultBuilt.card,
+    slug: positionSlug(resultBuilt.card),
+    label: resultBuilt.label,
+    suit: resultBuilt.suit,
+    gift: resultBuilt.gift,
+    shadow: resultBuilt.shadow,
+    // Paraphrase of docs/reading-interpretation-reference.md §6 (Result /
+    // Cosmic Reward — the reward available once the Pluto transformation is
+    // met). Engine-authored connective prose, not doc verbatim; app copy may
+    // override it.
+    relationship: `The ${resultBuilt.label} is the reward position: the gift available after the Pluto card's transformation is handled honestly.`,
+  });
+
+  const karmaRaw = cardology.getEnvironmentDisplacement(birthCard, 1);
+
+  return {
+    birthCard,
+    birthCardLabel: profile.birthCardLabel,
+    birthCardSlug: positionSlug(birthCard),
+    positions,
+    karma: karmaRaw
+      ? { environment: karmaRaw.environment, displacement: karmaRaw.displacement }
+      : null,
   };
 }
 

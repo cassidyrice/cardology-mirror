@@ -1,6 +1,17 @@
-// Interpretation guidance distilled from docs/reading-interpretation-reference.md.
-// Keep the markdown file as the canonical human-edited source; this module is the
-// Edge-safe prompt context the interpretation engine can import without fs.
+// Interpretation guidance for the reading engine. The METHOD sections (Core
+// stance through Relationship readings) are distilled from
+// docs/reading-interpretation-reference.md — keep that markdown as the
+// canonical human-edited source for them.
+//
+// The "Reader voice" section is NOT sourced from that doc: it is a deliberate
+// product overlay. The doc's §4 ethics prescribe roughly 5:1 affirmation and
+// "stay positive without denying difficulty"; the overlay prescribes a roast
+// register with "no cushioning, no inspirational uplift". Which one is doctrine
+// for the paid reading is an open ruling (OUTBOX/cb-engine/DECISIONS_FOR_CASS.md
+// #4). The voice text itself is untouched pending that ruling — only the
+// provenance claim is corrected here.
+//
+// This module is the Edge-safe prompt context the engine imports without fs.
 
 export const READING_INTERPRETATION_GUIDE = `
 # Cardology Reading Interpretation Reference
