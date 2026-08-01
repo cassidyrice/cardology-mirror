@@ -1,9 +1,21 @@
 import type { Reading } from "./types";
-import { buildReading, ReadingError } from "./reading";
+import { buildReading, JokerNotSupportedError, ReadingError } from "./reading";
 
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
-export class EngineError extends Error {}
+export class EngineError extends Error {
+  // Machine-readable refusal code preserved for API routes. Contract for
+  // app/api/{reading,deepdive,storyarc}: when code === "JOKER_UNSUPPORTED",
+  // respond 422 with honest Dec-31/Joker copy — never a generic 500. The
+  // real gate (date input + checkout) is app-pair surface; this code is the
+  // engine-side guarantee that a Joker birthdate can no longer produce a
+  // silent K♠ reading.
+  code?: string;
+  constructor(message: string, code?: string) {
+    super(message);
+    this.code = code;
+  }
+}
 
 /**
  * Run the deterministic engine for a birthdate (and optional target date).
@@ -29,6 +41,7 @@ export function getReading(
     return Promise.resolve(buildReading(birthdate, targetDate));
   } catch (e) {
     const msg = e instanceof ReadingError || e instanceof Error ? e.message : String(e);
-    return Promise.reject(new EngineError(msg));
+    const code = e instanceof JokerNotSupportedError ? e.code : undefined;
+    return Promise.reject(new EngineError(msg, code));
   }
 }
