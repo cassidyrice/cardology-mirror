@@ -5,7 +5,7 @@
 export const READING_INTERPRETATION_GUIDE = `
 # Cardology Reading Interpretation Reference
 
-Use this reference as the reading method behind cardologypro.com daily-card and deep-dive interpretations.
+Use this reference as the reading method behind cardblueprints.com daily-card and deep-dive interpretations.
 
 ## Core stance
 - A reading is a pattern map for real people, relationships, choices, opportunities, challenges, and subjective experience.
