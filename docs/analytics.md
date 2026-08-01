@@ -17,7 +17,7 @@ Stripe session tokens.
 | Event | Meaning | Source of truth |
 | --- | --- | --- |
 | `organic_landing` | A session arrived from a recognized search engine or `utm_medium=organic` | Browser landing |
-| `calculator_started` | First calculator interaction in the tab | Browser interaction |
+| `calculator_started` | First calculator interaction per placement in the tab | Browser interaction |
 | `calculator_completed` | A valid result was calculated | Browser calculation |
 | `free_call_clicked` | A free-preview phone link was clicked | Browser click |
 | `readings_viewed` | The paid-reading comparison page was viewed | Browser route |
@@ -109,3 +109,18 @@ Analytics Engine does not support joins and may sample high-volume data. The
 event-ID distinct count prevents Stripe webhook retries from inflating the
 purchase total. Keep the `blob16 = 'main'` filter in production reports so
 preview and QA traffic do not enter the live funnel.
+
+## Metric cutover — 2026-08-01
+
+`trackClientFunnelEventOnce` now keys its once-guard on **event name +
+`blob12` placement**, not the event name alone. Before this change the first
+placement to fire an event in a tab silently suppressed every other placement
+for the rest of that tab, so per-placement counts were undercounted by an
+unknown amount and CTA comparisons were not meaningful.
+
+`calculator_completed` is also now non-once on the search-prefill path,
+matching the form path and the per-calculation definition above.
+
+When comparing across this date, split on `blob12` and count DISTINCT `blob2`
+sessions rather than raw event totals. Pre-cutover per-placement series are
+not comparable to post-cutover ones.

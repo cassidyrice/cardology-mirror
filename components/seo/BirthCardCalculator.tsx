@@ -55,7 +55,9 @@ export function BirthCardCalculator() {
         placement: "search-prefill",
       });
       if (calculated) {
-        trackClientFunnelEventOnce("calculator_completed", {
+        // Non-once: docs/analytics.md defines calculator_completed as
+        // per-calculation, and the form path at :79 already emits it that way.
+        trackClientFunnelEvent("calculator_completed", {
           placement: "search-prefill",
         });
       }
