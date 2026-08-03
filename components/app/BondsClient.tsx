@@ -72,9 +72,9 @@ export default function BondsPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Eyebrow className="mb-1">Bonds</Eyebrow>
-          <h1 className="display mb-2 text-4xl text-bone">
+          <h2 className="display mb-2 text-4xl text-bone">
             Where two patterns collide
-          </h1>
+          </h2>
           <p className="text-sm text-faint">
             Not a compatibility score. Two birth cards, read for where they
             speak the same language — and where they quietly grind each other down.

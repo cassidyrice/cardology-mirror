@@ -69,9 +69,9 @@ export default function JournalPage() {
   return (
     <Screen className="starfield bg-cosmic mx-auto max-w-md">
       <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
-      <h1 className="display mt-3 text-4xl leading-[1.08] text-bone">
+      <h2 className="display mt-3 text-4xl leading-[1.08] text-bone">
         The Journal
-      </h1>
+      </h2>
       <p className="mt-3 text-sm text-faint">
         A mirror, not a forecast. Write toward whatever stings.
       </p>

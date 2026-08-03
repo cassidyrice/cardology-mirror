@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
+import { COMPATIBILITY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cardology Compatibility: Birth Cards & Life Paths",
@@ -19,8 +19,25 @@ export const metadata: Metadata = {
 };
 
 export default function CompatibilityPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Cardology Compatibility: Birth Cards & Life Paths",
+    description: metadata.description,
+    url: `${SITE_URL}/cardology-compatibility`,
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+    about: {
+      "@type": "Thing",
+      name: "Cardology relationship patterns",
+    },
+  };
+
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
       <p className="prose-reading mb-6 text-mist">
         Cardology compatibility starts with two birth cards, then gets sharper when

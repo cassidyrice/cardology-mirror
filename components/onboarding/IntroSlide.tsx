@@ -28,9 +28,9 @@ export function IntroSlide({ index, total, eyebrow, line, sub }: IntroSlideProps
       <p className="eyebrow mb-8">
         {eyebrow} · {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </p>
-      <h1 className="display max-w-sm text-balance text-4xl leading-[1.08] text-bone sm:text-5xl">
+      <h2 className="display max-w-sm text-balance text-4xl leading-[1.08] text-bone sm:text-5xl">
         {line}
-      </h1>
+      </h2>
       {sub && <p className="mt-7 max-w-sm text-[0.98rem] leading-relaxed text-mist">{sub}</p>}
     </motion.div>
   );
