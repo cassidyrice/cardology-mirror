@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { legacyCardDestination } from "@/lib/legacy-card-redirects";
+import { applySecurityHeaders } from "@/lib/security-headers";
 
 // Canonical host enforcement: 301 any www.* request to the apex domain,
-// preserving path and query. Everything else passes through.
+// preserving path and query. Everything else passes through with a shared
+// security-header baseline (HSTS, frame deny, nosniff, etc.).
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const redirectUrl = new URL(request.url);
@@ -22,7 +24,9 @@ export function middleware(request: NextRequest) {
   }
 
   if (shouldRedirect) {
-    return NextResponse.redirect(redirectUrl, 301);
+    const response = NextResponse.redirect(redirectUrl, 301);
+    applySecurityHeaders(response.headers);
+    return response;
   }
 
   // /card-of-the-day is edge-rendered per request and computes "today"
@@ -33,13 +37,23 @@ export function middleware(request: NextRequest) {
   // headers collected before the middleware runs (verified against the
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
+  const response = NextResponse.next();
+  applySecurityHeaders(response.headers);
+
   if (request.nextUrl.pathname === "/card-of-the-day") {
-    const response = NextResponse.next();
     response.headers.set("Cache-Control", "no-store, must-revalidate");
-    return response;
   }
 
-  return NextResponse.next();
+  // Money + API surfaces should never be cached by shared caches.
+  if (
+    request.nextUrl.pathname.startsWith("/api/") ||
+    request.nextUrl.pathname.startsWith("/checkout/") ||
+    request.nextUrl.pathname === "/access"
+  ) {
+    response.headers.set("Cache-Control", "no-store, must-revalidate");
+  }
+
+  return response;
 }
 
 export const config = {

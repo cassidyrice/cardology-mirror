@@ -7,11 +7,15 @@ import {
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { offerBySlug } from "@/lib/products";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
+
+const CHECKOUT_LIMIT = 20;
+const CHECKOUT_WINDOW_MS = 10 * 60 * 1000;
 
 // POST /checkout/[offer]/session
 // A deliberate customer action creates the Stripe Checkout Session. The
@@ -20,6 +24,17 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
 ) {
+  const limited = rateLimit(`checkout:${clientIp(req)}`, {
+    limit: CHECKOUT_LIMIT,
+    windowMs: CHECKOUT_WINDOW_MS,
+  });
+  if (!limited.ok) {
+    return new NextResponse("Too many checkout attempts. Try again shortly.", {
+      status: 429,
+      headers: { "Retry-After": String(limited.retryAfterSec) },
+    });
+  }
+
   const { offer: slug } = await params;
   const offer = offerBySlug(slug);
   if (!offer) {

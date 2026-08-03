@@ -15,7 +15,8 @@
     "shorts:studio": "bun scripts/shorts/studio-server.ts",
     "test:shorts-studio": "bun test scripts/shorts/studio-core.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:deploy": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true"
+    "pages:deploy": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --branch main --commit-dirty=true",
+    "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true"
   },
   "dependencies": {
     "next": "15.1.6",
