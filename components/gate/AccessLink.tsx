@@ -32,8 +32,10 @@ export function AccessLink() {
   return (
     <div className="mx-auto mt-6 max-w-sm text-center">
       <p className="text-sm leading-relaxed text-mist">
-        This access link looks incomplete. Open the link from your purchase
-        email again, or unlock with the access code from that email instead.
+        This access link looks incomplete. Open the full link from your purchase
+        email again, or unlock with the access code from that email. If you have
+        not purchased yet, find your birth card free or compare the readings
+        first.
       </p>
       <Link
         href="/reading"
@@ -41,6 +43,24 @@ export function AccessLink() {
       >
         Enter with access code
       </Link>
+      <div className="mt-5 space-y-2 text-sm">
+        <p>
+          <Link
+            href="/birth-card-calculator"
+            className="text-bone underline decoration-white/30 underline-offset-4 hover:decoration-white"
+          >
+            Find your birth card free
+          </Link>
+        </p>
+        <p>
+          <Link
+            href="/readings"
+            className="text-bone underline decoration-white/30 underline-offset-4 hover:decoration-white"
+          >
+            Compare the paid readings
+          </Link>
+        </p>
+      </div>
     </div>
   );
 }

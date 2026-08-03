@@ -5,6 +5,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { offerBySlug, type ReadingOffer } from "@/lib/products";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
@@ -51,6 +52,15 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Reading purchase status",
+    description: metadata.description,
+    url: `${SITE_URL}/checkout/success`,
+    isPartOf: { "@type": "WebSite", name: SITE_NAME, url: SITE_URL },
+  };
+
   return (
     <SeoShell
       crumb={[
@@ -59,6 +69,10 @@ export default async function CheckoutSuccessPage({
         { label: "Purchase status", href: "/checkout/success" },
       ]}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="max-w-[38em] pb-8">
         <Kicker className="mb-4">
           {confirmed ? "Payment received" : "Payment not verified"}

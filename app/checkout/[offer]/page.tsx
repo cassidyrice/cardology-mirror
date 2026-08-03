@@ -6,6 +6,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import { offerBySlug, readingOfferFacts } from "@/lib/products";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -28,6 +29,23 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
 
   if (!offer) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: offer.name,
+    description: offer.oneLine,
+    brand: { "@type": "Brand", name: SITE_NAME },
+    url: `${SITE_URL}/checkout/${offer.slug}`,
+    offers: {
+      "@type": "Offer",
+      price: offer.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: `${SITE_URL}/checkout/${offer.slug}`,
+      category: "Cardology voice reading",
+    },
+  };
+
   return (
     <SeoShell
       crumb={[
@@ -36,6 +54,10 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
         { label: offer.name, href: `/checkout/${offer.slug}` },
       ]}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <header className="max-w-[42rem] pb-9">
         <Kicker className="mb-4">Review your reading</Kicker>
         <h1 className="type-display text-brand-ink">
