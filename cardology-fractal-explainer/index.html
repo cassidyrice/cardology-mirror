@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>The Analog Algorithm — Cardology</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+  :root { --paper:#eee8dc; --ink:#171513; --muted:#5f594f; --red:#a44332; --red2:#d17a63; --line:rgba(23,21,19,.24); }
+  * { box-sizing:border-box; }
+  html,body { margin:0; width:1080px; height:1920px; overflow:hidden; background:var(--paper); color:var(--ink); }
+  body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  #root { position:relative; width:1080px; height:1920px; overflow:hidden; background:var(--paper); }
+  #paper { position:absolute; inset:0; background:radial-gradient(circle at 22% 18%, rgba(255,255,255,.45), transparent 26%), radial-gradient(circle at 76% 80%, rgba(134,91,60,.08), transparent 28%), var(--paper); }
+  #paper:after { content:""; position:absolute; inset:0; opacity:.12; background-image:radial-gradient(rgba(23,21,19,.35) .5px, transparent .6px); background-size:7px 7px; mix-blend-mode:multiply; }
+  .clip { position:absolute; inset:0; overflow:hidden; }
+  .scene-inner { position:absolute; inset:0; padding:124px 86px 110px; }
+  .eyebrow { color:var(--red); font:700 22px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:3px; text-transform:uppercase; }
+  .kicker { color:var(--muted); font:500 22px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:1px; }
+  .title { max-width:900px; margin-top:36px; font:700 94px/.92 Georgia, 'Times New Roman', serif; letter-spacing:-4px; }
+  .headline { max-width:890px; margin-top:34px; font:700 70px/.98 Georgia, 'Times New Roman', serif; letter-spacing:-2px; }
+  .body { max-width:760px; margin-top:28px; color:#4f4941; font:500 32px/1.32 Inter, ui-sans-serif, sans-serif; }
+  .equation { font:700 60px/1.05 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:-3px; }
+  .equation.red { color:var(--red); }
+  .micro { color:var(--muted); font:600 20px/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing:1px; }
+  .rule { height:2px; width:100%; background:var(--ink); transform-origin:left center; }
+  .card { position:absolute; width:150px; height:170px; border:3px solid var(--ink); border-radius:10px; background:#f7f3eb; box-shadow:6px 7px 0 rgba(23,21,19,.1); display:flex; flex-direction:column; justify-content:space-between; padding:15px 14px; font:700 32px/.9 Georgia,serif; }
+  .card .suit { align-self:flex-end; color:var(--red); font-size:34px; }
+  .card.small { width:90px; height:126px; border-width:2px; padding:10px; font-size:23px; border-radius:7px; box-shadow:4px 4px 0 rgba(23,21,19,.09); }
+  .card.small .suit { font-size:25px; }
+  .card.red { color:var(--red); }
+  .grid { display:grid; grid-template-columns:repeat(7, 1fr); gap:10px; width:760px; }
+  .grid .cell { height:78px; border:1px solid var(--line); display:grid; place-items:center; font:700 22px ui-monospace,monospace; background:rgba(255,255,255,.18); }
+  .grid .cell.active { color:var(--red); border-color:var(--red); background:rgba(164,67,50,.08); }
+  .ring { position:absolute; width:720px; height:720px; border:2px solid var(--ink); border-radius:50%; left:180px; top:590px; }
+  .ring:before,.ring:after { content:""; position:absolute; inset:78px; border:1px solid var(--line); border-radius:50%; }
+  .ring:after { inset:164px; border-color:var(--red); }
+  .orbit-dot { position:absolute; width:24px; height:24px; border-radius:50%; background:var(--red); box-shadow:0 0 0 8px rgba(164,67,50,.16); }
+  .axis { position:absolute; width:2px; background:var(--ink); transform-origin:center; }
+  .label-box { border:2px solid var(--ink); padding:20px 22px; background:rgba(238,232,220,.9); }
+  .stamp { border:2px solid var(--red); color:var(--red); padding:14px 16px; font:700 18px ui-monospace,monospace; letter-spacing:2px; text-transform:uppercase; display:inline-block; }
+  .helix { position:absolute; left:120px; top:540px; width:830px; height:980px; }
+  .helix-line { position:absolute; left:330px; top:0; width:170px; height:920px; border:3px solid var(--red); border-left-color:transparent; border-right-color:transparent; border-radius:50%; }
+  .helix-line.two { left:420px; border-color:var(--ink); border-left-color:transparent; border-right-color:transparent; }
+  .helix-axis { position:absolute; left:414px; top:10px; width:2px; height:900px; background:var(--ink); }
+  .helix-node { position:absolute; width:70px; height:70px; border:2px solid var(--ink); border-radius:50%; display:grid; place-items:center; background:var(--paper); font:700 18px ui-monospace,monospace; }
+  .fractal { position:absolute; left:85px; top:520px; width:890px; height:1050px; }
+  .fractal .level { position:absolute; border:2px solid var(--ink); border-radius:50%; left:50%; top:50%; transform:translate(-50%,-50%); }
+  .fractal .l1 { width:220px; height:220px; border-color:var(--red); }
+  .fractal .l2 { width:480px; height:480px; }
+  .fractal .l3 { width:760px; height:760px; border-color:var(--line); }
+  .fractal .level-label { position:absolute; background:var(--paper); padding:8px 12px; font:700 19px ui-monospace,monospace; }
+  .planet-row { position:absolute; left:64px; right:64px; top:760px; display:flex; justify-content:space-between; align-items:flex-start; }
+  .planet { width:106px; text-align:center; }
+  .planet .node { width:82px; height:82px; margin:0 auto 16px; border:2px solid var(--ink); border-radius:50%; display:grid; place-items:center; background:#f7f3eb; font:700 24px Georgia,serif; }
+  .planet.active .node { border-color:var(--red); color:var(--red); box-shadow:0 0 0 12px rgba(164,67,50,.12); }
+  .planet .name { font:700 16px ui-monospace,monospace; letter-spacing:.5px; }
+  .footer-mark { position:absolute; bottom:58px; left:86px; right:86px; display:flex; justify-content:space-between; color:var(--muted); font:600 17px ui-monospace,monospace; letter-spacing:1px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="210" data-width="1080" data-height="1920">
+  <div id="paper"></div>
+
+  <section id="scene-hook" class="clip" data-start="0" data-duration="18" data-track-index="1">
+    <div class="scene-inner" id="hook-inner">
+      <div class="eyebrow">THE ANALOG ALGORITHM</div>
+      <div class="title">What if a deck is a calendar?</div>
+      <div class="rule" id="hook-rule" style="margin-top:58px"></div>
+      <div class="body">Fifty-two cards. Roughly fifty-two weeks. One repeating structure.</div>
+      <div id="hook-card-a" class="card" style="left:160px;top:1030px"><span>A</span><span class="suit">♠</span></div>
+      <div id="hook-card-b" class="card red" style="left:370px;top:1030px"><span>7</span><span class="suit">♥</span></div>
+      <div id="hook-card-c" class="card" style="left:580px;top:1030px"><span>K</span><span class="suit">♣</span></div>
+      <div class="micro" style="position:absolute;left:86px;top:1370px">A visual introduction to Cardology</div>
+      <div class="footer-mark"><span>01 / 08</span><span>52 → TIME</span></div>
+    </div>
+  </section>
+
+  <section id="scene-geometry" class="clip" data-start="18" data-duration="27" data-track-index="1">
+    <div class="scene-inner" id="geometry-inner">
+      <div class="eyebrow">01 / THE STRUCTURE</div>
+      <div class="headline">The deck is built like a small calendar.</div>
+      <div class="body">Four suits. Thirteen ranks. Fifty-two positions.</div>
+      <div id="geometry-grid" class="grid" style="position:absolute;left:86px;top:650px"></div>
+      <div class="equation red" style="position:absolute;left:86px;top:1370px">4 × 13 = 52</div>
+      <div class="micro" style="position:absolute;left:86px;top:1490px">suits × ranks = cards</div>
+      <div class="footer-mark"><span>02 / 08</span><span>FORM → RHYTHM</span></div>
+    </div>
+  </section>
+
+  <section id="scene-joker" class="clip" data-start="45" data-duration="30" data-track-index="1">
+    <div class="scene-inner" id="joker-inner">
+      <div class="eyebrow">02 / THE REMAINDER</div>
+      <div class="headline">Seven days stretch the deck into a year.</div>
+      <div class="body">Fifty-two times seven gives 364. Cardology treats the remainder as a fifth element: the Joker.</div>
+      <div class="equation" style="position:absolute;left:86px;top:600px">52 × 7 = 364</div>
+      <div class="ring" id="joker-ring"></div>
+      <div id="joker-dot" class="orbit-dot" style="left:522px;top:930px"></div>
+      <div id="joker-card" class="card red" style="left:480px;top:1210px"><span>JOKER</span><span class="suit">✦</span></div>
+      <div class="stamp" style="position:absolute;left:86px;top:1470px">Cardology model</div>
+      <div class="footer-mark"><span>03 / 08</span><span>364 + 1</span></div>
+    </div>
+  </section>
+
+  <section id="scene-permutation" class="clip" data-start="75" data-duration="33" data-track-index="1">
+    <div class="scene-inner" id="permutation-inner">
+      <div class="eyebrow">03 / THE RULE</div>
+      <div class="headline">Then the positions move.</div>
+      <div class="body">The repo's engine applies one fixed permutation to a 52-card spread.</div>
+      <div class="equation red" style="position:absolute;left:86px;top:570px">Year N + 1 = P(Year N)</div>
+      <div id="perm-grid" class="grid" style="position:absolute;left:86px;top:760px;width:820px"></div>
+      <div class="equation" style="position:absolute;left:86px;top:1500px">P⁹⁰ = identity</div>
+      <div class="micro" style="position:absolute;left:86px;top:1600px">after ninety applications, the spread returns</div>
+      <div class="footer-mark"><span>04 / 08</span><span>RULE → RECURRENCE</span></div>
+    </div>
+  </section>
+
+  <section id="scene-birth" class="clip" data-start="108" data-duration="28" data-track-index="1">
+    <div class="scene-inner" id="birth-inner">
+      <div class="eyebrow">04 / BIRTH CARD</div>
+      <div class="headline">A date becomes a position.</div>
+      <div class="body">Take a generic date. Convert it to a solar value. Resolve that value to a card.</div>
+      <div class="label-box" style="position:absolute;left:86px;top:620px;width:830px">
+        <div class="micro">EXAMPLE DATE</div>
+        <div class="equation" style="margin-top:22px">April 7</div>
+      </div>
+      <div class="equation red" style="position:absolute;left:86px;top:900px">55 − (2 × 4 + 7) = 40</div>
+      <div class="micro" style="position:absolute;left:86px;top:1010px">solar value</div>
+      <div id="birth-arrow" style="position:absolute;left:518px;top:1100px;width:2px;height:180px;background:var(--red)"></div>
+      <div id="birth-card" class="card" style="left:481px;top:1300px"><span>A</span><span class="suit">♠</span></div>
+      <div class="stamp" style="position:absolute;left:86px;top:1540px">40 → A♠</div>
+      <div class="footer-mark"><span>05 / 08</span><span>DATE → CARD</span></div>
+    </div>
+  </section>
+
+  <section id="scene-weekly" class="clip" data-start="136" data-duration="26" data-track-index="1">
+    <div class="scene-inner" id="weekly-inner">
+      <div class="eyebrow">05 / THE WEEKLY FRACTAL</div>
+      <div class="headline">The same idea repeats in seven days.</div>
+      <div class="body">One spread becomes a Monday-to-Sunday sequence.</div>
+      <div id="weekly-line" class="rule" style="position:absolute;left:86px;top:690px;width:820px;background:var(--red)"></div>
+      <div id="weekly-cards" style="position:absolute;left:78px;top:760px;width:900px;height:220px"></div>
+      <div class="equation" style="position:absolute;left:86px;top:1170px">1 week → 7 cards</div>
+      <div class="micro" style="position:absolute;left:86px;top:1300px">Monday / Tuesday / Wednesday / Thursday / Friday / Saturday / Sunday</div>
+      <div class="footer-mark"><span>06 / 08</span><span>SMALLER SCALE</span></div>
+    </div>
+  </section>
+
+  <section id="scene-septennial" class="clip" data-start="162" data-duration="25" data-track-index="1">
+    <div class="scene-inner" id="septennial-inner">
+      <div class="eyebrow">06 / THE SEVEN-YEAR CYCLE</div>
+      <div class="headline">Seven cards can also mark seven years.</div>
+      <div class="body">Age moves through a cycle. The current year lights up inside the seven-position arc.</div>
+      <div class="fractal" id="sept-fractal">
+        <div class="level l3"></div><div class="level l2"></div><div class="level l1"></div>
+        <div class="level-label" style="left:56px;top:90px">1 year</div>
+        <div class="level-label" style="right:54px;top:350px;color:var(--red)">7 years</div>
+        <div class="level-label" style="left:350px;bottom:76px">one repeating engine</div>
+      </div>
+      <div class="equation red" style="position:absolute;left:86px;top:1510px">age ÷ 7 → cycle</div>
+      <div class="footer-mark"><span>07 / 08</span><span>ZOOM OUT</span></div>
+    </div>
+  </section>
+
+  <section id="scene-life" class="clip" data-start="187" data-duration="23" data-track-index="1">
+    <div class="scene-inner" id="life-inner">
+      <div class="eyebrow">07 / THE LIFE-PATH MIRROR</div>
+      <div class="headline">Seven lenses. One repeating pattern.</div>
+      <div class="body">The repo's Life Path contains thirteen card positions. Seven of them are planetary lenses, from Mercury through Neptune.</div>
+      <div class="planet-row" id="planet-row">
+        <div class="planet active"><div class="node">☿</div><div class="name">MERCURY</div></div>
+        <div class="planet"><div class="node">♀</div><div class="name">VENUS</div></div>
+        <div class="planet"><div class="node">♂</div><div class="name">MARS</div></div>
+        <div class="planet"><div class="node">♃</div><div class="name">JUPITER</div></div>
+        <div class="planet"><div class="node">♄</div><div class="name">SATURN</div></div>
+        <div class="planet"><div class="node">♅</div><div class="name">URANUS</div></div>
+        <div class="planet"><div class="node">♆</div><div class="name">NEPTUNE</div></div>
+      </div>
+      <div class="equation red" style="position:absolute;left:86px;top:930px">13 positions / 7 planetary lenses</div>
+      <div class="label-box" style="position:absolute;left:86px;top:1130px;width:830px">
+        <div class="micro">THE INTERPRETIVE LAYER</div>
+        <div class="body" style="margin-top:18px">The arithmetic generates a pattern. Meaning is the mirror we bring to it.</div>
+      </div>
+      <div class="micro" style="position:absolute;left:86px;top:1510px">The repo documents 13 cards here; it does not expose a 13-year calculation.</div>
+      <div class="footer-mark"><span>08 / 08</span><span>THE MIRROR</span></div>
+    </div>
+  </section>
+
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+const tl = gsap.timeline({ paused: true });
+const ink = "#171513";
+const red = "#a44332";
+const baseCards = ["7♥","6♥","5♥","4♥","3♥","2♥","A♥","A♣","K♥","Q♥","J♥","10♥","9♥","8♥","8♣","7♣","6♣","5♣","4♣","3♣","2♣","2♦","A♦","K♣","Q♣","J♣","10♣","9♣","9♦","8♦","7♦","6♦","5♦","4♦","3♦","3♠","2♠","A♠","K♦","Q♦","J♦","10♦","10♠","9♠","8♠","7♠","6♠","5♠","4♠","K♠","Q♠","J♠"];
+const permutation = [37,34,17,42,24,7,4,5,43,27,10,47,30,0,14,51,21,18,1,38,8,22,6,44,41,11,48,31,32,15,12,35,19,2,39,40,23,20,45,28,25,50,9,46,16,13,36,33,3,49,29,26];
+const weeklyCards = ["4♦","7♦","10♠","7♥","4♠","5♣","8♥"];
+function suitOf(card) { return card.match(/[♥♣♦♠✦]$/)?.[0] || ""; }
+function cardEl(card, cls = "") { const el = document.createElement("div"); el.className = `card ${cls} ${/[♥♦]/.test(card) ? "red" : ""}`; el.innerHTML = `<span>${card.replace(/[♥♣♦♠]$/, "")}</span><span class="suit">${suitOf(card)}</span>`; return el; }
+function fillGrid(id, values, cls = "") { const host = document.getElementById(id); values.forEach((value, i) => { const cell = document.createElement("div"); cell.className = `cell ${cls} ${i === 13 || i === 40 ? "active" : ""}`; cell.textContent = value; host.appendChild(cell); }); return host.querySelectorAll(".cell"); }
+fillGrid("geometry-grid", Array.from({length:52}, (_, i) => i + 1));
+fillGrid("perm-grid", baseCards.map((_, i) => `${i + 1}`));
+const weeklyHost = document.getElementById("weekly-cards");
+weeklyCards.forEach((card, i) => { const el = cardEl(card, "small"); el.style.left = `${i * 126}px`; el.style.top = `${(i % 2) * 34}px`; weeklyHost.appendChild(el); });
+const scene = (id) => document.getElementById(id);
+const fadeIn = (selector, at, y = 28, duration = .65) => tl.fromTo(selector, { opacity:0, y:y }, { opacity:1, y:0, duration, ease:"power3.out" }, at);
+const fadeOut = (selector, at, duration = .55) => tl.to(selector, { opacity:0, y:-18, duration, ease:"power2.in" }, at);
+
+// Hook: cards travel together, then lock into a question.
+fadeIn("#hook-inner", 0, 0, .4);
+tl.fromTo(["#hook-card-a","#hook-card-b","#hook-card-c"], { y:130, rotation:-8, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.15, stagger:.16, ease:"back.out(1.4)" }, .9);
+tl.fromTo("#hook-rule", { scaleX:0 }, { scaleX:1, duration:1, ease:"power2.out" }, 1.2);
+fadeOut("#hook-inner", 17.2);
+
+fadeIn("#geometry-inner", 18, 0, .4);
+const geometryCells = document.querySelectorAll("#geometry-grid .cell");
+tl.fromTo(geometryCells, { opacity:0, y:22, scale:.86 }, { opacity:1, y:0, scale:1, duration:.42, stagger:.035, ease:"power2.out" }, 18.7);
+fadeOut("#geometry-inner", 44.2);
+
+fadeIn("#joker-inner", 45, 0, .4);
+tl.fromTo("#joker-ring", { scale:.7, opacity:0, rotation:-18 }, { scale:1, opacity:1, rotation:0, duration:1.4, ease:"power3.out" }, 46);
+tl.fromTo("#joker-dot", { x:-200, y:-100, opacity:0 }, { x:210, y:35, opacity:1, duration:4.8, ease:"none" }, 47);
+tl.fromTo("#joker-card", { y:130, rotation:-12, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.1, ease:"back.out(1.25)" }, 55);
+fadeOut("#joker-inner", 74.2);
+
+fadeIn("#permutation-inner", 75, 0, .4);
+const permCells = document.querySelectorAll("#perm-grid .cell");
+tl.fromTo(permCells, { opacity:0, x:-18, y:18 }, { opacity:1, x:0, y:0, duration:.35, stagger:.025, ease:"power2.out" }, 76);
+tl.to(permCells, { color:red, backgroundColor:"rgba(164,67,50,.12)", duration:.25, stagger:{ each:.06, from:"start" } }, 83);
+tl.to(permCells, { color:ink, backgroundColor:"rgba(255,255,255,.18)", duration:.25, stagger:{ each:.045, from:"end" } }, 91);
+fadeOut("#permutation-inner", 107.2);
+
+fadeIn("#birth-inner", 108, 0, .4);
+tl.fromTo("#birth-card", { y:150, rotation:14, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.25, ease:"back.out(1.35)" }, 116);
+tl.fromTo("#birth-arrow", { scaleY:0, transformOrigin:"top center" }, { scaleY:1, duration:.8, ease:"power2.out" }, 118);
+fadeOut("#birth-inner", 135.2);
+
+fadeIn("#weekly-inner", 136, 0, .4);
+const weeklyEls = document.querySelectorAll("#weekly-cards .card");
+tl.fromTo("#weekly-line", { scaleX:0 }, { scaleX:1, duration:1.1, ease:"power2.out" }, 138);
+tl.fromTo(weeklyEls, { y:90, opacity:0, rotation:-9 }, { y:0, opacity:1, rotation:0, duration:.75, stagger:.2, ease:"back.out(1.2)" }, 139);
+fadeOut("#weekly-inner", 161.2);
+
+fadeIn("#septennial-inner", 162, 0, .4);
+tl.fromTo("#sept-fractal .level", { scale:.25, opacity:0 }, { scale:1, opacity:1, duration:1.3, stagger:.36, ease:"power3.out" }, 164);
+tl.to("#sept-fractal .l1", { scale:1.14, borderColor:red, duration:1, repeat:2, yoyo:true, ease:"sine.inOut" }, 169);
+fadeOut("#septennial-inner", 186.2);
+
+fadeIn("#life-inner", 187, 0, .4);
+const planets = document.querySelectorAll("#planet-row .planet");
+tl.fromTo(planets, { y:90, opacity:0 }, { y:0, opacity:1, duration:.7, stagger:.16, ease:"power3.out" }, 189);
+tl.to(planets, { color:red, duration:.25, stagger:{ each:.22, from:"start" } }, 195);
+tl.to(planets, { color:ink, duration:.25, stagger:{ each:.18, from:"end" } }, 199);
+fadeOut("#life-inner", 209.2);
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@ Design approved in conversation; implementation has not started.
 
 ## Intent
 
-Create a high-quality, programmatic, text-led animated explainer for curious beginners. The film explains the mathematical structure of a deck of cards, Cardology birth-card calculation, deterministic permutation, and repeating time scales: weekly, seven-year, and seven-card planetary/life-path structures. The requested 13-year relationship will be verified against repository sources before it is presented as an engine-backed calculation.
+Create a high-quality, programmatic, text-led animated explainer for curious beginners. The film explains the mathematical structure of a deck of cards, Cardology birth-card calculation, deterministic permutation, and repeating time scales: weekly, seven-year, and the repository's 13-card Life Path containing seven planetary positions. The requested 13-year relationship is not exposed by the repository and will not be presented as an engine-backed calculation.
 
 ## Locked creative brief
 
@@ -28,7 +28,7 @@ The film will distinguish between:
 1. Arithmetic and deterministic structures that can be verified in the repository, and
 2. Cardology's interpretive or symbolic framework.
 
-The video will not imply that Cardology is scientifically validated, predictive fate, or supernatural. Claims such as the 52-card calendar correspondence and Joker remainder will be framed as the Cardology model where appropriate. The 13-year life-path relation will not be called engine-backed until verified against source data and code.
+The video will not imply that Cardology is scientifically validated, predictive fate, or supernatural. Claims such as the 52-card calendar correspondence and Joker remainder will be framed as the Cardology model where appropriate. The repo exposes a 13-card Life Path and seven planetary positions; it does not expose a 13-year calculation. The film will say this plainly rather than silently converting one structure into the other.
 
 ## Storyboard and timing
 
@@ -66,9 +66,9 @@ Contract the year into a seven-position week. Show Monday through Sunday as seve
 
 Expand a seven-card row into a septennial sequence. Show the age-to-cycle relationship and seven yearly positions, with the current position highlighted.
 
-### 3:07–3:24 — Seven-card planetary / life-path structure
+### 3:07–3:24 — Thirteen-card Life Path / seven planetary positions
 
-Map seven cards to Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune. Verify the 13-year relationship before final wording; if the repo does not expose it as a calculation, label it as an interpretive framework.
+Show the repository's 13-card Life Path, then focus the visual on its seven planetary positions: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune. Add a concise note that the repository does not expose a 13-year calculation.
 
 ### 3:24–3:30 — Closing mirror
 
@@ -127,7 +127,9 @@ Validation must confirm:
 - December 31 resolves through the public Joker wrapper
 - Weekly output contains seven cards
 - Septennial output contains seven yearly positions
-- The 13-year claim has a source-backed implementation or is explicitly marked interpretive
+- The 13-card Life Path contains 13 path cards
+- The public Life Spread contains 10 positions: Moon, Mercury→Pluto, and Result
+- The repository does not expose a 13-year calculation; copy must not call it engine-backed
 
 ## Quality gates
 

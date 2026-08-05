@@ -1,0 +1,12 @@
+{
+  "name": "cardology-fractal-explainer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.7.94 preview",
+    "check": "npx --yes hyperframes@0.7.94 check",
+    "validate-data": "bun validate.ts",
+    "render": "npx --yes hyperframes@0.7.94 render",
+    "publish": "npx --yes hyperframes@0.7.94 publish"
+  }
+}
