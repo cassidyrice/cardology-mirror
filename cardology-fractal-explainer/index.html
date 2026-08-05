@@ -61,9 +61,10 @@
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="210" data-width="1080" data-height="1920">
   <div id="paper"></div>
+  <audio id="bgm" src="assets/ink-geometry-ambient.wav" data-start="0" data-duration="210" data-track-index="0" data-volume="0.62"></audio>
 
   <section id="scene-hook" class="clip" data-start="0" data-duration="18" data-track-index="1">
-    <div class="scene-inner" id="hook-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="hook-inner">
       <div class="eyebrow">THE ANALOG ALGORITHM</div>
       <div class="title">What if a deck is a calendar?</div>
       <div class="rule" id="hook-rule" style="margin-top:58px"></div>
@@ -77,7 +78,7 @@
   </section>
 
   <section id="scene-geometry" class="clip" data-start="18" data-duration="27" data-track-index="1">
-    <div class="scene-inner" id="geometry-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="geometry-inner">
       <div class="eyebrow">01 / THE STRUCTURE</div>
       <div class="headline">The deck is built like a small calendar.</div>
       <div class="body">Four suits. Thirteen ranks. Fifty-two positions.</div>
@@ -89,7 +90,7 @@
   </section>
 
   <section id="scene-joker" class="clip" data-start="45" data-duration="30" data-track-index="1">
-    <div class="scene-inner" id="joker-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="joker-inner">
       <div class="eyebrow">02 / THE REMAINDER</div>
       <div class="headline">Seven days stretch the deck into a year.</div>
       <div class="body">Fifty-two times seven gives 364. Cardology treats the remainder as a fifth element: the Joker.</div>
@@ -103,7 +104,7 @@
   </section>
 
   <section id="scene-permutation" class="clip" data-start="75" data-duration="33" data-track-index="1">
-    <div class="scene-inner" id="permutation-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="permutation-inner">
       <div class="eyebrow">03 / THE RULE</div>
       <div class="headline">Then the positions move.</div>
       <div class="body">The repo's engine applies one fixed permutation to a 52-card spread.</div>
@@ -116,7 +117,7 @@
   </section>
 
   <section id="scene-birth" class="clip" data-start="108" data-duration="28" data-track-index="1">
-    <div class="scene-inner" id="birth-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="birth-inner">
       <div class="eyebrow">04 / BIRTH CARD</div>
       <div class="headline">A date becomes a position.</div>
       <div class="body">Take a generic date. Convert it to a solar value. Resolve that value to a card.</div>
@@ -134,7 +135,7 @@
   </section>
 
   <section id="scene-weekly" class="clip" data-start="136" data-duration="26" data-track-index="1">
-    <div class="scene-inner" id="weekly-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="weekly-inner">
       <div class="eyebrow">05 / THE WEEKLY FRACTAL</div>
       <div class="headline">The same idea repeats in seven days.</div>
       <div class="body">One spread becomes a Monday-to-Sunday sequence.</div>
@@ -147,7 +148,7 @@
   </section>
 
   <section id="scene-septennial" class="clip" data-start="162" data-duration="25" data-track-index="1">
-    <div class="scene-inner" id="septennial-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="septennial-inner">
       <div class="eyebrow">06 / THE SEVEN-YEAR CYCLE</div>
       <div class="headline">Seven cards can also mark seven years.</div>
       <div class="body">Age moves through a cycle. The current year lights up inside the seven-position arc.</div>
@@ -163,7 +164,7 @@
   </section>
 
   <section id="scene-life" class="clip" data-start="187" data-duration="23" data-track-index="1">
-    <div class="scene-inner" id="life-inner">
+    <div class="scene-inner" data-layout-allow-overflow id="life-inner">
       <div class="eyebrow">07 / THE LIFE-PATH MIRROR</div>
       <div class="headline">Seven lenses. One repeating pattern.</div>
       <div class="body">The repo's Life Path contains thirteen card positions. Seven of them are planetary lenses, from Mercury through Neptune.</div>
@@ -208,22 +209,26 @@ const fadeOut = (selector, at, duration = .55) => tl.to(selector, { opacity:0, y
 
 // Hook: cards travel together, then lock into a question.
 fadeIn("#hook-inner", 0, 0, .4);
+tl.to("#hook-inner", { scale:1.035, y:-10, duration:14.5, ease:"none" }, 3);
 tl.fromTo(["#hook-card-a","#hook-card-b","#hook-card-c"], { y:130, rotation:-8, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.15, stagger:.16, ease:"back.out(1.4)" }, .9);
 tl.fromTo("#hook-rule", { scaleX:0 }, { scaleX:1, duration:1, ease:"power2.out" }, 1.2);
 fadeOut("#hook-inner", 17.2);
 
 fadeIn("#geometry-inner", 18, 0, .4);
+tl.to("#geometry-inner", { scale:1.035, y:-10, duration:23.5, ease:"none" }, 21);
 const geometryCells = document.querySelectorAll("#geometry-grid .cell");
 tl.fromTo(geometryCells, { opacity:0, y:22, scale:.86 }, { opacity:1, y:0, scale:1, duration:.42, stagger:.035, ease:"power2.out" }, 18.7);
 fadeOut("#geometry-inner", 44.2);
 
 fadeIn("#joker-inner", 45, 0, .4);
+tl.to("#joker-inner", { scale:1.035, y:-10, duration:25.5, ease:"none" }, 48);
 tl.fromTo("#joker-ring", { scale:.7, opacity:0, rotation:-18 }, { scale:1, opacity:1, rotation:0, duration:1.4, ease:"power3.out" }, 46);
 tl.fromTo("#joker-dot", { x:-200, y:-100, opacity:0 }, { x:210, y:35, opacity:1, duration:4.8, ease:"none" }, 47);
 tl.fromTo("#joker-card", { y:130, rotation:-12, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.1, ease:"back.out(1.25)" }, 55);
 fadeOut("#joker-inner", 74.2);
 
 fadeIn("#permutation-inner", 75, 0, .4);
+tl.to("#permutation-inner", { scale:1.035, y:-10, duration:28.5, ease:"none" }, 78);
 const permCells = document.querySelectorAll("#perm-grid .cell");
 tl.fromTo(permCells, { opacity:0, x:-18, y:18 }, { opacity:1, x:0, y:0, duration:.35, stagger:.025, ease:"power2.out" }, 76);
 tl.to(permCells, { color:red, backgroundColor:"rgba(164,67,50,.12)", duration:.25, stagger:{ each:.06, from:"start" } }, 83);
@@ -231,22 +236,26 @@ tl.to(permCells, { color:ink, backgroundColor:"rgba(255,255,255,.18)", duration:
 fadeOut("#permutation-inner", 107.2);
 
 fadeIn("#birth-inner", 108, 0, .4);
+tl.to("#birth-inner", { scale:1.035, y:-10, duration:25.5, ease:"none" }, 111);
 tl.fromTo("#birth-card", { y:150, rotation:14, opacity:0 }, { y:0, rotation:0, opacity:1, duration:1.25, ease:"back.out(1.35)" }, 116);
 tl.fromTo("#birth-arrow", { scaleY:0, transformOrigin:"top center" }, { scaleY:1, duration:.8, ease:"power2.out" }, 118);
 fadeOut("#birth-inner", 135.2);
 
 fadeIn("#weekly-inner", 136, 0, .4);
+tl.to("#weekly-inner", { scale:1.035, y:-10, duration:22.5, ease:"none" }, 139);
 const weeklyEls = document.querySelectorAll("#weekly-cards .card");
 tl.fromTo("#weekly-line", { scaleX:0 }, { scaleX:1, duration:1.1, ease:"power2.out" }, 138);
 tl.fromTo(weeklyEls, { y:90, opacity:0, rotation:-9 }, { y:0, opacity:1, rotation:0, duration:.75, stagger:.2, ease:"back.out(1.2)" }, 139);
 fadeOut("#weekly-inner", 161.2);
 
 fadeIn("#septennial-inner", 162, 0, .4);
+tl.to("#septennial-inner", { scale:1.035, y:-10, duration:22.5, ease:"none" }, 165);
 tl.fromTo("#sept-fractal .level", { scale:.25, opacity:0 }, { scale:1, opacity:1, duration:1.3, stagger:.36, ease:"power3.out" }, 164);
 tl.to("#sept-fractal .l1", { scale:1.14, borderColor:red, duration:1, repeat:2, yoyo:true, ease:"sine.inOut" }, 169);
 fadeOut("#septennial-inner", 186.2);
 
 fadeIn("#life-inner", 187, 0, .4);
+tl.to("#life-inner", { scale:1.035, y:-10, duration:19.5, ease:"none" }, 190);
 const planets = document.querySelectorAll("#planet-row .planet");
 tl.fromTo(planets, { y:90, opacity:0 }, { y:0, opacity:1, duration:.7, stagger:.16, ease:"power3.out" }, 189);
 tl.to(planets, { color:red, duration:.25, stagger:{ each:.22, from:"start" } }, 195);
