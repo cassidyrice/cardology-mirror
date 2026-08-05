@@ -63,12 +63,8 @@ export async function POST(
     const entitlement: Record<string, string> = {
       offer_slug: offer.slug,
       offer_name: offer.name,
-      access_type: offer.accessType,
-      max_session_minutes: String(offer.durationMinutes),
-      access_days: String(offer.accessDays),
-      ...(offer.maxCompletedCalls != null
-        ? { max_completed_calls: String(offer.maxCompletedCalls) }
-        : {}),
+      deliverable: "personal_video_reading",
+      delivery_hours: String(offer.deliveryHours),
     };
     const metadata = {
       ...entitlement,
@@ -84,7 +80,27 @@ export async function POST(
       payment_intent_data: {
         metadata: entitlement,
       },
-      phone_number_collection: { enabled: true },
+      // The video is made from these answers — the birth date is required,
+      // the focus question is what makes the reading personal.
+      custom_fields: [
+        {
+          key: "birth_date",
+          label: {
+            type: "custom",
+            custom: "Birth date for the reading (e.g. March 14, 1985)",
+          },
+          type: "text",
+        },
+        {
+          key: "focus_question",
+          label: {
+            type: "custom",
+            custom: "Your question or focus (optional)",
+          },
+          type: "text",
+          optional: true,
+        },
+      ],
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       customer_creation: "always",

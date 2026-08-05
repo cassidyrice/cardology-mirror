@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME } from "@/lib/site";
 
@@ -172,16 +171,16 @@ export default function PlayingCardSpreads() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">No spread required</p>
         <p className="mt-1 text-sm text-faint">
-          Your birthday already picked your card. Look it up free — or call and
-          the AI reader reads your first card on the spot.
+          Your birthday already picked your card. Look it up free — or have it
+          read for you in a personal video.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Birth Card Calculator →
           </Link>
-          <a href={READER_PHONE_TEL} className="text-sm font-bold text-gold underline underline-offset-4">
-            Call the AI reader free: {READER_PHONE_DISPLAY}
-          </a>
+          <Link href="/checkout/video-reading" className="text-sm font-bold text-gold underline underline-offset-4">
+            Get a Personal Video Reading — $99
+          </Link>
         </div>
       </div>
 

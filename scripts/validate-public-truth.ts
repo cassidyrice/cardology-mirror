@@ -11,7 +11,6 @@ import {
 } from "../lib/analytics";
 import { publicBirthCardCode } from "../lib/birth-card-truth";
 import { legacyCardDestination } from "../lib/legacy-card-redirects";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
 import { allPeriodCardSeeds } from "../lib/period-card-seeds";
 import { buildCardPeriodMeanings, PERIOD_FILTERS } from "../lib/period-meanings";
 import { READING_OFFERS, readingOfferFacts } from "../lib/products";
@@ -92,48 +91,26 @@ for (const card of allCardSeo()) {
   assert.match(copy, /pressure is shared/i, card.code);
 }
 
-assert.equal(READER_PHONE_DISPLAY, "+1 (949) 368-2652");
-assert.equal(READER_PHONE_TEL, "tel:+19493682652");
 assert.deepEqual(
   READING_OFFERS.map((offer) => ({
     slug: offer.slug,
     price: offer.price,
-    accessType: offer.accessType,
-    durationMinutes: offer.durationMinutes,
-    accessDays: offer.accessDays,
-    maxCompletedCalls: offer.maxCompletedCalls,
+    videoMinutes: offer.videoMinutes,
+    deliveryHours: offer.deliveryHours,
   })),
   [
     {
-      slug: "quick-question",
-      price: 19,
-      accessType: "single_session",
-      durationMinutes: 5,
-      accessDays: 30,
-      maxCompletedCalls: 1,
-    },
-    {
-      slug: "complete-reading",
-      price: 39,
-      accessType: "single_session",
-      durationMinutes: 15,
-      accessDays: 30,
-      maxCompletedCalls: 1,
-    },
-    {
-      slug: "season-pass-90",
-      price: 199,
-      accessType: "season_pass",
-      durationMinutes: 15,
-      accessDays: 90,
-      maxCompletedCalls: undefined,
+      slug: "video-reading",
+      price: 99,
+      videoMinutes: 5,
+      deliveryHours: 48,
     },
   ],
 );
 for (const offer of READING_OFFERS) {
   assert.deepEqual(
     readingOfferFacts(offer).map((fact) => fact.label),
-    ["Deliverable", "Session", "Calls", "Access", "Renewal"],
+    ["Deliverable", "Made from", "Length", "Delivery", "Refund"],
   );
 }
 
@@ -174,7 +151,8 @@ assert.equal(legacyCardDestination("/joker-of-spades-meaning/"), null);
 assert.equal(legacyCardDestination("/7-of-stars-meaning/"), null);
 
 const analyticsSessionId = "ab119959-a913-4da6-9f50-a0378c613582";
-assert.ok(isClientFunnelEventName("free_call_clicked"));
+assert.ok(isClientFunnelEventName("readings_viewed"));
+assert.ok(!isClientFunnelEventName("free_call_clicked"));
 assert.ok(!isClientFunnelEventName("purchase_completed"));
 assert.equal(sanitizeAnalyticsId(analyticsSessionId), analyticsSessionId);
 assert.equal(sanitizeAnalyticsId("not-a-session"), "");
@@ -183,7 +161,7 @@ assert.equal(
   "/birth-card/8-of-diamonds",
 );
 assert.equal(sanitizeAnalyticsPath("https://example.com/private"), "");
-assert.equal(sanitizeOfferSlug("complete-reading"), "complete-reading");
+assert.equal(sanitizeOfferSlug("video-reading"), "video-reading");
 assert.equal(sanitizeOfferSlug("invented-offer"), "");
 assert.equal(
   inferTrafficChannel({
@@ -291,7 +269,7 @@ assert.equal(BIRTHDAY_DIRECTORY_PATH, "/born-on/");
 assert.equal(COMPATIBILITY_DIRECTORY_PATH, "/compatibility/");
 
 console.log(
-  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 offers, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
+  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, 1 video-reading offer, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
 );
 
 // ============================================================================

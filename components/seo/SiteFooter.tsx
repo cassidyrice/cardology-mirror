@@ -1,10 +1,5 @@
 import Link from "next/link";
 
-import {
-  FREE_PREVIEW_NAME,
-  READER_PHONE_DISPLAY,
-  READER_PHONE_TEL,
-} from "@/lib/offers";
 import { READING_OFFERS, readingOfferPublicHref } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -31,16 +26,6 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Readings</p>
             <ul className="space-y-2">
-              <li>
-                <a href={READER_PHONE_TEL} className="hover:text-brand-ink">
-                  Free {FREE_PREVIEW_NAME}: {READER_PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                <Link href="/try" className="editorial-link">
-                  How the free preview works →
-                </Link>
-              </li>
               {READING_OFFERS.map((offer) => (
                 <li key={offer.slug}>
                   <Link href={readingOfferPublicHref(offer)} className="hover:text-brand-ink">
@@ -49,8 +34,13 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                 </li>
               ))}
               <li>
+                <Link href="/try" className="editorial-link">
+                  How the video reading works →
+                </Link>
+              </li>
+              <li>
                 <Link href={READINGS_PATH} className="editorial-link">
-                  Compare the readings →
+                  The reading →
                 </Link>
               </li>
             </ul>
@@ -90,9 +80,10 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          Readings are delivered by an AI voice reader using the deterministic
-          Cardology calculation — the same birthday always produces the same
-          card. An esoteric reflection framework, not a forecast.
+          Readings are personalized videos made with AI voice and visuals from
+          the deterministic Cardology calculation — the same birthday always
+          produces the same card. An esoteric reflection framework, not a
+          forecast.
         </p>
       </div>
     </footer>

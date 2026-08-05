@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { offerBySlug, type ReadingOffer } from "@/lib/products";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
@@ -13,7 +12,7 @@ export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: "Reading purchase status",
-  description: "Confirm a Card Blueprints purchase and learn how to start the reading.",
+  description: "Confirm a Card Blueprints purchase and learn when the video arrives.",
   robots: { index: false, follow: false },
 };
 
@@ -31,7 +30,7 @@ export default async function CheckoutSuccessPage({
 
   // The URL is not proof of payment. Confirm a completed session with Stripe
   // and derive the offer from its server-retrieved metadata before showing a
-  // payment-confirmed state. Activation and email delivery happen downstream.
+  // payment-confirmed state. Production and email delivery happen downstream.
   let offer: ReadingOffer | undefined;
   let customerEmail = "";
   let confirmed = false;
@@ -79,17 +78,17 @@ export default async function CheckoutSuccessPage({
         </Kicker>
         <h1 className="type-display text-brand-ink">
           {confirmed && offer
-            ? "Payment confirmed. Your access is being activated."
+            ? "Payment confirmed. Your video is being made."
             : "We could not confirm this purchase yet."}
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
           {confirmed && offer
-            ? activationInstructions(offer)
-            : "Do not start a paid reading yet. Return to the readings page or contact support so we can verify the payment."}
+            ? deliveryInstructions(offer)
+            : "No paid video is being claimed on this page. Return to the readings page or contact support so we can verify the payment."}
         </p>
         {confirmed && customerEmail && (
           <p className="mt-3 text-sm text-brand-ink-soft">
-            Receipt and start-here instructions will be sent to{" "}
+            Receipt and delivery updates go to{" "}
             <strong>{customerEmail}</strong>.
           </p>
         )}
@@ -100,43 +99,45 @@ export default async function CheckoutSuccessPage({
           <div className="grid gap-8 lg:grid-cols-3">
             <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
               <p className="font-serif text-lg text-brand-bronze">01</p>
-              <h2 className="type-h3 mt-2 text-brand-ink">Use your checkout number.</h2>
+              <h2 className="type-h3 mt-2 text-brand-ink">Your video is being made.</h2>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                Your access is tied to the phone number you entered at checkout.
-                The reader recognizes that number when you call.
+                A personal reading is written, voiced, and produced from the
+                birth date you entered at checkout — made for you, not generated
+                live.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
               <p className="font-serif text-lg text-brand-bronze">02</p>
-              <h2 className="type-h3 mt-2 text-brand-ink">Watch for activation instructions.</h2>
+              <h2 className="type-h3 mt-2 text-brand-ink">Watch your inbox.</h2>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                Payment confirmation does not prove the phone line has recognized
-                your access yet. Wait for the start-here email before calling.
+                A private video link arrives by email within{" "}
+                {offer ? offer.deliveryHours : 48} hours, at the address you
+                used at checkout. Nothing to schedule, nothing to call.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4 lg:border-t-0 lg:pt-0">
               <p className="font-serif text-lg text-brand-bronze">03</p>
-              <h2 className="type-h3 mt-2 text-brand-ink">Then call the reading line.</h2>
+              <h2 className="type-h3 mt-2 text-brand-ink">Keep it.</h2>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                {offer
-                  ? sessionDetail(offer)
-                  : "Your session details are in your confirmation email."}
+                The video is yours. Rewatch it whenever you need the pattern
+                again.
               </p>
             </div>
           </div>
           <div className="mt-9 text-center">
-            <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-              Call after activation &mdash; {READER_PHONE_DISPLAY}
+            <LinkButton href="/" variant="accent" size="large">
+              Back to Card Blueprints
             </LinkButton>
             <p className="mt-3 text-xs text-brand-ink-soft">
-              Wait for the start-here email, then call from the number you used
-              at checkout so the reader recognizes you.
+              If {offer ? offer.deliveryHours : 48} hours pass with no video,
+              check spam, then reply to your receipt — we&rsquo;ll make it
+              right.
             </p>
           </div>
         </section>
       ) : (
         <section role="status" className="border-y border-brand-line py-8">
-          <h2 className="type-h3 text-brand-ink">No paid access is being claimed on this page.</h2>
+          <h2 className="type-h3 text-brand-ink">No paid purchase is being claimed on this page.</h2>
           <p className="mt-3 max-w-[38em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
             A missing, unpaid, or unavailable Stripe session can land here
             without proving a purchase. If you have a receipt, contact support
@@ -156,13 +157,13 @@ export default async function CheckoutSuccessPage({
       <section className="mt-10 max-w-[38em]">
         <h2 className="type-h3 text-brand-ink">If something doesn&rsquo;t work</h2>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-          If the line doesn&rsquo;t recognize your number or a call drops,
+          If your video hasn&rsquo;t arrived within the promised window,
           reply to your receipt email or{" "}
           <Link href="/contact" className="editorial-link text-brand-ink">
             send a note via contact
           </Link>{" "}
-          with the email and phone number you used at checkout. Unused paid
-          sessions are covered by the{" "}
+          with the email you used at checkout. Undelivered videos are covered
+          by the{" "}
           <Link href="/refund-policy" className="editorial-link text-brand-ink">
             refund policy
           </Link>
@@ -173,16 +174,6 @@ export default async function CheckoutSuccessPage({
   );
 }
 
-function activationInstructions(offer: ReadingOffer): string {
-  if (offer.accessType === "season_pass") {
-    return "We are linking your 90-day pass to the phone number you used at checkout. Wait for the start-here email before calling.";
-  }
-  return `We are linking this reading to the phone number you used at checkout. Wait for the start-here email before calling; after activation, you have ${offer.accessDays} days to begin.`;
-}
-
-function sessionDetail(offer: ReadingOffer): string {
-  if (offer.accessType === "season_pass") {
-    return `Unlimited personal return calls for ${offer.accessDays} days, up to ${offer.durationMinutes} minutes per session. One payment — nothing renews.`;
-  }
-  return `Your session covers up to ${offer.durationMinutes} minutes with the reader. One paid session — start it within ${offer.accessDays} days.`;
+function deliveryInstructions(offer: ReadingOffer): string {
+  return `Your ${offer.name} is confirmed. It is being made personally for you from the birth date you entered at checkout — a private video link will arrive by email within ${offer.deliveryHours} hours.`;
 }

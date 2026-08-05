@@ -14,9 +14,7 @@ const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
 const ATTRIBUTION_KEY = "cardblueprints.analytics.attribution";
 const ONCE_KEY_PREFIX = "cardblueprints.analytics.once.";
-const READER_PHONE = "tel:+19493682652";
-const OFFER_PATH =
-  /^\/checkout\/(quick-question|complete-reading|season-pass-90)\/?$/;
+const OFFER_PATH = /^\/checkout\/(video-reading)\/?$/;
 
 type Attribution = {
   sessionId: string;
@@ -52,20 +50,6 @@ export function AnalyticsCapture() {
   }, [pathname]);
 
   useEffect(() => {
-    function capturePhoneClick(event: MouseEvent) {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-      const anchor = target.closest<HTMLAnchorElement>("a[href^='tel:']");
-      if (!anchor || anchor.getAttribute("href") !== READER_PHONE) return;
-      if (window.location.pathname === "/checkout/success") return;
-
-      sendEvent("free_call_clicked", {
-        placement:
-          anchor.dataset.analyticsPlacement ??
-          slugify(anchor.textContent ?? "phone-link"),
-      });
-    }
-
     function attachCheckoutAttribution(event: SubmitEvent) {
       const target = event.target;
       if (!(target instanceof HTMLFormElement)) return;
@@ -87,10 +71,8 @@ export function AnalyticsCapture() {
       }
     }
 
-    document.addEventListener("click", capturePhoneClick, true);
     document.addEventListener("submit", attachCheckoutAttribution, true);
     return () => {
-      document.removeEventListener("click", capturePhoneClick, true);
       document.removeEventListener("submit", attachCheckoutAttribution, true);
     };
   }, []);
@@ -239,14 +221,6 @@ function cleanLabel(value: string | null): string {
     .replace(/[\u0000-\u001f\u007f]/g, "")
     .trim()
     .slice(0, 80);
-}
-
-function slugify(value: string): string {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 64);
 }
 
 function createId(): string {

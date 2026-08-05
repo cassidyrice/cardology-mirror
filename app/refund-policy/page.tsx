@@ -8,12 +8,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
-    "Read the Card Blueprints refund policy for AI voice readings, unused sessions, access problems, interrupted calls, and refund requests.",
+    "Read the Card Blueprints refund policy for the personal video reading — refunds before delivery, delivery problems, and how to request a refund.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 29, 2026";
+const UPDATED = "August 5, 2026";
 
 export default function RefundPolicy() {
   return (
@@ -35,34 +35,35 @@ export default function RefundPolicy() {
 
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells voice readings — a $19 Quick Question, a $39
-            Complete Reading, and a $199 90-Day Season Pass. The refund rule
-            depends on whether your paid access has been used.
+            Card Blueprints sells one reading: the $99 Personal Video Reading,
+            made for you after checkout and delivered as a private video link
+            by email. The refund rule depends on whether your video has been
+            delivered.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Before the first paid session</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Before your video is delivered</h2>
           <p className="mt-3">
-            If you have not used any paid session, ask for a full refund by
-            replying to your receipt or using the{" "}
+            If your video has not been delivered yet, you can ask for a full
+            refund for any reason — simply reply to your receipt or use the{" "}
             <Link href="/contact" className="text-[#8e321f] underline underline-offset-4">
               contact page
             </Link>
-            . Include the phone number and email used at checkout. This applies
-            to all three readings, including the Season Pass.
+            . Include the email you used at checkout. If the promised 48-hour
+            delivery window ever passes without a video, the purchase is
+            refunded in full on request.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">After paid use begins</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">After your video is delivered</h2>
           <p className="mt-3">
-            Once a paid session has been used, refunds are limited because the
-            service has started. If the line did not work, your access was not
-            recognized, or a technical problem interrupted a paid call, contact
-            us. We will review the access record and offer restored access, a
-            partial refund, or a full refund when the service was not delivered
-            as described.
+            Once the private video link has been sent, the reading has been
+            made and refunds are limited. If the video does not play, the link
+            does not work, or the reading was not delivered as described,
+            contact us — we will review the order and redeliver, repair, or
+            refund when the reading was not delivered as promised.
           </p>
         </section>
 
@@ -70,14 +71,14 @@ export default function RefundPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">How to request a refund</h2>
           <ol className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-3">
-              <strong>Reply to your Stripe receipt email</strong> with "refund request" in the subject line.
+              <strong>Reply to your Stripe receipt email</strong> with &ldquo;refund request&rdquo; in the subject line.
             </li>
             <li className="border-t border-[#14110d]/12 pt-3">
               Or email{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>{" "}
-              with the email address and phone number you used at checkout.
+              with the email address you used at checkout.
             </li>
           </ol>
           <p className="mt-4 text-sm text-[#5b5148]">

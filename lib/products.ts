@@ -1,8 +1,6 @@
-// The public paid ladder: three voice readings, one recommended middle.
+// The single public offer: one personally-made video reading.
 // Every marketing surface, checkout route, and webhook reads from here —
-// entitlements are defined once and validated server-side against this file.
-
-export type ReadingAccessType = "single_session" | "season_pass";
+// the offer is defined once and validated server-side against this file.
 
 export type ReadingOffer = {
   slug: string;
@@ -18,127 +16,68 @@ export type ReadingOffer = {
   cta: string;
   href?: string;
   checkoutNote: string;
-  stripePriceEnv:
-    | "STRIPE_PRICE_QUICK_QUESTION"
-    | "STRIPE_PRICE_COMPLETE_READING"
-    | "STRIPE_PRICE_SEASON_PASS";
-  accessType: ReadingAccessType;
-  durationMinutes: number;
-  accessDays: number;
-  maxCompletedCalls?: number;
+  stripePriceEnv: "STRIPE_PRICE_VIDEO_READING";
+  videoMinutes: number;
+  deliveryHours: number;
 };
 
 export type ReadingOfferFact = {
-  label: "Deliverable" | "Session" | "Calls" | "Access" | "Renewal";
+  label: "Deliverable" | "Made from" | "Length" | "Delivery" | "Refund";
   value: string;
 };
 
 export const READING_OFFERS: ReadingOffer[] = [
   {
-    slug: "quick-question",
-    stripePriceEnv: "STRIPE_PRICE_QUICK_QUESTION",
-    name: "Quick Question",
-    price: 19,
-    priceLabel: "$19",
-    oneLine: "Get clarity on one real question.",
+    slug: "video-reading",
+    stripePriceEnv: "STRIPE_PRICE_VIDEO_READING",
+    name: "Personal Video Reading",
+    price: 99,
+    priceLabel: "$99",
+    badge: "Made for you",
+    oneLine:
+      "A personal Cardology reading you can watch — made for you, not generated live.",
     bestFor:
-      "A focused question about one person, relationship, decision, or immediate situation.",
-    deliverable: "One live phone session with the AI Cardology reader.",
-    turnaround: "Available after successful checkout and phone-number recognition.",
-    includes: [
-      "One personalized Cardology question",
-      "Up to 5 minutes with the AI reader",
-      "Phone access after checkout and recognition",
-    ],
-    cta: "Ask My Question — $19",
-    checkoutNote: "One-time purchase. Call within 30 days. One paid session.",
-    accessType: "single_session",
-    durationMinutes: 5,
-    accessDays: 30,
-    maxCompletedCalls: 1,
-  },
-  {
-    slug: "complete-reading",
-    stripePriceEnv: "STRIPE_PRICE_COMPLETE_READING",
-    name: "Complete Reading",
-    price: 39,
-    priceLabel: "$39",
-    badge: "Most Popular",
-    oneLine: "Hear the complete pattern behind your cards.",
-    bestFor:
-      "A fuller personal or relationship reading with room to connect the cards to real life.",
-    deliverable: "One live phone session with the AI Cardology reader.",
-    turnaround: "Available after successful checkout and phone-number recognition.",
-    includes: [
-      "Birth card and ruling-card interpretation",
-      "Love, work, money, timing, or relationship focus",
-      "Up to 15 minutes with the AI reader",
-    ],
-    cta: "Get My Complete Reading — $39",
-    checkoutNote: "One-time purchase. Call within 30 days. One paid session.",
-    accessType: "single_session",
-    durationMinutes: 15,
-    accessDays: 30,
-    maxCompletedCalls: 1,
-  },
-  {
-    slug: "season-pass-90",
-    stripePriceEnv: "STRIPE_PRICE_SEASON_PASS",
-    name: "90-Day Season Pass",
-    price: 199,
-    priceLabel: "$199",
-    badge: "Best Value",
-    oneLine: "Keep your Cardology reader available through an entire season.",
-    bestFor:
-      "Ongoing questions, changing situations, relationship dynamics, timing, and daily cards.",
+      "Anyone who wants the pattern behind a birth date read for them personally — and a video they can rewatch and keep.",
     deliverable:
-      "Unlimited personal return calls with the AI Cardology reader for 90 days.",
-    turnaround: "Available after successful checkout and phone-number recognition.",
+      "One personalized video reading, delivered as a private link to your inbox.",
+    turnaround: "Delivered by email within 48 hours of checkout.",
     includes: [
-      "Unlimited return calls for 90 days",
-      "Compatibility, timing, and daily-card questions",
-      "One payment with no automatic renewal",
+      "Your birth card and ruling card, read as one pattern",
+      "Your question or focus woven through the reading",
+      "A private video link you can rewatch anytime",
     ],
-    cta: "Open My 90-Day Pass — $199",
-    checkoutNote: "One payment. No automatic renewal. Personal fair use applies.",
-    accessType: "season_pass",
-    durationMinutes: 15,
-    accessDays: 90,
+    cta: "Get My Video Reading — $99",
+    checkoutNote:
+      "One-time payment. Delivered by email — no subscription, no account.",
+    videoMinutes: 5,
+    deliveryHours: 48,
   },
 ];
 
 // Customer-facing entitlement facts are derived from the same fields the
-// checkout and access layers use. Keep the pricing cards explicit without
+// checkout and delivery layers use. Keep the pricing card explicit without
 // creating a second, hand-maintained version of the offer contract.
 export function readingOfferFacts(offer: ReadingOffer): ReadingOfferFact[] {
-  const isSeasonPass = offer.accessType === "season_pass";
-
   return [
     {
       label: "Deliverable",
       value: offer.deliverable,
     },
     {
-      label: "Session",
-      value: `Up to ${offer.durationMinutes} minutes${isSeasonPass ? " per session" : ""}.`,
+      label: "Made from",
+      value: "Your birth date — and your question, if you bring one.",
     },
     {
-      label: "Calls",
-      value: isSeasonPass
-        ? "Unlimited personal return calls under fair use."
-        : `${offer.maxCompletedCalls === 1 ? "One" : offer.maxCompletedCalls} completed call${
-            offer.maxCompletedCalls === 1 ? "" : "s"
-          }.`,
+      label: "Length",
+      value: `At least ${offer.videoMinutes} minutes of personal reading.`,
     },
     {
-      label: "Access",
-      value: isSeasonPass
-        ? `${offer.accessDays} days from purchase.`
-        : `Use within ${offer.accessDays} days.`,
+      label: "Delivery",
+      value: `Private link emailed within ${offer.deliveryHours} hours.`,
     },
     {
-      label: "Renewal",
-      value: "No automatic renewal.",
+      label: "Refund",
+      value: "Full refund any time before your video is delivered.",
     },
   ];
 }

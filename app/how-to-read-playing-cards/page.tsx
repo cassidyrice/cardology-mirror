@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SUIT_COLOR_PAPER, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME } from "@/lib/site";
@@ -238,21 +237,21 @@ export default function HowToReadPlayingCards() {
       <section className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Skip the learning curve</p>
         <p className="mt-1 text-sm text-faint">
-          Learning the 52 takes months. The AI reader already knows them — call
-          and it reads your first card free, on the spot. Or start with the
-          card your birthday already picked.
+          Learning the 52 takes months. A personal video reading does the
+          reading for you — or start with the card your birthday already
+          picked.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Birth Card Calculator →
           </Link>
-          <a href={READER_PHONE_TEL} className="text-sm font-bold text-gold underline underline-offset-4">
-            Call the AI reader free: {READER_PHONE_DISPLAY}
-          </a>
+          <Link href="/checkout/video-reading" className="text-sm font-bold text-gold underline underline-offset-4">
+            Get a Personal Video Reading — $99
+          </Link>
         </div>
         <p className="mt-3 text-xs text-faint">
-          Want a season of daily cards?{" "}
-          <Link href="/readings" className="text-gold underline underline-offset-4">See the 90-Day Season Pass</Link>.
+          Want the full pattern read for you?{" "}
+          <Link href="/readings" className="text-gold underline underline-offset-4">See the $99 Personal Video Reading</Link>.
         </p>
       </section>
 

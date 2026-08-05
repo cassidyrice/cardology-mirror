@@ -303,7 +303,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     coreLinks: [
       { label: `${cardLabel} Birth Card Meaning`, href: `/birth-card/${cardSlug}` },
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-      { label: "Personal Readings", href: "/readings", note: "$19, $39, and $199 voice readings." },
+      { label: "Personal Readings", href: "/readings", note: "Personally-made video reading — $99." },
     ],
   };
 }

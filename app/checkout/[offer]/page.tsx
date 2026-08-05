@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
-import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import { offerBySlug, readingOfferFacts } from "@/lib/products";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -42,7 +41,7 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
       url: `${SITE_URL}/checkout/${offer.slug}`,
-      category: "Cardology voice reading",
+      category: "Cardology video reading",
     },
   };
 
@@ -109,15 +108,17 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
 
         <aside className="h-fit border border-brand-line bg-brand-paper-deep p-6">
           <Kicker>Before payment</Kicker>
-          <h2 className="type-h3 mt-3 text-brand-ink">Use the number you&rsquo;ll call from.</h2>
+          <h2 className="type-h3 mt-3 text-brand-ink">Watch the inbox you check out with.</h2>
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
             <p>
-              Stripe securely collects your phone number and payment details.
-              The AI reader never accepts payment card details by voice.
+              Stripe securely collects your email and payment details. At
+              checkout you&rsquo;ll add the birth date the reading is for — and
+              your question, if you have one.
             </p>
             <p>
-              After successful payment, call {READER_PHONE_DISPLAY} from that
-              same number. Paid access begins when the line recognizes it.
+              After payment, your video is made personally for you and a
+              private link is emailed to you within {offer.deliveryHours}{" "}
+              hours. Nothing to schedule, nothing to call.
             </p>
           </div>
           <form
@@ -131,15 +132,15 @@ export default async function CheckoutReviewPage({ params, searchParams }: PageP
             </button>
           </form>
           <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
-            One-time payment. No automatic renewal.
+            One-time payment. No subscription, no account.
           </p>
         </aside>
       </div>
 
       <p className="mt-8 text-sm text-brand-ink-soft">
-        Need another option?{" "}
+        Want the details first?{" "}
         <Link href="/readings" className="editorial-link text-brand-ink">
-          Compare all three readings &rarr;
+          See the full reading page &rarr;
         </Link>
       </p>
     </SeoShell>

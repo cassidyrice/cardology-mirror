@@ -2,7 +2,6 @@ export const CLIENT_FUNNEL_EVENTS = [
   "organic_landing",
   "calculator_started",
   "calculator_completed",
-  "free_call_clicked",
   "readings_viewed",
   "offer_selected",
 ] as const;
@@ -46,11 +45,7 @@ export type FunnelContext = {
 const CLIENT_EVENT_NAMES = new Set<string>(CLIENT_FUNNEL_EVENTS);
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const OFFER_SLUGS = new Set([
-  "quick-question",
-  "complete-reading",
-  "season-pass-90",
-]);
+const OFFER_SLUGS = new Set(["video-reading"]);
 const TRAFFIC_CHANNELS = new Set<TrafficChannel>([
   "organic",
   "campaign",

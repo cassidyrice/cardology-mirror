@@ -2,19 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { FAIR_USE_COPY } from "@/lib/offers";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "Terms for using Card Blueprints, its AI voice readings, and free Cardology tools.",
+  description: "Terms for using Card Blueprints, its personal video readings, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 29, 2026";
+const UPDATED = "August 5, 2026";
 
 export default function TermsOfService() {
   return (
@@ -44,56 +43,49 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            plus paid voice readings delivered by phone. Card lookups use fixed
-            formulas and tables — the same birthday always produces the same
-            card. Cardology is an esoteric reflection framework; meanings and
-            spoken explanations are interpretations, not facts about you.
+            plus one paid reading: a personally-made video reading delivered by
+            email. Card lookups use fixed formulas and tables — the same
+            birthday always produces the same card. Cardology is an esoteric
+            reflection framework; meanings and spoken explanations are
+            interpretations, not facts about you.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">The reader is AI</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Made with AI</h2>
           <p className="mt-3">
-            Every paid reading and the free first-card preview are delivered by
-            an AI voice reader, not a human. AI wording can be incomplete or
-            wrong even when the card lookup is correct. Check important facts
-            for yourself and do not rely on the reader as your only source for
-            an important decision.
+            Each video reading is written and voiced with AI and produced
+            individually for the person who ordered it — not read live by a
+            human. AI wording can be incomplete or wrong even when the card
+            lookup is correct. Check important facts for yourself and do not
+            rely on a reading as your only source for an important decision.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Paid readings</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">The paid reading</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Quick Question ($19)</strong> — one single paid voice
-              session of up to 5 minutes. Start it within 30 days of purchase.
+              <strong>Personal Video Reading ($99)</strong> — one
+              personally-made video reading, at least five minutes long, made
+              from the birth date (and optional question) you enter at
+              checkout and delivered as a private video link to your checkout
+              email within 48 hours.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Complete Reading ($39)</strong> — one single paid voice
-              session of up to 15 minutes. Start it within 30 days of purchase.
+              One payment buys one video. There is no subscription and nothing
+              renews automatically.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>90-Day Season Pass ($199)</strong> — a one-time purchase
-              covering unlimited personal return calls for 90 days, up to 15
-              minutes per session, one active session at a time. The pass does
-              not automatically renew and is subject to the fair-use rules
-              below.
+              Give only information you have the right to share at checkout.
+              If the reading is for another person, avoid private or sensitive
+              details in your question.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              All access is tied to the phone number used at checkout — call
-              from that number so the reader recognizes your purchase.
-            </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
-              Do not share paid access, misuse the phone line, or try to bypass
-              payment or security checks.
+              Do not try to bypass payment or security checks, or misuse the
+              private delivery links.
             </li>
           </ul>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Season Pass fair use</h2>
-          <p className="mt-3">{FAIR_USE_COPY}</p>
         </section>
 
         <section>
@@ -129,9 +121,10 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Availability</h2>
           <p className="mt-3">
-            We work to keep the site and phone service available, but we cannot promise
-            that they will always be online or error-free. Contact us if a paid service
-            does not work as described.
+            We work to keep the site available and to deliver every video inside
+            the promised window, but we cannot promise that the site will always
+            be online or error-free. Contact us if a paid service is not
+            delivered as described.
           </p>
         </section>
 

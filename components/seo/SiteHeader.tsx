@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { READER_PHONE_TEL } from "@/lib/offers";
+import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_NAME } from "@/lib/site";
 
 // One header for every marketing/editorial surface. Five conceptual
-// destinations, no more: Free Call (the compact action), Readings,
+// destinations, no more: Get a Reading (the compact action), Readings,
 // Calculator, Card Meanings, Learn. Long-tail navigation lives in the footer.
 const NAV_LINKS = [
   { label: "Readings", href: READINGS_PATH },
@@ -12,6 +12,8 @@ const NAV_LINKS = [
   { label: "Card Meanings", href: "/birth-card" },
   { label: "Learn", href: "/what-is-cardology" },
 ];
+
+const videoOffer = READING_OFFERS[0];
 
 export function SiteHeader() {
   return (
@@ -36,7 +38,7 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-              ))}
+            ))}
           </nav>
           <details className="relative ml-auto md:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
@@ -55,18 +57,17 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
-              <a href={READER_PHONE_TEL} className="accent-button mt-4 w-full">
-                Hear Your Card Free
-              </a>
+              <Link href={readingOfferHref(videoOffer)} className="accent-button mt-4 block w-full text-center">
+                Get a Reading
+              </Link>
             </nav>
           </details>
           {/* shrink-0: between md and ~860px the row is tight enough that flex
-              compresses this button below its text width, which broke "Free
-              Call" onto two lines. */}
+              compresses this button below its text width. */}
           <div className="hidden md:block">
-            <a href={READER_PHONE_TEL} className="ink-button small-button shrink-0 whitespace-nowrap">
-              Free Call
-            </a>
+            <Link href={readingOfferHref(videoOffer)} className="ink-button small-button shrink-0 whitespace-nowrap">
+              Get a Reading
+            </Link>
           </div>
         </div>
       </header>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   // suffix pushed 74 sitemap titles beyond 60 characters.
   title: "Card Blueprints | Cardology Readings & Birth Cards",
   description:
-    "AI Cardology readings by phone, plus a free birth card calculator, all 52 card meanings, compatibility tools, and practical Cardology guides.",
+    "Personal video Cardology readings made from your birth date, plus a free birth card calculator, all 52 card meanings, compatibility tools, and practical Cardology guides.",
   icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [

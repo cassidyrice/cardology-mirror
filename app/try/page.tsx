@@ -3,19 +3,17 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
-import {
-  FREE_PREVIEW_BLURB,
-  FREE_PREVIEW_NAME,
-  READER_PHONE_DISPLAY,
-  READER_PHONE_TEL,
-} from "@/lib/offers";
+import { MICROTRUST_LINE } from "@/lib/offers";
+import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-const PAGE_TITLE = "Free First-Card Preview: Hear Your Birth Card by Phone";
+const videoOffer = READING_OFFERS[0];
+
+const PAGE_TITLE = "How the Video Reading Works | Card Blueprints";
 const PAGE_DESCRIPTION =
-  "Call the AI Cardology reader free and hear a 60–90 second introduction to your birth card. No account, no payment, no personal question — just a birthday.";
+  "One offer: check out with a birth date, and a personally-made Cardology video reading arrives by email within 48 hours. No calls, no appointments, no account.";
 
 export const metadata: Metadata = {
   title: PAGE_TITLE,
@@ -34,16 +32,20 @@ export const metadata: Metadata = {
 export default function TryPage() {
   const faqs = [
     {
-      q: "Is the preview really free?",
-      a: `Yes. Card Blueprints does not charge for the preview, and no account or payment card is required. Standard carrier charges may still apply when calling ${READER_PHONE_DISPLAY}. The AI reader answers, asks your birthday, and introduces your birth card on the spot.`,
+      q: "What is the video reading?",
+      a: "A personally-made Cardology reading delivered as a private video link. Your birth card and ruling card are read as one pattern, with your question or focus woven through it — at least five minutes of reading you can keep and rewatch.",
     },
     {
-      q: "What will I hear?",
-      a: "A 60–90 second introduction to your birth card — the fixed card your birthday produces in the deterministic Cardology system. The preview does not answer a personal question or deliver a complete reading; it lets you hear the reader before you buy.",
+      q: "What do I need to give?",
+      a: "A birth date, entered at Stripe Checkout — yours, or the person the reading is for. You can also add the question or focus you want the reading to speak to. Stripe collects your email and payment details; no site account is required.",
     },
     {
-      q: "What if I want a full reading?",
-      a: "Choose one of the three paid readings: a $19 Quick Question for one focused answer, the $39 Complete Reading for the full pattern, or the $199 90-Day Season Pass for a season of return calls. Each is a one-time payment tied to the phone number you use at checkout.",
+      q: "How is it made?",
+      a: "Each video is written and voiced with AI and produced individually for the person who ordered it, then reviewed before delivery. The birth-card calculation underneath is deterministic — the same birthday always produces the same card. Cardology is a symbolic reflection framework, not prediction, advice, or diagnosis.",
+    },
+    {
+      q: "What if it never arrives?",
+      a: "Every video is delivered within 48 hours to the email used at checkout. If that window passes, check spam and promotions, then reply to your receipt or contact us — undelivered videos are refunded in full.",
     },
   ];
 
@@ -68,44 +70,50 @@ export default function TryPage() {
   ];
 
   return (
-    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: FREE_PREVIEW_NAME, href: "/try" }]}>
+    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "How it works", href: "/try" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <header className="max-w-[38em] pb-10">
-        <Kicker className="mb-4">{FREE_PREVIEW_NAME}</Kicker>
-        <h1 className="type-display text-brand-ink">Hear your first card free.</h1>
-        <p className="type-body-lg mt-6 text-brand-ink-soft">{FREE_PREVIEW_BLURB}</p>
+        <Kicker className="mb-4">How it works</Kicker>
+        <h1 className="type-display text-brand-ink">A reading that comes to you.</h1>
+        <p className="type-body-lg mt-6 text-brand-ink-soft">
+          No calls, no appointments, no account. Check out with a birth date —
+          a personally-made video reading lands in your inbox within 48 hours.
+        </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-            Call Free: {READER_PHONE_DISPLAY}
+          <LinkButton href={readingOfferHref(videoOffer)} variant="accent" size="large">
+            {videoOffer.cta}
           </LinkButton>
-          <LinkButton href={READINGS_PATH} variant="outline" size="large">
-            Compare the Readings
+          <LinkButton href="/birth-card-calculator" variant="outline" size="large">
+            Find Your Birth Card Free
           </LinkButton>
         </div>
         <p className="mt-4 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
-          AI reader &middot; no account &middot; no payment
+          Made for you &middot; no account &middot; delivered by email
         </p>
       </header>
 
       <section className="border-t border-brand-line pt-8">
-        <Kicker>How the preview works</Kicker>
+        <Kicker>The three steps</Kicker>
         <div className="mt-6 grid gap-8 lg:grid-cols-3">
           {[
             {
               label: "01",
-              title: "Call the reading line.",
-              detail: "The AI Cardology reader answers directly — no menu, no hold.",
+              title: "Check out with a birth date.",
+              detail:
+                "Stripe handles the payment and collects the birth date the reading is for — plus your question, if you have one.",
             },
             {
               label: "02",
-              title: "Say your birthday.",
-              detail: "The deterministic calculation finds your fixed birth card.",
+              title: "Your video is made.",
+              detail:
+                "Written, voiced, and produced individually from that birth date — birth card, ruling card, and your focus as one pattern.",
             },
             {
               label: "03",
-              title: "Hear the introduction.",
-              detail: "A 60–90 second first look at your card's pattern, free.",
+              title: "Watch your inbox.",
+              detail:
+                "A private video link arrives by email within 48 hours. Rewatch it anytime — it is yours to keep.",
             },
           ].map((step) => (
             <div key={step.label} className="border-t border-brand-line pt-4">
@@ -130,9 +138,9 @@ export default function TryPage() {
           ))}
         </div>
         <p className="mt-6 text-sm text-brand-ink-soft">
-          Ready for the full pattern?{" "}
+          {MICROTRUST_LINE}{" "}
           <Link href={READINGS_PATH} className="editorial-link text-brand-ink">
-            Choose a reading &rarr;
+            See the reading &rarr;
           </Link>
         </p>
       </section>

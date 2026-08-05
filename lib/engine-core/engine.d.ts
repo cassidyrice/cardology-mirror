@@ -11,6 +11,7 @@ export interface Spread {
 }
 
 export interface CardologyCore {
+  P: number[];
   SPREADS: Record<string, Spread>;
   getSpread(index: number): Spread;
   cardsFrom(birthCard: string, spreadIndex: number, count?: number): string[] | null;

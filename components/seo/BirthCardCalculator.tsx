@@ -9,7 +9,7 @@ import {
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
-import { FREE_PREVIEW_BLURB, READER_PHONE_TEL } from "@/lib/offers";
+import { VIDEO_DELIVERY_CLARIFIER } from "@/lib/offers";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
 
@@ -175,12 +175,12 @@ function ResultCard({ result }: { result: Result }) {
         </div>
 
         <div className="mt-2 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row">
-          <a
-            href={READER_PHONE_TEL}
+          <Link
+            href="/checkout/video-reading"
             className="accent-button large-button text-center"
           >
-            Hear My First Card Free
-          </a>
+            Get My Video Reading — $99
+          </Link>
           {slug && (
             <Link
               href={`/birth-card/${slug}`}
@@ -191,7 +191,7 @@ function ResultCard({ result }: { result: Result }) {
           )}
         </div>
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          {FREE_PREVIEW_BLURB}
+          {VIDEO_DELIVERY_CLARIFIER}
         </p>
       </div>
 

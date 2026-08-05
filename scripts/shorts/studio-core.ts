@@ -79,13 +79,13 @@ const BRAND_CONTEXT = {
     "The deck-calendar link is a Cardology tradition, not proven history.",
     "December 31 maps to the Joker on public pages.",
     "Same-card compatibility describes a shared pattern without ranking either person.",
-    "The paid products are one-time AI voice readings: a $19 Quick Question, the $39 Complete Reading, and a $199 90-Day Season Pass.",
+    "The paid product is one personally-made video reading: the $99 Personal Video Reading, delivered by email within 48 hours.",
   ],
 } as const;
 
 const CTA: Record<StudioGoal, string> = {
   free_calculator: "Find your own card free at CardBlueprints.com.",
-  ai_voice: "Hear your first card free, then the $39 Complete Reading goes deeper.",
+  ai_voice: "Find your birth card free, then the $99 Personal Video Reading goes deeper.",
   brand_awareness: "See the hand you were dealt. Choose how to play it. Card Blueprints.",
 };
 
@@ -140,7 +140,7 @@ export function studioContext() {
     durations: [15, 30],
     goals: [
       { value: "free_calculator", label: "Free calculator" },
-      { value: "ai_voice", label: "$39 Complete Reading" },
+      { value: "ai_voice", label: "$99 Video Reading" },
       { value: "brand_awareness", label: "Brand awareness" },
     ],
   };
@@ -190,7 +190,7 @@ export function generateStudioScript(input: StudioInput): StudioOutput {
       "Card Blueprints supplied the card facts and meanings.",
       "The script treats Cardology as reflection, not fate.",
       input.goal === "ai_voice"
-        ? "The paid CTA uses the approved $39 Complete Reading wording."
+        ? "The paid CTA uses the approved $99 Personal Video Reading wording."
         : "The CTA uses an approved Card Blueprints message.",
     ],
     warnings,
@@ -471,7 +471,7 @@ function buildCaption(lead: string, goal: StudioGoal, hashtags: string[]): strin
   const action = goal === "free_calculator"
     ? "Try the free calculator at cardblueprints.com."
     : goal === "ai_voice"
-      ? "Hear your first card free, then the $39 Complete Reading goes deeper."
+      ? "Find your birth card free, then the $99 Personal Video Reading goes deeper."
       : "See the hand you were dealt. Choose how to play it.";
   return `${lead}\n\nA mirror, not a forecast. ${action}\n\n${hashtags.join(" ")}`;
 }
@@ -544,7 +544,7 @@ function hashtagDate(label: string): string {
 
 function ctaScreenText(goal: StudioGoal): string {
   if (goal === "free_calculator") return "Find your card free";
-  if (goal === "ai_voice") return "Complete Reading — $39";
+  if (goal === "ai_voice") return "Video Reading — $99";
   return "Choose how to play it";
 }
 

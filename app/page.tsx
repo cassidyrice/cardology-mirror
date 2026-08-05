@@ -4,58 +4,47 @@ import type { Metadata } from "next";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, PricingCard, SectionShell } from "@/components/ui";
-import {
-  MICROTRUST_LINE,
-  READER_PHONE_DISPLAY,
-  READER_PHONE_TEL,
-  SEASON_PASS_CLARIFIER,
-} from "@/lib/offers";
-import { READING_OFFERS } from "@/lib/products";
+import { MICROTRUST_LINE, VIDEO_DELIVERY_CLARIFIER } from "@/lib/offers";
+import { READING_OFFERS, readingOfferHref } from "@/lib/products";
 import { READINGS_PATH, SITE_URL } from "@/lib/site";
 
+const videoOffer = READING_OFFERS[0];
+
 export const metadata: Metadata = {
-  title: { absolute: "AI Cardology Readings by Phone | Card Blueprints" },
+  title: { absolute: "Personal Video Cardology Readings | Card Blueprints" },
   description:
-    "Call with a birthday for an AI Cardology reading by phone, or use the free birth card calculator, compatibility tools, and all 52 card meanings.",
+    "A personally-made Cardology video reading from your birth date, delivered to your inbox — plus a free birth card calculator, compatibility tools, and all 52 card meanings.",
   alternates: { canonical: "/" },
 };
 
 const FREE_PATHS = [
   {
-    label: "Hear Your First Card",
-    href: READER_PHONE_TEL,
-    detail: "A brief introduction to your birth card by phone.",
-    external: true,
-  },
-  {
     label: "Find Your Birth Card",
     href: "/birth-card-calculator",
     detail: "Enter a birthday and calculate the fixed birth card.",
-    external: false,
   },
   {
     label: "Check Compatibility",
     href: "/birth-card-compatibility-calculator",
     detail: "Compare two birthdays and explore the relationship pattern.",
-    external: false,
   },
 ];
 
 const STEPS = [
   {
     label: "01",
-    title: "Choose your reading.",
-    detail: "Pick one focused question, a complete reading, or ongoing seasonal access.",
+    title: "Check out with your birth date.",
+    detail: "Tell us the birth date the reading is for — and your question, if you have one.",
   },
   {
     label: "02",
-    title: "Check out with your phone number.",
-    detail: "That number becomes the key to your paid access.",
+    title: "Your video is made for you.",
+    detail: "A personal reading is written, voiced, and produced individually — not generated live.",
   },
   {
     label: "03",
-    title: "Call from that number.",
-    detail: "The AI Cardology reader recognizes your access and begins.",
+    title: "Watch your inbox.",
+    detail: "A private video link arrives by email within 48 hours. Rewatch it anytime.",
   },
 ];
 
@@ -90,7 +79,7 @@ export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Card Blueprints voice readings",
+    name: "Card Blueprints video readings",
     itemListElement: READING_OFFERS.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -110,95 +99,80 @@ export default function Home() {
         <section className="shell-paper">
         <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.25rem,7vw,6rem)] sm:px-8 lg:px-10">
           <div className="max-w-[54rem]">
-            <Kicker className="rise">AI Cardology readings &middot; by phone</Kicker>
+            <Kicker className="rise">Personal Cardology &middot; video readings</Kicker>
             <h1 className="type-display rise-2 mt-6">
-              Call with a birthday. Leave with the <em>pattern</em>.
+              Send a birth date. Get back the <em>pattern</em>.
             </h1>
             <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-              Talk with an AI Cardology reader about the fixed card behind a
-              birthday, then use the pattern for self-awareness around a
-              relationship, decision, or season of life.
+              A personally-made Cardology video reading, built from the fixed
+              card behind a birth date — for self-awareness around a
+              relationship, a decision, or a season of life. Delivered to your
+              inbox.
             </p>
             <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-                Hear Your First Card Free
+              <LinkButton href={readingOfferHref(videoOffer)} variant="accent" size="large">
+                {videoOffer.cta}
               </LinkButton>
-              <LinkButton href={READINGS_PATH} variant="outline" size="large">
-                Choose a Reading
+              <LinkButton href="/birth-card-calculator" variant="outline" size="large">
+                Find Your Birth Card Free
               </LinkButton>
             </div>
             <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-              A free 60&ndash;90 second introduction to your birth card&mdash;no
-              full reading or personal question.
+              {MICROTRUST_LINE}
             </p>
             <p className="rise-4 mt-3 text-sm">
               <Link href="/try" className="editorial-link text-brand-ink">
-                How the free preview works &rarr;
+                How the video reading works &rarr;
               </Link>
             </p>
             <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
-              AI reader &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
+              Made for you &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
             </p>
           </div>
         </div>
         </section>
 
-      {/* 2 — Three free entry points */}
+      {/* 2 — Free entry points */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
         <Kicker>Start free</Kicker>
         <h2 className="sr-only">Start free</h2>
         <div className="mt-6 divide-y divide-brand-line border-y border-brand-line">
-          {FREE_PATHS.map((item) =>
-            item.external ? (
-              <a
-                key={item.label}
-                href={item.href}
-                className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
-              >
-                <FreeRowInner label={item.label} detail={item.detail} />
-              </a>
-            ) : (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
-              >
-                <FreeRowInner label={item.label} detail={item.detail} />
-              </Link>
-            ),
-          )}
+          {FREE_PATHS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
+            >
+              <FreeRowInner label={item.label} detail={item.detail} />
+            </Link>
+          ))}
         </div>
       </SectionShell>
 
-      {/* 3 — Three paid offers */}
+      {/* 3 — The one paid offer */}
       <SectionShell tone="paperDeep" id="readings">
         <div className="max-w-[38em]">
-          <Kicker>Readings</Kicker>
-          <h2 className="type-h2 mt-4">Choose how deep you want to go.</h2>
+          <Kicker>The reading</Kicker>
+          <h2 className="type-h2 mt-4">One reading. Made for you.</h2>
           <p className="mt-5 leading-relaxed text-brand-ink-soft">
-            Ask one focused question, hear the complete pattern, or keep the
-            reader available through the next 90 days.
+            No calls, no appointments. Your birth card and ruling card read as
+            one pattern, your question woven through it — on video, so you can
+            rewatch it whenever you need it.
           </p>
         </div>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {READING_OFFERS.map((offer) => (
-            <PricingCard
-              key={offer.slug}
-              offer={offer}
-              emphasized={offer.slug === "complete-reading"}
-            />
-          ))}
+        <div className="mt-10 mx-auto max-w-xl">
+          <PricingCard offer={videoOffer} emphasized />
         </div>
         <div className="mt-8 space-y-1 text-center text-xs leading-relaxed text-brand-ink-soft">
           <p>{MICROTRUST_LINE}</p>
-          <p>{SEASON_PASS_CLARIFIER}</p>
+          <p>{VIDEO_DELIVERY_CLARIFIER}</p>
         </div>
       </SectionShell>
 
       {/* 4 — How it works */}
       <SectionShell tone="paper">
         <Kicker>How it works</Kicker>
-        <h2 className="type-h2 mt-4">From checkout to conversation.</h2>
+        <h2 className="type-h2 mt-4">From checkout to inbox.</h2>
         <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
           {STEPS.map((step) => (
             <div key={step.label} className="border-t border-brand-line pt-5">
@@ -228,8 +202,10 @@ export default function Home() {
               guaranteed prediction.
             </p>
             <p>
-              The reader on the line is an AI voice guide, and it says so. The
-              card math is fixed; the conversation is generated.
+              Each video is written and voiced with AI and produced
+              individually for the person who ordered it. The card math is
+              fixed; the interpretation is generated&mdash;and the video says
+              so.
             </p>
             <p>
               <Link href="/methodology" className="editorial-link text-brand-ink">
@@ -302,24 +278,17 @@ export default function Home() {
         <div className="mx-auto max-w-[40rem] py-[clamp(1rem,4vw,3rem)] text-center">
           <h2 className="type-h2">Your card is already waiting.</h2>
           <p className="mt-5 text-brand-on-dark-soft">
-            Call with your birthday and hear the first pattern free.
+            One birth date at checkout. A personal video reading in your inbox
+            within 48 hours.
           </p>
           <div className="mt-8">
-            <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-              Hear Your First Card Free
+            <LinkButton href={readingOfferHref(videoOffer)} variant="accent" size="large">
+              {videoOffer.cta}
             </LinkButton>
           </div>
-          <p className="mt-6">
-            <a
-              href={READER_PHONE_TEL}
-              className="font-serif text-2xl text-brand-on-dark transition hover:text-brand-gold"
-            >
-              {READER_PHONE_DISPLAY}
-            </a>
-          </p>
           <p className="mt-4 text-sm">
-            <Link href={READINGS_PATH} className="editorial-link text-brand-on-dark-soft">
-              Or compare the readings &rarr;
+            <Link href="/try" className="editorial-link text-brand-on-dark-soft">
+              See how it works &rarr;
             </Link>
           </p>
         </div>

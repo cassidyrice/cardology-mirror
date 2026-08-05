@@ -4,36 +4,18 @@ import type Stripe from "stripe";
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { sendIntakeEmail } from "@/lib/email";
-import { mintToken } from "@/lib/gate";
-import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import { offerBySlug } from "@/lib/products";
-import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-// Fallback access window when the offer can't be resolved from metadata.
-const DEFAULT_ACCESS_DAYS = 30;
-
-// Checkout sessions minted before the repricing can still complete (sessions
-// live 24h; Stripe retries webhooks ~3 days). Honor what those buyers were
-// sold instead of the generic fallback.
-const LEGACY_ACCESS_DAYS: Record<string, number> = {
-  "one-question-reading": 90,
-  "full-deep-dive": 90,
-  "basic-birth-card-report": 30,
-};
-
 // POST /api/checkout/webhook
 // Stripe webhook receiver. Verifies the signature (Web Crypto, edge-safe),
-// mints a gate token for the site's reading tools, emails the buyer how to
-// start their voice session, and notifies Cass so there is a record
-// independent of whether the buyer ever calls.
-//
-// Access windows come from the canonical offer definition in lib/products.ts
-// (quick-question 30d, complete-reading 30d, season-pass-90 90d) — metadata is
-// informational; entitlement is always re-derived server-side.
+// emails the buyer their delivery expectations, and emails Cass the
+// fulfillment details — the birth date and focus question from checkout —
+// so the personal video can be made. That owner email is the production
+// queue: every paid session must land there even if the buyer email fails.
 export async function POST(req: NextRequest) {
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!secret) {
@@ -58,12 +40,10 @@ export async function POST(req: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as Stripe.Checkout.Session;
     const email = session.customer_details?.email ?? session.customer_email ?? "(no email)";
-    const phone = session.customer_details?.phone ?? "(no phone)";
     const offerSlug = session.metadata?.offer_slug ?? "";
     const offer = offerBySlug(offerSlug);
     const offerName = offer?.name ?? session.metadata?.offer_name ?? offerSlug ?? "(unknown offer)";
-    const accessDays =
-      offer?.accessDays ?? LEGACY_ACCESS_DAYS[offerSlug] ?? DEFAULT_ACCESS_DAYS;
+    const deliveryHours = offer?.deliveryHours ?? 48;
     const amount = session.amount_total != null
       ? `$${(session.amount_total / 100).toFixed(2)} ${session.currency?.toUpperCase() ?? ""}`
       : "(no amount)";
@@ -71,6 +51,12 @@ export async function POST(req: NextRequest) {
       session.payment_status === "paid" ||
       (session.payment_status === "no_payment_required" &&
         session.amount_total === 0);
+
+    // The video's raw material, collected as Stripe custom fields.
+    const customField = (key: string) =>
+      session.custom_fields?.find((f) => f.key === key)?.text?.value?.trim() ?? "";
+    const birthDate = customField("birth_date") || "(not provided)";
+    const focusQuestion = customField("focus_question") || "(none)";
 
     // This webhook can receive account-level Stripe events. Only canonical
     // Card Blueprints offers belong in this site's conversion funnel.
@@ -88,43 +74,29 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const sessionLine = offer
-      ? offer.accessType === "season_pass"
-        ? `Your pass covers unlimited personal return calls for ${offer.accessDays} days — up to ${offer.durationMinutes} minutes per session, no automatic renewal.`
-        : `Your purchase covers one paid session of up to ${offer.durationMinutes} minutes. Call within ${offer.accessDays} days to begin.`
-      : "";
-
-    // Issue the buyer's access token for the site's reading tools and send
-    // their start-here email. The token rides in the URL hash so it stays out
-    // of server and CDN logs.
-    let accessIssued = false;
+    // Tell the buyer what to expect. Delivery expectations come from the
+    // canonical offer in lib/products.ts, not from session metadata.
+    let buyerEmailed = false;
     if (email !== "(no email)") {
       try {
-        const token = await mintToken(email, accessDays);
-        const link = `${SITE_URL}/access#token=${encodeURIComponent(token)}&email=${encodeURIComponent(email.trim().toLowerCase())}`;
         await sendIntakeEmail({
           to: email,
-          subject: "Your Card Blueprints reading is ready — here's how to start",
+          subject: "Your Card Blueprints video reading is being made",
           text: [
             `Thank you — your ${offerName} is confirmed.`,
             "",
-            `To begin, call ${READER_PHONE_DISPLAY} from the phone number you used at checkout.`,
-            "The AI Cardology reader recognizes that number and starts your reading.",
-            ...(sessionLine ? ["", sessionLine] : []),
+            "Your video is being made personally for you from the birth date you entered at checkout.",
             "",
-            "You can also open the site's reading tools here:",
-            link,
+            `A private video link will arrive at this email within ${deliveryHours} hours. There is nothing to schedule and nothing to call — the reading comes to you.`,
             "",
-            `The link activates this browser for ${accessDays} days. Open it on the device you want to read on.`,
-            "",
-            "If anything doesn't work, just reply to this email.",
+            "If that window passes and no video has arrived, check spam and promotions, then reply to this email and we'll make it right.",
           ].join("\n"),
         });
-        accessIssued = true;
+        buyerEmailed = true;
       } catch (e) {
-        // Token or email failure must not fail the webhook — Cass's
-        // notification below flags it for manual follow-up.
-        console.error("[webhook] access email issuance failed", e);
+        // Buyer-email failure must not fail the webhook — Cass's notification
+        // below flags it for manual follow-up.
+        console.error("[webhook] buyer confirmation email failed", e);
       }
     }
 
@@ -133,22 +105,23 @@ export async function POST(req: NextRequest) {
       try {
         await sendIntakeEmail({
           to,
-          subject: `Payment received: ${offerName} — ${email}`,
+          subject: `Video reading to make: ${offerName} — ${email}`,
           text: [
             `Offer: ${offerName} (${offerSlug || "unknown slug"})`,
             `Amount: ${amount}`,
             `Customer email: ${email}`,
-            `Customer phone: ${phone}`,
-            `Access window: ${accessDays} days`,
-            `Stripe session: ${session.id}`,
-            `Start-here email sent: ${accessIssued ? "yes" : "NO — send access manually"}`,
             "",
-            "The buyer should call the reading line from their checkout number.",
+            `Birth date for the reading: ${birthDate}`,
+            `Focus question: ${focusQuestion}`,
+            "",
+            `Delivery promised: private video link by email within ${deliveryHours} hours of purchase`,
+            `Stripe session: ${session.id}`,
+            `Buyer confirmation email sent: ${buyerEmailed ? "yes" : "NO — email the buyer manually"}`,
           ].join("\n"),
           replyTo: email !== "(no email)" ? email : undefined,
         });
       } catch (e) {
-        console.error("[webhook] payment notification email failed", e);
+        console.error("[webhook] fulfillment notification email failed", e);
         // Still 200 — Stripe doesn't need to retry for our email failure.
       }
     }

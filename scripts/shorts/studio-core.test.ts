@@ -69,8 +69,8 @@ describe("Card Blueprints Script Studio", () => {
       cardSlug: "king-of-hearts",
       goal: "ai_voice",
     });
-    expect(output.cta).toBe("Hear your first card free, then the $39 Complete Reading goes deeper.");
-    expect(output.caption).toContain("$39 Complete Reading goes deeper");
+    expect(output.cta).toBe("Find your birth card free, then the $99 Personal Video Reading goes deeper.");
+    expect(output.caption).toContain("$99 Personal Video Reading goes deeper");
   });
 
   test("blocks risky trend promises", () => {
