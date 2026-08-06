@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Editorial Policy",
+  title: "Editorial Policy | Card Blueprints",
   description:
     "How Card Blueprints keeps card calculations clear, meanings useful, and corrections easy to send.",
   alternates: { canonical: "/editorial-policy" },

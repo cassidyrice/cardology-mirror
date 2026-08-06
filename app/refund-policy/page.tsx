@@ -6,7 +6,7 @@ import { CONTACT_EMAIL, READINGS_PATH } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Refund Policy",
+  title: "Refund Policy | Card Blueprints",
   description:
     "Read the Card Blueprints refund policy for AI voice readings, unused sessions, access problems, interrupted calls, and refund requests.",
   alternates: { canonical: "/refund-policy" },
