@@ -14,7 +14,12 @@ import { legacyCardDestination } from "../lib/legacy-card-redirects";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
 import { allPeriodCardSeeds } from "../lib/period-card-seeds";
 import { buildCardPeriodMeanings, PERIOD_FILTERS } from "../lib/period-meanings";
-import { READING_OFFERS, readingOfferFacts } from "../lib/products";
+import {
+  INSTANT_REPORT_PRODUCTS,
+  READING_OFFERS,
+  instantReportFacts,
+  readingOfferFacts,
+} from "../lib/products";
 import {
   allBirthdateSeo,
   allCardSeo,
@@ -134,6 +139,19 @@ for (const offer of READING_OFFERS) {
   assert.deepEqual(
     readingOfferFacts(offer).map((fact) => fact.label),
     ["Deliverable", "Session", "Calls", "Access", "Renewal"],
+  );
+}
+
+// Instant report flagship (Personal Card Blueprint) is present, priced, and
+// produces the full fact ladder the checkout review page renders.
+assert.deepEqual(
+  INSTANT_REPORT_PRODUCTS.map((o) => ({ slug: o.slug, price: o.price, kind: o.kind })),
+  [{ slug: "personal-card-blueprint", price: 29, kind: "instant_report" }],
+);
+for (const offer of INSTANT_REPORT_PRODUCTS) {
+  assert.deepEqual(
+    instantReportFacts(offer).map((fact) => fact.label),
+    ["Deliverable", "Input", "Access", "Timing", "Renewal"],
   );
 }
 
