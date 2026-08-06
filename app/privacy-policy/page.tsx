@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy",
+  title: "Privacy Policy | Card Blueprints",
   description:
     "Learn what Card Blueprints collects for AI voice readings, checkout, anonymous funnel analytics, free tools, retention, and privacy requests.",
   alternates: { canonical: "/privacy-policy" },

@@ -8,7 +8,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Terms of Service",
+  title: "Terms of Service | Card Blueprints",
   description: "Terms for using Card Blueprints, its AI voice readings, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
