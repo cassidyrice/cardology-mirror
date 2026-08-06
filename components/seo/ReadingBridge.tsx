@@ -5,7 +5,7 @@ import {
   READER_PHONE_DISPLAY,
   READER_PHONE_TEL,
 } from "@/lib/offers";
-import { offerBySlug, readingOfferHref } from "@/lib/products";
+import { offerBySlug, readingOfferHref, instantReportBySlug } from "@/lib/products";
 import { READINGS_PATH } from "@/lib/site";
 
 // Contextual bridge from free content into the paid reading ladder.
@@ -51,8 +51,17 @@ export function ReadingBridge({
   }
 
   const config = bridgeConfig(variant, cardLabel);
-  const offer = offerBySlug(config.offerSlug);
-  if (!offer) return null;
+  const voiceOffer = offerBySlug(config.offerSlug);
+  const reportOffer = instantReportBySlug(config.offerSlug);
+  if (!voiceOffer && !reportOffer) return null;
+
+  const href = reportOffer
+    ? reportOffer.href ?? `/checkout/${reportOffer.slug}`
+    : readingOfferHref(voiceOffer!);
+  const ctaLabel = reportOffer ? reportOffer.cta : voiceOffer!.cta;
+  const note = reportOffer
+    ? reportOffer.checkoutNote
+    : `Secure one-time checkout. The reading is delivered by phone by an AI voice reader after successful payment and phone-number recognition. Call from your checkout number. ${voiceOffer!.checkoutNote}`;
 
   return (
     <aside className={`border border-brand-line bg-brand-paper-deep p-6 sm:p-7 ${className}`}>
@@ -64,17 +73,15 @@ export function ReadingBridge({
         {config.body}
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <Link href={readingOfferHref(offer)} className="ink-button large-button">
-          {offer.cta} <span aria-hidden="true">→</span>
+        <Link href={href} className="ink-button large-button">
+          {ctaLabel} <span aria-hidden="true">→</span>
         </Link>
         <Link href={READINGS_PATH} className="paper-button large-button">
           Compare the readings
         </Link>
       </div>
       <p className="mt-4 max-w-[38em] text-xs leading-relaxed text-brand-ink-soft">
-        Secure one-time checkout. The reading is delivered by phone by an AI
-        voice reader after successful payment and phone-number recognition.{" "}
-        Call from your checkout number. {offer.checkoutNote}
+        {note}
       </p>
       <p className="mt-2 max-w-[38em] text-xs leading-relaxed text-brand-ink-soft">
         Want to hear it first?{" "}
@@ -91,14 +98,14 @@ function bridgeConfig(variant: Exclude<BridgeVariant, "general">, cardLabel?: st
   switch (variant) {
     case "card":
       return {
-        offerSlug: "complete-reading",
+        offerSlug: "personal-card-blueprint",
         eyebrow: "This card, read for you",
         headline: cardLabel
-          ? `Hear the ${cardLabel} read as a person, not a page.`
-          : "Hear this card read as a person, not a page.",
+          ? `See the ${cardLabel} as your whole pattern, not just a card.`
+          : "See this card as your whole pattern, not just a card.",
         body: cardLabel
-          ? `The page above is the general ${cardLabel} pattern. The $39 Complete Reading connects it to a real birthday — birth card, ruling card, and the dynamics that only show up when the cards meet an actual life.`
-          : "A card page describes the pattern in general. The $39 Complete Reading connects it to a real birthday — birth card, ruling card, and the dynamics that only show up when the cards meet an actual life.",
+          ? `The page above is the general ${cardLabel} pattern. The Personal Card Blueprint connects it to a real birthday — birth card, ruling card, and the chapter you're in now — delivered instantly, no phone call.`
+          : "A card page describes the pattern in general. The Personal Card Blueprint connects it to a real birthday — birth card, ruling card, and the chapter you're in now — delivered instantly, no phone call.",
       };
     case "relationship":
       return {

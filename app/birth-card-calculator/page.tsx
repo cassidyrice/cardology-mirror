@@ -85,6 +85,25 @@ export default function CalculatorPage() {
 
       <BirthCardCalculator />
 
+      <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
+        <p className="font-serif text-base text-bone">
+          Want the full pattern, not just the card?
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-mist">
+          The Personal Card Blueprint writes out your birth card, ruling card,
+          and the chapter you&rsquo;re in now — delivered instantly after
+          checkout, no phone call.
+        </p>
+        <div className="mt-4">
+          <Link
+            href="/products/personal-card-blueprint"
+            className="inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+          >
+            Get Your Personal Blueprint &mdash; $29
+          </Link>
+        </div>
+      </div>
+
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">What you&rsquo;ll get</h2>
         <ul className="prose-reading space-y-1.5 text-mist">

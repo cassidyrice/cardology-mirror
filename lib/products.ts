@@ -1,10 +1,19 @@
-// The public paid ladder: three voice readings, one recommended middle.
+// Public paid catalog: voice readings + digital downloads.
 // Every marketing surface, checkout route, and webhook reads from here —
 // entitlements are defined once and validated server-side against this file.
 
+export type ProductKind = "voice_reading" | "digital_download" | "instant_report";
+
 export type ReadingAccessType = "single_session" | "season_pass";
 
-export type ReadingOffer = {
+export type StripePriceEnv =
+  | "STRIPE_PRICE_QUICK_QUESTION"
+  | "STRIPE_PRICE_COMPLETE_READING"
+  | "STRIPE_PRICE_SEASON_PASS"
+  | "STRIPE_PRICE_ANALOG_ALGORITHM"
+  | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT";
+
+type ProductBase = {
   slug: string;
   name: string;
   price: number;
@@ -18,23 +27,49 @@ export type ReadingOffer = {
   cta: string;
   href?: string;
   checkoutNote: string;
-  stripePriceEnv:
-    | "STRIPE_PRICE_QUICK_QUESTION"
-    | "STRIPE_PRICE_COMPLETE_READING"
-    | "STRIPE_PRICE_SEASON_PASS";
+  stripePriceEnv: StripePriceEnv;
+};
+
+export type ReadingOffer = ProductBase & {
+  kind: "voice_reading";
   accessType: ReadingAccessType;
   durationMinutes: number;
   accessDays: number;
   maxCompletedCalls?: number;
 };
 
+export type DigitalDownloadOffer = ProductBase & {
+  kind: "digital_download";
+  downloadAssetKey: string;
+  redownloadDays: number;
+  fileName: string;
+};
+
+export type InstantReportOffer = ProductBase & {
+  kind: "instant_report";
+  reportSlug: string;
+};
+
+export type SiteProduct = ReadingOffer | DigitalDownloadOffer | InstantReportOffer;
+
 export type ReadingOfferFact = {
   label: "Deliverable" | "Session" | "Calls" | "Access" | "Renewal";
   value: string;
 };
 
+export type DigitalOfferFact = {
+  label: "Deliverable" | "Format" | "Access" | "Redownload" | "Renewal";
+  value: string;
+};
+
+export type InstantReportFact = {
+  label: "Deliverable" | "Input" | "Access" | "Timing" | "Renewal";
+  value: string;
+};
+
 export const READING_OFFERS: ReadingOffer[] = [
   {
+    kind: "voice_reading",
     slug: "quick-question",
     stripePriceEnv: "STRIPE_PRICE_QUICK_QUESTION",
     name: "Quick Question",
@@ -58,6 +93,7 @@ export const READING_OFFERS: ReadingOffer[] = [
     maxCompletedCalls: 1,
   },
   {
+    kind: "voice_reading",
     slug: "complete-reading",
     stripePriceEnv: "STRIPE_PRICE_COMPLETE_READING",
     name: "Complete Reading",
@@ -82,6 +118,7 @@ export const READING_OFFERS: ReadingOffer[] = [
     maxCompletedCalls: 1,
   },
   {
+    kind: "voice_reading",
     slug: "season-pass-90",
     stripePriceEnv: "STRIPE_PRICE_SEASON_PASS",
     name: "90-Day Season Pass",
@@ -106,6 +143,102 @@ export const READING_OFFERS: ReadingOffer[] = [
     accessDays: 90,
   },
 ];
+
+export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
+  {
+    kind: "digital_download",
+    slug: "analog-algorithm",
+    stripePriceEnv: "STRIPE_PRICE_ANALOG_ALGORITHM",
+    name: "The Analog Algorithm",
+    price: 27,
+    priceLabel: "$27",
+    badge: "E-book",
+    oneLine:
+      "The written proof and operating manual for the 52-card solar calendar.",
+    bestFor:
+      "Readers who want the math, spreads, planetary periods, and practice worksheets in one book.",
+    deliverable: "PDF e-book with a secure download link after purchase.",
+    turnaround: "Instant download link by email after successful payment.",
+    includes: [
+      "Birth card formula, yearly spreads, and the fixed annual permutation",
+      "Planetary periods, environment/displacement, and Long Range",
+      "Worked examples, worksheets, and a one-page formula sheet",
+      "Claim-labeled history and interpretation chapters",
+    ],
+    cta: "Get the E-book — $27",
+    checkoutNote:
+      "One-time purchase. Download link emailed after payment. 30-day re-download window.",
+    downloadAssetKey: "analog-algorithm-v1.pdf",
+    redownloadDays: 30,
+    fileName: "The-Analog-Algorithm.pdf",
+    href: "/products/analog-algorithm",
+  },
+];
+
+export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
+  {
+    kind: "instant_report",
+    slug: "personal-card-blueprint",
+    stripePriceEnv: "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT",
+    name: "Personal Card Blueprint",
+    price: 29,
+    priceLabel: "$29",
+    badge: "Flagship",
+    oneLine:
+      "Your birth-card pattern, ruling layer, and current chapter — written out, instantly.",
+    bestFor:
+      "Anyone who knows their card and wants the full pattern in front of them, without a phone call.",
+    deliverable:
+      "An instant personalized web report, with an emailed return link.",
+    turnaround: "Available immediately after payment — no call, no wait.",
+    includes: [
+      "Your birth card and ruling card, in plain language",
+      "Core pattern: strengths, blind spots, and growth edge",
+      "The current chapter of your year, from the engine",
+      "Three pointed reflection questions to work with",
+    ],
+    cta: "Get Your Personal Blueprint — $29",
+    checkoutNote:
+      "One-time purchase. You enter your birth date at checkout; the report is generated instantly and emailed back to you.",
+    reportSlug: "personal-card-blueprint",
+    href: "/products/personal-card-blueprint",
+  },
+];
+
+export const ALL_PRODUCTS: SiteProduct[] = [
+  ...INSTANT_REPORT_PRODUCTS,
+  ...READING_OFFERS,
+  ...DIGITAL_PRODUCTS,
+];
+
+export function isVoiceReading(p: SiteProduct): p is ReadingOffer {
+  return p.kind === "voice_reading";
+}
+
+export function isDigitalDownload(p: SiteProduct): p is DigitalDownloadOffer {
+  return p.kind === "digital_download";
+}
+
+export function isInstantReport(p: SiteProduct): p is InstantReportOffer {
+  return p.kind === "instant_report";
+}
+
+export function productBySlug(slug: string): SiteProduct | undefined {
+  return ALL_PRODUCTS.find((p) => p.slug === slug);
+}
+
+/** Voice-only lookup (existing call sites / ReadingBridge). */
+export function offerBySlug(slug: string): ReadingOffer | undefined {
+  return READING_OFFERS.find((o) => o.slug === slug);
+}
+
+export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
+  return DIGITAL_PRODUCTS.find((o) => o.slug === slug);
+}
+
+export function instantReportBySlug(slug: string): InstantReportOffer | undefined {
+  return INSTANT_REPORT_PRODUCTS.find((o) => o.slug === slug);
+}
 
 // Customer-facing entitlement facts are derived from the same fields the
 // checkout and access layers use. Keep the pricing cards explicit without
@@ -143,8 +276,41 @@ export function readingOfferFacts(offer: ReadingOffer): ReadingOfferFact[] {
   ];
 }
 
+export function digitalOfferFacts(offer: DigitalDownloadOffer): DigitalOfferFact[] {
+  return [
+    { label: "Deliverable", value: offer.deliverable },
+    { label: "Format", value: "PDF e-book (print-friendly)." },
+    { label: "Access", value: "Secure download link after payment." },
+    {
+      label: "Redownload",
+      value: `${offer.redownloadDays} days from purchase via your emailed link.`,
+    },
+    { label: "Renewal", value: "No automatic renewal. One-time purchase." },
+  ];
+}
+
+export function instantReportFacts(offer: InstantReportOffer): InstantReportFact[] {
+  return [
+    { label: "Deliverable", value: offer.deliverable },
+    { label: "Input", value: "Your birth date, collected securely at checkout." },
+    { label: "Access", value: "Instant report on the confirmation page, plus an emailed return link." },
+    { label: "Timing", value: "Generated immediately after payment." },
+    { label: "Renewal", value: "No automatic renewal. One-time purchase." },
+  ];
+}
+
+export function instantReportHref(offer: InstantReportOffer): string {
+  return offer.href ?? `/checkout/${offer.slug}`;
+}
+
 export function readingOfferHref(offer: ReadingOffer): string {
   return offer.href ?? `/checkout/${offer.slug}`;
+}
+
+export function productCheckoutHref(product: SiteProduct): string {
+  return product.href && product.kind === "digital_download"
+    ? `/checkout/${product.slug}`
+    : `/checkout/${product.slug}`;
 }
 
 /**
@@ -157,6 +323,10 @@ export function readingOfferPublicHref(offer: ReadingOffer): string {
   return `/readings#${offer.slug}`;
 }
 
-export function offerBySlug(slug: string): ReadingOffer | undefined {
-  return READING_OFFERS.find((o) => o.slug === slug);
+export function digitalProductPublicHref(offer: DigitalDownloadOffer): string {
+  return offer.href ?? `/products/${offer.slug}`;
+}
+
+export function instantReportPublicHref(offer: InstantReportOffer): string {
+  return offer.href ?? `/products/${offer.slug}`;
 }
