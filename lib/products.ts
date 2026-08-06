@@ -40,6 +40,7 @@ export type ReadingOffer = ProductBase & {
 
 export type DigitalDownloadOffer = ProductBase & {
   kind: "digital_download";
+  available: boolean;
   downloadAssetKey: string;
   redownloadDays: number;
   fileName: string;
@@ -147,6 +148,7 @@ export const READING_OFFERS: ReadingOffer[] = [
 export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
   {
     kind: "digital_download",
+    available: false,
     slug: "analog-algorithm",
     stripePriceEnv: "STRIPE_PRICE_ANALOG_ALGORITHM",
     name: "The Analog Algorithm",
@@ -210,6 +212,11 @@ export const ALL_PRODUCTS: SiteProduct[] = [
   ...READING_OFFERS,
   ...DIGITAL_PRODUCTS,
 ];
+
+/** Products currently purchasable and safe to advertise as live offers. */
+export const PUBLIC_PRODUCTS: SiteProduct[] = ALL_PRODUCTS.filter(
+  (product) => product.kind !== "digital_download" || product.available,
+);
 
 export function isVoiceReading(p: SiteProduct): p is ReadingOffer {
   return p.kind === "voice_reading";

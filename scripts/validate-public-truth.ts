@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 
 import { compareReadings } from "../components/bonds/compare";
 import {
@@ -15,7 +16,9 @@ import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
 import { allPeriodCardSeeds } from "../lib/period-card-seeds";
 import { buildCardPeriodMeanings, PERIOD_FILTERS } from "../lib/period-meanings";
 import {
+  DIGITAL_PRODUCTS,
   INSTANT_REPORT_PRODUCTS,
+  PUBLIC_PRODUCTS,
   READING_OFFERS,
   instantReportFacts,
   readingOfferFacts,
@@ -154,6 +157,47 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
     ["Deliverable", "Input", "Access", "Timing", "Renewal"],
   );
 }
+assert.deepEqual(
+  PUBLIC_PRODUCTS.map((product) => product.slug),
+  [
+    "personal-card-blueprint",
+    "quick-question",
+    "complete-reading",
+    "season-pass-90",
+  ],
+);
+assert.deepEqual(
+  DIGITAL_PRODUCTS.map((product) => ({
+    slug: product.slug,
+    price: product.price,
+    available: product.available,
+  })),
+  [{ slug: "analog-algorithm", price: 27, available: false }],
+);
+
+// Product-model regression gate: the site is Blueprint-led, with the three
+// phone readings presented explicitly as voice options. These assertions keep
+// stale call-only catalog language from returning to global/public surfaces.
+const productSurfaceFiles = [
+  "app/page.tsx",
+  "app/readings/page.tsx",
+  "app/layout.tsx",
+  "components/seo/SiteFooter.tsx",
+  "app/checkout/[offer]/page.tsx",
+  "app/refund-policy/page.tsx",
+  "app/terms-of-service/page.tsx",
+  "app/privacy-policy/page.tsx",
+  "public/llms.txt",
+  "public/llms-full.txt",
+];
+const productSurfaceText = productSurfaceFiles
+  .map((file) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8"))
+  .join("\n");
+assert.doesNotMatch(productSurfaceText, /Compare all three readings/i);
+assert.doesNotMatch(productSurfaceText, /Card Blueprints sells voice readings/i);
+assert.doesNotMatch(productSurfaceText, /Paid readings are delivered by an AI voice reader over the phone/i);
+assert.match(productSurfaceText, /Personal Card Blueprint/);
+assert.match(productSurfaceText, /instant personalized/i);
 
 const legacyRanks = [
   ["ace", "ace"],

@@ -19,8 +19,8 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 // POST /checkout/[offer]/session
-// Creates a Stripe Checkout Session for voice readings AND digital downloads.
-// Voice requires phone number collection; digital does not.
+// Creates a Stripe Checkout Session for instant reports, voice readings, and
+// digital downloads. Voice requires a phone; the other products do not.
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
@@ -29,6 +29,9 @@ export async function POST(
   const product = productBySlug(slug);
   if (!product) {
     return NextResponse.redirect(new URL("/readings", req.url), 303);
+  }
+  if (isDigitalDownload(product) && !product.available) {
+    return checkoutUnavailable(req, product.slug);
   }
 
   const requestOrigin = req.headers.get("origin");

@@ -1,17 +1,20 @@
 # Card Blueprints
 
-> Card Blueprints (cardblueprints.com) is a playing-card cartomancy site: it calculates the fixed Cardology birth card for any birthday, publishes meaning pages for all 52 playing cards and all 366 birthdays, explains compatibility and 52-day timing, and sells personal readings — led by an AI reader that delivers full readings over the phone.
+> Card Blueprints (cardblueprints.com) is a playing-card cartomancy site: it calculates the fixed Cardology birth card for any birthday, publishes meaning pages for all 52 playing cards and all 366 birthdays, explains compatibility and 52-day timing, and sells the instant Personal Card Blueprint plus optional AI voice readings.
 
 ## Key Facts
 - Cardology is playing-card cartomancy: the birth card is fixed by month and day — deterministic calculation, no shuffle, quiz, or random draw.
 - Every card meaning is written in three ranges: balanced, under-expressed, and over-expressed, plus shadow and karma context.
-- Paid readings are delivered by an AI voice reader over the phone, taught the site's Cardology method and clearly labeled as AI.
+- The flagship paid product is the Personal Card Blueprint: a $29 one-time instant personalized written report generated from the buyer's birth date.
+- Optional voice readings are delivered by an AI voice reader over the phone, taught the site's Cardology method and clearly labeled as AI.
 - The site frames Cardology as a pattern language for people, relationships, and timing — not prediction, fate, or medical/legal/financial advice.
 
-## The Product: AI Phone Readings
+## Paid Products
+- [Personal Card Blueprint](https://cardblueprints.com/products/personal-card-blueprint): $29 one-time. An instant personalized written report covering the birth card, ruling layer, current chapter, and reflection prompts. Birth date is collected at Stripe Checkout; no phone call or subscription.
 - The reading line: +1 (949) 368-2652 — call and the AI reader answers directly. Calls open with a free first-card preview (a 60–90 second introduction to the caller's birth card — no personal question or full reading).
-- [Cardology Readings](https://cardblueprints.com/readings): Three one-time voice readings — a $19 Quick Question (one focused question, up to 5 minutes), the $39 Complete Reading (the recommended offer: birth card and ruling-card pattern, up to 15 minutes), and a $199 90-Day Season Pass (unlimited personal return calls for 90 days, up to 15 minutes per session, no automatic renewal). Access is tied to the phone number used at checkout; current tiers and pricing live on this page.
-- [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms for voice-reading access.
+- [Cardology Readings](https://cardblueprints.com/readings): Product overview plus three optional one-time voice products — a $19 Quick Question (one focused question, up to 5 minutes), the $39 Complete Reading (up to 15 minutes), and a $199 90-Day Season Pass (unlimited personal return calls for 90 days, up to 15 minutes per session, no automatic renewal). Voice access is tied to the phone number used at checkout.
+- [Analog Algorithm](https://cardblueprints.com/products/analog-algorithm): planned $27 digital e-book; checkout is not currently open.
+- [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms by product and delivery state.
 
 ## Free Tools
 - [Card of the Day](https://cardblueprints.com/card-of-the-day): Today's card, updated daily — every calendar date maps to exactly one of the 52 cards, so the day's card is the birth card of today's date.

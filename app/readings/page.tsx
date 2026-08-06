@@ -11,21 +11,25 @@ import {
   READER_PHONE_TEL,
   SEASON_PASS_CLARIFIER,
 } from "@/lib/offers";
-import { READING_OFFERS } from "@/lib/products";
+import {
+  INSTANT_REPORT_PRODUCTS,
+  READING_OFFERS,
+  instantReportFacts,
+} from "@/lib/products";
 import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Cardology Voice Readings: $19, $39 & 90-Day Pass",
+  title: "Personal Card Blueprint & Cardology Voice Readings",
   description:
-    "Compare AI Cardology voice readings by phone: a $19 Quick Question, $39 Complete Reading, or $199 90-Day Season Pass. Hear your first card free.",
+    "Choose the $29 instant Personal Card Blueprint or compare optional AI Cardology voice readings by phone at $19, $39, and $199.",
   alternates: { canonical: "/readings" },
   openGraph: {
     siteName: SITE_NAME,
-    title: "Cardology Voice Readings by Phone",
+    title: "Personal Card Blueprint & Cardology Readings",
     description:
-      "A $19 Quick Question, the $39 Complete Reading, or a $199 90-Day Season Pass — all by phone with the AI Cardology reader.",
+      "Start with the $29 instant Personal Card Blueprint, or talk it through with one of three AI voice-reading options.",
     url: "/readings",
     type: "website",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
@@ -68,21 +72,25 @@ const visibleFaqs = [
 ];
 
 export default function ReadingsPage() {
+  const blueprint = INSTANT_REPORT_PRODUCTS[0];
+  const paidOffers = [blueprint, ...READING_OFFERS];
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
-      name: "Cardology Voice Readings",
+      name: "Card Blueprints paid readings and reports",
       description: metadata.description,
       url: `${SITE_URL}/readings`,
       publisher: { "@id": `${SITE_URL}/#organization` },
       mainEntity: {
         "@type": "ItemList",
-        itemListElement: READING_OFFERS.map((offer, index) => ({
+        itemListElement: paidOffers.map((offer, index) => ({
           "@type": "ListItem",
           position: index + 1,
           name: offer.name,
-          url: `${SITE_URL}/readings#${offer.slug}`,
+          url: offer.kind === "instant_report"
+            ? `${SITE_URL}/products/${offer.slug}`
+            : `${SITE_URL}/readings#${offer.slug}`,
         })),
       },
     },
@@ -101,22 +109,52 @@ export default function ReadingsPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Readings", href: "/readings" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* 1 — Voice-first hero */}
+      {/* 1 — Product overview */}
       <header className="pb-10">
-        <Kicker className="mb-4">Voice readings &middot; by phone</Kicker>
+        <Kicker className="mb-4">Personal reports &middot; optional voice readings</Kicker>
         <h1 className="type-display max-w-[44rem] text-brand-ink">
-          Choose how deep you want to go.
+          Get the pattern in writing, or talk it through.
         </h1>
         <p className="type-body-lg mt-6 max-w-[38em] text-brand-ink-soft">
-          Ask one focused question, hear your complete pattern, or keep the
-          reader available for the next 90 days.
+          The Personal Card Blueprint is the flagship: an instant written
+          report from your birthday. The three phone offers remain available
+          when you want a live AI conversation.
         </p>
       </header>
 
-      {/* 2 — Three pricing cards */}
+      {/* 2 — Flagship written report */}
+      <section className="border-y border-brand-line bg-brand-paper-deep px-5 py-8 sm:px-8">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.7fr)] lg:items-start">
+          <div>
+            <Kicker>Flagship &middot; instant report</Kicker>
+            <h2 className="type-h2 mt-4 text-brand-ink">{blueprint.name} — {blueprint.priceLabel}</h2>
+            <p className="mt-4 max-w-[38em] leading-relaxed text-brand-ink-soft">
+              {blueprint.oneLine} No phone call, appointment, or subscription.
+            </p>
+            <ul className="mt-5 space-y-2 text-sm text-brand-ink-soft">
+              {blueprint.includes.map((item) => <li key={item}>• {item}</li>)}
+            </ul>
+            <div className="mt-6">
+              <LinkButton href={blueprint.href!} variant="accent" size="large">
+                {blueprint.cta}
+              </LinkButton>
+            </div>
+          </div>
+          <dl>
+            {instantReportFacts(blueprint).map((fact) => (
+              <div key={fact.label} className="border-t border-brand-line py-3">
+                <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-ink-faint">{fact.label}</dt>
+                <dd className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* 3 — Three voice pricing cards */}
       <section id="pricing" className="mt-12">
-        <Kicker>Paid readings</Kicker>
-        <h2 className="type-h2 mt-4 text-brand-ink">Compare the three readings.</h2>
+        <Kicker>AI voice readings &middot; by phone</Kicker>
+        <h2 className="type-h2 mt-4 text-brand-ink">Compare the three voice options.</h2>
         <div className="mt-8 grid gap-5 lg:grid-cols-3">
           {READING_OFFERS.map((offer) => (
             <PricingCard
@@ -219,7 +257,7 @@ export default function ReadingsPage() {
         <div className="mt-5 grid gap-8 lg:grid-cols-2">
           <div className="max-w-[38em] space-y-4 text-[0.95rem] leading-relaxed text-brand-ink-soft">
             <p>
-              Every reading is delivered by an AI voice reader. The Quick
+              Every voice reading is delivered by an AI voice reader. The Quick
               Question and Complete Reading each cover one paid session, started
               within 30 days of purchase. Access is tied to the phone number
               used at checkout.

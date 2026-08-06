@@ -45,6 +45,7 @@ export default async function CheckoutReviewPage({
 
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product);
+  const unavailable = isDigital && !product.available;
   const facts: (ReadingOfferFact | DigitalOfferFact | InstantReportFact)[] =
     isDigital
       ? digitalOfferFacts(product)
@@ -74,17 +75,20 @@ export default async function CheckoutReviewPage({
         </p>
       </header>
 
-      {status === "unavailable" && (
+      {(status === "unavailable" || unavailable) && (
         <div
           role="alert"
           className="mb-8 border border-brand-oxblood bg-brand-ivory p-5 text-brand-ink"
         >
           <h2 className="type-h3">
-            Secure checkout is temporarily unavailable.
+            {unavailable
+              ? "This product is not on sale yet."
+              : "Secure checkout is temporarily unavailable."}
           </h2>
           <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-brand-ink-soft">
-            No checkout session was created in this attempt. Try again in a
-            moment, or{" "}
+            No checkout session was created. {unavailable
+              ? "Secure download fulfillment must be live before sales open."
+              : "Try again in a moment."}{" "}
             <Link href="/contact" className="editorial-link text-brand-ink">
               contact Card Blueprints
             </Link>{" "}
@@ -181,21 +185,29 @@ export default async function CheckoutReviewPage({
             </>
           )}
 
-          <form
-            action={`/checkout/${product.slug}/session`}
-            method="post"
-            className="mt-6"
-            data-analytics-checkout
-          >
-            <button
-              type="submit"
-              className="accent-button large-button w-full"
+          {unavailable ? (
+            <p className="mt-6 border-t border-brand-line pt-4 text-center text-sm font-semibold text-brand-ink">
+              Checkout closed
+            </p>
+          ) : (
+            <form
+              action={`/checkout/${product.slug}/session`}
+              method="post"
+              className="mt-6"
+              data-analytics-checkout
             >
-              Continue to Secure Checkout &mdash; {product.priceLabel}
-            </button>
-          </form>
+              <button
+                type="submit"
+                className="accent-button large-button w-full"
+              >
+                Continue to Secure Checkout &mdash; {product.priceLabel}
+              </button>
+            </form>
+          )}
           <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
-            One-time payment. No automatic renewal.
+            {unavailable
+              ? "No payment is being collected."
+              : "One-time payment. No automatic renewal."}
           </p>
         </aside>
       </div>
@@ -206,9 +218,13 @@ export default async function CheckoutReviewPage({
           <Link href="/readings" className="editorial-link text-brand-ink">
             See the voice readings &rarr;
           </Link>
+        ) : isReport ? (
+          <Link href="/readings" className="editorial-link text-brand-ink">
+            See all reading options &rarr;
+          </Link>
         ) : (
           <Link href="/readings" className="editorial-link text-brand-ink">
-            Compare all three readings &rarr;
+            Compare the three voice options &rarr;
           </Link>
         )}
       </p>

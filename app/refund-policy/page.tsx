@@ -8,12 +8,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Read the Card Blueprints refund policy for AI voice readings, unused sessions, access problems, interrupted calls, and refund requests.",
+    "Refund terms for the Personal Card Blueprint, digital downloads, and Card Blueprints voice readings.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 29, 2026";
+const UPDATED = "August 6, 2026";
 
 export default function RefundPolicy() {
   return (
@@ -35,10 +35,30 @@ export default function RefundPolicy() {
 
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells voice readings — a $19 Quick Question, a $39
-            Complete Reading, and a $199 90-Day Season Pass. The refund rule
-            depends on whether your paid access has been used.
+            Card Blueprints sells the $29 Personal Card Blueprint and three
+            optional voice-reading products. Refund eligibility depends on the
+            product and whether it has been delivered or used. The digital
+            download policy below applies when an e-book sale is available.
           </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Personal Card Blueprint</h2>
+          <div className="mt-3 space-y-3">
+            <p>
+              The Personal Card Blueprint is generated immediately from the
+              birth date entered at Stripe Checkout and delivered through a
+              signed access link. Because it is personalized and delivered
+              instantly, a completed, accessible Blueprint is generally final.
+            </p>
+            <p>
+              If the report cannot be generated, its access link does not work,
+              the checkout birth date was entered incorrectly, or you were
+              charged more than once for the same intended purchase, contact us.
+              We will correct the report, restore access, or issue an appropriate
+              refund when the problem cannot be resolved.
+            </p>
+          </div>
         </section>
 
         <section>
@@ -67,6 +87,16 @@ export default function RefundPolicy() {
         </section>
 
         <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Digital downloads</h2>
+          <p className="mt-3">
+            Digital products with instant download (including The Analog
+            Algorithm e-book) are refundable only if the file is corrupt or
+            the download fails. Refunds are not available after a successful,
+            complete download.
+          </p>
+        </section>
+
+        <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How to request a refund</h2>
           <ol className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-3">
@@ -77,7 +107,8 @@ export default function RefundPolicy() {
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>{" "}
-              with the email address and phone number you used at checkout.
+              with the email address used at checkout and, for a voice reading,
+              the checkout phone number.
             </li>
           </ol>
           <p className="mt-4 text-sm text-[#5b5148]">
