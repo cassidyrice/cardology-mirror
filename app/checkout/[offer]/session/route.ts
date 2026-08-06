@@ -6,7 +6,12 @@ import {
   type FunnelContext,
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
-import { offerBySlug } from "@/lib/products";
+import {
+  productBySlug,
+  isDigitalDownload,
+  isInstantReport,
+  isVoiceReading,
+} from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
@@ -14,15 +19,15 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 // POST /checkout/[offer]/session
-// A deliberate customer action creates the Stripe Checkout Session. The
-// stable GET review page is safe for crawlers, previews, and link validators.
+// Creates a Stripe Checkout Session for voice readings AND digital downloads.
+// Voice requires phone number collection; digital does not.
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
 ) {
   const { offer: slug } = await params;
-  const offer = offerBySlug(slug);
-  if (!offer) {
+  const product = productBySlug(slug);
+  if (!product) {
     return NextResponse.redirect(new URL("/readings", req.url), 303);
   }
 
@@ -39,37 +44,63 @@ export async function POST(
     // Attribution is optional and must never block checkout.
   }
 
-  const priceId = process.env[offer.stripePriceEnv];
+  const priceId = process.env[product.stripePriceEnv];
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
-    return checkoutUnavailable(req, offer.slug);
+    return checkoutUnavailable(req, product.slug);
   }
 
   try {
-    const entitlement: Record<string, string> = {
-      offer_slug: offer.slug,
-      offer_name: offer.name,
-      access_type: offer.accessType,
-      max_session_minutes: String(offer.durationMinutes),
-      access_days: String(offer.accessDays),
-      ...(offer.maxCompletedCalls != null
-        ? { max_completed_calls: String(offer.maxCompletedCalls) }
-        : {}),
+    const metadata: Record<string, string> = {
+      offer_slug: product.slug,
+      offer_name: product.name,
+      product_kind: product.kind,
     };
-    const metadata = {
-      ...entitlement,
-      ...analyticsMetadata(analytics),
-    };
+
+    if (isVoiceReading(product)) {
+      metadata.access_type = product.accessType;
+      metadata.max_session_minutes = String(product.durationMinutes);
+      metadata.access_days = String(product.accessDays);
+      if (product.maxCompletedCalls != null) {
+        metadata.max_completed_calls = String(product.maxCompletedCalls);
+      }
+    } else if (isDigitalDownload(product)) {
+      metadata.redownload_days = String(product.redownloadDays);
+      metadata.download_asset_key = product.downloadAssetKey;
+    } else if (isInstantReport(product)) {
+      metadata.report_slug = product.reportSlug;
+    }
+
+    const sharedMeta = { ...metadata, ...analyticsMetadata(analytics) };
+
+    const instantReport = isInstantReport(product);
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/checkout/${offer.slug}`,
-      metadata,
-      payment_intent_data: {
-        metadata: entitlement,
+      cancel_url: `${SITE_URL}/checkout/${product.slug}`,
+      metadata: sharedMeta,
+      payment_intent_data: { metadata },
+      // only voice readings collect a phone number
+      phone_number_collection: {
+        enabled: isVoiceReading(product),
       },
-      phone_number_collection: { enabled: true },
+      // instant reports need the buyer's birth date to generate the report
+      ...(instantReport
+        ? {
+            custom_fields: [
+              {
+                key: "birthdate",
+                label: {
+                  type: "custom" as const,
+                  custom: "Your birth date (YYYY-MM-DD)",
+                },
+                type: "text" as const,
+                optional: false,
+              },
+            ],
+          }
+        : {}),
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       customer_creation: "always",
@@ -80,20 +111,22 @@ export async function POST(
         source: "server",
         ...analytics,
         eventId: `checkout:${session.id}`,
-        path: `/checkout/${offer.slug}`,
-        offerSlug: offer.slug,
+        path: `/checkout/${product.slug}`,
+        offerSlug: product.slug,
         outcome: "stripe-session-created",
         currency: session.currency ?? "usd",
-        valueCents: session.amount_total ?? offer.price * 100,
+        valueCents: session.amount_total ?? product.price * 100,
       });
       return NextResponse.redirect(session.url, 303);
     }
-    console.error("[checkout] stripe session missing url", { offer: offer.slug });
+    console.error("[checkout] stripe session missing url", {
+      offer: product.slug,
+    });
   } catch (error) {
     console.error("[checkout] stripe session creation failed", error);
   }
 
-  return checkoutUnavailable(req, offer.slug);
+  return checkoutUnavailable(req, product.slug);
 }
 
 function checkoutUnavailable(req: NextRequest, slug: string) {

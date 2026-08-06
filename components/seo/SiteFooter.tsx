@@ -32,6 +32,11 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <p className="mb-3 font-serif text-base text-brand-ink">Readings</p>
             <ul className="space-y-2">
               <li>
+                <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
+                  Personal Card Blueprint — $29
+                </Link>
+              </li>
+              <li>
                 <a href={READER_PHONE_TEL} className="hover:text-brand-ink">
                   Free {FREE_PREVIEW_NAME}: {READER_PHONE_DISPLAY}
                 </a>
@@ -70,6 +75,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
             <ul className="space-y-2">
+              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — E-book</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-compatibility" className="hover:text-brand-ink">Compatibility</Link></li>
               <li><Link href="/52-card-astrology-explained" className="hover:text-brand-ink">52-Card Astrology</Link></li>

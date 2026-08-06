@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { READER_PHONE_TEL } from "@/lib/offers";
 import { READINGS_PATH, SITE_NAME } from "@/lib/site";
 
 // One header for every marketing/editorial surface. Five conceptual
@@ -55,18 +54,18 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
-              <a href={READER_PHONE_TEL} className="accent-button mt-4 w-full">
-                Hear Your Card Free
-              </a>
+              <Link href="/products/personal-card-blueprint" className="accent-button mt-4 w-full">
+                Get My Blueprint &mdash; $29
+              </Link>
             </nav>
           </details>
           {/* shrink-0: between md and ~860px the row is tight enough that flex
               compresses this button below its text width, which broke "Free
               Call" onto two lines. */}
           <div className="hidden md:block">
-            <a href={READER_PHONE_TEL} className="ink-button small-button shrink-0 whitespace-nowrap">
-              Free Call
-            </a>
+            <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
+              Get My Blueprint
+            </Link>
           </div>
         </div>
       </header>

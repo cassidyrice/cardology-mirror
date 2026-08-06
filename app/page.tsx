@@ -133,16 +133,19 @@ export default function Home() {
               relationship, decision, or season of life.
             </p>
             <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-                Hear Your First Card Free
+              <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
+                Get Your Personal Blueprint &mdash; $29
               </LinkButton>
-              <LinkButton href={READINGS_PATH} variant="outline" size="large">
-                Choose a Reading
+              <LinkButton href="/birth-card-calculator" variant="outline" size="large">
+                Find Your Birth Card Free
               </LinkButton>
             </div>
             <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-              A free 60&ndash;90 second introduction to your birth card&mdash;no
-              full reading or personal question.
+              The Blueprint is an instant personalized report built from your
+              birthday — no phone call required. Prefer the phone?{" "}
+              <a href={READER_PHONE_TEL} className="editorial-link text-brand-ink">
+                Hear your first card free
+              </a>.
             </p>
             <p className="rise-4 mt-3 text-sm">
               <Link href="/try" className="editorial-link text-brand-ink">
