@@ -4,6 +4,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import {
+  BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
   SITE_URL,
@@ -143,6 +144,11 @@ export default function CompatibilityCalculatorPage() {
               className="text-gold underline underline-offset-4"
             >
               Browse every card pairing
+            </a>
+          </li>
+          <li>
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+              Birthdays by date
             </a>
           </li>
         </ul>

@@ -11,7 +11,12 @@ import {
   SEASON_PASS_CLARIFIER,
 } from "@/lib/offers";
 import { READING_OFFERS } from "@/lib/products";
-import { READINGS_PATH, SITE_URL } from "@/lib/site";
+import {
+  BIRTHDAY_DIRECTORY_PATH,
+  COMPATIBILITY_DIRECTORY_PATH,
+  READINGS_PATH,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: "AI Cardology Readings by Phone | Card Blueprints" },
@@ -38,6 +43,12 @@ const FREE_PATHS = [
     href: "/birth-card-compatibility-calculator",
     detail: "Compare two birthdays and explore the relationship pattern.",
     external: false,
+  },
+  {
+    label: "Browse birthdays by date",
+    href: BIRTHDAY_DIRECTORY_PATH,
+    detail: "Look up any birthday in the full 366-day birth card calendar.",
+    external: true,
   },
 ];
 
@@ -73,6 +84,7 @@ const LIBRARY_PATHS = [
     detail: "Go deeper on your card’s pattern and the timing language around it.",
     links: [
       { label: "All 52 Card Meanings", href: "/birth-card" },
+      { label: "Birthdays by Date", href: BIRTHDAY_DIRECTORY_PATH },
       { label: "Timing Resources", href: "/52-day-period-meaning-tool" },
     ],
   },
@@ -81,6 +93,7 @@ const LIBRARY_PATHS = [
     detail: "Compare two birthdays and read the dynamic between the cards.",
     links: [
       { label: "Compatibility Calculator", href: "/birth-card-compatibility-calculator" },
+      { label: "All Card Pairings", href: COMPATIBILITY_DIRECTORY_PATH },
       { label: "Compatibility Guide", href: "/cardology-compatibility" },
     ],
   },
@@ -256,11 +269,17 @@ export default function Home() {
                   {path.detail}
                 </p>
                 <p className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-sm">
-                  {path.links.map((link) => (
-                    <Link key={link.href} href={link.href} className="editorial-link text-brand-ink">
-                      {link.label} &rarr;
-                    </Link>
-                  ))}
+                  {path.links.map((link) =>
+                    link.href.startsWith("/born-on") || link.href.startsWith("/compatibility") ? (
+                      <a key={link.href} href={link.href} className="editorial-link text-brand-ink">
+                        {link.label} &rarr;
+                      </a>
+                    ) : (
+                      <Link key={link.href} href={link.href} className="editorial-link text-brand-ink">
+                        {link.label} &rarr;
+                      </Link>
+                    ),
+                  )}
                 </p>
               </div>
             </div>
