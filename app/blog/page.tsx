@@ -10,7 +10,7 @@ import {
   blogPostPath,
   blogPostsForPillar,
 } from "@/lib/blog";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cardology Blog: Birth Cards and 52-Card Astrology",
@@ -100,16 +100,31 @@ export default function BlogIndexPage() {
 
       <section className="mb-10 grid gap-3 sm:grid-cols-2">
         {[
-          ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology"],
-          ["Know your birthday?", "Use the Birth Card Calculator.", "/birth-card-calculator"],
-          ["Comparing two people?", "Use the Compatibility Calculator.", "/birth-card-compatibility-calculator"],
-          ["Want it read for you?", "Choose a personal reading.", "/readings"],
-        ].map(([label, text, href]) => (
-          <Link key={href} href={href} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]">
-            <span className="oracle-eyebrow block text-[#8e321f]">{label}</span>
-            <span className="mt-2 block font-serif text-xl leading-none text-[#14110d]">{text}</span>
-          </Link>
-        ))}
+          ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology", false],
+          ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
+          ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
+          ["Want it read for you?", "Choose a personal reading.", "/readings", false],
+        ].map(([label, text, href, external]) =>
+          external ? (
+            <a
+              key={String(href)}
+              href={String(href)}
+              className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]"
+            >
+              <span className="oracle-eyebrow block text-[#8e321f]">{label}</span>
+              <span className="mt-2 block font-serif text-xl leading-none text-[#14110d]">{text}</span>
+            </a>
+          ) : (
+            <Link
+              key={String(href)}
+              href={String(href)}
+              className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 transition hover:bg-[#fffaf0]"
+            >
+              <span className="oracle-eyebrow block text-[#8e321f]">{label}</span>
+              <span className="mt-2 block font-serif text-xl leading-none text-[#14110d]">{text}</span>
+            </Link>
+          ),
+        )}
       </section>
 
       <section className="mt-4">

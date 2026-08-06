@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
+import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cardology Compatibility: Birth Cards & Life Paths",
@@ -94,6 +94,10 @@ export default function CompatibilityPage() {
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             Find your birth card
           </Link>
+          , look up any date in the{" "}
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            birthday calendar
+          </a>
           , then read{" "}
           <Link href="/birth-card-vs-ruling-card" className="text-gold underline underline-offset-4">
             how the birth card and ruling card differ
