@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { SITE_NAME } from "@/lib/site";
+import {
+  BIRTHDAY_DIRECTORY_PATH,
+  COMPATIBILITY_DIRECTORY_PATH,
+  SITE_NAME,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "What Is Cardology? The 52-Card System, Explained",
@@ -221,9 +225,17 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Find your birth card</p>
         <p className="mt-1 text-sm text-faint">It takes one tap and your birthday — free.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-          Birth Card Calculator →
-        </Link>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+            Birth Card Calculator →
+          </Link>
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
+            Birthdays by date →
+          </a>
+          <a href={COMPATIBILITY_DIRECTORY_PATH} className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
+            All pairings →
+          </a>
+        </div>
       </div>
 
       <p className="mt-6 text-sm">
