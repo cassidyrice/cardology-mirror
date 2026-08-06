@@ -29,7 +29,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
         <p className="type-eyebrow mb-6">{SITE_NAME}</p>
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Readings</p>
+            <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
             <ul className="space-y-2">
               <li>
                 <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
@@ -75,7 +75,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
             <ul className="space-y-2">
-              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — E-book</Link></li>
+              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — coming soon</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-compatibility" className="hover:text-brand-ink">Compatibility</Link></li>
               <li><Link href="/52-card-astrology-explained" className="hover:text-brand-ink">52-Card Astrology</Link></li>
@@ -96,9 +96,10 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          Readings are delivered by an AI voice reader using the deterministic
-          Cardology calculation — the same birthday always produces the same
-          card. An esoteric reflection framework, not a forecast.
+          The Personal Card Blueprint is an instant written report. Optional
+          phone readings are delivered by a clearly labeled AI voice reader.
+          Both use the same deterministic birth-card calculation. An esoteric
+          reflection framework, not a forecast.
         </p>
       </div>
     </footer>

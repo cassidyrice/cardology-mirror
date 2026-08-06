@@ -8,12 +8,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Privacy Policy | Card Blueprints",
   description:
-    "Learn what Card Blueprints collects for AI voice readings, checkout, anonymous funnel analytics, free tools, retention, and privacy requests.",
+    "Learn what Card Blueprints collects for personalized reports, voice readings, checkout, analytics, free tools, and privacy requests.",
   alternates: { canonical: "/privacy-policy" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 29, 2026";
+const UPDATED = "August 6, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -37,7 +37,8 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Who we are</h2>
           <p className="mt-3">
             Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
-            offer personal Cardology readings and free birth card tools at{" "}
+            offer personalized Cardology reports, digital products, optional
+            voice readings, and free birth card tools at{" "}
             <Link href="/" className="text-[#8e321f] underline underline-offset-4">
               cardblueprints.com
             </Link>
@@ -52,6 +53,18 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">What we collect and why</h2>
           <div className="mt-3 space-y-4">
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">Personal Card Blueprint information</h3>
+              <p className="mt-1">
+                Stripe Checkout collects the buyer&rsquo;s email address and the birth
+                date entered for the Personal Card Blueprint. The birth date is
+                used to generate the deterministic report and is included in a
+                signed access token sent in the transactional email. We do not
+                maintain a separate customer birth-date database, but Stripe,
+                Resend, and Cloudflare may process the checkout field, email link,
+                or request URL under their retention and logging policies.
+              </p>
+            </div>
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Voice reading purchase information</h3>
               <p className="mt-1">
@@ -92,7 +105,8 @@ export default function PrivacyPolicy() {
                 . We do not store your card number, CVV, or full payment details.
                 Stripe's own privacy policy governs how they handle your payment
                 data. From checkout we may receive your name, email address,
-                phone number, amount paid, and checkout session reference.
+                the Blueprint birth date or voice-reading phone number when
+                applicable, amount paid, and checkout session reference.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -148,6 +162,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
+            <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To recognize your paid voice access when you call from your checkout number.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To connect return calls with the correct paid access during your access window.</li>
@@ -222,7 +237,8 @@ export default function PrivacyPolicy() {
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
-            with the email address or phone number you used at checkout. We will
+            with the email address used at checkout and, if applicable, the
+            voice-reading phone number. We will
             confirm deletion within a reasonable time, except for records we must
             keep for legal, tax, fraud, or payment-dispute reasons.
           </p>

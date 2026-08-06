@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
-import { READING_OFFERS } from "@/lib/products";
+import { PUBLIC_PRODUCTS, isVoiceReading } from "@/lib/products";
 import { READINGS_PATH, SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   // suffix pushed 74 sitemap titles beyond 60 characters.
   title: "Card Blueprints | Cardology Readings & Birth Cards",
   description:
-    "AI Cardology readings by phone, plus a free birth card calculator, all 52 card meanings, compatibility tools, and practical Cardology guides.",
+    "Instant Personal Card Blueprints, optional AI Cardology voice readings, a free birth card calculator, all 52 card meanings, and compatibility tools.",
   icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
@@ -86,21 +86,22 @@ export default function RootLayout({
           "relationship dynamics",
           "public figure birth card profiles",
         ],
-        makesOffer: READING_OFFERS.map((offer) => ({
+        makesOffer: PUBLIC_PRODUCTS.map((offer) => ({
           "@type": "Offer",
           price: offer.price,
           priceCurrency: "USD",
           // The indexable comparison section is the public offer URL.
           // /checkout/<slug> is a robots-disallowed review page; only its
           // explicit POST action creates a Stripe Checkout Session.
-          url: `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
+          url: isVoiceReading(offer)
+            ? `${SITE_URL}${READINGS_PATH}#${offer.slug}`
+            : `${SITE_URL}${offer.href ?? `/products/${offer.slug}`}`,
           hasMerchantReturnPolicy: {
             "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
           },
-          // These are reading services. Marking each one as a Product here
-          // made Google expect a second nested offer, review, or rating.
+          // Voice offers are services; instant reports and downloads are products.
           itemOffered: {
-            "@type": "Service",
+            "@type": isVoiceReading(offer) ? "Service" : "Product",
             name: offer.name,
             provider: { "@id": `${SITE_URL}/#organization` },
           },

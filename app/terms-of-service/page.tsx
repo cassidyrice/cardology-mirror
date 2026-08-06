@@ -9,12 +9,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
-  description: "Terms for using Card Blueprints, its AI voice readings, and free Cardology tools.",
+  description: "Terms for Card Blueprints reports, digital products, AI voice readings, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "July 29, 2026";
+const UPDATED = "August 6, 2026";
 
 export default function TermsOfService() {
   return (
@@ -36,7 +36,7 @@ export default function TermsOfService() {
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
             Card Blueprints is for learning, reflection, and entertainment. By
-            using the site or buying a reading, you agree to these terms.
+            using the site or buying a product, you agree to these terms.
           </p>
         </section>
 
@@ -44,18 +44,20 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            plus paid voice readings delivered by phone. Card lookups use fixed
-            formulas and tables — the same birthday always produces the same
-            card. Cardology is an esoteric reflection framework; meanings and
-            spoken explanations are interpretations, not facts about you.
+            an instant personalized Cardology report, a digital e-book, and
+            optional paid voice readings delivered by phone. Card lookups use
+            fixed formulas and tables — the same birthday always produces the
+            same card. Cardology is an esoteric reflection framework;
+            interpretations are not facts about you.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">The reader is AI</h2>
           <p className="mt-3">
-            Every paid reading and the free first-card preview are delivered by
-            an AI voice reader, not a human. AI wording can be incomplete or
+            Every paid voice reading and the free first-card preview are delivered
+            by an AI voice reader, not a human. The Personal Card Blueprint is a
+            written deterministic report, not a voice call. AI voice wording can be incomplete or
             wrong even when the card lookup is correct. Check important facts
             for yourself and do not rely on the reader as your only source for
             an important decision.
@@ -63,8 +65,14 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Paid readings</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
+            <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>Personal Card Blueprint ($29)</strong> — one instant
+              personalized written report generated from the birth date entered
+              at checkout, with a signed return link sent by email.
+            </li>
+
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Quick Question ($19)</strong> — one single paid voice
               session of up to 5 minutes. Start it within 30 days of purchase.
@@ -81,8 +89,8 @@ export default function TermsOfService() {
               below.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              All access is tied to the phone number used at checkout — call
-              from that number so the reader recognizes your purchase.
+              Voice-reading access is tied to the phone number used at checkout.
+              Blueprint access uses its private signed report link; do not share it.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               Do not share paid access, misuse the phone line, or try to bypass

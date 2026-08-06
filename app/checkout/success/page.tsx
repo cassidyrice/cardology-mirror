@@ -181,14 +181,16 @@ export default async function CheckoutSuccessPage({
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
           {digital
             ? "If your download link doesn't work, reply to your receipt email or"
-            : "If the line doesn&rsquo;t recognize your number or a call drops, reply to your receipt email or"}{" "}
+            : instantReport
+              ? "If your Blueprint link doesn't work or the birth date is wrong, reply to your receipt email or"
+              : "If the line doesn&rsquo;t recognize your number or a call drops, reply to your receipt email or"}{" "}
           <Link
             href="/contact"
             className="editorial-link text-brand-ink"
           >
             send a note via contact
           </Link>{" "}
-          with the email and phone number you used at checkout. Unused
+          with the email used at checkout{voice ? " and your checkout phone number" : ""}. Unused
           purchases are covered by the{" "}
           <Link
             href="/refund-policy"

@@ -10,7 +10,7 @@ import {
   READER_PHONE_TEL,
   SEASON_PASS_CLARIFIER,
 } from "@/lib/offers";
-import { READING_OFFERS } from "@/lib/products";
+import { INSTANT_REPORT_PRODUCTS, READING_OFFERS } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -19,9 +19,9 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "AI Cardology Readings by Phone | Card Blueprints" },
+  title: { absolute: "Personal Card Blueprint & Cardology Readings | Card Blueprints" },
   description:
-    "Call with a birthday for an AI Cardology reading by phone, or use the free birth card calculator, compatibility tools, and all 52 card meanings.",
+    "Get an instant Personal Card Blueprint from your birthday, explore free Cardology tools, or choose an optional AI voice reading by phone.",
   alternates: { canonical: "/" },
 };
 
@@ -100,15 +100,18 @@ const LIBRARY_PATHS = [
 ];
 
 export default function Home() {
+  const paidOffers = [...INSTANT_REPORT_PRODUCTS, ...READING_OFFERS];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Card Blueprints voice readings",
-    itemListElement: READING_OFFERS.map((offer, index) => ({
+    name: "Card Blueprints paid readings and reports",
+    itemListElement: paidOffers.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: offer.name,
-      url: `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
+      url: offer.kind === "instant_report"
+        ? `${SITE_URL}/products/${offer.slug}`
+        : `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
     })),
   };
 
@@ -123,14 +126,14 @@ export default function Home() {
         <section className="shell-paper">
         <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.25rem,7vw,6rem)] sm:px-8 lg:px-10">
           <div className="max-w-[54rem]">
-            <Kicker className="rise">AI Cardology readings &middot; by phone</Kicker>
+            <Kicker className="rise">Personal Card Blueprint &middot; instant report</Kicker>
             <h1 className="type-display rise-2 mt-6">
-              Call with a birthday. Leave with the <em>pattern</em>.
+              Your birthday carries a <em>pattern</em>. Put it in writing.
             </h1>
             <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-              Talk with an AI Cardology reader about the fixed card behind a
-              birthday, then use the pattern for self-awareness around a
-              relationship, decision, or season of life.
+              The Personal Card Blueprint turns your fixed birth card, ruling
+              layer, and current chapter into one personalized report you can
+              read immediately after checkout.
             </p>
             <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
               <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
@@ -153,7 +156,7 @@ export default function Home() {
               </Link>
             </p>
             <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
-              AI reader &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
+              Instant written report &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
             </p>
           </div>
         </div>

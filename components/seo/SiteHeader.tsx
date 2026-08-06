@@ -64,7 +64,7 @@ export function SiteHeader() {
               Call" onto two lines. */}
           <div className="hidden md:block">
             <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
-              Get My Blueprint
+              Get My Blueprint &mdash; $29
             </Link>
           </div>
         </div>
