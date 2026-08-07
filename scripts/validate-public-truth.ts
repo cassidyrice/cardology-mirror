@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
+import { NextRequest } from "next/server";
+
+import { middleware } from "../middleware";
 import { compareReadings } from "../components/bonds/compare";
 import {
   analyticsMetadata,
@@ -240,6 +243,53 @@ assert.match(
   /["']\/try["']\s*:\s*["']\/birth-card-calculator["']/,
 );
 assert.match(middlewareText, /NextResponse\.redirect\(redirectUrl,\s*301\)/);
+
+// Runtime middleware behavior, not just source shape: retired public routes must
+// emit real edge 301s (a static-page permanentRedirect answers 200 on Cloudflare
+// Pages), preserve query strings, compose with www canonicalization, and leave
+// legacy-card redirects and live routes alone.
+function middlewareResult(url: string, host: string) {
+  const response = middleware(
+    new NextRequest(new Request(url, { headers: { host } })),
+  );
+  return { status: response.status, location: response.headers.get("location") };
+}
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/readings?utm_source=legacy",
+    "cardblueprints.com",
+  ),
+  {
+    status: 301,
+    location:
+      "https://cardblueprints.com/products/personal-card-blueprint?utm_source=legacy",
+  },
+);
+assert.deepEqual(
+  middlewareResult("https://cardblueprints.com/try", "cardblueprints.com"),
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
+);
+assert.deepEqual(
+  middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
+  {
+    status: 301,
+    location: "https://cardblueprints.com/products/personal-card-blueprint?a=1",
+  },
+);
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/ace-of-hearts-meaning/",
+    "cardblueprints.com",
+  ),
+  { status: 301, location: "https://cardblueprints.com/birth-card/ace-of-hearts" },
+);
+assert.equal(
+  middlewareResult(
+    "https://cardblueprints.com/products/personal-card-blueprint",
+    "cardblueprints.com",
+  ).status,
+  200,
+);
 const privacyPolicyText = readFileSync("app/privacy-policy/page.tsx", "utf8");
 assert.doesNotMatch(
   privacyPolicyText,
