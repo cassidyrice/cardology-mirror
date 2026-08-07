@@ -186,7 +186,7 @@ export default function CalculatorPage() {
         <div className="mt-4">
           <Link
             href="/products/personal-card-blueprint"
-            className="inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+            className="accent-button inline-flex min-h-11 items-center justify-center px-5 py-2.5 text-sm"
           >
             Get Your Personal Blueprint &mdash; $29
           </Link>
@@ -233,7 +233,7 @@ export default function CalculatorPage() {
         <p className="eyebrow mb-2 text-gold">Worked verification</p>
         <h2 className="font-serif text-3xl text-bone">Birth card calculator example: January 15</h2>
         <p className="prose-reading mt-4 text-mist">
-          Enter January 15 and the calculator returns the <strong>Queen of Diamonds</strong>
+          Enter January 15 and the calculator returns the <strong>Queen of Diamonds</strong>{" "}
           as the birth card. Run January 15 again and the answer stays the same. That
           repeatability is the simplest accuracy check: fixed input, fixed output.
           You can inspect the longer calculation and interpretation boundary on our{" "}
