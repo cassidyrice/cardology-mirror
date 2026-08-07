@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact Card Blueprints",
   description:
-    "Contact Card Blueprints for readings, corrections, Cardology questions, video questions, and partnerships.",
+    "Contact Card Blueprints for Blueprint support, corrections, Cardology questions, video questions, and partnerships.",
   alternates: { canonical: "/contact" },
 };
 
@@ -30,17 +30,17 @@ export default function ContactPage() {
       <header className="max-w-3xl pb-8">
         <Kicker className="mb-4">Contact</Kicker>
         <h1 className="type-display text-brand-ink">
-          Get help with a reading, correction, or partnership.
+          Get help with a Blueprint, correction, or partnership.
         </h1>
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            Buying a reading? You do not need this page —{" "}
-            <Link href="/readings" className="editorial-link text-brand-ink">
-              checkout is instant
+            Buying a Blueprint?{" "}
+            <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
+              Review what is included
             </Link>
-            . After successful checkout, call from the same phone number you
-            entered so the line can recognize the purchase.
+            . Your report appears immediately after successful checkout and a
+            return link is sent to your email.
           </p>
         </div>
       </header>
@@ -59,8 +59,8 @@ export default function ContactPage() {
 
       <section className="grid gap-4 sm:grid-cols-2">
         {[
-          ["Purchase support", "If access is not recognized or a paid call disconnects, include the purchase email, offer name, and a short description of what happened."],
-          ["Reading questions", "Not sure which reading fits? Tell us whether you want one focused answer, a complete pattern, or ongoing seasonal access."],
+          ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
+          ["Blueprint questions", "Ask what the $29 Personal Card Blueprint includes, how birth-date input works, or how to reopen a paid report."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

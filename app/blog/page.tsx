@@ -103,7 +103,7 @@ export default function BlogIndexPage() {
           ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology", false],
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
-          ["Want it read for you?", "Choose a personal reading.", "/readings", false],
+          ["Want it personalized?", "Get your Personal Card Blueprint.", "/products/personal-card-blueprint", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a

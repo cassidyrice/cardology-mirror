@@ -1,15 +1,8 @@
 import Link from "next/link";
 
 import {
-  FREE_PREVIEW_NAME,
-  READER_PHONE_DISPLAY,
-  READER_PHONE_TEL,
-} from "@/lib/offers";
-import { READING_OFFERS, readingOfferPublicHref } from "@/lib/products";
-import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
-  READINGS_PATH,
   SITE_NAME,
   VIDEO_PATH,
 } from "@/lib/site";
@@ -36,28 +29,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                   Personal Card Blueprint — $29
                 </Link>
               </li>
-              <li>
-                <a href={READER_PHONE_TEL} className="hover:text-brand-ink">
-                  Free {FREE_PREVIEW_NAME}: {READER_PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                <Link href="/try" className="editorial-link">
-                  How the free preview works →
-                </Link>
-              </li>
-              {READING_OFFERS.map((offer) => (
-                <li key={offer.slug}>
-                  <Link href={readingOfferPublicHref(offer)} className="hover:text-brand-ink">
-                    {offer.priceLabel} {offer.name}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href={READINGS_PATH} className="editorial-link">
-                  Compare the readings →
-                </Link>
-              </li>
+
             </ul>
           </div>
           <div>
@@ -96,10 +68,9 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          The Personal Card Blueprint is an instant written report. Optional
-          phone readings are delivered by a clearly labeled AI voice reader.
-          Both use the same deterministic birth-card calculation. An esoteric
-          reflection framework, not a forecast.
+          The Personal Card Blueprint is an instant written report built from
+          the same deterministic birth-card calculation used across the free
+          tools. An esoteric reflection framework, not a forecast.
         </p>
       </div>
     </footer>

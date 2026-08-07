@@ -3,35 +3,23 @@ import type { Metadata } from "next";
 
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
-import { Kicker, LinkButton, PricingCard, SectionShell } from "@/components/ui";
-import {
-  MICROTRUST_LINE,
-  READER_PHONE_DISPLAY,
-  READER_PHONE_TEL,
-  SEASON_PASS_CLARIFIER,
-} from "@/lib/offers";
-import { INSTANT_REPORT_PRODUCTS, READING_OFFERS } from "@/lib/products";
+import { Kicker, LinkButton, SectionShell } from "@/components/ui";
+import { INSTANT_REPORT_PRODUCTS } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
-  READINGS_PATH,
   SITE_URL,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Personal Card Blueprint & Cardology Readings | Card Blueprints" },
+  title: { absolute: "Personal Card Blueprint | Card Blueprints" },
   description:
-    "Get an instant Personal Card Blueprint from your birthday, explore free Cardology tools, or choose an optional AI voice reading by phone.",
+    "Get an instant Personal Card Blueprint from your birthday and explore free Cardology calculators, card meanings, compatibility, and timing tools.",
   alternates: { canonical: "/" },
 };
 
 const FREE_PATHS = [
-  {
-    label: "Hear Your First Card",
-    href: READER_PHONE_TEL,
-    detail: "A brief introduction to your birth card by phone.",
-    external: true,
-  },
+
   {
     label: "Find Your Birth Card",
     href: "/birth-card-calculator",
@@ -55,18 +43,18 @@ const FREE_PATHS = [
 const STEPS = [
   {
     label: "01",
-    title: "Choose your reading.",
-    detail: "Pick one focused question, a complete reading, or ongoing seasonal access.",
+    title: "Enter your birth date.",
+    detail: "Stripe securely collects the birthday your Blueprint should use.",
   },
   {
     label: "02",
-    title: "Check out with your phone number.",
-    detail: "That number becomes the key to your paid access.",
+    title: "Complete one-time checkout.",
+    detail: "The Personal Card Blueprint is $29 with no subscription or renewal.",
   },
   {
     label: "03",
-    title: "Call from that number.",
-    detail: "The AI Cardology reader recognizes your access and begins.",
+    title: "Open your report instantly.",
+    detail: "Your personalized report appears after payment and a return link is emailed to you.",
   },
 ];
 
@@ -100,18 +88,16 @@ const LIBRARY_PATHS = [
 ];
 
 export default function Home() {
-  const paidOffers = [...INSTANT_REPORT_PRODUCTS, ...READING_OFFERS];
+  const paidOffers = INSTANT_REPORT_PRODUCTS;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Card Blueprints paid readings and reports",
+    name: "Card Blueprints paid product",
     itemListElement: paidOffers.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: offer.name,
-      url: offer.kind === "instant_report"
-        ? `${SITE_URL}/products/${offer.slug}`
-        : `${SITE_URL}${READINGS_PATH}#${offer.slug}`,
+      url: `${SITE_URL}/products/${offer.slug}`,
     })),
   };
 
@@ -145,15 +131,7 @@ export default function Home() {
             </div>
             <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
               The Blueprint is an instant personalized report built from your
-              birthday — no phone call required. Prefer the phone?{" "}
-              <a href={READER_PHONE_TEL} className="editorial-link text-brand-ink">
-                Hear your first card free
-              </a>.
-            </p>
-            <p className="rise-4 mt-3 text-sm">
-              <Link href="/try" className="editorial-link text-brand-ink">
-                How the free preview works &rarr;
-              </Link>
+              birthday and delivered immediately after payment.
             </p>
             <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
               Instant written report &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
@@ -189,35 +167,10 @@ export default function Home() {
         </div>
       </SectionShell>
 
-      {/* 3 — Three paid offers */}
-      <SectionShell tone="paperDeep" id="readings">
-        <div className="max-w-[38em]">
-          <Kicker>Readings</Kicker>
-          <h2 className="type-h2 mt-4">Choose how deep you want to go.</h2>
-          <p className="mt-5 leading-relaxed text-brand-ink-soft">
-            Ask one focused question, hear the complete pattern, or keep the
-            reader available through the next 90 days.
-          </p>
-        </div>
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {READING_OFFERS.map((offer) => (
-            <PricingCard
-              key={offer.slug}
-              offer={offer}
-              emphasized={offer.slug === "complete-reading"}
-            />
-          ))}
-        </div>
-        <div className="mt-8 space-y-1 text-center text-xs leading-relaxed text-brand-ink-soft">
-          <p>{MICROTRUST_LINE}</p>
-          <p>{SEASON_PASS_CLARIFIER}</p>
-        </div>
-      </SectionShell>
-
-      {/* 4 — How it works */}
+      {/* 3 — How it works */}
       <SectionShell tone="paper">
         <Kicker>How it works</Kicker>
-        <h2 className="type-h2 mt-4">From checkout to conversation.</h2>
+        <h2 className="type-h2 mt-4">From birthday to Blueprint.</h2>
         <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
           {STEPS.map((step) => (
             <div key={step.label} className="border-t border-brand-line pt-5">
@@ -246,10 +199,7 @@ export default function Home() {
               relationships, and timing&mdash;not as scientific diagnosis or
               guaranteed prediction.
             </p>
-            <p>
-              The reader on the line is an AI voice guide, and it says so. The
-              card math is fixed; the conversation is generated.
-            </p>
+
             <p>
               <Link href="/methodology" className="editorial-link text-brand-ink">
                 Read the methodology &rarr;
@@ -325,28 +275,15 @@ export default function Home() {
       {/* 8 — Final CTA */}
         <SectionShell tone="ink">
         <div className="mx-auto max-w-[40rem] py-[clamp(1rem,4vw,3rem)] text-center">
-          <h2 className="type-h2">Your card is already waiting.</h2>
+          <h2 className="type-h2">Your pattern is ready to be written.</h2>
           <p className="mt-5 text-brand-on-dark-soft">
-            Call with your birthday and hear the first pattern free.
+            Get your birth card, ruling layer, current chapter, and reflection prompts in one instant report.
           </p>
           <div className="mt-8">
-            <LinkButton href={READER_PHONE_TEL} variant="accent" size="large">
-              Hear Your First Card Free
+            <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
+              Get Your Personal Blueprint — $29
             </LinkButton>
           </div>
-          <p className="mt-6">
-            <a
-              href={READER_PHONE_TEL}
-              className="font-serif text-2xl text-brand-on-dark transition hover:text-brand-gold"
-            >
-              {READER_PHONE_DISPLAY}
-            </a>
-          </p>
-          <p className="mt-4 text-sm">
-            <Link href={READINGS_PATH} className="editorial-link text-brand-on-dark-soft">
-              Or compare the readings &rarr;
-            </Link>
-          </p>
         </div>
         </SectionShell>
       </main>

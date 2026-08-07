@@ -51,11 +51,11 @@ FROM cardblueprints_funnel
 WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY
 GROUP BY event ORDER BY n DESC"
 
-show "THE VOICE QUESTION: call intent vs money" "
+show "ACTIVE PRODUCT FUNNEL" "
 SELECT blob1 AS step, SUM(_sample_interval) AS n
 FROM cardblueprints_funnel
 WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY
-  AND blob1 IN ('calculator_completed','free_call_clicked','readings_viewed','offer_selected','checkout_started','purchase_completed')
+  AND blob1 IN ('calculator_completed','offer_selected','checkout_started','purchase_completed')
 GROUP BY step ORDER BY n DESC"
 
 show "Which offer people actually pick" "
@@ -87,18 +87,11 @@ GROUP BY landing_path ORDER BY n DESC"
 cat <<'NOTE'
 
 --- How to read this ---
-The voice decision hinges on two ratios:
+The active-product decision hinges on two ratios:
 
-  free_call_clicked / calculator_completed
-      Do curious people even reach for the phone? Low = call friction is real.
+  offer_selected / calculator_completed
+      Do calculator users continue into the paid Blueprint?
 
   purchase_completed / checkout_started
       Do they finish paying once they get to Stripe?
-
-CAVEAT, from docs/analytics.md: a free-call click is INTENT, not proof the
-call connected. There is no call-start or call-completion event — that needs a
-lifecycle signal from the telephony provider. So this report cannot tell you
-whether calls actually happen, only whether people reach toward them. If
-free_call_clicked is healthy but purchases are not, the gap is either the call
-experience itself or checkout — and today you cannot tell which apart.
 NOTE

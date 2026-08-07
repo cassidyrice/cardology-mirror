@@ -21,7 +21,8 @@ import {
   PUBLIC_PRODUCTS,
   READING_OFFERS,
   instantReportFacts,
-  readingOfferFacts,
+  productBySlug,
+  publicProductBySlug,
 } from "../lib/products";
 import {
   allBirthdateSeo,
@@ -35,6 +36,7 @@ import {
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
+  MARKETING_PATHS,
 } from "../lib/site";
 import THREE_LENS from "../lib/card-meanings.json";
 import CARD_DESCRIPTIONS from "../lib/engine-data/card-descriptions.json";
@@ -138,12 +140,6 @@ assert.deepEqual(
     },
   ],
 );
-for (const offer of READING_OFFERS) {
-  assert.deepEqual(
-    readingOfferFacts(offer).map((fact) => fact.label),
-    ["Deliverable", "Session", "Calls", "Access", "Renewal"],
-  );
-}
 
 // Instant report flagship (Personal Card Blueprint) is present, priced, and
 // produces the full fact ladder the checkout review page renders.
@@ -159,13 +155,14 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 }
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
-  [
-    "personal-card-blueprint",
-    "quick-question",
-    "complete-reading",
-    "season-pass-90",
-  ],
+  ["personal-card-blueprint"],
 );
+assert.equal(publicProductBySlug("personal-card-blueprint")?.kind, "instant_report");
+assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");
+for (const offer of READING_OFFERS) {
+  assert.equal(publicProductBySlug(offer.slug), undefined, `${offer.slug} must not open new checkout`);
+  assert.equal(productBySlug(offer.slug)?.slug, offer.slug, `${offer.slug} must remain resolvable for historical orders`);
+}
 assert.deepEqual(
   DIGITAL_PRODUCTS.map((product) => ({
     slug: product.slug,
@@ -175,27 +172,73 @@ assert.deepEqual(
   [{ slug: "analog-algorithm", price: 27, available: false }],
 );
 
-// Product-model regression gate: the site is Blueprint-led, with the three
-// phone readings presented explicitly as voice options. These assertions keep
-// stale call-only catalog language from returning to global/public surfaces.
-const productSurfaceFiles = [
+// Product-model regression gate: the phone-reading products are historical
+// compatibility records only. They must not return to active marketing,
+// navigation, schema, or new-checkout surfaces.
+const productMarketingFiles = [
   "app/page.tsx",
+  "app/blog/page.tsx",
+  "app/card-of-the-day/page.tsx",
+  "app/contact/page.tsx",
+  "app/how-to-read-playing-cards/page.tsx",
+  "app/playing-card-spreads/page.tsx",
+  "app/playing-card-spreads/three-card/page.tsx",
+  "app/playing-card-spreads/yes-or-no/page.tsx",
+  "app/try/page.tsx",
+  "app/privacy-policy/page.tsx",
   "app/readings/page.tsx",
   "app/layout.tsx",
+  "app/products/analog-algorithm/page.tsx",
   "components/seo/SiteFooter.tsx",
+  "components/seo/SiteHeader.tsx",
+  "components/seo/ReadingBridge.tsx",
+  "components/seo/OfferCta.tsx",
+  "components/seo/BirthCardCalculator.tsx",
+  "components/analytics/AnalyticsCapture.tsx",
   "app/checkout/[offer]/page.tsx",
-  "app/refund-policy/page.tsx",
-  "app/terms-of-service/page.tsx",
-  "app/privacy-policy/page.tsx",
+  "app/products/personal-card-blueprint/page.tsx",
+  "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
 ];
-const productSurfaceText = productSurfaceFiles
+const productSurfaceText = productMarketingFiles
   .map((file) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8"))
   .join("\n");
 assert.doesNotMatch(productSurfaceText, /Compare all three readings/i);
 assert.doesNotMatch(productSurfaceText, /Card Blueprints sells voice readings/i);
 assert.doesNotMatch(productSurfaceText, /Paid readings are delivered by an AI voice reader over the phone/i);
+assert.doesNotMatch(productSurfaceText, /optional phone readings/i);
+assert.doesNotMatch(productSurfaceText, /which reading fits|ongoing seasonal access/i);
+assert.doesNotMatch(
+  productSurfaceText,
+  /READER_PHONE|Call the AI reader|free first-card|free AI voice preview|free voice preview|free preview line|free reading line|free-call|free_call_clicked|FREE_PREVIEW|tel:\+/i,
+);
+assert.doesNotMatch(productSurfaceText, /Quick Question/i);
+assert.doesNotMatch(productSurfaceText, /Complete Reading/i);
+assert.doesNotMatch(productSurfaceText, /90-Day Season Pass/i);
+assert.doesNotMatch(productSurfaceText, /quick-question|complete-reading|season-pass-90/i);
+assert.match(
+  readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
+  /publicProductBySlug\(slug\)/,
+);
+assert.match(
+  readFileSync("app/readings/page.tsx", "utf8"),
+  /permanentRedirect\("\/products\/personal-card-blueprint"\)/,
+);
+assert.match(
+  readFileSync("app/try/page.tsx", "utf8"),
+  /permanentRedirect\("\/birth-card-calculator"\)/,
+);
+assert.equal(MARKETING_PATHS.includes("/try"), false);
+const privacyPolicyText = readFileSync("app/privacy-policy/page.tsx", "utf8");
+assert.doesNotMatch(
+  privacyPolicyText,
+  /free AI voice preview|free voice preview|free preview line|free reading line|free-call/i,
+);
+assert.match(
+  privacyPolicyText,
+  /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
+);
 assert.match(productSurfaceText, /Personal Card Blueprint/);
 assert.match(productSurfaceText, /instant personalized/i);
 
@@ -236,7 +279,7 @@ assert.equal(legacyCardDestination("/joker-of-spades-meaning/"), null);
 assert.equal(legacyCardDestination("/7-of-stars-meaning/"), null);
 
 const analyticsSessionId = "ab119959-a913-4da6-9f50-a0378c613582";
-assert.ok(isClientFunnelEventName("free_call_clicked"));
+assert.ok(!isClientFunnelEventName("free_call_clicked"));
 assert.ok(!isClientFunnelEventName("purchase_completed"));
 assert.equal(sanitizeAnalyticsId(analyticsSessionId), analyticsSessionId);
 assert.equal(sanitizeAnalyticsId("not-a-session"), "");
@@ -353,7 +396,7 @@ assert.equal(BIRTHDAY_DIRECTORY_PATH, "/born-on/");
 assert.equal(COMPATIBILITY_DIRECTORY_PATH, "/compatibility/");
 
 console.log(
-  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 offers, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
+  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 legacy offers, 1 active public product, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
 );
 
 // ============================================================================

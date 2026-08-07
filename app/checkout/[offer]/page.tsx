@@ -4,18 +4,14 @@ import { notFound } from "next/navigation";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
-import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
-  productBySlug,
-  readingOfferFacts,
+  publicProductBySlug,
   digitalOfferFacts,
   instantReportFacts,
-  type ReadingOfferFact,
   type DigitalOfferFact,
   type InstantReportFact,
   isDigitalDownload,
   isInstantReport,
-  isVoiceReading,
 } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
@@ -39,27 +35,23 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  const product = productBySlug(slug);
+  const product = publicProductBySlug(slug);
 
   if (!product) notFound();
 
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product);
   const unavailable = isDigital && !product.available;
-  const facts: (ReadingOfferFact | DigitalOfferFact | InstantReportFact)[] =
+  const facts: (DigitalOfferFact | InstantReportFact)[] =
     isDigital
       ? digitalOfferFacts(product)
-      : isReport
-        ? instantReportFacts(product)
-        : isVoiceReading(product)
-          ? readingOfferFacts(product)
-          : [];
+      : instantReportFacts(product);
 
   return (
     <SeoShell
       crumb={[
         { label: "Home", href: "/" },
-        { label: "Readings", href: "/readings" },
+        { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint" },
         { label: product.name, href: `/checkout/${product.slug}` },
       ]}
     >
@@ -148,7 +140,7 @@ export default async function CheckoutReviewPage({
                 </p>
               </div>
             </>
-          ) : isReport ? (
+          ) : (
             <>
               <h2 className="type-h3 mt-3 text-brand-ink">
                 Your report generates the moment you pay.
@@ -162,24 +154,6 @@ export default async function CheckoutReviewPage({
                   After payment, your personalized report opens immediately on
                   the confirmation page, and a return link is emailed to you.
                   No phone call, no waiting.
-                </p>
-              </div>
-            </>
-          ) : (
-            <>
-              <h2 className="type-h3 mt-3 text-brand-ink">
-                Use the number you&rsquo;ll call from.
-              </h2>
-              <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
-                <p>
-                  Stripe securely collects your phone number and payment
-                  details. The AI reader never accepts payment card details
-                  by voice.
-                </p>
-                <p>
-                  After successful payment, call {READER_PHONE_DISPLAY} from
-                  that same number. Paid access begins when the line
-                  recognizes it.
                 </p>
               </div>
             </>
@@ -215,16 +189,12 @@ export default async function CheckoutReviewPage({
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
         {isDigital ? (
-          <Link href="/readings" className="editorial-link text-brand-ink">
-            See the voice readings &rarr;
-          </Link>
-        ) : isReport ? (
-          <Link href="/readings" className="editorial-link text-brand-ink">
-            See all reading options &rarr;
+          <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
+            Get your Personal Card Blueprint &rarr;
           </Link>
         ) : (
-          <Link href="/readings" className="editorial-link text-brand-ink">
-            Compare the three voice options &rarr;
+          <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">
+            Find your birth card free &rarr;
           </Link>
         )}
       </p>

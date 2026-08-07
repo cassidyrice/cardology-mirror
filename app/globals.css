@@ -192,9 +192,8 @@ body {
   background-size: 5px 7px, 8px 6px;
 }
 
-/* The wordmark is the flexible element in the header row: the nav links and
-   the Free Call button both need their full width, so this scales down at the
-   widths where the three would otherwise not fit. */
+/* The wordmark is the flexible element in the header row, so it scales down at
+   widths where the navigation and primary action would otherwise not fit. */
 .brand-mark {
   font-family: var(--font-serif);
   font-size: 1.3rem;

@@ -19,7 +19,6 @@ Stripe session tokens.
 | `organic_landing` | A session arrived from a recognized search engine or `utm_medium=organic` | Browser landing |
 | `calculator_started` | First calculator interaction per placement in the tab | Browser interaction |
 | `calculator_completed` | A valid result was calculated | Browser calculation |
-| `free_call_clicked` | A free-preview phone link was clicked | Browser click |
 | `readings_viewed` | The paid-reading comparison page was viewed | Browser route |
 | `offer_selected` | A valid checkout review page was viewed | Browser route |
 | `checkout_started` | Stripe returned a usable Checkout Session URL | Server checkout route |

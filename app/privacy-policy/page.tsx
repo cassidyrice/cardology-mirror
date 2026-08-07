@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Privacy Policy | Card Blueprints",
   description:
-    "Learn what Card Blueprints collects for personalized reports, voice readings, checkout, analytics, free tools, and privacy requests.",
+    "Learn what Card Blueprints collects for personalized reports, checkout, analytics, free tools, and privacy requests.",
   alternates: { canonical: "/privacy-policy" },
   robots: { index: true, follow: true },
 };
@@ -37,8 +37,8 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Who we are</h2>
           <p className="mt-3">
             Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
-            offer personalized Cardology reports, digital products, optional
-            voice readings, and free birth card tools at{" "}
+            offer personalized Cardology reports, digital products when
+            available, and free birth card tools at{" "}
             <Link href="/" className="text-[#8e321f] underline underline-offset-4">
               cardblueprints.com
             </Link>
@@ -66,30 +66,17 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">Voice reading purchase information</h3>
+              <h3 className="font-bold text-[#14110d]">Legacy phone-order information</h3>
               <p className="mt-1">
-                When you purchase a reading, checkout collects your name, email
-                address, and phone number, along with the payment time, amount,
-                and checkout session. The phone number is used to recognize
-                your paid access when you call the reading line. This access
-                profile is kept for up to 90 days. Purchase information is not
-                used for marketing, not shared with third parties for
-                advertising, and not sold.
+                Phone-reading products are no longer sold. For purchases made
+                before retirement, order and access records may include the
+                buyer&rsquo;s name, email address, phone number, payment time,
+                amount, and checkout session. These records are retained only
+                for the original access window, support, accounting, disputes,
+                and legal obligations. They are not used for marketing or sold.
               </p>
             </div>
-            <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">What happens during an AI call</h3>
-              <p className="mt-1">
-                The AI voice service must process what you say so it can answer.
-                Card Blueprints uses xAI-based tools for the voice guide. Our website
-                and payment worker do not store call audio or transcripts, but the
-                provider may process or retain call data under its account settings
-                and privacy terms. Provider-side recording, transcript retention,
-                and model-training settings are still being confirmed. Until that
-                check is complete, do not share medical, legal, financial, account,
-                or other sensitive information during a call.
-              </p>
-            </div>
+
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Payment information</h3>
               <p className="mt-1">
@@ -105,8 +92,9 @@ export default function PrivacyPolicy() {
                 . We do not store your card number, CVV, or full payment details.
                 Stripe's own privacy policy governs how they handle your payment
                 data. From checkout we may receive your name, email address,
-                the Blueprint birth date or voice-reading phone number when
-                applicable, amount paid, and checkout session reference.
+                the Blueprint birth date, amount paid, and checkout session
+                reference. Historical orders may retain the phone number that
+                was collected when those products were available.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -122,8 +110,8 @@ export default function PrivacyPolicy() {
               <p className="mt-1">
                 We use Cloudflare Web Analytics for page traffic and performance,
                 plus a first-party conversion event stream to understand whether
-                visitors use the calculator, click the free reading line, compare
-                offers, begin checkout, or complete a purchase. The event stream
+                visitors use the calculator, view the Blueprint offer, begin
+                checkout, or complete a purchase. The event stream
                 uses a random identifier created for and reused only within the
                 current browser tab. It does not store analytics cookies, birthdays, calculated
                 cards, names, email addresses, phone numbers, full referrer URLs,
@@ -163,9 +151,8 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
-            <li className="border-t border-[#14110d]/12 pt-2">To recognize your paid voice access when you call from your checkout number.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
-            <li className="border-t border-[#14110d]/12 pt-2">To connect return calls with the correct paid access during your access window.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To support and honor legacy phone orders during their original access windows.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To follow up on questions or support requests about a purchase, if you ask.</li>
           </ul>
           <p className="mt-4">
@@ -194,7 +181,8 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>xAI</strong> — AI processing for the voice reading guide.{" "}
+              <strong>xAI</strong> — AI processing for legacy voice orders that
+              remain within their original access windows.{" "}
               <a href="https://x.ai/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 xAI Privacy Policy
               </a>
@@ -222,7 +210,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How long verified records are kept</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-2">Voice access profiles: for the access window you purchased, up to 90 days.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">Legacy voice access profiles: through the original purchased window, up to 90 days; no new profiles are created.</li>
             <li className="border-t border-[#14110d]/12 pt-2">Order records: up to 400 days for support and accounting.</li>
             <li className="border-t border-brand-line pt-2">Tab-scoped conversion analytics: up to three months.</li>
             <li className="border-t border-brand-line pt-2">Stripe checkout attribution metadata: under Stripe&rsquo;s transaction-retention rules.</li>
@@ -237,8 +225,8 @@ export default function PrivacyPolicy() {
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
-            with the email address used at checkout and, if applicable, the
-            voice-reading phone number. We will
+            with the email address used at checkout and, for a legacy phone
+            order, the original checkout phone number. We will
             confirm deletion within a reasonable time, except for records we must
             keep for legal, tax, fraud, or payment-dispute reasons.
           </p>

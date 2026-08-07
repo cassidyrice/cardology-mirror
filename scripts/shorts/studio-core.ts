@@ -7,7 +7,7 @@ import {
 
 export type StudioPostType = "birthday_reveal" | "card_meaning" | "compatibility";
 export type StudioDuration = 15 | 30;
-export type StudioGoal = "free_calculator" | "ai_voice" | "brand_awareness";
+export type StudioGoal = "free_calculator" | "blueprint" | "brand_awareness";
 
 export type StudioInput = {
   postType: StudioPostType;
@@ -79,13 +79,13 @@ const BRAND_CONTEXT = {
     "The deck-calendar link is a Cardology tradition, not proven history.",
     "December 31 maps to the Joker on public pages.",
     "Same-card compatibility describes a shared pattern without ranking either person.",
-    "The paid products are one-time AI voice readings: a $19 Quick Question, the $39 Complete Reading, and a $199 90-Day Season Pass.",
+    "The active paid product is the $29 one-time Personal Card Blueprint, an instant personalized written report.",
   ],
 } as const;
 
 const CTA: Record<StudioGoal, string> = {
   free_calculator: "Find your own card free at CardBlueprints.com.",
-  ai_voice: "Hear your first card free, then the $39 Complete Reading goes deeper.",
+  blueprint: "Get your $29 Personal Card Blueprint at CardBlueprints.com.",
   brand_awareness: "See the hand you were dealt. Choose how to play it. Card Blueprints.",
 };
 
@@ -140,7 +140,7 @@ export function studioContext() {
     durations: [15, 30],
     goals: [
       { value: "free_calculator", label: "Free calculator" },
-      { value: "ai_voice", label: "$39 Complete Reading" },
+      { value: "blueprint", label: "$29 Personal Card Blueprint" },
       { value: "brand_awareness", label: "Brand awareness" },
     ],
   };
@@ -189,8 +189,8 @@ export function generateStudioScript(input: StudioInput): StudioOutput {
       ...plan.factsChecked,
       "Card Blueprints supplied the card facts and meanings.",
       "The script treats Cardology as reflection, not fate.",
-      input.goal === "ai_voice"
-        ? "The paid CTA uses the approved $39 Complete Reading wording."
+      input.goal === "blueprint"
+        ? "The paid CTA uses the approved $29 Personal Card Blueprint wording."
         : "The CTA uses an approved Card Blueprints message.",
     ],
     warnings,
@@ -470,8 +470,8 @@ function applyTrendPacing(hook: string, trendIdea?: string): { hook: string; lab
 function buildCaption(lead: string, goal: StudioGoal, hashtags: string[]): string {
   const action = goal === "free_calculator"
     ? "Try the free calculator at cardblueprints.com."
-    : goal === "ai_voice"
-      ? "Hear your first card free, then the $39 Complete Reading goes deeper."
+    : goal === "blueprint"
+      ? "Get your $29 Personal Card Blueprint at cardblueprints.com."
       : "See the hand you were dealt. Choose how to play it.";
   return `${lead}\n\nA mirror, not a forecast. ${action}\n\n${hashtags.join(" ")}`;
 }
@@ -481,7 +481,7 @@ function validateInput(input: StudioInput) {
     throw new Error("Choose a valid post type.");
   }
   if (![15, 30].includes(input.duration)) throw new Error("Choose 15 or 30 seconds.");
-  if (!["free_calculator", "ai_voice", "brand_awareness"].includes(input.goal)) {
+  if (!["free_calculator", "blueprint", "brand_awareness"].includes(input.goal)) {
     throw new Error("Choose a valid goal.");
   }
   if (input.postType === "birthday_reveal" && !input.dateSlug) throw new Error("Choose a birthday.");
@@ -544,7 +544,7 @@ function hashtagDate(label: string): string {
 
 function ctaScreenText(goal: StudioGoal): string {
   if (goal === "free_calculator") return "Find your card free";
-  if (goal === "ai_voice") return "Complete Reading — $39";
+  if (goal === "blueprint") return "Personal Card Blueprint — $29";
   return "Choose how to play it";
 }
 

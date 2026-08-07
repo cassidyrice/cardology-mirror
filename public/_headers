@@ -12,12 +12,6 @@
 /videos
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
 
-/readings
-  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
-
-/try
-  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
-
 /blog
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
 

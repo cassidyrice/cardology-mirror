@@ -1,6 +1,6 @@
-// Public paid catalog: voice readings + digital downloads.
-// Every marketing surface, checkout route, and webhook reads from here —
-// entitlements are defined once and validated server-side against this file.
+// Product records used by active sales and historical fulfillment.
+// Voice-reading offers are retained for old Stripe sessions and entitlements,
+// but are not part of the active public catalog or new checkout lookup.
 
 export type ProductKind = "voice_reading" | "digital_download" | "instant_report";
 
@@ -52,11 +52,7 @@ export type InstantReportOffer = ProductBase & {
 };
 
 export type SiteProduct = ReadingOffer | DigitalDownloadOffer | InstantReportOffer;
-
-export type ReadingOfferFact = {
-  label: "Deliverable" | "Session" | "Calls" | "Access" | "Renewal";
-  value: string;
-};
+export type ActiveProduct = DigitalDownloadOffer | InstantReportOffer;
 
 export type DigitalOfferFact = {
   label: "Deliverable" | "Format" | "Access" | "Redownload" | "Renewal";
@@ -214,9 +210,10 @@ export const ALL_PRODUCTS: SiteProduct[] = [
 ];
 
 /** Products currently purchasable and safe to advertise as live offers. */
-export const PUBLIC_PRODUCTS: SiteProduct[] = ALL_PRODUCTS.filter(
-  (product) => product.kind !== "digital_download" || product.available,
-);
+export const PUBLIC_PRODUCTS: ActiveProduct[] = [
+  ...INSTANT_REPORT_PRODUCTS,
+  ...DIGITAL_PRODUCTS.filter((product) => product.available),
+];
 
 export function isVoiceReading(p: SiteProduct): p is ReadingOffer {
   return p.kind === "voice_reading";
@@ -234,9 +231,9 @@ export function productBySlug(slug: string): SiteProduct | undefined {
   return ALL_PRODUCTS.find((p) => p.slug === slug);
 }
 
-/** Voice-only lookup (existing call sites / ReadingBridge). */
-export function offerBySlug(slug: string): ReadingOffer | undefined {
-  return READING_OFFERS.find((o) => o.slug === slug);
+/** Active-sale lookup. Checkout routes must use this, never productBySlug. */
+export function publicProductBySlug(slug: string): ActiveProduct | undefined {
+  return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
 export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
@@ -245,42 +242,6 @@ export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
 
 export function instantReportBySlug(slug: string): InstantReportOffer | undefined {
   return INSTANT_REPORT_PRODUCTS.find((o) => o.slug === slug);
-}
-
-// Customer-facing entitlement facts are derived from the same fields the
-// checkout and access layers use. Keep the pricing cards explicit without
-// creating a second, hand-maintained version of the offer contract.
-export function readingOfferFacts(offer: ReadingOffer): ReadingOfferFact[] {
-  const isSeasonPass = offer.accessType === "season_pass";
-
-  return [
-    {
-      label: "Deliverable",
-      value: offer.deliverable,
-    },
-    {
-      label: "Session",
-      value: `Up to ${offer.durationMinutes} minutes${isSeasonPass ? " per session" : ""}.`,
-    },
-    {
-      label: "Calls",
-      value: isSeasonPass
-        ? "Unlimited personal return calls under fair use."
-        : `${offer.maxCompletedCalls === 1 ? "One" : offer.maxCompletedCalls} completed call${
-            offer.maxCompletedCalls === 1 ? "" : "s"
-          }.`,
-    },
-    {
-      label: "Access",
-      value: isSeasonPass
-        ? `${offer.accessDays} days from purchase.`
-        : `Use within ${offer.accessDays} days.`,
-    },
-    {
-      label: "Renewal",
-      value: "No automatic renewal.",
-    },
-  ];
 }
 
 export function digitalOfferFacts(offer: DigitalDownloadOffer): DigitalOfferFact[] {
@@ -304,36 +265,4 @@ export function instantReportFacts(offer: InstantReportOffer): InstantReportFact
     { label: "Timing", value: "Generated immediately after payment." },
     { label: "Renewal", value: "No automatic renewal. One-time purchase." },
   ];
-}
-
-export function instantReportHref(offer: InstantReportOffer): string {
-  return offer.href ?? `/checkout/${offer.slug}`;
-}
-
-export function readingOfferHref(offer: ReadingOffer): string {
-  return offer.href ?? `/checkout/${offer.slug}`;
-}
-
-export function productCheckoutHref(product: SiteProduct): string {
-  return product.href && product.kind === "digital_download"
-    ? `/checkout/${product.slug}`
-    : `/checkout/${product.slug}`;
-}
-
-/**
- * Public, indexable link for an offer — the /readings anchor, not the noindex
- * checkout route. Matches the Offer.url emitted in app/layout.tsx so sitewide
- * chrome and structured data point at the same place. Use this in the footer
- * and other always-present navigation; use readingOfferHref for real intent.
- */
-export function readingOfferPublicHref(offer: ReadingOffer): string {
-  return `/readings#${offer.slug}`;
-}
-
-export function digitalProductPublicHref(offer: DigitalDownloadOffer): string {
-  return offer.href ?? `/products/${offer.slug}`;
-}
-
-export function instantReportPublicHref(offer: InstantReportOffer): string {
-  return offer.href ?? `/products/${offer.slug}`;
 }

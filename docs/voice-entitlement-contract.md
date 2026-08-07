@@ -1,16 +1,16 @@
 # Voice entitlement contract — cardology-unlock Worker
 
-**Status: REQUIRED, NOT YET IMPLEMENTED IN THIS REPOSITORY.**
+**Status: LEGACY COMPATIBILITY ONLY — PRODUCTS RETIRED FROM NEW SALES.**
 
-The website (this repo) sells three voice readings and describes their limits
-in public copy, checkout metadata, and legal terms. The AI reading line itself
-is answered by the external `cardology-unlock` Cloudflare Worker, whose source
-is **not** in this repository. Nothing in this repo technically enforces call
-duration, session consumption, or fair use — the Worker must. Until the Worker
-implements this contract, the limits below are policy statements, not
-technical controls.
+The website previously sold three voice readings. New checkout creation is now
+blocked, but existing paid orders must still be interpreted and honored during
+their original access windows. The AI reading line itself is answered by the
+external `cardology-unlock` Cloudflare Worker, whose source is **not** in this
+repository. Nothing in this repo technically enforces call duration, session
+consumption, or fair use — the Worker must preserve those rules for legacy
+orders.
 
-## Canonical offers (lib/products.ts)
+## Canonical legacy offers (lib/products.ts)
 
 | Slug | Price | Access type | Session cap | Window | Completed calls |
 |---|---|---|---|---|---|
@@ -18,9 +18,7 @@ technical controls.
 | `complete-reading` | $39 | `single_session` | 15 min | 30 days | 1 |
 | `season-pass-90` | $199 | `season_pass` | 15 min/session | 90 days | unlimited (fair use) |
 
-Checkout sessions carry this entitlement in Stripe metadata (set by
-`app/checkout/[offer]/route.ts`, values derived server-side from
-`lib/products.ts`, never from the client):
+Historical Checkout sessions carry this entitlement in Stripe metadata:
 
 ```
 offer_slug            quick-question | complete-reading | season-pass-90
@@ -31,9 +29,8 @@ access_days           "30" | "90"
 max_completed_calls   "1" (absent for season pass)
 ```
 
-Stripe Checkout collects the buyer's phone number
-(`phone_number_collection.enabled = true`); it arrives in
-`checkout.session.completed` as `customer_details.phone`.
+Those historical Checkout sessions collected the buyer's phone number in
+`customer_details.phone`.
 
 ## What the Worker must enforce
 
@@ -68,16 +65,17 @@ Stripe Checkout collects the buyer's phone number
     start/end, duration, consumed y/n, reason) so refund reviews and support
     (`/refund-policy` promises a review of "the access record") are possible.
 
-## What this repo already does
+## What this repo does for legacy compatibility
 
-- Sells the three offers and 303-redirects `/checkout/[slug]` to Stripe
-  Checkout with the metadata above.
-- Webhook (`app/api/checkout/webhook/route.ts`) emails the buyer start-here
+- Rejects new checkout review/session requests for all three retired slugs.
+- Keeps the legacy definitions in `lib/products.ts` so old Stripe metadata can
+  still be interpreted.
+- The webhook (`app/api/checkout/webhook/route.ts`) can email an existing buyer start-here
   instructions and mints a **site** access token (30/90 days, matching
   `accessDays`) for the web reading tools. This token gates website AI
   features only — it does not and cannot limit phone calls.
-- Publishes the limits in `/readings`, `/terms-of-service`,
-  `/refund-policy`, and checkout copy.
+- Keeps the success route capable of resolving a previously paid voice order.
+- Does not publish or sell the retired offers in the active catalog.
 
 ## Explicitly out of scope here (do not claim as done)
 
@@ -85,6 +83,5 @@ Stripe Checkout collects the buyer's phone number
 - Single-session consumption.
 - Concurrency limits, fair-use detection, usage ledger.
 
-When the Worker implements this contract, verify each rule with real test
-calls (free preview, each paid tier, expiry, duplicate webhook replay) before
-publicly describing the limits as enforced.
+Any support work on an unexpired historical order must verify the relevant
+rule with controlled test calls before claiming it is technically enforced.
