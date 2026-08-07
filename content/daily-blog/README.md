@@ -1,11 +1,31 @@
 # Daily Cardology Blog Guardrails
 
-The scheduled generator appends one SEO-safe article to `lib/generated-blog-posts.json`.
+The scheduled generator appends SEO-safe articles to `lib/generated-blog-posts.json`.
+
+## Twice-daily schedule
+
+Hermes cron ships **two posts per UTC day**:
+
+| Slot | Env | Typical cadence (US Central) |
+|------|-----|-------------------------------|
+| `am` | `POST_SLOT=am` | ~9:00 AM CT |
+| `pm` | `POST_SLOT=pm` | ~4:00 PM CT |
+
+Ship command (generate → SEO gates → test → commit → Pages deploy):
+
+```sh
+POST_SLOT=am bun run ship:daily-blog
+POST_SLOT=pm bun run ship:daily-blog
+```
+
+Each post is E-E-A-T enriched automatically: methodology/limits section, ≥4 FAQs,
+Cassidy Rice byline on the template, required links to calculator + Blueprint +
+methodology + editorial policy, and a ban on retired phone-offer language.
+
 
 ## Pillar rotation
 
-The generator alternates between two lanes, keyed deterministically on the UTC day
-index of the post date (`floor(Date.parse(POST_DATE) / 86400000)`):
+The generator alternates between two lanes, keyed deterministically on `selectionIndex = dayIndex*2 + (slot==pm?1:0)` (`floor(Date.parse(POST_DATE) / 86400000)`):
 
 - **Even day index** — public-figure birth-card profile (`birth-card-meanings`),
   drawn from `topics.json` plus `trending-queue.json`. These remain the proven
@@ -37,7 +57,7 @@ DRY_RUN=1 POST_DATE=2026-07-13 bun run generate:daily-blog
 - Avoid medical, mental-health, legal, criminal, sexual, or family claims.
 - Discuss public roles, public-facing creative/career patterns, known collaborations, visible conflicts, and relational dynamics that are already part of the public record.
 - Keep political figures neutral: no endorsement, no attack, no certainty about character.
-- Link back to the calculator, the matching birth-card page, and the readings product ladder.
+- Link back to the calculator, the matching birth-card page, and the Personal Card Blueprint ($29). Never revive phone-reading CTAs.
 - Do not publish duplicate slugs, duplicate figure names, or near-identical keyword sets.
 
 ## Rules for definitional posts

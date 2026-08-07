@@ -46,6 +46,25 @@ type Selection =
   | { kind: "definitional"; topic: DefinitionalTopic };
 
 const __filename = fileURLToPath(import.meta.url);
+
+const REQUIRED_TOOL_HREFS = [
+  "/birth-card-calculator",
+  "/products/personal-card-blueprint",
+  "/methodology",
+  "/editorial-policy",
+] as const;
+
+const BANNED_SEO_COPY = [
+  /phone reading/i,
+  /ai voice reading/i,
+  /\$99/,
+  /call the reading line/i,
+  /949[)\s-]*368/i,
+  /\/unlock/i,
+  /7-day trial/i,
+  /free call/i,
+];
+
 const __dirname = path.dirname(__filename);
 const root = path.resolve(__dirname, "..");
 
@@ -63,6 +82,8 @@ const PILLAR_ROTATION: DefinitionalPillar[] = [
 ];
 
 const postDate = process.env.POST_DATE || new Date().toISOString().slice(0, 10);
+/** am | pm — twice-daily publish slots share a calendar day but pick different topics. */
+const postSlot: "am" | "pm" = process.env.POST_SLOT === "pm" ? "pm" : "am";
 const forcedSlug = process.env.DAILY_BLOG_TOPIC_SLUG;
 const dryRun = process.env.DRY_RUN === "1";
 
@@ -76,6 +97,7 @@ const existingSlugs = new Set([
 const existingKeywordSets = generated.map((post) => new Set(post.keywords.map(normalizeKeyword)));
 
 const dayIndex = Math.floor(Date.parse(`${postDate}T00:00:00Z`) / 86_400_000);
+const selectionIndex = dayIndex * 2 + (postSlot === "pm" ? 1 : 0);
 const figureCandidates = figures.filter((topic) => isEligible(topic.slug, topic.keywords));
 const definitionalCandidates = definitionals.filter((topic) => isEligible(topic.slug, topic.keywords));
 
@@ -85,17 +107,19 @@ if (!selection) {
   process.exit(0);
 }
 
-const post =
+const post = enrichEat(
   selection.kind === "figure"
     ? buildPublicFigurePost(selection.topic)
-    : buildDefinitionalPost(selection.topic);
+    : buildDefinitionalPost(selection.topic),
+);
+assertSeoSafe(post);
 
 if (dryRun) {
   const remaining = PILLAR_ROTATION.map(
     (pillar) => `${pillar}=${definitionalCandidates.filter((topic) => topic.pillar === pillar).length}`,
   ).join(" ");
   console.log(
-    `[dry-run] date=${postDate} dayIndex=${dayIndex} lane=${selection.kind} pillar=${post.pillar} slug=${post.slug}`,
+    `[dry-run] date=${postDate} slot=${postSlot} selectionIndex=${selectionIndex} lane=${selection.kind} pillar=${post.pillar} slug=${post.slug}`,
   );
   console.log(`[dry-run] eligible figures=${figureCandidates.length} definitional: ${remaining}`);
   process.exit(0);
@@ -104,7 +128,7 @@ if (dryRun) {
 generated.push(post);
 fs.writeFileSync(generatedPath, `${JSON.stringify(generated, null, 2)}\n`);
 
-console.log(`Generated ${post.slug}`);
+console.log(`Generated ${post.slug} slot=${postSlot} pillar=${post.pillar} faqs=${post.faqs.length} sections=${post.sections.length}`);
 
 function readFigurePool(): PublicFigureTopic[] {
   const base = readJson<TopicsFile>(topicsPath, { figures: [] }).figures;
@@ -159,18 +183,20 @@ function selectTopic(): Selection | null {
     throw new Error(`Forced topic ${forcedSlug} is missing, already published, or too close to an existing topic.`);
   }
 
-  const lanes: Selection["kind"][] = dayIndex % 2 === 0 ? ["figure", "definitional"] : ["definitional", "figure"];
+  // Twice-daily: even selectionIndex → figure lane first; odd → definitional first.
+  const lanes: Selection["kind"][] =
+    selectionIndex % 2 === 0 ? ["figure", "definitional"] : ["definitional", "figure"];
   for (const lane of lanes) {
     if (lane === "figure" && figureCandidates.length > 0) {
-      return { kind: "figure", topic: figureCandidates[dayIndex % figureCandidates.length] };
+      return { kind: "figure", topic: figureCandidates[selectionIndex % figureCandidates.length] };
     }
     if (lane === "definitional") {
-      const start = Math.floor(dayIndex / 2) % PILLAR_ROTATION.length;
+      const start = Math.floor(selectionIndex / 2) % PILLAR_ROTATION.length;
       for (let offset = 0; offset < PILLAR_ROTATION.length; offset++) {
         const pillar = PILLAR_ROTATION[(start + offset) % PILLAR_ROTATION.length];
         const candidates = definitionalCandidates.filter((topic) => topic.pillar === pillar);
         if (candidates.length > 0) {
-          return { kind: "definitional", topic: candidates[dayIndex % candidates.length] };
+          return { kind: "definitional", topic: candidates[selectionIndex % candidates.length] };
         }
       }
     }
@@ -406,6 +432,113 @@ function isValidDefinitionalTopic(value: unknown): value is DefinitionalTopic {
 
 function unique(values: string[]): string[] {
   return [...new Set(values.filter(Boolean))];
+}
+
+
+function enrichEat(post: BlogPost): BlogPost {
+  const sections = [...post.sections];
+  const hasMethod = sections.some((s) => /method|limit|trust|editorial/i.test(s.heading));
+  if (!hasMethod) {
+    sections.push({
+      heading: "Method, limits, and how to verify",
+      body: [
+        "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+        "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit.",
+      ],
+      links: [
+        { label: "Methodology", href: "/methodology" },
+        { label: "Editorial policy", href: "/editorial-policy" },
+        { label: "Cardology for beginners", href: "/cardology-for-beginners" },
+      ],
+    });
+  }
+
+  const faqs = [...post.faqs];
+  const ensureFaq = (q: string, a: string) => {
+    if (!faqs.some((f) => f.q.toLowerCase() === q.toLowerCase())) faqs.push({ q, a });
+  };
+  ensureFaq(
+    "Is Cardology fortune-telling?",
+    "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events.",
+  );
+  ensureFaq(
+    "How do I verify a birth card myself?",
+    "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card.",
+  );
+  ensureFaq(
+    "What is the Personal Card Blueprint?",
+    "A $29 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription.",
+  );
+  ensureFaq(
+    "Who publishes Card Blueprints?",
+    "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages.",
+  );
+
+  const coreLinks = [...post.coreLinks];
+  const ensureLink = (label: string, href: string, note?: string) => {
+    if (!coreLinks.some((l) => l.href === href)) coreLinks.push(note ? { label, href, note } : { label, href });
+  };
+  ensureLink("Birth Card Calculator", "/birth-card-calculator");
+  ensureLink("Personal Card Blueprint", "/products/personal-card-blueprint", "$29 instant written report.");
+  ensureLink("Methodology", "/methodology");
+  ensureLink("Editorial policy", "/editorial-policy");
+  ensureLink("What Is Cardology?", "/what-is-cardology");
+
+  // Keep meta description in SERP range.
+  const description = fitMeta(post.description, 155);
+  const seoTitle = fitMeta(post.seoTitle ?? post.title, 60);
+
+  return {
+    ...post,
+    seoTitle: seoTitle === post.title ? post.seoTitle : seoTitle,
+    description,
+    datePublished: postDate,
+    dateModified: postDate,
+    sections,
+    faqs,
+    coreLinks,
+    keywords: unique([
+      ...post.keywords,
+      "cardology",
+      "birth card",
+      "playing card astrology",
+    ]),
+  };
+}
+
+function assertSeoSafe(post: BlogPost): void {
+  const blob = JSON.stringify(post);
+  for (const re of BANNED_SEO_COPY) {
+    if (re.test(blob)) {
+      throw new Error(`SEO safety failed for ${post.slug}: matched ${re}`);
+    }
+  }
+  if (!post.answer || post.answer.length < 80) {
+    throw new Error(`SEO safety failed for ${post.slug}: answer too short`);
+  }
+  if (post.sections.length < 3) {
+    throw new Error(`SEO safety failed for ${post.slug}: need >=3 sections`);
+  }
+  if (post.faqs.length < 4) {
+    throw new Error(`SEO safety failed for ${post.slug}: need >=4 FAQs after E-E-A-T enrich`);
+  }
+  for (const href of REQUIRED_TOOL_HREFS) {
+    if (!post.coreLinks.some((l) => l.href === href) && !blob.includes(href)) {
+      throw new Error(`SEO safety failed for ${post.slug}: missing required link ${href}`);
+    }
+  }
+  const title = post.seoTitle ?? post.title;
+  if (title.length > 70) {
+    throw new Error(`SEO safety failed for ${post.slug}: title too long (${title.length})`);
+  }
+}
+
+function fitMeta(value: string, maxLength: number): string {
+  const clean = value.replace(/\s+/g, " ").trim();
+  if (clean.length <= maxLength) return clean;
+  const prefix = clean.slice(0, maxLength - 1);
+  const wordBoundary = prefix.lastIndexOf(" ");
+  return `${prefix.slice(0, wordBoundary > Math.floor(maxLength * 0.6) ? wordBoundary : prefix.length).replace(/[,:;.\\s]+$/, "")}…`;
 }
 
 function readJson<T>(filePath: string, fallback: T): T {

@@ -86,7 +86,13 @@ export default async function BlogPostPage({
       dateModified: post.dateModified,
       image: `${SITE_URL}/og/default.png`,
       mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}${blogPostPath(post)}` },
-      author: { "@id": `${SITE_URL}/#organization` },
+      author: {
+        "@type": "Person",
+        name: "Cassidy Rice",
+        url: `${SITE_URL}/about`,
+        jobTitle: "Founder",
+        worksFor: { "@id": `${SITE_URL}/#organization` },
+      },
       publisher: {
         "@id": `${SITE_URL}/#organization`,
         logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
@@ -130,6 +136,23 @@ export default async function BlogPostPage({
           </h1>
           <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
             {post.dek}
+          </p>
+          <p className="mt-4 text-sm leading-relaxed text-[#5b5148]">
+            By{" "}
+            <Link href="/about" className="underline underline-offset-4">
+              Cassidy Rice
+            </Link>
+            {" · "}
+            Published {post.datePublished}
+            {post.dateModified !== post.datePublished ? ` · Updated ${post.dateModified}` : ""}
+            {" · "}
+            <Link href="/editorial-policy" className="underline underline-offset-4">
+              Editorial policy
+            </Link>
+            {" · "}
+            <Link href="/methodology" className="underline underline-offset-4">
+              Methodology
+            </Link>
           </p>
           <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
             <p className="oracle-eyebrow mb-2">Direct answer</p>

@@ -8,7 +8,12 @@
       "description": "Why the standard playing deck has 52 cards, four suits, thirteen ranks, and one Joker, and what that structure means in Cardology.",
       "dek": "The deck is a calendar first: 52 cards for 52 weeks, four suits for four seasons, thirteen ranks for thirteen weeks of a season.",
       "readTime": "5 min read",
-      "keywords": ["why 52 cards in a deck", "deck of cards calendar", "joker card structure", "playing card symbolism"],
+      "keywords": [
+        "why 52 cards in a deck",
+        "deck of cards calendar",
+        "joker card structure",
+        "playing card symbolism"
+      ],
       "answer": "The standard deck mirrors the calendar: 52 cards for the 52 weeks of the year, four suits for the four seasons, and thirteen ranks in each suit for the thirteen weeks of a season. The Joker stands outside the count as the one card without a fixed value. Cardology reads that structure as a birthday map rather than a game.",
       "sections": [
         {
@@ -18,8 +23,14 @@
             "The number values line up too. Add the ranks of one suit, Ace through King, and you get 91. Multiply by four suits and you get 364. Add one for the Joker and you are at the length of a solar year."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" },
-            { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            },
+            {
+              "label": "52-Card Astrology Explained",
+              "href": "/52-card-astrology-explained"
+            }
           ]
         },
         {
@@ -36,7 +47,10 @@
             "Nothing about the assignment is drawn, shuffled, or intuited. The structure does the work, and interpretation begins only after the card is known."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         }
       ],
@@ -54,10 +68,20 @@
           "a": "No. Cardology uses the standard 52-card deck. The system is in the structure, not in any particular printing."
         }
       ],
-      "related": ["what-cardology-is-and-is-not", "four-suits-in-cardology", "how-a-birthday-becomes-a-card"],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "four-suits-in-cardology",
+        "how-a-birthday-becomes-a-card"
+      ],
       "coreLinks": [
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -67,7 +91,12 @@
       "description": "The fixed math that turns a birth month and day into one of the 52 birth cards in Cardology, with no randomness and no interpretation step.",
       "dek": "No shuffle, no draw: a simple equation on month and day resolves to exactly one card.",
       "readTime": "5 min read",
-      "keywords": ["birth card formula", "birthday card calculation", "how birth cards are assigned", "cardology math"],
+      "keywords": [
+        "birth card formula",
+        "birthday card calculation",
+        "how birth cards are assigned",
+        "cardology math"
+      ],
       "answer": "A birth card is calculated, not chosen. Each card carries a fixed numeric value based on its position in the deck, and a simple equation on the birth month and day resolves to exactly one of those values. Two people running the math on the same birthday will always get the same card.",
       "sections": [
         {
@@ -77,8 +106,14 @@
             "That value is the birth card. There is no chart to draw, no spread to lay out, and no judgment call anywhere in the step."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-            { "label": "Methodology", "href": "/methodology" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            },
+            {
+              "label": "Methodology",
+              "href": "/methodology"
+            }
           ]
         },
         {
@@ -95,7 +130,10 @@
             "Keeping the calculation mechanical is what makes the rest testable. If the input is fixed, disagreements are about reading, not arithmetic."
           ],
           "links": [
-            { "label": "How to Read a Birth Card Meaning", "href": "/blog/how-to-read-birth-card-meaning" }
+            {
+              "label": "How to Read a Birth Card Meaning",
+              "href": "/blog/how-to-read-birth-card-meaning"
+            }
           ]
         }
       ],
@@ -113,10 +151,20 @@
           "a": "Because the assignment is deterministic. Any correct implementation of the formula returns the same card for the same birthday."
         }
       ],
-      "related": ["how-to-find-your-birth-card", "what-cardology-is-and-is-not", "why-the-deck-has-52-cards-and-a-joker"],
+      "related": [
+        "how-to-find-your-birth-card",
+        "what-cardology-is-and-is-not",
+        "why-the-deck-has-52-cards-and-a-joker"
+      ],
       "coreLinks": [
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-        { "label": "Methodology", "href": "/methodology" }
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        }
       ]
     },
     {
@@ -127,7 +175,12 @@
       "description": "How Cardology differs from tarot: fixed birthday math versus shuffled draws, 52 playing cards versus 78 tarot cards, and pattern language versus divination.",
       "dek": "One system calculates, the other draws. That single difference changes everything downstream.",
       "readTime": "6 min read",
-      "keywords": ["cardology vs tarot", "playing cards vs tarot cards", "is cardology tarot", "tarot difference"],
+      "keywords": [
+        "cardology vs tarot",
+        "playing cards vs tarot cards",
+        "is cardology tarot",
+        "tarot difference"
+      ],
       "answer": "Cardology and tarot use different decks and different methods. Tarot uses 78 cards and depends on shuffled draws read in the moment. Cardology uses the standard 52-card deck and fixed birthday math: your card is calculated, not drawn, and it never changes.",
       "sections": [
         {
@@ -137,7 +190,10 @@
             "More important than the card count is the method. Tarot meaning arrives through a shuffle and a draw. Cardology meaning arrives through a calculation on a birthday. One is momentary, the other is structural."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            }
           ]
         },
         {
@@ -154,8 +210,14 @@
             "That is the practical trade: tarot offers flexibility in the moment, Cardology offers a stable mirror you can keep checking."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-            { "label": "All 52 Birth Cards", "href": "/birth-card" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            },
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            }
           ]
         }
       ],
@@ -173,10 +235,20 @@
           "a": "If you want a stable, testable starting point, Cardology is simpler: one card per person, calculated once, then studied over time."
         }
       ],
-      "related": ["what-cardology-is-and-is-not", "cardology-vs-astrology-what-each-system-reads", "how-a-birthday-becomes-a-card"],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "cardology-vs-astrology-what-each-system-reads",
+        "how-a-birthday-becomes-a-card"
+      ],
       "coreLinks": [
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -187,7 +259,12 @@
       "description": "How Cardology differs from astrology: playing-card birthday math versus planetary chart positions, and where the two systems overlap.",
       "dek": "Both start with a birth date. Only one needs the sky.",
       "readTime": "6 min read",
-      "keywords": ["cardology vs astrology", "birth card vs zodiac sign", "52 card system comparison", "astrology alternative"],
+      "keywords": [
+        "cardology vs astrology",
+        "birth card vs zodiac sign",
+        "52 card system comparison",
+        "astrology alternative"
+      ],
       "answer": "Astrology reads the positions of planets at the moment of birth and usually needs time and location. Cardology maps the birth month and day to one playing card through fixed deck-calendar math. The systems overlap in vocabulary, since Cardology borrows planetary names for its timing and ruling layers, but the machinery is different.",
       "sections": [
         {
@@ -197,7 +274,10 @@
             "That difference in scale is a feature, not a shortcoming. One card is easy to learn, easy to compare, and hard to hide behind."
           ],
           "links": [
-            { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+            {
+              "label": "52-Card Astrology Explained",
+              "href": "/52-card-astrology-explained"
+            }
           ]
         },
         {
@@ -207,7 +287,10 @@
             "The names are shorthand for life themes, not live sky calculations. A Saturn period in Cardology is a fixed segment of your year, not a transit."
           ],
           "links": [
-            { "label": "Birth Card vs Ruling Card", "href": "/birth-card-vs-ruling-card" }
+            {
+              "label": "Birth Card vs Ruling Card",
+              "href": "/birth-card-vs-ruling-card"
+            }
           ]
         },
         {
@@ -217,7 +300,10 @@
             "If you are new to both, start with the card. It is one fixed pattern you can test against yourself before adding anything else."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         }
       ],
@@ -235,10 +321,20 @@
           "a": "No. The planetary names in Cardology are theme labels. You can read the system without ever casting a chart."
         }
       ],
-      "related": ["what-cardology-is-and-is-not", "cardology-vs-tarot-what-is-the-difference", "birth-card-vs-ruling-card-how-to-read-both"],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "cardology-vs-tarot-what-is-the-difference",
+        "birth-card-vs-ruling-card-how-to-read-both"
+      ],
       "coreLinks": [
-        { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" },
-        { "label": "Birth Card vs Ruling Card", "href": "/birth-card-vs-ruling-card" }
+        {
+          "label": "52-Card Astrology Explained",
+          "href": "/52-card-astrology-explained"
+        },
+        {
+          "label": "Birth Card vs Ruling Card",
+          "href": "/birth-card-vs-ruling-card"
+        }
       ]
     },
     {
@@ -248,7 +344,12 @@
       "description": "A short history of Cardology: The Mystic Test Book, Olney Richmond, Florence Campbell and Edith Randall, Robert Lee Camp, and the deck structure older than all of them.",
       "dek": "The books are from the last 150 years. The structure they describe is built into the deck itself.",
       "readTime": "6 min read",
-      "keywords": ["history of cardology", "mystic test book", "olney richmond", "sacred symbols of the ancients"],
+      "keywords": [
+        "history of cardology",
+        "mystic test book",
+        "olney richmond",
+        "sacred symbols of the ancients"
+      ],
       "answer": "Modern Cardology descends from The Mystic Test Book, published by Olney Richmond in 1893, and was developed through the twentieth century by Florence Campbell and Edith Randall and later by Robert Lee Camp. The underlying deck-to-calendar correspondences are older than any of those books, because they are built into the structure of the 52-card deck.",
       "sections": [
         {
@@ -265,7 +366,10 @@
             "No one invented those numbers for the occasion. Whoever settled the deck's final form left a calendar inside it, and the Cardology literature is an attempt to read that calendar."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            }
           ]
         },
         {
@@ -275,8 +379,14 @@
             "The working test has not changed since Richmond: run the math on a real birthday, read the card, and see whether the description matches a real person."
           ],
           "links": [
-            { "label": "Methodology", "href": "/methodology" },
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Methodology",
+              "href": "/methodology"
+            },
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         }
       ],
@@ -294,10 +404,20 @@
           "a": "On the core math, yes. The birthday-to-card assignment is the same across the lineage; differences show up in interpretation style, not calculation."
         }
       ],
-      "related": ["what-cardology-is-and-is-not", "why-the-deck-has-52-cards-and-a-joker", "how-a-birthday-becomes-a-card"],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "why-the-deck-has-52-cards-and-a-joker",
+        "how-a-birthday-becomes-a-card"
+      ],
       "coreLinks": [
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" },
-        { "label": "Methodology", "href": "/methodology" }
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        },
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        }
       ]
     },
     {
@@ -307,7 +427,12 @@
       "description": "What you have to accept to use Cardology, what you do not, and why the system works best as a mirror you test rather than a doctrine you adopt.",
       "dek": "You do not have to believe anything. You have to be willing to check a description against real behavior.",
       "readTime": "5 min read",
-      "keywords": ["do you have to believe in cardology", "is cardology real", "cardology skeptic", "pattern language explained"],
+      "keywords": [
+        "do you have to believe in cardology",
+        "is cardology real",
+        "cardology skeptic",
+        "pattern language explained"
+      ],
       "answer": "Cardology does not require belief. The calculation layer is arithmetic, and the interpretation layer is a set of pattern descriptions you can test against real people and real weeks. The honest posture is neither faith nor dismissal: read the card, compare it with behavior, and keep only what clarifies something real.",
       "sections": [
         {
@@ -317,7 +442,10 @@
             "The claimed layer is interpretation: that a Queen of Hearts tends to carry certain emotional patterns, that a Saturn connection tends to feel like a lesson. Those are hypotheses about people, and they earn trust only by matching observation."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            }
           ]
         },
         {
@@ -334,8 +462,14 @@
             "That exercise takes ten minutes and gives you your own data. Whatever you conclude, it will be a conclusion about evidence rather than vibes."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-            { "label": "All 52 Birth Cards", "href": "/birth-card" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            },
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            }
           ]
         }
       ],
@@ -353,10 +487,20 @@
           "a": "Discard them. A pattern language is only useful when you are allowed to say a pattern is absent."
         }
       ],
-      "related": ["what-cardology-is-and-is-not", "how-to-read-birth-card-meaning", "where-cardology-comes-from"],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "how-to-read-birth-card-meaning",
+        "where-cardology-comes-from"
+      ],
       "coreLinks": [
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -366,7 +510,12 @@
       "description": "The Life Spread explained: the fixed arrangement of all 52 cards that gives every birth card its Life Path positions, from Mercury through King.",
       "dek": "Every birth card sits inside a larger map. The Life Spread is that map.",
       "readTime": "6 min read",
-      "keywords": ["life spread cardology", "life path cards", "grand solar spread", "card spread positions"],
+      "keywords": [
+        "life spread cardology",
+        "life path cards",
+        "grand solar spread",
+        "card spread positions"
+      ],
       "answer": "The Life Spread is a fixed arrangement of all 52 cards used in Cardology. Each birth card occupies one position in it, and the cards that fall in related positions become that card's Life Path cards: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, and beyond. It is the structure behind compatibility roles and karma-card relationships.",
       "sections": [
         {
@@ -376,7 +525,10 @@
             "Your birth card has a permanent address in that grid. The cards around and connected to that address form your Life Path: a Moon support card plus a sequence running Birth, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, and the crown positions."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            }
           ]
         },
         {
@@ -386,8 +538,14 @@
             "The same structure feeds the karma-card layer: environment and displacement describe how a card sits relative to its natural position."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            },
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            }
           ]
         },
         {
@@ -412,10 +570,20 @@
           "a": "For the deeper layer, yes. Birth-card comparison starts the reading, but the Life Spread positions name the role each person plays for the other."
         }
       ],
-      "related": ["cardology-compatibility-beginner-guide", "karma-cards-environment-and-displacement", "what-cardology-is-and-is-not"],
+      "related": [
+        "cardology-compatibility-beginner-guide",
+        "karma-cards-environment-and-displacement",
+        "what-cardology-is-and-is-not"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        }
       ]
     },
     {
@@ -425,7 +593,12 @@
       "description": "What the red and black polarity means in Cardology: receptive and expressive tendencies, day and night symbolism, and why neither color is easier.",
       "dek": "Color is the deck's oldest polarity, and the least deterministic thing about a card.",
       "readTime": "5 min read",
-      "keywords": ["red cards meaning", "black cards meaning", "card color polarity", "hearts diamonds vs clubs spades"],
+      "keywords": [
+        "red cards meaning",
+        "black cards meaning",
+        "card color polarity",
+        "hearts diamonds vs clubs spades"
+      ],
       "answer": "In Cardology, red cards (Hearts and Diamonds) are often read as the receptive, relational, and value-oriented half of the deck, while black cards (Clubs and Spades) are read as the mental and work-oriented half. Color is a soft polarity, not a verdict: every card of either color has centered and distorted expressions.",
       "sections": [
         {
@@ -435,7 +608,10 @@
             "Red gathers the suits of feeling and value, Hearts and Diamonds. Black gathers the suits of mind and work, Clubs and Spades. That is a rough compass heading, not a personality sentence."
           ],
           "links": [
-            { "label": "The Four Suits in Cardology", "href": "/blog/four-suits-in-cardology" }
+            {
+              "label": "The Four Suits in Cardology",
+              "href": "/blog/four-suits-in-cardology"
+            }
           ]
         },
         {
@@ -452,7 +628,10 @@
             "Use color the way the system intends: one more axis for noticing where a pattern lives, never a grade."
           ],
           "links": [
-            { "label": "All 52 Birth Cards", "href": "/birth-card" }
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            }
           ]
         }
       ],
@@ -470,10 +649,20 @@
           "a": "No. Cardology does not grade cards by color. Every card carries a full range from centered to distorted."
         }
       ],
-      "related": ["four-suits-in-cardology", "card-rank-meanings-aces-through-kings", "the-four-suits-as-life-stages"],
+      "related": [
+        "four-suits-in-cardology",
+        "card-rank-meanings-aces-through-kings",
+        "the-four-suits-as-life-stages"
+      ],
       "coreLinks": [
-        { "label": "All 52 Birth Cards", "href": "/birth-card" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "All 52 Birth Cards",
+          "href": "/birth-card"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -483,7 +672,12 @@
       "description": "Why the King of Spades, Jack of Hearts, and Eight of Clubs are called fixed cards, what the two semi-fixed pairs are, and how it changes a reading.",
       "dek": "Three cards never move in the spreads. Four more only trade places with a partner.",
       "readTime": "6 min read",
-      "keywords": ["fixed cards cardology", "king of spades jack of hearts eight of clubs", "semi fixed cards", "ace of clubs two of hearts pair"],
+      "keywords": [
+        "fixed cards cardology",
+        "king of spades jack of hearts eight of clubs",
+        "semi fixed cards",
+        "ace of clubs two of hearts pair"
+      ],
       "answer": "Three cards occupy the same position in both of Cardology's master arrangements: the Jack of Hearts, the Eight of Clubs, and the King of Spades. These are the fixed cards. Two pairs, the Ace of Clubs with the Two of Hearts and the Seven of Diamonds with the Nine of Hearts, simply exchange places, making them semi-fixed. People born to these cards are traditionally read as more constant in nature.",
       "sections": [
         {
@@ -500,7 +694,10 @@
             "Each semi-fixed card is read as carrying a strong echo of its partner, so a Seven of Diamonds reading usually checks the Nine of Hearts pattern too."
           ],
           "links": [
-            { "label": "All 52 Birth Cards", "href": "/birth-card" }
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            }
           ]
         },
         {
@@ -510,8 +707,14 @@
             "In practice, people with these birth cards are often described as consistent, sometimes to the point of immovability. As always, treat that as a hypothesis to check against the actual person."
           ],
           "links": [
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" },
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            },
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         }
       ],
@@ -529,10 +732,20 @@
           "a": "Not in the usual sense. The three fixed cards stand alone, and each semi-fixed card treats its partner as its karmic counterpart."
         }
       ],
-      "related": ["what-is-the-life-spread-in-cardology", "karma-cards-environment-and-displacement", "how-a-birthday-becomes-a-card"],
+      "related": [
+        "what-is-the-life-spread-in-cardology",
+        "karma-cards-environment-and-displacement",
+        "how-a-birthday-becomes-a-card"
+      ],
       "coreLinks": [
-        { "label": "All 52 Birth Cards", "href": "/birth-card" },
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+        {
+          "label": "All 52 Birth Cards",
+          "href": "/birth-card"
+        },
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        }
       ]
     },
     {
@@ -542,7 +755,12 @@
       "description": "Why people born on December 31 have the Joker as their birth card, and why the Joker is the one card Cardology declines to define.",
       "dek": "One birthday per year lands outside the 52-card map.",
       "readTime": "5 min read",
-      "keywords": ["joker birth card", "december 31 birthday card", "joker birthday meaning", "card with no value"],
+      "keywords": [
+        "joker birth card",
+        "december 31 birthday card",
+        "joker birthday meaning",
+        "card with no value"
+      ],
       "answer": "December 31 is the one birthday that maps to the Joker rather than to any of the 52 counted cards. The Joker has no fixed rank, suit, or spread position, so traditional Cardology declines to assign it a definition: the Joker is read as able to take on the qualities of any card, and therefore pinned down by none.",
       "sections": [
         {
@@ -552,7 +770,10 @@
             "Everyone born on that date shares the Joker as their birth card. It is the rarest assignment in the system by definition: one day out of the year."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         },
         {
@@ -569,7 +790,10 @@
             "The honest posture is restraint. Where the system has no structure, a good reading says so rather than inventing one."
           ],
           "links": [
-            { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+            {
+              "label": "What Is Cardology?",
+              "href": "/what-is-cardology"
+            }
           ]
         }
       ],
@@ -587,10 +811,20 @@
           "a": "Partially. Timing layers and the other person's spread positions still work, but the birth-card layer itself stays open."
         }
       ],
-      "related": ["why-the-deck-has-52-cards-and-a-joker", "how-a-birthday-becomes-a-card", "what-cardology-is-and-is-not"],
+      "related": [
+        "why-the-deck-has-52-cards-and-a-joker",
+        "how-a-birthday-becomes-a-card",
+        "what-cardology-is-and-is-not"
+      ],
       "coreLinks": [
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        }
       ]
     },
     {
@@ -600,7 +834,12 @@
       "description": "The traditional Cardology reading of the suits as a life arc: Hearts as childhood, Clubs as education, Diamonds as adulthood, Spades as mastery.",
       "dek": "Beyond domains, the suits also tell a story in order: feeling, learning, valuing, working.",
       "readTime": "5 min read",
-      "keywords": ["suits as life stages", "hearts childhood spades wisdom", "suit order meaning", "cardology life arc"],
+      "keywords": [
+        "suits as life stages",
+        "hearts childhood spades wisdom",
+        "suit order meaning",
+        "cardology life arc"
+      ],
       "answer": "Alongside their domain meanings, the four suits are traditionally read as a life arc. Hearts correspond to childhood and the formation of feeling, Clubs to youth and education, Diamonds to adulthood and the management of value, and Spades to the final stage of work, mastery, and transformation. The arc is a teaching device, not a rule about age.",
       "sections": [
         {
@@ -610,7 +849,10 @@
             "Diamonds carry the middle: earning, valuing, building security, and deciding what matters. Spades close the arc: labor, responsibility, the body, and the transformations that come from sustained work."
           ],
           "links": [
-            { "label": "The Four Suits in Cardology", "href": "/blog/four-suits-in-cardology" }
+            {
+              "label": "The Four Suits in Cardology",
+              "href": "/blog/four-suits-in-cardology"
+            }
           ]
         },
         {
@@ -627,8 +869,14 @@
             "Where it earns its keep is in naming emphasis: which stage's questions a person seems to treat as the real ones, decade after decade."
           ],
           "links": [
-            { "label": "All 52 Birth Cards", "href": "/birth-card" },
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            },
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         }
       ],
@@ -646,10 +894,20 @@
           "a": "Yes, it appears throughout the lineage as a secondary meaning of the suits, alongside the primary domain reading."
         }
       ],
-      "related": ["four-suits-in-cardology", "red-and-black-cards-in-cardology", "card-rank-meanings-aces-through-kings"],
+      "related": [
+        "four-suits-in-cardology",
+        "red-and-black-cards-in-cardology",
+        "card-rank-meanings-aces-through-kings"
+      ],
       "coreLinks": [
-        { "label": "All 52 Birth Cards", "href": "/birth-card" },
-        { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+        {
+          "label": "All 52 Birth Cards",
+          "href": "/birth-card"
+        },
+        {
+          "label": "52-Card Astrology Explained",
+          "href": "/52-card-astrology-explained"
+        }
       ]
     },
     {
@@ -659,7 +917,12 @@
       "description": "The structural difference between Ace-through-Ten and Jack, Queen, King in Cardology: quantities of energy versus social roles.",
       "dek": "Numbers describe how much and what kind. Courts describe who you become when you carry it.",
       "readTime": "5 min read",
-      "keywords": ["number cards vs face cards", "court card people", "pip cards meaning", "jack queen king roles"],
+      "keywords": [
+        "number cards vs face cards",
+        "court card people",
+        "pip cards meaning",
+        "jack queen king roles"
+      ],
       "answer": "In Cardology, the number cards Ace through Ten describe stages and quantities of a suit's energy: beginnings, pairings, expansions, completions. The court cards, Jack, Queen, and King, describe social roles: the apprentice or trickster, the steward, and the master. A number card asks what is happening; a court card asks who you are being.",
       "sections": [
         {
@@ -669,7 +932,10 @@
             "Jack, Queen, and King break the progression and become people. They are not more energy; they are energy with a role, a rank, and a responsibility attached."
           ],
           "links": [
-            { "label": "Card Rank Meanings: Aces Through Kings", "href": "/blog/card-rank-meanings-aces-through-kings" }
+            {
+              "label": "Card Rank Meanings: Aces Through Kings",
+              "href": "/blog/card-rank-meanings-aces-through-kings"
+            }
           ]
         },
         {
@@ -686,7 +952,10 @@
             "If you remember one line: numbers move, courts hold. The friction between moving and holding explains a surprising amount of card behavior."
           ],
           "links": [
-            { "label": "All 52 Birth Cards", "href": "/birth-card" }
+            {
+              "label": "All 52 Birth Cards",
+              "href": "/birth-card"
+            }
           ]
         }
       ],
@@ -704,10 +973,20 @@
           "a": "No. A Ten is the suit's energy at full public expression, but still an event pattern rather than a social role."
         }
       ],
-      "related": ["card-rank-meanings-aces-through-kings", "four-suits-in-cardology", "how-to-read-birth-card-meaning"],
+      "related": [
+        "card-rank-meanings-aces-through-kings",
+        "four-suits-in-cardology",
+        "how-to-read-birth-card-meaning"
+      ],
       "coreLinks": [
-        { "label": "All 52 Birth Cards", "href": "/birth-card" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "All 52 Birth Cards",
+          "href": "/birth-card"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -717,7 +996,12 @@
       "description": "The arithmetic of the Cardology year: seven 52-day periods from birthday to birthday, each named for a planet and carrying its own card.",
       "dek": "Seven periods of 52 days each cover 364 days. Your birthday resets the count.",
       "readTime": "5 min read",
-      "keywords": ["seven 52 day periods", "cardology year structure", "planetary period calendar", "birthday year division"],
+      "keywords": [
+        "seven 52 day periods",
+        "cardology year structure",
+        "planetary period calendar",
+        "birthday year division"
+      ],
       "answer": "Cardology divides your personal year into seven periods of 52 days each, which together cover 364 days from one birthday to the next. The periods run in planetary order: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune. Each period carries a card from your yearly spread, giving that stretch of days a theme.",
       "sections": [
         {
@@ -727,7 +1011,10 @@
             "The same numbers that structure the deck structure the year: 52 cards, 52 weeks, 52 days per period. That symmetry is why the deck can function as a timing system at all."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         },
         {
@@ -744,7 +1031,10 @@
             "To find your current period and card, count 52-day blocks from your last birthday or use the period tool."
           ],
           "links": [
-            { "label": "52-Day Periods in Cardology", "href": "/blog/52-day-periods-in-cardology" }
+            {
+              "label": "52-Day Periods in Cardology",
+              "href": "/blog/52-day-periods-in-cardology"
+            }
           ]
         }
       ],
@@ -762,10 +1052,20 @@
           "a": "No. Periods count from your own birthday, so two people are usually in different periods on the same calendar day."
         }
       ],
-      "related": ["52-day-periods-in-cardology", "when-does-your-cardology-year-begin", "planetary-periods-without-prediction"],
+      "related": [
+        "52-day-periods-in-cardology",
+        "when-does-your-cardology-year-begin",
+        "planetary-periods-without-prediction"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "52-Card Astrology Explained",
+          "href": "/52-card-astrology-explained"
+        }
       ]
     },
     {
@@ -775,7 +1075,12 @@
       "description": "Why the Cardology year runs birthday to birthday rather than January to December, and what that means for reading your current cards.",
       "dek": "January 1 is irrelevant here. Your cards turn over on your birthday.",
       "readTime": "5 min read",
-      "keywords": ["cardology year start", "birthday to birthday year", "personal year cards", "when do cards change"],
+      "keywords": [
+        "cardology year start",
+        "birthday to birthday year",
+        "personal year cards",
+        "when do cards change"
+      ],
       "answer": "Your Cardology year begins on your birthday and runs until the day before your next one. All yearly timing layers, including the seven 52-day periods, the Long Range card, and the yearly spread itself, reset on that date. The calendar year plays no role in the system's timing.",
       "sections": [
         {
@@ -785,7 +1090,10 @@
             "The birthday itself is often treated as day zero, a threshold day belonging to neither year, with the Mercury period beginning the day after."
           ],
           "links": [
-            { "label": "How 52-Day Periods Divide Your Year", "href": "/blog/how-52-day-periods-divide-your-year" }
+            {
+              "label": "How 52-Day Periods Divide Your Year",
+              "href": "/blog/how-52-day-periods-divide-your-year"
+            }
           ]
         },
         {
@@ -795,7 +1103,10 @@
             "The structural layer never resets. Your birth card, ruling card, and Life Spread positions are fixed for life. Timing moves across structure; it does not replace it."
           ],
           "links": [
-            { "label": "Birth Card vs Ruling Card", "href": "/birth-card-vs-ruling-card" }
+            {
+              "label": "Birth Card vs Ruling Card",
+              "href": "/birth-card-vs-ruling-card"
+            }
           ]
         },
         {
@@ -805,7 +1116,10 @@
             "It also means late-December babies are not special and January feels like nothing. The only date the system cares about is yours."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -823,10 +1137,20 @@
           "a": "Never. Only the timing layers turn over each year; the birth card is fixed by month and day."
         }
       ],
-      "related": ["how-52-day-periods-divide-your-year", "how-age-changes-your-yearly-spread", "52-day-periods-in-cardology"],
+      "related": [
+        "how-52-day-periods-divide-your-year",
+        "how-age-changes-your-yearly-spread",
+        "52-day-periods-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -836,7 +1160,12 @@
       "description": "A step-by-step order for reading a Cardology yearly spread: Long Range first, then the seven period cards, then Pluto, Result, environment, and displacement.",
       "dek": "A yearly spread is a table of contents for the year, best read in a fixed order.",
       "readTime": "6 min read",
-      "keywords": ["yearly spread reading order", "how to read year cards", "annual card spread", "birthday spread guide"],
+      "keywords": [
+        "yearly spread reading order",
+        "how to read year cards",
+        "annual card spread",
+        "birthday spread guide"
+      ],
       "answer": "A yearly spread is the set of cards assigned to one year of your life, calculated from your birth card and age. A clean reading order: start with the Long Range card for the year's headline theme, walk the seven planetary period cards in order, then read the Pluto card as the year's challenge and the Result card as what engaging it tends to produce.",
       "sections": [
         {
@@ -846,7 +1175,10 @@
             "Resist reading all the cards as one blended fortune. Each card holds a position, and the position is most of the meaning."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         },
         {
@@ -863,7 +1195,10 @@
             "A practical habit: write the year's cards on one page, revisit it at each period boundary, and note what actually occurred. The spread earns exactly as much trust as those notes justify."
           ],
           "links": [
-            { "label": "Planetary Periods Without Prediction", "href": "/blog/planetary-periods-without-prediction" }
+            {
+              "label": "Planetary Periods Without Prediction",
+              "href": "/blog/planetary-periods-without-prediction"
+            }
           ]
         }
       ],
@@ -881,10 +1216,20 @@
           "a": "Start with the Long Range card for the year's theme. The current period card matters most day to day."
         }
       ],
-      "related": ["what-is-a-long-range-card", "pluto-and-result-cards-in-the-yearly-spread", "how-52-day-periods-divide-your-year"],
+      "related": [
+        "what-is-a-long-range-card",
+        "pluto-and-result-cards-in-the-yearly-spread",
+        "how-52-day-periods-divide-your-year"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -894,7 +1239,12 @@
       "description": "The Long Range card in Cardology: the single card that names the dominant theme of your whole year, above the seven 52-day periods.",
       "dek": "One card sits over the whole year. It is a theme, not a headline event.",
       "readTime": "5 min read",
-      "keywords": ["long range card meaning", "year theme card", "dominant card of the year", "long range vs period card"],
+      "keywords": [
+        "long range card meaning",
+        "year theme card",
+        "dominant card of the year",
+        "long range vs period card"
+      ],
       "answer": "The Long Range card is the card in your yearly spread that describes the dominant theme of the entire year, from birthday to birthday. Unlike the seven period cards, which each govern 52 days, the Long Range card stays active the whole time, coloring every period underneath it.",
       "sections": [
         {
@@ -904,7 +1254,10 @@
             "Because it spans the year, the Long Range card is usually read first and referenced often. A Mars period under a Two of Hearts Long Range year feels different from the same period under an Eight of Spades year."
           ],
           "links": [
-            { "label": "Reading Your Yearly Spread", "href": "/blog/reading-your-yearly-spread" }
+            {
+              "label": "Reading Your Yearly Spread",
+              "href": "/blog/reading-your-yearly-spread"
+            }
           ]
         },
         {
@@ -921,7 +1274,10 @@
             "The second mistake is forgetting it exists after the first month. Its value shows up in review: at year's end, the theme is usually easier to see than it was in week two."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -939,10 +1295,20 @@
           "a": "Any card can express as pressure or as clarity. A demanding Long Range card names a year-long question, not a year-long punishment."
         }
       ],
-      "related": ["reading-your-yearly-spread", "52-day-periods-in-cardology", "pluto-and-result-cards-in-the-yearly-spread"],
+      "related": [
+        "reading-your-yearly-spread",
+        "52-day-periods-in-cardology",
+        "pluto-and-result-cards-in-the-yearly-spread"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "52-Card Astrology Explained",
+          "href": "/52-card-astrology-explained"
+        }
       ]
     },
     {
@@ -952,7 +1318,12 @@
       "description": "What the Pluto card and Result card mean in a Cardology year: the challenge the year keeps posing, and what engaging it tends to produce.",
       "dek": "One card names the year's hard question. The other names what answering it can build.",
       "readTime": "5 min read",
-      "keywords": ["pluto card meaning", "result card meaning", "yearly challenge card", "cardology transformation card"],
+      "keywords": [
+        "pluto card meaning",
+        "result card meaning",
+        "yearly challenge card",
+        "cardology transformation card"
+      ],
       "answer": "In a yearly spread, the Pluto card names the year's deep challenge: the pattern under pressure to transform. The Result card, sometimes called the Cosmic Reward, names what tends to emerge when that challenge is actually engaged. They are read as a pair: the work and what the work builds.",
       "sections": [
         {
@@ -969,7 +1340,10 @@
             "Reading the pair together keeps both honest: the challenge has a point, and the reward has a price."
           ],
           "links": [
-            { "label": "Reading Your Yearly Spread", "href": "/blog/reading-your-yearly-spread" }
+            {
+              "label": "Reading Your Yearly Spread",
+              "href": "/blog/reading-your-yearly-spread"
+            }
           ]
         },
         {
@@ -979,8 +1353,14 @@
             "The practical use is orientation: when the year gets difficult in the Pluto card's domain, you have language for what might be asking to change, and a reason to stay with it."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            },
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            }
           ]
         }
       ],
@@ -998,10 +1378,20 @@
           "a": "The Life Spread carries lifetime versions of these positions, but in a yearly spread they apply to that year only and change on your birthday."
         }
       ],
-      "related": ["reading-your-yearly-spread", "what-is-a-long-range-card", "karma-cards-environment-and-displacement"],
+      "related": [
+        "reading-your-yearly-spread",
+        "what-is-a-long-range-card",
+        "karma-cards-environment-and-displacement"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        }
       ]
     },
     {
@@ -1011,7 +1401,12 @@
       "description": "The first three 52-day periods of the Cardology year: Mercury's mental reset, Venus's relational focus, and Mars's drive and friction.",
       "dek": "The year opens with mind, then heart, then heat.",
       "readTime": "6 min read",
-      "keywords": ["mercury period cardology", "venus period meaning", "mars period meaning", "first three periods of the year"],
+      "keywords": [
+        "mercury period cardology",
+        "venus period meaning",
+        "mars period meaning",
+        "first three periods of the year"
+      ],
       "answer": "The Cardology year opens with three 52-day periods. The Mercury period, starting at your birthday, carries communication, planning, and mental reset. The Venus period follows with relationships, values, and what you love. The Mars period closes the first half with drive, effort, and the friction that comes with pushing.",
       "sections": [
         {
@@ -1028,7 +1423,10 @@
             "A demanding card in Venus does not doom the season; it names which relational pattern is up for attention."
           ],
           "links": [
-            { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+            {
+              "label": "Cardology Compatibility",
+              "href": "/cardology-compatibility"
+            }
           ]
         },
         {
@@ -1039,7 +1437,10 @@
             "To locate your current period, count 52-day blocks from your birthday or use the tool."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1057,10 +1458,20 @@
           "a": "Yes, always in the same order. What changes each year is the card occupying each period."
         }
       ],
-      "related": ["how-52-day-periods-divide-your-year", "jupiter-and-saturn-periods", "uranus-and-neptune-periods"],
+      "related": [
+        "how-52-day-periods-divide-your-year",
+        "jupiter-and-saturn-periods",
+        "uranus-and-neptune-periods"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        }
       ]
     },
     {
@@ -1070,7 +1481,12 @@
       "description": "The fourth and fifth 52-day periods of the Cardology year: Jupiter's expansion and reward, then Saturn's structure, consequence, and repair.",
       "dek": "The year's middle runs from growth to gravity.",
       "readTime": "5 min read",
-      "keywords": ["jupiter period cardology", "saturn period meaning", "expansion and discipline periods", "middle of cardology year"],
+      "keywords": [
+        "jupiter period cardology",
+        "saturn period meaning",
+        "expansion and discipline periods",
+        "middle of cardology year"
+      ],
       "answer": "The Jupiter period covers days 157 through 208 of your personal year and carries expansion: growth, opportunity, generosity, and reward for earlier effort. The Saturn period follows, days 209 through 260, and carries structure: discipline, consequence, health and work realities, and repair. Together they form the year's maturing middle.",
       "sections": [
         {
@@ -1087,7 +1503,10 @@
             "A Saturn period is not a punishment block. It is the year's inspection window, and things repaired here tend to stay repaired."
           ],
           "links": [
-            { "label": "Planetary Periods Without Prediction", "href": "/blog/planetary-periods-without-prediction" }
+            {
+              "label": "Planetary Periods Without Prediction",
+              "href": "/blog/planetary-periods-without-prediction"
+            }
           ]
         },
         {
@@ -1097,7 +1516,10 @@
             "In practice, plans launched in the Jupiter period often meet their first real test in the Saturn period. Knowing the sequence turns that from discouragement into scheduling."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1115,10 +1537,20 @@
           "a": "Jupiter runs days 157 to 208 of your personal year, and Saturn runs days 209 to 260, counted from your birthday."
         }
       ],
-      "related": ["mercury-venus-and-mars-periods", "uranus-and-neptune-periods", "planetary-periods-without-prediction"],
+      "related": [
+        "mercury-venus-and-mars-periods",
+        "uranus-and-neptune-periods",
+        "planetary-periods-without-prediction"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "52-Card Astrology Explained", "href": "/52-card-astrology-explained" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "52-Card Astrology Explained",
+          "href": "/52-card-astrology-explained"
+        }
       ]
     },
     {
@@ -1128,7 +1560,12 @@
       "description": "The last two 52-day periods of the Cardology year: Uranus's disruption and freedom, then Neptune's dissolution, dreams, and the approach to the next birthday.",
       "dek": "The year ends by loosening: first the rules, then the outlines.",
       "readTime": "5 min read",
-      "keywords": ["uranus period cardology", "neptune period meaning", "end of personal year", "last two periods"],
+      "keywords": [
+        "uranus period cardology",
+        "neptune period meaning",
+        "end of personal year",
+        "last two periods"
+      ],
       "answer": "The Uranus period, days 261 through 312 of your personal year, carries disruption and freedom: sudden changes, unconventional moves, and breaks from routine. The Neptune period, days 313 through 364, closes the year with dissolution: dreams, intuition, endings, and the blur before the next birthday resets everything.",
       "sections": [
         {
@@ -1145,7 +1582,10 @@
             "It is traditionally a better season for envisioning than for signing. Boundaries and details blur here, which is a gift for dreaming and a season readers traditionally use for review rather than new commitments."
           ],
           "links": [
-            { "label": "Planetary Periods Without Prediction", "href": "/blog/planetary-periods-without-prediction" }
+            {
+              "label": "Planetary Periods Without Prediction",
+              "href": "/blog/planetary-periods-without-prediction"
+            }
           ]
         },
         {
@@ -1155,7 +1595,10 @@
             "A simple end-of-year practice: in the Neptune period, review the year's cards against what actually happened. The review is where the timing system either earns your trust or corrects it."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1173,10 +1616,20 @@
           "a": "Your birthday, which resets the year, and then the new Mercury period begins the cycle again."
         }
       ],
-      "related": ["jupiter-and-saturn-periods", "when-does-your-cardology-year-begin", "journaling-a-52-day-period"],
+      "related": [
+        "jupiter-and-saturn-periods",
+        "when-does-your-cardology-year-begin",
+        "journaling-a-52-day-period"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -1186,7 +1639,12 @@
       "description": "Why the same birth card gets different cards every year: age selects the yearly spread, and the cycle of spreads has its own structure.",
       "dek": "Your card is fixed. Your year is not. Age is the variable that moves the spread.",
       "readTime": "5 min read",
-      "keywords": ["age and yearly spread", "why year cards change", "spread by age", "cardology age cycle"],
+      "keywords": [
+        "age and yearly spread",
+        "why year cards change",
+        "spread by age",
+        "cardology age cycle"
+      ],
       "answer": "A yearly spread is selected by two inputs: your birth card and your age. The birth card never changes, so age is what moves you through the system's sequence of yearly spreads. Each birthday advances you to the next spread, which is why the same person gets a genuinely different card year every year.",
       "sections": [
         {
@@ -1196,7 +1654,10 @@
             "This is why Cardology can be specific about a year without asking anything beyond the birthday: the inputs are already sufficient."
           ],
           "links": [
-            { "label": "Reading Your Yearly Spread", "href": "/blog/reading-your-yearly-spread" }
+            {
+              "label": "Reading Your Yearly Spread",
+              "href": "/blog/reading-your-yearly-spread"
+            }
           ]
         },
         {
@@ -1213,7 +1674,10 @@
             "Age in Cardology means completed years at the last birthday. If the birthday has not arrived yet this calendar year, you are still reading the previous spread."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1231,10 +1695,20 @@
           "a": "Your age as of your most recent birthday. The spread changes on the birthday itself, not on January 1."
         }
       ],
-      "related": ["when-does-your-cardology-year-begin", "reading-your-yearly-spread", "what-is-a-long-range-card"],
+      "related": [
+        "when-does-your-cardology-year-begin",
+        "reading-your-yearly-spread",
+        "what-is-a-long-range-card"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -1244,7 +1718,12 @@
       "description": "How to combine the Long Range card and the current 52-day period card into one coherent reflection instead of two competing fortunes.",
       "dek": "Year theme plus period chapter: the skill is in the join.",
       "readTime": "5 min read",
-      "keywords": ["combining timing cards", "long range and period together", "layered card reading", "timing synthesis"],
+      "keywords": [
+        "combining timing cards",
+        "long range and period together",
+        "layered card reading",
+        "timing synthesis"
+      ],
       "answer": "The two timing layers most worth combining are the Long Range card, which themes the whole year, and the current period card, which themes the current 52 days. Read the Long Range card as the standing question and the period card as this chapter's version of it, filtered through the period's planetary arena.",
       "sections": [
         {
@@ -1254,7 +1733,10 @@
             "Then read the period card as the current chapter's angle on that question, in the current planet's arena. The same year-question sounds different in Venus's relational season than in Saturn's structural one."
           ],
           "links": [
-            { "label": "What Is a Long Range Card?", "href": "/blog/what-is-a-long-range-card" }
+            {
+              "label": "What Is a Long Range Card?",
+              "href": "/blog/what-is-a-long-range-card"
+            }
           ]
         },
         {
@@ -1271,7 +1753,10 @@
             "One paragraph is enough. Layered timing goes wrong mainly by saying too much, not too little."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1289,10 +1774,20 @@
           "a": "At each period boundary, roughly every 52 days. Mid-period re-reads rarely change anything except your patience."
         }
       ],
-      "related": ["what-is-a-long-range-card", "how-52-day-periods-divide-your-year", "daily-card-reading-as-journal-prompt"],
+      "related": [
+        "what-is-a-long-range-card",
+        "how-52-day-periods-divide-your-year",
+        "daily-card-reading-as-journal-prompt"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "What Is Cardology?", "href": "/what-is-cardology" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        }
       ]
     },
     {
@@ -1302,7 +1797,12 @@
       "description": "The editorial rule behind every Cardology timing page on this site: period and year cards frame reflection, and they do not predict events.",
       "dek": "The difference between a useful timing card and a fake one is a single grammatical mood.",
       "readTime": "5 min read",
-      "keywords": ["cards predict future", "reflection vs prediction", "no forecast rule", "honest timing reading"],
+      "keywords": [
+        "cards predict future",
+        "reflection vs prediction",
+        "no forecast rule",
+        "honest timing reading"
+      ],
       "answer": "A timing card names the theme of a stretch of time: the domain under pressure, the kind of movement being asked for. It does not schedule events. The working rule is grammatical: a mirror statement says this is a season to examine X, while a forecast statement says X will happen. Cardology holds up under the first and collapses under the second.",
       "sections": [
         {
@@ -1319,7 +1819,10 @@
             "Bad: you will face a health crisis in September. The first gives attention a direction and stays checkable. The second borrows authority the math never granted."
           ],
           "links": [
-            { "label": "Planetary Periods Without Prediction", "href": "/blog/planetary-periods-without-prediction" }
+            {
+              "label": "Planetary Periods Without Prediction",
+              "href": "/blog/planetary-periods-without-prediction"
+            }
           ]
         },
         {
@@ -1329,7 +1832,10 @@
             "Over a few cycles of honest review, you learn which parts of the timing language track your life and which do not. That earned, specific trust is worth more than any prediction."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         }
       ],
@@ -1347,10 +1853,20 @@
           "a": "Predictions sell. This site's editorial rule is to stay with what the structure supports: themes, questions, and reflection frames."
         }
       ],
-      "related": ["planetary-periods-without-prediction", "52-day-periods-in-cardology", "is-cardology-a-belief-system"],
+      "related": [
+        "planetary-periods-without-prediction",
+        "52-day-periods-in-cardology",
+        "is-cardology-a-belief-system"
+      ],
       "coreLinks": [
-        { "label": "Methodology", "href": "/methodology" },
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        },
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        }
       ]
     },
     {
@@ -1360,7 +1876,12 @@
       "description": "A simple journaling structure for one Cardology period: an opening entry, a weekly check, and a closing review against the card.",
       "dek": "Three entries at the start, seven in the middle, one at the end. That is the whole practice.",
       "readTime": "5 min read",
-      "keywords": ["period journal practice", "52 day writing habit", "card period review", "journaling with cards"],
+      "keywords": [
+        "period journal practice",
+        "52 day writing habit",
+        "card period review",
+        "journaling with cards"
+      ],
       "answer": "The simplest way to test Cardology timing is to journal one full 52-day period. Write an opening entry when the period starts, naming the period card and one question it suggests. Check in weekly with a few lines. Close with a review entry comparing what the card named with what actually happened.",
       "sections": [
         {
@@ -1370,7 +1891,10 @@
             "Keep it under a page. The opening entry is a hypothesis, not an essay."
           ],
           "links": [
-            { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" }
+            {
+              "label": "52-Day Period Meaning Tool",
+              "href": "/52-day-period-meaning-tool"
+            }
           ]
         },
         {
@@ -1387,7 +1911,10 @@
             "After three or four periods of this, you will have something rare: your own evidence about how this timing system tracks your life, in your own handwriting."
           ],
           "links": [
-            { "label": "Using a Daily Card Reading as a Journal Prompt", "href": "/blog/daily-card-reading-as-journal-prompt" }
+            {
+              "label": "Using a Daily Card Reading as a Journal Prompt",
+              "href": "/blog/daily-card-reading-as-journal-prompt"
+            }
           ]
         }
       ],
@@ -1405,10 +1932,20 @@
           "a": "Only if the weekly rhythm already feels easy. The period is the natural unit for testing timing; daily cards add resolution but also noise."
         }
       ],
-      "related": ["daily-card-reading-as-journal-prompt", "timing-cards-as-mirror-not-forecast", "how-52-day-periods-divide-your-year"],
+      "related": [
+        "daily-card-reading-as-journal-prompt",
+        "timing-cards-as-mirror-not-forecast",
+        "how-52-day-periods-divide-your-year"
+      ],
       "coreLinks": [
-        { "label": "52-Day Period Meaning Tool", "href": "/52-day-period-meaning-tool" },
-        { "label": "All 52 Birth Cards", "href": "/birth-card" }
+        {
+          "label": "52-Day Period Meaning Tool",
+          "href": "/52-day-period-meaning-tool"
+        },
+        {
+          "label": "All 52 Birth Cards",
+          "href": "/birth-card"
+        }
       ]
     },
     {
@@ -1418,7 +1955,12 @@
       "description": "The structural reasons two birth cards create friction in Cardology: suit translation gaps, rank collisions, and hard spread positions.",
       "dek": "Most card clashes are translation problems wearing a costume of incompatibility.",
       "readTime": "6 min read",
-      "keywords": ["birth cards clash", "card friction reasons", "incompatible cards myth", "why we fight cards"],
+      "keywords": [
+        "birth cards clash",
+        "card friction reasons",
+        "incompatible cards myth",
+        "why we fight cards"
+      ],
       "answer": "Birth cards clash for structural reasons: the suits speak different domain languages, the ranks want different kinds of movement, or one card occupies a demanding position in the other's Life Spread, such as Mars or Saturn. None of these makes a relationship impossible. They name where the friction lives, which is the first step to handling it.",
       "sections": [
         {
@@ -1428,7 +1970,10 @@
             "The clash dissolves surprisingly often when both people learn the exchange rate: this is what care looks like from inside that suit."
           ],
           "links": [
-            { "label": "The Four Suits in Cardology", "href": "/blog/four-suits-in-cardology" }
+            {
+              "label": "The Four Suits in Cardology",
+              "href": "/blog/four-suits-in-cardology"
+            }
           ]
         },
         {
@@ -1438,7 +1983,10 @@
             "These collisions are real but symmetrical: neither person is wrong, they are running different programs at different speeds. Naming the collision as structure takes the moral sting out of it."
           ],
           "links": [
-            { "label": "Card Rank Meanings", "href": "/blog/card-rank-meanings-aces-through-kings" }
+            {
+              "label": "Card Rank Meanings",
+              "href": "/blog/card-rank-meanings-aces-through-kings"
+            }
           ]
         },
         {
@@ -1448,7 +1996,10 @@
             "These roles are directional and fixed, so the friction has a shape you can learn. A Saturn connection that is understood as a teaching dynamic wears very differently from one that is experienced as random disapproval."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         }
       ],
@@ -1466,10 +2017,20 @@
           "a": "Yes. Structure names tendencies, and people bring their card's shadow range as well as its gifts to any relationship."
         }
       ],
-      "related": ["cardology-compatibility-beginner-guide", "saturn-card-connections-in-cardology", "mars-card-connections-in-cardology"],
+      "related": [
+        "cardology-compatibility-beginner-guide",
+        "saturn-card-connections-in-cardology",
+        "mars-card-connections-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Cardology Compatibility",
+          "href": "/cardology-compatibility"
+        }
       ]
     },
     {
@@ -1479,7 +2040,12 @@
       "description": "What it means when someone's birth card is one of your karma cards in Cardology: the debt direction, the gift direction, and how the dynamic tends to feel.",
       "dek": "When a partner carries your karma card, the relationship arrives with a direction built in.",
       "readTime": "6 min read",
-      "keywords": ["karma card partner", "karmic connection cards", "owing and receiving cards", "karma pair dynamics"],
+      "keywords": [
+        "karma card partner",
+        "karmic connection cards",
+        "owing and receiving cards",
+        "karma pair dynamics"
+      ],
       "answer": "Most birth cards have two karma cards: one traditionally read as the card you owe, where you tend to give, and one read as the card that owes you, where you tend to receive. When someone in your life carries one of your karma cards, the relationship often has a built-in flow direction, an unusual familiarity, and a lesson-like quality.",
       "sections": [
         {
@@ -1489,7 +2055,10 @@
             "The second marks the receiving direction: these people tend to extend toward you the same way. Neither direction is a moral rank. The tradition reads both as old balance settling itself."
           ],
           "links": [
-            { "label": "Karma Cards: Environment and Displacement", "href": "/blog/karma-cards-environment-and-displacement" }
+            {
+              "label": "Karma Cards: Environment and Displacement",
+              "href": "/blog/karma-cards-environment-and-displacement"
+            }
           ]
         },
         {
@@ -1506,8 +2075,14 @@
             "The practical question for any karma-card bond: what does this connection keep teaching, and is the lesson being learned or just repeated?"
           ],
           "links": [
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" },
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            },
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         }
       ],
@@ -1525,10 +2100,20 @@
           "a": "The three fixed cards stand alone, and the semi-fixed cards treat their swap partners as their karmic counterparts, which is traditionally read as an especially deep mutual bond."
         }
       ],
-      "related": ["karma-cards-environment-and-displacement", "cardology-compatibility-beginner-guide", "fixed-and-semi-fixed-cards-in-cardology"],
+      "related": [
+        "karma-cards-environment-and-displacement",
+        "cardology-compatibility-beginner-guide",
+        "fixed-and-semi-fixed-cards-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" },
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        },
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        }
       ]
     },
     {
@@ -1538,7 +2123,12 @@
       "description": "What it means when someone's birth card falls in your Venus position: natural affection, shared values, and the soft spots of an easy bond.",
       "dek": "The Venus connection is the one that feels like being liked without trying.",
       "readTime": "5 min read",
-      "keywords": ["venus card connection", "venus position love", "easy affection cards", "values match reading"],
+      "keywords": [
+        "venus card connection",
+        "venus position love",
+        "easy affection cards",
+        "values match reading"
+      ],
       "answer": "When another person's birth card occupies the Venus position in your Life Spread, the connection tends to carry natural affection, aesthetic and value agreement, and ease. Venus connections are common in happy marriages and close friendships. Their soft spot is complacency: ease can skip the harder conversations a bond still needs.",
       "sections": [
         {
@@ -1548,7 +2138,10 @@
             "The connection is directional. You having someone in your Venus position describes how they sit in your pattern; where you sit in theirs is a separate lookup and may differ."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1565,7 +2158,10 @@
             "If a Venus relationship matters, schedule the hard conversations that the ease will never force. The affection is strong enough to hold them; that is the point of it."
           ],
           "links": [
-            { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+            {
+              "label": "Cardology Compatibility",
+              "href": "/cardology-compatibility"
+            }
           ]
         }
       ],
@@ -1583,10 +2179,20 @@
           "a": "Nothing is wrong. Every position carries workable material; Venus is one pleasant pattern among many, not a requirement."
         }
       ],
-      "related": ["cardology-compatibility-beginner-guide", "moon-card-connections-in-cardology", "mars-card-connections-in-cardology"],
+      "related": [
+        "cardology-compatibility-beginner-guide",
+        "moon-card-connections-in-cardology",
+        "mars-card-connections-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Cardology Compatibility",
+          "href": "/cardology-compatibility"
+        }
       ]
     },
     {
@@ -1596,7 +2202,12 @@
       "description": "What a Mars position connection means: energy, attraction, competition, and the discipline it takes to keep the heat productive.",
       "dek": "Mars connections generate heat. What the heat becomes is up to the people.",
       "readTime": "5 min read",
-      "keywords": ["mars card connection", "attraction and conflict cards", "competitive relationship pattern", "high energy bond"],
+      "keywords": [
+        "mars card connection",
+        "attraction and conflict cards",
+        "competitive relationship pattern",
+        "high energy bond"
+      ],
       "answer": "When someone's birth card falls in your Mars position, the connection carries energy: attraction, drive, competition, and a shorter fuse than usual. Mars connections make strong teammates, training partners, and passionate romances. The same charge, unmanaged, becomes argument and rivalry. The card names the voltage, not the outcome.",
       "sections": [
         {
@@ -1613,7 +2224,10 @@
             "In long romances, couples who aim the Mars energy at shared projects tend to report the pattern as vitality; couples who leave it unaimed tend to report it as fighting."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1623,7 +2237,10 @@
             "And notice fatigue: Mars connections tire people who never step out of the ring. Rest is not a betrayal of the dynamic; it is maintenance for it."
           ],
           "links": [
-            { "label": "Why Some Birth Cards Clash", "href": "/blog/why-some-birth-cards-clash" }
+            {
+              "label": "Why Some Birth Cards Clash",
+              "href": "/blog/why-some-birth-cards-clash"
+            }
           ]
         }
       ],
@@ -1641,10 +2258,20 @@
           "a": "The position does not change, but people learn to aim it. Long-standing Mars bonds usually have found a track for the energy to run on."
         }
       ],
-      "related": ["why-some-birth-cards-clash", "venus-card-connections-in-cardology", "saturn-card-connections-in-cardology"],
+      "related": [
+        "why-some-birth-cards-clash",
+        "venus-card-connections-in-cardology",
+        "saturn-card-connections-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Cardology Compatibility",
+          "href": "/cardology-compatibility"
+        }
       ]
     },
     {
@@ -1654,7 +2281,12 @@
       "description": "What a Saturn position connection means: the teacher dynamic, the weight of correction, and why these bonds are formative when they are held well.",
       "dek": "The Saturn person shows you your unfinished work. That is the gift and the grievance.",
       "readTime": "6 min read",
-      "keywords": ["saturn card connection", "teacher relationship cards", "heavy bond meaning", "correction dynamic"],
+      "keywords": [
+        "saturn card connection",
+        "teacher relationship cards",
+        "heavy bond meaning",
+        "correction dynamic"
+      ],
       "answer": "When someone's birth card falls in your Saturn position, the connection carries teacher energy: they see your weak points accurately and tend to press on them, sometimes as guidance, sometimes as criticism. Saturn connections feel heavy but are consistently described as formative. The direction matters: their Saturn weight on you is not the same as yours on them.",
       "sections": [
         {
@@ -1671,7 +2303,10 @@
             "Held badly, the same position becomes chronic criticism that erodes rather than builds. The card cannot tell you which is happening; honest accounting of how you feel and grow around this person can."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1681,7 +2316,10 @@
             "If someone holds you as their Saturn: you carry more influence than feels natural, and lightness is a discipline worth practicing. Correction that arrives with warmth teaches; correction without it just wounds."
           ],
           "links": [
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            }
           ]
         }
       ],
@@ -1699,10 +2337,20 @@
           "a": "Yes. Saturn marriages exist and often mature well, provided the teaching current flows with respect and does not harden into a permanent grading dynamic."
         }
       ],
-      "related": ["why-some-birth-cards-clash", "karma-cards-in-relationships", "mars-card-connections-in-cardology"],
+      "related": [
+        "why-some-birth-cards-clash",
+        "karma-cards-in-relationships",
+        "mars-card-connections-in-cardology"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        }
       ]
     },
     {
@@ -1712,7 +2360,12 @@
       "description": "What a Moon connection means: the nurturing direction, why it is prized for long partnerships, and how the supporting role stays healthy.",
       "dek": "In a Moon connection, one person is the ground the other stands on.",
       "readTime": "5 min read",
-      "keywords": ["moon card connection", "nurturing bond cards", "supportive partner pattern", "emotional security reading"],
+      "keywords": [
+        "moon card connection",
+        "nurturing bond cards",
+        "supportive partner pattern",
+        "emotional security reading"
+      ],
       "answer": "A Moon connection forms when one person's birth card sits in the Moon position relative to the other's. The Moon person naturally supports, steadies, and nurtures the other, who in turn energizes and gives direction to the Moon person. The tradition prizes this pairing for marriage and close partnership because the roles are complementary rather than competitive.",
       "sections": [
         {
@@ -1722,7 +2375,10 @@
             "Both roles give and both receive; the exchange just runs on different currencies. When it works, each person feels the other makes their natural mode more possible."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1739,7 +2395,10 @@
             "Healthy Moon bonds rotate the currents sometimes: the supporter gets supported, the leader follows. The position describes the natural default, not a contract."
           ],
           "links": [
-            { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+            {
+              "label": "Cardology Compatibility",
+              "href": "/cardology-compatibility"
+            }
           ]
         }
       ],
@@ -1757,10 +2416,20 @@
           "a": "Yes. A Moon friend is the steady one you decompress with, and the direction-giving friend is the one who gets you moving. The pattern is not limited to romance."
         }
       ],
-      "related": ["venus-card-connections-in-cardology", "cardology-compatibility-beginner-guide", "reading-family-patterns-with-cardology"],
+      "related": [
+        "venus-card-connections-in-cardology",
+        "cardology-compatibility-beginner-guide",
+        "reading-family-patterns-with-cardology"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Cardology Compatibility",
+          "href": "/cardology-compatibility"
+        }
       ]
     },
     {
@@ -1770,7 +2439,12 @@
       "description": "What it means when two people share a birth card: total familiarity, doubled blind spots, and the strange experience of dating your own pattern.",
       "dek": "Sharing a card means sharing the manual, including the pages neither of you has read.",
       "readTime": "5 min read",
-      "keywords": ["same birth card couple", "dating your own card", "identical cards meaning", "shared card dynamics"],
+      "keywords": [
+        "same birth card couple",
+        "dating your own card",
+        "identical cards meaning",
+        "shared card dynamics"
+      ],
       "answer": "When two people share a birth card, they share a core pattern: the same suit domain, the same rank movement, the same shadow range. The connection tends to feel deeply familiar and easy to understand, but the pair also doubles its blind spots, because both people miss the same things in the same way.",
       "sections": [
         {
@@ -1787,7 +2461,10 @@
             "No one in the relationship naturally holds the missing perspective. What a different card would supply by friction, a same-card pair has to supply by deliberate effort."
           ],
           "links": [
-            { "label": "How to Read a Birth Card Meaning", "href": "/blog/how-to-read-birth-card-meaning" }
+            {
+              "label": "How to Read a Birth Card Meaning",
+              "href": "/blog/how-to-read-birth-card-meaning"
+            }
           ]
         },
         {
@@ -1797,8 +2474,14 @@
             "It also helps to compare ruling cards, which usually differ and give each person a distinct tone. The shared card is the common ground; the ruling cards are where the two of you are actually different people."
           ],
           "links": [
-            { "label": "Birth Card vs Ruling Card", "href": "/birth-card-vs-ruling-card" },
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Birth Card vs Ruling Card",
+              "href": "/birth-card-vs-ruling-card"
+            },
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         }
       ],
@@ -1816,10 +2499,20 @@
           "a": "Ruling cards, ages, and lives differ. The birth card is the core pattern, not the whole person, and two people can live the same pattern at very different levels of maturity."
         }
       ],
-      "related": ["cardology-compatibility-beginner-guide", "birth-card-vs-ruling-card-how-to-read-both", "why-some-birth-cards-clash"],
+      "related": [
+        "cardology-compatibility-beginner-guide",
+        "birth-card-vs-ruling-card-how-to-read-both",
+        "why-some-birth-cards-clash"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -1829,7 +2522,12 @@
       "description": "Using birth cards across a family: mapping the household's suits and ranks, seeing parent-child positions, and naming inherited dynamics kindly.",
       "dek": "A family is a small spread. Mapping it explains a surprising number of dinner tables.",
       "readTime": "6 min read",
-      "keywords": ["family birth cards", "parent child card reading", "household card map", "inherited dynamics cards"],
+      "keywords": [
+        "family birth cards",
+        "parent child card reading",
+        "household card map",
+        "inherited dynamics cards"
+      ],
       "answer": "Cardology reads a family by calculating every member's birth card and looking at the set: which suits dominate the household, which ranks collide, and which spread positions family members occupy for each other. The goal is language for dynamics everyone already feels, especially the recurring ones that follow people into adulthood.",
       "sections": [
         {
@@ -1839,7 +2537,10 @@
             "Dominant suits set the family's default currency: what counts as care, what counts as contribution, what gets noticed and what gets missed."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         },
         {
@@ -1849,7 +2550,10 @@
             "These positions are nobody's fault, which is exactly what makes them useful. Naming a dynamic as structural lets family members work on it without prosecuting each other for it."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1874,10 +2578,20 @@
           "a": "Families often notice recurring suits or repeated positions across generations. Treat that as an observed curiosity to explore, not a law."
         }
       ],
-      "related": ["moon-card-connections-in-cardology", "saturn-card-connections-in-cardology", "cardology-compatibility-beginner-guide"],
+      "related": [
+        "moon-card-connections-in-cardology",
+        "saturn-card-connections-in-cardology",
+        "cardology-compatibility-beginner-guide"
+      ],
       "coreLinks": [
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        }
       ]
     },
     {
@@ -1887,7 +2601,12 @@
       "description": "Applying birth card patterns at work: reading a team's suit balance, handling Mars and Saturn colleagues, and the etiquette of workplace card reading.",
       "dek": "A team has a card profile whether anyone calculates it or not.",
       "readTime": "6 min read",
-      "keywords": ["coworker birth cards", "team suit balance", "workplace card dynamics", "office relationship patterns"],
+      "keywords": [
+        "coworker birth cards",
+        "team suit balance",
+        "workplace card dynamics",
+        "office relationship patterns"
+      ],
       "answer": "Cardology applies to work the same way it applies to any set of people: each colleague's card names a working style, the team's suit balance names its collective bias, and spread positions name the charged pairings. Used with discretion, it is a vocabulary for friction that would otherwise get personal.",
       "sections": [
         {
@@ -1897,7 +2616,10 @@
             "A team heavy in one suit has a predictable tilt. All Clubs and no Spades plans brilliantly and ships late; all Spades and no Hearts delivers everything except retention."
           ],
           "links": [
-            { "label": "The Four Suits in Cardology", "href": "/blog/four-suits-in-cardology" }
+            {
+              "label": "The Four Suits in Cardology",
+              "href": "/blog/four-suits-in-cardology"
+            }
           ]
         },
         {
@@ -1907,7 +2629,10 @@
             "Knowing a pairing is positionally charged changes how you take it. The friction stops reading as a character flaw and starts reading as a current to manage."
           ],
           "links": [
-            { "label": "Mars Card Connections", "href": "/blog/mars-card-connections-in-cardology" }
+            {
+              "label": "Mars Card Connections",
+              "href": "/blog/mars-card-connections-in-cardology"
+            }
           ]
         },
         {
@@ -1932,10 +2657,20 @@
           "a": "None categorically. Each suit manages in its own currency, and each fails in its own way when over-expressed. Fit depends on the team and the work."
         }
       ],
-      "related": ["cardology-for-work-love-and-money", "mars-card-connections-in-cardology", "why-some-birth-cards-clash"],
+      "related": [
+        "cardology-for-work-love-and-money",
+        "mars-card-connections-in-cardology",
+        "why-some-birth-cards-clash"
+      ],
       "coreLinks": [
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" },
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        }
       ]
     },
     {
@@ -1945,7 +2680,12 @@
       "description": "Two contrasting spread connections: Jupiter's mutual benefit and generosity versus Neptune's idealization, dreams, and fog.",
       "dek": "One connection expands what is real. The other expands what is imagined.",
       "readTime": "6 min read",
-      "keywords": ["jupiter card connection", "neptune card connection", "generous bond pattern", "idealization in relationships"],
+      "keywords": [
+        "jupiter card connection",
+        "neptune card connection",
+        "generous bond pattern",
+        "idealization in relationships"
+      ],
       "answer": "A Jupiter connection, where one person's card falls in the other's Jupiter position, carries generosity and mutual benefit: these bonds tend to enrich both people materially and spiritually. A Neptune connection carries dreams and idealization: inspiring at best, foggy at worst. The pair makes a useful study in contrast because one expands reality and the other expands imagination.",
       "sections": [
         {
@@ -1955,7 +2695,10 @@
             "Its quiet risk is one-way flow. If the Jupiter current always runs the same direction, the receiver can drift into entitlement and the giver into fatigue. Healthy Jupiter bonds circulate."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -1972,7 +2715,10 @@
             "Neither needs to be avoided. Jupiter asks you to keep the generosity mutual; Neptune asks you to enjoy the dream while budgeting for the human."
           ],
           "links": [
-            { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+            {
+              "label": "Cardology Compatibility",
+              "href": "/cardology-compatibility"
+            }
           ]
         }
       ],
@@ -1990,10 +2736,20 @@
           "a": "Yes. Positions run each direction separately, so one person can be your Jupiter while you are their Neptune, which makes for a generous but asymmetric fog."
         }
       ],
-      "related": ["venus-card-connections-in-cardology", "saturn-card-connections-in-cardology", "cardology-compatibility-beginner-guide"],
+      "related": [
+        "venus-card-connections-in-cardology",
+        "saturn-card-connections-in-cardology",
+        "cardology-compatibility-beginner-guide"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Cardology Compatibility", "href": "/cardology-compatibility" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Cardology Compatibility",
+          "href": "/cardology-compatibility"
+        }
       ]
     },
     {
@@ -2003,7 +2759,12 @@
       "description": "A five-step order for comparing any two birth cards: suits, ranks, spread positions both directions, ruling cards, and the honest summary.",
       "dek": "Any two cards can be compared in five steps, in order, without a score.",
       "readTime": "6 min read",
-      "keywords": ["compare two cards steps", "two person card reading", "compatibility method order", "card pair analysis"],
+      "keywords": [
+        "compare two cards steps",
+        "two person card reading",
+        "compatibility method order",
+        "card pair analysis"
+      ],
       "answer": "Compare two birth cards in a fixed order. First, suits: same domain or translation needed. Second, ranks: what movement each card wants. Third, spread positions in both directions, since the roles are rarely symmetrical. Fourth, ruling cards for tone. Fifth, a plain-language summary of where the pair flows and where it works. No step produces a score, and none should.",
       "sections": [
         {
@@ -2013,7 +2774,10 @@
             "Ranks second. Ask what movement each card wants: starting, stabilizing, changing, completing, ruling. Matched speeds feel easy; mismatched speeds are where the pace arguments come from."
           ],
           "links": [
-            { "label": "Card Rank Meanings", "href": "/blog/card-rank-meanings-aces-through-kings" }
+            {
+              "label": "Card Rank Meanings",
+              "href": "/blog/card-rank-meanings-aces-through-kings"
+            }
           ]
         },
         {
@@ -2023,7 +2787,10 @@
             "You may be their Venus while they are your Saturn. Asymmetries like that explain relationships where the two people describe the same bond in bafflingly different terms."
           ],
           "links": [
-            { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" }
+            {
+              "label": "Compatibility Calculator",
+              "href": "/birth-card-compatibility-calculator"
+            }
           ]
         },
         {
@@ -2033,7 +2800,10 @@
             "Finish with three plain sentences: where this pair flows, where it grinds, and what each person would need to say out loud for the grind to soften. If you cannot write those sentences, the comparison is not done."
           ],
           "links": [
-            { "label": "Birth Card vs Ruling Card", "href": "/birth-card-vs-ruling-card" }
+            {
+              "label": "Birth Card vs Ruling Card",
+              "href": "/birth-card-vs-ruling-card"
+            }
           ]
         }
       ],
@@ -2051,10 +2821,20 @@
           "a": "No comparison is a verdict. Hard positions name where the work is; plenty of long, good relationships live on structurally demanding pairings."
         }
       ],
-      "related": ["cardology-compatibility-beginner-guide", "why-some-birth-cards-clash", "birth-card-vs-ruling-card-how-to-read-both"],
+      "related": [
+        "cardology-compatibility-beginner-guide",
+        "why-some-birth-cards-clash",
+        "birth-card-vs-ruling-card-how-to-read-both"
+      ],
       "coreLinks": [
-        { "label": "Compatibility Calculator", "href": "/birth-card-compatibility-calculator" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
       ]
     },
     {
@@ -2064,7 +2844,12 @@
       "description": "Using Cardology to see why the same relationship keeps happening with different people: the card behind the type, and the practice of naming it.",
       "dek": "You do not keep meeting the same person. You keep running the same pattern.",
       "readTime": "6 min read",
-      "keywords": ["repeating relationship pattern", "same dynamic different people", "pattern recognition practice", "why history repeats in love"],
+      "keywords": [
+        "repeating relationship pattern",
+        "same dynamic different people",
+        "pattern recognition practice",
+        "why history repeats in love"
+      ],
       "answer": "When the same relationship dynamic keeps recurring with different people, Cardology offers a structural first question: is there a repeated card, suit, or spread position among the people involved? Often there is. Naming the recurring position, and your own card's role in attracting it, turns a fate-flavored complaint into a workable pattern.",
       "sections": [
         {
@@ -2074,7 +2859,10 @@
             "Then look for the repeat: the same card twice, the same suit throughout, or, most often, the same spread position: a run of people who all sat in your Saturn, or your Mars, or your Neptune."
           ],
           "links": [
-            { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
           ]
         },
         {
@@ -2084,7 +2872,10 @@
             "This is the least comfortable and most useful step. The people were different; the caster of the role was you, and the role is written in a range your own card describes."
           ],
           "links": [
-            { "label": "How to Read a Birth Card Meaning", "href": "/blog/how-to-read-birth-card-meaning" }
+            {
+              "label": "How to Read a Birth Card Meaning",
+              "href": "/blog/how-to-read-birth-card-meaning"
+            }
           ]
         },
         {
@@ -2094,7 +2885,10 @@
             "The choice at that moment is the actual work: run the pattern again with better awareness, or respond differently to it for once. The cards can only make the moment visible."
           ],
           "links": [
-            { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" }
+            {
+              "label": "Shadow and Karma Guide",
+              "href": "/shadow-karma-guide"
+            }
           ]
         }
       ],
@@ -2112,10 +2906,311 @@
           "a": "The cards describe defaults, not sentences. People change their responses to a pattern all the time; that is the entire point of seeing it."
         }
       ],
-      "related": ["karma-cards-in-relationships", "why-some-birth-cards-clash", "how-to-compare-two-birth-cards"],
+      "related": [
+        "karma-cards-in-relationships",
+        "why-some-birth-cards-clash",
+        "how-to-compare-two-birth-cards"
+      ],
       "coreLinks": [
-        { "label": "Shadow and Karma Guide", "href": "/shadow-karma-guide" },
-        { "label": "Birth Card Calculator", "href": "/birth-card-calculator" }
+        {
+          "label": "Shadow and Karma Guide",
+          "href": "/shadow-karma-guide"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        }
+      ]
+    },
+    {
+      "slug": "cardology-daily-card-explained",
+      "pillar": "timing-and-spreads",
+      "title": "Cardology Daily Card Explained",
+      "seoTitle": "Cardology Daily Card: What It Means",
+      "description": "What a Cardology daily card is, how it differs from your birth card, and how to use daily timing language without treating it as a forecast.",
+      "dek": "A daily card names the chapter of the day \u2014 not a prophecy.",
+      "readTime": "6 min read",
+      "keywords": [
+        "cardology daily card",
+        "daily card cardology",
+        "playing card of the day meaning"
+      ],
+      "answer": "In Cardology, a daily card is a timing card for the day drawn from the same 52-card calendar mathematics as the birth card. Your birth card stays fixed for life; the daily card changes and describes themes and pressure for that day only. Use it as reflection language, not a schedule of events.",
+      "sections": [
+        {
+          "heading": "Birth card vs daily card",
+          "body": [
+            "The birth card is the lifelong significator locked to your birthday. The daily card is a moving layer: it describes what kind of day the calendar mathematics emphasizes.",
+            "Confusing the two is the most common beginner mistake. A hard daily card does not rewrite who you are; a sweet daily card does not cancel a difficult season."
+          ],
+          "links": [
+            {
+              "label": "Card of the Day tool",
+              "href": "/card-of-the-day"
+            },
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            }
+          ]
+        },
+        {
+          "heading": "How to read a daily card usefully",
+          "body": [
+            "Name the suit domain first (hearts, clubs, diamonds, spades), then the rank movement. Ask what arena is loud today and what move the rank suggests.",
+            "Write one sentence you can test by evening: if nothing matched, the card taught you less than the day did \u2014 keep the day."
+          ],
+          "links": [
+            {
+              "label": "Methodology",
+              "href": "/methodology"
+            }
+          ]
+        },
+        {
+          "heading": "Limits",
+          "body": [
+            "Daily cards are entertainment and self-awareness tools. They are not medical, legal, or financial advice and not a guarantee of outcomes.",
+            "Card Blueprints publishes method and editorial standards publicly so you can see what is calculation and what is interpretation."
+          ],
+          "links": [
+            {
+              "label": "Editorial policy",
+              "href": "/editorial-policy"
+            },
+            {
+              "label": "Personal Card Blueprint",
+              "href": "/products/personal-card-blueprint"
+            }
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is a Cardology daily card the same as a tarot card of the day?",
+          "a": "No. Tarot daily draws are usually shuffled. Cardology daily cards come from calendar mathematics in the 52-card system."
+        },
+        {
+          "q": "Does a bad daily card mean a bad day is guaranteed?",
+          "a": "No. It names themes and pressure to watch, not scheduled events."
+        },
+        {
+          "q": "Should I ignore my birth card when reading the daily card?",
+          "a": "No. Read the daily card as weather and the birth card as climate."
+        }
+      ],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "birth-card-vs-ruling-card-how-to-read-both"
+      ],
+      "coreLinks": [
+        {
+          "label": "Card of the Day",
+          "href": "/card-of-the-day"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        }
+      ]
+    },
+    {
+      "slug": "how-to-find-my-birth-card-playing-cards",
+      "pillar": "cardology-foundations",
+      "title": "How to Find My Birth Card With Playing Cards",
+      "seoTitle": "How to Find My Birth Card (Playing Cards)",
+      "description": "How to find your birth card with playing cards in Cardology: free calculator steps, what the result means, and how this differs from tarot birth cards.",
+      "dek": "One birthday, one playing card \u2014 fixed math, no shuffle.",
+      "readTime": "6 min read",
+      "keywords": [
+        "how to find my birth card",
+        "what card am i based on my birthday",
+        "birth card calculator playing cards"
+      ],
+      "answer": "To find your Cardology birth card with playing cards, enter your birth month and day in a deterministic calculator (or look up the date in a birthday chart). The system maps the date to one card in a standard 52-card deck. This is not a tarot Major Arcana birth-card method and not a paper birth-announcement card.",
+      "sections": [
+        {
+          "heading": "Fast path",
+          "body": [
+            "Use the free birth card calculator on Card Blueprints. Enter the birthday, read the birth card and ruling card, then open the full card meaning page.",
+            "Same inputs always return the same card in our engine \u2014 refresh will not change the result."
+          ],
+          "links": [
+            {
+              "label": "Birth Card Calculator",
+              "href": "/birth-card-calculator"
+            },
+            {
+              "label": "Playing cards birthday chart",
+              "href": "/52-card-astrology-explained"
+            }
+          ]
+        },
+        {
+          "heading": "What you should get",
+          "body": [
+            "A lifelong birth card (suit + rank) and usually a planetary ruling card that colors expression. Together they are a pattern lens, not a full biography.",
+            "If you want the pattern written out, the Personal Card Blueprint is a $29 one-time report \u2014 no phone call."
+          ],
+          "links": [
+            {
+              "label": "Personal Card Blueprint",
+              "href": "/products/personal-card-blueprint"
+            },
+            {
+              "label": "Beginners path",
+              "href": "/cardology-for-beginners"
+            }
+          ]
+        },
+        {
+          "heading": "Common mix-ups",
+          "body": [
+            "Search results for birth card calculators often show tarot tools. Cardology uses 52 playing cards. Baby stationery \u201cbirth cards\u201d are unrelated.",
+            "When in doubt, check the method page and recalculate."
+          ],
+          "links": [
+            {
+              "label": "Cardology vs Tarot",
+              "href": "/cardology-vs-tarot"
+            },
+            {
+              "label": "Methodology",
+              "href": "/methodology"
+            }
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Do I need a physical deck to find my birth card?",
+          "a": "No. The calculator performs the math. A deck helps only if you want to practice spreads later."
+        },
+        {
+          "q": "Does birth year change the birth card?",
+          "a": "The birth card uses month and day. Year feeds timing layers, not the lifelong significator itself."
+        },
+        {
+          "q": "Is this free?",
+          "a": "Yes \u2014 the calculator and birthday directory are free. The optional written Blueprint is $29."
+        }
+      ],
+      "related": [
+        "what-cardology-is-and-is-not",
+        "cardology-vs-tarot"
+      ],
+      "coreLinks": [
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "What Is Cardology?",
+          "href": "/what-is-cardology"
+        },
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        }
+      ]
+    },
+    {
+      "slug": "cardology-compatibility-by-date-of-birth",
+      "pillar": "relationships-and-practice",
+      "title": "Cardology Compatibility by Date of Birth",
+      "seoTitle": "Cardology Compatibility by Birthday",
+      "description": "How Cardology compatibility by date of birth works: two birthdays, two playing cards, Life Path roles, and free tools to compare the pattern without a tarot shuffle.",
+      "dek": "Two birthdays in, a relationship map out \u2014 checkable cards, not a score.",
+      "readTime": "6 min read",
+      "keywords": [
+        "cardology compatibility by date of birth",
+        "cardology compatibility calculator free",
+        "birth card compatibility"
+      ],
+      "answer": "Cardology compatibility by date of birth compares two birthday-locked playing cards and the Life Path roles underneath them. Enter two birthdays in the free calculator, or browse pair pages in the compatibility directory. The output is a map of tendencies \u2014 not a single percentage and not a tarot draw.",
+      "sections": [
+        {
+          "heading": "Why birthdays, not a shuffle",
+          "body": [
+            "Each person has a fixed birth card. Comparing dates keeps the input objective: anyone can recalculate both cards.",
+            "That checkability is the point. If two tools disagree on the same system rules, audit the math."
+          ],
+          "links": [
+            {
+              "label": "Compatibility calculator",
+              "href": "/birth-card-compatibility-calculator"
+            },
+            {
+              "label": "Compatibility guide",
+              "href": "/cardology-compatibility"
+            }
+          ]
+        },
+        {
+          "heading": "What to read first",
+          "body": [
+            "Suit domains (where each person leads from), then Life Path landings (Venus, Mars, Saturn, Pluto, and the rest). Shared Life Path cards show overlapping homework.",
+            "Chemistry is the spark; skill is living the map without turning it into blame."
+          ],
+          "links": [
+            {
+              "label": "All pairings directory",
+              "href": "/compatibility/"
+            }
+          ]
+        },
+        {
+          "heading": "Product path",
+          "body": [
+            "Free tools answer the comparison. If one person wants their full pattern in writing, the Personal Card Blueprint is the $29 deepen for a single birthday."
+          ],
+          "links": [
+            {
+              "label": "Personal Card Blueprint",
+              "href": "/products/personal-card-blueprint"
+            },
+            {
+              "label": "Editorial policy",
+              "href": "/editorial-policy"
+            }
+          ]
+        }
+      ],
+      "faqs": [
+        {
+          "q": "Is Cardology compatibility free?",
+          "a": "Yes. The two-birthday calculator and pair directory are free on Card Blueprints."
+        },
+        {
+          "q": "Does same suit mean a better match?",
+          "a": "Not automatically. Same suit can feel familiar or amplify the same blind spots."
+        },
+        {
+          "q": "Can this tell me whether to stay together?",
+          "a": "No. It can name patterns; decisions belong to the people living them."
+        }
+      ],
+      "related": [
+        "cardology-for-work-love-and-money",
+        "four-suits-in-cardology"
+      ],
+      "coreLinks": [
+        {
+          "label": "Compatibility Calculator",
+          "href": "/birth-card-compatibility-calculator"
+        },
+        {
+          "label": "Birth Card Calculator",
+          "href": "/birth-card-calculator"
+        },
+        {
+          "label": "Methodology",
+          "href": "/methodology"
+        }
       ]
     }
   ]
