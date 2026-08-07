@@ -230,6 +230,16 @@ assert.match(
   /permanentRedirect\("\/birth-card-calculator"\)/,
 );
 assert.equal(MARKETING_PATHS.includes("/try"), false);
+const middlewareText = readFileSync("middleware.ts", "utf8");
+assert.match(
+  middlewareText,
+  /["']\/readings["']\s*:\s*["']\/products\/personal-card-blueprint["']/,
+);
+assert.match(
+  middlewareText,
+  /["']\/try["']\s*:\s*["']\/birth-card-calculator["']/,
+);
+assert.match(middlewareText, /NextResponse\.redirect\(redirectUrl,\s*301\)/);
 const privacyPolicyText = readFileSync("app/privacy-policy/page.tsx", "utf8");
 assert.doesNotMatch(
   privacyPolicyText,
