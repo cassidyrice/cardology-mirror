@@ -50,6 +50,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — coming soon</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
+              <li><Link href="/cardology-vs-tarot" className="hover:text-brand-ink">Cardology vs Tarot</Link></li>
               <li><Link href="/cardology-compatibility" className="hover:text-brand-ink">Compatibility</Link></li>
               <li><Link href="/52-card-astrology-explained" className="hover:text-brand-ink">52-Card Astrology</Link></li>
               <li><Link href="/birth-card-vs-ruling-card" className="hover:text-brand-ink">Birth vs Ruling Card</Link></li>

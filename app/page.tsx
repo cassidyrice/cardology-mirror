@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, SectionShell } from "@/components/ui";
@@ -19,15 +20,14 @@ export const metadata: Metadata = {
 };
 
 const FREE_PATHS = [
-
   {
-    label: "Find Your Birth Card",
+    label: "Find Your Birth Card Free",
     href: "/birth-card-calculator",
-    detail: "Enter a birthday and calculate the fixed birth card.",
+    detail: "Enter a birthday — fixed playing-card birth card, not tarot.",
     external: false,
   },
   {
-    label: "Check Compatibility",
+    label: "Check Compatibility Free",
     href: "/birth-card-compatibility-calculator",
     detail: "Compare two birthdays and explore the relationship pattern.",
     external: false,
@@ -37,6 +37,12 @@ const FREE_PATHS = [
     href: BIRTHDAY_DIRECTORY_PATH,
     detail: "Look up any birthday in the full 366-day birth card calendar.",
     external: true,
+  },
+  {
+    label: "New to Cardology?",
+    href: "/cardology-for-beginners",
+    detail: "Ten-minute beginner path from first card to first comparison.",
+    external: false,
   },
 ];
 
@@ -64,7 +70,9 @@ const LIBRARY_PATHS = [
     detail: "Start with the calculation, then read how the system works.",
     links: [
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
+      { label: "Cardology for Beginners", href: "/cardology-for-beginners" },
       { label: "What Is Cardology?", href: "/what-is-cardology" },
+      { label: "Cardology vs Tarot", href: "/cardology-vs-tarot" },
     ],
   },
   {
@@ -140,10 +148,12 @@ export default function Home() {
         </div>
         </section>
 
-      {/* 2 — Three free entry points */}
+      {/* 2 — Free entry points (secondary path next to Blueprint hero) */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
-        <Kicker>Start free</Kicker>
-        <h2 className="sr-only">Start free</h2>
+        <Kicker>Start free · no account</Kicker>
+        <h2 className="type-h3 mt-3 max-w-[28rem] text-brand-ink">
+          Find your card before you buy anything.
+        </h2>
         <div className="mt-6 divide-y divide-brand-line border-y border-brand-line">
           {FREE_PATHS.map((item) =>
             item.external ? (
@@ -182,6 +192,10 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </SectionShell>
+
+      <SectionShell tone="ink">
+        <FreeCourseCta source="home" variant="home" />
       </SectionShell>
 
       {/* 5 — Method and trust */}

@@ -56,6 +56,7 @@ export const MARKETING_PATHS = [
   "/free-course",
   "/what-is-cardology",
   "/cardology-for-beginners",
+  "/cardology-vs-tarot",
   "/cartomancy-vs-tarot",
   "/how-to-read-playing-cards",
   "/playing-card-spreads",

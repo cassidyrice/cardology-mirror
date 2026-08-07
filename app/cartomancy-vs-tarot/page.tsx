@@ -264,6 +264,8 @@ export default function CartomancyVsTarot() {
       <p className="mt-6 text-sm">
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
+        <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">Cardology vs Tarot →</Link>
+        {"  ·  "}
         <Link href="/52-card-astrology-explained" className="text-gold underline underline-offset-4">52-card astrology explained →</Link>
       </p>
     </SeoShell>
