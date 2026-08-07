@@ -39,6 +39,7 @@ export const APP_PATHS = [
   "/journal",
   "/onboarding",
   "/access",
+  "/free-course/watch",
 ];
 
 export const MARKETING_PATHS = [
@@ -52,7 +53,9 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
+  "/free-course",
   "/what-is-cardology",
+  "/cardology-for-beginners",
   "/cartomancy-vs-tarot",
   "/how-to-read-playing-cards",
   "/playing-card-spreads",
