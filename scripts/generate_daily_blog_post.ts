@@ -281,7 +281,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-          { label: "Personal Cardology Readings", href: "/readings" },
+          { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint" },
         ],
       },
     ],
@@ -303,7 +303,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     coreLinks: [
       { label: `${cardLabel} Birth Card Meaning`, href: `/birth-card/${cardSlug}` },
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-      { label: "Personal Readings", href: "/readings", note: "$19, $39, and $199 voice readings." },
+      { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint", note: "$29 instant personalized written report." },
     ],
   };
 }

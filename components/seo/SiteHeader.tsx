@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import { READINGS_PATH, SITE_NAME } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 
 // One header for every marketing/editorial surface. Five conceptual
-// destinations, no more: Free Call (the compact action), Readings,
-// Calculator, Card Meanings, Learn. Long-tail navigation lives in the footer.
+// destinations, no more: Blueprint, Calculator, Card Meanings, Learn.
+// Long-tail navigation lives in the footer.
 const NAV_LINKS = [
-  { label: "Readings", href: READINGS_PATH },
+  { label: "Blueprint", href: "/products/personal-card-blueprint" },
   { label: "Calculator", href: "/birth-card-calculator" },
   { label: "Card Meanings", href: "/birth-card" },
   { label: "Learn", href: "/what-is-cardology" },

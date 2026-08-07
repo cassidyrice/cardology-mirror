@@ -1,12 +1,9 @@
 // Shared presentational primitives. Treat as read-only from feature agents.
 // Two systems live here: the dark in-app primitives (Eyebrow, SectionTitle,
 // Screen, PositionStack) and the warm-paper marketing system (LinkButton,
-// Kicker, SectionShell, Rule, PricingCard).
+// Kicker, SectionShell, Rule).
 import { ReactNode } from "react";
 import Link from "next/link";
-
-import type { ReadingOffer } from "@/lib/products";
-import { readingOfferFacts, readingOfferHref } from "@/lib/products";
 
 export function Eyebrow({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <p className={`eyebrow ${className}`}>{children}</p>;
@@ -144,68 +141,4 @@ export function SectionShell({
 // 1px semantic divider for paper surfaces (Divider above is the dark-app one).
 export function Rule({ className = "" }: { className?: string }) {
   return <hr className={`border-t border-brand-line ${className}`} />;
-}
-
-// Pricing card. The emphasized card inverts to ink — inversion, not scale,
-// carries the recommendation. Every entitlement detail is derived from the
-// canonical product object rather than duplicated in page copy.
-export function PricingCard({
-  offer,
-  emphasized = false,
-  badge,
-  className = "",
-}: {
-  offer: ReadingOffer;
-  emphasized?: boolean;
-  badge?: string;
-  className?: string;
-}) {
-  const shownBadge = badge ?? offer.badge;
-  const surface = emphasized
-    ? "shell-ink border border-brand-ink"
-    : "bg-brand-ivory border border-brand-line";
-  const soft = emphasized ? "text-brand-on-dark-soft" : "text-brand-ink-soft";
-  const hair = emphasized ? "border-brand-on-dark-line" : "border-brand-line";
-  const facts = readingOfferFacts(offer);
-
-  return (
-    <article
-      id={offer.slug}
-      className={`flex flex-col rounded-[3px] p-8 transition-shadow duration-200 hover:shadow-[0_8px_30px_rgba(20,17,13,0.08)] sm:p-9 ${surface} ${className}`}
-    >
-      <div className="min-h-[1.25rem]">
-        {shownBadge && <p className="type-eyebrow">{shownBadge}</p>}
-      </div>
-      <h3 className="type-h3 mt-3 lg:min-h-[2.6em]">{offer.name}</h3>
-      <p className="mt-4 font-serif text-4xl leading-none">
-        {offer.priceLabel}{" "}
-        <span className={`ml-2 align-middle text-sm ${soft}`}>one time</span>
-      </p>
-      <p className={`mt-4 text-[0.95rem] leading-relaxed ${soft}`}>{offer.oneLine}</p>
-      <div className={`mt-5 border-t ${hair} pt-4`}>
-        <p className="type-eyebrow">Best for</p>
-        <p className={`mt-2 text-sm leading-relaxed ${soft}`}>{offer.bestFor}</p>
-      </div>
-      <dl className={`mt-5 flex-1 text-sm leading-relaxed ${soft}`}>
-        {facts.map((fact) => (
-          <div
-            key={fact.label}
-            className={`grid gap-1 border-t ${hair} py-3 sm:grid-cols-[5.25rem_1fr] sm:gap-3`}
-          >
-            <dt className="font-medium">{fact.label}</dt>
-            <dd>{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
-      <LinkButton
-        href={readingOfferHref(offer)}
-        variant={emphasized ? "accent" : "outline"}
-        size="large"
-        className="mt-7 w-full text-center"
-      >
-        {offer.cta}
-      </LinkButton>
-      <p className={`mt-3 text-center text-xs leading-relaxed ${soft}`}>{offer.checkoutNote}</p>
-    </article>
-  );
 }

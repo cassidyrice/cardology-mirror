@@ -7,10 +7,9 @@ import {
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import {
-  productBySlug,
+  publicProductBySlug,
   isDigitalDownload,
   isInstantReport,
-  isVoiceReading,
 } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
@@ -19,16 +18,18 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 // POST /checkout/[offer]/session
-// Creates a Stripe Checkout Session for instant reports, voice readings, and
-// digital downloads. Voice requires a phone; the other products do not.
+// Creates a Stripe Checkout Session for active reports and digital downloads.
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
 ) {
   const { offer: slug } = await params;
-  const product = productBySlug(slug);
+  const product = publicProductBySlug(slug);
   if (!product) {
-    return NextResponse.redirect(new URL("/readings", req.url), 303);
+    return NextResponse.redirect(
+      new URL("/products/personal-card-blueprint", req.url),
+      303,
+    );
   }
   if (isDigitalDownload(product) && !product.available) {
     return checkoutUnavailable(req, product.slug);
@@ -59,14 +60,7 @@ export async function POST(
       product_kind: product.kind,
     };
 
-    if (isVoiceReading(product)) {
-      metadata.access_type = product.accessType;
-      metadata.max_session_minutes = String(product.durationMinutes);
-      metadata.access_days = String(product.accessDays);
-      if (product.maxCompletedCalls != null) {
-        metadata.max_completed_calls = String(product.maxCompletedCalls);
-      }
-    } else if (isDigitalDownload(product)) {
+    if (isDigitalDownload(product)) {
       metadata.redownload_days = String(product.redownloadDays);
       metadata.download_asset_key = product.downloadAssetKey;
     } else if (isInstantReport(product)) {
@@ -84,9 +78,8 @@ export async function POST(
       cancel_url: `${SITE_URL}/checkout/${product.slug}`,
       metadata: sharedMeta,
       payment_intent_data: { metadata },
-      // only voice readings collect a phone number
       phone_number_collection: {
-        enabled: isVoiceReading(product),
+        enabled: false,
       },
       // instant reports need the buyer's birth date to generate the report
       ...(instantReport

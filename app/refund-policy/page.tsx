@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+
 import { SeoShell } from "@/components/seo/SeoShell";
-import { CONTACT_EMAIL, READINGS_PATH } from "@/lib/site";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Personal Card Blueprint, digital downloads, and Card Blueprints voice readings.",
+    "Refund terms for the Personal Card Blueprint, digital downloads, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -32,13 +33,12 @@ export default function RefundPolicy() {
       </header>
 
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
-
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $29 Personal Card Blueprint and three
-            optional voice-reading products. Refund eligibility depends on the
-            product and whether it has been delivered or used. The digital
-            download policy below applies when an e-book sale is available.
+            Card Blueprints sells the $29 Personal Card Blueprint. Refund
+            eligibility depends on whether the personalized report was delivered
+            and accessible. The digital-download policy applies only when an
+            e-book sale is explicitly open.
           </p>
         </section>
 
@@ -62,37 +62,23 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Before the first paid session</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Legacy phone-reading orders</h2>
           <p className="mt-3">
-            If you have not used any paid session, ask for a full refund by
-            replying to your receipt or using the{" "}
-            <Link href="/contact" className="text-[#8e321f] underline underline-offset-4">
-              contact page
-            </Link>
-            . Include the phone number and email used at checkout. This applies
-            to all three readings, including the Season Pass.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">After paid use begins</h2>
-          <p className="mt-3">
-            Once a paid session has been used, refunds are limited because the
-            service has started. If the line did not work, your access was not
-            recognized, or a technical problem interrupted a paid call, contact
-            us. We will review the access record and offer restored access, a
-            partial refund, or a full refund when the service was not delivered
-            as described.
+            Phone-reading products are no longer sold. Existing purchases keep
+            the refund and service rights provided at checkout. If an unused
+            purchase, access-recognition problem, or interrupted paid session
+            needs review, contact us with the original checkout email and phone
+            number. We will review the order and provide restored access or an
+            appropriate refund when the service was not delivered as described.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Digital downloads</h2>
           <p className="mt-3">
-            Digital products with instant download (including The Analog
-            Algorithm e-book) are refundable only if the file is corrupt or
-            the download fails. Refunds are not available after a successful,
-            complete download.
+            Digital products with instant download are refundable if the file is
+            corrupt or the download fails. Refunds are not available after a
+            successful, complete download unless required by law.
           </p>
         </section>
 
@@ -100,15 +86,15 @@ export default function RefundPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">How to request a refund</h2>
           <ol className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-3">
-              <strong>Reply to your Stripe receipt email</strong> with "refund request" in the subject line.
+              <strong>Reply to your Stripe receipt email</strong> with “refund request” in the subject line.
             </li>
             <li className="border-t border-[#14110d]/12 pt-3">
               Or email{" "}
               <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>{" "}
-              with the email address used at checkout and, for a voice reading,
-              the checkout phone number.
+              with the email address used at checkout. For a legacy phone order,
+              also include the checkout phone number.
             </li>
           </ol>
           <p className="mt-4 text-sm text-[#5b5148]">
@@ -118,11 +104,10 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href={READINGS_PATH} className="text-[#8e321f] underline underline-offset-4">
-            ← Back to readings
+          <Link href="/products/personal-card-blueprint" className="text-[#8e321f] underline underline-offset-4">
+            ← Back to Personal Card Blueprint
           </Link>
         </div>
-
       </div>
     </SeoShell>
   );

@@ -15,7 +15,7 @@ Persistent state for the self-improving asset loop. Each iteration: read this fi
 2. **OG rebrand** — 53 OG images may still say CARDOLOGY PRO; regenerate via `scripts/generate_og_images.py` (brand: CARD BLUEPRINTS).
 3. **/card-of-the-day** — #1 ranked gap page (public indexable daily draw, near-zero SERP competition). Check it doesn't exist yet, then build.
 4. **/how-to-read-playing-cards + /playing-card-spreads hub/spokes** — gap content ranked #3-4.
-5. **Phone teaser tel: CTA** — number was absent sitewide; verify whether the trial-surface commit added it; if not, publish (confirm number from worker knowledge/ first).
+5. **Phone teaser is retired** — do not publish phone CTAs or the former `/try` funnel; preserve phone constants only for historical paid-order fulfillment.
 6. **Orphan link equity** — compatibility-pair blocks on 52 card pages + /born-on/ footer link (1,798 Worker pages need inbound links). Peer edited `birth-card/[slug]/page.tsx` (62 lines) — diff to see if covered.
 7. **General-meaning sections** on 52 card pages ("in a general reading / in love") + title widening toward "{Card} Meaning".
 

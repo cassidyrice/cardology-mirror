@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
@@ -242,19 +241,17 @@ export default function CardOfTheDayPage() {
         <p className="font-serif text-base text-bone">Get YOUR card</p>
         <p className="mt-1 text-sm text-faint">
           Today&rsquo;s card belongs to everyone; yours was fixed the day you
-          were born. Look it up free — then hear it read out loud.
+          were born. Look it up free, then explore the written interpretation.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Birth Card Calculator →
           </Link>
-          <a href={READER_PHONE_TEL} className="text-sm font-bold text-gold underline underline-offset-4">
-            Call the AI reader free: {READER_PHONE_DISPLAY}
-          </a>
+
         </div>
         <p className="mt-3 text-xs text-faint">
-          The free call introduces your birth card on the spot. Want a season of daily cards?{" "}
-          <Link href="/readings" className="text-gold underline underline-offset-4">See the 90-Day Season Pass</Link>.
+          Want your fixed birth-card pattern written out?{" "}
+          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">Get your Personal Card Blueprint</Link>.
         </p>
       </section>
 

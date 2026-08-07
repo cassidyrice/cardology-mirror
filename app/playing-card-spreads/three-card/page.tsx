@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { rankTheme, suitWord, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
@@ -242,16 +241,14 @@ export default function ThreeCardSpread() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">One card that never shuffles</p>
         <p className="mt-1 text-sm text-faint">
-          Before you learn spreads, meet the card your birthday already fixed —
-          or call and the AI reader reads it to you free.
+          Before you learn spreads, meet the card your birthday already fixed
+          and read its complete meaning free.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Birth Card Calculator →
           </Link>
-          <a href={READER_PHONE_TEL} className="text-sm font-bold text-gold underline underline-offset-4">
-            Call the AI reader free: {READER_PHONE_DISPLAY}
-          </a>
+
         </div>
       </div>
 

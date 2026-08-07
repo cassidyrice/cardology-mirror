@@ -1,16 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
-import { PUBLIC_PRODUCTS, isVoiceReading } from "@/lib/products";
-import { READINGS_PATH, SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
+import { PUBLIC_PRODUCTS } from "@/lib/products";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Keep child titles literal. The former automatic " | Card Blueprints"
   // suffix pushed 74 sitemap titles beyond 60 characters.
-  title: "Card Blueprints | Cardology Readings & Birth Cards",
+  title: "Card Blueprints | Personal Blueprint & Birth Cards",
   description:
-    "Instant Personal Card Blueprints, optional AI Cardology voice readings, a free birth card calculator, all 52 card meanings, and compatibility tools.",
+    "Instant Personal Card Blueprints, a free birth card calculator, all 52 card meanings, compatibility, and timing tools.",
   icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Card Blueprints — Cardology Readings & Birth Cards",
+    title: "Card Blueprints — Personal Blueprint & Birth Cards",
     description:
-      "Personal Cardology readings from your birth card, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
+      "A personalized Cardology Blueprint from your birth date, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   // No title/description here on purpose. A page that sets its own openGraph
   // does not set twitter, so a title pinned at this level would override the
-  // page's real one on every card — 21 routes, including /readings and /try,
+  // page's real one on every card and long-tail route.
   // shared the homepage title. Omitting them lets Twitter fall back to og:*.
   twitter: {
     card: "summary_large_image",
@@ -93,15 +93,12 @@ export default function RootLayout({
           // The indexable comparison section is the public offer URL.
           // /checkout/<slug> is a robots-disallowed review page; only its
           // explicit POST action creates a Stripe Checkout Session.
-          url: isVoiceReading(offer)
-            ? `${SITE_URL}${READINGS_PATH}#${offer.slug}`
-            : `${SITE_URL}${offer.href ?? `/products/${offer.slug}`}`,
+          url: `${SITE_URL}${offer.href ?? `/products/${offer.slug}`}`,
           hasMerchantReturnPolicy: {
             "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
           },
-          // Voice offers are services; instant reports and downloads are products.
           itemOffered: {
-            "@type": isVoiceReading(offer) ? "Service" : "Product",
+            "@type": "Product",
             name: offer.name,
             provider: { "@id": `${SITE_URL}/#organization` },
           },

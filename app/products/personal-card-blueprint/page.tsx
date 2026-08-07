@@ -142,12 +142,6 @@ export default function PersonalCardBlueprintPage() {
               <p className="mt-3 text-xs leading-relaxed text-brand-ink-soft">
                 {offer.checkoutNote}
               </p>
-              <p className="mt-4 text-sm text-brand-ink-soft">
-                Prefer to talk it through live?{" "}
-                <Link href="/readings" className="editorial-link text-brand-ink">
-                  The voice readings are still here &rarr;
-                </Link>
-              </p>
             </div>
           </div>
         </section>

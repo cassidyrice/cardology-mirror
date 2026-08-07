@@ -146,8 +146,8 @@ export default function AnalogAlgorithmSalesPage() {
           </Link>{" "}
           is explained here in full. The e-book teaches <em>why</em> and{" "}
           <em>how</em>; the Blueprint applies the pattern to your birthday.
-          Optional AI voice readings remain available when you want to talk it
-          through.
+          The free tools let you explore the system before deciding whether you
+          want a personalized Blueprint.
         </p>
       </section>
 
@@ -176,10 +176,10 @@ export default function AnalogAlgorithmSalesPage() {
         </p>
         <p className="mt-4 text-sm text-brand-ink-soft">
           <Link
-            href="/readings"
+            href="/products/personal-card-blueprint"
             className="editorial-link text-brand-ink"
           >
-            See all reading options &rarr;
+            Get your Personal Card Blueprint &rarr;
           </Link>
         </p>
       </section>
@@ -219,8 +219,7 @@ export default function AnalogAlgorithmSalesPage() {
           <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
             It complements it. The e-book explains the system; the Personal
             Card Blueprint applies that pattern to your birthday in an instant
-            personalized report. Optional voice readings let you discuss a
-            question by phone. You don&rsquo;t need one product to use another.
+            personalized report. You don&rsquo;t need one product to use another.
           </p>
         </details>
 

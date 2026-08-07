@@ -62,15 +62,15 @@ describe("Card Blueprints Script Studio", () => {
     expect(output.factsChecked.join(" ")).toMatch(/same-card rule/i);
   });
 
-  test("uses the approved paid product wording", () => {
+  test("uses the approved Blueprint wording", () => {
     const output = generateStudioScript({
       ...base,
       postType: "card_meaning",
       cardSlug: "king-of-hearts",
-      goal: "ai_voice",
+      goal: "blueprint",
     });
-    expect(output.cta).toBe("Hear your first card free, then the $39 Complete Reading goes deeper.");
-    expect(output.caption).toContain("$39 Complete Reading goes deeper");
+    expect(output.cta).toBe("Get your $29 Personal Card Blueprint at CardBlueprints.com.");
+    expect(output.caption).toContain("$29 Personal Card Blueprint");
   });
 
   test("blocks risky trend promises", () => {
@@ -126,7 +126,7 @@ describe("Card Blueprints Script Studio", () => {
 
   test("keeps every 30-second card meaning at least 65 words", () => {
     const context = studioContext();
-    const goals = ["free_calculator", "ai_voice", "brand_awareness"] as const;
+    const goals = ["free_calculator", "blueprint", "brand_awareness"] as const;
     for (const card of context.cards) {
       for (const goal of goals) {
         for (const variant of [0, 1, 2]) {

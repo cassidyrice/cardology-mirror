@@ -95,8 +95,12 @@ export default async function CheckoutSuccessPage({
       crumb={[
         { label: "Home", href: "/" },
         {
-          label: "Readings",
-          href: digital ? "/products/analog-algorithm" : "/readings",
+          label: voice ? "Legacy order support" : "Personal Card Blueprint",
+          href: digital
+            ? "/products/analog-algorithm"
+            : voice
+              ? "/contact"
+              : "/products/personal-card-blueprint",
         },
         {
           label: "Purchase status",
@@ -126,7 +130,7 @@ export default async function CheckoutSuccessPage({
                 : "Payment is confirmed, but we could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we'll finish your Blueprint."
               : confirmed && voice
                 ? activationInstructions(product!)
-                : "Do not start a paid reading yet. Return to the readings page or contact support so we can verify the payment."}
+                : "No paid access was verified. Return to the Blueprint page or contact support so we can verify the payment."}
         </p>
         {confirmed && customerEmail && (
           <p className="mt-3 text-sm text-brand-ink-soft">
@@ -164,8 +168,8 @@ export default async function CheckoutSuccessPage({
             name.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href="/readings" variant="primary">
-              Return to Readings
+            <LinkButton href="/products/personal-card-blueprint" variant="primary">
+              View Personal Card Blueprint
             </LinkButton>
             <LinkButton href="/contact" variant="outline">
               Contact Support
@@ -233,17 +237,7 @@ function DigitalFulfillment({
         Your download link is good for 30 days. Need it again? Reply
         to your receipt email.
       </p>
-      <div className="mt-8 border-t border-brand-line pt-6">
-        <p className="text-sm text-brand-ink-soft">
-          Prefer to hear the system read aloud?{" "}
-          <Link
-            href="/readings"
-            className="editorial-link text-brand-ink"
-          >
-            See the voice readings &rarr;
-          </Link>
-        </p>
-      </div>
+
     </div>
   );
 }

@@ -3,8 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { READINGS_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { SUIT_COLOR_PAPER, SUIT_GLYPH } from "@/lib/cards";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { rankTheme, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
@@ -192,16 +191,13 @@ export default function YesOrNoReading() {
             birth card calculator
           </Link>
           , and that card&rsquo;s pattern usually says more about the decision
-          than a coin-colored verdict. And when you want the question talked
-          through rather than flipped on, the{" "}
-          <Link href={READINGS_PATH} className="text-gold underline underline-offset-4">
-            AI voice reader
+          than a coin-colored verdict. When you want that fixed pattern written
+          out from your real birth date, the{" "}
+          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
+            Personal Card Blueprint
           </Link>{" "}
-          works from your real birth date and your real question — call{" "}
-          <a href={READER_PHONE_TEL} className="text-gold underline underline-offset-4">
-            {READER_PHONE_DISPLAY}
-          </a>{" "}
-          and it reads your first card free before anything costs a dollar.
+          connects your birth card, ruling layer, current chapter, and reflection
+          prompts in one instant report.
         </p>
       </section>
 
@@ -220,17 +216,17 @@ export default function YesOrNoReading() {
       <ReadingBridge variant="general" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Ask it out loud instead</p>
+        <p className="font-serif text-base text-bone">Use the card your birthday fixed</p>
         <p className="mt-1 text-sm text-faint">
-          A coin flip can&rsquo;t answer a follow-up question. The AI reader
-          can — first card free, on the spot.
+          Skip the coin flip and start with your deterministic birth card, its
+          complete meaning, and the patterns tied to it.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <a href={READER_PHONE_TEL} className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Call {READER_PHONE_DISPLAY} →
-          </a>
-          <Link href="/birth-card-calculator" className="text-sm font-bold text-gold underline underline-offset-4">
-            Or find your card free
+          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+            Find Your Card Free →
+          </Link>
+          <Link href="/products/personal-card-blueprint" className="text-sm font-bold text-gold underline underline-offset-4">
+            Get the full written Blueprint
           </Link>
         </div>
       </div>

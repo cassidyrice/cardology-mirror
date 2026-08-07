@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { FAIR_USE_COPY } from "@/lib/offers";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
-  description: "Terms for Card Blueprints reports, digital products, AI voice readings, and free Cardology tools.",
+  description:
+    "Terms for the Personal Card Blueprint, digital products, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -44,23 +44,11 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            an instant personalized Cardology report, a digital e-book, and
-            optional paid voice readings delivered by phone. Card lookups use
-            fixed formulas and tables — the same birthday always produces the
-            same card. Cardology is an esoteric reflection framework;
-            interpretations are not facts about you.
-          </p>
-        </section>
-
-        <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">The reader is AI</h2>
-          <p className="mt-3">
-            Every paid voice reading and the free first-card preview are delivered
-            by an AI voice reader, not a human. The Personal Card Blueprint is a
-            written deterministic report, not a voice call. AI voice wording can be incomplete or
-            wrong even when the card lookup is correct. Check important facts
-            for yourself and do not rely on the reader as your only source for
-            an important decision.
+            the Personal Card Blueprint, and digital products when explicitly
+            marked available. Card lookups use fixed formulas and tables — the
+            same birthday always produces the same card. Cardology is an
+            esoteric reflection framework; interpretations are not facts about
+            you.
           </p>
         </section>
 
@@ -72,45 +60,30 @@ export default function TermsOfService() {
               personalized written report generated from the birth date entered
               at checkout, with a signed return link sent by email.
             </li>
-
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Quick Question ($19)</strong> — one single paid voice
-              session of up to 5 minutes. Start it within 30 days of purchase.
-            </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Complete Reading ($39)</strong> — one single paid voice
-              session of up to 15 minutes. Start it within 30 days of purchase.
-            </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>90-Day Season Pass ($199)</strong> — a one-time purchase
-              covering unlimited personal return calls for 90 days, up to 15
-              minutes per session, one active session at a time. The pass does
-              not automatically renew and is subject to the fair-use rules
-              below.
-            </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
-              Voice-reading access is tied to the phone number used at checkout.
-              Blueprint access uses its private signed report link; do not share it.
-            </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
-              Do not share paid access, misuse the phone line, or try to bypass
-              payment or security checks.
+              Blueprint access uses a private signed report link. Do not share
+              paid access or try to bypass payment or security checks.
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Season Pass fair use</h2>
-          <p className="mt-3">{FAIR_USE_COPY}</p>
+          <h2 className="font-serif text-2xl text-[#14110d]">Legacy orders</h2>
+          <p className="mt-3">
+            Phone-reading products are no longer sold. If you bought one before
+            retirement, its original access period, support, and refund terms
+            remain in effect. Contact support using the email and phone number
+            from the original checkout so the order can be located.
+          </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Refunds and privacy</h2>
           <p className="mt-3">
-            The <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">refund policy</Link>
-            {" "}explains when refunds are available. The{" "}
-            <Link href="/privacy-policy" className="text-[#8e321f] underline underline-offset-4">privacy policy</Link>
-            {" "}explains what information is collected and why.
+            The <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">refund policy</Link>{" "}
+            explains when refunds are available. The{" "}
+            <Link href="/privacy-policy" className="text-[#8e321f] underline underline-offset-4">privacy policy</Link>{" "}
+            explains what information is collected and why.
           </p>
         </section>
 
@@ -118,28 +91,29 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Not professional advice</h2>
           <p className="mt-3">
             Card Blueprints does not provide medical, mental-health, legal,
-            financial, employment, or other professional advice, and no reading
-            predicts or guarantees any outcome. Do not use a reading to
-            diagnose a person, predict harm, or make a high-stakes decision for
-            someone else.
+            financial, employment, or other professional advice, and no report
+            predicts or guarantees any outcome. Do not use the site to diagnose
+            a person, predict harm, or make a high-stakes decision for someone
+            else.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Your responsibility</h2>
           <p className="mt-3">
-            Give only information you have the right to share. If you discuss another
-            person, avoid private or sensitive details. You are responsible for how you
-            use the site and any choices you make after a reading.
+            Give only information you have the right to share. If you enter
+            another person&rsquo;s birth date, avoid adding private or sensitive
+            details. You are responsible for how you use the site and any
+            choices you make afterward.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Availability</h2>
           <p className="mt-3">
-            We work to keep the site and phone service available, but we cannot promise
-            that they will always be online or error-free. Contact us if a paid service
-            does not work as described.
+            We work to keep the site and paid report access available, but we
+            cannot promise they will always be online or error-free. Contact us
+            if a paid product does not work as described.
           </p>
         </section>
 
