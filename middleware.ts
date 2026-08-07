@@ -3,6 +3,11 @@ import type { NextRequest } from "next/server";
 
 import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 
+const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
+  "/readings": "/products/personal-card-blueprint",
+  "/try": "/birth-card-calculator",
+};
+
 // Canonical host enforcement: 301 any www.* request to the apex domain,
 // preserving path and query. Everything else passes through.
 export function middleware(request: NextRequest) {
@@ -12,6 +17,12 @@ export function middleware(request: NextRequest) {
 
   if (host.startsWith("www.")) {
     redirectUrl.host = host.slice(4);
+    shouldRedirect = true;
+  }
+
+  const retiredDestination = RETIRED_PUBLIC_REDIRECTS[request.nextUrl.pathname];
+  if (retiredDestination) {
+    redirectUrl.pathname = retiredDestination;
     shouldRedirect = true;
   }
 
