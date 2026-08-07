@@ -216,6 +216,40 @@ assert.doesNotMatch(
   productSurfaceText,
   /READER_PHONE|Call the AI reader|free first-card|free AI voice preview|free voice preview|free preview line|free reading line|free-call|free_call_clicked|FREE_PREVIEW|tel:\+/i,
 );
+
+// The named-constant checks above only catch regressions that reuse our own
+// identifiers. A future edit can reintroduce phone contact on a public surface
+// by pasting the number literally, linking a dial scheme, or re-adding a global
+// tel-click listener — none of which mention READER_PHONE. Derive the retired
+// number from lib/offers.ts (single source of truth) so this gate cannot drift
+// out of sync with it, and reject every shape.
+//
+// Scope note: historical fulfillment (app/checkout/success/page.tsx and
+// app/api/checkout/webhook/route.ts) legitimately renders READER_PHONE_DISPLAY
+// for previously paid orders and is deliberately excluded from this scan.
+const retiredPhoneDigits = READER_PHONE_DISPLAY.replace(/\D/g, "");
+assert.ok(
+  retiredPhoneDigits.length >= 10,
+  "expected the retired reader phone constant to yield a dialable digit string",
+);
+const digitsWithSeparators = retiredPhoneDigits
+  .split("")
+  .join("[^0-9A-Za-z]{0,3}");
+assert.doesNotMatch(
+  productSurfaceText,
+  new RegExp(`\\+?1?[^0-9A-Za-z]{0,3}${digitsWithSeparators.slice(1)}`),
+  "a public marketing surface contains the retired reader phone number",
+);
+assert.doesNotMatch(
+  productSurfaceText,
+  /\b(?:tel|sms|callto|facetime(?:-audio)?|whatsapp):/i,
+  "a public marketing surface links a phone/dial scheme",
+);
+assert.doesNotMatch(
+  productSurfaceText,
+  /href\^?=['"]tel:|closest\([^)]*tel:|capturePhoneClick|phoneClick/i,
+  "a public surface re-added phone-click tracking",
+);
 assert.doesNotMatch(productSurfaceText, /Quick Question/i);
 assert.doesNotMatch(productSurfaceText, /Complete Reading/i);
 assert.doesNotMatch(productSurfaceText, /90-Day Season Pass/i);
