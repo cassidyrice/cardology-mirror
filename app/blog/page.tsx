@@ -100,9 +100,11 @@ export default function BlogIndexPage() {
 
       <section className="mb-10 grid gap-3 sm:grid-cols-2">
         {[
-          ["New to Cardology?", "Start with What Is Cardology.", "/what-is-cardology", false],
+          ["New to Cardology?", "Start with the beginners path.", "/cardology-for-beginners", false],
+          ["Find your birth card", "Free calculator — playing cards, not tarot.", "/birth-card-calculator", false],
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
+          ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
           ["Want it personalized?", "Get your Personal Card Blueprint.", "/products/personal-card-blueprint", false],
         ].map(([label, text, href, external]) =>
           external ? (
