@@ -90,7 +90,7 @@ fi
 
 git add lib/generated-blog-posts.json
 git commit -m "content(blog): ${NEW_SLUG} (${POST_SLOT} E-E-A-T SEO)"
-git pull --rebase origin main 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
+git pull --rebase --autostash origin main 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
 git push origin main 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
 
 bun run pages:build 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
