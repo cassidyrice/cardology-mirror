@@ -277,7 +277,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "How to use this profile",
         body: [
           `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
-          "For a personal reading, start with the birth dates and the actual question: a partner, parent, friend, coworker, creative collaborator, or repeated relationship pattern. The best reading combines the card structure with the real context around it.",
+          "Want that fixed birth-card pattern written out for one date? The Personal Card Blueprint is a $29 one-time written report generated from a single birth date — no phone call, no question intake, no subscription.",
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },

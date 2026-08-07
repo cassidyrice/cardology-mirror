@@ -214,6 +214,26 @@ assert.doesNotMatch(productSurfaceText, /optional phone readings/i);
 assert.doesNotMatch(productSurfaceText, /which reading fits|ongoing seasonal access/i);
 assert.doesNotMatch(
   productSurfaceText,
+  /For a personal reading, start with the birth dates and the actual question/i,
+);
+assert.doesNotMatch(
+  productSurfaceText,
+  /birth dates and the actual question/i,
+);
+assert.match(
+  productSurfaceText,
+  /Personal Card Blueprint is a \$29 one-time written report generated from a single birth date/i,
+);
+assert.match(
+  readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
+  /Personal Card Blueprint is a \$29 one-time written report generated from a single birth date/i,
+);
+assert.doesNotMatch(
+  readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
+  /For a personal reading, start with the birth dates and the actual question/i,
+);
+assert.doesNotMatch(
+  productSurfaceText,
   /READER_PHONE|Call the AI reader|free first-card|free AI voice preview|free voice preview|free preview line|free reading line|free-call|free_call_clicked|FREE_PREVIEW|tel:\+/i,
 );
 
