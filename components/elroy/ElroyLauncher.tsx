@@ -98,7 +98,10 @@ export function ElroyLauncher() {
           open={open}
           prefBirthdate={prefBirthdate}
           placement={pathname}
-          onClose={() => setOpen(false)}
+          onClose={() => {
+            setOpen(false);
+            setSuppressed(readElroySuppression(window.localStorage, Date.now()));
+          }}
           onComplete={() => {
             writeElroySuppression(window.localStorage, Date.now());
           }}

@@ -13,6 +13,20 @@ async function main() {
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 
+  await page.addInitScript({
+    content: `
+      window.turnstile = {
+        render(el, opts) {
+          el.dataset.ready = "1";
+          setTimeout(() => opts.callback && opts.callback("test-token"), 10);
+          return "w1";
+        },
+        reset() {},
+        remove() {}
+      };
+    `,
+  });
+
   await page.route("**/challenges.cloudflare.com/**", async (route) => {
     await route.fulfill({
       status: 200,
@@ -54,7 +68,7 @@ async function main() {
     });
   });
 
-  await page.goto(`${base}/birth-card-calculator`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/birth-card-calculator`, { waitUntil: "domcontentloaded" });
   await page.waitForSelector('button[aria-label="Open Elroy micro-reading"]', {
     timeout: 15000,
   });
@@ -66,7 +80,8 @@ async function main() {
     0,
   );
 
-  await page.goto(`${base}/birth-card-calculator`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/birth-card-calculator`, { waitUntil: "domcontentloaded" });
+  await page.waitForSelector('button[aria-label="Open Elroy micro-reading"]');
   await page.click('button[aria-label="Open Elroy micro-reading"]');
   await page.waitForSelector("#elroy-title");
   await page.fill("#elroy-birthdate", "2001-01-15");
@@ -84,10 +99,19 @@ async function main() {
     .getAttribute("href");
   assert.equal(href, "/products/personal-card-blueprint");
 
+  // Successful completion suppresses the launcher after the panel closes.
+  await page.click('button[aria-label="Close Elroy"]');
+  await page.waitForTimeout(50);
+  assert.equal(
+    await page.locator('button[aria-label="Open Elroy micro-reading"]').count(),
+    0,
+  );
+
   // Joker boundary
-  await page.goto(`${base}/`, { waitUntil: "networkidle" });
+  await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });
   await page.evaluate(() => localStorage.clear());
-  await page.reload({ waitUntil: "networkidle" });
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.waitForSelector('button[aria-label="Open Elroy micro-reading"]');
   await page.click('button[aria-label="Open Elroy micro-reading"]');
   await page.fill("#elroy-birthdate", "1990-12-31");
   await page.click('button:has-text("Show my card")');
