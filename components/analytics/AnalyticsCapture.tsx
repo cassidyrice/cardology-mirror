@@ -9,6 +9,8 @@ import {
   type FunnelContext,
   type TrafficChannel,
 } from "@/lib/analytics";
+import { mapFunnelEventToGa4 } from "@/lib/ga4";
+import { sendGaEvent } from "@/components/analytics/GoogleAnalytics";
 
 const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
@@ -112,6 +114,14 @@ function sendEvent(name: ClientFunnelEventName, context: FunnelContext = {}) {
     offerSlug: context.offerSlug ?? "",
     placement: context.placement ?? "",
     outcome: context.outcome ?? "",
+  });
+
+  const gaEvent = mapFunnelEventToGa4(name);
+  sendGaEvent(gaEvent.eventName, {
+    ...gaEvent.params,
+    offer_slug: context.offerSlug,
+    placement: context.placement,
+    traffic_channel: attribution.trafficChannel,
   });
 
   if (
