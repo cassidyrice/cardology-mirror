@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -122,7 +122,12 @@ export function BirthCardCalculator() {
           Enter a full date (year, month, and day) to calculate your card.
         </p>
       )}
-      {result && <ResultCard result={result} />}
+      {result && (
+        <ResultCard
+          key={`${result.birthCard}|${result.rulingCards.join(",")}`}
+          result={result}
+        />
+      )}
     </div>
   );
 }
@@ -131,9 +136,20 @@ function ResultCard({ result }: { result: Result }) {
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = slugOf(result.birthCard);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Bring the reveal into view on small screens. "nearest" = no-op when
+  // the result is already visible; reduced motion gets an instant jump.
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    rootRef.current?.scrollIntoView({
+      behavior: reduce ? "auto" : "smooth",
+      block: "nearest",
+    });
+  }, []);
 
   return (
-    <div className="mt-8 animate-fade-up">
+    <div ref={rootRef} className="mt-8 animate-fade-up">
       <p className="type-eyebrow mb-4 text-center">Your birth card</p>
 
       <div className="flex flex-col items-center gap-6">
@@ -142,18 +158,33 @@ function ResultCard({ result }: { result: Result }) {
             ★
           </div>
         ) : (
-          <PlayingCard
-            code={result.birthCard}
-            size="lg"
-            active
-            glow
-            float
-            surface="paper"
-            className="scale-110"
-          />
+          <div className="flip-scene">
+            <div className="flip-inner">
+              <div className="flip-face">
+                <PlayingCard
+                  code={result.birthCard}
+                  size="lg"
+                  active
+                  glow
+                  float
+                  surface="paper"
+                  className="scale-110"
+                />
+              </div>
+              <div className="flip-face flip-back" aria-hidden>
+                <PlayingCard
+                  code={result.birthCard}
+                  size="lg"
+                  faceDown
+                  surface="paper"
+                  className="scale-110"
+                />
+              </div>
+            </div>
+          </div>
         )}
 
-        <div className="text-center">
+        <div className="rise text-center" style={{ animationDelay: "0.55s" }}>
           <p className="font-serif text-2xl text-brand-ink">{isJoker ? "The Joker" : bc?.label}</p>
           {isJoker && (
             <p className="mt-2 max-w-sm text-sm leading-relaxed text-brand-ink-soft">
@@ -173,7 +204,10 @@ function ResultCard({ result }: { result: Result }) {
           )}
         </div>
 
-        <div className="mt-2 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row">
+        <div
+          className="rise mt-2 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row"
+          style={{ animationDelay: "0.72s" }}
+        >
           <Link
             href="/products/personal-card-blueprint"
             className="accent-button large-button text-center"
@@ -189,12 +223,17 @@ function ResultCard({ result }: { result: Result }) {
             </Link>
           )}
         </div>
-        <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
+        <p
+          className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
+          style={{ animationDelay: "0.82s" }}
+        >
           One-time personalized written report. No subscription or phone call.
         </p>
       </div>
 
-      <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
+      <div className="rise" style={{ animationDelay: "0.92s" }}>
+        <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
+      </div>
     </div>
   );
 }

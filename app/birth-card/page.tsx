@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
@@ -77,6 +79,8 @@ export default function BirthCardIndex() {
         ))}
       </nav>
 
+      <DeckMatrix />
+
       <div className="space-y-12">
         {groups.map((g) => (
           <section key={g.suit} id={g.suit} className="scroll-mt-10">
@@ -115,7 +119,8 @@ export default function BirthCardIndex() {
         ))}
       </div>
 
-      <ReadingBridge variant="card" className="mt-12" />
+      <FreeCourseCta source="card-meanings" className="mt-12" />
+      <ReadingBridge variant="card" className="mt-8" />
     </SeoShell>
   );
 }
