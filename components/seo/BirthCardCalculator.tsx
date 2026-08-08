@@ -59,6 +59,7 @@ export function BirthCardCalculator() {
           placement: "search-prefill",
         });
         if (typeof window !== "undefined") {
+          window.__cardBlueprintsElroyBirthdate = q;
           window.dispatchEvent(
             new CustomEvent("elroy:birth-card-revealed", {
               detail: { birthdate: q },
@@ -87,6 +88,7 @@ export function BirthCardCalculator() {
         placement: "calculator-form",
       });
       if (typeof window !== "undefined") {
+        window.__cardBlueprintsElroyBirthdate = date;
         window.dispatchEvent(
           new CustomEvent("elroy:birth-card-revealed", {
             detail: { birthdate: date },

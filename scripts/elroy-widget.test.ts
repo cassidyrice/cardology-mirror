@@ -2,6 +2,7 @@ import { describe, expect, test } from "bun:test";
 import {
   canSubmitElroy,
   elroyUiReducer,
+  formatElroyRulingCards,
   initialElroyUiState,
   isElroyEligiblePath,
   parseElroyBirthContext,
@@ -69,6 +70,19 @@ describe("parseElroyBirthContext", () => {
   });
 });
 
+describe("formatElroyRulingCards", () => {
+  test("renders human-readable ruling-card labels", () => {
+    expect(formatElroyRulingCards(["7♣"])).toBe("7 of Clubs");
+    expect(formatElroyRulingCards(["7♣", "K♠"])).toBe(
+      "7 of Clubs and King of Spades",
+    );
+  });
+
+  test("omits invalid codes", () => {
+    expect(formatElroyRulingCards(["bad", "Q♦"])).toBe("Queen of Diamonds");
+  });
+});
+
 describe("elroyUiReducer", () => {
   test("joker cannot continue to email", () => {
     let state = initialElroyUiState();
@@ -91,9 +105,11 @@ describe("elroyUiReducer", () => {
     state = elroyUiReducer(state, { type: "CONTINUE_TO_EMAIL" });
     expect(state.step).toBe("email");
     expect(canSubmitElroy(state)).toBe(false);
-    state = elroyUiReducer(state, { type: "SET_EMAIL", value: "p@example.com" });
+    state = elroyUiReducer(state, { type: "SET_EMAIL", value: "not-an-email" });
     state = elroyUiReducer(state, { type: "SET_CONSENT", value: true });
     state = elroyUiReducer(state, { type: "SET_TOKEN", value: "tok" });
+    expect(canSubmitElroy(state)).toBe(false);
+    state = elroyUiReducer(state, { type: "SET_EMAIL", value: "p@example.com" });
     expect(canSubmitElroy(state)).toBe(true);
     state = elroyUiReducer(state, { type: "SUBMIT" });
     expect(state.step).toBe("submitting");

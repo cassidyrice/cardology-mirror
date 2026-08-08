@@ -37,6 +37,7 @@ export function ElroyTurnstile({ onToken, resetSignal }: Props) {
         action: "elroy_micro_reading",
         appearance: "interaction-only",
         theme: "light",
+        size: "flexible",
         callback: (token) => onTokenRef.current(token),
         "error-callback": () => onTokenRef.current(""),
         "expired-callback": () => onTokenRef.current(""),

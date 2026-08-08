@@ -19,7 +19,7 @@ export function resolveTurnstileConfig(
   const hostRaw =
     runtimeEnv?.TURNSTILE_HOSTNAMES ||
     processEnv.TURNSTILE_HOSTNAMES ||
-    "cardblueprints.com,www.cardblueprints.com";
+    "";
   const allowedHostnames = new Set(
     hostRaw
       .split(",")

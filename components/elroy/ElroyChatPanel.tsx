@@ -6,6 +6,7 @@ import { classifyElroyBirthdate } from "@/lib/elroy/input";
 import {
   canSubmitElroy,
   elroyUiReducer,
+  formatElroyRulingCards,
   initialElroyUiState,
 } from "@/lib/elroy/widget";
 import {
@@ -37,6 +38,10 @@ export function ElroyChatPanel({
   );
   const [resetSignal, setResetSignal] = useState(0);
   const liveRef = useRef<HTMLDivElement | null>(null);
+  const birthdateInputRef = useRef<HTMLInputElement | null>(null);
+  const emailInputRef = useRef<HTMLInputElement | null>(null);
+  const continueButtonRef = useRef<HTMLButtonElement | null>(null);
+  const readingRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -55,6 +60,22 @@ export function ElroyChatPanel({
       dispatch({ type: "SET_BIRTHDATE", value: prefBirthdate });
     }
   }, [prefBirthdate, state.birthdate, state.step]);
+
+  useEffect(() => {
+    const focusTarget =
+      state.step === "welcome" || state.step === "birthdate"
+        ? birthdateInputRef.current
+        : state.step === "card-reveal"
+          ? continueButtonRef.current
+          : state.step === "email" || state.step === "error"
+            ? emailInputRef.current
+            : state.step === "reading"
+              ? readingRef.current
+              : null;
+    if (!focusTarget) return;
+    const frame = window.requestAnimationFrame(() => focusTarget.focus());
+    return () => window.cancelAnimationFrame(frame);
+  }, [state.step]);
 
   useEffect(() => {
     if (!liveRef.current) return;
@@ -152,6 +173,15 @@ export function ElroyChatPanel({
     }
   }
 
+  function requestClose() {
+    const dialog = dialogRef.current;
+    if (dialog?.open) {
+      dialog.close();
+      return;
+    }
+    onClose();
+  }
+
   return (
     <dialog
       ref={dialogRef}
@@ -160,7 +190,7 @@ export function ElroyChatPanel({
       onClose={onClose}
       onCancel={(e) => {
         e.preventDefault();
-        onClose();
+        requestClose();
       }}
     >
       <div className="elroy-panel-shell">
@@ -174,13 +204,13 @@ export function ElroyChatPanel({
             type="button"
             className="elroy-panel-close"
             aria-label="Close Elroy"
-            onClick={onClose}
+            onClick={requestClose}
           >
             ×
           </button>
         </header>
 
-        <div className="elroy-messages" aria-live="polite">
+        <div className="elroy-messages">
           <div className="elroy-bubble elroy-bubble-elroy">
             I can show your birth card first, then give you a short pattern reading.
           </div>
@@ -218,7 +248,22 @@ export function ElroyChatPanel({
 
           {state.step === "reading" && state.reading ? (
             <>
-              <div className="elroy-bubble elroy-bubble-elroy">
+              <div
+                ref={readingRef}
+                tabIndex={-1}
+                className="elroy-bubble elroy-bubble-elroy"
+              >
+                {state.reading.rulingCards.length ? (
+                  <>
+                    <strong>
+                      {state.reading.rulingCards.length === 1
+                        ? "Ruling card"
+                        : "Ruling cards"}
+                      : {formatElroyRulingCards(state.reading.rulingCards)}
+                    </strong>
+                    {"\n\n"}
+                  </>
+                ) : null}
                 <strong>Core pattern</strong>
                 {"\n"}
                 {state.reading.core}
@@ -253,7 +298,7 @@ export function ElroyChatPanel({
           ) : null}
 
           {state.errorMessage ? (
-            <div className="elroy-bubble elroy-bubble-elroy elroy-error" role="alert">
+            <div className="elroy-bubble elroy-bubble-elroy elroy-error">
               {state.errorMessage}
             </div>
           ) : null}
@@ -264,6 +309,7 @@ export function ElroyChatPanel({
             <>
               <label htmlFor="elroy-birthdate">What is your birth date?</label>
               <input
+                ref={birthdateInputRef}
                 id="elroy-birthdate"
                 type="date"
                 value={state.birthdate}
@@ -279,6 +325,7 @@ export function ElroyChatPanel({
 
           {state.step === "card-reveal" && (
             <button
+              ref={continueButtonRef}
               type="button"
               onClick={() => dispatch({ type: "CONTINUE_TO_EMAIL" })}
             >
@@ -292,6 +339,7 @@ export function ElroyChatPanel({
             <>
               <label htmlFor="elroy-email">Email for your reading copy</label>
               <input
+                ref={emailInputRef}
                 id="elroy-email"
                 type="email"
                 autoComplete="email"
@@ -332,7 +380,13 @@ export function ElroyChatPanel({
             </>
           )}
         </div>
-        <div className="elroy-live" ref={liveRef} aria-live="polite" />
+        <div
+          className="elroy-live"
+          ref={liveRef}
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        />
       </div>
     </dialog>
   );
