@@ -17,7 +17,13 @@ export function ElroyTurnstile({ onToken, resetSignal }: Props) {
   onTokenRef.current = onToken;
 
   useEffect(() => {
-    if (!SITE_KEY || !hostRef.current) return;
+    if (!SITE_KEY) {
+      // Local/browser tests without a sitekey: keep the form submittable so the
+      // mocked API path can still exercise chat + reading UI.
+      onTokenRef.current("dev-unconfigured");
+      return;
+    }
+    if (!hostRef.current) return;
 
     let cancelled = false;
 
@@ -66,6 +72,10 @@ export function ElroyTurnstile({ onToken, resetSignal }: Props) {
   }, []);
 
   useEffect(() => {
+    if (!SITE_KEY) {
+      onToken("dev-unconfigured");
+      return;
+    }
     if (!widgetIdRef.current || !window.turnstile) return;
     window.turnstile.reset(widgetIdRef.current);
     onToken("");
@@ -74,7 +84,7 @@ export function ElroyTurnstile({ onToken, resetSignal }: Props) {
   if (!SITE_KEY) {
     return (
       <p className="elroy-error" role="status">
-        Verification is not configured on this environment.
+        Verification widget not configured (local/dev). Form still works against mocked APIs.
       </p>
     );
   }
