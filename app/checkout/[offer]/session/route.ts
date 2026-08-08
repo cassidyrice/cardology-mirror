@@ -72,7 +72,6 @@ export async function POST(
     const instantReport = isInstantReport(product);
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
-      payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE_URL}/checkout/${product.slug}`,
