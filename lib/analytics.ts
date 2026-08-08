@@ -5,6 +5,12 @@ export const CLIENT_FUNNEL_EVENTS = [
   "card_shared",
   "readings_viewed",
   "offer_selected",
+  "elroy_teaser_shown",
+  "elroy_opened",
+  "elroy_birthdate_entered",
+  "elroy_email_submitted",
+  "elroy_micro_reading_viewed",
+  "elroy_blueprint_clicked",
 ] as const;
 
 export const SERVER_FUNNEL_EVENTS = [

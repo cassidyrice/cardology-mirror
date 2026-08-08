@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 6, 2026";
+const UPDATED = "August 8, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -105,6 +105,17 @@ export default function PrivacyPolicy() {
                 these tools is transmitted to our servers or stored.
               </p>
             </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">Free course and email list</h3>
+              <p className="mt-1">
+                When you request the free Read Your Birth Card course, we collect
+                the name and email address you submit. We use them to create a
+                Resend contact, deliver your signed course access link, and send
+                occasional Card Blueprints educational or product emails under
+                the consent shown on the signup form. You can unsubscribe from
+                marketing emails at any time.
+              </p>
+            </div>
             <div className="border-t border-brand-line pt-4">
               <h3 className="font-bold text-brand-ink">Privacy-conscious site analytics</h3>
               <p className="mt-1">
@@ -122,6 +133,52 @@ export default function PrivacyPolicy() {
                 completed purchase to the earlier funnel. Stripe may retain
                 that checkout metadata under its own transaction-retention
                 rules and privacy policy.
+              </p>
+              <p className="mt-3">
+                We also use Google Analytics 4 (GA4) to measure aggregate traffic
+                and conversion events across the main site and compatibility
+                pages. GA4 may set Google analytics cookies and process standard
+                device and usage signals. We configure the tag with IP anonymization
+                where available, disable automatic first-hit pageviews in favor of
+                path-based SPA pageviews, and strip sensitive query parameters
+                (such as access tokens, emails, and birth dates) before they are
+                sent as page locations. We do not intentionally send names,
+                emails, phone numbers, birth dates, or signed access tokens to
+                Google. Google&rsquo;s processing is governed by the{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#8e321f] underline underline-offset-4"
+                >
+                  Google Privacy Policy
+                </a>{" "}
+                and{" "}
+                <a
+                  href="https://policies.google.com/technologies/partner-sites"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#8e321f] underline underline-offset-4"
+                >
+                  How Google uses information from sites that use its services
+                </a>
+                .
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">Elroy micro-reading</h3>
+              <p className="mt-1">
+                Elroy is an on-site chat guide. After you see your free birth
+                card, you may choose to request a short personalized micro-reading.
+                That request sends the birth date you enter to our server for one
+                response only so the reading can be built. We do not keep an
+                application birth-date database. We collect the email you submit,
+                with your consent, to add you to the Card Blueprints contact list,
+                show the reading in chat, and email you a copy. Resend delivers
+                that message and future educational or product emails you opt into.
+                Cloudflare Turnstile processes a challenge token to reduce abuse.
+                Analytics events for Elroy do not include birth date, card, email,
+                or challenge tokens.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -152,12 +209,13 @@ export default function PrivacyPolicy() {
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To support and honor legacy phone orders during their original access windows.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To follow up on questions or support requests about a purchase, if you ask.</li>
           </ul>
           <p className="mt-4">
-            We do not use your information to send unsolicited marketing emails,
-            build advertising profiles, or share data with data brokers.
+            We do not send marketing emails unless you explicitly opt in, build
+            advertising profiles, or share data with data brokers.
           </p>
         </section>
 
@@ -175,7 +233,7 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Resend</strong> — transactional email delivery.{" "}
+              <strong>Resend</strong> — transactional email delivery and management of contacts who request the free course.{" "}
               <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Resend Privacy Policy
               </a>
@@ -193,6 +251,12 @@ export default function PrivacyPolicy() {
                 Cloudflare Privacy Policy
               </a>
             </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>Google Analytics</strong> — aggregate website analytics.{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
+                Google Privacy Policy
+              </a>
+            </li>
           </ul>
         </section>
 
@@ -200,10 +264,14 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Cookies</h2>
           <p className="mt-3">
             Card Blueprints does not use advertising cookies and does not track
-            you across other sites. Cloudflare may set security-related cookies
+            you across other sites for advertising. Google Analytics may set its
+            own first-party analytics cookies (for example{" "}
+            <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">_ga</code>
+            ) to distinguish sessions. Cloudflare may set security-related cookies
             (such as{" "}
             <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">__cf_bm</code>) as
-            part of bot protection.
+            part of bot protection. Our first-party conversion stream does not
+            set its own analytics cookies.
           </p>
         </section>
 
@@ -213,7 +281,9 @@ export default function PrivacyPolicy() {
             <li className="border-t border-[#14110d]/12 pt-2">Legacy voice access profiles: through the original purchased window, up to 90 days; no new profiles are created.</li>
             <li className="border-t border-[#14110d]/12 pt-2">Order records: up to 400 days for support and accounting.</li>
             <li className="border-t border-brand-line pt-2">Tab-scoped conversion analytics: up to three months.</li>
+            <li className="border-t border-brand-line pt-2">Google Analytics data: under Google&rsquo;s Analytics data-retention settings for the Card Blueprints property.</li>
             <li className="border-t border-brand-line pt-2">Stripe checkout attribution metadata: under Stripe&rsquo;s transaction-retention rules.</li>
+            <li className="border-t border-brand-line pt-2">Free-course subscriber contacts: until you unsubscribe or request deletion, subject to records we must retain for legal or abuse-prevention reasons.</li>
           </ul>
         </section>
 
@@ -221,7 +291,7 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Your rights</h2>
           <p className="mt-3">
             You can request that we delete the information tied to your
-            purchase at any time by emailing{" "}
+            purchase or free-course signup at any time by emailing{" "}
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
