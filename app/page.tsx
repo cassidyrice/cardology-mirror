@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { HomepageJourney } from "@/components/home/HomepageJourney";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, SectionShell } from "@/components/ui";
@@ -116,37 +117,8 @@ export default function Home() {
       <SiteHeader />
 
       <main id="main-content" tabIndex={-1}>
-        {/* 1 — Hero */}
-        <section className="shell-paper">
-        <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,7rem)] pt-[clamp(3.25rem,7vw,6rem)] sm:px-8 lg:px-10">
-          <div className="max-w-[54rem]">
-            <Kicker className="rise">Personal Card Blueprint &middot; instant report</Kicker>
-            <h1 className="type-display rise-2 mt-6">
-              Your birthday carries a <em>pattern</em>. Put it in writing.
-            </h1>
-            <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-              The Personal Card Blueprint turns your fixed birth card, ruling
-              layer, and current chapter into one personalized report you can
-              read immediately after checkout.
-            </p>
-            <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <LinkButton href="/birth-card-calculator" variant="accent" size="large">
-                Find Your Birth Card Free
-              </LinkButton>
-              <LinkButton href="/products/personal-card-blueprint" variant="outline" size="large">
-                Get My Blueprint &mdash; $29
-              </LinkButton>
-            </div>
-            <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-              The Blueprint is an instant personalized report built from your
-              birthday and delivered immediately after payment.
-            </p>
-            <p className="rise-4 mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
-              Instant written report &middot; fixed birth-card calculation &middot; reflection, not fortune-telling
-            </p>
-          </div>
-        </div>
-        </section>
+        {/* 1 — Cinematic scroll journey */}
+        <HomepageJourney />
 
       {/* 2 — Free entry points (secondary path next to Blueprint hero) */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
