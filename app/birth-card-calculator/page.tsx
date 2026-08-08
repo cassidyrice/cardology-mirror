@@ -142,7 +142,11 @@ export default function CalculatorPage() {
           Enter your birthday to find <strong>which playing card represents you</strong>
           in Cardology. The calculator returns your fixed birth card and planetary
           ruling card instantly. It uses a standard 52-card deck, not tarot Major
-          Arcana and not a random draw.
+          Arcana and not a random draw. New to the method? Read the plain-English{" "}
+          <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+            guide to how Cardology works
+          </Link>
+          .
         </p>
         <p className="mt-4 text-sm leading-relaxed text-faint">
           Written and reviewed by{" "}

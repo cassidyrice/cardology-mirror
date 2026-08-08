@@ -14,6 +14,7 @@ import {
   sanitizeOfferSlug,
 } from "../lib/analytics";
 import { publicBirthCardCode } from "../lib/birth-card-truth";
+import { allBlogPosts } from "../lib/blog";
 import { legacyCardDestination } from "../lib/legacy-card-redirects";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "../lib/offers";
 import { allPeriodCardSeeds } from "../lib/period-card-seeds";
@@ -296,6 +297,10 @@ assert.match(
   middlewareText,
   /["']\/try["']\s*:\s*["']\/birth-card-calculator["']/,
 );
+assert.match(
+  middlewareText,
+  /["']\/blog\/what-cardology-is-and-is-not["']\s*:\s*["']\/what-is-cardology["']/,
+);
 assert.match(middlewareText, /NextResponse\.redirect\(redirectUrl,\s*301\)/);
 
 // Runtime middleware behavior, not just source shape: retired public routes must
@@ -322,6 +327,21 @@ assert.deepEqual(
 assert.deepEqual(
   middlewareResult("https://cardblueprints.com/try", "cardblueprints.com"),
   { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
+);
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/blog/what-cardology-is-and-is-not?utm_source=google",
+    "cardblueprints.com",
+  ),
+  {
+    status: 301,
+    location: "https://cardblueprints.com/what-is-cardology?utm_source=google",
+  },
+);
+assert.equal(
+  allBlogPosts().some((post) => post.slug === "what-cardology-is-and-is-not"),
+  false,
+  "retired explainer must not remain in blog listings, feeds, or sitemap inputs",
 );
 assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),

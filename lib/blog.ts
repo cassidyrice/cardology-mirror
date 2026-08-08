@@ -1040,7 +1040,14 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = [...CORE_BLOG_POSTS, ...GENERATED_POSTS];
+// The original Cardology explainer now 301s to the comprehensive evergreen guide.
+// Keep its source copy for history, but remove it from listings, feeds, related
+// modules, static generation, and the sitemap so search engines get one clear URL.
+const RETIRED_BLOG_SLUGS = new Set(["what-cardology-is-and-is-not"]);
+
+export const BLOG_POSTS: BlogPost[] = [...CORE_BLOG_POSTS, ...GENERATED_POSTS].filter(
+  (post) => !RETIRED_BLOG_SLUGS.has(post.slug),
+);
 
 export function allBlogPillars(): BlogPillar[] {
   return BLOG_PILLARS;
