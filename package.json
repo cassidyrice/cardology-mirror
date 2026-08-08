@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "test": "bun scripts/validate-public-truth.ts",
+    "test:elroy": "bun test scripts/elroy-*.test.ts",
+    "test:elroy:browser": "bun scripts/elroy-browser.test.ts",
     "dev": "next dev -p 3577",
     "build": "next build",
     "start": "next start -p 3577",
