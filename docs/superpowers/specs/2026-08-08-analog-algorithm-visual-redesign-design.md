@@ -292,7 +292,7 @@ Render every page to images and inspect:
 - cover and title page,
 - all part openers,
 - every chapter's first page,
-- all nine required diagrams,
+- all eight required diagrams,
 - tables and quick-reference pages,
 - every worksheet,
 - end matter.
