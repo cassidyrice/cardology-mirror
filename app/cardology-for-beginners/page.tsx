@@ -231,7 +231,7 @@ export default function CardologyForBeginnersPage() {
           href="/products/personal-card-blueprint"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get Your Personal Blueprint &mdash; $29
+          Get My Blueprint &mdash; $29
         </Link>
       </div>
 

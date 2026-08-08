@@ -129,12 +129,12 @@ export default function Home() {
               layer, and current chapter into one personalized report you can
               read immediately after checkout.
             </p>
-            <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
-                Get Your Personal Blueprint &mdash; $29
-              </LinkButton>
-              <LinkButton href="/birth-card-calculator" variant="outline" size="large">
+            <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <LinkButton href="/birth-card-calculator" variant="accent" size="large">
                 Find Your Birth Card Free
+              </LinkButton>
+              <LinkButton href="/products/personal-card-blueprint" variant="outline" size="large">
+                Get My Blueprint &mdash; $29
               </LinkButton>
             </div>
             <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
@@ -295,7 +295,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
-              Get Your Personal Blueprint — $29
+              Get My Blueprint — $29
             </LinkButton>
           </div>
         </div>

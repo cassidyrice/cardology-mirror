@@ -167,7 +167,7 @@ export default function PersonalCardBlueprintPage() {
               Your purchase uses <em>your</em> date.
             </p>
 
-            <div className="mt-10 rounded-sm border border-brand-line bg-brand-paper-deep/40 p-6 sm:p-8 lg:p-10">
+            <div className="report-stack mt-10 rounded-sm border border-brand-line bg-brand-paper p-6 sm:p-8 lg:p-10">
               <BlueprintReportView
                 report={SAMPLE_BLUEPRINT}
                 sample

@@ -195,7 +195,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
       "The current chapter of your year, from the engine",
       "Three pointed reflection questions to work with",
     ],
-    cta: "Get Your Personal Blueprint — $29",
+    cta: "Get My Blueprint — $29",
     checkoutNote:
       "One-time purchase. You enter your birth date at checkout; the report is generated instantly and emailed back to you.",
     reportSlug: "personal-card-blueprint",

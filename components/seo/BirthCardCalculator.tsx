@@ -11,6 +11,7 @@ import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
+import { ShareCard } from "./ShareCard";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -229,6 +230,11 @@ function ResultCard({ result }: { result: Result }) {
         >
           One-time personalized written report. No subscription or phone call.
         </p>
+        {!isJoker && bc?.label && (
+          <div className="rise" style={{ animationDelay: "0.88s" }}>
+            <ShareCard cardLabel={bc.label} slug={slug} />
+          </div>
+        )}
       </div>
 
       <div className="rise" style={{ animationDelay: "0.92s" }}>

@@ -2,6 +2,7 @@ export const CLIENT_FUNNEL_EVENTS = [
   "organic_landing",
   "calculator_started",
   "calculator_completed",
+  "card_shared",
   "readings_viewed",
   "offer_selected",
 ] as const;
