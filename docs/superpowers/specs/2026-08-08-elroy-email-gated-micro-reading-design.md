@@ -95,8 +95,8 @@ The launcher is fixed to the lower-right corner on desktop and respects the mobi
 
 ### 5.3 Calendar boundaries
 
-- **February 29:** The current public methodology treats this date as outside the standard 52-card cycle. Elroy explains that boundary plainly, links to the methodology, and does not ask for an email because no standard micro-reading can be generated.
-- **December 31:** Elroy uses the repository's Joker handling and a dedicated, reviewed Joker micro-reading. He must not silently force the date into one of the 52 standard cards.
+- **February 29:** Supported. The public engine maps leap day to `9♣`. Elroy generates the normal deterministic micro-reading for that card.
+- **December 31:** Joker boundary (Day Out of Time). Elroy shows the free Joker reveal and a terminal explanatory message. He does **not** ask for email or invent a micro-reading in v1, because the repository has no reviewed Joker description/ruling-card source. He must not silently force the date into one of the 52 standard cards.
 - All other valid supported dates must resolve through the repository's deterministic engine.
 
 ## 6. Elroy visual and voice system
@@ -252,7 +252,7 @@ As a deterministic engine sanity example, January 15 resolves to birth card `Q�
 
 - `400`: malformed date, email, consent, source, or honeypot failure.
 - `403`: missing, invalid, expired, replayed, wrong-action, or wrong-hostname Turnstile result.
-- `422`: supported calendar input that has no standard micro-reading, such as February 29. The client uses a dedicated explanatory state and does not submit contact data for this boundary.
+- `422`: December 31 Joker boundary (or any future unsupported calendar identity). The client uses a dedicated explanatory state and does not submit contact data for this boundary. February 29 is **not** a 422 — it receives a standard `9♣` reading.
 - `503`: engine, contact-capture, or required provider configuration failure.
 
 If contact capture succeeds but email delivery fails, the route returns `200` with the reading and `emailSent: false`. The visitor still receives the immediate value and sees a plain delivery warning. If contact capture fails, the route does not reveal the reading.
@@ -376,8 +376,8 @@ No event contains user-entered values.
 
 - Input normalization and validation
 - Every supported calendar date produces a non-empty deterministic result
-- February 29 follows the explicit boundary path
-- December 31 follows the explicit Joker path
+- February 29 follows the standard `9♣` path
+- December 31 follows the explicit pre-email Joker boundary path (no invented reading)
 - Repeat calls for identical input produce byte-stable reading content
 - Birth and ruling roles are not mislabeled
 - Prohibited paid content and prediction language are absent
