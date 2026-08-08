@@ -6,3 +6,7 @@ compatibility_flags = ["nodejs_compat"]
 [[analytics_engine_datasets]]
 binding = "FUNNEL_ANALYTICS"
 dataset = "cardblueprints_funnel"
+
+[[r2_buckets]]
+binding = "EBOOK_BUCKET"
+bucket_name = "cardblueprints-ebooks"

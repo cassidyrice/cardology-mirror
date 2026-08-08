@@ -12,6 +12,7 @@ import {
   type SiteProduct,
 } from "@/lib/products";
 import { mintReportToken } from "@/lib/report-token";
+import { mintDownloadToken } from "@/lib/download-token";
 import { getStripe } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
@@ -90,6 +91,19 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  let downloadToken = "";
+  if (confirmed && customerEmail && isDigitalDownload(product!)) {
+    try {
+      downloadToken = await mintDownloadToken(
+        customerEmail,
+        product!.slug,
+        product!.redownloadDays,
+      );
+    } catch (e) {
+      console.error("[checkout/success] download token mint failed", e);
+    }
+  }
+
   return (
     <SeoShell
       crumb={[
@@ -146,6 +160,7 @@ export default async function CheckoutSuccessPage({
             <DigitalFulfillment
               product={product!}
               email={customerEmail}
+              token={downloadToken}
             />
           ) : instantReport ? (
             <ReportFulfillment reportToken={reportToken} />
@@ -211,11 +226,15 @@ export default async function CheckoutSuccessPage({
 
 function DigitalFulfillment({
   product,
+  token,
 }: {
   product: SiteProduct;
   email: string;
+  token: string;
 }) {
-  const downloadHref = `/api/download/${product.slug}`;
+  const downloadHref = token
+    ? `/api/download/${product.slug}?token=${encodeURIComponent(token)}`
+    : "";
 
   return (
     <div className="text-center">
@@ -224,15 +243,22 @@ function DigitalFulfillment({
       <p className="mt-2 text-sm text-brand-ink-soft">
         {product.deliverable}
       </p>
-      <div className="mt-6">
-        <LinkButton
-          href={downloadHref}
-          variant="accent"
-          size="large"
-        >
-          Download {product.name} &mdash; PDF
-        </LinkButton>
-      </div>
+      {downloadHref ? (
+        <div className="mt-6">
+          <LinkButton
+            href={downloadHref}
+            variant="accent"
+            size="large"
+          >
+            Download {product.name} &mdash; PDF
+          </LinkButton>
+        </div>
+      ) : (
+        <p className="mt-6 border border-brand-oxblood p-4 text-sm text-brand-ink">
+          Payment is confirmed, but the secure download link could not be
+          prepared. Reply to your receipt email so we can restore access.
+        </p>
+      )}
       <p className="mt-3 text-xs text-brand-ink-soft">
         Your download link is good for 30 days. Need it again? Reply
         to your receipt email.

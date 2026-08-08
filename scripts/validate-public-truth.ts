@@ -159,10 +159,12 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 }
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
-  ["personal-card-blueprint"],
+  ["personal-card-blueprint", "analog-algorithm"],
 );
 assert.equal(publicProductBySlug("personal-card-blueprint")?.kind, "instant_report");
+assert.equal(publicProductBySlug("analog-algorithm")?.kind, "digital_download");
 assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");
+assert.equal(sanitizeOfferSlug("analog-algorithm"), "analog-algorithm");
 for (const offer of READING_OFFERS) {
   assert.equal(publicProductBySlug(offer.slug), undefined, `${offer.slug} must not open new checkout`);
   assert.equal(productBySlug(offer.slug)?.slug, offer.slug, `${offer.slug} must remain resolvable for historical orders`);
@@ -173,7 +175,7 @@ assert.deepEqual(
     price: product.price,
     available: product.available,
   })),
-  [{ slug: "analog-algorithm", price: 27, available: false }],
+  [{ slug: "analog-algorithm", price: 17, available: true }],
 );
 
 // Product-model regression gate: the phone-reading products are historical
@@ -530,7 +532,7 @@ assert.equal(BIRTHDAY_DIRECTORY_PATH, "/born-on/");
 assert.equal(COMPATIBILITY_DIRECTORY_PATH, "/compatibility/");
 
 console.log(
-  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 legacy offers, 1 active public product, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
+  `PASS: 366 birthdays, reverse card dates, 52 same-card comparisons, 104 legacy redirects, phone line, 3 legacy offers, ${PUBLIC_PRODUCTS.length} active public products, analytics, Worker hubs, and 52 compact period seeds (${compactPeriodPayload.length} vs ${expandedPeriodPayload.length} serialized bytes)`,
 );
 
 // ============================================================================

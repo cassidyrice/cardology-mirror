@@ -52,7 +52,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
             <ul className="space-y-2">
-              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — coming soon</Link></li>
+              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — $17 e-book</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
               <li><Link href="/cardology-vs-tarot" className="hover:text-brand-ink">Cardology vs Tarot</Link></li>

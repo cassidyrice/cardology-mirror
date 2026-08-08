@@ -13,12 +13,12 @@ import {
 export const metadata: Metadata = {
   title: "The Analog Algorithm — E-book | Card Blueprints",
   description:
-    "The Analog Algorithm: why a deck of 52 cards maps to a solar year. A full-length handbook with birth card mechanics, yearly spreads, planetary periods, and practice worksheets. $27 — instant PDF download.",
+    "The Analog Algorithm: why a deck of 52 cards maps to a solar year. A full-length handbook with birth card mechanics, yearly spreads, planetary periods, and practice worksheets. $17 — instant PDF download.",
   alternates: { canonical: "/products/analog-algorithm" },
   openGraph: {
     title: "The Analog Algorithm — your birthday, decoded. The written system.",
     description:
-      "The 52-card solar calendar, fully explained. Birth card formula, spreads, planetary periods, worksheets. Instant PDF download — $27.",
+      "The 52-card solar calendar, fully explained. Birth card formula, spreads, planetary periods, worksheets. Instant PDF download — $17.",
     type: "website",
     siteName: SITE_NAME,
     images: [{ url: "/og-default.png" }],
@@ -52,13 +52,15 @@ export default function AnalogAlgorithmSalesPage() {
           yearly spreads, planetary periods, and practice worksheets.
         </p>
         <div className="mt-6">
-          <span className="ink-button inline-flex cursor-not-allowed opacity-70">
-            E-book coming soon — {book.priceLabel}
-          </span>
+          <Link
+            href={`/checkout/${book.slug}`}
+            className="accent-button large-button inline-flex"
+          >
+            Get the E-book — {book.priceLabel}
+          </Link>
         </div>
         <p className="mt-3 text-sm text-brand-ink-soft">
-          Checkout will open after secure PDF delivery is configured. No
-          purchase is being accepted yet.
+          One-time purchase. Secure PDF download after payment. No subscription.
         </p>
       </header>
 
@@ -168,11 +170,14 @@ export default function AnalogAlgorithmSalesPage() {
 
       {/* CTA repeat */}
       <section className="py-10 text-center">
-        <span className="ink-button inline-flex cursor-not-allowed opacity-70">
-          E-book coming soon — {book.priceLabel}
-        </span>
+        <Link
+          href={`/checkout/${book.slug}`}
+          className="accent-button large-button inline-flex"
+        >
+          Get the E-book — {book.priceLabel}
+        </Link>
         <p className="mt-3 text-xs text-brand-ink-soft">
-          Sales remain closed until secure download fulfillment is live.
+          One-time purchase. Secure download link by email and on the confirmation page.
         </p>
         <p className="mt-4 text-sm text-brand-ink-soft">
           <Link

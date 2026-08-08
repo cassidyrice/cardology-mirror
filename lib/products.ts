@@ -144,12 +144,12 @@ export const READING_OFFERS: ReadingOffer[] = [
 export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
   {
     kind: "digital_download",
-    available: false,
+    available: true,
     slug: "analog-algorithm",
     stripePriceEnv: "STRIPE_PRICE_ANALOG_ALGORITHM",
     name: "The Analog Algorithm",
-    price: 27,
-    priceLabel: "$27",
+    price: 17,
+    priceLabel: "$17",
     badge: "E-book",
     oneLine:
       "The written proof and operating manual for the 52-card solar calendar.",
@@ -163,7 +163,7 @@ export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
       "Worked examples, worksheets, and a one-page formula sheet",
       "Claim-labeled history and interpretation chapters",
     ],
-    cta: "Get the E-book — $27",
+    cta: "Get the E-book — $17",
     checkoutNote:
       "One-time purchase. Download link emailed after payment. 30-day re-download window.",
     downloadAssetKey: "analog-algorithm-v1.pdf",
