@@ -157,6 +157,12 @@ export default async function BlogPostPage({
           <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
             <p className="oracle-eyebrow mb-2">Direct answer</p>
             <p className="text-base leading-relaxed text-[#3d352d]">{post.answer}</p>
+            <Link
+              href="/birth-card-calculator"
+              className="mt-4 inline-flex min-h-11 items-center justify-center bg-[#8e321f] px-5 py-2.5 text-sm font-bold text-[#fffaf0] transition hover:bg-[#702719]"
+            >
+              Find Your Birth Card Free
+            </Link>
           </div>
         </header>
 
