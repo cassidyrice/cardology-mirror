@@ -1,3 +1,5 @@
+import { addResendContact } from "./resend-contacts";
+
 export const FREE_COURSE_SLUG = "read-your-birth-card-free-course";
 export const FREE_COURSE_TTL_DAYS = 365;
 
@@ -39,25 +41,7 @@ export async function addCourseContact(
   apiKey: string,
   fetcher: typeof fetch = fetch,
 ): Promise<string> {
-  if (!apiKey) throw new Error("Email list is not configured");
-
-  const response = await fetcher("https://api.resend.com/contacts", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      email: signup.email,
-      firstName: signup.firstName,
-      unsubscribed: false,
-    }),
+  return addResendContact(signup.email, apiKey, fetcher, {
+    firstName: signup.firstName,
   });
-
-  const body = (await response.json().catch(() => ({}))) as { id?: string; message?: string };
-  if (response.status === 409) return "existing";
-  if (!response.ok || !body.id) {
-    throw new Error(body.message || `Resend contact creation failed (${response.status})`);
-  }
-  return body.id;
 }
