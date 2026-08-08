@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     q: "Can two people have the same birth card?",
-    a: "Yes. 364 of 365 calendar dates map to the 52 cards, so most cards cover several birthdays. December 31 maps to the Joker; February 29 sits outside the cycle. The ruling-card layer often differs even when the birth card matches.",
+    a: "Yes. Most cards cover several birthdays. February 29 maps normally in the cycle (9 of Clubs). December 31 is the Joker boundary, sometimes called the Day Out of Time. The ruling-card layer often differs even when the birth card matches.",
   },
 ];
 
