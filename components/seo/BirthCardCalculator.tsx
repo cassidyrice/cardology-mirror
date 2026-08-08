@@ -55,11 +55,16 @@ export function BirthCardCalculator() {
         placement: "search-prefill",
       });
       if (calculated) {
-        // Non-once: docs/analytics.md defines calculator_completed as
-        // per-calculation, and the form path at :79 already emits it that way.
         trackClientFunnelEvent("calculator_completed", {
           placement: "search-prefill",
         });
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("elroy:birth-card-revealed", {
+              detail: { birthdate: q },
+            }),
+          );
+        }
       }
     }
   }, []);
@@ -81,6 +86,13 @@ export function BirthCardCalculator() {
       trackClientFunnelEvent("calculator_completed", {
         placement: "calculator-form",
       });
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("elroy:birth-card-revealed", {
+            detail: { birthdate: date },
+          }),
+        );
+      }
     }
   }
 
