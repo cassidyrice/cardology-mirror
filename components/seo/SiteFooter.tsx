@@ -6,6 +6,7 @@ import {
   SITE_NAME,
   VIDEO_PATH,
 } from "@/lib/site";
+import { BrandLogo } from "./BrandLogo";
 
 // One footer for every marketing/editorial surface. The header stays at five
 // destinations; everything long-tail lands here.
@@ -19,7 +20,11 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
       }
     >
       <div className={bare ? "" : "mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 lg:px-10"}>
-        <p className="type-eyebrow mb-6">{SITE_NAME}</p>
+        <p className="mb-6">
+          <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
+            <BrandLogo compact />
+          </Link>
+        </p>
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>

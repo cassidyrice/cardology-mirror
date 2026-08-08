@@ -1,8 +1,19 @@
 import type { Metadata, Viewport } from "next";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
+import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
+import { resolveGaMeasurementId } from "@/lib/ga4";
 import { PUBLIC_PRODUCTS } from "@/lib/products";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
+
+// Geometric sans for the brand wordmark only (--font-logo in globals.css).
+const logoFont = Montserrat({
+  subsets: ["latin"],
+  weight: "500",
+  variable: "--font-logo",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -127,9 +138,12 @@ export default function RootLayout({
       },
     ],
   };
+  const gaMeasurementId = resolveGaMeasurementId();
+
   return (
-    <html lang="en">
+    <html lang="en" className={logoFont.variable}>
       <body className="bg-ink text-bone antialiased">
+        <GoogleAnalyticsBoundary measurementId={gaMeasurementId} />
         <AnalyticsCapture />
         {/* Literal tag instead of metadata `alternates.types`: React hoists
             <link> into <head>, so the feed stays discoverable on every page.

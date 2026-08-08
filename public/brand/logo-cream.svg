@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" role="img" aria-label="Card Blueprints">
+  <rect width="640" height="160" fill="#f6f1e8"/>
+  <g transform="translate(56 48) scale(2)">
+    <g stroke="#8e321f" stroke-opacity="0.45" stroke-width="1.1" fill="none" stroke-linecap="round">
+      <path d="M7 23 12.5 10.5 20.5 16.5 25.5 8"/>
+      <path d="M7 23 14.5 26.5 20.5 16.5"/>
+    </g>
+    <g fill="#8e321f">
+      <circle cx="7" cy="23" r="2"/>
+      <circle cx="12.5" cy="10.5" r="2.3"/>
+      <circle cx="20.5" cy="16.5" r="2"/>
+      <circle cx="25.5" cy="8" r="1.7"/>
+      <circle cx="14.5" cy="26.5" r="1.5"/>
+    </g>
+  </g>
+  <text x="140" y="95" font-family="Montserrat, 'Avenir Next', Futura, 'Century Gothic', sans-serif" font-weight="500" font-size="44" letter-spacing="0.5" fill="#14110d">card blueprint</text>
+</svg>

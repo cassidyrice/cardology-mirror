@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { SITE_NAME } from "@/lib/site";
+import { BrandLogo } from "./BrandLogo";
 
 // One header for every marketing/editorial surface. Five conceptual
 // destinations, no more: Blueprint, Calculator, Card Meanings, Learn.
@@ -20,8 +21,8 @@ export function SiteHeader() {
       </a>
       <header className="relative z-10 border-b border-brand-line bg-brand-paper">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
-          <Link href="/" className="brand-mark text-brand-ink" aria-label={`${SITE_NAME} home`}>
-            {SITE_NAME}
+          <Link href="/" className="text-brand-ink" aria-label={`${SITE_NAME} home`}>
+            <BrandLogo />
           </Link>
           <nav
             aria-label="Primary"
