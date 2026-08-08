@@ -6129,5 +6129,143 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "where-cardology-comes-from",
+    "pillar": "cardology-foundations",
+    "title": "Where Cardology Comes From",
+    "description": "A short history of Cardology: The Mystic Test Book, Olney Richmond, Florence Campbell and Edith Randall, Robert Lee Camp, and the deck structure older…",
+    "dek": "The books are from the last 150 years. The structure they describe is built into the deck itself.",
+    "datePublished": "2026-08-08",
+    "dateModified": "2026-08-08",
+    "readTime": "6 min read",
+    "keywords": [
+      "history of cardology",
+      "mystic test book",
+      "olney richmond",
+      "sacred symbols of the ancients",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Modern Cardology descends from The Mystic Test Book, published by Olney Richmond in 1893, and was developed through the twentieth century by Florence Campbell and Edith Randall and later by Robert Lee Camp. The underlying deck-to-calendar correspondences are older than any of those books, because they are built into the structure of the 52-card deck.",
+    "sections": [
+      {
+        "heading": "The published lineage",
+        "body": [
+          "Olney Richmond's The Mystic Test Book, published in 1893, laid out the card-to-birthday system and its spreads in detail. It remains the root text most later work traces back to.",
+          "In 1947, Florence Campbell and Edith Randall published Sacred Symbols of the Ancients, which made the system readable for a general audience. Robert Lee Camp's books from the 1980s onward popularized the terms most readers use today, including birth card and karma card."
+        ]
+      },
+      {
+        "heading": "What is older than the books",
+        "body": [
+          "The correspondences the books describe are structural: 52 cards and 52 weeks, four suits and four seasons, thirteen ranks and thirteen weeks of a season, rank values summing to 364 plus the Joker.",
+          "No one invented those numbers for the occasion. Whoever settled the deck's final form left a calendar inside it, and the Cardology literature is an attempt to read that calendar."
+        ],
+        "links": [
+          {
+            "label": "What Is Cardology?",
+            "href": "/what-is-cardology"
+          }
+        ]
+      },
+      {
+        "heading": "How to hold the history",
+        "body": [
+          "Treat origin claims with proportion. The verifiable part is the published lineage and the deck structure; grander claims about ancient orders are tradition, not record.",
+          "The working test has not changed since Richmond: run the math on a real birthday, read the card, and see whether the description matches a real person."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Who invented Cardology?",
+        "a": "No single person. Olney Richmond published the first systematic account in 1893, and later authors including Florence Campbell, Edith Randall, and Robert Lee Camp developed and popularized it."
+      },
+      {
+        "q": "Is Cardology ancient?",
+        "a": "The published system is about 130 years old. The deck-calendar structure it reads is older, but claims beyond the documented lineage are tradition rather than history."
+      },
+      {
+        "q": "Do modern Cardology systems agree with the old books?",
+        "a": "On the core math, yes. The birthday-to-card assignment is the same across the lineage; differences show up in interpretation style, not calculation."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the Personal Card Blueprint?",
+        "a": "A $29 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-cardology-is-and-is-not",
+      "why-the-deck-has-52-cards-and-a-joker",
+      "how-a-birthday-becomes-a-card"
+    ],
+    "coreLinks": [
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "Personal Card Blueprint",
+        "href": "/products/personal-card-blueprint",
+        "note": "$29 instant written report."
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      }
+    ]
   }
 ]
