@@ -4,6 +4,7 @@ import "./globals.css";
 import "./homepage-journey.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
+import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
 import { PUBLIC_PRODUCTS } from "@/lib/products";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
@@ -161,6 +162,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="min-h-dvh w-full">{children}</div>
+        <ElroyLauncher />
       </body>
     </html>
   );

@@ -1,0 +1,239 @@
+.elroy-root {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 60;
+  font-family: inherit;
+  color: #14110d;
+}
+
+.elroy-launcher {
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(20, 17, 13, 0.18);
+  background: #f4efe6;
+  box-shadow: 0 10px 30px rgba(20, 17, 13, 0.16);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.elroy-launcher img {
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+}
+
+.elroy-teaser {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.65rem);
+  width: min(18rem, calc(100vw - 2rem));
+  background: #fbf7ef;
+  border: 1px solid rgba(20, 17, 13, 0.14);
+  border-radius: 0.9rem;
+  padding: 0.8rem 0.9rem;
+  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.14);
+}
+
+.elroy-teaser p {
+  margin: 0 1.5rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.elroy-teaser-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  border: 0;
+  background: transparent;
+  color: #5b5148;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.elroy-panel {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  max-width: none;
+  width: min(24rem, calc(100vw - 1.25rem));
+  max-height: min(34rem, calc(100dvh - 1.5rem));
+}
+
+.elroy-panel::backdrop {
+  background: rgba(20, 17, 13, 0.28);
+}
+
+.elroy-panel-shell {
+  display: flex;
+  flex-direction: column;
+  height: min(34rem, calc(100dvh - 1.5rem));
+  background: #fbf7ef;
+  border: 1px solid rgba(20, 17, 13, 0.16);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(20, 17, 13, 0.2);
+}
+
+.elroy-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 0.95rem;
+  border-bottom: 1px solid rgba(20, 17, 13, 0.1);
+  background: #f4efe6;
+}
+
+.elroy-panel-header img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+}
+
+.elroy-panel-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.elroy-panel-header p {
+  margin: 0.1rem 0 0;
+  font-size: 0.78rem;
+  color: #5b5148;
+}
+
+.elroy-panel-close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #5b5148;
+}
+
+.elroy-messages {
+  flex: 1;
+  overflow: auto;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.elroy-bubble {
+  max-width: 92%;
+  border-radius: 0.85rem;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.elroy-bubble-elroy {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid rgba(20, 17, 13, 0.1);
+}
+
+.elroy-bubble-user {
+  align-self: flex-end;
+  background: #1b3a2a;
+  color: #fbf7ef;
+}
+
+.elroy-composer {
+  border-top: 1px solid rgba(20, 17, 13, 0.1);
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
+  background: #f4efe6;
+}
+
+.elroy-composer label {
+  font-size: 0.78rem;
+  color: #5b5148;
+}
+
+.elroy-composer input[type="date"],
+.elroy-composer input[type="email"] {
+  width: 100%;
+  border: 1px solid rgba(20, 17, 13, 0.18);
+  border-radius: 0.55rem;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+  color: #14110d;
+}
+
+.elroy-composer button,
+.elroy-cta {
+  border: 0;
+  border-radius: 999px;
+  background: #8e321f;
+  color: #fbf7ef;
+  font-weight: 600;
+  padding: 0.65rem 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+
+.elroy-composer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.elroy-consent {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  color: #3d352d;
+}
+
+.elroy-error {
+  color: #8e321f;
+  font-size: 0.85rem;
+}
+
+.elroy-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+@media (max-width: 640px) {
+  .elroy-root {
+    right: 0.75rem;
+    left: 0.75rem;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .elroy-launcher {
+    margin-left: auto;
+  }
+
+  .elroy-panel {
+    width: 100%;
+  }
+
+  .elroy-panel-shell {
+    height: min(88dvh, 40rem);
+    border-radius: 1rem 1rem 0.5rem 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .elroy-launcher,
+  .elroy-teaser,
+  .elroy-panel-shell {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,117 @@
+import { describe, expect, test } from "bun:test";
+import {
+  canSubmitElroy,
+  elroyUiReducer,
+  initialElroyUiState,
+  isElroyEligiblePath,
+  parseElroyBirthContext,
+  readElroySuppression,
+  writeElroySuppression,
+  ELROY_SUPPRESSION_KEY,
+  THIRTY_DAYS_MS,
+} from "../lib/elroy/widget";
+
+function memoryStorage(seed: Record<string, string> = {}): Storage {
+  const map = new Map(Object.entries(seed));
+  return {
+    get length() {
+      return map.size;
+    },
+    clear() {
+      map.clear();
+    },
+    getItem(key: string) {
+      return map.has(key) ? map.get(key)! : null;
+    },
+    key(index: number) {
+      return [...map.keys()][index] ?? null;
+    },
+    removeItem(key: string) {
+      map.delete(key);
+    },
+    setItem(key: string, value: string) {
+      map.set(key, String(value));
+    },
+  };
+}
+
+describe("isElroyEligiblePath", () => {
+  test("allows marketing routes", () => {
+    expect(isElroyEligiblePath("/")).toBe(true);
+    expect(isElroyEligiblePath("/birth-card-calculator")).toBe(true);
+  });
+
+  test("excludes checkout, legal, free-course, gate", () => {
+    expect(isElroyEligiblePath("/checkout/personal-card-blueprint")).toBe(false);
+    expect(isElroyEligiblePath("/privacy-policy")).toBe(false);
+    expect(isElroyEligiblePath("/free-course")).toBe(false);
+    expect(isElroyEligiblePath("/gate")).toBe(false);
+  });
+});
+
+describe("suppression", () => {
+  test("lasts 30 days and fails open on bad values", () => {
+    const storage = memoryStorage();
+    const now = Date.UTC(2026, 7, 8);
+    expect(readElroySuppression(storage, now)).toBe(false);
+    writeElroySuppression(storage, now);
+    expect(readElroySuppression(storage, now + 1000)).toBe(true);
+    expect(readElroySuppression(storage, now + THIRTY_DAYS_MS + 1)).toBe(false);
+    storage.setItem(ELROY_SUPPRESSION_KEY, "nope");
+    expect(readElroySuppression(storage, now)).toBe(false);
+  });
+});
+
+describe("parseElroyBirthContext", () => {
+  test("accepts ISO dates only", () => {
+    expect(parseElroyBirthContext({ birthdate: "2001-01-15" })).toBe("2001-01-15");
+    expect(parseElroyBirthContext({ birthdate: "bad" })).toBeNull();
+  });
+});
+
+describe("elroyUiReducer", () => {
+  test("joker cannot continue to email", () => {
+    let state = initialElroyUiState();
+    state = elroyUiReducer(state, {
+      type: "REVEAL_JOKER",
+      birthdate: "1990-12-31",
+    });
+    state = elroyUiReducer(state, { type: "CONTINUE_TO_EMAIL" });
+    expect(state.step).toBe("joker-boundary");
+  });
+
+  test("standard reveal can continue to email and requires token/consent to submit", () => {
+    let state = initialElroyUiState();
+    state = elroyUiReducer(state, {
+      type: "REVEAL_STANDARD",
+      birthdate: "2001-01-15",
+      birthCard: "Q♦",
+      birthCardLabel: "Queen of Diamonds",
+    });
+    state = elroyUiReducer(state, { type: "CONTINUE_TO_EMAIL" });
+    expect(state.step).toBe("email");
+    expect(canSubmitElroy(state)).toBe(false);
+    state = elroyUiReducer(state, { type: "SET_EMAIL", value: "p@example.com" });
+    state = elroyUiReducer(state, { type: "SET_CONSENT", value: true });
+    state = elroyUiReducer(state, { type: "SET_TOKEN", value: "tok" });
+    expect(canSubmitElroy(state)).toBe(true);
+    state = elroyUiReducer(state, { type: "SUBMIT" });
+    expect(state.step).toBe("submitting");
+  });
+
+  test("retry clears token", () => {
+    let state = initialElroyUiState();
+    state = elroyUiReducer(state, {
+      type: "REVEAL_STANDARD",
+      birthdate: "2001-01-15",
+      birthCard: "Q♦",
+      birthCardLabel: "Queen of Diamonds",
+    });
+    state = elroyUiReducer(state, { type: "CONTINUE_TO_EMAIL" });
+    state = elroyUiReducer(state, { type: "SET_TOKEN", value: "tok" });
+    state = elroyUiReducer(state, { type: "FAIL", message: "nope" });
+    state = elroyUiReducer(state, { type: "RETRY" });
+    expect(state.step).toBe("email");
+    expect(state.turnstileToken).toBe("");
+  });
+});
