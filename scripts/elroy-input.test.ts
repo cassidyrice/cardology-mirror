@@ -62,6 +62,20 @@ describe("normalizeElroyRequest", () => {
     ).toThrow("Joker boundary");
   });
 
+  test("rejects Turnstile tokens larger than Cloudflare's 2048-character limit", () => {
+    expect(() =>
+      normalizeElroyRequest(
+        {
+          birthdate: "2001-01-15",
+          email: "p@example.com",
+          consent: true,
+          turnstileToken: "x".repeat(2049),
+        },
+        NOW,
+      ),
+    ).toThrow("Verification");
+  });
+
   test("rejects missing consent", () => {
     expect(() =>
       normalizeElroyRequest(

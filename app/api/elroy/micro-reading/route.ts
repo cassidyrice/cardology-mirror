@@ -27,9 +27,7 @@ function sameOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
   if (!origin) return true; // same-origin navigation / non-browser
   try {
-    const site = new URL(SITE_URL);
-    const got = new URL(origin);
-    return got.host === site.host || got.hostname === "localhost";
+    return new URL(origin).origin === new URL(request.url).origin;
   } catch {
     return false;
   }
@@ -58,7 +56,7 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const rawText = await request.text();
-  if (rawText.length > MAX_BODY) {
+  if (new TextEncoder().encode(rawText).byteLength > MAX_BODY) {
     return json(400, { error: "Request too large" });
   }
 

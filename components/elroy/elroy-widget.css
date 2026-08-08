@@ -46,8 +46,10 @@
 
 .elroy-teaser-close {
   position: absolute;
-  top: 0.35rem;
-  right: 0.4rem;
+  top: 0.2rem;
+  right: 0.2rem;
+  width: 2rem;
+  min-height: 2rem;
   border: 0;
   background: transparent;
   color: #5b5148;
@@ -57,6 +59,8 @@
 }
 
 .elroy-panel {
+  position: fixed;
+  inset: auto max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) auto;
   border: 0;
   padding: 0;
   margin: 0;
@@ -110,6 +114,8 @@
 
 .elroy-panel-close {
   margin-left: auto;
+  width: 2rem;
+  min-height: 2rem;
   border: 0;
   background: transparent;
   font-size: 1.25rem;
@@ -172,11 +178,15 @@
 
 .elroy-composer button,
 .elroy-cta {
+  min-height: 2.75rem;
   border: 0;
-  border-radius: 999px;
-  background: #8e321f;
-  color: #fbf7ef;
+  border-radius: 3px;
+  background: var(--oxblood, #8e321f);
+  color: var(--on-dark, #fbf7ef);
+  font-size: 0.75rem;
   font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   padding: 0.65rem 0.9rem;
   cursor: pointer;
   text-align: center;
@@ -201,6 +211,15 @@
   font-size: 0.85rem;
 }
 
+.elroy-panel button:focus-visible,
+.elroy-panel input:focus-visible,
+.elroy-panel a:focus-visible,
+.elroy-launcher:focus-visible,
+.elroy-teaser-close:focus-visible {
+  outline: 3px solid var(--oxblood, #8e321f);
+  outline-offset: 2px;
+}
+
 .elroy-live {
   position: absolute;
   width: 1px;
@@ -221,7 +240,9 @@
   }
 
   .elroy-panel {
-    width: 100%;
+    inset: auto 0 max(0.75rem, env(safe-area-inset-bottom)) 0;
+    width: calc(100% - 1.5rem);
+    margin-inline: auto;
   }
 
   .elroy-panel-shell {

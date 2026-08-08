@@ -4,6 +4,12 @@ import type { ElroyBirth, NormalizedElroyRequest } from "./types";
 const ISO_DATE = /^(\d{4})-(\d{2})-(\d{2})$/;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+export function isValidElroyEmail(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const email = value.trim().toLowerCase();
+  return email.length <= 254 && EMAIL.test(email);
+}
+
 export class ElroyInputError extends Error {
   constructor(
     readonly code: "invalid" | "joker",
@@ -56,7 +62,7 @@ export function normalizeElroyRequest(
     throw new ElroyInputError("joker", "Joker boundary");
   }
   const email = typeof raw.email === "string" ? raw.email.trim().toLowerCase() : "";
-  if (!EMAIL.test(email) || email.length > 254) {
+  if (!isValidElroyEmail(email)) {
     throw new ElroyInputError("invalid", "Enter a valid email.");
   }
   if (raw.consent !== true) {
@@ -64,7 +70,7 @@ export function normalizeElroyRequest(
   }
   const turnstileToken =
     typeof raw.turnstileToken === "string" ? raw.turnstileToken.trim() : "";
-  if (!turnstileToken || turnstileToken.length > 4096) {
+  if (!turnstileToken || turnstileToken.length > 2048) {
     throw new ElroyInputError("invalid", "Verification is required.");
   }
   const sourceValue = typeof raw.source === "string" ? raw.source : "/";

@@ -1,11 +1,32 @@
 import { describe, expect, test } from "bun:test";
-import { verifyTurnstile } from "../lib/turnstile";
+import { resolveTurnstileConfig, verifyTurnstile } from "../lib/turnstile";
 
 const env = {
   secret: "test-secret",
   expectedAction: "elroy_micro_reading",
   allowedHostnames: new Set(["cardblueprints.com"]),
 };
+
+describe("resolveTurnstileConfig", () => {
+  test("fails closed when the hostname allowlist is missing", () => {
+    const config = resolveTurnstileConfig({ TURNSTILE_SECRET: "test-secret" }, {});
+    expect(config.allowedHostnames.size).toBe(0);
+  });
+
+  test("normalizes an explicit hostname allowlist", () => {
+    const config = resolveTurnstileConfig(
+      {
+        TURNSTILE_SECRET: "test-secret",
+        TURNSTILE_HOSTNAMES: " CardBlueprints.com, www.cardblueprints.com ",
+      },
+      {},
+    );
+    expect([...config.allowedHostnames]).toEqual([
+      "cardblueprints.com",
+      "www.cardblueprints.com",
+    ]);
+  });
+});
 
 test("accepts a matching successful response", async () => {
   const fetcher: typeof fetch = async () =>

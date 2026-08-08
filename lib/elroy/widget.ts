@@ -1,3 +1,6 @@
+import { parseCard } from "@/lib/cards";
+import { isValidElroyEmail } from "@/lib/elroy/input";
+
 export const ELROY_SUPPRESSION_KEY = "cardblueprints.elroy.suppress_until";
 export const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -51,6 +54,13 @@ export function parseElroyBirthContext(detail: unknown): string | null {
   if (typeof birthdate !== "string") return null;
   if (!/^\d{4}-\d{2}-\d{2}$/.test(birthdate)) return null;
   return birthdate;
+}
+
+export function formatElroyRulingCards(codes: string[]): string {
+  return codes
+    .map((code) => parseCard(code)?.label || "")
+    .filter(Boolean)
+    .join(" and ");
 }
 
 export type ElroyStep =
@@ -191,7 +201,7 @@ export function canSubmitElroy(state: ElroyUiState): boolean {
   return (
     (state.step === "email" || state.step === "error") &&
     state.consent &&
-    Boolean(state.email.trim()) &&
+    isValidElroyEmail(state.email) &&
     Boolean(state.turnstileToken)
   );
 }

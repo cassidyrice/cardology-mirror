@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   isElroyEligiblePath,
@@ -26,6 +26,8 @@ export function ElroyLauncher() {
   const [teaser, setTeaser] = useState(false);
   const [open, setOpen] = useState(false);
   const [prefBirthdate, setPrefBirthdate] = useState("");
+  const launcherRef = useRef<HTMLButtonElement | null>(null);
+  const teaserEligibleRef = useRef(true);
 
   useEffect(() => {
     setReady(true);
@@ -33,6 +35,11 @@ export function ElroyLauncher() {
   }, []);
 
   useEffect(() => {
+    const initialBirthdate = parseElroyBirthContext({
+      birthdate: window.__cardBlueprintsElroyBirthdate,
+    });
+    if (initialBirthdate) setPrefBirthdate(initialBirthdate);
+
     function onBirth(event: Event) {
       const detail = (event as CustomEvent).detail;
       const birthdate = parseElroyBirthContext(detail);
@@ -45,11 +52,12 @@ export function ElroyLauncher() {
   const eligible = ready && isElroyEligiblePath(pathname) && !suppressed;
 
   useEffect(() => {
-    if (!eligible || open) {
+    if (!eligible || open || !teaserEligibleRef.current) {
       setTeaser(false);
       return;
     }
     const id = window.setTimeout(() => {
+      teaserEligibleRef.current = false;
       setTeaser(true);
       trackClientFunnelEventOnce("elroy_teaser_shown", { placement: pathname });
     }, TEASER_MS);
@@ -63,6 +71,15 @@ export function ElroyLauncher() {
     setSuppressed(true);
     setTeaser(false);
     setOpen(false);
+  }
+
+  function closePanel() {
+    const shouldSuppress = readElroySuppression(window.localStorage, Date.now());
+    setOpen(false);
+    setSuppressed(shouldSuppress);
+    if (!shouldSuppress) {
+      window.requestAnimationFrame(() => launcherRef.current?.focus());
+    }
   }
 
   return (
@@ -82,10 +99,12 @@ export function ElroyLauncher() {
       ) : null}
 
       <button
+        ref={launcherRef}
         type="button"
         className="elroy-launcher"
         aria-label="Open Elroy micro-reading"
         onClick={() => {
+          teaserEligibleRef.current = false;
           setOpen(true);
           setTeaser(false);
         }}
@@ -98,10 +117,7 @@ export function ElroyLauncher() {
           open={open}
           prefBirthdate={prefBirthdate}
           placement={pathname}
-          onClose={() => {
-            setOpen(false);
-            setSuppressed(readElroySuppression(window.localStorage, Date.now()));
-          }}
+          onClose={closePanel}
           onComplete={() => {
             writeElroySuppression(window.localStorage, Date.now());
           }}
