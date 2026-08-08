@@ -20,6 +20,8 @@ export const GA_BLOCKED_QUERY_KEYS = [
   "birth_date",
   "code",
   "gate",
+  "card",
+  "turnstile",
 ] as const;
 
 export type GaEventParams = Record<
@@ -109,6 +111,21 @@ export function mapFunnelEventToGa4(
       return { eventName: "purchase" };
     case "free_course_signup":
       return { eventName: "generate_lead", params: { lead_source: "free_course" } };
+    case "elroy_teaser_shown":
+      return { eventName: "elroy_teaser_shown" };
+    case "elroy_opened":
+      return { eventName: "elroy_opened" };
+    case "elroy_birthdate_entered":
+      return { eventName: "elroy_birthdate_entered" };
+    case "elroy_email_submitted":
+      return { eventName: "elroy_email_submitted" };
+    case "elroy_micro_reading_viewed":
+      return {
+        eventName: "generate_lead",
+        params: { lead_source: "elroy_micro_reading" },
+      };
+    case "elroy_blueprint_clicked":
+      return { eventName: "elroy_blueprint_clicked" };
     default:
       return { eventName: name };
   }
