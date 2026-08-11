@@ -9,12 +9,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Personal Card Blueprint, digital downloads, and legacy orders.",
+    "Refund terms for My Question readings, the Personal Card Blueprint, digital downloads, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 6, 2026";
+const UPDATED = "August 10, 2026";
 
 export default function RefundPolicy() {
   return (
@@ -35,11 +35,39 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $29 Personal Card Blueprint. Refund
-            eligibility depends on whether the personalized report was delivered
-            and accessible. The digital-download policy applies only when an
-            e-book sale is explicitly open.
+            Card Blueprints sells personalized readings and reports. Refund
+            eligibility depends on the product, whether production has begun,
+            and whether the purchased deliverable was supplied correctly.
           </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">My Question private readings</h2>
+          <div className="mt-3 space-y-3">
+            <p>
+              A My Question order is refundable before production begins.
+              Payment alone does not begin production. The delivery clock starts
+              only after the required onboarding form is completed and a date is
+              assigned.
+            </p>
+            <p>
+              Once completed onboarding enters production, the personalized
+              reading is non-refundable. Disagreement with an interpretation is
+              not a basis for a refund.
+            </p>
+            <p>
+              A free correction or re-record is available when a submitted
+              birthdate was handled incorrectly, a purchased component was
+              omitted, or there is a clear production error. If the assigned
+              delivery window is missed, you may choose a refund or continued
+              fulfillment.
+            </p>
+            <p>
+              Paid orders that do not complete onboarding within 14 days may be
+              closed and refunded to the original payment method unless a manual
+              extension has been agreed in writing.
+            </p>
+          </div>
         </section>
 
         <section>
@@ -104,9 +132,14 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href="/products/personal-card-blueprint" className="text-[#8e321f] underline underline-offset-4">
-            ← Back to Personal Card Blueprint
-          </Link>
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            <Link href="/myquestion" className="text-[#8e321f] underline underline-offset-4">
+              Back to My Question
+            </Link>
+            <Link href="/products/personal-card-blueprint" className="text-[#8e321f] underline underline-offset-4">
+              Back to Personal Card Blueprint
+            </Link>
+          </div>
         </div>
       </div>
     </SeoShell>

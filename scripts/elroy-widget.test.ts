@@ -48,6 +48,14 @@ describe("isElroyEligiblePath", () => {
     expect(isElroyEligiblePath("/free-course")).toBe(false);
     expect(isElroyEligiblePath("/gate")).toBe(false);
   });
+
+  test("excludes private My Question onboarding and fulfillment routes", () => {
+    expect(isElroyEligiblePath("/myquestion/onboarding?session_id=secret")).toBe(
+      false,
+    );
+    expect(isElroyEligiblePath("/myquestion/fulfill?token=secret")).toBe(false);
+    expect(isElroyEligiblePath("/myquestion")).toBe(true);
+  });
 });
 
 describe("suppression", () => {

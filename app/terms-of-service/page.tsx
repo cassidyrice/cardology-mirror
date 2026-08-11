@@ -9,12 +9,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the Personal Card Blueprint, digital products, and free Cardology tools.",
+    "Terms for My Question readings, the Personal Card Blueprint, digital products, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 6, 2026";
+const UPDATED = "August 10, 2026";
 
 export default function TermsOfService() {
   return (
@@ -44,8 +44,9 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            the Personal Card Blueprint, and digital products when explicitly
-            marked available. Card lookups use fixed formulas and tables — the
+            human-reviewed My Question readings, the Personal Card Blueprint,
+            and digital products when explicitly marked available. Card lookups
+            use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
             you.
@@ -55,6 +56,18 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
+            <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>My Question ($99)</strong> — one personalized, human-reviewed,
+              faceless 5-7 minute private video with AI-generated narration
+              about one accepted focused question. A 4-6 page Question Blueprint
+              may be offered as an optional $29 add-on.
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
+              Payment must be followed by valid private onboarding. A production
+              date is reserved only after onboarding is complete. Delivery uses
+              a private Google Drive link intended to remain available for at
+              least 12 months.
+            </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Personal Card Blueprint ($29)</strong> — one instant
               personalized written report generated from the birth date entered

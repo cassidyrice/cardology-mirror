@@ -8,6 +8,8 @@ const EXCLUDED_PREFIXES = [
   "/checkout",
   "/gate",
   "/free-course",
+  "/myquestion/onboarding",
+  "/myquestion/fulfill",
   "/privacy-policy",
   "/terms-of-service",
   "/refund-policy",

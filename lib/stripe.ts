@@ -6,16 +6,18 @@ import Stripe from "stripe";
 // HTTP client we plug in here.
 
 let cached: Stripe | null = null;
+let cachedKey = "";
 
-export function getStripe(): Stripe {
-  if (cached) return cached;
-  const key = process.env.STRIPE_SECRET_KEY;
+export function getStripe(secretKey?: string): Stripe {
+  const key = secretKey || process.env.STRIPE_SECRET_KEY;
   if (!key) {
     throw new Error("STRIPE_SECRET_KEY is not set. Copy .env.example to .env.local and fill it in.");
   }
+  if (cached && cachedKey === key) return cached;
   cached = new Stripe(key, {
     apiVersion: "2026-06-24.dahlia",
     httpClient: Stripe.createFetchHttpClient(),
   });
+  cachedKey = key;
   return cached;
 }

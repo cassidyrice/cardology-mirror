@@ -3,7 +3,16 @@ import type Stripe from "stripe";
 
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
-import { sendIntakeEmail } from "@/lib/email";
+import { sendEmail, sendIntakeEmail } from "@/lib/email";
+import { sendMyQuestionPaymentNotifications } from "@/lib/my-question/notifications";
+import {
+  resolveMyQuestionRuntime,
+  runtimeString,
+} from "@/lib/my-question/runtime";
+import {
+  verifyPaidMyQuestionOrder,
+  type MyQuestionStripe,
+} from "@/lib/my-question/service";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
   productBySlug,
@@ -83,6 +92,75 @@ export async function POST(req: NextRequest) {
       session.payment_status === "paid" ||
       (session.payment_status === "no_payment_required" &&
         session.amount_total === 0);
+
+    // ---- BRANCH: My Question private fulfillment ----
+    if (offerSlug === "my-question") {
+      if (!paymentSatisfied) {
+        return NextResponse.json({ received: true, payment: "not-satisfied" });
+      }
+
+      const runtimeContext = await resolveMyQuestionRuntime();
+      if (!runtimeContext.db) {
+        return NextResponse.json(
+          { error: "My Question order store unavailable" },
+          { status: 503 },
+        );
+      }
+
+      const verified = await verifyPaidMyQuestionOrder(session.id, {
+        db: runtimeContext.db,
+        stripe: getStripe() as unknown as MyQuestionStripe,
+      });
+      if (!verified.ok) {
+        console.error("[my-question] webhook payment sync failed", verified);
+        return NextResponse.json(
+          { error: "My Question payment sync failed" },
+          { status: verified.status >= 500 ? verified.status : 500 },
+        );
+      }
+
+      const creatorEmail = runtimeString(runtimeContext.env, "INTAKE_EMAIL");
+      const signingSecret = runtimeString(
+        runtimeContext.env,
+        "MY_QUESTION_SIGNING_SECRET",
+      );
+      const apiKey = runtimeString(runtimeContext.env, "RESEND_API_KEY");
+      const from = runtimeString(runtimeContext.env, "INTAKE_FROM_EMAIL");
+      if (!creatorEmail || !signingSecret || !apiKey || !from) {
+        return NextResponse.json(
+          { error: "My Question notification configuration unavailable" },
+          { status: 503 },
+        );
+      }
+
+      try {
+        await sendMyQuestionPaymentNotifications(verified.value, {
+          siteUrl: runtimeString(runtimeContext.env, "SITE_URL") ?? SITE_URL,
+          creatorEmail,
+          signingSecret,
+          send: (message) => sendEmail(message, { apiKey, from }),
+        });
+      } catch (error) {
+        console.error("[my-question] payment notification failed", error);
+        return NextResponse.json(
+          { error: "My Question notification failed" },
+          { status: 500 },
+        );
+      }
+
+      recordFunnelEvent({
+        name: "purchase_completed",
+        source: "server",
+        ...funnelContextFromMetadata(session.metadata),
+        eventId: `stripe:${event.id}`,
+        path: "/api/checkout/webhook",
+        offerSlug,
+        outcome: "payment-confirmed",
+        currency: session.currency ?? "usd",
+        valueCents: session.amount_total ?? 0,
+      });
+      return NextResponse.json({ received: true });
+    }
 
     // Funnel event for canonical offers
     if (paymentSatisfied && product) {

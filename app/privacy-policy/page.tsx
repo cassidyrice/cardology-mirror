@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 8, 2026";
+const UPDATED = "August 10, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -37,8 +37,8 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Who we are</h2>
           <p className="mt-3">
             Card Blueprints is operated by Cassidy Rice (Cassidy Rice Company). We
-            offer personalized Cardology reports, digital products when
-            available, and free birth card tools at{" "}
+            offer personalized Cardology readings and reports, digital products
+            when available, and free birth card tools at{" "}
             <Link href="/" className="text-[#8e321f] underline underline-offset-4">
               cardblueprints.com
             </Link>
@@ -53,6 +53,34 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">What we collect and why</h2>
           <div className="mt-3 space-y-4">
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">My Question reading information</h3>
+              <p className="mt-1">
+                A My Question order stores the primary birthdate, add-on choice,
+                Stripe session reference, buyer email, buyer name, one submitted
+                question, up to three relevant birthdates, assigned production
+                date, fulfillment status, and private Google Drive delivery URL
+                in Cloudflare D1. This information is used only for payment
+                recovery, scheduling, human fulfillment, delivery, correction,
+                support, refunds, and required business records. Detailed intake
+                is scheduled for deletion 90 days after delivery.
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">
+                My Question narration synthesis
+              </h3>
+              <p className="mt-1">
+                When a reading uses AI-generated narration, approved narration
+                text may be sent to OpenRouter and MiniMax solely to synthesize
+                audio. Scripts are minimized before synthesis: customer name,
+                email, raw birthdate, and unrelated third-party details are
+                omitted when possible. OpenRouter and MiniMax process that text
+                under their own logging and retention policies; we do not claim
+                zero provider retention. Checkout remains closed until narration
+                operations and privacy handling are approved.
+              </p>
+            </div>
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Personal Card Blueprint information</h3>
               <p className="mt-1">
@@ -92,9 +120,10 @@ export default function PrivacyPolicy() {
                 . We do not store your card number, CVV, or full payment details.
                 Stripe's own privacy policy governs how they handle your payment
                 data. From checkout we may receive your name, email address,
-                the Blueprint birth date, amount paid, and checkout session
-                reference. Historical orders may retain the phone number that
-                was collected when those products were available.
+                a purchased product birthdate, amount paid, add-on choice, and
+                checkout session reference. Historical orders may retain the
+                phone number that was collected when those products were
+                available.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -207,6 +236,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
+            <li className="border-t border-[#14110d]/12 pt-2">To verify payment, schedule, produce, deliver, correct, support, or refund a My Question reading.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
@@ -252,6 +282,12 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>Google Drive</strong> — private delivery storage for completed My Question video and PDF files.{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
+                Google Privacy Policy
+              </a>
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Google Analytics</strong> — aggregate website analytics.{" "}
               <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Google Privacy Policy
@@ -279,7 +315,9 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">How long verified records are kept</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">Legacy voice access profiles: through the original purchased window, up to 90 days; no new profiles are created.</li>
-            <li className="border-t border-[#14110d]/12 pt-2">Order records: up to 400 days for support and accounting.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">My Question detailed intake: scheduled for deletion 90 days after delivery.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">My Question Google Drive files: intended to remain available for at least 12 months.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">Minimal order and payment-reference records: up to 400 days for support and accounting, or longer when legally required.</li>
             <li className="border-t border-brand-line pt-2">Tab-scoped conversion analytics: up to three months.</li>
             <li className="border-t border-brand-line pt-2">Google Analytics data: under Google&rsquo;s Analytics data-retention settings for the Card Blueprints property.</li>
             <li className="border-t border-brand-line pt-2">Stripe checkout attribution metadata: under Stripe&rsquo;s transaction-retention rules.</li>
