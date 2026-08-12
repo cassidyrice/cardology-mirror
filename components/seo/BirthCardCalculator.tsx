@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -9,6 +9,7 @@ import {
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
+import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
 import { ShareCard } from "./ShareCard";
 
@@ -35,6 +36,8 @@ function compute(month: number, day: number): Result | null {
     return null;
   }
 }
+
+const blueprintOffer = instantReportBySlug("personal-card-blueprint");
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -69,7 +72,7 @@ export function BirthCardCalculator() {
     }
   }, []);
 
-  function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: FormEvent) {
     e.preventDefault();
     setTouched(true);
     trackClientFunnelEventOnce("calculator_started", {
@@ -140,17 +143,28 @@ export function BirthCardCalculator() {
         <ResultCard
           key={`${result.birthCard}|${result.rulingCards.join(",")}`}
           result={result}
+          birthdate={date}
         />
       )}
     </div>
   );
 }
 
-function ResultCard({ result }: { result: Result }) {
+function ResultCard({
+  result,
+  birthdate,
+}: {
+  result: Result;
+  birthdate: string;
+}) {
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = slugOf(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
+  const priceLabel = blueprintOffer?.priceLabel ?? "$29";
+  const checkoutHref = birthdate
+    ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdate)}`
+    : "/checkout/personal-card-blueprint";
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
   // the result is already visible; reduced motion gets an instant jump.
@@ -223,7 +237,7 @@ function ResultCard({ result }: { result: Result }) {
           style={{ animationDelay: "0.72s" }}
         >
           <Link
-            href="/checkout/personal-card-blueprint"
+            href={checkoutHref}
             className="accent-button large-button w-full text-center sm:w-auto"
             onClick={() =>
               trackClientFunnelEvent("offer_cta_clicked", {
@@ -232,7 +246,7 @@ function ResultCard({ result }: { result: Result }) {
               })
             }
           >
-            Get My Blueprint — $29
+            {`Get My Blueprint — ${priceLabel}`}
           </Link>
           {slug && (
             <Link
