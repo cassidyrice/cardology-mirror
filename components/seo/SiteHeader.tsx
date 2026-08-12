@@ -40,7 +40,7 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-            ))}
+              ))}
           </nav>
           <details className="relative ml-auto md:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">

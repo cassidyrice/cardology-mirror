@@ -56,7 +56,7 @@ const STEPS = [
   {
     label: "02",
     title: "Complete one-time checkout.",
-    detail: "The Personal Card Blueprint is $29 with no subscription or renewal.",
+    detail: "The Personal Card Blueprint is $13 with no subscription or renewal.",
   },
   {
     label: "03",
@@ -267,7 +267,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
-              Get My Blueprint — $29
+              Get My Blueprint — $13
             </LinkButton>
           </div>
         </div>

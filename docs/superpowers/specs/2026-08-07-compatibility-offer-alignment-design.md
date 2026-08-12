@@ -16,12 +16,12 @@ The Worker bundle is maintained separately from the Next.js application. The rec
 
 ## Content Design
 
-The shared header CTA will become “Get Your Personal Blueprint — $29” and link to `/products/personal-card-blueprint`.
+The shared header CTA will become “Get Your Personal Blueprint — $13” and link to `/products/personal-card-blueprint`.
 
 The shared promotional block will:
 
 - describe the Personal Card Blueprint as an instant personalized written report built from a birth date;
-- use “Get Your Personal Blueprint — $29” as the primary CTA;
+- use “Get Your Personal Blueprint — $13” as the primary CTA;
 - use the free compatibility calculator at `/birth-card-compatibility-calculator` as the secondary CTA;
 - contain no phone number, calling instruction, voice-reading claim, trial offer, or retired phone-product language.
 
@@ -37,7 +37,7 @@ Compatibility-specific editorial content remains unchanged.
 ## Verification
 
 - Run a static regression scan against the compatibility rendering surface for the retired phone number and phone-offer phrases.
-- Assert the new Blueprint URL and $29 CTA appear in the shared header and promotional block.
+- Assert the new Blueprint URL and $13 CTA appear in the shared header and promotional block.
 - Render or exercise the compatibility index, one card hub, and one pair page if the recovered bundle exposes a safe local test path.
 - Confirm unrelated phone constants used for historical paid-order fulfillment in the Next.js application remain untouched.
 

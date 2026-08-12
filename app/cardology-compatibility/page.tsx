@@ -153,14 +153,14 @@ export default function CompatibilityPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">Want one person&rsquo;s full pattern in writing?</p>
         <p className="mt-2 text-sm text-mist">
-          After a free comparison, the Personal Card Blueprint ($29) is the deepen for
+          After a free comparison, the Personal Card Blueprint ($13) is the deepen for
           a single birthday — instant report, no phone call.
         </p>
         <Link
           href="/products/personal-card-blueprint"
           className="mt-3 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink"
         >
-          Personal Blueprint — $29
+          Personal Blueprint — $13
         </Link>
       </div>
 

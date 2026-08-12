@@ -110,7 +110,7 @@ export default function CompatibilityCalculatorPage() {
         After the result, open the matching pair page in the directory for the full
         write-up, or deepen with a{" "}
         <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-          Personal Card Blueprint ($29)
+          Personal Card Blueprint ($13)
         </Link>{" "}
         for one person&rsquo;s full pattern in writing.
       </p>

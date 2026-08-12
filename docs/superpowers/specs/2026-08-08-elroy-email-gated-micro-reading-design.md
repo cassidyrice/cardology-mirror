@@ -12,7 +12,7 @@
 
 Add Elroy as the Card Blueprints site chat guide. A small site-wide launcher offers a deterministic micro-reading based on the visitor's birth date. Elroy reveals the visitor's birth-card name before the gate, then asks for an email address. After successful Cloudflare Turnstile verification and contact capture, the chat displays the micro-reading immediately and sends the same reading by email.
 
-The reading is assembled from the existing Card Blueprints engine and curated Card Blueprints copy. It does not use an LLM. The only commercial next step is the $29 Personal Card Blueprint.
+The reading is assembled from the existing Card Blueprints engine and curated Card Blueprints copy. It does not use an LLM. The only commercial next step is the $13 Personal Card Blueprint.
 
 Elroy belongs exclusively to Card Blueprints. The retired Elroy Answers brand is not mentioned or linked.
 
@@ -22,7 +22,7 @@ Elroy belongs exclusively to Card Blueprints. The retired Elroy Answers brand is
 2. Give useful, immediate value before and after the email gate.
 3. Introduce Elroy as a recognizable Card Blueprints character.
 4. Keep all card facts deterministic, repeatable, and grounded in the repository's engine and interpretation data.
-5. Lead qualified visitors to the $29 Personal Card Blueprint without replacing its value.
+5. Lead qualified visitors to the $13 Personal Card Blueprint without replacing its value.
 6. Protect the public email endpoint with managed Cloudflare Turnstile from launch.
 7. Preserve page performance, accessibility, privacy, and the current cream-paper visual system.
 
@@ -90,7 +90,7 @@ The launcher is fixed to the lower-right corner on desktop and respects the mobi
 6. **Immediate reading**
    - After the server confirms contact capture, Elroy displays the reading in three paced messages.
 7. **Commercial next step**
-   - Elroy shows one primary button: `See my full Blueprint · $29`.
+   - Elroy shows one primary button: `See my full Blueprint · $13`.
    - The button links to `/products/personal-card-blueprint` and carries Elroy attribution through the existing anonymous analytics system.
 
 ### 5.3 Calendar boundaries
@@ -315,7 +315,7 @@ The email includes:
 2. birth-card label and optional ruling-card label;
 3. the same three reading sections shown in chat;
 4. the symbolic-framework disclaimer;
-5. one link to the $29 Personal Card Blueprint;
+5. one link to the $13 Personal Card Blueprint;
 6. standard unsubscribe and Card Blueprints identity information.
 
 The raw birth date is not included in the email. Text and simple branded HTML variants carry equivalent content.
@@ -431,7 +431,7 @@ Before launch:
 4. Cloudflare production secrets and hostname allowlist are verified.
 5. Deployment completes.
 6. Live desktop and mobile smoke tests pass.
-7. The $29 CTA reaches the correct product page.
+7. The $13 CTA reaches the correct product page.
 8. GA4 and first-party events appear without PII.
 
 ## 18. Acceptance criteria
@@ -447,6 +447,6 @@ The feature is complete only when all of the following are true:
 - The raw birth date is not persisted or sent to analytics or Resend.
 - Turnstile checks success, action, hostname, and single-use token behavior.
 - Email failure does not hide a reading after contact capture has succeeded.
-- The only post-reading offer is the $29 Personal Card Blueprint.
+- The only post-reading offer is the $13 Personal Card Blueprint.
 - Elroy Answers is not referenced.
 - Accessibility, test, build, deploy, email, analytics, and live verification gates pass.

@@ -208,7 +208,7 @@ export default function CardologyVsTarotPage() {
             Free birth card calculator →
           </Link>
           <Link href="/products/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Personal Blueprint — $29 →
+            Personal Blueprint — $13 →
           </Link>
         </div>
       </div>

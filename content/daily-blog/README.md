@@ -57,7 +57,7 @@ DRY_RUN=1 POST_DATE=2026-07-13 bun run generate:daily-blog
 - Avoid medical, mental-health, legal, criminal, sexual, or family claims.
 - Discuss public roles, public-facing creative/career patterns, known collaborations, visible conflicts, and relational dynamics that are already part of the public record.
 - Keep political figures neutral: no endorsement, no attack, no certainty about character.
-- Link back to the calculator, the matching birth-card page, and the Personal Card Blueprint ($29). Never revive phone-reading CTAs.
+- Link back to the calculator, the matching birth-card page, and the Personal Card Blueprint ($13). Never revive phone-reading CTAs.
 - Do not publish duplicate slugs, duplicate figure names, or near-identical keyword sets.
 
 ## Rules for definitional posts
