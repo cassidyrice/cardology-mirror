@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 
+import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { instantReportBySlug } from "@/lib/products";
 
 type BridgeVariant = "card" | "relationship" | "timing" | "general";
@@ -29,7 +32,16 @@ export function ReadingBridge({
         {config.body}
       </p>
       <div className="mt-6">
-        <Link href={href} className="ink-button large-button">
+        <Link
+          href={href}
+          className="ink-button large-button"
+          onClick={() =>
+            trackClientFunnelEvent("offer_cta_clicked", {
+              offerSlug: offer.slug,
+              placement: `reading-bridge-${variant}`,
+            })
+          }
+        >
           {offer.cta} <span aria-hidden="true">→</span>
         </Link>
       </div>
