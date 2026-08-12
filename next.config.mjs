@@ -158,6 +158,17 @@ const nextConfig = {
         destination: "/birth-card/joker",
         statusCode: 301,
       },
+      // P0 gap aliases (crawl-debt audit 2026-08-12)
+      {
+        source: "/joker-meaning",
+        destination: "/birth-card/joker",
+        statusCode: 301,
+      },
+      {
+        source: "/cardology",
+        destination: "/what-is-cardology",
+        statusCode: 301,
+      },
     ];
   },
 };
