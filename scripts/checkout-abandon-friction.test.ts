@@ -1,0 +1,116 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+
+import {
+  analyticsMetadata,
+  FUNNEL_COOKIE_NAME,
+  funnelContextFromCookie,
+  mergeFunnelContext,
+} from "../lib/analytics";
+import { sanitizeBirthdateISO } from "../lib/birthdate";
+import { instantReportBySlug } from "../lib/products";
+
+const analyticsSessionId = "ab119959-a913-4da6-9f50-a0378c613582";
+
+assert.equal(sanitizeBirthdateISO("1990-05-15"), "1990-05-15");
+assert.equal(sanitizeBirthdateISO("1990-02-30"), "");
+assert.equal(sanitizeBirthdateISO("not-a-date"), "");
+assert.equal(sanitizeBirthdateISO("1899-01-01"), "");
+assert.equal(FUNNEL_COOKIE_NAME, "cb_funnel_v1");
+
+assert.deepEqual(
+  funnelContextFromCookie(
+    encodeURIComponent(
+      JSON.stringify({
+        sessionId: analyticsSessionId,
+        landingPath: "/birth-card-calculator",
+        referrerHost: "www.google.com",
+        trafficChannel: "organic",
+        utmSource: "",
+        utmMedium: "",
+        utmCampaign: "",
+      }),
+    ),
+  ),
+  {
+    sessionId: analyticsSessionId,
+    landingPath: "/birth-card-calculator",
+    referrerHost: "www.google.com",
+    trafficChannel: "organic",
+    utmSource: "",
+    utmMedium: "",
+    utmCampaign: "",
+  },
+);
+
+assert.deepEqual(
+  mergeFunnelContext(
+    { sessionId: "", landingPath: "", trafficChannel: "unknown" },
+    {
+      sessionId: analyticsSessionId,
+      landingPath: "/birth-card-calculator",
+      trafficChannel: "organic",
+    },
+    {
+      path: "/checkout/personal-card-blueprint",
+      offerSlug: "personal-card-blueprint",
+    },
+  ),
+  {
+    sessionId: analyticsSessionId,
+    landingPath: "/birth-card-calculator",
+    referrerHost: undefined,
+    trafficChannel: "organic",
+    utmSource: undefined,
+    utmMedium: undefined,
+    utmCampaign: undefined,
+    path: "/checkout/personal-card-blueprint",
+    offerSlug: "personal-card-blueprint",
+  },
+);
+
+assert.deepEqual(
+  analyticsMetadata({
+    sessionId: analyticsSessionId,
+    landingPath: "/birth-card-calculator",
+    path: "/checkout/personal-card-blueprint",
+    offerSlug: "personal-card-blueprint",
+    trafficChannel: "organic",
+  }),
+  {
+    analytics_session_id: analyticsSessionId,
+    analytics_landing_path: "/birth-card-calculator",
+    analytics_traffic_channel: "organic",
+    analytics_path: "/checkout/personal-card-blueprint",
+    analytics_offer: "personal-card-blueprint",
+  },
+);
+
+const sessionRoute = readFileSync("app/checkout/[offer]/session/route.ts", "utf8");
+assert.match(sessionRoute, /default_value/);
+assert.match(sessionRoute, /funnelContextFromCookie/);
+assert.match(sessionRoute, /sanitizeBirthdateISO/);
+assert.doesNotMatch(sessionRoute, /console\.(log|info|debug)\([^)]*birthdate/i);
+
+const continueForm = readFileSync(
+  "components/checkout/CheckoutContinueForm.tsx",
+  "utf8",
+);
+assert.match(continueForm, /disabled=\{pending\}/);
+assert.match(continueForm, /getCheckoutAnalyticsFields/);
+
+const birthCalc = readFileSync(
+  "components/seo/BirthCardCalculator.tsx",
+  "utf8",
+);
+assert.match(birthCalc, /bd=\$\{encodeURIComponent\(birthdate\)\}/);
+assert.match(birthCalc, /instantReportBySlug/);
+
+const pcb = instantReportBySlug("personal-card-blueprint");
+assert.ok(pcb);
+assert.equal(pcb.price, 29);
+assert.equal(pcb.priceLabel, "$29");
+
+console.log(
+  "PASS: checkout abandon friction — birthdate sanitize, funnel cookie merge, session route prefill, continue single-flight, PCB price source",
+);

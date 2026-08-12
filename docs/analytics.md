@@ -7,10 +7,12 @@ Card Blueprints uses two privacy-conscious Cloudflare layers:
   events.
 
 The custom stream records pseudonymous, tab-scoped funnel IDs in
-`sessionStorage`. It does not use analytics cookies and does not store names,
-email addresses, phone numbers, birthdays, calculated cards, full referrer
-URLs, arbitrary query strings, IP addresses, user agents, access codes, or
-Stripe session tokens.
+`sessionStorage`, and mirrors the same non-PII attribution into a short-lived
+first-party cookie (`cb_funnel_v1`) so checkout session POSTs can attach
+`analytics_*` metadata even when hidden form fields are missing. It does not
+store names, email addresses, phone numbers, birthdays, calculated cards, full
+referrer URLs, arbitrary query strings, IP addresses, user agents, access
+codes, or Stripe session tokens.
 
 ## Events
 
@@ -165,3 +167,13 @@ not comparable to post-cutover ones.
 - Compatibility calculator began emitting `calculator_started` /
   `calculator_completed` with placement `compatibility-calculator`.
 - `readings_viewed` retired from the client catalog.
+
+## Checkout session attribution + birthdate prefill
+
+Checkout session creation attaches `analytics_*` metadata from the review-page
+form fields and, when those are missing, from the first-party `cb_funnel_v1`
+cookie mirrored by `AnalyticsCapture`. Session metadata may also include
+`analytics_path` and `analytics_offer`. Birthdate prefill uses a validated
+`YYYY-MM-DD` query/body value only to set Stripe
+`custom_fields[].text.default_value` for Personal Card Blueprint fulfillment —
+the raw date is not written to funnel logs or Analytics Engine.

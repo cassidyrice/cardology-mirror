@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -16,6 +16,7 @@ import {
   type LifePathProfile,
   type LifePathSharedCard,
 } from "@/lib/life-path";
+import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
@@ -31,7 +32,7 @@ export function CompatibilityCalculator() {
   const [pair, setPair] = useState<{ a: LifePathProfile; b: LifePathProfile } | null>(null);
   const [err, setErr] = useState(false);
 
-  function onSubmit(e: React.FormEvent) {
+  function onSubmit(e: FormEvent) {
     e.preventDefault();
     trackClientFunnelEventOnce("calculator_started", {
       placement: "compatibility-calculator",
@@ -84,18 +85,31 @@ export function CompatibilityCalculator() {
         {err ? "Enter two full birthdays to compare." : pair ? "Compatibility comparison ready." : ""}
       </p>
       {err && <p className="mt-4 text-sm text-brand-oxblood">Enter two full birthdays to compare.</p>}
-      {pair && <PairResult a={pair.a} b={pair.b} />}
+      {pair && <PairResult a={pair.a} b={pair.b} birthdateA={a} />}
     </div>
   );
 }
 
-function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
+function PairResult({
+  a,
+  b,
+  birthdateA,
+}: {
+  a: LifePathProfile;
+  b: LifePathProfile;
+  birthdateA: string;
+}) {
   const pa = parseCard(a.birthCard);
   const pb = parseCard(b.birthCard);
   const aSlug = slugOf(a.birthCard);
   const bSlug = slugOf(b.birthCard);
   const sameSuit = pa?.suit === pb?.suit;
   const comparison = compareLifePathProfiles(a, b);
+  const priceLabel =
+    instantReportBySlug("personal-card-blueprint")?.priceLabel ?? "$29";
+  const checkoutHref = birthdateA
+    ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdateA)}`
+    : "/checkout/personal-card-blueprint";
 
   return (
     <div className="mt-10 animate-fade-up">
@@ -168,7 +182,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
 
       <div className="mt-8 flex flex-col items-center gap-3">
         <Link
-          href="/checkout/personal-card-blueprint"
+          href={checkoutHref}
           className="accent-button large-button text-center"
           onClick={() =>
             trackClientFunnelEvent("offer_cta_clicked", {
@@ -177,7 +191,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
             })
           }
         >
-          Get My Blueprint - $29
+          {`Get My Blueprint — ${priceLabel}`}
         </Link>
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
           One-time personalized written report for your side of the pattern.

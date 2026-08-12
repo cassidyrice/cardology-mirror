@@ -1,8 +1,13 @@
 import Link from "next/link";
 
+import { instantReportBySlug } from "@/lib/products";
+
 // Quiet contextual funnel block for educational pages that used to dead-end.
 // One active paid path: the Personal Card Blueprint.
 export function OfferCta({ className = "" }: { className?: string }) {
+  const offer = instantReportBySlug("personal-card-blueprint");
+  const priceLabel = offer?.priceLabel ?? "$29";
+
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
       <p className="type-eyebrow-dark">Want the full pattern in one place?</p>
@@ -19,7 +24,7 @@ export function OfferCta({ className = "" }: { className?: string }) {
           href="/products/personal-card-blueprint"
           className="accent-button large-button inline-flex text-center"
         >
-          Get My Blueprint — $29
+          {`Get My Blueprint — ${priceLabel}`}
         </Link>
       </div>
     </aside>

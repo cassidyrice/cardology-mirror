@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 import {
+  FUNNEL_COOKIE_NAME,
   inferTrafficChannel,
   type ClientFunnelEventName,
   type FunnelContext,
@@ -15,6 +16,8 @@ import { sendGaEvent } from "@/components/analytics/GoogleAnalytics";
 const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
 const ATTRIBUTION_KEY = "cardblueprints.analytics.attribution";
+/** First-party cookie mirror of sessionStorage attribution for checkout POST fallback. */
+export const FUNNEL_COOKIE = FUNNEL_COOKIE_NAME;
 const ONCE_KEY_PREFIX = "cardblueprints.analytics.once.";
 // Active public offers: checkout review + product-page intent.
 const OFFER_PATH =
@@ -56,17 +59,7 @@ export function AnalyticsCapture() {
       if (!(target instanceof HTMLFormElement)) return;
       if (!target.matches("form[data-analytics-checkout]")) return;
 
-      const attribution = getAttribution();
-      const fields: Record<string, string> = {
-        analytics_session_id: attribution.sessionId,
-        analytics_landing_path: attribution.landingPath,
-        analytics_referrer_host: attribution.referrerHost,
-        analytics_traffic_channel: attribution.trafficChannel,
-        analytics_utm_source: attribution.utmSource,
-        analytics_utm_medium: attribution.utmMedium,
-        analytics_utm_campaign: attribution.utmCampaign,
-      };
-
+      const fields = getCheckoutAnalyticsFields();
       for (const [name, value] of Object.entries(fields)) {
         setHiddenField(target, name, value);
       }
@@ -79,6 +72,20 @@ export function AnalyticsCapture() {
   }, []);
 
   return null;
+}
+
+/** Hidden-field payload for checkout session POST (also mirrored to a cookie). */
+export function getCheckoutAnalyticsFields(): Record<string, string> {
+  const attribution = getAttribution();
+  return {
+    analytics_session_id: attribution.sessionId,
+    analytics_landing_path: attribution.landingPath,
+    analytics_referrer_host: attribution.referrerHost,
+    analytics_traffic_channel: attribution.trafficChannel,
+    analytics_utm_source: attribution.utmSource,
+    analytics_utm_medium: attribution.utmMedium,
+    analytics_utm_campaign: attribution.utmCampaign,
+  };
 }
 
 export function trackClientFunnelEvent(
@@ -160,7 +167,11 @@ function getAttribution(): Attribution {
 
   try {
     const stored = sessionStorage.getItem(ATTRIBUTION_KEY);
-    if (stored) return JSON.parse(stored) as Attribution;
+    if (stored) {
+      const attribution = JSON.parse(stored) as Attribution;
+      persistFunnelCookie(attribution);
+      return attribution;
+    }
 
     const params = new URLSearchParams(window.location.search);
     const referrerHost = referrerHostname(document.referrer);
@@ -184,9 +195,34 @@ function getAttribution(): Attribution {
     };
     sessionStorage.setItem(SESSION_ID_KEY, sessionId);
     sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
+    persistFunnelCookie(attribution);
     return attribution;
   } catch {
     return fallback;
+  }
+}
+
+function persistFunnelCookie(attribution: Attribution) {
+  if (typeof document === "undefined") return;
+  try {
+    const payload = encodeURIComponent(
+      JSON.stringify({
+        sessionId: attribution.sessionId,
+        landingPath: attribution.landingPath,
+        referrerHost: attribution.referrerHost,
+        trafficChannel: attribution.trafficChannel,
+        utmSource: attribution.utmSource,
+        utmMedium: attribution.utmMedium,
+        utmCampaign: attribution.utmCampaign,
+      }),
+    );
+    const secure =
+      typeof window !== "undefined" && window.location.protocol === "https:"
+        ? "; Secure"
+        : "";
+    document.cookie = `${FUNNEL_COOKIE}=${payload}; Path=/; Max-Age=86400; SameSite=Lax${secure}`;
+  } catch {
+    // Cookie write is best-effort; form fields remain the primary path.
   }
 }
 
