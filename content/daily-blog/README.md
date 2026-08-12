@@ -106,4 +106,4 @@ DAILY_BLOG_TOPIC_SLUG=taylor-swift-birth-card-profile bun run generate:daily-blo
 
 To add a currently trending public figure without editing the main seed list, create
 `content/daily-blog/trending-queue.json` with the same object shape used in
-`content/daily-blog/topics.json`.
+`topics.json`.
