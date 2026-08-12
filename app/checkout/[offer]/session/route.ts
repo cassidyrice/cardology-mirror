@@ -16,7 +16,7 @@ import {
   isInstantReport,
 } from "@/lib/products";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "edge";
@@ -115,6 +115,9 @@ export async function POST(
       }`,
       metadata: sharedMeta,
       payment_intent_data: { metadata },
+      branding_settings: {
+        display_name: SITE_NAME,
+      },
       phone_number_collection: {
         enabled: false,
       },
