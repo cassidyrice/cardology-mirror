@@ -248,6 +248,12 @@ function ResultCard({
           >
             {`Get My Blueprint — ${priceLabel}`}
           </Link>
+          <Link
+            href="/products/personal-card-blueprint"
+            className="text-sm font-medium text-brand-ink underline underline-offset-4"
+          >
+            What&apos;s inside the Blueprint? →
+          </Link>
           {slug && (
             <Link
               href={`/birth-card/${slug}`}
@@ -261,7 +267,8 @@ function ResultCard({
           className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
           style={{ animationDelay: "0.82s" }}
         >
-          One-time personalized written report. No subscription or phone call.
+          Instant written report: pattern, ruling layer, current chapter. One-time
+          {priceLabel} — no subscription or phone call. Gift-ready.
         </p>
         {!isJoker && bc?.label && (
           <div className="rise" style={{ animationDelay: "0.88s" }}>
