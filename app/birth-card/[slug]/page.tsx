@@ -118,7 +118,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
     ]),
     faqJsonLd(faqs),
     articleJsonLd({
-      headline: `${card.label} Meaning: In Readings & As a Birth Card`,
+      headline: `${card.label} Meaning: Birth Card & Readings`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
     }),

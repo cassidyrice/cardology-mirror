@@ -10,9 +10,9 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "What Is Cardology? The 52-Card System, Explained";
+const TITLE = "What Is Cardology? Birthday → One Playing Card (Not Tarot)";
 const DESCRIPTION =
-  "What is Cardology? A plain-English guide to the deterministic 52 playing-card system that maps your birthday to one birth card — how it works, benefits, and how it differs from tarot.";
+  "Cardology maps your birthday to one card in a 52-card deck — not tarot. Plain-English guide, then find your birth card free with the calculator.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -92,7 +92,7 @@ export default function WhatIsCardology() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-07",
+    dateModified: "2026-08-12",
     mainEntityOfPage: "https://cardblueprints.com/what-is-cardology",
   };
 
@@ -101,19 +101,19 @@ export default function WhatIsCardology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">What Is Cardology?</h1>
+      <h1 className="display mb-3 text-3xl text-bone">What Is Cardology? Playing Cards from Your Birthday</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
-          Cardology is a deterministic 52-card system that maps a birthday to a
-          playing card and uses that card as pattern language for people,
-          compatibility, timing, and recurring dynamics. Same birthday, same card —
-          every time.
+          Cardology is a birthday-to-playing-card system: your month and day map to
+          one card in a standard 52-card deck (not tarot). That card is pattern
+          language for personality, compatibility, and timing. Same birthday, same
+          card — every time.
         </p>
       </div>
 
       <p className="mb-2 text-xs text-faint">
-        By Cassidy Rice · Updated August 7, 2026 ·{" "}
+        By Cassidy Rice · Updated August 12, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
