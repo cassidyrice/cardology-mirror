@@ -68,6 +68,9 @@ const TRAFFIC_CHANNELS = new Set([
   "unknown",
 ] as TrafficChannel[]);
 
+/** Cookie name written by AnalyticsCapture for checkout session POST fallback. */
+export const FUNNEL_COOKIE_NAME = "cb_funnel_v1";
+
 export function isClientFunnelEventName(
   value: unknown,
 ): value is ClientFunnelEventName {
@@ -166,6 +169,55 @@ export function funnelContextFromFormData(form: FormData): FunnelContext {
   };
 }
 
+/**
+ * Decode the first-party funnel cookie written by AnalyticsCapture.
+ * Cookie values are sanitized the same way as form fields.
+ */
+export function funnelContextFromCookie(raw: string | undefined | null): FunnelContext {
+  if (!raw) return {};
+  try {
+    const parsed = JSON.parse(decodeURIComponent(raw)) as Record<string, unknown>;
+    return {
+      sessionId: sanitizeAnalyticsId(parsed.sessionId),
+      landingPath: sanitizeAnalyticsPath(parsed.landingPath),
+      referrerHost: sanitizeHostname(parsed.referrerHost),
+      trafficChannel: sanitizeTrafficChannel(parsed.trafficChannel),
+      utmSource: sanitizeAnalyticsLabel(parsed.utmSource),
+      utmMedium: sanitizeAnalyticsLabel(parsed.utmMedium),
+      utmCampaign: sanitizeAnalyticsLabel(parsed.utmCampaign),
+    };
+  } catch {
+    return {};
+  }
+}
+
+/** Prefer form fields; fill gaps from the funnel cookie (and optional path). */
+export function mergeFunnelContext(
+  primary: FunnelContext,
+  fallback: FunnelContext,
+  extras: FunnelContext = {},
+): FunnelContext {
+  const pick = <K extends keyof FunnelContext>(key: K): FunnelContext[K] =>
+    (primary[key] || fallback[key] || extras[key]) as FunnelContext[K];
+
+  return {
+    sessionId: pick("sessionId"),
+    landingPath: pick("landingPath"),
+    referrerHost: pick("referrerHost"),
+    trafficChannel:
+      primary.trafficChannel && primary.trafficChannel !== "unknown"
+        ? primary.trafficChannel
+        : fallback.trafficChannel && fallback.trafficChannel !== "unknown"
+          ? fallback.trafficChannel
+          : extras.trafficChannel ?? "unknown",
+    utmSource: pick("utmSource"),
+    utmMedium: pick("utmMedium"),
+    utmCampaign: pick("utmCampaign"),
+    path: pick("path"),
+    offerSlug: pick("offerSlug"),
+  };
+}
+
 export function analyticsMetadata(context: FunnelContext): Record<string, string> {
   const entries = {
     analytics_session_id: sanitizeAnalyticsId(context.sessionId),
@@ -175,6 +227,8 @@ export function analyticsMetadata(context: FunnelContext): Record<string, string
     analytics_utm_source: sanitizeAnalyticsLabel(context.utmSource),
     analytics_utm_medium: sanitizeAnalyticsLabel(context.utmMedium),
     analytics_utm_campaign: sanitizeAnalyticsLabel(context.utmCampaign),
+    analytics_path: sanitizeAnalyticsPath(context.path),
+    analytics_offer: sanitizeOfferSlug(context.offerSlug),
   };
 
   return Object.fromEntries(
@@ -195,6 +249,8 @@ export function funnelContextFromMetadata(
     utmSource: sanitizeAnalyticsLabel(metadata?.analytics_utm_source),
     utmMedium: sanitizeAnalyticsLabel(metadata?.analytics_utm_medium),
     utmCampaign: sanitizeAnalyticsLabel(metadata?.analytics_utm_campaign),
+    path: sanitizeAnalyticsPath(metadata?.analytics_path),
+    offerSlug: sanitizeOfferSlug(metadata?.analytics_offer),
   };
 }
 
