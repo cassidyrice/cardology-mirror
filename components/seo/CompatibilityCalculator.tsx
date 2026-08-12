@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import {
+  trackClientFunnelEvent,
+  trackClientFunnelEventOnce,
+} from "@/components/analytics/AnalyticsCapture";
 import { parseCard, type Suit } from "@/lib/cards";
 import {
   buildLifePathProfile,
@@ -13,7 +17,6 @@ import {
   type LifePathSharedCard,
 } from "@/lib/life-path";
 import { PlayingCard } from "../PlayingCard";
-import { ReadingBridge } from "./ReadingBridge";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -30,6 +33,9 @@ export function CompatibilityCalculator() {
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    trackClientFunnelEventOnce("calculator_started", {
+      placement: "compatibility-calculator",
+    });
     const first = buildLifePathProfile(a, "First person");
     const second = buildLifePathProfile(b, "Second person");
     if (!first || !second) {
@@ -39,6 +45,9 @@ export function CompatibilityCalculator() {
     }
     setErr(false);
     setPair({ a: first, b: second });
+    trackClientFunnelEvent("calculator_completed", {
+      placement: "compatibility-calculator",
+    });
   }
 
   return (
@@ -46,12 +55,24 @@ export function CompatibilityCalculator() {
       <form onSubmit={onSubmit} className="space-y-4">
         <div>
           <label htmlFor="da" className="type-eyebrow block">First birthday</label>
-          <input id="da" type="date" value={a} onChange={(e) => setA(e.target.value)} required
+          <input id="da" type="date" value={a}
+            onFocus={() =>
+              trackClientFunnelEventOnce("calculator_started", {
+                placement: "compatibility-calculator",
+              })
+            }
+            onChange={(e) => setA(e.target.value)} required
             className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <div>
           <label htmlFor="db" className="type-eyebrow block">Second birthday</label>
-          <input id="db" type="date" value={b} onChange={(e) => setB(e.target.value)} required
+          <input id="db" type="date" value={b}
+            onFocus={() =>
+              trackClientFunnelEventOnce("calculator_started", {
+                placement: "compatibility-calculator",
+              })
+            }
+            onChange={(e) => setB(e.target.value)} required
             className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <button type="submit" className="accent-button large-button w-full">
@@ -93,7 +114,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
       <div className="mt-8 text-center">
         <p className="font-serif text-base leading-relaxed text-brand-ink">
           {sameSuit
-            ? `Same suit · ${pa?.domain.toLowerCase()}`
+            ? `Same suit \u00b7 ${pa?.domain.toLowerCase()}`
             : `${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}`}
         </p>
         <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-brand-ink-soft">
@@ -145,14 +166,28 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
         </div>
       </section>
 
-      <ReadingBridge variant="relationship" className="mt-8" />
-
       <div className="mt-8 flex flex-col items-center gap-3">
         <Link
-          href="/cardology-compatibility"
-          className="ink-button large-button"
+          href="/checkout/personal-card-blueprint"
+          className="accent-button large-button text-center"
+          onClick={() =>
+            trackClientFunnelEvent("offer_cta_clicked", {
+              offerSlug: "personal-card-blueprint",
+              placement: "compatibility-calculator-result",
+            })
+          }
         >
-          Read the compatibility guide →
+          Get My Blueprint \u2014 $29
+        </Link>
+        <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
+          One-time personalized written report for your side of the pattern.
+          No subscription or phone call.
+        </p>
+        <Link
+          href="/cardology-compatibility"
+          className="text-sm font-medium text-brand-ink underline underline-offset-4"
+        >
+          Read the compatibility guide \u2192
         </Link>
         <div className="flex flex-wrap justify-center gap-2">
           {aSlug && (
@@ -234,10 +269,10 @@ function LifePathCardRow({ card, compact = false }: { card: LifePathCard; compac
         </div>
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-wider text-brand-bronze">
-            {card.position}. {card.shortTitle} · {card.phrase}
+            {card.position}. {card.shortTitle} \u00b7 {card.phrase}
           </p>
           <h3 className="mt-1 font-serif text-base leading-tight text-brand-ink">
-            {card.label} · {card.titleText}
+            {card.label} \u00b7 {card.titleText}
           </h3>
           <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
             {compact ? card.constitution : `${card.constitution} ${card.gift}`}
@@ -255,7 +290,7 @@ function RoleHit({ title, text, card }: { title: string; text: string; card: Lif
       <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{text}</p>
       {card && (
         <p className="mt-3 font-serif text-base text-brand-ink">
-          {card.card} · {card.title} · {card.titleText}
+          {card.card} \u00b7 {card.title} \u00b7 {card.titleText}
         </p>
       )}
     </div>
@@ -270,7 +305,7 @@ function SharedCardRow({ shared }: { shared: LifePathSharedCard }) {
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h4 className="font-serif text-lg text-brand-ink">
-          {shared.card} · {shared.label}
+          {shared.card} \u00b7 {shared.label}
         </h4>
         <Link
           href={`/birth-card/${slugOf(shared.card) ?? ""}`}
