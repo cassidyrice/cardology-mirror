@@ -6939,5 +6939,147 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "how-52-day-periods-divide-your-year",
+    "pillar": "timing-and-spreads",
+    "title": "How 52-Day Periods Divide Your Year",
+    "description": "The arithmetic of the Cardology year: seven 52-day periods from birthday to birthday, each named for a planet and carrying its own card.",
+    "dek": "Seven periods of 52 days each cover 364 days. Your birthday resets the count.",
+    "datePublished": "2026-08-12",
+    "dateModified": "2026-08-12",
+    "readTime": "5 min read",
+    "keywords": [
+      "seven 52 day periods",
+      "cardology year structure",
+      "planetary period calendar",
+      "birthday year division",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Cardology divides your personal year into seven periods of 52 days each, which together cover 364 days from one birthday to the next. The periods run in planetary order: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune. Each period carries a card from your yearly spread, giving that stretch of days a theme.",
+    "sections": [
+      {
+        "heading": "The arithmetic",
+        "body": [
+          "Seven times 52 is 364, one day short of a standard year. The count starts on your birthday, not on January 1, so everyone's period calendar is personal.",
+          "The same numbers that structure the deck structure the year: 52 cards, 52 weeks, 52 days per period. That symmetry is why the deck can function as a timing system at all."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "The planetary order",
+        "body": [
+          "The periods always run in the same order: Mercury first, then Venus, Mars, Jupiter, Saturn, Uranus, and Neptune. The planet names are theme labels, not sky positions.",
+          "Mercury opens the year with communication and mental reset. Neptune closes it with the long view and the loose ends. The middle periods carry relationship, drive, growth, and structure in turn."
+        ]
+      },
+      {
+        "heading": "Where the cards come in",
+        "body": [
+          "Each period is paired with a card from your yearly spread. The card names the content; the planet names the arena. A Five of Diamonds in a Venus period reads differently than the same card in a Saturn period.",
+          "To find your current period and card, count 52-day blocks from your last birthday or use the period tool."
+        ],
+        "links": [
+          {
+            "label": "52-Day Periods in Cardology",
+            "href": "/blog/52-day-periods-in-cardology"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Why 52 days per period?",
+        "a": "So seven periods tile the year the way 52 cards tile the deck. Seven 52-day periods cover 364 days, matching the deck's total solar values."
+      },
+      {
+        "q": "What happens on the 365th day?",
+        "a": "Your birthday itself is traditionally counted as day zero of the new year, outside the seven periods, before the Mercury period begins."
+      },
+      {
+        "q": "Is everyone in the same period at the same time?",
+        "a": "No. Periods count from your own birthday, so two people are usually in different periods on the same calendar day."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the Personal Card Blueprint?",
+        "a": "A $13 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "52-day-periods-in-cardology",
+      "when-does-your-cardology-year-begin",
+      "planetary-periods-without-prediction"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "52-Card Astrology Explained",
+        "href": "/52-card-astrology-explained"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "Personal Card Blueprint",
+        "href": "/products/personal-card-blueprint",
+        "note": "$13 instant written report."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
