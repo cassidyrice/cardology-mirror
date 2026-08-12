@@ -268,7 +268,8 @@ function ResultCard({
           style={{ animationDelay: "0.82s" }}
         >
           A cursed birthday-card gag you can send — not a psychic prediction.
-          Locks pattern, ruling layer, and current chapter in writing. One-time{" "}
+          Locks pattern, ruling layer, and this year&apos;s bit in the deck in
+          writing. One-time{" "}
           {priceLabel}.
         </p>
         {!isJoker && bc?.label && (

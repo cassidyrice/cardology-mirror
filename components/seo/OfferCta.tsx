@@ -10,15 +10,16 @@ export function OfferCta({ className = "" }: { className?: string }) {
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
-      <p className="type-eyebrow-dark">Free card name → sendable roast</p>
+      <p className="type-eyebrow-dark">Free card name → sendable gag</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
         Get your Personal Card Blueprint.
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
         The free calculator stops at the card name. The Blueprint ({priceLabel})
         is the cursed birthday-card gag in writing — pattern, ruling layer,
-        chapter, prompts. Roasts the playing-card archetype only; not a psychic
-        prediction. One payment, no subscription.
+        this year&apos;s bit in the deck, prompts. Gag-framed written pattern of
+        the playing-card archetype; not a psychic prediction. One payment, no
+        subscription.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link

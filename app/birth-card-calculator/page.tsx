@@ -217,11 +217,12 @@ export default function CalculatorPage() {
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">
-          Got the card name. Want the sendable roast?
+          Got the card name. Want the sendable gag?
         </p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          Personal Card Blueprint ($13): A cursed birthday-card gag you can send — max roast of their playing-card archetype, not a psychic prediction. Instant written pattern,
-          ruling layer, and chapter after checkout — entertainment only.
+          Personal Card Blueprint ($13): A cursed birthday-card gag you can send — gag-framed written pattern of their playing-card archetype, not a psychic prediction. Instant written pattern,
+          ruling layer, and this year&rsquo;s bit after checkout — entertainment
+          only.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
