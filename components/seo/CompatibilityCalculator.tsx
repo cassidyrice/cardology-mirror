@@ -187,7 +187,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"
         >
-          Read the compatibility guide ->
+          Read the compatibility guide →
         </Link>
         <div className="flex flex-wrap justify-center gap-2">
           {aSlug && (
