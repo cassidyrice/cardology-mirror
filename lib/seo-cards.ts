@@ -155,7 +155,7 @@ export function cardMeta(card: CardSeo): { title: string; description: string } 
   const title = `${card.label} Meaning: Birth Card & Readings`;
   const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
-    `${card.label} Cardology birth-card meaning — personality, love, shadow, and dates${dates ? ` like ${dates}` : ""}. Playing-card system (not tarot). Free calculator on Card Blueprints.`,
+    `${card.label} Cardology birth-card meaning (playing cards, not tarot): personality, love, shadow${dates ? `; dates like ${dates}` : ""}. Free calculator on Card Blueprints.`,
     155,
   );
   return { title, description };
