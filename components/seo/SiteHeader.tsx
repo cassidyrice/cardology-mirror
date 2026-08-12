@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { instantReportBySlug } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
@@ -12,6 +13,9 @@ const NAV_LINKS = [
   { label: "Card Meanings", href: "/birth-card" },
   { label: "Learn", href: "/what-is-cardology" },
 ];
+
+const blueprintOffer = instantReportBySlug("personal-card-blueprint");
+const blueprintCta = blueprintOffer?.cta ?? "Get My Blueprint — $13";
 
 export function SiteHeader() {
   return (
@@ -36,7 +40,7 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-              ))}
+            ))}
           </nav>
           <details className="relative ml-auto md:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
@@ -56,7 +60,7 @@ export function SiteHeader() {
                 ))}
               </ul>
               <Link href="/products/personal-card-blueprint" className="accent-button mt-4 w-full">
-                Get My Blueprint &mdash; $29
+                {blueprintCta}
               </Link>
             </nav>
           </details>
@@ -65,7 +69,7 @@ export function SiteHeader() {
               Call" onto two lines. */}
           <div className="hidden md:block">
             <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
-              Get My Blueprint &mdash; $29
+              {blueprintCta}
             </Link>
           </div>
         </div>
