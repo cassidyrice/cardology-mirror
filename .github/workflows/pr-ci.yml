@@ -1,0 +1,49 @@
+name: PR CI
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+# Read-only quality checks only — no contents:write, no git push.
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Validate public truth
+        run: bun run test
+
+      # Fast unit tests that do not need secrets, a live server, or browsers.
+      # Skipped here (document for reviewers):
+      # - bun run test:elroy:browser / scripts/elroy-browser.test.ts
+      #   (Playwright + running app at ELROY_BASE_URL)
+      # - bun run build
+      #   (Next.js build may require env vars unavailable in PR CI)
+      - name: Fast unit tests
+        run: |
+          bun test \
+            scripts/elroy-analytics.test.ts \
+            scripts/elroy-api.test.ts \
+            scripts/elroy-contact.test.ts \
+            scripts/elroy-email.test.ts \
+            scripts/elroy-idempotency.test.ts \
+            scripts/elroy-input.test.ts \
+            scripts/elroy-reading.test.ts \
+            scripts/elroy-route.test.ts \
+            scripts/elroy-turnstile.test.ts \
+            scripts/elroy-widget.test.ts \
+            scripts/shorts/studio-core.test.ts \
+            scripts/analog-algorithm-launch.test.ts
