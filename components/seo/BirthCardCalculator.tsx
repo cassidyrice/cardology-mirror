@@ -10,7 +10,6 @@ import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { PlayingCard } from "../PlayingCard";
-import { ReadingBridge } from "./ReadingBridge";
 import { ShareCard } from "./ShareCard";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
@@ -220,19 +219,25 @@ function ResultCard({ result }: { result: Result }) {
         </div>
 
         <div
-          className="rise mt-2 flex w-full max-w-md flex-col justify-center gap-3 sm:flex-row"
+          className="rise mt-2 flex w-full max-w-md flex-col items-center gap-3"
           style={{ animationDelay: "0.72s" }}
         >
           <Link
-            href="/products/personal-card-blueprint"
-            className="accent-button large-button text-center"
+            href="/checkout/personal-card-blueprint"
+            className="accent-button large-button w-full text-center sm:w-auto"
+            onClick={() =>
+              trackClientFunnelEvent("offer_cta_clicked", {
+                offerSlug: "personal-card-blueprint",
+                placement: "birth-card-calculator-result",
+              })
+            }
           >
             Get My Blueprint — $29
           </Link>
           {slug && (
             <Link
               href={`/birth-card/${slug}`}
-              className="paper-button large-button text-center"
+              className="text-sm font-medium text-brand-ink underline underline-offset-4"
             >
               Read the {bc?.label} meaning →
             </Link>
@@ -251,9 +256,6 @@ function ResultCard({ result }: { result: Result }) {
         )}
       </div>
 
-      <div className="rise" style={{ animationDelay: "0.92s" }}>
-        <ReadingBridge variant="card" cardLabel={isJoker ? "Joker" : bc?.label} className="mt-8" />
-      </div>
     </div>
   );
 }
