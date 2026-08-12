@@ -4,7 +4,6 @@ import { buildElroyMicroReading } from "../lib/elroy/micro-reading";
 
 function baseDeps(overrides: Partial<ElroyDeps> = {}): ElroyDeps {
   return {
-    verifyTurnstile: async () => true,
     addContact: async () => undefined,
     buildReading: (birthdate) => buildElroyMicroReading(birthdate),
     sendReadingEmail: async () => undefined,
@@ -18,18 +17,15 @@ const good = {
   email: "p@example.com",
   consent: true,
   source: "/birth-card-calculator",
-  turnstileToken: "tok",
 };
 
 test("malformed input returns 400 and runs no deps", async () => {
   let called = false;
   const result = await handleElroyMicroReading(
     { ...good, email: "bad" },
-    "1.1.1.1",
     baseDeps({
-      verifyTurnstile: async () => {
+      addContact: async () => {
         called = true;
-        return true;
       },
     }),
   );
@@ -41,11 +37,9 @@ test("joker date returns 422 without side effects", async () => {
   let called = false;
   const result = await handleElroyMicroReading(
     { ...good, birthdate: "1990-12-31" },
-    "1.1.1.1",
     baseDeps({
-      verifyTurnstile: async () => {
+      addContact: async () => {
         called = true;
-        return true;
       },
     }),
   );
@@ -53,26 +47,9 @@ test("joker date returns 422 without side effects", async () => {
   expect(called).toBe(false);
 });
 
-test("invalid turnstile returns 403", async () => {
-  let contact = false;
-  const result = await handleElroyMicroReading(
-    good,
-    "1.1.1.1",
-    baseDeps({
-      verifyTurnstile: async () => false,
-      addContact: async () => {
-        contact = true;
-      },
-    }),
-  );
-  expect(result.status).toBe(403);
-  expect(contact).toBe(false);
-});
-
 test("contact failure returns 503 without reading", async () => {
   const result = await handleElroyMicroReading(
     good,
-    "1.1.1.1",
     baseDeps({
       addContact: async () => {
         throw new Error("down");
@@ -83,18 +60,18 @@ test("contact failure returns 503 without reading", async () => {
   expect(result.body.reading).toBeUndefined();
 });
 
-test("email failure still returns reading", async () => {
+test("email failure still returns reading with emailError", async () => {
   const result = await handleElroyMicroReading(
     good,
-    "1.1.1.1",
     baseDeps({
       sendReadingEmail: async () => {
-        throw new Error("mail");
+        throw new Error("Resend send failed: 403 domain not verified");
       },
     }),
   );
   expect(result.status).toBe(200);
   expect(result.body.emailSent).toBe(false);
+  expect(result.body.emailError).toBe("resend_rejected");
   expect((result.body.card as { birthCard: string }).birthCard).toBe("Q♦");
 });
 
@@ -102,12 +79,7 @@ test("full success", async () => {
   const order: string[] = [];
   const result = await handleElroyMicroReading(
     good,
-    "1.1.1.1",
     baseDeps({
-      verifyTurnstile: async () => {
-        order.push("turnstile");
-        return true;
-      },
       buildReading: (d) => {
         order.push("build");
         return buildElroyMicroReading(d);
@@ -122,9 +94,8 @@ test("full success", async () => {
   );
   expect(result.status).toBe(200);
   expect(result.body.emailSent).toBe(true);
-  expect(order).toEqual(["turnstile", "build", "contact", "email"]);
+  expect(order).toEqual(["build", "contact", "email"]);
   const serialized = JSON.stringify(result.body);
   expect(serialized).not.toContain("p@example.com");
   expect(serialized).not.toContain("2001-01-15");
-  expect(serialized).not.toContain("tok");
 });

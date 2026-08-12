@@ -56,7 +56,7 @@ export function normalizeElroyRequest(
   now = new Date(),
 ): NormalizedElroyRequest {
   // Input validation may detect the known boundary, but it does not call the
-  // Cardology engine. Standard-card resolution happens only after Turnstile.
+  // Cardology engine. Standard-card resolution happens only after email+consent.
   const birthdate = normalizeBirthdate(raw.birthdate, now);
   if (birthdate.endsWith("-12-31")) {
     throw new ElroyInputError("joker", "Joker boundary");
@@ -68,12 +68,7 @@ export function normalizeElroyRequest(
   if (raw.consent !== true) {
     throw new ElroyInputError("invalid", "consent is required.");
   }
-  const turnstileToken =
-    typeof raw.turnstileToken === "string" ? raw.turnstileToken.trim() : "";
-  if (!turnstileToken || turnstileToken.length > 2048) {
-    throw new ElroyInputError("invalid", "Verification is required.");
-  }
   const sourceValue = typeof raw.source === "string" ? raw.source : "/";
   const source = sourceValue.split("?")[0].slice(0, 160) || "/";
-  return { birthdate, email, consent: true, source, turnstileToken };
+  return { birthdate, email, consent: true, source };
 }

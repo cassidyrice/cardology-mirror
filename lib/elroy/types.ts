@@ -17,7 +17,6 @@ export type NormalizedElroyRequest = {
   email: string;
   consent: true;
   source: string;
-  turnstileToken: string;
 };
 
 export type ElroyReading = {

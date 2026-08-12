@@ -94,7 +94,7 @@ describe("elroyUiReducer", () => {
     expect(state.step).toBe("joker-boundary");
   });
 
-  test("standard reveal can continue to email and requires token/consent to submit", () => {
+  test("standard reveal can continue to email and requires consent+email to submit", () => {
     let state = initialElroyUiState();
     state = elroyUiReducer(state, {
       type: "REVEAL_STANDARD",
@@ -107,7 +107,6 @@ describe("elroyUiReducer", () => {
     expect(canSubmitElroy(state)).toBe(false);
     state = elroyUiReducer(state, { type: "SET_EMAIL", value: "not-an-email" });
     state = elroyUiReducer(state, { type: "SET_CONSENT", value: true });
-    state = elroyUiReducer(state, { type: "SET_TOKEN", value: "tok" });
     expect(canSubmitElroy(state)).toBe(false);
     state = elroyUiReducer(state, { type: "SET_EMAIL", value: "p@example.com" });
     expect(canSubmitElroy(state)).toBe(true);
@@ -115,7 +114,7 @@ describe("elroyUiReducer", () => {
     expect(state.step).toBe("submitting");
   });
 
-  test("retry clears token", () => {
+  test("retry returns to email step", () => {
     let state = initialElroyUiState();
     state = elroyUiReducer(state, {
       type: "REVEAL_STANDARD",
@@ -124,10 +123,9 @@ describe("elroyUiReducer", () => {
       birthCardLabel: "Queen of Diamonds",
     });
     state = elroyUiReducer(state, { type: "CONTINUE_TO_EMAIL" });
-    state = elroyUiReducer(state, { type: "SET_TOKEN", value: "tok" });
     state = elroyUiReducer(state, { type: "FAIL", message: "nope" });
     state = elroyUiReducer(state, { type: "RETRY" });
     expect(state.step).toBe("email");
-    expect(state.turnstileToken).toBe("");
+    expect(state.errorMessage).toBe("");
   });
 });

@@ -36,7 +36,9 @@ export function middleware(request: NextRequest) {
   }
 
   if (shouldRedirect) {
-    return NextResponse.redirect(redirectUrl, 301);
+    const redirect = NextResponse.redirect(redirectUrl, 301);
+    applySecurityHeaders(redirect);
+    return redirect;
   }
 
   // /card-of-the-day is edge-rendered per request and computes "today"
@@ -47,13 +49,27 @@ export function middleware(request: NextRequest) {
   // headers collected before the middleware runs (verified against the
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
+  const response = NextResponse.next();
+  applySecurityHeaders(response);
   if (request.nextUrl.pathname === "/card-of-the-day") {
-    const response = NextResponse.next();
     response.headers.set("Cache-Control", "no-store, must-revalidate");
-    return response;
   }
+  return response;
+}
 
-  return NextResponse.next();
+/** Baseline browser security headers (must be set on middleware responses). */
+function applySecurityHeaders(response: NextResponse): void {
+  response.headers.set(
+    "Strict-Transport-Security",
+    "max-age=31536000; includeSubDomains; preload",
+  );
+  response.headers.set("X-Content-Type-Options", "nosniff");
+  response.headers.set("X-Frame-Options", "SAMEORIGIN");
+  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.headers.set(
+    "Permissions-Policy",
+    "camera=(), microphone=(), geolocation=()",
+  );
 }
 
 export const config = {

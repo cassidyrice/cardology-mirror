@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { parseCard } from "@/lib/cards";
 import { classifyElroyBirthdate } from "@/lib/elroy/input";
 import {
@@ -13,7 +13,6 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
-import { ElroyTurnstile } from "./ElroyTurnstile";
 
 type Props = {
   open: boolean;
@@ -36,7 +35,6 @@ export function ElroyChatPanel({
     prefBirthdate,
     initialElroyUiState,
   );
-  const [resetSignal, setResetSignal] = useState(0);
   const liveRef = useRef<HTMLDivElement | null>(null);
   const birthdateInputRef = useRef<HTMLInputElement | null>(null);
   const emailInputRef = useRef<HTMLInputElement | null>(null);
@@ -125,7 +123,6 @@ export function ElroyChatPanel({
           email: state.email.trim(),
           consent: true,
           source: placement,
-          turnstileToken: state.turnstileToken,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
@@ -140,14 +137,9 @@ export function ElroyChatPanel({
         };
       };
       if (!res.ok || !data.card || !data.reading) {
-        setResetSignal((n) => n + 1);
         dispatch({
           type: "FAIL",
-          message:
-            data.error ||
-            (res.status === 403
-              ? "Verification failed. Complete the check again."
-              : "Something went wrong. Try again."),
+          message: data.error || "Something went wrong. Try again.",
         });
         return;
       }
@@ -165,7 +157,6 @@ export function ElroyChatPanel({
       });
       onComplete();
     } catch {
-      setResetSignal((n) => n + 1);
       dispatch({
         type: "FAIL",
         message: "Network error. Try again in a moment.",
@@ -363,10 +354,6 @@ export function ElroyChatPanel({
                   or product notes. I can unsubscribe anytime.
                 </span>
               </label>
-              <ElroyTurnstile
-                resetSignal={resetSignal}
-                onToken={(token) => dispatch({ type: "SET_TOKEN", value: token })}
-              />
               <button
                 type="button"
                 disabled={!canSubmitElroy(state) || state.step === "submitting"}

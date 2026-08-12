@@ -1,9 +1,12 @@
 import { ElroyInputError, normalizeElroyRequest } from "./input";
 import { buildElroyIdempotencyKey } from "./idempotency";
 import type { ElroyReading } from "./types";
+import {
+  classifyEmailError,
+  type EmailSendErrorCode,
+} from "@/lib/email";
 
 export type ElroyDeps = {
-  verifyTurnstile: (token: string, remoteIp: string) => Promise<boolean>;
   addContact: (email: string) => Promise<void>;
   buildReading: (birthdate: string) => ElroyReading;
   sendReadingEmail: (
@@ -15,13 +18,12 @@ export type ElroyDeps = {
 };
 
 export type ElroyHandlerResult = {
-  status: 200 | 400 | 403 | 422 | 503;
+  status: 200 | 400 | 422 | 503;
   body: Record<string, unknown>;
 };
 
 export async function handleElroyMicroReading(
   raw: Record<string, unknown>,
-  remoteIp: string,
   deps: ElroyDeps,
 ): Promise<ElroyHandlerResult> {
   let request;
@@ -45,11 +47,6 @@ export async function handleElroyMicroReading(
     };
   }
 
-  const ok = await deps.verifyTurnstile(request.turnstileToken, remoteIp);
-  if (!ok) {
-    return { status: 403, body: { error: "Verification failed. Try again." } };
-  }
-
   let reading: ElroyReading;
   try {
     reading = deps.buildReading(request.birthdate);
@@ -67,6 +64,8 @@ export async function handleElroyMicroReading(
   }
 
   let emailSent = true;
+  let emailError: EmailSendErrorCode | undefined;
+  let emailErrorHint: string | undefined;
   try {
     const idempotencyKey = await buildElroyIdempotencyKey(
       request.email,
@@ -74,8 +73,17 @@ export async function handleElroyMicroReading(
       deps.now(),
     );
     await deps.sendReadingEmail(request.email, reading, idempotencyKey);
-  } catch {
+  } catch (err) {
     emailSent = false;
+    emailError = classifyEmailError(err);
+    const message = err instanceof Error ? err.message : "unknown";
+    // Extract trailing reason from "Resend send failed: 403 validation_error"
+    const hintMatch = message.match(/Resend send failed:\s*\d+\s+(.+)$/i);
+    emailErrorHint = (hintMatch?.[1] || message).slice(0, 120);
+    console.error("[elroy] reading email failed", {
+      code: emailError,
+      hint: emailErrorHint,
+    });
   }
 
   return {
@@ -84,6 +92,12 @@ export async function handleElroyMicroReading(
       card: reading.card,
       reading: reading.reading,
       emailSent,
+      ...(emailError
+        ? {
+            emailError,
+            ...(emailErrorHint ? { emailErrorHint } : {}),
+          }
+        : {}),
     },
   };
 }
