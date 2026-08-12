@@ -12,9 +12,9 @@ import {
   VIDEO_PATH,
 } from "@/lib/site";
 
-const TITLE = "Cardology Compatibility Calculator (Two Birthdays)";
+const TITLE = "Cardology Compatibility Calculator (Playing Cards, Not Tarot)";
 const DESCRIPTION =
-  "Free Cardology compatibility calculator: enter two birthdays to compare birth cards, Life Path roles, shared cards, and relationship patterns — playing-card system, not tarot.";
+  "Free playing-card compatibility calculator. Enter two birthdays — Cardology birth cards + Life Path map, not a tarot love reading. Same dates, same result.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: "Is this a destiny cards or tarot compatibility test?",
-    a: "It is the Cardology / 52 playing-card system used on Card Blueprints. It is not a shuffled tarot draw. Related “Destiny Cards” language in search results often points at the same deck family, but this calculator uses our deterministic engine and Life Path map.",
+    a: "No. Tarot love/compatibility tools use Major Arcana or shuffled spreads. This calculator uses two birthdays in the Cardology 52-card playing-card system — fixed birth cards plus Life Path roles. Related Destiny Cards / Love Cards names point at the same deck family; we publish the method so you can check the math. Synonym map: https://cardblueprints.com/destiny-cards — longer split: https://cardblueprints.com/cardology-vs-tarot",
   },
   {
     q: "Does same suit mean better compatibility?",
@@ -94,8 +94,11 @@ export default function CompatibilityCalculatorPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <h1 className="display mb-3 text-3xl text-bone">
-        Cardology Compatibility Calculator
+        Playing Card Compatibility Calculator
       </h1>
+      <p className="mb-4 text-sm text-mist">
+        Cardology two-birthday tool — 52 playing cards, not tarot.
+      </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">
@@ -114,6 +117,26 @@ export default function CompatibilityCalculatorPage() {
         </Link>{" "}
         for one person&rsquo;s full pattern in writing.
       </p>
+
+      <aside className="mb-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
+        <p className="font-serif text-base text-bone">
+          <strong>Playing cards, not tarot.</strong>
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-mist">
+          Compare two birthdays in a standard 52-card deck — Hearts, Clubs, Diamonds,
+          Spades. This is <strong>not</strong> a tarot love spread or Major Arcana pair
+          tool. Same two dates always return the same birth cards and Life Path map.
+        </p>
+        <p className="mt-3 text-sm">
+          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+            How Cardology differs from tarot →
+          </Link>
+          {" · "}
+          <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+            Destiny Cards &amp; Love Cards explained →
+          </Link>
+        </p>
+      </aside>
 
       <CompatibilityCalculator />
 
@@ -172,6 +195,8 @@ export default function CompatibilityCalculatorPage() {
           {[
             ["Cardology Compatibility", "/cardology-compatibility"],
             ["Birth Card Calculator", "/birth-card-calculator"],
+            ["Destiny Cards & Love Cards", "/destiny-cards"],
+            ["Cardology vs Tarot", "/cardology-vs-tarot"],
             ["All 52 Birth Cards", "/birth-card"],
             ["Cardology for Beginners", "/cardology-for-beginners"],
             ["Cardology Videos", VIDEO_PATH],
