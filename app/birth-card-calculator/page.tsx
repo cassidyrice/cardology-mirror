@@ -220,9 +220,8 @@ export default function CalculatorPage() {
           Want the full pattern, not just the card?
         </p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Personal Card Blueprint ($13) writes out your birth card, ruling
-          layer, current chapter, and reflection prompts — instant after
-          checkout. Self-knowledge or a birthday gift; not a psychic call.
+          The Personal Card Blueprint ($13): Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written
+          pattern after checkout — entertainment only.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link

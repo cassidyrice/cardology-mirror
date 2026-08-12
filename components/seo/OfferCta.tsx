@@ -10,14 +10,12 @@ export function OfferCta({ className = "" }: { className?: string }) {
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
-      <p className="type-eyebrow-dark">Want the full pattern in one place?</p>
+      <p className="type-eyebrow-dark">Impulse gift of self-knowledge</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
         Get your Personal Card Blueprint.
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
-        An instant personalized written report connecting your birth card,
-        ruling layer, current chapter, and reflection prompts. One payment,
-        no subscription.
+        Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. One payment, no subscription — entertainment only.
       </p>
       <div className="mt-6">
         <Link
