@@ -148,7 +148,11 @@ export default function CardologyForBeginnersPage() {
         <strong>how to find my birth card</strong>, or{" "}
         <strong>what card am I based on my birthday</strong> and want the playing-card
         system — not tarot Major Arcana math and not baby-announcement “birth cards.”
-        For the long definition, see{" "}
+        Arrived via Destiny Cards or Love Cards? Same family:{" "}
+        <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+          Destiny Cards &amp; Love Cards explained
+        </Link>
+        . For the long definition, see{" "}
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
           what Cardology is
         </Link>
