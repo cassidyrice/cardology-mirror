@@ -183,7 +183,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: "$13",
     badge: "Flagship",
     oneLine:
-      "Your birth-card pattern, ruling layer, and current chapter — written out, instantly.",
+      "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction.",
     bestFor:
       "Anyone who knows their card and wants the full pattern in front of them, without a phone call.",
     deliverable:

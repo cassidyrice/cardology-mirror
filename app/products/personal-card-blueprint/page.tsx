@@ -17,9 +17,9 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
-const TITLE = "Personal Card Blueprint ($13): Instant Birth Card Report";
+const TITLE = "Personal Card Blueprint ($13): Impulse Gift of Self-Knowledge";
 const DESCRIPTION =
-  "Instant Cardology birth-card report: pattern, ruling layer, current chapter. Playing cards, not a psychic call. Gift-ready — preview a sample first.";
+  "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Blueprint; preview a sample first.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -80,7 +80,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What is a Personal Card Blueprint?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "An instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions.",
+                  text: "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Cardology report: birth card, ruling layer, current chapter, and reflection prompts.",
                 },
               },
               {
@@ -88,7 +88,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "Is this a good birthday gift?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. It is a one-time personalized playing-card birth-card report delivered instantly after checkout — not a live psychic call.",
+                  text: "Yes. An impulse gift of self-knowledge: a birthday playing-card read you can send someone, delivered instantly after checkout — not a psychic prediction.",
                 },
               },
               {
@@ -96,7 +96,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "How is this different from the free birth card calculator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "The free calculator shows your birth card. The Blueprint writes out the full pattern, current chapter, and reflection prompts.",
+                  text: "The free calculator shows your birth card name. The Blueprint is the kept written object — pattern, chapter, and prompts you can send or reopen — still entertainment, not a psychic prediction.",
                 },
               },
               {
@@ -128,9 +128,9 @@ export default function PersonalCardBlueprintPage() {
                 call, no appointment, no waiting.
               </p>
               <p className="rise-3 mt-4 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-                Built for self-knowledge and gifting: a checkable playing-card
-                birth-card report, not a psychic hotline or tarot shuffle.
-                Free calculator first if you only want the card name.
+                Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Entertainment only — not fate, medical, legal, or
+                financial advice. Free calculator first if you only want the
+                card name.
               </p>
               <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
                 <LinkButton href={`/checkout/${offer.slug}`} variant="accent" size="large">
@@ -225,19 +225,19 @@ export default function PersonalCardBlueprintPage() {
               {[
                 {
                   q: "What is a Personal Card Blueprint?",
-                  a: "An instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions. Same deterministic engine as the free calculator — the Blueprint puts the full pattern in front of you.",
+                  a: "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions. Same deterministic engine as the free calculator.",
                 },
                 {
                   q: "Is this a good birthday gift?",
-                  a: "Yes. It is a one-time personalized personality-style report based on a playing-card birth card, delivered instantly after checkout. Recipients get a return link by email. It is not a live psychic call.",
+                  a: "Yes. That is the job: an impulse gift of self-knowledge you can send — a birthday playing-card read with a return link by email after checkout. Entertainment only; not a psychic prediction or live call.",
                 },
                 {
                   q: "How is this different from the free birth card calculator?",
-                  a: "The free calculator shows your birth card (and ruling card). The Blueprint writes out the pattern, timing chapter, and prompts so you can keep and revisit the reading without piecing pages together yourself.",
+                  a: "The free calculator shows your birth card (and ruling card). The Blueprint locks the pattern, timing chapter, and prompts into a kept written object you can reopen or gift — still entertainment, not a psychic prediction.",
                 },
                 {
                   q: "Is this tarot or AI fortune-telling?",
-                  a: "No. The card mapping is a fixed 52-card playing-deck calendar (Cardology). The report is a written interpretation of that structure — not a shuffled tarot draw and not a phone psychic session.",
+                  a: "No. The card mapping is a fixed 52-card playing-deck calendar (Cardology). The report is a written entertainment interpretation of that structure — not a shuffled tarot draw, not fate, and not a phone psychic session.",
                 },
               ].map((f) => (
                 <div key={f.q} className="border-t border-brand-line pt-5">

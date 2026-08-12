@@ -267,8 +267,8 @@ function ResultCard({
           className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
           style={{ animationDelay: "0.82s" }}
         >
-          Instant written report: pattern, ruling layer, current chapter. One-time
-          {priceLabel} — no subscription or phone call. Gift-ready.
+          Impulse gift of self-knowledge — a birthday playing-card read you can
+          send someone, not a psychic prediction. One-time {priceLabel}.
         </p>
         {!isJoker && bc?.label && (
           <div className="rise" style={{ animationDelay: "0.88s" }}>
