@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
+import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
   publicProductBySlug,
   digitalOfferFacts,
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
 
 type PageProps = {
   params: Promise<{ offer: string }>;
-  searchParams: Promise<{ status?: string }>;
+  searchParams: Promise<{ status?: string; bd?: string }>;
 };
 
 export default async function CheckoutReviewPage({
@@ -34,7 +36,7 @@ export default async function CheckoutReviewPage({
   searchParams,
 }: PageProps) {
   const { offer: slug } = await params;
-  const { status } = await searchParams;
+  const { status, bd } = await searchParams;
   const product = publicProductBySlug(slug);
 
   if (!product) notFound();
@@ -42,6 +44,7 @@ export default async function CheckoutReviewPage({
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product);
   const unavailable = isDigital && !product.available;
+  const birthdate = isReport ? sanitizeBirthdateISO(bd) : "";
   const facts: (DigitalOfferFact | InstantReportFact)[] =
     isDigital
       ? digitalOfferFacts(product)
@@ -150,11 +153,27 @@ export default async function CheckoutReviewPage({
                   Stripe collects your payment details and asks for the birth
                   date your Blueprint should be built from.
                 </p>
-                <p>
-                  After payment, your personalized report opens immediately on
-                  the confirmation page, and a return link is emailed to you.
-                  No phone call, no waiting.
-                </p>
+                {birthdate ? (
+                  <p>
+                    Birth date from the calculator will be prefilled at Stripe
+                    Checkout as{" "}
+                    <span className="font-medium text-brand-ink">{birthdate}</span>.
+                    You can still edit it before paying.
+                  </p>
+                ) : (
+                  <p>
+                    After payment, your personalized report opens immediately on
+                    the confirmation page, and a return link is emailed to you.
+                    No phone call, no waiting.
+                  </p>
+                )}
+                {birthdate ? (
+                  <p>
+                    After payment, your personalized report opens immediately on
+                    the confirmation page, and a return link is emailed to you.
+                    No phone call, no waiting.
+                  </p>
+                ) : null}
               </div>
             </>
           )}
@@ -164,19 +183,11 @@ export default async function CheckoutReviewPage({
               Checkout closed
             </p>
           ) : (
-            <form
-              action={`/checkout/${product.slug}/session`}
-              method="post"
-              className="mt-6"
-              data-analytics-checkout
-            >
-              <button
-                type="submit"
-                className="accent-button large-button w-full"
-              >
-                Continue to Secure Checkout &mdash; {product.priceLabel}
-              </button>
-            </form>
+            <CheckoutContinueForm
+              slug={product.slug}
+              priceLabel={product.priceLabel}
+              birthdate={birthdate || undefined}
+            />
           )}
           <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
             {unavailable
@@ -190,11 +201,11 @@ export default async function CheckoutReviewPage({
         Need another option?{" "}
         {isDigital ? (
           <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
-            Get your Personal Card Blueprint &rarr;
+            Get your Personal Card Blueprint →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">
-            Find your birth card free &rarr;
+            Find your birth card free →
           </Link>
         )}
       </p>
