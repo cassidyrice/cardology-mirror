@@ -80,6 +80,84 @@ const nextConfig = {
         destination: "/birth-card-compatibility-calculator",
         statusCode: 301,
       },
+      // P0 rank-only short paths (suit-ambiguous → birth-card index)
+      // /2-of has confirmed Google association with 2 of Hearts.
+      {
+        source: "/2-of",
+        destination: "/birth-card/2-of-hearts",
+        statusCode: 301,
+      },
+      {
+        source: "/3-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/4-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/5-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/6-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/7-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/8-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/9-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/10-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/ace-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/king-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/queen-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/jack-of",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      // P0 bare card aliases → canonical /birth-card/{slug}
+      {
+        source: "/:rank(ace|2|3|4|5|6|7|8|9|10|jack|queen|king)-of-:suit(hearts|clubs|diamonds|spades)",
+        destination: "/birth-card/:rank-of-:suit",
+        statusCode: 301,
+      },
+      {
+        source: "/joker",
+        destination: "/birth-card/joker",
+        statusCode: 301,
+      },
     ];
   },
 };
