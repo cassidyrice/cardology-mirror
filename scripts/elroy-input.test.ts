@@ -35,7 +35,6 @@ describe("normalizeElroyRequest", () => {
           email: "  Person@Example.COM ",
           consent: true,
           source: "/birth-card-calculator?ignored=1",
-          turnstileToken: "token",
         },
         NOW,
       ),
@@ -44,7 +43,6 @@ describe("normalizeElroyRequest", () => {
       email: "person@example.com",
       consent: true,
       source: "/birth-card-calculator",
-      turnstileToken: "token",
     });
   });
 
@@ -55,25 +53,10 @@ describe("normalizeElroyRequest", () => {
           birthdate: "1990-12-31",
           email: "p@example.com",
           consent: true,
-          turnstileToken: "token",
         },
         NOW,
       ),
     ).toThrow("Joker boundary");
-  });
-
-  test("rejects Turnstile tokens larger than Cloudflare's 2048-character limit", () => {
-    expect(() =>
-      normalizeElroyRequest(
-        {
-          birthdate: "2001-01-15",
-          email: "p@example.com",
-          consent: true,
-          turnstileToken: "x".repeat(2049),
-        },
-        NOW,
-      ),
-    ).toThrow("Verification");
   });
 
   test("rejects missing consent", () => {
@@ -83,7 +66,6 @@ describe("normalizeElroyRequest", () => {
           birthdate: "2001-01-15",
           email: "p@example.com",
           consent: false,
-          turnstileToken: "token",
         },
         NOW,
       ),

@@ -25,15 +25,6 @@ async function main() {
         configurable: true,
         value: () => false
       });
-      window.turnstile = {
-        render(el, opts) {
-          el.dataset.ready = "1";
-          setTimeout(() => opts.callback && opts.callback("test-token"), 10);
-          return "w1";
-        },
-        reset() {},
-        remove() {}
-      };
     `,
   });
 
@@ -53,24 +44,6 @@ async function main() {
       resolveViewedEvent();
     }
     await route.fulfill({ status: 204 });
-  });
-
-  await page.route("**/challenges.cloudflare.com/**", async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: "application/javascript",
-      body: `
-        window.turnstile = {
-          render(el, opts) {
-            el.dataset.ready = "1";
-            setTimeout(() => opts.callback && opts.callback("test-token"), 10);
-            return "w1";
-          },
-          reset() {},
-          remove() {}
-        };
-      `,
-    });
   });
 
   await page.route("**/api/elroy/micro-reading", async (route) => {
@@ -198,7 +171,7 @@ async function main() {
     "reading viewed analytics should fire exactly once",
   );
   const analyticsJson = JSON.stringify(analyticsPayloads);
-  for (const pii of ["elroy-browser@example.test", "2001-01-15", "test-token"]) {
+  for (const pii of ["elroy-browser@example.test", "2001-01-15"]) {
     assert.equal(analyticsJson.includes(pii), false, `analytics must exclude ${pii}`);
   }
   const href = await page

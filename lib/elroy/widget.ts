@@ -80,7 +80,6 @@ export type ElroyUiState = {
   birthCardLabel: string;
   email: string;
   consent: boolean;
-  turnstileToken: string;
   errorMessage: string;
   reading: {
     core: string;
@@ -105,7 +104,6 @@ export type ElroyUiAction =
   | { type: "CONTINUE_TO_EMAIL" }
   | { type: "SET_EMAIL"; value: string }
   | { type: "SET_CONSENT"; value: boolean }
-  | { type: "SET_TOKEN"; value: string }
   | { type: "SUBMIT" }
   | {
       type: "SUCCESS";
@@ -123,7 +121,6 @@ export function initialElroyUiState(birthdate = ""): ElroyUiState {
     birthCardLabel: "",
     email: "",
     consent: false,
-    turnstileToken: "",
     errorMessage: "",
     reading: null,
     emailSent: null,
@@ -159,16 +156,14 @@ export function elroyUiReducer(
       };
     case "CONTINUE_TO_EMAIL":
       if (state.step !== "card-reveal") return state;
-      return { ...state, step: "email", turnstileToken: "", errorMessage: "" };
+      return { ...state, step: "email", errorMessage: "" };
     case "SET_EMAIL":
       return { ...state, email: action.value };
     case "SET_CONSENT":
       return { ...state, consent: action.value };
-    case "SET_TOKEN":
-      return { ...state, turnstileToken: action.value };
     case "SUBMIT":
       if (state.step !== "email" && state.step !== "error") return state;
-      if (!state.consent || !state.turnstileToken || !state.email) return state;
+      if (!state.consent || !state.email) return state;
       return { ...state, step: "submitting", errorMessage: "" };
     case "SUCCESS":
       return {
@@ -176,20 +171,17 @@ export function elroyUiReducer(
         step: "reading",
         reading: action.reading,
         emailSent: action.emailSent,
-        turnstileToken: "",
       };
     case "FAIL":
       return {
         ...state,
         step: "error",
         errorMessage: action.message,
-        turnstileToken: "",
       };
     case "RETRY":
       return {
         ...state,
         step: "email",
-        turnstileToken: "",
         errorMessage: "",
       };
     default:
@@ -201,7 +193,6 @@ export function canSubmitElroy(state: ElroyUiState): boolean {
   return (
     (state.step === "email" || state.step === "error") &&
     state.consent &&
-    isValidElroyEmail(state.email) &&
-    Boolean(state.turnstileToken)
+    isValidElroyEmail(state.email)
   );
 }

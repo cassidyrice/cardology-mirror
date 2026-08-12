@@ -3,7 +3,6 @@ import { buildElroyMicroReading } from "@/lib/elroy/micro-reading";
 import { renderElroyReadingEmail } from "@/lib/elroy/email";
 import { sendEmail } from "@/lib/email";
 import { addResendContact } from "@/lib/resend-contacts";
-import { resolveTurnstileConfig, verifyTurnstile } from "@/lib/turnstile";
 import { SITE_URL } from "@/lib/site";
 
 export const runtime = "edge";
@@ -68,13 +67,30 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   const runtimeEnv = await resolveRuntimeEnv();
-  const turnstileEnv = resolveTurnstileConfig(runtimeEnv);
-  const apiKey = runtimeEnv.RESEND_API_KEY || process.env.RESEND_API_KEY || "";
-  const from = runtimeEnv.INTAKE_FROM_EMAIL || process.env.INTAKE_FROM_EMAIL || "";
-  const remoteIp = request.headers.get("cf-connecting-ip") || "";
+  // Prefer Cloudflare request env, then process.env. Trim empties so "" does not
+  // mask a valid fallback.
+  const apiKey = (
+    runtimeEnv.RESEND_API_KEY ||
+    process.env.RESEND_API_KEY ||
+    ""
+  ).trim();
+  const from = (
+    runtimeEnv.INTAKE_FROM_EMAIL ||
+    process.env.INTAKE_FROM_EMAIL ||
+    ""
+  ).trim();
 
-  const result = await handleElroyMicroReading(payload, remoteIp, {
-    verifyTurnstile: (token, ip) => verifyTurnstile(token, ip, turnstileEnv),
+  if (!apiKey || !from) {
+    console.error("[elroy] email env incomplete", {
+      hasKey: Boolean(apiKey),
+      hasFrom: Boolean(from),
+      envKeys: Object.keys(runtimeEnv).filter((k) =>
+        /RESEND|INTAKE|EMAIL/i.test(k),
+      ),
+    });
+  }
+
+  const result = await handleElroyMicroReading(payload, {
     addContact: async (email) => {
       await addResendContact(email, apiKey);
     },

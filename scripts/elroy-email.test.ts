@@ -40,6 +40,16 @@ test("sendEmail rejects missing config without logging recipient", async () => {
   ).rejects.toThrow(/not configured/i);
 });
 
+test("normalizeFromAddress wraps bare emails", async () => {
+  const { normalizeFromAddress } = await import("../lib/email");
+  expect(normalizeFromAddress("readings@cardologypro.com")).toBe(
+    "Card Blueprints <readings@cardologypro.com>",
+  );
+  expect(normalizeFromAddress('Card Blueprints <a@b.com>')).toBe(
+    "Card Blueprints <a@b.com>",
+  );
+});
+
 test("sendEmail rejects non-2xx and sends idempotency header", async () => {
   let headers: Headers | Record<string, string> | undefined;
   const fetcher: typeof fetch = async (_url, init) => {
