@@ -9,21 +9,23 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "Birth Card Calculator (Playing Cards & Cardology)";
+const TITLE = "Playing Card Birth Card Calculator (Not Tarot)";
 const DESCRIPTION =
-  "Use this free Cardology birth card calculator to find the playing card linked to your birthday, plus your ruling card. Fixed 52-card method, not tarot.";
-const REVIEWED_DATE = "2026-08-07";
+  "Free playing-card birth card calculator. Enter a birthday — 52-card Cardology, not tarot Major Arcana. Same date, same card.";
+const REVIEWED_DATE = "2026-08-12";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
     "birth card calculator",
+    "playing card birth card calculator",
     "Cardology calculator",
     "playing card astrology calculator",
     "what is my birth card",
     "what card am I based on my birthday",
     "birth card calculator playing cards",
+    "birth card calculator not tarot",
   ],
   alternates: { canonical: "/birth-card-calculator" },
   openGraph: {
@@ -48,7 +50,7 @@ const faqs = [
   },
   {
     q: "Is this a tarot birth card calculator?",
-    a: "No. Tarot birth cards use Major Arcana math from a different tradition. This calculator uses a standard 52-card playing deck (Hearts, Clubs, Diamonds, Spades) in the Cardology / playing-card astrology system. If you want tarot pairs like Death and the Emperor, use a tarot tool; if you want your birthday’s playing card, use this one.",
+    a: "No. Tarot birth cards use Major Arcana math from a 78-card tradition. This calculator uses a standard 52-card playing deck (Hearts, Clubs, Diamonds, Spades) in the Cardology system. If you want pairs like Death and the Emperor, use a tarot tool. If you want the playing card locked to your birthday, use this one — then read https://cardblueprints.com/cardology-vs-tarot if you want the longer split.",
   },
   {
     q: "How is the birth card calculated?",
@@ -72,7 +74,7 @@ const faqs = [
   },
   {
     q: "Is this also called a Destiny Cards calculator?",
-    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map at /destiny-cards.",
+    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map: https://cardblueprints.com/destiny-cards",
   },
   {
     q: "Is the free Cardology calculator private?",
@@ -136,7 +138,7 @@ export default function CalculatorPage() {
       <header className="max-w-3xl">
         <p className="eyebrow mb-3 text-gold">Free · instant · no signup</p>
         <h1 className="display mb-3 text-3xl text-bone">
-          Free Birth Card Calculator for the 52-Card System
+          Playing Card Birth Card Calculator
         </h1>
         <p className="prose-reading text-mist" data-ai-summary>
           Enter your birthday to find <strong>which playing card represents you</strong>
@@ -153,12 +155,29 @@ export default function CalculatorPage() {
           <Link href="/about" className="text-gold underline underline-offset-4">
             Cassidy Rice
           </Link>{" "}
-          · Method reviewed August 7, 2026 ·{" "}
+          · Method reviewed August 12, 2026 ·{" "}
           <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
             Editorial standards
           </Link>
         </p>
       </header>
+
+      <aside className="mt-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
+        <p className="font-serif text-base text-bone">
+          <strong>Playing cards, not tarot.</strong>
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-mist">
+          This tool maps your birthday to one card in a standard 52-card deck — Hearts,
+          Clubs, Diamonds, Spades. It is <strong>not</strong> a tarot birth-card calculator
+          (those use Major Arcana pairs from a different formula). Same birthday always
+          returns the same playing card.
+        </p>
+        <p className="mt-3 text-sm">
+          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+            How Cardology differs from tarot →
+          </Link>
+        </p>
+      </aside>
 
       <div className="mt-6">
         <BirthCardCalculator />
@@ -278,47 +297,64 @@ export default function CalculatorPage() {
 
       <section className="mt-10">
         <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
-        <h2 className="font-serif text-3xl text-bone">Playing-card birth calculator, not tarot</h2>
+        <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
         <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[620px] border-collapse text-left text-sm text-mist">
+          <table className="w-full min-w-[680px] border-collapse text-left text-sm text-mist">
             <thead>
               <tr className="border-b border-white/15 text-bone">
-                <th className="p-3">System</th>
-                <th className="p-3">Deck</th>
-                <th className="p-3">Method</th>
-                <th className="p-3">This tool?</th>
+                <th className="p-3"></th>
+                <th className="p-3">This calculator (Cardology)</th>
+                <th className="p-3">Tarot birth cards</th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-white/10">
-                <td className="p-3">Cardology / playing-card astrology</td>
+                <td className="p-3 font-semibold text-bone">Deck</td>
                 <td className="p-3">52 playing cards</td>
-                <td className="p-3">Birthday maps to a fixed card</td>
-                <td className="p-3 font-semibold text-gold">Yes</td>
+                <td className="p-3">78-card tarot (usually Major Arcana pairs)</td>
               </tr>
               <tr className="border-b border-white/10">
-                <td className="p-3">Tarot birth cards</td>
-                <td className="p-3">Major Arcana from a 78-card tarot deck</td>
-                <td className="p-3">Birth-date numerology</td>
-                <td className="p-3">No</td>
+                <td className="p-3 font-semibold text-bone">Method</td>
+                <td className="p-3">Birthday → one fixed playing card</td>
+                <td className="p-3">Birth-date numerology → Major Arcana</td>
+              </tr>
+              <tr className="border-b border-white/10">
+                <td className="p-3 font-semibold text-bone">Shuffle?</td>
+                <td className="p-3">No — same date, same card</td>
+                <td className="p-3">Spreads usually shuffle; birth-card formulas vary</td>
+              </tr>
+              <tr className="border-b border-white/10">
+                <td className="p-3 font-semibold text-bone">Example result</td>
+                <td className="p-3">Queen of Diamonds</td>
+                <td className="p-3">e.g. Death + Emperor (different system)</td>
               </tr>
               <tr>
-                <td className="p-3">Baby or stationery birth cards</td>
-                <td className="p-3">Printed announcement</td>
-                <td className="p-3">Graphic design or messaging</td>
-                <td className="p-3">No</td>
+                <td className="p-3 font-semibold text-bone">Use this if…</td>
+                <td className="p-3">You want your birthday&rsquo;s <strong>playing card</strong></td>
+                <td className="p-3">You want tarot Major Arcana pairs</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p className="prose-reading mt-4 text-mist">
-          Some sites call related birthday-card systems <strong>Destiny Cards</strong>.
-          We use Cardology and publish our calculation method so the result can be
-          checked. For the broader distinction, see{" "}
+          Baby / stationery &ldquo;birth cards&rdquo; are also unrelated — those are printed
+          announcements, not a calculation.
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          Came from a tarot birth-card tool and want the playing-card system instead?
+          You&rsquo;re in the right place. Full side-by-side:{" "}
           <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
-            Cardology vs. tarot
+            Cardology vs tarot
           </Link>
           .
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          Some sites call related birthday-to-playing-card systems{" "}
+          <strong>Destiny Cards</strong> or <strong>Love Cards</strong>. We use{" "}
+          <strong>Cardology</strong> and publish the method so you can check the math.{" "}
+          <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+            Destiny Cards &amp; Love Cards explained →
+          </Link>
         </p>
       </section>
 
