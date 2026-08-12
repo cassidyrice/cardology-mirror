@@ -114,7 +114,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
       <div className="mt-8 text-center">
         <p className="font-serif text-base leading-relaxed text-brand-ink">
           {sameSuit
-            ? `Same suit \u00b7 ${pa?.domain.toLowerCase()}`
+            ? `Same suit - ${pa?.domain.toLowerCase()}`
             : `${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}`}
         </p>
         <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-brand-ink-soft">
@@ -177,7 +177,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
             })
           }
         >
-          Get My Blueprint \u2014 $29
+          Get My Blueprint - $29
         </Link>
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
           One-time personalized written report for your side of the pattern.
@@ -187,7 +187,7 @@ function PairResult({ a, b }: { a: LifePathProfile; b: LifePathProfile }) {
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"
         >
-          Read the compatibility guide \u2192
+          Read the compatibility guide ->
         </Link>
         <div className="flex flex-wrap justify-center gap-2">
           {aSlug && (
@@ -269,10 +269,10 @@ function LifePathCardRow({ card, compact = false }: { card: LifePathCard; compac
         </div>
         <div className="min-w-0">
           <p className="text-xs font-bold uppercase tracking-wider text-brand-bronze">
-            {card.position}. {card.shortTitle} \u00b7 {card.phrase}
+            {card.position}. {card.shortTitle} - {card.phrase}
           </p>
           <h3 className="mt-1 font-serif text-base leading-tight text-brand-ink">
-            {card.label} \u00b7 {card.titleText}
+            {card.label} - {card.titleText}
           </h3>
           <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
             {compact ? card.constitution : `${card.constitution} ${card.gift}`}
@@ -290,7 +290,7 @@ function RoleHit({ title, text, card }: { title: string; text: string; card: Lif
       <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{text}</p>
       {card && (
         <p className="mt-3 font-serif text-base text-brand-ink">
-          {card.card} \u00b7 {card.title} \u00b7 {card.titleText}
+          {card.card} - {card.title} - {card.titleText}
         </p>
       )}
     </div>
@@ -305,7 +305,7 @@ function SharedCardRow({ shared }: { shared: LifePathSharedCard }) {
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h4 className="font-serif text-lg text-brand-ink">
-          {shared.card} \u00b7 {shared.label}
+          {shared.card} - {shared.label}
         </h4>
         <Link
           href={`/birth-card/${slugOf(shared.card) ?? ""}`}
