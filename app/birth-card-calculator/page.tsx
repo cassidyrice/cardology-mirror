@@ -72,7 +72,7 @@ const faqs = [
   },
   {
     q: "Is this also called a Destiny Cards calculator?",
-    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results.",
+    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map at /destiny-cards.",
   },
   {
     q: "Is the free Cardology calculator private?",
