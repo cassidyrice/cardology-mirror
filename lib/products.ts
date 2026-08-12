@@ -179,8 +179,8 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     slug: "personal-card-blueprint",
     stripePriceEnv: "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT",
     name: "Personal Card Blueprint",
-    price: 29,
-    priceLabel: "$29",
+    price: 13,
+    priceLabel: "$13",
     badge: "Flagship",
     oneLine:
       "Your birth-card pattern, ruling layer, and current chapter — written out, instantly.",
@@ -195,7 +195,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
       "The current chapter of your year, from the engine",
       "Three pointed reflection questions to work with",
     ],
-    cta: "Get My Blueprint — $29",
+    cta: "Get My Blueprint — $13",
     checkoutNote:
       "One-time purchase. You enter your birth date at checkout; the report is generated instantly and emailed back to you.",
     reportSlug: "personal-card-blueprint",
