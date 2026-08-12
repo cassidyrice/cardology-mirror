@@ -17,16 +17,26 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
+const TITLE = "Personal Card Blueprint ($13): Instant Birth Card Report";
+const DESCRIPTION =
+  "Instant Cardology birth-card report: pattern, ruling layer, current chapter. Playing cards, not a psychic call. Gift-ready — preview a sample first.";
+
 export const metadata: Metadata = {
-  title: "Personal Card Blueprint | Card Blueprints",
-  description:
-    "Your birth-card pattern, ruling layer, and current chapter — a personalized Cardology report delivered instantly after checkout. See a full sample Blueprint before you buy.",
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: [
+    "personal card blueprint",
+    "cardology report",
+    "birth card report",
+    "birthday gift personality reading",
+    "playing card birth card reading",
+    "cardology blueprint",
+  ],
   alternates: { canonical: "/products/personal-card-blueprint" },
   openGraph: {
     siteName: SITE_NAME,
-    title: "Personal Card Blueprint | Card Blueprints",
-    description:
-      "A personalized Cardology report from your birthday — birth card, ruling card, and the chapter you're in now. Instant, no phone call. Preview a sample first.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "/products/personal-card-blueprint",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
@@ -58,12 +68,57 @@ export default function PersonalCardBlueprintPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is a Personal Card Blueprint?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "An instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this a good birthday gift?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. It is a one-time personalized playing-card birth-card report delivered instantly after checkout — not a live psychic call.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How is this different from the free birth card calculator?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The free calculator shows your birth card. The Blueprint writes out the full pattern, current chapter, and reflection prompts.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this tarot or AI fortune-telling?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "No. The mapping uses a fixed 52-card playing deck (Cardology). The report interprets that structure — not a shuffled tarot draw.",
+                },
+              },
+            ],
+          }),
+        }}
+      />
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
         <section className="shell-paper">
           <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,6rem)] pt-[clamp(3.25rem,7vw,5.5rem)] sm:px-8 lg:px-10">
             <div className="max-w-[54rem]">
-              <Kicker className="rise">Personal Card Blueprint &middot; instant report</Kicker>
+              <Kicker className="rise">
+                Personal Card Blueprint &middot; {offer.priceLabel} &middot; instant
+              </Kicker>
               <h1 className="type-display rise-2 mt-6">
                 More than your card. The <em>whole pattern</em>, in writing.
               </h1>
@@ -71,6 +126,11 @@ export default function PersonalCardBlueprintPage() {
                 {offer.oneLine} Enter your birth date at checkout and read your
                 personalized Blueprint the second payment clears — no phone
                 call, no appointment, no waiting.
+              </p>
+              <p className="rise-3 mt-4 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
+                Built for self-knowledge and gifting: a checkable playing-card
+                birth-card report, not a psychic hotline or tarot shuffle.
+                Free calculator first if you only want the card name.
               </p>
               <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
                 <LinkButton href={`/checkout/${offer.slug}`} variant="accent" size="large">
@@ -146,6 +206,59 @@ export default function PersonalCardBlueprintPage() {
               </LinkButton>
               <p className="mt-3 text-xs leading-relaxed text-brand-ink-soft">
                 {offer.checkoutNote}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="blueprint-faq"
+          aria-labelledby="blueprint-faq-heading"
+          className="shell-paper border-t border-brand-line"
+        >
+          <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 lg:px-10">
+            <Kicker>FAQ</Kicker>
+            <h2 id="blueprint-faq-heading" className="type-h2 mt-4 text-brand-ink">
+              Personal Card Blueprint FAQ
+            </h2>
+            <div className="mt-8 space-y-6">
+              {[
+                {
+                  q: "What is a Personal Card Blueprint?",
+                  a: "An instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions. Same deterministic engine as the free calculator — the Blueprint puts the full pattern in front of you.",
+                },
+                {
+                  q: "Is this a good birthday gift?",
+                  a: "Yes. It is a one-time personalized personality-style report based on a playing-card birth card, delivered instantly after checkout. Recipients get a return link by email. It is not a live psychic call.",
+                },
+                {
+                  q: "How is this different from the free birth card calculator?",
+                  a: "The free calculator shows your birth card (and ruling card). The Blueprint writes out the pattern, timing chapter, and prompts so you can keep and revisit the reading without piecing pages together yourself.",
+                },
+                {
+                  q: "Is this tarot or AI fortune-telling?",
+                  a: "No. The card mapping is a fixed 52-card playing-deck calendar (Cardology). The report is a written interpretation of that structure — not a shuffled tarot draw and not a phone psychic session.",
+                },
+              ].map((f) => (
+                <div key={f.q} className="border-t border-brand-line pt-5">
+                  <h3 className="type-h3 text-brand-ink">{f.q}</h3>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                    {f.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10">
+              <LinkButton href={`/checkout/${offer.slug}`} variant="accent" size="large">
+                {offer.cta}
+              </LinkButton>
+              <p className="mt-3">
+                <Link
+                  href="/birth-card-calculator"
+                  className="text-sm font-medium text-brand-ink underline underline-offset-4"
+                >
+                  Or find your birth card free first →
+                </Link>
               </p>
             </div>
           </div>

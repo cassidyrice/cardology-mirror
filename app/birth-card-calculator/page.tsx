@@ -220,16 +220,22 @@ export default function CalculatorPage() {
           Want the full pattern, not just the card?
         </p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Personal Card Blueprint writes out your birth card, ruling card,
-          and the chapter you&rsquo;re in now — delivered instantly after
-          checkout, no phone call.
+          The Personal Card Blueprint ($13) writes out your birth card, ruling
+          layer, current chapter, and reflection prompts — instant after
+          checkout. Self-knowledge or a birthday gift; not a psychic call.
         </p>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/products/personal-card-blueprint"
             className="accent-button inline-flex min-h-11 items-center justify-center px-5 py-2.5 text-sm"
           >
-            Get My Blueprint &mdash; $13
+            See the Blueprint &mdash; $13
+          </Link>
+          <Link
+            href="/checkout/personal-card-blueprint"
+            className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold/30 px-5 py-2.5 text-sm text-gold"
+          >
+            Checkout now →
           </Link>
         </div>
       </div>

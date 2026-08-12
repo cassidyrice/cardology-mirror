@@ -115,7 +115,8 @@ export default function CompatibilityCalculatorPage() {
         <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
           Personal Card Blueprint ($13)
         </Link>{" "}
-        for one person&rsquo;s full pattern in writing.
+        for one person&rsquo;s full written pattern (instant report — great
+        after you find both cards).
       </p>
 
       <aside className="mb-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
