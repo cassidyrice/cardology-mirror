@@ -23,6 +23,63 @@ const nextConfig = {
         destination: "/shadow-karma-guide",
         statusCode: 301,
       },
+      // Marketing aliases (P0)
+      {
+        source: "/personal-card-blueprint",
+        destination: "/products/personal-card-blueprint",
+        statusCode: 301,
+      },
+      {
+        source: "/52-card-astrology",
+        destination: "/52-card-astrology-explained",
+        statusCode: 301,
+      },
+      {
+        source: "/birthdays-by-date",
+        destination: "/born-on/",
+        statusCode: 301,
+      },
+      // Destiny / Love Cards synonym hub (ship with /destiny-cards page)
+      {
+        source: "/love-cards",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/science-of-the-cards",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/cards-of-your-destiny",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/destiny-card",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/what-are-destiny-cards",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/destiny-cards-calculator",
+        destination: "/birth-card-calculator",
+        statusCode: 301,
+      },
+      {
+        source: "/destiny-card-calculator",
+        destination: "/birth-card-calculator",
+        statusCode: 301,
+      },
+      {
+        source: "/love-cards-calculator",
+        destination: "/birth-card-compatibility-calculator",
+        statusCode: 301,
+      },
     ];
   },
 };
