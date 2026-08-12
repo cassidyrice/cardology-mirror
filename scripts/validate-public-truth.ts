@@ -149,7 +149,7 @@ assert.deepEqual(
 // produces the full fact ladder the checkout review page renders.
 assert.deepEqual(
   INSTANT_REPORT_PRODUCTS.map((o) => ({ slug: o.slug, price: o.price, kind: o.kind })),
-  [{ slug: "personal-card-blueprint", price: 29, kind: "instant_report" }],
+  [{ slug: "personal-card-blueprint", price: 13, kind: "instant_report" }],
 );
 for (const offer of INSTANT_REPORT_PRODUCTS) {
   assert.deepEqual(
@@ -225,11 +225,11 @@ assert.doesNotMatch(
 );
 assert.match(
   productSurfaceText,
-  /Personal Card Blueprint is a \$29 one-time written report generated from a single birth date/i,
+  /Personal Card Blueprint is a \$13 one-time written report generated from a single birth date/i,
 );
 assert.match(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /Personal Card Blueprint is a \$29 one-time written report generated from a single birth date/i,
+  /Personal Card Blueprint is a \$13 one-time written report generated from a single birth date/i,
 );
 assert.doesNotMatch(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),

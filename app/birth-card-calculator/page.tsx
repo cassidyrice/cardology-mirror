@@ -217,7 +217,7 @@ export default function CalculatorPage() {
             href="/products/personal-card-blueprint"
             className="accent-button inline-flex min-h-11 items-center justify-center px-5 py-2.5 text-sm"
           >
-            Get My Blueprint &mdash; $29
+            Get My Blueprint &mdash; $13
           </Link>
         </div>
       </div>

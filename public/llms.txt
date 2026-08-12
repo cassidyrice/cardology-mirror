@@ -5,12 +5,12 @@
 ## Key Facts
 - Cardology is playing-card cartomancy: the birth card is fixed by month and day — deterministic calculation, no shuffle, quiz, or random draw.
 - Every card meaning is written in three ranges: balanced, under-expressed, and over-expressed, plus shadow and karma context.
-- The flagship paid product is the Personal Card Blueprint: a $29 one-time instant personalized written report generated from the buyer's birth date.
+- The flagship paid product is the Personal Card Blueprint: a $13 one-time instant personalized written report generated from the buyer's birth date.
 
 - The site frames Cardology as a pattern language for people, relationships, and timing — not prediction, fate, or medical/legal/financial advice.
 
 ## Paid Products
-- [Personal Card Blueprint](https://cardblueprints.com/products/personal-card-blueprint): $29 one-time. An instant personalized written report covering the birth card, ruling layer, current chapter, and reflection prompts. Birth date is collected at Stripe Checkout; no phone call or subscription.
+- [Personal Card Blueprint](https://cardblueprints.com/products/personal-card-blueprint): $13 one-time. An instant personalized written report covering the birth card, ruling layer, current chapter, and reflection prompts. Birth date is collected at Stripe Checkout; no phone call or subscription.
 
 - [Analog Algorithm](https://cardblueprints.com/products/analog-algorithm): planned $27 digital e-book; checkout is not currently open.
 - [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms by product and delivery state.

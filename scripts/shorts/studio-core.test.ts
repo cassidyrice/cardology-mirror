@@ -69,8 +69,8 @@ describe("Card Blueprints Script Studio", () => {
       cardSlug: "king-of-hearts",
       goal: "blueprint",
     });
-    expect(output.cta).toBe("Get your $29 Personal Card Blueprint at CardBlueprints.com.");
-    expect(output.caption).toContain("$29 Personal Card Blueprint");
+    expect(output.cta).toBe("Get your $13 Personal Card Blueprint at CardBlueprints.com.");
+    expect(output.caption).toContain("$13 Personal Card Blueprint");
   });
 
   test("blocks risky trend promises", () => {

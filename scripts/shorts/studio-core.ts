@@ -79,13 +79,13 @@ const BRAND_CONTEXT = {
     "The deck-calendar link is a Cardology tradition, not proven history.",
     "December 31 maps to the Joker on public pages.",
     "Same-card compatibility describes a shared pattern without ranking either person.",
-    "The active paid product is the $29 one-time Personal Card Blueprint, an instant personalized written report.",
+    "The active paid product is the $13 one-time Personal Card Blueprint, an instant personalized written report.",
   ],
 } as const;
 
 const CTA: Record<StudioGoal, string> = {
   free_calculator: "Find your own card free at CardBlueprints.com.",
-  blueprint: "Get your $29 Personal Card Blueprint at CardBlueprints.com.",
+  blueprint: "Get your $13 Personal Card Blueprint at CardBlueprints.com.",
   brand_awareness: "See the hand you were dealt. Choose how to play it. Card Blueprints.",
 };
 
@@ -140,7 +140,7 @@ export function studioContext() {
     durations: [15, 30],
     goals: [
       { value: "free_calculator", label: "Free calculator" },
-      { value: "blueprint", label: "$29 Personal Card Blueprint" },
+      { value: "blueprint", label: "$13 Personal Card Blueprint" },
       { value: "brand_awareness", label: "Brand awareness" },
     ],
   };
@@ -190,7 +190,7 @@ export function generateStudioScript(input: StudioInput): StudioOutput {
       "Card Blueprints supplied the card facts and meanings.",
       "The script treats Cardology as reflection, not fate.",
       input.goal === "blueprint"
-        ? "The paid CTA uses the approved $29 Personal Card Blueprint wording."
+        ? "The paid CTA uses the approved $13 Personal Card Blueprint wording."
         : "The CTA uses an approved Card Blueprints message.",
     ],
     warnings,
@@ -471,7 +471,7 @@ function buildCaption(lead: string, goal: StudioGoal, hashtags: string[]): strin
   const action = goal === "free_calculator"
     ? "Try the free calculator at cardblueprints.com."
     : goal === "blueprint"
-      ? "Get your $29 Personal Card Blueprint at cardblueprints.com."
+      ? "Get your $13 Personal Card Blueprint at cardblueprints.com."
       : "See the hand you were dealt. Choose how to play it.";
   return `${lead}\n\nA mirror, not a forecast. ${action}\n\n${hashtags.join(" ")}`;
 }
@@ -544,7 +544,7 @@ function hashtagDate(label: string): string {
 
 function ctaScreenText(goal: StudioGoal): string {
   if (goal === "free_calculator") return "Find your card free";
-  if (goal === "blueprint") return "Personal Card Blueprint — $29";
+  if (goal === "blueprint") return "Personal Card Blueprint — $13";
   return "Choose how to play it";
 }
 

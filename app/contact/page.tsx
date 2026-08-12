@@ -60,7 +60,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["Blueprint questions", "Ask what the $29 Personal Card Blueprint includes, how birth-date input works, or how to reopen a paid report."],
+          ["Blueprint questions", "Ask what the $13 Personal Card Blueprint includes, how birth-date input works, or how to reopen a paid report."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

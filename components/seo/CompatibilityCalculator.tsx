@@ -106,7 +106,7 @@ function PairResult({
   const sameSuit = pa?.suit === pb?.suit;
   const comparison = compareLifePathProfiles(a, b);
   const priceLabel =
-    instantReportBySlug("personal-card-blueprint")?.priceLabel ?? "$29";
+    instantReportBySlug("personal-card-blueprint")?.priceLabel ?? "$13";
   const checkoutHref = birthdateA
     ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdateA)}`
     : "/checkout/personal-card-blueprint";

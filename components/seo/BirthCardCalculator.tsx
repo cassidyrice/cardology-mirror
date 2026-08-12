@@ -161,7 +161,7 @@ function ResultCard({
   const bc = parseCard(result.birthCard);
   const slug = slugOf(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
-  const priceLabel = blueprintOffer?.priceLabel ?? "$29";
+  const priceLabel = blueprintOffer?.priceLabel ?? "$13";
   const checkoutHref = birthdate
     ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdate)}`
     : "/checkout/personal-card-blueprint";

@@ -108,8 +108,8 @@ assert.match(birthCalc, /instantReportBySlug/);
 
 const pcb = instantReportBySlug("personal-card-blueprint");
 assert.ok(pcb);
-assert.equal(pcb.price, 29);
-assert.equal(pcb.priceLabel, "$29");
+assert.equal(pcb.price, 13);
+assert.equal(pcb.priceLabel, "$13");
 
 console.log(
   "PASS: checkout abandon friction — birthdate sanitize, funnel cookie merge, session route prefill, continue single-flight, PCB price source",

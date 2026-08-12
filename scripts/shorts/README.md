@@ -15,7 +15,7 @@ Open `http://localhost:3588`. The studio includes:
 
 - birthday reveals, card meanings, and compatibility scripts;
 - 15-second and 30-second versions;
-- free-calculator, $29 Personal Card Blueprint, and brand-awareness goals;
+- free-calculator, $13 Personal Card Blueprint, and brand-awareness goals;
 - timed scenes, on-screen text, voiceover, visual directions, captions, and hashtags;
 - copy buttons and a phone preview using the existing vertical card art;
 - the real `lib/seo-cards.ts` data, including the December 31 Joker boundary;

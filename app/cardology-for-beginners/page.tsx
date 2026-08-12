@@ -66,7 +66,7 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the Personal Card Blueprint ($29) writes the full pattern as an instant report — no phone call.",
+    body: "If the free tools keep matching real life, the Personal Card Blueprint ($13) writes the full pattern as an instant report — no phone call.",
     href: "/products/personal-card-blueprint",
     label: "Personal Card Blueprint",
   },
@@ -228,14 +228,14 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Personal Card Blueprint is a one-time $29 written report: birth card,
+          The Personal Card Blueprint is a one-time $13 written report: birth card,
           ruling layer, and current chapter in one place — instant after checkout.
         </p>
         <Link
           href="/products/personal-card-blueprint"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get My Blueprint &mdash; $29
+          Get My Blueprint &mdash; $13
         </Link>
       </div>
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { instantReportBySlug } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -11,6 +12,8 @@ import { BrandLogo } from "./BrandLogo";
 // One footer for every marketing/editorial surface. The header stays at five
 // destinations; everything long-tail lands here.
 export function SiteFooter({ bare = false }: { bare?: boolean }) {
+  const blueprintOffer = instantReportBySlug("personal-card-blueprint");
+  const blueprintPrice = blueprintOffer?.priceLabel ?? "$13";
   return (
     <footer
       className={
@@ -31,7 +34,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <ul className="space-y-2">
               <li>
                 <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
-                  Personal Card Blueprint — $29
+                  Personal Card Blueprint — {blueprintPrice}
                 </Link>
               </li>
 

@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $29 Personal Card Blueprint as an instant written report.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $13 Personal Card Blueprint as an instant written report.",
   alternates: { canonical: "/about" },
 };
 
@@ -123,7 +123,7 @@ export default function AboutPage() {
         <h2 className="font-serif text-3xl text-[#14110d]">Why a written Blueprint</h2>
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           The free calculator answers “what is my card?” The Blueprint answers “what
-          does the whole pattern look like in writing?” It is a one-time $29 digital
+          does the whole pattern look like in writing?” It is a one-time $13 digital
           report delivered after checkout — birth card, ruling layer, and current
           chapter — so you can reread it without booking a call. Historical phone
           fulfillment still works for people who already purchased access; new public
@@ -133,7 +133,7 @@ export default function AboutPage() {
           href="/products/personal-card-blueprint"
           className="inline-block rounded-full border border-[#14110d] bg-[#14110d] px-5 py-2.5 text-sm font-semibold text-[#f4f0e7]"
         >
-          Personal Card Blueprint — $29
+          Personal Card Blueprint — $13
         </Link>
       </section>
 

@@ -7,7 +7,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const TITLE = "Destiny Cards & Love Cards Explained";
 const DESCRIPTION =
-  "Destiny Cards, Love Cards, and Science of the Cards sit in the same playing-card birth-card family as Cardology. Find your card free, or get a $29 Blueprint.";
+  "Destiny Cards, Love Cards, and Science of the Cards sit in the same playing-card birth-card family as Cardology. Find your card free, or get a $13 Blueprint.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -42,7 +42,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "Current chapter in the Blueprint"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "Instant written Blueprint — $29"],
+  ["Paid deepen", "Books, software, readings", "Instant written Blueprint — $13"],
 ] as const;
 
 const tarotRows = [
@@ -141,7 +141,7 @@ export default function DestinyCardsPage() {
           Compare two birthdays →
         </Link>
         <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-          Personal Card Blueprint — $29 →
+          Personal Card Blueprint — $13 →
         </Link>
       </div>
 
@@ -223,7 +223,7 @@ export default function DestinyCardsPage() {
             .
           </li>
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
-          <li>Optional deepen: the written Personal Card Blueprint ($29).</li>
+          <li>Optional deepen: the written Personal Card Blueprint ($13).</li>
         </ol>
         <p className="prose-reading mt-3 text-mist">
           Example from the public method: January 15 resolves to the{" "}
@@ -335,12 +335,12 @@ export default function DestinyCardsPage() {
         <p className="prose-reading text-mist">
           When free tools are not enough, the <strong>Personal Card Blueprint</strong> puts the
           pattern in one place: birth card, ruling layer, current chapter, and reflection prompts.{" "}
-          <strong>$29 · instant after checkout · no subscription.</strong> Same engine as the free
+          <strong>$13 · instant after checkout · no subscription.</strong> Same engine as the free
           calculator; interpretation is labeled as interpretation.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Get My Blueprint — $29 →
+            Get My Blueprint — $13 →
           </Link>
           <Link href="/products/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
             Preview the product page / sample →
@@ -370,7 +370,7 @@ export default function DestinyCardsPage() {
             Free birth card calculator →
           </Link>
           <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Personal Blueprint — $29 →
+            Personal Blueprint — $13 →
           </Link>
         </div>
       </div>

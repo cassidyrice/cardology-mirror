@@ -303,7 +303,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "How to use this profile",
         body: [
           `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
-          "Want that fixed birth-card pattern written out for one date? The Personal Card Blueprint is a $29 one-time written report generated from a single birth date — no phone call, no question intake, no subscription.",
+          "Want that fixed birth-card pattern written out for one date? The Personal Card Blueprint is a $13 one-time written report generated from a single birth date — no phone call, no question intake, no subscription.",
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
@@ -329,7 +329,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     coreLinks: [
       { label: `${cardLabel} Birth Card Meaning`, href: `/birth-card/${cardSlug}` },
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-      { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint", note: "$29 instant personalized written report." },
+      { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint", note: "$13 instant personalized written report." },
     ],
   };
 }
@@ -467,7 +467,7 @@ function enrichEat(post: BlogPost): BlogPost {
   );
   ensureFaq(
     "What is the Personal Card Blueprint?",
-    "A $29 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription.",
+    "A $13 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription.",
   );
   ensureFaq(
     "Who publishes Card Blueprints?",
@@ -479,7 +479,7 @@ function enrichEat(post: BlogPost): BlogPost {
     if (!coreLinks.some((l) => l.href === href)) coreLinks.push(note ? { label, href, note } : { label, href });
   };
   ensureLink("Birth Card Calculator", "/birth-card-calculator");
-  ensureLink("Personal Card Blueprint", "/products/personal-card-blueprint", "$29 instant written report.");
+  ensureLink("Personal Card Blueprint", "/products/personal-card-blueprint", "$13 instant written report.");
   ensureLink("Methodology", "/methodology");
   ensureLink("Editorial policy", "/editorial-policy");
   ensureLink("What Is Cardology?", "/what-is-cardology");

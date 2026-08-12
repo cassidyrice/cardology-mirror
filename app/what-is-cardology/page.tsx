@@ -278,7 +278,7 @@ export default function WhatIsCardology() {
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out as a full report, the{" "}
           <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-            Personal Card Blueprint ($29)
+            Personal Card Blueprint ($13)
           </Link>{" "}
           is the paid deepen after the free tools.
         </p>
