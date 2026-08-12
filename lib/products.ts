@@ -183,16 +183,16 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: "$13",
     badge: "Flagship",
     oneLine:
-      "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction.",
+      "A cursed birthday-card gag you can send — gag-framed written pattern of their playing-card archetype, not a psychic prediction.",
     bestFor:
-      "Anyone who knows their card and wants the full pattern in front of them, without a phone call.",
+      "Anyone shopping a riskier gag gift — cursed birthday-card write-up of their card archetype, not a live psychic call.",
     deliverable:
       "An instant personalized web report, with an emailed return link.",
     turnaround: "Available immediately after payment — no call, no wait.",
     includes: [
       "Your birth card and ruling card, in plain language",
       "Core pattern: strengths, blind spots, and growth edge",
-      "The current chapter of your year, from the engine",
+      "This year's bit in the deck (card season), from the engine",
       "Three pointed reflection questions to work with",
     ],
     cta: "Get My Blueprint — $13",

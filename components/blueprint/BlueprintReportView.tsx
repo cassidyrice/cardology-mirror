@@ -36,8 +36,8 @@ export function BlueprintReportView({
         </h2>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
           A pattern read, not a prophecy. This is the map of the card your
-          birthday carries, the layer it expresses through, and the chapter
-          it&rsquo;s walking right now.
+          birthday carries, the layer it expresses through, and this year&rsquo;s
+          bit in the deck.
         </p>
         <p className="mt-3 text-xs uppercase tracking-[0.14em] text-brand-ink-faint">
           {dateLine} &middot; reflection framework, not a forecast
@@ -90,12 +90,13 @@ export function BlueprintReportView({
         </section>
 
         <section className="border-t border-brand-line pt-10">
-          <h3 className="type-h2 text-brand-ink">The chapter you&rsquo;re in now</h3>
+          <h3 className="type-h2 text-brand-ink">This year&rsquo;s bit in the deck</h3>
           <p className="mt-4 max-w-[40em] leading-relaxed text-brand-ink-soft">
-            Your current planetary period is {report.currentChapter.planet}{" "}
-            — the domain of {report.currentChapter.domain.toLowerCase()} —
-            governed by the {report.currentChapter.card} (
-            {report.currentChapter.meaning}).
+            This year&rsquo;s bit in the deck runs through{" "}
+            {report.currentChapter.planet} — the calendar map&rsquo;s{" "}
+            {report.currentChapter.domain.toLowerCase()} stretch — governed by
+            the {report.currentChapter.card} ({report.currentChapter.meaning}).
+            Entertainment structure, not a sky forecast.
           </p>
           <dl className="mt-6 max-w-[40em] space-y-4 text-sm">
             <div>

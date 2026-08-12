@@ -17,20 +17,21 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
-const TITLE = "Personal Card Blueprint ($13): Impulse Gift of Self-Knowledge";
+const TITLE = "Personal Card Blueprint ($13): Sendable Cursed Birthday Card";
 const DESCRIPTION =
-  "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Blueprint; preview a sample first.";
+  "Sendable cursed birthday-card gag gift — written Cardology pattern of their playing-card archetype. Instant report; not a psychic prediction. Preview a sample.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
     "personal card blueprint",
-    "cardology report",
-    "birth card report",
-    "birthday gift personality reading",
-    "playing card birth card reading",
+    "cursed birthday card gift",
+    "sendable birthday gag gift",
+    "playing card birth card report",
     "cardology blueprint",
+    "birthday cardology gift",
+    "playing card archetype reading gift",
   ],
   alternates: { canonical: "/products/personal-card-blueprint" },
   openGraph: {
@@ -80,7 +81,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What is a Personal Card Blueprint?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Cardology report: birth card, ruling layer, current chapter, and reflection prompts.",
+                  text: "An instant written Cardology report: birth card, ruling layer, this year's bit in the deck, and three reflection prompts — framed as a cursed birthday-card gag you can send. Gag-framed written pattern of the playing-card archetype; not a psychic prediction.",
                 },
               },
               {
@@ -88,7 +89,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "Is this a good birthday gift?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Yes. An impulse gift of self-knowledge: a birthday playing-card read you can send someone, delivered instantly after checkout — not a psychic prediction.",
+                  text: "You get an instant written report (birth card, ruling layer, deck-season bit, prompts) plus an emailed return link. Risk note: gag-framed and sharper than a polite card — only if they can take a joke. Not a psychic prediction.",
                 },
               },
               {
@@ -96,7 +97,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "How is this different from the free birth card calculator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "The free calculator shows your birth card name. The Blueprint is the kept written object — pattern, chapter, and prompts you can send or reopen — still entertainment, not a psychic prediction.",
+                  text: "Free calculator: card name. Blueprint: the full written pattern, this year's bit in the deck, and prompts as a sendable gag-framed object. Same engine; entertainment only — not a psychic prediction.",
                 },
               },
               {
@@ -120,16 +121,18 @@ export default function PersonalCardBlueprintPage() {
                 Personal Card Blueprint &middot; {offer.priceLabel} &middot; instant
               </Kicker>
               <h1 className="type-display rise-2 mt-6">
-                More than your card. The <em>whole pattern</em>, in writing.
+                A cursed birthday card. The <em>whole pattern</em>, as a gag gift.
               </h1>
               <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-                {offer.oneLine} Enter your birth date at checkout and read your
-                personalized Blueprint the second payment clears — no phone
-                call, no appointment, no waiting.
+                {offer.oneLine} Enter a birth date at checkout; the written
+                Blueprint lands the second payment clears — no phone call, no
+                appointment, no waiting.
               </p>
               <p className="rise-3 mt-4 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-                Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Entertainment only — not fate, medical, legal, or
-                financial advice. Free calculator first if you only want the
+                Riskier than a polite card, still sendable: gag frame around a
+                real written pattern of the playing-card archetype — never body,
+                trauma, job, or fate. Entertainment only — not medical, legal,
+                or financial advice. Free calculator first if you only want the
                 card name.
               </p>
               <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
@@ -168,18 +171,18 @@ export default function PersonalCardBlueprintPage() {
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
-                <h2 className="type-h3">The chapter you&rsquo;re in now</h2>
+                <h2 className="type-h3">This year&rsquo;s bit in the deck</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  Your current planetary period and its governing card — what
-                  this stretch of the year is asking, and how it slips when
-                  you&rsquo;re off-center.
+                  The card&rsquo;s season right now — the governing card for
+                  this stretch of the calendar map, and how that bit plays when
+                  it&rsquo;s loud or quiet. Entertainment structure, not fate.
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
                 <h2 className="type-h3">Three pointed questions</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  Reflection prompts drawn from your specific cards — the part
-                  of a reading people actually remember and use.
+                  Reflection prompts drawn from those specific cards — the
+                  keepable part of the written pattern, not a live reading.
                 </p>
               </div>
             </div>
@@ -225,19 +228,19 @@ export default function PersonalCardBlueprintPage() {
               {[
                 {
                   q: "What is a Personal Card Blueprint?",
-                  a: "Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written Cardology report from your birthday: birth card and ruling layer in plain language, the chapter you are in now, and three reflection questions. Same deterministic engine as the free calculator.",
+                  a: "An instant written Cardology report from a birthday: birth card and ruling layer in plain language, this year's bit in the deck, and three reflection prompts — same engine as the free calculator. Framed as a cursed birthday-card gag you can send; gag-framed written pattern of the playing-card archetype, not a psychic prediction.",
                 },
                 {
                   q: "Is this a good birthday gift?",
-                  a: "Yes. That is the job: an impulse gift of self-knowledge you can send — a birthday playing-card read with a return link by email after checkout. Entertainment only; not a psychic prediction or live call.",
+                  a: "You get a one-time personalized written report plus an emailed return link: pattern, ruling layer, deck-season bit, prompts. Risk note: gag-framed and sharper than a polite card — only if they can take a joke. Never body, trauma, job, or fate. Entertainment only; not a psychic prediction.",
                 },
                 {
                   q: "How is this different from the free birth card calculator?",
-                  a: "The free calculator shows your birth card (and ruling card). The Blueprint locks the pattern, timing chapter, and prompts into a kept written object you can reopen or gift — still entertainment, not a psychic prediction.",
+                  a: "Free calculator: the card name (and ruling card). Blueprint: the locked written layers — pattern, this year's bit in the deck, prompts — as a sendable gag-framed object you can reopen or gift. Same calendar math; still entertainment, not a psychic prediction.",
                 },
                 {
                   q: "Is this tarot or AI fortune-telling?",
-                  a: "No. The card mapping is a fixed 52-card playing-deck calendar (Cardology). The report is a written entertainment interpretation of that structure — not a shuffled tarot draw, not fate, and not a phone psychic session.",
+                  a: "No. Fixed 52-card playing-deck calendar (Cardology). The report is a written entertainment interpretation of that structure — not a shuffled tarot draw, not fate, and not a phone psychic session.",
                 },
               ].map((f) => (
                 <div key={f.q} className="border-t border-brand-line pt-5">
