@@ -217,11 +217,11 @@ export default function CalculatorPage() {
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">
-          Want the full pattern, not just the card?
+          Got the card name. Want the sendable roast?
         </p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Personal Card Blueprint ($13): Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. Instant written
-          pattern after checkout — entertainment only.
+          Personal Card Blueprint ($13): A cursed birthday-card gag you can send — max roast of their playing-card archetype, not a psychic prediction. Instant written pattern,
+          ruling layer, and chapter after checkout — entertainment only.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link

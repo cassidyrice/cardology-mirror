@@ -267,8 +267,9 @@ function ResultCard({
           className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
           style={{ animationDelay: "0.82s" }}
         >
-          Impulse gift of self-knowledge — a birthday playing-card read you can
-          send someone, not a psychic prediction. One-time {priceLabel}.
+          A cursed birthday-card gag you can send — not a psychic prediction.
+          Locks pattern, ruling layer, and current chapter in writing. One-time{" "}
+          {priceLabel}.
         </p>
         {!isJoker && bc?.label && (
           <div className="rise" style={{ animationDelay: "0.88s" }}>

@@ -10,19 +10,28 @@ export function OfferCta({ className = "" }: { className?: string }) {
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
-      <p className="type-eyebrow-dark">Impulse gift of self-knowledge</p>
+      <p className="type-eyebrow-dark">Free card name → sendable roast</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
         Get your Personal Card Blueprint.
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
-        Impulse gift of self-knowledge — a birthday playing-card read you can send someone, not a psychic prediction. One payment, no subscription — entertainment only.
+        The free calculator stops at the card name. The Blueprint ({priceLabel})
+        is the cursed birthday-card gag in writing — pattern, ruling layer,
+        chapter, prompts. Roasts the playing-card archetype only; not a psychic
+        prediction. One payment, no subscription.
       </p>
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
           href="/products/personal-card-blueprint"
           className="accent-button large-button inline-flex text-center"
         >
           {`Get My Blueprint — ${priceLabel}`}
+        </Link>
+        <Link
+          href="/birth-card-calculator"
+          className="text-sm font-medium text-brand-on-dark-soft underline underline-offset-4"
+        >
+          Or grab the free card name first →
         </Link>
       </div>
     </aside>
