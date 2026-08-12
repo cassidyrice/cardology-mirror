@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     "what card am I based on my birthday",
     "birth card calculator playing cards",
     "birth card calculator not tarot",
+    "playing cards birthday chart",
+    "birthday playing card",
+    "playing card for my birthday",
   ],
   alternates: { canonical: "/birth-card-calculator" },
   openGraph: {
@@ -68,7 +71,15 @@ const faqs = [
   },
   {
     q: "Which playing card represents my birthday?",
-    a: "Enter the full birthday below. The calculator returns the playing card for that date plus the ruling card layer. You can also browse every date in the birthday directory.",
+    a: "Enter the full birthday below. The calculator returns the playing card for that date plus the ruling card layer. You can also browse every date in the birthday directory at https://cardblueprints.com/born-on/ — a playing-cards birthday chart of all 366 dates.",
+  },
+  {
+    q: "Is this a playing cards birthday chart?",
+    a: "Yes — in interactive form. A playing-cards birthday chart maps each calendar date to one card in a standard 52-card deck. Use this calculator for an instant lookup, or open the birthday directory (https://cardblueprints.com/born-on/) to browse every date like a chart. Same system either way: birthday → one playing card, not a tarot Major Arcana pair.",
+  },
+  {
+    q: "Where can I look up a birthday playing card by date?",
+    a: "Two free paths on Card Blueprints: (1) this calculator — enter any birthday for the birth card and ruling card; (2) the birthday directory at https://cardblueprints.com/born-on/ — pick a month and day to open that date's page. For the meaning of the card itself, continue to https://cardblueprints.com/birth-card.",
   },
   {
     q: "What card am I based on my birthday?",
@@ -80,7 +91,7 @@ const faqs = [
   },
   {
     q: "Is this a Cardology chart calculator or birthday calculator?",
-    a: "Yes. Cardology calculator, Cardology birthday calculator, and Cardology chart calculator are common names for the same free tool: enter a birthday and get the fixed playing-card birth card (plus ruling card). Same date always returns the same result. For two people, use the compatibility calculator: https://cardblueprints.com/birth-card-compatibility-calculator",
+    a: "Yes. Cardology calculator, Cardology birthday calculator, Cardology chart calculator, and playing-cards birthday chart are common names for the same idea: birthday → one fixed playing card. This page is the interactive calculator; https://cardblueprints.com/born-on/ is the full date chart. Same date always returns the same result. For two people, use https://cardblueprints.com/birth-card-compatibility-calculator",
   },
   {
     q: "Is the free Cardology calculator private?",
@@ -192,6 +203,7 @@ export default function CalculatorPage() {
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
         {[
           ["#how-it-works", "How it works"],
+          ["#birthday-chart", "Birthday chart"],
           ["#worked-example", "Worked example"],
           ["#birth-vs-ruling", "Birth vs ruling card"],
           ["#trust-and-limits", "Method & trust"],
@@ -252,9 +264,11 @@ export default function CalculatorPage() {
             This is why people also search for a <strong>Cardology calculator</strong>,
             a <strong>Cardology birthday calculator</strong>, a{" "}
             <strong>Cardology chart calculator</strong>, a{" "}
+            <strong>playing cards birthday chart</strong>, a{" "}
+            <strong>birthday playing card</strong> lookup, a{" "}
             <strong>playing-card astrology calculator</strong>, or ask,
             &ldquo;What card am I based on my birthday?&rdquo; Those phrases point to
-            the same birthday-to-playing-card tool on this page — not a tarot birth-card
+            the same birthday-to-playing-card system on this site — not a tarot birth-card
             pair. New to the system? Start with{" "}
             <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
               what Cardology is
@@ -265,6 +279,54 @@ export default function CalculatorPage() {
             </Link>
             .
           </p>
+        </div>
+      </section>
+
+      <section id="birthday-chart" className="mt-10 scroll-mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+        <p className="eyebrow mb-2 text-gold">Chart or calculator</p>
+        <h2 className="font-serif text-3xl text-bone">Playing cards birthday chart</h2>
+        <p className="prose-reading mt-4 text-mist">
+          Prefer browsing over typing? The free{" "}
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            birthday directory
+          </a>{" "}
+          is a playing-cards birthday chart: every month and day maps to one card in
+          a standard deck. Open any date for the birth card, ruling card, and related
+          layers — same fixed calendar this calculator uses.
+        </p>
+        <ul className="prose-reading mt-4 list-disc space-y-2 pl-5 text-mist">
+          <li>
+            <strong className="text-bone">Instant path:</strong> enter a birthday in the
+            calculator above.
+          </li>
+          <li>
+            <strong className="text-bone">Chart path:</strong> pick a date on{" "}
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+              /born-on/
+            </a>
+            .
+          </li>
+          <li>
+            <strong className="text-bone">Meaning path:</strong> continue to{" "}
+            <Link href="/birth-card" className="text-gold underline underline-offset-4">
+              all 52 birth cards
+            </Link>{" "}
+            once you know the card.
+          </li>
+        </ul>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            href={BIRTHDAY_DIRECTORY_PATH}
+            className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
+          >
+            Open the birthday chart →
+          </a>
+          <Link
+            href="/birth-card"
+            className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold"
+          >
+            Browse card meanings →
+          </Link>
         </div>
       </section>
 
@@ -422,7 +484,7 @@ export default function CalculatorPage() {
       <div className="card-surface mt-8 rounded-2xl p-5">
         <h2 className="font-serif text-2xl text-bone">Continue your Cardology birth chart</h2>
         <p className="prose-reading mt-2 text-sm text-mist">
-          Browse the full 52-card meanings, open every birthday date, or compare
+          Browse the full 52-card meanings, open the playing-cards birthday chart, or compare
           two birth cards. These supporting pages help turn one calculator result
           into a verifiable learning path.
         </p>
@@ -431,7 +493,7 @@ export default function CalculatorPage() {
             Browse all 52 cards
           </Link>
           <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
-            Birthdays by date
+            Playing cards birthday chart
           </a>
           <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
             Compatibility calculator
