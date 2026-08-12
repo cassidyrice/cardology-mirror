@@ -80,8 +80,17 @@ const nextConfig = {
         destination: "/birth-card-compatibility-calculator",
         statusCode: 301,
       },
-      // P1 synonym + gap redirects (crawl-debt audit 2026-08-12)
-      // /joker-meaning + /cardology ship in PR #39 — not duplicated here.
+      // P1 synonym + gap redirects (crawl-debt audit 2026-08-12) — full pack
+      {
+        source: "/joker-meaning",
+        destination: "/birth-card/joker",
+        statusCode: 301,
+      },
+      {
+        source: "/cardology",
+        destination: "/what-is-cardology",
+        statusCode: 301,
+      },
       {
         source: "/about-card-blueprints",
         destination: "/about",
