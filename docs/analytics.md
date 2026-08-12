@@ -19,14 +19,31 @@ Stripe session tokens.
 | `organic_landing` | A session arrived from a recognized search engine or `utm_medium=organic` | Browser landing |
 | `calculator_started` | First calculator interaction per placement in the tab | Browser interaction |
 | `calculator_completed` | A valid result was calculated | Browser calculation |
-| `readings_viewed` | The paid-reading comparison page was viewed | Browser route |
-| `offer_selected` | A valid checkout review page was viewed | Browser route |
+| `card_shared` | A calculated birth card was shared | Browser share action |
+| `offer_selected` | An active offer product or checkout review page was viewed | Browser route |
+| `offer_cta_clicked` | A Blueprint / offer CTA was clicked (calc result, ReadingBridge, etc.) | Browser click |
 | `checkout_started` | Stripe returned a usable Checkout Session URL | Server checkout route |
 | `purchase_completed` | A signed Stripe webhook confirmed paid or no-payment-required completion | Stripe webhook |
 
-A free-call click is intent, not proof that the call connected. Call-start and
-call-completion events require a separate lifecycle signal from the voice or
-telephony provider.
+`offer_selected` fires once per offer slug per tab for:
+
+- `/checkout/personal-card-blueprint`
+- `/checkout/analog-algorithm`
+- `/products/personal-card-blueprint`
+- `/products/analog-algorithm`
+
+`offer_cta_clicked` carries `blob11` offer slug and `blob12` placement, for
+example `birth-card-calculator-result`, `compatibility-calculator-result`, or
+`reading-bridge-card`.
+
+Calculator placements currently include `calculator-input`, `calculator-form`,
+`search-prefill`, and `compatibility-calculator`.
+
+Retired: `readings_viewed` (paid-reading comparison page is gone; do not emit
+or report it).
+
+Elroy lead events (`elroy_*`) are documented in the Elroy analytics tests and
+are out of scope for the organic calc to offer funnel above.
 
 ## Analytics Engine columns
 
@@ -104,6 +121,22 @@ GROUP BY offer_slug, event_name
 ORDER BY offer_slug, event_name
 ```
 
+CTA placement performance:
+
+```sql
+SELECT
+  blob12 AS placement,
+  blob11 AS offer_slug,
+  count(DISTINCT blob2) AS sessions,
+  count(DISTINCT blob3) AS unique_clicks
+FROM cardblueprints_funnel
+WHERE timestamp > NOW() - INTERVAL '30' DAY
+  AND blob1 = 'offer_cta_clicked'
+  AND blob16 = 'main'
+GROUP BY placement, offer_slug
+ORDER BY unique_clicks DESC
+```
+
 Analytics Engine does not support joins and may sample high-volume data. The
 event-ID distinct count prevents Stripe webhook retries from inflating the
 purchase total. Keep the `blob16 = 'main'` filter in production reports so
@@ -123,3 +156,12 @@ matching the form path and the per-calculation definition above.
 When comparing across this date, split on `blob12` and count DISTINCT `blob2`
 sessions rather than raw event totals. Pre-cutover per-placement series are
 not comparable to post-cutover ones.
+
+## Metric cutover — 2026-08-12
+
+- `offer_selected` expanded from Blueprint checkout-only to both active offers
+  on checkout **and** product pages.
+- `offer_cta_clicked` added for post-calc / ReadingBridge Blueprint clicks.
+- Compatibility calculator began emitting `calculator_started` /
+  `calculator_completed` with placement `compatibility-calculator`.
+- `readings_viewed` retired from the client catalog.
