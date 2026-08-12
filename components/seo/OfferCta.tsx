@@ -6,7 +6,7 @@ import { instantReportBySlug } from "@/lib/products";
 // One active paid path: the Personal Card Blueprint.
 export function OfferCta({ className = "" }: { className?: string }) {
   const offer = instantReportBySlug("personal-card-blueprint");
-  const priceLabel = offer?.priceLabel ?? "$29";
+  const priceLabel = offer?.priceLabel ?? "$13";
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
