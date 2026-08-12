@@ -2,10 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 
 import {
   analyticsMetadata,
+  FUNNEL_COOKIE_NAME,
+  funnelContextFromCookie,
   funnelContextFromFormData,
+  mergeFunnelContext,
   type FunnelContext,
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
+import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
   publicProductBySlug,
   isDigitalDownload,
@@ -56,11 +60,28 @@ export async function POST(
     return new NextResponse("Invalid checkout origin", { status: 403 });
   }
 
+  let formBirthdate = "";
   let analytics: FunnelContext = {};
   try {
-    analytics = funnelContextFromFormData(await req.formData());
+    const form = await req.formData();
+    formBirthdate = sanitizeBirthdateISO(form.get("birthdate"));
+    const fromForm = funnelContextFromFormData(form);
+    const fromCookie = funnelContextFromCookie(
+      req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
+    );
+    analytics = mergeFunnelContext(fromForm, fromCookie, {
+      path: `/checkout/${product.slug}`,
+      offerSlug: product.slug,
+    });
   } catch {
-    // Attribution is optional and must never block checkout.
+    // Attribution / birthdate are optional and must never block checkout.
+    const fromCookie = funnelContextFromCookie(
+      req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
+    );
+    analytics = mergeFunnelContext({}, fromCookie, {
+      path: `/checkout/${product.slug}`,
+      offerSlug: product.slug,
+    });
   }
 
   const priceId = process.env[product.stripePriceEnv];
@@ -89,7 +110,9 @@ export async function POST(
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/checkout/${product.slug}`,
+      cancel_url: `${SITE_URL}/checkout/${product.slug}${
+        formBirthdate ? `?bd=${encodeURIComponent(formBirthdate)}` : ""
+      }`,
       metadata: sharedMeta,
       payment_intent_data: { metadata },
       phone_number_collection: {
@@ -107,6 +130,9 @@ export async function POST(
                 },
                 type: "text" as const,
                 optional: false,
+                ...(formBirthdate
+                  ? { text: { default_value: formBirthdate } }
+                  : {}),
               },
             ],
           }
