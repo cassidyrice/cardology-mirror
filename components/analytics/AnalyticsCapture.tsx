@@ -16,7 +16,9 @@ const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
 const ATTRIBUTION_KEY = "cardblueprints.analytics.attribution";
 const ONCE_KEY_PREFIX = "cardblueprints.analytics.once.";
-const OFFER_PATH = /^\/checkout\/(personal-card-blueprint)\/?$/;
+// Active public offers: checkout review + product-page intent.
+const OFFER_PATH =
+  /^\/(checkout|products)\/(personal-card-blueprint|analog-algorithm)\/?$/;
 
 type Attribution = {
   sessionId: string;
@@ -43,8 +45,8 @@ export function AnalyticsCapture() {
 
 
     const offerMatch = pathname.match(OFFER_PATH);
-    if (offerMatch && markOnce(`offer_selected.${offerMatch[1]}`)) {
-      sendEvent("offer_selected", { offerSlug: offerMatch[1] });
+    if (offerMatch && markOnce(`offer_selected.${offerMatch[2]}`)) {
+      sendEvent("offer_selected", { offerSlug: offerMatch[2] });
     }
   }, [pathname]);
 
