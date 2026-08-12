@@ -166,8 +166,9 @@ export default function PersonalCardBlueprintPage() {
               <div className="border-t border-brand-line pt-5">
                 <h2 className="type-h3">Your ruling layer</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  The planetary ruling card — the style your core pattern
-                  expresses through, and how others first experience you.
+                  The ruling-layer card in the deck — the style your core
+                  pattern expresses through, and how others first experience
+                  you. Deck language, not a sky chart.
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
