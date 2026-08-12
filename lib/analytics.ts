@@ -3,8 +3,8 @@ export const CLIENT_FUNNEL_EVENTS = [
   "calculator_started",
   "calculator_completed",
   "card_shared",
-  "readings_viewed",
   "offer_selected",
+  "offer_cta_clicked",
   "elroy_teaser_shown",
   "elroy_opened",
   "elroy_birthdate_entered",
@@ -49,7 +49,7 @@ export type FunnelContext = {
   valueCents?: number;
 };
 
-const CLIENT_EVENT_NAMES = new Set<string>(CLIENT_FUNNEL_EVENTS);
+const CLIENT_EVENT_NAMES = new Set(CLIENT_FUNNEL_EVENTS as readonly string[]);
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const OFFER_SLUGS = new Set([
@@ -60,13 +60,13 @@ const OFFER_SLUGS = new Set([
   "complete-reading",
   "season-pass-90",
 ]);
-const TRAFFIC_CHANNELS = new Set<TrafficChannel>([
+const TRAFFIC_CHANNELS = new Set([
   "organic",
   "campaign",
   "referral",
   "direct",
   "unknown",
-]);
+] as TrafficChannel[]);
 
 export function isClientFunnelEventName(
   value: unknown,

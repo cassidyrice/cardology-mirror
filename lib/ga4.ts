@@ -101,10 +101,13 @@ export function mapFunnelEventToGa4(
       return { eventName: "calculator_completed" };
     case "card_shared":
       return { eventName: "share", params: { content_type: "birth_card" } };
-    case "readings_viewed":
-      return { eventName: "view_item", params: { item_category: "reading" } };
     case "offer_selected":
       return { eventName: "view_item", params: { item_category: "offer" } };
+    case "offer_cta_clicked":
+      return {
+        eventName: "select_content",
+        params: { content_type: "offer_cta" },
+      };
     case "checkout_started":
       return { eventName: "begin_checkout" };
     case "purchase_completed":
