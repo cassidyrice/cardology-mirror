@@ -5,9 +5,9 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
 
-const TITLE = "Cardology Compatibility: Birth Cards & Life Paths";
+const TITLE = "Cardology Compatibility: Birth Cards + Free Calculator";
 const DESCRIPTION =
-  "How Cardology compatibility works: two birth cards, Life Path roles, shared cards, suit dynamics, and free tools to compare any two birthdays.";
+  "See how two Cardology birth cards interact — suits, Life Path roles, shared cards — then compare two birthdays free (playing cards, not tarot).";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "How do I check Cardology compatibility free?",
-    a: "Use the two-birthday compatibility calculator, or browse the compatibility directory of card hubs and pair pages. Both are free on Card Blueprints.",
+    a: "Open the free Cardology compatibility calculator (two birthdays → birth cards + Life Path map), or browse the compatibility directory of card hubs and pair pages. Playing-card Cardology — not a tarot love reading.",
   },
   {
     q: "Is Cardology relationship compatibility the same as astrology synastry?",
@@ -52,6 +52,9 @@ export default function CompatibilityPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
+      <p className="mb-4 text-sm text-faint">
+        Birth cards + Life Path roles — free calculator below. Playing cards, not tarot.
+      </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
