@@ -78,7 +78,7 @@ describe("Elroy micro-reading route boundary", () => {
     expect(await response.json()).toEqual({ error: "Request too large" });
   });
 
-  test("fails closed when Turnstile bindings are absent", async () => {
+  test("accepts a valid-shaped body without Turnstile and fails only on missing email infra", async () => {
     const response = await POST(
       makeRequest(undefined, {
         body: JSON.stringify({
@@ -86,10 +86,12 @@ describe("Elroy micro-reading route boundary", () => {
           email: "p@example.com",
           consent: true,
           source: "/birth-card-calculator",
-          turnstileToken: "token",
         }),
       }),
     );
-    expect(response.status).toBe(403);
+    // Without RESEND bindings the route still builds the reading path; contact/email
+    // may 503, but Turnstile absence must never block as 403.
+    expect([200, 503]).toContain(response.status);
+    expect(response.status).not.toBe(403);
   });
 });

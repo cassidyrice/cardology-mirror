@@ -93,7 +93,7 @@ git commit -m "content(blog): ${NEW_SLUG} (${POST_SLOT} E-E-A-T SEO)"
 git pull --rebase --autostash origin main 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
 git push origin main 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
 
-bun run pages:build 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
+# Guarded production deploy (clean tree after commit; smoke-checks Elroy).
 bun run pages:deploy 2>&1 | tee -a "$LOG_DIR/${SLOT_TAG}.log"
 
 sleep 6

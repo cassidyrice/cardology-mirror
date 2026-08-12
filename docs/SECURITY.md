@@ -7,27 +7,27 @@ Operational security checklist for the production site on Cloudflare Pages.
 | Control | Where |
 |---|---|
 | HTTPS + Cloudflare edge | Cloudflare zone |
-| Security headers (HSTS, frame deny, nosniff, referrer, permissions) | `middleware.ts` + `public/_headers` |
+| Security headers (HSTS, frame deny, nosniff, referrer, permissions) | `middleware.ts` + `public/_headers` + `lib/security-headers.ts` |
 | www → apex | `middleware.ts` |
 | Stripe webhook signature verify | `app/api/checkout/webhook/route.ts` |
 | Checkout origin check | `app/checkout/[offer]/session/route.ts` |
 | Soft rate limit on gate + checkout session | `lib/rate-limit.ts` |
 | HMAC access tokens | `lib/gate.ts` |
-| Production deploy locked to `main` | `package.json` → `pages:deploy` |
+| Production deploy locked to `main` | `scripts/deploy-production.sh` via `package.json` → `pages:deploy` |
 | Preview deploys | `package.json` → `pages:deploy:preview` |
 | Truth / claim build gate | `bun run test` |
 
 ## Deploy safely
 
 ```bash
-# Production (cardblueprints.com)
-bun run pages:build && bun run pages:deploy
+# Production (cardblueprints.com) — only from the canonical tree; forces --branch main
+bun run pages:deploy
 
 # Preview only (branch alias, does NOT update production)
 bun run pages:build && bun run pages:deploy:preview
 ```
 
-Never run plain `wrangler pages deploy` from a feature branch if you mean production — without `--branch main` Cloudflare treats the git branch as a **preview**.
+Never run plain `wrangler pages deploy` from a feature branch if you mean production — without `--branch main` Cloudflare treats the git branch as a **preview**. Production goes through `scripts/deploy-production.sh`, which already passes `--branch main`.
 
 ## Cloudflare dashboard (do once)
 

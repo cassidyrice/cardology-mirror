@@ -14,9 +14,9 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Personal Card Blueprint | Card Blueprints" },
+  title: { absolute: "Card Blueprints | Birth Cards, Calculator & Cardology" },
   description:
-    "Get an instant Personal Card Blueprint from your birthday and explore free Cardology calculators, card meanings, compatibility, and timing tools.",
+    "Find your birth card free, explore Cardology meanings and compatibility, and get an instant Personal Card Blueprint from your birthday.",
   alternates: { canonical: "/" },
 };
 

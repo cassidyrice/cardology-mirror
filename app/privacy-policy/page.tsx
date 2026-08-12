@@ -176,9 +176,8 @@ export default function PrivacyPolicy() {
                 with your consent, to add you to the Card Blueprints contact list,
                 show the reading in chat, and email you a copy. Resend delivers
                 that message and future educational or product emails you opt into.
-                Cloudflare Turnstile processes a challenge token to reduce abuse.
-                Analytics events for Elroy do not include birth date, card, email,
-                or challenge tokens.
+                Analytics events for Elroy do not include birth date, card, or
+                email.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
