@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "What is my birth card in Cardology?",
-    a: "Your Cardology birth card is the playing card locked to your birthday. Use the free calculator on this site — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
+    a: "Your Cardology birth card is the playing card locked to your birthday. Use the free Cardology calculator (also called a Cardology birthday or chart calculator) at https://cardblueprints.com/birth-card-calculator — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
   },
   {
     q: "What are the benefits of Cardology?",

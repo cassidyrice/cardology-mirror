@@ -21,6 +21,8 @@ export const metadata: Metadata = {
     "birth card calculator",
     "playing card birth card calculator",
     "Cardology calculator",
+    "cardology birthday calculator",
+    "cardology chart calculator",
     "playing card astrology calculator",
     "what is my birth card",
     "what card am I based on my birthday",
@@ -75,6 +77,10 @@ const faqs = [
   {
     q: "Is this also called a Destiny Cards calculator?",
     a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map: https://cardblueprints.com/destiny-cards",
+  },
+  {
+    q: "Is this a Cardology chart calculator or birthday calculator?",
+    a: "Yes. Cardology calculator, Cardology birthday calculator, and Cardology chart calculator are common names for the same free tool: enter a birthday and get the fixed playing-card birth card (plus ruling card). Same date always returns the same result. For two people, use the compatibility calculator: https://cardblueprints.com/birth-card-compatibility-calculator",
   },
   {
     q: "Is the free Cardology calculator private?",
@@ -244,10 +250,20 @@ export default function CalculatorPage() {
           </ol>
           <p className="prose-reading text-mist">
             This is why people also search for a <strong>Cardology calculator</strong>,
-            a <strong>playing-card astrology calculator</strong>, or ask,
+            a <strong>Cardology birthday calculator</strong>, a{" "}
+            <strong>Cardology chart calculator</strong>, a{" "}
+            <strong>playing-card astrology calculator</strong>, or ask,
             &ldquo;What card am I based on my birthday?&rdquo; Those phrases point to
-            the same birthday-to-playing-card intent on this page. They do not mean
-            a tarot birth-card pair.
+            the same birthday-to-playing-card tool on this page — not a tarot birth-card
+            pair. New to the system? Start with{" "}
+            <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+              what Cardology is
+            </Link>{" "}
+            or the{" "}
+            <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
+              beginners guide
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -417,9 +433,18 @@ export default function CalculatorPage() {
           <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
             Birthdays by date
           </a>
-          <a href={COMPATIBILITY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
-            All card pairings
-          </a>
+          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+            Compatibility calculator
+          </Link>
+          <Link href="/what-is-cardology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+            What is Cardology?
+          </Link>
+          <Link href="/cardology-for-beginners" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+            Beginners guide
+          </Link>
+          <Link href="/destiny-cards" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+            Destiny Cards hub
+          </Link>
           <Link href="/cardology-compatibility" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
             Compatibility guide
           </Link>
