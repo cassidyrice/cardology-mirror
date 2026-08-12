@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { legacyCardDestination } from "@/lib/legacy-card-redirects";
+import { applySecurityHeaders } from "@/lib/security-headers";
 
 const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/readings": "/products/personal-card-blueprint",
@@ -12,7 +13,8 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
 };
 
 // Canonical host enforcement: 301 any www.* request to the apex domain,
-// preserving path and query. Everything else passes through.
+// preserving path and query. Everything else passes through with a shared
+// security-header baseline (HSTS, frame deny, nosniff, etc.).
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const redirectUrl = new URL(request.url);
@@ -36,9 +38,9 @@ export function middleware(request: NextRequest) {
   }
 
   if (shouldRedirect) {
-    const redirect = NextResponse.redirect(redirectUrl, 301);
-    applySecurityHeaders(redirect);
-    return redirect;
+    const response = NextResponse.redirect(redirectUrl, 301);
+    applySecurityHeaders(response.headers);
+    return response;
   }
 
   // /card-of-the-day is edge-rendered per request and computes "today"
@@ -50,26 +52,22 @@ export function middleware(request: NextRequest) {
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
   const response = NextResponse.next();
-  applySecurityHeaders(response);
+  applySecurityHeaders(response.headers);
+
   if (request.nextUrl.pathname === "/card-of-the-day") {
     response.headers.set("Cache-Control", "no-store, must-revalidate");
   }
-  return response;
-}
 
-/** Baseline browser security headers (must be set on middleware responses). */
-function applySecurityHeaders(response: NextResponse): void {
-  response.headers.set(
-    "Strict-Transport-Security",
-    "max-age=31536000; includeSubDomains; preload",
-  );
-  response.headers.set("X-Content-Type-Options", "nosniff");
-  response.headers.set("X-Frame-Options", "SAMEORIGIN");
-  response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
-  response.headers.set(
-    "Permissions-Policy",
-    "camera=(), microphone=(), geolocation=()",
-  );
+  // Money + API surfaces should never be cached by shared caches.
+  if (
+    request.nextUrl.pathname.startsWith("/api/") ||
+    request.nextUrl.pathname.startsWith("/checkout/") ||
+    request.nextUrl.pathname === "/access"
+  ) {
+    response.headers.set("Cache-Control", "no-store, must-revalidate");
+  }
+
+  return response;
 }
 
 export const config = {

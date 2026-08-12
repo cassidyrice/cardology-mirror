@@ -2,6 +2,15 @@
 # response asks browsers and shared caches to revalidate every request. Keep
 # browser revalidation while allowing the CDN to reuse public SEO pages for one
 # day. Dynamic Functions, checkout, API, and private app routes are absent.
+#
+# Security baseline for every static asset (middleware covers dynamic routes).
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Resource-Policy: same-site
 
 /
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800

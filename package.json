@@ -18,6 +18,7 @@
     "test:shorts-studio": "bun test scripts/shorts/studio-core.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
+    "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
     "ship:daily-blog": "bash scripts/ship_daily_blog.sh",
     "ship:daily-blog:am": "POST_SLOT=am bash scripts/ship_daily_blog.sh",
     "ship:daily-blog:pm": "POST_SLOT=pm bash scripts/ship_daily_blog.sh"
