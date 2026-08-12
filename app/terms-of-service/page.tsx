@@ -56,7 +56,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Personal Card Blueprint ($29)</strong> — one instant
+              <strong>Personal Card Blueprint ($13)</strong> — one instant
               personalized written report generated from the birth date entered
               at checkout, with a signed return link sent by email.
             </li>

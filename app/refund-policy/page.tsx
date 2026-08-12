@@ -35,7 +35,7 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $29 Personal Card Blueprint. Refund
+            Card Blueprints sells the $13 Personal Card Blueprint. Refund
             eligibility depends on whether the personalized report was delivered
             and accessible. The digital-download policy applies only when an
             e-book sale is explicitly open.
