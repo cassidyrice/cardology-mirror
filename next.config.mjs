@@ -80,6 +80,83 @@ const nextConfig = {
         destination: "/birth-card-compatibility-calculator",
         statusCode: 301,
       },
+      // P1 synonym + gap redirects (crawl-debt audit 2026-08-12)
+      // /joker-meaning + /cardology ship in PR #39 — not duplicated here.
+      {
+        source: "/about-card-blueprints",
+        destination: "/about",
+        statusCode: 301,
+      },
+      {
+        source: "/compatibility-calculator",
+        destination: "/birth-card-compatibility-calculator",
+        statusCode: 301,
+      },
+      {
+        source: "/cardology-compatibility-calculator",
+        destination: "/birth-card-compatibility-calculator",
+        statusCode: 301,
+      },
+      {
+        source: "/playing-card-astrology",
+        destination: "/52-card-astrology-explained",
+        statusCode: 301,
+      },
+      {
+        source: "/card-astrology",
+        destination: "/52-card-astrology-explained",
+        statusCode: 301,
+      },
+      {
+        source: "/playing-cards-astrology",
+        destination: "/52-card-astrology-explained",
+        statusCode: 301,
+      },
+      {
+        source: "/cards-of-destiny",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/science-of-cards",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/science-of-the-card",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/love-card",
+        destination: "/destiny-cards",
+        statusCode: 301,
+      },
+      {
+        source: "/birth-card-meaning",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/card-meaning",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/birth-cards",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/birthcard",
+        destination: "/birth-card",
+        statusCode: 301,
+      },
+      {
+        source: "/products",
+        destination: "/products/personal-card-blueprint",
+        statusCode: 301,
+      },
       // P0 rank-only short paths (suit-ambiguous → birth-card index)
       // /2-of has confirmed Google association with 2 of Hearts.
       {
