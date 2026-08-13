@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
 
 import { BlueprintReportView } from "@/components/blueprint/BlueprintReportView";
 import { SiteFooter } from "@/components/seo/SiteFooter";
@@ -114,8 +115,9 @@ export default function PersonalCardBlueprintPage() {
       />
       <SiteHeader />
       <main id="main-content" tabIndex={-1}>
-        <section className="shell-paper">
-          <div className="mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,6rem)] pt-[clamp(3.25rem,7vw,5.5rem)] sm:px-8 lg:px-10">
+        <section className="shell-paper relative overflow-hidden">
+          <BlueprintAmbient variant="blueprint" tone="paper" />
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,6rem)] pt-[clamp(3.25rem,7vw,5.5rem)] sm:px-8 lg:px-10">
             <div className="max-w-[54rem]">
               <Kicker className="rise">
                 Personal Card Blueprint &middot; {offer.priceLabel} &middot; instant

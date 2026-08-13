@@ -83,6 +83,133 @@ body {
   min-height: 100dvh;
 }
 
+/* Subtle brand-authority geometry for non-home landing pages. */
+.blueprint-ambient {
+  position: absolute;
+  z-index: 0;
+  clip-path: inset(0);
+  overflow: clip;
+  opacity: 0.24;
+  contain: paint;
+  isolation: isolate;
+}
+
+.blueprint-ambient__geometry,
+.blueprint-ambient__wash {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blueprint-ambient__geometry {
+  overflow: visible;
+  fill: none;
+  stroke: var(--ambient-line, rgba(184, 137, 61, 0.42));
+  stroke-width: 0.42;
+  vector-effect: non-scaling-stroke;
+}
+
+.blueprint-ambient__plexus { color: var(--ambient-accent, #8e321f); }
+.blueprint-ambient__plexus path { stroke: currentColor; stroke-opacity: 0.42; }
+.blueprint-ambient__plexus circle { fill: currentColor; stroke: none; opacity: 0.68; }
+.blueprint-ambient__cards { stroke: currentColor; stroke-opacity: 0.24; }
+.blueprint-ambient__orbit { stroke-dasharray: 2 2.5; transform-origin: 50% 50%; }
+.blueprint-ambient__wash {
+  background: radial-gradient(circle at 52% 46%, var(--ambient-wash, rgba(184, 137, 61, 0.08)), transparent 58%);
+}
+
+.blueprint-ambient--dark {
+  --ambient-line: rgba(217, 178, 106, 0.35);
+  --ambient-accent: #8e321f;
+  --ambient-wash: rgba(217, 178, 106, 0.08);
+}
+
+.blueprint-ambient--paper {
+  --ambient-line: rgba(115, 86, 36, 0.34);
+  --ambient-accent: #8e321f;
+  --ambient-wash: rgba(184, 137, 61, 0.1);
+}
+
+.blueprint-ambient--compatibility,
+.blueprint-ambient--compatibility-guide {
+  top: 4rem;
+  right: max(-9rem, -10vw);
+  width: min(44rem, 82vw);
+  aspect-ratio: 1;
+  opacity: 0.2;
+}
+.blueprint-ambient--compatibility .blueprint-ambient__cards,
+.blueprint-ambient--compatibility-guide .blueprint-ambient__cards { transform-origin: 50% 50%; }
+
+.blueprint-ambient--birth-card {
+  top: 5rem;
+  right: -7rem;
+  width: min(34rem, 72vw);
+  aspect-ratio: 1;
+  opacity: 0.18;
+}
+.blueprint-ambient--birth-card .blueprint-ambient__cards rect:last-child { opacity: 0; }
+
+.blueprint-ambient--blueprint {
+  top: 4rem;
+  right: max(-8rem, -8vw);
+  width: min(46rem, 72vw);
+  aspect-ratio: 1;
+  opacity: 0.2;
+}
+
+.blueprint-ambient--method,
+.blueprint-ambient--library {
+  top: 7rem;
+  right: -8rem;
+  width: min(35rem, 68vw);
+  aspect-ratio: 1;
+  opacity: 0.15;
+}
+.blueprint-ambient--method .blueprint-ambient__cards,
+.blueprint-ambient--library .blueprint-ambient__cards { opacity: 0.24; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .blueprint-ambient__orbit { animation: blueprint-orbit 24s linear infinite; }
+  .blueprint-ambient__plexus { animation: blueprint-breathe 15s ease-in-out infinite alternate; transform-origin: 50% 50%; }
+  .blueprint-ambient__cards { animation: blueprint-cards 18s ease-in-out infinite alternate; }
+  .blueprint-ambient--compatibility-guide .blueprint-ambient__orbit { animation-duration: 30s; }
+  .blueprint-ambient--birth-card .blueprint-ambient__orbit { animation-duration: 28s; }
+  .blueprint-ambient--blueprint .blueprint-ambient__plexus { animation-duration: 21s; }
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .blueprint-ambient {
+      animation: blueprint-scroll-drift linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90vh;
+    }
+  }
+}
+
+@keyframes blueprint-orbit { to { transform: rotate(360deg); } }
+@keyframes blueprint-breathe { from { transform: scale(0.96); opacity: 0.55; } to { transform: scale(1.035); opacity: 0.82; } }
+@keyframes blueprint-cards { from { transform: translate3d(-1.5%, 1%, 0) rotate(-1.2deg); } to { transform: translate3d(1.5%, -1%, 0) rotate(1.2deg); } }
+@keyframes blueprint-scroll-drift { from { translate: 0 0; } to { translate: 0 2.5rem; } }
+
+@media (max-width: 700px) {
+  .blueprint-ambient { opacity: 0.16; width: 100%; right: 0; top: 5rem; }
+  .blueprint-ambient__geometry, .blueprint-ambient__wash {
+    left: auto;
+    right: 0;
+    width: 66%;
+  }
+  .blueprint-ambient__cards { opacity: 0.5; }
+  .blueprint-ambient__plexus path:nth-child(2),
+  .blueprint-ambient__orbit ellipse:last-child { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  .blueprint-ambient *, .blueprint-ambient { animation: none !important; }
+}
+
 /* Co-Star-ish editorial heading */
 .eyebrow {
   font-size: 0.68rem;

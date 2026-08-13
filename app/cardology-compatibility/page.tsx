@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
@@ -51,6 +52,7 @@ export default function CompatibilityPage() {
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <BlueprintAmbient variant="compatibilityGuide" />
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
       <p className="mb-4 text-sm text-faint">
         Birth cards + Life Path roles — free calculator below. Playing cards, not tarot.
