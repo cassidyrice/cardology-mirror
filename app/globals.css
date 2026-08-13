@@ -89,8 +89,8 @@ body {
   z-index: 0;
   top: 0;
   right: 0;
-  width: min(38rem, 44vw);
-  height: min(40rem, 78vh);
+  width: min(30rem, 32vw);
+  height: min(38rem, 74vh);
   clip-path: inset(0);
   overflow: clip;
   opacity: 1;
@@ -139,7 +139,7 @@ body {
 .blueprint-ambient__cards { stroke: currentColor; stroke-opacity: 0.24; }
 .blueprint-ambient__orbit { stroke-dasharray: 2 2.5; transform-origin: 50% 50%; }
 .blueprint-ambient__wash {
-  background: linear-gradient(90deg, var(--paper, #f6f1e8) 0%, rgba(246,241,232,0.94) 42%, transparent 78%);
+  background: linear-gradient(90deg, var(--paper, #f6f1e8) 0 52%, rgba(246,241,232,0.88) 68%, transparent 100%);
 }
 
 .blueprint-ambient--dark {
@@ -154,22 +154,22 @@ body {
 
 .blueprint-ambient--compatibility,
 .blueprint-ambient--compatibility-guide {
-  top: 5rem;
-  width: min(40rem, 46vw);
-  height: min(42rem, 80vh);
+  top: 6rem;
+  width: min(30rem, 32vw);
+  height: min(38rem, 74vh);
 }
 .blueprint-ambient--compatibility .blueprint-ambient__cards,
 .blueprint-ambient--compatibility-guide .blueprint-ambient__cards { transform-origin: 50% 50%; }
 
 .blueprint-ambient--birth-card {
-  top: 5.5rem;
-  width: min(36rem, 42vw);
+  top: 6rem;
+  width: min(28rem, 30vw);
 }
 .blueprint-ambient--birth-card .blueprint-ambient__cards rect:last-child { opacity: 0; }
 
 .blueprint-ambient--blueprint {
-  top: 3.5rem;
-  width: min(38rem, 44vw);
+  top: 4.5rem;
+  width: min(30rem, 32vw);
 }
 
 .blueprint-ambient--method,
