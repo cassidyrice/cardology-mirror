@@ -98,6 +98,14 @@ body {
   isolation: isolate;
 }
 
+/* Keep the decorative plate behind every content sibling. Without an explicit
+   stacking level, the later-positioned ambient layers paint over form fields
+   and editorial cards on compatibility landing pages. */
+.blueprint-ambient ~ * {
+  position: relative;
+  z-index: 1;
+}
+
 .blueprint-ambient__still,
 .blueprint-ambient__clip,
 .blueprint-ambient__geometry,

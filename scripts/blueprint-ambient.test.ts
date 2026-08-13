@@ -43,9 +43,12 @@ test("priority landing pages install the correct ambient variant", () => {
 
 test("ambient visuals remain behind content and ignore pointer input", () => {
   const source = read("components/brand/BlueprintAmbient.tsx");
+  const css = read("app/globals.css");
   expect(source).toContain("pointer-events-none");
   expect(source).toContain("select-none");
   expect(source).toContain("motion-reduce:[animation:none]");
+  expect(css).toContain(".blueprint-ambient ~ *");
+  expect(css).toContain("z-index: 1");
 });
 
 test("ambient plates reuse official homepage journey assets", () => {
