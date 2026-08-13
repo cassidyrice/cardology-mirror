@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
+
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
@@ -152,7 +152,6 @@ export default function CalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <BlueprintAmbient variant="birthCard" />
 
       <header className="max-w-3xl">
         <p className="eyebrow mb-3 text-gold">Free · instant · no signup</p>
@@ -181,6 +180,10 @@ export default function CalculatorPage() {
         </p>
       </header>
 
+      <div className="mt-6">
+        <BirthCardCalculator />
+      </div>
+
       <aside className="mt-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-bone">
           <strong>Playing cards, not tarot.</strong>
@@ -197,10 +200,6 @@ export default function CalculatorPage() {
           </Link>
         </p>
       </aside>
-
-      <div className="mt-6">
-        <BirthCardCalculator />
-      </div>
 
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
         {[

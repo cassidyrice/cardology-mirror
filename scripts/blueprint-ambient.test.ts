@@ -6,11 +6,11 @@ const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
 const ambientRoutes: Array<[string, string]> = [
-  ["app/birth-card-calculator/page.tsx", 'variant="birthCard"'],
   ["app/products/personal-card-blueprint/page.tsx", 'variant="blueprint"'],
 ];
 
 const editorialRoutes = [
+  "app/birth-card-calculator/page.tsx",
   "app/what-is-cardology/page.tsx",
   "app/cardology-for-beginners/page.tsx",
   "app/methodology/page.tsx",
@@ -50,6 +50,15 @@ test("long-form Learn and Compatibility pages remain clean editorial surfaces", 
     expect(source).not.toContain('import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient"');
     expect(source).not.toContain("<BlueprintAmbient");
   }
+});
+
+test("main birth-card calculator puts the action before supporting explanation", () => {
+  const source = read("app/birth-card-calculator/page.tsx");
+  const calculator = source.indexOf("<BirthCardCalculator />");
+  const explanation = source.indexOf('aria-label="Playing cards, not tarot"');
+  expect(calculator).toBeGreaterThan(0);
+  expect(explanation).toBeGreaterThan(0);
+  expect(calculator).toBeLessThan(explanation);
 });
 
 test("ambient visuals remain behind content and ignore pointer input", () => {
