@@ -60,9 +60,9 @@ export async function buildBlueprint(birthdate: string): Promise<BlueprintReport
   const ap = r.active_period;
 
   const reflectionPrompts = [
-    `Where in the last month did you catch yourself in the "${a.description.title}" over-drive — and what were you actually protecting?`,
-    `The ${ap.bc_card} is governing this stretch of your year through ${ap.domain.toLowerCase()}. What would its balanced version ask of you this week?`,
-    `Your ruling layer (${a.prc}) shapes how others first experience you. When has that expression worked *against* what your core card (${a.birth_card}) actually wanted?`,
+    `Where did the "${a.description.title}" pattern take over last month, and what were you protecting?`,
+    `The ${ap.bc_card} is governing this stretch of your year through ${ap.domain.toLowerCase()}. What would the balanced version look like this week?`,
+    `Your ruling layer (${a.prc}) is how people first meet you. When has that worked against what your core card (${a.birth_card}) actually wanted?`,
   ];
 
   return {
