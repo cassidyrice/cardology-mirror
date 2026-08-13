@@ -83,17 +83,23 @@ body {
   min-height: 100dvh;
 }
 
-/* Subtle brand-authority geometry for non-home landing pages. */
+/* Homepage-adjacent visual authority for non-home landing pages. */
 .blueprint-ambient {
   position: absolute;
   z-index: 0;
+  top: 0;
+  right: 0;
+  width: min(52rem, 68vw);
+  height: min(46rem, 88vh);
   clip-path: inset(0);
   overflow: clip;
-  opacity: 0.24;
+  opacity: 1;
   contain: paint;
   isolation: isolate;
 }
 
+.blueprint-ambient__still,
+.blueprint-ambient__clip,
 .blueprint-ambient__geometry,
 .blueprint-ambient__wash {
   position: absolute;
@@ -102,12 +108,29 @@ body {
   height: 100%;
 }
 
+.blueprint-ambient__still img,
+.blueprint-ambient__clip {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 68% 46%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.16) 26%, rgba(0,0,0,0.78) 62%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.16) 26%, rgba(0,0,0,0.78) 62%, #000 100%);
+}
+
+.blueprint-ambient__still { opacity: 0.42; }
+.blueprint-ambient__clip {
+  opacity: 0.38;
+  mix-blend-mode: multiply;
+}
+
 .blueprint-ambient__geometry {
   overflow: visible;
   fill: none;
   stroke: var(--ambient-line, rgba(184, 137, 61, 0.42));
   stroke-width: 0.42;
   vector-effect: non-scaling-stroke;
+  opacity: 0.28;
 }
 
 .blueprint-ambient__plexus { color: var(--ambient-accent, #8e321f); }
@@ -116,59 +139,49 @@ body {
 .blueprint-ambient__cards { stroke: currentColor; stroke-opacity: 0.24; }
 .blueprint-ambient__orbit { stroke-dasharray: 2 2.5; transform-origin: 50% 50%; }
 .blueprint-ambient__wash {
-  background: radial-gradient(circle at 52% 46%, var(--ambient-wash, rgba(184, 137, 61, 0.08)), transparent 58%);
+  background: linear-gradient(90deg, var(--paper, #f6f1e8) 0%, rgba(246,241,232,0.82) 28%, transparent 72%);
 }
 
 .blueprint-ambient--dark {
-  --ambient-line: rgba(217, 178, 106, 0.35);
+  --ambient-line: rgba(184, 137, 61, 0.35);
   --ambient-accent: #8e321f;
-  --ambient-wash: rgba(217, 178, 106, 0.08);
 }
 
 .blueprint-ambient--paper {
   --ambient-line: rgba(115, 86, 36, 0.34);
   --ambient-accent: #8e321f;
-  --ambient-wash: rgba(184, 137, 61, 0.1);
 }
 
 .blueprint-ambient--compatibility,
 .blueprint-ambient--compatibility-guide {
-  top: 4rem;
-  right: max(-9rem, -10vw);
-  width: min(44rem, 82vw);
-  aspect-ratio: 1;
-  opacity: 0.2;
+  top: 3.5rem;
+  width: min(56rem, 72vw);
+  height: min(48rem, 92vh);
 }
 .blueprint-ambient--compatibility .blueprint-ambient__cards,
 .blueprint-ambient--compatibility-guide .blueprint-ambient__cards { transform-origin: 50% 50%; }
 
 .blueprint-ambient--birth-card {
-  top: 5rem;
-  right: -7rem;
-  width: min(34rem, 72vw);
-  aspect-ratio: 1;
-  opacity: 0.18;
+  top: 4rem;
+  width: min(50rem, 66vw);
 }
 .blueprint-ambient--birth-card .blueprint-ambient__cards rect:last-child { opacity: 0; }
 
 .blueprint-ambient--blueprint {
-  top: 4rem;
-  right: max(-8rem, -8vw);
-  width: min(46rem, 72vw);
-  aspect-ratio: 1;
-  opacity: 0.2;
+  top: 2.5rem;
+  width: min(54rem, 70vw);
 }
 
 .blueprint-ambient--method,
 .blueprint-ambient--library {
-  top: 7rem;
-  right: -8rem;
-  width: min(35rem, 68vw);
-  aspect-ratio: 1;
-  opacity: 0.15;
+  top: 6rem;
+  width: min(44rem, 60vw);
+  opacity: 0.86;
 }
 .blueprint-ambient--method .blueprint-ambient__cards,
 .blueprint-ambient--library .blueprint-ambient__cards { opacity: 0.24; }
+.blueprint-ambient--method .blueprint-ambient__clip,
+.blueprint-ambient--library .blueprint-ambient__clip { display: none; }
 
 @media (prefers-reduced-motion: no-preference) {
   .blueprint-ambient__orbit { animation: blueprint-orbit 24s linear infinite; }
@@ -195,11 +208,16 @@ body {
 @keyframes blueprint-scroll-drift { from { translate: 0 0; } to { translate: 0 2.5rem; } }
 
 @media (max-width: 700px) {
-  .blueprint-ambient { opacity: 0.16; width: 100%; right: 0; top: 5rem; }
-  .blueprint-ambient__geometry, .blueprint-ambient__wash {
-    left: auto;
+  .blueprint-ambient {
+    width: 100%;
+    height: 22rem;
     right: 0;
-    width: 66%;
+    top: 4.5rem;
+  }
+  .blueprint-ambient__clip { display: none; }
+  .blueprint-ambient__still { opacity: 0.28; }
+  .blueprint-ambient__still img {
+    object-position: 78% 42%;
   }
   .blueprint-ambient__cards { opacity: 0.5; }
   .blueprint-ambient__plexus path:nth-child(2),
@@ -208,6 +226,7 @@ body {
 
 @media (prefers-reduced-motion: reduce), (update: slow) {
   .blueprint-ambient *, .blueprint-ambient { animation: none !important; }
+  .blueprint-ambient__clip { display: none !important; }
 }
 
 /* Co-Star-ish editorial heading */
