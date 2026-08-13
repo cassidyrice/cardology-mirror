@@ -183,9 +183,9 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: "$13",
     badge: "Flagship",
     oneLine:
-      "A cursed birthday-card gag you can send — gag-framed written pattern of their playing-card archetype, not a psychic prediction.",
+      "Your birth-card pattern, ruling layer, and current chapter — written down so you can see it.",
     bestFor:
-      "Anyone shopping a riskier gag gift — cursed birthday-card write-up of their card archetype, not a live psychic call.",
+      "Anyone who wants the full pattern in writing, without a phone call or a horoscope.",
     deliverable:
       "An instant personalized web report, with an emailed return link.",
     turnaround: "Available immediately after payment — no call, no wait.",
