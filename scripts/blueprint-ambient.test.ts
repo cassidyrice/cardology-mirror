@@ -5,14 +5,17 @@ import { join } from "node:path";
 const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
-const routes: Array<[string, string]> = [
-  ["app/birth-card-compatibility-calculator/page.tsx", 'variant="compatibility"'],
-  ["app/cardology-compatibility/page.tsx", 'variant="compatibilityGuide"'],
+const ambientRoutes: Array<[string, string]> = [
   ["app/birth-card-calculator/page.tsx", 'variant="birthCard"'],
   ["app/products/personal-card-blueprint/page.tsx", 'variant="blueprint"'],
-  ["app/what-is-cardology/page.tsx", 'variant="method"'],
-  ["app/methodology/page.tsx", 'variant="method"'],
-  ["app/cardology-for-beginners/page.tsx", 'variant="library"'],
+];
+
+const editorialRoutes = [
+  "app/what-is-cardology/page.tsx",
+  "app/cardology-for-beginners/page.tsx",
+  "app/methodology/page.tsx",
+  "app/cardology-compatibility/page.tsx",
+  "app/birth-card-compatibility-calculator/page.tsx",
 ];
 
 test("ambient component provides accessible decorative geometry", () => {
@@ -33,11 +36,19 @@ test("ambient component exposes the approved page variants", () => {
   }
 });
 
-test("priority landing pages install the correct ambient variant", () => {
-  for (const [path, expected] of routes) {
+test("visual landing pages install the correct ambient variant", () => {
+  for (const [path, expected] of ambientRoutes) {
     const source = read(path);
     expect(source).toContain('import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient"');
     expect(source).toContain(expected);
+  }
+});
+
+test("long-form Learn and Compatibility pages remain clean editorial surfaces", () => {
+  for (const path of editorialRoutes) {
+    const source = read(path);
+    expect(source).not.toContain('import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient"');
+    expect(source).not.toContain("<BlueprintAmbient");
   }
 });
 

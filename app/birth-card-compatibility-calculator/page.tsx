@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
+
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
@@ -94,7 +94,7 @@ export default function CompatibilityCalculatorPage() {
       ]}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <BlueprintAmbient variant="compatibility" />
+
       <h1 className="display mb-3 text-3xl text-bone">
         Playing Card Compatibility Calculator
       </h1>
