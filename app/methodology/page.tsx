@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_URL } from "@/lib/site";
@@ -36,6 +37,7 @@ export default function MethodologyPage() {
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Methodology", href: "/methodology" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BlueprintAmbient variant="method" />
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Calculation and interpretation</p>
