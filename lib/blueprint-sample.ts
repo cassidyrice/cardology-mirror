@@ -18,7 +18,7 @@ export const SAMPLE_BLUEPRINT: BlueprintReport = {
   rulingCardSlug: "jack-of-spades",
   suitDomain: "Value/Resource Patterns",
   coreIdentity:
-    "You're the resource negotiator. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
   gifts: [
     "Natural understanding of fair exchange",
     "Ability to create balanced partnerships around resources",
@@ -28,7 +28,7 @@ export const SAMPLE_BLUEPRINT: BlueprintReport = {
   shadow:
     "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
   rulingIdentity:
-    "You're the messenger who brings difficult truths. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
   rulingShadow:
     "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
   currentChapter: {

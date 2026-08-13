@@ -1,7 +1,7 @@
 {
   "A♣": {
     "title": "The Creative Pioneer",
-    "core_identity": "You're the intellectual initiator. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
+    "core_identity": "You start the new thought while it is still usable. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
     "gifts": "- Original thinking and idea generation\n- Ability to launch new concepts and projects\n- Natural curiosity and investigation\n- Intellectual courage to explore new territory",
     "shadow": "You treat starting as finishing. Ideas get abandoned when they get hard, so the room sees possibility and not delivery.",
     "life_direction": "Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
@@ -9,7 +9,7 @@
   },
   "2♣": {
     "title": "The Collaborative Builder",
-    "core_identity": "You're the intellectual partner. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
+    "core_identity": "You think best with someone else in the room, and you still leave with a position of your own. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
     "gifts": "- Natural partnership and team-building ability\n- Excellent communication and articulation\n- Ability to synthesize different perspectives\n- Talent for collaborative problem-solving",
     "shadow": "You disappear into the other person's thinking. Partnership starts to mean you no longer know which opinion was yours.",
     "life_direction": "Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
@@ -17,7 +17,7 @@
   },
   "3♣": {
     "title": "The Creative Communicator",
-    "core_identity": "You're the intellectual translator. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
+    "core_identity": "You make a hard idea easy to say without stripping what it means. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
     "gifts": "- Ability to articulate complex ideas clearly\n- Creative problem-solving and unconventional thinking\n- Natural teaching and explaining ability\n- Talent for making ideas exciting",
     "shadow": "You talk the idea further than you build it. Clarity without depth leaves people informed and unconvinced.",
     "life_direction": "Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
@@ -25,7 +25,7 @@
   },
   "4♣": {
     "title": "The Systematic Builder",
-    "core_identity": "You're the intellectual architect. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
+    "core_identity": "You put thinking into an order other people can actually use. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
     "gifts": "- Systematic thinking and organizational ability\n- Creating frameworks and sustainable structures\n- Clear thinking and logical progression\n- Ability to build something that lasts",
     "shadow": "You defend the system after it stops fitting. Structure becomes a reason not to revise.",
     "life_direction": "Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
@@ -33,7 +33,7 @@
   },
   "5♣": {
     "title": "The Dynamic Innovator",
-    "core_identity": "You're the intellectual adventurer. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
+    "core_identity": "You pressure-test a stale idea in public and let the better one win. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
     "gifts": "- Quick thinking and fast adaptation\n- Ability to see multiple perspectives rapidly\n- Natural rebellion against outdated ideas\n- Refreshing honesty and directness",
     "shadow": "You change the subject and call it growth. Nothing sits still long enough for anyone to rely on you.",
     "life_direction": "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
@@ -41,7 +41,7 @@
   },
   "6♣": {
     "title": "The Nurturing Creator",
-    "core_identity": "You're the intellectual teacher. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
+    "core_identity": "You pass on what you know without disappearing behind the lesson. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
     "gifts": "- Natural teaching and mentoring ability\n- Desire to develop others intellectually\n- Wisdom and thoughtful guidance\n- Ability to balance thinking with caring",
     "shadow": "You stay in the teacher seat after you have stopped learning. Guidance turns into a script other people are supposed to follow.",
     "life_direction": "Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
@@ -49,7 +49,7 @@
   },
   "7♣": {
     "title": "The Analytical Creator",
-    "core_identity": "You're the intellectual analyst. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
+    "core_identity": "You take a claim apart until the usable piece is left, then you use it. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
     "gifts": "- Penetrating analysis and pattern recognition\n- Ability to see through surface explanations\n- Critical thinking and intellectual honesty\n- Natural skepticism that prevents self-deception",
     "shadow": "You can name every flaw in a plan, so the plan never leaves the table. Analysis does the job of a decision.",
     "life_direction": "Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
@@ -57,7 +57,7 @@
   },
   "8♣": {
     "title": "The Ambitious Builder",
-    "core_identity": "You're the intellectual strategist. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
+    "core_identity": "You run a knowledge system other people can follow, and you stand behind the call. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
     "gifts": "- Strategic thinking and long-term planning\n- Ability to coordinate complex intellectual projects\n- Ambitious drive and determination\n- Talent for building intellectual authority",
     "shadow": "You use the sharp mind to win. People respect the argument and stop bringing you anything they actually care about.",
     "life_direction": "Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
@@ -65,7 +65,7 @@
   },
   "9♣": {
     "title": "The Humanitarian Builder",
-    "core_identity": "You're the visionary idealist. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
+    "core_identity": "You keep the large view without skipping the next practical step. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
     "gifts": "- Visionary thinking and big-picture perspective\n- Ability to inspire others toward possibility\n- Universal principles and humanitarian ideals\n- Natural optimism about human potential",
     "shadow": "The big picture stays cleaner than the work. Inspiration without follow-through teaches people not to wait for you.",
     "life_direction": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
@@ -73,7 +73,7 @@
   },
   "10♣": {
     "title": "The Master Builder",
-    "core_identity": "You're the intellectual master. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
+    "core_identity": "You carry a finished body of knowledge and keep teaching from it. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
     "gifts": "- Intellectual mastery and deep expertise\n- Ability to radiate confidence and competence\n- Wisdom from experience and reflection\n- Natural authority and leadership",
     "shadow": "You rest on what you already built. Mastery turns into a closed file.",
     "life_direction": "Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
@@ -81,7 +81,7 @@
   },
   "J♣": {
     "title": "The Creative Messenger",
-    "core_identity": "You're the intellectual catalyst. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"",
+    "core_identity": "You bring a new angle and stay long enough for someone to test it. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"",
     "gifts": "- Ability to inspire intellectual breakthroughs\n- Creative and unconventional perspective\n- Natural gift for shifting paradigms\n- Talent for generating excitement about ideas",
     "shadow": "You drop the insight and leave. The shift happens; the integration does not, because you are already gone.",
     "life_direction": "Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
@@ -89,7 +89,7 @@
   },
   "Q♣": {
     "title": "The Nurturing Leader",
-    "core_identity": "You're the intellectual queen. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
+    "core_identity": "You teach from what you actually know, without making people earn the right to hear it. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
     "gifts": "- Deep wisdom and thoughtful guidance\n- Ability to create intellectual safety for growth\n- Natural mentoring and empowering ability\n- Talent for helping others develop their thinking",
     "shadow": "You decide what other people need to understand. Mentorship starts doing their thinking for them.",
     "life_direction": "Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
@@ -97,15 +97,15 @@
   },
   "K♣": {
     "title": "The Master Leader",
-    "core_identity": "You're the intellectual king. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
+    "core_identity": "You make the intellectual call in the open and you can revise it. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
     "gifts": "- Clear thinking and decisive action\n- Natural authority and command\n- Ability to direct complex intellectual projects\n- Confidence that inspires confidence in others",
-    "shadow": "You treat your read as the read. People follow the authority and stop testing the idea.",
+    "shadow": "You decide in public and treat disagreement as error. The room learns to agree with you instead of thinking.",
     "life_direction": "Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
     "algorithm_gateway": "Your card operates in Clubs (behavioral habits). Algorithm Inoculation challenges you to be wrong, to change your mind, to learn from people you're supposed to be teaching. This rewires you from authoritarian-certainty into collaborative-clarity."
   },
   "A♦": {
     "title": "The Wealth Pioneer",
-    "core_identity": "You're the material initiator. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
+    "core_identity": "You start a resource in motion because you trust you can make and keep value. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
     "gifts": "- Natural resource building and accumulation\n- Ability to see material opportunity\n- Entrepreneurial drive and initiative\n- Capacity to create wealth from ideas",
     "shadow": "You measure yourself by the pile. More never registers as enough, so success still feels like a shortfall.",
     "life_direction": "Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
@@ -113,7 +113,7 @@
   },
   "2♦": {
     "title": "The Financial Partner",
-    "core_identity": "You're the resource negotiator. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    "core_identity": "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
     "gifts": "- Natural understanding of fair exchange\n- Ability to create balanced partnerships around resources\n- Diplomatic skill in financial negotiations\n- Talent for making partnerships feel equitable",
     "shadow": "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
     "life_direction": "Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
@@ -121,7 +121,7 @@
   },
   "3♦": {
     "title": "The Success Communicator",
-    "core_identity": "You're the material storyteller. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
+    "core_identity": "You can make value visible without overselling the thing underneath. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
     "gifts": "- Natural sales and persuasion ability\n- Talent for making things attractive and desirable\n- Ability to communicate material value clearly\n- Gift for inspiring desire and investment",
     "shadow": "The pitch outruns the delivery. After a few gaps, people stop believing the next one.",
     "life_direction": "Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
@@ -129,7 +129,7 @@
   },
   "4♦": {
     "title": "The Financial Foundation Builder",
-    "core_identity": "You're the material architect. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
+    "core_identity": "You build a floor that lasts and still let money move when the work requires it. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
     "gifts": "- Strong financial planning and foresight\n- Ability to build lasting material security\n- Natural understanding of systems and structures\n- Talent for creating sustainable wealth",
     "shadow": "You have enough and live as if you do not. Caution empties the thing it was supposed to protect.",
     "life_direction": "Your curriculum is learning that some security is illusory and that money exists to be used. You're learning to enjoy the abundance you've built.",
@@ -137,7 +137,7 @@
   },
   "5♦": {
     "title": "The Dynamic Entrepreneur",
-    "core_identity": "You're the material adventurer. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
+    "core_identity": "You adjust the resource plan when the ground moves, without pretending nothing changed. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
     "gifts": "- Quick adaptation to market changes\n- Ability to explore multiple income streams\n- Natural entrepreneurial flexibility\n- Gift for finding new opportunities",
     "shadow": "You start the next venture before the current one is real. Options replace a floor.",
     "life_direction": "Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
@@ -145,7 +145,7 @@
   },
   "6♦": {
     "title": "The Generous Provider",
-    "core_identity": "You're the material caretaker. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
+    "core_identity": "You move resources toward other people without erasing your own claim. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
     "gifts": "- Generous and supportive nature with resources\n- Ability to provide stability for others\n- Natural understanding of needs and provision\n- Gift for creating material safety",
     "shadow": "You keep providing after you are empty. People learn to lean; you learn to resent the lean.",
     "life_direction": "Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
@@ -153,7 +153,7 @@
   },
   "7♦": {
     "title": "The Skeptical Investor",
-    "core_identity": "You're the material analyst. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
+    "core_identity": "You look at worth without reducing it to the account balance. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
     "gifts": "- Analytical thinking about financial decisions\n- Ability to identify financial risks\n- Deep skepticism that prevents poor choices\n- Natural caution and thoroughness",
     "shadow": "You can see the hole in every opportunity, so you take none. Caution becomes a standstill.",
     "life_direction": "Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
@@ -161,7 +161,7 @@
   },
   "8♦": {
     "title": "The Businessman",
-    "core_identity": "You're the material strategist. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
+    "core_identity": "You run the money system in the open and you can explain the call. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
     "gifts": "- Strategic thinking about resources and power\n- Natural ability to leverage opportunities\n- Ambitious drive and determination\n- Talent for creating material success",
     "shadow": "Money becomes the way you keep score and keep control. The win is public; the relationships are not.",
     "life_direction": "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
@@ -169,7 +169,7 @@
   },
   "9♦": {
     "title": "The Universal Provider",
-    "core_identity": "You're the material idealist. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
+    "core_identity": "You give in a way you can sustain, and you let someone give back. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
     "gifts": "- Visionary thinking about resource distribution\n- Generous impulse toward universal good\n- Ability to inspire others to contribute\n- Natural idealism about abundance",
     "shadow": "You fund everyone else's floor and skip your own. The generosity is real and it is not sustainable.",
     "life_direction": "Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
@@ -177,7 +177,7 @@
   },
   "10♦": {
     "title": "The Wealthy Master",
-    "core_identity": "You're the material elder. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
+    "core_identity": "You build enough and keep it structured so it actually holds. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
     "gifts": "- Integrated material mastery and security\n- Ability to radiate confidence about resources\n- Wisdom from building and maintaining wealth\n- Natural generosity from a place of abundance",
     "shadow": "You protect what you have instead of using it. Security turns into a closed room.",
     "life_direction": "Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
@@ -185,7 +185,7 @@
   },
   "J♦": {
     "title": "The Successful Messenger",
-    "core_identity": "You're the material catalyst. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
+    "core_identity": "You try a new approach to value and you finish enough of it to know if it works. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
     "gifts": "- Ability to inspire financial awakening\n- Natural gift for shifting money mindsets\n- Talent for creating excitement about opportunity\n- Inspiring others to believe in abundance",
     "shadow": "You talk about value more fluently than you keep it. The message is ahead of the books.",
     "life_direction": "Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
@@ -193,7 +193,7 @@
   },
   "Q♦": {
     "title": "The Prosperous Nurturer",
-    "core_identity": "You're the material queen. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
+    "core_identity": "You protect what you have without making every dollar a referendum on safety. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
     "gifts": "- Natural ability to provide and nurture materially\n- Generosity and abundance consciousness\n- Talent for creating financial safety for others\n- Wisdom about resources and needs",
     "shadow": "Provision comes with a string. People feel cared for and owned at the same time.",
     "life_direction": "Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
@@ -201,7 +201,7 @@
   },
   "K♦": {
     "title": "The Wealthy King",
-    "core_identity": "You're the material authority. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
+    "core_identity": "You run the system and you can show your work. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
     "gifts": "- Natural authority and command over resources\n- Confident decision-making about money\n- Ability to direct financial strategy\n- Inspiring confidence in your financial judgment",
     "shadow": "You make the money call alone and call it leadership. Other judgment does not get a seat.",
     "life_direction": "Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
@@ -209,7 +209,7 @@
   },
   "A♠": {
     "title": "The Truth Pioneer",
-    "core_identity": "You're the seeker of truth. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
+    "core_identity": "You say the true thing early, before it has to become a crisis to be heard. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
     "gifts": "- Ability to penetrate illusions and see truth\n- Courage to question what others accept\n- Sharp thinking and analytical power\n- Natural integrity and honesty",
     "shadow": "You decide you already have the true read and stop looking. Honesty starts cutting more than it clarifies.",
     "life_direction": "Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
@@ -217,7 +217,7 @@
   },
   "2♠": {
     "title": "The Skeptical Partner",
-    "core_identity": "You're the intellectual doubter. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
+    "core_identity": "You hold two pressures at once and still make a call that can live in the world. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
     "gifts": "- Ability to hold multiple perspectives simultaneously\n- Healthy skepticism toward claims\n- Balanced thinking and fairness\n- Natural understanding of complexity",
     "shadow": "You can see both sides so well that you will not pick one. Fairness becomes a way not to stand anywhere.",
     "life_direction": "Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
@@ -225,7 +225,7 @@
   },
   "3♠": {
     "title": "The Sorrowful Truth",
-    "core_identity": "You're the realist. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
+    "core_identity": "You stay with the hard feeling long enough to learn it, then you let the day continue. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
     "gifts": "- Ability to see what needs fixing\n- Honesty about difficulty and pain\n- Natural compassion for suffering\n- Courage to name injustice",
     "shadow": "You keep naming what is broken. The room hears the problem and stops expecting a next move.",
     "life_direction": "Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
@@ -233,7 +233,7 @@
   },
   "4♠": {
     "title": "The Rigid Truth",
-    "core_identity": "You're the mental architect of belief systems. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
+    "core_identity": "You build enough container that change can happen without the floor disappearing. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
     "gifts": "- Ability to create coherent belief systems\n- Strong principles and ethical clarity\n- Organized thinking and clear logic\n- Natural integrity and consistency",
     "shadow": "The principle outranks the person in front of you. Being consistent starts to cost the relationship.",
     "life_direction": "Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
@@ -241,7 +241,7 @@
   },
   "5♠": {
     "title": "The Restless Mind",
-    "core_identity": "You're the intellectual wanderer. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
+    "core_identity": "You stay in the hard stretch long enough to get better at it. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
     "gifts": "- Quick thinking and mental flexibility\n- Openness to new perspectives\n- Natural curiosity and investigation\n- Ability to see things from fresh angles",
     "shadow": "You change positions before any of them get depth. People cannot tell which one to build on.",
     "life_direction": "Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
@@ -249,7 +249,7 @@
   },
   "6♠": {
     "title": "The Responsible Mind",
-    "core_identity": "You're the mental guide. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
+    "core_identity": "You use what you have already walked through without requiring anyone else to be in pain for it to count. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
     "gifts": "- Natural ability to help others see truth\n- Responsibility toward honest guidance\n- Clear thinking and balanced perspective\n- Talent for helping others process difficulty",
     "shadow": "You take responsibility for other people seeing it your way. Guidance crowds out their own work.",
     "life_direction": "Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
@@ -257,7 +257,7 @@
   },
   "7♠": {
     "title": "The Questioning Mind",
-    "core_identity": "You're the intellectual skeptic. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.",
+    "core_identity": "You study the hard pattern until you can name it, then you do the next honest thing. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.",
     "gifts": "- Penetrating questions and inquiry\n- Ability to identify inconsistencies and flaws\n- Critical thinking and logical rigor\n- Natural skepticism that prevents deception",
     "shadow": "Questioning turns into a habit of taking things apart. Commitment looks naive, so nothing gets kept.",
     "life_direction": "Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
@@ -265,7 +265,7 @@
   },
   "8♠": {
     "title": "The Powerful Mind",
-    "core_identity": "You're the intellectual warrior. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
+    "core_identity": "You take the hard lead and you stay with the work after the call is made. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
     "gifts": "- Strategic and powerful thinking\n- Ability to win arguments through logic\n- Strong conviction and mental clarity\n- Talent for directing others' thinking",
     "shadow": "The stronger argument wins the room and empties it. People stop bringing you anything they cannot defend.",
     "life_direction": "Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
@@ -273,7 +273,7 @@
   },
   "9♠": {
     "title": "The Idealistic Mind",
-    "core_identity": "You're the visionary thinker. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
+    "core_identity": "You complete the hard stretch and put the lesson down. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
     "gifts": "- Visionary thinking and universal perspective\n- Ability to see highest potential truth\n- Idealistic principles and ethics\n- Natural inspiration toward greater good",
     "shadow": "The ideal stays cleaner than the implementation. Vision without a next action teaches people not to wait.",
     "life_direction": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
@@ -281,7 +281,7 @@
   },
   "10♠": {
     "title": "The Completed Mind",
-    "core_identity": "You're the mental master. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
+    "core_identity": "You do the difficult curriculum in front of you without adding the ones that are not yours. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
     "gifts": "- Deep wisdom and mental integration\n- Clarity and peace about beliefs\n- Ability to radiate confidence about truth\n- Natural authority and master perspective",
     "shadow": "You treat the current map as finished. Peace arrives; revision does not.",
     "life_direction": "Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
@@ -289,7 +289,7 @@
   },
   "J♠": {
     "title": "The Messenger of Truth",
-    "core_identity": "You're the messenger who brings difficult truths. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    "core_identity": "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
     "gifts": "- Courage to speak difficult truths\n- Ability to inspire others toward honesty\n- Gift for bringing necessary perspective\n- Talent for shifting how people think",
     "shadow": "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
     "life_direction": "Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
@@ -297,7 +297,7 @@
   },
   "Q♠": {
     "title": "The Wise Guide",
-    "core_identity": "You're the mental queen. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
+    "core_identity": "You tell the necessary truth at a volume the other person can use. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
     "gifts": "- Deep wisdom and understanding\n- Ability to hold space for others' exploration\n- Natural mentoring and guidance\n- Talent for helping others discover their own truth",
     "shadow": "You steer people toward your conclusion and call it guidance. Their own thinking does not get practiced.",
     "life_direction": "Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
@@ -305,7 +305,7 @@
   },
   "K♠": {
     "title": "The Master of Thought",
-    "core_identity": "You're the mental king. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
+    "core_identity": "You make the hard call without pretending you have no interior. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
     "gifts": "- Clear thinking and intellectual command\n- Natural authority and decisiveness\n- Ability to direct complex thinking\n- Confidence that inspires others' confidence",
     "shadow": "You treat your perspective as the standard. People comply with the authority and stop testing the thought.",
     "life_direction": "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
@@ -313,7 +313,7 @@
   },
   "A♥": {
     "title": "The Emotional Pioneer",
-    "core_identity": "You're the emotional initiator. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
+    "core_identity": "You start real connection on purpose: you say what you feel and leave room for the other person to answer. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
     "gifts": "- Courage to initiate genuine emotional connection\n- Openness that invites others into real vulnerability\n- Natural warmth and emotional directness\n- Capacity to start relationships from honesty",
     "shadow": "You reach so hard for connection that the other person has to manage the reach. Intensity arrives before there is a place to put it.",
     "life_direction": "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
@@ -321,7 +321,7 @@
   },
   "2♥": {
     "title": "The Loving Partner",
-    "core_identity": "You're the emotional partner. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
+    "core_identity": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
     "gifts": "- Genuine diplomacy and emotional attunement\n- Ability to balance your needs with another's\n- Talent for creating mutual understanding and partnership\n- Sensitivity to what a relationship actually needs",
     "shadow": "You disappear into the other person's needs. Harmony is built on a self that is no longer in the room.",
     "life_direction": "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
@@ -329,7 +329,7 @@
   },
   "3♥": {
     "title": "The Creative Heart",
-    "core_identity": "You're the emotional artist. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
+    "core_identity": "You let love have range without using newness as an exit from the one that is already here. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
     "gifts": "- Emotional depth expressed through creativity\n- Range and versatility in how you connect\n- Ability to bring vitality and play to relationships\n- Comfort with emotional complexity and nuance",
     "shadow": "You keep a spare door open so no single person can pin you down. Variety protects you from being chosen.",
     "life_direction": "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
@@ -337,7 +337,7 @@
   },
   "4♥": {
     "title": "The Emotional Foundation Builder",
-    "core_identity": "You're the emotional architect. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
+    "core_identity": "You build a home people can count on, and you leave enough air for feeling to move. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
     "gifts": "- Building reliable emotional foundations and trust\n- Consistency and steadiness in relationships\n- Ability to make others feel safe and held\n- Loyalty and follow-through in love",
     "shadow": "You keep feeling inside approved roles. The house is stable and nothing unscripted is allowed to live there.",
     "life_direction": "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
@@ -345,7 +345,7 @@
   },
   "5♥": {
     "title": "The Restless Heart",
-    "core_identity": "You're the emotional explorer. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
+    "core_identity": "You let love change shape without using motion as a way out of being seen. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
     "gifts": "- Adaptability through emotional change and transition\n- Bringing freshness and movement to relationships\n- Understanding that love deepens through transformation\n- Openness to growth rather than stasis",
     "shadow": "You leave when a connection starts asking you to stay in one place. Motion looks like aliveness; it can also be how you avoid being known.",
     "life_direction": "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
@@ -353,7 +353,7 @@
   },
   "6♥": {
     "title": "The Devoted Caregiver",
-    "core_identity": "You're the emotional caretaker. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
+    "core_identity": "You care for people without disappearing. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
     "gifts": "- Integrating genuine care with healthy boundaries\n- Creating harmony and emotional safety for others\n- Devotion and willingness to show up for people\n- Capacity to serve from a full cup, not an empty one",
     "shadow": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
     "life_direction": "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
@@ -361,7 +361,7 @@
   },
   "7♥": {
     "title": "The Reflective Heart",
-    "core_identity": "You're the emotional contemplative. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
+    "core_identity": "You look at love clearly without using analysis as a way not to feel it. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
     "gifts": "- Wisdom and insight into the nature of love\n- Ability to see beneath romantic illusion\n- Emotional reflection and self-awareness\n- Seeking what's true over what's comfortable",
     "shadow": "You understand the feeling instead of having it. Insight keeps you at a safe distance from the thing you are describing.",
     "life_direction": "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
@@ -369,7 +369,7 @@
   },
   "8♥": {
     "title": "The Emotional Powerhouse",
-    "core_identity": "You're the emotional force. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
+    "core_identity": "You hold the emotional room without taking it over. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
     "gifts": "- Commanding emotional situations with strength and clarity\n- Charisma and emotional presence\n- Leading with confident compassion\n- Ability to steady and reassure others",
     "shadow": "You would rather run the emotional room than be moved by it. Control stands in for the risk of being affected.",
     "life_direction": "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
@@ -377,7 +377,7 @@
   },
   "9♥": {
     "title": "The Compassionate Idealist",
-    "core_identity": "You're the universal lover. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
+    "core_identity": "You stay kind without picking up what is not yours. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
     "gifts": "- Integrating compassion with hard-won wisdom\n- A capacity for love that extends beyond the self\n- Knowing what is yours to carry and what to release\n- Emotional generosity toward people and causes",
     "shadow": "You carry what is not yours and call it love. The helping is real; so is the refusal to put your own piece down.",
     "life_direction": "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
@@ -385,7 +385,7 @@
   },
   "10♥": {
     "title": "The Community Heart",
-    "core_identity": "You're the emotional connector. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
+    "core_identity": "You make room for a lot of people and still keep a self inside the room. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
     "gifts": "- Expanding love and belonging across a community\n- Creating warmth and inclusion at scale\n- Holding many relationships with genuine presence\n- Making others feel part of something",
     "shadow": "You hold the group's feeling until you cannot feel your own. Being needed by many starts to stand in for being met.",
     "life_direction": "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
@@ -393,7 +393,7 @@
   },
   "J♥": {
     "title": "The Romantic Messenger",
-    "core_identity": "You're the emotional idealist. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
+    "core_identity": "You bring a fresh read on love without leaving the room when it gets ordinary. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
     "gifts": "- Bringing fresh perspective and inspiration to connection\n- Youthful openness and emotional creativity\n- Innovating how relationships can work\n- Reawakening feeling and possibility in others",
     "shadow": "You fall for the story of the person. The fantasy is safer than the slow work of knowing who is actually here.",
     "life_direction": "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
@@ -401,7 +401,7 @@
   },
   "Q♥": {
     "title": "The Devoted Nurturer",
-    "core_identity": "You're the emotional nurturer. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
+    "core_identity": "You take care of people from presence, not from scanning for what they might need next. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
     "gifts": "- Nurturing others through authentic, intuitive presence\n- Deep emotional attunement and empathy\n- Embodied emotional wisdom\n- Making others feel genuinely seen and held",
     "shadow": "You read everyone else first. Care becomes so complete that the other person feels held and owned.",
     "life_direction": "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
@@ -409,7 +409,7 @@
   },
   "K♥": {
     "title": "The Compassionate King",
-    "core_identity": "You're the emotional sovereign. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
+    "core_identity": "You hold emotional authority without hiding behind it. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
     "gifts": "- Commanding emotional authority with depth and care\n- Leading others through feeling with steadiness\n- Mature, grounded emotional presence\n- Holding space with both strength and compassion",
     "shadow": "You lead the feeling from a distance you will not cross. People can lean on the authority and cannot reach you.",
     "life_direction": "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
