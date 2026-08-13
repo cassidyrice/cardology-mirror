@@ -267,7 +267,7 @@ function ResultCard({
           className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
           style={{ animationDelay: "0.82s" }}
         >
-          A cursed birthday-card gag you can send — not a psychic prediction.
+          A written pattern you can actually use — not a horoscope.
           Locks pattern, ruling layer, and this year&apos;s bit in the deck in
           writing. One-time{" "}
           {priceLabel}.

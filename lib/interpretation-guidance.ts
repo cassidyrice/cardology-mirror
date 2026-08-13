@@ -3,13 +3,10 @@
 // docs/reading-interpretation-reference.md — keep that markdown as the
 // canonical human-edited source for them.
 //
-// The "Reader voice" section is NOT sourced from that doc: it is a deliberate
-// product overlay. The doc's §4 ethics prescribe roughly 5:1 affirmation and
-// "stay positive without denying difficulty"; the overlay prescribes a roast
-// register with "no cushioning, no inspirational uplift". Which one is doctrine
-// for the paid reading is an open ruling (OUTBOX/cb-engine/DECISIONS_FOR_CASS.md
-// #4). The voice text itself is untouched pending that ruling — only the
-// provenance claim is corrected here.
+// The "Reader voice" section is the dry-mirror product register.
+// Spec: docs/superpowers/specs/2026-08-12-dry-mirror-voice-design.md
+// It overrides the reference doc's 5:1 affirmation ethics. Shadow stays
+// a habit with a cost, not a defect and not a roast.
 //
 // This module is the Edge-safe prompt context the engine imports without fs.
 
@@ -72,12 +69,12 @@ Use this reference as the reading method behind cardblueprints.com daily-card an
 - Make compatibility concrete. Name attraction, irritation, emotional labor, power balance, role repetition, shared language, and the exact place two people may misread each other.
 
 ## Reader voice
-- Smartass, razor-intelligent, no-bullshit. Dry, sarcastic, dark filter. Roast the reader's patterns to their face — mockery in service of insight, never cruelty, never aimed at what they can't change.
-- Second person, present tense, confident. No hedging, no cushioning, no inspirational uplift. Say the actual thing.
+- Clean mirror. Second person, present tense. Name observable behavior, then name what it costs.
+- No jokes, no dunks, no sarcasm, no screenshot bait, no diagnosis-as-insult.
+- No affirmation padding and no soft hedges that hide the pattern.
 - Bridge the symbols you're given — card number, suit, planet/period — to ordinary lived experience. Make the abstract concrete: what the pattern looks like on a real Tuesday, not in theory.
-- Land at least one funny, screenshot-worthy line; every laugh must carry a real observation.
-- Use markdown headings and concise paragraphs. Bold for card codes and key phrases; italics for reflective questions (which should have teeth).
+- Use markdown headings and concise paragraphs. Bold for card codes and key phrases; italics for reflective questions that point at a real choice, not a gotcha.
 - Banned: horoscope clichés, "the universe," "energy/vibrations," doom, destiny/fate claims, "manifest," invented symbolism or numerology beyond the engine data.
-- Prefer: "Here's the pattern you're going to pretend you didn't read" over "This will happen."
+- Prefer: "Here is the pattern" over "This will happen."
 - Prefer: "This is why that person gets under your skin" over cautious language that keeps the reading trapped inside private journaling.
 `;

@@ -18,7 +18,7 @@ export const SAMPLE_BLUEPRINT: BlueprintReport = {
   rulingCardSlug: "jack-of-spades",
   suitDomain: "Value/Resource Patterns",
   coreIdentity:
-    "You're the resource negotiator. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
   gifts: [
     "Natural understanding of fair exchange",
     "Ability to create balanced partnerships around resources",
@@ -26,25 +26,25 @@ export const SAMPLE_BLUEPRINT: BlueprintReport = {
     "Talent for making partnerships feel equitable",
   ],
   shadow:
-    "You lose yourself in material partnerships. You give too much to maintain the relationship. You track what you've contributed and build resentment when it's not reciprocated. The pattern: you're the financial giver, but nobody gives back to you. You enable financial dependence under the guise of partnership. You're exhausted from carrying the weight.",
+    "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
   rulingIdentity:
-    "You're the messenger who brings difficult truths. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
   rulingShadow:
-    "You deliver truth and disappear. You speak hard things and don't stay for the integration. Your honesty feels like attack. The pattern: you're the truth-teller, but people feel hurt by you. You inspire honesty by being hurtfully direct. You're brave about speaking but cowardly about relationship repair.",
+    "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
   currentChapter: {
     planet: "Venus",
     domain: "relationships, values, love",
     card: "8♦",
     meaning: "8 OF DIAMONDS",
     balanced:
-      "You're commanding financial systems with authority and integrity.",
+      "You run the money system in the open and you can explain the call.",
     under:
-      "You're financially withdrawn, afraid of power while avoiding resource leadership.",
-    over: "You're financially controlling and power-hungry, seeing money as a tool for domination.",
+      "You step back from resource leadership. Power looks dangerous, so you leave it on the table.",
+    over: "You use money to keep people in line. The ledger becomes a hierarchy.",
   },
   reflectionPrompts: [
-    'Where in the last month did you catch yourself in the "The Financial Partner" over-drive — and what were you actually protecting?',
-    "The 8♦ is governing this stretch of your year through relationships, values, love. What would its balanced version ask of you this week?",
-    "Your ruling layer (J♠) shapes how others first experience you. When has that expression worked against what your core card (2♦) actually wanted?",
+    'Where did the "The Financial Partner" pattern take over last month, and what were you protecting?',
+    "The 8♦ is governing this stretch of your year through relationships, values, love. What would the balanced version look like this week?",
+    "Your ruling layer (J♠) is how people first meet you. When has that worked against what your core card (2♦) actually wanted?",
   ],
 };
