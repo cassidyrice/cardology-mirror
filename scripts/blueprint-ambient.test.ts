@@ -47,3 +47,17 @@ test("ambient visuals remain behind content and ignore pointer input", () => {
   expect(source).toContain("select-none");
   expect(source).toContain("motion-reduce:[animation:none]");
 });
+
+test("ambient plates reuse official homepage journey assets", () => {
+  const source = read("components/brand/BlueprintAmbient.tsx");
+  expect(source).toContain("/brand/journey/scene-01-poster.png");
+  expect(source).toContain("/brand/journey/scene-02-poster.png");
+  expect(source).toContain("/brand/journey/scene-03-poster.png");
+  expect(source).toContain("/brand/journey/scene-04-poster.png");
+  expect(source).toContain("/brand/journey/scene-01.mp4");
+  expect(source).toContain("/brand/journey/scene-02.mp4");
+  expect(source).toContain("blueprint-ambient__still");
+  expect(source).toContain("blueprint-ambient__clip");
+  expect(source).toContain("playsInline");
+  expect(source).not.toContain("https://");
+});

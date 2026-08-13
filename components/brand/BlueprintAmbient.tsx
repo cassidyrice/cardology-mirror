@@ -14,6 +14,13 @@ type BlueprintAmbientProps = {
   tone?: "dark" | "paper";
 };
 
+type Plate = {
+  poster: string;
+  mobilePoster: string;
+  clip: string;
+  mobileClip: string;
+};
+
 const variantClass: Record<AmbientVariant, string> = {
   compatibility: "blueprint-ambient--compatibility",
   compatibilityGuide: "blueprint-ambient--compatibility-guide",
@@ -21,6 +28,45 @@ const variantClass: Record<AmbientVariant, string> = {
   blueprint: "blueprint-ambient--blueprint",
   method: "blueprint-ambient--method",
   library: "blueprint-ambient--library",
+};
+
+const plates: Record<AmbientVariant, Plate> = {
+  compatibility: {
+    poster: "/brand/journey/scene-02-poster.png",
+    mobilePoster: "/brand/journey/scene-02-mobile-poster.png",
+    clip: "/brand/journey/scene-02.mp4",
+    mobileClip: "/brand/journey/scene-02-mobile.mp4",
+  },
+  compatibilityGuide: {
+    poster: "/brand/journey/scene-02-poster.png",
+    mobilePoster: "/brand/journey/scene-02-mobile-poster.png",
+    clip: "/brand/journey/scene-02.mp4",
+    mobileClip: "/brand/journey/scene-02-mobile.mp4",
+  },
+  birthCard: {
+    poster: "/brand/journey/scene-01-poster.png",
+    mobilePoster: "/brand/journey/scene-01-mobile-poster.png",
+    clip: "/brand/journey/scene-01.mp4",
+    mobileClip: "/brand/journey/scene-01-mobile.mp4",
+  },
+  blueprint: {
+    poster: "/brand/journey/scene-04-poster.png",
+    mobilePoster: "/brand/journey/scene-04-mobile-poster.png",
+    clip: "/brand/journey/scene-04.mp4",
+    mobileClip: "/brand/journey/scene-04-mobile.mp4",
+  },
+  method: {
+    poster: "/brand/journey/scene-03-poster.png",
+    mobilePoster: "/brand/journey/scene-03-mobile-poster.png",
+    clip: "/brand/journey/scene-03.mp4",
+    mobileClip: "/brand/journey/scene-03-mobile.mp4",
+  },
+  library: {
+    poster: "/brand/journey/scene-01-poster.png",
+    mobilePoster: "/brand/journey/scene-01-mobile-poster.png",
+    clip: "/brand/journey/scene-01.mp4",
+    mobileClip: "/brand/journey/scene-01-mobile.mp4",
+  },
 };
 
 const nodes = [
@@ -32,6 +78,7 @@ export function BlueprintAmbient({
   className = "",
   tone = "dark",
 }: BlueprintAmbientProps) {
+  const plate = plates[variant];
   const style = { "--ambient-node-count": nodes.length } as CSSProperties;
 
   return (
@@ -41,6 +88,21 @@ export function BlueprintAmbient({
       data-ambient-variant={variant}
       style={style}
     >
+      <picture className="blueprint-ambient__still">
+        <source media="(max-width: 700px)" srcSet={plate.mobilePoster} />
+        <img alt="" decoding="async" src={plate.poster} />
+      </picture>
+      <video
+        autoPlay
+        className="blueprint-ambient__clip"
+        loop
+        muted
+        playsInline
+        poster={plate.poster}
+        preload="metadata"
+      >
+        <source src={plate.clip} type="video/mp4" />
+      </video>
       <svg className="blueprint-ambient__geometry" viewBox="0 0 100 100" role="presentation">
         <g className="blueprint-ambient__orbit">
           <ellipse cx="47" cy="51" rx="31" ry="19" />

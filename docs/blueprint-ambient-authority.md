@@ -5,22 +5,24 @@ A deterministic SVG/CSS background system that extends the homepage's warm studi
 ## Visual contract
 
 - Brand tokens only: warm paper, ink, oxblood, bronze, and gold.
-- Decorative SVG geometry only; no generated copy, card faces, tarot motifs, or random particles.
+- Official homepage journey posters and muted clips are the visual plate.
+- SVG geometry is a whisper overlay only; no generated copy, card faces, tarot motifs, or random particles.
 - Slow transform/opacity animation with a small progressive-enhancement scroll drift.
 - `aria-hidden`, no pointer input, no focusable controls, no layout participation.
 - Static under `prefers-reduced-motion`; simplified on mobile and slow-update devices.
-- The design sits behind content at 15–20% desktop opacity and 16% mobile opacity.
+- Official stills stay visible; muted clips hide under reduced motion and on mobile.
+- Plates fade from the left so calculator copy and CTAs stay readable.
 
 ## Variants and routes
 
 | Variant | Visual idea | Routes |
 | --- | --- | --- |
-| `compatibility` | Two card frames, intersecting orbits, relationship plexus | `/birth-card-compatibility-calculator` |
-| `compatibilityGuide` | Slower editorial version of the relationship map | `/cardology-compatibility` |
-| `birthCard` | One-card reveal with restrained orbital structure | `/birth-card-calculator` |
-| `blueprint` | Report/card geometry on the warm product hero | `/products/personal-card-blueprint` |
-| `method` | Faint deck-system geometry for authority pages | `/what-is-cardology`, `/methodology` |
-| `library` | Quiet navigation/learning geometry | `/cardology-for-beginners` |
+| `compatibility` | Homepage scene 02 plate + two-card geometry | `/birth-card-compatibility-calculator` |
+| `compatibilityGuide` | Same plate, slower editorial overlay | `/cardology-compatibility` |
+| `birthCard` | Homepage scene 01 deck plate | `/birth-card-calculator` |
+| `blueprint` | Homepage scene 04 report plate | `/products/personal-card-blueprint` |
+| `method` | Homepage scene 03 still only | `/what-is-cardology`, `/methodology` |
+| `library` | Homepage scene 01 still only | `/cardology-for-beginners` |
 
 ## Usage
 
