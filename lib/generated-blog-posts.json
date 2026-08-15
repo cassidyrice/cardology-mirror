@@ -7865,5 +7865,147 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "what-is-a-long-range-card",
+    "pillar": "timing-and-spreads",
+    "title": "What Is a Long Range Card?",
+    "description": "The Long Range card in Cardology: the single card that names the dominant theme of your whole year, above the seven 52-day periods.",
+    "dek": "One card sits over the whole year. It is a theme, not a headline event.",
+    "datePublished": "2026-08-15",
+    "dateModified": "2026-08-15",
+    "readTime": "5 min read",
+    "keywords": [
+      "long range card meaning",
+      "year theme card",
+      "dominant card of the year",
+      "long range vs period card",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "The Long Range card is the card in your yearly spread that describes the dominant theme of the entire year, from birthday to birthday. Unlike the seven period cards, which each govern 52 days, the Long Range card stays active the whole time, coloring every period underneath it.",
+    "sections": [
+      {
+        "heading": "Theme above the periods",
+        "body": [
+          "Think of the year as a book: the period cards are chapters and the Long Range card is the title. Chapters vary; the title keeps asserting itself.",
+          "Because it spans the year, the Long Range card is usually read first and referenced often. A Mars period under a Two of Hearts Long Range year feels different from the same period under an Eight of Spades year."
+        ],
+        "links": [
+          {
+            "label": "Reading Your Yearly Spread",
+            "href": "/blog/reading-your-yearly-spread"
+          }
+        ]
+      },
+      {
+        "heading": "How to read it",
+        "body": [
+          "Read the card's suit as the domain the year keeps returning to, and the rank as the kind of movement it keeps asking for. A Diamond Long Range year keeps raising value and resource questions; a Five keeps raising change questions.",
+          "Then hold it loosely. The card names a theme worth noticing, not an event on a schedule."
+        ]
+      },
+      {
+        "heading": "Common mistakes",
+        "body": [
+          "The most common mistake is reading the Long Range card as a prediction: a Nine means loss, a Ten means success. Ranks are patterns with centered and distorted expressions, in timing as in personality.",
+          "The second mistake is forgetting it exists after the first month. Its value shows up in review: at year's end, the theme is usually easier to see than it was in week two."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "How long is the Long Range card active?",
+        "a": "The full year, birthday to birthday. It runs above all seven 52-day periods rather than replacing any of them."
+      },
+      {
+        "q": "Is the Long Range card the same as the period card?",
+        "a": "No. Period cards each govern 52 days in planetary order. The Long Range card is a separate position covering the whole year."
+      },
+      {
+        "q": "Can a Long Range card be difficult?",
+        "a": "Any card can express as pressure or as clarity. A demanding Long Range card names a year-long question, not a year-long punishment."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the Personal Card Blueprint?",
+        "a": "A $13 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "reading-your-yearly-spread",
+      "52-day-periods-in-cardology",
+      "pluto-and-result-cards-in-the-yearly-spread"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "52-Card Astrology Explained",
+        "href": "/52-card-astrology-explained"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "Personal Card Blueprint",
+        "href": "/products/personal-card-blueprint",
+        "note": "$13 instant written report."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
