@@ -3,7 +3,11 @@ import { parseCard, type Suit } from "@/lib/cards";
 import { publicBirthCardCode } from "@/lib/birth-card-truth";
 import { parseIsoCalendarDate } from "./worker-seo-routes";
 
-export { birthdayWorkerPathFromIsoDate } from "./worker-seo-routes";
+export {
+  birthdayWorkerLinkForReveal,
+  birthdayWorkerPathFromIsoDate,
+} from "./worker-seo-routes";
+export type { BirthdayWorkerLink } from "./worker-seo-routes";
 
 const RANK_SLUG: Record<string, string> = {
   A: "ace",
@@ -16,6 +20,11 @@ export type BirthCardResult = {
   birthCard: string;
   rulingCards: string[];
 };
+
+export type BirthCardReveal = Readonly<{
+  birthdate: string;
+  result: BirthCardResult;
+}>;
 
 export function calculateBirthCard(
   month: number,
@@ -46,6 +55,13 @@ export function calculateBirthCardFromIsoDate(
   if (!parsed) return null;
 
   return calculateBirthCard(parsed.month, parsed.day);
+}
+
+export function calculateBirthCardRevealFromIsoDate(
+  isoDate: string,
+): BirthCardReveal | null {
+  const result = calculateBirthCardFromIsoDate(isoDate);
+  return result ? { birthdate: isoDate, result } : null;
 }
 
 export function birthCardSlug(code: string): string | null {

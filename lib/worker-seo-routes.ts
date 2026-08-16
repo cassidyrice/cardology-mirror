@@ -4,6 +4,11 @@ export type IsoCalendarDate = Readonly<{
   day: number;
 }>;
 
+export type BirthdayWorkerLink = Readonly<{
+  href: string;
+  label: string;
+}>;
+
 const MONTH_SLUGS = [
   "january",
   "february",
@@ -75,6 +80,27 @@ export function birthdayWorkerPathFromIsoDate(isoDate: string): string | null {
   if (!parsed) return null;
 
   return `/born-on/${MONTH_SLUGS[parsed.month - 1]}-${parsed.day}`;
+}
+
+export function birthdayWorkerLinkForReveal(
+  revealedBirthdate: string,
+  todayIso: string,
+): BirthdayWorkerLink | null {
+  const revealed = parseIsoCalendarDate(revealedBirthdate);
+  const today = parseIsoCalendarDate(todayIso);
+  if (!revealed || !today || revealedBirthdate > todayIso) return null;
+
+  const href = birthdayWorkerPathFromIsoDate(revealedBirthdate);
+  if (!href) return null;
+
+  const label = new Date(
+    `${revealedBirthdate}T00:00:00.000Z`,
+  ).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+  return { href, label };
 }
 
 export function compatibilityPairPath(

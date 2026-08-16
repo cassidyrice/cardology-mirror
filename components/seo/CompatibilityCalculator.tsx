@@ -27,6 +27,33 @@ function slugOf(code: string): string | null {
   return `${RANK_SLUG[p.rank] ?? p.rank}-of-${p.suit as Suit}`;
 }
 
+export function CompatibilityWorkerAnchor({
+  firstSlug,
+  secondSlug,
+  firstLabel,
+  secondLabel,
+}: {
+  firstSlug: string | null;
+  secondSlug: string | null;
+  firstLabel: string | undefined;
+  secondLabel: string | undefined;
+}) {
+  const pairPath =
+    firstSlug && secondSlug
+      ? compatibilityPairPath(firstSlug, secondSlug)
+      : null;
+  if (!pairPath || !firstLabel || !secondLabel) return null;
+
+  return (
+    <a
+      href={pairPath}
+      className="text-sm font-medium text-brand-ink underline underline-offset-4"
+    >
+      Read the full {firstLabel} + {secondLabel} pairing →
+    </a>
+  );
+}
+
 export function CompatibilityCalculator() {
   const [a, setA] = useState("");
   const [b, setB] = useState("");
@@ -104,8 +131,6 @@ function PairResult({
   const pb = parseCard(b.birthCard);
   const aSlug = slugOf(a.birthCard);
   const bSlug = slugOf(b.birthCard);
-  const pairPath =
-    aSlug && bSlug ? compatibilityPairPath(aSlug, bSlug) : null;
   const sameSuit = pa?.suit === pb?.suit;
   const comparison = compareLifePathProfiles(a, b);
   const priceLabel =
@@ -200,14 +225,12 @@ function PairResult({
           One-time personalized written report for your side of the pattern.
           No subscription or phone call.
         </p>
-        {pairPath && (
-          <a
-            href={pairPath}
-            className="text-sm font-medium text-brand-ink underline underline-offset-4"
-          >
-            Read the full {pa?.label} + {pb?.label} pairing →
-          </a>
-        )}
+        <CompatibilityWorkerAnchor
+          firstSlug={aSlug}
+          secondSlug={bSlug}
+          firstLabel={pa?.label}
+          secondLabel={pb?.label}
+        />
         <Link
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"

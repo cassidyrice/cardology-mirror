@@ -8,10 +8,10 @@ import {
 } from "@/components/analytics/AnalyticsCapture";
 import { parseCard, todayISO } from "@/lib/cards";
 import {
-  birthdayWorkerPathFromIsoDate,
+  birthdayWorkerLinkForReveal,
   birthCardSlug,
-  calculateBirthCardFromIsoDate,
-  type BirthCardResult,
+  calculateBirthCardRevealFromIsoDate,
+  type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
@@ -21,17 +21,17 @@ import { ShareCard } from "./ShareCard";
 const blueprintOffer = instantReportBySlug("personal-card-blueprint");
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
-  const [result, setResult] = useState<BirthCardResult | null>(null);
+  const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
   const [touched, setTouched] = useState(false);
 
   // Allow prefill via ?birthdate=YYYY-MM-DD (used by the site SearchAction).
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get("birthdate");
     if (q) {
-      const calculated = calculateBirthCardFromIsoDate(q);
+      const calculated = calculateBirthCardRevealFromIsoDate(q);
       if (!calculated) return;
       setDate(q);
-      setResult(calculated);
+      setReveal(calculated);
       setTouched(true);
       trackClientFunnelEventOnce("calculator_started", {
         placement: "search-prefill",
@@ -58,8 +58,8 @@ export function BirthCardCalculator() {
     trackClientFunnelEventOnce("calculator_started", {
       placement: "calculator-form",
     });
-    const calculated = calculateBirthCardFromIsoDate(date);
-    setResult(calculated);
+    const calculated = calculateBirthCardRevealFromIsoDate(date);
+    setReveal(calculated);
     if (calculated) {
       trackClientFunnelEvent("calculator_completed", {
         placement: "calculator-form",
@@ -103,35 +103,56 @@ export function BirthCardCalculator() {
       </form>
 
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
-        {touched && !result
+        {touched && !reveal
           ? "Enter a full date, including year, month, and day."
-          : result
-            ? `Your birth card is ${parseCard(result.birthCard)?.label ?? result.birthCard}.`
+          : reveal
+            ? `Your birth card is ${parseCard(reveal.result.birthCard)?.label ?? reveal.result.birthCard}.`
             : ""}
       </p>
-      {touched && !result && (
+      {touched && !reveal && (
         <p className="mt-4 text-sm text-brand-oxblood">
           Enter a full date (year, month, and day) to calculate your card.
         </p>
       )}
-      {result && (
+      {reveal && (
         <BirthCardResultCard
-          key={`${result.birthCard}|${result.rulingCards.join(",")}`}
-          result={result}
-          birthdate={date}
+          key={`${reveal.result.birthCard}|${reveal.result.rulingCards.join(",")}`}
+          reveal={reveal}
         />
       )}
     </div>
   );
 }
 
-function BirthCardResultCard({
-  result,
-  birthdate,
+export function BirthdayWorkerAnchor({
+  reveal,
+  todayIso,
 }: {
-  result: BirthCardResult;
-  birthdate: string;
+  reveal: BirthCardReveal;
+  todayIso: string;
 }) {
+  const birthdayLink = birthdayWorkerLinkForReveal(
+    reveal.birthdate,
+    todayIso,
+  );
+  if (!birthdayLink) return null;
+
+  return (
+    <a
+      href={birthdayLink.href}
+      className="text-sm font-medium text-brand-ink underline underline-offset-4"
+    >
+      Read the {birthdayLink.label} birth-card page →
+    </a>
+  );
+}
+
+function BirthCardResultCard({
+  reveal,
+}: {
+  reveal: BirthCardReveal;
+}) {
+  const { birthdate, result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
@@ -140,17 +161,6 @@ function BirthCardResultCard({
   const checkoutHref = birthdate
     ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdate)}`
     : "/checkout/personal-card-blueprint";
-  const birthdayPath =
-    birthdate && birthdate <= todayISO()
-      ? birthdayWorkerPathFromIsoDate(birthdate)
-      : null;
-  const birthdayLabel = birthdayPath
-    ? new Date(`${birthdate}T00:00:00.000Z`).toLocaleDateString("en-US", {
-        month: "long",
-        day: "numeric",
-        timeZone: "UTC",
-      })
-    : null;
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
   // the result is already visible; reduced motion gets an instant jump.
@@ -240,14 +250,10 @@ function BirthCardResultCard({
           >
             What&apos;s inside the Blueprint? →
           </Link>
-          {birthdayPath && (
-            <a
-              href={birthdayPath}
-              className="text-sm font-medium text-brand-ink underline underline-offset-4"
-            >
-              Read the {birthdayLabel} birth-card page →
-            </a>
-          )}
+          <BirthdayWorkerAnchor
+            reveal={reveal}
+            todayIso={todayISO()}
+          />
           {slug && (
             <Link
               href={`/birth-card/${slug}`}

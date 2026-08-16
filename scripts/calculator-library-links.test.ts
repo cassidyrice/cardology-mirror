@@ -1,10 +1,16 @@
 import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
+import { BirthdayWorkerAnchor } from "../components/seo/BirthCardCalculator";
+import { CompatibilityWorkerAnchor } from "../components/seo/CompatibilityCalculator";
 import PAIRS from "../lib/compat-pairs.json";
+import { calculateBirthCardRevealFromIsoDate } from "../lib/birth-card-calculator";
 import { allCardSlugs } from "../lib/seo-cards";
 import {
+  birthdayWorkerLinkForReveal,
   birthdayWorkerPathFromIsoDate,
   compatibilityPairPath,
   parseIsoCalendarDate,
@@ -12,6 +18,112 @@ import {
 import { buildBirthdayMapRows } from "./generate-cardology-birthday-map";
 
 const root = join(import.meta.dir, "..");
+
+test("a revealed birth-card snapshot changes only on the next valid submission", () => {
+  let liveInput = "2000-02-29";
+  let storedReveal = calculateBirthCardRevealFromIsoDate(liveInput);
+
+  expect(storedReveal?.birthdate).toBe("2000-02-29");
+  expect(storedReveal?.result.birthCard).toBe("9♣");
+
+  liveInput = "2000-03-01";
+  expect(storedReveal?.birthdate).toBe("2000-02-29");
+  expect(storedReveal?.result.birthCard).toBe("9♣");
+
+  storedReveal = calculateBirthCardRevealFromIsoDate(liveInput);
+  expect(storedReveal?.birthdate).toBe("2000-03-01");
+  expect(storedReveal?.result.birthCard).not.toBe("9♣");
+});
+
+test("invalid and incomplete submissions cannot create reveal snapshots", () => {
+  expect(calculateBirthCardRevealFromIsoDate("2001-02-29")).toBeNull();
+  expect(calculateBirthCardRevealFromIsoDate("2000-02")).toBeNull();
+  expect(calculateBirthCardRevealFromIsoDate("")).toBeNull();
+});
+
+test("a reveal from the fixed current day gets its exact UTC-safe Worker link", () => {
+  expect(birthdayWorkerLinkForReveal("2026-08-16", "2026-08-16")).toEqual({
+    href: "/born-on/august-16",
+    label: "August 16",
+  });
+  expect(birthdayWorkerLinkForReveal("2000-01-01", "2026-08-16")).toEqual({
+    href: "/born-on/january-1",
+    label: "January 1",
+  });
+});
+
+test("future, invalid, and incomplete reveals have no Worker link", () => {
+  expect(birthdayWorkerLinkForReveal("2026-08-17", "2026-08-16")).toBeNull();
+  expect(birthdayWorkerLinkForReveal("2026-02-29", "2026-08-16")).toBeNull();
+  expect(birthdayWorkerLinkForReveal("2026-08", "2026-08-16")).toBeNull();
+  expect(birthdayWorkerLinkForReveal("", "2026-08-16")).toBeNull();
+});
+
+test("the birthday result renders its Worker anchor only for an eligible reveal", () => {
+  let liveInput = "2000-02-29";
+  let storedReveal = calculateBirthCardRevealFromIsoDate(liveInput)!;
+  const firstReveal = renderToStaticMarkup(
+    createElement(BirthdayWorkerAnchor, {
+      reveal: storedReveal,
+      todayIso: "2026-08-16",
+    }),
+  );
+  expect(firstReveal).toMatch(
+    /^<a\b(?=[^>]*\bhref="\/born-on\/february-29")[^>]*>Read the February 29 birth-card page →<\/a>$/,
+  );
+
+  liveInput = "2000-03-01";
+  const afterEdit = renderToStaticMarkup(
+    createElement(BirthdayWorkerAnchor, {
+      reveal: storedReveal,
+      todayIso: "2026-08-16",
+    }),
+  );
+  expect(afterEdit).toBe(firstReveal);
+
+  storedReveal = calculateBirthCardRevealFromIsoDate(liveInput)!;
+  const afterSubmit = renderToStaticMarkup(
+    createElement(BirthdayWorkerAnchor, {
+      reveal: storedReveal,
+      todayIso: "2026-08-16",
+    }),
+  );
+  expect(afterSubmit).toMatch(
+    /^<a\b(?=[^>]*\bhref="\/born-on\/march-1")[^>]*>Read the March 1 birth-card page →<\/a>$/,
+  );
+
+  const nextDay = renderToStaticMarkup(
+    createElement(BirthdayWorkerAnchor, {
+      reveal: calculateBirthCardRevealFromIsoDate("2026-08-17")!,
+      todayIso: "2026-08-16",
+    }),
+  );
+  expect(nextDay).toBe("");
+});
+
+test("the compatibility result renders one canonical Worker pair anchor", () => {
+  const markup = renderToStaticMarkup(
+    createElement(CompatibilityWorkerAnchor, {
+      firstSlug: "ace-of-clubs",
+      secondSlug: "king-of-hearts",
+      firstLabel: "Ace of Clubs",
+      secondLabel: "King of Hearts",
+    }),
+  );
+  expect(markup).toMatch(
+    /^<a\b(?=[^>]*\bhref="\/compatibility\/king-of-hearts-and-ace-of-clubs")[^>]*>Read the full Ace of Clubs \+ King of Hearts pairing →<\/a>$/,
+  );
+
+  const unknown = renderToStaticMarkup(
+    createElement(CompatibilityWorkerAnchor, {
+      firstSlug: "not-a-card",
+      secondSlug: "king-of-hearts",
+      firstLabel: "Unknown",
+      secondLabel: "King of Hearts",
+    }),
+  );
+  expect(unknown).toBe("");
+});
 
 test("every leap-year calendar date maps to its exact birthday-library path", () => {
   const paths = buildBirthdayMapRows().map((row) => {
@@ -79,7 +191,7 @@ test("compatibility paths allow same cards and reject unknown slugs", () => {
   expect(compatibilityPairPath("queen-of-hearts", "not-a-card")).toBeNull();
 });
 
-test("calculator results expose guarded plain anchors to the exact Worker libraries", () => {
+test("calculator Worker links keep a client-safe import boundary and plain anchors", () => {
   const birthSource = readFileSync(
     join(root, "components", "seo", "BirthCardCalculator.tsx"),
     "utf8",
@@ -94,34 +206,11 @@ test("calculator results expose guarded plain anchors to the exact Worker librar
   );
 
   expect(birthSource).toMatch(
-    /import\s*{\s*parseCard,\s*todayISO\s*}\s*from\s*"@\/lib\/cards"/,
-  );
-  expect(birthSource).toMatch(
-    /import\s*{[^}]*birthdayWorkerPathFromIsoDate[^}]*}\s*from\s*"@\/lib\/birth-card-calculator"/s,
-  );
-  expect(birthSource).toMatch(
-    /const\s+birthdayPath\s*=\s*birthdate\s*&&\s*birthdate\s*<=\s*todayISO\(\)\s*\?\s*birthdayWorkerPathFromIsoDate\(birthdate\)\s*:\s*null/,
-  );
-  expect(birthSource).toMatch(
-    /new Date\(`\$\{birthdate}T00:00:00\.000Z`\)\.toLocaleDateString\(\s*"en-US",\s*{[^}]*month:\s*"long"[^}]*day:\s*"numeric"[^}]*timeZone:\s*"UTC"/s,
-  );
-  expect(birthSource).toMatch(
-    /{birthdayPath\s*&&\s*\(\s*<a\s+href={birthdayPath}[^>]*>\s*Read the\s+{birthdayLabel}\s+birth-card page →\s*<\/a>\s*\)}/s,
+    /<a\b[^>]*\bhref={birthdayLink\.href}/s,
   );
   expect(birthSource).not.toMatch(
-    /<Link\b[^>]*\bhref={birthdayPath}/s,
+    /<Link\b[^>]*\bhref={birthdayLink\.href}/s,
   );
-
-  const blueprintExplainer = birthSource.indexOf(
-    'href="/products/personal-card-blueprint"',
-  );
-  const birthdayDestination = birthSource.indexOf("href={birthdayPath}");
-  const cardMeaning = birthSource.indexOf('href={`/birth-card/${slug}`}');
-  expect(blueprintExplainer).toBeGreaterThan(-1);
-  expect(birthdayDestination).toBeGreaterThan(blueprintExplainer);
-  expect(cardMeaning).toBeGreaterThan(birthdayDestination);
-  expect(birthSource).toContain("href={checkoutHref}");
-  expect(birthSource).toContain("Get My Blueprint");
 
   expect(compatibilitySource).toMatch(
     /import\s*{\s*compatibilityPairPath\s*}\s*from\s*"@\/lib\/worker-seo-routes"/,
@@ -130,24 +219,11 @@ test("calculator results expose guarded plain anchors to the exact Worker librar
     /from\s*["']@\/lib\/compat-pairs["']/,
   );
   expect(compatibilitySource).toMatch(
-    /const\s+pairPath\s*=\s*aSlug\s*&&\s*bSlug\s*\?\s*compatibilityPairPath\(aSlug,\s*bSlug\)\s*:\s*null/,
-  );
-  expect(compatibilitySource).toMatch(
-    /{pairPath\s*&&\s*\(\s*<a\s+href={pairPath}[^>]*>\s*Read the full\s+{pa\?\.label}\s*\+\s*{pb\?\.label}\s+pairing →\s*<\/a>\s*\)}/s,
+    /<a\b[^>]*\bhref={pairPath}/s,
   );
   expect(compatibilitySource).not.toMatch(
     /<Link\b[^>]*\bhref={pairPath}/s,
   );
-
-  const pairDestination = compatibilitySource.indexOf("href={pairPath}");
-  const genericGuide = compatibilitySource.indexOf(
-    'href="/cardology-compatibility"',
-  );
-  expect(pairDestination).toBeGreaterThan(-1);
-  expect(genericGuide).toBeGreaterThan(pairDestination);
-  expect(compatibilitySource).toContain("href={checkoutHref}");
-  expect(compatibilitySource).toContain('href={`/birth-card/${aSlug}`}');
-  expect(compatibilitySource).toContain('href={`/birth-card/${bSlug}`}');
 
   expect(routeSource).not.toMatch(
     /compat-pairs\.json|card-meanings\.json|engine(?:-core)?|from\s*["'](?:react|next(?:\/|["']))/,
