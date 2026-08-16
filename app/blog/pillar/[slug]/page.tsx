@@ -74,11 +74,6 @@ export default async function BlogPillarPage({
         })),
       },
     },
-    breadcrumbJsonLd([
-      { name: "Home", item: SITE_URL },
-      { name: "Blog", item: `${SITE_URL}/blog` },
-      { name: pillar.shortTitle, item: `${SITE_URL}${blogPillarPath(pillar)}` },
-    ]),
     faqJsonLd(pillar.faqs),
   ];
 
@@ -214,19 +209,6 @@ function FaqList({ faqs }: { faqs: BlogFaq[] }) {
       ))}
     </div>
   );
-}
-
-function breadcrumbJsonLd(items: { name: string; item: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.item,
-    })),
-  };
 }
 
 function faqJsonLd(faqs: BlogFaq[]) {

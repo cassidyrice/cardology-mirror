@@ -111,11 +111,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const videos = videosForCard(card.slug);
 
   const jsonLd = [
-    breadcrumbJsonLd([
-      { name: "Home", item: SITE_URL },
-      { name: "Birth Cards", item: `${SITE_URL}/birth-card` },
-      { name: `${card.label}`, item: `${SITE_URL}/birth-card/${card.slug}` },
-    ]),
     faqJsonLd(faqs),
     articleJsonLd({
       headline: `${card.label} Meaning: Birth Card & Readings`,
@@ -412,11 +407,6 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
   ];
 
   const jsonLd = [
-    breadcrumbJsonLd([
-      { name: "Home", item: SITE_URL },
-      { name: "Birth Cards", item: `${SITE_URL}/birth-card` },
-      { name: date.label, item: `${SITE_URL}/birth-card/${date.slug}` },
-    ]),
     faqJsonLd(faqs),
     articleJsonLd({
       headline: `${date.label} Birth Card: ${card.label}`,
@@ -668,10 +658,6 @@ function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
 
 function JsonLd({ data }: { data: unknown }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
-}
-
-function breadcrumbJsonLd(items: { name: string; item: string }[]) {
-  return { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: items.map((x, i) => ({ "@type": "ListItem", position: i + 1, ...x })) };
 }
 
 function faqJsonLd(faqs: { q: string; a: string }[]) {

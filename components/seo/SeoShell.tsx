@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
+import { buildBreadcrumbJsonLd } from "@/lib/structured-data";
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
@@ -15,6 +16,10 @@ export function SeoShell({
   children: ReactNode;
   crumb?: { label: string; href: string }[];
 }) {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd(
+    crumb?.map(({ label, href }) => ({ name: label, href })) ?? [],
+  );
+
   return (
     <div className="paper-shell landing-oracle relative min-h-dvh overflow-hidden bg-brand-paper text-brand-ink">
       <div className="oracle-grid" aria-hidden="true" />
@@ -29,6 +34,14 @@ export function SeoShell({
         tabIndex={-1}
         className="relative z-10 mx-auto min-h-[calc(100dvh-69px)] w-full max-w-5xl px-5 pt-8 sm:px-8 sm:pt-12 lg:px-10"
       >
+        {breadcrumbJsonLd && (
+          <script
+            type="application/ld+json"
+            data-seo-breadcrumb="true"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          />
+        )}
+
         {crumb && crumb.length > 0 && (
           <nav aria-label="Breadcrumb" className="mb-7 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-brand-ink-faint">
             {crumb.map((c, i) => (
