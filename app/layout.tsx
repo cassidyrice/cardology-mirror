@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import "./homepage-journey.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
 import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";

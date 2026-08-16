@@ -99,6 +99,26 @@ export function mapFunnelEventToGa4(
       return { eventName: "calculator_started" };
     case "calculator_completed":
       return { eventName: "calculator_completed" };
+    case "card_meaning_clicked":
+      return {
+        eventName: "select_content",
+        params: { content_type: "birth_card_meaning" },
+      };
+    case "course_offer_shown":
+      return {
+        eventName: "view_promotion",
+        params: { promotion_name: "free_birth_card_course" },
+      };
+    case "free_course_signup":
+      return {
+        eventName: "generate_lead",
+        params: { lead_source: "free_course" },
+      };
+    case "blueprint_clicked":
+      return {
+        eventName: "select_item",
+        params: { item_category: "personal_blueprint" },
+      };
     case "card_shared":
       return { eventName: "share", params: { content_type: "birth_card" } };
     case "offer_selected":
@@ -112,8 +132,6 @@ export function mapFunnelEventToGa4(
       return { eventName: "begin_checkout" };
     case "purchase_completed":
       return { eventName: "purchase" };
-    case "free_course_signup":
-      return { eventName: "generate_lead", params: { lead_source: "free_course" } };
     case "elroy_teaser_shown":
       return { eventName: "elroy_teaser_shown" };
     case "elroy_opened":

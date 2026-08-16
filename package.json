@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "test": "bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts",
+    "test:homepage-hero": "bun test scripts/homepage-hero.test.ts",
+    "test:homepage-hero:browser": "bun scripts/homepage-hero-browser.test.ts",
     "test:elroy": "bun test scripts/elroy-*.test.ts",
     "test:elroy:browser": "bun scripts/elroy-browser.test.ts",
     "dev": "next dev -p 3577",
