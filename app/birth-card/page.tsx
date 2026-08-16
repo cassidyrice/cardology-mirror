@@ -83,6 +83,26 @@ export default function BirthCardIndex() {
         ))}
       </nav>
 
+      <section className="mb-10 rounded-2xl border border-gold/20 bg-white/[0.04] p-5" aria-labelledby="popular-card-meanings">
+        <h2 id="popular-card-meanings" className="eyebrow mb-3 text-gold">Popular card meanings</h2>
+        <p className="prose-reading mb-4 text-sm text-mist">
+          Start with the cards people are reading most, then browse the full deck below.
+        </p>
+        <ul className="flex flex-wrap gap-2 text-sm">
+          {[
+            ["Ace of Hearts meaning", "/birth-card/ace-of-hearts"],
+            ["10 of Hearts meaning", "/birth-card/10-of-hearts"],
+            ["10 of Diamonds meaning", "/birth-card/10-of-diamonds"],
+          ].map(([label, href]) => (
+            <li key={href}>
+              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-bone">
+                {label} →
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <DeckMatrix />
 
       <div className="space-y-12">
