@@ -309,6 +309,10 @@ assert.match(
 );
 assert.match(
   middlewareText,
+  /["']\/cards-of-destiny["']\s*:\s*["']\/destiny-cards["']/,
+);
+assert.match(
+  middlewareText,
   /["']\/blog\/what-cardology-is-and-is-not["']\s*:\s*["']\/what-is-cardology["']/,
 );
 assert.match(middlewareText, /NextResponse\.redirect\(redirectUrl,\s*301\)/);
@@ -347,6 +351,13 @@ assert.deepEqual(
   {
     status: 301,
     location: "https://cardblueprints.com/birth-card-calculator?utm_source=semrush",
+  },
+);
+assert.deepEqual(
+  middlewareResult("https://cardblueprints.com/cards-of-destiny?utm_source=semrush", "cardblueprints.com"),
+  {
+    status: 301,
+    location: "https://cardblueprints.com/destiny-cards?utm_source=semrush",
   },
 );
 assert.deepEqual(
