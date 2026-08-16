@@ -5,6 +5,7 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -58,6 +59,14 @@ const faqs = [
     a: "No. Timing language describes pressure, focus, and chapter themes — not guaranteed events. The stronger use is recognizing patterns you can test in real life.",
   },
   {
+    q: "Is Cardology accurate?",
+    a: "The mapping is exact: the same birthday always produces the same card, and anyone can verify the calculation. The interpretations are pattern language for self-reflection, not empirically validated prediction. Treat a card as a precise mirror to test against real behavior, not as proof about your future.",
+  },
+  {
+    q: "What are Cardology card meanings?",
+    a: "Each of the 52 playing cards carries a meaning built from its suit (life domain: hearts, diamonds, clubs, spades) and rank (the movement inside that domain). Card Blueprints publishes a full meaning page for every card, indexed in the card meanings section above.",
+  },
+  {
     q: "Where does Cardology come from?",
     a: "Modern documentation includes Olney Richmond’s The Mystic Test Book (1893), later work by Florence Campbell and Edith Randall, and contemporary teachers such as Robert Lee Camp. The deck-to-calendar structure (52 cards / 52 weeks) is older than any single book.",
   },
@@ -69,6 +78,7 @@ const toc = [
   { id: "benefits", label: "Benefits" },
   { id: "find-your-card", label: "Find your card" },
   { id: "suits", label: "Four suits" },
+  { id: "card-meanings", label: "Card meanings" },
   { id: "layers", label: "Birth vs ruling" },
   { id: "lineage", label: "Lineage" },
   { id: "not", label: "What it is not" },
@@ -204,6 +214,16 @@ export default function WhatIsCardology() {
           <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
           <li><span className="text-[#14110d]">♠ Spades</span> — work, will &amp; transformation</li>
         </ul>
+      </section>
+
+      <section className="mt-10" id="card-meanings">
+        <h2 className="eyebrow mb-2 text-gold">Cardology card meanings: all 52 cards</h2>
+        <p className="prose-reading mb-5 text-mist">
+          Every card in the deck has its own Cardology card meaning page: the drawn-card
+          reading, the birth-card personality, love, money, shadow, and the exact birth
+          dates that carry it. Pick a card to open its full meaning.
+        </p>
+        <DeckMatrix />
       </section>
 
       <section className="mt-8" id="layers">
