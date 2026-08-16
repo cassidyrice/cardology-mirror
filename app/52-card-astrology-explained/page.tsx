@@ -49,6 +49,14 @@ export default function CardAstrology() {
       q: "What is the Cardology calendar?",
       a: "The Cardology calendar is the deck-to-year mapping at the core of the system: 52 cards for 52 weeks, 4 suits for 4 seasons, 13 ranks for the 13 weeks of a season, and 12 court cards echoing the 12 months. Add every card's value (ace as 1 through king as 13) and the deck sums to 364; the Joker completes the 365-day year.",
     },
+    {
+      q: "What are birthday playing cards?",
+      a: "Birthday playing cards are the same idea by another name: each birthday is assigned one card from a standard 52-card deck. Your birthday's playing card is your birth card — use the calculator or the chart above to see yours.",
+    },
+    {
+      q: "What is playing card astrology?",
+      a: "Playing card astrology is the informal name for reading a standard deck as a calendar-and-pattern system — the same family as Cardology and 52-card astrology. It is not horoscope astrology: no planets are charted, and the birthday-to-card math is fixed.",
+    },
   ];
 
   const faq = {
@@ -82,7 +90,8 @@ export default function CardAstrology() {
       </p>
       <p className="prose-reading mb-6 text-mist">
         People search <strong>playing cards birthday chart</strong>,{" "}
-        <strong>playing card astrology</strong>, and <strong>deck of cards birthday chart</strong>
+        <strong>playing card astrology</strong>, <strong>birthday playing cards</strong>,
+        and <strong>deck of cards birthday chart</strong>{" "}
         for the same underlying map. This page explains the structure, then links every
         date into the full birthday directory.
       </p>
