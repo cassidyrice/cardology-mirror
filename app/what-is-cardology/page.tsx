@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "How does Cardology work?",
-    a: "Month and day feed a fixed formula that resolves to one of 52 cards (with December 31 as the Joker and February 29 outside the cycle). From there you read suit (life domain), rank (movement), ruling card (expression style), and optional timing or compatibility layers.",
+    a: "Month and day feed a fixed formula that resolves to one of 52 cards, with December 31 as the Joker boundary. February 29 maps normally to the 9 of Clubs. From there you read suit (life domain), rank (movement), ruling card (expression style), and optional timing or compatibility layers.",
   },
   {
     q: "What is my birth card in Cardology?",
@@ -93,7 +93,7 @@ export default function WhatIsCardology() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-12",
+    dateModified: "2026-08-15",
     mainEntityOfPage: "https://cardblueprints.com/what-is-cardology",
   };
 
@@ -115,7 +115,7 @@ export default function WhatIsCardology() {
       </div>
 
       <p className="mb-2 text-xs text-faint">
-        By Cassidy Rice · Updated August 12, 2026 ·{" "}
+        By Cassidy Rice · Updated August 15, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
@@ -150,9 +150,9 @@ export default function WhatIsCardology() {
         <h2 className="eyebrow mb-2 text-gold">How does Cardology work?</h2>
         <p className="prose-reading text-mist">
           A standard deck has 52 cards; the calendar has 52 weeks. Cardology links
-          the two: 364 of 365 dates map to a card by set rule — December 31 gets the
-          Joker; February 29 sits outside the cycle. Your birth card is the lifelong
-          significator. Suit names the life domain; rank names the movement inside
+          the two by a fixed rule. December 31 is the Joker boundary, while the leap
+          day, February 29, maps normally to the 9 of Clubs. Your birth card is the
+          lifelong significator. Suit names the life domain; rank names the movement inside
           that domain. Optional layers add a planetary ruling card, yearly periods,
           daily cards, and two-person compatibility.
         </p>

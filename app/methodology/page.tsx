@@ -28,7 +28,7 @@ export default function MethodologyPage() {
     headline: "Card Blueprints Methodology",
     description: metadata.description,
     url: `${SITE_URL}/methodology`,
-    dateModified: "2026-08-07",
+    dateModified: "2026-08-15",
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/methodology`,
@@ -44,7 +44,7 @@ export default function MethodologyPage() {
           How a birthday becomes a card, and how the card becomes a reading.
         </h1>
         <p className="mt-3 text-sm text-[#5b5148]">
-          By Cassidy Rice · Updated August 7, 2026 ·{" "}
+          By Cassidy Rice · Updated August 15, 2026 ·{" "}
           <Link href="/editorial-policy" className="underline">
             Editorial policy
           </Link>
@@ -86,8 +86,8 @@ export default function MethodologyPage() {
             for ruling-card context and periods.
           </li>
           <li>
-            <strong>Map.</strong> The date lands on one of 52 fixed deck positions (Joker
-            for December 31; February 29 outside the cycle).
+            <strong>Map.</strong> The date lands on one of 52 fixed deck positions. December
+            31 is the Joker boundary; February 29 maps normally to the 9 of Clubs.
           </li>
           <li>
             <strong>Read structure.</strong> Suit = diamonds (values &amp; resources).

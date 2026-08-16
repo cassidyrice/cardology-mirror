@@ -71,7 +71,7 @@ export default function CardAstrology() {
         </p>
       </div>
       <p className="mb-4 text-xs text-faint">
-        By Cassidy Rice · Updated August 7, 2026 ·{" "}
+        By Cassidy Rice · Updated August 15, 2026 ·{" "}
         <Link href="/methodology" className="text-gold underline underline-offset-4">
           Methodology
         </Link>
@@ -101,7 +101,7 @@ export default function CardAstrology() {
           There are 52 cards in a deck and 52 weeks in a year. There are 13 ranks per
           suit and roughly 13 weeks per season. These alignments are the backbone: the
           deck is treated as a calendar in disguise. December 31 maps to the Joker;
-          February 29 sits outside the cycle.
+          the leap day, February 29, maps normally to the 9 of Clubs.
         </p>
       </section>
 
