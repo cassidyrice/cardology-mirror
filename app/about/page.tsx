@@ -19,7 +19,7 @@ export default function AboutPage() {
     "@type": "AboutPage",
     name: "About Card Blueprints",
     url: `${SITE_URL}/about`,
-    dateModified: "2026-08-07",
+    dateModified: "2026-08-16",
     about: {
       "@type": "Thing",
       name: "Cardology",
@@ -60,7 +60,7 @@ export default function AboutPage() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">Updated August 7, 2026</p>
+        <p className="mt-3 text-sm text-[#5b5148]">Updated August 16, 2026</p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
@@ -135,6 +135,30 @@ export default function AboutPage() {
         >
           Personal Card Blueprint — $13
         </Link>
+      </section>
+
+      <section className="mt-12 max-w-3xl space-y-4">
+        <h2 className="font-serif text-3xl text-[#14110d]">Research and data</h2>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Card Blueprints publishes the calculation layer so readers can inspect the
+          work instead of trusting a black-box result. The complete birthday map covers
+          all 366 month-and-day combinations, including leap day and the December 31
+          Joker boundary.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/methodology#birthday-map-dataset"
+            className="inline-block rounded-full border border-[#14110d]/20 px-5 py-2.5 text-sm font-semibold text-[#8e321f]"
+          >
+            Methodology and CSV
+          </Link>
+          <a
+            href="https://buttondown.com/cardblueprint/archive/i-published-the-full-366-date-cardology-map/"
+            className="inline-block rounded-full border border-[#14110d]/20 px-5 py-2.5 text-sm font-semibold text-[#8e321f]"
+          >
+            Read the 366-date publication note
+          </a>
+        </div>
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
