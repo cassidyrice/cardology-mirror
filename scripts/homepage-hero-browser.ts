@@ -1,6 +1,6 @@
 /**
  * Browser verification for the calculator-first homepage hero.
- * HOMEPAGE_HERO_BASE_URL=http://127.0.0.1:3577 bun scripts/homepage-hero-browser.test.ts
+ * HOMEPAGE_HERO_BASE_URL=http://127.0.0.1:3577 bun scripts/homepage-hero-browser.ts
  */
 import assert from "node:assert/strict";
 import { chromium, type Page } from "playwright";
