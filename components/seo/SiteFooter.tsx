@@ -31,7 +31,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <ul className="space-y-2">
               <li>
                 <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
-                  Personal Card Blueprint — $29
+                  Personal Card Blueprint — $13
                 </Link>
               </li>
 

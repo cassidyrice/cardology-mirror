@@ -56,7 +56,7 @@ export function SiteHeader() {
                 ))}
               </ul>
               <Link href="/products/personal-card-blueprint" className="accent-button mt-4 w-full">
-                Get My Blueprint &mdash; $29
+                Get My Blueprint &mdash; $13
               </Link>
             </nav>
           </details>
@@ -65,7 +65,7 @@ export function SiteHeader() {
               Call" onto two lines. */}
           <div className="hidden md:block">
             <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
-              Get My Blueprint &mdash; $29
+              Get My Blueprint &mdash; $13
             </Link>
           </div>
         </div>

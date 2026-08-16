@@ -6,49 +6,28 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
-import cardology from "@/lib/engine-core/engine.js";
-import { parseCard, type Suit } from "@/lib/cards";
-import { publicBirthCardCode } from "@/lib/birth-card-truth";
+import { parseCard } from "@/lib/cards";
+import {
+  birthCardSlug,
+  calculateBirthCardFromIsoDate,
+  type BirthCardResult,
+} from "@/lib/birth-card-calculator";
 import { PlayingCard } from "../PlayingCard";
 import { ReadingBridge } from "./ReadingBridge";
 import { ShareCard } from "./ShareCard";
 
-const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
-function slugOf(code: string): string | null {
-  const p = parseCard(code);
-  if (!p) return null;
-  return `${RANK_SLUG[p.rank] ?? p.rank}-of-${p.suit as Suit}`;
-}
-
-interface Result {
-  birthCard: string;
-  rulingCards: string[];
-}
-
-function compute(month: number, day: number): Result | null {
-  try {
-    const bc = publicBirthCardCode(month, day);
-    const prc = cardology.getPlanetaryRulingCard(month, day);
-    const rulingCards = Array.isArray(prc) ? prc : prc ? [prc] : [];
-    if (!bc || bc === "Unknown") return null;
-    return { birthCard: bc, rulingCards };
-  } catch {
-    return null;
-  }
-}
-
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
-  const [result, setResult] = useState<Result | null>(null);
+  const [result, setResult] = useState<BirthCardResult | null>(null);
   const [touched, setTouched] = useState(false);
 
   // Allow prefill via ?birthdate=YYYY-MM-DD (used by the site SearchAction).
   useEffect(() => {
     const q = new URLSearchParams(window.location.search).get("birthdate");
-    if (q && /^\d{4}-\d{2}-\d{2}$/.test(q)) {
+    if (q) {
+      const calculated = calculateBirthCardFromIsoDate(q);
+      if (!calculated) return;
       setDate(q);
-      const [, m, d] = q.split("-").map(Number);
-      const calculated = compute(m, d);
       setResult(calculated);
       setTouched(true);
       trackClientFunnelEventOnce("calculator_started", {
@@ -76,12 +55,7 @@ export function BirthCardCalculator() {
     trackClientFunnelEventOnce("calculator_started", {
       placement: "calculator-form",
     });
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-      setResult(null);
-      return;
-    }
-    const [, m, d] = date.split("-").map(Number);
-    const calculated = compute(m, d);
+    const calculated = calculateBirthCardFromIsoDate(date);
     setResult(calculated);
     if (calculated) {
       trackClientFunnelEvent("calculator_completed", {
@@ -138,7 +112,7 @@ export function BirthCardCalculator() {
         </p>
       )}
       {result && (
-        <ResultCard
+        <BirthCardResultCard
           key={`${result.birthCard}|${result.rulingCards.join(",")}`}
           result={result}
         />
@@ -147,10 +121,10 @@ export function BirthCardCalculator() {
   );
 }
 
-function ResultCard({ result }: { result: Result }) {
+function BirthCardResultCard({ result }: { result: BirthCardResult }) {
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
-  const slug = slugOf(result.birthCard);
+  const slug = birthCardSlug(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
@@ -227,7 +201,7 @@ function ResultCard({ result }: { result: Result }) {
             href="/products/personal-card-blueprint"
             className="accent-button large-button text-center"
           >
-            Get My Blueprint — $29
+            Get My Blueprint — $13
           </Link>
           {slug && (
             <Link

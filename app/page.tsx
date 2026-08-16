@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
-import { HomepageJourney } from "@/components/home/HomepageJourney";
+import { HomepageCalculatorHero } from "@/components/home/HomepageCalculatorHero";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, SectionShell } from "@/components/ui";
@@ -21,12 +21,6 @@ export const metadata: Metadata = {
 };
 
 const FREE_PATHS = [
-  {
-    label: "Find Your Birth Card Free",
-    href: "/birth-card-calculator",
-    detail: "Enter a birthday — fixed playing-card birth card, not tarot.",
-    external: false,
-  },
   {
     label: "Check Compatibility Free",
     href: "/birth-card-compatibility-calculator",
@@ -56,7 +50,7 @@ const STEPS = [
   {
     label: "02",
     title: "Complete one-time checkout.",
-    detail: "The Personal Card Blueprint is $29 with no subscription or renewal.",
+    detail: "The Personal Card Blueprint is $13 with no subscription or renewal.",
   },
   {
     label: "03",
@@ -117,14 +111,14 @@ export default function Home() {
       <SiteHeader />
 
       <main id="main-content" tabIndex={-1}>
-        {/* 1 — Cinematic scroll journey */}
-        <HomepageJourney />
+        {/* 1 — Calculator-first hero */}
+        <HomepageCalculatorHero />
 
-      {/* 2 — Free entry points (secondary path next to Blueprint hero) */}
+      {/* 2 — More free entry points */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
-        <Kicker>Start free · no account</Kicker>
+        <Kicker>Keep exploring · no account</Kicker>
         <h2 className="type-h3 mt-3 max-w-[28rem] text-brand-ink">
-          Find your card before you buy anything.
+          Compare, browse, or learn the system.
         </h2>
         <div className="mt-6 divide-y divide-brand-line border-y border-brand-line">
           {FREE_PATHS.map((item) =>
@@ -267,7 +261,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
-              Get My Blueprint — $29
+              Get My Blueprint — $13
             </LinkButton>
           </div>
         </div>
