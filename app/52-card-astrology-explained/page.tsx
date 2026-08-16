@@ -57,6 +57,10 @@ export default function CardAstrology() {
       q: "What is playing card astrology?",
       a: "Playing card astrology is the informal name for reading a standard deck as a calendar-and-pattern system — the same family as Cardology and 52-card astrology. It is not horoscope astrology: no planets are charted, and the birthday-to-card math is fixed.",
     },
+    {
+      q: "What are 52 destiny cards?",
+      a: "52 destiny cards is another name for the same deck-to-calendar map: one playing card for each week of the year, used as a birth card chart. Cardology, Cards of Destiny, and 52-card astrology are the same family. Use the birth card chart on this page or the free calculator to see your card.",
+    },
   ];
 
   const faq = {
@@ -90,8 +94,8 @@ export default function CardAstrology() {
       </p>
       <p className="prose-reading mb-6 text-mist">
         People search <strong>playing cards birthday chart</strong>,{" "}
-        <strong>playing card astrology</strong>, <strong>birthday playing cards</strong>,
-        and <strong>deck of cards birthday chart</strong>{" "}
+        <strong>playing card astrology</strong>, <strong>birthday playing cards</strong>,{" "}
+        <strong>52 destiny cards</strong>, and <strong>birth card chart</strong>{" "}
         for the same underlying map. This page explains the structure, then links every
         date into the full birthday directory.
       </p>

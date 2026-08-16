@@ -119,13 +119,13 @@ export const BLOG_PILLARS: BlogPillar[] = [
   },
   {
     slug: "birth-card-meanings",
-    title: "Birth Card Meanings",
+    title: "What Is a Birth Card? Meanings",
     shortTitle: "Birth Cards",
     description:
-      "Educational articles about life cards, birth cards, ruling cards, rank families, suits, and how to read a card without turning it into a fixed identity.",
-    searchIntent: "People who know their card, or are searching card-by-card meanings and birthday meanings.",
+      "What is a birth card? In Cardology it is the playing card locked to your birthday. Guides to life cards, ruling cards, suits, and how to read a card without turning it into a fixed identity.",
+    searchIntent: "People asking what is a birth card, or searching card-by-card meanings and birthday meanings.",
     answer:
-      "A birth card meaning explains how one fixed playing card combines rank, suit, and pattern language. Read it as a range: balanced, under-expressed, and over-expressed.",
+      "A birth card is the one playing card assigned to a birthday in Cardology. Its meaning is rank plus suit, read as a range: balanced, under-expressed, and over-expressed. It is not a tarot birth card and not a government birth-registration card.",
     definition:
       "A birth card is the playing card assigned to a birthday in the Cardology calendar system.",
     startHere: [
@@ -148,7 +148,8 @@ export const BLOG_PILLARS: BlogPillar[] = [
       { term: "Shadow", definition: "The distorted or protective expression of a card pattern.", href: "/shadow-karma-guide" },
     ],
     faqs: [
-      { q: "How do I find my birth card?", a: "Use the birth card calculator, then open the matching card meaning page for deeper interpretation." },
+      { q: "What is a birth card?", a: "A birth card is the playing card locked to your birthday in Cardology. Same month and day always return the same card. It is not a tarot birth-card pair and not a vital-records birth card." },
+      { q: "How do I find my birth card?", a: "Use the free Cardology birth card calculator, then open the matching card meaning page for deeper interpretation." },
       { q: "Can one card explain a whole person?", a: "No single card explains everything, but a birth card can give a strong pattern lens for behavior, relationship dynamics, and recurring choices." },
       { q: "Should I read my ruling card too?", a: "Yes. The birth card is the anchor; the ruling card can explain the way that anchor expresses." },
     ],

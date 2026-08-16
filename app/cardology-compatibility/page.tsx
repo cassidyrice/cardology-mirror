@@ -55,7 +55,7 @@ export default function CompatibilityPage() {
 
       <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
       <p className="mb-4 text-sm text-faint">
-        Birth cards + Life Path roles — free calculator below. Playing cards, not tarot.
+        Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>

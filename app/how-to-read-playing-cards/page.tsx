@@ -8,15 +8,15 @@ import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "How to Read Playing Cards: Cartomancy for Beginners",
+  title: "Playing Card Meaning: How to Read a Deck",
   description:
-    "Learn how to read playing cards with suit meanings, Ace-to-King ranks, a five-step first reading, and guidance on when to skip the shuffle.",
+    "Playing card meaning by suit and rank: Hearts, Clubs, Diamonds, Spades, Ace-to-King, a five-step first reading, and when to skip the shuffle.",
   alternates: { canonical: "/how-to-read-playing-cards" },
   openGraph: {
     siteName: SITE_NAME,
-    title: "How to Read Playing Cards: Cartomancy for Beginners",
+    title: "Playing Card Meaning: How to Read a Deck",
     description:
-      "Suit meanings, the Ace-to-King rank arc, and your first reading in five steps — with an ordinary 52-card deck. No tarot deck required.",
+      "Playing card meaning by suit and rank, plus your first reading in five steps — ordinary 52-card deck, no tarot required.",
     url: "/how-to-read-playing-cards",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
@@ -32,6 +32,10 @@ const RANK_LABEL: Record<string, string> = { A: "Ace", J: "Jack", Q: "Queen", K:
 
 export default function HowToReadPlayingCards() {
   const faqs = [
+    {
+      q: "What does a playing card meaning include?",
+      a: "A playing card meaning is suit plus rank. The suit names the arena of life (Hearts, Clubs, Diamonds, Spades). The rank names the move inside that arena, from Ace through King. On this site each of the 52 cards also has a full birth-card page with balanced, under-expressed, and over-expressed ranges.",
+    },
     {
       q: "Can you do tarot spreads with playing cards?",
       a: "Yes. Spread positions don't care which deck you deal them from, so any tarot layout works with 52 cards. The suits translate directly — Cups become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords become Spades. You lose the 22 Major Arcana and one court card per suit, and playing-card cartomancy traditions simply work without them.",
@@ -68,10 +72,9 @@ export default function HowToReadPlayingCards() {
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
-          To read playing cards, take one standard 52-card deck and read each
-          card as suit plus rank: the suit is the arena of life, the rank is
-          the move being made in it. Then either shuffle and draw a spread, or
-          calculate the deterministic birth card from a birthday.
+          A playing card meaning is suit plus rank: the suit is the arena of life,
+          the rank is the move being made in it. Then either shuffle and draw a
+          spread, or calculate the deterministic birth card from a birthday.
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
@@ -82,6 +85,16 @@ export default function HowToReadPlayingCards() {
         vocabulary and walks you through a first reading — then shows you the
         shortcut this site is built on, where no shuffle is needed at all.
       </p>
+
+      <section className="mt-8">
+        <h2 className="eyebrow mb-2 text-gold">Playing card meaning by suit and rank</h2>
+        <p className="prose-reading text-mist">
+          A playing card meaning does not come from a guidebook picture. It comes
+          from two facts you can see on the card: which suit, and which rank.
+          Suit names the arena. Rank names the move. That is the whole grammar
+          of cartomancy with a standard deck.
+        </p>
+      </section>
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What do you need to start?</h2>

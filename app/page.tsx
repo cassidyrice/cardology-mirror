@@ -36,7 +36,7 @@ const FREE_PATHS = [
   {
     label: "Browse birthdays by date",
     href: BIRTHDAY_DIRECTORY_PATH,
-    detail: "Look up any birthday in the full 366-day birth card calendar.",
+    detail: "Look up any birthday in the full Cardology calendar (366 dates).",
     external: true,
   },
   {

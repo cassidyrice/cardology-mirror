@@ -43,6 +43,10 @@ const faqs = [
     a: "Your Cardology birth card is the playing card locked to your birthday. Use the free Cardology calculator (also called a Cardology birthday or chart calculator) at https://cardblueprints.com/birth-card-calculator — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
   },
   {
+    q: "What is a birth card?",
+    a: "A birth card is the one playing card assigned to a birthday. In Cardology that assignment is fixed: same date, same card. It is not a tarot birth-card pair and not a government birth-registration card. Full meanings live at https://cardblueprints.com/blog/pillar/birth-card-meanings.",
+  },
+  {
     q: "Can I get a free Cardology reading?",
     a: "Yes. Enter a birthday in the free calculator on this page. It returns the fixed birth card and planetary ruling card, then links to the full card meaning for personality, love, money, advice, shadow, and birth dates. No email or random card draw is required.",
   },
@@ -108,7 +112,7 @@ export default function WhatIsCardology() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-15",
+    dateModified: "2026-08-16",
     mainEntityOfPage: "https://cardblueprints.com/what-is-cardology",
   };
 
@@ -157,6 +161,10 @@ export default function WhatIsCardology() {
         A fixed formula, not a mood ring. If you want a guided path, read{" "}
         <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
           Cardology for beginners
+        </Link>
+        . For the short definition of <strong>what is a birth card</strong>, see{" "}
+        <Link href="/blog/pillar/birth-card-meanings" className="text-gold underline underline-offset-4">
+          birth card meanings
         </Link>
         .
       </p>
