@@ -3,7 +3,10 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
-import { buildBreadcrumbJsonLd } from "@/lib/structured-data";
+import {
+  buildBreadcrumbJsonLd,
+  serializeJsonLdForHtml,
+} from "@/lib/structured-data";
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
@@ -38,7 +41,9 @@ export function SeoShell({
           <script
             type="application/ld+json"
             data-seo-breadcrumb="true"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            dangerouslySetInnerHTML={{
+              __html: serializeJsonLdForHtml(breadcrumbJsonLd),
+            }}
           />
         )}
 

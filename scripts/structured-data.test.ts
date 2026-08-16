@@ -9,6 +9,7 @@ import {
   buildBreadcrumbJsonLd,
   type BreadcrumbListJsonLd,
 } from "@/lib/structured-data";
+import { SITE_URL } from "@/lib/site";
 
 const root = join(import.meta.dir, "..");
 
@@ -25,19 +26,19 @@ test("builds a trimmed three-item same-origin BreadcrumbList", () => {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://cardblueprints.com/",
+        item: `${SITE_URL}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Birth Cards",
-        item: "https://cardblueprints.com/birth-card",
+        item: `${SITE_URL}/birth-card`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: "Q Hearts",
-        item: "https://cardblueprints.com/birth-card/queen-of-hearts",
+        item: `${SITE_URL}/birth-card/queen-of-hearts`,
       },
     ],
   };
@@ -48,7 +49,7 @@ test("builds a trimmed three-item same-origin BreadcrumbList", () => {
       { name: " Birth Cards ", href: " /birth-card " },
       {
         name: " Q Hearts ",
-        href: " https://cardblueprints.com/birth-card/queen-of-hearts ",
+        href: ` ${SITE_URL}/birth-card/queen-of-hearts `,
       },
     ]),
   ).toEqual(expected);
@@ -80,7 +81,7 @@ test("rejects an empty breadcrumb href", () => {
 test("rejects external and non-web breadcrumb hrefs", () => {
   for (const href of [
     "https://example.com/birth-card",
-    "//cardblueprints.com/birth-card",
+    `//${new URL(SITE_URL).host}/birth-card`,
     "mailto:hello@cardblueprints.com",
   ]) {
     expect(() =>
@@ -139,6 +140,36 @@ test("SeoShell keeps a one-item visible trail without emitting BreadcrumbList da
   expect(occurrences(markup, 'aria-label="Breadcrumb"')).toBe(1);
   expect(occurrences(markup, 'data-seo-breadcrumb="true"')).toBe(0);
   expect(occurrences(markup, 'aria-current="page"')).toBe(1);
+});
+
+test("SeoShell safely serializes hostile breadcrumb labels without changing JSON data", () => {
+  const hostileLabel =
+    "</script><script>window.__breadcrumbPwned=1</script>";
+  const markup = renderToStaticMarkup(
+    createElement(
+      SeoShell,
+      {
+        crumb: [
+          { label: "Home", href: "/" },
+          { label: hostileLabel, href: "/hostile" },
+        ],
+      },
+      createElement("p", null, "Hostile breadcrumb test"),
+    ),
+  );
+
+  const openingTag = '<script type="application/ld+json" data-seo-breadcrumb="true">';
+  const payloadStart = markup.indexOf(openingTag) + openingTag.length;
+  const payloadEnd = markup.lastIndexOf("</script>");
+  const payload = markup.slice(payloadStart, payloadEnd);
+
+  expect(payload).not.toContain("<");
+  expect(payload).not.toContain("</script>");
+  expect(occurrences(markup, "<script")).toBe(1);
+  expect(occurrences(markup, "</script>")).toBe(1);
+
+  const parsed = JSON.parse(payload) as BreadcrumbListJsonLd;
+  expect(parsed.itemListElement[1]?.name).toBe(hostileLabel);
 });
 
 const migratedTemplates = [

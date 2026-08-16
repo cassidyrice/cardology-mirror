@@ -15,6 +15,14 @@ export type BreadcrumbListJsonLd = Readonly<{
   itemListElement: readonly BreadcrumbListItemJsonLd[];
 }>;
 
+export function serializeJsonLdForHtml(value: unknown): string {
+  const serialized = JSON.stringify(value);
+  if (serialized === undefined) {
+    throw new TypeError("JSON-LD value must be JSON-serializable");
+  }
+  return serialized.replace(/</g, "\\u003c");
+}
+
 export function buildBreadcrumbJsonLd(
   items: readonly BreadcrumbData[],
 ): BreadcrumbListJsonLd | null {
