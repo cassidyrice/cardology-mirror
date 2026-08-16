@@ -1,17 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
-import { SeoShell } from "@/components/seo/SeoShell";
+import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME } from "@/lib/site";
 
-const TITLE = "Destiny Cards & Love Cards Explained";
+const TITLE = "Cards of Destiny: Find Your Birth Card";
 const DESCRIPTION =
-  "Destiny Cards, Love Cards, and Science of the Cards sit in the same playing-card birth-card family as Cardology. Find your card free, or get a $13 Blueprint.";
+  "Cards of Destiny / Destiny Cards: birthday → one playing card. Free calculator and chart. Same family as Cardology, not tarot. Same date, same card.";
+const REVIEWED_DATE = "2026-08-15";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
+  keywords: [
+    "cards of destiny",
+    "destiny cards",
+    "destiny card calculator",
+    "cards of destiny calculator",
+    "destiny cards chart",
+  ],
   alternates: { canonical: "/destiny-cards" },
   openGraph: {
     siteName: SITE_NAME,
@@ -81,6 +91,18 @@ const faqs = [
     q: "Can this show relationship compatibility?",
     a: "Yes, as a two-birthday pattern map — not a decision about whether a relationship should continue. Use the compatibility calculator, then check the language against real behavior.",
   },
+  {
+    q: "What are Cards of Destiny?",
+    a: "Another search name for Destiny Cards: your birthday maps to one playing card in a 52-card deck. Use the calculator on this page.",
+  },
+  {
+    q: "Is Cards of Destiny the same as Destiny Cards?",
+    a: "Yes in search. Books and sites mix the labels. Same deck family here — not tarot.",
+  },
+  {
+    q: "Do I need the Robert Lee Camp books to use this?",
+    a: "No. The free calculator and published method are enough. The books are one doorway into the family, not a requirement.",
+  },
 ];
 
 export default function DestinyCardsPage() {
@@ -101,8 +123,19 @@ export default function DestinyCardsPage() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-12",
+    dateModified: REVIEWED_DATE,
     mainEntityOfPage: "https://cardblueprints.com/destiny-cards",
+  };
+
+  const appLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Cards of Destiny Calculator",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: DESCRIPTION,
+    url: "https://cardblueprints.com/destiny-cards",
   };
 
   return (
@@ -115,37 +148,69 @@ export default function DestinyCardsPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Destiny Cards, Love Cards &amp; Cardology</h1>
+      <p className="eyebrow mb-3 text-gold">Free lookup · not tarot</p>
+      <h1 className="display mb-3 text-3xl text-bone">Find Your Destiny Card</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
-          Destiny Cards, Love Cards, and the Science of the Cards are names for the same broad
-          tradition: a birthday mapped to one fixed card in a 52-card deck. Card Blueprints calls
-          that practice <strong>Cardology</strong> — calculation first, interpretation second. Same
-          birthday, same birth card. Reflection, not a shuffled fortune.
+          Cards of Destiny and Destiny Cards are names for a birthday mapped to one
+          card in a 52-card deck. Use the calculator. Card Blueprints calls the same
+          family <strong>Cardology</strong>. Not tarot.
         </p>
       </div>
       <p className="mb-6 text-xs text-faint">
-        By Cassidy Rice · Updated August 12, 2026 ·{" "}
+        By Cassidy Rice · Updated August 15, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
 
-      <div className="mb-8 flex flex-wrap gap-2">
-        <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-          Find your birth card free →
-        </Link>
-        <Link href="/birth-card-compatibility-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-          Compare two birthdays →
-        </Link>
-        <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-          Personal Card Blueprint — $13 →
-        </Link>
+      <div className="mb-6">
+        <BirthCardCalculator />
       </div>
 
-      <section className="mt-4">
+      <nav className="mb-8 flex flex-wrap gap-2" aria-label="Destiny Cards sections">
+        {[
+          ["#destiny-chart", "Chart"],
+          ["#names", "Names"],
+          ["#vs-cardology", "vs Cardology"],
+          ["#vs-tarot", "vs tarot"],
+          ["#faq", "FAQ"],
+        ].map(([href, label]) => (
+          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-bone">
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <p className="mb-6 text-sm">
+        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          Full Cardology calculator &amp; chart
+        </Link>
+        {" · "}
+        <Link href="/birth-card-compatibility-calculator" className="text-gold underline underline-offset-4">
+          Compare two birthdays
+        </Link>
+      </p>
+
+      <section id="destiny-chart" className="mt-4 scroll-mt-10">
+        <p className="eyebrow mb-2 text-gold">Cards of Destiny chart</p>
+        <h2 className="font-serif text-3xl text-bone">Birthday → playing card</h2>
+        <p className="prose-reading mt-4 text-mist">
+          Same map as the calculator. Pick a date, or type one above. Larger copy lives on the{" "}
+          <Link href="/birth-card-calculator#cardology-chart" className="text-gold underline underline-offset-4">
+            Cardology chart
+          </Link>
+          .
+        </p>
+        <div className="mt-6">
+          <PlayingCardsBirthdayChart />
+        </div>
+      </section>
+
+      <section id="names" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-3 text-gold">Same family, different names</h2>
         <p className="prose-reading mb-4 text-mist">
           If you searched <em>Destiny Cards</em>, <em>Love Cards</em>, <em>Science of the Cards</em>, or{" "}
@@ -275,7 +340,7 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section className="mt-10 overflow-x-auto">
+      <section id="vs-cardology" className="mt-10 scroll-mt-10 overflow-x-auto">
         <h2 className="eyebrow mb-3 text-gold">Destiny Cards language vs Card Blueprints</h2>
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
           <thead>
@@ -302,7 +367,7 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section className="mt-10 overflow-x-auto">
+      <section id="vs-tarot" className="mt-10 scroll-mt-10 overflow-x-auto">
         <h2 className="eyebrow mb-3 text-gold">Destiny Cards vs tarot</h2>
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
           <thead>
@@ -351,7 +416,7 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section className="mt-10">
+      <section id="faq" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-4 text-gold">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
