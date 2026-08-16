@@ -43,6 +43,10 @@ const faqs = [
     a: "Your Cardology birth card is the playing card locked to your birthday. Use the free Cardology calculator (also called a Cardology birthday or chart calculator) at https://cardblueprints.com/birth-card-calculator — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
   },
   {
+    q: "Can I get a free Cardology reading?",
+    a: "Yes. Enter a birthday in the free calculator on this page. It returns the fixed birth card and planetary ruling card, then links to the full card meaning for personality, love, money, advice, shadow, and birth dates. No email or random card draw is required.",
+  },
+  {
     q: "What are the benefits of Cardology?",
     a: "It gives a checkable vocabulary for default patterns, relationship friction and attraction, and the “chapter” you are in. Because the math is fixed, two people can verify the same birthday produces the same card. It is for self-awareness and entertainment, not medical, legal, or fate claims.",
   },
@@ -77,6 +81,7 @@ const toc = [
   { id: "how-it-works", label: "How it works" },
   { id: "benefits", label: "Benefits" },
   { id: "find-your-card", label: "Find your card" },
+  { id: "free-reading", label: "Free reading" },
   { id: "suits", label: "Four suits" },
   { id: "card-meanings", label: "Card meanings" },
   { id: "layers", label: "Birth vs ruling" },
@@ -208,6 +213,28 @@ export default function WhatIsCardology() {
           card and ruling card for the Cardology system.
         </p>
         <BirthCardCalculator />
+      </section>
+
+      <section className="mt-10" id="free-reading">
+        <h2 className="eyebrow mb-2 text-gold">Your free Cardology reading</h2>
+        <p className="prose-reading text-mist">
+          The result above is a free Cardology reading, not only a calculator answer.
+          Open the returned birth card to read its personality pattern, love and
+          relationship style, money and work themes, advice, shadow, and exact birth
+          dates. The planetary ruling card adds a second layer for how the core pattern
+          expresses. Nothing is randomly drawn, and no email is required.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          For the complete deck, browse{" "}
+          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+            all 52 Cardology card meanings
+          </Link>
+          . For a longer written report about one birthday, the{" "}
+          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
+            Personal Card Blueprint ($13)
+          </Link>{" "}
+          is the optional paid deepen.
+        </p>
       </section>
 
       <section className="mt-10" id="suits">
