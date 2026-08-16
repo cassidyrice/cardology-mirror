@@ -186,6 +186,24 @@ else
   yellow "HSTS header not observed"
 fi
 
+echo "→ smoke: free-course videos"
+for video in \
+  /free-course/media/01-foundations.mp4 \
+  /free-course/media/02-rank-and-suit.mp4 \
+  /free-course/media/03-states.mp4 \
+  /free-course/media/04-pattern-builder.mp4
+do
+  VIDEO_HEADERS="$(curl -sSI "${SITE_ORIGIN}${video}" || true)"
+  VIDEO_CODE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'BEGIN{c="000"} toupper($1) ~ /^HTTP/{c=$2} END{print c}')"
+  VIDEO_TYPE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'BEGIN{IGNORECASE=1} /^content-type:/{print $2; exit}' | tr -d '\r')"
+  if [[ "$VIDEO_CODE" != "200" || "$VIDEO_TYPE" != video/mp4* ]]; then
+    red "Course video FAILED ${video} (HTTP ${VIDEO_CODE}, type ${VIDEO_TYPE:-unknown})"
+    smoke_fail=1
+  else
+    green "Course video OK ${video}"
+  fi
+done
+
 if [[ "$smoke_fail" -ne 0 ]]; then
   red "Deploy finished but smoke checks FAILED. Production may be bad — investigate before further deploys."
   exit 2
