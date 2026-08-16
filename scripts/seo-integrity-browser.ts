@@ -21,6 +21,7 @@ const screenshotPath =
 const elroyScreenshotPath = screenshotPath.replace(/(\.\w+)?$/, "-elroy$1");
 
 type JsonLd = Record<string, unknown>;
+type Rect = { x: number; y: number; width: number; height: number };
 
 function collectTypes(value: unknown, type: string): JsonLd[] {
   if (!value || typeof value !== "object") return [];
@@ -55,14 +56,30 @@ function consoleLine(message: ConsoleMessage): string {
 }
 
 function rectanglesOverlap(
-  first: { x: number; y: number; width: number; height: number },
-  second: { x: number; y: number; width: number; height: number },
+  first: Rect,
+  second: Rect,
 ): boolean {
   return !(
     first.x + first.width <= second.x ||
     second.x + second.width <= first.x ||
     first.y + first.height <= second.y ||
     second.y + second.height <= first.y
+  );
+}
+
+function assertRectWithin(
+  inner: Rect | null,
+  outer: Rect,
+  label: string,
+): asserts inner is Rect {
+  assert.ok(inner, `${label}: measurable bounds`);
+  const tolerance = 1;
+  assert.ok(
+    inner.x >= outer.x - tolerance &&
+      inner.y >= outer.y - tolerance &&
+      inner.x + inner.width <= outer.x + outer.width + tolerance &&
+      inner.y + inner.height <= outer.y + outer.height + tolerance,
+    `${label}: ${JSON.stringify(inner)} within ${JSON.stringify(outer)}`,
   );
 }
 
@@ -206,18 +223,39 @@ async function main(): Promise<void> {
     await page
       .getByRole("button", { name: "Compare birth cards and Life Paths" })
       .click();
-    let pairLinks = page.locator(`a[href="${expectedPair}"]`);
-    await pairLinks.waitFor();
-    assert.equal(await pairLinks.count(), 1, "forward inputs: one canonical pair link");
+    const forwardPairLink = page.getByRole("link", {
+      name: "Read the full Queen of Diamonds + 9 of Clubs pairing →",
+      exact: true,
+    });
+    await forwardPairLink.waitFor();
+    assert.equal(await forwardPairLink.getAttribute("href"), expectedPair);
+    assert.equal(
+      await page.locator(`a[href="${expectedPair}"]`).count(),
+      1,
+      "forward inputs: one canonical pair link",
+    );
 
     await page.locator("#da").fill(second);
     await page.locator("#db").fill(first);
     await page
       .getByRole("button", { name: "Compare birth cards and Life Paths" })
       .click();
-    pairLinks = page.locator(`a[href="${expectedPair}"]`);
-    await pairLinks.waitFor();
-    assert.equal(await pairLinks.count(), 1, "reversed inputs: one canonical pair link");
+    const reversedPairLink = page.getByRole("link", {
+      name: "Read the full 9 of Clubs + Queen of Diamonds pairing →",
+      exact: true,
+    });
+    await reversedPairLink.waitFor();
+    assert.equal(
+      await forwardPairLink.count(),
+      0,
+      "reversed inputs replace the forward rendered result",
+    );
+    assert.equal(await reversedPairLink.getAttribute("href"), expectedPair);
+    assert.equal(
+      await page.locator(`a[href="${expectedPair}"]`).count(),
+      1,
+      "reversed inputs: one canonical pair link",
+    );
 
     await goto(page, "/birth-card");
     const popular = page.locator('section[aria-labelledby="popular-card-meanings"]');
@@ -307,17 +345,108 @@ async function main(): Promise<void> {
       false,
       "390px: Elroy launcher does not cover the primary Blueprint CTA",
     );
+
+    const ctaHitTest = await primaryBlueprintCta.evaluate(async (cta) => {
+      cta.scrollIntoView({ block: "end", inline: "nearest" });
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      const box = cta.getBoundingClientRect();
+      const y = box.top + box.height * 0.25;
+      const samples = [0.15, 0.5, 0.7].map((ratio) => {
+        const x = box.left + box.width * ratio;
+        const hit = document.elementFromPoint(x, y);
+        return {
+          x,
+          y,
+          target: hit
+            ? `${hit.tagName.toLowerCase()}${hit.className ? `.${String(hit.className).trim().replace(/\s+/g, ".")}` : ""}`
+            : "none",
+          ctaTarget: Boolean(hit && (hit === cta || cta.contains(hit))),
+        };
+      });
+      return {
+        box: {
+          x: box.x,
+          y: box.y,
+          width: box.width,
+          height: box.height,
+        },
+        viewport: { width: innerWidth, height: innerHeight },
+        samples,
+      };
+    });
+    assertRectWithin(
+      ctaHitTest.box,
+      {
+        x: 0,
+        y: 0,
+        width: ctaHitTest.viewport.width,
+        height: ctaHitTest.viewport.height,
+      },
+      "390px: primary Blueprint CTA is fully in view",
+    );
+    assert.equal(
+      ctaHitTest.samples.every((sample) => sample.ctaTarget),
+      true,
+      `390px: primary Blueprint CTA wins hit-testing outside the launcher: ${JSON.stringify(ctaHitTest.samples)}`,
+    );
+
     await elroyLauncher.click();
     const elroyPanel = page.locator("dialog.elroy-panel");
     await elroyPanel.waitFor();
+    const elroyShell = page.locator(".elroy-panel-shell");
+    const elroyComposer = page.locator(".elroy-composer");
+    const showCardControl = page.getByRole("button", {
+      name: "Show my card",
+      exact: true,
+    });
+    await showCardControl.waitFor();
     const panelBox = await elroyPanel.boundingBox();
-    assert.ok(
-      panelBox &&
-        panelBox.x >= 0 &&
-        panelBox.y >= 0 &&
-        panelBox.x + panelBox.width <= 390 &&
-        panelBox.y + panelBox.height <= 844,
-      "390px: manually opened Elroy panel fits the viewport",
+    assertRectWithin(
+      panelBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: manually opened Elroy dialog fits the viewport",
+    );
+    const shellBox = await elroyShell.boundingBox();
+    assertRectWithin(
+      shellBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: Elroy panel shell fits the viewport",
+    );
+    assertRectWithin(
+      shellBox,
+      panelBox,
+      "390px: Elroy panel shell stays inside the dialog",
+    );
+    assertRectWithin(
+      await elroyComposer.boundingBox(),
+      shellBox,
+      "390px: Elroy composer stays inside the panel shell",
+    );
+    assertRectWithin(
+      await showCardControl.boundingBox(),
+      shellBox,
+      "390px: Elroy birth-card control stays inside the panel shell",
+    );
+
+    await page.locator("#elroy-birthdate").fill("2001-01-15");
+    await showCardControl.click();
+    await page
+      .getByRole("button", { name: "Get the deeper pattern", exact: true })
+      .click();
+    const sendReadingControl = page.getByRole("button", {
+      name: "Send my reading",
+      exact: true,
+    });
+    await sendReadingControl.waitFor();
+    assertRectWithin(
+      await elroyComposer.boundingBox(),
+      shellBox,
+      "390px: email composer stays inside the panel shell",
+    );
+    assertRectWithin(
+      await sendReadingControl.boundingBox(),
+      shellBox,
+      "390px: Elroy submit stays inside the panel shell",
     );
     await page.screenshot({ path: elroyScreenshotPath, fullPage: false });
     await page.getByRole("button", { name: "Close Elroy" }).click();
