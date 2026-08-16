@@ -45,6 +45,10 @@ export default function CardAstrology() {
       q: "How do I find my card fast?",
       a: "Use the free birth card calculator, or open your date in the birthday directory linked from the chart below.",
     },
+    {
+      q: "What is the Cardology calendar?",
+      a: "The Cardology calendar is the deck-to-year mapping at the core of the system: 52 cards for 52 weeks, 4 suits for 4 seasons, 13 ranks for the 13 weeks of a season, and 12 court cards echoing the 12 months. Add every card's value (ace as 1 through king as 13) and the deck sums to 364; the Joker completes the 365-day year.",
+    },
   ];
 
   const faq = {
@@ -102,6 +106,25 @@ export default function CardAstrology() {
           suit and roughly 13 weeks per season. These alignments are the backbone: the
           deck is treated as a calendar in disguise. December 31 maps to the Joker;
           the leap day, February 29, maps normally to the 9 of Clubs.
+        </p>
+      </section>
+
+      <section className="mt-8" id="calendar">
+        <h2 className="eyebrow mb-2 text-gold">The Cardology calendar</h2>
+        <p className="prose-reading text-mist">
+          The Cardology calendar is the deck-to-year mapping at the core of the system:
+          52 cards for 52 weeks, four suits for four seasons, 13 ranks for the 13 weeks
+          of a season, and 12 court cards echoing the 12 months. Add the value of every
+          card — ace as 1 through king as 13 — and the whole deck sums to 364; the Joker
+          completes the 365-day year. That arithmetic is why readers treat a deck of
+          playing cards as a calendar you can hold in one hand.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          To see where your own birthday sits on the Cardology calendar, use the{" "}
+          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            free birth card calculator
+          </Link>{" "}
+          or open your date directly in the birthday chart above.
         </p>
       </section>
 

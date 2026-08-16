@@ -171,6 +171,10 @@ export default function WhatIsCardology() {
           <Link href="/methodology" className="text-gold underline underline-offset-4">
             methodology page
           </Link>
+          . The deck-to-year mapping behind it is laid out in the{" "}
+          <Link href="/52-card-astrology-explained#calendar" className="text-gold underline underline-offset-4">
+            Cardology calendar
+          </Link>
           .
         </p>
       </section>
