@@ -64,6 +64,10 @@ const tarotRows = [
 
 const faqs = [
   {
+    q: "Can I get a free destiny card reading?",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid Personal Card Blueprint is the longer written report, not a prerequisite.",
+  },
+  {
     q: "What are Destiny Cards?",
     a: "A common name for the playing-card birth-card tradition: your birthday maps to one card in a 52-card deck, often with a ruling card and timing layers. Card Blueprints practices the same family as Cardology.",
   },
@@ -208,6 +212,24 @@ export default function DestinyCardsPage() {
         <div className="mt-6">
           <PlayingCardsBirthdayChart />
         </div>
+      </section>
+
+      <section id="free-reading" className="mt-10 scroll-mt-10">
+        <h2 className="eyebrow mb-3 text-gold">Free destiny card reading</h2>
+        <p className="prose-reading text-mist">
+          A destiny card reading starts with one input: a birthday. The calculator above
+          returns the destiny card itself, the planetary ruling card, and a link to the
+          card&rsquo;s full meaning — personality, love, money, shadow, and every birth date
+          that carries it. That is the complete free reading; nothing is gated behind an
+          email form.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          If you want the pattern written out as a full report, the{" "}
+          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
+            Personal Card Blueprint ($13)
+          </Link>{" "}
+          is the paid deepen. The free reading stands on its own.
+        </p>
       </section>
 
       <section id="names" className="mt-10 scroll-mt-10">
