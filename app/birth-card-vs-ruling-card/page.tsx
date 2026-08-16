@@ -103,6 +103,8 @@ export default function BirthVsRuling() {
       </div>
 
       <p className="mt-6 text-sm">
+        <Link href="/planetary-ruling-card" className="text-gold underline underline-offset-4">Planetary ruling card →</Link>
+        {"  ·  "}
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
         <Link href="/cardology-compatibility" className="text-gold underline underline-offset-4">Compatibility →</Link>

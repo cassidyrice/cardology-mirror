@@ -238,6 +238,10 @@ export default function WhatIsCardology() {
           <Link href="/birth-card-vs-ruling-card" className="text-gold underline underline-offset-4">
             birth card vs ruling card
           </Link>
+          , and the second layer gets its own explainer at{" "}
+          <Link href="/planetary-ruling-card" className="text-gold underline underline-offset-4">
+            planetary ruling card
+          </Link>
           .
         </p>
       </section>

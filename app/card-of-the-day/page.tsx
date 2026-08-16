@@ -17,9 +17,9 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Card of the Day: Free Daily Playing Card Reading",
+  title: "Cardology Card of the Day: Today's Playing Card Meaning",
   description:
-    "See today's fixed Cardology card, its meaning in love and work, and the birth-card pattern for anyone born on this date. Updated daily.",
+    "Today's Cardology card of the day, free: every date maps to exactly one playing card. See today's card, its meaning in love and work, and its birth dates.",
   alternates: { canonical: "/card-of-the-day" },
   openGraph: {
     siteName: SITE_NAME,
@@ -104,6 +104,12 @@ export default function CardOfTheDayPage() {
 
   const faqs = [
     {
+      q: "What is the Cardology card of the day?",
+      a: card
+        ? `The Cardology card of the day for ${label} is the ${card.label}. Cardology maps every calendar date to exactly one playing card, so the day's card is the birth card of that date — the same card for every reader, every year.`
+        : `The Cardology card of the day is the playing card a calendar date maps to — every date except one resolves to exactly one card. Today, ${label}, is the exception: December 31 belongs to the Joker, the deck's wild 53rd card.`,
+    },
+    {
       q: "What is the card of the day?",
       a: card
         ? `The card of the day for ${label} is the ${card.label}. In playing-card cartomancy every calendar date maps to exactly one of the 52 cards, so the day's card is simply the birth card of that date — the ${card.label} is the card of everyone born on ${label}.`
@@ -121,7 +127,7 @@ export default function CardOfTheDayPage() {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: "Card of the Day",
+      name: "Cardology Card of the Day",
       description:
         "Free daily playing-card reading: every calendar date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. Updates daily.",
       url: `${SITE_URL}/card-of-the-day`,
@@ -154,7 +160,7 @@ export default function CardOfTheDayPage() {
         )}
         <span className="eyebrow text-faint">{label}</span>
       </div>
-      <h1 className="display mb-3 text-3xl text-bone">Card of the Day</h1>
+      <h1 className="display mb-3 text-3xl text-bone">Cardology Card of the Day</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">{directAnswer}</p>

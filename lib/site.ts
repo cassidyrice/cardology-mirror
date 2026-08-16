@@ -68,6 +68,7 @@ export const MARKETING_PATHS = [
   "/playing-card-spreads/yes-or-no",
   "/52-card-astrology-explained",
   "/birth-card-vs-ruling-card",
+  "/planetary-ruling-card",
   "/methodology",
   "/editorial-policy",
   "/contact",
