@@ -53,6 +53,10 @@ export default function BirthCardIndex() {
         <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
           calculate yours
         </Link>
+        {" "}or open the{" "}
+        <Link href="/birth-card-calculator#cardology-chart" className="text-gold underline underline-offset-4">
+          Cardology chart
+        </Link>
         .
       </p>
       <p className="prose-reading mb-6 text-mist">
