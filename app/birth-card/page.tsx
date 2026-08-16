@@ -12,6 +12,31 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
+const UPDATED = "2026-08-15";
+
+const faqs = [
+  {
+    q: "What is a birth card?",
+    a: "In Cardology, a birth card is the one playing card your month and day map to in a fixed 52-card calendar system. The same birthday always returns the same card. It is not a greeting card and not a tarot Major Arcana calculation.",
+  },
+  {
+    q: "How do I find my birth card?",
+    a: "Use the free birth card calculator, or scan the Cardology chart. Entering your birthday returns the fixed birth card plus its planetary ruling card, with a link to the full meaning.",
+  },
+  {
+    q: "Are Cardology birth cards the same as tarot birth cards?",
+    a: "No. Cardology uses a standard 52-card playing deck — Hearts, Clubs, Diamonds, and Spades. Tarot birth-card systems usually calculate Major Arcana cards from a 78-card tarot deck.",
+  },
+  {
+    q: "Does a birth card ever change?",
+    a: "No. The birth card is fixed by month and day and stays the same for life. Timing cards and yearly periods can change, but the birth card remains the baseline pattern.",
+  },
+  {
+    q: "What do the 52 birth cards mean?",
+    a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
+  },
+];
+
 export const metadata: Metadata = {
   title: "All 52 Cardology Birth Cards — Meanings & Personality",
   description:
@@ -42,10 +67,54 @@ export default function BirthCardIndex() {
       })),
     },
   };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "All 52 Cardology Birth Cards",
+    description: metadata.description,
+    author: { "@type": "Person", name: "Cassidy Rice", url: `${SITE_URL}/about` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    dateModified: UPDATED,
+    mainEntityOfPage: `${SITE_URL}/birth-card`,
+  };
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth Cards", href: "/birth-card" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Cards</h1>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="prose-reading text-mist">
+          A Cardology birth card is the one playing card your birthday maps to in a
+          fixed 52-card system. Same birthday, same card for life. This is a standard
+          playing deck — not tarot and not a paper birthday card. Browse all 52 meanings
+          below or use the free calculator to find yours.
+        </p>
+      </div>
+      <p className="mb-4 text-xs text-faint">
+        By{" "}
+        <Link href="/about" className="text-gold underline underline-offset-4">
+          Cassidy Rice
+        </Link>{" "}
+        · Reviewed August 15, 2026 ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial policy
+        </Link>{" "}
+        ·{" "}
+        <Link href="/methodology" className="text-gold underline underline-offset-4">
+          Calculation method
+        </Link>
+      </p>
       <p className="prose-reading mb-6 text-mist">
         Every birthday maps to exactly one of the 52 playing cards — your{" "}
         <strong>birth card</strong>. No quiz, no choosing: a fixed vocabulary for how you
@@ -142,6 +211,18 @@ export default function BirthCardIndex() {
           </section>
         ))}
       </div>
+
+      <section className="mt-12" id="faq">
+        <h2 className="eyebrow mb-4 text-gold">Birth card FAQ</h2>
+        <div className="space-y-4">
+          {faqs.map((f) => (
+            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <FreeCourseCta source="card-meanings" className="mt-12" />
       <ReadingBridge variant="card" className="mt-8" />
