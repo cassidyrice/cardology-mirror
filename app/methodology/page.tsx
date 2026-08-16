@@ -28,7 +28,7 @@ export default function MethodologyPage() {
     headline: "Card Blueprints Methodology",
     description: metadata.description,
     url: `${SITE_URL}/methodology`,
-    dateModified: "2026-08-15",
+    dateModified: "2026-08-16",
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/methodology`,
@@ -62,7 +62,7 @@ export default function MethodologyPage() {
           How a birthday becomes a card, and how the card becomes a reading.
         </h1>
         <p className="mt-3 text-sm text-[#5b5148]">
-          By Cassidy Rice · Updated August 15, 2026 ·{" "}
+          By Cassidy Rice · Updated August 16, 2026 ·{" "}
           <Link href="/editorial-policy" className="underline">
             Editorial policy
           </Link>
@@ -167,6 +167,17 @@ export default function MethodologyPage() {
             calculator. Personality, relationship, and life-pattern interpretations are
             separate: interpretive meanings are Cardology pattern language, not
             experimentally established facts.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+            For the public release notes, exceptional-date checks, and explanation of why
+            the table is auditable, read{" "}
+            <a
+              href="https://buttondown.com/cardblueprint/archive/i-published-the-full-366-date-cardology-map/"
+              className="underline"
+            >
+              Read the 366-date publication note
+            </a>
+            .
           </p>
         </div>
       </section>
