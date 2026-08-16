@@ -5,6 +5,7 @@ import {
   formatElroyRulingCards,
   initialElroyUiState,
   isElroyEligiblePath,
+  observeElroySmallScreen,
   parseElroyBirthContext,
   readElroySuppression,
   shouldScheduleElroyTeaser,
@@ -115,6 +116,42 @@ describe("shouldScheduleElroyTeaser", () => {
       expect(shouldScheduleElroyTeaser(path, false)).toBe(false);
       expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
     }
+  });
+});
+
+describe("observeElroySmallScreen", () => {
+  test("supports legacy-only media query listeners through cleanup", () => {
+    type Listener = () => void;
+    let matches = true;
+    let registeredListener: Listener | null = null;
+    let removedListener: Listener | null = null;
+    const updates: boolean[] = [];
+    const legacyMediaQuery = {
+      get matches() {
+        return matches;
+      },
+      addListener(listener: Listener) {
+        registeredListener = listener;
+      },
+      removeListener(listener: Listener) {
+        removedListener = listener;
+        if (registeredListener === listener) registeredListener = null;
+      },
+    };
+
+    const cleanup = observeElroySmallScreen(legacyMediaQuery, (nextMatches) => {
+      updates.push(nextMatches);
+    });
+
+    expect(updates).toEqual([true]);
+    expect(registeredListener).toBeInstanceOf(Function);
+    matches = false;
+    registeredListener?.();
+    expect(updates).toEqual([true, false]);
+
+    cleanup();
+    expect(removedListener).toBeInstanceOf(Function);
+    expect(registeredListener).toBeNull();
   });
 });
 

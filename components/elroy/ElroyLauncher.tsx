@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
   isElroyEligiblePath,
+  observeElroySmallScreen,
   parseElroyBirthContext,
   readElroySuppression,
   shouldScheduleElroyTeaser,
@@ -38,10 +39,7 @@ export function ElroyLauncher() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(max-width: 640px)");
-    const updateSmallScreen = () => setIsSmallScreen(mediaQuery.matches);
-    updateSmallScreen();
-    mediaQuery.addEventListener("change", updateSmallScreen);
-    return () => mediaQuery.removeEventListener("change", updateSmallScreen);
+    return observeElroySmallScreen(mediaQuery, setIsSmallScreen);
   }, []);
 
   useEffect(() => {

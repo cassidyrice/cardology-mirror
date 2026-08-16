@@ -37,6 +37,40 @@ export function shouldScheduleElroyTeaser(
   return !(isSmallScreen && MOBILE_TEASER_PROTECTED_PATHS.has(path));
 }
 
+type ElroyMediaQueryList = {
+  readonly matches: boolean;
+  addEventListener?: (type: "change", listener: () => void) => void;
+  removeEventListener?: (type: "change", listener: () => void) => void;
+  addListener?: (listener: () => void) => void;
+  removeListener?: (listener: () => void) => void;
+};
+
+export function observeElroySmallScreen(
+  mediaQuery: ElroyMediaQueryList,
+  onMatchesChange: (matches: boolean) => void,
+): () => void {
+  const updateMatches = () => onMatchesChange(mediaQuery.matches);
+  updateMatches();
+
+  if (
+    typeof mediaQuery.addEventListener === "function" &&
+    typeof mediaQuery.removeEventListener === "function"
+  ) {
+    mediaQuery.addEventListener("change", updateMatches);
+    return () => mediaQuery.removeEventListener?.("change", updateMatches);
+  }
+
+  if (
+    typeof mediaQuery.addListener === "function" &&
+    typeof mediaQuery.removeListener === "function"
+  ) {
+    mediaQuery.addListener(updateMatches);
+    return () => mediaQuery.removeListener?.(updateMatches);
+  }
+
+  return () => {};
+}
+
 export function readElroySuppression(storage: Storage, nowMs: number): boolean {
   try {
     const raw = storage.getItem(ELROY_SUPPRESSION_KEY);
