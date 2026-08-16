@@ -4,12 +4,13 @@ import { instantReportBySlug } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// One header for every marketing/editorial surface. Five conceptual
-// destinations, no more: Blueprint, Calculator, Card Meanings, Learn.
+// One header for every marketing/editorial surface. Five destinations, no
+// more: Blueprint, Calculator, Compatibility, Card Meanings, Learn.
 // Long-tail navigation lives in the footer.
 const NAV_LINKS = [
   { label: "Blueprint", href: "/products/personal-card-blueprint" },
   { label: "Calculator", href: "/birth-card-calculator" },
+  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
   { label: "Card Meanings", href: "/birth-card" },
   { label: "Learn", href: "/what-is-cardology" },
 ];
@@ -30,7 +31,7 @@ export function SiteHeader() {
           </Link>
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft md:flex lg:gap-6"
+            className="hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft lg:flex lg:gap-6"
           >
             {NAV_LINKS.map((link) => (
               <Link
@@ -42,7 +43,7 @@ export function SiteHeader() {
               </Link>
               ))}
           </nav>
-          <details className="relative ml-auto md:hidden">
+          <details className="relative ml-auto lg:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
@@ -64,10 +65,9 @@ export function SiteHeader() {
               </Link>
             </nav>
           </details>
-          {/* shrink-0: between md and ~860px the row is tight enough that flex
-              compresses this button below its text width, which broke "Free
-              Call" onto two lines. */}
-          <div className="hidden md:block">
+          {/* Wait until lg to show the full desktop row so its five destinations
+              and paid CTA retain their natural widths. */}
+          <div className="hidden lg:block">
             <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
               {blueprintCta}
             </Link>

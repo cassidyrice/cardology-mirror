@@ -162,6 +162,8 @@ export default function BirthCardIndex() {
             ["Ace of Hearts meaning", "/birth-card/ace-of-hearts"],
             ["10 of Hearts meaning", "/birth-card/10-of-hearts"],
             ["10 of Diamonds meaning", "/birth-card/10-of-diamonds"],
+            ["Queen of Hearts meaning", "/birth-card/queen-of-hearts"],
+            ["Queen of Clubs meaning", "/birth-card/queen-of-clubs"],
           ].map(([label, href]) => (
             <li key={href}>
               <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-bone">
