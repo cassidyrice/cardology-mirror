@@ -2,7 +2,7 @@
  * Lightweight browser smoke for Elroy launcher eligibility + free reveal.
  * Uses the Playwright library (not @playwright/test).
  *
- * ELROY_BASE_URL=http://127.0.0.1:3577 bun scripts/elroy-browser.test.ts
+ * ELROY_BASE_URL=http://127.0.0.1:3577 bun scripts/elroy-browser.ts
  */
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
@@ -205,8 +205,27 @@ async function main() {
   await page.click('button:has-text("Show my card")');
   await page.waitForSelector("text=9 of Clubs");
 
-  // Narrow mobile viewport keeps the dialog and protected composer reachable.
+  // Protected mobile conversion routes keep the launcher but skip the teaser.
   await page.click('button[aria-label="Close Elroy"]');
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${base}/birth-card-calculator`, {
+    waitUntil: "domcontentloaded",
+  });
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: "domcontentloaded" });
+  await page.waitForSelector('button[aria-label="Open Elroy micro-reading"]');
+  await page.waitForTimeout(10_500);
+  assert.equal(
+    await page.getByText("Want the pattern behind your birth card?").count(),
+    0,
+    "protected mobile routes should not auto-show the teaser",
+  );
+  await page.click('button[aria-label="Open Elroy micro-reading"]');
+  await page.waitForSelector("#elroy-title");
+  await page.keyboard.press("Escape");
+  await page.waitForSelector("#elroy-title", { state: "detached" });
+
+  // Narrow mobile viewport keeps the dialog and protected composer reachable.
   await page.setViewportSize({ width: 320, height: 640 });
   await page.goto(`${base}/`, { waitUntil: "domcontentloaded" });
   await page.evaluate(() => localStorage.clear());

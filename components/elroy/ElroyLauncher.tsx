@@ -7,6 +7,7 @@ import {
   isElroyEligiblePath,
   parseElroyBirthContext,
   readElroySuppression,
+  shouldScheduleElroyTeaser,
   writeElroySuppression,
 } from "@/lib/elroy/widget";
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
@@ -23,6 +24,7 @@ export function ElroyLauncher() {
   const pathname = usePathname() || "/";
   const [ready, setReady] = useState(false);
   const [suppressed, setSuppressed] = useState(true);
+  const [isSmallScreen, setIsSmallScreen] = useState(true);
   const [teaser, setTeaser] = useState(false);
   const [open, setOpen] = useState(false);
   const [prefBirthdate, setPrefBirthdate] = useState("");
@@ -32,6 +34,14 @@ export function ElroyLauncher() {
   useEffect(() => {
     setReady(true);
     setSuppressed(readElroySuppression(window.localStorage, Date.now()));
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 640px)");
+    const updateSmallScreen = () => setIsSmallScreen(mediaQuery.matches);
+    updateSmallScreen();
+    mediaQuery.addEventListener("change", updateSmallScreen);
+    return () => mediaQuery.removeEventListener("change", updateSmallScreen);
   }, []);
 
   useEffect(() => {
@@ -52,7 +62,12 @@ export function ElroyLauncher() {
   const eligible = ready && isElroyEligiblePath(pathname) && !suppressed;
 
   useEffect(() => {
-    if (!eligible || open || !teaserEligibleRef.current) {
+    if (
+      !eligible ||
+      open ||
+      !teaserEligibleRef.current ||
+      !shouldScheduleElroyTeaser(pathname, isSmallScreen)
+    ) {
       setTeaser(false);
       return;
     }
@@ -62,7 +77,7 @@ export function ElroyLauncher() {
       trackClientFunnelEventOnce("elroy_teaser_shown", { placement: pathname });
     }, TEASER_MS);
     return () => window.clearTimeout(id);
-  }, [eligible, open, pathname]);
+  }, [eligible, isSmallScreen, open, pathname]);
 
   if (!eligible) return null;
 

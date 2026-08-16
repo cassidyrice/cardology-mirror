@@ -7,6 +7,7 @@ import {
   isElroyEligiblePath,
   parseElroyBirthContext,
   readElroySuppression,
+  shouldScheduleElroyTeaser,
   writeElroySuppression,
   ELROY_SUPPRESSION_KEY,
   THIRTY_DAYS_MS,
@@ -47,6 +48,73 @@ describe("isElroyEligiblePath", () => {
     expect(isElroyEligiblePath("/privacy-policy")).toBe(false);
     expect(isElroyEligiblePath("/free-course")).toBe(false);
     expect(isElroyEligiblePath("/gate")).toBe(false);
+  });
+});
+
+describe("shouldScheduleElroyTeaser", () => {
+  test("does not auto-schedule the homepage teaser on small screens", () => {
+    expect(shouldScheduleElroyTeaser("/", true)).toBe(false);
+  });
+
+  test("protects every mobile conversion route from the automatic teaser", () => {
+    for (const path of [
+      "/",
+      "/birth-card-calculator",
+      "/birth-card-compatibility-calculator",
+      "/products/personal-card-blueprint",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
+    }
+  });
+
+  test("normalizes query strings, hashes, and trailing slashes", () => {
+    expect(
+      shouldScheduleElroyTeaser(
+        "/birth-card-calculator/?birthdate=2001-01-15#result",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
+        "/birth-card-compatibility-calculator/#result",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
+        "/products/personal-card-blueprint/?ref=elroy#details",
+        true,
+      ),
+    ).toBe(false);
+  });
+
+  test("keeps the automatic teaser on protected routes for desktop visitors", () => {
+    for (const path of [
+      "/",
+      "/birth-card-calculator",
+      "/birth-card-compatibility-calculator",
+      "/products/personal-card-blueprint",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, false)).toBe(true);
+    }
+  });
+
+  test("keeps the automatic teaser on other eligible mobile routes", () => {
+    expect(shouldScheduleElroyTeaser("/blog/how-to-use-cardology", true)).toBe(
+      true,
+    );
+  });
+
+  test("never schedules the automatic teaser on excluded routes", () => {
+    for (const path of [
+      "/checkout/personal-card-blueprint",
+      "/privacy-policy/",
+      "/free-course?step=1",
+      "/gate#signup",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, false)).toBe(false);
+      expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
+    }
   });
 });
 

@@ -13,12 +13,28 @@ const EXCLUDED_PREFIXES = [
   "/refund-policy",
 ];
 
+const MOBILE_TEASER_PROTECTED_PATHS = new Set([
+  "/",
+  "/birth-card-calculator",
+  "/birth-card-compatibility-calculator",
+  "/products/personal-card-blueprint",
+]);
+
 export function isElroyEligiblePath(pathname: string): boolean {
   if (!pathname || !pathname.startsWith("/")) return false;
   const path = pathname.split("?")[0] || "/";
   return !EXCLUDED_PREFIXES.some(
     (prefix) => path === prefix || path.startsWith(`${prefix}/`),
   );
+}
+
+export function shouldScheduleElroyTeaser(
+  pathname: string,
+  isSmallScreen: boolean,
+): boolean {
+  const path = (pathname.split(/[?#]/)[0] || "/").replace(/\/+$/, "") || "/";
+  if (!isElroyEligiblePath(path)) return false;
+  return !(isSmallScreen && MOBILE_TEASER_PROTECTED_PATHS.has(path));
 }
 
 export function readElroySuppression(storage: Storage, nowMs: number): boolean {
