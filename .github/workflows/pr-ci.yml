@@ -48,6 +48,9 @@ jobs:
             scripts/elroy-widget.test.ts \
             scripts/shorts/studio-core.test.ts \
             scripts/analog-algorithm-launch.test.ts \
+            scripts/authority-publication-links.test.ts \
+            scripts/newsletter-signup-form.test.ts \
+            scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
             scripts/calculator-library-links.test.ts \
             scripts/site-navigation.test.ts \

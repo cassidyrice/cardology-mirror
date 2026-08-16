@@ -16,7 +16,7 @@ const CANONICAL_ORIGIN = "https://cardblueprints.com";
 
 const ROUTE_DATES = {
   "/": "2026-08-16",
-  "/about": "2026-08-12",
+  "/about": "2026-08-16",
   "/videos": "2026-07-29",
   "/birth-card": "2026-08-16",
   "/birth-card-calculator": "2026-08-16",
@@ -26,6 +26,7 @@ const ROUTE_DATES = {
   "/cardology-compatibility": "2026-08-16",
   "/products/personal-card-blueprint": "2026-08-12",
   "/products/analog-algorithm": "2026-08-08",
+  "/products/complete-card-blueprint": "2026-08-16",
   "/free-course": "2026-08-07",
   "/what-is-cardology": "2026-08-16",
   "/cardology-for-beginners": "2026-08-12",
@@ -40,7 +41,7 @@ const ROUTE_DATES = {
   "/52-card-astrology-explained": "2026-08-16",
   "/birth-card-vs-ruling-card": "2026-08-15",
   "/planetary-ruling-card": "2026-08-15",
-  "/methodology": "2026-08-15",
+  "/methodology": "2026-08-16",
   "/editorial-policy": "2026-08-06",
   "/contact": "2026-08-12",
   "/shadow-karma-guide": "2026-07-02",

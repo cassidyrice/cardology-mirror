@@ -4,7 +4,12 @@
  * SEO_BASE_URL=http://127.0.0.1:3577 bun scripts/seo-integrity-browser.ts
  */
 import assert from "node:assert/strict";
-import { chromium, type ConsoleMessage, type Page } from "playwright";
+import {
+  chromium,
+  type ConsoleMessage,
+  type Locator,
+  type Page,
+} from "playwright";
 
 import { birthCardSlug } from "../lib/birth-card-calculator";
 import { buildLifePathProfile } from "../lib/life-path";
@@ -80,6 +85,70 @@ function assertRectWithin(
       inner.x + inner.width <= outer.x + outer.width + tolerance &&
       inner.y + inner.height <= outer.y + outer.height + tolerance,
     `${label}: ${JSON.stringify(inner)} within ${JSON.stringify(outer)}`,
+  );
+}
+
+async function assertMobileCtaIsUsable(
+  launcher: Locator,
+  cta: Locator,
+  label: string,
+): Promise<void> {
+  await launcher.waitFor();
+  await cta.waitFor();
+
+  const launcherBox = await launcher.boundingBox();
+  const ctaBox = await cta.boundingBox();
+  assert.ok(launcherBox && ctaBox, `${label}: CTA overlap is measurable`);
+  assert.equal(
+    rectanglesOverlap(launcherBox, ctaBox),
+    false,
+    `${label}: Elroy launcher does not cover the primary CTA`,
+  );
+
+  const hitTest = await cta.evaluate(async (ctaElement) => {
+    ctaElement.scrollIntoView({ block: "end", inline: "nearest" });
+    await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    const box = ctaElement.getBoundingClientRect();
+    const y = box.top + box.height * 0.25;
+    const samples = [0.15, 0.5, 0.7].map((ratio) => {
+      const x = box.left + box.width * ratio;
+      const hit = document.elementFromPoint(x, y);
+      return {
+        x,
+        y,
+        target: hit
+          ? `${hit.tagName.toLowerCase()}${hit.className ? `.${String(hit.className).trim().replace(/\s+/g, ".")}` : ""}`
+          : "none",
+        ctaTarget: Boolean(
+          hit && (hit === ctaElement || ctaElement.contains(hit)),
+        ),
+      };
+    });
+    return {
+      box: {
+        x: box.x,
+        y: box.y,
+        width: box.width,
+        height: box.height,
+      },
+      viewport: { width: innerWidth, height: innerHeight },
+      samples,
+    };
+  });
+  assertRectWithin(
+    hitTest.box,
+    {
+      x: 0,
+      y: 0,
+      width: hitTest.viewport.width,
+      height: hitTest.viewport.height,
+    },
+    `${label}: primary CTA is fully in view`,
+  );
+  assert.equal(
+    hitTest.samples.every((sample) => sample.ctaTarget),
+    true,
+    `${label}: primary CTA wins hit-testing outside the launcher: ${JSON.stringify(hitTest.samples)}`,
   );
 }
 
@@ -336,58 +405,10 @@ async function main(): Promise<void> {
     const primaryBlueprintCta = page
       .locator('main a[href="/checkout/personal-card-blueprint"]')
       .first();
-    await elroyLauncher.waitFor();
-    const launcherBox = await elroyLauncher.boundingBox();
-    const ctaBox = await primaryBlueprintCta.boundingBox();
-    assert.ok(launcherBox && ctaBox, "mobile Blueprint CTA overlap is measurable");
-    assert.equal(
-      rectanglesOverlap(launcherBox, ctaBox),
-      false,
-      "390px: Elroy launcher does not cover the primary Blueprint CTA",
-    );
-
-    const ctaHitTest = await primaryBlueprintCta.evaluate(async (cta) => {
-      cta.scrollIntoView({ block: "end", inline: "nearest" });
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-      const box = cta.getBoundingClientRect();
-      const y = box.top + box.height * 0.25;
-      const samples = [0.15, 0.5, 0.7].map((ratio) => {
-        const x = box.left + box.width * ratio;
-        const hit = document.elementFromPoint(x, y);
-        return {
-          x,
-          y,
-          target: hit
-            ? `${hit.tagName.toLowerCase()}${hit.className ? `.${String(hit.className).trim().replace(/\s+/g, ".")}` : ""}`
-            : "none",
-          ctaTarget: Boolean(hit && (hit === cta || cta.contains(hit))),
-        };
-      });
-      return {
-        box: {
-          x: box.x,
-          y: box.y,
-          width: box.width,
-          height: box.height,
-        },
-        viewport: { width: innerWidth, height: innerHeight },
-        samples,
-      };
-    });
-    assertRectWithin(
-      ctaHitTest.box,
-      {
-        x: 0,
-        y: 0,
-        width: ctaHitTest.viewport.width,
-        height: ctaHitTest.viewport.height,
-      },
-      "390px: primary Blueprint CTA is fully in view",
-    );
-    assert.equal(
-      ctaHitTest.samples.every((sample) => sample.ctaTarget),
-      true,
-      `390px: primary Blueprint CTA wins hit-testing outside the launcher: ${JSON.stringify(ctaHitTest.samples)}`,
+    await assertMobileCtaIsUsable(
+      elroyLauncher,
+      primaryBlueprintCta,
+      "390px: Personal Card Blueprint",
     );
 
     await elroyLauncher.click();
@@ -449,6 +470,48 @@ async function main(): Promise<void> {
       "390px: Elroy submit stays inside the panel shell",
     );
     await page.screenshot({ path: elroyScreenshotPath, fullPage: false });
+    await page.getByRole("button", { name: "Close Elroy" }).click();
+
+    await page.evaluate(() => localStorage.clear());
+    await goto(page, "/products/complete-card-blueprint");
+    const completeBlueprintLauncher = page.locator(
+      'button[aria-label="Open Elroy micro-reading"]',
+    );
+    const completeBlueprintCta = page
+      .locator('main a[href="/checkout/complete-card-blueprint"]')
+      .first();
+    await completeBlueprintLauncher.waitFor();
+    await page.waitForTimeout(10_500);
+    assert.equal(
+      await page.locator(".elroy-teaser").count(),
+      0,
+      "390px: Complete Card Blueprint does not auto-open the Elroy teaser",
+    );
+    assert.equal(
+      await completeBlueprintLauncher.isVisible(),
+      true,
+      "390px: Complete Card Blueprint keeps the manual Elroy launcher",
+    );
+    await assertMobileCtaIsUsable(
+      completeBlueprintLauncher,
+      completeBlueprintCta,
+      "390px: Complete Card Blueprint",
+    );
+
+    await completeBlueprintLauncher.click();
+    await elroyPanel.waitFor();
+    const completePanelBox = await elroyPanel.boundingBox();
+    assertRectWithin(
+      completePanelBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: Complete Card Blueprint manual Elroy dialog fits the viewport",
+    );
+    const completeShellBox = await elroyShell.boundingBox();
+    assertRectWithin(
+      completeShellBox,
+      completePanelBox,
+      "390px: Complete Card Blueprint Elroy shell stays inside the dialog",
+    );
     await page.getByRole("button", { name: "Close Elroy" }).click();
 
     await page.setViewportSize({ width: 1280, height: 800 });

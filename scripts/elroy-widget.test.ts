@@ -57,11 +57,18 @@ describe("shouldScheduleElroyTeaser", () => {
     expect(shouldScheduleElroyTeaser("/", true)).toBe(false);
   });
 
+  test("protects the Complete Card Blueprint product on small screens", () => {
+    expect(
+      shouldScheduleElroyTeaser("/products/complete-card-blueprint", true),
+    ).toBe(false);
+  });
+
   test("protects every mobile conversion route from the automatic teaser", () => {
     for (const path of [
       "/",
       "/birth-card-calculator",
       "/birth-card-compatibility-calculator",
+      "/products/complete-card-blueprint",
       "/products/personal-card-blueprint",
     ]) {
       expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
@@ -83,6 +90,12 @@ describe("shouldScheduleElroyTeaser", () => {
     ).toBe(false);
     expect(
       shouldScheduleElroyTeaser(
+        "/products/complete-card-blueprint/?ref=elroy#details",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
         "/products/personal-card-blueprint/?ref=elroy#details",
         true,
       ),
@@ -94,6 +107,7 @@ describe("shouldScheduleElroyTeaser", () => {
       "/",
       "/birth-card-calculator",
       "/birth-card-compatibility-calculator",
+      "/products/complete-card-blueprint",
       "/products/personal-card-blueprint",
     ]) {
       expect(shouldScheduleElroyTeaser(path, false)).toBe(true);

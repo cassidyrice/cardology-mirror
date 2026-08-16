@@ -17,6 +17,7 @@ const MOBILE_TEASER_PROTECTED_PATHS = new Set([
   "/",
   "/birth-card-calculator",
   "/birth-card-compatibility-calculator",
+  "/products/complete-card-blueprint",
   "/products/personal-card-blueprint",
 ]);
 
