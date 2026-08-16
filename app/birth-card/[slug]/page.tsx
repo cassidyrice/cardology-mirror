@@ -25,10 +25,10 @@ import {
   type BirthdateSeo,
   type CardSeo,
 } from "@/lib/seo-cards";
-import { SUIT_COLOR_PAPER } from "@/lib/cards";
+import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 
-const SEO_UPDATED = "2026-06-17";
+const SEO_UPDATED = "2026-08-15";
 
 // Only the 52 card-meaning pages are prerendered here. The 366 birthday slugs
 // are deliberately NOT built: the cardology-unlock Worker in front of Pages
@@ -159,6 +159,10 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             See {card.label} compatibility with all 52 cards →
           </a>
         </p>
+        <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
+        <p>{moneyReadingText(card)}</p>
+        <h3 className="mt-4 font-serif text-base text-bone">As advice</h3>
+        <p>{adviceReadingText(card)}</p>
       </Section>
 
       <Section title={`What does the ${card.label} mean as your birth card?`}>
@@ -739,6 +743,45 @@ function loveReadingText(card: CardSeo): string {
   return `In a love reading, the ${card.label} speaks to ${relationshipTheme(card)}.`;
 }
 
+function moneyReadingText(card: CardSeo): string {
+  return (
+    `In a money or career reading, the ${card.label} points to ${moneyTheme(card)}, colored by ${rankTheme(card.rank).toLowerCase()}. ` +
+    `At its best the draw marks a moment where the work and the reward line up; when it reads strained, check the shadow first: you're ${lensClause(card.over)}`
+  );
+}
+
+function adviceReadingText(card: CardSeo): string {
+  return (
+    `As advice, the ${card.label} asks you to ${adviceTheme(card)}. ` +
+    `As an obstacle, it is the same pattern overplayed — the gift turning into the very thing that blocks the reading.`
+  );
+}
+
+// Standard cartomancy suit correspondence, used only to disambiguate this
+// playing-card system from tarot for "…in tarot" queries. Cardology meanings
+// on this page come from the 52-card system, not the tarot deck.
+const TAROT_SUIT: Record<Suit, string> = {
+  hearts: "Cups",
+  clubs: "Wands",
+  diamonds: "Pentacles",
+  spades: "Swords",
+};
+
+const TAROT_COURT: Record<string, string> = { J: "Page", Q: "Queen", K: "King" };
+
+function tarotAnalogue(card: CardSeo): string {
+  const rankWord = TAROT_COURT[card.rank] ?? (card.rank === "A" ? "Ace" : card.rank);
+  return `${rankWord} of ${TAROT_SUIT[card.suit]}`;
+}
+
+function tarotFaqText(card: CardSeo): string {
+  return (
+    `No. The ${card.label} is a playing card, not a tarot card. Tarot readers sometimes map it to the ${TAROT_SUIT[card.suit]} suit ` +
+    `(the rough analogue is the ${tarotAnalogue(card)}), but Cardology reads the standard 52-card deck as its own birthday-and-pattern system. ` +
+    `Everything on this page comes from that playing-card system.`
+  );
+}
+
 // The card's /compatibility/ hub on the Worker-served surface; falls back to
 // the pair-library index if the generated entry is ever missing.
 function compatHubHref(card: CardSeo): string {
@@ -764,6 +807,8 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     // sections — same helper output, so page copy and FAQ never drift.
     { q: `What does the ${card.label} mean in a reading?`, a: generalReadingText(card) },
     { q: `What does the ${card.label} mean in love?`, a: `${loveReadingText(card)} For two specific people, compatibility depends on both birth cards — the ${card.label} compatibility hub compares it with all 52 cards.` },
+    { q: `What does the ${card.label} mean for money and career?`, a: moneyReadingText(card) },
+    { q: `Is the ${card.label} a tarot card?`, a: tarotFaqText(card) },
     { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern connected with ${card.suitDomain.toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
@@ -806,6 +851,24 @@ function workTheme(card: CardSeo): string {
     case "clubs": return "communication, teaching, strategy, writing, analysis, advising, or pattern recognition matters";
     case "diamonds": return "value, business, pricing, design, resources, money, or practical exchange matters";
     case "spades": return "craft, leadership, systems, health, operations, discipline, or deep transformation matters";
+  }
+}
+
+function moneyTheme(card: CardSeo): string {
+  switch (card.suit) {
+    case "hearts": return "income that moves through people — care, hospitality, taste, trust, and the relationships that quietly carry opportunity";
+    case "clubs": return "income that moves through mind — writing, teaching, analysis, communication, and ideas packaged clearly enough to sell";
+    case "diamonds": return "the direct mechanics of value — pricing, earning, spending, assets, and whether self-worth and net worth are being confused";
+    case "spades": return "income that moves through discipline — systems, craft, health, operations, and the unglamorous work that compounds";
+  }
+}
+
+function adviceTheme(card: CardSeo): string {
+  switch (card.suit) {
+    case "hearts": return "lead with the honest feeling and stay open a beat longer than is comfortable";
+    case "clubs": return "say the true thing clearly, study before you speak, and let the idea survive being tested";
+    case "diamonds": return "name the real price, respect your own value, and keep the exchange clean";
+    case "spades": return "do the disciplined thing first, tend the body and the system, and let pressure refine you instead of hardening you";
   }
 }
 
