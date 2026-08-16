@@ -33,10 +33,28 @@ export default function MethodologyPage() {
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/methodology`,
   };
+  const datasetLd = {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    name: "Cardology Birthday Map: 366 Date-to-Card Mappings",
+    description:
+      "A deterministic month-and-day lookup table for all 366 calendar dates, including the February 29 and December 31 boundary rules.",
+    url: `${SITE_URL}/methodology#birthday-map-dataset`,
+    creator: { "@type": "Organization", name: "Card Blueprints", url: SITE_URL },
+    dateModified: "2026-08-15",
+    version: "2026-08-15",
+    isAccessibleForFree: true,
+    distribution: {
+      "@type": "DataDownload",
+      encodingFormat: "text/csv",
+      contentUrl: `${SITE_URL}/data/cardology-birthday-map.csv`,
+    },
+  };
 
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Methodology", href: "/methodology" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(datasetLd) }} />
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Calculation and interpretation</p>
@@ -115,6 +133,42 @@ export default function MethodologyPage() {
           . If two tools disagree on the same system rules, trust the one you can audit —
           and tell us on the contact page.
         </p>
+      </section>
+
+      <section
+        className="mt-12 max-w-3xl border border-[#14110d]/15 bg-[#f4f0e7]/78 p-6"
+        id="birthday-map-dataset"
+      >
+        <p className="oracle-eyebrow mb-3">Open data</p>
+        <h2 className="font-serif text-3xl text-[#14110d]">
+          Download the 366-date Cardology map
+        </h2>
+        <p className="mt-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+          The CSV contains 366 rows, one for every month-and-day combination. Each row
+          includes the card code, rank, suit, solar value, canonical card URL, birthday
+          URL, exception rule, claim classification, and dataset version. February 29 maps to the 9 of Clubs.
+          December 31 is preserved as the Joker boundary rather than being forced into a standard 52-card result.
+        </p>
+        <a
+          href="/data/cardology-birthday-map.csv"
+          download="cardology-birthday-map.csv"
+          className="mt-5 inline-block rounded-full bg-[#8e321f] px-5 py-3 text-xs font-bold uppercase tracking-wider text-white"
+        >
+          Download CSV (366 rows)
+        </a>
+        <div className="mt-6 border-t border-[#14110d]/15 pt-5">
+          <h3 className="font-serif text-2xl text-[#14110d]">How to cite this dataset</h3>
+          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+            Card Blueprints. Cardology Birthday Map: 366 Date-to-Card Mappings.
+            Version 2026-08-15. https://cardblueprints.com/data/cardology-birthday-map.csv
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+            The table publishes deterministic date-to-card mappings used by the live
+            calculator. Personality, relationship, and life-pattern interpretations are
+            separate: interpretive meanings are Cardology pattern language, not
+            experimentally established facts.
+          </p>
+        </div>
       </section>
 
       <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
