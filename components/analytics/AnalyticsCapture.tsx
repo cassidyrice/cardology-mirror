@@ -21,7 +21,7 @@ export const FUNNEL_COOKIE = FUNNEL_COOKIE_NAME;
 const ONCE_KEY_PREFIX = "cardblueprints.analytics.once.";
 // Active public offers: checkout review + product-page intent.
 const OFFER_PATH =
-  /^\/(checkout|products)\/(personal-card-blueprint|analog-algorithm)\/?$/;
+  /^\/(checkout|products)\/(personal-card-blueprint|analog-algorithm|complete-card-blueprint)\/?$/;
 
 type Attribution = {
   sessionId: string;

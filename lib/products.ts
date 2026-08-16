@@ -11,6 +11,7 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_COMPLETE_READING"
   | "STRIPE_PRICE_SEASON_PASS"
   | "STRIPE_PRICE_ANALOG_ALGORITHM"
+  | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT";
 
 type ProductBase = {
@@ -170,6 +171,35 @@ export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
     redownloadDays: 30,
     fileName: "The-Analog-Algorithm.pdf",
     href: "/products/analog-algorithm",
+  },
+  {
+    kind: "digital_download",
+    available: true,
+    slug: "complete-card-blueprint",
+    stripePriceEnv: "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT",
+    name: "The Complete Card Blueprint",
+    price: 27,
+    priceLabel: "$27",
+    badge: "Handbook",
+    oneLine:
+      "The full working system: birth cards, timing, relationships, and all 52 entries.",
+    bestFor:
+      "Readers who want the complete handbook beside The Analog Algorithm — calculation through the living deck.",
+    deliverable: "PDF handbook with a secure download link after purchase.",
+    turnaround: "Download link by email after successful payment.",
+    includes: [
+      "Birth-card calculation, ruling cards, and calendar boundaries",
+      "Rank × suit × planet reading grammar and under / sweet / over states",
+      "Spreads, 52-day timing, and a no-score relationship method",
+      "All 52 card entries, practice worksheets, and a claim-label key",
+    ],
+    cta: "Get the Handbook — $27",
+    checkoutNote:
+      "One-time purchase. Download link emailed after payment. 30-day re-download window.",
+    downloadAssetKey: "complete-card-blueprint-v1.pdf",
+    redownloadDays: 30,
+    fileName: "The-Complete-Card-Blueprint.pdf",
+    href: "/products/complete-card-blueprint",
   },
 ];
 

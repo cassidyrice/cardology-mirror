@@ -159,12 +159,14 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 }
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
-  ["personal-card-blueprint", "analog-algorithm"],
+  ["personal-card-blueprint", "analog-algorithm", "complete-card-blueprint"],
 );
 assert.equal(publicProductBySlug("personal-card-blueprint")?.kind, "instant_report");
 assert.equal(publicProductBySlug("analog-algorithm")?.kind, "digital_download");
+assert.equal(publicProductBySlug("complete-card-blueprint")?.kind, "digital_download");
 assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");
 assert.equal(sanitizeOfferSlug("analog-algorithm"), "analog-algorithm");
+assert.equal(sanitizeOfferSlug("complete-card-blueprint"), "complete-card-blueprint");
 for (const offer of READING_OFFERS) {
   assert.equal(publicProductBySlug(offer.slug), undefined, `${offer.slug} must not open new checkout`);
   assert.equal(productBySlug(offer.slug)?.slug, offer.slug, `${offer.slug} must remain resolvable for historical orders`);
@@ -175,7 +177,7 @@ assert.deepEqual(
     price: product.price,
     available: product.available,
   })),
-  [{ slug: "analog-algorithm", price: 17, available: true }],
+  [{ slug: "analog-algorithm", price: 17, available: true }, { slug: "complete-card-blueprint", price: 27, available: true }],
 );
 
 // Product-model regression gate: the phone-reading products are historical
@@ -195,6 +197,7 @@ const productMarketingFiles = [
   "app/readings/page.tsx",
   "app/layout.tsx",
   "app/products/analog-algorithm/page.tsx",
+  "app/products/complete-card-blueprint/page.tsx",
   "components/seo/SiteFooter.tsx",
   "components/seo/SiteHeader.tsx",
   "components/seo/ReadingBridge.tsx",

@@ -55,6 +55,7 @@ export const MARKETING_PATHS = [
   "/cardology-compatibility",
   "/products/personal-card-blueprint",
   "/products/analog-algorithm",
+  "/products/complete-card-blueprint",
   "/free-course",
   "/what-is-cardology",
   "/cardology-for-beginners",

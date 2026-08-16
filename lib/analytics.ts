@@ -59,6 +59,7 @@ const UUID_PATTERN =
 const OFFER_SLUGS = new Set([
   "personal-card-blueprint",
   "analog-algorithm",
+  "complete-card-blueprint",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",
   "complete-reading",

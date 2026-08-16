@@ -173,7 +173,8 @@ fi
 echo "→ smoke: product URLs in sitemap"
 SITEMAP="$(curl -sS "${SITE_ORIGIN}/sitemap.xml" || true)"
 if echo "$SITEMAP" | grep -q 'products/personal-card-blueprint' \
-  && echo "$SITEMAP" | grep -q 'products/analog-algorithm'; then
+  && echo "$SITEMAP" | grep -q 'products/analog-algorithm' \
+  && echo "$SITEMAP" | grep -q 'products/complete-card-blueprint'; then
   green "Sitemap product URLs OK"
 else
   yellow "Sitemap missing product URLs (CDN delay or regression)"
