@@ -6,8 +6,15 @@ import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
 } from "../lib/site";
+import {
+  indexBlockingDirectives,
+  parseRobotsMetaDirectives,
+  parseXRobotsTagDirectives,
+  type RobotsMeta,
+} from "./worker-production-contract-lib";
 
 const PRODUCTION_ORIGIN = "https://cardblueprints.com";
+const REQUEST_TIMEOUT_MS = 15_000;
 
 const SITEMAP_CARD_URL = `${PRODUCTION_ORIGIN}/sitemap-cardology.xml`;
 const SITEMAP_COMPATIBILITY_URL = `${PRODUCTION_ORIGIN}/sitemap-compatibility.xml`;
@@ -97,17 +104,14 @@ function canonicalHrefs(html: string): string[] {
   });
 }
 
-function robotsDirectives(html: string): string[] {
+function robotsMeta(html: string): RobotsMeta[] {
   const head = /<head\b[^>]*>([\s\S]*?)<\/head>/i.exec(html)?.[1] ?? html;
-  return [...head.matchAll(/<meta\b[^>]*>/gi)].flatMap((match) => {
+  return [...head.matchAll(/<meta\b[^>]*>/gi)].map((match) => {
     const attributes = parseTagAttributes(match[0]);
-    if ((attributes.get("name") ?? "").toLowerCase() !== "robots") {
-      return [];
-    }
-    return (attributes.get("content") ?? "")
-      .toLowerCase()
-      .split(/[,\s]+/)
-      .filter(Boolean);
+    return {
+      name: attributes.get("name") ?? "",
+      content: attributes.get("content") ?? "",
+    };
   });
 }
 
@@ -130,6 +134,7 @@ async function fetchManual(url: string): Promise<Response> {
   try {
     return await fetch(url, {
       redirect: "manual",
+      signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       headers: {
         accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "cache-control": "no-cache",
@@ -139,7 +144,7 @@ async function fetchManual(url: string): Promise<Response> {
     });
   } catch (error) {
     throw new Error(
-      `${url}: invariant failed — request completes without a network error; received ${errorMessage(error)}`,
+      `${url}: invariant failed — request completes within ${REQUEST_TIMEOUT_MS}ms without a network error; received ${errorMessage(error)}`,
     );
   }
 }
@@ -194,26 +199,36 @@ async function assertCanonicalHtml(url: string): Promise<void> {
     `${h1Count} <h1 start tags`,
   );
 
-  const robots = robotsDirectives(html);
+  const metaDirectives = parseRobotsMetaDirectives(robotsMeta(html));
+  const genericRobots = metaDirectives
+    .filter(({ source }) => source === "meta robots")
+    .map(({ value }) => value);
   invariant(
-    robots.includes("index"),
+    genericRobots.includes("index"),
     url,
     "robots meta contains the index directive",
-    robots.join(", ") || "missing robots meta",
+    genericRobots.join(", ") || "missing robots meta",
   );
+
+  const metaBlocking = indexBlockingDirectives(metaDirectives);
   invariant(
-    !robots.includes("noindex"),
+    metaBlocking.length === 0,
     url,
-    "robots meta does not contain the noindex directive",
-    robots.join(", "),
+    "robots and crawler-specific meta contain no index-blocking directive, including noindex or none",
+    metaBlocking.map(({ source, value }) => `${source}: ${value}`).join(", "),
   );
 
   const xRobotsTag = response.headers.get("x-robots-tag") ?? "";
+  const xRobotsBlocking = indexBlockingDirectives(
+    parseXRobotsTagDirectives(xRobotsTag),
+  );
   invariant(
-    !/(?:^|[,\s])noindex(?:$|[,\s])/i.test(xRobotsTag),
+    xRobotsBlocking.length === 0,
     url,
-    "X-Robots-Tag does not contain the noindex directive",
-    xRobotsTag,
+    "X-Robots-Tag contains no index-blocking directive, including none or an agent-prefixed noindex",
+    xRobotsBlocking
+      .map(({ source, value }) => `${source}: ${value}`)
+      .join(", "),
   );
 }
 
