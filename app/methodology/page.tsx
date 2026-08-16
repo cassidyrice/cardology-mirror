@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 
+import { NewsletterSignupForm } from "@/components/seo/NewsletterSignupForm";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_URL } from "@/lib/site";
 
@@ -179,6 +180,9 @@ export default function MethodologyPage() {
             </a>
             .
           </p>
+        </div>
+        <div className="mt-6 border-t border-[#14110d]/15 pt-6">
+          <NewsletterSignupForm source="methodology-dataset" compact />
         </div>
       </section>
 

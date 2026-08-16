@@ -14,6 +14,7 @@ import {
 } from "@/lib/birth-card-calculator";
 import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
+import { NewsletterSignupForm } from "./NewsletterSignupForm";
 import { ShareCard } from "./ShareCard";
 
 const blueprintOffer = instantReportBySlug("personal-card-blueprint");
@@ -250,6 +251,9 @@ function BirthCardResultCard({
             <ShareCard cardLabel={bc.label} slug={slug} />
           </div>
         )}
+        <div className="rise w-full max-w-xl" style={{ animationDelay: "0.94s" }}>
+          <NewsletterSignupForm source="calculator-result" compact />
+        </div>
       </div>
 
     </div>

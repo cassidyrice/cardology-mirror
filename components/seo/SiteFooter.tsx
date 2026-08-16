@@ -8,6 +8,7 @@ import {
   VIDEO_PATH,
 } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
+import { NewsletterSignupForm } from "./NewsletterSignupForm";
 
 // One footer for every marketing/editorial surface. The header stays at five
 // destinations; everything long-tail lands here.
@@ -28,6 +29,9 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <BrandLogo compact />
           </Link>
         </p>
+        <div className="mb-10">
+          <NewsletterSignupForm source="site-footer" />
+        </div>
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
