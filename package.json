@@ -6,6 +6,7 @@
     "test": "bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/free-course-media.test.ts",
     "test:homepage-hero": "bun test scripts/homepage-hero.test.ts",
     "test:homepage-hero:browser": "bun scripts/homepage-hero-browser.test.ts",
+    "test:worker-contract": "bun scripts/worker-production-contract.ts",
     "test:elroy": "bun test scripts/elroy-analytics.test.ts scripts/elroy-api.test.ts scripts/elroy-contact.test.ts scripts/elroy-email.test.ts scripts/elroy-idempotency.test.ts scripts/elroy-input.test.ts scripts/elroy-reading.test.ts scripts/elroy-route.test.ts scripts/elroy-widget.test.ts",
     "test:elroy:browser": "bun scripts/elroy-browser.ts",
     "dev": "next dev -p 3577",
