@@ -43,7 +43,7 @@ export default function JokerPage() {
         name: "How many days actually map to a card?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "364 of the 365 calendar dates map to the 52 cards. December 31 resolves to the Joker, and February 29 is not part of the cycle at all. The often-repeated claim that 365 days map to 52 cards is wrong by those two cases.",
+          text: "In a common year, 364 dates map to the 52 cards and December 31 resolves to the Joker. In a leap year, February 29 also maps normally to the 9 of Clubs.",
         },
       },
       {
@@ -96,10 +96,10 @@ export default function JokerPage() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Why this is the honest number</h2>
         <p className="prose-reading text-mist">
-          A lot of Cardology writing says &ldquo;52 cards for 365 days.&rdquo; That is wrong by two
-          cases. <strong>364</strong> of the 365 calendar dates map to a card. December 31 resolves to
-          the Joker, and February 29 is not in the cycle at all. We would rather state the exception
-          than round it away — the system is more interesting when you can see where it ends.
+          In a common year, <strong>364</strong> dates map to one of the 52 cards and December 31
+          resolves to the Joker. A leap year adds February 29, which maps normally to the
+          <strong> 9 of Clubs</strong>. We state both edge cases plainly — the system is more
+          useful when the public explanation matches the calculator.
         </p>
       </section>
 
