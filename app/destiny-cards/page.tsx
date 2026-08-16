@@ -155,7 +155,7 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
       <p className="eyebrow mb-3 text-gold">Free lookup · not tarot</p>
-      <h1 className="display mb-3 text-3xl text-bone">Find Your Destiny Card</h1>
+      <h1 className="display mb-3 text-3xl text-bone">Cards of Destiny: Find Your Birth Card</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
