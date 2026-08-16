@@ -4,7 +4,8 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
-import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
+import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
+import { serializeJsonLdForHtml } from "@/lib/structured-data";
 
 const TITLE = "Playing Cards Birthday Chart & 52-Card Astrology";
 const DESCRIPTION =
@@ -73,9 +74,32 @@ export default function CardAstrology() {
     })),
   };
 
+  const pageUrl = `${SITE_URL}/52-card-astrology-explained`;
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: TITLE,
+    description: DESCRIPTION,
+    url: pageUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    datePublished: "2026-06-05",
+    dateModified: "2026-08-16",
+    author: {
+      "@type": "Person",
+      name: "Cassidy Rice",
+      url: `${SITE_URL}/about`,
+    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "52-Card Astrology", href: "/52-card-astrology-explained" }]}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLdForHtml([article, faq]),
+        }}
+      />
 
       <h1 className="display mb-3 text-3xl text-bone">Playing Cards Birthday Chart &amp; 52-Card Astrology</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
@@ -87,7 +111,7 @@ export default function CardAstrology() {
         </p>
       </div>
       <p className="mb-4 text-xs text-faint">
-        By Cassidy Rice · Updated August 15, 2026 ·{" "}
+        By Cassidy Rice · Updated August 16, 2026 ·{" "}
         <Link href="/methodology" className="text-gold underline underline-offset-4">
           Methodology
         </Link>

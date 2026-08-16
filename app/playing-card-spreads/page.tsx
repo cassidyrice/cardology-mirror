@@ -4,7 +4,8 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { serializeJsonLdForHtml } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Playing Card Spreads: The Three Layouts Beginners Need",
@@ -47,9 +48,32 @@ export default function PlayingCardSpreads() {
     })),
   };
 
+  const collectionPage = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Playing Card Spreads",
+    description: metadata.description,
+    url: `${SITE_URL}${SPREADS_HUB_PATH}`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: SPREADS.length,
+      itemListElement: SPREADS.map((spread, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: spread.name,
+        url: `${SITE_URL}${spread.path}`,
+      })),
+    },
+  };
+
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Playing Card Spreads", href: SPREADS_HUB_PATH }]}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLdForHtml([collectionPage, faq]),
+        }}
+      />
 
       <h1 className="display mb-3 text-3xl text-bone">Playing Card Spreads</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
