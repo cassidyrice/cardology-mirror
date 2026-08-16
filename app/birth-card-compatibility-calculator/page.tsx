@@ -96,7 +96,7 @@ export default function CompatibilityCalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <h1 className="display mb-3 text-3xl text-bone">
-        Playing Card Compatibility Calculator
+        Cardology Compatibility Calculator
       </h1>
       <p className="mb-4 text-sm text-mist">
         Cardology two-birthday tool — 52 playing cards, not tarot.
