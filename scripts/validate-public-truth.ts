@@ -301,6 +301,14 @@ assert.match(
 );
 assert.match(
   middlewareText,
+  /["']\/cardology-chart["']\s*:\s*["']\/birth-card-calculator["']/,
+);
+assert.match(
+  middlewareText,
+  /["']\/birth-card-chart["']\s*:\s*["']\/birth-card-calculator["']/,
+);
+assert.match(
+  middlewareText,
   /["']\/blog\/what-cardology-is-and-is-not["']\s*:\s*["']\/what-is-cardology["']/,
 );
 assert.match(middlewareText, /NextResponse\.redirect\(redirectUrl,\s*301\)/);
@@ -329,6 +337,17 @@ assert.deepEqual(
 assert.deepEqual(
   middlewareResult("https://cardblueprints.com/try", "cardblueprints.com"),
   { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
+);
+assert.deepEqual(
+  middlewareResult("https://cardblueprints.com/cardology-chart", "cardblueprints.com"),
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
+);
+assert.deepEqual(
+  middlewareResult("https://cardblueprints.com/birth-card-chart?utm_source=semrush", "cardblueprints.com"),
+  {
+    status: 301,
+    location: "https://cardblueprints.com/birth-card-calculator?utm_source=semrush",
+  },
 );
 assert.deepEqual(
   middlewareResult(

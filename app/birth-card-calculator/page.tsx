@@ -4,22 +4,24 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import {
   BIRTHDAY_DIRECTORY_PATH,
-  COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "Playing Card Birth Card Calculator (Not Tarot)";
+const TITLE = "Birth Card Calculator & Cardology Chart";
 const DESCRIPTION =
-  "Free playing-card birth card calculator. Enter a birthday — 52-card Cardology, not tarot Major Arcana. Same date, same card.";
-const REVIEWED_DATE = "2026-08-12";
+  "Free Cardology birth card calculator and chart. Enter a birthday for the playing card — 52-card system, not tarot. Same date, same card.";
+const REVIEWED_DATE = "2026-08-15";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
     "birth card calculator",
+    "cardology chart",
+    "birth card chart",
     "playing card birth card calculator",
     "Cardology calculator",
     "cardology birthday calculator",
@@ -102,6 +104,18 @@ const faqs = [
     q: "Can two people have the same birth card?",
     a: "Yes. Most cards cover several birthdays. February 29 maps normally in the cycle (9 of Clubs). December 31 is the Joker boundary, sometimes called the Day Out of Time. The ruling-card layer often differs even when the birth card matches.",
   },
+  {
+    q: "What is a Cardology chart?",
+    a: "A Cardology chart is a birthday-to-playing-card map for the 52-card system. Same date always maps to the same card. The chart on this page is that calendar; the calculator above is the typed lookup.",
+  },
+  {
+    q: "Is a Cardology chart the same as a birth card calculator?",
+    a: "Same engine. The calculator is type-a-date. The chart is the full calendar. Both live on this page so you can look up one birthday or scan the year.",
+  },
+  {
+    q: "Is this Cafe Astrology’s playing cards birthday chart?",
+    a: "Same family — birthday maps to a playing card — but this page uses the Card Blueprints engine, ruling-card layer, and date pages. If two tools disagree, re-run the date here.",
+  },
 ];
 
 export default function CalculatorPage() {
@@ -118,13 +132,14 @@ export default function CalculatorPage() {
   const appLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Cardology Birth Card Calculator",
+    name: "Cardology Birth Card Calculator and Chart",
     applicationCategory: "LifestyleApplication",
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     featureList: [
       "Playing-card birth card from birthday",
       "Planetary ruling card",
+      "Visible Cardology birthday chart",
       "Links to all 52 card meanings",
       "Repeatable, deterministic result",
     ],
@@ -138,7 +153,7 @@ export default function CalculatorPage() {
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: "How to Find Your Birth Card with a 52-Card Calculator",
+    headline: "How to Find Your Birth Card with a Calculator and Chart",
     description: DESCRIPTION,
     dateModified: REVIEWED_DATE,
     datePublished: "2026-08-07",
@@ -156,13 +171,13 @@ export default function CalculatorPage() {
       <header className="max-w-3xl">
         <p className="eyebrow mb-3 text-gold">Free · instant · no signup</p>
         <h1 className="display mb-3 text-3xl text-bone">
-          Playing Card Birth Card Calculator
+          Birth Card Calculator and Cardology Chart
         </h1>
         <p className="prose-reading text-mist" data-ai-summary>
-          Enter your birthday to find <strong>which playing card represents you</strong>
-          in Cardology. The calculator returns your fixed birth card and planetary
-          ruling card instantly. It uses a standard 52-card deck, not tarot Major
-          Arcana and not a random draw. New to the method? Read the plain-English{" "}
+          Your Cardology birth card is the playing card locked to your birthday.
+          Use the calculator, or read the chart under it. Standard 52-card deck,
+          not tarot. The calculator returns your fixed birth card and planetary
+          ruling card instantly. New to the method? Read the plain-English{" "}
           <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
             guide to how Cardology works
           </Link>
@@ -173,7 +188,7 @@ export default function CalculatorPage() {
           <Link href="/about" className="text-gold underline underline-offset-4">
             Cassidy Rice
           </Link>{" "}
-          · Method reviewed August 12, 2026 ·{" "}
+          · Method reviewed August 15, 2026 ·{" "}
           <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
             Editorial standards
           </Link>
@@ -204,7 +219,7 @@ export default function CalculatorPage() {
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
         {[
           ["#how-it-works", "How it works"],
-          ["#birthday-chart", "Birthday chart"],
+          ["#cardology-chart", "Chart"],
           ["#worked-example", "Worked example"],
           ["#birth-vs-ruling", "Birth vs ruling card"],
           ["#trust-and-limits", "Method & trust"],
@@ -289,51 +304,19 @@ export default function CalculatorPage() {
         </div>
       </section>
 
-      <section id="birthday-chart" className="mt-10 scroll-mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
-        <p className="eyebrow mb-2 text-gold">Chart or calculator</p>
-        <h2 className="font-serif text-3xl text-bone">Playing cards birthday chart</h2>
+      <section id="cardology-chart" className="mt-10 scroll-mt-10">
+        <p className="eyebrow mb-2 text-gold">Cardology chart</p>
+        <h2 className="font-serif text-3xl text-bone">Cardology chart: birthday → playing card</h2>
         <p className="prose-reading mt-4 text-mist">
-          Prefer browsing over typing? The free{" "}
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
-            birthday directory
-          </a>{" "}
-          is a playing-cards birthday chart: every month and day maps to one card in
-          a standard deck. Open any date for the birth card, ruling card, and related
-          layers — same fixed calendar this calculator uses.
-        </p>
-        <ul className="prose-reading mt-4 list-disc space-y-2 pl-5 text-mist">
-          <li>
-            <strong className="text-bone">Instant path:</strong> enter a birthday in the
-            calculator above.
-          </li>
-          <li>
-            <strong className="text-bone">Chart path:</strong> pick a date on{" "}
-            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
-              /born-on/
-            </a>
-            .
-          </li>
-          <li>
-            <strong className="text-bone">Meaning path:</strong> continue to{" "}
-            <Link href="/birth-card" className="text-gold underline underline-offset-4">
-              all 52 birth cards
-            </Link>{" "}
-            once you know the card.
-          </li>
-        </ul>
-        <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href={BIRTHDAY_DIRECTORY_PATH}
-            className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
-          >
-            Open the birthday chart →
-          </a>
-          <Link
-            href="/birth-card"
-            className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold"
-          >
-            Browse card meanings →
+          Same map the calculator uses. Pick a date, or type one above. For the
+          longer 52-card explainer, see the{" "}
+          <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
+            full playing-cards birthday chart
           </Link>
+          .
+        </p>
+        <div className="mt-6">
+          <PlayingCardsBirthdayChart />
         </div>
       </section>
 

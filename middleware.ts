@@ -7,6 +7,8 @@ import { applySecurityHeaders } from "@/lib/security-headers";
 const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/readings": "/products/personal-card-blueprint",
   "/try": "/birth-card-calculator",
+  "/cardology-chart": "/birth-card-calculator",
+  "/birth-card-chart": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
   "/blog/what-cardology-is-and-is-not": "/what-is-cardology",
