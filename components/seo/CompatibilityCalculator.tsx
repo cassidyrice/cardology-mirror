@@ -7,6 +7,7 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { parseCard, type Suit } from "@/lib/cards";
+import { compatibilityPairPath } from "@/lib/worker-seo-routes";
 import {
   buildLifePathProfile,
   compareLifePathProfiles,
@@ -103,6 +104,8 @@ function PairResult({
   const pb = parseCard(b.birthCard);
   const aSlug = slugOf(a.birthCard);
   const bSlug = slugOf(b.birthCard);
+  const pairPath =
+    aSlug && bSlug ? compatibilityPairPath(aSlug, bSlug) : null;
   const sameSuit = pa?.suit === pb?.suit;
   const comparison = compareLifePathProfiles(a, b);
   const priceLabel =
@@ -197,6 +200,14 @@ function PairResult({
           One-time personalized written report for your side of the pattern.
           No subscription or phone call.
         </p>
+        {pairPath && (
+          <a
+            href={pairPath}
+            className="text-sm font-medium text-brand-ink underline underline-offset-4"
+          >
+            Read the full {pa?.label} + {pb?.label} pairing →
+          </a>
+        )}
         <Link
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"

@@ -6,8 +6,9 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
-import { parseCard } from "@/lib/cards";
+import { parseCard, todayISO } from "@/lib/cards";
 import {
+  birthdayWorkerPathFromIsoDate,
   birthCardSlug,
   calculateBirthCardFromIsoDate,
   type BirthCardResult,
@@ -139,6 +140,17 @@ function BirthCardResultCard({
   const checkoutHref = birthdate
     ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdate)}`
     : "/checkout/personal-card-blueprint";
+  const birthdayPath =
+    birthdate && birthdate <= todayISO()
+      ? birthdayWorkerPathFromIsoDate(birthdate)
+      : null;
+  const birthdayLabel = birthdayPath
+    ? new Date(`${birthdate}T00:00:00.000Z`).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        timeZone: "UTC",
+      })
+    : null;
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
   // the result is already visible; reduced motion gets an instant jump.
@@ -228,6 +240,14 @@ function BirthCardResultCard({
           >
             What&apos;s inside the Blueprint? →
           </Link>
+          {birthdayPath && (
+            <a
+              href={birthdayPath}
+              className="text-sm font-medium text-brand-ink underline underline-offset-4"
+            >
+              Read the {birthdayLabel} birth-card page →
+            </a>
+          )}
           {slug && (
             <Link
               href={`/birth-card/${slug}`}
