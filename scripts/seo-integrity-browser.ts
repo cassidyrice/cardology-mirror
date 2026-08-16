@@ -1,0 +1,585 @@
+/**
+ * Local rendered smoke for the keyword-strategy SEO integrity pass.
+ *
+ * SEO_BASE_URL=http://127.0.0.1:3577 bun scripts/seo-integrity-browser.ts
+ */
+import assert from "node:assert/strict";
+import {
+  chromium,
+  type ConsoleMessage,
+  type Locator,
+  type Page,
+} from "playwright";
+
+import { birthCardSlug } from "../lib/birth-card-calculator";
+import { buildLifePathProfile } from "../lib/life-path";
+import { SITE_URL } from "../lib/site";
+import { SPREADS, SPREADS_HUB_PATH } from "../lib/spreads";
+import { compatibilityPairPath } from "../lib/worker-seo-routes";
+
+const base = (process.env.SEO_BASE_URL || "http://127.0.0.1:3577").replace(
+  /\/$/,
+  "",
+);
+const screenshotPath =
+  process.env.SEO_SCREENSHOT_PATH || "/tmp/cardblueprints-seo-integrity.png";
+const elroyScreenshotPath = screenshotPath.replace(/(\.\w+)?$/, "-elroy$1");
+
+type JsonLd = Record<string, unknown>;
+type Rect = { x: number; y: number; width: number; height: number };
+
+function collectTypes(value: unknown, type: string): JsonLd[] {
+  if (!value || typeof value !== "object") return [];
+
+  const record = value as JsonLd;
+  const found = record["@type"] === type ? [record] : [];
+  return found.concat(
+    Object.values(record).flatMap((child) =>
+      Array.isArray(child)
+        ? child.flatMap((item) => collectTypes(item, type))
+        : collectTypes(child, type),
+    ),
+  );
+}
+
+async function jsonLd(page: Page): Promise<JsonLd[]> {
+  return page
+    .locator('script[type="application/ld+json"]')
+    .evaluateAll((scripts) =>
+      scripts
+        .map((script) => JSON.parse(script.textContent || "null") as unknown)
+        .flatMap((value) => (Array.isArray(value) ? value : [value]))
+        .filter(
+          (value): value is Record<string, unknown> =>
+            Boolean(value) && typeof value === "object",
+        ),
+    );
+}
+
+function consoleLine(message: ConsoleMessage): string {
+  return `${message.type()}: ${message.text()}`;
+}
+
+function rectanglesOverlap(
+  first: Rect,
+  second: Rect,
+): boolean {
+  return !(
+    first.x + first.width <= second.x ||
+    second.x + second.width <= first.x ||
+    first.y + first.height <= second.y ||
+    second.y + second.height <= first.y
+  );
+}
+
+function assertRectWithin(
+  inner: Rect | null,
+  outer: Rect,
+  label: string,
+): asserts inner is Rect {
+  assert.ok(inner, `${label}: measurable bounds`);
+  const tolerance = 1;
+  assert.ok(
+    inner.x >= outer.x - tolerance &&
+      inner.y >= outer.y - tolerance &&
+      inner.x + inner.width <= outer.x + outer.width + tolerance &&
+      inner.y + inner.height <= outer.y + outer.height + tolerance,
+    `${label}: ${JSON.stringify(inner)} within ${JSON.stringify(outer)}`,
+  );
+}
+
+async function assertMobileCtaIsUsable(
+  launcher: Locator,
+  cta: Locator,
+  label: string,
+): Promise<void> {
+  await launcher.waitFor();
+  await cta.waitFor();
+
+  const launcherBox = await launcher.boundingBox();
+  const ctaBox = await cta.boundingBox();
+  assert.ok(launcherBox && ctaBox, `${label}: CTA overlap is measurable`);
+  assert.equal(
+    rectanglesOverlap(launcherBox, ctaBox),
+    false,
+    `${label}: Elroy launcher does not cover the primary CTA`,
+  );
+
+  const hitTest = await cta.evaluate(async (ctaElement) => {
+    ctaElement.scrollIntoView({ block: "end", inline: "nearest" });
+    await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+    const box = ctaElement.getBoundingClientRect();
+    const y = box.top + box.height * 0.25;
+    const samples = [0.15, 0.5, 0.7].map((ratio) => {
+      const x = box.left + box.width * ratio;
+      const hit = document.elementFromPoint(x, y);
+      return {
+        x,
+        y,
+        target: hit
+          ? `${hit.tagName.toLowerCase()}${hit.className ? `.${String(hit.className).trim().replace(/\s+/g, ".")}` : ""}`
+          : "none",
+        ctaTarget: Boolean(
+          hit && (hit === ctaElement || ctaElement.contains(hit)),
+        ),
+      };
+    });
+    return {
+      box: {
+        x: box.x,
+        y: box.y,
+        width: box.width,
+        height: box.height,
+      },
+      viewport: { width: innerWidth, height: innerHeight },
+      samples,
+    };
+  });
+  assertRectWithin(
+    hitTest.box,
+    {
+      x: 0,
+      y: 0,
+      width: hitTest.viewport.width,
+      height: hitTest.viewport.height,
+    },
+    `${label}: primary CTA is fully in view`,
+  );
+  assert.equal(
+    hitTest.samples.every((sample) => sample.ctaTarget),
+    true,
+    `${label}: primary CTA wins hit-testing outside the launcher: ${JSON.stringify(hitTest.samples)}`,
+  );
+}
+
+async function assertHealthyPage(page: Page, path: string): Promise<void> {
+  const current = new URL(page.url());
+  assert.equal(current.pathname, path, `${path}: page identity pathname`);
+  assert.ok((await page.title()).trim(), `${path}: page identity title`);
+
+  const bodyText = (await page.locator("body").innerText()).trim();
+  assert.ok(bodyText.length > 80, `${path}: meaningful body content`);
+  assert.doesNotMatch(
+    bodyText,
+    /Application error|Unhandled Runtime Error|Internal Server Error/i,
+    `${path}: no framework error text`,
+  );
+
+  const visibleNextOverlay = await page.locator("nextjs-portal").evaluateAll(
+    (portals) =>
+      portals.some((portal) => {
+        const style = getComputedStyle(portal);
+        const box = portal.getBoundingClientRect();
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          box.width > 0 &&
+          box.height > 0
+        );
+      }),
+  );
+  assert.equal(visibleNextOverlay, false, `${path}: no Next.js error overlay`);
+}
+
+async function goto(page: Page, path: string): Promise<void> {
+  const response = await page.goto(`${base}${path}`, {
+    waitUntil: "domcontentloaded",
+  });
+  assert.ok(response, `${path}: navigation returned a response`);
+  assert.ok(response.ok(), `${path}: HTTP ${response.status()}`);
+  // SSR controls are visible before React attaches event handlers. Waiting for
+  // network idle keeps fast, warm dev-server runs from submitting stale state.
+  await page.waitForLoadState("networkidle");
+  await assertHealthyPage(page, path);
+}
+
+async function assertOneBreadcrumb(page: Page, path: string): Promise<void> {
+  await goto(page, path);
+
+  const visibleTrail = page.locator('nav[aria-label="Breadcrumb"]');
+  assert.equal(await visibleTrail.count(), 1, `${path}: one breadcrumb nav`);
+  assert.equal(await visibleTrail.isVisible(), true, `${path}: visible breadcrumb nav`);
+
+  const graphs = await jsonLd(page);
+  assert.equal(
+    graphs.flatMap((graph) => collectTypes(graph, "BreadcrumbList")).length,
+    1,
+    `${path}: one BreadcrumbList`,
+  );
+}
+
+async function assertArticle(
+  page: Page,
+  path: string,
+  expectedHeadline: string,
+): Promise<void> {
+  await goto(page, path);
+  const articles = (await jsonLd(page)).flatMap((graph) =>
+    collectTypes(graph, "Article"),
+  );
+  assert.equal(articles.length, 1, `${path}: one Article`);
+  assert.equal(articles[0]?.headline, expectedHeadline, `${path}: Article headline`);
+  assert.equal(articles[0]?.url, `${SITE_URL}${path}`, `${path}: Article URL`);
+  assert.equal(
+    (articles[0]?.mainEntityOfPage as JsonLd | undefined)?.["@id"],
+    `${SITE_URL}${path}`,
+    `${path}: Article mainEntityOfPage`,
+  );
+}
+
+async function main(): Promise<void> {
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  const consoleProblems: string[] = [];
+
+  page.on("console", (message) => {
+    if (message.type() === "error") consoleProblems.push(consoleLine(message));
+  });
+  page.on("pageerror", (error) => {
+    consoleProblems.push(`pageerror: ${error.message}`);
+  });
+
+  try {
+    await goto(page, "/birth-card-calculator");
+    await page.locator("#bd").fill("2001-01-15");
+    await page.getByRole("button", { name: "Reveal my birth card" }).click();
+    const januaryLink = page
+      .locator('a[href="/born-on/january-15"]')
+      .filter({ hasText: "Read the January 15 birth-card page" });
+    await januaryLink.waitFor();
+    assert.equal(await januaryLink.count(), 1, "January 15: one Worker anchor");
+    assert.equal(await januaryLink.getAttribute("href"), "/born-on/january-15");
+    assert.equal(
+      (await januaryLink.innerText()).trim(),
+      "Read the January 15 birth-card page →",
+    );
+
+    await page.locator("#bd").fill("2000-02-29");
+    await page.getByRole("button", { name: "Reveal my birth card" }).click();
+    const leapLink = page
+      .locator('a[href="/born-on/february-29"]')
+      .filter({ hasText: "Read the February 29 birth-card page" });
+    await leapLink.waitFor();
+    assert.equal(await leapLink.count(), 1, "February 29: one Worker anchor");
+    assert.equal(await leapLink.getAttribute("href"), "/born-on/february-29");
+    assert.equal(
+      (await leapLink.innerText()).trim(),
+      "Read the February 29 birth-card page →",
+    );
+    assert.equal(
+      await page
+        .locator('a[href="/born-on/january-15"]')
+        .filter({ hasText: "Read the January 15 birth-card page" })
+        .count(),
+      0,
+      "birth result keeps only the latest submitted Worker link",
+    );
+
+    const first = "2000-01-15";
+    const second = "2000-02-29";
+    const firstProfile = buildLifePathProfile(first, "First");
+    const secondProfile = buildLifePathProfile(second, "Second");
+    assert.ok(firstProfile && secondProfile, "compatibility fixtures resolve");
+    const expectedPair = compatibilityPairPath(
+      birthCardSlug(firstProfile.birthCard)!,
+      birthCardSlug(secondProfile.birthCard)!,
+    );
+    assert.ok(expectedPair, "compatibility fixture has a canonical pair path");
+
+    await goto(page, "/birth-card-compatibility-calculator");
+    await page.locator("#da").fill(first);
+    await page.locator("#db").fill(second);
+    await page
+      .getByRole("button", { name: "Compare birth cards and Life Paths" })
+      .click();
+    const forwardPairLink = page.getByRole("link", {
+      name: "Read the full Queen of Diamonds + 9 of Clubs pairing →",
+      exact: true,
+    });
+    await forwardPairLink.waitFor();
+    assert.equal(await forwardPairLink.getAttribute("href"), expectedPair);
+    assert.equal(
+      await page.locator(`a[href="${expectedPair}"]`).count(),
+      1,
+      "forward inputs: one canonical pair link",
+    );
+
+    await page.locator("#da").fill(second);
+    await page.locator("#db").fill(first);
+    await page
+      .getByRole("button", { name: "Compare birth cards and Life Paths" })
+      .click();
+    const reversedPairLink = page.getByRole("link", {
+      name: "Read the full 9 of Clubs + Queen of Diamonds pairing →",
+      exact: true,
+    });
+    await reversedPairLink.waitFor();
+    assert.equal(
+      await forwardPairLink.count(),
+      0,
+      "reversed inputs replace the forward rendered result",
+    );
+    assert.equal(await reversedPairLink.getAttribute("href"), expectedPair);
+    assert.equal(
+      await page.locator(`a[href="${expectedPair}"]`).count(),
+      1,
+      "reversed inputs: one canonical pair link",
+    );
+
+    await goto(page, "/birth-card");
+    const popular = page.locator('section[aria-labelledby="popular-card-meanings"]');
+    assert.equal(
+      await popular.locator('a[href="/birth-card/queen-of-hearts"]').count(),
+      1,
+      "popular meanings includes Queen of Hearts",
+    );
+    assert.equal(
+      await popular.locator('a[href="/birth-card/queen-of-clubs"]').count(),
+      1,
+      "popular meanings includes Queen of Clubs",
+    );
+    assert.equal(
+      await page
+        .locator('footer a[href="/how-to-read-playing-cards"]')
+        .isVisible(),
+      true,
+      "footer exposes How to Read Playing Cards",
+    );
+    assert.equal(
+      await page
+        .locator(
+          'nav[aria-label="Primary"] a[href="/birth-card-compatibility-calculator"]',
+        )
+        .count(),
+      1,
+      "desktop primary nav exposes Compatibility",
+    );
+
+    await page.setViewportSize({ width: 820, height: 800 });
+    await goto(page, "/");
+    assert.equal(
+      await page.getByText("Menu", { exact: true }).isVisible(),
+      true,
+      "820px: Menu is visible",
+    );
+    assert.equal(
+      await page.locator('nav[aria-label="Primary"]').isVisible(),
+      false,
+      "820px: desktop primary nav is hidden",
+    );
+
+    await page.setViewportSize({ width: 1024, height: 800 });
+    await page.reload({ waitUntil: "networkidle" });
+    await assertHealthyPage(page, "/");
+    assert.equal(
+      await page.locator('nav[aria-label="Primary"]').isVisible(),
+      true,
+      "1024px: desktop primary nav is visible",
+    );
+    assert.equal(
+      await page.locator("header").evaluate(
+        (header) => header.scrollWidth <= header.clientWidth,
+      ),
+      true,
+      "1024px: header has no horizontal overflow",
+    );
+
+    await page.setViewportSize({ width: 390, height: 844 });
+    await goto(page, "/");
+    await page.getByText("Menu", { exact: true }).click();
+    assert.equal(
+      await page
+        .locator(
+          'nav[aria-label="Mobile primary"] a[href="/birth-card-compatibility-calculator"]',
+        )
+        .isVisible(),
+      true,
+      "390px: mobile nav exposes Compatibility",
+    );
+    await page.screenshot({ path: screenshotPath, fullPage: false });
+
+    await goto(page, "/products/personal-card-blueprint");
+    const elroyLauncher = page.locator(
+      'button[aria-label="Open Elroy micro-reading"]',
+    );
+    const primaryBlueprintCta = page
+      .locator('main a[href="/checkout/personal-card-blueprint"]')
+      .first();
+    await assertMobileCtaIsUsable(
+      elroyLauncher,
+      primaryBlueprintCta,
+      "390px: Personal Card Blueprint",
+    );
+
+    await elroyLauncher.click();
+    const elroyPanel = page.locator("dialog.elroy-panel");
+    await elroyPanel.waitFor();
+    const elroyShell = page.locator(".elroy-panel-shell");
+    const elroyComposer = page.locator(".elroy-composer");
+    const showCardControl = page.getByRole("button", {
+      name: "Show my card",
+      exact: true,
+    });
+    await showCardControl.waitFor();
+    const panelBox = await elroyPanel.boundingBox();
+    assertRectWithin(
+      panelBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: manually opened Elroy dialog fits the viewport",
+    );
+    const shellBox = await elroyShell.boundingBox();
+    assertRectWithin(
+      shellBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: Elroy panel shell fits the viewport",
+    );
+    assertRectWithin(
+      shellBox,
+      panelBox,
+      "390px: Elroy panel shell stays inside the dialog",
+    );
+    assertRectWithin(
+      await elroyComposer.boundingBox(),
+      shellBox,
+      "390px: Elroy composer stays inside the panel shell",
+    );
+    assertRectWithin(
+      await showCardControl.boundingBox(),
+      shellBox,
+      "390px: Elroy birth-card control stays inside the panel shell",
+    );
+
+    await page.locator("#elroy-birthdate").fill("2001-01-15");
+    await showCardControl.click();
+    await page
+      .getByRole("button", { name: "Get the deeper pattern", exact: true })
+      .click();
+    const sendReadingControl = page.getByRole("button", {
+      name: "Send my reading",
+      exact: true,
+    });
+    await sendReadingControl.waitFor();
+    assertRectWithin(
+      await elroyComposer.boundingBox(),
+      shellBox,
+      "390px: email composer stays inside the panel shell",
+    );
+    assertRectWithin(
+      await sendReadingControl.boundingBox(),
+      shellBox,
+      "390px: Elroy submit stays inside the panel shell",
+    );
+    await page.screenshot({ path: elroyScreenshotPath, fullPage: false });
+    await page.getByRole("button", { name: "Close Elroy" }).click();
+
+    await page.evaluate(() => localStorage.clear());
+    await goto(page, "/products/complete-card-blueprint");
+    const completeBlueprintLauncher = page.locator(
+      'button[aria-label="Open Elroy micro-reading"]',
+    );
+    const completeBlueprintCta = page
+      .locator('main a[href="/checkout/complete-card-blueprint"]')
+      .first();
+    await completeBlueprintLauncher.waitFor();
+    await page.waitForTimeout(10_500);
+    assert.equal(
+      await page.locator(".elroy-teaser").count(),
+      0,
+      "390px: Complete Card Blueprint does not auto-open the Elroy teaser",
+    );
+    assert.equal(
+      await completeBlueprintLauncher.isVisible(),
+      true,
+      "390px: Complete Card Blueprint keeps the manual Elroy launcher",
+    );
+    await assertMobileCtaIsUsable(
+      completeBlueprintLauncher,
+      completeBlueprintCta,
+      "390px: Complete Card Blueprint",
+    );
+
+    await completeBlueprintLauncher.click();
+    await elroyPanel.waitFor();
+    const completePanelBox = await elroyPanel.boundingBox();
+    assertRectWithin(
+      completePanelBox,
+      { x: 0, y: 0, width: 390, height: 844 },
+      "390px: Complete Card Blueprint manual Elroy dialog fits the viewport",
+    );
+    const completeShellBox = await elroyShell.boundingBox();
+    assertRectWithin(
+      completeShellBox,
+      completePanelBox,
+      "390px: Complete Card Blueprint Elroy shell stays inside the dialog",
+    );
+    await page.getByRole("button", { name: "Close Elroy" }).click();
+
+    await page.setViewportSize({ width: 1280, height: 800 });
+    for (const path of [
+      "/playing-card-spreads/three-card",
+      "/blog/four-suits-in-cardology",
+      "/blog/pillar/cardology-foundations",
+      "/birth-card/queen-of-hearts",
+    ]) {
+      await assertOneBreadcrumb(page, path);
+    }
+
+    await goto(page, SPREADS_HUB_PATH);
+    const collections = (await jsonLd(page)).flatMap((graph) =>
+      collectTypes(graph, "CollectionPage"),
+    );
+    assert.equal(collections.length, 1, "spreads hub: one CollectionPage");
+    assert.equal(
+      collections[0]?.url,
+      `${SITE_URL}${SPREADS_HUB_PATH}`,
+      "spreads hub: CollectionPage URL",
+    );
+    const itemLists = collectTypes(collections[0], "ItemList");
+    assert.equal(itemLists.length, 1, "spreads hub: one ItemList");
+    assert.equal(
+      itemLists[0]?.numberOfItems,
+      SPREADS.length,
+      "spreads hub: ItemList count",
+    );
+    const items = itemLists[0]?.itemListElement as JsonLd[];
+    assert.equal(items.length, SPREADS.length, "spreads hub: ListItem count");
+    assert.deepEqual(
+      items.map((item) => item.position),
+      SPREADS.map((_, index) => index + 1),
+      "spreads hub: consecutive ListItem positions",
+    );
+    assert.deepEqual(
+      items.map((item) => item.url),
+      SPREADS.map((spread) => `${SITE_URL}${spread.path}`),
+      "spreads hub: visible spoke URLs",
+    );
+
+    await assertArticle(
+      page,
+      "/how-to-read-playing-cards",
+      "How to Read Playing Cards",
+    );
+    await assertArticle(
+      page,
+      "/52-card-astrology-explained",
+      "Playing Cards Birthday Chart & 52-Card Astrology",
+    );
+
+    assert.deepEqual(
+      consoleProblems,
+      [],
+      `browser console/page errors:\n${consoleProblems.join("\n")}`,
+    );
+  } finally {
+    await browser.close();
+  }
+
+  console.log(
+    `PASS: SEO integrity browser smoke (screenshot: ${screenshotPath})`,
+  );
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

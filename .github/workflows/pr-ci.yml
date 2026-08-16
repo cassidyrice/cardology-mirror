@@ -28,8 +28,10 @@ jobs:
 
       # Fast unit tests that do not need secrets, a live server, or browsers.
       # Skipped here (document for reviewers):
-      # - bun run test:elroy:browser / scripts/elroy-browser.test.ts
-      #   (Playwright + running app at ELROY_BASE_URL)
+      # - scripts/elroy-browser.ts, scripts/homepage-hero-browser.ts, and
+      #   scripts/seo-integrity-browser.ts (Playwright + a running local app)
+      # - scripts/worker-production-contract.ts
+      #   (explicit opt-in check that requires production network access)
       # - bun run build
       #   (Next.js build may require env vars unavailable in PR CI)
       - name: Fast unit tests
@@ -43,7 +45,16 @@ jobs:
             scripts/elroy-input.test.ts \
             scripts/elroy-reading.test.ts \
             scripts/elroy-route.test.ts \
-            scripts/elroy-turnstile.test.ts \
             scripts/elroy-widget.test.ts \
             scripts/shorts/studio-core.test.ts \
-            scripts/analog-algorithm-launch.test.ts
+            scripts/analog-algorithm-launch.test.ts \
+            scripts/authority-publication-links.test.ts \
+            scripts/newsletter-signup-form.test.ts \
+            scripts/complete-card-blueprint-launch.test.ts \
+            scripts/sitemap-integrity.test.ts \
+            scripts/calculator-library-links.test.ts \
+            scripts/site-navigation.test.ts \
+            scripts/card-meaning-equity.test.ts \
+            scripts/structured-data.test.ts \
+            scripts/page-schema.test.ts \
+            scripts/worker-production-contract-lib.test.ts

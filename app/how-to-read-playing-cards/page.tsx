@@ -5,12 +5,16 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SUIT_COLOR_PAPER, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
-import { SITE_NAME } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { serializeJsonLdForHtml } from "@/lib/structured-data";
+
+const TITLE = "Playing Card Meaning: How to Read a Deck";
+const DESCRIPTION =
+  "Playing card meaning by suit and rank: Hearts, Clubs, Diamonds, Spades, Ace-to-King, a five-step first reading, and when to skip the shuffle.";
 
 export const metadata: Metadata = {
-  title: "Playing Card Meaning: How to Read a Deck",
-  description:
-    "Playing card meaning by suit and rank: Hearts, Clubs, Diamonds, Spades, Ace-to-King, a five-step first reading, and when to skip the shuffle.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/how-to-read-playing-cards" },
   openGraph: {
     siteName: SITE_NAME,
@@ -64,11 +68,44 @@ export default function HowToReadPlayingCards() {
     })),
   };
 
+  const pageUrl = `${SITE_URL}/how-to-read-playing-cards`;
+  const article = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: "How to Read Playing Cards",
+    description: DESCRIPTION,
+    url: pageUrl,
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    datePublished: "2026-07-12",
+    dateModified: "2026-08-16",
+    author: {
+      "@type": "Person",
+      name: "Cassidy Rice",
+      url: `${SITE_URL}/about`,
+    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "How to Read Playing Cards", href: "/how-to-read-playing-cards" }]}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLdForHtml([article, faq]),
+        }}
+      />
 
       <h1 className="display mb-3 text-3xl text-bone">How to Read Playing Cards</h1>
+      <p className="mb-4 text-xs text-faint">
+        By{" "}
+        <Link href="/about" className="text-gold underline underline-offset-4">
+          Cassidy Rice
+        </Link>{" "}
+        · Updated August 16, 2026 ·{" "}
+        <Link href="/methodology" className="text-gold underline underline-offset-4">
+          Methodology
+        </Link>
+      </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">

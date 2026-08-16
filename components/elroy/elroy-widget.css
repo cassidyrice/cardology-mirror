@@ -231,8 +231,8 @@
 @media (max-width: 640px) {
   .elroy-root {
     right: 0.75rem;
-    left: 0.75rem;
-    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    left: auto;
+    bottom: max(1.5rem, env(safe-area-inset-bottom));
   }
 
   .elroy-launcher {
@@ -242,11 +242,15 @@
   .elroy-panel {
     inset: auto 0 max(0.75rem, env(safe-area-inset-bottom)) 0;
     width: calc(100% - 1.5rem);
+    height: min(34rem, calc(100dvh - 1.5rem));
+    max-height: min(34rem, calc(100dvh - 1.5rem));
     margin-inline: auto;
+    overflow: hidden;
   }
 
   .elroy-panel-shell {
-    height: min(88dvh, 40rem);
+    height: 100%;
+    max-height: 100%;
     border-radius: 1rem 1rem 0.5rem 0.5rem;
   }
 }

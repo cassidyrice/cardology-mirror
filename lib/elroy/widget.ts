@@ -13,12 +13,63 @@ const EXCLUDED_PREFIXES = [
   "/refund-policy",
 ];
 
+const MOBILE_TEASER_PROTECTED_PATHS = new Set([
+  "/",
+  "/birth-card-calculator",
+  "/birth-card-compatibility-calculator",
+  "/products/complete-card-blueprint",
+  "/products/personal-card-blueprint",
+]);
+
 export function isElroyEligiblePath(pathname: string): boolean {
   if (!pathname || !pathname.startsWith("/")) return false;
   const path = pathname.split("?")[0] || "/";
   return !EXCLUDED_PREFIXES.some(
     (prefix) => path === prefix || path.startsWith(`${prefix}/`),
   );
+}
+
+export function shouldScheduleElroyTeaser(
+  pathname: string,
+  isSmallScreen: boolean,
+): boolean {
+  const path = (pathname.split(/[?#]/)[0] || "/").replace(/\/+$/, "") || "/";
+  if (!isElroyEligiblePath(path)) return false;
+  return !(isSmallScreen && MOBILE_TEASER_PROTECTED_PATHS.has(path));
+}
+
+type ElroyMediaQueryList = {
+  readonly matches: boolean;
+  addEventListener?: (type: "change", listener: () => void) => void;
+  removeEventListener?: (type: "change", listener: () => void) => void;
+  addListener?: (listener: () => void) => void;
+  removeListener?: (listener: () => void) => void;
+};
+
+export function observeElroySmallScreen(
+  mediaQuery: ElroyMediaQueryList,
+  onMatchesChange: (matches: boolean) => void,
+): () => void {
+  const updateMatches = () => onMatchesChange(mediaQuery.matches);
+  updateMatches();
+
+  if (
+    typeof mediaQuery.addEventListener === "function" &&
+    typeof mediaQuery.removeEventListener === "function"
+  ) {
+    mediaQuery.addEventListener("change", updateMatches);
+    return () => mediaQuery.removeEventListener?.("change", updateMatches);
+  }
+
+  if (
+    typeof mediaQuery.addListener === "function" &&
+    typeof mediaQuery.removeListener === "function"
+  ) {
+    mediaQuery.addListener(updateMatches);
+    return () => mediaQuery.removeListener?.(updateMatches);
+  }
+
+  return () => {};
 }
 
 export function readElroySuppression(storage: Storage, nowMs: number): boolean {

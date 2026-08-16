@@ -9,7 +9,20 @@ test("birth-card hub promotes current Semrush ranking targets above the deck", (
   const deck = source.indexOf("<DeckMatrix />");
   expect(popular).toBeGreaterThan(0);
   expect(deck).toBeGreaterThan(popular);
-  expect(source).toContain('["Ace of Hearts meaning", "/birth-card/ace-of-hearts"]');
-  expect(source).toContain('["10 of Hearts meaning", "/birth-card/10-of-hearts"]');
-  expect(source).toContain('["10 of Diamonds meaning", "/birth-card/10-of-diamonds"]');
+  const popularCardMeanings = source.slice(popular, deck);
+  const promotedCards = [
+    '["Ace of Hearts meaning", "/birth-card/ace-of-hearts"]',
+    '["10 of Hearts meaning", "/birth-card/10-of-hearts"]',
+    '["10 of Diamonds meaning", "/birth-card/10-of-diamonds"]',
+    '["Queen of Hearts meaning", "/birth-card/queen-of-hearts"]',
+    '["Queen of Clubs meaning", "/birth-card/queen-of-clubs"]',
+  ];
+
+  for (const card of promotedCards) {
+    expect(popularCardMeanings).toContain(card);
+  }
+
+  expect(
+    popularCardMeanings.match(/\["[^"]+",\s*"\/birth-card\/[^"]+"\]/g) ?? [],
+  ).toHaveLength(5);
 });

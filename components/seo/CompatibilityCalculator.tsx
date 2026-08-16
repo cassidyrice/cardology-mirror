@@ -7,6 +7,7 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { parseCard, type Suit } from "@/lib/cards";
+import { compatibilityPairPath } from "@/lib/worker-seo-routes";
 import {
   buildLifePathProfile,
   compareLifePathProfiles,
@@ -24,6 +25,33 @@ function slugOf(code: string): string | null {
   const p = parseCard(code);
   if (!p) return null;
   return `${RANK_SLUG[p.rank] ?? p.rank}-of-${p.suit as Suit}`;
+}
+
+export function CompatibilityWorkerAnchor({
+  firstSlug,
+  secondSlug,
+  firstLabel,
+  secondLabel,
+}: {
+  firstSlug: string | null;
+  secondSlug: string | null;
+  firstLabel: string | undefined;
+  secondLabel: string | undefined;
+}) {
+  const pairPath =
+    firstSlug && secondSlug
+      ? compatibilityPairPath(firstSlug, secondSlug)
+      : null;
+  if (!pairPath || !firstLabel || !secondLabel) return null;
+
+  return (
+    <a
+      href={pairPath}
+      className="text-sm font-medium text-brand-ink underline underline-offset-4"
+    >
+      Read the full {firstLabel} + {secondLabel} pairing →
+    </a>
+  );
 }
 
 export function CompatibilityCalculator() {
@@ -197,6 +225,12 @@ function PairResult({
           One-time personalized written report for your side of the pattern.
           No subscription or phone call.
         </p>
+        <CompatibilityWorkerAnchor
+          firstSlug={aSlug}
+          secondSlug={bSlug}
+          firstLabel={pa?.label}
+          secondLabel={pb?.label}
+        />
         <Link
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"

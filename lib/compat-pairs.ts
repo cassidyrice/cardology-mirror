@@ -6,6 +6,8 @@
 
 import PAIRS from "./compat-pairs.json";
 
+export { compatibilityPairPath } from "./worker-seo-routes";
+
 export type CompatPair = { pos: string; label: string; href: string };
 export type CompatEntry = { hub: string; pairs: CompatPair[] };
 

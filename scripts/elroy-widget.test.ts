@@ -5,8 +5,10 @@ import {
   formatElroyRulingCards,
   initialElroyUiState,
   isElroyEligiblePath,
+  observeElroySmallScreen,
   parseElroyBirthContext,
   readElroySuppression,
+  shouldScheduleElroyTeaser,
   writeElroySuppression,
   ELROY_SUPPRESSION_KEY,
   THIRTY_DAYS_MS,
@@ -47,6 +49,123 @@ describe("isElroyEligiblePath", () => {
     expect(isElroyEligiblePath("/privacy-policy")).toBe(false);
     expect(isElroyEligiblePath("/free-course")).toBe(false);
     expect(isElroyEligiblePath("/gate")).toBe(false);
+  });
+});
+
+describe("shouldScheduleElroyTeaser", () => {
+  test("does not auto-schedule the homepage teaser on small screens", () => {
+    expect(shouldScheduleElroyTeaser("/", true)).toBe(false);
+  });
+
+  test("protects the Complete Card Blueprint product on small screens", () => {
+    expect(
+      shouldScheduleElroyTeaser("/products/complete-card-blueprint", true),
+    ).toBe(false);
+  });
+
+  test("protects every mobile conversion route from the automatic teaser", () => {
+    for (const path of [
+      "/",
+      "/birth-card-calculator",
+      "/birth-card-compatibility-calculator",
+      "/products/complete-card-blueprint",
+      "/products/personal-card-blueprint",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
+    }
+  });
+
+  test("normalizes query strings, hashes, and trailing slashes", () => {
+    expect(
+      shouldScheduleElroyTeaser(
+        "/birth-card-calculator/?birthdate=2001-01-15#result",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
+        "/birth-card-compatibility-calculator/#result",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
+        "/products/complete-card-blueprint/?ref=elroy#details",
+        true,
+      ),
+    ).toBe(false);
+    expect(
+      shouldScheduleElroyTeaser(
+        "/products/personal-card-blueprint/?ref=elroy#details",
+        true,
+      ),
+    ).toBe(false);
+  });
+
+  test("keeps the automatic teaser on protected routes for desktop visitors", () => {
+    for (const path of [
+      "/",
+      "/birth-card-calculator",
+      "/birth-card-compatibility-calculator",
+      "/products/complete-card-blueprint",
+      "/products/personal-card-blueprint",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, false)).toBe(true);
+    }
+  });
+
+  test("keeps the automatic teaser on other eligible mobile routes", () => {
+    expect(shouldScheduleElroyTeaser("/blog/how-to-use-cardology", true)).toBe(
+      true,
+    );
+  });
+
+  test("never schedules the automatic teaser on excluded routes", () => {
+    for (const path of [
+      "/checkout/personal-card-blueprint",
+      "/privacy-policy/",
+      "/free-course?step=1",
+      "/gate#signup",
+    ]) {
+      expect(shouldScheduleElroyTeaser(path, false)).toBe(false);
+      expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
+    }
+  });
+});
+
+describe("observeElroySmallScreen", () => {
+  test("supports legacy-only media query listeners through cleanup", () => {
+    type Listener = () => void;
+    let matches = true;
+    let registeredListener: Listener | null = null;
+    let removedListener: Listener | null = null;
+    const updates: boolean[] = [];
+    const legacyMediaQuery = {
+      get matches() {
+        return matches;
+      },
+      addListener(listener: Listener) {
+        registeredListener = listener;
+      },
+      removeListener(listener: Listener) {
+        removedListener = listener;
+        if (registeredListener === listener) registeredListener = null;
+      },
+    };
+
+    const cleanup = observeElroySmallScreen(legacyMediaQuery, (nextMatches) => {
+      updates.push(nextMatches);
+    });
+
+    expect(updates).toEqual([true]);
+    expect(registeredListener).toBeInstanceOf(Function);
+    matches = false;
+    registeredListener?.();
+    expect(updates).toEqual([true, false]);
+
+    cleanup();
+    expect(removedListener).toBeInstanceOf(Function);
+    expect(registeredListener).toBeNull();
   });
 });
 

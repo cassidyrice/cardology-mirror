@@ -107,12 +107,6 @@ export default async function BlogPostPage({
         url: `${SITE_URL}/blog`,
       },
     },
-    breadcrumbJsonLd([
-      { name: "Home", item: SITE_URL },
-      { name: "Blog", item: `${SITE_URL}/blog` },
-      { name: pillar.shortTitle, item: `${SITE_URL}${blogPillarPath(pillar)}` },
-      { name: post.title, item: `${SITE_URL}${blogPostPath(post)}` },
-    ]),
     faqJsonLd(post.faqs),
   ];
 
@@ -122,6 +116,7 @@ export default async function BlogPostPage({
         { label: "Home", href: "/" },
         { label: "Blog", href: "/blog" },
         { label: pillar.shortTitle, href: blogPillarPath(pillar) },
+        { label: post.title, href: blogPostPath(post) },
       ]}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
@@ -257,19 +252,6 @@ function FaqList({ faqs }: { faqs: BlogFaq[] }) {
       ))}
     </div>
   );
-}
-
-function breadcrumbJsonLd(items: { name: string; item: string }[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      item: item.item,
-    })),
-  };
 }
 
 function faqJsonLd(faqs: BlogFaq[]) {

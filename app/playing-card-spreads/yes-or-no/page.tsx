@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 import { SUIT_COLOR_PAPER, SUIT_GLYPH } from "@/lib/cards";
 import { getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { rankTheme, SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
@@ -50,26 +50,15 @@ export default function YesOrNoReading() {
     },
   ];
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "Playing Card Spreads", item: `${SITE_URL}${SPREADS_HUB_PATH}` },
-        { "@type": "ListItem", position: 3, name: "Yes-or-No Reading", item: `${SITE_URL}/playing-card-spreads/yes-or-no` },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
-  ];
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
 
   const siblings = SPREADS.filter((s) => s.slug !== "yes-or-no");
 

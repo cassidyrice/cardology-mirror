@@ -63,6 +63,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               <li><Link href="/products/complete-card-blueprint" className="hover:text-brand-ink">The Complete Card Blueprint — $27 handbook</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
+              <li><Link href="/how-to-read-playing-cards" className="hover:text-brand-ink">How to Read Playing Cards</Link></li>
               <li><Link href="/cardology-vs-tarot" className="hover:text-brand-ink">Cardology vs Tarot</Link></li>
               <li><Link href="/cardology-compatibility" className="hover:text-brand-ink">Compatibility</Link></li>
               <li><Link href="/52-card-astrology-explained" className="hover:text-brand-ink">52-Card Astrology</Link></li>
