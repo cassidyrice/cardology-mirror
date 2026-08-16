@@ -10,7 +10,7 @@ test("destiny hub title stays under 60 and leads with Cards of Destiny", () => {
   const match = source.match(/const TITLE = "([^"]+)"/);
   expect(match?.[1]).toBe("Cards of Destiny: Find Your Birth Card");
   expect(match?.[1].length).toBeLessThanOrEqual(60);
-  expect(source).toContain("Find Your Destiny Card");
+  expect(source).toContain("Cards of Destiny: Find Your Birth Card</h1>");
   expect(source).toContain('id="destiny-chart"');
   expect(source).toContain("$13");
   expect(source).not.toContain("$29");
