@@ -99,13 +99,22 @@ export async function POST(
     if (isDigitalDownload(product)) {
       metadata.redownload_days = String(product.redownloadDays);
       metadata.download_asset_key = product.downloadAssetKey;
-    } else if (isInstantReport(product)) {
+    }
+    if (isInstantReport(product)) {
       metadata.report_slug = product.reportSlug;
     }
 
     const sharedMeta = { ...metadata, ...analyticsMetadata(analytics) };
+    if (formBirthdate) {
+      sharedMeta.birthdate = formBirthdate;
+    }
 
-    const instantReport = isInstantReport(product);
+    if (isInstantReport(product) && !formBirthdate) {
+      return NextResponse.redirect(
+        new URL(`/checkout/${product.slug}?status=need-date`, req.url),
+        303,
+      );
+    }
     const session = await getStripe().checkout.sessions.create({
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
@@ -119,25 +128,6 @@ export async function POST(
       phone_number_collection: {
         enabled: false,
       },
-      // instant reports need the buyer's birth date to generate the report
-      ...(instantReport
-        ? {
-            custom_fields: [
-              {
-                key: "birthdate",
-                label: {
-                  type: "custom" as const,
-                  custom: "Your birth date (YYYY-MM-DD)",
-                },
-                type: "text" as const,
-                optional: false,
-                ...(formBirthdate
-                  ? { text: { default_value: formBirthdate } }
-                  : {}),
-              },
-            ],
-          }
-        : {}),
       allow_promotion_codes: true,
       billing_address_collection: "auto",
       customer_creation: "always",

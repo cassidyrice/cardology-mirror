@@ -10,9 +10,15 @@ type Props = {
   slug: string;
   priceLabel: string;
   birthdate?: string;
+  needsBirthdate?: boolean;
 };
 
-export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
+export function CheckoutContinueForm({
+  slug,
+  priceLabel,
+  birthdate,
+  needsBirthdate = false,
+}: Props) {
   const [pending, setPending] = useState(false);
   const [storedBirthdate, setStoredBirthdate] = useState("");
 
@@ -31,14 +37,27 @@ export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
       event.preventDefault();
       return;
     }
-    setPending(true);
 
     const form = event.currentTarget;
+    const field = form.elements.namedItem("birthdate");
+    const raw =
+      field instanceof HTMLInputElement
+        ? field.value
+        : storedBirthdate || readCheckoutBirthdate();
+    const iso = sanitizeBirthdateISO(raw);
+    if (needsBirthdate && !iso) {
+      event.preventDefault();
+      return;
+    }
+    setPending(true);
+
     for (const [name, value] of Object.entries(getCheckoutAnalyticsFields())) {
       setHiddenField(form, name, value);
     }
-    const iso = storedBirthdate || readCheckoutBirthdate();
-    if (iso) setHiddenField(form, "birthdate", iso);
+    if (iso) {
+      storeCheckoutBirthdate(iso);
+      setHiddenField(form, "birthdate", iso);
+    }
   }
 
   return (
@@ -49,7 +68,25 @@ export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
       data-analytics-checkout
       onSubmit={onSubmit}
     >
-      {storedBirthdate ? (
+      {needsBirthdate ? (
+        <label className="mb-4 block text-sm text-brand-ink">
+          <span className="font-medium">Your birth date</span>
+          <input
+            key={storedBirthdate || "empty"}
+            type="date"
+            name="birthdate"
+            required
+            min="1900-01-01"
+            max={new Date().getUTCFullYear() + "-12-31"}
+            defaultValue={storedBirthdate}
+            className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
+          />
+          <span className="mt-1 block text-xs leading-relaxed text-brand-ink-soft">
+            Used only to generate this report. Change it if the calculator
+            date is wrong.
+          </span>
+        </label>
+      ) : storedBirthdate ? (
         <input type="hidden" name="birthdate" value={storedBirthdate} />
       ) : null}
       <button

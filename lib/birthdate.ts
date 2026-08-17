@@ -29,3 +29,24 @@ export function sanitizeBirthdateISO(value: unknown): string {
 
   return normalized;
 }
+
+type StripeBirthdateSource = {
+  metadata?: Record<string, string> | null;
+  custom_fields?: Array<{
+    key?: string | null;
+    text?: { value?: string | null } | null;
+  }> | null;
+};
+
+/** Prefer session metadata (our date picker), then in-flight Stripe text fields. */
+export function birthdateFromCheckoutSession(
+  session: StripeBirthdateSource | null | undefined,
+): string {
+  if (!session) return "";
+  const fromMeta = sanitizeBirthdateISO(session.metadata?.birthdate);
+  if (fromMeta) return fromMeta;
+  const raw =
+    session.custom_fields?.find((field) => field.key === "birthdate")?.text
+      ?.value ?? "";
+  return sanitizeBirthdateISO(raw);
+}

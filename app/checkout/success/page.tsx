@@ -14,6 +14,7 @@ import {
 import { mintReportToken } from "@/lib/report-token";
 import { mintDownloadToken } from "@/lib/download-token";
 import { getStripe } from "@/lib/stripe";
+import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -70,13 +71,11 @@ export default async function CheckoutSuccessPage({
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
 
-  // Instant report: pull the birth date from the Stripe Checkout custom
-  // field and mint a report token so the report opens immediately.
+  // Instant report: birth date from our review picker (session metadata)
+  // or an older Stripe custom field. Then mint the report token.
   let reportToken = "";
   if (instantReport && confirmed) {
-    const birthdate = (
-      session2?.custom_fields?.find((f) => f.key === "birthdate")?.text?.value ?? ""
-    ).trim();
+    const birthdate = birthdateFromCheckoutSession(session2);
     if (/^\d{4}-\d{2}-\d{2}$/.test(birthdate) && customerEmail) {
       try {
         reportToken = await mintReportToken(

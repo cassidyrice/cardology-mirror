@@ -3,6 +3,7 @@ import type Stripe from "stripe";
 
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
+import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
@@ -169,11 +170,9 @@ export async function POST(req: NextRequest) {
 
     // ---- BRANCH: instant report (Personal Card Blueprint) ----
     if (product && isInstantReport(product)) {
-      // The buyer's birth date arrives via the Stripe Checkout custom field.
-      const birthdate = (
-        session.custom_fields?.find((f) => f.key === "birthdate")?.text?.value ??
-        ""
-      ).trim();
+      // The buyer's birth date arrives from our review-page date picker
+      // (session metadata) or, for older sessions, the Stripe text field.
+      const birthdate = birthdateFromCheckoutSession(session);
       let reportIssued = false;
       if (email !== "(no email)" && /^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
         try {

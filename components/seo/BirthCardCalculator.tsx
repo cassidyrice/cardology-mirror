@@ -245,6 +245,7 @@ function BirthCardResultCard({
           >
             {`Get My Blueprint — ${priceLabel}`}
           </Link>
+          <p className="text-xs text-brand-ink-soft">Plus applicable tax</p>
           <Link
             href="/products/personal-card-blueprint"
             className="text-sm font-medium text-brand-ink underline underline-offset-4"

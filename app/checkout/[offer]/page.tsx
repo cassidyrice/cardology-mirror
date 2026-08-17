@@ -67,7 +67,7 @@ export default async function CheckoutReviewPage({
         </p>
       </header>
 
-      {(status === "unavailable" || unavailable) && (
+      {(status === "unavailable" || unavailable || status === "need-date") && (
         <div
           role="alert"
           className="mb-8 border border-brand-oxblood bg-brand-ivory p-5 text-brand-ink"
@@ -75,12 +75,16 @@ export default async function CheckoutReviewPage({
           <h2 className="type-h3">
             {unavailable
               ? "This product is not on sale yet."
-              : "Secure checkout is temporarily unavailable."}
+              : status === "need-date"
+                ? "Add the birth date first."
+                : "Secure checkout is temporarily unavailable."}
           </h2>
           <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-brand-ink-soft">
-            No checkout session was created. {unavailable
-              ? "Secure download fulfillment must be live before sales open."
-              : "Try again in a moment."}{" "}
+            {unavailable
+              ? "No checkout session was created. Secure download fulfillment must be live before sales open."
+              : status === "need-date"
+                ? "The report is built from one birth date. Use the date field below, then continue."
+                : "No checkout session was created. Try again in a moment."}{" "}
             <Link href="/contact" className="editorial-link text-brand-ink">
               contact Card Blueprints
             </Link>{" "}
@@ -140,6 +144,7 @@ export default async function CheckoutReviewPage({
           <CheckoutContinueForm
             slug={product.slug}
             priceLabel={product.priceLabel}
+            needsBirthdate={isReport}
           />
         )}
         <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
