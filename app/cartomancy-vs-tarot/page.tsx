@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { TableScroll } from "@/components/seo/TableScroll";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME } from "@/lib/site";
 
@@ -170,11 +171,12 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Cartomancy vs tarot at a glance</h2>
-        <div className="overflow-x-auto">
+        <TableScroll label="Cartomancy versus tarot">
           <table className="w-full min-w-[560px] border-collapse text-left text-sm text-mist">
+            <caption className="sr-only">Cartomancy playing cards versus tarot</caption>
             <thead>
               <tr className="border-b border-white/15">
-                <th className="py-2 pr-4 font-serif text-bone" scope="col"></th>
+                <th className="py-2 pr-4 font-serif text-bone" scope="col">Dimension</th>
                 <th className="py-2 pr-4 font-serif text-bone" scope="col">Tarot</th>
                 <th className="py-2 font-serif text-bone" scope="col">Cardology (playing cards)</th>
               </tr>
@@ -217,7 +219,7 @@ export default function CartomancyVsTarot() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </TableScroll>
       </section>
 
       <section className="mt-8">

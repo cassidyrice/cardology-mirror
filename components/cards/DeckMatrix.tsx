@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { cardsBySuit, type CardSeo } from "@/lib/seo-cards";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
+import { TableScroll } from "@/components/seo/TableScroll";
 
 // The 52-card system rendered as one visual object: suit rows x rank columns.
 // Pure server component (no client JS) — mini faces are presentational JSX.
@@ -49,7 +50,7 @@ export function DeckMatrix() {
         Rows are suits, columns are ranks. Every birthday resolves to one
         intersection. (December 31 stands apart as the Joker.)
       </p>
-      <div className="overflow-x-auto pb-2">
+      <TableScroll className="pb-2" label="52-card deck by suit and rank">
         <div className="min-w-[640px]">
           <div className="mb-1 grid grid-cols-[1.5rem_repeat(13,minmax(0,1fr))] items-end gap-1.5">
             <span />
@@ -89,7 +90,7 @@ export function DeckMatrix() {
             </div>
           ))}
         </div>
-      </div>
+      </TableScroll>
     </section>
   );
 }

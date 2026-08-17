@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { TableScroll } from "@/components/seo/TableScroll";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME } from "@/lib/site";
 
@@ -116,26 +117,29 @@ export default function CardologyVsTarotPage() {
         .
       </p>
 
-      <section className="mt-4 overflow-x-auto">
+      <section className="mt-4">
         <h2 className="eyebrow mb-3 text-gold">Side-by-side</h2>
+        <TableScroll label="Cardology versus tarot">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
+          <caption className="sr-only">Cardology versus tarot by deck, method, and use</caption>
           <thead>
             <tr className="border-b border-white/15 text-bone">
-              <th className="py-2 pr-3 font-serif text-base">Dimension</th>
-              <th className="py-2 pr-3 font-serif text-base">Cardology</th>
-              <th className="py-2 font-serif text-base">Tarot</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Dimension</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Cardology</th>
+              <th className="py-2 font-serif text-base" scope="col">Tarot</th>
             </tr>
           </thead>
           <tbody>
             {rows.map(([dim, c, t]) => (
               <tr key={dim} className="border-b border-white/10 align-top">
-                <td className="py-3 pr-3 font-semibold text-bone">{dim}</td>
+                <th className="py-3 pr-3 font-semibold text-bone" scope="row">{dim}</th>
                 <td className="py-3 pr-3">{c}</td>
                 <td className="py-3">{t}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </TableScroll>
       </section>
 
       <section className="mt-10">

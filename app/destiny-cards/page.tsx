@@ -5,6 +5,7 @@ import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
 
 const TITLE = "Cards of Destiny: Find Your Birth Card";
@@ -239,24 +240,25 @@ export default function DestinyCardsPage() {
           <em>Cards of Your Destiny</em>, you are already in the playing-card birth-card family — not
           tarot Major Arcana math.
         </p>
-        <div className="overflow-x-auto">
+        <TableScroll label="Destiny Cards family names">
           <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-mist">
+            <caption className="sr-only">Search names for the playing-card birth-card family</caption>
             <thead>
               <tr className="border-b border-white/15 text-bone">
-                <th className="py-2 pr-3 font-serif text-base">Name people search</th>
-                <th className="py-2 font-serif text-base">What it usually means</th>
+                <th className="py-2 pr-3 font-serif text-base" scope="col">Name people search</th>
+                <th className="py-2 font-serif text-base" scope="col">What it usually means</th>
               </tr>
             </thead>
             <tbody>
               {nameRows.map(([name, meaning]) => (
                 <tr key={name} className="border-b border-white/10 align-top">
-                  <td className="py-3 pr-3 font-semibold text-bone">{name}</td>
+                  <th className="py-3 pr-3 font-semibold text-bone" scope="row">{name}</th>
                   <td className="py-3">{meaning}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </TableScroll>
         <p className="prose-reading mt-4 text-mist">
           Card Blueprints did not invent the deck-to-calendar idea. That lineage runs through Olney
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
@@ -335,13 +337,15 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section className="mt-10 overflow-x-auto">
+      <section className="mt-10">
         <h2 className="eyebrow mb-3 text-gold">Science of the Cards (what we claim)</h2>
+        <TableScroll label="What Card Blueprints claims and does not claim">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-mist">
+          <caption className="sr-only">Claims versus non-claims for Cardology on Card Blueprints</caption>
           <thead>
             <tr className="border-b border-white/15 text-bone">
-              <th className="py-2 pr-3 font-serif text-base">We claim</th>
-              <th className="py-2 font-serif text-base">We do not claim</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">We claim</th>
+              <th className="py-2 font-serif text-base" scope="col">We do not claim</th>
             </tr>
           </thead>
           <tbody>
@@ -353,6 +357,7 @@ export default function DestinyCardsPage() {
             ))}
           </tbody>
         </table>
+        </TableScroll>
         <p className="prose-reading mt-3 text-mist">
           If two calculators disagree, open the{" "}
           <Link href="/methodology" className="text-gold underline underline-offset-4">
@@ -362,26 +367,29 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section id="vs-cardology" className="mt-10 scroll-mt-10 overflow-x-auto">
+      <section id="vs-cardology" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-3 text-gold">Destiny Cards language vs Card Blueprints</h2>
+        <TableScroll label="Destiny Cards language versus Card Blueprints">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
+          <caption className="sr-only">Destiny Cards terms mapped to Card Blueprints tools</caption>
           <thead>
             <tr className="border-b border-white/15 text-bone">
-              <th className="py-2 pr-3 font-serif text-base">Idea</th>
-              <th className="py-2 pr-3 font-serif text-base">Destiny / Love Cards</th>
-              <th className="py-2 font-serif text-base">On Card Blueprints</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Idea</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Destiny / Love Cards</th>
+              <th className="py-2 font-serif text-base" scope="col">On Card Blueprints</th>
             </tr>
           </thead>
           <tbody>
             {langRows.map(([idea, dest, cb]) => (
               <tr key={idea} className="border-b border-white/10 align-top">
-                <td className="py-3 pr-3 font-semibold text-bone">{idea}</td>
+                <th className="py-3 pr-3 font-semibold text-bone" scope="row">{idea}</th>
                 <td className="py-3 pr-3">{dest}</td>
                 <td className="py-3">{cb}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </TableScroll>
         <p className="prose-reading mt-3 text-mist">
           Camp’s books remain a major doorway into this family. Card Blueprints is Cassidy Rice’s
           Cardology practice: free checkable tools, a published method, and one written report.
@@ -389,26 +397,29 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section id="vs-tarot" className="mt-10 scroll-mt-10 overflow-x-auto">
+      <section id="vs-tarot" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-3 text-gold">Destiny Cards vs tarot</h2>
+        <TableScroll label="Destiny Cards versus tarot birth cards">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
+          <caption className="sr-only">Destiny Cards and Cardology versus tarot birth cards</caption>
           <thead>
             <tr className="border-b border-white/15 text-bone">
-              <th className="py-2 pr-3 font-serif text-base"> </th>
-              <th className="py-2 pr-3 font-serif text-base">Destiny Cards / Cardology</th>
-              <th className="py-2 font-serif text-base">Tarot birth cards</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Dimension</th>
+              <th className="py-2 pr-3 font-serif text-base" scope="col">Destiny Cards / Cardology</th>
+              <th className="py-2 font-serif text-base" scope="col">Tarot birth cards</th>
             </tr>
           </thead>
           <tbody>
             {tarotRows.map(([dim, a, b]) => (
               <tr key={dim} className="border-b border-white/10 align-top">
-                <td className="py-3 pr-3 font-semibold text-bone">{dim}</td>
+                <th className="py-3 pr-3 font-semibold text-bone" scope="row">{dim}</th>
                 <td className="py-3 pr-3">{a}</td>
                 <td className="py-3">{b}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        </TableScroll>
         <p className="prose-reading mt-3 text-mist">
           Full side-by-side:{" "}
           <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">

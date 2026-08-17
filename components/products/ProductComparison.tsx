@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { PUBLIC_PRODUCTS } from "@/lib/products";
+import { TableScroll } from "@/components/seo/TableScroll";
 
 const ROLES: Record<string, { category: string; start: string }> = {
   "personal-card-blueprint": {
@@ -28,7 +29,7 @@ export function ProductComparison() {
         Three separate things: one personalized report, one method book, one
         full-deck handbook. They do not replace each other.
       </p>
-      <div className="mt-6 overflow-x-auto" tabIndex={0} aria-label="Product comparison">
+      <TableScroll className="mt-6" label="Product comparison">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm">
           <caption className="sr-only">
             Compare Personal Card Blueprint, Analog Algorithm, and Complete Card Blueprint
@@ -56,7 +57,7 @@ export function ProductComparison() {
             ))}
           </tbody>
         </table>
-      </div>
+      </TableScroll>
     </section>
   );
 }

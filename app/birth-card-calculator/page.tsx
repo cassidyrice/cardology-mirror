@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { TableScroll } from "@/components/seo/TableScroll";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -355,7 +356,7 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
         <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
-        <div className="mt-4 overflow-x-auto" tabIndex={0} aria-label="Cardology versus tarot birth cards">
+        <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
           <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-mist">
             <caption className="sr-only">
               Cardology playing-card calculator versus tarot birth-card systems
@@ -395,7 +396,7 @@ export default function CalculatorPage() {
               </tr>
             </tbody>
           </table>
-        </div>
+        </TableScroll>
         <p className="prose-reading mt-4 text-mist">
           Baby / stationery &ldquo;birth cards&rdquo; are also unrelated — those are printed
           announcements, not a calculation.

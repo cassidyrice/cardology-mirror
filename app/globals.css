@@ -57,13 +57,18 @@
    in-app screens keep the browser's adaptive default ring. The dark rule
    comes second so ink asides nested in paper shells resolve correctly. */
 :where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper)
-  :where(a, button, input, select, textarea, summary):focus-visible {
+  :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
   outline: 2px solid var(--oxblood);
   outline-offset: 3px;
 }
 
 :where(.shell-ink, [class*="bg-[#14110d]"])
-  :where(a, button, input, select, textarea, summary):focus-visible {
+  :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
+  outline: 2px solid var(--on-dark);
+  outline-offset: 3px;
+}
+
+.table-scroll:focus-visible {
   outline: 2px solid var(--on-dark);
   outline-offset: 3px;
 }
