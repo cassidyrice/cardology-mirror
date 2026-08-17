@@ -11,11 +11,12 @@ import {
   SAMPLE_BLUEPRINT,
   SAMPLE_BLUEPRINT_BIRTHDATE_DISPLAY,
 } from "@/lib/blueprint-sample";
+import { buildProductJsonLd } from "@/lib/product-schema";
 import {
   instantReportBySlug,
   instantReportFacts,
 } from "@/lib/products";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
@@ -46,22 +47,7 @@ export const metadata: Metadata = {
 export default function PersonalCardBlueprintPage() {
   if (!offer) return null;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: offer.name,
-    description: offer.oneLine,
-    brand: { "@type": "Brand", name: SITE_NAME },
-    offers: {
-      "@type": "Offer",
-      price: offer.price,
-      priceCurrency: "USD",
-      url: `${SITE_URL}/products/personal-card-blueprint`,
-      hasMerchantReturnPolicy: {
-        "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
-      },
-    },
-  };
+  const jsonLd = buildProductJsonLd(offer);
 
   return (
     <div className="bg-brand-paper text-brand-ink">

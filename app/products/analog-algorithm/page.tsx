@@ -5,10 +5,9 @@ import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
+import { buildProductJsonLd } from "@/lib/product-schema";
 import { digitalBySlug } from "@/lib/products";
-import {
-  SITE_NAME,
-} from "@/lib/site";
+import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "The Analog Algorithm — E-book | Card Blueprints",
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
       "The 52-card solar calendar, fully explained. Birth card formula, spreads, planetary periods, worksheets. Instant PDF download — $17.",
     type: "website",
     siteName: SITE_NAME,
-    images: [{ url: "/og-default.png" }],
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
 };
 
@@ -37,6 +36,10 @@ export default function AnalogAlgorithmSalesPage() {
         { label: "The Analog Algorithm", href: book.href! },
       ]}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildProductJsonLd(book)) }}
+      />
       {/* Hero */}
       <header className="max-w-[42rem] pb-10">
         <Kicker className="mb-4">

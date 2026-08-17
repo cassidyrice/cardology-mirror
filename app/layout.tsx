@@ -5,7 +5,7 @@ import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
 import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
-import { PUBLIC_PRODUCTS } from "@/lib/products";
+import { merchantReturnPolicy } from "@/lib/product-schema";
 import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 // Geometric sans for the brand wordmark only (--font-logo in globals.css).
@@ -83,11 +83,11 @@ export default function RootLayout({
         logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
         description: SITE_TAGLINE,
         publishingPrinciples: `${SITE_URL}/editorial-policy`,
-        hasMerchantReturnPolicy: {
-          "@type": "MerchantReturnPolicy",
-          "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
-          merchantReturnLink: `${SITE_URL}/refund-policy`,
-        },
+        // Full return-policy object lives here for Organization identity.
+        // Product/Offer markup belongs only on /products/* pages — global
+        // makesOffer Products missing image/availability/shipping are what
+        // Search Console flags as invalid merchant listings.
+        hasMerchantReturnPolicy: merchantReturnPolicy(),
         knowsAbout: [
           "Cardology",
           "birth cards",
@@ -98,23 +98,6 @@ export default function RootLayout({
           "relationship dynamics",
           "public figure birth card profiles",
         ],
-        makesOffer: PUBLIC_PRODUCTS.map((offer) => ({
-          "@type": "Offer",
-          price: offer.price,
-          priceCurrency: "USD",
-          // The indexable comparison section is the public offer URL.
-          // /checkout/<slug> is a robots-disallowed review page; only its
-          // explicit POST action creates a Stripe Checkout Session.
-          url: `${SITE_URL}${offer.href ?? `/products/${offer.slug}`}`,
-          hasMerchantReturnPolicy: {
-            "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
-          },
-          itemOffered: {
-            "@type": "Product",
-            name: offer.name,
-            provider: { "@id": `${SITE_URL}/#organization` },
-          },
-        })),
         sameAs: [`${SITE_URL}/videos`],
       },
       {

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
+import { buildProductJsonLd } from "@/lib/product-schema";
 import { digitalBySlug } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
 
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
       "Birth cards, timing, relationships, and all 52 entries in one handbook. PDF download — $27.",
     type: "website",
     siteName: SITE_NAME,
-    images: [{ url: "/og-default.png" }],
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: SITE_NAME }],
   },
 };
 
@@ -34,6 +35,10 @@ export default function CompleteCardBlueprintSalesPage() {
         { label: "The Complete Card Blueprint", href: book.href! },
       ]}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildProductJsonLd(book)) }}
+      />
       <header className="max-w-[42rem] pb-10">
         <Kicker className="mb-4">
           <span className="r" aria-hidden="true">
