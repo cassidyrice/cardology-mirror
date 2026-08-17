@@ -24,6 +24,15 @@ test("calculator still puts the tool before the not-tarot aside and chart", () =
   expect(chart).toBeGreaterThan(calculator);
 });
 
+test("calculator drops PAS filler and the 366-cell dump", () => {
+  const source = read("app/birth-card-calculator/page.tsx");
+  expect(source).not.toContain("people also search");
+  expect(source).not.toContain("PlayingCardsBirthdayChart");
+  expect(source).toContain('aria-label="Birthday directory by month"');
+  expect(source).toContain('href={`/born-on/${slug}`}');
+  expect(source).toContain("BIRTHDAY_DIRECTORY_PATH");
+});
+
 test("shared birthday chart uses plain Worker anchors", () => {
   const source = read("components/seo/PlayingCardsBirthdayChart.tsx");
   expect(source).toContain("href={`/born-on/${d.slug}`}");

@@ -4,11 +4,25 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+
+const MONTH_DIRECTORY = [
+  ["January", "january-1"],
+  ["February", "february-1"],
+  ["March", "march-1"],
+  ["April", "april-1"],
+  ["May", "may-1"],
+  ["June", "june-1"],
+  ["July", "july-1"],
+  ["August", "august-1"],
+  ["September", "september-1"],
+  ["October", "october-1"],
+  ["November", "november-1"],
+  ["December", "december-1"],
+] as const;
 
 const TITLE = "Birth Card Calculator & Cardology Chart";
 const DESCRIPTION =
@@ -73,30 +87,6 @@ const faqs = [
     a: "The birth card is the core pattern. The planetary ruling card is the style it expresses through, selected by your zodiac sign’s ruling planet acting on your birth card’s position. Two people with the same birth card but different signs usually have different ruling cards.",
   },
   {
-    q: "Which playing card represents my birthday?",
-    a: "Enter the full birthday below. The calculator returns the playing card for that date plus the ruling card layer. You can also browse every date in the birthday directory at https://cardblueprints.com/born-on/ — a playing-cards birthday chart of all 366 dates.",
-  },
-  {
-    q: "Is this a playing cards birthday chart?",
-    a: "Yes — in interactive form. A playing-cards birthday chart maps each calendar date to one card in a standard 52-card deck. Use this calculator for an instant lookup, or open the birthday directory (https://cardblueprints.com/born-on/) to browse every date like a chart. Same system either way: birthday → one playing card, not a tarot Major Arcana pair.",
-  },
-  {
-    q: "Where can I look up a birthday playing card by date?",
-    a: "Two free paths on Card Blueprints: (1) this calculator — enter any birthday for the birth card and ruling card; (2) the birthday directory at https://cardblueprints.com/born-on/ — pick a month and day to open that date's page. For the meaning of the card itself, continue to https://cardblueprints.com/birth-card.",
-  },
-  {
-    q: "What card am I based on my birthday?",
-    a: "In the Cardology system, your month and day map to one card in a standard 52-card deck. Use the calculator above for the exact result, then open the linked card meaning to study its suit, rank, balanced expression, and shadow range.",
-  },
-  {
-    q: "Is this also called a Destiny Cards calculator?",
-    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map: https://cardblueprints.com/destiny-cards",
-  },
-  {
-    q: "Is this a Cardology chart calculator or birthday calculator?",
-    a: "Yes. Cardology calculator, Cardology birthday calculator, Cardology chart calculator, and playing-cards birthday chart are common names for the same idea: birthday → one fixed playing card. This page is the interactive calculator; https://cardblueprints.com/born-on/ is the full date chart. Same date always returns the same result. For two people, use https://cardblueprints.com/birth-card-compatibility-calculator",
-  },
-  {
     q: "Is the free Cardology calculator private?",
     a: "The birth-card calculation runs in your browser. The calculator tracks anonymous start and completion events for site analytics, but it does not send the birthday itself in those events.",
   },
@@ -105,16 +95,8 @@ const faqs = [
     a: "Yes. Most cards cover several birthdays. February 29 maps normally in the cycle (9 of Clubs). December 31 is the Joker boundary, sometimes called the Day Out of Time. The ruling-card layer often differs even when the birth card matches.",
   },
   {
-    q: "What is a Cardology chart?",
-    a: "A Cardology chart is a birthday-to-playing-card map for the 52-card system. Same date always maps to the same card. The chart on this page is that calendar; the calculator above is the typed lookup.",
-  },
-  {
-    q: "Is a Cardology chart the same as a birth card calculator?",
-    a: "Same engine. The calculator is type-a-date. The chart is the full calendar. Both live on this page so you can look up one birthday or scan the year.",
-  },
-  {
-    q: "Is this Cafe Astrology’s playing cards birthday chart?",
-    a: "Same family — birthday maps to a playing card — but this page uses the Card Blueprints engine, ruling-card layer, and date pages. If two tools disagree, re-run the date here.",
+    q: "Is this also called a Destiny Cards calculator?",
+    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map: https://cardblueprints.com/destiny-cards",
   },
 ];
 
@@ -283,23 +265,15 @@ export default function CalculatorPage() {
             ))}
           </ol>
           <p className="prose-reading text-mist">
-            This is why people also search for a <strong>Cardology calculator</strong>,
-            a <strong>Cardology birthday calculator</strong>, a{" "}
-            <strong>Cardology chart calculator</strong>, a{" "}
-            <strong>playing cards birthday chart</strong>, a{" "}
-            <strong>birthday playing card</strong> lookup, a{" "}
-            <strong>playing-card astrology calculator</strong>, or ask,
-            &ldquo;What card am I based on my birthday?&rdquo; Those phrases point to
-            the same birthday-to-playing-card system on this site — not a tarot birth-card
-            pair. New to the system? Start with{" "}
-            <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
-              what Cardology is
-            </Link>{" "}
+            Want the calendar view instead of typing a date? Open the{" "}
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+              birthday directory
+            </a>{" "}
             or the{" "}
-            <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
-              beginners guide
+            <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
+              full playing-cards birthday chart
             </Link>
-            .
+            . Same date, same card.
           </p>
         </div>
       </section>
@@ -308,16 +282,31 @@ export default function CalculatorPage() {
         <p className="eyebrow mb-2 text-gold">Cardology chart</p>
         <h2 className="font-serif text-3xl text-bone">Cardology chart: birthday → playing card</h2>
         <p className="prose-reading mt-4 text-mist">
-          Same map the calculator uses. Pick a date, or type one above. For the
-          longer 52-card explainer, see the{" "}
+          The full date chart lives in the birthday directory. Jump to a month,
+          or type a date in the calculator above. Same map either way.
+        </p>
+        <nav className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
+          {MONTH_DIRECTORY.map(([label, slug]) => (
+            <a
+              key={slug}
+              href={`/born-on/${slug}`}
+              className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-center font-serif text-sm text-bone transition hover:border-gold/40"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <p className="prose-reading mt-4 text-sm text-mist">
+          All 366 dates:{" "}
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            /born-on/
+          </a>
+          . Longer explainer with the complete grid:{" "}
           <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
-            full playing-cards birthday chart
+            playing-cards birthday chart
           </Link>
           .
         </p>
-        <div className="mt-6">
-          <PlayingCardsBirthdayChart />
-        </div>
       </section>
 
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
