@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import { getCheckoutAnalyticsFields } from "@/components/analytics/AnalyticsCapture";
+import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { sanitizeBirthdateISO } from "@/lib/birthdate";
 
 type Props = {
   slug: string;
@@ -12,6 +14,17 @@ type Props = {
 
 export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
   const [pending, setPending] = useState(false);
+  const [storedBirthdate, setStoredBirthdate] = useState("");
+
+  useEffect(() => {
+    const fromProp = sanitizeBirthdateISO(birthdate);
+    const fromStore = readCheckoutBirthdate();
+    const iso = fromProp || fromStore;
+    if (iso) {
+      storeCheckoutBirthdate(iso);
+      setStoredBirthdate(iso);
+    }
+  }, [birthdate]);
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     if (pending) {
@@ -24,6 +37,8 @@ export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
     for (const [name, value] of Object.entries(getCheckoutAnalyticsFields())) {
       setHiddenField(form, name, value);
     }
+    const iso = storedBirthdate || readCheckoutBirthdate();
+    if (iso) setHiddenField(form, "birthdate", iso);
   }
 
   return (
@@ -34,8 +49,8 @@ export function CheckoutContinueForm({ slug, priceLabel, birthdate }: Props) {
       data-analytics-checkout
       onSubmit={onSubmit}
     >
-      {birthdate ? (
-        <input type="hidden" name="birthdate" value={birthdate} />
+      {storedBirthdate ? (
+        <input type="hidden" name="birthdate" value={storedBirthdate} />
       ) : null}
       <button
         type="submit"

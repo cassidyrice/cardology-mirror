@@ -366,38 +366,41 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
         <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
-        <div className="mt-4 overflow-x-auto">
-          <table className="w-full min-w-[680px] border-collapse text-left text-sm text-mist">
+        <div className="mt-4 overflow-x-auto" tabIndex={0} aria-label="Cardology versus tarot birth cards">
+          <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-mist">
+            <caption className="sr-only">
+              Cardology playing-card calculator versus tarot birth-card systems
+            </caption>
             <thead>
               <tr className="border-b border-white/15 text-bone">
-                <th className="p-3"></th>
-                <th className="p-3">This calculator (Cardology)</th>
-                <th className="p-3">Tarot birth cards</th>
+                <th scope="col" className="p-3">Topic</th>
+                <th scope="col" className="p-3">This calculator (Cardology)</th>
+                <th scope="col" className="p-3">Tarot birth cards</th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-white/10">
-                <td className="p-3 font-semibold text-bone">Deck</td>
+                <th scope="row" className="p-3 font-semibold text-bone">Deck</th>
                 <td className="p-3">52 playing cards</td>
                 <td className="p-3">78-card tarot (usually Major Arcana pairs)</td>
               </tr>
               <tr className="border-b border-white/10">
-                <td className="p-3 font-semibold text-bone">Method</td>
+                <th scope="row" className="p-3 font-semibold text-bone">Method</th>
                 <td className="p-3">Birthday → one fixed playing card</td>
                 <td className="p-3">Birth-date numerology → Major Arcana</td>
               </tr>
               <tr className="border-b border-white/10">
-                <td className="p-3 font-semibold text-bone">Shuffle?</td>
+                <th scope="row" className="p-3 font-semibold text-bone">Shuffle?</th>
                 <td className="p-3">No — same date, same card</td>
                 <td className="p-3">Spreads usually shuffle; birth-card formulas vary</td>
               </tr>
               <tr className="border-b border-white/10">
-                <td className="p-3 font-semibold text-bone">Example result</td>
+                <th scope="row" className="p-3 font-semibold text-bone">Example result</th>
                 <td className="p-3">Queen of Diamonds</td>
                 <td className="p-3">e.g. Death + Emperor (different system)</td>
               </tr>
               <tr>
-                <td className="p-3 font-semibold text-bone">Use this if…</td>
+                <th scope="row" className="p-3 font-semibold text-bone">Use this if…</th>
                 <td className="p-3">You want your birthday&rsquo;s <strong>playing card</strong></td>
                 <td className="p-3">You want tarot Major Arcana pairs</td>
               </tr>

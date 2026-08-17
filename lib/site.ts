@@ -15,7 +15,7 @@ export const SITE_NAME = "Card Blueprints";
 export const CONTACT_EMAIL = "therealcassrice@gmail.com";
 
 export const VIDEO_URL = (
-  process.env.NEXT_PUBLIC_VIDEO_URL || "https://www.youtube.com/@cardologypro"
+  process.env.NEXT_PUBLIC_VIDEO_URL || `${SITE_URL}/videos`
 ).replace(/\/$/, "");
 
 export const VIDEO_PATH = "/videos";

@@ -99,9 +99,13 @@ export default function CompatibilityCalculatorPage() {
         Cardology Compatibility Calculator
       </h1>
       <p className="mb-4 text-sm text-mist">
-        Cardology two-birthday tool — 52 playing cards, not tarot.
+        Enter two birthdays. The tool returns each playing-card birth card and
+        how the two Life Paths meet — 52 cards, not tarot.
       </p>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+
+      <CompatibilityCalculator />
+
+      <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
@@ -140,8 +144,6 @@ export default function CompatibilityCalculatorPage() {
           </Link>
         </p>
       </aside>
-
-      <CompatibilityCalculator />
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">After you compare</p>

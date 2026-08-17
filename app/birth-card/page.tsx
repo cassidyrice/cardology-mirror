@@ -159,6 +159,7 @@ export default function BirthCardIndex() {
         </p>
         <ul className="flex flex-wrap gap-2 text-sm">
           {[
+            ["Joker birth card", "/birth-card/joker"],
             ["Ace of Hearts meaning", "/birth-card/ace-of-hearts"],
             ["10 of Hearts meaning", "/birth-card/10-of-hearts"],
             ["10 of Diamonds meaning", "/birth-card/10-of-diamonds"],

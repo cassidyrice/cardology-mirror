@@ -6,7 +6,7 @@ import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsB
 import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
 import { PUBLIC_PRODUCTS } from "@/lib/products";
-import { SITE_URL, SITE_NAME, SITE_TAGLINE, VIDEO_URL } from "@/lib/site";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 // Geometric sans for the brand wordmark only (--font-logo in globals.css).
 const logoFont = Montserrat({
@@ -82,7 +82,7 @@ export default function RootLayout({
         url: SITE_URL,
         logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
         description: SITE_TAGLINE,
-        publishingPrinciples: `${SITE_URL}/about`,
+        publishingPrinciples: `${SITE_URL}/editorial-policy`,
         hasMerchantReturnPolicy: {
           "@type": "MerchantReturnPolicy",
           "@id": `${SITE_URL}/refund-policy#merchant-return-policy`,
@@ -115,7 +115,7 @@ export default function RootLayout({
             provider: { "@id": `${SITE_URL}/#organization` },
           },
         })),
-        sameAs: [VIDEO_URL],
+        sameAs: [`${SITE_URL}/videos`],
       },
       {
         "@type": "WebSite",
@@ -127,14 +127,14 @@ export default function RootLayout({
           {
             "@type": "WebSite",
             name: "Card Blueprints Videos",
-            url: VIDEO_URL,
+            url: `${SITE_URL}/videos`,
             about: "Cardology birth cards, shadow readings, timing, famous-person examples, and relationship dynamics videos.",
           },
         ],
         potentialAction: {
           "@type": "SearchAction",
-          target: `${SITE_URL}/birth-card-calculator?birthdate={birthdate}`,
-          "query-input": "required name=birthdate",
+          target: `${SITE_URL}/birth-card-calculator`,
+          "query-input": "required name=search_term_string",
         },
       },
     ],

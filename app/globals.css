@@ -25,6 +25,7 @@
      clears 4.5:1 on every light surface in use: paper 6.05, paper-deep 5.59,
      ivory 6.65, and both panel tints. One value, no per-surface variant. */
   --bronze: #735624;
+  --bronze-on-dark: #c4a05a;
   --gold: #b8893d;
   --gold-soft: rgba(184, 137, 61, 0.14);
 
@@ -412,7 +413,7 @@ body {
 }
 
 .oracle-eyebrow-on-ink {
-  color: var(--on-dark-soft);
+  color: var(--bronze-on-dark);
 }
 
 /* Buttons — one calm system. Primary = ink, accent = oxblood (the single
@@ -863,6 +864,7 @@ body {
 .report-stack {
   position: relative;
   isolation: isolate;
+  overflow: hidden;
   box-shadow: 0 18px 44px -28px rgba(20, 17, 13, 0.35);
 }
 
@@ -872,6 +874,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
+  max-width: 100%;
   border: 1px solid rgba(20, 17, 13, 0.16);
   border-radius: inherit;
   background: #efe8dc;

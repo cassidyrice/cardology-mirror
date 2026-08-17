@@ -103,7 +103,8 @@ const birthCalc = readFileSync(
   "components/seo/BirthCardCalculator.tsx",
   "utf8",
 );
-assert.match(birthCalc, /bd=\$\{encodeURIComponent\(birthdate\)\}/);
+assert.doesNotMatch(birthCalc, /bd=\$\{encodeURIComponent\(birthdate\)\}/);
+assert.match(birthCalc, /storeCheckoutBirthdate/);
 assert.match(birthCalc, /instantReportBySlug/);
 
 const pcb = instantReportBySlug("personal-card-blueprint");

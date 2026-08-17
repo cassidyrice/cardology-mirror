@@ -13,6 +13,10 @@ import {
   calculateBirthCardRevealFromIsoDate,
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
+import {
+  personalCheckoutHref,
+  storeCheckoutBirthdate,
+} from "@/lib/checkout-birthdate";
 import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
 import { NewsletterSignupForm } from "./NewsletterSignupForm";
@@ -24,32 +28,30 @@ export function BirthCardCalculator() {
   const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
   const [touched, setTouched] = useState(false);
 
-  // Allow prefill via ?birthdate=YYYY-MM-DD (used by the site SearchAction).
+  // Legacy ?birthdate= links: consume the date, then strip it from the URL.
   useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get("birthdate");
-    if (q) {
-      const calculated = calculateBirthCardRevealFromIsoDate(q);
-      if (!calculated) return;
-      setDate(q);
-      setReveal(calculated);
-      setTouched(true);
-      trackClientFunnelEventOnce("calculator_started", {
-        placement: "search-prefill",
-      });
-      if (calculated) {
-        trackClientFunnelEvent("calculator_completed", {
-          placement: "search-prefill",
-        });
-        if (typeof window !== "undefined") {
-          window.__cardBlueprintsElroyBirthdate = q;
-          window.dispatchEvent(
-            new CustomEvent("elroy:birth-card-revealed", {
-              detail: { birthdate: q },
-            }),
-          );
-        }
-      }
-    }
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("birthdate") || params.get("bd") || params.get("dob");
+    if (!q) return;
+    const calculated = calculateBirthCardRevealFromIsoDate(q);
+    window.history.replaceState({}, "", window.location.pathname);
+    if (!calculated) return;
+    storeCheckoutBirthdate(q);
+    setDate(q);
+    setReveal(calculated);
+    setTouched(true);
+    trackClientFunnelEventOnce("calculator_started", {
+      placement: "search-prefill",
+    });
+    trackClientFunnelEvent("calculator_completed", {
+      placement: "search-prefill",
+    });
+    window.__cardBlueprintsElroyBirthdate = q;
+    window.dispatchEvent(
+      new CustomEvent("elroy:birth-card-revealed", {
+        detail: { birthdate: q },
+      }),
+    );
   }, []);
 
   function onSubmit(e: FormEvent) {
@@ -61,17 +63,16 @@ export function BirthCardCalculator() {
     const calculated = calculateBirthCardRevealFromIsoDate(date);
     setReveal(calculated);
     if (calculated) {
+      storeCheckoutBirthdate(date);
       trackClientFunnelEvent("calculator_completed", {
         placement: "calculator-form",
       });
-      if (typeof window !== "undefined") {
-        window.__cardBlueprintsElroyBirthdate = date;
-        window.dispatchEvent(
-          new CustomEvent("elroy:birth-card-revealed", {
-            detail: { birthdate: date },
-          }),
-        );
-      }
+      window.__cardBlueprintsElroyBirthdate = date;
+      window.dispatchEvent(
+        new CustomEvent("elroy:birth-card-revealed", {
+          detail: { birthdate: date },
+        }),
+      );
     }
   }
 
@@ -158,9 +159,7 @@ function BirthCardResultCard({
   const slug = birthCardSlug(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
   const priceLabel = blueprintOffer?.priceLabel ?? "$13";
-  const checkoutHref = birthdate
-    ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdate)}`
-    : "/checkout/personal-card-blueprint";
+  const checkoutHref = personalCheckoutHref();
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
   // the result is already visible; reduced motion gets an instant jump.
@@ -234,13 +233,15 @@ function BirthCardResultCard({
         >
           <Link
             href={checkoutHref}
+            prefetch={false}
             className="accent-button large-button w-full text-center sm:w-auto"
-            onClick={() =>
+            onClick={() => {
+              storeCheckoutBirthdate(birthdate);
               trackClientFunnelEvent("offer_cta_clicked", {
                 offerSlug: "personal-card-blueprint",
                 placement: "birth-card-calculator-result",
-              })
-            }
+              });
+            }}
           >
             {`Get My Blueprint — ${priceLabel}`}
           </Link>
@@ -268,7 +269,7 @@ function BirthCardResultCard({
           style={{ animationDelay: "0.82s" }}
         >
           A written pattern you can actually use — not a horoscope.
-          Locks pattern, ruling layer, and this year&apos;s bit in the deck in
+          Locks pattern, ruling card, and your current 52-day period in
           writing. One-time{" "}
           {priceLabel}.
         </p>

@@ -37,6 +37,12 @@ export function AnalyticsCapture() {
   const pathname = usePathname();
 
   useEffect(() => {
+    try {
+      document.cookie = `${FUNNEL_COOKIE_NAME}=; Path=/; Max-Age=0; SameSite=Lax`;
+    } catch {
+      // Best-effort expiry of the retired first-party funnel cookie.
+    }
+
     const attribution = getAttribution();
 
     if (
@@ -169,7 +175,6 @@ function getAttribution(): Attribution {
     const stored = sessionStorage.getItem(ATTRIBUTION_KEY);
     if (stored) {
       const attribution = JSON.parse(stored) as Attribution;
-      persistFunnelCookie(attribution);
       return attribution;
     }
 
@@ -195,34 +200,9 @@ function getAttribution(): Attribution {
     };
     sessionStorage.setItem(SESSION_ID_KEY, sessionId);
     sessionStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(attribution));
-    persistFunnelCookie(attribution);
     return attribution;
   } catch {
     return fallback;
-  }
-}
-
-function persistFunnelCookie(attribution: Attribution) {
-  if (typeof document === "undefined") return;
-  try {
-    const payload = encodeURIComponent(
-      JSON.stringify({
-        sessionId: attribution.sessionId,
-        landingPath: attribution.landingPath,
-        referrerHost: attribution.referrerHost,
-        trafficChannel: attribution.trafficChannel,
-        utmSource: attribution.utmSource,
-        utmMedium: attribution.utmMedium,
-        utmCampaign: attribution.utmCampaign,
-      }),
-    );
-    const secure =
-      typeof window !== "undefined" && window.location.protocol === "https:"
-        ? "; Secure"
-        : "";
-    document.cookie = `${FUNNEL_COOKIE}=${payload}; Path=/; Max-Age=86400; SameSite=Lax${secure}`;
-  } catch {
-    // Cookie write is best-effort; form fields remain the primary path.
   }
 }
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/free-course-media.test.ts",
+    "test": "bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/audit-privacy-leak.test.ts && bun scripts/free-course-media.test.ts",
     "test:homepage-hero": "bun test scripts/homepage-hero.test.ts",
     "test:homepage-hero:browser": "bun scripts/homepage-hero-browser.ts",
     "test:seo:browser": "bun scripts/seo-integrity-browser.ts",

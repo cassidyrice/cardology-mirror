@@ -1,0 +1,5 @@
+Contact: mailto:therealcassrice@gmail.com
+Expires: 2027-08-16T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://cardblueprints.com/.well-known/security.txt
+Policy: https://cardblueprints.com/privacy-policy

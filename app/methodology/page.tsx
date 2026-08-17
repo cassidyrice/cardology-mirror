@@ -216,6 +216,27 @@ export default function MethodologyPage() {
         </p>
       </section>
 
+      <section className="mt-10 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-[#14110d]">Test vectors and corrections</h2>
+        <p>
+          The public birthday map is the formula. Same month and day always return
+          the same birth card. Check these known rows against the calculator:
+        </p>
+        <ul className="list-disc space-y-2 pl-6 text-base">
+          <li>January 15 → Queen of Diamonds</li>
+          <li>February 29 → 9 of Clubs (leap-day row)</li>
+          <li>December 31 → Joker (year-end boundary)</li>
+        </ul>
+        <p>
+          Dataset version is dated on this page. If a mapping is wrong, email{" "}
+          <Link href="/contact" className="underline">
+            contact
+          </Link>{" "}
+          with the date and expected card. We correct the CSV and this page
+          rather than silently changing live reports.
+        </p>
+      </section>
+
       <section className="mt-12 border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
         <h2 className="font-serif text-3xl text-[#14110d]">Use the method</h2>
         <div className="mt-4 flex flex-wrap gap-2">

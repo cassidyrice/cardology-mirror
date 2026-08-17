@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PrivacyChoices } from "@/components/privacy/PrivacyChoices";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CONTACT_EMAIL } from "@/lib/site";
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 8, 2026";
+const UPDATED = "August 16, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -251,26 +252,47 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Google Analytics</strong> — aggregate website analytics.{" "}
+              <strong>Google Analytics</strong> — optional aggregate website analytics, loaded only after you allow it.{" "}
               <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Google Privacy Policy
               </a>
             </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>YouTube</strong> — video thumbnails and playback embeds on the videos hub. YouTube may set cookies if you play a video.{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
+                Google Privacy Policy
+              </a>
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>Buttondown</strong> — newsletter delivery when a form posts to Buttondown.{" "}
+              <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
+                Buttondown Privacy Policy
+              </a>
+            </li>
           </ul>
+        </section>
+
+        <section id="privacy-choices">
+          <h2 className="font-serif text-2xl text-[#14110d]">Privacy choices</h2>
+          <PrivacyChoices className="mt-3 text-sm" />
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Cookies</h2>
           <p className="mt-3">
             Card Blueprints does not use advertising cookies and does not track
-            you across other sites for advertising. Google Analytics may set its
-            own first-party analytics cookies (for example{" "}
-            <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">_ga</code>
-            ) to distinguish sessions. Cloudflare may set security-related cookies
-            (such as{" "}
+            you across other sites for advertising. Google Analytics scripts
+            load only after you allow analytics in{" "}
+            <Link href="#privacy-choices" className="text-[#8e321f] underline underline-offset-4">
+              Privacy choices
+            </Link>
+            . First-party conversion events stay in this browser tab
+            (sessionStorage) and never include a birth date. Birth dates used
+            to continue checkout are also tab-scoped sessionStorage — they are
+            not written into URLs, prefetch requests, or analytics locations.
+            Cloudflare may set security-related cookies (such as{" "}
             <code className="rounded bg-[#14110d]/8 px-1 py-0.5 text-sm">__cf_bm</code>) as
-            part of bot protection. Our first-party conversion stream does not
-            set its own analytics cookies.
+            part of bot protection.
           </p>
         </section>
 

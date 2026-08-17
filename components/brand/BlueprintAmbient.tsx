@@ -1,4 +1,6 @@
-import type { CSSProperties } from "react";
+"use client";
+
+import { useEffect, useState, type CSSProperties } from "react";
 
 type AmbientVariant =
   | "compatibility"
@@ -80,6 +82,20 @@ export function BlueprintAmbient({
 }: BlueprintAmbientProps) {
   const plate = plates[variant];
   const style = { "--ambient-node-count": nodes.length } as CSSProperties;
+  const [showDesktopVideo, setShowDesktopVideo] = useState(false);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const desktop = window.matchMedia("(min-width: 701px)").matches;
+    if (reduce || !desktop) return;
+    const idle = window.requestIdleCallback
+      ? window.requestIdleCallback(() => setShowDesktopVideo(true), { timeout: 2500 })
+      : window.setTimeout(() => setShowDesktopVideo(true), 1200);
+    return () => {
+      if (typeof idle === "number") window.clearTimeout(idle);
+      else window.cancelIdleCallback(idle);
+    };
+  }, []);
 
   return (
     <div
@@ -89,20 +105,31 @@ export function BlueprintAmbient({
       style={style}
     >
       <picture className="blueprint-ambient__still">
+        <source media="(max-width: 700px)" type="image/webp" srcSet={plate.mobilePoster.replace(".png", ".webp")} />
         <source media="(max-width: 700px)" srcSet={plate.mobilePoster} />
-        <img alt="" decoding="async" src={plate.poster} />
+        <source type="image/webp" srcSet={plate.poster.replace(".png", ".webp")} />
+        <img
+          alt=""
+          decoding="async"
+          fetchPriority={variant === "blueprint" ? "high" : "low"}
+          src={plate.poster}
+          width={1280}
+          height={720}
+        />
       </picture>
-      <video
-        autoPlay
-        className="blueprint-ambient__clip"
-        loop
-        muted
-        playsInline
-        poster={plate.poster}
-        preload="metadata"
-      >
-        <source src={plate.clip} type="video/mp4" />
-      </video>
+      {showDesktopVideo ? (
+        <video
+          autoPlay
+          className="blueprint-ambient__clip"
+          loop
+          muted
+          playsInline
+          poster={plate.poster}
+          preload="none"
+        >
+          <source src={plate.clip} type="video/mp4" />
+        </video>
+      ) : null}
       <svg className="blueprint-ambient__geometry" viewBox="0 0 100 100" role="presentation">
         <g className="blueprint-ambient__orbit">
           <ellipse cx="47" cy="51" rx="31" ry="19" />

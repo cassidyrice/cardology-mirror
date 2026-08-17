@@ -17,6 +17,10 @@ import {
   type LifePathProfile,
   type LifePathSharedCard,
 } from "@/lib/life-path";
+import {
+  personalCheckoutHref,
+  storeCheckoutBirthdate,
+} from "@/lib/checkout-birthdate";
 import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
 
@@ -74,6 +78,7 @@ export function CompatibilityCalculator() {
     }
     setErr(false);
     setPair({ a: first, b: second });
+    storeCheckoutBirthdate(a);
     trackClientFunnelEvent("calculator_completed", {
       placement: "compatibility-calculator",
     });
@@ -135,9 +140,7 @@ function PairResult({
   const comparison = compareLifePathProfiles(a, b);
   const priceLabel =
     instantReportBySlug("personal-card-blueprint")?.priceLabel ?? "$13";
-  const checkoutHref = birthdateA
-    ? `/checkout/personal-card-blueprint?bd=${encodeURIComponent(birthdateA)}`
-    : "/checkout/personal-card-blueprint";
+  const checkoutHref = personalCheckoutHref();
 
   return (
     <div className="mt-10 animate-fade-up">
@@ -211,13 +214,15 @@ function PairResult({
       <div className="mt-8 flex flex-col items-center gap-3">
         <Link
           href={checkoutHref}
+          prefetch={false}
           className="accent-button large-button text-center"
-          onClick={() =>
+          onClick={() => {
+            storeCheckoutBirthdate(birthdateA);
             trackClientFunnelEvent("offer_cta_clicked", {
               offerSlug: "personal-card-blueprint",
               placement: "compatibility-calculator-result",
-            })
-          }
+            });
+          }}
         >
           {`Get My Blueprint — ${priceLabel}`}
         </Link>

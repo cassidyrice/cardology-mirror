@@ -3,9 +3,12 @@
  * Measurement IDs are public by design; env override is optional.
  */
 
+import { buildConsentDefaultSnippet } from "@/lib/consent";
+
 export const DEFAULT_GA_MEASUREMENT_ID = "G-25K69MTQ4L";
 
 const MEASUREMENT_ID_PATTERN = /^G-[A-Z0-9]+$/i;
+const ISO_DATE = /\d{4}-\d{2}-\d{2}/;
 
 /** Query keys that must never reach GA as page_location params. */
 export const GA_BLOCKED_QUERY_KEYS = [
@@ -18,10 +21,22 @@ export const GA_BLOCKED_QUERY_KEYS = [
   "phone",
   "birthdate",
   "birth_date",
+  "bd",
+  "dob",
+  "date",
   "code",
   "gate",
   "card",
   "turnstile",
+] as const;
+
+export const GA_ALLOWED_QUERY_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "status",
 ] as const;
 
 export type GaEventParams = Record<
@@ -43,23 +58,13 @@ export function isGaMeasurementId(value: unknown): value is string {
 }
 
 /**
- * Strip sensitive query keys from a full URL before sending to GA.
- * Returns pathname + safe query only (no hash).
+ * Pathname-only policy: never send query strings or hashes to GA.
+ * Blocked keys and ISO dates are stripped if a caller still passes a full URL.
  */
 export function sanitizeGaPageLocation(rawUrl: string): string {
   try {
     const url = new URL(rawUrl, "https://cardblueprints.com");
-    for (const key of [...url.searchParams.keys()]) {
-      if (
-        GA_BLOCKED_QUERY_KEYS.some((blocked) =>
-          key.toLowerCase().includes(blocked.toLowerCase()),
-        )
-      ) {
-        url.searchParams.delete(key);
-      }
-    }
-    const search = url.searchParams.toString();
-    return search ? `${url.pathname}?${search}` : url.pathname;
+    return url.pathname || "/";
   } catch {
     return "/";
   }
@@ -68,11 +73,10 @@ export function sanitizeGaPageLocation(rawUrl: string): string {
 export function buildGtagBootstrapSnippet(measurementId: string): string {
   const id = resolveGaMeasurementId(measurementId);
   return [
-    "window.dataLayer = window.dataLayer || [];",
-    "function gtag(){dataLayer.push(arguments);}",
+    buildConsentDefaultSnippet(),
     "gtag('js', new Date());",
     // Manual page_view from the SPA router avoids double-counting the first hit.
-    `gtag('config', '${id}', { send_page_view: false, anonymize_ip: true });`,
+    `gtag('config', '${id}', { send_page_view: false, anonymize_ip: true, allow_google_signals: false, allow_ad_personalization_signals: false });`,
   ].join("\n");
 }
 
@@ -83,7 +87,7 @@ export function buildGaSnippetHtml(measurementId?: string): string {
     `<!-- Google tag (gtag.js) -->`,
     `<script async src="${loader}"></script>`,
     `<script>${buildGtagBootstrapSnippet(id)}`,
-    `gtag('event', 'page_view', { page_path: location.pathname + location.search });`,
+    `gtag('event', 'page_view', { page_path: location.pathname, page_location: location.origin + location.pathname });`,
     `</script>`,
   ].join("\n");
 }
@@ -163,8 +167,8 @@ export function sanitizeGaEventParams(params: GaEventParams = {}): GaEventParams
       continue;
     }
     if (typeof value === "string") {
-      // Hard cap + reject values that look like emails/tokens.
       if (value.includes("@") || /^[A-Za-z0-9_-]{32,}$/.test(value)) continue;
+      if (ISO_DATE.test(value)) continue;
       out[key] = value.slice(0, 100);
     } else {
       out[key] = value;

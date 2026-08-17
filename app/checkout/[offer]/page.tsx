@@ -3,9 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm";
-import { SeoShell } from "@/components/seo/SeoShell";
+import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
-import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
   publicProductBySlug,
   digitalOfferFacts,
@@ -28,7 +27,7 @@ export const metadata: Metadata = {
 
 type PageProps = {
   params: Promise<{ offer: string }>;
-  searchParams: Promise<{ status?: string; bd?: string }>;
+  searchParams: Promise<{ status?: string }>;
 };
 
 export default async function CheckoutReviewPage({
@@ -36,7 +35,7 @@ export default async function CheckoutReviewPage({
   searchParams,
 }: PageProps) {
   const { offer: slug } = await params;
-  const { status, bd } = await searchParams;
+  const { status } = await searchParams;
   const product = publicProductBySlug(slug);
 
   if (!product) notFound();
@@ -44,28 +43,26 @@ export default async function CheckoutReviewPage({
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product);
   const unavailable = isDigital && !product.available;
-  const birthdate = isReport ? sanitizeBirthdateISO(bd) : "";
   const facts: (DigitalOfferFact | InstantReportFact)[] =
     isDigital
       ? digitalOfferFacts(product)
       : instantReportFacts(product);
 
   return (
-    <SeoShell
+    <CheckoutShell
       crumb={[
-        { label: "Home", href: "/" },
         { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint" },
-        { label: product.name, href: `/checkout/${product.slug}` },
+        { label: "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
-      <header className="max-w-[42rem] pb-9">
-        <Kicker className="mb-4">
+      <header className="max-w-[42rem] pb-6">
+        <Kicker className="mb-3">
           {isDigital || isReport ? "Review your purchase" : "Review your reading"}
         </Kicker>
-        <h1 className="type-display text-brand-ink">
-          {product.name} &mdash; {product.priceLabel}
+        <h1 className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl">
+          {product.name} — {product.priceLabel}
         </h1>
-        <p className="type-body-lg mt-5 text-brand-ink-soft">
+        <p className="mt-3 text-base leading-relaxed text-brand-ink-soft">
           {product.oneLine}
         </p>
       </header>
@@ -92,110 +89,73 @@ export default async function CheckoutReviewPage({
         </div>
       )}
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:gap-12">
-        <section aria-labelledby="details">
-          <h2 id="details" className="type-h2 text-brand-ink">
-            What you&rsquo;re choosing
-          </h2>
-          <div className="mt-5 border-y border-brand-line">
-            <div className="grid gap-1 py-4 sm:grid-cols-[7rem_1fr] sm:gap-4">
-              <p className="font-medium text-brand-ink">Best for</p>
-              <p className="text-sm leading-relaxed text-brand-ink-soft">
-                {product.bestFor}
-              </p>
-            </div>
-            <dl>
-              {facts.map((fact) => (
-                <div
-                  key={fact.label}
-                  className="grid gap-1 border-t border-brand-line py-4 sm:grid-cols-[7rem_1fr] sm:gap-4"
-                >
-                  <dt className="font-medium text-brand-ink">
-                    {fact.label}
-                  </dt>
-                  <dd className="text-sm leading-relaxed text-brand-ink-soft">
-                    {fact.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </section>
-
-        <aside className="h-fit border border-brand-line bg-brand-paper-deep p-6">
-          <Kicker>Before payment</Kicker>
-
+      <aside className="h-fit max-w-md border border-brand-line bg-brand-paper-deep p-6">
+        <Kicker>Before payment</Kicker>
+        <h2 className="type-h3 mt-3 text-brand-ink">
+          {product.name} — {product.priceLabel}
+          {isReport || isDigital ? " plus applicable tax" : ""}
+        </h2>
+        <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
           {isDigital ? (
             <>
-              <h2 className="type-h3 mt-3 text-brand-ink">
-                Instant download after checkout.
-              </h2>
-              <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
-                <p>
-                  Stripe securely collects your payment details. After
-                  successful payment, you&rsquo;ll receive a secure download
-                  link by email — and right here on the confirmation page.
-                </p>
-                <p>
-                  Your download link works for {isDigitalDownload(product)
-                    ? product.redownloadDays
-                    : 30} days. Save the PDF somewhere safe.
-                </p>
-              </div>
+              <p>
+                Stripe securely collects your payment details. After
+                successful payment, you&rsquo;ll receive a secure download
+                link by email — and right here on the confirmation page.
+              </p>
+              <p>
+                Your download link works for {isDigitalDownload(product)
+                  ? product.redownloadDays
+                  : 30} days. Save the PDF somewhere safe.
+              </p>
             </>
           ) : (
             <>
-              <h2 className="type-h3 mt-3 text-brand-ink">
-                Your report generates the moment you pay.
-              </h2>
-              <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
-                <p>
-                  Stripe collects your payment details and asks for the birth
-                  date your Blueprint should be built from.
-                </p>
-                {birthdate ? (
-                  <p>
-                    Birth date from the calculator will be prefilled at Stripe
-                    Checkout as{" "}
-                    <span className="font-medium text-brand-ink">{birthdate}</span>.
-                    You can still edit it before paying.
-                  </p>
-                ) : (
-                  <p>
-                    After payment, your personalized report opens immediately on
-                    the confirmation page, and a return link is emailed to you.
-                    No phone call, no waiting.
-                  </p>
-                )}
-                {birthdate ? (
-                  <p>
-                    After payment, your personalized report opens immediately on
-                    the confirmation page, and a return link is emailed to you.
-                    No phone call, no waiting.
-                  </p>
-                ) : null}
-              </div>
+              <p>
+                Stripe collects payment and the birth date your Blueprint
+                should be built from. If you came from the calculator, that
+                date is kept in this browser tab — never in the address bar.
+              </p>
+              <p>
+                After payment, the written report opens immediately on the
+                confirmation page, and a return link is emailed to you.
+              </p>
             </>
           )}
-
-          {unavailable ? (
-            <p className="mt-6 border-t border-brand-line pt-4 text-center text-sm font-semibold text-brand-ink">
-              Checkout closed
-            </p>
-          ) : (
-            <CheckoutContinueForm
-              slug={product.slug}
-              priceLabel={product.priceLabel}
-              birthdate={birthdate || undefined}
-            />
-          )}
-          <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
-            {unavailable
-              ? "No payment is being collected."
-              : "One-time payment. No automatic renewal."}
+          <p>
+            Wrong date, duplicate charge, or a failed delivery: we correct or
+            refund. See the{" "}
+            <Link href="/refund-policy" className="editorial-link text-brand-ink">
+              refund policy
+            </Link>
+            .
           </p>
-        </aside>
-      </div>
+        </div>
+
+        {unavailable ? (
+          <p className="mt-6 border-t border-brand-line pt-4 text-center text-sm font-semibold text-brand-ink">
+            Checkout closed
+          </p>
+        ) : (
+          <CheckoutContinueForm
+            slug={product.slug}
+            priceLabel={product.priceLabel}
+          />
+        )}
+        <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
+          {unavailable
+            ? "No payment is being collected."
+            : "One-time payment. No automatic renewal. Plus applicable tax."}
+        </p>
+        <dl className="mt-6 border-t border-brand-line pt-4 text-xs leading-relaxed text-brand-ink-soft">
+          {facts.slice(0, 3).map((fact) => (
+            <div key={fact.label} className="mt-2 grid grid-cols-[6rem_1fr] gap-2">
+              <dt className="font-medium text-brand-ink">{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </aside>
 
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
@@ -209,6 +169,6 @@ export default async function CheckoutReviewPage({
           </Link>
         )}
       </p>
-    </SeoShell>
+    </CheckoutShell>
   );
 }

@@ -13,7 +13,25 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
   "/blog/what-cardology-is-and-is-not": "/what-is-cardology",
+  "/blog/reading-your-yearly-spread": "/52-day-period-meaning-tool",
+  "/blog/why-some-birth-cards-clash": "/cardology-compatibility",
 };
+
+const SENSITIVE_QUERY_KEYS = new Set([
+  "bd",
+  "dob",
+  "birthdate",
+  "birth_date",
+  "email",
+]);
+
+const WORKER_SLASH_PREFIXES = ["/born-on", "/compatibility"];
+
+function isWorkerDirectory(pathname: string): boolean {
+  return WORKER_SLASH_PREFIXES.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+}
 
 // Canonical host enforcement: 301 any www.* request to the apex domain,
 // preserving path and query. Everything else passes through with a shared
@@ -28,16 +46,35 @@ export function middleware(request: NextRequest) {
     shouldRedirect = true;
   }
 
-  const retiredDestination = RETIRED_PUBLIC_REDIRECTS[request.nextUrl.pathname];
+  const rawPath = request.nextUrl.pathname;
+  let pathname = rawPath;
+  if (
+    pathname.length > 1 &&
+    pathname.endsWith("/") &&
+    !isWorkerDirectory(pathname)
+  ) {
+    pathname = pathname.replace(/\/+$/, "");
+    redirectUrl.pathname = pathname;
+    shouldRedirect = true;
+  }
+
+  const retiredDestination = RETIRED_PUBLIC_REDIRECTS[pathname];
   if (retiredDestination) {
     redirectUrl.pathname = retiredDestination;
     shouldRedirect = true;
   }
 
-  const cardDestination = legacyCardDestination(request.nextUrl.pathname);
+  const cardDestination = legacyCardDestination(pathname);
   if (cardDestination) {
     redirectUrl.pathname = cardDestination;
     shouldRedirect = true;
+  }
+
+  for (const key of [...redirectUrl.searchParams.keys()]) {
+    if (SENSITIVE_QUERY_KEYS.has(key.toLowerCase())) {
+      redirectUrl.searchParams.delete(key);
+      shouldRedirect = true;
+    }
   }
 
   if (shouldRedirect) {

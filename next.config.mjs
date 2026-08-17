@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  poweredByHeader: false,
   // NOTE: do not add headers() rules for pages here expecting them to reach
   // responses — the compiled middleware route in the build output has
   // override:true and wipes config-route headers for every path it matches

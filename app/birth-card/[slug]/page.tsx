@@ -116,6 +116,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       headline: `${card.label} Meaning: Birth Card & Readings`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
+      image: videos[0] ? youtubeThumbnail(videos[0].url) : `${SITE_URL}/og/default.png`,
     }),
     ...videos.map(videoJsonLd),
   ];
@@ -664,7 +665,17 @@ function faqJsonLd(faqs: { q: string; a: string }[]) {
   return { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
 }
 
-function articleJsonLd({ headline, description, url }: { headline: string; description: string; url: string }) {
+function articleJsonLd({
+  headline,
+  description,
+  url,
+  image,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  image?: string;
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -672,7 +683,7 @@ function articleJsonLd({ headline, description, url }: { headline: string; descr
     headline,
     description,
     url,
-    image: `${SITE_URL}/og/default.png`,
+    image: image || `${SITE_URL}/og/default.png`,
     datePublished: SEO_UPDATED,
     dateModified: SEO_UPDATED,
     articleSection: "Cardology birth card meanings",

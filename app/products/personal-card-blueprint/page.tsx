@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient";
+import { ProductComparison } from "@/components/products/ProductComparison";
 
 import { BlueprintReportView } from "@/components/blueprint/BlueprintReportView";
 import { SiteFooter } from "@/components/seo/SiteFooter";
@@ -18,9 +19,9 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
-const TITLE = "Personal Card Blueprint ($13): The pattern, written down";
+const TITLE = "Personal Card Blueprint ($13): Instant written report";
 const DESCRIPTION =
-  "Your birth-card pattern, ruling layer, and current chapter — a written Cardology report delivered instantly after checkout. Not a horoscope. Preview a sample.";
+  "Instant personalized written Cardology report: birth card, ruling card, and current 52-day period. $13 one time. Preview a sample.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -80,7 +81,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What is a Personal Card Blueprint?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "An instant written Cardology report: birth card, ruling layer, this year's bit in the deck, and three reflection prompts. A written pattern of the playing-card archetype; not a psychic prediction.",
+                  text: "An instant written Cardology report: birth card, ruling card, current 52-day period, and three reflection prompts. A written pattern of the playing-card archetype; not a psychic prediction.",
                 },
               },
               {
@@ -88,7 +89,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What do I actually get?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "You get an instant written report (birth card, ruling layer, deck-season bit, prompts) plus an emailed return link. Direct, specific, and usable as a reflection — not a roast and not a horoscope. Not a psychic prediction.",
+                  text: "You get an instant written report (birth card, ruling card, current 52-day period, prompts) plus an emailed return link. Direct, specific, and usable as a reflection — not a roast and not a horoscope. Not a psychic prediction.",
                 },
               },
               {
@@ -96,7 +97,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "How is this different from the free birth card calculator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Free calculator: card name. Blueprint: the full written pattern, this year's bit in the deck, and prompts. Same engine; entertainment only — not a psychic prediction.",
+                  text: "Free calculator: card name. Blueprint: the full written pattern, your current 52-day period, and prompts. Same engine; entertainment only — not a psychic prediction.",
                 },
               },
               {
@@ -115,26 +116,22 @@ export default function PersonalCardBlueprintPage() {
       <main id="main-content" tabIndex={-1}>
         <section className="shell-paper relative overflow-hidden">
           <BlueprintAmbient variant="blueprint" tone="paper" />
-          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-[clamp(4rem,8vw,6rem)] pt-[clamp(3.25rem,7vw,5.5rem)] sm:px-8 lg:px-10">
-            <div className="max-w-[54rem]">
+          <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-10 pt-8 sm:px-8 sm:pb-14 sm:pt-10 lg:px-10">
+            <div className="max-w-[40rem]">
               <Kicker className="rise">
-                Personal Card Blueprint &middot; {offer.priceLabel} &middot; instant
+                Instant personalized written Cardology report
               </Kicker>
-              <h1 className="type-display rise-2 mt-6">
-                The pattern you already run, written down. Strengths, blind spots, current chapter.
+              <h1 className="mt-4 font-serif text-[2rem] leading-[1.12] text-brand-ink sm:text-4xl lg:text-5xl">
+                Your birth card, ruling card, and current 52-day period — written down.
               </h1>
-              <p className="type-body-lg rise-3 mt-7 max-w-[36em] text-brand-ink-soft">
-                {offer.oneLine} Enter a birth date at checkout; the written
-                Blueprint lands the second payment clears — no phone call, no
-                appointment, no waiting.
+              <p className="mt-4 text-base leading-relaxed text-brand-ink-soft">
+                A one-page-plus written report from one birth date. Instant
+                access after checkout. No subscription, no phone call.
               </p>
-              <p className="rise-3 mt-4 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-                A written mirror of the pattern: strengths, blind spots, and the
-                chapter you are in. Entertainment only — not medical, legal, or
-                financial advice. Free calculator first if you only want the
-                card name.
+              <p className="mt-2 text-sm font-medium text-brand-ink">
+                {offer.priceLabel} one time · instant access · no subscription · plus applicable tax
               </p>
-              <div className="rise-4 mt-9 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <LinkButton href={`/checkout/${offer.slug}`} variant="accent" size="large">
                   {offer.cta}
                 </LinkButton>
@@ -142,9 +139,10 @@ export default function PersonalCardBlueprintPage() {
                   Preview a sample report
                 </LinkButton>
               </div>
-              <p className="rise-4 mt-5 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
-                One-time payment &middot; generated from the deterministic
-                Cardology calculation &middot; emailed return link included
+              <p className="mt-4 max-w-[38em] text-sm leading-relaxed text-brand-ink-soft">
+                Secure Stripe checkout. Wrong date or failed delivery: we
+                correct or refund. Birth dates stay in this browser tab — never
+                in the checkout URL.
               </p>
             </div>
           </div>
@@ -163,19 +161,19 @@ export default function PersonalCardBlueprintPage() {
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
-                <h2 className="type-h3">Your ruling layer</h2>
+                <h2 className="type-h3">Your ruling card</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  The ruling-layer card in the deck — the style your core
-                  pattern expresses through, and how others first experience
-                  you. Deck language, not a sky chart.
+                  The ruling card is the style your core pattern expresses
+                  through, and how others first experience you. Deck language,
+                  not a sky chart.
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
-                <h2 className="type-h3">This year&rsquo;s bit in the deck</h2>
+                <h2 className="type-h3">Your current 52-day period</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  The card&rsquo;s season right now — the governing card for
-                  this stretch of the calendar map, and how that bit plays when
-                  it&rsquo;s loud or quiet. Entertainment structure, not fate.
+                  The card season you are in now — the governing card for this
+                  stretch of the calendar map, and how that period plays when
+                  it is loud or quiet. Entertainment structure, not fate.
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
@@ -203,6 +201,8 @@ export default function PersonalCardBlueprintPage() {
               </dl>
             </div>
 
+            <ProductComparison />
+
             <div className="mt-10 text-center">
               <LinkButton href={`/checkout/${offer.slug}`} variant="accent" size="large">
                 {offer.cta}
@@ -228,15 +228,15 @@ export default function PersonalCardBlueprintPage() {
               {[
                 {
                   q: "What is a Personal Card Blueprint?",
-                  a: "An instant written Cardology report from a birthday: birth card and ruling layer in plain language, this year's bit in the deck, and three reflection prompts — same engine as the free calculator. A written pattern of the playing-card archetype, not a psychic prediction.",
+                  a: "An instant written Cardology report from a birthday: birth card and ruling card in plain language, your current 52-day period, and three reflection prompts — same engine as the free calculator. A written pattern of the playing-card archetype, not a psychic prediction.",
                 },
                 {
                   q: "What do I actually get?",
-                  a: "You get a one-time personalized written report plus an emailed return link: pattern, ruling layer, deck-season bit, prompts. Direct enough to use as a reflection. Never body, trauma, job, or fate. Entertainment only; not a psychic prediction.",
+                  a: "You get a one-time personalized written report plus an emailed return link: pattern, ruling card, current 52-day period, prompts. Direct enough to use as a reflection. Never body, trauma, job, or fate. Entertainment only; not a psychic prediction.",
                 },
                 {
                   q: "How is this different from the free birth card calculator?",
-                  a: "Free calculator: the card name (and ruling card). Blueprint: the locked written layers — pattern, this year's bit in the deck, prompts — as a report you can reopen. Same calendar math; still entertainment, not a psychic prediction.",
+                  a: "Free calculator: the card name (and ruling card). Blueprint: the locked written layers — pattern, current 52-day period, prompts — as a report you can reopen. Same calendar math; still entertainment, not a psychic prediction.",
                 },
                 {
                   q: "Is this tarot or AI fortune-telling?",

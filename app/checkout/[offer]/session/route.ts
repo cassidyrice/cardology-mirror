@@ -110,9 +110,7 @@ export async function POST(
       mode: "payment",
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${SITE_URL}/checkout/${product.slug}${
-        formBirthdate ? `?bd=${encodeURIComponent(formBirthdate)}` : ""
-      }`,
+      cancel_url: `${SITE_URL}/checkout/${product.slug}`,
       metadata: sharedMeta,
       payment_intent_data: { metadata },
       branding_settings: {

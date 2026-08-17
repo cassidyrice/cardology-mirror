@@ -80,6 +80,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
         <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-line pt-5 text-xs">
           <Link href="/contact" className="hover:text-brand-ink">Contact</Link>
           <Link href="/privacy-policy" className="hover:text-brand-ink">Privacy Policy</Link>
+          <Link href="/privacy-policy#privacy-choices" className="hover:text-brand-ink">Privacy choices</Link>
           <Link href="/terms-of-service" className="hover:text-brand-ink">Terms of Service</Link>
           <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
         </div>

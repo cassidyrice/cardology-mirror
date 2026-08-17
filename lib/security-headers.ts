@@ -4,21 +4,29 @@
 // measured CSP pass later so we don't brick payment.
 
 export const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
-  // Force HTTPS for a year once a browser has seen us over TLS.
   ["Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload"],
-  // Stop clickjacking of checkout / access pages.
   ["X-Frame-Options", "DENY"],
-  // Don't let browsers MIME-sniff away from declared content types.
   ["X-Content-Type-Options", "nosniff"],
-  // Send origin on cross-origin navigations; full URL only same-origin.
   ["Referrer-Policy", "strict-origin-when-cross-origin"],
-  // Lock down powerful browser APIs we never use.
   ["Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()"],
-  // Older XSS filter hint (harmless; modern browsers ignore).
   ["X-XSS-Protection", "0"],
-  // Reduce cross-origin leakage of window / resources.
   ["Cross-Origin-Opener-Policy", "same-origin-allow-popups"],
   ["Cross-Origin-Resource-Policy", "same-site"],
+  [
+    "Content-Security-Policy-Report-Only",
+    [
+      "default-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "frame-ancestors 'none'",
+      "form-action 'self' https://checkout.stripe.com https://buttondown.com https://buttondown.email",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com",
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://challenges.cloudflare.com",
+      "img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://www.google-analytics.com https://www.googletagmanager.com",
+      "frame-src https://challenges.cloudflare.com https://js.stripe.com https://hooks.stripe.com",
+      "style-src 'self' 'unsafe-inline'",
+    ].join("; "),
+  ],
 ];
 
 export function applySecurityHeaders(headers: Headers): void {

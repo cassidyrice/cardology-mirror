@@ -13,7 +13,7 @@ export function FreeCourseCta({
     return (
       <div className={`grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center ${className}`}>
         <div className="max-w-2xl">
-          <p className="oracle-eyebrow text-brand-bronze">Free four-part course</p>
+          <p className="oracle-eyebrow oracle-eyebrow-on-ink">Free four-part course</p>
           <h2 className="type-h2 mt-4 text-brand-on-dark">Read Your Birth Card</h2>
           <p className="mt-4 max-w-[42rem] leading-relaxed text-brand-on-dark-soft">
             Learn the 52-card pattern language in about 14 minutes: find your card, read rank plus suit,

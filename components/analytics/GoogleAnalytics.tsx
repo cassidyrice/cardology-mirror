@@ -8,6 +8,7 @@ import {
   sanitizeGaPageLocation,
   type GaEventParams,
 } from "@/lib/ga4";
+import { readPrivacyConsent } from "@/lib/consent";
 
 declare global {
   interface Window {
@@ -21,11 +22,10 @@ export function GaPageViews() {
 
   useEffect(() => {
     const sendPageView = () => {
+      if (readPrivacyConsent() !== "granted") return false;
       if (typeof window.gtag !== "function") return false;
 
-      const page = sanitizeGaPageLocation(
-        window.location.pathname + window.location.search,
-      );
+      const page = sanitizeGaPageLocation(window.location.pathname);
       if (!page || page === lastPage.current) return false;
 
       lastPage.current = page;
@@ -54,6 +54,7 @@ export function GaPageViews() {
 }
 
 export function sendGaEvent(name: string, params: GaEventParams = {}) {
+  if (readPrivacyConsent() !== "granted") return;
   if (typeof window.gtag === "function") {
     window.gtag("event", name, sanitizeGaEventParams(params));
   }
