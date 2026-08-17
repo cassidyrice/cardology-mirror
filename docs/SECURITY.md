@@ -33,7 +33,7 @@ Never run plain `wrangler pages deploy` from a feature branch if you mean produc
 
 1. **SSL/TLS** → Full (strict), Always Use HTTPS on  
 2. **Security → WAF** → managed rules on  
-3. **Security → Bots** → Bot Fight Mode on (watch calculator false positives)  
+3. **Security → Bots** → Bot Fight Mode **off** and JS Detections **off** (2026-08-17). Zone-wide `/cdn-cgi/challenge-platform/scripts/jsd/main.js` was the main-thread TBT hit. Replacement: custom WAF managed challenge on `/checkout*` and `/api/session*` when `cf.threat_score gt 14`. Do not re-enable BFM on Free — it re-locks JSD on every HTML page.  
 4. **Security → WAF → Rate limiting rules** (recommended hard limits):
    - `/api/*` — 60 requests / minute / IP  
    - `/api/gate` — 10 requests / 10 minutes / IP  
