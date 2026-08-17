@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
+import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
     "@type": "AboutPage",
     name: "About Card Blueprints",
     url: `${SITE_URL}/about`,
-    dateModified: "2026-08-16",
+    dateModified: "2026-08-17",
     about: {
       "@type": "Thing",
       name: "Cardology",
@@ -42,6 +42,7 @@ export default function AboutPage() {
     name: "Cassidy Rice",
     jobTitle: "Founder",
     url: `${SITE_URL}/about`,
+    email: CONTACT_EMAIL,
     worksFor: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -60,7 +61,7 @@ export default function AboutPage() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">Updated August 16, 2026</p>
+        <p className="mt-3 text-sm text-[#5b5148]">Updated August 17, 2026</p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
@@ -111,11 +112,66 @@ export default function AboutPage() {
           — and refusing fortune-telling claims that the math cannot support.
         </p>
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
-          Corrections and questions are welcome through the{" "}
+          Corrections and questions are welcome at{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+            {CONTACT_EMAIL}
+          </a>{" "}
+          or through the{" "}
           <Link href="/contact" className="underline">
             contact page
           </Link>
-          . Cardology is a lens for self-awareness — it describes patterns, not fate.
+          . Purchase support is answered within {CONTACT_RESPONSE}. Cardology is
+          a lens for self-awareness — it describes patterns, not fate.
+        </p>
+      </section>
+
+      <section className="mt-12 max-w-3xl space-y-5">
+        <h2 className="font-serif text-3xl text-[#14110d]">Business identity</h2>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Card Blueprints is an online publisher of Cardology tools and written
+          reports at {SITE_URL.replace("https://", "")}. It is not a clinic,
+          church, licensed counseling practice, or accredited school. Cassidy
+          Rice is the founder and the named author of the public method. There
+          is no staff of readers behind the calculator.
+        </p>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Public mail is{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
+            {CONTACT_EMAIL}
+          </a>
+          . Expect a reply within {CONTACT_RESPONSE} for purchase, refund, and
+          delivery issues. Editorial corrections are logged on the{" "}
+          <Link href="/editorial-policy" className="underline">
+            editorial policy
+          </Link>{" "}
+          page when a page changes.
+        </p>
+      </section>
+
+      <section className="mt-12 max-w-3xl space-y-5">
+        <h2 className="font-serif text-3xl text-[#14110d]">Named sources</h2>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          Card Blueprints did not invent the deck-to-calendar idea. The lineage
+          we name in public is Olney Richmond&rsquo;s{" "}
+          <em>The Mystic Test Book</em> (1893), later work by Florence Campbell
+          and Edith Randall, and contemporary Destiny Cards / Love Cards /
+          Science of the Cards teaching associated with Robert Lee Camp. Chart
+          footnotes can differ by teacher. When two tools disagree, use the{" "}
+          <Link href="/methodology" className="underline">
+            published formula
+          </Link>{" "}
+          and the 366-row map.
+        </p>
+        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+          See the synonym map on{" "}
+          <Link href="/destiny-cards" className="underline">
+            Destiny Cards
+          </Link>{" "}
+          and the history note on{" "}
+          <Link href="/what-is-cardology" className="underline">
+            What is Cardology
+          </Link>
+          .
         </p>
       </section>
 

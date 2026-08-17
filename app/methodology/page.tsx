@@ -29,7 +29,7 @@ export default function MethodologyPage() {
     headline: "Card Blueprints Methodology",
     description: metadata.description,
     url: `${SITE_URL}/methodology`,
-    dateModified: "2026-08-16",
+    dateModified: "2026-08-17",
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/methodology`,
@@ -63,7 +63,7 @@ export default function MethodologyPage() {
           How a birthday becomes a card, and how the card becomes a reading.
         </h1>
         <p className="mt-3 text-sm text-[#5b5148]">
-          By Cassidy Rice · Updated August 16, 2026 ·{" "}
+          By Cassidy Rice · Updated August 17, 2026 ·{" "}
           <Link href="/editorial-policy" className="underline">
             Editorial policy
           </Link>
@@ -134,6 +134,54 @@ export default function MethodologyPage() {
           . If two tools disagree on the same system rules, trust the one you can audit —
           and tell us on the contact page.
         </p>
+      </section>
+
+      <section className="mt-12 max-w-3xl" id="birth-card-formula">
+        <h2 className="font-serif text-3xl text-[#14110d]">Birth-card formula</h2>
+        <p className="mt-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+          The live calculator uses this mapping. You can check the math by hand,
+          then confirm the card in the 366-row CSV. Year is not used for the
+          birth card. Paid books teach permutation history, yearly spreads, and
+          interpretation. They do not change this public formula.
+        </p>
+        <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+          <li>
+            <strong>Solar value.</strong>{" "}
+            <code>sv = 55 − (2 × month + day)</code>
+          </li>
+          <li>
+            <strong>Wrap.</strong> If <code>sv</code> is 0 or less, add 52.
+          </li>
+          <li>
+            <strong>Lookup.</strong> Map <code>sv</code> through the fixed 52-card
+            solar table. The CSV is the complete table.
+          </li>
+          <li>
+            <strong>Public exception.</strong> December 31 is the Joker (solar
+            value 0). The wrap would otherwise collide with January 1 (King of
+            Spades). We do not force December 31 into a standard 52-card result.
+          </li>
+        </ol>
+        <h3 className="mt-8 font-serif text-2xl text-[#14110d]">Exception rules</h3>
+        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-[#3d352d]">
+          <li>
+            February 29 maps normally to the 9 of Clubs. Leap day is in the
+            table, not skipped.
+          </li>
+          <li>December 31 is the Joker boundary, not King of Spades.</li>
+          <li>Invalid calendar dates are rejected. They are not remapped.</li>
+        </ul>
+        <h3 className="mt-8 font-serif text-2xl text-[#14110d]">Version history</h3>
+        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-[#3d352d]">
+          <li>
+            <strong>2026-08-15</strong> — Dataset version 2026-08-15. Full
+            366-row CSV published.
+          </li>
+          <li>
+            <strong>2026-08-17</strong> — Formula, exception rules, and test
+            vectors published on this page. Birth-card results unchanged.
+          </li>
+        </ul>
       </section>
 
       <section
@@ -223,9 +271,15 @@ export default function MethodologyPage() {
           the same birth card. Check these known rows against the calculator:
         </p>
         <ul className="list-disc space-y-2 pl-6 text-base">
-          <li>January 15 → Queen of Diamonds</li>
-          <li>February 29 → 9 of Clubs (leap-day row)</li>
-          <li>December 31 → Joker (year-end boundary)</li>
+          <li>January 1 → King of Spades (solar 52)</li>
+          <li>January 15 → Queen of Diamonds (solar 38)</li>
+          <li>February 29 → 9 of Clubs (leap-day row, solar 22)</li>
+          <li>March 21 → 2 of Diamonds (solar 28)</li>
+          <li>July 4 → Jack of Diamonds (solar 37)</li>
+          <li>October 31 → 4 of Hearts (solar 4)</li>
+          <li>December 25 → 6 of Hearts (solar 6)</li>
+          <li>December 30 → Ace of Hearts (solar 1)</li>
+          <li>December 31 → Joker (year-end boundary; public override)</li>
         </ul>
         <p>
           Dataset version is dated on this page. If a mapping is wrong, email{" "}

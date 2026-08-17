@@ -12,7 +12,7 @@ const CARD_MEANINGS_UPDATED = "2026-08-15";
 
 const ROUTE_UPDATED: Record<string, string> = {
   "/": "2026-08-16",
-  "/about": "2026-08-16",
+  "/about": "2026-08-17",
   "/videos": "2026-07-29",
   "/birth-card": "2026-08-16",
   "/birth-card/joker": "2026-08-15",
@@ -38,9 +38,9 @@ const ROUTE_UPDATED: Record<string, string> = {
   "/52-card-astrology-explained": "2026-08-16",
   "/birth-card-vs-ruling-card": "2026-08-15",
   "/planetary-ruling-card": "2026-08-15",
-  "/methodology": "2026-08-16",
+  "/methodology": "2026-08-17",
   "/editorial-policy": "2026-08-06",
-  "/contact": "2026-08-12",
+  "/contact": "2026-08-17",
   "/shadow-karma-guide": "2026-07-02",
   "/privacy-policy": "2026-08-12",
   "/refund-policy": "2026-08-12",

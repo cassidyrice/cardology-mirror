@@ -12,7 +12,8 @@ export const APP_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Card Blueprints";
-export const CONTACT_EMAIL = "therealcassrice@gmail.com";
+export const CONTACT_EMAIL = "hello@cardblueprints.com";
+export const CONTACT_RESPONSE = "two business days";
 
 export const VIDEO_URL = (
   process.env.NEXT_PUBLIC_VIDEO_URL || `${SITE_URL}/videos`

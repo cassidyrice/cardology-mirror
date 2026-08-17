@@ -6,7 +6,7 @@ import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsB
 import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
 import { merchantReturnPolicy } from "@/lib/product-schema";
-import { SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
 // Geometric sans for the brand wordmark only (--font-logo in globals.css).
 const logoFont = Montserrat({
@@ -82,6 +82,13 @@ export default function RootLayout({
         url: SITE_URL,
         logo: { "@type": "ImageObject", url: `${SITE_URL}/og/default.png` },
         description: SITE_TAGLINE,
+        email: CONTACT_EMAIL,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer support",
+          email: CONTACT_EMAIL,
+          url: `${SITE_URL}/contact`,
+        },
         publishingPrinciples: `${SITE_URL}/editorial-policy`,
         // Full return-policy object lives here for Organization identity.
         // Product/Offer markup belongs only on /products/* pages — global

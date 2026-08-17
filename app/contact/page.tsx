@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
-import { CONTACT_EMAIL, SITE_URL, VIDEO_URL } from "@/lib/site";
+import { CONTACT_EMAIL, CONTACT_RESPONSE, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
@@ -50,7 +50,8 @@ export default function ContactPage() {
         <p className="mt-3 max-w-[42rem] text-base leading-relaxed text-brand-ink-soft">
           For purchase support, include the purchase email, offer name, and
           what happened. Never send payment card details. For a correction,
-          include the page URL and the passage in question.
+          include the page URL and the passage in question. We answer purchase,
+          refund, and delivery mail within {CONTACT_RESPONSE}.
         </p>
         <LinkButton href={`mailto:${CONTACT_EMAIL}`} variant="primary" size="large" className="mt-5">
           Email {CONTACT_EMAIL}
