@@ -26,7 +26,7 @@ export function SiteHeader() {
           </Link>
           <nav
             aria-label="Primary"
-            className="hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft lg:flex lg:gap-6"
+            className="hidden items-center gap-5 text-[0.92rem] font-medium tracking-normal text-brand-ink-soft lg:flex"
           >
             {NAV_LINKS.map((link) => (
               <Link

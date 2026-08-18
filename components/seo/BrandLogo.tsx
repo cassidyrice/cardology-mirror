@@ -1,9 +1,8 @@
 import { SITE_NAME } from "@/lib/site";
 
 /**
- * Brand lockup: plexus-network mark (oxblood) + lowercase geometric-sans
- * wordmark "card blueprint" (ink), adapted from the approved logo concept
- * to the warm-paper palette. Used in SiteHeader and SiteFooter.
+ * Brand lockup: plexus mark + "Card Blueprints" wordmark.
+ * Visual name must stay two words to match SITE_NAME and SEO titles.
  */
 export function BrandLogo({ compact = false }: { compact?: boolean }) {
   return (
@@ -33,7 +32,7 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
         </g>
       </svg>
       <span className="brand-logo-wordmark" aria-hidden="true">
-        card blueprint
+        Card Blueprints
       </span>
     </span>
   );
