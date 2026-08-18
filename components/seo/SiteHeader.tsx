@@ -1,22 +1,17 @@
 import Link from "next/link";
 
-import { instantReportBySlug } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// One header for every marketing/editorial surface. Five destinations, no
-// more: Blueprint, Calculator, Compatibility, Card Meanings, Learn.
-// Long-tail navigation lives in the footer.
+// Season is the public front door. The complete SEO library remains in the
+// footer, so the header can stay focused without orphaning ranked routes.
 const NAV_LINKS = [
-  { label: "Blueprint", href: "/products/personal-card-blueprint" },
+  { label: "Your Season", href: "/season" },
   { label: "Calculator", href: "/birth-card-calculator" },
-  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
-  { label: "Card Meanings", href: "/birth-card" },
-  { label: "Learn", href: "/what-is-cardology" },
+  { label: "The Cards", href: "/birth-card" },
+  { label: "The System", href: "/what-is-cardology" },
+  { label: "About", href: "/about" },
 ];
-
-const blueprintOffer = instantReportBySlug("personal-card-blueprint");
-const blueprintCta = blueprintOffer?.cta ?? "Get My Blueprint — $13";
 
 export function SiteHeader() {
   return (
@@ -24,7 +19,7 @@ export function SiteHeader() {
       <a href="#main-content" className="skip-link">
         Skip to content
       </a>
-      <header className="relative z-10 border-b border-brand-line bg-brand-paper">
+      <header className="relative z-10 border-b border-brand-line bg-[rgba(7,6,14,0.9)] backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
           <Link href="/" className="text-brand-ink" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
@@ -37,19 +32,19 @@ export function SiteHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="whitespace-nowrap transition hover:text-brand-ink"
+                className="whitespace-nowrap transition duration-200 hover:text-brand-ink"
               >
                 {link.label}
               </Link>
               ))}
           </nav>
           <details className="relative ml-auto lg:hidden">
-            <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            <summary className="season-outline-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
             <nav
               aria-label="Mobile primary"
-              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-64 border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
+              className="glass absolute right-0 top-[calc(100%+0.5rem)] z-30 w-64 rounded-2xl p-4 shadow-[0_18px_50px_rgba(7,6,14,0.55)]"
             >
               <ul className="divide-y divide-brand-line text-sm text-brand-ink">
                 {NAV_LINKS.map((link) => (
@@ -60,16 +55,16 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
-              <Link href="/products/personal-card-blueprint" className="accent-button mt-4 w-full">
-                {blueprintCta}
+              <Link href="/season" className="season-primary-button mt-4 w-full">
+                Reveal My Cards
               </Link>
             </nav>
           </details>
           {/* Wait until lg to show the full desktop row so its five destinations
-              and paid CTA retain their natural widths. */}
+              and birthday CTA retain their natural widths. */}
           <div className="hidden lg:block">
-            <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
-              {blueprintCta}
+            <Link href="/season" className="season-primary-button shrink-0 whitespace-nowrap">
+              Reveal My Cards
             </Link>
           </div>
         </div>

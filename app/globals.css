@@ -3,38 +3,39 @@
 @tailwind utilities;
 
 :root {
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), "Iowan Old Style", "Georgia", serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Semantic brand tokens — the warm-paper atelier system. Marketing surfaces
-     read from these; the dark in-app screens keep their own Tailwind palette. */
-  --paper: #f6f1e8;
-  --paper-deep: #efe8dc;
-  --ivory: #fffcf7;
+  /* Season tokens. Legacy brand names stay as semantic aliases for this slice
+     so existing ranking templates can change house without changing copy. */
+  --void: #07060e;
+  --deep: #0d0b1e;
+  --nebula: #171333;
+  --iris: #7c5cff;
+  --aurora: #3ee6c4;
+  --flare: #ff5c8a;
+  --sol: #ffc45c;
+  --season-ink: #f2f0ff;
+  --season-mist: #9b94c4;
+  --season-faint: #4a4376;
 
-  --ink: #14110d;
-  --ink-soft: #5b5148;
-  --ink-faint: #756c61;
-
-  --line: rgba(20, 17, 13, 0.12);
-  --line-strong: rgba(20, 17, 13, 0.22);
-
-  /* Deeper than the #87662c the palette was specced at. That value clears AA
-     on flat paper (4.71:1) but not on the tinted quick-answer and callout
-     panels these eyebrows actually sit on, where it fell to 3.56–4.46:1. This
-     clears 4.5:1 on every light surface in use: paper 6.05, paper-deep 5.59,
-     ivory 6.65, and both panel tints. One value, no per-surface variant. */
-  --bronze: #735624;
-  --bronze-on-dark: #c4a05a;
-  --gold: #b8893d;
-  --gold-soft: rgba(184, 137, 61, 0.14);
-
-  --oxblood: #8e321f;
-  --oxblood-deep: #6f2618;
-
-  --on-dark: #f6f1e8;
-  --on-dark-soft: #c8bca8;
-  --on-dark-line: rgba(246, 241, 232, 0.16);
+  --paper: var(--void);
+  --paper-deep: var(--deep);
+  --ivory: var(--nebula);
+  --ink: var(--season-ink);
+  --ink-soft: var(--season-mist);
+  --ink-faint: #766fa3;
+  --line: rgba(124, 92, 255, 0.18);
+  --line-strong: rgba(124, 92, 255, 0.36);
+  --bronze: var(--sol);
+  --bronze-on-dark: var(--sol);
+  --gold: var(--sol);
+  --gold-soft: rgba(255, 196, 92, 0.14);
+  --oxblood: var(--iris);
+  --oxblood-deep: #6846ef;
+  --on-dark: var(--season-ink);
+  --on-dark-soft: var(--season-mist);
+  --on-dark-line: rgba(242, 240, 255, 0.16);
 
   /* Marketing type scale */
   --text-display: clamp(3rem, 6.5vw, 5.25rem);
@@ -46,11 +47,10 @@
   --text-eyebrow: 0.75rem;
 }
 
-/* Selection stays inside the warm palette on paper surfaces; dark in-app
-   screens keep the adaptive browser default. */
+/* Selection and focus follow the new iris/aurora night-sky system. */
 :where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper) ::selection {
-  background: rgba(184, 137, 61, 0.32);
-  color: #14110d;
+  background: rgba(124, 92, 255, 0.42);
+  color: var(--season-ink);
 }
 
 /* Visible focus rings per surface: oxblood on paper, paper on ink. Dark
@@ -58,7 +58,7 @@
    comes second so ink asides nested in paper shells resolve correctly. */
 :where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper)
   :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
-  outline: 2px solid var(--oxblood);
+  outline: 2px solid var(--aurora);
   outline-offset: 3px;
 }
 
@@ -74,8 +74,8 @@
 }
 
 html, body {
-  background-color: #05060a;
-  color: #f4f1ea;
+  background-color: var(--void);
+  color: var(--season-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -444,13 +444,14 @@ body {
 }
 
 .ink-button {
-  background: var(--ink);
-  color: var(--on-dark);
+  background: var(--iris);
+  border-color: var(--iris);
+  color: var(--void);
 }
 
 .ink-button:hover {
-  background: #2a241c;
-  border-color: #2a241c;
+  background: #947cff;
+  border-color: #947cff;
 }
 
 .accent-button {
@@ -465,14 +466,14 @@ body {
 }
 
 .paper-button {
-  background: transparent;
+  background: rgba(23, 19, 51, 0.5);
   border-color: var(--line-strong);
   color: var(--ink);
 }
 
 .paper-button:hover {
-  border-color: var(--ink);
-  background: rgba(20, 17, 13, 0.04);
+  border-color: var(--aurora);
+  background: rgba(34, 29, 71, 0.72);
 }
 
 /* Outline button that sits on the ink surface. */
@@ -595,7 +596,7 @@ body {
 }
 
 .shell-ink {
-  background: var(--ink);
+  background: var(--deep);
   color: var(--on-dark);
 }
 
@@ -628,16 +629,68 @@ body {
   }
 }
 
-/* Public article/app pages use the homepage editorial system. The overrides are
-   scoped so profile-first screens can keep their darker in-app mood. */
+/* Shared Season surfaces. Existing `paper-shell` names remain as visual
+   aliases for one slice so ranking templates keep their copy and structure. */
+.season-shell { isolation: isolate; }
+.season-aurora,
+.season-stars { position: fixed; inset: 0; pointer-events: none; }
+.season-aurora {
+  background:
+    radial-gradient(55% 45% at 92% 18%, rgba(62, 230, 196, 0.09), transparent 72%),
+    radial-gradient(48% 42% at 12% 4%, rgba(124, 92, 255, 0.22), transparent 72%);
+}
+.season-stars {
+  opacity: 0.42;
+  background-image:
+    radial-gradient(1px 1px at 14% 22%, rgba(242,240,255,0.7), transparent),
+    radial-gradient(1px 1px at 72% 16%, rgba(242,240,255,0.45), transparent),
+    radial-gradient(1px 1px at 88% 64%, rgba(62,230,196,0.45), transparent),
+    radial-gradient(1px 1px at 36% 78%, rgba(255,196,92,0.42), transparent);
+}
+.glass {
+  background: rgba(34, 29, 71, 0.74);
+  border: 1px solid rgba(124, 92, 255, 0.22);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.season-primary-button,
+.season-outline-button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), background 180ms ease, border-color 180ms ease;
+}
+.season-primary-button {
+  border: 1px solid var(--iris);
+  background: var(--iris);
+  color: var(--void);
+  box-shadow: 0 10px 30px rgba(124, 92, 255, 0.24);
+}
+.season-primary-button:hover { transform: translateY(-1px); background: #947cff; }
+.season-outline-button {
+  border: 1px solid var(--line-strong);
+  background: rgba(23, 19, 51, 0.66);
+  color: var(--season-ink);
+}
+.season-outline-button:hover { border-color: var(--aurora); }
+
 .paper-shell {
-  --paper: #f6f1e8;
-  --paper-deep: #efe8dc;
-  --paper-wash: #f1ead9;
-  --ink: #14110d;
-  --rust: var(--oxblood);
-  background-color: var(--paper);
-  color: var(--ink);
+  --paper: var(--void);
+  --paper-deep: var(--deep);
+  --paper-wash: var(--nebula);
+  --ink: var(--season-ink);
+  --rust: var(--flare);
+  background:
+    radial-gradient(80% 55% at 12% 0%, rgba(124, 92, 255, 0.18), transparent 68%),
+    var(--void);
+  color: var(--season-ink);
 }
 
 .paper-shell.starfield::before,
@@ -660,7 +713,7 @@ body {
 .paper-shell [class*="text-mist"],
 .paper-shell .text-faint,
 .paper-shell [class*="text-faint"] {
-  color: #5b5148 !important;
+  color: var(--season-mist) !important;
 }
 
 /* Legacy dark-palette label colors, remapped for paper. Bronze — not oxblood —
@@ -670,37 +723,65 @@ body {
 .paper-shell [class*="text-gold"],
 .paper-shell .text-ember,
 .paper-shell [class*="text-ember"] {
-  color: var(--bronze) !important;
+  color: var(--sol) !important;
 }
 
 /* Inline links that inherited a label color still need to read as links. */
 .paper-shell a.text-gold,
 .paper-shell a[class*="text-gold"] {
-  color: var(--oxblood) !important;
+  color: var(--aurora) !important;
 }
 
 .paper-shell .text-sage,
 .paper-shell .text-dusk {
-  color: #183f30 !important;
+  color: var(--aurora) !important;
 }
 
 .paper-shell .text-ink {
-  color: var(--paper) !important;
+  color: var(--season-ink) !important;
+}
+
+/* Hardcoded legacy hexes in ranking-page .tsx files (text-[#14110d],
+   bg-[#eadfcd], etc.) bypass CSS vars. Remap them to night-sky tokens
+   so H1s and body copy are visible on void without touching .tsx copy. */
+.paper-shell [class*="text-[#14110d]"] {
+  color: var(--season-ink) !important;
+}
+
+.paper-shell [class*="bg-[#eadfcd]"],
+.paper-shell [class*="bg-[#f4f0e7]"],
+.paper-shell [class*="bg-[#efe8dc]"],
+.paper-shell [class*="bg-[#fffaf0]"] {
+  background-color: rgba(23, 19, 51, 0.72) !important;
+}
+
+.paper-shell [class*="border-[#14110d]"] {
+  border-color: rgba(124, 92, 255, 0.22) !important;
+}
+
+/* Oxblood accent text stays visible as aurora on the night sky. */
+.paper-shell [class*="text-[#8e321f]"] {
+  color: var(--aurora) !important;
+}
+
+/* Legacy cream text on dark buttons — keep legible. */
+.paper-shell [class*="text-[#f4f0e7]"] {
+  color: var(--season-ink) !important;
 }
 
 .paper-shell .eyebrow {
-  color: rgba(20, 17, 13, 0.58);
+  color: var(--season-mist);
   font-weight: 700;
   letter-spacing: 0;
 }
 
 .paper-shell .prose-reading {
-  color: #4c4339;
+  color: #c9c5e3;
 }
 
 .paper-shell .prose-reading p,
 .paper-shell .prose-reading li {
-  color: #4c4339;
+  color: #c9c5e3;
 }
 
 .paper-shell .prose-reading em,
@@ -709,67 +790,64 @@ body {
 }
 
 .paper-shell .hairline {
-  border-color: rgba(20, 17, 13, 0.15);
+  border-color: rgba(124, 92, 255, 0.2);
 }
 
 .paper-shell .card-surface {
-  border: 1px solid rgba(20, 17, 13, 0.18);
-  border-radius: 0.25rem;
-  background:
-    linear-gradient(90deg, rgba(20, 17, 13, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(20, 17, 13, 0.035) 1px, transparent 1px),
-    rgba(244, 240, 231, 0.78);
-  background-size: 28px 28px, 28px 28px, auto;
-  box-shadow: 0 1.1rem 3rem rgba(20, 17, 13, 0.08);
-  backdrop-filter: none;
+  border: 1px solid rgba(124, 92, 255, 0.2);
+  border-radius: 1.25rem;
+  background: rgba(34, 29, 71, 0.55);
+  box-shadow: 0 1.1rem 3rem rgba(7, 6, 14, 0.3);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
 
 .paper-shell .card-frame {
-  border-color: rgba(20, 17, 13, 0.25) !important;
-  background: rgba(244, 240, 231, 0.94) !important;
+  border-color: rgba(124, 92, 255, 0.28) !important;
+  background: rgba(23, 19, 51, 0.9) !important;
 }
 
 .paper-shell .foil-text {
-  background: linear-gradient(135deg, var(--rust) 0%, #c77e63 48%, var(--gold) 100%);
+  background: linear-gradient(100deg, var(--season-ink) 22%, #b49cff 66%, var(--aurora));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
 }
 
 .paper-shell .bg-foil {
-  background: var(--ink) !important;
+  background: var(--iris) !important;
 }
 
 .paper-shell [class*="bg-gold"] {
-  background-color: rgba(158, 61, 36, 0.12) !important;
+  background-color: rgba(255, 196, 92, 0.14) !important;
 }
 
 .paper-shell [class*="border-white"],
 .paper-shell [class*="border-bone"],
 .paper-shell [class*="border-haze"],
 .paper-shell [class*="border-gold"] {
-  border-color: rgba(20, 17, 13, 0.16) !important;
+  border-color: rgba(124, 92, 255, 0.22) !important;
 }
 
 .paper-shell [class*="bg-void"],
 .paper-shell [class*="bg-haze"],
 .paper-shell [class*="bg-cosmos"],
 .paper-shell [class*="bg-white"] {
-  background-color: rgba(244, 240, 231, 0.68) !important;
+  background-color: rgba(23, 19, 51, 0.72) !important;
   background-image: none !important;
 }
 
 .paper-shell input,
 .paper-shell textarea,
 .paper-shell select {
-  border-color: rgba(20, 17, 13, 0.18) !important;
-  background: rgba(244, 240, 231, 0.9) !important;
+  border-color: rgba(124, 92, 255, 0.3) !important;
+  background: rgba(13, 11, 30, 0.88) !important;
   color: var(--ink) !important;
 }
 
 .paper-shell input::placeholder,
 .paper-shell textarea::placeholder {
-  color: rgba(20, 17, 13, 0.45) !important;
+  color: var(--season-mist) !important;
 }
 
 .paper-shell .rounded-2xl,
@@ -777,7 +855,7 @@ body {
 .paper-shell .rounded-lg,
 .paper-shell .rounded-3xl,
 .paper-shell .rounded-t-3xl {
-  border-radius: 0.25rem !important;
+  border-radius: 1rem !important;
 }
 
 /* Pill CTAs and chips inherited from the dark app read as SaaS on paper. Only
@@ -785,7 +863,7 @@ body {
    decorative dots and avatars keep their shape. */
 .paper-shell a.rounded-full,
 .paper-shell button.rounded-full {
-  border-radius: 0.25rem !important;
+  border-radius: 999px !important;
 }
 
 .paper-shell .app-paper-stage {

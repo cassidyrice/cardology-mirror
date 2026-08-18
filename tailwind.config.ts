@@ -9,7 +9,13 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#05060a",        // near-black base (Co-Star)
-        void: "#0a0b12",       // slightly raised surface
+        void: "#07060E",       // Season night-sky base
+        deep: "#0D0B1E",
+        nebula: "#171333",
+        iris: "#7C5CFF",
+        aurora: "#3EE6C4",
+        flare: "#FF5C8A",
+        sol: "#FFC45C",
         cosmos: "#111327",     // Pattern deep indigo
         haze: "#1a1c30",       // raised card
         bone: "#f4f1ea",       // warm off-white text
@@ -23,6 +29,18 @@ const config: Config = {
         diamonds: "#d9b26a",
         clubs: "#7fae8f",
         spades: "#7b6cf0",
+        season: {
+          void: "#07060E",
+          deep: "#0D0B1E",
+          nebula: "#171333",
+          iris: "#7C5CFF",
+          aurora: "#3EE6C4",
+          flare: "#FF5C8A",
+          sol: "#FFC45C",
+          ink: "#F2F0FF",
+          mist: "#9B94C4",
+          faint: "#4A4376",
+        },
         // Semantic marketing tokens (see :root in globals.css). Namespaced so
         // they never collide with the dark in-app palette above.
         brand: {
@@ -42,6 +60,9 @@ const config: Config = {
           "on-dark": "var(--on-dark)",
           "on-dark-soft": "var(--on-dark-soft)",
           "on-dark-line": "var(--on-dark-line)",
+          aurora: "var(--aurora)",
+          iris: "var(--iris)",
+          sol: "var(--sol)",
         },
       },
       fontFamily: {
@@ -53,6 +74,7 @@ const config: Config = {
       },
       backgroundImage: {
         "cosmic": "radial-gradient(120% 120% at 50% 0%, #1a1c3a 0%, #0a0b12 55%, #05060a 100%)",
+        "season-sky": "radial-gradient(85% 70% at 18% 5%, rgba(124,92,255,0.24) 0%, transparent 62%), radial-gradient(60% 55% at 88% 32%, rgba(62,230,196,0.10) 0%, transparent 66%), #07060E",
         "foil": "linear-gradient(135deg, #d9b26a 0%, #f4e3b8 45%, #b8893f 100%)",
       },
       keyframes: {

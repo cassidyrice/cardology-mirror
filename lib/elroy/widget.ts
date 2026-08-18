@@ -15,6 +15,7 @@ const EXCLUDED_PREFIXES = [
 
 const MOBILE_TEASER_PROTECTED_PATHS = new Set([
   "/",
+  "/season",
   "/birth-card-calculator",
   "/birth-card-compatibility-calculator",
   "/products/complete-card-blueprint",
@@ -36,6 +37,14 @@ export function shouldScheduleElroyTeaser(
   const path = (pathname.split(/[?#]/)[0] || "/").replace(/\/+$/, "") || "/";
   if (!isElroyEligiblePath(path)) return false;
   return !(isSmallScreen && MOBILE_TEASER_PROTECTED_PATHS.has(path));
+}
+
+export function shouldRecedeElroyLauncher(
+  pathname: string,
+  isSmallScreen: boolean,
+): boolean {
+  const path = (pathname.split(/[?#]/)[0] || "/").replace(/\/+$/, "") || "/";
+  return isSmallScreen && MOBILE_TEASER_PROTECTED_PATHS.has(path);
 }
 
 type ElroyMediaQueryList = {

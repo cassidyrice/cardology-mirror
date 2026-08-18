@@ -8,8 +8,9 @@ import {
   serializeJsonLdForHtml,
 } from "@/lib/structured-data";
 
-// Shared content shell for public SEO pages. It borrows the homepage's
-// editorial paper/ink visual system while keeping article pages readable.
+// Shared content shell for public SEO pages. The legacy `paper-shell` class
+// now maps old page utilities into the Season night-sky visual system while
+// leaving every page's ranking copy and metadata untouched.
 // Header and footer are the shared site chrome (five destinations up top,
 // long-tail navigation below).
 export function SeoShell({
@@ -24,9 +25,9 @@ export function SeoShell({
   );
 
   return (
-    <div className="paper-shell landing-oracle relative min-h-dvh overflow-hidden bg-brand-paper text-brand-ink">
-      <div className="oracle-grid" aria-hidden="true" />
-      <div className="oracle-noise" aria-hidden="true" />
+    <div className="paper-shell season-shell relative min-h-dvh overflow-hidden bg-season-void text-season-ink">
+      <div className="season-aurora" aria-hidden="true" />
+      <div className="season-stars" aria-hidden="true" />
 
       <div className="relative z-20">
         <SiteHeader />

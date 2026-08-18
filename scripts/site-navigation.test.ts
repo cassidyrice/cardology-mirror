@@ -15,13 +15,15 @@ function occurrences(source: string, value: string): number {
   return source.split(value).length - 1;
 }
 
-test("shared header renders Compatibility in both primary navigation variants", () => {
+test("shared header makes Season the front door in both navigation variants", () => {
   const markup = renderToStaticMarkup(createElement(SiteHeader));
 
   expect(markup).toContain('aria-label="Primary"');
   expect(markup).toContain('aria-label="Mobile primary"');
-  expect(occurrences(markup, 'href="/birth-card-compatibility-calculator"')).toBe(2);
-  expect(occurrences(markup, ">Compatibility</a>")).toBe(2);
+  expect(occurrences(markup, 'href="/season"')).toBe(4);
+  expect(occurrences(markup, ">Your Season</a>")).toBe(2);
+  expect(occurrences(markup, ">Reveal My Cards</a>")).toBe(2);
+  expect(markup).not.toContain("Get My Blueprint");
 });
 
 test("bare footer renders the playing-card reading guide once", () => {

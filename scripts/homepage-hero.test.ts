@@ -62,7 +62,9 @@ describe("HomepageCalculatorHero contract", () => {
     expect(freePaths).toContain('href: "/birth-card-compatibility-calculator"');
     expect(home).toContain("<FreeCourseCta source=\"home\"");
     expect(layout).not.toContain("homepage-journey.css");
-    expect(header).toContain("$13");
+    expect(header).toContain("Reveal My Cards");
+    expect(header).toContain('href="/season"');
+    expect(header).not.toContain("$13");
     expect(header).not.toContain("$29");
     expect(footer).toContain("$13");
     expect(footer).not.toContain("$29");

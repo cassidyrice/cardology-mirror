@@ -34,8 +34,9 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
         </div>
         <div className="grid gap-10 sm:grid-cols-3">
           <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
+            <p className="mb-3 font-serif text-lg text-brand-ink">Season &amp; products</p>
             <ul className="space-y-2">
+              <li><Link href="/season" className="font-semibold text-brand-ink hover:text-brand-aurora">Read Your Season</Link></li>
               <li>
                 <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
                   Personal Card Blueprint — {blueprintPrice}
@@ -45,7 +46,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Free tools</p>
+            <p className="mb-3 font-serif text-lg text-brand-ink">Free tools</p>
             <ul className="space-y-2">
               <li><Link href="/birth-card-calculator" className="hover:text-brand-ink">Birth Card Calculator</Link></li>
               <li><Link href="/birth-card-compatibility-calculator" className="hover:text-brand-ink">Compatibility Calculator</Link></li>
@@ -57,7 +58,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
+            <p className="mb-3 font-serif text-lg text-brand-ink">Library</p>
             <ul className="space-y-2">
               <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — $17 e-book</Link></li>
               <li><Link href="/products/complete-card-blueprint" className="hover:text-brand-ink">The Complete Card Blueprint — $27 handbook</Link></li>

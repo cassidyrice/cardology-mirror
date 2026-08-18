@@ -8,6 +8,7 @@ import {
   observeElroySmallScreen,
   parseElroyBirthContext,
   readElroySuppression,
+  shouldRecedeElroyLauncher,
   shouldScheduleElroyTeaser,
   writeElroySuppression,
 } from "@/lib/elroy/widget";
@@ -58,6 +59,7 @@ export function ElroyLauncher() {
   }, []);
 
   const eligible = ready && isElroyEligiblePath(pathname) && !suppressed;
+  const launcherReceded = shouldRecedeElroyLauncher(pathname, isSmallScreen);
 
   useEffect(() => {
     if (
@@ -96,7 +98,7 @@ export function ElroyLauncher() {
   }
 
   return (
-    <div className="elroy-root">
+    <div className={`elroy-root${launcherReceded && !open ? " elroy-root--receded" : ""}`}>
       {teaser && !open ? (
         <div className="elroy-teaser" role="status">
           <p>Want the pattern behind your birth card?</p>

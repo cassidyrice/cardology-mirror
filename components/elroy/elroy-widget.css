@@ -4,16 +4,16 @@
   bottom: max(1rem, env(safe-area-inset-bottom));
   z-index: 60;
   font-family: inherit;
-  color: #14110d;
+  color: #f2f0ff;
 }
 
 .elroy-launcher {
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 999px;
-  border: 1px solid rgba(20, 17, 13, 0.18);
-  background: #f4efe6;
-  box-shadow: 0 10px 30px rgba(20, 17, 13, 0.16);
+  border: 1px solid rgba(124, 92, 255, 0.32);
+  background: rgba(23, 19, 51, 0.9);
+  box-shadow: 0 10px 30px rgba(7, 6, 14, 0.4);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -31,11 +31,11 @@
   right: 0;
   bottom: calc(100% + 0.65rem);
   width: min(18rem, calc(100vw - 2rem));
-  background: #fbf7ef;
-  border: 1px solid rgba(20, 17, 13, 0.14);
+  background: rgba(23, 19, 51, 0.96);
+  border: 1px solid rgba(124, 92, 255, 0.24);
   border-radius: 0.9rem;
   padding: 0.8rem 0.9rem;
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.14);
+  box-shadow: 0 12px 32px rgba(7, 6, 14, 0.42);
 }
 
 .elroy-teaser p {
@@ -220,6 +220,21 @@
   outline-offset: 2px;
 }
 
+.elroy-root--receded {
+  /* Move launcher out of the way of mobile conversion CTAs without unmounting. */
+  bottom: calc(100dvh - 3.5rem);
+  right: -1.5rem;
+  opacity: 0.5;
+  pointer-events: auto;
+  transition: bottom 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 320ms ease;
+}
+
+.elroy-root--receded:hover {
+  opacity: 1;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  right: max(1rem, env(safe-area-inset-right));
+}
+
 .elroy-live {
   position: absolute;
   width: 1px;
@@ -232,12 +247,22 @@
   .elroy-root {
     right: 0.75rem;
     left: auto;
-    bottom: max(1.5rem, env(safe-area-inset-bottom));
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+
+  .elroy-root.elroy-root--receded {
+    right: -1.5rem;
+    bottom: calc(100dvh - 3.5rem);
+    opacity: 0.5;
   }
 
   .elroy-launcher {
     margin-left: auto;
+    width: 2.75rem;
+    height: 2.75rem;
   }
+
+  .elroy-teaser { display: none; }
 
   .elroy-panel {
     inset: auto 0 max(0.75rem, env(safe-area-inset-bottom)) 0;

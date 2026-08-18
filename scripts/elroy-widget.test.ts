@@ -8,6 +8,7 @@ import {
   observeElroySmallScreen,
   parseElroyBirthContext,
   readElroySuppression,
+  shouldRecedeElroyLauncher,
   shouldScheduleElroyTeaser,
   writeElroySuppression,
   ELROY_SUPPRESSION_KEY,
@@ -130,6 +131,16 @@ describe("shouldScheduleElroyTeaser", () => {
       expect(shouldScheduleElroyTeaser(path, false)).toBe(false);
       expect(shouldScheduleElroyTeaser(path, true)).toBe(false);
     }
+  });
+});
+
+describe("shouldRecedeElroyLauncher", () => {
+  test("moves the launcher off mobile conversion CTAs without unmounting it", () => {
+    expect(shouldRecedeElroyLauncher("/", true)).toBe(true);
+    expect(shouldRecedeElroyLauncher("/birth-card-calculator?ref=home", true)).toBe(true);
+    expect(shouldRecedeElroyLauncher("/season", true)).toBe(true);
+    expect(shouldRecedeElroyLauncher("/season", false)).toBe(false);
+    expect(shouldRecedeElroyLauncher("/blog/how-to-use-cardology", true)).toBe(false);
   });
 });
 

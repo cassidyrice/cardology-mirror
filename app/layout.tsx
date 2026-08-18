@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
+import { Fraunces, Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
@@ -13,6 +13,18 @@ const logoFont = Montserrat({
   subsets: ["latin"],
   weight: "500",
   variable: "--font-logo",
+  display: "swap",
+});
+
+const serifFont = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const sansFont = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -62,7 +74,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05060a",
+  themeColor: "#07060E",
   width: "device-width",
   initialScale: 1,
 };
@@ -132,8 +144,8 @@ export default function RootLayout({
   const gaMeasurementId = resolveGaMeasurementId();
 
   return (
-    <html lang="en" className={logoFont.variable}>
-      <body className="bg-ink text-bone antialiased">
+    <html lang="en" className={`${logoFont.variable} ${serifFont.variable} ${sansFont.variable}`}>
+      <body className="bg-season-void text-season-ink antialiased">
         <GoogleAnalyticsBoundary measurementId={gaMeasurementId} />
         <AnalyticsCapture />
         {/* Literal tag instead of metadata `alternates.types`: React hoists
