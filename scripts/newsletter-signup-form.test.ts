@@ -30,9 +30,9 @@ test("newsletter form states the promise and privacy boundary", () => {
   expect(component).not.toContain("trackClientFunnelEvent");
 });
 
-test("newsletter form appears after calculator results", () => {
-  expect(calculator).toContain('source="calculator-result"');
-  expect(calculator).toContain("<NewsletterSignupForm");
+test("newsletter form is not a competing door on the calculator result", () => {
+  expect(calculator).not.toContain("<NewsletterSignupForm");
+  expect(calculator).not.toContain('source="calculator-result"');
 });
 
 test("newsletter form appears in methodology and the shared footer", () => {

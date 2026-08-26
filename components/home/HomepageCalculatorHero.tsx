@@ -8,6 +8,7 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
+import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { PlayingCard } from "@/components/PlayingCard";
 import {
   birthCardSlug,
@@ -153,21 +154,24 @@ export function HomepageCalculatorHero() {
                 )}
               </div>
 
-              <div className="mt-6 space-y-3">
-                {slug && cardLabel && (
-                  <Link
-                    href={`/birth-card/${slug}`}
-                    onClick={() =>
-                      trackClientFunnelEvent("card_meaning_clicked", {
-                        placement: RESULT_PLACEMENT,
-                      })
-                    }
-                    className="paper-button large-button flex w-full justify-center text-center"
-                  >
-                    Read the {cardLabel} meaning →
-                  </Link>
-                )}
-              </div>
+              <DeepDiveCta
+                placement={RESULT_PLACEMENT}
+                className="mx-auto mt-6"
+              />
+
+              {slug && cardLabel && (
+                <Link
+                  href={`/birth-card/${slug}`}
+                  onClick={() =>
+                    trackClientFunnelEvent("card_meaning_clicked", {
+                      placement: RESULT_PLACEMENT,
+                    })
+                  }
+                  className="editorial-link mt-5 block text-center text-sm text-brand-ink"
+                >
+                  Read the {cardLabel} meaning →
+                </Link>
+              )}
 
               <div className="mt-7 rounded-[3px] border border-brand-line bg-brand-paper p-5">
                 <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
@@ -182,19 +186,6 @@ export function HomepageCalculatorHero() {
                   surface="paper"
                 />
               </div>
-
-              <Link
-                href="/products/personal-card-blueprint"
-                onClick={() =>
-                  trackClientFunnelEvent("blueprint_clicked", {
-                    placement: RESULT_PLACEMENT,
-                    offerSlug: "personal-card-blueprint",
-                  })
-                }
-                className="editorial-link mt-6 block text-center text-sm text-brand-ink"
-              >
-                Get the complete Personal Blueprint · $13
-              </Link>
             </div>
           )}
         </div>

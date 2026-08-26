@@ -85,7 +85,7 @@ describe("HomepageCalculatorHero contract", () => {
       "Private calculation · result appears here",
       "Want to learn how to read your card?",
       'source="home-hero-result"',
-      "Get the complete Personal Blueprint · $13",
+      "<DeepDiveCta",
     ]) {
       expect(hero).toContain(text);
     }

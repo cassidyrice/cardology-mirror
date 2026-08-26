@@ -53,6 +53,7 @@ jobs:
             scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
             scripts/calculator-library-links.test.ts \
+            scripts/calculator-deep-dive.test.ts \
             scripts/site-navigation.test.ts \
             scripts/card-meaning-equity.test.ts \
             scripts/structured-data.test.ts \

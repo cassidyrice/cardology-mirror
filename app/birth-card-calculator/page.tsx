@@ -214,36 +214,14 @@ export default function CalculatorPage() {
         ))}
       </nav>
 
-      <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">
-          Got the card name. Want the written pattern?
-        </p>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
-          Personal Card Blueprint ($13): your birth-card pattern, ruling layer,
-          and this year&rsquo;s bit after checkout — written down so you can
-          see it. Entertainment only. Not a horoscope.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <Link
-            href="/products/personal-card-blueprint"
-            className="accent-button inline-flex min-h-11 items-center justify-center px-5 py-2.5 text-sm"
-          >
-            See the Blueprint &mdash; $13
-          </Link>
-          <Link
-            href="/checkout/personal-card-blueprint"
-            className="inline-flex min-h-11 items-center justify-center rounded-full border border-gold/30 px-5 py-2.5 text-sm text-gold"
-          >
-            Checkout now →
-          </Link>
-        </div>
-      </div>
-
       <section id="how-it-works" className="mt-12 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">How the calculation works</p>
-        <h2 className="font-serif text-3xl text-bone">
-          How to find your birth card from your birthday
-        </h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">How the calculation works</p>
+            <h2 className="font-serif text-3xl text-bone">
+              How to find your birth card from your birthday
+            </h2>
+          </summary>
         <div className="mt-4 space-y-4">
           <p className="prose-reading text-mist">
             Cardology maps the calendar to a standard deck: 52 cards, four suits,
@@ -277,11 +255,15 @@ export default function CalculatorPage() {
             . Same date, same card.
           </p>
         </div>
+        </details>
       </section>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">Cardology chart</p>
-        <h2 className="font-serif text-3xl text-bone">Cardology chart: birthday → playing card</h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">Cardology chart</p>
+            <h2 className="font-serif text-3xl text-bone">Cardology chart: birthday → playing card</h2>
+          </summary>
         <p className="prose-reading mt-4 text-mist">
           The full date chart lives in the birthday directory. Jump to a month,
           or type a date in the calculator above. Same map either way.
@@ -308,11 +290,15 @@ export default function CalculatorPage() {
           </Link>
           .
         </p>
+        </details>
       </section>
 
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
-        <p className="eyebrow mb-2 text-gold">Worked verification</p>
-        <h2 className="font-serif text-3xl text-bone">Birth card calculator example: January 15</h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">Worked verification</p>
+            <h2 className="font-serif text-3xl text-bone">Birth card calculator example: January 15</h2>
+          </summary>
         <p className="prose-reading mt-4 text-mist">
           Enter January 15 and the calculator returns the <strong>Queen of Diamonds</strong>{" "}
           as the birth card. Run January 15 again and the answer stays the same. That
@@ -323,11 +309,15 @@ export default function CalculatorPage() {
           </Link>
           .
         </p>
+        </details>
       </section>
 
       <section id="birth-vs-ruling" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">Understand the result</p>
-        <h2 className="font-serif text-3xl text-bone">Birth card vs. planetary ruling card</h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">Understand the result</p>
+            <h2 className="font-serif text-3xl text-bone">Birth card vs. planetary ruling card</h2>
+          </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <h3 className="font-serif text-xl text-bone">Birth card: the fixed pattern</h3>
@@ -351,11 +341,15 @@ export default function CalculatorPage() {
           </Link>
           .
         </p>
+        </details>
       </section>
 
       <section className="mt-10">
-        <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
-        <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
+            <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
+          </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
           <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-mist">
             <caption className="sr-only">
@@ -417,11 +411,15 @@ export default function CalculatorPage() {
             Destiny Cards &amp; Love Cards explained →
           </Link>
         </p>
+        </details>
       </section>
 
       <section id="trust-and-limits" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">Experience, method, and trust</p>
-        <h2 className="font-serif text-3xl text-bone">Why you can verify this Cardology calculator</h2>
+        <details>
+          <summary className="cursor-pointer">
+            <p className="eyebrow mb-2 text-gold">Experience, method, and trust</p>
+            <h2 className="font-serif text-3xl text-bone">Why you can verify this Cardology calculator</h2>
+          </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {[
             ["Repeatable calculation", "The same month and day return the same birth card. Nothing is shuffled or randomly generated."],
@@ -448,16 +446,19 @@ export default function CalculatorPage() {
           <Link href="/editorial-policy" className="text-gold underline underline-offset-4">Editorial policy</Link>
           <Link href="/privacy-policy" className="text-gold underline underline-offset-4">Privacy policy</Link>
         </div>
+        </details>
       </section>
 
       <section id="faq" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-4 text-gold">Birth card calculator FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+            <details key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <summary className="cursor-pointer">
+                <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              </summary>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
-            </div>
+            </details>
           ))}
         </div>
       </section>

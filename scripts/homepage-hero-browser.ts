@@ -69,7 +69,16 @@ async function main() {
     "/birth-card/queen-of-diamonds",
   );
   await hero.getByText("Want to learn how to read your card?").waitFor();
-  await hero.getByRole("link", { name: "Get the complete Personal Blueprint · $13" }).waitFor();
+  await hero.getByRole("link", { name: "Get Deep Dive $9" }).waitFor();
+  assert.equal(
+    await hero.getByRole("link", { name: "Get Deep Dive $9" }).getAttribute("href"),
+    "https://buy.stripe.com/7sY14n9Ca3GocHfcYDd3i0r",
+  );
+  assert.equal(
+    await hero.getByRole("link", { name: /Personal Blueprint/ }).count(),
+    0,
+    "homepage result must not sell the $13 Blueprint",
+  );
 
   const analyticsJson = JSON.stringify(analyticsPayloads);
   assert.equal(analyticsJson.includes("1990-01-15"), false, "analytics must exclude the birthday");
@@ -122,7 +131,7 @@ async function main() {
     0,
     "Joker result must not offer a nonexistent meaning page",
   );
-  await jokerHero.getByRole("link", { name: "Get the complete Personal Blueprint · $13" }).waitFor();
+  await jokerHero.getByRole("link", { name: "Get Deep Dive $9" }).waitFor();
 
   await browser.close();
   console.log("PASS: homepage calculator hero browser flow, privacy, retry, mobile, leap day, and Joker");

@@ -134,7 +134,7 @@ const birthCalc = readFileSync(
 );
 assert.doesNotMatch(birthCalc, /bd=\$\{encodeURIComponent\(birthdate\)\}/);
 assert.match(birthCalc, /storeCheckoutBirthdate/);
-assert.match(birthCalc, /instantReportBySlug/);
+assert.doesNotMatch(birthCalc, /personal-card-blueprint/);
 
 const pcb = instantReportBySlug("personal-card-blueprint");
 assert.ok(pcb);
