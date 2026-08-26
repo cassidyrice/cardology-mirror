@@ -64,8 +64,7 @@ assert.match(consent, /analytics_storage:\s*'denied'/);
 const birthCalc = readFileSync("components/seo/BirthCardCalculator.tsx", "utf8");
 assert.doesNotMatch(birthCalc, /\?bd=/);
 assert.match(birthCalc, /storeCheckoutBirthdate/);
-assert.match(birthCalc, /prefetch=\{false\}/);
-assert.match(birthCalc, /PERSONAL_CHECKOUT_PATH|personalCheckoutHref/);
+assert.doesNotMatch(birthCalc, /buy\.stripe\.com\/[^"'\s]+\?/);
 
 const compat = readFileSync("components/seo/CompatibilityCalculator.tsx", "utf8");
 assert.doesNotMatch(compat, /\?bd=/);

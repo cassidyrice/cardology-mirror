@@ -167,6 +167,7 @@ assert.equal(publicProductBySlug("complete-card-blueprint")?.kind, "digital_down
 assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");
 assert.equal(sanitizeOfferSlug("analog-algorithm"), "analog-algorithm");
 assert.equal(sanitizeOfferSlug("complete-card-blueprint"), "complete-card-blueprint");
+assert.equal(sanitizeOfferSlug("birth-card-deep-dive"), "birth-card-deep-dive");
 for (const offer of READING_OFFERS) {
   assert.equal(publicProductBySlug(offer.slug), undefined, `${offer.slug} must not open new checkout`);
   assert.equal(productBySlug(offer.slug)?.slug, offer.slug, `${offer.slug} must remain resolvable for historical orders`);

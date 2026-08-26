@@ -13,16 +13,10 @@ import {
   calculateBirthCardRevealFromIsoDate,
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
-import {
-  personalCheckoutHref,
-  storeCheckoutBirthdate,
-} from "@/lib/checkout-birthdate";
-import { instantReportBySlug } from "@/lib/products";
+import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
-import { NewsletterSignupForm } from "./NewsletterSignupForm";
-import { ShareCard } from "./ShareCard";
+import { DeepDiveCta } from "./DeepDiveCta";
 
-const blueprintOffer = instantReportBySlug("personal-card-blueprint");
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
   const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
@@ -153,13 +147,11 @@ function BirthCardResultCard({
 }: {
   reveal: BirthCardReveal;
 }) {
-  const { birthdate, result } = reveal;
+  const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
-  const priceLabel = blueprintOffer?.priceLabel ?? "$13";
-  const checkoutHref = personalCheckoutHref();
 
   // Bring the reveal into view on small screens. "nearest" = no-op when
   // the result is already visible; reduced motion gets an instant jump.
@@ -231,27 +223,7 @@ function BirthCardResultCard({
           className="rise mt-2 flex w-full max-w-md flex-col items-center gap-3"
           style={{ animationDelay: "0.72s" }}
         >
-          <Link
-            href={checkoutHref}
-            prefetch={false}
-            className="accent-button large-button w-full text-center sm:w-auto"
-            onClick={() => {
-              storeCheckoutBirthdate(birthdate);
-              trackClientFunnelEvent("offer_cta_clicked", {
-                offerSlug: "personal-card-blueprint",
-                placement: "birth-card-calculator-result",
-              });
-            }}
-          >
-            {`Get My Blueprint — ${priceLabel}`}
-          </Link>
-          <p className="text-xs text-brand-ink-soft">Plus applicable tax</p>
-          <Link
-            href="/products/personal-card-blueprint"
-            className="text-sm font-medium text-brand-ink underline underline-offset-4"
-          >
-            What&apos;s inside the Blueprint? →
-          </Link>
+          <DeepDiveCta placement="birth-card-calculator-result" />
           <BirthdayWorkerAnchor
             reveal={reveal}
             todayIso={todayISO()}
@@ -264,23 +236,6 @@ function BirthCardResultCard({
               Read the {bc?.label} meaning →
             </Link>
           )}
-        </div>
-        <p
-          className="rise max-w-md text-center text-xs leading-relaxed text-brand-ink-soft"
-          style={{ animationDelay: "0.82s" }}
-        >
-          A written pattern you can actually use — not a horoscope.
-          Locks pattern, ruling card, and your current 52-day period in
-          writing. One-time{" "}
-          {priceLabel}.
-        </p>
-        {!isJoker && bc?.label && (
-          <div className="rise" style={{ animationDelay: "0.88s" }}>
-            <ShareCard cardLabel={bc.label} slug={slug} />
-          </div>
-        )}
-        <div className="rise w-full max-w-xl" style={{ animationDelay: "0.94s" }}>
-          <NewsletterSignupForm source="calculator-result" compact />
         </div>
       </div>
 
