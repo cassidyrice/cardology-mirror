@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { instantReportBySlug } from "@/lib/products";
+import { DEEP_DIVE_CTA_LABEL } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
@@ -15,8 +15,6 @@ const NAV_LINKS = [
   { label: "Learn", href: "/what-is-cardology" },
 ];
 
-const blueprintOffer = instantReportBySlug("personal-card-blueprint");
-const blueprintCta = blueprintOffer?.cta ?? "Get My Blueprint — $13";
 
 export function SiteHeader() {
   return (
@@ -60,16 +58,16 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
-              <Link href="/products/personal-card-blueprint" className="accent-button mt-4 w-full">
-                {blueprintCta}
+              <Link href="/birth-card-calculator" className="accent-button mt-4 w-full">
+                {DEEP_DIVE_CTA_LABEL}
               </Link>
             </nav>
           </details>
           {/* Wait until lg to show the full desktop row so its five destinations
               and paid CTA retain their natural widths. */}
           <div className="hidden lg:block">
-            <Link href="/products/personal-card-blueprint" className="ink-button small-button shrink-0 whitespace-nowrap">
-              {blueprintCta}
+            <Link href="/birth-card-calculator" className="ink-button small-button shrink-0 whitespace-nowrap">
+              {DEEP_DIVE_CTA_LABEL}
             </Link>
           </div>
         </div>

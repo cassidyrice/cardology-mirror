@@ -15,6 +15,7 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
+import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "./DeepDiveCta";
 
 export function BirthCardCalculator() {
@@ -224,6 +225,13 @@ function BirthCardResultCard({
           style={{ animationDelay: "0.72s" }}
         >
           <DeepDiveCta placement="birth-card-calculator-result" />
+          <div className="mt-7 w-full max-w-md rounded-[3px] border border-brand-line bg-brand-paper p-5">
+            <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
+            <h3 className="mt-2 font-serif text-2xl text-brand-ink">
+              Want to learn how to read your card?
+            </h3>
+            <FreeCourseSignupForm source="birth-card-calculator-result" surface="paper" />
+          </div>
           <BirthdayWorkerAnchor
             reveal={reveal}
             todayIso={todayISO()}
