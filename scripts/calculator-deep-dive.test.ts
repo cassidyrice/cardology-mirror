@@ -36,7 +36,7 @@ const middleware = read("middleware.ts");
 test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment link", () => {
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
   expect(DEEP_DIVE_SKU).toBe("deep-dive-9");
-  expect(DEEP_DIVE_PRICE_ID).toBe("price_1U8s5uChx1yAVyrsjbQKfsmD");
+  expect(DEEP_DIVE_PRICE_ID).toBe("price_1U8WeKDgoKThmC0Is8QCU2vL");
   expect(DEEP_DIVE_CTA_LABEL).toBe("Get Deep Dive $9");
   expect(DEEP_DIVE_FULFILLMENT).toContain("7-page Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");

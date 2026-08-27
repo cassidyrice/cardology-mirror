@@ -1,7 +1,7 @@
 /** Birth Card Deep Dive — Card Blueprint Stripe, not Cassidy Rice Company. */
 
-export const DEEP_DIVE_PRICE_ID = "price_1U8s5uChx1yAVyrsjbQKfsmD";
-export const DEEP_DIVE_PRODUCT_ID = "prod_V9AQZLgrZ4WclM";
+export const DEEP_DIVE_PRICE_ID = "price_1U8WeKDgoKThmC0Is8QCU2vL";
+export const DEEP_DIVE_PRODUCT_ID = "prod_V8oGBDuBLJHKOm";
 export const DEEP_DIVE_SKU = "deep-dive-9";
 export const DEEP_DIVE_OFFER_SLUG = "deep-dive";
 export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
@@ -26,10 +26,6 @@ export const DEEP_DIVE_BONUSES = [
     label: "90 Spreads",
   },
 ] as const;
-
-/** Card Blueprint live publishable key (public). Runtime env can override. */
-export const CARD_BLUEPRINT_PUBLISHABLE_KEY =
-  "pk_live_51U1a1dChx1yAVyrsPVOCRyrXoymP7o50pqwov9rKto6X9oFC8QGzAmQF71w16GBBCfftaoUoQU9YmLtDlWh0wCAY00q4yanosN";
 
 export const DEEP_DIVE_SOURCES = [
   "birth-card-calculator",
@@ -67,7 +63,7 @@ export function stripePublishableKey(): string {
   return (
     process.env.STRIPE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-    CARD_BLUEPRINT_PUBLISHABLE_KEY
+    ""
   );
 }
 
