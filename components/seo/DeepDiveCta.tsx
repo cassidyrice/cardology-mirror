@@ -5,6 +5,7 @@ import {
   DEEP_DIVE_CHECKOUT_URL,
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_LEAD_COPY,
   DEEP_DIVE_OFFER_SLUG,
 } from "@/lib/deep-dive";
 
@@ -31,6 +32,9 @@ export function DeepDiveCta({
       >
         {DEEP_DIVE_CTA_LABEL}
       </a>
+      <p className="text-center text-sm leading-relaxed text-brand-ink">
+        {DEEP_DIVE_LEAD_COPY}
+      </p>
       <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
         {DEEP_DIVE_FULFILLMENT}
       </p>

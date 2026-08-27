@@ -14,6 +14,7 @@ import {
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { PlayingCard } from "../PlayingCard";
 import { DeepDiveCta } from "./DeepDiveCta";
 
@@ -224,6 +225,18 @@ function BirthCardResultCard({
           style={{ animationDelay: "0.72s" }}
         >
           <DeepDiveCta placement="birth-card-calculator-result" />
+          <div className="mt-2 w-full max-w-md rounded-[3px] border border-brand-line bg-brand-paper p-4">
+            <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+              Want to learn how to read your card? Get the existing four-part
+              birth-card course by email. Your result stays free either way.
+            </p>
+            <FreeCourseSignupForm
+              source="birth-card-calculator-result"
+              surface="paper"
+              compact
+            />
+          </div>
           <BirthdayWorkerAnchor
             reveal={reveal}
             todayIso={todayISO()}
