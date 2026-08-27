@@ -61,6 +61,7 @@ const OFFER_SLUGS = new Set([
   "analog-algorithm",
   "complete-card-blueprint",
   "birth-card-deep-dive",
+  "deep-dive",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",
   "complete-reading",

@@ -3,12 +3,23 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { sanitizeOfferSlug } from "../lib/analytics";
+import { birthdateFromCheckoutSession } from "../lib/birthdate";
 import {
-  DEEP_DIVE_CHECKOUT_URL,
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
   DEEP_DIVE_OFFER_SLUG,
+  DEEP_DIVE_PRICE_ID,
+  DEEP_DIVE_SESSION_PATH,
+  DEEP_DIVE_SKU,
+  DEEP_DIVE_SUCCESS_COPY,
+  deepDiveSessionMetadata,
 } from "../lib/deep-dive";
+import {
+  checkoutProductBySlug,
+  DEEP_DIVE_PRODUCT,
+  isDeepDive,
+  publicProductBySlug,
+} from "../lib/products";
 
 const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
@@ -17,27 +28,79 @@ const page = read("app/birth-card-calculator/page.tsx");
 const calculator = read("components/seo/BirthCardCalculator.tsx");
 const hero = read("components/home/HomepageCalculatorHero.tsx");
 const cta = read("components/seo/DeepDiveCta.tsx");
+const header = read("components/seo/SiteHeader.tsx");
+const session = read("app/checkout/[offer]/session/route.ts");
+const webhook = read("app/api/checkout/webhook/route.ts");
 const middleware = read("middleware.ts");
 
-test("the live Deep Dive Payment Link is the only paid after-card offer", () => {
-  expect(DEEP_DIVE_CHECKOUT_URL).toBe(
-    "https://buy.stripe.com/7sY14n9Ca3GocHfcYDd3i0r",
-  );
+test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment link", () => {
+  expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
+  expect(DEEP_DIVE_SKU).toBe("deep-dive-9");
+  expect(DEEP_DIVE_PRICE_ID).toBe("price_1U8s5uChx1yAVyrsjbQKfsmD");
   expect(DEEP_DIVE_CTA_LABEL).toBe("Get Deep Dive $9");
   expect(DEEP_DIVE_FULFILLMENT).toContain("7-page Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");
   expect(DEEP_DIVE_FULFILLMENT).toContain("90 Spreads");
-  expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("birth-card-deep-dive");
+  expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("deep-dive");
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(9);
+  expect(publicProductBySlug("deep-dive")).toBeUndefined();
+  expect(isDeepDive(DEEP_DIVE_PRODUCT)).toBe(true);
 
-  expect(cta).toContain("DEEP_DIVE_CHECKOUT_URL");
+  expect(cta).toContain("DeepDiveEmbeddedCheckout");
   expect(cta).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(cta).not.toContain("buy.stripe.com");
+  const embed = read("components/checkout/DeepDiveEmbeddedCheckout.tsx");
+  expect(embed).toContain("createEmbeddedCheckoutPage");
+  expect(embed).toContain("fetchClientSecret");
+  expect(embed).toContain("redirect: \"manual\"");
+  expect(embed).not.toContain("buy.stripe.com");
+  expect(embed).not.toContain("initEmbeddedCheckout");
+  expect(cta).not.toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
+  expect(header).toContain('href="/birth-card-calculator"');
+  expect(header).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(header).not.toContain("buy.stripe.com");
+});
+
+test("session metadata carries birthday from the calculator reveal", () => {
+  const meta = deepDiveSessionMetadata({
+    birthday: "1990-01-15",
+    source: "birth-card-calculator",
+  });
+  expect(meta).toMatchObject({
+    sku: "deep-dive-9",
+    offer_slug: "deep-dive",
+    birthday: "1990-01-15",
+    birthdate: "1990-01-15",
+    source: "birth-card-calculator",
+    offer_name: "Birth Card Deep Dive",
+    product_kind: "digital_download",
+  });
+  expect(
+    birthdateFromCheckoutSession({
+      metadata: { birthday: "1990-01-15" },
+    }),
+  ).toBe("1990-01-15");
+  expect(session).toContain("ui_mode");
+  expect(session).toContain("embedded_page");
+  expect(session).toContain("const embedded = isDeepDive(product)");
+  expect(session).not.toContain("isDeepDive(product) && wantsJson");
+  expect(session).toContain("Never 303 to hosted Stripe");
+  expect(session).toContain("deepDiveSessionMetadata");
+  expect(session).toContain(DEEP_DIVE_SESSION_PATH.replace("/checkout/deep-dive/session", "deep-dive") && "deepDivePriceId");
+  expect(webhook).toContain("DEEP_DIVE_SKU");
+  expect(webhook).toContain("DEEP_DIVE_BONUSES");
+  expect(webhook).toContain("Personalized Deep Dive PDF: NO — Mac watcher sends it");
+  expect(webhook).not.toContain("Files emailed automatically: NO");
 });
 
 test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () => {
   expect(calculator).toContain("<DeepDiveCta");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
+  expect(calculator).toContain("reveal.birthdate");
+  expect(calculator).toContain("date={date}");
+  expect(calculator).toContain("date || reveal.birthdate");
   expect(calculator).not.toContain("personal-card-blueprint");
   expect(calculator).not.toContain("personalCheckoutHref");
   expect(calculator).not.toContain("instantReportBySlug");
@@ -45,6 +108,7 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
   expect(calculator).not.toContain("What's inside the Blueprint");
   expect(calculator).not.toContain("<NewsletterSignupForm");
   expect(calculator).not.toContain("<ShareCard");
+  expect(calculator).not.toContain("buy.stripe.com");
 });
 
 test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", () => {
@@ -77,9 +141,17 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   );
 });
 
-test("homepage calculator result no longer sells the $13 Blueprint", () => {
+test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Rice link", () => {
   expect(hero).toContain("<DeepDiveCta");
+  expect(hero).toContain("birthdate={date}");
   expect(hero).not.toContain("/products/personal-card-blueprint");
   expect(hero).not.toContain("Get the complete Personal Blueprint · $13");
   expect(hero).not.toContain('offerSlug: "personal-card-blueprint"');
+  expect(hero).not.toContain("buy.stripe.com");
+});
+
+test("success copy tells the buyer bonuses are now and Deep Dive follows", () => {
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("System Guide and 90 Spreads");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("follows in a few minutes");
+  expect(read("app/checkout/success/page.tsx")).toContain("DEEP_DIVE_SUCCESS_COPY");
 });

@@ -168,6 +168,7 @@ assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-bluepr
 assert.equal(sanitizeOfferSlug("analog-algorithm"), "analog-algorithm");
 assert.equal(sanitizeOfferSlug("complete-card-blueprint"), "complete-card-blueprint");
 assert.equal(sanitizeOfferSlug("birth-card-deep-dive"), "birth-card-deep-dive");
+assert.equal(sanitizeOfferSlug("deep-dive"), "deep-dive");
 for (const offer of READING_OFFERS) {
   assert.equal(publicProductBySlug(offer.slug), undefined, `${offer.slug} must not open new checkout`);
   assert.equal(productBySlug(offer.slug)?.slug, offer.slug, `${offer.slug} must remain resolvable for historical orders`);
@@ -283,7 +284,11 @@ assert.doesNotMatch(productSurfaceText, /90-Day Season Pass/i);
 assert.doesNotMatch(productSurfaceText, /quick-question|complete-reading|season-pass-90/i);
 assert.match(
   readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
-  /publicProductBySlug\(slug\)/,
+  /checkoutProductBySlug\(slug\)/,
+);
+assert.doesNotMatch(
+  readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
+  /productBySlug\(slug\)/,
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),

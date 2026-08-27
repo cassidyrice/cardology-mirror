@@ -17,10 +17,8 @@ import {
   type LifePathProfile,
   type LifePathSharedCard,
 } from "@/lib/life-path";
-import {
-  personalCheckoutHref,
-  storeCheckoutBirthdate,
-} from "@/lib/checkout-birthdate";
+import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { personalCheckoutHref } from "@/lib/personal-checkout";
 import { instantReportBySlug } from "@/lib/products";
 import { PlayingCard } from "../PlayingCard";
 

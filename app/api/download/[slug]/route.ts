@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { verifyDownloadToken } from "@/lib/download-token";
+import { deepDiveBonusBySlug } from "@/lib/deep-dive";
 import { digitalBySlug } from "@/lib/products";
 
 export const runtime = "edge";
@@ -31,15 +32,23 @@ export async function GET(
     );
   }
 
+  const bonus = deepDiveBonusBySlug(slug);
   const product = digitalBySlug(slug);
-  if (!product) {
+  if (!bonus && !product) {
     return NextResponse.json(
       { error: "unknown digital product" },
       { status: 404 },
     );
   }
 
-  const assetKey = product.downloadAssetKey;
+  const assetKey = bonus?.key || product?.downloadAssetKey;
+  const fileName = bonus?.fileName || product?.fileName;
+  if (!assetKey || !fileName) {
+    return NextResponse.json(
+      { error: "download not configured for this product" },
+      { status: 404 },
+    );
+  }
 
   try {
     let bytes: ArrayBuffer | null = null;
@@ -71,7 +80,7 @@ export async function GET(
       status: 200,
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="${product.fileName}"`,
+        "Content-Disposition": `attachment; filename="${fileName}"`,
         "Cache-Control": "private, no-store, max-age=0",
         "Content-Length": String(bytes.byteLength),
       },

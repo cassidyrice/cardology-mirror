@@ -156,6 +156,8 @@ export function HomepageCalculatorHero() {
 
               <DeepDiveCta
                 placement={RESULT_PLACEMENT}
+                birthdate={date}
+                source="home-hero"
                 className="mx-auto mt-6"
               />
 

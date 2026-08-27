@@ -3,8 +3,6 @@
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 
 export const CHECKOUT_BIRTHDATE_KEY = "cb_checkout_birthdate";
-export const PERSONAL_CHECKOUT_PATH = "/checkout/personal-card-blueprint";
-
 export function storeCheckoutBirthdate(value: string): string {
   const iso = sanitizeBirthdateISO(value);
   if (typeof window === "undefined" || !iso) return "";
@@ -23,8 +21,4 @@ export function readCheckoutBirthdate(): string {
   } catch {
     return "";
   }
-}
-
-export function personalCheckoutHref(): string {
-  return PERSONAL_CHECKOUT_PATH;
 }

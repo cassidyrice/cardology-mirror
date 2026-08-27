@@ -7,7 +7,7 @@ import {
   sanitizeGaEventParams,
   sanitizeGaPageLocation,
 } from "../lib/ga4";
-import { PERSONAL_CHECKOUT_PATH } from "../lib/checkout-birthdate";
+import { PERSONAL_CHECKOUT_PATH } from "../lib/personal-checkout";
 import { buildConsentDefaultSnippet } from "../lib/consent";
 
 const iso = "1990-08-15";
