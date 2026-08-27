@@ -7,6 +7,7 @@ import {
   DEEP_DIVE_CHECKOUT_URL,
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_LEAD_COPY,
   DEEP_DIVE_OFFER_SLUG,
 } from "../lib/deep-dive";
 
@@ -23,7 +24,10 @@ test("the live Deep Dive Payment Link is the only paid after-card offer", () => 
   expect(DEEP_DIVE_CHECKOUT_URL).toBe(
     "https://buy.stripe.com/7sY14n9Ca3GocHfcYDd3i0r",
   );
-  expect(DEEP_DIVE_CTA_LABEL).toBe("Get Deep Dive $9");
+  expect(DEEP_DIVE_CTA_LABEL).toBe("Get the rest of the map — $9 Deep Dive");
+  expect(DEEP_DIVE_LEAD_COPY).toBe(
+    "This is the birth card only. The Deep Dive is the rest of the map.",
+  );
   expect(DEEP_DIVE_FULFILLMENT).toContain("7-page Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");
   expect(DEEP_DIVE_FULFILLMENT).toContain("90 Spreads");
@@ -31,13 +35,19 @@ test("the live Deep Dive Payment Link is the only paid after-card offer", () => 
 
   expect(cta).toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(cta).toContain("DEEP_DIVE_LEAD_COPY");
+  expect(cta).toContain("DEEP_DIVE_FULFILLMENT");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
+  expect(cta).not.toContain("Get My Blueprint");
 });
 
 test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () => {
   expect(calculator).toContain("<DeepDiveCta");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
+  expect(calculator).toMatch(
+    /<FreeCourseSignupForm[\s\S]*source="birth-card-calculator-result"[\s\S]*compact/,
+  );
   expect(calculator).not.toContain("personal-card-blueprint");
   expect(calculator).not.toContain("personalCheckoutHref");
   expect(calculator).not.toContain("instantReportBySlug");

@@ -8,10 +8,12 @@ import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture"
 export function FreeCourseSignupForm({
   source,
   surface = "ink",
+  compact = false,
   onSuccess,
 }: {
   source: string;
   surface?: "ink" | "paper";
+  compact?: boolean;
   onSuccess?: () => void;
 }) {
   const formId = useId();
@@ -74,11 +76,17 @@ export function FreeCourseSignupForm({
     ? "rounded-[3px] border border-brand-oxblood/30 bg-brand-oxblood/5 p-3 text-sm text-brand-oxblood"
     : "rounded-lg border border-red-400/30 bg-red-400/10 p-3 text-sm text-red-200";
   const buttonClass = paper
-    ? "accent-button large-button w-full disabled:cursor-wait disabled:opacity-60"
+    ? compact
+      ? "paper-button w-full disabled:cursor-wait disabled:opacity-60"
+      : "accent-button large-button w-full disabled:cursor-wait disabled:opacity-60"
     : "min-h-12 w-full rounded-full bg-foil px-6 py-3 font-serif text-base text-ink transition hover:brightness-105 disabled:cursor-wait disabled:opacity-60";
 
   return (
-    <form onSubmit={submit} className="mt-7 space-y-4" noValidate={false}>
+    <form
+      onSubmit={submit}
+      className={compact ? "mt-4 space-y-3" : "mt-7 space-y-4"}
+      noValidate={false}
+    >
       <div>
         <label htmlFor={nameId} className={labelClass}>
           Name <span aria-hidden="true" className={requiredClass}>*</span>

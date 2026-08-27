@@ -69,11 +69,14 @@ async function main() {
     "/birth-card/queen-of-diamonds",
   );
   await hero.getByText("Want to learn how to read your card?").waitFor();
-  await hero.getByRole("link", { name: "Get Deep Dive $9" }).waitFor();
+  await hero.getByRole("link", { name: "Get the rest of the map — $9 Deep Dive" }).waitFor();
   assert.equal(
-    await hero.getByRole("link", { name: "Get Deep Dive $9" }).getAttribute("href"),
+    await hero
+      .getByRole("link", { name: "Get the rest of the map — $9 Deep Dive" })
+      .getAttribute("href"),
     "https://buy.stripe.com/7sY14n9Ca3GocHfcYDd3i0r",
   );
+  await hero.getByText("This is the birth card only. The Deep Dive is the rest of the map.").waitFor();
   assert.equal(
     await hero.getByRole("link", { name: /Personal Blueprint/ }).count(),
     0,
@@ -131,7 +134,9 @@ async function main() {
     0,
     "Joker result must not offer a nonexistent meaning page",
   );
-  await jokerHero.getByRole("link", { name: "Get Deep Dive $9" }).waitFor();
+  await jokerHero
+    .getByRole("link", { name: "Get the rest of the map — $9 Deep Dive" })
+    .waitFor();
 
   await browser.close();
   console.log("PASS: homepage calculator hero browser flow, privacy, retry, mobile, leap day, and Joker");
