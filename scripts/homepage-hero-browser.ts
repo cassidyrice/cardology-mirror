@@ -69,10 +69,11 @@ async function main() {
     "/birth-card/queen-of-diamonds",
   );
   await hero.getByText("Want to learn how to read your card?").waitFor();
-  await hero.getByRole("link", { name: "Get Deep Dive $9" }).waitFor();
+  await hero.getByRole("button", { name: "Get Deep Dive $9" }).waitFor();
   assert.equal(
-    await hero.getByRole("link", { name: "Get Deep Dive $9" }).getAttribute("href"),
-    "https://buy.stripe.com/7sY14n9Ca3GocHfcYDd3i0r",
+    await hero.getByRole("link", { name: "Get Deep Dive $9" }).count(),
+    0,
+    "homepage Deep Dive CTA must not href the Cassidy Rice payment link",
   );
   assert.equal(
     await hero.getByRole("link", { name: /Personal Blueprint/ }).count(),

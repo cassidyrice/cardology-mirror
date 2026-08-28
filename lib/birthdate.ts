@@ -43,7 +43,9 @@ export function birthdateFromCheckoutSession(
   session: StripeBirthdateSource | null | undefined,
 ): string {
   if (!session) return "";
-  const fromMeta = sanitizeBirthdateISO(session.metadata?.birthdate);
+  const fromMeta =
+    sanitizeBirthdateISO(session.metadata?.birthdate) ||
+    sanitizeBirthdateISO(session.metadata?.birthday);
   if (fromMeta) return fromMeta;
   const raw =
     session.custom_fields?.find((field) => field.key === "birthdate")?.text

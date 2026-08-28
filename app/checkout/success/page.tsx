@@ -4,11 +4,13 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
+import { DEEP_DIVE_SUCCESS_COPY } from "@/lib/deep-dive";
 import {
   productBySlug,
   isDigitalDownload,
   isInstantReport,
   isVoiceReading,
+  isDeepDive,
   type SiteProduct,
 } from "@/lib/products";
 import { mintReportToken } from "@/lib/report-token";
@@ -67,7 +69,8 @@ export default async function CheckoutSuccessPage({
     }
   }
 
-  const digital = product && isDigitalDownload(product);
+  const deepDive = product && isDeepDive(product);
+  const digital = product && isDigitalDownload(product) && !deepDive;
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
 
@@ -126,7 +129,9 @@ export default async function CheckoutSuccessPage({
           {confirmed ? "Payment received" : "Payment not verified"}
         </Kicker>
         <h1 className="type-display text-brand-ink">
-          {confirmed && digital
+          {confirmed && deepDive
+            ? "Check your email."
+            : confirmed && digital
             ? "Your e-book is ready for download."
             : confirmed && instantReport
               ? "Payment confirmed. Your Blueprint is ready."
@@ -135,7 +140,9 @@ export default async function CheckoutSuccessPage({
                 : "We could not confirm this purchase yet."}
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
-          {confirmed && digital
+          {confirmed && deepDive
+            ? DEEP_DIVE_SUCCESS_COPY
+            : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
             : confirmed && instantReport
               ? reportToken
@@ -155,7 +162,9 @@ export default async function CheckoutSuccessPage({
 
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
-          {digital ? (
+          {deepDive ? (
+            <DeepDiveFulfillment />
+          ) : digital ? (
             <DigitalFulfillment
               product={product!}
               email={customerEmail}
@@ -197,7 +206,9 @@ export default async function CheckoutSuccessPage({
           If something doesn&rsquo;t work
         </h2>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-          {digital
+          {deepDive
+            ? "If the Deep Dive files don't arrive, reply to your receipt email or"
+            : digital
             ? "If your download link doesn't work, reply to your receipt email or"
             : instantReport
               ? "If your Blueprint link doesn't work or the birth date is wrong, reply to your receipt email or"
@@ -220,6 +231,18 @@ export default async function CheckoutSuccessPage({
         </p>
       </section>
     </SeoShell>
+  );
+}
+
+function DeepDiveFulfillment() {
+  return (
+    <div className="text-center">
+      <Kicker className="mb-4">Your Deep Dive</Kicker>
+      <h2 className="type-h2 text-brand-ink">Check your email.</h2>
+      <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+        {DEEP_DIVE_SUCCESS_COPY}
+      </p>
+    </div>
   );
 }
 

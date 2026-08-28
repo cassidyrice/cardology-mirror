@@ -7,10 +7,17 @@ import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
+  DEEP_DIVE_BONUSES,
+  DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_SKU,
+  DEEP_DIVE_SUCCESS_COPY,
+} from "@/lib/deep-dive";
+import {
   productBySlug,
   isVoiceReading,
   isDigitalDownload,
   isInstantReport,
+  isDeepDive,
 } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
@@ -98,6 +105,77 @@ export async function POST(req: NextRequest) {
         currency: session.currency ?? "usd",
         valueCents: session.amount_total ?? 0,
       });
+    }
+
+    // ---- BRANCH: Deep Dive (email files; no instant PDF download yet) ----
+    const deepDivePaid =
+      paymentSatisfied &&
+      (isDeepDive(product) ||
+        session.metadata?.sku === DEEP_DIVE_SKU ||
+        session.metadata?.offer_slug === "deep-dive");
+    if (deepDivePaid) {
+      let buyerEmailed = false;
+      let bonusLinks = 0;
+      if (email !== "(no email)") {
+        try {
+          const days = 30;
+          const links: string[] = [];
+          for (const bonus of DEEP_DIVE_BONUSES) {
+            const token = await mintDownloadToken(email, bonus.slug, days);
+            links.push(
+              `${bonus.label}: ${SITE_URL}/api/download/${bonus.slug}?token=${encodeURIComponent(token)}`,
+            );
+          }
+          bonusLinks = links.length;
+          await sendIntakeEmail({
+            to: email,
+            subject: "Your Deep Dive bonuses are ready",
+            text: [
+              "Thank you — your Birth Card Deep Dive is confirmed.",
+              "",
+              DEEP_DIVE_SUCCESS_COPY,
+              "",
+              "Download these two now (30 days):",
+              ...links,
+              "",
+              "Your personalized 7-page Deep Dive is computed from your birthday and follows in a separate email.",
+              "",
+              "If a link fails, reply to this email.",
+            ].join("\n"),
+          });
+          buyerEmailed = true;
+        } catch (e) {
+          console.error("[webhook] deep dive buyer email failed", e);
+        }
+      }
+
+      const to = process.env.INTAKE_EMAIL;
+      if (to) {
+        try {
+          const birthday = session.metadata?.birthday || session.metadata?.birthdate || "";
+          await sendIntakeEmail({
+            to,
+            subject: `Payment received (deep dive): ${offerName} — ${email}`,
+            text: [
+              `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
+              `Type: deep dive`,
+              `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
+              `Amount: ${amount}`,
+              `Customer email: ${email}`,
+              `Birthday supplied: ${birthday ? "yes" : "NO"}`,
+              `Source: ${session.metadata?.source || "(none)"}`,
+              `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
+              `Bonus download links emailed: ${bonusLinks}/2`,
+              `Personalized Deep Dive PDF: NO — Mac watcher sends it`,
+              `Stripe session: ${session.id}`,
+            ].join("\n"),
+            replyTo: email !== "(no email)" ? email : undefined,
+          });
+        } catch (e) {
+          console.error("[webhook] deep dive notification email failed", e);
+        }
+      }
+      return NextResponse.json({ received: true });
     }
 
     // ---- BRANCH: digital download ----

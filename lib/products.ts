@@ -12,7 +12,8 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_SEASON_PASS"
   | "STRIPE_PRICE_ANALOG_ALGORITHM"
   | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
-  | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT";
+  | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
+  | "STRIPE_PRICE_DEEP_DIVE";
 
 type ProductBase = {
   slug: string;
@@ -233,10 +234,42 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
   },
 ];
 
+export const DEEP_DIVE_SLUG = "deep-dive";
+
+export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
+  kind: "digital_download",
+  available: true,
+  slug: DEEP_DIVE_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_DEEP_DIVE",
+  name: "Birth Card Deep Dive",
+  price: 9,
+  priceLabel: "$9",
+  badge: "Deep Dive",
+  oneLine:
+    "7-page Deep Dive + System Guide + 90 Spreads, by email.",
+  bestFor:
+    "Anyone who just found their birth card and wants the written Deep Dive sent to them.",
+  deliverable:
+    "Email delivery of the 7-page Deep Dive, System Guide, and 90 Spreads.",
+  turnaround: "Confirmation immediately after payment. Files arrive by email.",
+  includes: [
+    "7-page Deep Dive",
+    "System Guide",
+    "90 Spreads",
+  ],
+  cta: "Get Deep Dive $9",
+  checkoutNote:
+    "One-time purchase. Birthday comes from the calculator. Email and card only at checkout.",
+  downloadAssetKey: "",
+  redownloadDays: 30,
+  fileName: "Birth-Card-Deep-Dive.pdf",
+};
+
 export const ALL_PRODUCTS: SiteProduct[] = [
   ...INSTANT_REPORT_PRODUCTS,
   ...READING_OFFERS,
   ...DIGITAL_PRODUCTS,
+  DEEP_DIVE_PRODUCT,
 ];
 
 /** Products currently purchasable and safe to advertise as live offers. */
@@ -264,6 +297,15 @@ export function productBySlug(slug: string): SiteProduct | undefined {
 /** Active-sale lookup. Checkout routes must use this, never productBySlug. */
 export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
+}
+
+/** Checkout-eligible products, including Deep Dive which is not in the public catalog. */
+export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
+  return publicProductBySlug(slug) ?? (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined);
+}
+
+export function isDeepDive(product: { slug: string } | null | undefined): boolean {
+  return product?.slug === DEEP_DIVE_SLUG;
 }
 
 export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {

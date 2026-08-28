@@ -15,3 +15,11 @@ __pycache__/
 .Python
 .venv/
 venv/
+
+# Scraped production artifacts kept for debugging (not source)
+.calc.html
+.chunk-*.js
+
+# Vendored agent skills — nothing in the app imports these
+.agents/
+skills-lock.json

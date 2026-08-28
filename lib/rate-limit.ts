@@ -21,6 +21,18 @@ export function clientIp(req: Request): string {
   );
 }
 
+// Bucket key for a request. With an IP, key on it. Without one (a proxy
+// stripped the headers), differentiate by cheap client hints so real visitors
+// don't all share a single "unknown" bucket, while one naive loop from the
+// same client still trips the limit.
+export function rateLimitKey(req: Request, scope: string): string {
+  const ip = clientIp(req);
+  if (ip !== "unknown") return `${scope}:${ip}`;
+  const ua = req.headers.get("user-agent") || "";
+  const lang = req.headers.get("accept-language") || "";
+  return `${scope}:ua:${ua.slice(0, 64)}:${lang.slice(0, 16)}`;
+}
+
 export function rateLimit(
   key: string,
   { limit, windowMs }: { limit: number; windowMs: number },

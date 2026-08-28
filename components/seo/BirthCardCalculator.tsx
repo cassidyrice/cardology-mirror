@@ -15,6 +15,7 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
+import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "./DeepDiveCta";
 
 export function BirthCardCalculator() {
@@ -113,6 +114,7 @@ export function BirthCardCalculator() {
         <BirthCardResultCard
           key={`${reveal.result.birthCard}|${reveal.result.rulingCards.join(",")}`}
           reveal={reveal}
+          date={date}
         />
       )}
     </div>
@@ -144,8 +146,10 @@ export function BirthdayWorkerAnchor({
 
 function BirthCardResultCard({
   reveal,
+  date,
 }: {
   reveal: BirthCardReveal;
+  date: string;
 }) {
   const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
@@ -223,7 +227,18 @@ function BirthCardResultCard({
           className="rise mt-2 flex w-full max-w-md flex-col items-center gap-3"
           style={{ animationDelay: "0.72s" }}
         >
-          <DeepDiveCta placement="birth-card-calculator-result" />
+          <DeepDiveCta
+            placement="birth-card-calculator-result"
+            birthdate={date || reveal.birthdate}
+            source="birth-card-calculator"
+          />
+          <div className="mt-7 w-full max-w-md rounded-[3px] border border-brand-line bg-brand-paper p-5">
+            <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
+            <h3 className="mt-2 font-serif text-2xl text-brand-ink">
+              Want to learn how to read your card?
+            </h3>
+            <FreeCourseSignupForm source="birth-card-calculator-result" surface="paper" />
+          </div>
           <BirthdayWorkerAnchor
             reveal={reveal}
             todayIso={todayISO()}
