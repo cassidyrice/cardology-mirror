@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-08-28**
+**Last verified: 2026-08-28** (deployed `main` @ `9f6e505` this day; previous record was `hotfix/deep-dive-cta` @ `0b60efb`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -15,8 +15,8 @@ dashboard.
 | Site | https://cardblueprints.com |
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
-| **Branch** | `hotfix/deep-dive-cta` |
-| **Deployed commit** | `0b60efbebe85ad7f25fb9ed38a7f994f35f95b2b` |
+| **Branch** | `main` |
+| **Deployed commit** | `9f6e5054b3fcf564798ba032208b2f4695cf75a2` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
@@ -47,8 +47,9 @@ deploy (see the `DEPLOY_ARGS` array). Because this is a **direct-upload**
 project, that flag is just a label — it is *not* the branch that was built.
 
 **Every production deployment is labeled "main" in the Cloudflare dashboard
-regardless of which branch actually shipped.** Production has been serving
-`hotfix/deep-dive-cta` while the console said "main".
+regardless of which branch actually shipped.** Through 2026-08-28 production
+served `hotfix/deep-dive-cta` while the console said "main"; that branch was
+merged to `main` (PR #54) and `main` deployed the same day.
 
 Do not use the dashboard to answer "what is live?". Use the verification below.
 
@@ -66,10 +67,11 @@ Run the script:
 bash scripts/verify-deploy-source.sh      # exit 0 = production matches the record
 ```
 
-### Probe 1 — a file that exists only in the deployed commit
+### Probe 1 — a file that first shipped in a known commit
 
 `public/.well-known/apple-developer-merchantid-domain-association` was added in
-`0b60efb` and is **absent from `main`**. If `main` were live, this 404s.
+`0b60efb` (now on `main`). Any build older than that 404s here — so this probe
+catches a rollback or a deploy from a stale branch, not `main` vs a hotfix.
 
 ```sh
 curl -s -o /dev/null -w "%{http_code}\n" \
@@ -84,25 +86,32 @@ curl -s https://cardblueprints.com/.well-known/apple-developer-merchantid-domain
 # expect: 2de7b483319c713bf649352f7f158f1fedbda92f546bebfe576ae0a2d2c526c6
 ```
 
-That digest is byte-identical to the blob in `0b60efb`, which is proof of the
-serving commit rather than an inference.
+That digest is byte-identical to the git blob, which is proof of what the
+edge is serving rather than an inference. If the file ever changes, update
+`EXPECTED_WELLKNOWN_SHA256` in the script.
 
-### Probe 2 — a response header that differs between branches
+**Limitation:** both probes only prove production is at or after `0b60efb`.
+Commits since then (the ops docs, the karma type fix) changed no visitor-facing
+bytes, so nothing distinguishes them from the edge. When a future deploy ships
+a new visitor-facing artifact, add it as a third probe — that is what makes the
+`DEPLOY_COMMIT` pin an assertion rather than a bookkeeping entry.
 
-`public/_headers` was changed in `2837ba5` (HEAD−1). The two branches differ:
+### Probe 2 — a response header that changed in a known commit
 
-| Branch | `Permissions-Policy` payment directive |
+`public/_headers` was changed in `2837ba5`. Before and after differ:
+
+| Build | `Permissions-Policy` payment directive |
 |---|---|
-| deployed (`hotfix/deep-dive-cta`) | `payment=(self "https://js.stripe.com")` |
-| `main` | `payment=()` — wallets broken |
+| `2837ba5` and later (incl. `main` today) | `payment=(self "https://js.stripe.com")` |
+| anything older | `payment=()` — wallets broken |
 
 ```sh
 curl -sI https://cardblueprints.com/birth-card-calculator | grep -i permissions-policy
 # expect: permissions-policy: camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")
 ```
 
-If this returns `payment=()`, something deployed `main` and Apple Pay / Google
-Pay are broken in checkout.
+If this returns `payment=()`, a pre-`2837ba5` build is live and Apple Pay /
+Google Pay are broken in checkout.
 
 ---
 

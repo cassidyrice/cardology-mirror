@@ -16,8 +16,8 @@ set -euo pipefail
 SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
-DEPLOY_BRANCH="hotfix/deep-dive-cta"
-DEPLOY_COMMIT="0b60efbebe85ad7f25fb9ed38a7f994f35f95b2b"
+DEPLOY_BRANCH="main"
+DEPLOY_COMMIT="9f6e5054b3fcf564798ba032208b2f4695cf75a2"
 
 WELLKNOWN_PATH="/.well-known/apple-developer-merchantid-domain-association"
 WELLKNOWN_REPO_PATH="public/.well-known/apple-developer-merchantid-domain-association"
@@ -44,7 +44,7 @@ echo " Site:   $SITE_ORIGIN"
 echo " Record: $DEPLOY_BRANCH @ ${DEPLOY_COMMIT:0:7}"
 echo "=========================================="
 
-# --- Probe 1: file that exists only in the deployed commit ---
+# --- Probe 1: file that first shipped in 0b60efb; older builds 404 ---
 echo "→ probe 1: ${WELLKNOWN_PATH}"
 code="$("${CURL[@]}" -o /dev/null -w '%{http_code}' "${SITE_ORIGIN}${WELLKNOWN_PATH}" || echo 000)"
 
@@ -53,7 +53,7 @@ if [[ "$code" == "000" ]]; then
   inconclusive=1
 elif [[ "$code" != "200" ]]; then
   red "  FAIL: expected HTTP 200, got ${code}"
-  red "  This file is absent from main. A 404 means main (or an older commit) is live."
+  red "  This file first shipped in 0b60efb. A 404 means an older build is live."
   fail=1
 else
   live_sha="$("${CURL[@]}" "${SITE_ORIGIN}${WELLKNOWN_PATH}" | shasum -a 256 | awk '{print $1}')"
@@ -67,7 +67,7 @@ else
   fi
 fi
 
-# --- Probe 2: response header that differs between branches ---
+# --- Probe 2: header changed in 2837ba5; older builds serve payment=() ---
 echo "→ probe 2: Permissions-Policy on ${HEADER_PATH}"
 policy="$("${CURL[@]}" -I "${SITE_ORIGIN}${HEADER_PATH}" 2>/dev/null | grep -i '^permissions-policy:' | tr -d '\r' || true)"
 
@@ -78,7 +78,7 @@ if [[ -z "$policy" ]]; then
 elif [[ "$policy" == *"$EXPECTED_PAYMENT_POLICY"* ]]; then
   green "  OK: ${EXPECTED_PAYMENT_POLICY}"
 elif [[ "$policy" == *"payment=()"* ]]; then
-  red "  FAIL: payment=() — this is main's value. Apple Pay / Google Pay are BROKEN."
+  red "  FAIL: payment=() — a pre-2837ba5 build is live. Apple Pay / Google Pay are BROKEN."
   red "  ${policy}"
   fail=1
 else
