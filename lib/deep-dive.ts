@@ -63,16 +63,18 @@ export function deepDiveSessionMetadata(input: {
   };
 }
 
+// Fail closed: no hardcoded fallbacks. A missing env must surface as a 503,
+// never a silent charge against whichever account the hardcoded IDs point at.
 export function stripePublishableKey(): string {
   return (
     process.env.STRIPE_PUBLISHABLE_KEY ||
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
-    CARD_BLUEPRINT_PUBLISHABLE_KEY
+    ""
   );
 }
 
 export function deepDivePriceId(): string {
-  return process.env.STRIPE_PRICE_DEEP_DIVE || DEEP_DIVE_PRICE_ID;
+  return process.env.STRIPE_PRICE_DEEP_DIVE || "";
 }
 
 export function deepDiveBonusBySlug(slug: string) {

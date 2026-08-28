@@ -3,11 +3,49 @@
 import { useEffect, useRef, useState } from "react";
 import { loadStripe, type StripeEmbeddedCheckout } from "@stripe/stripe-js";
 
-import { getCheckoutAnalyticsFields } from "@/components/analytics/AnalyticsCapture";
 import {
+  getCheckoutAnalyticsFields,
+  trackClientFunnelEvent,
+} from "@/components/analytics/AnalyticsCapture";
+import {
+  DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_SESSION_PATH,
   DEEP_DIVE_SUCCESS_COPY,
 } from "@/lib/deep-dive";
+
+const GENERIC_ERROR =
+  "Secure checkout is temporarily unavailable. Try again in a moment.";
+
+class CheckoutFailure extends Error {
+  constructor(
+    message: string,
+    readonly outcome: string,
+  ) {
+    super(message);
+  }
+}
+
+function sessionHttpFailure(status: number): CheckoutFailure {
+  switch (status) {
+    case 403:
+      return new CheckoutFailure(
+        "This page couldn't open checkout. Refresh the page and try again.",
+        "http-403",
+      );
+    case 429:
+      return new CheckoutFailure(
+        "Too many checkout attempts. Wait a minute, then try again.",
+        "http-429",
+      );
+    case 503:
+      return new CheckoutFailure(
+        "Checkout is temporarily down. Try again in a few minutes.",
+        "http-503",
+      );
+    default:
+      return new CheckoutFailure(GENERIC_ERROR, `http-${status || "redirect"}`);
+  }
+}
 
 export function DeepDiveEmbeddedCheckout({
   birthdate,
@@ -43,7 +81,7 @@ export function DeepDiveEmbeddedCheckout({
             }),
           });
           if (res.type === "opaqueredirect" || res.status >= 300) {
-            throw new Error("unavailable");
+            throw sessionHttpFailure(res.status);
           }
           const data = (await res.json()) as {
             clientSecret?: string;
@@ -51,14 +89,14 @@ export function DeepDiveEmbeddedCheckout({
             error?: string;
           };
           if (!res.ok || !data.clientSecret || !data.publishableKey) {
-            throw new Error(data.error || "unavailable");
+            throw new CheckoutFailure(data.error || GENERIC_ERROR, "bad-payload");
           }
           return data;
         })();
 
         const data = await stripePromise;
         const stripe = await loadStripe(data.publishableKey!);
-        if (!stripe) throw new Error("unavailable");
+        if (!stripe) throw new CheckoutFailure(GENERIC_ERROR, "stripe-load");
 
         // Official Stripe recipe: /checkout/embedded/quickstart
         // ui_mode embedded_page + createEmbeddedCheckoutPage mounts an iframe
@@ -77,11 +115,18 @@ export function DeepDiveEmbeddedCheckout({
         checkoutRef.current = checkout;
         if (mountRef.current) checkout.mount(mountRef.current);
         setLoading(false);
-      } catch {
+      } catch (err) {
         if (!cancelled) {
-          setError(
-            "Secure checkout is temporarily unavailable. Try again in a moment.",
-          );
+          const failure =
+            err instanceof CheckoutFailure
+              ? err
+              : new CheckoutFailure(GENERIC_ERROR, "stripe-mount");
+          trackClientFunnelEvent("checkout_error", {
+            offerSlug: DEEP_DIVE_OFFER_SLUG,
+            placement: source,
+            outcome: failure.outcome,
+          });
+          setError(failure.message);
           setLoading(false);
         }
       }

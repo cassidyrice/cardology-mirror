@@ -28,7 +28,7 @@ import {
   isDigitalDownload,
   isInstantReport,
 } from "@/lib/products";
-import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
@@ -44,7 +44,7 @@ export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
 ) {
-  const limited = rateLimit(`checkout:${clientIp(req)}`, {
+  const limited = rateLimit(rateLimitKey(req, "checkout"), {
     limit: CHECKOUT_LIMIT,
     windowMs: CHECKOUT_WINDOW_MS,
   });
@@ -122,6 +122,10 @@ export async function POST(
     ? deepDivePriceId()
     : process.env[product.stripePriceEnv];
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
+    return checkoutUnavailable(req, product.slug);
+  }
+  if (isDeepDive(product) && !stripePublishableKey()) {
+    console.error("[checkout] deep dive publishable key env missing");
     return checkoutUnavailable(req, product.slug);
   }
 

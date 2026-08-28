@@ -8,7 +8,7 @@ export const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
   ["X-Frame-Options", "DENY"],
   ["X-Content-Type-Options", "nosniff"],
   ["Referrer-Policy", "strict-origin-when-cross-origin"],
-  ["Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=()"],
+  ["Permissions-Policy", 'camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")'],
   ["X-XSS-Protection", "0"],
   ["Cross-Origin-Opener-Policy", "same-origin-allow-popups"],
   ["Cross-Origin-Resource-Policy", "same-site"],
