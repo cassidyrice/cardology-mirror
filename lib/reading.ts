@@ -303,8 +303,12 @@ export function buildReading(birthdate: string, targetDate?: string): Reading {
     prc: (prcPrimary ? getLongRangeCard(prcPrimary, age) : null) as LongRangeEntry,
   };
 
+  // Lifetime karma compares the Life Spread (SPREADS[0]) against spread 1.
+  // The hardcoded 1 is correct — it reproduces the published karma-card
+  // tables (A♥ → A♦/3♥, Q♠ → 10♦/8♦) and the Semi-Fixed pairs 2♥↔A♣, 9♥↔7♦.
+  // Do not "fix" it. scripts/karma-golden.test.ts pins every pair.
   const karma: Karma = {
-    bc_lifetime: cardology.getEnvironmentDisplacement(bc, 1) as Karma["bc_lifetime"],
+    bc_lifetime: cardology.getEnvironmentDisplacement(bc, 1),
   };
 
   const inputs: Inputs = {
