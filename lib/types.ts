@@ -101,10 +101,12 @@ export interface LongRange {
 }
 
 export interface Karma {
+  // null for the three Fixed cards (J♥, 8♣, K♠) — they have no karma cards.
+  // That is 17 birthdays a year; every consumer must handle it.
   bc_lifetime: {
     environment: CardCode;
     displacement: CardCode;
-  };
+  } | null;
 }
 
 export interface Inputs {
