@@ -35,6 +35,10 @@ const faqs = [
     a: "Cardology is a deterministic system that maps a birthday to one card in a standard 52-card playing deck and uses that card as pattern language for personality, relationships, timing, and recurring dynamics. Same birthday always yields the same card.",
   },
   {
+    q: "Is Cardology the same as cardiology?",
+    a: "No. Cardiology is heart medicine. Cardology is a birthday-to-playing-card map (52-card deck, not tarot). Same birthday always yields the same card. Free lookup: https://cardblueprints.com/birth-card-calculator",
+  },
+  {
     q: "How does Cardology work?",
     a: "Month and day feed a fixed formula that resolves to one of 52 cards, with December 31 as the Joker boundary. February 29 maps normally to the 9 of Clubs. From there you read suit (life domain), rank (movement), ruling card (expression style), and optional timing or compatibility layers.",
   },
