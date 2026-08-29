@@ -53,6 +53,7 @@ export function AnalyticsCapture() {
     }
 
 
+    if (!pathname) return;
     const offerMatch = pathname.match(OFFER_PATH);
     if (offerMatch && markOnce(`offer_selected.${offerMatch[2]}`)) {
       sendEvent("offer_selected", { offerSlug: offerMatch[2] });
