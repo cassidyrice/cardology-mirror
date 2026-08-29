@@ -17,6 +17,8 @@ import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
 import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { LifePathBoardSolo } from "./LifePathBoardSolo";
+import { KarmaOriginLab } from "./KarmaOriginLab";
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -227,6 +229,23 @@ function BirthCardResultCard({
           className="rise mt-2 flex w-full max-w-md flex-col items-center gap-3"
           style={{ animationDelay: "0.72s" }}
         >
+          {slug && (
+            <Link
+              href={`/birth-card/${slug}`}
+              className="text-sm font-medium text-brand-ink underline underline-offset-4"
+            >
+              {bc?.label} meaning
+            </Link>
+          )}
+          {!isJoker && (
+            <LifePathBoardSolo birthdate={reveal.birthdate} />
+          )}
+          {!isJoker && (
+            <KarmaOriginLab
+              birthdate={reveal.birthdate}
+              birthCard={result.birthCard}
+            />
+          )}
           <DeepDiveCta
             placement="birth-card-calculator-result"
             birthdate={date || reveal.birthdate}
@@ -243,14 +262,6 @@ function BirthCardResultCard({
             reveal={reveal}
             todayIso={todayISO()}
           />
-          {slug && (
-            <Link
-              href={`/birth-card/${slug}`}
-              className="text-sm font-medium text-brand-ink underline underline-offset-4"
-            >
-              {bc?.label} meaning
-            </Link>
-          )}
         </div>
       </div>
 
