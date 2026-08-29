@@ -152,7 +152,7 @@ export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[
 export function cardMeta(card: CardSeo): { title: string; description: string } {
   // CTR-oriented: exact "{card} meaning" + birth-card intent. Keep under ~60 chars;
   // root layout does not append a brand suffix.
-  const title = `${card.label} Meaning: Birth Card & Readings`;
+  const title = `${card.label} Meaning: Cardology Birth Card`;
   const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
   const description = clamp(
     `${card.label} Cardology birth-card meaning (playing cards, not tarot): personality, love, shadow${dates ? `; dates like ${dates}` : ""}. Free calculator on Card Blueprints.`,
