@@ -1,20 +1,18 @@
 import Link from "next/link";
 
-import { DEEP_DIVE_CTA_LABEL } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
+import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
-// One header for every marketing/editorial surface. Five destinations, no
-// more: Blueprint, Calculator, Compatibility, Card Meanings, Learn.
-// Long-tail navigation lives in the footer.
+// One header for every marketing/editorial surface. Four destinations, no
+// more: Calculator, Compatibility, Card Meanings, Learn. Paid Deep Dive
+// checkout lives in HeaderDeepDiveCta, not a calculator link.
 const NAV_LINKS = [
-  { label: "Deep Dive $9", href: "/birth-card-calculator" },
   { label: "Calculator", href: "/birth-card-calculator" },
   { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
   { label: "Card Meanings", href: "/birth-card" },
   { label: "Learn", href: "/what-is-cardology" },
 ];
-
 
 export function SiteHeader() {
   return (
@@ -39,7 +37,7 @@ export function SiteHeader() {
               >
                 {link.label}
               </Link>
-              ))}
+            ))}
           </nav>
           <details className="relative ml-auto lg:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
@@ -58,17 +56,15 @@ export function SiteHeader() {
                   </li>
                 ))}
               </ul>
-              <Link href="/birth-card-calculator" className="accent-button mt-4 w-full">
-                {DEEP_DIVE_CTA_LABEL}
-              </Link>
+              <div className="mt-4 w-full">
+                <HeaderDeepDiveCta />
+              </div>
             </nav>
           </details>
-          {/* Wait until lg to show the full desktop row so its five destinations
+          {/* Wait until lg to show the full desktop row so destinations
               and paid CTA retain their natural widths. */}
           <div className="hidden lg:block">
-            <Link href="/birth-card-calculator" className="ink-button small-button shrink-0 whitespace-nowrap">
-              {DEEP_DIVE_CTA_LABEL}
-            </Link>
+            <HeaderDeepDiveCta />
           </div>
         </div>
       </header>

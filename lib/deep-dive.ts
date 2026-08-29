@@ -37,6 +37,7 @@ export const DEEP_DIVE_SOURCES = [
   "home-hero",
   "home-hero-result",
   "birth-card-meaning",
+  "site-header",
 ] as const;
 
 export type DeepDiveSource = (typeof DEEP_DIVE_SOURCES)[number];

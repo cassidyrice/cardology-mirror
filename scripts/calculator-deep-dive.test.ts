@@ -51,6 +51,9 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
 
   expect(cta).toContain("DeepDiveEmbeddedCheckout");
   expect(cta).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(cta).toContain("DEEP_DIVE_PRICE_LABEL");
+  expect(cta).toContain('type="date"');
+  expect(cta).not.toContain("disabled={!iso}");
   expect(cta).not.toContain("buy.stripe.com");
   const embed = read("components/checkout/DeepDiveEmbeddedCheckout.tsx");
   expect(embed).toContain("createEmbeddedCheckoutPage");
@@ -61,8 +64,9 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(cta).not.toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
-  expect(header).toContain('href="/birth-card-calculator"');
-  expect(header).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(header).toContain('href: "/birth-card-calculator"');
+  expect(header).toContain('label: "Calculator"');
+  expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
   expect(header).not.toContain("buy.stripe.com");
 });
 
@@ -117,7 +121,14 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
 });
 
 test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
-  expect(header).toContain('label: "Deep Dive $9"');
+  const headerCta = read("components/seo/HeaderDeepDiveCta.tsx");
+  expect(headerCta).toContain('placement="site-header"');
+  expect(headerCta).toContain('source="site-header"');
+  expect(headerCta).toContain("<DeepDiveCta");
+  expect(header).not.toContain('label: "Deep Dive $9"');
+  expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
+  expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
+  expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
   expect(footer).toContain("DEEP_DIVE_CTA_LABEL");
   expect(footer).toContain('href="/birth-card-calculator"');

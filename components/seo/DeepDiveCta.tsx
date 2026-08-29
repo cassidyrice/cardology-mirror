@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { type FormEvent, useState } from "react";
 
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { DeepDiveEmbeddedCheckout } from "@/components/checkout/DeepDiveEmbeddedCheckout";
@@ -9,6 +9,7 @@ import {
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
   DEEP_DIVE_OFFER_SLUG,
+  DEEP_DIVE_PRICE_LABEL,
   sanitizeDeepDiveSource,
 } from "@/lib/deep-dive";
 
@@ -28,7 +29,18 @@ export function DeepDiveCta({
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
-  const iso = sanitizeBirthdateISO(birthdate);
+  const [draftDate, setDraftDate] = useState("");
+  const iso =
+    sanitizeBirthdateISO(birthdate) || sanitizeBirthdateISO(draftDate);
+  const ctaLabel = cardLabel
+    ? `Get the ${cardLabel} Deep Dive — ${DEEP_DIVE_PRICE_LABEL}`
+    : DEEP_DIVE_CTA_LABEL;
+
+  function submitDate(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const next = sanitizeBirthdateISO(draftDate);
+    if (next) setDraftDate(next);
+  }
 
   return (
     <div
@@ -41,11 +53,36 @@ export function DeepDiveCta({
           cardLabel={cardLabel}
           cardSlug={cardSlug}
         />
+      ) : open ? (
+        <form
+          onSubmit={submitDate}
+          className="flex w-full flex-col items-center gap-3"
+        >
+          <label
+            htmlFor={`deep-dive-bd-${placement}`}
+            className="type-eyebrow block w-full text-center"
+          >
+            Enter your birthday
+          </label>
+          <input
+            id={`deep-dive-bd-${placement}`}
+            type="date"
+            value={draftDate}
+            onChange={(event) => setDraftDate(event.target.value)}
+            className="w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
+            required
+          />
+          <button
+            type="submit"
+            className="accent-button large-button w-full text-center sm:w-auto"
+          >
+            Continue
+          </button>
+        </form>
       ) : (
         <button
           type="button"
           className="accent-button large-button w-full text-center sm:w-auto"
-          disabled={!iso}
           onClick={() => {
             trackClientFunnelEvent("offer_cta_clicked", {
               offerSlug: DEEP_DIVE_OFFER_SLUG,
@@ -54,7 +91,7 @@ export function DeepDiveCta({
             setOpen(true);
           }}
         >
-          {DEEP_DIVE_CTA_LABEL}
+          {ctaLabel}
         </button>
       )}
       <p className="text-center text-xs leading-relaxed text-brand-ink-soft">

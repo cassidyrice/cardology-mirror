@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
@@ -246,8 +245,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           The growth edge is almost always a return to proportion — unglamorous, but it works. Under-expressed? The medicine is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The medicine is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
         </p>
       </Section>
-
-      <ReadingBridge variant="card" cardLabel={card.label} className="mt-10" />
 
       <div className="mt-10 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <h2 className="font-serif text-2xl text-bone">Continue with the {card.label} Deep Dive — $9</h2>
@@ -531,8 +528,6 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
       </Section>
-
-      <ReadingBridge variant="card" cardLabel={card.label} className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Just browsing birthdays?</p>
