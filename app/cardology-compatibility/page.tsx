@@ -53,7 +53,7 @@ export default function CompatibilityPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility</h1>
+      <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility Calculator</h1>
       <p className="mb-4 text-sm text-faint">
         Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
