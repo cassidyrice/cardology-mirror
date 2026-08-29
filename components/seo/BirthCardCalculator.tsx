@@ -17,8 +17,6 @@ import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
 import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "./DeepDiveCta";
-import { LifePathBoardSolo } from "./LifePathBoardSolo";
-import { KarmaOriginLab } from "./KarmaOriginLab";
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -236,15 +234,6 @@ function BirthCardResultCard({
             >
               {bc?.label} meaning
             </Link>
-          )}
-          {!isJoker && (
-            <LifePathBoardSolo birthdate={reveal.birthdate} />
-          )}
-          {!isJoker && (
-            <KarmaOriginLab
-              birthdate={reveal.birthdate}
-              birthCard={result.birthCard}
-            />
           )}
           <DeepDiveCta
             placement="birth-card-calculator-result"
