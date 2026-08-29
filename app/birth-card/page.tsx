@@ -91,7 +91,7 @@ export default function BirthCardIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Cards</h1>
+      <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Card Meanings</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -165,6 +165,11 @@ export default function BirthCardIndex() {
             ["10 of Diamonds meaning", "/birth-card/10-of-diamonds"],
             ["Queen of Hearts meaning", "/birth-card/queen-of-hearts"],
             ["Queen of Clubs meaning", "/birth-card/queen-of-clubs"],
+            ["7 of Spades meaning", "/birth-card/7-of-spades"],
+            ["King of Clubs meaning", "/birth-card/king-of-clubs"],
+            ["Ace of Spades meaning", "/birth-card/ace-of-spades"],
+            ["Queen of Spades meaning", "/birth-card/queen-of-spades"],
+            ["6 of Diamonds meaning", "/birth-card/6-of-diamonds"],
           ].map(([label, href]) => (
             <li key={href}>
               <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-bone">
@@ -201,6 +206,9 @@ export default function BirthCardIndex() {
                     </span>
                     <span className="mt-2 block font-serif text-sm text-bone">
                       {c.label}
+                    </span>
+                    <span className="mt-0.5 block text-[0.6rem] text-faint">
+                      {c.label} meaning
                     </span>
                     {c.title && (
                       <span className="mt-0.5 block text-[0.6rem] uppercase tracking-wider text-faint">
