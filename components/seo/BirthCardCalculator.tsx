@@ -248,7 +248,7 @@ function BirthCardResultCard({
               href={`/birth-card/${slug}`}
               className="text-sm font-medium text-brand-ink underline underline-offset-4"
             >
-              Read the {bc?.label} meaning →
+              {bc?.label} meaning
             </Link>
           )}
         </div>
