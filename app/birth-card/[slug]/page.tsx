@@ -113,7 +113,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const jsonLd = [
     faqJsonLd(faqs),
     articleJsonLd({
-      headline: `${card.label} Meaning: Birth Card & Readings`,
+      headline: `${card.label} Meaning: Cardology Birth Card`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
       image: videos[0] ? youtubeThumbnail(videos[0].url) : `${SITE_URL}/og/default.png`,
