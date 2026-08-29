@@ -80,6 +80,10 @@ const faqs = [
     a: "It is a deterministic formula on birth month and day. The same birthday always produces the same card — no shuffle, no interpretation step, and nothing random. You can re-run it anytime and get the same result.",
   },
   {
+    q: "Is this a Cardology birthday calculator or a chart calculator?",
+    a: "Yes — same tool. Enter a birthday for the Cardology birth card (playing cards, not tarot). The Cardology chart on this page is the 52-card birthday map, also called a playing-cards birthday chart. Same date, same card.",
+  },
+  {
     q: "Does the birth year matter?",
     a: "Your birth card depends only on month and day. The year is used for timing layers and yearly spreads, not for the birth card itself.",
   },
@@ -461,6 +465,27 @@ export default function CalculatorPage() {
             </details>
           ))}
         </div>
+      </section>
+
+      <section className="mt-10" aria-labelledby="related-playing-card-cardology">
+        <h2 id="related-playing-card-cardology" className="eyebrow mb-3 text-gold">
+          Related (playing-card Cardology)
+        </h2>
+        <ul className="prose-reading space-y-1.5 text-mist">
+          {[
+            ["What is Cardology?", "/what-is-cardology"],
+            ["Cardology vs tarot", "/cardology-vs-tarot"],
+            ["Cardology for beginners", "/cardology-for-beginners"],
+            ["52-card astrology explained", "/52-card-astrology-explained"],
+            ["Destiny Cards synonym map", "/destiny-cards"],
+          ].map(([label, href]) => (
+            <li key={href}>
+              <Link href={href} className="text-gold underline underline-offset-4">
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       <FreeCourseCta source="birth-card-calculator" className="mt-10" />
