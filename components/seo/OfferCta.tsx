@@ -1,30 +1,27 @@
 import Link from "next/link";
 
-import { instantReportBySlug } from "@/lib/products";
+import { DEEP_DIVE_CTA_LABEL } from "@/lib/deep-dive";
 
 // Quiet contextual funnel block for educational pages that used to dead-end.
 // One active paid path: the Personal Card Blueprint.
 export function OfferCta({ className = "" }: { className?: string }) {
-  const offer = instantReportBySlug("personal-card-blueprint");
-  const priceLabel = offer?.priceLabel ?? "$13";
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
       <p className="type-eyebrow-dark">Free card name → written pattern</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
-        Get your Personal Card Blueprint.
+        Get your Birth Card Deep Dive.
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
-        The free calculator stops at the card name. The Blueprint ({priceLabel})
-        writes the pattern down — ruling layer, this year&apos;s bit in the
-        deck, prompts. Not a horoscope. One payment, no subscription.
+        The free calculator stops at the card name. The Deep Dive ($9) writes
+        the pattern down with a grounded reading, System Guide, and 90 Spreads.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
-          href="/products/personal-card-blueprint"
+          href="/birth-card-calculator"
           className="accent-button large-button inline-flex text-center"
         >
-          {`Get My Blueprint — ${priceLabel}`}
+          {DEEP_DIVE_CTA_LABEL}
         </Link>
         <Link
           href="/birth-card-calculator"

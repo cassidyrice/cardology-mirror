@@ -8,7 +8,7 @@ import { BrandLogo } from "./BrandLogo";
 // more: Blueprint, Calculator, Compatibility, Card Meanings, Learn.
 // Long-tail navigation lives in the footer.
 const NAV_LINKS = [
-  { label: "Blueprint", href: "/products/personal-card-blueprint" },
+  { label: "Deep Dive $9", href: "/birth-card-calculator" },
   { label: "Calculator", href: "/birth-card-calculator" },
   { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
   { label: "Card Meanings", href: "/birth-card" },

@@ -29,6 +29,9 @@ const calculator = read("components/seo/BirthCardCalculator.tsx");
 const hero = read("components/home/HomepageCalculatorHero.tsx");
 const cta = read("components/seo/DeepDiveCta.tsx");
 const header = read("components/seo/SiteHeader.tsx");
+const footer = read("components/seo/SiteFooter.tsx");
+const offerCta = read("components/seo/OfferCta.tsx");
+const meaning = read("app/birth-card/[slug]/page.tsx");
 const session = read("app/checkout/[offer]/session/route.ts");
 const webhook = read("app/api/checkout/webhook/route.ts");
 const middleware = read("middleware.ts");
@@ -109,6 +112,24 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
   expect(calculator).not.toContain("<NewsletterSignupForm");
   expect(calculator).not.toContain("<ShareCard");
   expect(calculator).not.toContain("buy.stripe.com");
+  expect(calculator).toContain("seoCard.coreIdentity || seoCard.sweetSpot");
+  expect(calculator).not.toContain("FreeCourseSignupForm");
+});
+
+test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
+  expect(header).toContain('label: "Deep Dive $9"');
+  expect(header).not.toContain('label: "Blueprint"');
+  expect(footer).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(footer).toContain('href="/birth-card-calculator"');
+  expect(footer).toContain('href="/products/personal-card-blueprint"');
+  expect(footer.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+    footer.indexOf('href="/products/personal-card-blueprint"'),
+  );
+  expect(offerCta).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(offerCta).not.toContain("personal-card-blueprint");
+  expect(meaning).toContain('source="birth-card-meaning"');
+  expect(meaning).toContain("Get the {card.label} Deep Dive");
+  expect(meaning).not.toContain('className="mt-3 inline-block rounded-full bg-foil');
 });
 
 test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", () => {

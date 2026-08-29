@@ -80,12 +80,16 @@ export async function POST(
 
   let formBirthdate = "";
   let requestedSource = "";
+  let requestedCardLabel = "";
+  let requestedCardSlug = "";
   let analytics: FunnelContext = {};
   try {
     if (contentType.includes("application/json")) {
       const body = (await req.json()) as Record<string, unknown>;
       formBirthdate = sanitizeBirthdateISO(body.birthdate ?? body.birthday);
       requestedSource = typeof body.source === "string" ? body.source : "";
+      requestedCardLabel = typeof body.cardLabel === "string" ? body.cardLabel : "";
+      requestedCardSlug = typeof body.cardSlug === "string" ? body.cardSlug : "";
       const fromBody = funnelContextFromJson(body);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -171,6 +175,8 @@ export async function POST(
         deepDiveSessionMetadata({
           birthday: formBirthdate,
           source: requestedSource || "birth-card-calculator",
+          cardLabel: requestedCardLabel,
+          cardSlug: requestedCardSlug,
         }),
       );
     }

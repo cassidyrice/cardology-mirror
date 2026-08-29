@@ -15,8 +15,8 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
-import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { getCardSeo } from "@/lib/seo-cards";
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -154,6 +154,7 @@ function BirthCardResultCard({
   const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
+  const seoCard = getCardSeo(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -170,6 +171,11 @@ function BirthCardResultCard({
   return (
     <div ref={rootRef} className="mt-8 animate-fade-up">
       <p className="type-eyebrow mb-4 text-center">Your birth card</p>
+      {seoCard && (
+        <p className="mx-auto mb-5 max-w-md text-center text-sm leading-relaxed text-brand-ink-soft">
+          {seoCard.coreIdentity || seoCard.sweetSpot} {seoCard.shadow ? `The edge to watch: ${seoCard.shadow}` : ""}
+        </p>
+      )}
 
       <div className="flex flex-col items-center gap-6">
         {isJoker ? (
@@ -240,13 +246,6 @@ function BirthCardResultCard({
             birthdate={date || reveal.birthdate}
             source="birth-card-calculator"
           />
-          <div className="mt-7 w-full max-w-md rounded-[3px] border border-brand-line bg-brand-paper p-5">
-            <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
-            <h3 className="mt-2 font-serif text-2xl text-brand-ink">
-              Want to learn how to read your card?
-            </h3>
-            <FreeCourseSignupForm source="birth-card-calculator-result" surface="paper" />
-          </div>
           <BirthdayWorkerAnchor
             reveal={reveal}
             todayIso={todayISO()}

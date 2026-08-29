@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { instantReportBySlug } from "@/lib/products";
+import { DEEP_DIVE_CTA_LABEL } from "@/lib/deep-dive";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -13,8 +13,6 @@ import { NewsletterSignupForm } from "./NewsletterSignupForm";
 // One footer for every marketing/editorial surface. The header stays at five
 // destinations; everything long-tail lands here.
 export function SiteFooter({ bare = false }: { bare?: boolean }) {
-  const blueprintOffer = instantReportBySlug("personal-card-blueprint");
-  const blueprintPrice = blueprintOffer?.priceLabel ?? "$13";
   return (
     <footer
       className={
@@ -37,8 +35,8 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
             <ul className="space-y-2">
               <li>
-                <Link href="/products/personal-card-blueprint" className="font-semibold text-brand-ink hover:underline">
-                  Personal Card Blueprint — {blueprintPrice}
+                <Link href="/birth-card-calculator" className="font-semibold text-brand-ink hover:underline">
+                  {DEEP_DIVE_CTA_LABEL}
                 </Link>
               </li>
 
@@ -61,6 +59,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <ul className="space-y-2">
               <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — $17 e-book</Link></li>
               <li><Link href="/products/complete-card-blueprint" className="hover:text-brand-ink">The Complete Card Blueprint — $27 handbook</Link></li>
+              <li><Link href="/products/personal-card-blueprint" className="hover:text-brand-ink">Personal Card Blueprint — $13 (other product)</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
               <li><Link href="/how-to-read-playing-cards" className="hover:text-brand-ink">How to Read Playing Cards</Link></li>

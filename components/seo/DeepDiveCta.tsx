@@ -16,11 +16,15 @@ export function DeepDiveCta({
   placement,
   birthdate,
   source = "birth-card-calculator",
+  cardLabel,
+  cardSlug,
   className = "",
 }: {
   placement: string;
   birthdate?: string;
   source?: string;
+  cardLabel?: string;
+  cardSlug?: string;
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -34,6 +38,8 @@ export function DeepDiveCta({
         <DeepDiveEmbeddedCheckout
           birthdate={iso}
           source={sanitizeDeepDiveSource(source)}
+          cardLabel={cardLabel}
+          cardSlug={cardSlug}
         />
       ) : (
         <button

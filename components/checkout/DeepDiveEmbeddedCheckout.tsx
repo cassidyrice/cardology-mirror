@@ -50,9 +50,13 @@ function sessionHttpFailure(status: number): CheckoutFailure {
 export function DeepDiveEmbeddedCheckout({
   birthdate,
   source,
+  cardLabel,
+  cardSlug,
 }: {
   birthdate: string;
   source: string;
+  cardLabel?: string;
+  cardSlug?: string;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const checkoutRef = useRef<StripeEmbeddedCheckout | null>(null);
@@ -77,6 +81,8 @@ export function DeepDiveEmbeddedCheckout({
             body: JSON.stringify({
               birthdate,
               source,
+              cardLabel,
+              cardSlug,
               ...getCheckoutAnalyticsFields(),
             }),
           });

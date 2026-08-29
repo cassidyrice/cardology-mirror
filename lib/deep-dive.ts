@@ -36,6 +36,7 @@ export const DEEP_DIVE_SOURCES = [
   "birth-card-calculator-result",
   "home-hero",
   "home-hero-result",
+  "birth-card-meaning",
 ] as const;
 
 export type DeepDiveSource = (typeof DEEP_DIVE_SOURCES)[number];
@@ -50,6 +51,8 @@ export function sanitizeDeepDiveSource(value: unknown): DeepDiveSource {
 export function deepDiveSessionMetadata(input: {
   birthday: string;
   source?: unknown;
+  cardLabel?: string;
+  cardSlug?: string;
 }): Record<string, string> {
   const source = sanitizeDeepDiveSource(input.source);
   return {
@@ -60,6 +63,8 @@ export function deepDiveSessionMetadata(input: {
     birthday: input.birthday,
     birthdate: input.birthday,
     source,
+    ...(input.cardLabel ? { card_label: input.cardLabel } : {}),
+    ...(input.cardSlug ? { card_slug: input.cardSlug } : {}),
   };
 }
 

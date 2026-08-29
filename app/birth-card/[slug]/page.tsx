@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
+import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
@@ -143,6 +144,12 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
       </div>
+      <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
+        <p className="eyebrow text-gold">A closer, grounded reading</p>
+        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
+        <p className="mt-2 mb-4 text-sm text-mist">Cards are coordinates. Put this {card.label} pattern into a practical written reflection.</p>
+        <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
+      </div>
 
       <Section title="In a general reading">
         <p>{generalReadingText(card)}</p>
@@ -241,6 +248,12 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </Section>
 
       <ReadingBridge variant="card" cardLabel={card.label} className="mt-10" />
+
+      <div className="mt-10 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
+        <h2 className="font-serif text-2xl text-bone">Continue with the {card.label} Deep Dive — $9</h2>
+        <p className="mt-2 mb-4 text-sm text-mist">A fuller written view of the card’s balanced expression and edges.</p>
+        <DeepDiveCta placement="birth-card-meaning-mid-page" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
+      </div>
 
       <Section title="Love and relationships">
         <p>
@@ -368,7 +381,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <div className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Not sure this is your card?</p>
         <p className="mt-1 text-sm text-faint">Your birth card was fixed the day you were born — no choosing, no escaping it. Find yours in seconds, then let the app handle today&rsquo;s timing, compatibility, and the reflection prompts you&rsquo;ll pretend you didn&rsquo;t need.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Birth Card Calculator →</Link>
+        <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-gold underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
 
       <nav aria-label={`More ${suitWord(card)} cards`} className="mt-10">
@@ -524,7 +537,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Just browsing birthdays?</p>
         <p className="mt-1 text-sm text-faint">Run any birth date through the calculator to get the birth card and ruling card free — same deterministic answer, every time.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">Open the Birth Card Calculator →</Link>
+        <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-gold underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
 
       <nav aria-label="Nearby birthdays" className="mt-8 flex items-center justify-between text-sm">
