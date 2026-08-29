@@ -41,3 +41,9 @@ test("compatibility result sells Deep Dive $9, not Blueprint $13", () => {
   expect(source).not.toContain("instantReportBySlug");
   expect(source).not.toContain("personalCheckoutHref");
 });
+
+test("PairResult remounts on new dates and checkout uses compared first birthday", () => {
+  expect(source).toContain("key={`${pair.a.birthdate}:${pair.b.birthdate}`}");
+  expect(source).toContain("birthdateA={pair.a.birthdate}");
+  expect(source).not.toContain("birthdateA={a}");
+});

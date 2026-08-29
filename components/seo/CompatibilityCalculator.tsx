@@ -118,7 +118,14 @@ export function CompatibilityCalculator() {
             : ""}
       </p>
       {err && <p className="mt-4 text-sm text-brand-oxblood">Enter two full birthdays to compare.</p>}
-      {pair && <PairResult a={pair.a} b={pair.b} birthdateA={a} />}
+      {pair && (
+        <PairResult
+          key={`${pair.a.birthdate}:${pair.b.birthdate}`}
+          a={pair.a}
+          b={pair.b}
+          birthdateA={pair.a.birthdate}
+        />
+      )}
     </div>
   );
 }
