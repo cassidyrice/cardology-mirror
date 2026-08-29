@@ -25,9 +25,11 @@ test("lab labels spirit vs life path and bans fate copy", () => {
   expect(lab).toContain("Spirit (year 0)");
   expect(lab).toContain("Life path (spread 1)");
   expect(lab).toContain("no Environment or Displacement pair");
+  expect(lab).toContain("spread-cell");
   expect(lab).not.toMatch(/\bfate\b/i);
   expect(lab).not.toMatch(/\bdestiny\b/i);
   expect(lab).not.toMatch(/\bfortune\b/i);
   expect(lab).not.toMatch(/\bpredict\b/i);
   expect(lab).not.toMatch(/\bsoulmate\b/i);
+  expect(lab).not.toContain("—");
 });

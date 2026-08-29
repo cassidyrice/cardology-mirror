@@ -583,6 +583,95 @@ body {
   color: var(--gold);
 }
 
+/* Life Path seats + 7x7 spread cells. Nested radius stays 3px (no inner padding
+   that would need concentric math). Hit area 40px min. Motion is press/focus only. */
+.life-seat,
+.spread-cell {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--paper);
+  transition-property: background-color, border-color, box-shadow, transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease-out;
+}
+.life-seat {
+  min-height: 2.75rem;
+  padding: 0.7rem 0.5rem;
+  text-align: left;
+}
+.spread-cell {
+  display: grid;
+  min-height: 2.5rem;
+  min-width: 0;
+  place-items: center;
+  padding: 0.2rem 0;
+  font-family: var(--font-serif);
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.life-seat:hover,
+.spread-cell:hover:not(.is-static) {
+  border-color: var(--gold);
+}
+.life-seat:active,
+.spread-cell:active:not(.is-static) {
+  transform: scale(0.98);
+}
+.life-seat:focus-visible,
+.spread-cell:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+.life-seat[aria-pressed="true"],
+.life-seat[aria-selected="true"] {
+  background: var(--ivory);
+  border-color: var(--gold);
+}
+.spread-cell.is-lit {
+  border-color: var(--gold);
+  background: var(--ivory);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.spread-cell.is-static {
+  cursor: default;
+  pointer-events: none;
+}
+.spread-crown {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+.beat-rail {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+}
+.beat-rail span {
+  width: 1.75rem;
+  height: 2px;
+  background: var(--line-strong);
+}
+.beat-rail span[data-current="true"] {
+  background: var(--gold);
+}
+.eq-nums {
+  font-variant-numeric: tabular-nums;
+}
+@media (prefers-reduced-motion: reduce) {
+  .life-seat,
+  .spread-cell {
+    transition: none;
+  }
+  .life-seat:active,
+  .spread-cell:active {
+    transform: none;
+  }
+}
+
 /* Section shells — tone + vertical rhythm in one place. */
 .shell-paper {
   background: var(--paper);

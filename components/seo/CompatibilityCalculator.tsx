@@ -252,9 +252,7 @@ function PairResult({
               aria-selected={pressed}
               aria-pressed={pressed}
               onClick={() => setSelected(seat.position)}
-              className={`rounded-[3px] border bg-brand-paper px-2 py-3 text-left ${
-                livesHere ? "border-gold ring-2 ring-gold" : "border-brand-line"
-              } ${pressed ? "bg-brand-ivory" : ""}`}
+              className={`life-seat ${livesHere ? "ring-2 ring-gold" : ""}`}
             >
               <p className="text-[0.65rem] font-bold uppercase tracking-wider text-brand-bronze">
                 {seat.shortTitle}
@@ -292,7 +290,7 @@ function PairResult({
           source="birth-card-compatibility-calculator"
         />
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          Get Deep Dive $9 is the first birthday’s report — that person’s coordinates,
+          Get Deep Dive $9 is the first birthday’s report: that person’s coordinates,
           not a couple reading.
         </p>
         <CompatibilityWorkerAnchor
@@ -340,7 +338,7 @@ function SeatDetail({
   return (
     <section className="mt-6 rounded-[3px] border border-brand-line bg-brand-paper-deep p-5">
       <p className="type-eyebrow">
-        {seat.shortTitle} — {seat.phrase}
+        {seat.shortTitle}. {seat.phrase}
       </p>
       <h3 className="mt-2 font-serif text-xl text-brand-ink">
         {seat.label} · {seat.titleText}
@@ -368,7 +366,7 @@ function SharedList({
     <section className="mt-8">
       <h3 className="font-serif text-lg text-brand-ink">Shared Life Path cards</h3>
       <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
-        Cards that appear in both paths. Shared does not mean easy — it marks the same
+        Cards that appear in both paths. Shared does not mean easy. It marks the same
         pattern in different roles.
       </p>
       {sharedCards.length > 0 ? (
