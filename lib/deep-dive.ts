@@ -1,5 +1,7 @@
 /** Birth Card Deep Dive — Card Blueprint Stripe, not Cassidy Rice Company. */
 
+import { parseIsoCalendarDate } from "@/lib/worker-seo-routes";
+
 export const DEEP_DIVE_PRICE_ID = "price_1U8s5uChx1yAVyrsjbQKfsmD";
 export const DEEP_DIVE_PRODUCT_ID = "prod_V9AQZLgrZ4WclM";
 export const DEEP_DIVE_SKU = "deep-dive-9";
@@ -8,11 +10,32 @@ export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
 export const DEEP_DIVE_PRICE_LABEL = "$9";
 export const DEEP_DIVE_CTA_LABEL = "Get Deep Dive $9";
 export const DEEP_DIVE_SUCCESS_COPY =
-  "Payment confirmed. Your System Guide and 90 Spreads are in this email. The 7-page Deep Dive follows in a few minutes.";
+  "Payment confirmed. Your 7-page Deep Dive, System Guide, and 90 Spreads are in this email.";
+export const DEEP_DIVE_JOKER_SUCCESS_COPY =
+  "Payment confirmed. Your System Guide and 90 Spreads are in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $9 sends: 7-page Deep Dive (personalized, by email shortly) + System Guide + 90 Spreads (download links now).";
+  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads (download links now). Joker / Dec 31: Guide + Spreads only — no card PDF.";
 
-export const DEEP_DIVE_BONUSES = [
+export const DEEP_DIVE_CARD_PDF_PREFIX = "deep-dive";
+
+const CARD_SEO_SLUG =
+  /^(ace|[2-9]|10|jack|queen|king)-of-(hearts|diamonds|clubs|spades)$/;
+
+const RANK_LABEL: Record<string, string> = {
+  ace: "Ace",
+  jack: "Jack",
+  queen: "Queen",
+  king: "King",
+};
+
+export type DeepDiveFile = {
+  slug: string;
+  key: string;
+  fileName: string;
+  label: string;
+};
+
+export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [
   {
     slug: "system-guide",
     key: "system-guide.pdf",
@@ -25,7 +48,7 @@ export const DEEP_DIVE_BONUSES = [
     fileName: "The-90-Spreads.pdf",
     label: "90 Spreads",
   },
-] as const;
+];
 
 /** Card Blueprint live publishable key (public). Runtime env can override. */
 export const CARD_BLUEPRINT_PUBLISHABLE_KEY =
@@ -83,6 +106,46 @@ export function deepDivePriceId(): string {
   return process.env.STRIPE_PRICE_DEEP_DIVE || "";
 }
 
-export function deepDiveBonusBySlug(slug: string) {
-  return DEEP_DIVE_BONUSES.find((b) => b.slug === slug);
+export function deepDiveCardPdfKey(seoSlug: string): string {
+  return `${DEEP_DIVE_CARD_PDF_PREFIX}/${seoSlug}.pdf`;
+}
+
+function labelFromCardSeoSlug(slug: string): string | null {
+  const match = CARD_SEO_SLUG.exec(slug);
+  if (!match) return null;
+  const rank = RANK_LABEL[match[1]] ?? match[1];
+  const suit = match[2][0].toUpperCase() + match[2].slice(1);
+  return `${rank} of ${suit}`;
+}
+
+export function deepDiveCardFile(seoSlug: string): DeepDiveFile | null {
+  const label = labelFromCardSeoSlug(seoSlug);
+  if (!label) return null;
+  return {
+    slug: seoSlug,
+    key: deepDiveCardPdfKey(seoSlug),
+    fileName: `${label.replaceAll(" ", "-")}-Deep-Dive.pdf`,
+    label: `${label} Deep Dive`,
+  };
+}
+
+/** Public truth: only December 31 is the Joker. No engine import (client-safe). */
+export function isJokerBirthdate(birthday: string | undefined | null): boolean {
+  if (!birthday) return false;
+  const parsed = parseIsoCalendarDate(birthday);
+  return Boolean(parsed && parsed.month === 12 && parsed.day === 31);
+}
+
+export function deepDiveSuccessCopy(birthday?: string | null): string {
+  return isJokerBirthdate(birthday)
+    ? DEEP_DIVE_JOKER_SUCCESS_COPY
+    : DEEP_DIVE_SUCCESS_COPY;
+}
+
+export function deepDiveBonusBySlug(slug: string): DeepDiveFile | undefined {
+  return (
+    DEEP_DIVE_BONUSES.find((b) => b.slug === slug) ??
+    deepDiveCardFile(slug) ??
+    undefined
+  );
 }

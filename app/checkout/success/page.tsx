@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { DEEP_DIVE_SUCCESS_COPY } from "@/lib/deep-dive";
+import { deepDiveSuccessCopy } from "@/lib/deep-dive";
 import {
   productBySlug,
   isDigitalDownload,
@@ -70,6 +70,7 @@ export default async function CheckoutSuccessPage({
   }
 
   const deepDive = product && isDeepDive(product);
+  const deepDiveBirthday = deepDive ? birthdateFromCheckoutSession(session2) : "";
   const digital = product && isDigitalDownload(product) && !deepDive;
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
@@ -141,7 +142,7 @@ export default async function CheckoutSuccessPage({
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
           {confirmed && deepDive
-            ? DEEP_DIVE_SUCCESS_COPY
+            ? deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
             : confirmed && instantReport
@@ -163,7 +164,7 @@ export default async function CheckoutSuccessPage({
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
           {deepDive ? (
-            <DeepDiveFulfillment />
+            <DeepDiveFulfillment birthday={deepDiveBirthday} />
           ) : digital ? (
             <DigitalFulfillment
               product={product!}
@@ -234,13 +235,13 @@ export default async function CheckoutSuccessPage({
   );
 }
 
-function DeepDiveFulfillment() {
+function DeepDiveFulfillment({ birthday }: { birthday: string }) {
   return (
     <div className="text-center">
       <Kicker className="mb-4">Your Deep Dive</Kicker>
       <h2 className="type-h2 text-brand-ink">Check your email.</h2>
       <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-        {DEEP_DIVE_SUCCESS_COPY}
+        {deepDiveSuccessCopy(birthday)}
       </p>
     </div>
   );

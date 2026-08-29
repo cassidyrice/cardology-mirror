@@ -4,16 +4,25 @@ import { join } from "node:path";
 
 import { sanitizeOfferSlug } from "../lib/analytics";
 import { birthdateFromCheckoutSession } from "../lib/birthdate";
+import { mintDownloadToken, verifyDownloadToken } from "../lib/download-token";
 import {
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_JOKER_SUCCESS_COPY,
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_PRICE_ID,
   DEEP_DIVE_SESSION_PATH,
   DEEP_DIVE_SKU,
   DEEP_DIVE_SUCCESS_COPY,
+  deepDiveBonusBySlug,
+  deepDiveCardPdfKey,
   deepDiveSessionMetadata,
+  deepDiveSuccessCopy,
 } from "../lib/deep-dive";
+import {
+  deepDiveCardPdfForBirthday,
+  deepDiveFilesForBirthday,
+} from "../lib/deep-dive-card-pdf";
 import {
   checkoutProductBySlug,
   DEEP_DIVE_PRODUCT,
@@ -97,9 +106,14 @@ test("session metadata carries birthday from the calculator reveal", () => {
   expect(session).toContain("deepDiveSessionMetadata");
   expect(session).toContain(DEEP_DIVE_SESSION_PATH.replace("/checkout/deep-dive/session", "deep-dive") && "deepDivePriceId");
   expect(webhook).toContain("DEEP_DIVE_SKU");
-  expect(webhook).toContain("DEEP_DIVE_BONUSES");
-  expect(webhook).toContain("Personalized Deep Dive PDF: NO — Mac watcher sends it");
+  expect(webhook).toContain("deepDiveFilesForBirthday");
+  expect(webhook).toContain("deepDiveCardPdfForBirthday");
+  expect(webhook).toContain("isJokerBirthdate");
+  expect(webhook).toContain("skipped (Joker)");
+  expect(webhook).not.toContain("Mac watcher");
   expect(webhook).not.toContain("Files emailed automatically: NO");
+  expect(webhook).not.toContain("king-of-spades");
+  expect(webhook).not.toContain("K♠");
 });
 
 test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () => {
@@ -182,8 +196,74 @@ test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Ri
   expect(hero).not.toContain("buy.stripe.com");
 });
 
-test("success copy tells the buyer bonuses are now and Deep Dive follows", () => {
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("System Guide and 90 Spreads");
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("follows in a few minutes");
-  expect(read("app/checkout/success/page.tsx")).toContain("DEEP_DIVE_SUCCESS_COPY");
+test("success copy is instant card PDF, honest for Joker, no delayed follow-up", () => {
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("7-page Deep Dive, System Guide, and 90 Spreads");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("follows in a few minutes");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("System Guide and 90 Spreads");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Joker");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("7-page Deep Dive");
+  expect(deepDiveSuccessCopy("1990-01-15")).toBe(DEEP_DIVE_SUCCESS_COPY);
+  expect(deepDiveSuccessCopy("1990-12-31")).toBe(DEEP_DIVE_JOKER_SUCCESS_COPY);
+  expect(DEEP_DIVE_FULFILLMENT).toContain("Joker / Dec 31");
+  expect(read("app/checkout/success/page.tsx")).toContain("deepDiveSuccessCopy");
+  expect(read("components/checkout/DeepDiveEmbeddedCheckout.tsx")).toContain(
+    "deepDiveSuccessCopy(birthdate)",
+  );
+});
+
+test("Deep Dive stays one $9 SKU and mint 3 tokens for a card birthday", async () => {
+  expect(DEEP_DIVE_SKU).toBe("deep-dive-9");
+  expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(9);
+  expect(webhook).not.toContain("buy.stripe.com");
+  expect(read("lib/products.ts")).not.toContain("deep-dive-card");
+
+  const files = deepDiveFilesForBirthday("1990-01-15");
+  expect(files.map((f) => f.slug)).toEqual([
+    "system-guide",
+    "all-90-spreads",
+    "queen-of-diamonds",
+  ]);
+  expect(files).toHaveLength(3);
+  const card = deepDiveCardPdfForBirthday("1990-01-15");
+  expect(card?.key).toBe("deep-dive/queen-of-diamonds.pdf");
+  expect(deepDiveCardPdfKey("queen-of-diamonds")).toBe(
+    "deep-dive/queen-of-diamonds.pdf",
+  );
+  expect(deepDiveBonusBySlug("queen-of-diamonds")?.key).toBe(
+    "deep-dive/queen-of-diamonds.pdf",
+  );
+
+  process.env.DOWNLOAD_TOKEN_SECRET = "test-deep-dive-token-secret";
+  const slugs: string[] = [];
+  for (const file of files) {
+    const token = await mintDownloadToken("buyer@example.com", file.slug, 30);
+    const payload = await verifyDownloadToken(token);
+    expect(payload?.slug).toBe(file.slug);
+    slugs.push(payload!.slug);
+  }
+  expect(slugs).toEqual(["system-guide", "all-90-spreads", "queen-of-diamonds"]);
+});
+
+test("Joker / Dec 31 skips card PDF and never falls back to King of Spades", async () => {
+  const files = deepDiveFilesForBirthday("1990-12-31");
+  expect(files).toHaveLength(2);
+  expect(files.map((f) => f.slug)).toEqual(["system-guide", "all-90-spreads"]);
+  expect(deepDiveCardPdfForBirthday("1990-12-31")).toBeNull();
+  expect(deepDiveCardPdfForBirthday("2024-12-31")).toBeNull();
+  expect(files.some((f) => f.slug === "king-of-spades")).toBe(false);
+  expect(files.some((f) => f.key.includes("king-of-spades"))).toBe(false);
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY.toLowerCase()).not.toContain("king of spades");
+  expect(read("lib/deep-dive-card-pdf.ts")).toContain('birth.kind === "joker"');
+  expect(read("lib/deep-dive-card-pdf.ts")).toContain("resolvePublicBirth");
+
+  process.env.DOWNLOAD_TOKEN_SECRET = "test-deep-dive-token-secret";
+  const slugs: string[] = [];
+  for (const file of files) {
+    const token = await mintDownloadToken("joker@example.com", file.slug, 30);
+    const payload = await verifyDownloadToken(token);
+    slugs.push(payload!.slug);
+  }
+  expect(slugs).toEqual(["system-guide", "all-90-spreads"]);
+  expect(slugs).not.toContain("king-of-spades");
 });

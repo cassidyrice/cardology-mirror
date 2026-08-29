@@ -6,12 +6,12 @@ import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
+import { DEEP_DIVE_SKU, deepDiveSuccessCopy } from "@/lib/deep-dive";
 import {
-  DEEP_DIVE_BONUSES,
-  DEEP_DIVE_FULFILLMENT,
-  DEEP_DIVE_SKU,
-  DEEP_DIVE_SUCCESS_COPY,
-} from "@/lib/deep-dive";
+  deepDiveCardPdfForBirthday,
+  deepDiveFilesForBirthday,
+  isJokerBirthdate,
+} from "@/lib/deep-dive-card-pdf";
 import {
   productBySlug,
   isVoiceReading,
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: Deep Dive (email files; no instant PDF download yet) ----
+    // ---- BRANCH: Deep Dive (instant Guide + Spreads + card PDF; Joker skips card) ----
     const deepDivePaid =
       paymentSatisfied &&
       (isDeepDive(product) ||
@@ -116,32 +116,41 @@ export async function POST(req: NextRequest) {
     if (deepDivePaid) {
       let buyerEmailed = false;
       let bonusLinks = 0;
+      const birthday = birthdateFromCheckoutSession(session);
+      const files = deepDiveFilesForBirthday(birthday);
+      const cardPdf = deepDiveCardPdfForBirthday(birthday);
+      const joker = isJokerBirthdate(birthday);
       if (email !== "(no email)") {
         try {
           const days = 30;
           const links: string[] = [];
-          for (const bonus of DEEP_DIVE_BONUSES) {
-            const token = await mintDownloadToken(email, bonus.slug, days);
+          for (const file of files) {
+            const token = await mintDownloadToken(email, file.slug, days);
             links.push(
-              `${bonus.label}: ${SITE_URL}/api/download/${bonus.slug}?token=${encodeURIComponent(token)}`,
+              `${file.label}: ${SITE_URL}/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
             );
           }
           bonusLinks = links.length;
+          const extra = joker
+            ? "December 31 is the Joker — there is no card-level Deep Dive PDF for this date. The System Guide and 90 Spreads still apply."
+            : cardPdf
+              ? ""
+              : "Your card PDF could not be resolved from the birthday on this order. Reply with YYYY-MM-DD and we will send the card file.";
+          const body = [
+            "Thank you — your Birth Card Deep Dive is confirmed.",
+            "",
+            deepDiveSuccessCopy(birthday),
+            "",
+            "Download these now (30 days):",
+            ...links,
+            "",
+          ];
+          if (extra) body.push(extra, "");
+          body.push("If a link fails, reply to this email.");
           await sendIntakeEmail({
             to: email,
-            subject: "Your Deep Dive bonuses are ready",
-            text: [
-              "Thank you — your Birth Card Deep Dive is confirmed.",
-              "",
-              DEEP_DIVE_SUCCESS_COPY,
-              "",
-              "Download these two now (30 days):",
-              ...links,
-              "",
-              "Your personalized 7-page Deep Dive is computed from your birthday and follows in a separate email.",
-              "",
-              "If a link fails, reply to this email.",
-            ].join("\n"),
+            subject: "Your Deep Dive files are ready",
+            text: body.join("\n"),
           });
           buyerEmailed = true;
         } catch (e) {
@@ -152,7 +161,6 @@ export async function POST(req: NextRequest) {
       const to = process.env.INTAKE_EMAIL;
       if (to) {
         try {
-          const birthday = session.metadata?.birthday || session.metadata?.birthdate || "";
           await sendIntakeEmail({
             to,
             subject: `Payment received (deep dive): ${offerName} — ${email}`,
@@ -165,8 +173,8 @@ export async function POST(req: NextRequest) {
               `Birthday supplied: ${birthday ? "yes" : "NO"}`,
               `Source: ${session.metadata?.source || "(none)"}`,
               `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
-              `Bonus download links emailed: ${bonusLinks}/2`,
-              `Personalized Deep Dive PDF: NO — Mac watcher sends it`,
+              `Download links emailed: ${bonusLinks}`,
+              `Card PDF: ${cardPdf ? cardPdf.slug : joker ? "skipped (Joker)" : "none"}`,
               `Stripe session: ${session.id}`,
             ].join("\n"),
             replyTo: email !== "(no email)" ? email : undefined,

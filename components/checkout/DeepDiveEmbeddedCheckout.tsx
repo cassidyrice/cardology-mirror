@@ -10,7 +10,7 @@ import {
 import {
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_SESSION_PATH,
-  DEEP_DIVE_SUCCESS_COPY,
+  deepDiveSuccessCopy,
 } from "@/lib/deep-dive";
 
 const GENERIC_ERROR =
@@ -154,7 +154,7 @@ export function DeepDiveEmbeddedCheckout({
       >
         <p className="font-serif text-xl text-brand-ink">Check your email.</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          {DEEP_DIVE_SUCCESS_COPY}
+          {deepDiveSuccessCopy(birthdate)}
         </p>
       </div>
     );

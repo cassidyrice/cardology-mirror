@@ -246,14 +246,14 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   priceLabel: "$9",
   badge: "Deep Dive",
   oneLine:
-    "7-page Deep Dive + System Guide + 90 Spreads, by email.",
+    "7-page Deep Dive PDF + System Guide + 90 Spreads, instant download.",
   bestFor:
     "Anyone who just found their birth card and wants the written Deep Dive sent to them.",
   deliverable:
-    "Email delivery of the 7-page Deep Dive, System Guide, and 90 Spreads.",
-  turnaround: "Confirmation immediately after payment. Files arrive by email.",
+    "Instant download links for the 7-page birth-card Deep Dive (Joker / Dec 31: Guide + Spreads only), System Guide, and 90 Spreads.",
+  turnaround: "Download links emailed immediately after payment.",
   includes: [
-    "7-page Deep Dive",
+    "7-page birth-card Deep Dive PDF",
     "System Guide",
     "90 Spreads",
   ],
