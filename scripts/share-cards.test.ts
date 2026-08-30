@@ -70,6 +70,37 @@ test("Life Path seats are measured circle centers, not a guessed smile-arc", () 
   expect(centers).toEqual(seats);
 });
 
+test("Cass-locked brand / purpose copy on both share types", () => {
+  expect(SHARE_LAYOUT.brand).toEqual({
+    mark: "Card Blueprints",
+    tagline: "Coordinates not Prophecy",
+    cta: "get your blueprint at cardblueprints.com",
+  });
+  // Prophecy in the brand line is intentional Cass copy — keep it.
+  expect(SHARE_LAYOUT.brand.tagline).toContain("Prophecy");
+  expect(SHARE_BANNED_WORDS).not.toContain("prophecy");
+
+  expect(SHARE_LAYOUT.birthResult.brandStack.markY).toBeLessThan(
+    SHARE_LAYOUT.birthResult.cardSlot.y,
+  );
+  expect(SHARE_LAYOUT.compatDuel.brandStack.markY).toBeLessThan(
+    SHARE_LAYOUT.compatDuel.cardSlots[0].y,
+  );
+  expect(SHARE_LAYOUT.birthResult.ctaY).toBe(1856);
+  expect(SHARE_LAYOUT.compatDuel.ctaY).toBe(1856);
+  expect(SHARE_LAYOUT.birthResult.purposeCue.text).toBe("Birth Card");
+
+  expect(drawSrc).toContain("drawBrandStack");
+  expect(drawSrc).toContain("drawShareCta");
+  expect(drawSrc).toContain("Coordinates not Prophecy");
+  expect(drawSrc).toContain("Card Blueprints");
+  expect(exportSrc).toContain("drawBrandStack");
+  expect(exportSrc).toContain("drawShareCta");
+  expect(exportSrc).toContain("drawPurposeCue");
+  // Templates stay flat — brand drawn in canvas, not baked as watermark chrome.
+  expect(exportSrc).toContain("templates stay flat");
+});
+
 test("birth calculator: Copy/Share appears after card reveal and before DeepDiveCta", () => {
   expect(birthCalc).toContain('from "@/components/share/ShareCardCanvas"');
   expect(birthCalc).toContain("<ShareBirthResultButton");
@@ -210,7 +241,7 @@ test("photo-real face PNGs slotted via drawImage (no canvas pips/monograms)", ()
   expect(drawSrc).toContain("#fffef9");
   expect(drawSrc).toContain("#2c2a28");
 
-  // Generator brief: plain field, flat templates, paste face PNGs
+  // Generator brief: plain field, flat templates, paste face PNGs, brand in canvas
   const gen = read("scripts/generate_share_card_templates.py");
   expect(gen).toContain("0xEB, 0xE7, 0xE0");
   expect(gen).not.toContain("soft_card_shadow");
@@ -221,6 +252,11 @@ test("photo-real face PNGs slotted via drawImage (no canvas pips/monograms)", ()
   expect(gen).toContain("faces/<seo-slug>.png");
   expect(gen).toContain("paste_rounded_face");
   expect(gen).not.toContain("PIPS:");
+  expect(gen).toContain("draw_brand_stack");
+  expect(gen).toContain("Card Blueprints");
+  expect(gen).toContain("Coordinates not Prophecy");
+  expect(gen).toContain("get your blueprint at cardblueprints.com");
+  expect(gen).toContain("templates stay a flat field");
   // Quiet type in draw
   expect(drawSrc).toContain("#6a645c");
   expect(drawSrc).toMatch(/400 \$\{size\}px/);

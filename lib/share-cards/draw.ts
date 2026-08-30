@@ -3,6 +3,7 @@ import { cardSlugFromCode } from "@/lib/blueprint";
 import {
   SHARE_LAYOUT,
   lifePathSeatCenters,
+  type BrandStack,
   type Rect,
 } from "./layout";
 import {
@@ -15,6 +16,10 @@ const CARD_FACE_BG = "#fffef9";
 const CARD_EDGE = "#2c2a28";
 /** Muted charcoal — quiet label type under cards. */
 const BAND_INK = "#6a645c";
+/** Quiet premium brand mark. */
+const BRAND_INK = "#2a2622";
+/** Soft CTA / purpose-cue ink — readable, not loud. */
+const CTA_INK = "#8a847c";
 const RED = "#c41e3a";
 const BLACK = "#1a1a1a";
 
@@ -131,6 +136,82 @@ export function drawLabelInBand(
     ctx.font = `400 ${size}px "Times New Roman", Georgia, serif`;
   }
   ctx.fillText(safe, band.x + band.w / 2, band.y + band.h / 2, band.w * 0.96);
+  ctx.restore();
+}
+
+/**
+ * Cass-locked brand stack near top — quiet premium mark + tagline.
+ * Drawn in canvas so templates stay a flat field.
+ * Brand mark "Card Blueprints"; tagline "Coordinates not Prophecy" (intentional Cass copy — keep Prophecy).
+ */
+export function drawBrandStack(
+  ctx: CanvasRenderingContext2D,
+  canvasW: number,
+  stack: BrandStack,
+) {
+  const { mark, tagline } = SHARE_LAYOUT.brand;
+  ctx.save();
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  if ("letterSpacing" in ctx) {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
+      "0.06em";
+  }
+  ctx.fillStyle = BRAND_INK;
+  ctx.font = `500 36px "Times New Roman", Georgia, serif`;
+  ctx.fillText(mark, canvasW / 2, stack.markY);
+
+  if ("letterSpacing" in ctx) {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
+      "0.05em";
+  }
+  ctx.fillStyle = BAND_INK;
+  ctx.font = `400 22px "Times New Roman", Georgia, serif`;
+  ctx.fillText(tagline, canvasW / 2, stack.taglineY);
+  ctx.restore();
+}
+
+/**
+ * Single clear CTA — replaces the old tiny watermark URL.
+ * Do not double-stack the same URL.
+ */
+export function drawShareCta(
+  ctx: CanvasRenderingContext2D,
+  canvasW: number,
+  ctaY: number,
+) {
+  const { cta } = SHARE_LAYOUT.brand;
+  ctx.save();
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  if ("letterSpacing" in ctx) {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
+      "0.03em";
+  }
+  ctx.fillStyle = CTA_INK;
+  ctx.font = `400 22px "Times New Roman", Georgia, serif`;
+  ctx.fillText(cta, canvasW / 2, ctaY);
+  ctx.restore();
+}
+
+/** Quiet birth-only purpose cue near the card name — never fights the brand stack. */
+export function drawPurposeCue(
+  ctx: CanvasRenderingContext2D,
+  band: Rect,
+  text: string,
+) {
+  ctx.save();
+  ctx.fillStyle = CTA_INK;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  if ("letterSpacing" in ctx) {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
+      "0.16em";
+  }
+  const size = Math.floor(band.h * 0.5);
+  ctx.font = `400 ${size}px "Times New Roman", Georgia, serif`;
+  ctx.fillText(text, band.x + band.w / 2, band.y + band.h / 2, band.w * 0.96);
   ctx.restore();
 }
 

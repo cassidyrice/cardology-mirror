@@ -11,13 +11,24 @@
       "w": 624,
       "h": 936
     },
+    "purposeCue": {
+      "x": 160,
+      "y": 1244,
+      "w": 760,
+      "h": 32,
+      "text": "Birth Card"
+    },
     "nameBand": {
       "x": 160,
-      "y": 1268,
+      "y": 1288,
       "w": 760,
       "h": 70
     },
-    "watermark": "cardblueprints.com"
+    "brandStack": {
+      "markY": 100,
+      "taglineY": 152
+    },
+    "ctaY": 1856
   },
   "compatDuel": {
     "canvas": {
@@ -86,8 +97,17 @@
         }
       ]
     },
-    "watermark": "cardblueprints.com",
+    "brandStack": {
+      "markY": 48,
+      "taglineY": 92
+    },
+    "ctaY": 1856,
     "firstBirthdayOnlyForDeepDive": true
+  },
+  "brand": {
+    "mark": "Card Blueprints",
+    "tagline": "Coordinates not Prophecy",
+    "cta": "get your blueprint at cardblueprints.com"
   },
   "rules": {
     "noPriceOnImage": true,

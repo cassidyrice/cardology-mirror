@@ -4,13 +4,19 @@ export type Rect = { x: number; y: number; w: number; h: number };
 
 export type SeatCenter = { x: number; y: number; r: number };
 
+export type BrandStack = { markY: number; taglineY: number };
+
+export type PurposeCue = Rect & { text: string };
+
 export type ShareLayout = {
   birthResult: {
     canvas: { w: number; h: number };
     template: string;
     cardSlot: Rect;
+    purposeCue: PurposeCue;
     nameBand: Rect;
-    watermark: string;
+    brandStack: BrandStack;
+    ctaY: number;
   };
   compatDuel: {
     canvas: { w: number; h: number };
@@ -23,8 +29,15 @@ export type ShareLayout = {
       /** Measured circle centers on 02-compat-duel-template.png — not a guessed arc. */
       seatCenters: SeatCenter[];
     };
-    watermark: string;
+    brandStack: BrandStack;
+    ctaY: number;
     firstBirthdayOnlyForDeepDive: boolean;
+  };
+  /** Cass-locked brand / purpose copy — drawn in canvas, not baked into templates. */
+  brand: {
+    mark: string;
+    tagline: string;
+    cta: string;
   };
   rules: {
     noPriceOnImage: true;

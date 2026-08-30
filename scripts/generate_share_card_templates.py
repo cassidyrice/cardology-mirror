@@ -5,6 +5,10 @@ Clean premium tighten: more card, quiet type, fewer overlays.
 Plain-neutral field + photo-real card-face PNGs slotted into measured seats
 (Cass veto: no ornate chrome; no canvas pip/monogram faces).
 
+Brand / purpose copy (Cass-locked) is drawn in canvas / sample compositing —
+templates stay a flat field (+ Life Path seat rings on duel). Do not bake
+brand lines into templates.
+
 Outputs:
   public/share-cards/01-birth-result-template.png
   public/share-cards/02-compat-duel-template.png
@@ -12,7 +16,7 @@ Outputs:
   public/share-cards/samples/compat-queen-diamonds-ace-hearts.png
 
 Locks:
-  - watermark cardblueprints.com only text on template (quiet)
+  - brand mark / tagline / CTA from layout.json brand (exact Cass copy)
   - flat neutral bg (~#ebe7e0); templates almost flat — no baked shadow blobs
   - NO dashed card-slot guides / name-band dashes on FINAL templates
   - NO ornate gold frames / sunbursts / filigree
@@ -20,6 +24,7 @@ Locks:
   - Sample labels are card names only (no price / banned words)
   - Joker never silent K♠ (samples use real cards only)
   - Card faces are PNGs from public/share-cards/faces/<seo-slug>.png
+  - Prophecy in brand tagline is intentional — keep it
 
 Run from repo root:  python3 scripts/generate_share_card_templates.py
 """
@@ -43,12 +48,12 @@ W, H = 1080, 1920
 FIELD = (0xEB, 0xE7, 0xE0)
 INK = (0x2A, 0x26, 0x22)
 BAND_INK = (0x6A, 0x64, 0x5C)  # muted charcoal — quiet type
+CTA_INK = (0x8A, 0x84, 0x7C)  # soft CTA / purpose cue
 # Photo-real card stock (under shadow / transparent corners)
 CARD_FACE_BG = (0xFF, 0xFE, 0xF9)
 CARD_EDGE = (0x2C, 0x2A, 0x28)
 # Subtle neutral chrome (not gold)
 NEUTRAL_RING = (0xD8, 0xD2, 0xC8)  # thinner/lighter seat rings
-WATERMARK = "cardblueprints.com"
 
 SUIT_MAP = {"♥": "hearts", "♦": "diamonds", "♣": "clubs", "♠": "spades"}
 RANK_SLUG = {"A": "ace", "J": "jack", "Q": "queen", "K": "king"}
@@ -79,10 +84,58 @@ def load_layout() -> dict:
     return json.loads(LAYOUT_PATH.read_text())
 
 
-def draw_watermark(d: ImageDraw.ImageDraw, text: str = WATERMARK):
-    f = font(FONT_SERIF_REG, 20)
-    # Quieter watermark — smaller + lower-contrast ink
-    d.text((W / 2, 1856), text, font=f, fill=(0xA8, 0xA2, 0x9A), anchor="mm")
+def brand_copy(layout: dict) -> dict:
+    brand = layout["brand"]
+    expected = {
+        "mark": "Card Blueprints",
+        "tagline": "Coordinates not Prophecy",
+        "cta": "get your blueprint at cardblueprints.com",
+    }
+    for key, value in expected.items():
+        if brand.get(key) != value:
+            raise SystemExit(f"brand.{key} must be exact Cass copy: {value!r}")
+    return brand
+
+
+def draw_brand_stack(d: ImageDraw.ImageDraw, layout_block: dict, brand: dict):
+    """Quiet premium mark + tagline near top — canvas-parity for samples."""
+    stack = layout_block["brandStack"]
+    d.text(
+        (W / 2, stack["markY"]),
+        brand["mark"],
+        font=font(FONT_SERIF, 36),
+        fill=INK,
+        anchor="mm",
+    )
+    d.text(
+        (W / 2, stack["taglineY"]),
+        brand["tagline"],
+        font=font(FONT_SERIF_REG, 22),
+        fill=BAND_INK,
+        anchor="mm",
+    )
+
+
+def draw_cta(d: ImageDraw.ImageDraw, layout_block: dict, brand: dict):
+    """Single clear CTA — replaces old tiny watermark; do not double-stack URL."""
+    d.text(
+        (W / 2, layout_block["ctaY"]),
+        brand["cta"],
+        font=font(FONT_SERIF_REG, 22),
+        fill=CTA_INK,
+        anchor="mm",
+    )
+
+
+def draw_purpose_cue(d: ImageDraw.ImageDraw, cue: dict):
+    """Quiet birth-only purpose cue near the name — optional, not fighting brand."""
+    d.text(
+        (cue["x"] + cue["w"] / 2, cue["y"] + cue["h"] / 2),
+        cue["text"],
+        font=font(FONT_SERIF_REG, max(14, int(cue["h"] * 0.5))),
+        fill=CTA_INK,
+        anchor="mm",
+    )
 
 
 def base_canvas() -> Image.Image:
@@ -101,20 +154,16 @@ def draw_life_path_rings(d: ImageDraw.ImageDraw, seats: list[dict]):
 
 
 def make_birth_template(layout: dict) -> Image.Image:
-    # Almost flat field + quiet watermark — cards cast their own drop shadow in draw
-    img = base_canvas()
-    d = ImageDraw.Draw(img)
-    draw_watermark(d)
-    return img
+    # Almost flat field — brand / CTA drawn in canvas + samples, not baked here
+    return base_canvas()
 
 
 def make_compat_template(layout: dict) -> Image.Image:
-    # Flat field + very subtle seat rings + quiet watermark — no baked card shadows
+    # Flat field + very subtle seat rings — no baked brand / watermark
     img = base_canvas()
     d = ImageDraw.Draw(img)
     seats = layout["compatDuel"]["lifePathBoard"]["seatCenters"]
     draw_life_path_rings(d, seats)
-    draw_watermark(d)
     return img
 
 
@@ -310,28 +359,38 @@ def assert_faces_on_disk():
     print(f"OK faces: {total} PNGs in {FACES.relative_to(ROOT)}")
 
 
-def make_birth_sample(layout: dict) -> Image.Image:
+def make_birth_sample(layout: dict, brand: dict) -> Image.Image:
     img = make_birth_template(layout)
-    img = draw_card_face(img, layout["birthResult"]["cardSlot"], "8♦")
+    block = layout["birthResult"]
     d = ImageDraw.Draw(img)
-    draw_label_in_band(d, layout["birthResult"]["nameBand"], "8 of Diamonds")
+    draw_brand_stack(d, block, brand)
+    img = draw_card_face(img, block["cardSlot"], "8♦")
+    d = ImageDraw.Draw(img)
+    draw_purpose_cue(d, block["purposeCue"])
+    draw_label_in_band(d, block["nameBand"], "8 of Diamonds")
+    draw_cta(d, block, brand)
     return img
 
 
-def make_compat_sample(layout: dict) -> Image.Image:
+def make_compat_sample(layout: dict, brand: dict) -> Image.Image:
     img = make_compat_template(layout)
-    slots = layout["compatDuel"]["cardSlots"]
+    block = layout["compatDuel"]
+    d = ImageDraw.Draw(img)
+    draw_brand_stack(d, block, brand)
+    slots = block["cardSlots"]
     img = draw_card_face(img, slots[0], "Q♦")
     img = draw_card_face(img, slots[1], "A♥")
     d = ImageDraw.Draw(img)
     draw_label_in_band(
         d,
-        layout["compatDuel"]["labelBand"],
+        block["labelBand"],
         "Queen of Diamonds · Ace of Hearts",
     )
-    seats = layout["compatDuel"]["lifePathBoard"]["seatCenters"]
+    seats = block["lifePathBoard"]["seatCenters"]
     codes = ["2♥", "5♣", "9♦", "Q♠", "3♥", "7♣", "K♦"]
     img = draw_life_path_seats(img, seats, codes)
+    d = ImageDraw.Draw(img)
+    draw_cta(d, block, brand)
     return img
 
 
@@ -370,6 +429,7 @@ def sync_hermes():
 
 def main():
     layout = load_layout()
+    brand = brand_copy(layout)
     OUT.mkdir(parents=True, exist_ok=True)
     SAMPLES.mkdir(parents=True, exist_ok=True)
     assert_faces_on_disk()
@@ -391,8 +451,8 @@ def main():
     assert_no_gold_in_band(birth, layout["birthResult"]["nameBand"], "nameBand")
     assert_no_gold_in_band(compat, layout["compatDuel"]["labelBand"], "labelBand")
 
-    birth_sample = make_birth_sample(layout)
-    compat_sample = make_compat_sample(layout)
+    birth_sample = make_birth_sample(layout, brand)
+    compat_sample = make_compat_sample(layout, brand)
     p1 = SAMPLES / "birth-8-of-diamonds.png"
     p2 = SAMPLES / "compat-queen-diamonds-ace-hearts.png"
     birth_sample.save(p1, optimize=True)
@@ -404,15 +464,25 @@ def main():
         ink = 0
         px = sample.load()
         for y in range(1835, 1880):
-            for x in range(400, 680):
-                # quieter watermark — count any deviation from field
+            for x in range(280, 800):
+                # CTA ink near bottom — wider band than old short watermark
                 p = px[x, y]
                 if abs(p[0] - FIELD[0]) > 8 or abs(p[1] - FIELD[1]) > 8:
                     ink += 1
-        if ink < 12:
-            raise SystemExit("sample missing watermark ink near bottom")
-    print("OK samples: quiet watermark present; labels locked in draw_label_in_band")
+        if ink < 20:
+            raise SystemExit("sample missing CTA ink near bottom")
+        # Brand mark ink near top
+        top = 0
+        for y in range(70, 120):
+            for x in range(300, 780):
+                p = px[x, y]
+                if abs(p[0] - FIELD[0]) > 8 or abs(p[1] - FIELD[1]) > 8:
+                    top += 1
+        if top < 20:
+            raise SystemExit("sample missing brand mark ink near top")
+    print("OK samples: brand stack + CTA present; labels locked in draw_label_in_band")
     print("OK samples: faces pasted from public/share-cards/faces/ (drawImage path)")
+    print("OK brand: Card Blueprints / Coordinates not Prophecy / get your blueprint…")
 
     sync_hermes()
 

@@ -10,9 +10,12 @@ import {
 } from "./labels";
 import {
   createShareCanvas,
+  drawBrandStack,
   drawCardFace,
   drawLabelInBand,
   drawLifePathSeats,
+  drawPurposeCue,
+  drawShareCta,
   loadFaceImage,
   loadFaceImageFromCode,
   loadTemplateImage,
@@ -64,9 +67,13 @@ export async function renderBirthSharePng(
     loadFaceImage(identity),
   ]);
   ctx.drawImage(template, 0, 0, layout.canvas.w, layout.canvas.h);
+  // Brand chrome in canvas — templates stay flat field.
+  drawBrandStack(ctx, layout.canvas.w, layout.brandStack);
   drawCardFace(ctx, layout.cardSlot, identity, face);
+  drawPurposeCue(ctx, layout.purposeCue, layout.purposeCue.text);
   const label = birthShareLabel(identity);
   drawLabelInBand(ctx, layout.nameBand, label);
+  drawShareCta(ctx, layout.canvas.w, layout.ctaY);
 
   const blob = await canvasToPngBlob(canvas);
   return { blob, label, identity };
@@ -104,6 +111,8 @@ export async function renderCompatSharePng(
   ]);
 
   ctx.drawImage(template, 0, 0, layout.canvas.w, layout.canvas.h);
+  // Same brand stack as birth — templates stay flat (+ seat rings only).
+  drawBrandStack(ctx, layout.canvas.w, layout.brandStack);
 
   const [slotA, slotB] = layout.cardSlots;
   drawCardFace(ctx, slotA, a, faceA);
@@ -114,6 +123,7 @@ export async function renderCompatSharePng(
 
   // First birthday only — seats filled for Deep Dive path relevance; never paint price on the image.
   drawLifePathSeats(ctx, seatCodes, seatFaces);
+  drawShareCta(ctx, layout.canvas.w, layout.ctaY);
 
   const blob = await canvasToPngBlob(canvas);
   return { blob, label };
