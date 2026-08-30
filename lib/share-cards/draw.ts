@@ -1,4 +1,5 @@
 import { parseCard, type Suit } from "@/lib/cards";
+import { cardSlugFromCode } from "@/lib/blueprint";
 import {
   SHARE_LAYOUT,
   lifePathSeatCenters,
@@ -9,93 +10,13 @@ import {
   type ShareCardIdentity,
 } from "./labels";
 
-/** Photo-real card stock — white/off-white, not cream-paper marketing tint. */
+/** Soft stock fill under shadow when face PNG has transparent corners. */
 const CARD_FACE_BG = "#fffef9";
-/** Thin dark edge (not gold chrome). */
 const CARD_EDGE = "#2c2a28";
-const INK = "#1a1a1a";
 /** Muted charcoal — quiet label type under cards. */
 const BAND_INK = "#6a645c";
-/** Standard playing-card red / black. */
 const RED = "#c41e3a";
 const BLACK = "#1a1a1a";
-
-// Canonical pip layout from components/cards/CardFace.tsx
-const COL_X = [0.27, 0.5, 0.73] as const;
-const PIPS: Record<string, ReadonlyArray<readonly [number, number]>> = {
-  "2": [
-    [1, 0.18],
-    [1, 0.82],
-  ],
-  "3": [
-    [1, 0.18],
-    [1, 0.5],
-    [1, 0.82],
-  ],
-  "4": [
-    [0, 0.18],
-    [2, 0.18],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "5": [
-    [0, 0.18],
-    [2, 0.18],
-    [1, 0.5],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "6": [
-    [0, 0.18],
-    [2, 0.18],
-    [0, 0.5],
-    [2, 0.5],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "7": [
-    [0, 0.18],
-    [2, 0.18],
-    [1, 0.34],
-    [0, 0.5],
-    [2, 0.5],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "8": [
-    [0, 0.18],
-    [2, 0.18],
-    [1, 0.34],
-    [0, 0.5],
-    [2, 0.5],
-    [1, 0.66],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "9": [
-    [0, 0.18],
-    [2, 0.18],
-    [0, 0.39],
-    [2, 0.39],
-    [1, 0.5],
-    [0, 0.61],
-    [2, 0.61],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-  "10": [
-    [0, 0.18],
-    [2, 0.18],
-    [1, 0.29],
-    [0, 0.39],
-    [2, 0.39],
-    [0, 0.61],
-    [2, 0.61],
-    [1, 0.71],
-    [0, 0.82],
-    [2, 0.82],
-  ],
-};
 
 function roundRect(
   ctx: CanvasRenderingContext2D,
@@ -116,15 +37,44 @@ function roundRect(
 }
 
 function suitColor(suit: Suit | null): string {
-  if (!suit) return INK;
+  if (!suit) return BLACK;
   return suit === "hearts" || suit === "diamonds" ? RED : BLACK;
 }
 
-/** Draw a photo-real playing card face into a slot. Joker gets a star — never a silent King of Spades. */
+/** SEO slug for a share identity — matches public/share-cards/faces/<slug>.png */
+export function faceSlugFromIdentity(identity: ShareCardIdentity): string {
+  if (identity.kind === "joker") return "joker";
+  return cardSlugFromCode(identity.code);
+}
+
+/** Public path for a photo-real face PNG (52 + joker). */
+export function shareFacePath(identity: ShareCardIdentity): string {
+  return `/share-cards/faces/${faceSlugFromIdentity(identity)}.png`;
+}
+
+/** SEO slug from an engine card code ("Q♦" → "queen-of-diamonds"). Joker → "joker". */
+export function faceSlugFromCode(code: string): string | null {
+  if (!code) return null;
+  if (code === "Joker") return "joker";
+  if (!parseCard(code)) return null;
+  return cardSlugFromCode(code);
+}
+
+export function shareFacePathFromCode(code: string): string | null {
+  const slug = faceSlugFromCode(code);
+  return slug ? `/share-cards/faces/${slug}.png` : null;
+}
+
+/**
+ * Slot a photo-real face PNG into the card slot.
+ * Soft drop shadow + rounded clip — NO canvas pip/monogram face drawing.
+ * Joker uses /share-cards/faces/joker.png (jester art) — never a silent King of Spades.
+ */
 export function drawCardFace(
   ctx: CanvasRenderingContext2D,
   slot: Rect,
   identity: ShareCardIdentity,
+  face: CanvasImageSource,
 ) {
   const { x, y, w, h } = slot;
   const r = Math.min(w, h) * 0.055;
@@ -136,95 +86,24 @@ export function drawCardFace(
   ctx.shadowBlur = 18;
   ctx.shadowOffsetX = 4;
   ctx.shadowOffsetY = 8;
-
   roundRect(ctx, x, y, w, h, r);
   ctx.fillStyle = CARD_FACE_BG;
   ctx.fill();
 
-  // Clear shadow for the edge stroke
+  // Clear shadow; clip to rounded rect and draw the face PNG
   ctx.shadowColor = "transparent";
   ctx.shadowBlur = 0;
   ctx.shadowOffsetX = 0;
   ctx.shadowOffsetY = 0;
+  roundRect(ctx, x, y, w, h, r);
+  ctx.clip();
+  ctx.drawImage(face, x, y, w, h);
+
+  // Thin dark edge on top of the image
+  roundRect(ctx, x, y, w, h, r);
   ctx.strokeStyle = CARD_EDGE;
   ctx.lineWidth = Math.max(2, w * 0.008);
   ctx.stroke();
-
-  if (identity.kind === "joker") {
-    ctx.fillStyle = RED;
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.font = `600 ${Math.floor(h * 0.28)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText("★", x + w / 2, y + h * 0.42);
-    ctx.font = `600 ${Math.floor(h * 0.08)}px "Times New Roman", Georgia, serif`;
-    ctx.fillStyle = INK;
-    ctx.fillText("JOKER", x + w / 2, y + h * 0.68);
-    ctx.restore();
-    return;
-  }
-
-  const parsed = parseCard(identity.code);
-  if (!parsed) {
-    ctx.restore();
-    return;
-  }
-
-  const color = suitColor(parsed.suit);
-  const pad = w * 0.075;
-  const cornerSize = Math.floor(h * 0.085);
-  const glyphSize = Math.floor(h * 0.065);
-
-  ctx.fillStyle = color;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "top";
-  ctx.font = `600 ${cornerSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(parsed.rank, x + pad + cornerSize * 0.35, y + pad);
-  ctx.font = `${glyphSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(
-    parsed.glyph,
-    x + pad + cornerSize * 0.35,
-    y + pad + cornerSize * 0.95,
-  );
-
-  // Center: authentic pip layout / ace / court monogram
-  ctx.textBaseline = "middle";
-  if (parsed.rank === "A") {
-    ctx.font = `600 ${Math.floor(h * 0.3)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.glyph, x + w / 2, y + h / 2);
-  } else if (parsed.rank === "J" || parsed.rank === "Q" || parsed.rank === "K") {
-    // Face cards: large suit + rank — not cartoon court art
-    ctx.font = `600 ${Math.floor(h * 0.26)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.glyph, x + w / 2, y + h * 0.4);
-    ctx.font = `600 ${Math.floor(h * 0.13)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.rank, x + w / 2, y + h * 0.6);
-  } else if (PIPS[parsed.rank]) {
-    const pipSize = Math.floor(h * (parsed.rank === "10" ? 0.085 : 0.095));
-    ctx.font = `600 ${pipSize}px "Times New Roman", Georgia, serif`;
-    for (const [col, yp] of PIPS[parsed.rank]) {
-      const px = x + w * COL_X[col];
-      const py = y + h * yp;
-      ctx.save();
-      ctx.translate(px, py);
-      if (yp > 0.5) ctx.rotate(Math.PI);
-      ctx.fillText(parsed.glyph, 0, 0);
-      ctx.restore();
-    }
-  } else {
-    ctx.font = `600 ${Math.floor(h * 0.2)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.glyph, x + w / 2, y + h / 2);
-  }
-
-  // Mirrored bottom-right corner
-  ctx.save();
-  ctx.translate(x + w - pad - cornerSize * 0.35, y + h - pad);
-  ctx.rotate(Math.PI);
-  ctx.textAlign = "center";
-  ctx.textBaseline = "top";
-  ctx.font = `600 ${cornerSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(parsed.rank, 0, 0);
-  ctx.font = `${glyphSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(parsed.glyph, 0, cornerSize * 0.95);
-  ctx.restore();
 
   ctx.restore();
 }
@@ -255,38 +134,49 @@ export function drawLabelInBand(
   ctx.restore();
 }
 
-/** Fill the duel template's 7 Life Path seats with first-birthday card codes. */
+/**
+ * Fill the duel template's 7 Life Path seats with photo-real face chips
+ * (circular clip of the face PNG). Never paint a silent K♠ into a Joker seat.
+ */
 export function drawLifePathSeats(
   ctx: CanvasRenderingContext2D,
   seatCodes: string[],
+  faces: Array<CanvasImageSource | null>,
 ) {
   const centers = lifePathSeatCenters();
-  const count = Math.min(centers.length, seatCodes.length);
+  const count = Math.min(centers.length, seatCodes.length, faces.length);
   for (let i = 0; i < count; i++) {
     const { x, y, r } = centers[i];
     const code = seatCodes[i];
-    const parsed = parseCard(code);
+    const face = faces[i];
     // Never paint a silent K♠ into a Joker seat — skip empty/unknown.
-    if (!parsed) continue;
+    if (code === "Joker" || !parseCard(code) || !face) continue;
 
+    const rr = r * 0.78;
     ctx.save();
     ctx.beginPath();
-    ctx.arc(x, y, r * 0.78, 0, Math.PI * 2);
+    ctx.arc(x, y, rr, 0, Math.PI * 2);
     ctx.fillStyle = CARD_FACE_BG;
     ctx.shadowColor = "rgba(0,0,0,0.18)";
     ctx.shadowBlur = 4;
     ctx.shadowOffsetY = 2;
     ctx.fill();
     ctx.shadowColor = "transparent";
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(x, y, rr, 0, Math.PI * 2);
+    ctx.clip();
+    // Cover the circle with the face art (centered crop)
+    const side = rr * 2;
+    ctx.drawImage(face, x - rr, y - rr, side, side);
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.arc(x, y, rr, 0, Math.PI * 2);
     ctx.strokeStyle = CARD_EDGE;
     ctx.lineWidth = 1.5;
     ctx.stroke();
-
-    ctx.fillStyle = suitColor(parsed.suit);
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.font = `600 ${Math.floor(r * 0.7)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(`${parsed.rank}${parsed.glyph}`, x, y);
     ctx.restore();
   }
 }
@@ -310,4 +200,24 @@ export async function loadTemplateImage(src: string): Promise<HTMLImageElement> 
   return img;
 }
 
-export { SHARE_LAYOUT };
+/** Load a photo-real face PNG for a share identity. */
+export async function loadFaceImage(
+  identity: ShareCardIdentity,
+): Promise<HTMLImageElement> {
+  return loadTemplateImage(shareFacePath(identity));
+}
+
+/** Load a photo-real face PNG from an engine card code. */
+export async function loadFaceImageFromCode(
+  code: string,
+): Promise<HTMLImageElement | null> {
+  const path = shareFacePathFromCode(code);
+  if (!path) return null;
+  try {
+    return await loadTemplateImage(path);
+  } catch {
+    return null;
+  }
+}
+
+export { SHARE_LAYOUT, suitColor };

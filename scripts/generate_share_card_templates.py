@@ -2,7 +2,8 @@
 """Generate FINAL share-card templates + mute composite samples.
 
 Clean premium tighten: more card, quiet type, fewer overlays.
-Plain-neutral field + photo-real card faces (Cass veto: no ornate chrome).
+Plain-neutral field + photo-real card-face PNGs slotted into measured seats
+(Cass veto: no ornate chrome; no canvas pip/monogram faces).
 
 Outputs:
   public/share-cards/01-birth-result-template.png
@@ -18,6 +19,7 @@ Locks:
   - Life Path seats at measured circle centers (layout.json); thin/light rings
   - Sample labels are card names only (no price / banned words)
   - Joker never silent K♠ (samples use real cards only)
+  - Card faces are PNGs from public/share-cards/faces/<seo-slug>.png
 
 Run from repo root:  python3 scripts/generate_share_card_templates.py
 """
@@ -32,6 +34,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "public" / "share-cards"
 SAMPLES = OUT / "samples"
+FACES = OUT / "faces"
 LAYOUT_PATH = ROOT / "lib" / "share-cards" / "layout.json"
 HERMES = Path("/Users/main/Desktop/hermes-outputs/cardblueprints/share-cards")
 
@@ -40,63 +43,16 @@ W, H = 1080, 1920
 FIELD = (0xEB, 0xE7, 0xE0)
 INK = (0x2A, 0x26, 0x22)
 BAND_INK = (0x6A, 0x64, 0x5C)  # muted charcoal — quiet type
-# Photo-real card stock
+# Photo-real card stock (under shadow / transparent corners)
 CARD_FACE_BG = (0xFF, 0xFE, 0xF9)
 CARD_EDGE = (0x2C, 0x2A, 0x28)
-# Standard playing-card red / black
-RED = (0xC4, 0x1E, 0x3A)
-BLACK = (0x1A, 0x1A, 0x1A)
 # Subtle neutral chrome (not gold)
 NEUTRAL_RING = (0xD8, 0xD2, 0xC8)  # thinner/lighter seat rings
 WATERMARK = "cardblueprints.com"
 
 SUIT_MAP = {"♥": "hearts", "♦": "diamonds", "♣": "clubs", "♠": "spades"}
-GLYPH = {"hearts": "♥", "diamonds": "♦", "clubs": "♣", "spades": "♠"}
+RANK_SLUG = {"A": "ace", "J": "jack", "Q": "queen", "K": "king"}
 RANK_WORD = {"A": "Ace", "J": "Jack", "Q": "Queen", "K": "King"}
-
-# Canonical pip layout from components/cards/CardFace.tsx
-COL_X = (0.27, 0.50, 0.73)
-PIPS: dict[str, list[tuple[int, float]]] = {
-    "2": [(1, 0.18), (1, 0.82)],
-    "3": [(1, 0.18), (1, 0.50), (1, 0.82)],
-    "4": [(0, 0.18), (2, 0.18), (0, 0.82), (2, 0.82)],
-    "5": [(0, 0.18), (2, 0.18), (1, 0.50), (0, 0.82), (2, 0.82)],
-    "6": [(0, 0.18), (2, 0.18), (0, 0.50), (2, 0.50), (0, 0.82), (2, 0.82)],
-    "7": [(0, 0.18), (2, 0.18), (1, 0.34), (0, 0.50), (2, 0.50), (0, 0.82), (2, 0.82)],
-    "8": [
-        (0, 0.18),
-        (2, 0.18),
-        (1, 0.34),
-        (0, 0.50),
-        (2, 0.50),
-        (1, 0.66),
-        (0, 0.82),
-        (2, 0.82),
-    ],
-    "9": [
-        (0, 0.18),
-        (2, 0.18),
-        (0, 0.39),
-        (2, 0.39),
-        (1, 0.50),
-        (0, 0.61),
-        (2, 0.61),
-        (0, 0.82),
-        (2, 0.82),
-    ],
-    "10": [
-        (0, 0.18),
-        (2, 0.18),
-        (1, 0.29),
-        (0, 0.39),
-        (2, 0.39),
-        (0, 0.61),
-        (2, 0.61),
-        (1, 0.71),
-        (0, 0.82),
-        (2, 0.82),
-    ],
-}
 
 FONT_SERIF = "/System/Library/Fonts/Supplemental/Times New Roman Bold.ttf"
 FONT_SERIF_REG = "/System/Library/Fonts/Supplemental/Times New Roman.ttf"
@@ -162,24 +118,32 @@ def make_compat_template(layout: dict) -> Image.Image:
     return img
 
 
-def parse_card(code: str) -> dict | None:
+def face_slug_from_code(code: str) -> str | None:
+    if code == "Joker":
+        return "joker"
     glyph = next((c for c in code if c in SUIT_MAP), None)
     if not glyph:
         return None
     suit = SUIT_MAP[glyph]
     rank = code.replace(glyph, "").strip()
-    rank_word = RANK_WORD.get(rank, rank)
-    return {
-        "rank": rank,
-        "suit": suit,
-        "glyph": GLYPH[suit],
-        "label": f"{rank_word} of {suit.capitalize()}",
-        "color": RED if suit in ("hearts", "diamonds") else BLACK,
-    }
+    rank_slug = RANK_SLUG.get(rank, rank.lower())
+    return f"{rank_slug}-of-{suit}"
 
 
-def draw_card_face(base: Image.Image, slot: dict, code: str) -> Image.Image:
-    """Photo-real face: white stock, thin dark edge, soft drop shadow, pips."""
+def load_face(code: str) -> Image.Image:
+    slug = face_slug_from_code(code)
+    if not slug:
+        raise ValueError(f"unknown card code for face: {code}")
+    path = FACES / f"{slug}.png"
+    if not path.exists():
+        raise FileNotFoundError(f"missing face PNG: {path}")
+    return Image.open(path).convert("RGBA")
+
+
+def paste_rounded_face(
+    base: Image.Image, slot: dict, face: Image.Image
+) -> Image.Image:
+    """Soft drop shadow + rounded clip + paste photo-real face PNG into slot."""
     x, y, w, h = slot["x"], slot["y"], slot["w"], slot["h"]
     r = int(min(w, h) * 0.055)
 
@@ -194,141 +158,39 @@ def draw_card_face(base: Image.Image, slot: dict, code: str) -> Image.Image:
     shadow = shadow.filter(ImageFilter.GaussianBlur(16))
     out = Image.alpha_composite(base.convert("RGBA"), shadow)
 
-    face = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(face)
-    d.rounded_rectangle(
+    # Stock under + rounded mask for the face
+    face_layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    fd = ImageDraw.Draw(face_layer)
+    fd.rounded_rectangle(
         [x, y, x + w, y + h],
         radius=r,
         fill=CARD_FACE_BG + (255,),
+    )
+
+    resized = face.resize((w, h), Image.Resampling.LANCZOS)
+    mask = Image.new("L", (w, h), 0)
+    md = ImageDraw.Draw(mask)
+    md.rounded_rectangle([0, 0, w - 1, h - 1], radius=r, fill=255)
+    face_layer.paste(resized, (x, y), mask)
+
+    # Thin dark edge
+    fd.rounded_rectangle(
+        [x, y, x + w, y + h],
+        radius=r,
         outline=CARD_EDGE + (255,),
         width=max(2, int(w * 0.008)),
     )
+    return Image.alpha_composite(out, face_layer).convert("RGB")
 
-    parsed = parse_card(code)
-    if not parsed:
-        return Image.alpha_composite(out, face).convert("RGB")
 
-    color = parsed["color"]
-    pad = w * 0.075
-    corner_size = int(h * 0.085)
-    glyph_size = int(h * 0.065)
-    cx = x + pad + corner_size * 0.35
-
-    # Upper-left corner
-    d.text(
-        (cx, y + pad),
-        parsed["rank"],
-        font=font(FONT_SERIF, corner_size),
-        fill=color,
-        anchor="ma",
-    )
-    d.text(
-        (cx, y + pad + corner_size * 0.95),
-        parsed["glyph"],
-        font=font(FONT_SANS, glyph_size),
-        fill=color,
-        anchor="ma",
-    )
-
-    # Center: pips for numbers, large suit for A, large suit+rank for courts
-    rank = parsed["rank"]
-    if rank == "A":
-        d.text(
-            (x + w / 2, y + h / 2),
-            parsed["glyph"],
-            font=font(FONT_SANS, int(h * 0.30)),
-            fill=color,
-            anchor="mm",
-        )
-    elif rank in ("J", "Q", "K"):
-        d.text(
-            (x + w / 2, y + h * 0.40),
-            parsed["glyph"],
-            font=font(FONT_SANS, int(h * 0.26)),
-            fill=color,
-            anchor="mm",
-        )
-        d.text(
-            (x + w / 2, y + h * 0.60),
-            rank,
-            font=font(FONT_SERIF, int(h * 0.13)),
-            fill=color,
-            anchor="mm",
-        )
-    elif rank in PIPS:
-        pip_size = int(h * (0.085 if rank == "10" else 0.095))
-        f_pip = font(FONT_SANS, pip_size)
-        for col, yp in PIPS[rank]:
-            px = x + w * COL_X[col]
-            py = y + h * yp
-            d.text((px, py), parsed["glyph"], font=f_pip, fill=color, anchor="mm")
-    else:
-        d.text(
-            (x + w / 2, y + h / 2),
-            parsed["glyph"],
-            font=font(FONT_SANS, int(h * 0.20)),
-            fill=color,
-            anchor="mm",
-        )
-
-    # Mirrored bottom-right corner (upright for PIL simplicity — draw.ts rotates)
-    bx = x + w - pad - corner_size * 0.35
-    by = y + h - pad - corner_size - glyph_size * 0.2
-    d.text(
-        (bx, by - corner_size * 0.95),
-        parsed["rank"],
-        font=font(FONT_SERIF, corner_size),
-        fill=color,
-        anchor="ma",
-    )
-    d.text(
-        (bx, by),
-        parsed["glyph"],
-        font=font(FONT_SANS, glyph_size),
-        fill=color,
-        anchor="ma",
-    )
-
-    return Image.alpha_composite(out, face).convert("RGB")
+def draw_card_face(base: Image.Image, slot: dict, code: str) -> Image.Image:
+    """Slot photo-real face PNG — no canvas pip/monogram drawing."""
+    return paste_rounded_face(base, slot, load_face(code))
 
 
 def draw_joker_face(base: Image.Image, slot: dict) -> Image.Image:
-    """Star + JOKER — never silent K♠."""
-    x, y, w, h = slot["x"], slot["y"], slot["w"], slot["h"]
-    r = int(min(w, h) * 0.055)
-    shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    sd = ImageDraw.Draw(shadow)
-    sd.rounded_rectangle(
-        [x + 8, y + 12, x + w + 8, y + h + 16],
-        radius=r,
-        fill=(0, 0, 0, 70),
-    )
-    shadow = shadow.filter(ImageFilter.GaussianBlur(16))
-    out = Image.alpha_composite(base.convert("RGBA"), shadow)
-    face = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(face)
-    d.rounded_rectangle(
-        [x, y, x + w, y + h],
-        radius=r,
-        fill=CARD_FACE_BG + (255,),
-        outline=CARD_EDGE + (255,),
-        width=max(2, int(w * 0.008)),
-    )
-    d.text(
-        (x + w / 2, y + h * 0.42),
-        "★",
-        font=font(FONT_SERIF, int(h * 0.28)),
-        fill=RED,
-        anchor="mm",
-    )
-    d.text(
-        (x + w / 2, y + h * 0.68),
-        "JOKER",
-        font=font(FONT_SERIF, int(h * 0.08)),
-        fill=BLACK,
-        anchor="mm",
-    )
-    return Image.alpha_composite(out, face).convert("RGB")
+    """Distinct joker.png — never silent K♠."""
+    return paste_rounded_face(base, slot, load_face("Joker"))
 
 
 def draw_label_in_band(d: ImageDraw.ImageDraw, band: dict, label: str):
@@ -356,37 +218,44 @@ def draw_label_in_band(d: ImageDraw.ImageDraw, band: dict, label: str):
     )
 
 
-def draw_life_path_seats(base: Image.Image, seats: list[dict], codes: list[str]) -> Image.Image:
+def draw_life_path_seats(
+    base: Image.Image, seats: list[dict], codes: list[str]
+) -> Image.Image:
+    """Circular chips: photo-real face PNG clipped into measured seats."""
     out = base.convert("RGBA")
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(layer)
     for seat, code in zip(seats, codes):
-        parsed = parse_card(code)
-        if not parsed:
-            continue
         if code == "Joker":
             continue
+        slug = face_slug_from_code(code)
+        if not slug:
+            continue
+        face = load_face(code)
         x, y, r = seat["x"], seat["y"], seat["r"]
-        rr = r * 0.78
+        rr = int(r * 0.78)
+        side = rr * 2
+
         # Soft mini-shadow
-        d.ellipse(
+        sd = ImageDraw.Draw(layer)
+        sd.ellipse(
             [x - rr + 2, y - rr + 3, x + rr + 2, y + rr + 3],
             fill=(0, 0, 0, 40),
         )
-        d.ellipse(
-            [x - rr, y - rr, x + rr, y + rr],
-            fill=CARD_FACE_BG + (255,),
+
+        chip = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+        resized = face.resize((side, side), Image.Resampling.LANCZOS)
+        mask = Image.new("L", (side, side), 0)
+        ImageDraw.Draw(mask).ellipse([0, 0, side - 1, side - 1], fill=255)
+        # stock under
+        stock = Image.new("RGBA", (side, side), CARD_FACE_BG + (255,))
+        chip = Image.composite(resized, stock, mask)
+        # edge
+        ImageDraw.Draw(chip).ellipse(
+            [0, 0, side - 1, side - 1],
             outline=CARD_EDGE + (255,),
             width=2,
         )
-        text = f"{parsed['rank']}{parsed['glyph']}"
-        d.text(
-            (x, y),
-            text,
-            font=font(FONT_SERIF, int(r * 0.7)),
-            fill=parsed["color"],
-            anchor="mm",
-        )
+        layer.paste(chip, (x - rr, y - rr), chip)
     return Image.alpha_composite(out, layer).convert("RGB")
 
 
@@ -416,6 +285,29 @@ def assert_field_is_neutral(img: Image.Image):
     if abs(p[0] - FIELD[0]) > 12 or abs(p[1] - FIELD[1]) > 12 or abs(p[2] - FIELD[2]) > 12:
         raise SystemExit(f"field not neutral: corner={p} expected~{FIELD}")
     print(f"OK field: corner {p} ≈ {FIELD}")
+
+
+def assert_faces_on_disk():
+    required = [
+        "8-of-diamonds",
+        "queen-of-diamonds",
+        "ace-of-hearts",
+        "joker",
+        "2-of-hearts",
+        "5-of-clubs",
+        "9-of-diamonds",
+        "queen-of-spades",
+        "3-of-hearts",
+        "7-of-clubs",
+        "king-of-diamonds",
+    ]
+    missing = [s for s in required if not (FACES / f"{s}.png").exists()]
+    if missing:
+        raise SystemExit(f"missing face PNGs: {missing}")
+    total = len(list(FACES.glob("*.png")))
+    if total < 53:
+        raise SystemExit(f"expected 53 face PNGs (52+joker), found {total}")
+    print(f"OK faces: {total} PNGs in {FACES.relative_to(ROOT)}")
 
 
 def make_birth_sample(layout: dict) -> Image.Image:
@@ -449,6 +341,7 @@ def sync_hermes():
         return
     HERMES.mkdir(parents=True, exist_ok=True)
     (HERMES / "samples").mkdir(parents=True, exist_ok=True)
+    (HERMES / "faces").mkdir(parents=True, exist_ok=True)
     for name in (
         "01-birth-result-template.png",
         "02-compat-duel-template.png",
@@ -466,12 +359,20 @@ def sync_hermes():
         if src.exists():
             shutil.copy2(src, HERMES / "samples" / name)
             print(f"hermes ← samples/{name}")
+    # Mirror face PNGs into hermes
+    for src in sorted(FACES.glob("*.png")):
+        shutil.copy2(src, HERMES / "faces" / src.name)
+    attr = FACES / "ATTRIBUTION.txt"
+    if attr.exists():
+        shutil.copy2(attr, HERMES / "faces" / "ATTRIBUTION.txt")
+    print(f"hermes ← faces/ ({len(list((HERMES / 'faces').glob('*.png')))} png)")
 
 
 def main():
     layout = load_layout()
     OUT.mkdir(parents=True, exist_ok=True)
     SAMPLES.mkdir(parents=True, exist_ok=True)
+    assert_faces_on_disk()
 
     # Keep public layout.json in sync with lib source of truth
     shutil.copy2(LAYOUT_PATH, OUT / "layout.json")
@@ -511,6 +412,7 @@ def main():
         if ink < 12:
             raise SystemExit("sample missing watermark ink near bottom")
     print("OK samples: quiet watermark present; labels locked in draw_label_in_band")
+    print("OK samples: faces pasted from public/share-cards/faces/ (drawImage path)")
 
     sync_hermes()
 

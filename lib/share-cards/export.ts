@@ -13,6 +13,8 @@ import {
   drawCardFace,
   drawLabelInBand,
   drawLifePathSeats,
+  loadFaceImage,
+  loadFaceImageFromCode,
   loadTemplateImage,
 } from "./draw";
 
@@ -57,9 +59,12 @@ export async function renderBirthSharePng(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("2D canvas unavailable");
 
-  const template = await loadTemplateImage(SHARE_TEMPLATE_PATHS.birthResult);
+  const [template, face] = await Promise.all([
+    loadTemplateImage(SHARE_TEMPLATE_PATHS.birthResult),
+    loadFaceImage(identity),
+  ]);
   ctx.drawImage(template, 0, 0, layout.canvas.w, layout.canvas.h);
-  drawCardFace(ctx, layout.cardSlot, identity);
+  drawCardFace(ctx, layout.cardSlot, identity, face);
   const label = birthShareLabel(identity);
   drawLabelInBand(ctx, layout.nameBand, label);
 
@@ -86,21 +91,29 @@ export async function renderCompatSharePng(
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("2D canvas unavailable");
 
-  const template = await loadTemplateImage(SHARE_TEMPLATE_PATHS.compatDuel);
+  const seatCodes = input.firstLifePathSeatCodes.slice(
+    0,
+    layout.lifePathBoard.seats,
+  );
+
+  const [template, faceA, faceB, ...seatFaces] = await Promise.all([
+    loadTemplateImage(SHARE_TEMPLATE_PATHS.compatDuel),
+    loadFaceImage(a),
+    loadFaceImage(b),
+    ...seatCodes.map((code) => loadFaceImageFromCode(code)),
+  ]);
+
   ctx.drawImage(template, 0, 0, layout.canvas.w, layout.canvas.h);
 
   const [slotA, slotB] = layout.cardSlots;
-  drawCardFace(ctx, slotA, a);
-  drawCardFace(ctx, slotB, b);
+  drawCardFace(ctx, slotA, a, faceA);
+  drawCardFace(ctx, slotB, b, faceB);
 
   const label = compatShareLabel(a, b);
   drawLabelInBand(ctx, layout.labelBand, label);
 
   // First birthday only — seats filled for Deep Dive path relevance; never paint price on the image.
-  drawLifePathSeats(
-    ctx,
-    input.firstLifePathSeatCodes.slice(0, layout.lifePathBoard.seats),
-  );
+  drawLifePathSeats(ctx, seatCodes, seatFaces);
 
   const blob = await canvasToPngBlob(canvas);
   return { blob, label };

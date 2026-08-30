@@ -1,0 +1,14 @@
+Share-card face PNGs — licensing
+
+52 English-pattern faces:
+  Source: Dmitry Fomin — "English pattern" playing cards (Wikimedia Commons)
+  Files: English_pattern_<rank>_of_<suit>.svg → rasterized PNG
+  License: CC0 1.0 Universal Public Domain Dedication
+  https://creativecommons.org/publicdomain/zero/1.0/
+
+Joker (joker.png):
+  Source: Wikimedia Commons — File:Joker_black_02.svg
+  License: CC0 / public-domain dedication as published on Commons
+  Distinct jester art — never a silent King of Spades.
+
+Do NOT substitute public/pins/*.png (brand pins) as card faces.

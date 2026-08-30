@@ -16,6 +16,16 @@ export {
   type ShareCardIdentity,
 } from "./labels";
 export {
+  faceSlugFromIdentity,
+  faceSlugFromCode,
+  shareFacePath,
+  shareFacePathFromCode,
+  drawCardFace,
+  loadFaceImage,
+  loadFaceImageFromCode,
+  loadTemplateImage,
+} from "./draw";
+export {
   renderBirthSharePng,
   renderCompatSharePng,
   sharePngFile,

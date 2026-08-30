@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 import {
@@ -15,6 +15,8 @@ import {
   labelContainsBannedWord,
   labelContainsPrice,
   shareIdentityFromCode,
+  faceSlugFromIdentity,
+  shareFacePath,
 } from "../lib/share-cards";
 
 const root = join(import.meta.dir, "..");
@@ -145,8 +147,13 @@ test("Joker: honest treatment, never silent king-of-spades", () => {
 
   expect(labelsSrc).toContain('code === "Joker"');
   expect(drawSrc).toContain('identity.kind === "joker"');
-  expect(drawSrc).toContain("JOKER");
   expect(drawSrc).toContain("never a silent King of Spades");
+  expect(drawSrc).toContain("/share-cards/faces/");
+  expect(faceSlugFromIdentity(joker!)).toBe("joker");
+  expect(shareFacePath(joker!)).toBe("/share-cards/faces/joker.png");
+  expect(existsSync(join(root, "public/share-cards/faces/joker.png"))).toBe(true);
+  // Joker face must not be the king-of-spades asset.
+  expect(shareFacePath(joker!)).not.toContain("king-of-spades");
   expect(exportSrc).toContain("Joker must not be remapped");
   expect(exportSrc).not.toMatch(/identity\.code\s*=\s*["']K/);
   expect(exportSrc).toContain("Joker has no duel share");
@@ -159,6 +166,7 @@ test("Joker: honest treatment, never silent king-of-spades", () => {
 test("runtime is client canvas + static templates, not Imagen/API", () => {
   expect(exportSrc).toContain("createShareCanvas");
   expect(exportSrc).toContain("loadTemplateImage");
+  expect(exportSrc).toContain("loadFaceImage");
   expect(exportSrc).toContain("SHARE_TEMPLATE_PATHS");
   expect(exportSrc).not.toMatch(/imagen|openai|replicate|stability/i);
   expect(shareUi).toContain("renderBirthSharePng");
@@ -166,16 +174,43 @@ test("runtime is client canvas + static templates, not Imagen/API", () => {
   expect(shareUi).toContain("sharePngFile");
 });
 
+test("photo-real face PNGs slotted via drawImage (no canvas pips/monograms)", () => {
+  // Runtime draws face PNGs — not Times pips / rank monograms
+  expect(drawSrc).toContain("drawImage");
+  expect(drawSrc).toContain("/share-cards/faces/");
+  expect(drawSrc).toContain("loadFaceImage");
+  expect(drawSrc).not.toContain("const PIPS");
+  expect(drawSrc).not.toContain("COL_X");
+  expect(exportSrc).toContain("loadFaceImage");
+  expect(exportSrc).toContain("drawCardFace(ctx, layout.cardSlot, identity, face)");
 
-test("photo-real faces + plain neutral templates (no ornate chrome)", () => {
-  // Card stock / edge / standard red — not gold-bordered paper chrome
+  // Full 52 + joker face set on disk (seo-slug names)
+  const facesDir = join(root, "public/share-cards/faces");
+  const pngs = readdirSync(facesDir).filter((f) => f.endsWith(".png"));
+  expect(pngs.length).toBe(53);
+  for (const slug of [
+    "8-of-diamonds",
+    "queen-of-diamonds",
+    "ace-of-hearts",
+    "jack-of-clubs",
+    "king-of-spades",
+    "joker",
+  ]) {
+    expect(existsSync(join(facesDir, `${slug}.png`))).toBe(true);
+  }
+  // Brand pins must NEVER be used as faces
+  expect(drawSrc).not.toContain("/pins/");
+  expect(exportSrc).not.toContain("/pins/");
+
+  const queen = shareIdentityFromCode("Q♦")!;
+  expect(faceSlugFromIdentity(queen)).toBe("queen-of-diamonds");
+  expect(shareFacePath(queen)).toBe("/share-cards/faces/queen-of-diamonds.png");
+
+  // Soft shadow / stock constants still present for clip underlay
   expect(drawSrc).toContain("#fffef9");
   expect(drawSrc).toContain("#2c2a28");
-  expect(drawSrc).toContain("#c41e3a");
-  expect(drawSrc).toContain("PIPS");
-  expect(drawSrc).toContain('identity.kind === "joker"');
-  expect(drawSrc).toContain("JOKER");
-  // Generator brief: plain field, flat templates, no gold / dashed / baked shadows
+
+  // Generator brief: plain field, flat templates, paste face PNGs
   const gen = read("scripts/generate_share_card_templates.py");
   expect(gen).toContain("0xEB, 0xE7, 0xE0");
   expect(gen).not.toContain("soft_card_shadow");
@@ -183,6 +218,9 @@ test("photo-real faces + plain neutral templates (no ornate chrome)", () => {
   expect(gen).not.toMatch(/draw_frame\(/);
   expect(gen).not.toMatch(/dashed_rect\(/);
   expect(gen).not.toContain("GOLD = ");
+  expect(gen).toContain("faces/<seo-slug>.png");
+  expect(gen).toContain("paste_rounded_face");
+  expect(gen).not.toContain("PIPS:");
   // Quiet type in draw
   expect(drawSrc).toContain("#6a645c");
   expect(drawSrc).toMatch(/400 \$\{size\}px/);
