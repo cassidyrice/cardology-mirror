@@ -13,6 +13,7 @@ import {
   isSilentKingOfSpades,
   labelContainsBannedWord,
   labelContainsPrice,
+  lifePathSeatCenters,
   shareIdentityFromCode,
 } from "../lib/share-cards";
 
@@ -30,12 +31,33 @@ test("public share templates and layout are on disk for production", () => {
   expect(existsSync(join(root, "public/share-cards/01-birth-result-template.png"))).toBe(true);
   expect(existsSync(join(root, "public/share-cards/02-compat-duel-template.png"))).toBe(true);
   expect(existsSync(join(root, "public/share-cards/layout.json"))).toBe(true);
+  expect(existsSync(join(root, "public/share-cards/samples/birth-8-of-diamonds.png"))).toBe(true);
+  expect(
+    existsSync(join(root, "public/share-cards/samples/compat-queen-diamonds-ace-hearts.png")),
+  ).toBe(true);
   expect(SHARE_TEMPLATE_PATHS.birthResult).toBe("/share-cards/01-birth-result-template.png");
   expect(SHARE_TEMPLATE_PATHS.compatDuel).toBe("/share-cards/02-compat-duel-template.png");
   expect(SHARE_LAYOUT.birthResult.canvas).toEqual({ w: 1080, h: 1920 });
   expect(SHARE_LAYOUT.compatDuel.cardSlots).toHaveLength(2);
   expect(SHARE_LIFE_PATH_SEAT_COUNT).toBe(7);
   expect(SHARE_LAYOUT.rules.noPriceOnImage).toBe(true);
+});
+
+test("Life Path seats are measured circle centers, not a guessed smile-arc", () => {
+  const seats = SHARE_LAYOUT.compatDuel.lifePathBoard.seatCenters;
+  expect(seats).toHaveLength(7);
+  expect(SHARE_LAYOUT.compatDuel.lifePathBoard.seats).toBe(7);
+  expect(seats[0]).toEqual({ x: 203, y: 1352, r: 36 });
+  expect(seats[3]).toEqual({ x: 541, y: 1440, r: 36 });
+  expect(seats[6]).toEqual({ x: 879, y: 1352, r: 36 });
+
+  const centers = lifePathSeatCenters();
+  expect(centers).toHaveLength(7);
+  expect(centers.map((s) => s.y)).toEqual([1352, 1399, 1429, 1440, 1429, 1399, 1352]);
+  // Guards against reintroducing the guessed arc (seat0 ≈ 180,1280).
+  expect(centers[0].x).toBeGreaterThan(190);
+  expect(centers[0].y).toBeGreaterThan(1320);
+  expect(centers).toEqual(seats);
 });
 
 test("birth calculator: Copy/Share appears after card reveal and before DeepDiveCta", () => {

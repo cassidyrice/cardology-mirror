@@ -2,6 +2,8 @@ import layoutJson from "./layout.json";
 
 export type Rect = { x: number; y: number; w: number; h: number };
 
+export type SeatCenter = { x: number; y: number; r: number };
+
 export type ShareLayout = {
   birthResult: {
     canvas: { w: number; h: number };
@@ -15,7 +17,11 @@ export type ShareLayout = {
     template: string;
     cardSlots: Rect[];
     labelBand: Rect;
-    lifePathBoard: { centerY: number; seats: number };
+    lifePathBoard: {
+      centerY: number;
+      seats: number;
+      seatCenters: SeatCenter[];
+    };
     watermark: string;
     firstBirthdayOnlyForDeepDive: boolean;
   };
@@ -42,23 +48,15 @@ export const SHARE_LIFE_PATH_SEAT_COUNT =
   SHARE_LAYOUT.compatDuel.lifePathBoard.seats;
 
 /**
- * Approximate seat centers along the template's smile-arc of circles.
- * Layout only exposes centerY + seat count; x/y are derived to match art.
+ * Measured seat centers from 02-compat-duel-template.png (circle-ness Hough).
+ * Returns the layout coords only — never a procedural smile-arc.
  */
-export function lifePathSeatCenters(
-  canvasW = SHARE_LAYOUT.compatDuel.canvas.w,
-  centerY = SHARE_LAYOUT.compatDuel.lifePathBoard.centerY,
-  seats = SHARE_LIFE_PATH_SEAT_COUNT,
-): Array<{ x: number; y: number; r: number }> {
-  const span = 720;
-  const depth = 90;
-  const r = 42;
-  const originX = canvasW / 2 - span / 2;
-  return Array.from({ length: seats }, (_, i) => {
-    const t = seats === 1 ? 0.5 : i / (seats - 1);
-    const x = originX + t * span;
-    // Positive y is down — middle seats sit lower (smile).
-    const y = centerY + Math.sin(t * Math.PI) * depth;
-    return { x, y, r };
-  });
+export function lifePathSeatCenters(): SeatCenter[] {
+  const board = SHARE_LAYOUT.compatDuel.lifePathBoard;
+  if (board.seatCenters.length !== board.seats) {
+    throw new Error(
+      `lifePathBoard.seatCenters length ${board.seatCenters.length} !== seats ${board.seats}`,
+    );
+  }
+  return board.seatCenters;
 }

@@ -128,8 +128,12 @@ export function ShareCompatDuelButton({
   }
 
   if (disabled) {
-    // Honest Joker: no silent K♠ duel. Hide share rather than fake seats.
-    return null;
+    // Honest Joker: no silent K♠ duel. Do not fabricate seats.
+    return (
+      <p className="text-center text-sm text-brand-ink-soft" data-share-kind="compat-duel-joker">
+        Joker has no duel share
+      </p>
+    );
   }
 
   return (
