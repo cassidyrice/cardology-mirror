@@ -7,6 +7,7 @@ import {
   SHARE_LAYOUT,
   SHARE_LIFE_PATH_SEAT_COUNT,
   SHARE_TEMPLATE_PATHS,
+  lifePathSeatCenters,
   assertShareLabelSafe,
   birthShareLabel,
   compatShareLabel,
@@ -41,6 +42,14 @@ test("public share templates and layout are on disk for production", () => {
   expect(SHARE_LAYOUT.compatDuel.cardSlots).toHaveLength(2);
   expect(SHARE_LIFE_PATH_SEAT_COUNT).toBe(7);
   expect(SHARE_LAYOUT.rules.noPriceOnImage).toBe(true);
+  const seats = SHARE_LAYOUT.compatDuel.lifePathBoard.seatCenters;
+  expect(seats).toHaveLength(7);
+  // Measured on 02-compat-duel-template.png — not a guessed smile-arc.
+  expect(seats[0]).toEqual({ x: 203, y: 1352, r: 36 });
+  expect(seats[3]).toEqual({ x: 541, y: 1440, r: 36 });
+  expect(seats[6]).toEqual({ x: 879, y: 1352, r: 36 });
+  // Mid seat sits ~70px below the old guessed centerY=1280 smile.
+  expect(seats[3].y).toBeGreaterThan(1400);
 });
 
 test("Life Path seats are measured circle centers, not a guessed smile-arc", () => {
@@ -156,4 +165,15 @@ test("runtime is client canvas + static templates, not Imagen/API", () => {
   expect(shareUi).toContain("renderBirthSharePng");
   expect(shareUi).toContain("renderCompatSharePng");
   expect(shareUi).toContain("sharePngFile");
+});
+
+test("lifePathSeatCenters returns measured template coords", () => {
+  const centers = lifePathSeatCenters();
+  expect(centers).toHaveLength(7);
+  expect(centers.map((c) => c.y)).toEqual(
+    SHARE_LAYOUT.compatDuel.lifePathBoard.seatCenters.map((c) => c.y),
+  );
+  // Guard against reintroducing the procedural smile-arc (seat0 was ~180,1280).
+  expect(centers[0].x).toBeGreaterThan(190);
+  expect(centers[0].y).toBeGreaterThan(1320);
 });

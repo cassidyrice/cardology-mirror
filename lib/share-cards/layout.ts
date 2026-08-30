@@ -20,6 +20,7 @@ export type ShareLayout = {
     lifePathBoard: {
       centerY: number;
       seats: number;
+      /** Measured circle centers on 02-compat-duel-template.png — not a guessed arc. */
       seatCenters: SeatCenter[];
     };
     watermark: string;
@@ -48,15 +49,16 @@ export const SHARE_LIFE_PATH_SEAT_COUNT =
   SHARE_LAYOUT.compatDuel.lifePathBoard.seats;
 
 /**
- * Measured seat centers from 02-compat-duel-template.png (circle-ness Hough).
- * Returns the layout coords only — never a procedural smile-arc.
+ * Seat centers measured from the shipped duel template art.
+ * Canvas draw MUST use these coords — never a procedural smile-arc guess.
  */
 export function lifePathSeatCenters(): SeatCenter[] {
   const board = SHARE_LAYOUT.compatDuel.lifePathBoard;
-  if (board.seatCenters.length !== board.seats) {
+  const seats = board.seatCenters;
+  if (!seats || seats.length !== board.seats) {
     throw new Error(
-      `lifePathBoard.seatCenters length ${board.seatCenters.length} !== seats ${board.seats}`,
+      `lifePathBoard.seatCenters must contain exactly ${board.seats} measured seats`,
     );
   }
-  return board.seatCenters;
+  return seats.map((s) => ({ x: s.x, y: s.y, r: s.r }));
 }

@@ -37,7 +37,7 @@ function suitColor(suit: Suit | null): string {
   return SUIT_COLOR_PAPER[suit];
 }
 
-/** Draw a paper-style playing card face into a slot. Joker gets a star, never a silent King of Spades. */
+/** Draw a paper-style playing card face into a slot. Joker gets a star — never a silent King of Spades. */
 export function drawCardFace(
   ctx: CanvasRenderingContext2D,
   slot: Rect,
@@ -148,7 +148,7 @@ export function drawLifePathSeats(
     const { x, y, r } = centers[i];
     const code = seatCodes[i];
     const parsed = parseCard(code);
-    // Never paint a silent King of Spades into a Joker seat — skip empty/unknown.
+    // Never paint a silent K♠ into a Joker seat — skip empty/unknown.
     if (!parsed) continue;
 
     ctx.save();
