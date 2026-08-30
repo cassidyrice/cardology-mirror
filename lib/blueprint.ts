@@ -29,6 +29,16 @@ export interface BlueprintReport {
     under: string;
     over: string;
   };
+  /** Personal ~7.4-day sub-period card within the active 52-day period. Undefined only for the frozen sample report. */
+  dailyCard?: {
+    subPlanet: string;
+    domain: string;
+    card: string;
+    meaning: string;
+    balanced: string;
+    under: string;
+    over: string;
+  };
   reflectionPrompts: string[];
 }
 
@@ -58,6 +68,17 @@ export async function buildBlueprint(birthdate: string): Promise<BlueprintReport
   const r: Reading = await getReading(birthdate);
   const a = r.archetype;
   const ap = r.active_period;
+  const daily = r.daily.bc.interpretation
+    ? {
+        subPlanet: r.daily.sub_planet,
+        domain: r.daily.domain,
+        card: r.daily.bc.card,
+        meaning: r.daily.bc.interpretation.name,
+        balanced: r.daily.bc.interpretation.sweet_spot,
+        under: r.daily.bc.interpretation.under,
+        over: r.daily.bc.interpretation.over,
+      }
+    : undefined;
 
   const reflectionPrompts = [
     `Where did the "${a.description.title}" pattern take over last month, and what were you protecting?`,
@@ -88,6 +109,7 @@ export async function buildBlueprint(birthdate: string): Promise<BlueprintReport
       under: ap.interpretation_bc.under,
       over: ap.interpretation_bc.over,
     },
+    dailyCard: daily,
     reflectionPrompts,
   };
 }

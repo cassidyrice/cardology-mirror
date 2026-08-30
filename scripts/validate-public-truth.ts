@@ -159,8 +159,14 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 }
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
-  ["personal-card-blueprint", "analog-algorithm", "complete-card-blueprint"],
+  [
+    "cardology-membership",
+    "personal-card-blueprint",
+    "analog-algorithm",
+    "complete-card-blueprint",
+  ],
 );
+assert.equal(publicProductBySlug("cardology-membership")?.kind, "membership");
 assert.equal(publicProductBySlug("personal-card-blueprint")?.kind, "instant_report");
 assert.equal(publicProductBySlug("analog-algorithm")?.kind, "digital_download");
 assert.equal(publicProductBySlug("complete-card-blueprint")?.kind, "digital_download");

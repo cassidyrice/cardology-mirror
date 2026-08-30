@@ -13,6 +13,7 @@ import {
   type InstantReportFact,
   isDigitalDownload,
   isInstantReport,
+  isMembership,
 } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
@@ -41,7 +42,7 @@ export default async function CheckoutReviewPage({
   if (!product) notFound();
 
   const isDigital = isDigitalDownload(product);
-  const isReport = isInstantReport(product);
+  const isReport = isInstantReport(product) || isMembership(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
     isDigital

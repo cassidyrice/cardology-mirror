@@ -23,3 +23,7 @@ venv/
 # Vendored agent skills — nothing in the app imports these
 .agents/
 skills-lock.json
+.env.audit
+ops/audit/*.json
+ops/audit/.venv
+ops/audit/cardology-ops-audit-tmp/

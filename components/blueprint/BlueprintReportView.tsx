@@ -120,6 +120,38 @@ export function BlueprintReportView({
           </dl>
         </section>
 
+        {report.dailyCard && (
+          <section className="border-t border-brand-line pt-10">
+            <h3 className="type-h2 text-brand-ink">Your card for today</h3>
+            <p className="mt-4 max-w-[40em] leading-relaxed text-brand-ink-soft">
+              Inside this stretch of {report.currentChapter.planet}, today
+              falls in a shorter {report.dailyCard.subPlanet} sub-period —{" "}
+              {report.dailyCard.domain.toLowerCase()} — governed by{" "}
+              {report.dailyCard.card} ({report.dailyCard.meaning}).
+            </p>
+            <dl className="mt-6 max-w-[40em] space-y-4 text-sm">
+              <div>
+                <dt className="font-semibold text-brand-ink">Balanced today</dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  {report.dailyCard.balanced}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-brand-ink">If it slips under</dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  {report.dailyCard.under}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-brand-ink">If it overplays</dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  {report.dailyCard.over}
+                </dd>
+              </div>
+            </dl>
+          </section>
+        )}
+
         <section className="border-t border-brand-line pt-10">
           <h3 className="type-h2 text-brand-ink">Questions to sit with</h3>
           <ol className="mt-4 max-w-[40em] list-decimal space-y-3 pl-5 leading-relaxed text-brand-ink-soft">

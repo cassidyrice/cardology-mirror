@@ -27,6 +27,7 @@ import {
   isDeepDive,
   isDigitalDownload,
   isInstantReport,
+  isMembership,
 } from "@/lib/products";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -133,7 +134,7 @@ export async function POST(
     return checkoutUnavailable(req, product.slug);
   }
 
-  if (isInstantReport(product) && !formBirthdate) {
+  if ((isInstantReport(product) || isMembership(product)) && !formBirthdate) {
     if (wantsJson) {
       return NextResponse.json({ error: "need-date" }, { status: 400 });
     }
@@ -161,7 +162,7 @@ export async function POST(
       metadata.redownload_days = String(product.redownloadDays);
       metadata.download_asset_key = product.downloadAssetKey;
     }
-    if (isInstantReport(product)) {
+    if (isInstantReport(product) || isMembership(product)) {
       metadata.report_slug = product.reportSlug;
     }
 
@@ -183,6 +184,7 @@ export async function POST(
 
     // Deep Dive must stay on-page: always embed + JSON. Never 303 to checkout.stripe.com.
     const embedded = isDeepDive(product);
+    const subscription = isMembership(product);
     const session = await getStripe().checkout.sessions.create(
       embedded
         ? {
@@ -202,23 +204,40 @@ export async function POST(
             billing_address_collection: "auto",
             customer_creation: "always",
           }
-        : {
-            mode: "payment",
-            line_items: [{ price: priceId, quantity: 1 }],
-            success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${SITE_URL}/checkout/${product.slug}`,
-            metadata: sharedMeta,
-            payment_intent_data: { metadata },
-            branding_settings: {
-              display_name: SITE_NAME,
+        : subscription
+          ? {
+              mode: "subscription",
+              line_items: [{ price: priceId, quantity: 1 }],
+              success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+              cancel_url: `${SITE_URL}/checkout/${product.slug}`,
+              metadata: sharedMeta,
+              subscription_data: { metadata: sharedMeta },
+              branding_settings: {
+                display_name: SITE_NAME,
+              },
+              phone_number_collection: {
+                enabled: false,
+              },
+              allow_promotion_codes: true,
+              billing_address_collection: "auto",
+            }
+          : {
+              mode: "payment",
+              line_items: [{ price: priceId, quantity: 1 }],
+              success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+              cancel_url: `${SITE_URL}/checkout/${product.slug}`,
+              metadata: sharedMeta,
+              payment_intent_data: { metadata },
+              branding_settings: {
+                display_name: SITE_NAME,
+              },
+              phone_number_collection: {
+                enabled: false,
+              },
+              allow_promotion_codes: true,
+              billing_address_collection: "auto",
+              customer_creation: "always",
             },
-            phone_number_collection: {
-              enabled: false,
-            },
-            allow_promotion_codes: true,
-            billing_address_collection: "auto",
-            customer_creation: "always",
-          },
     );
 
     recordFunnelEvent({

@@ -17,13 +17,16 @@ import {
   isVoiceReading,
   isDigitalDownload,
   isInstantReport,
+  isMembership,
   isDeepDive,
+  MEMBERSHIP_SLUG,
 } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 import { mintToken } from "@/lib/gate";
 import { mintDownloadToken } from "@/lib/download-token";
 import { mintReportToken } from "@/lib/report-token";
+import { mintMembershipToken } from "@/lib/membership-token";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
@@ -254,6 +257,78 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
+    // ---- BRANCH: membership (recurring Cardology Membership) ----
+    if (product && isMembership(product)) {
+      const birthdate = birthdateFromCheckoutSession(session);
+      const subscriptionId =
+        typeof session.subscription === "string"
+          ? session.subscription
+          : (session.subscription?.id ?? "");
+      let membershipIssued = false;
+      if (
+        email !== "(no email)" &&
+        subscriptionId &&
+        /^\d{4}-\d{2}-\d{2}$/.test(birthdate)
+      ) {
+        try {
+          const token = await mintMembershipToken(
+            email,
+            product.reportSlug,
+            subscriptionId,
+            birthdate,
+          );
+          const membershipUrl = `${SITE_URL}/membership?token=${encodeURIComponent(token)}`;
+          await sendIntakeEmail({
+            to: email,
+            subject: "Your Cardology Membership is active",
+            text: [
+              `Thank you — your ${product.name} is confirmed.`,
+              "",
+              "Your dashboard is ready right now:",
+              membershipUrl,
+              "",
+              "It refreshes with a new link each month when your membership renews — keep the latest one from your email.",
+              "",
+              "Cancel anytime by replying to this email.",
+            ].join("\n"),
+          });
+          membershipIssued = true;
+        } catch (e) {
+          console.error("[webhook] membership email issuance failed", e);
+        }
+      } else {
+        console.error("[webhook] membership missing email/subscription/birthdate", {
+          hasEmail: email !== "(no email)",
+          hasSubscription: Boolean(subscriptionId),
+          birthdateValid: /^\d{4}-\d{2}-\d{2}$/.test(birthdate),
+        });
+      }
+
+      const to = process.env.INTAKE_EMAIL;
+      if (to) {
+        try {
+          await sendIntakeEmail({
+            to,
+            subject: `Payment received (membership): ${offerName} — ${email}`,
+            text: [
+              `Offer: ${offerName} (${offerSlug || MEMBERSHIP_SLUG})`,
+              `Type: membership (subscription)`,
+              `Amount: ${amount}`,
+              `Customer email: ${email}`,
+              `Birthdate supplied: ${/^\d{4}-\d{2}-\d{2}$/.test(birthdate) ? "yes" : "NO"}`,
+              `Subscription: ${subscriptionId || "(missing)"}`,
+              `Welcome email sent: ${membershipIssued ? "yes" : "NO — send manually"}`,
+              `Stripe session: ${session.id}`,
+            ].join("\n"),
+            replyTo: email !== "(no email)" ? email : undefined,
+          });
+        } catch (e) {
+          console.error("[webhook] membership notification email failed", e);
+        }
+      }
+      return NextResponse.json({ received: true });
+    }
+
     // ---- BRANCH: instant report (Personal Card Blueprint) ----
     if (product && isInstantReport(product)) {
       // The buyer's birth date arrives from our review-page date picker
@@ -384,6 +459,47 @@ export async function POST(req: NextRequest) {
         console.error("[webhook] payment notification email failed", e);
       }
     }
+  }
+
+  // ---- Membership renewal: push the token's exp forward each billing cycle ----
+  if (event.type === "invoice.paid") {
+    const invoice = event.data.object as Stripe.Invoice;
+    const subscriptionDetails = invoice.parent?.subscription_details;
+    const subscriptionId =
+      typeof subscriptionDetails?.subscription === "string"
+        ? subscriptionDetails.subscription
+        : (subscriptionDetails?.subscription?.id ?? "");
+    if (invoice.billing_reason === "subscription_cycle" && subscriptionId) {
+      try {
+        const meta = subscriptionDetails?.metadata || {};
+        const email = invoice.customer_email || "";
+        const birthdate = meta.birthdate || "";
+        const reportSlug = meta.report_slug || MEMBERSHIP_SLUG;
+        if (email && /^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
+          const token = await mintMembershipToken(email, reportSlug, subscriptionId, birthdate);
+          const membershipUrl = `${SITE_URL}/membership?token=${encodeURIComponent(token)}`;
+          await sendIntakeEmail({
+            to: email,
+            subject: "Your Cardology Membership renewed",
+            text: [
+              "Your membership just renewed — here's your fresh dashboard link:",
+              "",
+              membershipUrl,
+              "",
+              "Cancel anytime by replying to this email.",
+            ].join("\n"),
+          });
+        } else {
+          console.error("[webhook] membership renewal missing email/birthdate", {
+            subscriptionId,
+            hasEmail: Boolean(email),
+          });
+        }
+      } catch (e) {
+        console.error("[webhook] membership renewal token mint failed", e);
+      }
+    }
+    return NextResponse.json({ received: true });
   }
 
   return NextResponse.json({ received: true });

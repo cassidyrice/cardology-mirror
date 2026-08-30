@@ -2,7 +2,11 @@
 // Voice-reading offers are retained for old Stripe sessions and entitlements,
 // but are not part of the active public catalog or new checkout lookup.
 
-export type ProductKind = "voice_reading" | "digital_download" | "instant_report";
+export type ProductKind =
+  | "voice_reading"
+  | "digital_download"
+  | "instant_report"
+  | "membership";
 
 export type ReadingAccessType = "single_session" | "season_pass";
 
@@ -13,7 +17,8 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_ANALOG_ALGORITHM"
   | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
-  | "STRIPE_PRICE_DEEP_DIVE";
+  | "STRIPE_PRICE_DEEP_DIVE"
+  | "STRIPE_PRICE_MEMBERSHIP";
 
 type ProductBase = {
   slug: string;
@@ -53,8 +58,21 @@ export type InstantReportOffer = ProductBase & {
   reportSlug: string;
 };
 
-export type SiteProduct = ReadingOffer | DigitalDownloadOffer | InstantReportOffer;
-export type ActiveProduct = DigitalDownloadOffer | InstantReportOffer;
+export type MembershipOffer = ProductBase & {
+  kind: "membership";
+  reportSlug: string;
+  billingPeriod: "month";
+};
+
+export type SiteProduct =
+  | ReadingOffer
+  | DigitalDownloadOffer
+  | InstantReportOffer
+  | MembershipOffer;
+export type ActiveProduct =
+  | DigitalDownloadOffer
+  | InstantReportOffer
+  | MembershipOffer;
 
 export type DigitalOfferFact = {
   label: "Deliverable" | "Format" | "Access" | "Redownload" | "Renewal";
@@ -265,15 +283,48 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   fileName: "Birth-Card-Deep-Dive.pdf",
 };
 
+export const MEMBERSHIP_SLUG = "cardology-membership";
+
+export const MEMBERSHIP_PRODUCT: MembershipOffer = {
+  kind: "membership",
+  slug: MEMBERSHIP_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_MEMBERSHIP",
+  name: "Cardology Membership",
+  price: 9,
+  priceLabel: "$9/mo",
+  badge: "Membership",
+  oneLine:
+    "Your birth card, unlocked — plus your personal card-of-the-day and current 52-day period, every day.",
+  bestFor:
+    "Anyone who wants to actually use their birth card, not just read about it once.",
+  deliverable:
+    "An ongoing personalized dashboard: your birth card, your current planetary period, and your card for today — refreshed daily, delivered by email.",
+  turnaround: "Available immediately after payment — no call, no wait.",
+  includes: [
+    "Your birth card and ruling card, in plain language",
+    "Your card for today, calculated from your birth card (not a generic daily card)",
+    "Your current 52-day planetary period, with what it means right now",
+    "Renews monthly — cancel anytime",
+  ],
+  cta: "Join — $9/mo",
+  checkoutNote:
+    "Recurring monthly charge. You enter your birth date at checkout; cancel anytime from the link in any renewal email.",
+  reportSlug: MEMBERSHIP_SLUG,
+  billingPeriod: "month",
+  href: `/checkout/${MEMBERSHIP_SLUG}`,
+};
+
 export const ALL_PRODUCTS: SiteProduct[] = [
   ...INSTANT_REPORT_PRODUCTS,
   ...READING_OFFERS,
   ...DIGITAL_PRODUCTS,
   DEEP_DIVE_PRODUCT,
+  MEMBERSHIP_PRODUCT,
 ];
 
 /** Products currently purchasable and safe to advertise as live offers. */
 export const PUBLIC_PRODUCTS: ActiveProduct[] = [
+  MEMBERSHIP_PRODUCT,
   ...INSTANT_REPORT_PRODUCTS,
   ...DIGITAL_PRODUCTS.filter((product) => product.available),
 ];
@@ -288,6 +339,10 @@ export function isDigitalDownload(p: SiteProduct): p is DigitalDownloadOffer {
 
 export function isInstantReport(p: SiteProduct): p is InstantReportOffer {
   return p.kind === "instant_report";
+}
+
+export function isMembership(p: SiteProduct): p is MembershipOffer {
+  return p.kind === "membership";
 }
 
 export function productBySlug(slug: string): SiteProduct | undefined {
@@ -329,12 +384,20 @@ export function digitalOfferFacts(offer: DigitalDownloadOffer): DigitalOfferFact
   ];
 }
 
-export function instantReportFacts(offer: InstantReportOffer): InstantReportFact[] {
+export function instantReportFacts(
+  offer: InstantReportOffer | MembershipOffer,
+): InstantReportFact[] {
   return [
     { label: "Deliverable", value: offer.deliverable },
     { label: "Input", value: "Your birth date, collected securely at checkout." },
     { label: "Access", value: "Instant report on the confirmation page, plus an emailed return link." },
     { label: "Timing", value: "Generated immediately after payment." },
-    { label: "Renewal", value: "No automatic renewal. One-time purchase." },
+    {
+      label: "Renewal",
+      value:
+        offer.kind === "membership"
+          ? "Renews monthly. Cancel anytime from the link in your renewal email."
+          : "No automatic renewal. One-time purchase.",
+    },
   ];
 }
