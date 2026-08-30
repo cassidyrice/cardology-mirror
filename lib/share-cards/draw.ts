@@ -1,4 +1,4 @@
-import { parseCard, SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
+import { parseCard, type Suit } from "@/lib/cards";
 import {
   SHARE_LAYOUT,
   lifePathSeatCenters,
@@ -9,10 +9,92 @@ import {
   type ShareCardIdentity,
 } from "./labels";
 
-const CARD_FACE_BG = "#fbf6ea";
-const CARD_FACE_BORDER = "#c4a35a";
-const INK = "#14110d";
-const BAND_INK = "#2a241c";
+/** Photo-real card stock — white/off-white, not cream-paper marketing tint. */
+const CARD_FACE_BG = "#fffef9";
+/** Thin dark edge (not gold chrome). */
+const CARD_EDGE = "#2c2a28";
+const INK = "#1a1a1a";
+const BAND_INK = "#3a342c";
+/** Standard playing-card red / black. */
+const RED = "#c41e3a";
+const BLACK = "#1a1a1a";
+
+// Canonical pip layout from components/cards/CardFace.tsx
+const COL_X = [0.27, 0.5, 0.73] as const;
+const PIPS: Record<string, ReadonlyArray<readonly [number, number]>> = {
+  "2": [
+    [1, 0.18],
+    [1, 0.82],
+  ],
+  "3": [
+    [1, 0.18],
+    [1, 0.5],
+    [1, 0.82],
+  ],
+  "4": [
+    [0, 0.18],
+    [2, 0.18],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "5": [
+    [0, 0.18],
+    [2, 0.18],
+    [1, 0.5],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "6": [
+    [0, 0.18],
+    [2, 0.18],
+    [0, 0.5],
+    [2, 0.5],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "7": [
+    [0, 0.18],
+    [2, 0.18],
+    [1, 0.34],
+    [0, 0.5],
+    [2, 0.5],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "8": [
+    [0, 0.18],
+    [2, 0.18],
+    [1, 0.34],
+    [0, 0.5],
+    [2, 0.5],
+    [1, 0.66],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "9": [
+    [0, 0.18],
+    [2, 0.18],
+    [0, 0.39],
+    [2, 0.39],
+    [1, 0.5],
+    [0, 0.61],
+    [2, 0.61],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+  "10": [
+    [0, 0.18],
+    [2, 0.18],
+    [1, 0.29],
+    [0, 0.39],
+    [2, 0.39],
+    [0, 0.61],
+    [2, 0.61],
+    [1, 0.71],
+    [0, 0.82],
+    [2, 0.82],
+  ],
+};
 
 function roundRect(
   ctx: CanvasRenderingContext2D,
@@ -34,28 +116,41 @@ function roundRect(
 
 function suitColor(suit: Suit | null): string {
   if (!suit) return INK;
-  return SUIT_COLOR_PAPER[suit];
+  return suit === "hearts" || suit === "diamonds" ? RED : BLACK;
 }
 
-/** Draw a paper-style playing card face into a slot. Joker gets a star — never a silent King of Spades. */
+/** Draw a photo-real playing card face into a slot. Joker gets a star — never a silent King of Spades. */
 export function drawCardFace(
   ctx: CanvasRenderingContext2D,
   slot: Rect,
   identity: ShareCardIdentity,
 ) {
   const { x, y, w, h } = slot;
-  const r = Math.min(w, h) * 0.06;
+  const r = Math.min(w, h) * 0.055;
 
   ctx.save();
+
+  // Soft drop shadow under the card
+  ctx.shadowColor = "rgba(0,0,0,0.28)";
+  ctx.shadowBlur = 18;
+  ctx.shadowOffsetX = 4;
+  ctx.shadowOffsetY = 8;
+
   roundRect(ctx, x, y, w, h, r);
   ctx.fillStyle = CARD_FACE_BG;
   ctx.fill();
-  ctx.strokeStyle = CARD_FACE_BORDER;
-  ctx.lineWidth = Math.max(3, w * 0.012);
+
+  // Clear shadow for the edge stroke
+  ctx.shadowColor = "transparent";
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+  ctx.strokeStyle = CARD_EDGE;
+  ctx.lineWidth = Math.max(2, w * 0.008);
   ctx.stroke();
 
   if (identity.kind === "joker") {
-    ctx.fillStyle = "#8e321f";
+    ctx.fillStyle = RED;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.font = `600 ${Math.floor(h * 0.28)}px "Times New Roman", Georgia, serif`;
@@ -74,9 +169,9 @@ export function drawCardFace(
   }
 
   const color = suitColor(parsed.suit);
-  const pad = w * 0.08;
-  const cornerSize = Math.floor(h * 0.09);
-  const glyphSize = Math.floor(h * 0.07);
+  const pad = w * 0.075;
+  const cornerSize = Math.floor(h * 0.085);
+  const glyphSize = Math.floor(h * 0.065);
 
   ctx.fillStyle = color;
   ctx.textAlign = "center";
@@ -84,20 +179,37 @@ export function drawCardFace(
   ctx.font = `600 ${cornerSize}px "Times New Roman", Georgia, serif`;
   ctx.fillText(parsed.rank, x + pad + cornerSize * 0.35, y + pad);
   ctx.font = `${glyphSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(parsed.glyph, x + pad + cornerSize * 0.35, y + pad + cornerSize);
+  ctx.fillText(
+    parsed.glyph,
+    x + pad + cornerSize * 0.35,
+    y + pad + cornerSize * 0.95,
+  );
 
-  // Center pip / monogram
+  // Center: authentic pip layout / ace / court monogram
   ctx.textBaseline = "middle";
   if (parsed.rank === "A") {
-    ctx.font = `600 ${Math.floor(h * 0.32)}px "Times New Roman", Georgia, serif`;
+    ctx.font = `600 ${Math.floor(h * 0.3)}px "Times New Roman", Georgia, serif`;
     ctx.fillText(parsed.glyph, x + w / 2, y + h / 2);
   } else if (parsed.rank === "J" || parsed.rank === "Q" || parsed.rank === "K") {
-    ctx.font = `600 ${Math.floor(h * 0.28)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.glyph, x + w / 2, y + h * 0.42);
-    ctx.font = `600 ${Math.floor(h * 0.14)}px "Times New Roman", Georgia, serif`;
-    ctx.fillText(parsed.rank, x + w / 2, y + h * 0.62);
+    // Face cards: large suit + rank — not cartoon court art
+    ctx.font = `600 ${Math.floor(h * 0.26)}px "Times New Roman", Georgia, serif`;
+    ctx.fillText(parsed.glyph, x + w / 2, y + h * 0.4);
+    ctx.font = `600 ${Math.floor(h * 0.13)}px "Times New Roman", Georgia, serif`;
+    ctx.fillText(parsed.rank, x + w / 2, y + h * 0.6);
+  } else if (PIPS[parsed.rank]) {
+    const pipSize = Math.floor(h * (parsed.rank === "10" ? 0.085 : 0.095));
+    ctx.font = `600 ${pipSize}px "Times New Roman", Georgia, serif`;
+    for (const [col, yp] of PIPS[parsed.rank]) {
+      const px = x + w * COL_X[col];
+      const py = y + h * yp;
+      ctx.save();
+      ctx.translate(px, py);
+      if (yp > 0.5) ctx.rotate(Math.PI);
+      ctx.fillText(parsed.glyph, 0, 0);
+      ctx.restore();
+    }
   } else {
-    ctx.font = `600 ${Math.floor(h * 0.22)}px "Times New Roman", Georgia, serif`;
+    ctx.font = `600 ${Math.floor(h * 0.2)}px "Times New Roman", Georgia, serif`;
     ctx.fillText(parsed.glyph, x + w / 2, y + h / 2);
   }
 
@@ -110,7 +222,7 @@ export function drawCardFace(
   ctx.font = `600 ${cornerSize}px "Times New Roman", Georgia, serif`;
   ctx.fillText(parsed.rank, 0, 0);
   ctx.font = `${glyphSize}px "Times New Roman", Georgia, serif`;
-  ctx.fillText(parsed.glyph, 0, cornerSize);
+  ctx.fillText(parsed.glyph, 0, cornerSize * 0.95);
   ctx.restore();
 
   ctx.restore();
@@ -155,9 +267,13 @@ export function drawLifePathSeats(
     ctx.beginPath();
     ctx.arc(x, y, r * 0.78, 0, Math.PI * 2);
     ctx.fillStyle = CARD_FACE_BG;
+    ctx.shadowColor = "rgba(0,0,0,0.18)";
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetY = 2;
     ctx.fill();
-    ctx.strokeStyle = CARD_FACE_BORDER;
-    ctx.lineWidth = 2;
+    ctx.shadowColor = "transparent";
+    ctx.strokeStyle = CARD_EDGE;
+    ctx.lineWidth = 1.5;
     ctx.stroke();
 
     ctx.fillStyle = suitColor(parsed.suit);

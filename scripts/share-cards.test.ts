@@ -14,7 +14,6 @@ import {
   isSilentKingOfSpades,
   labelContainsBannedWord,
   labelContainsPrice,
-  lifePathSeatCenters,
   shareIdentityFromCode,
 } from "../lib/share-cards";
 
@@ -165,6 +164,24 @@ test("runtime is client canvas + static templates, not Imagen/API", () => {
   expect(shareUi).toContain("renderBirthSharePng");
   expect(shareUi).toContain("renderCompatSharePng");
   expect(shareUi).toContain("sharePngFile");
+});
+
+
+test("photo-real faces + plain neutral templates (no ornate chrome)", () => {
+  // Card stock / edge / standard red — not gold-bordered paper chrome
+  expect(drawSrc).toContain("#fffef9");
+  expect(drawSrc).toContain("#2c2a28");
+  expect(drawSrc).toContain("#c41e3a");
+  expect(drawSrc).toContain("PIPS");
+  expect(drawSrc).toContain('identity.kind === "joker"');
+  expect(drawSrc).toContain("JOKER");
+  // Generator brief: plain field, no gold frame / dashed slots
+  const gen = read("scripts/generate_share_card_templates.py");
+  expect(gen).toContain("0xEB, 0xE7, 0xE0");
+  expect(gen).toContain("soft_card_shadow");
+  expect(gen).not.toMatch(/draw_frame\(/);
+  expect(gen).not.toMatch(/dashed_rect\(/);
+  expect(gen).not.toContain("GOLD = ");
 });
 
 test("lifePathSeatCenters returns measured template coords", () => {
