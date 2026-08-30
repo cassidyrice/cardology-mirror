@@ -175,13 +175,17 @@ test("photo-real faces + plain neutral templates (no ornate chrome)", () => {
   expect(drawSrc).toContain("PIPS");
   expect(drawSrc).toContain('identity.kind === "joker"');
   expect(drawSrc).toContain("JOKER");
-  // Generator brief: plain field, no gold frame / dashed slots
+  // Generator brief: plain field, flat templates, no gold / dashed / baked shadows
   const gen = read("scripts/generate_share_card_templates.py");
   expect(gen).toContain("0xEB, 0xE7, 0xE0");
-  expect(gen).toContain("soft_card_shadow");
+  expect(gen).not.toContain("soft_card_shadow");
+  expect(gen).toContain("Almost flat field");
   expect(gen).not.toMatch(/draw_frame\(/);
   expect(gen).not.toMatch(/dashed_rect\(/);
   expect(gen).not.toContain("GOLD = ");
+  // Quiet type in draw
+  expect(drawSrc).toContain("#6a645c");
+  expect(drawSrc).toMatch(/400 \$\{size\}px/);
 });
 
 test("lifePathSeatCenters returns measured template coords", () => {

@@ -14,7 +14,8 @@ const CARD_FACE_BG = "#fffef9";
 /** Thin dark edge (not gold chrome). */
 const CARD_EDGE = "#2c2a28";
 const INK = "#1a1a1a";
-const BAND_INK = "#3a342c";
+/** Muted charcoal — quiet label type under cards. */
+const BAND_INK = "#6a645c";
 /** Standard playing-card red / black. */
 const RED = "#c41e3a";
 const BLACK = "#1a1a1a";
@@ -238,12 +239,17 @@ export function drawLabelInBand(
   ctx.fillStyle = BAND_INK;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
+  // Quiet premium type: lighter weight, smaller, soft tracking
+  if ("letterSpacing" in ctx) {
+    (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing =
+      "0.04em";
+  }
 
-  let size = Math.floor(band.h * 0.48);
-  ctx.font = `600 ${size}px "Times New Roman", Georgia, serif`;
-  while (size > 22 && ctx.measureText(safe).width > band.w * 0.92) {
+  let size = Math.floor(band.h * 0.38);
+  ctx.font = `400 ${size}px "Times New Roman", Georgia, serif`;
+  while (size > 18 && ctx.measureText(safe).width > band.w * 0.92) {
     size -= 2;
-    ctx.font = `600 ${size}px "Times New Roman", Georgia, serif`;
+    ctx.font = `400 ${size}px "Times New Roman", Georgia, serif`;
   }
   ctx.fillText(safe, band.x + band.w / 2, band.y + band.h / 2, band.w * 0.96);
   ctx.restore();

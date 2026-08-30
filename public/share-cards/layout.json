@@ -6,16 +6,16 @@
     },
     "template": "01-birth-result-template.png",
     "cardSlot": {
-      "x": 280,
-      "y": 380,
-      "w": 520,
-      "h": 780
+      "x": 228,
+      "y": 280,
+      "w": 624,
+      "h": 936
     },
     "nameBand": {
-      "x": 220,
-      "y": 1208,
-      "w": 640,
-      "h": 90
+      "x": 160,
+      "y": 1268,
+      "w": 760,
+      "h": 70
     },
     "watermark": "cardblueprints.com"
   },
@@ -27,23 +27,23 @@
     "template": "02-compat-duel-template.png",
     "cardSlots": [
       {
-        "x": 156,
-        "y": 220,
-        "w": 360,
-        "h": 540
+        "x": 82,
+        "y": 168,
+        "w": 432,
+        "h": 648
       },
       {
-        "x": 564,
-        "y": 220,
-        "w": 360,
-        "h": 540
+        "x": 566,
+        "y": 168,
+        "w": 432,
+        "h": 648
       }
     ],
     "labelBand": {
-      "x": 130,
-      "y": 800,
-      "w": 820,
-      "h": 80
+      "x": 100,
+      "y": 860,
+      "w": 880,
+      "h": 64
     },
     "lifePathBoard": {
       "centerY": 1440,

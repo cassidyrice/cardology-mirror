@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate FINAL share-card templates + mute composite samples.
 
+Clean premium tighten: more card, quiet type, fewer overlays.
 Plain-neutral field + photo-real card faces (Cass veto: no ornate chrome).
 
 Outputs:
@@ -10,11 +11,11 @@ Outputs:
   public/share-cards/samples/compat-queen-diamonds-ace-hearts.png
 
 Locks:
-  - watermark cardblueprints.com only text on template
-  - flat neutral bg (~#ebe7e0), almost no chrome
+  - watermark cardblueprints.com only text on template (quiet)
+  - flat neutral bg (~#ebe7e0); templates almost flat — no baked shadow blobs
   - NO dashed card-slot guides / name-band dashes on FINAL templates
   - NO ornate gold frames / sunbursts / filigree
-  - Life Path seats at measured circle centers (layout.json)
+  - Life Path seats at measured circle centers (layout.json); thin/light rings
   - Sample labels are card names only (no price / banned words)
   - Joker never silent K♠ (samples use real cards only)
 
@@ -38,7 +39,7 @@ W, H = 1080, 1920
 # Soft warm gray — plain neutral field
 FIELD = (0xEB, 0xE7, 0xE0)
 INK = (0x2A, 0x26, 0x22)
-BAND_INK = (0x3A, 0x34, 0x2C)
+BAND_INK = (0x6A, 0x64, 0x5C)  # muted charcoal — quiet type
 # Photo-real card stock
 CARD_FACE_BG = (0xFF, 0xFE, 0xF9)
 CARD_EDGE = (0x2C, 0x2A, 0x28)
@@ -46,7 +47,7 @@ CARD_EDGE = (0x2C, 0x2A, 0x28)
 RED = (0xC4, 0x1E, 0x3A)
 BLACK = (0x1A, 0x1A, 0x1A)
 # Subtle neutral chrome (not gold)
-NEUTRAL_RING = (0xC8, 0xC2, 0xB8)
+NEUTRAL_RING = (0xD8, 0xD2, 0xC8)  # thinner/lighter seat rings
 WATERMARK = "cardblueprints.com"
 
 SUIT_MAP = {"♥": "hearts", "♦": "diamonds", "♣": "clubs", "♠": "spades"}
@@ -123,25 +124,9 @@ def load_layout() -> dict:
 
 
 def draw_watermark(d: ImageDraw.ImageDraw, text: str = WATERMARK):
-    f = font(FONT_SERIF_REG, 26)
-    # Soft neutral ink — only text on the template
-    d.text((W / 2, 1848), text, font=f, fill=(0x6A, 0x64, 0x5C), anchor="mm")
-
-
-def soft_card_shadow(base: Image.Image, slot: dict, blur: int = 32, alpha: int = 16):
-    """Hairline soft shadow zone under a card slot — minimal chrome, no dashes."""
-    overlay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    od = ImageDraw.Draw(overlay)
-    x, y, w, h = slot["x"], slot["y"], slot["w"], slot["h"]
-    r = int(min(w, h) * 0.06)
-    # Slight offset downward for a natural resting shadow
-    od.rounded_rectangle(
-        [x + 6, y + 10, x + w + 6, y + h + 14],
-        radius=r,
-        fill=(0, 0, 0, alpha),
-    )
-    blurred = overlay.filter(ImageFilter.GaussianBlur(blur))
-    return Image.alpha_composite(base.convert("RGBA"), blurred)
+    f = font(FONT_SERIF_REG, 20)
+    # Quieter watermark — smaller + lower-contrast ink
+    d.text((W / 2, 1856), text, font=f, fill=(0xA8, 0xA2, 0x9A), anchor="mm")
 
 
 def base_canvas() -> Image.Image:
@@ -149,33 +134,27 @@ def base_canvas() -> Image.Image:
 
 
 def draw_life_path_rings(d: ImageDraw.ImageDraw, seats: list[dict]):
-    """7 subtle neutral seat rings at measured seatCenters — no gold, no filigree."""
-    for i in range(len(seats) - 1):
-        a, b = seats[i], seats[i + 1]
-        d.line([(a["x"], a["y"]), (b["x"], b["y"])], fill=NEUTRAL_RING, width=1)
+    """7 thin/light seat rings at measured seatCenters — no connector, no gold."""
     for s in seats:
         r = s["r"]
         d.ellipse(
             [s["x"] - r, s["y"] - r, s["x"] + r, s["y"] + r],
             outline=NEUTRAL_RING,
-            width=2,
+            width=1,
         )
 
 
 def make_birth_template(layout: dict) -> Image.Image:
+    # Almost flat field + quiet watermark — cards cast their own drop shadow in draw
     img = base_canvas()
-    # Soft shadow zone only — NO dashed rectangle, NO ornate frame
-    img = soft_card_shadow(img, layout["birthResult"]["cardSlot"], blur=32, alpha=16).convert("RGB")
     d = ImageDraw.Draw(img)
     draw_watermark(d)
     return img
 
 
 def make_compat_template(layout: dict) -> Image.Image:
-    img = base_canvas().convert("RGBA")
-    for slot in layout["compatDuel"]["cardSlots"]:
-        img = soft_card_shadow(img, slot, blur=26, alpha=14)
-    img = img.convert("RGB")
+    # Flat field + very subtle seat rings + quiet watermark — no baked card shadows
+    img = base_canvas()
     d = ImageDraw.Draw(img)
     seats = layout["compatDuel"]["lifePathBoard"]["seatCenters"]
     draw_life_path_rings(d, seats)
@@ -360,13 +339,14 @@ def draw_label_in_band(d: ImageDraw.ImageDraw, band: dict, label: str):
             raise ValueError(f"banned word in sample label: {label}")
     if "$" in label or "deep dive" in lower:
         raise ValueError(f"price/fate copy in sample label: {label}")
-    size = int(band["h"] * 0.48)
-    while size > 22:
-        f = font(FONT_SERIF, size)
+    # Quiet type: regular weight, smaller, soft letter-spacing
+    size = int(band["h"] * 0.38)
+    while size > 18:
+        f = font(FONT_SERIF_REG, size)
         if d.textlength(label, font=f) <= band["w"] * 0.92:
             break
         size -= 2
-    f = font(FONT_SERIF, size)
+    f = font(FONT_SERIF_REG, size)
     d.text(
         (band["x"] + band["w"] / 2, band["y"] + band["h"] / 2),
         label,
@@ -520,17 +500,17 @@ def main():
     print(f"wrote {p2.relative_to(ROOT)}")
 
     for sample in (birth_sample, compat_sample):
-        dark = 0
+        ink = 0
         px = sample.load()
-        for y in range(1825, 1870):
-            for x in range(420, 660):
-                # watermark is mid-gray now; count non-field pixels
+        for y in range(1835, 1880):
+            for x in range(400, 680):
+                # quieter watermark — count any deviation from field
                 p = px[x, y]
-                if abs(p[0] - FIELD[0]) > 20 or abs(p[1] - FIELD[1]) > 20:
-                    dark += 1
-        if dark < 20:
+                if abs(p[0] - FIELD[0]) > 8 or abs(p[1] - FIELD[1]) > 8:
+                    ink += 1
+        if ink < 12:
             raise SystemExit("sample missing watermark ink near bottom")
-    print("OK samples: watermark present; labels locked in draw_label_in_band")
+    print("OK samples: quiet watermark present; labels locked in draw_label_in_band")
 
     sync_hermes()
 
