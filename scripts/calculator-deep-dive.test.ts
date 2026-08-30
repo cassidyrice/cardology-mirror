@@ -128,7 +128,12 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
   expect(calculator).not.toContain("Get My Blueprint");
   expect(calculator).not.toContain("What's inside the Blueprint");
   expect(calculator).not.toContain("<NewsletterSignupForm");
-  expect(calculator).not.toContain("<ShareCard");
+  // Link-only ShareCard stays out of the funnel; PNG ShareBirthResultButton is allowed.
+  expect(calculator).not.toMatch(/<ShareCard[\s/>]/);
+  expect(calculator).toContain("<ShareBirthResultButton");
+  expect(calculator.indexOf("<ShareBirthResultButton")).toBeLessThan(
+    calculator.indexOf('placement="birth-card-calculator-result"'),
+  );
   expect(calculator).not.toContain("buy.stripe.com");
   expect(calculator).toContain("seoCard.coreIdentity || seoCard.sweetSpot");
   expect(calculator).not.toContain("FreeCourseSignupForm");

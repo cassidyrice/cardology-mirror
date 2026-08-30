@@ -19,6 +19,7 @@ import {
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { ShareCompatDuelButton } from "@/components/share/ShareCardCanvas";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -284,6 +285,11 @@ function PairResult({
       />
 
       <div className="mt-8 flex flex-col items-center gap-3">
+        <ShareCompatDuelButton
+          firstBirthCard={a.birthCard}
+          secondBirthCard={b.birthCard}
+          firstLifePathSeatCodes={a.allCards.map((seat) => seat.card)}
+        />
         <DeepDiveCta
           placement="compatibility-calculator-result"
           birthdate={birthdateA}

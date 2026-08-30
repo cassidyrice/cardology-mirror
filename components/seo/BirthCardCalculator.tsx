@@ -16,6 +16,7 @@ import {
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
 import { getCardSeo } from "@/lib/seo-cards";
 
 export function BirthCardCalculator() {
@@ -241,6 +242,7 @@ function BirthCardResultCard({
               {bc?.label} meaning
             </Link>
           )}
+          <ShareBirthResultButton birthCard={result.birthCard} />
           <DeepDiveCta
             placement="birth-card-calculator-result"
             birthdate={date || reveal.birthdate}
