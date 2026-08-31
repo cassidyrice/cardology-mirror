@@ -19,4 +19,6 @@ test("homepage life spread is spread 1: 3 crown + 7x7, 8♦ middle crown, no pla
   expect(art).not.toContain("Mercury");
   expect(art).not.toContain("Venus");
   expect(art).not.toContain("PlayingCard");
+  expect(art).toContain("birth card");
+  expect(art).not.toContain('alt=""');
 });

@@ -1,9 +1,12 @@
 import Link from "next/link";
 
-import { DEEP_DIVE_CTA_LABEL } from "@/lib/deep-dive";
+import {
+  DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
+  DEEP_DIVE_CALCULATOR_FORM_HREF,
+} from "@/lib/deep-dive";
 
 // Quiet contextual funnel block for educational pages that used to dead-end.
-// One active paid path: the Personal Card Blueprint.
+// Paid path: calculator → $9 Deep Dive.
 export function OfferCta({ className = "" }: { className?: string }) {
 
   return (
@@ -18,13 +21,13 @@ export function OfferCta({ className = "" }: { className?: string }) {
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link
-          href="/birth-card-calculator"
+          href={DEEP_DIVE_CALCULATOR_FORM_HREF}
           className="accent-button large-button inline-flex text-center"
         >
-          {DEEP_DIVE_CTA_LABEL}
+          {DEEP_DIVE_CALCULATOR_ENTRY_LABEL}
         </Link>
         <Link
-          href="/birth-card-calculator"
+          href={DEEP_DIVE_CALCULATOR_FORM_HREF}
           className="text-sm font-medium text-brand-on-dark-soft underline underline-offset-4"
         >
           Or find the free card name first →

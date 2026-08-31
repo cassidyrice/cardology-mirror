@@ -6,6 +6,7 @@ import { sanitizeOfferSlug } from "../lib/analytics";
 import { birthdateFromCheckoutSession } from "../lib/birthdate";
 import { mintDownloadToken, verifyDownloadToken } from "../lib/download-token";
 import {
+  DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
   DEEP_DIVE_JOKER_SUCCESS_COPY,
@@ -50,9 +51,12 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(DEEP_DIVE_SKU).toBe("deep-dive-9");
   expect(DEEP_DIVE_PRICE_ID).toBe("price_1U8s5uChx1yAVyrsjbQKfsmD");
   expect(DEEP_DIVE_CTA_LABEL).toBe("Get Deep Dive $9");
+  expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → $9 Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("7-page Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");
   expect(DEEP_DIVE_FULFILLMENT).toContain("90 Spreads");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("Instant download links + email backup");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("download links now");
   expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("deep-dive");
   expect(checkoutProductBySlug("deep-dive")?.price).toBe(9);
   expect(publicProductBySlug("deep-dive")).toBeUndefined();
@@ -161,13 +165,15 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
-  expect(footer).toContain("DEEP_DIVE_CTA_LABEL");
-  expect(footer).toContain('href="/birth-card-calculator"');
+  expect(footer).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
+  expect(footer).toContain('href={DEEP_DIVE_CALCULATOR_FORM_HREF}');
   expect(footer).toContain('href="/products/personal-card-blueprint"');
-  expect(footer.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+  expect(footer).not.toContain("(other product)");
+  expect(footer.indexOf("DEEP_DIVE_CALCULATOR_FORM_HREF")).toBeLessThan(
     footer.indexOf('href="/products/personal-card-blueprint"'),
   );
-  expect(offerCta).toContain("DEEP_DIVE_CTA_LABEL");
+  expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
+  expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
   expect(offerCta).not.toContain("personal-card-blueprint");
   expect(meaning).toContain('source="birth-card-meaning"');
   expect(meaning).toContain("Get the {card.label} Deep Dive");
@@ -176,6 +182,8 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
 
 test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", () => {
   expect(page).toContain('canonical: "/birth-card-calculator"');
+  expect(page).toContain("/og/birth-card-calculator.png");
+  expect(page).not.toContain("/og/default.png");
   expect(page).toContain('const TITLE = "Birth Card Calculator & Cardology Chart"');
   expect(page).toContain("Birth Card Calculator and Cardology Chart");
   expect(page).toContain('"Cardology calculator"');

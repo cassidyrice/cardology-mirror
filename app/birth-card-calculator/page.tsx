@@ -56,13 +56,20 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/birth-card-calculator",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [
+      {
+        url: "/og/birth-card-calculator.png",
+        width: 1200,
+        height: 630,
+        alt: "Find your birth card — Card Blueprints calculator",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    images: ["/og/default.png"],
+    images: ["/og/birth-card-calculator.png"],
   },
 };
 
@@ -155,36 +162,36 @@ export default function CalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
-      <div className="mt-2">
-        <BirthCardCalculator />
-      </div>
-
-      <header className="mt-10 max-w-3xl">
-        <p className="eyebrow mb-3 text-gold">Free · instant · no signup</p>
-        <h1 className="display mb-3 text-3xl text-bone">
+      <header className="max-w-3xl">
+        <p className="eyebrow mb-2 text-gold">Free · instant · no signup</p>
+        <h1 className="display mb-2 text-3xl text-bone">
           Birth Card Calculator and Cardology Chart
         </h1>
         <p className="prose-reading text-mist" data-ai-summary>
-          Your Cardology birth card is the playing card locked to your birthday.
-          Use the calculator, or read the chart under it. Standard 52-card deck,
-          not tarot. The calculator returns your fixed birth card and planetary
-          ruling card instantly. New to the method? Read the plain-English{" "}
-          <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
-            guide to how Cardology works
-          </Link>
-          .
-        </p>
-        <p className="mt-4 text-sm leading-relaxed text-faint">
-          Written and reviewed by{" "}
-          <Link href="/about" className="text-gold underline underline-offset-4">
-            Cassidy Rice
-          </Link>{" "}
-          · Method reviewed August 15, 2026 ·{" "}
-          <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
-            Editorial standards
-          </Link>
+          Enter a birthday for the playing card — 52-card system, not tarot.
+          Same date, same card.
         </p>
       </header>
+
+      <div className="mt-5">
+        <BirthCardCalculator />
+      </div>
+
+      <p className="mt-6 text-sm leading-relaxed text-faint">
+        Written and reviewed by{" "}
+        <Link href="/about" className="text-gold underline underline-offset-4">
+          Cassidy Rice
+        </Link>{" "}
+        · Method reviewed August 15, 2026 ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial standards
+        </Link>
+        . New to the method?{" "}
+        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+          How Cardology works
+        </Link>
+        .
+      </p>
 
       <aside className="mt-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-bone">

@@ -84,7 +84,7 @@ describe("HomepageCalculatorHero contract", () => {
       "366 birthdays",
       "not tarot",
       "Reveal my birth card",
-      "Private calculation · result appears here",
+      "CALCULATOR_PRIVACY_MICROCOPY",
       "Want to learn how to read your card?",
       'source="home-hero-result"',
       "<DeepDiveCta",

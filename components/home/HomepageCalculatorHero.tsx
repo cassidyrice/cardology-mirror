@@ -17,6 +17,7 @@ import {
   type BirthCardResult,
 } from "@/lib/birth-card-calculator";
 import { parseCard } from "@/lib/cards";
+import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 
 const RESULT_PLACEMENT = "home-hero-result";
 
@@ -25,6 +26,13 @@ export function HomepageCalculatorHero() {
   const [result, setResult] = useState<BirthCardResult | null>(null);
   const [error, setError] = useState("");
   const resultRef = useRef<HTMLDivElement>(null);
+  const dateRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#home-birthdate") {
+      dateRef.current?.focus();
+    }
+  }, []);
 
   useEffect(() => {
     if (!result) return;
@@ -95,6 +103,7 @@ export function HomepageCalculatorHero() {
               Enter your birthday
             </label>
             <input
+              ref={dateRef}
               id="home-birthdate"
               type="date"
               value={date}
@@ -104,11 +113,18 @@ export function HomepageCalculatorHero() {
                 })
               }
               onChange={(event) => setDate(event.target.value)}
-              aria-describedby={error ? "home-birthdate-error home-calculator-note" : "home-calculator-note"}
+              aria-describedby={
+                error
+                  ? "home-birthdate-error home-calculator-privacy"
+                  : "home-calculator-privacy"
+              }
               aria-invalid={Boolean(error)}
               required
-              className="mt-3 min-h-12 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 font-serif text-brand-ink outline-none transition focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
+              className="mt-3 min-h-12 w-full scroll-mt-24 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 font-serif text-brand-ink outline-none transition focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
             />
+            <p id="home-calculator-privacy" className="mt-2 text-xs leading-relaxed text-brand-ink-soft">
+              {CALCULATOR_PRIVACY_MICROCOPY}
+            </p>
             {error && (
               <p id="home-birthdate-error" role="alert" className="mt-3 text-sm text-brand-oxblood">
                 {error}
@@ -117,9 +133,6 @@ export function HomepageCalculatorHero() {
             <button type="submit" className="accent-button large-button mt-4 w-full">
               Reveal my birth card
             </button>
-            <p id="home-calculator-note" className="mt-3 text-center text-xs text-brand-ink-soft">
-              Private calculation · result appears here
-            </p>
           </form>
 
           <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">

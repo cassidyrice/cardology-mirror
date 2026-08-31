@@ -9,12 +9,17 @@ export const DEEP_DIVE_OFFER_SLUG = "deep-dive";
 export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
 export const DEEP_DIVE_PRICE_LABEL = "$9";
 export const DEEP_DIVE_CTA_LABEL = "Get Deep Dive $9";
+/** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
+export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $9 Deep Dive";
+export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
 export const DEEP_DIVE_SUCCESS_COPY =
   "Payment confirmed. Your 7-page Deep Dive, System Guide, and 90 Spreads are in this email.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
   "Payment confirmed. Your System Guide and 90 Spreads are in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads (download links now).";
+  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads. Instant download links + email backup.";
+export const CALCULATOR_PRIVACY_MICROCOPY =
+  "Calculated on this page. Your birthday is never stored.";
 
 export const DEEP_DIVE_CARD_PDF_PREFIX = "deep-dive";
 

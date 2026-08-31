@@ -6,6 +6,11 @@ import { HomepageCalculatorHero } from "@/components/home/HomepageCalculatorHero
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, SectionShell } from "@/components/ui";
+import {
+  DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
+  DEEP_DIVE_CALCULATOR_FORM_HREF,
+  DEEP_DIVE_PRICE_LABEL,
+} from "@/lib/deep-dive";
 import { INSTANT_REPORT_PRODUCTS } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -44,18 +49,18 @@ const FREE_PATHS = [
 const STEPS = [
   {
     label: "01",
-    title: "Enter your birth date.",
-    detail: "Stripe securely collects the birthday your Blueprint should use.",
+    title: "Enter your birthday.",
+    detail: "The free calculator maps it to one playing card. Calculated on this page — your birthday is never stored.",
   },
   {
     label: "02",
-    title: "Complete one-time checkout.",
-    detail: "The Personal Card Blueprint is $13 with no subscription or renewal.",
+    title: "Read your card.",
+    detail: "You get the birth card, ruling card, and current 52-day stretch on the spot.",
   },
   {
     label: "03",
-    title: "Open your report instantly.",
-    detail: "Your personalized report appears after payment and a return link is emailed to you.",
+    title: "Optional: the $9 Deep Dive.",
+    detail: "Seven pages on your card, plus the System Guide and 90 Spreads. Instant download links and an email backup.",
   },
 ];
 
@@ -114,7 +119,24 @@ export default function Home() {
         {/* 1 — Calculator-first hero */}
         <HomepageCalculatorHero />
 
-      {/* 2 — More free entry points */}
+      {/* 2 — How it works (calculator → $9 Deep Dive) */}
+      <SectionShell tone="paper">
+        <Kicker>How it works</Kicker>
+        <h2 className="type-h2 mt-4">From birthday to Deep Dive.</h2>
+        <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
+          {STEPS.map((step) => (
+            <div key={step.label} className="border-t border-brand-line pt-5">
+              <p className="font-serif text-lg text-brand-bronze">{step.label}</p>
+              <h3 className="type-h3 mt-3">{step.title}</h3>
+              <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                {step.detail}
+              </p>
+            </div>
+          ))}
+        </div>
+      </SectionShell>
+
+      {/* 3 — More free entry points */}
       <SectionShell tone="paper" pad="small" className="border-t border-brand-line">
         <Kicker>Keep exploring · no account</Kicker>
         <h2 className="type-h3 mt-3 max-w-[28rem] text-brand-ink">
@@ -126,6 +148,7 @@ export default function Home() {
               <a
                 key={item.label}
                 href={item.href}
+                aria-label={`${item.label}. ${item.detail}`}
                 className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
               >
                 <FreeRowInner label={item.label} detail={item.detail} />
@@ -134,29 +157,13 @@ export default function Home() {
               <Link
                 key={item.label}
                 href={item.href}
+                aria-label={`${item.label}. ${item.detail}`}
                 className="group grid gap-1 py-6 transition hover:bg-brand-ivory sm:grid-cols-[minmax(0,18rem)_1fr_auto] sm:items-baseline sm:gap-6"
               >
                 <FreeRowInner label={item.label} detail={item.detail} />
               </Link>
             ),
           )}
-        </div>
-      </SectionShell>
-
-      {/* 3 — How it works */}
-      <SectionShell tone="paper">
-        <Kicker>How it works</Kicker>
-        <h2 className="type-h2 mt-4">From birthday to Blueprint.</h2>
-        <div className="mt-8 grid gap-10 lg:grid-cols-3 lg:gap-8">
-          {STEPS.map((step) => (
-            <div key={step.label} className="border-t border-brand-line pt-5">
-              <p className="font-serif text-lg text-brand-bronze">{step.label}</p>
-              <h3 className="type-h3 mt-3">{step.title}</h3>
-              <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                {step.detail}
-              </p>
-            </div>
-          ))}
         </div>
       </SectionShell>
 
@@ -252,16 +259,48 @@ export default function Home() {
         </div>
       </SectionShell>
 
-      {/* 8 — Final CTA */}
+      {/* 8 — Paid writes (Deep Dive primary, Blueprint secondary) */}
+      <SectionShell tone="paperDeep">
+        <Kicker>Written reports</Kicker>
+        <h2 className="type-h2 mt-4">Two paid writes. One free card name.</h2>
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="border-t border-brand-line pt-5">
+            <p className="type-eyebrow text-brand-oxblood">Primary</p>
+            <h3 className="type-h3 mt-2">Birth Card Deep Dive — {DEEP_DIVE_PRICE_LABEL}</h3>
+            <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+              Your card, 7 pages, plus the System Guide and 90 Spreads.
+            </p>
+            <p className="mt-5">
+              <LinkButton href={DEEP_DIVE_CALCULATOR_FORM_HREF} variant="accent">
+                {DEEP_DIVE_CALCULATOR_ENTRY_LABEL}
+              </LinkButton>
+            </p>
+          </div>
+          <div className="border-t border-brand-line pt-5">
+            <p className="type-eyebrow text-brand-ink-soft">Secondary</p>
+            <h3 className="type-h3 mt-2">Personal Card Blueprint — $13</h3>
+            <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
+              A fuller written report: birth card, ruling layer, current chapter, and reflection prompts.
+            </p>
+            <p className="mt-5">
+              <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
+                Get My Blueprint — $13 →
+              </Link>
+            </p>
+          </div>
+        </div>
+      </SectionShell>
+
+      {/* 9 — Final CTA */}
         <SectionShell tone="ink">
         <div className="mx-auto max-w-[40rem] py-[clamp(1rem,4vw,3rem)] text-center">
-          <h2 className="type-h2">Your pattern is ready to be written.</h2>
+          <h2 className="type-h2">Find the card first.</h2>
           <p className="mt-5 text-brand-on-dark-soft">
-            Get your birth card, ruling layer, current chapter, and reflection prompts in one instant report.
+            Reveal your birth card free. The $9 Deep Dive is there if you want it written down.
           </p>
           <div className="mt-8">
-            <LinkButton href="/products/personal-card-blueprint" variant="accent" size="large">
-              Get My Blueprint — $13
+            <LinkButton href="#home-birthdate" variant="accent" size="large">
+              Reveal my birth card
             </LinkButton>
           </div>
         </div>

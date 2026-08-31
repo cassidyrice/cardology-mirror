@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -16,12 +16,47 @@ import {
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentChapter } from "./CurrentChapter";
+import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { shareFacePathFromCode } from "@/lib/share-cards";
+
+const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
+
+function CalculatorPreviewFan() {
+  return (
+    <div className="flex h-28 items-end justify-center" aria-hidden="true">
+      {PREVIEW_CODES.map((code, i) => {
+        const src = shareFacePathFromCode(code);
+        if (!src) return null;
+        const rotate = i === 0 ? "-rotate-12" : i === 2 ? "rotate-12" : "rotate-0";
+        const z = i === 1 ? "z-10" : "z-0";
+        const overlap = i === 0 ? "translate-x-3" : i === 2 ? "-translate-x-3" : "";
+        return (
+          <img
+            key={code}
+            src={src}
+            alt=""
+            width={72}
+            height={108}
+            className={`relative ${z} ${rotate} ${overlap} rounded-[6px] border border-brand-line bg-brand-paper shadow-sm`}
+          />
+        );
+      })}
+    </div>
+  );
+}
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
   const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
   const [touched, setTouched] = useState(false);
+  const dateRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (window.location.hash === "#bd") {
+      dateRef.current?.focus();
+    }
+  }, []);
 
   // Legacy ?birthdate= links: consume the date, then strip it from the URL.
   useEffect(() => {
@@ -76,13 +111,14 @@ export function BirthCardCalculator() {
   return (
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
       <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
-      <BirthShareHero birthCard={birthCard} />
+      {birthCard ? <BirthShareHero birthCard={birthCard} /> : <CalculatorPreviewFan />}
 
-      <form onSubmit={onSubmit} className="mt-5 w-full space-y-3">
+      <form onSubmit={onSubmit} className="mt-4 w-full space-y-3">
         <label htmlFor="bd" className="type-eyebrow block">
           Enter your birthday
         </label>
         <input
+          ref={dateRef}
           id="bd"
           type="date"
           value={date}
@@ -92,9 +128,13 @@ export function BirthCardCalculator() {
             })
           }
           onChange={(e) => setDate(e.target.value)}
-          className="w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
+          aria-describedby="calculator-privacy"
+          className="w-full scroll-mt-24 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
           required
         />
+        <p id="calculator-privacy" className="text-xs leading-relaxed text-brand-ink-soft">
+          {CALCULATOR_PRIVACY_MICROCOPY}
+        </p>
         <button
           type="submit"
           className="accent-button large-button w-full"

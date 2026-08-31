@@ -1,18 +1,20 @@
+import { parseCard } from "@/lib/cards";
 import { lifeSpread } from "@/lib/karma-origin";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 
 function Face({ code }: { code: string }) {
   const src = shareFacePathFromCode(code);
   if (!src) return null;
-  return <img src={src} alt="" width={80} height={120} />;
+  const label = parseCard(code)?.label ?? code;
+  return <img src={src} alt={`${label} birth card`} width={80} height={120} />;
 }
 
-/** Decorative life spread (spread 1): 3-card crown + 7×7, real faces, no planet labels. */
+/** Life spread (spread 1): 3-card crown + 7×7, real faces, no planet labels. */
 export function HomepageLifeSpread() {
   const spread = lifeSpread();
 
   return (
-    <div className="home-life-spread mt-8 w-full max-w-[20rem]" aria-hidden="true">
+    <div className="home-life-spread mt-8 w-full max-w-[20rem]">
       <div className="home-life-spread-crown">
         <span />
         <span />
