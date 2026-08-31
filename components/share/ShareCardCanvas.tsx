@@ -24,7 +24,7 @@ function statusLabel(status: Status): string {
     case "error":
       return "Try again";
     default:
-      return "Copy / Share";
+      return "Share";
   }
 }
 
@@ -44,9 +44,11 @@ async function runShare(
 export function ShareBirthResultButton({
   birthCard,
   placement = "birth-card-calculator-share",
+  className = "paper-button large-button w-full max-w-md",
 }: {
   birthCard: string;
   placement?: string;
+  className?: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const isJoker = birthCard === "Joker";
@@ -74,7 +76,7 @@ export function ShareBirthResultButton({
       type="button"
       onClick={onClick}
       disabled={status === "busy"}
-      className="paper-button large-button w-full max-w-md"
+      className={className}
       data-share-kind="birth-result"
       aria-label={
         isJoker

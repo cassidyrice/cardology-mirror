@@ -11,6 +11,7 @@ import {
 import {
   createShareCanvas,
   drawBrandStack,
+  drawCardBack,
   drawCardFace,
   drawLabelInBand,
   drawLifePathSeats,
@@ -77,6 +78,24 @@ export async function renderBirthSharePng(
 
   const blob = await canvasToPngBlob(canvas);
   return { blob, label, identity };
+}
+
+/** Empty landing hero: same frame, face-down card, no personal label. */
+export async function renderEmptyBirthSharePng(): Promise<{ blob: Blob }> {
+  const layout = SHARE_LAYOUT.birthResult;
+  const canvas = createShareCanvas(layout.canvas.w, layout.canvas.h);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("2D canvas unavailable");
+
+  const template = await loadTemplateImage(SHARE_TEMPLATE_PATHS.birthResult);
+  ctx.drawImage(template, 0, 0, layout.canvas.w, layout.canvas.h);
+  drawBrandStack(ctx, layout.canvas.w, layout.brandStack);
+  drawCardBack(ctx, layout.cardSlot);
+  drawPurposeCue(ctx, layout.purposeCue, layout.purposeCue.text);
+  drawShareCta(ctx, layout.canvas.w, layout.ctaY);
+
+  const blob = await canvasToPngBlob(canvas);
+  return { blob };
 }
 
 export async function renderCompatSharePng(

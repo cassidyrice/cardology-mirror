@@ -21,6 +21,7 @@ export {
   shareFacePath,
   shareFacePathFromCode,
   drawCardFace,
+  drawCardBack,
   drawBrandStack,
   drawShareCta,
   drawPurposeCue,
@@ -30,6 +31,7 @@ export {
 } from "./draw";
 export {
   renderBirthSharePng,
+  renderEmptyBirthSharePng,
   renderCompatSharePng,
   sharePngFile,
   copyPngToClipboard,

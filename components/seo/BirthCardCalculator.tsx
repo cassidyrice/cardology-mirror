@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -14,10 +14,9 @@ import {
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
-import { PlayingCard } from "../PlayingCard";
+import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentChapter } from "./CurrentChapter";
 import { DeepDiveCta } from "./DeepDiveCta";
-import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -72,9 +71,13 @@ export function BirthCardCalculator() {
     }
   }
 
+  const birthCard = reveal?.result.birthCard;
+
   return (
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
-      <form onSubmit={onSubmit} className="space-y-3">
+      <BirthShareHero birthCard={birthCard} />
+
+      <form onSubmit={onSubmit} className="mt-5 space-y-3">
         <label htmlFor="bd" className="type-eyebrow block">
           Enter your birthday
         </label>
@@ -156,97 +159,40 @@ function BirthCardResultCard({
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
-  const rootRef = useRef<HTMLDivElement>(null);
-
-  // Bring the reveal into view on small screens. "nearest" = no-op when
-  // the result is already visible; reduced motion gets an instant jump.
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    rootRef.current?.scrollIntoView({
-      behavior: reduce ? "auto" : "smooth",
-      block: "nearest",
-    });
-  }, []);
 
   return (
-    <div ref={rootRef} className="mt-8 animate-fade-up">
-      <p className="type-eyebrow mb-4 text-center">Your birth card</p>
-
-      <div className="flex flex-col items-center gap-6">
-        {isJoker ? (
-          <div className="flex h-56 w-40 items-center justify-center rounded-[3px] border border-brand-line bg-brand-ivory text-6xl text-brand-oxblood">
-            ★
-          </div>
-        ) : (
-          <div className="flip-scene">
-            <div className="flip-inner">
-              <div className="flip-face">
-                <PlayingCard
-                  code={result.birthCard}
-                  size="lg"
-                  active
-                  glow
-                  float
-                  surface="paper"
-                  className="scale-110"
-                />
-              </div>
-              <div className="flip-face flip-back" aria-hidden>
-                <PlayingCard
-                  code={result.birthCard}
-                  size="lg"
-                  faceDown
-                  surface="paper"
-                  className="scale-110"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="rise text-center" style={{ animationDelay: "0.55s" }}>
-          <p className="font-serif text-2xl text-brand-ink">{isJoker ? "The Joker" : bc?.label}</p>
-          {result.rulingCards.length > 0 && (
-            <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
-              <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>
-              {result.rulingCards.map((c) => (
-                <span key={c} className="flex items-center gap-1.5">
-                  <span className={paperSuitClass(c)}>{c}</span>
-                  {parseCard(c)?.label}
-                </span>
-              ))}
-            </div>
-          )}
+    <div className="mt-8 flex w-full max-w-md flex-col items-center gap-3">
+      {result.rulingCards.length > 0 && (
+        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
+          <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>
+          {result.rulingCards.map((c) => (
+            <span key={c} className="flex items-center gap-1.5">
+              <span className={paperSuitClass(c)}>{c}</span>
+              {parseCard(c)?.label}
+            </span>
+          ))}
         </div>
-
-        <div
-          className="rise mt-2 flex w-full max-w-md flex-col items-center gap-3"
-          style={{ animationDelay: "0.72s" }}
+      )}
+      {slug && (
+        <Link
+          href={`/birth-card/${slug}`}
+          className="text-sm font-medium text-brand-ink underline underline-offset-4"
         >
-          {slug && (
-            <Link
-              href={`/birth-card/${slug}`}
-              className="text-sm font-medium text-brand-ink underline underline-offset-4"
-            >
-              {bc?.label} meaning
-            </Link>
-          )}
-          <ShareBirthResultButton birthCard={result.birthCard} />
-          {!isJoker && (
-            <CurrentChapter birthdate={date || reveal.birthdate} />
-          )}
-          <DeepDiveCta
-            placement="birth-card-calculator-result"
-            birthdate={date || reveal.birthdate}
-            source="birth-card-calculator"
-          />
-          <BirthdayWorkerAnchor
-            reveal={reveal}
-            todayIso={todayISO()}
-          />
-        </div>
-      </div>
-
+          {bc?.label} meaning
+        </Link>
+      )}
+      {!isJoker && (
+        <CurrentChapter birthdate={date || reveal.birthdate} />
+      )}
+      <DeepDiveCta
+        placement="birth-card-calculator-result"
+        birthdate={date || reveal.birthdate}
+        source="birth-card-calculator"
+      />
+      <BirthdayWorkerAnchor
+        reveal={reveal}
+        todayIso={todayISO()}
+      />
     </div>
   );
 }

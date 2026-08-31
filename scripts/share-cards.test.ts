@@ -92,27 +92,34 @@ test("Cass-locked brand / purpose copy on both share types", () => {
 
   expect(drawSrc).toContain("drawBrandStack");
   expect(drawSrc).toContain("drawShareCta");
+  expect(drawSrc).toContain("drawCardBack");
   expect(drawSrc).toContain("Coordinates not Prophecy");
   expect(drawSrc).toContain("Card Blueprints");
   expect(exportSrc).toContain("drawBrandStack");
   expect(exportSrc).toContain("drawShareCta");
   expect(exportSrc).toContain("drawPurposeCue");
+  expect(exportSrc).toContain("renderEmptyBirthSharePng");
+  expect(exportSrc).toContain("drawCardBack");
   // Templates stay flat — brand drawn in canvas, not baked as watermark chrome.
   expect(exportSrc).toContain("templates stay flat");
 });
 
-test("birth calculator: Copy/Share appears after card reveal and before DeepDiveCta", () => {
-  expect(birthCalc).toContain('from "@/components/share/ShareCardCanvas"');
-  expect(birthCalc).toContain("<ShareBirthResultButton");
-  expect(birthCalc).toContain('birthCard={result.birthCard}');
-  const shareIdx = birthCalc.indexOf("<ShareBirthResultButton");
+test("birth calculator: share hero is the first frame, Share before Deep Dive", () => {
+  expect(birthCalc).toContain("<BirthShareHero");
+  expect(birthCalc).toContain('from "@/components/share/BirthShareHero"');
+  const heroIdx = birthCalc.indexOf("<BirthShareHero");
+  const formIdx = birthCalc.indexOf("Enter your birthday");
   const diveIdx = birthCalc.indexOf(
     'placement="birth-card-calculator-result"',
   );
-  expect(shareIdx).toBeGreaterThan(0);
-  expect(diveIdx).toBeGreaterThan(shareIdx);
-  // Old link-only ShareCard stays unused in the calculator result funnel.
+  expect(heroIdx).toBeGreaterThan(0);
+  expect(formIdx).toBeGreaterThan(heroIdx);
+  expect(diveIdx).toBeGreaterThan(formIdx);
   expect(birthCalc).not.toMatch(/<ShareCard[\s/>]/);
+  const heroUi = read("components/share/BirthShareHero.tsx");
+  expect(heroUi).toContain("<ShareBirthResultButton");
+  expect(heroUi).toContain("renderEmptyBirthSharePng");
+  expect(heroUi).toContain("renderBirthSharePng");
 });
 
 test("compat calculator: duel share before DeepDiveCta; first birthday seats only", () => {

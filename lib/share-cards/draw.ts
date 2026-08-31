@@ -113,6 +113,29 @@ export function drawCardFace(
   ctx.restore();
 }
 
+/** Face-down card in the share slot. Empty hero only. Never a silent K♠. */
+export function drawCardBack(ctx: CanvasRenderingContext2D, slot: Rect) {
+  const { x, y, w, h } = slot;
+  const r = Math.min(w, h) * 0.055;
+  ctx.save();
+  ctx.shadowColor = "rgba(0,0,0,0.28)";
+  ctx.shadowBlur = 18;
+  ctx.shadowOffsetX = 4;
+  ctx.shadowOffsetY = 8;
+  roundRect(ctx, x, y, w, h, r);
+  ctx.fillStyle = "#1c1914";
+  ctx.fill();
+  ctx.shadowColor = "transparent";
+  ctx.shadowBlur = 0;
+  ctx.shadowOffsetX = 0;
+  ctx.shadowOffsetY = 0;
+  roundRect(ctx, x + w * 0.07, y + h * 0.07, w * 0.86, h * 0.86, r * 0.7);
+  ctx.strokeStyle = "#c4a36a";
+  ctx.lineWidth = Math.max(2, w * 0.01);
+  ctx.stroke();
+  ctx.restore();
+}
+
 export function drawLabelInBand(
   ctx: CanvasRenderingContext2D,
   band: Rect,

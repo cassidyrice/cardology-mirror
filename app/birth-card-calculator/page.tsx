@@ -155,7 +155,11 @@ export default function CalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
-      <header className="max-w-3xl">
+      <div className="mt-2">
+        <BirthCardCalculator />
+      </div>
+
+      <header className="mt-10 max-w-3xl">
         <p className="eyebrow mb-3 text-gold">Free · instant · no signup</p>
         <h1 className="display mb-3 text-3xl text-bone">
           Birth Card Calculator and Cardology Chart
@@ -181,10 +185,6 @@ export default function CalculatorPage() {
           </Link>
         </p>
       </header>
-
-      <div className="mt-6">
-        <BirthCardCalculator />
-      </div>
 
       <aside className="mt-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-bone">
