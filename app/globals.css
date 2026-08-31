@@ -953,6 +953,52 @@ body {
   }
 }
 
+/* On-page calculator hero: large card, not the 9:16 share poster. */
+.hero-card-stage {
+  width: min(72vw, 17.5rem);
+  aspect-ratio: 2 / 3;
+}
+
+.hero-card-face,
+.hero-card-back {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  outline: 1px solid rgba(20, 17, 13, 0.12);
+  outline-offset: -1px;
+  box-shadow: 0 14px 28px -16px rgba(20, 17, 13, 0.4);
+}
+
+.hero-card-face {
+  object-fit: cover;
+}
+
+.hero-card-back {
+  overflow: hidden;
+  background: #1c1914;
+}
+
+.hero-card-float {
+  animation: hero-card-float 4.8s ease-in-out infinite;
+}
+
+@keyframes hero-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card-float {
+    animation: none !important;
+  }
+}
+
 /* Sample report presented as a physical artifact: two offset sheets peek
    behind the main page. Static, print-editorial, no motion. */
 .report-stack {

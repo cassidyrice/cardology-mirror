@@ -118,8 +118,14 @@ test("birth calculator: share hero is the first frame, Share before Deep Dive", 
   expect(birthCalc).not.toMatch(/<ShareCard[\s/>]/);
   const heroUi = read("components/share/BirthShareHero.tsx");
   expect(heroUi).toContain("<ShareBirthResultButton");
-  expect(heroUi).toContain("renderEmptyBirthSharePng");
-  expect(heroUi).toContain("renderBirthSharePng");
+  expect(heroUi).toContain("hero-card-stage");
+  expect(heroUi).toContain("hero-card-float");
+  expect(heroUi).toContain("shareFacePathFromCode");
+  expect(heroUi).not.toContain("renderEmptyBirthSharePng");
+  const css = read("app/globals.css");
+  expect(css).toContain(".hero-card-stage");
+  expect(css).toContain("hero-card-float");
+  expect(css).toContain("prefers-reduced-motion");
 });
 
 test("compat calculator: duel share before DeepDiveCta; first birthday seats only", () => {

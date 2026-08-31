@@ -74,10 +74,11 @@ export function BirthCardCalculator() {
   const birthCard = reveal?.result.birthCard;
 
   return (
-    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
+      <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
       <BirthShareHero birthCard={birthCard} />
 
-      <form onSubmit={onSubmit} className="mt-5 space-y-3">
+      <form onSubmit={onSubmit} className="mt-5 w-full space-y-3">
         <label htmlFor="bd" className="type-eyebrow block">
           Enter your birthday
         </label>
@@ -121,6 +122,7 @@ export function BirthCardCalculator() {
           date={date}
         />
       )}
+      </div>
     </div>
   );
 }
@@ -161,7 +163,7 @@ function BirthCardResultCard({
   const slug = birthCardSlug(result.birthCard);
 
   return (
-    <div className="mt-8 flex w-full max-w-md flex-col items-center gap-3">
+    <div className="mt-6 flex w-full flex-col items-center gap-3">
       {result.rulingCards.length > 0 && (
         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
           <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>

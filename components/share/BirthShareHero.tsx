@@ -1,60 +1,61 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
+import { CardBack } from "@/components/cards/CardBack";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
-import {
-  renderBirthSharePng,
-  renderEmptyBirthSharePng,
-  SHARE_LAYOUT,
-  SHARE_TEMPLATE_PATHS,
-} from "@/lib/share-cards";
+import { parseCard } from "@/lib/cards";
+import { shareFacePathFromCode } from "@/lib/share-cards";
 
 export function BirthShareHero({ birthCard }: { birthCard?: string }) {
-  const [src, setSrc] = useState<string>(SHARE_TEMPLATE_PATHS.birthResult);
-
-  useEffect(() => {
-    let cancelled = false;
-    let objectUrl = "";
-
-    async function paint() {
-      const { blob } = birthCard
-        ? await renderBirthSharePng({ birthCard })
-        : await renderEmptyBirthSharePng();
-      if (cancelled) return;
-      objectUrl = URL.createObjectURL(blob);
-      setSrc(objectUrl);
-    }
-
-    paint().catch(() => {
-      if (!cancelled) setSrc(SHARE_TEMPLATE_PATHS.birthResult);
-    });
-
-    return () => {
-      cancelled = true;
-      if (objectUrl) URL.revokeObjectURL(objectUrl);
-    };
-  }, [birthCard]);
-
-  const { w, h } = SHARE_LAYOUT.birthResult.canvas;
+  const isJoker = birthCard === "Joker";
+  const label = isJoker
+    ? "The Joker"
+    : birthCard
+      ? parseCard(birthCard)?.label
+      : null;
+  const face = birthCard ? shareFacePathFromCode(birthCard) : null;
 
   return (
-    <div className="relative mx-auto w-full max-w-sm">
-      <img
-        src={src}
-        alt={birthCard ? "Your birth card" : "Birth card"}
-        width={w}
-        height={h}
-        className="mx-auto max-h-[70svh] w-auto rounded-[3px] border border-brand-line"
-      />
-      {birthCard ? (
-        <div className="absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t from-brand-paper via-brand-paper/90 to-transparent px-4 pb-4 pt-16">
-          <ShareBirthResultButton
-            birthCard={birthCard}
-            placement="birth-card-calculator-hero-share"
-            className="accent-button large-button w-full max-w-xs"
-          />
-        </div>
+    <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center text-center">
+      <div className="hero-card-stage hero-card-float">
+        {face ? (
+          <div className="flip-scene h-full w-full" key={birthCard}>
+            <div className="flip-inner h-full w-full">
+              <div className="flip-face h-full w-full">
+                <img
+                  src={face}
+                  alt={label ?? "Birth card"}
+                  width={624}
+                  height={936}
+                  className="hero-card-face"
+                />
+              </div>
+              <div className="flip-face flip-back">
+                <div className="hero-card-back">
+                  <CardBack />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="hero-card-back">
+            <CardBack />
+          </div>
+        )}
+      </div>
+      {label ? (
+        <>
+          <p className="type-eyebrow mt-4">Birth card</p>
+          <p className="mt-1 font-serif text-3xl leading-tight text-brand-ink [text-wrap:balance]">
+            {label}
+          </p>
+          <div className="mt-4 w-full">
+            <ShareBirthResultButton
+              birthCard={birthCard!}
+              placement="birth-card-calculator-hero-share"
+              className="accent-button large-button w-full"
+            />
+          </div>
+        </>
       ) : null}
     </div>
   );
