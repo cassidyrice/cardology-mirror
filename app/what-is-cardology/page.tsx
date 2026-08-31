@@ -12,9 +12,9 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "What Is Cardology? Birthday → One Playing Card (Not Tarot)";
+const TITLE = "What Is Cardology? The 52-Card Birthday System, Explained";
 const DESCRIPTION =
-  "Cardology maps your birthday to one card in a 52-card deck — not tarot. Plain-English guide, then find your birth card free with the calculator.";
+  "Every birthday maps to one of 52 playing cards — not tarot. Plain-English guide to how Cardology works, plus a free calculator to find your card.";
 
 export const metadata: Metadata = {
   title: TITLE,
