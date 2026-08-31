@@ -95,16 +95,11 @@ export default function CompatibilityCalculatorPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">
-        Cardology Compatibility Calculator
-      </h1>
-      <p className="mb-4 text-sm text-mist">
-        Enter two birthdays. The tool returns each playing-card birth card and
-        how the two Life Paths meet — 52 cards, not tarot.
-      </p>
-
       <CompatibilityCalculator />
 
+      <h1 className="display mb-3 mt-10 text-3xl text-bone">
+        Cardology Compatibility Calculator
+      </h1>
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">

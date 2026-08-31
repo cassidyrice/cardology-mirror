@@ -290,7 +290,7 @@ async function main(): Promise<void> {
     await page.locator("#da").fill(first);
     await page.locator("#db").fill(second);
     await page
-      .getByRole("button", { name: "Compare birth cards and Life Paths" })
+      .getByRole("button", { name: "Compare" })
       .click();
     const forwardPairLink = page.getByRole("link", {
       name: "Read the full Queen of Diamonds + 9 of Clubs pairing →",
@@ -307,7 +307,7 @@ async function main(): Promise<void> {
     await page.locator("#da").fill(second);
     await page.locator("#db").fill(first);
     await page
-      .getByRole("button", { name: "Compare birth cards and Life Paths" })
+      .getByRole("button", { name: "Compare" })
       .click();
     const reversedPairLink = page.getByRole("link", {
       name: "Read the full 9 of Clubs + Queen of Diamonds pairing →",

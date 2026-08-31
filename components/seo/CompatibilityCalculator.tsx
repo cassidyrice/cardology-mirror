@@ -17,9 +17,8 @@ import {
   type LifePathSharedCard,
 } from "@/lib/life-path";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
-import { PlayingCard } from "../PlayingCard";
+import { CompatShareHero } from "@/components/share/CompatShareHero";
 import { DeepDiveCta } from "./DeepDiveCta";
-import { ShareCompatDuelButton } from "@/components/share/ShareCardCanvas";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -82,8 +81,15 @@ export function CompatibilityCalculator() {
   }
 
   return (
-    <div className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
-      <form onSubmit={onSubmit} className="space-y-4">
+    <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
+      <div className="mx-auto flex w-full max-w-sm flex-col items-center">
+      <CompatShareHero
+        firstBirthCard={pair?.a.birthCard}
+        secondBirthCard={pair?.b.birthCard}
+        firstLifePathSeatCodes={pair?.a.allCards.map((seat) => seat.card)}
+      />
+
+      <form onSubmit={onSubmit} className="mt-5 w-full space-y-4">
         <div>
           <label htmlFor="da" className="type-eyebrow block">First birthday</label>
           <input id="da" type="date" value={a}
@@ -107,7 +113,7 @@ export function CompatibilityCalculator() {
             className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <button type="submit" className="accent-button large-button w-full">
-          Compare birth cards and Life Paths
+          Compare
         </button>
       </form>
 
@@ -127,6 +133,7 @@ export function CompatibilityCalculator() {
           birthdateA={pair.a.birthdate}
         />
       )}
+      </div>
     </div>
   );
 }
@@ -185,20 +192,8 @@ function PairResult({
   const otherName = owner === "a" ? "second person" : "first person";
 
   return (
-    <div className="mt-10 animate-fade-up">
-      <div className="flex items-center justify-center gap-2">
-        <div className="-rotate-6 translate-x-2">
-          <PlayingCard code={a.birthCard} size="md" active surface="paper" />
-        </div>
-        <div className="z-10 bg-brand-ivory px-2 py-1 text-xs uppercase tracking-widest text-brand-bronze">
-          meets
-        </div>
-        <div className="rotate-6 -translate-x-2">
-          <PlayingCard code={b.birthCard} size="md" active surface="paper" />
-        </div>
-      </div>
-
-      <div className="mt-8 text-center">
+    <div className="mt-8 w-full animate-fade-up">
+      <div className="text-center">
         <p className="font-serif text-base leading-relaxed text-brand-ink">
           {sameSuit
             ? `Same suit - ${pa?.domain.toLowerCase()}`
@@ -284,12 +279,7 @@ function PairResult({
         onPick={(position) => setSelected(position)}
       />
 
-      <div className="mt-8 flex flex-col items-center gap-3">
-        <ShareCompatDuelButton
-          firstBirthCard={a.birthCard}
-          secondBirthCard={b.birthCard}
-          firstLifePathSeatCodes={a.allCards.map((seat) => seat.card)}
-        />
+      <div className="mt-8 flex w-full flex-col items-center gap-3">
         <DeepDiveCta
           placement="compatibility-calculator-result"
           birthdate={birthdateA}

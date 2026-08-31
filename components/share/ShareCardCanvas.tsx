@@ -94,11 +94,13 @@ export function ShareCompatDuelButton({
   secondBirthCard,
   firstLifePathSeatCodes,
   placement = "compatibility-calculator-share",
+  className = "paper-button large-button w-full max-w-md",
 }: {
   firstBirthCard: string;
   secondBirthCard: string;
   firstLifePathSeatCodes: string[];
   placement?: string;
+  className?: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const disabled =
@@ -130,12 +132,7 @@ export function ShareCompatDuelButton({
   }
 
   if (disabled) {
-    // Honest Joker: no silent K♠ duel. Do not fabricate seats.
-    return (
-      <p className="text-center text-sm text-brand-ink-soft" data-share-kind="compat-duel-joker">
-        Joker has no duel share
-      </p>
-    );
+    return null;
   }
 
   return (
@@ -143,7 +140,7 @@ export function ShareCompatDuelButton({
       type="button"
       onClick={onClick}
       disabled={status === "busy"}
-      className="paper-button large-button w-full max-w-md"
+      className={className}
       data-share-kind="compat-duel"
       aria-label="Copy or share compatibility duel image"
     >

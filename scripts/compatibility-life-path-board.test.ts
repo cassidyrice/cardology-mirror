@@ -49,9 +49,9 @@ test("PairResult remounts on new dates and checkout uses compared first birthday
 });
 
 test("compat duel share sits before DeepDiveCta and uses first-birthday seats", () => {
-  expect(source).toContain("ShareCompatDuelButton");
-  expect(source).toContain("firstLifePathSeatCodes={a.allCards.map((seat) => seat.card)}");
-  expect(source.indexOf("<ShareCompatDuelButton")).toBeLessThan(
+  expect(source).toContain("CompatShareHero");
+  expect(source).toContain("firstLifePathSeatCodes={pair?.a.allCards.map((seat) => seat.card)}");
+  expect(source.indexOf("<CompatShareHero")).toBeLessThan(
     source.indexOf('placement="compatibility-calculator-result"'),
   );
 });

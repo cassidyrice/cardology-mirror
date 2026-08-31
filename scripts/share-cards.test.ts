@@ -129,18 +129,22 @@ test("birth calculator: share hero is the first frame, Share before Deep Dive", 
 });
 
 test("compat calculator: duel share before DeepDiveCta; first birthday seats only", () => {
-  expect(compatCalc).toContain("<ShareCompatDuelButton");
-  expect(compatCalc).toContain("firstBirthCard={a.birthCard}");
-  expect(compatCalc).toContain("secondBirthCard={b.birthCard}");
+  expect(compatCalc).toContain("<CompatShareHero");
+  expect(compatCalc).toContain("firstBirthCard={pair?.a.birthCard}");
+  expect(compatCalc).toContain("secondBirthCard={pair?.b.birthCard}");
   expect(compatCalc).toContain(
-    "firstLifePathSeatCodes={a.allCards.map((seat) => seat.card)}",
+    "firstLifePathSeatCodes={pair?.a.allCards.map((seat) => seat.card)}",
   );
-  const shareIdx = compatCalc.indexOf("<ShareCompatDuelButton");
+  const shareIdx = compatCalc.indexOf("<CompatShareHero");
   const diveIdx = compatCalc.indexOf(
     'placement="compatibility-calculator-result"',
   );
   expect(shareIdx).toBeGreaterThan(0);
   expect(diveIdx).toBeGreaterThan(shareIdx);
+  const heroUi = read("components/share/CompatShareHero.tsx");
+  expect(heroUi).toContain("<ShareCompatDuelButton");
+  expect(heroUi).toContain("firstLifePathSeatCodes");
+  expect(heroUi).toContain("compat-hero-stage");
   // Price stays on the CTA, never on the image export path.
   expect(exportSrc).not.toContain("Get Deep Dive");
   expect(drawSrc).not.toContain("Get Deep Dive");
@@ -202,7 +206,7 @@ test("Joker: honest treatment, never silent king-of-spades", () => {
   expect(exportSrc).not.toMatch(/identity\.code\s*=\s*["']K/);
   expect(exportSrc).toContain("Joker has no duel share");
   expect(shareUi).toContain('firstBirthCard === "Joker"');
-  expect(shareUi).toContain("Honest Joker");
+  expect(shareUi).toContain("return null;");
   // Birth share still offers Copy/Share with honest Joker art.
   expect(shareUi).toContain("isJoker ? \"The Joker\"");
 });

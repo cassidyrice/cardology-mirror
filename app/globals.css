@@ -954,6 +954,19 @@ body {
 }
 
 /* On-page calculator hero: large card, not the 9:16 share poster. */
+.compat-hero-row {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.compat-hero-stage {
+  width: min(42vw, 8.75rem);
+  aspect-ratio: 2 / 3;
+}
+
 .hero-card-stage {
   width: min(72vw, 17.5rem);
   aspect-ratio: 2 / 3;
