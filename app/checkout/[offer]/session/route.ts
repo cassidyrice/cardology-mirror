@@ -16,11 +16,8 @@ import {
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
-  DEEP_DIVE_OFFER_SLUG,
   deepDivePriceId,
   deepDiveSessionMetadata,
-  sanitizeDeepDiveSource,
-  stripePublishableKey,
 } from "@/lib/deep-dive";
 import {
   checkoutProductBySlug,
@@ -104,6 +101,10 @@ export async function POST(
       formBirthdate = sanitizeBirthdateISO(form.get("birthdate"));
       const sourceField = form.get("source");
       requestedSource = typeof sourceField === "string" ? sourceField : "";
+      const labelField = form.get("cardLabel");
+      requestedCardLabel = typeof labelField === "string" ? labelField : "";
+      const slugField = form.get("cardSlug");
+      requestedCardSlug = typeof slugField === "string" ? slugField : "";
       const fromForm = funnelContextFromFormData(form);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -129,11 +130,6 @@ export async function POST(
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
     return checkoutUnavailable(req, product.slug);
   }
-  if (isDeepDive(product) && !stripePublishableKey()) {
-    console.error("[checkout] deep dive publishable key env missing");
-    return checkoutUnavailable(req, product.slug);
-  }
-
   if ((isInstantReport(product) || isMembership(product)) && !formBirthdate) {
     if (wantsJson) {
       return NextResponse.json({ error: "need-date" }, { status: 400 });
@@ -145,9 +141,15 @@ export async function POST(
   }
 
   if (isDeepDive(product) && !formBirthdate) {
-    return NextResponse.json(
-      { error: "Birthday is required for Deep Dive checkout." },
-      { status: 400 },
+    if (wantsJson) {
+      return NextResponse.json(
+        { error: "Birthday is required for Deep Dive checkout." },
+        { status: 400 },
+      );
+    }
+    return NextResponse.redirect(
+      new URL("/birth-card-calculator?status=need-date", req.url),
+      303,
     );
   }
 
@@ -182,16 +184,33 @@ export async function POST(
       );
     }
 
-    // Deep Dive must stay on-page: always embed + JSON. Never 303 to checkout.stripe.com.
-    const embedded = isDeepDive(product);
     const subscription = isMembership(product);
+    const cancelUrl = isDeepDive(product)
+      ? `${SITE_URL}/birth-card-calculator`
+      : `${SITE_URL}/checkout/${product.slug}`;
     const session = await getStripe().checkout.sessions.create(
-      embedded
+      subscription
         ? {
-            mode: "payment",
-            ui_mode: "embedded_page",
-            redirect_on_completion: "never",
+            mode: "subscription",
             line_items: [{ price: priceId, quantity: 1 }],
+            success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: cancelUrl,
+            metadata: sharedMeta,
+            subscription_data: { metadata: sharedMeta },
+            branding_settings: {
+              display_name: SITE_NAME,
+            },
+            phone_number_collection: {
+              enabled: false,
+            },
+            allow_promotion_codes: true,
+            billing_address_collection: "auto",
+          }
+        : {
+            mode: "payment",
+            line_items: [{ price: priceId, quantity: 1 }],
+            success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: cancelUrl,
             metadata: sharedMeta,
             payment_intent_data: { metadata: sharedMeta },
             branding_settings: {
@@ -203,41 +222,7 @@ export async function POST(
             allow_promotion_codes: true,
             billing_address_collection: "auto",
             customer_creation: "always",
-          }
-        : subscription
-          ? {
-              mode: "subscription",
-              line_items: [{ price: priceId, quantity: 1 }],
-              success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-              cancel_url: `${SITE_URL}/checkout/${product.slug}`,
-              metadata: sharedMeta,
-              subscription_data: { metadata: sharedMeta },
-              branding_settings: {
-                display_name: SITE_NAME,
-              },
-              phone_number_collection: {
-                enabled: false,
-              },
-              allow_promotion_codes: true,
-              billing_address_collection: "auto",
-            }
-          : {
-              mode: "payment",
-              line_items: [{ price: priceId, quantity: 1 }],
-              success_url: `${SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-              cancel_url: `${SITE_URL}/checkout/${product.slug}`,
-              metadata: sharedMeta,
-              payment_intent_data: { metadata },
-              branding_settings: {
-                display_name: SITE_NAME,
-              },
-              phone_number_collection: {
-                enabled: false,
-              },
-              allow_promotion_codes: true,
-              billing_address_collection: "auto",
-              customer_creation: "always",
-            },
+          },
     );
 
     recordFunnelEvent({
@@ -247,34 +232,15 @@ export async function POST(
       eventId: `checkout:${session.id}`,
       path: `/checkout/${product.slug}`,
       offerSlug: product.slug,
-      outcome: embedded ? "stripe-embedded-session-created" : "stripe-session-created",
+      outcome: "stripe-session-created",
       currency: session.currency ?? "usd",
       valueCents: session.amount_total ?? product.price * 100,
     });
 
-    if (embedded) {
-      if (!session.client_secret) {
-        console.error("[checkout] embedded session missing client_secret", {
-          offer: product.slug,
-        });
-        return checkoutUnavailable(req, product.slug);
-      }
-      return NextResponse.json({
-        clientSecret: session.client_secret,
-        publishableKey: stripePublishableKey(),
-        offerSlug: DEEP_DIVE_OFFER_SLUG,
-        source: sanitizeDeepDiveSource(
-          requestedSource || "birth-card-calculator",
-        ),
-      });
-    }
-
-    // Deep Dive already returned JSON above. Never 303 to hosted Stripe.
-    if (isDeepDive(product)) {
-      return NextResponse.json({ error: "unavailable" }, { status: 503 });
-    }
-
     if (session.url) {
+      if (wantsJson) {
+        return NextResponse.json({ url: session.url });
+      }
       return NextResponse.redirect(session.url, 303);
     }
     console.error("[checkout] stripe session missing url", {
@@ -300,8 +266,14 @@ function funnelContextFromJson(body: Record<string, unknown>): FunnelContext {
 }
 
 function checkoutUnavailable(req: NextRequest, slug: string) {
-  if (wantsJsonResponse(req) || isDeepDive({ slug })) {
+  if (wantsJsonResponse(req)) {
     return NextResponse.json({ error: "unavailable" }, { status: 503 });
+  }
+  if (isDeepDive({ slug })) {
+    return NextResponse.redirect(
+      new URL("/birth-card-calculator?status=unavailable", req.url),
+      303,
+    );
   }
   return NextResponse.redirect(
     new URL(`/checkout/${slug}?status=unavailable`, req.url),
@@ -314,7 +286,7 @@ function checkoutError(
   message: string,
   init: { status: number; headers?: Record<string, string> },
 ) {
-  if (wantsJsonResponse(req) || req.nextUrl.pathname.includes("/deep-dive/")) {
+  if (wantsJsonResponse(req)) {
     return NextResponse.json(
       { error: message },
       { status: init.status, headers: init.headers },

@@ -58,18 +58,21 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(publicProductBySlug("deep-dive")).toBeUndefined();
   expect(isDeepDive(DEEP_DIVE_PRODUCT)).toBe(true);
 
-  expect(cta).toContain("DeepDiveEmbeddedCheckout");
+  expect(cta).toContain("DeepDiveHostedCheckout");
   expect(cta).toContain("DEEP_DIVE_CTA_LABEL");
   expect(cta).toContain("DEEP_DIVE_PRICE_LABEL");
   expect(cta).toContain('type="date"');
   expect(cta).not.toContain("disabled={!iso}");
   expect(cta).not.toContain("buy.stripe.com");
-  const embed = read("components/checkout/DeepDiveEmbeddedCheckout.tsx");
-  expect(embed).toContain("createEmbeddedCheckoutPage");
-  expect(embed).toContain("fetchClientSecret");
-  expect(embed).toContain("redirect: \"manual\"");
-  expect(embed).not.toContain("buy.stripe.com");
-  expect(embed).not.toContain("initEmbeddedCheckout");
+  const hosted = read("components/checkout/DeepDiveHostedCheckout.tsx");
+  expect(hosted).toContain("DEEP_DIVE_SESSION_PATH");
+  expect(hosted).toContain('method="post"');
+  expect(hosted).toContain("data-analytics-checkout");
+  expect(hosted).toContain('name="birthdate"');
+  expect(hosted).not.toContain("buy.stripe.com");
+  expect(hosted).not.toContain("createEmbeddedCheckoutPage");
+  expect(hosted).not.toContain("initEmbeddedCheckout");
+  expect(hosted).not.toContain("clientSecret");
   expect(cta).not.toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
@@ -98,11 +101,12 @@ test("session metadata carries birthday from the calculator reveal", () => {
       metadata: { birthday: "1990-01-15" },
     }),
   ).toBe("1990-01-15");
-  expect(session).toContain("ui_mode");
-  expect(session).toContain("embedded_page");
-  expect(session).toContain("const embedded = isDeepDive(product)");
-  expect(session).not.toContain("isDeepDive(product) && wantsJson");
-  expect(session).toContain("Never 303 to hosted Stripe");
+  expect(session).not.toContain("ui_mode");
+  expect(session).not.toContain("embedded_page");
+  expect(session).not.toContain("client_secret");
+  expect(session).toContain("const cancelUrl = isDeepDive(product)");
+  expect(session).toContain("/birth-card-calculator");
+  expect(session).toContain("checkout.sessions.create");
   expect(session).toContain("deepDiveSessionMetadata");
   expect(session).toContain(DEEP_DIVE_SESSION_PATH.replace("/checkout/deep-dive/session", "deep-dive") && "deepDivePriceId");
   expect(webhook).toContain("DEEP_DIVE_SKU");
@@ -222,8 +226,8 @@ test("success copy is instant card PDF, honest for Joker, no delayed follow-up",
   expect(calculator).not.toContain("Joker position");
   expect(read("lib/products.ts")).not.toContain("Joker / Dec 31");
   expect(read("app/checkout/success/page.tsx")).toContain("deepDiveSuccessCopy");
-  expect(read("components/checkout/DeepDiveEmbeddedCheckout.tsx")).toContain(
-    "deepDiveSuccessCopy(birthdate)",
+  expect(read("components/checkout/DeepDiveHostedCheckout.tsx")).toContain(
+    "Continue to Secure Checkout",
   );
 });
 

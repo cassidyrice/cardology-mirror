@@ -277,7 +277,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   ],
   cta: "Get Deep Dive $9",
   checkoutNote:
-    "One-time purchase. Birthday comes from the calculator. Email and card only at checkout.",
+    "One-time purchase. Birthday comes from the calculator. Stripe-hosted checkout collects email and payment.",
   downloadAssetKey: "",
   redownloadDays: 30,
   fileName: "Birth-Card-Deep-Dive.pdf",

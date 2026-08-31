@@ -3,7 +3,7 @@
 import { type FormEvent, useState } from "react";
 
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
-import { DeepDiveEmbeddedCheckout } from "@/components/checkout/DeepDiveEmbeddedCheckout";
+import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
   DEEP_DIVE_CTA_LABEL,
@@ -52,12 +52,14 @@ export function DeepDiveCta({
           : `flex w-full max-w-md flex-col items-center gap-3 ${className}`
       }
     >
-      {open && iso ? (
-        <DeepDiveEmbeddedCheckout
+      {iso ? (
+        <DeepDiveHostedCheckout
           birthdate={iso}
           source={sanitizeDeepDiveSource(source)}
           cardLabel={cardLabel}
           cardSlug={cardSlug}
+          compact={compact}
+          submitLabel={ctaLabel}
         />
       ) : open ? (
         <form
