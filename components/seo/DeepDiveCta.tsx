@@ -42,9 +42,15 @@ export function DeepDiveCta({
     if (next) setDraftDate(next);
   }
 
+  const compact = placement === "site-header";
+
   return (
     <div
-      className={`flex w-full max-w-md flex-col items-center gap-3 ${className}`}
+      className={
+        compact
+          ? `flex flex-col items-center ${className}`
+          : `flex w-full max-w-md flex-col items-center gap-3 ${className}`
+      }
     >
       {open && iso ? (
         <DeepDiveEmbeddedCheckout
@@ -82,7 +88,11 @@ export function DeepDiveCta({
       ) : (
         <button
           type="button"
-          className="accent-button large-button w-full text-center sm:w-auto"
+          className={
+            compact
+              ? "accent-button small-button text-center"
+              : "accent-button large-button w-full text-center sm:w-auto"
+          }
           onClick={() => {
             trackClientFunnelEvent("offer_cta_clicked", {
               offerSlug: DEEP_DIVE_OFFER_SLUG,
@@ -94,9 +104,11 @@ export function DeepDiveCta({
           {ctaLabel}
         </button>
       )}
-      <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
-        {DEEP_DIVE_FULFILLMENT}
-      </p>
+      {!compact && (
+        <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
+          {DEEP_DIVE_FULFILLMENT}
+        </p>
+      )}
     </div>
   );
 }

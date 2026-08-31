@@ -135,7 +135,16 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
     calculator.indexOf('placement="birth-card-calculator-result"'),
   );
   expect(calculator).not.toContain("buy.stripe.com");
-  expect(calculator).toContain("seoCard.coreIdentity || seoCard.sweetSpot");
+  expect(calculator).not.toContain("seoCard");
+  expect(calculator).not.toContain("getCardSeo");
+  expect(calculator).toContain("<CurrentChapter");
+  expect(calculator).toContain("<ShareBirthResultButton");
+  expect(calculator.indexOf("<ShareBirthResultButton")).toBeLessThan(
+    calculator.indexOf("<CurrentChapter"),
+  );
+  expect(calculator.indexOf("<CurrentChapter")).toBeLessThan(
+    calculator.indexOf('placement="birth-card-calculator-result"'),
+  );
   expect(calculator).not.toContain("FreeCourseSignupForm");
 });
 
@@ -144,6 +153,8 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(headerCta).toContain('placement="site-header"');
   expect(headerCta).toContain('source="site-header"');
   expect(headerCta).toContain("<DeepDiveCta");
+  expect(cta).toContain('placement === "site-header"');
+  expect(cta).toContain("{!compact && (");
   expect(header).not.toContain('label: "Deep Dive $9"');
   expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
   expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);

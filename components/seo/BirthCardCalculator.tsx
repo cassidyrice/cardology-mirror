@@ -15,9 +15,9 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { PlayingCard } from "../PlayingCard";
+import { CurrentChapter } from "./CurrentChapter";
 import { DeepDiveCta } from "./DeepDiveCta";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
-import { getCardSeo } from "@/lib/seo-cards";
 
 export function BirthCardCalculator() {
   const [date, setDate] = useState("");
@@ -155,7 +155,6 @@ function BirthCardResultCard({
   const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
-  const seoCard = getCardSeo(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
   const rootRef = useRef<HTMLDivElement>(null);
 
@@ -172,11 +171,6 @@ function BirthCardResultCard({
   return (
     <div ref={rootRef} className="mt-8 animate-fade-up">
       <p className="type-eyebrow mb-4 text-center">Your birth card</p>
-      {seoCard && (
-        <p className="mx-auto mb-5 max-w-md text-center text-sm leading-relaxed text-brand-ink-soft">
-          {seoCard.coreIdentity || seoCard.sweetSpot} {seoCard.shadow ? `The edge to watch: ${seoCard.shadow}` : ""}
-        </p>
-      )}
 
       <div className="flex flex-col items-center gap-6">
         {isJoker ? (
@@ -243,6 +237,9 @@ function BirthCardResultCard({
             </Link>
           )}
           <ShareBirthResultButton birthCard={result.birthCard} />
+          {!isJoker && (
+            <CurrentChapter birthdate={date || reveal.birthdate} />
+          )}
           <DeepDiveCta
             placement="birth-card-calculator-result"
             birthdate={date || reveal.birthdate}
