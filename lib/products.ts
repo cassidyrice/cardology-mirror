@@ -268,7 +268,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   bestFor:
     "Anyone who just found their birth card and wants the written Deep Dive sent to them.",
   deliverable:
-    "Instant download links for the 7-page birth-card Deep Dive (Joker / Dec 31: Guide + Spreads only), System Guide, and 90 Spreads.",
+    "Instant download links for the 7-page birth-card Deep Dive, System Guide, and 90 Spreads.",
   turnaround: "Download links emailed immediately after payment.",
   includes: [
     "7-page birth-card Deep Dive PDF",

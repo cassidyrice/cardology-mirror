@@ -206,11 +206,6 @@ function BirthCardResultCard({
 
         <div className="rise text-center" style={{ animationDelay: "0.55s" }}>
           <p className="font-serif text-2xl text-brand-ink">{isJoker ? "The Joker" : bc?.label}</p>
-          {isJoker && (
-            <p className="mt-2 max-w-sm text-sm leading-relaxed text-brand-ink-soft">
-              December 31 is the Joker position: the one birthday outside the 52 standard cards.
-            </p>
-          )}
           {result.rulingCards.length > 0 && (
             <div className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
               <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>

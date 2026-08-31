@@ -220,7 +220,10 @@ test("success copy is instant card PDF, honest for Joker, no delayed follow-up",
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("7-page Deep Dive");
   expect(deepDiveSuccessCopy("1990-01-15")).toBe(DEEP_DIVE_SUCCESS_COPY);
   expect(deepDiveSuccessCopy("1990-12-31")).toBe(DEEP_DIVE_JOKER_SUCCESS_COPY);
-  expect(DEEP_DIVE_FULFILLMENT).toContain("Joker / Dec 31");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("Joker");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("Dec 31");
+  expect(calculator).not.toContain("Joker position");
+  expect(read("lib/products.ts")).not.toContain("Joker / Dec 31");
   expect(read("app/checkout/success/page.tsx")).toContain("deepDiveSuccessCopy");
   expect(read("components/checkout/DeepDiveEmbeddedCheckout.tsx")).toContain(
     "deepDiveSuccessCopy(birthdate)",

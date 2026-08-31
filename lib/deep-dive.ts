@@ -14,7 +14,7 @@ export const DEEP_DIVE_SUCCESS_COPY =
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
   "Payment confirmed. Your System Guide and 90 Spreads are in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads (download links now). Joker / Dec 31: Guide + Spreads only — no card PDF.";
+  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads (download links now).";
 
 export const DEEP_DIVE_CARD_PDF_PREFIX = "deep-dive";
 
