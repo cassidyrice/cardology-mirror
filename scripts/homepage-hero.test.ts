@@ -62,7 +62,7 @@ describe("HomepageCalculatorHero contract", () => {
     expect(freePaths).toContain('href: "/birth-card-compatibility-calculator"');
     expect(home).toContain("<FreeCourseCta source=\"home\"");
     expect(layout).not.toContain("homepage-journey.css");
-    expect(header).toContain("DEEP_DIVE_CTA_LABEL");
+    expect(header).toContain("HeaderDeepDiveCta");
     expect(header).toContain("/birth-card-calculator");
     expect(header).not.toContain("$29");
     expect(header).not.toContain("buy.stripe.com");
@@ -100,5 +100,8 @@ describe("HomepageCalculatorHero contract", () => {
     expect(hero).not.toContain("home-hero-input");
     expect(hero).not.toContain("home-hero-form");
     expect(hero.indexOf("<form")).toBeLessThan(hero.indexOf('aria-label="Calculator details"'));
+    expect(hero).toContain("<HomepageLifeSpread");
+    expect(hero).not.toContain('code="7♦"');
+    expect(hero).not.toContain("hidden h-40 w-56");
   });
 });

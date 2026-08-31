@@ -979,6 +979,32 @@ body {
   background: #1c1914;
 }
 
+.home-life-spread-crown {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.home-life-spread-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.2rem;
+}
+
+.home-life-spread img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 3px;
+  outline: 1px solid rgba(20, 17, 13, 0.12);
+  outline-offset: -1px;
+}
+
 .hero-card-float {
   animation: hero-card-float 4.8s ease-in-out infinite;
 }

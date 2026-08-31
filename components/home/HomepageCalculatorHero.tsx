@@ -9,6 +9,7 @@ import {
 } from "@/components/analytics/AnalyticsCapture";
 import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { HomepageLifeSpread } from "@/components/home/HomepageLifeSpread";
 import { PlayingCard } from "@/components/PlayingCard";
 import {
   birthCardSlug,
@@ -201,20 +202,7 @@ export function HomepageCalculatorHero() {
             ))}
           </ul>
 
-          <div
-            aria-hidden="true"
-            className="relative mt-9 hidden h-40 w-56 sm:block"
-          >
-            <div className="absolute bottom-3 left-3 -rotate-12 opacity-80">
-              <PlayingCard code="7♦" size="sm" surface="paper" />
-            </div>
-            <div className="absolute bottom-6 left-[4.75rem] -rotate-2">
-              <PlayingCard code="Q♥" size="sm" surface="paper" />
-            </div>
-            <div className="absolute bottom-3 left-[8.75rem] rotate-12 opacity-80">
-              <PlayingCard code="A♣" size="sm" surface="paper" />
-            </div>
-          </div>
+          <HomepageLifeSpread />
         </div>
       </div>
     </section>
