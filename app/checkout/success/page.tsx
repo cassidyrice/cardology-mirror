@@ -15,6 +15,11 @@ import {
 } from "@/lib/products";
 import { mintReportToken } from "@/lib/report-token";
 import { mintDownloadToken } from "@/lib/download-token";
+import { isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
+import {
+  deepDiveFilesForBirthday,
+  deepDiveCardPdfForBirthday,
+} from "@/lib/deep-dive-card-pdf";
 import { getStripe } from "@/lib/stripe";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 
@@ -107,6 +112,37 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  // Deep Dive: mint the same HMAC download tokens the webhook emails, so
+  // "instant download links + email backup" is true on this page too.
+  // Mint failure falls back to the email-only story — never a blank page.
+  let deepDiveLinks: { label: string; href: string }[] = [];
+  let deepDiveExtra = "";
+  if (deepDive && confirmed && customerEmail) {
+    try {
+      const days = 30;
+      const files: DeepDiveFile[] = deepDiveFilesForBirthday(deepDiveBirthday);
+      const minted: { label: string; href: string }[] = [];
+      for (const file of files) {
+        const token = await mintDownloadToken(customerEmail, file.slug, days);
+        minted.push({
+          label: file.label,
+          href: `/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
+        });
+      }
+      deepDiveLinks = minted;
+      if (
+        !isJokerBirthdate(deepDiveBirthday) &&
+        !deepDiveCardPdfForBirthday(deepDiveBirthday)
+      ) {
+        deepDiveExtra =
+          "Your card PDF could not be resolved from the birthday on this order. Reply to your receipt email with your birth date (YYYY-MM-DD) and we will send the card file.";
+      }
+    } catch (e) {
+      console.error("[checkout/success] deep dive token mint failed", e);
+      deepDiveLinks = [];
+    }
+  }
+
   return (
     <SeoShell
       crumb={[
@@ -131,7 +167,9 @@ export default async function CheckoutSuccessPage({
         </Kicker>
         <h1 className="type-display text-brand-ink">
           {confirmed && deepDive
-            ? "Check your email."
+            ? deepDiveLinks.length > 0
+              ? "Your files are ready."
+              : "Check your email."
             : confirmed && digital
             ? "Your e-book is ready for download."
             : confirmed && instantReport
@@ -142,7 +180,11 @@ export default async function CheckoutSuccessPage({
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
           {confirmed && deepDive
-            ? deepDiveSuccessCopy(deepDiveBirthday)
+            ? deepDiveLinks.length > 0
+              ? isJokerBirthdate(deepDiveBirthday)
+                ? "Payment confirmed. December 31 is the Joker — your System Guide and 90 Spreads are ready below. There is no card-level Deep Dive PDF for this date."
+                : "Payment confirmed. Your 7-page Deep Dive, System Guide, and 90 Spreads are ready below. Backup copies were also emailed."
+              : deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
             : confirmed && instantReport
@@ -164,7 +206,12 @@ export default async function CheckoutSuccessPage({
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
           {deepDive ? (
-            <DeepDiveFulfillment birthday={deepDiveBirthday} />
+            <DeepDiveFulfillment
+              birthday={deepDiveBirthday}
+              links={deepDiveLinks}
+              extra={deepDiveExtra}
+              email={customerEmail}
+            />
           ) : digital ? (
             <DigitalFulfillment
               product={product!}
@@ -235,14 +282,61 @@ export default async function CheckoutSuccessPage({
   );
 }
 
-function DeepDiveFulfillment({ birthday }: { birthday: string }) {
+function DeepDiveFulfillment({
+  birthday,
+  links,
+  extra,
+  email,
+}: {
+  birthday: string;
+  links: { label: string; href: string }[];
+  extra: string;
+  email: string;
+}) {
   return (
     <div className="text-center">
       <Kicker className="mb-4">Your Deep Dive</Kicker>
-      <h2 className="type-h2 text-brand-ink">Check your email.</h2>
-      <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-        {deepDiveSuccessCopy(birthday)}
-      </p>
+      {links.length > 0 ? (
+        <>
+          <h2 className="type-h2 text-brand-ink">Download your files.</h2>
+          <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+            {deepDiveSuccessCopy(birthday)}
+          </p>
+          <div className="mx-auto mt-6 flex max-w-[24em] flex-col gap-3">
+            {links.map((link) => (
+              <LinkButton
+                key={link.href}
+                href={link.href}
+                variant="accent"
+                size="large"
+              >
+                Download {link.label} &mdash; PDF
+              </LinkButton>
+            ))}
+          </div>
+          {extra ? (
+            <p className="mx-auto mt-4 max-w-[32em] text-sm text-brand-ink">
+              {extra}
+            </p>
+          ) : null}
+          <p className="mt-4 text-xs text-brand-ink-soft">
+            Links are good for 30 days.
+            {email ? (
+              <>
+                {" "}
+                Backup copies were emailed to <strong>{email}</strong>.
+              </>
+            ) : null}
+          </p>
+        </>
+      ) : (
+        <>
+          <h2 className="type-h2 text-brand-ink">Check your email.</h2>
+          <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+            {deepDiveSuccessCopy(birthday)}
+          </p>
+        </>
+      )}
     </div>
   );
 }

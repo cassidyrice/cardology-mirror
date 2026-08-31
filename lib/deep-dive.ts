@@ -44,13 +44,13 @@ export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [
   {
     slug: "system-guide",
     key: "system-guide.pdf",
-    fileName: "System-Guide.pdf",
+    fileName: "Card-Blueprints-System-Guide.pdf",
     label: "System Guide",
   },
   {
     slug: "all-90-spreads",
     key: "all-90-spreads.pdf",
-    fileName: "The-90-Spreads.pdf",
+    fileName: "Card-Blueprints-90-Spreads.pdf",
     label: "90 Spreads",
   },
 ];
