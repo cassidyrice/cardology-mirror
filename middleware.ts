@@ -10,6 +10,11 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/cardology-chart": "/birth-card-calculator",
   "/birth-card-chart": "/birth-card-calculator",
   "/cards-of-destiny": "/destiny-cards",
+  // The divination spokes were retired 2026-09-01: the hub now teaches the
+  // system's real boards (Life, Spirit, 90 yearly spreads).
+  "/playing-card-spreads/three-card": "/playing-card-spreads",
+  "/playing-card-spreads/love": "/playing-card-spreads",
+  "/playing-card-spreads/yes-or-no": "/playing-card-spreads",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
   "/blog/what-cardology-is-and-is-not": "/what-is-cardology",

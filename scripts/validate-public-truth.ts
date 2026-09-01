@@ -198,8 +198,6 @@ const productMarketingFiles = [
   "app/contact/page.tsx",
   "app/how-to-read-playing-cards/page.tsx",
   "app/playing-card-spreads/page.tsx",
-  "app/playing-card-spreads/three-card/page.tsx",
-  "app/playing-card-spreads/yes-or-no/page.tsx",
   "app/try/page.tsx",
   "app/privacy-policy/page.tsx",
   "app/readings/page.tsx",

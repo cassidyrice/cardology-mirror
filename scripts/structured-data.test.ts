@@ -173,16 +173,14 @@ test("SeoShell safely serializes hostile breadcrumb labels without changing JSON
 });
 
 const migratedTemplates = [
-  "app/playing-card-spreads/three-card/page.tsx",
-  "app/playing-card-spreads/love/page.tsx",
-  "app/playing-card-spreads/yes-or-no/page.tsx",
+  "app/playing-card-spreads/page.tsx",
   "app/blog/pillar/[slug]/page.tsx",
   "app/blog/[slug]/page.tsx",
   "app/birth-card/[slug]/page.tsx",
 ] as const;
 
-test("the six migrated templates contain no manual BreadcrumbList implementation", () => {
-  expect(migratedTemplates).toHaveLength(6);
+test("the migrated templates contain no manual BreadcrumbList implementation", () => {
+  expect(migratedTemplates).toHaveLength(4);
 
   for (const path of migratedTemplates) {
     const source = readFileSync(join(root, path), "utf8");

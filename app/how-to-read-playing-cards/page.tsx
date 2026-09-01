@@ -225,8 +225,8 @@ export default function HowToReadPlayingCards() {
             <strong>Draw three cards, left to right, face up.</strong> Give
             each a job before you look: past, present, future. This layout is
             the{" "}
-            <Link href="/playing-card-spreads/three-card" className="text-gold underline underline-offset-4">
-              three-card spread
+            <Link href="/playing-card-spreads" className="text-gold underline underline-offset-4">
+              playing board guide
             </Link>
             , the one beginners should learn first.
           </li>

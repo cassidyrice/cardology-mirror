@@ -73,30 +73,30 @@ export type SpreadInfo = {
 
 export const SPREADS: SpreadInfo[] = [
   {
-    slug: "three-card",
-    path: "/playing-card-spreads/three-card",
-    name: "The Three-Card Spread",
-    positions: "Past · Present · Future — or Situation · Action · Outcome",
+    slug: "life-spread",
+    path: "/playing-card-spreads#life-spread",
+    name: "The Life Spread",
+    positions: "7 rows × 7 seats + the crown — the deck in calendar order",
     oneLine:
-      "The workhorse layout: three cards, one story arc. The first spread to learn, and the last one most readers ever retire.",
-    bestFor: "Any open question you want read as a storyline.",
+      "The board at rest: all 52 cards in their fixed calendar seats. Every card owns exactly one seat, and yours never moves.",
+    bestFor: "Seeing where your birth card lives before anything starts moving.",
   },
   {
-    slug: "love",
-    path: "/playing-card-spreads/love",
-    name: "The Love Spread",
-    positions: "You · Them · The Connection — five-card adds The Friction · The Direction",
+    slug: "spirit-spread",
+    path: "/playing-card-spreads#spirit-spread",
+    name: "The Spirit Spread",
+    positions: "The deck's second fixed arrangement — same 52 seats, different tenants",
     oneLine:
-      "Three mirrors on one relationship: how you are showing up, how they are showing up, and what the bond itself is asking for.",
-    bestFor: "One specific relationship and how it actually runs.",
+      "The deck's other fixed board. Between the two boards cards trade seats — those trades are where stretch, steady, and the lifetime karma pair come from.",
+    bestFor: "Understanding your card's seven lenses and its karma pair.",
   },
   {
-    slug: "yes-or-no",
-    path: "/playing-card-spreads/yes-or-no",
-    name: "The Yes-or-No Reading",
-    positions: "One card, red or black — or three, majority rules",
+    slug: "90-yearly-spreads",
+    path: "/playing-card-spreads#yearly-spreads",
+    name: "The 90 Yearly Spreads",
+    positions: "One numbered board per year of life — your spread number is your age",
     oneLine:
-      "The traditional red-yes, black-no draw, presented honestly: a structured way to notice your own reaction, not a verdict.",
-    bestFor: "A single decision you keep re-asking.",
+      "Every birthday the board re-deals to the next numbered arrangement. Your card lands in a new seat, and the year's seven 52-day cards are read from its new row.",
+    bestFor: "Timing: the seven 52-day cards and the year's signal cards.",
   },
 ];

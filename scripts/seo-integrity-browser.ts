@@ -516,7 +516,7 @@ async function main(): Promise<void> {
 
     await page.setViewportSize({ width: 1280, height: 800 });
     for (const path of [
-      "/playing-card-spreads/three-card",
+      "/playing-card-spreads",
       "/blog/four-suits-in-cardology",
       "/blog/pillar/cardology-foundations",
       "/birth-card/queen-of-hearts",

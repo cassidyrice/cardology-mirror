@@ -129,6 +129,13 @@ def main():
         ["Cards of", "Destiny"],
         "Your birthday maps to one card  ·  Free",
     )
+    page(
+        "playing-card-spreads",
+        ["10-of-clubs", "8-of-diamonds", "queen-of-spades"],
+        "CARD BLUEPRINTS",
+        ["The Playing", "Board"],
+        "Two fixed boards  ·  90 yearly spreads",
+    )
     # Product OGs (also the schema.org Product images) — public/og/products/
     os.makedirs(os.path.join(OUT, "products"), exist_ok=True)
     page(
