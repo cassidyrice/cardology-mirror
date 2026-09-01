@@ -15,26 +15,17 @@ function byRank(a: CardSeo, b: CardSeo): number {
 }
 
 function MiniFace({ card }: { card: CardSeo }) {
-  const color = SUIT_COLOR_PAPER[card.suit];
   return (
-    <span
-      className="relative block aspect-[2.5/3.5] overflow-hidden rounded-[4px] border border-brand-line bg-brand-ivory transition-all duration-200 group-hover:-translate-y-1 group-hover:border-gold/70 group-hover:shadow-[0_8px_18px_-10px_rgba(20,17,13,0.45)]"
-      style={{ color }}
-    >
-      <span className="absolute left-[3px] top-[2px] flex flex-col items-center leading-none">
-        <span className="font-serif text-[9px] font-semibold tracking-tight">{card.rank}</span>
-        <span className="text-[7px] leading-none">{card.glyph}</span>
-      </span>
-      <span aria-hidden className="absolute inset-0 flex items-center justify-center text-sm leading-none">
-        {card.glyph}
-      </span>
-      <span
-        aria-hidden
-        className="absolute bottom-[2px] right-[3px] flex rotate-180 flex-col items-center leading-none"
-      >
-        <span className="font-serif text-[9px] font-semibold tracking-tight">{card.rank}</span>
-        <span className="text-[7px] leading-none">{card.glyph}</span>
-      </span>
+    <span className="relative block aspect-[2.5/3.5] overflow-hidden rounded-[4px] border border-brand-line bg-brand-ivory transition-all duration-200 group-hover:-translate-y-1 group-hover:border-gold/70 group-hover:shadow-[0_8px_18px_-10px_rgba(20,17,13,0.45)]">
+      <img
+        src={`/share-cards/faces/${card.slug}.png`}
+        alt=""
+        width={1000}
+        height={1500}
+        loading="lazy"
+        decoding="async"
+        className="h-full w-full object-cover"
+      />
     </span>
   );
 }

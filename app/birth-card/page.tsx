@@ -216,17 +216,17 @@ export default function BirthCardIndex() {
                 <li key={c.slug}>
                   <Link
                     href={`/birth-card/${c.slug}`}
-                    className="card-surface group relative flex aspect-[2.5/3.5] flex-col items-center justify-center overflow-hidden p-4 text-center transition-all hover:border-gold/50 hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
+                    className="card-surface group relative flex flex-col items-center overflow-hidden p-3 text-center transition-all hover:border-gold/50 hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
                   >
-                    <div
-                      className="absolute inset-0 opacity-0 transition-opacity group-hover:opacity-10"
-                      style={{
-                        background: `radial-gradient(circle at 50% 50%, ${c.color}, transparent 70%)`,
-                      }}
+                    <img
+                      src={`/share-cards/faces/${c.slug}.png`}
+                      alt={`${c.label} playing card`}
+                      width={1000}
+                      height={1500}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full rounded-[6px] border border-brand-line transition-transform duration-200 group-hover:-translate-y-1"
                     />
-                    <span className="font-serif text-4xl leading-none" style={{ color: SUIT_COLOR_PAPER[c.suit] }}>
-                      {c.code}
-                    </span>
                     <span className="mt-2 block font-serif text-sm text-bone">
                       {c.label}
                     </span>
