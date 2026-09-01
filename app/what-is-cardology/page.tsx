@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { CARDOLOGY_TIMELINE } from "@/lib/cardology-timeline";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import {
@@ -87,7 +88,7 @@ const faqs = [
   },
   {
     q: "Where does Cardology come from?",
-    a: "Modern documentation includes Olney Richmond’s The Mystic Test Book (1893), later work by Florence Campbell and Edith Randall, and contemporary teachers such as Robert Lee Camp. The deck-to-calendar structure (52 cards / 52 weeks) is older than any single book.",
+    a: "The 52-card solar calendar was first set out in full in Olney H. Richmond’s The Mystic Test Book (Chicago, 1893, Library of Congress BF1878 .R5). Edith Randall and Florence Campbell’s Sacred Symbols of the Ancients (1947) published the birthday chart most sites still use; Arne Lein (1978) and Robert Lee Camp (1992 onward) carried it into modern print. The deck-as-calendar arithmetic itself was in print by 1762. The full dated timeline with sources is on this page.",
   },
 ];
 
@@ -325,14 +326,66 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="lineage">
-        <h2 className="eyebrow mb-2 text-gold">Where it comes from</h2>
+        <h2 className="eyebrow mb-2 text-gold">Where it comes from: a dated, sourced history</h2>
         <p className="prose-reading text-mist">
-          Modern documentation includes <em>The Mystic Test Book</em> (Olney Richmond,
-          1893), later development by Florence Campbell and Edith Randall (
-          <em>Sacred Symbols of the Ancients</em>), and contemporary teachers such as
-          Robert Lee Camp. The lineage matters less than the structure: deck-to-calendar
-          correspondences existed before those books. The books are documentation. The
-          deck is the system.
+          Most Cardology sites tell the origin story without a single citation. Here is what the
+          library records and the surviving books actually show. Every entry links to the source
+          it rests on; anything that rests only on one author&rsquo;s word is marked as such.
+        </p>
+        <ol className="mt-4 space-y-3 border-l border-white/15 pl-4">
+          {CARDOLOGY_TIMELINE.map((t) => (
+            <li key={t.year + t.sourceLabel} className="relative pl-2">
+              <span className="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
+              <p className="text-sm text-mist">
+                <strong className="font-serif text-base text-bone">{t.year}</strong>
+                {" \u00b7 "}
+                {t.what}{" "}
+                <a href={t.source} rel="noopener" className="text-gold underline underline-offset-4">
+                  [{t.sourceLabel}]
+                </a>
+              </p>
+            </li>
+          ))}
+        </ol>
+        <h3 className="mt-6 font-serif text-xl text-bone">Claims you will read elsewhere that the sources do not support</h3>
+        <ul className="prose-reading mt-2 space-y-2 text-sm text-mist">
+          <li>
+            <strong>Atlantis, Egypt, and a 20,000-year-old Order of the Magi.</strong> Every version of
+            this traces to Richmond&rsquo;s own 1892&ndash;93 books, which lean on a speculative book titled
+            <em> Atlantis</em>. Richmond himself quotes the <em>Encyclopaedia Britannica</em> that the
+            origin of playing cards is disputed. There is no independent evidence.
+          </li>
+          <li>
+            <strong>An unbroken secret order from 1864.</strong> The 1864 Nashville initiation and the
+            1889 &ldquo;first modern temple&rdquo; are Richmond&rsquo;s testimony, reprinted from his own
+            interviews with a Grand Rapids newspaper. Membership figures repeated online are uncited.
+          </li>
+          <li>
+            <strong>&ldquo;Cardology&rdquo; was coined in 1934.</strong> Asserted by one modern site citing a
+            1939 copyright catalog entry for an &ldquo;Astro-Cardology&rdquo; booklet. We could not verify
+            it, so we do not repeat it as fact.
+          </li>
+          <li>
+            <strong>The deck-as-calendar was a hidden revelation.</strong> The arithmetic (52 cards, 4 suits,
+            13 ranks, 364 spots plus the Joker) was already circulating in print as the
+            &ldquo;Perpetual Almanack&rdquo; card story by 1762, more than a century before Richmond.
+          </li>
+        </ul>
+        <h3 className="mt-6 font-serif text-xl text-bone">Cardology, cardiology, cartomancy, tarot</h3>
+        <p className="prose-reading mt-2 text-sm text-mist">
+          <strong>Cardiology</strong> is the medicine of the heart; the words share four letters and nothing
+          else. <strong>Cartomancy</strong> is reading shuffled cards for an answer, which Cardology does not
+          do: the card is fixed by your birthday. <strong>Tarot</strong> uses a 78-card deck with a different
+          numerology. <strong>Destiny Cards</strong>, <strong>Love Cards</strong>, and <strong>Science of the
+          Cards</strong> are book and brand names for this same 52-card birthday system. The word
+          &ldquo;Cardology&rdquo; itself is a registered US trademark (Reg. 5703102, 2019) for playing cards and
+          merchandise; it does not cover the practice or the word in writing.
+        </p>
+        <p className="prose-reading mt-3 text-sm text-mist">
+          Our position: the books are documentation, the deck is the system. The calculation on this site
+          reproduces the 1947 birthday chart exactly and is published on the{" "}
+          <Link href="/methodology" className="text-gold underline underline-offset-4">methodology page</Link>
+          {" "}so you can check it against the primary texts yourself.
         </p>
       </section>
 
