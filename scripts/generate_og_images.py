@@ -12,7 +12,7 @@ via INSTRUMENT_SERIF / GEIST_MONO env vars; falls back to DejaVu.
 Run from repo root:  python3 scripts/generate_og_images.py
 """
 import os
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 W, H = 1200, 630
 OBSIDIAN = (15, 14, 13)
@@ -79,45 +79,82 @@ def default_image():
     img.save(os.path.join(OUT, "default.png"), optimize=True)
 
 
+# --- Warm-paper card style (matches og/birth-card-calculator.png and the
+# --- page OGs from scripts/generate_page_og_images.py): the actual card face
+# --- from public/share-cards/faces on paper, copy on the right.
+PAPER = (245, 239, 228)
+INK = (43, 32, 24)
+INK_SOFT = (90, 78, 64)
+OXBLOOD = (142, 50, 31)
+BAR_H = 22
+FACES = os.path.join(os.path.dirname(__file__), "..", "public", "share-cards", "faces")
+
+
+def paper_canvas():
+    img = Image.new("RGBA", (W, H), PAPER + (255,))
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, W, BAR_H], fill=OXBLOOD)
+    d.rectangle([0, H - BAR_H, W, H], fill=OXBLOOD)
+    return img
+
+
+def paste_face(canvas, slug, center, height, angle):
+    face = Image.open(os.path.join(FACES, f"{slug}.png")).convert("RGBA")
+    w = round(face.width * height / face.height)
+    face = face.resize((w, height), Image.LANCZOS)
+    rot = face.rotate(angle, expand=True, resample=Image.BICUBIC)
+    alpha = rot.split()[3].point(lambda a: min(a, 70))
+    shadow = Image.new("RGBA", rot.size, (20, 17, 13, 255))
+    shadow.putalpha(alpha)
+    shadow = shadow.filter(ImageFilter.GaussianBlur(10))
+    x = center[0] - rot.width // 2
+    y = center[1] - rot.height // 2
+    canvas.alpha_composite(shadow, (x + 8, y + 12))
+    canvas.alpha_composite(rot, (x, y))
+
+
 def card_image(rank, suit, glyph):
-    img, d = base_canvas()
-    is_red = suit in ("hearts", "diamonds")
-    glyph_color = RED if is_red else BONE
     rank_word = RANK_NAME.get(rank, rank)
-    label = f"{rank_word} of {suit.capitalize()}"
     slug = f"{rank_word.lower() if rank in RANK_NAME else rank}-of-{suit}"
 
-    # big glyph card panel on the right
-    px, py, pw, ph = W - 420, 110, 300, 410
-    d.rounded_rectangle([px, py, px + pw, py + ph], radius=28,
-                        fill=(22, 20, 18), outline=GOLD, width=2)
-    glyph_font = ImageFont.truetype(GLYPH_FONT, 130)
-    rank_font = font(SERIF, 150)
-    rw = d.textlength(rank, font=rank_font)
-    gw = d.textlength(glyph, font=glyph_font)
-    total = rw + 14 + gw
-    x0 = px + pw / 2 - total / 2
-    cy = py + ph / 2 - 30
-    d.text((x0, cy), rank, font=rank_font, fill=glyph_color, anchor="lm")
-    d.text((x0 + rw + 14, cy + 6), glyph, font=glyph_font, fill=glyph_color, anchor="lm")
-    d.text((px + pw / 2, py + ph - 64), "BIRTH CARD", font=font(MONO, 22),
-           fill=GOLD, anchor="mm")
+    img = paper_canvas()
+    paste_face(img, slug, (300, 315), 460, 8)
 
-    d.text((72, 150), "CARD BLUEPRINTS  ·  BIRTH CARD", font=font(MONO, 28), fill=GOLD)
-    # title wraps onto two lines if needed
-    f1 = font(SERIF, 88)
-    if d.textlength(label, font=f1) > 620:
-        f1 = font(SERIF, 72)
-    d.text((66, 220), label, font=f1, fill=BONE)
-    d.text((72, 350), "Meaning, strengths, shadow,", font=font(SERIF, 48), fill=MIST)
-    d.text((72, 410), "relationships, and birth dates.", font=font(SERIF, 48), fill=MIST)
-    footer(d)
-    img.save(os.path.join(OUT, f"{slug}.png"), optimize=True)
+    d = ImageDraw.Draw(img)
+    tx, y = 620, 190
+    d.text((tx, y), "CARD BLUEPRINTS  ·  BIRTH CARD", font=font(SERIF, 32), fill=OXBLOOD)
+    y += 52
+    tf = font(SERIF, 92)
+    d.text((tx, y), rank_word, font=tf, fill=INK)
+    y += 98
+    d.text((tx, y), f"of {suit.capitalize()}", font=tf, fill=INK)
+    y += 128
+    d.text((tx, y), "Meaning, love, money, shadow", font=font(SERIF, 31), fill=INK_SOFT)
+    y += 42
+    d.text((tx, y), "& the birth dates that carry it", font=font(SERIF, 31), fill=INK_SOFT)
+    img.convert("RGB").save(os.path.join(OUT, f"{slug}.png"), optimize=True)
+
+
+def joker_image():
+    img = paper_canvas()
+    paste_face(img, "joker", (300, 315), 460, 8)
+    d = ImageDraw.Draw(img)
+    tx, y = 620, 190
+    d.text((tx, y), "CARD BLUEPRINTS  ·  BIRTH CARD", font=font(SERIF, 32), fill=OXBLOOD)
+    y += 52
+    tf = font(SERIF, 92)
+    d.text((tx, y), "The Joker", font=tf, fill=INK)
+    y += 128
+    d.text((tx, y), "December 31 — the one birthday", font=font(SERIF, 31), fill=INK_SOFT)
+    y += 42
+    d.text((tx, y), "outside the 52-card map", font=font(SERIF, 31), fill=INK_SOFT)
+    img.convert("RGB").save(os.path.join(OUT, "joker.png"), optimize=True)
 
 
 def main():
     os.makedirs(OUT, exist_ok=True)
     default_image()
+    joker_image()
     for suit, glyph in SUITS:
         for rank in RANKS:
             card_image(rank, suit, glyph)

@@ -59,7 +59,7 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${card.slug}`,
         type: "article",
-        images: [{ url: `/og/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} birth card` }],
+        images: [{ url: `/og/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} playing card — Cardology birth card meaning` }],
       },
       twitter: { card: "summary_large_image", title, description, images: [`/og/${card.slug}.png`] },
     };
@@ -78,7 +78,7 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${date.slug}`,
         type: "article",
-        images: [{ url: `/og/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.label} birth card: ${date.card.label}` }],
+        images: [{ url: `/og/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.label} birthday — the ${date.card.label} playing card is its birth card` }],
       },
       twitter: { card: "summary_large_image", title, description, images: [`/og/${date.card.slug}.png`] },
     };

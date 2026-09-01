@@ -13,7 +13,13 @@ export const metadata: Metadata = {
     title: "The Joker: The December 31 Birth Card",
     description: "December 31 resolves to zero — the one date outside the 52-card cycle.",
     url: "/birth-card/joker",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [{ url: "/og/joker.png", width: 1200, height: 630, alt: "The Joker playing card — the December 31 birth card" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Joker: The December 31 Birth Card",
+    description: "December 31 resolves to zero — the one date outside the 52-card cycle.",
+    images: ["/og/joker.png"],
   },
 };
 
