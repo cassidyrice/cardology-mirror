@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `2d10488` — growth command: Stripe via MCP; previous record `46362ca`)
+**Last verified: 2026-09-01** (deployed `main` @ `3125157` — Calculator page owns 'cardology chart': full 366-day HTML chart + printable PNG, titles retuned; previous record `2d10488`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `2d104884bb74c8795f79566f92a4032591a52dc4` |
+| **Deployed commit** | `312515733392fb99b54ab1bca9f867be3779474d` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
