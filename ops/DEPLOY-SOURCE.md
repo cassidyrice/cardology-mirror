@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `51fcb02` — five-star reviews + rating schema on product pages; previous record `ae3c5fb`)
+**Last verified: 2026-09-01** (deployed `main` @ `4fc33e9` — spreads hub rebuilt as the real boards, spokes 301d; previous record `51fcb02`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `51fcb02abb0fee40997a4b3dd8e4baf405136068` |
+| **Deployed commit** | `4fc33e9b85ec95dac9b5e2dfb398e2222948b561` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
