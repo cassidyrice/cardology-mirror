@@ -1,1 +1,1962 @@
-{}
+{
+ "A♥": [
+  {
+   "name": "Tiger Woods",
+   "born": "1975-12-30",
+   "known_for": "American golfer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tiger_Woods"
+  },
+  {
+   "name": "LeBron James",
+   "born": "1984-12-30",
+   "known_for": "American basketball player",
+   "wikipedia": "https://en.wikipedia.org/wiki/LeBron_James"
+  },
+  {
+   "name": "Rudyard Kipling",
+   "born": "1865-12-30",
+   "known_for": "English author, The Jungle Book",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rudyard_Kipling"
+  },
+  {
+   "name": "Patti Smith",
+   "born": "1946-12-30",
+   "known_for": "American singer-songwriter and poet",
+   "wikipedia": "https://en.wikipedia.org/wiki/Patti_Smith"
+  },
+  {
+   "name": "Sandy Koufax",
+   "born": "1935-12-30",
+   "known_for": "American baseball pitcher",
+   "wikipedia": "https://en.wikipedia.org/wiki/Sandy_Koufax"
+  }
+ ],
+ "2♥": [
+  {
+   "name": "Jude Law",
+   "born": "1972-12-29",
+   "known_for": "English actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jude_Law"
+  },
+  {
+   "name": "Ted Danson",
+   "born": "1947-12-29",
+   "known_for": "American actor, Cheers",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ted_Danson"
+  },
+  {
+   "name": "Mary Tyler Moore",
+   "born": "1936-12-29",
+   "known_for": "American actress and producer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mary_Tyler_Moore"
+  },
+  {
+   "name": "Andrew Johnson",
+   "born": "1808-12-29",
+   "known_for": "17th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Andrew_Johnson"
+  },
+  {
+   "name": "Pablo Casals",
+   "born": "1876-12-29",
+   "known_for": "Catalan cellist and conductor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pablo_Casals"
+  }
+ ],
+ "3♥": [
+  {
+   "name": "Winston Churchill",
+   "born": "1874-11-30",
+   "known_for": "British prime minister",
+   "wikipedia": "https://en.wikipedia.org/wiki/Winston_Churchill"
+  },
+  {
+   "name": "Mark Twain",
+   "born": "1835-11-30",
+   "known_for": "American author and humorist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mark_Twain"
+  },
+  {
+   "name": "Ben Stiller",
+   "born": "1965-11-30",
+   "known_for": "American actor and comedian",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ben_Stiller"
+  },
+  {
+   "name": "Denzel Washington",
+   "born": "1954-12-28",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Denzel_Washington"
+  },
+  {
+   "name": "Stan Lee",
+   "born": "1922-12-28",
+   "known_for": "Marvel Comics writer and editor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stan_Lee"
+  },
+  {
+   "name": "John Legend",
+   "born": "1978-12-28",
+   "known_for": "American singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Legend"
+  }
+ ],
+ "4♥": [
+  {
+   "name": "Peter Jackson",
+   "born": "1961-10-31",
+   "known_for": "Director, The Lord of the Rings",
+   "wikipedia": "https://en.wikipedia.org/wiki/Peter_Jackson"
+  },
+  {
+   "name": "Louisa May Alcott",
+   "born": "1832-11-29",
+   "known_for": "Author of Little Women",
+   "wikipedia": "https://en.wikipedia.org/wiki/Louisa_May_Alcott"
+  },
+  {
+   "name": "C. S. Lewis",
+   "born": "1898-11-29",
+   "known_for": "Author of The Chronicles of Narnia",
+   "wikipedia": "https://en.wikipedia.org/wiki/C._S._Lewis"
+  },
+  {
+   "name": "Chadwick Boseman",
+   "born": "1976-11-29",
+   "known_for": "American actor, Black Panther",
+   "wikipedia": "https://en.wikipedia.org/wiki/Chadwick_Boseman"
+  },
+  {
+   "name": "Louis Pasteur",
+   "born": "1822-12-27",
+   "known_for": "French chemist and microbiologist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Louis_Pasteur"
+  },
+  {
+   "name": "Timothée Chalamet",
+   "born": "1995-12-27",
+   "known_for": "American-French actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Timoth%C3%A9e_Chalamet"
+  }
+ ],
+ "5♥": [
+  {
+   "name": "John Adams",
+   "born": "1735-10-30",
+   "known_for": "2nd U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Adams"
+  },
+  {
+   "name": "Diego Maradona",
+   "born": "1960-10-30",
+   "known_for": "Argentine footballer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Diego_Maradona"
+  },
+  {
+   "name": "Jon Stewart",
+   "born": "1962-11-28",
+   "known_for": "American comedian and TV host",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jon_Stewart"
+  },
+  {
+   "name": "William Blake",
+   "born": "1757-11-28",
+   "known_for": "English poet and painter",
+   "wikipedia": "https://en.wikipedia.org/wiki/William_Blake"
+  },
+  {
+   "name": "Jared Leto",
+   "born": "1971-12-26",
+   "known_for": "American actor and musician",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jared_Leto"
+  },
+  {
+   "name": "Kit Harington",
+   "born": "1986-12-26",
+   "known_for": "English actor, Game of Thrones",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kit_Harington"
+  }
+ ],
+ "6♥": [
+  {
+   "name": "Winona Ryder",
+   "born": "1971-10-29",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Winona_Ryder"
+  },
+  {
+   "name": "Jimi Hendrix",
+   "born": "1942-11-27",
+   "known_for": "American rock guitarist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jimi_Hendrix"
+  },
+  {
+   "name": "Bruce Lee",
+   "born": "1940-11-27",
+   "known_for": "Martial artist and actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Lee"
+  },
+  {
+   "name": "Humphrey Bogart",
+   "born": "1899-12-25",
+   "known_for": "American film actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Humphrey_Bogart"
+  },
+  {
+   "name": "Annie Lennox",
+   "born": "1954-12-25",
+   "known_for": "Scottish singer, Eurythmics",
+   "wikipedia": "https://en.wikipedia.org/wiki/Annie_Lennox"
+  },
+  {
+   "name": "Justin Trudeau",
+   "born": "1971-12-25",
+   "known_for": "Canadian prime minister",
+   "wikipedia": "https://en.wikipedia.org/wiki/Justin_Trudeau"
+  }
+ ],
+ "7♥": [
+  {
+   "name": "Truman Capote",
+   "born": "1924-09-30",
+   "known_for": "Author of In Cold Blood",
+   "wikipedia": "https://en.wikipedia.org/wiki/Truman_Capote"
+  },
+  {
+   "name": "Bill Gates",
+   "born": "1955-10-28",
+   "known_for": "Microsoft co-founder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bill_Gates"
+  },
+  {
+   "name": "Julia Roberts",
+   "born": "1967-10-28",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Julia_Roberts"
+  },
+  {
+   "name": "Charles M. Schulz",
+   "born": "1922-11-26",
+   "known_for": "Creator of Peanuts",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charles_M._Schulz"
+  },
+  {
+   "name": "Tina Turner",
+   "born": "1939-11-26",
+   "known_for": "Singer, Queen of Rock 'n' Roll",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tina_Turner"
+  },
+  {
+   "name": "Ricky Martin",
+   "born": "1971-12-24",
+   "known_for": "Puerto Rican pop singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ricky_Martin"
+  }
+ ],
+ "8♥": [
+  {
+   "name": "Richard Gere",
+   "born": "1949-08-31",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Richard_Gere"
+  },
+  {
+   "name": "Maria Montessori",
+   "born": "1870-08-31",
+   "known_for": "Italian physician and educator",
+   "wikipedia": "https://en.wikipedia.org/wiki/Maria_Montessori"
+  },
+  {
+   "name": "Theodore Roosevelt",
+   "born": "1858-10-27",
+   "known_for": "26th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Theodore_Roosevelt"
+  },
+  {
+   "name": "John Cleese",
+   "born": "1939-10-27",
+   "known_for": "English comedian, Monty Python",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Cleese"
+  },
+  {
+   "name": "Joe DiMaggio",
+   "born": "1914-11-25",
+   "known_for": "New York Yankees center fielder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Joe_DiMaggio"
+  },
+  {
+   "name": "Eddie Vedder",
+   "born": "1964-12-23",
+   "known_for": "Pearl Jam lead vocalist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Vedder"
+  }
+ ],
+ "9♥": [
+  {
+   "name": "Warren Buffett",
+   "born": "1930-08-30",
+   "known_for": "American investor, Berkshire Hathaway",
+   "wikipedia": "https://en.wikipedia.org/wiki/Warren_Buffett"
+  },
+  {
+   "name": "Mary Shelley",
+   "born": "1797-08-30",
+   "known_for": "Author of Frankenstein",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mary_Shelley"
+  },
+  {
+   "name": "Brigitte Bardot",
+   "born": "1934-09-28",
+   "known_for": "French actress and model",
+   "wikipedia": "https://en.wikipedia.org/wiki/Brigitte_Bardot"
+  },
+  {
+   "name": "Hillary Clinton",
+   "born": "1947-10-26",
+   "known_for": "U.S. secretary of state and senator",
+   "wikipedia": "https://en.wikipedia.org/wiki/Hillary_Clinton"
+  },
+  {
+   "name": "Zachary Taylor",
+   "born": "1784-11-24",
+   "known_for": "12th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Zachary_Taylor"
+  },
+  {
+   "name": "Ralph Fiennes",
+   "born": "1962-12-22",
+   "known_for": "English actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ralph_Fiennes"
+  }
+ ],
+ "10♥": [
+  {
+   "name": "J. K. Rowling",
+   "born": "1965-07-31",
+   "known_for": "Author of Harry Potter",
+   "wikipedia": "https://en.wikipedia.org/wiki/J._K._Rowling"
+  },
+  {
+   "name": "Michael Jackson",
+   "born": "1958-08-29",
+   "known_for": "American singer, King of Pop",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Jackson"
+  },
+  {
+   "name": "Ingrid Bergman",
+   "born": "1915-08-29",
+   "known_for": "Swedish actress, Casablanca",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ingrid_Bergman"
+  },
+  {
+   "name": "Pablo Picasso",
+   "born": "1881-10-25",
+   "known_for": "Spanish painter and sculptor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pablo_Picasso"
+  },
+  {
+   "name": "Katy Perry",
+   "born": "1984-10-25",
+   "known_for": "American pop singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Katy_Perry"
+  },
+  {
+   "name": "Samuel L. Jackson",
+   "born": "1948-12-21",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Samuel_L._Jackson"
+  }
+ ],
+ "J♥": [
+  {
+   "name": "Arnold Schwarzenegger",
+   "born": "1947-07-30",
+   "known_for": "Actor, bodybuilder, California governor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Arnold_Schwarzenegger"
+  },
+  {
+   "name": "Henry Ford",
+   "born": "1863-07-30",
+   "known_for": "Founder of Ford Motor Company",
+   "wikipedia": "https://en.wikipedia.org/wiki/Henry_Ford"
+  },
+  {
+   "name": "Emily Brontë",
+   "born": "1818-07-30",
+   "known_for": "Author of Wuthering Heights",
+   "wikipedia": "https://en.wikipedia.org/wiki/Emily_Bront%C3%AB"
+  },
+  {
+   "name": "Serena Williams",
+   "born": "1981-09-26",
+   "known_for": "American tennis champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Serena_Williams"
+  },
+  {
+   "name": "Drake",
+   "born": "1986-10-24",
+   "known_for": "Canadian rapper and singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Drake_(musician)"
+  },
+  {
+   "name": "Scarlett Johansson",
+   "born": "1984-11-22",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Scarlett_Johansson"
+  }
+ ],
+ "Q♥": [
+  {
+   "name": "Lyndon B. Johnson",
+   "born": "1908-08-27",
+   "known_for": "36th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Lyndon_B._Johnson"
+  },
+  {
+   "name": "Will Smith",
+   "born": "1968-09-25",
+   "known_for": "American actor and rapper",
+   "wikipedia": "https://en.wikipedia.org/wiki/Will_Smith"
+  },
+  {
+   "name": "Michael Douglas",
+   "born": "1944-09-25",
+   "known_for": "American actor and producer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Douglas"
+  },
+  {
+   "name": "Pelé",
+   "born": "1940-10-23",
+   "known_for": "Brazilian football legend",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pel%C3%A9"
+  },
+  {
+   "name": "Björk",
+   "born": "1965-11-21",
+   "known_for": "Icelandic singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bj%C3%B6rk"
+  },
+  {
+   "name": "Édith Piaf",
+   "born": "1915-12-19",
+   "known_for": "French singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/%C3%89dith_Piaf"
+  }
+ ],
+ "K♥": [
+  {
+   "name": "Mother Teresa",
+   "born": "1910-08-26",
+   "known_for": "Catholic nun and missionary",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mother_Teresa"
+  },
+  {
+   "name": "Jim Henson",
+   "born": "1936-09-24",
+   "known_for": "Creator of the Muppets",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jim_Henson"
+  },
+  {
+   "name": "F. Scott Fitzgerald",
+   "born": "1896-09-24",
+   "known_for": "Author of The Great Gatsby",
+   "wikipedia": "https://en.wikipedia.org/wiki/F._Scott_Fitzgerald"
+  },
+  {
+   "name": "Joe Biden",
+   "born": "1942-11-20",
+   "known_for": "46th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Joe_Biden"
+  },
+  {
+   "name": "Steven Spielberg",
+   "born": "1946-12-18",
+   "known_for": "American film director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Steven_Spielberg"
+  },
+  {
+   "name": "Brad Pitt",
+   "born": "1963-12-18",
+   "known_for": "American actor and producer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Brad_Pitt"
+  }
+ ],
+ "A♣": [
+  {
+   "name": "Clint Eastwood",
+   "born": "1930-05-31",
+   "known_for": "American actor and director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Clint_Eastwood"
+  },
+  {
+   "name": "Sean Connery",
+   "born": "1930-08-25",
+   "known_for": "Scottish actor, James Bond",
+   "wikipedia": "https://en.wikipedia.org/wiki/Sean_Connery"
+  },
+  {
+   "name": "Bruce Springsteen",
+   "born": "1949-09-23",
+   "known_for": "American rock singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Springsteen"
+  },
+  {
+   "name": "Ray Charles",
+   "born": "1930-09-23",
+   "known_for": "American soul musician",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ray_Charles"
+  },
+  {
+   "name": "Alfred Nobel",
+   "born": "1833-10-21",
+   "known_for": "Inventor of dynamite, Nobel Prize founder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alfred_Nobel"
+  },
+  {
+   "name": "Jodie Foster",
+   "born": "1962-11-19",
+   "known_for": "American actress and director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jodie_Foster"
+  }
+ ],
+ "2♣": [
+  {
+   "name": "Elon Musk",
+   "born": "1971-06-28",
+   "known_for": "Tesla and SpaceX CEO",
+   "wikipedia": "https://en.wikipedia.org/wiki/Elon_Musk"
+  },
+  {
+   "name": "Mick Jagger",
+   "born": "1943-07-26",
+   "known_for": "Rolling Stones lead singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mick_Jagger"
+  },
+  {
+   "name": "Carl Jung",
+   "born": "1875-07-26",
+   "known_for": "Swiss psychiatrist, analytical psychology",
+   "wikipedia": "https://en.wikipedia.org/wiki/Carl_Jung"
+  },
+  {
+   "name": "Stephen Fry",
+   "born": "1957-08-24",
+   "known_for": "English actor and writer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Fry"
+  },
+  {
+   "name": "Tom Petty",
+   "born": "1950-10-20",
+   "known_for": "American rock musician",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tom_Petty"
+  },
+  {
+   "name": "Jane Austen",
+   "born": "1775-12-16",
+   "known_for": "Author of Pride and Prejudice",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jane_Austen"
+  }
+ ],
+ "3♣": [
+  {
+   "name": "John F. Kennedy",
+   "born": "1917-05-29",
+   "known_for": "35th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_F._Kennedy"
+  },
+  {
+   "name": "Helen Keller",
+   "born": "1880-06-27",
+   "known_for": "Deafblind author and activist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Helen_Keller"
+  },
+  {
+   "name": "Kobe Bryant",
+   "born": "1978-08-23",
+   "known_for": "Los Angeles Lakers basketball star",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kobe_Bryant"
+  },
+  {
+   "name": "Stephen King",
+   "born": "1947-09-21",
+   "known_for": "American horror novelist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stephen_King"
+  },
+  {
+   "name": "Bill Murray",
+   "born": "1950-09-21",
+   "known_for": "American actor and comedian",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bill_Murray"
+  },
+  {
+   "name": "Martin Scorsese",
+   "born": "1942-11-17",
+   "known_for": "American film director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Martin_Scorsese"
+  }
+ ],
+ "4♣": [
+  {
+   "name": "Kirsten Dunst",
+   "born": "1982-04-30",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kirsten_Dunst"
+  },
+  {
+   "name": "Ian Fleming",
+   "born": "1908-05-28",
+   "known_for": "Creator of James Bond",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ian_Fleming"
+  },
+  {
+   "name": "Derek Jeter",
+   "born": "1974-06-26",
+   "known_for": "New York Yankees shortstop",
+   "wikipedia": "https://en.wikipedia.org/wiki/Derek_Jeter"
+  },
+  {
+   "name": "Amelia Earhart",
+   "born": "1897-07-24",
+   "known_for": "Pioneering aviator",
+   "wikipedia": "https://en.wikipedia.org/wiki/Amelia_Earhart"
+  },
+  {
+   "name": "Jennifer Lopez",
+   "born": "1969-07-24",
+   "known_for": "American singer and actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jennifer_Lopez"
+  },
+  {
+   "name": "Chuck Berry",
+   "born": "1926-10-18",
+   "known_for": "Rock and roll pioneer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Chuck_Berry"
+  }
+ ],
+ "5♣": [
+  {
+   "name": "René Descartes",
+   "born": "1596-03-31",
+   "known_for": "French philosopher and mathematician",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes"
+  },
+  {
+   "name": "Willie Nelson",
+   "born": "1933-04-29",
+   "known_for": "American country music singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Willie_Nelson"
+  },
+  {
+   "name": "Jerry Seinfeld",
+   "born": "1954-04-29",
+   "known_for": "American comedian, Seinfeld",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jerry_Seinfeld"
+  },
+  {
+   "name": "George Orwell",
+   "born": "1903-06-25",
+   "known_for": "Author of 1984 and Animal Farm",
+   "wikipedia": "https://en.wikipedia.org/wiki/George_Orwell"
+  },
+  {
+   "name": "Usain Bolt",
+   "born": "1986-08-21",
+   "known_for": "Jamaican sprinter, Olympic champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Usain_Bolt"
+  },
+  {
+   "name": "Taylor Swift",
+   "born": "1989-12-13",
+   "known_for": "American singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Taylor_Swift"
+  }
+ ],
+ "6♣": [
+  {
+   "name": "Vincent van Gogh",
+   "born": "1853-03-30",
+   "known_for": "Dutch post-impressionist painter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Vincent_van_Gogh"
+  },
+  {
+   "name": "Celine Dion",
+   "born": "1968-03-30",
+   "known_for": "Canadian singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Celine_Dion"
+  },
+  {
+   "name": "John Wayne",
+   "born": "1907-05-26",
+   "known_for": "American Western film actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Wayne"
+  },
+  {
+   "name": "Lionel Messi",
+   "born": "1987-06-24",
+   "known_for": "Argentine footballer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Lionel_Messi"
+  },
+  {
+   "name": "Oscar Wilde",
+   "born": "1854-10-16",
+   "known_for": "Irish playwright and poet",
+   "wikipedia": "https://en.wikipedia.org/wiki/Oscar_Wilde"
+  },
+  {
+   "name": "Frank Sinatra",
+   "born": "1915-12-12",
+   "known_for": "American singer and actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Frank_Sinatra"
+  }
+ ],
+ "7♣": [
+  {
+   "name": "Ulysses S. Grant",
+   "born": "1822-04-27",
+   "known_for": "18th U.S. president, Civil War general",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ulysses_S._Grant"
+  },
+  {
+   "name": "Alan Turing",
+   "born": "1912-06-23",
+   "known_for": "Computer science pioneer, codebreaker",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alan_Turing"
+  },
+  {
+   "name": "Ernest Hemingway",
+   "born": "1899-07-21",
+   "known_for": "American novelist, Nobel laureate",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ernest_Hemingway"
+  },
+  {
+   "name": "Robin Williams",
+   "born": "1951-07-21",
+   "known_for": "American actor and comedian",
+   "wikipedia": "https://en.wikipedia.org/wiki/Robin_Williams"
+  },
+  {
+   "name": "Coco Chanel",
+   "born": "1883-08-19",
+   "known_for": "French fashion designer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Coco_Chanel"
+  },
+  {
+   "name": "Bill Clinton",
+   "born": "1946-08-19",
+   "known_for": "42nd U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bill_Clinton"
+  }
+ ],
+ "8♣": [
+  {
+   "name": "Lady Gaga",
+   "born": "1986-03-28",
+   "known_for": "American pop singer and actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Lady_Gaga"
+  },
+  {
+   "name": "Bob Dylan",
+   "born": "1941-05-24",
+   "known_for": "American singer-songwriter, Nobel laureate",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bob_Dylan"
+  },
+  {
+   "name": "Meryl Streep",
+   "born": "1949-06-22",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Meryl_Streep"
+  },
+  {
+   "name": "Robert Redford",
+   "born": "1936-08-18",
+   "known_for": "American actor and director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Robert_Redford"
+  },
+  {
+   "name": "Dwight D. Eisenhower",
+   "born": "1890-10-14",
+   "known_for": "34th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower"
+  },
+  {
+   "name": "Emily Dickinson",
+   "born": "1830-12-10",
+   "known_for": "American poet",
+   "wikipedia": "https://en.wikipedia.org/wiki/Emily_Dickinson"
+  }
+ ],
+ "9♣": [
+  {
+   "name": "Justin Timberlake",
+   "born": "1981-01-31",
+   "known_for": "American pop singer and actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Justin_Timberlake"
+  },
+  {
+   "name": "Jackie Robinson",
+   "born": "1919-01-31",
+   "known_for": "Broke baseball's color barrier",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jackie_Robinson"
+  },
+  {
+   "name": "Al Pacino",
+   "born": "1940-04-25",
+   "known_for": "American actor, The Godfather",
+   "wikipedia": "https://en.wikipedia.org/wiki/Al_Pacino"
+  },
+  {
+   "name": "Robert De Niro",
+   "born": "1943-08-17",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Robert_De_Niro"
+  },
+  {
+   "name": "Agatha Christie",
+   "born": "1890-09-15",
+   "known_for": "English mystery novelist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Agatha_Christie"
+  },
+  {
+   "name": "Leonardo DiCaprio",
+   "born": "1974-11-11",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Leonardo_DiCaprio"
+  }
+ ],
+ "10♣": [
+  {
+   "name": "Franklin D. Roosevelt",
+   "born": "1882-01-30",
+   "known_for": "32nd U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt"
+  },
+  {
+   "name": "Diana Ross",
+   "born": "1944-03-26",
+   "known_for": "Singer, The Supremes",
+   "wikipedia": "https://en.wikipedia.org/wiki/Diana_Ross"
+  },
+  {
+   "name": "Barbra Streisand",
+   "born": "1942-04-24",
+   "known_for": "American singer and actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Barbra_Streisand"
+  },
+  {
+   "name": "Nicole Kidman",
+   "born": "1967-06-20",
+   "known_for": "Australian-American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nicole_Kidman"
+  },
+  {
+   "name": "Nelson Mandela",
+   "born": "1918-07-18",
+   "known_for": "South African president, anti-apartheid leader",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nelson_Mandela"
+  },
+  {
+   "name": "Madonna",
+   "born": "1958-08-16",
+   "known_for": "American pop singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Madonna"
+  }
+ ],
+ "J♣": [
+  {
+   "name": "Oprah Winfrey",
+   "born": "1954-01-29",
+   "known_for": "Talk show host and media executive",
+   "wikipedia": "https://en.wikipedia.org/wiki/Oprah_Winfrey"
+  },
+  {
+   "name": "Elizabeth Taylor",
+   "born": "1932-02-27",
+   "known_for": "British-American film actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Taylor"
+  },
+  {
+   "name": "Aretha Franklin",
+   "born": "1942-03-25",
+   "known_for": "Singer, Queen of Soul",
+   "wikipedia": "https://en.wikipedia.org/wiki/Aretha_Franklin"
+  },
+  {
+   "name": "Elton John",
+   "born": "1947-03-25",
+   "known_for": "English singer-songwriter and pianist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Elton_John"
+  },
+  {
+   "name": "Angela Merkel",
+   "born": "1954-07-17",
+   "known_for": "Chancellor of Germany",
+   "wikipedia": "https://en.wikipedia.org/wiki/Angela_Merkel"
+  },
+  {
+   "name": "Napoleon",
+   "born": "1769-08-15",
+   "known_for": "French emperor and military leader",
+   "wikipedia": "https://en.wikipedia.org/wiki/Napoleon"
+  }
+ ],
+ "Q♣": [
+  {
+   "name": "Johnny Cash",
+   "born": "1932-02-26",
+   "known_for": "American country singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Johnny_Cash"
+  },
+  {
+   "name": "Harry Houdini",
+   "born": "1874-03-24",
+   "known_for": "Escape artist and magician",
+   "wikipedia": "https://en.wikipedia.org/wiki/Harry_Houdini"
+  },
+  {
+   "name": "Jack Nicholson",
+   "born": "1937-04-22",
+   "known_for": "American actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jack_Nicholson"
+  },
+  {
+   "name": "Paul McCartney",
+   "born": "1942-06-18",
+   "known_for": "The Beatles bassist and songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paul_McCartney"
+  },
+  {
+   "name": "Halle Berry",
+   "born": "1966-08-14",
+   "known_for": "American actress",
+   "wikipedia": "https://en.wikipedia.org/wiki/Halle_Berry"
+  },
+  {
+   "name": "Bram Stoker",
+   "born": "1847-11-08",
+   "known_for": "Author of Dracula",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bram_Stoker"
+  }
+ ],
+ "K♣": [
+  {
+   "name": "Wolfgang Amadeus Mozart",
+   "born": "1756-01-27",
+   "known_for": "Austrian classical composer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart"
+  },
+  {
+   "name": "Elizabeth II",
+   "born": "1926-04-21",
+   "known_for": "Queen of the United Kingdom",
+   "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_II"
+  },
+  {
+   "name": "Malcolm X",
+   "born": "1925-05-19",
+   "known_for": "American civil rights leader",
+   "wikipedia": "https://en.wikipedia.org/wiki/Malcolm_X"
+  },
+  {
+   "name": "John Lennon",
+   "born": "1940-10-09",
+   "known_for": "The Beatles singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Lennon"
+  },
+  {
+   "name": "Marie Curie",
+   "born": "1867-11-07",
+   "known_for": "Physicist, two-time Nobel laureate",
+   "wikipedia": "https://en.wikipedia.org/wiki/Marie_Curie"
+  },
+  {
+   "name": "Walt Disney",
+   "born": "1901-12-05",
+   "known_for": "Founder of The Walt Disney Company",
+   "wikipedia": "https://en.wikipedia.org/wiki/Walt_Disney"
+  }
+ ],
+ "A♦": [
+  {
+   "name": "Steve Jobs",
+   "born": "1955-02-24",
+   "known_for": "Co-founder of Apple",
+   "wikipedia": "https://en.wikipedia.org/wiki/Steve_Jobs"
+  },
+  {
+   "name": "Wayne Gretzky",
+   "born": "1961-01-26",
+   "known_for": "Hockey legend, The Great One",
+   "wikipedia": "https://en.wikipedia.org/wiki/Wayne_Gretzky"
+  },
+  {
+   "name": "Reese Witherspoon",
+   "born": "1976-03-22",
+   "known_for": "Oscar-winning actress, Legally Blonde",
+   "wikipedia": "https://en.wikipedia.org/wiki/Reese_Witherspoon"
+  },
+  {
+   "name": "Jay-Z",
+   "born": "1969-12-04",
+   "known_for": "Rapper and entrepreneur",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jay-Z"
+  },
+  {
+   "name": "Bruno Mars",
+   "born": "1985-10-08",
+   "known_for": "Pop and R&B singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bruno_Mars"
+  },
+  {
+   "name": "Emma Stone",
+   "born": "1988-11-06",
+   "known_for": "Oscar-winning actress, La La Land",
+   "wikipedia": "https://en.wikipedia.org/wiki/Emma_Stone"
+  }
+ ],
+ "2♦": [
+  {
+   "name": "Virginia Woolf",
+   "born": "1882-01-25",
+   "known_for": "Modernist novelist, Mrs Dalloway",
+   "wikipedia": "https://en.wikipedia.org/wiki/Virginia_Woolf"
+  },
+  {
+   "name": "Alicia Keys",
+   "born": "1981-01-25",
+   "known_for": "Grammy-winning singer and pianist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alicia_Keys"
+  },
+  {
+   "name": "Harrison Ford",
+   "born": "1942-07-13",
+   "known_for": "Actor, Star Wars and Indiana Jones",
+   "wikipedia": "https://en.wikipedia.org/wiki/Harrison_Ford"
+  },
+  {
+   "name": "Patrick Stewart",
+   "born": "1940-07-13",
+   "known_for": "Actor, Star Trek and X-Men",
+   "wikipedia": "https://en.wikipedia.org/wiki/Patrick_Stewart"
+  },
+  {
+   "name": "Adam Sandler",
+   "born": "1966-09-09",
+   "known_for": "Comedian and actor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Adam_Sandler"
+  },
+  {
+   "name": "Yo-Yo Ma",
+   "born": "1955-10-07",
+   "known_for": "World-renowned cellist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Yo-Yo_Ma"
+  }
+ ],
+ "3♦": [
+  {
+   "name": "George Washington",
+   "born": "1732-02-22",
+   "known_for": "First U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/George_Washington"
+  },
+  {
+   "name": "Fred Rogers",
+   "born": "1928-03-20",
+   "known_for": "Host of Mister Rogers' Neighborhood",
+   "wikipedia": "https://en.wikipedia.org/wiki/Fred_Rogers"
+  },
+  {
+   "name": "Henry David Thoreau",
+   "born": "1817-07-12",
+   "known_for": "Author of Walden",
+   "wikipedia": "https://en.wikipedia.org/wiki/Henry_David_Thoreau"
+  },
+  {
+   "name": "Malala Yousafzai",
+   "born": "1997-07-12",
+   "known_for": "Nobel Peace Prize laureate, education activist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Malala_Yousafzai"
+  },
+  {
+   "name": "Britney Spears",
+   "born": "1981-12-02",
+   "known_for": "Pop singer, ...Baby One More Time",
+   "wikipedia": "https://en.wikipedia.org/wiki/Britney_Spears"
+  },
+  {
+   "name": "Janet Jackson",
+   "born": "1966-05-16",
+   "known_for": "Pop and R&B singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Janet_Jackson"
+  }
+ ],
+ "4♦": [
+  {
+   "name": "Bruce Willis",
+   "born": "1955-03-19",
+   "known_for": "Actor, Die Hard",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Willis"
+  },
+  {
+   "name": "Nina Simone",
+   "born": "1933-02-21",
+   "known_for": "Jazz and soul singer, pianist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nina_Simone"
+  },
+  {
+   "name": "Whitney Houston",
+   "born": "1963-08-09",
+   "known_for": "Pop and R&B vocalist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Whitney_Houston"
+  },
+  {
+   "name": "Buddy Holly",
+   "born": "1936-09-07",
+   "known_for": "Rock and roll pioneer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Buddy_Holly"
+  },
+  {
+   "name": "Kate Winslet",
+   "born": "1975-10-05",
+   "known_for": "Oscar-winning actress, Titanic",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kate_Winslet"
+  },
+  {
+   "name": "Chris Evans",
+   "born": "1981-06-13",
+   "known_for": "Actor, Captain America",
+   "wikipedia": "https://en.wikipedia.org/wiki/Chris_Evans_(actor)"
+  }
+ ],
+ "5♦": [
+  {
+   "name": "Charlie Chaplin",
+   "born": "1889-04-16",
+   "known_for": "Silent film comedian, The Tramp",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charlie_Chaplin"
+  },
+  {
+   "name": "Kurt Cobain",
+   "born": "1967-02-20",
+   "known_for": "Nirvana frontman",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+  },
+  {
+   "name": "Rihanna",
+   "born": "1988-02-20",
+   "known_for": "Singer and Fenty founder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rihanna"
+  },
+  {
+   "name": "Anne Frank",
+   "born": "1929-06-12",
+   "known_for": "Diarist, The Diary of a Young Girl",
+   "wikipedia": "https://en.wikipedia.org/wiki/Anne_Frank"
+  },
+  {
+   "name": "Nikola Tesla",
+   "born": "1856-07-10",
+   "known_for": "Inventor, alternating current pioneer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+  },
+  {
+   "name": "Roger Federer",
+   "born": "1981-08-08",
+   "known_for": "Swiss tennis champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Roger_Federer"
+  }
+ ],
+ "6♦": [
+  {
+   "name": "Leonardo da Vinci",
+   "born": "1452-04-15",
+   "known_for": "Renaissance artist and inventor, Mona Lisa",
+   "wikipedia": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+  },
+  {
+   "name": "Tom Hanks",
+   "born": "1956-07-09",
+   "known_for": "Oscar-winning actor, Forrest Gump",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tom_Hanks"
+  },
+  {
+   "name": "Stevie Wonder",
+   "born": "1950-05-13",
+   "known_for": "Motown singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stevie_Wonder"
+  },
+  {
+   "name": "Freddie Mercury",
+   "born": "1946-09-05",
+   "known_for": "Queen frontman",
+   "wikipedia": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+  },
+  {
+   "name": "Emma Watson",
+   "born": "1990-04-15",
+   "known_for": "Actress, Harry Potter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Emma_Watson"
+  },
+  {
+   "name": "Charlize Theron",
+   "born": "1975-08-07",
+   "known_for": "Oscar-winning actress, Monster",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charlize_Theron"
+  }
+ ],
+ "7♦": [
+  {
+   "name": "Mahatma Gandhi",
+   "born": "1869-10-02",
+   "known_for": "Leader of Indian independence movement",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+  },
+  {
+   "name": "Beyoncé",
+   "born": "1981-09-04",
+   "known_for": "Singer, Destiny's Child and solo",
+   "wikipedia": "https://en.wikipedia.org/wiki/Beyonc%C3%A9"
+  },
+  {
+   "name": "Lucille Ball",
+   "born": "1911-08-06",
+   "known_for": "Comedian and actress, I Love Lucy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Lucille_Ball"
+  },
+  {
+   "name": "Toni Morrison",
+   "born": "1931-02-18",
+   "known_for": "Nobel Prize-winning novelist, Beloved",
+   "wikipedia": "https://en.wikipedia.org/wiki/Toni_Morrison"
+  },
+  {
+   "name": "Buzz Aldrin",
+   "born": "1930-01-20",
+   "known_for": "Apollo 11 astronaut",
+   "wikipedia": "https://en.wikipedia.org/wiki/Buzz_Aldrin"
+  },
+  {
+   "name": "Andy Warhol",
+   "born": "1928-08-06",
+   "known_for": "Pop art pioneer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Andy_Warhol"
+  }
+ ],
+ "8♦": [
+  {
+   "name": "Edgar Allan Poe",
+   "born": "1809-01-19",
+   "known_for": "Poet and author, The Raven",
+   "wikipedia": "https://en.wikipedia.org/wiki/Edgar_Allan_Poe"
+  },
+  {
+   "name": "Dolly Parton",
+   "born": "1946-01-19",
+   "known_for": "Country music legend",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dolly_Parton"
+  },
+  {
+   "name": "Michael Jordan",
+   "born": "1963-02-17",
+   "known_for": "Basketball legend, Chicago Bulls",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Jordan"
+  },
+  {
+   "name": "Salvador Dalí",
+   "born": "1904-05-11",
+   "known_for": "Surrealist painter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD"
+  },
+  {
+   "name": "Neil Armstrong",
+   "born": "1930-08-05",
+   "known_for": "First person to walk on the Moon",
+   "wikipedia": "https://en.wikipedia.org/wiki/Neil_Armstrong"
+  },
+  {
+   "name": "Julie Andrews",
+   "born": "1935-10-01",
+   "known_for": "Actress and singer, The Sound of Music",
+   "wikipedia": "https://en.wikipedia.org/wiki/Julie_Andrews"
+  }
+ ],
+ "9♦": [
+  {
+   "name": "Barack Obama",
+   "born": "1961-08-04",
+   "known_for": "44th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Barack_Obama"
+  },
+  {
+   "name": "Albert Einstein",
+   "born": "1879-03-14",
+   "known_for": "Physicist, theory of relativity",
+   "wikipedia": "https://en.wikipedia.org/wiki/Albert_Einstein"
+  },
+  {
+   "name": "Frida Kahlo",
+   "born": "1907-07-06",
+   "known_for": "Mexican painter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Frida_Kahlo"
+  },
+  {
+   "name": "Keanu Reeves",
+   "born": "1964-09-02",
+   "known_for": "Actor, The Matrix and John Wick",
+   "wikipedia": "https://en.wikipedia.org/wiki/Keanu_Reeves"
+  },
+  {
+   "name": "Stephen Curry",
+   "born": "1988-03-14",
+   "known_for": "NBA champion and three-point record holder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Curry"
+  }
+ ],
+ "10♦": [
+  {
+   "name": "Muhammad Ali",
+   "born": "1942-01-17",
+   "known_for": "Heavyweight boxing champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Muhammad_Ali"
+  },
+  {
+   "name": "Benjamin Franklin",
+   "born": "1706-01-17",
+   "known_for": "U.S. founding father and inventor",
+   "wikipedia": "https://en.wikipedia.org/wiki/Benjamin_Franklin"
+  },
+  {
+   "name": "Michelle Obama",
+   "born": "1964-01-17",
+   "known_for": "Former U.S. first lady and author",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michelle_Obama"
+  },
+  {
+   "name": "Galileo Galilei",
+   "born": "1564-02-15",
+   "known_for": "Astronomer, father of modern science",
+   "wikipedia": "https://en.wikipedia.org/wiki/Galileo_Galilei"
+  },
+  {
+   "name": "Prince",
+   "born": "1958-06-07",
+   "known_for": "Musician, Purple Rain",
+   "wikipedia": "https://en.wikipedia.org/wiki/Prince_(musician)"
+  },
+  {
+   "name": "Tom Brady",
+   "born": "1977-08-03",
+   "known_for": "Seven-time Super Bowl champion quarterback",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tom_Brady"
+  }
+ ],
+ "J♦": [
+  {
+   "name": "Kate Moss",
+   "born": "1974-01-16",
+   "known_for": "British supermodel",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kate_Moss"
+  },
+  {
+   "name": "Harry S. Truman",
+   "born": "1884-05-08",
+   "known_for": "33rd U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Harry_S._Truman"
+  },
+  {
+   "name": "Liza Minnelli",
+   "born": "1946-03-12",
+   "known_for": "Singer and actress, Cabaret",
+   "wikipedia": "https://en.wikipedia.org/wiki/Liza_Minnelli"
+  },
+  {
+   "name": "Björn Borg",
+   "born": "1956-06-06",
+   "known_for": "Swedish tennis champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bj%C3%B6rn_Borg"
+  },
+  {
+   "name": "James Baldwin",
+   "born": "1924-08-02",
+   "known_for": "Author and civil rights essayist",
+   "wikipedia": "https://en.wikipedia.org/wiki/James_Baldwin"
+  },
+  {
+   "name": "Lin-Manuel Miranda",
+   "born": "1980-01-16",
+   "known_for": "Creator of Hamilton",
+   "wikipedia": "https://en.wikipedia.org/wiki/Lin-Manuel_Miranda"
+  }
+ ],
+ "Q♦": [
+  {
+   "name": "Martin Luther King Jr.",
+   "born": "1929-01-15",
+   "known_for": "Civil rights leader",
+   "wikipedia": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr."
+  },
+  {
+   "name": "Pyotr Ilyich Tchaikovsky",
+   "born": "1840-05-07",
+   "known_for": "Composer, Swan Lake and The Nutcracker",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky"
+  },
+  {
+   "name": "Tom Cruise",
+   "born": "1962-07-03",
+   "known_for": "Actor, Top Gun and Mission: Impossible",
+   "wikipedia": "https://en.wikipedia.org/wiki/Tom_Cruise"
+  },
+  {
+   "name": "Franz Kafka",
+   "born": "1883-07-03",
+   "known_for": "Author of The Metamorphosis",
+   "wikipedia": "https://en.wikipedia.org/wiki/Franz_Kafka"
+  },
+  {
+   "name": "Herman Melville",
+   "born": "1819-08-01",
+   "known_for": "Author of Moby-Dick",
+   "wikipedia": "https://en.wikipedia.org/wiki/Herman_Melville"
+  },
+  {
+   "name": "Jason Momoa",
+   "born": "1979-08-01",
+   "known_for": "Actor, Aquaman",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jason_Momoa"
+  }
+ ],
+ "K♦": [
+  {
+   "name": "Abraham Lincoln",
+   "born": "1809-02-12",
+   "known_for": "16th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Abraham_Lincoln"
+  },
+  {
+   "name": "Charles Darwin",
+   "born": "1809-02-12",
+   "known_for": "Naturalist, theory of evolution",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charles_Darwin"
+  },
+  {
+   "name": "Sigmund Freud",
+   "born": "1856-05-06",
+   "known_for": "Founder of psychoanalysis",
+   "wikipedia": "https://en.wikipedia.org/wiki/Sigmund_Freud"
+  },
+  {
+   "name": "George Clooney",
+   "born": "1961-05-06",
+   "known_for": "Actor and director, Ocean's Eleven",
+   "wikipedia": "https://en.wikipedia.org/wiki/George_Clooney"
+  },
+  {
+   "name": "Angelina Jolie",
+   "born": "1975-06-04",
+   "known_for": "Actress and humanitarian",
+   "wikipedia": "https://en.wikipedia.org/wiki/Angelina_Jolie"
+  },
+  {
+   "name": "Sharon Stone",
+   "born": "1958-03-10",
+   "known_for": "Actress, Basic Instinct",
+   "wikipedia": "https://en.wikipedia.org/wiki/Sharon_Stone"
+  }
+ ],
+ "A♠": [
+  {
+   "name": "Thomas Edison",
+   "born": "1847-02-11",
+   "known_for": "Inventor, phonograph and light bulb",
+   "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Edison"
+  },
+  {
+   "name": "Jennifer Aniston",
+   "born": "1969-02-11",
+   "known_for": "Actress, Friends",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jennifer_Aniston"
+  },
+  {
+   "name": "Jackie Chan",
+   "born": "1954-04-07",
+   "known_for": "Martial arts film star",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jackie_Chan"
+  },
+  {
+   "name": "Adele",
+   "born": "1988-05-05",
+   "known_for": "British singer-songwriter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Adele"
+  },
+  {
+   "name": "Rafael Nadal",
+   "born": "1986-06-03",
+   "known_for": "Tennis champion, King of Clay",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rafael_Nadal"
+  },
+  {
+   "name": "Diana, Princess of Wales",
+   "born": "1961-07-01",
+   "known_for": "British royal and humanitarian",
+   "wikipedia": "https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales"
+  }
+ ],
+ "2♠": [
+  {
+   "name": "Jeff Bezos",
+   "born": "1964-01-12",
+   "known_for": "Founder of Amazon",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Bezos"
+  },
+  {
+   "name": "Audrey Hepburn",
+   "born": "1929-05-04",
+   "known_for": "Actress, Breakfast at Tiffany's",
+   "wikipedia": "https://en.wikipedia.org/wiki/Audrey_Hepburn"
+  },
+  {
+   "name": "Jack London",
+   "born": "1876-01-12",
+   "known_for": "Author of The Call of the Wild",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jack_London"
+  },
+  {
+   "name": "Paul Rudd",
+   "born": "1969-04-06",
+   "known_for": "Actor, Ant-Man",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paul_Rudd"
+  },
+  {
+   "name": "Laura Dern",
+   "born": "1967-02-10",
+   "known_for": "Oscar-winning actress, Jurassic Park",
+   "wikipedia": "https://en.wikipedia.org/wiki/Laura_Dern"
+  }
+ ],
+ "3♠": [
+  {
+   "name": "Marilyn Monroe",
+   "born": "1926-06-01",
+   "known_for": "Hollywood actress and icon",
+   "wikipedia": "https://en.wikipedia.org/wiki/Marilyn_Monroe"
+  },
+  {
+   "name": "Morgan Freeman",
+   "born": "1937-06-01",
+   "known_for": "Oscar-winning actor, Million Dollar Baby",
+   "wikipedia": "https://en.wikipedia.org/wiki/Morgan_Freeman"
+  },
+  {
+   "name": "James Brown",
+   "born": "1933-05-03",
+   "known_for": "The Godfather of Soul",
+   "wikipedia": "https://en.wikipedia.org/wiki/James_Brown"
+  },
+  {
+   "name": "Pharrell Williams",
+   "born": "1973-04-05",
+   "known_for": "Musician and producer, Happy",
+   "wikipedia": "https://en.wikipedia.org/wiki/Pharrell_Williams"
+  },
+  {
+   "name": "Bette Davis",
+   "born": "1908-04-05",
+   "known_for": "Classic Hollywood actress, All About Eve",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bette_Davis"
+  }
+ ],
+ "4♠": [
+  {
+   "name": "James Dean",
+   "born": "1931-02-08",
+   "known_for": "Actor, Rebel Without a Cause",
+   "wikipedia": "https://en.wikipedia.org/wiki/James_Dean"
+  },
+  {
+   "name": "Michelangelo",
+   "born": "1475-03-06",
+   "known_for": "Renaissance sculptor and painter",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michelangelo"
+  },
+  {
+   "name": "Maya Angelou",
+   "born": "1928-04-04",
+   "known_for": "Poet and memoirist",
+   "wikipedia": "https://en.wikipedia.org/wiki/Maya_Angelou"
+  },
+  {
+   "name": "Robert Downey Jr.",
+   "born": "1965-04-04",
+   "known_for": "Actor, Iron Man",
+   "wikipedia": "https://en.wikipedia.org/wiki/Robert_Downey_Jr."
+  },
+  {
+   "name": "Dwayne Johnson",
+   "born": "1972-05-02",
+   "known_for": "Actor and wrestler, The Rock",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dwayne_Johnson"
+  },
+  {
+   "name": "David Beckham",
+   "born": "1975-05-02",
+   "known_for": "English football star",
+   "wikipedia": "https://en.wikipedia.org/wiki/David_Beckham"
+  }
+ ],
+ "5♠": [
+  {
+   "name": "Charles Dickens",
+   "born": "1812-02-07",
+   "known_for": "Victorian novelist, A Christmas Carol",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charles_Dickens"
+  },
+  {
+   "name": "Marlon Brando",
+   "born": "1924-04-03",
+   "known_for": "Actor, The Godfather",
+   "wikipedia": "https://en.wikipedia.org/wiki/Marlon_Brando"
+  },
+  {
+   "name": "Eddie Murphy",
+   "born": "1961-04-03",
+   "known_for": "Comedian and actor, Beverly Hills Cop",
+   "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Murphy"
+  },
+  {
+   "name": "Jane Goodall",
+   "born": "1934-04-03",
+   "known_for": "Primatologist and chimpanzee researcher",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jane_Goodall"
+  },
+  {
+   "name": "Catherine, Princess of Wales",
+   "born": "1982-01-09",
+   "known_for": "British royal, wife of Prince William",
+   "wikipedia": "https://en.wikipedia.org/wiki/Catherine,_Princess_of_Wales"
+  },
+  {
+   "name": "Ashton Kutcher",
+   "born": "1978-02-07",
+   "known_for": "Actor, That '70s Show",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ashton_Kutcher"
+  }
+ ],
+ "6♠": [
+  {
+   "name": "Elvis Presley",
+   "born": "1935-01-08",
+   "known_for": "The King of Rock and Roll",
+   "wikipedia": "https://en.wikipedia.org/wiki/Elvis_Presley"
+  },
+  {
+   "name": "David Bowie",
+   "born": "1947-01-08",
+   "known_for": "Rock icon, Ziggy Stardust",
+   "wikipedia": "https://en.wikipedia.org/wiki/David_Bowie"
+  },
+  {
+   "name": "Stephen Hawking",
+   "born": "1942-01-08",
+   "known_for": "Theoretical physicist, A Brief History of Time",
+   "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Hawking"
+  },
+  {
+   "name": "Bob Marley",
+   "born": "1945-02-06",
+   "known_for": "Reggae legend",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bob_Marley"
+  },
+  {
+   "name": "Ronald Reagan",
+   "born": "1911-02-06",
+   "known_for": "40th U.S. president",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ronald_Reagan"
+  },
+  {
+   "name": "Hans Christian Andersen",
+   "born": "1805-04-02",
+   "known_for": "Danish fairy tale author",
+   "wikipedia": "https://en.wikipedia.org/wiki/Hans_Christian_Andersen"
+  }
+ ],
+ "7♠": [
+  {
+   "name": "Nicolas Cage",
+   "born": "1964-01-07",
+   "known_for": "Oscar-winning actor, Leaving Las Vegas",
+   "wikipedia": "https://en.wikipedia.org/wiki/Nicolas_Cage"
+  },
+  {
+   "name": "Cristiano Ronaldo",
+   "born": "1985-02-05",
+   "known_for": "Portuguese football superstar",
+   "wikipedia": "https://en.wikipedia.org/wiki/Cristiano_Ronaldo"
+  },
+  {
+   "name": "Alexander Graham Bell",
+   "born": "1847-03-03",
+   "known_for": "Inventor credited with the telephone",
+   "wikipedia": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell"
+  },
+  {
+   "name": "Hank Aaron",
+   "born": "1934-02-05",
+   "known_for": "Baseball home run legend",
+   "wikipedia": "https://en.wikipedia.org/wiki/Hank_Aaron"
+  },
+  {
+   "name": "Zora Neale Hurston",
+   "born": "1891-01-07",
+   "known_for": "Author, Their Eyes Were Watching God",
+   "wikipedia": "https://en.wikipedia.org/wiki/Zora_Neale_Hurston"
+  },
+  {
+   "name": "Jessica Biel",
+   "born": "1982-03-03",
+   "known_for": "Actress, 7th Heaven",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jessica_Biel"
+  }
+ ],
+ "8♠": [
+  {
+   "name": "Rowan Atkinson",
+   "born": "1955-01-06",
+   "known_for": "Comedian, Mr. Bean and Blackadder",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rowan_Atkinson"
+  },
+  {
+   "name": "Rosa Parks",
+   "born": "1913-02-04",
+   "known_for": "Civil rights activist, Montgomery bus boycott",
+   "wikipedia": "https://en.wikipedia.org/wiki/Rosa_Parks"
+  },
+  {
+   "name": "Charles Lindbergh",
+   "born": "1902-02-04",
+   "known_for": "Aviator, first solo transatlantic flight",
+   "wikipedia": "https://en.wikipedia.org/wiki/Charles_Lindbergh"
+  },
+  {
+   "name": "Dr. Seuss",
+   "born": "1904-03-02",
+   "known_for": "Children's author, The Cat in the Hat",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dr._Seuss"
+  },
+  {
+   "name": "Jon Bon Jovi",
+   "born": "1962-03-02",
+   "known_for": "Rock singer, Bon Jovi frontman",
+   "wikipedia": "https://en.wikipedia.org/wiki/Jon_Bon_Jovi"
+  },
+  {
+   "name": "Daniel Craig",
+   "born": "1968-03-02",
+   "known_for": "Actor, James Bond",
+   "wikipedia": "https://en.wikipedia.org/wiki/Daniel_Craig"
+  }
+ ],
+ "9♠": [
+  {
+   "name": "Bradley Cooper",
+   "born": "1975-01-05",
+   "known_for": "Actor, A Star Is Born",
+   "wikipedia": "https://en.wikipedia.org/wiki/Bradley_Cooper"
+  },
+  {
+   "name": "Diane Keaton",
+   "born": "1946-01-05",
+   "known_for": "Oscar-winning actress, Annie Hall",
+   "wikipedia": "https://en.wikipedia.org/wiki/Diane_Keaton"
+  },
+  {
+   "name": "Hayao Miyazaki",
+   "born": "1941-01-05",
+   "known_for": "Studio Ghibli animation director",
+   "wikipedia": "https://en.wikipedia.org/wiki/Hayao_Miyazaki"
+  },
+  {
+   "name": "Norman Rockwell",
+   "born": "1894-02-03",
+   "known_for": "American painter and illustrator",
+   "wikipedia": "https://en.wikipedia.org/wiki/Norman_Rockwell"
+  },
+  {
+   "name": "Justin Bieber",
+   "born": "1994-03-01",
+   "known_for": "Canadian pop singer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Justin_Bieber"
+  }
+ ],
+ "10♠": [
+  {
+   "name": "Louis Braille",
+   "born": "1809-01-04",
+   "known_for": "Inventor of the braille writing system",
+   "wikipedia": "https://en.wikipedia.org/wiki/Louis_Braille"
+  },
+  {
+   "name": "James Joyce",
+   "born": "1882-02-02",
+   "known_for": "Irish novelist, Ulysses",
+   "wikipedia": "https://en.wikipedia.org/wiki/James_Joyce"
+  },
+  {
+   "name": "Shakira",
+   "born": "1977-02-02",
+   "known_for": "Colombian singer, Hips Don't Lie",
+   "wikipedia": "https://en.wikipedia.org/wiki/Shakira"
+  },
+  {
+   "name": "Farrah Fawcett",
+   "born": "1947-02-02",
+   "known_for": "Actress, Charlie's Angels",
+   "wikipedia": "https://en.wikipedia.org/wiki/Farrah_Fawcett"
+  },
+  {
+   "name": "Ayn Rand",
+   "born": "1905-02-02",
+   "known_for": "Author of Atlas Shrugged",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ayn_Rand"
+  }
+ ],
+ "J♠": [
+  {
+   "name": "J. R. R. Tolkien",
+   "born": "1892-01-03",
+   "known_for": "Author of The Lord of the Rings",
+   "wikipedia": "https://en.wikipedia.org/wiki/J._R._R._Tolkien"
+  },
+  {
+   "name": "Mel Gibson",
+   "born": "1956-01-03",
+   "known_for": "Actor and director, Braveheart",
+   "wikipedia": "https://en.wikipedia.org/wiki/Mel_Gibson"
+  },
+  {
+   "name": "Michael Schumacher",
+   "born": "1969-01-03",
+   "known_for": "Seven-time Formula One world champion",
+   "wikipedia": "https://en.wikipedia.org/wiki/Michael_Schumacher"
+  },
+  {
+   "name": "Clark Gable",
+   "born": "1901-02-01",
+   "known_for": "Actor, Gone with the Wind",
+   "wikipedia": "https://en.wikipedia.org/wiki/Clark_Gable"
+  },
+  {
+   "name": "Langston Hughes",
+   "born": "1901-02-01",
+   "known_for": "Poet of the Harlem Renaissance",
+   "wikipedia": "https://en.wikipedia.org/wiki/Langston_Hughes"
+  },
+  {
+   "name": "Harry Styles",
+   "born": "1994-02-01",
+   "known_for": "Singer, One Direction and solo",
+   "wikipedia": "https://en.wikipedia.org/wiki/Harry_Styles"
+  }
+ ],
+ "Q♠": [
+  {
+   "name": "Cuba Gooding Jr.",
+   "born": "1968-01-02",
+   "known_for": "Oscar-winning actor, Jerry Maguire",
+   "wikipedia": "https://en.wikipedia.org/wiki/Cuba_Gooding_Jr."
+  },
+  {
+   "name": "Taye Diggs",
+   "born": "1971-01-02",
+   "known_for": "Actor, Rent and Private Practice",
+   "wikipedia": "https://en.wikipedia.org/wiki/Taye_Diggs"
+  },
+  {
+   "name": "Kate Bosworth",
+   "born": "1983-01-02",
+   "known_for": "Actress, Blue Crush",
+   "wikipedia": "https://en.wikipedia.org/wiki/Kate_Bosworth"
+  },
+  {
+   "name": "Christy Turlington",
+   "born": "1969-01-02",
+   "known_for": "Supermodel and maternal health advocate",
+   "wikipedia": "https://en.wikipedia.org/wiki/Christy_Turlington"
+  },
+  {
+   "name": "Dax Shepard",
+   "born": "1975-01-02",
+   "known_for": "Actor and Armchair Expert podcast host",
+   "wikipedia": "https://en.wikipedia.org/wiki/Dax_Shepard"
+  }
+ ],
+ "K♠": [
+  {
+   "name": "J. D. Salinger",
+   "born": "1919-01-01",
+   "known_for": "Author of The Catcher in the Rye",
+   "wikipedia": "https://en.wikipedia.org/wiki/J._D._Salinger"
+  },
+  {
+   "name": "Paul Revere",
+   "born": "1735-01-01",
+   "known_for": "American Revolution silversmith and patriot",
+   "wikipedia": "https://en.wikipedia.org/wiki/Paul_Revere"
+  },
+  {
+   "name": "E. M. Forster",
+   "born": "1879-01-01",
+   "known_for": "English novelist, A Passage to India",
+   "wikipedia": "https://en.wikipedia.org/wiki/E._M._Forster"
+  },
+  {
+   "name": "Betsy Ross",
+   "born": "1752-01-01",
+   "known_for": "Credited with early American flag",
+   "wikipedia": "https://en.wikipedia.org/wiki/Betsy_Ross"
+  },
+  {
+   "name": "Grandmaster Flash",
+   "born": "1958-01-01",
+   "known_for": "Hip hop DJ pioneer",
+   "wikipedia": "https://en.wikipedia.org/wiki/Grandmaster_Flash"
+  }
+ ],
+ "Joker": [
+  {
+   "name": "Anthony Hopkins",
+   "born": "1937-12-31",
+   "known_for": "Oscar-winning actor, The Silence of the Lambs",
+   "wikipedia": "https://en.wikipedia.org/wiki/Anthony_Hopkins"
+  },
+  {
+   "name": "Henri Matisse",
+   "born": "1869-12-31",
+   "known_for": "French painter, Fauvism",
+   "wikipedia": "https://en.wikipedia.org/wiki/Henri_Matisse"
+  },
+  {
+   "name": "John Denver",
+   "born": "1943-12-31",
+   "known_for": "Singer-songwriter, Take Me Home, Country Roads",
+   "wikipedia": "https://en.wikipedia.org/wiki/John_Denver"
+  },
+  {
+   "name": "Donna Summer",
+   "born": "1948-12-31",
+   "known_for": "The Queen of Disco",
+   "wikipedia": "https://en.wikipedia.org/wiki/Donna_Summer"
+  },
+  {
+   "name": "Val Kilmer",
+   "born": "1959-12-31",
+   "known_for": "Actor, Top Gun and Batman Forever",
+   "wikipedia": "https://en.wikipedia.org/wiki/Val_Kilmer"
+  },
+  {
+   "name": "Ben Kingsley",
+   "born": "1943-12-31",
+   "known_for": "Oscar-winning actor, Gandhi",
+   "wikipedia": "https://en.wikipedia.org/wiki/Ben_Kingsley"
+  }
+ ]
+}
