@@ -69,14 +69,21 @@ def footer(d):
 
 
 def default_image():
-    img, d = base_canvas()
-    d.text((72, 150), "CARD BLUEPRINTS", font=font(MONO, 30), fill=GOLD)
-    d.text((66, 210), "Your birth card,", font=font(SERIF, 96), fill=BONE)
-    d.text((66, 318), "as a mirror.", font=font(SERIF, 96), fill=BONE)
-    d.text((72, 460), "52 cards. One deterministic system. Same birthday, same card.",
-           font=font(MONO, 28), fill=MIST)
-    footer(d)
-    img.save(os.path.join(OUT, "default.png"), optimize=True)
+    img = paper_canvas()
+    # small fan like the page OGs: three faces, centered left
+    for slug, ang, off in (("queen-of-hearts", 14, -130), ("8-of-diamonds", 0, 0), ("ace-of-spades", -14, 130)):
+        paste_face(img, slug, (368 + off, 330), 418, ang)
+    d = ImageDraw.Draw(img)
+    tx, y = 680, 210
+    d.text((tx, y), "CARD BLUEPRINTS", font=font(SERIF, 34), fill=OXBLOOD)
+    y += 52
+    tf = font(SERIF, 76)
+    d.text((tx, y), "Your birth card,", font=tf, fill=INK)
+    y += 82
+    d.text((tx, y), "as a mirror", font=tf, fill=INK)
+    y += 104
+    d.text((tx, y), "52 cards  ·  Same birthday, same card", font=font(SERIF, 31), fill=INK_SOFT)
+    img.convert("RGB").save(os.path.join(OUT, "default.png"), optimize=True)
 
 
 # --- Warm-paper card style (matches og/birth-card-calculator.png and the

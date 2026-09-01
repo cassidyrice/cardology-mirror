@@ -146,7 +146,11 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
-        <p className="mt-2 mb-4 text-sm text-mist">Cards are coordinates. Put this {card.label} pattern into a practical written reflection.</p>
+        <p className="mt-2 mb-4 text-sm text-mist">
+          Your birth card plus the seven ~13-year period cards that build the
+          personality around it — the 7-page {card.label} Deep Dive PDF, the
+          System Guide, and all 90 Spreads.
+        </p>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
       </div>
 
@@ -247,9 +251,20 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </Section>
 
       <div className="mt-10 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-        <h2 className="font-serif text-2xl text-bone">Continue with the {card.label} Deep Dive — $9</h2>
-        <p className="mt-2 mb-4 text-sm text-mist">A fuller written view of the card’s balanced expression and edges.</p>
-        <DeepDiveCta placement="birth-card-meaning-mid-page" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
+        <p className="eyebrow text-gold">Your year in cards</p>
+        <h2 className="mt-2 font-serif text-2xl text-bone">The Personal Card Blueprint — $13</h2>
+        <p className="mt-2 mb-4 text-sm text-mist">
+          Your yearly spread, written down: all seven 52-day cards in order, a
+          deep dive into the current 52-day cycle you are in, a notable mention
+          for each of the other six, and the yearly signals — Long Range,
+          Pluto, Result, Environment, and Displacement.
+        </p>
+        <Link
+          href="/products/personal-card-blueprint"
+          className="inline-block rounded-full bg-foil px-5 py-2.5 font-serif text-sm text-ink"
+        >
+          Get the Year Blueprint — $13 →
+        </Link>
       </div>
 
       <Section title="Love and relationships">
@@ -726,7 +741,7 @@ function videoJsonLd(video: CardologyVideo) {
 // layer is named second — mirroring the page's new section order.
 function cardQuickAnswer(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
-  return `The ${card.label} means ${card.suitDomain.toLowerCase().replace(/\s*&\s*/g, " and ")} expressed through ${rankTheme(card.rank).toLowerCase()}. Drawn in a reading, its balanced message is: you're ${lensClause(card.sweetSpot)} In shadow, you're ${lensClause(card.over)} In Cardology it is also the birth card of people born on ${dateText}.`;
+  return `The ${card.label} means ${card.suitDomain.toLowerCase().replace(/\s*&\s*/g, " and ")} expressed through ${rankTheme(card.rank).toLowerCase()}. Drawn in a reading, its balanced message is: ${lensClause(card.sweetSpot)} In shadow, ${lensClause(card.over)} In Cardology it is also the birth card of people born on ${dateText}.`;
 }
 
 // --- Drawn-card copy (the general "{card} meaning" intent) ---
@@ -739,8 +754,8 @@ function generalReadingText(card: CardSeo): string {
   const epithet = card.title ? ` — ${card.title} —` : "";
   return (
     `Drawn in a general reading, the ${card.label}${epithet} turns the question toward ${suitDomainPlain(card)}, with the tone of ${rankTheme(card.rank).toLowerCase()}. ` +
-    `At its best, the draw describes a moment where you're ${lensClause(card.sweetSpot)} ` +
-    `If the reading feels strained, check the card's over-expression first: you're ${lensClause(card.over)}`
+    `At its best, the draw describes a moment where ${lensClause(card.sweetSpot)} ` +
+    `If the reading feels strained, check the card's over-expression first: ${lensClause(card.over)}`
   );
 }
 
@@ -751,7 +766,7 @@ function loveReadingText(card: CardSeo): string {
 function moneyReadingText(card: CardSeo): string {
   return (
     `In a money or career reading, the ${card.label} points to ${moneyTheme(card)}, colored by ${rankTheme(card.rank).toLowerCase()}. ` +
-    `At its best the draw marks a moment where the work and the reward line up; when it reads strained, check the shadow first: you're ${lensClause(card.over)}`
+    `At its best the draw marks a moment where the work and the reward line up; when it reads strained, check the shadow first: ${lensClause(card.over)}`
   );
 }
 
@@ -797,7 +812,9 @@ function compatHubHref(card: CardSeo): string {
 // Re-seat each one on an explicit "you're" so the splice stays grammatical for
 // every complement shape in the data (gerund, adjective, or noun phrase).
 function lensClause(text: string) {
-  const t = text.trim().replace(/^You(?:['’]re| are)\s+/, "");
+  // Engine lens texts are full sentences with their own subject ("You run...",
+  // "You're overcommitted..."). Just lowercase the lead-in.
+  const t = text.trim();
   return t.charAt(0).toLowerCase() + t.slice(1);
 }
 

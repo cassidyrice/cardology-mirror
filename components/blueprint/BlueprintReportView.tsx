@@ -120,6 +120,103 @@ export function BlueprintReportView({
           </dl>
         </section>
 
+        {report.yearAhead && report.yearAhead.length > 0 && (
+          <section className="border-t border-brand-line pt-10">
+            <h3 className="type-h2 text-brand-ink">All seven 52-day cards this year</h3>
+            <p className="mt-4 max-w-[40em] leading-relaxed text-brand-ink-soft">
+              Your year runs through seven ~52-day stretches, each governed by
+              one card from your yearly spread. The active one gets the deep
+              dive above; here is the whole walk, in order.
+            </p>
+            <ul className="mt-6 max-w-[40em] space-y-3 text-sm">
+              {report.yearAhead.map((p) => (
+                <li
+                  key={p.planet}
+                  className={`rounded-[3px] border p-3 ${
+                    p.active
+                      ? "border-brand-bronze/60 bg-brand-paper-deep"
+                      : "border-brand-line"
+                  }`}
+                >
+                  <p className="font-semibold text-brand-ink">
+                    {p.planet} &middot; {p.card} — {p.meaning}
+                    {p.active && (
+                      <span className="ml-2 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+                        You are here
+                      </span>
+                    )}
+                  </p>
+                  <p className="mt-1 leading-relaxed text-brand-ink-soft">
+                    {p.domain}. Balanced: {p.balanced}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {report.yearlySignals && (
+          <section className="border-t border-brand-line pt-10">
+            <h3 className="type-h2 text-brand-ink">Yearly signals</h3>
+            <p className="mt-4 max-w-[40em] leading-relaxed text-brand-ink-soft">
+              Beyond the seven periods, the year carries standing signal cards:
+              the Long Range card (the year&rsquo;s through-line), Pluto (the
+              pressure point), Result (where the pressure resolves), and the
+              lifetime Environment and Displacement pair.
+            </p>
+            <dl className="mt-6 max-w-[40em] space-y-3 text-sm">
+              <div>
+                <dt className="font-semibold text-brand-ink">
+                  Long Range &middot; {report.yearlySignals.longRange.card}
+                </dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  The theme threading through the whole year.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-brand-ink">
+                  Pluto &middot; {report.yearlySignals.pluto.card}
+                </dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  {report.yearlySignals.pluto.meaning ||
+                    "The long-arc challenge the year keeps returning to."}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-semibold text-brand-ink">
+                  Result &middot; {report.yearlySignals.result.card}
+                </dt>
+                <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                  {report.yearlySignals.result.meaning ||
+                    "Where the Pluto pressure tends to resolve."}
+                </dd>
+              </div>
+              {report.yearlySignals.environment && report.yearlySignals.displacement ? (
+                <div>
+                  <dt className="font-semibold text-brand-ink">
+                    Environment {report.yearlySignals.environment.card} &middot;
+                    {" "}Displacement {report.yearlySignals.displacement.card}
+                  </dt>
+                  <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                    The lifetime pair: the energy that supports you, and the seat
+                    your card displaces.
+                  </dd>
+                </div>
+              ) : (
+                <div>
+                  <dt className="font-semibold text-brand-ink">
+                    Environment &middot; Displacement
+                  </dt>
+                  <dd className="mt-1 leading-relaxed text-brand-ink-soft">
+                    Your birth card is one of the three Fixed cards — it holds
+                    its own seat and carries no Environment/Displacement pair.
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </section>
+        )}
+
         {report.dailyCard && (
           <section className="border-t border-brand-line pt-10">
             <h3 className="type-h2 text-brand-ink">Your card for today</h3>

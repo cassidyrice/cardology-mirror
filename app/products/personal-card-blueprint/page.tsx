@@ -22,7 +22,7 @@ const offer = instantReportBySlug("personal-card-blueprint");
 
 const TITLE = "Personal Card Blueprint ($13): Instant written report";
 const DESCRIPTION =
-  "Instant personalized written Cardology report: birth card, ruling card, and current 52-day period. $13 one time. Preview a sample.";
+  "Instant personalized written Cardology report: birth card, ruling card, your full year — all seven 52-day cards with a deep dive on the current one — plus the yearly signals. $13 one time. Preview a sample.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -108,7 +108,7 @@ export default function PersonalCardBlueprintPage() {
                 Instant personalized written Cardology report
               </Kicker>
               <h1 className="mt-4 font-serif text-[2rem] leading-[1.12] text-brand-ink sm:text-4xl lg:text-5xl">
-                Your birth card, ruling card, and current 52-day period — written down.
+                Your birth card, ruling card, and your whole year in cards — written down.
               </h1>
               <p className="mt-4 text-base leading-relaxed text-brand-ink-soft">
                 A one-page-plus written report from one birth date. Instant
@@ -155,11 +155,20 @@ export default function PersonalCardBlueprintPage() {
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
-                <h2 className="type-h3">Your current 52-day period</h2>
+                <h2 className="type-h3">Your current 52-day period, deep-dived</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-                  The card season you are in now — the governing card for this
-                  stretch of the calendar map, and how that period plays when
-                  it is loud or quiet. Entertainment structure, not fate.
+                  The card season you are in now — its governing card, how it
+                  plays balanced, under, and over — plus a notable mention for
+                  each of the other six 52-day cards in your year, in order.
+                  Entertainment structure, not fate.
+                </p>
+              </div>
+              <div className="border-t border-brand-line pt-5">
+                <h2 className="type-h3">Your yearly signals</h2>
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                  The standing cards over the year: Long Range (the through-line),
+                  Pluto (the pressure point), Result (where it resolves), and
+                  your lifetime Environment and Displacement pair.
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">

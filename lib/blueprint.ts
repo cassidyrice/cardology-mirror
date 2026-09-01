@@ -4,7 +4,10 @@
 // ruling card, three-position meanings, active planetary period).
 
 import { getReading } from "./engine";
-import type { Reading } from "./types";
+import PLANET_DOMAINS from "./engine-data/planet-domains.json";
+import { PLANET_ORDER, type PlanetName, type Reading } from "./types";
+
+const PLANET_DOMAINS_MAP = PLANET_DOMAINS as Record<string, string>;
 
 export interface BlueprintReport {
   birthdate: string;
@@ -38,6 +41,33 @@ export interface BlueprintReport {
     balanced: string;
     under: string;
     over: string;
+  };
+  /**
+   * The full year: all seven ~52-day period cards from the birth-card yearly
+   * spread, in planet order. The active one carries the deep-dive treatment in
+   * currentChapter; the other six are notable mentions. Undefined only for
+   * reports minted before this field existed.
+   */
+  yearAhead?: {
+    planet: string;
+    domain: string;
+    card: string;
+    cardSlug: string;
+    meaning: string;
+    balanced: string;
+    active: boolean;
+  }[];
+  /**
+   * Yearly signal cards: Long Range, Pluto, Result, and the lifetime
+   * Environment/Displacement pair (null for the three Fixed cards — J♥, 8♣,
+   * K♠ — which have no karma cards).
+   */
+  yearlySignals?: {
+    longRange: { card: string; cardSlug: string };
+    pluto: { card: string; cardSlug: string; meaning: string | null };
+    result: { card: string; cardSlug: string; meaning: string | null };
+    environment: { card: string; cardSlug: string } | null;
+    displacement: { card: string; cardSlug: string } | null;
   };
   reflectionPrompts: string[];
 }
@@ -80,6 +110,44 @@ export async function buildBlueprint(birthdate: string): Promise<BlueprintReport
       }
     : undefined;
 
+  const yearAhead = PLANET_ORDER.map((planet: PlanetName) => {
+    const detail = r.birth_card_spread.periods_detailed[planet];
+    return {
+      planet,
+      domain: PLANET_DOMAINS_MAP[planet] ?? "",
+      card: detail.card,
+      cardSlug: cardSlugFromCode(detail.card),
+      meaning: detail.interpretation.name,
+      balanced: detail.interpretation.sweet_spot,
+      active: planet === ap.planet,
+    };
+  });
+
+  const spread = r.birth_card_spread;
+  const lifetime = r.karma.bc_lifetime;
+  const yearlySignals = {
+    longRange: {
+      card: r.long_range.bc.card,
+      cardSlug: cardSlugFromCode(r.long_range.bc.card),
+    },
+    pluto: {
+      card: spread.pluto,
+      cardSlug: cardSlugFromCode(spread.pluto),
+      meaning: spread.pluto_meaning,
+    },
+    result: {
+      card: spread.result,
+      cardSlug: cardSlugFromCode(spread.result),
+      meaning: spread.result_meaning,
+    },
+    environment: lifetime
+      ? { card: lifetime.environment, cardSlug: cardSlugFromCode(lifetime.environment) }
+      : null,
+    displacement: lifetime
+      ? { card: lifetime.displacement, cardSlug: cardSlugFromCode(lifetime.displacement) }
+      : null,
+  };
+
   const reflectionPrompts = [
     `Where did the "${a.description.title}" pattern take over last month, and what were you protecting?`,
     `The ${ap.bc_card} is governing this stretch of your year through ${ap.domain.toLowerCase()}. What would the balanced version look like this week?`,
@@ -110,6 +178,8 @@ export async function buildBlueprint(birthdate: string): Promise<BlueprintReport
       over: ap.interpretation_bc.over,
     },
     dailyCard: daily,
+    yearAhead,
+    yearlySignals,
     reflectionPrompts,
   };
 }

@@ -22,6 +22,15 @@ import {
 } from "@/lib/deep-dive-card-pdf";
 import { getStripe } from "@/lib/stripe";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
+import { getReading } from "@/lib/engine";
+import { PLANET_ORDER } from "@/lib/types";
+
+type LifePathRow = {
+  planet: string;
+  card: string;
+  meaning: string;
+  balanced: string;
+};
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -143,6 +152,35 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  // Deep Dive on-screen bonus: the birth card plus the seven 13-year
+  // life-path period cards that build the personality. Engine failure just
+  // hides the section — the PDF links above are the contracted fulfillment.
+  let deepDiveBirthCard = "";
+  let deepDiveLifePath: LifePathRow[] = [];
+  if (
+    deepDive &&
+    confirmed &&
+    deepDiveBirthday &&
+    !isJokerBirthdate(deepDiveBirthday)
+  ) {
+    try {
+      const r = await getReading(deepDiveBirthday);
+      deepDiveBirthCard = r.archetype.birth_card;
+      deepDiveLifePath = PLANET_ORDER.map((planet) => {
+        const d = r.deep_dive.life_path.periods[planet];
+        return {
+          planet,
+          card: d?.card ?? "",
+          meaning: d?.interpretation?.name ?? "",
+          balanced: d?.interpretation?.sweet_spot ?? "",
+        };
+      }).filter((row) => row.card);
+    } catch (e) {
+      console.error("[checkout/success] deep dive life path failed", e);
+      deepDiveLifePath = [];
+    }
+  }
+
   return (
     <SeoShell
       crumb={[
@@ -211,6 +249,8 @@ export default async function CheckoutSuccessPage({
               links={deepDiveLinks}
               extra={deepDiveExtra}
               email={customerEmail}
+              birthCard={deepDiveBirthCard}
+              lifePath={deepDiveLifePath}
             />
           ) : digital ? (
             <DigitalFulfillment
@@ -287,11 +327,15 @@ function DeepDiveFulfillment({
   links,
   extra,
   email,
+  birthCard,
+  lifePath,
 }: {
   birthday: string;
   links: { label: string; href: string }[];
   extra: string;
   email: string;
+  birthCard?: string;
+  lifePath?: LifePathRow[];
 }) {
   return (
     <div className="text-center">
@@ -328,6 +372,32 @@ function DeepDiveFulfillment({
               </>
             ) : null}
           </p>
+          {lifePath && lifePath.length > 0 && (
+            <div className="mx-auto mt-10 max-w-[34em] border-t border-brand-line pt-8 text-left">
+              <h3 className="type-h3 text-center text-brand-ink">
+                {birthCard ? `${birthCard} — ` : ""}your seven 13-year period cards
+              </h3>
+              <p className="mt-2 text-center text-sm leading-relaxed text-brand-ink-soft">
+                The birth card is the engine; these seven life-path cards are the
+                ~13-year chapters that build the personality around it, in order.
+              </p>
+              <ul className="mt-5 space-y-3 text-sm">
+                {lifePath.map((row) => (
+                  <li key={row.planet} className="rounded-[3px] border border-brand-line p-3">
+                    <p className="font-semibold text-brand-ink">
+                      {row.planet} &middot; {row.card}
+                      {row.meaning ? ` — ${row.meaning}` : ""}
+                    </p>
+                    {row.balanced && (
+                      <p className="mt-1 leading-relaxed text-brand-ink-soft">
+                        Balanced: {row.balanced}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </>
       ) : (
         <>

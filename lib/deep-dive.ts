@@ -17,7 +17,7 @@ export const DEEP_DIVE_SUCCESS_COPY =
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
   "Payment confirmed. Your System Guide and 90 Spreads are in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads. Instant download links + email backup.";
+  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads, plus your seven 13-year period cards on the confirmation page. Instant download links + email backup.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 
