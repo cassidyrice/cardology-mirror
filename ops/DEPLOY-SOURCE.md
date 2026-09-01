@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `3125157` — Calculator page owns 'cardology chart': full 366-day HTML chart + printable PNG, titles retuned; previous record `2d10488`)
+**Last verified: 2026-09-01** (deployed `main` @ `b280c8f` — Famous people born under each card: 309 Wikipedia-verified birthdays across all 52 cards and the Joker; previous record `3125157`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `312515733392fb99b54ab1bca9f867be3779474d` |
+| **Deployed commit** | `b280c8fc82b536580a281bca9beab69e0f5387f8` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
