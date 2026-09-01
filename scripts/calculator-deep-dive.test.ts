@@ -143,11 +143,11 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
   expect(calculator).not.toContain("seoCard");
   expect(calculator).not.toContain("getCardSeo");
   expect(calculator).toContain("<BirthShareHero");
-  expect(calculator).toContain("<CurrentChapter");
+  expect(calculator).toContain("<CurrentPeriod");
   expect(calculator.indexOf("<BirthShareHero")).toBeLessThan(
-    calculator.indexOf("<CurrentChapter"),
+    calculator.indexOf("<CurrentPeriod"),
   );
-  expect(calculator.indexOf("<CurrentChapter")).toBeLessThan(
+  expect(calculator.indexOf("<CurrentPeriod")).toBeLessThan(
     calculator.indexOf('placement="birth-card-calculator-result"'),
   );
   expect(calculator).not.toContain("FreeCourseSignupForm");

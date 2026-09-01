@@ -15,7 +15,7 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
-import { CurrentChapter } from "./CurrentChapter";
+import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
 import { shareFacePathFromCode } from "@/lib/share-cards";
@@ -224,7 +224,7 @@ function BirthCardResultCard({
         </Link>
       )}
       {!isJoker && (
-        <CurrentChapter birthdate={date || reveal.birthdate} />
+        <CurrentPeriod birthdate={date || reveal.birthdate} />
       )}
       <p className="mt-2 text-center font-serif text-xl text-brand-ink">
         You just discovered the map.
