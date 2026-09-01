@@ -29,7 +29,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/destiny-cards",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [{ url: "/og/destiny-cards.png", width: 1200, height: 630, alt: "Cards of Destiny — three playing cards fanned on paper" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og/destiny-cards.png"],
   },
 };
 
@@ -165,16 +171,16 @@ export default function DestinyCardsPage() {
           family <strong>Cardology</strong>. Not tarot.
         </p>
       </div>
+      <div className="mb-4">
+        <BirthCardCalculator />
+      </div>
+
       <p className="mb-6 text-xs text-faint">
         By Cassidy Rice · Updated August 15, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
-
-      <div className="mb-6">
-        <BirthCardCalculator />
-      </div>
 
       <nav className="mb-8 flex flex-wrap gap-2" aria-label="Destiny Cards sections">
         {[
@@ -189,16 +195,6 @@ export default function DestinyCardsPage() {
           </a>
         ))}
       </nav>
-
-      <p className="mb-6 text-sm">
-        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
-          Full Cardology calculator &amp; chart
-        </Link>
-        {" · "}
-        <Link href="/birth-card-compatibility-calculator" className="text-gold underline underline-offset-4">
-          Compare two birthdays
-        </Link>
-      </p>
 
       <section id="destiny-chart" className="mt-4 scroll-mt-10">
         <p className="eyebrow mb-2 text-gold">Cards of Destiny chart</p>
@@ -460,18 +456,6 @@ export default function DestinyCardsPage() {
           ))}
         </div>
       </section>
-
-      <div className="card-surface mt-10 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">Start with the free tools</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Free birth card calculator →
-          </Link>
-          <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Personal Blueprint — $13 →
-          </Link>
-        </div>
-      </div>
 
       <FreeCourseCta source="destiny-cards" className="mt-10" />
       <ReadingBridge variant="general" className="mt-8" />

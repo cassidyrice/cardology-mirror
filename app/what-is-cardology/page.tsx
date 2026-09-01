@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
@@ -12,9 +13,10 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "What Is Cardology? The 52-Card Birthday System, Explained";
+const TITLE = "What Is Cardology? Find the Playing Card in Your Birthday";
 const DESCRIPTION =
-  "Every birthday maps to one of 52 playing cards — not tarot. Plain-English guide to how Cardology works, plus a free calculator to find your card.";
+  "Cardology maps every birthday to one of 52 playing cards — not tarot. Plain-English guide to how it works, plus a free calculator that reveals your card in seconds.";
+const OG_IMAGE = { url: "/og/what-is-cardology.png", width: 1200, height: 630, alt: "What is Cardology? Three playing cards fanned on paper" };
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -25,7 +27,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/what-is-cardology",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 };
 
@@ -126,8 +134,9 @@ export default function WhatIsCardology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
+      <SeoHeroFan className="mb-5" />
       <h1 className="display mb-3 text-3xl text-bone">What Is Cardology? Playing Cards from Your Birthday</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
+      <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           Cardology is a birthday-to-playing-card system: your month and day map to
@@ -136,6 +145,11 @@ export default function WhatIsCardology() {
           card — every time.
         </p>
       </div>
+      <p className="mb-6">
+        <Link href="/birth-card-calculator" className="accent-button inline-block">
+          Find your birth card free →
+        </Link>
+      </p>
 
       <p className="mb-2 text-xs text-faint">
         By Cassidy Rice · Updated August 15, 2026 ·{" "}

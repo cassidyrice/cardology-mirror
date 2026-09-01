@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
@@ -37,11 +38,27 @@ const faqs = [
   },
 ];
 
+const TITLE = "All 52 Cardology Birth Cards — Meanings & Personality";
+const DESCRIPTION =
+  "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.";
+const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards — three aces fanned on paper" };
+
 export const metadata: Metadata = {
-  title: "All 52 Cardology Birth Cards — Meanings & Personality",
-  description:
-    "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: "/birth-card" },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/birth-card",
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
+  },
 };
 
 const SUIT_GLYPHS: Record<string, string> = {
@@ -91,8 +108,9 @@ export default function BirthCardIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Card Meanings</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           A Cardology birth card is the one playing card your birthday maps to in a
@@ -101,6 +119,11 @@ export default function BirthCardIndex() {
           below or use the free calculator to find yours.
         </p>
       </div>
+      <p className="mb-6">
+        <Link href="/birth-card-calculator" className="accent-button inline-block">
+          Find your birth card free →
+        </Link>
+      </p>
       <p className="mb-4 text-xs text-faint">
         By{" "}
         <Link href="/about" className="text-gold underline underline-offset-4">

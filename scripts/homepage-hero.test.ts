@@ -79,7 +79,7 @@ describe("HomepageCalculatorHero contract", () => {
     for (const text of [
       "Free · instant · no signup",
       "Which playing card were you born under?",
-      "Your birthday maps to one card in a fixed 52-card system.",
+      "The numbers of your birthday calculate to one playing card",
       "52 cards",
       "366 birthdays",
       "not tarot",

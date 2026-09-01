@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -91,18 +91,22 @@ export function BirthCardCalculator() {
       placement: "calculator-form",
     });
     const calculated = calculateBirthCardRevealFromIsoDate(date);
-    setReveal(calculated);
+    // INP: paint the click feedback first; the result subtree renders in a
+    // transition and the elroy listener runs in its own task.
+    startTransition(() => setReveal(calculated));
     if (calculated) {
       storeCheckoutBirthdate(date);
       trackClientFunnelEvent("calculator_completed", {
         placement: "calculator-form",
       });
       window.__cardBlueprintsElroyBirthdate = date;
-      window.dispatchEvent(
-        new CustomEvent("elroy:birth-card-revealed", {
-          detail: { birthdate: date },
-        }),
-      );
+      setTimeout(() => {
+        window.dispatchEvent(
+          new CustomEvent("elroy:birth-card-revealed", {
+            detail: { birthdate: date },
+          }),
+        );
+      }, 0);
     }
   }
 

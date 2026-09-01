@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
@@ -9,6 +11,8 @@ import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from
 const TITLE = "Cardology Compatibility: Birth Cards + Free Calculator";
 const DESCRIPTION =
   "See how two Cardology birth cards interact — suits, Life Path roles, shared cards — then compare two birthdays free (playing cards, not tarot).";
+
+const OG_IMAGE = { url: "/og/cardology-compatibility.png", width: 1200, height: 630, alt: "Are your cards compatible? Two playing cards side by side" };
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -19,7 +23,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/cardology-compatibility",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 };
 
@@ -53,11 +63,15 @@ export default function CompatibilityPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility Calculator</h1>
+      <SeoHeroFan codes={["Q♦", "A♥"]} className="mb-5" />
+      <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility: Two Birth Cards, One Map</h1>
       <p className="mb-4 text-sm text-faint">
         Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+
+      <CompatibilityCalculator />
+
+      <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           Cardology compatibility compares two birthday-locked playing cards and the
@@ -69,29 +83,12 @@ export default function CompatibilityPage() {
         Start with two birth cards, then go sharper with the Life Path. The useful
         question is not only &ldquo;are these cards compatible?&rdquo; It is: where does this
         person land in my constitution, where do I land in theirs, and which cards
-        are we both carrying in different roles?
+        are we both carrying in different roles?{" "}
+        <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+          Browse every card pairing
+        </a>
+        .
       </p>
-
-      <div className="card-surface rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">Compare two birthdays free</p>
-        <p className="mt-1 text-sm text-faint">
-          Birth cards, Life Path constitutions, shared cards, and cross-reference roles.
-        </p>
-        <div className="mt-3 flex flex-wrap gap-3">
-          <Link
-            href="/birth-card-compatibility-calculator"
-            className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink"
-          >
-            Open the compatibility calculator →
-          </Link>
-          <a
-            href={COMPATIBILITY_DIRECTORY_PATH}
-            className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold"
-          >
-            Browse every card pairing →
-          </a>
-        </div>
-      </div>
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">What a connection actually means</h2>

@@ -29,7 +29,14 @@ export const metadata: Metadata = {
     url: "/card-of-the-day",
     // Today-agnostic on purpose: the page content rotates daily, so a
     // card-specific OG image would be stale for anyone sharing yesterday.
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [{ url: "/og/card-of-the-day.png", width: 1200, height: 630, alt: "Card of the Day — three playing cards fanned on paper" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Card of the Day: Free Daily Playing Card Reading",
+    description:
+      "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.",
+    images: ["/og/card-of-the-day.png"],
   },
 };
 
@@ -152,19 +159,37 @@ export default function CardOfTheDayPage() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Card of the Day", href: "/card-of-the-day" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="mb-2 flex items-baseline gap-3">
+      <div className="mb-4 flex items-center gap-5">
         {card ? (
-          <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
+          <img
+            src={`/pins/${card.slug}.png`}
+            alt={`${card.label} — the card of the day for ${label}`}
+            width={1000}
+            height={1500}
+            loading="eager"
+            decoding="async"
+            className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          />
         ) : (
           <span className="font-serif text-5xl text-gold">🃏</span>
         )}
-        <span className="eyebrow text-faint">{label}</span>
+        <div>
+          <span className="eyebrow text-faint">{label}</span>
+          <h1 className="display mb-0 mt-1 text-3xl text-bone">Cardology Card of the Day</h1>
+          {card && (
+            <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
+          )}
+        </div>
       </div>
-      <h1 className="display mb-3 text-3xl text-bone">Cardology Card of the Day</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">{directAnswer}</p>
       </div>
+      <p className="mb-6">
+        <Link href="/birth-card-calculator" className="accent-button inline-block">
+          Find YOUR birth card free →
+        </Link>
+      </p>
       <p className="prose-reading mb-6 text-mist">
         This is a daily reading with no shuffle in it. The deck is built like a
         calendar — 52 cards for 52 weeks, 4 suits for 4 seasons — and a fixed
@@ -185,7 +210,7 @@ export default function CardOfTheDayPage() {
                 alt={`${card.label} — the card of the day for ${label}`}
                 width={1000}
                 height={1500}
-                loading="eager"
+                loading="lazy"
                 decoding="async"
                 className="w-44 shrink-0 self-start rounded-2xl border border-white/10"
               />

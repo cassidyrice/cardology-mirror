@@ -26,7 +26,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/birth-card-compatibility-calculator",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [{ url: "/og/cardology-compatibility.png", width: 1200, height: 630, alt: "Are your cards compatible? Two playing cards side by side" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og/cardology-compatibility.png"],
   },
 };
 
@@ -95,11 +101,11 @@ export default function CompatibilityCalculatorPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <CompatibilityCalculator />
-
-      <h1 className="display mb-3 mt-10 text-3xl text-bone">
+      <h1 className="display mb-4 text-3xl text-bone">
         Cardology Compatibility Calculator
       </h1>
+
+      <CompatibilityCalculator />
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">

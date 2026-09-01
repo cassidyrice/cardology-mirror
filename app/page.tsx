@@ -18,11 +18,26 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
+const HOME_TITLE = "Card Blueprints | Birth Cards, Calculator & Cardology";
+const HOME_DESCRIPTION =
+  "Find your birth card free, explore Cardology meanings and compatibility, and get an instant Personal Card Blueprint from your birthday.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Card Blueprints | Birth Cards, Calculator & Cardology" },
-  description:
-    "Find your birth card free, explore Cardology meanings and compatibility, and get an instant Personal Card Blueprint from your birthday.",
+  title: { absolute: HOME_TITLE },
+  description: HOME_DESCRIPTION,
   alternates: { canonical: "/" },
+  openGraph: {
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    url: "/",
+    images: [{ url: "/og/birth-card-calculator.png", width: 1200, height: 630, alt: "Find your birth card — fanned playing cards" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    images: ["/og/birth-card-calculator.png"],
+  },
 };
 
 const FREE_PATHS = [
