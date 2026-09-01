@@ -17,7 +17,7 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
-DEPLOY_COMMIT="9f6e5054b3fcf564798ba032208b2f4695cf75a2"
+DEPLOY_COMMIT="6e3070f12b02e883be8021b0936819914834aaaf"
 
 WELLKNOWN_PATH="/.well-known/apple-developer-merchantid-domain-association"
 WELLKNOWN_REPO_PATH="public/.well-known/apple-developer-merchantid-domain-association"
