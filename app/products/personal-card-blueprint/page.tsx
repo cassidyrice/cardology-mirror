@@ -17,6 +17,7 @@ import {
   instantReportFacts,
 } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
+import { testimonialByline, testimonialsFor } from "@/lib/testimonials";
 
 const offer = instantReportBySlug("personal-card-blueprint");
 
@@ -192,6 +193,30 @@ export default function PersonalCardBlueprintPage() {
                   keepable part of the written pattern, not a live reading.
                 </p>
               </div>
+            </div>
+
+            <div className="mt-12">
+              <Kicker>What readers say</Kicker>
+              <div className="mt-6 grid gap-6 lg:grid-cols-2">
+                {testimonialsFor("personal-card-blueprint").map((t) => (
+                  <figure key={t.author} className="rounded-[3px] border border-brand-line bg-brand-ivory p-5">
+                    <blockquote className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    <figcaption className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+                      <span aria-label={`${t.rating} out of 5 stars`} className="mr-2 tracking-normal">
+                        {"★".repeat(t.rating)}
+                      </span>
+                      {testimonialByline(t)}
+                      {t.founder ? " · founder, Card Blueprints" : ""}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              <p className="mt-3 text-xs text-brand-ink-faint">
+                Real words, shared with permission. Individual reflections, not
+                typical-results claims.
+              </p>
             </div>
 
             <div className="mt-12 border-y border-brand-line py-8">

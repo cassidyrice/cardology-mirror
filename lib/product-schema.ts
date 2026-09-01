@@ -3,6 +3,7 @@ import {
   type ActiveProduct,
 } from "@/lib/products";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { schemaReviewsFor } from "@/lib/testimonials";
 
 export const PRODUCT_IMAGE_PATH = "/og/default.png";
 
@@ -87,8 +88,36 @@ export function buildProductJsonLd(product: ActiveProduct) {
   const url = `${SITE_URL}${path}`;
   const available =
     isDigitalDownload(product) ? product.available : true;
+  // Real customer reviews shown on the page; every rating owner-confirmed
+  // five-star (2026-09-01). Founder reviews are excluded upstream.
+  const rated = schemaReviewsFor(product.slug);
+  const reviews = rated.map((t) => ({
+    "@type": "Review" as const,
+    author: { "@type": "Person" as const, name: t.author },
+    reviewBody: t.quote,
+    reviewRating: {
+      "@type": "Rating" as const,
+      ratingValue: t.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+  }));
+  const aggregateRating =
+    rated.length > 0
+      ? {
+          "@type": "AggregateRating" as const,
+          ratingValue: (
+            rated.reduce((sum, t) => sum + t.rating, 0) / rated.length
+          ).toFixed(1),
+          reviewCount: rated.length,
+          bestRating: 5,
+          worstRating: 1,
+        }
+      : undefined;
 
   return {
+    ...(reviews.length > 0 ? { review: reviews } : {}),
+    ...(aggregateRating ? { aggregateRating } : {}),
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${url}#product`,

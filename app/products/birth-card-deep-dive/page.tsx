@@ -7,6 +7,7 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { buildProductJsonLd } from "@/lib/product-schema";
 import { DEEP_DIVE_PRODUCT } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
+import { testimonialByline, testimonialsFor } from "@/lib/testimonials";
 
 const TITLE = "Birth Card Deep Dive ($9): Your Card's Written Pattern";
 const DESCRIPTION =
@@ -115,6 +116,29 @@ export default function BirthCardDeepDivePage() {
           </Link>{" "}
           — the same date always returns the same card, and the Deep Dive
           matches your card automatically from your birthday.
+        </p>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="eyebrow mb-4 text-gold">What buyers say</h2>
+        <div className="space-y-4">
+          {testimonialsFor("deep-dive").map((t) => (
+            <figure key={t.author} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+              <blockquote className="prose-reading text-sm text-mist">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-3 text-xs font-semibold uppercase tracking-[0.14em] text-gold">
+                <span aria-label={`${t.rating} out of 5 stars`} className="mr-2 tracking-normal">
+                  {"★".repeat(t.rating)}
+                </span>
+                {testimonialByline(t)}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-3 text-xs text-faint">
+          Real customer words, shared with permission. Individual reflections,
+          not typical-results claims.
         </p>
       </section>
 
