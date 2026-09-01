@@ -29,7 +29,7 @@ const MONTH_DIRECTORY = [
 const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)";
 const DESCRIPTION =
   "The full Cardology birthday chart (every date → one of 52 playing cards) plus a free calculator: enter a birthday for your birth card and ruling card. Not tarot.";
-const REVIEWED_DATE = "2026-08-15";
+const REVIEWED_DATE = "2026-09-01";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -192,7 +192,7 @@ export default function CalculatorPage() {
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
-        · Method reviewed August 15, 2026 ·{" "}
+        · Chart and method reviewed September 1, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial standards
         </Link>
