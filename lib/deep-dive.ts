@@ -13,11 +13,11 @@ export const DEEP_DIVE_CTA_LABEL = "Get Deep Dive $9";
 export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $9 Deep Dive";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
 export const DEEP_DIVE_SUCCESS_COPY =
-  "Payment confirmed. Your 7-page Deep Dive, System Guide, and 90 Spreads are in this email.";
+  "Payment confirmed. Your 7-page Deep Dive and the complete System Guide are in this email.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
-  "Payment confirmed. Your System Guide and 90 Spreads are in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
+  "Payment confirmed. Your complete System Guide is in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $9 sends: 7-page Deep Dive PDF for your birth card + System Guide + 90 Spreads, plus your seven 13-year period cards on the confirmation page. Instant download links + email backup.";
+  "What $9 sends: 7-page Deep Dive PDF for your birth card + the complete System Guide, plus your seven 13-year period cards on the confirmation page. Instant download links + email backup.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 
@@ -40,20 +40,24 @@ export type DeepDiveFile = {
   label: string;
 };
 
-export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [
-  {
-    slug: "system-guide",
-    key: "system-guide.pdf",
-    fileName: "Card-Blueprints-System-Guide.pdf",
-    label: "System Guide",
-  },
-  {
-    slug: "all-90-spreads",
-    key: "all-90-spreads.pdf",
-    fileName: "Card-Blueprints-90-Spreads.pdf",
-    label: "90 Spreads",
-  },
-];
+export const SYSTEM_GUIDE_FILE: DeepDiveFile = {
+  slug: "system-guide",
+  key: "system-guide.pdf",
+  fileName: "Card-Blueprints-System-Guide.pdf",
+  label: "The Complete System Guide",
+};
+
+/** Ships with the $13 Personal Card Blueprint (moved from the $9 bundle 2026-09-01). */
+export const ALL_90_SPREADS_FILE: DeepDiveFile = {
+  slug: "all-90-spreads",
+  key: "all-90-spreads.pdf",
+  fileName: "Card-Blueprints-90-Spreads.pdf",
+  label: "The 90 Spreads",
+};
+
+// $9 bundle bonus. The 90 Spreads moved to the $13 Personal Card Blueprint;
+// its slug stays resolvable below so links from earlier $9 orders keep working.
+export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [SYSTEM_GUIDE_FILE];
 
 /** Card Blueprint live publishable key (public). Runtime env can override. */
 export const CARD_BLUEPRINT_PUBLISHABLE_KEY =
@@ -149,7 +153,7 @@ export function deepDiveSuccessCopy(birthday?: string | null): string {
 
 export function deepDiveBonusBySlug(slug: string): DeepDiveFile | undefined {
   return (
-    DEEP_DIVE_BONUSES.find((b) => b.slug === slug) ??
+    [SYSTEM_GUIDE_FILE, ALL_90_SPREADS_FILE].find((b) => b.slug === slug) ??
     deepDiveCardFile(slug) ??
     undefined
   );

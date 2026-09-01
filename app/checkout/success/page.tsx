@@ -15,7 +15,7 @@ import {
 } from "@/lib/products";
 import { mintReportToken } from "@/lib/report-token";
 import { mintDownloadToken } from "@/lib/download-token";
-import { isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
+import { ALL_90_SPREADS_FILE, isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
 import {
   deepDiveFilesForBirthday,
   deepDiveCardPdfForBirthday,
@@ -105,6 +105,17 @@ export default async function CheckoutSuccessPage({
       } catch (e) {
         console.error("[checkout/success] report token mint failed", e);
       }
+    }
+  }
+
+  // Blueprint bundle: The 90 Spreads PDF ships with the $13 report.
+  let spreadsDownloadHref = "";
+  if (instantReport && confirmed && customerEmail) {
+    try {
+      const dl = await mintDownloadToken(customerEmail, ALL_90_SPREADS_FILE.slug, 30);
+      spreadsDownloadHref = `/api/download/${ALL_90_SPREADS_FILE.slug}?token=${encodeURIComponent(dl)}`;
+    } catch (e) {
+      console.error("[checkout/success] 90 spreads token mint failed", e);
     }
   }
 
@@ -220,8 +231,8 @@ export default async function CheckoutSuccessPage({
           {confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? isJokerBirthdate(deepDiveBirthday)
-                ? "Payment confirmed. December 31 is the Joker — your System Guide and 90 Spreads are ready below. There is no card-level Deep Dive PDF for this date."
-                : "Payment confirmed. Your 7-page Deep Dive, System Guide, and 90 Spreads are ready below. Backup copies were also emailed."
+                ? "Payment confirmed. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF for this date."
+                : "Payment confirmed. Your 7-page Deep Dive and complete System Guide are ready below. Backup copies were also emailed."
               : deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
@@ -259,7 +270,7 @@ export default async function CheckoutSuccessPage({
               token={downloadToken}
             />
           ) : instantReport ? (
-            <ReportFulfillment reportToken={reportToken} />
+            <ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} />
           ) : voice ? (
             <VoiceFulfillment product={product!} />
           ) : null}
@@ -507,7 +518,13 @@ function activationInstructions(product: SiteProduct): string {
   }
   return `We are linking this reading to the phone number you used at checkout. Wait for the start-here email before calling; after activation, you have ${"accessDays" in product ? product.accessDays : 30} days to begin.`;
 }
-function ReportFulfillment({ reportToken }: { reportToken: string }) {
+function ReportFulfillment({
+  reportToken,
+  spreadsHref,
+}: {
+  reportToken: string;
+  spreadsHref?: string;
+}) {
   if (!reportToken) {
     return (
       <div className="text-center">
@@ -538,8 +555,16 @@ function ReportFulfillment({ reportToken }: { reportToken: string }) {
           Open My Personal Blueprint
         </LinkButton>
       </div>
+      {spreadsHref && (
+        <div className="mt-3">
+          <LinkButton href={spreadsHref} variant="outline" size="large">
+            Download The 90 Spreads &mdash; PDF
+          </LinkButton>
+        </div>
+      )}
       <p className="mt-3 text-xs text-brand-ink-soft">
         Keep the emailed link — it re-opens your report anytime.
+        {spreadsHref ? " The 90 Spreads link is good for 30 days; a backup copy is in your email." : ""}
       </p>
     </div>
   );

@@ -244,6 +244,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
       "Your current 52-day period, deep-dived — balanced, under, over",
       "All seven 52-day cards of your year, in order, with a note on each",
       "Yearly signals: Long Range, Pluto, Result, Environment & Displacement",
+      "The 90 Spreads PDF — every yearly map, ages 0–89 (bundled download)",
       "Three pointed reflection questions to work with",
     ],
     cta: "Get My Blueprint — $13",
@@ -266,16 +267,16 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   priceLabel: "$9",
   badge: "Deep Dive",
   oneLine:
-    "7-page Deep Dive PDF + System Guide + 90 Spreads, instant download.",
+    "7-page Deep Dive PDF + the complete System Guide, instant download.",
   bestFor:
     "Anyone who just found their birth card and wants the written Deep Dive sent to them.",
   deliverable:
-    "Instant download links for the 7-page birth-card Deep Dive, System Guide, and 90 Spreads.",
+    "Instant download links for the 7-page birth-card Deep Dive and the complete System Guide.",
   turnaround: "Download links emailed immediately after payment.",
   includes: [
     "7-page birth-card Deep Dive PDF",
-    "System Guide",
-    "90 Spreads",
+    "The complete System Guide",
+    "Your seven ~13-year period cards on the confirmation page",
   ],
   cta: "Get Deep Dive $9",
   checkoutNote:

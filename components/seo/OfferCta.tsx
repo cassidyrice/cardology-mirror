@@ -17,7 +17,7 @@ export function OfferCta({ className = "" }: { className?: string }) {
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
         The free calculator stops at the card name. The Deep Dive ($9) writes
-        the pattern down with a grounded reading, System Guide, and 90 Spreads.
+        the pattern down with a grounded reading and the complete System Guide.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link

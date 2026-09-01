@@ -6,7 +6,7 @@ import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
-import { DEEP_DIVE_SKU, deepDiveSuccessCopy } from "@/lib/deep-dive";
+import { ALL_90_SPREADS_FILE, DEEP_DIVE_SKU, deepDiveSuccessCopy } from "@/lib/deep-dive";
 import {
   deepDiveCardPdfForBirthday,
   deepDiveFilesForBirthday,
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
           }
           bonusLinks = links.length;
           const extra = joker
-            ? "December 31 is the Joker — there is no card-level Deep Dive PDF for this date. The System Guide and 90 Spreads still apply."
+            ? "December 31 is the Joker — there is no card-level Deep Dive PDF for this date. The complete System Guide still applies."
             : cardPdf
               ? ""
               : "Your card PDF could not be resolved from the birthday on this order. Reply with YYYY-MM-DD and we will send the card file.";
@@ -344,6 +344,14 @@ export async function POST(req: NextRequest) {
             birthdate,
           );
           const reportUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
+          // Bundled download: The 90 Spreads PDF ships with the Blueprint.
+          let spreadsLine = "";
+          try {
+            const dl = await mintDownloadToken(email, ALL_90_SPREADS_FILE.slug, 30);
+            spreadsLine = `${ALL_90_SPREADS_FILE.label} (PDF, link good for 30 days): ${SITE_URL}/api/download/${ALL_90_SPREADS_FILE.slug}?token=${encodeURIComponent(dl)}`;
+          } catch (e) {
+            console.error("[webhook] 90 spreads token mint failed", e);
+          }
           await sendIntakeEmail({
             to: email,
             subject: `Your Personal Card Blueprint is ready`,
@@ -354,6 +362,9 @@ export async function POST(req: NextRequest) {
               reportUrl,
               "",
               "Keep this link — it re-opens your report anytime.",
+              ...(spreadsLine
+                ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]
+                : []),
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),

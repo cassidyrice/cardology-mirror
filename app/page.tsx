@@ -283,7 +283,7 @@ export default function Home() {
             <p className="type-eyebrow text-brand-oxblood">Primary</p>
             <h3 className="type-h3 mt-2">Birth Card Deep Dive — {DEEP_DIVE_PRICE_LABEL}</h3>
             <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-              Your card, 7 pages, plus the System Guide and 90 Spreads.
+              Your card, 7 pages, plus the complete System Guide.
             </p>
             <p className="mt-5">
               <LinkButton href={DEEP_DIVE_CALCULATOR_FORM_HREF} variant="accent">

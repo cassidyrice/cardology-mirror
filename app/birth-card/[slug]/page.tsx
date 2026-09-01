@@ -148,8 +148,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
         <p className="mt-2 mb-4 text-sm text-mist">
           Your birth card plus the seven ~13-year period cards that build the
-          personality around it — the 7-page {card.label} Deep Dive PDF, the
-          System Guide, and all 90 Spreads.
+          personality around it — the 7-page {card.label} Deep Dive PDF plus
+          the complete System Guide.
         </p>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
       </div>
@@ -257,7 +257,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           Your yearly spread, written down: all seven 52-day cards in order, a
           deep dive into the current 52-day cycle you are in, a notable mention
           for each of the other six, and the yearly signals — Long Range,
-          Pluto, Result, Environment, and Displacement.
+          Pluto, Result, Environment, and Displacement. Includes The 90
+          Spreads PDF: every yearly map, ages 0&ndash;89.
         </p>
         <Link
           href="/products/personal-card-blueprint"

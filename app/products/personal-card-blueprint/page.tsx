@@ -172,6 +172,14 @@ export default function PersonalCardBlueprintPage() {
                 </p>
               </div>
               <div className="border-t border-brand-line pt-5">
+                <h2 className="type-h3">The 90 Spreads — bundled PDF</h2>
+                <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                  Every yearly map, ages 0&ndash;89, as a downloadable PDF. Your
+                  spread number is your completed age — open your spread and
+                  find your card in it, this year and every year after.
+                </p>
+              </div>
+              <div className="border-t border-brand-line pt-5">
                 <h2 className="type-h3">Three pointed questions</h2>
                 <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
                   Reflection prompts drawn from those specific cards — the
