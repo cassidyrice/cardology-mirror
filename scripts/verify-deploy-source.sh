@@ -17,7 +17,7 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
-DEPLOY_COMMIT="6e3070f12b02e883be8021b0936819914834aaaf"
+DEPLOY_COMMIT="ba899e10a10fd33161195ee4adc7787037b93b5a"
 
 WELLKNOWN_PATH="/.well-known/apple-developer-merchantid-domain-association"
 WELLKNOWN_REPO_PATH="public/.well-known/apple-developer-merchantid-domain-association"
@@ -25,6 +25,11 @@ EXPECTED_WELLKNOWN_SHA256="2de7b483319c713bf649352f7f158f1fedbda92f546bebfe576ae
 
 HEADER_PATH="/birth-card-calculator"
 EXPECTED_PAYMENT_POLICY='payment=(self "https://js.stripe.com")'
+
+# Probe 3: per-page OG image that first shipped in ba899e1 (SEO polish).
+OG_PATH="/og/what-is-cardology.png"
+OG_REPO_PATH="public/og/what-is-cardology.png"
+EXPECTED_OG_SHA256="3e61589fa956276477af28f202a4b03f7da735b6453be256454573ce666f437d"
 
 red() { printf '\033[31m%s\033[0m\n' "$*"; }
 green() { printf '\033[32m%s\033[0m\n' "$*"; }
@@ -87,12 +92,42 @@ else
   fail=1
 fi
 
+# --- Probe 3: OG image that first shipped in ba899e1; older builds 404 ---
+echo "→ probe 3: ${OG_PATH}"
+og_code="$("${CURL[@]}" -o /dev/null -w '%{http_code}' "${SITE_ORIGIN}${OG_PATH}" || echo 000)"
+
+if [[ "$og_code" == "000" ]]; then
+  red "  UNREACHABLE — could not contact ${SITE_ORIGIN}"
+  inconclusive=1
+elif [[ "$og_code" != "200" ]]; then
+  red "  FAIL: expected HTTP 200, got ${og_code}"
+  red "  This file first shipped in ba899e1. A 404 means an older build is live."
+  fail=1
+else
+  og_sha="$("${CURL[@]}" "${SITE_ORIGIN}${OG_PATH}" | shasum -a 256 | awk '{print $1}')"
+  if [[ "$og_sha" == "$EXPECTED_OG_SHA256" ]]; then
+    green "  OK: HTTP 200, sha256 matches the blob in ${DEPLOY_COMMIT:0:7}"
+  else
+    red "  FAIL: HTTP 200 but body digest differs"
+    red "    expected ${EXPECTED_OG_SHA256}"
+    red "    live     ${og_sha}"
+    fail=1
+  fi
+fi
+
 # --- Cross-check: does the record still match the repo? (advisory) ---
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   if git cat-file -e "${DEPLOY_COMMIT}^{commit}" 2>/dev/null; then
     repo_sha="$(git show "${DEPLOY_COMMIT}:${WELLKNOWN_REPO_PATH}" 2>/dev/null | shasum -a 256 | awk '{print $1}' || true)"
     if [[ -n "$repo_sha" && "$repo_sha" != "$EXPECTED_WELLKNOWN_SHA256" ]]; then
       red "  FAIL: EXPECTED_WELLKNOWN_SHA256 does not match the blob in ${DEPLOY_COMMIT:0:7}"
+      red "  The record in this script has drifted from the repo."
+      fail=1
+    fi
+
+    repo_og_sha="$(git show "${DEPLOY_COMMIT}:${OG_REPO_PATH}" 2>/dev/null | shasum -a 256 | awk '{print $1}' || true)"
+    if [[ -n "$repo_og_sha" && "$repo_og_sha" != "$EXPECTED_OG_SHA256" ]]; then
+      red "  FAIL: EXPECTED_OG_SHA256 does not match the blob in ${DEPLOY_COMMIT:0:7}"
       red "  The record in this script has drifted from the repo."
       fail=1
     fi

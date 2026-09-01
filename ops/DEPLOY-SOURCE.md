@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-08-31** (deployed `main` @ `6e3070f` this day; previous record was `main` @ `9f6e505`)
+**Last verified: 2026-09-01** (deployed `main` @ `ba899e1` this day — SEO polish: per-page OG images, hero art, above-fold CTAs; previous record was `main` @ `6e3070f`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `6e3070f12b02e883be8021b0936819914834aaaf` |
+| **Deployed commit** | `ba899e10a10fd33161195ee4adc7787037b93b5a` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
@@ -90,10 +90,19 @@ That digest is byte-identical to the git blob, which is proof of what the
 edge is serving rather than an inference. If the file ever changes, update
 `EXPECTED_WELLKNOWN_SHA256` in the script.
 
-**Limitation:** both probes only prove production is at or after `0b60efb`.
-Commits since then (the ops docs, the karma type fix) changed no visitor-facing
-bytes, so nothing distinguishes them from the edge. When a future deploy ships
-a new visitor-facing artifact, add it as a third probe — that is what makes the
+### Probe 3 — a file that first shipped in the recorded commit
+
+`public/og/what-is-cardology.png` was added in `ba899e1` (the SEO polish
+deploy). Any build older than that 404s here, which pins the deployed commit
+far more tightly than probes 1–2 (those only prove ≥ `0b60efb`).
+
+```sh
+curl -s https://cardblueprints.com/og/what-is-cardology.png | shasum -a 256
+# expect: 3e61589fa956276477af28f202a4b03f7da735b6453be256454573ce666f437d
+```
+
+When a future deploy ships a new visitor-facing artifact, rotate this probe to
+it (`OG_PATH` / `EXPECTED_OG_SHA256` in the script) — that is what makes the
 `DEPLOY_COMMIT` pin an assertion rather than a bookkeeping entry.
 
 ### Probe 2 — a response header that changed in a known commit
