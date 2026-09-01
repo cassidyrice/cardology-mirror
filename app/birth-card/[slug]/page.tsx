@@ -27,6 +27,7 @@ import {
 } from "@/lib/seo-cards";
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
+import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
 
 const SEO_UPDATED = "2026-08-15";
 
@@ -109,6 +110,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const faqs = cardFaqs(card, dates);
   const angles = interpretiveAngles(card);
   const videos = videosForCard(card.slug);
+  const famous = famousForCard(card.code);
 
   const jsonLd = [
     faqJsonLd(faqs),
@@ -307,17 +309,68 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       )}
 
       {dates.length > 0 && (
-        <Section title={`${card.label} birth dates`}>
+        <Section title={`${card.label} birth dates and ruling cards by zodiac sign`}>
           <p>
-            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`} in this deterministic Cardology system:
+            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`}.
+            Every one of them shares the birth card, but the zodiac sign of the date picks a different
+            planetary ruling card, which is why two people with the same {card.label} birth card can feel so different in person.
           </p>
-          <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
-            {dates.map((d) => (
-              <li key={d.slug}>
-                {/* Plain <a> to /born-on/: birthday pages live on the
-                    Worker-served surface (the Worker 301s /birth-card/[date]
-                    there — link direct to skip the redirect hop). */}
-                <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
+          <div className="table-scroll mt-3 overflow-x-auto" role="region" aria-label={`${card.label} birthdays with zodiac sign and ruling card`} tabIndex={0}>
+            <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
+              <caption className="sr-only">Birthdays that map to the {card.label}, with zodiac sign and planetary ruling card</caption>
+              <thead>
+                <tr className="border-b border-white/15 text-bone">
+                  <th scope="col" className="py-2 pr-3">Birthday</th>
+                  <th scope="col" className="py-2 pr-3">Zodiac sign</th>
+                  <th scope="col" className="py-2 pr-3">Ruling planet</th>
+                  <th scope="col" className="py-2">Ruling card</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dates.map((d) => {
+                  const z = zodiacFor(d.month, d.day);
+                  return (
+                    <tr key={d.slug} className="border-b border-white/10">
+                      <th scope="row" className="py-2 pr-3 font-medium text-bone">
+                        {/* Plain <a> to /born-on/: birthday pages live on the Worker-served surface. */}
+                        <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
+                      </th>
+                      <td className="py-2 pr-3">{z.sign}</td>
+                      <td className="py-2 pr-3">{z.planet}</td>
+                      <td className="py-2">
+                        {d.rulingCards.length > 0
+                          ? d.rulingCards.map((r, i) => (
+                              <span key={r.slug}>
+                                {i > 0 ? " or " : ""}
+                                <Link href={`/birth-card/${r.slug}`} className="text-gold underline underline-offset-4">{r.label}</Link>
+                              </span>
+                            ))
+                          : "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-faint">
+            Read the ruling card as the style the {card.label} pattern is expressed through. Same engine, different steering.
+          </p>
+        </Section>
+      )}
+
+      {famous.length > 0 && (
+        <Section title={`Famous people born under the ${card.label}`}>
+          <p>
+            Birthdays are public record and the card is fixed by the date, so this list is a fact about the
+            calendar rather than a reading. Use it to test the pattern against people you already know something about.
+          </p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {famous.map((f) => (
+              <li key={f.wikipedia} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-sm">
+                <a href={f.wikipedia} rel="noopener" className="font-medium text-bone underline underline-offset-4">{f.name}</a>
+                <span className="text-mist"> — {f.known_for}</span>
+                <span className="block text-xs text-faint">born {famousBirthdayLabel(f.born)}</span>
               </li>
             ))}
           </ul>
