@@ -19,6 +19,7 @@ import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
 import { shareFacePathFromCode } from "@/lib/share-cards";
+import THREE_LENS from "@/lib/card-meanings.json";
 
 const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
 
@@ -117,7 +118,12 @@ export function BirthCardCalculator() {
       <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
       {birthCard ? <BirthShareHero birthCard={birthCard} /> : <CalculatorPreviewFan />}
 
-      <form onSubmit={onSubmit} className="mt-4 w-full space-y-3">
+      <form
+        onSubmit={onSubmit}
+        className="mt-4 w-full space-y-3"
+        hidden={Boolean(reveal)}
+        aria-hidden={reveal ? true : undefined}
+      >
         <label htmlFor="bd" className="type-eyebrow block">
           Enter your birthday
         </label>
@@ -147,6 +153,19 @@ export function BirthCardCalculator() {
         </button>
       </form>
 
+      {reveal && (
+        <button
+          type="button"
+          onClick={() => {
+            setReveal(null);
+            setTouched(false);
+            setTimeout(() => dateRef.current?.focus(), 0);
+          }}
+          className="mt-3 text-xs text-brand-ink-soft underline underline-offset-4"
+        >
+          Not your birthday? Change it
+        </button>
+      )}
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {touched && !reveal
           ? "Enter a full date, including year, month, and day."
@@ -227,17 +246,18 @@ function BirthCardResultCard({
           {bc?.label} meaning
         </Link>
       )}
-      {!isJoker && (
-        <CurrentPeriod birthdate={date || reveal.birthdate} />
-      )}
+      {!isJoker && <OneLineRead code={result.birthCard} />}
       <p className="mt-2 text-center font-serif text-xl text-brand-ink">
-        You just discovered the map.
+        That is one line. The Deep Dive is seven pages.
       </p>
       <DeepDiveCta
         placement="birth-card-calculator-result"
         birthdate={date || reveal.birthdate}
         source="birth-card-calculator"
       />
+      {!isJoker && (
+        <CurrentPeriod birthdate={date || reveal.birthdate} />
+      )}
       <figure className="mt-4 max-w-md text-center">
         <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
           &ldquo;I&rsquo;m a builder. I&rsquo;ve started more than one business. I&rsquo;ll also admit I&rsquo;m a bit of a trickster — that&rsquo;s not a confession, that&rsquo;s just the job. Then I open the Deep Dive, find out I&rsquo;m the Jack of Diamonds, and the description might as well have had my name on it. I don&rsquo;t get easily impressed. That one got me.&rdquo;
@@ -254,6 +274,27 @@ function BirthCardResultCard({
         reveal={reveal}
         todayIso={todayISO()}
       />
+    </div>
+  );
+}
+
+type Lens = { name: string; under: string; sweet_spot: string; over: string };
+const LENSES = THREE_LENS as Record<string, Lens>;
+
+/** Free sample of the card's written pattern, shown before the $9 CTA. */
+function OneLineRead({ code }: { code: string }) {
+  const lens = LENSES[code];
+  if (!lens) return null;
+  return (
+    <div className="w-full max-w-md border border-brand-line bg-brand-paper px-4 py-3 text-center">
+      <p className="type-eyebrow mb-2">Your card in one line</p>
+      <p className="font-serif text-lg leading-snug text-brand-ink">
+        {lens.sweet_spot}
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+        <span className="font-semibold text-brand-oxblood">Shadow:</span>{" "}
+        {lens.under}
+      </p>
     </div>
   );
 }
