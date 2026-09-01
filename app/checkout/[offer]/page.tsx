@@ -167,7 +167,7 @@ export default async function CheckoutReviewPage({
         Need another option?{" "}
         {isDigital ? (
           <Link href="/products/birth-card-deep-dive" className="editorial-link text-brand-ink">
-            Get your Personal Card Blueprint →
+            Get the $9 Birth Card Deep Dive →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">

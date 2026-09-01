@@ -55,12 +55,12 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">Personal Card Blueprint information</h3>
+              <h3 className="font-bold text-[#14110d]">Birth Card Deep Dive information</h3>
               <p className="mt-1">
                 Stripe Checkout collects the buyer&rsquo;s email address and the birth
-                date entered for the Personal Card Blueprint. The birth date is
-                used to generate the deterministic report and is included in a
-                signed access token sent in the transactional email. We do not
+                date entered for the Birth Card Deep Dive. The birth date is
+                used to match the card-level PDF and is included in a
+                signed download token sent in the transactional email. We do not
                 maintain a separate customer birth-date database, but Stripe,
                 Resend, and Cloudflare may process the checkout field, email link,
                 or request URL under their retention and logging policies.
@@ -225,7 +225,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To match and deliver the Birth Card Deep Dive PDFs and their signed download links (and to keep past report links working).</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To support and honor legacy phone orders during their original access windows.</li>

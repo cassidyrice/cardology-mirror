@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the Personal Card Blueprint, digital products, and free Cardology tools.",
+    "Terms for the Birth Card Deep Dive, digital products, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -44,7 +44,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            the Personal Card Blueprint, and digital products when explicitly
+            the Birth Card Deep Dive, and digital products when explicitly
             marked available. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
@@ -56,13 +56,16 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Personal Card Blueprint ($13)</strong> — one instant
-              personalized written report generated from the birth date entered
-              at checkout, with a signed return link sent by email.
+              <strong>Birth Card Deep Dive ($9)</strong> — the 7-page written
+              PDF for the birth card your birthday maps to, plus the complete
+              System Guide PDF, delivered as instant download links on the
+              confirmation page and by email.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              Blueprint access uses a private signed report link. Do not share
-              paid access or try to bypass payment or security checks.
+              Downloads and past report links use private signed URLs. Do not
+              share paid access or try to bypass payment or security checks.
+              Purchases made before September 2026 (Personal Card Blueprint and
+              other retired products) keep their existing access links.
             </li>
           </ul>
         </section>
