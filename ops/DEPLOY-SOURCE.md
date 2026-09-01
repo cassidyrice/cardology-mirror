@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `3750516` — real card faces in the deck grids; previous record `4fc33e9`)
+**Last verified: 2026-09-01** (deployed `main` @ `83cd38d` — catalog collapsed to the $9 Deep Dive; previous record `3750516`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `3750516a40f89bfc5e0ec32c99f46024e64712aa` |
+| **Deployed commit** | `83cd38d3a8f1f84a41732d87ec220dae7bc92010` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
