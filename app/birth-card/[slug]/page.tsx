@@ -131,14 +131,25 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
     >
       <JsonLd data={jsonLd} />
 
-      <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
-        <span className="eyebrow text-faint">{card.suitDomain}</span>
+      <div className="mb-4 flex items-center gap-5">
+        <img
+          src={`/share-cards/faces/${card.slug}.png`}
+          alt={`${card.label} playing card`}
+          width={1000}
+          height={1500}
+          loading="eager"
+          decoding="async"
+          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+        />
+        <div>
+          <span className="eyebrow text-faint">{card.suitDomain}</span>
+          <h1 className="display mb-0 mt-1 text-3xl text-bone">
+            {card.label} Meaning{" "}
+            {card.title && <span className="block text-lg text-gold">{card.title}</span>}
+          </h1>
+          <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
+        </div>
       </div>
-      <h1 className="display mb-2 text-3xl text-bone">
-        {card.label} Meaning{" "}
-        {card.title && <span className="block text-lg text-gold">{card.title}</span>}
-      </h1>
       <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
@@ -451,11 +462,22 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       ]}
     >
       <JsonLd data={jsonLd} />
-      <div className="mb-2 flex items-baseline gap-3">
-        <span className="font-serif text-5xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
-        <span className="eyebrow text-faint">{date.label} birth card</span>
+      <div className="mb-4 flex items-center gap-5">
+        <img
+          src={`/share-cards/faces/${card.slug}.png`}
+          alt={`${card.label} playing card — the ${date.label} birth card`}
+          width={1000}
+          height={1500}
+          loading="eager"
+          decoding="async"
+          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+        />
+        <div>
+          <span className="eyebrow text-faint">{date.label} birth card</span>
+          <h1 className="display mb-0 mt-1 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
+          <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
+        </div>
       </div>
-      <h1 className="display mb-2 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
       <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{dateQuickAnswer(date)}</p>

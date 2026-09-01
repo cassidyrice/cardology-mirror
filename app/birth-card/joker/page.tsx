@@ -73,7 +73,18 @@ export default function JokerPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">The Joker: The December 31 Birth Card</h1>
+      <div className="mb-4 flex items-center gap-5">
+        <img
+          src="/share-cards/faces/joker.png"
+          alt="The Joker playing card — the December 31 birth card"
+          width={1000}
+          height={1500}
+          loading="eager"
+          decoding="async"
+          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+        />
+        <h1 className="display mb-0 text-3xl text-bone">The Joker: The December 31 Birth Card</h1>
+      </div>
 
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
