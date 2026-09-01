@@ -1,10 +1,18 @@
 # Card Blueprints funnel analytics
 
-Card Blueprints uses two privacy-conscious Cloudflare layers:
+Card Blueprints uses two privacy-conscious Cloudflare layers, plus optional
+consent-gated third-party analytics:
 
 - Cloudflare Web Analytics for page traffic and Core Web Vitals.
 - Workers Analytics Engine dataset `cardblueprints_funnel` for conversion
   events.
+- Google Analytics 4 and PostHog, loaded only after an explicit allow on
+  `/privacy-policy`. Session replay is off. Pageviews are pathname-only.
+
+The first-party funnel events are also forwarded to GA4 and PostHog when
+consent is granted. Those copies use the same non-PII labels (placement,
+offer slug, traffic channel) and never include birth dates, emails, or
+query strings.
 
 The custom stream records pseudonymous, tab-scoped funnel IDs in
 `sessionStorage`, and mirrors the same non-PII attribution into a short-lived

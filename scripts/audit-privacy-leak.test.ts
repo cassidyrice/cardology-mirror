@@ -7,6 +7,12 @@ import {
   sanitizeGaEventParams,
   sanitizeGaPageLocation,
 } from "../lib/ga4";
+import {
+  resolvePosthogHost,
+  resolvePosthogKey,
+  sanitizePosthogPageUrl,
+  sanitizePosthogProperties,
+} from "../lib/posthog";
 import { PERSONAL_CHECKOUT_PATH } from "../lib/personal-checkout";
 import { buildConsentDefaultSnippet } from "../lib/consent";
 
@@ -95,6 +101,41 @@ const gaBoundary = readFileSync(
   "utf8",
 );
 assert.match(gaBoundary, /readPrivacyConsent|PrivacyConsentGate|consent/);
+
+const posthogBoundary = readFileSync(
+  "components/analytics/PostHogBoundary.tsx",
+  "utf8",
+);
+assert.match(posthogBoundary, /readPrivacyConsent/);
+assert.match(posthogBoundary, /disable_session_recording:\s*true/);
+assert.doesNotMatch(posthogBoundary, /phx_[A-Za-z0-9]{8,}/);
+assert.doesNotMatch(
+  readFileSync("lib/posthog.ts", "utf8"),
+  /phx_[A-Za-z0-9]{8,}/,
+);
+assert.equal(
+  sanitizePosthogPageUrl(
+    `https://cardblueprints.com/birth-card-calculator?birthdate=${iso}&utm_source=google`,
+  ),
+  "https://cardblueprints.com/birth-card-calculator",
+);
+const posthogCleaned = sanitizePosthogProperties({
+  $current_url: `https://cardblueprints.com/checkout/personal-card-blueprint?bd=${iso}`,
+  placement: "calculator-form",
+  email: "a@b.c",
+  birth_date: iso,
+  note: `born ${iso}`,
+});
+assert.equal(
+  posthogCleaned.$current_url,
+  "https://cardblueprints.com/checkout/personal-card-blueprint",
+);
+assert.equal(posthogCleaned.placement, "calculator-form");
+assert.equal(posthogCleaned.email, undefined);
+assert.equal(posthogCleaned.birth_date, undefined);
+assert.equal(posthogCleaned.note, undefined);
+assert.match(resolvePosthogKey("not-a-key"), /^phc_/);
+assert.equal(resolvePosthogHost("https://us.i.posthog.com/"), "https://us.i.posthog.com");
 
 assert.equal(PERSONAL_CHECKOUT_PATH, "/checkout/personal-card-blueprint");
 

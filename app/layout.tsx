@@ -3,8 +3,10 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
+import { PostHogBoundary } from "@/components/analytics/PostHogBoundary";
 import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
+import { resolvePosthogHost, resolvePosthogKey } from "@/lib/posthog";
 import { merchantReturnPolicy } from "@/lib/product-schema";
 import { CONTACT_EMAIL, SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
@@ -125,11 +127,14 @@ export default function RootLayout({
     ],
   };
   const gaMeasurementId = resolveGaMeasurementId();
+  const posthogKey = resolvePosthogKey();
+  const posthogHost = resolvePosthogHost();
 
   return (
     <html lang="en" className={logoFont.variable}>
       <body className="bg-ink text-bone antialiased">
         <GoogleAnalyticsBoundary measurementId={gaMeasurementId} />
+        <PostHogBoundary apiKey={posthogKey} host={posthogHost} />
         <AnalyticsCapture />
         {/* Literal tag instead of metadata `alternates.types`: React hoists
             <link> into <head>, so the feed stays discoverable on every page.

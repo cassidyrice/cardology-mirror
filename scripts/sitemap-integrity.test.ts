@@ -40,7 +40,7 @@ const ROUTE_DATES = {
   "/editorial-policy": "2026-08-06",
   "/contact": "2026-08-17",
   "/shadow-karma-guide": "2026-07-02",
-  "/privacy-policy": "2026-08-12",
+  "/privacy-policy": "2026-09-01",
   "/refund-policy": "2026-08-12",
   "/terms-of-service": "2026-08-12",
 } as const;

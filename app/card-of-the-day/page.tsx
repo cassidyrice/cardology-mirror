@@ -15,29 +15,42 @@ import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-card
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Cardology Card of the Day: Today's Playing Card Meaning",
-  description:
-    "Today's Cardology card of the day, free: every date maps to exactly one playing card. See today's card, its meaning in love and work, and its birth dates.",
-  alternates: { canonical: "/card-of-the-day" },
-  openGraph: {
-    siteName: SITE_NAME,
-    title: "Card of the Day: Free Daily Playing Card Reading",
-    description:
-      "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.",
-    url: "/card-of-the-day",
-    // Today-agnostic on purpose: the page content rotates daily, so a
-    // card-specific OG image would be stale for anyone sharing yesterday.
-    images: [{ url: "/og/card-of-the-day.png", width: 1200, height: 630, alt: "Card of the Day — three playing cards fanned on paper" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Card of the Day: Free Daily Playing Card Reading",
-    description:
-      "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.",
-    images: ["/og/card-of-the-day.png"],
-  },
-};
+// Metadata is computed per request (the page is force-dynamic): the title
+// names today's actual card for freshness and SERP CTR, while the OG stays
+// today-agnostic on purpose — the page content rotates daily, so a
+// card-specific OG image would be stale for anyone sharing yesterday.
+export function generateMetadata(): Metadata {
+  const now = denverToday();
+  const label = labelOf(now);
+  const card = birthdateBySlug(slugOf(now))?.card ?? null;
+  const title = card
+    ? `Card of the Day: ${card.label} — ${label}`
+    : `Card of the Day: The Joker — ${label}`;
+  const description = card
+    ? `Today's Cardology card of the day (${label}) is the ${card.label}. Every date maps to exactly one playing card — see its meaning in love and work, free.`
+    : `Today, ${label}, is the Joker's day — the one date outside the 52-card map. See how the card of the day works, free.`;
+  const ogTitle = "Card of the Day: Free Daily Playing Card Reading";
+  const ogDescription =
+    "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.";
+  return {
+    title,
+    description,
+    alternates: { canonical: "/card-of-the-day" },
+    openGraph: {
+      siteName: SITE_NAME,
+      title: ogTitle,
+      description: ogDescription,
+      url: "/card-of-the-day",
+      images: [{ url: "/og/card-of-the-day.png", width: 1200, height: 630, alt: "Card of the Day — three playing cards fanned on paper" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: ["/og/card-of-the-day.png"],
+    },
+  };
+}
 
 const MONTH_SLUGS = [
   "january", "february", "march", "april", "may", "june",
@@ -137,6 +150,7 @@ export default function CardOfTheDayPage() {
       description:
         "Free daily playing-card reading: every calendar date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. Updates daily.",
       url: `${SITE_URL}/card-of-the-day`,
+      dateModified: `${now.year}-${String(now.month).padStart(2, "0")}-${String(now.day).padStart(2, "0")}`,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       speakable: {
         "@type": "SpeakableSpecification",
@@ -159,22 +173,23 @@ export default function CardOfTheDayPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <div className="mb-4 flex items-center gap-5">
-        {card ? (
-          <img
-            src={`/pins/${card.slug}.png`}
-            alt={`${card.label} — the card of the day for ${label}`}
-            width={1000}
-            height={1500}
-            loading="eager"
-            decoding="async"
-            className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
-          />
-        ) : (
-          <span className="font-serif text-5xl text-gold">🃏</span>
-        )}
+        <img
+          src={`/share-cards/faces/${card ? card.slug : "joker"}.png`}
+          alt={card ? `${card.label} playing card — the card of the day for ${label}` : `The Joker playing card — ${label}`}
+          width={1000}
+          height={1500}
+          loading="eager"
+          decoding="async"
+          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+        />
         <div>
           <span className="eyebrow text-faint">{label}</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-bone">Cardology Card of the Day</h1>
+          <h1 className="display mb-0 mt-1 text-3xl text-bone">
+            Cardology Card of the Day
+            <span className="block text-lg text-gold">
+              {card ? `Today: the ${card.label}${card.title ? ` — ${card.title}` : ""}` : "Today: the Joker"}
+            </span>
+          </h1>
           {card && (
             <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
           )}
@@ -205,13 +220,13 @@ export default function CardOfTheDayPage() {
             <h2 className="eyebrow mb-2 text-gold">Today&rsquo;s card: the {card.label}</h2>
             <div className="flex flex-col gap-5 sm:flex-row">
               <img
-                src={`/pins/${card.slug}.png`}
-                alt={`${card.label} — the card of the day for ${label}`}
+                src={`/share-cards/faces/${card.slug}.png`}
+                alt={`${card.label} playing card — the card of the day for ${label}`}
                 width={1000}
                 height={1500}
                 loading="lazy"
                 decoding="async"
-                className="w-44 shrink-0 self-start rounded-2xl border border-white/10"
+                className="w-44 shrink-0 self-start rounded-2xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
               />
               <div className="prose-reading text-mist">
                 {card.title && <p className="eyebrow mb-2 text-gold">{card.title}</p>}
@@ -273,13 +288,11 @@ export default function CardOfTheDayPage() {
           Today&rsquo;s card belongs to everyone; yours was fixed the day you
           were born. Look it up free, then explore the written interpretation.
         </p>
-        <div className="mt-3 flex flex-wrap items-center gap-3">
-          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Birth Card Calculator →
+        <div className="mt-3">
+          <Link href="/birth-card-calculator" className="accent-button inline-block w-full text-center sm:w-auto">
+            Find your birth card free →
           </Link>
-
         </div>
-
       </section>
 
       {faqs.map((f) => (
@@ -298,20 +311,32 @@ export default function CardOfTheDayPage() {
         </p>
         {/* /born-on/ pages are edge-rendered by the cardology-unlock Worker,
             not this Next app — plain <a>, same as the card pages. */}
-        <nav className="mt-4 flex items-center justify-between text-sm">
-          <a href={`/born-on/${slugOf(yesterday)}`} className="text-gold underline underline-offset-4">
-            ← {labelOf(yesterday)}
-          </a>
-          {card && today ? (
-            <a href={`/born-on/${today.slug}`} className="text-faint hover:text-mist">
-              Born on {label}?
-            </a>
-          ) : (
-            <span className="text-faint">{label}</span>
-          )}
-          <a href={`/born-on/${slugOf(tomorrow)}`} className="text-gold underline underline-offset-4">
-            {labelOf(tomorrow)} →
-          </a>
+        <nav className="mt-4 grid grid-cols-3 gap-3 text-center text-sm">
+          {[
+            { day: yesterday, prefix: "←", note: labelOf(yesterday) },
+            { day: now, prefix: "", note: `Born on ${label}?` },
+            { day: tomorrow, prefix: "", note: `${labelOf(tomorrow)} →` },
+          ].map(({ day, note }) => {
+            const dayCard = birthdateBySlug(slugOf(day))?.card ?? null;
+            return (
+              <a
+                key={note}
+                href={`/born-on/${slugOf(day)}`}
+                className="group flex flex-col items-center gap-2 rounded-2xl border border-white/10 p-3 transition hover:border-gold/40"
+              >
+                <img
+                  src={`/share-cards/faces/${dayCard ? dayCard.slug : "joker"}.png`}
+                  alt={dayCard ? `${dayCard.label} playing card` : "The Joker playing card"}
+                  width={1000}
+                  height={1500}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-14 rounded-[5px] border border-white/10 transition-transform group-hover:-translate-y-0.5"
+                />
+                <span className="text-gold underline underline-offset-4">{note}</span>
+              </a>
+            );
+          })}
         </nav>
       </section>
 

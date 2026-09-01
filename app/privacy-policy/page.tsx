@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 16, 2026";
+const UPDATED = "September 1, 2026";
 
 export default function PrivacyPolicy() {
   return (
@@ -165,6 +165,24 @@ export default function PrivacyPolicy() {
                 </a>
                 .
               </p>
+              <p className="mt-3">
+                We also use PostHog for product analytics after you allow it.
+                PostHog may set first-party analytics cookies. We load it only
+                after you grant analytics consent, send path-only pageviews
+                (no query strings), disable session replay, and strip emails,
+                birth dates, and access tokens from event properties. We do
+                not identify visitors by email. PostHog&rsquo;s processing is
+                governed by the{" "}
+                <a
+                  href="https://posthog.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#8e321f] underline underline-offset-4"
+                >
+                  PostHog Privacy Policy
+                </a>
+                .
+              </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Elroy micro-reading</h3>
@@ -258,6 +276,12 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
+              <strong>PostHog</strong> — optional product analytics, loaded only after you allow it. Session replay is off.{" "}
+              <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
+                PostHog Privacy Policy
+              </a>
+            </li>
+            <li className="border-t border-[#14110d]/12 pt-2">
               <strong>YouTube</strong> — video thumbnails and playback embeds on the videos hub. YouTube may set cookies if you play a video.{" "}
               <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#8e321f] underline underline-offset-4">
                 Google Privacy Policy
@@ -281,7 +305,7 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Cookies</h2>
           <p className="mt-3">
             Card Blueprints does not use advertising cookies and does not track
-            you across other sites for advertising. Google Analytics scripts
+            you across other sites for advertising. Google Analytics and PostHog
             load only after you allow analytics in{" "}
             <Link href="#privacy-choices" className="text-[#8e321f] underline underline-offset-4">
               Privacy choices
@@ -303,6 +327,7 @@ export default function PrivacyPolicy() {
             <li className="border-t border-[#14110d]/12 pt-2">Order records: up to 400 days for support and accounting.</li>
             <li className="border-t border-brand-line pt-2">Tab-scoped conversion analytics: up to three months.</li>
             <li className="border-t border-brand-line pt-2">Google Analytics data: under Google&rsquo;s Analytics data-retention settings for the Card Blueprints property.</li>
+            <li className="border-t border-brand-line pt-2">PostHog product analytics: under PostHog&rsquo;s data-retention settings for the Card Blueprints project.</li>
             <li className="border-t border-brand-line pt-2">Stripe checkout attribution metadata: under Stripe&rsquo;s transaction-retention rules.</li>
             <li className="border-t border-brand-line pt-2">Free-course subscriber contacts: until you unsubscribe or request deletion, subject to records we must retain for legal or abuse-prevention reasons.</li>
           </ul>

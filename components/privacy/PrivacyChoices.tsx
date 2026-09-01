@@ -16,17 +16,17 @@ export function PrivacyChoices({ className = "" }: { className?: string }) {
   }, []);
 
   function choose(next: PrivacyConsent) {
-    writePrivacyConsent(next);
     setConsent(next);
+    writePrivacyConsent(next);
   }
 
   return (
     <div className={className}>
       <p className="font-medium text-brand-ink">Privacy choices</p>
       <p className="mt-1 leading-relaxed">
-        Optional Google Analytics stays off until you allow it. First-party
-        conversion events stay in this browser tab and never include a birth
-        date.
+        Optional Google Analytics and PostHog stay off until you allow them.
+        First-party conversion events stay in this browser tab and never
+        include a birth date.
       </p>
       <div className="mt-2 flex flex-wrap gap-3">
         <button

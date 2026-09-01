@@ -12,6 +12,7 @@ import {
 } from "@/lib/analytics";
 import { mapFunnelEventToGa4 } from "@/lib/ga4";
 import { sendGaEvent } from "@/components/analytics/GoogleAnalytics";
+import { sendPosthogEvent } from "@/components/analytics/PostHogBoundary";
 
 const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
@@ -133,11 +134,19 @@ function sendEvent(name: ClientFunnelEventName, context: FunnelContext = {}) {
   });
 
   const gaEvent = mapFunnelEventToGa4(name);
-  sendGaEvent(gaEvent.eventName, {
-    ...gaEvent.params,
+  const sharedParams = {
     offer_slug: context.offerSlug,
     placement: context.placement,
     traffic_channel: attribution.trafficChannel,
+  };
+  sendGaEvent(gaEvent.eventName, {
+    ...gaEvent.params,
+    ...sharedParams,
+  });
+  sendPosthogEvent(name, {
+    ...gaEvent.params,
+    ...sharedParams,
+    outcome: context.outcome,
   });
 
   if (
