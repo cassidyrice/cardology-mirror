@@ -129,6 +129,36 @@ def main():
         ["Cards of", "Destiny"],
         "Your birthday maps to one card  ·  Free",
     )
+    # Product OGs (also the schema.org Product images) — public/og/products/
+    os.makedirs(os.path.join(OUT, "products"), exist_ok=True)
+    page(
+        "products/birth-card-deep-dive",
+        ["8-of-diamonds"],
+        "CARD BLUEPRINTS  ·  $9",
+        ["The Birth Card", "Deep Dive"],
+        "Your card + its seven ~13-year chapters",
+    )
+    page(
+        "products/personal-card-blueprint",
+        ["queen-of-hearts", "8-of-diamonds", "ace-of-spades"],
+        "CARD BLUEPRINTS  ·  $13",
+        ["The Personal", "Card Blueprint"],
+        "Your whole year in cards, written down",
+    )
+    page(
+        "products/complete-card-blueprint",
+        ["ace-of-hearts", "king-of-clubs", "queen-of-diamonds"],
+        "CARD BLUEPRINTS  ·  $27",
+        ["The Complete", "Card Blueprint"],
+        "The full working system, one handbook",
+    )
+    page(
+        "products/analog-algorithm",
+        ["10-of-spades", "3-of-diamonds"],
+        "CARD BLUEPRINTS  ·  $17",
+        ["The Analog", "Algorithm"],
+        "The written proof of the 52-card calendar",
+    )
 
 
 if __name__ == "__main__":

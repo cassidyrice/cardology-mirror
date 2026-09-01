@@ -284,6 +284,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   downloadAssetKey: "",
   redownloadDays: 30,
   fileName: "Birth-Card-Deep-Dive.pdf",
+  href: "/products/birth-card-deep-dive",
 };
 
 export const MEMBERSHIP_SLUG = "cardology-membership";

@@ -20,7 +20,11 @@ export const metadata: Metadata = {
       "The 52-card solar calendar, fully explained. Birth card formula, spreads, planetary periods, worksheets. Instant PDF download — $17.",
     type: "website",
     siteName: SITE_NAME,
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: "/og/products/analog-algorithm.png", width: 1200, height: 630, alt: "The Analog Algorithm — playing cards on paper, $17" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/products/analog-algorithm.png"],
   },
 };
 

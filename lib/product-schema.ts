@@ -5,6 +5,14 @@ import {
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 export const PRODUCT_IMAGE_PATH = "/og/default.png";
+
+/** Per-product OG/product-snippet images (public/og/products/). */
+const PRODUCT_IMAGE_BY_SLUG: Record<string, string> = {
+  "deep-dive": "/og/products/birth-card-deep-dive.png",
+  "personal-card-blueprint": "/og/products/personal-card-blueprint.png",
+  "complete-card-blueprint": "/og/products/complete-card-blueprint.png",
+  "analog-algorithm": "/og/products/analog-algorithm.png",
+};
 export const MERCHANT_RETURN_POLICY_ID = `${SITE_URL}/refund-policy#merchant-return-policy`;
 
 /** Digital goods: instant delivery, no physical shipment. */
@@ -61,7 +69,17 @@ export function productCanonicalPath(product: ActiveProduct): string {
 }
 
 export function productImageUrl(product: ActiveProduct): string {
-  return `${SITE_URL}${PRODUCT_IMAGE_PATH}`;
+  return `${SITE_URL}${PRODUCT_IMAGE_BY_SLUG[product.slug] ?? PRODUCT_IMAGE_PATH}`;
+}
+
+/**
+ * priceValidUntil is recommended for Google product snippets; prices are
+ * stable, so pin it a year past the build date (rebuilt on every deploy).
+ */
+export function priceValidUntil(): string {
+  const d = new Date();
+  d.setFullYear(d.getFullYear() + 1);
+  return d.toISOString().slice(0, 10);
 }
 
 export function buildProductJsonLd(product: ActiveProduct) {
@@ -84,6 +102,7 @@ export function buildProductJsonLd(product: ActiveProduct) {
       url,
       price: product.price.toFixed(2),
       priceCurrency: "USD",
+      priceValidUntil: priceValidUntil(),
       availability: available
         ? "https://schema.org/InStock"
         : "https://schema.org/PreOrder",

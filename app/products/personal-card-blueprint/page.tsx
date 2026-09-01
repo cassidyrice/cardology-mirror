@@ -40,7 +40,13 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/products/personal-card-blueprint",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [{ url: "/og/products/personal-card-blueprint.png", width: 1200, height: 630, alt: "The Personal Card Blueprint — three playing cards on paper, $13" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og/products/personal-card-blueprint.png"],
   },
 };
 

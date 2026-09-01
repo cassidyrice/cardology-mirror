@@ -20,6 +20,7 @@ export function DeepDiveCta({
   cardLabel,
   cardSlug,
   className = "",
+  showFulfillment = true,
 }: {
   placement: string;
   birthdate?: string;
@@ -27,6 +28,8 @@ export function DeepDiveCta({
   cardLabel?: string;
   cardSlug?: string;
   className?: string;
+  /** Hide the "What $9 sends" line when the surrounding card already itemizes it. */
+  showFulfillment?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [draftDate, setDraftDate] = useState("");
@@ -106,7 +109,7 @@ export function DeepDiveCta({
           {ctaLabel}
         </button>
       )}
-      {!compact && (
+      {!compact && showFulfillment && (
         <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
           {DEEP_DIVE_FULFILLMENT}
         </p>

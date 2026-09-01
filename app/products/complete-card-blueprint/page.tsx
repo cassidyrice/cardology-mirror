@@ -19,7 +19,11 @@ export const metadata: Metadata = {
       "Birth cards, timing, relationships, and all 52 entries in one handbook. PDF download — $27.",
     type: "website",
     siteName: SITE_NAME,
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: SITE_NAME }],
+    images: [{ url: "/og/products/complete-card-blueprint.png", width: 1200, height: 630, alt: "The Complete Card Blueprint — playing cards on paper, $27" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og/products/complete-card-blueprint.png"],
   },
 };
 

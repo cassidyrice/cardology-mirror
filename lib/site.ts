@@ -54,6 +54,7 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
+  "/products/birth-card-deep-dive",
   "/products/personal-card-blueprint",
   "/products/analog-algorithm",
   "/products/complete-card-blueprint",

@@ -157,12 +157,20 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
-        <p className="mt-2 mb-4 text-sm text-mist">
+        <p className="mt-2 text-sm text-mist">
           Your birth card plus the seven ~13-year period cards that build the
-          personality around it — the 7-page {card.label} Deep Dive PDF plus
-          the complete System Guide.
+          personality around it.
         </p>
-        <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} />
+        <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
+          <li>✓ 7-page {card.label} Deep Dive PDF</li>
+          <li>✓ The Complete System Guide (PDF)</li>
+          <li>✓ Your seven ~13-year period cards, on screen</li>
+          <li>✓ Instant download links + email backup</li>
+        </ul>
+        <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
+        <p className="mt-3 text-xs leading-relaxed text-mist">
+          $9 one time · instant access · no subscription
+        </p>
       </div>
 
       <Section title="In a general reading">
@@ -264,19 +272,26 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <div className="mt-10 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">Your year in cards</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">The Personal Card Blueprint — $13</h2>
-        <p className="mt-2 mb-4 text-sm text-mist">
-          Your yearly spread, written down: all seven 52-day cards in order, a
-          deep dive into the current 52-day cycle you are in, a notable mention
-          for each of the other six, and the yearly signals — Long Range,
-          Pluto, Result, Environment, and Displacement. Includes The 90
-          Spreads PDF: every yearly map, ages 0&ndash;89.
+        <p className="mt-2 text-sm text-mist">
+          Your yearly spread, written down — a deep dive into the 52-day cycle
+          you are in now, and the whole year around it.
         </p>
+        <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
+          <li>✓ All seven 52-day cards of your year, in order</li>
+          <li>✓ Current 52-day cycle deep-dived; a note on the other six</li>
+          <li>✓ Yearly signals: Long Range, Pluto, Result, Environment &amp; Displacement</li>
+          <li>✓ The 90 Spreads PDF — every yearly map, ages 0&ndash;89</li>
+          <li>✓ Instant web report + emailed return link</li>
+        </ul>
         <Link
           href="/products/personal-card-blueprint"
-          className="inline-block rounded-full bg-foil px-5 py-2.5 font-serif text-sm text-ink"
+          className="accent-button large-button inline-block w-full text-center sm:w-auto"
         >
           Get the Year Blueprint — $13 →
         </Link>
+        <p className="mt-3 text-xs leading-relaxed text-mist">
+          $13 one time · instant access · no subscription
+        </p>
       </div>
 
       <Section title="Love and relationships">
