@@ -85,8 +85,8 @@ describe("HomepageCalculatorHero contract", () => {
       "not tarot",
       "Reveal my birth card",
       "CALCULATOR_PRIVACY_MICROCOPY",
-      "Want to learn how to read your card?",
-      'source="home-hero-result"',
+      "Prefer the free 4-part course by email",
+      "home-hero-result",
       "<DeepDiveCta",
     ]) {
       expect(hero).toContain(text);

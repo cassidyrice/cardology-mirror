@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
@@ -280,10 +279,7 @@ export default function CardOfTheDayPage() {
           </Link>
 
         </div>
-        <p className="mt-3 text-xs text-faint">
-          Want your fixed birth-card pattern written out?{" "}
-          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">Get your Personal Card Blueprint</Link>.
-        </p>
+
       </section>
 
       {faqs.map((f) => (
@@ -319,7 +315,6 @@ export default function CardOfTheDayPage() {
         </nav>
       </section>
 
-      <ReadingBridge variant="general" className="mt-10" />
 
       <p className="mt-6 text-sm">
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>

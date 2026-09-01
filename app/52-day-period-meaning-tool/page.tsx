@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { PeriodMeaningTool } from "@/components/seo/PeriodMeaningTool";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { allPeriodCardSeeds } from "@/lib/period-card-seeds";
 import { PERIOD_FILTERS } from "@/lib/period-meanings";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -78,7 +77,6 @@ export default function PeriodMeaningToolPage() {
         <PeriodMeaningTool cards={cards} filters={PERIOD_FILTERS} />
       </section>
 
-      <ReadingBridge variant="timing" className="mt-12" />
     </SeoShell>
   );
 }

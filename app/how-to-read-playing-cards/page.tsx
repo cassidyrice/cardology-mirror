@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SUIT_COLOR_PAPER, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/cards";
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -296,10 +295,6 @@ export default function HowToReadPlayingCards() {
           </Link>
 
         </div>
-        <p className="mt-3 text-xs text-faint">
-          Want your fixed birth-card pattern written out?{" "}
-          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">Get your Personal Card Blueprint</Link>.
-        </p>
       </section>
 
       <section className="mt-8">
@@ -314,7 +309,6 @@ export default function HowToReadPlayingCards() {
         </div>
       </section>
 
-      <ReadingBridge variant="general" className="mt-10" />
 
       <p className="mt-6 text-sm">
         <Link href={SPREADS_HUB_PATH} className="text-gold underline underline-offset-4">Playing card spreads →</Link>

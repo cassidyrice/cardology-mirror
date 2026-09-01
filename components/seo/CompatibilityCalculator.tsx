@@ -286,8 +286,7 @@ function PairResult({
           source="birth-card-compatibility-calculator"
         />
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          Get Deep Dive $9 is the first birthday’s report: that person’s coordinates,
-          not a couple reading.
+          This $9 Deep Dive is for the first birthday only — that person’s card, not a couple PDF.
         </p>
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}

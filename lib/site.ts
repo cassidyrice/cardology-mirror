@@ -28,7 +28,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Personal Card Blueprints, plus the free birth card calculator, all 52 card meanings, compatibility tools, and 52-card astrology.";
+  "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the instant $9 Birth Card Deep Dive.";
 
 export const APP_PATHS = [
   "/today",
@@ -55,9 +55,6 @@ export const MARKETING_PATHS = [
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
   "/products/birth-card-deep-dive",
-  "/products/personal-card-blueprint",
-  "/products/analog-algorithm",
-  "/products/complete-card-blueprint",
   "/free-course",
   "/what-is-cardology",
   "/cardology-for-beginners",

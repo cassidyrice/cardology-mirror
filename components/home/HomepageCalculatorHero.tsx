@@ -7,7 +7,6 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
-import { FreeCourseSignupForm } from "@/components/free-course/FreeCourseSignupForm";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { HomepageLifeSpread } from "@/components/home/HomepageLifeSpread";
 import { PlayingCard } from "@/components/PlayingCard";
@@ -93,9 +92,9 @@ export function HomepageCalculatorHero() {
             Which playing card were you born under?
           </h1>
           <p className="mt-3 max-w-[34rem] font-serif text-xl leading-relaxed text-brand-ink-soft sm:mt-5 sm:text-2xl">
-            The numbers of your birthday calculate to one playing card &mdash; a
-            node with fixed calendar coordinates. Yours is one of 52 moving
-            through a loop of elemental numbers and symbols.
+            The numbers of your birthday calculate to one playing card &mdash;
+            same date, same card, not tarot and not a prediction. No signup.
+            The $9 Deep Dive is optional after.
           </p>
         </div>
 
@@ -195,19 +194,14 @@ export function HomepageCalculatorHero() {
                 </Link>
               )}
 
-              <div className="mt-7 rounded-[3px] border border-brand-line bg-brand-paper p-5">
-                <p className="type-eyebrow text-brand-oxblood">Free 4-part course</p>
-                <h3 className="mt-2 font-serif text-2xl text-brand-ink">
-                  Want to learn how to read your card?
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-                  Get the existing four-part birth-card course by email. Your result stays free either way.
-                </p>
-                <FreeCourseSignupForm
-                  source="home-hero-result"
-                  surface="paper"
-                />
-              </div>
+              <p className="mt-6 text-center text-sm">
+                <Link
+                  href="/free-course?source=home-hero-result"
+                  className="editorial-link text-brand-ink-soft"
+                >
+                  Prefer the free 4-part course by email →
+                </Link>
+              </p>
             </div>
           )}
         </div>

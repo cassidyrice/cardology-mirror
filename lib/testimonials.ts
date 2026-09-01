@@ -21,9 +21,9 @@ export const TESTIMONIALS: Testimonial[] = [
     author: "Mary",
     age: 60,
     rating: 5,
-    products: ["deep-dive", "personal-card-blueprint"],
+    products: ["deep-dive"],
     quote:
-      "The Deep Dive is where it started. Learning my card later in life has been one of the more useful things I've done. I had people I could never quite get — family, mostly — and the friction felt personal. Seeing the pattern under it didn't make anyone different. It made the clash make sense. The $13 Blueprint is what I keep. I can talk to them now without bracing for a fight I don't understand. That's been a relief I didn't expect at this age.",
+      "The Deep Dive is where it started. Learning my card later in life has been one of the more useful things I've done. I had people I could never quite get — family, mostly — and the friction felt personal. Seeing the pattern under it didn't make anyone different. It made the clash make sense. I can talk to them now without bracing for a fight I don't understand. That's been a relief I didn't expect at this age.",
   },
   {
     author: "Tiffany",

@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Personal Card Blueprint, digital downloads, and legacy orders.",
+    "Refund terms for the Birth Card Deep Dive, past digital purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -35,7 +35,7 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $13 Personal Card Blueprint. Refund
+            Card Blueprints sells the $9 Birth Card Deep Dive. Refund
             eligibility depends on whether the personalized report was delivered
             and accessible. The digital-download policy applies only when an
             e-book sale is explicitly open.
@@ -104,8 +104,8 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href="/products/personal-card-blueprint" className="text-[#8e321f] underline underline-offset-4">
-            ← Back to Personal Card Blueprint
+          <Link href="/products/birth-card-deep-dive" className="text-[#8e321f] underline underline-offset-4">
+            ← Back to the Birth Card Deep Dive
           </Link>
         </div>
       </div>

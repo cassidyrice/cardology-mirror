@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
@@ -57,9 +56,9 @@ const langRows = [
   ["Core card", "Birth Card / Destiny Card", "Birth card — calculator"],
   ["Expression", "Planetary Ruling Card (PRC)", "Ruling card — birth vs ruling"],
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
-  ["Year / chapter", "Yearly spreads, period cards", "Current chapter in the Blueprint"],
+  ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "Instant written Blueprint — $13"],
+  ["Paid deepen", "Books, software, readings", "Birth Card Deep Dive — $9"],
 ] as const;
 
 const tarotRows = [
@@ -72,7 +71,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid Personal Card Blueprint is the longer written report, not a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $9 Birth Card Deep Dive is the longer written report, not a prerequisite.",
   },
   {
     q: "What are Destiny Cards?",
@@ -220,13 +219,7 @@ export default function DestinyCardsPage() {
           that carries it. That is the complete free reading; nothing is gated behind an
           email form.
         </p>
-        <p className="prose-reading mt-3 text-mist">
-          If you want the pattern written out as a full report, the{" "}
-          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-            Personal Card Blueprint ($13)
-          </Link>{" "}
-          is the paid deepen. The free reading stands on its own.
-        </p>
+
       </section>
 
       <section id="names" className="mt-10 scroll-mt-10">
@@ -260,7 +253,7 @@ export default function DestinyCardsPage() {
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
           What we own here is the published method, the free tools, and the written{" "}
-          <strong>Personal Card Blueprint</strong>.
+          <strong>Birth Card Deep Dive</strong>.
         </p>
         <p className="prose-reading mt-3 text-mist">
           Full definition:{" "}
@@ -308,7 +301,7 @@ export default function DestinyCardsPage() {
             .
           </li>
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
-          <li>Optional deepen: the written Personal Card Blueprint ($13).</li>
+          <li>Optional deepen: the written Birth Card Deep Dive ($9).</li>
         </ol>
         <p className="prose-reading mt-3 text-mist">
           Example from the public method: January 15 resolves to the{" "}
@@ -424,28 +417,7 @@ export default function DestinyCardsPage() {
         </p>
       </section>
 
-      <section className="mt-10" id="personal-card-blueprint">
-        <h2 className="eyebrow mb-3 text-gold">Personal Card Blueprint</h2>
-        <p className="prose-reading text-mist">
-          When free tools are not enough, the <strong>Personal Card Blueprint</strong> puts the
-          pattern in one place: birth card, ruling layer, all seven 52-day cards of the year with the current one deep-dived, the yearly signals, and reflection prompts.{" "}
-          <strong>$13 · instant after checkout · no subscription.</strong> Same engine as the free
-          calculator; interpretation is labeled as interpretation.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link href="/checkout/personal-card-blueprint" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Get My Blueprint — $13 →
-          </Link>
-          <Link href="/products/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Preview the product page / sample →
-          </Link>
-        </div>
-        <p className="prose-reading mt-3 text-sm text-mist">
-          Use the free tools first. Buy only if the system keeps matching real life.
-        </p>
-      </section>
-
-      <section id="faq" className="mt-10 scroll-mt-10">
+            <section id="faq" className="mt-10 scroll-mt-10">
         <h2 className="eyebrow mb-4 text-gold">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
@@ -458,7 +430,6 @@ export default function DestinyCardsPage() {
       </section>
 
       <FreeCourseCta source="destiny-cards" className="mt-10" />
-      <ReadingBridge variant="general" className="mt-8" />
 
       <p className="mt-8 text-sm text-mist">
         Related:{" "}

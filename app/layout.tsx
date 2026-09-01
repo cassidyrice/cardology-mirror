@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   // Keep child titles literal. The former automatic " | Card Blueprints"
   // suffix pushed 74 sitemap titles beyond 60 characters.
-  title: "Card Blueprints | Personal Blueprint & Birth Cards",
+  title: "Card Blueprints | Birth Cards & Cardology",
   description:
-    "Instant Personal Card Blueprints, a free birth card calculator, all 52 card meanings, compatibility, and timing tools.",
+    "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the instant $9 Deep Dive.",
   icons: { icon: "/icon.svg" },
   applicationName: SITE_NAME,
   keywords: [
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Card Blueprints — Personal Blueprint & Birth Cards",
+    title: "Card Blueprints — Birth Cards & Cardology",
     description:
-      "A personalized Cardology Blueprint from your birth date, plus the free calculator, all 52 card meanings, and compatibility tools — a mirror, not a forecast.",
+      "Find your playing-card birth card free (not tarot). Optional $9 Deep Dive — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   // No title/description here on purpose. A page that sets its own openGraph
@@ -121,11 +121,6 @@ export default function RootLayout({
             about: "Cardology birth cards, shadow readings, timing, famous-person examples, and relationship dynamics videos.",
           },
         ],
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${SITE_URL}/birth-card-calculator`,
-          "query-input": "required name=search_term_string",
-        },
       },
     ],
   };

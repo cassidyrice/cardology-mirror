@@ -25,7 +25,7 @@ const MONTH_DIRECTORY = [
   ["December", "december-1"],
 ] as const;
 
-const TITLE = "Birth Card Calculator & Cardology Chart";
+const TITLE = "Free Birth Card Calculator (Playing Cards, Not Tarot)";
 const DESCRIPTION =
   "Free Cardology birth card calculator and chart. Enter a birthday for the playing card — 52-card system, not tarot. Same date, same card.";
 const REVIEWED_DATE = "2026-08-15";
@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     q: "Is this a tarot birth card calculator?",
-    a: "No. Tarot birth cards use Major Arcana math from a 78-card tradition. This calculator uses a standard 52-card playing deck (Hearts, Clubs, Diamonds, Spades) in the Cardology system. If you want pairs like Death and the Emperor, use a tarot tool. If you want the playing card locked to your birthday, use this one — then read https://cardblueprints.com/cardology-vs-tarot if you want the longer split.",
+    a: "No. Tarot birth cards use Major Arcana math from a 78-card tradition. This calculator uses a standard 52-card playing deck (Hearts, Clubs, Diamonds, Spades) in the Cardology system. If you want pairs like Death and the Emperor, use a tarot tool. If you want the playing card locked to your birthday, use this one — then read the Cardology vs tarot page for the longer split.",
   },
   {
     q: "How is the birth card calculated?",
@@ -108,7 +108,7 @@ const faqs = [
   },
   {
     q: "Is this also called a Destiny Cards calculator?",
-    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the full synonym map: https://cardblueprints.com/destiny-cards",
+    a: "Destiny Cards is a related name used by some teachers and websites for birthday-to-playing-card systems. Card Blueprints calls the practice Cardology and documents its own deterministic calculation method. If two tools disagree, use the published method and repeat the same date to compare results. Came via Destiny Cards, Love Cards, or Science of the Cards? Read the Destiny Cards synonym map on this site.",
   },
 ];
 
@@ -176,6 +176,15 @@ export default function CalculatorPage() {
       <div className="mt-5">
         <BirthCardCalculator />
       </div>
+
+      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
+        Optional paid writes after the free card:{" "}
+        <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
+          Birth Card Deep Dive — $9
+        </Link>{" "}
+        (7-page PDF + the Complete System Guide).
+        The free calculator never stores your birthday.
+      </p>
 
       <p className="mt-6 text-sm leading-relaxed text-faint">
         Written and reviewed by{" "}

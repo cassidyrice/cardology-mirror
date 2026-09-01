@@ -57,7 +57,7 @@ export async function POST(
   const product = checkoutProductBySlug(slug);
   if (!product) {
     return NextResponse.redirect(
-      new URL("/products/personal-card-blueprint", req.url),
+      new URL("/products/birth-card-deep-dive", req.url),
       303,
     );
   }

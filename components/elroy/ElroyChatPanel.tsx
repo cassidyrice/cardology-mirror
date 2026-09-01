@@ -278,12 +278,12 @@ export function ElroyChatPanel({
               </div>
               <a
                 className="elroy-cta"
-                href="/products/personal-card-blueprint"
+                href="/products/birth-card-deep-dive"
                 onClick={() =>
                   trackClientFunnelEvent("elroy_blueprint_clicked", { placement })
                 }
               >
-                See My Personal Card Blueprint
+                Get My $9 Deep Dive
               </a>
             </>
           ) : null}

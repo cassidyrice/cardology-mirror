@@ -4,7 +4,6 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, SUIT_COLOR_PAPER } from "@/lib/cards";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
@@ -369,18 +368,13 @@ export default function PlayingCardSpreads() {
             card shows up wearing two jobs.)
           </li>
         </ul>
-        <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-          <p className="eyebrow text-gold">Want your own boards?</p>
-          <p className="mt-2 text-sm text-mist">
-            The <strong>Personal Card Blueprint ($13)</strong> writes your year
-            down — all seven 52-day cards with the current one deep-dived, the
-            yearly signals — and includes <strong>The 90 Spreads PDF</strong>:
-            every yearly board, ages 0&ndash;89.
-          </p>
-          <Link href="/products/personal-card-blueprint" className="accent-button mt-3 inline-block w-full text-center sm:w-auto">
-            Get the Year Blueprint — $13 →
-          </Link>
-        </div>
+        <p className="prose-reading mt-6 text-mist">
+          Want your own seats and walk?{" "}
+          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            Find your card free
+          </Link>{" "}
+          — the calculator places you on the board from one birthday.
+        </p>
       </section>
 
       <section id="planetary-ruling-card" className="mt-12 scroll-mt-10">
@@ -471,7 +465,6 @@ export default function PlayingCardSpreads() {
         </div>
       </section>
 
-      <ReadingBridge variant="general" className="mt-10" />
     </SeoShell>
   );
 }

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import {
   allBlogPosts,
   blogPillarBySlug,
@@ -200,7 +199,6 @@ export default async function BlogPostPage({
           ))}
         </div>
 
-        <ReadingBridge variant="general" className="mt-12" />
 
         <section className="mt-12 border-t border-[#14110d]/15 pt-8">
           <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>

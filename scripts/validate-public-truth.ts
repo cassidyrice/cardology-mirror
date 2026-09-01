@@ -202,16 +202,13 @@ const productMarketingFiles = [
   "app/privacy-policy/page.tsx",
   "app/readings/page.tsx",
   "app/layout.tsx",
-  "app/products/analog-algorithm/page.tsx",
-  "app/products/complete-card-blueprint/page.tsx",
   "components/seo/SiteFooter.tsx",
   "components/seo/SiteHeader.tsx",
-  "components/seo/ReadingBridge.tsx",
   "components/seo/OfferCta.tsx",
   "components/seo/BirthCardCalculator.tsx",
   "components/analytics/AnalyticsCapture.tsx",
   "app/checkout/[offer]/page.tsx",
-  "app/products/personal-card-blueprint/page.tsx",
+  "app/products/birth-card-deep-dive/page.tsx",
   "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
@@ -296,7 +293,7 @@ assert.doesNotMatch(
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/personal-card-blueprint"\)/,
+  /permanentRedirect\("\/products\/birth-card-deep-dive"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -306,7 +303,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["']\/readings["']\s*:\s*["']\/products\/personal-card-blueprint["']/,
+  /["'](\/readings)["']\s*:\s*["']\/products\/birth-card-deep-dive["']/,
 );
 assert.match(
   middlewareText,
@@ -348,7 +345,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/personal-card-blueprint?utm_source=legacy",
+      "https://cardblueprints.com/products/birth-card-deep-dive?utm_source=legacy",
   },
 );
 assert.deepEqual(
@@ -392,7 +389,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/personal-card-blueprint?a=1",
+    location: "https://cardblueprints.com/products/birth-card-deep-dive?a=1",
   },
 );
 assert.deepEqual(
@@ -404,10 +401,18 @@ assert.deepEqual(
 );
 assert.equal(
   middlewareResult(
-    "https://cardblueprints.com/products/personal-card-blueprint",
+    "https://cardblueprints.com/products/birth-card-deep-dive",
     "cardblueprints.com",
   ).status,
   200,
+);
+// The retired catalog 301s to the one live product.
+assert.equal(
+  middlewareResult(
+    "https://cardblueprints.com/products/personal-card-blueprint",
+    "cardblueprints.com",
+  ).status,
+  301,
 );
 const privacyPolicyText = readFileSync("app/privacy-policy/page.tsx", "utf8");
 assert.doesNotMatch(
@@ -418,8 +423,8 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-assert.match(productSurfaceText, /Personal Card Blueprint/);
-assert.match(productSurfaceText, /instant personalized/i);
+assert.match(productSurfaceText, /Birth Card Deep Dive/);
+assert.match(productSurfaceText, /instant download/i);
 
 const legacyRanks = [
   ["ace", "ace"],

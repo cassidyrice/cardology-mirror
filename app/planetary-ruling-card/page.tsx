@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const TITLE = "Planetary Ruling Card: What It Is & How to Find Yours";
@@ -143,7 +142,6 @@ export default function PlanetaryRulingCard() {
         </div>
       </section>
 
-      <ReadingBridge variant="general" className="mt-8" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Keep going</p>

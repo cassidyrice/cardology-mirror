@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import {
   allBlogPillars,
   allBlogPosts,
@@ -105,7 +104,7 @@ export default function BlogIndexPage() {
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
           ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
-          ["Want it personalized?", "Get your Personal Card Blueprint.", "/products/personal-card-blueprint", false],
+          ["Want it personalized?", "Get your $9 Birth Card Deep Dive.", "/products/birth-card-deep-dive", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a
@@ -176,7 +175,6 @@ export default function BlogIndexPage() {
         </div>
       </section>
 
-      <ReadingBridge variant="general" className="mt-12" />
 
       <section className="mt-12 border-t border-[#14110d]/15 pt-8">
         <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>

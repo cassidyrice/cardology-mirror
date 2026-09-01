@@ -68,7 +68,7 @@ export default function AboutPage() {
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
             and repeated dynamics. Free tools come first; the paid product is a written
-            Personal Card Blueprint — not a phone reading.
+            Birth Card Deep Dive — not a phone reading.
           </p>
         </div>
       </header>
@@ -104,7 +104,7 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           Experience on this site means shipping the tools people actually use: the free
           birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and the Personal Card Blueprint report pipeline. Expertise means
+          meanings, and the Birth Card Deep Dive fulfillment pipeline. Expertise means
           publishing the method in public — see{" "}
           <Link href="/methodology" className="underline">
             methodology
@@ -179,17 +179,17 @@ export default function AboutPage() {
         <h2 className="font-serif text-3xl text-[#14110d]">Why a written Blueprint</h2>
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           The free calculator answers “what is my card?” The Blueprint answers “what
-          does the whole pattern look like in writing?” It is a one-time $13 digital
-          report delivered after checkout — birth card, ruling layer, and the full
-          year of 52-day cards with yearly signals — so you can reread it without booking a call. Historical phone
+          does the whole pattern look like in writing?” It is a one-time $9 digital
+          report delivered after checkout — your card's 7-page Deep Dive plus the
+          Complete System Guide — so you can reread it without booking a call. Historical phone
           fulfillment still works for people who already purchased access; new public
           SEO pages point to the written product.
         </p>
         <Link
-          href="/products/personal-card-blueprint"
+          href="/products/birth-card-deep-dive"
           className="inline-block rounded-full border border-[#14110d] bg-[#14110d] px-5 py-2.5 text-sm font-semibold text-[#f4f0e7]"
         >
-          Personal Card Blueprint — $13
+          Birth Card Deep Dive — $9
         </Link>
       </section>
 

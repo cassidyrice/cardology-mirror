@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -226,16 +225,12 @@ export default function CardAstrology() {
       </section>
 
       <FreeCourseCta source="52-card-astrology" className="mt-10" />
-      <ReadingBridge variant="general" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">See your card in the system</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Calculate your birth card →
-          </Link>
-          <Link href="/products/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Personal Blueprint — $13 →
           </Link>
         </div>
       </div>

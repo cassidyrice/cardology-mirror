@@ -25,6 +25,12 @@ export function SiteHeader() {
           <Link href="/" className="text-brand-ink" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
           </Link>
+          <Link
+            href="/birth-card-calculator"
+            className="whitespace-nowrap text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink lg:hidden"
+          >
+            Calculator
+          </Link>
           <nav
             aria-label="Primary"
             className="hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft lg:flex lg:gap-6"

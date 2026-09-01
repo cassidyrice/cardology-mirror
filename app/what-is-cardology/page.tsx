@@ -5,7 +5,6 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -15,7 +14,7 @@ import {
 
 const TITLE = "What Is Cardology? Find the Playing Card in Your Birthday";
 const DESCRIPTION =
-  "Cardology maps every birthday to one of 52 playing cards — not tarot. Plain-English guide to how it works, plus a free calculator that reveals your card in seconds.";
+  "Cardology maps every birthday to one of 52 playing cards — not tarot. Same date, same card. Free calculator plus the $9 Deep Dive if you want it written down.";
 const OG_IMAGE = { url: "/og/what-is-cardology.png", width: 1200, height: 630, alt: "What is Cardology? Three playing cards fanned on paper" };
 
 export const metadata: Metadata = {
@@ -44,7 +43,7 @@ const faqs = [
   },
   {
     q: "Is Cardology the same as cardiology?",
-    a: "No. Cardiology is heart medicine. Cardology is a birthday-to-playing-card map (52-card deck, not tarot). Same birthday always yields the same card. Free lookup: https://cardblueprints.com/birth-card-calculator",
+    a: "No. Cardiology is heart medicine. Cardology is a birthday-to-playing-card map (52-card deck, not tarot). Same birthday always yields the same card. Free lookup: the birth card calculator on this site.",
   },
   {
     q: "How does Cardology work?",
@@ -52,11 +51,11 @@ const faqs = [
   },
   {
     q: "What is my birth card in Cardology?",
-    a: "Your Cardology birth card is the playing card locked to your birthday. Use the free Cardology calculator (also called a Cardology birthday or chart calculator) at https://cardblueprints.com/birth-card-calculator — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
+    a: "Your Cardology birth card is the playing card locked to your birthday. Use the free calculator on this page — enter month, day, and year — to see the birth card and planetary ruling card instantly.",
   },
   {
     q: "What is a birth card?",
-    a: "A birth card is the one playing card assigned to a birthday. In Cardology that assignment is fixed: same date, same card. It is not a tarot birth-card pair and not a government birth-registration card. Full meanings live at https://cardblueprints.com/blog/pillar/birth-card-meanings.",
+    a: "A birth card is the one playing card assigned to a birthday. In Cardology that assignment is fixed: same date, same card. It is not a tarot birth-card pair and not a government birth-registration card. Full meanings live on the 52 birth-card index.",
   },
   {
     q: "Can I get a free Cardology reading?",
@@ -124,7 +123,7 @@ export default function WhatIsCardology() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-16",
+    dateModified: "2026-09-01",
     mainEntityOfPage: "https://cardblueprints.com/what-is-cardology",
   };
 
@@ -146,13 +145,13 @@ export default function WhatIsCardology() {
         </p>
       </div>
       <p className="mb-6">
-        <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find your birth card free →
+        <Link href="#find-your-card" className="accent-button inline-block">
+          Reveal my birth card on this page →
         </Link>
       </p>
 
       <p className="mb-2 text-xs text-faint">
-        By Cassidy Rice · Updated August 15, 2026 ·{" "}
+        By Cassidy Rice · Updated September 1, 2026 ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
@@ -239,6 +238,11 @@ export default function WhatIsCardology() {
           card and ruling card for the Cardology system.
         </p>
         <BirthCardCalculator />
+        <p className="mt-4 text-sm">
+          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            Prefer the dedicated calculator page →
+          </Link>
+        </p>
       </section>
 
       <section className="mt-10" id="free-reading">
@@ -255,11 +259,11 @@ export default function WhatIsCardology() {
           <Link href="/birth-card" className="text-gold underline underline-offset-4">
             all 52 Cardology card meanings
           </Link>
-          . For a longer written report about one birthday, the{" "}
-          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-            Personal Card Blueprint ($13)
+          . Optional next step: the{" "}
+          <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
+            $9 Deep Dive
           </Link>{" "}
-          is the optional paid deepen.
+          (7 pages on your card + the Complete System Guide).
         </p>
       </section>
 
@@ -359,11 +363,11 @@ export default function WhatIsCardology() {
         <p className="prose-reading text-mist">
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
-          the pattern written out as a full report, the{" "}
-          <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-            Personal Card Blueprint ($13)
-          </Link>{" "}
-          is the paid deepen after the free tools.
+          the pattern written out, start with the{" "}
+          <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
+            $9 Deep Dive
+          </Link>
+          — 7 pages on your card plus the Complete System Guide.
         </p>
       </section>
 
@@ -380,7 +384,6 @@ export default function WhatIsCardology() {
       </section>
 
       <FreeCourseCta source="learn" className="mt-10" />
-      <ReadingBridge variant="general" className="mt-8" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Keep going</p>

@@ -154,20 +154,6 @@ export default function BirthCardDeepDivePage() {
         </div>
       </section>
 
-      <div className="card-surface mt-10 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">Want the year, not just the card?</p>
-        <p className="mt-2 text-sm text-mist">
-          The <strong>Personal Card Blueprint ($13)</strong> writes down your
-          yearly spread — all seven 52-day cards with the current one
-          deep-dived, the yearly signals, and The 90 Spreads PDF.
-        </p>
-        <Link
-          href="/products/personal-card-blueprint"
-          className="mt-3 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink"
-        >
-          See the Year Blueprint — $13 →
-        </Link>
-      </div>
-    </SeoShell>
+          </SeoShell>
   );
 }

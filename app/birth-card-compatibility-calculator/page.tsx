@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -43,7 +42,7 @@ const faqs = [
   },
   {
     q: "Is this a destiny cards or tarot compatibility test?",
-    a: "No. Tarot love/compatibility tools use Major Arcana or shuffled spreads. This calculator uses two birthdays in the Cardology 52-card playing-card system — fixed birth cards plus Life Path roles. Related Destiny Cards / Love Cards names point at the same deck family; we publish the method so you can check the math. Synonym map: https://cardblueprints.com/destiny-cards — longer split: https://cardblueprints.com/cardology-vs-tarot",
+    a: "No. Tarot love/compatibility tools use Major Arcana or shuffled spreads. This calculator uses two birthdays in the Cardology 52-card playing-card system — fixed birth cards plus Life Path roles. Related Destiny Cards / Love Cards names point at the same deck family; we publish the method so you can check the math. See the Destiny Cards synonym map and the Cardology vs tarot page.",
   },
   {
     q: "Does same suit mean better compatibility?",
@@ -118,12 +117,11 @@ export default function CompatibilityCalculatorPage() {
         Built for queries like <strong>cardology compatibility calculator</strong>,{" "}
         <strong>birth card compatibility</strong>, and two-birthday relationship maps.
         After the result, open the matching pair page in the directory for the full
-        write-up, or deepen with a{" "}
-        <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
-          Personal Card Blueprint ($13)
+        write-up. The{" "}
+        <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
+          $9 Deep Dive
         </Link>{" "}
-        for one person&rsquo;s full written pattern (instant report — great
-        after you find both cards).
+        writes one person&rsquo;s card (the first birthday) — not a couple reading.
       </p>
 
       <aside className="mb-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
@@ -227,7 +225,6 @@ export default function CompatibilityCalculatorPage() {
       </section>
 
       <FreeCourseCta source="compatibility-calculator" className="mt-10" />
-      <ReadingBridge variant="relationship" className="mt-8" />
     </SeoShell>
   );
 }

@@ -6,7 +6,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-deck",
     label: "The Deck",
-    kicker: "Personal Card Blueprint · instant report",
+    kicker: "Birth Card Deep Dive · instant download",
     title: "Your birthday carries a pattern.",
     body: "Every birthday maps to exactly one card in a fixed 52-card order. Find yours free, then put the full pattern in writing.",
     clip: "/brand/journey/scene-01.mp4",
@@ -20,8 +20,8 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
         <a className="journey-primary" href="/birth-card-calculator">
           Find Your Birth Card Free
         </a>
-        <a className="journey-secondary" href="/products/personal-card-blueprint">
-          Get My Blueprint · $13
+        <a className="journey-secondary" href="/products/birth-card-deep-dive">
+          Get the Deep Dive · $9
         </a>
       </>
     ),
@@ -54,7 +54,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-blueprint",
     label: "The Blueprint",
-    kicker: "Personal Card Blueprint",
+    kicker: "Birth Card Deep Dive",
     title: "Put your pattern in writing.",
     body: "Your birth card, ruling layer, current chapter, and reflection prompts in one personalized report you can open immediately after checkout.",
     clip: "/brand/journey/scene-04.mp4",
@@ -66,8 +66,8 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
     tags: ["Instant written report"],
     actions: (
       <>
-        <a className="journey-primary" href="/products/personal-card-blueprint">
-          Get My Blueprint · $13
+        <a className="journey-primary" href="/products/birth-card-deep-dive">
+          Get the Deep Dive · $9
         </a>
         <a className="journey-secondary" href="/birth-card-calculator">
           Find Your Birth Card Free

@@ -5,7 +5,6 @@ import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculato
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
 
 const TITLE = "Cardology Compatibility: Birth Cards + Free Calculator";
@@ -152,22 +151,7 @@ export default function CompatibilityPage() {
         </div>
       </section>
 
-      <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">Want one person&rsquo;s full pattern in writing?</p>
-        <p className="mt-2 text-sm text-mist">
-          After a free comparison, the Personal Card Blueprint ($13) is the deepen for
-          a single birthday — instant report, no phone call.
-        </p>
-        <Link
-          href="/products/personal-card-blueprint"
-          className="mt-3 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink"
-        >
-          Personal Blueprint — $13
-        </Link>
-      </div>
-
-      <FreeCourseCta source="compatibility" className="mt-10" />
-      <ReadingBridge variant="relationship" className="mt-8" />
+            <FreeCourseCta source="compatibility" className="mt-10" />
     </SeoShell>
   );
 }

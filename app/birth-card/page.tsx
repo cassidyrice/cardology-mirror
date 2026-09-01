@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { cardsBySuit } from "@/lib/seo-cards";
@@ -38,7 +37,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "All 52 Cardology Birth Cards — Meanings & Personality";
+const TITLE = "All 52 Cardology Birth Cards — Meanings (Not Tarot)";
 const DESCRIPTION =
   "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.";
 const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards — three aces fanned on paper" };
@@ -109,7 +108,7 @@ export default function BirthCardIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-bone">The 52 Birth Card Meanings</h1>
+      <h1 className="display mb-3 text-3xl text-bone">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -259,7 +258,6 @@ export default function BirthCardIndex() {
       </section>
 
       <FreeCourseCta source="card-meanings" className="mt-12" />
-      <ReadingBridge variant="card" className="mt-8" />
     </SeoShell>
   );
 }

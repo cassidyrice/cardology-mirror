@@ -18,7 +18,7 @@ export function CheckoutShell({
           <BrandLogo compact />
         </Link>
         <Link
-          href="/products/personal-card-blueprint"
+          href="/products/birth-card-deep-dive"
           className="text-sm text-brand-ink-soft underline underline-offset-4"
         >
           Back

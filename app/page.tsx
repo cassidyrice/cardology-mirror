@@ -7,20 +7,20 @@ import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton, SectionShell } from "@/components/ui";
 import {
-  DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
   DEEP_DIVE_CALCULATOR_FORM_HREF,
+  DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_PRICE_LABEL,
 } from "@/lib/deep-dive";
-import { INSTANT_REPORT_PRODUCTS } from "@/lib/products";
+import { DEEP_DIVE_PRODUCT, INSTANT_REPORT_PRODUCTS } from "@/lib/products";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_URL,
 } from "@/lib/site";
 
-const HOME_TITLE = "Card Blueprints | Birth Cards, Calculator & Cardology";
+const HOME_TITLE = "Card Blueprints | Cardology Birth Cards, Not Tarot";
 const HOME_DESCRIPTION =
-  "Find your birth card free, explore Cardology meanings and compatibility, and get an instant Personal Card Blueprint from your birthday.";
+  "Find your playing-card birth card free (not tarot). Same birthday, same card. Optional $9 Deep Dive PDF with your card written out.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -30,13 +30,13 @@ export const metadata: Metadata = {
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
     url: "/",
-    images: [{ url: "/og/birth-card-calculator.png", width: 1200, height: 630, alt: "Find your birth card — fanned playing cards" }],
+    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints — your birth card as a mirror" }],
   },
   twitter: {
     card: "summary_large_image",
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
-    images: ["/og/birth-card-calculator.png"],
+    images: ["/og/default.png"],
   },
 };
 
@@ -70,12 +70,12 @@ const STEPS = [
   {
     label: "02",
     title: "Read your card.",
-    detail: "You get the birth card, ruling card, and current 52-day stretch on the spot.",
+    detail: "You get the birth card and ruling card on the spot — free, no email required.",
   },
   {
     label: "03",
     title: "Optional: the $9 Deep Dive.",
-    detail: "Seven pages on your card, plus the System Guide and 90 Spreads. Instant download links and an email backup.",
+    detail: "Seven pages on your card, plus the complete System Guide. Instant download links and an email backup.",
   },
 ];
 
@@ -111,16 +111,16 @@ const LIBRARY_PATHS = [
 ];
 
 export default function Home() {
-  const paidOffers = INSTANT_REPORT_PRODUCTS;
+  const paidOffers = [DEEP_DIVE_PRODUCT, ...INSTANT_REPORT_PRODUCTS];
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Card Blueprints paid product",
+    name: "Card Blueprints paid writes",
     itemListElement: paidOffers.map((offer, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: offer.name,
-      url: `${SITE_URL}/products/${offer.slug}`,
+      url: `${SITE_URL}${offer.href ?? `/products/${offer.slug}`}`,
     })),
   };
 
@@ -285,25 +285,25 @@ export default function Home() {
             <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
               Your card, 7 pages, plus the complete System Guide.
             </p>
+            <figure className="mt-4 max-w-[34em]">
+              <blockquote className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
+                &ldquo;I bought the Deep Dive, found out I was the Five of Clubs, and a lot of my life stopped looking random.&rdquo;
+              </blockquote>
+              <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+                <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
+                Tiffany, 37 · Five of Clubs
+              </figcaption>
+            </figure>
             <p className="mt-5">
               <LinkButton href={DEEP_DIVE_CALCULATOR_FORM_HREF} variant="accent">
-                {DEEP_DIVE_CALCULATOR_ENTRY_LABEL}
+                {DEEP_DIVE_CTA_LABEL}
               </LinkButton>
             </p>
-          </div>
-          <div className="border-t border-brand-line pt-5">
-            <p className="type-eyebrow text-brand-ink-soft">Secondary</p>
-            <h3 className="type-h3 mt-2">Personal Card Blueprint — $13</h3>
-            <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-              A fuller written report: birth card, ruling layer, your whole year of 52-day cards with the current one deep-dived, the yearly signals, and reflection prompts.
-            </p>
-            <p className="mt-5">
-              <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
-                Get My Blueprint — $13 →
-              </Link>
+            <p className="mt-3 text-sm text-brand-ink-soft">
+              Need the card first? Use the calculator above.
             </p>
           </div>
-        </div>
+                  </div>
       </SectionShell>
 
       {/* 9 — Final CTA */}

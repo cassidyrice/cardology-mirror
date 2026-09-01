@@ -238,6 +238,18 @@ function BirthCardResultCard({
         birthdate={date || reveal.birthdate}
         source="birth-card-calculator"
       />
+      <figure className="mt-4 max-w-md text-center">
+        <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
+          &ldquo;I&rsquo;m a builder. I&rsquo;ve started more than one business. I&rsquo;ll also admit I&rsquo;m a bit of a trickster — that&rsquo;s not a confession, that&rsquo;s just the job. Then I open the Deep Dive, find out I&rsquo;m the Jack of Diamonds, and the description might as well have had my name on it. I don&rsquo;t get easily impressed. That one got me.&rdquo;
+        </blockquote>
+        <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+          <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
+          Stephen, 65 · Jack of Diamonds
+        </figcaption>
+        <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
+          Real customer words, shared with permission. Individual reflections, not typical-results claims.
+        </p>
+      </figure>
       <BirthdayWorkerAnchor
         reveal={reveal}
         todayIso={todayISO()}

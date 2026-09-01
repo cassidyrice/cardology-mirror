@@ -3,7 +3,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME } from "@/lib/site";
 
 const TITLE = "Cardology vs Tarot: What's the Difference?";
@@ -211,14 +210,10 @@ export default function CardologyVsTarotPage() {
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Free birth card calculator →
           </Link>
-          <Link href="/products/personal-card-blueprint" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
-            Personal Blueprint — $13 →
-          </Link>
         </div>
       </div>
 
       <FreeCourseCta source="cardology-vs-tarot" className="mt-10" />
-      <ReadingBridge variant="general" className="mt-8" />
 
       <p className="mt-8 text-sm text-mist">
         Related:{" "}

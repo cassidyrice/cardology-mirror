@@ -68,12 +68,17 @@ async function main() {
     await hero.getByRole("link", { name: "Read the Queen of Diamonds meaning →" }).getAttribute("href"),
     "/birth-card/queen-of-diamonds",
   );
-  await hero.getByText("Want to learn how to read your card?").waitFor();
+  await hero.getByRole("link", { name: /Prefer the free 4-part course by email/ }).waitFor();
   await hero.getByRole("button", { name: "Get Deep Dive $9" }).waitFor();
   assert.equal(
     await hero.getByRole("link", { name: "Get Deep Dive $9" }).count(),
     0,
     "homepage Deep Dive CTA must not href the Cassidy Rice payment link",
+  );
+  assert.equal(
+    await hero.locator('input[name="email"]').count(),
+    0,
+    "homepage result must not open an email form in the result card",
   );
   assert.equal(
     await hero.getByRole("link", { name: /Personal Blueprint/ }).count(),
@@ -93,17 +98,11 @@ async function main() {
   assert.equal(calculatorStarts.length, 1, "homepage must emit one calculator start per flow");
   assert.equal(calculatorStarts[0]?.placement, "home-hero");
 
-  await hero.locator('input[name="name"]').fill("Browser Tester");
-  await hero.locator('input[name="email"]').fill("browser@example.test");
-  await hero.getByRole("button", { name: "Send me the free course →" }).click();
-  await hero.getByRole("alert").waitFor();
-  await hero.getByRole("heading", { name: "Queen of Diamonds" }).waitFor();
-  assert.equal(coursePayloads[0]?.source, "home-hero-result");
-  assert.deepEqual(Object.keys(coursePayloads[0]).sort(), ["company", "email", "name", "source"]);
-
-  await hero.getByRole("button", { name: "Send me the free course →" }).click();
-  await page.waitForURL("**/free-course");
-  assert.equal(coursePayloads.length, 2, "course signup should be retryable");
+  const courseLink = hero.getByRole("link", { name: /Prefer the free 4-part course by email/ });
+  assert.ok(
+    (await courseLink.getAttribute("href"))?.includes("source=home-hero-result"),
+    "course link must keep the home-hero-result source",
+  );
 
   await page.setViewportSize({ width: 320, height: 640 });
   await page.emulateMedia({ reducedMotion: "reduce" });

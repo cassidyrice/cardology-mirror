@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { DEEP_DIVE_CALCULATOR_ENTRY_LABEL, DEEP_DIVE_CALCULATOR_FORM_HREF } from "@/lib/deep-dive";
+import { DEEP_DIVE_CALCULATOR_FORM_HREF } from "@/lib/deep-dive";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -35,11 +35,15 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
             <ul className="space-y-2">
               <li>
-                <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="font-semibold text-brand-ink hover:underline">
-                  {DEEP_DIVE_CALCULATOR_ENTRY_LABEL}
+                <Link href="/products/birth-card-deep-dive" className="font-semibold text-brand-ink hover:underline">
+                  Birth Card Deep Dive — $9
                 </Link>
               </li>
-
+                            <li>
+                <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="hover:text-brand-ink">
+                  Find your card free
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -57,9 +61,6 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
             <ul className="space-y-2">
-              <li><Link href="/products/analog-algorithm" className="hover:text-brand-ink">The Analog Algorithm — $17 e-book</Link></li>
-              <li><Link href="/products/complete-card-blueprint" className="hover:text-brand-ink">The Complete Card Blueprint — $27 handbook</Link></li>
-              <li><Link href="/products/personal-card-blueprint" className="hover:text-brand-ink">Personal Card Blueprint — $13</Link></li>
               <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
               <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
               <li><Link href="/how-to-read-playing-cards" className="hover:text-brand-ink">How to Read Playing Cards</Link></li>
@@ -84,9 +85,9 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          The Personal Card Blueprint is an instant written report built from
-          the same deterministic birth-card calculation used across the free
-          tools. An esoteric reflection framework, not a forecast.
+          The $9 Birth Card Deep Dive is a 7-page PDF on your card plus the
+          Complete System Guide, matched from the same free calculator. Playing cards, not tarot. An
+          esoteric reflection framework, not a forecast.
         </p>
       </div>
     </footer>

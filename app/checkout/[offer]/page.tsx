@@ -52,7 +52,7 @@ export default async function CheckoutReviewPage({
   return (
     <CheckoutShell
       crumb={[
-        { label: "Personal Card Blueprint", href: "/products/personal-card-blueprint" },
+        { label: "Birth Card Deep Dive", href: "/products/birth-card-deep-dive" },
         { label: "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
@@ -166,7 +166,7 @@ export default async function CheckoutReviewPage({
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
         {isDigital ? (
-          <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">
+          <Link href="/products/birth-card-deep-dive" className="editorial-link text-brand-ink">
             Get your Personal Card Blueprint →
           </Link>
         ) : (

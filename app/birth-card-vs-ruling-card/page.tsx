@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -92,7 +91,6 @@ export default function BirthVsRuling() {
         </p>
       </section>
 
-      <ReadingBridge variant="card" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Find both of your cards</p>

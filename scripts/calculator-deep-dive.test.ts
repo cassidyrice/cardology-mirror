@@ -54,7 +54,7 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → $9 Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("7-page Deep Dive");
   expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("90 Spreads");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("90 Spreads");
   expect(DEEP_DIVE_FULFILLMENT).toContain("Instant download links + email backup");
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("download links now");
   expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("deep-dive");
@@ -159,18 +159,19 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(headerCta).toContain('source="site-header"');
   expect(headerCta).toContain("<DeepDiveCta");
   expect(cta).toContain('placement === "site-header"');
-  expect(cta).toContain("{!compact && (");
+  expect(cta).toContain("{!compact && showFulfillment && (");
   expect(header).not.toContain('label: "Deep Dive $9"');
   expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
   expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
-  expect(footer).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
+  expect(footer).toContain("Birth Card Deep Dive — $9");
+  expect(footer).toContain('href="/products/birth-card-deep-dive"');
   expect(footer).toContain('href={DEEP_DIVE_CALCULATOR_FORM_HREF}');
   expect(footer).toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
-  expect(footer.indexOf("DEEP_DIVE_CALCULATOR_FORM_HREF")).toBeLessThan(
-    footer.indexOf('href="/products/personal-card-blueprint"'),
+  expect(footer.indexOf("/products/birth-card-deep-dive")).toBeLessThan(
+    footer.indexOf("/products/personal-card-blueprint"),
   );
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
@@ -184,7 +185,7 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).toContain('canonical: "/birth-card-calculator"');
   expect(page).toContain("/og/birth-card-calculator.png");
   expect(page).not.toContain("/og/default.png");
-  expect(page).toContain('const TITLE = "Birth Card Calculator & Cardology Chart"');
+  expect(page).toContain('const TITLE = "Free Birth Card Calculator (Playing Cards, Not Tarot)"');
   expect(page).toContain("Birth Card Calculator and Cardology Chart");
   expect(page).toContain('"Cardology calculator"');
   expect(page).toMatch(/cardology calculator/i);
@@ -204,7 +205,11 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).not.toMatch(/noindex/i);
   expect(page).not.toMatch(/display:\s*none/i);
   expect(page).not.toContain("Got the card name");
-  expect(page).not.toContain("/products/personal-card-blueprint");
+  expect(page).toContain("/products/birth-card-deep-dive");
+  expect(page).toContain("/products/personal-card-blueprint");
+  expect(page.indexOf("/products/birth-card-deep-dive")).toBeLessThan(
+    page.indexOf("/products/personal-card-blueprint"),
+  );
   expect(page).not.toContain("/checkout/personal-card-blueprint");
   expect(page).not.toContain("See the Blueprint");
   expect(middleware).not.toMatch(
@@ -222,9 +227,11 @@ test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Ri
 });
 
 test("success copy is instant card PDF, honest for Joker, no delayed follow-up", () => {
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("7-page Deep Dive, System Guide, and 90 Spreads");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("7-page Deep Dive and the complete System Guide");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("90 Spreads");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("follows in a few minutes");
-  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("System Guide and 90 Spreads");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("complete System Guide");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("90 Spreads");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Joker");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("7-page Deep Dive");
   expect(deepDiveSuccessCopy("1990-01-15")).toBe(DEEP_DIVE_SUCCESS_COPY);
@@ -239,7 +246,7 @@ test("success copy is instant card PDF, honest for Joker, no delayed follow-up",
   );
 });
 
-test("Deep Dive stays one $9 SKU and mint 3 tokens for a card birthday", async () => {
+test("Deep Dive stays one $9 SKU and mint tokens for a card birthday", async () => {
   expect(DEEP_DIVE_SKU).toBe("deep-dive-9");
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
   expect(checkoutProductBySlug("deep-dive")?.price).toBe(9);
@@ -249,10 +256,10 @@ test("Deep Dive stays one $9 SKU and mint 3 tokens for a card birthday", async (
   const files = deepDiveFilesForBirthday("1990-01-15");
   expect(files.map((f) => f.slug)).toEqual([
     "system-guide",
-    "all-90-spreads",
     "queen-of-diamonds",
   ]);
-  expect(files).toHaveLength(3);
+  expect(files).toHaveLength(2);
+  expect(files.some((f) => f.slug === "all-90-spreads")).toBe(false);
   const card = deepDiveCardPdfForBirthday("1990-01-15");
   expect(card?.key).toBe("deep-dive/queen-of-diamonds.pdf");
   expect(deepDiveCardPdfKey("queen-of-diamonds")).toBe(
@@ -270,13 +277,14 @@ test("Deep Dive stays one $9 SKU and mint 3 tokens for a card birthday", async (
     expect(payload?.slug).toBe(file.slug);
     slugs.push(payload!.slug);
   }
-  expect(slugs).toEqual(["system-guide", "all-90-spreads", "queen-of-diamonds"]);
+  expect(slugs).toEqual(["system-guide", "queen-of-diamonds"]);
 });
 
 test("Joker / Dec 31 skips card PDF and never falls back to King of Spades", async () => {
   const files = deepDiveFilesForBirthday("1990-12-31");
-  expect(files).toHaveLength(2);
-  expect(files.map((f) => f.slug)).toEqual(["system-guide", "all-90-spreads"]);
+  expect(files).toHaveLength(1);
+  expect(files.map((f) => f.slug)).toEqual(["system-guide"]);
+  expect(files.some((f) => f.slug === "all-90-spreads")).toBe(false);
   expect(deepDiveCardPdfForBirthday("1990-12-31")).toBeNull();
   expect(deepDiveCardPdfForBirthday("2024-12-31")).toBeNull();
   expect(files.some((f) => f.slug === "king-of-spades")).toBe(false);
@@ -292,6 +300,6 @@ test("Joker / Dec 31 skips card PDF and never falls back to King of Spades", asy
     const payload = await verifyDownloadToken(token);
     slugs.push(payload!.slug);
   }
-  expect(slugs).toEqual(["system-guide", "all-90-spreads"]);
+  expect(slugs).toEqual(["system-guide"]);
   expect(slugs).not.toContain("king-of-spades");
 });

@@ -269,32 +269,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
       </Section>
 
-      <div className="mt-10 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-        <p className="eyebrow text-gold">Your year in cards</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">The Personal Card Blueprint — $13</h2>
-        <p className="mt-2 text-sm text-mist">
-          Your yearly spread, written down — a deep dive into the 52-day cycle
-          you are in now, and the whole year around it.
-        </p>
-        <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
-          <li>✓ All seven 52-day cards of your year, in order</li>
-          <li>✓ Current 52-day cycle deep-dived; a note on the other six</li>
-          <li>✓ Yearly signals: Long Range, Pluto, Result, Environment &amp; Displacement</li>
-          <li>✓ The 90 Spreads PDF — every yearly map, ages 0&ndash;89</li>
-          <li>✓ Instant web report + emailed return link</li>
-        </ul>
-        <Link
-          href="/products/personal-card-blueprint"
-          className="accent-button large-button inline-block w-full text-center sm:w-auto"
-        >
-          Get the Year Blueprint — $13 →
-        </Link>
-        <p className="mt-3 text-xs leading-relaxed text-mist">
-          $13 one time · instant access · no subscription
-        </p>
-      </div>
-
-      <Section title="Love and relationships">
+            <Section title="Love and relationships">
         <p>
           In relationships, the {card.label} tends to reveal itself through {relationshipTheme(card)}. It can be deeply compelling when the person is centered, because the card brings a recognizable emotional signature. The shadow usually appears when the card tries to get safety through its over-expressed pattern instead of direct honesty.
         </p>

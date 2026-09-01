@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { ReadingBridge } from "@/components/seo/ReadingBridge";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -253,7 +252,6 @@ export default function CartomancyVsTarot() {
         </div>
       </section>
 
-      <ReadingBridge variant="general" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Find your card in the 52</p>
