@@ -226,6 +226,9 @@ function BirthCardResultCard({
       {!isJoker && (
         <CurrentChapter birthdate={date || reveal.birthdate} />
       )}
+      <p className="mt-2 text-center font-serif text-xl text-brand-ink">
+        You just discovered the map.
+      </p>
       <DeepDiveCta
         placement="birth-card-calculator-result"
         birthdate={date || reveal.birthdate}

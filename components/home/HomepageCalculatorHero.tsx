@@ -93,7 +93,9 @@ export function HomepageCalculatorHero() {
             Which playing card were you born under?
           </h1>
           <p className="mt-3 max-w-[34rem] font-serif text-xl leading-relaxed text-brand-ink-soft sm:mt-5 sm:text-2xl">
-            Your birthday maps to one card in a fixed 52-card system. Enter it to reveal yours.
+            The numbers of your birthday calculate to one playing card &mdash; a
+            node with fixed calendar coordinates. Yours is one of 52 moving
+            through a loop of elemental numbers and symbols.
           </p>
         </div>
 
@@ -168,11 +170,15 @@ export function HomepageCalculatorHero() {
                 )}
               </div>
 
+              <p className="mt-6 text-center font-serif text-xl text-brand-ink">
+                You just discovered the map.
+              </p>
+
               <DeepDiveCta
                 placement={RESULT_PLACEMENT}
                 birthdate={date}
                 source="home-hero"
-                className="mx-auto mt-6"
+                className="mx-auto mt-4"
               />
 
               {slug && cardLabel && (
