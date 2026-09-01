@@ -66,7 +66,7 @@ describe("HomepageCalculatorHero contract", () => {
     expect(header).toContain("/birth-card-calculator");
     expect(header).not.toContain("$29");
     expect(header).not.toContain("buy.stripe.com");
-    expect(footer).toContain("$13");
+    expect(footer).not.toContain("$13");
     expect(footer).not.toContain("$29");
   });
 

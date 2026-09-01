@@ -18,7 +18,7 @@ import {
   SITE_URL,
 } from "@/lib/site";
 
-const HOME_TITLE = "Card Blueprints | Cardology Birth Cards, Not Tarot";
+const HOME_TITLE = "Cardology Birth Cards, Chart & Calculator | Card Blueprints";
 const HOME_DESCRIPTION =
   "Find your playing-card birth card free (not tarot). Same birthday, same card. Optional $9 Deep Dive PDF with your card written out.";
 
