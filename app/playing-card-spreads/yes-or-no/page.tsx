@@ -185,8 +185,8 @@ export default function YesOrNoReading() {
           <Link href="/products/personal-card-blueprint" className="text-gold underline underline-offset-4">
             Personal Card Blueprint
           </Link>{" "}
-          connects your birth card, ruling layer, current chapter, and reflection
-          prompts in one instant report.
+          connects your birth card, ruling layer, full year of 52-day cards, yearly
+          signals, and reflection prompts in one instant report.
         </p>
       </section>
 

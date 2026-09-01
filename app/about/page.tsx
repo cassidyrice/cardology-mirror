@@ -180,8 +180,8 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           The free calculator answers “what is my card?” The Blueprint answers “what
           does the whole pattern look like in writing?” It is a one-time $13 digital
-          report delivered after checkout — birth card, ruling layer, and current
-          chapter — so you can reread it without booking a call. Historical phone
+          report delivered after checkout — birth card, ruling layer, and the full
+          year of 52-day cards with yearly signals — so you can reread it without booking a call. Historical phone
           fulfillment still works for people who already purchased access; new public
           SEO pages point to the written product.
         </p>

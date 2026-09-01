@@ -295,7 +295,7 @@ export default function Home() {
             <p className="type-eyebrow text-brand-ink-soft">Secondary</p>
             <h3 className="type-h3 mt-2">Personal Card Blueprint — $13</h3>
             <p className="mt-3 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-              A fuller written report: birth card, ruling layer, current chapter, and reflection prompts.
+              A fuller written report: birth card, ruling layer, your whole year of 52-day cards with the current one deep-dived, the yearly signals, and reflection prompts.
             </p>
             <p className="mt-5">
               <Link href="/products/personal-card-blueprint" className="editorial-link text-brand-ink">

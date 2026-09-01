@@ -428,7 +428,7 @@ export default function DestinyCardsPage() {
         <h2 className="eyebrow mb-3 text-gold">Personal Card Blueprint</h2>
         <p className="prose-reading text-mist">
           When free tools are not enough, the <strong>Personal Card Blueprint</strong> puts the
-          pattern in one place: birth card, ruling layer, current chapter, and reflection prompts.{" "}
+          pattern in one place: birth card, ruling layer, all seven 52-day cards of the year with the current one deep-dived, the yearly signals, and reflection prompts.{" "}
           <strong>$13 · instant after checkout · no subscription.</strong> Same engine as the free
           calculator; interpretation is labeled as interpretation.
         </p>

@@ -67,7 +67,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What is a Personal Card Blueprint?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "An instant written Cardology report: birth card, ruling card, current 52-day period, and three reflection prompts. A written pattern of the playing-card archetype; not a psychic prediction.",
+                  text: "An instant written Cardology report: birth card, ruling card, your current 52-day period deep-dived, all seven 52-day cards of your year, the yearly signals (Long Range, Pluto, Result, Environment, Displacement), and three reflection prompts. A written pattern of the playing-card archetype; not a psychic prediction.",
                 },
               },
               {
@@ -75,7 +75,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "What do I actually get?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "You get an instant written report (birth card, ruling card, current 52-day period, prompts) plus an emailed return link. Direct, specific, and usable as a reflection — not a roast and not a horoscope. Not a psychic prediction.",
+                  text: "You get an instant written report (birth card, ruling card, the full year of 52-day cards with the current one deep-dived, yearly signals, prompts) plus an emailed return link. Direct, specific, and usable as a reflection — not a roast and not a horoscope. Not a psychic prediction.",
                 },
               },
               {
@@ -83,7 +83,7 @@ export default function PersonalCardBlueprintPage() {
                 name: "How is this different from the free birth card calculator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Free calculator: card name. Blueprint: the full written pattern, your current 52-day period, and prompts. Same engine; entertainment only — not a psychic prediction.",
+                  text: "Free calculator: card name. Blueprint: the full written pattern, your whole year of 52-day cards with the current one deep-dived, the yearly signals, and prompts. Same engine; entertainment only — not a psychic prediction.",
                 },
               },
               {
@@ -223,15 +223,15 @@ export default function PersonalCardBlueprintPage() {
               {[
                 {
                   q: "What is a Personal Card Blueprint?",
-                  a: "An instant written Cardology report from a birthday: birth card and ruling card in plain language, your current 52-day period, and three reflection prompts — same engine as the free calculator. A written pattern of the playing-card archetype, not a psychic prediction.",
+                  a: "An instant written Cardology report from a birthday: birth card and ruling card in plain language, your current 52-day period deep-dived, all seven 52-day cards of your year, the yearly signals (Long Range, Pluto, Result, Environment, Displacement), and three reflection prompts — same engine as the free calculator. A written pattern of the playing-card archetype, not a psychic prediction.",
                 },
                 {
                   q: "What do I actually get?",
-                  a: "You get a one-time personalized written report plus an emailed return link: pattern, ruling card, current 52-day period, prompts. Direct enough to use as a reflection. Never body, trauma, job, or fate. Entertainment only; not a psychic prediction.",
+                  a: "You get a one-time personalized written report plus an emailed return link: pattern, ruling card, the full year of 52-day cards with the current one deep-dived, yearly signals, prompts. Direct enough to use as a reflection. Never body, trauma, job, or fate. Entertainment only; not a psychic prediction.",
                 },
                 {
                   q: "How is this different from the free birth card calculator?",
-                  a: "Free calculator: the card name (and ruling card). Blueprint: the locked written layers — pattern, current 52-day period, prompts — as a report you can reopen. Same calendar math; still entertainment, not a psychic prediction.",
+                  a: "Free calculator: the card name (and ruling card). Blueprint: the locked written layers — pattern, your whole year of 52-day cards, yearly signals, prompts — as a report you can reopen. Same calendar math; still entertainment, not a psychic prediction.",
                 },
                 {
                   q: "Is this tarot or AI fortune-telling?",

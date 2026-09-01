@@ -232,7 +232,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: "$13",
     badge: "Flagship",
     oneLine:
-      "Your birth-card pattern, ruling layer, and current chapter — written down so you can see it.",
+      "Your birth-card pattern, ruling layer, and your whole year in cards — written down so you can see it.",
     bestFor:
       "Anyone who wants the full pattern in writing, without a phone call or a horoscope.",
     deliverable:
@@ -241,7 +241,9 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     includes: [
       "Your birth card and ruling card, in plain language",
       "Core pattern: strengths, blind spots, and growth edge",
-      "This year's bit in the deck (card season), from the engine",
+      "Your current 52-day period, deep-dived — balanced, under, over",
+      "All seven 52-day cards of your year, in order, with a note on each",
+      "Yearly signals: Long Range, Pluto, Result, Environment & Displacement",
       "Three pointed reflection questions to work with",
     ],
     cta: "Get My Blueprint — $13",
