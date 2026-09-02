@@ -60,9 +60,9 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${card.slug}`,
         type: "article",
-        images: [{ url: `/og/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} playing card — Cardology birth card meaning` }],
+        images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [`/og/${card.slug}.png`] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }] },
     };
   }
 
@@ -79,9 +79,9 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${date.slug}`,
         type: "article",
-        images: [{ url: `/og/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.label} birthday — the ${date.card.label} playing card is its birth card` }],
+        images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [`/og/${date.card.slug}.png`] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }] },
     };
   }
 
@@ -118,7 +118,13 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       headline: `${card.label} Meaning: Cardology Birth Card`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
-      image: videos[0] ? youtubeThumbnail(videos[0].url) : `${SITE_URL}/og/default.png`,
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/og/birth-card/${card.slug}.png`,
+        width: 1200,
+        height: 630,
+        caption: `${card.label} Meaning — Cardology Birth Card`,
+      },
     }),
     ...videos.map(videoJsonLd),
   ];
@@ -763,7 +769,7 @@ function articleJsonLd({
   headline: string;
   description: string;
   url: string;
-  image?: string;
+  image?: string | Record<string, unknown>;
 }) {
   return {
     "@context": "https://schema.org",

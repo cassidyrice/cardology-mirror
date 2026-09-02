@@ -7,6 +7,7 @@ Outputs (public/og/):
   birth-card.png
   card-of-the-day.png
   destiny-cards.png
+  birth-card/<slug>.png for every card face, including joker
 
 Style matches public/og/birth-card-calculator.png: warm paper ground,
 oxblood top/bottom bars, real card faces fanned left, serif copy right.
@@ -93,7 +94,53 @@ def page(name, slugs, kicker, title_lines, sub, **fan_kw):
     print("wrote", name)
 
 
+RANK_LABELS = {
+    "ace": "Ace",
+    "jack": "Jack",
+    "queen": "Queen",
+    "king": "King",
+}
+
+
+def card_label(slug):
+    if slug == "joker":
+        return "Joker"
+    rank, suit = slug.split("-of-")
+    return f"{RANK_LABELS.get(rank, rank)} of {suit.title()}"
+
+
+def birth_card_page(slug):
+    """Create the dedicated share image used by an individual card page."""
+    img = base()
+    face = load_face(slug, 540)
+    # Keep the face large and upright on the left, with enough breathing room
+    # for the rounded card corners and the page's warm-paper visual language.
+    x = 310 - face.width // 2
+    y = (H - face.height) // 2
+    shadow = Image.new("RGBA", face.size, (20, 17, 13, 255))
+    shadow.putalpha(face.split()[3].point(lambda a: min(a, 70)))
+    shadow = shadow.filter(ImageFilter.GaussianBlur(10))
+    img.alpha_composite(shadow, (x + 10, y + 14))
+    img.alpha_composite(face, (x, y))
+    copy_block(
+        img,
+        "CARD BLUEPRINTS",
+        [card_label(slug), "Meaning"],
+        "Cardology Birth Card  ·  cardblueprints.com",
+        tx=650,
+    )
+    path = os.path.join(OUT, "birth-card", f"{slug}.png")
+    img.convert("RGB").save(path, optimize=True)
+    print("wrote", f"birth-card/{slug}")
+
+
 def main():
+    birth_card_out = os.path.join(OUT, "birth-card")
+    os.makedirs(birth_card_out, exist_ok=True)
+    for filename in sorted(os.listdir(FACES)):
+        if filename.endswith(".png"):
+            birth_card_page(os.path.splitext(filename)[0])
+
     page(
         "what-is-cardology",
         ["queen-of-hearts", "8-of-diamonds", "ace-of-spades"],
