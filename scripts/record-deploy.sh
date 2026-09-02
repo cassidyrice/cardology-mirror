@@ -7,6 +7,31 @@
 #   bash scripts/record-deploy.sh <sha>      # records a specific Pages commit + live Worker
 # Never prints tokens or wrangler JSON.
 set -euo pipefail
+
+# Escape \, &, #, and / so they are literal in a sed replacement.
+# Delimiter is #; / is escaped too in case a caller uses s///.
+sed_escape_repl() {
+  local s="$1"
+  s=${s//\\/\\\\}
+  s=${s//&/\\&}
+  s=${s//#/\\#}
+  s=${s//\//\\/}
+  printf '%s' "$s"
+}
+
+# Rewrite the **Last verified:** line. $5 is the previous-record short sha.
+update_last_verified() {
+  local file="$1" today="$2" short="$3" subject="$4" prev_short="$5"
+  local escaped
+  escaped="$(sed_escape_repl "$subject")"
+  sed -i '' -E "s#^\*\*Last verified: [0-9-]+\*\* \(deployed \`main\` @ \`[0-9a-f]{7}\`.*#**Last verified: ${today}** (deployed \`main\` @ \`${short}\` — ${escaped}; previous record \`${prev_short}\`)#" "$file"
+}
+
+# When sourced by tests, stop after defining helpers.
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+  return 0
+fi
+
 cd "$(dirname "$0")/.."
 sha="$(git rev-parse "${1:-HEAD}")"
 short="${sha:0:7}"
@@ -59,7 +84,7 @@ fi
 if [[ "$pages_same" -eq 0 ]]; then
   sed -i '' -E "s/DEPLOY_COMMIT=\"[0-9a-f]{40}\"/DEPLOY_COMMIT=\"$sha\"/" scripts/verify-deploy-source.sh
   sed -i '' -E "s/\| \*\*Deployed commit\*\* \| \`[0-9a-f]{40}\` \|/| **Deployed commit** | \`$sha\` |/" ops/DEPLOY-SOURCE.md
-  sed -i '' -E "s/^\*\*Last verified: [0-9-]+\*\* \(deployed \`main\` @ \`[0-9a-f]{7}\`[^)]*\)/**Last verified: $today** (deployed \`main\` @ \`$short\` — $subject; previous record \`${prev:0:7}\`)/" ops/DEPLOY-SOURCE.md
+  update_last_verified ops/DEPLOY-SOURCE.md "$today" "$short" "$subject" "${prev:0:7}"
 fi
 
 sed -i '' -E "s/WORKER_VERSION=\"[0-9a-f-]*\"/WORKER_VERSION=\"$worker_ver\"/" scripts/verify-deploy-source.sh
