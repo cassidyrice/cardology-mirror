@@ -31,7 +31,8 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 
 ## Several agents at once (shared terminal)
 - **Claim before you edit.** Append `- [~] <date> <agent> · <task> · claimed` to `~/cardblueprints-ops/QUEUE.md` before touching a file. One agent in `~/cardology-elroy-qa` at a time; one agent in the Worker bundle at a time. The repo and the Worker are separate files, so one of each can run in parallel.
-- **Only Claude (Fable or Opus) deploys.** Codex and Antigravity commit and stop at "ready to ship". Grok never writes to the repo, the Worker, git, Stripe or Cloudflare; it writes research to `~/cardblueprints-ops/outputs/`.
+- **Only Claude (Fable or Opus) deploys.** Codex and Antigravity commit in this tree and stop at "ready to ship". Grok 4.6 (research CLI) never writes to the repo, the Worker, git, Stripe or Cloudflare; it writes research to `~/cardblueprints-ops/outputs/`.
+- **Cursor CLI and Grok Build work in their own worktree, never in this tree:** `git worktree add ~/cardology-wt-<agent> -b agent/<agent>-<task> main`. They commit on that branch, never push, never deploy, never touch Stripe, and stop at "ready to merge". Fable merges into `main` here and ships.
 - **Never commit another agent's files.** `git add` your own paths, never `-a`. If the tree has changes you did not make, leave them and say so.
 - **Specs live in `~/cardblueprints-ops/plans/`.** Do the task as written; a deviation goes in your report, not into the code silently.
 - **Report shape, every time:** files changed, commands run, verification output, what you did not do. Then stop.
