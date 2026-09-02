@@ -37,7 +37,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "All 52 Cardology Birth Cards — Meanings (Not Tarot)";
+const TITLE = "Cardology Card Meanings: All 52 Birth Cards Explained (Not Tarot)";
 const DESCRIPTION =
   "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.";
 const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards — three aces fanned on paper" };

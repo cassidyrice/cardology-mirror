@@ -13,9 +13,9 @@ import {
   SITE_NAME,
 } from "@/lib/site";
 
-const TITLE = "What Is Cardology? Find the Playing Card in Your Birthday";
+const TITLE = "What Is Cardology? Not Cardiology, Not Tarot, Explained";
 const DESCRIPTION =
-  "Cardology maps every birthday to one of 52 playing cards — not tarot. Same date, same card. Free calculator plus the $9 Deep Dive if you want it written down.";
+  "Cardology maps your birthday to one of 52 playing cards, the same card every time. Not cardiology, not tarot: how it works, where it comes from, and your free card.";
 const OG_IMAGE = { url: "/og/what-is-cardology.png", width: 1200, height: 630, alt: "What is Cardology? Three playing cards fanned on paper" };
 
 export const metadata: Metadata = {
