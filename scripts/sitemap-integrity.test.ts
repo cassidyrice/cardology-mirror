@@ -8,43 +8,15 @@ import {
   blogPostPath,
   type BlogPost,
 } from "../lib/blog";
+import {
+  CARD_MEANING_PAGES_UPDATED,
+  PAGE_UPDATED_DATES,
+} from "../lib/page-dates";
 import { allCardSlugs } from "../lib/seo-cards";
 import { MARKETING_PATHS, SITE_URL } from "../lib/site";
 import { sitemapDate } from "../lib/sitemap-date";
 
 const CANONICAL_ORIGIN = "https://cardblueprints.com";
-
-const ROUTE_DATES = {
-  "/": "2026-09-01",
-  "/about": "2026-08-17",
-  "/videos": "2026-07-29",
-  "/birth-card": "2026-09-01",
-  "/birth-card-calculator": "2026-09-01",
-  "/card-of-the-day": "2026-09-01",
-  "/52-day-period-meaning-tool": "2026-07-30",
-  "/birth-card-compatibility-calculator": "2026-09-01",
-  "/cardology-compatibility": "2026-09-01",
-  "/products/birth-card-deep-dive": "2026-09-01",
-  "/free-course": "2026-08-07",
-  "/what-is-cardology": "2026-09-01",
-  "/cardology-for-beginners": "2026-08-12",
-  "/cardology-vs-tarot": "2026-08-12",
-  "/destiny-cards": "2026-09-01",
-  "/cartomancy-vs-tarot": "2026-08-07",
-  "/how-to-read-playing-cards": "2026-08-16",
-  "/playing-card-spreads": "2026-09-01",
-  "/52-card-astrology-explained": "2026-08-16",
-  "/birth-card-vs-ruling-card": "2026-08-15",
-  "/planetary-ruling-card": "2026-08-15",
-  "/methodology": "2026-08-17",
-  "/editorial-policy": "2026-08-06",
-  "/contact": "2026-08-17",
-  "/shadow-karma-guide": "2026-07-02",
-  "/karma-cards": "2026-09-01",
-  "/privacy-policy": "2026-09-01",
-  "/refund-policy": "2026-08-12",
-  "/terms-of-service": "2026-08-12",
-} as const;
 
 function postModified(post: BlogPost): string {
   return post.dateModified || post.datePublished;
@@ -111,13 +83,16 @@ describe("application sitemap integrity", () => {
     }
   });
 
-  test("uses the reviewed date for every marketing route except the blog index", () => {
-    expect(Object.keys(ROUTE_DATES).sort()).toEqual(
-      MARKETING_PATHS.filter((path) => path !== "/blog").sort(),
+  test("lastmod matches each page Updated constant for every marketing route except the blog index", () => {
+    const datedPaths = MARKETING_PATHS.filter((path) => path !== "/blog");
+    expect(Object.keys(PAGE_UPDATED_DATES).filter((path) => path !== "/blog").sort()).toEqual(
+      [...datedPaths].sort(),
     );
 
-    for (const [path, date] of Object.entries(ROUTE_DATES)) {
-      expect(isoDay(entriesByUrl.get(urlFor(path))?.lastModified), path).toBe(date);
+    for (const path of datedPaths) {
+      expect(isoDay(entriesByUrl.get(urlFor(path))?.lastModified), path).toBe(
+        PAGE_UPDATED_DATES[path],
+      );
     }
   });
 
@@ -128,13 +103,13 @@ describe("application sitemap integrity", () => {
 
     for (const slug of cardSlugs) {
       const entry = entriesByUrl.get(`${SITE_URL}/birth-card/${slug}`);
-      expect(isoDay(entry?.lastModified), slug).toBe("2026-09-01");
+      expect(isoDay(entry?.lastModified), slug).toBe(CARD_MEANING_PAGES_UPDATED);
     }
   });
 
   test("uses the Joker page's explicit reviewed date", () => {
     expect(isoDay(entriesByUrl.get(`${SITE_URL}/birth-card/joker`)?.lastModified)).toBe(
-      "2026-09-01",
+      CARD_MEANING_PAGES_UPDATED,
     );
   });
 

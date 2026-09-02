@@ -4,6 +4,9 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CONTACT_EMAIL } from "@/lib/site";
 
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 6, 2026";
+const UPDATED = PAGE_UPDATED_DATES["/refund-policy"];
 
 export default function RefundPolicy() {
   return (
@@ -29,7 +32,7 @@ export default function RefundPolicy() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Refund Policy
         </h1>
-        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {UPDATED}</p>
+        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {updatedLabel(UPDATED)}</p>
       </header>
 
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">

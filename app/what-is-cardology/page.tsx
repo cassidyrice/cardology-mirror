@@ -12,9 +12,10 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-09-01";
+const UPDATED = PAGE_UPDATED_DATES["/what-is-cardology"];
 
 const TITLE = "What Is Cardology? Not Cardiology, Not Tarot, Explained";
 const DESCRIPTION =

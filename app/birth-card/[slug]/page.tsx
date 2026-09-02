@@ -28,9 +28,10 @@ import {
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
+import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const SEO_UPDATED = "2026-08-15";
+const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
 
 // Only the 52 card-meaning pages are prerendered here. The 366 birthday slugs
 // are deliberately NOT built: the cardology-unlock Worker in front of Pages

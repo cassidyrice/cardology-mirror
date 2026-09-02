@@ -6,12 +6,13 @@ import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthday
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
 const TITLE = "Cards of Destiny: Find Your Birth Card";
 const DESCRIPTION =
   "Cards of Destiny / Destiny Cards: birthday → one playing card. Free calculator and chart. Same family as Cardology, not tarot. Same date, same card.";
-const UPDATED = "2026-08-15";
+const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
   title: TITLE,

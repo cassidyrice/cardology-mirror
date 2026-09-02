@@ -4,9 +4,10 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-15";
+const UPDATED = PAGE_UPDATED_DATES["/planetary-ruling-card"];
 
 const TITLE = "Planetary Ruling Card: What It Is & How to Find Yours";
 const DESCRIPTION =
