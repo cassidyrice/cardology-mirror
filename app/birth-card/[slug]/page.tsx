@@ -28,6 +28,7 @@ import {
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
+import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -113,6 +114,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const angles = interpretiveAngles(card);
   const videos = videosForCard(card.slug);
   const famous = famousForCard(card.code);
+  const readingNotes = readingNotesFor(card.slug);
 
   const jsonLd = [
     faqJsonLd(faqs),
@@ -191,17 +193,25 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="In a general reading">
         <p>{generalReadingText(card)}</p>
-        <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
-        <p>
-          {loveReadingText(card)}{" "}
-          {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
-              not this Next app — plain <a>, hub href from the generated index. */}
-          <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
-            See {card.label} compatibility with all 52 cards →
-          </a>
-        </p>
-        <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
-        <p>{moneyReadingText(card)}</p>
+        {readingNotes ? (
+          <>
+            <h3 className="mt-4 font-serif text-base text-bone">In a reading</h3>
+            <p>{readingNotes.reading}</p>
+            <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
+            <p>
+              {readingNotes.love}{" "}
+              {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
+                  not this Next app — plain <a>, hub href from the generated index. */}
+              <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
+                See {card.label} compatibility with all 52 cards →
+              </a>
+            </p>
+            <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
+            <p>{readingNotes.work}</p>
+            <h3 className="mt-4 font-serif text-base text-bone">As a 52-day period card</h3>
+            <p>{readingNotes.timing}</p>
+          </>
+        ) : null}
         <h3 className="mt-4 font-serif text-base text-bone">As advice</h3>
         <p>{adviceReadingText(card)}</p>
       </Section>
