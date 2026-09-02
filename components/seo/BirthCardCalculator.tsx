@@ -254,6 +254,8 @@ function BirthCardResultCard({
         placement="birth-card-calculator-result"
         birthdate={date || reveal.birthdate}
         source="birth-card-calculator"
+        cardLabel={bc?.label}
+        cardSlug={slug ?? undefined}
       />
       {!isJoker && (
         <CurrentPeriod birthdate={date || reveal.birthdate} />

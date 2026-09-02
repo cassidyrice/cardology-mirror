@@ -219,9 +219,16 @@ export async function POST(
             phone_number_collection: {
               enabled: false,
             },
-            allow_promotion_codes: true,
+            // No public promo code exists; the field only sends $9 buyers hunting for one.
+            allow_promotion_codes: false,
             billing_address_collection: "auto",
             customer_creation: "always",
+            custom_text: {
+              submit: {
+                message:
+                  "One-time $9. Instant PDFs. Broken file or wrong card: we replace or refund.",
+              },
+            },
           },
     );
 
