@@ -620,8 +620,10 @@ export function ScrollScrub({
                     className="scroll-scrub__poster"
                     decoding="async"
                     fetchPriority={index === 0 ? "high" : "auto"}
+                    height={496}
                     loading={index === 0 ? "eager" : "lazy"}
                     src={segment.poster}
+                    width={864}
                   />
                 </picture>
               </figure>
