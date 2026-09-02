@@ -11,6 +11,7 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_URL,
 } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
 
 const UPDATED = "2026-08-15";
 
@@ -128,7 +129,7 @@ export default function BirthCardIndex() {
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
-        · Reviewed August 15, 2026 ·{" "}
+        · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>{" "}

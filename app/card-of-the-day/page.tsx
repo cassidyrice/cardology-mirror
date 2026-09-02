@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
 import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
 
@@ -109,6 +110,7 @@ function essence(card: CardSeo): string {
 export default function CardOfTheDayPage() {
   const now = denverToday();
   const label = labelOf(now);
+  const updatedIso = `${now.year}-${String(now.month).padStart(2, "0")}-${String(now.day).padStart(2, "0")}`;
   // Same date→card mapping the daily shorts pipeline uses: the day's card IS
   // the birth card of the date. Null only on December 31, the Joker's day.
   const today: BirthdateSeo | null = birthdateBySlug(slugOf(now));
@@ -150,7 +152,7 @@ export default function CardOfTheDayPage() {
       description:
         "Free daily playing-card reading: every calendar date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. Updates daily.",
       url: `${SITE_URL}/card-of-the-day`,
-      dateModified: `${now.year}-${String(now.month).padStart(2, "0")}-${String(now.day).padStart(2, "0")}`,
+      dateModified: updatedIso,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       speakable: {
         "@type": "SpeakableSpecification",
@@ -199,6 +201,7 @@ export default function CardOfTheDayPage() {
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">{directAnswer}</p>
       </div>
+      <p className="mb-2 text-xs text-faint">Updated {updatedLabel(updatedIso)}</p>
       <p className="mb-6">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
           Find YOUR birth card free →

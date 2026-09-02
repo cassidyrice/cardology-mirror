@@ -7,9 +7,9 @@ import { TableScroll } from "@/components/seo/TableScroll";
 import { suitColorOnPaper } from "@/lib/cards";
 import { allCardSeo, getCardSeo, type CardSeo } from "@/lib/seo-cards";
 import { SITE_URL } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
 
 const UPDATED = "2026-09-01";
-const UPDATED_LABEL = "September 1, 2026";
 
 const TITLE =
   "Cardology Karma Cards: Gift and Challenge Card for All 52 Birth Cards";
@@ -154,7 +154,7 @@ export default function KarmaCardsPage() {
           <Link href="/about" className="underline underline-offset-4">
             Cassidy Rice
           </Link>{" "}
-          · Updated {UPDATED_LABEL} ·{" "}
+          · Updated {updatedLabel(UPDATED)} ·{" "}
           <Link href="/methodology" className="underline underline-offset-4">
             Calculation method
           </Link>

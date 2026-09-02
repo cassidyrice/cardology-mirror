@@ -5,6 +5,9 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 import { serializeJsonLdForHtml } from "@/lib/structured-data";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = "2026-08-16";
 
 const TITLE = "Playing Cards Birthday Chart & 52-Card Astrology";
 const DESCRIPTION =
@@ -82,7 +85,7 @@ export default function CardAstrology() {
     url: pageUrl,
     mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
     datePublished: "2026-06-05",
-    dateModified: "2026-08-16",
+    dateModified: UPDATED,
     author: {
       "@type": "Person",
       name: "Cassidy Rice",
@@ -110,7 +113,7 @@ export default function CardAstrology() {
         </p>
       </div>
       <p className="mb-4 text-xs text-faint">
-        By Cassidy Rice · Updated August 16, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/methodology" className="text-gold underline underline-offset-4">
           Methodology
         </Link>

@@ -12,6 +12,9 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = "2026-09-01";
 
 const TITLE = "What Is Cardology? Not Cardiology, Not Tarot, Explained";
 const DESCRIPTION =
@@ -124,7 +127,7 @@ export default function WhatIsCardology() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-09-01",
+    dateModified: UPDATED,
     mainEntityOfPage: "https://cardblueprints.com/what-is-cardology",
   };
 
@@ -152,7 +155,7 @@ export default function WhatIsCardology() {
       </p>
 
       <p className="mb-2 text-xs text-faint">
-        By Cassidy Rice · Updated September 1, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>

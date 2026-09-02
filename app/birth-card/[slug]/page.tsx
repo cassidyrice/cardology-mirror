@@ -28,6 +28,7 @@ import {
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
 import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
+import { updatedLabel } from "@/lib/page-updated";
 
 const SEO_UPDATED = "2026-08-15";
 
@@ -162,6 +163,12 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
       </div>
+      <p className="mt-3 text-xs text-faint">
+        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial policy
+        </Link>
+      </p>
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
@@ -531,6 +538,12 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{dateQuickAnswer(date)}</p>
       </div>
+      <p className="mt-3 text-xs text-faint">
+        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial policy
+        </Link>
+      </p>
       <p className="prose-reading mt-3 text-mist">
         Born on {date.label}? Your Cardology birth card is the {card.label}
         {card.title ? `, ${card.title}` : ""} — same answer every year, no negotiation. {date.label} sits in {zodiac.sign}, so

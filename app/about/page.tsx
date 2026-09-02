@@ -3,6 +3,9 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = "2026-08-17";
 
 export const dynamic = "force-static";
 
@@ -19,7 +22,7 @@ export default function AboutPage() {
     "@type": "AboutPage",
     name: "About Card Blueprints",
     url: `${SITE_URL}/about`,
-    dateModified: "2026-08-17",
+    dateModified: UPDATED,
     about: {
       "@type": "Thing",
       name: "Cardology",
@@ -61,7 +64,7 @@ export default function AboutPage() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">Updated August 17, 2026</p>
+        <p className="mt-3 text-sm text-[#5b5148]">Updated {updatedLabel(UPDATED)}</p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
