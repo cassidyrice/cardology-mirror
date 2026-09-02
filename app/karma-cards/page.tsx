@@ -254,7 +254,11 @@ export default function KarmaCardsPage() {
             </thead>
             <tbody>
               {rows.map(({ card, gift, challenge }) => (
-                <tr key={card.slug} className="border-b border-[#14110d]/10 last:border-b-0">
+                <tr
+                  key={card.slug}
+                  id={card.slug}
+                  className="scroll-mt-24 border-b border-[#14110d]/10 last:border-b-0"
+                >
                   <th scope="row" className="px-4 py-2.5 font-normal">
                     <Link
                       href={`/birth-card/${card.slug}`}
