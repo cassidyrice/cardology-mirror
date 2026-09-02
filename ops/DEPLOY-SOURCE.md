@@ -17,6 +17,9 @@ dashboard.
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
 | **Deployed commit** | `76b070aa7baf79df9bc6fb7349ea8c2e65837b10` |
+| **Worker** | `cardology-unlock` |
+| **Worker version** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
+| **Worker rollback** | `71d656ae-685d-4d66-8651-b0ba8e84b795` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
@@ -131,8 +134,15 @@ artifact digest. After an intentional deploy it will fail until you update the
 record — that failure is the point. Update, in this file and in the script:
 
 - `DEPLOY_COMMIT` / the **Deployed commit** row above
+- `WORKER_VERSION` / `WORKER_ROLLBACK` / the **Worker version** and **Worker rollback** rows
 - `EXPECTED_WELLKNOWN_SHA256`, if that file changed
 - the **Last verified** date
+
+`bash scripts/record-deploy.sh` writes the Pages commit and the live Worker
+version (`npx wrangler deployments list --name cardology-unlock`). Rollback is
+the previous distinct version id: `npx wrangler rollback <id> --name cardology-unlock`.
+`scripts/verify-deploy-source.sh` exits 0 only if **both** the Pages commit
+probes and the live Worker version match the record.
 
 If you change which branch is canonical, update the **Branch** row and the
 `DEPLOY_BRANCH` constant too.

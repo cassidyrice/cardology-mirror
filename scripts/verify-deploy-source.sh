@@ -8,8 +8,8 @@
 #   bash scripts/verify-deploy-source.sh
 #
 # Exit codes:
-#   0  production matches the recorded deploy source
-#   1  MISMATCH — production is not serving the recorded commit
+#   0  production matches the recorded Pages commit AND Worker version
+#   1  MISMATCH — production is not serving the recorded commit / Worker
 #   2  could not reach production / probe inconclusive
 set -euo pipefail
 
@@ -18,6 +18,9 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
 DEPLOY_COMMIT="76b070aa7baf79df9bc6fb7349ea8c2e65837b10"
+WORKER_NAME="cardology-unlock"
+WORKER_VERSION="3661c1c1-c8f3-4bbd-a31c-6908c8af5998"
+WORKER_ROLLBACK="71d656ae-685d-4d66-8651-b0ba8e84b795"
 
 WELLKNOWN_PATH="/.well-known/apple-developer-merchantid-domain-association"
 WELLKNOWN_REPO_PATH="public/.well-known/apple-developer-merchantid-domain-association"
@@ -47,6 +50,7 @@ echo "=========================================="
 echo " Verifying deploy source"
 echo " Site:   $SITE_ORIGIN"
 echo " Record: $DEPLOY_BRANCH @ ${DEPLOY_COMMIT:0:7}"
+echo " Worker: $WORKER_NAME @ ${WORKER_VERSION:0:8} (rollback ${WORKER_ROLLBACK:0:8})"
 echo "=========================================="
 
 # --- Probe 1: file that first shipped in 0b60efb; older builds 404 ---
@@ -115,6 +119,59 @@ else
   fi
 fi
 
+# --- Probe 4: live Worker version vs the record (wrangler CLI; no tokens printed) ---
+echo "→ probe 4: Worker $WORKER_NAME version"
+worker_pair="$(npx wrangler deployments list --name "$WORKER_NAME" --json 2>/dev/null | python3 -c '
+import json, sys
+raw = sys.stdin.read()
+try:
+    deploys = json.loads(raw)
+except Exception:
+    sys.exit(1)
+if not isinstance(deploys, list) or not deploys:
+    sys.exit(1)
+deploys = sorted(deploys, key=lambda d: d.get("created_on") or "")
+
+def vid(d):
+    vs = d.get("versions") or []
+    if not vs or not isinstance(vs[0], dict):
+        return ""
+    return vs[0].get("version_id") or ""
+
+live = vid(deploys[-1])
+if not live:
+    sys.exit(1)
+prev = ""
+for d in reversed(deploys[:-1]):
+    v = vid(d)
+    if v and v != live:
+        prev = v
+        break
+print(live)
+print(prev)
+' || true)"
+live_worker="$(printf '%s\n' "$worker_pair" | sed -n '1p')"
+live_rollback="$(printf '%s\n' "$worker_pair" | sed -n '2p')"
+
+if [[ -z "$live_worker" ]]; then
+  yellow "  INCONCLUSIVE: could not list Worker deployments (wrangler auth or network)."
+  inconclusive=1
+else
+  if [[ "$live_worker" == "$WORKER_VERSION" ]]; then
+    green "  OK: live Worker ${live_worker:0:8} matches the record"
+  else
+    red "  FAIL: live Worker is ${live_worker:0:8}, record is ${WORKER_VERSION:0:8}"
+    red "  Run bash scripts/record-deploy.sh after the Worker deploy, or rollback."
+    fail=1
+  fi
+  if [[ -n "$WORKER_ROLLBACK" && "$live_rollback" != "$WORKER_ROLLBACK" ]]; then
+    red "  FAIL: live rollback target is ${live_rollback:0:8}, record is ${WORKER_ROLLBACK:0:8}"
+    fail=1
+  elif [[ -n "$WORKER_ROLLBACK" ]]; then
+    green "  OK: rollback ${WORKER_ROLLBACK:0:8} matches previous Worker version"
+  fi
+fi
+
 # --- Cross-check: does the record still match the repo? (advisory) ---
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   if git cat-file -e "${DEPLOY_COMMIT}^{commit}" 2>/dev/null; then
@@ -155,5 +212,5 @@ if [[ "$inconclusive" -ne 0 ]]; then
   yellow "INCONCLUSIVE: could not reach production. Network problem, not a deploy problem."
   exit 2
 fi
-green "OK: production is serving ${DEPLOY_BRANCH} @ ${DEPLOY_COMMIT:0:7} as recorded."
+green "OK: production is serving ${DEPLOY_BRANCH} @ ${DEPLOY_COMMIT:0:7} and Worker ${WORKER_VERSION:0:8} as recorded."
 exit 0
