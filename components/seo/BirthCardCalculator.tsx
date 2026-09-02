@@ -18,6 +18,8 @@ import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { DeepDiveSample } from "./DeepDiveSample";
+import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
 
@@ -248,8 +250,15 @@ function BirthCardResultCard({
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
       <p className="mt-2 text-center font-serif text-xl text-brand-ink">
-        That is one line. The Deep Dive is seven pages.
+        That is one line. The Deep Dive is seven pages. This is page 1.
       </p>
+      {!isJoker && (
+        <DeepDiveSample
+          cardSlug={slug}
+          cardLabel={bc?.label}
+          placement="birth-card-calculator-result"
+        />
+      )}
       <DeepDiveCta
         placement="birth-card-calculator-result"
         birthdate={date || reveal.birthdate}
@@ -260,18 +269,23 @@ function BirthCardResultCard({
       {!isJoker && (
         <CurrentPeriod birthdate={date || reveal.birthdate} />
       )}
-      <figure className="mt-4 max-w-md text-center">
-        <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
-          &ldquo;I&rsquo;m a builder. I&rsquo;ve started more than one business. I&rsquo;ll also admit I&rsquo;m a bit of a trickster — that&rsquo;s not a confession, that&rsquo;s just the job. Then I open the Deep Dive, find out I&rsquo;m the Jack of Diamonds, and the description might as well have had my name on it. I don&rsquo;t get easily impressed. That one got me.&rdquo;
-        </blockquote>
-        <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
-          <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
-          Stephen, 65 · Jack of Diamonds
-        </figcaption>
-        <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
-          Real customer words, shared with permission. Individual reflections, not typical-results claims.
-        </p>
-      </figure>
+      {(() => {
+        const t = testimonialForCard(bc?.label);
+        return (
+          <figure className="mt-4 max-w-md text-center">
+            <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+              <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
+              {testimonialByline(t)}
+            </figcaption>
+            <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
+              Real customer words, shared with permission. Individual reflections, not typical-results claims.
+            </p>
+          </figure>
+        );
+      })()}
       <BirthdayWorkerAnchor
         reveal={reveal}
         todayIso={todayISO()}

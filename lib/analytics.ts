@@ -9,6 +9,7 @@ export const CLIENT_FUNNEL_EVENTS = [
   "card_shared",
   "offer_selected",
   "offer_cta_clicked",
+  "sample_viewed",
   "checkout_error",
   "elroy_teaser_shown",
   "elroy_opened",

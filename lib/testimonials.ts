@@ -79,3 +79,20 @@ export function testimonialByline(t: Testimonial): string {
   if (t.card) bits.push(t.card);
   return bits.join(" · ");
 }
+
+/**
+ * The review to show next to a specific card: same card first, then same suit,
+ * then the first Deep Dive review. Keeps the calculator result from quoting a
+ * Jack of Diamonds to every Hearts visitor.
+ */
+export function testimonialForCard(cardLabel?: string | null): Testimonial {
+  const pool = testimonialsFor("deep-dive").filter((t) => !t.founder);
+  if (cardLabel) {
+    const same = pool.find((t) => t.card?.toLowerCase() === cardLabel.toLowerCase());
+    if (same) return same;
+    const suit = cardLabel.split(" of ")[1]?.toLowerCase();
+    const sameSuit = suit && pool.find((t) => t.card?.toLowerCase().endsWith(` of ${suit}`));
+    if (sameSuit) return sameSuit;
+  }
+  return pool[0];
+}
