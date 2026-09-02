@@ -29,5 +29,12 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - Worker for /born-on and /compatibility: `~/cardblueprints-content/ops/seo-multi-agent/wave3-impl/cardology-unlock-bundle/` (not this repo)
 - Deep Dive PDFs: R2 `cardblueprints-ebooks/deep-dive/`, uploader `scripts/upload-deep-dive-card-pdfs.sh`
 
+## Several agents at once (shared terminal)
+- **Claim before you edit.** Append `- [~] <date> <agent> · <task> · claimed` to `~/cardblueprints-ops/QUEUE.md` before touching a file. One agent in `~/cardology-elroy-qa` at a time; one agent in the Worker bundle at a time. The repo and the Worker are separate files, so one of each can run in parallel.
+- **Only Claude (Fable or Opus) deploys.** Codex and Antigravity commit and stop at "ready to ship". Grok never writes to the repo, the Worker, git, Stripe or Cloudflare; it writes research to `~/cardblueprints-ops/outputs/`.
+- **Never commit another agent's files.** `git add` your own paths, never `-a`. If the tree has changes you did not make, leave them and say so.
+- **Specs live in `~/cardblueprints-ops/plans/`.** Do the task as written; a deviation goes in your report, not into the code silently.
+- **Report shape, every time:** files changed, commands run, verification output, what you did not do. Then stop.
+
 ## Slash commands (in `.claude/commands/`)
 `/resume` `/whats-live` `/ship` `/growth` `/checkout-check` `/polish <path>`
