@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-02** (deployed `main` @ `664bc6c` — Merge agent/cursor-O15 (foreman); previous record `b96923c`)
+**Last verified: 2026-09-02** (deployed `main` @ `664bc6c` — Merge agent/cursor-O15 (foreman); Worker `b9f8a4b3`; previous record `b96923c`); previous record `b96923c`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -18,8 +18,8 @@ dashboard.
 | **Branch** | `main` |
 | **Deployed commit** | `664bc6c73fd45643e0de48cb12477f050d194985` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
-| **Worker rollback** | `71d656ae-685d-4d66-8651-b0ba8e84b795` |
+| **Worker version** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
+| **Worker rollback** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
