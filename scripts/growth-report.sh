@@ -74,6 +74,8 @@ echo "== CTA placement"
 q "SELECT blob12 AS placement, SUM(_sample_interval) AS n FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1='offer_cta_clicked' GROUP BY placement ORDER BY n DESC LIMIT 10"
 echo "== calculator_completed by placement"
 q "SELECT blob12 AS placement, SUM(_sample_interval) AS n FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1='calculator_completed' GROUP BY placement ORDER BY n DESC"
+echo "== calculator → CTA by page (blob4)"
+q "SELECT blob4 AS page, SUM(IF(blob1='calculator_completed',_sample_interval,0)) AS calc, SUM(IF(blob1='offer_cta_clicked',_sample_interval,0)) AS cta FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1 IN ('calculator_completed','offer_cta_clicked') GROUP BY page ORDER BY calc DESC"
 if [[ -f .env.local ]]; then
   SK="$(grep -m1 '^STRIPE_SECRET_KEY=' .env.local | cut -d= -f2- | tr -d '"' )"
   if [[ -n "$SK" ]]; then
