@@ -455,6 +455,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </Section>
       )}
 
+      <ReadNextSection card={card} />
+
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
       </Section>
@@ -697,6 +699,48 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
           See how {card.label} pairs with all 52 cards →
         </a>
       </p>
+    </Section>
+  );
+}
+
+// Cross-links for crawl depth: karma row, top three life-path pairs (Venus /
+// Moon / Mars — first three from compatForCard), and the first three calendar
+// dates that resolve to this card. Worker routes use plain <a>.
+function ReadNextSection({ card }: { card: CardSeo }) {
+  const bestPairs = (compatForCard(card.slug)?.pairs ?? []).slice(0, 3);
+  const dates = birthDatesForCard(card).slice(0, 3);
+  return (
+    <Section title="Read next">
+      <ul className="mt-4 space-y-2">
+        <li className="flex gap-2 text-sm text-mist">
+          <span className="text-gold">·</span>
+          <Link
+            href={`/karma-cards#${card.slug}`}
+            className="text-gold underline underline-offset-4"
+          >
+            Karma cards for the {card.label}
+          </Link>
+        </li>
+        {bestPairs.map((p) => (
+          <li key={p.href} className="flex gap-2 text-sm text-mist">
+            <span className="text-gold">·</span>
+            <a href={p.href} className="text-gold underline underline-offset-4">
+              {card.label} + {p.label} compatibility
+            </a>
+          </li>
+        ))}
+        {dates.map((d) => (
+          <li key={d.slug} className="flex gap-2 text-sm text-mist">
+            <span className="text-gold">·</span>
+            <a
+              href={`/born-on/${d.slug}`}
+              className="text-gold underline underline-offset-4"
+            >
+              Born on {d.label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
