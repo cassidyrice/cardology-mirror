@@ -5,9 +5,10 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 import { serializeJsonLdForHtml } from "@/lib/structured-data";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-16";
+const UPDATED = PAGE_UPDATED_DATES["/52-card-astrology-explained"];
 
 const TITLE = "Playing Cards Birthday Chart & 52-Card Astrology";
 const DESCRIPTION =

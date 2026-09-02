@@ -11,9 +11,10 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_URL,
 } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-15";
+const UPDATED = PAGE_UPDATED_DATES["/birth-card"];
 
 const faqs = [
   {

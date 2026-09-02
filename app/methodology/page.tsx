@@ -5,9 +5,10 @@ import Link from "next/link";
 import { NewsletterSignupForm } from "@/components/seo/NewsletterSignupForm";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_URL } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const PAGE_UPDATED = "2026-08-17";
+const PAGE_UPDATED = PAGE_UPDATED_DATES["/methodology"];
 const DATASET_VERSION = "2026-08-15";
 
 export const dynamic = "force-static";

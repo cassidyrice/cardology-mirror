@@ -10,6 +10,7 @@ import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
 const MONTH_DIRECTORY = [
@@ -30,7 +31,7 @@ const MONTH_DIRECTORY = [
 const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)";
 const DESCRIPTION =
   "The full Cardology birthday chart (every date → one of 52 playing cards) plus a free calculator: enter a birthday for your birth card and ruling card. Not tarot.";
-const REVIEWED_DATE = "2026-09-01";
+const REVIEWED_DATE = PAGE_UPDATED_DATES["/birth-card-calculator"];
 
 export const metadata: Metadata = {
   title: TITLE,

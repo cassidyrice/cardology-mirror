@@ -3,9 +3,10 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-17";
+const UPDATED = PAGE_UPDATED_DATES["/about"];
 
 export const dynamic = "force-static";
 

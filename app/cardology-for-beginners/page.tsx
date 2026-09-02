@@ -4,12 +4,15 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
 
+const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
 const DESCRIPTION =
   "Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and when a written Blueprint helps.";
@@ -138,7 +141,7 @@ export default function CardologyForBeginnersPage() {
         </p>
       </div>
       <p className="mb-6 text-xs text-faint">
-        By Cassidy Rice · Updated August 7, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>

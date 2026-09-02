@@ -6,9 +6,10 @@ import { SUIT_COLOR_PAPER, SUIT_DOMAIN, SUIT_GLYPH, type Suit } from "@/lib/card
 import { rankTheme, suitDomainPlain, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { serializeJsonLdForHtml } from "@/lib/structured-data";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-16";
+const UPDATED = PAGE_UPDATED_DATES["/how-to-read-playing-cards"];
 
 const TITLE = "Playing Card Meaning: How to Read a Deck";
 const DESCRIPTION =
