@@ -130,6 +130,13 @@ def main():
         "Your birthday maps to one card  ·  Free",
     )
     page(
+        "karma-cards",
+        ["ace-of-hearts", "3-of-hearts", "ace-of-diamonds"],
+        "CARD BLUEPRINTS",
+        ["Your two", "karma cards"],
+        "Lifetime Gift & Challenge  \u00b7  All 52 birth cards",
+    )
+    page(
         "playing-card-spreads",
         ["10-of-clubs", "8-of-diamonds", "queen-of-spades"],
         "CARD BLUEPRINTS",
