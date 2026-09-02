@@ -223,12 +223,8 @@ export async function POST(
             allow_promotion_codes: false,
             billing_address_collection: "auto",
             customer_creation: "always",
-            custom_text: {
-              submit: {
-                message:
-                  "One-time $9. Instant PDFs. Broken file or wrong card: we replace or refund.",
-              },
-            },
+            // No custom_text: Stripe rejects it while Managed Payments is on for this account
+            // (live error 2026-09-02). The refund line lives under the CTA on the site instead.
           },
     );
 
