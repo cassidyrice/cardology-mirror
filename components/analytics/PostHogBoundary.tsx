@@ -57,7 +57,7 @@ export function PostHogBoundary({
   useEffect(() => {
     const sendPageView = () => {
       if (readPrivacyConsent() !== "granted") return false;
-      if (!posthog.__loaded) return false;
+      if (!posthog.__loaded || !posthog.is_capturing()) return false;
       const page = sanitizePosthogPageUrl(window.location.href);
       if (!page || page === lastPage.current) return false;
       lastPage.current = page;
@@ -70,7 +70,7 @@ export function PostHogBoundary({
     const interval = window.setInterval(() => {
       if (sendPageView()) window.clearInterval(interval);
     }, 50);
-    const timeout = window.setTimeout(() => window.clearInterval(interval), 3000);
+    const timeout = window.setTimeout(() => window.clearInterval(interval), 8000);
     return () => {
       window.clearInterval(interval);
       window.clearTimeout(timeout);
@@ -86,7 +86,7 @@ export function sendPosthogEvent(
 ) {
   if (typeof window === "undefined") return;
   if (readPrivacyConsent() !== "granted") return;
-  if (!posthog.__loaded) return;
+  if (!posthog.__loaded || !posthog.is_capturing()) return;
   posthog.capture(name, sanitizePosthogProperties(properties));
 }
 
@@ -109,12 +109,16 @@ function startPosthog(apiKey: string, host: string) {
       element_allowlist: ["a", "button"],
     },
     disable_session_recording: true,
+    disable_surveys: true,
     persistence: "localStorage+cookie",
     sanitize_properties: (properties) =>
       sanitizePosthogProperties(properties as Record<string, unknown>),
     session_recording: {
       maskAllInputs: true,
       maskTextSelector: "input, textarea, [data-sensitive]",
+    },
+    loaded: () => {
+      posthog.opt_in_capturing();
     },
   });
 }

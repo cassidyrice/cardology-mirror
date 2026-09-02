@@ -76,6 +76,12 @@ export function sanitizePosthogProperties(
       }
       continue;
     }
+    // SDK internals ($session_id, distinct_id, token, …) must pass through.
+    // Only custom event properties go through the GA PII filter.
+    if (key.startsWith("$") || key === "distinct_id" || key === "token") {
+      next[key] = value;
+      continue;
+    }
     const cleaned = sanitizeGaEventParams({ [key]: value as GaEventParams[string] });
     if (key in cleaned) next[key] = cleaned[key];
   }
