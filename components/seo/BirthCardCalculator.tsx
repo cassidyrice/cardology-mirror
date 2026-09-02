@@ -19,6 +19,7 @@ import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
 import { DeepDiveSample } from "./DeepDiveSample";
+import { ReadingDayCta } from "./ReadingDayCta";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
@@ -269,6 +270,10 @@ function BirthCardResultCard({
       {!isJoker && (
         <CurrentPeriod birthdate={date || reveal.birthdate} />
       )}
+      <ReadingDayCta
+        placement="birth-card-calculator-result"
+        className="mt-4"
+      />
       {(() => {
         const t = testimonialForCard(bc?.label);
         return (

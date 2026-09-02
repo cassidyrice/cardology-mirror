@@ -184,6 +184,13 @@ def main():
         "Lifetime Gift & Challenge  \u00b7  All 52 birth cards",
     )
     page(
+        "karma-reading",
+        ["ace-of-hearts", "3-of-hearts", "ace-of-diamonds"],
+        "CARD BLUEPRINTS  \u00b7  $20",
+        ["Karma Card", "Reading Day"],
+        "Sat Sept 20  \u00b7  $20  \u00b7  5 minutes",
+    )
+    page(
         "playing-card-spreads",
         ["10-of-clubs", "8-of-diamonds", "queen-of-spades"],
         "CARD BLUEPRINTS",

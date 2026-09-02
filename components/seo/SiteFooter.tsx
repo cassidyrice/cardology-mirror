@@ -70,6 +70,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               <li><Link href="/birth-card-vs-ruling-card" className="hover:text-brand-ink">Birth vs Ruling Card</Link></li>
               <li><Link href="/shadow-karma-guide" className="hover:text-brand-ink">Shadow &amp; Karma Guide</Link></li>
               <li><Link href="/karma-cards" className="hover:text-brand-ink">Karma Cards</Link></li>
+              <li><Link href="/karma-reading" className="hover:text-brand-ink">Karma Card Reading Day</Link></li>
               <li><Link href="/playing-card-spreads" className="hover:text-brand-ink">Playing Card Spreads</Link></li>
               <li><Link href="/blog" className="hover:text-brand-ink">Blog</Link></li>
               <li><Link href={VIDEO_PATH} className="hover:text-brand-ink">Videos</Link></li>

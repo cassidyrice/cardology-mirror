@@ -10,6 +10,7 @@ export const CLIENT_FUNNEL_EVENTS = [
   "offer_selected",
   "offer_cta_clicked",
   "sample_viewed",
+  "reading_cta_clicked",
   "checkout_error",
   "elroy_teaser_shown",
   "elroy_opened",
@@ -64,6 +65,7 @@ const OFFER_SLUGS = new Set([
   "complete-card-blueprint",
   "birth-card-deep-dive",
   "deep-dive",
+  "karma-reading",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",
   "complete-reading",

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { ReadingDayCta } from "@/components/seo/ReadingDayCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { suitColorOnPaper } from "@/lib/cards";
@@ -301,7 +302,8 @@ export default function KarmaCardsPage() {
         </div>
       </section>
 
-      <section className="mt-12 max-w-3xl">
+      <section className="mt-12 max-w-3xl space-y-4">
+        <ReadingDayCta placement="karma-cards" />
         <DeepDiveCta placement="karma-cards" />
       </section>
 
