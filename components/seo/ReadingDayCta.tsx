@@ -5,7 +5,7 @@ import Link from "next/link";
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 
 const CTA_COPY =
-  "Want them read to you? Karma Card Reading Day, Sat Sept 20, $20 · 5 minutes →";
+  "Want them read to you? Karma Card Reading Day, Sat Sept 5, $20 · 5 minutes →";
 
 /** One-line promo for the dated Reading Day test (not a standing product). */
 export function ReadingDayCta({

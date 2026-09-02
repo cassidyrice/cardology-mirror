@@ -188,7 +188,7 @@ def main():
         ["ace-of-hearts", "3-of-hearts", "ace-of-diamonds"],
         "CARD BLUEPRINTS  \u00b7  $20",
         ["Karma Card", "Reading Day"],
-        "Sat Sept 20  \u00b7  $20  \u00b7  5 minutes",
+        "Sat Sept 5  \u00b7  $20  \u00b7  5 minutes",
     )
     page(
         "playing-card-spreads",

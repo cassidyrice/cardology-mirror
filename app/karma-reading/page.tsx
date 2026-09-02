@@ -7,20 +7,20 @@ import { updatedLabel } from "@/lib/page-updated";
 import { SITE_URL } from "@/lib/site";
 
 /** Cass supplies the Cal.com / Payment Link URL later. Empty → "Booking opens soon". */
-const READING_BOOKING_URL = "";
+const READING_BOOKING_URL = "https://cal.com/cardblueprints/karmacard";
 
 const UPDATED = PAGE_UPDATED_DATES["/karma-reading"];
 
 const TITLE =
   "Karma Card Reading: 5-Minute Audio Reading with Cassidy Rice ($20)";
 const DESCRIPTION =
-  "Book a $20, 5-minute audio karma card reading with Cassidy Rice on Sat Sept 20. Ten slots. Your Lifetime Gift and Challenge beside your birth card.";
+  "Book a $20, 5-minute audio karma card reading with Cassidy Rice on Sat Sept 5. Ten slots. Your Lifetime Gift and Challenge beside your birth card.";
 
 const OG_IMAGE = {
   url: "/og/karma-reading.png",
   width: 1200,
   height: 630,
-  alt: "Karma Card Reading Day — Saturday Sept 20, $20",
+  alt: "Karma Card Reading Day — Saturday Sept 5, $20",
 };
 
 const PAGE_URL = `${SITE_URL}/karma-reading`;
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What is Karma Card Reading Day?",
-    a: "A one-day test on Saturday, September 20, 2026: ten paid slots between 10:00 and 12:00 America/Chicago. Each slot is a $20, 5-minute audio call where Cassidy Rice reads your two karma cards beside your birth card.",
+    a: "A one-day test on Saturday, September 5, 2026: ten paid slots from 12:00 pm America/Chicago. Each slot is a $20, 5-minute audio call where Cassidy Rice reads your two karma cards beside your birth card.",
   },
   {
     q: "What do I need to book?",
@@ -83,8 +83,8 @@ export default function KarmaReadingPage() {
     "@type": "Event",
     name: "Karma Card Reading Day",
     description: DESCRIPTION,
-    startDate: "2026-09-20T10:00:00-05:00",
-    endDate: "2026-09-20T12:00:00-05:00",
+    startDate: "2026-09-05T12:00:00-05:00",
+    endDate: "2026-09-05T14:00:00-05:00",
     eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
     location: {
@@ -142,10 +142,10 @@ export default function KarmaReadingPage() {
       <section className="max-w-3xl border border-[#14110d]/15 bg-[#eadfcd]/70 p-5 sm:p-6">
         <p className="oracle-eyebrow mb-2">When</p>
         <p className="font-serif text-2xl leading-snug text-[#14110d]">
-          Saturday, September 20, 2026
+          Saturday, September 5, 2026
         </p>
         <p className="mt-2 text-base leading-relaxed text-[#3d352d]">
-          10:00–12:00 America/Chicago · ten slots · $20 · 5 minutes · audio only
+          from 12:00 pm America/Chicago · ten slots · $20 · 5 minutes · audio only
         </p>
         <div className="mt-5">
           {bookingOpen ? (
