@@ -4,6 +4,9 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = "2026-08-07";
 
 const TITLE = "Cardology vs Tarot: What's the Difference?";
 const DESCRIPTION =
@@ -73,7 +76,7 @@ export default function CardologyVsTarotPage() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-07",
+    dateModified: UPDATED,
     mainEntityOfPage: "https://cardblueprints.com/cardology-vs-tarot",
   };
 
@@ -98,7 +101,7 @@ export default function CardologyVsTarotPage() {
         </p>
       </div>
       <p className="mb-6 text-xs text-faint">
-        By Cassidy Rice · Updated August 7, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>

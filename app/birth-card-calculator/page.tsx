@@ -10,6 +10,7 @@ import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { updatedLabel } from "@/lib/page-updated";
 
 const MONTH_DIRECTORY = [
   ["January", "january-1"],
@@ -192,7 +193,7 @@ export default function CalculatorPage() {
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
-        · Chart and method reviewed September 1, 2026 ·{" "}
+        · Updated {updatedLabel(REVIEWED_DATE)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial standards
         </Link>
