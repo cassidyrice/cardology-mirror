@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `76b070a` — PostHog: let SDK internals past the PII filter so pageviews arrive; previous record `b280c8f`)
+**Last verified: 2026-09-02** (deployed `main` @ `b96923c` — Merge agent/cursor-C1: every dated page shows its updated date; equity test pins the 11 promoted cards; previous record `76b070a`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `76b070aa7baf79df9bc6fb7349ea8c2e65837b10` |
+| **Deployed commit** | `b96923c97c9826eb999097d956a98a80cc912e9d` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
 | **Worker rollback** | `71d656ae-685d-4d66-8651-b0ba8e84b795` |
