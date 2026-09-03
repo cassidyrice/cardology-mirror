@@ -25,7 +25,14 @@ export const metadata: Metadata = {
   title: "Card Blueprints | Birth Cards & Cardology",
   description:
     "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the instant $9 Deep Dive.",
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   applicationName: SITE_NAME,
   keywords: [
     "cardology",
@@ -145,6 +152,17 @@ export default function RootLayout({
           type="application/rss+xml"
           title={`${SITE_NAME} — Cardology Blog`}
           href={`${SITE_URL}/feed.xml`}
+        />
+        {/* Explicit icon links so browsers that still request /favicon.ico and
+            apple-touch URLs resolve (metadata.icons alone misses precomposed). */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+        <link
+          rel="apple-touch-icon-precomposed"
+          href="/apple-touch-icon-precomposed.png"
+          sizes="180x180"
         />
         <script
           type="application/ld+json"
