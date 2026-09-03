@@ -7,7 +7,7 @@ import { updatedLabel } from "@/lib/page-updated";
 import { SITE_URL } from "@/lib/site";
 
 /** Cass supplies the Cal.com / Payment Link URL later. Empty → "Booking opens soon". */
-const READING_BOOKING_URL = "https://cal.com/cardblueprints/karmacard";
+const READING_BOOKING_URL = "https://buy.stripe.com/3cIeVc31B7uoeqp2dv2wU05";
 
 const UPDATED = PAGE_UPDATED_DATES["/karma-reading"];
 
@@ -155,7 +155,7 @@ export default function KarmaReadingPage() {
               target="_blank"
               className="accent-button large-button inline-flex text-center"
             >
-              Book your slot — $20
+              Pay $20, then pick your 5 minutes
             </a>
           ) : (
             <p
@@ -166,6 +166,12 @@ export default function KarmaReadingPage() {
             </p>
           )}
         </div>
+        {bookingOpen ? (
+          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+            Two steps: pay on Stripe (it asks for your birthday), then you land on the
+            booking page and choose your 5-minute time. Both take about a minute.
+          </p>
+        ) : null}
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-[#3d352d]">
