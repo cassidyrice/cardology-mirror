@@ -19,7 +19,8 @@ export async function GET(req: NextRequest) {
   }
   const cfToken = process.env.CF_ANALYTICS_TOKEN;
   if (!cfToken) {
-    return NextResponse.json({ error: "CF_ANALYTICS_TOKEN is not set" }, { status: 503, headers: { "cache-control": "no-store" } });
+    // 200 on purpose: Cloudflare swaps a Worker's 5xx body for its own error page, hiding the message.
+    return NextResponse.json({ error: "CF_ANALYTICS_TOKEN is not set" }, { status: 200, headers: { "cache-control": "no-store" } });
   }
 
   const now = new Date();
@@ -40,7 +41,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "live metrics failed" },
-      { status: 502, headers: { "cache-control": "no-store" } },
+      { status: 200, headers: { "cache-control": "no-store" } },
     );
   }
 }

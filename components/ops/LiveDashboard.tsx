@@ -89,7 +89,7 @@ export function LiveDashboard() {
     try {
       const res = await fetch("/api/live", { headers: { "x-live-token": token }, cache: "no-store" });
       const json = (await res.json()) as LivePayload & { error?: string };
-      if (!res.ok) throw new Error(json.error ?? `HTTP ${res.status}`);
+      if (!res.ok || json.error) throw new Error(json.error ?? `HTTP ${res.status}`);
       setData(json);
       setError("");
     } catch (e) {
