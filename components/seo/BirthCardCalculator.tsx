@@ -250,8 +250,16 @@ function BirthCardResultCard({
         </Link>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      <p className="mt-2 text-center font-serif text-xl text-brand-ink">
-        That is one line. The Deep Dive is seven pages. This is page 1.
+      {!isJoker && (
+        <ReadingDayCta
+          variant="lead"
+          placement="birth-card-calculator-result-lead"
+          cardLabel={bc?.label}
+          className="mt-4"
+        />
+      )}
+      <p className="mt-6 text-center font-serif text-xl text-brand-ink">
+        Prefer to read it yourself? The Deep Dive is seven pages. This is page 1.
       </p>
       {!isJoker && (
         <DeepDiveSample
@@ -270,10 +278,6 @@ function BirthCardResultCard({
       {!isJoker && (
         <CurrentPeriod birthdate={date || reveal.birthdate} />
       )}
-      <ReadingDayCta
-        placement="birth-card-calculator-result"
-        className="mt-4"
-      />
       {(() => {
         const t = testimonialForCard(bc?.label);
         return (
