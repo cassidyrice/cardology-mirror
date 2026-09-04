@@ -138,8 +138,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           </Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          Playing cards, not tarot. Cardology is a pattern language for people, relationships, and
-          timing. It&rsquo;s a mirror, not a forecast.
+          Playing cards, not tarot. It&rsquo;s a mirror, not a forecast.
         </p>
       </div>
     </footer>
