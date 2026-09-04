@@ -276,7 +276,20 @@ function BirthCardResultCard({
         cardSlug={slug ?? undefined}
       />
       {!isJoker && (
-        <CurrentPeriod birthdate={date || reveal.birthdate} />
+        <>
+          <CurrentPeriod birthdate={date || reveal.birthdate} />
+          <Link
+            href="/your-year"
+            className="text-sm font-medium text-brand-ink underline underline-offset-4"
+            onClick={() =>
+              trackClientFunnelEvent("year_link_clicked", {
+                placement: "birth-card-calculator-result",
+              })
+            }
+          >
+            See your whole year →
+          </Link>
+        </>
       )}
       {(() => {
         const t = testimonialForCard(bc?.label);
