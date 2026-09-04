@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { DEEP_DIVE_CALCULATOR_FORM_HREF } from "@/lib/deep-dive";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -8,10 +7,63 @@ import {
   VIDEO_PATH,
 } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
-import { NewsletterSignupForm } from "./NewsletterSignupForm";
 
-// One footer for every marketing/editorial surface. The header stays at five
-// destinations; everything long-tail lands here.
+const FREE_TOOLS = [
+  { label: "Find Your Card", href: "/birth-card-calculator" },
+  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
+  { label: "Today's Card", href: "/card-of-the-day" },
+  { label: "52-Day Period Tool", href: "/52-day-period-meaning-tool" },
+  { label: "All 52 Cards", href: "/birth-card" },
+  { label: "Birthdays by Date", href: BIRTHDAY_DIRECTORY_PATH, external: true },
+  { label: "All Pairings", href: COMPATIBILITY_DIRECTORY_PATH, external: true },
+] as const;
+
+const READ = [
+  { label: "Blog", href: "/blog" },
+  { label: "Videos", href: VIDEO_PATH },
+  { label: "Beginners", href: "/cardology-for-beginners" },
+  { label: "What Is Cardology", href: "/what-is-cardology" },
+  { label: "Cardology vs Tarot", href: "/cardology-vs-tarot" },
+  { label: "Karma Cards", href: "/karma-cards" },
+  { label: "Spreads", href: "/playing-card-spreads" },
+] as const;
+
+const GET = [
+  { label: "Karma Card Reading ($20)", href: "/karma-reading" },
+  { label: "Deep Dive ($9)", href: "/products/birth-card-deep-dive" },
+  { label: "Free course", href: "/free-course" },
+] as const;
+
+const ABOUT = [
+  { label: "About", href: "/about" },
+  { label: "Methodology", href: "/methodology" },
+  { label: "Editorial policy", href: "/editorial-policy" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+function FooterLink({
+  href,
+  children,
+  external,
+}: {
+  href: string;
+  children: React.ReactNode;
+  external?: boolean;
+}) {
+  if (external) {
+    return (
+      <a href={href} className="hover:text-brand-ink">
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className="hover:text-brand-ink">
+      {children}
+    </Link>
+  );
+}
+
 export function SiteFooter({ bare = false }: { bare?: boolean }) {
   return (
     <footer
@@ -22,74 +74,72 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
       }
     >
       <div className={bare ? "" : "mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 lg:px-10"}>
-        <p className="mb-6">
+        <p className="mb-10">
           <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
             <BrandLogo compact />
           </Link>
         </p>
-        <div className="mb-10">
-          <NewsletterSignupForm source="site-footer" />
-        </div>
-        <div className="grid gap-10 sm:grid-cols-3">
-          <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Paid products</p>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/products/birth-card-deep-dive" className="font-semibold text-brand-ink hover:underline">
-                  Birth Card Deep Dive — $9
-                </Link>
-              </li>
-                            <li>
-                <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="hover:text-brand-ink">
-                  Find your card free
-                </Link>
-              </li>
-            </ul>
-          </div>
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Free tools</p>
             <ul className="space-y-2">
-              <li><Link href="/birth-card-calculator" className="hover:text-brand-ink">Birth Card Calculator</Link></li>
-              <li><Link href="/birth-card-compatibility-calculator" className="hover:text-brand-ink">Compatibility Calculator</Link></li>
-              <li><Link href="/52-day-period-meaning-tool" className="hover:text-brand-ink">52-Day Period Tool</Link></li>
-              <li><Link href="/birth-card" className="hover:text-brand-ink">All 52 Card Meanings</Link></li>
-              <li><Link href="/card-of-the-day" className="hover:text-brand-ink">Card of the Day</Link></li>
-              <li><a href={BIRTHDAY_DIRECTORY_PATH} className="hover:text-brand-ink">Birthdays by Date</a></li>
-              <li><a href={COMPATIBILITY_DIRECTORY_PATH} className="hover:text-brand-ink">All Card Pairings</a></li>
+              {FREE_TOOLS.map((item) => (
+                <li key={item.href}>
+                  <FooterLink href={item.href} external={"external" in item && item.external}>
+                    {item.label}
+                  </FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
-            <p className="mb-3 font-serif text-base text-brand-ink">Learn</p>
+            <p className="mb-3 font-serif text-base text-brand-ink">Read</p>
             <ul className="space-y-2">
-              <li><Link href="/what-is-cardology" className="hover:text-brand-ink">What Is Cardology?</Link></li>
-              <li><Link href="/cardology-for-beginners" className="hover:text-brand-ink">Cardology for Beginners</Link></li>
-              <li><Link href="/how-to-read-playing-cards" className="hover:text-brand-ink">How to Read Playing Cards</Link></li>
-              <li><Link href="/cardology-vs-tarot" className="hover:text-brand-ink">Cardology vs Tarot</Link></li>
-              <li><Link href="/cardology-compatibility" className="hover:text-brand-ink">Compatibility</Link></li>
-              <li><Link href="/52-card-astrology-explained" className="hover:text-brand-ink">52-Card Astrology</Link></li>
-              <li><Link href="/birth-card-vs-ruling-card" className="hover:text-brand-ink">Birth vs Ruling Card</Link></li>
-              <li><Link href="/shadow-karma-guide" className="hover:text-brand-ink">Shadow &amp; Karma Guide</Link></li>
-              <li><Link href="/karma-cards" className="hover:text-brand-ink">Karma Cards</Link></li>
-              <li><Link href="/karma-reading" className="hover:text-brand-ink">Karma Card Reading Day</Link></li>
-              <li><Link href="/playing-card-spreads" className="hover:text-brand-ink">Playing Card Spreads</Link></li>
-              <li><Link href="/blog" className="hover:text-brand-ink">Blog</Link></li>
-              <li><Link href={VIDEO_PATH} className="hover:text-brand-ink">Videos</Link></li>
-              <li><Link href="/methodology" className="hover:text-brand-ink">Methodology</Link></li>
-              <li><Link href="/about" className="hover:text-brand-ink">About</Link></li>
+              {READ.map((item) => (
+                <li key={item.href}>
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="mb-3 font-serif text-base text-brand-ink">Get</p>
+            <ul className="space-y-2">
+              {GET.map((item) => (
+                <li key={item.href}>
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="mb-3 font-serif text-base text-brand-ink">About</p>
+            <ul className="space-y-2">
+              {ABOUT.map((item) => (
+                <li key={item.href}>
+                  <FooterLink href={item.href}>{item.label}</FooterLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
         <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-line pt-5 text-xs">
-          <Link href="/contact" className="hover:text-brand-ink">Contact</Link>
-          <Link href="/privacy-policy" className="hover:text-brand-ink">Privacy Policy</Link>
-          <Link href="/privacy-policy#privacy-choices" className="hover:text-brand-ink">Privacy choices</Link>
-          <Link href="/terms-of-service" className="hover:text-brand-ink">Terms of Service</Link>
-          <Link href="/refund-policy" className="hover:text-brand-ink">Refund Policy</Link>
+          <Link href="/privacy-policy" className="hover:text-brand-ink">
+            Privacy
+          </Link>
+          <Link href="/privacy-policy#privacy-choices" className="hover:text-brand-ink">
+            Privacy choices
+          </Link>
+          <Link href="/terms-of-service" className="hover:text-brand-ink">
+            Terms
+          </Link>
+          <Link href="/refund-policy" className="hover:text-brand-ink">
+            Refunds
+          </Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          The $9 Birth Card Deep Dive is a 7-page PDF on your card plus the
-          Complete System Guide, matched from the same free calculator. Playing cards, not tarot. An
-          esoteric reflection framework, not a forecast.
+          Playing cards, not tarot. Cardology is a pattern language for people, relationships, and
+          timing. It&rsquo;s a mirror, not a forecast.
         </p>
       </div>
     </footer>

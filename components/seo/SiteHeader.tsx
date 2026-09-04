@@ -2,17 +2,18 @@ import Link from "next/link";
 
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
-import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
-// One header for every marketing/editorial surface. Four destinations, no
-// more: Calculator, Compatibility, Card Meanings, Learn. Paid Deep Dive
-// checkout lives in HeaderDeepDiveCta, not a calculator link.
+// Six destinations + Get a Reading. Logo is the only home link.
 const NAV_LINKS = [
-  { label: "Calculator", href: "/birth-card-calculator" },
+  { label: "Find Your Card", href: "/birth-card-calculator" },
   { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
   { label: "Card Meanings", href: "/birth-card" },
-  { label: "Learn", href: "/what-is-cardology" },
-];
+  { label: "Today's Card", href: "/card-of-the-day" },
+  { label: "Read", href: "/blog" },
+  { label: "Learn", href: "/cardology-for-beginners" },
+] as const;
+
+const READING_CTA = { label: "Get a Reading", href: "/karma-reading" } as const;
 
 export function SiteHeader() {
   return (
@@ -24,12 +25,6 @@ export function SiteHeader() {
         <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-8 lg:px-10">
           <Link href="/" className="text-brand-ink" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
-          </Link>
-          <Link
-            href="/birth-card-calculator"
-            className="whitespace-nowrap text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink lg:hidden"
-          >
-            Calculator
           </Link>
           <nav
             aria-label="Primary"
@@ -61,16 +56,21 @@ export function SiteHeader() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href={READING_CTA.href}
+                    className="accent-button mt-4 flex min-h-11 w-full items-center justify-center px-4 py-2.5 text-sm"
+                  >
+                    {READING_CTA.label}
+                  </Link>
+                </li>
               </ul>
-              <div className="mt-4 w-full">
-                <HeaderDeepDiveCta />
-              </div>
             </nav>
           </details>
-          {/* Wait until lg to show the full desktop row so destinations
-              and paid CTA retain their natural widths. */}
           <div className="hidden lg:block">
-            <HeaderDeepDiveCta />
+            <Link href={READING_CTA.href} className="accent-button small-button whitespace-nowrap">
+              {READING_CTA.label}
+            </Link>
           </div>
         </div>
       </header>

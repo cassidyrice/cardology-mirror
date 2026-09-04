@@ -15,20 +15,28 @@ function occurrences(source: string, value: string): number {
   return source.split(value).length - 1;
 }
 
-test("shared header renders Compatibility in both primary navigation variants", () => {
+test("shared header renders the six nav links in both primary navigation variants", () => {
   const markup = renderToStaticMarkup(createElement(SiteHeader));
 
   expect(markup).toContain('aria-label="Primary"');
   expect(markup).toContain('aria-label="Mobile primary"');
   expect(occurrences(markup, 'href="/birth-card-compatibility-calculator"')).toBe(2);
   expect(occurrences(markup, ">Compatibility</a>")).toBe(2);
+  expect(occurrences(markup, 'href="/card-of-the-day"')).toBe(2);
+  expect(occurrences(markup, 'href="/blog"')).toBe(2);
+  expect(occurrences(markup, 'href="/karma-reading"')).toBe(2);
+  expect(markup).toContain("Get a Reading");
+  expect(markup).toContain("Find Your Card");
+  expect(markup).toContain("Today&#x27;s Card");
 });
 
-test("bare footer renders the playing-card reading guide once", () => {
+test("bare footer keeps the single disclaimer and legal row", () => {
   const markup = renderToStaticMarkup(createElement(SiteFooter, { bare: true }));
 
-  expect(occurrences(markup, 'href="/how-to-read-playing-cards"')).toBe(1);
-  expect(occurrences(markup, ">How to Read Playing Cards</a>")).toBe(1);
+  expect(markup).toContain("Playing cards, not tarot");
+  expect(markup).toContain('href="/privacy-policy"');
+  expect(occurrences(markup, 'href="/karma-reading"')).toBe(1);
+  expect(occurrences(markup, 'href="/products/birth-card-deep-dive"')).toBe(1);
 });
 
 test("header waits until lg to switch between mobile and desktop navigation", () => {
