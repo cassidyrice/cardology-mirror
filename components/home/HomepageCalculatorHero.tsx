@@ -16,7 +16,6 @@ import {
   type BirthCardResult,
 } from "@/lib/birth-card-calculator";
 import { parseCard } from "@/lib/cards";
-import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 
 const RESULT_PLACEMENT = "home-hero-result";
 
@@ -80,25 +79,23 @@ export function HomepageCalculatorHero() {
       aria-labelledby="home-calculator-title"
       className="border-b border-brand-line bg-brand-paper"
     >
-      <div className="mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-6xl items-center gap-6 px-5 py-7 sm:gap-10 sm:px-8 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] lg:gap-16 lg:px-10 lg:py-20">
-        <div>
+      <div className="mx-auto grid w-full max-w-6xl items-start gap-4 px-5 py-5 sm:gap-10 sm:px-8 sm:py-16 lg:min-h-[calc(100svh-5rem)] lg:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.95fr)] lg:items-center lg:gap-16 lg:px-10 lg:py-20">
+        <div className="order-1 lg:order-none">
           <p className="type-eyebrow text-brand-oxblood">
             Free · instant · no signup
           </p>
           <h1
             id="home-calculator-title"
-            className="type-display mt-3 max-w-[12ch] text-brand-ink sm:mt-4"
+            className="type-display mt-2 max-w-[14ch] text-brand-ink sm:mt-4"
           >
-            Which playing card were you born under?
+            Which card were you born under?
           </h1>
-          <p className="mt-3 max-w-[34rem] font-serif text-xl leading-relaxed text-brand-ink-soft sm:mt-5 sm:text-2xl">
-            The numbers of your birthday calculate to one playing card &mdash;
-            same date, same card, not tarot and not a prediction. No signup.
-            The $9 Deep Dive is optional after.
+          <p className="mt-2 max-w-[34rem] font-serif text-base leading-relaxed text-brand-ink-soft sm:mt-5 sm:text-2xl">
+            Your birthday adds up to one playing card. Same date, same card, every time. Type it in and see yours.
           </p>
         </div>
 
-        <div className="rounded-[3px] border border-brand-line-strong bg-brand-ivory p-5 shadow-[0_24px_70px_rgba(43,32,24,0.10)] sm:p-7 lg:col-start-2 lg:row-start-1 lg:row-span-2">
+        <div className="order-2 rounded-[3px] border border-brand-line-strong bg-brand-ivory p-4 shadow-[0_24px_70px_rgba(43,32,24,0.10)] sm:p-7 lg:order-none lg:col-start-2 lg:row-start-1 lg:row-span-2">
           <form onSubmit={submit} noValidate>
             <label htmlFor="home-birthdate" className="type-eyebrow block text-brand-ink">
               Enter your birthday
@@ -121,18 +118,18 @@ export function HomepageCalculatorHero() {
               }
               aria-invalid={Boolean(error)}
               required
-              className="mt-3 min-h-12 w-full scroll-mt-24 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 font-serif text-brand-ink outline-none transition focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
+              className="mt-2 min-h-11 w-full scroll-mt-24 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 font-serif text-brand-ink outline-none transition focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20 sm:mt-3 sm:min-h-12"
             />
             <p id="home-calculator-privacy" className="mt-2 text-xs leading-relaxed text-brand-ink-soft">
-              {CALCULATOR_PRIVACY_MICROCOPY}
+              Calculated right here. Your birthday is never stored.
             </p>
             {error && (
               <p id="home-birthdate-error" role="alert" className="mt-3 text-sm text-brand-oxblood">
                 {error}
               </p>
             )}
-            <button type="submit" className="accent-button large-button mt-4 w-full">
-              Reveal my birth card
+            <button type="submit" className="accent-button large-button mt-3 w-full sm:mt-4">
+              Show my card
             </button>
           </form>
 
@@ -206,14 +203,10 @@ export function HomepageCalculatorHero() {
           )}
         </div>
 
-        <div className="lg:col-start-1 lg:row-start-2">
-          <ul className="flex flex-wrap gap-2 text-xs text-brand-ink-soft" aria-label="Calculator details">
-            {["52 cards", "366 birthdays", "not tarot"].map((item) => (
-              <li key={item} className="rounded-[3px] border border-brand-line px-3 py-2">
-                {item}
-              </li>
-            ))}
-          </ul>
+        <div className="order-3 lg:order-none lg:col-start-1 lg:row-start-2">
+          <p className="text-xs text-brand-ink-soft" aria-label="Calculator details">
+            52 cards · 366 birthdays · 1 is yours
+          </p>
 
           <HomepageLifeSpread />
         </div>

@@ -11,7 +11,8 @@ const read = (path: string) => {
 const component = read("components/seo/NewsletterSignupForm.tsx");
 const calculator = read("components/seo/BirthCardCalculator.tsx");
 const methodology = read("app/methodology/page.tsx");
-const footer = read("components/seo/SiteFooter.tsx");
+const home = read("app/page.tsx");
+const emailSection = read("components/home/EmailSignupSection.tsx");
 
 const endpoint = "https://buttondown.com/api/emails/embed-subscribe/cardblueprint";
 
@@ -22,10 +23,11 @@ test("newsletter form uses Buttondown's native confirmed-subscription endpoint",
   expect(component).toContain("required");
 });
 
-test("newsletter form states the promise and privacy boundary", () => {
-  expect(component).toContain("No daily horoscope spam");
+test("newsletter form states the Monday-card promise and privacy boundary", () => {
+  expect(component).toContain("Your card, every Monday.");
   expect(component).toContain("Unsubscribe anytime");
   expect(component).toContain('href="/privacy-policy"');
+  expect(component).not.toContain("No daily horoscope spam");
   expect(component).not.toContain('name="birthdate"');
   expect(component).not.toContain("trackClientFunnelEvent");
 });
@@ -35,7 +37,8 @@ test("newsletter form is not a competing door on the calculator result", () => {
   expect(calculator).not.toContain('source="calculator-result"');
 });
 
-test("newsletter form appears in methodology and the shared footer", () => {
+test("newsletter form appears in methodology and the home Monday section", () => {
   expect(methodology).toContain('source="methodology-dataset"');
-  expect(footer).toContain('source="site-footer"');
+  expect(home).toContain("EmailSignupSection");
+  expect(emailSection).toContain('source="home-monday"');
 });
