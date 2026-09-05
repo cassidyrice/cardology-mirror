@@ -6,6 +6,7 @@ import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
+  checkoutProductBySlug,
   publicProductBySlug,
   digitalOfferFacts,
   instantReportFacts,
@@ -37,7 +38,8 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  const product = publicProductBySlug(slug);
+  // Checkout-eligible products include the Deep Dive and the Content Calendar, which are not in the public catalog.
+  const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
 
