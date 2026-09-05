@@ -122,7 +122,7 @@ export default function PrivacyPolicy() {
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
               <h3 className="font-bold text-[#14110d]">Content Calendar</h3>
-              {/* COPY-REVIEW */}
+              
               <p className="mt-1">
                 When you use the Content Calendar, the business description you
                 enter is sent to Google Vertex (Gemini) to generate calendar rows

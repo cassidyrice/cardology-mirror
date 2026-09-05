@@ -75,7 +75,7 @@ export default function TermsOfService() {
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
-          {/* COPY-REVIEW */}
+          
           <p className="mt-3">
             The Content Calendar is a one-time purchase ($29) for 52 days of on-site
             access and CSV export. You enter a short business description; the site

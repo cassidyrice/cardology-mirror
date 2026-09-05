@@ -79,7 +79,7 @@ export default function RefundPolicy() {
 
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
-          {/* COPY-REVIEW */}
+          
           <div className="mt-3 space-y-3">
             <p>
               The Content Calendar is a one-time $29 digital product. You receive

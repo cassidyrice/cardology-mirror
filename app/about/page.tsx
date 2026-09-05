@@ -78,7 +78,7 @@ export default function AboutPage() {
       </header>
 
       <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
-        {/* COPY-REVIEW */}
+        
         <p>
           I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
           Blueprints is the site I built so you can look up your card, read the
