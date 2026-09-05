@@ -15,15 +15,15 @@ function occurrences(source: string, value: string): number {
   return source.split(value).length - 1;
 }
 
-test("shared header renders Learn more and Content Engine links", () => {
+test("shared header renders Create content link", () => {
   const markup = renderToStaticMarkup(createElement(SiteHeader));
 
   expect(markup).toContain('aria-label="Primary"');
   expect(markup).toContain('aria-label="Mobile primary"');
-  expect(occurrences(markup, 'href="/explore"')).toBe(2);
   expect(occurrences(markup, 'href="/content-engine"')).toBe(2);
-  expect(markup).toContain("Learn more");
-  expect(markup).toContain("Use this as a tool for creating");
+  expect(markup).toContain("Create content");
+  expect(markup).not.toContain("Learn more");
+  expect(markup).not.toContain("Use this as a tool for creating");
   expect(markup).not.toContain("Get a Reading");
   expect(markup).not.toContain('href="/karma-reading"');
   expect(markup).not.toContain('href="/birth-card-calculator"');

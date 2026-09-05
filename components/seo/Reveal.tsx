@@ -115,7 +115,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           className="paper-button large-button w-full"
         />
         <p className="text-sm leading-relaxed text-brand-ink-soft">
-          The same math runs a calendar.{" "}
+          Want posts written for your business, one for every day?{" "}
           <Link
             href="/content-engine"
             className="font-medium text-brand-ink underline underline-offset-4"
@@ -125,7 +125,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
               })
             }
           >
-            Use it as a tool for creating →
+            See 7 days free →
           </Link>
         </p>
       </div>

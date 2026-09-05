@@ -37,7 +37,17 @@ report.push(
   `/: button in first screen: ${Boolean(buttonBox && buttonBox.y + buttonBox.height < 844)} (y=${buttonBox?.y?.toFixed(0)})`,
 );
 await noHScroll("/");
-await page.screenshot({ path: "/tmp/cursor-S1b-home-390.png", fullPage: false });
+await page.screenshot({ path: "/tmp/cursor-F2-home-390.png", fullPage: false });
+
+const cue = page.locator("[data-home-cue]");
+await cue.waitFor({ state: "visible" });
+const cueBox = await cue.boundingBox();
+const cueInTwoScreens = Boolean(cueBox && cueBox.y < 844 * 2);
+report.push(
+  `/: cue block visible within two screens: ${cueInTwoScreens} (y=${cueBox?.y?.toFixed(0)}, h=${cueBox?.height?.toFixed(0)})`,
+);
+await page.screenshot({ path: "/tmp/cursor-F2-home-cue-390.png", fullPage: true });
+await noHScroll("/ with cue");
 
 await field.fill("1988-02-20");
 await button.click();

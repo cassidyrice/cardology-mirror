@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
+import { HomeContentCue } from "@/components/home/HomeContentCue";
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
-import { TodaysCardSection } from "@/components/home/TodaysCardSection";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
@@ -48,12 +47,7 @@ export default function Home() {
         <div className="flex flex-1 flex-col justify-center py-3 sm:py-6">
           <LandingCalculator />
         </div>
-        <TodaysCardSection />
-        <p className="border-t border-brand-line px-5 py-5 text-center text-sm">
-          <Link href="/explore" className="editorial-link text-brand-ink-soft">
-            Learn more →
-          </Link>
-        </p>
+        <HomeContentCue />
       </main>
       <SiteFooter />
     </div>
