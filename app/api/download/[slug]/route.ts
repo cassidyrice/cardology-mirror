@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getOptionalRequestContext } from "@cloudflare/next-on-pages";
 
 import { verifyDownloadToken } from "@/lib/download-token";
 import { deepDiveBonusBySlug } from "@/lib/deep-dive";
 import { digitalBySlug } from "@/lib/products";
+
+type EbookBucket = {
+  get(key: string): Promise<{ arrayBuffer(): Promise<ArrayBuffer> } | null>;
+};
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
@@ -53,12 +58,11 @@ export async function GET(
   try {
     let bytes: ArrayBuffer | null = null;
 
-    // Edge runtime: R2 binding, or fetch from a configured public asset origin.
-    // No node:fs — this route must build under next-on-pages edge.
-    // @ts-expect-error — R2 binding injected by Cloudflare
-    if (typeof EBOOK_BUCKET !== "undefined") {
-      // @ts-expect-error
-      const obj = await EBOOK_BUCKET.get(assetKey);
+    // Edge runtime: the R2 binding lives on the Pages request context (wrangler.toml
+    // [[r2_buckets]] EBOOK_BUCKET), never on the global scope. Fallback: a public asset origin.
+    const bucket = (getOptionalRequestContext()?.env as { EBOOK_BUCKET?: EbookBucket } | undefined)?.EBOOK_BUCKET;
+    if (bucket) {
+      const obj = await bucket.get(assetKey);
       if (!obj) throw new Error("R2 object not found");
       bytes = await obj.arrayBuffer();
     } else if (process.env.EBOOK_ASSET_BASE_URL) {
