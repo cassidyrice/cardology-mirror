@@ -2,20 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
+import {
+  SAMPLE_LIMIT,
+  SAMPLE_RATE_SCOPE,
+  SAMPLE_WINDOW_MS,
+  normalizeBusiness,
+  sampleCacheKey,
+} from "@/lib/content-engine/sample-cache";
 import { parseIsoDate, buildSampleStructure } from "@/lib/content-engine/structure";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
-
-const SAMPLE_LIMIT = 5;
-const SAMPLE_WINDOW_MS = 60 * 60 * 1000;
-const MAX_BUSINESS = 240;
-
-function normalizeBusiness(raw: unknown): string {
-  if (typeof raw !== "string") return "";
-  return raw.replace(/\s+/g, " ").trim().slice(0, MAX_BUSINESS);
-}
 
 function todayIsoUtc(): string {
   const d = new Date();
@@ -25,14 +23,8 @@ function todayIsoUtc(): string {
   return `${y}-${m}-${day}`;
 }
 
-async function sha256Hex(text: string): Promise<string> {
-  const data = new TextEncoder().encode(text);
-  const digest = await crypto.subtle.digest("SHA-256", data);
-  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
-}
-
 export async function POST(req: NextRequest) {
-  const limited = rateLimit(rateLimitKey(req, "content-engine-sample"), {
+  const limited = rateLimit(rateLimitKey(req, SAMPLE_RATE_SCOPE), {
     limit: SAMPLE_LIMIT,
     windowMs: SAMPLE_WINDOW_MS,
   });
@@ -68,7 +60,7 @@ export async function POST(req: NextRequest) {
     offerSlug: "content-calendar-52",
   });
 
-  const cacheKey = `content-engine-sample:${startDate}:${await sha256Hex(business.toLowerCase())}`;
+  const cacheKey = await sampleCacheKey(startDate, business);
   try {
     const cacheStorage = caches as unknown as { default: Cache };
     const cache = cacheStorage.default;

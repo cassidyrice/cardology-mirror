@@ -35,9 +35,12 @@ export function rateLimitKey(req: Request, scope: string): string {
 
 export function rateLimit(
   key: string,
-  { limit, windowMs }: { limit: number; windowMs: number },
+  {
+    limit,
+    windowMs,
+    now = Date.now(),
+  }: { limit: number; windowMs: number; now?: number },
 ): RateLimitResult {
-  const now = Date.now();
   const existing = buckets.get(key);
 
   // Opportunistic cleanup so the map does not grow forever in long-lived isolates.

@@ -16,6 +16,7 @@ import {
 } from "@/lib/products";
 import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
 import { buildPaidStructure, parseIsoDate } from "@/lib/content-engine/structure";
+import { contentCalendarsKv } from "@/lib/content-engine/kv";
 import {
   readStoredCalendar,
   rowsToCsv,
@@ -212,7 +213,8 @@ export default async function CheckoutSuccessPage({
   let contentCalendarView: StoredCalendar | null = null;
   let contentCalendarPending = false;
   if (contentCalendar && confirmed && sessionId) {
-    contentCalendarView = await readStoredCalendar(sessionId);
+    const calendarsKv = contentCalendarsKv();
+    contentCalendarView = await readStoredCalendar(sessionId, calendarsKv);
     if (!contentCalendarView) {
       const business = (session2?.metadata?.business || "").trim().slice(0, 240);
       const startRaw = (session2?.metadata?.start_date || "").trim();
@@ -238,7 +240,7 @@ export default async function CheckoutSuccessPage({
               rows: generated.rows,
               csv: rowsToCsv(generated.rows),
             };
-            const wrote = await writeStoredCalendar(stored);
+            const wrote = await writeStoredCalendar(stored, calendarsKv);
             contentCalendarView = stored;
             if (!wrote) contentCalendarPending = false; // still show generated rows this request
           } else {
