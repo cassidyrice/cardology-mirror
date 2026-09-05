@@ -6,7 +6,8 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = PAGE_UPDATED_DATES["/karma-reading"];
+// The waitlist page is noindex and out of the sitemap, so it has no entry in the dated-page map.
+const UPDATED = PAGE_UPDATED_DATES["/karma-reading"] ?? "2026-09-05";
 
 const TITLE = "Reading Day waitlist | Card Blueprints";
 const DESCRIPTION =
