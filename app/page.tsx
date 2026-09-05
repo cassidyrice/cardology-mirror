@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { HomeContentCue } from "@/components/home/HomeContentCue";
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
@@ -46,8 +46,15 @@ export default function Home() {
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="flex flex-1 flex-col justify-center py-3 sm:py-6">
           <LandingCalculator />
+          <p className="mt-6 text-center text-sm">
+            <Link
+              href="/explore"
+              className="text-brand-ink-soft underline underline-offset-4 transition hover:text-brand-ink"
+            >
+              Explore →
+            </Link>
+          </p>
         </div>
-        <HomeContentCue />
       </main>
       <SiteFooter />
     </div>

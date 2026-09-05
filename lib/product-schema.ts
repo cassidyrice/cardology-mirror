@@ -48,8 +48,8 @@ export function digitalShippingDetails() {
 }
 
 /**
- * Matches /refund-policy: failed delivery / corrupt file / wrong-date
- * correction window. Not a 30-day no-questions return.
+ * Matches /refund-policy for digital goods: replaced or refunded when broken,
+ * wrong card, wrong date, or double-charged — not a mail-return window.
  */
 export function merchantReturnPolicy() {
   return {
@@ -57,11 +57,10 @@ export function merchantReturnPolicy() {
     "@id": MERCHANT_RETURN_POLICY_ID,
     applicableCountry: "US",
     returnPolicyCategory:
-      "https://schema.org/MerchantReturnFiniteReturnWindow",
-    merchantReturnDays: 14,
-    returnMethod: "https://schema.org/ReturnByMail",
-    returnFees: "https://schema.org/FreeReturn",
+      "https://schema.org/MerchantReturnNotPermitted",
     merchantReturnLink: `${SITE_URL}/refund-policy`,
+    description:
+      "Digital files: replaced or refunded if broken, wrong card, wrong date, or double charge.",
   };
 }
 

@@ -2,12 +2,10 @@
 
 import Link from "next/link";
 
-import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// Site-wide: Content Engine bridge. Logo is the only home link.
-const NAV_LINKS = [{ label: "Create content", href: "/content-engine" }] as const;
+const NAV_LINKS = [{ label: "Explore", href: "/explore" }] as const;
 
 export function SiteHeader() {
   return (
@@ -29,14 +27,6 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className="whitespace-nowrap transition hover:text-brand-ink"
-                onClick={
-                  link.href === "/content-engine"
-                    ? () =>
-                        trackClientFunnelEvent("engine_link_clicked", {
-                          placement: "site-header",
-                        })
-                    : undefined
-                }
               >
                 {link.label}
               </Link>
@@ -56,14 +46,6 @@ export function SiteHeader() {
                     <Link
                       href={link.href}
                       className="block min-h-11 py-3"
-                      onClick={
-                        link.href === "/content-engine"
-                          ? () =>
-                              trackClientFunnelEvent("engine_link_clicked", {
-                                placement: "site-header-mobile",
-                              })
-                          : undefined
-                      }
                     >
                       {link.label}
                     </Link>
