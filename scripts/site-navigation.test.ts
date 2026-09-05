@@ -15,19 +15,18 @@ function occurrences(source: string, value: string): number {
   return source.split(value).length - 1;
 }
 
-test("shared header renders the six nav links in both primary navigation variants", () => {
+test("shared header renders Learn more and Content Engine links", () => {
   const markup = renderToStaticMarkup(createElement(SiteHeader));
 
   expect(markup).toContain('aria-label="Primary"');
   expect(markup).toContain('aria-label="Mobile primary"');
-  expect(occurrences(markup, 'href="/birth-card-compatibility-calculator"')).toBe(2);
-  expect(occurrences(markup, ">Compatibility</a>")).toBe(2);
-  expect(occurrences(markup, 'href="/card-of-the-day"')).toBe(2);
-  expect(occurrences(markup, 'href="/blog"')).toBe(2);
-  expect(occurrences(markup, 'href="/karma-reading"')).toBe(2);
-  expect(markup).toContain("Get a Reading");
-  expect(markup).toContain("Find Your Card");
-  expect(markup).toContain("Today&#x27;s Card");
+  expect(occurrences(markup, 'href="/explore"')).toBe(2);
+  expect(occurrences(markup, 'href="/content-engine"')).toBe(2);
+  expect(markup).toContain("Learn more");
+  expect(markup).toContain("Use this as a tool for creating");
+  expect(markup).not.toContain("Get a Reading");
+  expect(markup).not.toContain('href="/karma-reading"');
+  expect(markup).not.toContain('href="/birth-card-calculator"');
 });
 
 test("bare footer keeps the single disclaimer and legal row", () => {
@@ -35,7 +34,7 @@ test("bare footer keeps the single disclaimer and legal row", () => {
 
   expect(markup).toContain("Playing cards, not tarot");
   expect(markup).toContain('href="/privacy-policy"');
-  expect(occurrences(markup, 'href="/karma-reading"')).toBe(1);
+  expect(occurrences(markup, 'href="/content-engine"')).toBe(1);
   expect(occurrences(markup, 'href="/products/birth-card-deep-dive"')).toBe(1);
 });
 
@@ -46,7 +45,6 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
   const detailsStart = headerSource.indexOf("<details");
   const detailsEnd = headerSource.indexOf("</details>", detailsStart);
   const mobileDetails = headerSource.slice(detailsStart, detailsEnd);
-  const desktopCta = headerSource.slice(detailsEnd, headerSource.indexOf("</header>", detailsEnd));
 
   expect(primaryStart).toBeGreaterThan(0);
   expect(primaryEnd).toBeGreaterThan(primaryStart);
@@ -57,7 +55,4 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
   expect(detailsEnd).toBeGreaterThan(detailsStart);
   expect(mobileDetails).toMatch(/className="[^"]*\blg:hidden\b[^"]*"/);
   expect(mobileDetails).not.toMatch(/className="[^"]*\bmd:hidden\b[^"]*"/);
-
-  expect(desktopCta).toMatch(/className="[^"]*\blg:block\b[^"]*"/);
-  expect(desktopCta).not.toMatch(/className="[^"]*\bmd:block\b[^"]*"/);
 });

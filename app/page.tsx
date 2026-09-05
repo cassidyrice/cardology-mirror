@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { AboutCassSection } from "@/components/home/AboutCassSection";
-import { CompareBand } from "@/components/home/CompareBand";
-import { DeepDiveSection } from "@/components/home/DeepDiveSection";
-import { EmailSignupSection } from "@/components/home/EmailSignupSection";
-import { HomepageCalculatorHero } from "@/components/home/HomepageCalculatorHero";
-import { LatestBlogSection } from "@/components/home/LatestBlogSection";
-import { LiveReadingSection } from "@/components/home/LiveReadingSection";
-import { StartHereSection } from "@/components/home/StartHereSection";
+import { LandingCalculator } from "@/components/seo/LandingCalculator";
 import { TodaysCardSection } from "@/components/home/TodaysCardSection";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
+import "./landing.css";
+
 const HOME_TITLE = "Find Your Birth Card | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday adds up to one playing card. Find yours free, compare it with anyone, and get today's card. Cardology, done plainly.";
+  "Your birthday adds up to one card. Same date, same card, every time. Type it in and see yours.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -45,23 +41,20 @@ export const metadata: Metadata = {
 export const revalidate = 86_400;
 
 export default function Home() {
-  // WebSite + Organization JSON-LD live in app/layout.tsx — do not duplicate.
   return (
-    <div className="bg-brand-paper text-brand-ink">
+    <div className="flex min-h-svh flex-col bg-brand-paper text-brand-ink">
       <SiteHeader />
-
-      <main id="main-content" tabIndex={-1}>
-        <HomepageCalculatorHero />
+      <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col justify-center py-3 sm:py-6">
+          <LandingCalculator />
+        </div>
         <TodaysCardSection />
-        <LatestBlogSection />
-        <CompareBand />
-        <LiveReadingSection />
-        <DeepDiveSection />
-        <StartHereSection />
-        <AboutCassSection />
-        <EmailSignupSection />
+        <p className="border-t border-brand-line px-5 py-5 text-center text-sm">
+          <Link href="/explore" className="editorial-link text-brand-ink-soft">
+            Learn more →
+          </Link>
+        </p>
       </main>
-
       <SiteFooter />
     </div>
   );

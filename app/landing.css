@@ -1,0 +1,103 @@
+/* Home landing calculator + reveal. Flip only; gated on prefers-reduced-motion. */
+
+.landing-shell {
+  position: relative;
+  padding: 1rem 0 1.5rem;
+}
+
+.landing-field-wrap {
+  position: relative;
+  min-height: 3rem;
+  perspective: 900px;
+}
+
+.landing-field {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.landing-field-back {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #14110d;
+  background: #eadfcd;
+  opacity: 0;
+  transform: rotateY(90deg);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+
+.landing-field-back-mark {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: #5b5148;
+}
+
+.landing-shell.is-fold .landing-field {
+  transform: rotateY(-90deg);
+  opacity: 0;
+}
+
+.landing-shell.is-fold .landing-field-back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.landing-reveal-face {
+  width: 9.5rem;
+  perspective: 900px;
+}
+
+.landing-reveal-img,
+.landing-reveal-joker {
+  width: 100%;
+  border: 1px solid #14110d;
+  background: #f4f0e7;
+  animation: landing-card-flip 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-reveal-joker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 3;
+  font-size: 2.5rem;
+  color: #8b2e2e;
+}
+
+@keyframes landing-card-flip {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0.4;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-field,
+  .landing-field-back,
+  .landing-reveal-img,
+  .landing-reveal-joker {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .landing-shell.is-fold .landing-field {
+    transform: none;
+    opacity: 0;
+  }
+
+  .landing-shell.is-fold .landing-field-back {
+    transform: none;
+    opacity: 1;
+  }
+}

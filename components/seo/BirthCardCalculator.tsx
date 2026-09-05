@@ -19,7 +19,6 @@ import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
 import { DeepDiveSample } from "./DeepDiveSample";
-import { ReadingDayCta } from "./ReadingDayCta";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
@@ -250,14 +249,6 @@ function BirthCardResultCard({
         </Link>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      {!isJoker && (
-        <ReadingDayCta
-          variant="lead"
-          placement="birth-card-calculator-result-lead"
-          cardLabel={bc?.label}
-          className="mt-4"
-        />
-      )}
       <p className="mt-6 text-center font-serif text-xl text-brand-ink">
         Prefer to read it yourself? The Deep Dive is seven pages. This is page 1.
       </p>

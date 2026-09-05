@@ -30,6 +30,11 @@ export const WATCHED_EVENTS = [
   ...FUNNEL_STEPS,
   "calculator_started",
   "reading_cta_clicked",
+  "reveal_shown",
+  "engine_link_clicked",
+  "engine_sample_requested",
+  "engine_sample_shown",
+  "engine_cta_clicked",
   "checkout_error",
   "card_shared",
 ] as const;

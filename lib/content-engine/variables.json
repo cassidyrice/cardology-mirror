@@ -1,0 +1,492 @@
+{
+  "ranks": {
+    "2": "pair",
+    "3": "branch",
+    "4": "build",
+    "5": "change",
+    "6": "give",
+    "7": "study",
+    "8": "hold",
+    "9": "release",
+    "10": "finish",
+    "A": "start",
+    "J": "try",
+    "Q": "care",
+    "K": "lead"
+  },
+  "suits": {
+    "hearts": "feeling",
+    "clubs": "ideas",
+    "diamonds": "value",
+    "spades": "work"
+  },
+  "planets": {
+    "Mercury": {
+      "verbs": [
+        "talk",
+        "plan",
+        "explain"
+      ]
+    },
+    "Venus": {
+      "verbs": [
+        "ease",
+        "taste",
+        "connect"
+      ]
+    },
+    "Mars": {
+      "verbs": [
+        "push",
+        "act",
+        "ship"
+      ]
+    },
+    "Jupiter": {
+      "verbs": [
+        "grow",
+        "expand",
+        "reach"
+      ]
+    },
+    "Saturn": {
+      "verbs": [
+        "discipline",
+        "structure",
+        "prove"
+      ]
+    },
+    "Uranus": {
+      "verbs": [
+        "surprise",
+        "break",
+        "free"
+      ]
+    },
+    "Neptune": {
+      "verbs": [
+        "dream",
+        "vision",
+        "story"
+      ]
+    }
+  },
+  "cards": {
+    "ace-of-hearts": {
+      "code": "A♥",
+      "label": "Ace of Hearts",
+      "rank": "A",
+      "suit": "hearts",
+      "pattern": "start",
+      "material": "feeling"
+    },
+    "2-of-hearts": {
+      "code": "2♥",
+      "label": "2 of Hearts",
+      "rank": "2",
+      "suit": "hearts",
+      "pattern": "pair",
+      "material": "feeling"
+    },
+    "3-of-hearts": {
+      "code": "3♥",
+      "label": "3 of Hearts",
+      "rank": "3",
+      "suit": "hearts",
+      "pattern": "branch",
+      "material": "feeling"
+    },
+    "4-of-hearts": {
+      "code": "4♥",
+      "label": "4 of Hearts",
+      "rank": "4",
+      "suit": "hearts",
+      "pattern": "build",
+      "material": "feeling"
+    },
+    "5-of-hearts": {
+      "code": "5♥",
+      "label": "5 of Hearts",
+      "rank": "5",
+      "suit": "hearts",
+      "pattern": "change",
+      "material": "feeling"
+    },
+    "6-of-hearts": {
+      "code": "6♥",
+      "label": "6 of Hearts",
+      "rank": "6",
+      "suit": "hearts",
+      "pattern": "give",
+      "material": "feeling"
+    },
+    "7-of-hearts": {
+      "code": "7♥",
+      "label": "7 of Hearts",
+      "rank": "7",
+      "suit": "hearts",
+      "pattern": "study",
+      "material": "feeling"
+    },
+    "8-of-hearts": {
+      "code": "8♥",
+      "label": "8 of Hearts",
+      "rank": "8",
+      "suit": "hearts",
+      "pattern": "hold",
+      "material": "feeling"
+    },
+    "9-of-hearts": {
+      "code": "9♥",
+      "label": "9 of Hearts",
+      "rank": "9",
+      "suit": "hearts",
+      "pattern": "release",
+      "material": "feeling"
+    },
+    "10-of-hearts": {
+      "code": "10♥",
+      "label": "10 of Hearts",
+      "rank": "10",
+      "suit": "hearts",
+      "pattern": "finish",
+      "material": "feeling"
+    },
+    "jack-of-hearts": {
+      "code": "J♥",
+      "label": "Jack of Hearts",
+      "rank": "J",
+      "suit": "hearts",
+      "pattern": "try",
+      "material": "feeling"
+    },
+    "queen-of-hearts": {
+      "code": "Q♥",
+      "label": "Queen of Hearts",
+      "rank": "Q",
+      "suit": "hearts",
+      "pattern": "care",
+      "material": "feeling"
+    },
+    "king-of-hearts": {
+      "code": "K♥",
+      "label": "King of Hearts",
+      "rank": "K",
+      "suit": "hearts",
+      "pattern": "lead",
+      "material": "feeling"
+    },
+    "ace-of-clubs": {
+      "code": "A♣",
+      "label": "Ace of Clubs",
+      "rank": "A",
+      "suit": "clubs",
+      "pattern": "start",
+      "material": "ideas"
+    },
+    "2-of-clubs": {
+      "code": "2♣",
+      "label": "2 of Clubs",
+      "rank": "2",
+      "suit": "clubs",
+      "pattern": "pair",
+      "material": "ideas"
+    },
+    "3-of-clubs": {
+      "code": "3♣",
+      "label": "3 of Clubs",
+      "rank": "3",
+      "suit": "clubs",
+      "pattern": "branch",
+      "material": "ideas"
+    },
+    "4-of-clubs": {
+      "code": "4♣",
+      "label": "4 of Clubs",
+      "rank": "4",
+      "suit": "clubs",
+      "pattern": "build",
+      "material": "ideas"
+    },
+    "5-of-clubs": {
+      "code": "5♣",
+      "label": "5 of Clubs",
+      "rank": "5",
+      "suit": "clubs",
+      "pattern": "change",
+      "material": "ideas"
+    },
+    "6-of-clubs": {
+      "code": "6♣",
+      "label": "6 of Clubs",
+      "rank": "6",
+      "suit": "clubs",
+      "pattern": "give",
+      "material": "ideas"
+    },
+    "7-of-clubs": {
+      "code": "7♣",
+      "label": "7 of Clubs",
+      "rank": "7",
+      "suit": "clubs",
+      "pattern": "study",
+      "material": "ideas"
+    },
+    "8-of-clubs": {
+      "code": "8♣",
+      "label": "8 of Clubs",
+      "rank": "8",
+      "suit": "clubs",
+      "pattern": "hold",
+      "material": "ideas"
+    },
+    "9-of-clubs": {
+      "code": "9♣",
+      "label": "9 of Clubs",
+      "rank": "9",
+      "suit": "clubs",
+      "pattern": "release",
+      "material": "ideas"
+    },
+    "10-of-clubs": {
+      "code": "10♣",
+      "label": "10 of Clubs",
+      "rank": "10",
+      "suit": "clubs",
+      "pattern": "finish",
+      "material": "ideas"
+    },
+    "jack-of-clubs": {
+      "code": "J♣",
+      "label": "Jack of Clubs",
+      "rank": "J",
+      "suit": "clubs",
+      "pattern": "try",
+      "material": "ideas"
+    },
+    "queen-of-clubs": {
+      "code": "Q♣",
+      "label": "Queen of Clubs",
+      "rank": "Q",
+      "suit": "clubs",
+      "pattern": "care",
+      "material": "ideas"
+    },
+    "king-of-clubs": {
+      "code": "K♣",
+      "label": "King of Clubs",
+      "rank": "K",
+      "suit": "clubs",
+      "pattern": "lead",
+      "material": "ideas"
+    },
+    "ace-of-diamonds": {
+      "code": "A♦",
+      "label": "Ace of Diamonds",
+      "rank": "A",
+      "suit": "diamonds",
+      "pattern": "start",
+      "material": "value"
+    },
+    "2-of-diamonds": {
+      "code": "2♦",
+      "label": "2 of Diamonds",
+      "rank": "2",
+      "suit": "diamonds",
+      "pattern": "pair",
+      "material": "value"
+    },
+    "3-of-diamonds": {
+      "code": "3♦",
+      "label": "3 of Diamonds",
+      "rank": "3",
+      "suit": "diamonds",
+      "pattern": "branch",
+      "material": "value"
+    },
+    "4-of-diamonds": {
+      "code": "4♦",
+      "label": "4 of Diamonds",
+      "rank": "4",
+      "suit": "diamonds",
+      "pattern": "build",
+      "material": "value"
+    },
+    "5-of-diamonds": {
+      "code": "5♦",
+      "label": "5 of Diamonds",
+      "rank": "5",
+      "suit": "diamonds",
+      "pattern": "change",
+      "material": "value"
+    },
+    "6-of-diamonds": {
+      "code": "6♦",
+      "label": "6 of Diamonds",
+      "rank": "6",
+      "suit": "diamonds",
+      "pattern": "give",
+      "material": "value"
+    },
+    "7-of-diamonds": {
+      "code": "7♦",
+      "label": "7 of Diamonds",
+      "rank": "7",
+      "suit": "diamonds",
+      "pattern": "study",
+      "material": "value"
+    },
+    "8-of-diamonds": {
+      "code": "8♦",
+      "label": "8 of Diamonds",
+      "rank": "8",
+      "suit": "diamonds",
+      "pattern": "hold",
+      "material": "value"
+    },
+    "9-of-diamonds": {
+      "code": "9♦",
+      "label": "9 of Diamonds",
+      "rank": "9",
+      "suit": "diamonds",
+      "pattern": "release",
+      "material": "value"
+    },
+    "10-of-diamonds": {
+      "code": "10♦",
+      "label": "10 of Diamonds",
+      "rank": "10",
+      "suit": "diamonds",
+      "pattern": "finish",
+      "material": "value"
+    },
+    "jack-of-diamonds": {
+      "code": "J♦",
+      "label": "Jack of Diamonds",
+      "rank": "J",
+      "suit": "diamonds",
+      "pattern": "try",
+      "material": "value"
+    },
+    "queen-of-diamonds": {
+      "code": "Q♦",
+      "label": "Queen of Diamonds",
+      "rank": "Q",
+      "suit": "diamonds",
+      "pattern": "care",
+      "material": "value"
+    },
+    "king-of-diamonds": {
+      "code": "K♦",
+      "label": "King of Diamonds",
+      "rank": "K",
+      "suit": "diamonds",
+      "pattern": "lead",
+      "material": "value"
+    },
+    "ace-of-spades": {
+      "code": "A♠",
+      "label": "Ace of Spades",
+      "rank": "A",
+      "suit": "spades",
+      "pattern": "start",
+      "material": "work"
+    },
+    "2-of-spades": {
+      "code": "2♠",
+      "label": "2 of Spades",
+      "rank": "2",
+      "suit": "spades",
+      "pattern": "pair",
+      "material": "work"
+    },
+    "3-of-spades": {
+      "code": "3♠",
+      "label": "3 of Spades",
+      "rank": "3",
+      "suit": "spades",
+      "pattern": "branch",
+      "material": "work"
+    },
+    "4-of-spades": {
+      "code": "4♠",
+      "label": "4 of Spades",
+      "rank": "4",
+      "suit": "spades",
+      "pattern": "build",
+      "material": "work"
+    },
+    "5-of-spades": {
+      "code": "5♠",
+      "label": "5 of Spades",
+      "rank": "5",
+      "suit": "spades",
+      "pattern": "change",
+      "material": "work"
+    },
+    "6-of-spades": {
+      "code": "6♠",
+      "label": "6 of Spades",
+      "rank": "6",
+      "suit": "spades",
+      "pattern": "give",
+      "material": "work"
+    },
+    "7-of-spades": {
+      "code": "7♠",
+      "label": "7 of Spades",
+      "rank": "7",
+      "suit": "spades",
+      "pattern": "study",
+      "material": "work"
+    },
+    "8-of-spades": {
+      "code": "8♠",
+      "label": "8 of Spades",
+      "rank": "8",
+      "suit": "spades",
+      "pattern": "hold",
+      "material": "work"
+    },
+    "9-of-spades": {
+      "code": "9♠",
+      "label": "9 of Spades",
+      "rank": "9",
+      "suit": "spades",
+      "pattern": "release",
+      "material": "work"
+    },
+    "10-of-spades": {
+      "code": "10♠",
+      "label": "10 of Spades",
+      "rank": "10",
+      "suit": "spades",
+      "pattern": "finish",
+      "material": "work"
+    },
+    "jack-of-spades": {
+      "code": "J♠",
+      "label": "Jack of Spades",
+      "rank": "J",
+      "suit": "spades",
+      "pattern": "try",
+      "material": "work"
+    },
+    "queen-of-spades": {
+      "code": "Q♠",
+      "label": "Queen of Spades",
+      "rank": "Q",
+      "suit": "spades",
+      "pattern": "care",
+      "material": "work"
+    },
+    "king-of-spades": {
+      "code": "K♠",
+      "label": "King of Spades",
+      "rank": "K",
+      "suit": "spades",
+      "pattern": "lead",
+      "material": "work"
+    }
+  }
+}
