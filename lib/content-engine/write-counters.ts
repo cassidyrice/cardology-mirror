@@ -6,6 +6,11 @@ export const MAX_GENERATIONS_PER_DAY = 3;
 /** 52 days × 3 generations — hard cap per purchased calendar. */
 export const MAX_GENERATIONS_PER_CALENDAR = 52 * MAX_GENERATIONS_PER_DAY;
 
+/** Soft isolate brake on /api/content-engine/write. Not a global quota. */
+export const WRITE_RATE_SCOPE = "content-engine-write";
+export const WRITE_LIMIT = 30;
+export const WRITE_WINDOW_MS = 60 * 60 * 1000;
+
 export type WrittenPiece = {
   kind: PieceKind;
   content: string;
@@ -68,4 +73,20 @@ export function applyGeneration(
   const current = next[key]?.generations ?? 0;
   next[key] = { generations: current + 1 };
   return next;
+}
+
+/** Store one piece at pieces[day][kind], leaving other kinds on that day intact. */
+export function upsertDayPiece(
+  pieces: CalendarPieces | undefined,
+  day: number,
+  piece: WrittenPiece,
+): CalendarPieces {
+  const key = dayKey(day);
+  return {
+    ...(pieces ?? {}),
+    [key]: {
+      ...(pieces?.[key] ?? {}),
+      [piece.kind]: piece,
+    },
+  };
 }
