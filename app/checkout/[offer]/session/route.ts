@@ -20,7 +20,12 @@ import {
   deepDiveSessionMetadata,
 } from "@/lib/deep-dive";
 import {
+  contentCalendarPriceId,
+  contentCalendarSessionMetadata,
+} from "@/lib/content-calendar";
+import {
   checkoutProductBySlug,
+  isContentCalendar52,
   isDeepDive,
   isDigitalDownload,
   isInstantReport,
@@ -80,6 +85,8 @@ export async function POST(
   let requestedSource = "";
   let requestedCardLabel = "";
   let requestedCardSlug = "";
+  let formBusiness = "";
+  let formStartDate = "";
   let analytics: FunnelContext = {};
   try {
     if (contentType.includes("application/json")) {
@@ -88,6 +95,8 @@ export async function POST(
       requestedSource = typeof body.source === "string" ? body.source : "";
       requestedCardLabel = typeof body.cardLabel === "string" ? body.cardLabel : "";
       requestedCardSlug = typeof body.cardSlug === "string" ? body.cardSlug : "";
+      formBusiness = typeof body.business === "string" ? body.business.trim().slice(0, 240) : "";
+      formStartDate = typeof body.startDate === "string" ? body.startDate.trim() : "";
       const fromBody = funnelContextFromJson(body);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -105,6 +114,10 @@ export async function POST(
       requestedCardLabel = typeof labelField === "string" ? labelField : "";
       const slugField = form.get("cardSlug");
       requestedCardSlug = typeof slugField === "string" ? slugField : "";
+      const businessField = form.get("business");
+      formBusiness = typeof businessField === "string" ? businessField.trim().slice(0, 240) : "";
+      const startField = form.get("startDate");
+      formStartDate = typeof startField === "string" ? startField.trim() : "";
       const fromForm = funnelContextFromFormData(form);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -126,7 +139,9 @@ export async function POST(
 
   const priceId = isDeepDive(product)
     ? deepDivePriceId()
-    : process.env[product.stripePriceEnv];
+    : isContentCalendar52(product)
+      ? contentCalendarPriceId()
+      : process.env[product.stripePriceEnv];
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
     return checkoutUnavailable(req, product.slug);
   }
@@ -183,11 +198,25 @@ export async function POST(
         }),
       );
     }
+    if (isContentCalendar52(product) && formBusiness) {
+      const start =
+        /^\d{4}-\d{2}-\d{2}$/.test(formStartDate) ? formStartDate : new Date().toISOString().slice(0, 10);
+      Object.assign(
+        sharedMeta,
+        contentCalendarSessionMetadata({
+          business: formBusiness,
+          startDate: start,
+          source: requestedSource || "content-engine",
+        }),
+      );
+    }
 
     const subscription = isMembership(product);
     const cancelUrl = isDeepDive(product)
       ? `${SITE_URL}/birth-card-calculator`
-      : `${SITE_URL}/checkout/${product.slug}`;
+      : isContentCalendar52(product)
+        ? `${SITE_URL}/content-engine`
+        : `${SITE_URL}/checkout/${product.slug}`;
     const session = await getStripe().checkout.sessions.create(
       subscription
         ? {

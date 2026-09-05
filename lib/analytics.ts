@@ -13,6 +13,9 @@ export const CLIENT_FUNNEL_EVENTS = [
   "reading_cta_clicked",
   "reveal_shown",
   "engine_link_clicked",
+  "engine_sample_requested",
+  "engine_sample_shown",
+  "engine_cta_clicked",
   "year_link_clicked",
   "year_viewed",
   "checkout_error",
@@ -69,6 +72,7 @@ const OFFER_SLUGS = new Set([
   "complete-card-blueprint",
   "birth-card-deep-dive",
   "deep-dive",
+  "content-calendar-52",
   "karma-reading",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",

@@ -11,8 +11,17 @@ import {
   isInstantReport,
   isVoiceReading,
   isDeepDive,
+  isContentCalendar52,
   type SiteProduct,
 } from "@/lib/products";
+import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
+import { buildPaidStructure, parseIsoDate } from "@/lib/content-engine/structure";
+import {
+  readStoredCalendar,
+  rowsToCsv,
+  writeStoredCalendar,
+  type StoredCalendar,
+} from "@/lib/content-engine/storage";
 import { mintReportToken } from "@/lib/report-token";
 import { mintDownloadToken } from "@/lib/download-token";
 import { ALL_90_SPREADS_FILE, isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
@@ -84,8 +93,10 @@ export default async function CheckoutSuccessPage({
   }
 
   const deepDive = product && isDeepDive(product);
+  const contentCalendar = product && isContentCalendar52(product);
   const deepDiveBirthday = deepDive ? birthdateFromCheckoutSession(session2) : "";
-  const digital = product && isDigitalDownload(product) && !deepDive;
+  const digital =
+    product && isDigitalDownload(product) && !deepDive && !contentCalendar;
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
 
@@ -120,7 +131,13 @@ export default async function CheckoutSuccessPage({
   }
 
   let downloadToken = "";
-  if (confirmed && customerEmail && isDigitalDownload(product!)) {
+  if (
+    confirmed &&
+    customerEmail &&
+    isDigitalDownload(product!) &&
+    !deepDive &&
+    !contentCalendar
+  ) {
     try {
       downloadToken = await mintDownloadToken(
         customerEmail,
@@ -192,6 +209,55 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  let contentCalendarView: StoredCalendar | null = null;
+  let contentCalendarPending = false;
+  if (contentCalendar && confirmed && sessionId) {
+    contentCalendarView = await readStoredCalendar(sessionId);
+    if (!contentCalendarView) {
+      const business = (session2?.metadata?.business || "").trim().slice(0, 240);
+      const startRaw = (session2?.metadata?.start_date || "").trim();
+      const startDate =
+        startRaw && parseIsoDate(startRaw)
+          ? startRaw
+          : new Date().toISOString().slice(0, 10);
+      if (business) {
+        try {
+          const structure = buildPaidStructure(startDate);
+          const generated = await generateCalendarWithGemini({
+            business,
+            days: structure,
+            model: "gemini-2.5-pro",
+          });
+          if (generated.rows.length > 0) {
+            const stored: StoredCalendar = {
+              sessionId,
+              business,
+              startDate,
+              generatedAt: new Date().toISOString(),
+              weekHeaders: generated.weekHeaders,
+              rows: generated.rows,
+              csv: rowsToCsv(generated.rows),
+            };
+            const wrote = await writeStoredCalendar(stored);
+            contentCalendarView = stored;
+            if (!wrote) contentCalendarPending = false; // still show generated rows this request
+          } else {
+            contentCalendarPending = true;
+          }
+        } catch (error) {
+          if (error instanceof GeminiConfigError) {
+            contentCalendarPending = true;
+          } else {
+            console.warn("[checkout/success] content calendar generation failed", error);
+            contentCalendarPending = true;
+          }
+        }
+      } else {
+        contentCalendarPending = true;
+      }
+    }
+  }
+
   return (
     <SeoShell
       crumb={[
@@ -215,7 +281,11 @@ export default async function CheckoutSuccessPage({
           {confirmed ? "Payment received" : "Payment not verified"}
         </Kicker>
         <h1 className="type-display text-brand-ink">
-          {confirmed && deepDive
+          {confirmed && contentCalendar
+            ? contentCalendarView
+              ? "Your 52-day calendar is ready."
+              : "Generation pending."
+            : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? "Your files are ready."
               : "Check your email."
@@ -228,7 +298,13 @@ export default async function CheckoutSuccessPage({
                 : "We could not confirm this purchase yet."}
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
-          {confirmed && deepDive
+          {confirmed && contentCalendar
+            ? contentCalendarView
+              ? `"${product!.name}" — ${product!.priceLabel}. Scroll for the calendar and CSV.`
+              : contentCalendarPending
+                ? "Payment confirmed. Your calendar is generation pending — refresh in a minute, or reply to your receipt if it stays blank."
+                : "Payment confirmed. Your calendar is generation pending."
+            : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? isJokerBirthdate(deepDiveBirthday)
                 ? "Payment confirmed. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF for this date."
@@ -254,7 +330,12 @@ export default async function CheckoutSuccessPage({
 
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
-          {deepDive ? (
+          {contentCalendar ? (
+            <ContentCalendarFulfillment
+              calendar={contentCalendarView}
+              pending={contentCalendarPending || !contentCalendarView}
+            />
+          ) : deepDive ? (
             <DeepDiveFulfillment
               birthday={deepDiveBirthday}
               links={deepDiveLinks}
@@ -330,6 +411,71 @@ export default async function CheckoutSuccessPage({
         </p>
       </section>
     </SeoShell>
+  );
+}
+
+function ContentCalendarFulfillment({
+  calendar,
+  pending,
+}: {
+  calendar: StoredCalendar | null;
+  pending: boolean;
+}) {
+  if (pending || !calendar) {
+    return (
+      <div className="text-center">
+        <Kicker className="mb-4">Content Engine</Kicker>
+        <h2 className="type-h2 text-brand-ink">Generation pending</h2>
+        <p className="mx-auto mt-3 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+          Your calendar is not ready to show yet. Refresh this page in a minute. If it
+          stays blank, reply to your receipt email.
+        </p>
+      </div>
+    );
+  }
+
+  const csvHref = `data:text/csv;charset=utf-8,${encodeURIComponent(calendar.csv)}`;
+
+  return (
+    <div>
+      <div className="text-center">
+        <Kicker className="mb-4">Content Engine</Kicker>
+        <h2 className="type-h2 text-brand-ink">Your 52-day calendar</h2>
+        <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+          Starting {calendar.startDate}. Re-download stays available for 30 days on this
+          page when storage is bound.
+        </p>
+        <div className="mt-5">
+          <a href={csvHref} download="content-calendar-52.csv" className="accent-button large-button inline-flex">
+            Download CSV
+          </a>
+        </div>
+      </div>
+      <div className="mt-8 overflow-x-auto border border-brand-ink">
+        <table className="min-w-full text-left text-sm">
+          <thead className="border-b border-brand-ink bg-brand-ivory font-mono text-[0.65rem] uppercase tracking-[0.12em]">
+            <tr>
+              <th className="px-3 py-2">Day</th>
+              <th className="px-3 py-2">Theme</th>
+              <th className="px-3 py-2">Why</th>
+              <th className="px-3 py-2">Post</th>
+              <th className="px-3 py-2">Format</th>
+            </tr>
+          </thead>
+          <tbody>
+            {calendar.rows.map((row) => (
+              <tr key={row.day} className="border-t border-brand-line align-top">
+                <td className="px-3 py-3 font-mono text-xs">{row.day}</td>
+                <td className="px-3 py-3 font-medium">{row.theme}</td>
+                <td className="px-3 py-3 text-brand-ink-soft">{row.why}</td>
+                <td className="px-3 py-3">{row.post}</td>
+                <td className="px-3 py-3 whitespace-nowrap">{row.format}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
 

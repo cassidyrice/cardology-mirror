@@ -18,6 +18,7 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
   | "STRIPE_PRICE_DEEP_DIVE"
+  | "STRIPE_PRICE_CONTENT_CALENDAR"
   | "STRIPE_PRICE_MEMBERSHIP";
 
 type ProductBase = {
@@ -287,6 +288,35 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   href: "/products/birth-card-deep-dive",
 };
 
+export const CONTENT_CALENDAR_52_SLUG = "content-calendar-52";
+
+export const CONTENT_CALENDAR_52_PRODUCT: DigitalDownloadOffer = {
+  kind: "digital_download",
+  available: true,
+  slug: CONTENT_CALENDAR_52_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_CONTENT_CALENDAR",
+  name: "Content Engine — 52-Day Calendar",
+  price: 29,
+  priceLabel: "$29",
+  badge: "Content Engine",
+  oneLine: "52 days of themes, posts, and formats for your business, plus CSV.",
+  bestFor: "Creators and small businesses who need a content calendar with a reason for every day.",
+  deliverable: "52-day calendar on the confirmation page, re-downloadable for 30 days, plus CSV.",
+  turnaround: "Generated on the success page after payment.",
+  includes: [
+    "52 days of themes, why lines, posts, and formats",
+    "CSV download",
+    "Re-download for 30 days",
+  ],
+  cta: "Get all 52 days — $29",
+  checkoutNote:
+    "One-time purchase. Your business description travels in checkout metadata only and is not logged.",
+  downloadAssetKey: "",
+  redownloadDays: 30,
+  fileName: "content-calendar-52.csv",
+  href: "/content-engine",
+};
+
 export const MEMBERSHIP_SLUG = "cardology-membership";
 
 export const MEMBERSHIP_PRODUCT: MembershipOffer = {
@@ -323,6 +353,7 @@ export const ALL_PRODUCTS: SiteProduct[] = [
   ...READING_OFFERS,
   ...DIGITAL_PRODUCTS,
   DEEP_DIVE_PRODUCT,
+  CONTENT_CALENDAR_52_PRODUCT,
   MEMBERSHIP_PRODUCT,
 ];
 
@@ -358,13 +389,23 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
-/** Checkout-eligible products, including Deep Dive which is not in the public catalog. */
+/** Checkout-eligible products, including Deep Dive and Content Engine which are not in the public catalog. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
-  return publicProductBySlug(slug) ?? (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined);
+  return (
+    publicProductBySlug(slug) ??
+    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
+    (slug === CONTENT_CALENDAR_52_SLUG ? CONTENT_CALENDAR_52_PRODUCT : undefined)
+  );
 }
 
 export function isDeepDive(product: { slug: string } | null | undefined): boolean {
   return product?.slug === DEEP_DIVE_SLUG;
+}
+
+export function isContentCalendar52(
+  product: { slug: string } | null | undefined,
+): boolean {
+  return product?.slug === CONTENT_CALENDAR_52_SLUG;
 }
 
 export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
