@@ -1,16 +1,15 @@
+"use client";
+
 import Link from "next/link";
 
+import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// Six destinations. Logo is the only home link. Reading Day CTA removed (S0).
+// Site-wide: Learn more + Content Engine bridge. Logo is the only home link.
 const NAV_LINKS = [
-  { label: "Find Your Card", href: "/birth-card-calculator" },
-  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
-  { label: "Card Meanings", href: "/birth-card" },
-  { label: "Today's Card", href: "/card-of-the-day" },
-  { label: "Read", href: "/blog" },
-  { label: "Learn", href: "/cardology-for-beginners" },
+  { label: "Learn more", href: "/explore" },
+  { label: "Use this as a tool for creating", href: "/content-engine" },
 ] as const;
 
 export function SiteHeader() {
@@ -33,6 +32,14 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 className="whitespace-nowrap transition hover:text-brand-ink"
+                onClick={
+                  link.href === "/content-engine"
+                    ? () =>
+                        trackClientFunnelEvent("engine_link_clicked", {
+                          placement: "site-header",
+                        })
+                    : undefined
+                }
               >
                 {link.label}
               </Link>
@@ -44,12 +51,23 @@ export function SiteHeader() {
             </summary>
             <nav
               aria-label="Mobile primary"
-              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-64 max-w-[calc(100vw-2rem)] border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
+              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-72 max-w-[calc(100vw-2rem)] border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
             >
               <ul className="divide-y divide-brand-line text-sm text-brand-ink">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="block min-h-11 py-3">
+                    <Link
+                      href={link.href}
+                      className="block min-h-11 py-3"
+                      onClick={
+                        link.href === "/content-engine"
+                          ? () =>
+                              trackClientFunnelEvent("engine_link_clicked", {
+                                placement: "site-header-mobile",
+                              })
+                          : undefined
+                      }
+                    >
                       {link.label}
                     </Link>
                   </li>

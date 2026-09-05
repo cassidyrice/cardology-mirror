@@ -19,7 +19,13 @@ import { parseCard } from "@/lib/cards";
 
 const RESULT_PLACEMENT = "home-hero-result";
 
-export function HomepageCalculatorHero() {
+export function HomepageCalculatorHero({
+  title = "Which card were you born under?",
+  lede = "Your birthday adds up to one playing card. Same date, same card, every time. Type it in and see yours.",
+}: {
+  title?: string;
+  lede?: string;
+} = {}) {
   const [date, setDate] = useState("");
   const [result, setResult] = useState<BirthCardResult | null>(null);
   const [error, setError] = useState("");
@@ -88,10 +94,10 @@ export function HomepageCalculatorHero() {
             id="home-calculator-title"
             className="type-display mt-2 max-w-[14ch] text-brand-ink sm:mt-4"
           >
-            Which card were you born under?
+            {title}
           </h1>
           <p className="mt-2 max-w-[34rem] font-serif text-base leading-relaxed text-brand-ink-soft sm:mt-5 sm:text-2xl">
-            Your birthday adds up to one playing card. Same date, same card, every time. Type it in and see yours.
+            {lede}
           </p>
         </div>
 

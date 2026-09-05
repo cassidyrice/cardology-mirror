@@ -11,6 +11,8 @@ export const CLIENT_FUNNEL_EVENTS = [
   "offer_cta_clicked",
   "sample_viewed",
   "reading_cta_clicked",
+  "reveal_shown",
+  "engine_link_clicked",
   "year_link_clicked",
   "year_viewed",
   "checkout_error",

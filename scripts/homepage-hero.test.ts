@@ -39,10 +39,10 @@ describe("birthCardSlug", () => {
   });
 });
 
-describe("HomepageCalculatorHero contract", () => {
-  test("keeps the calculator-first home without Reading Day surfaces", () => {
+describe("Homepage landing contract", () => {
+  test("home is the calculator landing; explore keeps the library", () => {
     const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
-    const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+    const explore = readFileSync(new URL("../app/explore/page.tsx", import.meta.url), "utf8");
     const header = readFileSync(
       new URL("../components/seo/SiteHeader.tsx", import.meta.url),
       "utf8",
@@ -51,30 +51,59 @@ describe("HomepageCalculatorHero contract", () => {
       new URL("../components/seo/SiteFooter.tsx", import.meta.url),
       "utf8",
     );
+    const reveal = readFileSync(
+      new URL("../components/seo/Reveal.tsx", import.meta.url),
+      "utf8",
+    );
+    const landing = readFileSync(
+      new URL("../components/seo/LandingCalculator.tsx", import.meta.url),
+      "utf8",
+    );
 
-    expect(home).toContain("HomepageCalculatorHero");
+    expect(home).toContain("LandingCalculator");
     expect(home).toContain("TodaysCardSection");
-    expect(home).toContain("LatestBlogSection");
-    expect(home).toContain("CompareBand");
+    expect(home).toContain("Learn more");
+    expect(home).toContain("/explore");
     expect(home).not.toContain("LiveReadingSection");
-    expect(home).toContain("DeepDiveSection");
-    expect(home).not.toContain("HomepageJourney");
-    expect(home).not.toContain("Two paid writes");
-    expect(home).not.toContain("A real system under the symbols");
-    expect(home).not.toContain("Explore the library");
-    expect(layout).not.toContain("homepage-journey.css");
-    expect(header).not.toContain("/karma-reading");
-    expect(header).not.toContain("Get a Reading");
-    expect(header).toContain("/birth-card-calculator");
-    expect(header).not.toContain("HeaderDeepDiveCta");
-    expect(header).not.toContain("$29");
-    expect(header).not.toContain("buy.stripe.com");
-    expect(footer).not.toContain("$13");
-    expect(footer).not.toContain("$29");
-    expect(footer).toContain("Playing cards, not tarot");
-    expect(footer).toContain("Reading Day waitlist");
-  });
+    expect(home).not.toContain("DeepDiveSection");
+    expect(home).toContain('absolute: HOME_TITLE');
+    expect(home).toContain("Find Your Birth Card | Card Blueprints");
 
+    expect(explore).toContain("Everything under the hood");
+    expect(explore).toContain("Explore Card Blueprints");
+    expect(explore).toContain("HomepageCalculatorHero");
+    expect(explore).toContain("TodaysCardSection");
+    expect(explore).toContain("DeepDiveSection");
+
+    expect(landing).toContain("Which card were you born under?");
+    expect(landing).toContain("Your birthday adds up to one card. Same date, same card, every time.");
+    expect(landing).toContain("Show my card");
+    expect(landing).toContain("Never stored");
+
+    expect(reveal).toContain("Your strength");
+    expect(reveal).toContain("Where it trips you");
+    expect(reveal).toContain("Right now");
+    expect(reveal).toContain("The same math runs a calendar");
+    expect(reveal).toContain("/content-engine");
+    expect(reveal).toContain("engine_link_clicked");
+    expect(reveal).toContain("reveal_shown");
+    expect(reveal).not.toContain("Something to notice this week");
+
+    expect(header).toContain("/explore");
+    expect(header).toContain("Learn more");
+    expect(header).toContain("/content-engine");
+    expect(header).toContain("Use this as a tool for creating");
+    expect(header).not.toContain("Get a Reading");
+    expect(header).not.toContain("/karma-reading");
+
+    expect(footer).toContain("Content Engine");
+    expect(footer).toContain("/content-engine");
+    expect(footer).toContain("Deep Dive ($9)");
+    expect(footer).not.toContain("Reading Day waitlist");
+  });
+});
+
+describe("HomepageCalculatorHero contract", () => {
   test("puts the free calculator first with exact hero copy", () => {
     const hero = readFileSync(
       new URL("../components/home/HomepageCalculatorHero.tsx", import.meta.url),
