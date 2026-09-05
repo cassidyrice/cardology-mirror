@@ -80,8 +80,8 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(cta).not.toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
-  expect(header).toContain('href: "/explore"');
-  expect(header).toContain('label: "Learn more"');
+  expect(header).toContain('label: "Create content"');
+  expect(footer).toContain('href="/explore"');
   expect(header).toContain("/content-engine");
   expect(header).not.toContain("/karma-reading");
   expect(header).not.toContain("Get a Reading");
@@ -169,16 +169,18 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(cta).toContain("{!compact && showFulfillment && (");
   expect(header).not.toContain('label: "Deep Dive $9"');
   expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
-  expect(header).toContain("/explore");
-  expect(header).toContain("Learn more");
+  // Since the landing-page change (2026-09-05) the header carries one link, "Create content";
+  // "Learn more" → /explore lives in the footer.
   expect(header).toContain("/content-engine");
+  expect(header).toContain('label: "Create content"');
+  expect(read("components/seo/SiteFooter.tsx")).toContain('href="/explore"');
   expect(header).not.toContain("/karma-reading");
   expect(header).not.toContain("Get a Reading");
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
   expect(footer).toContain("Deep Dive ($9)");
   expect(footer).toContain("/products/birth-card-deep-dive");
-  expect(footer).toContain("Content Engine");
+  expect(footer).toContain("Content Calendar");
   expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
