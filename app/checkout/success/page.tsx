@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { DeepDiveDeliveredBeacon } from "@/components/checkout/DeepDiveDeliveredBeacon";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
@@ -479,6 +480,7 @@ function DeepDiveFulfillment({
       <Kicker className="mb-4">Your Deep Dive</Kicker>
       {links.length > 0 ? (
         <>
+          <DeepDiveDeliveredBeacon placement="checkout-success" />
           <h2 className="type-h2 text-brand-ink">Download your files.</h2>
           <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
             {deepDiveSuccessCopy(birthday)}

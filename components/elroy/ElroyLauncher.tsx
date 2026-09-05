@@ -29,6 +29,7 @@ export function ElroyLauncher() {
   const [teaser, setTeaser] = useState(false);
   const [open, setOpen] = useState(false);
   const [prefBirthdate, setPrefBirthdate] = useState("");
+  const [homeRevealVisible, setHomeRevealVisible] = useState(false);
   const launcherRef = useRef<HTMLButtonElement | null>(null);
   const teaserEligibleRef = useRef(true);
 
@@ -52,12 +53,31 @@ export function ElroyLauncher() {
       const detail = (event as CustomEvent).detail;
       const birthdate = parseElroyBirthContext(detail);
       if (birthdate) setPrefBirthdate(birthdate);
+      if ((pathname.split(/[?#]/)[0] || "/") === "/") {
+        setHomeRevealVisible(true);
+      }
     }
+    function syncHomeReveal() {
+      if ((pathname.split(/[?#]/)[0] || "/") === "/") {
+        setHomeRevealVisible(Boolean(document.querySelector("[data-reveal]")));
+      } else {
+        setHomeRevealVisible(false);
+      }
+    }
+    syncHomeReveal();
     window.addEventListener("elroy:birth-card-revealed", onBirth);
-    return () => window.removeEventListener("elroy:birth-card-revealed", onBirth);
-  }, []);
+    window.addEventListener("popstate", syncHomeReveal);
+    return () => {
+      window.removeEventListener("elroy:birth-card-revealed", onBirth);
+      window.removeEventListener("popstate", syncHomeReveal);
+    };
+  }, [pathname]);
 
-  const eligible = ready && isElroyEligiblePath(pathname) && !suppressed;
+  const eligible =
+    ready &&
+    isElroyEligiblePath(pathname) &&
+    !suppressed &&
+    !homeRevealVisible;
 
   useEffect(() => {
     if (

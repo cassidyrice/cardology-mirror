@@ -15,15 +15,16 @@ function occurrences(source: string, value: string): number {
   return source.split(value).length - 1;
 }
 
-test("shared header renders Create content link", () => {
+test("shared header renders Explore link", () => {
   const markup = renderToStaticMarkup(createElement(SiteHeader));
 
   expect(markup).toContain('aria-label="Primary"');
   expect(markup).toContain('aria-label="Mobile primary"');
-  expect(occurrences(markup, 'href="/content-engine"')).toBe(2);
-  expect(markup).toContain("Create content");
+  expect(occurrences(markup, 'href="/explore"')).toBe(2);
+  expect(markup).toContain("Explore");
+  expect(markup).not.toContain("Create content");
+  expect(markup).not.toContain("/content-engine");
   expect(markup).not.toContain("Learn more");
-  expect(markup).not.toContain("Use this as a tool for creating");
   expect(markup).not.toContain("Get a Reading");
   expect(markup).not.toContain('href="/karma-reading"');
   expect(markup).not.toContain('href="/birth-card-calculator"');
@@ -36,6 +37,7 @@ test("bare footer keeps the single disclaimer and legal row", () => {
   expect(markup).toContain('href="/privacy-policy"');
   expect(occurrences(markup, 'href="/content-engine"')).toBe(1);
   expect(occurrences(markup, 'href="/products/birth-card-deep-dive"')).toBe(1);
+  expect(markup).toContain("Content Calendar (experiment)");
 });
 
 test("header waits until lg to switch between mobile and desktop navigation", () => {

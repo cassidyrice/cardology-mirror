@@ -29,7 +29,7 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Content Calendar", href: "/content-engine" },
+  { label: "Content Calendar (experiment)", href: "/content-engine" },
   { label: "Deep Dive ($9)", href: "/products/birth-card-deep-dive" },
   { label: "Free course", href: "/free-course" },
 ] as const;
@@ -81,7 +81,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
         </p>
         <p className="mb-8 text-sm">
           <Link href="/explore" className="editorial-link text-brand-ink-soft">
-            Learn more →
+            Explore →
           </Link>
         </p>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

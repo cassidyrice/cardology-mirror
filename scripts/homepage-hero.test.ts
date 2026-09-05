@@ -40,7 +40,7 @@ describe("birthCardSlug", () => {
 });
 
 describe("Homepage landing contract", () => {
-  test("home is the calculator landing; explore keeps the library", () => {
+  test("home is the calculator landing; explore is the directory", () => {
     const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
     const explore = readFileSync(new URL("../app/explore/page.tsx", import.meta.url), "utf8");
     const header = readFileSync(
@@ -61,19 +61,16 @@ describe("Homepage landing contract", () => {
     );
 
     expect(home).toContain("LandingCalculator");
-    expect(home).toContain("HomeContentCue");
+    expect(home).not.toContain("HomeContentCue");
     expect(home).not.toContain("TodaysCardSection");
-    expect(home).not.toContain("Learn more");
-    expect(home).not.toContain("LiveReadingSection");
     expect(home).not.toContain("DeepDiveSection");
+    expect(home).toContain('href="/explore"');
+    expect(home).toContain("Explore →");
     expect(home).toContain('absolute: HOME_TITLE');
     expect(home).toContain("Find Your Birth Card | Card Blueprints");
 
-    expect(explore).toContain("Everything under the hood");
     expect(explore).toContain("Explore Card Blueprints");
-    expect(explore).toContain("HomepageCalculatorHero");
-    expect(explore).toContain("TodaysCardSection");
-    expect(explore).toContain("DeepDiveSection");
+    expect(explore).not.toContain("HomepageCalculatorHero");
 
     expect(landing).toContain("Which card were you born under?");
     expect(landing).toContain("Your birthday adds up to one card. Same date, same card, every time.");
@@ -83,24 +80,26 @@ describe("Homepage landing contract", () => {
     expect(reveal).toContain("Your strength");
     expect(reveal).toContain("Where it trips you");
     expect(reveal).toContain("Right now");
-    expect(reveal).toContain("Want posts written for your business");
-    expect(reveal).toContain("See 7 days free");
-    expect(reveal).toContain("/content-engine");
-    expect(reveal).toContain("engine_link_clicked");
-    expect(reveal).toContain("reveal_shown");
-    expect(reveal).not.toContain("Something to notice this week");
-    expect(reveal).not.toContain("The same math runs a calendar");
+    expect(reveal).toContain("Read my card →");
+    expect(reveal).toContain("Compare with someone →");
+    expect(reveal).toContain("Your card, written out. $9.");
+    expect(reveal).toContain("<DeepDiveSample");
+    expect(reveal).toContain("<DeepDiveCta");
+    expect(reveal).toContain("Explore →");
+    expect(reveal).toContain("result_card_clicked");
+    expect(reveal).toContain("result_compare_clicked");
+    expect(reveal).not.toContain("/content-engine");
+    expect(reveal).not.toContain("See 7 days free");
 
-    expect(header).toContain("/content-engine");
-    expect(header).toContain("Create content");
-    expect(header).not.toContain('label: "Learn more"');
-    expect(header).not.toContain('href="/explore"');
-    expect(header).not.toContain("Get a Reading");
+    expect(header).toContain("/explore");
+    expect(header).toContain("Explore");
+    expect(header).not.toContain("Create content");
+    expect(header).not.toContain("/content-engine");
     expect(header).not.toContain("/karma-reading");
 
-    expect(footer).toContain("Learn more");
+    expect(footer).toContain("Explore →");
     expect(footer).toContain("/explore");
-    expect(footer).toContain("Content Engine");
+    expect(footer).toContain("Content Calendar (experiment)");
     expect(footer).toContain("/content-engine");
     expect(footer).toContain("Deep Dive ($9)");
     expect(footer).not.toContain("Reading Day waitlist");

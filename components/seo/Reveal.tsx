@@ -8,7 +8,10 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
+import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { DeepDiveSample } from "@/components/seo/DeepDiveSample";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
+import { birthCardSlug } from "@/lib/birth-card-calculator";
 import { parseCard, todayISO } from "@/lib/cards";
 import { type BirthCardReveal } from "@/lib/birth-card-calculator";
 import { getCardSeo } from "@/lib/seo-cards";
@@ -27,6 +30,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
   const label = isJoker ? "The Joker" : seo?.label ?? parseCard(result.birthCard)?.label ?? result.birthCard;
   const title = seo?.title ?? null;
   const face = shareFacePathFromCode(result.birthCard);
+  const cardSlug = isJoker ? null : birthCardSlug(result.birthCard);
 
   const rightNow = useMemo(() => {
     if (isJoker) return null;
@@ -105,27 +109,67 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
               </p>
             </div>
           ) : null}
+
+          <div className="mt-8 border border-brand-line bg-brand-ivory p-5 text-left">
+            <p className="font-serif text-xl text-brand-ink">Your card, written out. $9.</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+              Seven pages on your birth card and the period cards around it.
+            </p>
+            <DeepDiveSample
+              cardSlug={cardSlug}
+              cardLabel={label}
+              placement="home-reveal"
+              className="mx-auto mt-4"
+            />
+            <DeepDiveCta
+              placement="home-reveal"
+              birthdate={birthdate}
+              source="home-reveal"
+              cardLabel={label}
+              cardSlug={cardSlug ?? undefined}
+              className="mt-4"
+              showFulfillment={false}
+            />
+          </div>
         </>
       )}
 
       <div className="mt-8 flex flex-col items-stretch gap-3">
+        {cardSlug ? (
+          <Link
+            href={`/birth-card/${cardSlug}`}
+            className="accent-button large-button w-full text-center"
+            onClick={() =>
+              trackClientFunnelEvent("result_card_clicked", {
+                placement: "home-reveal",
+              })
+            }
+          >
+            Read my card →
+          </Link>
+        ) : null}
+        <Link
+          href="/birth-card-compatibility-calculator"
+          className="paper-button large-button w-full text-center"
+          onClick={() =>
+            trackClientFunnelEvent("result_compare_clicked", {
+              placement: "home-reveal",
+            })
+          }
+        >
+          Compare with someone →
+        </Link>
         <ShareBirthResultButton
           birthCard={result.birthCard}
           placement="home-reveal-share"
           className="paper-button large-button w-full"
         />
-        <p className="text-sm leading-relaxed text-brand-ink-soft">
-          Want posts written for your business, one for every day?{" "}
+        <p className="text-center text-sm">
           <Link
-            href="/content-engine"
-            className="font-medium text-brand-ink underline underline-offset-4"
-            onClick={() =>
-              trackClientFunnelEvent("engine_link_clicked", {
-                placement: "home-reveal",
-              })
-            }
+            href="/explore"
+            className="text-brand-ink-soft underline underline-offset-4"
           >
-            See 7 days free →
+            Explore →
           </Link>
         </p>
       </div>

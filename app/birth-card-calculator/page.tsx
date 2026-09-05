@@ -370,7 +370,7 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
+            <p className="eyebrow mb-2 text-gold">Playing cards, not tarot</p>
             <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
