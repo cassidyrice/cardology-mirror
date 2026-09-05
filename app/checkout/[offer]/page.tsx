@@ -15,6 +15,7 @@ import {
   isDigitalDownload,
   isInstantReport,
   isMembership,
+  isVideoService,
 } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
@@ -45,9 +46,18 @@ export default async function CheckoutReviewPage({
 
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product) || isMembership(product);
+  const isVideo = isVideoService(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
-    isDigital
+    isVideo
+      ? [
+          { label: "Deliverable", value: product.deliverable },
+          { label: "Format", value: "30–60 second vertical short (MP4)." },
+          { label: "Access", value: "Email delivery + order status page." },
+          { label: "Redownload", value: "Status page stays open for 60 days." },
+          { label: "Renewal", value: "One-time purchase. No automatic renewal." },
+        ]
+      : isDigital
       ? digitalOfferFacts(product)
       : instantReportFacts(product);
 
@@ -60,7 +70,7 @@ export default async function CheckoutReviewPage({
     >
       <header className="max-w-[42rem] pb-6">
         <Kicker className="mb-3">
-          {isDigital || isReport ? "Review your purchase" : "Review your reading"}
+          {isVideo ? "Review your video order" : isDigital || isReport ? "Review your purchase" : "Review your reading"}
         </Kicker>
         <h1 className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl">
           {product.name} — {product.priceLabel}
@@ -103,7 +113,18 @@ export default async function CheckoutReviewPage({
           {isReport || isDigital ? " plus applicable tax" : ""}
         </h2>
         <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
-          {isDigital ? (
+          {isVideo ? (
+            <>
+              <p>
+                Stripe securely collects payment. After payment, your order is queued
+                for production. Delivery is usually within 24 hours, promised within 48.
+              </p>
+              <p>
+                Requires a paid Content Calendar with written scripts. Start from your
+                calendar confirmation page.
+              </p>
+            </>
+          ) : isDigital ? (
             <>
               <p>
                 Stripe securely collects your payment details. After

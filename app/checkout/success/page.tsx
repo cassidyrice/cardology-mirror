@@ -13,8 +13,22 @@ import {
   isVoiceReading,
   isDeepDive,
   isContentCalendar52,
+  isVideoOffer,
   type SiteProduct,
 } from "@/lib/products";
+import {
+  parseVideoAssetKeys,
+  type VideoFormat,
+  VIDEO_FORMATS,
+  isVideoOfferSlug,
+} from "@/lib/content-video";
+import {
+  createVideoJobFromCheckout,
+  readVideoJob,
+  writeVideoJob,
+} from "@/lib/content-engine/video-jobs";
+import { videoJobsKv } from "@/lib/content-engine/video-kv";
+import { isPieceKind } from "@/lib/content-engine/write-prompt";
 import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
 import { isFixtureSession, fixtureStoredCalendar } from "@/lib/content-engine/fixture-session";
 import { ContentCalendarView } from "@/components/content-engine/ContentCalendarView";
@@ -103,6 +117,7 @@ export default async function CheckoutSuccessPage({
 
   const deepDive = product && isDeepDive(product);
   const contentCalendar = product && isContentCalendar52(product);
+  const videoOrder = product && isVideoOffer(product);
   const deepDiveBirthday = deepDive ? birthdateFromCheckoutSession(session2) : "";
   const digital =
     product && isDigitalDownload(product) && !deepDive && !contentCalendar;
@@ -273,6 +288,55 @@ export default async function CheckoutSuccessPage({
     }
   }
 
+  let videoJobId = "";
+  if (videoOrder && confirmed && sessionId && session2) {
+    const jobsKv = videoJobsKv();
+    const existing = await readVideoJob(sessionId, jobsKv);
+    if (existing) {
+      videoJobId = existing.jobId;
+    } else {
+      const offerSlug = session2.metadata?.offer_slug ?? "";
+      const calendarSessionId = session2.metadata?.calendar_session_id ?? "";
+      const formatRaw = session2.metadata?.video_format ?? "vertical-short-60";
+      const format: VideoFormat = VIDEO_FORMATS.some((f) => f.value === formatRaw)
+        ? (formatRaw as VideoFormat)
+        : "vertical-short-60";
+      const voiceAddon = session2.metadata?.voice_addon === "true";
+      const day = Number(session2.metadata?.video_day);
+      const pieceKind = session2.metadata?.piece_kind ?? "";
+      const assetKeys = parseVideoAssetKeys(session2.metadata?.asset_keys);
+
+      if (isVideoOfferSlug(offerSlug) && calendarSessionId) {
+        const calendarsKv = contentCalendarsKv();
+        const calendar = await readStoredCalendar(calendarSessionId, calendarsKv);
+        let scriptContent = "";
+        if (
+          offerSlug === "video-single" &&
+          Number.isFinite(day) &&
+          isPieceKind(pieceKind)
+        ) {
+          scriptContent =
+            calendar?.pieces?.[String(day)]?.[pieceKind]?.content ?? "";
+        }
+        const job = createVideoJobFromCheckout({
+          checkoutSessionId: sessionId,
+          calendarSessionId,
+          offerSlug,
+          format,
+          voiceAddon,
+          day: Number.isFinite(day) ? day : undefined,
+          pieceKind: isPieceKind(pieceKind) ? pieceKind : undefined,
+          scriptContent: scriptContent || undefined,
+          business: calendar?.business,
+          assets: assetKeys,
+          customerEmail: customerEmail || undefined,
+        });
+        const saved = await writeVideoJob(job, jobsKv);
+        if (saved) videoJobId = job.jobId;
+      }
+    }
+  }
+
   return (
     <SeoShell
       crumb={[
@@ -300,6 +364,8 @@ export default async function CheckoutSuccessPage({
             ? contentCalendarView
               ? "Your 52-day calendar is ready."
               : "Generation pending."
+            : confirmed && videoOrder
+              ? "Your video order is in the queue."
             : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? "Your files are ready."
@@ -319,6 +385,8 @@ export default async function CheckoutSuccessPage({
               : contentCalendarPending
                 ? "Payment confirmed. Your calendar is generation pending — refresh in a minute, or reply to your receipt if it stays blank."
                 : "Payment confirmed. Your calendar is generation pending."
+            : confirmed && videoOrder
+              ? `"${product!.name}" — ${product!.priceLabel}. Production usually starts within an hour; delivery in 24–48 hours.`
             : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? isJokerBirthdate(deepDiveBirthday)
@@ -351,6 +419,8 @@ export default async function CheckoutSuccessPage({
               pending={contentCalendarPending || !contentCalendarView}
               sessionId={sessionId}
             />
+          ) : videoOrder ? (
+            <VideoOrderFulfillment jobId={videoJobId} productName={product!.name} />
           ) : deepDive ? (
             <DeepDiveFulfillment
               birthday={deepDiveBirthday}
@@ -430,6 +500,36 @@ export default async function CheckoutSuccessPage({
   );
 }
 
+function VideoOrderFulfillment({
+  jobId,
+  productName,
+}: {
+  jobId: string;
+  productName: string;
+}) {
+  return (
+    <div className="text-center">
+      <Kicker className="mb-4">Content Calendar · Video</Kicker>
+      <h2 className="type-h2 text-brand-ink">{productName}</h2>
+      <p className="mx-auto mt-3 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+        Your order is queued. We&rsquo;ll email you when the short is ready — usually within
+        24 hours, promised within 48.
+      </p>
+      {jobId ? (
+        <div className="mt-6">
+          <LinkButton href={`/content-engine/video/${jobId}`} variant="accent" size="large">
+            View order status →
+          </LinkButton>
+        </div>
+      ) : (
+        <p className="mt-4 text-sm text-brand-ink-soft">
+          Save this page URL to check back. If status doesn&rsquo;t appear, reply to your receipt email.
+        </p>
+      )}
+    </div>
+  );
+}
+
 function ContentCalendarFulfillment({
   calendar,
   pending,
@@ -456,6 +556,18 @@ function ContentCalendarFulfillment({
     <div>
       <Kicker className="mb-4 text-center">Content Calendar</Kicker>
       <ContentCalendarView calendar={calendar} sessionId={sessionId} mode="paid" />
+      <div className="mt-10 border-t border-brand-line pt-8 text-center">
+        <p className="text-sm text-brand-ink-soft">
+          Turn a written script into a faceless short.
+        </p>
+        <LinkButton
+          href={`/content-engine/video/order?offer=video-single&calendarSessionId=${encodeURIComponent(sessionId)}`}
+          variant="outline"
+          size="large"
+        >
+          Order video from your calendar →
+        </LinkButton>
+      </div>
     </div>
   );
 }
