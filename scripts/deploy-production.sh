@@ -13,6 +13,10 @@
 #   ALLOW_DIRTY=1  allow uncommitted changes (discouraged; still records dirty flag)
 #   ALLOW_BRANCH=1 skip branch allowlist check
 set -euo pipefail
+# Deploy lock: the foreman refuses to merge into main while this file exists (see ops foreman.sh merge).
+LOCK="$HOME/cardblueprints-ops/.deploy-lock"
+date -u +%FT%TZ > "$LOCK"
+trap 'rm -f "$LOCK"' EXIT
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
