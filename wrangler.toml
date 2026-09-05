@@ -15,4 +15,4 @@ bucket_name = "cardblueprints-ebooks"
 # and set id before deploy; missing binding = graceful "generation pending".
 [[kv_namespaces]]
 binding = "CONTENT_CALENDARS"
-id = "CONTENT_CALENDARS_PLACEHOLDER"
+id = "ae096fd00a9449a39cfa8da56f95fae8"

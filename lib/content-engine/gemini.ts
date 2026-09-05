@@ -5,6 +5,7 @@ import {
   type CalendarRow,
 } from "./prompt";
 import type { StructureDay } from "./structure";
+import { vertexAccessToken, vertexConfigured, vertexGenerateUrl } from "./vertex-auth";
 
 export type GeminiGenerateResult = {
   text: string;
@@ -24,26 +25,32 @@ function geminiApiKey(): string {
 }
 
 /**
- * Call Gemini (AI Studio) generateContent. Throws GeminiConfigError when the
- * key is missing so callers can return a clear JSON / UI warming-up state.
+ * Call Gemini generateContent. Production uses Vertex AI (service-account token from
+ * lib/content-engine/vertex-auth.ts); an AI Studio key is the dev fallback. Throws
+ * GeminiConfigError when neither is configured so callers can show a warming-up state.
  */
 export async function generateCalendarWithGemini(opts: {
   business: string;
   days: StructureDay[];
   model: string;
 }): Promise<GeminiGenerateResult> {
+  const useVertex = vertexConfigured();
   const key = geminiApiKey();
-  if (!key) {
-    throw new GeminiConfigError("GEMINI_API_KEY is not configured");
+  if (!useVertex && !key) {
+    throw new GeminiConfigError("Vertex (VERTEX_SA_JSON + VERTEX_PROJECT) or GEMINI_API_KEY is not configured");
   }
 
   const system = buildSystemPrompt();
   const user = buildUserPrompt(opts.business, opts.days);
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(opts.model)}:generateContent?key=${encodeURIComponent(key)}`;
+  const url = useVertex
+    ? vertexGenerateUrl(opts.model)
+    : `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(opts.model)}:generateContent?key=${encodeURIComponent(key)}`;
+  const headers: Record<string, string> = { "content-type": "application/json" };
+  if (useVertex) headers.authorization = `Bearer ${await vertexAccessToken()}`;
 
   const res = await fetch(url, {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers,
     body: JSON.stringify({
       contents: [
         {
