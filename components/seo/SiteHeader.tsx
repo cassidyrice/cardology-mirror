@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// Six destinations + Get a Reading. Logo is the only home link.
+// Six destinations. Logo is the only home link. Reading Day CTA removed (S0).
 const NAV_LINKS = [
   { label: "Find Your Card", href: "/birth-card-calculator" },
   { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
@@ -12,8 +12,6 @@ const NAV_LINKS = [
   { label: "Read", href: "/blog" },
   { label: "Learn", href: "/cardology-for-beginners" },
 ] as const;
-
-const READING_CTA = { label: "Get a Reading", href: "/karma-reading" } as const;
 
 export function SiteHeader() {
   return (
@@ -56,22 +54,9 @@ export function SiteHeader() {
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link
-                    href={READING_CTA.href}
-                    className="accent-button mt-4 flex min-h-11 w-full items-center justify-center px-4 py-2.5 text-sm"
-                  >
-                    {READING_CTA.label}
-                  </Link>
-                </li>
               </ul>
             </nav>
           </details>
-          <div className="hidden lg:block">
-            <Link href={READING_CTA.href} className="accent-button small-button whitespace-nowrap">
-              {READING_CTA.label}
-            </Link>
-          </div>
         </div>
       </header>
     </>

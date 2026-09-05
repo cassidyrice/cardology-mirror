@@ -6,7 +6,6 @@ import { DeepDiveSection } from "@/components/home/DeepDiveSection";
 import { EmailSignupSection } from "@/components/home/EmailSignupSection";
 import { HomepageCalculatorHero } from "@/components/home/HomepageCalculatorHero";
 import { LatestBlogSection } from "@/components/home/LatestBlogSection";
-import { LiveReadingSection } from "@/components/home/LiveReadingSection";
 import { StartHereSection } from "@/components/home/StartHereSection";
 import { TodaysCardSection } from "@/components/home/TodaysCardSection";
 import { SiteFooter } from "@/components/seo/SiteFooter";
@@ -55,7 +54,6 @@ export default function Home() {
         <TodaysCardSection />
         <LatestBlogSection />
         <CompareBand />
-        <LiveReadingSection />
         <DeepDiveSection />
         <StartHereSection />
         <AboutCassSection />

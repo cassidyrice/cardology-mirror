@@ -40,7 +40,7 @@ describe("birthCardSlug", () => {
 });
 
 describe("HomepageCalculatorHero contract", () => {
-  test("keeps the calculator-first home and reading header CTA", () => {
+  test("keeps the calculator-first home without Reading Day surfaces", () => {
     const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
     const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
     const header = readFileSync(
@@ -56,15 +56,15 @@ describe("HomepageCalculatorHero contract", () => {
     expect(home).toContain("TodaysCardSection");
     expect(home).toContain("LatestBlogSection");
     expect(home).toContain("CompareBand");
-    expect(home).toContain("LiveReadingSection");
+    expect(home).not.toContain("LiveReadingSection");
     expect(home).toContain("DeepDiveSection");
     expect(home).not.toContain("HomepageJourney");
     expect(home).not.toContain("Two paid writes");
     expect(home).not.toContain("A real system under the symbols");
     expect(home).not.toContain("Explore the library");
     expect(layout).not.toContain("homepage-journey.css");
-    expect(header).toContain("/karma-reading");
-    expect(header).toContain("Get a Reading");
+    expect(header).not.toContain("/karma-reading");
+    expect(header).not.toContain("Get a Reading");
     expect(header).toContain("/birth-card-calculator");
     expect(header).not.toContain("HeaderDeepDiveCta");
     expect(header).not.toContain("$29");
@@ -72,6 +72,7 @@ describe("HomepageCalculatorHero contract", () => {
     expect(footer).not.toContain("$13");
     expect(footer).not.toContain("$29");
     expect(footer).toContain("Playing cards, not tarot");
+    expect(footer).toContain("Reading Day waitlist");
   });
 
   test("puts the free calculator first with exact hero copy", () => {

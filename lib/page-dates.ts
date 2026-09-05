@@ -35,7 +35,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/contact": "2026-08-17",
   "/shadow-karma-guide": "2026-07-02",
   "/karma-cards": "2026-09-01",
-  "/karma-reading": "2026-09-02",
+  "/karma-reading": "2026-09-04",
   "/privacy-policy": "2026-09-01",
   "/refund-policy": "2026-08-06",
   "/terms-of-service": "2026-08-06",

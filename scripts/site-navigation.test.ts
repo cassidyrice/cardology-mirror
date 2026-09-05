@@ -24,8 +24,8 @@ test("shared header renders the six nav links in both primary navigation variant
   expect(occurrences(markup, ">Compatibility</a>")).toBe(2);
   expect(occurrences(markup, 'href="/card-of-the-day"')).toBe(2);
   expect(occurrences(markup, 'href="/blog"')).toBe(2);
-  expect(occurrences(markup, 'href="/karma-reading"')).toBe(2);
-  expect(markup).toContain("Get a Reading");
+  expect(occurrences(markup, 'href="/karma-reading"')).toBe(0);
+  expect(markup).not.toContain("Get a Reading");
   expect(markup).toContain("Find Your Card");
   expect(markup).toContain("Today&#x27;s Card");
 });
@@ -46,7 +46,6 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
   const detailsStart = headerSource.indexOf("<details");
   const detailsEnd = headerSource.indexOf("</details>", detailsStart);
   const mobileDetails = headerSource.slice(detailsStart, detailsEnd);
-  const desktopCta = headerSource.slice(detailsEnd, headerSource.indexOf("</header>", detailsEnd));
 
   expect(primaryStart).toBeGreaterThan(0);
   expect(primaryEnd).toBeGreaterThan(primaryStart);
@@ -57,7 +56,4 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
   expect(detailsEnd).toBeGreaterThan(detailsStart);
   expect(mobileDetails).toMatch(/className="[^"]*\blg:hidden\b[^"]*"/);
   expect(mobileDetails).not.toMatch(/className="[^"]*\bmd:hidden\b[^"]*"/);
-
-  expect(desktopCta).toMatch(/className="[^"]*\blg:block\b[^"]*"/);
-  expect(desktopCta).not.toMatch(/className="[^"]*\bmd:block\b[^"]*"/);
 });

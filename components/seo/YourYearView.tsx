@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
-import { ReadingDayCta } from "@/components/seo/ReadingDayCta";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { parseCard, todayISO } from "@/lib/cards";
 import {
@@ -192,7 +191,6 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
           Try a different birthday
         </button>
         <DeepDiveCta placement="your-year" birthdate={birthdate} source="birth-card-calculator" />
-        <ReadingDayCta placement="your-year" variant="line" />
       </div>
     );
   }
@@ -283,7 +281,6 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
           birthdate={birthdate}
           source="birth-card-calculator"
         />
-        <ReadingDayCta placement="your-year" variant="line" />
         <button
           type="button"
           className="text-xs text-brand-ink-soft underline underline-offset-4"

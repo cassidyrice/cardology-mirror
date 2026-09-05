@@ -29,7 +29,7 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Karma Card Reading ($20)", href: "/karma-reading" },
+  { label: "Reading Day waitlist", href: "/karma-reading" },
   { label: "Deep Dive ($9)", href: "/products/birth-card-deep-dive" },
   { label: "Free course", href: "/free-course" },
 ] as const;
