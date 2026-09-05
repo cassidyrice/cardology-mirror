@@ -24,4 +24,4 @@ id = "ae096fd00a9449a39cfa8da56f95fae8"
 # Video render jobs (60-day status page). Create namespace before deploy.
 [[kv_namespaces]]
 binding = "VIDEO_JOBS"
-id = "00000000000000000000000000000000"
+id = "4fd096e007f84258869555f57257e228"
