@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-04** (deployed `main` @ `adc670e` — Footer: the one disclaimer, in Cass's words; previous record `24317b2`)
+**Last verified: 2026-09-05** (deployed `main` @ `7b2180d` — Merge agent/grokbuild-E2 (foreman); previous record `adc670e`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `adc670e4cc1160e1fc5cf708324aea580478dbab` |
+| **Deployed commit** | `7b2180db9247fe06c087d15df4d12b78e84d6f1f` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
 | **Worker rollback** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
