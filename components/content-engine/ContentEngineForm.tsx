@@ -136,7 +136,7 @@ export function ContentEngineForm() {
             <p className="mb-3 font-serif text-xl text-brand-ink">{weekHeaders[0]}</p>
           ) : null}
           <div className="overflow-x-auto border border-brand-ink">
-            <table className="min-w-full text-left text-sm">
+            <table className="ce-table min-w-full text-left text-sm">
               <thead className="border-b border-brand-ink bg-brand-ivory font-mono text-[0.65rem] uppercase tracking-[0.12em]">
                 <tr>
                   <th className="px-3 py-2">Day</th>
@@ -149,11 +149,11 @@ export function ContentEngineForm() {
               <tbody>
                 {rows.map((row) => (
                   <tr key={row.day} className="border-t border-brand-line align-top">
-                    <td className="px-3 py-3 font-mono text-xs">{row.day}</td>
-                    <td className="px-3 py-3 font-medium">{row.theme}</td>
-                    <td className="px-3 py-3 text-brand-ink-soft">{row.why}</td>
-                    <td className="px-3 py-3">{row.post}</td>
-                    <td className="px-3 py-3 whitespace-nowrap">{row.format}</td>
+                    <td data-label="Day" className="px-3 py-3 font-mono text-xs">{row.day}</td>
+                    <td data-label="Theme" className="px-3 py-3 font-medium">{row.theme}</td>
+                    <td data-label="Why" className="px-3 py-3 text-brand-ink-soft">{row.why}</td>
+                    <td data-label="Post" className="px-3 py-3">{row.post}</td>
+                    <td data-label="Format" className="px-3 py-3 whitespace-nowrap">{row.format}</td>
                   </tr>
                 ))}
               </tbody>
