@@ -30,6 +30,7 @@ import {
 import { videoJobsKv } from "@/lib/content-engine/video-kv";
 import { isPieceKind } from "@/lib/content-engine/write-prompt";
 import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
+import { videoTierEnabled } from "@/lib/content-engine/video-flag";
 import { isFixtureSession, fixtureStoredCalendar } from "@/lib/content-engine/fixture-session";
 import { ContentCalendarView } from "@/components/content-engine/ContentCalendarView";
 import { buildPaidStructure, parseIsoDate } from "@/lib/content-engine/structure";
@@ -556,18 +557,20 @@ function ContentCalendarFulfillment({
     <div>
       <Kicker className="mb-4 text-center">Content Calendar</Kicker>
       <ContentCalendarView calendar={calendar} sessionId={sessionId} mode="paid" />
-      <div className="mt-10 border-t border-brand-line pt-8 text-center">
-        <p className="text-sm text-brand-ink-soft">
-          Turn a written script into a faceless short.
-        </p>
-        <LinkButton
-          href={`/content-engine/video/order?offer=video-single&calendarSessionId=${encodeURIComponent(sessionId)}`}
-          variant="outline"
-          size="large"
-        >
-          Order video from your calendar →
-        </LinkButton>
-      </div>
+      {videoTierEnabled() ? (
+        <div className="mt-10 border-t border-brand-line pt-8 text-center">
+          <p className="text-sm text-brand-ink-soft">
+            Turn a written script into a faceless short.
+          </p>
+          <LinkButton
+            href={`/content-engine/video/order?offer=video-single&calendarSessionId=${encodeURIComponent(sessionId)}`}
+            variant="outline"
+            size="large"
+          >
+            Order video from your calendar →
+          </LinkButton>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { VideoOrderForm } from "@/components/content-engine/VideoOrderForm";
+import { videoTierEnabled } from "@/lib/content-engine/video-flag";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker } from "@/components/ui";
 import { contentCalendarsKv } from "@/lib/content-engine/kv";
@@ -32,6 +33,16 @@ type PageProps = {
 };
 
 export default async function VideoOrderPage({ searchParams }: PageProps) {
+  if (!videoTierEnabled()) {
+    return (
+      <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Content Calendar", href: "/content-engine" }]}>
+        <h1 className="type-h1 mt-3 text-brand-ink">Video is coming after the first calendars ship.</h1>
+        <p className="prose-reading mt-4 text-brand-ink-soft">
+          Faceless shorts made from your calendar's scripts are being tested. The Content Calendar is available now.
+        </p>
+      </SeoShell>
+    );
+  }
   const sp = await searchParams;
   const offerSlug = sp.offer?.trim() || VIDEO_SINGLE_SLUG;
   const calendarSessionId = sp.calendarSessionId?.trim() ?? "";
