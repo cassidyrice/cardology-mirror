@@ -19,6 +19,12 @@ const nextConfig = {
         destination: "/birth-card",
         statusCode: 301,
       },
+      // Product name is "Content Calendar"; the route stayed /content-engine (2026-09-05).
+      {
+        source: "/content-calendar",
+        destination: "/content-engine",
+        statusCode: 301,
+      },
       {
         source: "/cardology-agent-instructions",
         destination: "/shadow-karma-guide",

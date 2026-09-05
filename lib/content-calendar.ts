@@ -20,7 +20,7 @@ export function contentCalendarSessionMetadata(opts: {
     business: opts.business.slice(0, 240),
     start_date: opts.startDate,
     source: opts.source || "content-engine",
-    offer_name: "Content Engine — 52-Day Calendar",
+    offer_name: "Content Calendar — 52 days",
     product_kind: "digital_download",
   };
 }

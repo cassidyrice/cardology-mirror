@@ -4,7 +4,7 @@ import { ContentEngineForm } from "@/components/content-engine/ContentEngineForm
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
-const TITLE = "Content Engine | Card Blueprints";
+const TITLE = "Content Calendar | Card Blueprints";
 const DESCRIPTION =
   "52 days of content, written for you. Not a spreadsheet: tap any day and it writes the post.";
 

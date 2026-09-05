@@ -441,7 +441,7 @@ function ContentCalendarFulfillment({
   if (pending || !calendar) {
     return (
       <div className="text-center">
-        <Kicker className="mb-4">Content Engine</Kicker>
+        <Kicker className="mb-4">Content Calendar</Kicker>
         <h2 className="type-h2 text-brand-ink">Generation pending</h2>
         <p className="mx-auto mt-3 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
           Your calendar is not ready to show yet. Refresh this page in a minute. If it
@@ -453,7 +453,7 @@ function ContentCalendarFulfillment({
 
   return (
     <div>
-      <Kicker className="mb-4 text-center">Content Engine</Kicker>
+      <Kicker className="mb-4 text-center">Content Calendar</Kicker>
       <ContentCalendarView calendar={calendar} sessionId={sessionId} mode="paid" />
     </div>
   );

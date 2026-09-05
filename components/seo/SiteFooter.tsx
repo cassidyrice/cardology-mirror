@@ -29,7 +29,7 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Content Engine", href: "/content-engine" },
+  { label: "Content Calendar", href: "/content-engine" },
   { label: "Deep Dive ($9)", href: "/products/birth-card-deep-dive" },
   { label: "Free course", href: "/free-course" },
 ] as const;
