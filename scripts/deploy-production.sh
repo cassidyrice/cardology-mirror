@@ -17,6 +17,8 @@ set -euo pipefail
 LOCK="$HOME/cardblueprints-ops/.deploy-lock"
 date -u +%FT%TZ > "$LOCK"
 trap 'rm -f "$LOCK"' EXIT
+# Preflight: a placeholder binding id in wrangler.toml fails at the very end of a deploy; catch it first.
+if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then echo "wrangler.toml has a placeholder binding id; create the namespace and set the id first." >&2; exit 1; fi
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
