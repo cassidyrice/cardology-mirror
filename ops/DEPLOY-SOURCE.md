@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-05** (deployed `main` @ `08b1544` — Tests follow the one-link header: Create content in the header, Learn more in the footer; previous record `c368bf1`)
+**Last verified: 2026-09-05** (deployed `main` @ `b6acb60` — Deploy preflight: refuse placeholder binding ids in wrangler.toml; previous record `08b1544`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `08b154410142c0c07d18c41b66d5f72af0d87c91` |
+| **Deployed commit** | `b6acb604a1de0dc23cbdad4dc1846e4fecafb3d6` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
 | **Worker rollback** | `3661c1c1-c8f3-4bbd-a31c-6908c8af5998` |
