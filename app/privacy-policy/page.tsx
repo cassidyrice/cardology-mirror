@@ -62,11 +62,13 @@ export default function PrivacyPolicy() {
               <p className="mt-1">
                 Stripe Checkout collects the buyer&rsquo;s email address and the birth
                 date entered for the Birth Card Deep Dive. The birth date is
-                used to match the card-level PDF and is included in a
-                signed download token sent in the transactional email. We do not
-                maintain a separate customer birth-date database, but Stripe,
-                Resend, and Cloudflare may process the checkout field, email link,
-                or request URL under their retention and logging policies.
+                used once to match the card-level PDF. The signed download
+                token in the transactional email carries your email address,
+                the card name, and an expiry — not the birth date. We do not
+                maintain a separate customer birth-date database, but Stripe
+                keeps the birth date on the checkout record, and Stripe, Resend,
+                and Cloudflare may process the checkout field, email link, or
+                request URL under their retention and logging policies.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
