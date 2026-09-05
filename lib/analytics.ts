@@ -79,6 +79,10 @@ const OFFER_SLUGS = new Set([
   "birth-card-deep-dive",
   "deep-dive",
   "content-calendar-52",
+  "video-single",
+  "video-weekly-7",
+  "video-daily-52",
+  "video-voice-addon",
   "karma-reading",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",

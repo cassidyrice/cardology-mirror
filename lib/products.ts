@@ -2,11 +2,24 @@
 // Voice-reading offers are retained for old Stripe sessions and entitlements,
 // but are not part of the active public catalog or new checkout lookup.
 
+import {
+  VIDEO_DAILY_52_SLUG,
+  VIDEO_SINGLE_SLUG,
+  VIDEO_VOICE_ADDON_SLUG,
+  VIDEO_WEEKLY_7_SLUG,
+  videoDaily52PriceId,
+  videoOfferAvailable,
+  videoSinglePriceId,
+  videoVoiceAddonPriceId,
+  videoWeekly7PriceId,
+} from "@/lib/content-video";
+
 export type ProductKind =
   | "voice_reading"
   | "digital_download"
   | "instant_report"
-  | "membership";
+  | "membership"
+  | "video_service";
 
 export type ReadingAccessType = "single_session" | "season_pass";
 
@@ -19,6 +32,10 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
   | "STRIPE_PRICE_DEEP_DIVE"
   | "STRIPE_PRICE_CONTENT_CALENDAR"
+  | "STRIPE_PRICE_VIDEO_SINGLE"
+  | "STRIPE_PRICE_VIDEO_WEEKLY_7"
+  | "STRIPE_PRICE_VIDEO_DAILY_52"
+  | "STRIPE_PRICE_VIDEO_VOICE_ADDON"
   | "STRIPE_PRICE_MEMBERSHIP";
 
 type ProductBase = {
@@ -65,15 +82,23 @@ export type MembershipOffer = ProductBase & {
   billingPeriod: "month";
 };
 
+export type VideoOffer = ProductBase & {
+  kind: "video_service";
+  videosIncluded: number;
+  requiresCalendar: boolean;
+};
+
 export type SiteProduct =
   | ReadingOffer
   | DigitalDownloadOffer
   | InstantReportOffer
-  | MembershipOffer;
+  | MembershipOffer
+  | VideoOffer;
 export type ActiveProduct =
   | DigitalDownloadOffer
   | InstantReportOffer
-  | MembershipOffer;
+  | MembershipOffer
+  | VideoOffer;
 
 export type DigitalOfferFact = {
   label: "Deliverable" | "Format" | "Access" | "Redownload" | "Renewal";
@@ -319,6 +344,129 @@ export const CONTENT_CALENDAR_52_PRODUCT: DigitalDownloadOffer = {
   href: "/content-engine",
 };
 
+export const VIDEO_SINGLE_PRODUCT: VideoOffer = {
+  kind: "video_service",
+  slug: VIDEO_SINGLE_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_VIDEO_SINGLE",
+  name: "Video — single short",
+  price: 19,
+  priceLabel: "$19",
+  badge: "Video",
+  oneLine:
+    "One 30–60 second faceless short from any day's script, with your photos and optional voice.",
+  bestFor: "Testing video before committing to a pack.",
+  deliverable:
+    "One critic-gated vertical short, delivered by email and on your order page within 48 hours.",
+  turnaround: "Usually 24 hours, promised within 48.",
+  includes: [
+    "One short from a written script in your calendar",
+    "Your photos and optional audio or logo",
+    "30–60 second vertical format",
+    "One free re-render if needed",
+  ],
+  cta: "Order one short — $19",
+  checkoutNote:
+    "Requires a paid Content Calendar. The script comes from a piece you've already written.",
+  videosIncluded: 1,
+  requiresCalendar: true,
+  href: "/content-engine/video/order?offer=video-single",
+};
+
+export const VIDEO_WEEKLY_7_PRODUCT: VideoOffer = {
+  kind: "video_service",
+  slug: VIDEO_WEEKLY_7_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_VIDEO_WEEKLY_7",
+  name: "Video — weekly pack (7)",
+  price: 99,
+  priceLabel: "$99",
+  badge: "Video pack",
+  oneLine: "Seven shorts across your calendar — one per week, delivered as each is ready.",
+  bestFor: "A month of weekly posts without daily production.",
+  deliverable:
+    "Seven critic-gated vertical shorts, delivered as each finishes (usually within 48 hours each).",
+  turnaround: "First short within 48 hours; rest drip as ready.",
+  includes: [
+    "Seven shorts from your calendar scripts",
+    "Your photos and optional audio per video",
+    "One free re-render per video",
+  ],
+  cta: "Order weekly pack — $99",
+  checkoutNote: "Requires a paid Content Calendar.",
+  videosIncluded: 7,
+  requiresCalendar: true,
+  href: "/content-engine/video/order?offer=video-weekly-7",
+};
+
+export const VIDEO_DAILY_52_PRODUCT: VideoOffer = {
+  kind: "video_service",
+  slug: VIDEO_DAILY_52_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_VIDEO_DAILY_52",
+  name: "Video — every day (52)",
+  price: 349,
+  priceLabel: "$349",
+  badge: "Video pack",
+  oneLine: "Fifty-two shorts across your full calendar — drip delivered as each is ready.",
+  bestFor: "Daily posters who want the full year on video.",
+  deliverable:
+    "Fifty-two critic-gated vertical shorts, delivered as each finishes.",
+  turnaround: "First short within 48 hours; rest drip as ready.",
+  includes: [
+    "Fifty-two shorts from your calendar scripts",
+    "Your photos and optional audio per video",
+    "One free re-render per video",
+  ],
+  cta: "Order daily pack — $349",
+  checkoutNote: "Requires a paid Content Calendar. Limited capacity.",
+  videosIncluded: 52,
+  requiresCalendar: true,
+  href: "/content-engine/video/order?offer=video-daily-52",
+};
+
+export const VIDEO_VOICE_ADDON_PRODUCT: VideoOffer = {
+  kind: "video_service",
+  slug: VIDEO_VOICE_ADDON_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_VIDEO_VOICE_ADDON",
+  name: "Your-voice add-on",
+  price: 10,
+  priceLabel: "+$10/video",
+  badge: "Add-on",
+  oneLine: "Use your own voice — upload audio or a sample for cloning.",
+  bestFor: "Buyers who want faceless video that still sounds like them.",
+  deliverable: "Voice track mixed into your short using your uploaded audio.",
+  turnaround: "Added to your video order at checkout.",
+  includes: ["Your uploaded audio or voice sample", "Mixed into the final short"],
+  cta: "Add your voice — +$10",
+  checkoutNote: "Select at checkout with any video order.",
+  videosIncluded: 0,
+  requiresCalendar: true,
+  href: "/content-engine/video/order",
+};
+
+export const VIDEO_PRODUCTS: VideoOffer[] = [
+  VIDEO_SINGLE_PRODUCT,
+  VIDEO_WEEKLY_7_PRODUCT,
+  VIDEO_DAILY_52_PRODUCT,
+  VIDEO_VOICE_ADDON_PRODUCT,
+];
+
+export function availableVideoProducts(): VideoOffer[] {
+  return VIDEO_PRODUCTS.filter((product) => {
+    if (product.slug === VIDEO_DAILY_52_SLUG) {
+      return Boolean(videoDaily52PriceId());
+    }
+    if (product.slug === VIDEO_VOICE_ADDON_SLUG) {
+      return Boolean(videoVoiceAddonPriceId());
+    }
+    if (product.slug === VIDEO_SINGLE_SLUG) {
+      return Boolean(videoSinglePriceId());
+    }
+    if (product.slug === VIDEO_WEEKLY_7_SLUG) {
+      return Boolean(videoWeekly7PriceId());
+    }
+    return videoOfferAvailable(product.slug);
+  });
+}
+
 export const MEMBERSHIP_SLUG = "cardology-membership";
 
 export const MEMBERSHIP_PRODUCT: MembershipOffer = {
@@ -356,6 +504,7 @@ export const ALL_PRODUCTS: SiteProduct[] = [
   ...DIGITAL_PRODUCTS,
   DEEP_DIVE_PRODUCT,
   CONTENT_CALENDAR_52_PRODUCT,
+  ...VIDEO_PRODUCTS,
   MEMBERSHIP_PRODUCT,
 ];
 
@@ -382,6 +531,10 @@ export function isMembership(p: SiteProduct): p is MembershipOffer {
   return p.kind === "membership";
 }
 
+export function isVideoService(p: SiteProduct): p is VideoOffer {
+  return p.kind === "video_service";
+}
+
 export function productBySlug(slug: string): SiteProduct | undefined {
   return ALL_PRODUCTS.find((p) => p.slug === slug);
 }
@@ -391,12 +544,21 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
+function checkoutVideoBySlug(slug: string): VideoOffer | undefined {
+  const product = VIDEO_PRODUCTS.find((p) => p.slug === slug);
+  if (!product) return undefined;
+  if (!videoOfferAvailable(slug)) return undefined;
+  if (slug === VIDEO_VOICE_ADDON_SLUG) return undefined;
+  return product;
+}
+
 /** Checkout-eligible products, including Deep Dive and Content Engine which are not in the public catalog. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??
     (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
-    (slug === CONTENT_CALENDAR_52_SLUG ? CONTENT_CALENDAR_52_PRODUCT : undefined)
+    (slug === CONTENT_CALENDAR_52_SLUG ? CONTENT_CALENDAR_52_PRODUCT : undefined) ??
+    checkoutVideoBySlug(slug)
   );
 }
 
@@ -408,6 +570,27 @@ export function isContentCalendar52(
   product: { slug: string } | null | undefined,
 ): boolean {
   return product?.slug === CONTENT_CALENDAR_52_SLUG;
+}
+
+export function isVideoSingle(product: { slug: string } | null | undefined): boolean {
+  return product?.slug === VIDEO_SINGLE_SLUG;
+}
+
+export function isVideoWeekly7(product: { slug: string } | null | undefined): boolean {
+  return product?.slug === VIDEO_WEEKLY_7_SLUG;
+}
+
+export function isVideoDaily52(product: { slug: string } | null | undefined): boolean {
+  return product?.slug === VIDEO_DAILY_52_SLUG;
+}
+
+export function isVideoOffer(product: { slug: string } | null | undefined): boolean {
+  if (!product?.slug) return false;
+  return (
+    isVideoSingle(product) ||
+    isVideoWeekly7(product) ||
+    isVideoDaily52(product)
+  );
 }
 
 export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
