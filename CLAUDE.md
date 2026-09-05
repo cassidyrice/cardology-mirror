@@ -8,7 +8,7 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - **After every deploy run `bash scripts/record-deploy.sh`** so `ops/DEPLOY-SOURCE.md` and `scripts/verify-deploy-source.sh` name the live commit. `bash scripts/verify-deploy-source.sh` is the only trustworthy answer to "what is live" — the Cloudflare dashboard labels everything "main".
 - **One product for sale: the $9 Birth Card Deep Dive.** Stripe account **Card Blueprint** (`acct_1U1a1dChx1yAVyrs`) only. Never the Cassidy Rice / 52xseven account. Do not resurrect $13/$27/$17/membership CTAs. Fulfillment for past buyers stays intact.
 - **Never `ALLOW_DIRTY=1`.** Commit first.
-- Secrets live in `.env.local` and Cloudflare project secrets. Never print them, never commit them.
+- Secrets live in `.env.local` and Cloudflare project secrets. Never print them, never commit them. **Never edit the Pages project's environment variables in the Cloudflare dashboard** (2026-09-04: one dashboard save blanked every secret value and took checkout down). Add or change a secret only with `npx wrangler pages secret put NAME --project-name cardology-mirror`, one at a time, then redeploy.
 
 ## Before you say "done"
 1. `bun run test` passes (known pre-existing failure: `scripts/card-meaning-equity.test.ts` stale Semrush assertion).
