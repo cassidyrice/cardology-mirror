@@ -9,10 +9,14 @@ import {
   type StoredCalendar,
 } from "@/lib/content-engine/storage";
 import {
+  WRITE_LIMIT,
+  WRITE_RATE_SCOPE,
+  WRITE_WINDOW_MS,
   applyGeneration,
   canGenerate,
   dayKey,
   nextRegenerationIndex,
+  upsertDayPiece,
   type WrittenPiece,
 } from "@/lib/content-engine/write-counters";
 import { isPieceKind, pieceKindLabel } from "@/lib/content-engine/write-prompt";
@@ -20,10 +24,6 @@ import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
-
-const WRITE_RATE_SCOPE = "content-engine-write";
-const WRITE_LIMIT = 30;
-const WRITE_WINDOW_MS = 60 * 60 * 1000;
 
 const STUB_PIECE =
   "## Sharing the good stuff\n\nWe're giving our partners an extra dozen croissants this week. Same sourdough, same schedule — we just had room on the tray.";
@@ -135,8 +135,7 @@ export async function POST(req: NextRequest) {
     regeneration: nextRegenerationIndex(counters, day),
   };
 
-  const dayPieces = { ...(pieces[dayKey(day)] ?? {}), [kind]: piece };
-  const nextPieces = { ...pieces, [dayKey(day)]: dayPieces };
+  const nextPieces = upsertDayPiece(pieces, day, piece);
   const nextCounters = applyGeneration(counters, day);
 
   const updated: StoredCalendar = {
