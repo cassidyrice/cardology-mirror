@@ -164,7 +164,7 @@ fi
 
 echo "→ smoke: homepage title"
 HOME_TITLE="$(curl -sS "${SITE_ORIGIN}/" | sed -n 's/.*<title[^>]*>\([^<]*\)<\/title>.*/\1/p' | head -1 || true)"
-if echo "$HOME_TITLE" | grep -qi 'Birth Cards'; then
+if echo "$HOME_TITLE" | grep -qi 'Birth Card'; then
   green "Homepage title OK: $HOME_TITLE"
 else
   yellow "Homepage title unexpected: $HOME_TITLE"
@@ -172,9 +172,8 @@ fi
 
 echo "→ smoke: product URLs in sitemap"
 SITEMAP="$(curl -sS "${SITE_ORIGIN}/sitemap.xml" || true)"
-if echo "$SITEMAP" | grep -q 'products/personal-card-blueprint' \
-  && echo "$SITEMAP" | grep -q 'products/analog-algorithm' \
-  && echo "$SITEMAP" | grep -q 'products/complete-card-blueprint'; then
+if echo "$SITEMAP" | grep -q 'products/birth-card-deep-dive' \
+  && echo "$SITEMAP" | grep -q '/content-engine'; then
   green "Sitemap product URLs OK"
 else
   yellow "Sitemap missing product URLs (CDN delay or regression)"
