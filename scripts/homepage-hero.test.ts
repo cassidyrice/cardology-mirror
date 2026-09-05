@@ -61,9 +61,9 @@ describe("Homepage landing contract", () => {
     );
 
     expect(home).toContain("LandingCalculator");
-    expect(home).toContain("TodaysCardSection");
-    expect(home).toContain("Learn more");
-    expect(home).toContain("/explore");
+    expect(home).toContain("HomeContentCue");
+    expect(home).not.toContain("TodaysCardSection");
+    expect(home).not.toContain("Learn more");
     expect(home).not.toContain("LiveReadingSection");
     expect(home).not.toContain("DeepDiveSection");
     expect(home).toContain('absolute: HOME_TITLE');
@@ -83,19 +83,23 @@ describe("Homepage landing contract", () => {
     expect(reveal).toContain("Your strength");
     expect(reveal).toContain("Where it trips you");
     expect(reveal).toContain("Right now");
-    expect(reveal).toContain("The same math runs a calendar");
+    expect(reveal).toContain("Want posts written for your business");
+    expect(reveal).toContain("See 7 days free");
     expect(reveal).toContain("/content-engine");
     expect(reveal).toContain("engine_link_clicked");
     expect(reveal).toContain("reveal_shown");
     expect(reveal).not.toContain("Something to notice this week");
+    expect(reveal).not.toContain("The same math runs a calendar");
 
-    expect(header).toContain("/explore");
-    expect(header).toContain("Learn more");
     expect(header).toContain("/content-engine");
-    expect(header).toContain("Use this as a tool for creating");
+    expect(header).toContain("Create content");
+    expect(header).not.toContain('label: "Learn more"');
+    expect(header).not.toContain('href="/explore"');
     expect(header).not.toContain("Get a Reading");
     expect(header).not.toContain("/karma-reading");
 
+    expect(footer).toContain("Learn more");
+    expect(footer).toContain("/explore");
     expect(footer).toContain("Content Engine");
     expect(footer).toContain("/content-engine");
     expect(footer).toContain("Deep Dive ($9)");

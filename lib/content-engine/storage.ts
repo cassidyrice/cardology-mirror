@@ -1,4 +1,5 @@
 import type { CalendarRow } from "./prompt";
+import type { CalendarCounters, CalendarPieces } from "./write-counters";
 
 export type StoredCalendar = {
   sessionId: string;
@@ -8,6 +9,8 @@ export type StoredCalendar = {
   weekHeaders: string[];
   rows: CalendarRow[];
   csv: string;
+  pieces?: CalendarPieces;
+  counters?: CalendarCounters;
 };
 
 export type ContentCalendarKv = {

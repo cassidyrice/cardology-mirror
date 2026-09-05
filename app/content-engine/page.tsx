@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/seo/SiteHeader";
 
 const TITLE = "Content Engine | Card Blueprints";
 const DESCRIPTION =
-  "A content calendar with a reason for every day. Tell it your business. Get 52 days of themes, posts, and formats.";
+  "52 days of content, written for you. Not a spreadsheet: tap any day and it writes the post.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -34,8 +34,8 @@ export default function ContentEnginePage() {
             A content calendar with a reason for every day.
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-brand-ink-soft">
-            Tell it your business. It gives you 52 days of themes, posts and formats,
-            each one on a fixed daily pattern you can check.
+            52 days of content, written for you. Not a spreadsheet: tap any day and it writes
+            the post. Try seven days free below.
           </p>
         </header>
         <ContentEngineForm />

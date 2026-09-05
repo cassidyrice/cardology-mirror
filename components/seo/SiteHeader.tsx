@@ -6,11 +6,8 @@ import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture"
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// Site-wide: Learn more + Content Engine bridge. Logo is the only home link.
-const NAV_LINKS = [
-  { label: "Learn more", href: "/explore" },
-  { label: "Use this as a tool for creating", href: "/content-engine" },
-] as const;
+// Site-wide: Content Engine bridge. Logo is the only home link.
+const NAV_LINKS = [{ label: "Create content", href: "/content-engine" }] as const;
 
 export function SiteHeader() {
   return (

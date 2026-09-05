@@ -79,6 +79,11 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <BrandLogo compact />
           </Link>
         </p>
+        <p className="mb-8 text-sm">
+          <Link href="/explore" className="editorial-link text-brand-ink-soft">
+            Learn more →
+          </Link>
+        </p>
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Free tools</p>
