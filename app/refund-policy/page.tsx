@@ -78,6 +78,25 @@ export default function RefundPolicy() {
         </section>
 
         <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
+          {/* COPY-REVIEW */}
+          <div className="mt-3 space-y-3">
+            <p>
+              The Content Calendar is a one-time $29 digital product. You receive
+              52 days of access on this site plus a CSV export. Each day includes
+              one AI-generated post draft from the business description you enter,
+              with up to two regenerations per day.
+            </p>
+            <p>
+              Because delivery is instant and digital, completed calendars are
+              generally final. If generation fails, access breaks, or you were
+              double-charged, contact us and we will restore access or refund when
+              the issue cannot be fixed.
+            </p>
+          </div>
+        </section>
+
+        <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Digital downloads</h2>
           <p className="mt-3">
             Digital products with instant download are refundable if the file is

@@ -78,6 +78,19 @@ export default function AboutPage() {
       </header>
 
       <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+        {/* COPY-REVIEW */}
+        <p>
+          I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
+          Blueprints is the site I built so you can look up your card, read the
+          library, and check the math yourself.
+        </p>
+        <p>
+          The paid product is the $9 Birth Card Deep Dive — your card written out,
+          seven pages, instant download. The Content Calendar is a separate
+          experiment: you describe your business once, and it drafts one post per
+          day for 52 days. AI writes from your text; you still check facts before
+          posting.
+        </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
           of the people around you: partners, parents, friends, coworkers, public

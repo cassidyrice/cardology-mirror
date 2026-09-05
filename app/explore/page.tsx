@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
 
-import { AboutCassSection } from "@/components/home/AboutCassSection";
-import { CompareBand } from "@/components/home/CompareBand";
-import { DeepDiveSection } from "@/components/home/DeepDiveSection";
-import { EmailSignupSection } from "@/components/home/EmailSignupSection";
-import { HomepageCalculatorHero } from "@/components/home/HomepageCalculatorHero";
-import { LatestBlogSection } from "@/components/home/LatestBlogSection";
-import { StartHereSection } from "@/components/home/StartHereSection";
-import { TodaysCardSection } from "@/components/home/TodaysCardSection";
+import { ExploreDirectory } from "@/components/explore/ExploreDirectory";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
 const EXPLORE_TITLE = "Explore Card Blueprints";
 const EXPLORE_DESCRIPTION =
-  "Everything under the hood: your birth card, today's card, compatibility, meanings, and the rest of the library.";
+  "Find your birth card, read all 52 meanings, compare two people, check timing tools, and see what is free vs paid.";
 
 export const metadata: Metadata = {
   title: { absolute: EXPLORE_TITLE },
@@ -40,26 +33,13 @@ export const metadata: Metadata = {
   },
 };
 
-/** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
-export const revalidate = 86_400;
-
-/** Former home page, kept intact as the indexable library. */
 export default function ExplorePage() {
   return (
     <div className="bg-brand-paper text-brand-ink">
       <SiteHeader />
-
       <main id="main-content" tabIndex={-1}>
-        <HomepageCalculatorHero title="Everything under the hood" />
-        <TodaysCardSection />
-        <LatestBlogSection />
-        <CompareBand />
-        <DeepDiveSection />
-        <StartHereSection />
-        <AboutCassSection />
-        <EmailSignupSection />
+        <ExploreDirectory />
       </main>
-
       <SiteFooter />
     </div>
   );

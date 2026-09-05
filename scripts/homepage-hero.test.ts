@@ -69,8 +69,8 @@ describe("Homepage landing contract", () => {
     expect(home).toContain('absolute: HOME_TITLE');
     expect(home).toContain("Find Your Birth Card | Card Blueprints");
 
+    expect(explore).toContain("ExploreDirectory");
     expect(explore).toContain("Explore Card Blueprints");
-    expect(explore).not.toContain("HomepageCalculatorHero");
 
     expect(landing).toContain("Which card were you born under?");
     expect(landing).toContain("Your birthday adds up to one card. Same date, same card, every time.");

@@ -74,6 +74,21 @@ export default function TermsOfService() {
         </section>
 
         <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
+          {/* COPY-REVIEW */}
+          <p className="mt-3">
+            The Content Calendar is a one-time purchase ($29) for 52 days of on-site
+            access and CSV export. You enter a short business description; the site
+            generates one suggested post per day with up to two regenerations per day.
+            Refund and support terms are in the{" "}
+            <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">
+              refund policy
+            </Link>
+            .
+          </p>
+        </section>
+
+        <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Legacy orders</h2>
           <p className="mt-3">
             Phone-reading products are no longer sold. If you bought one before

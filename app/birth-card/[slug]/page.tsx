@@ -106,6 +106,20 @@ export default async function BirthCardPage({
   notFound();
 }
 
+function dedupeAgainstPrior(text: string, priorTexts: string[]): string {
+  const priorSentences = new Set(
+    priorTexts
+      .flatMap((block) => block.match(/[^.!?]+[.!?]+/g) ?? [block])
+      .map((sentence) => sentence.trim().toLowerCase())
+      .filter(Boolean),
+  );
+  const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+  const kept = sentences
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence && !priorSentences.has(sentence.toLowerCase()));
+  return kept.join(" ").trim() || text.trim();
+}
+
 function CardMeaningPage({ card }: { card: CardSeo }) {
   const siblings = allCardSeo().filter((c) => c.suit === card.suit && c.slug !== card.slug);
   const dates = birthDatesForCard(card);
@@ -115,6 +129,13 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const videos = videosForCard(card.slug);
   const famous = famousForCard(card.code);
   const readingNotes = readingNotesFor(card.slug);
+  const priorReadingText = [
+    card.sweetSpot,
+    card.over,
+    card.shadow || "",
+    generalReadingText(card),
+    readingNotes?.reading ?? "",
+  ].filter(Boolean);
 
   const jsonLd = [
     faqJsonLd(faqs),
@@ -199,7 +220,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             <p>{readingNotes.reading}</p>
             <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
             <p>
-              {readingNotes.love}{" "}
+              {dedupeAgainstPrior(readingNotes.love, priorReadingText)}{" "}
               {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
                   not this Next app — plain <a>, hub href from the generated index. */}
               <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
@@ -207,7 +228,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
               </a>
             </p>
             <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
-            <p>{readingNotes.work}</p>
+            <p>{dedupeAgainstPrior(readingNotes.work, [...priorReadingText, readingNotes.love])}</p>
             <h3 className="mt-4 font-serif text-base text-bone">As a 52-day period card</h3>
             <p>{readingNotes.timing}</p>
           </>

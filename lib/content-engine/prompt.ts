@@ -26,7 +26,7 @@ ${FIXED_TABLE_SEPARATOR}
 
 Columns: DAY (integer), THEME (3–6 words), WHY (one plain sentence about the week's mode and the day's angle, written for the business owner; never mention cards, ranks, suits, planets, or patterns), POST (one specific piece they could make that day, with a concrete hook or example), FORMAT (short video / long video / carousel / thread / newsletter / live / photo).
 
-Rules: every day distinct; the week's three verbs shape that week's seven days; specific to the business, not generic marketing advice; short sentences; no words: fate, universe, energy, destiny, manifest, predicts, journey.
+Rules: every day distinct; the week's three verbs shape that week's seven days; specific to the business, not generic marketing advice; short sentences; never state a fact about the business that is not in the business text — phrase specifics as "for example" ideas; no words: fate, universe, energy, destiny, manifest, predicts, journey.
 Output: one markdown table per week with a one-line week header in the business's terms (never the planet name). Do not add a card key table.`;
 
 export function buildSystemPrompt(): string {

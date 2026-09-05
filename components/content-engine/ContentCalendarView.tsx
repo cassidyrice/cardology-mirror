@@ -117,7 +117,7 @@ export function ContentCalendarView({
         </h2>
         <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
           {mode === "sample"
-            ? "Tap Write this on any day to get the full 52-day calendar with writing for every day."
+            ? "Tap Write this ($29 plan) on any day to get the full 52-day calendar with writing for every day."
             : "52 days of content, written for you. Not a spreadsheet: tap any day and it writes the post. Starting " +
               `${calendar.startDate}. Re-download stays available for 30 days.`}
         </p>
@@ -219,7 +219,7 @@ function CalendarDayRow({
             <input type="hidden" name="startDate" value={startDate} />
             <input type="hidden" name="source" value="content-engine" />
             <button type="submit" className="paper-button small-button">
-              Write this →
+              Write this ($29 plan) →
             </button>
           </form>
         ) : (
@@ -249,7 +249,7 @@ function CalendarDayRow({
         piece ? (
           <div key={pieceKind} className="mt-4 border-t border-brand-line pt-4 text-left">
             <p className="font-mono text-[0.65rem] uppercase tracking-[0.12em] text-brand-ink-soft">
-              {pieceKindLabel(pieceKind as PieceKind)}
+              {pieceKindLabel(pieceKind as PieceKind)} · Suggested. Check facts before posting.
             </p>
             <pre className="mt-2 whitespace-pre-wrap font-serif text-sm leading-relaxed text-brand-ink">
               {piece.content}
