@@ -15,6 +15,8 @@ import {
   type SiteProduct,
 } from "@/lib/products";
 import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
+import { isFixtureSession, fixtureStoredCalendar } from "@/lib/content-engine/fixture-session";
+import { ContentCalendarView } from "@/components/content-engine/ContentCalendarView";
 import { buildPaidStructure, parseIsoDate } from "@/lib/content-engine/structure";
 import { contentCalendarsKv } from "@/lib/content-engine/kv";
 import {
@@ -66,7 +68,12 @@ export default async function CheckoutSuccessPage({
   let customerEmail = "";
   let confirmed = false;
   let session2: import("stripe").Stripe.Checkout.Session | undefined;
-  if (sessionId && process.env.STRIPE_SECRET_KEY) {
+
+  if (isFixtureSession(sessionId)) {
+    product = productBySlug("content-calendar-52");
+    confirmed = true;
+    customerEmail = "fixture@test.local";
+  } else if (sessionId && process.env.STRIPE_SECRET_KEY) {
     try {
       const session = await getStripe().checkout.sessions.retrieve(
         sessionId,
@@ -214,6 +221,10 @@ export default async function CheckoutSuccessPage({
   let contentCalendarPending = false;
   if (contentCalendar && confirmed && sessionId) {
     const calendarsKv = contentCalendarsKv();
+    if (isFixtureSession(sessionId)) {
+      contentCalendarView = fixtureStoredCalendar(sessionId);
+      await writeStoredCalendar(contentCalendarView, calendarsKv);
+    } else {
     contentCalendarView = await readStoredCalendar(sessionId, calendarsKv);
     if (!contentCalendarView) {
       const business = (session2?.metadata?.business || "").trim().slice(0, 240);
@@ -257,6 +268,7 @@ export default async function CheckoutSuccessPage({
       } else {
         contentCalendarPending = true;
       }
+    }
     }
   }
 
@@ -302,7 +314,7 @@ export default async function CheckoutSuccessPage({
         <p className="type-body-lg mt-5 text-brand-ink-soft">
           {confirmed && contentCalendar
             ? contentCalendarView
-              ? `"${product!.name}" — ${product!.priceLabel}. Scroll for the calendar and CSV.`
+              ? `"${product!.name}" — ${product!.priceLabel}. 52 days of content, written for you. Tap any day to write the post.`
               : contentCalendarPending
                 ? "Payment confirmed. Your calendar is generation pending — refresh in a minute, or reply to your receipt if it stays blank."
                 : "Payment confirmed. Your calendar is generation pending."
@@ -336,6 +348,7 @@ export default async function CheckoutSuccessPage({
             <ContentCalendarFulfillment
               calendar={contentCalendarView}
               pending={contentCalendarPending || !contentCalendarView}
+              sessionId={sessionId}
             />
           ) : deepDive ? (
             <DeepDiveFulfillment
@@ -419,9 +432,11 @@ export default async function CheckoutSuccessPage({
 function ContentCalendarFulfillment({
   calendar,
   pending,
+  sessionId,
 }: {
   calendar: StoredCalendar | null;
   pending: boolean;
+  sessionId: string;
 }) {
   if (pending || !calendar) {
     return (
@@ -436,47 +451,10 @@ function ContentCalendarFulfillment({
     );
   }
 
-  const csvHref = `data:text/csv;charset=utf-8,${encodeURIComponent(calendar.csv)}`;
-
   return (
     <div>
-      <div className="text-center">
-        <Kicker className="mb-4">Content Engine</Kicker>
-        <h2 className="type-h2 text-brand-ink">Your 52-day calendar</h2>
-        <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-          Starting {calendar.startDate}. Re-download stays available for 30 days on this
-          page when storage is bound.
-        </p>
-        <div className="mt-5">
-          <a href={csvHref} download="content-calendar-52.csv" className="accent-button large-button inline-flex">
-            Download CSV
-          </a>
-        </div>
-      </div>
-      <div className="mt-8 overflow-x-auto border border-brand-ink">
-        <table className="min-w-full text-left text-sm">
-          <thead className="border-b border-brand-ink bg-brand-ivory font-mono text-[0.65rem] uppercase tracking-[0.12em]">
-            <tr>
-              <th className="px-3 py-2">Day</th>
-              <th className="px-3 py-2">Theme</th>
-              <th className="px-3 py-2">Why</th>
-              <th className="px-3 py-2">Post</th>
-              <th className="px-3 py-2">Format</th>
-            </tr>
-          </thead>
-          <tbody>
-            {calendar.rows.map((row) => (
-              <tr key={row.day} className="border-t border-brand-line align-top">
-                <td className="px-3 py-3 font-mono text-xs">{row.day}</td>
-                <td className="px-3 py-3 font-medium">{row.theme}</td>
-                <td className="px-3 py-3 text-brand-ink-soft">{row.why}</td>
-                <td className="px-3 py-3">{row.post}</td>
-                <td className="px-3 py-3 whitespace-nowrap">{row.format}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <Kicker className="mb-4 text-center">Content Engine</Kicker>
+      <ContentCalendarView calendar={calendar} sessionId={sessionId} mode="paid" />
     </div>
   );
 }

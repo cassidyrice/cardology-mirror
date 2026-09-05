@@ -6,7 +6,7 @@ import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture"
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-// Site-wide: Content Engine bridge. Logo is the only home link. /explore link is in the footer.
+// Site-wide: Content Engine bridge. Logo is the only home link.
 const NAV_LINKS = [{ label: "Create content", href: "/content-engine" }] as const;
 
 export function SiteHeader() {

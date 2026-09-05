@@ -1,12 +1,14 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import Link from "next/link";
 
 import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
+import { ContentCalendarView } from "@/components/content-engine/ContentCalendarView";
+import { rowsToCsv } from "@/lib/content-engine/storage";
 
 type SampleRow = {
   day: number;
@@ -32,6 +34,20 @@ export function ContentEngineForm() {
   const [error, setError] = useState("");
   const [rows, setRows] = useState<SampleRow[] | null>(null);
   const [weekHeaders, setWeekHeaders] = useState<string[]>([]);
+  const [resolvedStartDate, setResolvedStartDate] = useState("");
+
+  const sampleCalendar = useMemo(() => {
+    if (!rows?.length) return null;
+    return {
+      sessionId: "sample",
+      business,
+      startDate: resolvedStartDate || startDate || new Date().toISOString().slice(0, 10),
+      generatedAt: new Date().toISOString(),
+      weekHeaders,
+      rows,
+      csv: rowsToCsv(rows),
+    };
+  }, [rows, business, resolvedStartDate, startDate, weekHeaders]);
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
@@ -67,6 +83,7 @@ export function ContentEngineForm() {
 
       setRows(data.rows);
       setWeekHeaders(data.weekHeaders || []);
+      if (data.startDate) setResolvedStartDate(data.startDate);
       trackClientFunnelEvent("engine_sample_shown", {
         placement: "content-engine",
       });
@@ -130,40 +147,21 @@ export function ContentEngineForm() {
         </p>
       ) : null}
 
-      {rows ? (
+      {sampleCalendar ? (
         <div className="mt-10">
-          {weekHeaders[0] ? (
-            <p className="mb-3 font-serif text-xl text-brand-ink">{weekHeaders[0]}</p>
-          ) : null}
-          <div className="overflow-x-auto border border-brand-ink">
-            <table className="ce-table min-w-full text-left text-sm">
-              <thead className="border-b border-brand-ink bg-brand-ivory font-mono text-[0.65rem] uppercase tracking-[0.12em]">
-                <tr>
-                  <th className="px-3 py-2">Day</th>
-                  <th className="px-3 py-2">Theme</th>
-                  <th className="px-3 py-2">Why</th>
-                  <th className="px-3 py-2">Post</th>
-                  <th className="px-3 py-2">Format</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rows.map((row) => (
-                  <tr key={row.day} className="border-t border-brand-line align-top">
-                    <td data-label="Day" className="px-3 py-3 font-mono text-xs">{row.day}</td>
-                    <td data-label="Theme" className="px-3 py-3 font-medium">{row.theme}</td>
-                    <td data-label="Why" className="px-3 py-3 text-brand-ink-soft">{row.why}</td>
-                    <td data-label="Post" className="px-3 py-3">{row.post}</td>
-                    <td data-label="Format" className="px-3 py-3 whitespace-nowrap">{row.format}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ContentCalendarView
+            calendar={sampleCalendar}
+            sessionId="sample"
+            mode="sample"
+            business={business}
+            startDate={sampleCalendar.startDate}
+          />
 
           <div className="mt-8 border border-brand-ink bg-brand-ivory p-5">
-            <p className="font-serif text-xl text-brand-ink">Get all 52 days</p>
+            <p className="font-serif text-xl text-brand-ink">Get all 52 days — $29</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-              Themes, posts, and formats for the next 52 days, plus a CSV you can keep.
+              52 days of content, written for you. Not a spreadsheet: tap any day and it
+              writes the post.
             </p>
             <form
               method="POST"
@@ -176,7 +174,7 @@ export function ContentEngineForm() {
               }
             >
               <input type="hidden" name="business" value={business} />
-              <input type="hidden" name="startDate" value={startDate} />
+              <input type="hidden" name="startDate" value={sampleCalendar.startDate} />
               <input type="hidden" name="source" value="content-engine" />
               <button type="submit" className="accent-button large-button">
                 Get all 52 days — $29

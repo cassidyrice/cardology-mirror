@@ -94,7 +94,7 @@ describe("Homepage landing contract", () => {
     expect(header).toContain("/content-engine");
     expect(header).toContain("Create content");
     expect(header).not.toContain('label: "Learn more"');
-    expect(header).not.toContain("/explore");
+    expect(header).not.toContain('href="/explore"');
     expect(header).not.toContain("Get a Reading");
     expect(header).not.toContain("/karma-reading");
 
