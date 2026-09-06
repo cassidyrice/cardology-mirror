@@ -44,9 +44,10 @@ and trivial punctuation only. Paraphrase fails.
 |---|---|---|---|
 | `2948789168064430080` (#67, fuzzy ≥0.85) | SUCCEEDED | 222 | 836 |
 | `403973903623389184` (near-verbatim) | SUCCEEDED | **818** this run / **1040** total | **18** |
+| `5794641920097517568` (18 remainder) | QUEUED | — | 18 submitted |
 
 Final drop 18: 16 Vertex TPU `CANCELLED` empty predictions (retryable),
-1 hook (41 words), 1 `card_in_life` (119 words). This pass resubmits all 18
+1 hook (41 words), 1 `card_in_life` (119 words). This pass resubmitted all 18
 with word-count buffers. Date-only hubs and other people packs are not in
 this JSONL — see `enrich/artifacts/inventory.json`.
 

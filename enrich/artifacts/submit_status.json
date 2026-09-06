@@ -1,0 +1,35 @@
+{
+  "submitted": true,
+  "reason": "polled",
+  "recorded_at": "2026-09-06T19:55:18.728687+00:00",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/5794641920097517568",
+  "job_state": "JOB_STATE_QUEUED",
+  "model": "gemini-3.1-pro-preview",
+  "location": "global",
+  "project_set": true,
+  "input_row_count": 18,
+  "input_path": "enrich/artifacts/vertex_retry_batch.jsonl",
+  "missing": [],
+  "gcloud_present": false,
+  "adc_present": false,
+  "cost_estimate": {
+    "model": "gemini-3.1-pro-preview",
+    "requests": 18,
+    "input_chars": 56982,
+    "input_tokens_est": 14246,
+    "output_tokens_est": 9000,
+    "thinking_low_tokens_est": 14400,
+    "thinking_output_tokens_est": 45000,
+    "usd_batch_no_thinking": 0.0682,
+    "usd_batch_thinking_low": 0.1546,
+    "usd_batch_with_thinking_upper": 0.2842,
+    "target_usd_band": 16.0,
+    "within_target": true,
+    "notes": "Thinking cannot be turned off on gemini-3.1-pro-preview. Retry JSONL sets thinkingLevel=LOW. no_thinking is a theoretical floor (output JSON only). thinking_low assumes 800 thought tokens/row (unpublished). thinking_upper uses the same 2500/row HIGH band as the 1058-row job.",
+    "rates_usd_per_million": {
+      "input": 1.0,
+      "output": 6.0,
+      "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, \u2264200K tokens/request"
+    }
+  }
+}
