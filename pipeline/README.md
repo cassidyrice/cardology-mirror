@@ -206,3 +206,22 @@ only. NPS Park Anniversaries footnotes are not mapped. No Vertex spend.
 python3 -m pytest pipeline/tests/test_parks_established.py
 bun run build:seo-parks
 ```
+
+## MLB first-game dates
+
+Committed dataset for the isolated `/mlb` SEO scaffold:
+
+```bash
+python3 -m pipeline.build_mlb
+python3 -m pytest pipeline/tests/test_mlb.py
+```
+
+Writes `pipeline/data/mlb.jsonl` and `pipeline/data/mlb_first_games.json`.
+Primary dates are Baseball-Reference franchise first MLB games (first
+regular-season box of the BBRef “From” year). Birth cards come from
+`birthcard.py` only. Retrosheet game logs corroborate the day. Wikipedia
+years are a cross-check, never a date source. Not player DOBs. No Vertex spend.
+
+```bash
+bun run build:seo-mlb
+```

@@ -55,6 +55,13 @@ celebrity rebuild. `hof_franchise_histories.json` is the HOF alias snapshot.
 Regenerate both with `python3 -m pipeline.build_franchises`. Do not gitignore
 these two files.
 
+## MLB first games (committed)
+
+`mlb.jsonl` is a curated 30-row first-game dataset, not a generated
+celebrity rebuild. `mlb_first_games.json` is the BBRef/Retrosheet snapshot.
+Regenerate both with `python3 -m pipeline.build_mlb`. Do not gitignore
+these two files. Dates are franchise first MLB games, not player DOBs.
+
 ## US National Parks (committed)
 
 Park dates live in `seo-pages/data/parks.jsonl` (not this folder). Primary
