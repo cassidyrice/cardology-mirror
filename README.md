@@ -55,6 +55,14 @@ bun run test:seo-parks
 python3 seo-pages/scripts/write_parks_jsonl.py
 ```
 
+Declaration signers birth-card pages are a fourth isolated build (`/signers/{slug}`), verified subset only:
+
+```bash
+bun run build:seo-signers   # → seo-pages/dist-signers
+bun run test:seo-signers
+python3 -m pipeline.signers # refresh NARA/Wikipedia JSONL (Wikidata QA only)
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
