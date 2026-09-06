@@ -16,6 +16,15 @@ def test_materialize_writes_json_blob(tmp_path: Path, monkeypatch) -> None:
     assert json.loads(dest.read_text(encoding="utf-8"))["type"] == "service_account"
 
 
+def test_materialize_json_blob_does_not_stat_as_path(tmp_path: Path, monkeypatch) -> None:
+    dest = tmp_path / "sa.json"
+    blob = "{" + ("x" * 5000) + '"type":"service_account"}'
+    monkeypatch.setenv("GOOGLE_APPLICATION_CREDENTIALS", blob)
+    path = materialize_sa_json(dest)
+    assert path == dest
+    assert dest.is_file()
+
+
 def test_discover_reports_missing_without_inventing(monkeypatch) -> None:
     monkeypatch.delenv("VERTEX_PROJECT", raising=False)
     monkeypatch.delenv("GOOGLE_CLOUD_PROJECT", raising=False)

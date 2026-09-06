@@ -76,6 +76,15 @@ python3 -m enrich.estimate \
 Same #70 contract: near-verbatim `evidence.fact`, meta ≤145, `temperature=0.0`,
 `thinkingLevel=LOW`. Spend band for this job only is ≤~$20.
 
+Submitted job `1673848261053513728` (`cardology-wp3-enrich-20260906T200230Z`)
+is `JOB_STATE_QUEUED` after a 90s poll. 1079 rows. HIGH-upper **$16.96**.
+Do not re-run. Leave `SUCCEEDED` poll / parse to a follow-up.
+
+```bash
+python3 -m enrich.submit_batch --poll \
+  projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728
+```
+
 ## Local dry-run (fixtures, no spend)
 
 ```bash

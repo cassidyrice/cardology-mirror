@@ -1,5 +1,7 @@
 {
   "people_enriched": 1040,
+  "this_job_id": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
+  "this_job_state": "JOB_STATE_QUEUED",
   "already_submitted_job": "5794641920097517568",
   "already_submitted_qids": 18,
   "submit_qids": 1079,

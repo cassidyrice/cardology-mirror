@@ -1,0 +1,31 @@
+{
+  "job": {
+    "name": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
+    "displayName": "cardology-wp3-enrich-20260906T200230Z",
+    "model": "publishers/google/models/gemini-3.1-pro-preview",
+    "inputConfig": {
+      "instancesFormat": "jsonl",
+      "gcsSource": {
+        "uris": [
+          "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/input/20260906T200230Z-vertex_batch.jsonl"
+        ]
+      }
+    },
+    "outputConfig": {
+      "predictionsFormat": "jsonl",
+      "gcsDestination": {
+        "outputUriPrefix": "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/output/20260906T200230Z/"
+      }
+    },
+    "state": "JOB_STATE_QUEUED",
+    "createTime": "2026-09-06T20:02:31.398635Z",
+    "updateTime": "2026-09-06T20:02:31.398635Z",
+    "encryptionSpec": {},
+    "modelVersionId": "1"
+  },
+  "input_uri": "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/input/20260906T200230Z-vertex_batch.jsonl",
+  "output_prefix": "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/output/20260906T200230Z/",
+  "model": "gemini-3.1-pro-preview",
+  "input_row_count": 1079,
+  "submitted_at": "2026-09-06T20:02:31.452289+00:00"
+}

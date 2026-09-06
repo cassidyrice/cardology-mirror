@@ -57,13 +57,18 @@ def materialize_sa_json(dest: Path = DEFAULT_SA_PATH) -> Path | None:
     raw = (os.environ.get(CREDS_ENV) or "").strip()
     if not raw:
         return dest if dest.is_file() else None
-    if Path(raw).is_file():
-        return Path(raw)
+    # JSON blob in the env (Cloud Agent secret). Check before Path() —
+    # a PEM payload is longer than NAME_MAX and raises OSError ENAMETOOLONG.
     if raw.lstrip().startswith("{"):
         dest.write_text(raw, encoding="utf-8")
         dest.chmod(0o600)
         os.environ[CREDS_ENV] = str(dest)
         return dest
+    try:
+        if Path(raw).is_file():
+            return Path(raw)
+    except OSError:
+        pass
     return dest if dest.is_file() else None
 
 

@@ -1,0 +1,29 @@
+{
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
+  "numeric_job_id": "1673848261053513728",
+  "display_name": "cardology-wp3-enrich-20260906T200230Z",
+  "job_state": "JOB_STATE_QUEUED",
+  "error": null,
+  "predictions_ready": false,
+  "model": "gemini-3.1-pro-preview",
+  "location": "global",
+  "input_row_count": 1079,
+  "brief_poll_seconds": 90,
+  "poll_note": "PENDING at create; QUEUED within 20s. Left SUCCEEDED poll to a follow-up.",
+  "create_time": "2026-09-06T20:02:31.398635Z",
+  "polled_at": "2026-09-06T20:04:16.656879+00:00",
+  "cost_estimate": {
+    "usd_batch_no_thinking": 4.0077,
+    "usd_batch_thinking_low": 9.1869,
+    "usd_batch_with_thinking_upper": 16.9557,
+    "target_usd_band": 20.0,
+    "within_target": true
+  },
+  "excluded": {
+    "people_enriched": 1040,
+    "already_submitted_job": "5794641920097517568",
+    "already_submitted_qids": 18
+  },
+  "did_not_merge": true,
+  "did_not_wait_for_succeeded": true
+}
