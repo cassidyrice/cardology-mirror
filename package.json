@@ -72,6 +72,8 @@
     "test:seo-pulitzer-fiction": "bun test seo-pages/pulitzer-fiction.test.ts",
     "build:seo-house-chairs": "bun seo-pages/src/house-chairs/build.ts",
     "test:seo-house-chairs": "bun test seo-pages/house-chairs.test.ts",
+    "build:seo-time-poty": "bun seo-pages/src/time-poty/build.ts",
+    "test:seo-time-poty": "bun test seo-pages/time-poty.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

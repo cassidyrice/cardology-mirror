@@ -29,6 +29,7 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.pulitzer_fiction
   python -m pipeline.house_chairs
   python -m pipeline.kennedy_center_honors
+  python -m pipeline.time_poty
   python -m pipeline.celebs
 
 See pipeline/README.md. Vertex batch stub: python -m enrich.make_batch (no spend).
