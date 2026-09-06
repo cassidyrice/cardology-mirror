@@ -49,3 +49,9 @@ python3 -m pipeline.build_dataset --from-seed \
 celebrity rebuild. `hof_franchise_histories.json` is the HOF alias snapshot.
 Regenerate both with `python3 -m pipeline.build_franchises`. Do not gitignore
 these two files.
+
+## US National Parks (committed)
+
+Park dates live in `seo-pages/data/parks.jsonl` (not this folder). Primary
+source is Wikipedia’s National Park establishment column. NPS first-unit
+dates are footnotes only. See [`../../seo-pages/data/PARKS.md`](../../seo-pages/data/PARKS.md).

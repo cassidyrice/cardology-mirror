@@ -159,3 +159,23 @@ bun run test:seo-presidents
 - CTA: `/checkout/deep-dive?utm_source=presidents&utm_content={slug}`
 - Data: `pipeline/data/presidents/people.jsonl` (Wikidata CC0 + Wikipedia summaries)
 - Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+
+## US National Parks (isolated `/parks`)
+
+Separate static build. Does **not** join the Next.js app, does **not** touch checkout/Stripe, and must **not** be deployed.
+
+```bash
+bun run build:seo-parks   # → seo-pages/dist-parks
+bun run test:seo-parks
+```
+
+| Page | Path |
+| --- | --- |
+| Hub | `/parks` |
+| Park | `/parks/{slug}` |
+
+Primary date is Wikipedia’s **Date established as park** (National Park designation, not first monument). NPS Park Anniversaries is a footnote source for earlier first-unit dates. See [`data/PARKS.md`](./data/PARKS.md).
+
+CTA: `/checkout/deep-dive?utm_source=parks&utm_content={slug}`. Cards are coordinates, not fortune-telling.
+
+Path lock: [`parks-path-ownership.json`](./parks-path-ownership.json).

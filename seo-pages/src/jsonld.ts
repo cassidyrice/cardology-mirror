@@ -107,6 +107,25 @@ export function sportsTeamJsonLd(input: {
   };
 }
 
+export function parkJsonLd(input: {
+  name: string;
+  urlPath: string;
+  description: string;
+  foundingDate: string;
+}): JsonLdRecord {
+  return {
+    "@type": "Park",
+    name: input.name,
+    url: abs(input.urlPath),
+    description: input.description,
+    foundingDate: input.foundingDate,
+    isPartOf: {
+      "@type": "GovernmentOrganization",
+      name: "National Park Service",
+    },
+  };
+}
+
 export function collectionPageJsonLd(input: {
   name: string;
   urlPath: string;
