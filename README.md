@@ -134,6 +134,15 @@ bun run test:seo-grammys
 python3 -m pipeline.grammys
 ```
 
+NFL Hall of Fame inductee birth-card pages (`/nfl-hof/{slug}`),
+Wikidata P6930 + day-precision P569 only:
+
+```bash
+bun run build:seo-nfl-hof   # → seo-pages/dist-nfl-hof
+bun run test:seo-nfl-hof
+python3 -m pipeline.nfl_hof
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

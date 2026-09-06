@@ -312,6 +312,23 @@ python3 -m pytest pipeline/tests/test_astronauts.py
 Output: [`data/astronauts/people.jsonl`](data/astronauts/people.jsonl). Pages:
 `bun run build:seo-astronauts`. Do not deploy.
 
+## NFL Hall of Fame inductees (isolated `/nfl-hof`)
+
+People with a Wikidata **P6930** Pro Football Hall of Fame ID **and** a
+day-precision Wikidata `P569` (precision 11). ProFootballHOF.com bios and
+Wikipedia infobox days are a conflict check when they publish a day.
+Year-only dates, Wikipedia/HOF↔Wikidata day conflicts, minors, and D3
+description keywords are dropped. Dates are never invented. The celebrity
+`year_before_1900` cut is **not** applied.
+
+```bash
+python3 -m pipeline.nfl_hof
+python3 -m pytest pipeline/tests/test_nfl_hof.py
+```
+
+Output: [`data/nfl_hof/people.jsonl`](data/nfl_hof/people.jsonl). Pages:
+`bun run build:seo-nfl-hof`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages

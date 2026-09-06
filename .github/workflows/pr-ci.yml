@@ -94,6 +94,9 @@ jobs:
       - name: Grammy Album of the Year birth-card scaffold
         run: bun run build:seo-grammys
 
+      - name: NFL Hall of Fame birth-card scaffold
+        run: bun run build:seo-nfl-hof
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -141,7 +144,8 @@ jobs:
             seo-pages/tonys.test.ts \
             seo-pages/oscars.test.ts \
             seo-pages/emmys.test.ts \
-            seo-pages/grammys.test.ts
+            seo-pages/grammys.test.ts \
+            seo-pages/nfl-hof.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

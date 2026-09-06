@@ -62,6 +62,8 @@
     "test:seo-emmys": "bun test seo-pages/emmys.test.ts",
     "build:seo-grammys": "bun seo-pages/src/grammys/build.ts",
     "test:seo-grammys": "bun test seo-pages/grammys.test.ts",
+    "build:seo-nfl-hof": "bun seo-pages/src/nfl-hof/build.ts",
+    "test:seo-nfl-hof": "bun test seo-pages/nfl-hof.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

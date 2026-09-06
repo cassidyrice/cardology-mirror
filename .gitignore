@@ -18,6 +18,7 @@ seo-pages/dist-tonys
 seo-pages/dist-oscars
 seo-pages/dist-emmys
 seo-pages/dist-grammys
+seo-pages/dist-nfl-hof
 .playwright-mcp/
 
 node_modules

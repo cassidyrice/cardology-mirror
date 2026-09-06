@@ -527,6 +527,29 @@ python3 -m pipeline.astronauts # rewrite pipeline/data/astronauts/people.jsonl
 
 Path lock: [`astronauts-path-ownership.json`](./astronauts-path-ownership.json).
 
+## NFL Hall of Fame inductees (isolated `/nfl-hof`)
+
+Separate static build. Wikidata `P6930` + day-precision `P569`, verified
+against ProFootballHOF.com bios when they publish a day. Does **not**
+take celebrity `/birth-card/{slug}` or live card-meaning routes. Does
+**not** join the Next.js app, does **not** touch checkout/Stripe, and
+must **not** be deployed. Path-split is documented only — not activated.
+
+```bash
+bun run build:seo-nfl-hof   # → seo-pages/dist-nfl-hof
+bun run test:seo-nfl-hof
+python3 -m pipeline.nfl_hof # rewrite pipeline/data/nfl_hof/people.jsonl
+```
+
+- Hub: `/nfl-hof`
+- Person: `/nfl-hof/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=nfl-hof&utm_content={slug}`
+- Data: `pipeline/data/nfl_hof/people.jsonl` (Wikidata P6930 + P569 + HOF.com verify + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: year-only Wikidata dates, Wikidata precision &lt; 11, Wikipedia/HOF↔Wikidata day conflicts, minors, D3 keywords, thin summaries
+
+Path lock: [`nfl-hof-path-ownership.json`](./nfl-hof-path-ownership.json).
+
 ## Born-on notable people (grounding of live `/born-on`)
 
 Authority upgrade of the existing Worker `/born-on/{month-day}` pages.
