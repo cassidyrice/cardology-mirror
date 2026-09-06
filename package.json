@@ -66,6 +66,8 @@
     "test:seo-nfl-hof": "bun test seo-pages/nfl-hof.test.ts",
     "build:seo-rock-hall": "bun seo-pages/src/rock-hall/build.ts",
     "test:seo-rock-hall": "bun test seo-pages/rock-hall.test.ts",
+    "build:seo-pulitzer-fiction": "bun seo-pages/src/pulitzer-fiction/build.ts",
+    "test:seo-pulitzer-fiction": "bun test seo-pages/pulitzer-fiction.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

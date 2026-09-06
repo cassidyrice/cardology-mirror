@@ -19,6 +19,8 @@ seo-pages/dist-oscars
 seo-pages/dist-emmys
 seo-pages/dist-grammys
 seo-pages/dist-nfl-hof
+seo-pages/dist-rock-hall
+seo-pages/dist-pulitzer
 .playwright-mcp/
 
 node_modules

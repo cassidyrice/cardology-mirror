@@ -143,6 +143,15 @@ bun run test:seo-nfl-hof
 python3 -m pipeline.nfl_hof
 ```
 
+Pulitzer Prize for Fiction birth-card pages (`/pulitzer/fiction/{slug}`),
+person-scope winners, day-precision only:
+
+```bash
+bun run build:seo-pulitzer-fiction   # → seo-pages/dist-pulitzer
+bun run test:seo-pulitzer-fiction
+python3 -m pipeline.pulitzer_fiction
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
