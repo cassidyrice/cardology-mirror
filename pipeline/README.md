@@ -127,6 +127,21 @@ python3 -m pytest pipeline/tests/test_nobel.py
 Output: [`data/nobel/people.jsonl`](data/nobel/people.jsonl). Pages:
 `bun run build:seo-nobel`. Do not deploy.
 
+## Current SCOTUS justices (isolated `/scotus`)
+
+Nine sitting justices. SCOTUS.gov Current Members biographies at day
+precision, verified against Wikidata `P569` (precision 11). Retired
+justices, year-only dates, SCOTUS.gov↔Wikidata conflicts, minors, and
+D3 description keywords are dropped. Dates are never invented.
+
+```bash
+python3 -m pipeline.scotus
+python3 -m pytest pipeline/tests/test_scotus.py
+```
+
+Output: [`data/scotus/people.jsonl`](data/scotus/people.jsonl). Pages:
+`bun run build:seo-scotus`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

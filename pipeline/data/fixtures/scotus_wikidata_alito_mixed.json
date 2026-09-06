@@ -1,0 +1,36 @@
+{
+  "id": "Q0SCO4",
+  "labels": { "en": { "value": "Mixed Precision Fixture" } },
+  "descriptions": { "en": { "value": "synthetic mixed-precision fixture" } },
+  "sitelinks": { "enwiki": { "title": "Mixed Precision Fixture" } },
+  "claims": {
+    "P569": [
+      {
+        "rank": "normal",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1950-01-01T00:00:00Z",
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      },
+      {
+        "rank": "preferred",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1950-04-01T00:00:00Z",
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

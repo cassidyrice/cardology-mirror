@@ -63,6 +63,14 @@ bun run test:seo-signers
 python3 -m pipeline.signers # refresh NARA/Wikipedia JSONL (Wikidata QA only)
 ```
 
+Current SCOTUS justices birth-card pages (`/scotus/{slug}`), sitting justices only:
+
+```bash
+bun run build:seo-scotus   # → seo-pages/dist-scotus
+bun run test:seo-scotus
+python3 -m pipeline.scotus # SCOTUS.gov + Wikidata P569 verify
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

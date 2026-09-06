@@ -36,6 +36,8 @@
     "test:seo-signers": "bun test seo-pages/signers.test.ts",
     "build:seo-nobel": "bun seo-pages/src/nobel/build.ts",
     "test:seo-nobel": "bun test seo-pages/nobel.test.ts",
+    "build:seo-scotus": "bun seo-pages/src/scotus/build.ts",
+    "test:seo-scotus": "bun test seo-pages/scotus.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
