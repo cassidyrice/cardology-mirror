@@ -71,6 +71,15 @@ bun run test:seo-scotus
 python3 -m pipeline.scotus # SCOTUS.gov + Wikidata P569 verify
 ```
 
+MLB first-game birth-card pages (`/mlb/{slug}`).
+Dates are franchise first MLB games, not player DOBs:
+
+```bash
+bun run build:seo-mlb   # → seo-pages/dist-mlb
+bun run test:seo-mlb
+python3 -m pipeline.build_mlb
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

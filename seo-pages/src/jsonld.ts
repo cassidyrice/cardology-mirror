@@ -107,6 +107,26 @@ export function sportsTeamJsonLd(input: {
   };
 }
 
+export function mlbTeamJsonLd(input: {
+  name: string;
+  urlPath: string;
+  description: string;
+  foundingDate: string;
+}): JsonLdRecord {
+  return {
+    "@type": "SportsTeam",
+    name: input.name,
+    url: abs(input.urlPath),
+    description: input.description,
+    foundingDate: input.foundingDate,
+    sport: "Baseball",
+    memberOf: {
+      "@type": "SportsOrganization",
+      name: "Major League Baseball",
+    },
+  };
+}
+
 export function parkJsonLd(input: {
   name: string;
   urlPath: string;

@@ -10,6 +10,7 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.build_dataset --from-seed
   python -m pipeline.harvest_card_meanings
   python -m pipeline.build_franchises
+  python -m pipeline.build_mlb
   python -m pipeline.presidents
   python -m pipeline.holidays
   python -m pipeline.signers

@@ -264,3 +264,29 @@ python3 -m pipeline.scotus # rewrite pipeline/data/scotus/people.jsonl
 - Dropped: retired justices, year-only dates, Wikidata precision &lt; 11, SCOTUS.gov↔Wikidata conflicts, minors, D3 keywords
 
 Path lock: [`scotus-path-ownership.json`](./scotus-path-ownership.json).
+
+## MLB first-game cards (isolated `/mlb`)
+
+Separate static build. Franchise first MLB games from Baseball-Reference
+(Retrosheet game-log corroboration). Does **not** join the Next.js app, does
+**not** touch checkout/Stripe, and must **not** be deployed. Not player DOBs.
+
+```bash
+bun run build:seo-mlb   # → seo-pages/dist-mlb
+bun run test:seo-mlb
+python3 -m pipeline.build_mlb
+```
+
+| Page | Path |
+| --- | --- |
+| Hub | `/mlb` |
+| Club | `/mlb/{slug}` |
+
+Dates are the first regular-season box of the franchise’s BBRef **From** year.
+Not player birthdays. Not current-city first pitch. Not 1871 Braves NA lore.
+
+CTA: `/checkout/deep-dive?utm_source=mlb&utm_content={slug}`. Cards are
+coordinates, not fortune-telling.
+
+Path lock: [`mlb-path-ownership.json`](./mlb-path-ownership.json).
+Dates: [`data/MLB.md`](./data/MLB.md).
