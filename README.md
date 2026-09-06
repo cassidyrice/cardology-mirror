@@ -39,6 +39,14 @@ bun run test:seo-presidents
 python3 -m pipeline.presidents # refresh Wikidata + Wikipedia JSONL
 ```
 
+US federal holiday birth-card pages (fixed § 6103(a) dates only, `/holidays/{slug}`):
+
+```bash
+bun run build:seo-holidays   # → seo-pages/dist-holidays
+bun run test:seo-holidays
+python3 -m pipeline.holidays # refresh JSONL from the statute lock
+```
+
 US National Park birth-card pages are a third isolated build (`/parks/{slug}`):
 
 ```bash

@@ -28,6 +28,7 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | HTTP caches | `pipeline/data/cache/` | no |
 | Presidents dataset | `pipeline/data/presidents/people.jsonl` | yes |
 | Presidents provenance | `pipeline/data/presidents/provenance.json` | yes |
+| Federal holidays JSONL | `seo-pages/data/holidays.jsonl` | yes (written by `python3 -m pipeline.holidays`) |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

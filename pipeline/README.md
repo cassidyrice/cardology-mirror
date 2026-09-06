@@ -83,6 +83,20 @@ python3 -m pipeline.presidents
 Output: [`data/presidents/people.jsonl`](data/presidents/people.jsonl). Pages:
 `bun run build:seo-presidents`. Do not deploy.
 
+## US federal holidays (isolated `/holidays`)
+
+Five fixed § 6103(a) dates only (January 1, June 19, July 4, November 11,
+December 25). Floating holidays and weekend observed shifts are omitted.
+Birth cards use this module's D1 rule. Year unused.
+
+```bash
+python3 -m pipeline.holidays
+python3 -m pytest pipeline/tests/test_holidays.py
+```
+
+Writes [`../seo-pages/data/holidays.jsonl`](../seo-pages/data/holidays.jsonl).
+Pages: `bun run build:seo-holidays`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

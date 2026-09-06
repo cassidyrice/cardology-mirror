@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -159,6 +159,27 @@ bun run test:seo-presidents
 - CTA: `/checkout/deep-dive?utm_source=presidents&utm_content={slug}`
 - Data: `pipeline/data/presidents/people.jsonl` (Wikidata CC0 + Wikipedia summaries)
 - Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+
+## US federal holidays (isolated `/holidays`)
+
+Separate static build. Fixed dates from 5 U.S.C. § 6103(a) only. Does **not**
+take celebrity `/birth-card/{slug}` or live card-meaning routes.
+
+```bash
+bun run build:seo-holidays   # → seo-pages/dist-holidays
+bun run test:seo-holidays
+python3 -m pipeline.holidays # rewrite seo-pages/data/holidays.jsonl
+```
+
+- Hub: `/holidays`
+- Holiday: `/holidays/{slug}`
+- Pages: hub + New Year’s Day, Juneteenth, Independence Day, Veterans Day, Christmas Day
+- Dropped: floating Monday/Thursday holidays; Inauguration Day (§ 6103(c)); weekend observed shifts
+- CTA: `/checkout/deep-dive?utm_source=holidays&utm_content={slug}`
+- Data: `seo-pages/data/holidays.jsonl` (Cornell LII statute dates; OPM calendars only)
+- Formula: `pipeline.birthcard` (December 31 = Joker). Year unused.
+
+Dates: [`data/HOLIDAYS.md`](./data/HOLIDAYS.md). Path lock: [`holiday-path-ownership.json`](./holiday-path-ownership.json).
 
 ## US National Parks (isolated `/parks`)
 
