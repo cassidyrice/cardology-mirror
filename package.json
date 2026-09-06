@@ -60,6 +60,8 @@
     "test:seo-oscars": "bun test seo-pages/oscars.test.ts",
     "build:seo-emmys": "bun seo-pages/src/emmys/build.ts",
     "test:seo-emmys": "bun test seo-pages/emmys.test.ts",
+    "build:seo-grammys": "bun seo-pages/src/grammys/build.ts",
+    "test:seo-grammys": "bun test seo-pages/grammys.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

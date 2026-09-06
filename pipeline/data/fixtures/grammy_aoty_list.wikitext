@@ -1,0 +1,59 @@
+==Winners and nominees==
+===Fixture===
+{| class="wikitable"
+|- bgcolor="#bebebe"
+! Year
+! Album
+! Artist(s)
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[1st Annual Grammy Awards|1959]]<br /><ref name="Grammy1959">{{cite web|url=http://www.india-server.com/awards/features/grammy-awards-1959-may-238.html|title=Grammy Awards 1959 (May)|publisher=Awards & Shows|access-date=July 20, 2011|archive-url=https://web.archive.org/web/20110528061002/http://www.india-server.com/awards/features/grammy-awards-1959-may-238.html|archive-date=May 28, 2011|url-status=live}}</ref>
+| '''''[[The Music from Peter Gunn]]'''''
+| '''[[Henry Mancini]]'''
+|-
+| ''[[Come Fly with Me (Frank Sinatra album)|Come Fly with Me]]''
+| [[Frank Sinatra]]
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[7th Annual Grammy Awards|1965]]<br /><ref name="Grammy1965">{{cite web|url=http://www.awardsandshows.com/features/grammy-awards-1965-217.html|title=Grammy Awards 1965|publisher=Awards & Shows}}</ref>
+| '''''[[Getz/Gilberto]]'''''
+| '''[[Stan Getz]] & [[João Gilberto]]'''
+|
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[10th Annual Grammy Awards|1968]]<br /><ref name="Grammy1968">{{cite web|url=http://www.india-server.com/awards/features/grammy-awards-1968-218.html|title=Grammy Awards 1968|publisher=Awards & Shows|access-date=December 10, 2011|archive-url=https://web.archive.org/web/20110519012644/http://www.india-server.com/awards/features/grammy-awards-1968-218.html|archive-date=May 19, 2011|url-status=live}}</ref>
+| '''''[[Sgt. Pepper's Lonely Hearts Club Band]]'''''
+| '''[[The Beatles]]'''
+| <small>'''[[George Martin]], producer'''</small>
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[15th Annual Grammy Awards|1973]]<br /><ref name="Grammy1973">{{cite web|url=http://www.india-server.com/awards/features/grammy-awards-1973-222.html|title=Grammy Awards 1973|publisher=Awards & Shows}}</ref>
+| ''[[The Concert for Bangladesh (album)|'''The Concert for Bangladesh''']]''
+| '''[[George Harrison]] & Friends <small>([[Ravi Shankar]], [[Bob Dylan]], [[Leon Russell]], [[Ringo Starr]], [[Billy Preston]], [[Eric Clapton]] & [[Klaus Voormann]]) </small>'''
+| <small>'''George Harrison & [[Phil Spector]], producers'''</small>
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[21st Annual Grammy Awards|1979]]<br /><ref name="Grammy1979">{{cite web|url=https://news.google.com/newspapers?id=5gIpAAAAIBAJ&pg=2129,3598894&dq|title=Bee Gees Head Lists For 6 Grammy Awards|date=January 9, 1979|access-date=April 23, 2010|work=[[The Daytona Beach News-Journal|Daytona Beach Morning Journal]]|publisher=The News-Journal Corporation}}</ref>
+| ''[[Saturday Night Fever (soundtrack)|'''Saturday Night Fever – Soundtrack''']]''
+| '''Various Artists'''
+| <small>'''[[Bee Gees]], [[David Shire]], [[KC and the Sunshine Band]], [[Kool & the Gang]], [[MFSB]], [[Ralph MacDonald]], [[Tavares (group)|Tavares]], [[The Trammps]], [[Walter Murphy]] & [[Yvonne Elliman]], featured artists; [[Albhy Galuten]], [[Arif Mardin]], Bee Gees, Bill Oakes, [[Bobby Martin (producer)|Bobby Martin]], Broadway Eddie, David Shire, [[Freddie Perren]], [[Harry Wayne Casey]], [[K.G. Productions]], Karl Richardson, Ralph MacDonald, [[Richard Finch (musician)|Richard Finch]], [[Ron Kersey]], [[Thomas J. Valentino]] & William Salter, producers'''</small>
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[52nd Annual Grammy Awards|2010]]<br /><ref name="Grammy2010">{{cite web|url=http://www.grammy.com/nominees?year=2009&genre=13|title=52nd Annual GRAMMY Awards Nominees And Winners: General Field|publisher=[[Recording Academy|The Recording Academy]]|access-date=December 10, 2011}}</ref>
+| ''[[Fearless (Taylor Swift album)|'''Fearless''']]''
+| '''[[Taylor Swift]]'''
+| <small>'''[[Colbie Caillat]], featured artist; [[Nathan Chapman (record producer)|Nathan Chapman]] & Taylor Swift, producers; Chad Carlson, Nathan Chapman & Justin Niebank, engineers/mixers; Hank Williams, mastering engineer'''</small>
+|-
+style="background:#FAEB86;"
+! rowspan="5" |[[54th Annual Grammy Awards|2012]]<br /><ref name="Grammy2012">{{cite web|url=https://www.stereogum.com/892661/bon-iver-nominated-for-4-grammy-awards/top-stories/|title=Bon Iver Nominated for 4 Grammy Awards |first=Scott |last=Lapatine |work=Stereo Gum |date=November 30, 2011 |access-date=October 18, 2019}}</ref>
+| ''[[21 (Adele album)|'''21''']]''
+| '''[[Adele]]'''
+| <small>'''[[Jim Abbiss]], Adele Adkins, [[Paul Epworth]], [[Rick Rubin]], [[Fraser T Smith]], [[Ryan Tedder]] & [[Dan Wilson (musician)|Dan Wilson]], producers; Jim Abbiss, Philip Allen, Beatriz Artola, Ian Dowling, [[Tom Elmhirst]], [[Greg Fidelman]], [[Dan Parry]], Steve Price, [[Mark Rankin (record engineer)|Mark Rankin]], [[Andrew Scheps]], Fraser T. Smith & Ryan Tedder, engineers/mixers; [[Tom Coyne (music engineer)|Tom Coyne]], mastering engineer'''</small>
+|-
+style="background:#FAEB86;"
+! rowspan="8" |[[68th Annual Grammy Awards|2026]]<br /><ref>{{cite magazine |last=Willman |first=Chris |title=Grammy Nominations 2026: Kendrick Lamar Leads With Nine as Lady Gaga, Bad Bunny, Sabrina Carpenter and Leon Thomas Land Among Top Nominees |url=https://variety.com/2025/music/news/grammy-nominations-2026-complete-list-kendrick-lamar-gaga-1236572363/ |magazine=Variety |access-date=November 7, 2025 |date=November 7, 2025}}</ref>
+|'''''[[Debí Tirar Más Fotos]]'''''
+|'''[[Bad Bunny]]'''
+|<small>'''Big Jay, La Paciencia, [[Mag (music producer)|Mag]] & [[Tainy]], producers; Antonio Caraballo, Josh Gudwin, Luis Amed Irizarry & Roberto José Rosado Torres, engineers/mixers; Benito Antonio Martínez Ocasio, Roberto José Rosado Torres, [[Marco Daniel Borrero]], Jay Anthony Nuñez & Marcos Efrain Masis, songwriters; [[Colin Leonard]], mastering engineer'''</small>
+|}
+==References==

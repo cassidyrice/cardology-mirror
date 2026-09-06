@@ -22,6 +22,7 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.tonys
   python -m pipeline.oscars
   python -m pipeline.emmys
+  python -m pipeline.grammys
   python -m pipeline.astronauts
   python -m pipeline.celebs
 

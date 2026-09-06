@@ -91,6 +91,9 @@ jobs:
       - name: Emmy Lead Actor/Actress birth-card scaffold
         run: bun run build:seo-emmys
 
+      - name: Grammy Album of the Year birth-card scaffold
+        run: bun run build:seo-grammys
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -137,7 +140,8 @@ jobs:
             seo-pages/olympics.test.ts \
             seo-pages/tonys.test.ts \
             seo-pages/oscars.test.ts \
-            seo-pages/emmys.test.ts
+            seo-pages/emmys.test.ts \
+            seo-pages/grammys.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

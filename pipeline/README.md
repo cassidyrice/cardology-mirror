@@ -276,6 +276,26 @@ python3 -m pytest pipeline/tests/test_emmys.py
 Output: [`data/emmys/people.jsonl`](data/emmys/people.jsonl). Pages:
 `bun run build:seo-emmys`. Do not deploy.
 
+## Grammy Album of the Year (isolated `/grammys/aoty`)
+
+Primary billed Album of the Year winners. Wikipedia winner tables are
+the identity source (they cite Grammy.com / Recording Academy pages).
+Wikipedia person-page infobox birth-date templates are the public day.
+Wikidata `P569` precision 11 must match. Year-only dates and
+Wikipedia↔Wikidata conflicts are dropped. Bands are expanded only when
+a member has a public day-precision DOB; otherwise the band is omitted.
+Various-artists soundtracks are omitted. Dates are never invented. The
+celebrity `year_before_1900` cut is **not** applied. Birth cards use
+this module's D1 rule.
+
+```bash
+python3 -m pipeline.grammys
+python3 -m pytest pipeline/tests/test_grammys.py
+```
+
+Output: [`data/grammys/people.jsonl`](data/grammys/people.jsonl). Pages:
+`bun run build:seo-grammys`. Do not deploy.
+
 ## NASA astronauts (isolated `/astronauts`)
 
 NASA Fact Book list of U.S. astronauts (flown / selected corps) plus

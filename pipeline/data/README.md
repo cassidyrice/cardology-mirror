@@ -47,6 +47,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Oscars provenance | `pipeline/data/oscars/provenance.json` | yes |
 | Emmy Lead winners dataset | `pipeline/data/emmys/people.jsonl` | yes |
 | Emmy provenance | `pipeline/data/emmys/provenance.json` | yes |
+| Grammy AOTY dataset | `pipeline/data/grammys/people.jsonl` | yes |
+| Grammy AOTY provenance | `pipeline/data/grammys/provenance.json` | yes |
 | NASA astronauts dataset | `pipeline/data/astronauts/people.jsonl` | yes |
 | NASA astronauts provenance | `pipeline/data/astronauts/provenance.json` | yes |
 | Celeb blog citations | `pipeline/data/celebs/people.jsonl` | yes |
