@@ -308,5 +308,21 @@
       "/checkout/*"
     ],
     "note": "Authority upgrade of the live Worker /born-on path. Wikidata notables with day-precision P569. Not a new niche. Path-split is not activated. It must not take celebrity person slugs, /birthday, or live card-meaning routes."
+  },
+  "grammys_aoty_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/grammys/aoty",
+      "/grammys/aoty/{slug}",
+      "/sitemap-grammy-aoty.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Grammy Album of the Year birth-card set is isolated under /grammys/aoty. Primary billed winners with day-precision Wikipedia infobox + Wikidata P569 match. Bands expand only when members have public day-precision DOBs. Path-split is not activated."
   }
 }

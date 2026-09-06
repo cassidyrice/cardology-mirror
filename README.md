@@ -125,6 +125,15 @@ bun run test:seo-emmys
 python3 -m pipeline.emmys
 ```
 
+Grammy Album of the Year birth-card pages are an isolated
+build (`/grammys/aoty/{slug}`), primary billed winners, day-precision only:
+
+```bash
+bun run build:seo-grammys   # → seo-pages/dist-grammys
+bun run test:seo-grammys
+python3 -m pipeline.grammys
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

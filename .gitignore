@@ -17,6 +17,7 @@ seo-pages/dist-olympics
 seo-pages/dist-tonys
 seo-pages/dist-oscars
 seo-pages/dist-emmys
+seo-pages/dist-grammys
 .playwright-mcp/
 
 node_modules

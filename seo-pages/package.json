@@ -20,6 +20,7 @@
     "build:tonys": "bun src/tonys/build.ts",
     "build:oscars": "bun src/oscars/build.ts",
     "build:emmys": "bun src/emmys/build.ts",
+    "build:grammys": "bun src/grammys/build.ts",
     "test": "bun test"
   }
 }

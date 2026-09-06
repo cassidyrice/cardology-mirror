@@ -1,0 +1,401 @@
+{
+  "generated_at": "2026-09-06T21:44:09.456041+00:00",
+  "people_count": 89,
+  "catalog_billed_acts": 59,
+  "catalog_ceremonies": 68,
+  "catalog_people": 103,
+  "kept": 89,
+  "excluded": 11,
+  "by_reason": {
+    "year_only": 3,
+    "missing_birth": 8
+  },
+  "exclusions": [
+    {
+      "qid": "Q3528658",
+      "name": "Tim Kingsbury",
+      "wikipedia_title": "Tim Kingsbury",
+      "billing": "band_member",
+      "billed_act": "Arcade Fire",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q471656",
+      "name": "Thomas Bangalter",
+      "wikipedia_title": "Thomas Bangalter",
+      "billing": "band_member",
+      "billed_act": "Daft Punk",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q471650",
+      "name": "Guy-Manuel de Homem-Christo",
+      "wikipedia_title": "Guy-Manuel de Homem-Christo",
+      "billing": "band_member",
+      "billed_act": "Daft Punk",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q3480237",
+      "name": "Laura Lynch",
+      "wikipedia_title": "Laura Lynch (musician)",
+      "billing": "band_member",
+      "billed_act": "Dixie Chicks",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q99590412",
+      "name": "Benjamin Rietveld",
+      "wikipedia_title": "Benjamin Rietveld",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q99590644",
+      "name": "Bill Ortiz",
+      "wikipedia_title": "Bill Ortiz",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q15851190",
+      "name": "Tony Lindsay",
+      "wikipedia_title": "Tony Lindsay",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q99590649",
+      "name": "Jeff Cressman",
+      "wikipedia_title": "Jeff Cressman",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q2430490",
+      "name": "Q2430490",
+      "wikipedia_title": "Q2430490",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q99590423",
+      "name": "Andy Vargas",
+      "wikipedia_title": "Andy Vargas",
+      "billing": "band_member",
+      "billed_act": "Santana",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q2136220",
+      "name": "Dik Evans",
+      "wikipedia_title": "Dik Evans",
+      "billing": "band_member",
+      "billed_act": "U2",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    }
+  ],
+  "bands": [
+    {
+      "name": "Arcade Fire",
+      "wikipedia_title": "Arcade Fire",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Jeremy Gara",
+        "Richard Parry",
+        "R\u00e9gine Chassagne",
+        "William Butler",
+        "Win Butler"
+      ],
+      "members_considered": [
+        "Win Butler",
+        "R\u00e9gine Chassagne",
+        "Richard Parry",
+        "William Butler",
+        "Tim Kingsbury",
+        "Jeremy Gara"
+      ]
+    },
+    {
+      "name": "Blood, Sweat & Tears",
+      "wikipedia_title": "Blood, Sweat & Tears",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Bobby Colomby",
+        "David Clayton-Thomas"
+      ],
+      "members_considered": [
+        "David Clayton-Thomas",
+        "Bobby Colomby"
+      ]
+    },
+    {
+      "name": "Daft Punk",
+      "wikipedia_title": "Daft Punk",
+      "action": "omitted",
+      "reason": "band_members_failed_day_precision",
+      "members_kept": [],
+      "members_considered": [
+        "Thomas Bangalter",
+        "Guy-Manuel de Homem-Christo"
+      ]
+    },
+    {
+      "name": "Dixie Chicks",
+      "wikipedia_title": "The Chicks",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Emily Robison",
+        "Martie Maguire",
+        "Natalie Maines"
+      ],
+      "members_considered": [
+        "Natalie Maines",
+        "Emily Robison",
+        "Martie Maguire",
+        "Laura Lynch"
+      ]
+    },
+    {
+      "name": "Fleetwood Mac",
+      "wikipedia_title": "Fleetwood Mac",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Christine McVie",
+        "John McVie",
+        "Lindsey Buckingham",
+        "Mick Fleetwood",
+        "Stevie Nicks"
+      ],
+      "members_considered": [
+        "Mick Fleetwood",
+        "Christine McVie",
+        "John McVie",
+        "Stevie Nicks",
+        "Lindsey Buckingham"
+      ]
+    },
+    {
+      "name": "Mumford & Sons",
+      "wikipedia_title": "Mumford & Sons",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Marcus Mumford"
+      ],
+      "members_considered": [
+        "Marcus Mumford"
+      ]
+    },
+    {
+      "name": "OutKast",
+      "wikipedia_title": "Outkast",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Andr\u00e9 3000",
+        "Big Boi"
+      ],
+      "members_considered": [
+        "Andr\u00e9 3000",
+        "Big Boi"
+      ]
+    },
+    {
+      "name": "Santana",
+      "wikipedia_title": "Santana (band)",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Alex Ligertwood",
+        "Carlos Santana",
+        "Gregg Rolie",
+        "Michael Carabello",
+        "Michael Shrieve"
+      ],
+      "members_considered": [
+        "Carlos Santana",
+        "Gregg Rolie",
+        "Michael Carabello",
+        "Michael Shrieve",
+        "Benjamin Rietveld",
+        "Bill Ortiz",
+        "Tony Lindsay",
+        "Jeff Cressman",
+        "Q2430490",
+        "Andy Vargas",
+        "Alex Ligertwood"
+      ]
+    },
+    {
+      "name": "Simon & Garfunkel",
+      "wikipedia_title": "Simon & Garfunkel",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Art Garfunkel"
+      ],
+      "members_considered": [
+        "Paul Simon",
+        "Art Garfunkel"
+      ]
+    },
+    {
+      "name": "Steely Dan",
+      "wikipedia_title": "Steely Dan",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Donald Fagen",
+        "Walter Becker"
+      ],
+      "members_considered": [
+        "Walter Becker",
+        "Donald Fagen"
+      ]
+    },
+    {
+      "name": "The Beatles",
+      "wikipedia_title": "The Beatles",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Paul McCartney",
+        "Ringo Starr"
+      ],
+      "members_considered": [
+        "John Lennon",
+        "Ringo Starr",
+        "Paul McCartney",
+        "George Harrison"
+      ]
+    },
+    {
+      "name": "Toto",
+      "wikipedia_title": "Toto (band)",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Bobby Kimball",
+        "David Hungate",
+        "David Paich",
+        "Dennis Frederiksen",
+        "Greg Phillinganes",
+        "Jeff Porcaro",
+        "Joseph Williams",
+        "Mike Porcaro",
+        "Simon Phillips",
+        "Steve Lukather",
+        "Steve Porcaro"
+      ],
+      "members_considered": [
+        "Mike Porcaro",
+        "Jeff Porcaro",
+        "Steve Porcaro",
+        "Bobby Kimball",
+        "David Hungate",
+        "Dennis Frederiksen",
+        "Simon Phillips",
+        "Greg Phillinganes",
+        "Steve Lukather",
+        "David Paich",
+        "Joseph Williams"
+      ]
+    },
+    {
+      "name": "U2",
+      "wikipedia_title": "U2",
+      "action": "expanded",
+      "reason": "band_members_with_public_dobs",
+      "members_kept": [
+        "Adam Clayton",
+        "Bono",
+        "Larry Mullen Jr.",
+        "The Edge"
+      ],
+      "members_considered": [
+        "Bono",
+        "The Edge",
+        "Adam Clayton",
+        "Larry Mullen Jr.",
+        "Dik Evans"
+      ]
+    }
+  ],
+  "various_artists": [
+    {
+      "year": "1979",
+      "ceremony_number": 21,
+      "album": "Saturday Night Fever \u2013 Soundtrack",
+      "reason": "various_artists"
+    },
+    {
+      "year": "2002",
+      "ceremony_number": 44,
+      "album": "O Brother, Where Art Thou? \u2013 Soundtrack",
+      "reason": "various_artists"
+    }
+  ],
+  "sources": [
+    "Recording Academy / Grammy.com (https://www.grammy.com/)",
+    "Grammy Awards ceremony index (https://www.grammy.com/awards/)",
+    "Grammy.com Album of the Year category pages (https://www.grammy.com/awards/categories/album-of-the-year/{year}/)",
+    "Wikipedia Grammy Award for Album of the Year (https://en.wikipedia.org/wiki/Grammy_Award_for_Album_of_the_Year)",
+    "Wikipedia article infobox birth-date templates (CC BY-SA 4.0)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Wikipedia Album of the Year winner Artist(s) column AND (primary billed human OR expanded band member) AND Wikipedia infobox YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match",
+    "drop": [
+      "various_artists (no primary billed person)",
+      "production team / featured-friend <small> credits",
+      "year_only (Wikipedia infobox year without month/day)",
+      "dob_conflict (Wikipedia infobox day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "band omitted when no member has a public day-precision DOB",
+      "missing Wikipedia summary"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false,
+    "primary_billed_only": true,
+    "band_members": "expand Wikidata P527 humans when day-precision DOBs exist; if P527 is empty, use the band Wikipedia caption/current-members wikilinks only (not past-member history); otherwise omit the band"
+  },
+  "grammy_home": "https://www.grammy.com/",
+  "aoty_url": "https://en.wikipedia.org/wiki/Grammy_Award_for_Album_of_the_Year",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}
