@@ -1,0 +1,23 @@
+{
+  "id": "Q0WIN2",
+  "labels": { "en": { "value": "Conflict Fixture Luge" } },
+  "descriptions": { "en": { "value": "synthetic winter olympian fixture" } },
+  "sitelinks": { "enwiki": { "title": "Conflict Fixture Luge" } },
+  "claims": {
+    "P569": [
+      {
+        "rank": "normal",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1988-04-04T00:00:00Z",
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

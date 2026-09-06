@@ -357,3 +357,27 @@ python3 -m pipeline.senators # rewrite pipeline/data/senators/people.jsonl
 - Dropped: year-only list/Bioguide dates, Bioguide↔Wikipedia↔Wikidata day conflicts, minors, D3 keywords
 
 Path lock: [`senators-path-ownership.json`](./senators-path-ownership.json).
+
+## Winter Olympic medalists (isolated `/olympics/winter`)
+
+Separate static build. Wikipedia 8+ Winter Olympic medalists with
+day-precision Wikipedia infobox dates verified against Wikidata `P569`.
+Does **not** take celebrity `/birth-card/{slug}` or live card-meaning
+routes. Does **not** join the Next.js app, does **not** touch
+checkout/Stripe, and must **not** be deployed. Path-split is documented
+only — not activated.
+
+```bash
+bun run build:seo-olympics-winter   # → seo-pages/dist-olympics-winter
+bun run test:seo-olympics-winter
+python3 -m pipeline.olympics.winter # rewrite pipeline/data/olympics/winter/people.jsonl
+```
+
+- Hub: `/olympics/winter`
+- Person: `/olympics/winter/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=olympics-winter&utm_content={slug}`
+- Data: `pipeline/data/olympics/winter/people.jsonl` (Wikipedia 8+ list + article infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords, one-event table athletes not on the 8+ list
+
+Path lock: [`olympics-winter-path-ownership.json`](./olympics-winter-path-ownership.json).

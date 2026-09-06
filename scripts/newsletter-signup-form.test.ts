@@ -37,8 +37,10 @@ test("newsletter form is not a competing door on the calculator result", () => {
   expect(calculator).not.toContain('source="calculator-result"');
 });
 
-test("newsletter form appears in methodology and the home Monday section", () => {
+test("newsletter form appears in methodology; home stays calculator-only", () => {
   expect(methodology).toContain('source="methodology-dataset"');
-  expect(home).toContain("EmailSignupSection");
   expect(emailSection).toContain('source="home-monday"');
+  expect(home).toContain("LandingCalculator");
+  expect(home).not.toContain("EmailSignupSection");
+  expect(home).not.toContain("<NewsletterSignupForm");
 });
