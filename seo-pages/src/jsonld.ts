@@ -87,6 +87,26 @@ export function itemListJsonLd(
   };
 }
 
+export function sportsTeamJsonLd(input: {
+  name: string;
+  urlPath: string;
+  description: string;
+  foundingDate: string;
+}): JsonLdRecord {
+  return {
+    "@type": "SportsTeam",
+    name: input.name,
+    url: abs(input.urlPath),
+    description: input.description,
+    foundingDate: input.foundingDate,
+    sport: "American football",
+    memberOf: {
+      "@type": "SportsOrganization",
+      name: "National Football League",
+    },
+  };
+}
+
 export function collectionPageJsonLd(input: {
   name: string;
   urlPath: string;

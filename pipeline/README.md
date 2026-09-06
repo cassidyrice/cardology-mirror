@@ -122,3 +122,17 @@ Counts land in `pipeline/data/exclusions.json` under `by_reason`.
 
 Tiny synthetic fixtures (not celebrity bios) live in `data/fixtures/` and are
 what CI validates.
+
+## NFL franchise grant dates
+
+Committed dataset for the isolated `/franchise` SEO scaffold:
+
+```bash
+python3 -m pipeline.build_franchises
+python3 -m pytest pipeline/tests/test_franchises.py
+```
+
+Writes `pipeline/data/franchises.jsonl` and `pipeline/data/hof_franchise_histories.json`.
+Primary dates are the Hall of Fame Franchise Date column (grant through
+relocations/renames). Birth cards come from `birthcard.py` only. Wikipedia
+years are a cross-check, never a date source. No Vertex spend.

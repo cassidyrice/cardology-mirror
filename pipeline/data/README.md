@@ -40,3 +40,10 @@ python3 -m pipeline.build_dataset --from-seed \
   --out /tmp/people.jsonl \
   --exclusion-report /tmp/exclusions.json
 ```
+
+## NFL franchises (committed)
+
+`franchises.jsonl` is a curated 32-row grant-date dataset, not a generated
+celebrity rebuild. `hof_franchise_histories.json` is the HOF alias snapshot.
+Regenerate both with `python3 -m pipeline.build_franchises`. Do not gitignore
+these two files.
