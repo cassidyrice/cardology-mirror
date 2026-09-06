@@ -1,0 +1,46 @@
+export type DobCrosscheck = "match";
+
+export type OscarAward = {
+  year: string;
+  film_year: string | null;
+  ceremony_number: number;
+  category: string;
+  category_id: "best-actor" | "best-actress";
+  film: string;
+  oscars_url: string;
+};
+
+export type OscarRow = {
+  qid: string;
+  name: string;
+  slug: string;
+  birth_date: string;
+  death_date: string | null;
+  card: string;
+  source_text: string;
+  source_url: string;
+  wikipedia_title: string;
+  oscars_url: string;
+  awards: readonly OscarAward[];
+  wikipedia_infobox_date: string;
+  wikidata_birth_date: string;
+  dob_crosscheck: DobCrosscheck;
+};
+
+export type HeldOscar = {
+  name: string;
+  slug: string;
+  wikipedia_title: string;
+  reason: string;
+  wikipedia_infobox_date: string | null;
+  wikidata_birth_date: string | null;
+};
+
+export type CardMeaning = {
+  symbol: string;
+  label: string;
+  slug: string;
+  title: string;
+  core_identity: string;
+  sweet_spot: string;
+};

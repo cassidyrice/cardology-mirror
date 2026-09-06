@@ -164,6 +164,22 @@
     ],
     "note": "Current US senators birth-card set is isolated under /senators. 100 seats; day-precision Bioguide + Wikipedia + Wikidata P569 must match. Path-split is not activated."
   },
+  "oscars_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/oscars",
+      "/oscars/{slug}",
+      "/sitemap-oscars.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Academy Award Best Actor / Best Actress birth-card set is isolated under /oscars. Unique winners with day-precision Wikipedia infobox + Wikidata P569 match. Path-split is not activated."
+  },
   "governors_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

@@ -224,6 +224,24 @@ python3 -m pytest pipeline/tests/test_tonys.py
 Output: [`data/tonys/people.jsonl`](data/tonys/people.jsonl). Pages:
 `bun run build:seo-tonys`. Do not deploy.
 
+## Academy Award winners (isolated `/oscars`)
+
+Unique Best Actor and Best Actress winners. Wikipedia winner tables are
+the identity source (they cite Oscars.org ceremony pages). Wikipedia
+person-page infobox birth-date templates are the public day. Wikidata
+`P569` precision 11 must match. Year-only dates and Wikipedia↔Wikidata
+conflicts are dropped. Supporting acting categories are omitted. Dates
+are never invented. The celebrity `year_before_1900` cut is **not**
+applied. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.oscars
+python3 -m pytest pipeline/tests/test_oscars.py
+```
+
+Output: [`data/oscars/people.jsonl`](data/oscars/people.jsonl). Pages:
+`bun run build:seo-oscars`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the
