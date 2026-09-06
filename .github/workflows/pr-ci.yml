@@ -62,7 +62,8 @@ jobs:
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
             scripts/worker-production-contract-lib.test.ts \
-            seo-pages/seo-pages.test.ts
+            seo-pages/seo-pages.test.ts \
+            seo-pages/states.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

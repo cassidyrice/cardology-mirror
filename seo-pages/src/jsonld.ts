@@ -54,6 +54,39 @@ export function faqPageJsonLd(faqs: readonly FaqItem[]): JsonLdRecord {
   };
 }
 
+export function administrativeAreaJsonLd(input: {
+  name: string;
+  urlPath: string;
+  description: string;
+}): JsonLdRecord {
+  return {
+    "@type": "AdministrativeArea",
+    name: input.name,
+    url: abs(input.urlPath),
+    description: input.description,
+    isPartOf: {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  };
+}
+
+export function itemListJsonLd(
+  items: readonly { name: string; urlPath: string }[],
+): JsonLdRecord {
+  return {
+    "@type": "ItemList",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: abs(item.urlPath),
+    })),
+  };
+}
+
 export function collectionPageJsonLd(input: {
   name: string;
   urlPath: string;

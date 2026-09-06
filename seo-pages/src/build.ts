@@ -12,6 +12,7 @@ import {
 } from "./render-hubs";
 import { renderPersonPage } from "./render-person";
 import { renderRobotsTxt, renderSitemapIndex, renderUrlset } from "./sitemap";
+import { buildStatePages } from "./states/build";
 import type { CardRef, EnrichedPerson } from "./types";
 import { birthdayPath, cardHubPath, formatMonthDay, parseIsoDate, personPath } from "./urls";
 
@@ -205,5 +206,8 @@ function uniqueBirthdays(people: readonly EnrichedPerson[]): Array<{
 
 if (import.meta.main) {
   const result = buildSeoPages();
-  console.log(`Built ${result.files.length} files for ${result.people.length} fixture people → ${result.outDir}`);
+  const states = buildStatePages({ outDir: result.outDir, wipe: false });
+  console.log(
+    `Built ${result.files.length} celeb files for ${result.people.length} fixture people + ${states.files.length} state files for ${states.states.length} states → ${result.outDir}`,
+  );
 }

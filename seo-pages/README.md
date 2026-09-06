@@ -19,7 +19,7 @@ cd seo-pages
 bun run build
 ```
 
-Output: `seo-pages/dist/` (gitignored). Fixture input: `seo-pages/fixtures/people.example.jsonl` (3 EXAMPLE people, no real bios).
+Output: `seo-pages/dist/` (gitignored). Fixture input: `seo-pages/fixtures/people.example.jsonl` (3 EXAMPLE people, no real bios). The same build also emits `/states` + 50 state pages from `data/states.jsonl` (CRS dates, not fixtures).
 
 Tests (build + slot/JSON-LD assertions):
 
@@ -46,6 +46,8 @@ WP3 rows must keep the JSONL shape in `src/types.ts` (`EnrichedPerson`). Set `ex
 | Joker hub | `/card/joker` |
 | Birthday | `/birthday/{month}-{day}` (no zero-pad: `december-31`) |
 | Daily | `/today` (stub only) |
+| States hub | `/states` |
+| State | `/states/{slug}` (50 states; no DC/territories) |
 
 Person slugs are reserved away from `joker`, `{rank}-of-{suit}`, and `{month}-{day}` so they cannot collide with existing card or date pages.
 
@@ -66,6 +68,8 @@ This isolated project is destined to own **only** these prefixes on `cardbluepri
 - `/card/{rank}-of-{suit}` and `/card/joker` — new card hubs
 - `/birthday/{month}-{day}` — new birthday hubs
 - `/sitemap-celeb.xml`, `/sitemap-people.xml`, `/sitemap-cards.xml`, `/sitemap-birthdays.xml`
+- `/states` and `/states/{slug}` — US admission/ratification coordinates (parallel track; see [`data/STATES.md`](./data/STATES.md))
+- `/sitemap-states.xml`
 
 **Do not cut over without a router**
 
@@ -92,6 +96,8 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Link only — no checkout form.
+
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
 A disabled `POST /create-checkout` form is a stub only. It is not wired and must not be implemented in this folder.
@@ -99,6 +105,8 @@ A disabled `POST /create-checkout` form is a stub only. It is not wired and must
 ## Sources
 
 Every person page has a source line slot: Wikidata CC0 + Wikipedia CC BY-SA 4.0. Fixture QIDs/titles are empty.
+
+State pages attribute CRS R47747 Table 1 (primary) and the Wikipedia admission list (secondary). Dates are not invented. See [`data/STATES.md`](./data/STATES.md).
 
 ## What WP3 fills later
 

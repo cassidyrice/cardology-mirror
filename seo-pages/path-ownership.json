@@ -13,6 +13,11 @@
     "/sitemap-cards.xml",
     "/sitemap-birthdays.xml"
   ],
+  "states_pages_will_own": [
+    "/states",
+    "/states/{slug}",
+    "/sitemap-states.xml"
+  ],
   "pages_may_own_after_worker_cutover": [
     "/today"
   ],

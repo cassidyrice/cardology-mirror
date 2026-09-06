@@ -67,11 +67,17 @@ main {
 
 .crumbs a { color: inherit; }
 
-.example-banner {
+.example-banner,
+.method-banner {
   border: 1px solid var(--oxblood);
   background: #f8e8e2;
   padding: 0.7rem 0.9rem;
   font-size: 0.92rem;
+}
+
+.method-banner {
+  border-color: var(--gold);
+  background: #f4efe4;
 }
 
 .hero h1 {
@@ -117,10 +123,24 @@ form[data-checkout-stub] button {
   font-size: 0.85rem;
 }
 
-.joker-lineage {
+.joker-lineage,
+.disputed {
   border: 1px dashed var(--gold);
   padding: 1rem 1.1rem;
   margin: 2rem 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
 }
 
 .site-footer {
