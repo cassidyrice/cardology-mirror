@@ -1,46 +1,20 @@
-# Vertex enrich retry (836) — submitted and parsed
+# Vertex enrich — remaining 18
 
-Retry job `403973903623389184` **SUCCEEDED**. Do not submit another job
-unless asked. Results live in `people_enriched.jsonl` (1040) and
-`retry.jsonl` (18 remaining).
+`people_enriched.jsonl` has **1040** accepted qids. Do not re-run those.
+This pass is the **18** leftover rows from #73 (`retry.jsonl`).
 
-## Root cause
+## Why 18
 
-Job `2948789168064430080` returned 1058/1058 predictions. The ≥0.85 fuzzy
-containment gate accepted 222 and rejected **836**. Failure mix:
-
-| Kind | Rows | Notes |
+| Kind | Rows | Action |
 |---|---|---|
-| containment only | 814 | 1422 evidence facts below 0.85 |
-| containment + meta >155 | 18 | meta 156–160 chars |
-| meta only | 4 | 22 meta overruns total |
+| Vertex TPU `CANCELLED` empty prediction | 16 | Retry same contract (transient) |
+| hook 41 words (max 40) — Cynthia Erivo | 1 | Real prompt buffer: hook ≤38 (hard 40) |
+| `card_in_life` 119 words (need 120–180) — Jesse Plemons | 1 | Real prompt buffer: 125–175 (hard 120–180) |
 
-The model **paraphrased** Wikipedia `source_text` instead of copying a span:
+Same #70 contract otherwise: near-verbatim `evidence.fact`, meta ≤145,
+`temperature=0.0`, `thinkingLevel=LOW`. Validator hard limits unchanged.
 
-- Pronoun rewrite: `Gilgeous-Alexander led the Thunder…` → `He led the Thunder…`
-- Merged sentences: two clauses joined with “functioning as both…”
-- Soften / drop words: `for her role in On My Block (2018)` → `She had a role in…`
-- Invented glue: `before transitioning to his current promotion`
-
-Median fail score was 0.72. 554/1422 facts sat in 0.75–0.85 — close paraphrases,
-not missing source. All 836 retry qids still have `source_text` in `people.jsonl`.
-
-Accepted rows in #67 also mostly paraphrased (188/666 facts are normalized
-substrings). This retry **tightens** the gate; it does not loosen 0.85.
-
-## What this PR changes
-
-1. **Prompt** — `evidence.fact` must be a near-verbatim contiguous substring.
-   No paraphrase, no sentence merge, no He/She rewrite of a named subject.
-2. **Meta** — target ≤145 chars (hard ceiling still 155).
-3. **Decode** — `temperature` 0.2 → **0.0**; `thinkingLevel=LOW` (model default
-   is HIGH; thinking cannot be turned off on gemini-3.1-pro-preview).
-4. **Parse helper** — `enrich/containment.py` requires normalized substring
-   (case/whitespace/punctuation only). `python3 -m enrich.parse_results --append`
-   keeps the 222 from #67.
-5. **Batch** — 836 requests from `people.jsonl ∩` the original retry qids.
-
-## Rebuild (no spend)
+## Rebuild
 
 ```bash
 python3 -m enrich.make_retry_batch
@@ -49,32 +23,33 @@ python3 -m enrich.estimate \
   --out enrich/artifacts/cost_estimate.json
 ```
 
-## Cost (same model, Flex/Batch rates)
+## Cost (same model, Flex/Batch rates — #70 method)
 
-See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
-1058-row job (`~$3.73` / `~$16.43` for 1058).
+See `enrich/artifacts/cost_estimate.json` (18 requests).
 
-| Band | 836 retry |
+| Band | 18 remainder |
 |---|---|
-| Output JSON only (theoretical) | **$3.11** |
-| thinkingLevel=LOW (this JSONL) | **~$7.12** |
-| HIGH upper (2500 thought tokens/row) | **$13.14** |
+| Output JSON only (theoretical) | **$0.07** |
+| thinkingLevel=LOW (this JSONL) | **~$0.15** |
+| HIGH upper (2500 thought tokens/row) | **$0.28** |
 
-HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
-`gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
+HIGH upper is **inside the ~$16 target**.
 
-## After SUCCEEDED (this results PR)
+Hub people packs (presidents / governors / SCOTUS / Nobel / signers) have
+Wikipedia `source_text` but each README says no Vertex / local templates.
+Combined HIGH upper is **$17.02** (`hub_pack_estimate.json`) — over the
+band, held for APPROVE. Date-only hubs (holidays / parks / MLB / NFL /
+states) are not Vertex people enrich.
 
-1. Downloaded `enrich/out/predictions.jsonl` (836 lines, gitignored).
-2. Parsed with **near-verbatim** containment (not fuzzy 0.85).
-3. Appended 818 accepted rows to `pipeline/data/people_enriched.jsonl`.
-   Did not overwrite the 222 from #67. Total **1040**.
-4. Remaining **18** in `retry.jsonl` (16 empty TPU errors, 2 contract misses).
-   Do not resubmit unless asked.
+## After SUCCEEDED
+
+1. Download `enrich/out/predictions.jsonl`.
+2. Parse with near-verbatim containment.
+3. Append accepted rows to `pipeline/data/people_enriched.jsonl`.
+   Do not overwrite the 1040 already accepted.
 
 ## Out of scope
 
-- No Vertex submit / poll / download
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- #62 / #66 left unmerged
+- Hub people packs not submitted (over $16 HIGH upper + pack No-Vertex policy)

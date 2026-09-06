@@ -12,7 +12,7 @@ USAGE = """WP3 enrich scaffold (no Vertex spend).
   python3 -m enrich.make_retry_batch
   python3 -m enrich.estimate --input enrich/artifacts/vertex_retry_batch.jsonl
 
-See enrich/README.md and enrich/RETRY_PLAN.md. Do not submit another Vertex job.
+See enrich/README.md and enrich/RETRY_PLAN.md.
 """
 
 

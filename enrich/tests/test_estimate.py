@@ -35,8 +35,8 @@ def test_estimate_counts_requests_and_positive_usd(tmp_path: Path) -> None:
 def test_committed_retry_estimate_stays_inside_16_usd() -> None:
     result = estimate_batch(RETRY_BATCH, model="gemini-3.1-pro-preview")
     committed = json.loads(COST.read_text(encoding="utf-8"))
-    assert result["requests"] == 836
+    assert result["requests"] == 18
     assert result["usd_batch_with_thinking_upper"] <= TARGET_USD_BAND
-    assert committed["requests"] == 836
+    assert committed["requests"] == 18
     assert committed["within_target"] is True
     assert result["usd_batch_with_thinking_upper"] == committed["usd_batch_with_thinking_upper"]

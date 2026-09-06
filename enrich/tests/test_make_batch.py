@@ -47,3 +47,5 @@ def test_prompt_forbids_facts_outside_source_text() -> None:
     assert "near-verbatim contiguous substring" in SYSTEM_INSTRUCTIONS
     assert "Do not paraphrase" in SYSTEM_INSTRUCTIONS
     assert "≤ 145 chars" in SYSTEM_INSTRUCTIONS
+    assert "≤ 38 words" in SYSTEM_INSTRUCTIONS
+    assert "125–175 words" in SYSTEM_INSTRUCTIONS
