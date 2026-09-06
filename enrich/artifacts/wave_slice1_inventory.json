@@ -1,0 +1,192 @@
+{
+  "kind": "wave_slice1",
+  "job_submitted": true,
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/5428091131676065792",
+  "display_name": "cardology-wp3-enrich-20260906T225419Z",
+  "job_state_after_90s": "JOB_STATE_RUNNING",
+  "people_enriched": 2133,
+  "unique_wave_ready": 2894,
+  "unique_missing": 2745,
+  "slice_limit": 1079,
+  "slice_rows": 1079,
+  "held_for_later_slices": 1666,
+  "hole_order": [
+    "rock_hall",
+    "olympics_summer",
+    "nfl_hof",
+    "tonys",
+    "kennedy_center_honors",
+    "astronauts",
+    "emmys",
+    "oscars",
+    "senators",
+    "pulitzer_fiction",
+    "grammys_aoty",
+    "time_poty",
+    "olympics_winter",
+    "house_chairs",
+    "cabinet"
+  ],
+  "by_pack": {
+    "senators": {
+      "path": "pipeline/data/senators/people.jsonl",
+      "kept_pages": 99,
+      "ready": 99,
+      "already_enriched": 5,
+      "missing": 94,
+      "not_ready": 0
+    },
+    "cabinet": {
+      "path": "pipeline/data/cabinet/people.jsonl",
+      "kept_pages": 16,
+      "ready": 16,
+      "already_enriched": 6,
+      "missing": 10,
+      "not_ready": 0
+    },
+    "olympics_summer": {
+      "path": "pipeline/data/olympics/people.jsonl",
+      "kept_pages": 541,
+      "ready": 541,
+      "already_enriched": 2,
+      "missing": 539,
+      "not_ready": 0
+    },
+    "olympics_winter": {
+      "path": "pipeline/data/olympics/winter/people.jsonl",
+      "kept_pages": 30,
+      "ready": 30,
+      "already_enriched": 0,
+      "missing": 30,
+      "not_ready": 0
+    },
+    "astronauts": {
+      "path": "pipeline/data/astronauts/people.jsonl",
+      "kept_pages": 221,
+      "ready": 221,
+      "already_enriched": 1,
+      "missing": 220,
+      "not_ready": 0
+    },
+    "oscars": {
+      "path": "pipeline/data/oscars/people.jsonl",
+      "kept_pages": 166,
+      "ready": 166,
+      "already_enriched": 34,
+      "missing": 132,
+      "not_ready": 0
+    },
+    "emmys": {
+      "path": "pipeline/data/emmys/people.jsonl",
+      "kept_pages": 159,
+      "ready": 159,
+      "already_enriched": 17,
+      "missing": 142,
+      "not_ready": 0
+    },
+    "tonys": {
+      "path": "pipeline/data/tonys/people.jsonl",
+      "kept_pages": 256,
+      "ready": 256,
+      "already_enriched": 10,
+      "missing": 246,
+      "not_ready": 0
+    },
+    "nfl_hof": {
+      "path": "pipeline/data/nfl_hof/people.jsonl",
+      "kept_pages": 308,
+      "ready": 308,
+      "already_enriched": 1,
+      "missing": 307,
+      "not_ready": 0
+    },
+    "grammys_aoty": {
+      "path": "pipeline/data/grammys/people.jsonl",
+      "kept_pages": 89,
+      "ready": 89,
+      "already_enriched": 14,
+      "missing": 75,
+      "not_ready": 0
+    },
+    "rock_hall": {
+      "path": "pipeline/data/rock_hall/people.jsonl",
+      "kept_pages": 753,
+      "ready": 753,
+      "already_enriched": 32,
+      "missing": 721,
+      "not_ready": 0
+    },
+    "pulitzer_fiction": {
+      "path": "pipeline/data/pulitzer_fiction/people.jsonl",
+      "kept_pages": 90,
+      "ready": 90,
+      "already_enriched": 7,
+      "missing": 83,
+      "not_ready": 0
+    },
+    "house_chairs": {
+      "path": "pipeline/data/house_chairs/people.jsonl",
+      "kept_pages": 29,
+      "ready": 29,
+      "already_enriched": 0,
+      "missing": 29,
+      "not_ready": 0
+    },
+    "kennedy_center_honors": {
+      "path": "pipeline/data/kennedy_center_honors/people.jsonl",
+      "kept_pages": 259,
+      "ready": 259,
+      "already_enriched": 24,
+      "missing": 235,
+      "not_ready": 0
+    },
+    "time_poty": {
+      "path": "pipeline/data/time_poty/people.jsonl",
+      "kept_pages": 74,
+      "ready": 74,
+      "already_enriched": 32,
+      "missing": 42,
+      "not_ready": 0
+    }
+  },
+  "by_pack_taken": {
+    "rock_hall": 721,
+    "olympics_summer": 358,
+    "nfl_hof": 0,
+    "tonys": 0,
+    "kennedy_center_honors": 0,
+    "astronauts": 0,
+    "emmys": 0,
+    "oscars": 0,
+    "senators": 0,
+    "pulitzer_fiction": 0,
+    "grammys_aoty": 0,
+    "time_poty": 0,
+    "olympics_winter": 0,
+    "house_chairs": 0,
+    "cabinet": 0
+  },
+  "dropped_no_source": 0,
+  "people_out": "enrich/artifacts/wave_slice1_people.jsonl",
+  "batch_out": "enrich/artifacts/vertex_wave_slice1_batch.jsonl",
+  "qids_out": "enrich/artifacts/wave_slice1_qids.jsonl",
+  "target_usd_band": 20.0,
+  "usd_batch_thinking_low": 9.1784,
+  "usd_batch_with_thinking_upper": 16.9472,
+  "within_target": true,
+  "stop_do_not_submit": false,
+  "stop_reason": null,
+  "contract": {
+    "evidence": "near-verbatim source_text containment",
+    "meta_description": "\u2264145 (hard 155)",
+    "temperature": 0.0,
+    "thinkingLevel": "LOW"
+  },
+  "do_not": [
+    "submit remaining missing rows this job",
+    "merge results",
+    "deploy",
+    "invent bios",
+    "start slice 2 without asking"
+  ]
+}
