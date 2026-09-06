@@ -28,6 +28,8 @@
     "test:franchise-pages": "bun test seo-pages/franchise.test.ts",
     "build:seo-presidents": "bun seo-pages/src/presidents/build.ts",
     "test:seo-presidents": "bun test seo-pages/presidents.test.ts",
+    "build:seo-parks": "bun seo-pages/src/parks/build.ts",
+    "test:seo-parks": "bun test seo-pages/parks.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
