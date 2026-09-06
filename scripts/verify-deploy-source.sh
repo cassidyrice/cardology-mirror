@@ -17,7 +17,7 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
-DEPLOY_COMMIT="bac1c645a26623f76f4ffa8b9cbaedb1354e84b3"
+DEPLOY_COMMIT="651ea23f01328cd947881094687ca4c618c5ca9e"
 WORKER_NAME="cardology-unlock"
 WORKER_VERSION="809625d1-b81a-4244-b2ca-66c1a6ffa873"
 WORKER_ROLLBACK="b9f8a4b3-b5b9-4426-9996-1850d67d8ac0"

@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-05** (deployed `main` @ `bac1c64` — Deep Dive downloads: read the ebook bucket from the Pages request context so buyer links work again; previous record `b6acb60`)
+**Last verified: 2026-09-06** (deployed `main` @ `651ea23` — feat(seo-hubs): senators + states packs, E-E-A-T template, cardology congruence, uniqueness gate; previous record `bac1c64`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `bac1c645a26623f76f4ffa8b9cbaedb1354e84b3` |
+| **Deployed commit** | `651ea23f01328cd947881094687ca4c618c5ca9e` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
 | **Worker rollback** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
