@@ -62,6 +62,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Pulitzer Fiction provenance | `pipeline/data/pulitzer_fiction/provenance.json` | yes |
 | House chairs dataset | `pipeline/data/house_chairs/people.jsonl` | yes |
 | House chairs provenance | `pipeline/data/house_chairs/provenance.json` | yes |
+| Kennedy Center Honors dataset | `pipeline/data/kennedy_center_honors/people.jsonl` | yes |
+| Kennedy Center Honors provenance | `pipeline/data/kennedy_center_honors/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

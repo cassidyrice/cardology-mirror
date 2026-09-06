@@ -100,6 +100,9 @@ jobs:
       - name: Rock Hall inductee birth-card scaffold
         run: bun run build:seo-rock-hall
 
+      - name: Kennedy Center Honors birth-card scaffold
+        run: bun run build:seo-kennedy-center-honors
+
       - name: Pulitzer Fiction birth-card scaffold
         run: bun run build:seo-pulitzer-fiction
 
@@ -156,6 +159,7 @@ jobs:
             seo-pages/grammys.test.ts \
             seo-pages/nfl-hof.test.ts \
             seo-pages/rock-hall.test.ts \
+            seo-pages/kennedy-center-honors.test.ts \
             seo-pages/pulitzer-fiction.test.ts \
             seo-pages/house-chairs.test.ts
 

@@ -25,6 +25,7 @@
     "build:rock-hall": "bun src/rock-hall/build.ts",
     "build:pulitzer-fiction": "bun src/pulitzer-fiction/build.ts",
     "build:house-chairs": "bun src/house-chairs/build.ts",
+    "build:kennedy-center-honors": "bun src/kennedy-center-honors/build.ts",
     "test": "bun test"
   }
 }

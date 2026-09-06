@@ -382,6 +382,25 @@ python3 -m pytest pipeline/tests/test_house_chairs.py
 Output: [`data/house_chairs/people.jsonl`](data/house_chairs/people.jsonl).
 Pages: `bun run build:seo-house-chairs`. Do not deploy.
 
+## Kennedy Center Honors (isolated `/kennedy-center-honors`)
+
+Person-scope Kennedy Center Honors recipients from the Wikipedia roster
+(which cites Kennedy Center honors pages). Groups and collectives expand
+only listed members. Wikipedia infobox day + Wikidata `P569` precision 11
+must match. Institutions, rescinded awards, year-only dates, conflicts,
+minors, and D3 keywords are dropped. Dates are never invented. Birth
+cards use this module's D1 rule. The celebrity `year_before_1900` cut is
+not applied. Kennedy Center artist bios are checked when Wikipedia cites
+them.
+
+```bash
+python3 -m pipeline.kennedy_center_honors
+python3 -m pytest pipeline/tests/test_kennedy_center_honors.py
+```
+
+Output: [`data/kennedy_center_honors/people.jsonl`](data/kennedy_center_honors/people.jsonl).
+Pages: `bun run build:seo-kennedy-center-honors`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages
