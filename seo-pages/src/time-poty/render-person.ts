@@ -74,7 +74,7 @@ export function renderTimePotyPage(
   const honorList = person.honors
     .map((honor) => {
       const share = honor.shared ? " · shared named human" : "";
-      return `<li><a href="${escapeHtml(honor.wikipedia_list_url)}">${escapeHtml(honor.year)} TIME Person of the Year</a> — ${escapeHtml(honor.choice_label)}${escapeHtml(share)}</li>`;
+      return `<li>${escapeHtml(person.name)} — <a href="${escapeHtml(honor.wikipedia_list_url)}">${escapeHtml(honor.year)} TIME Person of the Year</a> — ${escapeHtml(honor.choice_label)}${escapeHtml(share)}</li>`;
     })
     .join("\n        ");
 

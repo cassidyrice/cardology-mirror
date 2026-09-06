@@ -42,9 +42,12 @@ export function timePotyCopy(person: TimePotyRow, meaning: CardMeaning): TimePot
     ? `${person.name} shares at least one TIME Person of the Year year in this pack with another named human.`
     : `${person.name} is listed as the sole named human for each TIME Person of the Year year in this pack.`;
 
+  const second = sentences[1] ?? "";
   const hook =
-    `${first} The birth-card coordinate for ${dateLabel} is the ${meaning.label} — a calendar position, ` +
-    `not a forecast of ${person.name}'s ${honors}.`;
+    `${first}` +
+    (second && second !== first ? ` ${second}` : "") +
+    ` ${person.name} was born ${display}. The birth-card coordinate for ${dateLabel} is the ${meaning.label} — ` +
+    `a calendar position, not a forecast of ${person.name}'s ${honors}.`;
 
   const cardMeaning =
     `${person.name} was born ${display} (${person.birth_date}). Month ${month} and day ${day} give solar value ${solar}, ` +
@@ -62,31 +65,28 @@ export function timePotyCopy(person: TimePotyRow, meaning: CardMeaning): TimePot
 
   const honorLines = person.honors
     .map((honor) => {
-      const share = honor.shared ? " as a shared named human" : "";
-      return (
-        `${person.name} is on the ${honor.year} TIME Person of the Year list as ${honor.choice_label}${share} ` +
-        `(${honor.wikipedia_list_url}).`
-      );
+      const share = honor.shared
+        ? `${person.name} is one of the named humans listed for that year`
+        : `${person.name} is the sole named human listed for that year`;
+      return `${person.name}'s ${honor.year} Wikipedia list row uses the choice label “${honor.choice_label}” (${share}).`;
     })
     .join(" ");
   const deathClause = person.death_date
-    ? ` A public death date of ${formatDisplayDate(person.death_date)} (${person.death_date}) is listed on Wikidata P570 for ${person.name}.`
-    : ` No day-precision Wikidata P570 death date is stored on this page for ${person.name}.`;
+    ? ` Wikidata P570 lists ${formatDisplayDate(person.death_date)} (${person.death_date}) as a public death date for ${person.name}.`
+    : ` This page stores no day-precision Wikidata P570 death date for ${person.name}.`;
   const titleClause =
     person.wikipedia_title === person.name
-      ? `${person.name}'s English Wikipedia title is the same string as the harvested name.`
-      : `${person.name}'s English Wikipedia title is “${person.wikipedia_title}”, which is the sitelink used for the REST summary.`;
+      ? `The harvested English Wikipedia title for ${person.name} matches the list name.`
+      : `The harvested English Wikipedia title for ${person.name} is “${person.wikipedia_title}”.`;
   const ledger =
-    `${honorLines} ${person.name} (${person.qid}, Wikipedia “${person.wikipedia_title}”) appears here as a person-scope TIME Person of the Year. ` +
-    `${sharedNote} Honor years in this pack for ${person.name}: ${years}. Choice labels: ${labels}. ` +
-    `${titleClause} ` +
-    `Birth date ${person.birth_date} is the Wikipedia infobox day for ${person.name}, verified against Wikidata P569 ${person.wikidata_birth_date} (${person.dob_crosscheck}). ` +
-    `TIME vault (${person.time_context_url}) is context for the honor only and is not a date source for ${person.name}. ` +
-    `The harvested card symbol for ${dateLabel} is ${person.card}.` +
+    `${honorLines} ${sharedNote} ${titleClause} ` +
+    `${person.name} is Wikidata ${person.qid}. Honor years kept for ${person.name}: ${years}. Choice labels kept: ${labels}. ` +
+    `${person.name}'s Wikipedia infobox day is ${person.birth_date}; Wikidata P569 is ${person.wikidata_birth_date} (${person.dob_crosscheck}). ` +
+    `TIME vault (${person.time_context_url}) is context for ${person.name}'s honor and is not a date source. ` +
+    `${dateLabel} maps to ${person.card} for ${person.name}.` +
     deathClause +
-    ` Source URL ${person.source_url} is the Wikipedia article used for ${person.name}. ` +
-    `This page does not invent a childhood or a private address for ${person.name}. ` +
-    `It only names the calendar coordinate for ${dateLabel} and the TIME Person of the Year years already listed for ${person.name}.`;
+    ` The Wikipedia REST summary used for ${person.name} is ${person.source_url}. ` +
+    `No childhood, private address, or invented birthday is added for ${person.name}.`;
 
   const evidence = evidenceFromSummary(person, sentences);
 
