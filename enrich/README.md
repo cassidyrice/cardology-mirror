@@ -43,9 +43,10 @@ and trivial punctuation only. Paraphrase fails.
 |---|---|---|---|
 | `2948789168064430080` (#67, fuzzy ≥0.85) | SUCCEEDED | 222 | 836 |
 | `403973903623389184` (near-verbatim) | SUCCEEDED | **818** this run / **1040** total | **18** |
+| `5794641920097517568` (remaining 18) | SUCCEEDED | **18** this run / **1058** total | **0** |
 
-Remaining 18: 16 Vertex TPU `CANCELLED` empty predictions, 1 hook (41 words),
-1 `card_in_life` (119 words). Zero containment rejects on the retry.
+`people_enriched.jsonl` is complete (1058/1058). `retry.jsonl` is empty.
+Zero containment rejects on this remainder. Do not resubmit.
 
 ```bash
 python3 -m enrich.parse_results \
