@@ -1,8 +1,9 @@
 # Vertex enrich retry (836) — submitted and parsed
 
-Retry job `403973903623389184` **SUCCEEDED**. Do not submit another job
-unless asked. Results live in `people_enriched.jsonl` (1040) and
-`retry.jsonl` (18 remaining).
+Retry job `403973903623389184` **SUCCEEDED** (818/836). Remainder job
+`5794641920097517568` **SUCCEEDED** (18/18). Do not submit another job
+unless asked. Results live in `people_enriched.jsonl` (**1058/1058**);
+`retry.jsonl` is empty.
 
 ## Root cause
 
@@ -63,18 +64,17 @@ See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
 HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 `gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
 
-## After SUCCEEDED (this results PR)
+## After SUCCEEDED (remainder results)
 
-1. Downloaded `enrich/out/predictions.jsonl` (836 lines, gitignored).
+1. Downloaded `enrich/out/predictions.jsonl` (18 lines, gitignored).
 2. Parsed with **near-verbatim** containment (not fuzzy 0.85).
-3. Appended 818 accepted rows to `pipeline/data/people_enriched.jsonl`.
-   Did not overwrite the 222 from #67. Total **1040**.
-4. Remaining **18** in `retry.jsonl` (16 empty TPU errors, 2 contract misses).
-   Do not resubmit unless asked.
+3. Appended 18 accepted rows to `pipeline/data/people_enriched.jsonl`.
+   Did not overwrite the 1040 from #67/#73. Total **1058**.
+4. `retry.jsonl` is empty. Do not resubmit.
 
 ## Out of scope
 
-- No Vertex submit / poll / download
+- No further Vertex submit
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- #62 / #66 left unmerged
+- #79 submit PR left unmerged; this results PR stays draft
