@@ -1,6 +1,8 @@
-# Vertex enrich retry (836) — STOP for BOSS APPROVE
+# Vertex enrich retry (836) — submitted and parsed
 
-Do **not** submit this batch. Wait for BOSS APPROVE.
+Retry job `403973903623389184` **SUCCEEDED**. Do not submit another job
+unless asked. Results live in `people_enriched.jsonl` (1040) and
+`retry.jsonl` (18 remaining).
 
 ## Root cause
 
@@ -33,10 +35,10 @@ substrings). This retry **tightens** the gate; it does not loosen 0.85.
 2. **Meta** — target ≤145 chars (hard ceiling still 155).
 3. **Decode** — `temperature` 0.2 → **0.0**; `thinkingLevel=LOW` (model default
    is HIGH; thinking cannot be turned off on gemini-3.1-pro-preview).
-4. **Parse helper** — `enrich/containment.py` now requires normalized substring
-   (case/whitespace/punctuation only). Wire this when parsing the retry output
-   (`parse_results` still lives on #66).
-5. **Batch** — 836 requests from `people.jsonl ∩ retry.jsonl` qids. Regenerable.
+4. **Parse helper** — `enrich/containment.py` requires normalized substring
+   (case/whitespace/punctuation only). `python3 -m enrich.parse_results --append`
+   keeps the 222 from #67.
+5. **Batch** — 836 requests from `people.jsonl ∩` the original retry qids.
 
 ## Rebuild (no spend)
 
@@ -61,14 +63,14 @@ See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
 HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 `gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
 
-## After BOSS APPROVE (not this PR)
+## After SUCCEEDED (this results PR)
 
-1. Upload `enrich/artifacts/vertex_retry_batch.jsonl` with the #66 submit path
-   (`VERTEX_LOCATION=global`, `gemini-3.1-pro-preview`).
-2. Poll, download `enrich/out/predictions.jsonl`.
-3. Parse with **near-verbatim** containment (not fuzzy 0.85).
-4. Append accepted rows to `pipeline/data/people_enriched.jsonl`. Do not
-   overwrite the 222 from #67.
+1. Downloaded `enrich/out/predictions.jsonl` (836 lines, gitignored).
+2. Parsed with **near-verbatim** containment (not fuzzy 0.85).
+3. Appended 818 accepted rows to `pipeline/data/people_enriched.jsonl`.
+   Did not overwrite the 222 from #67. Total **1040**.
+4. Remaining **18** in `retry.jsonl` (16 empty TPU errors, 2 contract misses).
+   Do not resubmit unless asked.
 
 ## Out of scope
 
