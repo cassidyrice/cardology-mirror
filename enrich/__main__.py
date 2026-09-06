@@ -9,7 +9,10 @@ USAGE = """WP3 enrich scaffold (no Vertex spend).
     --meanings pipeline/data/card_meanings.json \\
     --out /tmp/vertex_batch.jsonl
 
-See enrich/README.md.
+  python3 -m enrich.make_retry_batch
+  python3 -m enrich.estimate --input enrich/artifacts/vertex_retry_batch.jsonl
+
+See enrich/README.md and enrich/RETRY_PLAN.md. Do not submit until BOSS APPROVE.
 """
 
 

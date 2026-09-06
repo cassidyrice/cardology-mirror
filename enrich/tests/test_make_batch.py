@@ -26,7 +26,10 @@ def test_make_batch_writes_vertex_jsonl_from_fixtures(tmp_path: Path) -> None:
         assert SYSTEM_INSTRUCTIONS in text
         assert "<source_text>" in text
         assert "Synthetic fixture used only for schema tests." in text
-        assert row["request"]["generationConfig"]["responseMimeType"] == "application/json"
+        config = row["request"]["generationConfig"]
+        assert config["responseMimeType"] == "application/json"
+        assert config["temperature"] == 0.0
+        assert config["thinkingConfig"]["thinkingLevel"] == "LOW"
 
 
 def test_make_batch_includes_joker_meaning(tmp_path: Path) -> None:
@@ -41,4 +44,6 @@ def test_make_batch_includes_joker_meaning(tmp_path: Path) -> None:
 
 def test_prompt_forbids_facts_outside_source_text() -> None:
     assert "Use ONLY the facts in <source_text>" in SYSTEM_INSTRUCTIONS
-    assert "do not state it" in SYSTEM_INSTRUCTIONS
+    assert "near-verbatim contiguous substring" in SYSTEM_INSTRUCTIONS
+    assert "Do not paraphrase" in SYSTEM_INSTRUCTIONS
+    assert "≤ 145 chars" in SYSTEM_INSTRUCTIONS
