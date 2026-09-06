@@ -1,0 +1,418 @@
+{
+  "source": {
+    "name": "Pro Football Hall of Fame — National Football League Franchise Histories",
+    "url": "https://www.profootballhof.com/football-history/national-football-league-franchise-histories",
+    "retrieved": "2026-09-06",
+    "rule": "Franchise Date column is the grant date through relocations and renames. Not first kickoff. Not 1919 Packers lore."
+  },
+  "wikipedia_crosscheck": {
+    "name": "Wikipedia — National Football League teams table",
+    "url": "https://en.wikipedia.org/wiki/National_Football_League",
+    "license": "CC BY-SA 4.0",
+    "retrieved": "2026-09-06",
+    "note": "Year column from the NFL teams table only. Never used as the grant date."
+  },
+  "verified_samples": {
+    "dallas-cowboys": "1960-01-28",
+    "houston-texans": "1999-10-06",
+    "carolina-panthers": "1993-10-26",
+    "baltimore-ravens": "1996-02-09",
+    "green-bay-packers": "1921-08-27"
+  },
+  "afl_1959_08_14_quintet": [
+    "denver-broncos",
+    "kansas-city-chiefs",
+    "los-angeles-chargers",
+    "new-york-jets",
+    "tennessee-titans"
+  ],
+  "current_32": [
+    {
+      "slug": "arizona-cardinals",
+      "name": "Arizona Cardinals",
+      "hof_row_name": "Chicago Cardinals/St. Louis/Phoenix/Arizona",
+      "hof_franchise_date_raw": "9/17/20",
+      "grant_date": "1920-09-17",
+      "hof_years_of_operation": "1920-1959/1960-1987/1988-1993/1994-present",
+      "hof_notes": [
+        "HOF alias row: Arizona Cardinals (see Chicago Cardinals)."
+      ],
+      "wikipedia_first_season_label": "1898 1920 (NFL)",
+      "year_crosscheck": "wikipedia_lists_older_year"
+    },
+    {
+      "slug": "chicago-bears",
+      "name": "Chicago Bears",
+      "hof_row_name": "Decatur Staleys/Chicago Staleys/Chicago Bears",
+      "hof_franchise_date_raw": "9/17/20",
+      "grant_date": "1920-09-17",
+      "hof_years_of_operation": "1920/1921/1922-present",
+      "hof_notes": [
+        "HOF alias row: Chicago Bears (see Decatur Staleys)."
+      ],
+      "wikipedia_first_season_label": "1920",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "green-bay-packers",
+      "name": "Green Bay Packers",
+      "hof_row_name": "Green Bay Packers",
+      "hof_franchise_date_raw": "8/27/21",
+      "grant_date": "1921-08-27",
+      "hof_years_of_operation": "1921-present",
+      "hof_notes": [
+        "NFL grant date. Wikipedia's teams table also lists 1919 (pre-NFL lore); that year is not used here."
+      ],
+      "wikipedia_first_season_label": "1919 1921 (NFL)",
+      "year_crosscheck": "wikipedia_lists_older_year"
+    },
+    {
+      "slug": "new-york-giants",
+      "name": "New York Giants",
+      "hof_row_name": "New York Giants",
+      "hof_franchise_date_raw": "8/1/25",
+      "grant_date": "1925-08-01",
+      "hof_years_of_operation": "1925-present",
+      "hof_notes": [
+        "HOF also lists a separate one-year 1921 New York Giants club; that is not this franchise."
+      ],
+      "wikipedia_first_season_label": "1925",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "detroit-lions",
+      "name": "Detroit Lions",
+      "hof_row_name": "Portsmouth Spartans/Detroit Lions",
+      "hof_franchise_date_raw": "7/12/30",
+      "grant_date": "1930-07-12",
+      "hof_years_of_operation": "1930-33/1934-present",
+      "hof_notes": [
+        "HOF alias row: Detroit Lions (see Portsmouth Spartans).",
+        "HOF note: 6/30/34 — the Portsmouth franchise was sold and moved to Detroit."
+      ],
+      "wikipedia_first_season_label": "1930",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "washington-commanders",
+      "name": "Washington Commanders",
+      "hof_row_name": "Boston Braves/Redskins/ Washington Redskins",
+      "hof_franchise_date_raw": "7/9/32",
+      "grant_date": "1932-07-09",
+      "hof_years_of_operation": "1932/1933-36/1937-present",
+      "hof_notes": [
+        "HOF alias row: Washington Redskins (see Boston Braves). Current name is Washington Commanders; HOF table title still uses historical names."
+      ],
+      "wikipedia_first_season_label": "1932",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "philadelphia-eagles",
+      "name": "Philadelphia Eagles",
+      "hof_row_name": "Philadelphia Eagles",
+      "hof_franchise_date_raw": "7/8/33",
+      "grant_date": "1933-07-08",
+      "hof_years_of_operation": "1933-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1933",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "pittsburgh-steelers",
+      "name": "Pittsburgh Steelers",
+      "hof_row_name": "Pittsburgh Pirates/Steelers",
+      "hof_franchise_date_raw": "7/8/33",
+      "grant_date": "1933-07-08",
+      "hof_years_of_operation": "1933-39/1940-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1933",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "los-angeles-rams",
+      "name": "Los Angeles Rams",
+      "hof_row_name": "Cleveland/Los Angeles/St. Louis Rams",
+      "hof_franchise_date_raw": "2/12/37",
+      "grant_date": "1937-02-12",
+      "hof_years_of_operation": "1937-42, 1944-45/1946-1994/1995-present",
+      "hof_notes": [
+        "HOF alias rows: Los Angeles Rams (see Cleveland Rams); St. Louis Rams (see Cleveland Rams).",
+        "HOF years-of-operation string is published as of scrape and still names the St. Louis era as present."
+      ],
+      "wikipedia_first_season_label": "1936 (AFL)1937 (NFL)",
+      "year_crosscheck": "wikipedia_lists_older_year"
+    },
+    {
+      "slug": "cleveland-browns",
+      "name": "Cleveland Browns",
+      "hof_row_name": "Cleveland Browns",
+      "hof_franchise_date_raw": "6/4/44 (AAFC)",
+      "grant_date": "1944-06-04",
+      "hof_years_of_operation": "1946-49 (AAFC), 1950-present (NFL)",
+      "hof_notes": [
+        "Inactive, 1996-1998 (HOF)."
+      ],
+      "wikipedia_first_season_label": "1946 (AAFC)1950 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "san-francisco-49ers",
+      "name": "San Francisco 49ers",
+      "hof_row_name": "San Francisco 49ers",
+      "hof_franchise_date_raw": "6/4/44 (AAFC)",
+      "grant_date": "1944-06-04",
+      "hof_years_of_operation": "1946-49 (AAFC), 1950-present (NFL)",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1946 (AAFC)1950 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "indianapolis-colts",
+      "name": "Indianapolis Colts",
+      "hof_row_name": "Baltimore/Indianapolis Colts",
+      "hof_franchise_date_raw": "1/23/53",
+      "grant_date": "1953-01-23",
+      "hof_years_of_operation": "1953-1983/1984-present",
+      "hof_notes": [
+        "HOF alias row: Indianapolis Colts (see Baltimore Colts) resolves to this 1/23/53 grant, not the defunct 12/28/46 AAFC Baltimore Colts.",
+        "HOF note: moved to Indianapolis, 3/28/84."
+      ],
+      "wikipedia_first_season_label": "1953",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "denver-broncos",
+      "name": "Denver Broncos",
+      "hof_row_name": "Denver Broncos",
+      "hof_franchise_date_raw": "8/14/59 (AFL)",
+      "grant_date": "1959-08-14",
+      "hof_years_of_operation": "1960-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "kansas-city-chiefs",
+      "name": "Kansas City Chiefs",
+      "hof_row_name": "Dallas Texans/Kansas City Chiefs",
+      "hof_franchise_date_raw": "8/14/59 (AFL)",
+      "grant_date": "1959-08-14",
+      "hof_years_of_operation": "1960-62/1963-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [
+        "HOF alias row: Kansas City Chiefs (see Dallas Texans)."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "los-angeles-chargers",
+      "name": "Los Angeles Chargers",
+      "hof_row_name": "Los Angeles/San Diego Chargers",
+      "hof_franchise_date_raw": "8/14/59 (AFL)",
+      "grant_date": "1959-08-14",
+      "hof_years_of_operation": "1960/1961-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [
+        "HOF alias row: San Diego Chargers (see Los Angeles Chargers)."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "new-york-jets",
+      "name": "New York Jets",
+      "hof_row_name": "New York Titans/Jets",
+      "hof_franchise_date_raw": "8/14/59 (AFL)",
+      "grant_date": "1959-08-14",
+      "hof_years_of_operation": "1960-62/1963-69 (AFL), 1970-present",
+      "hof_notes": [
+        "HOF alias row: New York Jets (see New York Titans)."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "tennessee-titans",
+      "name": "Tennessee Titans",
+      "hof_row_name": "Houston/Tennessee Oilers/Tennessee Titans",
+      "hof_franchise_date_raw": "8/14/59 (AFL)",
+      "grant_date": "1959-08-14",
+      "hof_years_of_operation": "1960-69 (AFL), 1970-1996 (NFL)/1997-1998/1999-present",
+      "hof_notes": [
+        "HOF alias rows: Tennessee Oilers (see Houston Oilers); Tennessee Titans (see Houston Oilers)."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "buffalo-bills",
+      "name": "Buffalo Bills",
+      "hof_row_name": "Buffalo Bills",
+      "hof_franchise_date_raw": "10/28/59 (AFL)",
+      "grant_date": "1959-10-28",
+      "hof_years_of_operation": "1960-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "new-england-patriots",
+      "name": "New England Patriots",
+      "hof_row_name": "Boston/New England Patriots",
+      "hof_franchise_date_raw": "11/22/59 (AFL)",
+      "grant_date": "1959-11-22",
+      "hof_years_of_operation": "1960-69 (AFL), 1970 (NFL)/1971-present (NFL)",
+      "hof_notes": [
+        "HOF alias row: New England Patriots (see Boston Patriots)."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "dallas-cowboys",
+      "name": "Dallas Cowboys",
+      "hof_row_name": "Dallas Cowboys",
+      "hof_franchise_date_raw": "1/28/60",
+      "grant_date": "1960-01-28",
+      "hof_years_of_operation": "1960-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1960",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "minnesota-vikings",
+      "name": "Minnesota Vikings",
+      "hof_row_name": "Minnesota Vikings",
+      "hof_franchise_date_raw": "1/28/60",
+      "grant_date": "1960-01-28",
+      "hof_years_of_operation": "1961-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1961",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "las-vegas-raiders",
+      "name": "Las Vegas Raiders",
+      "hof_row_name": "Oakland/Los Angeles/Oakland Raiders",
+      "hof_franchise_date_raw": "1/30/60 (AFL)",
+      "grant_date": "1960-01-30",
+      "hof_years_of_operation": "1960-69 (AFL), 1970-1981/1982-1994/1995- Present (NFL)",
+      "hof_notes": [
+        "HOF table title has not been updated for the Las Vegas relocation; the 1/30/60 AFL grant is kept through city moves."
+      ],
+      "wikipedia_first_season_label": "1960 (AFL)1970 (NFL)",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "atlanta-falcons",
+      "name": "Atlanta Falcons",
+      "hof_row_name": "Atlanta Falcons",
+      "hof_franchise_date_raw": "6/30/65",
+      "grant_date": "1965-06-30",
+      "hof_years_of_operation": "1966-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1966",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "miami-dolphins",
+      "name": "Miami Dolphins",
+      "hof_row_name": "Miami Dolphins",
+      "hof_franchise_date_raw": "8/16/65 (AFL)",
+      "grant_date": "1965-08-16",
+      "hof_years_of_operation": "1966-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1966 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "new-orleans-saints",
+      "name": "New Orleans Saints",
+      "hof_row_name": "New Orleans Saints",
+      "hof_franchise_date_raw": "11/1/66",
+      "grant_date": "1966-11-01",
+      "hof_years_of_operation": "1967-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1967",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "cincinnati-bengals",
+      "name": "Cincinnati Bengals",
+      "hof_row_name": "Cincinnati Bengals",
+      "hof_franchise_date_raw": "5/23/67 (AFL)",
+      "grant_date": "1967-05-23",
+      "hof_years_of_operation": "1968-69 (AFL), 1970-present (NFL)",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1968 (AFL)1970 (NFL)",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "tampa-bay-buccaneers",
+      "name": "Tampa Bay Buccaneers",
+      "hof_row_name": "Tampa Bay Buccaneers",
+      "hof_franchise_date_raw": "4/24/74",
+      "grant_date": "1974-04-24",
+      "hof_years_of_operation": "1976-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1976",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "seattle-seahawks",
+      "name": "Seattle Seahawks",
+      "hof_row_name": "Seattle Seahawks",
+      "hof_franchise_date_raw": "6/4/74",
+      "grant_date": "1974-06-04",
+      "hof_years_of_operation": "1976-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1976",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "carolina-panthers",
+      "name": "Carolina Panthers",
+      "hof_row_name": "Carolina Panthers",
+      "hof_franchise_date_raw": "10/26/93",
+      "grant_date": "1993-10-26",
+      "hof_years_of_operation": "1995-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1995",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "jacksonville-jaguars",
+      "name": "Jacksonville Jaguars",
+      "hof_row_name": "Jacksonville Jaguars",
+      "hof_franchise_date_raw": "11/30/93",
+      "grant_date": "1993-11-30",
+      "hof_years_of_operation": "1995-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "1995",
+      "year_crosscheck": "grant_precedes_first_season"
+    },
+    {
+      "slug": "baltimore-ravens",
+      "name": "Baltimore Ravens",
+      "hof_row_name": "Baltimore Ravens",
+      "hof_franchise_date_raw": "2/9/96",
+      "grant_date": "1996-02-09",
+      "hof_years_of_operation": "1996-present",
+      "hof_notes": [
+        "HOF lists the Cleveland Browns as inactive 1996-1998; the Ravens are a separate 1996 grant."
+      ],
+      "wikipedia_first_season_label": "1996",
+      "year_crosscheck": "year_mentioned"
+    },
+    {
+      "slug": "houston-texans",
+      "name": "Houston Texans",
+      "hof_row_name": "Houston Texans",
+      "hof_franchise_date_raw": "10/6/99",
+      "grant_date": "1999-10-06",
+      "hof_years_of_operation": "2002-present",
+      "hof_notes": [],
+      "wikipedia_first_season_label": "2002",
+      "year_crosscheck": "grant_precedes_first_season"
+    }
+  ]
+}

@@ -24,6 +24,8 @@
     "test:shorts-studio": "bun test scripts/shorts/studio-core.test.ts",
     "build:seo-pages": "bun seo-pages/src/build.ts",
     "test:seo-pages": "bun test seo-pages/seo-pages.test.ts",
+    "build:franchise-pages": "bun seo-pages/src/build-franchises.ts",
+    "test:franchise-pages": "bun test seo-pages/franchise.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

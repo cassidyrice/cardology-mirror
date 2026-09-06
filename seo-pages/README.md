@@ -111,3 +111,27 @@ Every person page has a source line slot: Wikidata CC0 + Wikipedia CC BY-SA 4.0.
 ## Isolation
 
 No imports from `app/`, `components/`, or checkout libraries. No FastAPI in this repo; payment lives on Next.js Stripe routes and was not modified.
+
+## NFL franchise birth cards (parallel scaffold)
+
+Isolated second build. Does **not** join the Next.js app, does **not** touch checkout/Stripe, and must **not** be deployed.
+
+```bash
+bun run build:franchise-pages
+bun run test:franchise-pages
+```
+
+Output: `seo-pages/dist-franchise/` (gitignored). Dataset: `pipeline/data/franchises.jsonl` (32 current clubs). Rebuild the JSONL with `python3 -m pipeline.build_franchises`.
+
+| Page | Path |
+| --- | --- |
+| Hub | `/franchise` |
+| Team | `/franchise/{slug}` |
+
+Team slugs are current names (`dallas-cowboys`, `washington-commanders`). They live under `/franchise/` so they cannot collide with person `/birth-card/{slug}` or live `/birth-card/{rank}-of-{suit}`.
+
+Dates are the Pro Football Hall of Fame **Franchise Date** (grant through relocations/renames). Not first kickoff. Not 1919 Packers lore. Wikipedia’s NFL teams table is a year cross-check only.
+
+CTA: `/checkout/deep-dive?utm_source=nfl&utm_content={slug}` ($9 Birth Card Deep Dive). Cards are coordinates, not fortune-telling.
+
+Path lock: [`franchise-path-ownership.json`](./franchise-path-ownership.json).

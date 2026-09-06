@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/franchise.json",
+  "title": "NFL franchise birth-card row",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "conference",
+    "division",
+    "grant_date",
+    "grant_date_precision",
+    "grant_date_status",
+    "hof_row_name",
+    "hof_franchise_date_raw",
+    "hof_years_of_operation",
+    "hof_league_mark",
+    "hof_notes",
+    "wikipedia_first_season_label",
+    "wikipedia_years",
+    "year_crosscheck",
+    "solar_value",
+    "card",
+    "afl_1959_08_14_quintet",
+    "same_card_slugs",
+    "same_grant_day_slugs",
+    "sources"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "conference": { "type": "string", "enum": ["AFC", "NFC"] },
+    "division": {
+      "type": "string",
+      "enum": ["East", "North", "South", "West"]
+    },
+    "grant_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "grant_date_precision": { "type": "string", "const": "day" },
+    "grant_date_status": { "type": "string", "const": "verified" },
+    "hof_row_name": { "type": "string", "minLength": 1 },
+    "hof_franchise_date_raw": { "type": "string", "minLength": 1 },
+    "hof_years_of_operation": { "type": "string", "minLength": 1 },
+    "hof_league_mark": { "type": ["string", "null"] },
+    "hof_notes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "wikipedia_first_season_label": { "type": "string", "minLength": 1 },
+    "wikipedia_years": {
+      "type": "array",
+      "items": { "type": "integer" },
+      "minItems": 1
+    },
+    "year_crosscheck": {
+      "type": "string",
+      "enum": [
+        "year_mentioned",
+        "grant_precedes_first_season",
+        "wikipedia_lists_older_year"
+      ]
+    },
+    "solar_value": { "type": "integer", "minimum": 1, "maximum": 52 },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "rank",
+        "suit",
+        "label",
+        "slug",
+        "symbol",
+        "archetype",
+        "meaning_page",
+        "core_identity",
+        "sweet_spot",
+        "life_direction"
+      ],
+      "properties": {
+        "kind": { "type": "string", "const": "card" },
+        "rank": { "type": "string" },
+        "suit": {
+          "type": "string",
+          "enum": ["hearts", "clubs", "diamonds", "spades"]
+        },
+        "label": { "type": "string" },
+        "slug": {
+          "type": "string",
+          "pattern": "^(ace|[2-9]|10|jack|queen|king)-of-(hearts|diamonds|clubs|spades)$"
+        },
+        "symbol": { "type": "string" },
+        "archetype": { "type": "string" },
+        "meaning_page": { "type": "string" },
+        "core_identity": { "type": "string" },
+        "sweet_spot": { "type": "string" },
+        "life_direction": { "type": "string" }
+      }
+    },
+    "afl_1959_08_14_quintet": { "type": "boolean" },
+    "same_card_slugs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "same_grant_day_slugs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["name", "url", "role", "retrieved"],
+        "properties": {
+          "name": { "type": "string" },
+          "url": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["primary_grant_date", "year_crosscheck_only"]
+          },
+          "retrieved": { "type": "string" },
+          "license": { "type": "string" }
+        }
+      }
+    }
+  }
+}

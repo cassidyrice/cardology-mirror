@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "bun src/build.ts",
+    "build:franchises": "bun src/build-franchises.ts",
     "test": "bun test"
   }
 }
