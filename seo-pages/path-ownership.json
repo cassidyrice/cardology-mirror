@@ -115,5 +115,21 @@
       "/checkout/*"
     ],
     "note": "US National Park birth-card set is isolated under /parks. Dates are Wikipedia National Park establishment, not first monument."
+  },
+  "signers_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/signers",
+      "/signers/{slug}",
+      "/sitemap-signers.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Declaration signers birth-card set is isolated under /signers. Verified subset only. It must not take celebrity person slugs or live card-meaning routes."
   }
 }

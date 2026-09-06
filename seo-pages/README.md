@@ -201,6 +201,25 @@ CTA: `/checkout/deep-dive?utm_source=parks&utm_content={slug}`. Cards are coordi
 
 Path lock: [`parks-path-ownership.json`](./parks-path-ownership.json).
 
+## Declaration signers (isolated `/signers`)
+
+Separate static build. Verified-day subset only. Does **not** take celebrity
+`/birth-card/{slug}`, live card-meaning routes, or `/presidents`.
+
+```bash
+bun run build:seo-signers   # → seo-pages/dist-signers
+bun run test:seo-signers
+```
+
+- Hub: `/signers`
+- Person: `/signers/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=signers&utm_content={slug}`
+- Data: `pipeline/data/signers/people.jsonl` (NARA + Wikipedia + Bioguide; Wikidata precision=11 is QA only)
+- Held: Hancock (OS/NS), Harrison V, Hewes. Nine NARA year-only rows have no page.
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+
+Path lock: [`signers-path-ownership.json`](./signers-path-ownership.json).
+
 ## Nobel laureates (isolated `/nobel`)
 
 Separate static build. Day-precision Nobel Prize API v2.1 dates verified

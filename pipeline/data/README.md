@@ -29,6 +29,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Presidents dataset | `pipeline/data/presidents/people.jsonl` | yes |
 | Presidents provenance | `pipeline/data/presidents/provenance.json` | yes |
 | Federal holidays JSONL | `seo-pages/data/holidays.jsonl` | yes (written by `python3 -m pipeline.holidays`) |
+| Signers dataset | `pipeline/data/signers/people.jsonl` | yes |
+| Signers provenance | `pipeline/data/signers/provenance.json` | yes |
 | Nobel laureates dataset | `pipeline/data/nobel/people.jsonl` | yes |
 | Nobel provenance | `pipeline/data/nobel/provenance.json` | yes |
 

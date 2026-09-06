@@ -97,6 +97,20 @@ python3 -m pytest pipeline/tests/test_holidays.py
 Writes [`../seo-pages/data/holidays.jsonl`](../seo-pages/data/holidays.jsonl).
 Pages: `bun run build:seo-holidays`. Do not deploy.
 
+## Declaration signers (isolated `/signers`)
+
+44 verified people (56 NARA signers minus 9 year-only minus 3 contested holds).
+Catalog first (`pipeline/signers/catalog.py`): NARA Signers Factsheet, Wikipedia
+infobox, Bioguide. New Style preferred. Wikidata `P569` precision=11 is QA only
+and never invents a day.
+
+```bash
+python3 -m pipeline.signers
+```
+
+Output: [`data/signers/people.jsonl`](data/signers/people.jsonl). Pages:
+`bun run build:seo-signers`. Do not deploy.
+
 ## Nobel laureates (isolated `/nobel`)
 
 People with a day-precision Nobel API v2.1 birth date **and** a matching

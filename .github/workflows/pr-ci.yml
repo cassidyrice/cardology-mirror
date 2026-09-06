@@ -49,6 +49,9 @@ jobs:
       - name: National Park birth-card scaffold
         run: bun run build:seo-parks
 
+      - name: Signers birth-card scaffold
+        run: bun run build:seo-signers
+
       - name: Nobel laureate birth-card scaffold
         run: bun run build:seo-nobel
 
@@ -83,6 +86,7 @@ jobs:
             seo-pages/presidents.test.ts \
             seo-pages/holidays.test.ts \
             seo-pages/parks.test.ts \
+            seo-pages/signers.test.ts \
             seo-pages/nobel.test.ts
 
   pipeline:
