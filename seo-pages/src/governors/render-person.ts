@@ -1,9 +1,10 @@
+import { renderCongruenceSection } from "../congruence-render";
 import { escapeHtml } from "../escape";
 import { breadcrumbJsonLd, faqPageJsonLd, jsonLdGraph, personJsonLd } from "../jsonld";
 import { jokerLineageSlot, renderLayout } from "../layout";
 import { SITE_NAME } from "../types";
 import { formatDisplayDate, formatMonthDay, isJokerDate, parseIsoDate } from "../urls";
-import { governorCopy } from "./copy";
+import { governorCopy, sourceProse } from "./copy";
 import type { CardMeaning, GovernorRow } from "./types";
 import {
   cardMeaningPath,
@@ -16,7 +17,7 @@ import {
 
 const LAYOUT = {
   kicker: "US governors · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 export function renderGovernorPage(
@@ -67,6 +68,35 @@ export function renderGovernorPage(
     ? ` + NGA (<a href="${escapeHtml(person.nga_url)}">${escapeHtml(person.state)}</a>)`
     : " + NGA roster";
 
+  const congruenceSection = renderCongruenceSection({
+    name: person.name,
+    prose: sourceProse(person),
+    birthSymbol: person.card,
+    birthDate: person.birth_date,
+    sourceUrl: person.source_url,
+    sourceTitle: person.wikipedia_title,
+    notAForecastOf: "a governorship",
+  });
+
+  const recordSection = copy.record.length
+    ? `<section data-slot="record">
+      <h2>${escapeHtml(person.name)} in the public record</h2>
+      <p>${escapeHtml(copy.record.join(" "))}</p>
+      <p class="attribution">Summarised from the lead section of the Wikipedia article
+        <a href="${escapeHtml(person.source_url)}">${escapeHtml(person.wikipedia_title)}</a>
+        (CC BY-SA 4.0). No biographical facts were written for this page beyond that article.</p>
+    </section>`
+    : "";
+
+  const evidenceSection = copy.evidence.length
+    ? `<section data-slot="evidence">
+      <h2>Also on the record</h2>
+      <ol>
+        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
+      </ol>
+    </section>`
+    : "";
+
   const body = `
     <header class="hero">
       <p class="eyebrow">Governor · birth-card coordinate</p>
@@ -93,12 +123,11 @@ export function renderGovernorPage(
       <p><a href="${escapeHtml(cardMeaningPath(meaning.slug))}">Live ${escapeHtml(meaning.label)} meaning page</a></p>
     </section>
 
-    <section data-slot="evidence">
-      <h2>From the Wikipedia summary</h2>
-      <ol>
-        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
-      </ol>
-    </section>
+    ${recordSection}
+
+    ${congruenceSection}
+
+    ${evidenceSection}
 
     <section data-slot="same-card">
       <h2>Other sitting governors with this card</h2>

@@ -1,4 +1,5 @@
 import { escapeHtml } from "../escape";
+import { renderRecordSection } from "../source-text";
 import {
   breadcrumbJsonLd,
   collectionPageJsonLd,
@@ -14,7 +15,7 @@ import { holidayPath, holidaysCheckoutHref, holidaysHubPath } from "./urls";
 
 const LAYOUT = {
   kicker: "US federal holidays · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 export function renderHolidaysHub(holidays: readonly HolidayPage[]): string {
@@ -191,6 +192,13 @@ export function renderHolidayPage(
   const liveCardHref =
     holiday.cardRef.kind === "joker" ? "/birth-card/joker" : `/birth-card/${holiday.cardRef.slug}`;
 
+  const recordSection = renderRecordSection({
+    heading: `${holiday.name} on the record`,
+    row: holiday,
+    maxSentences: 18,
+    dateSourceNote: "The statutory date comes from 5 U.S.C. \u00a7 6103(a), not from this article.",
+  });
+
   const body = `
     ${coordinateBanner()}
     <header class="hero">
@@ -230,6 +238,8 @@ export function renderHolidayPage(
       <h2>Other fixed holidays on the ${escapeHtml(holiday.cardRef.label)}</h2>
       ${sameCardBlock}
     </section>
+
+    ${recordSection}
 
     <section data-slot="faq">
       <h2>FAQ</h2>

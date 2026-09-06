@@ -21,6 +21,14 @@ export type StateAdmissionRow = {
   crs_pdf: string;
   crs_html: string;
   wikipedia_list_url: string;
+  /** State's own Wikipedia article, used for the lead-section prose. */
+  wikipedia_title?: string;
+  source_url?: string;
+  /**
+   * Wikipedia lead section (Action API `prop=extracts&exintro`), CC BY-SA 4.0.
+   * Populated by `python3 -m pipeline.wikipedia_intro`.
+   */
+  source_text_full?: string;
 };
 
 export type StatePage = StateAdmissionRow & {

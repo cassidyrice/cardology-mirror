@@ -33,6 +33,33 @@ ${body}
 `;
 }
 
+/**
+ * robots.txt for a standalone hub Pages project. A hub deployed on its own
+ * origin must only advertise its own paths — the celebrity scaffold's
+ * /birth-card, /card, /birthday and /today are served by other projects and
+ * listing them here points crawlers at paths this origin does not have.
+ */
+export function renderHubRobotsTxt(input: {
+  hub: string;
+  comment: string;
+}): string {
+  return `# ${input.comment}
+# Isolated ${input.hub} hub. Served on cardblueprints.com behind the
+# cardblueprints-path-split Worker. Payment and app surfaces stay on the
+# Next.js origin and are not served from here.
+
+User-agent: *
+Allow: /${input.hub}/
+
+Disallow: /checkout
+Disallow: /checkout/
+Disallow: /api/
+Disallow: /create-checkout
+
+Sitemap: ${SITE_URL}/sitemap-${input.hub}.xml
+`;
+}
+
 export function renderRobotsTxt(options: { allowStates?: boolean } = {}): string {
   const statesAllow = options.allowStates
     ? "Allow: /states/\n"

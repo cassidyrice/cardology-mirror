@@ -80,6 +80,7 @@ function normalizeRow(raw: unknown, line: number): SenatorRow {
     death_date: optionalNullableString(raw, "death_date", line),
     card: requiredString(raw, "card", line),
     source_text: requiredString(raw, "source_text", line),
+    source_text_full: optionalString(raw, "source_text_full") || undefined,
     source_url: requiredString(raw, "source_url", line),
     wikipedia_title: requiredString(raw, "wikipedia_title", line),
     wikipedia_list_date: requiredString(raw, "wikipedia_list_date", line),

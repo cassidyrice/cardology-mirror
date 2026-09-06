@@ -2,7 +2,7 @@ import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { renderRobotsTxt, renderUrlset } from "../sitemap";
+import { renderHubRobotsTxt, renderRobotsTxt, renderUrlset } from "../sitemap";
 import type { StatePage } from "./types";
 import { loadStatePages } from "./load";
 import { renderStatePage, renderStatesHub } from "./render";
@@ -15,6 +15,8 @@ export type StateBuildOptions = {
   outDir?: string;
   publicDir?: string;
   wipe?: boolean;
+  /** True when building the dedicated cardblueprints-states-seo Pages project. */
+  standalone?: boolean;
 };
 
 export type StateBuildResult = {
@@ -28,6 +30,7 @@ export function buildStatePages(options: StateBuildOptions = {}): StateBuildResu
   const outDir = options.outDir ?? join(ROOT, "dist");
   const publicDir = options.publicDir ?? join(ROOT, "public");
   const wipe = options.wipe ?? true;
+  const standalone = options.standalone ?? false;
 
   const states = loadStatePages(statesPath);
   if (states.length !== 50) {
@@ -55,7 +58,19 @@ export function buildStatePages(options: StateBuildOptions = {}): StateBuildResu
     renderUrlset(["/states", ...states.map((state) => statePath(state.slug))]),
     files,
   );
-  write(outDir, "robots.txt", renderRobotsTxt({ allowStates: true }), files);
+  // Standalone = its own Pages project, so robots.txt must advertise only /states.
+  // Bundled into the celebrity build, the shared robots.txt covers both.
+  write(
+    outDir,
+    "robots.txt",
+    standalone
+      ? renderHubRobotsTxt({
+          hub: "states",
+          comment: "US state admission birth-card coordinates (CRS R47747 Table 1).",
+        })
+      : renderRobotsTxt({ allowStates: true }),
+    files,
+  );
 
   return { outDir, states, files };
 }
@@ -68,6 +83,11 @@ function write(outDir: string, relativePath: string, contents: string, files: st
 }
 
 if (import.meta.main) {
-  const result = buildStatePages();
+  // CLI builds the standalone Pages project. The celebrity build calls
+  // buildStatePages() directly with its own outDir and wipe: false.
+  const result = buildStatePages({
+    outDir: join(ROOT, "dist-states"),
+    standalone: true,
+  });
   console.log(`Built ${result.files.length} files for ${result.states.length} states → ${result.outDir}`);
 }

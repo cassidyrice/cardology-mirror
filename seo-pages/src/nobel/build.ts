@@ -62,7 +62,7 @@ export function buildNobelPages(options: NobelBuildOptions = {}): NobelBuildResu
     write(
       outDir,
       `${nobelPath(person.slug).replace(/^\//, "")}/index.html`,
-      renderNobelPage(person, meaning, sameCard),
+      renderNobelPage(person, meaning, sameCard, people),
       files,
     );
   }

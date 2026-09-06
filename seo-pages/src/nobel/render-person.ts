@@ -1,15 +1,16 @@
+import { renderCongruenceSection } from "../congruence-render";
 import { escapeHtml } from "../escape";
 import { breadcrumbJsonLd, faqPageJsonLd, jsonLdGraph, personJsonLd } from "../jsonld";
 import { jokerLineageSlot, renderLayout } from "../layout";
 import { SITE_NAME } from "../types";
 import { formatDisplayDate, formatMonthDay, isJokerDate, parseIsoDate } from "../urls";
-import { nobelCopy } from "./copy";
+import { nobelCopy, sourceProse } from "./copy";
 import type { CardMeaning, NobelRow } from "./types";
 import { cardMeaningPath, nobelCheckoutHref, nobelOgSlot, nobelPath, prizePhrase } from "./urls";
 
 const LAYOUT = {
   kicker: "Nobel laureates · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 const SAME_CARD_LIMIT = 12;
@@ -18,6 +19,8 @@ export function renderNobelPage(
   person: NobelRow,
   meaning: CardMeaning,
   sameCard: readonly NobelRow[],
+  /** Everyone in the set, so the page can name who shared each prize. */
+  everyone: readonly NobelRow[] = [],
 ): string {
   const path = nobelPath(person.slug);
   const copy = nobelCopy(person, meaning);
@@ -62,6 +65,39 @@ export function renderNobelPage(
           ? `\n        <li data-same-card-more="true">${extra} more laureates share this card.</li>`
           : "");
 
+  // Who else in this set holds the same year + category. A shared prize is the
+  // most distinguishing fact many laureates have, and it is already in the data.
+  const prizeRecord = person.prizes
+    .map((prize) => {
+      const shared = everyone.filter(
+        (other) =>
+          other.slug !== person.slug &&
+          other.prizes.some((p) => p.year === prize.year && p.category === prize.category),
+      );
+      const sameCategory = everyone.filter(
+        (other) => other.slug !== person.slug && other.prizes.some((p) => p.category === prize.category),
+      ).length;
+      const sharedLine =
+        shared.length === 0
+          ? `No one else in this set holds the ${escapeHtml(prize.year)} ${escapeHtml(prize.category)} prize; ${escapeHtml(person.name)} appears here as its sole listed laureate.`
+          : `Shared with ${shared
+              .map(
+                (other) =>
+                  `<a href="${escapeHtml(nobelPath(other.slug))}">${escapeHtml(other.name)}</a> (${escapeHtml(other.card)})`,
+              )
+              .join(", ")}.`;
+      const portionLine = prize.portion
+        ? ` The award was divided; this laureate's listed portion is ${escapeHtml(prize.portion)}.`
+        : "";
+      return `<div class="prize-record">
+        <h3>${escapeHtml(prize.year)} — ${escapeHtml(prize.category_full)}</h3>
+        ${prize.motivation ? `<blockquote><p>&ldquo;${escapeHtml(prize.motivation)}&rdquo;</p><footer>Prize motivation, NobelPrize.org</footer></blockquote>` : ""}
+        <p>${sharedLine}${portionLine}</p>
+        <p>${sameCategory} other ${escapeHtml(prize.category)} laureate${sameCategory === 1 ? "" : "s"} in this set carry a birth-card coordinate.</p>
+      </div>`;
+    })
+    .join("\n      ");
+
   const prizeList = person.prizes
     .map((prize) => {
       const motivation = prize.motivation
@@ -72,6 +108,35 @@ export function renderNobelPage(
     .join("\n        ");
 
   const showJoker = person.card === "Joker" || isJokerDate(person.birth_date);
+
+  const congruenceSection = renderCongruenceSection({
+    name: person.name,
+    prose: sourceProse(person),
+    birthSymbol: person.card,
+    birthDate: person.birth_date,
+    sourceUrl: person.source_url,
+    sourceTitle: person.wikipedia_title,
+    notAForecastOf: "a Nobel Prize",
+  });
+
+  const recordSection = copy.record.length
+    ? `<section data-slot="record">
+      <h2>${escapeHtml(person.name)} in the public record</h2>
+      <p>${escapeHtml(copy.record.join(" "))}</p>
+      <p class="attribution">Summarised from the lead section of the Wikipedia article
+        <a href="${escapeHtml(person.source_url)}">${escapeHtml(person.wikipedia_title)}</a>
+        (CC BY-SA 4.0). No biographical facts were written for this page beyond that article.</p>
+    </section>`
+    : "";
+
+  const evidenceSection = copy.evidence.length
+    ? `<section data-slot="evidence">
+      <h2>Also on the record</h2>
+      <ol>
+        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
+      </ol>
+    </section>`
+    : "";
 
   const body = `
     <header class="hero">
@@ -98,6 +163,7 @@ export function renderNobelPage(
       <ul>
         ${prizeList}
       </ul>
+      ${prizeRecord}
     </section>
 
     <section data-slot="card-meaning">
@@ -106,12 +172,11 @@ export function renderNobelPage(
       <p><a href="${escapeHtml(cardMeaningPath(meaning.slug))}">Live ${escapeHtml(meaning.label)} meaning page</a></p>
     </section>
 
-    <section data-slot="evidence">
-      <h2>From the Wikipedia summary</h2>
-      <ol>
-        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
-      </ol>
-    </section>
+    ${recordSection}
+
+    ${congruenceSection}
+
+    ${evidenceSection}
 
     <section data-slot="same-card">
       <h2>Other laureates with this card</h2>

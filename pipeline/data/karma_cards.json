@@ -1,0 +1,262 @@
+{
+ "A♥": {
+  "environment": "3♥",
+  "displacement": "A♦",
+  "fixed": false
+ },
+ "2♥": {
+  "environment": "A♣",
+  "displacement": "A♣",
+  "fixed": false
+ },
+ "3♥": {
+  "environment": "Q♣",
+  "displacement": "A♥",
+  "fixed": false
+ },
+ "4♥": {
+  "environment": "10♠",
+  "displacement": "4♠",
+  "fixed": false
+ },
+ "5♥": {
+  "environment": "5♣",
+  "displacement": "4♦",
+  "fixed": false
+ },
+ "6♥": {
+  "environment": "3♦",
+  "displacement": "4♣",
+  "fixed": false
+ },
+ "7♥": {
+  "environment": "A♠",
+  "displacement": "8♥",
+  "fixed": false
+ },
+ "8♥": {
+  "environment": "7♥",
+  "displacement": "7♠",
+  "fixed": false
+ },
+ "9♥": {
+  "environment": "7♦",
+  "displacement": "7♦",
+  "fixed": false
+ },
+ "10♥": {
+  "environment": "5♠",
+  "displacement": "J♣",
+  "fixed": false
+ },
+ "J♥": {
+  "environment": null,
+  "displacement": null,
+  "fixed": true
+ },
+ "Q♥": {
+  "environment": "9♣",
+  "displacement": "10♠",
+  "fixed": false
+ },
+ "K♥": {
+  "environment": "9♠",
+  "displacement": "2♣",
+  "fixed": false
+ },
+ "A♣": {
+  "environment": "2♥",
+  "displacement": "2♥",
+  "fixed": false
+ },
+ "2♣": {
+  "environment": "K♥",
+  "displacement": "A♠",
+  "fixed": false
+ },
+ "3♣": {
+  "environment": "K♦",
+  "displacement": "5♦",
+  "fixed": false
+ },
+ "4♣": {
+  "environment": "6♥",
+  "displacement": "5♣",
+  "fixed": false
+ },
+ "5♣": {
+  "environment": "4♣",
+  "displacement": "5♥",
+  "fixed": false
+ },
+ "6♣": {
+  "environment": "2♦",
+  "displacement": "8♠",
+  "fixed": false
+ },
+ "7♣": {
+  "environment": "J♠",
+  "displacement": "8♦",
+  "fixed": false
+ },
+ "8♣": {
+  "environment": null,
+  "displacement": null,
+  "fixed": true
+ },
+ "9♣": {
+  "environment": "6♦",
+  "displacement": "Q♥",
+  "fixed": false
+ },
+ "10♣": {
+  "environment": "4♠",
+  "displacement": "J♠",
+  "fixed": false
+ },
+ "J♣": {
+  "environment": "10♥",
+  "displacement": "J♦",
+  "fixed": false
+ },
+ "Q♣": {
+  "environment": "10♦",
+  "displacement": "3♥",
+  "fixed": false
+ },
+ "K♣": {
+  "environment": "8♠",
+  "displacement": "2♠",
+  "fixed": false
+ },
+ "A♦": {
+  "environment": "A♥",
+  "displacement": "2♦",
+  "fixed": false
+ },
+ "2♦": {
+  "environment": "A♦",
+  "displacement": "6♣",
+  "fixed": false
+ },
+ "3♦": {
+  "environment": "Q♦",
+  "displacement": "6♥",
+  "fixed": false
+ },
+ "4♦": {
+  "environment": "5♥",
+  "displacement": "5♠",
+  "fixed": false
+ },
+ "5♦": {
+  "environment": "3♣",
+  "displacement": "9♦",
+  "fixed": false
+ },
+ "6♦": {
+  "environment": "3♠",
+  "displacement": "9♣",
+  "fixed": false
+ },
+ "7♦": {
+  "environment": "9♥",
+  "displacement": "9♥",
+  "fixed": false
+ },
+ "8♦": {
+  "environment": "7♣",
+  "displacement": "Q♠",
+  "fixed": false
+ },
+ "9♦": {
+  "environment": "5♦",
+  "displacement": "Q♦",
+  "fixed": false
+ },
+ "10♦": {
+  "environment": "Q♠",
+  "displacement": "Q♣",
+  "fixed": false
+ },
+ "J♦": {
+  "environment": "J♣",
+  "displacement": "3♠",
+  "fixed": false
+ },
+ "Q♦": {
+  "environment": "9♦",
+  "displacement": "3♦",
+  "fixed": false
+ },
+ "K♦": {
+  "environment": "7♠",
+  "displacement": "3♣",
+  "fixed": false
+ },
+ "A♠": {
+  "environment": "2♣",
+  "displacement": "7♥",
+  "fixed": false
+ },
+ "2♠": {
+  "environment": "K♣",
+  "displacement": "6♠",
+  "fixed": false
+ },
+ "3♠": {
+  "environment": "J♦",
+  "displacement": "6♦",
+  "fixed": false
+ },
+ "4♠": {
+  "environment": "4♥",
+  "displacement": "10♣",
+  "fixed": false
+ },
+ "5♠": {
+  "environment": "4♦",
+  "displacement": "10♥",
+  "fixed": false
+ },
+ "6♠": {
+  "environment": "2♠",
+  "displacement": "9♠",
+  "fixed": false
+ },
+ "7♠": {
+  "environment": "8♥",
+  "displacement": "K♦",
+  "fixed": false
+ },
+ "8♠": {
+  "environment": "6♣",
+  "displacement": "K♣",
+  "fixed": false
+ },
+ "9♠": {
+  "environment": "6♠",
+  "displacement": "K♥",
+  "fixed": false
+ },
+ "10♠": {
+  "environment": "Q♥",
+  "displacement": "4♥",
+  "fixed": false
+ },
+ "J♠": {
+  "environment": "10♣",
+  "displacement": "7♣",
+  "fixed": false
+ },
+ "Q♠": {
+  "environment": "8♦",
+  "displacement": "10♦",
+  "fixed": false
+ },
+ "K♠": {
+  "environment": null,
+  "displacement": null,
+  "fixed": true
+ }
+}

@@ -129,6 +129,9 @@ function normalizeRow(raw: unknown, line: number): HolidayRow {
     opm_calendars_url: opmUrl,
     date_kind: dateKind,
     observed_shift: "ignored",
+    wikipedia_title: optionalPlainString(raw, "wikipedia_title") || undefined,
+    source_url: optionalPlainString(raw, "source_url") || undefined,
+    source_text_full: optionalPlainString(raw, "source_text_full") || undefined,
   };
 }
 
@@ -164,4 +167,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isDateKind(value: string): value is HolidayDateKind {
   return (DATE_KINDS as readonly string[]).includes(value);
+}
+
+function optionalPlainString(raw: Record<string, unknown>, key: string): string {
+  const value = raw[key];
+  return typeof value === "string" ? value.trim() : "";
 }

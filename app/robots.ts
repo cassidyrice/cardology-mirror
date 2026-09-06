@@ -3,6 +3,25 @@ import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
 
+/**
+ * Isolated birth-card directory hubs, in the order they are listed in the
+ * site footer. Keep in sync with `HUBS` in
+ * cardblueprints-workers/path-split/worker.js — a hub listed here but not
+ * routed there advertises a sitemap that 404s.
+ */
+const HUB_SITEMAPS = [
+  "senators",
+  "governors",
+  "cabinet",
+  "scotus",
+  "signers",
+  "nobel",
+  "mlb",
+  "parks",
+  "states",
+  "holidays",
+] as const;
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -24,10 +43,17 @@ export default function robots(): MetadataRoute.Robots {
     //   sitemap-compatibility.xml (1,431 /compatibility/ pages) are served by
     //   the cardology-unlock Worker in front of Pages — they are NOT in this
     //   repo but are live in production (curl-verified 2026-07-12).
+    // - The ten sitemap-{hub}.xml files below belong to the isolated birth-card
+    //   directory hubs. Each is built in seo-pages/ and served from its own
+    //   Cloudflare Pages project through the cardblueprints-path-split Worker,
+    //   which routes both /{hub}* and the exact path /sitemap-{hub}.xml.
+    //   They are NOT in this app's sitemap.xml. Add a line here only after
+    //   `curl -sI https://cardblueprints.com/sitemap-{hub}.xml` returns 200.
     sitemap: [
       `${SITE_URL}/sitemap.xml`,
       `${SITE_URL}/sitemap-cardology.xml`,
       `${SITE_URL}/sitemap-compatibility.xml`,
+      ...HUB_SITEMAPS.map((hub) => `${SITE_URL}/sitemap-${hub}.xml`),
     ],
   };
 }

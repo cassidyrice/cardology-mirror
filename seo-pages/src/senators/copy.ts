@@ -1,4 +1,5 @@
 import { formatMonthDay, parseIsoDate } from "../urls";
+import { longestSourceProse } from "../source-text";
 import type { CardMeaning, SenatorRow } from "./types";
 import { officePhrase } from "./urls";
 
@@ -10,9 +11,16 @@ export type SenatorFaq = {
 export type SenatorCopy = {
   hook: string;
   card_meaning: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  record: string[];
   evidence: string[];
   faqs: SenatorFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: SenatorRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 
@@ -26,11 +34,16 @@ export function splitSourceSentences(sourceText: string): string[] {
 export function senatorCopy(person: SenatorRow, meaning: CardMeaning): SenatorCopy {
   const { month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
-  const sentences = splitSourceSentences(person.source_text);
-  const first = sentences[0] ?? person.source_text.trim();
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  const first = sentences[0] ?? prose.trim();
   const office = officePhrase(person.state, person.senate_class);
 
   const hook = `${first} The birth-card coordinate for ${dateLabel} is the ${meaning.label} — a calendar position, not a forecast of a Senate seat.`;
+
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const record = sentences.slice(1, 9);
 
   const cardMeaning =
     `${person.name}'s birthday maps to the ${meaning.label} (${meaning.title}). ` +
@@ -38,7 +51,7 @@ export function senatorCopy(person: SenatorRow, meaning: CardMeaning): SenatorCo
     `It is not a prediction about the Senate and not a verdict on ${person.name}. ` +
     `The card's own language, quoted as system copy rather than biography: ${meaning.sweet_spot || meaning.core_identity}`;
 
-  const evidence = evidenceFromSummary(person, sentences);
+  const evidence = evidenceFromSummary(person, sentences.slice(1 + record.length));
 
   const faqs: SenatorFaq[] = [
     {
@@ -55,27 +68,16 @@ export function senatorCopy(person: SenatorRow, meaning: CardMeaning): SenatorCo
     },
   ];
 
-  return { hook, card_meaning: cardMeaning, evidence, faqs };
+  return { hook, card_meaning: cardMeaning, record, evidence, faqs };
 }
 
-function evidenceFromSummary(person: SenatorRow, sentences: string[]): string[] {
-  const fromSummary = sentences.slice(0, 3);
-  if (fromSummary.length >= 3) {
-    return fromSummary;
-  }
-  const evidence = [...fromSummary];
-  if (evidence.length === 0) {
-    evidence.push(person.source_text.trim());
-  }
-  if (evidence.length < 2) {
-    evidence.push(
-      `Wikipedia REST summary (${person.wikipedia_title}) is the only biographical prose used here.`,
-    );
-  }
-  if (evidence.length < 3) {
-    evidence.push("No extra biographical facts were written for this page beyond that summary.");
-  }
-  return evidence;
+/**
+ * Remaining lead-section sentences, if the article had more than the record
+ * section used. Returns an empty list rather than padding with boilerplate —
+ * a short article should produce a shorter page, not a repeated one.
+ */
+function evidenceFromSummary(_person: SenatorRow, remaining: string[]): string[] {
+  return remaining.slice(0, 4);
 }
 
 function dateSourceAnswer(person: SenatorRow, office: string): string {

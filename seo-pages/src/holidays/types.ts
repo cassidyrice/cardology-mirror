@@ -14,6 +14,11 @@ export type HolidayRow = {
   opm_calendars_url: string;
   date_kind: HolidayDateKind;
   observed_shift: "ignored";
+  /** Wikipedia article for this entity, used for the record section. */
+  wikipedia_title?: string;
+  source_url?: string;
+  /** Wikipedia lead section (CC BY-SA 4.0), via pipeline.wikipedia_intro. */
+  source_text_full?: string;
 };
 
 export type HolidayPage = HolidayRow & {

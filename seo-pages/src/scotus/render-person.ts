@@ -1,15 +1,16 @@
+import { renderCongruenceSection } from "../congruence-render";
 import { escapeHtml } from "../escape";
 import { breadcrumbJsonLd, faqPageJsonLd, jsonLdGraph, personJsonLd } from "../jsonld";
 import { jokerLineageSlot, renderLayout } from "../layout";
 import { SITE_NAME } from "../types";
 import { formatDisplayDate, formatMonthDay, isJokerDate, parseIsoDate } from "../urls";
-import { scotusCopy } from "./copy";
+import { scotusCopy, sourceProse } from "./copy";
 import type { CardMeaning, ScotusRow } from "./types";
 import { cardMeaningPath, officePhrase, scotusCheckoutHref, scotusOgSlot, scotusPath } from "./urls";
 
 const LAYOUT = {
   kicker: "Current SCOTUS justices · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 export function renderScotusPage(
@@ -57,6 +58,35 @@ export function renderScotusPage(
 
   const showJoker = person.card === "Joker" || isJokerDate(person.birth_date);
 
+  const congruenceSection = renderCongruenceSection({
+    name: person.name,
+    prose: sourceProse(person),
+    birthSymbol: person.card,
+    birthDate: person.birth_date,
+    sourceUrl: person.source_url,
+    sourceTitle: person.wikipedia_title,
+    notAForecastOf: "the Court",
+  });
+
+  const recordSection = copy.record.length
+    ? `<section data-slot="record">
+      <h2>${escapeHtml(person.name)} in the public record</h2>
+      <p>${escapeHtml(copy.record.join(" "))}</p>
+      <p class="attribution">Summarised from the lead section of the Wikipedia article
+        <a href="${escapeHtml(person.source_url)}">${escapeHtml(person.wikipedia_title)}</a>
+        (CC BY-SA 4.0). No biographical facts were written for this page beyond that article.</p>
+    </section>`
+    : "";
+
+  const evidenceSection = copy.evidence.length
+    ? `<section data-slot="evidence">
+      <h2>Also on the record</h2>
+      <ol>
+        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
+      </ol>
+    </section>`
+    : "";
+
   const body = `
     <header class="hero">
       <p class="eyebrow">Sitting justice · birth-card coordinate</p>
@@ -83,12 +113,11 @@ export function renderScotusPage(
       <p><a href="${escapeHtml(cardMeaningPath(meaning.slug))}">Live ${escapeHtml(meaning.label)} meaning page</a></p>
     </section>
 
-    <section data-slot="evidence">
-      <h2>From the Wikipedia summary</h2>
-      <ol>
-        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
-      </ol>
-    </section>
+    ${recordSection}
+
+    ${congruenceSection}
+
+    ${evidenceSection}
 
     <section data-slot="same-card">
       <h2>Other sitting justices with this card</h2>

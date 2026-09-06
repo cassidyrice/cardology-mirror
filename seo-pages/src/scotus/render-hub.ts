@@ -8,7 +8,7 @@ import { officePhrase, scotusPath } from "./urls";
 
 const LAYOUT = {
   kicker: "Current SCOTUS justices · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 export function renderScotusHub(

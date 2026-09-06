@@ -79,7 +79,9 @@
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
     "ship:daily-blog": "bash scripts/ship_daily_blog.sh",
     "ship:daily-blog:am": "POST_SLOT=am bash scripts/ship_daily_blog.sh",
-    "ship:daily-blog:pm": "POST_SLOT=pm bash scripts/ship_daily_blog.sh"
+    "ship:daily-blog:pm": "POST_SLOT=pm bash scripts/ship_daily_blog.sh",
+    "build:seo-states": "bun seo-pages/src/states/build.ts",
+    "test:seo-states": "bun test seo-pages/states.test.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.14.0",

@@ -99,6 +99,8 @@ function normalizeRow(raw: unknown, line: number): ParkRow {
     nps_anniversaries_retrieved: requiredString(raw, "nps_anniversaries_retrieved", line),
     prior_designation: optionalPrior(raw, line),
     date_note: optionalNullableString(raw, "date_note", line),
+    source_url: optionalPlainString(raw, "source_url") || undefined,
+    source_text_full: optionalPlainString(raw, "source_text_full") || undefined,
   };
 }
 
@@ -193,4 +195,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isPriorKind(value: string): value is PriorKind {
   return (PRIOR_KINDS as readonly string[]).includes(value);
+}
+
+function optionalPlainString(raw: Record<string, unknown>, key: string): string {
+  const value = raw[key];
+  return typeof value === "string" ? value.trim() : "";
 }

@@ -128,8 +128,8 @@ export function renderStatesHub(states: readonly StatePage[]): string {
     ogImageAlt: "US states admission birth-card coordinates",
     jsonLd,
     crumbs,
-    kicker: "State admission coordinates · isolated SEO scaffold",
-    footer: `${SITE_NAME} · isolated states scaffold · not a live production listing`,
+    kicker: "State admission coordinates · CRS R47747",
+    footer: `${SITE_NAME} · coordinates, not fortune-telling · admission dates from CRS R47747 Table 1`,
     body,
   });
 }
@@ -164,6 +164,65 @@ export function renderStatePage(
   const sameCard = [...bySlug.values()].filter(
     (other) => other.slug !== state.slug && other.card.slug === state.card.slug,
   );
+
+  const all = [...bySlug.values()].sort((a, b) => a.admission_order - b.admission_order);
+  const previous = all.find((s) => s.admission_order === state.admission_order - 1);
+  const next = all.find((s) => s.admission_order === state.admission_order + 1);
+  const year = Number(state.admission_date.slice(0, 4));
+  const sameYear = all.filter(
+    (s) => s.slug !== state.slug && Number(s.admission_date.slice(0, 4)) === year,
+  );
+  const solarValue = 55 - (2 * state.month + state.day);
+
+  const gapNote = (() => {
+    if (!previous) return "";
+    const prevYear = Number(previous.admission_date.slice(0, 4));
+    const gap = year - prevYear;
+    if (gap <= 0) {
+      return `${previous.name} entered the same year, at number ${previous.admission_order}.`;
+    }
+    return `${gap} ${gap === 1 ? "year" : "years"} after ${previous.name} (number ${previous.admission_order}, ${prevYear}).`;
+  })();
+
+  const sameYearNote = sameYear.length
+    ? `${sameYear.map((s) => s.name).join(" and ")} also ${sameYear.length === 1 ? "enters" : "enter"} the table in ${year}, so ${year} carries ${sameYear.length + 1} of the 50 dates.`
+    : `${year} carries only this one date in Table 1.`;
+
+  const admissionRecord = `<section data-slot="admission-record">
+      <h2>${escapeHtml(state.name)}'s place in the admission record</h2>
+      <p>
+        CRS R47747 Table 1 lists ${escapeHtml(state.name)} at number
+        ${state.admission_order} of 50. ${escapeHtml(gapNote)}
+        ${next ? escapeHtml(`${next.name} follows at number ${next.admission_order}, in ${next.admission_date.slice(0, 4)}.`) : "No state follows it in the table."}
+        ${escapeHtml(sameYearNote)}
+      </p>
+      <dl class="facts">
+        <div><dt>Order in Table 1</dt><dd>${state.admission_order} of 50</dd></div>
+        <div><dt>Date kind</dt><dd>${escapeHtml(kind)} — ${escapeHtml(
+          state.date_kind === "ratification"
+            ? "an original state, dated by its ratification of the Constitution"
+            : "admission became effective on this date",
+        )}</dd></div>
+        <div><dt>Date used</dt><dd>${escapeHtml(dateLabel)}</dd></div>
+        <div><dt>Month and day used</dt><dd>${escapeHtml(monthDay)} (the year ${year} is unused)</dd></div>
+        <div><dt>Solar value</dt><dd>55 − (2 × ${state.month} + ${state.day}) = ${solarValue}</dd></div>
+        <div><dt>Coordinate</dt><dd>${escapeHtml(state.card.label)} — ${escapeHtml(state.card.archetype)}</dd></div>
+        <div><dt>States sharing ${escapeHtml(monthDay)}</dt><dd>${sameDay.length === 0 ? "none" : sameDay.map((s) => s.name).join(", ")}</dd></div>
+        <div><dt>Wikidata inception (P571)</dt><dd>${escapeHtml(state.wikidata_p571_iso)}${state.wikidata_p571_extra.length ? ` (plus ${escapeHtml(state.wikidata_p571_extra.join(", "))}, unused)` : ""}</dd></div>
+      </dl>
+    </section>`;
+
+  const leadProse = (state.source_text_full ?? "").trim();
+  const leadSection = leadProse
+    ? `<section data-slot="state-record">
+      <h2>${escapeHtml(state.name)} on the record</h2>
+      <p>${escapeHtml(trimToSentences(leadProse, 14))}</p>
+      <p class="attribution">Summarised from the lead section of the Wikipedia article
+        <a href="${escapeHtml(state.source_url ?? state.wikipedia_list_url)}">${escapeHtml(state.wikipedia_title ?? state.name)}</a>
+        (CC BY-SA 4.0). Nothing here was written for this page beyond that article; the
+        admission date itself comes from CRS ${escapeHtml(state.crs_report)}, not Wikipedia.</p>
+    </section>`
+    : "";
 
   const original13 = state.original_thirteen
     ? `<section data-slot="original-13">
@@ -246,6 +305,10 @@ export function renderStatePage(
       </p>
     </section>
 
+    ${admissionRecord}
+
+    ${leadSection}
+
     ${original13}
     ${disputed}
     ${extraP571}
@@ -300,10 +363,19 @@ export function renderStatePage(
     ogImageAlt: `${state.name} admission birth-card coordinate`,
     jsonLd,
     crumbs,
-    kicker: "State admission coordinates · isolated SEO scaffold",
-    footer: `${SITE_NAME} · isolated states scaffold · CRS + Wikipedia dates`,
+    kicker: "State admission coordinates · CRS R47747",
+    footer: `${SITE_NAME} · coordinates, not fortune-telling · admission dates from CRS R47747 Table 1`,
     body,
   });
+}
+
+/** First `max` sentences of a lead section, so a very long article does not swamp the page. */
+function trimToSentences(text: string, max: number): string {
+  const parts = text
+    .split(/(?<=[.!?])\s+(?=[A-Z0-9“"])/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return parts.slice(0, max).join(" ");
 }
 
 function coordinateBanner(): string {

@@ -9,7 +9,7 @@ import { signerCheckoutHref, signerPath } from "./urls";
 
 const LAYOUT = {
   kicker: "Declaration signers · birth-card coordinates",
-  footer: `${SITE_NAME} · coordinates, not fortune-telling · isolated SEO scaffold · not deployed`,
+  footer: `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`,
 };
 
 export function renderSignersHub(

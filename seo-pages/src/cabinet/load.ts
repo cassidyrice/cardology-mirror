@@ -78,6 +78,7 @@ function normalizeRow(raw: unknown, line: number): CabinetRow {
     death_date: optionalNullableString(raw, "death_date", line),
     card: requiredString(raw, "card", line),
     source_text: requiredString(raw, "source_text", line),
+    source_text_full: optionalPlainString(raw, "source_text_full") || undefined,
     source_url: requiredString(raw, "source_url", line),
     wikipedia_title: requiredString(raw, "wikipedia_title", line),
     wikipedia_infobox_date: requiredString(raw, "wikipedia_infobox_date", line),
@@ -138,4 +139,9 @@ function optionalNullableString(
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function optionalPlainString(raw: Record<string, unknown>, key: string): string {
+  const value = raw[key];
+  return typeof value === "string" ? value.trim() : "";
 }

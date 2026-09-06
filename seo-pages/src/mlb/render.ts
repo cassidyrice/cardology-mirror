@@ -1,4 +1,5 @@
 import { escapeHtml } from "../escape";
+import { renderRecordSection } from "../source-text";
 import {
   breadcrumbJsonLd,
   collectionPageJsonLd,
@@ -15,7 +16,7 @@ import { formatDisplayDate, formatMonthDay, parseIsoDate } from "../urls";
 const LAYOUT = {
   kicker: "MLB first-game birth cards · isolated",
   footerNote:
-    "Card Blueprints · isolated MLB first-game scaffold · not deployed · cards are coordinates, not forecasts",
+    "Card Blueprints · coordinates, not fortune-telling · franchise first-game dates verified against Baseball-Reference and Retrosheet",
 } as const;
 
 const FORMULA =
@@ -213,6 +214,12 @@ export function renderMlbPage(club: MlbClub, bySlug: Map<string, MlbClub>): stri
   const clusterNote = clusterSentence(club, bySlug);
   const wikiNote = wikipediaSentence(club);
 
+  const recordSection = renderRecordSection({
+    heading: `${club.name} on the record`,
+    row: club,
+    dateSourceNote: "The franchise first-game date comes from Baseball-Reference and Retrosheet, not from this article.",
+  });
+
   const body = `
     <header class="hero">
       <p class="eyebrow">${escapeHtml(club.league)} ${escapeHtml(club.division)} · franchise first game</p>
@@ -295,6 +302,8 @@ export function renderMlbPage(club: MlbClub, bySlug: Map<string, MlbClub>): stri
           : `<p>No other current club shares this birth-card coordinate.</p>`
       }
     </section>
+
+    ${recordSection}
 
     <section data-slot="faq">
       <h2>FAQ</h2>

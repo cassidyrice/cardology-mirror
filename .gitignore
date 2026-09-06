@@ -24,6 +24,9 @@ seo-pages/dist-pulitzer
 seo-pages/dist-house-chairs
 seo-pages/dist-kennedy-center-honors
 seo-pages/dist-time-poty
+seo-pages/dist-states
+seo-pages/audit-*.json
+.cache/
 .playwright-mcp/
 
 node_modules

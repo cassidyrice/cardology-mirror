@@ -46,4 +46,9 @@ export type MlbClub = {
   same_card_slugs: readonly string[];
   same_first_game_day_slugs: readonly string[];
   sources: readonly MlbSource[];
+  /** Wikipedia article for this entity, used for the record section. */
+  wikipedia_title?: string;
+  source_url?: string;
+  /** Wikipedia lead section (CC BY-SA 4.0), via pipeline.wikipedia_intro. */
+  source_text_full?: string;
 };

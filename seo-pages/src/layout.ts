@@ -1,7 +1,38 @@
 import { escapeHtml, serializeJsonLd } from "./escape";
-import { type JsonLdRecord } from "./jsonld";
+import { articleJsonLd, type JsonLdRecord } from "./jsonld";
 import { SITE_NAME, SITE_URL, type Breadcrumb } from "./types";
 import { abs } from "./urls";
+
+/** Build date, used when a hub does not supply its own provenance dates. */
+export const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
+const METHODOLOGY_URL = abs("/methodology");
+const EDITORIAL_POLICY_URL = abs("/editorial-policy");
+
+function longDate(iso: string): string {
+  const [y, m, d] = iso.slice(0, 10).split("-").map(Number);
+  if (!y || !m || !d) return iso;
+  const month = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ][m - 1];
+  return `${month} ${d}, ${y}`;
+}
+
+/**
+ * Adds the E-E-A-T Article node to a page's JSON-LD graph. Every hub page gets
+ * author, publisher, datePublished and dateModified from one place.
+ */
+function withArticleNode(
+  jsonLd: JsonLdRecord,
+  article: JsonLdRecord,
+): JsonLdRecord {
+  const graph = jsonLd["@graph"];
+  if (Array.isArray(graph)) {
+    return { ...jsonLd, "@graph": [article, ...graph] };
+  }
+  return jsonLd;
+}
 
 export function renderLayout(input: {
   title: string;
@@ -15,13 +46,32 @@ export function renderLayout(input: {
   kicker?: string;
   footer?: string;
   footerNote?: string;
+  /** Date the page's underlying dates were verified against primary sources. */
+  dateVerified?: string;
+  /** Date this page was last rebuilt. */
+  dateModified?: string;
+  datePublished?: string;
+  /** Primary source URLs, emitted as schema.org citation. */
+  citations?: readonly string[];
 }): string {
   const canonical = abs(input.canonicalPath);
-  const kicker = input.kicker ?? "Celebrity birth-card pages · scaffold";
+  const kicker = input.kicker ?? "Birth-card coordinates";
   const footerNote =
     input.footerNote ??
     input.footer ??
-    `${SITE_NAME} · isolated SEO scaffold · not a live biography corpus`;
+    `${SITE_NAME} · coordinates, not fortune-telling · dates verified against primary sources`;
+  const dateVerified = input.dateVerified ?? BUILD_DATE;
+  const dateModified = input.dateModified ?? BUILD_DATE;
+  const datePublished = input.datePublished ?? dateModified;
+  const article = articleJsonLd({
+    headline: input.title,
+    urlPath: input.canonicalPath,
+    description: input.description,
+    datePublished,
+    dateModified,
+    citations: input.citations,
+  });
+  const provenance = `<p class="page-provenance">Dates verified <time datetime="${escapeHtml(dateVerified)}">${escapeHtml(longDate(dateVerified))}</time> against the primary sources cited on this page · page updated <time datetime="${escapeHtml(dateModified)}">${escapeHtml(longDate(dateModified))}</time> · written and checked by <a href="${escapeHtml(abs("/about"))}" rel="author">Cassidy Rice</a> · <a href="${escapeHtml(METHODOLOGY_URL)}">Methodology</a> · <a href="${escapeHtml(EDITORIAL_POLICY_URL)}">Editorial policy</a></p>`;
   const crumbNav = input.crumbs
     .map((crumb, index) => {
       const current = index === input.crumbs.length - 1;
@@ -55,7 +105,7 @@ export function renderLayout(input: {
   <meta name="twitter:description" content="${escapeHtml(input.description)}" />
   <meta name="twitter:image" content="${escapeHtml(abs(input.ogImage))}" />
   <link rel="stylesheet" href="/styles.css" />
-  <script type="application/ld+json">${serializeJsonLd(input.jsonLd)}</script>
+  <script type="application/ld+json">${serializeJsonLd(withArticleNode(input.jsonLd, article))}</script>
 </head>
 <body>
   <a class="skip" href="#main-content">Skip to content</a>
@@ -68,6 +118,7 @@ export function renderLayout(input: {
     ${input.body}
   </main>
   <footer class="site-footer">
+    ${provenance}
     <p>${escapeHtml(footerNote)}</p>
   </footer>
 </body>

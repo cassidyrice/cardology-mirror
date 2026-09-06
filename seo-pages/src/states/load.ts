@@ -120,7 +120,15 @@ function normalizeRow(raw: unknown, line: number): StateAdmissionRow {
     crs_pdf: requiredString(raw, "crs_pdf", line),
     crs_html: requiredString(raw, "crs_html", line),
     wikipedia_list_url: requiredString(raw, "wikipedia_list_url", line),
+    wikipedia_title: optionalPlainString(raw, "wikipedia_title") || undefined,
+    source_url: optionalPlainString(raw, "source_url") || undefined,
+    source_text_full: optionalPlainString(raw, "source_text_full") || undefined,
   };
+}
+
+function optionalPlainString(raw: Record<string, unknown>, key: string): string {
+  const value = raw[key];
+  return typeof value === "string" ? value.trim() : "";
 }
 
 function requiredOrder(raw: Record<string, unknown>, line: number): number {

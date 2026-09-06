@@ -84,6 +84,9 @@ function normalizeClub(raw: unknown, line: number): MlbClub {
     bbref_first_season_url: requiredString(raw, "bbref_first_season_url", line),
     bbref_franchise_url: requiredString(raw, "bbref_franchise_url", line),
     retrosheet_url: requiredString(raw, "retrosheet_url", line),
+    wikipedia_title: optionalPlainString(raw, "wikipedia_title") || undefined,
+    source_url: optionalPlainString(raw, "source_url") || undefined,
+    source_text_full: optionalPlainString(raw, "source_text_full") || undefined,
     notes: optionalStringArray(raw, "notes", line),
     wikipedia_first_season_label: requiredString(raw, "wikipedia_first_season_label", line),
     wikipedia_years: requiredNumberArray(raw, "wikipedia_years", line),
@@ -208,4 +211,9 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function isSuit(value: string): value is Suit {
   return (SUITS as readonly string[]).includes(value);
+}
+
+function optionalPlainString(raw: Record<string, unknown>, key: string): string {
+  const value = raw[key];
+  return typeof value === "string" ? value.trim() : "";
 }

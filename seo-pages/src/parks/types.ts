@@ -38,6 +38,11 @@ export type ParkRow = {
   nps_anniversaries_retrieved: string;
   prior_designation: PriorDesignation | null;
   date_note: string | null;
+  /** Wikipedia article for this entity, used for the record section. */
+  wikipedia_title?: string;
+  source_url?: string;
+  /** Wikipedia lead section (CC BY-SA 4.0), via pipeline.wikipedia_intro. */
+  source_text_full?: string;
 };
 
 export type ParkPage = ParkRow & {

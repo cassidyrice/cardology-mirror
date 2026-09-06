@@ -3,6 +3,51 @@ import { abs } from "./urls";
 
 export type JsonLdRecord = Record<string, unknown>;
 
+/**
+ * E-E-A-T identity. The author is the real person named on /about — do not add
+ * credentials, titles, or a byline for anyone who is not accountable for the page.
+ */
+export const PAGE_AUTHOR = {
+  "@type": "Person",
+  name: "Cassidy Rice",
+  url: abs("/about"),
+} as const;
+
+export const PAGE_PUBLISHER = {
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+} as const;
+
+/**
+ * Article node carrying authorship, publisher and dates for a hub page.
+ * `citation` should list the primary sources the page's dates came from.
+ */
+export function articleJsonLd(input: {
+  headline: string;
+  urlPath: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  citations?: readonly string[];
+}): JsonLdRecord {
+  return {
+    "@type": "Article",
+    headline: input.headline,
+    mainEntityOfPage: { "@type": "WebPage", "@id": abs(input.urlPath) },
+    url: abs(input.urlPath),
+    description: input.description,
+    author: PAGE_AUTHOR,
+    publisher: PAGE_PUBLISHER,
+    datePublished: input.datePublished,
+    dateModified: input.dateModified,
+    isAccessibleForFree: true,
+    ...(input.citations && input.citations.length
+      ? { citation: input.citations.map((url) => ({ "@type": "CreativeWork", url })) }
+      : {}),
+  };
+}
+
 export function personJsonLd(input: {
   name: string;
   urlPath: string;

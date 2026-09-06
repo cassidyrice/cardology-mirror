@@ -1,4 +1,5 @@
 import { escapeHtml } from "../escape";
+import { renderRecordSection } from "../source-text";
 import {
   breadcrumbJsonLd,
   collectionPageJsonLd,
@@ -130,8 +131,8 @@ export function renderParksHub(parks: readonly ParkPage[]): string {
     ogImageAlt: "US National Park birth-card coordinates",
     jsonLd,
     crumbs,
-    kicker: "National Park coordinates · isolated SEO scaffold",
-    footer: `${SITE_NAME} · isolated parks scaffold · not a live production listing`,
+    kicker: "National Park coordinates · NPS + Wikipedia dates",
+    footer: `${SITE_NAME} · coordinates, not fortune-telling · park establishment dates verified against Wikipedia and NPS`,
     body,
   });
 }
@@ -213,6 +214,12 @@ export function renderParkPage(park: ParkPage, bySlug: Map<string, ParkPage>): s
     </section>`
     : "";
 
+  const recordSection = renderRecordSection({
+    heading: `${park.name} on the record`,
+    row: park,
+    dateSourceNote: "National Park establishment dates come from the Wikipedia list column and NPS Park Anniversaries, not from this article.",
+  });
+
   const body = `
     ${coordinateBanner()}
     <header class="hero">
@@ -256,6 +263,8 @@ export function renderParkPage(park: ParkPage, bySlug: Map<string, ParkPage>): s
       ${sameCardBlock}
     </section>
 
+    ${recordSection}
+
     <section data-slot="faq">
       <h2>FAQ</h2>
       <dl>
@@ -296,8 +305,8 @@ export function renderParkPage(park: ParkPage, bySlug: Map<string, ParkPage>): s
     ogImageAlt: `${park.name} National Park birth-card coordinate`,
     jsonLd,
     crumbs,
-    kicker: "National Park coordinates · isolated SEO scaffold",
-    footer: `${SITE_NAME} · isolated parks scaffold · Wikipedia + NPS dates`,
+    kicker: "National Park coordinates · NPS + Wikipedia dates",
+    footer: `${SITE_NAME} · coordinates, not fortune-telling · park establishment dates verified against Wikipedia and NPS`,
     body,
   });
 }
