@@ -174,6 +174,22 @@ python3 -m pytest pipeline/tests/test_governors.py
 Output: [`data/governors/people.jsonl`](data/governors/people.jsonl). Pages:
 `bun run build:seo-governors`. Do not deploy.
 
+## Current US senators (isolated `/senators`)
+
+Sitting senators of the 50 states (100 seats). congress-legislators
+(Bioguide / congress.gov compiled) is the sitting source. Wikipedia
+current-senators list and Wikidata `P569` precision 11 must match that
+day. Year-only dates and Bioguide↔Wikipedia↔Wikidata conflicts are
+dropped. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.senators
+python3 -m pytest pipeline/tests/test_senators.py
+```
+
+Output: [`data/senators/people.jsonl`](data/senators/people.jsonl). Pages:
+`bun run build:seo-senators`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the
