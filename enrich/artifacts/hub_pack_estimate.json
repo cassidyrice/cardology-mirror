@@ -1,0 +1,28 @@
+{
+  "model": "gemini-3.1-pro-preview",
+  "requests": 1079,
+  "input_chars": 3082838,
+  "input_tokens_est": 770710,
+  "output_tokens_est": 539500,
+  "thinking_low_tokens_est": 863200,
+  "thinking_output_tokens_est": 2697500,
+  "usd_batch_no_thinking": 4.0077,
+  "usd_batch_thinking_low": 9.1869,
+  "usd_batch_with_thinking_upper": 16.9557,
+  "target_usd_band": 20.0,
+  "within_target": true,
+  "notes": "Same #70 pricing method (near-verbatim, meta\u2264145, temp 0, thinking LOW; HIGH upper uses 2500 thought tokens/row). This job band is $20 (HIGH-upper held at ~$17.02 for 1079). Does not include the 1040 already in people_enriched or the 18 on job 5794641920097517568.",
+  "rates_usd_per_million": {
+    "input": 1.0,
+    "output": 6.0,
+    "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, \u2264200K tokens/request"
+  },
+  "label": "hub people packs \u2014 #70 contract (near-verbatim, meta\u2264145, temp 0, thinking LOW)",
+  "by_pack_new_ready": {
+    "presidents": 36,
+    "governors": 45,
+    "scotus": 9,
+    "nobel": 947,
+    "signers": 42
+  }
+}

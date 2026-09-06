@@ -42,7 +42,12 @@ def _usd(tokens: int, rate: float) -> float:
     return (tokens / 1_000_000) * rate
 
 
-def estimate_batch(path: Path, *, model: str = DEFAULT_MODEL) -> dict[str, Any]:
+def estimate_batch(
+    path: Path,
+    *,
+    model: str = DEFAULT_MODEL,
+    target_usd_band: float = TARGET_USD_BAND,
+) -> dict[str, Any]:
     rows = load_jsonl(path)
     input_chars = sum(len(request_text(row)) for row in rows)
     input_tokens = int(round(input_chars / CHARS_PER_TOKEN))
@@ -65,8 +70,8 @@ def estimate_batch(path: Path, *, model: str = DEFAULT_MODEL) -> dict[str, Any]:
         "usd_batch_no_thinking": round(no_thinking, 4),
         "usd_batch_thinking_low": round(low_cost, 4),
         "usd_batch_with_thinking_upper": round(high_cost, 4),
-        "target_usd_band": TARGET_USD_BAND,
-        "within_target": high_cost <= TARGET_USD_BAND,
+        "target_usd_band": target_usd_band,
+        "within_target": high_cost <= target_usd_band,
         "notes": (
             "Thinking cannot be turned off on gemini-3.1-pro-preview. "
             "Retry JSONL sets thinkingLevel=LOW. "
@@ -90,11 +95,14 @@ def main(argv: list[str] | None = None) -> int:
         default=Path(__file__).resolve().parent / "artifacts" / "vertex_retry_batch.jsonl",
     )
     parser.add_argument("--model", default=DEFAULT_MODEL)
+    parser.add_argument("--target-usd", type=float, default=TARGET_USD_BAND)
     parser.add_argument("--out", type=Path, default=None)
     args = parser.parse_args(argv)
     if not args.input.is_file():
         raise SystemExit(f"batch JSONL not found: {args.input}")
-    result = estimate_batch(args.input, model=args.model)
+    result = estimate_batch(
+        args.input, model=args.model, target_usd_band=args.target_usd
+    )
     text = json.dumps(result, indent=2)
     print(text)
     if args.out:

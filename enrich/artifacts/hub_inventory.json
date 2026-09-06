@@ -1,0 +1,67 @@
+{
+  "people_enriched": 1040,
+  "already_submitted_job": "5794641920097517568",
+  "already_submitted_qids": 18,
+  "submit_qids": 1079,
+  "union_new": 1079,
+  "by_pack_total": {
+    "presidents": 45,
+    "governors": 49,
+    "scotus": 9,
+    "nobel": 954,
+    "signers": 44
+  },
+  "by_pack_ready": {
+    "presidents": 45,
+    "governors": 49,
+    "scotus": 9,
+    "nobel": 954,
+    "signers": 44
+  },
+  "by_pack_new": {
+    "presidents": 36,
+    "governors": 45,
+    "scotus": 9,
+    "nobel": 947,
+    "signers": 42
+  },
+  "excluded_from_submit": {
+    "already_enriched": 1040,
+    "already_submitted_remainder_18": 18,
+    "date_only_hubs": {
+      "holidays": 5,
+      "parks": 63,
+      "mlb": 30,
+      "nfl_franchises": 32,
+      "states": 50
+    },
+    "cabinet_new_held": 10,
+    "cabinet_reason": "Cabinet is a people pack with source_text, but it was not in the approved 1079 HIGH-upper ~$17.02 inventory. Not submitted this job."
+  },
+  "included_packs": [
+    "presidents",
+    "governors",
+    "scotus",
+    "nobel",
+    "signers"
+  ],
+  "skipped_not_day": 0,
+  "skipped_no_source_or_card": 0,
+  "people_out": "enrich/artifacts/hub_people.jsonl",
+  "batch_out": "enrich/artifacts/vertex_hub_batch.jsonl",
+  "within_target": true,
+  "usd_batch_with_thinking_upper": 16.9557,
+  "target_usd_band": 20.0,
+  "cabinet_new_not_submitted": [
+    "Q7435987",
+    "Q22095395",
+    "Q4974474",
+    "Q16194176",
+    "Q73030183",
+    "Q7437419",
+    "Q1729888",
+    "Q131225840",
+    "Q233905",
+    "Q3162841"
+  ]
+}

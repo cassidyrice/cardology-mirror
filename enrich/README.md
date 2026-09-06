@@ -54,7 +54,27 @@ python3 -m enrich.parse_results \
   --retry-scope enrich/artifacts/retry.jsonl
 ```
 
-See `enrich/RETRY_PLAN.md`. Do not submit another Vertex job unless asked.
+See `enrich/RETRY_PLAN.md`. Celebrity remainder 18 was submitted on job
+`5794641920097517568` (#79). Do not re-run those 18 or the 1040 already in
+`people_enriched.jsonl`.
+
+## Hub people packs (this job)
+
+Presidents / governors / SCOTUS / Nobel / signers with day-precision
+`birth_date` + `source_text`. Date-only hubs (holidays / parks / MLB / NFL
+franchises / states) are skipped. Cabinet is inventoried but not included
+(not in the approved 1079 / ~$17.02 HIGH-upper).
+
+```bash
+python3 -m enrich.make_hub_batch
+python3 -m enrich.estimate \
+  --input enrich/artifacts/vertex_hub_batch.jsonl \
+  --target-usd 20 \
+  --out enrich/artifacts/hub_pack_estimate.json
+```
+
+Same #70 contract: near-verbatim `evidence.fact`, meta ≤145, `temperature=0.0`,
+`thinkingLevel=LOW`. Spend band for this job only is ≤~$20.
 
 ## Local dry-run (fixtures, no spend)
 

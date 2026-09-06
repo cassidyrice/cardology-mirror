@@ -30,6 +30,8 @@ def test_estimate_counts_requests_and_positive_usd(tmp_path: Path) -> None:
     assert result["usd_batch_thinking_low"] > result["usd_batch_no_thinking"]
     assert result["usd_batch_with_thinking_upper"] > result["usd_batch_thinking_low"]
     assert result["target_usd_band"] == TARGET_USD_BAND
+    twenty = estimate_batch(path, model="gemini-3.1-pro-preview", target_usd_band=20.0)
+    assert twenty["target_usd_band"] == 20.0
 
 
 def test_committed_retry_estimate_stays_inside_16_usd() -> None:
