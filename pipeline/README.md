@@ -329,6 +329,23 @@ python3 -m pytest pipeline/tests/test_nfl_hof.py
 Output: [`data/nfl_hof/people.jsonl`](data/nfl_hof/people.jsonl). Pages:
 `bun run build:seo-nfl-hof`. Do not deploy.
 
+## Rock & Roll Hall of Fame inductees (isolated `/rock-hall`)
+
+Wikipedia Performers list (citing RockHall.com) plus listed inducted
+band members. Wikipedia infobox day + Wikidata `P569` precision 11 must
+match. Year-only dates, conflicts, minors, and D3 keywords are dropped.
+Dates are never invented. Birth cards use this module's D1 rule. The
+celebrity `year_before_1900` cut is not applied. Groups without listed
+members are not expanded.
+
+```bash
+python3 -m pipeline.rock_hall
+python3 -m pytest pipeline/tests/test_rock_hall.py
+```
+
+Output: [`data/rock_hall/people.jsonl`](data/rock_hall/people.jsonl). Pages:
+`bun run build:seo-rock-hall`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages

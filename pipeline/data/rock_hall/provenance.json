@@ -1,0 +1,780 @@
+{
+  "generated_at": "2026-09-06T21:50:27.415738+00:00",
+  "people_count": 753,
+  "catalog_acts": 276,
+  "catalog_solo_acts": 126,
+  "catalog_group_acts": 150,
+  "catalog_listed_members": 741,
+  "catalog_people": 833,
+  "kept": 753,
+  "kept_solo": 118,
+  "kept_member": 635,
+  "excluded": 80,
+  "by_reason": {
+    "missing_wikidata": 27,
+    "missing_birth": 27,
+    "dob_conflict": 25,
+    "not_a_person": 1
+  },
+  "exclusions": [
+    {
+      "qid": null,
+      "name": "Arthur Brooks",
+      "wikipedia_title": "Arthur Brooks (singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q548160",
+      "name": "Benjamin Orr",
+      "wikipedia_title": "Benjamin Orr",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q4899588",
+      "name": "Beverly Lee",
+      "wikipedia_title": "Beverly Lee",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q47546700",
+      "name": "Billy Davis",
+      "wikipedia_title": "Billy Davis (guitarist)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Bobby \"Blue\" Bland",
+      "wikipedia_title": "Bobby \"Blue\" Bland",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Bobby Bennett",
+      "wikipedia_title": "Bobby Bennett (The Famous Flames)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Bobby Smith",
+      "wikipedia_title": "Bobby Smith (rhythm and blues singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q2708703",
+      "name": "Boris Williams",
+      "wikipedia_title": "Boris Williams",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1951-04-24",
+      "wikidata_birth_date": "1957-04-24",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q74151601",
+      "name": "Buddy Strong",
+      "wikipedia_title": "Buddy Strong",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q969016",
+      "name": "Cappadonna",
+      "wikipedia_title": "Cappadonna",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1968-09-18",
+      "wikidata_birth_date": "1969-09-18",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q964653",
+      "name": "Carter Beauford",
+      "wikipedia_title": "Carter Beauford",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1958-11-02",
+      "wikidata_birth_date": "1957-11-02",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q2330684",
+      "name": "Chris Dreja",
+      "wikipedia_title": "Chris Dreja",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1946-11-11",
+      "wikidata_birth_date": "1945-11-11",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Chris Shiflett",
+      "wikipedia_title": "Chris\u202fShiflett",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1971-05-06",
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q5129117",
+      "name": "Claudette Rogers",
+      "wikipedia_title": "Claudette Rogers Robinson",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1942-06-20",
+      "wikidata_birth_date": "1942-09-01",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Cleotha Staples",
+      "wikipedia_title": "Cleotha Staples",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q119046",
+      "name": "Cliff Gallup",
+      "wikipedia_title": "Cliff Gallup",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q354174",
+      "name": "Clive Burr",
+      "wikipedia_title": "Clive Burr",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1956-03-08",
+      "wikidata_birth_date": "1957-03-08",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q1103721",
+      "name": "Clyde McPhatter",
+      "wikipedia_title": "Clyde McPhatter",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": "1932-11-15",
+      "wikidata_birth_date": "1931-11-15",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q1173155",
+      "name": "Dave Clark",
+      "wikipedia_title": "Dave Clark (musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1939-12-15",
+      "wikidata_birth_date": "1942-12-15",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q17102597",
+      "name": "David Lynch",
+      "wikipedia_title": "David Lynch (singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q2101215",
+      "name": "Denis Payton",
+      "wikipedia_title": "Denis Payton",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q511074",
+      "name": "Dr. John",
+      "wikipedia_title": "Dr. John",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": "1941-11-20",
+      "wikidata_birth_date": "1941-11-21",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Frank Beard",
+      "wikipedia_title": "Frank Beard (musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q1445381",
+      "name": "Franny Beecher",
+      "wikipedia_title": "Franny Beecher",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q11969994",
+      "name": "Fred Cash",
+      "wikipedia_title": "Fred Cash",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1940-10-08",
+      "wikidata_birth_date": "1938-10-08",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q175238",
+      "name": "Gene Pitney",
+      "wikipedia_title": "Gene Pitney",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": "1940-02-17",
+      "wikidata_birth_date": "1941-02-17",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q323463",
+      "name": "Ghostface Killah",
+      "wikipedia_title": "Ghostface Killah",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Gina Schock",
+      "wikipedia_title": "Gina\u202fSchock",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1957-08-31",
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Glenn Hughes",
+      "wikipedia_title": "Glenn Hughes (English singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q3429349",
+      "name": "Grady Thomas",
+      "wikipedia_title": "Grady Thomas",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Hugh McDonald",
+      "wikipedia_title": "Hugh McDonald (American musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Jane Wiedlin",
+      "wikipedia_title": "Jane\u202fWiedlin",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1958-05-20",
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q6182567",
+      "name": "Jerome Arnold",
+      "wikipedia_title": "Jerome Arnold",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1936-11-26",
+      "wikidata_birth_date": "1936-11-12",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q3429337",
+      "name": "Jerome Brailey",
+      "wikipedia_title": "Jerome Brailey",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q429535",
+      "name": "Jerry Martini",
+      "wikipedia_title": "Jerry Martini",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1942-10-01",
+      "wikidata_birth_date": "1943-10-01",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q44570",
+      "name": "John Lee Hooker",
+      "wikipedia_title": "John Lee Hooker",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": "1912-08-22",
+      "wikidata_birth_date": "1917-08-22",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q326383",
+      "name": "John Oates",
+      "wikipedia_title": "John Oates",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1948-04-07",
+      "wikidata_birth_date": "1949-04-07",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q6391121",
+      "name": "Kenny Laguna",
+      "wikipedia_title": "Kenny Laguna",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Larry Mullen, Jr.",
+      "wikipedia_title": "Larry Mullen, Jr.",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q80808",
+      "name": "Lenny Davidson",
+      "wikipedia_title": "Lenny Davidson",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Maureen Tucker",
+      "wikipedia_title": "Maureen Tucker",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q348615",
+      "name": "MC Ren",
+      "wikipedia_title": "MC Ren",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1969-06-16",
+      "wikidata_birth_date": "1969-06-14",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q64549",
+      "name": "Melvin \"Melle Mel\" Glover",
+      "wikipedia_title": "Melle Mel",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1961-05-15",
+      "wikidata_birth_date": "1962-05-15",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Merald \"Bubba\" Knight",
+      "wikipedia_title": "Merald \"Bubba\" Knight",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Michael Owen Bruce",
+      "wikipedia_title": "Michael Owen Bruce",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Mickey Finn",
+      "wikipedia_title": "Mickey Finn (drummer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q315225",
+      "name": "Mitch Mitchell",
+      "wikipedia_title": "Mitch Mitchell",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1946-07-09",
+      "wikidata_birth_date": "1947-07-09",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Nathaniel \"The Kidd Creole\" Glover",
+      "wikipedia_title": "The Kidd Creole",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q11792043",
+      "name": "Niki Sullivan",
+      "wikipedia_title": "Niki Sullivan",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Paul Arthurs",
+      "wikipedia_title": "Paul Arthurs",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q1997514",
+      "name": "Paul Atkinson",
+      "wikipedia_title": "Paul Atkinson (guitarist)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q7152902",
+      "name": "Paul Peek",
+      "wikipedia_title": "Paul Peek (musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Paul Williams",
+      "wikipedia_title": "Paul Williams (The Temptations)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q445862",
+      "name": "Percy Sledge",
+      "wikipedia_title": "Percy Sledge",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": "1940-11-25",
+      "wikidata_birth_date": "1941-11-25",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Pervis Staples",
+      "wikipedia_title": "Pervis Staples",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Porl Thompson",
+      "wikipedia_title": "Porl Thompson",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q7240567",
+      "name": "Prentiss Barnes",
+      "wikipedia_title": "Prentiss Barnes",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q7297387",
+      "name": "Raymond Davis",
+      "wikipedia_title": "Ray Davis (musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3499458",
+      "name": "Reese Wynans",
+      "wikipedia_title": "Reese Wynans",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q7324380",
+      "name": "Richard Brooks",
+      "wikipedia_title": "Richard Brooks (singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q2067378",
+      "name": "Rick Huxley",
+      "wikipedia_title": "Rick Huxley",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q2117822",
+      "name": "Ronald White",
+      "wikipedia_title": "Ronnie White",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1938-04-05",
+      "wikidata_birth_date": "1939-04-05",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q188426",
+      "name": "Roy Orbison",
+      "wikipedia_title": "Roy Orbison",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Sade Adu",
+      "wikipedia_title": "Sade Adu",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": null,
+      "name": "Sam Moore",
+      "wikipedia_title": "Samuel David Moore",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q503886",
+      "name": "Sterling Morrison",
+      "wikipedia_title": "Sterling Morrison",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1942-08-29",
+      "wikidata_birth_date": "1942-08-28",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q391450",
+      "name": "Steve Currie",
+      "wikipedia_title": "Steve Currie",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q62077994",
+      "name": "Steve Fossen",
+      "wikipedia_title": "Steve Fossen",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Steve Howe",
+      "wikipedia_title": "Steve Howe (guitarist)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q449086",
+      "name": "Steve Miller",
+      "wikipedia_title": "Steve Miller",
+      "primary_role": "solo",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "not_a_person"
+    },
+    {
+      "qid": "Q3499035",
+      "name": "Steve Nieve",
+      "wikipedia_title": "Steve Nieve",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1958-02-21",
+      "wikidata_birth_date": "1958-02-19",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Steve Smith",
+      "wikipedia_title": "Steve Smith (musician)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q4309945",
+      "name": "Stuart Matthewman",
+      "wikipedia_title": "Stuart Matthewman",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3429070",
+      "name": "Tiki Fulwood",
+      "wikipedia_title": "Tiki Fulwood",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q202733",
+      "name": "Tony Iommi",
+      "wikipedia_title": "Tony Iommi",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q540440",
+      "name": "Topper Headon",
+      "wikipedia_title": "Topper Headon",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1955-05-30",
+      "wikidata_birth_date": "1954-05-30",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q733198",
+      "name": "U-God",
+      "wikipedia_title": "U-God",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1970-11-10",
+      "wikidata_birth_date": "1970-10-11",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Walter Morrison",
+      "wikipedia_title": "Walter Morrison",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q8010260",
+      "name": "William Guest",
+      "wikipedia_title": "William Guest (singer)",
+      "primary_role": "member",
+      "wikipedia_infobox_date": "1941-06-02",
+      "wikidata_birth_date": "1941-07-02",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": null,
+      "name": "Yvonne Staples",
+      "wikipedia_title": "Yvonne Staples",
+      "primary_role": "member",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    }
+  ],
+  "scope": {
+    "category": "Performers",
+    "note": "Performers category only. Musical influence, Non-performers (Ahmet Ertegun Award), Award for Musical Excellence, and Singles omitted.",
+    "through": "2026",
+    "omit": [
+      "Musical influence / Early influences",
+      "Non-performers (Ahmet Ertegun Award)",
+      "Award for Musical Excellence",
+      "Singles"
+    ]
+  },
+  "sources": [
+    "Rock & Roll Hall of Fame inductees (https://www.rockhall.com/inductees)",
+    "Rock Hall induction process (https://www.rockhall.com/inductees/induction-process)",
+    "Wikipedia List of Rock and Roll Hall of Fame inductees (https://en.wikipedia.org/wiki/List_of_Rock_and_Roll_Hall_of_Fame_inductees)",
+    "Wikipedia article infobox birth-date templates (CC BY-SA 4.0)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Wikipedia Performers inductee (solo or listed inducted member) AND Wikipedia infobox YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match AND Wikidata instance-of human",
+    "drop": [
+      "year_only (Wikipedia infobox year without month/day)",
+      "dob_conflict (Wikipedia infobox day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "not_a_person / band_no_listed_members",
+      "missing Wikipedia summary"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false,
+    "expand_band_members": true,
+    "expand_only_listed_inducted_members": true
+  },
+  "rockhall_home": "https://www.rockhall.com/inductees",
+  "wikipedia_list_url": "https://en.wikipedia.org/wiki/List_of_Rock_and_Roll_Hall_of_Fame_inductees",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}

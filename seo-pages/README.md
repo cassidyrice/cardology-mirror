@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Rock Hall pages use `utm_source=rock-hall&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -572,3 +572,29 @@ python3 -m pipeline.born_on # rewrite pipeline/data/born-on/{people,days}.jsonl
 - Empty days keep a page and do not invent notables
 
 Path lock: [`born-on-path-ownership.json`](./born-on-path-ownership.json).
+
+## Rock & Roll Hall of Fame inductees (isolated `/rock-hall`)
+
+Separate static build. Performers-category inductees (solo artists and
+listed inducted band members) with day-precision Wikipedia infobox dates
+verified against Wikidata `P569`. Does **not** take celebrity
+`/birth-card/{slug}` or live card-meaning routes. Does **not** join the
+Next.js app, does **not** touch checkout/Stripe, and must **not** be
+deployed. Path-split is documented only — not activated.
+
+```bash
+bun run build:seo-rock-hall   # → seo-pages/dist-rock-hall
+bun run test:seo-rock-hall
+python3 -m pipeline.rock_hall # rewrite pipeline/data/rock_hall/people.jsonl
+```
+
+- Hub: `/rock-hall`
+- Person: `/rock-hall/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=rock-hall&utm_content={slug}`
+- Data: `pipeline/data/rock_hall/people.jsonl` (Wikipedia Performers list + infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Scope: Performers only. Musical influence, Non-performers, Musical Excellence, and Singles omitted.
+- Bands: expand only Wikipedia-listed inducted members with public day-precision DOBs.
+- Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords, groups without listed members
+
+Path lock: [`rock-hall-path-ownership.json`](./rock-hall-path-ownership.json).

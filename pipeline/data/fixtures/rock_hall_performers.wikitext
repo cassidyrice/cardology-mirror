@@ -1,0 +1,127 @@
+=== Performers ===
+The performers category is meant for recording artists and bands that have "influence and significance to the development and perpetuation of rock and roll".<ref name="Induction"/>
+{{sticky header}}
+{| class="wikitable sortable sticky-header" style="font-size: 95%"
+|-
+! scope="col" |Year
+! scope="col" class="unsortable"| Image
+! scope="col" |Name<ref name="inductees1">{{cite web |title=Inductees |url=https://rockhall.com/inductees/ |website=Rock & Roll Hall of Fame |access-date=7 May 2024}}</ref>
+! scope="col" |Inducted members
+! scope="col" |Prior nominations<ref name="ballots1">{{cite web |title=Rock & Roll Hall of Fame Ballot History |url=https://futurerocklegends.com/Rock_Hall_Ballots/ |website=Future Rock Legends |access-date=6 May 2024 |language=en}}</ref><ref name="fyes1">{{cite web |title=First Ballot Rock & Roll Hall of Famers |url=https://futurerocklegends.com/1st_Ballot/ |website=Future Rock Legends |access-date=7 May 2024 |language=en}}</ref>
+! scope="col" |Induction presenter<ref name="frlinduct">{{cite web |title=Rock & Roll Hall of Fame Inductees – Complete List |url=https://futurerocklegends.com/Hall_of_Famers/ |website=Future Rock Legends |language=en}}</ref>
+|-
+| rowspan="10" | 1986
+| [[File:Chuck Berry 1957.jpg|75px|Publicity photo of Chuck Berry.]]
+| {{sortname|Chuck|Berry}}
+| rowspan="5" |
+| rowspan="10" | {{Hidden sort key|0.1}}Inaugural class
+| [[Keith Richards]]{{Ref|N2|[N2]}}
+|-
+| [[File:James Brown Live Hamburg 1973 1702730029.jpg|75px|James Brown performing in Hamburg, Germany, February 1973]]
+| {{sortname|James|Brown}}
+| [[Steve Winwood]]{{Ref|N2|[N2]}}
+|-
+| [[File:Ray Charles classic piano pose.jpg|75px|Photo of Ray Charles in one of his classic poses at the piano.]]
+| {{sortname|Ray|Charles}}
+| [[Quincy Jones]]{{Ref|N2|[N2]}}
+|-
+| [[File:Sam Cooke 2.jpg|75px]]
+| {{sortname|Sam|Cooke}}
+| [[Herb Alpert]]{{Ref|N2|[N2]}}
+|-
+| [[File:Fats Domino in Amsterdam 1962 (crop).jpg|75px|Fats Domino in Amsterdam 1962]]
+| {{sortname|Fats|Domino}}
+| [[Billy Joel]]{{Ref|N2|[N2]}}
+|-
+| [[File:Everly_Brothers - Cropped.jpg|75px|Phil (left) and Don (right) Everly in 1958]]
+| {{sortname|The|Everly Brothers}}
+| [[Don Everly]] and [[Phil Everly]].<ref name="Everly">{{cite web | url =https://www.rockhall.com/inductees/everly-brothers| title =The Everly Brothers| publisher = Rock and Roll Hall of Fame | access-date = June 7, 2007}}</ref>
+| [[Neil Young]]{{Ref|N2|[N2]}}
+|-
+| [[File:Buddy Holly cropped.JPG|75px|Buddy Holly in 1957]]
+| {{sortname|Buddy|Holly}}<ref>{{cite web | url =https://www.rockhall.com/inductees/buddy-holly| title =Buddy Holly| publisher = Rock and Roll Hall of Fame | access-date = June 14, 2017}}</ref>
+| rowspan="4" |
+| [[John Fogerty]]{{Ref|N2|[N2]}}
+|-
+| [[File:Jerry Lee Lewis 1950s publicity photo cropped retouched.jpg|75px|Lewis performing in the 1950s]]
+| {{sortname|Jerry Lee|Lewis}}
+| [[Hank Williams Jr.]]
+|-
+| [[File:Little Richard (1967).png|75px|Little Richard in 1967]]
+| [[Little Richard]]<ref>{{cite web | url =https://www.rockhall.com/inductees/little-richard| title =Little Richard| publisher = Rock and Roll Hall of Fame | access-date = July 15, 2019}}</ref>
+| [[Roberta Flack]]
+|-
+| [[File:Elvis Presley promoting Jailhouse Rock.jpg|75px|Presley in a publicity photograph for the 1957 film Jailhouse Rock]]
+| {{sortname|Elvis|Presley}}<ref name="elvis-presley">{{cite web | url =https://www.rockhall.com/inductees/elvis-presley| title =Elvis Presley| publisher = Rock and Roll Hall of Fame | access-date = August 16, 2020}}</ref>
+| style="white-space: nowrap;"|[[Julian Lennon|Julian]] and [[Sean Lennon]]
+|-
+| rowspan="15" | 1987
+| [[File: The Coasters Publicity Photo.jpg|75px]]
+| {{sortname|The|Coasters}}
+| [[Carl Gardner]], [[Cornell Gunter]], [[Billy Guy]], and [[Dub Jones (singer)|Will "Dub" Jones]].<ref>{{cite web | url =https://www.rockhall.com/inductees/coasters| title =The Coasters| publisher = Rock and Roll Hall of Fame | access-date = December 31, 2007}}</ref>
+| rowspan="3" | 1 (1986)
+| [[Lester Sill]]
+|-
+| [[File: Eddie Cochran Publicity Photo, 1958.jpg|75px]]
+| {{sortname|Eddie|Cochran}}
+| rowspan="14" |
+| [[Mick Jones (Foreigner guitarist)|Mick Jones]]{{Ref|N2|[N2]}}
+|-
+|[[File:Bo Diddley (1957 publicity portrait).jpg|75px|Publicity portrait of American blues musician Bo Diddley, 1957, sitting with his "Twang Machine", a unique square electric guitar built for him by Gretsch.]]
+| {{sortname|Bo|Diddley}}
+| [[ZZ Top]]{{Ref|N2|[N2]}}
+|-
+| [[File:Aretha Franklin 1968.jpg|75px|Publicity photo of Aretha Franklin from Billboard, 17 February 1968]]
+| {{sortname|Aretha|Franklin}}
+| {{Hidden sort key|0.3}}First nomination
+| [[Keith Richards]]{{Ref|N2|[N2]}}
+|-
+| [[File:Marvin Gaye (1973 publicity photo).jpg|75px|Gaye in 1973]]
+| {{sortname|Marvin|Gaye}}
+| 1 (1986)
+| style="white-space: nowrap;"|[[Nick Ashford]] and [[Valerie Simpson]]
+|-
+| [[File:Bill Haley (1974).jpg|75px|Haley in 1974]]
+| {{sortname|Bill|Haley}}
+| 1 (1986)
+| [[Chuck Berry]]{{Ref|N3|[N3]}}
+|-
+| [[File:B.B. King Hamburg 1971.jpg|75px]]
+| {{sortname|B. B.|King}}
+| rowspan="4" | 1 (1986)
+| [[Sting (musician)|Sting]]{{Ref|N2|[N2]}}
+|-
+| [[File:Clyde McPhatter.png|75px]]
+| {{sortname|Clyde|McPhatter}}
+| [[Ben E. King]]{{Ref|N2|[N2]}}
+|-
+| [[File:Decca Records Rick Nelson 1966.jpg|75px]]
+| {{sortname|Ricky|Nelson}}
+| [[John Fogerty]]{{Ref|N2|[N2]}}
+|-
+| [[File:Roy Orbison 1965 (2).png|75px|Orbison in 1965]]
+| {{sortname|Roy|Orbison}}
+| [[Bruce Springsteen]]{{Ref|N2|[N2]}}
+|-
+| [[File:Carl Perkins 1977.jpg|75px|Perkins in 1977]]
+| {{sortname|Carl|Perkins}}
+| {{Hidden sort key|0.3}}First nomination
+| [[Sam Phillips (record producer)|Sam Phillips]]{{Ref|N3|[N3]}}
+|-
+| [[File:Smokey Robinson.jpg|75px]]
+| {{sortname|Smokey|Robinson}}
+| rowspan="4" | 1 (1986)
+| style="white-space: nowrap;"|[[Daryl Hall]]{{Ref|N2|[N2]}} and [[John Oates]]{{Ref|N2|[N2]}}
+|-
+| [[File:Big Joe in Hamburg 1973.jpg|75px]]
+| {{sortname|Big Joe|Turner}}
+| [[Doc Pomus]]{{Ref|N2|[N2]}}
+|-
+| [[File:Muddy Waters november 1976.jpg|75px]]
+| {{sortname|Muddy|Waters}}
+| [[Paul Butterfield]]{{Ref|N2|[N2]}}
+|-
+| [[File:Jackie Wilson 1961.jpg|75px]]
+| {{sortname|Jackie|Wilson}}
+| [[Peter Wolf]]
+|-

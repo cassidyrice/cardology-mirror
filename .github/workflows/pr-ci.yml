@@ -97,6 +97,9 @@ jobs:
       - name: NFL Hall of Fame birth-card scaffold
         run: bun run build:seo-nfl-hof
 
+      - name: Rock Hall inductee birth-card scaffold
+        run: bun run build:seo-rock-hall
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -145,7 +148,8 @@ jobs:
             seo-pages/oscars.test.ts \
             seo-pages/emmys.test.ts \
             seo-pages/grammys.test.ts \
-            seo-pages/nfl-hof.test.ts
+            seo-pages/nfl-hof.test.ts \
+            seo-pages/rock-hall.test.ts
 
   pipeline:
     runs-on: ubuntu-latest
