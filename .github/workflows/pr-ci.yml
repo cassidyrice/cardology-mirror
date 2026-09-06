@@ -103,6 +103,9 @@ jobs:
       - name: Pulitzer Fiction birth-card scaffold
         run: bun run build:seo-pulitzer-fiction
 
+      - name: House leadership and chairs birth-card scaffold
+        run: bun run build:seo-house-chairs
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -153,7 +156,8 @@ jobs:
             seo-pages/grammys.test.ts \
             seo-pages/nfl-hof.test.ts \
             seo-pages/rock-hall.test.ts \
-            seo-pages/pulitzer-fiction.test.ts
+            seo-pages/pulitzer-fiction.test.ts \
+            seo-pages/house-chairs.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

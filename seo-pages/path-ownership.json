@@ -341,6 +341,22 @@
     ],
     "note": "Authority upgrade of the live Worker /born-on path. Wikidata notables with day-precision P569. Not a new niche. Path-split is not activated. It must not take celebrity person slugs, /birthday, or live card-meaning routes."
   },
+  "house_chairs_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/house-chairs",
+      "/house-chairs/{slug}",
+      "/sitemap-house-chairs.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "US House leadership + standing committee chair birth-card set is isolated under /house-chairs. house.gov/leadership plus 20 standing chairs. Day-precision Wikipedia infobox + Bioguide + Wikidata P569 must match. Select/campaign committees omitted. Path-split is not activated."
+  },
   "pulitzer_fiction_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

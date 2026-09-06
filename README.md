@@ -152,6 +152,15 @@ bun run test:seo-pulitzer-fiction
 python3 -m pipeline.pulitzer_fiction
 ```
 
+US House leadership + standing committee chair birth-card pages
+(`/house-chairs/{slug}`), day-precision only:
+
+```bash
+bun run build:seo-house-chairs   # → seo-pages/dist-house-chairs
+bun run test:seo-house-chairs
+python3 -m pipeline.house_chairs
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

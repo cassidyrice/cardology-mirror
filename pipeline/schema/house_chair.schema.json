@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/house_chair.json",
+  "title": "Current US House leadership or standing committee chair birth-card person",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qid",
+    "name",
+    "slug",
+    "office",
+    "office_id",
+    "role_kind",
+    "sort_order",
+    "party",
+    "state",
+    "state_slug",
+    "postal",
+    "district",
+    "bioguide",
+    "committee_thomas_id",
+    "birth_date",
+    "death_date",
+    "card",
+    "source_text",
+    "source_url",
+    "wikipedia_title",
+    "wikipedia_infobox_date",
+    "wikidata_birth_date",
+    "bioguide_birth_date",
+    "dob_crosscheck",
+    "bioguide_url",
+    "congress_url",
+    "history_house_url",
+    "house_gov_url"
+  ],
+  "properties": {
+    "qid": {
+      "type": "string",
+      "pattern": "^Q[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "office": {
+      "type": "string",
+      "minLength": 1
+    },
+    "office_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "role_kind": {
+      "type": "string",
+      "enum": ["leadership", "chair"]
+    },
+    "sort_order": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 30
+    },
+    "party": {
+      "type": "string",
+      "enum": ["Democrat", "Republican"]
+    },
+    "state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state_slug": {
+      "type": "string",
+      "pattern": "^[a-z]+(?:-[a-z]+)*$"
+    },
+    "postal": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "district": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "bioguide": {
+      "type": "string",
+      "minLength": 1
+    },
+    "committee_thomas_id": {
+      "type": ["string", "null"],
+      "pattern": "^HS[A-Z]{2}$"
+    },
+    "birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "death_date": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "card": {
+      "type": "string",
+      "pattern": "^(Joker|([A2-9JQK]|10)[♥♣♦♠])$"
+    },
+    "source_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wikipedia_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wikipedia_infobox_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "wikidata_birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "bioguide_birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "dob_crosscheck": {
+      "type": "string",
+      "const": "match"
+    },
+    "bioguide_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "congress_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "history_house_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "house_gov_url": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -365,6 +365,23 @@ python3 -m pytest pipeline/tests/test_pulitzer_fiction.py
 Output: [`data/pulitzer_fiction/people.jsonl`](data/pulitzer_fiction/people.jsonl).
 Pages: `bun run build:seo-pulitzer-fiction`. Do not deploy.
 
+## US House leadership + standing chairs (isolated `/house-chairs`)
+
+house.gov/leadership plus the 20 standing committee chairs. Wikipedia
+infobox birth-date templates are the public day. congress-legislators /
+Bioguide compiled birthdays and Wikidata `P569` precision 11 must match.
+Year-only dates, Wikipedia↔Bioguide↔Wikidata conflicts, minors, and D3
+keywords are dropped. Select and campaign committees are out of scope.
+Dates are never invented. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.house_chairs
+python3 -m pytest pipeline/tests/test_house_chairs.py
+```
+
+Output: [`data/house_chairs/people.jsonl`](data/house_chairs/people.jsonl).
+Pages: `bun run build:seo-house-chairs`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages

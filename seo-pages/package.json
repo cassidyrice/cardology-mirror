@@ -24,6 +24,7 @@
     "build:nfl-hof": "bun src/nfl-hof/build.ts",
     "build:rock-hall": "bun src/rock-hall/build.ts",
     "build:pulitzer-fiction": "bun src/pulitzer-fiction/build.ts",
+    "build:house-chairs": "bun src/house-chairs/build.ts",
     "test": "bun test"
   }
 }
