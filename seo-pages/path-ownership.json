@@ -260,6 +260,22 @@
     ],
     "note": "Declaration signers birth-card set is isolated under /signers. Verified subset only. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "rock_hall_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/rock-hall",
+      "/rock-hall/{slug}",
+      "/sitemap-rock-hall.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Rock & Roll Hall of Fame Performers birth-card set is isolated under /rock-hall. Day-precision Wikipedia infobox dates verified against Wikidata P569. Bands expand only listed inducted members. Path-split is not activated."
+  },
   "olympics_winter_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [
