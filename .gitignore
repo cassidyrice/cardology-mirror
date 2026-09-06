@@ -18,6 +18,14 @@ __pycache__/
 .Python
 .venv/
 venv/
+.pytest_cache/
+
+# Celebrity birth-card pipeline outputs (seed drop is off-repo)
+pipeline/data/drop/*
+!pipeline/data/drop/.gitkeep
+pipeline/data/cache/
+pipeline/data/people.jsonl
+pipeline/data/exclusions.json
 
 # Scraped production artifacts kept for debugging (not source)
 .calc.html

@@ -1,0 +1,5 @@
+# Manual exclusions for the celebrity birth-card SEO dataset.
+# One Q-id, slug, or name per line. Lines starting with # are ignored.
+#
+# Prefer D3 description keywords (serial killer / murderer / terrorist /
+# dictator) plus the age / precision / year rules before adding names here.
