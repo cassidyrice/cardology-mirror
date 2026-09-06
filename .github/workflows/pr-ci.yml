@@ -55,6 +55,9 @@ jobs:
       - name: Nobel laureate birth-card scaffold
         run: bun run build:seo-nobel
 
+      - name: MLB first-game birth-card scaffold
+        run: bun run build:seo-mlb
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -87,7 +90,8 @@ jobs:
             seo-pages/holidays.test.ts \
             seo-pages/parks.test.ts \
             seo-pages/signers.test.ts \
-            seo-pages/nobel.test.ts
+            seo-pages/nobel.test.ts \
+            seo-pages/mlb.test.ts
 
   pipeline:
     runs-on: ubuntu-latest
