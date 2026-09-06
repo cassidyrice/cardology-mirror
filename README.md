@@ -107,6 +107,15 @@ bun run test:seo-senators
 python3 -m pipeline.senators
 ```
 
+Academy Award Best Actor / Best Actress birth-card pages are an isolated
+build (`/oscars/{slug}`), unique winners, day-precision only:
+
+```bash
+bun run build:seo-oscars   # → seo-pages/dist-oscars
+bun run test:seo-oscars
+python3 -m pipeline.oscars
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

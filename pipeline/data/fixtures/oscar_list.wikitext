@@ -1,0 +1,54 @@
+{| class="wikitable"
+!scope="row" style="text-align:center" style="background:#FAEB86;" | ‡
+| style="background:#FAEB86;" | '''Indicates the winner'''
+|}
+
+{| class="wikitable sortable"
+!scope="col"| Year
+!scope="col"| Actor
+!scope="col"| Role(s)
+!scope="col"| Film
+!scope="col"|{{Abbr|Ref.|Reference}}
+|-
+! scope="row" rowspan=5 style="text-align:center" | [[1927 in film|1927]]/[[1928 in film|28]] <br /><small>[[1st Academy Awards|(1st)]] </small>
+| rowspan=2 style="background:#FAEB86;" | '''{{sort|Jannings|[[Emil Jannings]]}} {{double dagger|alt=Award winner}}'''
+| style="background:#FAEB86;" | '''{{sort|Alexander|Grand Duke Sergius Alexander}}'''
+| style="background:#FAEB86;" | '''{{sort|Last|''[[The Last Command (1928 film)|The Last Command]]''}}'''
+|rowspan=4|<ref name="Oscars1">{{cite news|url=http://www.oscars.org/oscars/ceremonies/1929|title=The 1st Academy Awards (1929) Nominees and Winners|publisher=AMPAS}}</ref>
+|-
+| style="background:#FAEB86;" | '''{{sort|Schilling|August Schilling}}'''
+| style="background:#FAEB86;" | '''{{sort|Way|''[[The Way of All Flesh (1927 film)|The Way of All Flesh]]''}}'''
+|-
+| {{sort|Chaplin|[[Charlie Chaplin]]}}
+| {{sort|Tramp|[[The Tramp]]}}
+| {{sort|Circus|''[[The Circus (1928 film)|The Circus]]''}}
+|-
+! scope="row" rowspan=3 style="text-align:center" | [[1931 in film|1931]]/[[1932 in film|32]] <br /><small>[[5th Academy Awards|(5th)]] </small>
+| style="background:#FAEB86;" | '''{{sort|Beery|[[Wallace Beery]]}} {{double dagger|alt=Award winner}} <small>(Tie)</small>'''
+| style="background:#FAEB86;" | '''Andy'''
+| style="background:#FAEB86;" | '''{{sort|Champ|''[[The Champ (1931 film)|The Champ]]''}}'''
+|rowspan=3|<ref name="Oscars5">{{cite news|url=http://www.oscars.org/oscars/ceremonies/1933|title=The 5th Academy Awards|publisher=AMPAS}}</ref>
+|-
+| style="background:#FAEB86;" | '''{{sort|March|[[Fredric March]]}} {{double dagger|alt=Award winner}} <small>(Tie)</small>'''
+| style="background:#FAEB86;" | '''Dr. Henry Jekyll'''
+| style="background:#FAEB86;" | '''{{sort|Jekyll|''[[Dr. Jekyll and Mr. Hyde (1931 film)|Dr. Jekyll and Mr. Hyde]]''}}'''
+|-
+! scope="row" rowspan=5 style="text-align:center" | [[1970 in film|1970]] <br /><small>[[43rd Academy Awards|(43rd)]] </small>
+| style="background:#FAEB86;" | '''{{sort|Scott|[[George C. Scott]]}} §'''
+| style="background:#FAEB86;" | '''{{sort|Patton|[[George S. Patton|General George S. Patton Jr.]]}}'''
+| style="background:#FAEB86;" | '''''[[Patton (film)|Patton]]'''''
+|rowspan=5|<ref name="Oscars43">{{cite news|url=http://www.oscars.org/oscars/ceremonies/1971|title=The 43rd Academy Awards|publisher=AMPAS}}</ref>
+|-
+| {{sort|Nicholson|[[Jack Nicholson]]}}
+| {{sort|Dupea|Robert Eroica Dupea}}
+| ''[[Five Easy Pieces]]''
+|-
+! rowspan="5" | [[2025 in film|2025]]<br><small>[[98th Academy Awards|(98th)]]</small>
+| style="background:#FAEB86;" | '''{{sort|Jordan|[[Michael B. Jordan]]}}''' '''{{double dagger|alt=Award winner}}'''
+| style="background:#FAEB86;" | '''Elijah Moore'''
+| style="background:#FAEB86;" | '''''[[Sinners (2025 film)|Sinners]]'''''
+| rowspan="5" | <ref name="Oscars98">{{cite news|url=https://www.oscars.org/oscars/ceremonies/2026|title=The 98th Academy Awards|publisher=AMPAS}}</ref>
+|}
+
+==Multiple awards and nominations==
+Not a winner table.
