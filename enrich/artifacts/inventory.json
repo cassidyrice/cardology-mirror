@@ -1,0 +1,44 @@
+{
+  "people_jsonl": 1058,
+  "people_enriched": 1040,
+  "missing_from_enriched": 18,
+  "retry_jsonl": 18,
+  "missing_equals_retry": true,
+  "submit_qids": 18,
+  "excluded_from_submit": {
+    "already_enriched": 1040,
+    "date_only_hubs": {
+      "holidays": 5,
+      "parks": 63,
+      "mlb": 30,
+      "nfl_franchises": 32,
+      "states": 50,
+      "reason": "Date-only hub packs are not Vertex people enrich."
+    },
+    "hub_people_packs_held_for_approve": {
+      "presidents_new": 36,
+      "governors_new": 45,
+      "scotus_new": 9,
+      "nobel_new": 947,
+      "signers_new": 42,
+      "union_new": 1079,
+      "reason": "Each pack's provenance says No Vertex / local template copy. Combined HIGH-upper estimate exceeds the ~$16 band.",
+      "estimate_method": "same as #70: Flex/Batch $1/$6 per 1M, output 500 tok/row, thinking LOW 800/row, HIGH 2500/row"
+    }
+  },
+  "included": {
+    "tpu_cancelled_empty": 16,
+    "content_length_with_prompt_buffer": 2,
+    "prompt_fix": "hook target ≤38 words (hard 40); card_in_life 125–175 (hard 120–180); same buffer pattern as meta≤145",
+    "sample": [
+      {"qid": "Q15634226", "name": "Justin Gaethje", "reason": "empty prediction / TPU CANCELLED"},
+      {"qid": "Q230744", "name": "Anna Wintour", "reason": "empty prediction / TPU CANCELLED"},
+      {"qid": "Q28967995", "name": "Erling Haaland", "reason": "empty prediction / TPU CANCELLED"},
+      {"qid": "Q21592474", "name": "Cynthia Erivo", "reason": "hook 41 words; included with ≤38-word prompt buffer"},
+      {"qid": "Q1138674", "name": "Jesse Plemons", "reason": "card_in_life 119 words; included with 125–175 prompt buffer"},
+      {"qid": "Q2643", "name": "George Harrison", "reason": "empty prediction / TPU CANCELLED"},
+      {"qid": "Q199945", "name": "Alicia Silverstone", "reason": "empty prediction / TPU CANCELLED"},
+      {"qid": "Q188280", "name": "Christina Applegate", "reason": "empty prediction / TPU CANCELLED"}
+    ]
+  }
+}
