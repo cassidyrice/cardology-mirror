@@ -6,7 +6,7 @@ import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
-  publicProductBySlug,
+  checkoutProductBySlug,
   digitalOfferFacts,
   instantReportFacts,
   type DigitalOfferFact,
@@ -37,7 +37,7 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  const product = publicProductBySlug(slug);
+  const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
 
