@@ -73,6 +73,9 @@ jobs:
       - name: Winter Olympic medalist birth-card scaffold
         run: bun run build:seo-olympics-winter
 
+      - name: Summer Olympian birth-card scaffold
+        run: bun run build:seo-olympics
+
       - name: Tony leading-acting birth-card scaffold
         run: bun run build:seo-tonys
 
@@ -121,6 +124,7 @@ jobs:
             seo-pages/cabinet.test.ts \
             seo-pages/senators.test.ts \
             seo-pages/olympics-winter.test.ts \
+            seo-pages/olympics.test.ts \
             seo-pages/tonys.test.ts \
             seo-pages/oscars.test.ts \
             seo-pages/emmys.test.ts

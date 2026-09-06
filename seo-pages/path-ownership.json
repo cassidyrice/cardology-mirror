@@ -228,6 +228,22 @@
     ],
     "note": "Primetime Emmy Lead Actor/Actress birth-card set is isolated under /emmys. Drama + comedy lists only. Day-precision Wikipedia infobox dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "olympics_summer_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/olympics/summer",
+      "/olympics/summer/{slug}",
+      "/sitemap-olympics-summer.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Summer Olympic multi-gold birth-card set is isolated under /olympics/summer. Day-precision Wikipedia infobox dates verified against Wikidata P569. Two or more Summer golds. Path-split is not activated. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "signers_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [
