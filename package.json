@@ -52,6 +52,8 @@
     "test:seo-tonys": "bun test seo-pages/tonys.test.ts",
     "build:seo-oscars": "bun seo-pages/src/oscars/build.ts",
     "test:seo-oscars": "bun test seo-pages/oscars.test.ts",
+    "build:seo-emmys": "bun seo-pages/src/emmys/build.ts",
+    "test:seo-emmys": "bun test seo-pages/emmys.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

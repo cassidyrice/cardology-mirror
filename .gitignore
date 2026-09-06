@@ -13,6 +13,7 @@ seo-pages/dist-senators
 seo-pages/dist-olympics-winter
 seo-pages/dist-tonys
 seo-pages/dist-oscars
+seo-pages/dist-emmys
 .playwright-mcp/
 
 node_modules

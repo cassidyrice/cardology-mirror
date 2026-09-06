@@ -79,6 +79,9 @@ jobs:
       - name: Oscars Best Actor/Actress birth-card scaffold
         run: bun run build:seo-oscars
 
+      - name: Emmy Lead Actor/Actress birth-card scaffold
+        run: bun run build:seo-emmys
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -119,7 +122,8 @@ jobs:
             seo-pages/senators.test.ts \
             seo-pages/olympics-winter.test.ts \
             seo-pages/tonys.test.ts \
-            seo-pages/oscars.test.ts
+            seo-pages/oscars.test.ts \
+            seo-pages/emmys.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

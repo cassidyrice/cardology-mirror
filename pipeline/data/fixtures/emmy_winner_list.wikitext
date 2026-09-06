@@ -1,0 +1,69 @@
+==Winners and nominations==
+===1950s===
+{| class="wikitable"
+|-
+! Year
+! Actor
+! Role
+! Program
+! Network
+|-
+| rowspan=3 | [[1954 in television|1954]]<br /><small>[[6th Primetime Emmy Awards|(6th)]]</small>
+|- style="background:#FAEB86"
+| '''[[Donald O'Connor]]'''
+| '''Himself'''
+| '''''[[The Colgate Comedy Hour]]'''''
+| '''NBC'''
+|-
+| [[Sid Caesar]]
+| Various characters
+| ''[[Your Show of Shows]]''
+| NBC
+|}
+===2020s===
+{| class="wikitable"
+|-
+| rowspan=2 style="text-align:center" | 2020<br /><small>[[72nd Primetime Emmy Awards|(72nd)]]</small>
+| style="background:#FAEB86" | '''[[Zendaya]]'''
+| style="background:#FAEB86" | '''[[Rue Bennett]]'''
+| style="background:#FAEB86" | '''''[[Euphoria (American TV series)|Euphoria]]'''''
+| style="background:#FAEB86" | '''HBO'''
+|-
+| [[Someone Else]]
+| Role
+| ''Show''
+| HBO
+|-
+|- style="background:#FAEB86"
+| [[2008 in American television|2008]]<br /><small>[[60th Primetime Emmy Awards|(60th)]]</small>
+| '''[[Bryan Cranston]]'''
+| '''Walter White'''
+| '''''[[Breaking Bad]]'''''
+| '''AMC'''
+|-
+|- style="background:#FAEB86"
+| [[1986 in television|1986]]<br /><small>[[38th Primetime Emmy Awards|(38th)]]</small>
+| '''[[Michael J. Fox]]'''
+| '''[[Alex P. Keaton]]'''
+| '''''[[Family Ties]]'''''
+| '''NBC'''
+|-
+|- style="background:#FAEB86"
+| [[2017 in American television|2017]]<br /><small>[[69th Primetime Emmy Awards|(69th)]]</small>
+| '''[[Sterling K. Brown]]'''
+| '''[[List of This Is Us characters #Randall Pearson|Randall Pearson]]'''
+| '''''[[This Is Us]]'''''
+| '''NBC'''
+|-
+|- style="background:#FAEB86"
+| [[1965 in television|1965]]<br /><small>[[17th Primetime Emmy Awards|(17th)]]</small>
+| '''[[Leonard Bernstein]]'''
+| '''Conductor'''
+| '''''[[Young People's Concerts#Leonard Bernstein on CBS (1958–72)|New York Philharmonic Young People's Concerts with Leonard Bernstein]]'''''
+| '''CBS'''
+|}
+==Multiple wins==
+{| class="wikitable"
+|- style="background:#FAEB86"
+| '''[[Should Not Parse]]'''
+|}

@@ -242,6 +242,23 @@ python3 -m pytest pipeline/tests/test_oscars.py
 Output: [`data/oscars/people.jsonl`](data/oscars/people.jsonl). Pages:
 `bun run build:seo-oscars`. Do not deploy.
 
+## Primetime Emmy Lead Actor / Actress (isolated `/emmys`)
+
+Primetime Emmy Lead Actor and Lead Actress winners from the drama and
+comedy Wikipedia lineage lists. Wikipedia person-article infobox/lead
+day-precision dates must match Wikidata `P569` (precision 11). Year-only
+dates, Wikipedia↔Wikidata conflicts, minors, and D3 keywords are dropped.
+Dates are never invented. Supporting, Limited-as-own-category, Guest,
+Daytime, and International lists are out of scope.
+
+```bash
+python3 -m pipeline.emmys
+python3 -m pytest pipeline/tests/test_emmys.py
+```
+
+Output: [`data/emmys/people.jsonl`](data/emmys/people.jsonl). Pages:
+`bun run build:seo-emmys`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

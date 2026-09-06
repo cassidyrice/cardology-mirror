@@ -17,6 +17,7 @@
     "build:olympics-winter": "bun src/olympics/winter/build.ts",
     "build:tonys": "bun src/tonys/build.ts",
     "build:oscars": "bun src/oscars/build.ts",
+    "build:emmys": "bun src/emmys/build.ts",
     "test": "bun test"
   }
 }
