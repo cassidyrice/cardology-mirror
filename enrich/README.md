@@ -51,7 +51,8 @@ Celebrity remainder is complete (1058/1058); `retry.jsonl` stays empty.
 Hub people packs accepted **1075 / 1079**. Wave slice 1 (Rock Hall 721 +
 summer olympics 358) accepted **1077 / 1079**. Dropped 2 TPU `CANCELLED`
 empty predictions: Herb Reed, Marie-José Pérec. Zero containment rejects.
-Do not resubmit or start slice 2 unless asked.
+Slice 2 is a separate submit (see `WAVE_SLICE2.md`). Do not start slice 3
+unless asked. Slice-1 TPU empties stay dropped.
 
 ```bash
 python3 -m enrich.parse_results \

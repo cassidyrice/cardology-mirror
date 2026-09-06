@@ -79,13 +79,12 @@ HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 6. Appended **1077** accepted slice-1 rows. Did not overwrite the 2133.
    Total **3210**. Dropped 2 TPU `CANCELLED` empties → `wave_slice1_retry.jsonl`
    (Herb Reed `Q3133396`, Marie-José Pérec `Q228808`).
-7. Celebrity `retry.jsonl` stays empty. Ask before slice 2. Do not resubmit
-   unless asked.
+7. Celebrity `retry.jsonl` stays empty. Slice-1 TPU empties stay dropped.
+   Ask before slice 3. Do not resubmit unless asked.
 
 ## Out of scope
 
-- No slice 2 / further Vertex submit
+- No slice 3 / remainder Vertex submit
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- #101 submit-only draft is superseded by this results PR; do not merge
-  without asking
+- Do not merge slice-2 results without asking
