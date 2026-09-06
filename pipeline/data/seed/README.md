@@ -2,7 +2,7 @@
 
 The verified ~1,161-row celebrity seed lives at
 `celebrity_birth_cards.csv`. Do **not** invent bios. The Wikidata PSV
-drop remains off-repo.
+drop is `wikidata_people_raw.psv` in this folder.
 
 `pipeline/build_dataset.py --from-seed` looks here first, then
 `pipeline/data/drop/`. Birth cards are always recomputed with
@@ -15,7 +15,7 @@ do not override D1.
 | File | Path | Required columns |
 |---|---|---|
 | Celebrity seed CSV | `pipeline/data/seed/celebrity_birth_cards.csv` | `name,birth_date,birth_card,enwiki_views_8mo,slug` |
-| Wikidata raw PSV | `pipeline/data/seed/wikidata_people_raw.psv` | `qid\|en_label\|en_description\|p569\|p569_precision\|p26\|p451\|p106\|p18\|enwiki_title\|slug` |
+| Wikidata raw PSV | `pipeline/data/seed/wikidata_people_raw.psv` | `name\|birth_year\|birth_month\|birth_day\|enwiki_views_8mo` (verified drop). The fixture PSV uses `qid\|en_label\|…\|slug`. |
 
 Optional extra CSV column: `qid` (otherwise the PSV is joined on `slug` /
 normalized name).
@@ -49,12 +49,14 @@ python3 -m pipeline.build_dataset --from-seed \
   --out pipeline/data/people.jsonl
 ```
 
-The CSV-only 5-column file is accepted as the seed index. The PSV (or a later
-Wikidata fetch) is still required to emit schema-valid `people.jsonl` rows
-(`qid`, `source_text`, `source_url`). Without the PSV, `--from-seed` exits
-and tells you what to drop — it will not invent bios.
+The CSV-only 5-column file is accepted as the seed index. The PSV drop is
+`name|birth_year|birth_month|birth_day|enwiki_views_8mo`. Schema-valid
+`people.jsonl` still needs a Q-id and `source_text`: pass `--fetch` so
+`--from-seed` resolves titles via Wikidata REST + enwiki summaries. It will
+not invent bios. Without the PSV, `--from-seed` exits and tells you what to
+drop.
 
 ## Gitignore
 
-`celebrity_birth_cards.csv` is tracked. `wikidata_people_raw.psv` stays
-untracked. Keep this README, `.gitkeep`, and the header template.
+`celebrity_birth_cards.csv` and `wikidata_people_raw.psv` are tracked.
+Keep this README, `.gitkeep`, and the header template.

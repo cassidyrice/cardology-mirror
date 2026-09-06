@@ -1,8 +1,8 @@
 # Celebrity birth-card dataset pipeline
 
 Static/SEO only. Rebuilds `people.jsonl` from public Wikimedia APIs or from the
-verified off-repo seed drop. Does not touch checkout, Stripe, webhooks,
-`generate_reading`, or any payment path.
+verified seed drop in `pipeline/data/seed/`. Does not touch checkout, Stripe,
+webhooks, `generate_reading`, or any payment path.
 
 ## Birth-card rule (D1)
 
@@ -81,15 +81,21 @@ file and does **not** submit a job.
 ## Seed drop (~1,161 rows)
 
 Verified `celebrity_birth_cards.csv` and `wikidata_people_raw.psv` live
-off-repo. Copy them into `pipeline/data/seed/` (see
-[`data/seed/README.md`](data/seed/README.md)). `--from-seed` accepts CSV
-columns `name,birth_date,birth_card,enwiki_views_8mo,slug`. Then:
+in `pipeline/data/seed/` (see [`data/seed/README.md`](data/seed/README.md)).
+`--from-seed` accepts CSV columns `name,birth_date,birth_card,enwiki_views_8mo,slug`.
+Pass `--summaries` (enwiki REST extracts) so `source_text` is the Wikipedia
+summary rather than the short Wikidata description:
 
 ```bash
-python3 -m pipeline.build_dataset --from-seed \
+# 5-column name|year|month|day|views PSV: resolve Q-ids + enwiki summaries (no Vertex)
+python3 -m pipeline.build_dataset --from-seed --fetch \
   --out pipeline/data/people.jsonl \
   --exclusion-report pipeline/data/exclusions.json
 ```
+
+`--fetch` uses Wikidata `wbgetentities` (REST, no SPARQL) and the enwiki
+REST summary API. Cached under `pipeline/data/cache/`. Birth cards are
+still recomputed with `birthcard.py` (Dec 31 = Joker).
 
 Birth cards are recomputed with `birthcard.py` (Dec 31 = Joker). Images are
 kept only when the Commons license is CC0, CC-BY, or CC-BY-SA.

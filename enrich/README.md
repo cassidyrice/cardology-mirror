@@ -40,7 +40,7 @@ python3 -m enrich.make_batch \
   --out /tmp/vertex_batch.jsonl
 ```
 
-Default `--people` is `pipeline/data/people.jsonl` (gitignored). If that file
+Default `--people` is `pipeline/data/people.jsonl`. If that file
 is missing, pass the fixture path as above. Do not invent celebrity bios to
 fill it.
 
