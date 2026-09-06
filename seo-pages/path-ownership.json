@@ -148,6 +148,22 @@
     ],
     "note": "Current US Cabinet birth-card set is isolated under /cabinet. VP + 15 secretaries only. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "senators_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/senators",
+      "/senators/{slug}",
+      "/sitemap-senators.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Current US senators birth-card set is isolated under /senators. 100 seats; day-precision Bioguide + Wikipedia + Wikidata P569 must match. Path-split is not activated."
+  },
   "governors_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -334,3 +334,26 @@ python3 -m pipeline.governors # rewrite pipeline/data/governors/people.jsonl
 - Dropped: year-only list dates, Wikipedia↔Wikidata day conflicts, DC/territories, minors, D3 keywords
 
 Path lock: [`governors-path-ownership.json`](./governors-path-ownership.json).
+
+## Current US senators (isolated `/senators`)
+
+Separate static build. Sitting senators of the 50 states (100 seats).
+Does **not** take celebrity `/birth-card/{slug}` or live card-meaning
+routes. Does **not** join the Next.js app, does **not** touch
+checkout/Stripe, and must **not** be deployed. Path-split is documented
+only — not activated.
+
+```bash
+bun run build:seo-senators   # → seo-pages/dist-senators
+bun run test:seo-senators
+python3 -m pipeline.senators # rewrite pipeline/data/senators/people.jsonl
+```
+
+- Hub: `/senators`
+- Person: `/senators/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=senators&utm_content={slug}`
+- Data: `pipeline/data/senators/people.jsonl` (Bioguide / congress.gov + Wikipedia current-senators list + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: year-only list/Bioguide dates, Bioguide↔Wikipedia↔Wikidata day conflicts, minors, D3 keywords
+
+Path lock: [`senators-path-ownership.json`](./senators-path-ownership.json).
