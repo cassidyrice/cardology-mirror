@@ -28,9 +28,8 @@ pipeline/data/seed/*
 !pipeline/data/seed/README.md
 !pipeline/data/seed/celebrity_birth_cards.header.csv
 !pipeline/data/seed/celebrity_birth_cards.csv
+!pipeline/data/seed/wikidata_people_raw.psv
 pipeline/data/cache/
-pipeline/data/people.jsonl
-pipeline/data/exclusions.json
 enrich/out/
 
 # Scraped production artifacts kept for debugging (not source)

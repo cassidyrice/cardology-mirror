@@ -167,6 +167,18 @@ def load_jsonl(path: Path) -> list[dict]:
     return rows
 
 
+def load_summaries_jsonl(path: Path | None) -> dict[str, dict]:
+    """Index Wikipedia REST summaries by qid for the seed rebuild."""
+    summaries: dict[str, dict] = {}
+    if path is None or not path.is_file():
+        return summaries
+    for row in load_jsonl(path):
+        qid = (row.get("qid") or "").strip()
+        if qid:
+            summaries[qid] = row
+    return summaries
+
+
 def _split_ids(value: str | None) -> list[str]:
     if not value:
         return []
@@ -201,6 +213,160 @@ def _join_seed(csv_row: dict, psv_index: dict[str, dict]) -> dict | None:
         if key and key in psv_index:
             return psv_index[key]
     return None
+
+
+def _iso_from_parts(year: str | None, month: str | None, day: str | None) -> str:
+    if not (year and month and day):
+        return ""
+    try:
+        return f"{int(year):04d}-{int(month):02d}-{int(day):02d}"
+    except ValueError:
+        return ""
+
+
+def _merge_seed_records(*records: dict | None) -> dict | None:
+    """Later records win for non-empty values so the 5-column PSV keeps birth parts."""
+    merged: dict[str, Any] = {}
+    for record in records:
+        if not record:
+            continue
+        for key, value in record.items():
+            if value in (None, ""):
+                continue
+            merged[key] = value
+    if not merged:
+        return None
+    constructed = _iso_from_parts(
+        merged.get("birth_year"), merged.get("birth_month"), merged.get("birth_day")
+    )
+    if constructed:
+        merged["p569"] = constructed
+        merged.setdefault("p569_precision", "11")
+    return merged
+
+
+def load_wikidata_overlay(path: Path | None) -> dict[str, dict]:
+    """Index ``wikidata_people.jsonl`` (from ``pipeline.wikidata``) for seed joins."""
+    index: dict[str, dict] = {}
+    if path is None or not path.is_file():
+        return index
+    for row in load_jsonl(path):
+        occupations = row.get("occupations") or row.get("p106") or []
+        if isinstance(occupations, str):
+            occupation_value = occupations
+        else:
+            occupation_value = ";".join(str(item) for item in occupations if item)
+        spouses = row.get("spouse_qids") or row.get("p26") or []
+        if isinstance(spouses, str):
+            spouse_value = spouses
+        else:
+            spouse_value = ";".join(str(item) for item in spouses if item)
+        record = {
+            "qid": (row.get("qid") or "").strip(),
+            "en_label": row.get("label") or row.get("en_label") or "",
+            "en_description": row.get("description") or row.get("en_description") or "",
+            "p569": row.get("birth_date") or row.get("p569") or "",
+            "p569_precision": str(row.get("precision") or row.get("p569_precision") or "11"),
+            "p26": spouse_value,
+            "p106": occupation_value,
+            "p18": row.get("image") or row.get("p18") or "",
+            "enwiki_title": row.get("enwiki_title") or row.get("lookup_title") or "",
+        }
+        keys = {
+            record["qid"],
+            (record["enwiki_title"] or "").replace(" ", "_").lower(),
+            (record["enwiki_title"] or "").replace("_", " ").strip().lower(),
+            slugify(record["en_label"]),
+            (record["en_label"] or "").strip().lower(),
+            slugify(row.get("lookup_title") or ""),
+            (row.get("lookup_title") or "").strip().lower(),
+        }
+        for key in keys:
+            if key:
+                index[key] = record
+    return index
+
+
+def write_wikidata_overlay(
+    entities: dict[str, dict],
+    lookup_titles: list[str],
+    out_path: Path,
+) -> list[str]:
+    """Write seed-join JSONL from wbgetentities results. Returns unmatched titles."""
+
+    def normalize(title: str) -> str:
+        return title.replace("_", " ").strip().lower()
+
+    by_sitelink: dict[str, dict] = {}
+    for entity in entities.values():
+        if not entity or entity.get("missing") is not None:
+            continue
+        sitelink = ((entity.get("sitelinks") or {}).get("enwiki") or {}).get("title") or ""
+        if sitelink:
+            by_sitelink[normalize(sitelink)] = entity
+
+    unmatched: list[str] = []
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as handle:
+        for title in lookup_titles:
+            entity = by_sitelink.get(normalize(title))
+            if entity is None:
+                unmatched.append(title)
+                continue
+            extracted = extract_person(entity)
+            labels = entity.get("labels") or {}
+            descriptions = entity.get("descriptions") or {}
+            sitelinks = entity.get("sitelinks") or {}
+            row: dict[str, Any] = {
+                "qid": entity.get("id"),
+                "lookup_title": title,
+                "label": (labels.get("en") or {}).get("value"),
+                "description": (descriptions.get("en") or {}).get("value"),
+                "enwiki_title": (sitelinks.get("enwiki") or {}).get("title") or title,
+            }
+            if extracted:
+                row.update(
+                    {
+                        "birth_date": extracted["birth_date"],
+                        "precision": extracted["precision"],
+                        "spouse_qids": extracted.get("spouse_qids") or [],
+                        "occupations": extracted.get("occupations") or [],
+                        "image": extracted.get("image"),
+                    }
+                )
+            else:
+                precision = None
+                times = ((entity.get("claims") or {}).get("P569") or [{}])
+                try:
+                    precision = times[0]["mainsnak"]["datavalue"]["value"]["precision"]
+                except (KeyError, IndexError, TypeError):
+                    precision = None
+                if precision is not None:
+                    row["precision"] = precision
+            handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+    return unmatched
+
+
+def titles_from_seed(csv_path: Path, psv_path: Path) -> list[str]:
+    """enwiki titles for the seed drop: PSV name/title, else CSV name."""
+    titles: list[str] = []
+    seen: set[str] = set()
+    psv_index = _index_psv(psv_path)
+    with csv_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        validate_seed_csv_columns(reader.fieldnames)
+        for csv_row in reader:
+            joined = _join_seed(csv_row, psv_index) or {}
+            title = (
+                joined.get("enwiki_title")
+                or joined.get("name")
+                or csv_row.get("name")
+                or ""
+            ).strip()
+            if title and title not in seen:
+                seen.add(title)
+                titles.append(title)
+    return titles
 
 
 def _person_record(
@@ -275,10 +441,12 @@ def build_from_seed(
     blocklist_path: Path | None = None,
     summaries: dict[str, dict] | None = None,
     image_licenses: dict[str, str] | None = None,
+    extra_psv_index: dict[str, dict] | None = None,
 ) -> dict[str, Any]:
     today = today or date.today()
     blocklist = load_blocklist(blocklist_path or DEFAULT_BLOCKLIST)
     psv_index = _index_psv(psv_path)
+    extra_psv_index = extra_psv_index or {}
     summaries = summaries or {}
     image_licenses = image_licenses or {}
 
@@ -292,7 +460,10 @@ def build_from_seed(
         for csv_row in reader:
             name = (csv_row.get("name") or "").strip()
             slug = (csv_row.get("slug") or slugify(name)).strip()
-            joined = _join_seed(csv_row, psv_index)
+            joined = _merge_seed_records(
+                _join_seed(csv_row, extra_psv_index),
+                _join_seed(csv_row, psv_index),
+            )
             if joined is None:
                 excluded.append(
                     {
@@ -510,8 +681,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--pageviews", type=Path, default=Path("pipeline/data/cache/pageviews.jsonl"))
     parser.add_argument("--wikidata-cache", type=Path, default=Path("pipeline/data/cache/wikidata"))
     parser.add_argument("--summaries", type=Path, default=Path("pipeline/data/cache/summaries.jsonl"))
+    parser.add_argument(
+        "--wikidata-people",
+        type=Path,
+        default=Path("pipeline/data/cache/wikidata_people.jsonl"),
+        help="JSONL from pipeline.wikidata; used to attach Q-ids when the seed PSV is name|birth|views.",
+    )
     parser.add_argument("--months", type=int, default=8, help="Used with --fetch to pull N months of tops.")
-    parser.add_argument("--fetch", action="store_true", help="Hit public APIs (pageviews → wikidata → summaries).")
+    parser.add_argument(
+        "--fetch",
+        action="store_true",
+        help="Hit public APIs. With --from-seed: wbgetentities + enwiki REST summaries (no Vertex).",
+    )
     parser.add_argument("--out", type=Path, default=Path("pipeline/data/people.jsonl"))
     parser.add_argument("--exclusion-report", type=Path, default=Path("pipeline/data/exclusions.json"))
     parser.add_argument("--blocklist", type=Path, default=DEFAULT_BLOCKLIST)
@@ -520,12 +701,46 @@ def main(argv: list[str] | None = None) -> int:
     if args.from_seed:
         csv_path = require_seed_csv(args.csv)
         psv_path = require_seed_psv(args.psv)
+        if args.fetch:
+            titles = titles_from_seed(csv_path, psv_path)
+            entities = fetch_titles(titles, args.wikidata_cache)
+            unmatched = write_wikidata_overlay(entities, titles, args.wikidata_people)
+            if unmatched:
+                fail_path = args.wikidata_people.with_suffix(".unmatched.json")
+                fail_path.write_text(json.dumps(unmatched, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+                print(f"wikidata unmatched {len(unmatched)} titles → {fail_path}")
+            overlay_rows = load_jsonl(args.wikidata_people) if args.wikidata_people.is_file() else []
+            args.summaries.parent.mkdir(parents=True, exist_ok=True)
+            summary_failures: list[dict[str, str]] = []
+            with args.summaries.open("w", encoding="utf-8") as handle:
+                for row in overlay_rows:
+                    title = row.get("enwiki_title") or row.get("lookup_title")
+                    if not title:
+                        continue
+                    try:
+                        summary = fetch_summary(title, cache_dir=Path("pipeline/data/cache/summaries"))
+                    except Exception as exc:  # noqa: BLE001 — per-title fetch must not abort the drop
+                        summary_failures.append(
+                            {"qid": row.get("qid") or "", "title": title, "error": str(exc)}
+                        )
+                        continue
+                    summary["qid"] = row.get("qid")
+                    handle.write(json.dumps(summary, ensure_ascii=False) + "\n")
+            if summary_failures:
+                fail_path = args.summaries.with_suffix(".failures.json")
+                fail_path.write_text(
+                    json.dumps(summary_failures, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                print(f"summary failures {len(summary_failures)} → {fail_path}")
         result = build_from_seed(
             csv_path=csv_path,
             psv_path=psv_path,
             out_jsonl=args.out,
             exclusion_report=args.exclusion_report,
             blocklist_path=args.blocklist,
+            summaries=load_summaries_jsonl(args.summaries),
+            extra_psv_index=load_wikidata_overlay(args.wikidata_people),
         )
     else:
         if args.fetch:
