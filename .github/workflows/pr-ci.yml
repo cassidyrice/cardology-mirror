@@ -110,6 +110,7 @@ jobs:
             scripts/calculator-deep-dive.test.ts \
             scripts/site-navigation.test.ts \
             scripts/card-meaning-equity.test.ts \
+            scripts/famous-birthdays-grounding.test.ts \
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
             scripts/worker-production-contract-lib.test.ts \
