@@ -1,0 +1,223 @@
+{
+  "generated_at": "2026-09-06T22:19:23.267557+00:00",
+  "people_count": 74,
+  "catalog_people": 82,
+  "catalog_concepts": 16,
+  "catalog_honor_years": 84,
+  "kept": 74,
+  "excluded": 24,
+  "by_reason": {
+    "concept": 16,
+    "description_keyword": 1,
+    "missing_birth": 6,
+    "dob_conflict": 1
+  },
+  "exclusions": [
+    {
+      "qid": null,
+      "name": "The American fighting-man",
+      "wikipedia_title": "",
+      "year": "1950",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Hungarian freedom fighter",
+      "wikipedia_title": "",
+      "year": "1956",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "U.S. Scientists",
+      "wikipedia_title": "",
+      "year": "1960",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Inheritor",
+      "wikipedia_title": "",
+      "year": "1966",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Middle Americans",
+      "wikipedia_title": "",
+      "year": "1969",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "American women",
+      "wikipedia_title": "",
+      "year": "1975",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Computer",
+      "wikipedia_title": "",
+      "year": "1982",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Endangered Earth",
+      "wikipedia_title": "",
+      "year": "1988",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The American soldier",
+      "wikipedia_title": "",
+      "year": "2003",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "You",
+      "wikipedia_title": "",
+      "year": "2006",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Protester",
+      "wikipedia_title": "",
+      "year": "2011",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "Ebola",
+      "wikipedia_title": "",
+      "year": "2014",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Silence Breakers",
+      "wikipedia_title": "",
+      "year": "2017",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Guardians",
+      "wikipedia_title": "",
+      "year": "2018",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Spirit of Ukraine",
+      "wikipedia_title": "",
+      "year": "2022",
+      "reason": "concept"
+    },
+    {
+      "qid": null,
+      "name": "The Architects of AI",
+      "wikipedia_title": "",
+      "year": "2025",
+      "reason": "concept"
+    },
+    {
+      "qid": "Q352",
+      "name": "Adolf Hitler",
+      "wikipedia_title": "Adolf Hitler",
+      "wikipedia_infobox_date": "1889-04-20",
+      "wikidata_birth_date": null,
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q5200035",
+      "name": "Cynthia Cooper",
+      "wikipedia_title": "Cynthia Cooper (accountant)",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q472824",
+      "name": "Harlow Curtice",
+      "wikipedia_title": "Harlow Curtice",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q855",
+      "name": "Joseph Stalin",
+      "wikipedia_title": "Joseph Stalin",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q35314",
+      "name": "Nikita Khrushchev",
+      "wikipedia_title": "Nikita Khrushchev",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q38823",
+      "name": "Ruhollah Khomeini",
+      "wikipedia_title": "Ruhollah Khomeini",
+      "wikipedia_infobox_date": "1900-05-17",
+      "wikidata_birth_date": "1902-09-24",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q34211",
+      "name": "Yasser Arafat",
+      "wikipedia_title": "Yasser Arafat",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q44071",
+      "name": "Yuri Andropov",
+      "wikipedia_title": "Yuri Andropov",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_birth"
+    }
+  ],
+  "sources": [
+    "Wikipedia Time Person of the Year list (https://en.wikipedia.org/wiki/Time_Person_of_the_Year)",
+    "Wikipedia article infobox birth-date templates (CC BY-SA 4.0)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)",
+    "TIME magazine / vault is context only (https://time.com/, https://time.com/person-of-the-year/, https://time.com/vault/) \u2014 not a date source"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Wikipedia Person(s) of the Year Choice-column named human, or a year whose Notes say \u201cRepresented by\u201d named people, or Apollo 8 Lifetime name:year lines, AND Wikidata instance-of human AND Wikipedia infobox YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match. Duals/joint years are split per person.",
+    "drop": [
+      "concept / machine / group-as-concept Choice years (Fighting-Man, Computer, You, etc.)",
+      "notes-only spotlight names that are not \u201cRepresented by\u201d honorees",
+      "year_only (Wikipedia infobox year without month/day)",
+      "dob_conflict (Wikipedia infobox day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "not_a_person",
+      "missing Wikipedia summary"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false,
+    "person_scope_only": true,
+    "time_vault": "TIME.com / vault is context for the honor, not a date source. Vault HTML is not fetched. Dates are never invented from it."
+  },
+  "time_home": "https://time.com/",
+  "time_vault": "https://time.com/vault/",
+  "wikipedia_list_url": "https://en.wikipedia.org/wiki/Time_Person_of_the_Year",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}

@@ -401,6 +401,27 @@ python3 -m pytest pipeline/tests/test_kennedy_center_honors.py
 Output: [`data/kennedy_center_honors/people.jsonl`](data/kennedy_center_honors/people.jsonl).
 Pages: `bun run build:seo-kennedy-center-honors`. Do not deploy.
 
+## TIME Person of the Year (isolated `/time-person-of-the-year`)
+
+Named humans only from the Wikipedia Person(s) of the Year table. Duals
+and joint years are split per person. Abstractions, machines, and
+groups-as-concepts stay out, including Notes-only cover spotlights.
+Wikipedia person-page infobox birth-date templates (plus `birth date
+text` / bare month-day fields) are the public day. Wikidata `P569`
+precision 11 must match. Year-only dates, Wikipedia↔Wikidata conflicts,
+minors, and D3 keywords are dropped. Dates are never invented. TIME.com
+/ vault is context only and is never fetched as a date source. The
+celebrity `year_before_1900` cut is **not** applied. Birth cards use
+this module's D1 rule.
+
+```bash
+python3 -m pipeline.time_poty
+python3 -m pytest pipeline/tests/test_time_poty.py
+```
+
+Output: [`data/time_poty/people.jsonl`](data/time_poty/people.jsonl).
+Pages: `bun run build:seo-time-poty`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages

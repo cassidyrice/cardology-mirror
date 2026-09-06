@@ -170,6 +170,15 @@ bun run test:seo-kennedy-center-honors
 python3 -m pipeline.kennedy_center_honors
 ```
 
+TIME Person of the Year birth-card pages (`/time-person-of-the-year/{slug}`),
+named humans only, day-precision only. TIME vault is context, not a date source:
+
+```bash
+bun run build:seo-time-poty   # → seo-pages/dist-time-poty
+bun run test:seo-time-poty
+python3 -m pipeline.time_poty
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

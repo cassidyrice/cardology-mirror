@@ -357,6 +357,22 @@
     ],
     "note": "US House leadership + standing committee chair birth-card set is isolated under /house-chairs. house.gov/leadership plus 20 standing chairs. Day-precision Wikipedia infobox + Bioguide + Wikidata P569 must match. Select/campaign committees omitted. Path-split is not activated."
   },
+  "time_poty_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/time-person-of-the-year",
+      "/time-person-of-the-year/{slug}",
+      "/sitemap-time-person-of-the-year.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "TIME Person of the Year birth-card set is isolated under /time-person-of-the-year. Named humans only. Duals split per person. Day-precision Wikipedia infobox + Wikidata P569 match. TIME vault is context only. Path-split is not activated."
+  },
   "pulitzer_fiction_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

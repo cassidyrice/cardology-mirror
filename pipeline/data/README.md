@@ -93,6 +93,14 @@ celebrity rebuild. `mlb_first_games.json` is the BBRef/Retrosheet snapshot.
 Regenerate both with `python3 -m pipeline.build_mlb`. Do not gitignore
 these two files. Dates are franchise first MLB games, not player DOBs.
 
+## TIME Person of the Year (committed)
+
+`time_poty/people.jsonl` is a generated named-human harvest, not a
+celebrity rebuild. Identity is the Wikipedia TIME Person of the Year
+list. Dates are Wikipedia infobox days verified against Wikidata P569.
+TIME vault is context only. Regenerate with `python3 -m pipeline.time_poty`.
+See [`time_poty/README.md`](time_poty/README.md).
+
 ## US National Parks (committed)
 
 Park dates live in `seo-pages/data/parks.jsonl` (not this folder). Primary
