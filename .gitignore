@@ -27,6 +27,7 @@ pipeline/data/seed/*
 !pipeline/data/seed/.gitkeep
 !pipeline/data/seed/README.md
 !pipeline/data/seed/celebrity_birth_cards.header.csv
+!pipeline/data/seed/celebrity_birth_cards.csv
 pipeline/data/cache/
 pipeline/data/people.jsonl
 pipeline/data/exclusions.json

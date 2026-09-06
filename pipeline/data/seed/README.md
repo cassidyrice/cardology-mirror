@@ -1,7 +1,8 @@
 # Seed drop (off-repo)
 
-Copy the verified ~1,161-row celebrity seed here before a `--from-seed` rebuild.
-Do **not** invent bios. Do **not** commit the real drop.
+The verified ~1,161-row celebrity seed lives at
+`celebrity_birth_cards.csv`. Do **not** invent bios. The Wikidata PSV
+drop remains off-repo.
 
 `pipeline/build_dataset.py --from-seed` looks here first, then
 `pipeline/data/drop/`. Birth cards are always recomputed with
