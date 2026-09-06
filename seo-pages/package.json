@@ -7,6 +7,7 @@
     "build:franchises": "bun src/build-franchises.ts",
     "build:holidays": "bun src/holidays/build.ts",
     "build:parks": "bun src/parks/build.ts",
+    "build:cabinet": "bun src/cabinet/build.ts",
     "build:signers": "bun src/signers/build.ts",
     "build:nobel": "bun src/nobel/build.ts",
     "build:scotus": "bun src/scotus/build.ts",

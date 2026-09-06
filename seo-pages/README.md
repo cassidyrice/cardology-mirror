@@ -291,6 +291,28 @@ coordinates, not fortune-telling.
 Path lock: [`mlb-path-ownership.json`](./mlb-path-ownership.json).
 Dates: [`data/MLB.md`](./data/MLB.md).
 
+## Current US Cabinet (isolated `/cabinet`)
+
+Separate static build. Sitting Vice President + 15 executive-department
+heads. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes. Does **not** join the Next.js app, does **not**
+touch checkout/Stripe, and must **not** be deployed.
+
+```bash
+bun run build:seo-cabinet   # → seo-pages/dist-cabinet
+bun run test:seo-cabinet
+python3 -m pipeline.cabinet # rewrite pipeline/data/cabinet/people.jsonl
+```
+
+- Hub: `/cabinet`
+- Person: `/cabinet/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=cabinet&utm_content={slug}`
+- Data: `pipeline/data/cabinet/people.jsonl` (White House roster + Wikipedia infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: Cabinet-level officials outside the 15 departments, year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords
+
+Path lock: [`cabinet-path-ownership.json`](./cabinet-path-ownership.json).
+
 ## Current US governors (isolated `/governors`)
 
 Separate static build. Sitting governors of the 50 states. Does **not**

@@ -89,6 +89,15 @@ bun run test:seo-governors
 python3 -m pipeline.governors
 ```
 
+Current US Cabinet birth-card pages are an isolated build (`/cabinet/{slug}`),
+VP + 15 secretaries only:
+
+```bash
+bun run build:seo-cabinet   # → seo-pages/dist-cabinet
+bun run test:seo-cabinet
+python3 -m pipeline.cabinet
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
