@@ -97,6 +97,22 @@ python3 -m pytest pipeline/tests/test_holidays.py
 Writes [`../seo-pages/data/holidays.jsonl`](../seo-pages/data/holidays.jsonl).
 Pages: `bun run build:seo-holidays`. Do not deploy.
 
+## Nobel laureates (isolated `/nobel`)
+
+People with a day-precision Nobel API v2.1 birth date **and** a matching
+Wikidata `P569` (precision 11). Organizations, year-only dates
+(`YYYY-00-00`), Nobel↔Wikidata conflicts, minors, and D3 description
+keywords are dropped. Dates are never invented. The celebrity
+`year_before_1900` cut is **not** applied (Curie 1867, Einstein 1879).
+
+```bash
+python3 -m pipeline.nobel
+python3 -m pytest pipeline/tests/test_nobel.py
+```
+
+Output: [`data/nobel/people.jsonl`](data/nobel/people.jsonl). Pages:
+`bun run build:seo-nobel`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

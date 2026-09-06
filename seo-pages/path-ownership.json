@@ -84,6 +84,22 @@
     ],
     "note": "US federal holiday birth-card set is isolated under /holidays. Fixed § 6103(a) dates only. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "nobel_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/nobel",
+      "/nobel/{slug}",
+      "/sitemap-nobel.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Nobel laureate birth-card set is isolated under /nobel. Day-precision Nobel API dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "parks_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

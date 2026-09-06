@@ -1,0 +1,17 @@
+{
+  "id": "99901",
+  "knownName": { "en": "Year Only Fixture" },
+  "birth": { "date": "1948-00-00", "year": "1948" },
+  "wikipedia": { "slug": "Year_Only_Fixture" },
+  "wikidata": { "id": "Q0NOB2" },
+  "links": [{ "rel": "external", "href": "https://www.nobelprize.org/laureate/99901", "class": ["laureate facts"] }],
+  "nobelPrizes": [
+    {
+      "awardYear": "2021",
+      "category": { "en": "Literature" },
+      "categoryFullName": { "en": "The Nobel Prize in Literature" },
+      "portion": "1",
+      "motivation": { "en": "synthetic year-only fixture" }
+    }
+  ]
+}

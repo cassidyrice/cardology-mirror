@@ -1,0 +1,492 @@
+{
+  "generated_at": "2026-09-06T19:12:07.432598+00:00",
+  "people_count": 954,
+  "nobel_api_count": 1018,
+  "catalog_people": 990,
+  "catalog_organizations": 28,
+  "kept": 954,
+  "excluded": 64,
+  "by_reason": {
+    "year_only": 20,
+    "organization": 28,
+    "dob_conflict": 15,
+    "wikidata_precision": 1
+  },
+  "exclusions": [
+    {
+      "nobel_id": "1004",
+      "qid": "Q317877",
+      "name": "Abdulrazak Gurnah",
+      "nobel_birth": "1948-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "519",
+      "qid": "Q212955",
+      "name": "Albert Lutuli",
+      "nobel_birth": "1898-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1031",
+      "qid": "Q1547368",
+      "name": "Aleksey Yekimov",
+      "nobel_birth": "1945-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "509",
+      "qid": "Q464677",
+      "name": "American Friends Service Committee",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "537",
+      "qid": "Q42970",
+      "name": "Amnesty International",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "998",
+      "qid": "Q60322501",
+      "name": "Ardem Patapoutian",
+      "nobel_birth": "1967-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1020",
+      "qid": "Q114452906",
+      "name": "Center for Civil Liberties",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "68",
+      "qid": "Q181369",
+      "name": "Chen Ning Yang",
+      "nobel_birth": "1922-09-22",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "1039",
+      "qid": "Q3814528",
+      "name": "David Baker",
+      "nobel_birth": "1962-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1007",
+      "qid": "Q1173928",
+      "name": "David Card",
+      "nobel_birth": "1956-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "568",
+      "qid": "Q49330",
+      "name": "Doctors Without Borders",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "881",
+      "qid": "Q458",
+      "name": "European Union",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "508",
+      "qid": "Q677499",
+      "name": "Friends Service Council",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "1036",
+      "qid": "Q504021",
+      "name": "Gary Ruvkun",
+      "nobel_birth": "1952-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "810",
+      "qid": "Q188567",
+      "name": "Grameen Bank",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "467",
+      "qid": "Q115095",
+      "name": "Institute of International Law",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "818",
+      "qid": "Q171183",
+      "name": "Intergovernmental Panel on Climate Change",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "797",
+      "qid": "Q41984",
+      "name": "International Atomic Energy Agency",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "948",
+      "qid": "Q547940",
+      "name": "International Campaign to Abolish Nuclear Weapons",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "564",
+      "qid": "Q325523",
+      "name": "International Campaign to Ban Landmines",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "482",
+      "qid": "Q5987345",
+      "name": "International Committee of the Red Cross",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "527",
+      "qid": "Q54129",
+      "name": "International Labour Organization",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "547",
+      "qid": "Q245385",
+      "name": "International Physicians for the Prevention of Nuclear War",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "296",
+      "qid": "Q42985",
+      "name": "Ivan Pavlov",
+      "nobel_birth": "1849-09-14",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "1046",
+      "qid": "Q19520018",
+      "name": "James A. Robinson",
+      "nobel_birth": "1960-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "832",
+      "qid": "Q7884119",
+      "name": "Jean-Marie Gustave Le Cl\u00e9zio",
+      "nobel_birth": "1940-04-13",
+      "reason": "wikidata_precision"
+    },
+    {
+      "nobel_id": "1050",
+      "qid": "Q555849",
+      "name": "John Clarke",
+      "nobel_birth": "1942-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1041",
+      "qid": "Q89620738",
+      "name": "John Jumper",
+      "nobel_birth": "1985-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1052",
+      "qid": "Q28976188",
+      "name": "John M. Martinis",
+      "nobel_birth": "1958-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "627",
+      "qid": "Q131318",
+      "name": "Juan Ram\u00f3n Jim\u00e9nez",
+      "nobel_birth": "1881-12-24",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "725",
+      "qid": "Q45785",
+      "name": "Kim Dae-jung",
+      "nobel_birth": "1924-01-08",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "473",
+      "qid": "Q192618",
+      "name": "Klas Pontus Arnoldson",
+      "nobel_birth": "1844-10-27",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "523",
+      "qid": "Q1069175",
+      "name": "League of Red Cross Societies",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "484",
+      "qid": "Q217706",
+      "name": "L\u00e9on Bourgeois",
+      "nobel_birth": "1851-05-21",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "1030",
+      "qid": "Q194646",
+      "name": "Louis Brus",
+      "nobel_birth": "1943-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1057",
+      "qid": "Q439564",
+      "name": "Maria Corina Machado",
+      "nobel_birth": "1967-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1019",
+      "qid": "Q851563",
+      "name": "Memorial",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "986",
+      "qid": "Q1927895",
+      "name": "Michael Houghton",
+      "nobel_birth": "1949-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "1051",
+      "qid": "Q26703310",
+      "name": "Michel H. Devoret",
+      "nobel_birth": "1953-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "880",
+      "qid": "Q8998",
+      "name": "Mo Yan",
+      "nobel_birth": "1956-03-25",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "1029",
+      "qid": "Q15433043",
+      "name": "Moungi Bawendi",
+      "nobel_birth": "1961-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "503",
+      "qid": "Q743558",
+      "name": "Nansen International Office for Refugees",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "925",
+      "qid": "Q21078159",
+      "name": "National Dialogue Quartet",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "1043",
+      "qid": "Q1989908",
+      "name": "Nihon Hidankyo",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "515",
+      "qid": "Q132551",
+      "name": "Office of the United Nations High Commissioner for Refugees",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "893",
+      "qid": "Q842490",
+      "name": "Organisation for the Prohibition of Chemical Weapons",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "549",
+      "qid": "Q49344",
+      "name": "Oscar Arias S\u00e1nchez",
+      "nobel_birth": "1940-09-13",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "969",
+      "qid": "Q509262",
+      "name": "Paul M. Romer",
+      "nobel_birth": "1955-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "477",
+      "qid": "Q252420",
+      "name": "Permanent International Peace Bureau",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "561",
+      "qid": "Q381282",
+      "name": "Pugwash Conferences on Science and World Affairs",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "110",
+      "qid": "Q172844",
+      "name": "Pyotr Kapitsa",
+      "nobel_birth": "1894-07-09",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "709",
+      "qid": "Q237821",
+      "name": "Robert W. Fogel",
+      "nobel_birth": "1927-07-01",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "864",
+      "qid": "Q106949",
+      "name": "Saul Perlmutter",
+      "nobel_birth": "1959-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "558",
+      "qid": "Q57410",
+      "name": "Shimon Peres",
+      "nobel_birth": "1923-08-16",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "639",
+      "qid": "Q133042",
+      "name": "Shmuel Agnon",
+      "nobel_birth": "1888-07-17",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "1045",
+      "qid": "Q1461050",
+      "name": "Simon Johnson",
+      "nobel_birth": "1963-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "219",
+      "qid": "Q48986",
+      "name": "Sir Cyril Hinshelwood",
+      "nobel_birth": "1897-05-19",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "350",
+      "qid": "Q115490",
+      "name": "Tadeus Reichstein",
+      "nobel_birth": "1897-07-20",
+      "reason": "dob_conflict"
+    },
+    {
+      "nobel_id": "748",
+      "qid": "Q1065",
+      "name": "United Nations",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "525",
+      "qid": "Q740308",
+      "name": "United Nations Children's Fund",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "550",
+      "qid": "Q219575",
+      "name": "United Nations Peacekeeping Forces",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "841",
+      "qid": "Q60061",
+      "name": "Venkatraman Ramakrishnan",
+      "nobel_birth": "1952-00-00",
+      "reason": "year_only"
+    },
+    {
+      "nobel_id": "994",
+      "qid": "Q204344",
+      "name": "World Food Programme",
+      "nobel_birth": null,
+      "reason": "organization"
+    },
+    {
+      "nobel_id": "557",
+      "qid": "Q34211",
+      "name": "Yasser Arafat",
+      "nobel_birth": "1929-08-24",
+      "reason": "dob_conflict"
+    }
+  ],
+  "sources": [
+    "Nobel Prize API v2.1 laureates (https://api.nobelprize.org/2.1/)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Nobel API YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match",
+    "drop": [
+      "year_only (Nobel YYYY-00-00 / year-only)",
+      "dob_conflict (Nobel day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "organization",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "missing Wikipedia summary or Nobel URL"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false
+  },
+  "nobel_api": "https://api.nobelprize.org/2.1/",
+  "nobel_meta": {
+    "terms": "https://www.nobelprize.org/about/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/",
+    "license": "https://www.nobelprize.org/about/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/#licence",
+    "disclaimer": "https://www.nobelprize.org/about/terms-of-use-for-api-nobelprize-org-and-data-nobelprize-org/#disclaimer"
+  },
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}
