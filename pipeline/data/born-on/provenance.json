@@ -1,0 +1,587 @@
+{
+  "generated_at": "2026-09-06T21:21:12Z",
+  "path": "/born-on/{month}-{day}",
+  "niche": "existing-born-on-grounding",
+  "catalog_source": "pipeline/data/people.jsonl",
+  "catalog_people": 1058,
+  "kept": 1058,
+  "excluded": 103,
+  "harvest_dropped": 0,
+  "days": 366,
+  "days_with_people": 340,
+  "days_empty": 26,
+  "empty_slugs": [
+    "january-2",
+    "january-18",
+    "january-25",
+    "february-3",
+    "february-7",
+    "march-15",
+    "march-18",
+    "march-30",
+    "april-7",
+    "may-10",
+    "may-18",
+    "may-19",
+    "may-30",
+    "july-4",
+    "july-31",
+    "august-20",
+    "august-27",
+    "september-16",
+    "september-30",
+    "october-12",
+    "november-7",
+    "november-21",
+    "november-26",
+    "december-7",
+    "december-16",
+    "december-20"
+  ],
+  "catalog_by_reason": {
+    "description_keyword": 17,
+    "year_before_1900": 41,
+    "minor": 5,
+    "missing_qid": 40
+  },
+  "harvest_by_reason": {},
+  "catalog_exclusions": [
+    {
+      "qid": "Q309643",
+      "name": "Ed Gein",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q352",
+      "name": "Adolf Hitler",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q2919350",
+      "name": "Mojtaba Khamenei",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q34597",
+      "name": "James A. Garfield",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q47906",
+      "name": "Hermann Göring",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q23",
+      "name": "George Washington",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q298364",
+      "name": "Jeffrey Dahmer",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q91",
+      "name": "Abraham Lincoln",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q192218",
+      "name": "Ted Bundy",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q33866",
+      "name": "Theodore Roosevelt",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q280856",
+      "name": "George VI",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q517",
+      "name": "Napoleon",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q553191",
+      "name": "Dawood Ibrahim",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q855",
+      "name": "Joseph Stalin",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q269412",
+      "name": "George V",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q8016",
+      "name": "Winston Churchill",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q9916",
+      "name": "Dwight D. Eisenhower",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q590227",
+      "name": "Edward VIII",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q298252",
+      "name": "John Wayne Gacy",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q20875",
+      "name": "Edward VII",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q720",
+      "name": "Genghis Khan",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q35498",
+      "name": "Chester A. Arthur",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q1317",
+      "name": "Osama bin Laden",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q364232",
+      "name": "Charles J. Guiteau",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q47365",
+      "name": "Marie Antoinette",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q9458",
+      "name": "Muhammad",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q1001",
+      "name": "Mahatma Gandhi",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q5109030",
+      "name": "Christa Pike",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q178903",
+      "name": "Alexander Hamilton",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q264849",
+      "name": "Aileen Wuornos",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q7347954",
+      "name": "Robert Napper",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q365456",
+      "name": "Dennis Rader",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q37594",
+      "name": "William the Conqueror",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q237514",
+      "name": "Laura Ingalls Wilder",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q47152",
+      "name": "Mary Shelley",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q222134",
+      "name": "Ted Kaczynski",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q334284",
+      "name": "Benjamin Guinness",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q2915508",
+      "name": "Charles Sobhraj",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q336690",
+      "name": "Edward Guinness, 1st Earl of Iveagh",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q882",
+      "name": "Charlie Chaplin",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q549242",
+      "name": "Edmund Kemper",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q131412",
+      "name": "Mary, Queen of Scots",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q23559",
+      "name": "Benito Mussolini",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q5611358",
+      "name": "Roscoe Conkling",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q161159",
+      "name": "Charlotte of Mecklenburg-Strelitz",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q4898763",
+      "name": "Betty Broderick",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q133462797",
+      "name": "Brian Madjo",
+      "reason": "minor"
+    },
+    {
+      "qid": "Q240496",
+      "name": "Lizzie Borden",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q302091",
+      "name": "Aaron Hernandez",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q34836",
+      "name": "Ulysses S. Grant",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q124031330",
+      "name": "Evie Templeton",
+      "reason": "minor"
+    },
+    {
+      "qid": "Q944350",
+      "name": "Richard Speck",
+      "reason": "description_keyword"
+    },
+    {
+      "qid": "Q935",
+      "name": "Isaac Newton",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "",
+      "name": "Randy Jackson",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q130442747",
+      "name": "Max Dowman",
+      "reason": "minor"
+    },
+    {
+      "qid": "Q234261",
+      "name": "Lucretia Garfield",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q182921",
+      "name": "Reza Shah",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q47892618",
+      "name": "Sunny Sandler",
+      "reason": "minor"
+    },
+    {
+      "qid": "",
+      "name": "Victoria",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "Q8007",
+      "name": "Franklin Delano Roosevelt",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "",
+      "name": "Prince",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Wade Wilson",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q38370",
+      "name": "Henry VIII of England",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "",
+      "name": "Clavicular",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q130390376",
+      "name": "Vaibhav Suryavanshi",
+      "reason": "minor"
+    },
+    {
+      "qid": "",
+      "name": "Ronaldo",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Michael Johnston",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Marc Hagit Cucurella",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Anthony Gordon",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Mohammad Reza I of Iran",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q7207",
+      "name": "Elizabeth I of England",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "",
+      "name": "Mark Kerr",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Graham Greene",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Mike Brown",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "James Norton",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Randy Jackson",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Nick Robinson",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Prichard Colón jr",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Luis de la Fuente",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "James Redford",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Mohit Sharma",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Dara",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Bill Montgomery",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q127318",
+      "name": "George III of Great Britain",
+      "reason": "year_before_1900"
+    },
+    {
+      "qid": "",
+      "name": "Ajit Kumar Chogle",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Johan Bellingham",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Pradeep Rawat",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Luke Thompson",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Patrick Ball",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Víctor Muñoz",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Jose Alvarado",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Erik Sullivan",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Aitch",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Yash",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Bajrakitiyabha, Princess Rajasarinisiribajra",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Tom Burke",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Alex Grant",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Nathaniel Brown",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Charlie Murphy",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Dan Levy",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Michael Wright",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Slavko Vinčič",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "",
+      "name": "Jack O'Connell",
+      "reason": "missing_qid"
+    }
+  ],
+  "harvest_exclusions": [],
+  "keep": "Celebrity people.jsonl row with YYYY-MM-DD public DOB AND Wikidata P569 day precision already applied upstream AND birthcard.py match AND not minor AND not D3 description_keyword AND not year_before_1900",
+  "drop": [
+    "year_only / missing_birth",
+    "wikidata_precision (P569 missing or < 11)",
+    "dob_conflict (catalog day ≠ Wikidata P569 day)",
+    "minor",
+    "description_keyword (D3)",
+    "year_before_1900",
+    "missing_qid / missing_source / card_mismatch / duplicate_qid"
+  ],
+  "sources": [
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred) via pipeline/data/people.jsonl",
+    "Wikipedia REST summaries (CC BY-SA 4.0) as source_text only — never a date source",
+    "pipeline.birthcard (December 31 = Joker; year unused)"
+  ],
+  "notes": [
+    "Not a new niche. Pages stay on live /born-on/{month-day}.",
+    "Empty days keep a page and do not invent notables.",
+    "No person URLs. Notables are blocks on the existing day page.",
+    "Path-split is not activated. Do not deploy this dist onto Pages."
+  ]
+}

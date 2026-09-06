@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/born-on-day.json",
+  "title": "Born-on calendar day page",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "month",
+    "day",
+    "label",
+    "card",
+    "people_count",
+    "qids"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^(january|february|march|april|may|june|july|august|september|october|november|december)-([1-9]|[12][0-9]|3[01])$"
+    },
+    "month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "card": {
+      "type": "string",
+      "pattern": "^(Joker|([A2-9JQK]|10)[♥♣♦♠])$"
+    },
+    "people_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "qids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^Q[0-9A-Z]+$"
+      }
+    }
+  }
+}

@@ -44,6 +44,8 @@
     "test:seo-governors": "bun test seo-pages/governors.test.ts",
     "build:seo-astronauts": "bun seo-pages/src/astronauts/build.ts",
     "test:seo-astronauts": "bun test seo-pages/astronauts.test.ts",
+    "build:seo-born-on": "bun seo-pages/src/born-on/build.ts",
+    "test:seo-born-on": "bun test seo-pages/born-on.test.ts",
     "build:seo-cabinet": "bun seo-pages/src/cabinet/build.ts",
     "test:seo-cabinet": "bun test seo-pages/cabinet.test.ts",
     "build:seo-senators": "bun seo-pages/src/senators/build.ts",
