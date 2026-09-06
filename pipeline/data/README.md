@@ -51,6 +51,9 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | NASA astronauts provenance | `pipeline/data/astronauts/provenance.json` | yes |
 | Celeb blog citations | `pipeline/data/celebs/people.jsonl` | yes |
 | Celeb blog provenance | `pipeline/data/celebs/provenance.json` | yes |
+| Born-on notables dataset | `pipeline/data/born-on/people.jsonl` | yes |
+| Born-on days | `pipeline/data/born-on/days.jsonl` | yes |
+| Born-on provenance | `pipeline/data/born-on/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

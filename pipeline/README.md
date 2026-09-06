@@ -328,6 +328,23 @@ python3 -m pytest pipeline/tests/test_celeb_blog_citations.py
 Output: [`data/celebs/people.jsonl`](data/celebs/people.jsonl). Do not
 deploy. Do not touch Stripe.
 
+## Born-on notables (grounding of live `/born-on`)
+
+Authority upgrade for existing `/born-on/{month}-{day}` pages. Not a new
+niche. Groups the verified celebrity `people.jsonl` catalog (Wikidata
+`P569` day precision) onto all 366 calendar days. Year-only dates,
+conflicts, minors, and D3 keywords stay dropped. Empty days keep a page
+and do not invent notables. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.born_on
+python3 -m pytest pipeline/tests/test_born_on.py
+```
+
+Output: [`data/born-on/people.jsonl`](data/born-on/people.jsonl) and
+[`data/born-on/days.jsonl`](data/born-on/days.jsonl). Pages:
+`bun run build:seo-born-on`. Do not deploy. Path-split is not activated.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

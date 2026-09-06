@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -501,3 +501,26 @@ python3 -m pipeline.astronauts # rewrite pipeline/data/astronauts/people.jsonl
 - Dropped: year-only NASA dates, Wikidata precision &lt; 11, NASA↔Wikidata conflicts, minors, D3 keywords
 
 Path lock: [`astronauts-path-ownership.json`](./astronauts-path-ownership.json).
+
+## Born-on notable people (grounding of live `/born-on`)
+
+Authority upgrade of the existing Worker `/born-on/{month-day}` pages.
+**Not** a new niche and **not** `/birthday`. Isolated static build. Does
+**not** join the Next.js app, does **not** touch checkout/Stripe, and must
+**not** be deployed. Path-split is documented only — not activated.
+
+```bash
+bun run build:seo-born-on   # → seo-pages/dist-born-on
+bun run test:seo-born-on
+python3 -m pipeline.born_on # rewrite pipeline/data/born-on/{people,days}.jsonl
+```
+
+- Hub: `/born-on`
+- Day: `/born-on/{month}-{day}`
+- CTA: `/checkout/deep-dive?utm_source=born-on&utm_content={slug}`
+- Data: `pipeline/data/born-on/people.jsonl` (verified Wikidata P569 catalog)
+- Copy: local templates from Wikipedia summaries + harvested card meanings. No Vertex.
+- Dropped: year-only dates, Wikidata precision &lt; 11, conflicts, minors, D3 keywords
+- Empty days keep a page and do not invent notables
+
+Path lock: [`born-on-path-ownership.json`](./born-on-path-ownership.json).
