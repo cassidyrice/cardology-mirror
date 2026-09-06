@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/holiday.json",
+  "title": "US federal holiday birth-card row (fixed dates only)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "month",
+    "day",
+    "card",
+    "usc_citation",
+    "usc_url",
+    "opm_calendars_url",
+    "date_kind",
+    "observed_shift"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "month": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 12
+    },
+    "day": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 31
+    },
+    "card": {
+      "type": "string",
+      "pattern": "^(Joker|([A2-9JQK]|10)[♥♣♦♠])$"
+    },
+    "usc_citation": {
+      "type": "string",
+      "const": "5 U.S.C. § 6103(a)"
+    },
+    "usc_url": {
+      "type": "string",
+      "const": "https://www.law.cornell.edu/uscode/text/5/6103"
+    },
+    "opm_calendars_url": {
+      "type": "string",
+      "const": "https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/"
+    },
+    "date_kind": {
+      "type": "string",
+      "const": "fixed"
+    },
+    "observed_shift": {
+      "type": "string",
+      "const": "ignored"
+    }
+  }
+}

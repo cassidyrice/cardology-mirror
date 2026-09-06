@@ -5,6 +5,7 @@
   "scripts": {
     "build": "bun src/build.ts",
     "build:franchises": "bun src/build-franchises.ts",
+    "build:holidays": "bun src/holidays/build.ts",
     "test": "bun test"
   }
 }

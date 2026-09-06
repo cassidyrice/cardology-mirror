@@ -39,7 +39,15 @@ bun run test:seo-presidents
 python3 -m pipeline.presidents # refresh Wikidata + Wikipedia JSONL
 ```
 
-Do not deploy either scaffold from this work.
+US federal holiday birth-card pages (fixed § 6103(a) dates only, `/holidays/{slug}`):
+
+```bash
+bun run build:seo-holidays   # → seo-pages/dist-holidays
+bun run test:seo-holidays
+python3 -m pipeline.holidays # refresh JSONL from the statute lock
+```
+
+Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
 [`pipeline/data/card_meanings.json`](./pipeline/data/card_meanings.json) and

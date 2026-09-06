@@ -67,5 +67,21 @@
       "/checkout/*"
     ],
     "note": "US presidents birth-card set is isolated under /presidents. It must not take celebrity person slugs or live card-meaning routes."
+  },
+  "holidays_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/holidays",
+      "/holidays/{slug}",
+      "/sitemap-holidays.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "US federal holiday birth-card set is isolated under /holidays. Fixed § 6103(a) dates only. It must not take celebrity person slugs or live card-meaning routes."
   }
 }
