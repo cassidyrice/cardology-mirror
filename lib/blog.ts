@@ -12,6 +12,20 @@ export type BlogLink = {
   note?: string;
 };
 
+export type BlogCitationStatus = "verified" | "flagged";
+
+export type BlogCitation = {
+  qid?: string | null;
+  wikidataUrl?: string | null;
+  wikipediaUrl?: string | null;
+  wikipediaTitle?: string | null;
+  birthDate?: string | null;
+  dobCrosscheck: string;
+  status: BlogCitationStatus;
+  reason?: string;
+  wikidataDates?: string[];
+};
+
 export type BlogSection = {
   heading: string;
   body: string[];
@@ -61,7 +75,15 @@ export type BlogPost = {
   faqs: BlogFaq[];
   related: string[];
   coreLinks: BlogLink[];
+  citations?: BlogCitation;
 };
+
+export function isCelebrityBirthCardProfile(post: BlogPost): boolean {
+  return (
+    post.slug.endsWith("-birth-card-profile") ||
+    post.keywords.includes("celebrity birth card profile")
+  );
+}
 
 // Real publication date of the 12 hand-written core posts below: git history
 // shows they shipped 2026-06-17 (commits 6019718..0da0d55) and their content

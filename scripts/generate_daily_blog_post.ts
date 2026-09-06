@@ -224,6 +224,8 @@ function buildDefinitionalPost(topic: DefinitionalTopic): BlogPost {
   };
 }
 
+// Public-figure posts get Wikidata/Wikipedia DOB citations from
+// `python3 -m pipeline.celebs --apply`. Do not invent dates here.
 function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
   const reading = buildReading(topic.birthdate);
   const birthCard = reading.archetype.birth_card;

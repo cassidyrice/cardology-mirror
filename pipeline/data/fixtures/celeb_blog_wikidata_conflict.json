@@ -1,0 +1,48 @@
+{
+  "id": "Q0CELEBCONFLICT",
+  "labels": {
+    "en": { "language": "en", "value": "Ada Fixture Dualdate" }
+  },
+  "descriptions": {
+    "en": { "language": "en", "value": "American singer (born 1986)" }
+  },
+  "sitelinks": {
+    "enwiki": { "site": "enwiki", "title": "Ada Fixture Dualdate" }
+  },
+  "claims": {
+    "P569": [
+      {
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "type": "time",
+            "value": {
+              "time": "+1986-03-20T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      },
+      {
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "type": "time",
+            "value": {
+              "time": "+1986-03-28T00:00:00Z",
+              "timezone": 0,
+              "before": 0,
+              "after": 0,
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
