@@ -3,8 +3,9 @@
 Retry job `403973903623389184` **SUCCEEDED** (818/836). Remainder job
 `5794641920097517568` **SUCCEEDED** (18/18). Hub people job
 `1673848261053513728` **SUCCEEDED** (1075/1079 accepted). Wave slice 1
-`5428091131676065792` **SUCCEEDED** (1077/1079 accepted). Do not submit
-another job unless asked. Results live in `people_enriched.jsonl`
+`5428091131676065792` **SUCCEEDED** (1077/1079 accepted). Wave slice 2
+`4697945042088624128` **QUEUED** (1079 submitted). Do not submit
+slice 3 unless asked. Results live in `people_enriched.jsonl`
 (**3210** = 1058 celebrity + 1075 hub + 1077 wave slice 1). Celebrity
 `retry.jsonl` is empty. Hub drops stay in `hub_retry.jsonl` (4). Slice 1
 drops are in `enrich/artifacts/wave_slice1_retry.jsonl` (2 TPU empties).
@@ -79,13 +80,12 @@ HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 6. Appended **1077** accepted slice-1 rows. Did not overwrite the 2133.
    Total **3210**. Dropped 2 TPU `CANCELLED` empties → `wave_slice1_retry.jsonl`
    (Herb Reed `Q3133396`, Marie-José Pérec `Q228808`).
-7. Celebrity `retry.jsonl` stays empty. Ask before slice 2. Do not resubmit
-   unless asked.
+7. Celebrity `retry.jsonl` stays empty. Slice-1 TPU empties stay dropped.
+   Ask before slice 3. Do not resubmit unless asked.
 
 ## Out of scope
 
-- No slice 2 / further Vertex submit
+- No slice 3 / remainder Vertex submit
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- #101 submit-only draft is superseded by this results PR; do not merge
-  without asking
+- Do not merge slice-2 results without asking

@@ -42,7 +42,12 @@ def _usd(tokens: int, rate: float) -> float:
     return (tokens / 1_000_000) * rate
 
 
-def estimate_batch(path: Path, *, model: str = DEFAULT_MODEL) -> dict[str, Any]:
+def estimate_batch(
+    path: Path,
+    *,
+    model: str = DEFAULT_MODEL,
+    target_usd_band: float | None = None,
+) -> dict[str, Any]:
     rows = load_jsonl(path)
     input_chars = sum(len(request_text(row)) for row in rows)
     input_tokens = int(round(input_chars / CHARS_PER_TOKEN))
@@ -54,6 +59,7 @@ def estimate_batch(path: Path, *, model: str = DEFAULT_MODEL) -> dict[str, Any]:
     low_cost = input_cost + _usd(thinking_low, BATCH_OUTPUT_PER_MILLION_USD) + output_cost
     high_cost = input_cost + _usd(thinking_high, BATCH_OUTPUT_PER_MILLION_USD)
     no_thinking = input_cost + output_cost
+    band = TARGET_USD_BAND if target_usd_band is None else target_usd_band
     return {
         "model": model,
         "requests": len(rows),
@@ -65,8 +71,8 @@ def estimate_batch(path: Path, *, model: str = DEFAULT_MODEL) -> dict[str, Any]:
         "usd_batch_no_thinking": round(no_thinking, 4),
         "usd_batch_thinking_low": round(low_cost, 4),
         "usd_batch_with_thinking_upper": round(high_cost, 4),
-        "target_usd_band": TARGET_USD_BAND,
-        "within_target": high_cost <= TARGET_USD_BAND,
+        "target_usd_band": band,
+        "within_target": high_cost <= band,
         "notes": (
             "Thinking cannot be turned off on gemini-3.1-pro-preview. "
             "Retry JSONL sets thinkingLevel=LOW. "

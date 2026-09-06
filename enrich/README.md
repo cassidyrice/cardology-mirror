@@ -46,12 +46,14 @@ and trivial punctuation only. Paraphrase fails.
 | `5794641920097517568` (remaining 18) | SUCCEEDED | **18** this run / **1058** total | **0** |
 | `1673848261053513728` (hub 1079) | SUCCEEDED | **1075** this run / **2133** total | **4** |
 | `5428091131676065792` (wave slice 1) | SUCCEEDED | **1077** this run / **3210** total | **2** |
+| `4697945042088624128` (wave slice 2) | QUEUED | submitted **1079** — poll later | — |
 
 Celebrity remainder is complete (1058/1058); `retry.jsonl` stays empty.
 Hub people packs accepted **1075 / 1079**. Wave slice 1 (Rock Hall 721 +
 summer olympics 358) accepted **1077 / 1079**. Dropped 2 TPU `CANCELLED`
 empty predictions: Herb Reed, Marie-José Pérec. Zero containment rejects.
-Do not resubmit or start slice 2 unless asked.
+Slice 2 is a separate submit (see `WAVE_SLICE2.md`). Do not start slice 3
+unless asked. Slice-1 TPU empties stay dropped.
 
 ```bash
 python3 -m enrich.parse_results \
