@@ -77,3 +77,37 @@ def test_seed_rebuild_writes_valid_jsonl_and_exclusion_report(tmp_path: Path) ->
     assert reasons["Q0FIX4"] == ExclusionReason.DESCRIPTION_KEYWORD.value
     assert result["kept"] == 3
     assert result["excluded"] >= 1
+    assert report["warnings"] == []
+
+
+def test_seed_birth_card_mismatch_is_reported_not_trusted(tmp_path: Path) -> None:
+    csv_path = tmp_path / "seed.csv"
+    csv_path.write_text(
+        "name,birth_date,birth_card,enwiki_views_8mo,slug\n"
+        "Ada Fixture,1991-02-17,Joker,100,ada-fixture\n",
+        encoding="utf-8",
+    )
+    people_path = tmp_path / "people.jsonl"
+    report_path = tmp_path / "exclusions.json"
+    build_from_seed(
+        csv_path=csv_path,
+        psv_path=FIXTURES / "wikidata_people_raw.psv",
+        out_jsonl=people_path,
+        exclusion_report=report_path,
+        today=TODAY,
+        blocklist_path=FIXTURES / "blocklist.txt",
+        summaries={
+            "Q0FIX1": {
+                "source_text": "Synthetic fixture used only for schema tests.",
+                "source_url": "https://example.test/wiki/Ada_Fixture",
+                "description": "synthetic fixture mathematician",
+            }
+        },
+        image_licenses={"Ada_Fixture.png": "CC-BY-SA-4.0"},
+    )
+    ada = json.loads(people_path.read_text(encoding="utf-8").splitlines()[0])
+    assert ada["card"] == "8♦"
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    assert report["warnings"][0]["reason"] == "birth_card_mismatch"
+    assert report["warnings"][0]["seed_birth_card"] == "Joker"
+    assert report["warnings"][0]["computed_card"] == "8♦"

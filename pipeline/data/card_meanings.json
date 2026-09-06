@@ -1,0 +1,1373 @@
+{
+  "A♥": {
+    "symbol": "A♥",
+    "name": "ACE OF HEARTS",
+    "label": "Ace of Hearts",
+    "slug": "ace-of-hearts",
+    "title": "The Emotional Pioneer",
+    "page": "/birth-card/ace-of-hearts",
+    "meaning": "The Emotional Pioneer\n\nYou start real connection on purpose: you say what you feel and leave room for the other person to answer. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.\n\nBalanced: You start real connection on purpose: you say what you feel and leave room for the other person to answer.\n\nUnder-expressed: You flood the room with feeling before anyone has agreed to hold it. Intensity stands in for being known.\n\nOver-expressed: You use feeling as leverage. The cost is people manage your mood instead of meeting you.\n\nShadow: You reach so hard for connection that the other person has to manage the reach. Intensity arrives before there is a place to put it.\n\nGifts: Courage to initiate genuine emotional connection; Openness that invites others into real vulnerability; Natural warmth and emotional directness; Capacity to start relationships from honesty\n\nLife direction: Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
+    "core_identity": "You start real connection on purpose: you say what you feel and leave room for the other person to answer. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
+    "sweet_spot": "You start real connection on purpose: you say what you feel and leave room for the other person to answer.",
+    "under": "You flood the room with feeling before anyone has agreed to hold it. Intensity stands in for being known.",
+    "over": "You use feeling as leverage. The cost is people manage your mood instead of meeting you.",
+    "shadow": "You reach so hard for connection that the other person has to manage the reach. Intensity arrives before there is a place to put it.",
+    "gifts": [
+      "Courage to initiate genuine emotional connection",
+      "Openness that invites others into real vulnerability",
+      "Natural warmth and emotional directness",
+      "Capacity to start relationships from honesty"
+    ],
+    "life_direction": "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "2♥": {
+    "symbol": "2♥",
+    "name": "2 OF HEARTS",
+    "label": "2 of Hearts",
+    "slug": "2-of-hearts",
+    "title": "The Loving Partner",
+    "page": "/birth-card/2-of-hearts",
+    "meaning": "The Loving Partner\n\nYou keep your needs and theirs in the same conversation, and you let disagreement stay on the table. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.\n\nBalanced: You keep your needs and theirs in the same conversation, and you let disagreement stay on the table.\n\nUnder-expressed: You change shape to keep the peace. After a while you cannot tell which preference was actually yours.\n\nOver-expressed: You take responsibility for other people's moods. The cost is you disappear, then resent the people you were managing.\n\nShadow: You disappear into the other person's needs. Harmony is built on a self that is no longer in the room.\n\nGifts: Genuine diplomacy and emotional attunement; Ability to balance your needs with another's; Talent for creating mutual understanding and partnership; Sensitivity to what a relationship actually needs\n\nLife direction: Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
+    "core_identity": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
+    "sweet_spot": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table.",
+    "under": "You change shape to keep the peace. After a while you cannot tell which preference was actually yours.",
+    "over": "You take responsibility for other people's moods. The cost is you disappear, then resent the people you were managing.",
+    "shadow": "You disappear into the other person's needs. Harmony is built on a self that is no longer in the room.",
+    "gifts": [
+      "Genuine diplomacy and emotional attunement",
+      "Ability to balance your needs with another's",
+      "Talent for creating mutual understanding and partnership",
+      "Sensitivity to what a relationship actually needs"
+    ],
+    "life_direction": "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "3♥": {
+    "symbol": "3♥",
+    "name": "3 OF HEARTS",
+    "label": "3 of Hearts",
+    "slug": "3-of-hearts",
+    "title": "The Creative Heart",
+    "page": "/birth-card/3-of-hearts",
+    "meaning": "The Creative Heart\n\nYou let love have range without using newness as an exit from the one that is already here. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.\n\nBalanced: You let love have range without using newness as an exit from the one that is already here.\n\nUnder-expressed: You keep a spare connection warm so no single person can pin you down. Variety protects you from being chosen.\n\nOver-expressed: You arrive all-in, then find a fatal flaw the moment the connection asks you to stay.\n\nShadow: You keep a spare door open so no single person can pin you down. Variety protects you from being chosen.\n\nGifts: Emotional depth expressed through creativity; Range and versatility in how you connect; Ability to bring vitality and play to relationships; Comfort with emotional complexity and nuance\n\nLife direction: Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
+    "core_identity": "You let love have range without using newness as an exit from the one that is already here. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
+    "sweet_spot": "You let love have range without using newness as an exit from the one that is already here.",
+    "under": "You keep a spare connection warm so no single person can pin you down. Variety protects you from being chosen.",
+    "over": "You arrive all-in, then find a fatal flaw the moment the connection asks you to stay.",
+    "shadow": "You keep a spare door open so no single person can pin you down. Variety protects you from being chosen.",
+    "gifts": [
+      "Emotional depth expressed through creativity",
+      "Range and versatility in how you connect",
+      "Ability to bring vitality and play to relationships",
+      "Comfort with emotional complexity and nuance"
+    ],
+    "life_direction": "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "4♥": {
+    "symbol": "4♥",
+    "name": "4 OF HEARTS",
+    "label": "4 of Hearts",
+    "slug": "4-of-hearts",
+    "title": "The Emotional Foundation Builder",
+    "page": "/birth-card/4-of-hearts",
+    "meaning": "The Emotional Foundation Builder\n\nYou build a home people can count on, and you leave enough air for feeling to move. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.\n\nBalanced: You build a home people can count on, and you leave enough air for feeling to move.\n\nUnder-expressed: You treat control as safety. Everyone gets a role; nothing unscripted is allowed in.\n\nOver-expressed: You call real emotion messy and shut it down. The house is orderly. Nobody actually lives there.\n\nShadow: You keep feeling inside approved roles. The house is stable and nothing unscripted is allowed to live there.\n\nGifts: Building reliable emotional foundations and trust; Consistency and steadiness in relationships; Ability to make others feel safe and held; Loyalty and follow-through in love\n\nLife direction: Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
+    "core_identity": "You build a home people can count on, and you leave enough air for feeling to move. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
+    "sweet_spot": "You build a home people can count on, and you leave enough air for feeling to move.",
+    "under": "You treat control as safety. Everyone gets a role; nothing unscripted is allowed in.",
+    "over": "You call real emotion messy and shut it down. The house is orderly. Nobody actually lives there.",
+    "shadow": "You keep feeling inside approved roles. The house is stable and nothing unscripted is allowed to live there.",
+    "gifts": [
+      "Building reliable emotional foundations and trust",
+      "Consistency and steadiness in relationships",
+      "Ability to make others feel safe and held",
+      "Loyalty and follow-through in love"
+    ],
+    "life_direction": "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "5♥": {
+    "symbol": "5♥",
+    "name": "5 OF HEARTS",
+    "label": "5 of Hearts",
+    "slug": "5-of-hearts",
+    "title": "The Restless Heart",
+    "page": "/birth-card/5-of-hearts",
+    "meaning": "The Restless Heart\n\nYou let love change shape without using motion as a way out of being seen. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.\n\nBalanced: You let love change shape without using motion as a way out of being seen.\n\nUnder-expressed: You leave when a connection starts asking you to stay in one place. Variety looks like freedom; it can also be how you avoid being known.\n\nOver-expressed: You call it freedom when you will not stay long enough for the relationship to cost you anything.\n\nShadow: You leave when a connection starts asking you to stay in one place. Motion looks like aliveness; it can also be how you avoid being known.\n\nGifts: Adaptability through emotional change and transition; Bringing freshness and movement to relationships; Understanding that love deepens through transformation; Openness to growth rather than stasis\n\nLife direction: Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
+    "core_identity": "You let love change shape without using motion as a way out of being seen. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
+    "sweet_spot": "You let love change shape without using motion as a way out of being seen.",
+    "under": "You leave when a connection starts asking you to stay in one place. Variety looks like freedom; it can also be how you avoid being known.",
+    "over": "You call it freedom when you will not stay long enough for the relationship to cost you anything.",
+    "shadow": "You leave when a connection starts asking you to stay in one place. Motion looks like aliveness; it can also be how you avoid being known.",
+    "gifts": [
+      "Adaptability through emotional change and transition",
+      "Bringing freshness and movement to relationships",
+      "Understanding that love deepens through transformation",
+      "Openness to growth rather than stasis"
+    ],
+    "life_direction": "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "6♥": {
+    "symbol": "6♥",
+    "name": "6 OF HEARTS",
+    "label": "6 of Hearts",
+    "slug": "6-of-hearts",
+    "title": "The Devoted Caregiver",
+    "page": "/birth-card/6-of-hearts",
+    "meaning": "The Devoted Caregiver\n\nYou care for people without disappearing. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.\n\nBalanced: You care for people without disappearing. Help comes from a full plate, not an empty one.\n\nUnder-expressed: You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.\n\nOver-expressed: You play the nice one. Conflict gets swallowed. The people you protect never find out what you actually wanted.\n\nShadow: You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.\n\nGifts: Integrating genuine care with healthy boundaries; Creating harmony and emotional safety for others; Devotion and willingness to show up for people; Capacity to serve from a full cup, not an empty one\n\nLife direction: Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
+    "core_identity": "You care for people without disappearing. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
+    "sweet_spot": "You care for people without disappearing. Help comes from a full plate, not an empty one.",
+    "under": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
+    "over": "You play the nice one. Conflict gets swallowed. The people you protect never find out what you actually wanted.",
+    "shadow": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
+    "gifts": [
+      "Integrating genuine care with healthy boundaries",
+      "Creating harmony and emotional safety for others",
+      "Devotion and willingness to show up for people",
+      "Capacity to serve from a full cup, not an empty one"
+    ],
+    "life_direction": "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "7♥": {
+    "symbol": "7♥",
+    "name": "7 OF HEARTS",
+    "label": "7 of Hearts",
+    "slug": "7-of-hearts",
+    "title": "The Reflective Heart",
+    "page": "/birth-card/7-of-hearts",
+    "meaning": "The Reflective Heart\n\nYou look at love clearly without using analysis as a way not to feel it. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.\n\nBalanced: You look at love clearly without using analysis as a way not to feel it.\n\nUnder-expressed: You step back from feeling and call it discernment. Distance keeps you safe and also keeps you alone.\n\nOver-expressed: You stay in your head and call it honesty. The body of the relationship never gets a vote.\n\nShadow: You understand the feeling instead of having it. Insight keeps you at a safe distance from the thing you are describing.\n\nGifts: Wisdom and insight into the nature of love; Ability to see beneath romantic illusion; Emotional reflection and self-awareness; Seeking what's true over what's comfortable\n\nLife direction: Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
+    "core_identity": "You look at love clearly without using analysis as a way not to feel it. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
+    "sweet_spot": "You look at love clearly without using analysis as a way not to feel it.",
+    "under": "You step back from feeling and call it discernment. Distance keeps you safe and also keeps you alone.",
+    "over": "You stay in your head and call it honesty. The body of the relationship never gets a vote.",
+    "shadow": "You understand the feeling instead of having it. Insight keeps you at a safe distance from the thing you are describing.",
+    "gifts": [
+      "Wisdom and insight into the nature of love",
+      "Ability to see beneath romantic illusion",
+      "Emotional reflection and self-awareness",
+      "Seeking what's true over what's comfortable"
+    ],
+    "life_direction": "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "8♥": {
+    "symbol": "8♥",
+    "name": "8 OF HEARTS",
+    "label": "8 of Hearts",
+    "slug": "8-of-hearts",
+    "title": "The Emotional Powerhouse",
+    "page": "/birth-card/8-of-hearts",
+    "meaning": "The Emotional Powerhouse\n\nYou hold the emotional room without taking it over. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.\n\nBalanced: You hold the emotional room without taking it over. People know where they stand.\n\nUnder-expressed: You shut feeling down and lead with logic. Power stays clean because nothing tender is allowed near it.\n\nOver-expressed: You decide how other people are allowed to feel. Strength becomes possession.\n\nShadow: You would rather run the emotional room than be moved by it. Control stands in for the risk of being affected.\n\nGifts: Commanding emotional situations with strength and clarity; Charisma and emotional presence; Leading with confident compassion; Ability to steady and reassure others\n\nLife direction: Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
+    "core_identity": "You hold the emotional room without taking it over. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
+    "sweet_spot": "You hold the emotional room without taking it over. People know where they stand.",
+    "under": "You shut feeling down and lead with logic. Power stays clean because nothing tender is allowed near it.",
+    "over": "You decide how other people are allowed to feel. Strength becomes possession.",
+    "shadow": "You would rather run the emotional room than be moved by it. Control stands in for the risk of being affected.",
+    "gifts": [
+      "Commanding emotional situations with strength and clarity",
+      "Charisma and emotional presence",
+      "Leading with confident compassion",
+      "Ability to steady and reassure others"
+    ],
+    "life_direction": "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "9♥": {
+    "symbol": "9♥",
+    "name": "9 OF HEARTS",
+    "label": "9 of Hearts",
+    "slug": "9-of-hearts",
+    "title": "The Compassionate Idealist",
+    "page": "/birth-card/9-of-hearts",
+    "meaning": "The Compassionate Idealist\n\nYou stay kind without picking up what is not yours. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.\n\nBalanced: You stay kind without picking up what is not yours.\n\nUnder-expressed: You collapse into helping and then resent the people you are carrying. The ideal was cleaner than the work.\n\nOver-expressed: You save people and skip yourself. Burnout wears the costume of care.\n\nShadow: You carry what is not yours and call it love. The helping is real; so is the refusal to put your own piece down.\n\nGifts: Integrating compassion with hard-won wisdom; A capacity for love that extends beyond the self; Knowing what is yours to carry and what to release; Emotional generosity toward people and causes\n\nLife direction: Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
+    "core_identity": "You stay kind without picking up what is not yours. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
+    "sweet_spot": "You stay kind without picking up what is not yours.",
+    "under": "You collapse into helping and then resent the people you are carrying. The ideal was cleaner than the work.",
+    "over": "You save people and skip yourself. Burnout wears the costume of care.",
+    "shadow": "You carry what is not yours and call it love. The helping is real; so is the refusal to put your own piece down.",
+    "gifts": [
+      "Integrating compassion with hard-won wisdom",
+      "A capacity for love that extends beyond the self",
+      "Knowing what is yours to carry and what to release",
+      "Emotional generosity toward people and causes"
+    ],
+    "life_direction": "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "10♥": {
+    "symbol": "10♥",
+    "name": "10 OF HEARTS",
+    "label": "10 of Hearts",
+    "slug": "10-of-hearts",
+    "title": "The Community Heart",
+    "page": "/birth-card/10-of-hearts",
+    "meaning": "The Community Heart\n\nYou make room for a lot of people and still keep a self inside the room. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.\n\nBalanced: You make room for a lot of people and still keep a self inside the room.\n\nUnder-expressed: You carry the family's feeling for them. Belonging starts to mean you do not get to put anything down.\n\nOver-expressed: Everyone's mood becomes your job. Care turns into a system of quiet obligation.\n\nShadow: You hold the group's feeling until you cannot feel your own. Being needed by many starts to stand in for being met.\n\nGifts: Expanding love and belonging across a community; Creating warmth and inclusion at scale; Holding many relationships with genuine presence; Making others feel part of something\n\nLife direction: Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
+    "core_identity": "You make room for a lot of people and still keep a self inside the room. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
+    "sweet_spot": "You make room for a lot of people and still keep a self inside the room.",
+    "under": "You carry the family's feeling for them. Belonging starts to mean you do not get to put anything down.",
+    "over": "Everyone's mood becomes your job. Care turns into a system of quiet obligation.",
+    "shadow": "You hold the group's feeling until you cannot feel your own. Being needed by many starts to stand in for being met.",
+    "gifts": [
+      "Expanding love and belonging across a community",
+      "Creating warmth and inclusion at scale",
+      "Holding many relationships with genuine presence",
+      "Making others feel part of something"
+    ],
+    "life_direction": "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "J♥": {
+    "symbol": "J♥",
+    "name": "JACK OF HEARTS",
+    "label": "Jack of Hearts",
+    "slug": "jack-of-hearts",
+    "title": "The Romantic Messenger",
+    "page": "/birth-card/jack-of-hearts",
+    "meaning": "The Romantic Messenger\n\nYou bring a fresh read on love without leaving the room when it gets ordinary. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.\n\nBalanced: You bring a fresh read on love without leaving the room when it gets ordinary.\n\nUnder-expressed: You fall for the story of the person instead of the person. Fantasy is safer than the slow work of knowing someone.\n\nOver-expressed: The narrative outruns the relationship. It collapses the first time reality asks for depth.\n\nShadow: You fall for the story of the person. The fantasy is safer than the slow work of knowing who is actually here.\n\nGifts: Bringing fresh perspective and inspiration to connection; Youthful openness and emotional creativity; Innovating how relationships can work; Reawakening feeling and possibility in others\n\nLife direction: Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
+    "core_identity": "You bring a fresh read on love without leaving the room when it gets ordinary. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
+    "sweet_spot": "You bring a fresh read on love without leaving the room when it gets ordinary.",
+    "under": "You fall for the story of the person instead of the person. Fantasy is safer than the slow work of knowing someone.",
+    "over": "The narrative outruns the relationship. It collapses the first time reality asks for depth.",
+    "shadow": "You fall for the story of the person. The fantasy is safer than the slow work of knowing who is actually here.",
+    "gifts": [
+      "Bringing fresh perspective and inspiration to connection",
+      "Youthful openness and emotional creativity",
+      "Innovating how relationships can work",
+      "Reawakening feeling and possibility in others"
+    ],
+    "life_direction": "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "Q♥": {
+    "symbol": "Q♥",
+    "name": "QUEEN OF HEARTS",
+    "label": "Queen of Hearts",
+    "slug": "queen-of-hearts",
+    "title": "The Devoted Nurturer",
+    "page": "/birth-card/queen-of-hearts",
+    "meaning": "The Devoted Nurturer\n\nYou take care of people from presence, not from scanning for what they might need next. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.\n\nBalanced: You take care of people from presence, not from scanning for what they might need next.\n\nUnder-expressed: You read the room first and yourself last. Other people's weather decides whether your needs get airtime.\n\nOver-expressed: Care becomes control. Love starts to look like a debt they did not agree to.\n\nShadow: You read everyone else first. Care becomes so complete that the other person feels held and owned.\n\nGifts: Nurturing others through authentic, intuitive presence; Deep emotional attunement and empathy; Embodied emotional wisdom; Making others feel genuinely seen and held\n\nLife direction: Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
+    "core_identity": "You take care of people from presence, not from scanning for what they might need next. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
+    "sweet_spot": "You take care of people from presence, not from scanning for what they might need next.",
+    "under": "You read the room first and yourself last. Other people's weather decides whether your needs get airtime.",
+    "over": "Care becomes control. Love starts to look like a debt they did not agree to.",
+    "shadow": "You read everyone else first. Care becomes so complete that the other person feels held and owned.",
+    "gifts": [
+      "Nurturing others through authentic, intuitive presence",
+      "Deep emotional attunement and empathy",
+      "Embodied emotional wisdom",
+      "Making others feel genuinely seen and held"
+    ],
+    "life_direction": "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "K♥": {
+    "symbol": "K♥",
+    "name": "KING OF HEARTS",
+    "label": "King of Hearts",
+    "slug": "king-of-hearts",
+    "title": "The Compassionate King",
+    "page": "/birth-card/king-of-hearts",
+    "meaning": "The Compassionate King\n\nYou hold emotional authority without hiding behind it. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.\n\nBalanced: You hold emotional authority without hiding behind it.\n\nUnder-expressed: You rule the emotional field from a safe distance. Authority stays intact because no one can reach you.\n\nOver-expressed: You decide the feeling climate. People comply. They stop telling you the truth.\n\nShadow: You lead the feeling from a distance you will not cross. People can lean on the authority and cannot reach you.\n\nGifts: Commanding emotional authority with depth and care; Leading others through feeling with steadiness; Mature, grounded emotional presence; Holding space with both strength and compassion\n\nLife direction: Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
+    "core_identity": "You hold emotional authority without hiding behind it. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
+    "sweet_spot": "You hold emotional authority without hiding behind it.",
+    "under": "You rule the emotional field from a safe distance. Authority stays intact because no one can reach you.",
+    "over": "You decide the feeling climate. People comply. They stop telling you the truth.",
+    "shadow": "You lead the feeling from a distance you will not cross. People can lean on the authority and cannot reach you.",
+    "gifts": [
+      "Commanding emotional authority with depth and care",
+      "Leading others through feeling with steadiness",
+      "Mature, grounded emotional presence",
+      "Holding space with both strength and compassion"
+    ],
+    "life_direction": "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "A♣": {
+    "symbol": "A♣",
+    "name": "ACE OF CLUBS",
+    "label": "Ace of Clubs",
+    "slug": "ace-of-clubs",
+    "title": "The Creative Pioneer",
+    "page": "/birth-card/ace-of-clubs",
+    "meaning": "The Creative Pioneer\n\nYou start the new thought while it is still usable. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.\n\nBalanced: You start a new idea while it is still usable, and you let it meet the world unfinished.\n\nUnder-expressed: You think past the starting line. Thoroughness becomes a way not to begin.\n\nOver-expressed: You are sure you are right before anyone else has spoken. New thought becomes a closed case.\n\nShadow: You treat starting as finishing. Ideas get abandoned when they get hard, so the room sees possibility and not delivery.\n\nGifts: Original thinking and idea generation; Ability to launch new concepts and projects; Natural curiosity and investigation; Intellectual courage to explore new territory\n\nLife direction: Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
+    "core_identity": "You start the new thought while it is still usable. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
+    "sweet_spot": "You start a new idea while it is still usable, and you let it meet the world unfinished.",
+    "under": "You think past the starting line. Thoroughness becomes a way not to begin.",
+    "over": "You are sure you are right before anyone else has spoken. New thought becomes a closed case.",
+    "shadow": "You treat starting as finishing. Ideas get abandoned when they get hard, so the room sees possibility and not delivery.",
+    "gifts": [
+      "Original thinking and idea generation",
+      "Ability to launch new concepts and projects",
+      "Natural curiosity and investigation",
+      "Intellectual courage to explore new territory"
+    ],
+    "life_direction": "Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "2♣": {
+    "symbol": "2♣",
+    "name": "2 OF CLUBS",
+    "label": "2 of Clubs",
+    "slug": "2-of-clubs",
+    "title": "The Collaborative Builder",
+    "page": "/birth-card/2-of-clubs",
+    "meaning": "The Collaborative Builder\n\nYou think best with someone else in the room, and you still leave with a position of your own. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.\n\nBalanced: You think with someone else and still leave the conversation with a position of your own.\n\nUnder-expressed: You keep the debate open so you never have to pick. Indecision wears the mask of fairness.\n\nOver-expressed: You need to win the argument. The other mind stops being a partner and becomes an opponent.\n\nShadow: You disappear into the other person's thinking. Partnership starts to mean you no longer know which opinion was yours.\n\nGifts: Natural partnership and team-building ability; Excellent communication and articulation; Ability to synthesize different perspectives; Talent for collaborative problem-solving\n\nLife direction: Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
+    "core_identity": "You think best with someone else in the room, and you still leave with a position of your own. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
+    "sweet_spot": "You think with someone else and still leave the conversation with a position of your own.",
+    "under": "You keep the debate open so you never have to pick. Indecision wears the mask of fairness.",
+    "over": "You need to win the argument. The other mind stops being a partner and becomes an opponent.",
+    "shadow": "You disappear into the other person's thinking. Partnership starts to mean you no longer know which opinion was yours.",
+    "gifts": [
+      "Natural partnership and team-building ability",
+      "Excellent communication and articulation",
+      "Ability to synthesize different perspectives",
+      "Talent for collaborative problem-solving"
+    ],
+    "life_direction": "Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "3♣": {
+    "symbol": "3♣",
+    "name": "3 OF CLUBS",
+    "label": "3 of Clubs",
+    "slug": "3-of-clubs",
+    "title": "The Creative Communicator",
+    "page": "/birth-card/3-of-clubs",
+    "meaning": "The Creative Communicator\n\nYou make a hard idea easy to say without stripping what it means. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.\n\nBalanced: You move an idea across more than one channel without abandoning the one that needs depth.\n\nUnder-expressed: You open more projects than you finish. Exploration never has to survive contact with an ending.\n\nOver-expressed: You scatter attention and call it range. Nothing sits still long enough to get good.\n\nShadow: You talk the idea further than you build it. Clarity without depth leaves people informed and unconvinced.\n\nGifts: Ability to articulate complex ideas clearly; Creative problem-solving and unconventional thinking; Natural teaching and explaining ability; Talent for making ideas exciting\n\nLife direction: Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
+    "core_identity": "You make a hard idea easy to say without stripping what it means. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
+    "sweet_spot": "You move an idea across more than one channel without abandoning the one that needs depth.",
+    "under": "You open more projects than you finish. Exploration never has to survive contact with an ending.",
+    "over": "You scatter attention and call it range. Nothing sits still long enough to get good.",
+    "shadow": "You talk the idea further than you build it. Clarity without depth leaves people informed and unconvinced.",
+    "gifts": [
+      "Ability to articulate complex ideas clearly",
+      "Creative problem-solving and unconventional thinking",
+      "Natural teaching and explaining ability",
+      "Talent for making ideas exciting"
+    ],
+    "life_direction": "Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "4♣": {
+    "symbol": "4♣",
+    "name": "4 OF CLUBS",
+    "label": "4 of Clubs",
+    "slug": "4-of-clubs",
+    "title": "The Systematic Builder",
+    "page": "/birth-card/4-of-clubs",
+    "meaning": "The Systematic Builder\n\nYou put thinking into an order other people can actually use. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.\n\nBalanced: You put knowledge into an order other people can actually use.\n\nUnder-expressed: You use a framework to keep uncertainty out. The system is safer than the question.\n\nOver-expressed: You defend the system after it stops fitting. Being right outranks being current.\n\nShadow: You defend the system after it stops fitting. Structure becomes a reason not to revise.\n\nGifts: Systematic thinking and organizational ability; Creating frameworks and sustainable structures; Clear thinking and logical progression; Ability to build something that lasts\n\nLife direction: Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
+    "core_identity": "You put thinking into an order other people can actually use. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
+    "sweet_spot": "You put knowledge into an order other people can actually use.",
+    "under": "You use a framework to keep uncertainty out. The system is safer than the question.",
+    "over": "You defend the system after it stops fitting. Being right outranks being current.",
+    "shadow": "You defend the system after it stops fitting. Structure becomes a reason not to revise.",
+    "gifts": [
+      "Systematic thinking and organizational ability",
+      "Creating frameworks and sustainable structures",
+      "Clear thinking and logical progression",
+      "Ability to build something that lasts"
+    ],
+    "life_direction": "Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "5♣": {
+    "symbol": "5♣",
+    "name": "5 OF CLUBS",
+    "label": "5 of Clubs",
+    "slug": "5-of-clubs",
+    "title": "The Dynamic Innovator",
+    "page": "/birth-card/5-of-clubs",
+    "meaning": "The Dynamic Innovator\n\nYou pressure-test a stale idea in public and let the better one win. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.\n\nBalanced: You pressure-test an idea in public and let the better one win.\n\nUnder-expressed: You think about the change instead of making it. Analysis does the job of motion.\n\nOver-expressed: You argue to prove you are sharper. Conflict becomes the point.\n\nShadow: You change the subject and call it growth. Nothing sits still long enough for anyone to rely on you.\n\nGifts: Quick thinking and fast adaptation; Ability to see multiple perspectives rapidly; Natural rebellion against outdated ideas; Refreshing honesty and directness\n\nLife direction: Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
+    "core_identity": "You pressure-test a stale idea in public and let the better one win. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
+    "sweet_spot": "You pressure-test an idea in public and let the better one win.",
+    "under": "You think about the change instead of making it. Analysis does the job of motion.",
+    "over": "You argue to prove you are sharper. Conflict becomes the point.",
+    "shadow": "You change the subject and call it growth. Nothing sits still long enough for anyone to rely on you.",
+    "gifts": [
+      "Quick thinking and fast adaptation",
+      "Ability to see multiple perspectives rapidly",
+      "Natural rebellion against outdated ideas",
+      "Refreshing honesty and directness"
+    ],
+    "life_direction": "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "6♣": {
+    "symbol": "6♣",
+    "name": "6 OF CLUBS",
+    "label": "6 of Clubs",
+    "slug": "6-of-clubs",
+    "title": "The Nurturing Creator",
+    "page": "/birth-card/6-of-clubs",
+    "meaning": "The Nurturing Creator\n\nYou pass on what you know without disappearing behind the lesson. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.\n\nBalanced: You pass on what you know without disappearing behind the lesson.\n\nUnder-expressed: You give the knowledge away and keep your own authority quiet. Teaching becomes self-erasure.\n\nOver-expressed: You need to be the one who knows. Other people get cast as students whether they asked or not.\n\nShadow: You stay in the teacher seat after you have stopped learning. Guidance turns into a script other people are supposed to follow.\n\nGifts: Natural teaching and mentoring ability; Desire to develop others intellectually; Wisdom and thoughtful guidance; Ability to balance thinking with caring\n\nLife direction: Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
+    "core_identity": "You pass on what you know without disappearing behind the lesson. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
+    "sweet_spot": "You pass on what you know without disappearing behind the lesson.",
+    "under": "You give the knowledge away and keep your own authority quiet. Teaching becomes self-erasure.",
+    "over": "You need to be the one who knows. Other people get cast as students whether they asked or not.",
+    "shadow": "You stay in the teacher seat after you have stopped learning. Guidance turns into a script other people are supposed to follow.",
+    "gifts": [
+      "Natural teaching and mentoring ability",
+      "Desire to develop others intellectually",
+      "Wisdom and thoughtful guidance",
+      "Ability to balance thinking with caring"
+    ],
+    "life_direction": "Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "7♣": {
+    "symbol": "7♣",
+    "name": "7 OF CLUBS",
+    "label": "7 of Clubs",
+    "slug": "7-of-clubs",
+    "title": "The Analytical Creator",
+    "page": "/birth-card/7-of-clubs",
+    "meaning": "The Analytical Creator\n\nYou take a claim apart until the usable piece is left, then you use it. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.\n\nBalanced: You take a claim apart until the usable piece is left, then you use it.\n\nUnder-expressed: Skepticism turns into isolation. Nothing is solid enough to act on, so you stay out.\n\nOver-expressed: You complicate the problem past the point of action. Complexity protects you from shipping.\n\nShadow: You can name every flaw in a plan, so the plan never leaves the table. Analysis does the job of a decision.\n\nGifts: Penetrating analysis and pattern recognition; Ability to see through surface explanations; Critical thinking and intellectual honesty; Natural skepticism that prevents self-deception\n\nLife direction: Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
+    "core_identity": "You take a claim apart until the usable piece is left, then you use it. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
+    "sweet_spot": "You take a claim apart until the usable piece is left, then you use it.",
+    "under": "Skepticism turns into isolation. Nothing is solid enough to act on, so you stay out.",
+    "over": "You complicate the problem past the point of action. Complexity protects you from shipping.",
+    "shadow": "You can name every flaw in a plan, so the plan never leaves the table. Analysis does the job of a decision.",
+    "gifts": [
+      "Penetrating analysis and pattern recognition",
+      "Ability to see through surface explanations",
+      "Critical thinking and intellectual honesty",
+      "Natural skepticism that prevents self-deception"
+    ],
+    "life_direction": "Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "8♣": {
+    "symbol": "8♣",
+    "name": "8 OF CLUBS",
+    "label": "8 of Clubs",
+    "slug": "8-of-clubs",
+    "title": "The Ambitious Builder",
+    "page": "/birth-card/8-of-clubs",
+    "meaning": "The Ambitious Builder\n\nYou run a knowledge system other people can follow, and you stand behind the call. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.\n\nBalanced: You run a knowledge system other people can follow, and you stand behind the call.\n\nUnder-expressed: You keep the sharp mind in reserve. Leadership would make the thinking visible, so you decline it.\n\nOver-expressed: You use intellect to shut people down. Being the smartest person in the room becomes the whole job.\n\nShadow: You use the sharp mind to win. People respect the argument and stop bringing you anything they actually care about.\n\nGifts: Strategic thinking and long-term planning; Ability to coordinate complex intellectual projects; Ambitious drive and determination; Talent for building intellectual authority\n\nLife direction: Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
+    "core_identity": "You run a knowledge system other people can follow, and you stand behind the call. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
+    "sweet_spot": "You run a knowledge system other people can follow, and you stand behind the call.",
+    "under": "You keep the sharp mind in reserve. Leadership would make the thinking visible, so you decline it.",
+    "over": "You use intellect to shut people down. Being the smartest person in the room becomes the whole job.",
+    "shadow": "You use the sharp mind to win. People respect the argument and stop bringing you anything they actually care about.",
+    "gifts": [
+      "Strategic thinking and long-term planning",
+      "Ability to coordinate complex intellectual projects",
+      "Ambitious drive and determination",
+      "Talent for building intellectual authority"
+    ],
+    "life_direction": "Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "9♣": {
+    "symbol": "9♣",
+    "name": "9 OF CLUBS",
+    "label": "9 of Clubs",
+    "slug": "9-of-clubs",
+    "title": "The Humanitarian Builder",
+    "page": "/birth-card/9-of-clubs",
+    "meaning": "The Humanitarian Builder\n\nYou keep the large view without skipping the next practical step. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.\n\nBalanced: You let a used-up framework go and keep the part that still works.\n\nUnder-expressed: You hold an old map after the terrain has changed. Fatigue looks like loyalty to the idea.\n\nOver-expressed: You preach the map. Other viewpoints are treated as incomplete versions of yours.\n\nShadow: The big picture stays cleaner than the work. Inspiration without follow-through teaches people not to wait for you.\n\nGifts: Visionary thinking and big-picture perspective; Ability to inspire others toward possibility; Universal principles and humanitarian ideals; Natural optimism about human potential\n\nLife direction: Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
+    "core_identity": "You keep the large view without skipping the next practical step. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
+    "sweet_spot": "You let a used-up framework go and keep the part that still works.",
+    "under": "You hold an old map after the terrain has changed. Fatigue looks like loyalty to the idea.",
+    "over": "You preach the map. Other viewpoints are treated as incomplete versions of yours.",
+    "shadow": "The big picture stays cleaner than the work. Inspiration without follow-through teaches people not to wait for you.",
+    "gifts": [
+      "Visionary thinking and big-picture perspective",
+      "Ability to inspire others toward possibility",
+      "Universal principles and humanitarian ideals",
+      "Natural optimism about human potential"
+    ],
+    "life_direction": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "10♣": {
+    "symbol": "10♣",
+    "name": "10 OF CLUBS",
+    "label": "10 of Clubs",
+    "slug": "10-of-clubs",
+    "title": "The Master Builder",
+    "page": "/birth-card/10-of-clubs",
+    "meaning": "The Master Builder\n\nYou carry a finished body of knowledge and keep teaching from it. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.\n\nBalanced: You carry a finished body of knowledge and keep teaching from it.\n\nUnder-expressed: You stockpile what you know and stop putting it to work. Mastery sits unused.\n\nOver-expressed: You control who gets the information. Authority depends on other people staying one step behind.\n\nShadow: You rest on what you already built. Mastery turns into a closed file.\n\nGifts: Intellectual mastery and deep expertise; Ability to radiate confidence and competence; Wisdom from experience and reflection; Natural authority and leadership\n\nLife direction: Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
+    "core_identity": "You carry a finished body of knowledge and keep teaching from it. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
+    "sweet_spot": "You carry a finished body of knowledge and keep teaching from it.",
+    "under": "You stockpile what you know and stop putting it to work. Mastery sits unused.",
+    "over": "You control who gets the information. Authority depends on other people staying one step behind.",
+    "shadow": "You rest on what you already built. Mastery turns into a closed file.",
+    "gifts": [
+      "Intellectual mastery and deep expertise",
+      "Ability to radiate confidence and competence",
+      "Wisdom from experience and reflection",
+      "Natural authority and leadership"
+    ],
+    "life_direction": "Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "J♣": {
+    "symbol": "J♣",
+    "name": "JACK OF CLUBS",
+    "label": "Jack of Clubs",
+    "slug": "jack-of-clubs",
+    "title": "The Creative Messenger",
+    "page": "/birth-card/jack-of-clubs",
+    "meaning": "The Creative Messenger\n\nYou bring a new angle and stay long enough for someone to test it. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"\n\nBalanced: You bring a new angle and you let someone pressure-test it before it ships.\n\nUnder-expressed: The idea comes out half-built. Speed stands in for a check against reality.\n\nOver-expressed: You pitch before you have checked whether it can live. Excitement outruns the work.\n\nShadow: You drop the insight and leave. The shift happens; the integration does not, because you are already gone.\n\nGifts: Ability to inspire intellectual breakthroughs; Creative and unconventional perspective; Natural gift for shifting paradigms; Talent for generating excitement about ideas\n\nLife direction: Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
+    "core_identity": "You bring a new angle and stay long enough for someone to test it. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"",
+    "sweet_spot": "You bring a new angle and you let someone pressure-test it before it ships.",
+    "under": "The idea comes out half-built. Speed stands in for a check against reality.",
+    "over": "You pitch before you have checked whether it can live. Excitement outruns the work.",
+    "shadow": "You drop the insight and leave. The shift happens; the integration does not, because you are already gone.",
+    "gifts": [
+      "Ability to inspire intellectual breakthroughs",
+      "Creative and unconventional perspective",
+      "Natural gift for shifting paradigms",
+      "Talent for generating excitement about ideas"
+    ],
+    "life_direction": "Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "Q♣": {
+    "symbol": "Q♣",
+    "name": "QUEEN OF CLUBS",
+    "label": "Queen of Clubs",
+    "slug": "queen-of-clubs",
+    "title": "The Nurturing Leader",
+    "page": "/birth-card/queen-of-clubs",
+    "meaning": "The Nurturing Leader\n\nYou teach from what you actually know, without making people earn the right to hear it. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.\n\nBalanced: You teach from what you actually know, without making people earn the right to hear it.\n\nUnder-expressed: You know more than you say. Deference keeps the room comfortable and keeps your mind hidden.\n\nOver-expressed: You decide when others are ready. Knowledge becomes a gate you keep.\n\nShadow: You decide what other people need to understand. Mentorship starts doing their thinking for them.\n\nGifts: Deep wisdom and thoughtful guidance; Ability to create intellectual safety for growth; Natural mentoring and empowering ability; Talent for helping others develop their thinking\n\nLife direction: Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
+    "core_identity": "You teach from what you actually know, without making people earn the right to hear it. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
+    "sweet_spot": "You teach from what you actually know, without making people earn the right to hear it.",
+    "under": "You know more than you say. Deference keeps the room comfortable and keeps your mind hidden.",
+    "over": "You decide when others are ready. Knowledge becomes a gate you keep.",
+    "shadow": "You decide what other people need to understand. Mentorship starts doing their thinking for them.",
+    "gifts": [
+      "Deep wisdom and thoughtful guidance",
+      "Ability to create intellectual safety for growth",
+      "Natural mentoring and empowering ability",
+      "Talent for helping others develop their thinking"
+    ],
+    "life_direction": "Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "K♣": {
+    "symbol": "K♣",
+    "name": "KING OF CLUBS",
+    "label": "King of Clubs",
+    "slug": "king-of-clubs",
+    "title": "The Master Leader",
+    "page": "/birth-card/king-of-clubs",
+    "meaning": "The Master Leader\n\nYou make the intellectual call in the open and you can revise it. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.\n\nBalanced: You make the intellectual call in the open and you can revise it.\n\nUnder-expressed: You withhold the call and still believe you already know. Authority hides instead of working.\n\nOver-expressed: Dissent is treated as error. The room learns to agree with you instead of thinking.\n\nShadow: You decide in public and treat disagreement as error. The room learns to agree with you instead of thinking.\n\nGifts: Clear thinking and decisive action; Natural authority and command; Ability to direct complex intellectual projects; Confidence that inspires confidence in others\n\nLife direction: Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
+    "core_identity": "You make the intellectual call in the open and you can revise it. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
+    "sweet_spot": "You make the intellectual call in the open and you can revise it.",
+    "under": "You withhold the call and still believe you already know. Authority hides instead of working.",
+    "over": "Dissent is treated as error. The room learns to agree with you instead of thinking.",
+    "shadow": "You decide in public and treat disagreement as error. The room learns to agree with you instead of thinking.",
+    "gifts": [
+      "Clear thinking and decisive action",
+      "Natural authority and command",
+      "Ability to direct complex intellectual projects",
+      "Confidence that inspires confidence in others"
+    ],
+    "life_direction": "Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "A♦": {
+    "symbol": "A♦",
+    "name": "ACE OF DIAMONDS",
+    "label": "Ace of Diamonds",
+    "slug": "ace-of-diamonds",
+    "title": "The Wealth Pioneer",
+    "page": "/birth-card/ace-of-diamonds",
+    "meaning": "The Wealth Pioneer\n\nYou start a resource in motion because you trust you can make and keep value. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.\n\nBalanced: You start a resource in motion because you trust you can make and keep value.\n\nUnder-expressed: You cling to what you have and rehearse losing it. Security work never quite starts.\n\nOver-expressed: You collect to prove you are worth something. Other people start to look like competition.\n\nShadow: You measure yourself by the pile. More never registers as enough, so success still feels like a shortfall.\n\nGifts: Natural resource building and accumulation; Ability to see material opportunity; Entrepreneurial drive and initiative; Capacity to create wealth from ideas\n\nLife direction: Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
+    "core_identity": "You start a resource in motion because you trust you can make and keep value. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
+    "sweet_spot": "You start a resource in motion because you trust you can make and keep value.",
+    "under": "You cling to what you have and rehearse losing it. Security work never quite starts.",
+    "over": "You collect to prove you are worth something. Other people start to look like competition.",
+    "shadow": "You measure yourself by the pile. More never registers as enough, so success still feels like a shortfall.",
+    "gifts": [
+      "Natural resource building and accumulation",
+      "Ability to see material opportunity",
+      "Entrepreneurial drive and initiative",
+      "Capacity to create wealth from ideas"
+    ],
+    "life_direction": "Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "2♦": {
+    "symbol": "2♦",
+    "name": "2 OF DIAMONDS",
+    "label": "2 of Diamonds",
+    "slug": "2-of-diamonds",
+    "title": "The Financial Partner",
+    "page": "/birth-card/2-of-diamonds",
+    "meaning": "The Financial Partner\n\nYou name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.\n\nBalanced: You name the exchange out loud and keep it fair for both sides.\n\nUnder-expressed: You give the better end of the deal so no one can call you greedy. The short end becomes a habit, then a grudge.\n\nOver-expressed: You steer the money so you stay in control of the relationship.\n\nShadow: You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.\n\nGifts: Natural understanding of fair exchange; Ability to create balanced partnerships around resources; Diplomatic skill in financial negotiations; Talent for making partnerships feel equitable\n\nLife direction: Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
+    "core_identity": "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    "sweet_spot": "You name the exchange out loud and keep it fair for both sides.",
+    "under": "You give the better end of the deal so no one can call you greedy. The short end becomes a habit, then a grudge.",
+    "over": "You steer the money so you stay in control of the relationship.",
+    "shadow": "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
+    "gifts": [
+      "Natural understanding of fair exchange",
+      "Ability to create balanced partnerships around resources",
+      "Diplomatic skill in financial negotiations",
+      "Talent for making partnerships feel equitable"
+    ],
+    "life_direction": "Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "3♦": {
+    "symbol": "3♦",
+    "name": "3 OF DIAMONDS",
+    "label": "3 of Diamonds",
+    "slug": "3-of-diamonds",
+    "title": "The Success Communicator",
+    "page": "/birth-card/3-of-diamonds",
+    "meaning": "The Success Communicator\n\nYou can make value visible without overselling the thing underneath. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.\n\nBalanced: You keep more than one path alive without letting any of them stay imaginary.\n\nUnder-expressed: You open too many income paths and stabilize none. Options replace a working floor.\n\nOver-expressed: You chase the next dollar so hard the current one never settles.\n\nShadow: The pitch outruns the delivery. After a few gaps, people stop believing the next one.\n\nGifts: Natural sales and persuasion ability; Talent for making things attractive and desirable; Ability to communicate material value clearly; Gift for inspiring desire and investment\n\nLife direction: Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
+    "core_identity": "You can make value visible without overselling the thing underneath. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
+    "sweet_spot": "You keep more than one path alive without letting any of them stay imaginary.",
+    "under": "You open too many income paths and stabilize none. Options replace a working floor.",
+    "over": "You chase the next dollar so hard the current one never settles.",
+    "shadow": "The pitch outruns the delivery. After a few gaps, people stop believing the next one.",
+    "gifts": [
+      "Natural sales and persuasion ability",
+      "Talent for making things attractive and desirable",
+      "Ability to communicate material value clearly",
+      "Gift for inspiring desire and investment"
+    ],
+    "life_direction": "Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "4♦": {
+    "symbol": "4♦",
+    "name": "4 OF DIAMONDS",
+    "label": "4 of Diamonds",
+    "slug": "4-of-diamonds",
+    "title": "The Financial Foundation Builder",
+    "page": "/birth-card/4-of-diamonds",
+    "meaning": "The Financial Foundation Builder\n\nYou build a floor that lasts and still let money move when the work requires it. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.\n\nBalanced: You build a floor that lasts and still let money move when the work requires it.\n\nUnder-expressed: You hold money as a wall against chaos. The wall gets thicker than the life it was supposed to protect.\n\nOver-expressed: You will not release cash even when keeping it costs more than spending it.\n\nShadow: You have enough and live as if you do not. Caution empties the thing it was supposed to protect.\n\nGifts: Strong financial planning and foresight; Ability to build lasting material security; Natural understanding of systems and structures; Talent for creating sustainable wealth\n\nLife direction: Your curriculum is learning that some security is illusory and that money exists to be used. You're learning to enjoy the abundance you've built.",
+    "core_identity": "You build a floor that lasts and still let money move when the work requires it. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
+    "sweet_spot": "You build a floor that lasts and still let money move when the work requires it.",
+    "under": "You hold money as a wall against chaos. The wall gets thicker than the life it was supposed to protect.",
+    "over": "You will not release cash even when keeping it costs more than spending it.",
+    "shadow": "You have enough and live as if you do not. Caution empties the thing it was supposed to protect.",
+    "gifts": [
+      "Strong financial planning and foresight",
+      "Ability to build lasting material security",
+      "Natural understanding of systems and structures",
+      "Talent for creating sustainable wealth"
+    ],
+    "life_direction": "Your curriculum is learning that some security is illusory and that money exists to be used. You're learning to enjoy the abundance you've built.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "5♦": {
+    "symbol": "5♦",
+    "name": "5 OF DIAMONDS",
+    "label": "5 of Diamonds",
+    "slug": "5-of-diamonds",
+    "title": "The Dynamic Entrepreneur",
+    "page": "/birth-card/5-of-diamonds",
+    "meaning": "The Dynamic Entrepreneur\n\nYou adjust the resource plan when the ground moves, without pretending nothing changed. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.\n\nBalanced: You adjust the resource plan when the ground moves, without pretending nothing changed.\n\nUnder-expressed: Fear of loss freezes the next move. The safe choice is the one that does not happen.\n\nOver-expressed: You spend to feel motion. Chaos gets billed as flexibility.\n\nShadow: You start the next venture before the current one is real. Options replace a floor.\n\nGifts: Quick adaptation to market changes; Ability to explore multiple income streams; Natural entrepreneurial flexibility; Gift for finding new opportunities\n\nLife direction: Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
+    "core_identity": "You adjust the resource plan when the ground moves, without pretending nothing changed. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
+    "sweet_spot": "You adjust the resource plan when the ground moves, without pretending nothing changed.",
+    "under": "Fear of loss freezes the next move. The safe choice is the one that does not happen.",
+    "over": "You spend to feel motion. Chaos gets billed as flexibility.",
+    "shadow": "You start the next venture before the current one is real. Options replace a floor.",
+    "gifts": [
+      "Quick adaptation to market changes",
+      "Ability to explore multiple income streams",
+      "Natural entrepreneurial flexibility",
+      "Gift for finding new opportunities"
+    ],
+    "life_direction": "Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "6♦": {
+    "symbol": "6♦",
+    "name": "6 OF DIAMONDS",
+    "label": "6 of Diamonds",
+    "slug": "6-of-diamonds",
+    "title": "The Generous Provider",
+    "page": "/birth-card/6-of-diamonds",
+    "meaning": "The Generous Provider\n\nYou move resources toward other people without erasing your own claim. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.\n\nBalanced: You move resources toward other people without erasing your own claim.\n\nUnder-expressed: You over-give and do not say what you need back. Generosity becomes a way to stay unpaid.\n\nOver-expressed: Gifts come with a string. Help becomes a way to keep someone obligated.\n\nShadow: You keep providing after you are empty. People learn to lean; you learn to resent the lean.\n\nGifts: Generous and supportive nature with resources; Ability to provide stability for others; Natural understanding of needs and provision; Gift for creating material safety\n\nLife direction: Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
+    "core_identity": "You move resources toward other people without erasing your own claim. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
+    "sweet_spot": "You move resources toward other people without erasing your own claim.",
+    "under": "You over-give and do not say what you need back. Generosity becomes a way to stay unpaid.",
+    "over": "Gifts come with a string. Help becomes a way to keep someone obligated.",
+    "shadow": "You keep providing after you are empty. People learn to lean; you learn to resent the lean.",
+    "gifts": [
+      "Generous and supportive nature with resources",
+      "Ability to provide stability for others",
+      "Natural understanding of needs and provision",
+      "Gift for creating material safety"
+    ],
+    "life_direction": "Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "7♦": {
+    "symbol": "7♦",
+    "name": "7 OF DIAMONDS",
+    "label": "7 of Diamonds",
+    "slug": "7-of-diamonds",
+    "title": "The Skeptical Investor",
+    "page": "/birth-card/7-of-diamonds",
+    "meaning": "The Skeptical Investor\n\nYou look at worth without reducing it to the account balance. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.\n\nBalanced: You look at worth without reducing it to the account balance.\n\nUnder-expressed: You watch for lack even when the numbers do not support it. Caution stops being useful and starts running the day.\n\nOver-expressed: You treat every surplus as temporary. Scarcity stays in charge after the evidence has changed.\n\nShadow: You can see the hole in every opportunity, so you take none. Caution becomes a standstill.\n\nGifts: Analytical thinking about financial decisions; Ability to identify financial risks; Deep skepticism that prevents poor choices; Natural caution and thoroughness\n\nLife direction: Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
+    "core_identity": "You look at worth without reducing it to the account balance. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
+    "sweet_spot": "You look at worth without reducing it to the account balance.",
+    "under": "You watch for lack even when the numbers do not support it. Caution stops being useful and starts running the day.",
+    "over": "You treat every surplus as temporary. Scarcity stays in charge after the evidence has changed.",
+    "shadow": "You can see the hole in every opportunity, so you take none. Caution becomes a standstill.",
+    "gifts": [
+      "Analytical thinking about financial decisions",
+      "Ability to identify financial risks",
+      "Deep skepticism that prevents poor choices",
+      "Natural caution and thoroughness"
+    ],
+    "life_direction": "Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "8♦": {
+    "symbol": "8♦",
+    "name": "8 OF DIAMONDS",
+    "label": "8 of Diamonds",
+    "slug": "8-of-diamonds",
+    "title": "The Businessman",
+    "page": "/birth-card/8-of-diamonds",
+    "meaning": "The Businessman\n\nYou run the money system in the open and you can explain the call. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.\n\nBalanced: You run the money system in the open and you can explain the call.\n\nUnder-expressed: You step back from resource leadership. Power looks dangerous, so you leave it on the table.\n\nOver-expressed: You use money to keep people in line. The ledger becomes a hierarchy.\n\nShadow: Money becomes the way you keep score and keep control. The win is public; the relationships are not.\n\nGifts: Strategic thinking about resources and power; Natural ability to leverage opportunities; Ambitious drive and determination; Talent for creating material success\n\nLife direction: Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
+    "core_identity": "You run the money system in the open and you can explain the call. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
+    "sweet_spot": "You run the money system in the open and you can explain the call.",
+    "under": "You step back from resource leadership. Power looks dangerous, so you leave it on the table.",
+    "over": "You use money to keep people in line. The ledger becomes a hierarchy.",
+    "shadow": "Money becomes the way you keep score and keep control. The win is public; the relationships are not.",
+    "gifts": [
+      "Strategic thinking about resources and power",
+      "Natural ability to leverage opportunities",
+      "Ambitious drive and determination",
+      "Talent for creating material success"
+    ],
+    "life_direction": "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "9♦": {
+    "symbol": "9♦",
+    "name": "9 OF DIAMONDS",
+    "label": "9 of Diamonds",
+    "slug": "9-of-diamonds",
+    "title": "The Universal Provider",
+    "page": "/birth-card/9-of-diamonds",
+    "meaning": "The Universal Provider\n\nYou give in a way you can sustain, and you let someone give back. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.\n\nBalanced: You give in a way you can sustain, and you let someone give back.\n\nUnder-expressed: You keep giving after you are empty. Receiving feels like a failure of character.\n\nOver-expressed: You stay the generous one past the point of honesty. Resentment does the work the boundary should have done.\n\nShadow: You fund everyone else's floor and skip your own. The generosity is real and it is not sustainable.\n\nGifts: Visionary thinking about resource distribution; Generous impulse toward universal good; Ability to inspire others to contribute; Natural idealism about abundance\n\nLife direction: Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
+    "core_identity": "You give in a way you can sustain, and you let someone give back. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
+    "sweet_spot": "You give in a way you can sustain, and you let someone give back.",
+    "under": "You keep giving after you are empty. Receiving feels like a failure of character.",
+    "over": "You stay the generous one past the point of honesty. Resentment does the work the boundary should have done.",
+    "shadow": "You fund everyone else's floor and skip your own. The generosity is real and it is not sustainable.",
+    "gifts": [
+      "Visionary thinking about resource distribution",
+      "Generous impulse toward universal good",
+      "Ability to inspire others to contribute",
+      "Natural idealism about abundance"
+    ],
+    "life_direction": "Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "10♦": {
+    "symbol": "10♦",
+    "name": "10 OF DIAMONDS",
+    "label": "10 of Diamonds",
+    "slug": "10-of-diamonds",
+    "title": "The Wealthy Master",
+    "page": "/birth-card/10-of-diamonds",
+    "meaning": "The Wealthy Master\n\nYou build enough and keep it structured so it actually holds. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.\n\nBalanced: You build enough and keep it structured so it actually holds.\n\nUnder-expressed: You carry other people's bills and call it family. Their floor becomes your ceiling.\n\nOver-expressed: People start to look like instruments. The win is counted; the relationship is not.\n\nShadow: You protect what you have instead of using it. Security turns into a closed room.\n\nGifts: Integrated material mastery and security; Ability to radiate confidence about resources; Wisdom from building and maintaining wealth; Natural generosity from a place of abundance\n\nLife direction: Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
+    "core_identity": "You build enough and keep it structured so it actually holds. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
+    "sweet_spot": "You build enough and keep it structured so it actually holds.",
+    "under": "You carry other people's bills and call it family. Their floor becomes your ceiling.",
+    "over": "People start to look like instruments. The win is counted; the relationship is not.",
+    "shadow": "You protect what you have instead of using it. Security turns into a closed room.",
+    "gifts": [
+      "Integrated material mastery and security",
+      "Ability to radiate confidence about resources",
+      "Wisdom from building and maintaining wealth",
+      "Natural generosity from a place of abundance"
+    ],
+    "life_direction": "Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "J♦": {
+    "symbol": "J♦",
+    "name": "JACK OF DIAMONDS",
+    "label": "Jack of Diamonds",
+    "slug": "jack-of-diamonds",
+    "title": "The Successful Messenger",
+    "page": "/birth-card/jack-of-diamonds",
+    "meaning": "The Successful Messenger\n\nYou try a new approach to value and you finish enough of it to know if it works. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.\n\nBalanced: You try a new approach to value and you finish enough of it to know if it works.\n\nUnder-expressed: You get excited about the next way to make money and do not stay for the unglamorous middle.\n\nOver-expressed: You promise a return you have not built. The pitch outruns the product.\n\nShadow: You talk about value more fluently than you keep it. The message is ahead of the books.\n\nGifts: Ability to inspire financial awakening; Natural gift for shifting money mindsets; Talent for creating excitement about opportunity; Inspiring others to believe in abundance\n\nLife direction: Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
+    "core_identity": "You try a new approach to value and you finish enough of it to know if it works. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
+    "sweet_spot": "You try a new approach to value and you finish enough of it to know if it works.",
+    "under": "You get excited about the next way to make money and do not stay for the unglamorous middle.",
+    "over": "You promise a return you have not built. The pitch outruns the product.",
+    "shadow": "You talk about value more fluently than you keep it. The message is ahead of the books.",
+    "gifts": [
+      "Ability to inspire financial awakening",
+      "Natural gift for shifting money mindsets",
+      "Talent for creating excitement about opportunity",
+      "Inspiring others to believe in abundance"
+    ],
+    "life_direction": "Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "Q♦": {
+    "symbol": "Q♦",
+    "name": "QUEEN OF DIAMONDS",
+    "label": "Queen of Diamonds",
+    "slug": "queen-of-diamonds",
+    "title": "The Prosperous Nurturer",
+    "page": "/birth-card/queen-of-diamonds",
+    "meaning": "The Prosperous Nurturer\n\nYou protect what you have without making every dollar a referendum on safety. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.\n\nBalanced: You protect what you have without making every dollar a referendum on safety.\n\nUnder-expressed: You have resources and still manage them as if loss is already scheduled. Control stands in for trust.\n\nOver-expressed: Money becomes the condition for closeness. People feel the price of disappointing you.\n\nShadow: Provision comes with a string. People feel cared for and owned at the same time.\n\nGifts: Natural ability to provide and nurture materially; Generosity and abundance consciousness; Talent for creating financial safety for others; Wisdom about resources and needs\n\nLife direction: Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
+    "core_identity": "You protect what you have without making every dollar a referendum on safety. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
+    "sweet_spot": "You protect what you have without making every dollar a referendum on safety.",
+    "under": "You have resources and still manage them as if loss is already scheduled. Control stands in for trust.",
+    "over": "Money becomes the condition for closeness. People feel the price of disappointing you.",
+    "shadow": "Provision comes with a string. People feel cared for and owned at the same time.",
+    "gifts": [
+      "Natural ability to provide and nurture materially",
+      "Generosity and abundance consciousness",
+      "Talent for creating financial safety for others",
+      "Wisdom about resources and needs"
+    ],
+    "life_direction": "Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "K♦": {
+    "symbol": "K♦",
+    "name": "KING OF DIAMONDS",
+    "label": "King of Diamonds",
+    "slug": "king-of-diamonds",
+    "title": "The Wealthy King",
+    "page": "/birth-card/king-of-diamonds",
+    "meaning": "The Wealthy King\n\nYou run the system and you can show your work. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.\n\nBalanced: You run the system and you can show your work.\n\nUnder-expressed: You hold the resources and decline the public call. Power unused still shapes the room.\n\nOver-expressed: Other people's labor exists to grow your position. Stewardship drops out of the job description.\n\nShadow: You make the money call alone and call it leadership. Other judgment does not get a seat.\n\nGifts: Natural authority and command over resources; Confident decision-making about money; Ability to direct financial strategy; Inspiring confidence in your financial judgment\n\nLife direction: Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
+    "core_identity": "You run the system and you can show your work. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
+    "sweet_spot": "You run the system and you can show your work.",
+    "under": "You hold the resources and decline the public call. Power unused still shapes the room.",
+    "over": "Other people's labor exists to grow your position. Stewardship drops out of the job description.",
+    "shadow": "You make the money call alone and call it leadership. Other judgment does not get a seat.",
+    "gifts": [
+      "Natural authority and command over resources",
+      "Confident decision-making about money",
+      "Ability to direct financial strategy",
+      "Inspiring confidence in your financial judgment"
+    ],
+    "life_direction": "Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "A♠": {
+    "symbol": "A♠",
+    "name": "ACE OF SPADES",
+    "label": "Ace of Spades",
+    "slug": "ace-of-spades",
+    "title": "The Truth Pioneer",
+    "page": "/birth-card/ace-of-spades",
+    "meaning": "The Truth Pioneer\n\nYou say the true thing early, before it has to become a crisis to be heard. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.\n\nBalanced: You say the true thing early, before it has to become a crisis to be heard.\n\nUnder-expressed: You leave the hard fact unnamed. The story stays kinder than the situation.\n\nOver-expressed: You call it honesty when you use the fact as a blade.\n\nShadow: You decide you already have the true read and stop looking. Honesty starts cutting more than it clarifies.\n\nGifts: Ability to penetrate illusions and see truth; Courage to question what others accept; Sharp thinking and analytical power; Natural integrity and honesty\n\nLife direction: Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
+    "core_identity": "You say the true thing early, before it has to become a crisis to be heard. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
+    "sweet_spot": "You say the true thing early, before it has to become a crisis to be heard.",
+    "under": "You leave the hard fact unnamed. The story stays kinder than the situation.",
+    "over": "You call it honesty when you use the fact as a blade.",
+    "shadow": "You decide you already have the true read and stop looking. Honesty starts cutting more than it clarifies.",
+    "gifts": [
+      "Ability to penetrate illusions and see truth",
+      "Courage to question what others accept",
+      "Sharp thinking and analytical power",
+      "Natural integrity and honesty"
+    ],
+    "life_direction": "Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "2♠": {
+    "symbol": "2♠",
+    "name": "2 OF SPADES",
+    "label": "2 of Spades",
+    "slug": "2-of-spades",
+    "title": "The Skeptical Partner",
+    "page": "/birth-card/2-of-spades",
+    "meaning": "The Skeptical Partner\n\nYou hold two pressures at once and still make a call that can live in the world. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.\n\nBalanced: You hold two pressures at once and still make a call that can live in the world.\n\nUnder-expressed: You research both sides until the decision window closes. Thoroughness is how you avoid choosing.\n\nOver-expressed: You refuse the choice so hard that other people start fighting it for you.\n\nShadow: You can see both sides so well that you will not pick one. Fairness becomes a way not to stand anywhere.\n\nGifts: Ability to hold multiple perspectives simultaneously; Healthy skepticism toward claims; Balanced thinking and fairness; Natural understanding of complexity\n\nLife direction: Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
+    "core_identity": "You hold two pressures at once and still make a call that can live in the world. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
+    "sweet_spot": "You hold two pressures at once and still make a call that can live in the world.",
+    "under": "You research both sides until the decision window closes. Thoroughness is how you avoid choosing.",
+    "over": "You refuse the choice so hard that other people start fighting it for you.",
+    "shadow": "You can see both sides so well that you will not pick one. Fairness becomes a way not to stand anywhere.",
+    "gifts": [
+      "Ability to hold multiple perspectives simultaneously",
+      "Healthy skepticism toward claims",
+      "Balanced thinking and fairness",
+      "Natural understanding of complexity"
+    ],
+    "life_direction": "Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "3♠": {
+    "symbol": "3♠",
+    "name": "3 OF SPADES",
+    "label": "3 of Spades",
+    "slug": "3-of-spades",
+    "title": "The Sorrowful Truth",
+    "page": "/birth-card/3-of-spades",
+    "meaning": "The Sorrowful Truth\n\nYou stay with the hard feeling long enough to learn it, then you let the day continue. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.\n\nBalanced: You stay with the hard feeling long enough to learn it, then you let the day continue.\n\nUnder-expressed: Grief takes the whole field. Nothing else gets to move until the feeling is finished, and it is not finishing.\n\nOver-expressed: Pain becomes the argument. Other people are drafted into a story they did not cause.\n\nShadow: You keep naming what is broken. The room hears the problem and stops expecting a next move.\n\nGifts: Ability to see what needs fixing; Honesty about difficulty and pain; Natural compassion for suffering; Courage to name injustice\n\nLife direction: Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
+    "core_identity": "You stay with the hard feeling long enough to learn it, then you let the day continue. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
+    "sweet_spot": "You stay with the hard feeling long enough to learn it, then you let the day continue.",
+    "under": "Grief takes the whole field. Nothing else gets to move until the feeling is finished, and it is not finishing.",
+    "over": "Pain becomes the argument. Other people are drafted into a story they did not cause.",
+    "shadow": "You keep naming what is broken. The room hears the problem and stops expecting a next move.",
+    "gifts": [
+      "Ability to see what needs fixing",
+      "Honesty about difficulty and pain",
+      "Natural compassion for suffering",
+      "Courage to name injustice"
+    ],
+    "life_direction": "Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "4♠": {
+    "symbol": "4♠",
+    "name": "4 OF SPADES",
+    "label": "4 of Spades",
+    "slug": "4-of-spades",
+    "title": "The Rigid Truth",
+    "page": "/birth-card/4-of-spades",
+    "meaning": "The Rigid Truth\n\nYou build enough container that change can happen without the floor disappearing. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.\n\nBalanced: You build enough container that change can happen without the floor disappearing.\n\nUnder-expressed: You brace against change and call it stability. The structure is there to keep the new thing out.\n\nOver-expressed: Nothing gets in. The defense outlasts the threat.\n\nShadow: The principle outranks the person in front of you. Being consistent starts to cost the relationship.\n\nGifts: Ability to create coherent belief systems; Strong principles and ethical clarity; Organized thinking and clear logic; Natural integrity and consistency\n\nLife direction: Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
+    "core_identity": "You build enough container that change can happen without the floor disappearing. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
+    "sweet_spot": "You build enough container that change can happen without the floor disappearing.",
+    "under": "You brace against change and call it stability. The structure is there to keep the new thing out.",
+    "over": "Nothing gets in. The defense outlasts the threat.",
+    "shadow": "The principle outranks the person in front of you. Being consistent starts to cost the relationship.",
+    "gifts": [
+      "Ability to create coherent belief systems",
+      "Strong principles and ethical clarity",
+      "Organized thinking and clear logic",
+      "Natural integrity and consistency"
+    ],
+    "life_direction": "Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "5♠": {
+    "symbol": "5♠",
+    "name": "5 OF SPADES",
+    "label": "5 of Spades",
+    "slug": "5-of-spades",
+    "title": "The Restless Mind",
+    "page": "/birth-card/5-of-spades",
+    "meaning": "The Restless Mind\n\nYou stay in the hard stretch long enough to get better at it. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.\n\nBalanced: You stay in the hard stretch long enough to get better at it.\n\nUnder-expressed: You freeze when the fight starts and treat the circumstance as the whole cause.\n\nOver-expressed: You keep conflict close because it proves you can survive. Calm starts to feel like a loss.\n\nShadow: You change positions before any of them get depth. People cannot tell which one to build on.\n\nGifts: Quick thinking and mental flexibility; Openness to new perspectives; Natural curiosity and investigation; Ability to see things from fresh angles\n\nLife direction: Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
+    "core_identity": "You stay in the hard stretch long enough to get better at it. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
+    "sweet_spot": "You stay in the hard stretch long enough to get better at it.",
+    "under": "You freeze when the fight starts and treat the circumstance as the whole cause.",
+    "over": "You keep conflict close because it proves you can survive. Calm starts to feel like a loss.",
+    "shadow": "You change positions before any of them get depth. People cannot tell which one to build on.",
+    "gifts": [
+      "Quick thinking and mental flexibility",
+      "Openness to new perspectives",
+      "Natural curiosity and investigation",
+      "Ability to see things from fresh angles"
+    ],
+    "life_direction": "Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "6♠": {
+    "symbol": "6♠",
+    "name": "6 OF SPADES",
+    "label": "6 of Spades",
+    "slug": "6-of-spades",
+    "title": "The Responsible Mind",
+    "page": "/birth-card/6-of-spades",
+    "meaning": "The Responsible Mind\n\nYou use what you have already walked through without requiring anyone else to be in pain for it to count. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.\n\nBalanced: You use what you have already walked through without requiring anyone else to be in pain for it to count.\n\nUnder-expressed: You tend other people's damage and skip your own. Service is how you avoid the wound.\n\nOver-expressed: You need someone to be struggling so your help has a job. Care starts to depend on their not-being-well.\n\nShadow: You take responsibility for other people seeing it your way. Guidance crowds out their own work.\n\nGifts: Natural ability to help others see truth; Responsibility toward honest guidance; Clear thinking and balanced perspective; Talent for helping others process difficulty\n\nLife direction: Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
+    "core_identity": "You use what you have already walked through without requiring anyone else to be in pain for it to count. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
+    "sweet_spot": "You use what you have already walked through without requiring anyone else to be in pain for it to count.",
+    "under": "You tend other people's damage and skip your own. Service is how you avoid the wound.",
+    "over": "You need someone to be struggling so your help has a job. Care starts to depend on their not-being-well.",
+    "shadow": "You take responsibility for other people seeing it your way. Guidance crowds out their own work.",
+    "gifts": [
+      "Natural ability to help others see truth",
+      "Responsibility toward honest guidance",
+      "Clear thinking and balanced perspective",
+      "Talent for helping others process difficulty"
+    ],
+    "life_direction": "Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "7♠": {
+    "symbol": "7♠",
+    "name": "7 OF SPADES",
+    "label": "7 of Spades",
+    "slug": "7-of-spades",
+    "title": "The Questioning Mind",
+    "page": "/birth-card/7-of-spades",
+    "meaning": "The Questioning Mind\n\nYou study the hard pattern until you can name it, then you do the next honest thing. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.\n\nBalanced: You study the hard pattern until you can name it, then you do the next honest thing.\n\nUnder-expressed: You assume the worst reading and stop looking for the usable one.\n\nOver-expressed: Difficulty becomes the worldview. Every clean fact gets filed as a setup.\n\nShadow: Questioning turns into a habit of taking things apart. Commitment looks naive, so nothing gets kept.\n\nGifts: Penetrating questions and inquiry; Ability to identify inconsistencies and flaws; Critical thinking and logical rigor; Natural skepticism that prevents deception\n\nLife direction: Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
+    "core_identity": "You study the hard pattern until you can name it, then you do the next honest thing. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.",
+    "sweet_spot": "You study the hard pattern until you can name it, then you do the next honest thing.",
+    "under": "You assume the worst reading and stop looking for the usable one.",
+    "over": "Difficulty becomes the worldview. Every clean fact gets filed as a setup.",
+    "shadow": "Questioning turns into a habit of taking things apart. Commitment looks naive, so nothing gets kept.",
+    "gifts": [
+      "Penetrating questions and inquiry",
+      "Ability to identify inconsistencies and flaws",
+      "Critical thinking and logical rigor",
+      "Natural skepticism that prevents deception"
+    ],
+    "life_direction": "Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "8♠": {
+    "symbol": "8♠",
+    "name": "8 OF SPADES",
+    "label": "8 of Spades",
+    "slug": "8-of-spades",
+    "title": "The Powerful Mind",
+    "page": "/birth-card/8-of-spades",
+    "meaning": "The Powerful Mind\n\nYou take the hard lead and you stay with the work after the call is made. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.\n\nBalanced: You take the hard lead and you stay with the work after the call is made.\n\nUnder-expressed: You step off the hook and resent the people who picked it up. Power unused still costs you.\n\nOver-expressed: You run the room through force of mind. People comply. They do not bring you their real information.\n\nShadow: The stronger argument wins the room and empties it. People stop bringing you anything they cannot defend.\n\nGifts: Strategic and powerful thinking; Ability to win arguments through logic; Strong conviction and mental clarity; Talent for directing others' thinking\n\nLife direction: Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
+    "core_identity": "You take the hard lead and you stay with the work after the call is made. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
+    "sweet_spot": "You take the hard lead and you stay with the work after the call is made.",
+    "under": "You step off the hook and resent the people who picked it up. Power unused still costs you.",
+    "over": "You run the room through force of mind. People comply. They do not bring you their real information.",
+    "shadow": "The stronger argument wins the room and empties it. People stop bringing you anything they cannot defend.",
+    "gifts": [
+      "Strategic and powerful thinking",
+      "Ability to win arguments through logic",
+      "Strong conviction and mental clarity",
+      "Talent for directing others' thinking"
+    ],
+    "life_direction": "Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "9♠": {
+    "symbol": "9♠",
+    "name": "9 OF SPADES",
+    "label": "9 of Spades",
+    "slug": "9-of-spades",
+    "title": "The Idealistic Mind",
+    "page": "/birth-card/9-of-spades",
+    "meaning": "The Idealistic Mind\n\nYou complete the hard stretch and put the lesson down. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.\n\nBalanced: You complete the hard stretch and put the lesson down.\n\nUnder-expressed: You will not close the cycle. The ending sits on the desk because finishing would mean starting without it.\n\nOver-expressed: You force the ending before the work is done. Closure becomes a way not to stay.\n\nShadow: The ideal stays cleaner than the implementation. Vision without a next action teaches people not to wait.\n\nGifts: Visionary thinking and universal perspective; Ability to see highest potential truth; Idealistic principles and ethics; Natural inspiration toward greater good\n\nLife direction: Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
+    "core_identity": "You complete the hard stretch and put the lesson down. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
+    "sweet_spot": "You complete the hard stretch and put the lesson down.",
+    "under": "You will not close the cycle. The ending sits on the desk because finishing would mean starting without it.",
+    "over": "You force the ending before the work is done. Closure becomes a way not to stay.",
+    "shadow": "The ideal stays cleaner than the implementation. Vision without a next action teaches people not to wait.",
+    "gifts": [
+      "Visionary thinking and universal perspective",
+      "Ability to see highest potential truth",
+      "Idealistic principles and ethics",
+      "Natural inspiration toward greater good"
+    ],
+    "life_direction": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "10♠": {
+    "symbol": "10♠",
+    "name": "10 OF SPADES",
+    "label": "10 of Spades",
+    "slug": "10-of-spades",
+    "title": "The Completed Mind",
+    "page": "/birth-card/10-of-spades",
+    "meaning": "The Completed Mind\n\nYou do the difficult curriculum in front of you without adding the ones that are not yours. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.\n\nBalanced: You do the difficult curriculum in front of you without adding the ones that are not yours.\n\nUnder-expressed: You pick up everyone's hard piece and call it duty. The load is heavier than the job required.\n\nOver-expressed: You raise the standard until no one, including you, can meet it. Relentlessness replaces judgment.\n\nShadow: You treat the current map as finished. Peace arrives; revision does not.\n\nGifts: Deep wisdom and mental integration; Clarity and peace about beliefs; Ability to radiate confidence about truth; Natural authority and master perspective\n\nLife direction: Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
+    "core_identity": "You do the difficult curriculum in front of you without adding the ones that are not yours. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
+    "sweet_spot": "You do the difficult curriculum in front of you without adding the ones that are not yours.",
+    "under": "You pick up everyone's hard piece and call it duty. The load is heavier than the job required.",
+    "over": "You raise the standard until no one, including you, can meet it. Relentlessness replaces judgment.",
+    "shadow": "You treat the current map as finished. Peace arrives; revision does not.",
+    "gifts": [
+      "Deep wisdom and mental integration",
+      "Clarity and peace about beliefs",
+      "Ability to radiate confidence about truth",
+      "Natural authority and master perspective"
+    ],
+    "life_direction": "Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "J♠": {
+    "symbol": "J♠",
+    "name": "JACK OF SPADES",
+    "label": "Jack of Spades",
+    "slug": "jack-of-spades",
+    "title": "The Messenger of Truth",
+    "page": "/birth-card/jack-of-spades",
+    "meaning": "The Messenger of Truth\n\nYou name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.\n\nBalanced: You name what is actually happening and you remain after you have said it.\n\nUnder-expressed: You say the true thing without staying for what it does to the room.\n\nOver-expressed: Honesty becomes a ranking system. People hear the cut before they hear the fact.\n\nShadow: You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.\n\nGifts: Courage to speak difficult truths; Ability to inspire others toward honesty; Gift for bringing necessary perspective; Talent for shifting how people think\n\nLife direction: Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
+    "core_identity": "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    "sweet_spot": "You name what is actually happening and you remain after you have said it.",
+    "under": "You say the true thing without staying for what it does to the room.",
+    "over": "Honesty becomes a ranking system. People hear the cut before they hear the fact.",
+    "shadow": "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
+    "gifts": [
+      "Courage to speak difficult truths",
+      "Ability to inspire others toward honesty",
+      "Gift for bringing necessary perspective",
+      "Talent for shifting how people think"
+    ],
+    "life_direction": "Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "Q♠": {
+    "symbol": "Q♠",
+    "name": "QUEEN OF SPADES",
+    "label": "Queen of Spades",
+    "slug": "queen-of-spades",
+    "title": "The Wise Guide",
+    "page": "/birth-card/queen-of-spades",
+    "meaning": "The Wise Guide\n\nYou tell the necessary truth at a volume the other person can use. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.\n\nBalanced: You tell the necessary truth at a volume the other person can use.\n\nUnder-expressed: You know the true read and let someone else's version stand. Peace is purchased with your silence.\n\nOver-expressed: You hold the fact back so you keep the advantage. Clarity becomes a private asset.\n\nShadow: You steer people toward your conclusion and call it guidance. Their own thinking does not get practiced.\n\nGifts: Deep wisdom and understanding; Ability to hold space for others' exploration; Natural mentoring and guidance; Talent for helping others discover their own truth\n\nLife direction: Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
+    "core_identity": "You tell the necessary truth at a volume the other person can use. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
+    "sweet_spot": "You tell the necessary truth at a volume the other person can use.",
+    "under": "You know the true read and let someone else's version stand. Peace is purchased with your silence.",
+    "over": "You hold the fact back so you keep the advantage. Clarity becomes a private asset.",
+    "shadow": "You steer people toward your conclusion and call it guidance. Their own thinking does not get practiced.",
+    "gifts": [
+      "Deep wisdom and understanding",
+      "Ability to hold space for others' exploration",
+      "Natural mentoring and guidance",
+      "Talent for helping others discover their own truth"
+    ],
+    "life_direction": "Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "K♠": {
+    "symbol": "K♠",
+    "name": "KING OF SPADES",
+    "label": "King of Spades",
+    "slug": "king-of-spades",
+    "title": "The Master of Thought",
+    "page": "/birth-card/king-of-spades",
+    "meaning": "The Master of Thought\n\nYou make the hard call without pretending you have no interior. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.\n\nBalanced: You make the hard call without pretending you have no interior.\n\nUnder-expressed: You stay in the mind and out of the feeling. Command is easier when nothing in you can be reached.\n\nOver-expressed: Feeling is treated as a leak. People fall in line and stop bringing you anything human.\n\nShadow: You treat your perspective as the standard. People comply with the authority and stop testing the thought.\n\nGifts: Clear thinking and intellectual command; Natural authority and decisiveness; Ability to direct complex thinking; Confidence that inspires others' confidence\n\nLife direction: Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
+    "core_identity": "You make the hard call without pretending you have no interior. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
+    "sweet_spot": "You make the hard call without pretending you have no interior.",
+    "under": "You stay in the mind and out of the feeling. Command is easier when nothing in you can be reached.",
+    "over": "Feeling is treated as a leak. People fall in line and stop bringing you anything human.",
+    "shadow": "You treat your perspective as the standard. People comply with the authority and stop testing the thought.",
+    "gifts": [
+      "Clear thinking and intellectual command",
+      "Natural authority and decisiveness",
+      "Ability to direct complex thinking",
+      "Confidence that inspires others' confidence"
+    ],
+    "life_direction": "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
+    "sources": [
+      "lib/engine-data/card-descriptions.json",
+      "lib/card-meanings.json",
+      "app/birth-card/[slug]/page.tsx"
+    ]
+  },
+  "Joker": {
+    "symbol": "Joker",
+    "name": "JOKER",
+    "label": "Joker",
+    "slug": "joker",
+    "title": "The Joker: The December 31 Birth Card",
+    "page": "/birth-card/joker",
+    "meaning": "The Joker: The December 31 Birth Card\n\nDecember 31 is the only birthday in the year that does not map to one of the 52 cards. The formula resolves it to zero, and zero is the Joker — the card outside the deck's ordered sequence.\n\nEvery date runs through the same formula: Solar Value = 55 − (2 × Month + Day). For December 31 that is 55 − (2 × 12 + 31) = 55 − 55 = 0. The cards occupy values 1 through 52, so zero has nowhere to land in the standard deck. December 30 gives 55 − (24 + 30) = 1, the Ace of Hearts — the first card in the sequence. One day later the value steps down again, and there is nothing below the Ace. That is the edge of the system.\n\nIn a common year, 364 dates map to one of the 52 cards and December 31 resolves to the Joker. A leap year adds February 29, which maps normally to the 9 of Clubs. We state both edge cases plainly — the system is more useful when the public explanation matches the calculator.\n\nIt means the standard card structure does not describe you, and we are not going to pretend otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility by position — is all built on values 1 through 52. None of it resolves for a value of zero.",
+    "core_identity": "December 31 is the only birthday in the year that does not map to one of the 52 cards. The formula resolves it to zero, and zero is the Joker — the card outside the deck's ordered sequence.",
+    "sweet_spot": "In a common year, 364 dates map to one of the 52 cards and December 31 resolves to the Joker. A leap year adds February 29, which maps normally to the 9 of Clubs. We state both edge cases plainly — the system is more useful when the public explanation matches the calculator.",
+    "under": "It means the standard card structure does not describe you, and we are not going to pretend otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility by position — is all built on values 1 through 52. None of it resolves for a value of zero.",
+    "over": "It means the standard card structure does not describe you, and we are not going to pretend otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility by position — is all built on values 1 through 52. None of it resolves for a value of zero.",
+    "shadow": "It means the standard card structure does not describe you, and we are not going to pretend otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility by position — is all built on values 1 through 52. None of it resolves for a value of zero.",
+    "gifts": [],
+    "life_direction": "Every date runs through the same formula: Solar Value = 55 − (2 × Month + Day). For December 31 that is 55 − (2 × 12 + 31) = 55 − 55 = 0. The cards occupy values 1 through 52, so zero has nowhere to land in the standard deck. December 30 gives 55 − (24 + 30) = 1, the Ace of Hearts — the first card in the sequence. One day later the value steps down again, and there is nothing below the Ace. That is the edge of the system.",
+    "sources": [
+      "app/birth-card/joker/page.tsx"
+    ]
+  }
+}

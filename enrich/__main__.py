@@ -1,0 +1,22 @@
+"""python -m enrich → usage pointer. Does not submit a Vertex job."""
+
+from __future__ import annotations
+
+USAGE = """WP3 enrich scaffold (no Vertex spend).
+
+  python3 -m enrich.make_batch \\
+    --people pipeline/data/fixtures/people.jsonl \\
+    --meanings pipeline/data/card_meanings.json \\
+    --out /tmp/vertex_batch.jsonl
+
+See enrich/README.md.
+"""
+
+
+def main() -> int:
+    print(USAGE)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

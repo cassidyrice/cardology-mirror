@@ -8,8 +8,9 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.wikidata --titles pipeline/data/cache/pageviews.jsonl
   python -m pipeline.wikipedia_summary --from-cache pipeline/data/cache/wikidata
   python -m pipeline.build_dataset --from-seed
+  python -m pipeline.harvest_card_meanings
 
-See pipeline/README.md.
+See pipeline/README.md. Vertex batch stub: python -m enrich.make_batch (no spend).
 """
 
 

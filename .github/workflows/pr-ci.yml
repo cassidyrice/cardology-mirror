@@ -78,5 +78,5 @@ jobs:
       - name: Install pipeline deps
         run: python -m pip install -r pipeline/requirements.txt
 
-      - name: Pipeline unit tests
-        run: python -m pytest pipeline/tests
+      - name: Pipeline and enrich unit tests
+        run: python -m pytest pipeline/tests enrich/tests

@@ -23,9 +23,14 @@ venv/
 # Celebrity birth-card pipeline outputs (seed drop is off-repo)
 pipeline/data/drop/*
 !pipeline/data/drop/.gitkeep
+pipeline/data/seed/*
+!pipeline/data/seed/.gitkeep
+!pipeline/data/seed/README.md
+!pipeline/data/seed/celebrity_birth_cards.header.csv
 pipeline/data/cache/
 pipeline/data/people.jsonl
 pipeline/data/exclusions.json
+enrich/out/
 
 # Scraped production artifacts kept for debugging (not source)
 .calc.html
