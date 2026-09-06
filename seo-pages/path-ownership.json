@@ -132,6 +132,22 @@
     ],
     "note": "US National Park birth-card set is isolated under /parks. Dates are Wikipedia National Park establishment, not first monument."
   },
+  "cabinet_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/cabinet",
+      "/cabinet/{slug}",
+      "/sitemap-cabinet.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Current US Cabinet birth-card set is isolated under /cabinet. VP + 15 secretaries only. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "governors_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

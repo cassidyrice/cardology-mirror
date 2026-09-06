@@ -142,6 +142,23 @@ python3 -m pytest pipeline/tests/test_scotus.py
 Output: [`data/scotus/people.jsonl`](data/scotus/people.jsonl). Pages:
 `bun run build:seo-scotus`. Do not deploy.
 
+## Current US Cabinet (isolated `/cabinet`)
+
+Sitting Vice President + 15 executive-department heads. White House
+cabinet page is the sitting roster. Wikipedia infobox birth-date
+templates are the public day. Wikidata `P569` precision 11 must match.
+Year-only dates and Wikipedia↔Wikidata conflicts are dropped.
+Cabinet-level officials outside the 15 departments are omitted. Birth
+cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.cabinet
+python3 -m pytest pipeline/tests/test_cabinet.py
+```
+
+Output: [`data/cabinet/people.jsonl`](data/cabinet/people.jsonl). Pages:
+`bun run build:seo-cabinet`. Do not deploy.
+
 ## Current US governors (isolated `/governors`)
 
 Sitting governors of the 50 states. Wikipedia current-governors list is

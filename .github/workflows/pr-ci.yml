@@ -64,6 +64,9 @@ jobs:
       - name: Governors birth-card scaffold
         run: bun run build:seo-governors
 
+      - name: Cabinet birth-card scaffold
+        run: bun run build:seo-cabinet
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -99,7 +102,8 @@ jobs:
             seo-pages/nobel.test.ts \
             seo-pages/scotus.test.ts \
             seo-pages/mlb.test.ts \
-            seo-pages/governors.test.ts
+            seo-pages/governors.test.ts \
+            seo-pages/cabinet.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

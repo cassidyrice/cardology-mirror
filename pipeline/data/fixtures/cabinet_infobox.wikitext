@@ -1,0 +1,20 @@
+{{Infobox officeholder
+| name             = Ada Fixture Cabinet
+| office           = Secretary of Example
+| birth_date       = {{birth date and age|1960|1|15}}
+| birth_place      = Example City
+}}
+
+{{Infobox officeholder
+| name             = Pat Yearonly
+| birth_date       = {{birth date and age|1960}}
+}}
+
+{{Infobox officeholder
+| name               = Marco Nested
+| module             = {{Listen
+| filename           = example.ogg
+}}
+| birth_name         = Marco Nested Fixture
+| birth_date         = {{birth date and age|1971|5|28}}
+}}
