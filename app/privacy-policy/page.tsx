@@ -4,6 +4,9 @@ import { PrivacyChoices } from "@/components/privacy/PrivacyChoices";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CONTACT_EMAIL } from "@/lib/site";
 
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "September 1, 2026";
+const UPDATED = PAGE_UPDATED_DATES["/privacy-policy"];
 
 export default function PrivacyPolicy() {
   return (
@@ -29,7 +32,7 @@ export default function PrivacyPolicy() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Privacy Policy
         </h1>
-        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {UPDATED}</p>
+        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {updatedLabel(UPDATED)}</p>
       </header>
 
       <div className="prose max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
@@ -55,15 +58,17 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">Personal Card Blueprint information</h3>
+              <h3 className="font-bold text-[#14110d]">Birth Card Deep Dive information</h3>
               <p className="mt-1">
                 Stripe Checkout collects the buyer&rsquo;s email address and the birth
-                date entered for the Personal Card Blueprint. The birth date is
-                used to generate the deterministic report and is included in a
-                signed access token sent in the transactional email. We do not
-                maintain a separate customer birth-date database, but Stripe,
-                Resend, and Cloudflare may process the checkout field, email link,
-                or request URL under their retention and logging policies.
+                date entered for the Birth Card Deep Dive. The birth date is
+                used once to match the card-level PDF. The signed download
+                token in the transactional email carries your email address,
+                the card name, and an expiry — not the birth date. We do not
+                maintain a separate customer birth-date database, but Stripe
+                keeps the birth date on the checkout record, and Stripe, Resend,
+                and Cloudflare may process the checkout field, email link, or
+                request URL under their retention and logging policies.
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
@@ -115,6 +120,18 @@ export default function PrivacyPolicy() {
                 occasional Card Blueprints educational or product emails under
                 the consent shown on the signup form. You can unsubscribe from
                 marketing emails at any time.
+              </p>
+            </div>
+            <div className="border-t border-[#14110d]/12 pt-4">
+              <h3 className="font-bold text-[#14110d]">Content Calendar</h3>
+              
+              <p className="mt-1">
+                When you use the Content Calendar, the business description you
+                enter is sent to Google Vertex (Gemini) to generate calendar rows
+                and written pieces. We do not store birthdays for this product.
+                We keep the business text, generated calendar, and purchase record
+                needed to fulfill your 52-day access — not a general marketing
+                profile built from your description.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
@@ -225,7 +242,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-2">To generate and deliver the Personal Card Blueprint and its signed return link.</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To match and deliver the Birth Card Deep Dive PDFs and their signed download links (and to keep past report links working).</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To support and honor legacy phone orders during their original access windows.</li>

@@ -5,6 +5,11 @@ import Link from "next/link";
 import { NewsletterSignupForm } from "@/components/seo/NewsletterSignupForm";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_URL } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
+const PAGE_UPDATED = PAGE_UPDATED_DATES["/methodology"];
+const DATASET_VERSION = "2026-08-15";
 
 export const dynamic = "force-static";
 
@@ -29,7 +34,7 @@ export default function MethodologyPage() {
     headline: "Card Blueprints Methodology",
     description: metadata.description,
     url: `${SITE_URL}/methodology`,
-    dateModified: "2026-08-17",
+    dateModified: PAGE_UPDATED,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: `${SITE_URL}/methodology`,
@@ -42,8 +47,8 @@ export default function MethodologyPage() {
       "A deterministic month-and-day lookup table for all 366 calendar dates, including the February 29 and December 31 boundary rules.",
     url: `${SITE_URL}/methodology#birthday-map-dataset`,
     creator: { "@type": "Organization", name: "Card Blueprints", url: SITE_URL },
-    dateModified: "2026-08-15",
-    version: "2026-08-15",
+    dateModified: DATASET_VERSION,
+    version: DATASET_VERSION,
     isAccessibleForFree: true,
     distribution: {
       "@type": "DataDownload",
@@ -63,7 +68,7 @@ export default function MethodologyPage() {
           How a birthday becomes a card, and how the card becomes a reading.
         </h1>
         <p className="mt-3 text-sm text-[#5b5148]">
-          By Cassidy Rice · Updated August 17, 2026 ·{" "}
+          By Cassidy Rice · Updated {updatedLabel(PAGE_UPDATED)} ·{" "}
           <Link href="/editorial-policy" className="underline">
             Editorial policy
           </Link>

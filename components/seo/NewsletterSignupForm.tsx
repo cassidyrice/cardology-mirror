@@ -3,12 +3,29 @@ import Link from "next/link";
 const BUTTONDOWN_SUBSCRIBE_ENDPOINT =
   "https://buttondown.com/api/emails/embed-subscribe/cardblueprint";
 
+export type NewsletterSource =
+  | "calculator-result"
+  | "methodology-dataset"
+  | "site-footer"
+  | "home-monday"
+  | "home-reading-waitlist";
+
 export function NewsletterSignupForm({
   source,
   compact = false,
+  heading = "Your card, every Monday.",
+  body = "One email a week: the card of the week, what it's pressing on, and one thing worth trying. That's it.",
+  buttonLabel = "Send me Monday's card",
+  finePrint = "Unsubscribe anytime.",
+  hideHeading = false,
 }: {
-  source: "calculator-result" | "methodology-dataset" | "site-footer";
+  source: NewsletterSource;
   compact?: boolean;
+  heading?: string;
+  body?: string;
+  buttonLabel?: string;
+  finePrint?: string;
+  hideHeading?: boolean;
 }) {
   const emailId = `newsletter-email-${source}`;
 
@@ -21,14 +38,14 @@ export function NewsletterSignupForm({
       }
       aria-label="Card Blueprints email updates"
     >
-      <p className="type-eyebrow text-brand-bronze">Card Blueprints updates</p>
-      <h2 className="mt-2 font-serif text-xl text-brand-ink">
-        Keep the useful parts close.
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        Evidence-led Cardology tools, datasets, and practical interpretation.
-        No daily horoscope spam.
-      </p>
+      {!hideHeading ? (
+        <>
+          <h2 className="font-serif text-xl text-brand-ink sm:text-2xl">{heading}</h2>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
+        </>
+      ) : (
+        <p className="text-sm leading-relaxed text-brand-ink-soft">{body}</p>
+      )}
       <form
         method="post"
         action={BUTTONDOWN_SUBSCRIBE_ENDPOINT}
@@ -50,15 +67,14 @@ export function NewsletterSignupForm({
           className="min-h-11 min-w-0 flex-1 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 text-brand-ink outline-none placeholder:text-brand-ink-faint focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
         />
         <button type="submit" className="accent-button min-h-11 px-5 py-2.5 text-sm">
-          Subscribe
+          {buttonLabel}
         </button>
       </form>
       <p className="mt-3 text-xs leading-relaxed text-brand-ink-soft">
-        Confirm by email. Unsubscribe anytime. See the{" "}
+        {finePrint}{" "}
         <Link href="/privacy-policy" className="text-brand-oxblood underline underline-offset-4">
-          privacy policy
+          Privacy policy
         </Link>
-        .
       </p>
     </aside>
   );

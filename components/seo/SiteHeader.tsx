@@ -1,18 +1,11 @@
+"use client";
+
 import Link from "next/link";
 
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
-import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
-// One header for every marketing/editorial surface. Four destinations, no
-// more: Calculator, Compatibility, Card Meanings, Learn. Paid Deep Dive
-// checkout lives in HeaderDeepDiveCta, not a calculator link.
-const NAV_LINKS = [
-  { label: "Calculator", href: "/birth-card-calculator" },
-  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
-  { label: "Card Meanings", href: "/birth-card" },
-  { label: "Learn", href: "/what-is-cardology" },
-];
+const NAV_LINKS = [{ label: "Explore", href: "/explore" }] as const;
 
 export function SiteHeader() {
   return (
@@ -21,15 +14,9 @@ export function SiteHeader() {
         Skip to content
       </a>
       <header className="relative z-10 border-b border-brand-line bg-brand-paper">
-        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8 lg:px-10">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:gap-4 sm:px-8 lg:px-10">
           <Link href="/" className="text-brand-ink" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
-          </Link>
-          <Link
-            href="/birth-card-calculator"
-            className="whitespace-nowrap text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink lg:hidden"
-          >
-            Calculator
           </Link>
           <nav
             aria-label="Primary"
@@ -51,27 +38,22 @@ export function SiteHeader() {
             </summary>
             <nav
               aria-label="Mobile primary"
-              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-64 border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
+              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-72 max-w-[calc(100vw-2rem)] border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
             >
               <ul className="divide-y divide-brand-line text-sm text-brand-ink">
                 {NAV_LINKS.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="block min-h-11 py-3">
+                    <Link
+                      href={link.href}
+                      className="block min-h-11 py-3"
+                    >
                       {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <div className="mt-4 w-full">
-                <HeaderDeepDiveCta />
-              </div>
             </nav>
           </details>
-          {/* Wait until lg to show the full desktop row so destinations
-              and paid CTA retain their natural widths. */}
-          <div className="hidden lg:block">
-            <HeaderDeepDiveCta />
-          </div>
         </div>
       </header>
     </>

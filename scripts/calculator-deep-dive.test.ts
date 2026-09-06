@@ -80,9 +80,12 @@ test("Deep Dive is a Card Blueprint checkout offer, not the Cassidy Rice payment
   expect(cta).not.toContain("DEEP_DIVE_CHECKOUT_URL");
   expect(cta).not.toContain("personal-card-blueprint");
   expect(cta).not.toContain("/checkout/personal-card-blueprint");
-  expect(header).toContain('href: "/birth-card-calculator"');
-  expect(header).toContain('label: "Calculator"');
-  expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
+  expect(header).toContain('label: "Explore"');
+  expect(footer).toContain('href="/explore"');
+  expect(header).toContain("/explore");
+  expect(header).not.toContain("/karma-reading");
+  expect(header).not.toContain("Get a Reading");
+  expect(header).not.toContain("HeaderDeepDiveCta");
   expect(header).not.toContain("buy.stripe.com");
 });
 
@@ -147,13 +150,17 @@ test("shared calculator result sells Deep Dive $9, not the $13 Blueprint", () =>
   expect(calculator.indexOf("<BirthShareHero")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
-  expect(calculator.indexOf("<CurrentPeriod")).toBeLessThan(
-    calculator.indexOf('placement="birth-card-calculator-result"'),
+  // The $9 CTA follows the free one-line read; the 52-day box sits below it
+  // (2026-09-01: 1,149 completions → 41 taps when the CTA was two screens down).
+  expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
+    calculator.indexOf("<CurrentPeriod"),
   );
+  expect(calculator).toContain("<OneLineRead");
   expect(calculator).not.toContain("FreeCourseSignupForm");
 });
 
 test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
+  // HeaderDeepDiveCta remains for other surfaces; home header has no Reading Day CTA.
   const headerCta = read("components/seo/HeaderDeepDiveCta.tsx");
   expect(headerCta).toContain('placement="site-header"');
   expect(headerCta).toContain('source="site-header"');
@@ -162,12 +169,17 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(cta).toContain("{!compact && showFulfillment && (");
   expect(header).not.toContain('label: "Deep Dive $9"');
   expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
-  expect(header).toMatch(/HeaderDeepDiveCta|DeepDiveCta/);
+  // The approved September 5 landing page uses Explore in the header and footer.
+  expect(header).toContain("/explore");
+  expect(header).toContain('label: "Explore"');
+  expect(read("components/seo/SiteFooter.tsx")).toContain('href="/explore"');
+  expect(header).not.toContain("/karma-reading");
+  expect(header).not.toContain("Get a Reading");
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
-  expect(footer).toContain("Birth Card Deep Dive — $9");
-  expect(footer).toContain('href="/products/birth-card-deep-dive"');
-  expect(footer).toContain('href={DEEP_DIVE_CALCULATOR_FORM_HREF}');
+  expect(footer).toContain("Deep Dive ($9)");
+  expect(footer).toContain("/products/birth-card-deep-dive");
+  expect(footer).toContain("Content Calendar");
   expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
@@ -182,7 +194,7 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).toContain('canonical: "/birth-card-calculator"');
   expect(page).toContain("/og/birth-card-calculator.png");
   expect(page).not.toContain("/og/default.png");
-  expect(page).toContain('const TITLE = "Free Birth Card Calculator (Playing Cards, Not Tarot)"');
+  expect(page).toContain('const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)"');
   expect(page).toContain("Birth Card Calculator and Cardology Chart");
   expect(page).toContain('"Cardology calculator"');
   expect(page).toMatch(/cardology calculator/i);
@@ -204,6 +216,7 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).not.toContain("Got the card name");
   expect(page).toContain("/products/birth-card-deep-dive");
   expect(page).not.toContain("/products/personal-card-blueprint");
+  expect(page).toContain("<BirthdayChartTable />");
   expect(page).not.toContain("/checkout/personal-card-blueprint");
   expect(page).not.toContain("See the Blueprint");
   expect(middleware).not.toMatch(

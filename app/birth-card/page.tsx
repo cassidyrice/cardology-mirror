@@ -11,8 +11,10 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_URL,
 } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
 
-const UPDATED = "2026-08-15";
+const UPDATED = PAGE_UPDATED_DATES["/birth-card"];
 
 const faqs = [
   {
@@ -37,7 +39,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "All 52 Cardology Birth Cards — Meanings (Not Tarot)";
+const TITLE = "Cardology Card Meanings: All 52 Birth Cards Explained (Not Tarot)";
 const DESCRIPTION =
   "Browse all 52 Cardology birth cards by suit, with meanings, strengths, shadow patterns, and links to the free birth card calculator.";
 const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards — three aces fanned on paper" };
@@ -128,7 +130,7 @@ export default function BirthCardIndex() {
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
-        · Reviewed August 15, 2026 ·{" "}
+        · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>{" "}

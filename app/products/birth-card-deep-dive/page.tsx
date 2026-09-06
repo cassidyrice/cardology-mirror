@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { DeepDiveSample } from "@/components/seo/DeepDiveSample";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { buildProductJsonLd } from "@/lib/product-schema";
@@ -11,7 +12,7 @@ import { testimonialByline, testimonialsFor } from "@/lib/testimonials";
 
 const TITLE = "Birth Card Deep Dive ($9): Your Card's Written Pattern";
 const DESCRIPTION =
-  "The $9 Birth Card Deep Dive: a 7-page PDF on your playing card — its seats, stretch and steady, and the seven ~13-year chapters that build the personality — plus the complete System Guide. Instant download.";
+  "The $9 Birth Card Deep Dive: a 7-page PDF written for the one playing card your birthday maps to, plus the complete System Guide. See page 1 before you buy. Instant download, email backup, refund if the file is wrong.";
 const OG_IMAGE = "/og/products/birth-card-deep-dive.png";
 
 export const metadata: Metadata = {
@@ -42,15 +43,19 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What is the Birth Card Deep Dive?",
-    a: "A 7-page written PDF on the playing card your birthday maps to: where it sits in the two fixed maps, its stretch and steady cards, its seven lenses read as the ~13-year chapters that build the personality, and the pattern underneath. It ships with the complete System Guide.",
+    a: "A 7-page PDF written for one card: the card your birthday maps to. Page 1 shows where the card sits and which birthdays share it. The rest reads the card's pattern: what it does well, where it slips, and the seven chapters of roughly 13 years each that build a personality around it. You can see page 1 on this page before you buy.",
   },
   {
-    q: "What do I get for $9?",
-    a: "Two PDFs — your card's 7-page Deep Dive and the complete System Guide — plus your seven ~13-year period cards shown on the confirmation page. Instant download links with email backup.",
+    q: "What exactly arrives for $9?",
+    a: "Two PDFs: your card's 7-page Deep Dive and the complete System Guide. Download links appear on the confirmation page the moment payment clears, with a copy sent by email. The confirmation page also lists your seven period cards.",
   },
   {
-    q: "Do I need to know my birth card first?",
-    a: "No. Enter your birthday below (or in the free calculator) — the same date always resolves to the same card, and the right card-level PDF is matched automatically.",
+    q: "Do I need to know my card first?",
+    a: "No. The button asks for your birthday and matches the right PDF. The same date always gives the same card, so there is nothing to look up.",
+  },
+  {
+    q: "What if the file is wrong or broken?",
+    a: "We replace it or refund you. Wrong card, wrong date, a file that will not open, or a double charge: reply to the confirmation email. The download itself is final once it works.",
   },
 ];
 
@@ -84,19 +89,21 @@ export default function BirthCardDeepDivePage() {
       <p className="eyebrow mb-3 text-gold">Instant download · $9 one time</p>
       <h1 className="display mb-3 text-3xl text-bone">The Birth Card Deep Dive</h1>
       <p className="prose-reading mb-5 max-w-[38em] text-mist">
-        Your birthday maps to one playing card. The Deep Dive writes that card
-        down: where it sits in the two fixed maps, the pressure it is built to
-        meet, the support it is built to receive, and the seven ~13-year
-        chapters that build the personality around it.
+        Your birthday maps to one playing card. The Deep Dive is seven written
+        pages about that one card: where it sits, what it does well, where it
+        slips, and the seven chapters of roughly 13 years each that build a
+        personality around it. This is page 1.
       </p>
 
+      <DeepDiveSample placement="deep-dive-product-page" className="mb-6" />
+
       <div className="rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-        <p className="eyebrow text-gold">What $9 includes</p>
+        <p className="eyebrow text-gold">What $9 sends</p>
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
-          <li>✓ Your card&rsquo;s 7-page Deep Dive PDF</li>
-          <li>✓ The Complete System Guide (PDF)</li>
-          <li>✓ Your seven ~13-year period cards, on screen</li>
-          <li>✓ Instant download links + email backup</li>
+          <li>✓ Your card&rsquo;s 7-page Deep Dive (PDF)</li>
+          <li>✓ The complete System Guide (PDF)</li>
+          <li>✓ Download links on the confirmation page, plus an email copy</li>
+          <li>✓ Your seven period cards, listed on the confirmation page</li>
         </ul>
         <DeepDiveCta
           placement="deep-dive-product-page"
@@ -104,7 +111,7 @@ export default function BirthCardDeepDivePage() {
           showFulfillment={false}
         />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $9 one time · instant access · no subscription
+          $9 one time · no subscription · wrong card or broken file: we replace or refund
         </p>
       </div>
 

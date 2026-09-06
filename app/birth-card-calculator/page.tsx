@@ -5,10 +5,13 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { BirthdayChartTable } from "@/components/seo/BirthdayChartTable";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
 
 const MONTH_DIRECTORY = [
   ["January", "january-1"],
@@ -25,10 +28,10 @@ const MONTH_DIRECTORY = [
   ["December", "december-1"],
 ] as const;
 
-const TITLE = "Free Birth Card Calculator (Playing Cards, Not Tarot)";
+const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)";
 const DESCRIPTION =
-  "Free Cardology birth card calculator and chart. Enter a birthday for the playing card — 52-card system, not tarot. Same date, same card.";
-const REVIEWED_DATE = "2026-08-15";
+  "The full Cardology birthday chart (every date → one of 52 playing cards) plus a free calculator: enter a birthday for your birth card and ruling card. Not tarot.";
+const REVIEWED_DATE = PAGE_UPDATED_DATES["/birth-card-calculator"];
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -191,7 +194,7 @@ export default function CalculatorPage() {
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
-        · Method reviewed August 15, 2026 ·{" "}
+        · Updated {updatedLabel(REVIEWED_DATE)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial standards
         </Link>
@@ -279,16 +282,17 @@ export default function CalculatorPage() {
       </section>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <details>
-          <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Cardology chart</p>
-            <h2 className="font-serif text-3xl text-bone">Cardology chart: birthday → playing card</h2>
-          </summary>
+        <p className="eyebrow mb-2 text-gold">Cardology chart</p>
+        <h2 className="font-serif text-3xl text-bone">Cardology birthday chart: all 366 birthdays, one playing card each</h2>
         <p className="prose-reading mt-4 text-mist">
-          The full date chart lives in the birthday directory. Jump to a month,
-          or type a date in the calculator above. Same map either way.
+          This is the whole map. Find your month across the top and your day down
+          the side; the cell is your birth card. It is the same fixed calculation
+          the tool above runs, laid out so you can check a friend, a parent, or a
+          whole family at a glance. Tap any card to open that birthday&rsquo;s page.
         </p>
-        <nav className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
+        <BirthdayChartTable />
+        <h3 className="mt-8 font-serif text-xl text-bone">Browse the chart by month</h3>
+        <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
           {MONTH_DIRECTORY.map(([label, slug]) => (
             <a
               key={slug}
@@ -300,17 +304,16 @@ export default function CalculatorPage() {
           ))}
         </nav>
         <p className="prose-reading mt-4 text-sm text-mist">
-          All 366 dates:{" "}
+          All 366 dates with card names:{" "}
           <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
             /born-on/
           </a>
-          . Longer explainer with the complete grid:{" "}
+          . How the chart is built, suit by suit:{" "}
           <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
-            playing-cards birthday chart
+            the 52-card calendar explained
           </Link>
           .
         </p>
-        </details>
       </section>
 
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
@@ -367,7 +370,7 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Search intent, clearly separated</p>
+            <p className="eyebrow mb-2 text-gold">Playing cards, not tarot</p>
             <h2 className="font-serif text-3xl text-bone">This is a playing-card birth calculator — not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">

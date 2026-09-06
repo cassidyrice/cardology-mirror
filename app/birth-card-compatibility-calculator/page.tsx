@@ -114,10 +114,10 @@ export default function CompatibilityCalculatorPage() {
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
-        Built for queries like <strong>cardology compatibility calculator</strong>,{" "}
-        <strong>birth card compatibility</strong>, and two-birthday relationship maps.
-        After the result, open the matching pair page in the directory for the full
-        write-up. The{" "}
+        Two birthdays, one map. Enter both dates to compare playing-card birth
+        cards, each Life Path constitution, where the other person lands in your
+        spectrum, and which Life Path cards you share. After the result, open the
+        matching pair page in the directory for the full write-up. The{" "}
         <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
           $9 Deep Dive
         </Link>{" "}

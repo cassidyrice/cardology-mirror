@@ -1,50 +1,15 @@
 import type { MetadataRoute } from "next";
 import { allBlogPillars, allBlogPosts, blogPillarPath, blogPostPath, type BlogPost } from "@/lib/blog";
+import {
+  CARD_MEANING_PAGES_UPDATED,
+  pageUpdatedForPath,
+} from "@/lib/page-dates";
 import { allCardSlugs } from "@/lib/seo-cards";
 import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
 import { sitemapDate } from "@/lib/sitemap-date";
 import { normalizeSitemapUrl } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-static";
-
-const FALLBACK_UPDATED = "2026-07-12";
-const CARD_MEANINGS_UPDATED = "2026-09-01";
-
-const ROUTE_UPDATED: Record<string, string> = {
-  "/": "2026-09-01",
-  "/about": "2026-08-17",
-  "/videos": "2026-07-29",
-  "/birth-card": "2026-09-01",
-  "/birth-card/joker": "2026-09-01",
-  "/birth-card-calculator": "2026-09-01",
-  "/card-of-the-day": "2026-09-01",
-  "/52-day-period-meaning-tool": "2026-07-30",
-  "/birth-card-compatibility-calculator": "2026-09-01",
-  "/cardology-compatibility": "2026-09-01",
-  "/products/birth-card-deep-dive": "2026-09-01",
-  "/free-course": "2026-08-07",
-  "/what-is-cardology": "2026-09-01",
-  "/cardology-for-beginners": "2026-08-12",
-  "/cardology-vs-tarot": "2026-08-12",
-  "/destiny-cards": "2026-09-01",
-  "/cartomancy-vs-tarot": "2026-08-07",
-  "/how-to-read-playing-cards": "2026-08-16",
-  "/playing-card-spreads": "2026-09-01",
-  "/52-card-astrology-explained": "2026-08-16",
-  "/birth-card-vs-ruling-card": "2026-08-15",
-  "/planetary-ruling-card": "2026-08-15",
-  "/methodology": "2026-08-17",
-  "/editorial-policy": "2026-08-06",
-  "/contact": "2026-08-17",
-  "/shadow-karma-guide": "2026-07-02",
-  "/privacy-policy": "2026-09-01",
-  "/refund-policy": "2026-08-12",
-  "/terms-of-service": "2026-08-12",
-};
-
-function updatedForPath(path: string): string {
-  return ROUTE_UPDATED[path] ?? FALLBACK_UPDATED;
-}
 
 function postModified(post: BlogPost): string {
   return post.dateModified || post.datePublished;
@@ -56,14 +21,14 @@ function latestOf(values: string[]): string {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allBlogPosts();
-  const latestPostDate = latestOf(posts.map(postModified)) || FALLBACK_UPDATED;
+  const latestPostDate = latestOf(posts.map(postModified)) || pageUpdatedForPath("/blog");
 
   const entries: MetadataRoute.Sitemap = MARKETING_PATHS.map((p) => ({
     url: normalizeSitemapUrl(`${SITE_URL}${p}`),
     // /blog is an index of the posts, so its truthful lastmod is the newest
     // post date (the daily generator moves it); every other marketing page
     // only changes when a deploy actually changes it.
-    lastModified: sitemapDate(p === "/blog" ? latestPostDate : updatedForPath(p)),
+    lastModified: sitemapDate(p === "/blog" ? latestPostDate : pageUpdatedForPath(p)),
   }));
 
   // The 52 card pages are the site's core SEO asset. This is their ONLY
@@ -72,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of allCardSlugs()) {
     entries.push({
       url: normalizeSitemapUrl(`${SITE_URL}/birth-card/${slug}`),
-      lastModified: sitemapDate(CARD_MEANINGS_UPDATED),
+      lastModified: sitemapDate(CARD_MEANING_PAGES_UPDATED),
     });
   }
 
@@ -81,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // answer we have for "december 31 birth card".
   entries.push({
     url: normalizeSitemapUrl(`${SITE_URL}/birth-card/joker`),
-    lastModified: sitemapDate(updatedForPath("/birth-card/joker")),
+    lastModified: sitemapDate(CARD_MEANING_PAGES_UPDATED),
   });
 
   // The 366 birthday routes are deliberately NOT listed (and no longer

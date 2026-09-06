@@ -19,7 +19,7 @@ export function CurrentPeriod({ birthdate }: { birthdate: string }) {
         {period.planet}. {period.cardLabel}.
       </p>
       <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        The $9 Deep Dive writes this card. The $13 Blueprint writes the rest of the year around this stretch.
+        The card you are living through right now. The $9 Deep Dive writes your birth card and shows all seven of your period cards on the confirmation page.
       </p>
     </div>
   );

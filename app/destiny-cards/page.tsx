@@ -6,11 +6,13 @@ import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthday
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
 
 const TITLE = "Cards of Destiny: Find Your Birth Card";
 const DESCRIPTION =
   "Cards of Destiny / Destiny Cards: birthday → one playing card. Free calculator and chart. Same family as Cardology, not tarot. Same date, same card.";
-const REVIEWED_DATE = "2026-08-15";
+const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -133,7 +135,7 @@ export default function DestinyCardsPage() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: REVIEWED_DATE,
+    dateModified: UPDATED,
     mainEntityOfPage: "https://cardblueprints.com/destiny-cards",
   };
 
@@ -175,7 +177,7 @@ export default function DestinyCardsPage() {
       </div>
 
       <p className="mb-6 text-xs text-faint">
-        By Cassidy Rice · Updated August 15, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>

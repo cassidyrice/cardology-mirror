@@ -4,6 +4,9 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CONTACT_EMAIL } from "@/lib/site";
 
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
@@ -14,7 +17,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-const UPDATED = "August 6, 2026";
+const UPDATED = PAGE_UPDATED_DATES["/refund-policy"];
 
 export default function RefundPolicy() {
   return (
@@ -29,7 +32,7 @@ export default function RefundPolicy() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Refund Policy
         </h1>
-        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {UPDATED}</p>
+        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {updatedLabel(UPDATED)}</p>
       </header>
 
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
@@ -43,19 +46,20 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Personal Card Blueprint</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Birth Card Deep Dive</h2>
           <div className="mt-3 space-y-3">
             <p>
-              The Personal Card Blueprint is generated immediately from the
-              birth date entered at Stripe Checkout and delivered through a
-              signed access link. Because it is personalized and delivered
-              instantly, a completed, accessible Blueprint is generally final.
+              The Birth Card Deep Dive is matched immediately to the birth date
+              entered at Stripe Checkout and delivered as signed download links
+              on the confirmation page and by email. Because it is a digital
+              file delivered instantly, a completed, downloadable order is
+              generally final.
             </p>
             <p>
-              If the report cannot be generated, its access link does not work,
+              If the download links do not work, the wrong card was delivered,
               the checkout birth date was entered incorrectly, or you were
               charged more than once for the same intended purchase, contact us.
-              We will correct the report, restore access, or issue an appropriate
+              We will send the right files, restore access, or issue an appropriate
               refund when the problem cannot be resolved.
             </p>
           </div>
@@ -71,6 +75,25 @@ export default function RefundPolicy() {
             number. We will review the order and provide restored access or an
             appropriate refund when the service was not delivered as described.
           </p>
+        </section>
+
+        <section>
+          <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
+          
+          <div className="mt-3 space-y-3">
+            <p>
+              The Content Calendar is a one-time $29 digital product. You receive
+              52 days of access on this site plus a CSV export. Each day includes
+              one AI-generated post draft from the business description you enter,
+              with up to two regenerations per day.
+            </p>
+            <p>
+              Because delivery is instant and digital, completed calendars are
+              generally final. If generation fails, access breaks, or you were
+              double-charged, contact us and we will restore access or refund when
+              the issue cannot be fixed.
+            </p>
+          </div>
         </section>
 
         <section>

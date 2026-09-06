@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-01** (deployed `main` @ `46362ca` — card-of-the-day polish: faces, per-day title, day nav; previous record `83cd38d`)
+**Last verified: 2026-09-05** (deployed `main` @ `bac1c64` — Deep Dive downloads: read the ebook bucket from the Pages request context so buyer links work again; previous record `b6acb60`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,10 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `46362ca917f012f85f756ce01d23f7e333a957b7` |
+| **Deployed commit** | `bac1c645a26623f76f4ffa8b9cbaedb1354e84b3` |
+| **Worker** | `cardology-unlock` |
+| **Worker version** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
+| **Worker rollback** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
@@ -131,8 +134,15 @@ artifact digest. After an intentional deploy it will fail until you update the
 record — that failure is the point. Update, in this file and in the script:
 
 - `DEPLOY_COMMIT` / the **Deployed commit** row above
+- `WORKER_VERSION` / `WORKER_ROLLBACK` / the **Worker version** and **Worker rollback** rows
 - `EXPECTED_WELLKNOWN_SHA256`, if that file changed
 - the **Last verified** date
+
+`bash scripts/record-deploy.sh` writes the Pages commit and the live Worker
+version (`npx wrangler deployments list --name cardology-unlock`). Rollback is
+the previous distinct version id: `npx wrangler rollback <id> --name cardology-unlock`.
+`scripts/verify-deploy-source.sh` exits 0 only if **both** the Pages commit
+probes and the live Worker version match the record.
 
 If you change which branch is canonical, update the **Branch** row and the
 `DEPLOY_BRANCH` constant too.

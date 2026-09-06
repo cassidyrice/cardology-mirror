@@ -39,10 +39,10 @@ describe("birthCardSlug", () => {
   });
 });
 
-describe("HomepageCalculatorHero contract", () => {
-  test("replaces the cinematic journey and removes the duplicate calculator row", () => {
+describe("Homepage landing contract", () => {
+  test("home is the calculator landing; explore is the directory", () => {
     const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
-    const layout = readFileSync(new URL("../app/layout.tsx", import.meta.url), "utf8");
+    const explore = readFileSync(new URL("../app/explore/page.tsx", import.meta.url), "utf8");
     const header = readFileSync(
       new URL("../components/seo/SiteHeader.tsx", import.meta.url),
       "utf8",
@@ -51,26 +51,63 @@ describe("HomepageCalculatorHero contract", () => {
       new URL("../components/seo/SiteFooter.tsx", import.meta.url),
       "utf8",
     );
-
-    const freePaths = home.slice(
-      home.indexOf("const FREE_PATHS"),
-      home.indexOf("const STEPS"),
+    const reveal = readFileSync(
+      new URL("../components/seo/Reveal.tsx", import.meta.url),
+      "utf8",
     );
-    expect(home).toContain("HomepageCalculatorHero");
-    expect(home).not.toContain("HomepageJourney");
-    expect(freePaths).not.toContain('href: "/birth-card-calculator"');
-    expect(freePaths).toContain('href: "/birth-card-compatibility-calculator"');
-    expect(home).toContain("<FreeCourseCta source=\"home\"");
-    expect(layout).not.toContain("homepage-journey.css");
-    expect(header).toContain("HeaderDeepDiveCta");
-    expect(header).toContain("/birth-card-calculator");
-    expect(header).not.toContain("$29");
-    expect(header).not.toContain("buy.stripe.com");
-    expect(footer).toContain("$13");
-    expect(footer).not.toContain("$29");
-  });
+    const landing = readFileSync(
+      new URL("../components/seo/LandingCalculator.tsx", import.meta.url),
+      "utf8",
+    );
 
-  test("puts the free calculator first and gates email behind the result", () => {
+    expect(home).toContain("LandingCalculator");
+    expect(home).not.toContain("HomeContentCue");
+    expect(home).not.toContain("TodaysCardSection");
+    expect(home).not.toContain("DeepDiveSection");
+    expect(home).toContain('href="/explore"');
+    expect(home).toContain("Explore →");
+    expect(home).toContain('absolute: HOME_TITLE');
+    expect(home).toContain("Find Your Birth Card | Card Blueprints");
+
+    expect(explore).toContain("ExploreDirectory");
+    expect(explore).toContain("Explore Card Blueprints");
+
+    expect(landing).toContain("Which card were you born under?");
+    expect(landing).toContain("Your birthday adds up to one card. Same date, same card, every time.");
+    expect(landing).toContain("Show my card");
+    expect(landing).toContain("Never stored");
+
+    expect(reveal).toContain("Your strength");
+    expect(reveal).toContain("Where it trips you");
+    expect(reveal).toContain("Right now");
+    expect(reveal).toContain("Read my card →");
+    expect(reveal).toContain("Compare with someone →");
+    expect(reveal).toContain("Your card, written out. $9.");
+    expect(reveal).toContain("<DeepDiveSample");
+    expect(reveal).toContain("<DeepDiveCta");
+    expect(reveal).toContain("Explore →");
+    expect(reveal).toContain("result_card_clicked");
+    expect(reveal).toContain("result_compare_clicked");
+    expect(reveal).not.toContain("/content-engine");
+    expect(reveal).not.toContain("See 7 days free");
+
+    expect(header).toContain("/explore");
+    expect(header).toContain("Explore");
+    expect(header).not.toContain("Create content");
+    expect(header).not.toContain("/content-engine");
+    expect(header).not.toContain("/karma-reading");
+
+    expect(footer).toContain("Explore →");
+    expect(footer).toContain("/explore");
+    expect(footer).toContain("Content Calendar (experiment)");
+    expect(footer).toContain("/content-engine");
+    expect(footer).toContain("Deep Dive ($9)");
+    expect(footer).not.toContain("Reading Day waitlist");
+  });
+});
+
+describe("HomepageCalculatorHero contract", () => {
+  test("puts the free calculator first with exact hero copy", () => {
     const hero = readFileSync(
       new URL("../components/home/HomepageCalculatorHero.tsx", import.meta.url),
       "utf8",
@@ -78,14 +115,11 @@ describe("HomepageCalculatorHero contract", () => {
 
     for (const text of [
       "Free · instant · no signup",
-      "Which playing card were you born under?",
-      "The numbers of your birthday calculate to one playing card",
-      "52 cards",
-      "366 birthdays",
-      "not tarot",
-      "Reveal my birth card",
-      "CALCULATOR_PRIVACY_MICROCOPY",
-      "Prefer the free 4-part course by email",
+      "Which card were you born under?",
+      "Your birthday adds up to one playing card",
+      "52 cards · 366 birthdays · 1 is yours",
+      "Show my card",
+      "Calculated right here. Your birthday is never stored.",
       "home-hero-result",
       "<DeepDiveCta",
     ]) {
@@ -97,11 +131,9 @@ describe("HomepageCalculatorHero contract", () => {
     expect(hero).toContain("result &&");
     expect(hero).not.toContain("$29");
     expect(hero).not.toContain("birthdate: date,");
-    expect(hero).not.toContain("home-hero-input");
-    expect(hero).not.toContain("home-hero-form");
+    expect(hero).not.toContain("not tarot");
+    expect(hero).not.toContain("The $9 Deep Dive is optional after");
     expect(hero.indexOf("<form")).toBeLessThan(hero.indexOf('aria-label="Calculator details"'));
     expect(hero).toContain("<HomepageLifeSpread");
-    expect(hero).not.toContain('code="7♦"');
-    expect(hero).not.toContain("hidden h-40 w-56");
   });
 });

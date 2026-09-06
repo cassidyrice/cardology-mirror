@@ -52,7 +52,7 @@ export function BirthShareHero({ birthCard }: { birthCard?: string }) {
             <ShareBirthResultButton
               birthCard={birthCard!}
               placement="birth-card-calculator-hero-share"
-              className="accent-button large-button w-full"
+              className="paper-button large-button w-full"
             />
           </div>
         </>

@@ -1067,3 +1067,15 @@ body {
   transform: translate(14px, 16px) rotate(-0.4deg);
   opacity: 0.65;
 }
+
+/* Content Engine sample table: five columns on wide screens, stacked day blocks on phones. */
+@media (max-width: 640px) {
+  .ce-table thead { display: none; }
+  .ce-table, .ce-table tbody, .ce-table tr, .ce-table td { display: block; width: 100%; }
+  .ce-table tr { padding: 0.75rem 0.85rem; border-top: 1px solid var(--line); }
+  .ce-table td { padding: 0.15rem 0 !important; }
+  .ce-table td::before { content: attr(data-label); display: block; font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.4rem; }
+  .ce-table td[data-label="Day"]::before { display: none; }
+  .ce-table td[data-label="Day"] { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .ce-table td[data-label="Day"]::after { content: ""; }
+}

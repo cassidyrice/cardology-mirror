@@ -13,6 +13,12 @@
 #   ALLOW_DIRTY=1  allow uncommitted changes (discouraged; still records dirty flag)
 #   ALLOW_BRANCH=1 skip branch allowlist check
 set -euo pipefail
+# Deploy lock: the foreman refuses to merge into main while this file exists (see ops foreman.sh merge).
+LOCK="$HOME/cardblueprints-ops/.deploy-lock"
+date -u +%FT%TZ > "$LOCK"
+trap 'rm -f "$LOCK"' EXIT
+# Preflight: a placeholder binding id in wrangler.toml fails at the very end of a deploy; catch it first.
+if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then echo "wrangler.toml has a placeholder binding id; create the namespace and set the id first." >&2; exit 1; fi
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
@@ -164,7 +170,7 @@ fi
 
 echo "→ smoke: homepage title"
 HOME_TITLE="$(curl -sS "${SITE_ORIGIN}/" | sed -n 's/.*<title[^>]*>\([^<]*\)<\/title>.*/\1/p' | head -1 || true)"
-if echo "$HOME_TITLE" | grep -qi 'Birth Cards'; then
+if echo "$HOME_TITLE" | grep -qi 'Birth Card'; then
   green "Homepage title OK: $HOME_TITLE"
 else
   yellow "Homepage title unexpected: $HOME_TITLE"
@@ -172,9 +178,8 @@ fi
 
 echo "→ smoke: product URLs in sitemap"
 SITEMAP="$(curl -sS "${SITE_ORIGIN}/sitemap.xml" || true)"
-if echo "$SITEMAP" | grep -q 'products/personal-card-blueprint' \
-  && echo "$SITEMAP" | grep -q 'products/analog-algorithm' \
-  && echo "$SITEMAP" | grep -q 'products/complete-card-blueprint'; then
+if echo "$SITEMAP" | grep -q 'products/birth-card-deep-dive' \
+  && echo "$SITEMAP" | grep -q '/content-engine'; then
   green "Sitemap product URLs OK"
 else
   yellow "Sitemap missing product URLs (CDN delay or regression)"

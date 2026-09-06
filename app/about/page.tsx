@@ -3,13 +3,17 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = PAGE_UPDATED_DATES["/about"];
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $13 Personal Card Blueprint as an instant written report.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $9 Birth Card Deep Dive as an instant written download.",
   alternates: { canonical: "/about" },
 };
 
@@ -19,7 +23,7 @@ export default function AboutPage() {
     "@type": "AboutPage",
     name: "About Card Blueprints",
     url: `${SITE_URL}/about`,
-    dateModified: "2026-08-17",
+    dateModified: UPDATED,
     about: {
       "@type": "Thing",
       name: "Cardology",
@@ -61,7 +65,7 @@ export default function AboutPage() {
         <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
           Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">Updated August 17, 2026</p>
+        <p className="mt-3 text-sm text-[#5b5148]">Updated {updatedLabel(UPDATED)}</p>
         <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-[#3d352d]">
@@ -74,6 +78,19 @@ export default function AboutPage() {
       </header>
 
       <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+        
+        <p>
+          I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
+          Blueprints is the site I built so you can look up your card, read the
+          library, and check the math yourself.
+        </p>
+        <p>
+          The paid product is the $9 Birth Card Deep Dive — your card written out,
+          seven pages, instant download. The Content Calendar is a separate
+          experiment: you describe your business once, and it drafts one post per
+          day for 52 days. AI writes from your text; you still check facts before
+          posting.
+        </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
           of the people around you: partners, parents, friends, coworkers, public

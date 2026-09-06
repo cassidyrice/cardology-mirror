@@ -53,3 +53,6 @@ skills-lock.json
 ops/audit/*.json
 ops/audit/.venv
 ops/audit/cardology-ops-audit-tmp/
+
+# Finder metadata (blocks clean-tree deploys)
+.DS_Store

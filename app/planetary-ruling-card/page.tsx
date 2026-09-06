@@ -4,6 +4,10 @@ import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
+
+const UPDATED = PAGE_UPDATED_DATES["/planetary-ruling-card"];
 
 const TITLE = "Planetary Ruling Card: What It Is & How to Find Yours";
 const DESCRIPTION =
@@ -63,7 +67,7 @@ export default function PlanetaryRulingCard() {
     description: DESCRIPTION,
     author: { "@type": "Person", name: "Cassidy Rice" },
     publisher: { "@type": "Organization", name: SITE_NAME },
-    dateModified: "2026-08-15",
+    dateModified: UPDATED,
     mainEntityOfPage: `${SITE_URL}/planetary-ruling-card`,
   };
 
@@ -82,7 +86,7 @@ export default function PlanetaryRulingCard() {
         </p>
       </div>
       <p className="mb-2 text-xs text-faint">
-        By Cassidy Rice · Updated August 15, 2026 ·{" "}
+        By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>

@@ -29,11 +29,12 @@ test("merchant return policy is a full Google object, not an @id stub", () => {
   const policy = merchantReturnPolicy();
   expect(policy["@type"]).toBe("MerchantReturnPolicy");
   expect(policy.applicableCountry).toBe("US");
-  expect(policy.returnPolicyCategory).toContain("MerchantReturnFiniteReturnWindow");
-  expect(policy.merchantReturnDays).toBe(14);
-  expect(policy.returnMethod).toContain("ReturnByMail");
-  expect(policy.returnFees).toContain("FreeReturn");
+  expect(policy.returnPolicyCategory).toContain("MerchantReturnNotPermitted");
+  expect(policy.merchantReturnDays).toBeUndefined();
+  expect(policy.returnMethod).toBeUndefined();
+  expect(policy.returnFees).toBeUndefined();
   expect(policy.merchantReturnLink).toBe(`${SITE_URL}/refund-policy`);
+  expect(policy.description).toContain("Digital files");
 });
 
 test("every public product emits merchant-listing required Offer fields", () => {

@@ -27,8 +27,12 @@ import {
 } from "@/lib/seo-cards";
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
+import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
+import { readingNotesFor } from "@/lib/card-reading-notes";
+import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
+import { updatedLabel } from "@/lib/page-updated";
 
-const SEO_UPDATED = "2026-08-15";
+const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
 
 // Only the 52 card-meaning pages are prerendered here. The 366 birthday slugs
 // are deliberately NOT built: the cardology-unlock Worker in front of Pages
@@ -59,9 +63,9 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${card.slug}`,
         type: "article",
-        images: [{ url: `/og/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} playing card — Cardology birth card meaning` }],
+        images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [`/og/${card.slug}.png`] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }] },
     };
   }
 
@@ -78,9 +82,9 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${date.slug}`,
         type: "article",
-        images: [{ url: `/og/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.label} birthday — the ${date.card.label} playing card is its birth card` }],
+        images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [`/og/${date.card.slug}.png`] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }] },
     };
   }
 
@@ -102,6 +106,20 @@ export default async function BirthCardPage({
   notFound();
 }
 
+function dedupeAgainstPrior(text: string, priorTexts: string[]): string {
+  const priorSentences = new Set(
+    priorTexts
+      .flatMap((block) => block.match(/[^.!?]+[.!?]+/g) ?? [block])
+      .map((sentence) => sentence.trim().toLowerCase())
+      .filter(Boolean),
+  );
+  const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+  const kept = sentences
+    .map((sentence) => sentence.trim())
+    .filter((sentence) => sentence && !priorSentences.has(sentence.toLowerCase()));
+  return kept.join(" ").trim() || text.trim();
+}
+
 function CardMeaningPage({ card }: { card: CardSeo }) {
   const siblings = allCardSeo().filter((c) => c.suit === card.suit && c.slug !== card.slug);
   const dates = birthDatesForCard(card);
@@ -109,6 +127,15 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const faqs = cardFaqs(card, dates);
   const angles = interpretiveAngles(card);
   const videos = videosForCard(card.slug);
+  const famous = famousForCard(card.code);
+  const readingNotes = readingNotesFor(card.slug);
+  const priorReadingText = [
+    card.sweetSpot,
+    card.over,
+    card.shadow || "",
+    generalReadingText(card),
+    readingNotes?.reading ?? "",
+  ].filter(Boolean);
 
   const jsonLd = [
     faqJsonLd(faqs),
@@ -116,7 +143,13 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       headline: `${card.label} Meaning: Cardology Birth Card`,
       description: card.coreIdentity || card.sweetSpot,
       url: `${SITE_URL}/birth-card/${card.slug}`,
-      image: videos[0] ? youtubeThumbnail(videos[0].url) : `${SITE_URL}/og/default.png`,
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/og/birth-card/${card.slug}.png`,
+        width: 1200,
+        height: 630,
+        caption: `${card.label} Meaning — Cardology Birth Card`,
+      },
     }),
     ...videos.map(videoJsonLd),
   ];
@@ -154,6 +187,12 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{cardQuickAnswer(card, dates)}</p>
       </div>
+      <p className="mt-3 text-xs text-faint">
+        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial policy
+        </Link>
+      </p>
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
@@ -175,17 +214,25 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="In a general reading">
         <p>{generalReadingText(card)}</p>
-        <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
-        <p>
-          {loveReadingText(card)}{" "}
-          {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
-              not this Next app — plain <a>, hub href from the generated index. */}
-          <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
-            See {card.label} compatibility with all 52 cards →
-          </a>
-        </p>
-        <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
-        <p>{moneyReadingText(card)}</p>
+        {readingNotes ? (
+          <>
+            <h3 className="mt-4 font-serif text-base text-bone">In a reading</h3>
+            <p>{readingNotes.reading}</p>
+            <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
+            <p>
+              {dedupeAgainstPrior(readingNotes.love, priorReadingText)}{" "}
+              {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
+                  not this Next app — plain <a>, hub href from the generated index. */}
+              <a href={compatHubHref(card)} className="text-gold underline underline-offset-4">
+                See {card.label} compatibility with all 52 cards →
+              </a>
+            </p>
+            <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
+            <p>{dedupeAgainstPrior(readingNotes.work, [...priorReadingText, readingNotes.love])}</p>
+            <h3 className="mt-4 font-serif text-base text-bone">As a 52-day period card</h3>
+            <p>{readingNotes.timing}</p>
+          </>
+        ) : null}
         <h3 className="mt-4 font-serif text-base text-bone">As advice</h3>
         <p>{adviceReadingText(card)}</p>
       </Section>
@@ -307,17 +354,68 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       )}
 
       {dates.length > 0 && (
-        <Section title={`${card.label} birth dates`}>
+        <Section title={`${card.label} birth dates and ruling cards by zodiac sign`}>
           <p>
-            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`} in this deterministic Cardology system:
+            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`}.
+            Every one of them shares the birth card, but the zodiac sign of the date picks a different
+            planetary ruling card, which is why two people with the same {card.label} birth card can feel so different in person.
           </p>
-          <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
-            {dates.map((d) => (
-              <li key={d.slug}>
-                {/* Plain <a> to /born-on/: birthday pages live on the
-                    Worker-served surface (the Worker 301s /birth-card/[date]
-                    there — link direct to skip the redirect hop). */}
-                <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
+          <div className="table-scroll mt-3 overflow-x-auto" role="region" aria-label={`${card.label} birthdays with zodiac sign and ruling card`} tabIndex={0}>
+            <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
+              <caption className="sr-only">Birthdays that map to the {card.label}, with zodiac sign and planetary ruling card</caption>
+              <thead>
+                <tr className="border-b border-white/15 text-bone">
+                  <th scope="col" className="py-2 pr-3">Birthday</th>
+                  <th scope="col" className="py-2 pr-3">Zodiac sign</th>
+                  <th scope="col" className="py-2 pr-3">Ruling planet</th>
+                  <th scope="col" className="py-2">Ruling card</th>
+                </tr>
+              </thead>
+              <tbody>
+                {dates.map((d) => {
+                  const z = zodiacFor(d.month, d.day);
+                  return (
+                    <tr key={d.slug} className="border-b border-white/10">
+                      <th scope="row" className="py-2 pr-3 font-medium text-bone">
+                        {/* Plain <a> to /born-on/: birthday pages live on the Worker-served surface. */}
+                        <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
+                      </th>
+                      <td className="py-2 pr-3">{z.sign}</td>
+                      <td className="py-2 pr-3">{z.planet}</td>
+                      <td className="py-2">
+                        {d.rulingCards.length > 0
+                          ? d.rulingCards.map((r, i) => (
+                              <span key={r.slug}>
+                                {i > 0 ? " or " : ""}
+                                <Link href={`/birth-card/${r.slug}`} className="text-gold underline underline-offset-4">{r.label}</Link>
+                              </span>
+                            ))
+                          : "—"}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm text-faint">
+            Read the ruling card as the style the {card.label} pattern is expressed through. Same engine, different steering.
+          </p>
+        </Section>
+      )}
+
+      {famous.length > 0 && (
+        <Section title={`Famous people born under the ${card.label}`}>
+          <p>
+            Birthdays are public record and the card is fixed by the date, so this list is a fact about the
+            calendar rather than a reading. Use it to test the pattern against people you already know something about.
+          </p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {famous.map((f) => (
+              <li key={f.wikipedia} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-sm">
+                <a href={f.wikipedia} rel="noopener" className="font-medium text-bone underline underline-offset-4">{f.name}</a>
+                <span className="text-mist"> — {f.known_for}</span>
+                <span className="block text-xs text-faint">born {famousBirthdayLabel(f.born)}</span>
               </li>
             ))}
           </ul>
@@ -387,6 +485,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           </Link>
         </Section>
       )}
+
+      <ReadNextSection card={card} />
 
       <Section title="Frequently asked questions">
         <FaqList faqs={faqs} />
@@ -472,6 +572,12 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">{dateQuickAnswer(date)}</p>
       </div>
+      <p className="mt-3 text-xs text-faint">
+        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
+        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+          Editorial policy
+        </Link>
+      </p>
       <p className="prose-reading mt-3 text-mist">
         Born on {date.label}? Your Cardology birth card is the {card.label}
         {card.title ? `, ${card.title}` : ""} — same answer every year, no negotiation. {date.label} sits in {zodiac.sign}, so
@@ -628,6 +734,48 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
   );
 }
 
+// Cross-links for crawl depth: karma row, top three life-path pairs (Venus /
+// Moon / Mars — first three from compatForCard), and the first three calendar
+// dates that resolve to this card. Worker routes use plain <a>.
+function ReadNextSection({ card }: { card: CardSeo }) {
+  const bestPairs = (compatForCard(card.slug)?.pairs ?? []).slice(0, 3);
+  const dates = birthDatesForCard(card).slice(0, 3);
+  return (
+    <Section title="Read next">
+      <ul className="mt-4 space-y-2">
+        <li className="flex gap-2 text-sm text-mist">
+          <span className="text-gold">·</span>
+          <Link
+            href={`/karma-cards#${card.slug}`}
+            className="text-gold underline underline-offset-4"
+          >
+            Karma cards for the {card.label}
+          </Link>
+        </li>
+        {bestPairs.map((p) => (
+          <li key={p.href} className="flex gap-2 text-sm text-mist">
+            <span className="text-gold">·</span>
+            <a href={p.href} className="text-gold underline underline-offset-4">
+              {card.label} + {p.label} compatibility
+            </a>
+          </li>
+        ))}
+        {dates.map((d) => (
+          <li key={d.slug} className="flex gap-2 text-sm text-mist">
+            <span className="text-gold">·</span>
+            <a
+              href={`/born-on/${d.slug}`}
+              className="text-gold underline underline-offset-4"
+            >
+              Born on {d.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  );
+}
+
 function KarmaLink({ label, code }: { label: string; code: string }) {
   const seo = allCardSeo().find((c) => c.code === code);
   if (!seo) return null;
@@ -710,7 +858,7 @@ function articleJsonLd({
   headline: string;
   description: string;
   url: string;
-  image?: string;
+  image?: string | Record<string, unknown>;
 }) {
   return {
     "@context": "https://schema.org",

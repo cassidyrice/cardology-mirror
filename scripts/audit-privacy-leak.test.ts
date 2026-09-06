@@ -134,6 +134,14 @@ assert.equal(posthogCleaned.placement, "calculator-form");
 assert.equal(posthogCleaned.email, undefined);
 assert.equal(posthogCleaned.birth_date, undefined);
 assert.equal(posthogCleaned.note, undefined);
+assert.equal(
+  sanitizePosthogProperties({
+    distinct_id: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+    $session_id: "11111111-2222-3333-4444-555555555555",
+    token: "phc_sfewE8AhhqBfV8vCkMtjMRqdvoDvbeG3ygkZCTTBKVZ5",
+  }).distinct_id,
+  "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
+);
 assert.match(resolvePosthogKey("not-a-key"), /^phc_/);
 assert.equal(resolvePosthogHost("https://us.i.posthog.com/"), "https://us.i.posthog.com");
 

@@ -6,6 +6,7 @@ export const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
 const EXCLUDED_PREFIXES = [
   "/checkout",
+  "/content-engine",
   "/gate",
   "/free-course",
   "/privacy-policy",

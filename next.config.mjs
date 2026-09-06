@@ -20,6 +20,27 @@ const nextConfig = {
         statusCode: 301,
       },
       {
+        source: "/sitemap-birth-cards.xml",
+        destination: "/sitemap.xml",
+        statusCode: 301,
+      },
+      {
+        source: "/products/compatibility-blueprint",
+        destination: "/cardology-compatibility",
+        statusCode: 301,
+      },
+      {
+        source: "/products",
+        destination: "/products/birth-card-deep-dive",
+        statusCode: 301,
+      },
+      // Product name is "Content Calendar"; the route stayed /content-engine (2026-09-05).
+      {
+        source: "/content-calendar",
+        destination: "/content-engine",
+        statusCode: 301,
+      },
+      {
         source: "/cardology-agent-instructions",
         destination: "/shadow-karma-guide",
         statusCode: 301,
@@ -27,7 +48,7 @@ const nextConfig = {
       // Marketing aliases (P0)
       {
         source: "/personal-card-blueprint",
-        destination: "/products/personal-card-blueprint",
+        destination: "/products/birth-card-deep-dive",
         statusCode: 301,
       },
       {
@@ -160,11 +181,6 @@ const nextConfig = {
       {
         source: "/birthcard",
         destination: "/birth-card",
-        statusCode: 301,
-      },
-      {
-        source: "/products",
-        destination: "/products/personal-card-blueprint",
         statusCode: 301,
       },
       // P0 rank-only short paths (suit-ambiguous → birth-card index)
