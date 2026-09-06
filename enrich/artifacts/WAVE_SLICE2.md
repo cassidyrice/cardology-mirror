@@ -33,9 +33,10 @@ remaining summer olympics, …. Taken this job:
 
 | Field | Value |
 |---|---|
-| **Job id** | _pending submit_ |
-| **Display name** | _pending submit_ |
-| **State** | _pending submit_ |
+| **Job id** | `projects/796629394796/locations/global/batchPredictionJobs/4697945042088624128` |
+| **Numeric id** | `4697945042088624128` |
+| **Display name** | `cardology-wp3-enrich-20260906T232142Z` |
+| **State after ~90s poll** | `JOB_STATE_QUEUED` (PENDING → QUEUED) |
 | **Model** | `gemini-3.1-pro-preview` |
 | **Location** | `global` |
 | **Rows** | **1079 / 1079** |

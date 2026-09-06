@@ -3,8 +3,9 @@
 Retry job `403973903623389184` **SUCCEEDED** (818/836). Remainder job
 `5794641920097517568` **SUCCEEDED** (18/18). Hub people job
 `1673848261053513728` **SUCCEEDED** (1075/1079 accepted). Wave slice 1
-`5428091131676065792` **SUCCEEDED** (1077/1079 accepted). Do not submit
-another job unless asked. Results live in `people_enriched.jsonl`
+`5428091131676065792` **SUCCEEDED** (1077/1079 accepted). Wave slice 2
+`4697945042088624128` **QUEUED** (1079 submitted). Do not submit
+slice 3 unless asked. Results live in `people_enriched.jsonl`
 (**3210** = 1058 celebrity + 1075 hub + 1077 wave slice 1). Celebrity
 `retry.jsonl` is empty. Hub drops stay in `hub_retry.jsonl` (4). Slice 1
 drops are in `enrich/artifacts/wave_slice1_retry.jsonl` (2 TPU empties).

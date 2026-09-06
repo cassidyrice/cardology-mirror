@@ -1,6 +1,9 @@
 {
   "kind": "wave_slice2",
-  "job_submitted": false,
+  "job_submitted": true,
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/4697945042088624128",
+  "display_name": "cardology-wp3-enrich-20260906T232142Z",
+  "job_state_after_90s": "JOB_STATE_QUEUED",
   "people_enriched": 3210,
   "unique_wave_ready": 2894,
   "unique_missing": 1666,
