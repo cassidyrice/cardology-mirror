@@ -79,7 +79,9 @@ python3 -m enrich.estimate \
 python3 -m enrich.submit_batch --input enrich/artifacts/vertex_wave_slice1_batch.jsonl
 ```
 
-Do not submit the remaining ~1666 this job. Ask before slice 2.
+Submitted job `5428091131676065792` (`cardology-wp3-enrich-20260906T225419Z`).
+Brief poll: `JOB_STATE_RUNNING`. Do not submit the remaining ~1666 this job.
+Ask before slice 2. Do not merge results.
 
 ## Local dry-run (fixtures, no spend)
 

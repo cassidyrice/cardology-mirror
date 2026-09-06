@@ -18,4 +18,25 @@ Same #70 / hub contract. This-job band ≤ ~$20.
 
 Largest-hole order used: Rock Hall, summer olympics, NFL HoF, Tonys, Kennedy Center, astronauts, …. Slice fills Rock Hall then part of summer olympics and stops at 1079. NFL HoF / Tonys / KC / astronauts and the rest wait for slice 2+.
 
+## Submitted
+
+| Field | Value |
+|---|---|
+| **Job id** | `projects/796629394796/locations/global/batchPredictionJobs/5428091131676065792` |
+| **Numeric id** | `5428091131676065792` |
+| **Display name** | `cardology-wp3-enrich-20260906T225419Z` |
+| **State after ~90s poll** | `JOB_STATE_RUNNING` (PENDING → QUEUED → RUNNING) |
+| **Model** | `gemini-3.1-pro-preview` |
+| **Location** | `global` |
+| **Rows** | **1079 / 1079** |
+
+Did not wait for `SUCCEEDED`. ENGINE polls later. Ask before slice 2.
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=/tmp/sa.json
+export VERTEX_LOCATION=global
+python3 -m enrich.submit_batch --poll \
+  projects/796629394796/locations/global/batchPredictionJobs/5428091131676065792
+```
+
 Do not submit slice 2 unless asked. Do not merge results, deploy, or invent bios.
