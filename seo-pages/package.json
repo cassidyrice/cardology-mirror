@@ -9,6 +9,7 @@
     "build:parks": "bun src/parks/build.ts",
     "build:signers": "bun src/signers/build.ts",
     "build:nobel": "bun src/nobel/build.ts",
+    "build:scotus": "bun src/scotus/build.ts",
     "build:mlb": "bun src/mlb/build.ts",
     "test": "bun test"
   }

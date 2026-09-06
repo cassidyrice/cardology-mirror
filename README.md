@@ -63,7 +63,15 @@ bun run test:seo-signers
 python3 -m pipeline.signers # refresh NARA/Wikipedia JSONL (Wikidata QA only)
 ```
 
-MLB first-game birth-card pages are a fifth isolated build (`/mlb/{slug}`).
+Current SCOTUS justices birth-card pages (`/scotus/{slug}`), sitting justices only:
+
+```bash
+bun run build:seo-scotus   # → seo-pages/dist-scotus
+bun run test:seo-scotus
+python3 -m pipeline.scotus # SCOTUS.gov + Wikidata P569 verify
+```
+
+MLB first-game birth-card pages (`/mlb/{slug}`).
 Dates are franchise first MLB games, not player DOBs:
 
 ```bash

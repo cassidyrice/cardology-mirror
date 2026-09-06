@@ -242,6 +242,29 @@ python3 -m pipeline.nobel # rewrite pipeline/data/nobel/people.jsonl
 
 Path lock: [`nobel-path-ownership.json`](./nobel-path-ownership.json).
 
+## Current SCOTUS justices (isolated `/scotus`)
+
+Separate static build. Day-precision SCOTUS.gov Current Members dates
+verified against Wikidata `P569`. Does **not** take celebrity
+`/birth-card/{slug}` or live card-meaning routes. Does **not** join the
+Next.js app, does **not** touch checkout/Stripe, and must **not** be
+deployed.
+
+```bash
+bun run build:seo-scotus   # → seo-pages/dist-scotus
+bun run test:seo-scotus
+python3 -m pipeline.scotus # rewrite pipeline/data/scotus/people.jsonl
+```
+
+- Hub: `/scotus`
+- Person: `/scotus/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=scotus&utm_content={slug}`
+- Data: `pipeline/data/scotus/people.jsonl` (SCOTUS.gov + Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: retired justices, year-only dates, Wikidata precision &lt; 11, SCOTUS.gov↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`scotus-path-ownership.json`](./scotus-path-ownership.json).
+
 ## MLB first-game cards (isolated `/mlb`)
 
 Separate static build. Franchise first MLB games from Baseball-Reference

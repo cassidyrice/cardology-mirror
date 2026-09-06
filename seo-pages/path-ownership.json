@@ -100,6 +100,22 @@
     ],
     "note": "Nobel laureate birth-card set is isolated under /nobel. Day-precision Nobel API dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "scotus_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/scotus",
+      "/scotus/{slug}",
+      "/sitemap-scotus.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Current SCOTUS justices birth-card set is isolated under /scotus. Day-precision SCOTUS.gov dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "parks_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

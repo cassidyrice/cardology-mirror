@@ -55,6 +55,9 @@ jobs:
       - name: Nobel laureate birth-card scaffold
         run: bun run build:seo-nobel
 
+      - name: SCOTUS justices birth-card scaffold
+        run: bun run build:seo-scotus
+
       - name: MLB first-game birth-card scaffold
         run: bun run build:seo-mlb
 
@@ -91,6 +94,7 @@ jobs:
             seo-pages/parks.test.ts \
             seo-pages/signers.test.ts \
             seo-pages/nobel.test.ts \
+            seo-pages/scotus.test.ts \
             seo-pages/mlb.test.ts
 
   pipeline:

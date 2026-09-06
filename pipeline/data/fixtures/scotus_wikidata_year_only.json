@@ -1,0 +1,23 @@
+{
+  "id": "Q0SCO3",
+  "labels": { "en": { "value": "Year Only Wikidata Fixture" } },
+  "descriptions": { "en": { "value": "synthetic year-precision fixture" } },
+  "sitelinks": { "enwiki": { "title": "Year Only Wikidata Fixture" } },
+  "claims": {
+    "P569": [
+      {
+        "rank": "normal",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1955-01-01T00:00:00Z",
+              "precision": 9,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
