@@ -1,0 +1,108 @@
+import { readFileSync } from "node:fs";
+
+import type { CardMeaning, NobelPrize, NobelRow } from "./types";
+import { reservedNobelSlugReason } from "./urls";
+
+export function loadNobelRows(filePath: string): NobelRow[] {
+  const people: NobelRow[] = [];
+  for (const [index, line] of readFileSync(filePath, "utf8").split(/\r?\n/).entries()) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    people.push(normalizeRow(JSON.parse(trimmed), index + 1));
+  }
+  const slugs = new Set<string>();
+  for (const person of people) {
+    if (slugs.has(person.slug)) {
+      throw new Error(`Duplicate Nobel slug: ${person.slug}`);
+    }
+    slugs.add(person.slug);
+  }
+  return people;
+}
+
+export function loadCardMeanings(filePath: string): Map<string, CardMeaning> {
+  const raw = JSON.parse(readFileSync(filePath, "utf8")) as Record<string, CardMeaning>;
+  return new Map(Object.entries(raw));
+}
+
+function normalizeRow(raw: unknown, line: number): NobelRow {
+  if (!isRecord(raw)) {
+    throw new Error(`Line ${line}: nobel row must be an object`);
+  }
+  const slug = requiredString(raw, "slug", line);
+  const reserved = reservedNobelSlugReason(slug);
+  if (reserved) {
+    throw new Error(`Line ${line}: ${reserved}`);
+  }
+  if (raw.dob_crosscheck !== "match") {
+    throw new Error(`Line ${line}: dob_crosscheck must be match (conflicts are dropped)`);
+  }
+  const birth = requiredString(raw, "birth_date", line);
+  const nobelBirth = requiredString(raw, "nobel_birth_date", line);
+  const wikidataBirth = requiredString(raw, "wikidata_birth_date", line);
+  if (birth !== nobelBirth || birth !== wikidataBirth) {
+    throw new Error(`Line ${line}: Nobel and Wikidata birth dates must match`);
+  }
+  return {
+    qid: requiredString(raw, "qid", line),
+    nobel_id: requiredString(raw, "nobel_id", line),
+    name: requiredString(raw, "name", line),
+    slug,
+    birth_date: birth,
+    death_date: optionalNullableString(raw, "death_date", line),
+    card: requiredString(raw, "card", line),
+    source_text: requiredString(raw, "source_text", line),
+    source_url: requiredString(raw, "source_url", line),
+    wikipedia_title: requiredString(raw, "wikipedia_title", line),
+    nobel_url: requiredString(raw, "nobel_url", line),
+    prizes: requiredPrizes(raw, line),
+    nobel_birth_date: nobelBirth,
+    wikidata_birth_date: wikidataBirth,
+    dob_crosscheck: "match",
+  };
+}
+
+function requiredPrizes(raw: Record<string, unknown>, line: number): NobelPrize[] {
+  const value = raw.prizes;
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error(`Line ${line}: prizes must be a non-empty array`);
+  }
+  return value.map((item, index) => {
+    if (!isRecord(item)) {
+      throw new Error(`Line ${line}: prizes[${index}] must be an object`);
+    }
+    return {
+      year: requiredString(item, "year", line),
+      category: requiredString(item, "category", line),
+      category_full: requiredString(item, "category_full", line),
+      motivation: optionalNullableString(item, "motivation", line),
+      portion: optionalNullableString(item, "portion", line),
+    };
+  });
+}
+
+function requiredString(raw: Record<string, unknown>, key: string, line: number): string {
+  const value = raw[key];
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error(`Line ${line}: "${key}" must be a non-empty string`);
+  }
+  return value.trim();
+}
+
+function optionalNullableString(
+  raw: Record<string, unknown>,
+  key: string,
+  line: number,
+): string | null {
+  const value = raw[key];
+  if (value === undefined || value === null) return null;
+  if (typeof value !== "string") {
+    throw new Error(`Line ${line}: "${key}" must be a string or null`);
+  }
+  const trimmed = value.trim();
+  return trimmed === "" ? null : trimmed;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}

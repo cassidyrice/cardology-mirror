@@ -219,3 +219,25 @@ bun run test:seo-signers
 - Copy: local templates from `source_text` + harvested card meanings. No Vertex.
 
 Path lock: [`signers-path-ownership.json`](./signers-path-ownership.json).
+
+## Nobel laureates (isolated `/nobel`)
+
+Separate static build. Day-precision Nobel Prize API v2.1 dates verified
+against Wikidata `P569`. Does **not** take celebrity `/birth-card/{slug}`
+or live card-meaning routes. Does **not** join the Next.js app, does
+**not** touch checkout/Stripe, and must **not** be deployed.
+
+```bash
+bun run build:seo-nobel   # → seo-pages/dist-nobel
+bun run test:seo-nobel
+python3 -m pipeline.nobel # rewrite pipeline/data/nobel/people.jsonl
+```
+
+- Hub: `/nobel`
+- Person: `/nobel/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=nobel&utm_content={slug}`
+- Data: `pipeline/data/nobel/people.jsonl` (Nobel API + Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: organizations, year-only Nobel dates, Wikidata precision &lt; 11, Nobel↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`nobel-path-ownership.json`](./nobel-path-ownership.json).

@@ -8,6 +8,7 @@
     "build:holidays": "bun src/holidays/build.ts",
     "build:parks": "bun src/parks/build.ts",
     "build:signers": "bun src/signers/build.ts",
+    "build:nobel": "bun src/nobel/build.ts",
     "test": "bun test"
   }
 }

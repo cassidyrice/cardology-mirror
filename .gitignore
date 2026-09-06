@@ -4,6 +4,7 @@ seo-pages/dist-presidents
 seo-pages/dist-holidays
 seo-pages/dist-parks
 seo-pages/dist-signers
+seo-pages/dist-nobel
 .playwright-mcp/
 
 node_modules
