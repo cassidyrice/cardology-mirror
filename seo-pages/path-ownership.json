@@ -292,6 +292,22 @@
     ],
     "note": "NASA astronaut birth-card set is isolated under /astronauts. Day-precision NASA bio dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "nfl_hof_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/nfl-hof",
+      "/nfl-hof/{slug}",
+      "/sitemap-nfl-hof.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "NFL Hall of Fame inductee birth-card set is isolated under /nfl-hof. Wikidata P6930 + day-precision P569, verified against ProFootballHOF.com bios when they publish a day. Path-split is not activated. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "born_on_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

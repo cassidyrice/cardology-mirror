@@ -21,6 +21,7 @@
     "build:oscars": "bun src/oscars/build.ts",
     "build:emmys": "bun src/emmys/build.ts",
     "build:grammys": "bun src/grammys/build.ts",
+    "build:nfl-hof": "bun src/nfl-hof/build.ts",
     "test": "bun test"
   }
 }
