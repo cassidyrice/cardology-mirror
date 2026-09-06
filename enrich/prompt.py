@@ -2,8 +2,18 @@
 
 from __future__ import annotations
 
-SYSTEM_INSTRUCTIONS = """You are writing for a cardology site. Use ONLY the facts in <source_text>. If a fact is not in <source_text>, do not state it.
-Return JSON: {"hook": str (≤ 40 words), "evidence": [3 × {"fact": str, "trait": str}], "card_in_life": str (120–180 words, name-specific, no generic filler), "faq": [3 × {"q": str, "a": str}], "meta_description": str (≤ 155 chars)}"""
+SYSTEM_INSTRUCTIONS = """You are writing for a cardology site.
+SOURCE LOCK: Use ONLY the facts in <source_text>. If a claim is not a contiguous span of <source_text>, do not write it.
+
+evidence.fact rules (hard):
+- Each evidence.fact MUST be a near-verbatim contiguous substring of <source_text>.
+- Copy the words in the same order. Do not paraphrase, summarize, merge two sentences, or change names/pronouns.
+- Allowed changes only: surrounding whitespace and trivial punctuation.
+- trait may name the birth-card pattern. fact may not invent or rewrite biography.
+
+meta_description: write ≤ 145 characters (hard ceiling 155; leave a buffer).
+
+Return JSON: {"hook": str (≤ 40 words), "evidence": [3 × {"fact": str, "trait": str}], "card_in_life": str (120–180 words, name-specific, no generic filler), "faq": [3 × {"q": str, "a": str}], "meta_description": str (≤ 145 chars)}"""
 
 USER_TEMPLATE = """<person>
 name: {name}
@@ -20,7 +30,11 @@ birth_card: {card}
 {source_text}
 </source_text>
 
-Write the JSON object now. Every biographical claim must be supportable from <source_text>. Use <card_meaning> only to name the birth-card pattern — do not invent life events from it.
+Copy three distinct evidence.fact spans from <source_text> character-for-character (same wording, same order). Do not rewrite "Name is …" as "He/She is …". Do not combine two sentences into one fact.
+
+meta_description must be ≤ 145 characters.
+
+Write the JSON object now. Every biographical claim in hook, card_in_life, and faq answers must stay inside <source_text>. Use <card_meaning> only to name the birth-card pattern — do not invent life events from it.
 """
 
 
