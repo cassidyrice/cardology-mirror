@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-09-06T22:04:22.080761+00:00",
+  "people_count": 90,
+  "catalog_winners": 96,
+  "catalog_award_years": 99,
+  "kept": 90,
+  "excluded": 6,
+  "by_reason": {
+    "dob_conflict": 1,
+    "year_only": 3,
+    "missing_birth": 2
+  },
+  "exclusions": [
+    {
+      "qid": "Q457601",
+      "name": "Andrew Sean Greer",
+      "wikipedia_title": "Andrew Sean Greer",
+      "wikipedia_infobox_date": "1970-11-21",
+      "wikidata_birth_date": "1970-11-05",
+      "pulitzer_org_birth_date": null,
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q2754186",
+      "name": "Anthony Doerr",
+      "wikipedia_title": "Anthony Doerr",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "pulitzer_org_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q100329021",
+      "name": "Hernan Diaz",
+      "wikipedia_title": "Hernan Diaz (writer)",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "pulitzer_org_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q692219",
+      "name": "Paul Harding",
+      "wikipedia_title": "Paul Harding (author)",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "pulitzer_org_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q979076",
+      "name": "Peter Taylor",
+      "wikipedia_title": "Peter Taylor (writer)",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "pulitzer_org_birth_date": null,
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q503557",
+      "name": "Robert Lewis Taylor",
+      "wikipedia_title": "Robert Lewis Taylor",
+      "wikipedia_infobox_date": null,
+      "wikidata_birth_date": null,
+      "pulitzer_org_birth_date": null,
+      "reason": "missing_birth"
+    }
+  ],
+  "not_awarded": [
+    {
+      "year": "1920",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1941",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1946",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1954",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1957",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1964",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1971",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1974",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "1977",
+      "reason": "not_awarded"
+    },
+    {
+      "year": "2012",
+      "reason": "not_awarded"
+    }
+  ],
+  "pulitzer_org_fetches": {
+    "unavailable": 99
+  },
+  "sources": [
+    "The Pulitzer Prizes Fiction category (https://www.pulitzer.org/prize-winners-by-category/219)",
+    "The Pulitzer Prizes home (https://www.pulitzer.org/)",
+    "Pulitzer.org year pages cited on the Wikipedia Fiction list",
+    "Wikipedia Pulitzer Prize for Fiction (https://en.wikipedia.org/wiki/Pulitzer_Prize_for_Fiction)",
+    "Wikipedia article infobox birth-date templates (CC BY-SA 4.0)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Wikipedia Pulitzer Prize for Fiction winner row (yellow) AND person-scope human AND Wikipedia infobox YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match. Co-winners / joint recipients are kept as separate people.",
+    "drop": [
+      "not_awarded years",
+      "finalists (non-yellow rows)",
+      "not_a_person / institutions",
+      "year_only (Wikipedia infobox year without month/day)",
+      "dob_conflict (Wikipedia infobox day \u2260 Wikidata P569 day)",
+      "pulitzer_org_conflict (Pulitzer.org bio day \u2260 Wikipedia/Wikidata day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "missing Wikipedia summary"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false,
+    "person_scope_only": true,
+    "pulitzer_org": "Winner identity is the Wikipedia list, which cites Pulitzer.org year pages. Live Pulitzer.org HTML is fetched when Cloudflare allows it. A published day that conflicts with Wikipedia/Wikidata is dropped, not guessed. Challenge/403 pages are recorded as unavailable \u2014 dates are not invented."
+  },
+  "pulitzer_home": "https://www.pulitzer.org/",
+  "fiction_url": "https://en.wikipedia.org/wiki/Pulitzer_Prize_for_Fiction",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}

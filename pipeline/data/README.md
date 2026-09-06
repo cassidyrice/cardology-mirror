@@ -58,6 +58,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Born-on notables dataset | `pipeline/data/born-on/people.jsonl` | yes |
 | Born-on days | `pipeline/data/born-on/days.jsonl` | yes |
 | Born-on provenance | `pipeline/data/born-on/provenance.json` | yes |
+| Pulitzer Fiction dataset | `pipeline/data/pulitzer_fiction/people.jsonl` | yes |
+| Pulitzer Fiction provenance | `pipeline/data/pulitzer_fiction/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

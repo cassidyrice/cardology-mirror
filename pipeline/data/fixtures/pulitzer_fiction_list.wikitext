@@ -1,0 +1,71 @@
+==Winners==
+Winners (listed first) and finalists.
+{| class="wikitable sortable"
+!Year
+!Author
+!Work
+!Genre(s)
+|-
+|- style="background:#fff7c9"
+! scope="row"|'''[[1917 in literature|1918]]'''
+|[[Ernest Poole]]
+|'''''[[His Family]]'''''
+|[[Novel]]
+|-
+|- style="background:#fff7c9"
+! scope="row"|'''[[1918 in literature|1919]]'''
+|[[Booth Tarkington]]
+|'''''[[The Magnificent Ambersons]]'''''
+|Novel
+|-
+! scope="row"|'''[[1919 in literature|1920]]'''
+|colspan=3 align=center |''Not awarded''
+|-
+|- style="background:#fff7c9"
+! scope="row"|'''[[1920 in literature|1921]]'''
+|[[Edith Wharton]]
+|'''''[[The Age of Innocence]]'''''
+|Novel
+|-
+|- style="background:#fff7c9"
+! rowspan="3" scope="row"|[[1983 in literature|1984]]
+|[[William Kennedy (author)|William Kennedy]]
+|'''''[[Ironweed (novel)|Ironweed]]'''''
+|Novel
+|-
+|[[Raymond Carver]]
+|''[[Cathedral (short story collection)|Cathedral]]''
+|
+|-
+|[[Thomas Berger (novelist)|Thomas Berger]]
+|''The Feud''
+|
+|-
+! rowspan="4" scope="row"|[[2011 in literature|2012]]
+|colspan=3 align=center |''Not awarded''<ref>{{cite web|url=http://www.pulitzer.org/prize-winners-by-year/2012|title=2012 Pulitzer Prize Winners & Finalists|website=The Pulitzer Prizes (pulitzer.org)}}</ref>
+|-
+|[[Karen Russell]]
+|''[[Swamplandia!]]''
+|
+|-
+|- style="background:#fff7c9"
+! rowspan="3" scope="row"|[[2022 in literature|2023]]
+|[[Barbara Kingsolver]]
+|'''''[[Demon Copperhead]]'''''{{efn|group=notes|"A masterful recasting."}}<ref>{{cite web|url=http://www.pulitzer.org/prize-winners-by-year/2023|title=2023 Pulitzer Prize Winners & Finalists|website=The Pulitzer Prizes (pulitzer.org)}}</ref>
+|Novel
+|- style="background:#fff7c9"
+|[[Hernan Diaz (writer)|Hernan Diaz]]
+|'''''[[Trust (novel)|Trust]]'''''
+|Novel
+|-
+|[[Vauhini Vara]]
+|''[[The Immortal King Rao]]''
+|
+|-
+|- style="background:#fff7c9"
+! rowspan="4" scope="row"|[[2024 in literature|2025]]
+|[[Percival Everett]]
+|'''''[[James (novel)|James]]'''''
+|Novel
+|}
+==Repeat winners==

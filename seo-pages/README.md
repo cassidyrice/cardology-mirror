@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Rock Hall pages use `utm_source=rock-hall&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Rock Hall pages use `utm_source=rock-hall&utm_content={slug}`. Pulitzer Fiction pages use `utm_source=pulitzer-fiction&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -598,3 +598,28 @@ python3 -m pipeline.rock_hall # rewrite pipeline/data/rock_hall/people.jsonl
 - Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords, groups without listed members
 
 Path lock: [`rock-hall-path-ownership.json`](./rock-hall-path-ownership.json).
+
+## Pulitzer Prize for Fiction (isolated `/pulitzer/fiction`)
+
+Separate static build. Person-scope Fiction winners and joint recipients
+with day-precision Wikipedia infobox dates verified against Wikidata
+`P569`. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes. Does **not** join the Next.js app, does **not**
+touch checkout/Stripe, and must **not** be deployed. Path-split is
+documented only — not activated.
+
+```bash
+bun run build:seo-pulitzer-fiction   # → seo-pages/dist-pulitzer
+bun run test:seo-pulitzer-fiction
+python3 -m pipeline.pulitzer_fiction # rewrite pipeline/data/pulitzer_fiction/people.jsonl
+```
+
+- Hub: `/pulitzer/fiction`
+- Person: `/pulitzer/fiction/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=pulitzer-fiction&utm_content={slug}`
+- Data: `pipeline/data/pulitzer_fiction/people.jsonl` (Wikipedia Fiction list + infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Scope: person-scope winners and co-winners only. Institutions omitted.
+- Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, missing days, minors, D3 keywords
+
+Path lock: [`pulitzer-fiction-path-ownership.json`](./pulitzer-fiction-path-ownership.json).

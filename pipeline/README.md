@@ -346,6 +346,25 @@ python3 -m pytest pipeline/tests/test_rock_hall.py
 Output: [`data/rock_hall/people.jsonl`](data/rock_hall/people.jsonl). Pages:
 `bun run build:seo-rock-hall`. Do not deploy.
 
+## Pulitzer Prize for Fiction (isolated `/pulitzer/fiction`)
+
+Person-scope Fiction winners and joint recipients. Wikipedia winner
+tables are the identity source (they cite Pulitzer.org year pages).
+Wikipedia person-page infobox birth-date templates (plus `birth date
+text` / bare month-day fields) are the public day. Wikidata `P569`
+precision 11 must match. Year-only dates, Wikipedia↔Wikidata conflicts,
+institutions, minors, and D3 keywords are dropped. Dates are never
+invented. The celebrity `year_before_1900` cut is **not** applied.
+Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.pulitzer_fiction
+python3 -m pytest pipeline/tests/test_pulitzer_fiction.py
+```
+
+Output: [`data/pulitzer_fiction/people.jsonl`](data/pulitzer_fiction/people.jsonl).
+Pages: `bun run build:seo-pulitzer-fiction`. Do not deploy.
+
 ## Birth-card Famous people grounding (existing `/birth-card` pages)
 
 Verifies the editorial Famous people list on the 52 card-meaning pages
