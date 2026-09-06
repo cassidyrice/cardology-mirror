@@ -1,0 +1,31 @@
+{
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/2948789168064430080",
+  "job_state": "JOB_STATE_SUCCEEDED",
+  "error": null,
+  "predictions_ready": true,
+  "predictions_downloaded": 1058,
+  "completion_stats": {
+    "successfulCount": "1058"
+  },
+  "start_time": "2026-09-06T15:46:21.718939Z",
+  "end_time": "2026-09-06T16:28:58.305957Z",
+  "parse": {
+    "people": 1058,
+    "predictions": 1058,
+    "accepted": 222,
+    "rejected": 836,
+    "missing_predictions": 0,
+    "containment_threshold": 0.85,
+    "by_reason": {
+      "containment": 1422,
+      "meta_description is 156 chars (max 155)": 11,
+      "meta_description is 157 chars (max 155)": 4,
+      "meta_description is 158 chars (max 155)": 6,
+      "meta_description is 160 chars (max 155)": 1
+    }
+  },
+  "did_not_merge": [
+    "#62",
+    "#66"
+  ]
+}

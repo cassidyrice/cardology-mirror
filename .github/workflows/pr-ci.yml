@@ -46,6 +46,9 @@ jobs:
       - name: Federal holiday birth-card scaffold
         run: bun run build:seo-holidays
 
+      - name: National Park birth-card scaffold
+        run: bun run build:seo-parks
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -75,7 +78,8 @@ jobs:
             seo-pages/states.test.ts \
             seo-pages/franchise.test.ts \
             seo-pages/presidents.test.ts \
-            seo-pages/holidays.test.ts
+            seo-pages/holidays.test.ts \
+            seo-pages/parks.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

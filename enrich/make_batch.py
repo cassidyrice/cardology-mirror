@@ -49,8 +49,9 @@ def vertex_request(user_text: str) -> dict[str, Any]:
             }
         ],
         "generationConfig": {
-            "temperature": 0.2,
+            "temperature": 0.0,
             "responseMimeType": "application/json",
+            "thinkingConfig": {"thinkingLevel": "LOW"},
         },
     }
 
@@ -58,11 +59,14 @@ def vertex_request(user_text: str) -> dict[str, Any]:
 def iter_batch_rows(
     people: Iterable[dict[str, Any]],
     meanings: dict[str, dict[str, Any]],
+    include_qids: set[str] | None = None,
 ) -> Iterable[dict[str, Any]]:
     for person in people:
         source_text = (person.get("source_text") or "").strip()
         card = str(person.get("card") or "")
         qid = str(person.get("qid") or person.get("slug") or "")
+        if include_qids is not None and qid not in include_qids:
+            continue
         if not source_text or not card or not qid:
             continue
         user_text = render_user_prompt(
@@ -84,6 +88,7 @@ def write_batch(
     people_path: Path,
     meanings_path: Path,
     out_path: Path,
+    include_qids: set[str] | None = None,
 ) -> dict[str, int]:
     if not people_path.is_file():
         raise SystemExit(
@@ -92,7 +97,7 @@ def write_batch(
         )
     people = load_jsonl(people_path)
     meanings = load_meanings(meanings_path)
-    rows = list(iter_batch_rows(people, meanings))
+    rows = list(iter_batch_rows(people, meanings, include_qids=include_qids))
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as handle:
         for row in rows:

@@ -47,6 +47,14 @@ bun run test:seo-holidays
 python3 -m pipeline.holidays # refresh JSONL from the statute lock
 ```
 
+US National Park birth-card pages are a third isolated build (`/parks/{slug}`):
+
+```bash
+bun run build:seo-parks   # → seo-pages/dist-parks
+bun run test:seo-parks
+python3 seo-pages/scripts/write_parks_jsonl.py
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

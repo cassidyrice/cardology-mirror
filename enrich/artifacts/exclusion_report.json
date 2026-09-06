@@ -1,0 +1,22 @@
+{
+  "people": 1058,
+  "predictions": 1058,
+  "accepted": 222,
+  "rejected": 836,
+  "missing_predictions": 0,
+  "containment_threshold": 0.85,
+  "by_reason": {
+    "containment": 1422,
+    "meta_description is 156 chars (max 155)": 11,
+    "meta_description is 157 chars (max 155)": 4,
+    "meta_description is 158 chars (max 155)": 6,
+    "meta_description is 160 chars (max 155)": 1
+  },
+  "enriched_path": "pipeline/data/people_enriched.jsonl",
+  "retry_path": "enrich/artifacts/retry.jsonl",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/2948789168064430080",
+  "job_state": "JOB_STATE_SUCCEEDED",
+  "job_error": null,
+  "predictions_ready": true,
+  "note": "Polled Vertex job SUCCEEDED (1058/1058 completionStats). Downloaded predictions.jsonl and ran parse_results. Containment gate (>= 0.85) accepted 222; 836 rejected (mostly invented/paraphrased evidence). #62 and #66 were not merged."
+}

@@ -16,8 +16,9 @@ Human / Vertex step (later, off this PR):
 ## Prompt contract (locked)
 
 Each request asks the model to use **only** facts inside `<source_text>`.
-Card-meaning copy is supplied separately as interpretive context and must not
-be treated as biography.
+`evidence.fact` must be a **near-verbatim contiguous substring** of
+`<source_text>` (copy, do not paraphrase). Card-meaning copy is supplied
+separately as interpretive context and must not be treated as biography.
 
 Return JSON:
 
@@ -27,9 +28,28 @@ Return JSON:
   "evidence": [3 × {"fact": str, "trait": str}],
   "card_in_life": str (120–180 words, name-specific, no generic filler),
   "faq": [3 × {"q": str, "a": str}],
-  "meta_description": str (≤ 155 chars)
+  "meta_description": str (≤ 145 chars; hard ceiling 155)
 }
 ```
+
+Decode: `temperature=0.0`, `thinkingLevel=LOW`.
+
+Parse helper: `enrich.containment.fact_is_near_verbatim` — case, whitespace,
+and trivial punctuation only. Paraphrase fails.
+
+## Retry batch (836 rejected rows)
+
+First job accepted 222 (#67) and wrote `enrich/artifacts/retry.jsonl` (836).
+Rebuild the tightened Vertex JSONL from those qids only:
+
+```bash
+python3 -m enrich.make_retry_batch
+python3 -m enrich.estimate \
+  --input enrich/artifacts/vertex_retry_batch.jsonl \
+  --out enrich/artifacts/cost_estimate.json
+```
+
+See `enrich/RETRY_PLAN.md`. **Do not submit** until BOSS APPROVE.
 
 ## Local dry-run (fixtures, no spend)
 

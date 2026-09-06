@@ -163,3 +163,16 @@ Writes `pipeline/data/franchises.jsonl` and `pipeline/data/hof_franchise_histori
 Primary dates are the Hall of Fame Franchise Date column (grant through
 relocations/renames). Birth cards come from `birthcard.py` only. Wikipedia
 years are a cross-check, never a date source. No Vertex spend.
+
+## US National Parks
+
+Committed date table for the isolated `/parks` SEO scaffold lives in
+`seo-pages/data/parks.jsonl`. Rebuild with
+`python3 seo-pages/scripts/write_parks_jsonl.py`. Primary dates are
+Wikipedia “Date established as park.” Birth cards come from `birthcard.py`
+only. NPS Park Anniversaries footnotes are not mapped. No Vertex spend.
+
+```bash
+python3 -m pytest pipeline/tests/test_parks_established.py
+bun run build:seo-parks
+```

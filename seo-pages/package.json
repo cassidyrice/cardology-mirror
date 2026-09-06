@@ -6,6 +6,7 @@
     "build": "bun src/build.ts",
     "build:franchises": "bun src/build-franchises.ts",
     "build:holidays": "bun src/holidays/build.ts",
+    "build:parks": "bun src/parks/build.ts",
     "test": "bun test"
   }
 }
