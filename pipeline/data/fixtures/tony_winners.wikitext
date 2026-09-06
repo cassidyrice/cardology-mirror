@@ -1,0 +1,59 @@
+{{Short description|synthetic Tony list fixture}}
+==Winners and nominees==
+{{legend|#B0C4DE|indicates the winner}}
+===1940s===
+{| class="wikitable sortable"
+! Year
+! Actor
+! Project
+! Role(s)
+|-
+| rowspan="2" align="center"| '''1947''' <br> {{small|([[1st Tony Awards|1st]])}}
+| style="background:#B0C4DE"| '''[[José Ferrer]]'''
+| style="background:#B0C4DE"| '''''[[Cyrano de Bergerac (play)|Cyrano de Bergerac]]'''''
+| style="background:#B0C4DE"| '''[[Cyrano De Bergerac]]'''
+|- style="background:#B0C4DE"
+| '''[[Fredric March]]'''
+| '''''Years Ago'''''
+| '''Clinton Jones'''
+|-
+| rowspan="2" align="center"| '''1948''' <br> {{small|([[2nd Tony Awards|2nd]])}}
+| style="background:#B0C4DE"| '''[[Henry Fonda]]'''
+| style="background:#B0C4DE"| '''''[[Mister Roberts (play)|Mister Roberts]]'''''
+| style="background:#B0C4DE"| '''Lt. Roberts'''
+|-
+| [[Nominee Fixture]]
+| ''A Nominee Play''
+| Someone
+|}
+===1980s===
+{| class="wikitable sortable"
+! Year
+! Actor
+! Project
+! Role(s)
+|-
+| align="center"| '''1985''' <br> {{small|([[39th Tony Awards|39th]])}}
+! colspan="3"| Not awarded
+|-
+| rowspan="2" align="center"| '''1986''' <br> {{small|([[40th Tony Awards|40th]])}}
+|- style="background:#B0C4DE"
+| '''[[Paul Kelly (actor)|Paul Kelly]]'''
+| '''''[[Command Decision (play)|Command Decision]]'''''
+| '''Brigadier General K.C. Dennis'''
+|}
+===2020s===
+{| class="wikitable sortable"
+! Year
+! Actor
+! Project
+! Role(s)
+|-
+| rowspan="2" align="center"| '''2026''' <br> {{small|([[79th Tony Awards|79th]])}}
+|- style="background:#B0C4DE"
+| '''[[Ada Fixture Tony]]'''
+| '''''[[Giant (play)|Giant]]'''''
+| '''Roald Dahl'''
+|}
+==Most wins==
+* [[José Ferrer]]

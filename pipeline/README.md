@@ -207,6 +207,23 @@ python3 -m pytest pipeline/tests/test_winter_olympics.py
 Output: [`data/olympics/winter/people.jsonl`](data/olympics/winter/people.jsonl).
 Pages: `bun run build:seo-olympics-winter`. Do not deploy.
 
+## Tony Award leading acting (isolated `/tonys`)
+
+Leading Actor / Leading Actress winners in a play or musical. Wikipedia
+category lists are the winner catalog (Tony Awards record). Wikidata `P569`
+precision 11 is required. Wikipedia person-page birth templates are a
+conflict check when they include a day. Year-only dates, Wikipedia↔Wikidata
+conflicts, minors, and D3 description keywords are dropped. Dates are never
+invented. Featured acting categories are out of scope.
+
+```bash
+python3 -m pipeline.tonys
+python3 -m pytest pipeline/tests/test_tonys.py
+```
+
+Output: [`data/tonys/people.jsonl`](data/tonys/people.jsonl). Pages:
+`bun run build:seo-tonys`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

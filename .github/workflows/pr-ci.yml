@@ -73,6 +73,9 @@ jobs:
       - name: Winter Olympic medalist birth-card scaffold
         run: bun run build:seo-olympics-winter
 
+      - name: Tony leading-acting birth-card scaffold
+        run: bun run build:seo-tonys
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -111,7 +114,8 @@ jobs:
             seo-pages/governors.test.ts \
             seo-pages/cabinet.test.ts \
             seo-pages/senators.test.ts \
-            seo-pages/olympics-winter.test.ts
+            seo-pages/olympics-winter.test.ts \
+            seo-pages/tonys.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

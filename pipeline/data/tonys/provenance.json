@@ -1,0 +1,139 @@
+{
+  "generated_at": "2026-09-06T20:30:04.463534+00:00",
+  "people_count": 256,
+  "catalog_wins": 322,
+  "catalog_people": 263,
+  "kept": 256,
+  "excluded": 7,
+  "by_reason": {
+    "dob_conflict": 3,
+    "wikidata_precision": 2,
+    "missing_wikidata": 1,
+    "year_only": 1
+  },
+  "exclusions": [
+    {
+      "qid": "Q6242471",
+      "name": "John Kani",
+      "enwiki_title": "John Kani",
+      "wins": [
+        "1975 actor_play"
+      ],
+      "wikipedia_birth_date": "1942-08-30",
+      "wikidata_birth_date": "1943-08-30",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q61443923",
+      "name": "Andrew Burnap",
+      "enwiki_title": "Andrew Burnap",
+      "wins": [
+        "2020 actor_play"
+      ],
+      "wikipedia_birth_date": "1991-03-05",
+      "wikidata_birth_date": "1990-03-05",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q458146",
+      "name": "Martita Hunt",
+      "enwiki_title": "Martita Hunt",
+      "wins": [
+        "1949 actress_play"
+      ],
+      "wikipedia_birth_date": "1899-01-30",
+      "wikidata_birth_date": "1900-01-30",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q6762963",
+      "name": "Marie Mullen",
+      "enwiki_title": "Marie Mullen",
+      "wins": [
+        "1998 actress_play"
+      ],
+      "wikipedia_birth_date": null,
+      "wikidata_birth_date": null,
+      "reason": "wikidata_precision"
+    },
+    {
+      "qid": null,
+      "name": "Billy Porter",
+      "enwiki_title": "Billy Porter (entertainer)",
+      "wins": [
+        "2013 actor_musical"
+      ],
+      "wikipedia_birth_date": null,
+      "wikidata_birth_date": null,
+      "reason": "missing_wikidata"
+    },
+    {
+      "qid": "Q14441",
+      "name": "Liza Minnelli",
+      "enwiki_title": "Liza Minnelli",
+      "wins": [
+        "1965 actress_musical",
+        "1978 actress_musical"
+      ],
+      "wikipedia_birth_date": null,
+      "wikidata_birth_date": null,
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q6781118",
+      "name": "Maryann Plunkett",
+      "enwiki_title": "Maryann Plunkett",
+      "wins": [
+        "1987 actress_musical"
+      ],
+      "wikipedia_birth_date": null,
+      "wikidata_birth_date": null,
+      "reason": "wikidata_precision"
+    }
+  ],
+  "scope": {
+    "categories": [
+      "Best Performance by a Leading Actor in a Play",
+      "Best Performance by a Leading Actress in a Play",
+      "Best Performance by a Leading Actor in a Musical",
+      "Best Performance by a Leading Actress in a Musical"
+    ],
+    "note": "Leading Actor and Leading Actress only, play and musical (four categories). Featured acting and non-acting Tonys are omitted.",
+    "through": "2026",
+    "not_awarded": [
+      "1985 Best Actor in a Musical",
+      "1985 Best Actress in a Musical"
+    ],
+    "omit": [
+      "Featured Actor in a Play",
+      "Featured Actress in a Play",
+      "Featured Actor in a Musical",
+      "Featured Actress in a Musical",
+      "direction, design, and special Tony Awards"
+    ]
+  },
+  "sources": [
+    "Tony Awards official site (https://www.tonyawards.com/, winners index https://www.tonyawards.com/winners/)",
+    "Wikipedia Tony Award leading-acting category lists (winners highlighted #B0C4DE)",
+    "Wikipedia person-page infobox birth-date templates when present",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "Wikipedia leading-acting winner AND Wikidata P569 precision=11 AND (no Wikipedia person-page day OR that day matches Wikidata)",
+    "drop": [
+      "year_only (Wikipedia person-page year without month/day)",
+      "dob_conflict (Wikipedia person-page day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "missing Wikipedia summary or Wikidata entity",
+      "featured acting and non-leading Tony categories"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false
+  },
+  "tony_home_url": "https://www.tonyawards.com/",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}

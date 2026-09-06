@@ -180,6 +180,22 @@
     ],
     "note": "Current US governors birth-card set is isolated under /governors. 50 states only. It must not take celebrity person slugs or live card-meaning routes."
   },
+  "tonys_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/tonys",
+      "/tonys/{slug}",
+      "/sitemap-tonys.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Tony Award Leading Actor / Leading Actress birth-card set is isolated under /tonys. Play and musical. Featured acting is out of scope. Day-precision Wikidata P569 verified against Wikipedia person-page dates when present. It must not take celebrity person slugs or live card-meaning routes."
+  },
   "signers_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

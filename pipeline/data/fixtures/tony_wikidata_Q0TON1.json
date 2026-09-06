@@ -1,0 +1,23 @@
+{
+  "id": "Q0TON1",
+  "labels": { "en": { "value": "Ada Fixture Tony" } },
+  "descriptions": { "en": { "value": "synthetic stage actor fixture" } },
+  "sitelinks": { "enwiki": { "title": "Ada Fixture Tony" } },
+  "claims": {
+    "P569": [
+      {
+        "rank": "preferred",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1965-10-19T00:00:00Z",
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
