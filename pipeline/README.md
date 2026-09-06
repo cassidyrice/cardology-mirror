@@ -142,6 +142,21 @@ python3 -m pytest pipeline/tests/test_scotus.py
 Output: [`data/scotus/people.jsonl`](data/scotus/people.jsonl). Pages:
 `bun run build:seo-scotus`. Do not deploy.
 
+## Current US governors (isolated `/governors`)
+
+Sitting governors of the 50 states. Wikipedia current-governors list is
+the sitting source and the public day. Wikidata `P569` precision 11 must
+match. Year-only dates and list↔Wikidata conflicts are dropped. DC and
+territories are omitted. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.governors
+python3 -m pytest pipeline/tests/test_governors.py
+```
+
+Output: [`data/governors/people.jsonl`](data/governors/people.jsonl). Pages:
+`bun run build:seo-governors`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

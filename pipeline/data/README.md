@@ -35,6 +35,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Nobel provenance | `pipeline/data/nobel/provenance.json` | yes |
 | SCOTUS justices dataset | `pipeline/data/scotus/people.jsonl` | yes |
 | SCOTUS provenance | `pipeline/data/scotus/provenance.json` | yes |
+| Governors dataset | `pipeline/data/governors/people.jsonl` | yes |
+| Governors provenance | `pipeline/data/governors/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

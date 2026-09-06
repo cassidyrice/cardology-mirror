@@ -80,6 +80,15 @@ bun run test:seo-mlb
 python3 -m pipeline.build_mlb
 ```
 
+Current US governors birth-card pages are an isolated build (`/governors/{slug}`),
+50 states only:
+
+```bash
+bun run build:seo-governors   # → seo-pages/dist-governors
+bun run test:seo-governors
+python3 -m pipeline.governors
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

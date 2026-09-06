@@ -7,6 +7,7 @@ seo-pages/dist-signers
 seo-pages/dist-nobel
 seo-pages/dist-scotus
 seo-pages/dist-mlb
+seo-pages/dist-governors
 .playwright-mcp/
 
 node_modules
