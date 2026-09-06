@@ -276,6 +276,22 @@ python3 -m pytest pipeline/tests/test_emmys.py
 Output: [`data/emmys/people.jsonl`](data/emmys/people.jsonl). Pages:
 `bun run build:seo-emmys`. Do not deploy.
 
+## NASA astronauts (isolated `/astronauts`)
+
+NASA Fact Book list of U.S. astronauts (flown / selected corps) plus
+Group 24 candidates. NASA biography pages are the public day. Wikidata
+`P569` precision 11 must match. Year-only dates and NASA↔Wikidata
+conflicts are dropped. Dates are never invented. Birth cards use this
+module's D1 rule. The celebrity `year_before_1900` cut is not applied.
+
+```bash
+python3 -m pipeline.astronauts
+python3 -m pytest pipeline/tests/test_astronauts.py
+```
+
+Output: [`data/astronauts/people.jsonl`](data/astronauts/people.jsonl). Pages:
+`bun run build:seo-astronauts`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

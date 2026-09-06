@@ -64,6 +64,9 @@ jobs:
       - name: Governors birth-card scaffold
         run: bun run build:seo-governors
 
+      - name: NASA astronaut birth-card scaffold
+        run: bun run build:seo-astronauts
+
       - name: Cabinet birth-card scaffold
         run: bun run build:seo-cabinet
 
@@ -121,6 +124,7 @@ jobs:
             seo-pages/scotus.test.ts \
             seo-pages/mlb.test.ts \
             seo-pages/governors.test.ts \
+            seo-pages/astronauts.test.ts \
             seo-pages/cabinet.test.ts \
             seo-pages/senators.test.ts \
             seo-pages/olympics-winter.test.ts \

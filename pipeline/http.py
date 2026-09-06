@@ -103,3 +103,46 @@ def fetch_text(
                 raise
             time.sleep(0.5 * (2**attempt))
     raise RuntimeError(f"failed to fetch {url}") from last_error
+
+
+def fetch_bytes(
+    url: str,
+    *,
+    cache_path: Path | None = None,
+    retries: int = 5,
+    timeout: float = 30.0,
+    sleep_s: float = 0.1,
+    extra_headers: dict[str, str] | None = None,
+) -> bytes:
+    """GET a URL as bytes (PDFs). Same retries/UA as fetch_text."""
+    if cache_path is not None and cache_path.is_file():
+        return cache_path.read_bytes()
+
+    last_error: Exception | None = None
+    headers = {"User-Agent": USER_AGENT}
+    if extra_headers:
+        headers.update(extra_headers)
+    for attempt in range(retries):
+        request = urllib.request.Request(url, headers=headers)
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                payload = response.read()
+            if cache_path is not None:
+                cache_path.parent.mkdir(parents=True, exist_ok=True)
+                cache_path.write_bytes(payload)
+            if sleep_s:
+                time.sleep(sleep_s)
+            return payload
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in {429, 500, 502, 503, 504} or attempt == retries - 1:
+                raise
+            retry_after = exc.headers.get("Retry-After") if exc.headers else None
+            delay = float(retry_after) if retry_after and retry_after.isdigit() else 0.5 * (2**attempt)
+            time.sleep(delay)
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last_error = exc
+            if attempt == retries - 1:
+                raise
+            time.sleep(0.5 * (2**attempt))
+    raise RuntimeError(f"failed to fetch {url}") from last_error

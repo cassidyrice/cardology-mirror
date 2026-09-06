@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -478,3 +478,26 @@ python3 -m pipeline.emmys # rewrite pipeline/data/emmys/people.jsonl
 - Dropped: year-only Wikipedia dates, Wikidata precision &lt; 11, Wikipedia↔Wikidata conflicts, minors, D3 keywords
 
 Path lock: [`emmys-path-ownership.json`](./emmys-path-ownership.json).
+
+## NASA astronauts (isolated `/astronauts`)
+
+Separate static build. Day-precision NASA astronaut biography dates
+verified against Wikidata `P569`. Does **not** take celebrity
+`/birth-card/{slug}` or live card-meaning routes. Does **not** join the
+Next.js app, does **not** touch checkout/Stripe, and must **not** be
+deployed. Path-split is documented only — not activated.
+
+```bash
+bun run build:seo-astronauts   # → seo-pages/dist-astronauts
+bun run test:seo-astronauts
+python3 -m pipeline.astronauts # rewrite pipeline/data/astronauts/people.jsonl
+```
+
+- Hub: `/astronauts`
+- Person: `/astronauts/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=astronauts&utm_content={slug}`
+- Data: `pipeline/data/astronauts/people.jsonl` (NASA Fact Book + NASA bios + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: year-only NASA dates, Wikidata precision &lt; 11, NASA↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`astronauts-path-ownership.json`](./astronauts-path-ownership.json).

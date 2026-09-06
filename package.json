@@ -42,6 +42,8 @@
     "test:seo-mlb": "bun test seo-pages/mlb.test.ts",
     "build:seo-governors": "bun seo-pages/src/governors/build.ts",
     "test:seo-governors": "bun test seo-pages/governors.test.ts",
+    "build:seo-astronauts": "bun seo-pages/src/astronauts/build.ts",
+    "test:seo-astronauts": "bun test seo-pages/astronauts.test.ts",
     "build:seo-cabinet": "bun seo-pages/src/cabinet/build.ts",
     "test:seo-cabinet": "bun test seo-pages/cabinet.test.ts",
     "build:seo-senators": "bun seo-pages/src/senators/build.ts",

@@ -82,7 +82,7 @@
       "/checkout",
       "/checkout/*"
     ],
-    "note": "US federal holiday birth-card set is isolated under /holidays. Fixed § 6103(a) dates only. It must not take celebrity person slugs or live card-meaning routes."
+    "note": "US federal holiday birth-card set is isolated under /holidays. Fixed \u00a7 6103(a) dates only. It must not take celebrity person slugs or live card-meaning routes."
   },
   "nobel_isolated": {
     "status": "scaffold-only-do-not-deploy",
@@ -275,5 +275,21 @@
       "/checkout/*"
     ],
     "note": "Winter Olympic multiple-medalist birth-card set is isolated under /olympics/winter. Wikipedia 8+ list + infobox dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes. Path-split is not activated."
+  },
+  "astronauts_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/astronauts",
+      "/astronauts/{slug}",
+      "/sitemap-astronauts.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "NASA astronaut birth-card set is isolated under /astronauts. Day-precision NASA bio dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes."
   }
 }
