@@ -291,12 +291,14 @@ def write_wikidata_overlay(
     entities: dict[str, dict],
     lookup_titles: list[str],
     out_path: Path,
+    aliases: dict[str, str] | None = None,
 ) -> list[str]:
     """Write seed-join JSONL from wbgetentities results. Returns unmatched titles."""
 
     def normalize(title: str) -> str:
         return title.replace("_", " ").strip().lower()
 
+    aliases = aliases or {}
     by_sitelink: dict[str, dict] = {}
     for entity in entities.values():
         if not entity or entity.get("missing") is not None:
@@ -309,7 +311,9 @@ def write_wikidata_overlay(
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with out_path.open("w", encoding="utf-8") as handle:
         for title in lookup_titles:
-            entity = by_sitelink.get(normalize(title))
+            entity = by_sitelink.get(normalize(aliases.get(title, title))) or by_sitelink.get(
+                normalize(title)
+            )
             if entity is None:
                 unmatched.append(title)
                 continue
@@ -459,11 +463,28 @@ def build_from_seed(
         validate_seed_csv_columns(reader.fieldnames)
         for csv_row in reader:
             name = (csv_row.get("name") or "").strip()
-            slug = (csv_row.get("slug") or slugify(name)).strip()
-            joined = _merge_seed_records(
-                _join_seed(csv_row, extra_psv_index),
-                _join_seed(csv_row, psv_index),
-            )
+            slug = slugify(csv_row.get("slug") or name)
+            extra = _join_seed(csv_row, extra_psv_index)
+            seed_rec = _join_seed(csv_row, psv_index)
+            joined = _merge_seed_records(extra, seed_rec)
+            if extra and joined:
+                extra_birth = (extra.get("p569") or "").strip()
+                seed_birth = (joined.get("p569") or csv_row.get("birth_date") or "").strip()
+                if extra_birth and seed_birth and extra_birth != seed_birth:
+                    warnings.append(
+                        {
+                            "qid": extra.get("qid") or "",
+                            "name": name,
+                            "seed_birth_date": seed_birth,
+                            "wikidata_birth_date": extra_birth,
+                            "reason": "wikidata_birth_mismatch",
+                        }
+                    )
+                    joined = {
+                        key: value
+                        for key, value in joined.items()
+                        if key not in {"qid", "en_description", "enwiki_title", "p18", "p26", "p106"}
+                    }
             if joined is None:
                 excluded.append(
                     {
@@ -705,6 +726,39 @@ def main(argv: list[str] | None = None) -> int:
             titles = titles_from_seed(csv_path, psv_path)
             entities = fetch_titles(titles, args.wikidata_cache)
             unmatched = write_wikidata_overlay(entities, titles, args.wikidata_people)
+            if unmatched:
+                recovered_titles: list[str] = []
+                recovered_lookup: list[str] = []
+                recovered_aliases: dict[str, str] = {}
+                still_unmatched: list[str] = []
+                for title in unmatched:
+                    try:
+                        preview = fetch_summary(title, cache_dir=Path("pipeline/data/cache/summaries"))
+                    except Exception:
+                        still_unmatched.append(title)
+                        continue
+                    canonical = (preview.get("title") or "").strip()
+                    if not canonical:
+                        still_unmatched.append(title)
+                        continue
+                    recovered_lookup.append(title)
+                    recovered_titles.append(canonical)
+                    recovered_aliases[title] = canonical
+                if recovered_titles:
+                    recovered_entities = fetch_titles(recovered_titles, args.wikidata_cache)
+                    more_unmatched = write_wikidata_overlay(
+                        recovered_entities,
+                        recovered_lookup,
+                        args.wikidata_people.with_suffix(".recovered.jsonl"),
+                        aliases=recovered_aliases,
+                    )
+                    recovered_path = args.wikidata_people.with_suffix(".recovered.jsonl")
+                    if recovered_path.is_file():
+                        existing = args.wikidata_people.read_text(encoding="utf-8")
+                        extra = recovered_path.read_text(encoding="utf-8")
+                        args.wikidata_people.write_text(existing + extra, encoding="utf-8")
+                    still_unmatched.extend(more_unmatched)
+                unmatched = still_unmatched
             if unmatched:
                 fail_path = args.wikidata_people.with_suffix(".unmatched.json")
                 fail_path.write_text(json.dumps(unmatched, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
