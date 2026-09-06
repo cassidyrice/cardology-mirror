@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
@@ -27,7 +28,7 @@ import {
 } from "@/lib/seo-cards";
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
-import { famousBirthdayLabel, famousForCard } from "@/lib/famous-birthdays";
+import { famousForCard } from "@/lib/famous-birthdays";
 import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -404,23 +405,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </Section>
       )}
 
-      {famous.length > 0 && (
-        <Section title={`Famous people born under the ${card.label}`}>
-          <p>
-            Birthdays are public record and the card is fixed by the date, so this list is a fact about the
-            calendar rather than a reading. Use it to test the pattern against people you already know something about.
-          </p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {famous.map((f) => (
-              <li key={f.wikipedia} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-sm">
-                <a href={f.wikipedia} rel="noopener" className="font-medium text-bone underline underline-offset-4">{f.name}</a>
-                <span className="text-mist"> — {f.known_for}</span>
-                <span className="block text-xs text-faint">born {famousBirthdayLabel(f.born)}</span>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
+      <FamousPeopleBlock cardLabel={card.label} people={famous} />
 
       {/* The diagonal is the system's most legible proof that this is a
           structure and not a lookup table, so it is derived here rather than

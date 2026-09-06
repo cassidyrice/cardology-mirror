@@ -43,7 +43,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
 };
 
 /** Shared reviewed date for all 52 birth-card meaning pages (and Joker). */
-export const CARD_MEANING_PAGES_UPDATED = "2026-08-15";
+export const CARD_MEANING_PAGES_UPDATED = "2026-09-06";
 
 export function pageUpdatedForPath(path: string): string {
   return PAGE_UPDATED_DATES[path as keyof typeof PAGE_UPDATED_DATES] ?? FALLBACK_PAGE_UPDATED;

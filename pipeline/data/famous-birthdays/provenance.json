@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-09-06T21:20:37.328241+00:00",
+  "catalog": 309,
+  "kept": 309,
+  "excluded": 0,
+  "cards": 53,
+  "cards_with_people": 53,
+  "by_reason": {},
+  "exclusions": [],
+  "sources": [
+    "Editorial Famous people list on /birth-card/{rank}-of-{suit} (lib/famous-birthdays.json)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "English Wikipedia sitelink (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused. Card is the page path.",
+  "rules": {
+    "keep": "Listed YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match AND date maps to the page card",
+    "drop": [
+      "year_only (listed born missing month/day)",
+      "dob_conflict (listed day ≠ Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "missing_qid (Wikipedia title did not resolve)",
+      "card_mismatch (verified day maps to a different card)",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_cut": false
+  }
+}

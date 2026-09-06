@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
+import { famousForCard } from "@/lib/famous-birthdays";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -136,6 +138,8 @@ export default function JokerPage() {
           birthdate before any money changes hands.
         </p>
       </section>
+
+      <FamousPeopleBlock cardLabel="Joker" people={famousForCard("Joker")} />
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The two rarest ordinary birthdays</h2>

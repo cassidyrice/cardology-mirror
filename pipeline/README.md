@@ -292,6 +292,23 @@ python3 -m pytest pipeline/tests/test_astronauts.py
 Output: [`data/astronauts/people.jsonl`](data/astronauts/people.jsonl). Pages:
 `bun run build:seo-astronauts`. Do not deploy.
 
+## Birth-card Famous people grounding (existing `/birth-card` pages)
+
+Verifies the editorial Famous people list on the 52 card-meaning pages
+plus `/birth-card/joker`. Wikidata `P569` day-precision must match the
+listed birthday. Year-only dates, conflicts, minors, and D3 keywords are
+dropped. Dates are never invented. The celebrity `year_before_1900` cut
+is **not** applied. This is not a new path and not an isolated scaffold.
+
+```bash
+python3 -m pipeline.famous_birthdays
+python3 -m pytest pipeline/tests/test_famous_birthdays.py
+```
+
+Writes [`../lib/famous-birthdays.json`](../lib/famous-birthdays.json) and
+[`data/famous-birthdays/provenance.json`](data/famous-birthdays/provenance.json).
+Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the
