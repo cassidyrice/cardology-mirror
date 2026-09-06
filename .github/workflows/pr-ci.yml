@@ -34,6 +34,9 @@ jobs:
       #   (explicit opt-in check that requires production network access)
       # - bun run build
       #   (Next.js build may require env vars unavailable in PR CI)
+      - name: Celebrity SEO scaffold
+        run: bun run build:seo-pages
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -58,7 +61,8 @@ jobs:
             scripts/card-meaning-equity.test.ts \
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
-            scripts/worker-production-contract-lib.test.ts
+            scripts/worker-production-contract-lib.test.ts \
+            seo-pages/seo-pages.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

@@ -1,3 +1,6 @@
+seo-pages/dist
+.playwright-mcp/
+
 node_modules
 .next
 .vercel

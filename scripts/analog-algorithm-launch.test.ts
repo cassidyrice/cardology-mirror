@@ -15,10 +15,13 @@ describe("The Analog Algorithm launch contract", () => {
   });
 
   test("does not present the sales page as closed", () => {
-    const page = readFileSync(new URL("../app/products/analog-algorithm/page.tsx", import.meta.url), "utf8");
-    expect(page).not.toContain("coming soon");
-    expect(page).not.toContain("No purchase is being accepted yet");
-    expect(page).toContain('href={`/checkout/${book.slug}`}');
+    const middleware = readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
+    expect(middleware).toContain(
+      '"/products/analog-algorithm": "/products/birth-card-deep-dive"',
+    );
+    expect(middleware).toContain(
+      '"/checkout/analog-algorithm": "/products/birth-card-deep-dive"',
+    );
   });
 
   test("keeps the launch price and asset name synchronized", () => {
