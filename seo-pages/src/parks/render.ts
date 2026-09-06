@@ -119,7 +119,7 @@ export function renderParksHub(parks: readonly ParkPage[]): string {
       </p>
     </section>
 
-    ${sourcesBlock(parks[0])}
+    ${hubSourcesBlock(parks[0])}
   `;
 
   return renderLayout({
@@ -306,10 +306,23 @@ function coordinateBanner(): string {
   return `<p class="method-banner" data-brand="coordinates" role="note">Coordinates, not fortune-telling. Each page maps the documented Date established as National Park (month + day) to a birth card. Year is unused. First monument and other earlier designations are cited, not mapped.</p>`;
 }
 
-function sourcesBlock(park: ParkPage | undefined): string {
+function hubSourcesBlock(park: ParkPage | undefined): string {
   if (!park) {
-    throw new Error("sourcesBlock requires a park row for attribution URLs");
+    throw new Error("hubSourcesBlock requires a park row for attribution URLs");
   }
+  return `<p class="sources" data-slot="sources">
+      Sources: Wikipedia CC BY-SA 4.0
+      (<a href="${escapeHtml(park.wikipedia_list_url)}">${escapeHtml(park.wikipedia_list)}</a>,
+      column “${escapeHtml(park.wikipedia_list_column)}”,
+      retrieved ${escapeHtml(park.wikipedia_retrieved)})
+      + NPS Park Anniversaries footnotes
+      (<a href="${escapeHtml(park.nps_anniversaries_url)}">nps.gov</a>,
+      retrieved ${escapeHtml(park.nps_anniversaries_retrieved)}).
+      Dates are not invented.
+    </p>`;
+}
+
+function sourcesBlock(park: ParkPage): string {
   return `<p class="sources" data-slot="sources">
       Sources: Wikipedia CC BY-SA 4.0
       (<a href="${escapeHtml(park.wikipedia_list_url)}">${escapeHtml(park.wikipedia_list)}</a>,
