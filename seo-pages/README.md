@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Rock Hall pages use `utm_source=rock-hall&utm_content={slug}`. Pulitzer Fiction pages use `utm_source=pulitzer-fiction&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Astronaut pages use `utm_source=astronauts&utm_content={slug}`. Born-on day pages use `utm_source=born-on&utm_content={slug}`. Grammy Album of the Year pages use `utm_source=grammy-aoty&utm_content={slug}`. Rock Hall pages use `utm_source=rock-hall&utm_content={slug}`. Pulitzer Fiction pages use `utm_source=pulitzer-fiction&utm_content={slug}`. House leadership and standing-chair pages use `utm_source=house-chairs&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -623,3 +623,28 @@ python3 -m pipeline.pulitzer_fiction # rewrite pipeline/data/pulitzer_fiction/pe
 - Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, missing days, minors, D3 keywords
 
 Path lock: [`pulitzer-fiction-path-ownership.json`](./pulitzer-fiction-path-ownership.json).
+
+## US House leadership + standing chairs (isolated `/house-chairs`)
+
+Separate static build. house.gov/leadership plus the 20 standing
+committee chairs. Day-precision Wikipedia infobox dates must match
+Bioguide / congress-legislators and Wikidata `P569`. Does **not** take
+celebrity `/birth-card/{slug}` or live card-meaning routes. Does **not**
+join the Next.js app, does **not** touch checkout/Stripe, and must
+**not** be deployed. Path-split is documented only — not activated.
+
+```bash
+bun run build:seo-house-chairs   # → seo-pages/dist-house-chairs
+bun run test:seo-house-chairs
+python3 -m pipeline.house_chairs # rewrite pipeline/data/house_chairs/people.jsonl
+```
+
+- Hub: `/house-chairs`
+- Person: `/house-chairs/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=house-chairs&utm_content={slug}`
+- Data: `pipeline/data/house_chairs/people.jsonl` (house.gov + congress-legislators + Bioguide + Wikipedia infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Scope: elected House leadership on house.gov/leadership + standing chairs only.
+- Dropped: select/campaign committees, year-only dates, Wikipedia↔Bioguide↔Wikidata day conflicts, missing days, minors, D3 keywords
+
+Path lock: [`house-chairs-path-ownership.json`](./house-chairs-path-ownership.json).
