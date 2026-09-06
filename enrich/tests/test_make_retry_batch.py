@@ -60,5 +60,5 @@ def test_retry_batch_matches_current_retry_qids_and_avoids_enriched(tmp_path: Pa
     assert result["missing_in_people"] == []
     assert batch_qids == retry_qids
     assert batch_qids.isdisjoint(enriched_qids)
-    assert len(retry_qids) == 18
-    assert len(enriched_qids) == 1040
+    assert len(retry_qids) == 0
+    assert len(enriched_qids) == 1058
