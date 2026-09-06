@@ -1,0 +1,1393 @@
+{
+  "generated_at": "2026-09-06T21:00:36.551224+00:00",
+  "people_count": 221,
+  "catalog_count": 371,
+  "fact_book_url": "https://www.nasa.gov/reference/astronaut-fact-book/",
+  "candidates_url": "https://www.nasa.gov/humans-in-space/astronauts/astronaut-candidates/",
+  "nasa_bios_matched": 371,
+  "kept": 221,
+  "excluded": 150,
+  "by_reason": {
+    "missing_birth": 131,
+    "missing_qid": 8,
+    "year_only": 9,
+    "dob_conflict": 1,
+    "wikidata_precision": 1
+  },
+  "exclusions": [
+    {
+      "qid": "Q136358206",
+      "name": "Adam Fuhrmann",
+      "slug": "adam-fuhrmann",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q310924",
+      "name": "Alan L. Bean",
+      "slug": "alan-l-bean",
+      "status": "Deceased",
+      "group": "3",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q539385",
+      "name": "Alfred M. Worden",
+      "slug": "alfred-m-worden",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109953238",
+      "name": "Andre Douglas",
+      "slug": "andre-douglas",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q505530",
+      "name": "Andrew J. Feustel",
+      "slug": "andrew-j-feustel",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13500735",
+      "name": "Andrew R. Morgan",
+      "slug": "andrew-r-morgan",
+      "status": "Former",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109950137",
+      "name": "Anil S. Menon",
+      "slug": "anil-s-menon",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Anna L. Fisher",
+      "slug": "anna-l-fisher",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "1949-08-24",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q110916349",
+      "name": "Anna Menon",
+      "slug": "anna-menon",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13500570",
+      "name": "Anne C. McClain",
+      "slug": "anne-c-mcclain",
+      "status": "Active",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q554409",
+      "name": "Barry E. Wilmore",
+      "slug": "barry-e-wilmore",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136365925",
+      "name": "Ben Bailey",
+      "slug": "ben-bailey",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q540108",
+      "name": "Bruce E. Melnick",
+      "slug": "bruce-e-melnick",
+      "status": "Former",
+      "group": "12",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q136357496",
+      "name": "Cameron Jones",
+      "slug": "cameron-jones",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q704355",
+      "name": "Charles A. Bassett II",
+      "slug": "charles-a-bassett-ii",
+      "status": "Deceased",
+      "group": "3",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q25011",
+      "name": "Charles F. Bolden Jr.",
+      "slug": "charles-f-bolden-jr",
+      "status": "Former",
+      "group": "9",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q519268",
+      "name": "Charles G. Fullerton",
+      "slug": "charles-g-fullerton",
+      "status": "Deceased",
+      "group": "7",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q45080",
+      "name": "Charles J. Camarda",
+      "slug": "charles-j-camarda",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q112284",
+      "name": "Charles M. Duke Jr.",
+      "slug": "charles-m-duke-jr",
+      "status": "Former",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q29650",
+      "name": "Charles O. Hobaugh",
+      "slug": "charles-o-hobaugh",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "1961-11-06",
+      "reason": "dob_conflict"
+    },
+    {
+      "qid": "Q13500192",
+      "name": "Christina Hammock Koch",
+      "slug": "christina-hammock-koch",
+      "status": "Active",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q52046",
+      "name": "Christopher J. Cassidy",
+      "slug": "christopher-j-cassidy",
+      "status": "Former",
+      "group": "19",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q109969080",
+      "name": "Christopher L. Williams",
+      "slug": "christopher-l-williams",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Curtis L. Brown Jr.",
+      "slug": "curtis-l-brown-jr",
+      "status": "Former",
+      "group": "12",
+      "nasa_birth": "1956-03-11",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q109953976",
+      "name": "Deniz M. Burnham",
+      "slug": "deniz-m-burnham",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q440266",
+      "name": "Dominic A. Antonelli",
+      "slug": "dominic-a-antonelli",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q707626",
+      "name": "Don L. Lind",
+      "slug": "don-l-lind",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q557058",
+      "name": "Donald H. Peterson",
+      "slug": "donald-h-peterson",
+      "status": "Deceased",
+      "group": "7",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3625307",
+      "name": "Donald L. Holmquest",
+      "slug": "donald-l-holmquest",
+      "status": "Former",
+      "group": "6",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q363250",
+      "name": "Donald R. Pettit",
+      "slug": "donald-r-pettit",
+      "status": "Active",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q449706",
+      "name": "Donn F . Eisele",
+      "slug": "donn-f-eisele",
+      "status": "Deceased",
+      "group": "3",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q74015",
+      "name": "Dorothy Metcalf-Lindenburger",
+      "slug": "dorothy-metcalf-lindenburger",
+      "status": "Former",
+      "group": "19",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q461860",
+      "name": "Douglas H. Wheelock",
+      "slug": "douglas-h-wheelock",
+      "status": "Active",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q362261",
+      "name": "E. Michael Fincke",
+      "slug": "e-michael-fincke",
+      "status": "Active",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Edward G. Gibson",
+      "slug": "edward-g-gibson",
+      "status": "Former",
+      "group": "4",
+      "nasa_birth": "1936-11-08",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q216726",
+      "name": "Edward H. White II",
+      "slug": "edward-h-white-ii",
+      "status": "Deceased",
+      "group": "2",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q49269",
+      "name": "Ellen Ochoa",
+      "slug": "ellen-ochoa",
+      "status": "Former",
+      "group": "13",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q621462",
+      "name": "Elliot M. See Jr.",
+      "slug": "elliot-m-see-jr",
+      "status": "Deceased",
+      "group": "2",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136351727",
+      "name": "Erin Overcash",
+      "slug": "erin-overcash",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q158486",
+      "name": "Eugene A. Cernan",
+      "slug": "eugene-a-cernan",
+      "status": "Deceased",
+      "group": "3",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q18762",
+      "name": "Frank Borman",
+      "slug": "frank-borman",
+      "status": "Deceased",
+      "group": "2",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30315159",
+      "name": "Frank Rubio",
+      "slug": "frank-rubio",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q318965",
+      "name": "Fred W. Haise Jr.",
+      "slug": "fred-w-haise-jr",
+      "status": "Former",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3116390",
+      "name": "G. Reid Wiseman",
+      "slug": "g-reid-wiseman",
+      "status": "Active",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "George D. Nelson",
+      "slug": "george-d-nelson",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "1950-07-13",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q447334",
+      "name": "George D. Zamka",
+      "slug": "george-d-zamka",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q644837",
+      "name": "Gerald P. Carr",
+      "slug": "gerald-p-carr",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q722106",
+      "name": "Gregory C. Johnson",
+      "slug": "gregory-c-johnson",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q461872",
+      "name": "Gregory E. Chamitoff",
+      "slug": "gregory-e-chamitoff",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q528943",
+      "name": "Guion S. Bluford Jr.",
+      "slug": "guion-s-bluford-jr",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q460161",
+      "name": "Henry W. Hartsfield Jr.",
+      "slug": "henry-w-hartsfield-jr",
+      "status": "Deceased",
+      "group": "7",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136357234",
+      "name": "Imelda Muller",
+      "slug": "imelda-muller",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3157177",
+      "name": "Jack D. Fischer",
+      "slug": "jack-d-fischer",
+      "status": "Former",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109968900",
+      "name": "Jack Hathaway",
+      "slug": "jack-hathaway",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q111240",
+      "name": "James A. Lovell Jr.",
+      "slug": "james-a-lovell-jr",
+      "status": "Deceased",
+      "group": "2",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q739214",
+      "name": "James F. Reilly II",
+      "slug": "james-f-reilly-ii",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q24083",
+      "name": "James M. Kelly",
+      "slug": "james-m-kelly",
+      "status": "Management",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q74018",
+      "name": "James P. Dutton Jr.",
+      "slug": "james-p-dutton-jr",
+      "status": "Former",
+      "group": "19",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q265261",
+      "name": "Janet L. Kavandi",
+      "slug": "janet-l-kavandi",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30157740",
+      "name": "Jasmin Moghbeli",
+      "slug": "jasmin-moghbeli",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3175883",
+      "name": "Jeanette J. Epps",
+      "slug": "jeanette-j-epps",
+      "status": "Former",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Jeffery N. Williams",
+      "slug": "jeffery-n-williams",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "1958-01-18",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q1345924",
+      "name": "Jeffrey S. Ashby",
+      "slug": "jeffrey-s-ashby",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109954037",
+      "name": "Jessica A. Wittner",
+      "slug": "jessica-a-wittner",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q4795114",
+      "name": "Jessica U. Meir",
+      "slug": "jessica-u-meir",
+      "status": "Active",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30202712",
+      "name": "Jessica Watkins",
+      "slug": "jessica-watkins",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q41597",
+      "name": "Joan E. Higginbotham",
+      "slug": "joan-e-higginbotham",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q374034",
+      "name": "Joe H. Engle",
+      "slug": "joe-h-engle",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q6245018",
+      "name": "John A. Llewellyn",
+      "slug": "john-a-llewellyn",
+      "status": "Deceased",
+      "group": "6",
+      "nasa_birth": "1933-04-22",
+      "reason": "wikidata_precision"
+    },
+    {
+      "qid": "Q471513",
+      "name": "John D. Olivas",
+      "slug": "john-d-olivas",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q1338925",
+      "name": "John H. Casper",
+      "slug": "john-h-casper",
+      "status": "Former",
+      "group": "10",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q348358",
+      "name": "John L. Swigert Jr.",
+      "slug": "john-l-swigert-jr",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q362209",
+      "name": "John M. Grunsfeld",
+      "slug": "john-m-grunsfeld",
+      "status": "Former",
+      "group": "14",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q718729",
+      "name": "John O. Creighton",
+      "slug": "john-o-creighton",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q107667",
+      "name": "John W. Young",
+      "slug": "john-w-young",
+      "status": "Deceased",
+      "group": "2",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30157738",
+      "name": "Jonny Kim",
+      "slug": "jonny-kim",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q318934",
+      "name": "Joseph M. Acaba",
+      "slug": "joseph-m-acaba",
+      "status": "Management",
+      "group": "19",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q443994",
+      "name": "Joseph P. Allen",
+      "slug": "joseph-p-allen",
+      "status": "Former",
+      "group": "6",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q260329",
+      "name": "Joseph R. Tanner",
+      "slug": "joseph-r-tanner",
+      "status": "Former",
+      "group": "14",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13484630",
+      "name": "Josh A. Cassada",
+      "slug": "josh-a-cassada",
+      "status": "Former",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q240701",
+      "name": "K. Megan McArthur",
+      "slug": "k-megan-mcarthur",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q237879",
+      "name": "Kalpana Chawla",
+      "slug": "kalpana-chawla",
+      "status": "Deceased",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q180499",
+      "name": "Karol J. Bobko",
+      "slug": "karol-j-bobko",
+      "status": "Deceased",
+      "group": "7",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136357484",
+      "name": "Katherine Spies",
+      "slug": "katherine-spies",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3194085",
+      "name": "Kathleen (Kate) Rubins",
+      "slug": "kathleen-kate-rubins",
+      "status": "Former",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q41606",
+      "name": "Kathryn P. Hire",
+      "slug": "kathryn-p-hire",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Kathryne D. Thornton",
+      "slug": "kathryne-d-thornton",
+      "status": "Former",
+      "group": "10",
+      "nasa_birth": "1952-08-17",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q30157819",
+      "name": "Kayla Barron",
+      "slug": "kayla-barron",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q920936",
+      "name": "Kenneth D. Bowersox",
+      "slug": "kenneth-d-bowersox",
+      "status": "Former",
+      "group": "12",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q378952",
+      "name": "Kenneth D. Cameron",
+      "slug": "kenneth-d-cameron",
+      "status": "Former",
+      "group": "10",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3197699",
+      "name": "Kjell N. Lindgren",
+      "slug": "kjell-n-lindgren",
+      "status": "Management",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q312833",
+      "name": "L. Gordon Cooper Jr.",
+      "slug": "l-gordon-cooper-jr",
+      "status": "Deceased",
+      "group": "1",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q232441",
+      "name": "Laurel B. Clark",
+      "slug": "laurel-b-clark",
+      "status": "Deceased",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q59676175",
+      "name": "Lauren Edgar",
+      "slug": "lauren-edgar",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30157742",
+      "name": "Loral O\u2019Hara",
+      "slug": "loral-o-hara",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q717641",
+      "name": "Loren J. Shriver",
+      "slug": "loren-j-shriver",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109968497",
+      "name": "Luke Delaney",
+      "slug": "luke-delaney",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q62030546",
+      "name": "M. Christina Birch",
+      "slug": "m-christina-birch",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q335503",
+      "name": "M. Scott Carpenter",
+      "slug": "m-scott-carpenter",
+      "status": "Deceased",
+      "group": "1",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q109952432",
+      "name": "Marcos G. Berr\u00edos",
+      "slug": "marcos-g-berrios",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q1899032",
+      "name": "Mario Runco Jr.",
+      "slug": "mario-runco-jr",
+      "status": "Former",
+      "group": "12",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q357510",
+      "name": "Mark E. Kelly",
+      "slug": "mark-e-kelly",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3294252",
+      "name": "Mark T. Vande Hei",
+      "slug": "mark-t-vande-hei",
+      "status": "Active",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q268912",
+      "name": "Mary E. Weber",
+      "slug": "mary-e-weber",
+      "status": "Former",
+      "group": "14",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q30157793",
+      "name": "Matthew Dominick",
+      "slug": "matthew-dominick",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q104859",
+      "name": "Michael Collins",
+      "slug": "michael-collins",
+      "status": "Deceased",
+      "group": "3",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q32295",
+      "name": "Michael J. Massimino",
+      "slug": "michael-j-massimino",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q440251",
+      "name": "Michael R. Barratt",
+      "slug": "michael-r-barratt",
+      "status": "Active",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3030934",
+      "name": "Michael S . Hopkins",
+      "slug": "michael-s-hopkins",
+      "status": "Former",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q706965",
+      "name": "Michael T. Good",
+      "slug": "michael-t-good",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q706899",
+      "name": "Nicholas J.M. Patrick",
+      "slug": "nicholas-j-m-patrick",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q109952150",
+      "name": "Nichole Ayers",
+      "slug": "nichole-ayers",
+      "status": "Active",
+      "group": "23",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13500573",
+      "name": "Nicole Aunapu Mann",
+      "slug": "nicole-aunapu-mann",
+      "status": "Active",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Nicole P. Scott",
+      "slug": "nicole-p-scott",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q239960",
+      "name": "Pamela A. Melroy",
+      "slug": "pamela-a-melroy",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q536632",
+      "name": "Paul J. Weitz",
+      "slug": "paul-j-weitz",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q24094",
+      "name": "Paul W. Richards",
+      "slug": "paul-w-richards",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30157792",
+      "name": "Raja Chari",
+      "slug": "raja-chari",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q722127",
+      "name": "Randolph J. Bresnik",
+      "slug": "randolph-j-bresnik",
+      "status": "Active",
+      "group": "19",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136357435",
+      "name": "Rebecca Lawler",
+      "slug": "rebecca-lawler",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q442233",
+      "name": "Richard H. Truly",
+      "slug": "richard-h-truly",
+      "status": "Former",
+      "group": "7",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q520618",
+      "name": "Richard M. Linnehan",
+      "slug": "richard-m-linnehan",
+      "status": "Former",
+      "group": "14",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q462853",
+      "name": "Richard R. Arnold II",
+      "slug": "richard-r-arnold-ii",
+      "status": "Former",
+      "group": "19",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q534597",
+      "name": "Robert A. Parker",
+      "slug": "robert-a-parker",
+      "status": "Former",
+      "group": "6",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q1338436",
+      "name": "Robert D . Cabana",
+      "slug": "robert-d-cabana",
+      "status": "Former",
+      "group": "11",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q523835",
+      "name": "Robert L. Behnken",
+      "slug": "robert-l-behnken",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Robert L. Stewert",
+      "slug": "robert-l-stewert",
+      "status": "Former",
+      "group": "8",
+      "nasa_birth": "1942-08-13",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q30611798",
+      "name": "Robert T. Hines",
+      "slug": "robert-t-hines",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q1338950",
+      "name": "Roy D. Bridges Jr.",
+      "slug": "roy-d-bridges-jr",
+      "status": "Former",
+      "group": "9",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3476196",
+      "name": "Scott D. Tingle",
+      "slug": "scott-d-tingle",
+      "status": "Management",
+      "group": "20",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q240708",
+      "name": "Shannon Walker",
+      "slug": "shannon-walker",
+      "status": "Former",
+      "group": "19",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q55178",
+      "name": "Stephanie D. Wilson",
+      "slug": "stephanie-d-wilson",
+      "status": "Active",
+      "group": "16",
+      "nasa_birth": "year_only",
+      "reason": "year_only"
+    },
+    {
+      "qid": "Q463086",
+      "name": "Stephen G . Bowen",
+      "slug": "stephen-g-bowen",
+      "status": "Active",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q32305",
+      "name": "Stephen N. Frick",
+      "slug": "stephen-n-frick",
+      "status": "Former",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Steven L. Smith",
+      "slug": "steven-l-smith",
+      "status": "Former",
+      "group": "14",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q537279",
+      "name": "Steven R. Swanson",
+      "slug": "steven-r-swanson",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q55177",
+      "name": "Sunita L. Williams",
+      "slug": "sunita-l-williams",
+      "status": "Former",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q48998",
+      "name": "Susan L. Kilrain (Still)",
+      "slug": "susan-l-kilrain-still",
+      "status": "Former",
+      "group": "15",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q554415",
+      "name": "Terry W. Virts Jr.",
+      "slug": "terry-w-virts-jr",
+      "status": "Former",
+      "group": "18",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q318513",
+      "name": "Thomas K. Mattingly II",
+      "slug": "thomas-k-mattingly-ii",
+      "status": "Deceased",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q21767",
+      "name": "Tracy C. Dyson",
+      "slug": "tracy-c-dyson",
+      "status": "Active",
+      "group": "17",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13492872",
+      "name": "Tyler N. Hague",
+      "slug": "tyler-n-hague",
+      "status": "Former",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q463833",
+      "name": "Vance D. Brand",
+      "slug": "vance-d-brand",
+      "status": "Former",
+      "group": "5",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q13499227",
+      "name": "Victor J. Glover",
+      "slug": "victor-j-glover",
+      "status": "Active",
+      "group": "21",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": null,
+      "name": "Virgil I. Grissom",
+      "slug": "virgil-i-grissom",
+      "status": "Deceased",
+      "group": "1",
+      "nasa_birth": "1926-04-03",
+      "reason": "missing_qid"
+    },
+    {
+      "qid": "Q30157794",
+      "name": "Warren Hoburg",
+      "slug": "warren-hoburg",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q719926",
+      "name": "William E. Thornton",
+      "slug": "william-e-thornton",
+      "status": "Deceased",
+      "group": "6",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q136358152",
+      "name": "Yuri Kubo",
+      "slug": "yuri-kubo",
+      "status": "Candidate",
+      "group": "24",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q3574186",
+      "name": "Yvonne D. Cagle",
+      "slug": "yvonne-d-cagle",
+      "status": "Management",
+      "group": "16",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    },
+    {
+      "qid": "Q30157791",
+      "name": "Zena Cardman",
+      "slug": "zena-cardman",
+      "status": "Active",
+      "group": "22",
+      "nasa_birth": "missing",
+      "reason": "missing_birth"
+    }
+  ],
+  "sources": [
+    "NASA Astronaut Fact Book list of U.S. astronauts (https://www.nasa.gov/reference/astronaut-fact-book/)",
+    "NASA astronaut candidate class page (https://www.nasa.gov/humans-in-space/astronauts/astronaut-candidates/)",
+    "NASA astronaut biography pages (https://www.nasa.gov/astronauts)",
+    "Wikidata P569 day-precision verify (CC0, Gregorian preferred)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "rules": {
+    "keep": "NASA bio YYYY-MM-DD AND Wikidata P569 precision=11 AND dates match",
+    "drop": [
+      "year_only (NASA bio year without month/day)",
+      "dob_conflict (NASA bio day \u2260 Wikidata P569 day)",
+      "wikidata_precision (P569 missing or < 11)",
+      "missing_birth / missing_nasa_bio",
+      "minor (under 18)",
+      "description_keyword (D3: serial killer / murderer / terrorist / dictator)",
+      "missing Wikipedia summary",
+      "missing QID / Wikidata entity"
+    ],
+    "do_not_invent_dates": true,
+    "year_before_1900_applied": false
+  },
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}
