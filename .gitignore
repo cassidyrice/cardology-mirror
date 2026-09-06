@@ -10,6 +10,7 @@ seo-pages/dist-scotus
 seo-pages/dist-mlb
 seo-pages/dist-governors
 seo-pages/dist-senators
+seo-pages/dist-olympics-winter
 .playwright-mcp/
 
 node_modules

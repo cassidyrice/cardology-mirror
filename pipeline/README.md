@@ -190,6 +190,23 @@ python3 -m pytest pipeline/tests/test_senators.py
 Output: [`data/senators/people.jsonl`](data/senators/people.jsonl). Pages:
 `bun run build:seo-senators`. Do not deploy.
 
+## Winter Olympic medalists (isolated `/olympics/winter`)
+
+Athletes on Wikipedia’s list of multiple Winter Olympic medalists
+(primary table: **at least eight** medals). Wikipedia infobox birth-date
+templates are the public day. Wikidata `P569` precision 11 must match.
+Year-only dates, Wikipedia↔Wikidata conflicts, minors, and D3 keywords
+are dropped. The one-event table on the same page is omitted. Birth
+cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.olympics.winter
+python3 -m pytest pipeline/tests/test_winter_olympics.py
+```
+
+Output: [`data/olympics/winter/people.jsonl`](data/olympics/winter/people.jsonl).
+Pages: `bun run build:seo-olympics-winter`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

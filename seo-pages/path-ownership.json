@@ -195,5 +195,21 @@
       "/checkout/*"
     ],
     "note": "Declaration signers birth-card set is isolated under /signers. Verified subset only. It must not take celebrity person slugs or live card-meaning routes."
+  },
+  "olympics_winter_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/olympics/winter",
+      "/olympics/winter/{slug}",
+      "/sitemap-olympics-winter.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Winter Olympic multiple-medalist birth-card set is isolated under /olympics/winter. Wikipedia 8+ list + infobox dates verified against Wikidata P569. It must not take celebrity person slugs or live card-meaning routes. Path-split is not activated."
   }
 }

@@ -46,6 +46,8 @@
     "test:seo-cabinet": "bun test seo-pages/cabinet.test.ts",
     "build:seo-senators": "bun seo-pages/src/senators/build.ts",
     "test:seo-senators": "bun test seo-pages/senators.test.ts",
+    "build:seo-olympics-winter": "bun seo-pages/src/olympics/winter/build.ts",
+    "test:seo-olympics-winter": "bun test seo-pages/olympics-winter.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
