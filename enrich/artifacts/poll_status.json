@@ -1,44 +1,50 @@
 {
-  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/5794641920097517568",
-  "numeric_job_id": "5794641920097517568",
-  "display_name": "cardology-wp3-enrich-20260906T195322Z",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
+  "numeric_job_id": "1673848261053513728",
+  "display_name": "cardology-wp3-enrich-20260906T200230Z",
   "job_state": "JOB_STATE_SUCCEEDED",
   "error": null,
   "predictions_ready": true,
-  "predictions_downloaded": 18,
+  "predictions_downloaded": 1079,
   "completion_stats": {
-    "successfulCount": "18"
+    "successfulCount": "1079"
   },
-  "create_time": "2026-09-06T19:53:23.757652Z",
-  "start_time": "2026-09-06T19:56:45.817643Z",
-  "end_time": "2026-09-06T20:00:54.199557Z",
+  "create_time": "2026-09-06T20:02:31.398635Z",
+  "start_time": "2026-09-06T20:05:24.887920Z",
+  "end_time": "2026-09-06T20:25:47.327146Z",
   "model": "gemini-3.1-pro-preview",
   "location": "global",
-  "prior_job_id": "projects/796629394796/locations/global/batchPredictionJobs/403973903623389184",
+  "prior_job_id": "projects/796629394796/locations/global/batchPredictionJobs/5794641920097517568",
+  "supersedes_submit_pr": 80,
   "parse": {
-    "people": 1058,
-    "expected": 18,
-    "predictions": 18,
-    "accepted": 18,
-    "accepted_total": 1058,
-    "previous_kept": 1040,
-    "rejected": 0,
+    "people": 1079,
+    "expected": 1079,
+    "predictions": 1079,
+    "accepted": 1075,
+    "accepted_total": 2133,
+    "previous_kept": 1058,
+    "rejected": 4,
     "missing_predictions": 0,
     "containment_mode": "near_verbatim",
     "containment_threshold": 1.0,
-    "by_reason": {}
+    "by_reason": {
+      "card_in_life has 117 words (need 120–180)": 2,
+      "card_in_life has 118 words (need 120–180)": 1,
+      "card_in_life has 119 words (need 120–180)": 1
+    }
   },
   "spend": {
-    "rows_with_usage": 18,
-    "prompt_tokens": 15105,
-    "candidates_tokens": 10905,
-    "thoughts_tokens": 26942,
-    "usd_if_thoughts_billed_as_output": 0.2422,
-    "usd_output_json_only": 0.0805,
-    "estimate_low": 0.15,
-    "estimate_high": 0.28,
-    "note": "Usage summed from prediction usageMetadata. Flex/Batch rates $1 / $6 per 1M. Thoughts treated as output. Inside the ~$16 band and the #79 18-row HIGH upper ($0.28). 18/18 Vertex successfulCount."
+    "rows_with_usage": 1079,
+    "prompt_tokens": 770949,
+    "candidates_tokens": 634563,
+    "thoughts_tokens": 1161430,
+    "usd_if_thoughts_billed_as_output": 11.5469,
+    "usd_output_json_only": 4.5783,
+    "estimate_low": 9.1869,
+    "estimate_high": 16.9557,
+    "note": "Usage summed from prediction usageMetadata. Flex/Batch rates $1 / $6 per 1M. Thoughts treated as output. Inside the this-job ≤~$20 band and the #80 HIGH upper ($16.96). 1079/1079 Vertex successfulCount."
   },
-  "did_not_merge": ["#79"],
-  "did_not_resubmit": true
+  "did_not_merge": ["#80"],
+  "did_not_resubmit": true,
+  "did_not_deploy": true
 }

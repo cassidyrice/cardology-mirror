@@ -1,27 +1,36 @@
 {
-  "people": 1058,
-  "expected": 18,
-  "predictions": 18,
-  "accepted": 18,
-  "accepted_total": 1058,
-  "previous_kept": 1040,
-  "rejected": 0,
+  "people": 1079,
+  "expected": 1079,
+  "predictions": 1079,
+  "accepted": 1075,
+  "accepted_total": 2133,
+  "previous_kept": 1058,
+  "rejected": 4,
   "missing_predictions": 0,
   "containment_mode": "near_verbatim",
   "containment_threshold": 1.0,
   "append": true,
-  "by_reason": {},
+  "by_reason": {
+    "card_in_life has 117 words (need 120–180)": 2,
+    "card_in_life has 118 words (need 120–180)": 1,
+    "card_in_life has 119 words (need 120–180)": 1
+  },
   "enriched_path": "pipeline/data/people_enriched.jsonl",
-  "retry_path": "enrich/artifacts/retry.jsonl",
-  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/5794641920097517568",
+  "retry_path": "enrich/artifacts/hub_retry.jsonl",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
   "job_state": "JOB_STATE_SUCCEEDED",
   "job_error": null,
   "predictions_ready": true,
   "completion_stats": {
-    "successfulCount": "18"
+    "successfulCount": "1079"
   },
-  "start_time": "2026-09-06T19:56:45.817643Z",
-  "end_time": "2026-09-06T20:00:54.199557Z",
-  "rejected_qids": [],
-  "note": "Remainder job SUCCEEDED (18/18 Vertex successfulCount). Near-verbatim containment accepted all 18 and kept the 1040 from #67/#73 (1058/1058 total). Zero rejects. #79 submit PR was not merged. No resubmit."
+  "start_time": "2026-09-06T20:05:24.887920Z",
+  "end_time": "2026-09-06T20:25:47.327146Z",
+  "rejected_qids": [
+    "Q188120",
+    "Q76610",
+    "Q102830",
+    "Q57192"
+  ],
+  "note": "Hub people job SUCCEEDED (1079/1079 Vertex successfulCount). Near-verbatim containment accepted 1075 and kept the 1058 from #67/#73/#81 (2133 total). Dropped 4: all card_in_life 117–119 words (Yoichiro Nambu, Heinrich Wieland, Frederick Soddy, Gerhard Domagk). Zero containment rejects. Zero missing predictions. #80 submit-only draft is superseded by this results PR. Do not merge without asking. No deploy / Stripe / invented bios."
 }
