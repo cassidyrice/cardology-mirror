@@ -111,3 +111,19 @@ Every person page has a source line slot: Wikidata CC0 + Wikipedia CC BY-SA 4.0.
 ## Isolation
 
 No imports from `app/`, `components/`, or checkout libraries. No FastAPI in this repo; payment lives on Next.js Stripe routes and was not modified.
+
+## US presidents (isolated `/presidents`)
+
+Separate static build. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes.
+
+```bash
+bun run build:seo-presidents   # → seo-pages/dist-presidents
+bun run test:seo-presidents
+```
+
+- Hub: `/presidents`
+- Person: `/presidents/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=presidents&utm_content={slug}`
+- Data: `pipeline/data/presidents/people.jsonl` (Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.

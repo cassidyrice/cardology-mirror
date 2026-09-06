@@ -37,6 +37,9 @@ jobs:
       - name: Celebrity SEO scaffold
         run: bun run build:seo-pages
 
+      - name: Presidents birth-card scaffold
+        run: bun run build:seo-presidents
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -62,7 +65,8 @@ jobs:
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
             scripts/worker-production-contract-lib.test.ts \
-            seo-pages/seo-pages.test.ts
+            seo-pages/seo-pages.test.ts \
+            seo-pages/presidents.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

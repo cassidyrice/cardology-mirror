@@ -46,5 +46,21 @@
     "{rank}-of-{suit}",
     "{month}-{day}"
   ],
-  "router_note": "A Cloudflare Worker in front of the two Pages projects must send person slugs to this site and keep card slugs on the existing Next.js /birth-card pages until those hubs move to /card/."
+  "router_note": "A Cloudflare Worker in front of the two Pages projects must send person slugs to this site and keep card slugs on the existing Next.js /birth-card pages until those hubs move to /card/.",
+  "presidents_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/presidents",
+      "/presidents/{slug}",
+      "/sitemap-presidents.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "US presidents birth-card set is isolated under /presidents. It must not take celebrity person slugs or live card-meaning routes."
+  }
 }

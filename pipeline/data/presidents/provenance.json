@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-09-06T15:41:38.495643+00:00",
+  "people_count": 45,
+  "qid_source": "sparql",
+  "sparql_fallback_used": false,
+  "sparql": {
+    "used": true,
+    "endpoint": "https://query.wikidata.org/sparql",
+    "qid_count": 45
+  },
+  "home_state_url": "https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States_by_home_state",
+  "home_state_rows": 45,
+  "people_with_terms": 45,
+  "dob_crosscheck": {
+    "match": 45,
+    "mismatch": 0,
+    "missing": 0
+  },
+  "exclusions": [],
+  "sources": [
+    "Wikidata P569 / P570 / P39 (CC0)",
+    "Wikipedia REST page summary (CC BY-SA 4.0)",
+    "Wikipedia list of presidents by home state (month/day cross-check, CC BY-SA 4.0)"
+  ],
+  "birth_card": "pipeline.birthcard (D1: Dec 31 = Joker). Year unused.",
+  "copy": "Page copy is local/template from source_text + harvested card meanings. No Vertex batch."
+}
