@@ -1,0 +1,28 @@
+{| class="wikitable sortable"
+|+ Current state governors of the United States
+|-
+! State
+! Governor
+! Born
+|-
+|[[Governor of Alabama|Alabama]] ([[List of governors of Alabama|list]])
+! scope="row" | {{sortname|Kay|Ivey|Kay Ivey}}
+|{{birth date and age|1944|10|15}}
+|<ref>{{cite web |title=Gov. Kay Ivey |url=https://www.nga.org/governors/alabama/ |publisher=National Governors Association}}</ref>
+|-
+|[[Governor of Louisiana|Louisiana]] ([[List of governors of Louisiana|list]])
+! scope="row" | [[Jeff Landry]]
+|{{birth date and age|1970|12|23}}
+|-
+|[[Governor of Nebraska|Nebraska]] ([[List of governors of Nebraska|list]])
+! scope="row" | {{sortname|Jim|Pillen}}
+|{{birth date and age|1955|12|31}}
+|-
+|[[Governor of North Dakota|North Dakota]] ([[List of governors of North Dakota|list]])
+! scope="row" | {{sortname|Kelly|Armstrong}}
+|{{birth date and age|1976|10|6}}
+|-
+|[[Governor of Example|Example]] ([[List of governors of Example|list]])
+! scope="row" | {{sortname|Year|Only}}
+|{{birth date and age|1960}}
+|}

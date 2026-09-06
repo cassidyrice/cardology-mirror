@@ -11,6 +11,7 @@
     "build:nobel": "bun src/nobel/build.ts",
     "build:scotus": "bun src/scotus/build.ts",
     "build:mlb": "bun src/mlb/build.ts",
+    "build:governors": "bun src/governors/build.ts",
     "test": "bun test"
   }
 }

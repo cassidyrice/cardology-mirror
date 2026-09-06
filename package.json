@@ -40,6 +40,8 @@
     "test:seo-scotus": "bun test seo-pages/scotus.test.ts",
     "build:seo-mlb": "bun seo-pages/src/mlb/build.ts",
     "test:seo-mlb": "bun test seo-pages/mlb.test.ts",
+    "build:seo-governors": "bun seo-pages/src/governors/build.ts",
+    "test:seo-governors": "bun test seo-pages/governors.test.ts",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:deploy": "bash scripts/deploy-production.sh",
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",

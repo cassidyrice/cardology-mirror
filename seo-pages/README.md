@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -290,3 +290,25 @@ coordinates, not fortune-telling.
 
 Path lock: [`mlb-path-ownership.json`](./mlb-path-ownership.json).
 Dates: [`data/MLB.md`](./data/MLB.md).
+
+## Current US governors (isolated `/governors`)
+
+Separate static build. Sitting governors of the 50 states. Does **not**
+take celebrity `/birth-card/{slug}` or live card-meaning routes. Does
+**not** join the Next.js app, does **not** touch checkout/Stripe, and
+must **not** be deployed.
+
+```bash
+bun run build:seo-governors   # → seo-pages/dist-governors
+bun run test:seo-governors
+python3 -m pipeline.governors # rewrite pipeline/data/governors/people.jsonl
+```
+
+- Hub: `/governors`
+- Person: `/governors/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=governors&utm_content={slug}`
+- Data: `pipeline/data/governors/people.jsonl` (Wikipedia current-governors list + Wikidata P569 + NGA + Ballotpedia)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: year-only list dates, Wikipedia↔Wikidata day conflicts, DC/territories, minors, D3 keywords
+
+Path lock: [`governors-path-ownership.json`](./governors-path-ownership.json).
