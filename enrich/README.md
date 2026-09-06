@@ -44,15 +44,21 @@ and trivial punctuation only. Paraphrase fails.
 | `2948789168064430080` (#67, fuzzy ≥0.85) | SUCCEEDED | 222 | 836 |
 | `403973903623389184` (near-verbatim) | SUCCEEDED | **818** this run / **1040** total | **18** |
 | `5794641920097517568` (remaining 18) | SUCCEEDED | **18** this run / **1058** total | **0** |
+| `1673848261053513728` (hub 1079) | SUCCEEDED | **1075** this run / **2133** total | **4** |
 
-`people_enriched.jsonl` is complete (1058/1058). `retry.jsonl` is empty.
-Zero containment rejects on this remainder. Do not resubmit.
+Celebrity remainder is complete (1058/1058); `retry.jsonl` stays empty.
+Hub people packs (presidents / governors / SCOTUS / Nobel / signers) accepted
+**1075 / 1079**. Dropped 4 Nobel `card_in_life` shorts (117–119 words):
+Yoichiro Nambu, Heinrich Wieland, Frederick Soddy, Gerhard Domagk.
+Zero containment rejects. Do not resubmit unless asked.
 
 ```bash
 python3 -m enrich.parse_results \
+  --people enrich/artifacts/hub_people.jsonl \
   --predictions enrich/out/predictions.jsonl \
   --append \
-  --retry-scope enrich/artifacts/retry.jsonl
+  --retry-scope enrich/artifacts/hub_people.jsonl \
+  --retry enrich/artifacts/hub_retry.jsonl
 ```
 
 See `enrich/RETRY_PLAN.md`. Do not submit another Vertex job unless asked.

@@ -1,9 +1,11 @@
 # Vertex enrich retry (836) — submitted and parsed
 
 Retry job `403973903623389184` **SUCCEEDED** (818/836). Remainder job
-`5794641920097517568` **SUCCEEDED** (18/18). Do not submit another job
-unless asked. Results live in `people_enriched.jsonl` (**1058/1058**);
-`retry.jsonl` is empty.
+`5794641920097517568` **SUCCEEDED** (18/18). Hub people job
+`1673848261053513728` **SUCCEEDED** (1075/1079 accepted). Do not submit
+another job unless asked. Results live in `people_enriched.jsonl`
+(**2133** = 1058 celebrity + 1075 hub). Celebrity `retry.jsonl` is empty.
+Hub drops are in `enrich/artifacts/hub_retry.jsonl` (4).
 
 ## Root cause
 
@@ -64,17 +66,19 @@ See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
 HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 `gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
 
-## After SUCCEEDED (remainder results)
+## After SUCCEEDED (remainder + hub results)
 
-1. Downloaded `enrich/out/predictions.jsonl` (18 lines, gitignored).
-2. Parsed with **near-verbatim** containment (not fuzzy 0.85).
-3. Appended 18 accepted rows to `pipeline/data/people_enriched.jsonl`.
-   Did not overwrite the 1040 from #67/#73. Total **1058**.
-4. `retry.jsonl` is empty. Do not resubmit.
+1. Remainder: downloaded 18 lines; appended all 18; celebrity total **1058**.
+2. Hub job `1673848261053513728`: downloaded 1079 lines (gitignored).
+3. Parsed with **near-verbatim** containment (same #70 contract).
+4. Appended **1075** accepted hub rows. Did not overwrite the 1058.
+   Total **2133**. Dropped 4 `card_in_life` shorts → `hub_retry.jsonl`.
+5. Celebrity `retry.jsonl` stays empty. Do not resubmit unless asked.
 
 ## Out of scope
 
 - No further Vertex submit
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- #79 submit PR left unmerged; this results PR stays draft
+- #80 submit-only draft is superseded by this results PR; do not merge
+  without asking
