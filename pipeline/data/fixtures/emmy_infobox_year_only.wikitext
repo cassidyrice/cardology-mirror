@@ -1,0 +1,5 @@
+{{Infobox person
+| name = Year Only Fixture
+| birth_date = {{Birth year and age|1956}}
+}}
+'''Year Only Fixture''' (born 1956) is a synthetic fixture. Day must not be invented.

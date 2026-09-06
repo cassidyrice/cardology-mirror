@@ -1,0 +1,23 @@
+{
+  "id": "Q0EMY1",
+  "labels": { "en": { "value": "Ada Fixture Cranston" } },
+  "descriptions": { "en": { "value": "synthetic actor fixture" } },
+  "sitelinks": { "enwiki": { "title": "Ada Fixture Cranston" } },
+  "claims": {
+    "P569": [
+      {
+        "rank": "preferred",
+        "mainsnak": {
+          "snaktype": "value",
+          "datavalue": {
+            "value": {
+              "time": "+1956-03-07T00:00:00Z",
+              "precision": 11,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

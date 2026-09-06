@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/emmy.json",
+  "title": "Primetime Emmy Lead Actor/Actress birth-card person",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qid",
+    "name",
+    "slug",
+    "birth_date",
+    "death_date",
+    "card",
+    "source_text",
+    "source_url",
+    "wikipedia_title",
+    "emmys_url",
+    "wins",
+    "wikipedia_birth_date",
+    "wikidata_birth_date",
+    "dob_crosscheck"
+  ],
+  "properties": {
+    "qid": {
+      "type": "string",
+      "pattern": "^Q[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "death_date": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "card": {
+      "type": "string",
+      "pattern": "^(Joker|([A2-9JQK]|10)[♥♣♦♠])$"
+    },
+    "source_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wikipedia_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "emmys_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wins": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "year",
+          "category_id",
+          "label",
+          "category_full",
+          "genre",
+          "acting",
+          "program",
+          "role",
+          "list_url",
+          "performance_note"
+        ],
+        "properties": {
+          "year": { "type": "string", "pattern": "^[0-9]{4}$" },
+          "category_id": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "category_full": { "type": "string", "minLength": 1 },
+          "genre": { "type": "string", "minLength": 1 },
+          "acting": { "type": "string", "enum": ["actor", "actress"] },
+          "program": { "type": ["string", "null"] },
+          "role": { "type": ["string", "null"] },
+          "list_url": { "type": "string", "minLength": 1 },
+          "performance_note": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "wikipedia_birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "wikidata_birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "dob_crosscheck": {
+      "type": "string",
+      "const": "match"
+    }
+  }
+}

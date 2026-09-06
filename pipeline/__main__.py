@@ -21,6 +21,7 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.olympics.winter
   python -m pipeline.tonys
   python -m pipeline.oscars
+  python -m pipeline.emmys
 
 See pipeline/README.md. Vertex batch stub: python -m enrich.make_batch (no spend).
 """

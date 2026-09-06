@@ -116,6 +116,15 @@ bun run test:seo-oscars
 python3 -m pipeline.oscars
 ```
 
+Primetime Emmy Lead Actor / Lead Actress birth-card pages are an isolated
+build (`/emmys/{slug}`), drama + comedy lists, day-precision only:
+
+```bash
+bun run build:seo-emmys   # → seo-pages/dist-emmys
+bun run test:seo-emmys
+python3 -m pipeline.emmys
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

@@ -429,3 +429,28 @@ python3 -m pipeline.oscars # rewrite pipeline/data/oscars/people.jsonl
 - Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, supporting categories, minors, D3 keywords
 
 Path lock: [`oscars-path-ownership.json`](./oscars-path-ownership.json).
+
+## Primetime Emmy Lead Actor / Actress (isolated `/emmys`)
+
+Separate static build. Primetime Emmy Lead Actor and Lead Actress winners
+from the drama and comedy Wikipedia lineage lists. Wikipedia
+person-article infobox/lead day-precision dates verified against Wikidata
+`P569`. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes. Does **not** join the Next.js app, does **not** touch
+checkout/Stripe, and must **not** be deployed.
+
+```bash
+bun run build:seo-emmys   # → seo-pages/dist-emmys
+bun run test:seo-emmys
+python3 -m pipeline.emmys # rewrite pipeline/data/emmys/people.jsonl
+```
+
+- Hub: `/emmys`
+- Person: `/emmys/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=emmys&utm_content={slug}`
+- Data: `pipeline/data/emmys/people.jsonl` (Wikipedia lists + infobox + Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Scope: Primetime Lead Actor/Actress drama + comedy only. Supporting, Limited-as-own-category, Guest, Daytime, International omitted.
+- Dropped: year-only Wikipedia dates, Wikidata precision &lt; 11, Wikipedia↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`emmys-path-ownership.json`](./emmys-path-ownership.json).
