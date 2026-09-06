@@ -2,35 +2,32 @@
   "people": 1079,
   "expected": 1079,
   "predictions": 1079,
-  "accepted": 1075,
-  "accepted_total": 2133,
-  "previous_kept": 1058,
-  "rejected": 4,
+  "accepted": 1077,
+  "accepted_total": 3210,
+  "previous_kept": 2133,
+  "rejected": 2,
   "missing_predictions": 0,
   "containment_mode": "near_verbatim",
   "containment_threshold": 1.0,
   "append": true,
   "by_reason": {
-    "card_in_life has 117 words (need 120–180)": 2,
-    "card_in_life has 118 words (need 120–180)": 1,
-    "card_in_life has 119 words (need 120–180)": 1
+    "empty prediction": 2
   },
   "enriched_path": "pipeline/data/people_enriched.jsonl",
-  "retry_path": "enrich/artifacts/hub_retry.jsonl",
-  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/1673848261053513728",
+  "retry_path": "enrich/artifacts/wave_slice1_retry.jsonl",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/5428091131676065792",
   "job_state": "JOB_STATE_SUCCEEDED",
   "job_error": null,
   "predictions_ready": true,
   "completion_stats": {
-    "successfulCount": "1079"
+    "successfulCount": "1077",
+    "failedCount": "2"
   },
-  "start_time": "2026-09-06T20:05:24.887920Z",
-  "end_time": "2026-09-06T20:25:47.327146Z",
+  "start_time": "2026-09-06T22:55:12.982053Z",
+  "end_time": "2026-09-06T23:14:46.958996Z",
   "rejected_qids": [
-    "Q188120",
-    "Q76610",
-    "Q102830",
-    "Q57192"
+    "Q3133396",
+    "Q228808"
   ],
-  "note": "Hub people job SUCCEEDED (1079/1079 Vertex successfulCount). Near-verbatim containment accepted 1075 and kept the 1058 from #67/#73/#81 (2133 total). Dropped 4: all card_in_life 117–119 words (Yoichiro Nambu, Heinrich Wieland, Frederick Soddy, Gerhard Domagk). Zero containment rejects. Zero missing predictions. #80 submit-only draft is superseded by this results PR. Do not merge without asking. No deploy / Stripe / invented bios."
+  "note": "Wave slice 1 SUCCEEDED (1077/1079 Vertex successfulCount; 2 TPU CANCELLED empty predictions). Near-verbatim containment accepted all 1077 scored rows and kept the 2133 from celebrity + hub (3210 total). Zero containment rejects. Dropped Herb Reed (Rock Hall) and Marie-José Pérec (summer olympics). #101 submit-only draft is superseded by this results PR. Do not merge without asking. No slice 2 / deploy / Stripe / invented bios."
 }
