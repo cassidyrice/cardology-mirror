@@ -10,8 +10,8 @@ Human / Vertex step (later, off this PR):
 2. Run `python3 -m enrich.make_batch` to emit `enrich/out/vertex_batch.jsonl`.
 3. Upload that file to a Vertex Gemini batch job yourself.
 4. Download predictions into `enrich/out/predictions.jsonl` (gitignored).
-5. Join predictions onto people rows to produce `people_enriched.jsonl` for
-   `seo-pages/` (WP4). The join script is not in this scaffold.
+5. Join predictions onto people rows with `python3 -m enrich.parse_results`
+   (`--append --retry-scope` keeps already-accepted rows).
 
 ## Prompt contract (locked)
 
@@ -37,19 +37,24 @@ Decode: `temperature=0.0`, `thinkingLevel=LOW`.
 Parse helper: `enrich.containment.fact_is_near_verbatim` — case, whitespace,
 and trivial punctuation only. Paraphrase fails.
 
-## Retry batch (836 rejected rows)
+## Results (do not resubmit)
 
-First job accepted 222 (#67) and wrote `enrich/artifacts/retry.jsonl` (836).
-Rebuild the tightened Vertex JSONL from those qids only:
+| Job | State | Accepted | Rejected |
+|---|---|---|---|
+| `2948789168064430080` (#67, fuzzy ≥0.85) | SUCCEEDED | 222 | 836 |
+| `403973903623389184` (near-verbatim) | SUCCEEDED | **818** this run / **1040** total | **18** |
+
+Remaining 18: 16 Vertex TPU `CANCELLED` empty predictions, 1 hook (41 words),
+1 `card_in_life` (119 words). Zero containment rejects on the retry.
 
 ```bash
-python3 -m enrich.make_retry_batch
-python3 -m enrich.estimate \
-  --input enrich/artifacts/vertex_retry_batch.jsonl \
-  --out enrich/artifacts/cost_estimate.json
+python3 -m enrich.parse_results \
+  --predictions enrich/out/predictions.jsonl \
+  --append \
+  --retry-scope enrich/artifacts/retry.jsonl
 ```
 
-See `enrich/RETRY_PLAN.md`. **Do not submit** until BOSS APPROVE.
+See `enrich/RETRY_PLAN.md`. Do not submit another Vertex job unless asked.
 
 ## Local dry-run (fixtures, no spend)
 
@@ -66,6 +71,5 @@ fill it.
 
 ## What is not here
 
-- No `gcloud`, Vertex SDK, or API key usage
-- No batch submit / poll / download
+- No second Vertex submit
 - No checkout, Stripe, webhook, or `generate_reading` changes

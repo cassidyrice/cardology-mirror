@@ -39,7 +39,7 @@ def test_load_retry_qids_skips_duplicates(tmp_path: Path) -> None:
     assert load_retry_qids(path) == ["Q1"]
 
 
-def test_retry_batch_is_exactly_the_836_rejected_qids(tmp_path: Path) -> None:
+def test_retry_batch_matches_current_retry_qids_and_avoids_enriched(tmp_path: Path) -> None:
     out = tmp_path / "vertex_retry_batch.jsonl"
     result = write_retry_batch(
         people_path=PEOPLE,
@@ -55,8 +55,10 @@ def test_retry_batch_is_exactly_the_836_rejected_qids(tmp_path: Path) -> None:
         for line in ENRICHED.read_text(encoding="utf-8").splitlines()
         if line.strip()
     }
-    assert result["retry_ids"] == 836
-    assert result["requests"] == 836
+    assert result["retry_ids"] == len(retry_qids)
+    assert result["requests"] == len(retry_qids)
     assert result["missing_in_people"] == []
     assert batch_qids == retry_qids
     assert batch_qids.isdisjoint(enriched_qids)
+    assert len(retry_qids) == 18
+    assert len(enriched_qids) == 1040
