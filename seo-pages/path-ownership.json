@@ -373,6 +373,22 @@
     ],
     "note": "Pulitzer Prize for Fiction birth-card set is isolated under /pulitzer/fiction. Person-scope winners and joint recipients with day-precision Wikipedia infobox + Wikidata P569 match. Path-split is not activated."
   },
+  "kennedy_center_honors_isolated": {
+    "status": "scaffold-only-do-not-deploy",
+    "pages_will_own": [
+      "/kennedy-center-honors",
+      "/kennedy-center-honors/{slug}",
+      "/sitemap-kennedy-center-honors.xml"
+    ],
+    "must_not_own": [
+      "/birth-card/{person-slug}",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/checkout",
+      "/checkout/*"
+    ],
+    "note": "Kennedy Center Honors birth-card set is isolated under /kennedy-center-honors. Person-scope recipients with day-precision Wikipedia infobox + Wikidata P569 match. Groups expand only listed members. Path-split is not activated."
+  },
   "grammys_aoty_isolated": {
     "status": "scaffold-only-do-not-deploy",
     "pages_will_own": [

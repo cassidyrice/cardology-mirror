@@ -161,6 +161,15 @@ bun run test:seo-house-chairs
 python3 -m pipeline.house_chairs
 ```
 
+Kennedy Center Honors birth-card pages (`/kennedy-center-honors/{slug}`),
+person-scope recipients, day-precision only:
+
+```bash
+bun run build:seo-kennedy-center-honors   # → seo-pages/dist-kennedy-center-honors
+bun run test:seo-kennedy-center-honors
+python3 -m pipeline.kennedy_center_honors
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):

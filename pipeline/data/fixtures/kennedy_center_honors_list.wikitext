@@ -1,0 +1,70 @@
+==Recipients==
+263 people have been awarded. The award given to [[Bill Cosby]] in 1998 was rescinded.
+
+===1970s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+|-
+| 1978 || [[Marian Anderson]], [[Fred Astaire]], [[George Balanchine]], [[Richard Rodgers]], and [[Arthur Rubinstein]]
+|-
+| 1979 || [[Aaron Copland]], [[Ella Fitzgerald]], [[Henry Fonda]], [[Martha Graham]], and [[Tennessee Williams]]
+|}
+
+===1980s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+|-
+| 1985 || [[Merce Cunningham]], [[Irene Dunne]], [[Bob Hope]], [[Alan Jay Lerner]] and [[Frederick Loewe]], and [[Beverly Sills]]
+|}
+
+===1990s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+|-
+| 1998 || [[Fred Ebb]] and [[John Kander]], [[Willie Nelson]], [[André Previn]], [[Shirley Temple|Shirley Temple Black]] and [[Bill Cosby]]{{efn|award rescinded {{cite news |title=Kennedy Center rescinds Bill Cosby's Honors}}}}
+|-
+| 1999 || [[Victor Borge]], [[Sean Connery]], [[Judith Jamison]], [[Jason Robards]], and [[Stevie Wonder]]
+|}
+
+===2000s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+|-
+| 2005 || [[Tony Bennett]], [[Suzanne Farrell]], [[Julie Harris]], [[Robert Redford]], and [[Tina Turner]]
+|-
+| 2008 || [[Morgan Freeman]], [[George Jones]], [[Barbra Streisand]], [[Twyla Tharp]], and [[The Who]]{{efn|([[Pete Townshend]] and [[Roger Daltrey]])}}
+|}
+
+===2010s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+!Refs
+|-
+| 2011 || [[Barbara Cook]], [[Neil Diamond]], [[Yo-Yo Ma]], [[Sonny Rollins]], and [[Meryl Streep]] || {{cite web |url=https://www.kennedy-center.org/whats-on/honors/ |title=34th Annual Kennedy Center Honors}}
+|-
+| 2014 || [[Al Green]], [[Tom Hanks]], [[Patricia McBride]], [[Sting (musician)|Sting]], and [[Lily Tomlin]] ||
+|-
+| 2019 || [[Earth, Wind & Fire]]{{efn|([[Philip Bailey]], [[Verdine White]], and [[Ralph Johnson (musician)|Ralph Johnson]])}}, [[Sally Field]], [[Linda Ronstadt]], [[Michael Tilson Thomas]], and ''[[Sesame Street]]''{{efn|([[Lloyd Morrisett]] and [[Joan Ganz Cooney]])}} ||
+|}
+
+===2020s===
+{| class="wikitable"
+|-
+!Year
+!Honorees
+!Refs
+|-
+| 2010 || [[Merle Haggard]], [[Jerry Herman]], [[Bill T. Jones]], [[Paul McCartney]], and [[Oprah Winfrey]] ||
+|-
+| 2024 || [[Francis Ford Coppola]], [[Grateful Dead]],{{efn|([[Mickey Hart]], [[Bill Kreutzmann]], [[Phil Lesh]] and [[Bob Weir]])}} [[Bonnie Raitt]], [[Arturo Sandoval]], and the [[Apollo Theater]] ||
+|}
