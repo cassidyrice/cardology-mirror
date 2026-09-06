@@ -19,14 +19,16 @@ describe("The Complete Card Blueprint launch contract", () => {
   });
 
   test("does not present the sales page as closed", () => {
-    const page = readFileSync(
-      new URL("../app/products/complete-card-blueprint/page.tsx", import.meta.url),
+    const middleware = readFileSync(
+      new URL("../middleware.ts", import.meta.url),
       "utf8",
     );
-    expect(page).not.toContain("coming soon");
-    expect(page).not.toContain("No purchase is being accepted yet");
-    expect(page).toContain("href={`/checkout/${book.slug}`}");
-    expect(page).toContain("$27");
+    expect(middleware).toContain(
+      '"/products/complete-card-blueprint": "/products/birth-card-deep-dive"',
+    );
+    expect(middleware).toContain(
+      '"/checkout/complete-card-blueprint": "/products/birth-card-deep-dive"',
+    );
   });
 
   test("keeps the launch price and asset name synchronized", () => {

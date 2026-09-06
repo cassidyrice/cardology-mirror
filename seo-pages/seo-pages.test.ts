@@ -51,7 +51,7 @@ test("person page includes the required slots, JSON-LD, CTA, and sources", () =>
   expect(html).toContain('data-slot="faq"');
   expect(html).toContain('data-slot="cta"');
   expect(html).toContain(
-    "/checkout/personal-card-blueprint?utm_source=celeb&amp;utm_content=example-north-star",
+    "/checkout/deep-dive?utm_source=celeb&amp;utm_content=example-north-star",
   );
   expect(html).toContain('data-checkout-stub="true"');
   expect(html).toContain('action="/create-checkout"');

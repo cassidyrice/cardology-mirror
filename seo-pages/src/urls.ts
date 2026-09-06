@@ -5,7 +5,7 @@ import {
   type EnrichedPerson,
 } from "./types";
 
-export const CHECKOUT_PATH = "/checkout/personal-card-blueprint";
+export const CHECKOUT_PATH = "/checkout/deep-dive";
 export const CREATE_CHECKOUT_STUB_PATH = "/create-checkout";
 
 const CARD_SLUG_RE =

@@ -90,7 +90,9 @@ Machine-readable copy: [`path-ownership.json`](./path-ownership.json). Wrangler 
 
 Person pages link to the existing checkout:
 
-`/checkout/personal-card-blueprint?utm_source=celeb&utm_content={slug}`
+`/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
+
+(`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
 A disabled `POST /create-checkout` form is a stub only. It is not wired and must not be implemented in this folder.
 

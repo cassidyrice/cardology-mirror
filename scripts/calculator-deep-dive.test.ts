@@ -168,11 +168,8 @@ test("conversion chrome and card meanings use one $9 Deep Dive offer", () => {
   expect(footer).toContain("Birth Card Deep Dive — $9");
   expect(footer).toContain('href="/products/birth-card-deep-dive"');
   expect(footer).toContain('href={DEEP_DIVE_CALCULATOR_FORM_HREF}');
-  expect(footer).toContain('href="/products/personal-card-blueprint"');
+  expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
-  expect(footer.indexOf("/products/birth-card-deep-dive")).toBeLessThan(
-    footer.indexOf("/products/personal-card-blueprint"),
-  );
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
   expect(offerCta).not.toContain("personal-card-blueprint");
@@ -206,10 +203,7 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).not.toMatch(/display:\s*none/i);
   expect(page).not.toContain("Got the card name");
   expect(page).toContain("/products/birth-card-deep-dive");
-  expect(page).toContain("/products/personal-card-blueprint");
-  expect(page.indexOf("/products/birth-card-deep-dive")).toBeLessThan(
-    page.indexOf("/products/personal-card-blueprint"),
-  );
+  expect(page).not.toContain("/products/personal-card-blueprint");
   expect(page).not.toContain("/checkout/personal-card-blueprint");
   expect(page).not.toContain("See the Blueprint");
   expect(middleware).not.toMatch(
