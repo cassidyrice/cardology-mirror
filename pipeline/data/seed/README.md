@@ -1,7 +1,8 @@
-# Seed drop (off-repo)
+# Seed drop
 
-Copy the verified ~1,161-row celebrity seed here before a `--from-seed` rebuild.
-Do **not** invent bios. Do **not** commit the real drop.
+The verified ~1,161-row celebrity seed lives at
+`celebrity_birth_cards.csv`. Do **not** invent bios. The Wikidata PSV
+drop remains off-repo.
 
 `pipeline/build_dataset.py --from-seed` looks here first, then
 `pipeline/data/drop/`. Birth cards are always recomputed with
@@ -55,5 +56,5 @@ and tells you what to drop — it will not invent bios.
 
 ## Gitignore
 
-Real `celebrity_birth_cards.csv` / `wikidata_people_raw.psv` drops stay
-untracked. Keep only this README, `.gitkeep`, and the header template.
+`celebrity_birth_cards.csv` is tracked. `wikidata_people_raw.psv` stays
+untracked. Keep this README, `.gitkeep`, and the header template.
