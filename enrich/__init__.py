@@ -1,3 +1,3 @@
-"""WP3 Vertex/Gemini enrich scaffold (batch file only — no API spend)."""
+"""WP3 Vertex/Gemini enrich (batch file, submit-if-authed, containment parse)."""
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

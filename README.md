@@ -30,7 +30,7 @@ bun run test:seo-pages
 
 Path ownership and the Cloudflare Pages split note: [`seo-pages/README.md`](./seo-pages/README.md).
 
-WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
+WP3 enrich (card-meaning harvest + Vertex batch file; submit only with real GCP auth):
 [`pipeline/data/card_meanings.json`](./pipeline/data/card_meanings.json) and
 [`enrich/`](./enrich/).
 

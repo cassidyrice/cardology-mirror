@@ -1,15 +1,20 @@
-"""python -m enrich → usage pointer. Does not submit a Vertex job."""
+"""python -m enrich → usage pointer."""
 
 from __future__ import annotations
 
-USAGE = """WP3 enrich scaffold (no Vertex spend).
+USAGE = """WP3 Vertex / Gemini enrich.
 
   python3 -m enrich.make_batch \\
-    --people pipeline/data/fixtures/people.jsonl \\
+    --people pipeline/data/people.jsonl \\
     --meanings pipeline/data/card_meanings.json \\
-    --out /tmp/vertex_batch.jsonl
+    --out enrich/artifacts/vertex_batch.jsonl
 
-See enrich/README.md.
+  python3 -m enrich.estimate --input enrich/artifacts/vertex_batch.jsonl
+  python3 -m enrich.submit_batch --input enrich/artifacts/vertex_batch.jsonl
+  python3 -m enrich.submit_batch --poll
+  python3 -m enrich.parse_results
+
+See enrich/README.md. Submit refuses to invent GCP credentials.
 """
 
 

@@ -1,0 +1,15 @@
+{
+  "model": "gemini-3.1-pro-preview",
+  "requests": 1058,
+  "input_chars": 2226856,
+  "input_tokens_est": 556714,
+  "output_tokens_est": 529000,
+  "thinking_output_tokens_est": 2645000,
+  "usd_batch_no_thinking": 3.7307,
+  "usd_batch_with_thinking_upper": 16.4267,
+  "rates_usd_per_million": {
+    "input": 1.0,
+    "output": 6.0,
+    "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, \u2264200K tokens/request"
+  }
+}

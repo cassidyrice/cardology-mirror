@@ -75,8 +75,9 @@ python3 -m pipeline.build_dataset --fetch --months 8 \
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the
 live `/birth-card/{rank}-of-{suit}` and `/birth-card/joker` source copy.
 Regenerate with `python3 -m pipeline.harvest_card_meanings` after meaning
-pages change. The Vertex batch stub (`enrich/make_batch.py`) reads this
-file and does **not** submit a job.
+pages change. `enrich/make_batch.py` reads this file and writes a Vertex
+JSONL. `enrich/submit_batch.py` submits only when real GCP credentials
+are present; it will not invent a project, key, or bucket.
 
 ## Seed drop (~1,161 rows)
 

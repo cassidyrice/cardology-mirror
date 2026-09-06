@@ -30,7 +30,9 @@ pipeline/data/seed/*
 !pipeline/data/seed/celebrity_birth_cards.csv
 !pipeline/data/seed/wikidata_people_raw.psv
 pipeline/data/cache/
+pipeline/data/people_enriched.jsonl
 enrich/out/
+enrich/artifacts/predictions.jsonl
 
 # Scraped production artifacts kept for debugging (not source)
 .calc.html

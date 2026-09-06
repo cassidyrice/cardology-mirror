@@ -1,0 +1,14 @@
+{
+  "people": 1058,
+  "predictions": 0,
+  "accepted": 0,
+  "rejected": 1058,
+  "missing_predictions": 1058,
+  "containment_threshold": 0.85,
+  "by_reason": {
+    "no_prediction": 1058
+  },
+  "note": "parse_results was not run against Vertex output because submit was blocked on missing GCP auth. All 1058 people remain on the retry/pending list. No people_enriched.jsonl was written.",
+  "enriched_path": null,
+  "retry_path": "enrich/artifacts/retry.jsonl"
+}

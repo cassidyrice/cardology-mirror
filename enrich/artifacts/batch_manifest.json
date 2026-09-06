@@ -1,0 +1,37 @@
+{
+  "people_path": "pipeline/data/people.jsonl",
+  "meanings_path": "pipeline/data/card_meanings.json",
+  "batch_path": "enrich/artifacts/vertex_batch.jsonl",
+  "input_row_count": 1058,
+  "people_count": 1058,
+  "model_intended": "gemini-3.1-pro-preview",
+  "model_publisher": "publishers/google/models/gemini-3.1-pro-preview",
+  "prompt_contract": "You are writing for a cardology site. Use ONLY the facts in <source_text>. If a fact is not in <source_text>, do not state it.\nReturn JSON: {\"hook\": str (\u2264 40 words), \"evidence\": [3 \u00d7 {\"fact\": str, \"trait\": str}], \"card_in_life\": str (120\u2013180 words, name-specific, no generic filler), \"faq\": [3 \u00d7 {\"q\": str, \"a\": str}], \"meta_description\": str (\u2264 155 chars)}",
+  "d1_jokers": [
+    {
+      "qid": "Q59248250",
+      "name": "Hunter Schafer",
+      "birth_date": "1998-12-31",
+      "card": "Joker"
+    },
+    {
+      "qid": "Q191084",
+      "name": "Val Kilmer",
+      "birth_date": "1959-12-31",
+      "card": "Joker"
+    },
+    {
+      "qid": "Q3713655",
+      "name": "Donald Trump Jr.",
+      "birth_date": "1977-12-31",
+      "card": "Joker"
+    },
+    {
+      "qid": "Q65932",
+      "name": "Anthony Hopkins",
+      "birth_date": "1937-12-31",
+      "card": "Joker"
+    }
+  ],
+  "batch_bytes": 2487576
+}

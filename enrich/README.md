@@ -1,17 +1,12 @@
-# WP3 enrich scaffold (Vertex / Gemini batch)
+# WP3 enrich (Vertex / Gemini batch)
 
-Prep-only. This folder writes a **Vertex-ready JSONL** from
-`pipeline/data/people.jsonl` + `pipeline/data/card_meanings.json`. It does
-**not** submit a batch job, call Gemini, or spend money.
+Builds a Vertex-ready JSONL from `pipeline/data/people.jsonl` +
+`pipeline/data/card_meanings.json`, submits a Gemini batch job **only when
+real GCP credentials are present**, then joins predictions into
+`people_enriched.jsonl`.
 
-Human / Vertex step (later, off this PR):
-
-1. Build `people.jsonl` from the seed drop (`python3 -m pipeline.build_dataset --from-seed`).
-2. Run `python3 -m enrich.make_batch` to emit `enrich/out/vertex_batch.jsonl`.
-3. Upload that file to a Vertex Gemini batch job yourself.
-4. Download predictions into `enrich/out/predictions.jsonl` (gitignored).
-5. Join predictions onto people rows to produce `people_enriched.jsonl` for
-   `seo-pages/` (WP4). The join script is not in this scaffold.
+This folder does **not** invent celebrity bios. Evidence facts that are not
+contained in `<source_text>` (fuzzy ≥ 0.85) are rejected onto a retry list.
 
 ## Prompt contract (locked)
 
@@ -31,7 +26,36 @@ Return JSON:
 }
 ```
 
-## Local dry-run (fixtures, no spend)
+## Commands
+
+```bash
+# 1. Vertex-ready JSONL (no spend)
+python3 -m enrich.make_batch \
+  --people pipeline/data/people.jsonl \
+  --meanings pipeline/data/card_meanings.json \
+  --out enrich/artifacts/vertex_batch.jsonl
+
+python3 -m enrich.estimate \
+  --input enrich/artifacts/vertex_batch.jsonl \
+  --out enrich/artifacts/cost_estimate.json
+
+# 2. Submit (refuses to invent credentials)
+python3 -m enrich.submit_batch --input enrich/artifacts/vertex_batch.jsonl
+
+# 3. Poll (Vertex SLA: most jobs finish ≤24h after they start running)
+python3 -m enrich.submit_batch --poll
+
+# 4. Join + containment gate
+# Download predictions to enrich/out/predictions.jsonl first.
+python3 -m enrich.parse_results \
+  --people pipeline/data/people.jsonl \
+  --predictions enrich/out/predictions.jsonl \
+  --out pipeline/data/people_enriched.jsonl \
+  --retry enrich/artifacts/retry.jsonl \
+  --report enrich/artifacts/exclusion_report.json
+```
+
+Local dry-run against fixtures (no spend):
 
 ```bash
 python3 -m enrich.make_batch \
@@ -40,12 +64,51 @@ python3 -m enrich.make_batch \
   --out /tmp/vertex_batch.jsonl
 ```
 
-Default `--people` is `pipeline/data/people.jsonl`. If that file
-is missing, pass the fixture path as above. Do not invent celebrity bios to
-fill it.
+## Model
 
-## What is not here
+Prefer **Gemini 3.1 Pro** Flex/Batch: `gemini-3.1-pro-preview`
+(`publishers/google/models/gemini-3.1-pro-preview`). The repo has no older
+documented default; override with `VERTEX_MODEL` only if that ID is unavailable
+on the project.
 
-- No `gcloud`, Vertex SDK, or API key usage
-- No batch submit / poll / download
+Official Flex/Batch rates (≤200K tokens/request): **$1.00 / 1M input**,
+**$6.00 / 1M output**. See `enrich/artifacts/cost_estimate.json`.
+
+## Auth (required for submit)
+
+Submit reads only what is already in the environment. It will not invent a
+project, bucket, or key.
+
+| Need | Env / file |
+|---|---|
+| GCP project | `VERTEX_PROJECT` or `GOOGLE_CLOUD_PROJECT` |
+| GCS bucket | `VERTEX_GCS_BUCKET` |
+| SA JSON **or** ADC | `GOOGLE_APPLICATION_CREDENTIALS` or `~/.config/gcloud/application_default_credentials.json` |
+| Location | `VERTEX_LOCATION` (default `global`) |
+| Model | `VERTEX_MODEL` (default `gemini-3.1-pro-preview`) |
+
+Service account roles: `roles/aiplatform.user` plus object admin on the bucket.
+Optional packages for token minting: `pip install -r enrich/requirements-vertex.txt`.
+
+If any of those are missing, `python3 -m enrich.submit_batch` exits 2, writes
+`enrich/artifacts/submit_status.json` with `"submitted": false`, and prints
+exactly what Cass must connect.
+
+## Artifacts
+
+| Path | Tracked? |
+|---|---|
+| `enrich/artifacts/vertex_batch.jsonl` | yes — request file |
+| `enrich/artifacts/cost_estimate.json` | yes |
+| `enrich/artifacts/submit_status.json` | yes — job id / auth blocker |
+| `enrich/artifacts/exclusion_report.json` | yes after parse |
+| `enrich/artifacts/retry.jsonl` | yes after parse |
+| `enrich/out/predictions.jsonl` | gitignored Vertex download |
+| `pipeline/data/people_enriched.jsonl` | gitignored join output |
+
+## What this does not do
+
+- No deploy
 - No checkout, Stripe, webhook, or `generate_reading` changes
+- No invented bios outside `source_text`
+- No remapping of D1 December 31 Joker
