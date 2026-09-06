@@ -61,7 +61,25 @@ python3 -m enrich.parse_results \
   --retry enrich/artifacts/hub_retry.jsonl
 ```
 
-See `enrich/RETRY_PLAN.md`. Do not submit another Vertex job unless asked.
+See `enrich/RETRY_PLAN.md`. Celebrity + hub jobs are closed. Wave slice 1
+is a separate submit — do not merge results or start slice 2 unless asked.
+
+## Wave slice 1 (this job)
+
+First hub-sized slice of wave people missing from `people_enriched.jsonl`.
+Largest holes first (Rock Hall, summer olympics, NFL HoF, …) until **1079**
+unique QIDs with usable `source_text`. Same #70 / hub contract.
+
+```bash
+python3 -m enrich.make_wave_slice
+python3 -m enrich.estimate \
+  --input enrich/artifacts/vertex_wave_slice1_batch.jsonl \
+  --out enrich/artifacts/wave_slice1_estimate.json
+# submit only when HIGH-upper ≤ $20
+python3 -m enrich.submit_batch --input enrich/artifacts/vertex_wave_slice1_batch.jsonl
+```
+
+Do not submit the remaining ~1666 this job. Ask before slice 2.
 
 ## Local dry-run (fixtures, no spend)
 
