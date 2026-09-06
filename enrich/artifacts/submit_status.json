@@ -1,21 +1,23 @@
 {
-  "submitted": false,
-  "reason": "auth_missing",
-  "recorded_at": "2026-09-06T15:15:05.073928+00:00",
-  "job_id": null,
-  "job_state": null,
+  "submitted": true,
+  "reason": "polled",
+  "recorded_at": "2026-09-06T15:44:35.354300+00:00",
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/2948789168064430080",
+  "job_numeric_id": "2948789168064430080",
+  "job_state": "JOB_STATE_PENDING",
   "model": "gemini-3.1-pro-preview",
+  "model_publisher": "publishers/google/models/gemini-3.1-pro-preview",
   "location": "global",
-  "project_set": false,
+  "project_set": true,
   "input_row_count": 1058,
   "input_path": "enrich/artifacts/vertex_batch.jsonl",
-  "missing": [
-    "GCP project id via VERTEX_PROJECT or GOOGLE_CLOUD_PROJECT",
-    "GCS bucket via VERTEX_GCS_BUCKET (gs://bucket or bucket name)",
-    "credentials: GOOGLE_APPLICATION_CREDENTIALS (Vertex SA JSON) or gcloud ADC at ~/.config/gcloud/application_default_credentials.json"
-  ],
+  "missing": [],
   "gcloud_present": false,
   "adc_present": false,
+  "submitted_at": "2026-09-06T15:43:02.340343+00:00",
+  "poll_command": "VERTEX_LOCATION=global python3 -m enrich.submit_batch --poll projects/796629394796/locations/global/batchPredictionJobs/2948789168064430080",
+  "parse_after_success": "Download predictions from the job output prefix to enrich/out/predictions.jsonl, then: python3 -m enrich.parse_results --people pipeline/data/people.jsonl --predictions enrich/out/predictions.jsonl --out pipeline/data/people_enriched.jsonl --retry enrich/artifacts/retry.jsonl --report enrich/artifacts/exclusion_report.json",
+  "people_enriched_written": false,
   "cost_estimate": {
     "model": "gemini-3.1-pro-preview",
     "requests": 1058,
@@ -30,5 +32,16 @@
       "output": 6.0,
       "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, \u2264200K tokens/request"
     }
-  }
+  },
+  "api_errors": [
+    {
+      "when": "2026-09-06T15:42:50Z",
+      "attempt": 1,
+      "location": "injected VERTEX_LOCATION (regional)",
+      "http_status": 404,
+      "message": "The PublisherModel gemini-3.1-pro-preview does not exist.",
+      "status": "NOT_FOUND",
+      "action": "Retried with VERTEX_LOCATION=global (repo default). Submit succeeded."
+    }
+  ]
 }
