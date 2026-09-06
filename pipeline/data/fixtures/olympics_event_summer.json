@@ -1,0 +1,58 @@
+{
+  "Q0OLYEVT1": {
+    "id": "Q0OLYEVT1",
+    "labels": { "en": { "value": "swimming at the 2008 Summer Olympics – fixture 200 metre" } },
+    "claims": {
+      "P361": [
+        {
+          "rank": "normal",
+          "mainsnak": {
+            "snaktype": "value",
+            "datavalue": { "value": { "id": "Q8567" } }
+          }
+        }
+      ],
+      "P641": [
+        {
+          "rank": "normal",
+          "mainsnak": {
+            "snaktype": "value",
+            "datavalue": { "value": { "id": "Q0OLYSPORT" } }
+          }
+        }
+      ]
+    }
+  },
+  "Q0OLYEVT2": {
+    "id": "Q0OLYEVT2",
+    "labels": { "en": { "value": "swimming at the 2012 Summer Olympics – fixture 200 metre" } },
+    "claims": {
+      "P361": [
+        {
+          "rank": "normal",
+          "mainsnak": {
+            "snaktype": "value",
+            "datavalue": { "value": { "id": "Q8577" } }
+          }
+        }
+      ],
+      "P641": [
+        {
+          "rank": "normal",
+          "mainsnak": {
+            "snaktype": "value",
+            "datavalue": { "value": { "id": "Q0OLYSPORT" } }
+          }
+        }
+      ]
+    }
+  },
+  "Q0OLYSPORT": {
+    "id": "Q0OLYSPORT",
+    "labels": { "en": { "value": "swimming" } }
+  },
+  "Q0OLYCTRY": {
+    "id": "Q0OLYCTRY",
+    "labels": { "en": { "value": "United States" } }
+  }
+}

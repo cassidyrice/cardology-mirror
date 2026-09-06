@@ -48,6 +48,8 @@
     "test:seo-senators": "bun test seo-pages/senators.test.ts",
     "build:seo-olympics-winter": "bun seo-pages/src/olympics/winter/build.ts",
     "test:seo-olympics-winter": "bun test seo-pages/olympics-winter.test.ts",
+    "build:seo-olympics": "bun seo-pages/src/olympics/build.ts",
+    "test:seo-olympics": "bun test seo-pages/olympics.test.ts",
     "build:seo-tonys": "bun seo-pages/src/tonys/build.ts",
     "test:seo-tonys": "bun test seo-pages/tonys.test.ts",
     "build:seo-oscars": "bun seo-pages/src/oscars/build.ts",

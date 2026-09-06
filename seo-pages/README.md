@@ -96,7 +96,7 @@ Person pages link to the existing checkout:
 
 `/checkout/deep-dive?utm_source=celeb&utm_content={slug}`
 
-State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Link only — no checkout form.
+State pages use the same checkout path with `utm_source=states&utm_content={slug}`. Holiday pages use `utm_source=holidays&utm_content={slug}`. Governor pages use `utm_source=governors&utm_content={slug}`. Senator pages use `utm_source=senators&utm_content={slug}`. Oscar pages use `utm_source=oscars&utm_content={slug}`. Summer Olympian pages use `utm_source=olympics-summer&utm_content={slug}`. Link only — no checkout form.
 
 (`/checkout/personal-card-blueprint` is retired and 301s to the Deep Dive product page.)
 
@@ -381,6 +381,30 @@ python3 -m pipeline.olympics.winter # rewrite pipeline/data/olympics/winter/peop
 - Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords, one-event table athletes not on the 8+ list
 
 Path lock: [`olympics-winter-path-ownership.json`](./olympics-winter-path-ownership.json).
+
+## Summer Olympians (isolated `/olympics/summer`)
+
+Separate static build. Day-precision Wikipedia infobox dates verified
+against Wikidata `P569` for athletes with two or more Summer Olympic
+gold medals. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes. Does **not** join the Next.js app, does **not**
+touch checkout/Stripe, and must **not** be deployed. Path-split is
+documented only — not activated.
+
+```bash
+bun run build:seo-olympics   # → seo-pages/dist-olympics
+bun run test:seo-olympics
+python3 -m pipeline.olympics # rewrite pipeline/data/olympics/people.jsonl
+```
+
+- Hub: `/olympics/summer`
+- Person: `/olympics/summer/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=olympics-summer&utm_content={slug}`
+- Data: `pipeline/data/olympics/people.jsonl` (Wikidata gold awards + Wikipedia infobox + Wikidata P569)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Dropped: Winter-only, single-gold, year-only infobox dates, Wikidata precision &lt; 11, Wikipedia↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`olympics-path-ownership.json`](./olympics-path-ownership.json).
 
 ## Tony Award leading acting (isolated `/tonys`)
 

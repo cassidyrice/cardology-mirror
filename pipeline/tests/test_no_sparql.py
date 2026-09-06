@@ -13,8 +13,9 @@ def test_pipeline_modules_do_not_call_sparql() -> None:
     for path in ROOT.rglob("*.py"):
         if "tests" in path.parts:
             continue
-        # Presidents harvest may try SPARQL, then fall back to wbgetentities.
-        if "presidents" in path.parts:
+        # Presidents and olympics harvests may try SPARQL, then fall back
+        # to known lists / wbgetentities.
+        if "presidents" in path.parts or "olympics" in path.parts:
             continue
         text = path.read_text(encoding="utf-8")
         if FORBIDDEN in text:
@@ -24,5 +25,11 @@ def test_pipeline_modules_do_not_call_sparql() -> None:
 
 def test_presidents_module_documents_sparql_fallback() -> None:
     sparql = (ROOT / "presidents" / "sparql.py").read_text(encoding="utf-8")
+    assert FORBIDDEN in sparql
+    assert "fall back" in sparql.lower() or "fallback" in sparql.lower()
+
+
+def test_olympics_module_documents_sparql_fallback() -> None:
+    sparql = (ROOT / "olympics" / "sparql.py").read_text(encoding="utf-8")
     assert FORBIDDEN in sparql
     assert "fall back" in sparql.lower() or "fallback" in sparql.lower()

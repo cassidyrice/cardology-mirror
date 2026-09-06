@@ -207,6 +207,23 @@ python3 -m pytest pipeline/tests/test_winter_olympics.py
 Output: [`data/olympics/winter/people.jsonl`](data/olympics/winter/people.jsonl).
 Pages: `bun run build:seo-olympics-winter`. Do not deploy.
 
+## Summer Olympians (isolated `/olympics/summer`)
+
+People with **two or more Summer Olympic gold medals** on Wikidata
+(`P1344` + `P166` Olympic gold, event `P361+` a Summer Games) **and** a
+matching Wikipedia infobox day / Wikidata `P569` (precision 11).
+Winter-only careers, year-only dates, Wikipedia↔Wikidata conflicts,
+minors, and D3 description keywords are dropped. Dates are never
+invented. The celebrity `year_before_1900` cut is **not** applied.
+
+```bash
+python3 -m pipeline.olympics
+python3 -m pytest pipeline/tests/test_olympics.py
+```
+
+Output: [`data/olympics/people.jsonl`](data/olympics/people.jsonl). Pages:
+`bun run build:seo-olympics`. Do not deploy.
+
 ## Tony Award leading acting (isolated `/tonys`)
 
 Leading Actor / Leading Actress winners in a play or musical. Wikipedia

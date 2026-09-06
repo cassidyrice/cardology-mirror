@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardblueprints.com/schema/olympics.json",
+  "title": "Summer Olympic multi-gold birth-card person",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "qid",
+    "name",
+    "slug",
+    "birth_date",
+    "death_date",
+    "card",
+    "source_text",
+    "source_url",
+    "wikipedia_title",
+    "wikipedia_infobox_date",
+    "wikidata_birth_date",
+    "dob_crosscheck",
+    "gold_count",
+    "sports",
+    "country",
+    "medals"
+  ],
+  "properties": {
+    "qid": {
+      "type": "string",
+      "pattern": "^Q[0-9]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "death_date": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "card": {
+      "type": "string",
+      "pattern": "^(Joker|([A2-9JQK]|10)[♥♣♦♠])$"
+    },
+    "source_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wikipedia_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "wikipedia_infobox_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "wikidata_birth_date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "dob_crosscheck": {
+      "type": "string",
+      "const": "match"
+    },
+    "gold_count": {
+      "type": "integer",
+      "minimum": 2
+    },
+    "sports": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "country": {
+      "type": "string"
+    },
+    "medals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["year", "games", "event", "sport", "event_qid"],
+        "properties": {
+          "year": { "type": "string" },
+          "games": { "type": "string" },
+          "event": { "type": "string", "minLength": 1 },
+          "sport": { "type": "string" },
+          "event_qid": { "type": "string", "pattern": "^Q[0-9]+$" }
+        }
+      }
+    }
+  }
+}
