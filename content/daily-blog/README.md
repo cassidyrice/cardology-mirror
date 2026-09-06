@@ -50,6 +50,7 @@ DRY_RUN=1 POST_DATE=2026-07-13 bun run generate:daily-blog
 
 ## Rules for public-figure profiles
 
+- Cite the public day from Wikidata `P569` + the English Wikipedia article. Evidence must be a near-verbatim span of the Wikipedia REST summary (`python3 -m pipeline.celebs --apply`). Drop or flag Wikipedia↔Wikidata conflicts; do not pick a date.
 - Use only public figures with a verified public birth date.
 - Use actual people as teaching examples. The point is to make cards recognizable in public behavior, relationship dynamics, creative choices, leadership patterns, audience bonds, and repeated social roles.
 - Write with confidence about visible patterns. Keep the limits quiet and precise: do not reduce a whole person to one card, claim secret motives, or present the card as the only cause of an event.

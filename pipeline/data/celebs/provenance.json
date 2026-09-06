@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-09-06T21:24:35.762876+00:00",
+  "catalog_count": 57,
+  "kept": 56,
+  "excluded": 1,
+  "by_reason": {
+    "dob_conflict": 1
+  },
+  "copy": "Existing /blog/{slug} celebrity profiles only. Citations are Wikidata P569 + Wikipedia REST summaries. source_text containment is required. No path-split. No Stripe. Dates are never invented.",
+  "exclusions": [
+    {
+      "name": "Lady Gaga",
+      "slug": "lady-gaga-birth-card-profile",
+      "path": "/blog/lady-gaga-birth-card-profile",
+      "qid": "Q19848",
+      "claimed_birth_date": "1986-03-28",
+      "wikidata_dates": [
+        "1986-03-20",
+        "1986-03-28"
+      ],
+      "reason": "dob_conflict"
+    }
+  ]
+}

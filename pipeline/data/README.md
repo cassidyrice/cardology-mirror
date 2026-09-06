@@ -49,6 +49,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Emmy provenance | `pipeline/data/emmys/provenance.json` | yes |
 | NASA astronauts dataset | `pipeline/data/astronauts/people.jsonl` | yes |
 | NASA astronauts provenance | `pipeline/data/astronauts/provenance.json` | yes |
+| Celeb blog citations | `pipeline/data/celebs/people.jsonl` | yes |
+| Celeb blog provenance | `pipeline/data/celebs/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

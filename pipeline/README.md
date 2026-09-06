@@ -309,6 +309,25 @@ Writes [`../lib/famous-birthdays.json`](../lib/famous-birthdays.json) and
 [`data/famous-birthdays/provenance.json`](data/famous-birthdays/provenance.json).
 Do not deploy.
 
+## Existing celebrity blog profiles (citations only)
+
+Ground public DOBs on the live `/blog/{name}-birth-card-profile` pages
+already on cardology-mirror (~57). Wikidata `P569` day precision must
+match the page's claimed public day. Wikipedia REST summaries are
+`source_text`. Evidence must be a near-verbatim span of that summary.
+Conflicts, year-only dates, minors, and D3 keywords are dropped or
+flagged. Dates are never invented. No new `/birth-card/{person-slug}`
+path-split.
+
+```bash
+python3 -m pipeline.celebs
+python3 -m pipeline.celebs --apply
+python3 -m pytest pipeline/tests/test_celeb_blog_citations.py
+```
+
+Output: [`data/celebs/people.jsonl`](data/celebs/people.jsonl). Do not
+deploy. Do not touch Stripe.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

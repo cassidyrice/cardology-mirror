@@ -11,6 +11,7 @@ import {
   blogPostPath,
   relatedBlogPosts,
   type BlogFaq,
+  type BlogLink,
   type BlogPost,
 } from "@/lib/blog";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -74,6 +75,17 @@ export default async function BlogPostPage({
 
   const related = relatedBlogPosts(post);
   const jsonLd = [
+    ...(post.citations?.status === "verified" && post.citations.birthDate
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: post.title.split(" Birth Card Profile")[0],
+            birthDate: post.citations.birthDate,
+            sameAs: [post.citations.wikidataUrl, post.citations.wikipediaUrl].filter(Boolean),
+          },
+        ]
+      : []),
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -185,19 +197,50 @@ export default async function BlogPostPage({
               {section.links && section.links.length > 0 && (
                 <div className="mt-5 flex flex-wrap gap-2">
                   {section.links.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f] transition hover:bg-[#eadfcd]"
-                    >
-                      {link.label}
-                    </Link>
+                    <ContentLink key={link.href} link={link} />
                   ))}
                 </div>
               )}
             </section>
           ))}
         </div>
+
+        {post.citations && (
+          <p className="mt-10 text-sm leading-relaxed text-[#5b5148]" data-slot="sources">
+            {post.citations.status === "verified" ? (
+              <>
+                Sources: Wikidata P569 CC0
+                {post.citations.qid ? ` (${post.citations.qid})` : ""}
+                {post.citations.wikidataUrl && (
+                  <>
+                    {" "}
+                    <a href={post.citations.wikidataUrl} rel="noopener noreferrer" className="underline underline-offset-4">
+                      wikidata.org
+                    </a>
+                  </>
+                )}
+                {" + "}
+                Wikipedia CC BY-SA 4.0
+                {post.citations.wikipediaTitle ? ` (${post.citations.wikipediaTitle})` : ""}
+                {post.citations.wikipediaUrl && (
+                  <>
+                    {" "}
+                    <a href={post.citations.wikipediaUrl} rel="noopener noreferrer" className="underline underline-offset-4">
+                      wikipedia.org
+                    </a>
+                  </>
+                )}
+                . Birth date {post.citations.birthDate} matches both sources. Coordinates, not fortune-telling.
+              </>
+            ) : (
+              <>
+                Sources flagged: Wikidata P569 lists more than one day-precision date
+                {post.citations.wikidataDates?.length ? ` (${post.citations.wikidataDates.join(" and ")})` : ""}.
+                Dropped, not guessed. This page is not a verified public-date citation.
+              </>
+            )}
+          </p>
+        )}
 
 
         <section className="mt-12 border-t border-[#14110d]/15 pt-8">
@@ -236,6 +279,23 @@ export default async function BlogPostPage({
         </section>
       </article>
     </SeoShell>
+  );
+}
+
+function ContentLink({ link }: { link: BlogLink }) {
+  const className =
+    "rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f] transition hover:bg-[#eadfcd]";
+  if (link.href.startsWith("https://") || link.href.startsWith("http://")) {
+    return (
+      <a href={link.href} rel="noopener noreferrer" className={className}>
+        {link.label}
+      </a>
+    );
+  }
+  return (
+    <Link href={link.href} className={className}>
+      {link.label}
+    </Link>
   );
 }
 
