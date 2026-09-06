@@ -143,3 +143,19 @@ Dates are the Pro Football Hall of Fame **Franchise Date** (grant through reloca
 CTA: `/checkout/deep-dive?utm_source=nfl&utm_content={slug}` ($9 Birth Card Deep Dive). Cards are coordinates, not fortune-telling.
 
 Path lock: [`franchise-path-ownership.json`](./franchise-path-ownership.json).
+
+## US presidents (isolated `/presidents`)
+
+Separate static build. Does **not** take celebrity `/birth-card/{slug}` or live
+card-meaning routes.
+
+```bash
+bun run build:seo-presidents   # → seo-pages/dist-presidents
+bun run test:seo-presidents
+```
+
+- Hub: `/presidents`
+- Person: `/presidents/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=presidents&utm_content={slug}`
+- Data: `pipeline/data/presidents/people.jsonl` (Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.

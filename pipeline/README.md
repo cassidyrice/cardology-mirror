@@ -70,6 +70,19 @@ python3 -m pipeline.build_dataset --fetch --months 8 \
   --out pipeline/data/people.jsonl
 ```
 
+## US presidents (isolated `/presidents`)
+
+45 people / 47 presidencies. SPARQL first (`P39=Q11696`), then known Q-ids +
+`wbgetentities` if `query.wikidata.org` times out. Wikipedia home-state list
+cross-checks month/day. Birth cards use this module's D1 rule.
+
+```bash
+python3 -m pipeline.presidents
+```
+
+Output: [`data/presidents/people.jsonl`](data/presidents/people.jsonl). Pages:
+`bun run build:seo-presidents`. Do not deploy.
+
 ## Harvested card meanings (WP3)
 
 `pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the

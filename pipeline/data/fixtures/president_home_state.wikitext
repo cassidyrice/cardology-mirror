@@ -1,0 +1,14 @@
+{| class="wikitable sortable"
+|-
+! Date of birth !! President
+|-
+| {{dts|February 22, 1732}}  || {{sortname|George|Washington}} || example
+|-
+| {{dts|April 13, 1743}}* || {{sortname|Thomas|Jefferson}} || example
+|-
+| {{dts|July 11, 1767}} ||  {{sortname|John Quincy|Adams|John Quincy Adams}} || example
+|-
+| {{dts|October 30, 1735}}  || {{sortname|John|Adams}} || example
+|-
+| {{dts|June 14, 1946}} ||{{sortname|Donald|Trump}} || example
+|}

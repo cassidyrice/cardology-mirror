@@ -10,6 +10,7 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.build_dataset --from-seed
   python -m pipeline.harvest_card_meanings
   python -m pipeline.build_franchises
+  python -m pipeline.presidents
 
 See pipeline/README.md. Vertex batch stub: python -m enrich.make_batch (no spend).
 """

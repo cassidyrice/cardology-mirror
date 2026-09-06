@@ -26,6 +26,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Dataset | `pipeline/data/people.jsonl` | yes (seed rebuild artifact) |
 | Exclusion report | `pipeline/data/exclusions.json` | yes (counts + reasons) |
 | HTTP caches | `pipeline/data/cache/` | no |
+| Presidents dataset | `pipeline/data/presidents/people.jsonl` | yes |
+| Presidents provenance | `pipeline/data/presidents/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

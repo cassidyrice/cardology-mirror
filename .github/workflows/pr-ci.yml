@@ -40,6 +40,9 @@ jobs:
       - name: NFL franchise SEO scaffold
         run: bun run build:franchise-pages
 
+      - name: Presidents birth-card scaffold
+        run: bun run build:seo-presidents
+
       - name: Fast unit tests
         run: |
           bun test \
@@ -67,7 +70,8 @@ jobs:
             scripts/worker-production-contract-lib.test.ts \
             seo-pages/seo-pages.test.ts \
             seo-pages/states.test.ts \
-            seo-pages/franchise.test.ts
+            seo-pages/franchise.test.ts \
+            seo-pages/presidents.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

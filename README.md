@@ -31,6 +31,16 @@ bun run test:seo-pages
 Path ownership and the Cloudflare Pages split note: [`seo-pages/README.md`](./seo-pages/README.md).
 US states admission coordinates (hub + 50 pages, CRS dates): [`seo-pages/data/STATES.md`](./seo-pages/data/STATES.md).
 
+US presidents birth-card pages are a second isolated build (`/presidents/{slug}`):
+
+```bash
+bun run build:seo-presidents   # → seo-pages/dist-presidents
+bun run test:seo-presidents
+python3 -m pipeline.presidents # refresh Wikidata + Wikipedia JSONL
+```
+
+Do not deploy either scaffold from this work.
+
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
 [`pipeline/data/card_meanings.json`](./pipeline/data/card_meanings.json) and
 [`enrich/`](./enrich/).

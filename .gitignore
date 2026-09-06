@@ -1,5 +1,6 @@
 seo-pages/dist
 seo-pages/dist-franchise
+seo-pages/dist-presidents
 .playwright-mcp/
 
 node_modules

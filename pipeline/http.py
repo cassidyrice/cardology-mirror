@@ -24,13 +24,17 @@ def fetch_json(
     retries: int = 5,
     timeout: float = 20.0,
     sleep_s: float = 0.1,
+    extra_headers: dict[str, str] | None = None,
 ) -> Any:
     if cache_path is not None and cache_path.is_file():
         return json.loads(cache_path.read_text(encoding="utf-8"))
 
     last_error: Exception | None = None
+    headers = {"User-Agent": USER_AGENT}
+    if extra_headers:
+        headers.update(extra_headers)
     for attempt in range(retries):
-        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        request = urllib.request.Request(url, headers=headers)
         try:
             with urllib.request.urlopen(request, timeout=timeout) as response:
                 payload = json.loads(response.read().decode("utf-8"))
