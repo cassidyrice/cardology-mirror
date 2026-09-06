@@ -1,6 +1,7 @@
-# Vertex enrich retry (836) — STOP for BOSS APPROVE
+# Vertex enrich retry (836) — SUBMITTED
 
-Do **not** submit this batch. Wait for BOSS APPROVE.
+BOSS APPROVE landed. #70 merged at `5c2ec113958061b14bf3f69a69598fb84fb047d6`.
+The 836-row tightened batch is live. Do **not** submit a second copy.
 
 ## Root cause
 
@@ -61,18 +62,44 @@ See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
 HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 `gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
 
-## After BOSS APPROVE (not this PR)
+## Submitted (2026-09-06)
 
-1. Upload `enrich/artifacts/vertex_retry_batch.jsonl` with the #66 submit path
-   (`VERTEX_LOCATION=global`, `gemini-3.1-pro-preview`).
-2. Poll, download `enrich/out/predictions.jsonl`.
-3. Parse with **near-verbatim** containment (not fuzzy 0.85).
-4. Append accepted rows to `pipeline/data/people_enriched.jsonl`. Do not
+| Field | Value |
+|---|---|
+| **Job id** | `projects/796629394796/locations/global/batchPredictionJobs/403973903623389184` |
+| **Numeric id** | `403973903623389184` |
+| **Display name** | `cardology-wp3-enrich-20260906T175440Z` |
+| **State after 90s poll** | `JOB_STATE_QUEUED` |
+| **Model** | `gemini-3.1-pro-preview` |
+| **Location** | `global` (injected regional location 404s this model) |
+| **Rows** | **836 / 836** |
+| **Contract** | near-verbatim `evidence.fact`, meta ≤145, `temperature=0.0`, `thinkingLevel=LOW` |
+| **#70 merge SHA** | `5c2ec113958061b14bf3f69a69598fb84fb047d6` |
+
+See `enrich/artifacts/retry_submit_status.json`. First job (`2948789168064430080`)
+took ~42 minutes PENDING→SUCCEEDED; do not block on this one.
+
+### Poll later
+
+`enrich.submit_batch` still lives on #66 (unmerged). From a checkout that has it:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS=/tmp/sa.json
+export VERTEX_LOCATION=global
+python3 -m enrich.submit_batch --poll \
+  projects/796629394796/locations/global/batchPredictionJobs/403973903623389184
+```
+
+When `JOB_STATE_SUCCEEDED`:
+
+1. Download predictions from the job output prefix to `enrich/out/predictions.jsonl`
+2. Parse with **near-verbatim** containment (not fuzzy 0.85)
+3. Append accepted rows to `pipeline/data/people_enriched.jsonl`. Do not
    overwrite the 222 from #67.
 
 ## Out of scope
 
-- No Vertex submit / poll / download
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
 - #62 / #66 left unmerged
+- Results not downloaded — job still queued after the short poll

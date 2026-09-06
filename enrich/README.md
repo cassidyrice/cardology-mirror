@@ -49,7 +49,9 @@ python3 -m enrich.estimate \
   --out enrich/artifacts/cost_estimate.json
 ```
 
-See `enrich/RETRY_PLAN.md`. **Do not submit** until BOSS APPROVE.
+See `enrich/RETRY_PLAN.md`. Submitted as Vertex job
+`403973903623389184` (`JOB_STATE_QUEUED` after a 90s poll). Do not submit
+a second copy.
 
 ## Local dry-run (fixtures, no spend)
 
