@@ -19,6 +19,17 @@ bun run dev   # http://localhost:3577
 bun run test  # public-truth validation gate
 ```
 
+## Celebrity SEO scaffold (isolated)
+
+Day-0 templates for future `/birth-card/{person}`, `/card/*`, and `/birthday/*` pages live in [`seo-pages/`](./seo-pages/). They do not join this Next.js app and must not be deployed yet.
+
+```bash
+bun run build:seo-pages   # → seo-pages/dist
+bun run test:seo-pages
+```
+
+Path ownership and the Cloudflare Pages split note: [`seo-pages/README.md`](./seo-pages/README.md).
+
 ## Deploy
 
 Pushing to GitHub does **not** deploy. Production is only from the canonical tree `~/cardology-elroy-qa`:

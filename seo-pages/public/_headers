@@ -1,0 +1,34 @@
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Cross-Origin-Resource-Policy: same-site
+
+/birth-card/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/card/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/birthday/*
+  Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800
+
+/today
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/sitemap-celeb.xml
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/sitemap-people.xml
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/sitemap-cards.xml
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/sitemap-birthdays.xml
+  Cache-Control: public, max-age=0, s-maxage=3600
+
+/robots.txt
+  Cache-Control: public, max-age=0, s-maxage=3600

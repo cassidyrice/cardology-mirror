@@ -1,3 +1,5 @@
+seo-pages/dist
+
 node_modules
 .next
 .vercel

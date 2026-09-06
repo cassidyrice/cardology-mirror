@@ -1,0 +1,9 @@
+{
+  "name": "cardblueprints-celeb-seo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun src/build.ts",
+    "test": "bun test"
+  }
+}

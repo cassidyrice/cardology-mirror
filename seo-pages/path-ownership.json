@@ -1,0 +1,50 @@
+{
+  "project": "cardblueprints-celeb-seo",
+  "origin": "https://cardblueprints.com",
+  "status": "scaffold-only-do-not-deploy",
+  "cass_lock": "D2",
+  "pages_will_own": [
+    "/birth-card/{person-slug}",
+    "/card/{rank}-of-{suit}",
+    "/card/joker",
+    "/birthday/{month}-{day}",
+    "/sitemap-celeb.xml",
+    "/sitemap-people.xml",
+    "/sitemap-cards.xml",
+    "/sitemap-birthdays.xml"
+  ],
+  "pages_may_own_after_worker_cutover": [
+    "/today"
+  ],
+  "never_own": [
+    "/checkout",
+    "/checkout/*",
+    "/api/checkout/*",
+    "/create-checkout",
+    "/api/*",
+    "/products/*"
+  ],
+  "remain_on_existing_origin": {
+    "next_js_pages": [
+      "/birth-card",
+      "/birth-card/{rank}-of-{suit}",
+      "/birth-card/joker",
+      "/today",
+      "/sitemap.xml",
+      "/robots.txt"
+    ],
+    "unlock_worker": [
+      "/born-on/",
+      "/born-on/{month}-{day}",
+      "/compatibility/*",
+      "/sitemap-cardology.xml",
+      "/sitemap-compatibility.xml"
+    ]
+  },
+  "person_slug_must_not_collide_with": [
+    "joker",
+    "{rank}-of-{suit}",
+    "{month}-{day}"
+  ],
+  "router_note": "A Cloudflare Worker in front of the two Pages projects must send person slugs to this site and keep card slugs on the existing Next.js /birth-card pages until those hubs move to /card/."
+}
