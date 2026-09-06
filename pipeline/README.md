@@ -70,11 +70,20 @@ python3 -m pipeline.build_dataset --fetch --months 8 \
   --out pipeline/data/people.jsonl
 ```
 
+## Harvested card meanings (WP3)
+
+`pipeline/data/card_meanings.json` is the 52-card + Joker harvest from the
+live `/birth-card/{rank}-of-{suit}` and `/birth-card/joker` source copy.
+Regenerate with `python3 -m pipeline.harvest_card_meanings` after meaning
+pages change. The Vertex batch stub (`enrich/make_batch.py`) reads this
+file and does **not** submit a job.
+
 ## Seed drop (~1,161 rows)
 
 Verified `celebrity_birth_cards.csv` and `wikidata_people_raw.psv` live
-off-repo. Copy them into the drop paths documented in
-[`data/README.md`](data/README.md), then:
+off-repo. Copy them into `pipeline/data/seed/` (see
+[`data/seed/README.md`](data/seed/README.md)). `--from-seed` accepts CSV
+columns `name,birth_date,birth_card,enwiki_views_8mo,slug`. Then:
 
 ```bash
 python3 -m pipeline.build_dataset --from-seed \

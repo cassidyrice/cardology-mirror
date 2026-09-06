@@ -24,8 +24,11 @@ from pipeline.wikipedia_summary import fetch_summary
 ROOT = Path(__file__).resolve().parent
 SCHEMA_PATH = ROOT / "schema" / "person.schema.json"
 DEFAULT_BLOCKLIST = ROOT / "blocklist.txt"
+DEFAULT_SEED_CSV = ROOT / "data" / "seed" / "celebrity_birth_cards.csv"
+DEFAULT_SEED_PSV = ROOT / "data" / "seed" / "wikidata_people_raw.psv"
 DEFAULT_DROP_CSV = ROOT / "data" / "drop" / "celebrity_birth_cards.csv"
 DEFAULT_DROP_PSV = ROOT / "data" / "drop" / "wikidata_people_raw.psv"
+SEED_CSV_COLUMNS = ("name", "birth_date", "birth_card", "enwiki_views_8mo", "slug")
 COMMONS_FILEPATH = "https://commons.wikimedia.org/wiki/Special:FilePath/{name}"
 COMMONS_API = (
     "https://commons.wikimedia.org/w/api.php?action=query"
@@ -36,6 +39,65 @@ _LICENSE_CC0 = re.compile(r"\bcc0\b|cc-?zero", re.IGNORECASE)
 _LICENSE_CC_BY = re.compile(r"cc[- ]?by", re.IGNORECASE)
 _LICENSE_NC = re.compile(r"(^|[-_ ])nc($|[-_ ])", re.IGNORECASE)
 _LICENSE_ND = re.compile(r"(^|[-_ ])nd($|[-_ ])", re.IGNORECASE)
+
+
+def resolve_seed_file(explicit: Path | None, *candidates: Path) -> Path | None:
+    """Return the first existing seed/drop file. ``explicit`` wins when it exists."""
+    ordered = (([explicit] if explicit is not None else []) + list(candidates))
+    for path in ordered:
+        if path is not None and path.is_file():
+            return path
+    return None
+
+
+def require_seed_csv(explicit: Path | None = None) -> Path:
+    if explicit is not None:
+        if explicit.is_file():
+            return explicit
+        raise SystemExit(
+            f"seed CSV not found: {explicit} "
+            "(expected columns name,birth_date,birth_card,enwiki_views_8mo,slug; "
+            "see pipeline/data/seed/README.md)"
+        )
+    path = resolve_seed_file(None, DEFAULT_SEED_CSV, DEFAULT_DROP_CSV)
+    if path is None:
+        raise SystemExit(
+            "seed CSV not found. Copy the verified drop to "
+            "pipeline/data/seed/celebrity_birth_cards.csv "
+            "(columns: name,birth_date,birth_card,enwiki_views_8mo,slug). "
+            "See pipeline/data/seed/README.md"
+        )
+    return path
+
+
+def require_seed_psv(explicit: Path | None = None) -> Path:
+    if explicit is not None:
+        if explicit.is_file():
+            return explicit
+        raise SystemExit(
+            f"seed PSV not found: {explicit} "
+            "(copy wikidata_people_raw.psv into pipeline/data/seed/; "
+            "do not invent bios)"
+        )
+    path = resolve_seed_file(None, DEFAULT_SEED_PSV, DEFAULT_DROP_PSV)
+    if path is None:
+        raise SystemExit(
+            "seed PSV not found. The 5-column celebrity CSV is the index only; "
+            "copy wikidata_people_raw.psv into pipeline/data/seed/ "
+            "(do not invent bios). See pipeline/data/seed/README.md"
+        )
+    return path
+
+
+def validate_seed_csv_columns(fieldnames: list[str] | None) -> None:
+    present = {name.strip() for name in (fieldnames or []) if name}
+    missing = [column for column in SEED_CSV_COLUMNS if column not in present]
+    if missing:
+        raise SystemExit(
+            "seed CSV is missing required columns: "
+            + ", ".join(missing)
+            + f" (expected {','.join(SEED_CSV_COLUMNS)})"
+        )
 
 
 def slugify(name: str) -> str:
@@ -174,6 +236,7 @@ def _write_outputs(
     excluded: list[dict],
     out_jsonl: Path,
     exclusion_report: Path,
+    warnings: list[dict] | None = None,
 ) -> dict[str, Any]:
     validate_people(people)
     out_jsonl.parent.mkdir(parents=True, exist_ok=True)
@@ -190,10 +253,16 @@ def _write_outputs(
         "excluded_count": len(excluded),
         "by_reason": by_reason,
         "excluded": excluded,
+        "warnings": warnings or [],
     }
     exclusion_report.parent.mkdir(parents=True, exist_ok=True)
     exclusion_report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    return {"kept": len(people), "excluded": len(excluded), "by_reason": by_reason}
+    return {
+        "kept": len(people),
+        "excluded": len(excluded),
+        "by_reason": by_reason,
+        "warnings": len(warnings or []),
+    }
 
 
 def build_from_seed(
@@ -215,9 +284,11 @@ def build_from_seed(
 
     people: list[dict] = []
     excluded: list[dict] = []
+    warnings: list[dict] = []
 
     with csv_path.open(encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
+        validate_seed_csv_columns(reader.fieldnames)
         for csv_row in reader:
             name = (csv_row.get("name") or "").strip()
             slug = (csv_row.get("slug") or slugify(name)).strip()
@@ -296,10 +367,21 @@ def build_from_seed(
                 source_text=source_text,
                 source_url=source_url,
             )
+            seed_card = (csv_row.get("birth_card") or "").strip()
+            if seed_card and seed_card != person["card"]:
+                warnings.append(
+                    {
+                        "qid": qid,
+                        "name": person["name"],
+                        "seed_birth_card": seed_card,
+                        "computed_card": person["card"],
+                        "reason": "birth_card_mismatch",
+                    }
+                )
             people.append(person)
 
     people.sort(key=lambda row: (-row["views"], row["slug"]))
-    return _write_outputs(people, excluded, out_jsonl, exclusion_report)
+    return _write_outputs(people, excluded, out_jsonl, exclusion_report, warnings=warnings)
 
 
 def build_from_caches(
@@ -418,9 +500,13 @@ def build_from_caches(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Build people.jsonl for celebrity birth-card SEO.")
-    parser.add_argument("--from-seed", action="store_true", help="Rebuild from the ~1,161-row drop files.")
-    parser.add_argument("--csv", type=Path, default=DEFAULT_DROP_CSV)
-    parser.add_argument("--psv", type=Path, default=DEFAULT_DROP_PSV)
+    parser.add_argument(
+        "--from-seed",
+        action="store_true",
+        help="Rebuild from seed CSV columns name,birth_date,birth_card,enwiki_views_8mo,slug.",
+    )
+    parser.add_argument("--csv", type=Path, default=None)
+    parser.add_argument("--psv", type=Path, default=None)
     parser.add_argument("--pageviews", type=Path, default=Path("pipeline/data/cache/pageviews.jsonl"))
     parser.add_argument("--wikidata-cache", type=Path, default=Path("pipeline/data/cache/wikidata"))
     parser.add_argument("--summaries", type=Path, default=Path("pipeline/data/cache/summaries.jsonl"))
@@ -432,11 +518,11 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.from_seed:
-        if not args.csv.is_file():
-            raise SystemExit(f"seed CSV not found: {args.csv} (see pipeline/data/README.md)")
+        csv_path = require_seed_csv(args.csv)
+        psv_path = require_seed_psv(args.psv)
         result = build_from_seed(
-            csv_path=args.csv,
-            psv_path=args.psv,
+            csv_path=csv_path,
+            psv_path=psv_path,
             out_jsonl=args.out,
             exclusion_report=args.exclusion_report,
             blocklist_path=args.blocklist,

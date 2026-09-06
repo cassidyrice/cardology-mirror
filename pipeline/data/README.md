@@ -1,14 +1,19 @@
 # Pipeline data drop paths
 
 Generated outputs and the off-repo seed set are **not** committed. Copy the
-verified files into the paths below before a seed rebuild.
+verified files into `pipeline/data/seed/` (preferred) or `pipeline/data/drop/`
+before a seed rebuild. Full drop instructions:
+[`seed/README.md`](seed/README.md).
 
 ## Expected drop (off-repo, ~1,161 rows)
 
 | File | Path | Columns |
 |---|---|---|
-| Celebrity seed CSV | `pipeline/data/drop/celebrity_birth_cards.csv` | `name,birth_date,birth_card,enwiki_views_8mo,slug` |
-| Wikidata raw PSV | `pipeline/data/drop/wikidata_people_raw.psv` | `qid\|en_label\|en_description\|p569\|p569_precision\|p26\|p451\|p106\|p18\|enwiki_title\|slug` |
+| Celebrity seed CSV | `pipeline/data/seed/celebrity_birth_cards.csv` | `name,birth_date,birth_card,enwiki_views_8mo,slug` |
+| Wikidata raw PSV | `pipeline/data/seed/wikidata_people_raw.psv` | `qid\|en_label\|en_description\|p569\|p569_precision\|p26\|p451\|p106\|p18\|enwiki_title\|slug` |
+
+`--from-seed` also accepts the same files under `pipeline/data/drop/` if
+`seed/` is empty.
 
 Optional extra CSV column: `qid` (otherwise join on `slug` / normalized name).
 
