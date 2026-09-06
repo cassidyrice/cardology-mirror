@@ -132,10 +132,14 @@ test("path-ownership lock lists Pages-owned prefixes and payment exclusions", ()
     readFileSync(join(import.meta.dir, "path-ownership.json"), "utf8"),
   ) as {
     pages_will_own: string[];
+    states_pages_will_own: string[];
     never_own: string[];
     pages_may_own_after_worker_cutover: string[];
   };
 
+  expect(ownership.states_pages_will_own).toEqual(
+    expect.arrayContaining(["/states", "/states/{slug}", "/sitemap-states.xml"]),
+  );
   expect(ownership.pages_will_own).toEqual(
     expect.arrayContaining([
       "/birth-card/{person-slug}",

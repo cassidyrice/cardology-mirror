@@ -33,7 +33,13 @@ ${body}
 `;
 }
 
-export function renderRobotsTxt(): string {
+export function renderRobotsTxt(options: { allowStates?: boolean } = {}): string {
+  const statesAllow = options.allowStates
+    ? "Allow: /states/\n"
+    : "";
+  const statesSitemap = options.allowStates
+    ? `Sitemap: ${SITE_URL}/sitemap-states.xml\n`
+    : "";
   return `# Isolated celebrity SEO scaffold (WP4).
 # Do not publish this file as the origin robots.txt on cardblueprints.com.
 # Production robots.txt stays on the Next.js app until a Worker merges
@@ -44,7 +50,7 @@ Allow: /birth-card/
 Allow: /card/
 Allow: /birthday/
 Allow: /today
-
+${statesAllow}
 # Payment and app surfaces stay on the existing Next.js origin.
 Disallow: /checkout
 Disallow: /checkout/
@@ -52,7 +58,7 @@ Disallow: /api/
 Disallow: /create-checkout
 
 Sitemap: ${SITE_URL}/sitemap-celeb.xml
-`;
+${statesSitemap}`;
 }
 
 function escapeXml(value: string): string {

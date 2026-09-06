@@ -12,6 +12,8 @@ export function renderLayout(input: {
   jsonLd: JsonLdRecord;
   crumbs: readonly Breadcrumb[];
   body: string;
+  kicker?: string;
+  footer?: string;
 }): string {
   const canonical = abs(input.canonicalPath);
   const crumbNav = input.crumbs
@@ -53,14 +55,14 @@ export function renderLayout(input: {
   <a class="skip" href="#main-content">Skip to content</a>
   <header class="site-header">
     <a class="wordmark" href="${escapeHtml(SITE_URL)}">${escapeHtml(SITE_NAME)}</a>
-    <p class="kicker">Celebrity birth-card pages · scaffold</p>
+    <p class="kicker">${escapeHtml(input.kicker ?? "Celebrity birth-card pages · scaffold")}</p>
   </header>
   <main id="main-content" tabindex="-1">
     <nav class="crumbs" aria-label="Breadcrumb">${crumbNav}</nav>
     ${input.body}
   </main>
   <footer class="site-footer">
-    <p>${escapeHtml(SITE_NAME)} · isolated SEO scaffold · not a live biography corpus</p>
+    <p>${escapeHtml(input.footer ?? `${SITE_NAME} · isolated SEO scaffold · not a live biography corpus`)}</p>
   </footer>
 </body>
 </html>

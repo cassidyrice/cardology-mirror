@@ -306,6 +306,7 @@ export function renderIndexPage(people: readonly EnrichedPerson[]): string {
         <li><a href="/card/joker">Joker card hub</a></li>
         <li><a href="/birthday/december-31">December 31 birthday hub</a></li>
         <li><a href="/today">Daily stub</a></li>
+        <li><a href="/states">US states admission birth cards</a></li>
     </ul>
   `;
 

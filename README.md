@@ -24,11 +24,12 @@ bun run test  # public-truth validation gate
 Day-0 templates for future `/birth-card/{person}`, `/card/*`, and `/birthday/*` pages live in [`seo-pages/`](./seo-pages/). They do not join this Next.js app and must not be deployed yet.
 
 ```bash
-bun run build:seo-pages   # → seo-pages/dist
+bun run build:seo-pages   # → seo-pages/dist (celeb fixtures + /states)
 bun run test:seo-pages
 ```
 
 Path ownership and the Cloudflare Pages split note: [`seo-pages/README.md`](./seo-pages/README.md).
+US states admission coordinates (hub + 50 pages, CRS dates): [`seo-pages/data/STATES.md`](./seo-pages/data/STATES.md).
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
 [`pipeline/data/card_meanings.json`](./pipeline/data/card_meanings.json) and
