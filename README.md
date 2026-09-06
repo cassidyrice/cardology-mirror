@@ -98,6 +98,15 @@ bun run test:seo-cabinet
 python3 -m pipeline.cabinet
 ```
 
+Current US senators birth-card pages are an isolated build (`/senators/{slug}`),
+100 seats, day-precision only:
+
+```bash
+bun run build:seo-senators   # → seo-pages/dist-senators
+bun run test:seo-senators
+python3 -m pipeline.senators
+```
+
 Do not deploy these scaffolds from this work.
 
 WP3 enrich prep (card-meaning harvest + Vertex batch stub, no spend):
