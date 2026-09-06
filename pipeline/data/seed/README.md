@@ -1,4 +1,4 @@
-# Seed drop (off-repo)
+# Seed drop
 
 The verified ~1,161-row celebrity seed lives at
 `celebrity_birth_cards.csv`. Do **not** invent bios. The Wikidata PSV
@@ -56,5 +56,5 @@ and tells you what to drop — it will not invent bios.
 
 ## Gitignore
 
-Real `celebrity_birth_cards.csv` / `wikidata_people_raw.psv` drops stay
-untracked. Keep only this README, `.gitkeep`, and the header template.
+`celebrity_birth_cards.csv` is tracked. `wikidata_people_raw.psv` stays
+untracked. Keep this README, `.gitkeep`, and the header template.
