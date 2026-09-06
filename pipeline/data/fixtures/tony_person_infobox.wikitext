@@ -1,0 +1,6 @@
+{{Infobox person
+| name = Ada Fixture Tony
+| birth_date = {{birth date and age|1965|10|19}}
+| occupation = actor
+}}
+Ada Fixture Tony is a synthetic fixture actor, not a real biography.

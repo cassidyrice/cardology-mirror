@@ -41,6 +41,8 @@ Commons filename. `p569_precision` must be ≥ 11 to keep the row.
 | Cabinet provenance | `pipeline/data/cabinet/provenance.json` | yes |
 | Senators dataset | `pipeline/data/senators/people.jsonl` | yes |
 | Senators provenance | `pipeline/data/senators/provenance.json` | yes |
+| Tony leading-acting dataset | `pipeline/data/tonys/people.jsonl` | yes |
+| Tony provenance | `pipeline/data/tonys/provenance.json` | yes |
 
 ## Fixtures (committed, ≤5 synthetic people)
 

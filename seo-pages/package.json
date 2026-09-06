@@ -15,6 +15,7 @@
     "build:governors": "bun src/governors/build.ts",
     "build:senators": "bun src/senators/build.ts",
     "build:olympics-winter": "bun src/olympics/winter/build.ts",
+    "build:tonys": "bun src/tonys/build.ts",
     "test": "bun test"
   }
 }

@@ -381,3 +381,28 @@ python3 -m pipeline.olympics.winter # rewrite pipeline/data/olympics/winter/peop
 - Dropped: year-only infobox dates, Wikipedia↔Wikidata day conflicts, minors, D3 keywords, one-event table athletes not on the 8+ list
 
 Path lock: [`olympics-winter-path-ownership.json`](./olympics-winter-path-ownership.json).
+
+## Tony Award leading acting (isolated `/tonys`)
+
+Separate static build. Day-precision Wikidata `P569` dates for Leading
+Actor / Leading Actress winners (play + musical), checked against Wikipedia
+person-page birth templates when those templates include a day. Does **not**
+take celebrity `/birth-card/{slug}` or live card-meaning routes. Does **not**
+join the Next.js app, does **not** touch checkout/Stripe, and must **not** be
+deployed.
+
+```bash
+bun run build:seo-tonys   # → seo-pages/dist-tonys
+bun run test:seo-tonys
+python3 -m pipeline.tonys # rewrite pipeline/data/tonys/people.jsonl
+```
+
+- Hub: `/tonys`
+- Person: `/tonys/{slug}`
+- CTA: `/checkout/deep-dive?utm_source=tonys&utm_content={slug}`
+- Data: `pipeline/data/tonys/people.jsonl` (Tony Awards / Wikipedia lists + Wikidata CC0 + Wikipedia summaries)
+- Copy: local templates from `source_text` + harvested card meanings. No Vertex.
+- Scope: Best Actor/Actress in a Play and in a Musical only. Featured acting omitted.
+- Dropped: year-only Wikipedia dates, Wikidata precision &lt; 11, Wikipedia↔Wikidata conflicts, minors, D3 keywords
+
+Path lock: [`tonys-path-ownership.json`](./tonys-path-ownership.json).
