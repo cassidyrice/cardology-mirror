@@ -107,7 +107,7 @@
     "body": "upper-arm",
     "bodyLabel": "upper arm",
     "image": "/tattoos/jack-of-hearts.jpg",
-    "pipCount": 11
+    "pipCount": 1
   },
   {
     "slug": "queen-of-hearts",
@@ -117,7 +117,7 @@
     "body": "calf",
     "bodyLabel": "calf",
     "image": "/tattoos/queen-of-hearts.jpg",
-    "pipCount": 12
+    "pipCount": 1
   },
   {
     "slug": "king-of-hearts",
@@ -127,7 +127,7 @@
     "body": "inner-wrist",
     "bodyLabel": "inner wrist",
     "image": "/tattoos/king-of-hearts.jpg",
-    "pipCount": 13
+    "pipCount": 1
   },
   {
     "slug": "ace-of-clubs",
@@ -237,7 +237,7 @@
     "body": "calf",
     "bodyLabel": "calf",
     "image": "/tattoos/jack-of-clubs.jpg",
-    "pipCount": 11
+    "pipCount": 1
   },
   {
     "slug": "queen-of-clubs",
@@ -247,7 +247,7 @@
     "body": "inner-wrist",
     "bodyLabel": "inner wrist",
     "image": "/tattoos/queen-of-clubs.jpg",
-    "pipCount": 12
+    "pipCount": 1
   },
   {
     "slug": "king-of-clubs",
@@ -257,7 +257,7 @@
     "body": "back-of-hand",
     "bodyLabel": "back of the hand",
     "image": "/tattoos/king-of-clubs.jpg",
-    "pipCount": 13
+    "pipCount": 1
   },
   {
     "slug": "ace-of-diamonds",
@@ -367,7 +367,7 @@
     "body": "inner-wrist",
     "bodyLabel": "inner wrist",
     "image": "/tattoos/jack-of-diamonds.jpg",
-    "pipCount": 11
+    "pipCount": 1
   },
   {
     "slug": "queen-of-diamonds",
@@ -377,7 +377,7 @@
     "body": "back-of-hand",
     "bodyLabel": "back of the hand",
     "image": "/tattoos/queen-of-diamonds.jpg",
-    "pipCount": 12
+    "pipCount": 1
   },
   {
     "slug": "king-of-diamonds",
@@ -387,7 +387,7 @@
     "body": "inner-forearm",
     "bodyLabel": "inner forearm",
     "image": "/tattoos/king-of-diamonds.jpg",
-    "pipCount": 13
+    "pipCount": 1
   },
   {
     "slug": "ace-of-spades",
@@ -497,7 +497,7 @@
     "body": "back-of-hand",
     "bodyLabel": "back of the hand",
     "image": "/tattoos/jack-of-spades.jpg",
-    "pipCount": 11
+    "pipCount": 1
   },
   {
     "slug": "queen-of-spades",
@@ -507,7 +507,7 @@
     "body": "inner-forearm",
     "bodyLabel": "inner forearm",
     "image": "/tattoos/queen-of-spades.jpg",
-    "pipCount": 12
+    "pipCount": 1
   },
   {
     "slug": "king-of-spades",
@@ -517,6 +517,6 @@
     "body": "outer-forearm",
     "bodyLabel": "outer forearm",
     "image": "/tattoos/king-of-spades.jpg",
-    "pipCount": 13
+    "pipCount": 1
   }
 ]
