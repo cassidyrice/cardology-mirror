@@ -22,8 +22,10 @@ const SLUG_RANK: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: 
 
 function codeFor(label: string): string {
   const m = /^(\w+) of (\w+)$/.exec(label.trim());
-  if (!m || !RANK[m[1]] || !SUIT[m[2]]) throw new Error(`bad card label: ${label}`);
-  return `${RANK[m[1]]}${SUIT[m[2]]}`;
+  if (!m || !SUIT[m[2]]) throw new Error(`bad card label: ${label}`);
+  const rank = RANK[m[1]] ?? (/^(10|[2-9])$/.test(m[1]) ? m[1] : null);
+  if (!rank) throw new Error(`bad card label: ${label}`);
+  return `${rank}${SUIT[m[2]]}`;
 }
 function slugFor(code: string): string {
   const rank = code.slice(0, -1);
@@ -75,6 +77,17 @@ const missing = Object.values(entries).filter((e) => !e.coreShadow || !e.worldvi
 if (Object.keys(entries).length !== 52 || missing.length) {
   console.error(`parsed ${Object.keys(entries).length} cards; incomplete: ${missing.map((e) => e.code).join(", ")}`);
   process.exit(1);
+}
+// Optional second arg: the shadow keywords JSON (52 rows: Card, Keyword 1..4)
+// exported from Cass's shadow_card_meanings.xlsx. Merged as `keywords`.
+const kwPath = process.argv[3];
+if (kwPath) {
+  const rows = JSON.parse(readFileSync(kwPath, "utf8")) as Record<string, string>[];
+  for (const row of rows) {
+    const code = codeFor(row.Card.replace(/^(\d+|Ace|Jack|Queen|King) of/, (w) => w));
+    const e = entries[code];
+    if (e) (e as Entry & { keywords?: string[] }).keywords = [1, 2, 3, 4].map((i) => (row[`Keyword ${i}`] || "").trim()).filter(Boolean);
+  }
 }
 const out = join(import.meta.dir, "..", "lib", "shadow-deck.json");
 writeFileSync(out, JSON.stringify(entries, null, 2) + "\n");

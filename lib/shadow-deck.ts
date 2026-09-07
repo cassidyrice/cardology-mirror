@@ -16,6 +16,7 @@ export interface ShadowEntry {
   inTheLight: string;
   lightName: string | null; // "The Artisan"
   prompts: string[]; // three journaling prompts
+  keywords?: string[]; // four shadow keywords from shadow_card_meanings.xlsx
 }
 
 const DECK = SHADOW_DECK as Record<string, ShadowEntry>;

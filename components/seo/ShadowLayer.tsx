@@ -23,6 +23,15 @@ export function ShadowLayer({ code }: { code: string }) {
         &ldquo;{s.worldview}&rdquo;
       </blockquote>
       <p className="prose-reading mt-4 text-mist">{s.coreShadow}</p>
+      {s.keywords && s.keywords.length > 0 ? (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Shadow keywords">
+          {s.keywords.map((k) => (
+            <li key={k} className="rounded-full border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+              {k}
+            </li>
+          ))}
+        </ul>
+      ) : null}
       <p className="prose-reading mt-3 text-mist">
         <span className="font-semibold text-bone">In the light{s.lightName ? `: ${s.lightName}` : ""}.</span>{" "}
         {s.inTheLight}

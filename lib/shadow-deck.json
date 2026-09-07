@@ -12,6 +12,12 @@
       "Describe a time your emotions felt like a flood you couldn't control. What was the outcome?",
       "Are you currently pouring your feelings onto someone in the hope they will \"fix\" or \"complete\" you?",
       "What is one small, healthy way you can express a powerful emotion today without overwhelming yourself or someone else?"
+    ],
+    "keywords": [
+      "emotional overwhelm",
+      "neediness",
+      "identity confusion",
+      "obsession with love"
     ]
   },
   "2♥": {
@@ -27,6 +33,12 @@
       "In which relationship (past or present) has your identity most completely merged with the other person’s?",
       "What part of yourself are you afraid of facing alone, without a partner's validation?",
       "What is one decision you can make this week that is purely for your own well-being, without considering a partner’s preference?"
+    ],
+    "keywords": [
+      "codependency",
+      "fear of abandonment",
+      "merging boundaries",
+      "validation-seeking"
     ]
   },
   "3♥": {
@@ -42,6 +54,12 @@
       "Recall a time when a friend's success sparked a feeling of jealousy or resentment in you. What was that feeling trying to tell you about your own desires?",
       "When have you felt like the \"third wheel,\" and how did you react to that feeling of exclusion?",
       "Is there a current friendship where you are withholding praise or support? What are you afraid of?"
+    ],
+    "keywords": [
+      "emotional inconsistency",
+      "scattered desire",
+      "performative affection",
+      "indecisiveness"
     ]
   },
   "4♥": {
@@ -57,6 +75,12 @@
       "What offers of connection or joy have you recently turned down? What was the reason you gave, and what was the *real* reason?",
       "Describe the emotional \"wall\" you have built. What is it made of?",
       "If you were to let one new person or experience into your heart today, what would be your biggest fear?"
+    ],
+    "keywords": [
+      "emotional rigidity",
+      "control in love",
+      "fear of change",
+      "emotional shutdown"
     ]
   },
   "5♥": {
@@ -72,6 +96,12 @@
       "What past hurt or loss do you find yourself replaying most often? What comfort do you get from holding onto this story?",
       "Look at a current challenge. Are you focusing entirely on what has been lost, while ignoring what remains?",
       "Write down one good thing that still exists in your life, despite a recent hardship. Allow yourself to feel gratitude for it for two full minutes."
+    ],
+    "keywords": [
+      "fear of commitment",
+      "emotional escapism",
+      "romantic thrill-seeking",
+      "intimacy aversion"
     ]
   },
   "6♥": {
@@ -87,6 +117,12 @@
       "What period from your past do you idealize the most? How does this idealized memory prevent you from enjoying the present?",
       "When you feel dissatisfied today, is your first instinct to retreat into memories of \"the good old days\"?",
       "What is one new, positive memory you can create for yourself this week?"
+    ],
+    "keywords": [
+      "martyrdom",
+      "people-pleasing",
+      "emotional guilt",
+      "over-responsibility"
     ]
   },
   "7♥": {
@@ -102,6 +138,12 @@
       "Where are you currently in love with the *idea* of a person or situation, rather than the reality of it?",
       "What comforting fantasy are you replaying in your mind, and what truth might you be avoiding by staying there?",
       "Describe a time you were disappointed by someone. Was the disappointment caused by their actions, or by their failure to live up to a role you secretly created for them?"
+    ],
+    "keywords": [
+      "emotional avoidance",
+      "spiritual bypassing",
+      "unhealed childhood wounds",
+      "vulnerability fear"
     ]
   },
   "8♥": {
@@ -117,6 +159,12 @@
       "What good thing (a relationship, a project, a feeling) did you walk away from because it started to feel \"too real\" or \"too deep\"?",
       "Is there a situation right now where you feel the urge to flee? What is the specific feeling you are running from?",
       "What might happen if, instead of leaving, you chose to stay and communicate your fear?"
+    ],
+    "keywords": [
+      "emotional manipulation",
+      "power games",
+      "intimacy control",
+      "ego in love"
     ]
   },
   "9♥": {
@@ -132,6 +180,12 @@
       "What is your go-to \"comfort\" activity (eating, shopping, etc.) when you feel emotionally empty or sad?",
       "Describe a time you used pleasure or consumption to numb a difficult feeling. Did it work? For how long?",
       "The next time you feel a negative emotion, what could you do to *feel* it instead of immediately trying to *fix* it with a distraction?"
+    ],
+    "keywords": [
+      "unfulfilled longing",
+      "idealism collapse",
+      "emotional burnout",
+      "disappointment loops"
     ]
   },
   "10♥": {
@@ -147,6 +201,12 @@
       "In your family or close circle, whose needs do you consistently place above your own? What unspoken resentment do you hold because of it?",
       "What does the \"perfect, happy family\" look like in your mind? What truths are being suppressed to maintain that image?",
       "If you were to state one of your own needs clearly to your family, what are you afraid would happen?"
+    ],
+    "keywords": [
+      "family enmeshment",
+      "emotional overwhelm",
+      "resistance to endings",
+      "obligation guilt"
     ]
   },
   "J♥": {
@@ -162,6 +222,12 @@
       "Recall a time you used your charm to get emotional validation from someone you had no real intention of committing to.",
       "What is more exciting to you: the thrill of the chase, or the security of a stable relationship? Be honest.",
       "What does true intimacy mean to you, and what about it feels like a threat?"
+    ],
+    "keywords": [
+      "romantic delusion",
+      "emotional immaturity",
+      "fantasy projection",
+      "unrealistic expectations"
     ]
   },
   "Q♥": {
@@ -177,6 +243,12 @@
       "When was the last time you used a guilt trip or passive-aggression to get what you wanted?",
       "Do you believe others are responsible for managing your feelings? In what situations?",
       "Think of a recent conflict. How could you have expressed your needs directly, without manipulation?"
+    ],
+    "keywords": [
+      "smothering",
+      "emotional control",
+      "guilt-tripping",
+      "self-sacrifice for love"
     ]
   },
   "K♥": {
@@ -192,6 +264,12 @@
       "In what relationship do you believe you \"know what's best\" for the other person?",
       "Describe a time you felt jealous or controlling when a loved one showed emotional independence.",
       "How can you show your love and support for someone today while also honoring their complete autonomy?"
+    ],
+    "keywords": [
+      "emotional suppression",
+      "dominance in love",
+      "emotional detachment",
+      "hidden insecurity"
     ]
   },
   "A♣": {
@@ -207,6 +285,12 @@
       "What idea or belief do you hold so tightly that you instantly dismiss anyone who disagrees with it?",
       "Describe a time your passion for a belief made you aggressive or deaf to other viewpoints.",
       "How could you genuinely listen to an opposing viewpoint on one of your core beliefs, just for five minutes?"
+    ],
+    "keywords": [
+      "mental overwhelm",
+      "information hoarding",
+      "obsessive curiosity",
+      "identity through intellect"
     ]
   },
   "2♣": {
@@ -222,6 +306,12 @@
       "When do you play devil's advocate just to be difficult or to show how smart you are?",
       "Is there a current situation where you are resisting a plan simply because it wasn't your idea?",
       "What would it feel like to consciously agree with and support someone else's idea in a current debate, even if it's not perfect?"
+    ],
+    "keywords": [
+      "indecision",
+      "conflict avoidance",
+      "mental dependency",
+      "fear of taking a stand"
     ]
   },
   "3♣": {
@@ -237,6 +327,12 @@
       "Recall a time you undermined a group project or plan (even subtly) because you thought your way was better. What was the result?",
       "When you disagree with a leader's plan, is your first instinct to confront them directly or to complain to others?",
       "How can you better support a team goal this week, even if you don't agree with every aspect of the strategy?"
+    ],
+    "keywords": [
+      "gossip",
+      "scattered thinking",
+      "talk without depth",
+      "insecurity in ideas"
     ]
   },
   "4♣": {
@@ -252,6 +348,12 @@
       "Describe a group you belong to that has a strong \"us vs. them\" mentality. What is the \"them\"?",
       "What topic makes you immediately shut down and refuse to engage with anyone from the \"other side\"?",
       "Identify one belief held by an \"opposing\" group that might have a grain of truth or a valid reason behind it."
+    ],
+    "keywords": [
+      "mental rigidity",
+      "closed-mindedness",
+      "fear of new perspectives",
+      "overanalysis"
     ]
   },
   "5♣": {
@@ -267,6 +369,12 @@
       "In what situations do you find yourself getting into petty arguments just to feel a sense of power?",
       "Who in your life do you tend to verbally spar with? What does \"winning\" those arguments give you?",
       "The next time you feel the urge to start a petty conflict, what could you do instead to feel powerful and in control?"
+    ],
+    "keywords": [
+      "attention deficit",
+      "chaos in thought",
+      "restlessness",
+      "resistance to structure"
     ]
   },
   "6♣": {
@@ -282,6 +390,12 @@
       "Describe a victory or success that made you feel arrogant and superior. How did you treat people afterward?",
       "Are you currently resting on your laurels from a past win, refusing to see the next challenge ahead?",
       "Who on your \"team\" deserves credit for a recent success? Take a moment to acknowledge them."
+    ],
+    "keywords": [
+      "intellectual superiority",
+      "preaching",
+      "burdened communication",
+      "over-responsibility"
     ]
   },
   "7♣": {
@@ -297,6 +411,12 @@
       "What idea or project have you recently shot down (in your own mind or out loud)? Was it from a place of genuine critique or fear?",
       "In what area of your life do you feel like you are \"one against many,\" fighting a defensive battle? Is the threat real?",
       "What would it take for you to lower your defenses and trust one other person's input on a current struggle?"
+    ],
+    "keywords": [
+      "paranoia",
+      "intellectual isolation",
+      "skeptical rigidity",
+      "spiritual disconnection"
     ]
   },
   "8♣": {
@@ -312,6 +432,12 @@
       "Recall a time you spread a rumor or a piece of information before you knew if it was 100% true.",
       "When you are in a conflict, is your first instinct to control the narrative by telling your side of the story to as many people as possible?",
       "Commit to a \"fact-check\" today: before you share a piece of information, take 30 seconds to verify it."
+    ],
+    "keywords": [
+      "mental control",
+      "dominance in ideas",
+      "aggressive debate",
+      "manipulation of truth"
     ]
   },
   "9♣": {
@@ -327,6 +453,12 @@
       "What past battle are you still fighting in your head, long after it has ended?",
       "Describe the \"wall\" you have built around yourself. What specific threat is it meant to protect you from?",
       "What is one small way you could let your guard down for a short period of time today?"
+    ],
+    "keywords": [
+      "intellectual burnout",
+      "disconnection from reality",
+      "overthinking",
+      "philosophical detachment"
     ]
   },
   "10♣": {
@@ -342,6 +474,12 @@
       "List all the responsibilities you are currently carrying. Which ones truly belong to you, and which have you taken on from others?",
       "What are you afraid would happen if you asked for help or delegated a task?",
       "Who is one person you could ask for support this week, and what is the one specific thing you could ask them to do?"
+    ],
+    "keywords": [
+      "fear of success",
+      "mental exhaustion",
+      "avoidance of completion",
+      "imposter syndrome"
     ]
   },
   "J♣": {
@@ -357,6 +495,12 @@
       "What authority figure or established idea do you love to challenge, even if you don't have a better alternative?",
       "Do you sometimes start debates online or in person for the entertainment value of the conflict?",
       "Instead of just critiquing, what is one small, constructive idea you can offer to a problem you care about?"
+    ],
+    "keywords": [
+      "scattered learning",
+      "youthful arrogance",
+      "incomplete knowledge",
+      "distraction through novelty"
     ]
   },
   "Q♣": {
@@ -372,6 +516,12 @@
       "Recall a time you shared a piece of information about someone that was not yours to share. What was your motivation?",
       "How does being \"in the know\" about other people's lives make you feel?",
       "Make a conscious effort for one day not to speak about anyone who is not present in the room, unless it is to praise them."
+    ],
+    "keywords": [
+      "overthinking",
+      "emotional detachment",
+      "intuitive distortion",
+      "martyrdom through intellect"
     ]
   },
   "K♣": {
@@ -387,6 +537,12 @@
       "What is your area of expertise where you believe your \"way\" is the only right way?",
       "Describe a time you shut down someone's idea because it didn't align with your vision.",
       "How could you actively solicit and listen to a dissenting opinion on one of your current projects?"
+    ],
+    "keywords": [
+      "intellectual arrogance",
+      "control through information",
+      "rigidity",
+      "fear of being wrong"
     ]
   },
   "A♦": {
@@ -402,6 +558,12 @@
       "What tangible resource or opportunity (money, an offer, an idea) are you currently hoarding out of fear?",
       "Describe a time you were too afraid to invest time or money in your own growth. What was the result?",
       "What is one \"safe\" risk you can take with a resource today to promote its growth?"
+    ],
+    "keywords": [
+      "greed",
+      "self-worth confusion",
+      "over-identification with success",
+      "value obsession"
     ]
   },
   "2♦": {
@@ -417,6 +579,12 @@
       "At what point does your \"productive multitasking\" turn into frantic, stressful anxiety?",
       "What are you afraid will happen if you completely unplug from all your work and responsibilities for one evening?",
       "Schedule 30 minutes of intentional, unproductive rest into your calendar this week. What feelings come up when you do it?"
+    ],
+    "keywords": [
+      "financial anxiety",
+      "unequal exchange",
+      "transactional relationships",
+      "insecurity in collaboration"
     ]
   },
   "3♦": {
@@ -432,6 +600,12 @@
       "Describe a project where your perfectionism prevented it from being completed on time or caused stress for others.",
       "What is one detail you are currently obsessing over that, in the grand scheme of things, does not matter?",
       "How can you practice \"good enough\" on a current task and declare it finished?"
+    ],
+    "keywords": [
+      "superficial values",
+      "comparison trap",
+      "spending to impress",
+      "scattered priorities"
     ]
   },
   "4♦": {
@@ -447,6 +621,12 @@
       "What possession do you own that makes you feel the most secure? What would it mean to lose it?",
       "When was the last time you felt resistant to sharing something (time, money, a possession)? What was the fear underneath?",
       "Identify one thing you have an excess of (books, clothes, etc.) and make a plan to donate it this week."
+    ],
+    "keywords": [
+      "scarcity mindset",
+      "hoarding",
+      "rigid budgeting",
+      "fear-based security"
     ]
   },
   "5♦": {
@@ -462,6 +642,12 @@
       "Recall a time of hardship where you refused help because of pride or a feeling of unworthiness.",
       "In what area of your life do you feel \"left out in the cold\" right now? Are you actively pushing away any \"warmth\" being offered?",
       "Who is one person you could reach out to for support or advice, even if it feels difficult?"
+    ],
+    "keywords": [
+      "instability",
+      "financial irresponsibility",
+      "impulsiveness",
+      "avoidance of value alignment"
     ]
   },
   "6♦": {
@@ -477,6 +663,12 @@
       "Describe a time you gave a gift and secretly expected something (gratitude, loyalty, a favor) in return.",
       "Who in your life do you feel indebted to? Does that feeling empower you or make you feel resentful?",
       "How can you give something (a compliment, a small favor) to someone today with absolutely no expectation of anything in return?"
+    ],
+    "keywords": [
+      "over-giving",
+      "value martyrdom",
+      "financial burden",
+      "guilt-based support"
     ]
   },
   "7♦": {
@@ -492,6 +684,12 @@
       "What long-term project are you currently feeling anxious about because you aren't seeing immediate results?",
       "When you get frustrated with a lack of progress, is your first instinct to abandon the project?",
       "What is one small, consistent action you can take on a long-term goal today, and trust that it is enough for now?"
+    ],
+    "keywords": [
+      "value confusion",
+      "spiritual materialism",
+      "money shame",
+      "worth vs. wealth conflict"
     ]
   },
   "8♦": {
@@ -507,6 +705,12 @@
       "What skill do you have that you perform with excellence but with little to no joy?",
       "Describe your daily \"grind.\" What part of it feels most like you are a cog in a machine?",
       "How could you inject one small moment of creativity or personal flair into a repetitive task this week?"
+    ],
+    "keywords": [
+      "financial control",
+      "material dominance",
+      "power-through-resources",
+      "stinginess"
     ]
   },
   "9♦": {
@@ -522,6 +726,12 @@
       "What purchase have you made primarily to impress other people or signal a certain status?",
       "When you achieve something, how important is it that other people notice and validate it?",
       "What is something you can do or enjoy this week that feels luxurious and fulfilling to *you*, even if no one else ever knows about it?"
+    ],
+    "keywords": [
+      "over-generosity",
+      "burnout from giving",
+      "unmet expectations",
+      "self-sacrifice for validation"
     ]
   },
   "10♦": {
@@ -537,6 +747,12 @@
       "What family or career legacy do you feel burdened by?",
       "If you were free from all expectations regarding your wealth or career, what path would you choose for yourself?",
       "What is one small action you can take that honors your own personal dream, separate from your family or professional duties?"
+    ],
+    "keywords": [
+      "wealth pressure",
+      "family financial enmeshment",
+      "fear of material change",
+      "excess responsibility"
     ]
   },
   "J♦": {
@@ -552,6 +768,12 @@
       "Describe an idea you had that was more about the exciting prospect of a shortcut to success than about a solid, workable plan.",
       "Where in your life are you putting more energy into \"talking the talk\" than \"walking the walk\"?",
       "What is one small, \"un-glamorous\" task you can complete today that will bring you one real step closer to a goal?"
+    ],
+    "keywords": [
+      "financial immaturity",
+      "chasing quick wins",
+      "undeveloped value system",
+      "impulsive investments"
     ]
   },
   "Q♦": {
@@ -567,6 +789,12 @@
       "Recall a time you made a decision about a friendship or relationship based on practical or status-related reasons rather than genuine connection.",
       "In what ways is your home or lifestyle designed to impress others?",
       "How can you offer your resources or hospitality to someone this week in a way that is purely about providing comfort and warmth, not about networking?"
+    ],
+    "keywords": [
+      "self-worth distortion",
+      "value manipulation",
+      "over-responsibility",
+      "material insecurity"
     ]
   },
   "K♦": {
@@ -582,6 +810,12 @@
       "When have you made a decision based purely on \"the bottom line,\" ignoring the human or emotional cost?",
       "In what situation do you see the people you manage or work with as resources to be optimized rather than as whole human beings?",
       "What is one way you can show a colleague or employee that you value them as a person, not just for their output?"
+    ],
+    "keywords": [
+      "material control",
+      "greed",
+      "status-driven identity",
+      "dominance in value systems"
     ]
   },
   "A♠": {
@@ -597,6 +831,12 @@
       "Describe a time you used the \"brutal truth\" as a weapon to win an argument or hurt someone.",
       "What difficult truth are you currently avoiding telling yourself or someone else?",
       "How could you deliver a necessary truth to someone this week with more compassion and care?"
+    ],
+    "keywords": [
+      "resistance to change",
+      "identity crisis",
+      "fear of transformation",
+      "control fixation"
     ]
   },
   "2♠": {
@@ -612,6 +852,12 @@
       "What impossible choice are you currently refusing to make? What are you afraid of losing?",
       "What difficult reality in your life (in your health, finances, or relationships) are you actively pretending not to see?",
       "Write down the two painful paths of a current dilemma. What is the real cost of standing still and choosing neither?"
+    ],
+    "keywords": [
+      "inner conflict",
+      "spiritual duality",
+      "indecision",
+      "avoidance of necessary growth"
     ]
   },
   "3♠": {
@@ -627,6 +873,12 @@
       "Recall a time you were deeply hurt and lashed out by saying something intentionally cruel to someone else.",
       "When you are in pain, do you sometimes want others to feel pain too?",
       "The next time someone hurts you, what is one healthy way you could process the pain instead of immediately wanting to hurt them back?"
+    ],
+    "keywords": [
+      "scattered healing",
+      "shallow transformation",
+      "social avoidance of pain",
+      "spiritual bypassing"
     ]
   },
   "4♠": {
@@ -642,6 +894,12 @@
       "In what area of your life do you currently feel unfairly \"benched\" or put on pause?",
       "Are you using this period of forced stillness to rest and heal, or to fester and plot revenge?",
       "If you cannot change your external situation right now, what is one thing you *can* change about your inner response to it?"
+    ],
+    "keywords": [
+      "stagnation",
+      "rigidity",
+      "resistance to growth",
+      "false sense of stability"
     ]
   },
   "5♠": {
@@ -657,6 +915,12 @@
       "Describe a conflict you \"won\" but felt bad about afterward because of the tactics you used.",
       "Recall a time you surrendered your integrity or self-respect just to make a painful confrontation stop.",
       "What is one \"battle\" you are currently fighting that you could choose to walk away from?"
+    ],
+    "keywords": [
+      "chaos addiction",
+      "instability",
+      "irresponsibility",
+      "fear of discipline"
     ]
   },
   "6♠": {
@@ -672,6 +936,12 @@
       "What past event still haunts you and prevents you from feeling safe in the present?",
       "When you move to a new stage of life, do you bring \"ghosts\" of old fears and traumas with you?",
       "What is one small ritual you could perform to consciously honor a past difficulty and then give yourself permission to take a step forward?"
+    ],
+    "keywords": [
+      "martyrdom",
+      "over-responsibility",
+      "burnout from service",
+      "guilt-fueled healing"
     ]
   },
   "7♠": {
@@ -687,6 +957,12 @@
       "Recall a time you acted deceptively or took a shortcut because you believed the \"honest\" path was blocked for you.",
       "In what situation do you feel you have to hide your true actions or intentions to get what you want?",
       "What would a direct, honest approach to that same situation look like, even if it's scarier?"
+    ],
+    "keywords": [
+      "isolation",
+      "excessive skepticism",
+      "distrust in spirit",
+      "intellectualized avoidance"
     ]
   },
   "8♠": {
@@ -702,6 +978,12 @@
       "Describe a situation where you feel completely powerless. List all the reasons you believe you are trapped.",
       "Now, challenge that list. What is one small aspect of that situation that you *do* have control over? (Even if it’s just your attitude).",
       "Finish this sentence: \"If I were not the victim in this situation, I would...\""
+    ],
+    "keywords": [
+      "power struggles",
+      "control addiction",
+      "burnout",
+      "resistance to surrender"
     ]
   },
   "9♠": {
@@ -717,6 +999,12 @@
       "What is the worst-case scenario that plays on a loop in your mind late at night?",
       "Write down your greatest current fear. What is the evidence for it, and what is the evidence against it?",
       "How can you introduce a small moment of peace or beauty into your day to counteract a feeling of despair?"
+    ],
+    "keywords": [
+      "despair",
+      "overwhelm",
+      "spiritual detachment",
+      "hopelessness"
     ]
   },
   "10♠": {
@@ -732,6 +1020,12 @@
       "Describe a time in your life that felt like a \"rock bottom\" ending.",
       "What new beginning eventually grew out of that ending, which you couldn't have predicted at the time?",
       "If you are facing an ending now, what is the one thing you are now free from?"
+    ],
+    "keywords": [
+      "fear of endings",
+      "resistance to rebirth",
+      "pressure to transform",
+      "exhaustion cycles"
     ]
   },
   "J♠": {
@@ -747,6 +1041,12 @@
       "What belief or institution do you hold the most cynicism towards? Why?",
       "When was the last time you shot down someone's hopeful idea? What was your motivation?",
       "Instead of just pointing out a flaw, what is one small, constructive suggestion you could offer to a problem you see in the world?"
+    ],
+    "keywords": [
+      "spiritual immaturity",
+      "misdirected effort",
+      "impulsiveness in healing",
+      "ego resistance"
     ]
   },
   "Q♠": {
@@ -762,6 +1062,12 @@
       "Describe a time you cut off your emotions to make a difficult decision.",
       "In what situations do you find it difficult to show compassion for the struggles of others?",
       "What is one personal boundary you have that is absolutely non-negotiable? Why is it so important to you?"
+    ],
+    "keywords": [
+      "emotional detachment",
+      "self-sacrificial patterns",
+      "intuitive confusion",
+      "control through care"
     ]
   },
   "K♠": {
@@ -777,6 +1083,12 @@
       "Recall a time you made a decision based on cold logic, completely dismissing the emotional impact on others.",
       "In what area of your life do you act as the ultimate authority, where your word is final?",
       "How could you invite feedback on a decision you are about to make, showing that you value other perspectives even if the final choice is yours?"
+    ],
+    "keywords": [
+      "spiritual arrogance",
+      "rigidity",
+      "control dominance",
+      "resistance to vulnerability"
     ]
   }
 }
