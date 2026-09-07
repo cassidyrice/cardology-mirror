@@ -41,21 +41,6 @@ const ABOUT = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-// Isolated SEO hubs. Served by the cardblueprints-path-split Worker → their own
-// Pages projects, not by this Next app, so they must be plain <a> (external).
-const DIRECTORIES = [
-  { label: "US Senators", href: "/senators" },
-  { label: "US Governors", href: "/governors" },
-  { label: "US Cabinet", href: "/cabinet" },
-  { label: "SCOTUS Justices", href: "/scotus" },
-  { label: "Declaration Signers", href: "/signers" },
-  { label: "Nobel Laureates", href: "/nobel" },
-  { label: "MLB Clubs", href: "/mlb" },
-  { label: "National Parks", href: "/parks" },
-  { label: "US States", href: "/states" },
-  { label: "Federal Holidays", href: "/holidays" },
-] as const;
-
 function FooterLink({
   href,
   children,
@@ -143,17 +128,18 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             </ul>
           </div>
         </div>
+        {/* One link, not the list. The directories themselves are served by the
+            cardblueprints-path-split Worker from their own Pages projects;
+            /birth-card-directories is the Next page that indexes all of them. */}
         <div className="mt-10 border-t border-brand-line pt-5">
-          <p className="mb-3 font-serif text-base text-brand-ink">Birth-card directories</p>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2">
-            {DIRECTORIES.map((item) => (
-              <li key={item.href}>
-                <FooterLink href={item.href} external>
-                  {item.label}
-                </FooterLink>
-              </li>
-            ))}
-          </ul>
+          <p className="font-serif text-base text-brand-ink">
+            <Link href="/birth-card-directories" className="hover:text-brand-ink">
+              Birth-card directories →
+            </Link>
+          </p>
+          <p className="mt-2 text-xs">
+            23 lists — senators, Nobel laureates, Olympians, Oscar winners, astronauts and more.
+          </p>
         </div>
         <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-line pt-5 text-xs">
           <Link href="/privacy-policy" className="hover:text-brand-ink">
