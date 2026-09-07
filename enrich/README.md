@@ -47,6 +47,7 @@ and trivial punctuation only. Paraphrase fails.
 | `1673848261053513728` (hub 1079) | SUCCEEDED | **1075** this run / **2133** total | **4** |
 | `5428091131676065792` (wave slice 1) | SUCCEEDED | **1077** this run / **3210** total | **2** |
 | `4697945042088624128` (wave slice 2) | SUCCEEDED | **1075** this run / **4285** total | **4** |
+| `8359512276629192704` (wave slice 3 remainder) | QUEUED | submitted **587** — poll later | — |
 
 Celebrity remainder is complete (1058/1058); `retry.jsonl` stays empty.
 Hub people packs accepted **1075 / 1079**. Wave slice 1 (Rock Hall 721 +
@@ -55,20 +56,21 @@ empty predictions: Herb Reed, Marie-José Pérec. Zero containment rejects.
 Slice 2 (NFL HoF 307 + Tonys 245 + astronauts 220 + Kennedy Center
 168 + remaining summer olympics 139) accepted **1075 / 1079**. Dropped 4
 word-count / JSON rejects: LL Cool J, J. Mike Lounge, Joe Montana,
-Tímea Nagy. Zero containment rejects. Do not start slice 3 unless asked.
-Slice-1 TPU empties stay dropped.
+Tímea Nagy. Zero containment rejects. Slice-1 TPU empties stay dropped.
+Slice 3 remainder submitted **587 / 587** after #104. Do not start another
+Vertex job unless asked.
 
 ```bash
 python3 -m enrich.parse_results \
-  --people enrich/artifacts/wave_slice2_people.jsonl \
+  --people enrich/artifacts/wave_slice3_people.jsonl \
   --predictions enrich/out/predictions.jsonl \
   --append \
-  --retry-scope enrich/artifacts/wave_slice2_people.jsonl \
-  --retry enrich/artifacts/wave_slice2_retry.jsonl
+  --retry-scope enrich/artifacts/wave_slice3_people.jsonl \
+  --retry enrich/artifacts/wave_slice3_retry.jsonl
 ```
 
-See `enrich/RETRY_PLAN.md` and `enrich/artifacts/WAVE_SLICE2.md`.
-Ask before slice 3. Do not merge results without asking.
+See `enrich/RETRY_PLAN.md` and `enrich/artifacts/WAVE_SLICE3.md`.
+Ask before any more Vertex. Do not merge results without asking.
 
 ## Local dry-run (fixtures, no spend)
 
@@ -85,5 +87,5 @@ fill it.
 
 ## What is not here
 
-- No second Vertex submit
+- No further Vertex submit after this remainder
 - No checkout, Stripe, webhook, or `generate_reading` changes
