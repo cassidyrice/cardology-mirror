@@ -135,7 +135,7 @@ export function renderTonysHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/tonys/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Tony Awards Leading Actors’ and Actresses’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

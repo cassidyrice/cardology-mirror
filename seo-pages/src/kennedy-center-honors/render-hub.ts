@@ -160,7 +160,7 @@ export function renderKennedyCenterHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/kennedy-center-honors/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Kennedy Center Honors Recipients’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

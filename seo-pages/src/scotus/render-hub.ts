@@ -125,7 +125,7 @@ export function renderScotusHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/scotus/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Current SCOTUS Justices’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

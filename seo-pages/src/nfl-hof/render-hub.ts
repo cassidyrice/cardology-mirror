@@ -150,7 +150,7 @@ export function renderHofHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/nfl-hof/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "NFL Hall of Fame Inductee Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

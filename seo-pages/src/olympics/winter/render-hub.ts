@@ -171,7 +171,7 @@ export function renderWinterHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/olympics/winter/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Winter Olympic Medalists’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

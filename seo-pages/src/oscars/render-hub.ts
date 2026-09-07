@@ -152,7 +152,7 @@ export function renderOscarsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/oscars/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Academy Award Winners’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

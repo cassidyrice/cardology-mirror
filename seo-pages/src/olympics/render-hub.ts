@@ -157,7 +157,7 @@ export function renderOlympicsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/olympics/summer/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Summer Olympians’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

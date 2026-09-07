@@ -160,7 +160,7 @@ export function renderPulitzerHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/pulitzer/fiction/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Pulitzer Prize for Fiction Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

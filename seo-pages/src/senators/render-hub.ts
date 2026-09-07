@@ -153,7 +153,7 @@ export function renderSenatorsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/senators/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Current US Senators’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

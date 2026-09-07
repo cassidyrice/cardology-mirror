@@ -163,7 +163,7 @@ export function renderHouseChairsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/house-chairs/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "US House leadership and standing chair birth cards — Card Blueprints",
     jsonLd,
     crumbs,

@@ -150,7 +150,7 @@ export function renderCabinetHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/cabinet/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Current US Cabinet Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

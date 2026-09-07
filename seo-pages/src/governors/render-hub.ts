@@ -149,7 +149,7 @@ export function renderGovernorsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/governors/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Current US Governors’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

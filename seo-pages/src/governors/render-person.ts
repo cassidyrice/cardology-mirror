@@ -180,7 +180,7 @@ export function renderGovernorPage(
     title: `${h1} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: governorOgSlot(person.slug),
+    ogImage: `/og/birth-card/${meaning.slug}.png`,
     ogImageAlt: `${person.name} birth-card coordinate — ${meaning.label}`,
     jsonLd,
     crumbs,

@@ -160,7 +160,7 @@ export function renderRockHallHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/rock-hall/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Rock & Roll Hall of Fame Inductees’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

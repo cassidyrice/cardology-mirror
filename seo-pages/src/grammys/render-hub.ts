@@ -183,7 +183,7 @@ export function renderGrammysHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/grammys/aoty/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Grammy Album of the Year Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

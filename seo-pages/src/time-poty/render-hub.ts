@@ -152,7 +152,7 @@ export function renderTimePotyHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/time-person-of-the-year/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "TIME Person of the Year Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

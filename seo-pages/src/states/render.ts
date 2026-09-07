@@ -124,7 +124,7 @@ export function renderStatesHub(states: readonly StatePage[]): string {
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: "US states admission birth-card coordinates",
     jsonLd,
     crumbs,
@@ -300,7 +300,7 @@ export function renderStatePage(
       </p>
       <p data-slot="card">
         Coordinate: the <strong>${escapeHtml(state.card.label)}</strong>.
-        Live card page (Next.js origin):
+        Card meaning page:
         <a href="${escapeHtml(liveCardHref)}">/birth-card/${escapeHtml(state.card.slug)}</a>.
       </p>
     </section>
@@ -359,7 +359,7 @@ export function renderStatePage(
     title: `${h1} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: `${state.name} admission birth-card coordinate`,
     jsonLd,
     crumbs,

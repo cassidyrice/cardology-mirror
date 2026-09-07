@@ -140,7 +140,7 @@ export function renderHolidaysHub(holidays: readonly HolidayPage[]): string {
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: "US federal holiday birth-card coordinates",
     jsonLd,
     crumbs,
@@ -220,7 +220,7 @@ export function renderHolidayPage(
       </p>
       <p data-slot="card">
         Coordinate: the <strong>${escapeHtml(holiday.cardRef.label)}</strong>.
-        Live card page (Next.js origin):
+        Card meaning page:
         <a href="${escapeHtml(liveCardHref)}">/birth-card/${escapeHtml(holiday.cardRef.slug)}</a>.
       </p>
     </section>
@@ -277,7 +277,7 @@ export function renderHolidayPage(
     title: `${h1} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: `${holiday.name} birth-card coordinate`,
     jsonLd,
     crumbs,

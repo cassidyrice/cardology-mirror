@@ -164,7 +164,7 @@ export function renderSignersHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/signers/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Declaration Signers’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

@@ -149,7 +149,7 @@ export function renderEmmysHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/emmys/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Primetime Emmy Lead Actor / Actress Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

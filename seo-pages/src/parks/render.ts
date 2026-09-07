@@ -127,7 +127,7 @@ export function renderParksHub(parks: readonly ParkPage[]): string {
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: "US National Park birth-card coordinates",
     jsonLd,
     crumbs,
@@ -244,7 +244,7 @@ export function renderParkPage(park: ParkPage, bySlug: Map<string, ParkPage>): s
       </p>
       <p data-slot="card">
         Coordinate: the <strong>${escapeHtml(park.card.label)}</strong>.
-        Live card page (Next.js origin):
+        Card meaning page:
         <a href="${escapeHtml(liveCardHref)}">/birth-card/${escapeHtml(park.card.slug)}</a>.
       </p>
     </section>
@@ -301,7 +301,7 @@ export function renderParkPage(park: ParkPage, bySlug: Map<string, ParkPage>): s
     title: `${h1} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/example-placeholder.svg",
+    ogImage: "/og/default.png",
     ogImageAlt: `${park.name} National Park birth-card coordinate`,
     jsonLd,
     crumbs,

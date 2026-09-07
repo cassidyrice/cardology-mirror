@@ -125,7 +125,7 @@ export function renderNobelHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/nobel/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "Nobel Laureates’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,

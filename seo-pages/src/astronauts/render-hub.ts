@@ -152,7 +152,7 @@ export function renderAstronautsHub(
     title: `${title} | ${SITE_NAME}`,
     description,
     canonicalPath: path,
-    ogImage: "/og/astronauts/hub.png",
+    ogImage: "/og/default.png",
     ogImageAlt: "NASA Astronauts’ Birth Cards — Card Blueprints",
     jsonLd,
     crumbs,
