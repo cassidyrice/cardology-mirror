@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-07** (deployed `main` @ `ad67210` — Merge remote-tracking branch 'origin/pip-tattoos'; previous record `f88c351`)
+**Last verified: 2026-09-07** (deployed `main` @ `d37b39d` — Revert "Merge remote-tracking branch 'origin/pip-tattoos'"; previous record `ad67210`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `ad6721099175626ee2b9c60db183b3dfd78c1b8d` |
+| **Deployed commit** | `d37b39d145f87b1b22d94ef83459c789845269fc` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
 | **Worker rollback** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
