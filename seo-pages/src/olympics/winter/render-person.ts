@@ -1,10 +1,11 @@
 import { solarValue } from "../../birthcard";
+import { renderCongruenceSection } from "../../congruence-render";
 import { escapeHtml } from "../../escape";
 import { breadcrumbJsonLd, faqPageJsonLd, jsonLdGraph, personJsonLd } from "../../jsonld";
 import { jokerLineageSlot, renderLayout } from "../../layout";
 import { SITE_NAME } from "../../types";
 import { formatDisplayDate, formatMonthDay, isJokerDate, parseIsoDate } from "../../urls";
-import { winterCopy } from "./copy";
+import { winterCopy, sourceProse } from "./copy";
 import type { CardMeaning, WinterMedalistRow } from "./types";
 import {
   cardMeaningPath,
@@ -75,6 +76,35 @@ export function renderWinterPage(
   const showJoker = person.card === "Joker" || isJokerDate(person.birth_date);
   const solar = solarValue(month, day);
 
+  const congruenceSection = renderCongruenceSection({
+    name: person.name,
+    prose: sourceProse(person),
+    birthSymbol: person.card,
+    birthDate: person.birth_date,
+    sourceUrl: person.source_url,
+    sourceTitle: person.wikipedia_title,
+    notAForecastOf: "a gold medal",
+  });
+
+  const recordSection = copy.source_record.length
+    ? `<section data-slot="record">
+      <h2>${escapeHtml(person.name)} in the public record</h2>
+      <p>${escapeHtml(copy.source_record.join(" "))}</p>
+      <p class="attribution">Summarised from the lead section of the Wikipedia article
+        <a href="${escapeHtml(person.source_url)}">${escapeHtml(person.wikipedia_title)}</a>
+        (CC BY-SA 4.0). No biographical facts were written for this page beyond that article.</p>
+    </section>`
+    : "";
+
+  const evidenceSection = copy.evidence.length
+    ? `<section data-slot="evidence">
+      <h2>Also on the record</h2>
+      <ol>
+        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
+      </ol>
+    </section>`
+    : "";
+
   const body = `
     <header class="hero">
       <p class="eyebrow">${escapeHtml(person.slug)} · ${escapeHtml(person.qid)} · birth-card coordinate</p>
@@ -122,12 +152,11 @@ export function renderWinterPage(
       <p><a href="${escapeHtml(cardMeaningPath(meaning.slug))}">Live ${escapeHtml(meaning.label)} meaning page</a></p>
     </section>
 
-    <section data-slot="evidence">
-      <h2>From the Wikipedia summary</h2>
-      <ol>
-        ${copy.evidence.map((item) => `<li>${escapeHtml(item)}</li>`).join("\n        ")}
-      </ol>
-    </section>
+    ${recordSection}
+
+    ${congruenceSection}
+
+    ${evidenceSection}
 
     <section data-slot="same-card">
       <h2>Other 8+ Winter medalists with this card</h2>

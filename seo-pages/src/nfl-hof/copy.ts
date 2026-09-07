@@ -1,4 +1,5 @@
 import { formatMonthDay, parseIsoDate } from "../urls";
+import { longestSourceProse } from "../source-text";
 import type { CardMeaning, HofRow } from "./types";
 import { inducteePhrase } from "./urls";
 
@@ -10,9 +11,16 @@ export type HofFaq = {
 export type HofCopy = {
   hook: string;
   card_meaning: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  source_record: string[];
   evidence: string[];
   faqs: HofFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: HofRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 
@@ -36,8 +44,12 @@ export function containedEvidence(sourceText: string): string[] {
 export function hofCopy(person: HofRow, meaning: CardMeaning): HofCopy {
   const { month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
-  const sentences = splitSourceSentences(person.source_text);
-  const first = sentences[0] ?? person.source_text.trim();
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const sourceRecord = sentences.slice(1, 9);
+  const first = sentences[0] ?? prose.trim();
   const record = inducteePhrase(person);
 
   const hook = `${first} The birth-card coordinate for ${dateLabel} is the ${meaning.label} — a calendar position, not a forecast of a Hall of Fame vote.`;
@@ -50,7 +62,7 @@ export function hofCopy(person: HofRow, meaning: CardMeaning): HofCopy {
     (meaning.life_direction ? ` Life-direction language from the harvested meaning, not a biography: ${meaning.life_direction}` : "") +
     (meaning.under ? ` Under-expressed language from the same harvest: ${meaning.under}` : "");
 
-  const evidence = containedEvidence(person.source_text);
+  const evidence = sentences.slice(1 + sourceRecord.length, 5 + sourceRecord.length);
 
   const faqs: HofFaq[] = [
     {
@@ -67,7 +79,7 @@ export function hofCopy(person: HofRow, meaning: CardMeaning): HofCopy {
     },
   ];
 
-  return { hook, card_meaning: cardMeaning, evidence, faqs };
+  return { hook, card_meaning: cardMeaning, source_record: sourceRecord, evidence, faqs };
 }
 
 function dateSourceAnswer(person: HofRow, record: string): string {

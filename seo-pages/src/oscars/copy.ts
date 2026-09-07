@@ -1,4 +1,5 @@
 import { formatMonthDay, parseIsoDate } from "../urls";
+import { longestSourceProse } from "../source-text";
 import type { CardMeaning, OscarRow } from "./types";
 import { awardPhrase } from "./urls";
 
@@ -10,9 +11,16 @@ export type OscarFaq = {
 export type OscarCopy = {
   hook: string;
   card_meaning: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  source_record: string[];
   evidence: string[];
   faqs: OscarFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: OscarRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 
@@ -26,8 +34,12 @@ export function splitSourceSentences(sourceText: string): string[] {
 export function oscarCopy(person: OscarRow, meaning: CardMeaning): OscarCopy {
   const { month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
-  const sentences = splitSourceSentences(person.source_text);
-  const first = sentences[0] ?? person.source_text.trim();
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const sourceRecord = sentences.slice(1, 9);
+  const first = sentences[0] ?? prose.trim();
   const awards = awardPhrase(person.awards);
 
   const hook = `${first} The birth-card coordinate for ${dateLabel} is the ${meaning.label} — a calendar position, not a forecast of the ${awards} win.`;
@@ -38,7 +50,7 @@ export function oscarCopy(person: OscarRow, meaning: CardMeaning): OscarCopy {
     `It is not a prediction about an Academy Award and not a verdict on ${person.name}. ` +
     `The card's own language, quoted as system copy rather than biography: ${meaning.sweet_spot || meaning.core_identity}`;
 
-  const evidence = evidenceFromSummary(person, sentences);
+  const evidence = evidenceFromSummary(person, sentences.slice(1 + sourceRecord.length));
 
   const faqs: OscarFaq[] = [
     {
@@ -55,27 +67,16 @@ export function oscarCopy(person: OscarRow, meaning: CardMeaning): OscarCopy {
     },
   ];
 
-  return { hook, card_meaning: cardMeaning, evidence, faqs };
+  return { hook, card_meaning: cardMeaning, source_record: sourceRecord, evidence, faqs };
 }
 
-function evidenceFromSummary(person: OscarRow, sentences: string[]): string[] {
-  const fromSummary = sentences.slice(0, 3);
-  if (fromSummary.length >= 3) {
-    return fromSummary;
-  }
-  const evidence = [...fromSummary];
-  if (evidence.length === 0) {
-    evidence.push(person.source_text.trim());
-  }
-  if (evidence.length < 2) {
-    evidence.push(
-      `Wikipedia REST summary (${person.wikipedia_title}) is the only biographical prose used here.`,
-    );
-  }
-  if (evidence.length < 3) {
-    evidence.push("No extra biographical facts were written for this page beyond that summary.");
-  }
-  return evidence;
+/**
+ * Remaining lead-section sentences, if the article had more than the record
+ * section used. Returns an empty list rather than padding with boilerplate —
+ * a short article should produce a shorter page, not a repeated one.
+ */
+function evidenceFromSummary(_person: OscarRow, remaining: string[]): string[] {
+  return remaining.slice(0, 4);
 }
 
 function dateSourceAnswer(person: OscarRow): string {

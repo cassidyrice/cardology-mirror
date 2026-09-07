@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { reservedPersonSlugReason } from "./src/urls";
-import { rockHallCopy } from "./src/rock-hall/copy";
+import { rockHallCopy, sourceProse } from "./src/rock-hall/copy";
 import { buildRockHallPages } from "./src/rock-hall/build";
 import { rockHallCheckoutHref, rockHallPath, reservedRockHallSlugReason } from "./src/rock-hall/urls";
 
@@ -143,7 +143,8 @@ test("evidence facts stay inside source_text and pages stay thick enough", () =>
       core_identity: "Example identity",
       sweet_spot: "Example sweet spot",
     });
-    const source = person.source_text.toLowerCase();
+    // Evidence is drawn from the full lead section now, not the REST summary.
+    const source = sourceProse(person).toLowerCase();
     for (const fact of copy.evidence.slice(0, 3)) {
       const normalized = fact.toLowerCase().replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();
       const sourceLoose = source.replace(/[^\w\s]/g, " ").replace(/\s+/g, " ").trim();

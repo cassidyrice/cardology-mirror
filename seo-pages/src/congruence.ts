@@ -25,6 +25,8 @@ export type MeaningLike = {
   sweet_spot?: string;
   /** Full harvested meaning page copy, present in card_meanings.json. */
   meaning?: string;
+  /** Slug of the card's own meaning page, e.g. "ace-of-hearts". */
+  slug?: string;
 };
 
 export type Congruence = {
@@ -99,6 +101,9 @@ export const SUIT_DOMAINS: Record<string, { name: string; markers: readonly stri
     ],
   },
 };
+
+/** The 53rd card. It is not in the spreads and never joins a life path. */
+export const JOKER = "Joker";
 
 export function suitOf(cardLabelOrSymbol: string): string | null {
   for (const suit of ["♥", "♣", "♦", "♠"]) {
@@ -214,21 +219,71 @@ function splitSentences(prose: string): string[] {
  */
 const DOMAIN_WINDOW = 4;
 
+/**
+ * The nine Life Spread positions, in walk order, with the label each one shows.
+ * "Result / Cosmic Reward" is the doc vocabulary for the ninth card; the
+ * "Princess" wording in lib/life-path.ts is quarantined and never used here.
+ * The Moon sits before Mercury in a full reading and is not part of this row.
+ */
+export const LIFE_SPREAD_POSITION_LABELS = {
+  mercury: "Mercury",
+  venus: "Venus",
+  mars: "Mars",
+  jupiter: "Jupiter",
+  saturn: "Saturn",
+  uranus: "Uranus",
+  neptune: "Neptune",
+  pluto: "Pluto",
+  result: "Result / Cosmic Reward",
+} as const;
+
+export type LifeSpreadPositionKey = keyof typeof LIFE_SPREAD_POSITION_LABELS;
+
+export const LIFE_SPREAD_POSITION_KEYS = Object.keys(
+  LIFE_SPREAD_POSITION_LABELS,
+) as LifeSpreadPositionKey[];
+
+type PositionLabel = (typeof LIFE_SPREAD_POSITION_LABELS)[LifeSpreadPositionKey];
+
+/** Mercury -> Result for one card, as stored in pipeline/data/life_spread_cards.json. */
+export type LifeSpreadTable = Record<string, Record<LifeSpreadPositionKey, string>>;
+
+export type TierOneRole = "Birth Card" | "Karma — Environment" | "Karma — Displacement";
+
+export type TierTwoRole =
+  | "Planetary Ruling Card"
+  | "Planetary Ruling Card (second ruler)"
+  | "PRC Karma — Environment"
+  | "PRC Karma — Displacement";
+
+export type LifeSpreadRole = `Life Spread — ${PositionLabel}`;
+export type PrcLifeSpreadRole = `PRC Life Spread — ${PositionLabel}`;
+
 /** One card in a person's fixed life path, with the role it plays. */
 export type PathCard = {
   /** Card symbol, e.g. "8♣". */
   symbol: string;
   /** How this card sits in the person's path. */
-  role:
-    | "Birth Card"
-    | "Karma — Environment"
-    | "Karma — Displacement"
-    | "Planetary Ruling Card"
-    | "Planetary Ruling Card (second ruler)"
-    | "PRC Karma — Environment"
-    | "PRC Karma — Displacement";
+  role: TierOneRole | TierTwoRole | LifeSpreadRole | PrcLifeSpreadRole;
   meaning: MeaningLike;
 };
+
+/** True for the nine cards of the birth card's own Life Spread. */
+export function isLifeSpreadRole(role: PathCard["role"]): role is LifeSpreadRole {
+  return role.startsWith("Life Spread — ");
+}
+
+/** True for the nine cards of the planetary ruling card's Life Spread. */
+export function isPrcLifeSpreadRole(role: PathCard["role"]): role is PrcLifeSpreadRole {
+  return role.startsWith("PRC Life Spread — ");
+}
+
+/** "Saturn" from "Life Spread — Saturn", or null for any non-spread role. */
+export function lifeSpreadPositionOf(role: PathCard["role"]): string | null {
+  if (isLifeSpreadRole(role)) return role.slice("Life Spread — ".length);
+  if (isPrcLifeSpreadRole(role)) return role.slice("PRC Life Spread — ".length);
+  return null;
+}
 
 /**
  * Roles searched only after the birth card and its karma find nothing. The PRC
@@ -236,12 +291,23 @@ export type PathCard = {
  * it incomplete — but the birth card stays the primary identity, so it is tried
  * first and the PRC layer only widens the pool when it comes up empty.
  */
-const SECOND_TIER: ReadonlySet<PathCard["role"]> = new Set([
+const SECOND_TIER: ReadonlySet<PathCard["role"]> = new Set<PathCard["role"]>([
   "Planetary Ruling Card",
   "Planetary Ruling Card (second ruler)",
   "PRC Karma — Environment",
   "PRC Karma — Displacement",
 ]);
+
+/**
+ * The two Life Spreads, searched last. They are fixed for life like everything
+ * else on the path, but they are one step further from the person than the
+ * birth card and its ruler, so they only widen the pool for a page that would
+ * otherwise report no echo at all. Searching them earlier would change which
+ * line every existing page pairs, which is why they sit in their own tier.
+ */
+function isThirdTier(role: PathCard["role"]): boolean {
+  return isLifeSpreadRole(role) || isPrcLifeSpreadRole(role);
+}
 
 /**
  * Best pairing between any card in the person's life path and their record.
@@ -262,13 +328,21 @@ export function findCongruence(
   prose: string,
   path: readonly PathCard[],
 ): Congruence & { card?: PathCard } {
-  // Two attempts: the birth card and its karma first, then the whole fixed path
-  // including the planetary ruling layer. This keeps every existing match
-  // identical and only reaches further for the pages that found nothing.
-  const primary = path.filter((c) => !SECOND_TIER.has(c.role));
-  if (primary.length && primary.length < path.length) {
-    const first = matchAgainst(prose, primary);
-    if (first.basis !== "none") return first;
+  // Three attempts, each a superset of the last: the birth card and its karma;
+  // then the planetary ruling layer; then the two Life Spreads. A page only
+  // reaches a wider tier when the narrower one found nothing, so adding a tier
+  // never changes a pairing that already exists.
+  const tiers: PathCard[][] = [
+    path.filter((c) => !SECOND_TIER.has(c.role) && !isThirdTier(c.role)),
+    path.filter((c) => !isThirdTier(c.role)),
+    [...path],
+  ];
+  let previous = 0;
+  for (const tier of tiers) {
+    if (!tier.length || tier.length === previous) continue;
+    previous = tier.length;
+    const match = matchAgainst(prose, tier);
+    if (match.basis !== "none" || tier.length === path.length) return match;
   }
   return matchAgainst(prose, path);
 }
@@ -374,18 +448,33 @@ export function lifePath(
   meanings: Map<string, MeaningLike> | Record<string, MeaningLike>,
   karma: KarmaTable,
   prc?: readonly string[],
+  lifeSpread?: LifeSpreadTable,
 ): PathCard[] {
   const get = (symbol: string): MeaningLike | undefined =>
     meanings instanceof Map ? meanings.get(symbol) : meanings[symbol];
-  const out: PathCard[] = [];
-  const seen = new Set<string>();
+
+  // Order is closeness to the person, not reading order: birth card, its karma,
+  // the planetary ruler, the ruler's karma, then the two Life Spreads. Two
+  // things depend on it. A card holding two roles keeps the closer one (a Leo's
+  // ruler is their birth card and stays "Birth Card"; a Life Spread card that is
+  // also a karma card stays a karma card). And `findCongruence` breaks score
+  // ties by position, so this order is what keeps every pairing the ten live
+  // hubs already show byte-identical now that the Life Spreads exist. Reading
+  // order — birth, karma, birth Life Spread, ruler, ruler's karma, ruler's Life
+  // Spread — is a presentation concern and lives in `renderLifePathList`, which
+  // regroups this array by role.
+  const assigned = new Map<string, { role: PathCard["role"]; meaning: MeaningLike }>();
+  const order: string[] = [];
 
   const push = (symbol: string | null | undefined, role: PathCard["role"]): void => {
-    if (!symbol || seen.has(symbol)) return;
+    // The Joker sits outside the 52-card spreads: it has no karma pair, no Life
+    // Spread and no position anything else can be walked from. A 31 December
+    // birthday therefore has no fixed path, and saying so is the honest answer.
+    if (!symbol || symbol === JOKER || assigned.has(symbol)) return;
     const meaning = get(symbol);
     if (!meaning) return;
-    seen.add(symbol);
-    out.push({ symbol, role, meaning });
+    assigned.set(symbol, { role, meaning });
+    order.push(symbol);
   };
 
   const addKarma = (
@@ -400,16 +489,37 @@ export function lifePath(
     push(pair.displacement, dispRole);
   };
 
+  const spreadOf = (symbol: string): [key: LifeSpreadPositionKey, symbol: string][] => {
+    const row = lifeSpread?.[symbol];
+    if (!row) return [];
+    return LIFE_SPREAD_POSITION_KEYS.map((key) => [key, row[key]] as const).filter(
+      (entry): entry is [LifeSpreadPositionKey, string] => Boolean(entry[1]),
+    );
+  };
+
+  const ruler = prc && prc.length ? prc[0] : undefined;
+
   push(birthSymbol, "Birth Card");
   addKarma(birthSymbol, "Karma — Environment", "Karma — Displacement");
-
-  if (prc && prc.length) {
-    // A Leo's ruling card is their birth card; `push` de-duplicates it away.
-    push(prc[0], "Planetary Ruling Card");
-    if (prc.length > 1) push(prc[1], "Planetary Ruling Card (second ruler)");
-    if (prc[0] && prc[0] !== birthSymbol) {
-      addKarma(prc[0], "PRC Karma — Environment", "PRC Karma — Displacement");
+  if (ruler) {
+    // A Leo's ruling card is their birth card; it keeps the "Birth Card" role.
+    push(ruler, "Planetary Ruling Card");
+    if (prc && prc.length > 1) push(prc[1], "Planetary Ruling Card (second ruler)");
+    if (ruler !== birthSymbol) {
+      addKarma(ruler, "PRC Karma — Environment", "PRC Karma — Displacement");
     }
   }
-  return out;
+  for (const [key, symbol] of spreadOf(birthSymbol)) {
+    push(symbol, `Life Spread — ${LIFE_SPREAD_POSITION_LABELS[key]}`);
+  }
+  if (ruler && ruler !== birthSymbol) {
+    for (const [key, symbol] of spreadOf(ruler)) {
+      push(symbol, `PRC Life Spread — ${LIFE_SPREAD_POSITION_LABELS[key]}`);
+    }
+  }
+
+  return order.map((symbol) => {
+    const entry = assigned.get(symbol)!;
+    return { symbol, role: entry.role, meaning: entry.meaning };
+  });
 }

@@ -1,4 +1,5 @@
 import { formatMonthDay, parseIsoDate } from "../urls";
+import { longestSourceProse } from "../source-text";
 import type { CardMeaning, OlympicRow } from "./types";
 import { medalPhrase } from "./urls";
 
@@ -10,10 +11,17 @@ export type OlympicsFaq = {
 export type OlympicsCopy = {
   hook: string;
   card_meaning: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  source_record: string[];
   evidence: string[];
   medal_note: string;
   faqs: OlympicsFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: OlympicRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 
@@ -27,8 +35,12 @@ export function splitSourceSentences(sourceText: string): string[] {
 export function olympicsCopy(person: OlympicRow, meaning: CardMeaning): OlympicsCopy {
   const { month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
-  const sentences = splitSourceSentences(person.source_text);
-  const first = sentences[0] ?? person.source_text.trim();
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const sourceRecord = sentences.slice(1, 9);
+  const first = sentences[0] ?? prose.trim();
   const medals = medalPhrase(person);
   const country = person.country ? ` for ${person.country}` : "";
   const years = uniqueYears(person);
@@ -60,7 +72,7 @@ export function olympicsCopy(person: OlympicRow, meaning: CardMeaning): Olympics
     `The medal list is a public award record for ${person.name} (${person.qid}), not a reading of character. ` +
     (medalSentences || `Event-level gold statements were counted for ${person.name} but not labeled.`);
 
-  const evidence = evidenceFromSummary(person, sentences);
+  const evidence = evidenceFromSummary(person, sentences.slice(1 + sourceRecord.length));
 
   const faqs: OlympicsFaq[] = [
     {
@@ -77,7 +89,7 @@ export function olympicsCopy(person: OlympicRow, meaning: CardMeaning): Olympics
     },
   ];
 
-  return { hook, card_meaning: cardMeaning, evidence, medal_note: medalNote, faqs };
+  return { source_record: sourceRecord, hook, card_meaning: cardMeaning, evidence, medal_note: medalNote, faqs };
 }
 
 function uniqueYears(person: OlympicRow): string {
@@ -89,26 +101,13 @@ function uniqueYears(person: OlympicRow): string {
   return `${years[0]}–${years[years.length - 1]}`;
 }
 
-function evidenceFromSummary(person: OlympicRow, sentences: string[]): string[] {
-  const fromSummary = sentences.slice(0, 3);
-  if (fromSummary.length >= 3) {
-    return fromSummary;
-  }
-  const evidence = [...fromSummary];
-  if (evidence.length === 0) {
-    evidence.push(person.source_text.trim());
-  }
-  if (evidence.length < 2) {
-    evidence.push(
-      `Wikipedia REST summary (${person.wikipedia_title}) is the only biographical prose used here.`,
-    );
-  }
-  if (evidence.length < 3) {
-    evidence.push(
-      `No extra biographical facts were written for ${person.name} beyond that summary and the Wikidata gold-medal record.`,
-    );
-  }
-  return evidence;
+/**
+ * Remaining lead-section sentences, if the article had more than the record
+ * section used. Returns an empty list rather than padding with boilerplate —
+ * a short article should produce a shorter page, not a repeated one.
+ */
+function evidenceFromSummary(_person: OlympicRow, remaining: string[]): string[] {
+  return remaining.slice(0, 4);
 }
 
 function dateSourceAnswer(person: OlympicRow, medals: string): string {

@@ -1,5 +1,6 @@
 import { solarValue } from "../../birthcard";
 import { formatMonthDay, parseIsoDate } from "../../urls";
+import { longestSourceProse } from "../../source-text";
 import type { CardMeaning, WinterMedalistRow } from "./types";
 import { medalPhrase } from "./urls";
 
@@ -13,9 +14,16 @@ export type WinterCopy = {
   record: string;
   coordinate: string;
   card_meaning: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  source_record: string[];
   evidence: string[];
   faqs: WinterFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: WinterMedalistRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 const FORMULA = "solar_value = 55 − (2 × month + day)";
@@ -30,11 +38,15 @@ export function splitSourceSentences(sourceText: string): string[] {
 export function winterCopy(person: WinterMedalistRow, meaning: CardMeaning): WinterCopy {
   const { month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
-  const sentences = splitSourceSentences(person.source_text);
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const sourceRecord = sentences.slice(1, 9);
   const medals = medalPhrase(person);
   const solar = solarValue(month, day);
 
-  const lead = `${person.name}: ${sentences[0] ?? person.source_text.trim()}`;
+  const lead = `${person.name}: ${sentences[0] ?? prose.trim()}`;
   const hook = [
     lead,
     `${person.name} (${person.qid}, slug ${person.slug}) is on Wikipedia’s 8+ Winter Olympic medalists table for ${person.sport} under ${person.nation}, with a published row of ${medals}.`,
@@ -62,7 +74,7 @@ export function winterCopy(person: WinterMedalistRow, meaning: CardMeaning): Win
     `${person.name} maps to ${meaning.label} / ${meaning.title} on ${dateLabel}. ` +
     `Quoted only as the published ${meaning.slug} coordinate line, not as a ${person.sport} reading of ${person.name}: ${meaning.sweet_spot}`;
 
-  const evidence = evidenceFromSummary(person, sentences);
+  const evidence = evidenceFromSummary(person, sentences.slice(1 + sourceRecord.length));
 
   const faqs: WinterFaq[] = [
     {
@@ -83,17 +95,16 @@ export function winterCopy(person: WinterMedalistRow, meaning: CardMeaning): Win
     },
   ];
 
-  return { hook, record, coordinate, card_meaning: cardMeaning, evidence, faqs };
+  return { hook, record, coordinate, card_meaning: cardMeaning, source_record: sourceRecord, evidence, faqs };
 }
 
-function evidenceFromSummary(person: WinterMedalistRow, sentences: string[]): string[] {
-  const first = sentences[0] ?? person.source_text.trim();
-  return [
-    `${person.name}: ${first}`,
-    `Wikidata ${person.qid} and the ${person.wikipedia_title} infobox both publish ${person.birth_date} for ${person.name}.`,
-    `The REST summary used on this page is ${person.source_url}. No extra ${person.sport} results were written for ${person.slug}.`,
-    `${person.name}’s catalog row stays at ${person.total} medals (${person.gold}/${person.silver}/${person.bronze}); that row is not a date source.`,
-  ];
+/**
+ * Remaining lead-section sentences, if the article had more than the record
+ * section used. Returns an empty list rather than padding with boilerplate —
+ * a short article should produce a shorter page, not a repeated one.
+ */
+function evidenceFromSummary(_person: WinterMedalistRow, remaining: string[]): string[] {
+  return remaining.slice(0, 4);
 }
 
 function dateSourceAnswer(person: WinterMedalistRow): string {

@@ -62,6 +62,11 @@ function bodyShingles(html: string): Set<string> {
       .replace(/data-slot="faq"[\s\S]*?<\/section>/gi, " ")
       .replace(/data-slot="card-meaning"[\s\S]*?<\/section>/gi, " ")
       .replace(/data-slot="coordinate-note"[\s\S]*?<\/p>/gi, " ")
+      // The fixed path and the note under it are card-system copy, identical for
+      // everyone born on the same card — the same reason card-meaning and
+      // same-card are stripped above. Page-body duplication is what this asserts.
+      .replace(/data-slot="life-path"[\s\S]*?<\/div>/gi, " ")
+      .replace(/<p class="note">[\s\S]*?<\/p>/gi, " ")
       .replace(/data-slot="sources"[\s\S]*?<\/p>/gi, " ")
       .replace(/data-slot="same-card"[\s\S]*?<\/section>/gi, " "),
   );

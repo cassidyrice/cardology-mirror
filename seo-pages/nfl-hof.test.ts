@@ -4,7 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 import { reservedPersonSlugReason } from "./src/urls";
-import { containedEvidence } from "./src/nfl-hof/copy";
+import { hofCopy, sourceProse } from "./src/nfl-hof/copy";
+import { loadCardMeanings } from "./src/nfl-hof/load";
 import { buildHofPages } from "./src/nfl-hof/build";
 import { hofCheckoutHref, hofPath, reservedHofSlugReason } from "./src/nfl-hof/urls";
 
@@ -125,15 +126,21 @@ test("sample pages use /nfl-hof URLs, UTM, sources, and leave /birth-card person
   expect(types).toEqual(expect.arrayContaining(["Person", "BreadcrumbList", "FAQPage"]));
 });
 
-test("every evidence fact is contained in source_text", () => {
+test("every record and evidence sentence is verbatim in the sourced prose", () => {
+  const meanings = loadCardMeanings(
+    join(import.meta.dir, "..", "pipeline", "data", "card_meanings.json"),
+  );
   for (const person of build.people) {
-    const evidence = containedEvidence(person.source_text);
-    expect(evidence.length).toBeGreaterThan(0);
-    for (const fact of evidence) {
-      expect(person.source_text.includes(fact)).toBe(true);
+    // The page now quotes the full Wikipedia lead section, not just the REST
+    // summary, so containment is checked against the prose actually rendered.
+    const prose = sourceProse(person);
+    const copy = hofCopy(person, meanings.get(person.card)!);
+    expect(copy.source_record.length + copy.evidence.length).toBeGreaterThan(0);
+    for (const fact of [...copy.source_record, ...copy.evidence]) {
+      expect(prose.includes(fact)).toBe(true);
     }
     const html = read(`nfl-hof/${person.slug}/index.html`);
-    expect(html).toContain('data-slot="evidence"');
+    expect(html).toContain('data-slot="source-record"');
     expect(html).toContain('data-slot="source-text"');
   }
 });

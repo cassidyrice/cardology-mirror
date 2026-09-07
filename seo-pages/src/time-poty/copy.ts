@@ -1,4 +1,5 @@
 import { formatDisplayDate, formatMonthDay, parseIsoDate } from "../urls";
+import { longestSourceProse } from "../source-text";
 import type { CardMeaning, TimePotyRow } from "./types";
 import { honorPhrase } from "./urls";
 
@@ -11,9 +12,16 @@ export type TimePotyCopy = {
   hook: string;
   card_meaning: string;
   ledger: string;
+  /** Lead-section prose after the opening sentence. Never repeats the hook. */
+  source_record: string[];
   evidence: string[];
   faqs: TimePotyFaq[];
 };
+
+/** Longest verified text for this person: the full lead section when we have it. */
+export function sourceProse(person: TimePotyRow): string {
+  return longestSourceProse(person);
+}
 
 const SENTENCE_RE = /(?<=[.!?])\s+(?=[A-Z0-9“"])/;
 
@@ -32,8 +40,12 @@ export function timePotyCopy(person: TimePotyRow, meaning: CardMeaning): TimePot
   const { year, month, day } = parseIsoDate(person.birth_date);
   const dateLabel = formatMonthDay(month, day);
   const display = formatDisplayDate(person.birth_date);
-  const sentences = splitSourceSentences(person.source_text);
-  const first = sentences[0] ?? person.source_text.trim();
+  const prose = sourceProse(person);
+  const sentences = splitSourceSentences(prose);
+  // Everything after the opening sentence, so the record section never repeats
+  // the hook. Capped so a very long lead does not swamp the page.
+  const sourceRecord = sentences.slice(1, 9);
+  const first = sentences[0] ?? prose.trim();
   const honors = honorPhrase(person.honors);
   const solar = 55 - (2 * month + day);
   const years = person.honors.map((honor) => honor.year).join(", ");
@@ -88,7 +100,7 @@ export function timePotyCopy(person: TimePotyRow, meaning: CardMeaning): TimePot
     ` The Wikipedia REST summary used for ${person.name} is ${person.source_url}. ` +
     `No childhood, private address, or invented birthday is added for ${person.name}.`;
 
-  const evidence = evidenceFromSummary(person, sentences);
+  const evidence = evidenceFromSummary(person, sentences.slice(1 + sourceRecord.length));
 
   const faqs: TimePotyFaq[] = [
     {
@@ -105,29 +117,16 @@ export function timePotyCopy(person: TimePotyRow, meaning: CardMeaning): TimePot
     },
   ];
 
-  return { hook, card_meaning: cardMeaning, ledger, evidence, faqs };
+  return { hook, card_meaning: cardMeaning, ledger, source_record: sourceRecord, evidence, faqs };
 }
 
-function evidenceFromSummary(person: TimePotyRow, sentences: string[]): string[] {
-  const fromSummary = sentences.filter((sentence) => evidenceContained(person.source_text, sentence)).slice(0, 3);
-  if (fromSummary.length >= 3) {
-    return fromSummary;
-  }
-  const evidence = [...fromSummary];
-  if (evidence.length === 0) {
-    evidence.push(person.source_text.trim());
-  }
-  if (evidence.length < 2) {
-    evidence.push(
-      `Wikipedia REST summary (${person.wikipedia_title}) is the only biographical prose used here.`,
-    );
-  }
-  if (evidence.length < 3) {
-    evidence.push(
-      `No extra biographical facts were written for ${person.name} beyond that summary and the TIME Person of the Year record.`,
-    );
-  }
-  return evidence;
+/**
+ * Remaining lead-section sentences, if the article had more than the record
+ * section used. Returns an empty list rather than padding with boilerplate —
+ * a short article should produce a shorter page, not a repeated one.
+ */
+function evidenceFromSummary(_person: TimePotyRow, remaining: string[]): string[] {
+  return remaining.slice(0, 4);
 }
 
 function dateSourceAnswer(person: TimePotyRow, honors: string): string {
