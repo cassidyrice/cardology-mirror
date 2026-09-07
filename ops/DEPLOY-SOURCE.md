@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-07** (deployed `main` @ `371c5dd` — Product swap: $9 Deep Dive becomes the $47 Blueprint Breakdown Video (bonuses: Deep Dive PDFs + Yearly Timing Map); previous record `4bf0009`)
+**Last verified: 2026-09-07** (deployed `main` @ `f2050b8` — Remove the 23 birth-card directory packs for good; previous record `371c5dd`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `371c5dde111a3514fc8a335d85b6be759d6db0ec` |
+| **Deployed commit** | `f2050b8e49d7c236a6205326a95556bd6f28bd95` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
 | **Worker rollback** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
