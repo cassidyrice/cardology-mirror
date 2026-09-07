@@ -1,0 +1,38 @@
+{
+  "model": "gemini-3.1-pro-preview",
+  "requests": 587,
+  "input_chars": 1679601,
+  "input_tokens_est": 419900,
+  "output_tokens_est": 293500,
+  "thinking_low_tokens_est": 469600,
+  "thinking_output_tokens_est": 1467500,
+  "usd_batch_no_thinking": 2.1809,
+  "usd_batch_thinking_low": 4.9985,
+  "usd_batch_with_thinking_upper": 9.2249,
+  "target_usd_band": 20.0,
+  "within_target": true,
+  "notes": "Same #70 pricing method (near-verbatim, meta\u2264145, temp 0, thinking LOW; HIGH upper uses 2500 thought tokens/row). This job band is $20. Remainder 587 of 587 missing wave people after #104. Do not submit another Vertex job unless asked.",
+  "rates_usd_per_million": {
+    "input": 1.0,
+    "output": 6.0,
+    "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, \u2264200K tokens/request"
+  },
+  "label": "wave_slice3 \u2014 #70 / hub contract (near-verbatim, source_text containment, meta\u2264145, temp 0, thinking LOW)",
+  "by_pack_taken": {
+    "emmys": 121,
+    "oscars": 93,
+    "senators": 94,
+    "pulitzer_fiction": 83,
+    "grammys_aoty": 45,
+    "olympics_summer": 42,
+    "time_poty": 40,
+    "olympics_winter": 30,
+    "house_chairs": 29,
+    "cabinet": 10,
+    "astronauts": 0,
+    "kennedy_center_honors": 0,
+    "nfl_hof": 0,
+    "rock_hall": 0,
+    "tonys": 0
+  }
+}

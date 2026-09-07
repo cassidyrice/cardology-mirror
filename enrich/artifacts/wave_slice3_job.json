@@ -1,0 +1,11 @@
+{
+  "name": "projects/796629394796/locations/global/batchPredictionJobs/8359512276629192704",
+  "displayName": "cardology-wp3-enrich-20260907T021429Z",
+  "model": "publishers/google/models/gemini-3.1-pro-preview",
+  "state": "JOB_STATE_QUEUED",
+  "createTime": "2026-09-07T02:14:30.881830Z",
+  "input_row_count": 587,
+  "input_uri": "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/input/20260907T021429Z-vertex_batch.jsonl",
+  "output_prefix": "gs://$VERTEX_GCS_BUCKET/cardology-wp3-enrich/output/20260907T021429Z/",
+  "submitted_at": "2026-09-07T02:14:30.941171+00:00"
+}
