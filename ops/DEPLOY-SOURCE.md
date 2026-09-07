@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-07** (deployed `main` @ `f2050b8` — Remove the 23 birth-card directory packs for good; previous record `371c5dd`)
+**Last verified: 2026-09-07** (deployed `main` @ `f88c351` — Yearly Timing Map: instant blueprint-style diagram bonus for the $47 Blueprint Breakdown; previous record `f2050b8`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `f2050b8e49d7c236a6205326a95556bd6f28bd95` |
+| **Deployed commit** | `f88c3516179cf2e84e9945ee5229473b350e3f5b` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
 | **Worker rollback** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
