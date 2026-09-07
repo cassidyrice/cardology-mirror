@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { ShadowLayer, ShadowPrompts } from "@/components/seo/ShadowLayer";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
@@ -195,6 +196,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           Editorial policy
         </Link>
       </p>
+      <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
         <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Blueprint Breakdown — $47</h2>
@@ -313,6 +315,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           Three positions, not a verdict. The birth card is a range, not a box — so the honest question isn&rsquo;t “am I this card?” but “which end of the range am I parked at today?”
         </p>
       </Section>
+
+      <ShadowPrompts code={card.code} />
 
       <Section title="Strengths">
         {card.gifts.length > 0 ? (
