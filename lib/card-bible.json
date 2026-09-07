@@ -2370,11 +2370,11 @@
       "under": "You will not close the cycle. The ending sits on the desk because finishing would mean starting without it.",
       "over": "You force the ending before the work is done. Closure becomes a way not to stay."
     },
-    "archetype": "The Night-Hag",
+    "archetype": "The Phoenix",
     "coreShadow": "The dark night of the soul; all-consuming anxiety, guilt, and despair. This archetype is tormented by their own mind, endlessly replaying worst-case scenarios and living in a state of mental anguish.",
     "worldview": "My mind is my torture chamber. Everything is wrong, and it is all my fault. There is no hope, no light, only this endless cycle of fear and regret. The worst is yet to come.",
-    "inTheLight": "The Night-Hag endures the crucible and emerges as The Phoenix. Having faced their absolute deepest fears and survived, they are reborn with immense strength, compassion, and resilience. They understand that the dawn always follows the darkest night, and they are no longer afraid of the dark.",
-    "lightName": "The Phoenix",
+    "inTheLight": "The Phoenix endures the crucible and emerges with immense strength and resilience. Having faced their absolute deepest fears and survived, they understand that the dawn always follows the darkest night, and they are no longer afraid of the dark.",
+    "lightName": null,
     "prompts": [
       "What is the worst-case scenario that plays on a loop in your mind late at night?",
       "Write down your greatest current fear. What is the evidence for it, and what is the evidence against it?",
@@ -2420,11 +2420,11 @@
       "under": "You pick up everyone's hard piece and call it duty. The load is heavier than the job required.",
       "over": "You raise the standard until no one, including you, can meet it. Relentlessness replaces judgment."
     },
-    "archetype": "The Ruined",
+    "archetype": "The Blank Slate",
     "coreShadow": "The dramatic finality of rock bottom. It is the ultimate betrayal, the final stab in the back, the complete and utter destruction of a situation with no hope of recovery.",
     "worldview": "It is over. Everything has been destroyed. There is nothing left to salvage. This is not a chapter ending; this is the end of the entire book.",
-    "inTheLight": "The Ruined accepts the ending and becomes The Blank Slate. This is the painful liberation that comes from having nothing left to lose. It is the absolute surrender that clears the ground completely, allowing for a totally new and unforeseen path to begin. It is the freedom of zero.",
-    "lightName": "The Blank Slate",
+    "inTheLight": "This archetype represents the painful liberation that comes from having nothing left to lose. It is the absolute surrender that clears the ground completely, allowing for a totally new and unforeseen path to begin. It is the freedom of zero.",
+    "lightName": null,
     "prompts": [
       "Describe a time in your life that felt like a \"rock bottom\" ending.",
       "What new beginning eventually grew out of that ending, which you couldn't have predicted at the time?",
@@ -2470,11 +2470,11 @@
       "under": "You say the true thing without staying for what it does to the room.",
       "over": "Honesty becomes a ranking system. People hear the cut before they hear the fact."
     },
-    "archetype": "The Nihilist",
-    "coreShadow": "The cynical and destructive use of a sharp intellect. Having glimpsed a harsh truth about the world, this archetype believes that nothing matters and uses their insight to tear down the hopes and efforts of others.",
-    "worldview": "Everything is meaningless. Hope is an illusion for fools. I am superior because I see this futility, and I will prove it to you by dismantling everything you hold dear.",
-    "inTheLight": "The Nihilist's sharp mind finds purpose and becomes The Investigator. They use their incisive intellect to cut through lies, expose corruption, and reveal hidden truths. They are a powerful and fearless agent for uncovering what is real, no matter how uncomfortable.",
-    "lightName": "The Investigator",
+    "archetype": "The Investigator",
+    "coreShadow": "The cynical and destructive use of a sharp intellect. Having glimpsed a harsh truth about the world, this archetype believes that nothing matters and uses their insight as a destructive weapon.",
+    "worldview": "Everyone's hopes are illusions. All efforts are futile. I am smart because I see the pointlessness of it all, and I will prove it by dismantling your beliefs.",
+    "inTheLight": "The Investigator's sharp mind finds purpose. They use their incisive intellect to cut through lies, expose corruption, and reveal hidden truths. They are a powerful and fearless agent for uncovering what is real, no matter how uncomfortable.",
+    "lightName": null,
     "prompts": [
       "What belief or institution do you hold the most cynicism towards? Why?",
       "When was the last time you shot down someone's hopeful idea? What was your motivation?",
@@ -2520,11 +2520,11 @@
       "under": "You know the true read and let someone else's version stand. Peace is purchased with your silence.",
       "over": "You hold the fact back so you keep the advantage. Clarity becomes a private asset."
     },
-    "archetype": "The Ice Queen",
+    "archetype": "The Wise Woman",
     "coreShadow": "The ruthless pragmatist whose heart has been frozen by past sorrow. She wields truth and boundaries like weapons, expecting the worst from humanity and offering no compassion.",
-    "worldview": "I have seen the truth of the world, and it is harsh. I have cut away my own sentimentality to survive, and I have no time for yours. I will give you the cold, hard truth because it is the only thing of value.",
-    "inTheLight": "The Ice Queen's coldness becomes the clarifying wisdom of The Wise Woman. She cannot be deceived, manipulated, or intimidated. Her wisdom, born from surviving immense hardship, allows her to offer radically honest counsel and the freedom that comes from cutting away all illusions.",
-    "lightName": "The Wise Woman",
+    "worldview": "I have seen the truth of the world, and it is harsh. I have cut away my own sentimentality to survive, and I have no time for yours. I will give you the cold, hard truth for your own good.",
+    "inTheLight": "The Wise Woman cannot be deceived, manipulated, or intimidated. Her wisdom, born from surviving immense hardship, allows her to offer radically honest counsel and the freedom that comes from cutting away all illusions.",
+    "lightName": null,
     "prompts": [
       "Describe a time you cut off your emotions to make a difficult decision.",
       "In what situations do you find it difficult to show compassion for the struggles of others?",
@@ -2570,11 +2570,11 @@
       "under": "You stay in the mind and out of the feeling. Command is easier when nothing in you can be reached.",
       "over": "Feeling is treated as a leak. People fall in line and stop bringing you anything human."
     },
-    "archetype": "The Tyrant",
-    "coreShadow": "The absolute authority who wields immense power without compassion or morality. He is the judge, jury, and executioner, completely detached from the human cost of his \"necessary\" decisions.",
+    "archetype": "The Sovereign",
+    "coreShadow": "The absolute authority who wields immense power without compassion or morality. He is the judge, jury, and executioner, completely detached from the human cost of his 'necessary' decisions.",
     "worldview": "My judgment is final. My authority is absolute. For the greater good to be served, hard decisions must be made, and sentiment cannot be a factor. The mission is all that matters.",
-    "inTheLight": "The Tyrant's authority is tempered with integrity, becoming The Sovereign. He is the master of truth and discipline. He is the ethical surgeon, the just judge, the leader who makes the toughest calls with unwavering clarity and a profound sense of responsibility for the power he holds.",
-    "lightName": "The Sovereign",
+    "inTheLight": "The Sovereign's authority is tempered with integrity. He is the master of truth and discipline. He is the ethical surgeon, the just judge, the leader who makes the toughest calls with unwavering clarity and a profound sense of responsibility for the power he holds.",
+    "lightName": null,
     "prompts": [
       "Recall a time you made a decision based on cold logic, completely dismissing the emotional impact on others.",
       "In what area of your life do you act as the ultimate authority, where your word is final?",

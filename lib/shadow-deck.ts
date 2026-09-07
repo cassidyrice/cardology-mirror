@@ -26,7 +26,7 @@ const DECK = SHADOW_DECK as Record<string, ShadowEntry>;
  * can read each one in place; empty the list to hide the layer everywhere,
  * or set it to ALL_SHADOW_CARDS to show all 52.
  */
-export const SHADOW_LAYER_CARDS: readonly string[] = ["8♦"];
+export const SHADOW_LAYER_CARDS: readonly string[] = Object.keys(SHADOW_DECK);
 
 export const ALL_SHADOW_CARDS: readonly string[] = Object.keys(DECK);
 
