@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-06** (deployed `main` @ `651ea23` — feat(seo-hubs): senators + states packs, E-E-A-T template, cardology congruence, uniqueness gate; previous record `bac1c64`)
+**Last verified: 2026-09-06** (deployed `main` @ `4bf0009` — fix(seo-hubs): style hub pages inline, real OG images, drop dev jargon; previous record `651ea23`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `651ea23f01328cd947881094687ca4c618c5ca9e` |
+| **Deployed commit** | `4bf0009bc4c7b9805d4562d953b0f0126722c749` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
 | **Worker rollback** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
