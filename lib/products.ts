@@ -297,13 +297,13 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   bestFor:
     "Anyone who just found their birth card and wants the whole pattern walked through on video, not only on paper.",
   deliverable:
-    "A 5-minute Blueprint Breakdown Video for your birth card, sent by email within 2 business days. Bonuses: the 7-page Birth Card Deep Dive PDF + the complete System Guide (instant download) and your Yearly Timing Map.",
+    "A 5-minute Blueprint Breakdown Video for your birth card, sent by email within 2 business days. Instant bonuses: your Yearly Timing Map (a blueprint diagram of your year) and the 7-page Birth Card Deep Dive PDF + the complete System Guide.",
   turnaround:
-    "Deep Dive PDF links arrive immediately after payment. The video and Yearly Timing Map arrive by email within 2 business days.",
+    "The Yearly Timing Map and Deep Dive PDF links arrive immediately after payment. The video arrives by email within 2 business days.",
   includes: [
     "5-minute Blueprint Breakdown Video of your birth card",
     "Bonus: the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide)",
-    "Bonus: your Yearly Timing Map",
+    "Bonus: your Yearly Timing Map — a blueprint diagram of your year, instant",
     "Your seven ~13-year period cards on the confirmation page",
   ],
   cta: "Get the Blueprint Breakdown — $47",

@@ -1,0 +1,522 @@
+[
+  {
+    "slug": "ace-of-hearts",
+    "label": "Ace of Hearts",
+    "rank": "A",
+    "suit": "hearts",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/ace-of-hearts.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "2-of-hearts",
+    "label": "2 of Hearts",
+    "rank": "2",
+    "suit": "hearts",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/2-of-hearts.jpg",
+    "pipCount": 2
+  },
+  {
+    "slug": "3-of-hearts",
+    "label": "3 of Hearts",
+    "rank": "3",
+    "suit": "hearts",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/3-of-hearts.jpg",
+    "pipCount": 3
+  },
+  {
+    "slug": "4-of-hearts",
+    "label": "4 of Hearts",
+    "rank": "4",
+    "suit": "hearts",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/4-of-hearts.jpg",
+    "pipCount": 4
+  },
+  {
+    "slug": "5-of-hearts",
+    "label": "5 of Hearts",
+    "rank": "5",
+    "suit": "hearts",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/5-of-hearts.jpg",
+    "pipCount": 5
+  },
+  {
+    "slug": "6-of-hearts",
+    "label": "6 of Hearts",
+    "rank": "6",
+    "suit": "hearts",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/6-of-hearts.jpg",
+    "pipCount": 6
+  },
+  {
+    "slug": "7-of-hearts",
+    "label": "7 of Hearts",
+    "rank": "7",
+    "suit": "hearts",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/7-of-hearts.jpg",
+    "pipCount": 7
+  },
+  {
+    "slug": "8-of-hearts",
+    "label": "8 of Hearts",
+    "rank": "8",
+    "suit": "hearts",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/8-of-hearts.jpg",
+    "pipCount": 8
+  },
+  {
+    "slug": "9-of-hearts",
+    "label": "9 of Hearts",
+    "rank": "9",
+    "suit": "hearts",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/9-of-hearts.jpg",
+    "pipCount": 9
+  },
+  {
+    "slug": "10-of-hearts",
+    "label": "10 of Hearts",
+    "rank": "10",
+    "suit": "hearts",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/10-of-hearts.jpg",
+    "pipCount": 10
+  },
+  {
+    "slug": "jack-of-hearts",
+    "label": "Jack of Hearts",
+    "rank": "J",
+    "suit": "hearts",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/jack-of-hearts.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "queen-of-hearts",
+    "label": "Queen of Hearts",
+    "rank": "Q",
+    "suit": "hearts",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/queen-of-hearts.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "king-of-hearts",
+    "label": "King of Hearts",
+    "rank": "K",
+    "suit": "hearts",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/king-of-hearts.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "ace-of-clubs",
+    "label": "Ace of Clubs",
+    "rank": "A",
+    "suit": "clubs",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/ace-of-clubs.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "2-of-clubs",
+    "label": "2 of Clubs",
+    "rank": "2",
+    "suit": "clubs",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/2-of-clubs.jpg",
+    "pipCount": 2
+  },
+  {
+    "slug": "3-of-clubs",
+    "label": "3 of Clubs",
+    "rank": "3",
+    "suit": "clubs",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/3-of-clubs.jpg",
+    "pipCount": 3
+  },
+  {
+    "slug": "4-of-clubs",
+    "label": "4 of Clubs",
+    "rank": "4",
+    "suit": "clubs",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/4-of-clubs.jpg",
+    "pipCount": 4
+  },
+  {
+    "slug": "5-of-clubs",
+    "label": "5 of Clubs",
+    "rank": "5",
+    "suit": "clubs",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/5-of-clubs.jpg",
+    "pipCount": 5
+  },
+  {
+    "slug": "6-of-clubs",
+    "label": "6 of Clubs",
+    "rank": "6",
+    "suit": "clubs",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/6-of-clubs.jpg",
+    "pipCount": 6
+  },
+  {
+    "slug": "7-of-clubs",
+    "label": "7 of Clubs",
+    "rank": "7",
+    "suit": "clubs",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/7-of-clubs.jpg",
+    "pipCount": 7
+  },
+  {
+    "slug": "8-of-clubs",
+    "label": "8 of Clubs",
+    "rank": "8",
+    "suit": "clubs",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/8-of-clubs.jpg",
+    "pipCount": 8
+  },
+  {
+    "slug": "9-of-clubs",
+    "label": "9 of Clubs",
+    "rank": "9",
+    "suit": "clubs",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/9-of-clubs.jpg",
+    "pipCount": 9
+  },
+  {
+    "slug": "10-of-clubs",
+    "label": "10 of Clubs",
+    "rank": "10",
+    "suit": "clubs",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/10-of-clubs.jpg",
+    "pipCount": 10
+  },
+  {
+    "slug": "jack-of-clubs",
+    "label": "Jack of Clubs",
+    "rank": "J",
+    "suit": "clubs",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/jack-of-clubs.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "queen-of-clubs",
+    "label": "Queen of Clubs",
+    "rank": "Q",
+    "suit": "clubs",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/queen-of-clubs.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "king-of-clubs",
+    "label": "King of Clubs",
+    "rank": "K",
+    "suit": "clubs",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/king-of-clubs.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "ace-of-diamonds",
+    "label": "Ace of Diamonds",
+    "rank": "A",
+    "suit": "diamonds",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/ace-of-diamonds.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "2-of-diamonds",
+    "label": "2 of Diamonds",
+    "rank": "2",
+    "suit": "diamonds",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/2-of-diamonds.jpg",
+    "pipCount": 2
+  },
+  {
+    "slug": "3-of-diamonds",
+    "label": "3 of Diamonds",
+    "rank": "3",
+    "suit": "diamonds",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/3-of-diamonds.jpg",
+    "pipCount": 3
+  },
+  {
+    "slug": "4-of-diamonds",
+    "label": "4 of Diamonds",
+    "rank": "4",
+    "suit": "diamonds",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/4-of-diamonds.jpg",
+    "pipCount": 4
+  },
+  {
+    "slug": "5-of-diamonds",
+    "label": "5 of Diamonds",
+    "rank": "5",
+    "suit": "diamonds",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/5-of-diamonds.jpg",
+    "pipCount": 5
+  },
+  {
+    "slug": "6-of-diamonds",
+    "label": "6 of Diamonds",
+    "rank": "6",
+    "suit": "diamonds",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/6-of-diamonds.jpg",
+    "pipCount": 6
+  },
+  {
+    "slug": "7-of-diamonds",
+    "label": "7 of Diamonds",
+    "rank": "7",
+    "suit": "diamonds",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/7-of-diamonds.jpg",
+    "pipCount": 7
+  },
+  {
+    "slug": "8-of-diamonds",
+    "label": "8 of Diamonds",
+    "rank": "8",
+    "suit": "diamonds",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/8-of-diamonds.jpg",
+    "pipCount": 8
+  },
+  {
+    "slug": "9-of-diamonds",
+    "label": "9 of Diamonds",
+    "rank": "9",
+    "suit": "diamonds",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/9-of-diamonds.jpg",
+    "pipCount": 9
+  },
+  {
+    "slug": "10-of-diamonds",
+    "label": "10 of Diamonds",
+    "rank": "10",
+    "suit": "diamonds",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/10-of-diamonds.jpg",
+    "pipCount": 10
+  },
+  {
+    "slug": "jack-of-diamonds",
+    "label": "Jack of Diamonds",
+    "rank": "J",
+    "suit": "diamonds",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/jack-of-diamonds.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "queen-of-diamonds",
+    "label": "Queen of Diamonds",
+    "rank": "Q",
+    "suit": "diamonds",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/queen-of-diamonds.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "king-of-diamonds",
+    "label": "King of Diamonds",
+    "rank": "K",
+    "suit": "diamonds",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/king-of-diamonds.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "ace-of-spades",
+    "label": "Ace of Spades",
+    "rank": "A",
+    "suit": "spades",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/ace-of-spades.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "2-of-spades",
+    "label": "2 of Spades",
+    "rank": "2",
+    "suit": "spades",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/2-of-spades.jpg",
+    "pipCount": 2
+  },
+  {
+    "slug": "3-of-spades",
+    "label": "3 of Spades",
+    "rank": "3",
+    "suit": "spades",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/3-of-spades.jpg",
+    "pipCount": 3
+  },
+  {
+    "slug": "4-of-spades",
+    "label": "4 of Spades",
+    "rank": "4",
+    "suit": "spades",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/4-of-spades.jpg",
+    "pipCount": 4
+  },
+  {
+    "slug": "5-of-spades",
+    "label": "5 of Spades",
+    "rank": "5",
+    "suit": "spades",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/5-of-spades.jpg",
+    "pipCount": 5
+  },
+  {
+    "slug": "6-of-spades",
+    "label": "6 of Spades",
+    "rank": "6",
+    "suit": "spades",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/6-of-spades.jpg",
+    "pipCount": 6
+  },
+  {
+    "slug": "7-of-spades",
+    "label": "7 of Spades",
+    "rank": "7",
+    "suit": "spades",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/7-of-spades.jpg",
+    "pipCount": 7
+  },
+  {
+    "slug": "8-of-spades",
+    "label": "8 of Spades",
+    "rank": "8",
+    "suit": "spades",
+    "body": "upper-arm",
+    "bodyLabel": "upper arm",
+    "image": "/tattoos/8-of-spades.jpg",
+    "pipCount": 8
+  },
+  {
+    "slug": "9-of-spades",
+    "label": "9 of Spades",
+    "rank": "9",
+    "suit": "spades",
+    "body": "calf",
+    "bodyLabel": "calf",
+    "image": "/tattoos/9-of-spades.jpg",
+    "pipCount": 9
+  },
+  {
+    "slug": "10-of-spades",
+    "label": "10 of Spades",
+    "rank": "10",
+    "suit": "spades",
+    "body": "inner-wrist",
+    "bodyLabel": "inner wrist",
+    "image": "/tattoos/10-of-spades.jpg",
+    "pipCount": 10
+  },
+  {
+    "slug": "jack-of-spades",
+    "label": "Jack of Spades",
+    "rank": "J",
+    "suit": "spades",
+    "body": "back-of-hand",
+    "bodyLabel": "back of the hand",
+    "image": "/tattoos/jack-of-spades.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "queen-of-spades",
+    "label": "Queen of Spades",
+    "rank": "Q",
+    "suit": "spades",
+    "body": "inner-forearm",
+    "bodyLabel": "inner forearm",
+    "image": "/tattoos/queen-of-spades.jpg",
+    "pipCount": 1
+  },
+  {
+    "slug": "king-of-spades",
+    "label": "King of Spades",
+    "rank": "K",
+    "suit": "spades",
+    "body": "outer-forearm",
+    "bodyLabel": "outer forearm",
+    "image": "/tattoos/king-of-spades.jpg",
+    "pipCount": 1
+  }
+]

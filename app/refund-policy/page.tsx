@@ -50,12 +50,12 @@ export default function RefundPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">Blueprint Breakdown Video</h2>
           <div className="mt-3 space-y-3">
             <p>
-              The Blueprint Breakdown Video and Yearly Timing Map are produced
-              for the birth date entered at Stripe Checkout and emailed within 2
-              business days. You can request a full refund at any time before the
-              video is delivered. The bonus Birth Card Deep Dive PDFs are matched
-              immediately to that birth date and delivered as signed download links
-              on the confirmation page and by email. Once the video has been
+              The Blueprint Breakdown Video is produced for the birth date entered
+              at Stripe Checkout and emailed within 2 business days. You can request
+              a full refund at any time before the video is delivered. The bonus
+              Yearly Timing Map and Birth Card Deep Dive PDFs are matched
+              immediately to that birth date and delivered as signed links on the
+              confirmation page and by email. Once the video has been
               delivered and the bonus files are downloadable, the order is
               generally final.
             </p>

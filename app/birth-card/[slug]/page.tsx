@@ -32,6 +32,7 @@ import { famousForCard } from "@/lib/famous-birthdays";
 import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
+import { TattooBlock } from "@/components/seo/TattooBlock";
 
 const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
 
@@ -204,7 +205,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
           <li>✓ 5-minute {card.label} Blueprint Breakdown Video (by email within 2 business days)</li>
           <li>✓ Bonus: the $9 {card.label} Deep Dive — 7-page PDF + the Complete System Guide (instant)</li>
-          <li>✓ Bonus: your Yearly Timing Map</li>
+          <li>✓ Bonus: your Yearly Timing Map — a blueprint diagram of your year (instant)</li>
           <li>✓ Your seven ~13-year period cards, on screen</li>
           <li>✓ Instant download links + email backup</li>
         </ul>
@@ -260,6 +261,20 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
         <p>
           In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card)} has to offer: {card.sweetSpot}
+        </p>
+      </Section>
+
+      <Section title={`As a tattoo`}>
+        <p>
+          The pip field of the {card.label}, on skin. No card rectangle, no corner index.
+          If you ink this card, ink the layout a real deck uses — then check it is actually yours.
+        </p>
+        <TattooBlock slug={card.slug} label={card.label} />
+        <p className="mt-3">
+          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            Find your birth card free
+          </Link>
+          {" "}before you sit down.
         </p>
       </Section>
 
@@ -982,6 +997,7 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
     { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on the relationship between both people's birth cards, ruling cards, and timing. Use the compatibility calculator to compare ${card.label} with another card.` },
+    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the pip reference on this page, or the full 52 on the playing-card tattoo meaning hub.` },
   ];
 }
 

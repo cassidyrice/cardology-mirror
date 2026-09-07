@@ -49,11 +49,11 @@ const faqs = [
   },
   {
     q: "What exactly arrives for $47?",
-    a: "Three things. The 5-minute Blueprint Breakdown Video for your card and your Yearly Timing Map arrive by email within 2 business days. The bonus $9 Birth Card Deep Dive — your card's 7-page PDF plus the complete System Guide — downloads the moment payment clears, with a copy sent by email. The confirmation page also lists your seven period cards.",
+    a: "Three things. The 5-minute Blueprint Breakdown Video for your card arrives by email within 2 business days. Two bonuses are ready the moment payment clears, on the confirmation page and by email: your Yearly Timing Map and the $9 Birth Card Deep Dive — your card's 7-page PDF plus the complete System Guide. The confirmation page also lists your seven period cards.",
   },
   {
     q: "What is the Yearly Timing Map?",
-    a: "A map of your current Cardology year: it starts on your birthday and runs to the day before your next one, split into seven 52-day periods, each with its own card. The map shows which card governs each stretch of your year so you can see the timing behind recurring themes.",
+    a: "A blueprint-style diagram of your current Cardology year, drawn for your birthday. The year runs from your birthday to the day before your next one as a ring of seven 52-day periods, each with the card that governs it, a marker for where you are today, and the year's fixed signals (Long Range, Pluto, Result, Environment, Displacement) on the side. It opens in your browser; save it or print it.",
   },
   {
     q: "Do I need to know my card first?",
@@ -99,8 +99,9 @@ export default function BlueprintBreakdownVideoPage() {
         5-minute video about that one card: where it sits, what it does well,
         where it slips, and the seven chapters of roughly 13 years each that
         build a personality around it. Two bonuses come with it: the $9 Birth
-        Card Deep Dive (seven written pages, instant download) and your Yearly
-        Timing Map. This is page 1 of the bonus Deep Dive.
+        Card Deep Dive (seven written pages) and your Yearly Timing Map, a
+        blueprint diagram of your year — both instant. This is page 1 of the
+        bonus Deep Dive.
       </p>
 
       <DeepDiveSample placement="deep-dive-product-page" className="mb-6" />
@@ -110,7 +111,7 @@ export default function BlueprintBreakdownVideoPage() {
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
           <li>✓ Your card&rsquo;s 5-minute Blueprint Breakdown Video (by email within 2 business days)</li>
           <li>✓ Bonus: the $9 Birth Card Deep Dive — 7-page PDF + the complete System Guide (instant download)</li>
-          <li>✓ Bonus: your Yearly Timing Map (with the video)</li>
+          <li>✓ Bonus: your Yearly Timing Map — a blueprint diagram of your year (instant)</li>
           <li>✓ Download links on the confirmation page, plus an email copy</li>
           <li>✓ Your seven period cards, listed on the confirmation page</li>
         </ul>

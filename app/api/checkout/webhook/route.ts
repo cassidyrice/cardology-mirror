@@ -32,6 +32,7 @@ import { getStripe } from "@/lib/stripe";
 import { mintToken } from "@/lib/gate";
 import { mintDownloadToken } from "@/lib/download-token";
 import { mintReportToken } from "@/lib/report-token";
+import { TIMING_MAP_LABEL, TIMING_MAP_SLUG } from "@/lib/timing-map/model";
 import { mintMembershipToken } from "@/lib/membership-token";
 
 export const runtime = "edge";
@@ -116,10 +117,11 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: Blueprint Breakdown Video (slug deep-dive). Instant bonus PDFs
-    // (Guide + card PDF; Joker skips card) go out here; the 5-minute video and the
-    // Yearly Timing Map are produced per buyer and emailed by hand, so the intake
-    // notification carries everything needed to record them. "deep-dive-9" is the
+    // ---- BRANCH: Blueprint Breakdown Video (slug deep-dive). Instant bonuses go
+    // out here: the PDFs (Guide + card PDF; Joker skips card) and the Yearly Timing
+    // Map (drawn on request at /api/timing-map from a report token). The 5-minute
+    // video is produced per buyer and emailed by hand, so the intake notification
+    // carries everything needed to record it. "deep-dive-9" is the
     // retired $9 SKU — sessions opened before the switch still fulfill. ----
     const deepDivePaid =
       paymentSatisfied &&
@@ -144,9 +146,15 @@ export async function POST(req: NextRequest) {
               `${file.label}: ${SITE_URL}/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
             );
           }
+          if (birthday && !joker) {
+            const mapToken = await mintReportToken(email, TIMING_MAP_SLUG, session.id, birthday, days);
+            links.push(
+              `${TIMING_MAP_LABEL} (opens in your browser — save or print it): ${SITE_URL}/api/timing-map?token=${encodeURIComponent(mapToken)}`,
+            );
+          }
           bonusLinks = links.length;
           const extra = joker
-            ? "December 31 is the Joker — there is no card-level Deep Dive PDF for this date. The complete System Guide still applies."
+            ? "December 31 is the Joker — there is no card-level Deep Dive PDF or yearly map for this date. The complete System Guide still applies."
             : cardPdf
               ? ""
               : "Your card PDF could not be resolved from the birthday on this order. Reply with YYYY-MM-DD and we will send the card file.";
@@ -155,7 +163,7 @@ export async function POST(req: NextRequest) {
             "",
             deepDiveSuccessCopy(birthday),
             "",
-            "Download your bonus PDFs now (30 days):",
+            "Your bonuses, ready now (links good for 30 days):",
             ...links,
             "",
           ];
@@ -179,7 +187,7 @@ export async function POST(req: NextRequest) {
             to,
             subject: `Payment received ($47 Blueprint Breakdown): ${offerName} — ${email}`,
             text: [
-              `ACTION: record the 5-minute Blueprint Breakdown Video + Yearly Timing Map for this buyer and email them ${DEEP_DIVE_VIDEO_TURNAROUND}.`,
+              `ACTION: record the 5-minute Blueprint Breakdown Video for this buyer and email it ${DEEP_DIVE_VIDEO_TURNAROUND}. (Yearly Timing Map + PDFs were sent automatically.)`,
               `Birthday: ${birthday || "(missing — ask the buyer)"}`,
               `Birth card: ${cardPdf ? cardPdf.label.replace(" Deep Dive", "") : joker ? "Joker (Dec 31)" : "(unresolved)"}`,
               "",

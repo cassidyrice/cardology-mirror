@@ -26,6 +26,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/destiny-cards": "2026-08-15",
   "/cartomancy-vs-tarot": "2026-08-07",
   "/how-to-read-playing-cards": "2026-08-16",
+  "/playing-card-tattoo-meaning": "2026-09-07",
   "/playing-card-spreads": "2026-09-01",
   "/52-card-astrology-explained": "2026-08-16",
   "/birth-card-vs-ruling-card": "2026-08-15",

@@ -117,7 +117,12 @@ export default function BirthCardIndex() {
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
           playing deck — not tarot and not a paper birthday card. Browse all 52 meanings
-          below or use the free calculator to find yours.
+          below or use the free calculator to find yours. Each card also has a pip-only
+          tattoo reference — the exact French-deck layout, on skin.{" "}
+          <Link href="/playing-card-tattoo-meaning" className="text-gold underline underline-offset-4">
+            All 52 pip tattoos
+          </Link>
+          .
         </p>
       </div>
       <p className="mb-6">

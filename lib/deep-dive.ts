@@ -20,14 +20,14 @@ export const DEEP_DIVE_CTA_LABEL = "Get the Blueprint Breakdown — $47";
 /** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
 export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $47 Blueprint Breakdown";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
-/** Turnaround promised for the video + Yearly Timing Map (both are produced per buyer). */
+/** Turnaround promised for the video (recorded per buyer by hand). The Yearly Timing Map is drawn instantly at /api/timing-map. */
 export const DEEP_DIVE_VIDEO_TURNAROUND = "within 2 business days";
 export const DEEP_DIVE_SUCCESS_COPY =
-  `Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your bonus 7-page Deep Dive and the complete System Guide are in this email.`;
+  `Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your Yearly Timing Map, bonus 7-page Deep Dive and the complete System Guide are in this email.`;
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
-  `Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your complete System Guide is in this email. December 31 is the Joker — there is no card-level Deep Dive PDF for this date.`;
+  `Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your complete System Guide is in this email. December 31 is the Joker — there is no card-level Deep Dive PDF or yearly map for this date.`;
 export const DEEP_DIVE_FULFILLMENT =
-  `What $47 sends: a 5-minute Blueprint Breakdown Video of your birth card, by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Bonuses: the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide) and your Yearly Timing Map. Instant download links + email backup for the PDFs, plus your seven 13-year period cards on the confirmation page. Broken file or wrong card: we replace or refund.`;
+  `What $47 sends: a 5-minute Blueprint Breakdown Video of your birth card, by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Bonuses, instant: your Yearly Timing Map (a blueprint diagram of your year) and the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide). Instant download links + email backup, plus your seven 13-year period cards on the confirmation page. Broken file or wrong card: we replace or refund.`;
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 

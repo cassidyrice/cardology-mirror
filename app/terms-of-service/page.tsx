@@ -60,11 +60,11 @@ export default function TermsOfService() {
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
               <strong>Blueprint Breakdown Video ($47)</strong> — a 5-minute video
-              about the birth card your birthday maps to, plus your Yearly Timing
-              Map, both delivered by email within 2 business days of payment. Two
-              bonuses are included: the 7-page Birth Card Deep Dive PDF and the
-              complete System Guide PDF, delivered as instant download links on
-              the confirmation page and by email.
+              about the birth card your birthday maps to, delivered by email
+              within 2 business days of payment. Three bonuses are included and
+              delivered instantly as signed links on the confirmation page and by
+              email: your Yearly Timing Map (a diagram drawn from your birthday),
+              the 7-page Birth Card Deep Dive PDF, and the complete System Guide PDF.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               Downloads and past report links use private signed URLs. Do not

@@ -246,7 +246,8 @@ test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Ri
 });
 
 test("success copy: video by email, bonus PDFs instant, honest for Joker", () => {
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("Blueprint Breakdown Video and Yearly Timing Map arrive by email");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("Blueprint Breakdown Video arrives by email");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("Yearly Timing Map");
   expect(DEEP_DIVE_SUCCESS_COPY).toContain("7-page Deep Dive and the complete System Guide");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Blueprint Breakdown Video");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("90 Spreads");

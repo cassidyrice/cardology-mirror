@@ -42,6 +42,7 @@ import {
   type StoredCalendar,
 } from "@/lib/content-engine/storage";
 import { mintReportToken } from "@/lib/report-token";
+import { TIMING_MAP_LABEL, TIMING_MAP_SLUG } from "@/lib/timing-map/model";
 import { mintDownloadToken } from "@/lib/download-token";
 import { ALL_90_SPREADS_FILE, isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
 import {
@@ -177,18 +178,27 @@ export default async function CheckoutSuccessPage({
   // Deep Dive: mint the same HMAC download tokens the webhook emails, so
   // "instant download links + email backup" is true on this page too.
   // Mint failure falls back to the email-only story — never a blank page.
-  let deepDiveLinks: { label: string; href: string }[] = [];
+  let deepDiveLinks: { label: string; href: string; kind?: "pdf" | "map" }[] = [];
   let deepDiveExtra = "";
   if (deepDive && confirmed && customerEmail) {
     try {
       const days = 30;
       const files: DeepDiveFile[] = deepDiveFilesForBirthday(deepDiveBirthday);
-      const minted: { label: string; href: string }[] = [];
+      const minted: { label: string; href: string; kind?: "pdf" | "map" }[] = [];
+      if (deepDiveBirthday && !isJokerBirthdate(deepDiveBirthday)) {
+        const mapToken = await mintReportToken(customerEmail, TIMING_MAP_SLUG, sessionId, deepDiveBirthday, days);
+        minted.push({
+          label: TIMING_MAP_LABEL,
+          href: `/api/timing-map?token=${encodeURIComponent(mapToken)}`,
+          kind: "map",
+        });
+      }
       for (const file of files) {
         const token = await mintDownloadToken(customerEmail, file.slug, days);
         minted.push({
           label: file.label,
           href: `/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
+          kind: "pdf",
         });
       }
       deepDiveLinks = minted;
@@ -391,8 +401,8 @@ export default async function CheckoutSuccessPage({
             : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? isJokerBirthdate(deepDiveBirthday)
-                ? "Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email within 2 business days. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF for this date."
-                : "Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email within 2 business days. Your bonus 7-page Deep Dive and complete System Guide are ready below. Backup copies were also emailed."
+                ? "Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email within 2 business days. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF or yearly map for this date."
+                : "Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email within 2 business days. Your Yearly Timing Map, bonus 7-page Deep Dive and complete System Guide are ready below. Backup links were also emailed."
               : deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
@@ -584,7 +594,7 @@ function DeepDiveFulfillment({
   lifePath,
 }: {
   birthday: string;
-  links: { label: string; href: string }[];
+  links: { label: string; href: string; kind?: "pdf" | "map" }[];
   extra: string;
   email: string;
   birthCard?: string;
@@ -608,7 +618,7 @@ function DeepDiveFulfillment({
                 variant="accent"
                 size="large"
               >
-                Download {link.label} &mdash; PDF (bonus)
+                {link.kind === "map" ? <>Open your {link.label} &mdash; diagram (bonus)</> : <>Download {link.label} &mdash; PDF (bonus)</>}
               </LinkButton>
             ))}
           </div>
