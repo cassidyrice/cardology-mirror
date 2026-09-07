@@ -997,7 +997,7 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
     { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on the relationship between both people's birth cards, ruling cards, and timing. Use the compatibility calculator to compare ${card.label} with another card.` },
-    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the pip reference on this page, or the full 52 on the playing-card tattoo meaning hub.` },
+    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — Ace is 1 pip, 2–10 are that many, Jack 11, Queen 12, King 13 — with no border and no index. It marks the card, not a prediction. See the pip reference on this page, or the full 52 on the playing-card tattoo meaning hub.` },
   ];
 }
 

@@ -33,7 +33,7 @@ const faqs = [
   },
   {
     q: "Should I tattoo the whole card or just the pips?",
-    a: "These references are pip-only: no rectangle, no corner index, no face. Number cards use the exact French-deck pip count and placement. Ace, Jack, Queen, and King use a single suit pip — the face lives on the card, not in the tattoo.",
+    a: "These references are pip-only: no rectangle, no corner index, no face. Ace is one pip. 2 through 10 are that many pips. Jack is 11, Queen 12, King 13. Lower pips invert the way they do on a real card.",
   },
   {
     q: "How do I know which card to tattoo?",
@@ -68,9 +68,8 @@ export default function PlayingCardTattooMeaning() {
       <p className="mt-3 text-xs text-faint">Updated {updatedLabel(UPDATED)}</p>
       <p className="prose-reading mt-4 text-mist">
         A playing-card tattoo is often a full card, a skull, or a lucky ace. These are none of those.
-        Each image is the pip field a real French-suited deck uses for that rank — the same count, the
-        same placement, lower pips inverted — photographed as a mark on skin. No border. No index.
-        Court cards are one suit pip, because the face is the card, not the tattoo.
+        Each image is the pip field from the deck file — Ace 1, through King 13 — same placement,
+        lower pips inverted, on skin. No border. No index. Jack, Queen, and King stay pips, not faces.
       </p>
       <p className="prose-reading mt-3 text-mist">
         They live on the existing birth-card pages, not as 52 extra URLs. This hub is the index.
