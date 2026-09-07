@@ -1,0 +1,2602 @@
+{
+  "A♥": {
+    "code": "A♥",
+    "slug": "ace-of-hearts",
+    "label": "Ace of Hearts",
+    "suit": "hearts",
+    "rank": "A",
+    "title": "The Emotional Pioneer",
+    "coreIdentity": "You start real connection on purpose: you say what you feel and leave room for the other person to answer. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
+    "gifts": [
+      "Courage to initiate genuine emotional connection",
+      "Openness that invites others into real vulnerability",
+      "Natural warmth and emotional directness",
+      "Capacity to start relationships from honesty"
+    ],
+    "shadow": "You reach so hard for connection that the other person has to manage the reach. Intensity arrives before there is a place to put it.",
+    "lifeDirection": "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
+    "lens": {
+      "balanced": "You start real connection on purpose: you say what you feel and leave room for the other person to answer.",
+      "under": "You flood the room with feeling before anyone has agreed to hold it. Intensity stands in for being known.",
+      "over": "You use feeling as leverage. The cost is people manage your mood instead of meeting you."
+    },
+    "archetype": "The Torrent",
+    "coreShadow": "Raw, overwhelming emotion without a container. It's the flash flood of love, grief, or joy that drowns both the self and others. It is neediness disguised as love.",
+    "worldview": "My feelings are a tsunami, and I must let them crash into someone. I feel everything so intensely that I cannot be contained. My love will fix you, and your attention will complete me. We must merge.",
+    "inTheLight": "The Torrent's energy, when channeled, becomes The Wellspring. It is the source of pure, unconditional love and radical empathy. It is the ability to connect deeply and authentically, to love freely without expectation, and to be a fountain of compassion for others.",
+    "lightName": "The Wellspring",
+    "prompts": [
+      "Describe a time your emotions felt like a flood you couldn't control. What was the outcome?",
+      "Are you currently pouring your feelings onto someone in the hope they will \"fix\" or \"complete\" you?",
+      "What is one small, healthy way you can express a powerful emotion today without overwhelming yourself or someone else?"
+    ],
+    "keywords": [
+      "emotional overwhelm",
+      "neediness",
+      "identity confusion",
+      "obsession with love"
+    ],
+    "surfaceTruth": "I lead with vulnerability and openness in all my relationships.",
+    "analog": {
+      "title": "Pure Heart",
+      "corePattern": "New beginnings in love and emotion. You lead with feeling.",
+      "shadowExpression": "Emotional impulsiveness. Falling in love with love itself. Using emotion to avoid thinking clearly.",
+      "evolvedExpression": "Emotional clarity without drama. Leads with heart while maintaining healthy boundaries. Pure feeling with wisdom.",
+      "relationships": "You fall fast and hard. Partners either match your emotional intensity or feel completely overwhelmed.",
+      "career": "Counseling, emotional intelligence work, heart-centered leadership. Work requiring emotional depth.",
+      "lifeLesson": "Feeling deeply doesn't mean drowning in emotion. Channel feeling into wisdom.",
+      "practice": "Make one major decision using only logic for once. No emotion allowed in the process.",
+      "mantra": "I am pure heart."
+    }
+  },
+  "2♥": {
+    "code": "2♥",
+    "slug": "2-of-hearts",
+    "label": "Two of Hearts",
+    "suit": "hearts",
+    "rank": "2",
+    "title": "The Loving Partner",
+    "coreIdentity": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
+    "gifts": [
+      "Genuine diplomacy and emotional attunement",
+      "Ability to balance your needs with another's",
+      "Talent for creating mutual understanding and partnership",
+      "Sensitivity to what a relationship actually needs"
+    ],
+    "shadow": "You disappear into the other person's needs. Harmony is built on a self that is no longer in the room.",
+    "lifeDirection": "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
+    "lens": {
+      "balanced": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table.",
+      "under": "You change shape to keep the peace. After a while you cannot tell which preference was actually yours.",
+      "over": "You take responsibility for other people's moods. The cost is you disappear, then resent the people you were managing."
+    },
+    "archetype": "The Codependent",
+    "coreShadow": "The complete loss of self in another person. The inability to distinguish one's own feelings and needs from a partner's, creating a fragile and unhealthy union.",
+    "worldview": "I am nothing without you. Your moods are my moods. Your dreams are my dreams. I only exist in the reflection of your eyes. Please don't leave me, for I will cease to be.",
+    "inTheLight": "This deep desire for union transforms into The Soulmate. It is a sacred, balanced partnership built on mutual respect and interdependence. It is the ability to see the divine in another while remaining a whole and sovereign individual.",
+    "lightName": "The Soulmate",
+    "prompts": [
+      "In which relationship (past or present) has your identity most completely merged with the other person’s?",
+      "What part of yourself are you afraid of facing alone, without a partner's validation?",
+      "What is one decision you can make this week that is purely for your own well-being, without considering a partner’s preference?"
+    ],
+    "keywords": [
+      "codependency",
+      "fear of abandonment",
+      "merging boundaries",
+      "validation-seeking"
+    ],
+    "surfaceTruth": "I'm just adaptable and attentive to what others need emotionally.",
+    "analog": {
+      "title": "Emotional Partner",
+      "corePattern": "Love through partnership. You feel complete in relationship.",
+      "shadowExpression": "Codependence. Can't feel okay alone. Need someone to feel whole.",
+      "evolvedExpression": "Emotionally interdependent. Complete alone, better together. Partnership from wholeness.",
+      "relationships": "Partnership is your natural state. You mirror others emotionally. Need deep connection.",
+      "career": "Relationship counseling, mediation, partnership work. Fields requiring emotional attunement.",
+      "lifeLesson": "You must be whole alone before you can truly partner.",
+      "practice": "Spend significant time in solitude. Notice the compulsion to reach out.",
+      "mantra": "I am emotional partner."
+    }
+  },
+  "3♥": {
+    "code": "3♥",
+    "slug": "3-of-hearts",
+    "label": "Three of Hearts",
+    "suit": "hearts",
+    "rank": "3",
+    "title": "The Creative Heart",
+    "coreIdentity": "You let love have range without using newness as an exit from the one that is already here. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
+    "gifts": [
+      "Emotional depth expressed through creativity",
+      "Range and versatility in how you connect",
+      "Ability to bring vitality and play to relationships",
+      "Comfort with emotional complexity and nuance"
+    ],
+    "shadow": "You keep a spare door open so no single person can pin you down. Variety protects you from being chosen.",
+    "lifeDirection": "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
+    "lens": {
+      "balanced": "You let love have range without using newness as an exit from the one that is already here.",
+      "under": "You keep a spare connection warm so no single person can pin you down. Variety protects you from being chosen.",
+      "over": "You arrive all-in, then find a fatal flaw the moment the connection asks you to stay."
+    },
+    "archetype": "The Betrayer",
+    "coreShadow": "The celebration turned sour by jealousy, gossip, or social exclusion. It is the friend who secretly resents your success or the third person who drives a wedge between a happy couple.",
+    "worldview": "Their shared joy makes me feel my own lack more acutely. If I am not the center of the celebration, then the celebration is a threat. I must either insert myself or subtly spoil their happiness to feel secure.",
+    "inTheLight": "This social energy becomes The Confidante. It is the archetype of true community, shared joy, and deep, platonic friendship. It is the ability to celebrate the successes of others as if they were your own and to create a circle of trust and mutual support.",
+    "lightName": "The Confidante",
+    "prompts": [
+      "Recall a time when a friend's success sparked a feeling of jealousy or resentment in you. What was that feeling trying to tell you about your own desires?",
+      "When have you felt like the \"third wheel,\" and how did you react to that feeling of exclusion?",
+      "Is there a current friendship where you are withholding praise or support? What are you afraid of?"
+    ],
+    "keywords": [
+      "emotional inconsistency",
+      "scattered desire",
+      "performative affection",
+      "indecisiveness"
+    ],
+    "surfaceTruth": "I'm passionate and expressive in relationships, creating excitement and connection.",
+    "analog": {
+      "title": "Emotional Creator",
+      "corePattern": "Love expressed creatively. You create from emotion.",
+      "shadowExpression": "Emotional drama for attention. Creating chaos to feel alive.",
+      "evolvedExpression": "Channels emotion into art, beauty, creation. Feels deeply, expresses consciously.",
+      "relationships": "Need emotional freedom to express. Partners must handle your emotional range.",
+      "career": "Artist, performer, therapist. Work that transforms emotion into expression.",
+      "lifeLesson": "Not all emotion needs external expression. Some feelings can be private.",
+      "practice": "Feel something intensely without expressing it externally for one week.",
+      "mantra": "I am emotional creator."
+    }
+  },
+  "4♥": {
+    "code": "4♥",
+    "slug": "4-of-hearts",
+    "label": "Four of Hearts",
+    "suit": "hearts",
+    "rank": "4",
+    "title": "The Emotional Foundation Builder",
+    "coreIdentity": "You build a home people can count on, and you leave enough air for feeling to move. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
+    "gifts": [
+      "Building reliable emotional foundations and trust",
+      "Consistency and steadiness in relationships",
+      "Ability to make others feel safe and held",
+      "Loyalty and follow-through in love"
+    ],
+    "shadow": "You keep feeling inside approved roles. The house is stable and nothing unscripted is allowed to live there.",
+    "lifeDirection": "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
+    "lens": {
+      "balanced": "You build a home people can count on, and you leave enough air for feeling to move.",
+      "under": "You treat control as safety. Everyone gets a role; nothing unscripted is allowed in.",
+      "over": "You call real emotion messy and shut it down. The house is orderly. Nobody actually lives there."
+    },
+    "archetype": "The Apathetic",
+    "coreShadow": "Willful emotional numbness and withdrawal. It is the refusal of new connections or opportunities for joy out of a deep-seated fear of being disappointed again.",
+    "worldview": "I've been offered this before, and it always leads to pain. It is safer to want nothing and feel nothing. I will protect my heart by pretending it doesn't exist. Leave me alone in my discontent.",
+    "inTheLight": "This emotional retreat becomes The Contemplative Heart. It is a necessary and healing period of introspection. It's the wisdom to pull back, assess one's true emotional needs, and rest the heart before it can open again, stronger and more discerning than before.",
+    "lightName": "The Contemplative Heart",
+    "prompts": [
+      "What offers of connection or joy have you recently turned down? What was the reason you gave, and what was the *real* reason?",
+      "Describe the emotional \"wall\" you have built. What is it made of?",
+      "If you were to let one new person or experience into your heart today, what would be your biggest fear?"
+    ],
+    "keywords": [
+      "emotional rigidity",
+      "control in love",
+      "fear of change",
+      "emotional shutdown"
+    ],
+    "surfaceTruth": "I create stable, reliable emotional foundations in my relationships.",
+    "analog": {
+      "title": "Emotional Foundation",
+      "corePattern": "Love through stability. You build emotional security.",
+      "shadowExpression": "Emotional rigidity. Can't adapt when feelings change. Stuck in safe patterns.",
+      "evolvedExpression": "Emotionally stable while flexible. Secure base that can still grow and adapt.",
+      "relationships": "You provide emotional stability. Partners rely on your consistency.",
+      "career": "Family therapy, home-based work, stability-focused professions.",
+      "lifeLesson": "Security shouldn't become stagnation. Emotional growth requires risk.",
+      "practice": "Deliberately step outside emotional comfort zone. Try a feeling that scares you.",
+      "mantra": "I am emotional foundation."
+    }
+  },
+  "5♥": {
+    "code": "5♥",
+    "slug": "5-of-hearts",
+    "label": "Five of Hearts",
+    "suit": "hearts",
+    "rank": "5",
+    "title": "The Restless Heart",
+    "coreIdentity": "You let love change shape without using motion as a way out of being seen. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
+    "gifts": [
+      "Adaptability through emotional change and transition",
+      "Bringing freshness and movement to relationships",
+      "Understanding that love deepens through transformation",
+      "Openness to growth rather than stasis"
+    ],
+    "shadow": "You leave when a connection starts asking you to stay in one place. Motion looks like aliveness; it can also be how you avoid being known.",
+    "lifeDirection": "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
+    "lens": {
+      "balanced": "You let love change shape without using motion as a way out of being seen.",
+      "under": "You leave when a connection starts asking you to stay in one place. Variety looks like freedom; it can also be how you avoid being known.",
+      "over": "You call it freedom when you will not stay long enough for the relationship to cost you anything."
+    },
+    "archetype": "The Grief-Collector",
+    "coreShadow": "Defining oneself by past hurts and disappointments. It is the act of focusing only on what has been lost while ignoring any blessings that remain.",
+    "worldview": "You don't understand my pain. The good things don't matter because the bad thing happened. My identity is now forged in this loss, and I must constantly revisit the wound to remember who I am.",
+    "inTheLight": "The Grief-Collector evolves into The Survivor. This archetype understands how to honor loss and grieve authentically without letting sorrow become their entire identity. It is the resilience to acknowledge pain while still being able to see and appreciate the love and hope that endures.",
+    "lightName": "The Survivor",
+    "prompts": [
+      "What past hurt or loss do you find yourself replaying most often? What comfort do you get from holding onto this story?",
+      "Look at a current challenge. Are you focusing entirely on what has been lost, while ignoring what remains?",
+      "Write down one good thing that still exists in your life, despite a recent hardship. Allow yourself to feel gratitude for it for two full minutes."
+    ],
+    "keywords": [
+      "fear of commitment",
+      "emotional escapism",
+      "romantic thrill-seeking",
+      "intimacy aversion"
+    ],
+    "surfaceTruth": "I need emotional freedom and variety to truly connect with different people.",
+    "analog": {
+      "title": "Emotional Freedom",
+      "corePattern": "Love through change. You need emotional freedom and variety.",
+      "shadowExpression": "Emotional chaos. Can't commit. Running from depth.",
+      "evolvedExpression": "Free to feel everything without needing to act on it all. Emotional range with groundedness.",
+      "relationships": "You need space even in intimacy. Caged feelings kill the relationship.",
+      "career": "Travel, variety-based work, multiple passion projects.",
+      "lifeLesson": "Freedom and commitment aren't opposites. You can have both.",
+      "practice": "Commit to one emotional practice daily for 90 days without changing it.",
+      "mantra": "I am emotional freedom."
+    }
+  },
+  "6♥": {
+    "code": "6♥",
+    "slug": "6-of-hearts",
+    "label": "Six of Hearts",
+    "suit": "hearts",
+    "rank": "6",
+    "title": "The Devoted Caregiver",
+    "coreIdentity": "You care for people without disappearing. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
+    "gifts": [
+      "Integrating genuine care with healthy boundaries",
+      "Creating harmony and emotional safety for others",
+      "Devotion and willingness to show up for people",
+      "Capacity to serve from a full cup, not an empty one"
+    ],
+    "shadow": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
+    "lifeDirection": "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
+    "lens": {
+      "balanced": "You care for people without disappearing. Help comes from a full plate, not an empty one.",
+      "under": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
+      "over": "You play the nice one. Conflict gets swallowed. The people you protect never find out what you actually wanted."
+    },
+    "archetype": "The Sentimentalist",
+    "coreShadow": "Being trapped in an idealized, romanticized past. This shadow uses nostalgia as a drug to avoid the challenges and responsibilities of the present moment.",
+    "worldview": "Nothing will ever be as pure, simple, or good as it was back then. The present is a constant disappointment. If I could just go back, everything would be okay.",
+    "inTheLight": "Nostalgia becomes a source of wisdom and joy, transforming this archetype into The Storykeeper. They honor their roots and cherish memories without being imprisoned by them. They use the lessons of the past to build a better future and find gratitude for the entire journey.",
+    "lightName": "The Storykeeper",
+    "prompts": [
+      "What period from your past do you idealize the most? How does this idealized memory prevent you from enjoying the present?",
+      "When you feel dissatisfied today, is your first instinct to retreat into memories of \"the good old days\"?",
+      "What is one new, positive memory you can create for yourself this week?"
+    ],
+    "keywords": [
+      "martyrdom",
+      "people-pleasing",
+      "emotional guilt",
+      "over-responsibility"
+    ],
+    "surfaceTruth": "I create harmony by being the emotional glue in relationships and groups.",
+    "analog": {
+      "title": "Emotional Caretaker",
+      "corePattern": "Love through service. You feel through taking care of others.",
+      "shadowExpression": "Emotional martyrdom. Caretaking everyone, neglecting self.",
+      "evolvedExpression": "Nurtures from fullness. Cares for others without losing self.",
+      "relationships": "You're the caretaker. Attract those who need healing. Set boundaries.",
+      "career": "Nursing, caregiving, family work, healing professions.",
+      "lifeLesson": "You can't save everyone through love alone.",
+      "practice": "Let others handle their own emotional needs for one week. No rescuing.",
+      "mantra": "I am emotional caretaker."
+    }
+  },
+  "7♥": {
+    "code": "7♥",
+    "slug": "7-of-hearts",
+    "label": "Seven of Hearts",
+    "suit": "hearts",
+    "rank": "7",
+    "title": "The Reflective Heart",
+    "coreIdentity": "You look at love clearly without using analysis as a way not to feel it. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
+    "gifts": [
+      "Wisdom and insight into the nature of love",
+      "Ability to see beneath romantic illusion",
+      "Emotional reflection and self-awareness",
+      "Seeking what's true over what's comfortable"
+    ],
+    "shadow": "You understand the feeling instead of having it. Insight keeps you at a safe distance from the thing you are describing.",
+    "lifeDirection": "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
+    "lens": {
+      "balanced": "You look at love clearly without using analysis as a way not to feel it.",
+      "under": "You step back from feeling and call it discernment. Distance keeps you safe and also keeps you alone.",
+      "over": "You stay in your head and call it honesty. The body of the relationship never gets a vote."
+    },
+    "archetype": "The Fantasist",
+    "coreShadow": "Falling in love with an idea, not a person; living in a state of romantic delusion to avoid the complexities of real connection.",
+    "worldview": "The movie in my head is better and safer than reality. I will build a person up into my perfect ideal, and when they fail to meet that impossible standard, I will feel beautifully, tragically disappointed.",
+    "inTheLight": "The Fantasist's powerful imagination, when grounded, becomes the gift of The Visionary. They are the artist, poet, and innovator who can see potential and beauty everywhere. They use their imagination not to escape reality, but to transform it.",
+    "lightName": "The Visionary",
+    "prompts": [
+      "Where are you currently in love with the *idea* of a person or situation, rather than the reality of it?",
+      "What comforting fantasy are you replaying in your mind, and what truth might you be avoiding by staying there?",
+      "Describe a time you were disappointed by someone. Was the disappointment caused by their actions, or by their failure to live up to a role you secretly created for them?"
+    ],
+    "keywords": [
+      "emotional avoidance",
+      "spiritual bypassing",
+      "unhealed childhood wounds",
+      "vulnerability fear"
+    ],
+    "surfaceTruth": "I'm selective about my emotional investments because I value depth and quality.",
+    "analog": {
+      "title": "Emotional Seeker",
+      "corePattern": "Love through understanding. You seek emotional and spiritual depth.",
+      "shadowExpression": "Emotional overthinking. Analyzing feelings instead of feeling them.",
+      "evolvedExpression": "Feels deeply and understands why. Emotional wisdom and spiritual maturity.",
+      "relationships": "Need partners who can go deep emotionally and spiritually.",
+      "career": "Spiritual counseling, depth psychology, transformational work.",
+      "lifeLesson": "Some emotions can't be understood, only felt and released.",
+      "practice": "Feel without analyzing for one week. Pure emotion, no interpretation.",
+      "mantra": "I am emotional seeker."
+    }
+  },
+  "8♥": {
+    "code": "8♥",
+    "slug": "8-of-hearts",
+    "label": "Eight of Hearts",
+    "suit": "hearts",
+    "rank": "8",
+    "title": "The Emotional Powerhouse",
+    "coreIdentity": "You hold the emotional room without taking it over. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
+    "gifts": [
+      "Commanding emotional situations with strength and clarity",
+      "Charisma and emotional presence",
+      "Leading with confident compassion",
+      "Ability to steady and reassure others"
+    ],
+    "shadow": "You would rather run the emotional room than be moved by it. Control stands in for the risk of being affected.",
+    "lifeDirection": "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
+    "lens": {
+      "balanced": "You hold the emotional room without taking it over. People know where they stand.",
+      "under": "You shut feeling down and lead with logic. Power stays clean because nothing tender is allowed near it.",
+      "over": "You decide how other people are allowed to feel. Strength becomes possession."
+    },
+    "archetype": "The Drifter",
+    "coreShadow": "The fear of commitment that leads to abandoning people or situations at the first sign of deepening intimacy. It is the preemptive strike against being hurt.",
+    "worldview": "This is getting too real, too deep. I have to get out before I get trapped or rejected. It is easier to walk away now than to be forced out later. Nothing good lasts.",
+    "inTheLight": "This energy of moving on becomes the courage of The Pilgrim. It is the wisdom to know when something is no longer spiritually or emotionally aligned and the strength to walk away from a good situation in search of one's true path. It is a quest for emotional authenticity.",
+    "lightName": "The Pilgrim",
+    "prompts": [
+      "What good thing (a relationship, a project, a feeling) did you walk away from because it started to feel \"too real\" or \"too deep\"?",
+      "Is there a situation right now where you feel the urge to flee? What is the specific feeling you are running from?",
+      "What might happen if, instead of leaving, you chose to stay and communicate your fear?"
+    ],
+    "keywords": [
+      "emotional manipulation",
+      "power games",
+      "intimacy control",
+      "ego in love"
+    ],
+    "surfaceTruth": "I seek transformative emotional connections that catalyze growth and healing.",
+    "analog": {
+      "title": "Emotional Power",
+      "corePattern": "Love with intensity. You feel powerfully and want emotional mastery.",
+      "shadowExpression": "Emotional manipulation. Using feelings to control. Intensity without boundaries.",
+      "evolvedExpression": "Powerful emotions with ethical use. Intensity channeled into healing and transformation.",
+      "relationships": "Your emotional intensity is magnetic and sometimes overwhelming.",
+      "career": "Therapy, crisis work, intense emotional environments.",
+      "lifeLesson": "Power is responsibility. Emotional intensity must be used ethically.",
+      "practice": "Notice when you use emotion to influence. Stop doing it for one week.",
+      "mantra": "I am emotional power."
+    }
+  },
+  "9♥": {
+    "code": "9♥",
+    "slug": "9-of-hearts",
+    "label": "Nine of Hearts",
+    "suit": "hearts",
+    "rank": "9",
+    "title": "The Compassionate Idealist",
+    "coreIdentity": "You stay kind without picking up what is not yours. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
+    "gifts": [
+      "Integrating compassion with hard-won wisdom",
+      "A capacity for love that extends beyond the self",
+      "Knowing what is yours to carry and what to release",
+      "Emotional generosity toward people and causes"
+    ],
+    "shadow": "You carry what is not yours and call it love. The helping is real; so is the refusal to put your own piece down.",
+    "lifeDirection": "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
+    "lens": {
+      "balanced": "You stay kind without picking up what is not yours.",
+      "under": "You collapse into helping and then resent the people you are carrying. The ideal was cleaner than the work.",
+      "over": "You save people and skip yourself. Burnout wears the costume of care."
+    },
+    "archetype": "The Sybarite",
+    "coreShadow": "Using sensual pleasure and material comfort to numb emotional emptiness. It is gluttony of the senses—comfort eating, retail therapy, addiction to feeling good to avoid feeling at all.",
+    "worldview": "An empty feeling inside can be filled with something from the outside. If I eat this, buy this, or experience this, the bad feeling will go away, at least for a little while.",
+    "inTheLight": "The Sybarite becomes The Epicurean. This archetype has a deep and healthy appreciation for the pleasures of life. They practice gratitude, live in the moment, and enjoy the sensual world as a manifestation of self-love and abundance, not as an escape.",
+    "lightName": "The Epicurean",
+    "prompts": [
+      "What is your go-to \"comfort\" activity (eating, shopping, etc.) when you feel emotionally empty or sad?",
+      "Describe a time you used pleasure or consumption to numb a difficult feeling. Did it work? For how long?",
+      "The next time you feel a negative emotion, what could you do to *feel* it instead of immediately trying to *fix* it with a distraction?"
+    ],
+    "keywords": [
+      "unfulfilled longing",
+      "idealism collapse",
+      "emotional burnout",
+      "disappointment loops"
+    ],
+    "surfaceTruth": "I find fulfillment in giving emotional support and nurturing others.",
+    "analog": {
+      "title": "Universal Love",
+      "corePattern": "Love for all. You feel connected to everyone and everything.",
+      "shadowExpression": "Boundary-less. Everyone's feelings become yours. Emotional overwhelm from the world.",
+      "evolvedExpression": "Universal love with personal boundaries. Feels collective pain without drowning in it.",
+      "relationships": "You love humanity, sometimes neglecting specific individuals in your life.",
+      "career": "Global emotional work, collective healing, humanitarian emotional support.",
+      "lifeLesson": "You can hold space for the world's pain without carrying it all.",
+      "practice": "Focus emotional energy only on yourself and immediate circle for one week.",
+      "mantra": "I am universal love."
+    }
+  },
+  "10♥": {
+    "code": "10♥",
+    "slug": "10-of-hearts",
+    "label": "Ten of Hearts",
+    "suit": "hearts",
+    "rank": "10",
+    "title": "The Community Heart",
+    "coreIdentity": "You make room for a lot of people and still keep a self inside the room. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
+    "gifts": [
+      "Expanding love and belonging across a community",
+      "Creating warmth and inclusion at scale",
+      "Holding many relationships with genuine presence",
+      "Making others feel part of something"
+    ],
+    "shadow": "You hold the group's feeling until you cannot feel your own. Being needed by many starts to stand in for being met.",
+    "lifeDirection": "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
+    "lens": {
+      "balanced": "You make room for a lot of people and still keep a self inside the room.",
+      "under": "You carry the family's feeling for them. Belonging starts to mean you do not get to put anything down.",
+      "over": "Everyone's mood becomes your job. Care turns into a system of quiet obligation."
+    },
+    "archetype": "The Martyr",
+    "coreShadow": "Enforcing a façade of perfect family harmony at the cost of one's own needs and truth. It is the \"keeping up appearances\" that breeds deep, unspoken resentment.",
+    "worldview": "The happiness of the group depends on my silent sacrifice. I must suppress my own desires for the 'greater good.' They must see us as a perfect, happy family, no matter how I feel inside.",
+    "inTheLight": "This archetype evolves into the true Patriarch/Matriarch. They are the center of a thriving, authentic community built on genuine love and emotional honesty. They create a legacy of lasting happiness and a safe harbor where everyone feels they truly belong.",
+    "lightName": null,
+    "prompts": [
+      "In your family or close circle, whose needs do you consistently place above your own? What unspoken resentment do you hold because of it?",
+      "What does the \"perfect, happy family\" look like in your mind? What truths are being suppressed to maintain that image?",
+      "If you were to state one of your own needs clearly to your family, what are you afraid would happen?"
+    ],
+    "keywords": [
+      "family enmeshment",
+      "emotional overwhelm",
+      "resistance to endings",
+      "obligation guilt"
+    ],
+    "surfaceTruth": "I create deep bonds through emotional inclusion and group connection.",
+    "analog": {
+      "title": "Emotional Completion",
+      "corePattern": "Love mastered. You've completed major emotional cycles.",
+      "shadowExpression": "Completion addiction in relationships. Always ending things perfectly or holding on too long.",
+      "evolvedExpression": "Masters emotional cycles. Knows when to hold and when to release.",
+      "relationships": "You finish relationship chapters consciously, sometimes too perfectly.",
+      "career": "Completion work, end-of-life care, closure facilitation.",
+      "lifeLesson": "Not everything needs perfect closure. Sometimes you just let go.",
+      "practice": "Leave an emotional situation unresolved. Don't tie it up with a bow.",
+      "mantra": "I am emotional completion."
+    }
+  },
+  "J♥": {
+    "code": "J♥",
+    "slug": "jack-of-hearts",
+    "label": "Jack of Hearts",
+    "suit": "hearts",
+    "rank": "J",
+    "title": "The Romantic Messenger",
+    "coreIdentity": "You bring a fresh read on love without leaving the room when it gets ordinary. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
+    "gifts": [
+      "Bringing fresh perspective and inspiration to connection",
+      "Youthful openness and emotional creativity",
+      "Innovating how relationships can work",
+      "Reawakening feeling and possibility in others"
+    ],
+    "shadow": "You fall for the story of the person. The fantasy is safer than the slow work of knowing who is actually here.",
+    "lifeDirection": "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
+    "lens": {
+      "balanced": "You bring a fresh read on love without leaving the room when it gets ordinary.",
+      "under": "You fall for the story of the person instead of the person. Fantasy is safer than the slow work of knowing someone.",
+      "over": "The narrative outruns the relationship. It collapses the first time reality asks for depth."
+    },
+    "archetype": "The Seducer",
+    "coreShadow": "The emotionally immature charmer who loves the chase but fears the catch. They play with the feelings of others to validate themselves, with no intention of real commitment.",
+    "worldview": "I love the feeling of making someone fall for me. It proves I'm desirable. But a real relationship is a cage. I must get the validation and then move on before it gets complicated.",
+    "inTheLight": "This youthful emotional energy matures into that of The Romantic. They are open-hearted, curious, and willing to be vulnerable. They approach connection with a poetic and sincere desire to understand both their own heart and the heart of another.",
+    "lightName": "The Romantic",
+    "prompts": [
+      "Recall a time you used your charm to get emotional validation from someone you had no real intention of committing to.",
+      "What is more exciting to you: the thrill of the chase, or the security of a stable relationship? Be honest.",
+      "What does true intimacy mean to you, and what about it feels like a threat?"
+    ],
+    "keywords": [
+      "romantic delusion",
+      "emotional immaturity",
+      "fantasy projection",
+      "unrealistic expectations"
+    ],
+    "surfaceTruth": "I follow my heart's authentic desires in relationships without limiting conventions.",
+    "analog": {
+      "title": "Emotional Messenger",
+      "corePattern": "Learning about love. You're the eternal student of emotion.",
+      "shadowExpression": "Emotionally immature. Never growing up emotionally. Peter Pan syndrome.",
+      "evolvedExpression": "Youthful heart with growing wisdom. Learns about love while teaching it.",
+      "relationships": "You bring innocence and freshness. Sometimes naive, always hopeful.",
+      "career": "Youth work, new relationship coaching, fresh perspectives on love.",
+      "lifeLesson": "Emotional maturity doesn't mean losing your heart. Grow up, don't harden.",
+      "practice": "Notice where you avoid emotional responsibility. Step into it.",
+      "mantra": "I am emotional messenger."
+    }
+  },
+  "Q♥": {
+    "code": "Q♥",
+    "slug": "queen-of-hearts",
+    "label": "Queen of Hearts",
+    "suit": "hearts",
+    "rank": "Q",
+    "title": "The Devoted Nurturer",
+    "coreIdentity": "You take care of people from presence, not from scanning for what they might need next. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
+    "gifts": [
+      "Nurturing others through authentic, intuitive presence",
+      "Deep emotional attunement and empathy",
+      "Embodied emotional wisdom",
+      "Making others feel genuinely seen and held"
+    ],
+    "shadow": "You read everyone else first. Care becomes so complete that the other person feels held and owned.",
+    "lifeDirection": "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
+    "lens": {
+      "balanced": "You take care of people from presence, not from scanning for what they might need next.",
+      "under": "You read the room first and yourself last. Other people's weather decides whether your needs get airtime.",
+      "over": "Care becomes control. Love starts to look like a debt they did not agree to."
+    },
+    "archetype": "The Emotional Tyrant",
+    "coreShadow": "Using a mastery of emotion and intuition as a tool for control. This is the archetype of guilt trips, passive-aggression, and making others responsible for her feelings.",
+    "worldview": "I feel everything, and therefore, my feelings are law. I know exactly what to say to make you feel guilty. If I am not happy, it is your fault, and you must fix it.",
+    "inTheLight": "The Tyrant's deep understanding of emotion transforms her into The Empath. She becomes a compassionate counselor, a nurturing presence, and a safe harbor for the feelings of others. Her intuition is a tool for healing and connection, not control.",
+    "lightName": "The Empath",
+    "prompts": [
+      "When was the last time you used a guilt trip or passive-aggression to get what you wanted?",
+      "Do you believe others are responsible for managing your feelings? In what situations?",
+      "Think of a recent conflict. How could you have expressed your needs directly, without manipulation?"
+    ],
+    "keywords": [
+      "smothering",
+      "emotional control",
+      "guilt-tripping",
+      "self-sacrifice for love"
+    ],
+    "surfaceTruth": "I intuitively understand emotional undercurrents and respond with natural compassion.",
+    "analog": {
+      "title": "Emotional Nurturer",
+      "corePattern": "Internal emotional mastery. You nurture yourself first, then others.",
+      "shadowExpression": "Emotional isolation. Won't let others care for you. Self-sufficient to a fault.",
+      "evolvedExpression": "Self-nurturing expert who also receives. Internal emotional sovereignty.",
+      "relationships": "You're emotionally self-sufficient. Learn to let partners care for you.",
+      "career": "Self-care industries, internal emotional work, private practice.",
+      "lifeLesson": "Receiving love is as important as giving it.",
+      "practice": "Ask for emotional support when you need it. Actually receive it.",
+      "mantra": "I am emotional nurturer."
+    }
+  },
+  "K♥": {
+    "code": "K♥",
+    "slug": "king-of-hearts",
+    "label": "King of Hearts",
+    "suit": "hearts",
+    "rank": "K",
+    "title": "The Compassionate King",
+    "coreIdentity": "You hold emotional authority without hiding behind it. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
+    "gifts": [
+      "Commanding emotional authority with depth and care",
+      "Leading others through feeling with steadiness",
+      "Mature, grounded emotional presence",
+      "Holding space with both strength and compassion"
+    ],
+    "shadow": "You lead the feeling from a distance you will not cross. People can lean on the authority and cannot reach you.",
+    "lifeDirection": "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
+    "lens": {
+      "balanced": "You hold emotional authority without hiding behind it.",
+      "under": "You rule the emotional field from a safe distance. Authority stays intact because no one can reach you.",
+      "over": "You decide the feeling climate. People comply. They stop telling you the truth."
+    },
+    "archetype": "The Possessor",
+    "coreShadow": "Emotional control disguised as benevolent protection. This archetype sees his loved ones as part of his domain and becomes jealous, withholding, or domineering when they express emotional independence.",
+    "worldview": "I know what is best for the people I love. Their happiness and security depend on my guidance. If they obey and appreciate me, I am kind. If they defy me, I will withdraw my warmth to bring them back in line.",
+    "inTheLight": "The Possessor becomes The Benevolent King. He is a mature and emotionally secure leader who commands loyalty through genuine love, tolerance, and respect. He creates a stable and warm environment where others feel safe to be their authentic selves and thrive under his compassionate watch.",
+    "lightName": "The Benevolent King",
+    "prompts": [
+      "In what relationship do you believe you \"know what's best\" for the other person?",
+      "Describe a time you felt jealous or controlling when a loved one showed emotional independence.",
+      "How can you show your love and support for someone today while also honoring their complete autonomy?"
+    ],
+    "keywords": [
+      "emotional suppression",
+      "dominance in love",
+      "emotional detachment",
+      "hidden insecurity"
+    ],
+    "surfaceTruth": "I provide emotional leadership that helps others process and understand their feelings.",
+    "analog": {
+      "title": "Emotional Authority",
+      "corePattern": "Leadership through love. You lead with heart and emotional wisdom.",
+      "shadowExpression": "Emotional tyranny. Demanding others feel certain ways. Love as control.",
+      "evolvedExpression": "Wise emotional leader. Shows the way through example, never force.",
+      "relationships": "You lead emotionally. Partners must be comfortable with your emotional authority.",
+      "career": "Therapeutic leadership, emotional intelligence teaching, heart-centered authority.",
+      "lifeLesson": "You can't make others feel what you want them to feel.",
+      "practice": "Release all emotional expectations of others for one week.",
+      "mantra": "I am emotional authority."
+    }
+  },
+  "A♣": {
+    "code": "A♣",
+    "slug": "ace-of-clubs",
+    "label": "Ace of Clubs",
+    "suit": "clubs",
+    "rank": "A",
+    "title": "The Creative Pioneer",
+    "coreIdentity": "You start the new thought while it is still usable. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
+    "gifts": [
+      "Original thinking and idea generation",
+      "Ability to launch new concepts and projects",
+      "Natural curiosity and investigation",
+      "Intellectual courage to explore new territory"
+    ],
+    "shadow": "You treat starting as finishing. Ideas get abandoned when they get hard, so the room sees possibility and not delivery.",
+    "lifeDirection": "Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
+    "lens": {
+      "balanced": "You start a new idea while it is still usable, and you let it meet the world unfinished.",
+      "under": "You think past the starting line. Thoroughness becomes a way not to begin.",
+      "over": "You are sure you are right before anyone else has spoken. New thought becomes a closed case."
+    },
+    "archetype": "The Zealot",
+    "coreShadow": "An idea so pure and potent it becomes a weapon. It is raw, unthinking conviction that cannot tolerate dissent and seeks to conquer all other viewpoints.",
+    "worldview": "This idea is The Truth. It is a fire that must burn away all impurity and falsehood. Anyone who does not embrace it is not just wrong; they are an enemy of progress. There is no room for debate, only conversion.",
+    "inTheLight": "The Zealot's raw energy becomes The Pioneer. It is the divine spark of a new idea, a flash of genius, and the unbridled creative force to begin a new venture. It is the raw willpower that can move mountains and blaze a new trail.",
+    "lightName": "The Pioneer",
+    "prompts": [
+      "What idea or belief do you hold so tightly that you instantly dismiss anyone who disagrees with it?",
+      "Describe a time your passion for a belief made you aggressive or deaf to other viewpoints.",
+      "How could you genuinely listen to an opposing viewpoint on one of your core beliefs, just for five minutes?"
+    ],
+    "keywords": [
+      "mental overwhelm",
+      "information hoarding",
+      "obsessive curiosity",
+      "identity through intellect"
+    ],
+    "surfaceTruth": "I channel pure creative energy and spiritual inspiration in its most authentic form.",
+    "analog": {
+      "title": "Pioneer of Action",
+      "corePattern": "Pure creative fire. You initiate through doing.",
+      "shadowExpression": "Start everything, finish nothing. Impulsive action without follow-through. Scattered energy across too many beginnings.",
+      "evolvedExpression": "Strategic initiator who completes. Channels fire into sustained results. Knows when to start and when to stop.",
+      "relationships": "You lead naturally. Need partners who either match your initiating energy or provide grounding stability. You attract people who need momentum.",
+      "career": "Entrepreneur, founder, creative director. Anything requiring bold starts and vision.",
+      "lifeLesson": "Completion matters as much as initiation. One finished thing beats ten started projects.",
+      "practice": "Finish one old thing before starting anything new for 30 days. Notice the resistance to completion.",
+      "mantra": "I am pioneer of action."
+    }
+  },
+  "2♣": {
+    "code": "2♣",
+    "slug": "2-of-clubs",
+    "label": "Two of Clubs",
+    "suit": "clubs",
+    "rank": "2",
+    "title": "The Collaborative Builder",
+    "coreIdentity": "You think best with someone else in the room, and you still leave with a position of your own. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
+    "gifts": [
+      "Natural partnership and team-building ability",
+      "Excellent communication and articulation",
+      "Ability to synthesize different perspectives",
+      "Talent for collaborative problem-solving"
+    ],
+    "shadow": "You disappear into the other person's thinking. Partnership starts to mean you no longer know which opinion was yours.",
+    "lifeDirection": "Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
+    "lens": {
+      "balanced": "You think with someone else and still leave the conversation with a position of your own.",
+      "under": "You keep the debate open so you never have to pick. Indecision wears the mask of fairness.",
+      "over": "You need to win the argument. The other mind stops being a partner and becomes an opponent."
+    },
+    "archetype": "The Antagonist",
+    "coreShadow": "Willful opposition and argument for the sake of it. This is the intellectual bully who plays devil's advocate not to find truth, but to assert dominance and create a stalemate.",
+    "worldview": "My mind is a fortress. By challenging every idea you present, I prove my own intellectual superiority. I don't need to be right; I just need you to be wrong. A stalemate is a victory for me because I did not yield.",
+    "inTheLight": "This clashing of wills becomes The Strategist. It is the ability to see both sides of an issue with stunning clarity, to weigh options, and to make a bold, decisive choice. It is the courage to hold a strong conviction based on careful thought.",
+    "lightName": "The Strategist",
+    "prompts": [
+      "When do you play devil's advocate just to be difficult or to show how smart you are?",
+      "Is there a current situation where you are resisting a plan simply because it wasn't your idea?",
+      "What would it feel like to consciously agree with and support someone else's idea in a current debate, even if it's not perfect?"
+    ],
+    "keywords": [
+      "indecision",
+      "conflict avoidance",
+      "mental dependency",
+      "fear of taking a stand"
+    ],
+    "surfaceTruth": "I thoughtfully explore various creative and spiritual paths before choosing my direction.",
+    "analog": {
+      "title": "Cooperative Worker",
+      "corePattern": "Partnership in action. You work best in pairs or teams.",
+      "shadowExpression": "Can't work alone. Codependent work patterns. Over-reliance on collaboration for basic tasks.",
+      "evolvedExpression": "Balanced collaborator. Can work solo or with others. Chooses partnership strategically, not out of need.",
+      "relationships": "Partnership-oriented. You mirror others' work styles. Attract natural collaborators and team players.",
+      "career": "Project management, team leadership, partnership businesses. Anywhere requiring coordination.",
+      "lifeLesson": "Independence and interdependence are both necessary skills. Master solo work.",
+      "practice": "Complete a significant project entirely alone. No input, feedback, or collaboration from others.",
+      "mantra": "I am cooperative worker."
+    }
+  },
+  "3♣": {
+    "code": "3♣",
+    "slug": "3-of-clubs",
+    "label": "Three of Clubs",
+    "suit": "clubs",
+    "rank": "3",
+    "title": "The Creative Communicator",
+    "coreIdentity": "You make a hard idea easy to say without stripping what it means. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
+    "gifts": [
+      "Ability to articulate complex ideas clearly",
+      "Creative problem-solving and unconventional thinking",
+      "Natural teaching and explaining ability",
+      "Talent for making ideas exciting"
+    ],
+    "shadow": "You talk the idea further than you build it. Clarity without depth leaves people informed and unconvinced.",
+    "lifeDirection": "Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
+    "lens": {
+      "balanced": "You move an idea across more than one channel without abandoning the one that needs depth.",
+      "under": "You open more projects than you finish. Exploration never has to survive contact with an ending.",
+      "over": "You scatter attention and call it range. Nothing sits still long enough to get good."
+    },
+    "archetype": "The Saboteur",
+    "coreShadow": "The betrayal of a plan through ego-driven action or inaction. It is the team member who agrees to a strategy and then does their own thing, undermining the group's progress.",
+    "worldview": "The group's plan is flawed, and my way is better. It is easier to ask for forgiveness than permission. I will follow the plan in word, but my own brilliant actions will save the day, and then they will all thank me.",
+    "inTheLight": "This energy of action becomes The Collaborator. It represents a well-executed plan coming to fruition through seamless teamwork. It is the initial, exciting success that proves a shared vision is working, creating momentum for the future.",
+    "lightName": "The Collaborator",
+    "prompts": [
+      "Recall a time you undermined a group project or plan (even subtly) because you thought your way was better. What was the result?",
+      "When you disagree with a leader's plan, is your first instinct to confront them directly or to complain to others?",
+      "How can you better support a team goal this week, even if you don't agree with every aspect of the strategy?"
+    ],
+    "keywords": [
+      "gossip",
+      "scattered thinking",
+      "talk without depth",
+      "insecurity in ideas"
+    ],
+    "surfaceTruth": "I express myself through multiple creative channels and spiritual modalities.",
+    "analog": {
+      "title": "Creative Expresser",
+      "corePattern": "Creativity through action. You express through making and doing.",
+      "shadowExpression": "Scattered creative output. Too many projects. Can't focus the creative fire long enough to finish.",
+      "evolvedExpression": "Focused creator. Channels creative energy into completed, tangible works. Quality over quantity.",
+      "relationships": "Need creative freedom in relationships. Partners must allow and support your expression or resentment builds.",
+      "career": "Artist, writer, maker, creator. Anywhere creativity translates to tangible output.",
+      "lifeLesson": "Focus amplifies creativity. Constraint breeds innovation. Less is more.",
+      "practice": "One creative project, strict constraints (medium/time/scope), finish it completely.",
+      "mantra": "I am creative expresser."
+    }
+  },
+  "4♣": {
+    "code": "4♣",
+    "slug": "4-of-clubs",
+    "label": "Four of Clubs",
+    "suit": "clubs",
+    "rank": "4",
+    "title": "The Systematic Builder",
+    "coreIdentity": "You put thinking into an order other people can actually use. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
+    "gifts": [
+      "Systematic thinking and organizational ability",
+      "Creating frameworks and sustainable structures",
+      "Clear thinking and logical progression",
+      "Ability to build something that lasts"
+    ],
+    "shadow": "You defend the system after it stops fitting. Structure becomes a reason not to revise.",
+    "lifeDirection": "Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
+    "lens": {
+      "balanced": "You put knowledge into an order other people can actually use.",
+      "under": "You use a framework to keep uncertainty out. The system is safer than the question.",
+      "over": "You defend the system after it stops fitting. Being right outranks being current."
+    },
+    "archetype": "The Partisan",
+    "coreShadow": "A celebration of community that turns into insular tribalism. It is the \"us versus them\" mentality that finds security only within an echo chamber, viewing all outsiders with suspicion and hostility.",
+    "worldview": "We who think alike are safe here together. Our harmony depends on our shared beliefs and the rejection of all outside influence. The world out there is wrong and dangerous; our way is the only right way.",
+    "inTheLight": "The Partisan’s loyalty transforms into The Founder. This archetype creates a safe, stable, and welcoming community. It is the celebration of a shared achievement, the joy of belonging, and the establishment of a strong foundation upon which to build.",
+    "lightName": "The Founder",
+    "prompts": [
+      "Describe a group you belong to that has a strong \"us vs. them\" mentality. What is the \"them\"?",
+      "What topic makes you immediately shut down and refuse to engage with anyone from the \"other side\"?",
+      "Identify one belief held by an \"opposing\" group that might have a grain of truth or a valid reason behind it."
+    ],
+    "keywords": [
+      "mental rigidity",
+      "closed-mindedness",
+      "fear of new perspectives",
+      "overanalysis"
+    ],
+    "surfaceTruth": "I develop disciplined creative and spiritual practices that produce consistent results.",
+    "analog": {
+      "title": "System Builder",
+      "corePattern": "Structure through work. You build operational frameworks and systems.",
+      "shadowExpression": "Rigid routines. Can't adapt when systems fail. Structure becomes prison instead of support.",
+      "evolvedExpression": "Flexible systematizer. Builds frameworks that adapt to change. Structure serves life, not controls it.",
+      "relationships": "Need predictable patterns and routines. Chaos in relationships is your kryptonite.",
+      "career": "Operations, systems design, infrastructure building. Creating organizational frameworks.",
+      "lifeLesson": "Systems should serve life, not replace it. Build in flexibility and adaptation.",
+      "practice": "Deliberately break your core daily routine for one full week. Notice what happens.",
+      "mantra": "I am system builder."
+    }
+  },
+  "5♣": {
+    "code": "5♣",
+    "slug": "5-of-clubs",
+    "label": "Five of Clubs",
+    "suit": "clubs",
+    "rank": "5",
+    "title": "The Dynamic Innovator",
+    "coreIdentity": "You pressure-test a stale idea in public and let the better one win. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
+    "gifts": [
+      "Quick thinking and fast adaptation",
+      "Ability to see multiple perspectives rapidly",
+      "Natural rebellion against outdated ideas",
+      "Refreshing honesty and directness"
+    ],
+    "shadow": "You change the subject and call it growth. Nothing sits still long enough for anyone to rely on you.",
+    "lifeDirection": "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
+    "lens": {
+      "balanced": "You pressure-test an idea in public and let the better one win.",
+      "under": "You think about the change instead of making it. Analysis does the job of motion.",
+      "over": "You argue to prove you are sharper. Conflict becomes the point."
+    },
+    "archetype": "The Bully",
+    "coreShadow": "Conflict for the sake of conflict. It is the ego that thrives on petty arguments, verbal sparring, and intimidating others to feel a sense of power and control.",
+    "worldview": "Life is a series of dominance contests. Creating a little chaos and winning these small arguments makes me feel strong and alive. A good fight clears the air, especially when I'm the one left standing.",
+    "inTheLight": "This chaotic energy becomes The Challenger. It is the healthy friction of a brainstorming session, where diverse ideas clash to create a brilliant synthesis. It is the constructive debate that sharpens all participants and leads to innovation.",
+    "lightName": "The Challenger",
+    "prompts": [
+      "In what situations do you find yourself getting into petty arguments just to feel a sense of power?",
+      "Who in your life do you tend to verbally spar with? What does \"winning\" those arguments give you?",
+      "The next time you feel the urge to start a petty conflict, what could you do instead to feel powerful and in control?"
+    ],
+    "keywords": [
+      "attention deficit",
+      "chaos in thought",
+      "restlessness",
+      "resistance to structure"
+    ],
+    "surfaceTruth": "I explore diverse creative and spiritual territories to expand my consciousness.",
+    "analog": {
+      "title": "The Disruptor",
+      "corePattern": "Change through action. You break stagnant patterns and create movement.",
+      "shadowExpression": "Chaos addiction. Sabotaging stability just because it feels boring. Can't commit to anything long-term.",
+      "evolvedExpression": "Strategic disruptor. Changes what needs changing, preserves what works. Disruption with purpose.",
+      "relationships": "Freedom is non-negotiable. Feeling caged in relationships kills you. Need space to move.",
+      "career": "Consultant, change agent, innovation roles. Anywhere disruption is the actual product.",
+      "lifeLesson": "Not everything needs disruption. Some patterns deserve preservation and respect.",
+      "practice": "Maintain one specific routine perfectly for 90 days straight. Notice the itch to break it.",
+      "mantra": "I am the disruptor."
+    }
+  },
+  "6♣": {
+    "code": "6♣",
+    "slug": "6-of-clubs",
+    "label": "Six of Clubs",
+    "suit": "clubs",
+    "rank": "6",
+    "title": "The Nurturing Creator",
+    "coreIdentity": "You pass on what you know without disappearing behind the lesson. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
+    "gifts": [
+      "Natural teaching and mentoring ability",
+      "Desire to develop others intellectually",
+      "Wisdom and thoughtful guidance",
+      "Ability to balance thinking with caring"
+    ],
+    "shadow": "You stay in the teacher seat after you have stopped learning. Guidance turns into a script other people are supposed to follow.",
+    "lifeDirection": "Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
+    "lens": {
+      "balanced": "You pass on what you know without disappearing behind the lesson.",
+      "under": "You give the knowledge away and keep your own authority quiet. Teaching becomes self-erasure.",
+      "over": "You need to be the one who knows. Other people get cast as students whether they asked or not."
+    },
+    "archetype": "The Egotist",
+    "coreShadow": "The arrogance that comes after a victory. It is the insufferable winner who alienates their allies, refuses to listen to advice, and believes their recent success makes them infallible.",
+    "worldview": "I won. This victory is proof of my inherent superiority. My methods are now beyond question. I deserve this praise, and I will not entertain any critique or warning about the future.",
+    "inTheLight": "The Egotist becomes The Victor. This is an archetype of earned success and public recognition. They use the momentum from their win to inspire their team, graciously share the credit, and set their sights on the next, greater objective.",
+    "lightName": "The Victor",
+    "prompts": [
+      "Describe a victory or success that made you feel arrogant and superior. How did you treat people afterward?",
+      "Are you currently resting on your laurels from a past win, refusing to see the next challenge ahead?",
+      "Who on your \"team\" deserves credit for a recent success? Take a moment to acknowledge them."
+    ],
+    "keywords": [
+      "intellectual superiority",
+      "preaching",
+      "burdened communication",
+      "over-responsibility"
+    ],
+    "surfaceTruth": "I create harmonious expressions that integrate beauty and spiritual meaning.",
+    "analog": {
+      "title": "Responsible Server",
+      "corePattern": "Service through action. You work for others' benefit naturally.",
+      "shadowExpression": "Martyrdom. Over-responsibility for everyone. Burnout from endless service without boundaries.",
+      "evolvedExpression": "Sustainable servant-leader. Serves without depleting self. Sets clear boundaries around service.",
+      "relationships": "You serve your partners, sometimes to your own detriment. Attract takers unless you set boundaries.",
+      "career": "Healthcare, teaching, social work, service professions. Work that helps others directly.",
+      "lifeLesson": "You can't pour from an empty cup. Self-care enables sustainable service.",
+      "practice": "Say no to every single request for help for one full week. Notice the guilt.",
+      "mantra": "I am responsible server."
+    }
+  },
+  "7♣": {
+    "code": "7♣",
+    "slug": "7-of-clubs",
+    "label": "Seven of Clubs",
+    "suit": "clubs",
+    "rank": "7",
+    "title": "The Analytical Creator",
+    "coreIdentity": "You take a claim apart until the usable piece is left, then you use it. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
+    "gifts": [
+      "Penetrating analysis and pattern recognition",
+      "Ability to see through surface explanations",
+      "Critical thinking and intellectual honesty",
+      "Natural skepticism that prevents self-deception"
+    ],
+    "shadow": "You can name every flaw in a plan, so the plan never leaves the table. Analysis does the job of a decision.",
+    "lifeDirection": "Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
+    "lens": {
+      "balanced": "You take a claim apart until the usable piece is left, then you use it.",
+      "under": "Skepticism turns into isolation. Nothing is solid enough to act on, so you stay out.",
+      "over": "You complicate the problem past the point of action. Complexity protects you from shipping."
+    },
+    "archetype": "The Cynic",
+    "coreShadow": "A defensive and paranoid struggle against imagined threats. It's the person who fights ferociously for their position, using their intellect to tear down every potential challenger, real or imagined.",
+    "worldview": "I am the underdog, holding my ground against a hostile world. Everyone wants to take what I have. I must be constantly vigilant and fight off all comers to protect my small patch of turf.",
+    "inTheLight": "The Cynic's defensiveness becomes the courage of The Champion. This is the bravery to stand up for one's beliefs, even when outnumbered. It is the perseverance to fight for a just cause and the moral courage to hold your ground under immense pressure.",
+    "lightName": "The Champion",
+    "prompts": [
+      "What idea or project have you recently shot down (in your own mind or out loud)? Was it from a place of genuine critique or fear?",
+      "In what area of your life do you feel like you are \"one against many,\" fighting a defensive battle? Is the threat real?",
+      "What would it take for you to lower your defenses and trust one other person's input on a current struggle?"
+    ],
+    "keywords": [
+      "paranoia",
+      "intellectual isolation",
+      "skeptical rigidity",
+      "spiritual disconnection"
+    ],
+    "surfaceTruth": "I maintain high standards in my creative and spiritual work, focusing on quality over quantity.",
+    "analog": {
+      "title": "Spiritual Worker",
+      "corePattern": "Introspection through action. You work to understand yourself, then express that understanding.",
+      "shadowExpression": "Analysis paralysis. Overthinking prevents doing. Endless navel-gazing without application.",
+      "evolvedExpression": "Embodied wisdom. Acts from deep self-knowledge. Inner work translates to outer impact.",
+      "relationships": "Need partners who understand your need for solitude, reflection, and inner work time.",
+      "career": "Coaching, therapy, spiritual teaching. Work that integrates inner understanding and outer application.",
+      "lifeLesson": "Understanding isn't enough without application. Wisdom requires embodiment.",
+      "practice": "Act first, think later for one full week. Reverse your usual introspect-then-act order.",
+      "mantra": "I am spiritual worker."
+    }
+  },
+  "8♣": {
+    "code": "8♣",
+    "slug": "8-of-clubs",
+    "label": "Eight of Clubs",
+    "suit": "clubs",
+    "rank": "8",
+    "title": "The Ambitious Builder",
+    "coreIdentity": "You run a knowledge system other people can follow, and you stand behind the call. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
+    "gifts": [
+      "Strategic thinking and long-term planning",
+      "Ability to coordinate complex intellectual projects",
+      "Ambitious drive and determination",
+      "Talent for building intellectual authority"
+    ],
+    "shadow": "You use the sharp mind to win. People respect the argument and stop bringing you anything they actually care about.",
+    "lifeDirection": "Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
+    "lens": {
+      "balanced": "You run a knowledge system other people can follow, and you stand behind the call.",
+      "under": "You keep the sharp mind in reserve. Leadership would make the thinking visible, so you decline it.",
+      "over": "You use intellect to shut people down. Being the smartest person in the room becomes the whole job."
+    },
+    "archetype": "The Propagandist",
+    "coreShadow": "The use of swift communication to create chaos and spread misinformation. It is the whirlwind of rumors, half-truths, and panicked messages designed to manipulate a situation for personal gain.",
+    "worldview": "The first story wins. If I can move faster than the truth, I can control the narrative. Speed and confidence are more persuasive than facts. A little chaos benefits those who are prepared for it.",
+    "inTheLight": "This rapid energy becomes The Messenger. It represents swift, decisive, and effective action. It is the ability to think on your feet, communicate clearly under pressure, and mobilize resources quickly to achieve a goal.",
+    "lightName": "The Messenger",
+    "prompts": [
+      "Recall a time you spread a rumor or a piece of information before you knew if it was 100% true.",
+      "When you are in a conflict, is your first instinct to control the narrative by telling your side of the story to as many people as possible?",
+      "Commit to a \"fact-check\" today: before you share a piece of information, take 30 seconds to verify it."
+    ],
+    "keywords": [
+      "mental control",
+      "dominance in ideas",
+      "aggressive debate",
+      "manipulation of truth"
+    ],
+    "surfaceTruth": "I explore creative and spiritual depths that transform both myself and my expressions.",
+    "analog": {
+      "title": "Power Worker",
+      "corePattern": "Achievement through action. You work for mastery, recognition, and material success.",
+      "shadowExpression": "Workaholism. Identity completely fused with productivity. Cannot rest without guilt.",
+      "evolvedExpression": "Masterful achiever without attachment. Accomplishes without losing self. Power with purpose.",
+      "relationships": "Need partners who respect your ambition and drive or you'll feel held back and resentful.",
+      "career": "Executive, high performer, competitive fields. Work that rewards and recognizes excellence.",
+      "lifeLesson": "You are not your achievements. Your worth exists independent of output.",
+      "practice": "Do absolutely nothing productive for 48 straight hours. Notice the panic and identity crisis.",
+      "mantra": "I am power worker."
+    }
+  },
+  "9♣": {
+    "code": "9♣",
+    "slug": "9-of-clubs",
+    "label": "Nine of Clubs",
+    "suit": "clubs",
+    "rank": "9",
+    "title": "The Humanitarian Builder",
+    "coreIdentity": "You keep the large view without skipping the next practical step. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
+    "gifts": [
+      "Visionary thinking and big-picture perspective",
+      "Ability to inspire others toward possibility",
+      "Universal principles and humanitarian ideals",
+      "Natural optimism about human potential"
+    ],
+    "shadow": "The big picture stays cleaner than the work. Inspiration without follow-through teaches people not to wait for you.",
+    "lifeDirection": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
+    "lens": {
+      "balanced": "You let a used-up framework go and keep the part that still works.",
+      "under": "You hold an old map after the terrain has changed. Fatigue looks like loyalty to the idea.",
+      "over": "You preach the map. Other viewpoints are treated as incomplete versions of yours."
+    },
+    "archetype": "The Paranoid",
+    "coreShadow": "The battle-weary defender who is so used to fighting that they cannot stand down. It is a state of constant, exhausting vigilance and the expectation of attack from all sides.",
+    "worldview": "I have built a wall around myself, and I must patrol it endlessly. I've been burned before, and I will not be burned again. I cannot rest, I cannot trust, I can only prepare for the next assault.",
+    "inTheLight": "The Paranoid's vigilance matures into The Guardian. This archetype possesses immense resilience, stamina, and a strong sense of personal boundaries forged through experience. They have the wisdom to know which threats are real and the strength to endure any challenge.",
+    "lightName": "The Guardian",
+    "prompts": [
+      "What past battle are you still fighting in your head, long after it has ended?",
+      "Describe the \"wall\" you have built around yourself. What specific threat is it meant to protect you from?",
+      "What is one small way you could let your guard down for a short period of time today?"
+    ],
+    "keywords": [
+      "intellectual burnout",
+      "disconnection from reality",
+      "overthinking",
+      "philosophical detachment"
+    ],
+    "surfaceTruth": "I use my creative gifts and spiritual insights to serve others and contribute meaningfully.",
+    "analog": {
+      "title": "Universal Server",
+      "corePattern": "Wisdom through service. You work for the collective good, humanity, universal benefit.",
+      "shadowExpression": "Savior complex. Trying to fix everyone and everything. Losing yourself in service to the world.",
+      "evolvedExpression": "Wise universal server. Helps from wholeness, not woundedness. Knows healthy boundaries.",
+      "relationships": "You care deeply about everyone, sometimes neglecting those closest to you. Intimates need attention too.",
+      "career": "Humanitarian work, global NGOs, teaching at scale. Big-picture service work.",
+      "lifeLesson": "You can't save everyone. Strategic focus serves better than diffused effort.",
+      "practice": "Focus entirely on yourself and your immediate circle for one week. No helping strangers.",
+      "mantra": "I am universal server."
+    }
+  },
+  "10♣": {
+    "code": "10♣",
+    "slug": "10-of-clubs",
+    "label": "Ten of Clubs",
+    "suit": "clubs",
+    "rank": "10",
+    "title": "The Master Builder",
+    "coreIdentity": "You carry a finished body of knowledge and keep teaching from it. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
+    "gifts": [
+      "Intellectual mastery and deep expertise",
+      "Ability to radiate confidence and competence",
+      "Wisdom from experience and reflection",
+      "Natural authority and leadership"
+    ],
+    "shadow": "You rest on what you already built. Mastery turns into a closed file.",
+    "lifeDirection": "Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
+    "lens": {
+      "balanced": "You carry a finished body of knowledge and keep teaching from it.",
+      "under": "You stockpile what you know and stop putting it to work. Mastery sits unused.",
+      "over": "You control who gets the information. Authority depends on other people staying one step behind."
+    },
+    "archetype": "The Burdened",
+    "coreShadow": "Being completely crushed by the weight of ambition and responsibility. It is the burnout that comes from a stubborn refusal to delegate, ask for help, or admit one's own limits.",
+    "worldview": "It all rests on my shoulders. If I stop, everything collapses. No one else can do this. The pressure is unbearable, but the shame of failure would be even worse. I must carry it all, alone.",
+    "inTheLight": "This sense of duty evolves into The Mentor. They learn that true strength lies not in carrying every burden, but in building a team strong enough to share the load. They lead by empowering others, delegating effectively, and ensuring the mission can continue beyond themself.",
+    "lightName": "The Mentor",
+    "prompts": [
+      "List all the responsibilities you are currently carrying. Which ones truly belong to you, and which have you taken on from others?",
+      "What are you afraid would happen if you asked for help or delegated a task?",
+      "Who is one person you could ask for support this week, and what is the one specific thing you could ask them to do?"
+    ],
+    "keywords": [
+      "fear of success",
+      "mental exhaustion",
+      "avoidance of completion",
+      "imposter syndrome"
+    ],
+    "surfaceTruth": "I build creative and spiritual communities and systems that foster collective growth.",
+    "analog": {
+      "title": "Master Completer",
+      "corePattern": "Mastery through completion. You finish what you start, always.",
+      "shadowExpression": "Completion addiction. Can't let go even when you should. Perfectionism prevents release.",
+      "evolvedExpression": "Masterful finisher who releases gracefully. Completes without clinging. Done is enough.",
+      "relationships": "You finish relationships too—either staying when you should leave, or ending them perfectly.",
+      "career": "Project completion specialist, closer, quality control. The person who actually finishes things.",
+      "lifeLesson": "Done is better than perfect. Release and letting go are part of mastery.",
+      "practice": "Leave something at 80% completion and walk away forever. Notice the itch to finish.",
+      "mantra": "I am master completer."
+    }
+  },
+  "J♣": {
+    "code": "J♣",
+    "slug": "jack-of-clubs",
+    "label": "Jack of Clubs",
+    "suit": "clubs",
+    "rank": "J",
+    "title": "The Creative Messenger",
+    "coreIdentity": "You bring a new angle and stay long enough for someone to test it. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"",
+    "gifts": [
+      "Ability to inspire intellectual breakthroughs",
+      "Creative and unconventional perspective",
+      "Natural gift for shifting paradigms",
+      "Talent for generating excitement about ideas"
+    ],
+    "shadow": "You drop the insight and leave. The shift happens; the integration does not, because you are already gone.",
+    "lifeDirection": "Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
+    "lens": {
+      "balanced": "You bring a new angle and you let someone pressure-test it before it ships.",
+      "under": "The idea comes out half-built. Speed stands in for a check against reality.",
+      "over": "You pitch before you have checked whether it can live. Excitement outruns the work."
+    },
+    "archetype": "The Agitator",
+    "coreShadow": "The intellectual rebel without a cause. This is the troll or contrarian who loves to stir up arguments with half-formed ideas, seeking the thrill of debate and the attention it brings.",
+    "worldview": "Challenging authority is fun. Tearing down established ideas is easy and makes me look smart. I don't need to have a solution; I just enjoy poking holes in theirs. A good argument is a form of entertainment.",
+    "inTheLight": "The Agitator’s raw energy matures into The Apprentice. They possess a brilliant, curious mind and a thirst for knowledge. Their desire to challenge becomes a desire to learn, asking the insightful questions that others overlook and bringing a fresh, innovative perspective.",
+    "lightName": "The Apprentice",
+    "prompts": [
+      "What authority figure or established idea do you love to challenge, even if you don't have a better alternative?",
+      "Do you sometimes start debates online or in person for the entertainment value of the conflict?",
+      "Instead of just critiquing, what is one small, constructive idea you can offer to a problem you care about?"
+    ],
+    "keywords": [
+      "scattered learning",
+      "youthful arrogance",
+      "incomplete knowledge",
+      "distraction through novelty"
+    ],
+    "surfaceTruth": "I pioneer innovative approaches in creative and spiritual domains, challenging conventions.",
+    "analog": {
+      "title": "Creative Messenger",
+      "corePattern": "Learning through doing. You're the eternal student of action and creation.",
+      "shadowExpression": "Perpetual student. Never becoming the teacher. Avoiding mastery and responsibility.",
+      "evolvedExpression": "Playful master. Learns continuously while teaching others. Beginner's mind with deep skill.",
+      "relationships": "You bring fresh, youthful energy. Partners either love your curiosity or find it immature.",
+      "career": "Training, education, creative fields. Anywhere learning and teaching blend.",
+      "lifeLesson": "At some point, you must stop learning and start teaching what you know.",
+      "practice": "Teach something you don't feel expert in yet. Notice the impostor syndrome.",
+      "mantra": "I am creative messenger."
+    }
+  },
+  "Q♣": {
+    "code": "Q♣",
+    "slug": "queen-of-clubs",
+    "label": "Queen of Clubs",
+    "suit": "clubs",
+    "rank": "Q",
+    "title": "The Nurturing Leader",
+    "coreIdentity": "You teach from what you actually know, without making people earn the right to hear it. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
+    "gifts": [
+      "Deep wisdom and thoughtful guidance",
+      "Ability to create intellectual safety for growth",
+      "Natural mentoring and empowering ability",
+      "Talent for helping others develop their thinking"
+    ],
+    "shadow": "You decide what other people need to understand. Mentorship starts doing their thinking for them.",
+    "lifeDirection": "Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
+    "lens": {
+      "balanced": "You teach from what you actually know, without making people earn the right to hear it.",
+      "under": "You know more than you say. Deference keeps the room comfortable and keeps your mind hidden.",
+      "over": "You decide when others are ready. Knowledge becomes a gate you keep."
+    },
+    "archetype": "The Gossiper",
+    "coreShadow": "The master social strategist who uses information as a currency for power and control. She is the keeper of secrets and the subtle architect of social reputations, both good and bad.",
+    "worldview": "Knowledge of people is power. By understanding the social web and controlling the flow of secrets, I can ensure my place at the center of it. My words can build you up or tear you down.",
+    "inTheLight": "The Gossiper becomes The Ambassador. She is a charismatic and intelligent communicator who uses her social mastery to bring people together. She can articulate a complex vision with clarity, foster collaboration, and build a vibrant, positive community.",
+    "lightName": "The Ambassador",
+    "prompts": [
+      "Recall a time you shared a piece of information about someone that was not yours to share. What was your motivation?",
+      "How does being \"in the know\" about other people's lives make you feel?",
+      "Make a conscious effort for one day not to speak about anyone who is not present in the room, unless it is to praise them."
+    ],
+    "keywords": [
+      "overthinking",
+      "emotional detachment",
+      "intuitive distortion",
+      "martyrdom through intellect"
+    ],
+    "surfaceTruth": "I intuitively understand creative processes and spiritual principles at their essence.",
+    "analog": {
+      "title": "Internal Master",
+      "corePattern": "Mastery turned inward. You perfect your own process, privately.",
+      "shadowExpression": "Isolation. Refusing to share your mastery with others. Hoarding wisdom and skill.",
+      "evolvedExpression": "Grounded internal master. Perfects privately, shares externally when ready. No hoarding.",
+      "relationships": "You need significant space to develop your craft. Partners must respect your solitary work time.",
+      "career": "Independent contractor, solo practitioner, craftsperson. Self-directed, autonomous work.",
+      "lifeLesson": "Mastery is ultimately meant to be shared, not hoarded forever.",
+      "practice": "Share your process publicly before you feel ready. Notice the vulnerability and exposure fear.",
+      "mantra": "I am internal master."
+    }
+  },
+  "K♣": {
+    "code": "K♣",
+    "slug": "king-of-clubs",
+    "label": "King of Clubs",
+    "suit": "clubs",
+    "rank": "K",
+    "title": "The Master Leader",
+    "coreIdentity": "You make the intellectual call in the open and you can revise it. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
+    "gifts": [
+      "Clear thinking and decisive action",
+      "Natural authority and command",
+      "Ability to direct complex intellectual projects",
+      "Confidence that inspires confidence in others"
+    ],
+    "shadow": "You decide in public and treat disagreement as error. The room learns to agree with you instead of thinking.",
+    "lifeDirection": "Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
+    "lens": {
+      "balanced": "You make the intellectual call in the open and you can revise it.",
+      "under": "You withhold the call and still believe you already know. Authority hides instead of working.",
+      "over": "Dissent is treated as error. The room learns to agree with you instead of thinking."
+    },
+    "archetype": "The Inquisitor",
+    "coreShadow": "The intellectual tyrant whose authority has become rigid dogma. He cannot tolerate dissent and uses his position to enforce his worldview, punishing those who dare to think differently.",
+    "worldview": "My vision is law. My thoughts are facts. Order and progress depend on absolute intellectual alignment with my authority. A challenge to my idea is a challenge to me, and it will not be tolerated.",
+    "inTheLight": "The Inquisitor becomes The Commander. He is a decisive and visionary leader who possesses true intellectual authority. He commands respect not through fear, but through his competence, clarity, and fair-mindedness. He can confidently direct his team to achieve a common goal. Of course. Here is the breakdown for each of the 13 cards in the Suit of Diamonds, continuing with the established structure of the ebook. ---",
+    "lightName": "The Commander",
+    "prompts": [
+      "What is your area of expertise where you believe your \"way\" is the only right way?",
+      "Describe a time you shut down someone's idea because it didn't align with your vision.",
+      "How could you actively solicit and listen to a dissenting opinion on one of your current projects?"
+    ],
+    "keywords": [
+      "intellectual arrogance",
+      "control through information",
+      "rigidity",
+      "fear of being wrong"
+    ],
+    "surfaceTruth": "I provide visionary leadership in creative and spiritual domains, inspiring others' growth.",
+    "analog": {
+      "title": "Action Authority",
+      "corePattern": "Leadership through doing. You lead by example, not words.",
+      "shadowExpression": "Authoritarian. 'My way or the highway.' Cannot delegate or share power.",
+      "evolvedExpression": "Servant-leader. Shows the way without demanding. Empowers others to find their own path.",
+      "relationships": "You naturally lead in relationships. Partners must be comfortable following or actively co-leading.",
+      "career": "CEO, director, any visible leadership role. Positions requiring decisive authority.",
+      "lifeLesson": "True authority serves others. Leadership is stewardship, not domination.",
+      "practice": "Follow someone else's lead completely for one week. Surrender all control.",
+      "mantra": "I am action authority."
+    }
+  },
+  "A♦": {
+    "code": "A♦",
+    "slug": "ace-of-diamonds",
+    "label": "Ace of Diamonds",
+    "suit": "diamonds",
+    "rank": "A",
+    "title": "The Wealth Pioneer",
+    "coreIdentity": "You start a resource in motion because you trust you can make and keep value. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
+    "gifts": [
+      "Natural resource building and accumulation",
+      "Ability to see material opportunity",
+      "Entrepreneurial drive and initiative",
+      "Capacity to create wealth from ideas"
+    ],
+    "shadow": "You measure yourself by the pile. More never registers as enough, so success still feels like a shortfall.",
+    "lifeDirection": "Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
+    "lens": {
+      "balanced": "You start a resource in motion because you trust you can make and keep value.",
+      "under": "You cling to what you have and rehearse losing it. Security work never quite starts.",
+      "over": "You collect to prove you are worth something. Other people start to look like competition."
+    },
+    "archetype": "The Miser",
+    "coreShadow": "Hoarding a new opportunity or resource out of a deep-seated fear of lack. It is the seed of potential that is never planted because the fear of losing it is greater than the hope of its growth.",
+    "worldview": "This resource is finite and precious. If I spend it, invest it, or share it, it will be gone forever. True security lies in clutching what I have, not in risking it for some uncertain future gain.",
+    "inTheLight": "The Miser's fearful grip loosens, and they become The Seed-Planter. This archetype represents a tangible new beginning—a job offer, a financial gift, a promising business idea. It is the wisdom to invest a resource with the faith that it will grow into real-world prosperity.",
+    "lightName": "The Seed-Planter",
+    "prompts": [
+      "What tangible resource or opportunity (money, an offer, an idea) are you currently hoarding out of fear?",
+      "Describe a time you were too afraid to invest time or money in your own growth. What was the result?",
+      "What is one \"safe\" risk you can take with a resource today to promote its growth?"
+    ],
+    "keywords": [
+      "greed",
+      "self-worth confusion",
+      "over-identification with success",
+      "value obsession"
+    ],
+    "surfaceTruth": "I attract and appreciate quality resources and experiences that provide true value.",
+    "analog": {
+      "title": "Value Creator",
+      "corePattern": "New beginnings with resources. You create material value.",
+      "shadowExpression": "Greed. Defining all worth through money. Never enough.",
+      "evolvedExpression": "Wise steward of resources. Creates value while knowing worth transcends money.",
+      "relationships": "You attract those seeking security. Learn to value people beyond utility.",
+      "career": "Finance, sales, entrepreneurship. Value creation and exchange.",
+      "lifeLesson": "You are not your net worth. Human value transcends material.",
+      "practice": "Give away something valuable with no expectation of return or recognition.",
+      "mantra": "I am value creator."
+    }
+  },
+  "2♦": {
+    "code": "2♦",
+    "slug": "2-of-diamonds",
+    "label": "Two of Diamonds",
+    "suit": "diamonds",
+    "rank": "2",
+    "title": "The Financial Partner",
+    "coreIdentity": "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
+    "gifts": [
+      "Natural understanding of fair exchange",
+      "Ability to create balanced partnerships around resources",
+      "Diplomatic skill in financial negotiations",
+      "Talent for making partnerships feel equitable"
+    ],
+    "shadow": "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
+    "lifeDirection": "Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
+    "lens": {
+      "balanced": "You name the exchange out loud and keep it fair for both sides.",
+      "under": "You give the better end of the deal so no one can call you greedy. The short end becomes a habit, then a grudge.",
+      "over": "You steer the money so you stay in control of the relationship."
+    },
+    "archetype": "The Workaholic",
+    "coreShadow": "Frantic, stressful, and unproductive multitasking. This is the act of juggling responsibilities not with grace, but with a desperate anxiety, believing that being constantly busy is the same as being effective.",
+    "worldview": "I must keep all the plates spinning at all times. If I slow down for even a second, everything will crash. Stress is the engine of my success. Rest is a luxury I cannot afford.",
+    "inTheLight": "The frantic energy calms, and the Workaholic becomes The Juggler. This is an archetype of adaptability, flexibility, and skillful prioritization. They manage multiple projects and demands with a light touch, finding a rhythm in the ebb and flow of their responsibilities.",
+    "lightName": "The Juggler",
+    "prompts": [
+      "At what point does your \"productive multitasking\" turn into frantic, stressful anxiety?",
+      "What are you afraid will happen if you completely unplug from all your work and responsibilities for one evening?",
+      "Schedule 30 minutes of intentional, unproductive rest into your calendar this week. What feelings come up when you do it?"
+    ],
+    "keywords": [
+      "financial anxiety",
+      "unequal exchange",
+      "transactional relationships",
+      "insecurity in collaboration"
+    ],
+    "surfaceTruth": "I make balanced, thoughtful decisions about resources and practical matters.",
+    "analog": {
+      "title": "Resource Partner",
+      "corePattern": "Sharing resources. You do deals and partnerships around value.",
+      "shadowExpression": "Transactional. Everything is a deal. Can't give without expecting return.",
+      "evolvedExpression": "Fair exchange expert. Partnerships around value without exploitation.",
+      "relationships": "You think in terms of give and take. Make sure it's actually balanced.",
+      "career": "Partnerships, joint ventures, shared resource management.",
+      "lifeLesson": "Some things can't be reduced to transactions.",
+      "practice": "Give without tracking what you get back for one month.",
+      "mantra": "I am resource partner."
+    }
+  },
+  "3♦": {
+    "code": "3♦",
+    "slug": "3-of-diamonds",
+    "label": "Three of Diamonds",
+    "suit": "diamonds",
+    "rank": "3",
+    "title": "The Success Communicator",
+    "coreIdentity": "You can make value visible without overselling the thing underneath. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
+    "gifts": [
+      "Natural sales and persuasion ability",
+      "Talent for making things attractive and desirable",
+      "Ability to communicate material value clearly",
+      "Gift for inspiring desire and investment"
+    ],
+    "shadow": "The pitch outruns the delivery. After a few gaps, people stop believing the next one.",
+    "lifeDirection": "Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
+    "lens": {
+      "balanced": "You keep more than one path alive without letting any of them stay imaginary.",
+      "under": "You open too many income paths and stabilize none. Options replace a working floor.",
+      "over": "You chase the next dollar so hard the current one never settles."
+    },
+    "archetype": "The Pedant",
+    "coreShadow": "Perfectionism that sabotages progress. This is the skilled worker who obsesses over insignificant details, alienating their team and preventing a project from ever being \"finished\" because it's never flawless in their eyes.",
+    "worldview": "My worth is proven by the absolute flawlessness of my work. This tiny detail, which no one else even sees, is the difference between mediocrity and mastery. I cannot sign off on this until it is perfect.",
+    "inTheLight": "The Pedant’s eye for detail becomes the mastery of The Craftsman. This archetype represents the pride and recognition that comes from doing high-quality, skilled work. It is the successful collaboration where every member's skill contributes to a beautiful and functional result.",
+    "lightName": "The Craftsman",
+    "prompts": [
+      "Describe a project where your perfectionism prevented it from being completed on time or caused stress for others.",
+      "What is one detail you are currently obsessing over that, in the grand scheme of things, does not matter?",
+      "How can you practice \"good enough\" on a current task and declare it finished?"
+    ],
+    "keywords": [
+      "superficial values",
+      "comparison trap",
+      "spending to impress",
+      "scattered priorities"
+    ],
+    "surfaceTruth": "I create diverse resource streams and experiences that provide security and growth.",
+    "analog": {
+      "title": "Material Expression",
+      "corePattern": "Creating through resources. You make things with money and materials.",
+      "shadowExpression": "Wasteful. Too many material projects. Can't focus resources.",
+      "evolvedExpression": "Focused material creator. Strategic use of resources for tangible results.",
+      "relationships": "You show love through gifts and material provision.",
+      "career": "Product creation, manufacturing, material transformation work.",
+      "lifeLesson": "More money doesn't mean better outcomes. Focus beats quantity.",
+      "practice": "Create something valuable with severe financial constraints.",
+      "mantra": "I am material expression."
+    }
+  },
+  "4♦": {
+    "code": "4♦",
+    "slug": "4-of-diamonds",
+    "label": "Four of Diamonds",
+    "suit": "diamonds",
+    "rank": "4",
+    "title": "The Financial Foundation Builder",
+    "coreIdentity": "You build a floor that lasts and still let money move when the work requires it. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
+    "gifts": [
+      "Strong financial planning and foresight",
+      "Ability to build lasting material security",
+      "Natural understanding of systems and structures",
+      "Talent for creating sustainable wealth"
+    ],
+    "shadow": "You have enough and live as if you do not. Caution empties the thing it was supposed to protect.",
+    "lifeDirection": "Your curriculum is learning that some security is illusory and that money exists to be used. You're learning to enjoy the abundance you've built.",
+    "lens": {
+      "balanced": "You build a floor that lasts and still let money move when the work requires it.",
+      "under": "You hold money as a wall against chaos. The wall gets thicker than the life it was supposed to protect.",
+      "over": "You will not release cash even when keeping it costs more than spending it."
+    },
+    "archetype": "The Scavenger",
+    "coreShadow": "Stinginess and a white-knuckled grip on possessions. This archetype builds a fortress around their material world, defining their identity and security by what they own and fearing any form of loss or sharing.",
+    "worldview": "What I have is who I am. To lose any of it is to lose a piece of myself. The world is a dangerous place that wants to take what is mine. I must guard it all and trust no one.",
+    "inTheLight": "The Scavenger’s fear-based hoarding becomes the wisdom of The Steward. This is the archetype of financial stability, responsible planning, and building a secure foundation for the future. They protect their assets not from fear, but from a place of prudence and respect for what they have built.",
+    "lightName": "The Steward",
+    "prompts": [
+      "What possession do you own that makes you feel the most secure? What would it mean to lose it?",
+      "When was the last time you felt resistant to sharing something (time, money, a possession)? What was the fear underneath?",
+      "Identify one thing you have an excess of (books, clothes, etc.) and make a plan to donate it this week."
+    ],
+    "keywords": [
+      "scarcity mindset",
+      "hoarding",
+      "rigid budgeting",
+      "fear-based security"
+    ],
+    "surfaceTruth": "I build reliable material foundations and systems that provide lasting security.",
+    "analog": {
+      "title": "Material Foundation",
+      "corePattern": "Building security through resources. You create stable material foundations.",
+      "shadowExpression": "Hoarding. Can't spend or share. Security becomes prison.",
+      "evolvedExpression": "Builds wealth that flows. Secure base without attachment or hoarding.",
+      "relationships": "You provide material stability. Partners may become dependent.",
+      "career": "Financial planning, wealth management, security-focused work.",
+      "lifeLesson": "Security is dynamic, not static. Money must flow.",
+      "practice": "Spend money on something with no practical return, just joy.",
+      "mantra": "I am material foundation."
+    }
+  },
+  "5♦": {
+    "code": "5♦",
+    "slug": "5-of-diamonds",
+    "label": "Five of Diamonds",
+    "suit": "diamonds",
+    "rank": "5",
+    "title": "The Dynamic Entrepreneur",
+    "coreIdentity": "You adjust the resource plan when the ground moves, without pretending nothing changed. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
+    "gifts": [
+      "Quick adaptation to market changes",
+      "Ability to explore multiple income streams",
+      "Natural entrepreneurial flexibility",
+      "Gift for finding new opportunities"
+    ],
+    "shadow": "You start the next venture before the current one is real. Options replace a floor.",
+    "lifeDirection": "Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
+    "lens": {
+      "balanced": "You adjust the resource plan when the ground moves, without pretending nothing changed.",
+      "under": "Fear of loss freezes the next move. The safe choice is the one that does not happen.",
+      "over": "You spend to feel motion. Chaos gets billed as flexibility."
+    },
+    "archetype": "The Outcast",
+    "coreShadow": "A victim mentality during a period of hardship. It is the tendency to identify so strongly with one's lack—of money, health, or status—that one actively pushes away help and opportunities for recovery.",
+    "worldview": "I have been left out in the cold, and this is who I am now. No one can understand or help me. There is a strange comfort in this rock bottom, because now I don't have to try and risk failing again.",
+    "inTheLight": "The Outcast looks up and becomes The Humble Seeker. This is the turning point where one finds the courage to ask for help. It is the realization that a period of material hardship does not define one's worth, and that community and support are available to those willing to receive them.",
+    "lightName": "The Humble Seeker",
+    "prompts": [
+      "Recall a time of hardship where you refused help because of pride or a feeling of unworthiness.",
+      "In what area of your life do you feel \"left out in the cold\" right now? Are you actively pushing away any \"warmth\" being offered?",
+      "Who is one person you could reach out to for support or advice, even if it feels difficult?"
+    ],
+    "keywords": [
+      "instability",
+      "financial irresponsibility",
+      "impulsiveness",
+      "avoidance of value alignment"
+    ],
+    "surfaceTruth": "I adapt flexibly to changing resource conditions and find creative material solutions.",
+    "analog": {
+      "title": "Material Freedom",
+      "corePattern": "Change through money. You need financial freedom and flexibility.",
+      "shadowExpression": "Financial chaos. Can't commit to any resource plan.",
+      "evolvedExpression": "Financially flexible without chaos. Freedom with responsibility.",
+      "relationships": "You need financial independence even in partnership.",
+      "career": "Freelance, variable income, adventure capitalism.",
+      "lifeLesson": "Freedom and stability aren't opposites. You can have both.",
+      "practice": "Maintain one financial commitment for one year without changing it.",
+      "mantra": "I am material freedom."
+    }
+  },
+  "6♦": {
+    "code": "6♦",
+    "slug": "6-of-diamonds",
+    "label": "Six of Diamonds",
+    "suit": "diamonds",
+    "rank": "6",
+    "title": "The Generous Provider",
+    "coreIdentity": "You move resources toward other people without erasing your own claim. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
+    "gifts": [
+      "Generous and supportive nature with resources",
+      "Ability to provide stability for others",
+      "Natural understanding of needs and provision",
+      "Gift for creating material safety"
+    ],
+    "shadow": "You keep providing after you are empty. People learn to lean; you learn to resent the lean.",
+    "lifeDirection": "Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
+    "lens": {
+      "balanced": "You move resources toward other people without erasing your own claim.",
+      "under": "You over-give and do not say what you need back. Generosity becomes a way to stay unpaid.",
+      "over": "Gifts come with a string. Help becomes a way to keep someone obligated."
+    },
+    "archetype": "The Debtor",
+    "coreShadow": "An unhealthy imbalance in giving and receiving. This manifests as either the condescending benefactor who uses gifts to create dependency, or the resentful recipient who feels trapped and powerless in a cycle of debt.",
+    "worldview": "(As the giver): \"My generosity proves I am superior and makes them owe me.\" (As the receiver): \"I hate that I need this. This 'gift' is a chain around my neck.",
+    "inTheLight": "The dynamic of debt becomes one of gracious exchange, embodied by The Philanthropist. It is the joy of giving without expectation and the grace of receiving with genuine gratitude. It represents a healthy, flowing economy of resources within a community.",
+    "lightName": "The Philanthropist",
+    "prompts": [
+      "Describe a time you gave a gift and secretly expected something (gratitude, loyalty, a favor) in return.",
+      "Who in your life do you feel indebted to? Does that feeling empower you or make you feel resentful?",
+      "How can you give something (a compliment, a small favor) to someone today with absolutely no expectation of anything in return?"
+    ],
+    "keywords": [
+      "over-giving",
+      "value martyrdom",
+      "financial burden",
+      "guilt-based support"
+    ],
+    "surfaceTruth": "I create balanced material approaches that provide harmony between work, wealth, and values.",
+    "analog": {
+      "title": "Material Server",
+      "corePattern": "Resources for service. You use money to help others.",
+      "shadowExpression": "Financial martyrdom. Giving everything away, nothing for self.",
+      "evolvedExpression": "Serves with resources sustainably. Helps without self-depletion.",
+      "relationships": "You financially support others, sometimes enabling dependence.",
+      "career": "Philanthropy, social finance, resource redistribution work.",
+      "lifeLesson": "You can't give what you don't have. Fill your cup first.",
+      "practice": "Say no to financial requests for one month. Keep resources for yourself.",
+      "mantra": "I am material server."
+    }
+  },
+  "7♦": {
+    "code": "7♦",
+    "slug": "7-of-diamonds",
+    "label": "Seven of Diamonds",
+    "suit": "diamonds",
+    "rank": "7",
+    "title": "The Skeptical Investor",
+    "coreIdentity": "You look at worth without reducing it to the account balance. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
+    "gifts": [
+      "Analytical thinking about financial decisions",
+      "Ability to identify financial risks",
+      "Deep skepticism that prevents poor choices",
+      "Natural caution and thoroughness"
+    ],
+    "shadow": "You can see the hole in every opportunity, so you take none. Caution becomes a standstill.",
+    "lifeDirection": "Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
+    "lens": {
+      "balanced": "You look at worth without reducing it to the account balance.",
+      "under": "You watch for lack even when the numbers do not support it. Caution stops being useful and starts running the day.",
+      "over": "You treat every surplus as temporary. Scarcity stays in charge after the evidence has changed."
+    },
+    "archetype": "The Impatient Gardener",
+    "coreShadow": "The anxiety-driven need for immediate results from long-term efforts. It's the person who pulls up their seeds to see if they're growing, thereby ensuring their failure out of a fear of it.",
+    "worldview": "I've been pouring so much effort into this, and I see nothing happening on the surface. It must be a waste of time. I should cut my losses now before I invest any more in this fruitless endeavor.",
+    "inTheLight": "Impatience transforms into the quiet faith of The Watchful Farmer. This archetype trusts the process. They understand that long-term projects require patience and consistent nurturing. They pause to assess their work, make adjustments, and have faith in a future harvest.",
+    "lightName": "The Watchful Farmer",
+    "prompts": [
+      "What long-term project are you currently feeling anxious about because you aren't seeing immediate results?",
+      "When you get frustrated with a lack of progress, is your first instinct to abandon the project?",
+      "What is one small, consistent action you can take on a long-term goal today, and trust that it is enough for now?"
+    ],
+    "keywords": [
+      "value confusion",
+      "spiritual materialism",
+      "money shame",
+      "worth vs. wealth conflict"
+    ],
+    "surfaceTruth": "I select quality investments and uses of resources based on clear value assessment.",
+    "analog": {
+      "title": "Spiritual Wealth",
+      "corePattern": "Seeking meaning in money. You want resources to have purpose.",
+      "shadowExpression": "Spiritual bypassing of material needs. 'Money isn't spiritual.'",
+      "evolvedExpression": "Integrates spirituality and prosperity. Money as energy with meaning.",
+      "relationships": "You need partners who understand money as energy, not just currency.",
+      "career": "Conscious business, values-based investing, meaningful commerce.",
+      "lifeLesson": "Spirituality doesn't require poverty. Money can be sacred.",
+      "practice": "Make money in a way that feels spiritually aligned. Notice resistance.",
+      "mantra": "I am spiritual wealth."
+    }
+  },
+  "8♦": {
+    "code": "8♦",
+    "slug": "8-of-diamonds",
+    "label": "Eight of Diamonds",
+    "suit": "diamonds",
+    "rank": "8",
+    "title": "The Businessman",
+    "coreIdentity": "You run the money system in the open and you can explain the call. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
+    "gifts": [
+      "Strategic thinking about resources and power",
+      "Natural ability to leverage opportunities",
+      "Ambitious drive and determination",
+      "Talent for creating material success"
+    ],
+    "shadow": "Money becomes the way you keep score and keep control. The win is public; the relationships are not.",
+    "lifeDirection": "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
+    "lens": {
+      "balanced": "You run the money system in the open and you can explain the call.",
+      "under": "You step back from resource leadership. Power looks dangerous, so you leave it on the table.",
+      "over": "You use money to keep people in line. The ledger becomes a hierarchy."
+    },
+    "archetype": "The Grinder",
+    "coreShadow": "Diligence without passion; soulless repetition for a paycheck. This is the master craftsman who has lost all joy in their craft, becoming a human machine going through the motions.",
+    "worldview": "My job is to perform this task with precision. My feelings about it are irrelevant. I show up, I do the work, I get paid. That is the deal. Passion is for hobbies.",
+    "inTheLight": "The Grinder rediscovers their purpose and becomes The Artisan. This archetype finds deep satisfaction and a state of flow in the pursuit of mastery. They are committed to their craft not just for the reward, but for the inherent joy of creating something of quality and skill.",
+    "lightName": "The Artisan",
+    "prompts": [
+      "What skill do you have that you perform with excellence but with little to no joy?",
+      "Describe your daily \"grind.\" What part of it feels most like you are a cog in a machine?",
+      "How could you inject one small moment of creativity or personal flair into a repetitive task this week?"
+    ],
+    "keywords": [
+      "financial control",
+      "material dominance",
+      "power-through-resources",
+      "stinginess"
+    ],
+    "surfaceTruth": "I work diligently to build genuine wealth and achievement through persistent effort.",
+    "analog": {
+      "title": "Material Power",
+      "corePattern": "Wealth and achievement. You seek financial mastery.",
+      "shadowExpression": "Wealth as identity. More is never enough. Material obsession.",
+      "evolvedExpression": "Wealthy without attachment. Material mastery with spiritual freedom.",
+      "relationships": "Your financial ambition can overshadow relationships. Balance needed.",
+      "career": "High finance, wealth creation, material achievement at scale.",
+      "lifeLesson": "You are not your bank account. Worth exists beyond wealth.",
+      "practice": "Live on minimum resources for one month. Notice identity shifts.",
+      "mantra": "I am material power."
+    }
+  },
+  "9♦": {
+    "code": "9♦",
+    "slug": "9-of-diamonds",
+    "label": "Nine of Diamonds",
+    "suit": "diamonds",
+    "rank": "9",
+    "title": "The Universal Provider",
+    "coreIdentity": "You give in a way you can sustain, and you let someone give back. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
+    "gifts": [
+      "Visionary thinking about resource distribution",
+      "Generous impulse toward universal good",
+      "Ability to inspire others to contribute",
+      "Natural idealism about abundance"
+    ],
+    "shadow": "You fund everyone else's floor and skip your own. The generosity is real and it is not sustainable.",
+    "lifeDirection": "Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
+    "lens": {
+      "balanced": "You give in a way you can sustain, and you let someone give back.",
+      "under": "You keep giving after you are empty. Receiving feels like a failure of character.",
+      "over": "You stay the generous one past the point of honesty. Resentment does the work the boundary should have done."
+    },
+    "archetype": "The Nouveau Riche",
+    "coreShadow": "Gaudy materialism used to mask deep insecurity. It is the flaunting of wealth, status, and luxury goods in a desperate attempt to prove one's worth and feel superior to others.",
+    "worldview": "I earned this, and now everyone must see it. The price tag on my life validates my existence. I look down on those with less because they remind me of the poverty I fear.",
+    "inTheLight": "This need for external validation matures into the quiet confidence of The Connoisseur. This archetype enjoys the fruits of their labor with grace and sophistication. They appreciate quality, beauty, and comfort for their own sake, not for the impression it makes on others. They are self-sufficient and secure.",
+    "lightName": "The Connoisseur",
+    "prompts": [
+      "What purchase have you made primarily to impress other people or signal a certain status?",
+      "When you achieve something, how important is it that other people notice and validate it?",
+      "What is something you can do or enjoy this week that feels luxurious and fulfilling to *you*, even if no one else ever knows about it?"
+    ],
+    "keywords": [
+      "over-generosity",
+      "burnout from giving",
+      "unmet expectations",
+      "self-sacrifice for validation"
+    ],
+    "surfaceTruth": "I use material resources generously to support causes and people that matter to me.",
+    "analog": {
+      "title": "Universal Prosperity",
+      "corePattern": "Wealth for all. You want everyone to have enough.",
+      "shadowExpression": "Trying to solve poverty alone. Taking on world's material suffering.",
+      "evolvedExpression": "Contributes to collective prosperity without savior complex.",
+      "relationships": "You care about global material justice, sometimes neglecting personal finances.",
+      "career": "Economic development, global finance for good, poverty solutions.",
+      "lifeLesson": "You can't financially save the world alone. Strategic focus.",
+      "practice": "Focus only on your own financial wellbeing for one month.",
+      "mantra": "I am universal prosperity."
+    }
+  },
+  "10♦": {
+    "code": "10♦",
+    "slug": "10-of-diamonds",
+    "label": "Ten of Diamonds",
+    "suit": "diamonds",
+    "rank": "10",
+    "title": "The Wealthy Master",
+    "coreIdentity": "You build enough and keep it structured so it actually holds. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
+    "gifts": [
+      "Integrated material mastery and security",
+      "Ability to radiate confidence about resources",
+      "Wisdom from building and maintaining wealth",
+      "Natural generosity from a place of abundance"
+    ],
+    "shadow": "You protect what you have instead of using it. Security turns into a closed room.",
+    "lifeDirection": "Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
+    "lens": {
+      "balanced": "You build enough and keep it structured so it actually holds.",
+      "under": "You carry other people's bills and call it family. Their floor becomes your ceiling.",
+      "over": "People start to look like instruments. The win is counted; the relationship is not."
+    },
+    "archetype": "The Dynast",
+    "coreShadow": "Being imprisoned by the burdens of legacy and inherited wealth. This is the person whose life path is dictated by the need to maintain the family empire, sacrificing their own dreams in the process.",
+    "worldview": "This wealth is not a gift; it is a gilded cage. My life is not my own. I am a steward of a legacy, and I am crushed by the weight of the expectations that come with it.",
+    "inTheLight": "The Dynast embraces their role and becomes The Benefactor. They use their immense resources to establish lasting security and create generational abundance not just for their own family, but for their wider community. They manage their legacy with wisdom and a sense of greater purpose.",
+    "lightName": "The Benefactor",
+    "prompts": [
+      "What family or career legacy do you feel burdened by?",
+      "If you were free from all expectations regarding your wealth or career, what path would you choose for yourself?",
+      "What is one small action you can take that honors your own personal dream, separate from your family or professional duties?"
+    ],
+    "keywords": [
+      "wealth pressure",
+      "family financial enmeshment",
+      "fear of material change",
+      "excess responsibility"
+    ],
+    "surfaceTruth": "I build lasting material legacies and systems that benefit many beyond myself.",
+    "analog": {
+      "title": "Material Mastery",
+      "corePattern": "Wealth completed. You've mastered material realm.",
+      "shadowExpression": "Can't let go of money. Hoarding even in abundance.",
+      "evolvedExpression": "Material mastery with non-attachment. Wealth flows freely.",
+      "relationships": "You may finish relationships based on financial completion cycles.",
+      "career": "Wealth completion work, estate planning, legacy creation.",
+      "lifeLesson": "You can't take it with you. Release is part of mastery.",
+      "practice": "Give away significant money with no strings attached. Notice the grip.",
+      "mantra": "I am material mastery."
+    }
+  },
+  "J♦": {
+    "code": "J♦",
+    "slug": "jack-of-diamonds",
+    "label": "Jack of Diamonds",
+    "suit": "diamonds",
+    "rank": "J",
+    "title": "The Successful Messenger",
+    "coreIdentity": "You try a new approach to value and you finish enough of it to know if it works. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
+    "gifts": [
+      "Ability to inspire financial awakening",
+      "Natural gift for shifting money mindsets",
+      "Talent for creating excitement about opportunity",
+      "Inspiring others to believe in abundance"
+    ],
+    "shadow": "You talk about value more fluently than you keep it. The message is ahead of the books.",
+    "lifeDirection": "Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
+    "lens": {
+      "balanced": "You try a new approach to value and you finish enough of it to know if it works.",
+      "under": "You get excited about the next way to make money and do not stay for the unglamorous middle.",
+      "over": "You promise a return you have not built. The pitch outruns the product."
+    },
+    "archetype": "The Grifter",
+    "coreShadow": "The charming, fast-talking schemer whose ambitious ideas lack ethics, substance, or a realistic plan. They are obsessed with the idea of getting rich quick and cutting corners.",
+    "worldview": "I have a million-dollar idea! Don't get bogged down in the boring details or the hard work—that's for other people. Just trust my vision and my charisma. We'll be rich before you know it.",
+    "inTheLight": "The Grifter’s raw ambition is channeled into productive action, becoming The Entrepreneur. This archetype is the promising apprentice or intern with a brilliant, practical idea. They are eager to learn the skills, do the work, and build something of real, tangible value.",
+    "lightName": "The Entrepreneur",
+    "prompts": [
+      "Describe an idea you had that was more about the exciting prospect of a shortcut to success than about a solid, workable plan.",
+      "Where in your life are you putting more energy into \"talking the talk\" than \"walking the walk\"?",
+      "What is one small, \"un-glamorous\" task you can complete today that will bring you one real step closer to a goal?"
+    ],
+    "keywords": [
+      "financial immaturity",
+      "chasing quick wins",
+      "undeveloped value system",
+      "impulsive investments"
+    ],
+    "surfaceTruth": "I discover innovative approaches to wealth and resources that others miss or avoid.",
+    "analog": {
+      "title": "Material Student",
+      "corePattern": "Learning about money. You're discovering how value works.",
+      "shadowExpression": "Financial immaturity. Never learning money lessons. Perpetual broke student.",
+      "evolvedExpression": "Learning money while teaching basics. Growing financial wisdom.",
+      "relationships": "You bring fresh perspective on money. Sometimes naive about finance.",
+      "career": "Entry-level finance, learning business, developing money skills.",
+      "lifeLesson": "Financial maturity is available to you. Step into it.",
+      "practice": "Make one financially mature decision. Budget, save, or invest.",
+      "mantra": "I am material student."
+    }
+  },
+  "Q♦": {
+    "code": "Q♦",
+    "slug": "queen-of-diamonds",
+    "label": "Queen of Diamonds",
+    "suit": "diamonds",
+    "rank": "Q",
+    "title": "The Prosperous Nurturer",
+    "coreIdentity": "You protect what you have without making every dollar a referendum on safety. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
+    "gifts": [
+      "Natural ability to provide and nurture materially",
+      "Generosity and abundance consciousness",
+      "Talent for creating financial safety for others",
+      "Wisdom about resources and needs"
+    ],
+    "shadow": "Provision comes with a string. People feel cared for and owned at the same time.",
+    "lifeDirection": "Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
+    "lens": {
+      "balanced": "You protect what you have without making every dollar a referendum on safety.",
+      "under": "You have resources and still manage them as if loss is already scheduled. Control stands in for trust.",
+      "over": "Money becomes the condition for closeness. People feel the price of disappointing you."
+    },
+    "archetype": "The Socialite",
+    "coreShadow": "The transactional and materialistic social climber. She measures everyone's worth by their wealth and status, using her own resources and generosity only to advance her position.",
+    "worldview": "To be secure, I must surround myself with the right people and the right things. Every invitation is a transaction. My home is a stage, and my possessions are props to demonstrate my value. I am unsentimental about this; it is simply practical.",
+    "inTheLight": "The Socialite’s pragmatism becomes the nurturing wisdom of The Matron. She is a masterful provider who uses her resources to create security, comfort, and beauty for her community. She is a gracious host, a shrewd manager, and a patron who helps others prosper.",
+    "lightName": "The Matron",
+    "prompts": [
+      "Recall a time you made a decision about a friendship or relationship based on practical or status-related reasons rather than genuine connection.",
+      "In what ways is your home or lifestyle designed to impress others?",
+      "How can you offer your resources or hospitality to someone this week in a way that is purely about providing comfort and warmth, not about networking?"
+    ],
+    "keywords": [
+      "self-worth distortion",
+      "value manipulation",
+      "over-responsibility",
+      "material insecurity"
+    ],
+    "surfaceTruth": "I naturally understand value and effortlessly cultivate material abundance.",
+    "analog": {
+      "title": "Material Steward",
+      "corePattern": "Internal wealth mastery. You manage your own resources expertly.",
+      "shadowExpression": "Financial isolation. Won't share resources or let others help financially.",
+      "evolvedExpression": "Self-sufficient financially while open to receiving and sharing.",
+      "relationships": "You handle your own money. Learn to share resources in partnership.",
+      "career": "Personal finance, private wealth management, solo entrepreneurship.",
+      "lifeLesson": "Receiving financial support isn't weakness. Allow it.",
+      "practice": "Accept financial help when offered. Actually receive it.",
+      "mantra": "I am material steward."
+    }
+  },
+  "K♦": {
+    "code": "K♦",
+    "slug": "king-of-diamonds",
+    "label": "King of Diamonds",
+    "suit": "diamonds",
+    "rank": "K",
+    "title": "The Wealthy King",
+    "coreIdentity": "You run the system and you can show your work. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
+    "gifts": [
+      "Natural authority and command over resources",
+      "Confident decision-making about money",
+      "Ability to direct financial strategy",
+      "Inspiring confidence in your financial judgment"
+    ],
+    "shadow": "You make the money call alone and call it leadership. Other judgment does not get a seat.",
+    "lifeDirection": "Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
+    "lens": {
+      "balanced": "You run the system and you can show your work.",
+      "under": "You hold the resources and decline the public call. Power unused still shapes the room.",
+      "over": "Other people's labor exists to grow your position. Stewardship drops out of the job description."
+    },
+    "archetype": "The Plutocrat",
+    "coreShadow": "The ruthless captain of industry who views people as numbers on a balance sheet. His success has convinced him that wealth gives him the right to be detached from the human cost of his ambition.",
+    "worldview": "The bottom line is the only truth. My empire's success justifies my methods. People are cogs in the machine—replaceable and to be managed for maximum efficiency. Sentiment is a liability.",
+    "inTheLight": "The Plutocrat becomes The Emperor. He is the master of a prosperous and stable empire. A competent, reliable, and often generous leader, he uses his wealth and influence to create jobs, security, and abundance for his entire community, ruling with authority and business acumen. Of course. Here is the final suit, the Spades, written in the established format for the ebook. ---",
+    "lightName": "The Emperor",
+    "prompts": [
+      "When have you made a decision based purely on \"the bottom line,\" ignoring the human or emotional cost?",
+      "In what situation do you see the people you manage or work with as resources to be optimized rather than as whole human beings?",
+      "What is one way you can show a colleague or employee that you value them as a person, not just for their output?"
+    ],
+    "keywords": [
+      "material control",
+      "greed",
+      "status-driven identity",
+      "dominance in value systems"
+    ],
+    "surfaceTruth": "I provide masterful leadership in building and managing material resources and systems.",
+    "analog": {
+      "title": "Material Authority",
+      "corePattern": "Leadership through resources. You lead with financial wisdom.",
+      "shadowExpression": "Financial control. Using money to dominate others.",
+      "evolvedExpression": "Resource leader who empowers. Financial authority that serves.",
+      "relationships": "You lead financially in relationships. Share power, don't hoard it.",
+      "career": "CFO, financial leadership, wealth management authority.",
+      "lifeLesson": "Financial authority is stewardship, not domination.",
+      "practice": "Empower others financially for one month. Teach, don't control.",
+      "mantra": "I am material authority."
+    }
+  },
+  "A♠": {
+    "code": "A♠",
+    "slug": "ace-of-spades",
+    "label": "Ace of Spades",
+    "suit": "spades",
+    "rank": "A",
+    "title": "The Truth Pioneer",
+    "coreIdentity": "You say the true thing early, before it has to become a crisis to be heard. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
+    "gifts": [
+      "Ability to penetrate illusions and see truth",
+      "Courage to question what others accept",
+      "Sharp thinking and analytical power",
+      "Natural integrity and honesty"
+    ],
+    "shadow": "You decide you already have the true read and stop looking. Honesty starts cutting more than it clarifies.",
+    "lifeDirection": "Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
+    "lens": {
+      "balanced": "You say the true thing early, before it has to become a crisis to be heard.",
+      "under": "You leave the hard fact unnamed. The story stays kinder than the situation.",
+      "over": "You call it honesty when you use the fact as a blade."
+    },
+    "archetype": "The Executioner",
+    "coreShadow": "A truth delivered with such brutal force that it destroys rather than liberates. It is the use of pure, cold fact as a weapon to wound, shatter illusions, and end a situation without a shred of compassion.",
+    "worldview": "The truth is a sword, and its only purpose is to cut. Sentiment is a lie. This illusion must be destroyed now, regardless of the carnage it leaves behind. The pain of the truth is a necessary price.",
+    "inTheLight": "The Executioner's sword becomes the scalpel of The Truth-Bearer. This is a moment of profound, undeniable clarity that cuts through all confusion and deceit. It is the power to make a difficult but absolutely necessary decision with focus and conviction, paving the way for a new, more authentic reality.",
+    "lightName": "The Truth-Bearer",
+    "prompts": [
+      "Describe a time you used the \"brutal truth\" as a weapon to win an argument or hurt someone.",
+      "What difficult truth are you currently avoiding telling yourself or someone else?",
+      "How could you deliver a necessary truth to someone this week with more compassion and care?"
+    ],
+    "keywords": [
+      "resistance to change",
+      "identity crisis",
+      "fear of transformation",
+      "control fixation"
+    ],
+    "surfaceTruth": "I pursue intellectual clarity and rigorous analysis to uncover objective truth.",
+    "analog": {
+      "title": "Mental Pioneer",
+      "corePattern": "New ideas and thoughts. You think first, everything follows.",
+      "shadowExpression": "Analysis paralysis. Overthinking prevents action. Living entirely in your head.",
+      "evolvedExpression": "Strategic clear thinker. Ideas become action. Mental clarity drives tangible results.",
+      "relationships": "You need intellectual stimulation in relationships or you'll bore quickly.",
+      "career": "Strategy, research, analysis, innovation. Pure mind work.",
+      "lifeLesson": "Thinking isn't doing. At some point, ideas must become action.",
+      "practice": "Act without planning for one full day. Pure impulse, zero analysis.",
+      "mantra": "I am mental pioneer."
+    }
+  },
+  "2♠": {
+    "code": "2♠",
+    "slug": "2-of-spades",
+    "label": "Two of Spades",
+    "suit": "spades",
+    "rank": "2",
+    "title": "The Skeptical Partner",
+    "coreIdentity": "You hold two pressures at once and still make a call that can live in the world. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
+    "gifts": [
+      "Ability to hold multiple perspectives simultaneously",
+      "Healthy skepticism toward claims",
+      "Balanced thinking and fairness",
+      "Natural understanding of complexity"
+    ],
+    "shadow": "You can see both sides so well that you will not pick one. Fairness becomes a way not to stand anywhere.",
+    "lifeDirection": "Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
+    "lens": {
+      "balanced": "You hold two pressures at once and still make a call that can live in the world.",
+      "under": "You research both sides until the decision window closes. Thoroughness is how you avoid choosing.",
+      "over": "You refuse the choice so hard that other people start fighting it for you."
+    },
+    "archetype": "The Denier",
+    "coreShadow": "A mental stalemate born of terror. It is the willful ignorance of refusing to face a terrible truth or make an impossible choice, creating a fragile, self-imposed peace that is really a state of paralysis.",
+    "worldview": "If I do not acknowledge the problem, it does not exist. Both paths forward lead to pain, so I will choose neither. I will stand perfectly still, balanced on this knife's edge of indecision, and pretend I have a choice.",
+    "inTheLight": "The Denier’s paralysis becomes the centered calm of The Arbiter. This is the ability to hold two opposing, powerful truths in the mind without breaking. It is the patient, impartial wisdom to weigh all sides before passing judgment or taking action, ensuring the final decision is a just one.",
+    "lightName": "The Arbiter",
+    "prompts": [
+      "What impossible choice are you currently refusing to make? What are you afraid of losing?",
+      "What difficult reality in your life (in your health, finances, or relationships) are you actively pretending not to see?",
+      "Write down the two painful paths of a current dilemma. What is the real cost of standing still and choosing neither?"
+    ],
+    "keywords": [
+      "inner conflict",
+      "spiritual duality",
+      "indecision",
+      "avoidance of necessary growth"
+    ],
+    "surfaceTruth": "I carefully weigh multiple perspectives before forming opinions or making decisions.",
+    "analog": {
+      "title": "Mental Partnership",
+      "corePattern": "Thinking with others. Your best ideas come through dialogue.",
+      "shadowExpression": "Can't think alone. Need others to validate your thoughts.",
+      "evolvedExpression": "Independent thinker who values collaboration. Thinks solo and together.",
+      "relationships": "Need intellectual equals. Conversation is intimacy for you.",
+      "career": "Think tanks, research partnerships, collaborative intellectual work.",
+      "lifeLesson": "Your own mind is trustworthy without external validation.",
+      "practice": "Develop one idea completely alone. No feedback until it's done.",
+      "mantra": "I am mental partnership."
+    }
+  },
+  "3♠": {
+    "code": "3♠",
+    "slug": "3-of-spades",
+    "label": "Three of Spades",
+    "suit": "spades",
+    "rank": "3",
+    "title": "The Sorrowful Truth",
+    "coreIdentity": "You stay with the hard feeling long enough to learn it, then you let the day continue. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
+    "gifts": [
+      "Ability to see what needs fixing",
+      "Honesty about difficulty and pain",
+      "Natural compassion for suffering",
+      "Courage to name injustice"
+    ],
+    "shadow": "You keep naming what is broken. The room hears the problem and stops expecting a next move.",
+    "lifeDirection": "Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
+    "lens": {
+      "balanced": "You stay with the hard feeling long enough to learn it, then you let the day continue.",
+      "under": "Grief takes the whole field. Nothing else gets to move until the feeling is finished, and it is not finishing.",
+      "over": "Pain becomes the argument. Other people are drafted into a story they did not cause."
+    },
+    "archetype": "The Sadist",
+    "coreShadow": "Cruelty born from one's own heartbreak. It is the lashing out of a deeply wounded heart, finding a perverse relief or distraction in inflicting the same pain on others.",
+    "worldview": "My heart has been shattered, and this pain has given me a terrible clarity. The world is cruel, and I will be crueler. If I can make you feel a fraction of what I feel, then I am not alone in my misery.",
+    "inTheLight": "The Sadist's pain transforms into the wisdom of The Alchemist. This archetype represents the heartbreaking truth that is necessary for healing. It is the act of bravely facing betrayal or loss, and allowing the sorrow to carve away falsehoods, leaving only a stronger, more authentic self.",
+    "lightName": "The Alchemist",
+    "prompts": [
+      "Recall a time you were deeply hurt and lashed out by saying something intentionally cruel to someone else.",
+      "When you are in pain, do you sometimes want others to feel pain too?",
+      "The next time someone hurts you, what is one healthy way you could process the pain instead of immediately wanting to hurt them back?"
+    ],
+    "keywords": [
+      "scattered healing",
+      "shallow transformation",
+      "social avoidance of pain",
+      "spiritual bypassing"
+    ],
+    "surfaceTruth": "I process complex ideas through conversation and verbal exploration.",
+    "analog": {
+      "title": "Mental Expression",
+      "corePattern": "Ideas into words. You think by writing, speaking, expressing.",
+      "shadowExpression": "Scattered thoughts. Too many ideas, no focus. Mental chaos.",
+      "evolvedExpression": "Focused intellectual expression. Clear thoughts, clear communication.",
+      "relationships": "You need to talk things through. Silent partners frustrate you.",
+      "career": "Writing, speaking, teaching, communication-based intellectual work.",
+      "lifeLesson": "Not every thought needs to be spoken. Some can stay internal.",
+      "practice": "Think without speaking for one day. Notice the urge to vocalize.",
+      "mantra": "I am mental expression."
+    }
+  },
+  "4♠": {
+    "code": "4♠",
+    "slug": "4-of-spades",
+    "label": "Four of Spades",
+    "suit": "spades",
+    "rank": "4",
+    "title": "The Rigid Truth",
+    "coreIdentity": "You build enough container that change can happen without the floor disappearing. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
+    "gifts": [
+      "Ability to create coherent belief systems",
+      "Strong principles and ethical clarity",
+      "Organized thinking and clear logic",
+      "Natural integrity and consistency"
+    ],
+    "shadow": "The principle outranks the person in front of you. Being consistent starts to cost the relationship.",
+    "lifeDirection": "Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
+    "lens": {
+      "balanced": "You build enough container that change can happen without the floor disappearing.",
+      "under": "You brace against change and call it stability. The structure is there to keep the new thing out.",
+      "over": "Nothing gets in. The defense outlasts the threat."
+    },
+    "archetype": "The Exile",
+    "coreShadow": "Forced stillness that festers into resentment. It is the feeling of being unfairly outcast, silenced, or imprisoned by circumstances, leading to a bitter refusal to heal or find peace.",
+    "worldview": "I have been locked away from the world, and it is an injustice. I will not use this time to rest; I will use it to nurse my grievances. My life is on hold until the world apologizes and comes to rescue me.",
+    "inTheLight": "The Exile embraces their situation and becomes The Hermit. The forced pause becomes a sacred period of deep contemplation, healing, and strategic retreat. It is the wisdom to use solitude to gather immense inner strength and clarity before re-engaging with the world on one's own terms.",
+    "lightName": "The Hermit",
+    "prompts": [
+      "In what area of your life do you currently feel unfairly \"benched\" or put on pause?",
+      "Are you using this period of forced stillness to rest and heal, or to fester and plot revenge?",
+      "If you cannot change your external situation right now, what is one thing you *can* change about your inner response to it?"
+    ],
+    "keywords": [
+      "stagnation",
+      "rigidity",
+      "resistance to growth",
+      "false sense of stability"
+    ],
+    "surfaceTruth": "I create reliable intellectual frameworks and systems that provide clarity and order.",
+    "analog": {
+      "title": "Mental Structure",
+      "corePattern": "Systems thinking. You build intellectual frameworks.",
+      "shadowExpression": "Mental rigidity. Can't think outside your own system.",
+      "evolvedExpression": "Flexible mental frameworks. Systems that adapt to new information.",
+      "relationships": "You need logical consistency. Contradictions in partners bother you.",
+      "career": "Systems analysis, architecture, structural thinking roles.",
+      "lifeLesson": "Your framework isn't reality. Reality is bigger than any system.",
+      "practice": "Adopt a completely different worldview for one week.",
+      "mantra": "I am mental structure."
+    }
+  },
+  "5♠": {
+    "code": "5♠",
+    "slug": "5-of-spades",
+    "label": "Five of Spades",
+    "suit": "spades",
+    "rank": "5",
+    "title": "The Restless Mind",
+    "coreIdentity": "You stay in the hard stretch long enough to get better at it. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
+    "gifts": [
+      "Quick thinking and mental flexibility",
+      "Openness to new perspectives",
+      "Natural curiosity and investigation",
+      "Ability to see things from fresh angles"
+    ],
+    "shadow": "You change positions before any of them get depth. People cannot tell which one to build on.",
+    "lifeDirection": "Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
+    "lens": {
+      "balanced": "You stay in the hard stretch long enough to get better at it.",
+      "under": "You freeze when the fight starts and treat the circumstance as the whole cause.",
+      "over": "You keep conflict close because it proves you can survive. Calm starts to feel like a loss."
+    },
+    "archetype": "The Humiliated",
+    "coreShadow": "A defeat that annihilates one's integrity. It is the 'win at all costs' mentality that leads to dishonorable actions, or conversely, the complete surrender that allows one to be walked over and humiliated.",
+    "worldview": "I must not lose this fight, even if I have to destroy my opponent and myself in the process. OR: This fight is lost, and I will accept any shameful terms just to make the pain stop. My dignity is a fair price to end this conflict.",
+    "inTheLight": "The Humiliated finds the strength to become The Pragmatist. This is the wisdom to recognize a no-win situation and the courage to strategically retreat. It is understanding that not every battle must be fought, and that preserving one's energy and integrity is a victory in itself.",
+    "lightName": "The Pragmatist",
+    "prompts": [
+      "Describe a conflict you \"won\" but felt bad about afterward because of the tactics you used.",
+      "Recall a time you surrendered your integrity or self-respect just to make a painful confrontation stop.",
+      "What is one \"battle\" you are currently fighting that you could choose to walk away from?"
+    ],
+    "keywords": [
+      "chaos addiction",
+      "instability",
+      "irresponsibility",
+      "fear of discipline"
+    ],
+    "surfaceTruth": "I explore diverse intellectual territories and remain open to new perspectives.",
+    "analog": {
+      "title": "Mental Disruptor",
+      "corePattern": "Challenging beliefs. You question everything mentally.",
+      "shadowExpression": "Contrarian for its own sake. Tearing down without building up.",
+      "evolvedExpression": "Strategic intellectual disruptor. Questions to improve, not destroy.",
+      "relationships": "You challenge partners' thinking. They grow or feel attacked.",
+      "career": "Debate, critique, intellectual challenge roles, innovation.",
+      "lifeLesson": "Not every belief needs challenging. Some things can just be.",
+      "practice": "Accept someone's viewpoint without questioning it for one week.",
+      "mantra": "I am mental disruptor."
+    }
+  },
+  "6♠": {
+    "code": "6♠",
+    "slug": "6-of-spades",
+    "label": "Six of Spades",
+    "suit": "spades",
+    "rank": "6",
+    "title": "The Responsible Mind",
+    "coreIdentity": "You use what you have already walked through without requiring anyone else to be in pain for it to count. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
+    "gifts": [
+      "Natural ability to help others see truth",
+      "Responsibility toward honest guidance",
+      "Clear thinking and balanced perspective",
+      "Talent for helping others process difficulty"
+    ],
+    "shadow": "You take responsibility for other people seeing it your way. Guidance crowds out their own work.",
+    "lifeDirection": "Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
+    "lens": {
+      "balanced": "You use what you have already walked through without requiring anyone else to be in pain for it to count.",
+      "under": "You tend other people's damage and skip your own. Service is how you avoid the wound.",
+      "over": "You need someone to be struggling so your help has a job. Care starts to depend on their not-being-well."
+    },
+    "archetype": "The Ghost",
+    "coreShadow": "Physically moving on from a trauma but remaining emotionally and mentally chained to it. This archetype is haunted by the past, unable to ever feel truly safe or present.",
+    "worldview": "I may have left that place, but it has not left me. I am a ghost in my own life, just passing through. I cannot connect to the present because the past is always right behind me, waiting to happen again.",
+    "inTheLight": "The Ghost begins the long journey toward healing and becomes The Traveler. This represents a rite of passage. It is the slow, arduous, but hopeful journey away from a great sorrow. It is the conscious choice to move towards a better future, even while still carrying the scars of the past.",
+    "lightName": "The Traveler",
+    "prompts": [
+      "What past event still haunts you and prevents you from feeling safe in the present?",
+      "When you move to a new stage of life, do you bring \"ghosts\" of old fears and traumas with you?",
+      "What is one small ritual you could perform to consciously honor a past difficulty and then give yourself permission to take a step forward?"
+    ],
+    "keywords": [
+      "martyrdom",
+      "over-responsibility",
+      "burnout from service",
+      "guilt-fueled healing"
+    ],
+    "surfaceTruth": "I seek balanced intellectual solutions that integrate different viewpoints harmoniously.",
+    "analog": {
+      "title": "Mental Server",
+      "corePattern": "Thinking for others' benefit. You solve problems for people.",
+      "shadowExpression": "Over-responsibility for others' thinking. Doing their mental work.",
+      "evolvedExpression": "Serves intellectually without creating dependence. Teaches to fish.",
+      "relationships": "You solve partners' problems. They need to solve their own.",
+      "career": "Consulting, advising, intellectual service work.",
+      "lifeLesson": "Let others do their own thinking sometimes.",
+      "practice": "Don't offer solutions when people share problems for one week.",
+      "mantra": "I am mental server."
+    }
+  },
+  "7♠": {
+    "code": "7♠",
+    "slug": "7-of-spades",
+    "label": "Seven of Spades",
+    "suit": "spades",
+    "rank": "7",
+    "title": "The Questioning Mind",
+    "coreIdentity": "You study the hard pattern until you can name it, then you do the next honest thing. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.",
+    "gifts": [
+      "Penetrating questions and inquiry",
+      "Ability to identify inconsistencies and flaws",
+      "Critical thinking and logical rigor",
+      "Natural skepticism that prevents deception"
+    ],
+    "shadow": "Questioning turns into a habit of taking things apart. Commitment looks naive, so nothing gets kept.",
+    "lifeDirection": "Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
+    "lens": {
+      "balanced": "You study the hard pattern until you can name it, then you do the next honest thing.",
+      "under": "You assume the worst reading and stop looking for the usable one.",
+      "over": "Difficulty becomes the worldview. Every clean fact gets filed as a setup."
+    },
+    "archetype": "The Thief",
+    "coreShadow": "Deception, subterfuge, and acting against one's own integrity. It is the belief that one must cheat, lie, or steal to get what they need, because the direct and honest path is blocked.",
+    "worldview": "The rules are for other people. To get what I want, I must be clever and operate in the shadows. What I can take without being caught is rightfully mine. A direct confrontation would be foolish.",
+    "inTheLight": "The Thief’s cunning becomes the strength of The Soloist. This archetype represents strategic independence and the ability to rely on one's own wits. It is the tactical brilliance of the lone wolf who forges their own path, unafraid to use unconventional methods to achieve a noble goal.",
+    "lightName": "The Soloist",
+    "prompts": [
+      "Recall a time you acted deceptively or took a shortcut because you believed the \"honest\" path was blocked for you.",
+      "In what situation do you feel you have to hide your true actions or intentions to get what you want?",
+      "What would a direct, honest approach to that same situation look like, even if it's scarier?"
+    ],
+    "keywords": [
+      "isolation",
+      "excessive skepticism",
+      "distrust in spirit",
+      "intellectualized avoidance"
+    ],
+    "surfaceTruth": "I apply careful critical thinking to avoid errors and maintain intellectual integrity.",
+    "analog": {
+      "title": "Philosophical Mind",
+      "corePattern": "Deep thinking. You seek truth and understanding.",
+      "shadowExpression": "Lost in philosophy. Understanding without application. Perpetual seeker.",
+      "evolvedExpression": "Wisdom seeker who applies insights. Philosophy becomes practice.",
+      "relationships": "Need deep thinkers. Surface conversation isn't enough.",
+      "career": "Philosophy, research, deep analytical work, wisdom traditions.",
+      "lifeLesson": "Seeking is endless. At some point, you must apply what you know.",
+      "practice": "Stop researching and start doing with what you already know.",
+      "mantra": "I am philosophical mind."
+    }
+  },
+  "8♠": {
+    "code": "8♠",
+    "slug": "8-of-spades",
+    "label": "Eight of Spades",
+    "suit": "spades",
+    "rank": "8",
+    "title": "The Powerful Mind",
+    "coreIdentity": "You take the hard lead and you stay with the work after the call is made. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
+    "gifts": [
+      "Strategic and powerful thinking",
+      "Ability to win arguments through logic",
+      "Strong conviction and mental clarity",
+      "Talent for directing others' thinking"
+    ],
+    "shadow": "The stronger argument wins the room and empties it. People stop bringing you anything they cannot defend.",
+    "lifeDirection": "Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
+    "lens": {
+      "balanced": "You take the hard lead and you stay with the work after the call is made.",
+      "under": "You step off the hook and resent the people who picked it up. Power unused still costs you.",
+      "over": "You run the room through force of mind. People comply. They do not bring you their real information."
+    },
+    "archetype": "The Victim",
+    "coreShadow": "The paralyzing belief that one is completely trapped by external forces. It is the total relinquishment of personal power and responsibility, finding a strange comfort in being helpless.",
+    "worldview": "There is nothing I can do. My hands are tied. My situation is impossible. I am a prisoner of my fate, and my only choice is how I suffer it. It is not my fault, so it is not my responsibility to fix it.",
+    "inTheLight": "The Victim experiences a profound shift and becomes The Awakened. This is the powerful realization that one's prison is at least partially self-imposed. It is the first, crucial step toward reclaiming agency by understanding that even if you can't control your circumstances, you can always control your response.",
+    "lightName": "The Awakened",
+    "prompts": [
+      "Describe a situation where you feel completely powerless. List all the reasons you believe you are trapped.",
+      "Now, challenge that list. What is one small aspect of that situation that you *do* have control over? (Even if it’s just your attitude).",
+      "Finish this sentence: \"If I were not the victim in this situation, I would...\""
+    ],
+    "keywords": [
+      "power struggles",
+      "control addiction",
+      "burnout",
+      "resistance to surrender"
+    ],
+    "surfaceTruth": "I explore intellectual depths to understand root causes and fundamental principles.",
+    "analog": {
+      "title": "Mental Mastery",
+      "corePattern": "Powerful thinking. You master subjects completely.",
+      "shadowExpression": "Know-it-all. Using knowledge as power over others.",
+      "evolvedExpression": "Expert who empowers. Mastery shared, not hoarded.",
+      "relationships": "Your intelligence can intimidate. Use it to lift, not dominate.",
+      "career": "Expertise roles, authority positions requiring deep knowledge.",
+      "lifeLesson": "Knowledge is power when shared, not when hoarded.",
+      "practice": "Admit when you don't know something. Say 'I don't know' freely.",
+      "mantra": "I am mental mastery."
+    }
+  },
+  "9♠": {
+    "code": "9♠",
+    "slug": "9-of-spades",
+    "label": "Nine of Spades",
+    "suit": "spades",
+    "rank": "9",
+    "title": "The Idealistic Mind",
+    "coreIdentity": "You complete the hard stretch and put the lesson down. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
+    "gifts": [
+      "Visionary thinking and universal perspective",
+      "Ability to see highest potential truth",
+      "Idealistic principles and ethics",
+      "Natural inspiration toward greater good"
+    ],
+    "shadow": "The ideal stays cleaner than the implementation. Vision without a next action teaches people not to wait.",
+    "lifeDirection": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
+    "lens": {
+      "balanced": "You complete the hard stretch and put the lesson down.",
+      "under": "You will not close the cycle. The ending sits on the desk because finishing would mean starting without it.",
+      "over": "You force the ending before the work is done. Closure becomes a way not to stay."
+    },
+    "archetype": "The Night-Hag",
+    "coreShadow": "The dark night of the soul; all-consuming anxiety, guilt, and despair. This archetype is tormented by their own mind, endlessly replaying worst-case scenarios and living in a state of mental anguish.",
+    "worldview": "My mind is my torture chamber. Everything is wrong, and it is all my fault. There is no hope, no light, only this endless cycle of fear and regret. The worst is yet to come.",
+    "inTheLight": "The Night-Hag endures the crucible and emerges as The Phoenix. Having faced their absolute deepest fears and survived, they are reborn with immense strength, compassion, and resilience. They understand that the dawn always follows the darkest night, and they are no longer afraid of the dark.",
+    "lightName": "The Phoenix",
+    "prompts": [
+      "What is the worst-case scenario that plays on a loop in your mind late at night?",
+      "Write down your greatest current fear. What is the evidence for it, and what is the evidence against it?",
+      "How can you introduce a small moment of peace or beauty into your day to counteract a feeling of despair?"
+    ],
+    "keywords": [
+      "despair",
+      "overwhelm",
+      "spiritual detachment",
+      "hopelessness"
+    ],
+    "surfaceTruth": "I naturally recognize patterns and connections others miss, synthesizing complex information.",
+    "analog": {
+      "title": "Universal Mind",
+      "corePattern": "Big picture thinking. You see patterns across everything.",
+      "shadowExpression": "Lost in abstraction. Can't focus on specifics. Too high level.",
+      "evolvedExpression": "Connects universal patterns to practical application. Macro and micro.",
+      "relationships": "You think about everything. Sometimes intimates need presence, not analysis.",
+      "career": "Systems thinking, global strategy, pattern recognition at scale.",
+      "lifeLesson": "Not everything needs to connect to everything else.",
+      "practice": "Focus on one small specific thing for one week. No big picture.",
+      "mantra": "I am universal mind."
+    }
+  },
+  "10♠": {
+    "code": "10♠",
+    "slug": "10-of-spades",
+    "label": "Ten of Spades",
+    "suit": "spades",
+    "rank": "10",
+    "title": "The Completed Mind",
+    "coreIdentity": "You do the difficult curriculum in front of you without adding the ones that are not yours. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
+    "gifts": [
+      "Deep wisdom and mental integration",
+      "Clarity and peace about beliefs",
+      "Ability to radiate confidence about truth",
+      "Natural authority and master perspective"
+    ],
+    "shadow": "You treat the current map as finished. Peace arrives; revision does not.",
+    "lifeDirection": "Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
+    "lens": {
+      "balanced": "You do the difficult curriculum in front of you without adding the ones that are not yours.",
+      "under": "You pick up everyone's hard piece and call it duty. The load is heavier than the job required.",
+      "over": "You raise the standard until no one, including you, can meet it. Relentlessness replaces judgment."
+    },
+    "archetype": "The Ruined",
+    "coreShadow": "The dramatic finality of rock bottom. It is the ultimate betrayal, the final stab in the back, the complete and utter destruction of a situation with no hope of recovery.",
+    "worldview": "It is over. Everything has been destroyed. There is nothing left to salvage. This is not a chapter ending; this is the end of the entire book.",
+    "inTheLight": "The Ruined accepts the ending and becomes The Blank Slate. This is the painful liberation that comes from having nothing left to lose. It is the absolute surrender that clears the ground completely, allowing for a totally new and unforeseen path to begin. It is the freedom of zero.",
+    "lightName": "The Blank Slate",
+    "prompts": [
+      "Describe a time in your life that felt like a \"rock bottom\" ending.",
+      "What new beginning eventually grew out of that ending, which you couldn't have predicted at the time?",
+      "If you are facing an ending now, what is the one thing you are now free from?"
+    ],
+    "keywords": [
+      "fear of endings",
+      "resistance to rebirth",
+      "pressure to transform",
+      "exhaustion cycles"
+    ],
+    "surfaceTruth": "I build comprehensive intellectual systems that explain complex realities coherently.",
+    "analog": {
+      "title": "Mental Completion",
+      "corePattern": "Completing thought systems. You think things through to the end.",
+      "shadowExpression": "Mental perfectionism. Can't release ideas that aren't perfect.",
+      "evolvedExpression": "Completes thinking without perfectionism. Good enough is okay.",
+      "relationships": "You think relationships through, sometimes over-processing.",
+      "career": "Research completion, final analysis, intellectual closure work.",
+      "lifeLesson": "Done thinking is better than perfect thinking.",
+      "practice": "Stop thinking about something at 80% understanding. Let it be incomplete.",
+      "mantra": "I am mental completion."
+    }
+  },
+  "J♠": {
+    "code": "J♠",
+    "slug": "jack-of-spades",
+    "label": "Jack of Spades",
+    "suit": "spades",
+    "rank": "J",
+    "title": "The Messenger of Truth",
+    "coreIdentity": "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
+    "gifts": [
+      "Courage to speak difficult truths",
+      "Ability to inspire others toward honesty",
+      "Gift for bringing necessary perspective",
+      "Talent for shifting how people think"
+    ],
+    "shadow": "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
+    "lifeDirection": "Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
+    "lens": {
+      "balanced": "You name what is actually happening and you remain after you have said it.",
+      "under": "You say the true thing without staying for what it does to the room.",
+      "over": "Honesty becomes a ranking system. People hear the cut before they hear the fact."
+    },
+    "archetype": "The Nihilist",
+    "coreShadow": "The cynical and destructive use of a sharp intellect. Having glimpsed a harsh truth about the world, this archetype believes that nothing matters and uses their insight to tear down the hopes and efforts of others.",
+    "worldview": "Everything is meaningless. Hope is an illusion for fools. I am superior because I see this futility, and I will prove it to you by dismantling everything you hold dear.",
+    "inTheLight": "The Nihilist's sharp mind finds purpose and becomes The Investigator. They use their incisive intellect to cut through lies, expose corruption, and reveal hidden truths. They are a powerful and fearless agent for uncovering what is real, no matter how uncomfortable.",
+    "lightName": "The Investigator",
+    "prompts": [
+      "What belief or institution do you hold the most cynicism towards? Why?",
+      "When was the last time you shot down someone's hopeful idea? What was your motivation?",
+      "Instead of just pointing out a flaw, what is one small, constructive suggestion you could offer to a problem you see in the world?"
+    ],
+    "keywords": [
+      "spiritual immaturity",
+      "misdirected effort",
+      "impulsiveness in healing",
+      "ego resistance"
+    ],
+    "surfaceTruth": "I challenge intellectual conventions and question established thinking patterns.",
+    "analog": {
+      "title": "Curious Mind",
+      "corePattern": "Learning always. You're the eternal intellectual student.",
+      "shadowExpression": "Perpetual beginner. Never claiming expertise. Impostor syndrome.",
+      "evolvedExpression": "Learns continuously while sharing knowledge. Beginner's mind with skill.",
+      "relationships": "You bring intellectual curiosity. Endless questions about everything.",
+      "career": "Education, research, fields rewarding continuous learning.",
+      "lifeLesson": "You know more than you think. Step into intellectual authority.",
+      "practice": "Teach something as an expert, not a student.",
+      "mantra": "I am curious mind."
+    }
+  },
+  "Q♠": {
+    "code": "Q♠",
+    "slug": "queen-of-spades",
+    "label": "Queen of Spades",
+    "suit": "spades",
+    "rank": "Q",
+    "title": "The Wise Guide",
+    "coreIdentity": "You tell the necessary truth at a volume the other person can use. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
+    "gifts": [
+      "Deep wisdom and understanding",
+      "Ability to hold space for others' exploration",
+      "Natural mentoring and guidance",
+      "Talent for helping others discover their own truth"
+    ],
+    "shadow": "You steer people toward your conclusion and call it guidance. Their own thinking does not get practiced.",
+    "lifeDirection": "Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
+    "lens": {
+      "balanced": "You tell the necessary truth at a volume the other person can use.",
+      "under": "You know the true read and let someone else's version stand. Peace is purchased with your silence.",
+      "over": "You hold the fact back so you keep the advantage. Clarity becomes a private asset."
+    },
+    "archetype": "The Ice Queen",
+    "coreShadow": "The ruthless pragmatist whose heart has been frozen by past sorrow. She wields truth and boundaries like weapons, expecting the worst from humanity and offering no compassion.",
+    "worldview": "I have seen the truth of the world, and it is harsh. I have cut away my own sentimentality to survive, and I have no time for yours. I will give you the cold, hard truth because it is the only thing of value.",
+    "inTheLight": "The Ice Queen's coldness becomes the clarifying wisdom of The Wise Woman. She cannot be deceived, manipulated, or intimidated. Her wisdom, born from surviving immense hardship, allows her to offer radically honest counsel and the freedom that comes from cutting away all illusions.",
+    "lightName": "The Wise Woman",
+    "prompts": [
+      "Describe a time you cut off your emotions to make a difficult decision.",
+      "In what situations do you find it difficult to show compassion for the struggles of others?",
+      "What is one personal boundary you have that is absolutely non-negotiable? Why is it so important to you?"
+    ],
+    "keywords": [
+      "emotional detachment",
+      "self-sacrificial patterns",
+      "intuitive confusion",
+      "control through care"
+    ],
+    "surfaceTruth": "I apply natural analytical abilities to solve complex problems others can't resolve.",
+    "analog": {
+      "title": "Internal Thinker",
+      "corePattern": "Private intellectual mastery. You think deeply, alone.",
+      "shadowExpression": "Intellectual isolation. Won't share your thoughts with anyone.",
+      "evolvedExpression": "Private thinker who shares when ready. Solitary but not isolated.",
+      "relationships": "You need time alone to think. Partners must respect mental space.",
+      "career": "Independent research, writing, solitary intellectual work.",
+      "lifeLesson": "Some thoughts are meant to be shared.",
+      "practice": "Share your thinking process publicly before conclusions are final.",
+      "mantra": "I am internal thinker."
+    }
+  },
+  "K♠": {
+    "code": "K♠",
+    "slug": "king-of-spades",
+    "label": "King of Spades",
+    "suit": "spades",
+    "rank": "K",
+    "title": "The Master of Thought",
+    "coreIdentity": "You make the hard call without pretending you have no interior. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
+    "gifts": [
+      "Clear thinking and intellectual command",
+      "Natural authority and decisiveness",
+      "Ability to direct complex thinking",
+      "Confidence that inspires others' confidence"
+    ],
+    "shadow": "You treat your perspective as the standard. People comply with the authority and stop testing the thought.",
+    "lifeDirection": "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
+    "lens": {
+      "balanced": "You make the hard call without pretending you have no interior.",
+      "under": "You stay in the mind and out of the feeling. Command is easier when nothing in you can be reached.",
+      "over": "Feeling is treated as a leak. People fall in line and stop bringing you anything human."
+    },
+    "archetype": "The Tyrant",
+    "coreShadow": "The absolute authority who wields immense power without compassion or morality. He is the judge, jury, and executioner, completely detached from the human cost of his \"necessary\" decisions.",
+    "worldview": "My judgment is final. My authority is absolute. For the greater good to be served, hard decisions must be made, and sentiment cannot be a factor. The mission is all that matters.",
+    "inTheLight": "The Tyrant's authority is tempered with integrity, becoming The Sovereign. He is the master of truth and discipline. He is the ethical surgeon, the just judge, the leader who makes the toughest calls with unwavering clarity and a profound sense of responsibility for the power he holds.",
+    "lightName": "The Sovereign",
+    "prompts": [
+      "Recall a time you made a decision based on cold logic, completely dismissing the emotional impact on others.",
+      "In what area of your life do you act as the ultimate authority, where your word is final?",
+      "How could you invite feedback on a decision you are about to make, showing that you value other perspectives even if the final choice is yours?"
+    ],
+    "keywords": [
+      "spiritual arrogance",
+      "rigidity",
+      "control dominance",
+      "resistance to vulnerability"
+    ],
+    "surfaceTruth": "I provide intellectual leadership through strategic thinking and clear analysis.",
+    "analog": {
+      "title": "Intellectual Authority",
+      "corePattern": "Leadership through thinking. You lead with ideas.",
+      "shadowExpression": "Intellectual tyranny. My ideas are the only valid ones.",
+      "evolvedExpression": "Thought leader who empowers other thinkers. Authority without domination.",
+      "relationships": "You lead intellectually. Partners must respect your mental authority.",
+      "career": "Academic leadership, think tank direction, intellectual authority roles.",
+      "lifeLesson": "True intellectual authority invites dialogue, doesn't shut it down.",
+      "practice": "Listen to opposing viewpoints without trying to correct them.",
+      "mantra": "I am intellectual authority."
+    }
+  }
+}

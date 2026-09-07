@@ -25,6 +25,7 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - Calculator + $47 CTA: `components/seo/BirthCardCalculator.tsx`, `components/seo/DeepDiveCta.tsx`, `components/checkout/DeepDiveHostedCheckout.tsx`
 - Checkout session: `app/checkout/[offer]/session/route.ts`; success page `app/checkout/success/page.tsx`; product data `lib/products.ts`, `lib/deep-dive.ts`
 - Funnel events: `lib/analytics.ts` → Cloudflare Analytics Engine dataset `cardblueprints_funnel` (`scripts/growth-report.sh`)
+- Card copy source of truth: `lib/card-bible.json` (one merged record per card from Cass's sources; rebuilt by `~/cardblueprints-ops/reference/build-card-bible.py`), accessor `lib/card-bible.ts`; shadow layer `lib/shadow-deck.json` + `components/seo/ShadowLayer.tsx` (rollout list `SHADOW_LAYER_CARDS`)
 - SEO pages: `app/**/page.tsx`, shell `components/seo/SeoShell.tsx`; OG images `scripts/generate_page_og_images.py`
 - Worker for /born-on and /compatibility: `~/cardblueprints-content/ops/seo-multi-agent/wave3-impl/cardology-unlock-bundle/` (not this repo)
 - Bonus Deep Dive PDFs: R2 `cardblueprints-ebooks/deep-dive/`, uploader `scripts/upload-deep-dive-card-pdfs.sh`
