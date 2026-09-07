@@ -1,0 +1,251 @@
+{
+  "kind": "wave_slice2",
+  "job_submitted": true,
+  "job_id": "projects/796629394796/locations/global/batchPredictionJobs/4697945042088624128",
+  "display_name": "cardology-wp3-enrich-20260906T232142Z",
+  "job_state_after_90s": "JOB_STATE_QUEUED",
+  "people_enriched": 3210,
+  "unique_wave_ready": 2894,
+  "unique_missing": 1666,
+  "slice_limit": 1079,
+  "slice_rows": 1079,
+  "held_for_later_slices": 587,
+  "hole_order": [
+    "nfl_hof",
+    "tonys",
+    "astronauts",
+    "kennedy_center_honors",
+    "olympics_summer",
+    "emmys",
+    "oscars",
+    "senators",
+    "pulitzer_fiction",
+    "grammys_aoty",
+    "time_poty",
+    "olympics_winter",
+    "house_chairs",
+    "cabinet",
+    "rock_hall"
+  ],
+  "by_pack": {
+    "senators": {
+      "path": "pipeline/data/senators/people.jsonl",
+      "kept_pages": 99,
+      "ready": 99,
+      "already_enriched": 5,
+      "missing": 94,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "cabinet": {
+      "path": "pipeline/data/cabinet/people.jsonl",
+      "kept_pages": 16,
+      "ready": 16,
+      "already_enriched": 6,
+      "missing": 10,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "olympics_summer": {
+      "path": "pipeline/data/olympics/people.jsonl",
+      "kept_pages": 541,
+      "ready": 541,
+      "already_enriched": 359,
+      "missing": 181,
+      "excluded": 1,
+      "not_ready": 0
+    },
+    "olympics_winter": {
+      "path": "pipeline/data/olympics/winter/people.jsonl",
+      "kept_pages": 30,
+      "ready": 30,
+      "already_enriched": 0,
+      "missing": 30,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "astronauts": {
+      "path": "pipeline/data/astronauts/people.jsonl",
+      "kept_pages": 221,
+      "ready": 221,
+      "already_enriched": 1,
+      "missing": 220,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "oscars": {
+      "path": "pipeline/data/oscars/people.jsonl",
+      "kept_pages": 166,
+      "ready": 166,
+      "already_enriched": 34,
+      "missing": 132,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "emmys": {
+      "path": "pipeline/data/emmys/people.jsonl",
+      "kept_pages": 159,
+      "ready": 159,
+      "already_enriched": 17,
+      "missing": 142,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "tonys": {
+      "path": "pipeline/data/tonys/people.jsonl",
+      "kept_pages": 256,
+      "ready": 256,
+      "already_enriched": 11,
+      "missing": 245,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "nfl_hof": {
+      "path": "pipeline/data/nfl_hof/people.jsonl",
+      "kept_pages": 308,
+      "ready": 308,
+      "already_enriched": 1,
+      "missing": 307,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "grammys_aoty": {
+      "path": "pipeline/data/grammys/people.jsonl",
+      "kept_pages": 89,
+      "ready": 89,
+      "already_enriched": 39,
+      "missing": 50,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "rock_hall": {
+      "path": "pipeline/data/rock_hall/people.jsonl",
+      "kept_pages": 753,
+      "ready": 753,
+      "already_enriched": 752,
+      "missing": 0,
+      "excluded": 1,
+      "not_ready": 0
+    },
+    "pulitzer_fiction": {
+      "path": "pipeline/data/pulitzer_fiction/people.jsonl",
+      "kept_pages": 90,
+      "ready": 90,
+      "already_enriched": 7,
+      "missing": 83,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "house_chairs": {
+      "path": "pipeline/data/house_chairs/people.jsonl",
+      "kept_pages": 29,
+      "ready": 29,
+      "already_enriched": 0,
+      "missing": 29,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "kennedy_center_honors": {
+      "path": "pipeline/data/kennedy_center_honors/people.jsonl",
+      "kept_pages": 259,
+      "ready": 259,
+      "already_enriched": 76,
+      "missing": 183,
+      "excluded": 0,
+      "not_ready": 0
+    },
+    "time_poty": {
+      "path": "pipeline/data/time_poty/people.jsonl",
+      "kept_pages": 74,
+      "ready": 74,
+      "already_enriched": 33,
+      "missing": 41,
+      "excluded": 0,
+      "not_ready": 0
+    }
+  },
+  "by_pack_taken": {
+    "nfl_hof": 307,
+    "tonys": 245,
+    "astronauts": 220,
+    "kennedy_center_honors": 168,
+    "olympics_summer": 139,
+    "emmys": 0,
+    "oscars": 0,
+    "senators": 0,
+    "pulitzer_fiction": 0,
+    "grammys_aoty": 0,
+    "time_poty": 0,
+    "olympics_winter": 0,
+    "house_chairs": 0,
+    "cabinet": 0,
+    "rock_hall": 0
+  },
+  "dropped_no_source": 0,
+  "dropped_tpu_empties": [
+    "Q228808",
+    "Q3133396"
+  ],
+  "dropped_excluded": 2,
+  "people_out": "enrich/artifacts/wave_slice2_people.jsonl",
+  "batch_out": "enrich/artifacts/vertex_wave_slice2_batch.jsonl",
+  "qids_out": "enrich/artifacts/wave_slice2_qids.jsonl",
+  "target_usd_band": 20.0,
+  "usd_batch_thinking_low": 9.1903,
+  "usd_batch_with_thinking_upper": 16.9591,
+  "within_target": true,
+  "stop_do_not_submit": false,
+  "stop_reason": null,
+  "contract": {
+    "evidence": "near-verbatim source_text containment",
+    "meta_description": "\u2264145 (hard 155)",
+    "temperature": 0.0,
+    "thinkingLevel": "LOW"
+  },
+  "do_not": [
+    "submit remaining missing rows this job",
+    "merge results",
+    "deploy",
+    "invent bios",
+    "start slice 3 without asking",
+    "resubmit slice-1 TPU empties"
+  ],
+  "job_state": "JOB_STATE_SUCCEEDED",
+  "people_enriched_before": 3210,
+  "people_enriched_after": 4285,
+  "accepted_this_run": 1075,
+  "rejected_this_run": 4,
+  "vertex_successful_count": 1079,
+  "vertex_failed_count": 0,
+  "dropped_this_run": [
+    {
+      "qid": "Q52440",
+      "slug": "ll-cool-j",
+      "name": "LL Cool J",
+      "pack": "kennedy_center_honors",
+      "reason": "card_in_life has 119 words (need 120–180)"
+    },
+    {
+      "qid": "Q501697",
+      "slug": "j-mike-lounge",
+      "name": "J. Mike Lounge",
+      "pack": "astronauts",
+      "reason": "prediction JSON is not an object"
+    },
+    {
+      "qid": "Q348011",
+      "slug": "joe-montana",
+      "name": "Joe Montana",
+      "pack": "nfl_hof",
+      "reason": "card_in_life has 186 words (need 120–180)"
+    },
+    {
+      "qid": "Q18778",
+      "slug": "timea-nagy",
+      "name": "Tímea Nagy",
+      "pack": "olympics_summer",
+      "reason": "card_in_life has 119 words (need 120–180)"
+    }
+  ],
+  "containment_rejects": 0
+}
