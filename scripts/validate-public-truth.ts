@@ -208,7 +208,7 @@ const productMarketingFiles = [
   "components/seo/BirthCardCalculator.tsx",
   "components/analytics/AnalyticsCapture.tsx",
   "app/checkout/[offer]/page.tsx",
-  "app/products/birth-card-deep-dive/page.tsx",
+  "app/products/blueprint-breakdown-video/page.tsx",
   "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
@@ -293,7 +293,7 @@ assert.doesNotMatch(
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/birth-card-deep-dive"\)/,
+  /permanentRedirect\("\/products\/blueprint-breakdown-video"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -303,7 +303,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["'](\/readings)["']\s*:\s*["']\/products\/birth-card-deep-dive["']/,
+  /["'](\/readings)["']\s*:\s*["']\/products\/blueprint-breakdown-video["']/,
 );
 assert.match(
   middlewareText,
@@ -345,7 +345,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/birth-card-deep-dive?utm_source=legacy",
+      "https://cardblueprints.com/products/blueprint-breakdown-video?utm_source=legacy",
   },
 );
 assert.deepEqual(
@@ -389,7 +389,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/birth-card-deep-dive?a=1",
+    location: "https://cardblueprints.com/products/blueprint-breakdown-video?a=1",
   },
 );
 assert.deepEqual(
@@ -401,10 +401,18 @@ assert.deepEqual(
 );
 assert.equal(
   middlewareResult(
-    "https://cardblueprints.com/products/birth-card-deep-dive",
+    "https://cardblueprints.com/products/blueprint-breakdown-video",
     "cardblueprints.com",
   ).status,
   200,
+);
+// The $9 Deep Dive URL 301s to the $47 Blueprint Breakdown Video (2026-09-07).
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/products/birth-card-deep-dive",
+    "cardblueprints.com",
+  ),
+  { status: 301, location: "https://cardblueprints.com/products/blueprint-breakdown-video" },
 );
 // The retired catalog 301s to the one live product.
 assert.equal(

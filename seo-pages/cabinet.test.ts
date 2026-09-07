@@ -72,7 +72,7 @@ test("person pages use /cabinet URLs, UTM, sources, and leave /birth-card person
   expect(vance).toContain("Wikipedia CC BY-SA 4.0");
   expect(vance).toContain("whitehouse.gov/administration/the-cabinet");
   expect(vance).toContain(cabinetCheckoutHref("jd-vance").replace("&", "&amp;"));
-  expect(vance).toContain("Get the $9 Deep Dive");
+  expect(vance).toContain("Get the $47 Blueprint Breakdown");
   expect(vance).not.toContain("/birth-card/jd-vance");
   expect(vance).toContain("/birth-card/");
   expect(vance).not.toContain('action="/create-checkout"');

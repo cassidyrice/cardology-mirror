@@ -59,7 +59,7 @@ test("person pages use /astronauts URLs, UTM, sources, and leave /birth-card per
   expect(html).toContain("Wikipedia CC BY-SA 4.0");
   expect(html).toContain("NASA astronaut biography");
   expect(html).toContain(astronautCheckoutHref(sample.slug).replace("&", "&amp;"));
-  expect(html).toContain("Get the $9 Deep Dive");
+  expect(html).toContain("Get the $47 Blueprint Breakdown");
   expect(html).not.toContain(`/birth-card/${sample.slug}`);
   expect(html).toContain("/birth-card/");
   expect(html).not.toContain('action="/create-checkout"');

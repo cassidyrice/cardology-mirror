@@ -95,7 +95,7 @@ test("pages have 250+ words with dates and card meaning woven in", () => {
 test("Deep Dive CTA uses mlb UTM and does not add checkout code", () => {
   const braves = read("mlb/atlanta-braves/index.html");
   expect(braves).toContain("/checkout/deep-dive?utm_source=mlb&amp;utm_content=atlanta-braves");
-  expect(braves).toContain("$9 Birth Card Deep Dive");
+  expect(braves).toContain("$47 Blueprint Breakdown Video");
   expect(braves).not.toContain("data-checkout-stub");
   expect(braves).not.toContain("/create-checkout");
 

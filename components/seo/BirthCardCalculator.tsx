@@ -250,7 +250,7 @@ function BirthCardResultCard({
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
       <p className="mt-6 text-center font-serif text-xl text-brand-ink">
-        Prefer to read it yourself? The Deep Dive is seven pages. This is page 1.
+        The written Deep Dive comes free with the video. It is seven pages. This is page 1.
       </p>
       {!isJoker && (
         <DeepDiveSample
@@ -310,7 +310,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free sample of the card's written pattern, shown before the $9 CTA. */
+/** Free sample of the card's written pattern, shown before the $47 CTA. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

@@ -29,7 +29,7 @@ const STEP_LABEL: Record<string, string> = {
   calculator_started: "Calc started",
   calculator_completed: "Calc completed",
   sample_viewed: "Sample viewed",
-  offer_cta_clicked: "$9 CTA clicks",
+  offer_cta_clicked: "$47 CTA clicks",
   checkout_started: "Checkouts",
   purchase_completed: "Paid",
   reading_cta_clicked: "Reading CTA",
@@ -40,7 +40,7 @@ const STEP_LABEL: Record<string, string> = {
 const FUNNEL: { key: string; label: string }[] = [
   { key: "calculator_completed", label: "Calculator completed" },
   { key: "sample_viewed", label: "Saw page 1 sample" },
-  { key: "offer_cta_clicked", label: "Tapped $9" },
+  { key: "offer_cta_clicked", label: "Tapped $47" },
   { key: "checkout_started", label: "Reached Stripe" },
   { key: "purchase_completed", label: "Paid" },
 ];
@@ -136,8 +136,8 @@ export function LiveDashboard() {
               <Sparkline values={data.pulse.perMinute} color={C.gold} />
             </Tile>
             <Tile label="Calculator completed today" value={fmt(w(data, "today", "calculator_completed"))} sub={`yesterday ${fmt(w(data, "yesterday", "calculator_completed"))}`} accent={C.gold} />
-            <Tile label="$9 CTA taps today" value={fmt(w(data, "today", "offer_cta_clicked"))} sub={`${pct(w(data, "today", "offer_cta_clicked"), w(data, "today", "calculator_completed"))} of completions`} accent={C.ember} />
-            <Tile label="Deep Dive paid today" value={fmt(data.stripe.deepDive.today.complete)} sub={`$${(data.stripe.deepDive.today.revenueCents / 100).toFixed(0)} · ${fmt(data.stripe.deepDive.today.open + data.stripe.deepDive.today.expired)} unpaid sessions`} accent={C.ember} money />
+            <Tile label="$47 CTA taps today" value={fmt(w(data, "today", "offer_cta_clicked"))} sub={`${pct(w(data, "today", "offer_cta_clicked"), w(data, "today", "calculator_completed"))} of completions`} accent={C.ember} />
+            <Tile label="Breakdown paid today" value={fmt(data.stripe.deepDive.today.complete)} sub={`$${(data.stripe.deepDive.today.revenueCents / 100).toFixed(0)} · ${fmt(data.stripe.deepDive.today.open + data.stripe.deepDive.today.expired)} unpaid sessions`} accent={C.ember} money />
             <Tile label="Reading Day CTA taps today" value={fmt(w(data, "today", "reading_cta_clicked"))} sub={`7d ${fmt(w(data, "last7d", "reading_cta_clicked"))}`} accent={C.slate} />
             <Tile label="Reading Day slots paid" value={fmt(data.stripe.reading.paidTotal)} sub={`of 10 · today ${fmt(data.stripe.reading.today.complete)}`} accent={C.slate} money progress={Math.min(1, data.stripe.reading.paidTotal / 10)} />
           </section>
@@ -146,7 +146,7 @@ export function LiveDashboard() {
             <Panel title="Today's funnel" sub="each step as a share of calculator completions">
               <Funnel data={data} />
             </Panel>
-            <Panel title="Last 24 hours" sub="calculator completions and $9 taps per hour">
+            <Panel title="Last 24 hours" sub="calculator completions and $47 taps per hour">
               <Hourly buckets={data.hourly24} showTable={showTable} onToggle={() => setShowTable((s) => !s)} />
             </Panel>
           </section>
@@ -155,7 +155,7 @@ export function LiveDashboard() {
             <Panel title="Where completions happen" sub="last 36 h, by placement">
               <Bars data={data.placements.calculator} color={C.gold} />
             </Panel>
-            <Panel title="Where $9 taps happen" sub="last 36 h, by placement">
+            <Panel title="Where $47 taps happen" sub="last 36 h, by placement">
               <Bars data={data.placements.cta} color={C.ember} />
             </Panel>
             <Panel title="Traffic channel" sub="landings, last 36 h">
@@ -210,7 +210,7 @@ export function LiveDashboard() {
                     );
                   })}
                   <tr>
-                    <td>Deep Dive paid (Stripe)</td>
+                    <td>Blueprint Breakdown paid (Stripe)</td>
                     <td className="num">{fmt(data.stripe.deepDive.today.complete)}</td>
                     <td className="num">–</td>
                     <td className="num">{fmt(data.stripe.deepDive.last7d.complete)}</td>
@@ -314,7 +314,7 @@ function Hourly({ buckets, showTable, onToggle }: { buckets: HourBucket[]; showT
   const [hover, setHover] = useState<number | null>(null);
   const series = [
     { key: "calculator_completed", label: "Calc completed", color: C.gold },
-    { key: "offer_cta_clicked", label: "$9 taps", color: C.ember },
+    { key: "offer_cta_clicked", label: "$47 taps", color: C.ember },
   ];
   const W = 560, H = 180, padL = 30, padB = 22, padT = 8;
   const max = Math.max(1, ...buckets.map((b) => b.counts.calculator_completed ?? 0));
@@ -334,7 +334,7 @@ function Hourly({ buckets, showTable, onToggle }: { buckets: HourBucket[]; showT
         </table>
       ) : (
         <div className="lv-chart-wrap">
-          <svg viewBox={`0 0 ${W} ${H}`} className="lv-chart" role="img" aria-label="hourly calculator completions and $9 taps">
+          <svg viewBox={`0 0 ${W} ${H}`} className="lv-chart" role="img" aria-label="hourly calculator completions and $47 taps">
             {[0.5, 1].map((g) => (
               <g key={g}>
                 <line x1={padL} x2={W} y1={padT + (H - padB - padT) * (1 - g)} y2={padT + (H - padB - padT) * (1 - g)} stroke={C.line} />

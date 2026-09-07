@@ -82,7 +82,7 @@ describe("Homepage landing contract", () => {
     expect(reveal).toContain("Right now");
     expect(reveal).toContain("Read my card →");
     expect(reveal).toContain("Compare with someone →");
-    expect(reveal).toContain("Your card, written out. $9.");
+    expect(reveal).toContain("Your card, explained on video. $47.");
     expect(reveal).toContain("<DeepDiveSample");
     expect(reveal).toContain("<DeepDiveCta");
     expect(reveal).toContain("Explore →");
@@ -101,7 +101,7 @@ describe("Homepage landing contract", () => {
     expect(footer).toContain("/explore");
     expect(footer).toContain("Content Calendar (experiment)");
     expect(footer).toContain("/content-engine");
-    expect(footer).toContain("Deep Dive ($9)");
+    expect(footer).toContain("Blueprint Breakdown Video ($47)");
     expect(footer).not.toContain("Reading Day waitlist");
   });
 });

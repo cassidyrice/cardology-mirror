@@ -74,7 +74,7 @@ test("person pages use /governors URLs, UTM, sources, and leave /birth-card pers
   expect(newsom).toContain("Wikipedia CC BY-SA 4.0");
   expect(newsom).toContain("Ballotpedia");
   expect(newsom).toContain(governorCheckoutHref("gavin-newsom").replace("&", "&amp;"));
-  expect(newsom).toContain("Get the $9 Deep Dive");
+  expect(newsom).toContain("Get the $47 Blueprint Breakdown");
   expect(newsom).not.toContain("/birth-card/gavin-newsom");
   expect(newsom).toContain("/birth-card/");
   expect(newsom).not.toContain('action="/create-checkout"');

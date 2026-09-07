@@ -182,10 +182,10 @@ export default function CalculatorPage() {
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
         Optional paid writes after the free card:{" "}
-        <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
-          Birth Card Deep Dive — $9
+        <Link href="/products/blueprint-breakdown-video" className="text-gold underline underline-offset-4">
+          Blueprint Breakdown Video — $47
         </Link>{" "}
-        (7-page PDF + the Complete System Guide).
+        (5-minute video, plus the 7-page Deep Dive PDF and your Yearly Timing Map as bonuses).
         The free calculator never stores your birthday.
       </p>
 

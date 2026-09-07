@@ -6,7 +6,7 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - **This tree (`~/cardology-elroy-qa`) is the only deploy source.** Other `~/cardology-*` dirs are worktrees with unmerged work; never `git checkout` inside them, never deploy from them.
 - **Pushing to GitHub does not deploy.** Cloudflare Pages project `cardology-mirror` is direct-upload. Only `bun run pages:deploy` (= `scripts/deploy-production.sh`) deploys, from a clean tree, on `main`, after Cass says "deploy" / "ship" / "y".
 - **After every deploy run `bash scripts/record-deploy.sh`** so `ops/DEPLOY-SOURCE.md` and `scripts/verify-deploy-source.sh` name the live commit. `bash scripts/verify-deploy-source.sh` is the only trustworthy answer to "what is live" — the Cloudflare dashboard labels everything "main".
-- **One product for sale: the $9 Birth Card Deep Dive.** Stripe account **Card Blueprint** (`acct_1U1a1dChx1yAVyrs`) only. Never the Cassidy Rice / 52xseven account. Do not resurrect $13/$27/$17/membership CTAs. Fulfillment for past buyers stays intact.
+- **One product for sale: the $47 Blueprint Breakdown Video** (5-minute video; bonuses: the $9 Birth Card Deep Dive PDFs, instant, + the Yearly Timing Map). Internal slug/route stays `deep-dive`; price id lives in the Pages secret `STRIPE_PRICE_BLUEPRINT_BREAKDOWN`. The video + map are produced per buyer and emailed by hand within 2 business days — the intake email says who to record for. Stripe account **Card Blueprint** (`acct_1U1a1dChx1yAVyrs`) only. Never the Cassidy Rice / 52xseven account. Do not resurrect $13/$27/$17/membership CTAs. Fulfillment for past buyers stays intact.
 - **Never `ALLOW_DIRTY=1`.** Commit first.
 - Secrets live in `.env.local` and Cloudflare project secrets. Never print them, never commit them. **Never edit the Pages project's environment variables in the Cloudflare dashboard** (2026-09-04: one dashboard save blanked every secret value and took checkout down). Add or change a secret only with `npx wrangler pages secret put NAME --project-name cardology-mirror`, one at a time, then redeploy.
 
@@ -22,12 +22,12 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - Don't ask what to do next; propose the single next action.
 
 ## Map
-- Calculator + $9 CTA: `components/seo/BirthCardCalculator.tsx`, `components/seo/DeepDiveCta.tsx`, `components/checkout/DeepDiveHostedCheckout.tsx`
+- Calculator + $47 CTA: `components/seo/BirthCardCalculator.tsx`, `components/seo/DeepDiveCta.tsx`, `components/checkout/DeepDiveHostedCheckout.tsx`
 - Checkout session: `app/checkout/[offer]/session/route.ts`; success page `app/checkout/success/page.tsx`; product data `lib/products.ts`, `lib/deep-dive.ts`
 - Funnel events: `lib/analytics.ts` → Cloudflare Analytics Engine dataset `cardblueprints_funnel` (`scripts/growth-report.sh`)
 - SEO pages: `app/**/page.tsx`, shell `components/seo/SeoShell.tsx`; OG images `scripts/generate_page_og_images.py`
 - Worker for /born-on and /compatibility: `~/cardblueprints-content/ops/seo-multi-agent/wave3-impl/cardology-unlock-bundle/` (not this repo)
-- Deep Dive PDFs: R2 `cardblueprints-ebooks/deep-dive/`, uploader `scripts/upload-deep-dive-card-pdfs.sh`
+- Bonus Deep Dive PDFs: R2 `cardblueprints-ebooks/deep-dive/`, uploader `scripts/upload-deep-dive-card-pdfs.sh`
 
 ## Several agents at once (shared terminal)
 - **Claim before you edit.** Append `- [~] <date> <agent> · <task> · claimed` to `~/cardblueprints-ops/QUEUE.md` before touching a file. One agent in `~/cardology-elroy-qa` at a time; one agent in the Worker bundle at a time. The repo and the Worker are separate files, so one of each can run in parallel.

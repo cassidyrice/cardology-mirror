@@ -77,6 +77,7 @@ const OFFER_SLUGS = new Set([
   "analog-algorithm",
   "complete-card-blueprint",
   "birth-card-deep-dive",
+  "blueprint-breakdown-video",
   "deep-dive",
   "content-calendar-52",
   "video-single",

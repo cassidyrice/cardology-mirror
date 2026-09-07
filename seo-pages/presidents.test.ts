@@ -62,7 +62,7 @@ test("person page uses presidents URL, UTM, sources, and leaves /birth-card pers
   expect(html).toContain("Wikidata CC0");
   expect(html).toContain("Wikipedia CC BY-SA 4.0");
   expect(html).toContain(presidentCheckoutHref("abraham-lincoln").replace("&", "&amp;"));
-  expect(html).toContain("Get the $9 Deep Dive");
+  expect(html).toContain("Get the $47 Blueprint Breakdown");
   expect(html).not.toContain("/birth-card/abraham-lincoln");
   expect(html).toContain("/birth-card/");
   expect(html).not.toContain('action="/create-checkout"');

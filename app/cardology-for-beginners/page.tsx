@@ -69,9 +69,9 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the Birth Card Deep Dive ($9) writes your card's full pattern — a 7-page PDF plus the Complete System Guide.",
-    href: "/products/birth-card-deep-dive",
-    label: "Birth Card Deep Dive",
+    body: "If the free tools keep matching real life, the Blueprint Breakdown Video ($47) walks your card's full pattern through in 5 minutes — with the 7-page Deep Dive PDF and your Yearly Timing Map as bonuses.",
+    href: "/products/blueprint-breakdown-video",
+    label: "Blueprint Breakdown Video",
   },
 ];
 
@@ -231,14 +231,15 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Birth Card Deep Dive is a one-time $9 written report: your card&rsquo;s
-          7-page PDF plus the Complete System Guide — instant after checkout.
+          The Blueprint Breakdown Video is a one-time $47 purchase: a 5-minute video
+          about your card, plus your card&rsquo;s 7-page Deep Dive PDF, the Complete
+          System Guide, and your Yearly Timing Map as bonuses.
         </p>
         <Link
-          href="/products/birth-card-deep-dive"
+          href="/products/blueprint-breakdown-video"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get the Deep Dive &mdash; $9
+          Get the Blueprint Breakdown &mdash; $47
         </Link>
       </div>
 

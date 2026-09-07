@@ -180,9 +180,9 @@ export function renderWinterPage(
     </section>
 
     <section data-slot="cta">
-      <h2>Get the $9 Deep Dive</h2>
+      <h2>Get the $47 Blueprint Breakdown</h2>
       <p>
-        The Deep Dive is a written report for the reader’s own birthday.
+        The Blueprint Breakdown is a 5-minute video for the reader’s own birthday, with the written Deep Dive as a bonus.
         It is not a ${escapeHtml(person.sport)} brief on ${escapeHtml(person.name)}
         and it does not reuse ${escapeHtml(person.slug)} as a reading subject.
       </p>
@@ -190,7 +190,7 @@ export function renderWinterPage(
         <a class="cta"
            data-checkout-link="true"
            href="${escapeHtml(winterCheckoutHref(person.slug))}">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>

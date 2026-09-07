@@ -131,7 +131,7 @@ test("sample pages use /kennedy-center-honors URLs, UTM, sources, and verified D
     expect(html).toContain("Wikipedia CC BY-SA 4.0");
     expect(html).toContain("kennedy-center.org");
     expect(html).toContain(kennedyCenterCheckoutHref(slug).replace("&", "&amp;"));
-    expect(html).toContain("Get the $9 Deep Dive");
+    expect(html).toContain("Get the $47 Blueprint Breakdown");
     expect(html).not.toContain(`/birth-card/${slug}`);
     expect(html).toContain("/birth-card/");
     expect(html).not.toContain('action="/create-checkout"');

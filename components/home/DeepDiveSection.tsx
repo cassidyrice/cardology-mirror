@@ -21,9 +21,9 @@ export function DeepDiveSection() {
           className="mx-auto w-48 border border-brand-line shadow-[0_12px_40px_rgba(20,17,13,0.14)] lg:mx-0 lg:w-full"
         />
         <div>
-          <h2 className="type-h2">Your card, written out. $9.</h2>
+          <h2 className="type-h2">Your card, explained on video. $47.</h2>
           <p className="mt-4 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-            Seven pages on your card and the full System Guide. Read it in ten minutes, keep it forever.
+            A 5-minute video on your card, plus the 7-page Deep Dive, the full System Guide, and your Yearly Timing Map. Watch it, reread it, keep it forever.
           </p>
           <figure className="mt-6 max-w-[34em]">
             <blockquote className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
@@ -34,8 +34,8 @@ export function DeepDiveSection() {
             </figcaption>
           </figure>
           <p className="mt-6">
-            <LinkButton href="/products/birth-card-deep-dive" variant="accent">
-              Get the Deep Dive
+            <LinkButton href="/products/blueprint-breakdown-video" variant="accent">
+              Get the Blueprint Breakdown
             </LinkButton>
           </p>
         </div>

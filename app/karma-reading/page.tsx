@@ -73,8 +73,8 @@ export default function KarmaReadingWaitlistPage() {
           karma cards table
         </Link>
         , or take the{" "}
-        <Link href="/products/birth-card-deep-dive" className="underline underline-offset-4">
-          $9 Birth Card Deep Dive
+        <Link href="/products/blueprint-breakdown-video" className="underline underline-offset-4">
+          $47 Blueprint Breakdown Video
         </Link>
         .
       </p>

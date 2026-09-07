@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Birth Card Deep Dive, past digital purchases, and legacy orders.",
+    "Refund terms for the Blueprint Breakdown Video, past digital purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -38,25 +38,30 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $9 Birth Card Deep Dive. Refund
-            eligibility depends on whether the personalized report was delivered
+            Card Blueprints sells the $47 Blueprint Breakdown Video, with the
+            Birth Card Deep Dive and Yearly Timing Map as bonuses. Refund
+            eligibility depends on whether the personalized video was delivered
             and accessible. The digital-download policy applies only when an
             e-book sale is explicitly open.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Birth Card Deep Dive</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Blueprint Breakdown Video</h2>
           <div className="mt-3 space-y-3">
             <p>
-              The Birth Card Deep Dive is matched immediately to the birth date
-              entered at Stripe Checkout and delivered as signed download links
-              on the confirmation page and by email. Because it is a digital
-              file delivered instantly, a completed, downloadable order is
+              The Blueprint Breakdown Video and Yearly Timing Map are produced
+              for the birth date entered at Stripe Checkout and emailed within 2
+              business days. You can request a full refund at any time before the
+              video is delivered. The bonus Birth Card Deep Dive PDFs are matched
+              immediately to that birth date and delivered as signed download links
+              on the confirmation page and by email. Once the video has been
+              delivered and the bonus files are downloadable, the order is
               generally final.
             </p>
             <p>
-              If the download links do not work, the wrong card was delivered,
+              If the video does not arrive within 2 business days, the download
+              links do not work, the wrong card was delivered,
               the checkout birth date was entered incorrectly, or you were
               charged more than once for the same intended purchase, contact us.
               We will send the right files, restore access, or issue an appropriate
@@ -127,8 +132,8 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href="/products/birth-card-deep-dive" className="text-[#8e321f] underline underline-offset-4">
-            ← Back to the Birth Card Deep Dive
+          <Link href="/products/blueprint-breakdown-video" className="text-[#8e321f] underline underline-offset-4">
+            ← Back to the Blueprint Breakdown Video
           </Link>
         </div>
       </div>

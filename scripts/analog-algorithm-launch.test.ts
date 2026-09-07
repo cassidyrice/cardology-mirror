@@ -17,10 +17,10 @@ describe("The Analog Algorithm launch contract", () => {
   test("does not present the sales page as closed", () => {
     const middleware = readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
     expect(middleware).toContain(
-      '"/products/analog-algorithm": "/products/birth-card-deep-dive"',
+      '"/products/analog-algorithm": "/products/blueprint-breakdown-video"',
     );
     expect(middleware).toContain(
-      '"/checkout/analog-algorithm": "/products/birth-card-deep-dive"',
+      '"/checkout/analog-algorithm": "/products/blueprint-breakdown-video"',
     );
   });
 

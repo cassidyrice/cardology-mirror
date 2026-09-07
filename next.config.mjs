@@ -31,7 +31,7 @@ const nextConfig = {
       },
       {
         source: "/products",
-        destination: "/products/birth-card-deep-dive",
+        destination: "/products/blueprint-breakdown-video",
         statusCode: 301,
       },
       // Product name is "Content Calendar"; the route stayed /content-engine (2026-09-05).
@@ -48,7 +48,7 @@ const nextConfig = {
       // Marketing aliases (P0)
       {
         source: "/personal-card-blueprint",
-        destination: "/products/birth-card-deep-dive",
+        destination: "/products/blueprint-breakdown-video",
         statusCode: 301,
       },
       {

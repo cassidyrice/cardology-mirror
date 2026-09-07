@@ -60,7 +60,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "Birth Card Deep Dive — $9"],
+  ["Paid deepen", "Books, software, readings", "Blueprint Breakdown Video — $47"],
 ] as const;
 
 const tarotRows = [
@@ -73,7 +73,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $9 Birth Card Deep Dive is the longer written report, not a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $47 Blueprint Breakdown Video is the longer written report, not a prerequisite.",
   },
   {
     q: "What are Destiny Cards?",
@@ -254,8 +254,8 @@ export default function DestinyCardsPage() {
           Card Blueprints did not invent the deck-to-calendar idea. That lineage runs through Olney
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
-          What we own here is the published method, the free tools, and the written{" "}
-          <strong>Birth Card Deep Dive</strong>.
+          What we own here is the published method, the free tools, and the{" "}
+          <strong>Blueprint Breakdown Video</strong>.
         </p>
         <p className="prose-reading mt-3 text-mist">
           Full definition:{" "}
@@ -303,7 +303,7 @@ export default function DestinyCardsPage() {
             .
           </li>
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
-          <li>Optional deepen: the written Birth Card Deep Dive ($9).</li>
+          <li>Optional deepen: the Blueprint Breakdown Video ($47), with the written Deep Dive as a bonus.</li>
         </ol>
         <p className="prose-reading mt-3 text-mist">
           Example from the public method: January 15 resolves to the{" "}

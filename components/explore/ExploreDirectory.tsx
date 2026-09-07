@@ -65,7 +65,7 @@ const GROUPS: ExploreGroup[] = [
   {
     title: "Paid reports",
     links: [
-      { label: "Birth Card Deep Dive ($9)", href: "/products/birth-card-deep-dive" },
+      { label: "Blueprint Breakdown Video ($47)", href: "/products/blueprint-breakdown-video" },
       { label: "Content Calendar — experiment ($29)", href: "/content-engine" },
     ],
   },
@@ -131,7 +131,7 @@ export function ExploreDirectory() {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Calculator, compatibility, Deep Dive…"
+        placeholder="Calculator, compatibility, Blueprint Breakdown…"
         className="mt-2 min-h-11 w-full border border-brand-ink bg-brand-paper px-4 font-serif text-brand-ink outline-none"
       />
 

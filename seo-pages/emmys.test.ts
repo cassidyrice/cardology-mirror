@@ -64,7 +64,7 @@ test("Cranston and Zendaya pages use /emmys URLs, UTM, sources, and leave /birth
   expect(cranston).toContain("Wikipedia CC BY-SA 4.0");
   expect(cranston).toContain("emmys.com");
   expect(cranston).toContain(emmyCheckoutHref("bryan-cranston").replace("&", "&amp;"));
-  expect(cranston).toContain("Get the $9 Deep Dive");
+  expect(cranston).toContain("Get the $47 Blueprint Breakdown");
   expect(cranston).not.toContain("/birth-card/bryan-cranston");
   expect(cranston).toContain("/birth-card/");
   expect(cranston).not.toContain('action="/create-checkout"');

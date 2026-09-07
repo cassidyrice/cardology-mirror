@@ -98,7 +98,7 @@ export async function POST(request: Request): Promise<Response> {
     sendReadingEmail: async (email, reading, idempotencyKey) => {
       const rendered = renderElroyReadingEmail(
         reading,
-        `${SITE_URL}/products/birth-card-deep-dive`,
+        `${SITE_URL}/products/blueprint-breakdown-video`,
       );
       await sendEmail(
         {

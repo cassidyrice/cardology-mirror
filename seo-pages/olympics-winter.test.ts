@@ -97,7 +97,7 @@ test("person pages use /olympics/winter URLs, UTM, sources, and leave /birth-car
   expect(bjorgen).toContain("Wikidata CC0");
   expect(bjorgen).toContain("Wikipedia CC BY-SA 4.0");
   expect(bjorgen).toContain(winterCheckoutHref("marit-bjorgen").replace("&", "&amp;"));
-  expect(bjorgen).toContain("Get the $9 Deep Dive");
+  expect(bjorgen).toContain("Get the $47 Blueprint Breakdown");
   expect(bjorgen).not.toContain("/birth-card/marit-bjorgen");
   expect(bjorgen).toContain("/birth-card/");
   expect(bjorgen).not.toContain('action="/create-checkout"');

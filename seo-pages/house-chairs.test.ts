@@ -125,7 +125,7 @@ test("sample pages use /house-chairs URLs, UTM, sources, and verified DOBs", () 
   expect(johnson).toContain("Speaker of the House");
   expect(johnson).toContain("January 30, 1972");
   expect(johnson).toContain(houseChairCheckoutHref("mike-johnson").replace("&", "&amp;"));
-  expect(johnson).toContain("Get the $9 Deep Dive");
+  expect(johnson).toContain("Get the $47 Blueprint Breakdown");
   expect(johnson).not.toContain("/birth-card/mike-johnson");
   expect(johnson).toContain("/birth-card/");
   expect(johnson).not.toContain('action="/create-checkout"');

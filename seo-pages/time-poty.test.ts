@@ -126,7 +126,7 @@ test("sample pages use /time-person-of-the-year URLs, UTM, sources, and verified
     expect(html).toContain("Birth Card:");
     expect(html).toContain(dateLabel);
     expect(html).toContain(timePotyCheckoutHref(slug).replace("&", "&amp;"));
-    expect(html).toContain("Get the $9 Deep Dive");
+    expect(html).toContain("Get the $47 Blueprint Breakdown");
     expect(html).not.toContain(`/birth-card/${slug}`);
     expect(html).toContain("/birth-card/");
     expect(html).not.toContain('action="/create-checkout"');

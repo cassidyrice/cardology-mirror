@@ -162,7 +162,7 @@ export function renderMlbHub(clubs: readonly MlbClub[]): string {
       <p>
         These pages map franchise first games. Your page maps your birthday. The
         <a class="cta" data-checkout-link="true" href="${escapeHtml(mlbCheckoutHref("hub"))}">
-          $9 Birth Card Deep Dive
+          $47 Blueprint Breakdown Video
         </a>
         is the existing checkout — this folder does not create a payment path.
       </p>
@@ -317,7 +317,7 @@ export function renderMlbPage(club: MlbClub, bySlug: Map<string, MlbClub>): stri
       <p>
         If you want the personal report rather than a franchise first-game coordinate, the existing
         <a class="cta" data-checkout-link="true" href="${escapeHtml(mlbCheckoutHref(club.slug))}">
-          $9 Birth Card Deep Dive
+          $47 Blueprint Breakdown Video
         </a>
         checkout is unchanged. This page only adds <code>utm_source=mlb</code> and
         <code>utm_content=${escapeHtml(club.slug)}</code>.

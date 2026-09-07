@@ -104,7 +104,7 @@ export default function BlogIndexPage() {
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
           ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
-          ["Want it personalized?", "Get your $9 Birth Card Deep Dive.", "/products/birth-card-deep-dive", false],
+          ["Want it personalized?", "Get your $47 Blueprint Breakdown Video.", "/products/blueprint-breakdown-video", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a

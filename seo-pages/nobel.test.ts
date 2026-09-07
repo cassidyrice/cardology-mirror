@@ -62,7 +62,7 @@ test("Curie and Einstein pages use /nobel URLs, UTM, sources, and leave /birth-c
   expect(curie).toContain("Wikipedia CC BY-SA 4.0");
   expect(curie).toContain("Nobel Prize API v2.1");
   expect(curie).toContain(nobelCheckoutHref("marie-curie").replace("&", "&amp;"));
-  expect(curie).toContain("Get the $9 Deep Dive");
+  expect(curie).toContain("Get the $47 Blueprint Breakdown");
   expect(curie).not.toContain("/birth-card/marie-curie");
   expect(curie).toContain("/birth-card/");
   expect(curie).not.toContain('action="/create-checkout"');

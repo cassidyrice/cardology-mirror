@@ -265,10 +265,10 @@ export default function WhatIsCardology() {
             all 52 Cardology card meanings
           </Link>
           . Optional next step: the{" "}
-          <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
-            $9 Deep Dive
+          <Link href="/products/blueprint-breakdown-video" className="text-gold underline underline-offset-4">
+            $47 Blueprint Breakdown Video
           </Link>{" "}
-          (7 pages on your card + the Complete System Guide).
+          (5 minutes on your card, plus the 7-page Deep Dive and your Yearly Timing Map as bonuses).
         </p>
       </section>
 
@@ -421,10 +421,10 @@ export default function WhatIsCardology() {
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
-          <Link href="/products/birth-card-deep-dive" className="text-gold underline underline-offset-4">
-            $9 Deep Dive
+          <Link href="/products/blueprint-breakdown-video" className="text-gold underline underline-offset-4">
+            $47 Blueprint Breakdown Video
           </Link>
-          — 7 pages on your card plus the Complete System Guide.
+          — 5 minutes on your card, plus the 7-page Deep Dive and your Yearly Timing Map as bonuses.
         </p>
       </section>
 

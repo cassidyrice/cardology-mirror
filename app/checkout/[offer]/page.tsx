@@ -39,7 +39,7 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  // Checkout-eligible products include the Deep Dive and the Content Calendar, which are not in the public catalog.
+  // Checkout-eligible products include the Blueprint Breakdown (slug deep-dive) and the Content Calendar, which are not in the public catalog.
   const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
@@ -64,7 +64,7 @@ export default async function CheckoutReviewPage({
   return (
     <CheckoutShell
       crumb={[
-        { label: "Birth Card Deep Dive", href: "/products/birth-card-deep-dive" },
+        { label: "Blueprint Breakdown Video", href: "/products/blueprint-breakdown-video" },
         { label: "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
@@ -189,8 +189,8 @@ export default async function CheckoutReviewPage({
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
         {isDigital ? (
-          <Link href="/products/birth-card-deep-dive" className="editorial-link text-brand-ink">
-            Get the $9 Birth Card Deep Dive →
+          <Link href="/products/blueprint-breakdown-video" className="editorial-link text-brand-ink">
+            Get the $47 Blueprint Breakdown Video →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">

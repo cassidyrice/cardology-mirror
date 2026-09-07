@@ -112,7 +112,7 @@ export function renderBornOnHub(
       <h2>Read your own date</h2>
       <p>
         <a class="cta" data-checkout-link="true" href="${escapeHtml(bornOnCheckoutHref("hub"))}">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>
@@ -182,7 +182,7 @@ function hubFaqs(provenance: BornOnProvenance): FaqItem[] {
     {
       question: "Is a birth card a prediction?",
       answer:
-        "No. The card is a calendar coordinate for the month and day. Famous people are cited because they share that public date. The $9 Deep Dive is a written report for a birthday you enter.",
+        "No. The card is a calendar coordinate for the month and day. Famous people are cited because they share that public date. The $47 Blueprint Breakdown is a 5-minute video for a birthday you enter, with the written Deep Dive as a bonus.",
     },
   ];
 }

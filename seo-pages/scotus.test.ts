@@ -63,7 +63,7 @@ test("person pages use /scotus URLs, UTM, sources, and leave /birth-card person 
   expect(roberts).toContain("Wikipedia CC BY-SA 4.0");
   expect(roberts).toContain("supremecourt.gov");
   expect(roberts).toContain(scotusCheckoutHref("john-g-roberts-jr").replace("&", "&amp;"));
-  expect(roberts).toContain("Get the $9 Deep Dive");
+  expect(roberts).toContain("Get the $47 Blueprint Breakdown");
   expect(roberts).not.toContain("/birth-card/john-g-roberts-jr");
   expect(roberts).toContain("/birth-card/");
   expect(roberts).not.toContain('action="/create-checkout"');

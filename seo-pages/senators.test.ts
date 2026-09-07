@@ -76,7 +76,7 @@ test("person pages use /senators URLs, UTM, sources, and leave /birth-card perso
   expect(tuberville).toContain("Wikipedia CC BY-SA 4.0");
   expect(tuberville).toContain("Bioguide");
   expect(tuberville).toContain(senatorCheckoutHref("tommy-tuberville").replace("&", "&amp;"));
-  expect(tuberville).toContain("Get the $9 Deep Dive");
+  expect(tuberville).toContain("Get the $47 Blueprint Breakdown");
   expect(tuberville).not.toContain("/birth-card/tommy-tuberville");
   expect(tuberville).toContain("/birth-card/");
   expect(tuberville).not.toContain('action="/create-checkout"');

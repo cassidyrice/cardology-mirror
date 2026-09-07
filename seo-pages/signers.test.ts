@@ -77,7 +77,7 @@ test("person page uses /signers URL, UTM, sources, and leaves /birth-card person
   expect(html).toContain("Wikipedia CC BY-SA 4.0");
   expect(html).toContain("J000069");
   expect(html).toContain(signerCheckoutHref("thomas-jefferson").replace("&", "&amp;"));
-  expect(html).toContain("Get the $9 Deep Dive");
+  expect(html).toContain("Get the $47 Blueprint Breakdown");
   expect(html).not.toContain("/birth-card/thomas-jefferson");
   expect(html).toContain("/birth-card/");
   expect(html).not.toContain('action="/create-checkout"');

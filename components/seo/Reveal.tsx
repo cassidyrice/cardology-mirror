@@ -111,9 +111,10 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           ) : null}
 
           <div className="mt-8 border border-brand-line bg-brand-ivory p-5 text-left">
-            <p className="font-serif text-xl text-brand-ink">Your card, written out. $9.</p>
+            <p className="font-serif text-xl text-brand-ink">Your card, explained on video. $47.</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-              Seven pages on your birth card and the period cards around it.
+              A 5-minute Blueprint Breakdown of your birth card, plus the 7-page
+              Deep Dive and your Yearly Timing Map as bonuses.
             </p>
             <DeepDiveSample
               cardSlug={cardSlug}

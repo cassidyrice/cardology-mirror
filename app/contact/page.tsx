@@ -30,13 +30,13 @@ export default function ContactPage() {
       <header className="max-w-3xl pb-8">
         <Kicker className="mb-4">Contact</Kicker>
         <h1 className="type-display text-brand-ink">
-          Get help with a Deep Dive, correction, or partnership.
+          Get help with a Blueprint Breakdown order, correction, or partnership.
         </h1>
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            Buying the $9 Deep Dive?{" "}
-            <Link href="/products/birth-card-deep-dive" className="editorial-link text-brand-ink">
+            Buying the $47 Blueprint Breakdown Video?{" "}
+            <Link href="/products/blueprint-breakdown-video" className="editorial-link text-brand-ink">
               Review what is included
             </Link>
             . Your download links appear immediately after successful checkout
@@ -61,7 +61,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["Deep Dive questions", "Ask what the $9 Birth Card Deep Dive includes, how birth-date input works, or how to re-download your files."],
+          ["Blueprint Breakdown questions", "Ask what the $47 Blueprint Breakdown Video includes, when the video and Yearly Timing Map arrive, how birth-date input works, or how to re-download your bonus files."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

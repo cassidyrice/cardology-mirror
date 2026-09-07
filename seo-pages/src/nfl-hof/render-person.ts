@@ -171,13 +171,13 @@ export function renderHofPage(
     </section>
 
     <section data-slot="cta">
-      <h2>Get the $9 Deep Dive</h2>
-      <p>The Deep Dive is a written card report for your own birthday — not a Hall of Fame reading.</p>
+      <h2>Get the $47 Blueprint Breakdown</h2>
+      <p>The Blueprint Breakdown is a 5-minute video about your own birth card, with the written Deep Dive as a bonus — not a Hall of Fame reading.</p>
       <p>
         <a class="cta"
            data-checkout-link="true"
            href="${escapeHtml(hofCheckoutHref(person.slug))}">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>

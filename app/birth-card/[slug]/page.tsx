@@ -196,20 +196,21 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </p>
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Deep Dive — $9</h2>
+        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Blueprint Breakdown — $47</h2>
         <p className="mt-2 text-sm text-mist">
           Your birth card plus the seven ~13-year period cards that build the
           personality around it.
         </p>
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
-          <li>✓ 7-page {card.label} Deep Dive PDF</li>
-          <li>✓ The Complete System Guide (PDF)</li>
+          <li>✓ 5-minute {card.label} Blueprint Breakdown Video (by email within 2 business days)</li>
+          <li>✓ Bonus: the $9 {card.label} Deep Dive — 7-page PDF + the Complete System Guide (instant)</li>
+          <li>✓ Bonus: your Yearly Timing Map</li>
           <li>✓ Your seven ~13-year period cards, on screen</li>
           <li>✓ Instant download links + email backup</li>
         </ul>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $9 one time · instant access · no subscription
+          $47 one time · bonus PDFs instantly · no subscription
         </p>
       </div>
 

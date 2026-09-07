@@ -369,8 +369,8 @@ export default async function CheckoutSuccessPage({
               ? "Your video order is in the queue."
             : confirmed && deepDive
             ? deepDiveLinks.length > 0
-              ? "Your files are ready."
-              : "Check your email."
+              ? "Order confirmed. Your bonus files are ready."
+              : "Order confirmed. Check your email."
             : confirmed && digital
             ? "Your e-book is ready for download."
             : confirmed && instantReport
@@ -391,8 +391,8 @@ export default async function CheckoutSuccessPage({
             : confirmed && deepDive
             ? deepDiveLinks.length > 0
               ? isJokerBirthdate(deepDiveBirthday)
-                ? "Payment confirmed. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF for this date."
-                : "Payment confirmed. Your 7-page Deep Dive and complete System Guide are ready below. Backup copies were also emailed."
+                ? "Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email within 2 business days. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF for this date."
+                : "Payment confirmed. Your 5-minute Blueprint Breakdown Video and Yearly Timing Map arrive by email within 2 business days. Your bonus 7-page Deep Dive and complete System Guide are ready below. Backup copies were also emailed."
               : deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
@@ -474,7 +474,7 @@ export default async function CheckoutSuccessPage({
         </h2>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
           {deepDive
-            ? "If the Deep Dive files don't arrive, reply to your receipt email or"
+            ? "If the bonus files don't download, or the video hasn't arrived after 2 business days, reply to your receipt email or"
             : digital
             ? "If your download link doesn't work, reply to your receipt email or"
             : instantReport
@@ -592,11 +592,11 @@ function DeepDiveFulfillment({
 }) {
   return (
     <div className="text-center">
-      <Kicker className="mb-4">Your Deep Dive</Kicker>
+      <Kicker className="mb-4">Your Blueprint Breakdown</Kicker>
       {links.length > 0 ? (
         <>
           <DeepDiveDeliveredBeacon placement="checkout-success" />
-          <h2 className="type-h2 text-brand-ink">Download your files.</h2>
+          <h2 className="type-h2 text-brand-ink">Download your bonus files.</h2>
           <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
             {deepDiveSuccessCopy(birthday)}
           </p>
@@ -608,7 +608,7 @@ function DeepDiveFulfillment({
                 variant="accent"
                 size="large"
               >
-                Download {link.label} &mdash; PDF
+                Download {link.label} &mdash; PDF (bonus)
               </LinkButton>
             ))}
           </div>

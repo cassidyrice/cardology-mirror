@@ -128,7 +128,7 @@ export function renderHolidaysHub(holidays: readonly HolidayPage[]): string {
       <h2>Read your own date</h2>
       <p>
         <a class="cta" data-checkout-link="true" href="${escapeHtml(holidaysCheckoutHref("hub"))}">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>
@@ -258,14 +258,14 @@ export function renderHolidayPage(
     <section data-slot="cta">
       <h2>Get your own coordinate</h2>
       <p>
-        The $9 Deep Dive is a written report for a birthday you enter — not a
+        The $47 Blueprint Breakdown is a 5-minute video for a birthday you enter, with the written Deep Dive as a bonus — not a
         reading of ${escapeHtml(holiday.name)}.
       </p>
       <p>
         <a class="cta"
            data-checkout-link="true"
            href="${escapeHtml(holidaysCheckoutHref(holiday.slug))}">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>
@@ -321,7 +321,7 @@ function hubFaqs(): FaqItem[] {
     {
       question: "Is this a reading of the holiday?",
       answer:
-        "No. The card is a calendar coordinate for the documented date. The $9 Deep Dive is a written report for a birthday you enter.",
+        "No. The card is a calendar coordinate for the documented date. The $47 Blueprint Breakdown is a 5-minute video for a birthday you enter, with the written Deep Dive as a bonus.",
     },
   ];
 }

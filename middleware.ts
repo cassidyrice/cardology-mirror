@@ -5,7 +5,7 @@ import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 import { applySecurityHeaders } from "@/lib/security-headers";
 
 const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
-  "/readings": "/products/birth-card-deep-dive",
+  "/readings": "/products/blueprint-breakdown-video",
   "/try": "/birth-card-calculator",
   "/cardology-chart": "/birth-card-calculator",
   "/birth-card-chart": "/birth-card-calculator",
@@ -15,15 +15,17 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/playing-card-spreads/three-card": "/playing-card-spreads",
   "/playing-card-spreads/love": "/playing-card-spreads",
   "/playing-card-spreads/yes-or-no": "/playing-card-spreads",
-  // Catalog collapsed to the $9 Deep Dive (2026-09-01). Fulfillment for past
-  // purchases (/blueprint, downloads, success) is untouched.
-  "/products/personal-card-blueprint": "/products/birth-card-deep-dive",
-  "/products/complete-card-blueprint": "/products/birth-card-deep-dive",
-  "/products/analog-algorithm": "/products/birth-card-deep-dive",
+  // Catalog collapsed to one product (2026-09-01); that product became the $47
+  // Blueprint Breakdown Video with the $9 Deep Dive as a bonus (2026-09-07).
+  // Fulfillment for past purchases (/blueprint, downloads, success) is untouched.
+  "/products/birth-card-deep-dive": "/products/blueprint-breakdown-video",
+  "/products/personal-card-blueprint": "/products/blueprint-breakdown-video",
+  "/products/complete-card-blueprint": "/products/blueprint-breakdown-video",
+  "/products/analog-algorithm": "/products/blueprint-breakdown-video",
   "/membership": "/birth-card-calculator",
-  "/checkout/personal-card-blueprint": "/products/birth-card-deep-dive",
-  "/checkout/complete-card-blueprint": "/products/birth-card-deep-dive",
-  "/checkout/analog-algorithm": "/products/birth-card-deep-dive",
+  "/checkout/personal-card-blueprint": "/products/blueprint-breakdown-video",
+  "/checkout/complete-card-blueprint": "/products/blueprint-breakdown-video",
+  "/checkout/analog-algorithm": "/products/blueprint-breakdown-video",
   "/checkout/cardology-membership": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.

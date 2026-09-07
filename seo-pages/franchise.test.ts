@@ -93,7 +93,7 @@ test("pages have 250+ words with dates and card meaning woven in", () => {
 test("Deep Dive CTA uses nfl UTM and does not add checkout code", () => {
   const cowboys = read("franchise/dallas-cowboys/index.html");
   expect(cowboys).toContain("/checkout/deep-dive?utm_source=nfl&amp;utm_content=dallas-cowboys");
-  expect(cowboys).toContain("$9 Birth Card Deep Dive");
+  expect(cowboys).toContain("$47 Blueprint Breakdown Video");
   expect(cowboys).not.toContain("data-checkout-stub");
   expect(cowboys).not.toContain("/create-checkout");
 

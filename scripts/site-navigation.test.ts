@@ -36,7 +36,7 @@ test("bare footer keeps the single disclaimer and legal row", () => {
   expect(markup).toContain("Playing cards, not tarot");
   expect(markup).toContain('href="/privacy-policy"');
   expect(occurrences(markup, 'href="/content-engine"')).toBe(1);
-  expect(occurrences(markup, 'href="/products/birth-card-deep-dive"')).toBe(1);
+  expect(occurrences(markup, 'href="/products/blueprint-breakdown-video"')).toBe(1);
   expect(markup).toContain("Content Calendar (experiment)");
 });
 

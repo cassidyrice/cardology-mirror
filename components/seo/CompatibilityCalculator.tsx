@@ -286,7 +286,7 @@ function PairResult({
           source="birth-card-compatibility-calculator"
         />
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          This $9 Deep Dive is for the first birthday only — that person’s card, not a couple PDF.
+          This $47 Blueprint Breakdown is for the first birthday only — that person’s card, not a couple video.
         </p>
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}

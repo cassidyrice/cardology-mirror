@@ -102,13 +102,13 @@ export function renderNobelHub(
     </section>
 
     <section data-slot="cta">
-      <h2>Get the $9 Deep Dive</h2>
-      <p>Read your own card. The Deep Dive is a written report for your birthday, not a Nobel forecast.</p>
+      <h2>Get the $47 Blueprint Breakdown</h2>
+      <p>Read your own card. The Blueprint Breakdown is a 5-minute video for your birthday (plus the written Deep Dive), not a Nobel forecast.</p>
       <p>
         <a class="cta"
            data-checkout-link="true"
            href="/checkout/deep-dive?utm_source=nobel&amp;utm_content=hub">
-          Get the $9 Deep Dive
+          Get the $47 Blueprint Breakdown
         </a>
       </p>
     </section>

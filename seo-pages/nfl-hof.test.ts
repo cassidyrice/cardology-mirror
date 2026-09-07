@@ -110,7 +110,7 @@ test("sample pages use /nfl-hof URLs, UTM, sources, and leave /birth-card person
     expect(html).toContain("Wikipedia CC BY-SA 4.0");
     expect(html).toContain("profootballhof.com");
     expect(html).toContain(hofCheckoutHref(sample.slug).replace("&", "&amp;"));
-    expect(html).toContain("Get the $9 Deep Dive");
+    expect(html).toContain("Get the $47 Blueprint Breakdown");
     expect(html).not.toContain(`/birth-card/${sample.slug}`);
     expect(html).toContain("/birth-card/");
     expect(html).not.toContain('action="/create-checkout"');

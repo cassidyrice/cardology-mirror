@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $9 Birth Card Deep Dive as an instant written download.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $47 Blueprint Breakdown Video with the Birth Card Deep Dive as a bonus.",
   alternates: { canonical: "/about" },
 };
 
@@ -71,8 +71,8 @@ export default function AboutPage() {
           <p className="text-base leading-relaxed text-[#3d352d]">
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
-            and repeated dynamics. Free tools come first; the paid product is a written
-            Birth Card Deep Dive — not a phone reading.
+            and repeated dynamics. Free tools come first; the paid product is a 5-minute
+            Blueprint Breakdown Video of your card — not a phone reading.
           </p>
         </div>
       </header>
@@ -85,8 +85,9 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          The paid product is the $9 Birth Card Deep Dive — your card written out,
-          seven pages, instant download. The Content Calendar is a separate
+          The paid product is the $47 Blueprint Breakdown Video — your card explained
+          in five minutes, with the written 7-page Deep Dive and your Yearly Timing Map
+          as bonuses. The Content Calendar is a separate
           experiment: you describe your business once, and it drafts one post per
           day for 52 days. AI writes from your text; you still check facts before
           posting.
@@ -121,7 +122,7 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           Experience on this site means shipping the tools people actually use: the free
           birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and the Birth Card Deep Dive fulfillment pipeline. Expertise means
+          meanings, and the Blueprint Breakdown fulfillment pipeline. Expertise means
           publishing the method in public — see{" "}
           <Link href="/methodology" className="underline">
             methodology
@@ -196,17 +197,18 @@ export default function AboutPage() {
         <h2 className="font-serif text-3xl text-[#14110d]">Why a written Blueprint</h2>
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           The free calculator answers “what is my card?” The Blueprint answers “what
-          does the whole pattern look like in writing?” It is a one-time $9 digital
-          report delivered after checkout — your card's 7-page Deep Dive plus the
-          Complete System Guide — so you can reread it without booking a call. Historical phone
+          does the whole pattern look like?” The Blueprint Breakdown Video is a one-time
+          $47 purchase — a 5-minute video about your card, sent within 2 business days,
+          plus the 7-page Deep Dive, the Complete System Guide, and your Yearly Timing
+          Map — so you can replay and reread it without booking a call. Historical phone
           fulfillment still works for people who already purchased access; new public
           SEO pages point to the written product.
         </p>
         <Link
-          href="/products/birth-card-deep-dive"
+          href="/products/blueprint-breakdown-video"
           className="inline-block rounded-full border border-[#14110d] bg-[#14110d] px-5 py-2.5 text-sm font-semibold text-[#f4f0e7]"
         >
-          Birth Card Deep Dive — $9
+          Blueprint Breakdown Video — $47
         </Link>
       </section>
 

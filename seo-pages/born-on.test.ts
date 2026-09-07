@@ -112,7 +112,7 @@ test("January 15 cites verified notables and leaves /birth-card person routes al
   expect(html).toContain("Wikipedia");
   expect(html).toContain("CC BY-SA 4.0");
   expect(html).toContain(bornOnCheckoutHref("january-15").replace("&", "&amp;"));
-  expect(html).toContain("Get the $9 Deep Dive");
+  expect(html).toContain("Get the $47 Blueprint Breakdown");
   expect(html).not.toContain("/birth-card/martin-luther-king");
   expect(html).toContain("/birth-card/queen-of-diamonds");
   expect(html).not.toContain('action="/create-checkout"');

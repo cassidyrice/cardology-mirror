@@ -125,7 +125,7 @@ test("sample pages use /grammys/aoty URLs, UTM, sources, and verified DOBs", () 
   expect(swift).toContain("Folklore");
   expect(swift).toContain("Midnights");
   expect(swift).toContain(grammyCheckoutHref("taylor-swift").replace("&", "&amp;"));
-  expect(swift).toContain("Get the $9 Deep Dive");
+  expect(swift).toContain("Get the $47 Blueprint Breakdown");
   expect(swift).not.toContain("/birth-card/taylor-swift");
   expect(swift).toContain("/birth-card/");
   expect(swift).not.toContain('action="/create-checkout"');

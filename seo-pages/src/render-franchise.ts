@@ -150,7 +150,7 @@ export function renderFranchiseHub(franchises: readonly Franchise[]): string {
       <p>
         These pages map league grants. Your page maps your birthday. The
         <a class="cta" data-checkout-link="true" href="${escapeHtml(franchiseCheckoutHref("hub"))}">
-          $9 Birth Card Deep Dive
+          $47 Blueprint Breakdown Video
         </a>
         is the existing checkout — this folder does not create a payment path.
       </p>
@@ -300,7 +300,7 @@ export function renderFranchisePage(
       <p>
         If you want the personal report rather than a league-grant coordinate, the existing
         <a class="cta" data-checkout-link="true" href="${escapeHtml(franchiseCheckoutHref(franchise.slug))}">
-          $9 Birth Card Deep Dive
+          $47 Blueprint Breakdown Video
         </a>
         checkout is unchanged. This page only adds <code>utm_source=nfl</code> and
         <code>utm_content=${escapeHtml(franchise.slug)}</code>.

@@ -30,7 +30,7 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_ANALOG_ALGORITHM"
   | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
-  | "STRIPE_PRICE_DEEP_DIVE"
+  | "STRIPE_PRICE_BLUEPRINT_BREAKDOWN"
   | "STRIPE_PRICE_CONTENT_CALENDAR"
   | "STRIPE_PRICE_VIDEO_SINGLE"
   | "STRIPE_PRICE_VIDEO_WEEKLY_7"
@@ -287,30 +287,32 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   kind: "digital_download",
   available: true,
   slug: DEEP_DIVE_SLUG,
-  stripePriceEnv: "STRIPE_PRICE_DEEP_DIVE",
-  name: "Birth Card Deep Dive",
-  price: 9,
-  priceLabel: "$9",
-  badge: "Deep Dive",
+  stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_BREAKDOWN",
+  name: "Blueprint Breakdown Video",
+  price: 47,
+  priceLabel: "$47",
+  badge: "Video",
   oneLine:
-    "7-page Deep Dive PDF + the complete System Guide, instant download.",
+    "A 5-minute video breakdown of your birth card blueprint, plus two bonuses: the $9 Birth Card Deep Dive and your Yearly Timing Map.",
   bestFor:
-    "Anyone who just found their birth card and wants the written Deep Dive sent to them.",
+    "Anyone who just found their birth card and wants the whole pattern walked through on video, not only on paper.",
   deliverable:
-    "Instant download links for the 7-page birth-card Deep Dive and the complete System Guide.",
-  turnaround: "Download links emailed immediately after payment.",
+    "A 5-minute Blueprint Breakdown Video for your birth card, sent by email within 2 business days. Bonuses: the 7-page Birth Card Deep Dive PDF + the complete System Guide (instant download) and your Yearly Timing Map.",
+  turnaround:
+    "Deep Dive PDF links arrive immediately after payment. The video and Yearly Timing Map arrive by email within 2 business days.",
   includes: [
-    "7-page birth-card Deep Dive PDF",
-    "The complete System Guide",
+    "5-minute Blueprint Breakdown Video of your birth card",
+    "Bonus: the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide)",
+    "Bonus: your Yearly Timing Map",
     "Your seven ~13-year period cards on the confirmation page",
   ],
-  cta: "Get Deep Dive $9",
+  cta: "Get the Blueprint Breakdown — $47",
   checkoutNote:
     "One-time purchase. Birthday comes from the calculator. Stripe-hosted checkout collects email and payment.",
   downloadAssetKey: "",
   redownloadDays: 30,
   fileName: "Birth-Card-Deep-Dive.pdf",
-  href: "/products/birth-card-deep-dive",
+  href: "/products/blueprint-breakdown-video",
 };
 
 export const CONTENT_CALENDAR_52_SLUG = "content-calendar-52";
@@ -552,7 +554,7 @@ function checkoutVideoBySlug(slug: string): VideoOffer | undefined {
   return product;
 }
 
-/** Checkout-eligible products, including Deep Dive and Content Engine which are not in the public catalog. */
+/** Checkout-eligible products, including the Blueprint Breakdown (slug deep-dive) and Content Engine which are not in the public catalog. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??

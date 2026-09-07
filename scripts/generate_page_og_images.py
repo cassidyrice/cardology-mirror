@@ -200,6 +200,15 @@ def main():
     # Product OGs (also the schema.org Product images) — public/og/products/
     os.makedirs(os.path.join(OUT, "products"), exist_ok=True)
     page(
+        "products/blueprint-breakdown-video",
+        ["8-of-diamonds"],
+        "CARD BLUEPRINTS  ·  $47",
+        ["The Blueprint", "Breakdown Video"],
+        "5-minute video + Deep Dive + Timing Map",
+    )
+    # Retired 2026-09-07 ($9 Deep Dive became the bonus inside the $47 video); kept
+    # so old social previews still resolve.
+    page(
         "products/birth-card-deep-dive",
         ["8-of-diamonds"],
         "CARD BLUEPRINTS  ·  $9",

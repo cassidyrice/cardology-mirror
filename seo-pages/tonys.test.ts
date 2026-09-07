@@ -65,7 +65,7 @@ test("Ferrer and Lansbury pages use /tonys URLs, UTM, sources, and leave /birth-
   expect(ferrer).toContain("Wikipedia CC BY-SA 4.0");
   expect(ferrer).toContain("tonyawards.com");
   expect(ferrer).toContain(tonyCheckoutHref("jose-ferrer").replace("&", "&amp;"));
-  expect(ferrer).toContain("Get the $9 Deep Dive");
+  expect(ferrer).toContain("Get the $47 Blueprint Breakdown");
   expect(ferrer).not.toContain("/birth-card/jose-ferrer");
   expect(ferrer).toContain("/birth-card/");
   expect(ferrer).not.toContain('action="/create-checkout"');

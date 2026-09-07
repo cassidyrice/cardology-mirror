@@ -123,7 +123,7 @@ test("sample pages use /pulitzer/fiction URLs, UTM, sources, and verified DOBs",
   expect(kingsolver).toContain("Demon Copperhead");
   expect(kingsolver).toContain("joint recipient");
   expect(kingsolver).toContain(pulitzerCheckoutHref("barbara-kingsolver").replace("&", "&amp;"));
-  expect(kingsolver).toContain("Get the $9 Deep Dive");
+  expect(kingsolver).toContain("Get the $47 Blueprint Breakdown");
   expect(kingsolver).not.toContain("/birth-card/barbara-kingsolver");
   expect(kingsolver).toContain("/birth-card/");
   expect(kingsolver).not.toContain('action="/create-checkout"');

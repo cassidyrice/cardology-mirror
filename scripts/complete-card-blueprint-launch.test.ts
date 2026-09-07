@@ -24,10 +24,10 @@ describe("The Complete Card Blueprint launch contract", () => {
       "utf8",
     );
     expect(middleware).toContain(
-      '"/products/complete-card-blueprint": "/products/birth-card-deep-dive"',
+      '"/products/complete-card-blueprint": "/products/blueprint-breakdown-video"',
     );
     expect(middleware).toContain(
-      '"/checkout/complete-card-blueprint": "/products/birth-card-deep-dive"',
+      '"/checkout/complete-card-blueprint": "/products/blueprint-breakdown-video"',
     );
   });
 

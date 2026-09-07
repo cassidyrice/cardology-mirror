@@ -92,7 +92,7 @@ test("sample person pages use /olympics/summer URLs, UTM, sources, and leave /bi
   expect(html).toContain("Wikidata CC0");
   expect(html).toContain("Wikipedia CC BY-SA 4.0");
   expect(html).toContain(olympicsCheckoutHref("michael-phelps").replace("&", "&amp;"));
-  expect(html).toContain("Get the $9 Deep Dive");
+  expect(html).toContain("Get the $47 Blueprint Breakdown");
   expect(html).not.toContain("/birth-card/michael-phelps");
   expect(html).toContain("/birth-card/");
   expect(html).not.toContain('action="/create-checkout"');

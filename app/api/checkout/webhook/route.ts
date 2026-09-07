@@ -6,7 +6,13 @@ import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
-import { ALL_90_SPREADS_FILE, DEEP_DIVE_SKU, deepDiveSuccessCopy } from "@/lib/deep-dive";
+import {
+  ALL_90_SPREADS_FILE,
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_SKU,
+  DEEP_DIVE_VIDEO_TURNAROUND,
+  deepDiveSuccessCopy,
+} from "@/lib/deep-dive";
 import {
   deepDiveCardPdfForBirthday,
   deepDiveFilesForBirthday,
@@ -110,11 +116,16 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: Deep Dive (instant Guide + Spreads + card PDF; Joker skips card) ----
+    // ---- BRANCH: Blueprint Breakdown Video (slug deep-dive). Instant bonus PDFs
+    // (Guide + card PDF; Joker skips card) go out here; the 5-minute video and the
+    // Yearly Timing Map are produced per buyer and emailed by hand, so the intake
+    // notification carries everything needed to record them. "deep-dive-9" is the
+    // retired $9 SKU — sessions opened before the switch still fulfill. ----
     const deepDivePaid =
       paymentSatisfied &&
       (isDeepDive(product) ||
         session.metadata?.sku === DEEP_DIVE_SKU ||
+        session.metadata?.sku === "deep-dive-9" ||
         session.metadata?.offer_slug === "deep-dive");
     if (deepDivePaid) {
       let buyerEmailed = false;
@@ -140,11 +151,11 @@ export async function POST(req: NextRequest) {
               ? ""
               : "Your card PDF could not be resolved from the birthday on this order. Reply with YYYY-MM-DD and we will send the card file.";
           const body = [
-            "Thank you — your Birth Card Deep Dive is confirmed.",
+            `Thank you — your ${DEEP_DIVE_PRODUCT_NAME} is confirmed.`,
             "",
             deepDiveSuccessCopy(birthday),
             "",
-            "Download these now (30 days):",
+            "Download your bonus PDFs now (30 days):",
             ...links,
             "",
           ];
@@ -152,7 +163,7 @@ export async function POST(req: NextRequest) {
           body.push("If a link fails, reply to this email.");
           await sendIntakeEmail({
             to: email,
-            subject: "Your Deep Dive files are ready",
+            subject: "Your Blueprint Breakdown order is confirmed — bonus files inside",
             text: body.join("\n"),
           });
           buyerEmailed = true;
@@ -166,17 +177,21 @@ export async function POST(req: NextRequest) {
         try {
           await sendIntakeEmail({
             to,
-            subject: `Payment received (deep dive): ${offerName} — ${email}`,
+            subject: `Payment received ($47 Blueprint Breakdown): ${offerName} — ${email}`,
             text: [
+              `ACTION: record the 5-minute Blueprint Breakdown Video + Yearly Timing Map for this buyer and email them ${DEEP_DIVE_VIDEO_TURNAROUND}.`,
+              `Birthday: ${birthday || "(missing — ask the buyer)"}`,
+              `Birth card: ${cardPdf ? cardPdf.label.replace(" Deep Dive", "") : joker ? "Joker (Dec 31)" : "(unresolved)"}`,
+              "",
               `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
-              `Type: deep dive`,
+              `Type: blueprint breakdown video`,
               `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
               `Amount: ${amount}`,
               `Customer email: ${email}`,
               `Birthday supplied: ${birthday ? "yes" : "NO"}`,
               `Source: ${session.metadata?.source || "(none)"}`,
               `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
-              `Download links emailed: ${bonusLinks}`,
+              `Bonus download links emailed: ${bonusLinks}`,
               `Card PDF: ${cardPdf ? cardPdf.slug : joker ? "skipped (Joker)" : "none"}`,
               `Stripe session: ${session.id}`,
             ].join("\n"),

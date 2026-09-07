@@ -71,7 +71,7 @@ export function bornOnDayCopy(day: BornOnDayPage, meaning: CardMeaning): BornOnD
     {
       question: "Is this fortune-telling?",
       answer:
-        "No. A birth card is a calendar coordinate for a month and day. Listing a public birthday does not predict character, career, or fate. The $9 Deep Dive is a written report for a birthday you enter.",
+        "No. A birth card is a calendar coordinate for a month and day. Listing a public birthday does not predict character, career, or fate. The $47 Blueprint Breakdown is a 5-minute video for a birthday you enter, with the written Deep Dive as a bonus.",
     },
   ];
 

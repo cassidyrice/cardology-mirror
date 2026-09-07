@@ -75,7 +75,7 @@ test("person pages use /oscars URLs, UTM, sources, and leave /birth-card person 
   expect(streep).toContain("Wikipedia CC BY-SA 4.0");
   expect(streep).toContain("oscars.org");
   expect(streep).toContain(oscarCheckoutHref("meryl-streep").replace("&", "&amp;"));
-  expect(streep).toContain("Get the $9 Deep Dive");
+  expect(streep).toContain("Get the $47 Blueprint Breakdown");
   expect(streep).not.toContain("/birth-card/meryl-streep");
   expect(streep).toContain("/birth-card/");
   expect(streep).not.toContain('action="/create-checkout"');
