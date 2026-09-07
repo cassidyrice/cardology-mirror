@@ -8,7 +8,7 @@ from pathlib import Path
 
 from pipeline.birthcard import birth_card_from_iso
 from pipeline.famous_birthdays.verify import classify_row, listed_day, verify_table, wikipedia_title
-from pipeline.presidents.extract import parse_day_precision_time
+from pipeline.wikidata_dates import parse_day_precision_time
 
 ROOT = Path(__file__).resolve().parents[1]
 TABLE = ROOT.parent / "lib" / "famous-birthdays.json"

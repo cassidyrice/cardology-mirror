@@ -1,5 +1,0 @@
-{{Infobox swimmer
-| name = Ada Fixture Phelps
-| birth_date = {{birth date and age|1985|6|30}}
-| nationality = United States
-}}

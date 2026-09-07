@@ -19,7 +19,7 @@ from urllib.parse import unquote, urlparse
 from pipeline.birthcard import birth_card_from_iso
 from pipeline.exclusions import description_blocked
 from pipeline.http import fetch_json
-from pipeline.presidents.extract import parse_day_precision_time
+from pipeline.wikidata_dates import parse_day_precision_time
 from pipeline.wikidata import _titles_url, _write_entity_cache, batch_ids
 
 ROOT = Path(__file__).resolve().parents[2]

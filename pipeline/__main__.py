@@ -9,27 +9,6 @@ USAGE = """Celebrity birth-card SEO pipeline (static pages only).
   python -m pipeline.wikipedia_summary --from-cache pipeline/data/cache/wikidata
   python -m pipeline.build_dataset --from-seed
   python -m pipeline.harvest_card_meanings
-  python -m pipeline.build_franchises
-  python -m pipeline.build_mlb
-  python -m pipeline.presidents
-  python -m pipeline.holidays
-  python -m pipeline.signers
-  python -m pipeline.nobel
-  python -m pipeline.scotus
-  python -m pipeline.governors
-  python -m pipeline.senators
-  python -m pipeline.olympics.winter
-  python -m pipeline.tonys
-  python -m pipeline.oscars
-  python -m pipeline.emmys
-  python -m pipeline.grammys
-  python -m pipeline.astronauts
-  python -m pipeline.nfl_hof
-  python -m pipeline.rock_hall
-  python -m pipeline.pulitzer_fiction
-  python -m pipeline.house_chairs
-  python -m pipeline.kennedy_center_honors
-  python -m pipeline.time_poty
   python -m pipeline.celebs
 
 See pipeline/README.md. Vertex batch stub: python -m enrich.make_batch (no spend).

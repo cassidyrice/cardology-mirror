@@ -1,4 +1,6 @@
-"""Pull day-precision birth/death and US-president terms from a Wikidata entity."""
+"""Shared Wikidata day-precision date picker (moved from the retired presidents pack, 2026-09-07).
+
+Pull day-precision birth/death and US-president terms from a Wikidata entity."""
 
 from __future__ import annotations
 
@@ -101,60 +103,3 @@ def parse_day_precision_time(entity: dict, prop: str) -> tuple[str, int] | None:
     pool.sort(key=lambda item: item[0])
     _, iso, precision = pool[0]
     return iso, precision
-
-
-def extract_presidency_terms(entity: dict) -> list[dict[str, str | None]]:
-    terms: list[dict[str, str | None]] = []
-    seen: set[tuple[str | None, str | None, str | None]] = set()
-    for claim in _all_claims(entity, "P39"):
-        raw = _mainsnak_value(claim)
-        if not isinstance(raw, dict) or raw.get("id") != US_PRESIDENT_OFFICE:
-            continue
-        term = {
-            "ordinal": _qualifier_string(claim, "P1545"),
-            "start": _qualifier_time(claim, "P580"),
-            "end": _qualifier_time(claim, "P582"),
-        }
-        key = (term["ordinal"], term["start"], term["end"])
-        if key in seen:
-            continue
-        seen.add(key)
-        terms.append(term)
-    terms.sort(key=lambda item: _ordinal_sort_key(item.get("ordinal")))
-    return terms
-
-
-def _ordinal_sort_key(value: str | None) -> tuple[int, str]:
-    if value and value.isdigit():
-        return (int(value), value)
-    return (10_000, value or "")
-
-
-def extract_president(entity: dict) -> dict | None:
-    if not entity or entity.get("missing") is not None:
-        return None
-
-    birth = parse_day_precision_time(entity, "P569")
-    if birth is None:
-        return None
-    birth_date, precision = birth
-
-    death = parse_day_precision_time(entity, "P570")
-    labels = entity.get("labels") or {}
-    sitelinks = entity.get("sitelinks") or {}
-    enwiki = sitelinks.get("enwiki") or {}
-    enwiki_title = enwiki.get("title")
-    label = (labels.get("en") or {}).get("value") or enwiki_title
-    if not label:
-        return None
-
-    return {
-        "qid": entity.get("id"),
-        "name": enwiki_title or label,
-        "wikidata_label": label,
-        "birth_date": birth_date,
-        "birth_precision": precision,
-        "death_date": death[0] if death else None,
-        "enwiki_title": enwiki_title,
-        "terms": extract_presidency_terms(entity),
-    }

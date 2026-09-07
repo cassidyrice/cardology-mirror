@@ -11,7 +11,6 @@ import {
 const root = join(import.meta.dir, "..");
 const page = readFileSync(join(root, "app/blog/[slug]/page.tsx"), "utf8");
 const harvest = readFileSync(join(root, "pipeline/celebs/harvest.py"), "utf8");
-const ownership = readFileSync(join(root, "seo-pages/path-ownership.json"), "utf8");
 
 function celebPosts(): BlogPost[] {
   return allBlogPosts().filter(isCelebrityBirthCardProfile);
@@ -57,6 +56,4 @@ test("blog renderer cites Wikidata/Wikipedia and does not add checkout forms", (
 test("does not activate a celeb path-split onto /birth-card person slugs", () => {
   expect(harvest).toContain("Existing /blog/{slug} celebrity profiles only");
   expect(harvest).toContain("No path-split");
-  expect(ownership).toContain("/birth-card/{person-slug}");
-  expect(ownership).toContain("scaffold-only-do-not-deploy");
 });

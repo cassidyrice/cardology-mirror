@@ -1,6 +1,0 @@
-# Isolated celebrity SEO Pages project. Do not deploy from WP4.
-# Production cardblueprints.com stays on cardology-mirror (Next.js).
-
-name = "cardblueprints-celeb-seo"
-pages_build_output_dir = "dist"
-compatibility_date = "2026-09-06"
