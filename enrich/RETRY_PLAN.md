@@ -4,12 +4,14 @@ Retry job `403973903623389184` **SUCCEEDED** (818/836). Remainder job
 `5794641920097517568` **SUCCEEDED** (18/18). Hub people job
 `1673848261053513728` **SUCCEEDED** (1075/1079 accepted). Wave slice 1
 `5428091131676065792` **SUCCEEDED** (1077/1079 accepted). Wave slice 2
-`4697945042088624128` **SUCCEEDED** (1075/1079 accepted). Do not submit
-slice 3 unless asked. Results live in `people_enriched.jsonl`
-(**4285** = 1058 celebrity + 1075 hub + 1077 wave slice 1 + 1075 slice 2).
-Celebrity `retry.jsonl` is empty. Hub drops stay in `hub_retry.jsonl` (4).
-Slice 1 drops stay in `wave_slice1_retry.jsonl` (2 TPU empties). Slice 2
-drops are in `enrich/artifacts/wave_slice2_retry.jsonl` (4).
+`4697945042088624128` **SUCCEEDED** (1075/1079 accepted). Wave slice 3
+`8359512276629192704` **SUCCEEDED** (585/587 accepted). Do not submit
+another Vertex job unless asked. Results live in `people_enriched.jsonl`
+(**4870** = 1058 celebrity + 1075 hub + 1077 wave slice 1 + 1075 slice 2
++ 585 slice 3). Celebrity `retry.jsonl` is empty. Hub drops stay in
+`hub_retry.jsonl` (4). Slice 1 drops stay in `wave_slice1_retry.jsonl`
+(2 TPU empties). Slice 2 drops stay in `wave_slice2_retry.jsonl` (4).
+Slice 3 drops are in `enrich/artifacts/wave_slice3_retry.jsonl` (2).
 
 ## Root cause
 
@@ -70,7 +72,7 @@ See `enrich/artifacts/cost_estimate.json`. Same $1 / $6 per million as the
 HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
 `gemini-3.1-pro-preview`; this JSONL sets `thinkingLevel=LOW`.
 
-## After SUCCEEDED (remainder + hub + wave slice 1 + slice 2)
+## After SUCCEEDED (remainder + hub + wave slice 1 + slice 2 + slice 3)
 
 1. Remainder: downloaded 18 lines; appended all 18; celebrity total **1058**.
 2. Hub job `1673848261053513728`: downloaded 1079 lines (gitignored).
@@ -86,12 +88,17 @@ HIGH upper is **inside the ~$16 target**. Thinking cannot be disabled on
    Total **4285**. Dropped 4 → `wave_slice2_retry.jsonl` (LL Cool J 119
    words, J. Mike Lounge non-object JSON, Joe Montana 186 words, Tímea
    Nagy 119 words). Zero containment rejects.
-9. Celebrity `retry.jsonl` stays empty. Slice-1 TPU empties stay dropped.
-   Ask before slice 3. Do not resubmit unless asked.
+9. Wave slice 3 `8359512276629192704`: downloaded 587 lines (gitignored).
+10. Appended **585** accepted slice-3 rows. Did not overwrite the 4285.
+    Total **4870**. Dropped 2 → `wave_slice3_retry.jsonl` (Jean Marsh
+    116 words, Éric Srecki 113 words). Zero containment rejects.
+    Wave remainder is complete.
+11. Celebrity `retry.jsonl` stays empty. Prior DROPs stay dropped.
+    Ask before any more Vertex. Do not resubmit unless asked.
 
 ## Out of scope
 
-- No slice 3 / remainder Vertex submit
+- No further Vertex submit
 - No deploy, checkout, Stripe, webhook, or `generate_reading` edits
 - No D1 Joker remapping
-- Do not merge slice-2 results without asking
+- Do not merge slice-3 results without asking
