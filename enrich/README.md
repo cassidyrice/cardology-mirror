@@ -45,23 +45,30 @@ and trivial punctuation only. Paraphrase fails.
 | `403973903623389184` (near-verbatim) | SUCCEEDED | **818** this run / **1040** total | **18** |
 | `5794641920097517568` (remaining 18) | SUCCEEDED | **18** this run / **1058** total | **0** |
 | `1673848261053513728` (hub 1079) | SUCCEEDED | **1075** this run / **2133** total | **4** |
+| `5428091131676065792` (wave slice 1) | SUCCEEDED | **1077** this run / **3210** total | **2** |
+| `4697945042088624128` (wave slice 2) | SUCCEEDED | **1075** this run / **4285** total | **4** |
 
 Celebrity remainder is complete (1058/1058); `retry.jsonl` stays empty.
-Hub people packs (presidents / governors / SCOTUS / Nobel / signers) accepted
-**1075 / 1079**. Dropped 4 Nobel `card_in_life` shorts (117–119 words):
-Yoichiro Nambu, Heinrich Wieland, Frederick Soddy, Gerhard Domagk.
-Zero containment rejects. Do not resubmit unless asked.
+Hub people packs accepted **1075 / 1079**. Wave slice 1 (Rock Hall 721 +
+summer olympics 358) accepted **1077 / 1079**. Dropped 2 TPU `CANCELLED`
+empty predictions: Herb Reed, Marie-José Pérec. Zero containment rejects.
+Slice 2 (NFL HoF 307 + Tonys 245 + astronauts 220 + Kennedy Center
+168 + remaining summer olympics 139) accepted **1075 / 1079**. Dropped 4
+word-count / JSON rejects: LL Cool J, J. Mike Lounge, Joe Montana,
+Tímea Nagy. Zero containment rejects. Do not start slice 3 unless asked.
+Slice-1 TPU empties stay dropped.
 
 ```bash
 python3 -m enrich.parse_results \
-  --people enrich/artifacts/hub_people.jsonl \
+  --people enrich/artifacts/wave_slice2_people.jsonl \
   --predictions enrich/out/predictions.jsonl \
   --append \
-  --retry-scope enrich/artifacts/hub_people.jsonl \
-  --retry enrich/artifacts/hub_retry.jsonl
+  --retry-scope enrich/artifacts/wave_slice2_people.jsonl \
+  --retry enrich/artifacts/wave_slice2_retry.jsonl
 ```
 
-See `enrich/RETRY_PLAN.md`. Do not submit another Vertex job unless asked.
+See `enrich/RETRY_PLAN.md` and `enrich/artifacts/WAVE_SLICE2.md`.
+Ask before slice 3. Do not merge results without asking.
 
 ## Local dry-run (fixtures, no spend)
 
