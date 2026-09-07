@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-06** (deployed `main` @ `4bf0009` — fix(seo-hubs): style hub pages inline, real OG images, drop dev jargon; previous record `651ea23`)
+**Last verified: 2026-09-07** (deployed `main` @ `371c5dd` — Product swap: $9 Deep Dive becomes the $47 Blueprint Breakdown Video (bonuses: Deep Dive PDFs + Yearly Timing Map); previous record `4bf0009`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,10 +16,10 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `4bf0009bc4c7b9805d4562d953b0f0126722c749` |
+| **Deployed commit** | `371c5dde111a3514fc8a335d85b6be759d6db0ec` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
-| **Worker rollback** | `b9f8a4b3-b5b9-4426-9996-1850d67d8ac0` |
+| **Worker version** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
+| **Worker rollback** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
