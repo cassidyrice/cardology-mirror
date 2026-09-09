@@ -231,12 +231,23 @@ assert.doesNotMatch(
 );
 assert.match(
   productSurfaceText,
-  /Personal Card Blueprint is a \$13 one-time written report generated from a single birth date/i,
+  /52xSeven Blueprint is a \$19 one-time year app built from a single birth date/i,
 );
 assert.match(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /Personal Card Blueprint is a \$13 one-time written report generated from a single birth date/i,
+  /52xSeven Blueprint is a \$19 one-time year app built from a single birth date/i,
 );
+// The $13 Personal Card Blueprint is retired. Neither the archive of generated
+// posts nor the generator that writes new ones may pitch it again. (The
+// historical order record in lib/products.ts still resolves the old slug for
+// past buyers, so this gate covers the blog surfaces only.)
+for (const file of ["lib/generated-blog-posts.json", "scripts/generate_daily_blog_post.ts"]) {
+  assert.doesNotMatch(
+    readFileSync(new URL(`../${file}`, import.meta.url), "utf8"),
+    /\$13|personal-card-blueprint/i,
+    `${file} must not pitch the retired $13 Personal Card Blueprint`,
+  );
+}
 assert.doesNotMatch(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
   /For a personal reading, start with the birth dates and the actual question/i,
