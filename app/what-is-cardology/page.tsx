@@ -154,7 +154,7 @@ export default function WhatIsCardology() {
         <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
           $19 52xSeven Blueprint
         </Link>
-        {" "}{/* eslint-disable-next-line react/jsx-no-literals */}
+        {" "}
         — whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
       </p>
       <p className="mb-6">
