@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-07** (deployed `main` @ `c98e655` — Shadow layer on all 52 card pages; the five Spades take the sheet's names; previous record `d37b39d`)
+**Last verified: 2026-09-08** (deployed `main` @ `1c5f831` — Product swap: the $47 Blueprint Breakdown Video becomes the $19 52xSeven Blueprint year app; previous record `c98e655`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `c98e655f13972f2287baf5eb6c4b33afe9eab5c5` |
+| **Deployed commit** | `1c5f831123c8b9c1f05d39a930c51fe8029cf966` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
 | **Worker rollback** | `809625d1-b81a-4244-b2ca-66c1a6ffa873` |
