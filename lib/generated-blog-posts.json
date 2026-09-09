@@ -12547,8 +12547,8 @@
         "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
       },
       {
-        "q": "What is the Personal Card Blueprint?",
-        "a": "A $13 one-time written report built from one birth date — birth card, ruling layer, and current chapter — delivered instantly after checkout. No phone call and no subscription."
+        "q": "What is the 52xSeven Blueprint?",
+        "a": "A $19 one-time year app built from one birth date — your birth card with the light and the shadow read, your current 52-day chapter, all seven chapters, and the yearly story arc. It unlocks instantly after checkout and stays open for 12 months. No phone call and no subscription."
       },
       {
         "q": "Who publishes Card Blueprints?",
@@ -12570,9 +12570,9 @@
         "href": "/birth-card-compatibility-calculator"
       },
       {
-        "label": "Personal Card Blueprint",
-        "href": "/products/personal-card-blueprint",
-        "note": "$13 instant written report."
+        "label": "52xSeven Blueprint",
+        "href": "/products/52xseven-blueprint",
+        "note": "$19 — your whole Cardology year, unlocked instantly."
       },
       {
         "label": "Methodology",
