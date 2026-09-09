@@ -9,9 +9,9 @@ import { SITE_NAME } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const TITLE = "Cards of Destiny: Find Your Birth Card";
+const TITLE = "Destiny Cards Calculator — Free Birth Card (Not Tarot)";
 const DESCRIPTION =
-  "Cards of Destiny / Destiny Cards: birthday → one playing card. Free calculator and chart. Same family as Cardology, not tarot. Same date, same card.";
+  "Destiny Cards = your birthday locked to one playing card. Free lookup, ruling card, full meaning. Same deck family as Cardology — not tarot Major Arcana.";
 const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
@@ -162,18 +162,39 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
-      <p className="eyebrow mb-3 text-gold">Free lookup · not tarot</p>
-      <h1 className="display mb-3 text-3xl text-bone">Cards of Destiny: Find Your Birth Card</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <p className="eyebrow mb-3 text-gold">Free lookup · not tarot · not fate</p>
+      <h1 className="display mb-3 text-3xl text-bone">Destiny Cards: Find Your Birth Card (Free Calculator)</h1>
+      <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           Cards of Destiny and Destiny Cards are names for a birthday mapped to one
-          card in a 52-card deck. Use the calculator. Card Blueprints calls the same
-          family <strong>Cardology</strong>. Not tarot.
+          card in a 52-card deck. Use the free calculator below. Card Blueprints calls the same
+          family <strong>Cardology</strong>. Pattern language — not tarot, not fortune-telling.
         </p>
       </div>
+      <p className="mb-4 text-sm text-mist">
+        Free first: reveal your destiny card on this page. Optional next: the{" "}
+        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+          $19 52xSeven Blueprint
+        </Link>
+        {" "}— whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
+      </p>
       <div className="mb-4">
         <BirthCardCalculator />
+      </div>
+      <div className="card-surface mb-6 rounded-2xl border border-gold/25 p-5">
+        <p className="font-serif text-base text-bone">After your free destiny card</p>
+        <p className="mt-2 text-sm leading-relaxed text-mist">
+          The calculator result already offers the $19 52xSeven Blueprint: your card,
+          the 52-day chapter you are in now, all seven chapters, and the yearly story
+          arc on one phone-friendly map. One payment. No renewal.
+        </p>
+        <Link
+          href="/products/52xseven-blueprint"
+          className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+        >
+          Get the 52xSeven Blueprint — $19
+        </Link>
       </div>
 
       <p className="mb-6 text-xs text-faint">
@@ -288,7 +309,7 @@ export default function DestinyCardsPage() {
         <h2 className="eyebrow mb-3 text-gold">How to find your destiny card</h2>
         <ol className="prose-reading list-decimal space-y-1.5 pl-5 text-mist">
           <li>
-            Enter the birthday in the free{" "}
+            Enter the birthday in the free calculator on this page, or use the dedicated{" "}
             <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
               birth card calculator
             </Link>{" "}
@@ -303,7 +324,13 @@ export default function DestinyCardsPage() {
             .
           </li>
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
-          <li>Optional deepen: the 52xSeven Blueprint ($19), your whole year in one phone-friendly app.</li>
+          <li>
+            Optional deepen: the{" "}
+            <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+              52xSeven Blueprint ($19)
+            </Link>
+            , your whole year in one phone-friendly app.
+          </li>
         </ol>
         <p className="prose-reading mt-3 text-mist">
           Example from the public method: January 15 resolves to the{" "}
@@ -437,6 +464,14 @@ export default function DestinyCardsPage() {
         Related:{" "}
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
           What is Cardology?
+        </Link>
+        {" · "}
+        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          Free calculator
+        </Link>
+        {" · "}
+        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+          $19 52xSeven Blueprint
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
