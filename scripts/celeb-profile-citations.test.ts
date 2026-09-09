@@ -18,14 +18,16 @@ function celebPosts(): BlogPost[] {
 
 test("grounds the existing celebrity blog profiles and leaves CTA link-only", () => {
   const posts = celebPosts();
-  expect(posts).toHaveLength(57);
-  const verified = posts.filter((post) => post.citations?.status === "verified");
-  const flagged = posts.filter((post) => post.citations?.status === "flagged");
+  expect(posts).toHaveLength(59);
+  const cited = posts.filter((post) => post.citations);
+  expect(cited).toHaveLength(57);
+  const verified = cited.filter((post) => post.citations?.status === "verified");
+  const flagged = cited.filter((post) => post.citations?.status === "flagged");
   expect(verified).toHaveLength(56);
   expect(flagged).toHaveLength(1);
   expect(flagged[0]?.slug).toBe("lady-gaga-birth-card-profile");
 
-  for (const post of posts) {
+  for (const post of cited) {
     expect(post.slug.endsWith("-birth-card-profile")).toBe(true);
     const headings = post.sections.map((section) => section.heading);
     expect(headings).toContain("Public date sources");
