@@ -12,7 +12,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/about": "2026-08-17",
   "/videos": "2026-07-29",
   "/blog": "2026-07-12", // sitemap uses newest post date; value unused at runtime
-  "/birth-card": "2026-08-15",
+  "/birth-card": "2026-09-09",
   "/birth-card-calculator": "2026-09-01",
   "/card-of-the-day": "2026-09-01",
   "/52-day-period-meaning-tool": "2026-07-30",
