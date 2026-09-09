@@ -105,6 +105,10 @@ describe("application sitemap integrity", () => {
       const entry = entriesByUrl.get(`${SITE_URL}/birth-card/${slug}`);
       expect(isoDay(entry?.lastModified), slug).toBe(CARD_MEANING_PAGES_UPDATED);
     }
+
+    for (const slug of ["10-of-clubs", "2-of-hearts", "3-of-clubs"] as const) {
+      expect(entriesByUrl.has(`${SITE_URL}/birth-card/${slug}`), slug).toBe(true);
+    }
   });
 
   test("uses the Joker page's explicit reviewed date", () => {

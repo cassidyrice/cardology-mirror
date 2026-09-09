@@ -23,6 +23,9 @@ test("birth-card hub promotes current Semrush ranking targets above the deck", (
     "ace-of-spades",
     "queen-of-spades",
     "6-of-diamonds",
+    "10-of-clubs",
+    "2-of-hearts",
+    "3-of-clubs",
   ];
 
   for (const slug of promotedSlugs) {
@@ -31,5 +34,5 @@ test("birth-card hub promotes current Semrush ranking targets above the deck", (
 
   expect(
     popularCardMeanings.match(/\["[^"]+",\s*"\/birth-card\/[^"]+"\]/g) ?? [],
-  ).toHaveLength(11);
+  ).toHaveLength(14);
 });
