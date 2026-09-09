@@ -358,6 +358,10 @@ export async function POST(
             },
             allow_promotion_codes: true,
             billing_address_collection: "auto",
+            automatic_tax: { enabled: false },
+            payment_method_collection: "always",
+            submit_type: "auto",
+            origin_context: "web",
           }
         : {
             mode: "payment",
@@ -372,9 +376,11 @@ export async function POST(
             phone_number_collection: {
               enabled: false,
             },
-            // No public promo code exists; the field only sends buyers hunting for one.
-            allow_promotion_codes: false,
+            allow_promotion_codes: true,
             billing_address_collection: "auto",
+            automatic_tax: { enabled: false },
+            submit_type: "auto",
+            origin_context: "web",
             customer_creation: "always",
             // No custom_text: Stripe rejects it while Managed Payments is on for this account
             // (live error 2026-09-02). The refund line lives under the CTA on the site instead.
