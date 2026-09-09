@@ -67,7 +67,10 @@ describe("Homepage landing contract", () => {
     expect(home).toContain('href="/explore"');
     expect(home).toContain("Explore →");
     expect(home).toContain('absolute: HOME_TITLE');
-    expect(home).toContain("Find Your Birth Card | Card Blueprints");
+    expect(home).toContain('const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints"');
+    expect(home).toContain(
+      'const HOME_DESCRIPTION =\n  "Your birthday maps to one playing card — same date, same card. Free Cardology calculator, then the $19 52xSeven Blueprint for your whole year."',
+    );
 
     expect(explore).toContain("ExploreDirectory");
     expect(explore).toContain("Explore Card Blueprints");

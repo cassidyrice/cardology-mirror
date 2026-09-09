@@ -10,9 +10,9 @@ import { SiteHeader } from "@/components/seo/SiteHeader";
 
 import "./landing.css";
 
-const HOME_TITLE = "Find Your Birth Card | Card Blueprints";
+const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday adds up to one card. Same date, same card, every time. Type it in and see yours.";
+  "Your birthday maps to one playing card — same date, same card. Free Cardology calculator, then the $19 52xSeven Blueprint for your whole year.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
