@@ -113,6 +113,13 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
   applySecurityHeaders(response.headers);
 
+  // A2A clients fetch this from other origins. Middleware header merge wins
+  // over public/_headers, so CORS/CORP have to be set here.
+  if (request.nextUrl.pathname === "/.well-known/agent-card.json") {
+    response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+  }
+
   if (request.nextUrl.pathname === "/card-of-the-day") {
     response.headers.set("Cache-Control", "no-store, must-revalidate");
   }

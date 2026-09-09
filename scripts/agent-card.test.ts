@@ -2,6 +2,10 @@ import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { NextRequest } from "next/server";
+
+import { middleware } from "../middleware";
+
 const root = join(import.meta.dir, "..");
 const cardPath = join(root, "public/.well-known/agent-card.json");
 const headers = readFileSync(join(root, "public/_headers"), "utf8");
@@ -97,5 +101,20 @@ test("Pages _headers serve the card as public JSON with CORS", () => {
   );
   expect(headers).toMatch(
     /\/\.well-known\/agent-card\.json\n(?:  .+\n)*  Access-Control-Allow-Origin: \*/,
+  );
+});
+
+test("middleware leaves the agent card on 200 and opens CORS for other agents", () => {
+  const response = middleware(
+    new NextRequest(
+      new Request("https://cardblueprints.com/.well-known/agent-card.json", {
+        headers: { host: "cardblueprints.com" },
+      }),
+    ),
+  );
+  expect(response.status).toBe(200);
+  expect(response.headers.get("access-control-allow-origin")).toBe("*");
+  expect(response.headers.get("cross-origin-resource-policy")).toBe(
+    "cross-origin",
   );
 });
