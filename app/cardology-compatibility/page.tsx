@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ProductStill } from "@/components/product/ProductStill";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
@@ -69,14 +68,7 @@ export default function CompatibilityPage() {
         Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start">
-        <CompatibilityCalculator />
-        <ProductStill
-          placement="cardology-compatibility-aside"
-          image="story"
-          lede="The comparison stops at the two cards. This is your own year, built on yours — the chapter you're standing in today, the six still coming, and what each one asks."
-        />
-      </div>
+      <CompatibilityCalculator />
 
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>

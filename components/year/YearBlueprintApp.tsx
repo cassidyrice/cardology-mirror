@@ -32,8 +32,6 @@ type Props = {
   framed?: boolean;
   /** Whether the preview is showing an example birthday rather than the visitor's. */
   sample?: boolean;
-  /** Screen to open on in full mode (still shots, deep links). Defaults to "now". */
-  initialScreen?: "card" | "now" | "chapters" | "story";
   className?: string;
 };
 
@@ -513,9 +511,9 @@ const LABELS: Record<ScreenId, string> = {
 /* ---------- app ---------- */
 
 export function YearBlueprintApp({
-  data, mode, checkoutHref = "#", unlock, onBirthdate, priceLabel = "$19", framed = mode === "preview", sample = false, initialScreen = "now", className,
+  data, mode, checkoutHref = "#", unlock, onBirthdate, priceLabel = "$19", framed = mode === "preview", sample = false, className,
 }: Props) {
-  const [screen, setScreen] = useState<ScreenId>(mode === "preview" ? "preview" : initialScreen);
+  const [screen, setScreen] = useState<ScreenId>(mode === "preview" ? "preview" : "now");
   const tabs: ScreenId[] = mode === "preview"
     ? ["preview", "card", "now", "chapters", "story"]
     : ["card", "now", "chapters", "story"];
