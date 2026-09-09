@@ -96,3 +96,9 @@
 
 /feed.xml
   Cache-Control: public, max-age=0, s-maxage=3600
+
+/.well-known/agent-card.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=0, s-maxage=3600
+  Access-Control-Allow-Origin: *
+  Cross-Origin-Resource-Policy: cross-origin
