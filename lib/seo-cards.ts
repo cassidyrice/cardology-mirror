@@ -149,15 +149,54 @@ export function cardsBySuit(): { suit: Suit; domain: string; cards: CardSeo[] }[
   return SUITS.map((suit) => ({ suit, domain: SUIT_DOMAIN[suit], cards: allCardSeo().filter((c) => c.suit === suit) }));
 }
 
+const MONTH_ABBR = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+] as const;
+
+function archetypeNickname(title: string | null): string | null {
+  if (!title) return null;
+  // lens.name fallbacks look like "9 OF HEARTS" — not an archetype nickname.
+  if (/\bof\s+(hearts|clubs|diamonds|spades)\b/i.test(title)) return null;
+  const nickname = title.replace(/^the\s+/i, "").trim().toLowerCase();
+  return nickname || null;
+}
+
+function formatBirthDate(date: BirthdateSeo): string {
+  return `${MONTH_ABBR[date.month - 1]} ${date.day}`;
+}
+
+function birthDateRange(card: CardSeo): string | null {
+  const dates = birthDatesForCard(card);
+  if (dates.length === 0) return null;
+  const first = dates[0];
+  const last = dates[dates.length - 1];
+  if (first.month === last.month && first.day === last.day) {
+    return formatBirthDate(first);
+  }
+  return `${formatBirthDate(first)}–${formatBirthDate(last)}`;
+}
+
 export function cardMeta(card: CardSeo): { title: string; description: string } {
-  // CTR-oriented: exact "{card} meaning" + birth-card intent. Keep under ~60 chars;
-  // root layout does not append a brand suffix.
-  const title = `${card.label} Meaning: Cardology Birth Card`;
-  const dates = birthDatesForCard(card).slice(0, 3).map((d) => d.label).join(", ");
-  const description = clamp(
-    `${card.label} Cardology birth-card meaning (playing cards, not tarot): personality, love, shadow${dates ? `; dates like ${dates}` : ""}. Free calculator on Card Blueprints.`,
-    155,
-  );
+  // GSC-approved template for all 52 /birth-card/{slug} pages. Root layout
+  // does not append a brand suffix — the title already ends with "| Cardology".
+  const title = `${card.label} Birth Card Meaning | Cardology`;
+  const nickname = archetypeNickname(card.title);
+  const range = birthDateRange(card);
+  const description =
+    nickname && range
+      ? `${card.label} birth card: ${nickname} pattern, shadow, love/work, dates ${range}. Playing-card Cardology — free calc + $19 year map.`
+      : `${card.label} birth card in Cardology: pattern, shadow, love/work, and exact birth dates. Playing cards — not tarot. Free calc; optional $19 year Blueprint.`;
   return { title, description };
 }
 
