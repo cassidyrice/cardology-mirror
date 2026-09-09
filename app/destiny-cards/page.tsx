@@ -177,7 +177,7 @@ export default function DestinyCardsPage() {
         <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
           $19 52xSeven Blueprint
         </Link>
-        {" "}{/* keep exact disk spacing */} — whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
+        {" "}— whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
