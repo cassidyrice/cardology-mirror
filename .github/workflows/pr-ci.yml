@@ -57,6 +57,7 @@ jobs:
             scripts/newsletter-signup-form.test.ts \
             scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
+            scripts/birth-card-coverage.test.ts \
             scripts/calculator-library-links.test.ts \
             scripts/calculator-deep-dive.test.ts \
             scripts/agent-card.test.ts \

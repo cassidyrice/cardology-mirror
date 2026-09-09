@@ -78,12 +78,12 @@ export async function generateMetadata({
     return {
       title,
       description,
-      alternates: { canonical: `/birth-card/${date.slug}` },
+      alternates: { canonical: `/born-on/${date.slug}` },
       openGraph: {
         siteName: SITE_NAME,
         title,
         description,
-        url: `/birth-card/${date.slug}`,
+        url: `/born-on/${date.slug}`,
         type: "article",
         images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }],
       },
@@ -544,7 +544,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
     articleJsonLd({
       headline: `${date.label} Birth Card: ${card.label}`,
       description: `${date.label} birth card meaning in Cardology.`,
-      url: `${SITE_URL}/birth-card/${date.slug}`,
+      url: `${SITE_URL}/born-on/${date.slug}`,
     }),
   ];
 
@@ -553,7 +553,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       crumb={[
         { label: "Home", href: "/" },
         { label: "Birth Cards", href: "/birth-card" },
-        { label: date.label, href: `/birth-card/${date.slug}` },
+        { label: date.label, href: `/born-on/${date.slug}` },
       ]}
     >
       <JsonLd data={jsonLd} />
