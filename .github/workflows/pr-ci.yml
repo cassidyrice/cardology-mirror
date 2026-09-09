@@ -34,83 +34,9 @@ jobs:
       #   (explicit opt-in check that requires production network access)
       # - bun run build
       #   (Next.js build may require env vars unavailable in PR CI)
-      - name: Celebrity SEO scaffold
-        run: bun run build:seo-pages
-
-      - name: NFL franchise SEO scaffold
-        run: bun run build:franchise-pages
-
-      - name: Presidents birth-card scaffold
-        run: bun run build:seo-presidents
-
-      - name: Federal holiday birth-card scaffold
-        run: bun run build:seo-holidays
-
-      - name: National Park birth-card scaffold
-        run: bun run build:seo-parks
-
-      - name: Signers birth-card scaffold
-        run: bun run build:seo-signers
-
-      - name: Nobel laureate birth-card scaffold
-        run: bun run build:seo-nobel
-
-      - name: SCOTUS justices birth-card scaffold
-        run: bun run build:seo-scotus
-
-      - name: MLB first-game birth-card scaffold
-        run: bun run build:seo-mlb
-
-      - name: Governors birth-card scaffold
-        run: bun run build:seo-governors
-
-      - name: NASA astronaut birth-card scaffold
-        run: bun run build:seo-astronauts
-
-      - name: Born-on notable-people grounding scaffold
-        run: bun run build:seo-born-on
-
-      - name: Cabinet birth-card scaffold
-        run: bun run build:seo-cabinet
-
-      - name: Senators birth-card scaffold
-        run: bun run build:seo-senators
-
-      - name: Winter Olympic medalist birth-card scaffold
-        run: bun run build:seo-olympics-winter
-
-      - name: Summer Olympian birth-card scaffold
-        run: bun run build:seo-olympics
-
-      - name: Tony leading-acting birth-card scaffold
-        run: bun run build:seo-tonys
-
-      - name: Oscars Best Actor/Actress birth-card scaffold
-        run: bun run build:seo-oscars
-
-      - name: Emmy Lead Actor/Actress birth-card scaffold
-        run: bun run build:seo-emmys
-
-      - name: Grammy Album of the Year birth-card scaffold
-        run: bun run build:seo-grammys
-
-      - name: NFL Hall of Fame birth-card scaffold
-        run: bun run build:seo-nfl-hof
-
-      - name: Rock Hall inductee birth-card scaffold
-        run: bun run build:seo-rock-hall
-
-      - name: Kennedy Center Honors birth-card scaffold
-        run: bun run build:seo-kennedy-center-honors
-
-      - name: Pulitzer Fiction birth-card scaffold
-        run: bun run build:seo-pulitzer-fiction
-
-      - name: House leadership and chairs birth-card scaffold
-        run: bun run build:seo-house-chairs
-
-      - name: TIME Person of the Year birth-card scaffold
-        run: bun run build:seo-time-poty
+      #
+      # Birth-card directory packs (build:seo-pages and the 23 hub scaffolds)
+      # were removed in f2050b8e. Do not call those scripts or seo-pages/*.test.ts.
 
       - name: Fast unit tests
         run: |
@@ -138,34 +64,7 @@ jobs:
             scripts/famous-birthdays-grounding.test.ts \
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
-            scripts/worker-production-contract-lib.test.ts \
-            seo-pages/seo-pages.test.ts \
-            seo-pages/states.test.ts \
-            seo-pages/franchise.test.ts \
-            seo-pages/presidents.test.ts \
-            seo-pages/holidays.test.ts \
-            seo-pages/parks.test.ts \
-            seo-pages/signers.test.ts \
-            seo-pages/nobel.test.ts \
-            seo-pages/scotus.test.ts \
-            seo-pages/mlb.test.ts \
-            seo-pages/governors.test.ts \
-            seo-pages/astronauts.test.ts \
-            seo-pages/born-on.test.ts \
-            seo-pages/cabinet.test.ts \
-            seo-pages/senators.test.ts \
-            seo-pages/olympics-winter.test.ts \
-            seo-pages/olympics.test.ts \
-            seo-pages/tonys.test.ts \
-            seo-pages/oscars.test.ts \
-            seo-pages/emmys.test.ts \
-            seo-pages/grammys.test.ts \
-            seo-pages/nfl-hof.test.ts \
-            seo-pages/rock-hall.test.ts \
-            seo-pages/kennedy-center-honors.test.ts \
-            seo-pages/pulitzer-fiction.test.ts \
-            seo-pages/house-chairs.test.ts \
-            seo-pages/time-poty.test.ts
+            scripts/worker-production-contract-lib.test.ts
 
   pipeline:
     runs-on: ubuntu-latest

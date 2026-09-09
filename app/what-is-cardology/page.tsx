@@ -17,9 +17,9 @@ import { updatedLabel } from "@/lib/page-updated";
 
 const UPDATED = PAGE_UPDATED_DATES["/what-is-cardology"];
 
-const TITLE = "What Is Cardology? Not Cardiology, Not Tarot, Explained";
+const TITLE = "What Is Cardology? Birthday → One Playing Card";
 const DESCRIPTION =
-  "Cardology maps your birthday to one of 52 playing cards, the same card every time. Not cardiology, not tarot: how it works, where it comes from, and your free card.";
+  "Cardology maps your birthday to one card in a 52-card deck — same date, same card. Not cardiology, not tarot. Free calculator + sourced history.";
 const OG_IMAGE = { url: "/og/what-is-cardology.png", width: 1200, height: 630, alt: "What is Cardology? Three playing cards fanned on paper" };
 
 export const metadata: Metadata = {
@@ -98,10 +98,10 @@ const faqs = [
 
 const toc = [
   { id: "definition", label: "Definition" },
-  { id: "how-it-works", label: "How it works" },
-  { id: "benefits", label: "Benefits" },
   { id: "find-your-card", label: "Find your card" },
   { id: "free-reading", label: "Free reading" },
+  { id: "how-it-works", label: "How it works" },
+  { id: "benefits", label: "Benefits" },
   { id: "suits", label: "Four suits" },
   { id: "card-meanings", label: "Card meanings" },
   { id: "layers", label: "Birth vs ruling" },
@@ -139,19 +139,27 @@ export default function WhatIsCardology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
       <SeoHeroFan className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-bone">What Is Cardology? Playing Cards from Your Birthday</h1>
+      <h1 className="display mb-3 text-3xl text-bone">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
           Cardology is a birthday-to-playing-card system: your month and day map to
           one card in a standard 52-card deck (not tarot). That card is pattern
           language for personality, compatibility, and timing. Same birthday, same
-          card — every time.
+          card — every time. Not cardiology, and not a fate prediction.
         </p>
       </div>
+      <p className="mb-2 text-sm text-mist">
+        Free first: reveal your birth card below. Optional next: the{" "}
+        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+          $19 52xSeven Blueprint
+        </Link>
+        {" "}
+        — whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
+      </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
-          Reveal my birth card on this page →
+          Reveal my birth card — free →
         </Link>
       </p>
 
@@ -162,7 +170,56 @@ export default function WhatIsCardology() {
         </Link>
       </p>
 
-      <nav aria-label="On this page" className="mb-8 rounded-2xl border border-white/10 p-4">
+      <section className="mt-8" id="find-your-card">
+        <h2 className="eyebrow mb-2 text-gold">What is my birth card in Cardology?</h2>
+        <p className="prose-reading mb-4 text-mist">
+          Enter any birthday below. The free calculator returns the playing-card birth
+          card and ruling card for the Cardology system.
+        </p>
+        <BirthCardCalculator />
+        <p className="mt-4 text-sm">
+          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            Prefer the dedicated calculator page →
+          </Link>
+        </p>
+      </section>
+
+      <section className="mt-10" id="free-reading">
+        <h2 className="eyebrow mb-2 text-gold">Your free Cardology reading</h2>
+        <p className="prose-reading text-mist">
+          The result above is a free Cardology reading, not only a calculator answer.
+          Open the returned birth card to read its personality pattern, love and
+          relationship style, money and work themes, advice, shadow, and exact birth
+          dates. The planetary ruling card adds a second layer for how the core pattern
+          expresses. Nothing is randomly drawn, and no email is required.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          For the complete deck, browse{" "}
+          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+            all 52 Cardology card meanings
+          </Link>
+          . Optional next step: the{" "}
+          <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+            $19 52xSeven Blueprint
+          </Link>{" "}
+          (your card, the 52-day chapter you are in now, all seven chapters, and the story arc, in one phone-friendly app).
+        </p>
+        <div className="card-surface mt-5 rounded-2xl border border-gold/25 p-5">
+          <p className="font-serif text-base text-bone">After your free card</p>
+          <p className="mt-2 text-sm leading-relaxed text-mist">
+            The 52xSeven Blueprint is $19 once: your whole year in seven dated 52-day
+            chapters, on one phone-friendly map. Instant access via email. No renewal.
+          </p>
+          <Link
+            href="/products/52xseven-blueprint"
+            className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+          >
+            Get the 52xSeven Blueprint — $19
+          </Link>
+        </div>
+      </section>
+
+      <nav aria-label="On this page" className="mb-8 mt-10 rounded-2xl border border-white/10 p-4">
         <p className="eyebrow mb-3 text-gold">On this page</p>
         <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-mist">
           {toc.map((item) => (
@@ -234,42 +291,6 @@ export default function WhatIsCardology() {
             describe focus and pressure — useful for reflection, not event guarantees.
           </li>
         </ul>
-      </section>
-
-      <section className="mt-10" id="find-your-card">
-        <h2 className="eyebrow mb-2 text-gold">What is my birth card in Cardology?</h2>
-        <p className="prose-reading mb-4 text-mist">
-          Enter any birthday below. The free calculator returns the playing-card birth
-          card and ruling card for the Cardology system.
-        </p>
-        <BirthCardCalculator />
-        <p className="mt-4 text-sm">
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
-            Prefer the dedicated calculator page →
-          </Link>
-        </p>
-      </section>
-
-      <section className="mt-10" id="free-reading">
-        <h2 className="eyebrow mb-2 text-gold">Your free Cardology reading</h2>
-        <p className="prose-reading text-mist">
-          The result above is a free Cardology reading, not only a calculator answer.
-          Open the returned birth card to read its personality pattern, love and
-          relationship style, money and work themes, advice, shadow, and exact birth
-          dates. The planetary ruling card adds a second layer for how the core pattern
-          expresses. Nothing is randomly drawn, and no email is required.
-        </p>
-        <p className="prose-reading mt-3 text-mist">
-          For the complete deck, browse{" "}
-          <Link href="/birth-card" className="text-gold underline underline-offset-4">
-            all 52 Cardology card meanings
-          </Link>
-          . Optional next step: the{" "}
-          <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-            $19 52xSeven Blueprint
-          </Link>{" "}
-          (your card, the 52-day chapter you are in now, all seven chapters, and the story arc, in one phone-friendly app).
-        </p>
       </section>
 
       <section className="mt-10" id="suits">
@@ -445,11 +466,14 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/cardology-for-beginners" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            Beginners path →
+          <Link href="/products/52xseven-blueprint" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+            $19 52xSeven Blueprint →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
             Calculator page →
+          </Link>
+          <Link href="/cardology-for-beginners" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
+            Beginners path →
           </Link>
           <a href={BIRTHDAY_DIRECTORY_PATH} className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
             Birthdays by date →
