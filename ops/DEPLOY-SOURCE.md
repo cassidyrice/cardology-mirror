@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-08** (deployed `main` @ `b383281` — Homepage: the live 52xSeven preview under the calculator, replacing the still; previous record `4fcdfb7`)
+**Last verified: 2026-09-09** (deployed `main` @ `2df83dc` — checkout: Checkout Studio params, promo-code field on the $19 page; previous record `b383281`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `b383281a671a92e37d76f2f0294213882397983b` |
+| **Deployed commit** | `2df83dc4b17071a576e5e8295e602f1f5f685ae5` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `5cc3d234-b851-4977-95a6-63a63b88cd08` |
 | **Worker rollback** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
