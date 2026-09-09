@@ -105,11 +105,19 @@ test("52xSeven sales page previews the year client-side; the birthday never ente
   const product = read("app/products/52xseven-blueprint/page.tsx");
   expect(product).toContain("<YearPreview");
   expect(product).not.toContain("searchParams");
-  const preview = read("components/year/YearPreview.tsx");
+  const preview = read("components/year/YearPreviewApp.tsx");
   expect(preview).toContain('fetch("/api/year-preview"');
   expect(preview).toContain('method: "POST"');
   expect(preview).toContain("DEEP_DIVE_SESSION_PATH");
-  expect(preview).toContain("<DeepDiveCta");
+  expect(read("components/year/YearPreview.tsx")).toContain("<YearPreviewApp");
+  expect(read("components/year/YearPreview.tsx")).toContain("<DeepDiveCta");
+  // The same tappable preview sits under the homepage calculator.
+  const home = read("app/page.tsx");
+  expect(home).toContain("<YearPreviewApp");
+  expect(home).toContain('source="home-landing"');
+  expect(home).toContain("buildYearBlueprint");
+  expect(home).toContain("<LandingCalculator />");
+  expect(home.indexOf("<LandingCalculator />")).toBeLessThan(home.indexOf("<YearPreviewApp"));
   const api = read("app/api/year-preview/route.ts");
   expect(api).toContain("rateLimit(");
   expect(api).toContain("sanitizeBirthdateISO");
