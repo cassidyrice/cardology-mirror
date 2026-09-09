@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
-import { SUIT_COLOR_PAPER } from "@/lib/cards";
+import {
+  DEEP_DIVE_CALCULATOR_FORM_HREF,
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
+} from "@/lib/deep-dive";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -36,6 +41,10 @@ const faqs = [
   {
     q: "What do the 52 birth cards mean?",
     a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
+  },
+  {
+    q: "What is the 52xSeven Blueprint?",
+    a: "The free pages name your birth card and its pattern. The 52xSeven Blueprint ($19) is the whole year on one map: your card, the 52-day chapter you are in right now, all seven chapters, and the story arc between them. One payment, no renewal. Instant access on the confirmation page and by emailed sign-in link.",
   },
 ];
 
@@ -125,10 +134,18 @@ export default function BirthCardIndex() {
           .
         </p>
       </div>
-      <p className="mb-6">
+      <p className="mb-3">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
           Find your birth card free →
         </Link>
+      </p>
+      <p className="prose-reading mb-6 text-sm text-mist">
+        After you have the card, the{" "}
+        <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-gold underline underline-offset-4">
+          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
+        </Link>{" "}
+        maps the whole year — seven 52-day chapters, one payment, no renewal, instant
+        access by email.
       </p>
       <p className="mb-4 text-xs text-faint">
         By{" "}
@@ -264,7 +281,9 @@ export default function BirthCardIndex() {
         </div>
       </section>
 
-      <FreeCourseCta source="card-meanings" className="mt-12" />
+      <OfferCta className="mt-12" />
+
+      <FreeCourseCta source="card-meanings" className="mt-8" />
     </SeoShell>
   );
 }

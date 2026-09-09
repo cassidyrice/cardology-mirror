@@ -22,6 +22,7 @@ test("birth-card hub has visible FAQ and FAQ schema", () => {
   expect(page).toContain("What is a birth card?");
   expect(page).toContain("Are Cardology birth cards the same as tarot birth cards?");
   expect(page).toContain("What do the 52 birth cards mean?");
+  expect(page).toContain("What is the 52xSeven Blueprint?");
   expect(page).toContain("faqs.map((f)");
 });
 
@@ -29,4 +30,20 @@ test("birth-card hub retains CollectionPage and all-card matrix", () => {
   expect(page).toContain('"@type": "CollectionPage"');
   expect(page).toContain('"@type": "ItemList"');
   expect(page).toContain("<DeckMatrix />");
+});
+
+test("birth-card hub sells the $19 52xSeven Blueprint without gutting free value", () => {
+  expect(page).toContain("<OfferCta");
+  expect(page).toContain("DEEP_DIVE_PRODUCT_NAME");
+  expect(page).toContain("DEEP_DIVE_PRICE_LABEL");
+  expect(page).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
+  expect(page).toContain("Find your birth card free");
+  expect(page).toContain("<FreeCourseCta");
+  expect(page).toContain("52xSeven Blueprint ($19)");
+  expect(page).toContain("one payment, no renewal");
+  expect(page).not.toContain("$9");
+  expect(page).not.toContain("$13");
+  expect(page).not.toContain("personal-card-blueprint");
+  expect(page).not.toContain("Deep Dive");
+  expect(page).not.toContain("buy.stripe.com");
 });
