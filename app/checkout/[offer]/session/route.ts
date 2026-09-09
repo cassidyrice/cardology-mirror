@@ -56,7 +56,7 @@ const CHECKOUT_WINDOW_MS = 10 * 60 * 1000;
 
 // POST /checkout/[offer]/session
 // Creates a Stripe Checkout Session for active reports, downloads, and the
-// Blueprint Breakdown Video (internal slug "deep-dive").
+// 52xSeven Blueprint (internal slug "deep-dive").
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
@@ -76,7 +76,7 @@ export async function POST(
   const product = checkoutProductBySlug(slug);
   if (!product) {
     return NextResponse.redirect(
-      new URL("/products/blueprint-breakdown-video", req.url),
+      new URL("/products/52xseven-blueprint", req.url),
       303,
     );
   }
@@ -247,7 +247,7 @@ export async function POST(
   if (isDeepDive(product) && !formBirthdate) {
     if (wantsJson) {
       return NextResponse.json(
-        { error: "Birthday is required for Blueprint Breakdown checkout." },
+        { error: "Birthday is required for 52xSeven Blueprint checkout." },
         { status: 400 },
       );
     }
@@ -372,7 +372,7 @@ export async function POST(
             phone_number_collection: {
               enabled: false,
             },
-            // No public promo code exists; the field only sends $47 buyers hunting for one.
+            // No public promo code exists; the field only sends buyers hunting for one.
             allow_promotion_codes: false,
             billing_address_collection: "auto",
             customer_creation: "always",

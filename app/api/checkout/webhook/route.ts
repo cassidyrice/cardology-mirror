@@ -10,14 +10,11 @@ import {
   ALL_90_SPREADS_FILE,
   DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_SKU,
-  DEEP_DIVE_VIDEO_TURNAROUND,
+  FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
+  FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
   deepDiveSuccessCopy,
-} from "@/lib/deep-dive";
-import {
-  deepDiveCardPdfForBirthday,
-  deepDiveFilesForBirthday,
   isJokerBirthdate,
-} from "@/lib/deep-dive-card-pdf";
+} from "@/lib/deep-dive";
 import {
   productBySlug,
   isVoiceReading,
@@ -32,7 +29,6 @@ import { getStripe } from "@/lib/stripe";
 import { mintToken } from "@/lib/gate";
 import { mintDownloadToken } from "@/lib/download-token";
 import { mintReportToken } from "@/lib/report-token";
-import { TIMING_MAP_LABEL, TIMING_MAP_SLUG } from "@/lib/timing-map/model";
 import { mintMembershipToken } from "@/lib/membership-token";
 
 export const runtime = "edge";
@@ -117,66 +113,62 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: Blueprint Breakdown Video (slug deep-dive). Instant bonuses go
-    // out here: the PDFs (Guide + card PDF; Joker skips card) and the Yearly Timing
-    // Map (drawn on request at /api/timing-map from a report token). The 5-minute
-    // video is produced per buyer and emailed by hand, so the intake notification
-    // carries everything needed to record it. "deep-dive-9" is the
-    // retired $9 SKU — sessions opened before the switch still fulfill. ----
+    // ---- BRANCH: 52xSeven Blueprint (slug deep-dive). Instant: mint the
+    // 12-month sign-in token for the year app at /blueprint and email it.
+    // "blueprint-breakdown-47" and "deep-dive-9" are the retired SKUs — sessions
+    // opened before a switch still fulfill with the current product. ----
     const deepDivePaid =
       paymentSatisfied &&
       (isDeepDive(product) ||
         session.metadata?.sku === DEEP_DIVE_SKU ||
+        session.metadata?.sku === "blueprint-breakdown-47" ||
         session.metadata?.sku === "deep-dive-9" ||
         session.metadata?.offer_slug === "deep-dive");
     if (deepDivePaid) {
       let buyerEmailed = false;
-      let bonusLinks = 0;
+      let yearUrl = "";
       const birthday = birthdateFromCheckoutSession(session);
-      const files = deepDiveFilesForBirthday(birthday);
-      const cardPdf = deepDiveCardPdfForBirthday(birthday);
       const joker = isJokerBirthdate(birthday);
+      const birthdayValid = /^\d{4}-\d{2}-\d{2}$/.test(birthday);
       if (email !== "(no email)") {
         try {
-          const days = 30;
-          const links: string[] = [];
-          for (const file of files) {
-            const token = await mintDownloadToken(email, file.slug, days);
-            links.push(
-              `${file.label}: ${SITE_URL}/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
+          if (birthdayValid && !joker) {
+            const token = await mintReportToken(
+              email,
+              FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
+              session.id,
+              birthday,
+              FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
             );
+            yearUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
           }
-          if (birthday && !joker) {
-            const mapToken = await mintReportToken(email, TIMING_MAP_SLUG, session.id, birthday, days);
-            links.push(
-              `${TIMING_MAP_LABEL} (opens in your browser — save or print it): ${SITE_URL}/api/timing-map?token=${encodeURIComponent(mapToken)}`,
-            );
-          }
-          bonusLinks = links.length;
-          const extra = joker
-            ? "December 31 is the Joker — there is no card-level Deep Dive PDF or yearly map for this date. The complete System Guide still applies."
-            : cardPdf
-              ? ""
-              : "Your card PDF could not be resolved from the birthday on this order. Reply with YYYY-MM-DD and we will send the card file.";
           const body = [
             `Thank you — your ${DEEP_DIVE_PRODUCT_NAME} is confirmed.`,
             "",
             deepDiveSuccessCopy(birthday),
             "",
-            "Your bonuses, ready now (links good for 30 days):",
-            ...links,
-            "",
           ];
-          if (extra) body.push(extra, "");
-          body.push("If a link fails, reply to this email.");
+          if (yearUrl) {
+            body.push(
+              "Your year is unlocked right now — open it and save it to your phone:",
+              yearUrl,
+              "",
+              "Keep this link — it's your sign-in and re-opens your year anytime for 12 months.",
+            );
+          } else if (!joker) {
+            body.push(
+              "We could not read a birth date from this checkout. Reply to this email with your birth date (YYYY-MM-DD) and we will unlock your year.",
+            );
+          }
+          body.push("", "If anything doesn't work, just reply to this email.");
           await sendIntakeEmail({
             to: email,
-            subject: "Your Blueprint Breakdown order is confirmed — bonus files inside",
+            subject: `Your ${DEEP_DIVE_PRODUCT_NAME} is ready — your year, unlocked`,
             text: body.join("\n"),
           });
           buyerEmailed = true;
         } catch (e) {
-          console.error("[webhook] deep dive buyer email failed", e);
+          console.error("[webhook] 52xseven buyer email failed", e);
         }
       }
 
@@ -185,28 +177,30 @@ export async function POST(req: NextRequest) {
         try {
           await sendIntakeEmail({
             to,
-            subject: `Payment received ($47 Blueprint Breakdown): ${offerName} — ${email}`,
+            subject: `Payment received ($19 52xSeven Blueprint): ${offerName} — ${email}`,
             text: [
-              `ACTION: record the 5-minute Blueprint Breakdown Video for this buyer and email it ${DEEP_DIVE_VIDEO_TURNAROUND}. (Yearly Timing Map + PDFs were sent automatically.)`,
+              yearUrl
+                ? "Fulfilled automatically: the 12-month sign-in link was emailed to the buyer."
+                : joker
+                  ? "ACTION: December 31 (Joker) — no year to draw. Offer a full refund or a corrected date."
+                  : "ACTION: no valid birth date on this order — ask the buyer for YYYY-MM-DD and mint the link.",
               `Birthday: ${birthday || "(missing — ask the buyer)"}`,
-              `Birth card: ${cardPdf ? cardPdf.label.replace(" Deep Dive", "") : joker ? "Joker (Dec 31)" : "(unresolved)"}`,
               "",
               `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
-              `Type: blueprint breakdown video`,
+              `Type: 52xseven blueprint (instant year app)`,
               `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
               `Amount: ${amount}`,
               `Customer email: ${email}`,
-              `Birthday supplied: ${birthday ? "yes" : "NO"}`,
+              `Birthday supplied: ${birthdayValid ? "yes" : "NO"}`,
               `Source: ${session.metadata?.source || "(none)"}`,
               `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
-              `Bonus download links emailed: ${bonusLinks}`,
-              `Card PDF: ${cardPdf ? cardPdf.slug : joker ? "skipped (Joker)" : "none"}`,
+              `Sign-in link minted: ${yearUrl ? "yes" : "no"}`,
               `Stripe session: ${session.id}`,
             ].join("\n"),
             replyTo: email !== "(no email)" ? email : undefined,
           });
         } catch (e) {
-          console.error("[webhook] deep dive notification email failed", e);
+          console.error("[webhook] 52xseven notification email failed", e);
         }
       }
       return NextResponse.json({ received: true });
@@ -236,7 +230,7 @@ export async function POST(req: NextRequest) {
               `Your download window: ${product.redownloadDays} days.`,
               `Save the PDF somewhere safe after downloading.`,
               "",
-              `Explore your personalized report: ${SITE_URL}/products/personal-card-blueprint`,
+              `Explore the 52xSeven Blueprint: ${SITE_URL}/products/52xseven-blueprint`,
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),

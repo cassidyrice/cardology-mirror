@@ -58,14 +58,14 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-[#14110d]">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">Blueprint Breakdown Video information</h3>
+              <h3 className="font-bold text-[#14110d]">52xSeven Blueprint information</h3>
               <p className="mt-1">
                 Stripe Checkout collects the buyer&rsquo;s email address and the birth
-                date entered for the Blueprint Breakdown Video. The birth date is
-                used to match the bonus card-level PDF and to produce your video
-                and Yearly Timing Map. The signed download
-                token in the transactional email carries your email address,
-                the card name, and an expiry — not the birth date. We do not
+                date entered for the 52xSeven Blueprint. The birth date is
+                used to build your year app and to email your sign-in link.
+                The signed sign-in token in the transactional email carries
+                your email address, the birth date, and an expiry, so the year
+                can be redrawn on each visit without being stored. We do not
                 maintain a separate customer birth-date database, but Stripe
                 keeps the birth date on the checkout record, and Stripe, Resend,
                 and Cloudflare may process the checkout field, email link, or
@@ -243,7 +243,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-[#14110d]">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-2">To produce and email your Blueprint Breakdown Video and Yearly Timing Map, and to match and deliver the bonus Deep Dive PDFs and their signed download links (and to keep past report links working).</li>
+            <li className="border-t border-[#14110d]/12 pt-2">To build your 52xSeven Blueprint year app from the birth date you enter and to email your signed sign-in link (and to keep past report and download links working).</li>
             <li className="border-t border-[#14110d]/12 pt-2">To send your purchase confirmation and start-here instructions by email.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
             <li className="border-t border-[#14110d]/12 pt-2">To support and honor legacy phone orders during their original access windows.</li>

@@ -24,10 +24,10 @@ describe("The Complete Card Blueprint launch contract", () => {
       "utf8",
     );
     expect(middleware).toContain(
-      '"/products/complete-card-blueprint": "/products/blueprint-breakdown-video"',
+      '"/products/complete-card-blueprint": "/products/52xseven-blueprint"',
     );
     expect(middleware).toContain(
-      '"/checkout/complete-card-blueprint": "/products/blueprint-breakdown-video"',
+      '"/checkout/complete-card-blueprint": "/products/52xseven-blueprint"',
     );
   });
 

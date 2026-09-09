@@ -28,7 +28,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Free birth card calculator, 52 meanings, compatibility, and the $47 Blueprint Breakdown Video.";
+  "Free birth card calculator, 52 meanings, compatibility, and the $19 52xSeven Blueprint.";
 
 export const APP_PATHS = [
   "/today",
@@ -54,7 +54,7 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
-  "/products/blueprint-breakdown-video",
+  "/products/52xseven-blueprint",
   "/free-course",
   "/what-is-cardology",
   "/cardology-for-beginners",

@@ -9,7 +9,7 @@ export const PRODUCT_IMAGE_PATH = "/og/default.png";
 
 /** Per-product OG/product-snippet images (public/og/products/). */
 const PRODUCT_IMAGE_BY_SLUG: Record<string, string> = {
-  "deep-dive": "/og/products/blueprint-breakdown-video.png",
+  "deep-dive": "/og/products/52xseven-blueprint.png",
   "personal-card-blueprint": "/og/products/personal-card-blueprint.png",
   "complete-card-blueprint": "/og/products/complete-card-blueprint.png",
   "analog-algorithm": "/og/products/analog-algorithm.png",

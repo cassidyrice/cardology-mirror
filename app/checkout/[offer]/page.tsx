@@ -12,6 +12,7 @@ import {
   instantReportFacts,
   type DigitalOfferFact,
   type InstantReportFact,
+  isDeepDive,
   isDigitalDownload,
   isInstantReport,
   isMembership,
@@ -39,7 +40,7 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  // Checkout-eligible products include the Blueprint Breakdown (slug deep-dive) and the Content Calendar, which are not in the public catalog.
+  // Checkout-eligible products include the 52xSeven Blueprint (slug deep-dive) and the Content Calendar, which are not in the public catalog.
   const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
@@ -47,6 +48,7 @@ export default async function CheckoutReviewPage({
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product) || isMembership(product);
   const isVideo = isVideoService(product);
+  const isYearApp = isDeepDive(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
     isVideo
@@ -64,7 +66,7 @@ export default async function CheckoutReviewPage({
   return (
     <CheckoutShell
       crumb={[
-        { label: "Blueprint Breakdown Video", href: "/products/blueprint-breakdown-video" },
+        { label: "52xSeven Blueprint", href: "/products/52xseven-blueprint" },
         { label: "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
@@ -122,6 +124,17 @@ export default async function CheckoutReviewPage({
               <p>
                 Requires a paid Content Calendar with written scripts. Start from your
                 calendar confirmation page.
+              </p>
+            </>
+          ) : isYearApp ? (
+            <>
+              <p>
+                Stripe securely collects your payment details. After
+                successful payment, your 52xSeven Blueprint opens right here
+                on the confirmation page — and a sign-in link is emailed to you.
+              </p>
+              <p>
+                Your sign-in link works for 12 months. One payment, no renewal.
               </p>
             </>
           ) : isDigital ? (
@@ -189,8 +202,8 @@ export default async function CheckoutReviewPage({
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
         {isDigital ? (
-          <Link href="/products/blueprint-breakdown-video" className="editorial-link text-brand-ink">
-            Get the $47 Blueprint Breakdown Video →
+          <Link href="/products/52xseven-blueprint" className="editorial-link text-brand-ink">
+            See what the $19 52xSeven Blueprint includes →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">

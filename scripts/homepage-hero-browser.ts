@@ -69,9 +69,9 @@ async function main() {
     "/birth-card/queen-of-diamonds",
   );
   await hero.getByRole("link", { name: /Prefer the free 4-part course by email/ }).waitFor();
-  await hero.getByRole("button", { name: "Get the Blueprint Breakdown — $47" }).waitFor();
+  await hero.getByRole("button", { name: "Unlock my full year — $19" }).waitFor();
   assert.equal(
-    await hero.getByRole("link", { name: "Get the Blueprint Breakdown — $47" }).count(),
+    await hero.getByRole("link", { name: "Unlock my full year — $19" }).count(),
     0,
     "homepage Deep Dive CTA must not href the Cassidy Rice payment link",
   );
@@ -131,7 +131,7 @@ async function main() {
     0,
     "Joker result must not offer a nonexistent meaning page",
   );
-  await jokerHero.getByRole("link", { name: "Get the Blueprint Breakdown — $47" }).waitFor();
+  await jokerHero.getByRole("link", { name: "Unlock my full year — $19" }).waitFor();
 
   await browser.close();
   console.log("PASS: homepage calculator hero browser flow, privacy, retry, mobile, leap day, and Joker");

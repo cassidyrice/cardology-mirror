@@ -9,7 +9,6 @@ import {
 } from "@/components/analytics/AnalyticsCapture";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
-import { DeepDiveSample } from "@/components/seo/DeepDiveSample";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { birthCardSlug } from "@/lib/birth-card-calculator";
 import { parseCard, todayISO } from "@/lib/cards";
@@ -111,17 +110,11 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           ) : null}
 
           <div className="mt-8 border border-brand-line bg-brand-ivory p-5 text-left">
-            <p className="font-serif text-xl text-brand-ink">Your card, explained on video. $47.</p>
+            <p className="font-serif text-xl text-brand-ink">Your whole year, on one map. $19.</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-              A 5-minute Blueprint Breakdown of your birth card, plus the 7-page
-              Deep Dive and your Yearly Timing Map as bonuses.
+              Your birth card with its light and shadow read, the 52-day chapter
+              you are in right now, and all seven chapters of your year on one map.
             </p>
-            <DeepDiveSample
-              cardSlug={cardSlug}
-              cardLabel={label}
-              placement="home-reveal"
-              className="mx-auto mt-4"
-            />
             <DeepDiveCta
               placement="home-reveal"
               birthdate={birthdate}

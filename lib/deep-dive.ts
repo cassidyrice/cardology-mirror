@@ -1,33 +1,36 @@
-/** Blueprint Breakdown Video ($47) — Card Blueprint Stripe, not Cassidy Rice Company.
- *  The $9 Birth Card Deep Dive is now the instant bonus inside this offer; the
- *  internal slug/SKU prefix "deep-dive" stays so analytics, Stripe metadata and
- *  fulfillment keep working. */
+/** 52xSeven Blueprint ($19) — Card Blueprint Stripe, not Cassidy Rice Company.
+ *  The internal slug/SKU prefix "deep-dive" stays so analytics, Stripe metadata,
+ *  the checkout route and fulfillment keep working across product swaps
+ *  ($9 Deep Dive → $47 Blueprint Breakdown Video → $19 52xSeven Blueprint). */
 
 import { parseIsoCalendarDate } from "@/lib/worker-seo-routes";
 
-/** Retired $9 price (kept for reference; nothing reads it at runtime). */
+/** Retired price ids (kept for reference; nothing reads them at runtime). */
 export const DEEP_DIVE_LEGACY_PRICE_ID = "price_1U8s5uChx1yAVyrsjbQKfsmD";
-export const DEEP_DIVE_PRODUCT_ID = "prod_V9AQZLgrZ4WclM";
-/** Cloudflare Pages secret that holds the live $47 Stripe price id. */
-export const BLUEPRINT_BREAKDOWN_PRICE_ENV = "STRIPE_PRICE_BLUEPRINT_BREAKDOWN";
-export const DEEP_DIVE_SKU = "blueprint-breakdown-47";
+export const BLUEPRINT_BREAKDOWN_LEGACY_PRICE_ID = "price_1UD0HnChx1yAVyrsIMHLp2E3";
+export const DEEP_DIVE_PRODUCT_ID = "prod_VDx5l3a4DkEcgT";
+/** Cloudflare Pages secret that holds the live $19 Stripe price id. */
+export const FIFTY_TWO_BY_SEVEN_PRICE_ENV = "STRIPE_PRICE_52XSEVEN_BLUEPRINT";
+export const DEEP_DIVE_SKU = "52xseven-blueprint-19";
 export const DEEP_DIVE_OFFER_SLUG = "deep-dive";
 export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
-export const DEEP_DIVE_PRODUCT_PATH = "/products/blueprint-breakdown-video";
-export const DEEP_DIVE_PRICE_LABEL = "$47";
-export const DEEP_DIVE_PRODUCT_NAME = "Blueprint Breakdown Video";
-export const DEEP_DIVE_CTA_LABEL = "Get the Blueprint Breakdown — $47";
+export const DEEP_DIVE_PRODUCT_PATH = "/products/52xseven-blueprint";
+export const DEEP_DIVE_PRICE_LABEL = "$19";
+export const DEEP_DIVE_PRODUCT_NAME = "52xSeven Blueprint";
+/** Report-token slug for the year app at /blueprint?token=… */
+export const FIFTY_TWO_BY_SEVEN_REPORT_SLUG = "52xseven-blueprint";
+/** How long the sign-in link works. */
+export const FIFTY_TWO_BY_SEVEN_ACCESS_DAYS = 365;
+export const DEEP_DIVE_CTA_LABEL = "Unlock my full year — $19";
 /** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
-export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $47 Blueprint Breakdown";
+export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $19 52xSeven Blueprint";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
-/** Turnaround promised for the video (recorded per buyer by hand). The Yearly Timing Map is drawn instantly at /api/timing-map. */
-export const DEEP_DIVE_VIDEO_TURNAROUND = "within 2 business days";
 export const DEEP_DIVE_SUCCESS_COPY =
-  `Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your Yearly Timing Map, bonus 7-page Deep Dive and the complete System Guide are in this email.`;
+  "Payment confirmed. Your 52xSeven Blueprint is unlocked: your birth card, the 52-day chapter you are in right now, all seven chapters of your year, and the story arc on one map. Your sign-in link is in this email and works for 12 months.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
-  `Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Your complete System Guide is in this email. December 31 is the Joker — there is no card-level Deep Dive PDF or yearly map for this date.`;
+  "Payment confirmed. December 31 is the Joker — it sits outside the 52-card calendar, so there is no seven-chapter year to draw for this date. Reply to this email and we will refund you in full or, if the birth date was mistyped, unlock the right year.";
 export const DEEP_DIVE_FULFILLMENT =
-  `What $47 sends: a 5-minute Blueprint Breakdown Video of your birth card, by email ${DEEP_DIVE_VIDEO_TURNAROUND}. Bonuses, instant: your Yearly Timing Map (a blueprint diagram of your year) and the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide). Instant download links + email backup, plus your seven 13-year period cards on the confirmation page. Broken file or wrong card: we replace or refund.`;
+  "What $19 unlocks: your whole Cardology year in one phone-friendly app — your birth card with the light and shadow read, the 52-day chapter you are in right now (dated, with how far through it you are), all seven chapters, and the yearly story arc on one map. Instant after payment, on the confirmation page and by emailed sign-in link. 12 months of access, no renewal. Wrong date: we fix it or refund.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 
@@ -57,7 +60,7 @@ export const SYSTEM_GUIDE_FILE: DeepDiveFile = {
   label: "The Complete System Guide",
 };
 
-/** Ships with the $13 Personal Card Blueprint (moved from the $9 bundle 2026-09-01). */
+/** Shipped with the retired $13 Personal Card Blueprint; slug stays resolvable for old links. */
 export const ALL_90_SPREADS_FILE: DeepDiveFile = {
   slug: "all-90-spreads",
   key: "all-90-spreads.pdf",
@@ -65,8 +68,8 @@ export const ALL_90_SPREADS_FILE: DeepDiveFile = {
   label: "The 90 Spreads",
 };
 
-// Instant PDF bonuses inside the $47 offer. The 90 Spreads moved to the $13 Personal
-// Card Blueprint; its slug stays resolvable below so links from earlier $9 orders keep working.
+// PDF bonuses of the retired $9 / $47 offers. The $19 52xSeven Blueprint ships no
+// PDFs; these slugs stay resolvable so links from earlier orders keep working.
 export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [SYSTEM_GUIDE_FILE];
 
 /** Card Blueprint live publishable key (public). Runtime env can override. */
@@ -75,6 +78,7 @@ export const CARD_BLUEPRINT_PUBLISHABLE_KEY =
 
 export const DEEP_DIVE_SOURCES = [
   "birth-card-calculator",
+  "product-page",
   "birth-card-calculator-result",
   "home-hero",
   "home-hero-result",
@@ -122,7 +126,7 @@ export function stripePublishableKey(): string {
 }
 
 export function deepDivePriceId(): string {
-  return process.env[BLUEPRINT_BREAKDOWN_PRICE_ENV] || "";
+  return process.env[FIFTY_TWO_BY_SEVEN_PRICE_ENV] || "";
 }
 
 export function deepDiveCardPdfKey(seoSlug: string): string {

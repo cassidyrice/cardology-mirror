@@ -72,9 +72,9 @@ export default function KarmaReadingWaitlistPage() {
         <Link href="/karma-cards" className="underline underline-offset-4">
           karma cards table
         </Link>
-        , or take the{" "}
-        <Link href="/products/blueprint-breakdown-video" className="underline underline-offset-4">
-          $47 Blueprint Breakdown Video
+        , or open the{" "}
+        <Link href="/products/52xseven-blueprint" className="underline underline-offset-4">
+          $19 52xSeven Blueprint
         </Link>
         .
       </p>

@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $47 Blueprint Breakdown Video with the Birth Card Deep Dive as a bonus.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and deliver the $19 52xSeven Blueprint — your whole Cardology year in one phone-friendly app.",
   alternates: { canonical: "/about" },
 };
 
@@ -71,8 +71,8 @@ export default function AboutPage() {
           <p className="text-base leading-relaxed text-[#3d352d]">
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
-            and repeated dynamics. Free tools come first; the paid product is a 5-minute
-            Blueprint Breakdown Video of your card — not a phone reading.
+            and repeated dynamics. Free tools come first; the paid product is the $19
+            52xSeven Blueprint, a year app built from your card — not a phone reading.
           </p>
         </div>
       </header>
@@ -85,9 +85,9 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          The paid product is the $47 Blueprint Breakdown Video — your card explained
-          in five minutes, with the written 7-page Deep Dive and your Yearly Timing Map
-          as bonuses. The Content Calendar is a separate
+          The paid product is the $19 52xSeven Blueprint — your card, the 52-day chapter
+          you are in right now, all seven chapters of your year, and the story arc on one
+          map, in a phone-friendly app you keep for 12 months. The Content Calendar is a separate
           experiment: you describe your business once, and it drafts one post per
           day for 52 days. AI writes from your text; you still check facts before
           posting.
@@ -122,7 +122,7 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           Experience on this site means shipping the tools people actually use: the free
           birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and the Blueprint Breakdown fulfillment pipeline. Expertise means
+          meanings, and the 52xSeven Blueprint fulfillment pipeline. Expertise means
           publishing the method in public — see{" "}
           <Link href="/methodology" className="underline">
             methodology
@@ -197,18 +197,18 @@ export default function AboutPage() {
         <h2 className="font-serif text-3xl text-[#14110d]">Why a written Blueprint</h2>
         <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
           The free calculator answers “what is my card?” The Blueprint answers “what
-          does the whole pattern look like?” The Blueprint Breakdown Video is a one-time
-          $47 purchase — a 5-minute video about your card, sent within 2 business days,
-          plus the 7-page Deep Dive, the Complete System Guide, and your Yearly Timing
-          Map — so you can replay and reread it without booking a call. Historical phone
-          fulfillment still works for people who already purchased access; new public
-          SEO pages point to the written product.
+          does the whole year look like?” The 52xSeven Blueprint is a one-time
+          $19 purchase — your birth card, the 52-day chapter you are in right now,
+          all seven chapters, and the yearly story arc on one map, unlocked the moment
+          you pay and open for 12 months — so you can reread it all year without booking
+          a call. Historical phone fulfillment still works for people who already
+          purchased access; new public SEO pages point to the year app.
         </p>
         <Link
-          href="/products/blueprint-breakdown-video"
+          href="/products/52xseven-blueprint"
           className="inline-block rounded-full border border-[#14110d] bg-[#14110d] px-5 py-2.5 text-sm font-semibold text-[#f4f0e7]"
         >
-          Blueprint Breakdown Video — $47
+          52xSeven Blueprint — $19
         </Link>
       </section>
 

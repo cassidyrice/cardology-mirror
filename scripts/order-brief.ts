@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-// Order brief for the $47 Blueprint Breakdown: everything a script-writer bot
+// Order brief for the $19 52xSeven Blueprint: everything a support or QA bot
 // needs about one buyer's cards, as JSON. Read-only, deterministic, no network.
 //
 //   bun scripts/order-brief.ts 1988-07-14            # as of today
@@ -7,7 +7,7 @@
 //
 // Prints one JSON object: the Blueprint report (birth card, ruling card,
 // identity, gifts, shadow, current chapter, year ahead, yearly signals), the
-// Yearly Timing Map model (the seven 52-day periods with dates), and the
+// seven-chapter year model (the seven 52-day periods with dates), and the
 // three-lens read of the birth card. Dec 31 prints {"joker": true}.
 
 import { buildBlueprint } from "../lib/blueprint";

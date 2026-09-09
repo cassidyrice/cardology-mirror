@@ -14,16 +14,16 @@ export function DeepDiveSection() {
     <SectionShell tone="paperDeep">
       <div className="grid gap-10 lg:grid-cols-[minmax(0,14rem)_1fr] lg:items-center lg:gap-14">
         <Image
-          src="/og/products/deep-dive-cover.png"
-          alt="Birth Card Deep Dive PDF cover"
-          width={600}
-          height={800}
-          className="mx-auto w-48 border border-brand-line shadow-[0_12px_40px_rgba(20,17,13,0.14)] lg:mx-0 lg:w-full"
+          src="/og/products/52xseven-blueprint.png"
+          alt="The 52xSeven Blueprint: your whole Cardology year in one place"
+          width={1200}
+          height={630}
+          className="mx-auto w-64 border border-brand-line shadow-[0_12px_40px_rgba(20,17,13,0.14)] lg:mx-0 lg:w-full"
         />
         <div>
-          <h2 className="type-h2">Your card, explained on video. $47.</h2>
+          <h2 className="type-h2">Your whole year, on one map. $19.</h2>
           <p className="mt-4 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-            A 5-minute video on your card, plus the 7-page Deep Dive, the full System Guide, and your Yearly Timing Map. Watch it, reread it, keep it forever.
+            Your birth card, the 52-day chapter you are in right now, all seven chapters, and the yearly story arc in one phone-friendly app. Open it the moment you pay, come back to it all year.
           </p>
           <figure className="mt-6 max-w-[34em]">
             <blockquote className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
@@ -34,8 +34,8 @@ export function DeepDiveSection() {
             </figcaption>
           </figure>
           <p className="mt-6">
-            <LinkButton href="/products/blueprint-breakdown-video" variant="accent">
-              Get the Blueprint Breakdown
+            <LinkButton href="/products/52xseven-blueprint" variant="accent">
+              Get the 52xSeven Blueprint
             </LinkButton>
           </p>
         </div>

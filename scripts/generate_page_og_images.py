@@ -200,6 +200,15 @@ def main():
     # Product OGs (also the schema.org Product images) — public/og/products/
     os.makedirs(os.path.join(OUT, "products"), exist_ok=True)
     page(
+        "products/52xseven-blueprint",
+        ["8-of-diamonds"],
+        "CARD BLUEPRINTS  ·  $19",
+        ["The 52xSeven", "Blueprint"],
+        "Your whole Cardology year in one place",
+    )
+    # Retired 2026-09-08 (replaced by the $19 52xSeven Blueprint); kept so old
+    # social previews still resolve.
+    page(
         "products/blueprint-breakdown-video",
         ["8-of-diamonds"],
         "CARD BLUEPRINTS  ·  $47",

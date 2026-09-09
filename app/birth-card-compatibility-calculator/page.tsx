@@ -118,10 +118,10 @@ export default function CompatibilityCalculatorPage() {
         cards, each Life Path constitution, where the other person lands in your
         spectrum, and which Life Path cards you share. After the result, open the
         matching pair page in the directory for the full write-up. The{" "}
-        <Link href="/products/blueprint-breakdown-video" className="text-gold underline underline-offset-4">
-          $47 Blueprint Breakdown Video
+        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+          $19 52xSeven Blueprint
         </Link>{" "}
-        covers one person&rsquo;s card (the first birthday) — not a couple reading.
+        covers one person&rsquo;s year (the first birthday) — not a couple reading.
       </p>
 
       <aside className="mb-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">

@@ -5,7 +5,14 @@ import { DeepDiveDeliveredBeacon } from "@/components/checkout/DeepDiveDelivered
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
-import { deepDiveSuccessCopy } from "@/lib/deep-dive";
+import {
+  DEEP_DIVE_PRODUCT_PATH,
+  FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
+  FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
+  deepDiveSuccessCopy,
+} from "@/lib/deep-dive";
+import { YearBlueprintApp } from "@/components/year/YearBlueprintApp";
+import { buildYearBlueprint, type YearBlueprint } from "@/lib/year-blueprint";
 import {
   productBySlug,
   isDigitalDownload,
@@ -42,24 +49,10 @@ import {
   type StoredCalendar,
 } from "@/lib/content-engine/storage";
 import { mintReportToken } from "@/lib/report-token";
-import { TIMING_MAP_LABEL, TIMING_MAP_SLUG } from "@/lib/timing-map/model";
 import { mintDownloadToken } from "@/lib/download-token";
-import { ALL_90_SPREADS_FILE, isJokerBirthdate, type DeepDiveFile } from "@/lib/deep-dive";
-import {
-  deepDiveFilesForBirthday,
-  deepDiveCardPdfForBirthday,
-} from "@/lib/deep-dive-card-pdf";
+import { ALL_90_SPREADS_FILE, isJokerBirthdate } from "@/lib/deep-dive";
 import { getStripe } from "@/lib/stripe";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
-import { getReading } from "@/lib/engine";
-import { PLANET_ORDER } from "@/lib/types";
-
-type LifePathRow = {
-  planet: string;
-  card: string;
-  meaning: string;
-  balanced: string;
-};
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -175,72 +168,35 @@ export default async function CheckoutSuccessPage({
     }
   }
 
-  // Deep Dive: mint the same HMAC download tokens the webhook emails, so
-  // "instant download links + email backup" is true on this page too.
-  // Mint failure falls back to the email-only story — never a blank page.
-  let deepDiveLinks: { label: string; href: string; kind?: "pdf" | "map" }[] = [];
-  let deepDiveExtra = "";
+  // 52xSeven Blueprint: mint the same 12-month sign-in token the webhook
+  // emails, and build the year so the app renders right here. Mint or engine
+  // failure falls back to the email-only story — never a blank page.
+  let yearToken = "";
+  let yearData: YearBlueprint | null = null;
+  let yearExtra = "";
+  const yearJoker = isJokerBirthdate(deepDiveBirthday);
   if (deepDive && confirmed && customerEmail) {
-    try {
-      const days = 30;
-      const files: DeepDiveFile[] = deepDiveFilesForBirthday(deepDiveBirthday);
-      const minted: { label: string; href: string; kind?: "pdf" | "map" }[] = [];
-      if (deepDiveBirthday && !isJokerBirthdate(deepDiveBirthday)) {
-        const mapToken = await mintReportToken(customerEmail, TIMING_MAP_SLUG, sessionId, deepDiveBirthday, days);
-        minted.push({
-          label: TIMING_MAP_LABEL,
-          href: `/api/timing-map?token=${encodeURIComponent(mapToken)}`,
-          kind: "map",
-        });
+    if (/^\d{4}-\d{2}-\d{2}$/.test(deepDiveBirthday) && !yearJoker) {
+      try {
+        yearToken = await mintReportToken(
+          customerEmail,
+          FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
+          sessionId,
+          deepDiveBirthday,
+          FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
+        );
+      } catch (e) {
+        console.error("[checkout/success] 52xseven token mint failed", e);
       }
-      for (const file of files) {
-        const token = await mintDownloadToken(customerEmail, file.slug, days);
-        minted.push({
-          label: file.label,
-          href: `/api/download/${file.slug}?token=${encodeURIComponent(token)}`,
-          kind: "pdf",
-        });
+      try {
+        yearData = await buildYearBlueprint(deepDiveBirthday);
+      } catch (e) {
+        console.error("[checkout/success] 52xseven year build failed", e);
+        yearData = null;
       }
-      deepDiveLinks = minted;
-      if (
-        !isJokerBirthdate(deepDiveBirthday) &&
-        !deepDiveCardPdfForBirthday(deepDiveBirthday)
-      ) {
-        deepDiveExtra =
-          "Your card PDF could not be resolved from the birthday on this order. Reply to your receipt email with your birth date (YYYY-MM-DD) and we will send the card file.";
-      }
-    } catch (e) {
-      console.error("[checkout/success] deep dive token mint failed", e);
-      deepDiveLinks = [];
-    }
-  }
-
-  // Deep Dive on-screen bonus: the birth card plus the seven 13-year
-  // life-path period cards that build the personality. Engine failure just
-  // hides the section — the PDF links above are the contracted fulfillment.
-  let deepDiveBirthCard = "";
-  let deepDiveLifePath: LifePathRow[] = [];
-  if (
-    deepDive &&
-    confirmed &&
-    deepDiveBirthday &&
-    !isJokerBirthdate(deepDiveBirthday)
-  ) {
-    try {
-      const r = await getReading(deepDiveBirthday);
-      deepDiveBirthCard = r.archetype.birth_card;
-      deepDiveLifePath = PLANET_ORDER.map((planet) => {
-        const d = r.deep_dive.life_path.periods[planet];
-        return {
-          planet,
-          card: d?.card ?? "",
-          meaning: d?.interpretation?.name ?? "",
-          balanced: d?.interpretation?.sweet_spot ?? "",
-        };
-      }).filter((row) => row.card);
-    } catch (e) {
-      console.error("[checkout/success] deep dive life path failed", e);
-      deepDiveLifePath = [];
+    } else if (!yearJoker) {
+      yearExtra =
+        "We could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we will unlock your year.";
     }
   }
 
@@ -353,12 +309,12 @@ export default async function CheckoutSuccessPage({
       crumb={[
         { label: "Home", href: "/" },
         {
-          label: voice ? "Legacy order support" : "Personal Card Blueprint",
+          label: voice ? "Legacy order support" : "52xSeven Blueprint",
           href: digital
             ? "/products/analog-algorithm"
             : voice
               ? "/contact"
-              : "/products/personal-card-blueprint",
+              : DEEP_DIVE_PRODUCT_PATH,
         },
         {
           label: "Purchase status",
@@ -378,8 +334,8 @@ export default async function CheckoutSuccessPage({
             : confirmed && videoOrder
               ? "Your video order is in the queue."
             : confirmed && deepDive
-            ? deepDiveLinks.length > 0
-              ? "Order confirmed. Your bonus files are ready."
+            ? yearToken
+              ? "Payment confirmed. Your year is unlocked."
               : "Order confirmed. Check your email."
             : confirmed && digital
             ? "Your e-book is ready for download."
@@ -399,11 +355,9 @@ export default async function CheckoutSuccessPage({
             : confirmed && videoOrder
               ? `"${product!.name}" — ${product!.priceLabel}. Production usually starts within an hour; delivery in 24–48 hours.`
             : confirmed && deepDive
-            ? deepDiveLinks.length > 0
-              ? isJokerBirthdate(deepDiveBirthday)
-                ? "Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email within 2 business days. December 31 is the Joker — your complete System Guide is ready below. There is no card-level Deep Dive PDF or yearly map for this date."
-                : "Payment confirmed. Your 5-minute Blueprint Breakdown Video arrives by email within 2 business days. Your Yearly Timing Map, bonus 7-page Deep Dive and complete System Guide are ready below. Backup links were also emailed."
-              : deepDiveSuccessCopy(deepDiveBirthday)
+            ? yearToken
+              ? `"${product!.name}" — ${product!.priceLabel}. Your birth card, the chapter you are in right now, all seven chapters and the story arc are below. Your sign-in link was also emailed and works for 12 months.`
+              : yearExtra || deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && digital
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
             : confirmed && instantReport
@@ -433,13 +387,12 @@ export default async function CheckoutSuccessPage({
           ) : videoOrder ? (
             <VideoOrderFulfillment jobId={videoJobId} productName={product!.name} />
           ) : deepDive ? (
-            <DeepDiveFulfillment
+            <YearFulfillment
               birthday={deepDiveBirthday}
-              links={deepDiveLinks}
-              extra={deepDiveExtra}
+              token={yearToken}
+              year={yearData}
+              extra={yearExtra}
               email={customerEmail}
-              birthCard={deepDiveBirthCard}
-              lifePath={deepDiveLifePath}
             />
           ) : digital ? (
             <DigitalFulfillment
@@ -468,8 +421,8 @@ export default async function CheckoutSuccessPage({
             name.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href="/products/personal-card-blueprint" variant="primary">
-              View Personal Card Blueprint
+            <LinkButton href={DEEP_DIVE_PRODUCT_PATH} variant="primary">
+              View the 52xSeven Blueprint
             </LinkButton>
             <LinkButton href="/contact" variant="outline">
               Contact Support
@@ -484,7 +437,7 @@ export default async function CheckoutSuccessPage({
         </h2>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
           {deepDive
-            ? "If the bonus files don't download, or the video hasn't arrived after 2 business days, reply to your receipt email or"
+            ? "If your year doesn't open, or the birth date is wrong, reply to your receipt email or"
             : digital
             ? "If your download link doesn't work, reply to your receipt email or"
             : instantReport
@@ -585,89 +538,57 @@ function ContentCalendarFulfillment({
   );
 }
 
-function DeepDiveFulfillment({
+function YearFulfillment({
   birthday,
-  links,
+  token,
+  year,
   extra,
   email,
-  birthCard,
-  lifePath,
 }: {
   birthday: string;
-  links: { label: string; href: string; kind?: "pdf" | "map" }[];
+  token: string;
+  year: YearBlueprint | null;
   extra: string;
   email: string;
-  birthCard?: string;
-  lifePath?: LifePathRow[];
 }) {
+  const yearHref = token ? `/blueprint?token=${encodeURIComponent(token)}` : "";
   return (
     <div className="text-center">
-      <Kicker className="mb-4">Your Blueprint Breakdown</Kicker>
-      {links.length > 0 ? (
+      <Kicker className="mb-4">Your year</Kicker>
+      {yearHref ? (
         <>
           <DeepDiveDeliveredBeacon placement="checkout-success" />
-          <h2 className="type-h2 text-brand-ink">Download your bonus files.</h2>
+          <h2 className="type-h2 text-brand-ink">It&rsquo;s unlocked.</h2>
           <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-            {deepDiveSuccessCopy(birthday)}
+            Your 52xSeven Blueprint was built from the birth date you entered at
+            checkout. Open it full-screen and save it to your phone — the same
+            sign-in link is in your email.
           </p>
           <div className="mx-auto mt-6 flex max-w-[24em] flex-col gap-3">
-            {links.map((link) => (
-              <LinkButton
-                key={link.href}
-                href={link.href}
-                variant="accent"
-                size="large"
-              >
-                {link.kind === "map" ? <>Open your {link.label} &mdash; diagram (bonus)</> : <>Download {link.label} &mdash; PDF (bonus)</>}
-              </LinkButton>
-            ))}
+            <LinkButton href={yearHref} variant="accent" size="large">
+              Open My Year
+            </LinkButton>
           </div>
-          {extra ? (
-            <p className="mx-auto mt-4 max-w-[32em] text-sm text-brand-ink">
-              {extra}
-            </p>
-          ) : null}
           <p className="mt-4 text-xs text-brand-ink-soft">
-            Links are good for 30 days.
+            The link works for 12 months.
             {email ? (
               <>
                 {" "}
-                Backup copies were emailed to <strong>{email}</strong>.
+                A copy was emailed to <strong>{email}</strong>.
               </>
             ) : null}
           </p>
-          {lifePath && lifePath.length > 0 && (
-            <div className="mx-auto mt-10 max-w-[34em] border-t border-brand-line pt-8 text-left">
-              <h3 className="type-h3 text-center text-brand-ink">
-                {birthCard ? `${birthCard} — ` : ""}your seven 13-year period cards
-              </h3>
-              <p className="mt-2 text-center text-sm leading-relaxed text-brand-ink-soft">
-                The birth card is the engine; these seven life-path cards are the
-                ~13-year chapters that build the personality around it, in order.
-              </p>
-              <ul className="mt-5 space-y-3 text-sm">
-                {lifePath.map((row) => (
-                  <li key={row.planet} className="rounded-[3px] border border-brand-line p-3">
-                    <p className="font-semibold text-brand-ink">
-                      {row.planet} &middot; {row.card}
-                      {row.meaning ? ` — ${row.meaning}` : ""}
-                    </p>
-                    {row.balanced && (
-                      <p className="mt-1 leading-relaxed text-brand-ink-soft">
-                        Balanced: {row.balanced}
-                      </p>
-                    )}
-                  </li>
-                ))}
-              </ul>
+          {year ? (
+            <div className="mx-auto mt-10 max-w-[420px]">
+              <YearBlueprintApp data={year} mode="full" framed />
             </div>
-          )}
+          ) : null}
         </>
       ) : (
         <>
           <h2 className="type-h2 text-brand-ink">Check your email.</h2>
           <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-            {deepDiveSuccessCopy(birthday)}
+            {extra || deepDiveSuccessCopy(birthday)}
           </p>
         </>
       )}

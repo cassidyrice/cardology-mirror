@@ -124,7 +124,7 @@ test("render: standalone brand-themed SVG with all seven sectors, hub, bus and t
   if (jokerLint.exitCode !== 127) expect(jokerLint.exitCode).toBe(0);
 });
 
-test("fulfillment: the map is a report-token route wired into webhook and success page", () => {
+test("fulfillment: the map stays a report-token route for past $47 buyers; the $19 year app replaced it in webhook and success page", () => {
   expect(TIMING_MAP_SLUG).toBe("yearly-timing-map");
   const route = read("app/api/timing-map/route.ts");
   expect(route).toContain("verifyReportToken");
@@ -133,8 +133,10 @@ test("fulfillment: the map is a report-token route wired into webhook and succes
   expect(route).toContain("no-store");
   const webhook = read("app/api/checkout/webhook/route.ts");
   expect(webhook).toContain("mintReportToken");
-  expect(webhook).toContain("TIMING_MAP_SLUG");
+  expect(webhook).not.toContain("TIMING_MAP_SLUG");
+  expect(webhook).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
   const success = read("app/checkout/success/page.tsx");
-  expect(success).toContain("TIMING_MAP_SLUG");
-  expect(success).toContain("/api/timing-map?token=");
+  expect(success).not.toContain("TIMING_MAP_SLUG");
+  expect(success).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
+  expect(success).toContain("<YearBlueprintApp");
 });

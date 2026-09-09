@@ -18,7 +18,6 @@ import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
-import { DeepDiveSample } from "./DeepDiveSample";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
@@ -250,15 +249,8 @@ function BirthCardResultCard({
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
       <p className="mt-6 text-center font-serif text-xl text-brand-ink">
-        The written Deep Dive comes free with the video. It is seven pages. This is page 1.
+        Your whole year, on one map. The chapter you are in right now, dated, and the six still coming.
       </p>
-      {!isJoker && (
-        <DeepDiveSample
-          cardSlug={slug}
-          cardLabel={bc?.label}
-          placement="birth-card-calculator-result"
-        />
-      )}
       <DeepDiveCta
         placement="birth-card-calculator-result"
         birthdate={date || reveal.birthdate}
@@ -310,7 +302,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free sample of the card's written pattern, shown before the $47 CTA. */
+/** Free one-line read of the card's pattern, shown before the $19 CTA. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

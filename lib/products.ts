@@ -31,6 +31,7 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_COMPLETE_CARD_BLUEPRINT"
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
   | "STRIPE_PRICE_BLUEPRINT_BREAKDOWN"
+  | "STRIPE_PRICE_52XSEVEN_BLUEPRINT"
   | "STRIPE_PRICE_CONTENT_CALENDAR"
   | "STRIPE_PRICE_VIDEO_SINGLE"
   | "STRIPE_PRICE_VIDEO_WEEKLY_7"
@@ -287,32 +288,31 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   kind: "digital_download",
   available: true,
   slug: DEEP_DIVE_SLUG,
-  stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_BREAKDOWN",
-  name: "Blueprint Breakdown Video",
-  price: 47,
-  priceLabel: "$47",
-  badge: "Video",
+  stripePriceEnv: "STRIPE_PRICE_52XSEVEN_BLUEPRINT",
+  name: "52xSeven Blueprint",
+  price: 19,
+  priceLabel: "$19",
+  badge: "Flagship",
   oneLine:
-    "A 5-minute video breakdown of your birth card blueprint, plus two bonuses: the $9 Birth Card Deep Dive and your Yearly Timing Map.",
+    "Your whole Cardology year in one place — your card, your current 52-day chapter, all seven chapters, and the story arc that ties them together.",
   bestFor:
-    "Anyone who just found their birth card and wants the whole pattern walked through on video, not only on paper.",
+    "Anyone who wants to know which chapter they're standing in right now, what it's asking, and where the year is heading — without decoding planetary jargon.",
   deliverable:
-    "A 5-minute Blueprint Breakdown Video for your birth card, sent by email within 2 business days. Instant bonuses: your Yearly Timing Map (a blueprint diagram of your year) and the 7-page Birth Card Deep Dive PDF + the complete System Guide.",
-  turnaround:
-    "The Yearly Timing Map and Deep Dive PDF links arrive immediately after payment. The video arrives by email within 2 business days.",
+    "A personal, phone-friendly year calendar you return to all year, with an emailed sign-in link. 12 months of access.",
+  turnaround: "Unlocks immediately after payment — no call, no wait.",
   includes: [
-    "5-minute Blueprint Breakdown Video of your birth card",
-    "Bonus: the $9 Birth Card Deep Dive (7-page PDF + the complete System Guide)",
-    "Bonus: your Yearly Timing Map — a blueprint diagram of your year, instant",
-    "Your seven ~13-year period cards on the confirmation page",
+    "Your birth card with the light and the shadow read",
+    "Your current 52-day chapter, dated, with how far through it you are",
+    "All seven 52-day chapters for the year, each with a short light + shadow read",
+    "The yearly story arc: Long Range, Pluto, Result, Environment and Displacement on one map",
   ],
-  cta: "Get the Blueprint Breakdown — $47",
+  cta: "Unlock my full year — $19",
   checkoutNote:
-    "One-time purchase. Birthday comes from the calculator. Stripe-hosted checkout collects email and payment.",
+    "One payment. 12 months of access, no automatic renewal. Birthday comes from the calculator or the preview; Stripe-hosted checkout collects email and payment. Your year unlocks instantly and the link is emailed to you.",
   downloadAssetKey: "",
-  redownloadDays: 30,
-  fileName: "Birth-Card-Deep-Dive.pdf",
-  href: "/products/blueprint-breakdown-video",
+  redownloadDays: 365,
+  fileName: "",
+  href: "/products/52xseven-blueprint",
 };
 
 export const CONTENT_CALENDAR_52_SLUG = "content-calendar-52";
@@ -554,7 +554,7 @@ function checkoutVideoBySlug(slug: string): VideoOffer | undefined {
   return product;
 }
 
-/** Checkout-eligible products, including the Blueprint Breakdown (slug deep-dive) and Content Engine which are not in the public catalog. */
+/** Checkout-eligible products, including the 52xSeven Blueprint (slug deep-dive) and Content Engine which are not in the public catalog. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??

@@ -3,7 +3,7 @@ import { shadowEntry, shadowLayerEnabled } from "@/lib/shadow-deck";
 /**
  * The spicy layer on a card page: the card's shadow archetype in Cass's own
  * words. Archetype name, the worldview line in the person's own voice, and
- * the turn "in the light". Sits above the $47 CTA so the hook comes first.
+ * the turn "in the light". Sits above the $19 CTA so the hook comes first.
  */
 export function ShadowLayer({ code }: { code: string }) {
   if (!shadowLayerEnabled(code)) return null;

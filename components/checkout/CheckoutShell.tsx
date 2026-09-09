@@ -18,7 +18,7 @@ export function CheckoutShell({
           <BrandLogo compact />
         </Link>
         <Link
-          href="/products/blueprint-breakdown-video"
+          href="/products/52xseven-blueprint"
           className="text-sm text-brand-ink-soft underline underline-offset-4"
         >
           Back

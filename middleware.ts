@@ -5,7 +5,7 @@ import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 import { applySecurityHeaders } from "@/lib/security-headers";
 
 const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
-  "/readings": "/products/blueprint-breakdown-video",
+  "/readings": "/products/52xseven-blueprint",
   "/try": "/birth-card-calculator",
   "/cardology-chart": "/birth-card-calculator",
   "/birth-card-chart": "/birth-card-calculator",
@@ -16,16 +16,18 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/playing-card-spreads/love": "/playing-card-spreads",
   "/playing-card-spreads/yes-or-no": "/playing-card-spreads",
   // Catalog collapsed to one product (2026-09-01); that product became the $47
-  // Blueprint Breakdown Video with the $9 Deep Dive as a bonus (2026-09-07).
+  // Blueprint Breakdown Video with the $9 Deep Dive as a bonus (2026-09-07), then
+  // the $19 52xSeven Blueprint year app (2026-09-08).
   // Fulfillment for past purchases (/blueprint, downloads, success) is untouched.
-  "/products/birth-card-deep-dive": "/products/blueprint-breakdown-video",
-  "/products/personal-card-blueprint": "/products/blueprint-breakdown-video",
-  "/products/complete-card-blueprint": "/products/blueprint-breakdown-video",
-  "/products/analog-algorithm": "/products/blueprint-breakdown-video",
+  "/products/birth-card-deep-dive": "/products/52xseven-blueprint",
+  "/products/blueprint-breakdown-video": "/products/52xseven-blueprint",
+  "/products/personal-card-blueprint": "/products/52xseven-blueprint",
+  "/products/complete-card-blueprint": "/products/52xseven-blueprint",
+  "/products/analog-algorithm": "/products/52xseven-blueprint",
   "/membership": "/birth-card-calculator",
-  "/checkout/personal-card-blueprint": "/products/blueprint-breakdown-video",
-  "/checkout/complete-card-blueprint": "/products/blueprint-breakdown-video",
-  "/checkout/analog-algorithm": "/products/blueprint-breakdown-video",
+  "/checkout/personal-card-blueprint": "/products/52xseven-blueprint",
+  "/checkout/complete-card-blueprint": "/products/52xseven-blueprint",
+  "/checkout/analog-algorithm": "/products/52xseven-blueprint",
   "/checkout/cardology-membership": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.

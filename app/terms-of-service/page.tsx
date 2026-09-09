@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the Blueprint Breakdown Video, digital products, and free Cardology tools.",
+    "Terms for the 52xSeven Blueprint, digital products, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -47,7 +47,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            the Blueprint Breakdown Video, and digital products when explicitly
+            the 52xSeven Blueprint, and digital products when explicitly
             marked available. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
@@ -59,18 +59,18 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>Blueprint Breakdown Video ($47)</strong> — a 5-minute video
-              about the birth card your birthday maps to, delivered by email
-              within 2 business days of payment. Three bonuses are included and
-              delivered instantly as signed links on the confirmation page and by
-              email: your Yearly Timing Map (a diagram drawn from your birthday),
-              the 7-page Birth Card Deep Dive PDF, and the complete System Guide PDF.
+              <strong>52xSeven Blueprint ($19)</strong> — a phone-friendly year app
+              built from the birth card your birthday maps to, unlocked immediately
+              after payment on the confirmation page and by emailed sign-in link.
+              It includes your birth card with the light and shadow read, the 52-day
+              chapter you are in now, all seven chapters of the year, and the yearly
+              story arc on one map. Access lasts 12 months; one payment, no renewal.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
-              Downloads and past report links use private signed URLs. Do not
+              Sign-in links and past report links use private signed URLs. Do not
               share paid access or try to bypass payment or security checks.
-              Purchases made before September 2026 (Personal Card Blueprint and
-              other retired products) keep their existing access links.
+              Purchases of retired products (the Personal Card Blueprint, the
+              earlier video offer, and others) keep their existing access links.
             </li>
           </ul>
         </section>

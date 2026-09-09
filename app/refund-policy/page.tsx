@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Blueprint Breakdown Video, past digital purchases, and legacy orders.",
+    "Refund terms for the 52xSeven Blueprint, past digital purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -38,34 +38,32 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $47 Blueprint Breakdown Video, with the
-            Birth Card Deep Dive and Yearly Timing Map as bonuses. Refund
-            eligibility depends on whether the personalized video was delivered
-            and accessible. The digital-download policy applies only when an
-            e-book sale is explicitly open.
+            Card Blueprints sells the $19 52xSeven Blueprint, a year app built
+            from the birth date entered at checkout. We refund in full on
+            request when that date was wrong or mistyped, or when it is
+            December 31 (the Joker). The digital-download policy applies only
+            when an e-book sale is explicitly open.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Blueprint Breakdown Video</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">52xSeven Blueprint</h2>
           <div className="mt-3 space-y-3">
             <p>
-              The Blueprint Breakdown Video is produced for the birth date entered
-              at Stripe Checkout and emailed within 2 business days. You can request
-              a full refund at any time before the video is delivered. The bonus
-              Yearly Timing Map and Birth Card Deep Dive PDFs are matched
-              immediately to that birth date and delivered as signed links on the
-              confirmation page and by email. Once the video has been
-              delivered and the bonus files are downloadable, the order is
-              generally final.
+              The 52xSeven Blueprint is built for the birth date entered at
+              Stripe Checkout and unlocks immediately after payment, on the
+              confirmation page and by emailed sign-in link, for 12 months. If
+              the wrong birth date was entered or mistyped, tell us: we will
+              rebuild the year for the right date or refund you in full, your
+              choice. December 31 is the Joker and sits outside the 52-card
+              calendar, so no year can be drawn for it; Joker orders are
+              refunded in full on request.
             </p>
             <p>
-              If the video does not arrive within 2 business days, the download
-              links do not work, the wrong card was delivered,
+              If the sign-in link does not work, the wrong card was delivered,
               the checkout birth date was entered incorrectly, or you were
               charged more than once for the same intended purchase, contact us.
-              We will send the right files, restore access, or issue an appropriate
-              refund when the problem cannot be resolved.
+              We will fix the date, restore access, or issue a full refund.
             </p>
           </div>
         </section>
@@ -132,8 +130,8 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href="/products/blueprint-breakdown-video" className="text-[#8e321f] underline underline-offset-4">
-            ← Back to the Blueprint Breakdown Video
+          <Link href="/products/52xseven-blueprint" className="text-[#8e321f] underline underline-offset-4">
+            ← Back to the 52xSeven Blueprint
           </Link>
         </div>
       </div>

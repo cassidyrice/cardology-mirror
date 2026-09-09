@@ -286,7 +286,7 @@ function PairResult({
           source="birth-card-compatibility-calculator"
         />
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          This $47 Blueprint Breakdown is for the first birthday only — that person’s card, not a couple video.
+          This $19 52xSeven Blueprint is for the first birthday only — that person’s year, not a couple’s.
         </p>
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}

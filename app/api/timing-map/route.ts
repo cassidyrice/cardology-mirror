@@ -15,10 +15,11 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 // GET /api/timing-map?token=…
-// The Yearly Timing Map bonus inside the $47 Blueprint Breakdown: drawn on
-// request from the buyer's birthday (carried in the signed report token), so
-// nothing is stored and the NOW marker is always today. Same token family and
-// gate as /blueprint.
+// The Yearly Timing Map was a bonus of the retired video offer (Sep 2026);
+// this route stays so those buyers' map links keep working. Drawn on request
+// from the buyer's birthday (carried in the signed report token), so nothing
+// is stored and the NOW marker is always today. Same token family and gate as
+// /blueprint. The $19 52xSeven Blueprint does not link here.
 export async function GET(req: NextRequest) {
   const payload = await verifyReportToken(req.nextUrl.searchParams.get("token"));
   if (!payload || payload.slug !== TIMING_MAP_SLUG) {

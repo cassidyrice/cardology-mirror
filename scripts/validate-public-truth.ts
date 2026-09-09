@@ -208,7 +208,7 @@ const productMarketingFiles = [
   "components/seo/BirthCardCalculator.tsx",
   "components/analytics/AnalyticsCapture.tsx",
   "app/checkout/[offer]/page.tsx",
-  "app/products/blueprint-breakdown-video/page.tsx",
+  "app/products/52xseven-blueprint/page.tsx",
   "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
@@ -293,7 +293,7 @@ assert.doesNotMatch(
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/blueprint-breakdown-video"\)/,
+  /permanentRedirect\("\/products\/52xseven-blueprint"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -303,7 +303,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["'](\/readings)["']\s*:\s*["']\/products\/blueprint-breakdown-video["']/,
+  /["'](\/readings)["']\s*:\s*["']\/products\/52xseven-blueprint["']/,
 );
 assert.match(
   middlewareText,
@@ -345,7 +345,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/blueprint-breakdown-video?utm_source=legacy",
+      "https://cardblueprints.com/products/52xseven-blueprint?utm_source=legacy",
   },
 );
 assert.deepEqual(
@@ -389,7 +389,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/blueprint-breakdown-video?a=1",
+    location: "https://cardblueprints.com/products/52xseven-blueprint?a=1",
   },
 );
 assert.deepEqual(
@@ -401,18 +401,25 @@ assert.deepEqual(
 );
 assert.equal(
   middlewareResult(
-    "https://cardblueprints.com/products/blueprint-breakdown-video",
+    "https://cardblueprints.com/products/52xseven-blueprint",
     "cardblueprints.com",
   ).status,
   200,
 );
-// The $9 Deep Dive URL 301s to the $47 Blueprint Breakdown Video (2026-09-07).
+// The $9 Deep Dive and $47 Blueprint Breakdown URLs 301 to the $19 52xSeven Blueprint (2026-09-08).
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/birth-card-deep-dive",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/blueprint-breakdown-video" },
+  { status: 301, location: "https://cardblueprints.com/products/52xseven-blueprint" },
+);
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/products/blueprint-breakdown-video",
+    "cardblueprints.com",
+  ),
+  { status: 301, location: "https://cardblueprints.com/products/52xseven-blueprint" },
 );
 // The retired catalog 301s to the one live product.
 assert.equal(
@@ -431,8 +438,9 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-assert.match(productSurfaceText, /Birth Card Deep Dive/);
-assert.match(productSurfaceText, /instant download/i);
+assert.match(productSurfaceText, /52xSeven Blueprint/);
+assert.match(productSurfaceText, /12 months/i);
+assert.doesNotMatch(productSurfaceText, /Blueprint Breakdown Video|\$47/);
 
 const legacyRanks = [
   ["ace", "ace"],

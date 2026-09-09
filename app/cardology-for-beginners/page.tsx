@@ -69,9 +69,9 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the Blueprint Breakdown Video ($47) walks your card's full pattern through in 5 minutes — with the 7-page Deep Dive PDF and your Yearly Timing Map as bonuses.",
-    href: "/products/blueprint-breakdown-video",
-    label: "Blueprint Breakdown Video",
+    body: "If the free tools keep matching real life, the 52xSeven Blueprint ($19) lays your whole year out in one phone-friendly app — your card, the 52-day chapter you are in now, all seven chapters, and the story arc on one map.",
+    href: "/products/52xseven-blueprint",
+    label: "52xSeven Blueprint",
   },
 ];
 
@@ -231,15 +231,15 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The Blueprint Breakdown Video is a one-time $47 purchase: a 5-minute video
-          about your card, plus your card&rsquo;s 7-page Deep Dive PDF, the Complete
-          System Guide, and your Yearly Timing Map as bonuses.
+          The 52xSeven Blueprint is a one-time $19 purchase: a phone-friendly year app
+          with your birth card, the 52-day chapter you are in right now, all seven
+          chapters of your year, and the story arc on one map. 12 months of access, no renewal.
         </p>
         <Link
-          href="/products/blueprint-breakdown-video"
+          href="/products/52xseven-blueprint"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get the Blueprint Breakdown &mdash; $47
+          Get the 52xSeven Blueprint &mdash; $19
         </Link>
       </div>
 

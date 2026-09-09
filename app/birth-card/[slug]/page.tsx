@@ -199,21 +199,21 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">A closer, grounded reading</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} Blueprint Breakdown — $47</h2>
+        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} 52xSeven Blueprint — $19</h2>
         <p className="mt-2 text-sm text-mist">
-          Your birth card plus the seven ~13-year period cards that build the
-          personality around it.
+          Your {card.label} year in one phone-friendly app: the chapter you are
+          in now, all seven chapters, and the arc that ties them together.
         </p>
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
-          <li>✓ 5-minute {card.label} Blueprint Breakdown Video (by email within 2 business days)</li>
-          <li>✓ Bonus: the $9 {card.label} Deep Dive — 7-page PDF + the Complete System Guide (instant)</li>
-          <li>✓ Bonus: your Yearly Timing Map — a blueprint diagram of your year (instant)</li>
-          <li>✓ Your seven ~13-year period cards, on screen</li>
-          <li>✓ Instant download links + email backup</li>
+          <li>✓ Your {card.label} birth card with the light and shadow read</li>
+          <li>✓ The 52-day chapter you are in right now, dated, with how far through it you are</li>
+          <li>✓ All seven 52-day chapters of your year, each with a short light + shadow read</li>
+          <li>✓ The yearly story arc — Long Range, Pluto, Result, Environment, Displacement — on one map</li>
+          <li>✓ Instant after payment + emailed sign-in link, 12 months of access</li>
         </ul>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $47 one time · bonus PDFs instantly · no subscription
+          $19 one time · instant access · no renewal
         </p>
       </div>
 

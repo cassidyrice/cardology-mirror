@@ -181,11 +181,11 @@ export default function CalculatorPage() {
       </div>
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
-        Optional paid writes after the free card:{" "}
-        <Link href="/products/blueprint-breakdown-video" className="text-gold underline underline-offset-4">
-          Blueprint Breakdown Video — $47
+        Optional paid step after the free card:{" "}
+        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
+          52xSeven Blueprint — $19
         </Link>{" "}
-        (5-minute video, plus the 7-page Deep Dive PDF and your Yearly Timing Map as bonuses).
+        (your whole year in one phone-friendly app: your card, the 52-day chapter you are in now, all seven chapters, and the story arc).
         The free calculator never stores your birthday.
       </p>
 

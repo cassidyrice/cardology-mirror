@@ -278,12 +278,12 @@ export function ElroyChatPanel({
               </div>
               <a
                 className="elroy-cta"
-                href="/products/blueprint-breakdown-video"
+                href="/products/52xseven-blueprint"
                 onClick={() =>
                   trackClientFunnelEvent("elroy_blueprint_clicked", { placement })
                 }
               >
-                Get My $47 Blueprint Breakdown
+                Get My $19 52xSeven Blueprint
               </a>
             </>
           ) : null}

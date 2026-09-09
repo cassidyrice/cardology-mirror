@@ -11,7 +11,9 @@ import {
   DEEP_DIVE_FULFILLMENT,
   DEEP_DIVE_JOKER_SUCCESS_COPY,
   DEEP_DIVE_OFFER_SLUG,
-  BLUEPRINT_BREAKDOWN_PRICE_ENV,
+  FIFTY_TWO_BY_SEVEN_PRICE_ENV,
+  FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
+  FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
   DEEP_DIVE_LEGACY_PRICE_ID,
   DEEP_DIVE_SESSION_PATH,
   DEEP_DIVE_SKU,
@@ -47,24 +49,28 @@ const session = read("app/checkout/[offer]/session/route.ts");
 const webhook = read("app/api/checkout/webhook/route.ts");
 const middleware = read("middleware.ts");
 
-test("Blueprint Breakdown ($47) is a Card Blueprint checkout offer, not the Cassidy Rice payment link", () => {
+test("52xSeven Blueprint ($19) is a Card Blueprint checkout offer, not the Cassidy Rice payment link", () => {
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
-  expect(DEEP_DIVE_SKU).toBe("blueprint-breakdown-47");
+  expect(DEEP_DIVE_SKU).toBe("52xseven-blueprint-19");
   expect(DEEP_DIVE_LEGACY_PRICE_ID).toBe("price_1U8s5uChx1yAVyrsjbQKfsmD");
-  expect(BLUEPRINT_BREAKDOWN_PRICE_ENV).toBe("STRIPE_PRICE_BLUEPRINT_BREAKDOWN");
+  expect(FIFTY_TWO_BY_SEVEN_PRICE_ENV).toBe("STRIPE_PRICE_52XSEVEN_BLUEPRINT");
+  expect(FIFTY_TWO_BY_SEVEN_REPORT_SLUG).toBe("52xseven-blueprint");
+  expect(FIFTY_TWO_BY_SEVEN_ACCESS_DAYS).toBe(365);
   expect(read("lib/deep-dive.ts")).not.toContain("STRIPE_PRICE_DEEP_DIVE");
-  expect(DEEP_DIVE_CTA_LABEL).toBe("Get the Blueprint Breakdown — $47");
-  expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → $47 Blueprint Breakdown");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("5-minute Blueprint Breakdown Video");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("Yearly Timing Map");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("7-page PDF");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("System Guide");
+  expect(DEEP_DIVE_CTA_LABEL).toBe("Unlock my full year — $19");
+  expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → $19 52xSeven Blueprint");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("What $19 unlocks");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("52-day chapter");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("all seven chapters");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("12 months of access");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("video");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("PDF");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("Timing Map");
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("90 Spreads");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("Instant download links + email backup");
-  expect(DEEP_DIVE_FULFILLMENT).not.toContain("download links now");
   expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("deep-dive");
-  expect(checkoutProductBySlug("deep-dive")?.price).toBe(47);
-  expect(checkoutProductBySlug("deep-dive")?.name).toBe("Blueprint Breakdown Video");
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(19);
+  expect(checkoutProductBySlug("deep-dive")?.name).toBe("52xSeven Blueprint");
+  expect(checkoutProductBySlug("deep-dive")?.href).toBe("/products/52xseven-blueprint");
   expect(publicProductBySlug("deep-dive")).toBeUndefined();
   expect(isDeepDive(DEEP_DIVE_PRODUCT)).toBe(true);
 
@@ -95,18 +101,41 @@ test("Blueprint Breakdown ($47) is a Card Blueprint checkout offer, not the Cass
   expect(header).not.toContain("buy.stripe.com");
 });
 
+test("52xSeven sales page previews the year client-side; the birthday never enters a URL", () => {
+  const product = read("app/products/52xseven-blueprint/page.tsx");
+  expect(product).toContain("<YearPreview");
+  expect(product).not.toContain("searchParams");
+  const preview = read("components/year/YearPreview.tsx");
+  expect(preview).toContain('fetch("/api/year-preview"');
+  expect(preview).toContain('method: "POST"');
+  expect(preview).toContain("DEEP_DIVE_SESSION_PATH");
+  expect(preview).toContain("<DeepDiveCta");
+  const api = read("app/api/year-preview/route.ts");
+  expect(api).toContain("rateLimit(");
+  expect(api).toContain("sanitizeBirthdateISO");
+  expect(api).toContain("isJokerBirthdate");
+  expect(api).not.toContain("console.log");
+  const app = read("components/year/YearBlueprintApp.tsx");
+  expect(app).toContain("onBirthdate");
+  expect(app).toContain('action={unlock.action} method="post"');
+  expect(app).toContain('name="birthdate"');
+  expect(read("lib/elroy/widget.ts")).toContain('"/blueprint"');
+  expect(read("app/blueprint/page.tsx")).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
+  expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");
+});
+
 test("session metadata carries birthday from the calculator reveal", () => {
   const meta = deepDiveSessionMetadata({
     birthday: "1990-01-15",
     source: "birth-card-calculator",
   });
   expect(meta).toMatchObject({
-    sku: "blueprint-breakdown-47",
+    sku: "52xseven-blueprint-19",
     offer_slug: "deep-dive",
     birthday: "1990-01-15",
     birthdate: "1990-01-15",
     source: "birth-card-calculator",
-    offer_name: "Blueprint Breakdown Video",
+    offer_name: "52xSeven Blueprint",
     product_kind: "digital_download",
   });
   expect(
@@ -123,20 +152,23 @@ test("session metadata carries birthday from the calculator reveal", () => {
   expect(session).toContain("deepDiveSessionMetadata");
   expect(session).toContain(DEEP_DIVE_SESSION_PATH.replace("/checkout/deep-dive/session", "deep-dive") && "deepDivePriceId");
   expect(webhook).toContain("DEEP_DIVE_SKU");
-  // Sessions opened under the retired $9 SKU still fulfill.
+  // Sessions opened under the retired $9 and $47 SKUs still fulfill.
   expect(webhook).toContain('session.metadata?.sku === "deep-dive-9"');
-  expect(webhook).toContain("Yearly Timing Map");
-  expect(webhook).toContain("deepDiveFilesForBirthday");
-  expect(webhook).toContain("deepDiveCardPdfForBirthday");
+  expect(webhook).toContain('session.metadata?.sku === "blueprint-breakdown-47"');
+  expect(webhook).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
+  expect(webhook).toContain("FIFTY_TWO_BY_SEVEN_ACCESS_DAYS");
+  expect(webhook).toContain("/blueprint?token=");
   expect(webhook).toContain("isJokerBirthdate");
-  expect(webhook).toContain("skipped (Joker)");
+  expect(webhook).not.toContain("Yearly Timing Map");
+  expect(webhook).not.toContain("deepDiveFilesForBirthday");
+  expect(webhook).not.toContain("record the 5-minute");
   expect(webhook).not.toContain("Mac watcher");
   expect(webhook).not.toContain("Files emailed automatically: NO");
   expect(webhook).not.toContain("king-of-spades");
   expect(webhook).not.toContain("K♠");
 });
 
-test("shared calculator result sells the $47 Blueprint Breakdown, not the $13 Blueprint", () => {
+test("shared calculator result sells the $19 52xSeven Blueprint, not the $13 Blueprint", () => {
   expect(calculator).toContain("<DeepDiveCta");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
   expect(calculator).toContain("reveal.birthdate");
@@ -159,7 +191,7 @@ test("shared calculator result sells the $47 Blueprint Breakdown, not the $13 Bl
   expect(calculator.indexOf("<BirthShareHero")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
-  // The $47 CTA follows the free one-line read; the 52-day box sits below it
+  // The $19 CTA follows the free one-line read; the 52-day box sits below it
   // (2026-09-01: 1,149 completions → 41 taps when the CTA was two screens down).
   expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
@@ -168,7 +200,7 @@ test("shared calculator result sells the $47 Blueprint Breakdown, not the $13 Bl
   expect(calculator).not.toContain("FreeCourseSignupForm");
 });
 
-test("conversion chrome and card meanings use one $47 Blueprint Breakdown offer", () => {
+test("conversion chrome and card meanings use one $19 52xSeven Blueprint offer", () => {
   // HeaderDeepDiveCta remains for other surfaces; home header has no Reading Day CTA.
   const headerCta = read("components/seo/HeaderDeepDiveCta.tsx");
   expect(headerCta).toContain('placement="site-header"');
@@ -186,9 +218,10 @@ test("conversion chrome and card meanings use one $47 Blueprint Breakdown offer"
   expect(header).not.toContain("Get a Reading");
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
-  expect(footer).toContain("Blueprint Breakdown Video ($47)");
+  expect(footer).toContain("52xSeven Blueprint ($19)");
   expect(footer).not.toContain("Deep Dive ($9)");
-  expect(footer).toContain("/products/blueprint-breakdown-video");
+  expect(footer).not.toContain("Blueprint Breakdown");
+  expect(footer).toContain("/products/52xseven-blueprint");
   expect(footer).toContain("Content Calendar");
   expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
@@ -196,7 +229,8 @@ test("conversion chrome and card meanings use one $47 Blueprint Breakdown offer"
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
   expect(offerCta).not.toContain("personal-card-blueprint");
   expect(meaning).toContain('source="birth-card-meaning"');
-  expect(meaning).toContain("Get the {card.label} Blueprint Breakdown — $47");
+  expect(meaning).toContain("Get the {card.label} 52xSeven Blueprint — $19");
+  expect(meaning).not.toContain("Blueprint Breakdown");
   expect(meaning).not.toContain("Deep Dive — $9");
   expect(meaning).not.toContain('className="mt-3 inline-block rounded-full bg-foil');
 });
@@ -225,7 +259,8 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).not.toMatch(/noindex/i);
   expect(page).not.toMatch(/display:\s*none/i);
   expect(page).not.toContain("Got the card name");
-  expect(page).toContain("/products/blueprint-breakdown-video");
+  expect(page).toContain("/products/52xseven-blueprint");
+  expect(page).not.toContain("/products/blueprint-breakdown-video");
   expect(page).not.toContain("/products/birth-card-deep-dive");
   expect(page).not.toContain("/products/personal-card-blueprint");
   expect(page).toContain("<BirthdayChartTable />");
@@ -245,16 +280,17 @@ test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Ri
   expect(hero).not.toContain("buy.stripe.com");
 });
 
-test("success copy: video by email, bonus PDFs instant, honest for Joker", () => {
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("Blueprint Breakdown Video arrives by email");
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("Yearly Timing Map");
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("7-page Deep Dive and the complete System Guide");
-  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Blueprint Breakdown Video");
+test("success copy: year unlocked instantly, sign-in link 12 months, honest for Joker", () => {
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("52xSeven Blueprint is unlocked");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("52-day chapter");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("12 months");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("video");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("PDF");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("Timing Map");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("90 Spreads");
-  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("follows in a few minutes");
-  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("complete System Guide");
-  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("90 Spreads");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Joker");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("refund");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("System Guide");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("7-page Deep Dive");
   expect(deepDiveSuccessCopy("1990-01-15")).toBe(DEEP_DIVE_SUCCESS_COPY);
   expect(deepDiveSuccessCopy("1990-12-31")).toBe(DEEP_DIVE_JOKER_SUCCESS_COPY);
@@ -268,10 +304,10 @@ test("success copy: video by email, bonus PDFs instant, honest for Joker", () =>
   );
 });
 
-test("Blueprint Breakdown stays one $47 SKU and mints bonus tokens for a card birthday", async () => {
-  expect(DEEP_DIVE_SKU).toBe("blueprint-breakdown-47");
+test("legacy $9 / $47 download links still resolve for past buyers", async () => {
+  expect(DEEP_DIVE_SKU).toBe("52xseven-blueprint-19");
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
-  expect(checkoutProductBySlug("deep-dive")?.price).toBe(47);
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(19);
   expect(webhook).not.toContain("buy.stripe.com");
   expect(read("lib/products.ts")).not.toContain("deep-dive-card");
 

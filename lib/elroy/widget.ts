@@ -5,6 +5,8 @@ export const ELROY_SUPPRESSION_KEY = "cardblueprints.elroy.suppress_until";
 export const THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
 
 const EXCLUDED_PREFIXES = [
+  // The purchased 52xSeven year app owns the bottom of the screen (tab bar).
+  "/blueprint",
   "/checkout",
   "/content-engine",
   "/gate",
@@ -20,6 +22,7 @@ const MOBILE_TEASER_PROTECTED_PATHS = new Set([
   "/birth-card-compatibility-calculator",
   "/products/complete-card-blueprint",
   "/products/personal-card-blueprint",
+  "/products/52xseven-blueprint",
 ]);
 
 export function isElroyEligiblePath(pathname: string): boolean {

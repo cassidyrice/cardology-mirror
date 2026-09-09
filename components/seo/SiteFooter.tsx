@@ -30,7 +30,7 @@ const READ = [
 
 const GET = [
   { label: "Content Calendar (experiment)", href: "/content-engine" },
-  { label: "Blueprint Breakdown Video ($47)", href: "/products/blueprint-breakdown-video" },
+  { label: "52xSeven Blueprint ($19)", href: "/products/52xseven-blueprint" },
   { label: "Free course", href: "/free-course" },
 ] as const;
 

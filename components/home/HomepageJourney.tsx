@@ -6,9 +6,9 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-deck",
     label: "The Deck",
-    kicker: "Blueprint Breakdown Video · bonus PDFs instant",
+    kicker: "52xSeven Blueprint · instant after payment",
     title: "Your birthday carries a pattern.",
-    body: "Every birthday maps to exactly one card in a fixed 52-card order. Find yours free, then put the full pattern in writing.",
+    body: "Every birthday maps to exactly one card in a fixed 52-card order. Find yours free, then unlock your whole year.",
     clip: "/brand/journey/scene-01.mp4",
     mobileClip: "/brand/journey/scene-01-mobile.mp4",
     poster: "/brand/journey/scene-01-poster.webp",
@@ -20,8 +20,8 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
         <a className="journey-primary" href="/birth-card-calculator">
           Find Your Birth Card Free
         </a>
-        <a className="journey-secondary" href="/products/blueprint-breakdown-video">
-          Get the Blueprint Breakdown · $47
+        <a className="journey-secondary" href="/products/52xseven-blueprint">
+          Get the 52xSeven Blueprint · $19
         </a>
       </>
     ),
@@ -54,20 +54,20 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-blueprint",
     label: "The Blueprint",
-    kicker: "Blueprint Breakdown Video",
-    title: "Put your pattern in writing.",
-    body: "Your birth card, ruling layer, current chapter, and reflection prompts in one personalized report you can open immediately after checkout.",
+    kicker: "52xSeven Blueprint",
+    title: "See your whole year on one map.",
+    body: "Your birth card, the 52-day chapter you are in right now, all seven chapters, and the yearly story arc in one phone-friendly app you can open the moment payment clears.",
     clip: "/brand/journey/scene-04.mp4",
     mobileClip: "/brand/journey/scene-04-mobile.mp4",
     poster: "/brand/journey/scene-04-poster.webp",
     mobilePoster: "/brand/journey/scene-04-mobile-poster.webp",
     scroll: 1.45,
     align: "right",
-    tags: ["Instant written report"],
+    tags: ["Instant · 12 months of access"],
     actions: (
       <>
-        <a className="journey-primary" href="/products/blueprint-breakdown-video">
-          Get the Blueprint Breakdown · $47
+        <a className="journey-primary" href="/products/52xseven-blueprint">
+          Get the 52xSeven Blueprint · $19
         </a>
         <a className="journey-secondary" href="/birth-card-calculator">
           Find Your Birth Card Free
