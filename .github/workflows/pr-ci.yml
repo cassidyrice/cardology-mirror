@@ -59,6 +59,7 @@ jobs:
             scripts/sitemap-integrity.test.ts \
             scripts/calculator-library-links.test.ts \
             scripts/calculator-deep-dive.test.ts \
+            scripts/agent-card.test.ts \
             scripts/birth-card-meta.test.ts \
             scripts/site-navigation.test.ts \
             scripts/card-meaning-equity.test.ts \
