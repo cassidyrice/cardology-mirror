@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ProductStill } from "@/components/product/ProductStill";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -104,7 +105,14 @@ export default function CompatibilityCalculatorPage() {
         Cardology Compatibility Calculator
       </h1>
 
-      <CompatibilityCalculator />
+      <div className="grid gap-6 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:items-start">
+        <CompatibilityCalculator />
+        <ProductStill
+          placement="compatibility-calculator-aside"
+          image="story"
+          lede="The comparison stops at the two cards. This is your own year, built on yours — the chapter you're standing in today, the six still coming, and what each one asks."
+        />
+      </div>
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
         <p className="prose-reading text-mist">

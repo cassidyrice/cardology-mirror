@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
+import { ProductStill } from "@/components/product/ProductStill";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { BirthdayChartTable } from "@/components/seo/BirthdayChartTable";
 import {
@@ -176,8 +177,9 @@ export default function CalculatorPage() {
         </p>
       </header>
 
-      <div className="mt-5">
+      <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:items-start">
         <BirthCardCalculator />
+        <ProductStill placement="birth-card-calculator-aside" />
       </div>
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
