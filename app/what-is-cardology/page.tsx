@@ -329,6 +329,28 @@ export default function WhatIsCardology() {
         </p>
       </section>
 
+      <section className="mt-8" id="which-layer">
+        <h2 className="eyebrow mb-2 text-gold">Which layer am I reading?</h2>
+        <p className="prose-reading text-mist">
+          Before you look up a meaning, check what the card actually is. A birth
+          card is lifelong. A ruling card colors how it expresses. A card in a
+          yearly period only describes a 52-day stretch. Same card, different
+          job — so keep the label attached when you look it up.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          Where the cards sit and how they move is the board:{" "}
+          <Link href="/playing-card-spreads" className="text-gold underline underline-offset-4">
+            playing card spreads
+          </Link>
+          . To see one card read through each of the seven period filters, run it
+          through the{" "}
+          <Link href="/52-day-period-meaning-tool" className="text-gold underline underline-offset-4">
+            52-day period meaning tool
+          </Link>
+          .
+        </p>
+      </section>
+
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Why it works best on real people</h2>
         <p className="prose-reading text-mist">

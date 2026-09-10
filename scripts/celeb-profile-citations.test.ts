@@ -32,8 +32,8 @@ test("grounds the existing celebrity blog profiles and leaves CTA link-only", ()
     const headings = post.sections.map((section) => section.heading);
     expect(headings).toContain("Public date sources");
     const howTo = post.sections.find((section) => section.heading === "How to use this profile");
-    expect(howTo?.links?.some((link) => link.href === "/products/personal-card-blueprint")).toBe(true);
-    expect(post.coreLinks.some((link) => link.href === "/products/personal-card-blueprint")).toBe(true);
+    expect(howTo?.links?.some((link) => link.href === "/products/52xseven-blueprint")).toBe(true);
+    expect(post.coreLinks.some((link) => link.href === "/products/52xseven-blueprint")).toBe(true);
     expect(JSON.stringify(post.coreLinks)).not.toContain("/checkout/");
     expect(JSON.stringify(post.faqs).toLowerCase()).toContain("not fortune-telling");
   }

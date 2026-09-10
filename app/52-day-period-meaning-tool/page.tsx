@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { PeriodMeaningTool } from "@/components/seo/PeriodMeaningTool";
 import { allPeriodCardSeeds } from "@/lib/period-card-seeds";
@@ -75,6 +76,41 @@ export default function PeriodMeaningToolPage() {
 
       <section className="app-paper-stage border-y border-[#14110d]/15 bg-[#eadfcd]/55">
         <PeriodMeaningTool cards={cards} filters={PERIOD_FILTERS} />
+      </section>
+
+      <section className="mt-10 max-w-3xl">
+        <h2 className="oracle-eyebrow mb-3">Where to go next</h2>
+        <p className="text-base leading-relaxed text-[#3d352d]">
+          A period card is only one layer. Read the card on its own on its{" "}
+          <Link href="/birth-card" className="underline underline-offset-4">
+            card meaning page
+          </Link>
+          , find which card is yours with the{" "}
+          <Link href="/birth-card-calculator" className="underline underline-offset-4">
+            birth card calculator
+          </Link>
+          , or see how the layers fit together in{" "}
+          <Link href="/what-is-cardology" className="underline underline-offset-4">
+            what Cardology is
+          </Link>
+          .
+        </p>
+        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
+          To see where the seven periods actually come from — the board your card
+          moves across each year — read{" "}
+          <Link href="/playing-card-spreads" className="underline underline-offset-4">
+            playing card spreads
+          </Link>
+          .
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+          Want your own seven chapters, dated, instead of looking them up by hand?
+          That is the{" "}
+          <Link href="/products/52xseven-blueprint" className="underline underline-offset-4">
+            52xSeven Blueprint
+          </Link>
+          .
+        </p>
       </section>
 
     </SeoShell>
