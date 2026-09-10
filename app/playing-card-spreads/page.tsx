@@ -214,6 +214,13 @@ export default function PlayingCardSpreads() {
           Find your card on the board — free →
         </Link>
       </p>
+      <p className="prose-reading mb-6 text-mist">
+        New to the system? Start with{" "}
+        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+          what Cardology is
+        </Link>{" "}
+        — birthday to card, and what the card is for — then come back to the board.
+      </p>
 
       <nav className="mb-8 flex flex-wrap gap-2" aria-label="The three boards">
         {SPREADS.map((s) => (
@@ -451,6 +458,14 @@ export default function PlayingCardSpreads() {
             </div>
           ))}
         </div>
+        <p className="prose-reading mt-5 text-mist">
+          To see one card read through all seven of these filters side by side,
+          use the{" "}
+          <Link href="/52-day-period-meaning-tool" className="text-gold underline underline-offset-4">
+            52-day period meaning tool
+          </Link>
+          .
+        </p>
       </section>
 
       <section id="faq" className="mt-12 scroll-mt-10">
