@@ -28,9 +28,9 @@ const MONTH_DIRECTORY = [
   ["December", "december-1"],
 ] as const;
 
-const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)";
+const TITLE = "Cardology Chart & Birth Card Calculator (Free)";
 const DESCRIPTION =
-  "The full Cardology birthday chart (every date → one of 52 playing cards) plus a free calculator: enter a birthday for your birth card and ruling card. Not tarot.";
+  "Free Cardology chart + birth card calculator — all 366 birthdays → one playing card. Same date, same card. Not tarot.";
 const REVIEWED_DATE = PAGE_UPDATED_DATES["/birth-card-calculator"];
 
 export const metadata: Metadata = {
@@ -168,7 +168,7 @@ export default function CalculatorPage() {
       <header className="max-w-3xl">
         <p className="eyebrow mb-2 text-gold">Free · instant · no signup</p>
         <h1 className="display mb-2 text-3xl text-bone">
-          Birth Card Calculator and Cardology Chart
+          Cardology Chart & Birth Card Calculator
         </h1>
         <p className="prose-reading text-mist" data-ai-summary>
           Enter a birthday for the playing card — 52-card system, not tarot.
@@ -225,7 +225,7 @@ export default function CalculatorPage() {
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
         {[
           ["#how-it-works", "How it works"],
-          ["#cardology-chart", "Chart"],
+          ["#cardology-chart", "Cardology Chart"],
           ["#worked-example", "Worked example"],
           ["#birth-vs-ruling", "Birth vs ruling card"],
           ["#trust-and-limits", "Method & trust"],
@@ -282,13 +282,21 @@ export default function CalculatorPage() {
       </section>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">Cardology chart</p>
-        <h2 className="font-serif text-3xl text-bone">Cardology birthday chart: all 366 birthdays, one playing card each</h2>
+        <p className="eyebrow mb-2 text-gold">The birthday map</p>
+        <h2 className="font-serif text-3xl text-bone">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-mist">
-          This is the whole map. Find your month across the top and your day down
-          the side; the cell is your birth card. It is the same fixed calculation
-          the tool above runs, laid out so you can check a friend, a parent, or a
-          whole family at a glance. Tap any card to open that birthday&rsquo;s page.
+          A Cardology chart is the birthday-to-playing-card map: every calendar
+          date resolves to one card in a standard 52-card deck. Month and day are
+          coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
+          Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
+          date always yields the same card.
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          The free calculator above runs that same formula for one birthday. The
+          chart below is the whole map, so you can check a friend, a parent, or a
+          family at a glance. Find your month across the top and your day down
+          the side; the cell is your birth card. Tap any card to open that
+          birthday&rsquo;s page.
         </p>
         <BirthdayChartTable />
         <h3 className="mt-8 font-serif text-xl text-bone">Browse the chart by month</h3>
