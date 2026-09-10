@@ -8,10 +8,16 @@ const read = (path: string) => readFileSync(join(root, path), "utf8");
 test("calculator title stays under 60 and names both intents", () => {
   const source = read("app/birth-card-calculator/page.tsx");
   const match = source.match(/const TITLE = "([^"]+)"/);
-  expect(match?.[1]).toBe("Cardology Chart & Birth Card Calculator (Free, All 366 Days)");
+  expect(match?.[1]).toBe("Cardology Chart & Birth Card Calculator (Free)");
   expect(match?.[1].length).toBeLessThanOrEqual(60);
-  expect(source).toContain("Birth Card Calculator and Cardology Chart");
+  expect(source).toContain(
+    "Free Cardology chart + birth card calculator — all 366 birthdays → one playing card. Same date, same card. Not tarot.",
+  );
+  expect(source).toContain("Cardology Chart & Birth Card Calculator");
+  expect(source).toContain(">Cardology Chart</h2>");
   expect(source).toContain('id="cardology-chart"');
+  expect(source).toContain("not fortune-telling");
+  expect(source).toMatch(/birth card calculator/i);
 });
 
 test("calculator still puts the tool before the not-tarot aside and chart", () => {

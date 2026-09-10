@@ -247,8 +247,12 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).toContain('canonical: "/birth-card-calculator"');
   expect(page).toContain("/og/birth-card-calculator.png");
   expect(page).not.toContain("/og/default.png");
-  expect(page).toContain('const TITLE = "Cardology Chart & Birth Card Calculator (Free, All 366 Days)"');
-  expect(page).toContain("Birth Card Calculator and Cardology Chart");
+  expect(page).toContain('const TITLE = "Cardology Chart & Birth Card Calculator (Free)"');
+  expect(page).toContain(
+    "Free Cardology chart + birth card calculator — all 366 birthdays → one playing card. Same date, same card. Not tarot.",
+  );
+  expect(page).toContain("Cardology Chart & Birth Card Calculator");
+  expect(page).toContain(">Cardology Chart</h2>");
   expect(page).toContain('"Cardology calculator"');
   expect(page).toMatch(/cardology calculator/i);
   expect(page).toContain('"@type": "FAQPage"');
