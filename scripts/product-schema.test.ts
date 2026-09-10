@@ -1,29 +1,15 @@
 import { expect, test } from "bun:test";
-import { createElement } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
 
-import AnalogPage from "@/app/products/analog-algorithm/page";
-import CompletePage from "@/app/products/complete-card-blueprint/page";
-import PersonalPage from "@/app/products/personal-card-blueprint/page";
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import {
   buildProductJsonLd,
   merchantReturnPolicy,
-  PRODUCT_IMAGE_PATH,
+  OFFER_VALID_FROM,
+  productImageUrl,
 } from "@/lib/product-schema";
-import { PUBLIC_PRODUCTS } from "@/lib/products";
+import { DEEP_DIVE_PRODUCT, PUBLIC_PRODUCTS } from "@/lib/products";
 import { SITE_URL } from "@/lib/site";
-
-type JsonLd = Record<string, unknown>;
-
-function jsonLdGraphs(markup: string): JsonLd[] {
-  return Array.from(
-    markup.matchAll(
-      /<script\b[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/g,
-    ),
-    (match) => JSON.parse(match[1]!) as JsonLd | JsonLd[],
-  ).flatMap((value) => (Array.isArray(value) ? value : [value]));
-}
 
 test("merchant return policy is a full Google object, not an @id stub", () => {
   const policy = merchantReturnPolicy();
@@ -41,10 +27,11 @@ test("every public product emits merchant-listing required Offer fields", () => 
   for (const product of PUBLIC_PRODUCTS) {
     const json = buildProductJsonLd(product);
     expect(json["@type"]).toBe("Product");
-    expect(json.image).toEqual([`${SITE_URL}${PRODUCT_IMAGE_PATH}`]);
+    expect(json.image).toEqual([productImageUrl(product)]);
     expect(json.sku).toBe(product.slug);
     expect(json.offers.price).toBe(product.price.toFixed(2));
     expect(json.offers.priceCurrency).toBe("USD");
+    expect(json.offers.validFrom).toBe(OFFER_VALID_FROM);
     expect(json.offers.availability).toBe("https://schema.org/InStock");
     expect(json.offers.itemCondition).toBe("https://schema.org/NewCondition");
     expect(json.offers.hasMerchantReturnPolicy.applicableCountry).toBe("US");
@@ -53,28 +40,30 @@ test("every public product emits merchant-listing required Offer fields", () => 
   }
 });
 
-test("product pages include Product JSON-LD and do not use the 404 og-default.png path", () => {
-  const pages = [
-    renderToStaticMarkup(createElement(PersonalPage)),
-    renderToStaticMarkup(createElement(AnalogPage)),
-    renderToStaticMarkup(createElement(CompletePage)),
-  ];
+test("52xSeven Blueprint Offer starts on the existing 2026-09-08 launch date at $19", () => {
+  expect(OFFER_VALID_FROM).toBe("2026-09-08");
+  expect(OFFER_VALID_FROM).toBe(
+    PAGE_UPDATED_DATES["/products/52xseven-blueprint"],
+  );
 
-  for (const markup of pages) {
-    const products = jsonLdGraphs(markup).filter(
-      (graph) => graph["@type"] === "Product",
-    );
-    expect(products.length).toBeGreaterThanOrEqual(1);
-    const product = products[0]!;
-    const offers = product.offers as JsonLd;
-    expect(product.image).toBeDefined();
-    expect(offers.availability).toBe("https://schema.org/InStock");
-    expect((offers.hasMerchantReturnPolicy as JsonLd).applicableCountry).toBe(
-      "US",
-    );
-    expect((offers.shippingDetails as JsonLd).shippingRate).toBeDefined();
-    expect(markup).not.toContain("/og-default.png");
-  }
+  const json = buildProductJsonLd(DEEP_DIVE_PRODUCT);
+  expect(json["@type"]).toBe("Product");
+  expect(json.name).toBe("52xSeven Blueprint");
+  expect(json.offers.price).toBe("19.00");
+  expect(json.offers.priceCurrency).toBe("USD");
+  expect(json.offers.validFrom).toBe("2026-09-08");
+  expect(json.offers.url).toBe(
+    `${SITE_URL}/products/52xseven-blueprint`,
+  );
+  expect(json.image).toEqual([
+    `${SITE_URL}/og/products/52xseven-blueprint.png`,
+  ]);
+});
+
+test("52xSeven product page uses the shared Product/Offer JSON-LD helper", () => {
+  const page = readFileSync("app/products/52xseven-blueprint/page.tsx", "utf8");
+  expect(page).toContain("buildProductJsonLd(DEEP_DIVE_PRODUCT)");
+  expect(page).not.toContain("/og-default.png");
 });
 
 test("global Organization graph no longer injects incomplete makesOffer Products", () => {

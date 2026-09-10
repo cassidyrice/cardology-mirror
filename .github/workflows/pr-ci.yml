@@ -67,6 +67,7 @@ jobs:
             scripts/famous-birthdays-grounding.test.ts \
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
+            scripts/product-schema.test.ts \
             scripts/worker-production-contract-lib.test.ts
 
   pipeline:
