@@ -1,3 +1,4 @@
+import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import {
   isDigitalDownload,
   type ActiveProduct,
@@ -82,6 +83,15 @@ export function priceValidUntil(): string {
   return d.toISOString().slice(0, 10);
 }
 
+/**
+ * Offer start for the live $19 52xSeven Blueprint. Same ISO day as
+ * PAGE_UPDATED_DATES["/products/52xseven-blueprint"] and the catalog
+ * launch note in middleware.ts (2026-09-08). Not a sale window — the
+ * list price stays $19 from this date forward.
+ */
+export const OFFER_VALID_FROM =
+  PAGE_UPDATED_DATES["/products/52xseven-blueprint"];
+
 export function buildProductJsonLd(product: ActiveProduct) {
   const path = productCanonicalPath(product);
   const url = `${SITE_URL}${path}`;
@@ -130,6 +140,7 @@ export function buildProductJsonLd(product: ActiveProduct) {
       url,
       price: product.price.toFixed(2),
       priceCurrency: "USD",
+      validFrom: OFFER_VALID_FROM,
       priceValidUntil: priceValidUntil(),
       availability: available
         ? "https://schema.org/InStock"
