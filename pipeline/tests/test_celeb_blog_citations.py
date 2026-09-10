@@ -137,9 +137,9 @@ def test_blog_posts_carry_citations_and_keep_cta() -> None:
         how_to = next(section for section in post["sections"] if section["heading"] == "How to use this profile")
         hrefs = [link["href"] for link in how_to.get("links") or []]
         assert "/birth-card-calculator" in hrefs
-        assert "/products/personal-card-blueprint" in hrefs
+        assert "/products/52xseven-blueprint" in hrefs
         core = [link["href"] for link in post["coreLinks"]]
-        assert "/products/personal-card-blueprint" in core
+        assert "/products/52xseven-blueprint" in core
         assert "/checkout/" not in json.dumps(post["coreLinks"])
         if post["slug"] == "lady-gaga-birth-card-profile":
             assert citations["status"] == "flagged"
