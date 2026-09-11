@@ -124,9 +124,13 @@ test("52xSeven sales page previews the year client-side; the birthday never ente
   expect(api).toContain("isJokerBirthdate");
   expect(api).not.toContain("console.log");
   const app = read("components/year/YearBlueprintApp.tsx");
-  expect(app).toContain("onBirthdate");
-  expect(app).toContain('action={unlock.action} method="post"');
-  expect(app).toContain('name="birthdate"');
+  expect(app).not.toContain('mode: "preview"');
+  expect(preview).toContain('action={DEEP_DIVE_SESSION_PATH} method="post"');
+  expect(preview).toContain('name="birthdate"');
+  expect(preview).not.toContain('import { YearBlueprintApp }');
+  expect(api).toContain('toYearPreview(year)');
+  expect(home).toContain('toYearPreview(await buildYearBlueprint');
+  expect(product).toContain('toYearPreview(await buildYearBlueprint');
   expect(read("lib/elroy/widget.ts")).toContain('"/blueprint"');
   expect(read("app/blueprint/page.tsx")).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
   expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");

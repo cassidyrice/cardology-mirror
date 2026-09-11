@@ -6,32 +6,12 @@ import type { YearBlueprint, YearCard, YearChapter } from "@/lib/year-blueprint"
 
 import s from "./year.module.css";
 
-type ScreenId = "preview" | "card" | "now" | "chapters" | "story";
+type ScreenId = "card" | "now" | "chapters" | "story";
 
 type Props = {
   data: YearBlueprint;
-  /**
-   * preview — sales mode: shows the birthday entry + paywall screen, and the
-   *           inside screens blurred behind an unlock veil.
-   * full    — the purchased product.
-   */
-  mode: "preview" | "full";
-  /** Where the unlock button goes (preview mode). */
-  checkoutHref?: string;
-  /**
-   * Hosted-checkout unlock (preview mode). When set with a birthdate, the unlock
-   * button POSTs the birthday to the checkout session route instead of linking.
-   * Without a birthdate (sample preview) it focuses the birthday field.
-   */
-  unlock?: { action: string; source: string; birthdate?: string };
-  /** Preview mode: called with the ISO birthday the visitor enters (instead of a GET submit). */
-  onBirthdate?: (iso: string) => void;
-  /** Price label for the unlock button (preview mode). */
-  priceLabel?: string;
-  /** Wrap in a phone bezel (sales page) or fill the viewport (product). */
+  mode: "full";
   framed?: boolean;
-  /** Whether the preview is showing an example birthday rather than the visitor's. */
-  sample?: boolean;
   className?: string;
 };
 
@@ -150,132 +130,6 @@ function YearMap({ data }: { data: YearBlueprint }) {
         </g>
       ))}
     </svg>
-  );
-}
-
-/* ---------- unlock button ---------- */
-
-type Unlock = { action: string; source: string; birthdate?: string };
-
-function UnlockButton({
-  href, unlock, label,
-}: { href: string; unlock?: Unlock; label: string }) {
-  if (unlock && unlock.birthdate) {
-    return (
-      <form action={unlock.action} method="post" data-analytics-checkout>
-        <input type="hidden" name="birthdate" value={unlock.birthdate} />
-        <input type="hidden" name="source" value={unlock.source} />
-        <button type="submit" className={s.btn}>{label}</button>
-      </form>
-    );
-  }
-  if (unlock) {
-    return (
-      <button
-        type="button"
-        className={s.btn}
-        onClick={() => {
-          const el = document.getElementById("yb-birthdate") as HTMLInputElement | null;
-          el?.scrollIntoView({ behavior: "smooth", block: "center" });
-          el?.focus();
-          try { el?.showPicker?.(); } catch { /* not supported */ }
-        }}
-      >
-        Enter your birthday to unlock
-      </button>
-    );
-  }
-  return <a className={s.btn} href={href}>{label}</a>;
-}
-
-/* ---------- screens ---------- */
-
-function PreviewScreen({
-  data, checkoutHref, unlock, onBirthdate, priceLabel, sample, go,
-}: { data: YearBlueprint; checkoutHref: string; unlock?: Unlock; onBirthdate?: (iso: string) => void; priceLabel: string; sample: boolean; go: (id: ScreenId) => void }) {
-  const cur = data.current;
-  return (
-    <>
-      <div className={s.eyebrow}>52xSeven Blueprint</div>
-      <h1 className={s.h1}>Your whole year. One place to look it in the eye.</h1>
-      <p className={s.p}>
-        Enter your birthday. We show your card and the chapter you&rsquo;re standing in right now — before you pay a cent.
-      </p>
-
-      <form
-        method={onBirthdate ? undefined : "get"}
-        className={s.field}
-        onSubmit={(e) => {
-          if (!onBirthdate) return;
-          e.preventDefault();
-          const value = (e.currentTarget.elements.namedItem("birthdate") as HTMLInputElement | null)?.value;
-          if (value) onBirthdate(value);
-        }}
-      >
-        <label htmlFor="yb-birthdate">Birthday</label>
-        <input
-          id="yb-birthdate"
-          name="birthdate"
-          type="date"
-          className={s.input}
-          defaultValue={data.birthdate}
-          min="1900-01-01"
-          max={data.targetDate}
-          onChange={(e) => {
-            const value = e.currentTarget.value;
-            if (!value) return;
-            if (onBirthdate) onBirthdate(value);
-            else e.currentTarget.form?.requestSubmit();
-          }}
-        />
-      </form>
-      {sample && <p className={s.note}>Showing an example birthday. Change it to see your own.</p>}
-
-      <button type="button" className={cx(s.card, s.cardGlow, s.hero)} style={{ textAlign: "left", cursor: "pointer" }} onClick={() => go("card")}>
-        <Pc card={data.birthCard} />
-        <div className={s.stack}>
-          <div className={s.eyebrow}>Your birth card</div>
-          <h2 className={s.h2}>{data.birthCard.name}</h2>
-          <p className={cx(s.p, s.small)}>{data.birthCopy.light}</p>
-          <span className={cx(s.pill, s.pillGold)}>Tap the card ↗</span>
-        </div>
-      </button>
-
-      <div className={cx(s.card, s.stack)}>
-        <div className={cx(s.row, s.between)}>
-          <div className={s.eyebrow}>Right now · {cur.planet} chapter</div>
-          <span className={cx(s.tag, s.tagNow)}>Day {cur.dayInChapter} of {cur.lengthDays}</span>
-        </div>
-        <div className={s.row}>
-          <Pc card={cur.card} size="sm" />
-          <div>
-            <h3 className={s.h3}>{cur.card.name}</h3>
-            <p className={cx(s.p, s.small)}>{cur.startLabel} – {cur.endLabel}. {cur.copy.light}</p>
-          </div>
-        </div>
-        <div className={s.progress}><i style={{ width: `${cur.progress ?? 0}%` }} /></div>
-      </div>
-
-      <div className={s.locked}>
-        <div className={cx(s.blur, s.stack)} style={{ gap: 14 }} aria-hidden="true">
-          <div className={s.card}>
-            <div className={s.eyebrow}>Shadow read</div>
-            <h3 className={s.h3}>What the {data.birthCard.name.split(" ")[0]} hides</h3>
-            <p className={s.p}>{data.birthCopy.shadow}</p>
-          </div>
-          <div className={s.card}>
-            <div className={s.eyebrow}>Next {data.chapters.filter((c) => c.state === "next").length} chapters</div>
-            <h3 className={s.h3}>{data.next?.startLabel ?? cur.startLabel} → {data.yearEndLabel}</h3>
-            <p className={s.p}>{data.chapters.filter((c) => c.state === "next").map((c) => c.card.code).join(" · ")} · then Pluto and Result close the year.</p>
-          </div>
-        </div>
-        <div className={s.veil}>
-          <div className={s.eyebrow} style={{ color: "var(--yb-bone-2)" }}>Unlock 12 months · one payment · no renewal</div>
-          <UnlockButton href={checkoutHref} unlock={unlock} label={`Unlock my full year — ${priceLabel}`} />
-          <p className={s.note} style={{ textAlign: "center" }}>Instant access. Sign-in link by email.</p>
-        </div>
-      </div>
-    </>
   );
 }
 
@@ -497,7 +351,6 @@ function StoryScreen({ data }: { data: YearBlueprint }) {
 /* ---------- tab icons ---------- */
 
 const ICONS: Record<ScreenId, React.ReactNode> = {
-  preview: <svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10H4z" /></svg>,
   card: <svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="2" /><path d="M12 9v6M9 12h6" /></svg>,
   now: <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>,
   chapters: <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><circle cx="12" cy="12" r="3" /><path d="M12 3v3M21 12h-3M12 21v-3M3 12h3" /></svg>,
@@ -505,57 +358,37 @@ const ICONS: Record<ScreenId, React.ReactNode> = {
 };
 
 const LABELS: Record<ScreenId, string> = {
-  preview: "Preview", card: "My card", now: "Now", chapters: "Chapters", story: "Story",
+  card: "My card", now: "Now", chapters: "Chapters", story: "Story",
 };
 
 /* ---------- app ---------- */
 
-export function YearBlueprintApp({
-  data, mode, checkoutHref = "#", unlock, onBirthdate, priceLabel = "$19", framed = mode === "preview", sample = false, className,
-}: Props) {
-  const [screen, setScreen] = useState<ScreenId>(mode === "preview" ? "preview" : "now");
-  const tabs: ScreenId[] = mode === "preview"
-    ? ["preview", "card", "now", "chapters", "story"]
-    : ["card", "now", "chapters", "story"];
-
+/** Paid view only. Public samples use YearPreviewApp and YearPreviewData. */
+export function YearBlueprintApp({ data, framed = false, className }: Props) {
+  const [screen, setScreen] = useState<ScreenId>("now");
+  const tabs: ScreenId[] = ["card", "now", "chapters", "story"];
   const go = (id: ScreenId) => setScreen(id);
-  const locked = mode === "preview" && screen !== "preview";
-
   const inner = (() => {
     switch (screen) {
-      case "preview": return <PreviewScreen data={data} checkoutHref={checkoutHref} unlock={unlock} onBirthdate={onBirthdate} priceLabel={priceLabel} sample={sample} go={go} />;
       case "card": return <CardScreen data={data} go={go} />;
       case "now": return <NowScreen data={data} go={go} />;
       case "chapters": return <ChaptersScreen data={data} go={go} />;
       case "story": return <StoryScreen data={data} />;
     }
   })();
-
-  const today = new Date(data.targetDate + "T00:00:00Z");
-  const statusDate = today.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" });
-
+  const statusDate = new Date(data.targetDate + "T00:00:00Z").toLocaleDateString("en-US", {
+    weekday: "short", month: "short", day: "numeric", timeZone: "UTC",
+  });
   return (
     <div className={cx(s.root, className)}>
       <div className={framed ? s.phone : s.full}>
         {framed && <div className={s.notch} />}
         {framed && <div className={s.status}><span>9:41</span><span>{statusDate}</span></div>}
-
-        <section className={cx(s.screen, locked && s.blur)} key={screen} aria-hidden={locked || undefined}>
-          {inner}
-        </section>
-        {locked && (
-          <div className={s.lockVeil}>
-            <div className={s.eyebrow} style={{ color: "var(--yb-bone-2)" }}>This screen is inside your year</div>
-            <UnlockButton href={checkoutHref} unlock={unlock} label={`Unlock my full year — ${priceLabel}`} />
-            <button type="button" className={cx(s.btn, s.btnGhost)} onClick={() => go("preview")}>Back to preview</button>
-          </div>
-        )}
-
+        <section className={s.screen} key={screen}>{inner}</section>
         <nav className={s.tabs} aria-label="Sections">
           {tabs.map((id) => (
             <button key={id} type="button" className={cx(s.tab, screen === id && s.tabOn)} onClick={() => go(id)} aria-current={screen === id ? "page" : undefined}>
-              {ICONS[id]}
-              {LABELS[id]}
+              {ICONS[id]}{LABELS[id]}
             </button>
           ))}
         </nav>

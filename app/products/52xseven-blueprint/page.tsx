@@ -9,6 +9,7 @@ import { buildProductJsonLd } from "@/lib/product-schema";
 import { DEEP_DIVE_PRODUCT } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
 import { buildYearBlueprint } from "@/lib/year-blueprint";
+import { toYearPreview } from "@/lib/year-preview";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
@@ -72,7 +73,7 @@ const faqs = [
 ];
 
 export default async function FiftyTwoBySevenPage() {
-  const sample = await buildYearBlueprint(SAMPLE_BIRTHDATE);
+  const sample = toYearPreview(await buildYearBlueprint(SAMPLE_BIRTHDATE));
 
   const jsonLd = [
     buildProductJsonLd(DEEP_DIVE_PRODUCT),

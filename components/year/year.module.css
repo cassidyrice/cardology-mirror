@@ -169,3 +169,21 @@
 .chapter:last-child .dot::after { display: none; }
 .k { font: 500 11px var(--yb-mono); letter-spacing: 0.14em; text-transform: uppercase; color: var(--yb-mute); }
 .diagram { width: 100%; display: block; }
+
+/* Public sample: content stays readable without an inner scroll or hidden reading. */
+.previewPhone { height: auto; max-height: none; box-shadow: 0 24px 60px rgba(28, 16, 34, .2), inset 0 0 0 8px #050308; }
+.previewScreen { padding: 64px 20px 24px; overflow: visible; }
+.previewScreen .h1 { font-size: 29px; }
+.previewScreen .h2 { font-size: 25px; }
+.previewScreen .note { color: var(--yb-bone-2); }
+.previewField { flex-direction: column; align-items: stretch; }
+.previewField label { color: var(--yb-bone-2); }
+.previewField .input { text-align: left; min-height: 40px; }
+.previewField .btn { padding: 12px; }
+.previewScreen .btn[aria-pressed="true"] { border-color: var(--yb-gold); color: var(--yb-gold-2); }
+.previewScreen .btn:disabled { cursor: wait; opacity: .65; }
+@media (max-width: 380px) {
+  .previewScreen { padding-left: 14px; padding-right: 14px; }
+  .previewScreen .hero { gap: 12px; }
+  .previewScreen .card { padding: 14px; }
+}

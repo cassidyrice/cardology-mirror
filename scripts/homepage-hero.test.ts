@@ -65,7 +65,7 @@ describe("Homepage landing contract", () => {
     expect(home).not.toContain("TodaysCardSection");
     expect(home).not.toContain("DeepDiveSection");
     expect(home).toContain('href="/explore"');
-    expect(home).toContain("Explore →");
+    expect(home).toContain("Explore the free library →");
     expect(home).toContain('absolute: HOME_TITLE');
     expect(home).toContain('const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints"');
     expect(home).toContain(

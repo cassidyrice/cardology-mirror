@@ -4,6 +4,7 @@ import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import { isJokerBirthdate } from "@/lib/deep-dive";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import { buildYearBlueprint } from "@/lib/year-blueprint";
+import { toYearPreview } from "@/lib/year-preview";
 
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
@@ -14,7 +15,7 @@ const WINDOW_MS = 10 * 60 * 1000;
 // POST /api/year-preview  { birthdate: "YYYY-MM-DD" }
 // Free preview for the 52xSeven Blueprint sales page. The birthday travels in
 // the request body only (never a URL — middleware strips it) and is not stored
-// or logged. Returns the same year model the purchased app renders.
+// or logged. Returns only the allowlisted free sample, never the paid year model.
 export async function POST(req: NextRequest) {
   const limited = rateLimit(rateLimitKey(req, "year-preview"), {
     limit: LIMIT,
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
   }
   try {
     const year = await buildYearBlueprint(birthdate);
-    return NextResponse.json(year, { headers: { "Cache-Control": "no-store" } });
+    return NextResponse.json(toYearPreview(year), { headers: { "Cache-Control": "no-store" } });
   } catch {
     return NextResponse.json({ error: "engine" }, { status: 422 });
   }

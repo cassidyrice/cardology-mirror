@@ -5,7 +5,7 @@ import { useState } from "react";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { YearPreviewApp } from "@/components/year/YearPreviewApp";
 import { DEEP_DIVE_PRICE_LABEL } from "@/lib/deep-dive";
-import type { YearBlueprint } from "@/lib/year-blueprint";
+import type { YearPreviewData } from "@/lib/year-preview";
 
 /**
  * Sales-page preview of the 52xSeven Blueprint. Starts on an example birthday;
@@ -17,7 +17,7 @@ export function YearPreview({
   sample,
   includes,
 }: {
-  sample: YearBlueprint;
+  sample: YearPreviewData;
   includes: string[];
 }) {
   // The unlock button in the sales box buys the year the preview is showing.
