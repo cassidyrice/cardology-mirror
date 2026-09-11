@@ -88,6 +88,16 @@ export default async function Home() {
           <YearPreviewApp sample={sample} source="home-landing" className="home-product-preview" />
         </section>
 
+        <section className="home-articles" aria-labelledby="home-articles-title">
+          <div className="home-articles-heading"><div><p className="home-kicker">From the journal</p><h2 id="home-articles-title">Get to know your cards.</h2></div><p>A few good places to start. Read a little, then bring it back to your own life.</p></div>
+          <div className="home-article-grid">
+            <Link className="home-article" href="/blog/how-to-read-birth-card-meaning"><span className="home-article-label">01 / Your Birth Card</span><h3>How to read your Birth Card</h3><p>Explore its themes as questions to reflect on, with room for your own experience.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
+            <Link className="home-article" href="/blog/52-day-periods-in-cardology"><span className="home-article-label">02 / Your year</span><h3>How your 52-day chapters work</h3><p>Get to know the seven planetary periods that give your birthday year its structure.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
+            <Link className="home-article" href="/blog/birth-card-vs-ruling-card-how-to-read-both"><span className="home-article-label">03 / Another perspective</span><h3>Birth Card or Ruling Card?</h3><p>Understand what each brings to a reading and how to read the two together.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
+          </div>
+          <Link className="home-articles-all" href="/blog">Browse all articles <span aria-hidden="true">→</span></Link>
+        </section>
+
         <section className="home-start" aria-labelledby="home-start-title">
           <div><p className="home-kicker">Keep exploring</p><h2 id="home-start-title">Follow your curiosity.</h2><p>Start with one card, a connection, or the basics. There’s plenty to discover for free.</p></div>
           <div className="home-reading-links">

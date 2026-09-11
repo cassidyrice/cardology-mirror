@@ -139,3 +139,19 @@
   .home-product h2 { font-size: 2.7rem; }
   .home-start { grid-template-columns: 1fr; gap: 1.7rem; padding: 2.5rem 0 3rem; width: calc(100% - 2.5rem); }
 }
+
+/* Curated reading below the product, above the lower navigation. */
+.home-articles { width:calc(100% - 4rem); max-width:1072px; margin:0 auto; padding:4rem 0; border-top:1px solid #d7cbbb; }
+.home-articles-heading { display:flex; justify-content:space-between; align-items:end; gap:2rem; margin-bottom:1.8rem; }
+.home-articles-heading h2 { font-family:Georgia,serif; font-size:clamp(2rem,3.5vw,2.8rem); line-height:1.1; letter-spacing:-.04em; margin:.6rem 0 0; }
+.home-articles-heading>p { max-width:320px; color:#665c52; line-height:1.7; font-size:.95rem; }
+.home-article-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+.home-article { padding:1.7rem; display:flex; flex-direction:column; align-items:start; border:1px solid #d7cbbb; background:#f8f3eb; transition:border-color .2s,background .2s; }
+.home-article:hover { border-color:#8b5155; background:#fffaf2; }
+.home-article:focus-visible,.home-articles-all:focus-visible { outline:3px solid #7b3038; outline-offset:5px; }
+.home-article-label { font-size:.64rem; letter-spacing:.13em; text-transform:uppercase; color:#786552; }
+.home-article h3 { font-family:Georgia,serif; font-size:1.65rem; letter-spacing:-.03em; line-height:1.15; margin:1.4rem 0 .9rem; }
+.home-article p { font-size:.92rem; line-height:1.75; color:#665c52; margin:0 0 1.6rem; }
+.home-article-read { margin-top:auto; color:#7b3038; font-weight:600; font-size:.78rem; width:100%; display:flex; justify-content:space-between; }
+.home-articles-all { display:inline-flex; gap:1rem; font-size:.84rem; margin-top:1.7rem; color:#7b3038; font-weight:600; }
+@media(max-width:700px) { .home-articles { width:calc(100% - 2.5rem); padding:2.8rem 0; }.home-articles-heading { display:block; }.home-articles-heading>p { margin-top:1rem; }.home-article-grid { grid-template-columns:1fr; }.home-article { padding:1.4rem; }.home-article h3 { margin-top:1rem; } }
