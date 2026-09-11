@@ -12726,5 +12726,147 @@
         "href": "/editorial-policy"
       }
     ]
+  },
+  {
+    "slug": "jupiter-and-saturn-periods",
+    "pillar": "timing-and-spreads",
+    "title": "Jupiter and Saturn Periods",
+    "description": "The fourth and fifth 52-day periods of the Cardology year: Jupiter's expansion and reward, then Saturn's structure, consequence, and repair.",
+    "dek": "The year's middle runs from growth to gravity.",
+    "datePublished": "2026-09-11",
+    "dateModified": "2026-09-11",
+    "readTime": "5 min read",
+    "keywords": [
+      "jupiter period cardology",
+      "saturn period meaning",
+      "expansion and discipline periods",
+      "middle of cardology year",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "The Jupiter period covers days 157 through 208 of your personal year and carries expansion: growth, opportunity, generosity, and reward for earlier effort. The Saturn period follows, days 209 through 260, and carries structure: discipline, consequence, health and work realities, and repair. Together they form the year's maturing middle.",
+    "sections": [
+      {
+        "heading": "Jupiter: what grows",
+        "body": [
+          "Jupiter is traditionally the year's most welcome stretch. Its themes are increase and blessing: opportunities widen, help arrives more easily, and earlier work tends to pay something back.",
+          "The period card names where the growth wants to happen. A Club card grows knowledge and connections; a Spade card grows capacity through work."
+        ]
+      },
+      {
+        "heading": "Saturn: what holds",
+        "body": [
+          "Saturn has a heavy reputation it only half deserves. Its themes are structure and accountability: obligations, health routines, long projects, and the consequences of choices already made.",
+          "A Saturn period is not a punishment block. It is the year's inspection window, and things repaired here tend to stay repaired."
+        ],
+        "links": [
+          {
+            "label": "Planetary Periods Without Prediction",
+            "href": "/blog/planetary-periods-without-prediction"
+          }
+        ]
+      },
+      {
+        "heading": "Reading the pair as a sequence",
+        "body": [
+          "The order teaches something: expansion first, then consolidation. What Jupiter opens, Saturn asks you to make solid.",
+          "In practice, plans launched in the Jupiter period often meet their first real test in the Saturn period. Knowing the sequence turns that from discouragement into scheduling."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is the Jupiter period lucky?",
+        "a": "It leans supportive: growth, generosity, and returns on effort. But the period card still sets the content, and a demanding card in Jupiter names growth that must be earned."
+      },
+      {
+        "q": "Should I dread my Saturn period?",
+        "a": "No. Expect structure rather than gloom: obligations, reviews, and repair work. Effort spent here tends to hold longer than effort spent anywhere else in the year."
+      },
+      {
+        "q": "Which days do these periods cover?",
+        "a": "Jupiter runs days 157 to 208 of your personal year, and Saturn runs days 209 to 260, counted from your birthday."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the 52xSeven Blueprint?",
+        "a": "A $19 one-time year app built from one birth date — your birth card with the light and the shadow read, your current 52-day chapter, all seven chapters, and the yearly story arc. It unlocks instantly after checkout and stays open for 12 months. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "mercury-venus-and-mars-periods",
+      "uranus-and-neptune-periods",
+      "planetary-periods-without-prediction"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "52-Card Astrology Explained",
+        "href": "/52-card-astrology-explained"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "52xSeven Blueprint",
+        "href": "/products/52xseven-blueprint",
+        "note": "$19 — your whole Cardology year, unlocked instantly."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
