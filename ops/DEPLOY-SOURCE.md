@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-12** (deployed `main` @ `c951226` — checkout-check: the One Question Reading needs a question before Stripe; previous record `30365f5`)
+**Last verified: 2026-09-13** (deployed `main` @ `13857e7` — Point verify-deploy-source at c951226 (the commit that was live before the Content Calendar removal); previous record `c951226`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `c9512262b691814e37d2b9ca51b28ea2d154bf46` |
+| **Deployed commit** | `13857e76b7265a62538a08a011db11ab86db6838` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `5cc3d234-b851-4977-95a6-63a63b88cd08` |
 | **Worker rollback** | `75b02c03-3c40-4353-bf38-b5dd7e0db1e8` |
