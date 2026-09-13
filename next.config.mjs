@@ -34,10 +34,10 @@ const nextConfig = {
         destination: "/products/one-question-reading",
         statusCode: 301,
       },
-      // Product name is "Content Calendar"; the route stayed /content-engine (2026-09-05).
+      // Retired Content Calendar alias.
       {
         source: "/content-calendar",
-        destination: "/content-engine",
+        destination: "/explore",
         statusCode: 301,
       },
       {

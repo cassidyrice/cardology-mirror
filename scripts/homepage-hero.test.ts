@@ -102,8 +102,8 @@ describe("Homepage landing contract", () => {
 
     expect(footer).toContain("Explore →");
     expect(footer).toContain("/explore");
-    expect(footer).toContain("Content Calendar (experiment)");
-    expect(footer).toContain("/content-engine");
+    expect(footer).not.toContain("Content Calendar (experiment)");
+    expect(footer).not.toContain("/content-engine");
     expect(footer).toContain("One Question Reading ($47)");
     expect(footer).not.toContain("Reading Day waitlist");
   });

@@ -87,10 +87,7 @@ export default function AboutPage() {
         <p>
           The paid product is the $47 One Question Reading: you bring one question,
           I read it from your birth card, this year's cards, and the card you owe,
-          and it lands in your inbox within 2 business days. The Content Calendar is a separate
-          experiment: you describe your business once, and it drafts one post per
-          day for 52 days. AI writes from your text; you still check facts before
-          posting.
+          and it lands in your inbox within 2 business days.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards

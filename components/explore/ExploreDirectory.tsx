@@ -66,7 +66,6 @@ const GROUPS: ExploreGroup[] = [
     title: "Paid reports",
     links: [
       { label: "One Question Reading ($47)", href: "/products/one-question-reading" },
-      { label: "Content Calendar — experiment ($29)", href: "/content-engine" },
     ],
   },
   {

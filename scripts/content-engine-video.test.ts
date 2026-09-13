@@ -22,6 +22,7 @@ import {
   availableVideoProducts,
   checkoutProductBySlug,
   isVideoOffer,
+  productBySlug,
 } from "../lib/products";
 
 function mockVideoJobsKv(): VideoJobsKv & {
@@ -138,13 +139,14 @@ describe("video session metadata", () => {
 });
 
 describe("video products", () => {
-  test("checkout lookup includes video-single when env set", () => {
+  test("retired video stays unavailable for new checkout even with a price configured", () => {
     const prev = process.env.STRIPE_PRICE_VIDEO_SINGLE;
     process.env.STRIPE_PRICE_VIDEO_SINGLE = "price_test_single";
     expect(videoOfferAvailable("video-single")).toBe(true);
     const product = checkoutProductBySlug("video-single");
-    expect(product?.slug).toBe("video-single");
-    expect(isVideoOffer(product)).toBe(true);
+    expect(product).toBeUndefined();
+    expect(availableVideoProducts()).toEqual([]);
+    expect(isVideoOffer(productBySlug("video-single"))).toBe(true);
     process.env.STRIPE_PRICE_VIDEO_SINGLE = prev;
   });
 
@@ -156,4 +158,13 @@ describe("video products", () => {
     );
     process.env.STRIPE_PRICE_VIDEO_DAILY_52 = prev;
   });
+});
+
+
+test("retired calendar and video offers keep historical lookup but reject new sales", () => {
+  for (const slug of ["content-calendar-52", "video-single", "video-weekly-7", "video-daily-52", "video-voice-addon"]) {
+    expect(checkoutProductBySlug(slug)).toBeUndefined();
+    expect(productBySlug(slug)?.slug).toBe(slug);
+  }
+  expect(checkoutProductBySlug("deep-dive")?.name).toBe("One Question Reading");
 });

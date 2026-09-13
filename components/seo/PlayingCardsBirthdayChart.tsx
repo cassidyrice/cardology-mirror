@@ -50,11 +50,11 @@ export function PlayingCardsBirthdayChart() {
         ))}
       </div>
       <p className="prose-reading mt-4 text-sm text-mist">
-        Accessible alternative: the full list lives at{" "}
+        Prefer a list?{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
-          /born-on/
+          Browse every birthday by month and day
         </a>
-        . Chart cells are plain links so crawlers and the Worker route resolve correctly.
+        .
       </p>
     </div>
   );

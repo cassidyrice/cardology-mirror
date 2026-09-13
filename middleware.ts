@@ -5,6 +5,14 @@ import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 import { applySecurityHeaders } from "@/lib/security-headers";
 
 const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
+  "/content-engine": "/explore",
+  "/content-calendar": "/explore",
+  "/content-engine/video/order": "/explore",
+  "/checkout/content-calendar-52": "/explore",
+  "/checkout/video-single": "/explore",
+  "/checkout/video-weekly-7": "/explore",
+  "/checkout/video-daily-52": "/explore",
+  "/checkout/video-voice-addon": "/explore",
   "/readings": "/products/one-question-reading",
   "/try": "/birth-card-calculator",
   "/cardology-chart": "/birth-card-calculator",

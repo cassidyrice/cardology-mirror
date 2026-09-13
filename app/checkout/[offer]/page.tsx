@@ -45,7 +45,7 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  // Checkout-eligible products include the One Question Reading (slug deep-dive) and the Content Calendar, which are not in the public catalog.
+  // Checkout lookup excludes retired offers, including the Content Calendar.
   const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();

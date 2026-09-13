@@ -82,12 +82,12 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Content Calendar</h2>
+          <h2 className="font-serif text-2xl text-[#14110d]">Past Content Calendar purchases</h2>
           
           <div className="mt-3 space-y-3">
             <p>
-              The Content Calendar is a one-time $29 digital product. You receive
-              52 days of access on this site plus a CSV export. Each day includes
+              The Content Calendar experiment is no longer sold. Existing purchases
+              keep their original 52 days of access and CSV export. Each day includes
               one AI-generated post draft from the business description you enter,
               with up to two regenerations per day.
             </p>

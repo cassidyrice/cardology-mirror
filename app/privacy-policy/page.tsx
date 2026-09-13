@@ -124,11 +124,11 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-[#14110d]/12 pt-4">
-              <h3 className="font-bold text-[#14110d]">Content Calendar</h3>
+              <h3 className="font-bold text-[#14110d]">Past Content Calendar purchases</h3>
               
               <p className="mt-1">
-                When you use the Content Calendar, the business description you
-                enter is sent to Google Vertex (Gemini) to generate calendar rows
+                The Content Calendar experiment is no longer sold. For existing paid
+                access, the business description is sent to Google Vertex (Gemini) to generate calendar rows
                 and written pieces. We do not store birthdays for this product.
                 We keep the business text, generated calendar, and purchase record
                 needed to fulfill your 52-day access — not a general marketing

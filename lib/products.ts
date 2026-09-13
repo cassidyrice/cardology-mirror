@@ -7,11 +7,6 @@ import {
   VIDEO_SINGLE_SLUG,
   VIDEO_VOICE_ADDON_SLUG,
   VIDEO_WEEKLY_7_SLUG,
-  videoDaily52PriceId,
-  videoOfferAvailable,
-  videoSinglePriceId,
-  videoVoiceAddonPriceId,
-  videoWeekly7PriceId,
 } from "@/lib/content-video";
 
 export type ProductKind =
@@ -318,9 +313,10 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
 
 export const CONTENT_CALENDAR_52_SLUG = "content-calendar-52";
 
+// Retained for existing receipts and paid calendar access only.
 export const CONTENT_CALENDAR_52_PRODUCT: DigitalDownloadOffer = {
   kind: "digital_download",
-  available: true,
+  available: false,
   slug: CONTENT_CALENDAR_52_SLUG,
   stripePriceEnv: "STRIPE_PRICE_CONTENT_CALENDAR",
   name: "Content Calendar — 52 days",
@@ -452,22 +448,9 @@ export const VIDEO_PRODUCTS: VideoOffer[] = [
   VIDEO_VOICE_ADDON_PRODUCT,
 ];
 
+/** Calendar video offers are retired; historical order records remain above. */
 export function availableVideoProducts(): VideoOffer[] {
-  return VIDEO_PRODUCTS.filter((product) => {
-    if (product.slug === VIDEO_DAILY_52_SLUG) {
-      return Boolean(videoDaily52PriceId());
-    }
-    if (product.slug === VIDEO_VOICE_ADDON_SLUG) {
-      return Boolean(videoVoiceAddonPriceId());
-    }
-    if (product.slug === VIDEO_SINGLE_SLUG) {
-      return Boolean(videoSinglePriceId());
-    }
-    if (product.slug === VIDEO_WEEKLY_7_SLUG) {
-      return Boolean(videoWeekly7PriceId());
-    }
-    return videoOfferAvailable(product.slug);
-  });
+  return [];
 }
 
 export const MEMBERSHIP_SLUG = "cardology-membership";
@@ -547,21 +530,11 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
-function checkoutVideoBySlug(slug: string): VideoOffer | undefined {
-  const product = VIDEO_PRODUCTS.find((p) => p.slug === slug);
-  if (!product) return undefined;
-  if (!videoOfferAvailable(slug)) return undefined;
-  if (slug === VIDEO_VOICE_ADDON_SLUG) return undefined;
-  return product;
-}
-
-/** Checkout-eligible products, including the One Question Reading (slug deep-dive) and Content Engine which are not in the public catalog. */
+/** Active checkout excludes the retired calendar experiment and its video add-ons. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??
-    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
-    (slug === CONTENT_CALENDAR_52_SLUG ? CONTENT_CALENDAR_52_PRODUCT : undefined) ??
-    checkoutVideoBySlug(slug)
+    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined)
   );
 }
 

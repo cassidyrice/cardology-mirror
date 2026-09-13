@@ -322,7 +322,7 @@ test("conversion chrome and card meanings use one $47 One Question Reading offer
   expect(footer).not.toContain("Deep Dive ($9)");
   expect(footer).not.toContain("Blueprint Breakdown");
   expect(footer).toContain("/products/one-question-reading");
-  expect(footer).toContain("Content Calendar");
+  expect(footer).not.toContain("Content Calendar");
   expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");
   expect(offerCta).toContain("DEEP_DIVE_CALCULATOR_ENTRY_LABEL");

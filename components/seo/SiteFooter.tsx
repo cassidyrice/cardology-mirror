@@ -29,7 +29,6 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Content Calendar (experiment)", href: "/content-engine" },
   { label: "One Question Reading ($47)", href: "/products/one-question-reading" },
   { label: "Free course", href: "/free-course" },
 ] as const;
