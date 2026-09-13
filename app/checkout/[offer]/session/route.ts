@@ -16,8 +16,10 @@ import {
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
+  DEEP_DIVE_REVIEW_PATH,
   deepDivePriceId,
   deepDiveSessionMetadata,
+  sanitizeQuestion,
 } from "@/lib/deep-dive";
 import {
   contentCalendarPriceId,
@@ -56,7 +58,8 @@ const CHECKOUT_WINDOW_MS = 10 * 60 * 1000;
 
 // POST /checkout/[offer]/session
 // Creates a Stripe Checkout Session for active reports, downloads, and the
-// 52xSeven Blueprint (internal slug "deep-dive").
+// One Question Reading (internal slug "deep-dive"): birth date + question in
+// session metadata, fulfilled by hand from the intake email.
 export async function POST(
   req: NextRequest,
   { params }: { params: Promise<{ offer: string }> },
@@ -76,7 +79,7 @@ export async function POST(
   const product = checkoutProductBySlug(slug);
   if (!product) {
     return NextResponse.redirect(
-      new URL("/products/52xseven-blueprint", req.url),
+      new URL("/products/one-question-reading", req.url),
       303,
     );
   }
@@ -96,6 +99,7 @@ export async function POST(
     (req.headers.get("accept") || "").includes("application/json");
 
   let formBirthdate = "";
+  let formQuestion = "";
   let requestedSource = "";
   let requestedCardLabel = "";
   let requestedCardSlug = "";
@@ -112,6 +116,7 @@ export async function POST(
     if (contentType.includes("application/json")) {
       const body = (await req.json()) as Record<string, unknown>;
       formBirthdate = sanitizeBirthdateISO(body.birthdate ?? body.birthday);
+      formQuestion = sanitizeQuestion(body.question);
       requestedSource = typeof body.source === "string" ? body.source : "";
       requestedCardLabel = typeof body.cardLabel === "string" ? body.cardLabel : "";
       requestedCardSlug = typeof body.cardSlug === "string" ? body.cardSlug : "";
@@ -140,6 +145,7 @@ export async function POST(
     } else {
       const form = await req.formData();
       formBirthdate = sanitizeBirthdateISO(form.get("birthdate"));
+      formQuestion = sanitizeQuestion(form.get("question"));
       const sourceField = form.get("source");
       requestedSource = typeof sourceField === "string" ? sourceField : "";
       const labelField = form.get("cardLabel");
@@ -247,12 +253,24 @@ export async function POST(
   if (isDeepDive(product) && !formBirthdate) {
     if (wantsJson) {
       return NextResponse.json(
-        { error: "Birthday is required for 52xSeven Blueprint checkout." },
+        { error: "need-date", message: "Birth date is required for the One Question Reading." },
         { status: 400 },
       );
     }
     return NextResponse.redirect(
-      new URL("/birth-card-calculator?status=need-date", req.url),
+      new URL(`${DEEP_DIVE_REVIEW_PATH}?status=need-date`, req.url),
+      303,
+    );
+  }
+  if (isDeepDive(product) && !formQuestion) {
+    if (wantsJson) {
+      return NextResponse.json(
+        { error: "need-question", message: "The question is required for the One Question Reading." },
+        { status: 400 },
+      );
+    }
+    return NextResponse.redirect(
+      new URL(`${DEEP_DIVE_REVIEW_PATH}?status=need-question`, req.url),
       303,
     );
   }
@@ -276,12 +294,13 @@ export async function POST(
     if (formBirthdate) {
       sharedMeta.birthdate = formBirthdate;
     }
-    if (isDeepDive(product) && formBirthdate) {
+    if (isDeepDive(product) && formBirthdate && formQuestion) {
       Object.assign(
         sharedMeta,
         deepDiveSessionMetadata({
           birthday: formBirthdate,
-          source: requestedSource || "birth-card-calculator",
+          question: formQuestion,
+          source: requestedSource || "checkout-review",
           cardLabel: requestedCardLabel,
           cardSlug: requestedCardSlug,
         }),
@@ -335,7 +354,7 @@ export async function POST(
 
     const subscription = isMembership(product);
     const cancelUrl = isDeepDive(product)
-      ? `${SITE_URL}/birth-card-calculator`
+      ? `${SITE_URL}${DEEP_DIVE_REVIEW_PATH}`
       : isContentCalendar52(product)
         ? `${SITE_URL}/content-engine`
         : isVideoOffer(product)
@@ -433,7 +452,7 @@ function checkoutUnavailable(req: NextRequest, slug: string) {
   }
   if (isDeepDive({ slug })) {
     return NextResponse.redirect(
-      new URL("/birth-card-calculator?status=unavailable", req.url),
+      new URL(`${DEEP_DIVE_REVIEW_PATH}?status=unavailable`, req.url),
       303,
     );
   }

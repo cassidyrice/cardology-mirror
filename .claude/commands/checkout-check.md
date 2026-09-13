@@ -1,5 +1,5 @@
 ---
-description: Prove the $19 52xSeven Blueprint checkout works end to end right now
+description: Prove the $47 One Question Reading checkout works end to end right now
 ---
 1. `curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" -A "Mozilla/5.0 (iPhone)" --data "birthdate=1988-07-14&source=birth-card-calculator" https://cardblueprints.com/checkout/deep-dive/session` → expect `303` to `checkout.stripe.com`.
 2. `curl -sI https://cardblueprints.com/birth-card-calculator | grep -i permissions-policy` → must contain `payment=(self "https://js.stripe.com")`.

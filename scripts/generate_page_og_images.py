@@ -200,6 +200,15 @@ def main():
     # Product OGs (also the schema.org Product images) — public/og/products/
     os.makedirs(os.path.join(OUT, "products"), exist_ok=True)
     page(
+        "products/one-question-reading",
+        ["8-of-diamonds", "queen-of-spades", "7-of-clubs"],
+        "CARD BLUEPRINTS  ·  $47",
+        ["One Question", "Reading"],
+        "One decision, read from your card and your year",
+    )
+    # Retired 2026-09-13 (replaced by the $47 One Question Reading); kept so old
+    # social previews still resolve.
+    page(
         "products/52xseven-blueprint",
         ["8-of-diamonds"],
         "CARD BLUEPRINTS  ·  $19",

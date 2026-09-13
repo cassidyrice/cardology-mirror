@@ -1,14 +1,22 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
+import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { storeCheckoutContext } from "@/lib/checkout-question";
 import {
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_SESSION_PATH,
+  DEEP_DIVE_REVIEW_PATH,
 } from "@/lib/deep-dive";
 
+/**
+ * Entry to the One Question Reading. The birth date is kept in this tab
+ * (sessionStorage, never a URL) and the buyer types the question on the review
+ * page (DEEP_DIVE_REVIEW_PATH) before Stripe. The session route requires both.
+ */
 export function DeepDiveHostedCheckout({
   birthdate,
   source,
@@ -24,38 +32,26 @@ export function DeepDiveHostedCheckout({
   compact?: boolean;
   submitLabel?: string;
 }) {
+  const router = useRouter();
   const [pending, setPending] = useState(false);
 
-  function onSubmit(event: FormEvent<HTMLFormElement>) {
-    if (pending) {
-      event.preventDefault();
-      return;
-    }
+  function onClick() {
+    if (pending) return;
     setPending(true);
     trackClientFunnelEvent("offer_cta_clicked", {
       offerSlug: DEEP_DIVE_OFFER_SLUG,
       placement: source,
     });
+    storeCheckoutBirthdate(birthdate);
+    storeCheckoutContext({ source, cardLabel, cardSlug });
+    router.push(DEEP_DIVE_REVIEW_PATH);
   }
 
   return (
-    <form
-      action={DEEP_DIVE_SESSION_PATH}
-      method="post"
-      className={compact ? "" : "w-full"}
-      data-analytics-checkout
-      onSubmit={onSubmit}
-    >
-      <input type="hidden" name="birthdate" value={birthdate} />
-      <input type="hidden" name="source" value={source} />
-      {cardLabel ? (
-        <input type="hidden" name="cardLabel" value={cardLabel} />
-      ) : null}
-      {cardSlug ? (
-        <input type="hidden" name="cardSlug" value={cardSlug} />
-      ) : null}
+    <div className={compact ? "" : "w-full"} data-analytics-checkout>
       <button
-        type="submit"
+        type="button"
+        onClick={onClick}
         disabled={pending}
         aria-busy={pending}
         className={
@@ -65,10 +61,9 @@ export function DeepDiveHostedCheckout({
         }
       >
         {pending
-          ? "Redirecting to Secure Checkout…"
-          : submitLabel ||
-            `Continue to Secure Checkout — ${DEEP_DIVE_PRICE_LABEL}`}
+          ? "Opening your question…"
+          : submitLabel || `Ask your question — ${DEEP_DIVE_PRICE_LABEL}`}
       </button>
-    </form>
+    </div>
   );
 }

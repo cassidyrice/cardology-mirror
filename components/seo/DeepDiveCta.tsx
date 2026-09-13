@@ -28,7 +28,7 @@ export function DeepDiveCta({
   cardLabel?: string;
   cardSlug?: string;
   className?: string;
-  /** Hide the "What $19 unlocks" line when the surrounding card already itemizes it. */
+  /** Hide the "What $47 gets you" line when the surrounding card already itemizes it. */
   showFulfillment?: boolean;
 }) {
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ export function DeepDiveCta({
   const iso =
     sanitizeBirthdateISO(birthdate) || sanitizeBirthdateISO(draftDate);
   const ctaLabel = cardLabel
-    ? `Get the ${cardLabel} 52xSeven Blueprint — ${DEEP_DIVE_PRICE_LABEL}`
+    ? `Ask your question as the ${cardLabel} — ${DEEP_DIVE_PRICE_LABEL}`
     : DEEP_DIVE_CTA_LABEL;
 
   function submitDate(event: FormEvent<HTMLFormElement>) {

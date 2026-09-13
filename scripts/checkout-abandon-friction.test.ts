@@ -124,7 +124,8 @@ assert.match(continueForm, /type="date"/);
 assert.match(continueForm, /needsBirthdate/);
 
 const reviewPage = readFileSync("app/checkout/[offer]/page.tsx", "utf8");
-assert.match(reviewPage, /needsBirthdate=\{isReport\}/);
+assert.match(reviewPage, /needsBirthdate=\{isReport \|\| isReading\}/);
+assert.match(reviewPage, /needsQuestion=\{isReading\}/);
 assert.match(reviewPage, /plus applicable tax/);
 assert.match(reviewPage, /Wrong date, duplicate charge/);
 

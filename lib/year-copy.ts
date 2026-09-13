@@ -1,4 +1,4 @@
-// Reviewed copy library for the 52xSeven Blueprint.
+// Reviewed copy library for the 52xSeven Blueprint (retired from sale 2026-09-13; still rendered for past buyers).
 // One light line, one shadow read, and one dare per card. Planet lines frame
 // how a 52-day chapter colors the card. Deterministic — no per-visit generation.
 // Tone: direct, a little spicy, shadow-first. Never predictive.

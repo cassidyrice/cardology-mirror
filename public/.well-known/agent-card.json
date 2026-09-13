@@ -1,7 +1,7 @@
 {
   "protocolVersion": "1.0",
   "name": "Card Blueprints",
-  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. The optional paid next step is the $19 52xSeven Blueprint — the whole year as seven 52-day chapters, one payment, no renewal. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
+  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. The optional paid next step is the $47 One Question Reading — one question, read from the birth card and the year, written within 2 business days. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
   "url": "https://cardblueprints.com/birth-card-calculator",
   "version": "1.0.0",
   "documentationUrl": "https://cardblueprints.com/what-is-cardology",
@@ -29,19 +29,19 @@
     {
       "id": "birth-card-from-dob",
       "name": "Birth card from date of birth",
-      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. Optional paid next step: the $19 52xSeven Blueprint at https://cardblueprints.com/products/52xseven-blueprint (whole year, seven 52-day chapters, one payment, no renewal).",
+      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. Optional paid next step: the $47 One Question Reading at https://cardblueprints.com/products/one-question-reading (one question, read from the birth card and the year, written within 2 business days).",
       "tags": [
         "cardology",
         "birth-card",
         "date-of-birth",
         "playing-cards",
         "pattern-language",
-        "52xseven-blueprint"
+        "one-question-reading"
       ],
       "examples": [
         "What is the Cardology birth card for 1991-02-17?",
         "Open https://cardblueprints.com/birth-card-calculator and enter a birthday.",
-        "After the free birth card, unlock the $19 52xSeven Blueprint at https://cardblueprints.com/products/52xseven-blueprint for the whole year as seven 52-day chapters."
+        "After the free birth card, ask one question with the $47 One Question Reading at https://cardblueprints.com/products/one-question-reading."
       ],
       "inputModes": ["text/plain"],
       "outputModes": ["text/html", "text/plain"]

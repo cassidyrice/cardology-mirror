@@ -8,19 +8,19 @@ import {
 } from "@/lib/deep-dive";
 
 // Quiet contextual funnel block for educational pages that used to dead-end.
-// Paid path: calculator → $19 52xSeven Blueprint.
+// Paid path: calculator → $47 One Question Reading.
 export function OfferCta({ className = "" }: { className?: string }) {
 
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
-      <p className="type-eyebrow-dark">Free card name → your whole year</p>
+      <p className="type-eyebrow-dark">Free card name → one question, answered from it</p>
       <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
-        Get your {DEEP_DIVE_PRODUCT_NAME}.
+        Ask one question.
       </h2>
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
         The free calculator stops at the card name. The {DEEP_DIVE_PRODUCT_NAME} ({DEEP_DIVE_PRICE_LABEL})
-        puts your whole year on one map: your card, the 52-day chapter you are
-        in right now, and all seven chapters with the story arc between them.
+        takes the one thing you keep circling and reads it from your card, this
+        year&rsquo;s cards, and the card you owe. Written for you within 2 business days.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link

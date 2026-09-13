@@ -30,17 +30,17 @@ export default function ContactPage() {
       <header className="max-w-3xl pb-8">
         <Kicker className="mb-4">Contact</Kicker>
         <h1 className="type-display text-brand-ink">
-          Get help with a 52xSeven Blueprint order, correction, or partnership.
+          Get help with a One Question Reading order, correction, or partnership.
         </h1>
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            Buying the $19 52xSeven Blueprint?{" "}
-            <Link href="/products/52xseven-blueprint" className="editorial-link text-brand-ink">
+            Buying the $47 One Question Reading?{" "}
+            <Link href="/products/one-question-reading" className="editorial-link text-brand-ink">
               Review what is included
             </Link>
-            . Your year app opens immediately after successful checkout
-            and a sign-in link is emailed to you.
+            . Your reading is written for you and emailed within 2 business
+            days of successful checkout.
           </p>
         </div>
       </header>
@@ -61,7 +61,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["52xSeven Blueprint questions", "Ask what the $19 52xSeven Blueprint includes, how the sign-in link works, how birth-date input works, or how to get back into your year app."],
+          ["One Question Reading questions", "Ask what the $47 One Question Reading includes, how the 2-business-day turnaround works, how the birth date and question are used, or how to reword a question before it is written."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

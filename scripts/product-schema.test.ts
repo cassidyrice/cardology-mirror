@@ -40,28 +40,28 @@ test("every public product emits merchant-listing required Offer fields", () => 
   }
 });
 
-test("52xSeven Blueprint Offer starts on the existing 2026-09-08 launch date at $19", () => {
-  expect(OFFER_VALID_FROM).toBe("2026-09-08");
+test("One Question Reading Offer starts on the 2026-09-13 launch date at $47", () => {
+  expect(OFFER_VALID_FROM).toBe("2026-09-13");
   expect(OFFER_VALID_FROM).toBe(
-    PAGE_UPDATED_DATES["/products/52xseven-blueprint"],
+    PAGE_UPDATED_DATES["/products/one-question-reading"],
   );
 
   const json = buildProductJsonLd(DEEP_DIVE_PRODUCT);
   expect(json["@type"]).toBe("Product");
-  expect(json.name).toBe("52xSeven Blueprint");
-  expect(json.offers.price).toBe("19.00");
+  expect(json.name).toBe("One Question Reading");
+  expect(json.offers.price).toBe("47.00");
   expect(json.offers.priceCurrency).toBe("USD");
-  expect(json.offers.validFrom).toBe("2026-09-08");
+  expect(json.offers.validFrom).toBe("2026-09-13");
   expect(json.offers.url).toBe(
-    `${SITE_URL}/products/52xseven-blueprint`,
+    `${SITE_URL}/products/one-question-reading`,
   );
   expect(json.image).toEqual([
-    `${SITE_URL}/og/products/52xseven-blueprint.png`,
+    `${SITE_URL}/og/products/one-question-reading.png`,
   ]);
 });
 
-test("52xSeven product page uses the shared Product/Offer JSON-LD helper", () => {
-  const page = readFileSync("app/products/52xseven-blueprint/page.tsx", "utf8");
+test("One Question Reading product page uses the shared Product/Offer JSON-LD helper", () => {
+  const page = readFileSync("app/products/one-question-reading/page.tsx", "utf8");
   expect(page).toContain("buildProductJsonLd(DEEP_DIVE_PRODUCT)");
   expect(page).not.toContain("/og-default.png");
 });

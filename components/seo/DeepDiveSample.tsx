@@ -17,7 +17,7 @@ export function deepDiveSamplePath(slug: string): string {
 
 /**
  * Page 1 of the retired Deep Dive PDF (a bonus of the earlier $9 and video offers),
- * shown before the $19 52xSeven Blueprint button. The $19 product ships no PDFs;
+ * shown before the $47 One Question Reading button. The $47 product ships no PDFs;
  * Reveal.tsx and BirthCardCalculator.tsx still render this sample. Fires
  * `sample_viewed` once when at least half of it has scrolled into view.
  */

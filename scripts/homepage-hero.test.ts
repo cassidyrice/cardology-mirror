@@ -69,7 +69,7 @@ describe("Homepage landing contract", () => {
     expect(home).toContain('absolute: HOME_TITLE');
     expect(home).toContain('const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints"');
     expect(home).toContain(
-      'const HOME_DESCRIPTION =\n  "Your birthday maps to one playing card — same date, same card. Free Cardology calculator, then the $19 52xSeven Blueprint for your whole year."',
+      'const HOME_DESCRIPTION =\n  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $47 written reading on the one question you\'re deciding."',
     );
 
     expect(explore).toContain("ExploreDirectory");
@@ -85,7 +85,7 @@ describe("Homepage landing contract", () => {
     expect(reveal).toContain("Right now");
     expect(reveal).toContain("Read my card →");
     expect(reveal).toContain("Compare with someone →");
-    expect(reveal).toContain("Your whole year, on one map. $19.");
+    expect(reveal).toContain("Got one question? Ask it. $47.");
     expect(reveal).not.toContain("<DeepDiveSample");
     expect(reveal).toContain("<DeepDiveCta");
     expect(reveal).toContain("Explore →");
@@ -104,7 +104,7 @@ describe("Homepage landing contract", () => {
     expect(footer).toContain("/explore");
     expect(footer).toContain("Content Calendar (experiment)");
     expect(footer).toContain("/content-engine");
-    expect(footer).toContain("52xSeven Blueprint ($19)");
+    expect(footer).toContain("One Question Reading ($47)");
     expect(footer).not.toContain("Reading Day waitlist");
   });
 });

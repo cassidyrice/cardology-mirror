@@ -82,11 +82,13 @@ assert.doesNotMatch(checkoutPage, /sanitizeBirthdateISO\(bd\)/);
 
 const sessionRoute = readFileSync("app/checkout/[offer]/session/route.ts", "utf8");
 assert.doesNotMatch(sessionRoute, /\?bd=/);
-// cancel_url branches (Deep Dive returns to the calculator) but must stay a
-// clean path with no birthdate or query payload on either branch.
+// cancel_url branches (the reading returns to its review page, where the tab
+// still holds the date and the question draft) but must stay a clean path with
+// no birthdate, question, or query payload on either branch.
 assert.match(sessionRoute, /cancel_url: cancelUrl/);
 assert.match(sessionRoute, /`\$\{SITE_URL\}\/checkout\/\$\{product\.slug\}`/);
-assert.match(sessionRoute, /`\$\{SITE_URL\}\/birth-card-calculator`/);
+assert.match(sessionRoute, /`\$\{SITE_URL\}\$\{DEEP_DIVE_REVIEW_PATH\}`/);
+assert.doesNotMatch(sessionRoute, /cancelUrl[^\n]*question/);
 assert.doesNotMatch(sessionRoute, /cancelUrl[^\n]*(\?|birthdate)/);
 
 const layout = readFileSync("app/layout.tsx", "utf8");

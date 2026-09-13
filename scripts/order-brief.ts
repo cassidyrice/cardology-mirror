@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-// Order brief for the $19 52xSeven Blueprint: everything a support or QA bot
+// Order brief for the $47 One Question Reading: everything a support or QA bot
 // needs about one buyer's cards, as JSON. Read-only, deterministic, no network.
 //
 //   bun scripts/order-brief.ts 1988-07-14            # as of today

@@ -1,38 +1,63 @@
-/** 52xSeven Blueprint ($19) — Card Blueprint Stripe, not Cassidy Rice Company.
+/** One Question Reading ($47) — Card Blueprint Stripe, not Cassidy Rice Company.
  *  The internal slug/SKU prefix "deep-dive" stays so analytics, Stripe metadata,
  *  the checkout route and fulfillment keep working across product swaps
- *  ($9 Deep Dive → $47 Blueprint Breakdown Video → $19 52xSeven Blueprint). */
+ *  ($9 Deep Dive → $47 Blueprint Breakdown Video → $19 52xSeven Blueprint → $47 One Question Reading).
+ *
+ *  Fulfillment is by hand: the webhook emails Cass the birthday and the question,
+ *  he writes the reading with the `reading` command and sends it within 2 business days.
+ *  Past buyers of the retired SKUs keep the year app; see FIFTY_TWO_BY_SEVEN_* below. */
 
 import { parseIsoCalendarDate } from "@/lib/worker-seo-routes";
 
 /** Retired price ids (kept for reference; nothing reads them at runtime). */
 export const DEEP_DIVE_LEGACY_PRICE_ID = "price_1U8s5uChx1yAVyrsjbQKfsmD";
-export const BLUEPRINT_BREAKDOWN_LEGACY_PRICE_ID = "price_1UD0HnChx1yAVyrsIMHLp2E3";
-export const DEEP_DIVE_PRODUCT_ID = "prod_VDx5l3a4DkEcgT";
-/** Cloudflare Pages secret that holds the live $19 Stripe price id. */
-export const FIFTY_TWO_BY_SEVEN_PRICE_ENV = "STRIPE_PRICE_52XSEVEN_BLUEPRINT";
-export const DEEP_DIVE_SKU = "52xseven-blueprint-19";
+export const FIFTY_TWO_BY_SEVEN_LEGACY_PRICE_ID = "price_1UDVBZChx1yAVyrsFy87P2Co";
+/** Stripe product that carries the live $47 price (renamed "One Question Reading"). */
+export const ONE_QUESTION_PRODUCT_ID = "prod_V9AQZLgrZ4WclM";
+export const ONE_QUESTION_PRICE_ID = "price_1UD0HnChx1yAVyrsIMHLp2E3";
+/** Cloudflare Pages secret that holds the live $47 Stripe price id. The secret name is
+ *  historical (it was created for the $47 Blueprint Breakdown Video and holds the same
+ *  price object); it is reused so no new Pages secret is needed. */
+export const ONE_QUESTION_PRICE_ENV = "STRIPE_PRICE_BLUEPRINT_BREAKDOWN";
+export const DEEP_DIVE_SKU = "one-question-47";
+export const ONE_QUESTION_SKU = DEEP_DIVE_SKU;
+/** Retired SKUs whose sessions still fulfill (year app / PDFs) for past buyers. */
+export const FIFTY_TWO_BY_SEVEN_SKU = "52xseven-blueprint-19";
+export const LEGACY_DEEP_DIVE_SKUS = [
+  FIFTY_TWO_BY_SEVEN_SKU,
+  "blueprint-breakdown-47",
+  "deep-dive-9",
+] as const;
 export const DEEP_DIVE_OFFER_SLUG = "deep-dive";
 export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
-export const DEEP_DIVE_PRODUCT_PATH = "/products/52xseven-blueprint";
-export const DEEP_DIVE_PRICE_LABEL = "$19";
-export const DEEP_DIVE_PRODUCT_NAME = "52xSeven Blueprint";
-/** Report-token slug for the year app at /blueprint?token=… */
+/** The review page where the buyer types the question before Stripe. */
+export const DEEP_DIVE_REVIEW_PATH = "/checkout/deep-dive";
+export const DEEP_DIVE_PRODUCT_PATH = "/products/one-question-reading";
+export const DEEP_DIVE_PRICE_LABEL = "$47";
+export const DEEP_DIVE_PRODUCT_NAME = "One Question Reading";
+export const ONE_QUESTION_TURNAROUND = "2 business days";
+/** Question length: Stripe metadata values cap at 500 characters. */
+export const QUESTION_MIN_CHARS = 5;
+export const QUESTION_MAX_CHARS = 400;
+/** Report-token slug for the retired year app at /blueprint?token=… (past buyers). */
 export const FIFTY_TWO_BY_SEVEN_REPORT_SLUG = "52xseven-blueprint";
-/** How long the sign-in link works. */
+/** How long a legacy sign-in link works. */
 export const FIFTY_TWO_BY_SEVEN_ACCESS_DAYS = 365;
-export const DEEP_DIVE_CTA_LABEL = "Unlock my full year — $19";
+export const DEEP_DIVE_CTA_LABEL = "Ask your question — $47";
 /** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
-export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → $19 52xSeven Blueprint";
+export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → ask one question, $47";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
 export const DEEP_DIVE_SUCCESS_COPY =
-  "Payment confirmed. Your 52xSeven Blueprint is unlocked: your birth card, the 52-day chapter you are in right now, all seven chapters of your year, and the story arc on one map. Your sign-in link is in this email and works for 12 months.";
+  "Payment confirmed. Your question is in. The reading is written from your birth card, this year's cards, and the card you owe, and it lands in this inbox within 2 business days. Plain text, no login.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
-  "Payment confirmed. December 31 is the Joker — it sits outside the 52-card calendar, so there is no seven-chapter year to draw for this date. Reply to this email and we will refund you in full or, if the birth date was mistyped, unlock the right year.";
+  "Payment confirmed. Your question is in. December 31 is the Joker, the one birthday outside the 52-card map, so the reading says so up front and reads the year from the Joker's position. It lands in this inbox within 2 business days.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $19 unlocks: your whole Cardology year in one phone-friendly app — your birth card with the light and shadow read, the 52-day chapter you are in right now (dated, with how far through it you are), all seven chapters, and the yearly story arc on one map. Instant after payment, on the confirmation page and by emailed sign-in link. 12 months of access, no renewal. Wrong date: we fix it or refund.";
+  "What $47 gets you: one written reading on one question. Built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, plus three things to keep an eye out for. Written for you and emailed within 2 business days. Wrong date or a reworded question: reply before it is written and we fix it.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
+export const QUESTION_FIELD_LABEL = "The one question";
+export const QUESTION_FIELD_HINT =
+  "One question, in real words. \"Should I take the job in Denver?\" reads better than \"career.\"";
 
 export const DEEP_DIVE_CARD_PDF_PREFIX = "deep-dive";
 
@@ -68,7 +93,7 @@ export const ALL_90_SPREADS_FILE: DeepDiveFile = {
   label: "The 90 Spreads",
 };
 
-// PDF bonuses of the retired $9 / $47 offers. The $19 52xSeven Blueprint ships no
+// PDF bonuses of the retired $9 / $47 offers. The One Question Reading ships no
 // PDFs; these slugs stay resolvable so links from earlier orders keep working.
 export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [SYSTEM_GUIDE_FILE];
 
@@ -82,8 +107,10 @@ export const DEEP_DIVE_SOURCES = [
   "birth-card-calculator-result",
   "home-hero",
   "home-hero-result",
+  "home-landing",
   "birth-card-meaning",
   "site-header",
+  "checkout-review",
 ] as const;
 
 export type DeepDiveSource = (typeof DEEP_DIVE_SOURCES)[number];
@@ -95,8 +122,16 @@ export function sanitizeDeepDiveSource(value: unknown): DeepDiveSource {
     : "birth-card-calculator";
 }
 
+/** Trim, collapse whitespace, cap at the Stripe metadata limit. Empty when too short. */
+export function sanitizeQuestion(value: unknown): string {
+  if (typeof value !== "string") return "";
+  const cleaned = value.replace(/\s+/g, " ").trim().slice(0, QUESTION_MAX_CHARS);
+  return cleaned.length >= QUESTION_MIN_CHARS ? cleaned : "";
+}
+
 export function deepDiveSessionMetadata(input: {
   birthday: string;
+  question: string;
   source?: unknown;
   cardLabel?: string;
   cardSlug?: string;
@@ -109,10 +144,37 @@ export function deepDiveSessionMetadata(input: {
     product_kind: "digital_download",
     birthday: input.birthday,
     birthdate: input.birthday,
+    question: input.question,
     source,
     ...(input.cardLabel ? { card_label: input.cardLabel } : {}),
     ...(input.cardSlug ? { card_slug: input.cardSlug } : {}),
   };
+}
+
+/** True for a paid session of the live product (not a retired year-app SKU). */
+export function isOneQuestionSession(
+  session: { metadata?: Record<string, string> | null } | null | undefined,
+): boolean {
+  return session?.metadata?.sku === ONE_QUESTION_SKU;
+}
+
+/** True for sessions that must still fulfill with the retired year app. */
+export function isLegacyYearAppSession(
+  session: { metadata?: Record<string, string> | null } | null | undefined,
+): boolean {
+  const sku = session?.metadata?.sku ?? "";
+  if (sku === ONE_QUESTION_SKU) return false;
+  return (
+    (LEGACY_DEEP_DIVE_SKUS as readonly string[]).includes(sku) ||
+    (!sku && session?.metadata?.offer_slug === DEEP_DIVE_OFFER_SLUG)
+  );
+}
+
+/** The question a buyer typed on the review page, from session metadata. */
+export function questionFromCheckoutSession(
+  session: { metadata?: Record<string, string> | null } | null | undefined,
+): string {
+  return sanitizeQuestion(session?.metadata?.question);
 }
 
 // Fail closed: no hardcoded fallbacks. A missing env must surface as a 503,
@@ -126,7 +188,7 @@ export function stripePublishableKey(): string {
 }
 
 export function deepDivePriceId(): string {
-  return process.env[FIFTY_TWO_BY_SEVEN_PRICE_ENV] || "";
+  return process.env[ONE_QUESTION_PRICE_ENV] || "";
 }
 
 export function deepDiveCardPdfKey(seoSlug: string): string {
@@ -163,6 +225,13 @@ export function deepDiveSuccessCopy(birthday?: string | null): string {
   return isJokerBirthdate(birthday)
     ? DEEP_DIVE_JOKER_SUCCESS_COPY
     : DEEP_DIVE_SUCCESS_COPY;
+}
+
+/** "2026-02-17" -> "2/17/1991" for the paste-ready `reading` command in the intake email. */
+export function birthdayForCommand(birthday: string): string {
+  const parsed = parseIsoCalendarDate(birthday);
+  if (!parsed) return birthday;
+  return `${parsed.month}/${parsed.day}/${parsed.year}`;
 }
 
 export function deepDiveBonusBySlug(slug: string): DeepDiveFile | undefined {

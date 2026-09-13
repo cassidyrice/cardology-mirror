@@ -8,12 +8,16 @@ import { sendIntakeEmail } from "@/lib/email";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
   ALL_90_SPREADS_FILE,
+  DEEP_DIVE_PRICE_LABEL,
   DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_SKU,
   FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
   FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
-  deepDiveSuccessCopy,
+  ONE_QUESTION_TURNAROUND,
+  birthdayForCommand,
   isJokerBirthdate,
+  isOneQuestionSession,
+  questionFromCheckoutSession,
 } from "@/lib/deep-dive";
 import {
   productBySlug,
@@ -35,6 +39,11 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 const DEFAULT_ACCESS_DAYS = 30;
+
+/** Single-quote a value for a paste-ready shell command (apostrophes escaped). */
+function shellQuote(value: string): string {
+  return `'${value.replace(/'/g, "'\\''")}'`;
+}
 
 const LEGACY_ACCESS_DAYS: Record<string, number> = {
   "one-question-reading": 90,
@@ -113,14 +122,86 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: 52xSeven Blueprint (slug deep-dive). Instant: mint the
-    // 12-month sign-in token for the year app at /blueprint and email it.
-    // "blueprint-breakdown-47" and "deep-dive-9" are the retired SKUs — sessions
-    // opened before a switch still fulfill with the current product. ----
+    // ---- BRANCH: One Question Reading (slug deep-dive, sku one-question-47).
+    // Fulfilled by hand: confirm to the buyer, hand Cass the birthday + question
+    // with a paste-ready `reading` command. Nothing is generated here. ----
+    const oneQuestionPaid =
+      paymentSatisfied &&
+      isOneQuestionSession(session) &&
+      (isDeepDive(product) || session.metadata?.offer_slug === "deep-dive");
+    if (oneQuestionPaid) {
+      const birthday = birthdateFromCheckoutSession(session);
+      const birthdayValid = /^\d{4}-\d{2}-\d{2}$/.test(birthday);
+      const question = questionFromCheckoutSession(session);
+      let buyerEmailed = false;
+      if (email !== "(no email)") {
+        try {
+          await sendIntakeEmail({
+            to: email,
+            subject: "Got your question",
+            text: [
+              "Thanks. Your question is in.",
+              "",
+              question ? `Here is the question I'm reading: "${question}"` : "I could not read your question from this checkout. Reply to this email with the one question and I will take it from there.",
+              "",
+              `Your reading comes to this address within ${ONE_QUESTION_TURNAROUND}. Plain text, about 600 words, no login. It reads the question from your birth card, this year's cards, and the card you owe, and it ends with three things to keep an eye out for.`,
+              "",
+              "If the wording is off, or the birth date at checkout was wrong, reply to this email today and I fix it before it is written.",
+              "",
+              "Cass",
+              "Card Blueprints",
+            ].join("\n"),
+            replyTo: process.env.INTAKE_EMAIL || undefined,
+          });
+          buyerEmailed = true;
+        } catch (e) {
+          console.error("[webhook] one-question buyer email failed", e);
+        }
+      }
+
+      const to = process.env.INTAKE_EMAIL;
+      if (to) {
+        const command = birthdayValid && question
+          ? `reading ${birthdayForCommand(birthday)} ${shellQuote(question)} --send ${shellQuote(email)}`
+          : "(birthday or question missing: ask the buyer, then run `reading`)";
+        try {
+          await sendIntakeEmail({
+            to,
+            subject: `Payment received (${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}): ${email}`,
+            text: [
+              `ACTION: write the reading within ${ONE_QUESTION_TURNAROUND}. Paste this in Terminal:`,
+              "",
+              command,
+              "",
+              `Birthday: ${birthday || "(missing — ask the buyer)"}${isJokerBirthdate(birthday) ? " (Joker, Dec 31: the tool discloses it)" : ""}`,
+              `Question: ${question || "(missing — ask the buyer)"}`,
+              `Customer email: ${email}`,
+              "",
+              `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
+              `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
+              `Amount: ${amount}`,
+              `Source: ${session.metadata?.source || "(none)"}`,
+              `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
+              `Stripe session: ${session.id}`,
+            ].join("\n"),
+            replyTo: email !== "(no email)" ? email : undefined,
+          });
+        } catch (e) {
+          console.error("[webhook] one-question notification email failed", e);
+        }
+      }
+      return NextResponse.json({ received: true });
+    }
+
+    // ---- BRANCH: retired year-app SKUs on the deep-dive slug ($19 52xSeven
+    // Blueprint, $47 Blueprint Breakdown, $9 Deep Dive). Sessions opened before
+    // the switch still fulfill: mint the 12-month sign-in token for the year app
+    // at /blueprint and email it. ----
     const deepDivePaid =
       paymentSatisfied &&
+      !isOneQuestionSession(session) &&
       (isDeepDive(product) ||
-        session.metadata?.sku === DEEP_DIVE_SKU ||
+        session.metadata?.sku === "52xseven-blueprint-19" ||
         session.metadata?.sku === "blueprint-breakdown-47" ||
         session.metadata?.sku === "deep-dive-9" ||
         session.metadata?.offer_slug === "deep-dive");
@@ -143,9 +224,9 @@ export async function POST(req: NextRequest) {
             yearUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
           }
           const body = [
-            `Thank you — your ${DEEP_DIVE_PRODUCT_NAME} is confirmed.`,
+            "Thank you — your 52xSeven Blueprint is confirmed.",
             "",
-            deepDiveSuccessCopy(birthday),
+            "Your year is unlocked. Your sign-in link is in this email and works for 12 months.",
             "",
           ];
           if (yearUrl) {
@@ -163,7 +244,7 @@ export async function POST(req: NextRequest) {
           body.push("", "If anything doesn't work, just reply to this email.");
           await sendIntakeEmail({
             to: email,
-            subject: `Your ${DEEP_DIVE_PRODUCT_NAME} is ready — your year, unlocked`,
+            subject: "Your 52xSeven Blueprint is ready — your year, unlocked",
             text: body.join("\n"),
           });
           buyerEmailed = true;
@@ -177,7 +258,7 @@ export async function POST(req: NextRequest) {
         try {
           await sendIntakeEmail({
             to,
-            subject: `Payment received ($19 52xSeven Blueprint): ${offerName} — ${email}`,
+            subject: `Payment received (retired year-app SKU): ${offerName} — ${email}`,
             text: [
               yearUrl
                 ? "Fulfilled automatically: the 12-month sign-in link was emailed to the buyer."
@@ -188,7 +269,7 @@ export async function POST(req: NextRequest) {
               "",
               `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
               `Type: 52xseven blueprint (instant year app)`,
-              `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
+              `SKU: ${session.metadata?.sku || "(none)"}`,
               `Amount: ${amount}`,
               `Customer email: ${email}`,
               `Birthday supplied: ${birthdayValid ? "yes" : "NO"}`,
@@ -230,7 +311,7 @@ export async function POST(req: NextRequest) {
               `Your download window: ${product.redownloadDays} days.`,
               `Save the PDF somewhere safe after downloading.`,
               "",
-              `Explore the 52xSeven Blueprint: ${SITE_URL}/products/52xseven-blueprint`,
+              `Ask one question: ${SITE_URL}/products/one-question-reading`,
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),

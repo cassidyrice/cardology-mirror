@@ -210,7 +210,7 @@ export function LiveDashboard() {
                     );
                   })}
                   <tr>
-                    <td>52xSeven Blueprint paid (Stripe)</td>
+                    <td>One Question Reading paid (Stripe)</td>
                     <td className="num">{fmt(data.stripe.deepDive.today.complete)}</td>
                     <td className="num">–</td>
                     <td className="num">{fmt(data.stripe.deepDive.last7d.complete)}</td>

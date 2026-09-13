@@ -43,8 +43,8 @@ const faqs = [
     a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
   },
   {
-    q: "What is the 52xSeven Blueprint?",
-    a: "The free pages name your birth card and its pattern. The 52xSeven Blueprint ($19) is the whole year on one map: your card, the 52-day chapter you are in right now, all seven chapters, and the story arc between them. One payment, no renewal. Instant access on the confirmation page and by emailed sign-in link.",
+    q: "What is the One Question Reading?",
+    a: "The free pages name your birth card and its pattern. The One Question Reading ($47) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, written for you and emailed within 2 business days. One payment, no renewal.",
   },
 ];
 
@@ -144,8 +144,8 @@ export default function BirthCardIndex() {
         <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-gold underline underline-offset-4">
           {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
         </Link>{" "}
-        maps the whole year — seven 52-day chapters, one payment, no renewal, instant
-        access by email.
+        reads one decision from it — your card, this year&rsquo;s cards, and the card
+        you owe, written for you within 2 business days. One payment, no renewal.
       </p>
       <p className="mb-4 text-xs text-faint">
         By{" "}

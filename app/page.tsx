@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
-import { YearPreviewApp } from "@/components/year/YearPreviewApp";
-import { DEEP_DIVE_PRICE_LABEL, DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { buildYearBlueprint } from "@/lib/year-blueprint";
-import { toYearPreview } from "@/lib/year-preview";
+import {
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
@@ -13,7 +14,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday maps to one playing card — same date, same card. Free Cardology calculator, then the $19 52xSeven Blueprint for your whole year.";
+  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $47 written reading on the one question you're deciding.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -40,16 +41,14 @@ export const metadata: Metadata = {
   },
 };
 
-/** Today's card rotates daily; revalidate so HTML stays fresh for crawlers.
- *  The preview's example year is built at the same cadence. */
+/** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
 export const revalidate = 86_400;
 
-/** Example birthday the preview opens on, same as the sales page. */
-const SAMPLE_BIRTHDATE = "1991-02-17";
+/** From a real reading for an Eight of Diamonds who asked about a promotion. */
+const SAMPLE_EXCERPT =
+  "The 8 of Diamonds in you wants proof before it moves, the Queen of Spades in you wants to stay in the grind because you've earned mastery there, and the 7 of Clubs in you already knows some of that caution is just fear wearing a practical coat. The promotion matches what Pluto is asking for, a new value project, untested ground. Staying matches the comfort of a role where your worth is already proven. Which one sounds like growth to you, and which one sounds like hiding in a job well done?";
 
-export default async function Home() {
-  const sample = toYearPreview(await buildYearBlueprint(SAMPLE_BIRTHDATE));
-
+export default function Home() {
   return (
     <div className="flex min-h-svh flex-col bg-brand-paper text-brand-ink">
       <SiteHeader />
@@ -64,28 +63,33 @@ export default async function Home() {
           </div>
         </div>
 
-        <section aria-labelledby="home-preview-title" className="home-product">
+        <section aria-labelledby="home-reading-title" className="home-product">
           <div className="home-product-copy">
-            <p className="home-kicker">The 52xSeven Blueprint</p>
-            <h2 id="home-preview-title">Meet your card.<br />Make sense of your year.</h2>
+            <p className="home-kicker">One Question Reading</p>
+            <h2 id="home-reading-title">Ask the one thing<br />you keep circling.</h2>
             <p className="home-product-lead">
-              Some patterns are easier to see when you have a place to look.
-              Your Blueprint brings your birth card, your current chapter,
-              and the themes of your year into one personal reading.
+              Your birthday picks the cards. Your question picks the reading.
+              About 600 words on where you are standing, written so plainly
+              you will think you wrote it, and three things to keep an eye out
+              for in the next few weeks.
             </p>
             <div className="home-offer">
               <span className="home-price">{DEEP_DIVE_PRICE_LABEL}</span>
-              <div>One payment. Your year to explore.<small>12 months of access · no automatic renewal</small></div>
+              <div>One question, written for you.<small>Emailed within {ONE_QUESTION_TURNAROUND} · no subscription</small></div>
             </div>
             <ol className="home-benefits">
-              <li><span>01</span><div><h3>Recognize your patterns</h3><p>Read the strengths you lean on and the shadow patterns worth noticing.</p></div></li>
-              <li><span>02</span><div><h3>Find your place in the year</h3><p>See your current chapter, its dates, and a practical prompt to reflect on.</p></div></li>
-              <li><span>03</span><div><h3>Return as the year unfolds</h3><p>Explore all seven chapters and the story that connects them. Your Now screen moves with the calendar.</p></div></li>
+              <li><span>01</span><div><h3>Your card, on your question</h3><p>The number is the action, the suit is the area. How your card tends to handle this exact kind of decision, and where it slips.</p></div></li>
+              <li><span>02</span><div><h3>This year&rsquo;s cards</h3><p>The Long Range card that keeps pulling your attention. The Pluto card, what the year asks, and what it pays.</p></div></li>
+              <li><span>03</span><div><h3>Three things to watch for</h3><p>Concrete signals for the next few weeks, each tied to a card. You check them off yourself.</p></div></li>
             </ol>
-            <Link className="home-product-link" href={DEEP_DIVE_PRODUCT_PATH}>Explore the full Blueprint <span aria-hidden="true">↗</span></Link>
-            <p className="home-purchase-note">Instant access after payment. Your sign-in link arrives by email.</p>
+            <Link className="home-product-link" href={DEEP_DIVE_PRODUCT_PATH}>Read a sample, then ask yours <span aria-hidden="true">↗</span></Link>
+            <p className="home-purchase-note">Written by hand within {ONE_QUESTION_TURNAROUND}. Reply to reword the question before it is written.</p>
           </div>
-          <YearPreviewApp sample={sample} source="home-landing" className="home-product-preview" />
+          <aside className="home-product-preview home-sample" aria-label="A piece of one reading">
+            <p className="home-kicker">A piece of one reading</p>
+            <blockquote className="home-sample-quote">{SAMPLE_EXCERPT}</blockquote>
+            <p className="home-sample-note">From a reading for an Eight of Diamonds who asked about a promotion.</p>
+          </aside>
         </section>
 
         <section className="home-articles" aria-labelledby="home-articles-title">

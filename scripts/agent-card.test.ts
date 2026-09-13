@@ -61,18 +61,17 @@ test("A2A agent card is valid JSON at the well-known public path", () => {
   expect(card.skills.length).toBeGreaterThan(0);
 });
 
-test("skill takes a DOB and deep-links the free calculator then the $19 Blueprint", () => {
+test("skill takes a DOB and deep-links the free calculator then the $47 reading", () => {
   const skill = card.skills.find((item) => item.id === "birth-card-from-dob");
   expect(skill).toBeDefined();
   if (!skill) return;
 
   expect(skill.description).toMatch(/date of birth|DOB/i);
   expect(skill.description).toContain("https://cardblueprints.com/birth-card-calculator");
-  expect(skill.description).toContain("https://cardblueprints.com/products/52xseven-blueprint");
-  expect(skill.description).toContain("$19");
-  expect(skill.description).toMatch(/seven 52-day chapters/i);
-  expect(skill.description).toMatch(/one payment/i);
-  expect(skill.description).toMatch(/no renewal/i);
+  expect(skill.description).toContain("https://cardblueprints.com/products/one-question-reading");
+  expect(skill.description).toContain("$47");
+  expect(skill.description).toMatch(/one question/i);
+  expect(skill.description).toMatch(/2 business days/i);
   expect(skill.description).toMatch(/not fortune-telling/i);
   expect(skill.description).toMatch(/not tarot/i);
   expect(card.url).toBe("https://cardblueprints.com/birth-card-calculator");
@@ -81,15 +80,18 @@ test("skill takes a DOB and deep-links the free calculator then the $19 Blueprin
   );
 });
 
-test("agent card sells only the $19 52xSeven Blueprint", () => {
-  expect(cardText).toContain("$19");
-  expect(cardText).toContain("52xSeven Blueprint");
+test("agent card sells only the $47 One Question Reading", () => {
+  expect(cardText).toContain("$47");
+  expect(cardText).toContain("One Question Reading");
+  expect(cardText).not.toContain("52xSeven Blueprint");
+  expect(cardText).not.toMatch(/\$19\b/);
   expect(cardText).not.toMatch(/\$9\b/);
   expect(cardText).not.toMatch(/\$13\b/);
   expect(cardText).not.toContain("Deep Dive $9");
   expect(cardText).not.toContain("Personal Card Blueprint");
   expect(llms).toContain("https://cardblueprints.com/.well-known/agent-card.json");
-  expect(llms).toContain("$19 52xSeven Blueprint");
+  expect(llms).toContain("$47 One Question Reading");
+  expect(llms).not.toContain("52xSeven Blueprint");
   expect(llms).not.toMatch(/\$9\b/);
   expect(llms).not.toMatch(/\$13\b/);
 });

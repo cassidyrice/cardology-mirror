@@ -6,10 +6,14 @@ import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
 import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import {
+  DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_PRODUCT_PATH,
   FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
   FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
+  ONE_QUESTION_TURNAROUND,
   deepDiveSuccessCopy,
+  isOneQuestionSession,
+  questionFromCheckoutSession,
 } from "@/lib/deep-dive";
 import { YearBlueprintApp } from "@/components/year/YearBlueprintApp";
 import { buildYearBlueprint, type YearBlueprint } from "@/lib/year-blueprint";
@@ -111,6 +115,11 @@ export default async function CheckoutSuccessPage({
   }
 
   const deepDive = product && isDeepDive(product);
+  // The live product: fulfilled by hand, nothing to mint or build here.
+  const oneQuestion = Boolean(deepDive && isOneQuestionSession(session2));
+  // Retired year-app SKUs on the same slug still render the year for past buyers.
+  const legacyYearApp = Boolean(deepDive && !oneQuestion);
+  const question = oneQuestion ? questionFromCheckoutSession(session2) : "";
   const contentCalendar = product && isContentCalendar52(product);
   const videoOrder = product && isVideoOffer(product);
   const deepDiveBirthday = deepDive ? birthdateFromCheckoutSession(session2) : "";
@@ -175,7 +184,7 @@ export default async function CheckoutSuccessPage({
   let yearData: YearBlueprint | null = null;
   let yearExtra = "";
   const yearJoker = isJokerBirthdate(deepDiveBirthday);
-  if (deepDive && confirmed && customerEmail) {
+  if (legacyYearApp && confirmed && customerEmail) {
     if (/^\d{4}-\d{2}-\d{2}$/.test(deepDiveBirthday) && !yearJoker) {
       try {
         yearToken = await mintReportToken(
@@ -309,7 +318,7 @@ export default async function CheckoutSuccessPage({
       crumb={[
         { label: "Home", href: "/" },
         {
-          label: voice ? "Legacy order support" : "52xSeven Blueprint",
+          label: voice ? "Legacy order support" : DEEP_DIVE_PRODUCT_NAME,
           href: digital
             ? "/products/analog-algorithm"
             : voice
@@ -333,6 +342,8 @@ export default async function CheckoutSuccessPage({
               : "Generation pending."
             : confirmed && videoOrder
               ? "Your video order is in the queue."
+            : confirmed && oneQuestion
+            ? "Payment confirmed. Your question is in."
             : confirmed && deepDive
             ? yearToken
               ? "Payment confirmed. Your year is unlocked."
@@ -354,6 +365,8 @@ export default async function CheckoutSuccessPage({
                 : "Payment confirmed. Your calendar is generation pending."
             : confirmed && videoOrder
               ? `"${product!.name}" — ${product!.priceLabel}. Production usually starts within an hour; delivery in 24–48 hours.`
+            : confirmed && oneQuestion
+            ? deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && deepDive
             ? yearToken
               ? `"${product!.name}" — ${product!.priceLabel}. Your birth card, the chapter you are in right now, all seven chapters and the story arc are below. Your sign-in link was also emailed and works for 12 months.`
@@ -386,6 +399,8 @@ export default async function CheckoutSuccessPage({
             />
           ) : videoOrder ? (
             <VideoOrderFulfillment jobId={videoJobId} productName={product!.name} />
+          ) : oneQuestion ? (
+            <QuestionFulfillment question={question} email={customerEmail} />
           ) : deepDive ? (
             <YearFulfillment
               birthday={deepDiveBirthday}
@@ -422,7 +437,7 @@ export default async function CheckoutSuccessPage({
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <LinkButton href={DEEP_DIVE_PRODUCT_PATH} variant="primary">
-              View the 52xSeven Blueprint
+              Ask one question
             </LinkButton>
             <LinkButton href="/contact" variant="outline">
               Contact Support
@@ -436,7 +451,9 @@ export default async function CheckoutSuccessPage({
           If something doesn&rsquo;t work
         </h2>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
-          {deepDive
+          {oneQuestion
+            ? "If the question came through wrong, or the birth date is off, reply to your receipt email today or"
+            : deepDive
             ? "If your year doesn't open, or the birth date is wrong, reply to your receipt email or"
             : digital
             ? "If your download link doesn't work, reply to your receipt email or"
@@ -461,6 +478,56 @@ export default async function CheckoutSuccessPage({
         </p>
       </section>
     </SeoShell>
+  );
+}
+
+function QuestionFulfillment({
+  question,
+  email,
+}: {
+  question: string;
+  email: string;
+}) {
+  return (
+    <div className="max-w-[38em]">
+      <Kicker className="mb-4">What happens now</Kicker>
+      {question ? (
+        <blockquote className="border-l-2 border-brand-line-strong pl-4 font-serif text-lg leading-snug text-brand-ink">
+          &ldquo;{question}&rdquo;
+        </blockquote>
+      ) : (
+        <p className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
+          The question did not come through with the payment. Reply to your
+          receipt email with the one question and it goes in the queue.
+        </p>
+      )}
+      <ol className="mt-6 space-y-3 text-[0.95rem] leading-relaxed text-brand-ink-soft">
+        <li>
+          <strong className="text-brand-ink">1. I pull your cards.</strong> Your
+          birth card, this year&rsquo;s Long Range and Pluto cards, and the two
+          karma cards. Same birthday, same cards, every time.
+        </li>
+        <li>
+          <strong className="text-brand-ink">2. I write it.</strong> About 600
+          words in plain language. What the pattern is, how it bears on your
+          question, and three things to keep an eye out for.
+        </li>
+        <li>
+          <strong className="text-brand-ink">3. It lands in your inbox</strong>
+          {email ? (
+            <>
+              {" "}at <strong className="text-brand-ink">{email}</strong>
+            </>
+          ) : null}{" "}
+          within {ONE_QUESTION_TURNAROUND}. Plain text. No login, nothing to
+          download.
+        </li>
+      </ol>
+      <p className="mt-6 text-sm leading-relaxed text-brand-ink-soft">
+        Want to reword the question? Reply to your receipt today, before it is
+        written.
+      </p>
+    </div>
   );
 }
 

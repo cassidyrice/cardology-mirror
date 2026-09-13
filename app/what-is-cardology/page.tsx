@@ -151,11 +151,11 @@ export default function WhatIsCardology() {
       </div>
       <p className="mb-2 text-sm text-mist">
         Free first: reveal your birth card below. Optional next: the{" "}
-        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-          $19 52xSeven Blueprint
+        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+          $47 One Question Reading
         </Link>
         {" "}
-        — whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
+        — one decision, read from your card and your year, written within 2 business days.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -199,22 +199,22 @@ export default function WhatIsCardology() {
             all 52 Cardology card meanings
           </Link>
           . Optional next step: the{" "}
-          <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-            $19 52xSeven Blueprint
+          <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+            $47 One Question Reading
           </Link>{" "}
-          (your card, the 52-day chapter you are in now, all seven chapters, and the story arc, in one phone-friendly app).
+          (your card, this year's cards, and the card you owe, read against the one question you bring).
         </p>
         <div className="card-surface mt-5 rounded-2xl border border-gold/25 p-5">
           <p className="font-serif text-base text-bone">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-mist">
-            The 52xSeven Blueprint is $19 once: your whole year in seven dated 52-day
-            chapters, on one phone-friendly map. Instant access via email. No renewal.
+            The One Question Reading is $47 once: one question, read from your card and
+            the year you are in, written for you within 2 business days. No subscription.
           </p>
           <Link
-            href="/products/52xseven-blueprint"
+            href="/products/one-question-reading"
             className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
           >
-            Get the 52xSeven Blueprint — $19
+            Ask one question — $47
           </Link>
         </div>
       </section>
@@ -464,10 +464,10 @@ export default function WhatIsCardology() {
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
-          <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-            $19 52xSeven Blueprint
+          <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+            $47 One Question Reading
           </Link>
-          — your card, the 52-day chapter you are in now, all seven chapters, and the yearly story arc on one map.
+          — one question, read from your card, this year's cards, and the card you owe.
         </p>
       </section>
 
@@ -488,8 +488,8 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-bone">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/products/52xseven-blueprint" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            $19 52xSeven Blueprint →
+          <Link href="/products/one-question-reading" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+            $47 One Question Reading →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
             Calculator page →

@@ -6,6 +6,11 @@ import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
+import {
   checkoutProductBySlug,
   publicProductBySlug,
   digitalOfferFacts,
@@ -40,7 +45,7 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  // Checkout-eligible products include the 52xSeven Blueprint (slug deep-dive) and the Content Calendar, which are not in the public catalog.
+  // Checkout-eligible products include the One Question Reading (slug deep-dive) and the Content Calendar, which are not in the public catalog.
   const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
@@ -48,10 +53,17 @@ export default async function CheckoutReviewPage({
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product) || isMembership(product);
   const isVideo = isVideoService(product);
-  const isYearApp = isDeepDive(product);
+  const isReading = isDeepDive(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
-    isVideo
+    isReading
+      ? [
+          { label: "Deliverable", value: product.deliverable },
+          { label: "Input", value: "Your birth date and your question, typed here. Neither goes in a URL." },
+          { label: "Timing", value: `Written for you within ${ONE_QUESTION_TURNAROUND}.` },
+          { label: "Renewal", value: "One payment. No subscription, no renewal." },
+        ]
+      : isVideo
       ? [
           { label: "Deliverable", value: product.deliverable },
           { label: "Format", value: "30–60 second vertical short (MP4)." },
@@ -66,23 +78,25 @@ export default async function CheckoutReviewPage({
   return (
     <CheckoutShell
       crumb={[
-        { label: "52xSeven Blueprint", href: "/products/52xseven-blueprint" },
-        { label: "Review purchase", href: `/checkout/${product.slug}` },
+        { label: DEEP_DIVE_PRODUCT_NAME, href: DEEP_DIVE_PRODUCT_PATH },
+        { label: isReading ? "Your question" : "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
       <header className="max-w-[42rem] pb-6">
         <Kicker className="mb-3">
-          {isVideo ? "Review your video order" : isDigital || isReport ? "Review your purchase" : "Review your reading"}
+          {isVideo ? "Review your video order" : isReading ? "Before payment" : isDigital || isReport ? "Review your purchase" : "Review your reading"}
         </Kicker>
         <h1 className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl">
-          {product.name} — {product.priceLabel}
+          {isReading ? "Ask one question." : `${product.name} — ${product.priceLabel}`}
         </h1>
         <p className="mt-3 text-base leading-relaxed text-brand-ink-soft">
-          {product.oneLine}
+          {isReading
+            ? "Your birthday picks the cards. Your question picks the reading. Type the one thing you keep circling, in real words, and I write it back to you from your birth card, this year's cards, and the card you owe."
+            : product.oneLine}
         </p>
       </header>
 
-      {(status === "unavailable" || unavailable || status === "need-date") && (
+      {(status === "unavailable" || unavailable || status === "need-date" || status === "need-question") && (
         <div
           role="alert"
           className="mb-8 border border-brand-oxblood bg-brand-ivory p-5 text-brand-ink"
@@ -92,14 +106,18 @@ export default async function CheckoutReviewPage({
               ? "This product is not on sale yet."
               : status === "need-date"
                 ? "Add the birth date first."
-                : "Secure checkout is temporarily unavailable."}
+                : status === "need-question"
+                  ? "Type the question first."
+                  : "Secure checkout is temporarily unavailable."}
           </h2>
           <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-brand-ink-soft">
             {unavailable
               ? "No checkout session was created. Secure download fulfillment must be live before sales open."
               : status === "need-date"
-                ? "The report is built from one birth date. Use the date field below, then continue."
-                : "No checkout session was created. Try again in a moment."}{" "}
+                ? "The reading is built from one birth date. Use the date field below, then continue."
+                : status === "need-question"
+                  ? "The reading answers one question. Type it below, then continue. Nothing was charged."
+                  : "No checkout session was created. Try again in a moment."}{" "}
             <Link href="/contact" className="editorial-link text-brand-ink">
               contact Card Blueprints
             </Link>{" "}
@@ -109,7 +127,7 @@ export default async function CheckoutReviewPage({
       )}
 
       <aside className="h-fit max-w-md border border-brand-line bg-brand-paper-deep p-6">
-        <Kicker>Before payment</Kicker>
+        <Kicker>{isReading ? "Your details" : "Before payment"}</Kicker>
         <h2 className="type-h3 mt-3 text-brand-ink">
           {product.name} — {product.priceLabel}
           {isReport || isDigital ? " plus applicable tax" : ""}
@@ -126,15 +144,16 @@ export default async function CheckoutReviewPage({
                 calendar confirmation page.
               </p>
             </>
-          ) : isYearApp ? (
+          ) : isReading ? (
             <>
               <p>
-                Stripe securely collects your payment details. After
-                successful payment, your 52xSeven Blueprint opens right here
-                on the confirmation page — and a sign-in link is emailed to you.
+                Stripe takes the payment. Within {ONE_QUESTION_TURNAROUND} the
+                reading lands in the email you use at checkout: plain text,
+                about 600 words, no login.
               </p>
               <p>
-                Your sign-in link works for 12 months. One payment, no renewal.
+                Wrong date, or you want to reword the question: reply to your
+                receipt before it is written and we fix it.
               </p>
             </>
           ) : isDigital ? (
@@ -181,7 +200,9 @@ export default async function CheckoutReviewPage({
           <CheckoutContinueForm
             slug={product.slug}
             priceLabel={product.priceLabel}
-            needsBirthdate={isReport}
+            needsBirthdate={isReport || isReading}
+            needsQuestion={isReading}
+            submitLabel={isReading ? `Continue to payment — ${product.priceLabel}` : undefined}
           />
         )}
         <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-soft">
@@ -202,8 +223,8 @@ export default async function CheckoutReviewPage({
       <p className="mt-8 text-sm text-brand-ink-soft">
         Need another option?{" "}
         {isDigital ? (
-          <Link href="/products/52xseven-blueprint" className="editorial-link text-brand-ink">
-            See what the $19 52xSeven Blueprint includes →
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="editorial-link text-brand-ink">
+            See what the $47 One Question Reading includes →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">

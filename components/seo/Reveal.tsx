@@ -110,10 +110,11 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           ) : null}
 
           <div className="mt-8 border border-brand-line bg-brand-ivory p-5 text-left">
-            <p className="font-serif text-xl text-brand-ink">Your whole year, on one map. $19.</p>
+            <p className="font-serif text-xl text-brand-ink">Got one question? Ask it. $47.</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-              Your birth card with its light and shadow read, the 52-day chapter
-              you are in right now, and all seven chapters of your year on one map.
+              The job, the move, the person, the money. I read the one thing
+              you keep circling from this card and the year you are in, and
+              send it to you written, within 2 business days.
             </p>
             <DeepDiveCta
               placement="home-reveal"

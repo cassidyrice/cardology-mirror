@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the 52xSeven Blueprint, digital products, and free Cardology tools.",
+    "Terms for the One Question Reading, digital products, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -47,7 +47,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            the 52xSeven Blueprint, and digital products when explicitly
+            the One Question Reading, and digital products when explicitly
             marked available. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
@@ -59,12 +59,12 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>52xSeven Blueprint ($19)</strong> — a phone-friendly year app
-              built from the birth card your birthday maps to, unlocked immediately
-              after payment on the confirmation page and by emailed sign-in link.
-              It includes your birth card with the light and shadow read, the 52-day
-              chapter you are in now, all seven chapters of the year, and the yearly
-              story arc on one map. Access lasts 12 months; one payment, no renewal.
+              <strong>One Question Reading ($47)</strong> — a written reading on one
+              question, built from the birth card your birthday maps to, this year's
+              Long Range and Pluto cards, and the card you owe. Delivered by email as
+              plain text within 2 business days. One payment, no renewal. It is
+              interpretive, not advice: it does not predict events and does not
+              replace a professional.
             </li>
             <li className="border-t border-[#14110d]/12 pt-2">
               Sign-in links and past report links use private signed URLs. Do not

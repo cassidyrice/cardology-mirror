@@ -22,7 +22,7 @@ const MOBILE_TEASER_PROTECTED_PATHS = new Set([
   "/birth-card-compatibility-calculator",
   "/products/complete-card-blueprint",
   "/products/personal-card-blueprint",
-  "/products/52xseven-blueprint",
+  "/products/one-question-reading",
 ]);
 
 export function isElroyEligiblePath(pathname: string): boolean {

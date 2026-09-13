@@ -19,7 +19,7 @@ export function CurrentPeriod({ birthdate }: { birthdate: string }) {
         {period.planet}. {period.cardLabel}.
       </p>
       <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        The card you are living through right now. The $19 52xSeven Blueprint dates this chapter, shows how far through it you are, and lays out all seven chapters of your year on one map.
+        The card you are living through right now. Got one question about it? The $47 One Question Reading reads it from your card and this year's cards.
       </p>
     </div>
   );

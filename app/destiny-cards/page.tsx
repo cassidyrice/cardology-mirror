@@ -60,7 +60,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "52xSeven Blueprint — $19"],
+  ["Paid deepen", "Books, software, readings", "One Question Reading — $47"],
 ] as const;
 
 const tarotRows = [
@@ -73,7 +73,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $19 52xSeven Blueprint is the fuller year app, not a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $47 One Question Reading is a written reading on one decision, not a prerequisite.",
   },
   {
     q: "What are Destiny Cards?",
@@ -174,10 +174,10 @@ export default function DestinyCardsPage() {
       </div>
       <p className="mb-4 text-sm text-mist">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
-        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-          $19 52xSeven Blueprint
+        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+          $47 One Question Reading
         </Link>
-        {" "}— whole year, seven 52-day chapters, one payment, no renewal, instant access via email.
+        {" "}— one decision, read from your card and your year, written within 2 business days.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -185,15 +185,15 @@ export default function DestinyCardsPage() {
       <div className="card-surface mb-6 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">After your free destiny card</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The calculator result already offers the $19 52xSeven Blueprint: your card,
-          the 52-day chapter you are in now, all seven chapters, and the yearly story
-          arc on one phone-friendly map. One payment. No renewal.
+          The calculator result already offers the $47 One Question Reading: one
+          question, read from your card, this year's cards, and the card you owe.
+          Written for you within 2 business days. One payment.
         </p>
         <Link
-          href="/products/52xseven-blueprint"
+          href="/products/one-question-reading"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get the 52xSeven Blueprint — $19
+          Ask one question — $47
         </Link>
       </div>
 
@@ -276,7 +276,7 @@ export default function DestinyCardsPage() {
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
           What we own here is the published method, the free tools, and the{" "}
-          <strong>52xSeven Blueprint</strong>.
+          <strong>One Question Reading</strong>.
         </p>
         <p className="prose-reading mt-3 text-mist">
           Full definition:{" "}
@@ -326,10 +326,10 @@ export default function DestinyCardsPage() {
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
           <li>
             Optional deepen: the{" "}
-            <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-              52xSeven Blueprint ($19)
+            <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+              One Question Reading ($47)
             </Link>
-            , your whole year in one phone-friendly app.
+            , one question read from your card and your year.
           </li>
         </ol>
         <p className="prose-reading mt-3 text-mist">
@@ -470,8 +470,8 @@ export default function DestinyCardsPage() {
           Free calculator
         </Link>
         {" · "}
-        <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
-          $19 52xSeven Blueprint
+        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+          $47 One Question Reading
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">

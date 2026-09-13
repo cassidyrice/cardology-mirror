@@ -249,7 +249,7 @@ function BirthCardResultCard({
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
       <p className="mt-6 text-center font-serif text-xl text-brand-ink">
-        Your whole year, on one map. The chapter you are in right now, dated, and the six still coming.
+        Got one question? Ask it. This card, this year, your decision, written for you.
       </p>
       <DeepDiveCta
         placement="birth-card-calculator-result"
@@ -302,7 +302,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free one-line read of the card's pattern, shown before the $19 CTA. */
+/** Free one-line read of the card's pattern, shown before the $47 CTA. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

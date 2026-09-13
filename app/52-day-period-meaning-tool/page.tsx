@@ -104,10 +104,10 @@ export default function PeriodMeaningToolPage() {
           .
         </p>
         <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
-          Want your own seven chapters, dated, instead of looking them up by hand?
+          Want one decision read from your own cards instead of looking them up by hand?
           That is the{" "}
-          <Link href="/products/52xseven-blueprint" className="underline underline-offset-4">
-            52xSeven Blueprint
+          <Link href="/products/one-question-reading" className="underline underline-offset-4">
+            One Question Reading
           </Link>
           .
         </p>

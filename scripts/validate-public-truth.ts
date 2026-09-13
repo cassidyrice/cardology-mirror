@@ -208,7 +208,7 @@ const productMarketingFiles = [
   "components/seo/BirthCardCalculator.tsx",
   "components/analytics/AnalyticsCapture.tsx",
   "app/checkout/[offer]/page.tsx",
-  "app/products/52xseven-blueprint/page.tsx",
+  "app/products/one-question-reading/page.tsx",
   "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
@@ -231,11 +231,11 @@ assert.doesNotMatch(
 );
 assert.match(
   productSurfaceText,
-  /52xSeven Blueprint is a \$19 one-time year app built from a single birth date/i,
+  /One Question Reading is a \$47 written reading built from a single birth date and one question/i,
 );
 assert.match(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /52xSeven Blueprint is a \$19 one-time year app built from a single birth date/i,
+  /One Question Reading is a \$47 written reading built from a single birth date and one question/i,
 );
 // The $13 Personal Card Blueprint is retired. Neither the archive of generated
 // posts nor the generator that writes new ones may pitch it again. (The
@@ -304,7 +304,7 @@ assert.doesNotMatch(
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/52xseven-blueprint"\)/,
+  /permanentRedirect\("\/products\/one-question-reading"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -314,7 +314,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["'](\/readings)["']\s*:\s*["']\/products\/52xseven-blueprint["']/,
+  /["'](\/readings)["']\s*:\s*["']\/products\/one-question-reading["']/,
 );
 assert.match(
   middlewareText,
@@ -356,7 +356,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/52xseven-blueprint?utm_source=legacy",
+      "https://cardblueprints.com/products/one-question-reading?utm_source=legacy",
   },
 );
 assert.deepEqual(
@@ -400,7 +400,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/52xseven-blueprint?a=1",
+    location: "https://cardblueprints.com/products/one-question-reading?a=1",
   },
 );
 assert.deepEqual(
@@ -412,25 +412,32 @@ assert.deepEqual(
 );
 assert.equal(
   middlewareResult(
-    "https://cardblueprints.com/products/52xseven-blueprint",
+    "https://cardblueprints.com/products/one-question-reading",
     "cardblueprints.com",
   ).status,
   200,
 );
-// The $9 Deep Dive and $47 Blueprint Breakdown URLs 301 to the $19 52xSeven Blueprint (2026-09-08).
+// The $9 Deep Dive, $47 Blueprint Breakdown and $19 52xSeven URLs 301 to the $47 One Question Reading (2026-09-13).
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/birth-card-deep-dive",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/52xseven-blueprint" },
+  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
 );
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/blueprint-breakdown-video",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/52xseven-blueprint" },
+  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
+);
+assert.deepEqual(
+  middlewareResult(
+    "https://cardblueprints.com/products/52xseven-blueprint?utm_source=old-email",
+    "cardblueprints.com",
+  ),
+  { status: 301, location: "https://cardblueprints.com/products/one-question-reading?utm_source=old-email" },
 );
 // The retired catalog 301s to the one live product.
 assert.equal(
@@ -449,9 +456,11 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-assert.match(productSurfaceText, /52xSeven Blueprint/);
-assert.match(productSurfaceText, /12 months/i);
-assert.doesNotMatch(productSurfaceText, /Blueprint Breakdown Video|\$47/);
+assert.match(productSurfaceText, /One Question Reading/);
+assert.match(productSurfaceText, /2 business days/i);
+assert.doesNotMatch(productSurfaceText, /Blueprint Breakdown Video/);
+// The $19 year app is retired from sale: no public marketing surface may still pitch it.
+assert.doesNotMatch(productSurfaceText, /\$19 52xSeven|52xSeven Blueprint \(\$19\)|Unlock my full year/);
 
 const legacyRanks = [
   ["ace", "ace"],

@@ -50,7 +50,7 @@ export default async function BlueprintPage({
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <LinkButton href={DEEP_DIVE_PRODUCT_PATH} variant="accent" size="large">
-                  Get the 52xSeven Blueprint
+                  Ask one question
                 </LinkButton>
                 <LinkButton href="/contact" variant="outline" size="large">
                   Contact Support
@@ -64,7 +64,7 @@ export default async function BlueprintPage({
     );
   }
 
-  // The 52xSeven Blueprint is the live product: a phone-shaped year app.
+  // The 52xSeven Blueprint (retired from sale 2026-09-13) still renders for past buyers: a phone-shaped year app.
   if (payload.slug === FIFTY_TWO_BY_SEVEN_REPORT_SLUG) {
     let year = null;
     let yearError = "";

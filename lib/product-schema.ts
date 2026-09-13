@@ -10,7 +10,7 @@ export const PRODUCT_IMAGE_PATH = "/og/default.png";
 
 /** Per-product OG/product-snippet images (public/og/products/). */
 const PRODUCT_IMAGE_BY_SLUG: Record<string, string> = {
-  "deep-dive": "/og/products/52xseven-blueprint.png",
+  "deep-dive": "/og/products/one-question-reading.png",
   "personal-card-blueprint": "/og/products/personal-card-blueprint.png",
   "complete-card-blueprint": "/og/products/complete-card-blueprint.png",
   "analog-algorithm": "/og/products/analog-algorithm.png",
@@ -84,13 +84,13 @@ export function priceValidUntil(): string {
 }
 
 /**
- * Offer start for the live $19 52xSeven Blueprint. Same ISO day as
- * PAGE_UPDATED_DATES["/products/52xseven-blueprint"] and the catalog
+ * Offer start for the live $47 One Question Reading. Same ISO day as
+ * PAGE_UPDATED_DATES["/products/one-question-reading"] and the catalog
  * launch note in middleware.ts (2026-09-08). Not a sale window — the
- * list price stays $19 from this date forward.
+ * list price stays $47 from this date forward.
  */
 export const OFFER_VALID_FROM =
-  PAGE_UPDATED_DATES["/products/52xseven-blueprint"];
+  PAGE_UPDATED_DATES["/products/one-question-reading"];
 
 export function buildProductJsonLd(product: ActiveProduct) {
   const path = productCanonicalPath(product);

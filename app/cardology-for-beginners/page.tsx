@@ -69,9 +69,9 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the 52xSeven Blueprint ($19) lays your whole year out in one phone-friendly app — your card, the 52-day chapter you are in now, all seven chapters, and the story arc on one map.",
-    href: "/products/52xseven-blueprint",
-    label: "52xSeven Blueprint",
+    body: "If the free tools keep matching real life, the One Question Reading ($47) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within 2 business days.",
+    href: "/products/one-question-reading",
+    label: "One Question Reading",
   },
 ];
 
@@ -231,15 +231,15 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The 52xSeven Blueprint is a one-time $19 purchase: a phone-friendly year app
-          with your birth card, the 52-day chapter you are in right now, all seven
-          chapters of your year, and the story arc on one map. 12 months of access, no renewal.
+          The One Question Reading is a one-time $47 purchase: one question, read from
+          your birth card, this year's Long Range and Pluto cards, and the card you owe.
+          About 600 words, emailed within 2 business days. No subscription.
         </p>
         <Link
-          href="/products/52xseven-blueprint"
+          href="/products/one-question-reading"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Get the 52xSeven Blueprint &mdash; $19
+          Ask one question &mdash; $47
         </Link>
       </div>
 

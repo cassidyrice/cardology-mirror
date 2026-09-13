@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { BrandLogo } from "@/components/seo/BrandLogo";
+import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 
 export function CheckoutShell({
@@ -18,7 +19,7 @@ export function CheckoutShell({
           <BrandLogo compact />
         </Link>
         <Link
-          href="/products/52xseven-blueprint"
+          href={DEEP_DIVE_PRODUCT_PATH}
           className="text-sm text-brand-ink-soft underline underline-offset-4"
         >
           Back

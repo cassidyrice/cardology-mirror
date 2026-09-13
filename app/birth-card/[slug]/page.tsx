@@ -198,22 +198,22 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </p>
       <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-        <p className="eyebrow text-gold">A closer, grounded reading</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">Get the {card.label} 52xSeven Blueprint — $19</h2>
+        <p className="eyebrow text-gold">One question, read from this card</p>
+        <h2 className="mt-2 font-serif text-2xl text-bone">Ask your question as the {card.label} — $47</h2>
         <p className="mt-2 text-sm text-mist">
-          Your {card.label} year in one phone-friendly app: the chapter you are
-          in now, all seven chapters, and the arc that ties them together.
+          One decision, read from your {card.label} birth card, this year&rsquo;s
+          cards, and the card you owe. Written for you within 2 business days.
         </p>
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
-          <li>✓ Your {card.label} birth card with the light and shadow read</li>
-          <li>✓ The 52-day chapter you are in right now, dated, with how far through it you are</li>
-          <li>✓ All seven 52-day chapters of your year, each with a short light + shadow read</li>
-          <li>✓ The yearly story arc — Long Range, Pluto, Result, Environment, Displacement — on one map</li>
-          <li>✓ Instant after payment + emailed sign-in link, 12 months of access</li>
+          <li>✓ How the {card.label} tends to handle your kind of question, and where it slips</li>
+          <li>✓ This year&rsquo;s Long Range card: the thing that keeps pulling your attention</li>
+          <li>✓ This year&rsquo;s Pluto card and its payoff: what the year asks, what it pays</li>
+          <li>✓ The card you owe and the card you&rsquo;re owed, on your question</li>
+          <li>✓ Three things to keep an eye out for, then one closing line</li>
         </ul>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $19 one time · instant access · no renewal
+          $47 one time · written within 2 business days · no subscription
         </p>
       </div>
 

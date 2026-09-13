@@ -6,7 +6,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-deck",
     label: "The Deck",
-    kicker: "52xSeven Blueprint · instant after payment",
+    kicker: "One Question Reading · written within 2 business days",
     title: "Your birthday carries a pattern.",
     body: "Every birthday maps to exactly one card in a fixed 52-card order. Find yours free, then unlock your whole year.",
     clip: "/brand/journey/scene-01.mp4",
@@ -20,8 +20,8 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
         <a className="journey-primary" href="/birth-card-calculator">
           Find Your Birth Card Free
         </a>
-        <a className="journey-secondary" href="/products/52xseven-blueprint">
-          Get the 52xSeven Blueprint · $19
+        <a className="journey-secondary" href="/products/one-question-reading">
+          Ask one question · $47
         </a>
       </>
     ),
@@ -54,7 +54,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-blueprint",
     label: "The Blueprint",
-    kicker: "52xSeven Blueprint",
+    kicker: "One Question Reading",
     title: "See your whole year on one map.",
     body: "Your birth card, the 52-day chapter you are in right now, all seven chapters, and the yearly story arc in one phone-friendly app you can open the moment payment clears.",
     clip: "/brand/journey/scene-04.mp4",
@@ -66,8 +66,8 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
     tags: ["Instant · 12 months of access"],
     actions: (
       <>
-        <a className="journey-primary" href="/products/52xseven-blueprint">
-          Get the 52xSeven Blueprint · $19
+        <a className="journey-primary" href="/products/one-question-reading">
+          Ask one question · $47
         </a>
         <a className="journey-secondary" href="/birth-card-calculator">
           Find Your Birth Card Free

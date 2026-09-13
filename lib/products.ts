@@ -288,31 +288,32 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   kind: "digital_download",
   available: true,
   slug: DEEP_DIVE_SLUG,
-  stripePriceEnv: "STRIPE_PRICE_52XSEVEN_BLUEPRINT",
-  name: "52xSeven Blueprint",
-  price: 19,
-  priceLabel: "$19",
-  badge: "Flagship",
+  stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_BREAKDOWN",
+  name: "One Question Reading",
+  price: 47,
+  priceLabel: "$47",
+  badge: "The reading",
   oneLine:
-    "Your whole Cardology year in one place — your card, your current 52-day chapter, all seven chapters, and the story arc that ties them together.",
+    "One question you're deciding, read from your birth card and the year you're in. Written for you, in plain words.",
   bestFor:
-    "Anyone who wants to know which chapter they're standing in right now, what it's asking, and where the year is heading — without decoding planetary jargon.",
+    "Anyone circling one real decision: the job, the move, the person, the money. You bring the question; the cards show where you're standing.",
   deliverable:
-    "A personal, phone-friendly year calendar you return to all year, with an emailed sign-in link. 12 months of access.",
-  turnaround: "Unlocks immediately after payment — no call, no wait.",
+    "A written reading of 500 to 700 words, emailed as plain text within 2 business days. No login, nothing to download.",
+  turnaround: "Written for you within 2 business days of payment.",
   includes: [
-    "Your birth card with the light and the shadow read",
-    "Your current 52-day chapter, dated, with how far through it you are",
-    "All seven 52-day chapters for the year, each with a short light + shadow read",
-    "The yearly story arc: Long Range, Pluto, Result, Environment and Displacement on one map",
+    "Your birth card: the number and the suit, and how that card tends to handle your kind of question",
+    "This year's Long Range card, the thing that keeps pulling your attention",
+    "This year's Pluto card and its payoff, what the year asks and what it pays",
+    "The card you owe and the card you're owed: how the question goes wrong for you, and what to lean on",
+    "Three things to keep an eye out for in the next few weeks",
   ],
-  cta: "Unlock my full year — $19",
+  cta: "Ask your question — $47",
   checkoutNote:
-    "One payment. 12 months of access, no automatic renewal. Birthday comes from the calculator or the preview; Stripe-hosted checkout collects email and payment. Your year unlocks instantly and the link is emailed to you.",
+    "One payment. You type your birth date and your question before Stripe; Stripe collects email and payment. The reading is written for you and emailed within 2 business days.",
   downloadAssetKey: "",
   redownloadDays: 365,
   fileName: "",
-  href: "/products/52xseven-blueprint",
+  href: "/products/one-question-reading",
 };
 
 export const CONTENT_CALENDAR_52_SLUG = "content-calendar-52";
@@ -554,7 +555,7 @@ function checkoutVideoBySlug(slug: string): VideoOffer | undefined {
   return product;
 }
 
-/** Checkout-eligible products, including the 52xSeven Blueprint (slug deep-dive) and Content Engine which are not in the public catalog. */
+/** Checkout-eligible products, including the One Question Reading (slug deep-dive) and Content Engine which are not in the public catalog. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??

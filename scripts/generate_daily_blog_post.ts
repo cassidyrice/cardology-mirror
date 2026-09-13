@@ -49,7 +49,7 @@ const __filename = fileURLToPath(import.meta.url);
 
 const REQUIRED_TOOL_HREFS = [
   "/birth-card-calculator",
-  "/products/52xseven-blueprint",
+  "/products/one-question-reading",
   "/methodology",
   "/editorial-policy",
 ] as const;
@@ -305,11 +305,11 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "How to use this profile",
         body: [
           `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
-          "Want the whole year for one birth date laid out in one place? The 52xSeven Blueprint is a $19 one-time year app built from a single birth date — your card, the 52-day chapter you are standing in, all seven chapters, and the story arc that ties them together. No phone call, no question intake, no subscription.",
+          "Got one question about your own life? The One Question Reading is a $47 written reading built from a single birth date and one question — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the one decision you bring. Written for you and emailed within 2 business days. No phone call, no subscription.",
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-          { label: "52xSeven Blueprint", href: "/products/52xseven-blueprint" },
+          { label: "One Question Reading", href: "/products/one-question-reading" },
         ],
       },
     ],
@@ -331,7 +331,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     coreLinks: [
       { label: `${cardLabel} Birth Card Meaning`, href: `/birth-card/${cardSlug}` },
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-      { label: "52xSeven Blueprint", href: "/products/52xseven-blueprint", note: "$19 — your whole Cardology year, unlocked instantly." },
+      { label: "One Question Reading", href: "/products/one-question-reading", note: "$47 — one question, read from your card and your year." },
     ],
   };
 }
@@ -468,8 +468,8 @@ function enrichEat(post: BlogPost): BlogPost {
     "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card.",
   );
   ensureFaq(
-    "What is the 52xSeven Blueprint?",
-    "A $19 one-time year app built from one birth date — your birth card with the light and the shadow read, your current 52-day chapter, all seven chapters, and the yearly story arc. It unlocks instantly after checkout and stays open for 12 months. No phone call and no subscription.",
+    "What is the One Question Reading?",
+    "A $47 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within 2 business days. No phone call and no subscription.",
   );
   ensureFaq(
     "Who publishes Card Blueprints?",
@@ -481,7 +481,7 @@ function enrichEat(post: BlogPost): BlogPost {
     if (!coreLinks.some((l) => l.href === href)) coreLinks.push(note ? { label, href, note } : { label, href });
   };
   ensureLink("Birth Card Calculator", "/birth-card-calculator");
-  ensureLink("52xSeven Blueprint", "/products/52xseven-blueprint", "$19 — your whole Cardology year, unlocked instantly.");
+  ensureLink("One Question Reading", "/products/one-question-reading", "$47 — one question, read from your card and your year.");
   ensureLink("Methodology", "/methodology");
   ensureLink("Editorial policy", "/editorial-policy");
   ensureLink("What Is Cardology?", "/what-is-cardology");
