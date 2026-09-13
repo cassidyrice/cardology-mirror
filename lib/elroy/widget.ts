@@ -8,7 +8,6 @@ const EXCLUDED_PREFIXES = [
   // The purchased 52xSeven year app owns the bottom of the screen (tab bar).
   "/blueprint",
   "/checkout",
-  "/content-engine",
   "/gate",
   "/free-course",
   "/privacy-policy",

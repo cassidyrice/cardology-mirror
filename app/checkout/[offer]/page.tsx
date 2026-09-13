@@ -21,7 +21,6 @@ import {
   isDigitalDownload,
   isInstantReport,
   isMembership,
-  isVideoService,
 } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
@@ -45,14 +44,13 @@ export default async function CheckoutReviewPage({
 }: PageProps) {
   const { offer: slug } = await params;
   const { status } = await searchParams;
-  // Checkout lookup excludes retired offers, including the Content Calendar.
+  // Checkout lookup excludes retired offers.
   const product = checkoutProductBySlug(slug);
 
   if (!product) notFound();
 
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product) || isMembership(product);
-  const isVideo = isVideoService(product);
   const isReading = isDeepDive(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
@@ -62,14 +60,6 @@ export default async function CheckoutReviewPage({
           { label: "Input", value: "Your birth date and your question, typed here. Neither goes in a URL." },
           { label: "Timing", value: `Written for you within ${ONE_QUESTION_TURNAROUND}.` },
           { label: "Renewal", value: "One payment. No subscription, no renewal." },
-        ]
-      : isVideo
-      ? [
-          { label: "Deliverable", value: product.deliverable },
-          { label: "Format", value: "30–60 second vertical short (MP4)." },
-          { label: "Access", value: "Email delivery + order status page." },
-          { label: "Redownload", value: "Status page stays open for 60 days." },
-          { label: "Renewal", value: "One-time purchase. No automatic renewal." },
         ]
       : isDigital
       ? digitalOfferFacts(product)
@@ -84,7 +74,7 @@ export default async function CheckoutReviewPage({
     >
       <header className="max-w-[42rem] pb-6">
         <Kicker className="mb-3">
-          {isVideo ? "Review your video order" : isReading ? "Before payment" : isDigital || isReport ? "Review your purchase" : "Review your reading"}
+          {isReading ? "Before payment" : isDigital || isReport ? "Review your purchase" : "Review your reading"}
         </Kicker>
         <h1 className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl">
           {isReading ? "Ask one question." : `${product.name} — ${product.priceLabel}`}
@@ -133,18 +123,7 @@ export default async function CheckoutReviewPage({
           {isReport || isDigital ? " plus applicable tax" : ""}
         </h2>
         <div className="mt-4 space-y-3 text-sm leading-relaxed text-brand-ink-soft">
-          {isVideo ? (
-            <>
-              <p>
-                Stripe securely collects payment. After payment, your order is queued
-                for production. Delivery is usually within 24 hours, promised within 48.
-              </p>
-              <p>
-                Requires a paid Content Calendar with written scripts. Start from your
-                calendar confirmation page.
-              </p>
-            </>
-          ) : isReading ? (
+          {isReading ? (
             <>
               <p>
                 Stripe takes the payment. Within {ONE_QUESTION_TURNAROUND} the

@@ -23,34 +23,8 @@ import {
   isInstantReport,
   isVoiceReading,
   isDeepDive,
-  isContentCalendar52,
-  isVideoOffer,
   type SiteProduct,
 } from "@/lib/products";
-import {
-  parseVideoAssetKeys,
-  type VideoFormat,
-  VIDEO_FORMATS,
-  isVideoOfferSlug,
-} from "@/lib/content-video";
-import {
-  createVideoJobFromCheckout,
-  readVideoJob,
-  writeVideoJob,
-} from "@/lib/content-engine/video-jobs";
-import { videoJobsKv } from "@/lib/content-engine/video-kv";
-import { isPieceKind } from "@/lib/content-engine/write-prompt";
-import { GeminiConfigError, generateCalendarWithGemini } from "@/lib/content-engine/gemini";
-import { isFixtureSession, fixtureStoredCalendar } from "@/lib/content-engine/fixture-session";
-import { ContentCalendarView } from "@/components/content-engine/ContentCalendarView";
-import { buildPaidStructure, parseIsoDate } from "@/lib/content-engine/structure";
-import { contentCalendarsKv } from "@/lib/content-engine/kv";
-import {
-  readStoredCalendar,
-  rowsToCsv,
-  writeStoredCalendar,
-  type StoredCalendar,
-} from "@/lib/content-engine/storage";
 import { mintReportToken } from "@/lib/report-token";
 import { mintDownloadToken } from "@/lib/download-token";
 import { ALL_90_SPREADS_FILE, isJokerBirthdate } from "@/lib/deep-dive";
@@ -82,11 +56,7 @@ export default async function CheckoutSuccessPage({
   let confirmed = false;
   let session2: import("stripe").Stripe.Checkout.Session | undefined;
 
-  if (isFixtureSession(sessionId)) {
-    product = productBySlug("content-calendar-52");
-    confirmed = true;
-    customerEmail = "fixture@test.local";
-  } else if (sessionId && process.env.STRIPE_SECRET_KEY) {
+  if (sessionId && process.env.STRIPE_SECRET_KEY) {
     try {
       const session = await getStripe().checkout.sessions.retrieve(
         sessionId,
@@ -119,11 +89,9 @@ export default async function CheckoutSuccessPage({
   // Retired year-app SKUs on the same slug still render the year for past buyers.
   const legacyYearApp = Boolean(deepDive && !oneQuestion);
   const question = oneQuestion ? questionFromCheckoutSession(session2) : "";
-  const contentCalendar = product && isContentCalendar52(product);
-  const videoOrder = product && isVideoOffer(product);
   const deepDiveBirthday = deepDive ? birthdateFromCheckoutSession(session2) : "";
   const digital =
-    product && isDigitalDownload(product) && !deepDive && !contentCalendar;
+    product && isDigitalDownload(product) && !deepDive;
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
 
@@ -162,8 +130,7 @@ export default async function CheckoutSuccessPage({
     confirmed &&
     customerEmail &&
     isDigitalDownload(product!) &&
-    !deepDive &&
-    !contentCalendar
+    !deepDive
   ) {
     try {
       downloadToken = await mintDownloadToken(
@@ -208,110 +175,6 @@ export default async function CheckoutSuccessPage({
     }
   }
 
-  let contentCalendarView: StoredCalendar | null = null;
-  let contentCalendarPending = false;
-  if (contentCalendar && confirmed && sessionId) {
-    const calendarsKv = contentCalendarsKv();
-    if (isFixtureSession(sessionId)) {
-      contentCalendarView = fixtureStoredCalendar(sessionId);
-      await writeStoredCalendar(contentCalendarView, calendarsKv);
-    } else {
-    contentCalendarView = await readStoredCalendar(sessionId, calendarsKv);
-    if (!contentCalendarView) {
-      const business = (session2?.metadata?.business || "").trim().slice(0, 240);
-      const startRaw = (session2?.metadata?.start_date || "").trim();
-      const startDate =
-        startRaw && parseIsoDate(startRaw)
-          ? startRaw
-          : new Date().toISOString().slice(0, 10);
-      if (business) {
-        try {
-          const structure = buildPaidStructure(startDate);
-          const generated = await generateCalendarWithGemini({
-            business,
-            days: structure,
-            model: "gemini-2.5-pro",
-          });
-          if (generated.rows.length > 0) {
-            const stored: StoredCalendar = {
-              sessionId,
-              business,
-              startDate,
-              generatedAt: new Date().toISOString(),
-              weekHeaders: generated.weekHeaders,
-              rows: generated.rows,
-              csv: rowsToCsv(generated.rows),
-            };
-            const wrote = await writeStoredCalendar(stored, calendarsKv);
-            contentCalendarView = stored;
-            if (!wrote) contentCalendarPending = false; // still show generated rows this request
-          } else {
-            contentCalendarPending = true;
-          }
-        } catch (error) {
-          if (error instanceof GeminiConfigError) {
-            contentCalendarPending = true;
-          } else {
-            console.warn("[checkout/success] content calendar generation failed", error);
-            contentCalendarPending = true;
-          }
-        }
-      } else {
-        contentCalendarPending = true;
-      }
-    }
-    }
-  }
-
-  let videoJobId = "";
-  if (videoOrder && confirmed && sessionId && session2) {
-    const jobsKv = videoJobsKv();
-    const existing = await readVideoJob(sessionId, jobsKv);
-    if (existing) {
-      videoJobId = existing.jobId;
-    } else {
-      const offerSlug = session2.metadata?.offer_slug ?? "";
-      const calendarSessionId = session2.metadata?.calendar_session_id ?? "";
-      const formatRaw = session2.metadata?.video_format ?? "vertical-short-60";
-      const format: VideoFormat = VIDEO_FORMATS.some((f) => f.value === formatRaw)
-        ? (formatRaw as VideoFormat)
-        : "vertical-short-60";
-      const voiceAddon = session2.metadata?.voice_addon === "true";
-      const day = Number(session2.metadata?.video_day);
-      const pieceKind = session2.metadata?.piece_kind ?? "";
-      const assetKeys = parseVideoAssetKeys(session2.metadata?.asset_keys);
-
-      if (isVideoOfferSlug(offerSlug) && calendarSessionId) {
-        const calendarsKv = contentCalendarsKv();
-        const calendar = await readStoredCalendar(calendarSessionId, calendarsKv);
-        let scriptContent = "";
-        if (
-          offerSlug === "video-single" &&
-          Number.isFinite(day) &&
-          isPieceKind(pieceKind)
-        ) {
-          scriptContent =
-            calendar?.pieces?.[String(day)]?.[pieceKind]?.content ?? "";
-        }
-        const job = createVideoJobFromCheckout({
-          checkoutSessionId: sessionId,
-          calendarSessionId,
-          offerSlug,
-          format,
-          voiceAddon,
-          day: Number.isFinite(day) ? day : undefined,
-          pieceKind: isPieceKind(pieceKind) ? pieceKind : undefined,
-          scriptContent: scriptContent || undefined,
-          business: calendar?.business,
-          assets: assetKeys,
-          customerEmail: customerEmail || undefined,
-        });
-        const saved = await writeVideoJob(job, jobsKv);
-        if (saved) videoJobId = job.jobId;
-      }
-    }
-  }
-
   return (
     <SeoShell
       crumb={[
@@ -335,13 +198,7 @@ export default async function CheckoutSuccessPage({
           {confirmed ? "Payment received" : "Payment not verified"}
         </Kicker>
         <h1 className="type-display text-brand-ink">
-          {confirmed && contentCalendar
-            ? contentCalendarView
-              ? "Your 52-day calendar is ready."
-              : "Generation pending."
-            : confirmed && videoOrder
-              ? "Your video order is in the queue."
-            : confirmed && oneQuestion
+          {confirmed && oneQuestion
             ? "Payment confirmed. Your question is in."
             : confirmed && deepDive
             ? yearToken
@@ -356,15 +213,7 @@ export default async function CheckoutSuccessPage({
                 : "We could not confirm this purchase yet."}
         </h1>
         <p className="type-body-lg mt-5 text-brand-ink-soft">
-          {confirmed && contentCalendar
-            ? contentCalendarView
-              ? `"${product!.name}" — ${product!.priceLabel}. 52 days of content, written for you. Tap any day to write the post.`
-              : contentCalendarPending
-                ? "Payment confirmed. Your calendar is generation pending — refresh in a minute, or reply to your receipt if it stays blank."
-                : "Payment confirmed. Your calendar is generation pending."
-            : confirmed && videoOrder
-              ? `"${product!.name}" — ${product!.priceLabel}. Production usually starts within an hour; delivery in 24–48 hours.`
-            : confirmed && oneQuestion
+          {confirmed && oneQuestion
             ? deepDiveSuccessCopy(deepDiveBirthday)
             : confirmed && deepDive
             ? yearToken
@@ -390,15 +239,7 @@ export default async function CheckoutSuccessPage({
 
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
-          {contentCalendar ? (
-            <ContentCalendarFulfillment
-              calendar={contentCalendarView}
-              pending={contentCalendarPending || !contentCalendarView}
-              sessionId={sessionId}
-            />
-          ) : videoOrder ? (
-            <VideoOrderFulfillment jobId={videoJobId} productName={product!.name} />
-          ) : oneQuestion ? (
+          {oneQuestion ? (
             <QuestionFulfillment question={question} email={customerEmail} />
           ) : deepDive ? (
             <YearFulfillment
@@ -526,66 +367,6 @@ function QuestionFulfillment({
         Want to reword the question? Reply to your receipt today, before it is
         written.
       </p>
-    </div>
-  );
-}
-
-function VideoOrderFulfillment({
-  jobId,
-  productName,
-}: {
-  jobId: string;
-  productName: string;
-}) {
-  return (
-    <div className="text-center">
-      <Kicker className="mb-4">Content Calendar · Video</Kicker>
-      <h2 className="type-h2 text-brand-ink">{productName}</h2>
-      <p className="mx-auto mt-3 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-        Your order is queued. We&rsquo;ll email you when the short is ready — usually within
-        24 hours, promised within 48.
-      </p>
-      {jobId ? (
-        <div className="mt-6">
-          <LinkButton href={`/content-engine/video/${jobId}`} variant="accent" size="large">
-            View order status →
-          </LinkButton>
-        </div>
-      ) : (
-        <p className="mt-4 text-sm text-brand-ink-soft">
-          Save this page URL to check back. If status doesn&rsquo;t appear, reply to your receipt email.
-        </p>
-      )}
-    </div>
-  );
-}
-
-function ContentCalendarFulfillment({
-  calendar,
-  pending,
-  sessionId,
-}: {
-  calendar: StoredCalendar | null;
-  pending: boolean;
-  sessionId: string;
-}) {
-  if (pending || !calendar) {
-    return (
-      <div className="text-center">
-        <Kicker className="mb-4">Content Calendar</Kicker>
-        <h2 className="type-h2 text-brand-ink">Generation pending</h2>
-        <p className="mx-auto mt-3 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-          Your calendar is not ready to show yet. Refresh this page in a minute. If it
-          stays blank, reply to your receipt email.
-        </p>
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <Kicker className="mb-4 text-center">Content Calendar</Kicker>
-      <ContentCalendarView calendar={calendar} sessionId={sessionId} mode="paid" />
     </div>
   );
 }

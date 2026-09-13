@@ -34,12 +34,6 @@ const nextConfig = {
         destination: "/products/one-question-reading",
         statusCode: 301,
       },
-      // Retired Content Calendar alias.
-      {
-        source: "/content-calendar",
-        destination: "/explore",
-        statusCode: 301,
-      },
       {
         source: "/cardology-agent-instructions",
         destination: "/shadow-karma-guide",

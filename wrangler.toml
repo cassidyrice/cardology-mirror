@@ -10,18 +10,3 @@ dataset = "cardblueprints_funnel"
 [[r2_buckets]]
 binding = "EBOOK_BUCKET"
 bucket_name = "cardblueprints-ebooks"
-
-[[r2_buckets]]
-binding = "VIDEO_ASSETS"
-bucket_name = "cardblueprints-video-assets"
-
-# Content Engine paid calendars (30-day re-download). Create the namespace in CF
-# and set id before deploy; missing binding = graceful "generation pending".
-[[kv_namespaces]]
-binding = "CONTENT_CALENDARS"
-id = "ae096fd00a9449a39cfa8da56f95fae8"
-
-# Video render jobs (60-day status page). Create namespace before deploy.
-[[kv_namespaces]]
-binding = "VIDEO_JOBS"
-id = "4fd096e007f84258869555f57257e228"

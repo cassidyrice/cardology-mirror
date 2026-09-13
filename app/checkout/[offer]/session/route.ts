@@ -22,30 +22,12 @@ import {
   sanitizeQuestion,
 } from "@/lib/deep-dive";
 import {
-  contentCalendarPriceId,
-  contentCalendarSessionMetadata,
-} from "@/lib/content-calendar";
-import {
-  parseVideoAssetKeys,
-  videoPriceIdForSlug,
-  videoSessionMetadata,
-  videoVoiceAddonPriceId,
-  type VideoFormat,
-  VIDEO_FORMATS,
-  isVideoOfferSlug,
-} from "@/lib/content-video";
-import {
   checkoutProductBySlug,
-  isContentCalendar52,
   isDeepDive,
   isDigitalDownload,
   isInstantReport,
   isMembership,
-  isVideoOffer,
 } from "@/lib/products";
-import { contentCalendarsKv } from "@/lib/content-engine/kv";
-import { readStoredCalendar } from "@/lib/content-engine/storage";
-import { isPieceKind } from "@/lib/content-engine/write-prompt";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
@@ -103,14 +85,6 @@ export async function POST(
   let requestedSource = "";
   let requestedCardLabel = "";
   let requestedCardSlug = "";
-  let formBusiness = "";
-  let formStartDate = "";
-  let formCalendarSessionId = "";
-  let formDay = 0;
-  let formPieceKind = "";
-  let formVideoFormat = "";
-  let formVoiceAddon = false;
-  let formAssetKeys = "";
   let analytics: FunnelContext = {};
   try {
     if (contentType.includes("application/json")) {
@@ -120,20 +94,6 @@ export async function POST(
       requestedSource = typeof body.source === "string" ? body.source : "";
       requestedCardLabel = typeof body.cardLabel === "string" ? body.cardLabel : "";
       requestedCardSlug = typeof body.cardSlug === "string" ? body.cardSlug : "";
-      formBusiness = typeof body.business === "string" ? body.business.trim().slice(0, 240) : "";
-      formStartDate = typeof body.startDate === "string" ? body.startDate.trim() : "";
-      formCalendarSessionId =
-        typeof body.calendarSessionId === "string" ? body.calendarSessionId.trim() : "";
-      formDay = typeof body.day === "number" ? body.day : Number(body.day);
-      formPieceKind = typeof body.pieceKind === "string" ? body.pieceKind.trim() : "";
-      formVideoFormat = typeof body.format === "string" ? body.format.trim() : "";
-      formVoiceAddon = body.voiceAddon === true;
-      formAssetKeys =
-        typeof body.assetKeys === "string"
-          ? body.assetKeys
-          : body.assetKeys
-            ? JSON.stringify(body.assetKeys)
-            : "";
       const fromBody = funnelContextFromJson(body);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -152,22 +112,6 @@ export async function POST(
       requestedCardLabel = typeof labelField === "string" ? labelField : "";
       const slugField = form.get("cardSlug");
       requestedCardSlug = typeof slugField === "string" ? slugField : "";
-      const businessField = form.get("business");
-      formBusiness = typeof businessField === "string" ? businessField.trim().slice(0, 240) : "";
-      const startField = form.get("startDate");
-      formStartDate = typeof startField === "string" ? startField.trim() : "";
-      const calendarField = form.get("calendarSessionId");
-      formCalendarSessionId =
-        typeof calendarField === "string" ? calendarField.trim() : "";
-      const dayField = form.get("day");
-      formDay = typeof dayField === "string" ? Number(dayField) : Number(dayField);
-      const kindField = form.get("pieceKind");
-      formPieceKind = typeof kindField === "string" ? kindField.trim() : "";
-      const formatField = form.get("format");
-      formVideoFormat = typeof formatField === "string" ? formatField.trim() : "";
-      formVoiceAddon = form.get("voiceAddon") === "true" || form.get("voiceAddon") === "on";
-      const assetField = form.get("assetKeys");
-      formAssetKeys = typeof assetField === "string" ? assetField : "";
       const fromForm = funnelContextFromFormData(form);
       const fromCookie = funnelContextFromCookie(
         req.cookies.get(FUNNEL_COOKIE_NAME)?.value,
@@ -189,57 +133,11 @@ export async function POST(
 
   const priceId = isDeepDive(product)
     ? deepDivePriceId()
-    : isContentCalendar52(product)
-      ? contentCalendarPriceId()
-      : isVideoOffer(product)
-        ? videoPriceIdForSlug(product.slug)
-        : process.env[product.stripePriceEnv];
+    : process.env[product.stripePriceEnv];
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
     return checkoutUnavailable(req, product.slug);
   }
 
-  if (isVideoOffer(product)) {
-    if (!formCalendarSessionId) {
-      if (wantsJson) {
-        return NextResponse.json(
-          { error: "calendar_required", message: "Paid Content Calendar required." },
-          { status: 400 },
-        );
-      }
-      return NextResponse.redirect(
-        new URL("/content-engine/video/order?status=need-calendar", req.url),
-        303,
-      );
-    }
-    const calendarsKv = contentCalendarsKv();
-    const calendar = await readStoredCalendar(formCalendarSessionId, calendarsKv);
-    if (!calendar) {
-      if (wantsJson) {
-        return NextResponse.json(
-          { error: "calendar_not_found" },
-          { status: 403 },
-        );
-      }
-      return NextResponse.redirect(
-        new URL("/content-engine/video/order?status=need-calendar", req.url),
-        303,
-      );
-    }
-    if (product.slug === "video-single") {
-      if (
-        !Number.isFinite(formDay) ||
-        formDay < 1 ||
-        formDay > 52 ||
-        !isPieceKind(formPieceKind)
-      ) {
-        return NextResponse.json({ error: "invalid_day_or_kind" }, { status: 400 });
-      }
-      const piece = calendar.pieces?.[String(formDay)]?.[formPieceKind];
-      if (!piece?.content) {
-        return NextResponse.json({ error: "script_required" }, { status: 400 });
-      }
-    }
-  }
   if ((isInstantReport(product) || isMembership(product)) && !formBirthdate) {
     if (wantsJson) {
       return NextResponse.json({ error: "need-date" }, { status: 400 });
@@ -306,60 +204,14 @@ export async function POST(
         }),
       );
     }
-    if (isContentCalendar52(product) && formBusiness) {
-      const start =
-        /^\d{4}-\d{2}-\d{2}$/.test(formStartDate) ? formStartDate : new Date().toISOString().slice(0, 10);
-      Object.assign(
-        sharedMeta,
-        contentCalendarSessionMetadata({
-          business: formBusiness,
-          startDate: start,
-          source: requestedSource || "content-engine",
-        }),
-      );
-    }
-    if (isVideoOffer(product) && formCalendarSessionId) {
-      const format: VideoFormat = VIDEO_FORMATS.some(
-        (f) => f.value === formVideoFormat,
-      )
-        ? (formVideoFormat as VideoFormat)
-        : "vertical-short-60";
-      if (!isVideoOfferSlug(product.slug)) {
-        return checkoutUnavailable(req, product.slug);
-      }
-      Object.assign(
-        sharedMeta,
-        videoSessionMetadata({
-          offerSlug: product.slug,
-          calendarSessionId: formCalendarSessionId,
-          day: Number.isFinite(formDay) ? formDay : undefined,
-          pieceKind: isPieceKind(formPieceKind) ? formPieceKind : undefined,
-          format,
-          voiceAddon: formVoiceAddon,
-          assetKeys: parseVideoAssetKeys(formAssetKeys),
-          source: requestedSource || "content-engine-video",
-        }),
-      );
-    }
-
     const lineItems: { price: string; quantity: number }[] = [
       { price: priceId, quantity: 1 },
     ];
-    if (isVideoOffer(product) && formVoiceAddon) {
-      const addonPrice = videoVoiceAddonPriceId();
-      if (addonPrice) {
-        lineItems.push({ price: addonPrice, quantity: 1 });
-      }
-    }
 
     const subscription = isMembership(product);
     const cancelUrl = isDeepDive(product)
       ? `${SITE_URL}${DEEP_DIVE_REVIEW_PATH}`
-      : isContentCalendar52(product)
-        ? `${SITE_URL}/content-engine`
-        : isVideoOffer(product)
-          ? `${SITE_URL}/content-engine/video/order?offer=${product.slug}&calendarSessionId=${encodeURIComponent(formCalendarSessionId)}`
-          : `${SITE_URL}/checkout/${product.slug}`;
+      : `${SITE_URL}/checkout/${product.slug}`;
     const session = await getStripe().checkout.sessions.create(
       subscription
         ? {

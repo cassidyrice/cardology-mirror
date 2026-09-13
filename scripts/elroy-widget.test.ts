@@ -44,9 +44,8 @@ describe("isElroyEligiblePath", () => {
     expect(isElroyEligiblePath("/birth-card-calculator")).toBe(true);
   });
 
-  test("excludes checkout, legal, free-course, gate, content-engine", () => {
+  test("excludes checkout, legal, free-course, gate", () => {
     expect(isElroyEligiblePath("/checkout/personal-card-blueprint")).toBe(false);
-    expect(isElroyEligiblePath("/content-engine")).toBe(false);
     expect(isElroyEligiblePath("/privacy-policy")).toBe(false);
     expect(isElroyEligiblePath("/free-course")).toBe(false);
     expect(isElroyEligiblePath("/gate")).toBe(false);

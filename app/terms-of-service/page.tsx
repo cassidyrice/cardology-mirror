@@ -76,21 +76,6 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Past Content Calendar purchases</h2>
-          
-          <p className="mt-3">
-            The Content Calendar experiment is no longer sold. Existing purchases
-            keep their original access period, CSV export, and writing allowance
-            of one suggested post per day with up to two regenerations per day.
-            Refund and support terms remain in the{" "}
-            <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">
-              refund policy
-            </Link>
-            .
-          </p>
-        </section>
-
-        <section>
           <h2 className="font-serif text-2xl text-[#14110d]">Legacy orders</h2>
           <p className="mt-3">
             Phone-reading products are no longer sold. If you bought one before
