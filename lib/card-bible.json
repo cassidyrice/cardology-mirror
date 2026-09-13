@@ -1,10 +1,10 @@
 {
   "A♥": {
     "code": "A♥",
+    "name": "Ace of Hearts",
     "slug": "ace-of-hearts",
-    "label": "Ace of Hearts",
-    "suit": "hearts",
     "rank": "A",
+    "suit": "hearts",
     "title": "The Emotional Pioneer",
     "coreIdentity": "You start real connection on purpose: you say what you feel and leave room for the other person to answer. You're wired to open the door to connection first, to reach for intimacy before anyone else dares. Feeling is your native language, and you lead with your heart. You're the one who says it first, who risks the vulnerable opening move.",
     "gifts": [
@@ -13,7 +13,10 @@
       "Natural warmth and emotional directness",
       "Capacity to start relationships from honesty"
     ],
+    "sweetSpot": "You start real connection on purpose: you say what you feel and leave room for the other person to answer.",
     "shadow": "You reach so hard for connection that the other person has to manage the reach. Intensity arrives before there is a place to put it.",
+    "cost": "Feeling becomes leverage, and people manage your mood instead of meeting you.",
+    "watchFor": "Watch the next conversation where you say the feeling first. Count whether you leave a silence for their answer or fill it yourself.",
     "lifeDirection": "Your curriculum is learning that real intimacy is built, not demanded. You're learning to offer your heart without using it as leverage.",
     "lens": {
       "balanced": "You start real connection on purpose: you say what you feel and leave room for the other person to answer.",
@@ -36,6 +39,55 @@
       "identity confusion",
       "obsession with love"
     ],
+    "famous": [
+      {
+        "name": "Rudyard Kipling",
+        "born": "1865-12-30",
+        "knownFor": "English author, The Jungle Book",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rudyard_Kipling"
+      },
+      {
+        "name": "Sandy Koufax",
+        "born": "1935-12-30",
+        "knownFor": "American baseball pitcher",
+        "wikipedia": "https://en.wikipedia.org/wiki/Sandy_Koufax"
+      },
+      {
+        "name": "Patti Smith",
+        "born": "1946-12-30",
+        "knownFor": "American singer-songwriter and poet",
+        "wikipedia": "https://en.wikipedia.org/wiki/Patti_Smith"
+      },
+      {
+        "name": "Tiger Woods",
+        "born": "1975-12-30",
+        "knownFor": "American golfer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tiger_Woods"
+      },
+      {
+        "name": "LeBron James",
+        "born": "1984-12-30",
+        "knownFor": "American basketball player",
+        "wikipedia": "https://en.wikipedia.org/wiki/LeBron_James"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Queen of Diamonds",
+        "href": "/compatibility/ace-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Eight of Spades",
+        "href": "/compatibility/ace-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Five of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-5-of-hearts"
+      }
+    ],
     "surfaceTruth": "I lead with vulnerability and openness in all my relationships.",
     "analog": {
       "title": "Pure Heart",
@@ -51,10 +103,10 @@
   },
   "2♥": {
     "code": "2♥",
+    "name": "2 of Hearts",
     "slug": "2-of-hearts",
-    "label": "Two of Hearts",
-    "suit": "hearts",
     "rank": "2",
+    "suit": "hearts",
     "title": "The Loving Partner",
     "coreIdentity": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table. You're wired for union—you understand yourself best in relationship to another. You read people, harmonize needs, and create the felt sense of \"us.\" Connection isn't a luxury for you; it's how you locate yourself.",
     "gifts": [
@@ -63,7 +115,10 @@
       "Talent for creating mutual understanding and partnership",
       "Sensitivity to what a relationship actually needs"
     ],
+    "sweetSpot": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table.",
     "shadow": "You disappear into the other person's needs. Harmony is built on a self that is no longer in the room.",
+    "cost": "Other people's moods become your job, you disappear, then you resent the people you were managing.",
+    "watchFor": "Watch for the week you can name their last three moods and not one ask of your own.",
     "lifeDirection": "Your curriculum is learning that you have to exist for a partnership to work. You're learning to stay yourself inside connection rather than dissolving into it.",
     "lens": {
       "balanced": "You keep your needs and theirs in the same conversation, and you let disagreement stay on the table.",
@@ -86,6 +141,55 @@
       "merging boundaries",
       "validation-seeking"
     ],
+    "famous": [
+      {
+        "name": "Andrew Johnson",
+        "born": "1808-12-29",
+        "knownFor": "17th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Andrew_Johnson"
+      },
+      {
+        "name": "Pablo Casals",
+        "born": "1876-12-29",
+        "knownFor": "Catalan cellist and conductor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pablo_Casals"
+      },
+      {
+        "name": "Mary Tyler Moore",
+        "born": "1936-12-29",
+        "knownFor": "American actress and producer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mary_Tyler_Moore"
+      },
+      {
+        "name": "Ted Danson",
+        "born": "1947-12-29",
+        "knownFor": "American actor, Cheers",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ted_Danson"
+      },
+      {
+        "name": "Jude Law",
+        "born": "1972-12-29",
+        "knownFor": "English actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jude_Law"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "King of Diamonds",
+        "href": "/compatibility/2-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Nine of Spades",
+        "href": "/compatibility/2-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Six of Hearts",
+        "href": "/compatibility/2-of-hearts-and-6-of-hearts"
+      }
+    ],
     "surfaceTruth": "I'm just adaptable and attentive to what others need emotionally.",
     "analog": {
       "title": "Emotional Partner",
@@ -101,10 +205,10 @@
   },
   "3♥": {
     "code": "3♥",
+    "name": "3 of Hearts",
     "slug": "3-of-hearts",
-    "label": "Three of Hearts",
-    "suit": "hearts",
     "rank": "3",
+    "suit": "hearts",
     "title": "The Creative Heart",
     "coreIdentity": "You let love have range without using newness as an exit from the one that is already here. You feel in color and express it—your inner life is rich, varied, and creative. You explore connection the way an artist explores a medium, drawn to emotional range and new expression. Love, for you, is a creative act.",
     "gifts": [
@@ -113,7 +217,10 @@
       "Ability to bring vitality and play to relationships",
       "Comfort with emotional complexity and nuance"
     ],
+    "sweetSpot": "You let love have range without using newness as an exit from the one that is already here.",
     "shadow": "You keep a spare door open so no single person can pin you down. Variety protects you from being chosen.",
+    "cost": "You arrive all-in, then find a fatal flaw the moment staying is required.",
+    "watchFor": "Watch the moment a new connection turns ordinary. Notice whether a flaw shows up in your head that same week.",
     "lifeDirection": "Your curriculum is learning that depth requires staying. You're learning that real intimacy is what happens after the novelty wears off.",
     "lens": {
       "balanced": "You let love have range without using newness as an exit from the one that is already here.",
@@ -136,6 +243,55 @@
       "performative affection",
       "indecisiveness"
     ],
+    "famous": [
+      {
+        "name": "Mark Twain",
+        "born": "1835-11-30",
+        "knownFor": "American author and humorist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mark_Twain"
+      },
+      {
+        "name": "Winston Churchill",
+        "born": "1874-11-30",
+        "knownFor": "British prime minister",
+        "wikipedia": "https://en.wikipedia.org/wiki/Winston_Churchill"
+      },
+      {
+        "name": "Stan Lee",
+        "born": "1922-12-28",
+        "knownFor": "Marvel Comics writer and editor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stan_Lee"
+      },
+      {
+        "name": "Denzel Washington",
+        "born": "1954-12-28",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Denzel_Washington"
+      },
+      {
+        "name": "Ben Stiller",
+        "born": "1965-11-30",
+        "knownFor": "American actor and comedian",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Stiller"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Queen of Clubs",
+        "href": "/compatibility/3-of-hearts-and-queen-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "King of Spades",
+        "href": "/compatibility/3-of-hearts-and-king-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ten of Spades",
+        "href": "/compatibility/3-of-hearts-and-10-of-spades"
+      }
+    ],
     "surfaceTruth": "I'm passionate and expressive in relationships, creating excitement and connection.",
     "analog": {
       "title": "Emotional Creator",
@@ -151,10 +307,10 @@
   },
   "4♥": {
     "code": "4♥",
+    "name": "4 of Hearts",
     "slug": "4-of-hearts",
-    "label": "Four of Hearts",
-    "suit": "hearts",
     "rank": "4",
+    "suit": "hearts",
     "title": "The Emotional Foundation Builder",
     "coreIdentity": "You build a home people can count on, and you leave enough air for feeling to move. You build security in love through consistency, reliability, and trust. You're the steady one—the person others can count on to show up the same way tomorrow. You create the stable home base a relationship needs.",
     "gifts": [
@@ -163,7 +319,10 @@
       "Ability to make others feel safe and held",
       "Loyalty and follow-through in love"
     ],
+    "sweetSpot": "You build a home people can count on, and you leave enough air for feeling to move.",
     "shadow": "You keep feeling inside approved roles. The house is stable and nothing unscripted is allowed to live there.",
+    "cost": "You call real emotion messy, shut it down, and keep a house nobody actually lives in.",
+    "watchFor": "Watch for the night someone brings a feeling to the table and you move straight to the fix or the calendar.",
     "lifeDirection": "Your curriculum is learning that a living relationship is unpredictable by nature. You're learning that safety and aliveness aren't opposites.",
     "lens": {
       "balanced": "You build a home people can count on, and you leave enough air for feeling to move.",
@@ -186,6 +345,55 @@
       "fear of change",
       "emotional shutdown"
     ],
+    "famous": [
+      {
+        "name": "Louis Pasteur",
+        "born": "1822-12-27",
+        "knownFor": "French chemist and microbiologist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Louis_Pasteur"
+      },
+      {
+        "name": "Louisa May Alcott",
+        "born": "1832-11-29",
+        "knownFor": "Author of Little Women",
+        "wikipedia": "https://en.wikipedia.org/wiki/Louisa_May_Alcott"
+      },
+      {
+        "name": "C. S. Lewis",
+        "born": "1898-11-29",
+        "knownFor": "Author of The Chronicles of Narnia",
+        "wikipedia": "https://en.wikipedia.org/wiki/C._S._Lewis"
+      },
+      {
+        "name": "Peter Jackson",
+        "born": "1961-10-31",
+        "knownFor": "Director, The Lord of the Rings",
+        "wikipedia": "https://en.wikipedia.org/wiki/Peter_Jackson"
+      },
+      {
+        "name": "Chadwick Boseman",
+        "born": "1976-11-29",
+        "knownFor": "American actor, Black Panther",
+        "wikipedia": "https://en.wikipedia.org/wiki/Chadwick_Boseman"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Two of Spades",
+        "href": "/compatibility/4-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Jack of Diamonds",
+        "href": "/compatibility/4-of-hearts-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Eight of Hearts",
+        "href": "/compatibility/4-of-hearts-and-8-of-hearts"
+      }
+    ],
     "surfaceTruth": "I create stable, reliable emotional foundations in my relationships.",
     "analog": {
       "title": "Emotional Foundation",
@@ -201,10 +409,10 @@
   },
   "5♥": {
     "code": "5♥",
+    "name": "5 of Hearts",
     "slug": "5-of-hearts",
-    "label": "Five of Hearts",
-    "suit": "hearts",
     "rank": "5",
+    "suit": "hearts",
     "title": "The Restless Heart",
     "coreIdentity": "You let love change shape without using motion as a way out of being seen. You're wired for change, movement, and experience—love, for you, is a journey rather than a destination. You bring adaptability and freshness to connection, and you understand that people and feelings transform over time.",
     "gifts": [
@@ -213,7 +421,10 @@
       "Understanding that love deepens through transformation",
       "Openness to growth rather than stasis"
     ],
+    "sweetSpot": "You let love change shape without using motion as a way out of being seen.",
     "shadow": "You leave when a connection starts asking you to stay in one place. Motion looks like aliveness; it can also be how you avoid being known.",
+    "cost": "You call it freedom while refusing to stay long enough for the relationship to cost you anything.",
+    "watchFor": "Watch for the plan you make in the day or two after a conversation that asked you to stay put.",
     "lifeDirection": "Your curriculum is learning that staying is its own kind of adventure. You're learning that love deepens through the change you usually run from.",
     "lens": {
       "balanced": "You let love change shape without using motion as a way out of being seen.",
@@ -236,6 +447,55 @@
       "romantic thrill-seeking",
       "intimacy aversion"
     ],
+    "famous": [
+      {
+        "name": "John Adams",
+        "born": "1735-10-30",
+        "knownFor": "2nd U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Adams"
+      },
+      {
+        "name": "William Blake",
+        "born": "1757-11-28",
+        "knownFor": "English poet and painter",
+        "wikipedia": "https://en.wikipedia.org/wiki/William_Blake"
+      },
+      {
+        "name": "Diego Maradona",
+        "born": "1960-10-30",
+        "knownFor": "Argentine footballer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Diego_Maradona"
+      },
+      {
+        "name": "Jon Stewart",
+        "born": "1962-11-28",
+        "knownFor": "American comedian and TV host",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jon_Stewart"
+      },
+      {
+        "name": "Jared Leto",
+        "born": "1971-12-26",
+        "knownFor": "American actor and musician",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jared_Leto"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Three of Spades",
+        "href": "/compatibility/5-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Queen of Diamonds",
+        "href": "/compatibility/5-of-hearts-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Nine of Hearts",
+        "href": "/compatibility/5-of-hearts-and-9-of-hearts"
+      }
+    ],
     "surfaceTruth": "I need emotional freedom and variety to truly connect with different people.",
     "analog": {
       "title": "Emotional Freedom",
@@ -251,10 +511,10 @@
   },
   "6♥": {
     "code": "6♥",
+    "name": "6 of Hearts",
     "slug": "6-of-hearts",
-    "label": "Six of Hearts",
-    "suit": "hearts",
     "rank": "6",
+    "suit": "hearts",
     "title": "The Devoted Caregiver",
     "coreIdentity": "You care for people without disappearing. You're wired for harmony and devotion—attuned to others' needs and moved to meet them. You create peace and care in your relationships, and people feel tended to in your presence. Love, for you, is something you actively give.",
     "gifts": [
@@ -263,7 +523,10 @@
       "Devotion and willingness to show up for people",
       "Capacity to serve from a full cup, not an empty one"
     ],
+    "sweetSpot": "You care for people without disappearing. Help comes from a full plate, not an empty one.",
     "shadow": "You keep the peace by not saying what you need. The quiet does not stay quiet; it turns into resentment.",
+    "cost": "You play the nice one, swallow conflict, and the people you protect never learn what you wanted.",
+    "watchFor": "Watch for the favor you say yes to while the no is already forming, and who you tell about it later.",
     "lifeDirection": "Your curriculum is learning that you are allowed needs and conflict. You're learning to care for others without abandoning yourself.",
     "lens": {
       "balanced": "You care for people without disappearing. Help comes from a full plate, not an empty one.",
@@ -286,6 +549,55 @@
       "emotional guilt",
       "over-responsibility"
     ],
+    "famous": [
+      {
+        "name": "Humphrey Bogart",
+        "born": "1899-12-25",
+        "knownFor": "American film actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Humphrey_Bogart"
+      },
+      {
+        "name": "Bruce Lee",
+        "born": "1940-11-27",
+        "knownFor": "Martial artist and actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Lee"
+      },
+      {
+        "name": "Jimi Hendrix",
+        "born": "1942-11-27",
+        "knownFor": "American rock guitarist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jimi_Hendrix"
+      },
+      {
+        "name": "Annie Lennox",
+        "born": "1954-12-25",
+        "knownFor": "Scottish singer, Eurythmics",
+        "wikipedia": "https://en.wikipedia.org/wiki/Annie_Lennox"
+      },
+      {
+        "name": "Winona Ryder",
+        "born": "1971-10-29",
+        "knownFor": "American actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Winona_Ryder"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Two of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-2-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "King of Diamonds",
+        "href": "/compatibility/6-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Jack of Spades",
+        "href": "/compatibility/6-of-hearts-and-jack-of-spades"
+      }
+    ],
     "surfaceTruth": "I create harmony by being the emotional glue in relationships and groups.",
     "analog": {
       "title": "Emotional Caretaker",
@@ -301,10 +613,10 @@
   },
   "7♥": {
     "code": "7♥",
+    "name": "7 of Hearts",
     "slug": "7-of-hearts",
-    "label": "Seven of Hearts",
-    "suit": "hearts",
     "rank": "7",
+    "suit": "hearts",
     "title": "The Reflective Heart",
     "coreIdentity": "You look at love clearly without using analysis as a way not to feel it. You're wired to look beneath the surface of feeling, to seek the truth under the romance. You bring reflection and wisdom to love, asking what's real rather than what's merely pleasant. You can see emotional patterns others miss.",
     "gifts": [
@@ -313,7 +625,10 @@
       "Emotional reflection and self-awareness",
       "Seeking what's true over what's comfortable"
     ],
+    "sweetSpot": "You look at love clearly without using analysis as a way not to feel it.",
     "shadow": "You understand the feeling instead of having it. Insight keeps you at a safe distance from the thing you are describing.",
+    "cost": "You stay in your head, call it honesty, and the body of the relationship never gets a vote.",
+    "watchFor": "Watch for the conversation you explain instead of answer. Notice whether your body was in the room at all.",
     "lifeDirection": "Your curriculum is learning that you can't think your way to closeness. You're learning to feel something in real time instead of analyzing it from the bleachers.",
     "lens": {
       "balanced": "You look at love clearly without using analysis as a way not to feel it.",
@@ -336,6 +651,55 @@
       "unhealed childhood wounds",
       "vulnerability fear"
     ],
+    "famous": [
+      {
+        "name": "Charles M. Schulz",
+        "born": "1922-11-26",
+        "knownFor": "Creator of Peanuts",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charles_M._Schulz"
+      },
+      {
+        "name": "Truman Capote",
+        "born": "1924-09-30",
+        "knownFor": "Author of In Cold Blood",
+        "wikipedia": "https://en.wikipedia.org/wiki/Truman_Capote"
+      },
+      {
+        "name": "Tina Turner",
+        "born": "1939-11-26",
+        "knownFor": "Singer, Queen of Rock 'n' Roll",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tina_Turner"
+      },
+      {
+        "name": "Bill Gates",
+        "born": "1955-10-28",
+        "knownFor": "Microsoft co-founder",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bill_Gates"
+      },
+      {
+        "name": "Julia Roberts",
+        "born": "1967-10-28",
+        "knownFor": "American actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Julia_Roberts"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Five of Spades",
+        "href": "/compatibility/7-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ace of Spades",
+        "href": "/compatibility/7-of-hearts-and-ace-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Jack of Hearts",
+        "href": "/compatibility/7-of-hearts-and-jack-of-hearts"
+      }
+    ],
     "surfaceTruth": "I'm selective about my emotional investments because I value depth and quality.",
     "analog": {
       "title": "Emotional Seeker",
@@ -351,10 +715,10 @@
   },
   "8♥": {
     "code": "8♥",
+    "name": "8 of Hearts",
     "slug": "8-of-hearts",
-    "label": "Eight of Hearts",
-    "suit": "hearts",
     "rank": "8",
+    "suit": "hearts",
     "title": "The Emotional Powerhouse",
     "coreIdentity": "You hold the emotional room without taking it over. You carry real power in the realm of feeling—charisma, presence, and the ability to move people emotionally. When you lead with confident compassion, you can hold and steady the emotional weather of a whole room or relationship.",
     "gifts": [
@@ -363,7 +727,10 @@
       "Leading with confident compassion",
       "Ability to steady and reassure others"
     ],
+    "sweetSpot": "You hold the emotional room without taking it over. People know where they stand.",
     "shadow": "You would rather run the emotional room than be moved by it. Control stands in for the risk of being affected.",
+    "cost": "You decide how other people are allowed to feel, and strength turns into possession.",
+    "watchFor": "Watch for the moment you decide how someone is allowed to feel about something you did.",
     "lifeDirection": "Your curriculum is learning that real emotional power includes being vulnerable. You're learning that you can be strong and moved at the same time.",
     "lens": {
       "balanced": "You hold the emotional room without taking it over. People know where they stand.",
@@ -386,6 +753,55 @@
       "intimacy control",
       "ego in love"
     ],
+    "famous": [
+      {
+        "name": "Theodore Roosevelt",
+        "born": "1858-10-27",
+        "knownFor": "26th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Theodore_Roosevelt"
+      },
+      {
+        "name": "Maria Montessori",
+        "born": "1870-08-31",
+        "knownFor": "Italian physician and educator",
+        "wikipedia": "https://en.wikipedia.org/wiki/Maria_Montessori"
+      },
+      {
+        "name": "Joe DiMaggio",
+        "born": "1914-11-25",
+        "knownFor": "New York Yankees center fielder",
+        "wikipedia": "https://en.wikipedia.org/wiki/Joe_DiMaggio"
+      },
+      {
+        "name": "John Cleese",
+        "born": "1939-10-27",
+        "knownFor": "English comedian, Monty Python",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Cleese"
+      },
+      {
+        "name": "Richard Gere",
+        "born": "1949-08-31",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Richard_Gere"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Six of Spades",
+        "href": "/compatibility/8-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Two of Spades",
+        "href": "/compatibility/8-of-hearts-and-2-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Queen of Hearts",
+        "href": "/compatibility/8-of-hearts-and-queen-of-hearts"
+      }
+    ],
     "surfaceTruth": "I seek transformative emotional connections that catalyze growth and healing.",
     "analog": {
       "title": "Emotional Power",
@@ -401,10 +817,10 @@
   },
   "9♥": {
     "code": "9♥",
+    "name": "9 of Hearts",
     "slug": "9-of-hearts",
-    "label": "Nine of Hearts",
-    "suit": "hearts",
     "rank": "9",
+    "suit": "hearts",
     "title": "The Compassionate Idealist",
     "coreIdentity": "You stay kind without picking up what is not yours. You're wired for a love that extends beyond the personal—compassion for people, causes, and the world. You feel others' pain as your own and are moved to ease it. At your best, you carry deep wisdom about what to hold and what to release.",
     "gifts": [
@@ -413,7 +829,10 @@
       "Knowing what is yours to carry and what to release",
       "Emotional generosity toward people and causes"
     ],
+    "sweetSpot": "You stay kind without picking up what is not yours.",
     "shadow": "You carry what is not yours and call it love. The helping is real; so is the refusal to put your own piece down.",
+    "cost": "You save people, skip yourself, and burnout wears the costume of care.",
+    "watchFor": "Watch for the week your calendar holds three people's hard things and none of your own.",
     "lifeDirection": "Your curriculum is learning that you are not exempt from the care you give. You're learning to release what was never yours to carry.",
     "lens": {
       "balanced": "You stay kind without picking up what is not yours.",
@@ -436,6 +855,55 @@
       "emotional burnout",
       "disappointment loops"
     ],
+    "famous": [
+      {
+        "name": "Zachary Taylor",
+        "born": "1784-11-24",
+        "knownFor": "12th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Zachary_Taylor"
+      },
+      {
+        "name": "Mary Shelley",
+        "born": "1797-08-30",
+        "knownFor": "Author of Frankenstein",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mary_Shelley"
+      },
+      {
+        "name": "Warren Buffett",
+        "born": "1930-08-30",
+        "knownFor": "American investor, Berkshire Hathaway",
+        "wikipedia": "https://en.wikipedia.org/wiki/Warren_Buffett"
+      },
+      {
+        "name": "Brigitte Bardot",
+        "born": "1934-09-28",
+        "knownFor": "French actress and model",
+        "wikipedia": "https://en.wikipedia.org/wiki/Brigitte_Bardot"
+      },
+      {
+        "name": "Hillary Clinton",
+        "born": "1947-10-26",
+        "knownFor": "U.S. secretary of state and senator",
+        "wikipedia": "https://en.wikipedia.org/wiki/Hillary_Clinton"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Five of Diamonds",
+        "href": "/compatibility/9-of-hearts-and-5-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Three of Spades",
+        "href": "/compatibility/9-of-hearts-and-3-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Queen of Spades",
+        "href": "/compatibility/9-of-hearts-and-queen-of-spades"
+      }
+    ],
     "surfaceTruth": "I find fulfillment in giving emotional support and nurturing others.",
     "analog": {
       "title": "Universal Love",
@@ -451,10 +919,10 @@
   },
   "10♥": {
     "code": "10♥",
+    "name": "10 of Hearts",
     "slug": "10-of-hearts",
-    "label": "Ten of Hearts",
-    "suit": "hearts",
     "rank": "10",
+    "suit": "hearts",
     "title": "The Community Heart",
     "coreIdentity": "You make room for a lot of people and still keep a self inside the room. Your heart works at scale—you create belonging for families, groups, and communities, not just individuals. You're the one who makes everyone feel included, the emotional center of gravity in a room. Love, for you, is something you build collectively.",
     "gifts": [
@@ -463,7 +931,10 @@
       "Holding many relationships with genuine presence",
       "Making others feel part of something"
     ],
+    "sweetSpot": "You make room for a lot of people and still keep a self inside the room.",
     "shadow": "You hold the group's feeling until you cannot feel your own. Being needed by many starts to stand in for being met.",
+    "cost": "Everyone's mood becomes your job, and care turns into quiet obligation.",
+    "watchFor": "Watch for the group text where you read everyone's temperature before you say what you want.",
     "lifeDirection": "Your curriculum is learning that you can belong without being responsible for everyone. You're learning to be present to the group without disappearing into its needs.",
     "lens": {
       "balanced": "You make room for a lot of people and still keep a self inside the room.",
@@ -486,6 +957,55 @@
       "resistance to endings",
       "obligation guilt"
     ],
+    "famous": [
+      {
+        "name": "Pablo Picasso",
+        "born": "1881-10-25",
+        "knownFor": "Spanish painter and sculptor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pablo_Picasso"
+      },
+      {
+        "name": "Ingrid Bergman",
+        "born": "1915-08-29",
+        "knownFor": "Swedish actress, Casablanca",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ingrid_Bergman"
+      },
+      {
+        "name": "Samuel L. Jackson",
+        "born": "1948-12-21",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Samuel_L._Jackson"
+      },
+      {
+        "name": "Michael Jackson",
+        "born": "1958-08-29",
+        "knownFor": "American singer, King of Pop",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Jackson"
+      },
+      {
+        "name": "J. K. Rowling",
+        "born": "1965-07-31",
+        "knownFor": "Author of Harry Potter",
+        "wikipedia": "https://en.wikipedia.org/wiki/J._K._Rowling"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Eight of Spades",
+        "href": "/compatibility/10-of-hearts-and-8-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Four of Spades",
+        "href": "/compatibility/10-of-hearts-and-4-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-10-of-hearts"
+      }
+    ],
     "surfaceTruth": "I create deep bonds through emotional inclusion and group connection.",
     "analog": {
       "title": "Emotional Completion",
@@ -501,10 +1021,10 @@
   },
   "J♥": {
     "code": "J♥",
+    "name": "Jack of Hearts",
     "slug": "jack-of-hearts",
-    "label": "Jack of Hearts",
-    "suit": "hearts",
     "rank": "J",
+    "suit": "hearts",
     "title": "The Romantic Messenger",
     "coreIdentity": "You bring a fresh read on love without leaving the room when it gets ordinary. You bring fresh perspective, inspiration, and youthful possibility to love. You see what a relationship could become and carry the spark that reawakens feeling. At your best, you innovate connection with genuine authenticity.",
     "gifts": [
@@ -513,7 +1033,10 @@
       "Innovating how relationships can work",
       "Reawakening feeling and possibility in others"
     ],
+    "sweetSpot": "You bring a fresh read on love without leaving the room when it gets ordinary.",
     "shadow": "You fall for the story of the person. The fantasy is safer than the slow work of knowing who is actually here.",
+    "cost": "The narrative outruns the relationship and collapses the first time reality asks for depth.",
+    "watchFor": "Watch for the story you tell about a person before you have spent one ordinary Tuesday with them.",
     "lifeDirection": "Your curriculum is learning that real people are better than your fantasies of them. You're learning to grow up into love instead of dreaming about it.",
     "lens": {
       "balanced": "You bring a fresh read on love without leaving the room when it gets ordinary.",
@@ -536,6 +1059,55 @@
       "fantasy projection",
       "unrealistic expectations"
     ],
+    "famous": [
+      {
+        "name": "Emily Brontë",
+        "born": "1818-07-30",
+        "knownFor": "Author of Wuthering Heights",
+        "wikipedia": "https://en.wikipedia.org/wiki/Emily_Bront%C3%AB"
+      },
+      {
+        "name": "Henry Ford",
+        "born": "1863-07-30",
+        "knownFor": "Founder of Ford Motor Company",
+        "wikipedia": "https://en.wikipedia.org/wiki/Henry_Ford"
+      },
+      {
+        "name": "Arnold Schwarzenegger",
+        "born": "1947-07-30",
+        "knownFor": "Actor, bodybuilder, California governor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Arnold_Schwarzenegger"
+      },
+      {
+        "name": "Serena Williams",
+        "born": "1981-09-26",
+        "knownFor": "American tennis champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Serena_Williams"
+      },
+      {
+        "name": "Scarlett Johansson",
+        "born": "1984-11-22",
+        "knownFor": "American actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Scarlett_Johansson"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Nine of Spades",
+        "href": "/compatibility/jack-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Five of Spades",
+        "href": "/compatibility/jack-of-hearts-and-5-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-jack-of-hearts"
+      }
+    ],
     "surfaceTruth": "I follow my heart's authentic desires in relationships without limiting conventions.",
     "analog": {
       "title": "Emotional Messenger",
@@ -551,10 +1123,10 @@
   },
   "Q♥": {
     "code": "Q♥",
+    "name": "Queen of Hearts",
     "slug": "queen-of-hearts",
-    "label": "Queen of Hearts",
-    "suit": "hearts",
     "rank": "Q",
+    "suit": "hearts",
     "title": "The Devoted Nurturer",
     "coreIdentity": "You take care of people from presence, not from scanning for what they might need next. You're wired to care with depth and intuition—you read what people feel before they say it and you tend to it. You embody emotional wisdom, offering others a felt sense of being truly seen and held. Nurturing is your mastery.",
     "gifts": [
@@ -563,7 +1135,10 @@
       "Embodied emotional wisdom",
       "Making others feel genuinely seen and held"
     ],
+    "sweetSpot": "You take care of people from presence, not from scanning for what they might need next.",
     "shadow": "You read everyone else first. Care becomes so complete that the other person feels held and owned.",
+    "cost": "Care becomes control, and love starts to look like a debt they did not agree to.",
+    "watchFor": "Watch for the help you give that nobody asked for, and what you want back within the week.",
     "lifeDirection": "Your curriculum is learning that your needs matter as much as everyone else's. You're learning to nurture without controlling, to give care that has no strings.",
     "lens": {
       "balanced": "You take care of people from presence, not from scanning for what they might need next.",
@@ -586,6 +1161,55 @@
       "guilt-tripping",
       "self-sacrifice for love"
     ],
+    "famous": [
+      {
+        "name": "Lyndon B. Johnson",
+        "born": "1908-08-27",
+        "knownFor": "36th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Lyndon_B._Johnson"
+      },
+      {
+        "name": "Édith Piaf",
+        "born": "1915-12-19",
+        "knownFor": "French singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/%C3%89dith_Piaf"
+      },
+      {
+        "name": "Pelé",
+        "born": "1940-10-23",
+        "knownFor": "Brazilian football legend",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pel%C3%A9"
+      },
+      {
+        "name": "Michael Douglas",
+        "born": "1944-09-25",
+        "knownFor": "American actor and producer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Douglas"
+      },
+      {
+        "name": "Björk",
+        "born": "1965-11-21",
+        "knownFor": "Icelandic singer-songwriter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bj%C3%B6rk"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Eight of Diamonds",
+        "href": "/compatibility/queen-of-hearts-and-8-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Six of Spades",
+        "href": "/compatibility/queen-of-hearts-and-6-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "King of Spades",
+        "href": "/compatibility/queen-of-hearts-and-king-of-spades"
+      }
+    ],
     "surfaceTruth": "I intuitively understand emotional undercurrents and respond with natural compassion.",
     "analog": {
       "title": "Emotional Nurturer",
@@ -601,10 +1225,10 @@
   },
   "K♥": {
     "code": "K♥",
+    "name": "King of Hearts",
     "slug": "king-of-hearts",
-    "label": "King of Hearts",
-    "suit": "hearts",
     "rank": "K",
+    "suit": "hearts",
     "title": "The Compassionate King",
     "coreIdentity": "You hold emotional authority without hiding behind it. You carry authority in the realm of feeling—the maturity and depth to lead others emotionally and hold space with real strength. At your best, you command emotional situations with both power and authentic care, the steady presence people anchor to.",
     "gifts": [
@@ -613,7 +1237,10 @@
       "Mature, grounded emotional presence",
       "Holding space with both strength and compassion"
     ],
+    "sweetSpot": "You hold emotional authority without hiding behind it.",
     "shadow": "You lead the feeling from a distance you will not cross. People can lean on the authority and cannot reach you.",
+    "cost": "You decide the feeling climate, people comply, and they stop telling you the truth.",
+    "watchFor": "Watch for the dinner or meeting where everyone agrees with you fast. Notice what nobody said.",
     "lifeDirection": "Your curriculum is learning that true emotional authority requires being reachable. You're learning to lead with your heart open, not armored.",
     "lens": {
       "balanced": "You hold emotional authority without hiding behind it.",
@@ -636,6 +1263,55 @@
       "emotional detachment",
       "hidden insecurity"
     ],
+    "famous": [
+      {
+        "name": "F. Scott Fitzgerald",
+        "born": "1896-09-24",
+        "knownFor": "Author of The Great Gatsby",
+        "wikipedia": "https://en.wikipedia.org/wiki/F._Scott_Fitzgerald"
+      },
+      {
+        "name": "Mother Teresa",
+        "born": "1910-08-26",
+        "knownFor": "Catholic nun and missionary",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mother_Teresa"
+      },
+      {
+        "name": "Jim Henson",
+        "born": "1936-09-24",
+        "knownFor": "Creator of the Muppets",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jim_Henson"
+      },
+      {
+        "name": "Joe Biden",
+        "born": "1942-11-20",
+        "knownFor": "46th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Joe_Biden"
+      },
+      {
+        "name": "Steven Spielberg",
+        "born": "1946-12-18",
+        "knownFor": "American film director",
+        "wikipedia": "https://en.wikipedia.org/wiki/Steven_Spielberg"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Moon",
+        "name": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-king-of-hearts"
+      },
+      {
+        "pos": "Mars",
+        "name": "Four of Clubs",
+        "href": "/compatibility/king-of-hearts-and-4-of-clubs"
+      }
+    ],
     "surfaceTruth": "I provide emotional leadership that helps others process and understand their feelings.",
     "analog": {
       "title": "Emotional Authority",
@@ -651,10 +1327,10 @@
   },
   "A♣": {
     "code": "A♣",
+    "name": "Ace of Clubs",
     "slug": "ace-of-clubs",
-    "label": "Ace of Clubs",
-    "suit": "clubs",
     "rank": "A",
+    "suit": "clubs",
     "title": "The Creative Pioneer",
     "coreIdentity": "You start the new thought while it is still usable. Ideas come through you first. You're the one who thinks of the new thing, the new way, the new possibility. Your mind is restless, always generating.",
     "gifts": [
@@ -663,7 +1339,10 @@
       "Natural curiosity and investigation",
       "Intellectual courage to explore new territory"
     ],
+    "sweetSpot": "You start a new idea while it is still usable, and you let it meet the world unfinished.",
     "shadow": "You treat starting as finishing. Ideas get abandoned when they get hard, so the room sees possibility and not delivery.",
+    "cost": "You are sure you are right before anyone else has spoken, and the new thought is already a closed case.",
+    "watchFor": "Watch for the idea you defend in the first ten minutes of hearing yourself say it.",
     "lifeDirection": "Your curriculum is learning that ideas only matter if you execute them. You're learning to pick one and see it through.",
     "lens": {
       "balanced": "You start a new idea while it is still usable, and you let it meet the world unfinished.",
@@ -686,6 +1365,55 @@
       "obsessive curiosity",
       "identity through intellect"
     ],
+    "famous": [
+      {
+        "name": "Alfred Nobel",
+        "born": "1833-10-21",
+        "knownFor": "Inventor of dynamite, Nobel Prize founder",
+        "wikipedia": "https://en.wikipedia.org/wiki/Alfred_Nobel"
+      },
+      {
+        "name": "Clint Eastwood",
+        "born": "1930-05-31",
+        "knownFor": "American actor and director",
+        "wikipedia": "https://en.wikipedia.org/wiki/Clint_Eastwood"
+      },
+      {
+        "name": "Sean Connery",
+        "born": "1930-08-25",
+        "knownFor": "Scottish actor, James Bond",
+        "wikipedia": "https://en.wikipedia.org/wiki/Sean_Connery"
+      },
+      {
+        "name": "Ray Charles",
+        "born": "1930-09-23",
+        "knownFor": "American soul musician",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ray_Charles"
+      },
+      {
+        "name": "Bruce Springsteen",
+        "born": "1949-09-23",
+        "knownFor": "American rock singer-songwriter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Springsteen"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ten of Spades",
+        "href": "/compatibility/ace-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-ace-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Five of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-5-of-clubs"
+      }
+    ],
     "surfaceTruth": "I channel pure creative energy and spiritual inspiration in its most authentic form.",
     "analog": {
       "title": "Pioneer of Action",
@@ -701,10 +1429,10 @@
   },
   "2♣": {
     "code": "2♣",
+    "name": "2 of Clubs",
     "slug": "2-of-clubs",
-    "label": "Two of Clubs",
-    "suit": "clubs",
     "rank": "2",
+    "suit": "clubs",
     "title": "The Collaborative Builder",
     "coreIdentity": "You think best with someone else in the room, and you still leave with a position of your own. You think best with others. Ideas solidify when you talk them through. You're the debater, the collaborator, the one who makes partnerships work through communication.",
     "gifts": [
@@ -713,7 +1441,10 @@
       "Ability to synthesize different perspectives",
       "Talent for collaborative problem-solving"
     ],
+    "sweetSpot": "You think with someone else and still leave the conversation with a position of your own.",
     "shadow": "You disappear into the other person's thinking. Partnership starts to mean you no longer know which opinion was yours.",
+    "cost": "You need to win, and the other mind becomes an opponent.",
+    "watchFor": "Watch for the conversation where you want the last word more than the better answer.",
     "lifeDirection": "Your curriculum is learning that true collaboration requires two distinct thinkers, not one chameleon. You're learning to have your own perspective and keep it.",
     "lens": {
       "balanced": "You think with someone else and still leave the conversation with a position of your own.",
@@ -736,6 +1467,55 @@
       "mental dependency",
       "fear of taking a stand"
     ],
+    "famous": [
+      {
+        "name": "Jane Austen",
+        "born": "1775-12-16",
+        "knownFor": "Author of Pride and Prejudice",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jane_Austen"
+      },
+      {
+        "name": "Carl Jung",
+        "born": "1875-07-26",
+        "knownFor": "Swiss psychiatrist, analytical psychology",
+        "wikipedia": "https://en.wikipedia.org/wiki/Carl_Jung"
+      },
+      {
+        "name": "Mick Jagger",
+        "born": "1943-07-26",
+        "knownFor": "Rolling Stones lead singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mick_Jagger"
+      },
+      {
+        "name": "Tom Petty",
+        "born": "1950-10-20",
+        "knownFor": "American rock musician",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Petty"
+      },
+      {
+        "name": "Stephen Fry",
+        "born": "1957-08-24",
+        "knownFor": "English actor and writer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Fry"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Jack of Diamonds",
+        "href": "/compatibility/2-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Seven of Spades",
+        "href": "/compatibility/2-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-2-of-clubs"
+      }
+    ],
     "surfaceTruth": "I thoughtfully explore various creative and spiritual paths before choosing my direction.",
     "analog": {
       "title": "Cooperative Worker",
@@ -751,10 +1531,10 @@
   },
   "3♣": {
     "code": "3♣",
+    "name": "3 of Clubs",
     "slug": "3-of-clubs",
-    "label": "Three of Clubs",
-    "suit": "clubs",
     "rank": "3",
+    "suit": "clubs",
     "title": "The Creative Communicator",
     "coreIdentity": "You make a hard idea easy to say without stripping what it means. Complex ideas become clear through your expression. You have the gift of making difficult concepts accessible. Your creativity makes thinking feel alive.",
     "gifts": [
@@ -763,7 +1543,10 @@
       "Natural teaching and explaining ability",
       "Talent for making ideas exciting"
     ],
+    "sweetSpot": "You move an idea across more than one channel without abandoning the one that needs depth.",
     "shadow": "You talk the idea further than you build it. Clarity without depth leaves people informed and unconvinced.",
+    "cost": "You scatter attention and call it range, and nothing sits still long enough to get good.",
+    "watchFor": "Watch for the week you start three things and finish the shallow one.",
     "lifeDirection": "Your curriculum is learning that real mastery requires depth, not just clarity. You're learning to develop one idea fully instead of communicating many partially.",
     "lens": {
       "balanced": "You move an idea across more than one channel without abandoning the one that needs depth.",
@@ -786,6 +1569,55 @@
       "talk without depth",
       "insecurity in ideas"
     ],
+    "famous": [
+      {
+        "name": "Helen Keller",
+        "born": "1880-06-27",
+        "knownFor": "Deafblind author and activist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Helen_Keller"
+      },
+      {
+        "name": "John F. Kennedy",
+        "born": "1917-05-29",
+        "knownFor": "35th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_F._Kennedy"
+      },
+      {
+        "name": "Martin Scorsese",
+        "born": "1942-11-17",
+        "knownFor": "American film director",
+        "wikipedia": "https://en.wikipedia.org/wiki/Martin_Scorsese"
+      },
+      {
+        "name": "Stephen King",
+        "born": "1947-09-21",
+        "knownFor": "American horror novelist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stephen_King"
+      },
+      {
+        "name": "Bill Murray",
+        "born": "1950-09-21",
+        "knownFor": "American actor and comedian",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bill_Murray"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-3-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Seven of Clubs",
+        "href": "/compatibility/3-of-clubs-and-7-of-clubs"
+      }
+    ],
     "surfaceTruth": "I express myself through multiple creative channels and spiritual modalities.",
     "analog": {
       "title": "Creative Expresser",
@@ -801,10 +1633,10 @@
   },
   "4♣": {
     "code": "4♣",
+    "name": "4 of Clubs",
     "slug": "4-of-clubs",
-    "label": "Four of Clubs",
-    "suit": "clubs",
     "rank": "4",
+    "suit": "clubs",
     "title": "The Systematic Builder",
     "coreIdentity": "You put thinking into an order other people can actually use. You organize thoughts into systems. You build frameworks, structures, and processes. Your mind naturally creates order from chaos.",
     "gifts": [
@@ -813,7 +1645,10 @@
       "Clear thinking and logical progression",
       "Ability to build something that lasts"
     ],
+    "sweetSpot": "You put knowledge into an order other people can actually use.",
     "shadow": "You defend the system after it stops fitting. Structure becomes a reason not to revise.",
+    "cost": "You defend the system after it stops fitting, and being right outranks being current.",
+    "watchFor": "Watch for the system you defend after someone shows you a newer number.",
     "lifeDirection": "Your curriculum is learning that good structures flex. You're learning to hold your systems lightly, to revise when needed.",
     "lens": {
       "balanced": "You put knowledge into an order other people can actually use.",
@@ -836,6 +1671,55 @@
       "fear of new perspectives",
       "overanalysis"
     ],
+    "famous": [
+      {
+        "name": "Amelia Earhart",
+        "born": "1897-07-24",
+        "knownFor": "Pioneering aviator",
+        "wikipedia": "https://en.wikipedia.org/wiki/Amelia_Earhart"
+      },
+      {
+        "name": "Ian Fleming",
+        "born": "1908-05-28",
+        "knownFor": "Creator of James Bond",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ian_Fleming"
+      },
+      {
+        "name": "Chuck Berry",
+        "born": "1926-10-18",
+        "knownFor": "Rock and roll pioneer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Chuck_Berry"
+      },
+      {
+        "name": "Jennifer Lopez",
+        "born": "1969-07-24",
+        "knownFor": "American singer and actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jennifer_Lopez"
+      },
+      {
+        "name": "Derek Jeter",
+        "born": "1974-06-26",
+        "knownFor": "New York Yankees shortstop",
+        "wikipedia": "https://en.wikipedia.org/wiki/Derek_Jeter"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Jack of Spades",
+        "href": "/compatibility/4-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Six of Hearts",
+        "href": "/compatibility/6-of-hearts-and-4-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Eight of Clubs",
+        "href": "/compatibility/4-of-clubs-and-8-of-clubs"
+      }
+    ],
     "surfaceTruth": "I develop disciplined creative and spiritual practices that produce consistent results.",
     "analog": {
       "title": "System Builder",
@@ -851,10 +1735,10 @@
   },
   "5♣": {
     "code": "5♣",
+    "name": "5 of Clubs",
     "slug": "5-of-clubs",
-    "label": "Five of Clubs",
-    "suit": "clubs",
     "rank": "5",
+    "suit": "clubs",
     "title": "The Dynamic Innovator",
     "coreIdentity": "You pressure-test a stale idea in public and let the better one win. Your mind craves novelty, variety, and freedom. You get bored easily and need constant stimulation. You're the one who disrupts stale thinking.",
     "gifts": [
@@ -863,7 +1747,10 @@
       "Natural rebellion against outdated ideas",
       "Refreshing honesty and directness"
     ],
+    "sweetSpot": "You pressure-test an idea in public and let the better one win.",
     "shadow": "You change the subject and call it growth. Nothing sits still long enough for anyone to rely on you.",
+    "cost": "You argue to prove you are sharper, and conflict becomes the point.",
+    "watchFor": "Watch for the argument you keep alive after the decision is already made.",
     "lifeDirection": "Your curriculum is learning that mastery requires staying with one idea long enough to understand it deeply. You're learning commitment over freedom.",
     "lens": {
       "balanced": "You pressure-test an idea in public and let the better one win.",
@@ -886,6 +1773,55 @@
       "restlessness",
       "resistance to structure"
     ],
+    "famous": [
+      {
+        "name": "René Descartes",
+        "born": "1596-03-31",
+        "knownFor": "French philosopher and mathematician",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes"
+      },
+      {
+        "name": "George Orwell",
+        "born": "1903-06-25",
+        "knownFor": "Author of 1984 and Animal Farm",
+        "wikipedia": "https://en.wikipedia.org/wiki/George_Orwell"
+      },
+      {
+        "name": "Willie Nelson",
+        "born": "1933-04-29",
+        "knownFor": "American country music singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Willie_Nelson"
+      },
+      {
+        "name": "Jerry Seinfeld",
+        "born": "1954-04-29",
+        "knownFor": "American comedian, Seinfeld",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jerry_Seinfeld"
+      },
+      {
+        "name": "Usain Bolt",
+        "born": "1986-08-21",
+        "knownFor": "Jamaican sprinter, Olympic champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Usain_Bolt"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ace of Spades",
+        "href": "/compatibility/5-of-clubs-and-ace-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ten of Spades",
+        "href": "/compatibility/5-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-5-of-clubs"
+      }
+    ],
     "surfaceTruth": "I explore diverse creative and spiritual territories to expand my consciousness.",
     "analog": {
       "title": "The Disruptor",
@@ -901,10 +1837,10 @@
   },
   "6♣": {
     "code": "6♣",
+    "name": "6 of Clubs",
     "slug": "6-of-clubs",
-    "label": "Six of Clubs",
-    "suit": "clubs",
     "rank": "6",
+    "suit": "clubs",
     "title": "The Nurturing Creator",
     "coreIdentity": "You pass on what you know without disappearing behind the lesson. You have knowledge and a natural urge to share it. You think best when you're helping someone else understand. Your mind is oriented toward wisdom.",
     "gifts": [
@@ -913,7 +1849,10 @@
       "Wisdom and thoughtful guidance",
       "Ability to balance thinking with caring"
     ],
+    "sweetSpot": "You pass on what you know without disappearing behind the lesson.",
     "shadow": "You stay in the teacher seat after you have stopped learning. Guidance turns into a script other people are supposed to follow.",
+    "cost": "You need to be the one who knows, and other people get cast as students whether they asked or not.",
+    "watchFor": "Watch for the moment you explain something to someone who did not ask.",
     "lifeDirection": "Your curriculum is learning that wisdom includes not knowing. You're learning to be a student again, to grow alongside the people you teach.",
     "lens": {
       "balanced": "You pass on what you know without disappearing behind the lesson.",
@@ -936,6 +1875,55 @@
       "burdened communication",
       "over-responsibility"
     ],
+    "famous": [
+      {
+        "name": "Vincent van Gogh",
+        "born": "1853-03-30",
+        "knownFor": "Dutch post-impressionist painter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Vincent_van_Gogh"
+      },
+      {
+        "name": "Oscar Wilde",
+        "born": "1854-10-16",
+        "knownFor": "Irish playwright and poet",
+        "wikipedia": "https://en.wikipedia.org/wiki/Oscar_Wilde"
+      },
+      {
+        "name": "John Wayne",
+        "born": "1907-05-26",
+        "knownFor": "American Western film actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Wayne"
+      },
+      {
+        "name": "Frank Sinatra",
+        "born": "1915-12-12",
+        "knownFor": "American singer and actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Frank_Sinatra"
+      },
+      {
+        "name": "Celine Dion",
+        "born": "1968-03-30",
+        "knownFor": "Canadian singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Celine_Dion"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-6-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ten of Clubs",
+        "href": "/compatibility/6-of-clubs-and-10-of-clubs"
+      }
+    ],
     "surfaceTruth": "I create harmonious expressions that integrate beauty and spiritual meaning.",
     "analog": {
       "title": "Responsible Server",
@@ -951,10 +1939,10 @@
   },
   "7♣": {
     "code": "7♣",
+    "name": "7 of Clubs",
     "slug": "7-of-clubs",
-    "label": "Seven of Clubs",
-    "suit": "clubs",
     "rank": "7",
+    "suit": "clubs",
     "title": "The Analytical Creator",
     "coreIdentity": "You take a claim apart until the usable piece is left, then you use it. Your mind is sharp, questioning, skeptical. You see through illusions and can identify patterns others miss. You're the critical thinker.",
     "gifts": [
@@ -963,7 +1951,10 @@
       "Critical thinking and intellectual honesty",
       "Natural skepticism that prevents self-deception"
     ],
+    "sweetSpot": "You take a claim apart until the usable piece is left, then you use it.",
     "shadow": "You can name every flaw in a plan, so the plan never leaves the table. Analysis does the job of a decision.",
+    "cost": "You complicate the problem past the point of action, and complexity protects you from shipping.",
+    "watchFor": "Watch for the project you research for a third week instead of shipping the rough version.",
     "lifeDirection": "Your curriculum is learning that perfect thinking doesn't exist. You're learning to act despite uncertainty, to trust process over perfect analysis.",
     "lens": {
       "balanced": "You take a claim apart until the usable piece is left, then you use it.",
@@ -986,6 +1977,55 @@
       "skeptical rigidity",
       "spiritual disconnection"
     ],
+    "famous": [
+      {
+        "name": "Ulysses S. Grant",
+        "born": "1822-04-27",
+        "knownFor": "18th U.S. president, Civil War general",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ulysses_S._Grant"
+      },
+      {
+        "name": "Coco Chanel",
+        "born": "1883-08-19",
+        "knownFor": "French fashion designer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Coco_Chanel"
+      },
+      {
+        "name": "Ernest Hemingway",
+        "born": "1899-07-21",
+        "knownFor": "American novelist, Nobel laureate",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ernest_Hemingway"
+      },
+      {
+        "name": "Alan Turing",
+        "born": "1912-06-23",
+        "knownFor": "Computer science pioneer, codebreaker",
+        "wikipedia": "https://en.wikipedia.org/wiki/Alan_Turing"
+      },
+      {
+        "name": "Bill Clinton",
+        "born": "1946-08-19",
+        "knownFor": "42nd U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bill_Clinton"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Queen of Spades",
+        "href": "/compatibility/7-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Nine of Hearts",
+        "href": "/compatibility/9-of-hearts-and-7-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Jack of Clubs",
+        "href": "/compatibility/7-of-clubs-and-jack-of-clubs"
+      }
+    ],
     "surfaceTruth": "I maintain high standards in my creative and spiritual work, focusing on quality over quantity.",
     "analog": {
       "title": "Spiritual Worker",
@@ -1001,10 +2041,10 @@
   },
   "8♣": {
     "code": "8♣",
+    "name": "8 of Clubs",
     "slug": "8-of-clubs",
-    "label": "Eight of Clubs",
-    "suit": "clubs",
     "rank": "8",
+    "suit": "clubs",
     "title": "The Ambitious Builder",
     "coreIdentity": "You run a knowledge system other people can follow, and you stand behind the call. Your mind calculates power, influence, and success. You're ambitious and know how to leverage ideas into position. You think like a chess player.",
     "gifts": [
@@ -1013,7 +2053,10 @@
       "Ambitious drive and determination",
       "Talent for building intellectual authority"
     ],
+    "sweetSpot": "You run a knowledge system other people can follow, and you stand behind the call.",
     "shadow": "You use the sharp mind to win. People respect the argument and stop bringing you anything they actually care about.",
+    "cost": "You use intellect to shut people down, and being smartest becomes the whole job.",
+    "watchFor": "Watch for the meeting where being right ends the conversation instead of moving it.",
     "lifeDirection": "Your curriculum is learning that intelligence includes wisdom about people, not just ideas. You're learning to use your mind for connection, not just conquest.",
     "lens": {
       "balanced": "You run a knowledge system other people can follow, and you stand behind the call.",
@@ -1036,6 +2079,55 @@
       "aggressive debate",
       "manipulation of truth"
     ],
+    "famous": [
+      {
+        "name": "Emily Dickinson",
+        "born": "1830-12-10",
+        "knownFor": "American poet",
+        "wikipedia": "https://en.wikipedia.org/wiki/Emily_Dickinson"
+      },
+      {
+        "name": "Dwight D. Eisenhower",
+        "born": "1890-10-14",
+        "knownFor": "34th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dwight_D._Eisenhower"
+      },
+      {
+        "name": "Robert Redford",
+        "born": "1936-08-18",
+        "knownFor": "American actor and director",
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Redford"
+      },
+      {
+        "name": "Bob Dylan",
+        "born": "1941-05-24",
+        "knownFor": "American singer-songwriter, Nobel laureate",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bob_Dylan"
+      },
+      {
+        "name": "Meryl Streep",
+        "born": "1949-06-22",
+        "knownFor": "American actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Meryl_Streep"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Four of Spades",
+        "href": "/compatibility/8-of-clubs-and-4-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Jack of Spades",
+        "href": "/compatibility/8-of-clubs-and-jack-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-8-of-clubs"
+      }
+    ],
     "surfaceTruth": "I explore creative and spiritual depths that transform both myself and my expressions.",
     "analog": {
       "title": "Power Worker",
@@ -1051,10 +2143,10 @@
   },
   "9♣": {
     "code": "9♣",
+    "name": "9 of Clubs",
     "slug": "9-of-clubs",
-    "label": "Nine of Clubs",
-    "suit": "clubs",
     "rank": "9",
+    "suit": "clubs",
     "title": "The Humanitarian Builder",
     "coreIdentity": "You keep the large view without skipping the next practical step. Your thoughts are about humanity, progress, and possibility. You think in big pictures and universal principles. Your mind is oriented toward uplift.",
     "gifts": [
@@ -1063,7 +2155,10 @@
       "Universal principles and humanitarian ideals",
       "Natural optimism about human potential"
     ],
+    "sweetSpot": "You let a used-up framework go and keep the part that still works.",
     "shadow": "The big picture stays cleaner than the work. Inspiration without follow-through teaches people not to wait for you.",
+    "cost": "You preach the map, and other viewpoints are treated as incomplete versions of yours.",
+    "watchFor": "Watch for the conversation where you treat someone else's view as a first draft of yours.",
     "lifeDirection": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to get your hands dirty, to do the unglamorous work.",
     "lens": {
       "balanced": "You let a used-up framework go and keep the part that still works.",
@@ -1086,6 +2181,55 @@
       "overthinking",
       "philosophical detachment"
     ],
+    "famous": [
+      {
+        "name": "Agatha Christie",
+        "born": "1890-09-15",
+        "knownFor": "English mystery novelist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Agatha_Christie"
+      },
+      {
+        "name": "Jackie Robinson",
+        "born": "1919-01-31",
+        "knownFor": "Broke baseball's color barrier",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jackie_Robinson"
+      },
+      {
+        "name": "Al Pacino",
+        "born": "1940-04-25",
+        "knownFor": "American actor, The Godfather",
+        "wikipedia": "https://en.wikipedia.org/wiki/Al_Pacino"
+      },
+      {
+        "name": "Robert De Niro",
+        "born": "1943-08-17",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_De_Niro"
+      },
+      {
+        "name": "Leonardo DiCaprio",
+        "born": "1974-11-11",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Leonardo_DiCaprio"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Two of Hearts",
+        "href": "/compatibility/2-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-9-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-9-of-clubs"
+      }
+    ],
     "surfaceTruth": "I use my creative gifts and spiritual insights to serve others and contribute meaningfully.",
     "analog": {
       "title": "Universal Server",
@@ -1101,10 +2245,10 @@
   },
   "10♣": {
     "code": "10♣",
+    "name": "10 of Clubs",
     "slug": "10-of-clubs",
-    "label": "Ten of Clubs",
-    "suit": "clubs",
     "rank": "10",
+    "suit": "clubs",
     "title": "The Master Builder",
     "coreIdentity": "You carry a finished body of knowledge and keep teaching from it. You've thought deeply and built significantly. You have wisdom, authority, and accomplishment. Your mind is seasoned and capable.",
     "gifts": [
@@ -1113,7 +2257,10 @@
       "Wisdom from experience and reflection",
       "Natural authority and leadership"
     ],
+    "sweetSpot": "You carry a finished body of knowledge and keep teaching from it.",
     "shadow": "You rest on what you already built. Mastery turns into a closed file.",
+    "cost": "You control who gets the information, and authority depends on other people staying one step behind.",
+    "watchFor": "Watch for the detail you keep to yourself so you stay the one who knows.",
     "lifeDirection": "Your curriculum is learning that mastery is a process, not a destination. You're learning to stay humble and curious despite your accomplishments.",
     "lens": {
       "balanced": "You carry a finished body of knowledge and keep teaching from it.",
@@ -1136,6 +2283,55 @@
       "avoidance of completion",
       "imposter syndrome"
     ],
+    "famous": [
+      {
+        "name": "Franklin D. Roosevelt",
+        "born": "1882-01-30",
+        "knownFor": "32nd U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Franklin_D._Roosevelt"
+      },
+      {
+        "name": "Nelson Mandela",
+        "born": "1918-07-18",
+        "knownFor": "South African president, anti-apartheid leader",
+        "wikipedia": "https://en.wikipedia.org/wiki/Nelson_Mandela"
+      },
+      {
+        "name": "Barbra Streisand",
+        "born": "1942-04-24",
+        "knownFor": "American singer and actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Barbra_Streisand"
+      },
+      {
+        "name": "Diana Ross",
+        "born": "1944-03-26",
+        "knownFor": "Singer, The Supremes",
+        "wikipedia": "https://en.wikipedia.org/wiki/Diana_Ross"
+      },
+      {
+        "name": "Madonna",
+        "born": "1958-08-16",
+        "knownFor": "American pop singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Madonna"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "King of Spades",
+        "href": "/compatibility/10-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Queen of Hearts",
+        "href": "/compatibility/queen-of-hearts-and-10-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-10-of-clubs"
+      }
+    ],
     "surfaceTruth": "I build creative and spiritual communities and systems that foster collective growth.",
     "analog": {
       "title": "Master Completer",
@@ -1151,10 +2347,10 @@
   },
   "J♣": {
     "code": "J♣",
+    "name": "Jack of Clubs",
     "slug": "jack-of-clubs",
-    "label": "Jack of Clubs",
-    "suit": "clubs",
     "rank": "J",
+    "suit": "clubs",
     "title": "The Creative Messenger",
     "coreIdentity": "You bring a new angle and stay long enough for someone to test it. You bring new thinking and inspiration. You're the one who shifts how people think about things. You have the gift of the \"aha moment.\"",
     "gifts": [
@@ -1163,7 +2359,10 @@
       "Natural gift for shifting paradigms",
       "Talent for generating excitement about ideas"
     ],
+    "sweetSpot": "You bring a new angle and you let someone pressure-test it before it ships.",
     "shadow": "You drop the insight and leave. The shift happens; the integration does not, because you are already gone.",
+    "cost": "You pitch before you have checked whether it can live, and excitement outruns the work.",
+    "watchFor": "Watch for the pitch you make before you have checked whether the thing can be built.",
     "lifeDirection": "Your curriculum is learning that real change requires staying present. You're learning follow-through, not just catalysis.",
     "lens": {
       "balanced": "You bring a new angle and you let someone pressure-test it before it ships.",
@@ -1186,6 +2385,55 @@
       "incomplete knowledge",
       "distraction through novelty"
     ],
+    "famous": [
+      {
+        "name": "Napoleon",
+        "born": "1769-08-15",
+        "knownFor": "French emperor and military leader",
+        "wikipedia": "https://en.wikipedia.org/wiki/Napoleon"
+      },
+      {
+        "name": "Elizabeth Taylor",
+        "born": "1932-02-27",
+        "knownFor": "British-American film actress",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_Taylor"
+      },
+      {
+        "name": "Aretha Franklin",
+        "born": "1942-03-25",
+        "knownFor": "Singer, Queen of Soul",
+        "wikipedia": "https://en.wikipedia.org/wiki/Aretha_Franklin"
+      },
+      {
+        "name": "Elton John",
+        "born": "1947-03-25",
+        "knownFor": "English singer-songwriter and pianist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elton_John"
+      },
+      {
+        "name": "Oprah Winfrey",
+        "born": "1954-01-29",
+        "knownFor": "Talk show host and media executive",
+        "wikipedia": "https://en.wikipedia.org/wiki/Oprah_Winfrey"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Seven of Spades",
+        "href": "/compatibility/jack-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Queen of Spades",
+        "href": "/compatibility/jack-of-clubs-and-queen-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-jack-of-clubs"
+      }
+    ],
     "surfaceTruth": "I pioneer innovative approaches in creative and spiritual domains, challenging conventions.",
     "analog": {
       "title": "Creative Messenger",
@@ -1201,10 +2449,10 @@
   },
   "Q♣": {
     "code": "Q♣",
+    "name": "Queen of Clubs",
     "slug": "queen-of-clubs",
-    "label": "Queen of Clubs",
-    "suit": "clubs",
     "rank": "Q",
+    "suit": "clubs",
     "title": "The Nurturing Leader",
     "coreIdentity": "You teach from what you actually know, without making people earn the right to hear it. You have wisdom, understanding, and the natural ability to mentor. You create intellectual safety where people can grow. You're the wise guide.",
     "gifts": [
@@ -1213,7 +2461,10 @@
       "Natural mentoring and empowering ability",
       "Talent for helping others develop their thinking"
     ],
+    "sweetSpot": "You teach from what you actually know, without making people earn the right to hear it.",
     "shadow": "You decide what other people need to understand. Mentorship starts doing their thinking for them.",
+    "cost": "You decide when others are ready, and knowledge becomes a gate you keep.",
+    "watchFor": "Watch for the moment you decide somebody is not ready for what you know.",
     "lifeDirection": "Your curriculum is learning that true mentorship means stepping back, letting others struggle and discover. You're learning to trust others' intellectual development.",
     "lens": {
       "balanced": "You teach from what you actually know, without making people earn the right to hear it.",
@@ -1236,6 +2487,55 @@
       "intuitive distortion",
       "martyrdom through intellect"
     ],
+    "famous": [
+      {
+        "name": "Bram Stoker",
+        "born": "1847-11-08",
+        "knownFor": "Author of Dracula",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bram_Stoker"
+      },
+      {
+        "name": "Harry Houdini",
+        "born": "1874-03-24",
+        "knownFor": "Escape artist and magician",
+        "wikipedia": "https://en.wikipedia.org/wiki/Harry_Houdini"
+      },
+      {
+        "name": "Johnny Cash",
+        "born": "1932-02-26",
+        "knownFor": "American country singer-songwriter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Johnny_Cash"
+      },
+      {
+        "name": "Jack Nicholson",
+        "born": "1937-04-22",
+        "knownFor": "American actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jack_Nicholson"
+      },
+      {
+        "name": "Paul McCartney",
+        "born": "1942-06-18",
+        "knownFor": "The Beatles bassist and songwriter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Paul_McCartney"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-queen-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Three of Diamonds",
+        "href": "/compatibility/queen-of-clubs-and-3-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I intuitively understand creative processes and spiritual principles at their essence.",
     "analog": {
       "title": "Internal Master",
@@ -1251,10 +2551,10 @@
   },
   "K♣": {
     "code": "K♣",
+    "name": "King of Clubs",
     "slug": "king-of-clubs",
-    "label": "King of Clubs",
-    "suit": "clubs",
     "rank": "K",
+    "suit": "clubs",
     "title": "The Master Leader",
     "coreIdentity": "You make the intellectual call in the open and you can revise it. You command through clarity and competence. You're the authority, the decision-maker, the one people look to for direction. Your thinking is decisive and clear.",
     "gifts": [
@@ -1263,7 +2563,10 @@
       "Ability to direct complex intellectual projects",
       "Confidence that inspires confidence in others"
     ],
+    "sweetSpot": "You make the intellectual call in the open and you can revise it.",
     "shadow": "You decide in public and treat disagreement as error. The room learns to agree with you instead of thinking.",
+    "cost": "Dissent is treated as error, and the room learns to agree with you instead of thinking.",
+    "watchFor": "Watch for the room that agrees with you inside a minute, and who stopped arguing this month.",
     "lifeDirection": "Your curriculum is learning that good leadership means considering other perspectives. You're learning that clarity and humility can coexist.",
     "lens": {
       "balanced": "You make the intellectual call in the open and you can revise it.",
@@ -1286,6 +2589,55 @@
       "rigidity",
       "fear of being wrong"
     ],
+    "famous": [
+      {
+        "name": "Wolfgang Amadeus Mozart",
+        "born": "1756-01-27",
+        "knownFor": "Austrian classical composer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Wolfgang_Amadeus_Mozart"
+      },
+      {
+        "name": "Marie Curie",
+        "born": "1867-11-07",
+        "knownFor": "Physicist, two-time Nobel laureate",
+        "wikipedia": "https://en.wikipedia.org/wiki/Marie_Curie"
+      },
+      {
+        "name": "Walt Disney",
+        "born": "1901-12-05",
+        "knownFor": "Founder of The Walt Disney Company",
+        "wikipedia": "https://en.wikipedia.org/wiki/Walt_Disney"
+      },
+      {
+        "name": "Malcolm X",
+        "born": "1925-05-19",
+        "knownFor": "American civil rights leader",
+        "wikipedia": "https://en.wikipedia.org/wiki/Malcolm_X"
+      },
+      {
+        "name": "Elizabeth II",
+        "born": "1926-04-21",
+        "knownFor": "Queen of the United Kingdom",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elizabeth_II"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-king-of-clubs"
+      },
+      {
+        "pos": "Moon",
+        "name": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-king-of-clubs"
+      },
+      {
+        "pos": "Mars",
+        "name": "Four of Diamonds",
+        "href": "/compatibility/king-of-clubs-and-4-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I provide visionary leadership in creative and spiritual domains, inspiring others' growth.",
     "analog": {
       "title": "Action Authority",
@@ -1301,10 +2653,10 @@
   },
   "A♦": {
     "code": "A♦",
+    "name": "Ace of Diamonds",
     "slug": "ace-of-diamonds",
-    "label": "Ace of Diamonds",
-    "suit": "diamonds",
     "rank": "A",
+    "suit": "diamonds",
     "title": "The Wealth Pioneer",
     "coreIdentity": "You start a resource in motion because you trust you can make and keep value. You're wired to build, accumulate, and create resources. Money and material success are your native language. You're the one who starts from nothing and builds something.",
     "gifts": [
@@ -1313,7 +2665,10 @@
       "Entrepreneurial drive and initiative",
       "Capacity to create wealth from ideas"
     ],
+    "sweetSpot": "You start a resource in motion because you trust you can make and keep value.",
     "shadow": "You measure yourself by the pile. More never registers as enough, so success still feels like a shortfall.",
+    "cost": "You collect to prove you are worth something, and other people start to look like competition.",
+    "watchFor": "Watch for the purchase or the win you mention twice in the same week.",
     "lifeDirection": "Your curriculum is learning that worth is not tied to wealth. You're learning that you're enough regardless of what you accumulate.",
     "lens": {
       "balanced": "You start a resource in motion because you trust you can make and keep value.",
@@ -1336,6 +2691,55 @@
       "over-identification with success",
       "value obsession"
     ],
+    "famous": [
+      {
+        "name": "Steve Jobs",
+        "born": "1955-02-24",
+        "knownFor": "Co-founder of Apple",
+        "wikipedia": "https://en.wikipedia.org/wiki/Steve_Jobs"
+      },
+      {
+        "name": "Wayne Gretzky",
+        "born": "1961-01-26",
+        "knownFor": "Hockey legend, The Great One",
+        "wikipedia": "https://en.wikipedia.org/wiki/Wayne_Gretzky"
+      },
+      {
+        "name": "Jay-Z",
+        "born": "1969-12-04",
+        "knownFor": "Rapper and entrepreneur",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jay-Z"
+      },
+      {
+        "name": "Reese Witherspoon",
+        "born": "1976-03-22",
+        "knownFor": "Oscar-winning actress, Legally Blonde",
+        "wikipedia": "https://en.wikipedia.org/wiki/Reese_Witherspoon"
+      },
+      {
+        "name": "Bruno Mars",
+        "born": "1985-10-08",
+        "knownFor": "Pop and R&B singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bruno_Mars"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Five of Hearts",
+        "href": "/compatibility/5-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-ace-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-ace-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I attract and appreciate quality resources and experiences that provide true value.",
     "analog": {
       "title": "Value Creator",
@@ -1351,10 +2755,10 @@
   },
   "2♦": {
     "code": "2♦",
+    "name": "2 of Diamonds",
     "slug": "2-of-diamonds",
-    "label": "Two of Diamonds",
-    "suit": "diamonds",
     "rank": "2",
+    "suit": "diamonds",
     "title": "The Financial Partner",
     "coreIdentity": "You name the exchange out loud and keep it fair for both sides. You understand value exchange and partnership in material terms. You're good at splitting bills, sharing assets, creating fair deals. Your mind works in reciprocity.",
     "gifts": [
@@ -1363,7 +2767,10 @@
       "Diplomatic skill in financial negotiations",
       "Talent for making partnerships feel equitable"
     ],
+    "sweetSpot": "You name the exchange out loud and keep it fair for both sides.",
     "shadow": "You give the better end of the deal to keep the partnership. The short end becomes a habit, then a grudge.",
+    "cost": "You steer the money so you stay in control of the relationship.",
+    "watchFor": "Watch for the money conversation you steer instead of split.",
     "lifeDirection": "Your curriculum is learning that true partnership requires equal contribution, not equal sacrifice. You're learning to ask for what you need materially.",
     "lens": {
       "balanced": "You name the exchange out loud and keep it fair for both sides.",
@@ -1386,6 +2793,55 @@
       "transactional relationships",
       "insecurity in collaboration"
     ],
+    "famous": [
+      {
+        "name": "Virginia Woolf",
+        "born": "1882-01-25",
+        "knownFor": "Modernist novelist, Mrs Dalloway",
+        "wikipedia": "https://en.wikipedia.org/wiki/Virginia_Woolf"
+      },
+      {
+        "name": "Patrick Stewart",
+        "born": "1940-07-13",
+        "knownFor": "Actor, Star Trek and X-Men",
+        "wikipedia": "https://en.wikipedia.org/wiki/Patrick_Stewart"
+      },
+      {
+        "name": "Harrison Ford",
+        "born": "1942-07-13",
+        "knownFor": "Actor, Star Wars and Indiana Jones",
+        "wikipedia": "https://en.wikipedia.org/wiki/Harrison_Ford"
+      },
+      {
+        "name": "Yo-Yo Ma",
+        "born": "1955-10-07",
+        "knownFor": "World-renowned cellist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Yo-Yo_Ma"
+      },
+      {
+        "name": "Adam Sandler",
+        "born": "1966-09-09",
+        "knownFor": "Comedian and actor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Adam_Sandler"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-2-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Six of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-6-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I make balanced, thoughtful decisions about resources and practical matters.",
     "analog": {
       "title": "Resource Partner",
@@ -1401,10 +2857,10 @@
   },
   "3♦": {
     "code": "3♦",
+    "name": "3 of Diamonds",
     "slug": "3-of-diamonds",
-    "label": "Three of Diamonds",
-    "suit": "diamonds",
     "rank": "3",
+    "suit": "diamonds",
     "title": "The Success Communicator",
     "coreIdentity": "You can make value visible without overselling the thing underneath. You're good at selling—ideas, products, yourself. You understand marketing and the psychology of desire. Your gift is making things feel valuable through how you present them.",
     "gifts": [
@@ -1413,7 +2869,10 @@
       "Ability to communicate material value clearly",
       "Gift for inspiring desire and investment"
     ],
+    "sweetSpot": "You keep more than one path alive without letting any of them stay imaginary.",
     "shadow": "The pitch outruns the delivery. After a few gaps, people stop believing the next one.",
+    "cost": "You chase the next dollar so hard the current one never settles.",
+    "watchFor": "Watch for the new income idea you pick up while the current one is still unfinished.",
     "lifeDirection": "Your curriculum is learning that sustainable success requires delivering on your promises. You're learning integrity over persuasion.",
     "lens": {
       "balanced": "You keep more than one path alive without letting any of them stay imaginary.",
@@ -1436,6 +2895,55 @@
       "spending to impress",
       "scattered priorities"
     ],
+    "famous": [
+      {
+        "name": "George Washington",
+        "born": "1732-02-22",
+        "knownFor": "First U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/George_Washington"
+      },
+      {
+        "name": "Henry David Thoreau",
+        "born": "1817-07-12",
+        "knownFor": "Author of Walden",
+        "wikipedia": "https://en.wikipedia.org/wiki/Henry_David_Thoreau"
+      },
+      {
+        "name": "Fred Rogers",
+        "born": "1928-03-20",
+        "knownFor": "Host of Mister Rogers' Neighborhood",
+        "wikipedia": "https://en.wikipedia.org/wiki/Fred_Rogers"
+      },
+      {
+        "name": "Janet Jackson",
+        "born": "1966-05-16",
+        "knownFor": "Pop and R&B singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Janet_Jackson"
+      },
+      {
+        "name": "Britney Spears",
+        "born": "1981-12-02",
+        "knownFor": "Pop singer, ...Baby One More Time",
+        "wikipedia": "https://en.wikipedia.org/wiki/Britney_Spears"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-3-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Five of Clubs",
+        "href": "/compatibility/5-of-clubs-and-3-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Seven of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-7-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I create diverse resource streams and experiences that provide security and growth.",
     "analog": {
       "title": "Material Expression",
@@ -1451,10 +2959,10 @@
   },
   "4♦": {
     "code": "4♦",
+    "name": "4 of Diamonds",
     "slug": "4-of-diamonds",
-    "label": "Four of Diamonds",
-    "suit": "diamonds",
     "rank": "4",
+    "suit": "diamonds",
     "title": "The Financial Foundation Builder",
     "coreIdentity": "You build a floor that lasts and still let money move when the work requires it. You build secure, stable financial foundations. You're good with systems, planning, and long-term security. Your mind thinks in terms of legacy and stability.",
     "gifts": [
@@ -1463,7 +2971,10 @@
       "Natural understanding of systems and structures",
       "Talent for creating sustainable wealth"
     ],
+    "sweetSpot": "You build a floor that lasts and still let money move when the work requires it.",
     "shadow": "You have enough and live as if you do not. Caution empties the thing it was supposed to protect.",
+    "cost": "You will not release cash even when keeping it costs more than spending it.",
+    "watchFor": "Watch for the spend that would clearly pay for itself and still sits in the maybe pile.",
     "lifeDirection": "Your curriculum is learning that some security is illusory and that money exists to be used. You're learning to enjoy the abundance you've built.",
     "lens": {
       "balanced": "You build a floor that lasts and still let money move when the work requires it.",
@@ -1486,6 +2997,55 @@
       "rigid budgeting",
       "fear-based security"
     ],
+    "famous": [
+      {
+        "name": "Nina Simone",
+        "born": "1933-02-21",
+        "knownFor": "Jazz and soul singer, pianist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Nina_Simone"
+      },
+      {
+        "name": "Buddy Holly",
+        "born": "1936-09-07",
+        "knownFor": "Rock and roll pioneer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Buddy_Holly"
+      },
+      {
+        "name": "Bruce Willis",
+        "born": "1955-03-19",
+        "knownFor": "Actor, Die Hard",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bruce_Willis"
+      },
+      {
+        "name": "Whitney Houston",
+        "born": "1963-08-09",
+        "knownFor": "Pop and R&B vocalist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Whitney_Houston"
+      },
+      {
+        "name": "Kate Winslet",
+        "born": "1975-10-05",
+        "knownFor": "Oscar-winning actress, Titanic",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kate_Winslet"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Eight of Hearts",
+        "href": "/compatibility/8-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Four of Hearts",
+        "href": "/compatibility/4-of-hearts-and-4-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-4-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I build reliable material foundations and systems that provide lasting security.",
     "analog": {
       "title": "Material Foundation",
@@ -1501,10 +3061,10 @@
   },
   "5♦": {
     "code": "5♦",
+    "name": "5 of Diamonds",
     "slug": "5-of-diamonds",
-    "label": "Five of Diamonds",
-    "suit": "diamonds",
     "rank": "5",
+    "suit": "diamonds",
     "title": "The Dynamic Entrepreneur",
     "coreIdentity": "You adjust the resource plan when the ground moves, without pretending nothing changed. You crave variety in resources and experiences. You get bored with one income stream, one investment, one way of working. You need novelty and freedom in your material life.",
     "gifts": [
@@ -1513,7 +3073,10 @@
       "Natural entrepreneurial flexibility",
       "Gift for finding new opportunities"
     ],
+    "sweetSpot": "You adjust the resource plan when the ground moves, without pretending nothing changed.",
     "shadow": "You start the next venture before the current one is real. Options replace a floor.",
+    "cost": "You spend to feel motion, and chaos gets billed as flexibility.",
+    "watchFor": "Watch for the purchase you make on a flat day, and what you tell yourself it was for.",
     "lifeDirection": "Your curriculum is learning that real wealth requires staying with something long enough to build it. You're learning commitment over opportunity-chasing.",
     "lens": {
       "balanced": "You adjust the resource plan when the ground moves, without pretending nothing changed.",
@@ -1536,6 +3099,55 @@
       "impulsiveness",
       "avoidance of value alignment"
     ],
+    "famous": [
+      {
+        "name": "Nikola Tesla",
+        "born": "1856-07-10",
+        "knownFor": "Inventor, alternating current pioneer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Nikola_Tesla"
+      },
+      {
+        "name": "Charlie Chaplin",
+        "born": "1889-04-16",
+        "knownFor": "Silent film comedian, The Tramp",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charlie_Chaplin"
+      },
+      {
+        "name": "Anne Frank",
+        "born": "1929-06-12",
+        "knownFor": "Diarist, The Diary of a Young Girl",
+        "wikipedia": "https://en.wikipedia.org/wiki/Anne_Frank"
+      },
+      {
+        "name": "Kurt Cobain",
+        "born": "1967-02-20",
+        "knownFor": "Nirvana frontman",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kurt_Cobain"
+      },
+      {
+        "name": "Roger Federer",
+        "born": "1981-08-08",
+        "knownFor": "Swiss tennis champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Roger_Federer"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-5-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Nine of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-9-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I adapt flexibly to changing resource conditions and find creative material solutions.",
     "analog": {
       "title": "Material Freedom",
@@ -1551,10 +3163,10 @@
   },
   "6♦": {
     "code": "6♦",
+    "name": "6 of Diamonds",
     "slug": "6-of-diamonds",
-    "label": "Six of Diamonds",
-    "suit": "diamonds",
     "rank": "6",
+    "suit": "diamonds",
     "title": "The Generous Provider",
     "coreIdentity": "You move resources toward other people without erasing your own claim. You naturally want to provide for others. Your resources flow toward helping and supporting. You're the one people come to when they need something.",
     "gifts": [
@@ -1563,7 +3175,10 @@
       "Natural understanding of needs and provision",
       "Gift for creating material safety"
     ],
+    "sweetSpot": "You move resources toward other people without erasing your own claim.",
     "shadow": "You keep providing after you are empty. People learn to lean; you learn to resent the lean.",
+    "cost": "Gifts come with a string, and help becomes a way to keep someone obligated.",
+    "watchFor": "Watch for the help you hand over with a quiet condition attached, and when you mention it later.",
     "lifeDirection": "Your curriculum is learning that true generosity includes boundaries. You're learning to give from overflow, not sacrifice.",
     "lens": {
       "balanced": "You move resources toward other people without erasing your own claim.",
@@ -1586,6 +3201,55 @@
       "financial burden",
       "guilt-based support"
     ],
+    "famous": [
+      {
+        "name": "Leonardo da Vinci",
+        "born": "1452-04-15",
+        "knownFor": "Renaissance artist and inventor, Mona Lisa",
+        "wikipedia": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci"
+      },
+      {
+        "name": "Freddie Mercury",
+        "born": "1946-09-05",
+        "knownFor": "Queen frontman",
+        "wikipedia": "https://en.wikipedia.org/wiki/Freddie_Mercury"
+      },
+      {
+        "name": "Stevie Wonder",
+        "born": "1950-05-13",
+        "knownFor": "Motown singer-songwriter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stevie_Wonder"
+      },
+      {
+        "name": "Tom Hanks",
+        "born": "1956-07-09",
+        "knownFor": "Oscar-winning actor, Forrest Gump",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Hanks"
+      },
+      {
+        "name": "Charlize Theron",
+        "born": "1975-08-07",
+        "knownFor": "Oscar-winning actress, Monster",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charlize_Theron"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-6-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Eight of Clubs",
+        "href": "/compatibility/8-of-clubs-and-6-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ten of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-10-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I create balanced material approaches that provide harmony between work, wealth, and values.",
     "analog": {
       "title": "Material Server",
@@ -1601,10 +3265,10 @@
   },
   "7♦": {
     "code": "7♦",
+    "name": "7 of Diamonds",
     "slug": "7-of-diamonds",
-    "label": "Seven of Diamonds",
-    "suit": "diamonds",
     "rank": "7",
+    "suit": "diamonds",
     "title": "The Skeptical Investor",
     "coreIdentity": "You look at worth without reducing it to the account balance. You question everything about money—where it comes from, where it goes, whether it's worth it. You're analytical about resources. You think deeply about material choices.",
     "gifts": [
@@ -1613,7 +3277,10 @@
       "Deep skepticism that prevents poor choices",
       "Natural caution and thoroughness"
     ],
+    "sweetSpot": "You look at worth without reducing it to the account balance.",
     "shadow": "You can see the hole in every opportunity, so you take none. Caution becomes a standstill.",
+    "cost": "You treat every surplus as temporary, and scarcity stays in charge after the evidence has changed.",
+    "watchFor": "Watch for the month the account is fine and your gut still says it is not.",
     "lifeDirection": "Your curriculum is learning that no investment is risk-free. You're learning to act despite uncertainty, to trust intuition alongside analysis.",
     "lens": {
       "balanced": "You look at worth without reducing it to the account balance.",
@@ -1636,6 +3303,55 @@
       "money shame",
       "worth vs. wealth conflict"
     ],
+    "famous": [
+      {
+        "name": "Mahatma Gandhi",
+        "born": "1869-10-02",
+        "knownFor": "Leader of Indian independence movement",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+      },
+      {
+        "name": "Lucille Ball",
+        "born": "1911-08-06",
+        "knownFor": "Comedian and actress, I Love Lucy",
+        "wikipedia": "https://en.wikipedia.org/wiki/Lucille_Ball"
+      },
+      {
+        "name": "Andy Warhol",
+        "born": "1928-08-06",
+        "knownFor": "Pop art pioneer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Andy_Warhol"
+      },
+      {
+        "name": "Buzz Aldrin",
+        "born": "1930-01-20",
+        "knownFor": "Apollo 11 astronaut",
+        "wikipedia": "https://en.wikipedia.org/wiki/Buzz_Aldrin"
+      },
+      {
+        "name": "Toni Morrison",
+        "born": "1931-02-18",
+        "knownFor": "Nobel Prize-winning novelist, Beloved",
+        "wikipedia": "https://en.wikipedia.org/wiki/Toni_Morrison"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Jack of Hearts",
+        "href": "/compatibility/jack-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Seven of Hearts",
+        "href": "/compatibility/7-of-hearts-and-7-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-7-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I select quality investments and uses of resources based on clear value assessment.",
     "analog": {
       "title": "Spiritual Wealth",
@@ -1651,10 +3367,10 @@
   },
   "8♦": {
     "code": "8♦",
+    "name": "8 of Diamonds",
     "slug": "8-of-diamonds",
-    "label": "Eight of Diamonds",
-    "suit": "diamonds",
     "rank": "8",
+    "suit": "diamonds",
     "title": "The Businessman",
     "coreIdentity": "You run the money system in the open and you can explain the call. You approach resources as something to master and control. You're ambitious, competitive, and strategic. You know how to play the game and win.",
     "gifts": [
@@ -1663,7 +3379,10 @@
       "Ambitious drive and determination",
       "Talent for creating material success"
     ],
+    "sweetSpot": "You run the money system in the open and you can explain the call.",
     "shadow": "Money becomes the way you keep score and keep control. The win is public; the relationships are not.",
+    "cost": "You use money to keep people in line, and the ledger becomes a hierarchy.",
+    "watchFor": "Watch for the moment you use a number to end a conversation with someone you love.",
     "lifeDirection": "Your curriculum is learning that true wealth includes happiness. You're learning that money is a means, not an end.",
     "lens": {
       "balanced": "You run the money system in the open and you can explain the call.",
@@ -1686,6 +3405,55 @@
       "power-through-resources",
       "stinginess"
     ],
+    "famous": [
+      {
+        "name": "Edgar Allan Poe",
+        "born": "1809-01-19",
+        "knownFor": "Poet and author, The Raven",
+        "wikipedia": "https://en.wikipedia.org/wiki/Edgar_Allan_Poe"
+      },
+      {
+        "name": "Salvador Dalí",
+        "born": "1904-05-11",
+        "knownFor": "Surrealist painter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD"
+      },
+      {
+        "name": "Neil Armstrong",
+        "born": "1930-08-05",
+        "knownFor": "First person to walk on the Moon",
+        "wikipedia": "https://en.wikipedia.org/wiki/Neil_Armstrong"
+      },
+      {
+        "name": "Julie Andrews",
+        "born": "1935-10-01",
+        "knownFor": "Actress and singer, The Sound of Music",
+        "wikipedia": "https://en.wikipedia.org/wiki/Julie_Andrews"
+      },
+      {
+        "name": "Dolly Parton",
+        "born": "1946-01-19",
+        "knownFor": "Country music legend",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dolly_Parton"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Three of Hearts",
+        "href": "/compatibility/3-of-hearts-and-8-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-8-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-8-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I work diligently to build genuine wealth and achievement through persistent effort.",
     "analog": {
       "title": "Material Power",
@@ -1701,10 +3469,10 @@
   },
   "9♦": {
     "code": "9♦",
+    "name": "9 of Diamonds",
     "slug": "9-of-diamonds",
-    "label": "Nine of Diamonds",
-    "suit": "diamonds",
     "rank": "9",
+    "suit": "diamonds",
     "title": "The Universal Provider",
     "coreIdentity": "You give in a way you can sustain, and you let someone give back. You think about resources in terms of universal good and human need. You want to provide for humanity. Your vision is about abundance for all.",
     "gifts": [
@@ -1713,7 +3481,10 @@
       "Ability to inspire others to contribute",
       "Natural idealism about abundance"
     ],
+    "sweetSpot": "You give in a way you can sustain, and you let someone give back.",
     "shadow": "You fund everyone else's floor and skip your own. The generosity is real and it is not sustainable.",
+    "cost": "You stay the generous one past the point of honesty, and resentment does the work the boundary should have done.",
+    "watchFor": "Watch for the gift you give while tired, and the resentment that arrives about two weeks later.",
     "lifeDirection": "Your curriculum is learning that you can't help anyone if you destroy yourself. You're learning to secure your own oxygen mask first.",
     "lens": {
       "balanced": "You give in a way you can sustain, and you let someone give back.",
@@ -1736,6 +3507,55 @@
       "unmet expectations",
       "self-sacrifice for validation"
     ],
+    "famous": [
+      {
+        "name": "Albert Einstein",
+        "born": "1879-03-14",
+        "knownFor": "Physicist, theory of relativity",
+        "wikipedia": "https://en.wikipedia.org/wiki/Albert_Einstein"
+      },
+      {
+        "name": "Frida Kahlo",
+        "born": "1907-07-06",
+        "knownFor": "Mexican painter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Frida_Kahlo"
+      },
+      {
+        "name": "Barack Obama",
+        "born": "1961-08-04",
+        "knownFor": "44th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Barack_Obama"
+      },
+      {
+        "name": "Keanu Reeves",
+        "born": "1964-09-02",
+        "knownFor": "Actor, The Matrix and John Wick",
+        "wikipedia": "https://en.wikipedia.org/wiki/Keanu_Reeves"
+      },
+      {
+        "name": "Stephen Curry",
+        "born": "1988-03-14",
+        "knownFor": "NBA champion and three-point record holder",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Curry"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Two of Clubs",
+        "href": "/compatibility/2-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Jack of Clubs",
+        "href": "/compatibility/jack-of-clubs-and-9-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-9-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I use material resources generously to support causes and people that matter to me.",
     "analog": {
       "title": "Universal Prosperity",
@@ -1751,10 +3571,10 @@
   },
   "10♦": {
     "code": "10♦",
+    "name": "10 of Diamonds",
     "slug": "10-of-diamonds",
-    "label": "Ten of Diamonds",
-    "suit": "diamonds",
     "rank": "10",
+    "suit": "diamonds",
     "title": "The Wealthy Master",
     "coreIdentity": "You build enough and keep it structured so it actually holds. You've built, accumulated, and integrated material success. You have security, abundance, and wisdom. Your presence radiates material confidence.",
     "gifts": [
@@ -1763,7 +3583,10 @@
       "Wisdom from building and maintaining wealth",
       "Natural generosity from a place of abundance"
     ],
+    "sweetSpot": "You build enough and keep it structured so it actually holds.",
     "shadow": "You protect what you have instead of using it. Security turns into a closed room.",
+    "cost": "People start to look like instruments, the win is counted, and the relationship is not.",
+    "watchFor": "Watch for the week you count the win and skip the person who did a piece of it.",
     "lifeDirection": "Your curriculum is learning that wealth is a process, not a destination. You're learning to keep growing despite security.",
     "lens": {
       "balanced": "You build enough and keep it structured so it actually holds.",
@@ -1786,6 +3609,55 @@
       "fear of material change",
       "excess responsibility"
     ],
+    "famous": [
+      {
+        "name": "Galileo Galilei",
+        "born": "1564-02-15",
+        "knownFor": "Astronomer, father of modern science",
+        "wikipedia": "https://en.wikipedia.org/wiki/Galileo_Galilei"
+      },
+      {
+        "name": "Benjamin Franklin",
+        "born": "1706-01-17",
+        "knownFor": "U.S. founding father and inventor",
+        "wikipedia": "https://en.wikipedia.org/wiki/Benjamin_Franklin"
+      },
+      {
+        "name": "Muhammad Ali",
+        "born": "1942-01-17",
+        "knownFor": "Heavyweight boxing champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Muhammad_Ali"
+      },
+      {
+        "name": "Prince",
+        "born": "1958-06-07",
+        "knownFor": "Musician, Purple Rain",
+        "wikipedia": "https://en.wikipedia.org/wiki/Prince_(musician)"
+      },
+      {
+        "name": "Michelle Obama",
+        "born": "1964-01-17",
+        "knownFor": "Former U.S. first lady and author",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michelle_Obama"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ace of Hearts",
+        "href": "/compatibility/ace-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ten of Hearts",
+        "href": "/compatibility/10-of-hearts-and-10-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-10-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I build lasting material legacies and systems that benefit many beyond myself.",
     "analog": {
       "title": "Material Mastery",
@@ -1801,10 +3673,10 @@
   },
   "J♦": {
     "code": "J♦",
+    "name": "Jack of Diamonds",
     "slug": "jack-of-diamonds",
-    "label": "Jack of Diamonds",
-    "suit": "diamonds",
     "rank": "J",
+    "suit": "diamonds",
     "title": "The Successful Messenger",
     "coreIdentity": "You try a new approach to value and you finish enough of it to know if it works. You bring new ways of thinking about resources and success. You're the one who shifts how people relate to money. You inspire financial breakthroughs.",
     "gifts": [
@@ -1813,7 +3685,10 @@
       "Talent for creating excitement about opportunity",
       "Inspiring others to believe in abundance"
     ],
+    "sweetSpot": "You try a new approach to value and you finish enough of it to know if it works.",
     "shadow": "You talk about value more fluently than you keep it. The message is ahead of the books.",
+    "cost": "You promise a return you have not built, and the pitch outruns the product.",
+    "watchFor": "Watch for the promise you make about something that does not exist yet.",
     "lifeDirection": "Your curriculum is learning that real authority comes from embodying what you teach. You're learning to build wealth, not just talk about it.",
     "lens": {
       "balanced": "You try a new approach to value and you finish enough of it to know if it works.",
@@ -1836,6 +3711,55 @@
       "undeveloped value system",
       "impulsive investments"
     ],
+    "famous": [
+      {
+        "name": "Harry S. Truman",
+        "born": "1884-05-08",
+        "knownFor": "33rd U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Harry_S._Truman"
+      },
+      {
+        "name": "James Baldwin",
+        "born": "1924-08-02",
+        "knownFor": "Author and civil rights essayist",
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Baldwin"
+      },
+      {
+        "name": "Liza Minnelli",
+        "born": "1946-03-12",
+        "knownFor": "Singer and actress, Cabaret",
+        "wikipedia": "https://en.wikipedia.org/wiki/Liza_Minnelli"
+      },
+      {
+        "name": "Björn Borg",
+        "born": "1956-06-06",
+        "knownFor": "Swedish tennis champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bj%C3%B6rn_Borg"
+      },
+      {
+        "name": "Kate Moss",
+        "born": "1974-01-16",
+        "knownFor": "British supermodel",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kate_Moss"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-jack-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Two of Spades",
+        "href": "/compatibility/jack-of-diamonds-and-2-of-spades"
+      }
+    ],
     "surfaceTruth": "I discover innovative approaches to wealth and resources that others miss or avoid.",
     "analog": {
       "title": "Material Student",
@@ -1851,10 +3775,10 @@
   },
   "Q♦": {
     "code": "Q♦",
+    "name": "Queen of Diamonds",
     "slug": "queen-of-diamonds",
-    "label": "Queen of Diamonds",
-    "suit": "diamonds",
     "rank": "Q",
+    "suit": "diamonds",
     "title": "The Prosperous Nurturer",
     "coreIdentity": "You protect what you have without making every dollar a referendum on safety. You create material security and abundance for those around you. You're generous, nurturing, and capable. You make others feel materially safe.",
     "gifts": [
@@ -1863,7 +3787,10 @@
       "Talent for creating financial safety for others",
       "Wisdom about resources and needs"
     ],
+    "sweetSpot": "You protect what you have without making every dollar a referendum on safety.",
     "shadow": "Provision comes with a string. People feel cared for and owned at the same time.",
+    "cost": "Money becomes the condition for closeness, and people feel the price of disappointing you.",
+    "watchFor": "Watch for the moment closeness gets a price: a gift, a loan, a favor with weather attached.",
     "lifeDirection": "Your curriculum is learning that true nurturing includes letting people become independent. You're learning to support without controlling.",
     "lens": {
       "balanced": "You protect what you have without making every dollar a referendum on safety.",
@@ -1886,6 +3813,55 @@
       "over-responsibility",
       "material insecurity"
     ],
+    "famous": [
+      {
+        "name": "Herman Melville",
+        "born": "1819-08-01",
+        "knownFor": "Author of Moby-Dick",
+        "wikipedia": "https://en.wikipedia.org/wiki/Herman_Melville"
+      },
+      {
+        "name": "Pyotr Ilyich Tchaikovsky",
+        "born": "1840-05-07",
+        "knownFor": "Composer, Swan Lake and The Nutcracker",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pyotr_Ilyich_Tchaikovsky"
+      },
+      {
+        "name": "Franz Kafka",
+        "born": "1883-07-03",
+        "knownFor": "Author of The Metamorphosis",
+        "wikipedia": "https://en.wikipedia.org/wiki/Franz_Kafka"
+      },
+      {
+        "name": "Martin Luther King Jr.",
+        "born": "1929-01-15",
+        "knownFor": "Civil rights leader",
+        "wikipedia": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr."
+      },
+      {
+        "name": "Tom Cruise",
+        "born": "1962-07-03",
+        "knownFor": "Actor, Top Gun and Mission: Impossible",
+        "wikipedia": "https://en.wikipedia.org/wiki/Tom_Cruise"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-queen-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Three of Spades",
+        "href": "/compatibility/queen-of-diamonds-and-3-of-spades"
+      }
+    ],
     "surfaceTruth": "I naturally understand value and effortlessly cultivate material abundance.",
     "analog": {
       "title": "Material Steward",
@@ -1901,10 +3877,10 @@
   },
   "K♦": {
     "code": "K♦",
+    "name": "King of Diamonds",
     "slug": "king-of-diamonds",
-    "label": "King of Diamonds",
-    "suit": "diamonds",
     "rank": "K",
+    "suit": "diamonds",
     "title": "The Wealthy King",
     "coreIdentity": "You run the system and you can show your work. You command resources and respect. You're the decision-maker about finances, investments, and wealth. Your presence radiates power and affluence.",
     "gifts": [
@@ -1913,7 +3889,10 @@
       "Ability to direct financial strategy",
       "Inspiring confidence in your financial judgment"
     ],
+    "sweetSpot": "You run the system and you can show your work.",
     "shadow": "You make the money call alone and call it leadership. Other judgment does not get a seat.",
+    "cost": "Other people's labor exists to grow your position, and stewardship drops out of the job description.",
+    "watchFor": "Watch for the week somebody's work grows your position and nobody says their name.",
     "lifeDirection": "Your curriculum is learning that good financial leadership means consulting others. You're learning that authority and humility can coexist.",
     "lens": {
       "balanced": "You run the system and you can show your work.",
@@ -1936,6 +3915,55 @@
       "status-driven identity",
       "dominance in value systems"
     ],
+    "famous": [
+      {
+        "name": "Abraham Lincoln",
+        "born": "1809-02-12",
+        "knownFor": "16th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Abraham_Lincoln"
+      },
+      {
+        "name": "Charles Darwin",
+        "born": "1809-02-12",
+        "knownFor": "Naturalist, theory of evolution",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charles_Darwin"
+      },
+      {
+        "name": "Sigmund Freud",
+        "born": "1856-05-06",
+        "knownFor": "Founder of psychoanalysis",
+        "wikipedia": "https://en.wikipedia.org/wiki/Sigmund_Freud"
+      },
+      {
+        "name": "Sharon Stone",
+        "born": "1958-03-10",
+        "knownFor": "Actress, Basic Instinct",
+        "wikipedia": "https://en.wikipedia.org/wiki/Sharon_Stone"
+      },
+      {
+        "name": "George Clooney",
+        "born": "1961-05-06",
+        "knownFor": "Actor and director, Ocean's Eleven",
+        "wikipedia": "https://en.wikipedia.org/wiki/George_Clooney"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Four of Clubs",
+        "href": "/compatibility/4-of-clubs-and-king-of-diamonds"
+      },
+      {
+        "pos": "Moon",
+        "name": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-king-of-diamonds"
+      },
+      {
+        "pos": "Mars",
+        "name": "Two of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-king-of-diamonds"
+      }
+    ],
     "surfaceTruth": "I provide masterful leadership in building and managing material resources and systems.",
     "analog": {
       "title": "Material Authority",
@@ -1951,10 +3979,10 @@
   },
   "A♠": {
     "code": "A♠",
+    "name": "Ace of Spades",
     "slug": "ace-of-spades",
-    "label": "Ace of Spades",
-    "suit": "spades",
     "rank": "A",
+    "suit": "spades",
     "title": "The Truth Pioneer",
     "coreIdentity": "You say the true thing early, before it has to become a crisis to be heard. Your mind is oriented toward finding what's real beneath appearances. You question everything. You're the one willing to challenge comfortable lies for uncomfortable truths.",
     "gifts": [
@@ -1963,7 +3991,10 @@
       "Sharp thinking and analytical power",
       "Natural integrity and honesty"
     ],
+    "sweetSpot": "You say the true thing early, before it has to become a crisis to be heard.",
     "shadow": "You decide you already have the true read and stop looking. Honesty starts cutting more than it clarifies.",
+    "cost": "You call it honesty when you use the fact as a blade.",
+    "watchFor": "Watch for the true sentence you deliver at the exact moment it will land hardest.",
     "lifeDirection": "Your curriculum is learning that truth is more complex than you understand. You're learning humility about what you know.",
     "lens": {
       "balanced": "You say the true thing early, before it has to become a crisis to be heard.",
@@ -1986,6 +4017,55 @@
       "fear of transformation",
       "control fixation"
     ],
+    "famous": [
+      {
+        "name": "Thomas Edison",
+        "born": "1847-02-11",
+        "knownFor": "Inventor, phonograph and light bulb",
+        "wikipedia": "https://en.wikipedia.org/wiki/Thomas_Edison"
+      },
+      {
+        "name": "Jackie Chan",
+        "born": "1954-04-07",
+        "knownFor": "Martial arts film star",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jackie_Chan"
+      },
+      {
+        "name": "Diana, Princess of Wales",
+        "born": "1961-07-01",
+        "knownFor": "British royal and humanitarian",
+        "wikipedia": "https://en.wikipedia.org/wiki/Diana,_Princess_of_Wales"
+      },
+      {
+        "name": "Jennifer Aniston",
+        "born": "1969-02-11",
+        "knownFor": "Actress, Friends",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jennifer_Aniston"
+      },
+      {
+        "name": "Rafael Nadal",
+        "born": "1986-06-03",
+        "knownFor": "Tennis champion, King of Clay",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rafael_Nadal"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-ace-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-ace-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Five of Spades",
+        "href": "/compatibility/ace-of-spades-and-5-of-spades"
+      }
+    ],
     "surfaceTruth": "I pursue intellectual clarity and rigorous analysis to uncover objective truth.",
     "analog": {
       "title": "Mental Pioneer",
@@ -2001,10 +4081,10 @@
   },
   "2♠": {
     "code": "2♠",
+    "name": "2 of Spades",
     "slug": "2-of-spades",
-    "label": "Two of Spades",
-    "suit": "spades",
     "rank": "2",
+    "suit": "spades",
     "title": "The Skeptical Partner",
     "coreIdentity": "You hold two pressures at once and still make a call that can live in the world. You naturally question any belief or claim. Your thinking is balanced between perspectives. You see multiple sides of truth.",
     "gifts": [
@@ -2013,7 +4093,10 @@
       "Balanced thinking and fairness",
       "Natural understanding of complexity"
     ],
+    "sweetSpot": "You hold two pressures at once and still make a call that can live in the world.",
     "shadow": "You can see both sides so well that you will not pick one. Fairness becomes a way not to stand anywhere.",
+    "cost": "You refuse the choice so hard that other people start fighting it for you.",
+    "watchFor": "Watch for the decision you leave open long enough that someone else makes it for you.",
     "lifeDirection": "Your curriculum is learning that some decisions require commitment despite uncertainty. You're learning to choose despite complexity.",
     "lens": {
       "balanced": "You hold two pressures at once and still make a call that can live in the world.",
@@ -2036,6 +4119,55 @@
       "indecision",
       "avoidance of necessary growth"
     ],
+    "famous": [
+      {
+        "name": "Jack London",
+        "born": "1876-01-12",
+        "knownFor": "Author of The Call of the Wild",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jack_London"
+      },
+      {
+        "name": "Audrey Hepburn",
+        "born": "1929-05-04",
+        "knownFor": "Actress, Breakfast at Tiffany's",
+        "wikipedia": "https://en.wikipedia.org/wiki/Audrey_Hepburn"
+      },
+      {
+        "name": "Jeff Bezos",
+        "born": "1964-01-12",
+        "knownFor": "Founder of Amazon",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jeff_Bezos"
+      },
+      {
+        "name": "Laura Dern",
+        "born": "1967-02-10",
+        "knownFor": "Oscar-winning actress, Jurassic Park",
+        "wikipedia": "https://en.wikipedia.org/wiki/Laura_Dern"
+      },
+      {
+        "name": "Paul Rudd",
+        "born": "1969-04-06",
+        "knownFor": "Actor, Ant-Man",
+        "wikipedia": "https://en.wikipedia.org/wiki/Paul_Rudd"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-2-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Four of Diamonds",
+        "href": "/compatibility/4-of-diamonds-and-2-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Six of Spades",
+        "href": "/compatibility/2-of-spades-and-6-of-spades"
+      }
+    ],
     "surfaceTruth": "I carefully weigh multiple perspectives before forming opinions or making decisions.",
     "analog": {
       "title": "Mental Partnership",
@@ -2051,10 +4183,10 @@
   },
   "3♠": {
     "code": "3♠",
+    "name": "3 of Spades",
     "slug": "3-of-spades",
-    "label": "Three of Spades",
-    "suit": "spades",
     "rank": "3",
+    "suit": "spades",
     "title": "The Sorrowful Truth",
     "coreIdentity": "You stay with the hard feeling long enough to learn it, then you let the day continue. You see what's wrong, what's broken, what's unfair. Your mind is naturally oriented toward problems and suffering. You're the truth-teller about darkness.",
     "gifts": [
@@ -2063,7 +4195,10 @@
       "Natural compassion for suffering",
       "Courage to name injustice"
     ],
+    "sweetSpot": "You stay with the hard feeling long enough to learn it, then you let the day continue.",
     "shadow": "You keep naming what is broken. The room hears the problem and stops expecting a next move.",
+    "cost": "Pain becomes the argument, and other people are drafted into a story they did not cause.",
+    "watchFor": "Watch for the conversation where your hard week becomes the reason the other person is wrong.",
     "lifeDirection": "Your curriculum is learning that honesty includes what's working, not just what's broken. You're learning balanced truth.",
     "lens": {
       "balanced": "You stay with the hard feeling long enough to learn it, then you let the day continue.",
@@ -2086,6 +4221,55 @@
       "social avoidance of pain",
       "spiritual bypassing"
     ],
+    "famous": [
+      {
+        "name": "Bette Davis",
+        "born": "1908-04-05",
+        "knownFor": "Classic Hollywood actress, All About Eve",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bette_Davis"
+      },
+      {
+        "name": "Marilyn Monroe",
+        "born": "1926-06-01",
+        "knownFor": "Hollywood actress and icon",
+        "wikipedia": "https://en.wikipedia.org/wiki/Marilyn_Monroe"
+      },
+      {
+        "name": "James Brown",
+        "born": "1933-05-03",
+        "knownFor": "The Godfather of Soul",
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Brown"
+      },
+      {
+        "name": "Morgan Freeman",
+        "born": "1937-06-01",
+        "knownFor": "Oscar-winning actor, Million Dollar Baby",
+        "wikipedia": "https://en.wikipedia.org/wiki/Morgan_Freeman"
+      },
+      {
+        "name": "Pharrell Williams",
+        "born": "1973-04-05",
+        "knownFor": "Musician and producer, Happy",
+        "wikipedia": "https://en.wikipedia.org/wiki/Pharrell_Williams"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Seven of Clubs",
+        "href": "/compatibility/7-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Three of Clubs",
+        "href": "/compatibility/3-of-clubs-and-3-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-3-of-spades"
+      }
+    ],
     "surfaceTruth": "I process complex ideas through conversation and verbal exploration.",
     "analog": {
       "title": "Mental Expression",
@@ -2101,10 +4285,10 @@
   },
   "4♠": {
     "code": "4♠",
+    "name": "4 of Spades",
     "slug": "4-of-spades",
-    "label": "Four of Spades",
-    "suit": "spades",
     "rank": "4",
+    "suit": "spades",
     "title": "The Rigid Truth",
     "coreIdentity": "You build enough container that change can happen without the floor disappearing. You build frameworks for understanding truth. You're organized in your thinking, structured in your beliefs. Your mind thinks in terms of principles and rules.",
     "gifts": [
@@ -2113,7 +4297,10 @@
       "Organized thinking and clear logic",
       "Natural integrity and consistency"
     ],
+    "sweetSpot": "You build enough container that change can happen without the floor disappearing.",
     "shadow": "The principle outranks the person in front of you. Being consistent starts to cost the relationship.",
+    "cost": "Nothing gets in, and the defense outlasts the threat.",
+    "watchFor": "Watch for the new thing you say no to before you know what it is.",
     "lifeDirection": "Your curriculum is learning that good principles flex. You're learning to hold your beliefs lightly.",
     "lens": {
       "balanced": "You build enough container that change can happen without the floor disappearing.",
@@ -2136,6 +4323,55 @@
       "resistance to growth",
       "false sense of stability"
     ],
+    "famous": [
+      {
+        "name": "Michelangelo",
+        "born": "1475-03-06",
+        "knownFor": "Renaissance sculptor and painter",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michelangelo"
+      },
+      {
+        "name": "Maya Angelou",
+        "born": "1928-04-04",
+        "knownFor": "Poet and memoirist",
+        "wikipedia": "https://en.wikipedia.org/wiki/Maya_Angelou"
+      },
+      {
+        "name": "James Dean",
+        "born": "1931-02-08",
+        "knownFor": "Actor, Rebel Without a Cause",
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Dean"
+      },
+      {
+        "name": "Robert Downey Jr.",
+        "born": "1965-04-04",
+        "knownFor": "Actor, Iron Man",
+        "wikipedia": "https://en.wikipedia.org/wiki/Robert_Downey_Jr."
+      },
+      {
+        "name": "Dwayne Johnson",
+        "born": "1972-05-02",
+        "knownFor": "Actor and wrestler, The Rock",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dwayne_Johnson"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-4-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Eight of Spades",
+        "href": "/compatibility/4-of-spades-and-8-of-spades"
+      }
+    ],
     "surfaceTruth": "I create reliable intellectual frameworks and systems that provide clarity and order.",
     "analog": {
       "title": "Mental Structure",
@@ -2151,10 +4387,10 @@
   },
   "5♠": {
     "code": "5♠",
+    "name": "5 of Spades",
     "slug": "5-of-spades",
-    "label": "Five of Spades",
-    "suit": "spades",
     "rank": "5",
+    "suit": "spades",
     "title": "The Restless Mind",
     "coreIdentity": "You stay in the hard stretch long enough to get better at it. Your mind is restless, always seeking new ideas, new truths, new ways of thinking. You get bored with settled beliefs.",
     "gifts": [
@@ -2163,7 +4399,10 @@
       "Natural curiosity and investigation",
       "Ability to see things from fresh angles"
     ],
+    "sweetSpot": "You stay in the hard stretch long enough to get better at it.",
     "shadow": "You change positions before any of them get depth. People cannot tell which one to build on.",
+    "cost": "You keep conflict close because it proves you can survive, and calm starts to feel like a loss.",
+    "watchFor": "Watch for the calm stretch you interrupt, and the reason you give for interrupting it.",
     "lifeDirection": "Your curriculum is learning that some truths require deep exploration. You're learning to sit with one idea long enough to integrate it.",
     "lens": {
       "balanced": "You stay in the hard stretch long enough to get better at it.",
@@ -2186,6 +4425,55 @@
       "irresponsibility",
       "fear of discipline"
     ],
+    "famous": [
+      {
+        "name": "Charles Dickens",
+        "born": "1812-02-07",
+        "knownFor": "Victorian novelist, A Christmas Carol",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charles_Dickens"
+      },
+      {
+        "name": "Marlon Brando",
+        "born": "1924-04-03",
+        "knownFor": "Actor, The Godfather",
+        "wikipedia": "https://en.wikipedia.org/wiki/Marlon_Brando"
+      },
+      {
+        "name": "Jane Goodall",
+        "born": "1934-04-03",
+        "knownFor": "Primatologist and chimpanzee researcher",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jane_Goodall"
+      },
+      {
+        "name": "Eddie Murphy",
+        "born": "1961-04-03",
+        "knownFor": "Comedian and actor, Beverly Hills Cop",
+        "wikipedia": "https://en.wikipedia.org/wiki/Eddie_Murphy"
+      },
+      {
+        "name": "Ashton Kutcher",
+        "born": "1978-02-07",
+        "knownFor": "Actor, That '70s Show",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ashton_Kutcher"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-5-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Seven of Diamonds",
+        "href": "/compatibility/7-of-diamonds-and-5-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Nine of Spades",
+        "href": "/compatibility/5-of-spades-and-9-of-spades"
+      }
+    ],
     "surfaceTruth": "I explore diverse intellectual territories and remain open to new perspectives.",
     "analog": {
       "title": "Mental Disruptor",
@@ -2201,10 +4489,10 @@
   },
   "6♠": {
     "code": "6♠",
+    "name": "6 of Spades",
     "slug": "6-of-spades",
-    "label": "Six of Spades",
-    "suit": "spades",
     "rank": "6",
+    "suit": "spades",
     "title": "The Responsible Mind",
     "coreIdentity": "You use what you have already walked through without requiring anyone else to be in pain for it to count. You feel responsibility for helping others think clearly. You're the teacher, the counselor, the one people ask for perspective. Your mind is oriented toward truth and guidance.",
     "gifts": [
@@ -2213,7 +4501,10 @@
       "Clear thinking and balanced perspective",
       "Talent for helping others process difficulty"
     ],
+    "sweetSpot": "You use what you have already walked through without requiring anyone else to be in pain for it to count.",
     "shadow": "You take responsibility for other people seeing it your way. Guidance crowds out their own work.",
+    "cost": "You need someone struggling so your help has a job, and care depends on their not-being-well.",
+    "watchFor": "Watch for the person whose crisis you keep checking on, and how you feel the week it resolves.",
     "lifeDirection": "Your curriculum is learning that real guidance means stepping back. You're learning to help without controlling.",
     "lens": {
       "balanced": "You use what you have already walked through without requiring anyone else to be in pain for it to count.",
@@ -2236,6 +4527,55 @@
       "burnout from service",
       "guilt-fueled healing"
     ],
+    "famous": [
+      {
+        "name": "Hans Christian Andersen",
+        "born": "1805-04-02",
+        "knownFor": "Danish fairy tale author",
+        "wikipedia": "https://en.wikipedia.org/wiki/Hans_Christian_Andersen"
+      },
+      {
+        "name": "Ronald Reagan",
+        "born": "1911-02-06",
+        "knownFor": "40th U.S. president",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ronald_Reagan"
+      },
+      {
+        "name": "Elvis Presley",
+        "born": "1935-01-08",
+        "knownFor": "The King of Rock and Roll",
+        "wikipedia": "https://en.wikipedia.org/wiki/Elvis_Presley"
+      },
+      {
+        "name": "Stephen Hawking",
+        "born": "1942-01-08",
+        "knownFor": "Theoretical physicist, A Brief History of Time",
+        "wikipedia": "https://en.wikipedia.org/wiki/Stephen_Hawking"
+      },
+      {
+        "name": "Bob Marley",
+        "born": "1945-02-06",
+        "knownFor": "Reggae legend",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bob_Marley"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ten of Clubs",
+        "href": "/compatibility/10-of-clubs-and-6-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Six of Clubs",
+        "href": "/compatibility/6-of-clubs-and-6-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-6-of-spades"
+      }
+    ],
     "surfaceTruth": "I seek balanced intellectual solutions that integrate different viewpoints harmoniously.",
     "analog": {
       "title": "Mental Server",
@@ -2251,10 +4591,10 @@
   },
   "7♠": {
     "code": "7♠",
+    "name": "7 of Spades",
     "slug": "7-of-spades",
-    "label": "Seven of Spades",
-    "suit": "spades",
     "rank": "7",
+    "suit": "spades",
     "title": "The Questioning Mind",
     "coreIdentity": "You study the hard pattern until you can name it, then you do the next honest thing. Your mind naturally questions everything—claims, beliefs, assumptions. You're the one who asks \"how do you know?\" Your thinking is critical and probing.",
     "gifts": [
@@ -2263,7 +4603,10 @@
       "Critical thinking and logical rigor",
       "Natural skepticism that prevents deception"
     ],
+    "sweetSpot": "You study the hard pattern until you can name it, then you do the next honest thing.",
     "shadow": "Questioning turns into a habit of taking things apart. Commitment looks naive, so nothing gets kept.",
+    "cost": "Difficulty becomes the worldview, and every clean fact gets filed as a setup.",
+    "watchFor": "Watch for the good news you spend an afternoon looking for the catch in.",
     "lifeDirection": "Your curriculum is learning that questioning serves understanding, not destruction. You're learning to ask from curiosity, not contempt.",
     "lens": {
       "balanced": "You study the hard pattern until you can name it, then you do the next honest thing.",
@@ -2286,6 +4629,55 @@
       "distrust in spirit",
       "intellectualized avoidance"
     ],
+    "famous": [
+      {
+        "name": "Alexander Graham Bell",
+        "born": "1847-03-03",
+        "knownFor": "Inventor credited with the telephone",
+        "wikipedia": "https://en.wikipedia.org/wiki/Alexander_Graham_Bell"
+      },
+      {
+        "name": "Zora Neale Hurston",
+        "born": "1891-01-07",
+        "knownFor": "Author, Their Eyes Were Watching God",
+        "wikipedia": "https://en.wikipedia.org/wiki/Zora_Neale_Hurston"
+      },
+      {
+        "name": "Hank Aaron",
+        "born": "1934-02-05",
+        "knownFor": "Baseball home run legend",
+        "wikipedia": "https://en.wikipedia.org/wiki/Hank_Aaron"
+      },
+      {
+        "name": "Nicolas Cage",
+        "born": "1964-01-07",
+        "knownFor": "Oscar-winning actor, Leaving Las Vegas",
+        "wikipedia": "https://en.wikipedia.org/wiki/Nicolas_Cage"
+      },
+      {
+        "name": "Jessica Biel",
+        "born": "1982-03-03",
+        "knownFor": "Actress, 7th Heaven",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jessica_Biel"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "King of Clubs",
+        "href": "/compatibility/king-of-clubs-and-7-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-7-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Jack of Diamonds",
+        "href": "/compatibility/jack-of-diamonds-and-7-of-spades"
+      }
+    ],
     "surfaceTruth": "I apply careful critical thinking to avoid errors and maintain intellectual integrity.",
     "analog": {
       "title": "Philosophical Mind",
@@ -2301,10 +4693,10 @@
   },
   "8♠": {
     "code": "8♠",
+    "name": "8 of Spades",
     "slug": "8-of-spades",
-    "label": "Eight of Spades",
-    "suit": "spades",
     "rank": "8",
+    "suit": "spades",
     "title": "The Powerful Mind",
     "coreIdentity": "You take the hard lead and you stay with the work after the call is made. Your mind is sharp, commanding, powerful. You think strategically and forcefully. You win arguments and debates. Your thinking dominates.",
     "gifts": [
@@ -2313,7 +4705,10 @@
       "Strong conviction and mental clarity",
       "Talent for directing others' thinking"
     ],
+    "sweetSpot": "You take the hard lead and you stay with the work after the call is made.",
     "shadow": "The stronger argument wins the room and empties it. People stop bringing you anything they cannot defend.",
+    "cost": "You run the room through force of mind; people comply and stop bringing real information.",
+    "watchFor": "Watch for the meeting you win, and how long it takes that team to bring you bad news again.",
     "lifeDirection": "Your curriculum is learning that power includes listening. You're learning that strength sometimes means stepping back.",
     "lens": {
       "balanced": "You take the hard lead and you stay with the work after the call is made.",
@@ -2336,6 +4731,55 @@
       "burnout",
       "resistance to surrender"
     ],
+    "famous": [
+      {
+        "name": "Charles Lindbergh",
+        "born": "1902-02-04",
+        "knownFor": "Aviator, first solo transatlantic flight",
+        "wikipedia": "https://en.wikipedia.org/wiki/Charles_Lindbergh"
+      },
+      {
+        "name": "Dr. Seuss",
+        "born": "1904-03-02",
+        "knownFor": "Children's author, The Cat in the Hat",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dr._Seuss"
+      },
+      {
+        "name": "Rosa Parks",
+        "born": "1913-02-04",
+        "knownFor": "Civil rights activist, Montgomery bus boycott",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rosa_Parks"
+      },
+      {
+        "name": "Rowan Atkinson",
+        "born": "1955-01-06",
+        "knownFor": "Comedian, Mr. Bean and Blackadder",
+        "wikipedia": "https://en.wikipedia.org/wiki/Rowan_Atkinson"
+      },
+      {
+        "name": "Jon Bon Jovi",
+        "born": "1962-03-02",
+        "knownFor": "Rock singer, Bon Jovi frontman",
+        "wikipedia": "https://en.wikipedia.org/wiki/Jon_Bon_Jovi"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ace of Diamonds",
+        "href": "/compatibility/ace-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Ten of Diamonds",
+        "href": "/compatibility/10-of-diamonds-and-8-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Queen of Diamonds",
+        "href": "/compatibility/queen-of-diamonds-and-8-of-spades"
+      }
+    ],
     "surfaceTruth": "I explore intellectual depths to understand root causes and fundamental principles.",
     "analog": {
       "title": "Mental Mastery",
@@ -2351,10 +4795,10 @@
   },
   "9♠": {
     "code": "9♠",
+    "name": "9 of Spades",
     "slug": "9-of-spades",
-    "label": "Nine of Spades",
-    "suit": "spades",
     "rank": "9",
+    "suit": "spades",
     "title": "The Idealistic Mind",
     "coreIdentity": "You complete the hard stretch and put the lesson down. Your mind is oriented toward universal truths and highest principles. You think in terms of what could be and what should be. Your ideas are idealistic.",
     "gifts": [
@@ -2363,7 +4807,10 @@
       "Idealistic principles and ethics",
       "Natural inspiration toward greater good"
     ],
+    "sweetSpot": "You complete the hard stretch and put the lesson down.",
     "shadow": "The ideal stays cleaner than the implementation. Vision without a next action teaches people not to wait.",
+    "cost": "You force the ending before the work is done, and closure becomes a way not to stay.",
+    "watchFor": "Watch for the ending you speed up this month, and what was still unfinished inside it.",
     "lifeDirection": "Your curriculum is learning that ideals only matter if they're implemented. You're learning to ground vision in reality.",
     "lens": {
       "balanced": "You complete the hard stretch and put the lesson down.",
@@ -2386,6 +4833,55 @@
       "spiritual detachment",
       "hopelessness"
     ],
+    "famous": [
+      {
+        "name": "Norman Rockwell",
+        "born": "1894-02-03",
+        "knownFor": "American painter and illustrator",
+        "wikipedia": "https://en.wikipedia.org/wiki/Norman_Rockwell"
+      },
+      {
+        "name": "Hayao Miyazaki",
+        "born": "1941-01-05",
+        "knownFor": "Studio Ghibli animation director",
+        "wikipedia": "https://en.wikipedia.org/wiki/Hayao_Miyazaki"
+      },
+      {
+        "name": "Diane Keaton",
+        "born": "1946-01-05",
+        "knownFor": "Oscar-winning actress, Annie Hall",
+        "wikipedia": "https://en.wikipedia.org/wiki/Diane_Keaton"
+      },
+      {
+        "name": "Bradley Cooper",
+        "born": "1975-01-05",
+        "knownFor": "Actor, A Star Is Born",
+        "wikipedia": "https://en.wikipedia.org/wiki/Bradley_Cooper"
+      },
+      {
+        "name": "Justin Bieber",
+        "born": "1994-03-01",
+        "knownFor": "Canadian pop singer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Justin_Bieber"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "King of Hearts",
+        "href": "/compatibility/king-of-hearts-and-9-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Nine of Clubs",
+        "href": "/compatibility/9-of-clubs-and-9-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "King of Diamonds",
+        "href": "/compatibility/king-of-diamonds-and-9-of-spades"
+      }
+    ],
     "surfaceTruth": "I naturally recognize patterns and connections others miss, synthesizing complex information.",
     "analog": {
       "title": "Universal Mind",
@@ -2401,10 +4897,10 @@
   },
   "10♠": {
     "code": "10♠",
+    "name": "10 of Spades",
     "slug": "10-of-spades",
-    "label": "Ten of Spades",
-    "suit": "spades",
     "rank": "10",
+    "suit": "spades",
     "title": "The Completed Mind",
     "coreIdentity": "You do the difficult curriculum in front of you without adding the ones that are not yours. You've thought deeply, questioned thoroughly, arrived at wisdom. Your mind is mature, integrated, complete. You have clarity and peace about your beliefs.",
     "gifts": [
@@ -2413,7 +4909,10 @@
       "Ability to radiate confidence about truth",
       "Natural authority and master perspective"
     ],
+    "sweetSpot": "You do the difficult curriculum in front of you without adding the ones that are not yours.",
     "shadow": "You treat the current map as finished. Peace arrives; revision does not.",
+    "cost": "You raise the standard until no one can meet it, and relentlessness replaces judgment.",
+    "watchFor": "Watch for the standard you raise right after someone finally meets the old one.",
     "lifeDirection": "Your curriculum is learning that wisdom is a process, not a destination. You're learning to keep questioning despite confidence.",
     "lens": {
       "balanced": "You do the difficult curriculum in front of you without adding the ones that are not yours.",
@@ -2436,6 +4935,55 @@
       "pressure to transform",
       "exhaustion cycles"
     ],
+    "famous": [
+      {
+        "name": "Louis Braille",
+        "born": "1809-01-04",
+        "knownFor": "Inventor of the braille writing system",
+        "wikipedia": "https://en.wikipedia.org/wiki/Louis_Braille"
+      },
+      {
+        "name": "James Joyce",
+        "born": "1882-02-02",
+        "knownFor": "Irish novelist, Ulysses",
+        "wikipedia": "https://en.wikipedia.org/wiki/James_Joyce"
+      },
+      {
+        "name": "Ayn Rand",
+        "born": "1905-02-02",
+        "knownFor": "Author of Atlas Shrugged",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ayn_Rand"
+      },
+      {
+        "name": "Farrah Fawcett",
+        "born": "1947-02-02",
+        "knownFor": "Actress, Charlie's Angels",
+        "wikipedia": "https://en.wikipedia.org/wiki/Farrah_Fawcett"
+      },
+      {
+        "name": "Shakira",
+        "born": "1977-02-02",
+        "knownFor": "Colombian singer, Hips Don't Lie",
+        "wikipedia": "https://en.wikipedia.org/wiki/Shakira"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Three of Diamonds",
+        "href": "/compatibility/3-of-diamonds-and-10-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-10-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Ace of Spades",
+        "href": "/compatibility/ace-of-spades-and-10-of-spades"
+      }
+    ],
     "surfaceTruth": "I build comprehensive intellectual systems that explain complex realities coherently.",
     "analog": {
       "title": "Mental Completion",
@@ -2451,10 +4999,10 @@
   },
   "J♠": {
     "code": "J♠",
+    "name": "Jack of Spades",
     "slug": "jack-of-spades",
-    "label": "Jack of Spades",
-    "suit": "spades",
     "rank": "J",
+    "suit": "spades",
     "title": "The Messenger of Truth",
     "coreIdentity": "You name what is actually happening and you remain after you have said it. You have the gift of saying what needs to be said, even when it's hard. You're the one who speaks up when others stay silent.",
     "gifts": [
@@ -2463,7 +5011,10 @@
       "Gift for bringing necessary perspective",
       "Talent for shifting how people think"
     ],
+    "sweetSpot": "You name what is actually happening and you remain after you have said it.",
     "shadow": "You say the hard thing and leave. The fact lands; the repair does not, because you are already gone.",
+    "cost": "Honesty becomes a ranking system, and people hear the cut before they hear the fact.",
+    "watchFor": "Watch for the true thing you say on your way out of the room.",
     "lifeDirection": "Your curriculum is learning that truth requires compassion. You're learning to speak and stay, to deliver hard messages with care.",
     "lens": {
       "balanced": "You name what is actually happening and you remain after you have said it.",
@@ -2486,6 +5037,55 @@
       "impulsiveness in healing",
       "ego resistance"
     ],
+    "famous": [
+      {
+        "name": "J. R. R. Tolkien",
+        "born": "1892-01-03",
+        "knownFor": "Author of The Lord of the Rings",
+        "wikipedia": "https://en.wikipedia.org/wiki/J._R._R._Tolkien"
+      },
+      {
+        "name": "Clark Gable",
+        "born": "1901-02-01",
+        "knownFor": "Actor, Gone with the Wind",
+        "wikipedia": "https://en.wikipedia.org/wiki/Clark_Gable"
+      },
+      {
+        "name": "Langston Hughes",
+        "born": "1901-02-01",
+        "knownFor": "Poet of the Harlem Renaissance",
+        "wikipedia": "https://en.wikipedia.org/wiki/Langston_Hughes"
+      },
+      {
+        "name": "Mel Gibson",
+        "born": "1956-01-03",
+        "knownFor": "Actor and director, Braveheart",
+        "wikipedia": "https://en.wikipedia.org/wiki/Mel_Gibson"
+      },
+      {
+        "name": "Michael Schumacher",
+        "born": "1969-01-03",
+        "knownFor": "Seven-time Formula One world champion",
+        "wikipedia": "https://en.wikipedia.org/wiki/Michael_Schumacher"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Six of Diamonds",
+        "href": "/compatibility/6-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Two of Diamonds",
+        "href": "/compatibility/2-of-diamonds-and-jack-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Four of Spades",
+        "href": "/compatibility/4-of-spades-and-jack-of-spades"
+      }
+    ],
     "surfaceTruth": "I challenge intellectual conventions and question established thinking patterns.",
     "analog": {
       "title": "Curious Mind",
@@ -2501,10 +5101,10 @@
   },
   "Q♠": {
     "code": "Q♠",
+    "name": "Queen of Spades",
     "slug": "queen-of-spades",
-    "label": "Queen of Spades",
-    "suit": "spades",
     "rank": "Q",
+    "suit": "spades",
     "title": "The Wise Guide",
     "coreIdentity": "You tell the necessary truth at a volume the other person can use. You have wisdom, understanding, and the ability to guide others toward truth. You create intellectual safety where people can explore ideas. You're the wise counselor.",
     "gifts": [
@@ -2513,7 +5113,10 @@
       "Natural mentoring and guidance",
       "Talent for helping others discover their own truth"
     ],
+    "sweetSpot": "You tell the necessary truth at a volume the other person can use.",
     "shadow": "You steer people toward your conclusion and call it guidance. Their own thinking does not get practiced.",
+    "cost": "You hold the fact back so you keep the advantage, and clarity becomes a private asset.",
+    "watchFor": "Watch for the fact you hold back in a meeting, and what holding it buys you.",
     "lifeDirection": "Your curriculum is learning that true guidance means stepping back. You're learning to trust others' minds.",
     "lens": {
       "balanced": "You tell the necessary truth at a volume the other person can use.",
@@ -2536,6 +5139,55 @@
       "intuitive confusion",
       "control through care"
     ],
+    "famous": [
+      {
+        "name": "Cuba Gooding Jr.",
+        "born": "1968-01-02",
+        "knownFor": "Oscar-winning actor, Jerry Maguire",
+        "wikipedia": "https://en.wikipedia.org/wiki/Cuba_Gooding_Jr."
+      },
+      {
+        "name": "Christy Turlington",
+        "born": "1969-01-02",
+        "knownFor": "Supermodel and maternal health advocate",
+        "wikipedia": "https://en.wikipedia.org/wiki/Christy_Turlington"
+      },
+      {
+        "name": "Taye Diggs",
+        "born": "1971-01-02",
+        "knownFor": "Actor, Rent and Private Practice",
+        "wikipedia": "https://en.wikipedia.org/wiki/Taye_Diggs"
+      },
+      {
+        "name": "Dax Shepard",
+        "born": "1975-01-02",
+        "knownFor": "Actor and Armchair Expert podcast host",
+        "wikipedia": "https://en.wikipedia.org/wiki/Dax_Shepard"
+      },
+      {
+        "name": "Kate Bosworth",
+        "born": "1983-01-02",
+        "knownFor": "Actress, Blue Crush",
+        "wikipedia": "https://en.wikipedia.org/wiki/Kate_Bosworth"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Nine of Diamonds",
+        "href": "/compatibility/9-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Five of Diamonds",
+        "href": "/compatibility/5-of-diamonds-and-queen-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Seven of Spades",
+        "href": "/compatibility/7-of-spades-and-queen-of-spades"
+      }
+    ],
     "surfaceTruth": "I apply natural analytical abilities to solve complex problems others can't resolve.",
     "analog": {
       "title": "Internal Thinker",
@@ -2551,10 +5203,10 @@
   },
   "K♠": {
     "code": "K♠",
+    "name": "King of Spades",
     "slug": "king-of-spades",
-    "label": "King of Spades",
-    "suit": "spades",
     "rank": "K",
+    "suit": "spades",
     "title": "The Master of Thought",
     "coreIdentity": "You make the hard call without pretending you have no interior. You command through clarity and intellectual authority. You're the decision-maker, the authority on truth. Your thinking is decisive and definitive.",
     "gifts": [
@@ -2563,7 +5215,10 @@
       "Ability to direct complex thinking",
       "Confidence that inspires others' confidence"
     ],
+    "sweetSpot": "You make the hard call without pretending you have no interior.",
     "shadow": "You treat your perspective as the standard. People comply with the authority and stop testing the thought.",
+    "cost": "Feeling is treated as a leak, people fall in line, and they stop bringing you anything human.",
+    "watchFor": "Watch for the week you make three hard calls and tell nobody what any of them cost.",
     "lifeDirection": "Your curriculum is learning that good intellectual leadership means considering other minds. You're learning that authority and humility can coexist.",
     "lens": {
       "balanced": "You make the hard call without pretending you have no interior.",
@@ -2586,6 +5241,55 @@
       "control dominance",
       "resistance to vulnerability"
     ],
+    "famous": [
+      {
+        "name": "Paul Revere",
+        "born": "1735-01-01",
+        "knownFor": "American Revolution silversmith and patriot",
+        "wikipedia": "https://en.wikipedia.org/wiki/Paul_Revere"
+      },
+      {
+        "name": "Betsy Ross",
+        "born": "1752-01-01",
+        "knownFor": "Credited with early American flag",
+        "wikipedia": "https://en.wikipedia.org/wiki/Betsy_Ross"
+      },
+      {
+        "name": "E. M. Forster",
+        "born": "1879-01-01",
+        "knownFor": "English novelist, A Passage to India",
+        "wikipedia": "https://en.wikipedia.org/wiki/E._M._Forster"
+      },
+      {
+        "name": "J. D. Salinger",
+        "born": "1919-01-01",
+        "knownFor": "Author of The Catcher in the Rye",
+        "wikipedia": "https://en.wikipedia.org/wiki/J._D._Salinger"
+      },
+      {
+        "name": "Grandmaster Flash",
+        "born": "1958-01-01",
+        "knownFor": "Hip hop DJ pioneer",
+        "wikipedia": "https://en.wikipedia.org/wiki/Grandmaster_Flash"
+      }
+    ],
+    "pairs": [
+      {
+        "pos": "Venus",
+        "name": "Ace of Clubs",
+        "href": "/compatibility/ace-of-clubs-and-king-of-spades"
+      },
+      {
+        "pos": "Moon",
+        "name": "Eight of Diamonds",
+        "href": "/compatibility/8-of-diamonds-and-king-of-spades"
+      },
+      {
+        "pos": "Mars",
+        "name": "Queen of Clubs",
+        "href": "/compatibility/queen-of-clubs-and-king-of-spades"
+      }
+    ],
     "surfaceTruth": "I provide intellectual leadership through strategic thinking and clear analysis.",
     "analog": {
       "title": "Intellectual Authority",
@@ -2598,5 +5302,57 @@
       "practice": "Listen to opposing viewpoints without trying to correct them.",
       "mantra": "I am intellectual authority."
     }
+  },
+  "Joker": {
+    "code": "Joker",
+    "name": "The Joker",
+    "slug": "joker",
+    "rank": "Joker",
+    "suit": "joker",
+    "title": "The One Outside the Map",
+    "coreIdentity": "You are born on December 31, the one birthday the 52 card map does not cover. Your day holds the Joker, the card that sits outside the deck and can stand in for any of them. You read a room quickly and take the role it is missing. People meet several versions of you, and each one is real.",
+    "sweetSpot": "You use the outside seat on purpose: you take the job nobody is holding, you say the thing the placed people cannot say, and you hand it back when the room can run without you.",
+    "shadow": "You keep being the exception, so nothing has to settle and every role stays a costume you can take off.",
+    "cost": "Nobody gets a fixed address for you, so people stop reaching for the person under the roles.",
+    "watchFor": "Watch for the week you introduce yourself three different ways. Notice which version you would keep if someone made you choose one.",
+    "keywords": [
+      "outsider identity",
+      "role-shifting",
+      "unplaceable",
+      "belonging avoidance"
+    ],
+    "pairs": [],
+    "famous": [
+      {
+        "name": "Henri Matisse",
+        "born": "1869-12-31",
+        "knownFor": "French painter, Fauvism",
+        "wikipedia": "https://en.wikipedia.org/wiki/Henri_Matisse"
+      },
+      {
+        "name": "Anthony Hopkins",
+        "born": "1937-12-31",
+        "knownFor": "Oscar-winning actor, The Silence of the Lambs",
+        "wikipedia": "https://en.wikipedia.org/wiki/Anthony_Hopkins"
+      },
+      {
+        "name": "Ben Kingsley",
+        "born": "1943-12-31",
+        "knownFor": "Oscar-winning actor, Gandhi",
+        "wikipedia": "https://en.wikipedia.org/wiki/Ben_Kingsley"
+      },
+      {
+        "name": "John Denver",
+        "born": "1943-12-31",
+        "knownFor": "Singer-songwriter, Take Me Home, Country Roads",
+        "wikipedia": "https://en.wikipedia.org/wiki/John_Denver"
+      },
+      {
+        "name": "Donna Summer",
+        "born": "1948-12-31",
+        "knownFor": "The Queen of Disco",
+        "wikipedia": "https://en.wikipedia.org/wiki/Donna_Summer"
+      }
+    ]
   }
 }
