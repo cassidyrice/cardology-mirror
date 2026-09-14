@@ -114,10 +114,9 @@ export default function CompatibilityCalculatorPage() {
         </p>
       </div>
       <p className="prose-reading mb-6 text-brand-ink-soft">
-        Two birthdays, one map. Enter both dates to compare playing-card birth
-        cards, each Life Path constitution, where the other person lands in your
-        spectrum, and which Life Path cards you share. After the result, open the
-        matching pair page in the directory for the full write-up. The{" "}
+        Read each person&rsquo;s result in both directions, then open the matching
+        pair guide. The interpretation offers questions for reflection; it does
+        not measure the quality or future of your relationship. The{" "}
         <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
           $13 One Question Reading
         </Link>{" "}

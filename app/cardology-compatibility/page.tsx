@@ -171,6 +171,18 @@ export default function CompatibilityPage() {
         </p>
       </section>
 
+      <section className="mt-10" aria-labelledby="compatibility-conversation">
+        <h2 id="compatibility-conversation" className="font-serif text-xl text-brand-ink">Turn the result into a conversation</h2>
+        <p className="prose-reading mt-4 text-brand-ink-soft">
+          Read both birth cards before interpreting a connection. Choose one
+          difference you recognize in daily life: how you ask for support, make
+          plans, discuss money, or handle disagreement. Each person names one
+          recent example, then one change they would find helpful. Use the cards
+          to start the discussion; let your actual experience decide whether the
+          interpretation fits.
+        </p>
+      </section>
+
       <section className="mt-10">
         <h2 className="type-eyebrow mb-4 !text-brand-bronze">Compatibility FAQ</h2>
         <div className="space-y-4">

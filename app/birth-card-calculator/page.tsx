@@ -88,7 +88,7 @@ const faqs = [
   },
   {
     q: "How is the birth card calculated?",
-    a: "It is a deterministic formula on birth month and day. The same birthday always produces the same card — no shuffle, no interpretation step, and nothing random. You can re-run it anytime and get the same result.",
+    a: "Calculate the solar value as 55 − (2 × month + day). Values 1–13 map to Hearts, 14–26 to Clubs, 27–39 to Diamonds, and 40–52 to Spades, with Ace through King in each suit. January 15 gives 38: the Queen of Diamonds. December 31 gives 0 and is the Joker exception. The birth year does not change this result.",
   },
   {
     q: "Is this a Cardology birthday calculator or a chart calculator?",
@@ -155,6 +155,7 @@ export default function CalculatorPage() {
     description: DESCRIPTION,
     dateModified: REVIEWED_DATE,
     datePublished: "2026-08-07",
+    image: "https://cardblueprints.com/og/birth-card-calculator.png",
     mainEntityOfPage: "https://cardblueprints.com/birth-card-calculator",
     author: { "@type": "Person", name: "Cassidy Rice", url: "https://cardblueprints.com/about" },
     publisher: { "@id": "https://cardblueprints.com/#organization" },
@@ -246,9 +247,9 @@ export default function CalculatorPage() {
         <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           A Cardology chart (also called the Cardology calendar or birthday
-          chart) is the birthday-to-playing-card map: every calendar date
-          resolves to one card in a standard 52-card deck. Month and day are
-          coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
+          chart) is the birthday-to-playing-card map: each calendar date
+          maps to a playing card, with December 31 set apart as the Joker.
+          Month and day are coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
           Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
           date always yields the same card.
         </p>
