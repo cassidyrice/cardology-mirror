@@ -87,7 +87,7 @@ const faqs = [
   },
   {
     q: "How is the birth card calculated?",
-    a: "It is a deterministic formula on birth month and day. The same birthday always produces the same card — no shuffle, no interpretation step, and nothing random. You can re-run it anytime and get the same result.",
+    a: "Calculate the solar value as 55 − (2 × month + day). Values 1–13 map to Hearts, 14–26 to Clubs, 27–39 to Diamonds, and 40–52 to Spades, with Ace through King in each suit. January 15 gives 38: the Queen of Diamonds. December 31 gives 0 and is the Joker exception. The birth year does not change this result.",
   },
   {
     q: "Is this a Cardology birthday calculator or a chart calculator?",
@@ -154,6 +154,7 @@ export default function CalculatorPage() {
     description: DESCRIPTION,
     dateModified: REVIEWED_DATE,
     datePublished: "2026-08-07",
+    image: "https://cardblueprints.com/og/birth-card-calculator.png",
     mainEntityOfPage: "https://cardblueprints.com/birth-card-calculator",
     author: { "@type": "Person", name: "Cassidy Rice", url: "https://cardblueprints.com/about" },
     publisher: { "@id": "https://cardblueprints.com/#organization" },
@@ -285,8 +286,9 @@ export default function CalculatorPage() {
         <p className="eyebrow mb-2 text-gold">The birthday map</p>
         <h2 className="font-serif text-3xl text-bone">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-mist">
-          A Cardology chart is the birthday-to-playing-card map: every calendar
-          date resolves to one card in a standard 52-card deck. Month and day are
+          A Cardology chart is the birthday-to-playing-card map: each calendar
+          date maps to a playing card, with December 31 set apart as the Joker.
+          Month and day are
           coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
           Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
           date always yields the same card.
@@ -331,10 +333,12 @@ export default function CalculatorPage() {
             <h2 className="font-serif text-3xl text-bone">Birth card calculator example: January 15</h2>
           </summary>
         <p className="prose-reading mt-4 text-mist">
-          Enter January 15 and the calculator returns the <strong>Queen of Diamonds</strong>{" "}
-          as the birth card. Run January 15 again and the answer stays the same. That
-          repeatability is the simplest accuracy check: fixed input, fixed output.
-          You can inspect the longer calculation and interpretation boundary on our{" "}
+          January 15 gives a solar value of <strong>55 − (2 × 1 + 15) = 38</strong>.
+          Values 1–13 map to Hearts, 14–26 to Clubs, 27–39 to Diamonds, and
+          40–52 to Spades, with Ace through King in each suit. Value 38 is the
+          twelfth card in Diamonds: the <strong>Queen of Diamonds</strong>.
+          Check January 15 in the chart above. December 31 gives 0 and is the
+          Joker exception. See the complete date map and interpretation limits on our{" "}
           <Link href="/methodology" className="text-gold underline underline-offset-4">
             published methodology page
           </Link>
