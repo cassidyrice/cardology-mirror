@@ -12,9 +12,9 @@ import {
   VIDEO_PATH,
 } from "@/lib/site";
 
-const TITLE = "Cardology Compatibility Calculator (Playing Cards, Not Tarot)";
+const TITLE = "Birth Card Compatibility Calculator | Cardology";
 const DESCRIPTION =
-  "Free playing-card compatibility calculator. Enter two birthdays — Cardology birth cards + Life Path map, not a tarot love reading. Same dates, same result.";
+  "Compare two birthdays using playing-card Cardology. Explore your birth cards and Life Path connections, then open the guide to your pairing.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -114,10 +114,9 @@ export default function CompatibilityCalculatorPage() {
         </p>
       </div>
       <p className="prose-reading mb-6 text-mist">
-        Two birthdays, one map. Enter both dates to compare playing-card birth
-        cards, each Life Path constitution, where the other person lands in your
-        spectrum, and which Life Path cards you share. After the result, open the
-        matching pair page in the directory for the full write-up. The{" "}
+        Read each person&rsquo;s result in both directions, then open the matching
+        pair guide. The interpretation offers questions for reflection; it does
+        not measure the quality or future of your relationship. The{" "}
         <Link href="/products/52xseven-blueprint" className="text-gold underline underline-offset-4">
           $19 52xSeven Blueprint
         </Link>{" "}
