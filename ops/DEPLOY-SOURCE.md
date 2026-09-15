@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-14** (deployed `main` @ `72debb7` — Spreads: publish all 90 boards on /playing-card-spreads; previous record `ed40f0c`)
+**Last verified: 2026-09-15** (deployed `main` @ `9e3f3fd` — Cardology books & decks: a sourced bibliography directory; previous record `72debb7`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `72debb78b8779dde3d41d1a5ff64830136126a07` |
+| **Deployed commit** | `9e3f3fd160890708e796736e93630c2a08855a52` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
