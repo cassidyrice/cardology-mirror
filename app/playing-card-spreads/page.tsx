@@ -140,6 +140,82 @@ function BoardGrid({ spread, highlight, label }: { spread: Spread; highlight: st
   );
 }
 
+// All 90 boards, rendered from engine data (cardology.SPREADS). Nothing here
+// is authored: board N is the same structure the reading engine reads when it
+// resolves a person's year (year-blueprint.ts: karma spread = age mod 90).
+//
+// These use a compact renderer, not BoardGrid. BoardGrid's per-cell Tailwind
+// classes + inline style cost ~200 bytes a cell; at 90 boards x 52 cards that
+// built a 1.7MB page. The classes below are emitted once, which keeps the
+// same markup near ~25 bytes a cell. Collapsed <details> stays indexable.
+const BOARD_CSS = `
+.sb-w{overflow-x:auto}
+.sb{border-collapse:collapse;width:100%;min-width:19rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem}
+.sb td{border:1px solid rgba(255,255,255,.1);padding:5px 2px;text-align:center;color:#cfd0dc}
+.sb td.r{color:#d05c72}
+.sb td.h{background:#8e321f;color:#fff;font-weight:700}
+.sb-c{margin:0 0 5px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.7rem;letter-spacing:.18em;color:#a7a698}
+.sb-c .h{background:#8e321f;color:#fff;font-weight:700;border-radius:3px;padding:1px 5px}
+`;
+
+const RED_SUIT = /[\u2665\u2666]/; // hearts, diamonds
+
+function CompactBoard({ spread, highlight, caption }: { spread: Spread; highlight: string; caption: string }) {
+  return (
+    <div className="sb-w">
+      <p className="sb-c">
+        crown:{" "}
+        {spread.crown.map((c, i) => (
+          <span key={c} className={c === highlight ? "h" : undefined}>
+            {c}
+            {i < spread.crown.length - 1 ? " \u00b7 " : ""}
+          </span>
+        ))}
+      </p>
+      <table className="sb">
+        <caption className="sr-only">{caption}</caption>
+        <tbody>
+          {spread.grid.map((row, i) => (
+            <tr key={i}>
+              {row.map((code) => (
+                <td key={code} className={code === highlight ? "h" : RED_SUIT.test(code) ? "r" : undefined}>
+                  {code}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function AllYearlySpreads({ highlight }: { highlight: string }) {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: BOARD_CSS }} />
+      <div className="mt-6 space-y-1.5">
+        {Array.from({ length: 90 }, (_, n) => {
+          const spread = ENGINE_SPREADS[String(n)];
+          if (!spread) return null;
+          const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
+          return (
+            <details key={n} className="rounded-xl border border-white/10 bg-white/[0.03]">
+              <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-bone">
+                Spread {n}
+                <span className="text-faint"> \u2014 the board at age {n}{alias}</span>
+              </summary>
+              <div className="px-3 pb-4">
+                <CompactBoard spread={spread} highlight={highlight} caption={`Spread ${n}, the board at age ${n}: seven rows of seven seats plus a three-card crown.`} />
+              </div>
+            </details>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
 export default function PlayingCardSpreads() {
   const faqs = [
     {
@@ -375,6 +451,23 @@ export default function PlayingCardSpreads() {
             card shows up wearing two jobs.)
           </li>
         </ul>
+        <h3 id="all-90-spreads" className="mt-10 scroll-mt-10 font-serif text-2xl text-bone">
+          All 90 spreads
+        </h3>
+        <p className="prose-reading mt-3 text-mist">
+          Here are all ninety boards in full — the same arrangements the reading
+          engine uses, not redrawn by hand. Open any number to see that board&rsquo;s
+          seven rows and its crown. Board 0 is the Life Spread and board 1 is the
+          Spirit Spread, so those two do double duty: they are the deck&rsquo;s fixed
+          arrangements and the boards for ages 0 and 1.
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          The {ex.card} is marked on every board so you can watch one card travel.
+          Open spread {ex.age}, then spread {ex.walkBoard}, and you are looking at
+          exactly what the worked example above describes: where this card stands
+          this year, and the board it walks.
+        </p>
+        <AllYearlySpreads highlight={ex.card} />
         <p className="prose-reading mt-6 text-mist">
           Want your own seats and walk?{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
