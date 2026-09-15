@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-15** (deployed `main` @ `3856b42` — Reading API: allow cross-origin calls; previous record `6f81906`)
+**Last verified: 2026-09-15** (deployed `main` @ `c23a499` — Compatibility API, and fix the broken two-date path I shipped this morning; previous record `3856b42`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `3856b4264bc6c112c8a7858dbf8c9bfab867d80a` |
+| **Deployed commit** | `c23a4991fa24d9401364160c6ef9dec397a2cb4d` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
