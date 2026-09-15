@@ -404,6 +404,13 @@ export default function WhatIsCardology() {
           library records and the surviving books actually show. Every entry links to the source
           it rests on; anything that rests only on one author&rsquo;s word is marked as such.
         </p>
+        <p className="prose-reading mt-3 text-mist">
+          Book by book, with publisher and catalogue record:{" "}
+          <Link href="/cardology-books" className="text-gold underline underline-offset-4">
+            the Cardology books &amp; decks directory
+          </Link>
+          .
+        </p>
         <ol className="mt-4 space-y-3 border-l border-white/15 pl-4">
           {CARDOLOGY_TIMELINE.map((t) => (
             <li key={t.year + t.sourceLabel} className="relative pl-2">
