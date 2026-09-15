@@ -458,7 +458,7 @@ export default function CalculatorPage() {
           <strong>Destiny Cards</strong> or <strong>Love Cards</strong>. We use{" "}
           <strong>Cardology</strong> and publish the method so you can check the math.{" "}
           <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
-            Destiny Cards &amp; Love Cards explained →
+            Cards of Destiny &amp; Love Cards explained →
           </Link>
         </p>
         </details>

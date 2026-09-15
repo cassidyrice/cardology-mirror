@@ -475,7 +475,12 @@ export default function WhatIsCardology() {
           A card cannot tell you what will happen on Tuesday. What it can do is name a
           recurring pattern with enough precision that you start seeing it in behavior.
           Card Blueprints frames the whole practice as self-awareness and entertainment —
-          tendencies, not fate.
+          tendencies, not fate. It is also not a separate system from{" "}
+          <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+            Cards of Destiny
+          </Link>
+          {" "}— that is the same birthday-to-card map under the name Robert Camp&rsquo;s
+          books made popular.
         </p>
         <p className="prose-reading mt-3 text-mist">
           For a side-by-side with tarot language, see{" "}

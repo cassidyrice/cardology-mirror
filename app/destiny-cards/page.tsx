@@ -9,9 +9,9 @@ import { SITE_NAME } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
-const TITLE = "Destiny Cards Calculator — Free Birth Card (Not Tarot)";
+const TITLE = "Cards of Destiny: Free Birth Card Calculator (Destiny Cards)";
 const DESCRIPTION =
-  "Destiny Cards = your birthday locked to one playing card. Free lookup, ruling card, full meaning. Same deck family as Cardology — not tarot Major Arcana.";
+  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, full meaning, and the books the system comes from. Not tarot.";
 const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   keywords: [
     "cards of destiny",
     "destiny cards",
+    "cards of destiny reading",
+    "cards of destiny book",
+    "cards of destiny compatibility chart",
     "destiny card calculator",
     "cards of destiny calculator",
     "destiny cards chart",
@@ -116,6 +119,14 @@ const faqs = [
     a: "No. The free calculator and published method are enough. The books are one doorway into the family, not a requirement.",
   },
   {
+    q: "Is there a Cards of Destiny compatibility chart?",
+    a: "Yes — but a chart is the slow way. A compatibility chart lists how each of the 52 cards reads against the others; the free compatibility calculator does the same lookup from two birthdays and shows the positions behind the answer rather than a single score.",
+  },
+  {
+    q: "Is there a Cards of Destiny app?",
+    a: "The calculator on this page works in any phone browser with no install and no account — enter a birthday and it returns the card, the ruling card, and the full meaning page.",
+  },
+  {
     q: "What is a Cards of Destiny reading?",
     a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; the paid One Question Reading answers one specific question from the same cards.",
   },
@@ -171,7 +182,7 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
       <p className="eyebrow mb-3 text-gold">Free lookup · not tarot · not fate</p>
-      <h1 className="display mb-3 text-3xl text-bone">Destiny Cards: Find Your Birth Card (Free Calculator)</h1>
+      <h1 className="display mb-3 text-3xl text-bone">Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -347,6 +358,44 @@ export default function DestinyCardsPage() {
             Cardology for beginners
           </Link>
           .
+        </p>
+      </section>
+
+      <section className="mt-10" id="book">
+        <h2 className="eyebrow mb-3 text-gold">The Cards of Destiny books</h2>
+        <p className="prose-reading text-mist">
+          Searching the phrase usually turns up books before it turns up a
+          calculator, so here is the shelf in order. Robert Lee Camp&rsquo;s{" "}
+          <em>The Cards of Your Destiny</em> (Seven Thunders, 1992) carries the
+          yearly spread; his <em>Destiny Cards</em> and <em>Love Cards</em>
+          (Sourcebooks, 1997) are the trade editions that put the name in
+          bookshops. Sharon Jeffers&rsquo; <em>Cards of Destiny</em> (2006) is a
+          different author working the same birthday system. All three rest on
+          Olney Richmond&rsquo;s <em>Mystic Test Book</em> (1893) and the birthday
+          chart in <em>Sacred Symbols of the Ancients</em> (1947).
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          Every title with its publisher, year, and catalogue record is in the{" "}
+          <Link href="/cardology-books" className="text-gold underline underline-offset-4">
+            books and decks directory
+          </Link>
+          . You do not need any of them to use the calculator above — the method is
+          published on the{" "}
+          <Link href="/methodology" className="text-gold underline underline-offset-4">
+            methodology page
+          </Link>
+          .
+        </p>
+      </section>
+
+      <section className="mt-10" id="not-caraval">
+        <h2 className="eyebrow mb-3 text-gold">Looking for the Caraval Deck of Destiny?</h2>
+        <p className="prose-reading text-mist">
+          Different thing entirely. The Deck of Destiny in Stephanie Garber&rsquo;s
+          Caraval and Once Upon a Broken Heart novels is fiction — invented cards
+          with invented Fates. The Cards of Destiny on this page are a 52-card
+          playing deck mapped to calendar dates, in print since 1893. If you came
+          here for the novels, this page will not help.
         </p>
       </section>
 
