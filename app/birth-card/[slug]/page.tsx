@@ -960,6 +960,24 @@ function tarotAnalogue(card: CardSeo): string {
   return `${rankWord} of ${TAROT_SUIT[card.suit]}`;
 }
 
+function spiritualReadingText(card: CardSeo): string {
+  // GSC 2026-09: "{card} spiritual meaning" is ~30/mo per card. Answered from
+  // lifeDirection (the card's curriculum) so nothing here is invented.
+  const curriculum = card.lifeDirection || card.coreIdentity || card.sweetSpot;
+  return (
+    `Read spiritually, the ${card.label} is a curriculum rather than an omen: ${lensClause(curriculum)} ` +
+    `Cardology fixes the card to a birthday, so it never arrives as a message about what is coming — the same date returns the same card every year. ` +
+    `The card is a coordinate; what you do with the pattern is the work.`
+  );
+}
+
+function reversedFaqText(card: CardSeo): string {
+  return (
+    `No. Reversals belong to tarot, where a card can land upside down in a spread. A Cardology birth card is fixed by a birthday, so the ${card.label} is never reversed. ` +
+    `The equivalent here is expression, not direction. Under-expressed, ${lensClause(card.under)} Over-expressed, ${lensClause(card.over)}`
+  );
+}
+
 function tarotFaqText(card: CardSeo): string {
   return (
     `No. The ${card.label} is a playing card, not a tarot card. Tarot readers sometimes map it to the ${TAROT_SUIT[card.suit]} suit ` +
@@ -995,8 +1013,10 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     // sections — same helper output, so page copy and FAQ never drift.
     { q: `What does the ${card.label} mean in a reading?`, a: generalReadingText(card) },
     { q: `What does the ${card.label} mean in love?`, a: `${loveReadingText(card)} For two specific people, compatibility depends on both birth cards — the ${card.label} compatibility hub compares it with all 52 cards.` },
+    { q: `What does the ${card.label} mean spiritually?`, a: spiritualReadingText(card) },
     { q: `What does the ${card.label} mean for money and career?`, a: moneyReadingText(card) },
     { q: `Is the ${card.label} a tarot card?`, a: tarotFaqText(card) },
+    { q: `Does the ${card.label} have a reversed meaning?`, a: reversedFaqText(card) },
     { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern connected with ${card.suitDomain.toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
