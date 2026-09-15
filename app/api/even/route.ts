@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getOptionalRequestContext } from "@cloudflare/next-on-pages";
 
 import { getReading } from "@/lib/engine";
 import { birthCardSlug } from "@/lib/birth-card-calculator";
@@ -28,6 +29,13 @@ export const dynamic = "force-dynamic";
  * says is forwarded anywhere else.
  */
 
+// On Pages the secrets arrive on the request context; process.env is the
+// local-dev fallback (same idiom as app/api/download/[slug]/route.ts).
+function secret(name: string): string {
+  const fromContext = (getOptionalRequestContext()?.env as Record<string, string> | undefined)?.[name];
+  return fromContext ?? process.env[name] ?? "";
+}
+
 function timingSafeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
   let diff = 0;
@@ -49,7 +57,7 @@ function completion(content: string) {
 }
 
 export async function POST(req: NextRequest) {
-  const expected = process.env.EVEN_AGENT_TOKEN ?? "";
+  const expected = secret("EVEN_AGENT_TOKEN");
   // No token configured means the endpoint stays closed rather than open.
   if (!expected) return NextResponse.json({ error: "agent not configured" }, { status: 503 });
 
@@ -69,7 +77,7 @@ export async function POST(req: NextRequest) {
     .reverse()
     .find((m) => m.role === "user" && typeof m.content === "string")?.content ?? "";
 
-  const dates = parseSpokenDates(spoken, process.env.EVEN_DEFAULT_BIRTHDATE);
+  const dates = parseSpokenDates(spoken, secret("EVEN_DEFAULT_BIRTHDATE") || undefined);
   const reply = await buildEvenReply(spoken, dates, {
     getReading,
     birthCardSlug,
