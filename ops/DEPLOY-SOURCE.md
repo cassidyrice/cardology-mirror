@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-15** (deployed `main` @ `e2e0b0e` — Even agent: accept the OpenAI base-URL form too; previous record `d451a3b`)
+**Last verified: 2026-09-15** (deployed `main` @ `6f81906` — Reading API: accept the birthday in a POST body; previous record `e2e0b0e`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `e2e0b0e41de4f51ca33f5b8ad5ba9e585506370f` |
+| **Deployed commit** | `6f81906aac901cb9825474942bf93ebf445d163f` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
