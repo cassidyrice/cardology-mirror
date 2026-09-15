@@ -69,7 +69,7 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the One Question Reading ($47) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within 2 business days.",
+    body: "If the free tools keep matching real life, the One Question Reading ($13) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within 2 business days.",
     href: "/products/one-question-reading",
     label: "One Question Reading",
   },
@@ -231,7 +231,7 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-bone">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
-          The One Question Reading is a one-time $47 purchase: one question, read from
+          The One Question Reading is a one-time $13 purchase: one question, read from
           your birth card, this year's Long Range and Pluto cards, and the card you owe.
           About 600 words, emailed within 2 business days. No subscription.
         </p>
@@ -239,7 +239,7 @@ export default function CardologyForBeginnersPage() {
           href="/products/one-question-reading"
           className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
         >
-          Ask one question &mdash; $47
+          Ask one question &mdash; $13
         </Link>
       </div>
 

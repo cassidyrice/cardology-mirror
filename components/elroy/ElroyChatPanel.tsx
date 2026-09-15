@@ -283,7 +283,7 @@ export function ElroyChatPanel({
                   trackClientFunnelEvent("elroy_blueprint_clicked", { placement })
                 }
               >
-                Ask my question — $47
+                Ask my question — $13
               </a>
             </>
           ) : null}

@@ -74,7 +74,7 @@ export default function KarmaReadingWaitlistPage() {
         </Link>
         , or open the{" "}
         <Link href="/products/one-question-reading" className="underline underline-offset-4">
-          $47 One Question Reading
+          $13 One Question Reading
         </Link>
         .
       </p>

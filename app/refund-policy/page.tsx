@@ -38,7 +38,7 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
         <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
           <p className="font-serif text-lg text-[#14110d]">
-            Card Blueprints sells the $47 One Question Reading, a written reading
+            Card Blueprints sells the $13 One Question Reading, a written reading
             built from the birth date and the question entered before checkout.
             Reply to your receipt before it is written and we fix a wrong date
             or reword the question at no charge. Once it has been sent, we

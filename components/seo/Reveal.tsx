@@ -110,7 +110,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           ) : null}
 
           <div className="mt-8 border border-brand-line bg-brand-ivory p-5 text-left">
-            <p className="font-serif text-xl text-brand-ink">Got one question? Ask it. $47.</p>
+            <p className="font-serif text-xl text-brand-ink">Got one question? Ask it. $13.</p>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The job, the move, the person, the money. I read the one thing
               you keep circling from this card and the year you are in, and

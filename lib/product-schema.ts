@@ -84,10 +84,10 @@ export function priceValidUntil(): string {
 }
 
 /**
- * Offer start for the live $47 One Question Reading. Same ISO day as
+ * Offer start for the live $13 One Question Reading. Same ISO day as
  * PAGE_UPDATED_DATES["/products/one-question-reading"] and the catalog
  * launch note in middleware.ts (2026-09-08). Not a sale window — the
- * list price stays $47 from this date forward.
+ * list price stays $13 from this date forward.
  */
 export const OFFER_VALID_FROM =
   PAGE_UPDATED_DATES["/products/one-question-reading"];

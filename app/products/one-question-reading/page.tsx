@@ -18,9 +18,9 @@ import { SITE_NAME } from "@/lib/site";
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-const TITLE = "One Question Reading ($47): Your Decision, Read From Your Birth Card";
+const TITLE = "One Question Reading ($13): Your Decision, Read From Your Birth Card";
 const DESCRIPTION =
-  "Ask one question. Get a written Cardology reading built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words in plain language, emailed within 2 business days. $47, one payment.";
+  "Ask one question. Get a written Cardology reading built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words in plain language, emailed within 2 business days. $13, one payment.";
 const OG_IMAGE = "/og/products/one-question-reading.png";
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: DEEP_DIVE_PRODUCT_PATH,
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "One Question Reading, $47. Ask one question, get it read from your birth card." }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "One Question Reading, $13. Ask one question, get it read from your birth card." }],
   },
   twitter: {
     card: "summary_large_image",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "What do I get for $47?",
+    q: "What do I get for $13?",
     a: "One written reading on one question. About 600 words in plain language: your birth card (the number and the suit), this year's Long Range card, this year's Pluto card and its payoff, the card you owe and the card you're owed, and how all of that lands on your question. It ends with three things to keep an eye out for over the next few weeks. Emailed as plain text. No login, nothing to download.",
   },
   {

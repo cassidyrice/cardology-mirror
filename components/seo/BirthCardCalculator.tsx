@@ -309,7 +309,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free one-line read of the card's pattern, shown before the $47 CTA. */
+/** Free one-line read of the card's pattern, shown before the $13 CTA. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

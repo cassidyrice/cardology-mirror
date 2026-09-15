@@ -59,7 +59,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-[#14110d]/12 pt-2">
-              <strong>One Question Reading ($47)</strong> — a written reading on one
+              <strong>One Question Reading ($13)</strong> — a written reading on one
               question, built from the birth card your birthday maps to, this year's
               Long Range and Pluto cards, and the card you owe. Delivered by email as
               plain text within 2 business days. One payment, no renewal. It is

@@ -186,7 +186,7 @@ export default function CalculatorPage() {
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
         Optional paid step after the free card:{" "}
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
-          One Question Reading — $47
+          One Question Reading — $13
         </Link>{" "}
         (one decision, read from your card, this year's cards, and the card you owe; written for you within 2 business days).
         The free calculator never stores your birthday.

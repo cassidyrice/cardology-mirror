@@ -14,7 +14,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $47 written reading on the one question you're deciding.";
+  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $13 written reading on the one question you're deciding.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },

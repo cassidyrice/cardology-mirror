@@ -286,7 +286,7 @@ function PairResult({
           source="birth-card-compatibility-calculator"
         />
         <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          This $47 One Question Reading is for the first birthday only — that person’s question, not a couple’s.
+          This $13 One Question Reading is for the first birthday only — that person’s question, not a couple’s.
         </p>
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}

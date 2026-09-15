@@ -21,7 +21,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
           Find Your Birth Card Free
         </a>
         <a className="journey-secondary" href="/products/one-question-reading">
-          Ask one question · $47
+          Ask one question · $13
         </a>
       </>
     ),
@@ -67,7 +67,7 @@ const JOURNEY_SCENES: ScrollScrubScene[] = [
     actions: (
       <>
         <a className="journey-primary" href="/products/one-question-reading">
-          Ask one question · $47
+          Ask one question · $13
         </a>
         <a className="journey-secondary" href="/birth-card-calculator">
           Find Your Birth Card Free

@@ -203,7 +203,7 @@ export default async function CheckoutReviewPage({
         Need another option?{" "}
         {isDigital ? (
           <Link href={DEEP_DIVE_PRODUCT_PATH} className="editorial-link text-brand-ink">
-            See what the $47 One Question Reading includes →
+            See what the $13 One Question Reading includes →
           </Link>
         ) : (
           <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">

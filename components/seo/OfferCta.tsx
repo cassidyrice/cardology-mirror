@@ -8,7 +8,7 @@ import {
 } from "@/lib/deep-dive";
 
 // Quiet contextual funnel block for educational pages that used to dead-end.
-// Paid path: calculator → $47 One Question Reading.
+// Paid path: calculator → $13 One Question Reading.
 export function OfferCta({ className = "" }: { className?: string }) {
 
   return (

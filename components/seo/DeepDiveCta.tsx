@@ -28,7 +28,7 @@ export function DeepDiveCta({
   cardLabel?: string;
   cardSlug?: string;
   className?: string;
-  /** Hide the "What $47 gets you" line when the surrounding card already itemizes it. */
+  /** Hide the "What $13 gets you" line when the surrounding card already itemizes it. */
   showFulfillment?: boolean;
 }) {
   const [open, setOpen] = useState(false);

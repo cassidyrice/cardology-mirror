@@ -119,7 +119,7 @@ export default function CompatibilityCalculatorPage() {
         spectrum, and which Life Path cards you share. After the result, open the
         matching pair page in the directory for the full write-up. The{" "}
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
-          $47 One Question Reading
+          $13 One Question Reading
         </Link>{" "}
         reads one person&rsquo;s question (the first birthday) — not a couple reading.
       </p>

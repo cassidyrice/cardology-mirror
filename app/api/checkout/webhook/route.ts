@@ -194,7 +194,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ---- BRANCH: retired year-app SKUs on the deep-dive slug ($19 52xSeven
-    // Blueprint, $47 Blueprint Breakdown, $9 Deep Dive). Sessions opened before
+    // Blueprint, $13 Blueprint Breakdown, $9 Deep Dive). Sessions opened before
     // the switch still fulfill: mint the 12-month sign-in token for the year app
     // at /blueprint and email it. ----
     const deepDivePaid =

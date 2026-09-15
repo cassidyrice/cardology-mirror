@@ -76,15 +76,30 @@ echo "== calculator_completed by placement"
 q "SELECT blob12 AS placement, SUM(_sample_interval) AS n FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1='calculator_completed' GROUP BY placement ORDER BY n DESC"
 echo "== calculator → CTA by page (blob4)"
 q "SELECT blob4 AS page, SUM(IF(blob1='calculator_completed',_sample_interval,0)) AS calc, SUM(IF(blob1='offer_cta_clicked',_sample_interval,0)) AS cta FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1 IN ('calculator_completed','offer_cta_clicked') GROUP BY page ORDER BY calc DESC"
-if [[ -f .env.local ]]; then
-  SK="$(grep -m1 '^STRIPE_SECRET_KEY=' .env.local | cut -d= -f2- | tr -d '"' )"
-  if [[ -n "$SK" ]]; then
-    echo "== Stripe checkout sessions, last ${DAYS}d (Card Blueprint account)"
+# .env.local's STRIPE_SECRET_KEY belongs to the Cassidy Rice Company account
+# (acct_1SyNONDgoKThmC0I), NOT the account this site charges — every "paid"
+# number this script printed before 2026-09-15 came from the wrong ledger.
+# The Stripe CLI profile is pinned to Card Blueprint, so ask it instead of
+# handling a key here, and print nothing rather than the wrong account.
+CARD_BLUEPRINT_ACCOUNT="acct_1U1a1dChx1yAVyrs"
+if command -v stripe >/dev/null 2>&1; then
+  cli_account="$(stripe config --list 2>/dev/null | grep -m1 '^ *account_id=' | cut -d= -f2 | tr -d '" ')"
+  if [[ "$cli_account" == "$CARD_BLUEPRINT_ACCOUNT" ]]; then
+    echo "== Stripe checkout sessions, last ${DAYS}d (Card Blueprint ${CARD_BLUEPRINT_ACCOUNT})"
     since=$(( $(date +%s) - DAYS*86400 ))
-    curl -sS -g -u "${SK}:" "https://api.stripe.com/v1/checkout/sessions?limit=100&created[gte]=${since}" |
-    python3 -c 'import json,sys,collections
-d=json.load(sys.stdin); c=collections.Counter()
-for s in d.get("data",[]): c[(s["amount_total"]/100, s["status"])]+=1
-for (amt,st),n in sorted(c.items()): print(f"  ${amt:.0f}  {st:9}  {n}")'
+    stripe checkout sessions list --live --limit 100 2>/dev/null |
+    python3 -c "import json,sys,collections
+since=${since}
+d=json.load(sys.stdin); c=collections.Counter(); paid=0
+for s in d.get('data',[]):
+    if s.get('created',0) < since: continue
+    c[(s.get('amount_total',0)/100, s['status'])]+=1
+    if s.get('payment_status')=='paid': paid+=1
+for (amt,st),n in sorted(c.items()): print(f'  \${amt:.0f}  {st:9}  {n}')
+print(f'  paid in window: {paid}')"
+  else
+    echo "== Stripe: REFUSING to report — CLI profile is ${cli_account:-unset}, not Card Blueprint (${CARD_BLUEPRINT_ACCOUNT}). Run: stripe login"
   fi
+else
+  echo "== Stripe: CLI not installed; no sales reported"
 fi

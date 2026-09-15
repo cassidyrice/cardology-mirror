@@ -44,7 +44,7 @@ const faqs = [
   },
   {
     q: "What is the One Question Reading?",
-    a: "The free pages name your birth card and its pattern. The One Question Reading ($47) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, written for you and emailed within 2 business days. One payment, no renewal.",
+    a: "The free pages name your birth card and its pattern. The One Question Reading ($13) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, written for you and emailed within 2 business days. One payment, no renewal.",
   },
 ];
 

@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            Buying the $47 One Question Reading?{" "}
+            Buying the $13 One Question Reading?{" "}
             <Link href="/products/one-question-reading" className="editorial-link text-brand-ink">
               Review what is included
             </Link>
@@ -61,7 +61,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["One Question Reading questions", "Ask what the $47 One Question Reading includes, how the 2-business-day turnaround works, how the birth date and question are used, or how to reword a question before it is written."],
+          ["One Question Reading questions", "Ask what the $13 One Question Reading includes, how the 2-business-day turnaround works, how the birth date and question are used, or how to reword a question before it is written."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

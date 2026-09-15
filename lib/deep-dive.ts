@@ -1,7 +1,7 @@
-/** One Question Reading ($47) — Card Blueprint Stripe, not Cassidy Rice Company.
+/** One Question Reading ($13) — Card Blueprint Stripe, not Cassidy Rice Company.
  *  The internal slug/SKU prefix "deep-dive" stays so analytics, Stripe metadata,
  *  the checkout route and fulfillment keep working across product swaps
- *  ($9 Deep Dive → $47 Blueprint Breakdown Video → $19 52xSeven Blueprint → $47 One Question Reading).
+ *  ($9 Deep Dive → $13 Blueprint Breakdown Video → $19 52xSeven Blueprint → $13 One Question Reading).
  *
  *  Fulfillment is by hand: the webhook emails Cass the birthday and the question,
  *  he writes the reading with the `reading` command and sends it within 2 business days.
@@ -12,11 +12,11 @@ import { parseIsoCalendarDate } from "@/lib/worker-seo-routes";
 /** Retired price ids (kept for reference; nothing reads them at runtime). */
 export const DEEP_DIVE_LEGACY_PRICE_ID = "price_1U8s5uChx1yAVyrsjbQKfsmD";
 export const FIFTY_TWO_BY_SEVEN_LEGACY_PRICE_ID = "price_1UDVBZChx1yAVyrsFy87P2Co";
-/** Stripe product that carries the live $47 price (renamed "One Question Reading"). */
+/** Stripe product that carries the live $13 price (renamed "One Question Reading"). */
 export const ONE_QUESTION_PRODUCT_ID = "prod_V9AQZLgrZ4WclM";
 export const ONE_QUESTION_PRICE_ID = "price_1UD0HnChx1yAVyrsIMHLp2E3";
-/** Cloudflare Pages secret that holds the live $47 Stripe price id. The secret name is
- *  historical (it was created for the $47 Blueprint Breakdown Video and holds the same
+/** Cloudflare Pages secret that holds the live $13 Stripe price id. The secret name is
+ *  historical (it was created for the $13 Blueprint Breakdown Video and holds the same
  *  price object); it is reused so no new Pages secret is needed. */
 export const ONE_QUESTION_PRICE_ENV = "STRIPE_PRICE_BLUEPRINT_BREAKDOWN";
 export const DEEP_DIVE_SKU = "one-question-47";
@@ -33,7 +33,7 @@ export const DEEP_DIVE_SESSION_PATH = "/checkout/deep-dive/session";
 /** The review page where the buyer types the question before Stripe. */
 export const DEEP_DIVE_REVIEW_PATH = "/checkout/deep-dive";
 export const DEEP_DIVE_PRODUCT_PATH = "/products/one-question-reading";
-export const DEEP_DIVE_PRICE_LABEL = "$47";
+export const DEEP_DIVE_PRICE_LABEL = "$13";
 export const DEEP_DIVE_PRODUCT_NAME = "One Question Reading";
 export const ONE_QUESTION_TURNAROUND = "2 business days";
 /** Question length: Stripe metadata values cap at 500 characters. */
@@ -43,16 +43,16 @@ export const QUESTION_MAX_CHARS = 400;
 export const FIFTY_TWO_BY_SEVEN_REPORT_SLUG = "52xseven-blueprint";
 /** How long a legacy sign-in link works. */
 export const FIFTY_TWO_BY_SEVEN_ACCESS_DAYS = 365;
-export const DEEP_DIVE_CTA_LABEL = "Ask your question — $47";
+export const DEEP_DIVE_CTA_LABEL = "Ask your question — $13";
 /** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
-export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → ask one question, $47";
+export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → ask one question, $13";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
 export const DEEP_DIVE_SUCCESS_COPY =
   "Payment confirmed. Your question is in. The reading is written from your birth card, this year's cards, and the card you owe, and it lands in this inbox within 2 business days. Plain text, no login.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
   "Payment confirmed. Your question is in. December 31 is the Joker, the one birthday outside the 52-card map, so the reading says so up front and reads the year from the Joker's position. It lands in this inbox within 2 business days.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $47 gets you: one written reading on one question. Built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, plus three things to keep an eye out for. Written for you and emailed within 2 business days. Wrong date or a reworded question: reply before it is written and we fix it.";
+  "What $13 gets you: one written reading on one question. Built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, plus three things to keep an eye out for. Written for you and emailed within 2 business days. Wrong date or a reworded question: reply before it is written and we fix it.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 export const QUESTION_FIELD_LABEL = "The one question";
@@ -93,7 +93,7 @@ export const ALL_90_SPREADS_FILE: DeepDiveFile = {
   label: "The 90 Spreads",
 };
 
-// PDF bonuses of the retired $9 / $47 offers. The One Question Reading ships no
+// PDF bonuses of the retired $9 / $13 offers. The One Question Reading ships no
 // PDFs; these slugs stay resolvable so links from earlier orders keep working.
 export const DEEP_DIVE_BONUSES: readonly DeepDiveFile[] = [SYSTEM_GUIDE_FILE];
 

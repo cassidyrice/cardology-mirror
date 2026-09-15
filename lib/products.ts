@@ -264,8 +264,8 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   slug: DEEP_DIVE_SLUG,
   stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_BREAKDOWN",
   name: "One Question Reading",
-  price: 47,
-  priceLabel: "$47",
+  price: 13,
+  priceLabel: "$13",
   badge: "The reading",
   oneLine:
     "One question you're deciding, read from your birth card and the year you're in. Written for you, in plain words.",
@@ -281,7 +281,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
     "The card you owe and the card you're owed: how the question goes wrong for you, and what to lean on",
     "Three things to keep an eye out for in the next few weeks",
   ],
-  cta: "Ask your question — $47",
+  cta: "Ask your question — $13",
   checkoutNote:
     "One payment. You type your birth date and your question before Stripe; Stripe collects email and payment. The reading is written for you and emailed within 2 business days.",
   downloadAssetKey: "",

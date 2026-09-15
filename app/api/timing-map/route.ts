@@ -19,7 +19,7 @@ export const dynamic = "force-dynamic";
 // this route stays so those buyers' map links keep working. Drawn on request
 // from the buyer's birthday (carried in the signed report token), so nothing
 // is stored and the NOW marker is always today. Same token family and gate as
-// /blueprint. The $47 One Question Reading does not link here.
+// /blueprint. The $13 One Question Reading does not link here.
 export async function GET(req: NextRequest) {
   const payload = await verifyReportToken(req.nextUrl.searchParams.get("token"));
   if (!payload || payload.slug !== TIMING_MAP_SLUG) {

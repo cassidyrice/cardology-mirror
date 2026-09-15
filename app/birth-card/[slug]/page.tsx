@@ -199,7 +199,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">One question, read from this card</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">Ask your question as the {card.label} — $47</h2>
+        <h2 className="mt-2 font-serif text-2xl text-bone">Ask your question as the {card.label} — $13</h2>
         <p className="mt-2 text-sm text-mist">
           One decision, read from your {card.label} birth card, this year&rsquo;s
           cards, and the card you owe. Written for you within 2 business days.
@@ -213,7 +213,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </ul>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $47 one time · written within 2 business days · no subscription
+          $13 one time · written within 2 business days · no subscription
         </p>
       </div>
 

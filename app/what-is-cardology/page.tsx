@@ -164,7 +164,7 @@ export default function WhatIsCardology() {
       <p className="mb-2 text-sm text-mist">
         Free first: reveal your birth card below. Optional next: the{" "}
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
-          $47 One Question Reading
+          $13 One Question Reading
         </Link>
         {" "}
         — one decision, read from your card and your year, written within 2 business days.
@@ -212,21 +212,21 @@ export default function WhatIsCardology() {
           </Link>
           . Optional next step: the{" "}
           <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
-            $47 One Question Reading
+            $13 One Question Reading
           </Link>{" "}
           (your card, this year's cards, and the card you owe, read against the one question you bring).
         </p>
         <div className="card-surface mt-5 rounded-2xl border border-gold/25 p-5">
           <p className="font-serif text-base text-bone">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-mist">
-            The One Question Reading is $47 once: one question, read from your card and
+            The One Question Reading is $13 once: one question, read from your card and
             the year you are in, written for you within 2 business days. No subscription.
           </p>
           <Link
             href="/products/one-question-reading"
             className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
           >
-            Ask one question — $47
+            Ask one question — $13
           </Link>
         </div>
       </section>
@@ -502,7 +502,7 @@ export default function WhatIsCardology() {
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
           <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
-            $47 One Question Reading
+            $13 One Question Reading
           </Link>
           — one question, read from your card, this year's cards, and the card you owe.
         </p>
@@ -526,7 +526,7 @@ export default function WhatIsCardology() {
         <p className="font-serif text-base text-bone">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/products/one-question-reading" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
-            $47 One Question Reading →
+            $13 One Question Reading →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-gold">
             Calculator page →

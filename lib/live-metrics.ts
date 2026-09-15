@@ -235,7 +235,7 @@ export async function fetchAnalytics(token: string, now = new Date()): Promise<O
 }
 
 const READING_AMOUNT_CENTS = 2000;
-const DEEP_DIVE_AMOUNT_CENTS = 4700; // $47 One Question Reading (earlier offers on this slug billed 1900, 4700 and 900)
+const DEEP_DIVE_AMOUNT_CENTS = 1300; // $13 One Question Reading (earlier offers on this slug billed 1900, 4700 and 900)
 
 function tally(sessions: Stripe.Checkout.Session[], cents: number): SessionTally {
   const t: SessionTally = { complete: 0, open: 0, expired: 0, revenueCents: 0 };

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   // suffix pushed 74 sitemap titles beyond 60 characters.
   title: "Card Blueprints | Birth Cards & Cardology",
   description:
-    "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the $47 One Question Reading.",
+    "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the $13 One Question Reading.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Card Blueprints — Birth Cards & Cardology",
     description:
-      "Find your playing-card birth card free (not tarot). Optional $47 One Question Reading — a mirror, not a forecast.",
+      "Find your playing-card birth card free (not tarot). Optional $13 One Question Reading — a mirror, not a forecast.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   // No title/description here on purpose. A page that sets its own openGraph

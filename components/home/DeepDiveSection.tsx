@@ -21,7 +21,7 @@ export function DeepDiveSection() {
           className="mx-auto w-64 border border-brand-line shadow-[0_12px_40px_rgba(20,17,13,0.14)] lg:mx-0 lg:w-full"
         />
         <div>
-          <h2 className="type-h2">Got one question? Ask it. $47.</h2>
+          <h2 className="type-h2">Got one question? Ask it. $13.</h2>
           <p className="mt-4 max-w-[34em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
             Your birth card, the 52-day chapter you are in right now, all seven chapters, and the yearly story arc in one phone-friendly app. Open it the moment you pay, come back to it all year.
           </p>
