@@ -3,7 +3,21 @@
 // Kept out of the route so the parsing and formatting can be tested without a
 // request. The glasses display is 576x136 monochrome: about 48 characters wide
 // and a handful of lines, so every reply here is wrapped and short by design.
-export const EVEN_LINE_WIDTH = 48;
+export const EVEN_LINE_WIDTH = 48
+
+// The glasses display font has no \u2666 or \u2665 glyph — "8\u2666" renders as a bare
+// "8", losing the suit silently (\u2663 and \u2660 do render). Spell every suit out.
+const SUIT_WORD: Record<string, string> = {
+  "\u2665": "Hearts", "\u2666": "Diamonds", "\u2663": "Clubs", "\u2660": "Spades",
+}
+const RANK_WORD: Record<string, string> = { A: "Ace", J: "Jack", Q: "Queen", K: "King" }
+
+export function cardLabel(code: string): string {
+  const suit = SUIT_WORD[code.slice(-1)]
+  if (!suit) return code
+  const rank = code.slice(0, -1)
+  return `${RANK_WORD[rank] ?? rank} of ${suit}`
+};
 export const EVEN_MAX_LINES = 6;
 
 const MONTHS: Record<string, number> = {
@@ -121,17 +135,17 @@ export async function buildEvenReply(spoken: string, dates: string[], deps: Deps
   if (asks(spoken, "period", "timing", "right now", "today", "chapter")) {
     const period = reading.active_period ?? {};
     return fit(
-      `${card}. ${period.planet ?? "—"} period` +
+      `${cardLabel(card)}. ${period.planet ?? "—"} period` +
         (period.domain ? `: ${String(period.domain).toLowerCase()}.` : ".") +
-        (period.bc_card ? `\nCard: ${period.bc_card}.` : "") +
+        (period.bc_card ? `\nCard: ${cardLabel(period.bc_card)}.` : "") +
         (reading.timing?.age != null ? `\nYear ${reading.timing.age}.` : ""),
     );
   }
 
   if (asks(spoken, "ruling", "planetary")) {
-    return fit(`${card}. Ruling card ${prc}.`);
+    return fit(`${cardLabel(card)}. Ruling card ${cardLabel(prc)}.`);
   }
 
   // Default: the card itself.
-  return fit(`${card}${domain ? ` — ${domain}` : ""}.\nRuling ${prc}.`);
+  return fit(`${cardLabel(card)}${domain ? ` — ${domain}` : ""}.\nRuling ${cardLabel(prc)}.`);
 }

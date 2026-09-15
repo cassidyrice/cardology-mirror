@@ -50,7 +50,9 @@ test("wrapping never exceeds the display width and never splits a word", () => {
 
 test("a birthday returns its card, within the display budget", async () => {
   const reply = await buildEvenReply("what is my card", ["1946-06-14"], deps);
-  expect(reply).toContain("3♦");
+  // Spelled out: the display font drops the diamond glyph entirely.
+  expect(reply).toContain("3 of Diamonds");
+  expect(reply).not.toContain("♦");
   for (const line of reply.split("\n")) expect(line.length).toBeLessThanOrEqual(EVEN_LINE_WIDTH);
 });
 
