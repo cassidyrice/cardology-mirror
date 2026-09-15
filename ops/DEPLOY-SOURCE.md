@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-15** (deployed `main` @ `4261705` — Calculator result: the reading is the next step, not one link among four; previous record `9e3f3fd`)
+**Last verified: 2026-09-15** (deployed `main` @ `358899b` — Answer the zero-difficulty queries the pages already half-rank for; previous record `4261705`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `426170586923badd05adb1e425810967fb923c31` |
+| **Deployed commit** | `358899b2aba90a399e9a78e0aa1f9f95c600d5d4` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
