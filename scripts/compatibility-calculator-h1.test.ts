@@ -8,8 +8,8 @@ const page = readFileSync(
 );
 
 test("compatibility calculator aligns title and H1 to the GSC query", () => {
-  expect(page).toContain('const TITLE = "Cardology Compatibility Calculator (Playing Cards, Not Tarot)"');
-  expect(page).toContain("Cardology Compatibility Calculator\n      </h1>");
+  expect(page).toContain('const TITLE = "Birth Card Compatibility Calculator (Destiny Cards, Free)"');
+  expect(page).toContain("Birth Card Compatibility Calculator\n      </h1>");
   expect(page).toContain("Enter two birthdays. The tool returns each playing-card birth card and");
   expect(page).toContain("<CompatibilityCalculator />");
   const calculator = page.indexOf("<CompatibilityCalculator />");

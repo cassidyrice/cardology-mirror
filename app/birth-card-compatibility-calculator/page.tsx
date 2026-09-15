@@ -12,9 +12,9 @@ import {
   VIDEO_PATH,
 } from "@/lib/site";
 
-const TITLE = "Cardology Compatibility Calculator (Playing Cards, Not Tarot)";
+const TITLE = "Birth Card Compatibility Calculator (Destiny Cards, Free)";
 const DESCRIPTION =
-  "Free playing-card compatibility calculator. Enter two birthdays — Cardology birth cards + Life Path map, not a tarot love reading. Same dates, same result.";
+  "Free birth card compatibility calculator. Enter two birthdays for both Destiny Cards birth cards and the Life Path map — playing cards, not a tarot love reading.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -101,7 +101,7 @@ export default function CompatibilityCalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <h1 className="display mb-4 text-3xl text-bone">
-        Cardology Compatibility Calculator
+        Birth Card Compatibility Calculator
       </h1>
 
       <CompatibilityCalculator />
