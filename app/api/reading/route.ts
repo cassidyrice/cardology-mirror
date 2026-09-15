@@ -2,6 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import { getReading, engineErrorResponse } from "@/lib/engine";
 
 export const runtime = "edge";
+
+// The engine is public and read-only, and no cookie or credential is involved,
+// so any origin may call it: the glasses webview and the Even Hub simulator are
+// not served from cardblueprints.com and would otherwise be blocked by CORS.
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "content-type",
+  "Access-Control-Max-Age": "86400",
+};
+
+export async function OPTIONS() {
+  return new NextResponse(null, { status: 204, headers: CORS });
+}
 export const dynamic = "force-dynamic";
 
 // Middleware strips `birthdate` from every URL (it is a sensitive query key),
@@ -15,10 +29,10 @@ export async function GET(req: NextRequest) {
   const date = sp.get("date") ?? undefined;
   try {
     const reading = await getReading(birthdate, date);
-    return NextResponse.json(reading);
+    return NextResponse.json(reading, { headers: CORS });
   } catch (e) {
     const { status, body } = engineErrorResponse(e);
-    return NextResponse.json(body, { status });
+    return NextResponse.json(body, { status, headers: CORS });
   }
 }
 
@@ -36,9 +50,9 @@ export async function POST(req: NextRequest) {
   const date = typeof body.date === "string" ? body.date : undefined;
   try {
     const reading = await getReading(birthdate, date);
-    return NextResponse.json(reading);
+    return NextResponse.json(reading, { headers: CORS });
   } catch (e) {
     const { status, body: errorBody } = engineErrorResponse(e);
-    return NextResponse.json(errorBody, { status });
+    return NextResponse.json(errorBody, { status, headers: CORS });
   }
 }
