@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-14** (deployed `main` @ `0828815` — Calculator: name the chart as the Cardology calendar / birthday chart; previous record `83bf5b5`)
+**Last verified: 2026-09-14** (deployed `main` @ `3f1684c` — Card pages: title names birth card, love and cartomancy meaning; drop retired $19 from descriptions; previous record `0828815`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `08288158d0076255610c0796398dfede4717d22b` |
+| **Deployed commit** | `3f1684c8c4a97b0bbddb15f5642d9fa5a64edec6` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
 | **Worker rollback** | `5cc3d234-b851-4977-95a6-63a63b88cd08` |
