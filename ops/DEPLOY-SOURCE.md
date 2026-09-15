@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-13** (deployed `main` @ `13857e7` — Content Calendar removed; Worker 60becbc0 = $47 One Question Reading copy on /born-on and /compatibility; previous record `c951226`)
+**Last verified: 2026-09-14** (deployed `main` @ `4406fe8` — Calculator: chart section above the fold, hero chart link, 52-card meanings strip; previous record `13857e7`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `13857e76b7265a62538a08a011db11ab86db6838` |
+| **Deployed commit** | `4406fe87e5db6a74aed90a62e5f459c7314eb904` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
 | **Worker rollback** | `5cc3d234-b851-4977-95a6-63a63b88cd08` |
