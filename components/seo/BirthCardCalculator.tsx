@@ -18,6 +18,7 @@ import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentPeriod } from "./CurrentPeriod";
 import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 import { DeepDiveCta } from "./DeepDiveCta";
+import { cardBibleAny } from "@/lib/card-bible";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
@@ -225,6 +226,7 @@ function BirthCardResultCard({
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
+  const bible = cardBibleAny(result.birthCard);
 
   return (
     <div className="mt-6 flex w-full flex-col items-center gap-3">
@@ -239,41 +241,26 @@ function BirthCardResultCard({
           ))}
         </div>
       )}
-      {slug && (
-        <Link
-          href={`/birth-card/${slug}`}
-          className="text-sm font-medium text-brand-ink underline underline-offset-4"
-        >
-          {bc?.label} meaning
-        </Link>
-      )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      <p className="mt-6 text-center font-serif text-xl text-brand-ink">
-        Got one question? Ask it. This card, this year, your decision, written for you.
-      </p>
-      <DeepDiveCta
-        placement="birth-card-calculator-result"
-        birthdate={date || reveal.birthdate}
-        source="birth-card-calculator"
-        cardLabel={bc?.label}
-        cardSlug={slug ?? undefined}
-      />
-      {!isJoker && (
-        <>
-          <CurrentPeriod birthdate={date || reveal.birthdate} />
-          <Link
-            href="/your-year"
-            className="text-sm font-medium text-brand-ink underline underline-offset-4"
-            onClick={() =>
-              trackClientFunnelEvent("year_link_clicked", {
-                placement: "birth-card-calculator-result",
-              })
-            }
-          >
-            See your whole year →
-          </Link>
-        </>
-      )}
+      <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
+        {bible?.watchFor && (
+          <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
+            {bible.watchFor}
+          </p>
+        )}
+        <p className="mt-3 text-center font-serif text-xl leading-snug text-brand-ink">
+          What do you want to ask about it?
+        </p>
+        <DeepDiveCta
+          className="mt-4"
+          placement="birth-card-calculator-result"
+          birthdate={date || reveal.birthdate}
+          source="birth-card-calculator"
+          cardLabel={bc?.label}
+          cardSlug={slug ?? undefined}
+        />
+      </div>
+      {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
       {(() => {
         const t = testimonialForCard(bc?.label);
         return (
@@ -291,10 +278,30 @@ function BirthCardResultCard({
           </figure>
         );
       })()}
-      <BirthdayWorkerAnchor
-        reveal={reveal}
-        todayIso={todayISO()}
-      />
+      <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+        {slug && (
+          <Link
+            href={`/birth-card/${slug}`}
+            className="text-sm font-medium text-brand-ink underline underline-offset-4"
+          >
+            {bc?.label} meaning
+          </Link>
+        )}
+        {!isJoker && (
+          <Link
+            href="/your-year"
+            className="text-sm font-medium text-brand-ink underline underline-offset-4"
+            onClick={() =>
+              trackClientFunnelEvent("year_link_clicked", {
+                placement: "birth-card-calculator-result",
+              })
+            }
+          >
+            See your whole year →
+          </Link>
+        )}
+        <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
+      </div>
     </div>
   );
 }

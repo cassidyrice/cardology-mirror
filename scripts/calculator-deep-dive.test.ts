@@ -273,7 +273,16 @@ test("shared calculator result sells the $47 One Question Reading, not the $13 B
   expect(calculator).toContain("reveal.birthdate");
   expect(calculator).toContain("date={date}");
   expect(calculator).toContain("date || reveal.birthdate");
-  expect(calculator).toContain("Got one question? Ask it.");
+  expect(calculator).toContain("What do you want to ask about it?");
+  // The card's own watch-for line is the bridge into the ask.
+  expect(calculator).toContain("bible.watchFor");
+  expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
+    calculator.indexOf('placement="birth-card-calculator-result"'),
+  );
+  // Free exits (card meaning, whole year, born-on page) sit below the offer.
+  expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
+    calculator.indexOf("`/birth-card/${slug}`"),
+  );
   expect(calculator).not.toContain("personal-card-blueprint");
   expect(calculator).not.toContain("personalCheckoutHref");
   expect(calculator).not.toContain("instantReportBySlug");
