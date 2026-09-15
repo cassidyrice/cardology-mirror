@@ -10,6 +10,7 @@ import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { allCardSeo } from "@/lib/seo-cards";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -172,7 +173,9 @@ export default function CalculatorPage() {
         </h1>
         <p className="prose-reading text-mist" data-ai-summary>
           Enter a birthday for the playing card — 52-card system, not tarot.
-          Same date, same card.
+          Same date, same card. Or read the{" "}
+          <a href="#cardology-chart" className="text-gold underline underline-offset-4">full Cardology chart</a>{" "}
+          for all 366 birthdays.
         </p>
       </header>
 
@@ -237,6 +240,64 @@ export default function CalculatorPage() {
         ))}
       </nav>
 
+      <section id="cardology-chart" className="mt-10 scroll-mt-10">
+        <p className="eyebrow mb-2 text-gold">The birthday map</p>
+        <h2 className="font-serif text-3xl text-bone">Cardology Chart</h2>
+        <p className="prose-reading mt-4 text-mist">
+          A Cardology chart is the birthday-to-playing-card map: every calendar
+          date resolves to one card in a standard 52-card deck. Month and day are
+          coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
+          Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
+          date always yields the same card.
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          The free calculator above runs that same formula for one birthday. The
+          chart below is the whole map, so you can check a friend, a parent, or a
+          family at a glance. Find your month across the top and your day down
+          the side; the cell is your birth card. Tap any card to open that
+          birthday&rsquo;s page.
+        </p>
+        <BirthdayChartTable />
+        <h3 className="mt-8 font-serif text-xl text-bone">Card meanings</h3>
+        <p className="prose-reading mt-2 text-sm text-mist">Found your card in the chart? Open its meaning.</p>
+        <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="All 52 birth card meanings">
+          {allCardSeo().map((c) => (
+            <Link
+              key={c.slug}
+              href={`/birth-card/${c.slug}`}
+              title={`${c.label} birth card meaning`}
+              className={`rounded-[3px] border border-white/10 px-2 py-1 font-serif text-sm transition hover:border-gold/40 ${c.glyph === "\u2665" || c.glyph === "\u2666" ? "text-brand-oxblood" : "text-bone"}`}
+            >
+              {c.rank}{c.glyph}
+            </Link>
+          ))}
+          <Link href="/birth-card/joker" className="rounded-[3px] border border-white/10 px-2 py-1 font-serif text-sm text-bone hover:border-gold/40">Joker</Link>
+        </nav>
+        <h3 className="mt-8 font-serif text-xl text-bone">Browse the chart by month</h3>
+        <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
+          {MONTH_DIRECTORY.map(([label, slug]) => (
+            <a
+              key={slug}
+              href={`/born-on/${slug}`}
+              className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-center font-serif text-sm text-bone transition hover:border-gold/40"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
+        <p className="prose-reading mt-4 text-sm text-mist">
+          All 366 dates with card names:{" "}
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            /born-on/
+          </a>
+          . How the chart is built, suit by suit:{" "}
+          <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
+            the 52-card calendar explained
+          </Link>
+          .
+        </p>
+      </section>
+
       <section id="how-it-works" className="mt-12 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
@@ -279,49 +340,6 @@ export default function CalculatorPage() {
           </p>
         </div>
         </details>
-      </section>
-
-      <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">The birthday map</p>
-        <h2 className="font-serif text-3xl text-bone">Cardology Chart</h2>
-        <p className="prose-reading mt-4 text-mist">
-          A Cardology chart is the birthday-to-playing-card map: every calendar
-          date resolves to one card in a standard 52-card deck. Month and day are
-          coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
-          Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
-          date always yields the same card.
-        </p>
-        <p className="prose-reading mt-4 text-mist">
-          The free calculator above runs that same formula for one birthday. The
-          chart below is the whole map, so you can check a friend, a parent, or a
-          family at a glance. Find your month across the top and your day down
-          the side; the cell is your birth card. Tap any card to open that
-          birthday&rsquo;s page.
-        </p>
-        <BirthdayChartTable />
-        <h3 className="mt-8 font-serif text-xl text-bone">Browse the chart by month</h3>
-        <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
-          {MONTH_DIRECTORY.map(([label, slug]) => (
-            <a
-              key={slug}
-              href={`/born-on/${slug}`}
-              className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-center font-serif text-sm text-bone transition hover:border-gold/40"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-        <p className="prose-reading mt-4 text-sm text-mist">
-          All 366 dates with card names:{" "}
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
-            /born-on/
-          </a>
-          . How the chart is built, suit by suit:{" "}
-          <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
-            the 52-card calendar explained
-          </Link>
-          .
-        </p>
       </section>
 
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
