@@ -99,6 +99,12 @@ export async function GET() {
       fromProcessEnv: Boolean(process.env.EVEN_AGENT_TOKEN),
       contextPresent: Boolean(ctx),
       contextKeys: ctx ? Object.keys(ctx).filter((k) => k.startsWith("EVEN")).length : 0,
+      names: ctx ? Object.keys(ctx).filter((k) => k.toUpperCase().includes("EVEN")) : [],
+      types: ctx
+        ? Object.keys(ctx)
+            .filter((k) => k.toUpperCase().includes("EVEN"))
+            .map((k) => `${k}:${typeof (ctx as Record<string, unknown>)[k]}:${String((ctx as Record<string, unknown>)[k] ?? "").length}`)
+        : [],
     },
   });
 }
