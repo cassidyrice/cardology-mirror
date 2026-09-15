@@ -188,15 +188,17 @@ function birthDateRange(card: CardSeo): string | null {
 }
 
 export function cardMeta(card: CardSeo): { title: string; description: string } {
-  // GSC-approved template for all 52 /birth-card/{slug} pages. Root layout
-  // does not append a brand suffix — the title already ends with "| Cardology".
-  const title = `${card.label} Birth Card Meaning | Cardology`;
+  // Template for all 52 /birth-card/{slug} pages. GSC 2026-09: "{card} meaning",
+  // "{card} meaning love" and "{card} cartomancy" queries show these pages at
+  // positions 9-30 with no clicks, so the title now names all three intents.
+  // Root layout does not append a brand suffix.
+  const title = `${card.label} Meaning: Birth Card, Love & Cartomancy`;
   const nickname = archetypeNickname(card.title);
   const range = birthDateRange(card);
   const description =
     nickname && range
-      ? `${card.label} birth card: ${nickname} pattern, shadow, love/work, dates ${range}. Playing-card Cardology — free calc + $19 year map.`
-      : `${card.label} birth card in Cardology: pattern, shadow, love/work, and exact birth dates. Playing cards — not tarot. Free calc; optional $19 year Blueprint.`;
+      ? `${card.label} meaning as a birth card and in a reading: ${nickname} pattern, shadow, love/work, dates ${range}. Playing cards, not tarot. Free calculator.`
+      : `${card.label} meaning as a birth card and in a reading: pattern, shadow, love/work, and exact birth dates. Playing cards, not tarot. Free calculator.`;
   return { title, description };
 }
 
