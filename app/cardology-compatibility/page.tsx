@@ -127,6 +127,10 @@ export default function CompatibilityPage() {
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             Find your birth card
           </Link>
+          , read the{" "}
+          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+            52 Cardology card meanings
+          </Link>
           , look up any date in the{" "}
           <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
             birthday calendar
