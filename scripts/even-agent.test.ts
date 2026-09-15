@@ -3,8 +3,7 @@
 import { expect, test } from "bun:test";
 
 import { getReading } from "../lib/engine";
-import { birthCardSlug } from "../lib/birth-card-calculator";
-import { compatForCard } from "../lib/compat-pairs";
+import { buildLifePathProfile, compareLifePathProfiles } from "../lib/life-path";
 import {
   EVEN_LINE_WIDTH,
   EVEN_MAX_LINES,
@@ -14,7 +13,7 @@ import {
   wrap,
 } from "../lib/even-agent";
 
-const deps = { getReading, birthCardSlug, compatForCard };
+const deps = { getReading, buildLifePathProfile, compareLifePathProfiles };
 
 test("parses the ways a birthday gets spoken", () => {
   expect(parseSpokenDates("my card, June 14 1946")).toEqual(["1946-06-14"]);
@@ -55,15 +54,29 @@ test("a birthday returns its card, within the display budget", async () => {
   for (const line of reply.split("\n")) expect(line.length).toBeLessThanOrEqual(EVEN_LINE_WIDTH);
 });
 
-test("two dates return the connection between them", async () => {
+test("two dates return the connection the Life Path engine actually finds", async () => {
   const reply = await buildEvenReply(
-    "match June 14 1946 and January 15 1977",
-    ["1946-06-14", "1977-01-15"],
+    "match March 16 1965 and June 14 1946",
+    ["1965-03-16", "1946-06-14"],
     deps,
   );
-  expect(reply).toContain("3♦");
-  expect(reply).toContain("Q♦");
-  expect(reply.toLowerCase()).toContain("lifetime gift");
+  // The old implementation compared a spelled label against a slug and reported
+  // "no named connection" here; the real comparison finds a Mars seat.
+  expect(reply).toContain("7 of Diamonds");
+  expect(reply).toContain("3 of Diamonds");
+  expect(reply).toContain("Mars");
+  expect(reply.toLowerCase()).not.toContain("neither lands");
+});
+
+test("a December 31 date answers instead of throwing", async () => {
+  const single = await buildEvenReply("my card", ["1990-12-31"], deps);
+  expect(single.toLowerCase()).toContain("joker");
+  const pair = await buildEvenReply(
+    "match December 31 1990 and June 14 1946",
+    ["1990-12-31", "1946-06-14"],
+    deps,
+  );
+  expect(pair.toLowerCase()).toContain("joker");
 });
 
 test("asking about timing returns the active period, not the card blurb", async () => {

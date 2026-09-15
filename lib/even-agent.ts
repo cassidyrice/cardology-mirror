@@ -73,10 +73,10 @@ export function fit(text: string, maxLines = EVEN_MAX_LINES): string {
 }
 
 type Deps = {
-  getReading: (birthdate: string, targetDate?: string) => Promise<Record<string, any>>;
-  birthCardSlug: (code: string) => string | null;
-  compatForCard: (slug: string) => { pairs: { pos: string; label: string }[] } | null;
-};
+  getReading: (birthdate: string, targetDate?: string) => Promise<Record<string, any>>
+  buildLifePathProfile: (iso: string, id: string) => any | null
+  compareLifePathProfiles: (a: any, b: any) => { aSeesB: any; bSeesA: any; sharedCards: any[] }
+}
 
 const asks = (text: string, ...words: string[]) =>
   words.some((w) => text.toLowerCase().includes(w));
@@ -87,26 +87,33 @@ export async function buildEvenReply(spoken: string, dates: string[], deps: Deps
     return fit("Say a birthday: \"my card, June 14 1946\". Or ask for today, my period, or match two dates.");
   }
 
-  // Two dates spoken → compatibility between them.
+  // Two dates spoken → compatibility. This runs the same 14-seat Life Path
+  // comparison the website uses. The previous version matched a spelled label
+  // ("Three of Diamonds") against a slug ("3-of-diamonds"), so it reported "no
+  // connection" for most real pairs.
   if (dates.length >= 2 && asks(spoken, "match", "compat", "together", "and")) {
     const [a, b] = dates;
-    const [ra, rb] = await Promise.all([deps.getReading(a), deps.getReading(b)]);
-    const cardA = ra.archetype.birth_card as string;
-    const cardB = rb.archetype.birth_card as string;
-    if (cardA === cardB) return fit(`Both ${cardA}. Same card, same blind spots.`);
-    const slugA = deps.birthCardSlug(cardA);
-    const entry = slugA ? deps.compatForCard(slugA) : null;
-    const slugB = deps.birthCardSlug(cardB);
-    const hit = entry && slugB
-      ? entry.pairs.find((p) => p.label.toLowerCase() === slugB.replace(/-/g, " "))
-      : undefined;
-    return fit(
-      `${cardA} + ${cardB}.\n` +
-        (hit ? `${cardB} sits in the ${hit.pos} of ${cardA}.` : "No named connection between them."),
-    );
+    const pa = deps.buildLifePathProfile(a, "A");
+    const pb = deps.buildLifePathProfile(b, "B");
+    if (!pa || !pb) return fit("December 31 is the Joker. It has no board to compare.");
+    const { aSeesB, bSeesA, sharedCards } = deps.compareLifePathProfiles(pa, pb);
+    // Neither spoken date is necessarily the wearer, so name the cards rather
+    // than saying "you" and "them".
+    const lines = [`${pa.birthCardLabel} + ${pb.birthCardLabel}.`]
+    if (bSeesA) lines.push(`${pa.birthCardLabel} sits in their ${bSeesA.shortTitle} seat.`)
+    if (aSeesB) lines.push(`${pb.birthCardLabel} sits in their ${aSeesB.shortTitle} seat.`)
+    if (!aSeesB && !bSeesA) lines.push("Neither lands on the other's board.")
+    if (sharedCards.length) lines.push(`${sharedCards.length} cards in common.`)
+    return fit(lines.join("\n"))
   }
 
-  const reading = await deps.getReading(dates[0]);
+  let reading: Record<string, any>
+  try {
+    reading = await deps.getReading(dates[0])
+  } catch {
+    // The only date the engine refuses is December 31 (the Joker).
+    return fit("December 31 is the Joker. No card reading for that date.")
+  };
   const card = reading.archetype.birth_card as string;
   const prc = reading.archetype.prc as string;
   const domain = String(reading.archetype.suit_domain ?? "").toLowerCase();

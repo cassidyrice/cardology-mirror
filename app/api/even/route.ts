@@ -2,8 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getOptionalRequestContext } from "@cloudflare/next-on-pages";
 
 import { getReading } from "@/lib/engine";
-import { birthCardSlug } from "@/lib/birth-card-calculator";
-import { compatForCard } from "@/lib/compat-pairs";
+import { buildLifePathProfile, compareLifePathProfiles } from "@/lib/life-path";
 import {
   EVEN_LINE_WIDTH,
   buildEvenReply,
@@ -78,11 +77,18 @@ export async function POST(req: NextRequest) {
     .find((m) => m.role === "user" && typeof m.content === "string")?.content ?? "";
 
   const dates = parseSpokenDates(spoken, secret("EVEN_DEFAULT_BIRTHDATE") || undefined);
-  const reply = await buildEvenReply(spoken, dates, {
-    getReading,
-    birthCardSlug,
-    compatForCard,
-  });
+  // Any engine refusal must still come back as a spoken answer: a thrown error
+  // here would reach the glasses as a 500 with nothing to read out.
+  let reply: string;
+  try {
+    reply = await buildEvenReply(spoken, dates, {
+      getReading,
+      buildLifePathProfile,
+      compareLifePathProfiles,
+    });
+  } catch {
+    reply = "The engine could not read that. Try another date.";
+  }
   return completion(reply);
 }
 
