@@ -47,6 +47,18 @@ const faqs = [
     a: "Cardology is a deterministic system that maps a birthday to one card in a standard 52-card playing deck and uses that card as pattern language for personality, relationships, timing, and recurring dynamics. Same birthday always yields the same card.",
   },
   {
+    q: "What is the meaning of cardology?",
+    a: "Cardology means reading a standard 52-card playing deck as a calendar: 52 cards for 52 weeks, four suits for four seasons, 13 ranks for the 13 weeks in each season, and 12 court cards for 12 months. Your birthday lands on one of those cards, and that card is read as pattern language for personality, relationships, and timing.",
+  },
+  {
+    q: "What is my cardology card?",
+    a: "Your cardology card is the single playing card fixed to your month and day — no birth time needed, unlike an astrology chart. Enter your birthday in the free calculator on this page to see it, along with your planetary ruling card.",
+  },
+  {
+    q: "How is cartomancy different from tarot?",
+    a: "Cartomancy reads a 52-card playing deck; tarot reads a 78-card deck with 22 Major Arcana that playing cards do not have. Cardology is narrower than either: it is not a shuffled draw at all — your birthday fixes one card for life, and the same birthday always returns the same card.",
+  },
+  {
     q: "Is Cardology the same as cardiology?",
     a: "No. Cardiology is heart medicine. Cardology is a birthday-to-playing-card map (52-card deck, not tarot). Same birthday always yields the same card. Free lookup: the birth card calculator on this site.",
   },
@@ -257,6 +269,19 @@ export default function WhatIsCardology() {
           lifelong significator. Suit names the life domain; rank names the movement inside
           that domain. Optional layers add a planetary ruling card, yearly periods,
           daily cards, and two-person compatibility.
+        </p>
+        <ul className="prose-reading mt-3 space-y-1 text-mist" data-ai-summary>
+          <li><strong>52 cards</strong> — the 52 weeks of the year.</li>
+          <li><strong>4 suits</strong> — the four seasons.</li>
+          <li><strong>13 ranks</strong> — the 13 weeks in each season.</li>
+          <li><strong>12 court cards</strong> — the 12 months.</li>
+          <li><strong>364 + the Joker</strong> — 13 × 28 days, plus the leftover day of a 365-day year.</li>
+        </ul>
+        <p className="prose-reading mt-3 text-mist">
+          Because the map keys on month and day alone, <strong>no birth time is
+          needed</strong> — the part of an astrology chart most people cannot supply.
+          Longer layouts built on the same deck — the Life Spread, and the yearly
+          spread published as the Book of Destiny — extend the reading into cycles.
         </p>
         <p className="prose-reading mt-3 text-mist">
           Full calculation detail — including a worked birthday example — is on the{" "}
