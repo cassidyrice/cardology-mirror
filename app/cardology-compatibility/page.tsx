@@ -34,6 +34,10 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
+    q: "Are Love Cards and Cardology compatibility the same thing?",
+    a: "Nearly. Love Cards is Robert Lee Camp's 1997 book (Sourcebooks) on birth-card compatibility, and the connection types it names are the ones most calculators — including this one — work from. Cardology is the wider system the book draws on; compatibility is one layer of it.",
+  },
+  {
     q: "What is Cardology compatibility?",
     a: "It is a map of how two fixed playing-card birth cards interact — suit domains, ranks, and where each person’s card lands in the other’s Life Path constitution — not a single yes/no score.",
   },
@@ -107,6 +111,30 @@ export default function CompatibilityPage() {
           plus 13 cards: Primary, Mercury, Venus, Mars, Jupiter, Saturn, Uranus,
           Neptune, Pluto, Princess, Prince, Queen, and King. Compatibility gets more
           useful when you cross-reference those positions between two birthdates.
+        </p>
+      </section>
+
+      <section className="mt-8" id="love-cards">
+        <h2 className="eyebrow mb-2 text-gold">Is this the same as Love Cards?</h2>
+        <p className="prose-reading text-mist">
+          Largely, yes — and the book is worth naming. <em>Love Cards</em> (Robert Lee
+          Camp, Sourcebooks, 1997) is where most people first meet birth-card
+          compatibility: connection types read card by card, mutual and one-way
+          readings, and the relationship index that calculators like this one mirror.
+          Camp&rsquo;s earlier <em>The Cards of Your Destiny</em> (1992) carries the
+          yearly-spread machinery behind the timing layer. Both sit on the same 1893
+          and 1947 source texts this site works from, with publisher and catalogue
+          record in the{" "}
+          <Link href="/cardology-books" className="text-gold underline underline-offset-4">
+            books and decks directory
+          </Link>
+          .
+        </p>
+        <p className="prose-reading mt-3 text-mist">
+          What is different here: the comparison runs on your two birthdays rather
+          than on a lookup table, it shows every position rather than one verdict, and
+          it says when a pairing is simply unremarkable — which a book chapter cannot
+          do and a compatibility score usually will not.
         </p>
       </section>
 

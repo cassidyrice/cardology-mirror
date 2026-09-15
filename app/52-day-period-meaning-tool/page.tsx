@@ -78,6 +78,27 @@ export default function PeriodMeaningToolPage() {
         <PeriodMeaningTool cards={cards} filters={PERIOD_FILTERS} />
       </section>
 
+      <section className="mt-10 max-w-3xl" id="monthly">
+        <h2 className="oracle-eyebrow mb-3">Looking for a monthly card?</h2>
+        <p className="text-base leading-relaxed text-[#3d352d]">
+          This system does not run on months. The year divides into <strong>seven
+          52-day periods</strong>, not twelve, and each one starts on your birthday
+          rather than on the first of a month — so a &ldquo;monthly Destiny Cards&rdquo;
+          reading is really a question about which period a given month falls inside.
+          Seven periods across 364 days means most months straddle two of them, and
+          the handover, not the month, is what changes the reading.
+        </p>
+        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
+          To place any month: count 52-day blocks forward from your last birthday.
+          The{" "}
+          <Link href="/timing" className="underline underline-offset-4">
+            yearly spread tool
+          </Link>{" "}
+          does the counting and names the period you are in today; the filters above
+          then show how your card reads inside it.
+        </p>
+      </section>
+
       <section className="mt-10 max-w-3xl">
         <h2 className="oracle-eyebrow mb-3">Where to go next</h2>
         <p className="text-base leading-relaxed text-[#3d352d]">

@@ -115,6 +115,14 @@ const faqs = [
     q: "Do I need the Robert Lee Camp books to use this?",
     a: "No. The free calculator and published method are enough. The books are one doorway into the family, not a requirement.",
   },
+  {
+    q: "What is a Cards of Destiny reading?",
+    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; the paid One Question Reading answers one specific question from the same cards.",
+  },
+  {
+    q: "What are Robert Camp's Destiny Cards?",
+    a: "Robert Lee Camp published The Cards of Your Destiny in 1992 and the trade editions Destiny Cards and Love Cards in 1997, which is how the name reached bookshops. The system he writes about traces back to Olney Richmond's 1893 Mystic Test Book and the 1947 birthday chart in Sacred Symbols of the Ancients — publishers and catalogue records are in the books directory.",
+  },
 ];
 
 export default function DestinyCardsPage() {
