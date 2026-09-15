@@ -244,8 +244,9 @@ export default function CalculatorPage() {
         <p className="eyebrow mb-2 text-gold">The birthday map</p>
         <h2 className="font-serif text-3xl text-bone">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-mist">
-          A Cardology chart is the birthday-to-playing-card map: every calendar
-          date resolves to one card in a standard 52-card deck. Month and day are
+          A Cardology chart (also called the Cardology calendar or birthday
+          chart) is the birthday-to-playing-card map: every calendar date
+          resolves to one card in a standard 52-card deck. Month and day are
           coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
           Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
           date always yields the same card.
