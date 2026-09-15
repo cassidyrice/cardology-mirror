@@ -87,24 +87,12 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET() {
-  // Presence booleans only — never the values — so a misconfigured deploy is
-  // diagnosable from curl without leaking the token.
-  const ctx = getOptionalRequestContext()?.env as Record<string, string> | undefined;
+  // Reachability check for the glasses' network. Reports whether the agent is
+  // configured — never the token itself.
   return NextResponse.json({
     ok: true,
     service: "even-agent",
     width: EVEN_LINE_WIDTH,
-    token: {
-      fromContext: Boolean(ctx?.EVEN_AGENT_TOKEN),
-      fromProcessEnv: Boolean(process.env.EVEN_AGENT_TOKEN),
-      contextPresent: Boolean(ctx),
-      contextKeys: ctx ? Object.keys(ctx).filter((k) => k.startsWith("EVEN")).length : 0,
-      names: ctx ? Object.keys(ctx).filter((k) => k.toUpperCase().includes("EVEN")) : [],
-      types: ctx
-        ? Object.keys(ctx)
-            .filter((k) => k.toUpperCase().includes("EVEN"))
-            .map((k) => `${k}:${typeof (ctx as Record<string, unknown>)[k]}:${String((ctx as Record<string, unknown>)[k] ?? "").length}`)
-        : [],
-    },
+    configured: Boolean(secret("EVEN_AGENT_TOKEN")),
   });
 }
