@@ -13420,5 +13420,123 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "cardology-vs-tarot-what-is-the-difference",
+    "pillar": "cardology-foundations",
+    "title": "Cardology vs Tarot: What Is the Difference?",
+    "seoTitle": "Cardology vs Tarot",
+    "description": "How Cardology differs from tarot: fixed birthday math versus shuffled draws, 52 playing cards versus 78 tarot cards, and pattern language versu…",
+    "dek": "One system calculates, the other draws. That single difference changes everything downstream.",
+    "datePublished": "2026-09-16",
+    "dateModified": "2026-09-16",
+    "readTime": "6 min read",
+    "keywords": [
+      "cardology vs tarot",
+      "playing cards vs tarot cards",
+      "is cardology tarot",
+      "tarot difference",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Cardology and tarot use different decks and different methods. Tarot uses 78 cards and depends on shuffled draws read in the moment. Cardology uses the standard 52-card deck and fixed birthday math: your card is calculated, not drawn, and it never changes.",
+    "sections": [
+      {
+        "heading": "Different decks, different logic",
+        "body": [
+          "Tarot works with 78 cards, including 22 major arcana that have no playing-card equivalent. Cardology works with the standard 52-card deck plus the Joker.",
+          "More important than the card count is the method. Tarot meaning arrives through a shuffle and a draw. Cardology meaning arrives through a calculation on a birthday. One is momentary, the other is structural."
+        ],
+        "links": [
+          {
+            "label": "What Is Cardology?",
+            "href": "/what-is-cardology"
+          }
+        ]
+      },
+      {
+        "heading": "What each system is good at",
+        "body": [
+          "Tarot is built for open-ended questions: a reader draws cards and interprets them against whatever is being asked right now. Cardology is built for fixed patterns: who a person tends to be, how two people tend to interact, and what theme a stretch of time tends to carry.",
+          "Neither replaces the other. They answer different kinds of questions with different machinery."
+        ]
+      },
+      {
+        "heading": "Why the fixed method matters",
+        "body": [
+          "Because a birth card never changes, its description can be tested over years against real behavior. A tarot draw cannot be re-run; a birth card reading can be revisited every time the pattern shows up.",
+          "That is the practical trade: tarot offers flexibility in the moment, Cardology offers a stable mirror you can keep checking."
+        ],
+        "links": [
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          },
+          {
+            "label": "All 52 Birth Cards",
+            "href": "/birth-card"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Can I use tarot cards for Cardology?",
+        "a": "Not directly. Cardology's math is built on the 52-card structure. Tarot's extra cards have no position in the birthday calendar."
+      },
+      {
+        "q": "Is Cardology a form of divination?",
+        "a": "It is closer to a pattern language. Nothing is drawn or channeled; the card is fixed by the birthday and the value is in how well the description matches real behavior."
+      },
+      {
+        "q": "Which system should a beginner learn first?",
+        "a": "If you want a stable, testable starting point, Cardology is simpler: one card per person, calculated once, then studied over time."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $47 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within 2 business days. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-cardology-is-and-is-not",
+      "cardology-vs-astrology-what-each-system-reads",
+      "how-a-birthday-becomes-a-card"
+    ],
+    "coreLinks": [
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$47 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      }
+    ]
   }
 ]
