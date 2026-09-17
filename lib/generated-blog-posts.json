@@ -13538,5 +13538,144 @@
         "href": "/editorial-policy"
       }
     ]
+  },
+  {
+    "slug": "mercury-venus-and-mars-periods",
+    "pillar": "timing-and-spreads",
+    "title": "Mercury, Venus, and Mars Periods",
+    "description": "The first three 52-day periods of the Cardology year: Mercury's mental reset, Venus's relational focus, and Mars's drive and friction.",
+    "dek": "The year opens with mind, then heart, then heat.",
+    "datePublished": "2026-09-17",
+    "dateModified": "2026-09-17",
+    "readTime": "6 min read",
+    "keywords": [
+      "mercury period cardology",
+      "venus period meaning",
+      "mars period meaning",
+      "first three periods of the year",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "The Cardology year opens with three 52-day periods. The Mercury period, starting at your birthday, carries communication, planning, and mental reset. The Venus period follows with relationships, values, and what you love. The Mars period closes the first half with drive, effort, and the friction that comes with pushing.",
+    "sections": [
+      {
+        "heading": "Mercury: the opening chapter",
+        "body": [
+          "Mercury governs the first 52 days after your birthday. Its themes are mental: conversations, decisions, plans, paperwork, learning, and the general re-setting of the year's agenda.",
+          "The period card tells you what the mental work is about. A Heart card in Mercury often means the thinking is about people; a Diamond card means it is about value and resources."
+        ]
+      },
+      {
+        "heading": "Venus: days 53 to 104",
+        "body": [
+          "The Venus period turns toward what you love: partners, family, friendships, beauty, and values. Relationship developments and value questions cluster naturally here.",
+          "A demanding card in Venus does not doom the season; it names which relational pattern is up for attention."
+        ],
+        "links": [
+          {
+            "label": "Cardology Compatibility",
+            "href": "/cardology-compatibility"
+          }
+        ]
+      },
+      {
+        "heading": "Mars: days 105 to 156",
+        "body": [
+          "Mars carries drive, work, competition, and heat. Projects push forward, tempers run closer to the surface, and effort is the natural currency.",
+          "The classic Mars-period advice is to spend the energy deliberately: aim the push at work worth doing, because unaimed Mars energy tends to become argument.",
+          "To locate your current period, count 52-day blocks from your birthday or use the tool."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "When is my Mercury period?",
+        "a": "It is the first 52 days of your personal year, beginning the day after your birthday."
+      },
+      {
+        "q": "Are Mars periods bad for relationships?",
+        "a": "Not inherently. Mars raises energy and friction. Aimed at shared effort it strengthens a bond; left unaimed it can turn into conflict."
+      },
+      {
+        "q": "Do the same planetary periods repeat every year?",
+        "a": "Yes, always in the same order. What changes each year is the card occupying each period."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $47 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within 2 business days. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "how-52-day-periods-divide-your-year",
+      "jupiter-and-saturn-periods",
+      "uranus-and-neptune-periods"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$47 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      }
+    ]
   }
 ]
