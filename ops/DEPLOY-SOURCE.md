@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-15** (deployed `main` @ `a8185c6` — Record deploy: main @ 918a5ba live 2026-09-15; previous record `918a5ba`)
+**Last verified: 2026-09-17** (deployed `main` @ `999dfe6` — Let visitors find every planetary ruling card by birthday; previous record `a8185c6`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `a8185c66e8f92c6a62f9dfa1dec60868ccb58625` |
+| **Deployed commit** | `999dfe64c954d4d15cfcadf318c3958598bbfc83` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
