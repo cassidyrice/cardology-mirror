@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "bun run test:cardology && bun test scripts/agent-card.test.ts scripts/even-agent.test.ts scripts/compatibility-api.test.ts && bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/audit-privacy-leak.test.ts && bun scripts/free-course-media.test.ts",
+    "test": "bun run test:cardology && bun test scripts/agent-card.test.ts scripts/even-agent.test.ts scripts/compatibility-api.test.ts && bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/audit-privacy-leak.test.ts && bun scripts/free-course-media.test.ts && bun run test:ruling-card-reference",
     "test:cardology": "bun test scripts/cardology-system.test.ts scripts/karma-golden.test.ts scripts/card-bible.test.ts",
     "test:homepage-hero": "bun test scripts/homepage-hero.test.ts",
     "test:homepage-hero:browser": "bun scripts/homepage-hero-browser.ts",
@@ -27,7 +27,9 @@
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --commit-dirty=true",
     "ship:daily-blog": "bash scripts/ship_daily_blog.sh",
     "ship:daily-blog:am": "POST_SLOT=am bash scripts/ship_daily_blog.sh",
-    "ship:daily-blog:pm": "POST_SLOT=pm bash scripts/ship_daily_blog.sh"
+    "ship:daily-blog:pm": "POST_SLOT=pm bash scripts/ship_daily_blog.sh",
+    "test:ruling-card-reference": "bun test scripts/ruling-card-reference.test.ts scripts/ruling-card-chart.test.ts",
+    "test:ruling-card-reference:browser": "bun scripts/ruling-card-reference-browser.ts"
   },
   "dependencies": {
     "@stripe/stripe-js": "^9.14.0",

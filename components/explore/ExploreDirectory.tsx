@@ -32,7 +32,7 @@ const GROUPS: ExploreGroup[] = [
     title: "Understand your card",
     links: [
       { label: "All 52 cards", href: "/birth-card" },
-      { label: "Planetary ruling card", href: "/planetary-ruling-card" },
+      { label: "Planetary ruling card chart", href: "/planetary-ruling-card" },
       { label: "Karma cards", href: "/karma-cards" },
       { label: "Birth card vs ruling card", href: "/birth-card-vs-ruling-card" },
     ],

@@ -17,9 +17,9 @@ const bvr = readFileSync(
 );
 
 test("planetary ruling card page is complete and registered", () => {
-  expect(prc).toContain("Planetary Ruling Card: What It Is & How to Find Yours");
+  expect(prc).toContain("Planetary Ruling Card Chart: Find Yours by Birthday");
   expect(prc).toContain("<h1");
-  expect(prc).toContain("Planetary Ruling Card</h1>");
+  expect(prc).toContain("Planetary Ruling Card Chart</h1>");
   expect(prc).toContain('canonical: "/planetary-ruling-card"');
   expect(prc).toContain('"@type": "FAQPage"');
   expect(prc).toContain("What is a planetary ruling card?");
