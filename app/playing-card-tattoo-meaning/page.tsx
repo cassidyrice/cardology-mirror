@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/playing-card-tattoo-meaning",
-    images: [{ url: "/tattoos/ace-of-spades.jpg", width: 900, height: 1200, alt: "Ace of Spades pip tattoo" }],
+    images: [{ url: "/og/ace-of-spades.png", width: 1200, height: 630, alt: "Ace of Spades playing card" }],
   },
 };
 

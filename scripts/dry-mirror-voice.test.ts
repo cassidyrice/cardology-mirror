@@ -9,7 +9,6 @@ const COPY_SCOPE = [
   "lib/engine-data/card-descriptions.json",
   "lib/elroy/copy-overrides.ts",
   "lib/products.ts",
-  "app/products/personal-card-blueprint/page.tsx",
   "lib/blueprint.ts",
   "lib/blueprint-sample.ts",
   "components/seo/OfferCta.tsx",

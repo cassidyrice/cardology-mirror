@@ -67,14 +67,14 @@ const success = read("app/checkout/success/page.tsx");
 const product = read("app/products/one-question-reading/page.tsx");
 const home = read("app/page.tsx");
 
-test("One Question Reading ($47) is a Card Blueprint checkout offer on the deep-dive slug", () => {
+test("One Question Reading ($13) is a Card Blueprint checkout offer on the deep-dive slug", () => {
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
   expect(DEEP_DIVE_SKU).toBe("one-question-47");
   expect(ONE_QUESTION_SKU).toBe(DEEP_DIVE_SKU);
   expect(FIFTY_TWO_BY_SEVEN_SKU).toBe("52xseven-blueprint-19");
   expect(LEGACY_DEEP_DIVE_SKUS).toEqual(["52xseven-blueprint-19", "blueprint-breakdown-47", "deep-dive-9"]);
   expect(DEEP_DIVE_LEGACY_PRICE_ID).toBe("price_1U8s5uChx1yAVyrsjbQKfsmD");
-  // The live $47 price object already sits in this Pages secret (created for the
+  // The live price object already sits in this Pages secret (created for the
   // retired $47 video); reusing it means no new secret and no dashboard edit.
   expect(ONE_QUESTION_PRICE_ENV).toBe("STRIPE_PRICE_BLUEPRINT_BREAKDOWN");
   expect(ONE_QUESTION_PRICE_ID).toBe("price_1UD0HnChx1yAVyrsIMHLp2E3");
@@ -84,9 +84,9 @@ test("One Question Reading ($47) is a Card Blueprint checkout offer on the deep-
   expect(FIFTY_TWO_BY_SEVEN_ACCESS_DAYS).toBe(365);
   expect(DEEP_DIVE_PRODUCT_PATH).toBe("/products/one-question-reading");
   expect(DEEP_DIVE_REVIEW_PATH).toBe("/checkout/deep-dive");
-  expect(DEEP_DIVE_CTA_LABEL).toBe("Ask your question — $47");
-  expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → ask one question, $47");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("What $47 gets you");
+  expect(DEEP_DIVE_CTA_LABEL).toBe("Ask your question — $13");
+  expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → ask one question, $13");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("What $13 gets you");
   expect(DEEP_DIVE_FULFILLMENT).toContain("one question");
   expect(DEEP_DIVE_FULFILLMENT).toContain("2 business days");
   expect(DEEP_DIVE_FULFILLMENT).toContain("keep an eye out for");
@@ -95,7 +95,7 @@ test("One Question Reading ($47) is a Card Blueprint checkout offer on the deep-
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("12 months");
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("instant");
   expect(sanitizeOfferSlug(DEEP_DIVE_OFFER_SLUG)).toBe("deep-dive");
-  expect(checkoutProductBySlug("deep-dive")?.price).toBe(47);
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(13);
   expect(checkoutProductBySlug("deep-dive")?.name).toBe("One Question Reading");
   expect(checkoutProductBySlug("deep-dive")?.href).toBe("/products/one-question-reading");
   expect(publicProductBySlug("deep-dive")).toBeUndefined();
@@ -308,7 +308,7 @@ test("shared calculator result sells the $47 One Question Reading, not the $13 B
   expect(calculator).not.toContain("FreeCourseSignupForm");
 });
 
-test("conversion chrome and card meanings use one $47 One Question Reading offer", () => {
+test("conversion chrome and card meanings use one $13 One Question Reading offer", () => {
   // HeaderDeepDiveCta remains for other surfaces; home header has no Reading Day CTA.
   const headerCta = read("components/seo/HeaderDeepDiveCta.tsx");
   expect(headerCta).toContain('placement="site-header"');
@@ -326,7 +326,7 @@ test("conversion chrome and card meanings use one $47 One Question Reading offer
   expect(header).not.toContain("Get a Reading");
   expect(meaning).not.toContain("ReadingBridge");
   expect(header).not.toContain('label: "Blueprint"');
-  expect(footer).toContain("One Question Reading ($47)");
+  expect(footer).toContain("One Question Reading ($13)");
   expect(footer).not.toContain("52xSeven Blueprint");
   expect(footer).not.toContain("Deep Dive ($9)");
   expect(footer).not.toContain("Blueprint Breakdown");
@@ -339,7 +339,7 @@ test("conversion chrome and card meanings use one $47 One Question Reading offer
   expect(offerCta).not.toContain("personal-card-blueprint");
   expect(offerCta).not.toContain("52xSeven");
   expect(meaning).toContain('source="birth-card-meaning"');
-  expect(meaning).toContain("Ask your question as the {card.label} — $47");
+  expect(meaning).toContain("Ask your question as the {card.label} — $13");
   expect(meaning).not.toContain("52xSeven");
   expect(meaning).not.toContain("Blueprint Breakdown");
   expect(meaning).not.toContain("Deep Dive — $9");
@@ -420,7 +420,7 @@ test("success copy: question is in, 2 business days, honest for Joker", () => {
 
 test("legacy $9 / $47 download links still resolve for past buyers", async () => {
   expect(DEEP_DIVE_OFFER_SLUG).toBe("deep-dive");
-  expect(checkoutProductBySlug("deep-dive")?.price).toBe(47);
+  expect(checkoutProductBySlug("deep-dive")?.price).toBe(13);
   expect(webhook).not.toContain("buy.stripe.com");
   expect(read("lib/products.ts")).not.toContain("deep-dive-card");
 

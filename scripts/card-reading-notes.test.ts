@@ -75,5 +75,5 @@ test("5-of-diamonds page renders the In love label", () => {
   expect(pageSource).toContain(
     '<h3 className="mt-4 font-serif text-base text-bone">In love</h3>',
   );
-  expect(pageSource).toContain("{readingNotes.love}");
+  expect(pageSource).toContain("dedupeAgainstPrior(readingNotes.love");
 });

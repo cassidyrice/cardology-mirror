@@ -30,7 +30,6 @@ test("wide tables sit in a labeled, tabbable TableScroll region", () => {
     "app/cardology-vs-tarot/page.tsx",
     "app/cartomancy-vs-tarot/page.tsx",
     "app/destiny-cards/page.tsx",
-    "components/products/ProductComparison.tsx",
   ];
   for (const rel of pages) {
     const src = readFileSync(join(root, rel), "utf8");

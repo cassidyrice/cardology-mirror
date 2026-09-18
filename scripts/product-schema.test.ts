@@ -40,7 +40,7 @@ test("every public product emits merchant-listing required Offer fields", () => 
   }
 });
 
-test("One Question Reading Offer starts on the 2026-09-13 launch date at $47", () => {
+test("One Question Reading Offer starts on the 2026-09-13 launch date at $13", () => {
   expect(OFFER_VALID_FROM).toBe("2026-09-13");
   expect(OFFER_VALID_FROM).toBe(
     PAGE_UPDATED_DATES["/products/one-question-reading"],
@@ -49,7 +49,7 @@ test("One Question Reading Offer starts on the 2026-09-13 launch date at $47", (
   const json = buildProductJsonLd(DEEP_DIVE_PRODUCT);
   expect(json["@type"]).toBe("Product");
   expect(json.name).toBe("One Question Reading");
-  expect(json.offers.price).toBe("47.00");
+  expect(json.offers.price).toBe("13.00");
   expect(json.offers.priceCurrency).toBe("USD");
   expect(json.offers.validFrom).toBe("2026-09-13");
   expect(json.offers.url).toBe(

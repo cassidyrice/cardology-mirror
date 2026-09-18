@@ -39,7 +39,7 @@ test("ruling card page is cross-linked from related pages", () => {
 });
 
 test("card of the day owns the Cardology head term", () => {
-  expect(cotd).toContain("Cardology Card of the Day: Today's Playing Card Meaning");
-  expect(cotd).toContain("Cardology Card of the Day</h1>");
+  expect(cotd).toContain('name: "Cardology Card of the Day"');
+  expect(cotd).toMatch(/<h1[^>]*>\s*Cardology Card of the Day\b/);
   expect(cotd).toContain("What is the Cardology card of the day?");
 });

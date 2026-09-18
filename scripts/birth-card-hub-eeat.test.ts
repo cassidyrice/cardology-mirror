@@ -45,17 +45,17 @@ test("birth-card hub title and meta match approved GSC copy exactly", () => {
   );
 });
 
-test("birth-card hub sells the $47 One Question Reading without gutting free value", () => {
+test("birth-card hub sells the $13 One Question Reading without gutting free value", () => {
   expect(page).toContain("<OfferCta");
   expect(page).toContain("DEEP_DIVE_PRODUCT_NAME");
   expect(page).toContain("DEEP_DIVE_PRICE_LABEL");
   expect(page).toContain("DEEP_DIVE_CALCULATOR_FORM_HREF");
   expect(page).toContain("Find your birth card free");
   expect(page).toContain("<FreeCourseCta");
-  expect(page).toContain("One Question Reading ($47)");
+  expect(page).toContain("One Question Reading ($13)");
   expect(page).toContain("One payment, no renewal");
   expect(page).not.toContain("$9");
-  expect(page).not.toContain("$13");
+  expect(page).not.toContain("$47");
   expect(page).not.toContain("personal-card-blueprint");
   expect(page).not.toContain("Deep Dive");
   expect(page).not.toContain("buy.stripe.com");

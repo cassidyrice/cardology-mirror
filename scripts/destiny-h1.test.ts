@@ -8,8 +8,8 @@ const page = readFileSync(
 );
 
 test("destiny hub aligns title and H1 to the Cards of Destiny head term", () => {
-  expect(page).toContain('const TITLE = "Cards of Destiny: Find Your Birth Card"');
-  expect(page).toContain("Cards of Destiny: Find Your Birth Card</h1>");
+  expect(page).toContain('const TITLE = "Cards of Destiny: Free Birth Card Calculator (Destiny Cards)"');
+  expect(page).toContain("Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>");
   expect(page).toContain("Cards of Destiny and Destiny Cards are names");
   expect(page).toContain("<BirthCardCalculator />");
 });

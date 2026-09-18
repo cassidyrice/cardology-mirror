@@ -13,5 +13,5 @@ test("what-is-cardology targets the free reading query without a new route", () 
   expect(page).toContain("Can I get a free Cardology reading?");
   expect(page).toContain("no email is required");
   expect(page).toContain('href="/birth-card"');
-  expect(page).toContain("Personal Card Blueprint ($13)");
+  expect(page).toContain("$13 One Question Reading");
 });

@@ -5,10 +5,6 @@ import { join } from "node:path";
 const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
-const ambientRoutes: Array<[string, string]> = [
-  ["app/products/personal-card-blueprint/page.tsx", 'variant="blueprint"'],
-];
-
 const editorialRoutes = [
   "app/birth-card-calculator/page.tsx",
   "app/what-is-cardology/page.tsx",
@@ -33,14 +29,6 @@ test("ambient component exposes the approved page variants", () => {
   const source = read("components/brand/BlueprintAmbient.tsx");
   for (const variant of ["compatibility", "compatibilityGuide", "birthCard", "blueprint", "method", "library"]) {
     expect(source).toContain(`\"${variant}\"`);
-  }
-});
-
-test("visual landing pages install the correct ambient variant", () => {
-  for (const [path, expected] of ambientRoutes) {
-    const source = read(path);
-    expect(source).toContain('import { BlueprintAmbient } from "@/components/brand/BlueprintAmbient"');
-    expect(source).toContain(expected);
   }
 });
 

@@ -11,5 +11,5 @@ test("destiny hub targets the free-reading query cluster", () => {
   expect(page).toContain('id="free-reading"');
   expect(page).toContain("Free destiny card reading");
   expect(page).toContain("Can I get a free destiny card reading?");
-  expect(page).toContain("Personal Card Blueprint ($13)");
+  expect(page).toContain("One Question Reading ($13)");
 });

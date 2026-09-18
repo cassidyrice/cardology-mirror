@@ -34,6 +34,7 @@ import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 import { TattooBlock } from "@/components/seo/TattooBlock";
+import { TableScroll } from "@/components/seo/TableScroll";
 
 const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
 
@@ -381,7 +382,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             Every one of them shares the birth card, but the zodiac sign of the date picks a different
             planetary ruling card, which is why two people with the same {card.label} birth card can feel so different in person.
           </p>
-          <div className="table-scroll mt-3 overflow-x-auto" role="region" aria-label={`${card.label} birthdays with zodiac sign and ruling card`} tabIndex={0}>
+          <TableScroll className="mt-3" label={`${card.label} birthdays with zodiac sign and ruling card`}>
             <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
               <caption className="sr-only">Birthdays that map to the {card.label}, with zodiac sign and planetary ruling card</caption>
               <thead>
@@ -418,7 +419,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                 })}
               </tbody>
             </table>
-          </div>
+          </TableScroll>
           <p className="mt-3 text-sm text-faint">
             Read the ruling card as the style the {card.label} pattern is expressed through. Same engine, different steering.
           </p>
