@@ -1,0 +1,51 @@
+diff --git a/cardology-unlock-index.js b/cardology-unlock-index.js
+index 2e61dcd..4d13014 100644
+--- a/cardology-unlock-index.js
++++ b/cardology-unlock-index.js
+@@ -20926,7 +20926,7 @@ async function buildReport({ firstName, month, day, year, targetMs }) {
+   label("Free tools");
+   para("cardblueprints.com/birth-card-calculator");
+   para("cardblueprints.com/birth-card-compatibility-calculator");
+-  label("One Question Reading ($47)");
++  label("One Question Reading ($13)");
+   para("cardblueprints.com/products/one-question-reading", { gap: 24 });
+   rule();
+   para("Cardology is a pattern-recognition system for self-awareness and entertainment. It reveals tendencies, not fate \u2014 the cards light the way; you choose how to play the hand. This report is not medical, psychological, legal, or financial advice.", { size: 9, color: MUTED });
+@@ -21174,7 +21174,7 @@ gtag('config', 'G-25K69MTQ4L', { anonymize_ip: true });
+ <li><a href="/playing-card-spreads">Spreads</a></li>
+ </ul></div>
+ <div><p class="ft-h">Get</p><ul>
+-<li><a href="/products/one-question-reading">One Question Reading ($47)</a></li>
++<li><a href="/products/one-question-reading">One Question Reading ($13)</a></li>
+ <li><a href="/free-course">Free course</a></li>
+ </ul></div>
+ <div><p class="ft-h">About</p><ul>
+@@ -21193,8 +21193,8 @@ __name2(shell, "shell");
+ __name22(shell, "shell");
+ var CTA_BLOCK = `<div class="cta">
+ <p class="serif" style="font-size:1.1rem">Take your birth-card pattern deeper.</p>
+-<p>Get the $47 One Question Reading: one question you are deciding, read from your birth card and the year you are in. Written for you in plain words, 500 to 700 words, emailed within 2 business days. No login, nothing to download. Cards are coordinates. You choose the meaning.</p>
+-<p><a class="btn" href="/products/one-question-reading">Ask your question \u2014 $47</a>&nbsp; <a class="btn ghost" href="/birth-card-calculator">Find my birth card first</a></p>
++<p>Get the $13 One Question Reading: one question you are deciding, read from your birth card and the year you are in. Written for you in plain words, 500 to 700 words, emailed within 2 business days. No login, nothing to download. Cards are coordinates. You choose the meaning.</p>
++<p><a class="btn" href="/products/one-question-reading">Ask your question \u2014 $13</a>&nbsp; <a class="btn ghost" href="/birth-card-calculator">Find my birth card first</a></p>
+ <p class="muted" style="font-size:.82rem">One payment \xB7 no renewal \xB7 no subscription</p>
+ </div>`;
+ function renderDayPage(m, d) {
+@@ -21231,7 +21231,7 @@ function renderDayPage(m, d) {
+ <p>Cardology is a map of tendencies, not a sentence. The Joker is the reminder that maps have margins \u2014 and that is where some of the most interesting work happens.</p>`;
+   } else {
+     body += `<p>Your life domain is <strong>${SUIT_DOM2[suitOf2(card)][0]}</strong> \u2014 the question your card keeps asking is <em>"${SUIT_DOM2[suitOf2(card)][1]}"</em> Read the full profile on the <strong>${cardLink(card)}</strong> page.</p>`;
+-    body += `<p><strong>How to use this ${label} page.</strong> Treat ${theCard} as a fixed birthday map for people born on ${label}: note the suit domain, then the ruling card and karma links below. Compare one real relationship through the <a href="/compatibility/">compatibility matrix</a>, or recalculate any date with the <a href="/birth-card-calculator">birth card calculator</a>. For one question you are deciding, read from this card and the year you are in, see the <a href="/products/one-question-reading">$47 One Question Reading</a> (written for you, emailed within 2 business days).</p>`;
++    body += `<p><strong>How to use this ${label} page.</strong> Treat ${theCard} as a fixed birthday map for people born on ${label}: note the suit domain, then the ruling card and karma links below. Compare one real relationship through the <a href="/compatibility/">compatibility matrix</a>, or recalculate any date with the <a href="/birth-card-calculator">birth card calculator</a>. For one question you are deciding, read from this card and the year you are in, see the <a href="/products/one-question-reading">$13 One Question Reading</a> (written for you, emailed within 2 business days).</p>`;
+   }
+   if (prc.length) {
+     body += `<h2>The ruling card for ${label}</h2>
+@@ -21804,7 +21804,7 @@ function renderCardHub(card) {
+   let body = `<div class="kicker">Compatibility</div><h1>${nNum} ${suitSpan(card)} Compatibility Chart</h1>
+ <p>This is the ${n} compatibility hub, not the ${n} meaning page. The ${n} is ${RANK_LINES2[rankOf2(card)]}, at home in ${SUIT_DOM2[suitOf2(card)][0]}. See the full profile on the ${cardLink(card)} page \u2014 or pick a partner card below.</p>
+ <p>As a relationship pattern, the ${n} pulls every pairing toward ${SUIT_DOM2[suitOf2(card)][0].toLowerCase()}. Partners feel that first: this card keeps asking <em>\u201C${SUIT_DOM2[suitOf2(card)][1]}\u201D</em>. These pages map how other suits and ranks answer that question \u2014 friction, ease, and growth \u2014 not a single good-or-bad score.</p>
+-<p><strong>How to use the ${plainHub} hub.</strong> Scan built-in life-path links first (people who tend to matter structurally), then open any cell in the full 52-card grid for a dedicated pair page. Unknown birthdays? Run both dates in the <a href="/birth-card-compatibility-calculator">compatibility calculator</a> or start from the <a href="/compatibility/">compatibility index</a>. For the solo pattern behind this card, stay on ${cardLink(card)}; for one question you are deciding, read from this card and the year you are in, see the <a href="/products/one-question-reading">$47 One Question Reading</a> (written for you, emailed within 2 business days).</p>${renderCompatCalculator({ placement: "compat-cardhub-calculator", collapsed: true })}`;
++<p><strong>How to use the ${plainHub} hub.</strong> Scan built-in life-path links first (people who tend to matter structurally), then open any cell in the full 52-card grid for a dedicated pair page. Unknown birthdays? Run both dates in the <a href="/birth-card-compatibility-calculator">compatibility calculator</a> or start from the <a href="/compatibility/">compatibility index</a>. For the solo pattern behind this card, stay on ${cardLink(card)}; for one question you are deciding, read from this card and the year you are in, see the <a href="/products/one-question-reading">$13 One Question Reading</a> (written for you, emailed within 2 business days).</p>${renderCompatCalculator({ placement: "compat-cardhub-calculator", collapsed: true })}`;
+   if (lensHub) {
+     body += `<h2>Three states of the ${plainHub} in relationship</h2>
+ <ul><li><strong>Sweet spot:</strong> ${lensHub.sweet_spot}</li>

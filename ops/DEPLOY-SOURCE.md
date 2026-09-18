@@ -18,8 +18,8 @@ dashboard.
 | **Branch** | `main` |
 | **Deployed commit** | `999dfe64c954d4d15cfcadf318c3958598bbfc83` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `da24f699-4b1f-4473-a218-82a8eff38988` |
-| **Worker rollback** | `60becbc0-7aaf-4474-bfd4-e68e392f2988` |
+| **Worker version** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
+| **Worker rollback** | `da24f699-4b1f-4473-a218-82a8eff38988` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
