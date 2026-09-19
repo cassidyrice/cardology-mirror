@@ -29,22 +29,22 @@ export default function TermsOfService() {
     >
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Legal</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Terms of Service
         </h1>
-        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {updatedLabel(UPDATED)}</p>
+        <p className="mt-4 text-sm text-brand-ink-soft">Last updated: {updatedLabel(UPDATED)}</p>
       </header>
 
-      <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
-        <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
-          <p className="font-serif text-lg text-[#14110d]">
+      <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
+        <section className="border border-brand-line bg-brand-paper-deep p-5">
+          <p className="font-serif text-lg text-brand-ink">
             Card Blueprints is for learning, reflection, and entertainment. By
             using the site or buying a product, you agree to these terms.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">What the service is</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
             the One Question Reading, and digital products when explicitly
@@ -56,9 +56,9 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Paid products</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-2">
+            <li className="border-t border-brand-line pt-2">
               <strong>One Question Reading ($13)</strong> — a written reading on one
               question, built from the birth card your birthday maps to, this year's
               Long Range and Pluto cards, and the card you owe. Delivered by email as
@@ -66,7 +66,7 @@ export default function TermsOfService() {
               interpretive, not advice: it does not predict events and does not
               replace a professional.
             </li>
-            <li className="border-t border-[#14110d]/12 pt-2">
+            <li className="border-t border-brand-line pt-2">
               Sign-in links and past report links use private signed URLs. Do not
               share paid access or try to bypass payment or security checks.
               Purchases of retired products (the Personal Card Blueprint, the
@@ -76,7 +76,7 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Legacy orders</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Legacy orders</h2>
           <p className="mt-3">
             Phone-reading products are no longer sold. If you bought one before
             retirement, its original access period, support, and refund terms
@@ -86,17 +86,17 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Refunds and privacy</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Refunds and privacy</h2>
           <p className="mt-3">
-            The <Link href="/refund-policy" className="text-[#8e321f] underline underline-offset-4">refund policy</Link>{" "}
+            The <Link href="/refund-policy" className="text-brand-oxblood underline underline-offset-4">refund policy</Link>{" "}
             explains when refunds are available. The{" "}
-            <Link href="/privacy-policy" className="text-[#8e321f] underline underline-offset-4">privacy policy</Link>{" "}
+            <Link href="/privacy-policy" className="text-brand-oxblood underline underline-offset-4">privacy policy</Link>{" "}
             explains what information is collected and why.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Not professional advice</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Not professional advice</h2>
           <p className="mt-3">
             Card Blueprints does not provide medical, mental-health, legal,
             financial, employment, or other professional advice, and no report
@@ -107,7 +107,7 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Your responsibility</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Your responsibility</h2>
           <p className="mt-3">
             Give only information you have the right to share. If you enter
             another person&rsquo;s birth date, avoid adding private or sensitive
@@ -117,7 +117,7 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Availability</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Availability</h2>
           <p className="mt-3">
             We work to keep the site and paid report access available, but we
             cannot promise they will always be online or error-free. Contact us
@@ -126,10 +126,10 @@ export default function TermsOfService() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Contact</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Contact</h2>
           <p className="mt-3">
             Questions about these terms can be sent to{" "}
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand-oxblood underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>
             .

@@ -63,24 +63,24 @@ export default function PeriodMeaningToolPage() {
 
       <header className="max-w-4xl pb-8">
         <p className="oracle-eyebrow mb-4">card meaning × period filter</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-7xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-7xl">
           Every card meaning, through each 52-day lens.
         </h1>
-        <p className="mt-5 max-w-3xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
+        <p className="mt-5 max-w-3xl font-serif text-xl leading-relaxed text-brand-ink sm:text-2xl">
           Pick any card and run it through the seven yearly period filters. The card stays the same; the filter changes the context: mind, love, action, growth, discipline, disruption, or surrender.
         </p>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#5b5148] sm:text-base">
+        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink-soft sm:text-base">
           This tool is a structured mirror, not a forecast. It gives a reusable language layer for reading the same card differently depending on which 52-day chapter is active.
         </p>
       </header>
 
-      <section className="app-paper-stage border-y border-[#14110d]/15 bg-[#eadfcd]/55">
+      <section className="app-paper-stage border-y border-brand-line bg-brand-paper-deep">
         <PeriodMeaningTool cards={cards} filters={PERIOD_FILTERS} />
       </section>
 
       <section className="mt-10 max-w-3xl" id="monthly">
         <h2 className="oracle-eyebrow mb-3">Looking for a monthly card?</h2>
-        <p className="text-base leading-relaxed text-[#3d352d]">
+        <p className="text-base leading-relaxed text-brand-ink">
           This system does not run on months. The year divides into <strong>seven
           52-day periods</strong>, not twelve, and each one starts on your birthday
           rather than on the first of a month — so a &ldquo;monthly Destiny Cards&rdquo;
@@ -88,7 +88,7 @@ export default function PeriodMeaningToolPage() {
           Seven periods across 364 days means most months straddle two of them, and
           the handover, not the month, is what changes the reading.
         </p>
-        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
+        <p className="mt-3 text-base leading-relaxed text-brand-ink">
           To place any month: count 52-day blocks forward from your last birthday.
           The{" "}
           <Link href="/timing" className="underline underline-offset-4">
@@ -101,7 +101,7 @@ export default function PeriodMeaningToolPage() {
 
       <section className="mt-10 max-w-3xl">
         <h2 className="oracle-eyebrow mb-3">Where to go next</h2>
-        <p className="text-base leading-relaxed text-[#3d352d]">
+        <p className="text-base leading-relaxed text-brand-ink">
           A period card is only one layer. Read the card on its own on its{" "}
           <Link href="/birth-card" className="underline underline-offset-4">
             card meaning page
@@ -116,7 +116,7 @@ export default function PeriodMeaningToolPage() {
           </Link>
           .
         </p>
-        <p className="mt-3 text-base leading-relaxed text-[#3d352d]">
+        <p className="mt-3 text-base leading-relaxed text-brand-ink">
           To see where the seven periods actually come from — the board your card
           moves across each year — read{" "}
           <Link href="/playing-card-spreads" className="underline underline-offset-4">
@@ -124,7 +124,7 @@ export default function PeriodMeaningToolPage() {
           </Link>
           .
         </p>
-        <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+        <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
           Want one decision read from your own cards instead of looking them up by hand?
           That is the{" "}
           <Link href="/products/one-question-reading" className="underline underline-offset-4">

@@ -137,13 +137,13 @@ export default async function BlogPostPage({
           <p className="oracle-eyebrow mb-4">
             {pillar.title} · {post.readTime}
           </p>
-          <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+          <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
             {post.title}
           </h1>
-          <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d] sm:text-2xl">
+          <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink sm:text-2xl">
             {post.dek}
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-[#5b5148]">
+          <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
             By{" "}
             <Link href="/about" className="underline underline-offset-4">
               Cassidy Rice
@@ -160,24 +160,24 @@ export default async function BlogPostPage({
               Methodology
             </Link>
           </p>
-          <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
+          <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5" data-ai-summary>
             <p className="oracle-eyebrow mb-2">Direct answer</p>
-            <p className="text-base leading-relaxed text-[#3d352d]">{post.answer}</p>
+            <p className="text-base leading-relaxed text-brand-ink">{post.answer}</p>
             <Link
               href="/birth-card-calculator"
-              className="mt-4 inline-flex min-h-11 items-center justify-center bg-[#8e321f] px-5 py-2.5 text-sm font-bold text-[#fffaf0] transition hover:bg-[#702719]"
+              className="mt-4 inline-flex min-h-11 items-center justify-center bg-brand-oxblood px-5 py-2.5 text-sm font-bold text-brand-on-dark transition hover:bg-brand-oxblood-deep"
             >
               Find Your Birth Card Free
             </Link>
           </div>
         </header>
 
-        <nav className="mb-10 border-y border-[#14110d]/15 py-4">
+        <nav className="mb-10 border-y border-brand-line py-4">
           <p className="oracle-eyebrow mb-3">On this page</p>
           <ul className="grid gap-2 text-sm sm:grid-cols-2">
             {post.sections.map((section) => (
               <li key={section.heading}>
-                <a href={`#${slugify(section.heading)}`} className="text-[#5b5148] underline underline-offset-4 hover:text-[#14110d]">
+                <a href={`#${slugify(section.heading)}`} className="text-brand-ink-soft underline underline-offset-4 hover:text-brand-ink">
                   {section.heading}
                 </a>
               </li>
@@ -188,8 +188,8 @@ export default async function BlogPostPage({
         <div className="space-y-10">
           {post.sections.map((section) => (
             <section key={section.heading} id={slugify(section.heading)} className="scroll-mt-10">
-              <h2 className="font-serif text-4xl leading-none text-[#14110d]">{section.heading}</h2>
-              <div className="mt-4 space-y-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+              <h2 className="font-serif text-4xl leading-none text-brand-ink">{section.heading}</h2>
+              <div className="mt-4 space-y-4 font-serif text-lg leading-relaxed text-brand-ink">
                 {section.body.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -206,7 +206,7 @@ export default async function BlogPostPage({
         </div>
 
         {post.citations && (
-          <p className="mt-10 text-sm leading-relaxed text-[#5b5148]" data-slot="sources">
+          <p className="mt-10 text-sm leading-relaxed text-brand-ink-soft" data-slot="sources">
             {post.citations.status === "verified" ? (
               <>
                 Sources: Wikidata P569 CC0
@@ -243,8 +243,8 @@ export default async function BlogPostPage({
         )}
 
 
-        <section className="mt-12 border-t border-[#14110d]/15 pt-8">
-          <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>
+        <section className="mt-12 border-t border-brand-line pt-8">
+          <h2 className="font-serif text-4xl leading-none text-brand-ink">Frequently asked questions</h2>
           <FaqList faqs={post.faqs} />
         </section>
 
@@ -263,15 +263,15 @@ export default async function BlogPostPage({
             </ul>
           </div>
 
-          <div className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
+          <div className="border border-brand-line bg-brand-paper-deep p-5">
             <p className="oracle-eyebrow mb-3">Related guides</p>
             <ul className="space-y-3">
               {related.map((item) => (
                 <li key={item.slug}>
-                  <Link href={blogPostPath(item)} className="font-serif text-xl leading-none text-[#14110d] hover:text-[#8e321f]">
+                  <Link href={blogPostPath(item)} className="font-serif text-xl leading-none text-brand-ink hover:text-brand-oxblood">
                     {item.title}
                   </Link>
-                  <p className="mt-1 text-sm leading-relaxed text-[#5b5148]">{item.description}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{item.description}</p>
                 </li>
               ))}
             </ul>
@@ -284,7 +284,7 @@ export default async function BlogPostPage({
 
 function ContentLink({ link }: { link: BlogLink }) {
   const className =
-    "rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f] transition hover:bg-[#eadfcd]";
+    "rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood transition hover:bg-brand-paper-deep";
   if (link.href.startsWith("https://") || link.href.startsWith("http://")) {
     return (
       <a href={link.href} rel="noopener noreferrer" className={className}>
@@ -303,9 +303,9 @@ function FaqList({ faqs }: { faqs: BlogFaq[] }) {
   return (
     <div className="mt-5 space-y-4">
       {faqs.map((faq) => (
-        <div key={faq.q} className="border-t border-[#14110d]/15 pt-4">
-          <h3 className="font-serif text-2xl text-[#14110d]">{faq.q}</h3>
-          <p className="mt-2 text-base leading-relaxed text-[#5b5148]">{faq.a}</p>
+        <div key={faq.q} className="border-t border-brand-line pt-4">
+          <h3 className="font-serif text-2xl text-brand-ink">{faq.q}</h3>
+          <p className="mt-2 text-base leading-relaxed text-brand-ink-soft">{faq.a}</p>
         </div>
       ))}
     </div>

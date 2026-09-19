@@ -69,7 +69,7 @@ type Row = {
 function CardCell({ card }: { card: CardSeo | null }) {
   if (!card) {
     return (
-      <span className="text-sm text-[#8a8078]" aria-label="No karma card">
+      <span className="text-sm text-brand-ink-soft" aria-label="No karma card">
         &mdash;
       </span>
     );
@@ -77,7 +77,7 @@ function CardCell({ card }: { card: CardSeo | null }) {
   return (
     <Link
       href={`/birth-card/${card.slug}`}
-      className="font-serif text-lg underline decoration-[#14110d]/20 underline-offset-4 transition hover:decoration-[#8e321f]"
+      className="font-serif text-lg underline decoration-brand-line-strong underline-offset-4 transition hover:decoration-brand-oxblood"
       style={{ color: suitColorOnPaper(card.suit) }}
     >
       {card.rank}
@@ -136,12 +136,12 @@ export default function KarmaCardsPage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Cardology meanings</p>
-        <h1 className="display text-4xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-4xl leading-none text-brand-ink sm:text-6xl">
           Cardology Karma Cards: Gift and Challenge Card for All 52 Birth Cards
         </h1>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5" data-ai-summary>
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5" data-ai-summary>
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             Forty-nine of the 52 Cardology birth cards carry two karma cards: a{" "}
             <strong>Lifetime Gift (Environment)</strong> and a{" "}
             <strong>Lifetime Challenge (Displacement)</strong>. Both come from the
@@ -150,7 +150,7 @@ export default function KarmaCardsPage() {
             full table is below.
           </p>
         </div>
-        <p className="mt-4 text-xs text-[#5b5148]">
+        <p className="mt-4 text-xs text-brand-ink-soft">
           By{" "}
           <Link href="/about" className="underline underline-offset-4">
             Cassidy Rice
@@ -162,7 +162,7 @@ export default function KarmaCardsPage() {
         </p>
       </header>
 
-      <section className="max-w-3xl space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+      <section className="max-w-3xl space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <p>
           Your birth card is not read in isolation. It sits at a fixed address in
           the Life Spread, and that address has neighbours. Read your card&rsquo;s
@@ -222,17 +222,17 @@ export default function KarmaCardsPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="font-serif text-4xl leading-none text-[#14110d]">
+        <h2 className="font-serif text-4xl leading-none text-brand-ink">
           Karma cards for all 52 birth cards
         </h2>
-        <p className="mt-3 max-w-3xl text-base leading-relaxed text-[#5b5148]">
+        <p className="mt-3 max-w-3xl text-base leading-relaxed text-brand-ink-soft">
           Every card links to its full meaning. Red is Hearts and Diamonds, black
           is Clubs and Spades. A dash means the card is Fixed and has no karma
           card.
         </p>
         <TableScroll
           label="Karma cards for all 52 birth cards"
-          className="mt-6 border border-[#14110d]/15 bg-[#f4f0e7]/78"
+          className="mt-6 border border-brand-line bg-brand-paper"
         >
           <table className="w-full min-w-[30rem] border-collapse text-left">
             <caption className="sr-only">
@@ -240,14 +240,14 @@ export default function KarmaCardsPage() {
               card for each of the 52 Cardology birth cards.
             </caption>
             <thead>
-              <tr className="border-b border-[#14110d]/15">
-                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#5b5148]">
+              <tr className="border-b border-brand-line">
+                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-brand-ink-soft">
                   Birth card
                 </th>
-                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#5b5148]">
+                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-brand-ink-soft">
                   Lifetime Gift <span className="font-normal normal-case tracking-normal">(Environment)</span>
                 </th>
-                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#5b5148]">
+                <th scope="col" className="px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-brand-ink-soft">
                   Lifetime Challenge <span className="font-normal normal-case tracking-normal">(Displacement)</span>
                 </th>
               </tr>
@@ -257,12 +257,12 @@ export default function KarmaCardsPage() {
                 <tr
                   key={card.slug}
                   id={card.slug}
-                  className="scroll-mt-24 border-b border-[#14110d]/10 last:border-b-0"
+                  className="scroll-mt-24 border-b border-brand-line last:border-b-0"
                 >
                   <th scope="row" className="px-4 py-2.5 font-normal">
                     <Link
                       href={`/birth-card/${card.slug}`}
-                      className="underline decoration-[#14110d]/20 underline-offset-4 transition hover:decoration-[#8e321f]"
+                      className="underline decoration-brand-line-strong underline-offset-4 transition hover:decoration-brand-oxblood"
                       style={{ color: suitColorOnPaper(card.suit) }}
                     >
                       {card.label}
@@ -279,21 +279,21 @@ export default function KarmaCardsPage() {
             </tbody>
           </table>
         </TableScroll>
-        <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+        <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
           {fixed.length} Fixed cards with no karma pair · {semiFixed.length}{" "}
           Semi-Fixed cards whose gift and challenge are the same card.
         </p>
       </section>
 
       <section className="mt-12 max-w-3xl">
-        <h2 className="font-serif text-4xl leading-none text-[#14110d]">
+        <h2 className="font-serif text-4xl leading-none text-brand-ink">
           Frequently asked questions
         </h2>
         <div className="mt-5 space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="border-t border-[#14110d]/15 pt-4">
-              <h3 className="font-serif text-2xl text-[#14110d]">{faq.q}</h3>
-              <p className="mt-2 text-base leading-relaxed text-[#5b5148]">
+            <div key={faq.q} className="border-t border-brand-line pt-4">
+              <h3 className="font-serif text-2xl text-brand-ink">{faq.q}</h3>
+              <p className="mt-2 text-base leading-relaxed text-brand-ink-soft">
                 {faq.a}
               </p>
             </div>
@@ -306,13 +306,13 @@ export default function KarmaCardsPage() {
       </section>
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
-        <Link href="/shadow-karma-guide" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/shadow-karma-guide" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Shadow &amp; karma guide
         </Link>
-        <Link href="/birth-card" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/birth-card" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           All 52 card meanings
         </Link>
-        <Link href="/birth-card-calculator" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/birth-card-calculator" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Find your birth card
         </Link>
       </section>

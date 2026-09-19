@@ -29,15 +29,15 @@ export default function RefundPolicy() {
     >
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Legal</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Refund Policy
         </h1>
-        <p className="mt-4 text-sm text-[#5b5148]">Last updated: {updatedLabel(UPDATED)}</p>
+        <p className="mt-4 text-sm text-brand-ink-soft">Last updated: {updatedLabel(UPDATED)}</p>
       </header>
 
-      <div className="max-w-3xl space-y-8 text-base leading-relaxed text-[#3d352d]">
-        <section className="border border-[#14110d]/15 bg-[#efe8dc]/70 p-5">
-          <p className="font-serif text-lg text-[#14110d]">
+      <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
+        <section className="border border-brand-line bg-brand-paper-deep p-5">
+          <p className="font-serif text-lg text-brand-ink">
             Card Blueprints sells the $13 One Question Reading, a written reading
             built from the birth date and the question entered before checkout.
             Reply to your receipt before it is written and we fix a wrong date
@@ -49,7 +49,7 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">One Question Reading</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">One Question Reading</h2>
           <div className="mt-3 space-y-3">
             <p>
               The One Question Reading is written for the birth date and the
@@ -70,7 +70,7 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Legacy phone-reading orders</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Legacy phone-reading orders</h2>
           <p className="mt-3">
             Phone-reading products are no longer sold. Existing purchases keep
             the refund and service rights provided at checkout. If an unused
@@ -82,7 +82,7 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">Digital downloads</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">Digital downloads</h2>
           <p className="mt-3">
             Digital products with instant download are refundable if the file is
             corrupt or the download fails. Refunds are not available after a
@@ -91,28 +91,28 @@ export default function RefundPolicy() {
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-[#14110d]">How to request a refund</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">How to request a refund</h2>
           <ol className="mt-3 space-y-2">
-            <li className="border-t border-[#14110d]/12 pt-3">
+            <li className="border-t border-brand-line pt-3">
               <strong>Reply to your Stripe receipt email</strong> with “refund request” in the subject line.
             </li>
-            <li className="border-t border-[#14110d]/12 pt-3">
+            <li className="border-t border-brand-line pt-3">
               Or email{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`} className="text-[#8e321f] underline underline-offset-4">
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand-oxblood underline underline-offset-4">
                 {CONTACT_EMAIL}
               </a>{" "}
               with the email address used at checkout. For a legacy phone order,
               also include the checkout phone number.
             </li>
           </ol>
-          <p className="mt-4 text-sm text-[#5b5148]">
+          <p className="mt-4 text-sm text-brand-ink-soft">
             Requests are reviewed personally, and approved refunds are processed
             through Stripe — banks typically post them within 5–10 business days.
           </p>
         </section>
 
-        <div className="border-t border-[#14110d]/15 pt-6">
-          <Link href="/products/one-question-reading" className="text-[#8e321f] underline underline-offset-4">
+        <div className="border-t border-brand-line pt-6">
+          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
             ← Back to the One Question Reading
           </Link>
         </div>

@@ -53,12 +53,12 @@ export default function EditorialPolicyPage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Trust and boundaries</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Editorial policy for Card Blueprints.
         </h1>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             Card Blueprints keeps the math visible and the interpretation practical:
             calculate the card, read the pattern, compare the person, and correct what
             needs correcting.
@@ -68,14 +68,14 @@ export default function EditorialPolicyPage() {
 
       <section className="grid gap-4 sm:grid-cols-2">
         {policies.map((policy) => (
-          <article key={policy.title} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-            <h2 className="font-serif text-2xl leading-none text-[#14110d]">{policy.title}</h2>
-            <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">{policy.body}</p>
+          <article key={policy.title} className="border border-brand-line bg-brand-paper p-5">
+            <h2 className="font-serif text-2xl leading-none text-brand-ink">{policy.title}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">{policy.body}</p>
           </article>
         ))}
       </section>
 
-      <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+      <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <p>
           Blog posts, calculators, card pages, and videos should leave the reader with
           a clearer pattern: what the card means, where it shows up, which people bring

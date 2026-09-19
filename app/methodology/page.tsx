@@ -64,18 +64,18 @@ export default function MethodologyPage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Calculation and interpretation</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           How a birthday becomes a card, and how the card becomes a reading.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">
+        <p className="mt-3 text-sm text-brand-ink-soft">
           By Cassidy Rice · Updated {updatedLabel(PAGE_UPDATED)} ·{" "}
           <Link href="/editorial-policy" className="underline">
             Editorial policy
           </Link>
         </p>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             The birthday gives the card. The suit gives the life domain. The rank gives
             the movement. The ruling card, timing card, and relationship context show
             how the pattern expresses in a real person. Same birthday always produces
@@ -88,23 +88,23 @@ export default function MethodologyPage() {
         <h2 className="oracle-eyebrow mb-4">Core structure</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {principles.map(([label, detail]) => (
-            <div key={label} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-              <p className="font-serif text-2xl text-[#14110d]">{label}</p>
-              <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">{detail}</p>
+            <div key={label} className="border border-brand-line bg-brand-paper p-5">
+              <p className="font-serif text-2xl text-brand-ink">{label}</p>
+              <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{detail}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="mt-12 max-w-3xl">
-        <h2 className="font-serif text-3xl text-[#14110d]">Worked example</h2>
-        <p className="mt-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Worked example</h2>
+        <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
           Take a public calendar date: <strong>January 15</strong>. In this system the
           date resolves to the <strong>Queen of Diamonds</strong> as birth card — the
           same result every time the math is run. The year is not required for the birth
           card itself; year feeds timing layers when you ask about a specific chapter.
         </p>
-        <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             <strong>Input.</strong> Month and day only for the birth card; optional year
             for ruling-card context and periods.
@@ -127,7 +127,7 @@ export default function MethodologyPage() {
             verdict.
           </li>
         </ol>
-        <p className="mt-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="mt-5 font-serif text-lg leading-relaxed text-brand-ink">
           You can open the live page for that date at{" "}
           <a href="/born-on/january-15" className="underline">
             /born-on/january-15
@@ -142,14 +142,14 @@ export default function MethodologyPage() {
       </section>
 
       <section className="mt-12 max-w-3xl" id="birth-card-formula">
-        <h2 className="font-serif text-3xl text-[#14110d]">Birth-card formula</h2>
-        <p className="mt-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Birth-card formula</h2>
+        <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
           The live calculator uses this mapping. You can check the math by hand,
           then confirm the card in the 366-row CSV. Year is not used for the
           birth card. Paid books teach permutation history, yearly spreads, and
           interpretation. They do not change this public formula.
         </p>
-        <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             <strong>Solar value.</strong>{" "}
             <code>sv = 55 − (2 × month + day)</code>
@@ -167,8 +167,8 @@ export default function MethodologyPage() {
             Spades). We do not force December 31 into a standard 52-card result.
           </li>
         </ol>
-        <h3 className="mt-8 font-serif text-2xl text-[#14110d]">Exception rules</h3>
-        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h3 className="mt-8 font-serif text-2xl text-brand-ink">Exception rules</h3>
+        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             February 29 maps normally to the 9 of Clubs. Leap day is in the
             table, not skipped.
@@ -176,8 +176,8 @@ export default function MethodologyPage() {
           <li>December 31 is the Joker boundary, not King of Spades.</li>
           <li>Invalid calendar dates are rejected. They are not remapped.</li>
         </ul>
-        <h3 className="mt-8 font-serif text-2xl text-[#14110d]">Version history</h3>
-        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h3 className="mt-8 font-serif text-2xl text-brand-ink">Version history</h3>
+        <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             <strong>2026-08-15</strong> — Dataset version 2026-08-15. Full
             366-row CSV published.
@@ -190,14 +190,14 @@ export default function MethodologyPage() {
       </section>
 
       <section
-        className="mt-12 max-w-3xl border border-[#14110d]/15 bg-[#f4f0e7]/78 p-6"
+        className="mt-12 max-w-3xl border border-brand-line bg-brand-paper p-6"
         id="birthday-map-dataset"
       >
         <p className="oracle-eyebrow mb-3">Open data</p>
-        <h2 className="font-serif text-3xl text-[#14110d]">
+        <h2 className="font-serif text-3xl text-brand-ink">
           Download the 366-date Cardology map
         </h2>
-        <p className="mt-4 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
           The CSV contains 366 rows, one for every month-and-day combination. Each row
           includes the card code, rank, suit, solar value, canonical card URL, birthday
           URL, exception rule, claim classification, and dataset version. February 29 maps to the 9 of Clubs.
@@ -206,23 +206,23 @@ export default function MethodologyPage() {
         <a
           href="/data/cardology-birthday-map.csv"
           download="cardology-birthday-map.csv"
-          className="mt-5 inline-block rounded-full bg-[#8e321f] px-5 py-3 text-xs font-bold uppercase tracking-wider text-white"
+          className="mt-5 inline-block rounded-full bg-brand-oxblood px-5 py-3 text-xs font-bold uppercase tracking-wider text-white"
         >
           Download CSV (366 rows)
         </a>
-        <div className="mt-6 border-t border-[#14110d]/15 pt-5">
-          <h3 className="font-serif text-2xl text-[#14110d]">How to cite this dataset</h3>
-          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+        <div className="mt-6 border-t border-brand-line pt-5">
+          <h3 className="font-serif text-2xl text-brand-ink">How to cite this dataset</h3>
+          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
             Card Blueprints. Cardology Birthday Map: 366 Date-to-Card Mappings.
             Version 2026-08-15. https://cardblueprints.com/data/cardology-birthday-map.csv
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
             The table publishes deterministic date-to-card mappings used by the live
             calculator. Personality, relationship, and life-pattern interpretations are
             separate: interpretive meanings are Cardology pattern language, not
             experimentally established facts.
           </p>
-          <p className="mt-3 text-sm leading-relaxed text-[#5b5148]">
+          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
             For the public release notes, exceptional-date checks, and explanation of why
             the table is auditable, read{" "}
             <a
@@ -234,13 +234,13 @@ export default function MethodologyPage() {
             .
           </p>
         </div>
-        <div className="mt-6 border-t border-[#14110d]/15 pt-6">
+        <div className="mt-6 border-t border-brand-line pt-6">
           <NewsletterSignupForm source="methodology-dataset" compact />
         </div>
       </section>
 
-      <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
-        <h2 className="font-serif text-3xl text-[#14110d]">Interpretation order</h2>
+      <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
+        <h2 className="font-serif text-3xl text-brand-ink">Interpretation order</h2>
         <p>
           Start with what is fixed: the birthday, the card, the suit, and the rank.
           Then read the range: balanced expression, under-expression, over-expression,
@@ -258,8 +258,8 @@ export default function MethodologyPage() {
         </p>
       </section>
 
-      <section className="mt-10 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-[#3d352d]">
-        <h2 className="font-serif text-3xl text-[#14110d]">What we do not claim</h2>
+      <section className="mt-10 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-brand-ink">
+        <h2 className="font-serif text-3xl text-brand-ink">What we do not claim</h2>
         <p>
           Cardology on Card Blueprints is a pattern-recognition system for self-awareness
           and entertainment. It describes tendencies, not fate. It is not medical,
@@ -269,8 +269,8 @@ export default function MethodologyPage() {
         </p>
       </section>
 
-      <section className="mt-10 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-[#3d352d]">
-        <h2 className="font-serif text-3xl text-[#14110d]">Test vectors and corrections</h2>
+      <section className="mt-10 max-w-3xl space-y-4 font-serif text-lg leading-relaxed text-brand-ink">
+        <h2 className="font-serif text-3xl text-brand-ink">Test vectors and corrections</h2>
         <p>
           The public birthday map is the formula. Same month and day always return
           the same birth card. Check these known rows against the calculator:
@@ -296,22 +296,22 @@ export default function MethodologyPage() {
         </p>
       </section>
 
-      <section className="mt-12 border border-[#14110d]/15 bg-[#eadfcd]/55 p-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Use the method</h2>
+      <section className="mt-12 border border-brand-line bg-brand-paper-deep p-5">
+        <h2 className="font-serif text-3xl text-brand-ink">Use the method</h2>
         <div className="mt-4 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
+          <Link href="/birth-card-calculator" className="rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood">
             Birth Card Calculator
           </Link>
-          <Link href="/cardology-for-beginners" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
+          <Link href="/cardology-for-beginners" className="rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood">
             Beginners path
           </Link>
-          <Link href="/birth-card" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
+          <Link href="/birth-card" className="rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood">
             All 52 Birth Cards
           </Link>
-          <Link href="/52-card-astrology-explained" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
+          <Link href="/52-card-astrology-explained" className="rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood">
             52-Card Astrology Explained
           </Link>
-          <Link href="/about" className="rounded-full border border-[#14110d]/18 px-4 py-2 text-xs font-bold uppercase text-[#8e321f]">
+          <Link href="/about" className="rounded-full border border-brand-line-strong px-4 py-2 text-xs font-bold uppercase text-brand-oxblood">
             About
           </Link>
         </div>

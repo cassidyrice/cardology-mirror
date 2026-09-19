@@ -70,12 +70,12 @@ export default function ShadowKarmaGuidePage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Cardology meanings</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Shadow, alignment, support karma, and challenge karma in Cardology.
         </h1>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             In Cardology, shadow describes a card pattern when it slips out of
             proportion. Alignment is the centered expression. Support karma and
             challenge karma describe card relationships that can feel like gifts,
@@ -84,7 +84,7 @@ export default function ShadowKarmaGuidePage() {
         </div>
       </header>
 
-      <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+      <section className="space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <p>
           Shadow language is useful only when it stays practical. It should help a
           person notice where a gift becomes too loud, too quiet, too controlling, or
@@ -101,21 +101,21 @@ export default function ShadowKarmaGuidePage() {
         <h2 className="oracle-eyebrow mb-4">Glossary</h2>
         <dl className="grid gap-4 sm:grid-cols-2">
           {glossary.map(([term, definition]) => (
-            <div key={term} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-              <dt className="font-serif text-2xl text-[#14110d]">{term}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-[#5b5148]">{definition}</dd>
+            <div key={term} className="border border-brand-line bg-brand-paper p-5">
+              <dt className="font-serif text-2xl text-brand-ink">{term}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{definition}</dd>
             </div>
           ))}
         </dl>
       </section>
 
       <section className="mt-12">
-        <h2 className="font-serif text-4xl leading-none text-[#14110d]">Frequently asked questions</h2>
+        <h2 className="font-serif text-4xl leading-none text-brand-ink">Frequently asked questions</h2>
         <div className="mt-5 space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="border-t border-[#14110d]/15 pt-4">
-              <h3 className="font-serif text-2xl text-[#14110d]">{faq.q}</h3>
-              <p className="mt-2 text-base leading-relaxed text-[#5b5148]">{faq.a}</p>
+            <div key={faq.q} className="border-t border-brand-line pt-4">
+              <h3 className="font-serif text-2xl text-brand-ink">{faq.q}</h3>
+              <p className="mt-2 text-base leading-relaxed text-brand-ink-soft">{faq.a}</p>
             </div>
           ))}
         </div>
@@ -123,13 +123,13 @@ export default function ShadowKarmaGuidePage() {
 
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
-        <Link href="/birth-card" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/birth-card" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           All 52 card meanings
         </Link>
-        <Link href="/birth-card-vs-ruling-card" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/birth-card-vs-ruling-card" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Birth card vs ruling card
         </Link>
-        <Link href="/cardology-compatibility" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/cardology-compatibility" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Compatibility guide
         </Link>
       </section>

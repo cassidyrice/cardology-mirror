@@ -62,13 +62,13 @@ export default function AboutPage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">About the reference</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
         </h1>
-        <p className="mt-3 text-sm text-[#5b5148]">Updated {updatedLabel(UPDATED)}</p>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+        <p className="mt-3 text-sm text-brand-ink-soft">Updated {updatedLabel(UPDATED)}</p>
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
             and repeated dynamics. Free tools come first; the paid product is the $13
@@ -77,7 +77,7 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <section className="space-y-5 font-serif text-lg leading-relaxed text-[#3d352d]">
+      <section className="space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         
         <p>
           I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
@@ -107,8 +107,8 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Who runs Card Blueprints</h2>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Who runs Card Blueprints</h2>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Card Blueprints is built and maintained by <strong>Cassidy Rice</strong>, its
           founder. Cassidy built the deterministic calculation engine behind every page
           on this site — the same birthday always produces the same card, the same
@@ -116,7 +116,7 @@ export default function AboutPage() {
           The interpretation layer is curated from the published cardology tradition
           and labeled as interpretation, not fact.
         </p>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Experience on this site means shipping the tools people actually use: the free
           birth card calculator, the birthday and compatibility directories, the 52 card
           meanings, and the One Question Reading pipeline. Expertise means
@@ -126,7 +126,7 @@ export default function AboutPage() {
           </Link>{" "}
           — and refusing fortune-telling claims that the math cannot support.
         </p>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Corrections and questions are welcome at{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
             {CONTACT_EMAIL}
@@ -141,15 +141,15 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Business identity</h2>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Business identity</h2>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Card Blueprints is an online publisher of Cardology tools and written
           reports at {SITE_URL.replace("https://", "")}. It is not a clinic,
           church, licensed counseling practice, or accredited school. Cassidy
           Rice is the founder and the named author of the public method. There
           is no staff of readers behind the calculator.
         </p>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Public mail is{" "}
           <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
             {CONTACT_EMAIL}
@@ -164,8 +164,8 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-5">
-        <h2 className="font-serif text-3xl text-[#14110d]">Named sources</h2>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Named sources</h2>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Card Blueprints did not invent the deck-to-calendar idea. The lineage
           we name in public is Olney Richmond&rsquo;s{" "}
           <em>The Mystic Test Book</em> (1893), later work by Florence Campbell
@@ -177,7 +177,7 @@ export default function AboutPage() {
           </Link>{" "}
           and the 366-row map.
         </p>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           See the synonym map on{" "}
           <Link href="/destiny-cards" className="underline">
             Destiny Cards
@@ -191,8 +191,8 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <h2 className="font-serif text-3xl text-[#14110d]">Why a written reading</h2>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Why a written reading</h2>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           The free calculator answers “what is my card?” The reading answers “what does
           my card say about this one decision?” The One Question Reading is a one-time
           $13 purchase: your birth card, this year's Long Range and Pluto cards, and the
@@ -203,15 +203,15 @@ export default function AboutPage() {
         </p>
         <Link
           href="/products/one-question-reading"
-          className="inline-block rounded-full border border-[#14110d] bg-[#14110d] px-5 py-2.5 text-sm font-semibold text-[#f4f0e7]"
+          className="inline-block rounded-full border border-brand-ink bg-brand-ink px-5 py-2.5 text-sm font-semibold text-brand-on-dark"
         >
           One Question Reading — $13
         </Link>
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <h2 className="font-serif text-3xl text-[#14110d]">Research and data</h2>
-        <p className="font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Research and data</h2>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Card Blueprints publishes the calculation layer so readers can inspect the
           work instead of trusting a black-box result. The complete birthday map covers
           all 366 month-and-day combinations, including leap day and the December 31
@@ -220,13 +220,13 @@ export default function AboutPage() {
         <div className="flex flex-wrap gap-3">
           <Link
             href="/methodology#birthday-map-dataset"
-            className="inline-block rounded-full border border-[#14110d]/20 px-5 py-2.5 text-sm font-semibold text-[#8e321f]"
+            className="inline-block rounded-full border border-brand-line-strong px-5 py-2.5 text-sm font-semibold text-brand-oxblood"
           >
             Methodology and CSV
           </Link>
           <a
             href="https://buttondown.com/cardblueprint/archive/i-published-the-full-366-date-cardology-map/"
-            className="inline-block rounded-full border border-[#14110d]/20 px-5 py-2.5 text-sm font-semibold text-[#8e321f]"
+            className="inline-block rounded-full border border-brand-line-strong px-5 py-2.5 text-sm font-semibold text-brand-oxblood"
           >
             Read the 366-date publication note
           </a>
@@ -234,8 +234,8 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <h2 className="font-serif text-3xl text-[#14110d]">Trust &amp; policies</h2>
-        <ul className="space-y-2 font-serif text-lg leading-relaxed text-[#3d352d]">
+        <h2 className="font-serif text-3xl text-brand-ink">Trust &amp; policies</h2>
+        <ul className="space-y-2 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             <Link href="/editorial-policy" className="underline">
               Editorial policy
@@ -266,27 +266,27 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 grid gap-4 sm:grid-cols-2">
-        <Link href="/methodology" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
-          <p className="font-serif text-2xl text-[#14110d]">Methodology</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
+        <Link href="/methodology" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
+          <p className="font-serif text-2xl text-brand-ink">Methodology</p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             How fixed birthday math becomes a card reading.
           </p>
         </Link>
-        <Link href="/cardology-for-beginners" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
-          <p className="font-serif text-2xl text-[#14110d]">Beginners path</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
+        <Link href="/cardology-for-beginners" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
+          <p className="font-serif text-2xl text-brand-ink">Beginners path</p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             Ten-minute path from first card to first comparison.
           </p>
         </Link>
-        <Link href={VIDEO_PATH} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
-          <p className="font-serif text-2xl text-[#14110d]">Videos</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
+        <Link href={VIDEO_PATH} className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
+          <p className="font-serif text-2xl text-brand-ink">Videos</p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             Watch the multimedia companion to the written Cardology guide.
           </p>
         </Link>
-        <Link href="/contact" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-5 transition hover:bg-[#fffaf0]">
-          <p className="font-serif text-2xl text-[#14110d]">Contact</p>
-          <p className="mt-2 text-sm leading-relaxed text-[#5b5148]">
+        <Link href="/contact" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
+          <p className="font-serif text-2xl text-brand-ink">Contact</p>
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             Send corrections, questions, or partnership requests.
           </p>
         </Link>

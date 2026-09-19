@@ -68,19 +68,19 @@ export default function VideosPage() {
 
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Cardology video library</p>
-        <h1 className="display text-5xl leading-none text-[#14110d] sm:text-6xl">
+        <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
           Cardology videos for birth cards, people, shadow patterns, and relationships.
         </h1>
-        <div className="mt-6 border border-[#14110d]/15 bg-[#eadfcd]/70 p-5">
+        <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
-          <p className="text-base leading-relaxed text-[#3d352d]">
+          <p className="text-base leading-relaxed text-brand-ink">
             Card Blueprints videos explain birth-card meanings, shadow patterns, timing,
             compatibility, famous-person examples, and practical relationship dynamics.
             Start with the card that is active in your life, then watch how the shadow
             pattern shows up in choices, timing, and relationships.
           </p>
         </div>
-        <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-[#3d352d]">
+        <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink">
           The videos are for the moments when a written meaning is not enough: when
           you want to hear the card named out loud, with the gift, distortion, and
           real-life behavior made obvious.
@@ -98,21 +98,21 @@ export default function VideosPage() {
           {CARDOLOGY_VIDEOS.map((video) => {
             const cardSlug = videoCardSlug(video);
             return (
-              <article key={video.url} className="border border-[#14110d]/15 bg-[#f4f0e7]/78 p-5">
-                <p className="text-[0.68rem] font-bold uppercase text-[#8e321f]">
+              <article key={video.url} className="border border-brand-line bg-brand-paper p-5">
+                <p className="text-[0.68rem] font-bold uppercase text-brand-oxblood">
                   {video.card} · published {video.uploadDate}
                 </p>
-                <h2 className="mt-2 font-serif text-3xl leading-none text-[#14110d]">
+                <h2 className="mt-2 font-serif text-3xl leading-none text-brand-ink">
                   {video.title}
                 </h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#5b5148]">
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
                   {video.description}
                 </p>
                 <div className="mt-4 max-w-2xl">
                   <VideoEmbed
                     videoId={youtubeId(video.url)}
                     title={video.title}
-                    frameClassName="border border-[#14110d]/20"
+                    frameClassName="border border-brand-line-strong"
                   />
                 </div>
                 <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -123,7 +123,7 @@ export default function VideosPage() {
                   )}
                   <a
                     href={video.url}
-                    className="text-xs font-bold uppercase text-[#5b5148] underline underline-offset-4 hover:text-[#8e321f]"
+                    className="text-xs font-bold uppercase text-brand-ink-soft underline underline-offset-4 hover:text-brand-oxblood"
                   >
                     Watch on the channel
                   </a>
@@ -136,13 +136,13 @@ export default function VideosPage() {
 
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">
-        <Link href="/birth-card" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/birth-card" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           All 52 birth cards
         </Link>
-        <Link href="/blog/pillar/birth-card-meanings" className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <Link href="/blog/pillar/birth-card-meanings" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Birth-card meaning guides
         </Link>
-        <a href={VIDEO_URL} className="border border-[#14110d]/15 bg-[#eadfcd]/55 p-4 text-sm font-bold uppercase text-[#14110d] transition hover:bg-[#fffaf0]">
+        <a href={VIDEO_URL} className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Hosted video subdomain
         </a>
       </section>

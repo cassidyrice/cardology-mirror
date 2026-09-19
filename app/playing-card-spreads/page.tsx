@@ -98,7 +98,7 @@ function CardCell({ code, highlight }: { code: string; highlight?: boolean }) {
   return (
     <td
       className={`border border-white/10 px-1 py-1.5 text-center font-mono text-[0.72rem] sm:text-sm ${
-        highlight ? "bg-[#8e321f] font-bold" : ""
+        highlight ? "bg-brand-oxblood font-bold" : ""
       }`}
       style={{ color: highlight ? "#fff" : suit ? SUIT_COLOR_PAPER[suit] : undefined }}
     >
@@ -116,7 +116,7 @@ function BoardGrid({ spread, highlight, label }: { spread: Spread; highlight: st
           {spread.crown.map((c, i) => (
             <span
               key={c}
-              className={c === highlight ? "rounded bg-[#8e321f] px-1.5 py-0.5 font-bold text-white" : ""}
+              className={c === highlight ? "rounded bg-brand-oxblood px-1.5 py-0.5 font-bold text-white" : ""}
               style={{ color: c === highlight ? undefined : SUIT_COLOR_PAPER[parseCard(c)?.suit ?? "spades"] }}
             >
               {c}
@@ -153,9 +153,9 @@ const BOARD_CSS = `
 .sb{border-collapse:collapse;width:100%;min-width:19rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem}
 .sb td{border:1px solid rgba(255,255,255,.1);padding:5px 2px;text-align:center;color:#cfd0dc}
 .sb td.r{color:#d05c72}
-.sb td.h{background:#8e321f;color:#fff;font-weight:700}
+.sb td.h{background:var(--oxblood);color:#fff;font-weight:700}
 .sb-c{margin:0 0 5px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.7rem;letter-spacing:.18em;color:#a7a698}
-.sb-c .h{background:#8e321f;color:#fff;font-weight:700;border-radius:3px;padding:1px 5px}
+.sb-c .h{background:var(--oxblood);color:#fff;font-weight:700;border-radius:3px;padding:1px 5px}
 `;
 
 const RED_SUIT = /[\u2665\u2666]/; // hearts, diamonds
@@ -416,7 +416,7 @@ export default function PlayingCardSpreads() {
                     <span aria-hidden="true" className="mr-1.5">{p.glyph}</span>
                     {p.planet}
                     {p.active && (
-                      <span className="ml-2 rounded bg-[#8e321f] px-1.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">now</span>
+                      <span className="ml-2 rounded bg-brand-oxblood px-1.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">now</span>
                     )}
                   </td>
                   <td className="border-b border-white/10 px-2 py-2 font-mono" style={{ color: SUIT_COLOR_PAPER[parseCard(p.card)?.suit ?? "spades"] }}>

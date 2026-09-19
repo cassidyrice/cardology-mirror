@@ -57,7 +57,7 @@
    screens keep the adaptive browser default. */
 :where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper) ::selection {
   background: rgba(184, 137, 61, 0.32);
-  color: #14110d;
+  color: var(--ink);
 }
 
 /* Visible focus rings per surface: oxblood on paper, paper on ink. Dark
@@ -69,7 +69,7 @@
   outline-offset: 3px;
 }
 
-:where(.shell-ink, [class*="bg-[#14110d]"])
+:where(.shell-ink, .bg-brand-ink)
   :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
   outline: 2px solid var(--on-dark);
   outline-offset: 3px;
@@ -785,18 +785,18 @@ body {
 }
 
 .paper-shell .eyebrow {
-  color: rgba(20, 17, 13, 0.58);
+  color: var(--ink-soft);
   font-weight: 700;
   letter-spacing: 0;
 }
 
 .paper-shell .prose-reading {
-  color: #4c4339;
+  color: var(--ink);
 }
 
 .paper-shell .prose-reading p,
 .paper-shell .prose-reading li {
-  color: #4c4339;
+  color: var(--ink);
 }
 
 .paper-shell .prose-reading em,
@@ -805,7 +805,7 @@ body {
 }
 
 .paper-shell .hairline {
-  border-color: rgba(20, 17, 13, 0.15);
+  border-color: var(--line);
 }
 
 .paper-shell .card-surface {
@@ -1061,9 +1061,9 @@ body {
   inset: 0;
   z-index: -1;
   max-width: 100%;
-  border: 1px solid rgba(20, 17, 13, 0.16);
+  border: 1px solid var(--line);
   border-radius: inherit;
-  background: #efe8dc;
+  background: var(--paper-deep);
 }
 
 .report-stack::before {
