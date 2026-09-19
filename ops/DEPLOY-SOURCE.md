@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-18** (deployed `main` @ `bc023c1` — Restyle to blueprint: cyanotype tokens and the Life Spread mark; previous record `999dfe6`)
+**Last verified: 2026-09-18** (deployed `main` @ `e093a80` — Put the Life Spread mark in the tab icon and drop leftover cream from the homepage.; previous record `bc023c1`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `bc023c13346df33305cc7c86da89de1182de90c9` |
+| **Deployed commit** | `e093a806d969f2e9ffe902dcd7acff26d356654f` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
 | **Worker rollback** | `da24f699-4b1f-4473-a218-82a8eff38988` |
