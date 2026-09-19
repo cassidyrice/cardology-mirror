@@ -13,13 +13,6 @@
 #   ALLOW_DIRTY=1  allow uncommitted changes (discouraged; still records dirty flag)
 #   ALLOW_BRANCH=1 skip branch allowlist check
 set -euo pipefail
-# Deploy lock: the foreman refuses to merge into main while this file exists (see ops foreman.sh merge).
-LOCK="$HOME/cardblueprints-ops/.deploy-lock"
-date -u +%FT%TZ > "$LOCK"
-trap 'rm -f "$LOCK"' EXIT
-# Preflight: a placeholder binding id in wrangler.toml fails at the very end of a deploy; catch it first.
-if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then echo "wrangler.toml has a placeholder binding id; create the namespace and set the id first." >&2; exit 1; fi
-
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
@@ -41,6 +34,15 @@ die() {
 base="$(basename "$ROOT")"
 if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
   die "Production deploys are only allowed from ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+fi
+
+# Canonical path must be exact, not merely a directory with the same basename.
+[[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
+source "$ROOT/scripts/deploy-lock.sh"
+acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
+# Placeholder validation happens while holding our own lock.
+if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then
+  die "wrangler.toml has an unresolved release binding"
 fi
 
 # --- Guard: git repo ---
