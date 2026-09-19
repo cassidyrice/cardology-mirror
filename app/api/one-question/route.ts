@@ -44,6 +44,11 @@ export async function GET(req: NextRequest) {
           sessionId, sessionCreated: session.created, birthday: birthdateFromCheckoutSession(session),
           question: questionFromCheckoutSession(session),
           email: session.customer_details?.email ?? session.customer_email ?? "",
+        }).catch(async (error) => {
+          // Email can fail after the reading is saved; leave delivery retryable.
+          const saved = await getStoredReading(sessionId);
+          if (saved?.status === "ready" && saved.text) return saved;
+          throw error;
         })
       : await getStoredReading(sessionId);
     return NextResponse.json({
