@@ -49,6 +49,9 @@ export async function verifyToken(token: string | null | undefined): Promise<Gat
   try {
     const payload = JSON.parse(new TextDecoder().decode(b64urlDecode(payloadB64))) as GatePayload;
     if (typeof payload.exp !== "number" || payload.exp < Date.now()) return null;
+    // Legacy gate tokens contain email + exp. Product tokens carry a slug and
+    // must not unlock the general AI gate when signing secrets share a fallback.
+    if (typeof payload.email !== "string" || "slug" in payload) return null;
     return payload;
   } catch {
     return null;

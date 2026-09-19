@@ -63,3 +63,14 @@ for (const family of families) {
     await expect(family.mint()).rejects.toThrow("missing");
   });
 }
+
+test("shared fallback cannot turn free download or buyer product tokens into gate access", async () => {
+  for (const key of keys) delete process.env[key];
+  process.env.GATE_SECRET = secret;
+  expect(await verifyToken(legacyToken({ email, exp }))).toEqual({ email, exp });
+  for (const family of families.slice(1)) {
+    expect(await verifyToken(legacyToken(family.payload))).toBeNull();
+    expect(await verifyToken(await family.mint())).toBeNull();
+    expect(await family.verify(legacyToken(family.payload))).not.toBeNull();
+  }
+});
