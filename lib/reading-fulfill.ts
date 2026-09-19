@@ -1,5 +1,5 @@
 // Restores ac5f70b's writer/delivery flow with a durable per-order reservation.
-import { sendEmail } from "./email";
+import { sendEmail, normalizeFromAddress, EmailSendError } from "./email";
 import { writeReading } from "./reading-writer";
 import { sanitizeBirthdateISO } from "./birthdate";
 import { getLegacyReading, getReadingRow, readingDb, storedReading, READING_TTL_MS,
@@ -9,7 +9,7 @@ export type DeliverInput = { sessionId: string; sessionCreated: number; birthday
 
 export async function deliverReading(input: DeliverInput, deps: {
   db?: ReadingDB; write?: typeof writeReading; send?: typeof sendEmail;
-  legacy?: typeof getLegacyReading; startAt?: number;
+  legacy?: typeof getLegacyReading; startAt?: number; from?: string;
 } = {}): Promise<StoredReading> {
   const { sessionId, birthday, question, email } = input;
   if (!/^cs_[A-Za-z0-9_]+$/.test(sessionId) || !sanitizeBirthdateISO(birthday) || question.trim().length < 5 || !email.includes("@")) {
@@ -63,7 +63,12 @@ export async function deliverReading(input: DeliverInput, deps: {
     await query("UPDATE reading_orders SET delivery='review' WHERE session_id=? AND delivery='pending' RETURNING session_id", sessionId);
     return { ...reading, delivery: "review" };
   }
+  const from = normalizeFromAddress(deps.from ?? process.env.INTAKE_FROM_EMAIL ?? "");
+  if (!row.delivery_payload && (!from || (!deps.send && !process.env.RESEND_API_KEY))) {
+    throw new EmailSendError("not_configured", "Email provider is not configured");
+  }
   const payload = {
+    from,
     to: email, subject: "Your reading",
     text: [question ? `You asked: "${question}"` : "Your reading:", "", reading.text, "",
       "This reading was written from your birth card, this year's Long Range and Pluto cards, and your two karma cards. Same birthday, same cards, every time.", "",

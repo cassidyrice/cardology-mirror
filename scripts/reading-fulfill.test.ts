@@ -10,7 +10,7 @@ function setup() {
   const sql = new Database(":memory:"); sql.exec(readFileSync(new URL("../migrations/0001_reading_orders.sql", import.meta.url), "utf8"));
   const db: ReadingDB = { prepare: query => ({ bind: (...values: any[]) => ({ first: async <T>() => sql.query(query).get(...values) as T | null }) }) };
   let writes = 0, sends = 0;
-  const deps = { db, startAt: 1, legacy: async () => null, write: async () => { writes++; return written; }, send: async () => { sends++; } };
+  const deps = { db, startAt: 1, from: "reading@example.test", legacy: async () => null, write: async () => { writes++; return written; }, send: async () => { sends++; } };
   return { deps, sql, counts: () => ({ writes, sends }) };
 }
 test("concurrent requests reserve one generation and reuse identical provider idempotency payload", async () => {
@@ -71,4 +71,25 @@ test("historical orders without stored text never silently regenerate", async ()
   const x = setup(); x.deps.startAt = 101;
   await expect(deliverReading(input, x.deps)).rejects.toThrow("predates");
   expect(x.counts()).toEqual({ writes: 0, sends: 0 });
+});
+
+test("delivery retains the original sender across configuration changes", async () => {
+  const x = setup(); const bodies: string[] = [];
+  x.deps.send = (args?: any) => sendEmail(args, {apiKey:"synthetic", from:"changed@example.test"}, (async (_url: any, init: any) => {
+    bodies.push(init.body);
+    if (bodies.length === 1) throw new Error("ambiguous acceptance");
+    return Response.json({id:"mock"});
+  }) as typeof fetch);
+  await expect(deliverReading(input, x.deps)).rejects.toThrow();
+  x.deps.from = "different@example.test";
+  await deliverReading(input, x.deps);
+  expect(bodies[1]).toBe(bodies[0]);
+  expect(JSON.parse(bodies[1]).from).toBe("Card Blueprints <reading@example.test>");
+});
+test("stale generation becomes reviewable without a second generation", async () => {
+  const x = setup();
+  x.sql.query("INSERT INTO reading_orders(session_id,status,created_at,expires_at) VALUES (?,'writing',?,?)").run(input.sessionId,Date.now()-301_000,Date.now()+86400_000);
+  const result = await deliverReading(input, x.deps);
+  expect(result.status).toBe("failed"); expect(result.delivery).toBe("review");
+  expect(x.counts()).toEqual({writes:0,sends:0});
 });

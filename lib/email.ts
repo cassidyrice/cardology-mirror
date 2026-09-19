@@ -2,6 +2,8 @@
 // If you swap providers later, only this file changes.
 
 type SendArgs = {
+  /** Persisted sender for idempotent paid-delivery retries. */
+  from?: string;
   to: string;
   subject: string;
   text: string;
@@ -60,7 +62,7 @@ export async function sendEmail(
   fetcher: typeof fetch = fetch,
 ): Promise<void> {
   const apiKey = (env.apiKey || "").trim();
-  const from = normalizeFromAddress(env.from || "");
+  const from = normalizeFromAddress(args.from ?? env.from ?? "");
   if (!apiKey || !from) {
     console.warn(
       "[email] skipped because provider configuration is incomplete",

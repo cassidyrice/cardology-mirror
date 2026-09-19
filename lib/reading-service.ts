@@ -37,6 +37,11 @@ export async function getReadingRow(sessionId: string, db?: ReadingDB): Promise<
 }
 export function storedReading(row: ReadingRow): StoredReading {
   if (row.expires_at <= Date.now()) return { status: "failed", createdAt: new Date(row.created_at).toISOString(), delivery: "review" };
+  // A terminated request must eventually reach operator review, never a fresh
+  // reservation. This exceeds the writer's 120s timeout with a generous margin.
+  if (row.status === "writing" && Date.now() - row.created_at > 300_000) {
+    return { status: "failed", createdAt: new Date(row.created_at).toISOString(), delivery: "review" };
+  }
   return { ...(row.reading ? JSON.parse(row.reading) : {}), status: row.status,
     createdAt: new Date(row.created_at).toISOString(), delivery: row.delivery };
 }
