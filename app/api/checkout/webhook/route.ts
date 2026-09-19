@@ -4,16 +4,13 @@ import type Stripe from "stripe";
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
-import { sendIntakeEmail } from "@/lib/email";
+import { sendEmail as sendIntakeEmail } from "@/lib/email";
+import { deliverReading } from "@/lib/reading-fulfill";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
   ALL_90_SPREADS_FILE,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_SKU,
   FIFTY_TWO_BY_SEVEN_ACCESS_DAYS,
   FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
-  ONE_QUESTION_TURNAROUND,
   birthdayForCommand,
   isJokerBirthdate,
   isOneQuestionSession,
@@ -39,11 +36,6 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 const DEFAULT_ACCESS_DAYS = 30;
-
-/** Single-quote a value for a paste-ready shell command (apostrophes escaped). */
-function shellQuote(value: string): string {
-  return `'${value.replace(/'/g, "'\\''")}'`;
-}
 
 const LEGACY_ACCESS_DAYS: Record<string, number> = {
   "one-question-reading": 90,
@@ -83,7 +75,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed") {
+  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
     const session = event.data.object as Stripe.Checkout.Session;
     const email =
       session.customer_details?.email ??
@@ -122,75 +114,54 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // ---- BRANCH: One Question Reading (slug deep-dive, sku one-question-47).
-    // Fulfilled by hand: confirm to the buyer, hand Cass the birthday + question
-    // with a paste-ready `reading` command. Nothing is generated here. ----
-    const oneQuestionPaid =
-      paymentSatisfied &&
-      isOneQuestionSession(session) &&
-      (isDeepDive(product) || session.metadata?.offer_slug === "deep-dive");
-    if (oneQuestionPaid) {
-      const birthday = birthdateFromCheckoutSession(session);
-      const birthdayValid = /^\d{4}-\d{2}-\d{2}$/.test(birthday);
-      const question = questionFromCheckoutSession(session);
-      let buyerEmailed = false;
-      if (email !== "(no email)") {
-        try {
-          await sendIntakeEmail({
-            to: email,
-            subject: "Got your question",
-            text: [
-              "Thanks. Your question is in.",
-              "",
-              question ? `Here is the question I'm reading: "${question}"` : "I could not read your question from this checkout. Reply to this email with the one question and I will take it from there.",
-              "",
-              `Your reading comes to this address within ${ONE_QUESTION_TURNAROUND}. Plain text, about 600 words, no login. It reads the question from your birth card, this year's cards, and the card you owe, and it ends with three things to keep an eye out for.`,
-              "",
-              "If the wording is off, or the birth date at checkout was wrong, reply to this email today and I fix it before it is written.",
-              "",
-              "Cass",
-              "Card Blueprints",
-            ].join("\n"),
-            replyTo: process.env.INTAKE_EMAIL || undefined,
-          });
-          buyerEmailed = true;
-        } catch (e) {
-          console.error("[webhook] one-question buyer email failed", e);
+    // Every fulfillment branch requires confirmed payment, including delayed methods.
+    if (!paymentSatisfied) return NextResponse.json({ received: true });
+    if (isOneQuestionSession(session)) {
+      try {
+        const reading = await deliverReading({
+          sessionId: session.id, sessionCreated: session.created,
+          birthday: birthdateFromCheckoutSession(session),
+          question: questionFromCheckoutSession(session),
+          email: session.customer_details?.email ?? session.customer_email ?? "",
+        });
+        // Stripe retries storage/delivery failures; the durable reservation prevents
+        // a second generation. A stuck generation needs operator reconciliation.
+        if (reading.status === "failed" || reading.delivery === "review") throw new Error("operator review required");
+        if (reading.status !== "ready" || reading.delivery !== "sent") {
+          return NextResponse.json({ error: "fulfillment pending" }, { status: 503 });
         }
-      }
-
-      const to = process.env.INTAKE_EMAIL;
-      if (to) {
-        const command = birthdayValid && question
-          ? `reading ${birthdayForCommand(birthday)} ${shellQuote(question)} --send ${shellQuote(email)}`
-          : "(birthday or question missing: ask the buyer, then run `reading`)";
-        try {
-          await sendIntakeEmail({
-            to,
-            subject: `Payment received (${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}): ${email}`,
-            text: [
-              `ACTION: write the reading within ${ONE_QUESTION_TURNAROUND}. Paste this in Terminal:`,
-              "",
-              command,
-              "",
-              `Birthday: ${birthday || "(missing — ask the buyer)"}${isJokerBirthdate(birthday) ? " (Joker, Dec 31: the tool discloses it)" : ""}`,
-              `Question: ${question || "(missing — ask the buyer)"}`,
-              `Customer email: ${email}`,
-              "",
-              `Offer: ${offerName} (${offerSlug || "deep-dive"})`,
-              `SKU: ${session.metadata?.sku || DEEP_DIVE_SKU}`,
-              `Amount: ${amount}`,
-              `Source: ${session.metadata?.source || "(none)"}`,
-              `Buyer confirmation emailed: ${buyerEmailed ? "yes" : "NO — send manually"}`,
-              `Stripe session: ${session.id}`,
-            ].join("\n"),
-            replyTo: email !== "(no email)" ? email : undefined,
-          });
-        } catch (e) {
-          console.error("[webhook] one-question notification email failed", e);
+        return NextResponse.json({ received: true });
+      } catch {
+        console.error("[webhook] reading requires retry or operator review");
+        if (process.env.INTAKE_EMAIL) {
+          const birthday = birthdateFromCheckoutSession(session);
+          const question = questionFromCheckoutSession(session);
+          const quote = (value: string) => "'" + value.replace(/'/g, "'\\''") + "'";
+          try {
+            await sendIntakeEmail({
+              to: process.env.INTAKE_EMAIL,
+              subject: "Reading fulfillment needs review",
+              idempotencyKey: `reading-review/${session.id}`,
+              text: [
+                `Stripe session: ${session.id}`,
+                "ACTION: inspect reading_orders and provider history before running any generation or send.",
+                "If text is stored, retry delivery of that text. Do not regenerate it.",
+                "If a provider call ended ambiguously, reconcile it before using the manual fallback.",
+                `Buyer: ${email}`,
+                `Birthday: ${birthday}`,
+                `Question: ${question}`,
+                "Verified manual tool (only after reconciliation):",
+                birthday && question && email !== "(no email)"
+                  ? `reading ${birthdayForCommand(birthday)} ${quote(question)} --send ${quote(email)}`
+                  : "Ask the buyer for missing details before using reading.",
+              ].join("\n"),
+            });
+          } catch {
+            console.error("[webhook] review notification not sent; webhook remains retryable");
+          }
         }
+        return NextResponse.json({ error: "fulfillment unavailable" }, { status: 503 });
       }
-      return NextResponse.json({ received: true });
     }
 
     // ---- BRANCH: retired year-app SKUs on the deep-dive slug ($19 52xSeven

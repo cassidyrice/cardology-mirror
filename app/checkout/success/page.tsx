@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import OneQuestionReadingLive from "@/components/checkout/OneQuestionReadingLive";
 
 import { DeepDiveDeliveredBeacon } from "@/components/checkout/DeepDiveDeliveredBeacon";
 import { SeoShell } from "@/components/seo/SeoShell";
@@ -240,7 +241,10 @@ export default async function CheckoutSuccessPage({
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
           {oneQuestion ? (
-            <QuestionFulfillment question={question} email={customerEmail} />
+            <>
+              <QuestionFulfillment question={question} email={customerEmail} />
+              <OneQuestionReadingLive sessionId={sessionId} email={customerEmail} />
+            </>
           ) : deepDive ? (
             <YearFulfillment
               birthday={deepDiveBirthday}

@@ -10,3 +10,15 @@ dataset = "cardblueprints_funnel"
 [[r2_buckets]]
 binding = "EBOOK_BUCKET"
 bucket_name = "cardblueprints-ebooks"
+
+# Release requirement: provision D1 and apply migrations before enabling fulfillment.
+[[d1_databases]]
+binding = "READING_ORDERS"
+database_name = "cardblueprints-reading-orders"
+database_id = "READING_ORDERS_PLACEHOLDER"
+migrations_dir = "migrations"
+
+# Read-only compatibility with ac5f70b's saved readings.
+[[kv_namespaces]]
+binding = "READINGS"
+id = "468369b7e1ae4380a111efbe50dd253c"
