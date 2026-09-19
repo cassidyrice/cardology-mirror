@@ -54,7 +54,7 @@ export default function Home() {
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="home-intro">
-          <p className="home-kicker">A little self-knowledge. A new place to start.</p>
+          <p className="home-kicker">Arithmetic on a fixed 52-card structure. You can check it.</p>
           <LandingCalculator />
           <div className="home-intro-links">
             <Link href="/what-is-cardology">New to Cardology?</Link>

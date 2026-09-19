@@ -1,10 +1,18 @@
 import { SITE_NAME } from "@/lib/site";
 
 /**
- * Brand lockup: plexus-network mark (oxblood) + lowercase geometric-sans
- * wordmark "card blueprint" (ink), adapted from the approved logo concept
- * to the warm-paper palette. Used in SiteHeader and SiteFooter.
+ * Brand lockup: the Life Spread drawn empty — a grid of card outlines with one
+ * position in gold — plus the lowercase wordmark "card blueprint" (ink).
+ *
+ * The mark is the deck's own structure with nothing written in it: the spread
+ * exists before any birthday does, and a reading only says which position you
+ * occupy. Nine cards rather than the full 7x7, so it still reads at 16px.
+ * Used in SiteHeader and SiteFooter.
  */
+const COLUMNS = [3.5, 12.5, 21.5];
+const ROWS = [2, 12, 22];
+const HIGHLIGHT = { x: 12.5, y: 12 };
+
 export function BrandLogo({ compact = false }: { compact?: boolean }) {
   return (
     <span className={`brand-logo${compact ? " brand-logo-compact" : ""}`} role="img" aria-label={SITE_NAME}>
@@ -14,22 +22,24 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
         aria-hidden="true"
         focusable="false"
       >
-        <g
-          stroke="currentColor"
-          strokeOpacity="0.45"
-          strokeWidth="1.1"
-          fill="none"
-          strokeLinecap="round"
-        >
-          <path d="M7 23 12.5 10.5 20.5 16.5 25.5 8" />
-          <path d="M7 23 14.5 26.5 20.5 16.5" />
-        </g>
-        <g fill="currentColor">
-          <circle cx="7" cy="23" r="2" />
-          <circle cx="12.5" cy="10.5" r="2.3" />
-          <circle cx="20.5" cy="16.5" r="2" />
-          <circle cx="25.5" cy="8" r="1.7" />
-          <circle cx="14.5" cy="26.5" r="1.5" />
+        <g fill="none" strokeWidth="1.1">
+          {ROWS.map((y) =>
+            COLUMNS.map((x) => {
+              const lit = x === HIGHLIGHT.x && y === HIGHLIGHT.y;
+              return (
+                <rect
+                  key={`${x}-${y}`}
+                  x={x}
+                  y={y}
+                  width="7"
+                  height="8"
+                  rx="1"
+                  stroke={lit ? "var(--gold)" : "currentColor"}
+                  strokeOpacity={lit ? 1 : 0.45}
+                />
+              );
+            }),
+          )}
         </g>
       </svg>
       <span className="brand-logo-wordmark" aria-hidden="true">
