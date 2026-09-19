@@ -12,7 +12,7 @@
      in-app screens keep their own Tailwind palette. Bronze and gold below are
      unchanged — both are contrast-tuned, and gold is the one accent the social
      video carries onto the site. AA verified on the new paper: ink 10.39:1,
-     ink-soft 5.83, ink-faint 4.96 (4.56 on paper-deep), gold on ground 4.84. */
+     ink-soft 5.83, ink-faint 4.96 (4.56 on paper-deep). */
   --paper: #eef3f8;
   --paper-deep: #e2eaf3;
   --ivory: #f8fbfd;
@@ -28,7 +28,9 @@
      on flat paper (4.71:1) but not on the tinted quick-answer and callout
      panels these eyebrows actually sit on, where it fell to 3.56–4.46:1. This
      clears 4.5:1 on every light surface in use: paper 6.05, paper-deep 5.59,
-     ivory 6.65, and both panel tints. One value, no per-surface variant. */
+     ivory 6.65, and both panel tints. One value, no per-surface variant.
+     Gold is the Life Spread mark accent only; eyebrows on ink use bronze-on-dark
+     (4.71:1), because gold on the new ink is 3.69:1. */
   --bronze: #735624;
   --bronze-on-dark: #c4a05a;
   --gold: #b8893d;
@@ -585,7 +587,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--bronze-on-dark);
 }
 
 /* Life Path seats + 7x7 spread cells. Nested radius stays 3px (no inner padding
@@ -754,7 +756,7 @@ body {
 .paper-shell [class*="text-mist"],
 .paper-shell .text-faint,
 .paper-shell [class*="text-faint"] {
-  color: #5b5148 !important;
+  color: var(--ink-soft) !important;
 }
 
 /* Legacy dark-palette label colors, remapped for paper. Bronze — not oxblood —

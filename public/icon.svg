@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="3" fill="#f4f0e7"/>
-  <g stroke="#8e321f" stroke-opacity="0.45" stroke-width="1.1" fill="none" stroke-linecap="round">
-    <path d="M7 23 12.5 10.5 20.5 16.5 25.5 8"/>
-    <path d="M7 23 14.5 26.5 20.5 16.5"/>
-  </g>
-  <g fill="#8e321f">
-    <circle cx="7" cy="23" r="2"/>
-    <circle cx="12.5" cy="10.5" r="2.3"/>
-    <circle cx="20.5" cy="16.5" r="2"/>
-    <circle cx="25.5" cy="8" r="1.7"/>
-    <circle cx="14.5" cy="26.5" r="1.5"/>
+  <rect width="32" height="32" rx="3" fill="#eef3f8"/>
+  <g fill="none" stroke-width="1.1">
+    <rect x="3.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="12.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="21.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="3.5" y="12" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="12.5" y="12" width="7" height="8" rx="1" stroke="#b8893d"/>
+    <rect x="21.5" y="12" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="3.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="12.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
+    <rect x="21.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
   </g>
 </svg>
