@@ -15,7 +15,7 @@ bucket_name = "cardblueprints-ebooks"
 [[d1_databases]]
 binding = "READING_ORDERS"
 database_name = "cardblueprints-reading-orders"
-database_id = "READING_ORDERS_PLACEHOLDER"
+database_id = "fcbf0442-2836-4dca-b27d-c969d572aab7"
 migrations_dir = "migrations"
 
 # Read-only compatibility with ac5f70b's saved readings.
