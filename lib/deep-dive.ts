@@ -3,8 +3,10 @@
  *  the checkout route and fulfillment keep working across product swaps
  *  ($9 Deep Dive → $13 Blueprint Breakdown Video → $19 52xSeven Blueprint → $13 One Question Reading).
  *
- *  Fulfillment is by hand: the webhook emails Cass the birthday and the question,
- *  he writes the reading with the `reading` command and sends it within 2 business days.
+ *  Fulfillment is immediate: the reading is written the moment the payment lands and
+ *  reaches the buyer on the success page and by email within about a minute
+ *  (ONE_QUESTION_TURNAROUND). The webhook still carries the birthday and the question,
+ *  so a wrong date or a reworded question can be rewritten on reply.
  *  Past buyers of the retired SKUs keep the year app; see FIFTY_TWO_BY_SEVEN_* below. */
 
 import { parseIsoCalendarDate } from "@/lib/worker-seo-routes";
@@ -35,7 +37,7 @@ export const DEEP_DIVE_REVIEW_PATH = "/checkout/deep-dive";
 export const DEEP_DIVE_PRODUCT_PATH = "/products/one-question-reading";
 export const DEEP_DIVE_PRICE_LABEL = "$13";
 export const DEEP_DIVE_PRODUCT_NAME = "One Question Reading";
-export const ONE_QUESTION_TURNAROUND = "2 business days";
+export const ONE_QUESTION_TURNAROUND = "about a minute";
 /** Question length: Stripe metadata values cap at 500 characters. */
 export const QUESTION_MIN_CHARS = 5;
 export const QUESTION_MAX_CHARS = 400;
@@ -48,11 +50,11 @@ export const DEEP_DIVE_CTA_LABEL = "Ask your question — $13";
 export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → ask one question, $13";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";
 export const DEEP_DIVE_SUCCESS_COPY =
-  "Payment confirmed. Your question is in. The reading is written from your birth card, this year's cards, and the card you owe, and it lands in this inbox within 2 business days. Plain text, no login.";
+  "Payment confirmed. Your question is in. The reading is written from your birth card, this year's cards, and the card you owe. It is written the moment you pay: on your screen and in your inbox within about a minute. Wrong date or a reworded question: reply and we rewrite it.";
 export const DEEP_DIVE_JOKER_SUCCESS_COPY =
-  "Payment confirmed. Your question is in. December 31 is the Joker, the one birthday outside the 52-card map, so the reading says so up front and reads the year from the Joker's position. It lands in this inbox within 2 business days.";
+  "Payment confirmed. Your question is in. December 31 is the Joker, the one birthday outside the 52-card map, so the reading says so up front and reads the year from the Joker's position. It is written the moment you pay: on your screen and in your inbox within about a minute. Wrong date or a reworded question: reply and we rewrite it.";
 export const DEEP_DIVE_FULFILLMENT =
-  "What $13 gets you: one written reading on one question. Built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, plus three things to keep an eye out for. Written for you and emailed within 2 business days. Wrong date or a reworded question: reply before it is written and we fix it.";
+  "What $13 gets you: one written reading on one question. Built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, plus three things to keep an eye out for. It is written the moment you pay: on your screen and in your inbox within about a minute. Wrong date or a reworded question: reply and we rewrite it.";
 export const CALCULATOR_PRIVACY_MICROCOPY =
   "Calculated on this page. Your birthday is never stored.";
 export const QUESTION_FIELD_LABEL = "The one question";

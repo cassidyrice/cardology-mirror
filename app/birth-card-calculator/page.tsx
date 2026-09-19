@@ -188,7 +188,8 @@ export default function CalculatorPage() {
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
           One Question Reading — $13
         </Link>{" "}
-        (one decision, read from your card, this year's cards, and the card you owe; written for you within 2 business days).
+        (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
+        on your screen and in your inbox within about a minute).
         The free calculator never stores your birthday.
       </p>
 
