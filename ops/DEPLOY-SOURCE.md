@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-18** (deployed `main` @ `dbccd66` — Retint SEO pages to the blueprint tokens.; previous record `e093a80`)
+**Last verified: 2026-09-19** (deployed `main` @ `0d37f29` — Point the reading-orders binding at the live D1 database.; previous record `dbccd66`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,10 +16,10 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `dbccd66dbf34276b580030cf94effc859281e9c0` |
+| **Deployed commit** | `0d37f2981e17e0b26683622560670cc06f162783` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
-| **Worker rollback** | `da24f699-4b1f-4473-a218-82a8eff38988` |
+| **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
+| **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
