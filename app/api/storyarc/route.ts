@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextRequest, NextResponse } from "next/server";
 import { getReading, engineErrorResponse } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
@@ -92,14 +93,9 @@ Two or three sentences tying the two strands into one throughline. Land that thi
 Use **bold** for card codes and pivotal phrases, *italics* for reflective questions. Keep it tight, vivid, and personal.`;
 
 export async function POST(req: NextRequest) {
-  let body: { birthdate?: string; date?: string } = {};
-  try {
-    body = await req.json();
-  } catch {
-    /* empty */
-  }
-  const birthdate = (body.birthdate ?? "").trim();
-  const date = body.date?.trim() || undefined;
+  const body = await readJsonObject(req);
+  const birthdate = typeof body?.birthdate === "string" ? body.birthdate.trim() : "";
+  const date = typeof body?.date === "string" ? body.date.trim() || undefined : undefined;
 
   if (!birthdate) {
     return NextResponse.json({ error: "missing birthdate" }, { status: 400 });

@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextRequest, NextResponse } from "next/server";
 import { isValidAccessCode, mintToken } from "@/lib/gate";
 import {
@@ -28,14 +29,9 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  let body: { email?: string; code?: string } = {};
-  try {
-    body = await req.json();
-  } catch {
-    /* empty */
-  }
-  const email = (body.email ?? "").trim();
-  const code = (body.code ?? "").trim();
+  const body = await readJsonObject(req);
+  const email = typeof body?.email === "string" ? body.email.trim() : "";
+  const code = typeof body?.code === "string" ? body.code.trim() : "";
 
   if (!EMAIL.test(email)) {
     return NextResponse.json(

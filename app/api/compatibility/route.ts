@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextResponse } from "next/server";
 
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
@@ -43,22 +44,13 @@ export async function OPTIONS() {
 // Both birthdays travel in the body, never the URL: middleware 301s away
 // sensitive query keys, and a 301 makes the client drop the body anyway.
 export async function POST(req: Request) {
-  let body: unknown;
-  try {
-    body = await req.json();
-  } catch {
+  const body = await readJsonObject(req);
+  if (!body) {
     return NextResponse.json({ error: "invalid JSON body" }, { status: 400, headers: CORS });
   }
-  // `null`, a bare string and an array all parse cleanly, so the catch above
-  // does not cover them; without this they reach `body.a` as a TypeError, which
-  // is an uncaught 500 with no CORS headers on it.
-  if (!body || typeof body !== "object" || Array.isArray(body)) {
-    return NextResponse.json({ error: "invalid JSON body" }, { status: 400, headers: CORS });
-  }
-  const fields = body as { a?: unknown; b?: unknown };
 
-  const a = sanitizeBirthdateISO(fields.a);
-  const b = sanitizeBirthdateISO(fields.b);
+  const a = sanitizeBirthdateISO(body.a);
+  const b = sanitizeBirthdateISO(body.b);
   if (!a || !b) {
     return NextResponse.json(
       { error: "invalid birthdate", side: a ? "b" : "a" },

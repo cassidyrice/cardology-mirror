@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextRequest, NextResponse } from "next/server";
 
 import { mintDownloadToken } from "@/lib/download-token";
@@ -13,10 +14,8 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  let raw: Record<string, unknown>;
-  try {
-    raw = (await request.json()) as Record<string, unknown>;
-  } catch {
+  const raw = await readJsonObject(request);
+  if (!raw) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 

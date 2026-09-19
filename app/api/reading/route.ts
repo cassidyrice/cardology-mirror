@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextRequest, NextResponse } from "next/server";
 import { getReading, engineErrorResponse } from "@/lib/engine";
 
@@ -40,19 +41,11 @@ export async function GET(req: NextRequest) {
 // Same engine, same response — the birthday travels in the body, never the URL,
 // so it stays out of logs, referrers, and analytics.
 export async function POST(req: NextRequest) {
-  let parsed: unknown;
-  try {
-    parsed = await req.json();
-  } catch {
+  const body = await readJsonObject(req);
+  if (!body) {
     return NextResponse.json({ error: "invalid JSON body" }, { status: 400, headers: CORS });
   }
-  // `null`, a bare string and an array all parse cleanly, so the catch above
-  // does not cover them; body.birthdate on a null body is a TypeError, which
-  // would surface as an uncaught 500 with no CORS headers.
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-    return NextResponse.json({ error: "invalid JSON body" }, { status: 400, headers: CORS });
-  }
-  const body = parsed as { birthdate?: unknown; date?: unknown };
+
   const birthdate = typeof body.birthdate === "string" ? body.birthdate : "";
   const date = typeof body.date === "string" ? body.date : undefined;
   try {

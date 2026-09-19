@@ -1,3 +1,4 @@
+import { readJsonObject } from "@/lib/request-body";
 import { NextRequest, NextResponse } from "next/server";
 import { getReading, engineErrorResponse } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
@@ -126,15 +127,10 @@ STRUCTURE — use these exact markdown section headings, in order:
 Use **bold** for card codes and key phrases, *italics* for reflective questions. Keep it tight and human — no filler.`;
 
 export async function POST(req: NextRequest) {
-  let body: { birthdate?: string; date?: string; focus?: string } = {};
-  try {
-    body = await req.json();
-  } catch {
-    /* empty body */
-  }
-  const birthdate = (body.birthdate ?? "").trim();
-  const date = body.date?.trim() || undefined;
-  const focus = body.focus?.trim();
+  const body = await readJsonObject(req);
+  const birthdate = typeof body?.birthdate === "string" ? body.birthdate.trim() : "";
+  const date = typeof body?.date === "string" ? body.date.trim() || undefined : undefined;
+  const focus = typeof body?.focus === "string" ? body.focus.trim() : undefined;
 
   if (!birthdate) {
     return NextResponse.json({ error: "missing birthdate" }, { status: 400 });
