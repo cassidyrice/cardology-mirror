@@ -272,8 +272,8 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   bestFor:
     "Anyone circling one real decision: the job, the move, the person, the money. You bring the question; the cards show where you're standing.",
   deliverable:
-    "A written reading of 500 to 700 words, emailed as plain text within 2 business days. No login, nothing to download.",
-  turnaround: "Written for you within 2 business days of payment.",
+    "A written reading of 500 to 700 words, on your screen and in your inbox within about a minute. No login, nothing to download.",
+  turnaround: "Written for you within about a minute of payment.",
   includes: [
     "Your birth card: the number and the suit, and how that card tends to handle your kind of question",
     "This year's Long Range card, the thing that keeps pulling your attention",
@@ -283,7 +283,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   ],
   cta: "Ask your question — $13",
   checkoutNote:
-    "One payment. You type your birth date and your question before Stripe; Stripe collects email and payment. The reading is written for you and emailed within 2 business days.",
+    "One payment. You type your birth date and your question before Stripe; Stripe collects email and payment. The reading is written the moment you pay: on your screen and in your inbox within about a minute.",
   downloadAssetKey: "",
   redownloadDays: 365,
   fileName: "",

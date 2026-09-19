@@ -114,7 +114,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The job, the move, the person, the money. I read the one thing
               you keep circling from this card and the year you are in, and
-              send it to you written, within 2 business days.
+              send it to you written the moment you pay — on your screen and in your inbox within about a minute.
             </p>
             <DeepDiveCta
               placement="home-reveal"

@@ -457,7 +457,7 @@ assert.match(
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
 assert.match(productSurfaceText, /One Question Reading/);
-assert.match(productSurfaceText, /2 business days/i);
+assert.match(productSurfaceText, /about a minute/i);
 assert.doesNotMatch(productSurfaceText, /Blueprint Breakdown Video/);
 // The $19 year app is retired from sale: no public marketing surface may still pitch it.
 assert.doesNotMatch(productSurfaceText, /\$19 52xSeven|52xSeven Blueprint \(\$19\)|Unlock my full year/);

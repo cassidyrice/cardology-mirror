@@ -248,8 +248,8 @@ function BirthCardResultCard({
             {bible.watchFor}
           </p>
         )}
-        <p className="mt-3 text-center font-serif text-xl leading-snug text-brand-ink">
-          What do you want to ask about it?
+        <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
+          Ask one question about it. The $13 One Question Reading answers it in writing.
         </p>
         <DeepDiveCta
           className="mt-4"

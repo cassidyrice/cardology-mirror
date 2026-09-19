@@ -23,6 +23,7 @@ import {
   LEGACY_DEEP_DIVE_SKUS,
   ONE_QUESTION_PRICE_ENV,
   ONE_QUESTION_PRICE_ID,
+  ONE_QUESTION_TURNAROUND,
   ONE_QUESTION_SKU,
   QUESTION_MAX_CHARS,
   birthdayForCommand,
@@ -85,10 +86,13 @@ test("One Question Reading ($13) is a Card Blueprint checkout offer on the deep-
   expect(DEEP_DIVE_PRODUCT_PATH).toBe("/products/one-question-reading");
   expect(DEEP_DIVE_REVIEW_PATH).toBe("/checkout/deep-dive");
   expect(DEEP_DIVE_CTA_LABEL).toBe("Ask your question — $13");
+  expect(ONE_QUESTION_TURNAROUND).toBe("about a minute");
   expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → ask one question, $13");
   expect(DEEP_DIVE_FULFILLMENT).toContain("What $13 gets you");
   expect(DEEP_DIVE_FULFILLMENT).toContain("one question");
-  expect(DEEP_DIVE_FULFILLMENT).toContain("2 business days");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("the moment you pay");
+  expect(DEEP_DIVE_FULFILLMENT).toContain("about a minute");
+  expect(DEEP_DIVE_FULFILLMENT).not.toContain("2 business days");
   expect(DEEP_DIVE_FULFILLMENT).toContain("keep an eye out for");
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("video");
   expect(DEEP_DIVE_FULFILLMENT).not.toContain("PDF");
@@ -267,13 +271,17 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");
 });
 
-test("shared calculator result sells the $47 One Question Reading, not the $13 Blueprint", () => {
+test("shared calculator result sells the $13 One Question Reading with one primary ask", () => {
   expect(calculator).toContain("<DeepDiveCta");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
   expect(calculator).toContain("reveal.birthdate");
   expect(calculator).toContain("date={date}");
   expect(calculator).toContain("date || reveal.birthdate");
-  expect(calculator).toContain("What do you want to ask about it?");
+  // One unmissable ask after the reveal; it names the price and the product.
+  expect(calculator).toContain(
+    "Ask one question about it. The $13 One Question Reading answers it in writing.",
+  );
+  expect(calculator).not.toContain("What do you want to ask about it?");
   // The card's own watch-for line is the bridge into the ask.
   expect(calculator).toContain("bible.watchFor");
   expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
@@ -299,7 +307,18 @@ test("shared calculator result sells the $47 One Question Reading, not the $13 B
   expect(calculator.indexOf("<BirthShareHero")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
-  // The $47 CTA follows the free one-line read; the 52-day box sits below it
+  // The primary ask is one full-width button; nothing else competes with it.
+  expect(hosted).not.toContain("sm:w-auto");
+  expect(cta).not.toContain("sm:w-auto");
+  // The 52-day box keeps the period facts and drops its own $13 sales line.
+  const currentPeriod = read("components/seo/CurrentPeriod.tsx");
+  expect(currentPeriod).toContain("This 52-day stretch");
+  expect(currentPeriod).not.toContain("$13");
+  expect(currentPeriod).not.toContain("One Question Reading");
+  // Testimonial / E-E-A-T block stays under the offer.
+  expect(calculator).toContain("testimonialForCard");
+  expect(calculator).toContain("Real customer words, shared with permission.");
+  // The $13 CTA follows the free one-line read; the 52-day box sits below it
   // (2026-09-01: 1,149 completions → 41 taps when the CTA was two screens down).
   expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
@@ -375,6 +394,9 @@ test("SEO calculator page keeps ranking URL, title, H1, and educational HTML", (
   expect(page).not.toMatch(/display:\s*none/i);
   expect(page).not.toContain("Got the card name");
   expect(page).toContain("/products/one-question-reading");
+  expect(page).toContain("One Question Reading — $13");
+  expect(page).toContain("written for you the moment you pay");
+  expect(page).not.toContain("2 business days");
   expect(page).not.toContain("/products/52xseven-blueprint");
   expect(page).not.toContain("/products/blueprint-breakdown-video");
   expect(page).not.toContain("/products/birth-card-deep-dive");
@@ -396,16 +418,20 @@ test("homepage calculator result no longer sells the $13 Blueprint or Cassidy Ri
   expect(hero).not.toContain("buy.stripe.com");
 });
 
-test("success copy: question is in, 2 business days, honest for Joker", () => {
+test("success copy: question is in, written the moment you pay, honest for Joker", () => {
   expect(DEEP_DIVE_SUCCESS_COPY).toContain("Your question is in");
-  expect(DEEP_DIVE_SUCCESS_COPY).toContain("2 business days");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("It is written the moment you pay");
+  expect(DEEP_DIVE_SUCCESS_COPY).toContain("within about a minute");
+  expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("2 business days");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("12 months");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("video");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("PDF");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("Timing Map");
   expect(DEEP_DIVE_SUCCESS_COPY).not.toContain("90 Spreads");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("Joker");
-  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("2 business days");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("It is written the moment you pay");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).toContain("within about a minute");
+  expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("2 business days");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("System Guide");
   expect(DEEP_DIVE_JOKER_SUCCESS_COPY).not.toContain("7-page Deep Dive");
   expect(deepDiveSuccessCopy("1990-01-15")).toBe(DEEP_DIVE_SUCCESS_COPY);

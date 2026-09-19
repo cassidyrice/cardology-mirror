@@ -19,7 +19,7 @@ export function CurrentPeriod({ birthdate }: { birthdate: string }) {
         {period.planet}. {period.cardLabel}.
       </p>
       <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        The card you are living through right now. Got one question about it? The $13 One Question Reading reads it from your card and this year's cards.
+        The card you are living through right now.
       </p>
     </div>
   );

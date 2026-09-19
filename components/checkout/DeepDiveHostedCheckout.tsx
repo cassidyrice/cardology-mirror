@@ -57,7 +57,7 @@ export function DeepDiveHostedCheckout({
         className={
           compact
             ? "accent-button small-button text-center disabled:cursor-wait disabled:opacity-70"
-            : "accent-button large-button w-full text-center disabled:cursor-wait disabled:opacity-70 sm:w-auto"
+            : "accent-button large-button w-full text-center disabled:cursor-wait disabled:opacity-70"
         }
       >
         {pending

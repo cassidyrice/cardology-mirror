@@ -85,7 +85,7 @@ export function DeepDiveCta({
           />
           <button
             type="submit"
-            className="accent-button large-button w-full text-center sm:w-auto"
+            className="accent-button large-button w-full text-center"
           >
             Continue
           </button>
@@ -96,7 +96,7 @@ export function DeepDiveCta({
           className={
             compact
               ? "accent-button small-button text-center"
-              : "accent-button large-button w-full text-center sm:w-auto"
+              : "accent-button large-button w-full text-center"
           }
           onClick={() => {
             trackClientFunnelEvent("offer_cta_clicked", {
