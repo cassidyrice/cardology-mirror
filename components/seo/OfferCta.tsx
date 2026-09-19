@@ -20,7 +20,7 @@ export function OfferCta({ className = "" }: { className?: string }) {
       <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
         The free calculator stops at the card name. The {DEEP_DIVE_PRODUCT_NAME} ({DEEP_DIVE_PRICE_LABEL})
         takes the one thing you keep circling and reads it from your card, this
-        year&rsquo;s cards, and the card you owe. Written for you within 2 business days.
+        year&rsquo;s cards, and the card you owe. Written for you the moment you pay — on your screen and in your inbox within about a minute.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
         <Link

@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 
 const TITLE = "One Question Reading ($13): Your Decision, Read From Your Birth Card";
 const DESCRIPTION =
-  "Ask one question. Get a written Cardology reading built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words in plain language, emailed within 2 business days. $13, one payment.";
+  "Ask one question. Get a written Cardology reading built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words in plain language, emailed within about a minute. $13, one payment.";
 const OG_IMAGE = "/og/products/one-question-reading.png";
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ const faqs = [
   },
   {
     q: "How fast does it arrive?",
-    a: "Within 2 business days of payment. It is written for you, not generated on the spot, and it lands in the email you use at checkout.",
+    a: "About a minute after payment. It appears on the page you land on after checkout and in the email you used. Your cards are calculated first, then the reading is written from them to my own spec.",
   },
   {
     q: "What makes a good question?",
