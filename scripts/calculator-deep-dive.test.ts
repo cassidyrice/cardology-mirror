@@ -199,16 +199,12 @@ test("session metadata carries the birthday and the question", () => {
   expect(birthdayForCommand("1991-02-17")).toBe("2/17/1991");
 });
 
-test("webhook: the reading is fulfilled by hand; retired year-app SKUs still fulfill", () => {
+test("webhook: paid reading uses durable fulfillment; retired year-app SKUs still fulfill", () => {
   expect(webhook).toContain("isOneQuestionSession(session)");
   expect(webhook).toContain("questionFromCheckoutSession");
-  expect(webhook).toContain("ACTION: write the reading within");
-  expect(webhook).toContain("--send");
-  expect(webhook).toContain("shellQuote");
-  expect(webhook).toContain('subject: "Got your question"');
-  expect(webhook).toContain("ONE_QUESTION_TURNAROUND");
-  // Nothing generated on the site for this product.
-  expect(webhook).not.toContain("generateReading");
+  expect(webhook).toContain("await deliverReading(");
+  expect(webhook).toContain("checkout.session.async_payment_succeeded");
+  expect(webhook).toContain("if (!paymentSatisfied)");
   expect(webhook).not.toContain("anthropic");
   // Sessions opened under the retired $19 / $47 / $9 SKUs still get the year app.
   expect(webhook).toContain('session.metadata?.sku === "52xseven-blueprint-19"');

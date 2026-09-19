@@ -23,7 +23,6 @@ const base = (process.env.SEO_BASE_URL || "http://127.0.0.1:3577").replace(
 );
 const screenshotPath =
   process.env.SEO_SCREENSHOT_PATH || "/tmp/cardblueprints-seo-integrity.png";
-const elroyScreenshotPath = screenshotPath.replace(/(\.\w+)?$/, "-elroy$1");
 
 type JsonLd = Record<string, unknown>;
 type Rect = { x: number; y: number; width: number; height: number };
@@ -60,18 +59,6 @@ function consoleLine(message: ConsoleMessage): string {
   return `${message.type()}: ${message.text()}`;
 }
 
-function rectanglesOverlap(
-  first: Rect,
-  second: Rect,
-): boolean {
-  return !(
-    first.x + first.width <= second.x ||
-    second.x + second.width <= first.x ||
-    first.y + first.height <= second.y ||
-    second.y + second.height <= first.y
-  );
-}
-
 function assertRectWithin(
   inner: Rect | null,
   outer: Rect,
@@ -89,21 +76,10 @@ function assertRectWithin(
 }
 
 async function assertMobileCtaIsUsable(
-  launcher: Locator,
   cta: Locator,
   label: string,
 ): Promise<void> {
-  await launcher.waitFor();
   await cta.waitFor();
-
-  const launcherBox = await launcher.boundingBox();
-  const ctaBox = await cta.boundingBox();
-  assert.ok(launcherBox && ctaBox, `${label}: CTA overlap is measurable`);
-  assert.equal(
-    rectanglesOverlap(launcherBox, ctaBox),
-    false,
-    `${label}: Elroy launcher does not cover the primary CTA`,
-  );
 
   const hitTest = await cta.evaluate(async (ctaElement) => {
     ctaElement.scrollIntoView({ block: "end", inline: "nearest" });
@@ -148,7 +124,7 @@ async function assertMobileCtaIsUsable(
   assert.equal(
     hitTest.samples.every((sample) => sample.ctaTarget),
     true,
-    `${label}: primary CTA wins hit-testing outside the launcher: ${JSON.stringify(hitTest.samples)}`,
+    `${label}: primary CTA wins hit-testing on the current checkout: ${JSON.stringify(hitTest.samples)}`,
   );
 }
 
@@ -181,7 +157,7 @@ async function assertHealthyPage(page: Page, path: string): Promise<void> {
   assert.equal(visibleNextOverlay, false, `${path}: no Next.js error overlay`);
 }
 
-async function goto(page: Page, path: string): Promise<void> {
+async function goto(page: Page, path: string, expectedPath = path): Promise<void> {
   const response = await page.goto(`${base}${path}`, {
     waitUntil: "domcontentloaded",
   });
@@ -190,7 +166,7 @@ async function goto(page: Page, path: string): Promise<void> {
   // SSR controls are visible before React attaches event handlers. Waiting for
   // network idle keeps fast, warm dev-server runs from submitting stale state.
   await page.waitForLoadState("networkidle");
-  await assertHealthyPage(page, path);
+  await assertHealthyPage(page, expectedPath);
 }
 
 async function assertOneBreadcrumb(page: Page, path: string): Promise<void> {
@@ -254,6 +230,7 @@ async function main(): Promise<void> {
       "Read the January 15 birth-card page →",
     );
 
+    await page.getByRole("button", { name: "Not your birthday? Change it", exact: true }).click();
     await page.locator("#bd").fill("2000-02-29");
     await page.getByRole("button", { name: "Reveal my birth card" }).click();
     const leapLink = page
@@ -340,19 +317,19 @@ async function main(): Promise<void> {
     );
     assert.equal(
       await page
-        .locator('footer a[href="/how-to-read-playing-cards"]')
+        .locator('footer a[href="/playing-card-spreads"]')
         .isVisible(),
       true,
-      "footer exposes How to Read Playing Cards",
+      "footer exposes the current Spreads hub",
     );
     assert.equal(
       await page
         .locator(
-          'nav[aria-label="Primary"] a[href="/birth-card-compatibility-calculator"]',
+          'nav[aria-label="Primary"] a[href="/explore"]',
         )
         .count(),
       1,
-      "desktop primary nav exposes Compatibility",
+      "desktop primary nav exposes Explore",
     );
 
     await page.setViewportSize({ width: 820, height: 800 });
@@ -390,129 +367,50 @@ async function main(): Promise<void> {
     assert.equal(
       await page
         .locator(
-          'nav[aria-label="Mobile primary"] a[href="/birth-card-compatibility-calculator"]',
+          'nav[aria-label="Mobile primary"] a[href="/explore"]',
         )
         .isVisible(),
       true,
-      "390px: mobile nav exposes Compatibility",
+      "390px: mobile nav exposes Explore",
     );
     await page.screenshot({ path: screenshotPath, fullPage: false });
 
-    await goto(page, "/products/personal-card-blueprint");
-    const elroyLauncher = page.locator(
-      'button[aria-label="Open Elroy micro-reading"]',
-    );
-    const primaryBlueprintCta = page
-      .locator('main a[href="/checkout/personal-card-blueprint"]')
-      .first();
-    await assertMobileCtaIsUsable(
-      elroyLauncher,
-      primaryBlueprintCta,
-      "390px: Personal Card Blueprint",
-    );
-
-    await elroyLauncher.click();
-    const elroyPanel = page.locator("dialog.elroy-panel");
-    await elroyPanel.waitFor();
-    const elroyShell = page.locator(".elroy-panel-shell");
-    const elroyComposer = page.locator(".elroy-composer");
-    const showCardControl = page.getByRole("button", {
-      name: "Show my card",
-      exact: true,
-    });
-    await showCardControl.waitFor();
-    const panelBox = await elroyPanel.boundingBox();
-    assertRectWithin(
-      panelBox,
-      { x: 0, y: 0, width: 390, height: 844 },
-      "390px: manually opened Elroy dialog fits the viewport",
-    );
-    const shellBox = await elroyShell.boundingBox();
-    assertRectWithin(
-      shellBox,
-      { x: 0, y: 0, width: 390, height: 844 },
-      "390px: Elroy panel shell fits the viewport",
-    );
-    assertRectWithin(
-      shellBox,
-      panelBox,
-      "390px: Elroy panel shell stays inside the dialog",
-    );
-    assertRectWithin(
-      await elroyComposer.boundingBox(),
-      shellBox,
-      "390px: Elroy composer stays inside the panel shell",
-    );
-    assertRectWithin(
-      await showCardControl.boundingBox(),
-      shellBox,
-      "390px: Elroy birth-card control stays inside the panel shell",
-    );
-
-    await page.locator("#elroy-birthdate").fill("2001-01-15");
-    await showCardControl.click();
-    await page
-      .getByRole("button", { name: "Get the deeper pattern", exact: true })
-      .click();
-    const sendReadingControl = page.getByRole("button", {
-      name: "Send my reading",
-      exact: true,
-    });
-    await sendReadingControl.waitFor();
-    assertRectWithin(
-      await elroyComposer.boundingBox(),
-      shellBox,
-      "390px: email composer stays inside the panel shell",
-    );
-    assertRectWithin(
-      await sendReadingControl.boundingBox(),
-      shellBox,
-      "390px: Elroy submit stays inside the panel shell",
-    );
-    await page.screenshot({ path: elroyScreenshotPath, fullPage: false });
-    await page.getByRole("button", { name: "Close Elroy" }).click();
-
-    await page.evaluate(() => localStorage.clear());
-    await goto(page, "/products/complete-card-blueprint");
-    const completeBlueprintLauncher = page.locator(
-      'button[aria-label="Open Elroy micro-reading"]',
-    );
-    const completeBlueprintCta = page
-      .locator('main a[href="/checkout/complete-card-blueprint"]')
-      .first();
-    await completeBlueprintLauncher.waitFor();
-    await page.waitForTimeout(10_500);
-    assert.equal(
-      await page.locator(".elroy-teaser").count(),
-      0,
-      "390px: Complete Card Blueprint does not auto-open the Elroy teaser",
-    );
-    assert.equal(
-      await completeBlueprintLauncher.isVisible(),
-      true,
-      "390px: Complete Card Blueprint keeps the manual Elroy launcher",
-    );
-    await assertMobileCtaIsUsable(
-      completeBlueprintLauncher,
-      completeBlueprintCta,
-      "390px: Complete Card Blueprint",
-    );
-
-    await completeBlueprintLauncher.click();
-    await elroyPanel.waitFor();
-    const completePanelBox = await elroyPanel.boundingBox();
-    assertRectWithin(
-      completePanelBox,
-      { x: 0, y: 0, width: 390, height: 844 },
-      "390px: Complete Card Blueprint manual Elroy dialog fits the viewport",
-    );
-    const completeShellBox = await elroyShell.boundingBox();
-    assertRectWithin(
-      completeShellBox,
-      completePanelBox,
-      "390px: Complete Card Blueprint Elroy shell stays inside the dialog",
-    );
-    await page.getByRole("button", { name: "Close Elroy" }).click();
+    // Retired marketing URLs must still reach the current offer.
+    for (const alias of ["/products/personal-card-blueprint", "/products/complete-card-blueprint"]) {
+      await goto(page, alias, "/products/one-question-reading");
+      assert.equal(new URL(page.url()).pathname, "/products/one-question-reading");
+      assert.ok((await page.locator("main").innerText()).includes("$13"));
+    }
+    // Exercise the active checkout review at both viewport sizes, without payment.
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      await goto(page, "/checkout/deep-dive");
+      const birthday = page.locator('input[name="birthdate"]');
+      assert.equal(await birthday.inputValue(), width === 390 ? "2000-02-29" : "1991-02-17", "checkout preserves the calculator or corrected birthday");
+      await birthday.fill("1991-02-17");
+      const question = page.locator('textarea[name="question_draft"]');
+      await question.fill("Should I take the promotion?");
+      assert.equal(await question.inputValue(), "Should I take the promotion?");
+      const form = page.locator('form[action="/checkout/deep-dive/session"]');
+      assert.equal(await form.count(), 1);
+      const button = form.locator('button[type="submit"]');
+      await button.scrollIntoViewIfNeeded();
+      assert.equal(await button.isEnabled(), true);
+      await assertMobileCtaIsUsable(button, `${width}px checkout`);
+      assert.equal(await birthday.inputValue(), "1991-02-17");
+      let submitted = false;
+      await page.route("**/checkout/deep-dive/session", async route => {
+        const body = new URLSearchParams(route.request().postData() || "");
+        assert.equal(body.get("birthdate"), "1991-02-17");
+        assert.equal(body.get("question"), "Should I take the promotion?");
+        submitted = true;
+        await route.fulfill({status:200,contentType:"text/html",body:"<h1>Mock checkout accepted</h1>"});
+      });
+      await button.click();
+      await page.getByRole("heading", {name:"Mock checkout accepted"}).waitFor();
+      assert.ok(submitted, "current checkout submits validated input");
+      await page.unroute("**/checkout/deep-dive/session");
+    }
 
     await page.setViewportSize({ width: 1280, height: 800 });
     for (const path of [
