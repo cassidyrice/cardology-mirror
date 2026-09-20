@@ -348,13 +348,58 @@ export default function CalculatorPage() {
         <details>
           <summary className="cursor-pointer">
             <p className="eyebrow mb-2 text-gold">Worked verification</p>
-            <h2 className="font-serif text-3xl text-bone">Birth card calculator example: January 15</h2>
+            <h2 className="font-serif text-3xl text-bone">How to calculate your birth card with playing cards</h2>
           </summary>
         <p className="prose-reading mt-4 text-mist">
-          Enter January 15 and the calculator returns the <strong>Queen of Diamonds</strong>{" "}
-          as the birth card. Run January 15 again and the answer stays the same. That
-          repeatability is the simplest accuracy check: fixed input, fixed output.
-          You can inspect the longer calculation and interpretation boundary on our{" "}
+          You can check the calculator by hand, then find the matching card in an
+          ordinary playing-card deck. For a valid birthday other than December 31,
+          double the month number, add the day, and subtract the total from 55:
+        </p>
+        <p className="mt-4 text-lg font-semibold leading-relaxed text-bone">
+          55 − (2 × month number + day number)
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          Read the result in this suit order: Hearts 1–13, Clubs 14–26,
+          Diamonds 27–39, Spades 40–52. Within each suit, Ace is 1, Jack 11,
+          Queen 12, and King 13. Subtract 13 for Clubs, 26 for Diamonds,
+          or 39 for Spades to get the rank.
+        </p>
+        <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-mist">
+          <li>
+            <strong>January 15:</strong> 55 − (2 × 1 + 15) = 38.
+            Then 38 − 26 = 12: the{" "}
+            <Link href="/birth-card/queen-of-diamonds" className="text-gold underline underline-offset-4">
+              Queen of Diamonds
+            </Link>.
+          </li>
+          <li>
+            <strong>February 17:</strong> 55 − (2 × 2 + 17) = 34.
+            Then 34 − 26 = 8: the{" "}
+            <Link href="/birth-card/8-of-diamonds" className="text-gold underline underline-offset-4">
+              Eight of Diamonds
+            </Link>.
+          </li>
+          <li>
+            <strong>January 1:</strong> 55 − (2 × 1 + 1) = 52.
+            Then 52 − 39 = 13: the{" "}
+            <Link href="/birth-card/king-of-spades" className="text-gold underline underline-offset-4">
+              King of Spades
+            </Link>.
+          </li>
+        </ol>
+        <p className="prose-reading mt-4 text-mist">
+          Try your birthday, then someone else’s. This is a lookup, not a random
+          draw. <strong>December 31 is the Joker exception</strong>; do not turn
+          its zero into the King of Spades. February 29 gives the Nine of Clubs.
+          Use a real calendar date: February 30 is not valid.
+        </p>
+        <p className="prose-reading mt-4 text-mist">
+          The arithmetic checks the card, not whether its symbolic meaning fits a
+          person or predicts an event. Explore the{" "}
+          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+            meanings of all 52 playing cards
+          </Link>{" "}
+          or inspect the calculation and interpretation boundary on our{" "}
           <Link href="/methodology" className="text-gold underline underline-offset-4">
             published methodology page
           </Link>
