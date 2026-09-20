@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-20** (deployed `main` @ `caa686a` — Link the YouTube channel in the header and align reading delivery copy; previous record `93b87ad`)
+**Last verified: 2026-09-20** (deployed `main` @ `c274362` — Connect missing card videos and keep the play control visible; previous record `caa686a`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `caa686aaaf8b5cb93f45d872f73b68419ec83021` |
+| **Deployed commit** | `c2743621e5cd8b496cb0414a0aaaa9bbc56c9fd8` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
