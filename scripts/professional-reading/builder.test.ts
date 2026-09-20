@@ -134,9 +134,13 @@ test("print HTML renders engine boards, every role, sourced patterns and referen
   for(const token of ["☿","♀","♂","♃","♄","♅","♆","♇","✦","FIXED","PATTERN","YOURS","Cards are coordinates. You choose the meaning.","lib/engine-core/engine.js","docs/cardology-system.md","https://cardblueprints.com/methodology","https://cardblueprints.com/planetary-ruling-card","Annual Environment","Displacement","Lifetime karma","canonical projections","display_orientation","Neptune → Mercury","2026-02-17","2027-02-16","slot 1","Spread 35","Spread 36","Spread 6",meanings["8♦"].sweet_spot,descriptions["8♦"].title]) expect(html).toContain(token);
   expect(html).not.toMatch(/<script|<link|<iframe|<img|@import|url\(/i);
   expect(html).toContain("@page");
-  expect(html).toContain("#0F0E0D");
-  expect(html).toContain("#B8924D");
-  expect(html).toContain("#F2EDE3");
+  expect(html).toContain("#123a63");
+  expect(html).toContain("#735624");
+  expect(html).toContain("#eef3f8");
+  // Cover lockup: nine seats, one lit, and gold used nowhere else (app/globals.css rule).
+  expect([...html.matchAll(/<rect /g)]).toHaveLength(9);
+  expect([...html.matchAll(/var\(--gold\)/g)]).toHaveLength(1);
+  expect(html).toContain('<span class="brand-word">card blueprint</span>');
   for(const board of r.boards) {
     const part = html.split(`data-spread="${board.index}"`)[1].split("</section>")[0];
     expect([...part.matchAll(/data-cell="grid"/g)]).toHaveLength(49);
