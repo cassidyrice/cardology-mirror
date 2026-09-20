@@ -69,7 +69,10 @@ export default async function CheckoutReviewPage({
   return (
     <CheckoutShell
       crumb={[
-        { label: DEEP_DIVE_PRODUCT_NAME, href: DEEP_DIVE_PRODUCT_PATH },
+        // Name the product being bought, not whichever one used to own this route.
+        isReading
+          ? { label: DEEP_DIVE_PRODUCT_NAME, href: DEEP_DIVE_PRODUCT_PATH }
+          : { label: product.name, href: product.href ?? `/products/${product.slug}` },
         { label: isReading ? "Your question" : "Review purchase", href: `/checkout/${product.slug}` },
       ]}
     >
