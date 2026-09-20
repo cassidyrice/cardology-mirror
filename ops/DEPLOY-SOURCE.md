@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-20** (deployed `main` @ `2565757` — Finish report access and personal consultation requests; previous record `0d37f29`)
+**Last verified: 2026-09-20** (deployed `main` @ `a45e47c` — Make the Blueprint Report discoverable, and tell agents the real prices; previous record `2565757`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `2565757885e2c6b3282789272fda937066147220` |
+| **Deployed commit** | `a45e47cae6cb52e7dad88ece3c0db5d180345416` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
