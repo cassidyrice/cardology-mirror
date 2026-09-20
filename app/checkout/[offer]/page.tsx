@@ -87,7 +87,7 @@ export default async function CheckoutReviewPage({
         </p>
       </header>
 
-      {(status === "unavailable" || unavailable || status === "need-date" || status === "need-question") && (
+      {(status === "unavailable" || unavailable || status === "need-date" || status === "need-question" || status === "unsupported-date") && (
         <div
           role="alert"
           className="mb-8 border border-brand-oxblood bg-brand-ivory p-5 text-brand-ink"
@@ -95,6 +95,8 @@ export default async function CheckoutReviewPage({
           <h2 className="type-h3">
             {unavailable
               ? "This product is not on sale yet."
+              : status === "unsupported-date"
+                ? "December 31 is not supported by this report. No payment was started."
               : status === "need-date"
                 ? "Add the birth date first."
                 : status === "need-question"
@@ -104,6 +106,8 @@ export default async function CheckoutReviewPage({
           <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-brand-ink-soft">
             {unavailable
               ? "No checkout session was created. Secure download fulfillment must be live before sales open."
+              : status === "unsupported-date"
+                ? "December 31 is not supported by this report. No payment was started."
               : status === "need-date"
                 ? "The reading is built from one birth date. Use the date field below, then continue."
                 : status === "need-question"

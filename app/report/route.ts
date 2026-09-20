@@ -24,16 +24,20 @@ export async function GET(req: NextRequest) {
   }
 
   // Cover name and purchase date come from the Stripe session the token names.
-  // Both fall back safely: the report never fails to render over a lookup.
+  // A missing name falls back safely. A failed lookup must not change the reading date.
   let name = BLUEPRINT_REPORT_FALLBACK_NAME;
-  let readingDate = new Date().toISOString().slice(0, 10);
+  let readingDate: string;
   try {
     const session = await getStripe().checkout.sessions.retrieve(payload.sessionId);
     const candidate = (session.metadata?.cover_name || session.customer_details?.name || "").trim();
     if (candidate && candidate.length <= 60 && !candidate.includes("@")) name = candidate;
-    if (session.created) readingDate = new Date(session.created * 1000).toISOString().slice(0, 10);
+    if (!session.created) throw new Error("Missing purchase date");
+    readingDate = new Date(session.created * 1000).toISOString().slice(0, 10);
   } catch (e) {
-    console.error("[report] stripe session lookup failed; using fallbacks", e);
+    console.error("[report] purchase date lookup unavailable");
+    return new NextResponse("Your report is temporarily unavailable. Please retry this link shortly.", {
+      status: 503, headers: { "cache-control": "private, no-store", "retry-after": "30", "x-robots-tag": "noindex, nofollow", "referrer-policy": "no-referrer" },
+    });
   }
 
   let html: string;

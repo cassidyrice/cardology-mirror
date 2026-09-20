@@ -31,8 +31,11 @@ export const CONSULT_MINUTES = 45;
 export const CONSULT_REVIEW_PATH = `/checkout/${CONSULT_SLUG}`;
 export const CONSULT_PRICE_ENV = "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT";
 export const CONSULT_CTA_LABEL = `Report + ${CONSULT_MINUTES} minutes with Cass, ${CONSULT_PRICE_LABEL}`;
-/** How the consult is booked: request and approve, by email. The buyer replies
- *  to the receipt with two or three windows; Cass confirms one. No calendar,
- *  the buyer never picks a slot. */
+/** Consultation timing is arranged personally after the paid buyer sends context. */
 export const CONSULT_BOOKING_COPY =
-  "Reply to your receipt email with two or three windows that work for you, with your time zone. Cass confirms one by email.";
+  "After payment, choose Arrange my consultation and share what you want to explore and your time zone. Cass will contact you to arrange your 45-minute call.";
+export const CONSULT_SUCCESS_COPY =
+  "Your request is received. Cass will contact you to arrange your call.";
+export function consultationHref(sessionId: string): string {
+  return `/consultation?session_id=${encodeURIComponent(sessionId)}`;
+}

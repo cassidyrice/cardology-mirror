@@ -192,16 +192,6 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
         >
           Try a different birthday
         </button>
-        <ReportCheckoutButton slug={CONSULT_SLUG} placement="your-year" birthdate={birthdate} />
-        <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
-          Just the report, no call?{" "}
-          <ReportCheckoutButton
-            variant="link"
-            placement="your-year-report-only"
-            birthdate={birthdate}
-            className="text-brand-ink"
-          />
-        </p>
       </div>
     );
   }

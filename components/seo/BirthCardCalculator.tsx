@@ -22,7 +22,7 @@ import {
   DEEP_DIVE_PRODUCT_PATH,
 } from "@/lib/deep-dive";
 import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
-import { BLUEPRINT_REPORT_PAGE_COUNT, CONSULT_MINUTES, CONSULT_SLUG } from "@/lib/blueprint-report";
+import { CONSULT_MINUTES, CONSULT_SLUG } from "@/lib/blueprint-report";
 import { cardBibleAny } from "@/lib/card-bible";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
@@ -247,14 +247,14 @@ function BirthCardResultCard({
         </div>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
+      {!isJoker && <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
         {bible?.watchFor && (
           <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
             {bible.watchFor}
           </p>
         )}
         <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
-          That is one card. The Blueprint Report is the whole year: {BLUEPRINT_REPORT_PAGE_COUNT} pages with the math shown, the boards dealt by hand, then {CONSULT_MINUTES} minutes with Cass to talk it through.
+          That is one card. The Blueprint Report is the whole year: your cards with the math shown, the boards dealt by hand, then {CONSULT_MINUTES} minutes with Cass to talk it through.
         </p>
         <ReportCheckoutButton
           slug={CONSULT_SLUG}
@@ -263,7 +263,7 @@ function BirthCardResultCard({
           birthdate={date || reveal.birthdate}
         />
         <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-faint">
-          No model writes it. Same birthday, same document, every time.
+          No model writes it. Same birthday and reading date, same cards.
         </p>
         <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
           Just the report, no call?{" "}
@@ -280,7 +280,7 @@ function BirthCardResultCard({
             Ask one question, {DEEP_DIVE_PRICE_LABEL} →
           </Link>
         </p>
-      </div>
+      </div>}
       {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
       {(() => {
         const t = testimonialForCard(bc?.label);

@@ -1,3 +1,4 @@
+import { CONSULT_SLUG, consultationHref } from "@/lib/blueprint-report";
 import type { Metadata } from "next";
 import Link from "next/link";
 import OneQuestionReadingLive from "@/components/checkout/OneQuestionReadingLive";
@@ -99,13 +100,13 @@ export default async function CheckoutSuccessPage({
   // Instant report: birth date from our review picker (session metadata)
   // or an older Stripe custom field. Then mint the report token.
   let reportToken = "";
-  if (instantReport && confirmed) {
+  if (product && isInstantReport(product) && confirmed) {
     const birthdate = birthdateFromCheckoutSession(session2);
     if (/^\d{4}-\d{2}-\d{2}$/.test(birthdate) && customerEmail) {
       try {
         reportToken = await mintReportToken(
           customerEmail,
-          product!.slug,
+          product.reportSlug,
           sessionId,
           birthdate,
         );
@@ -117,7 +118,7 @@ export default async function CheckoutSuccessPage({
 
   // Blueprint bundle: The 90 Spreads PDF ships with the $13 report.
   let spreadsDownloadHref = "";
-  if (instantReport && confirmed && customerEmail) {
+  if (instantReport && product!.slug === "personal-card-blueprint" && confirmed && customerEmail) {
     try {
       const dl = await mintDownloadToken(customerEmail, ALL_90_SPREADS_FILE.slug, 30);
       spreadsDownloadHref = `/api/download/${ALL_90_SPREADS_FILE.slug}?token=${encodeURIComponent(dl)}`;
@@ -238,6 +239,10 @@ export default async function CheckoutSuccessPage({
         )}
       </header>
 
+      {confirmed && (
+        <div className="mb-6"><LinkButton href={`/my-purchases?session_id=${encodeURIComponent(sessionId)}`} variant="outline">My purchases</LinkButton></div>
+      )}
+
       {confirmed ? (
         <section className="border-y border-brand-line py-8">
           {oneQuestion ? (
@@ -260,7 +265,13 @@ export default async function CheckoutSuccessPage({
               token={downloadToken}
             />
           ) : instantReport ? (
-            <ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} />
+            <><ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} />
+            {product!.slug === CONSULT_SLUG && session2?.payment_status === "paid" && (
+              <div className="mt-8 text-center">
+                <p className="mb-4">Share what you want to explore and your time zone. Cass will contact you to arrange your 45-minute call.</p>
+                <LinkButton href={consultationHref(sessionId)} variant="primary">Arrange my consultation</LinkButton>
+              </div>
+            )}</>
           ) : voice ? (
             <VoiceFulfillment product={product!} />
           ) : null}
@@ -554,7 +565,7 @@ function ReportFulfillment({
       <Kicker className="mb-4">Your Blueprint</Kicker>
       <h2 className="type-h2 text-brand-ink">It&rsquo;s ready.</h2>
       <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-        Your Personal Card Blueprint was generated from the birth date you
+        Your report was generated from the birth date you
         entered at checkout. Open it now — the same link is in your email.
       </p>
       <div className="mt-6">
@@ -563,7 +574,7 @@ function ReportFulfillment({
           variant="accent"
           size="large"
         >
-          Open My Personal Blueprint
+          Open my report
         </LinkButton>
       </div>
       {spreadsHref && (
@@ -574,7 +585,7 @@ function ReportFulfillment({
         </div>
       )}
       <p className="mt-3 text-xs text-brand-ink-soft">
-        Keep the emailed link — it re-opens your report anytime.
+        Keep the emailed link — it re-opens your report for 12 months. Save a PDF to keep it.
         {spreadsHref ? " The 90 Spreads link is good for 30 days; a backup copy is in your email." : ""}
       </p>
     </div>

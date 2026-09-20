@@ -14,6 +14,8 @@ import {
   type FunnelContext,
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
+import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
+import { isJokerBirthdate } from "@/lib/deep-dive";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
   DEEP_DIVE_REVIEW_PATH,
@@ -156,6 +158,16 @@ export async function POST(
       new URL(`/checkout/${product.slug}?status=need-date`, req.url),
       303,
     );
+  }
+
+  if (isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG && formBirthdate > new Date().toISOString().slice(0, 10)) {
+    if (wantsJson) return NextResponse.json({ error: "need-date" }, { status: 400 });
+    return NextResponse.redirect(new URL(`/checkout/${product.slug}?status=need-date`, req.url), 303);
+  }
+
+  if (isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG && isJokerBirthdate(formBirthdate)) {
+    if (wantsJson) return NextResponse.json({ error: "unsupported-date", message: "The Blueprint Report does not support December 31. No payment was started." }, { status: 400 });
+    return NextResponse.redirect(new URL(`/checkout/${product.slug}?status=unsupported-date`, req.url), 303);
   }
 
   if (isDeepDive(product) && !formBirthdate) {

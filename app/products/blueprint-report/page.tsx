@@ -25,7 +25,7 @@ const consult = publicProductBySlug(CONSULT_SLUG);
 if (!report || !consult) throw new Error("Blueprint Report tiers are missing from PUBLIC_PRODUCTS");
 
 const title = `${BLUEPRINT_REPORT_NAME}: your whole year in cards, the math shown`;
-const description = `A ${BLUEPRINT_REPORT_PAGE_COUNT}-page personal Cardology report computed from your birthday: this year's periods, the seven-year cycle, the full boards, the derivation of your card, and how to deal every board by hand. No model writes it. ${BLUEPRINT_REPORT_PRICE_LABEL} for the report, ${CONSULT_PRICE_LABEL} with ${CONSULT_MINUTES} minutes live with Cass.`;
+const description = `A personal Cardology report computed from your birthday and purchase date: this year's periods, the seven-year cycle, the full boards, the derivation of your card, and how to deal every board by hand. No model writes it. ${BLUEPRINT_REPORT_PRICE_LABEL} for the report, ${CONSULT_PRICE_LABEL} with ${CONSULT_MINUTES} minutes live with Cass.`;
 
 export const metadata: Metadata = {
   title,
@@ -53,7 +53,7 @@ const leadPages = [
 const faqs = [
   {
     q: "Is any of this written by AI?",
-    a: "No model writes it. Every card on every page comes out of a fixed lookup table and five lines of arithmetic, and the interpretation copy is a fixed library. Run the same birthday next year on another machine and you get the same document.",
+    a: "No model writes it. Every card on every page comes out of a fixed lookup table and five lines of arithmetic, and the interpretation copy is a fixed library. The same birthday and reading date produce the same cards. Your purchased report stays pinned to the purchase date.",
   },
   {
     q: "What happens on the call?",
@@ -65,11 +65,11 @@ const faqs = [
   },
   {
     q: "How is this different from the free year page?",
-    a: "The free page shows the seven periods for your birth card. The report adds the ruling-card walk, the seven-year Long Range cycle, the Environment and Displacement seats, every exact repeat across roles, the four full boards, the calculation record, and two pages that show the derivation and how to deal every board by hand.",
+    a: "The free page shows the seven periods for your birth card. The report adds the ruling-card walk, the seven-year Long Range cycle, the Environment and Displacement seats, every exact repeat across roles, the full boards, the calculation record, and two pages that show the derivation and how to deal every board by hand.",
   },
   {
     q: "Is it a PDF?",
-    a: "It is a printable web document with print rules built in, so Save as PDF from your browser produces a clean A4 file. Your link re-opens it anytime.",
+    a: "It is a printable web document with print rules built in, so Save as PDF from your browser produces a clean A4 file. Your link works for 12 months. Save a PDF to keep it.",
   },
   {
     q: "Does it predict anything?",
@@ -124,13 +124,13 @@ export default function BlueprintReportPage() {
 
       <SeoHeroFan codes={["8♦", "Q♠", "5♣"]} className="mb-5" />
       <p className="eyebrow mb-3 text-gold">
-        {BLUEPRINT_REPORT_PAGE_COUNT} pages · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
+        Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
       </p>
       <h1 className="display mb-3 text-3xl text-bone">The math shown. Deal it yourself. Then talk it through.</h1>
       <p className="prose-reading mb-6 max-w-[38em] text-mist">
         Your birth card is one seat on a board. This report is the board: every 52-day period of
         your year, the seven-year cycle you are inside, the two seats that describe your
-        surroundings, and every exact repeat. The last two pages are the point. One works the
+        surroundings, and every exact repeat. Two teaching pages near the end are the point. One works the
         formula for your own birthday. The other shows you how to deal every board with a real
         deck, so nothing here asks for your trust. Then, if you want, {CONSULT_MINUTES} minutes
         with Cass to walk the year together.
@@ -149,12 +149,14 @@ export default function BlueprintReportPage() {
                 className="w-full rounded-[3px] border border-white/10 bg-[#eef3f8]"
               />
               <figcaption className="mt-2 text-xs uppercase tracking-[0.16em] text-faint">
-                Page {p.n} · {p.t}
+                Sample page {p.n} · {p.t}
               </figcaption>
             </figure>
           ))}
         </div>
       </section>
+
+      <p className="mb-6 text-sm text-mist">The sample has {BLUEPRINT_REPORT_PAGE_COUNT} pages. Your page count varies with your ruling cards and the boards for your year.</p>
 
       <section aria-label="Choose a tier" className="mb-10 grid gap-4 md:grid-cols-[1.15fr_1fr]">
         <article className="rounded-[3px] border-2 border-gold p-5">
@@ -178,7 +180,7 @@ export default function BlueprintReportPage() {
             The report · {report!.priceLabel}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-mist">
-            All {BLUEPRINT_REPORT_PAGE_COUNT} pages, the derivation and the dealing procedure
+            Your full report, the derivation and the dealing procedure
             included. No call.
           </p>
           <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-mist">
@@ -192,7 +194,7 @@ export default function BlueprintReportPage() {
         </article>
       </section>
       <p className="mb-10 text-sm text-mist">
-        Either way, you enter your birthday on the next page. Nothing else is asked. Wrong date:
+        Either way, enter your birthday on the next page. A cover name is optional. Wrong date:
         reply to the receipt and it is regenerated.
       </p>
 
@@ -200,15 +202,15 @@ export default function BlueprintReportPage() {
         <h2 className="eyebrow mb-2 text-gold">No model writes this document</h2>
         <p className="prose-reading text-mist">
           Every card on every page came out of a fixed lookup table and five lines of arithmetic.
-          Run the same birthday tomorrow, next year, on another machine, and you get this document
-          again, character for character. The report ends with the calculation record, the
+          Your report stays pinned to your purchase date. The same birthday and reading date give the same cards
+          each time. The report ends with the calculation record, the
           derivation of your card worked for your own birthday, and the exact procedure for dealing
           every board with a $3 deck. Nobody is asking you to trust it.
         </p>
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">What is on the {BLUEPRINT_REPORT_PAGE_COUNT} pages</h2>
+        <h2 className="eyebrow mb-2 text-gold">Inside the report</h2>
         <ul className="prose-reading list-disc space-y-1.5 pl-5 text-mist">
           {report!.includes.map((line) => (
             <li key={line}>{line}</li>
@@ -221,7 +223,7 @@ export default function BlueprintReportPage() {
         <div className="grid gap-3 sm:grid-cols-2">
           {samplePages.map((p) => (
             <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-faint">Page {p.n}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-faint">Sample page {p.n}</p>
               <p className="mt-1 font-serif text-lg text-bone">{p.t}</p>
               <p className="mt-1 text-sm leading-relaxed text-mist">{p.d}</p>
             </div>

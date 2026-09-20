@@ -143,6 +143,12 @@ export function middleware(request: NextRequest) {
     response.headers.set("Cache-Control", "no-store, must-revalidate");
   }
 
+  if (["/my-purchases", "/consultation", "/report", "/blueprint", "/checkout/success"].includes(request.nextUrl.pathname)) {
+    response.headers.set("Cache-Control", "private, no-store");
+    response.headers.set("Referrer-Policy", "no-referrer");
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+  }
+
   return response;
 }
 

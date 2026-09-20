@@ -1,3 +1,4 @@
+import { CONSULT_BOOKING_COPY, consultationHref } from "@/lib/blueprint-report";
 import { NextRequest, NextResponse } from "next/server";
 import type Stripe from "stripe";
 
@@ -37,13 +38,13 @@ export const dynamic = "force-dynamic";
 
 const DEFAULT_ACCESS_DAYS = 30;
 
-/** Buyer email block for the report + consultation tier. Request and approve by
- *  email: the buyer proposes windows, Cass confirms one. No calendar link. */
-function consultationLines(consult: { minutes: number }): string[] {
+/** Paid buyers submit context; Cass arranges the call personally. */
+function consultationLines(consult: { minutes: number }, sessionId: string): string[] {
   return [
     "",
     `Your ${consult.minutes}-minute consultation with Cass, live:`,
-    "Reply to this email with two or three windows that work for you, with your time zone. Cass confirms one by email.",
+    CONSULT_BOOKING_COPY,
+    `Arrange my consultation: ${SITE_URL}${consultationHref(sessionId)}`,
     "Bring the report and your questions. Cass brings the deck and walks the boards with you.",
   ];
 }
@@ -362,7 +363,7 @@ export async function POST(req: NextRequest) {
             to: email,
             subject: "Your Cardology Membership is active",
             text: [
-              `Thank you — your ${product.name} is confirmed.`,
+              `Thank you. Your ${product.name} is confirmed.`,
               "",
               "Your dashboard is ready right now:",
               membershipUrl,
@@ -429,8 +430,10 @@ export async function POST(req: NextRequest) {
           // Bundled download: The 90 Spreads PDF ships with the Blueprint.
           let spreadsLine = "";
           try {
+            if (product.slug === "personal-card-blueprint") {
             const dl = await mintDownloadToken(email, ALL_90_SPREADS_FILE.slug, 30);
             spreadsLine = `${ALL_90_SPREADS_FILE.label} (PDF, link good for 30 days): ${SITE_URL}/api/download/${ALL_90_SPREADS_FILE.slug}?token=${encodeURIComponent(dl)}`;
+            }
           } catch (e) {
             console.error("[webhook] 90 spreads token mint failed", e);
           }
@@ -438,20 +441,22 @@ export async function POST(req: NextRequest) {
             to: email,
             subject: `Your ${product.name} is ready`,
             text: [
-              `Thank you — your ${product.name} is confirmed.`,
+              `Thank you. Your ${product.name} is confirmed.`,
               "",
               "Your personalized report is ready right now:",
               reportUrl,
               "",
-              "Keep this link — it re-opens your report anytime.",
+              `My purchases: ${SITE_URL}/my-purchases?session_id=${encodeURIComponent(session.id)}`,
+              "",
+              "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
               ...(spreadsLine
                 ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]
                 : []),
-              ...(product.consultation ? consultationLines(product.consultation) : []),
+              ...(product.consultation ? consultationLines(product.consultation, session.id) : []),
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),
-            // The consult is booked by replying, so replies must land with Cass.
+            // Support replies land with Cass. The request link arranges the consultation.
             replyTo: product.consultation ? process.env.INTAKE_EMAIL || undefined : undefined,
           });
           reportIssued = true;
@@ -489,7 +494,7 @@ export async function POST(req: NextRequest) {
                     `Buyer: ${email}`,
                     `Birthdate: ${birthdate || "(missing)"}`,
                     `Stripe session: ${session.id}`,
-                    "The buyer was asked to reply with two or three windows. Reply to that email to confirm one.",
+                    "The buyer has a consultation request link. Their submitted topic and time zone will arrive in a separate email; contact them to arrange the call.",
                   ]
                 : []),
             ].join("\n"),

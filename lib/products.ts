@@ -246,14 +246,14 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: CONSULT_PRICE_LABEL,
     badge: "Featured",
     oneLine:
-      "The 22-page report with the math shown, then 45 minutes with Cass to talk it through.",
+      "The personal report with the math shown, then 45 minutes with Cass to talk it through.",
     bestFor:
       "Anyone who wants the whole year on paper, wants to deal the boards themselves, and wants a real person to walk through it with them.",
     deliverable:
-      "The 22-page report the moment you pay, plus a 45-minute live consultation with Cass, at a time set with you by email.",
-    turnaround: "Report ready the moment you pay. Reply to that email with the windows that work for you and Cass confirms one.",
+      "The personal report after payment, plus a 45-minute live consultation with Cass, at a time set with you by email.",
+    turnaround: "Report ready after payment. Send your consultation request and Cass will contact you to arrange the call.",
     includes: [
-      "Everything in the Blueprint Report, all 22 pages. No model writes it.",
+      "Everything in the Blueprint Report. Page count varies with your cards and year. No model writes it.",
       "Where your card comes from: the derivation, worked for your birthday",
       "Deal it yourself: every board reproduced with a real deck",
       "45 minutes live with Cass, at a time set with you by email",
@@ -261,7 +261,7 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     ],
     cta: CONSULT_CTA_LABEL,
     checkoutNote:
-      "One-time purchase. You enter your birth date on the next page. The report link arrives by email the moment payment lands; reply to it with the windows that work for you and Cass confirms the call.",
+      "One-time purchase. You enter your birth date on the next page. The report link arrives by email after payment. Choose Arrange my consultation, share what you want to explore and your time zone, and Cass will contact you to arrange the call.",
     reportSlug: "blueprint-report",
     href: "/products/blueprint-report",
     consultation: { minutes: CONSULT_MINUTES },
@@ -275,11 +275,11 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     priceLabel: "$129",
     badge: "New",
     oneLine:
-      "Your whole year in cards, all 22 pages, computed from your birthday and nothing else.",
+      "Your whole year in cards, computed from your birthday and purchase date.",
     bestFor:
       "Anyone who found their card and wants the full map: this year, the seven-year cycle, and the boards behind it, with the math shown.",
     deliverable:
-      "A 22-page personal report as a printable web document, with an emailed link that re-opens it anytime.",
+      "A personal report as a printable web document. The sample has 22 pages; your length varies with your cards and year. Your emailed link works for 12 months; save a PDF to keep it.",
     turnaround: "Ready the moment you pay. No call, no wait, no model in the loop.",
     includes: [
       "Your birth card and ruling card: balanced, under- and over-expression",
