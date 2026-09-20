@@ -10,6 +10,7 @@ import {
   BLUEPRINT_REPORT_PRICE_LABEL,
   BLUEPRINT_REPORT_PRODUCT_PATH,
   BLUEPRINT_REPORT_SLUG,
+  CONSULT_BOOKING_COPY,
   CONSULT_MINUTES,
   CONSULT_PRICE_LABEL,
   CONSULT_SLUG,
@@ -60,7 +61,7 @@ const faqs = [
   },
   {
     q: "How do I book the call?",
-    a: "The booking link is in the same email as your report. Pick any open time. If you need to move it, use the link in the booking confirmation.",
+    a: `${CONSULT_BOOKING_COPY} No calendar to fight with; the time is set around you.`,
   },
   {
     q: "How is this different from the free year page?",

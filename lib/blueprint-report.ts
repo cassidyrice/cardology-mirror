@@ -31,7 +31,8 @@ export const CONSULT_MINUTES = 45;
 export const CONSULT_REVIEW_PATH = `/checkout/${CONSULT_SLUG}`;
 export const CONSULT_PRICE_ENV = "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT";
 export const CONSULT_CTA_LABEL = `Report + ${CONSULT_MINUTES} minutes with Cass, ${CONSULT_PRICE_LABEL}`;
-/** Cal.com event for the prepaid consultation. Must be a FREE event type: the
- *  buyer already paid on Stripe. Empty until Cass supplies the link; the
- *  webhook then tells him to send it by hand rather than emailing a blank. */
-export const CONSULT_BOOKING_URL = "";
+/** How the consult is booked: request and approve, by email. The buyer replies
+ *  to the receipt with two or three windows; Cass confirms one. No calendar,
+ *  the buyer never picks a slot. */
+export const CONSULT_BOOKING_COPY =
+  "Reply to your receipt email with two or three windows that work for you, with your time zone. Cass confirms one by email.";

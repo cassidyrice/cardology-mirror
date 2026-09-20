@@ -37,17 +37,14 @@ export const dynamic = "force-dynamic";
 
 const DEFAULT_ACCESS_DAYS = 30;
 
-/** Buyer email block for the report + consultation tier. Two lines on how the
- *  call works, then the booking link. If the Cal.com link is not configured the
- *  buyer is told it follows by email and Cass is flagged in the intake email. */
-function consultationLines(consult: { minutes: number; bookingUrl: string }): string[] {
+/** Buyer email block for the report + consultation tier. Request and approve by
+ *  email: the buyer proposes windows, Cass confirms one. No calendar link. */
+function consultationLines(consult: { minutes: number }): string[] {
   return [
     "",
     `Your ${consult.minutes}-minute consultation with Cass, live:`,
+    "Reply to this email with two or three windows that work for you, with your time zone. Cass confirms one by email.",
     "Bring the report and your questions. Cass brings the deck and walks the boards with you.",
-    consult.bookingUrl
-      ? `Pick a time here: ${consult.bookingUrl}`
-      : "The booking link follows in a separate email from Cass.",
   ];
 }
 
@@ -454,6 +451,8 @@ export async function POST(req: NextRequest) {
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),
+            // The consult is booked by replying, so replies must land with Cass.
+            replyTo: product.consultation ? process.env.INTAKE_EMAIL || undefined : undefined,
           });
           reportIssued = true;
         } catch (e) {
@@ -490,9 +489,7 @@ export async function POST(req: NextRequest) {
                     `Buyer: ${email}`,
                     `Birthdate: ${birthdate || "(missing)"}`,
                     `Stripe session: ${session.id}`,
-                    consult.bookingUrl
-                      ? `Booking link sent to buyer: ${consult.bookingUrl}`
-                      : "BOOKING LINK NOT CONFIGURED: email the buyer the Cal.com link by hand.",
+                    "The buyer was asked to reply with two or three windows. Reply to that email to confirm one.",
                   ]
                 : []),
             ].join("\n"),

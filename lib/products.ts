@@ -3,7 +3,6 @@
 // but are not part of the active public catalog or new checkout lookup.
 
 import {
-  CONSULT_BOOKING_URL,
   CONSULT_CTA_LABEL,
   CONSULT_MINUTES,
   CONSULT_NAME,
@@ -69,8 +68,8 @@ export type DigitalDownloadOffer = ProductBase & {
 export type InstantReportOffer = ProductBase & {
   kind: "instant_report";
   reportSlug: string;
-  /** Set on the featured tier: a live call with Cass, booked after purchase. */
-  consultation?: { minutes: number; bookingUrl: string };
+  /** Set on the featured tier: a live call with Cass, set by email after purchase. */
+  consultation?: { minutes: number };
 };
 
 export type MembershipOffer = ProductBase & {
@@ -251,21 +250,21 @@ export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
     bestFor:
       "Anyone who wants the whole year on paper, wants to deal the boards themselves, and wants a real person to walk through it with them.",
     deliverable:
-      "The 22-page report the moment you pay, plus a 45-minute live consultation with Cass, booked at a time you pick.",
-    turnaround: "Report ready the moment you pay. The booking link is in the same email.",
+      "The 22-page report the moment you pay, plus a 45-minute live consultation with Cass, at a time set with you by email.",
+    turnaround: "Report ready the moment you pay. Reply to that email with the windows that work for you and Cass confirms one.",
     includes: [
       "Everything in the Blueprint Report, all 22 pages. No model writes it.",
       "Where your card comes from: the derivation, worked for your birthday",
       "Deal it yourself: every board reproduced with a real deck",
-      "45 minutes live with Cass, booked at a time you pick",
+      "45 minutes live with Cass, at a time set with you by email",
       "You bring the report and your questions. Cass brings the deck.",
     ],
     cta: CONSULT_CTA_LABEL,
     checkoutNote:
-      "One-time purchase. You enter your birth date on the next page. The report link and the booking link arrive together by email the moment payment lands.",
+      "One-time purchase. You enter your birth date on the next page. The report link arrives by email the moment payment lands; reply to it with the windows that work for you and Cass confirms the call.",
     reportSlug: "blueprint-report",
     href: "/products/blueprint-report",
-    consultation: { minutes: CONSULT_MINUTES, bookingUrl: CONSULT_BOOKING_URL },
+    consultation: { minutes: CONSULT_MINUTES },
   },
   {
     kind: "instant_report",

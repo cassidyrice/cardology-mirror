@@ -235,8 +235,8 @@ scripts/calculator-deep-dive.test.ts` green; `next build` + `next-on-pages` exit
 live): `price_1UHfDgChx1yAVyrsqF4NHpAZ` ($129), `price_1UHfDhChx1yAVyrsZM6w25gc` ($297).
 Pages secrets `STRIPE_PRICE_BLUEPRINT_REPORT` and `STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT`
 set on production and preview. Sample PNGs of pages 20 and 21 in `public/brand/`.
-Open: `CONSULT_BOOKING_URL` in `lib/blueprint-report.ts` is empty until Cass supplies a
-free Cal.com event; the webhook tells the buyer the link follows and flags Cass.
+Booking: no Cal.com. Request and approve by email: the buyer email asks for two or three
+windows (reply-to = INTAKE_EMAIL), Cass confirms one from the intake thread.
 
 Original Cowork notes follow; the checklist items are now done except the real payments.
 
