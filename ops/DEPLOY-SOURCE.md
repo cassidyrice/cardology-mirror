@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-19** (deployed `main` @ `0d37f29` — Point the reading-orders binding at the live D1 database.; previous record `dbccd66`)
+**Last verified: 2026-09-20** (deployed `main` @ `2565757` — Finish report access and personal consultation requests; previous record `0d37f29`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `0d37f2981e17e0b26683622560670cc06f162783` |
+| **Deployed commit** | `2565757885e2c6b3282789272fda937066147220` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
