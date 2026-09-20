@@ -2,6 +2,16 @@
 // Voice-reading offers are retained for old Stripe sessions and entitlements,
 // but are not part of the active public catalog or new checkout lookup.
 
+import {
+  CONSULT_BOOKING_URL,
+  CONSULT_CTA_LABEL,
+  CONSULT_MINUTES,
+  CONSULT_NAME,
+  CONSULT_PRICE,
+  CONSULT_PRICE_LABEL,
+  CONSULT_SLUG,
+} from "@/lib/blueprint-report";
+
 export type ProductKind =
   | "voice_reading"
   | "digital_download"
@@ -19,7 +29,9 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT"
   | "STRIPE_PRICE_BLUEPRINT_BREAKDOWN"
   | "STRIPE_PRICE_52XSEVEN_BLUEPRINT"
-  | "STRIPE_PRICE_MEMBERSHIP";
+  | "STRIPE_PRICE_MEMBERSHIP"
+  | "STRIPE_PRICE_BLUEPRINT_REPORT"
+  | "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT";
 
 type ProductBase = {
   slug: string;
@@ -57,6 +69,8 @@ export type DigitalDownloadOffer = ProductBase & {
 export type InstantReportOffer = ProductBase & {
   kind: "instant_report";
   reportSlug: string;
+  /** Set on the featured tier: a live call with Cass, booked after purchase. */
+  consultation?: { minutes: number; bookingUrl: string };
 };
 
 export type MembershipOffer = ProductBase & {
@@ -226,6 +240,67 @@ export const DIGITAL_PRODUCTS: DigitalDownloadOffer[] = [
 export const INSTANT_REPORT_PRODUCTS: InstantReportOffer[] = [
   {
     kind: "instant_report",
+    slug: CONSULT_SLUG,
+    stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT",
+    name: CONSULT_NAME,
+    price: CONSULT_PRICE,
+    priceLabel: CONSULT_PRICE_LABEL,
+    badge: "Featured",
+    oneLine:
+      "The 22-page report with the math shown, then 45 minutes with Cass to talk it through.",
+    bestFor:
+      "Anyone who wants the whole year on paper, wants to deal the boards themselves, and wants a real person to walk through it with them.",
+    deliverable:
+      "The 22-page report the moment you pay, plus a 45-minute live consultation with Cass, booked at a time you pick.",
+    turnaround: "Report ready the moment you pay. The booking link is in the same email.",
+    includes: [
+      "Everything in the Blueprint Report, all 22 pages. No model writes it.",
+      "Where your card comes from: the derivation, worked for your birthday",
+      "Deal it yourself: every board reproduced with a real deck",
+      "45 minutes live with Cass, booked at a time you pick",
+      "You bring the report and your questions. Cass brings the deck.",
+    ],
+    cta: CONSULT_CTA_LABEL,
+    checkoutNote:
+      "One-time purchase. You enter your birth date on the next page. The report link and the booking link arrive together by email the moment payment lands.",
+    reportSlug: "blueprint-report",
+    href: "/products/blueprint-report",
+    consultation: { minutes: CONSULT_MINUTES, bookingUrl: CONSULT_BOOKING_URL },
+  },
+  {
+    kind: "instant_report",
+    slug: "blueprint-report",
+    stripePriceEnv: "STRIPE_PRICE_BLUEPRINT_REPORT",
+    name: "Blueprint Report",
+    price: 129,
+    priceLabel: "$129",
+    badge: "New",
+    oneLine:
+      "Your whole year in cards, all 22 pages, computed from your birthday and nothing else.",
+    bestFor:
+      "Anyone who found their card and wants the full map: this year, the seven-year cycle, and the boards behind it, with the math shown.",
+    deliverable:
+      "A 22-page personal report as a printable web document, with an emailed link that re-opens it anytime.",
+    turnaround: "Ready the moment you pay. No call, no wait, no model in the loop.",
+    includes: [
+      "Your birth card and ruling card: balanced, under- and over-expression",
+      "Every 52-day period of your birthday year, dated, for both anchors",
+      "Your seven-year Long Range cycle, ages and cards, active year marked",
+      "Annual Environment and Displacement, the two karma seats",
+      "Exact repeats across every role, so you can see what the year keeps saying",
+      "The four full boards your reading is drawn from, every seat labeled",
+      "The calculation record: every formula, so you can check every number",
+      "Where your card comes from: the derivation, worked for your birthday",
+      "Deal it yourself: how to reproduce every board with a real deck of cards",
+    ],
+    cta: "Report only, $129",
+    checkoutNote:
+      "One-time purchase. You enter your birth date on the next page; the report is generated the moment payment lands and the link is emailed to you.",
+    reportSlug: "blueprint-report",
+    href: "/products/blueprint-report",
+  },
+  {
+    kind: "instant_report",
     slug: "personal-card-blueprint",
     stripePriceEnv: "STRIPE_PRICE_PERSONAL_CARD_BLUEPRINT",
     name: "Personal Card Blueprint",
@@ -329,10 +404,14 @@ export const ALL_PRODUCTS: SiteProduct[] = [
   MEMBERSHIP_PRODUCT,
 ];
 
+/** Retired 2026-09-20 in favour of the Blueprint Report. The record stays in
+ *  ALL_PRODUCTS so past buyers' /blueprint?token= links keep resolving. */
+export const PERSONAL_CARD_BLUEPRINT_SLUG = "personal-card-blueprint";
+
 /** Products currently purchasable and safe to advertise as live offers. */
 export const PUBLIC_PRODUCTS: ActiveProduct[] = [
   MEMBERSHIP_PRODUCT,
-  ...INSTANT_REPORT_PRODUCTS,
+  ...INSTANT_REPORT_PRODUCTS.filter((product) => product.slug !== PERSONAL_CARD_BLUEPRINT_SLUG),
   ...DIGITAL_PRODUCTS.filter((product) => product.available),
 ];
 

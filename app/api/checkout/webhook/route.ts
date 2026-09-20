@@ -37,6 +37,20 @@ export const dynamic = "force-dynamic";
 
 const DEFAULT_ACCESS_DAYS = 30;
 
+/** Buyer email block for the report + consultation tier. Two lines on how the
+ *  call works, then the booking link. If the Cal.com link is not configured the
+ *  buyer is told it follows by email and Cass is flagged in the intake email. */
+function consultationLines(consult: { minutes: number; bookingUrl: string }): string[] {
+  return [
+    "",
+    `Your ${consult.minutes}-minute consultation with Cass, live:`,
+    "Bring the report and your questions. Cass brings the deck and walks the boards with you.",
+    consult.bookingUrl
+      ? `Pick a time here: ${consult.bookingUrl}`
+      : "The booking link follows in a separate email from Cass.",
+  ];
+}
+
 const LEGACY_ACCESS_DAYS: Record<string, number> = {
   "one-question-reading": 90,
   "full-deep-dive": 90,
@@ -406,9 +420,11 @@ export async function POST(req: NextRequest) {
       let reportIssued = false;
       if (email !== "(no email)" && /^\d{4}-\d{2}-\d{2}$/.test(birthdate)) {
         try {
+          // reportSlug names the document; two price tiers share blueprint-report.
+          // personal-card-blueprint's reportSlug equals its slug, so legacy tokens are unchanged.
           const token = await mintReportToken(
             email,
-            product.slug,
+            product.reportSlug,
             session.id,
             birthdate,
           );
@@ -423,7 +439,7 @@ export async function POST(req: NextRequest) {
           }
           await sendIntakeEmail({
             to: email,
-            subject: `Your Personal Card Blueprint is ready`,
+            subject: `Your ${product.name} is ready`,
             text: [
               `Thank you — your ${product.name} is confirmed.`,
               "",
@@ -434,6 +450,7 @@ export async function POST(req: NextRequest) {
               ...(spreadsLine
                 ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]
                 : []),
+              ...(product.consultation ? consultationLines(product.consultation) : []),
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),
@@ -452,17 +469,32 @@ export async function POST(req: NextRequest) {
       const to = process.env.INTAKE_EMAIL;
       if (to) {
         try {
+          const consult = product.consultation;
           await sendIntakeEmail({
             to,
-            subject: `Payment received (report): ${offerName} — ${email}`,
+            subject: consult
+              ? `ACTION: confirm the ${consult.minutes}-minute consult for ${email}`
+              : `Payment received (report): ${offerName} — ${email}`,
             text: [
               `Offer: ${offerName} (${offerSlug || "unknown slug"})`,
-              `Type: instant report`,
+              `Type: instant report${consult ? " + consultation" : ""}`,
               `Amount: ${amount}`,
               `Customer email: ${email}`,
               `Birthdate supplied: ${/^\d{4}-\d{2}-\d{2}$/.test(birthdate) ? "yes" : "NO"}`,
               `Report email sent: ${reportIssued ? "yes" : "NO — send manually"}`,
               `Stripe session: ${session.id}`,
+              ...(consult
+                ? [
+                    "",
+                    `ACTION: confirm the ${consult.minutes}-minute consult.`,
+                    `Buyer: ${email}`,
+                    `Birthdate: ${birthdate || "(missing)"}`,
+                    `Stripe session: ${session.id}`,
+                    consult.bookingUrl
+                      ? `Booking link sent to buyer: ${consult.bookingUrl}`
+                      : "BOOKING LINK NOT CONFIGURED: email the buyer the Cal.com link by hand.",
+                  ]
+                : []),
             ].join("\n"),
             replyTo: email !== "(no email)" ? email : undefined,
           });

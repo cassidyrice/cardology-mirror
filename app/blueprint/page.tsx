@@ -10,6 +10,9 @@ import {
   DEEP_DIVE_PRODUCT_PATH,
   FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
 } from "@/lib/deep-dive";
+import { redirect } from "next/navigation";
+
+import { BLUEPRINT_REPORT_SLUG, BLUEPRINT_REPORT_VIEW_PATH } from "@/lib/blueprint-report";
 import { verifyReportToken } from "@/lib/report-token";
 import { buildYearBlueprint } from "@/lib/year-blueprint";
 
@@ -62,6 +65,12 @@ export default async function BlueprintPage({
         <SiteFooter />
       </div>
     );
+  }
+
+  // The Blueprint Report ($129) is a full HTML document with its own print CSS,
+  // so it is served by app/report/route.ts rather than inside the app shell.
+  if (payload.slug === BLUEPRINT_REPORT_SLUG) {
+    redirect(`${BLUEPRINT_REPORT_VIEW_PATH}?token=${encodeURIComponent(token ?? "")}`);
   }
 
   // The 52xSeven Blueprint (retired from sale 2026-09-13) still renders for past buyers: a phone-shaped year app.

@@ -66,6 +66,8 @@ const CLIENT_EVENT_NAMES = new Set(CLIENT_FUNNEL_EVENTS as readonly string[]);
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const OFFER_SLUGS = new Set([
+  "blueprint-report-consult",
+  "blueprint-report",
   "personal-card-blueprint",
   "analog-algorithm",
   "complete-card-blueprint",

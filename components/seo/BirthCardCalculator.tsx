@@ -16,8 +16,13 @@ import {
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { CurrentPeriod } from "./CurrentPeriod";
-import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
-import { DeepDiveCta } from "./DeepDiveCta";
+import {
+  CALCULATOR_PRIVACY_MICROCOPY,
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_PATH,
+} from "@/lib/deep-dive";
+import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
+import { BLUEPRINT_REPORT_PAGE_COUNT, CONSULT_MINUTES, CONSULT_SLUG } from "@/lib/blueprint-report";
 import { cardBibleAny } from "@/lib/card-bible";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
@@ -249,16 +254,32 @@ function BirthCardResultCard({
           </p>
         )}
         <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
-          Ask one question about it. The $13 One Question Reading answers it in writing.
+          That is one card. The Blueprint Report is the whole year: {BLUEPRINT_REPORT_PAGE_COUNT} pages with the math shown, the boards dealt by hand, then {CONSULT_MINUTES} minutes with Cass to talk it through.
         </p>
-        <DeepDiveCta
+        <ReportCheckoutButton
+          slug={CONSULT_SLUG}
           className="mt-4"
           placement="birth-card-calculator-result"
           birthdate={date || reveal.birthdate}
-          source="birth-card-calculator"
-          cardLabel={bc?.label}
-          cardSlug={slug ?? undefined}
         />
+        <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-faint">
+          No model writes it. Same birthday, same document, every time.
+        </p>
+        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
+          Just the report, no call?{" "}
+          <ReportCheckoutButton
+            variant="link"
+            placement="birth-card-calculator-result-report-only"
+            birthdate={date || reveal.birthdate}
+            className="text-brand-ink"
+          />
+        </p>
+        <p className="mt-2 text-center text-sm leading-relaxed text-brand-ink-soft">
+          Have one specific decision instead?{" "}
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
+            Ask one question, {DEEP_DIVE_PRICE_LABEL} →
+          </Link>
+        </p>
       </div>
       {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
       {(() => {

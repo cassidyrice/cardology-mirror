@@ -267,16 +267,20 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");
 });
 
-test("shared calculator result sells the $13 One Question Reading with one primary ask", () => {
-  expect(calculator).toContain("<DeepDiveCta");
+test("shared calculator result leads with report + consultation, then report only, then the $13 reading", () => {
+  // Primary ask is the featured tier; the two cheaper paths are text links below it.
+  expect(calculator).toContain("<ReportCheckoutButton");
+  expect(calculator).toContain("slug={CONSULT_SLUG}");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
   expect(calculator).toContain("reveal.birthdate");
   expect(calculator).toContain("date={date}");
   expect(calculator).toContain("date || reveal.birthdate");
-  // One unmissable ask after the reveal; it names the price and the product.
-  expect(calculator).toContain(
-    "Ask one question about it. The $13 One Question Reading answers it in writing.",
-  );
+  expect(calculator).toContain("then {CONSULT_MINUTES} minutes with Cass to talk it through.");
+  expect(calculator).toContain("Just the report, no call?");
+  expect(calculator).toContain("Ask one question, {DEEP_DIVE_PRICE_LABEL} →");
+  expect(calculator.indexOf("slug={CONSULT_SLUG}")).toBeLessThan(calculator.indexOf('variant="link"'));
+  expect(calculator.indexOf('variant="link"')).toBeLessThan(calculator.indexOf("DEEP_DIVE_PRODUCT_PATH}"));
+  expect(calculator).not.toContain("<DeepDiveCta");
   expect(calculator).not.toContain("What do you want to ask about it?");
   // The card's own watch-for line is the bridge into the ask.
   expect(calculator).toContain("bible.watchFor");

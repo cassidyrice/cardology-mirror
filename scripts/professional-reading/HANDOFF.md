@@ -225,3 +225,65 @@ Ran 16 tests across 4 files. [1191.00ms]
 - A direct in-memory Chromium A4 cover probe using 60 unbroken W characters could not launch: `bootstrap_check_in org.chromium.Chromium.MachPortRendezvousServer.8725: Permission denied (1100)`. The focused CLI PDF test therefore exercised the HTML-only fallback.
 
 No staging, commit, push, deploy, engine/checkout/price/secret/external-system edits, or queue edits. The user's narrower directory-only scope overrides the standing external queue-edit instruction. Parent evidence was read only and not overwritten.
+
+## 2026-09-20 · Blueprint Report: $297 report + consultation, $129 report only
+
+Verified 2026-09-20 in Claude Code: `bun test scripts/professional-reading/` 17 pass;
+`bun run test` full chain green; `bun test scripts/product-schema.test.ts
+scripts/calculator-deep-dive.test.ts` green; `next build` + `next-on-pages` exit 0 with
+`/report` bundled as an edge function (no move to lib/ needed). Stripe (Card Blueprint,
+live): `price_1UHfDgChx1yAVyrsqF4NHpAZ` ($129), `price_1UHfDhChx1yAVyrsZM6w25gc` ($297).
+Pages secrets `STRIPE_PRICE_BLUEPRINT_REPORT` and `STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT`
+set on production and preview. Sample PNGs of pages 20 and 21 in `public/brand/`.
+Open: `CONSULT_BOOKING_URL` in `lib/blueprint-report.ts` is empty until Cass supplies a
+free Cal.com event; the webhook tells the buyer the link follows and flags Cass.
+
+Original Cowork notes follow; the checklist items are now done except the real payments.
+
+**What changed**
+- `render.ts`: palette moved to the site's blueprint tokens (paper #eef3f8, ink #123a63,
+  bronze #735624, dark #0a3159), Iowan serif + system sans, suit colors via `cardHtml()`
+  (#8e321f red / #14110d black, matching `lib/cards.ts`). Two new pages before References:
+  "Where your card comes from" (solar value, worked for the buyer) and "Deal it yourself"
+  (Cass's hand procedure; verified in Python against `P` for all 90 spreads, cycle closes,
+  fixed J♥ 8♣ K♠, pairs 2♥↔A♣ and 9♥↔7♦). 20 pages → 22.
+- `builder.test.ts`: the three hex assertions now expect the new tokens.
+- `lib/blueprint-report.ts` (new): slug `blueprint-report`, $129, paths, price env.
+- `lib/products.ts`: `STRIPE_PRICE_BLUEPRINT_REPORT` in the env union; new `instant_report`
+  entry first in `INSTANT_REPORT_PRODUCTS` (so it is public + checkout-able).
+- `lib/analytics.ts`: `blueprint-report` allowlisted in `OFFER_SLUGS` (events were dropped otherwise).
+- `app/report/route.ts` (new, edge): `GET /report?token=` verifies the report token, pulls cover
+  name + purchase date from the Stripe session (fallbacks: "Reader", today), returns
+  `renderReport(buildProfessionalReading(...))` as text/html, no-store, noindex.
+- `app/blueprint/page.tsx`: tokens with slug `blueprint-report` redirect to `/report?token=`.
+- `app/api/checkout/webhook/route.ts`: instant-report email subject uses `product.name`.
+- `components/checkout/ReportCheckoutButton.tsx` (new): stores birthdate, tracks
+  `offer_cta_clicked`, pushes to `/checkout/blueprint-report` (generic review page).
+- `components/seo/BirthCardCalculator.tsx`: result card now leads with the report; the $13
+  One Question Reading is a secondary text link.
+- `components/seo/YourYearView.tsx`: top CTA is the report; the lower `DeepDiveCta` stays.
+- `app/products/blueprint-report/page.tsx` (new): product page with FAQ + Product JSON-LD.
+
+**Checklist before deploy**
+1. Stripe (Card Blueprint account): create product "Blueprint Report", one-time price $129.
+2. Cloudflare Pages secret `STRIPE_PRICE_BLUEPRINT_REPORT` = that price id (preview + production).
+   The session route fails closed (503) without it.
+3. `bun test scripts/professional-reading/` — expect `builder.test.ts:142` (board cells) to be
+   the one assertion `cardHtml()` could plausibly touch.
+4. `bun run test` (full suite) — `validate-public-truth.ts` and the product-schema tests may
+   need the new slug/price registered; fix forward, do not skip.
+5. `next build` — `app/report/route.ts` imports from `scripts/` (excluded in tsconfig
+   `include` but still compiled as an import). If the edge bundle rejects the engine import,
+   move builder/render under `lib/professional-reading/` and repoint both imports.
+6. One real $129 payment → confirm email arrives with a `/blueprint?token=` link → link
+   redirects to `/report` → 22 pages render → `SELECT * FROM reading_orders` is NOT expected
+   to have a row (instant reports mint tokens; they do not write that table).
+7. Decide `personal-card-blueprint` ($13 instant report): it is still in `PUBLIC_PRODUCTS`.
+   Retire or keep; it now sits next to the $129 in every product list.
+
+**Known gaps**
+- No PDF attachment; buyers print to PDF from the page (A4 @page rules are in the renderer).
+- Cover name comes from Stripe billing name. A "name on the cover" field on the review
+  page (metadata `cover_name`, already read by the route) would be better.
+- The two derivation pages on the design canvas use Montserrat; the report's CSP has no
+  `font-src`, so the rendered document uses the system sans instead.

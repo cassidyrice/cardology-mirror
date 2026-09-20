@@ -145,12 +145,20 @@ assert.deepEqual(
   ],
 );
 
-// Instant report flagship (Personal Card Blueprint) is present, priced, and
-// produces the full fact ladder the checkout review page renders.
+// Blueprint Report tiers (2026-09-20): consultation first and featured, report
+// only second, both minting the same document. The retired $13 Personal Card
+// Blueprint stays as a record for past buyers' tokens but is not public.
 assert.deepEqual(
-  INSTANT_REPORT_PRODUCTS.map((o) => ({ slug: o.slug, price: o.price, kind: o.kind })),
-  [{ slug: "personal-card-blueprint", price: 13, kind: "instant_report" }],
+  INSTANT_REPORT_PRODUCTS.map((o) => ({ slug: o.slug, price: o.price, kind: o.kind, reportSlug: o.reportSlug })),
+  [
+    { slug: "blueprint-report-consult", price: 297, kind: "instant_report", reportSlug: "blueprint-report" },
+    { slug: "blueprint-report", price: 129, kind: "instant_report", reportSlug: "blueprint-report" },
+    { slug: "personal-card-blueprint", price: 13, kind: "instant_report", reportSlug: "personal-card-blueprint" },
+  ],
 );
+assert.equal(INSTANT_REPORT_PRODUCTS[0].badge, "Featured");
+assert.equal(INSTANT_REPORT_PRODUCTS[0].consultation?.minutes, 45);
+assert.equal(INSTANT_REPORT_PRODUCTS[1].consultation, undefined);
 for (const offer of INSTANT_REPORT_PRODUCTS) {
   assert.deepEqual(
     instantReportFacts(offer).map((fact) => fact.label),
@@ -161,13 +169,17 @@ assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
   [
     "cardology-membership",
-    "personal-card-blueprint",
+    "blueprint-report-consult",
+    "blueprint-report",
     "analog-algorithm",
     "complete-card-blueprint",
   ],
 );
 assert.equal(publicProductBySlug("cardology-membership")?.kind, "membership");
-assert.equal(publicProductBySlug("personal-card-blueprint")?.kind, "instant_report");
+assert.equal(publicProductBySlug("blueprint-report-consult")?.kind, "instant_report");
+assert.equal(publicProductBySlug("blueprint-report")?.kind, "instant_report");
+assert.equal(publicProductBySlug("personal-card-blueprint"), undefined, "retired $13 report must not open new checkout");
+assert.equal(productBySlug("personal-card-blueprint")?.kind, "instant_report", "retired $13 report must still resolve for past buyers");
 assert.equal(publicProductBySlug("analog-algorithm")?.kind, "digital_download");
 assert.equal(publicProductBySlug("complete-card-blueprint")?.kind, "digital_download");
 assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");

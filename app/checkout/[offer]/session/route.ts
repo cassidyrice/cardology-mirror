@@ -33,6 +33,13 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 export const runtime = "edge";
+
+/** Cover name: plain text, one line, no control characters, never an email. */
+function sanitizeCoverName(value: unknown): string {
+  if (typeof value !== "string") return "";
+  const clean = value.replace(/[\u0000-\u001f\u007f]/g, " ").replace(/\s+/g, " ").trim().slice(0, 60);
+  return clean.includes("@") ? "" : clean;
+}
 export const dynamic = "force-dynamic";
 
 const CHECKOUT_LIMIT = 20;
@@ -82,6 +89,7 @@ export async function POST(
 
   let formBirthdate = "";
   let formQuestion = "";
+  let formCoverName = "";
   let requestedSource = "";
   let requestedCardLabel = "";
   let requestedCardSlug = "";
@@ -91,6 +99,7 @@ export async function POST(
       const body = (await req.json()) as Record<string, unknown>;
       formBirthdate = sanitizeBirthdateISO(body.birthdate ?? body.birthday);
       formQuestion = sanitizeQuestion(body.question);
+      formCoverName = sanitizeCoverName(body.cover_name);
       requestedSource = typeof body.source === "string" ? body.source : "";
       requestedCardLabel = typeof body.cardLabel === "string" ? body.cardLabel : "";
       requestedCardSlug = typeof body.cardSlug === "string" ? body.cardSlug : "";
@@ -106,6 +115,7 @@ export async function POST(
       const form = await req.formData();
       formBirthdate = sanitizeBirthdateISO(form.get("birthdate"));
       formQuestion = sanitizeQuestion(form.get("question"));
+      formCoverName = sanitizeCoverName(form.get("cover_name"));
       const sourceField = form.get("source");
       requestedSource = typeof sourceField === "string" ? sourceField : "";
       const labelField = form.get("cardLabel");
@@ -186,6 +196,10 @@ export async function POST(
     }
     if (isInstantReport(product) || isMembership(product)) {
       metadata.report_slug = product.reportSlug;
+    }
+    // app/report/route.ts prints this on the cover; Stripe billing name is the fallback.
+    if (isInstantReport(product) && formCoverName) {
+      metadata.cover_name = formCoverName;
     }
 
     const sharedMeta = { ...metadata, ...analyticsMetadata(analytics) };

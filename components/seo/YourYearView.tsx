@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
+import { CONSULT_SLUG } from "@/lib/blueprint-report";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { parseCard, todayISO } from "@/lib/cards";
 import {
@@ -190,7 +192,16 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
         >
           Try a different birthday
         </button>
-        <DeepDiveCta placement="your-year" birthdate={birthdate} source="birth-card-calculator" />
+        <ReportCheckoutButton slug={CONSULT_SLUG} placement="your-year" birthdate={birthdate} />
+        <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
+          Just the report, no call?{" "}
+          <ReportCheckoutButton
+            variant="link"
+            placement="your-year-report-only"
+            birthdate={birthdate}
+            className="text-brand-ink"
+          />
+        </p>
       </div>
     );
   }

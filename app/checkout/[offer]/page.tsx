@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm";
+import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
@@ -181,6 +182,7 @@ export default async function CheckoutReviewPage({
             priceLabel={product.priceLabel}
             needsBirthdate={isReport || isReading}
             needsQuestion={isReading}
+            needsCoverName={isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG}
             submitLabel={isReading ? `Continue to payment — ${product.priceLabel}` : undefined}
           />
         )}

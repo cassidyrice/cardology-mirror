@@ -25,8 +25,13 @@ type Props = {
   needsBirthdate?: boolean;
   /** One Question Reading: the question is typed here, before Stripe. */
   needsQuestion?: boolean;
+  /** Blueprint Report tiers: optional name printed on the report cover. */
+  needsCoverName?: boolean;
   submitLabel?: string;
 };
+
+/** Stripe metadata is the only place this travels; the report route reads it back. */
+const COVER_NAME_MAX_CHARS = 60;
 
 export function CheckoutContinueForm({
   slug,
@@ -34,6 +39,7 @@ export function CheckoutContinueForm({
   birthdate,
   needsBirthdate = false,
   needsQuestion = false,
+  needsCoverName = false,
   submitLabel,
 }: Props) {
   const [pending, setPending] = useState(false);
@@ -129,6 +135,22 @@ export function CheckoutContinueForm({
         </label>
       ) : storedBirthdate ? (
         <input type="hidden" name="birthdate" value={storedBirthdate} />
+      ) : null}
+      {needsCoverName ? (
+        <label className="mb-4 block text-sm text-brand-ink">
+          <span className="font-medium">Name on the cover (optional)</span>
+          <input
+            type="text"
+            name="cover_name"
+            maxLength={COVER_NAME_MAX_CHARS}
+            autoComplete="name"
+            placeholder="As you want it printed"
+            className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
+          />
+          <span className="mt-1 block text-xs leading-relaxed text-brand-ink-soft">
+            Printed on page one. Leave blank to use the name on your card.
+          </span>
+        </label>
       ) : null}
       {needsQuestion ? (
         <label className="mb-4 block text-sm text-brand-ink">
