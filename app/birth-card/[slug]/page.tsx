@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { ShadowLayer, ShadowPrompts } from "@/components/seo/ShadowLayer";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
@@ -203,7 +204,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <h2 className="mt-2 font-serif text-2xl text-bone">Ask your question as the {card.label} — $13</h2>
         <p className="mt-2 text-sm text-mist">
           One decision, read from your {card.label} birth card, this year&rsquo;s
-          cards, and the card you owe. Written for you within 2 business days.
+          cards, and the card you owe. Usually ready in {ONE_QUESTION_TURNAROUND}.
         </p>
         <ul className="mb-4 mt-3 space-y-1 text-sm text-mist">
           <li>✓ How the {card.label} tends to handle your kind of question, and where it slips</li>
@@ -214,7 +215,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </ul>
         <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
         <p className="mt-3 text-xs leading-relaxed text-mist">
-          $13 one time · written within 2 business days · no subscription
+          $13 one time · usually ready in {ONE_QUESTION_TURNAROUND} · no subscription
         </p>
       </div>
 

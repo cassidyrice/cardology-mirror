@@ -5,7 +5,10 @@ import Link from "next/link";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
-const NAV_LINKS = [{ label: "Explore", href: "/explore" }] as const;
+const NAV_LINKS = [
+  { label: "Explore", href: "/explore" },
+  { label: "YouTube", href: "https://www.youtube.com/@cardblueprints" },
+] as const;
 
 export function SiteHeader() {
   return (

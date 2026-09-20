@@ -9,6 +9,7 @@ import {
   DEEP_DIVE_CALCULATOR_FORM_HREF,
   DEEP_DIVE_PRICE_LABEL,
   DEEP_DIVE_PRODUCT_NAME,
+  ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
@@ -44,7 +45,7 @@ const faqs = [
   },
   {
     q: "What is the One Question Reading?",
-    a: "The free pages name your birth card and its pattern. The One Question Reading ($13) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, written for you and emailed within 2 business days. One payment, no renewal.",
+    a: `The free pages name your birth card and its pattern. The One Question Reading ($13) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, usually ready in ${ONE_QUESTION_TURNAROUND}. One payment, no renewal.`,
   },
 ];
 
@@ -145,7 +146,7 @@ export default function BirthCardIndex() {
           {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
         </Link>{" "}
         reads one decision from it — your card, this year&rsquo;s cards, and the card
-        you owe, written for you within 2 business days. One payment, no renewal.
+        you owe, usually ready in {ONE_QUESTION_TURNAROUND}. One payment, no renewal.
       </p>
       <p className="mb-4 text-xs text-faint">
         By{" "}
