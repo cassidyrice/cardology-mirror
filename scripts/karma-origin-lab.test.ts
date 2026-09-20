@@ -8,8 +8,9 @@ const calculator = readFileSync(
   "utf8",
 );
 
-test("birth-card calculator result is card + Deep Dive, not karma lab or Life Path", () => {
-  expect(calculator).toContain("<DeepDiveCta");
+test("birth-card calculator result is card + Blueprint Report, not karma lab or Life Path", () => {
+  expect(calculator).toContain("<ReportCheckoutButton");
+  expect(calculator).toContain("slug={CONSULT_SLUG}");
   expect(calculator).toContain('placement="birth-card-calculator-result"');
   expect(calculator).toContain("birthdate={date || reveal.birthdate}");
   expect(calculator).not.toContain("LifePathBoardSolo");
