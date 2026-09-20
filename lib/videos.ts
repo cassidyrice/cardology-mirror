@@ -173,6 +173,14 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     description:
       "A Cardology shadow reading for the Two of Spades, focused on partnership, skepticism, work, and shared pressure.",
   },
+  {
+    title: "The Shadow of the 3♠ - The Sorrowful Truth",
+    card: "3♠",
+    url: "https://youtu.be/TASV4HUtzPw",
+    uploadDate: "2026-06-01T22:11:42-07:00",
+    description:
+      "A Cardology shadow reading for the Three of Spades. Includes time-specific examples; the written card meaning provides lasting context.",
+  },
 ];
 
 export function youtubeId(url: string): string {
@@ -210,3 +218,22 @@ export function videosForCard(cardSlugOrCode: string): CardologyVideo[] {
   if (!slug) return [];
   return CARDOLOGY_VIDEOS.filter((v) => videoCardSlug(v) === slug);
 }
+
+// Birthday reveals stay separate from the full shadow-reading catalog.
+export const BIRTHDAY_REVEAL_VIDEOS: Record<
+  string,
+  { title: string; url: string; description: string }
+> = {
+  "9-of-hearts": {
+    title: "August 30 birth card: Nine of Hearts",
+    url: "https://youtu.be/qjTBs9y7Q5k",
+    description:
+      "A short birthday reveal for August 30, one of the Nine of Hearts birthdays. Read the full card meaning above.",
+  },
+  "jack-of-hearts": {
+    title: "August 28 birth card: Jack of Hearts",
+    url: "https://youtu.be/TWKKzFRC36o",
+    description:
+      "A short birthday reveal for August 28, one of the Jack of Hearts birthdays. Read the full card meaning above.",
+  },
+};

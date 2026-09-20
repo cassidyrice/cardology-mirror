@@ -9,6 +9,7 @@ import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
 import { SITE_NAME, SITE_URL, VIDEO_PATH } from "@/lib/site";
 import {
+  BIRTHDAY_REVEAL_VIDEOS,
   videosForCard,
   youtubeEmbed,
   youtubeId,
@@ -132,6 +133,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
   const faqs = cardFaqs(card, dates);
   const angles = interpretiveAngles(card);
   const videos = videosForCard(card.slug);
+  const birthdayVideo = BIRTHDAY_REVEAL_VIDEOS[card.slug];
   const famous = famousForCard(card.code);
   const readingNotes = readingNotesFor(card.slug);
   const priorReadingText = [
@@ -480,6 +482,16 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
               Browse all Cardology videos →
             </Link>
           </p>
+        </Section>
+      ) : birthdayVideo ? (
+        <Section title={`Birthday reveal: ${card.label}`}>
+          <p>{birthdayVideo.description}</p>
+          <div className="mt-4">
+            <VideoEmbed videoId={youtubeId(birthdayVideo.url)} title={birthdayVideo.title} />
+          </div>
+          <a href={birthdayVideo.url} className="mt-3 inline-block text-gold underline underline-offset-4">
+            Watch {birthdayVideo.title} on YouTube →
+          </a>
         </Section>
       ) : (
         <Section title="Related videos">

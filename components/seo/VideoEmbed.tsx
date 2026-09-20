@@ -50,7 +50,7 @@ export function VideoEmbed({
       />
       <span className="absolute inset-0 flex items-center justify-center">
         <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-black/70 transition group-hover:bg-black/85">
-          <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-current text-bone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-current text-white" aria-hidden="true">
             <path d="M8 5v14l11-7z" />
           </svg>
         </span>
