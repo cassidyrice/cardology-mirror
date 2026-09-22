@@ -11,7 +11,7 @@ Read `~/cardblueprints-ops/STATE.md` first. It says what is live and what is ope
 - Secrets live in `.env.local` and Cloudflare project secrets. Never print them, never commit them. **Never edit the Pages project's environment variables in the Cloudflare dashboard** (2026-09-04: one dashboard save blanked every secret value and took checkout down). Add or change a secret only with `npx wrangler pages secret put NAME --project-name cardology-mirror`, one at a time, then redeploy.
 
 ## Before you say "done"
-1. `bun run test` passes (known pre-existing failure: `scripts/card-meaning-equity.test.ts` stale Semrush assertion).
+1. `bun run test` passes.
 2. If you touched a page: `bun run test:seo:browser` or the Playwright probe in `.claude/commands/polish.md`.
 3. If you touched checkout: `/checkout-check`.
 4. Commit with a message that says what changed for the visitor.
