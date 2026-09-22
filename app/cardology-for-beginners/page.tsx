@@ -4,7 +4,12 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
+import {
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 import {
@@ -15,8 +20,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION =
-  "Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and when a written Blueprint helps.";
+const DESCRIPTION = `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -69,29 +73,29 @@ const steps = [
   },
   {
     n: "6",
-    title: "Deepen only if it earns it",
-    body: `If the free tools keep matching real life, the One Question Reading ($13) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within ${ONE_QUESTION_TURNAROUND}.`,
-    href: "/products/one-question-reading",
-    label: "One Question Reading",
+    title: "Ask one question only if it earns it",
+    body: `If the free tools keep matching real life, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. A mirror, not a forecast. Written for you within ${ONE_QUESTION_TURNAROUND}.`,
+    href: DEEP_DIVE_PRODUCT_PATH,
+    label: `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL}`,
   },
 ];
 
 const faqs = [
   {
     q: "What do I need to start Cardology as a beginner?",
-    a: "A birthday and about ten minutes. You do not need a special deck to calculate a birth card — the free calculator does the math. A standard 52-card deck helps later if you want to practice spreads.",
+    a: "A birthday. You do not need a special deck to calculate a birth card; the free calculator does the math. After that, read the card meaning, then the ruling card, and test the language against a real week.",
   },
   {
     q: "Is Cardology hard to learn?",
-    a: "The entry point is simple: one birthday → one card. Depth comes from suits, ranks, ruling cards, timing, and relationships. Start with your card, then add one layer at a time.",
+    a: "The entry point is simple: one birthday, one card. The cards are coordinates, pattern language, not fortune-telling. Depth comes from suits, ranks, ruling cards, timing, and relationships. Start with your card, then add one layer at a time.",
   },
   {
     q: "Should beginners start with tarot or Cardology?",
-    a: "If you want a fixed birthday significator from playing cards, start with Cardology. If you want shuffled Major Arcana narratives, start with tarot. They are different tools; this site teaches the playing-card system.",
+    a: "Cardology uses a 52-card playing deck and locks your birth card to your birthday with fixed math. Tarot uses a 78-card deck and usually starts with a shuffle. If you want the fixed birthday card, start here. They are different tools.",
   },
   {
     q: "What should I do after I know my birth card?",
-    a: "Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. Then decide whether a written Blueprint is worth it.",
+    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one decision is still circling, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) reads it from your birth card, this year's Long Range and Pluto cards, and the card you owe. It is a mirror, not a forecast, written within ${ONE_QUESTION_TURNAROUND}.`,
   },
 ];
 
@@ -132,15 +136,28 @@ export default function CardologyForBeginnersPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology for Beginners</h1>
-      <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Start Cardology by finding the playing card locked to your birthday, reading
           suit and rank in plain language, then testing the pattern against real life.
-          Use free tools first; buy a written Blueprint only if the system keeps earning
-          your attention.
+          The cards are coordinates: pattern language, not fortune-telling. Find your
+          card free before anything paid.
         </p>
       </div>
+      <p className="mb-3">
+        <Link href="/birth-card-calculator" className="accent-button inline-block">
+          Find your birth card free →
+        </Link>
+      </p>
+      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
+        If that card keeps matching real life, the{" "}
+        <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-oxblood underline underline-offset-4">
+          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
+        </Link>{" "}
+        reads one decision from your birth card, this year&apos;s Long Range and Pluto
+        cards, and the card you owe. A mirror, not a forecast. Written within {ONE_QUESTION_TURNAROUND}.
+      </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
@@ -232,15 +249,16 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The One Question Reading is a one-time $13 purchase: one question, read from
-          your birth card, this year's Long Range and Pluto cards, and the card you owe.
-          About 600 words, emailed within {ONE_QUESTION_TURNAROUND}. No subscription.
+          The {DEEP_DIVE_PRODUCT_NAME} is a one-time {DEEP_DIVE_PRICE_LABEL} purchase: one
+          question, read from your birth card, this year&apos;s Long Range and Pluto cards,
+          and the card you owe. About 600 words, emailed within {ONE_QUESTION_TURNAROUND}.
+          A mirror, not a forecast. No subscription.
         </p>
         <Link
-          href="/products/one-question-reading"
+          href={DEEP_DIVE_PRODUCT_PATH}
           className="accent-button mt-4"
         >
-          Ask one question &mdash; $13
+          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
         </Link>
       </div>
 
@@ -254,6 +272,13 @@ export default function CardologyForBeginnersPage() {
             </div>
           ))}
         </div>
+        <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
+          Price, turnaround, and what the reading will not do are also on the{" "}
+          <Link href="/faq" className="text-brand-oxblood underline underline-offset-4">
+            FAQ
+          </Link>
+          .
+        </p>
       </section>
 
       <FreeCourseCta source="beginners" className="mt-10" />
