@@ -126,11 +126,12 @@ export default function BirthCardIndex() {
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
-          playing deck — not tarot and not a paper birthday card. Browse all 52 meanings
-          below or use the free calculator to find yours. Each card also has a pip-only
-          tattoo reference — the exact French-deck layout, on skin.{" "}
-          <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
-            All 52 pip tattoos
+          playing deck — not tarot and not a paper birthday card. Each interpretation
+          combines a suit — Hearts, Clubs, Diamonds or Spades — with a rank from
+          Ace to King. Browse all 52 meanings below, or use the free calculator if
+          you do not know your card. December 31 is the Joker exception and has its own{" "}
+          <Link href="/birth-card/joker" className="text-brand-oxblood underline underline-offset-4">
+            Joker birth card guide
           </Link>
           .
         </p>
@@ -163,9 +164,8 @@ export default function BirthCardIndex() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
-        Every birthday maps to exactly one of the 52 playing cards — your{" "}
-        <strong>birth card</strong>. No quiz, no choosing: a fixed vocabulary for how you
-        operate, whether you&rsquo;ve noticed it or not. Pick a card below, or{" "}
+        Your month and day determine your <strong>birth card</strong>; the
+        interpretation is a starting point for reflection. Pick a card below, or{" "}
         <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
           calculate yours
         </Link>
@@ -232,6 +232,15 @@ export default function BirthCardIndex() {
 
       <DeckMatrix />
 
+      <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="read-card-meaning">
+        <h2 id="read-card-meaning" className="font-serif text-xl text-brand-ink">How to read a card meaning</h2>
+        <ol className="prose-reading mt-4 list-decimal space-y-2 pl-5 text-brand-ink-soft">
+          <li>Start with the suit: Hearts for emotion, Clubs for mind and communication, Diamonds for values, and Spades for work and transformation.</li>
+          <li>Read the rank alongside the suit. For example, an Ace introduces a beginning in that area; a King asks how you lead in it.</li>
+          <li>Compare the interpretation with one recent experience. Keep the question that helps you understand your choices, and set aside what does not fit.</li>
+        </ol>
+      </section>
+
       <div className="space-y-12">
         {groups.map((g) => (
           <section key={g.suit} id={g.suit} className="scroll-mt-10">
@@ -284,6 +293,13 @@ export default function BirthCardIndex() {
           ))}
         </div>
       </section>
+
+      <p className="prose-reading mt-8 text-sm text-brand-ink-soft">
+        Exploring a card as a tattoo?{" "}
+        <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
+          Browse the playing-card tattoo references
+        </Link>.
+      </p>
 
       <OfferCta className="mt-12" />
 
