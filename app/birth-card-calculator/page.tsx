@@ -277,28 +277,28 @@ export default function CalculatorPage() {
           <Link href="/birth-card/joker" className="rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm text-brand-ink ">Joker</Link>
         </nav>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
-          A few dates, and the meaning page each one opens: February 17, the{" "}
-          <Link href="/birth-card/8-of-diamonds" className="text-brand-oxblood underline underline-offset-4">
-            Eight of Diamonds meaning
-          </Link>
-          ; January 9, the{" "}
-          <Link href="/birth-card/5-of-spades" className="text-brand-oxblood underline underline-offset-4">
-            Five of Spades meaning
-          </Link>
-          ; March 30, the{" "}
-          <Link href="/birth-card/6-of-clubs" className="text-brand-oxblood underline underline-offset-4">
-            Six of Clubs meaning
-          </Link>
-          ; January 4, the{" "}
-          <Link href="/birth-card/10-of-spades" className="text-brand-oxblood underline underline-offset-4">
-            Ten of Spades meaning
-          </Link>
-          . Every card is indexed in the{" "}
+          The chart cell is the card. These dates open that card&rsquo;s meaning page.
+          Every card is indexed in the{" "}
           <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
             52 birth card meanings
           </Link>
           .
         </p>
+        <ul className="prose-reading mt-3 space-y-1.5 text-sm text-brand-ink-soft">
+          <li>February 17 — <Link href="/birth-card/8-of-diamonds" className="text-brand-oxblood underline underline-offset-4">Eight of Diamonds meaning</Link></li>
+          <li>January 9 — <Link href="/birth-card/5-of-spades" className="text-brand-oxblood underline underline-offset-4">Five of Spades meaning</Link></li>
+          <li>March 30 — <Link href="/birth-card/6-of-clubs" className="text-brand-oxblood underline underline-offset-4">Six of Clubs meaning</Link></li>
+          <li>January 4 — <Link href="/birth-card/10-of-spades" className="text-brand-oxblood underline underline-offset-4">Ten of Spades meaning</Link></li>
+          <li>October 30 — <Link href="/birth-card/5-of-hearts" className="text-brand-oxblood underline underline-offset-4">Five of Hearts meaning</Link></li>
+          <li>January 14 — <Link href="/birth-card/king-of-diamonds" className="text-brand-oxblood underline underline-offset-4">King of Diamonds meaning</Link></li>
+          <li>December 31 — <Link href="/birth-card/joker" className="text-brand-oxblood underline underline-offset-4">Joker birth card</Link></li>
+          <li>January 25 — <Link href="/birth-card/2-of-diamonds" className="text-brand-oxblood underline underline-offset-4">Two of Diamonds meaning</Link></li>
+          <li>May 31 — <Link href="/birth-card/ace-of-clubs" className="text-brand-oxblood underline underline-offset-4">Ace of Clubs meaning</Link></li>
+          <li>April 30 — <Link href="/birth-card/4-of-clubs" className="text-brand-oxblood underline underline-offset-4">Four of Clubs meaning</Link></li>
+          <li>July 29 — <Link href="/birth-card/queen-of-hearts" className="text-brand-oxblood underline underline-offset-4">Queen of Hearts meaning</Link></li>
+          <li>January 29 — <Link href="/birth-card/jack-of-clubs" className="text-brand-oxblood underline underline-offset-4">Jack of Clubs meaning</Link></li>
+          <li>January 31 — <Link href="/birth-card/9-of-clubs" className="text-brand-oxblood underline underline-offset-4">Nine of Clubs meaning</Link></li>
+        </ul>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
           Two birthdays are a separate lookup. The{" "}
           <Link href="/birth-card-compatibility-calculator" className="text-brand-oxblood underline underline-offset-4">
