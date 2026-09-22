@@ -94,8 +94,9 @@ describe("Homepage landing contract", () => {
     expect(reveal).not.toContain("/content-engine");
     expect(reveal).not.toContain("See 7 days free");
 
-    expect(header).toContain("/explore");
-    expect(header).toContain("Explore");
+    expect(header).toContain("PRIMARY_NAV");
+    expect(header).toContain("DEEP_DIVE_PRODUCT_PATH");
+    expect(header).not.toContain('href="/explore"');
     expect(header).not.toContain("Create content");
     expect(header).not.toContain("/content-engine");
     expect(header).not.toContain("/karma-reading");
@@ -104,7 +105,8 @@ describe("Homepage landing contract", () => {
     expect(footer).toContain("/explore");
     expect(footer).not.toContain("Content Calendar (experiment)");
     expect(footer).not.toContain("/content-engine");
-    expect(footer).toContain("One Question Reading ($13)");
+    expect(footer).toContain("ONE_QUESTION_NAV");
+    expect(footer).toContain("BIRTH_CARD_CALCULATOR_LABEL");
     expect(footer).not.toContain("Reading Day waitlist");
 
     const journey = readFileSync(

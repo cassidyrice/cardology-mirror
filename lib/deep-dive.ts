@@ -46,8 +46,8 @@ export const FIFTY_TWO_BY_SEVEN_REPORT_SLUG = "52xseven-blueprint";
 /** How long a legacy sign-in link works. */
 export const FIFTY_TWO_BY_SEVEN_ACCESS_DAYS = 365;
 export const DEEP_DIVE_CTA_LABEL = "Ask your question — $13";
-/** Short header label so the wordmark and the one action still fit at 360px. */
-export const DEEP_DIVE_HEADER_CTA_LABEL = "Ask — $13";
+/** Header and footer name for the one paid offer. Full name at every width. */
+export const DEEP_DIVE_HEADER_CTA_LABEL = `${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL})`;
 /** Links that land on the calculator form, not Stripe. Keep purchase CTAs on DEEP_DIVE_CTA_LABEL. */
 export const DEEP_DIVE_CALCULATOR_ENTRY_LABEL = "Find your card → ask one question, $13";
 export const DEEP_DIVE_CALCULATOR_FORM_HREF = "/birth-card-calculator#bd";

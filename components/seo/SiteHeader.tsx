@@ -2,15 +2,11 @@
 
 import Link from "next/link";
 
+import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
+import { PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
-
-const NAV_LINKS = [
-  { label: "Explore", href: "/explore" },
-  { label: "Help", href: "/faq" },
-  { label: "YouTube", href: "https://www.youtube.com/@cardblueprints" },
-] as const;
 
 export function SiteHeader() {
   return (
@@ -25,22 +21,23 @@ export function SiteHeader() {
           </Link>
           <nav
             aria-label="Primary"
-            className="ml-auto hidden items-center gap-4 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-ink-soft lg:flex lg:gap-6"
+            className="ml-auto hidden items-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft lg:flex lg:gap-5"
           >
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="whitespace-nowrap transition hover:text-brand-ink"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {PRIMARY_NAV.map((link) =>
+              link.href === DEEP_DIVE_PRODUCT_PATH ? (
+                <HeaderDeepDiveCta key={link.href} />
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="whitespace-nowrap transition hover:text-brand-ink"
+                >
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
-          <div className="ml-auto shrink-0 lg:ml-4">
-            <HeaderDeepDiveCta />
-          </div>
-          <details className="relative shrink-0 lg:hidden">
+          <details className="relative ml-auto shrink-0 lg:ml-0 lg:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
@@ -49,16 +46,22 @@ export function SiteHeader() {
               className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-72 max-w-[calc(100vw-2rem)] border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
             >
               <ul className="divide-y divide-brand-line text-sm text-brand-ink">
-                {NAV_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="block min-h-11 py-3"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {PRIMARY_NAV.map((link) =>
+                  link.href === DEEP_DIVE_PRODUCT_PATH ? (
+                    <li key={link.href}>
+                      <HeaderDeepDiveCta variant="menu" />
+                    </li>
+                  ) : (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="block min-h-11 py-3"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ),
+                )}
               </ul>
             </nav>
           </details>

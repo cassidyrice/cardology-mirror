@@ -13,7 +13,7 @@ import {
   DEEP_DIVE_HEADER_CTA_LABEL,
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_REVIEW_PATH,
+  DEEP_DIVE_PRODUCT_PATH,
   sanitizeDeepDiveSource,
 } from "@/lib/deep-dive";
 
@@ -25,6 +25,7 @@ export function DeepDiveCta({
   cardSlug,
   className = "",
   showFulfillment = true,
+  variant = "button",
 }: {
   placement: string;
   birthdate?: string;
@@ -34,6 +35,8 @@ export function DeepDiveCta({
   className?: string;
   /** Hide the "What $13 gets you" line when the surrounding card already itemizes it. */
   showFulfillment?: boolean;
+  /** Header row uses the quiet button. The mobile menu uses a full-width text row. */
+  variant?: "button" | "menu";
 }) {
   const [open, setOpen] = useState(false);
   const [draftDate, setDraftDate] = useState("");
@@ -50,6 +53,7 @@ export function DeepDiveCta({
   }
 
   const compact = placement === "site-header";
+  const menu = variant === "menu";
   const resolvedSource = sanitizeDeepDiveSource(source);
 
   function trackOfferClick() {
@@ -72,7 +76,9 @@ export function DeepDiveCta({
     <div
       className={
         compact
-          ? `flex flex-col items-center ${className}`
+          ? menu
+            ? className
+            : `flex flex-col items-center ${className}`
           : `flex w-full max-w-md flex-col items-center gap-3 ${className}`
       }
     >
@@ -87,12 +93,15 @@ export function DeepDiveCta({
         />
       ) : compact ? (
         <Link
-          href={DEEP_DIVE_REVIEW_PATH}
-          className="paper-button small-button shrink-0 text-center"
+          href={DEEP_DIVE_PRODUCT_PATH}
+          className={
+            menu
+              ? "block min-h-11 py-3"
+              : "paper-button small-button header-offer-link shrink-0 text-center"
+          }
           onClick={startHeaderReading}
         >
-          <span className="sm:hidden">{DEEP_DIVE_HEADER_CTA_LABEL}</span>
-          <span className="hidden sm:inline">{DEEP_DIVE_CTA_LABEL}</span>
+          {DEEP_DIVE_HEADER_CTA_LABEL}
         </Link>
       ) : open ? (
         <form

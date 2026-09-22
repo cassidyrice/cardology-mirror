@@ -6,14 +6,21 @@ import {
   SITE_NAME,
   VIDEO_PATH,
 } from "@/lib/site";
+import {
+  BIRTH_CARD_CALCULATOR_LABEL,
+  BIRTH_CARD_CALCULATOR_PATH,
+  ONE_QUESTION_NAV,
+  WHAT_IS_CARDOLOGY_LABEL,
+  WHAT_IS_CARDOLOGY_PATH,
+} from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 
 const FREE_TOOLS = [
-  { label: "Find Your Card", href: "/birth-card-calculator" },
-  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
-  { label: "Today's Card", href: "/card-of-the-day" },
-  { label: "52-Day Period Tool", href: "/52-day-period-meaning-tool" },
+  { label: BIRTH_CARD_CALCULATOR_LABEL, href: BIRTH_CARD_CALCULATOR_PATH },
   { label: "All 52 Cards", href: "/birth-card" },
+  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
+  { label: "52-Day Period Tool", href: "/52-day-period-meaning-tool" },
+  { label: "Today's Card", href: "/card-of-the-day" },
   { label: "Birthdays by Date", href: BIRTHDAY_DIRECTORY_PATH, external: true },
   { label: "All Pairings", href: COMPATIBILITY_DIRECTORY_PATH, external: true },
 ] as const;
@@ -22,7 +29,7 @@ const READ = [
   { label: "Blog", href: "/blog" },
   { label: "Videos", href: VIDEO_PATH },
   { label: "Beginners", href: "/cardology-for-beginners" },
-  { label: "What Is Cardology", href: "/what-is-cardology" },
+  { label: WHAT_IS_CARDOLOGY_LABEL, href: WHAT_IS_CARDOLOGY_PATH },
   { label: "Cardology vs Tarot", href: "/cardology-vs-tarot" },
   { label: "Karma Cards", href: "/karma-cards" },
   { label: "Spreads", href: "/playing-card-spreads" },
@@ -30,7 +37,7 @@ const READ = [
 
 const GET = [
   { label: "My purchases", href: "/my-purchases" },
-  { label: "One Question Reading ($13)", href: "/products/one-question-reading" },
+  { label: ONE_QUESTION_NAV.label, href: ONE_QUESTION_NAV.href },
   { label: "Free course", href: "/free-course" },
 ] as const;
 
