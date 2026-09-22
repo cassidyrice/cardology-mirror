@@ -16,7 +16,7 @@ function byRank(a: CardSeo, b: CardSeo): number {
 
 function MiniFace({ card }: { card: CardSeo }) {
   return (
-    <span className="relative block aspect-[2.5/3.5] overflow-hidden rounded-[4px] border border-brand-line bg-brand-ivory transition-all duration-200 group-hover:-translate-y-1 group-hover:border-gold/70 group-hover:shadow-[0_8px_18px_-10px_rgba(20,17,13,0.45)]">
+    <span className="relative block aspect-[2.5/3.5] overflow-hidden rounded-[4px] border border-brand-line bg-brand-ivory transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_8px_18px_-10px_rgba(20,17,13,0.45)]">
       <img
         src={`/share-cards/faces/${card.slug}.png`}
         alt=""

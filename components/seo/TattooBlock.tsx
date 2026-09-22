@@ -14,7 +14,7 @@ export function TattooBlock({ slug, label }: { slug: string; label: string }) {
         height={1200}
         loading="lazy"
         decoding="async"
-        className="w-full rounded-2xl border border-white/10"
+        className="w-full rounded-2xl border border-brand-line"
       />
       <figcaption className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
         {court

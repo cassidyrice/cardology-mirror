@@ -131,7 +131,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
               height={BIRTHDAY_CHART_IMAGE.height}
               alt={BIRTHDAY_CHART_IMAGE.alt}
               loading="lazy"
-              className="h-auto w-full max-w-md rounded-[3px] border border-white/10"
+              className="h-auto w-full max-w-md rounded-[3px] border border-brand-line"
             />
           </a>
           <figcaption className="mt-2 text-sm text-brand-ink-soft">

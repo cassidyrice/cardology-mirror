@@ -153,7 +153,7 @@ export default function WhatIsCardology() {
 
       <SeoHeroFan className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
-      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary id="definition">
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary id="definition">
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cardology is a birthday-to-playing-card system: your month and day map to
@@ -217,7 +217,7 @@ export default function WhatIsCardology() {
           </Link>{" "}
           (your card, this year's cards, and the card you owe, read against the one question you bring).
         </p>
-        <div className="card-surface mt-5 rounded-2xl border border-gold/25 p-5">
+        <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
           <p className="font-serif text-base text-brand-ink">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             The One Question Reading is $13 once: one question, read from your card and
@@ -232,7 +232,7 @@ export default function WhatIsCardology() {
         </div>
       </section>
 
-      <nav aria-label="On this page" className="mb-8 mt-10 rounded-2xl border border-white/10 p-4">
+      <nav aria-label="On this page" className="mb-8 mt-10 rounded-2xl border border-brand-line p-4">
         <p className="eyebrow mb-3 !text-brand-bronze">On this page</p>
         <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-brand-ink-soft">
           {toc.map((item) => (
@@ -412,7 +412,7 @@ export default function WhatIsCardology() {
           </Link>
           .
         </p>
-        <ol className="mt-4 space-y-3 border-l border-white/15 pl-4">
+        <ol className="mt-4 space-y-3 border-l border-brand-line pl-4">
           {CARDOLOGY_TIMELINE.map((t) => (
             <li key={t.year + t.sourceLabel} className="relative pl-2">
               <span className="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
@@ -513,7 +513,7 @@ export default function WhatIsCardology() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Cardology FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
@@ -529,16 +529,16 @@ export default function WhatIsCardology() {
           <Link href="/products/one-question-reading" className="ink-button">
             $13 One Question Reading →
           </Link>
-          <Link href="/birth-card-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-brand-oxblood">
+          <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →
           </Link>
-          <Link href="/cardology-for-beginners" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-brand-oxblood">
+          <Link href="/cardology-for-beginners" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Beginners path →
           </Link>
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-brand-oxblood">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Birthdays by date →
           </a>
-          <a href={COMPATIBILITY_DIRECTORY_PATH} className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-brand-oxblood">
+          <a href={COMPATIBILITY_DIRECTORY_PATH} className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             All pairings →
           </a>
         </div>

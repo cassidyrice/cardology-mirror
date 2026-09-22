@@ -58,7 +58,7 @@ export default function CartomancyVsTarot() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cartomancy vs Tarot</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cartomancy is reading meaning from cards; tarot is one branch of it
@@ -174,39 +174,39 @@ export default function CartomancyVsTarot() {
           <table className="w-full min-w-[560px] border-collapse text-left text-sm text-brand-ink-soft">
             <caption className="sr-only">Cartomancy playing cards versus tarot</caption>
             <thead>
-              <tr className="border-b border-white/15">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-serif text-brand-ink" scope="col">Dimension</th>
                 <th className="py-2 pr-4 font-serif text-brand-ink" scope="col">Tarot</th>
                 <th className="py-2 font-serif text-brand-ink" scope="col">Cardology (playing cards)</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Deck</th>
                 <td className="py-2 pr-4">78 cards</td>
                 <td className="py-2">52 cards + Joker</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Suits</th>
                 <td className="py-2 pr-4">Cups, Wands, Pentacles, Swords</td>
                 <td className="py-2">Hearts, Clubs, Diamonds, Spades</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Major Arcana</th>
                 <td className="py-2 pr-4">22 trumps</td>
                 <td className="py-2">None — calendar structure &amp; timing math instead</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Court cards</th>
                 <td className="py-2 pr-4">4 per suit</td>
                 <td className="py-2">3 per suit</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">How a card is chosen</th>
                 <td className="py-2 pr-4">Shuffle and draw</td>
                 <td className="py-2">Fixed formula on the birthday</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Same question twice</th>
                 <td className="py-2 pr-4">Different spread</td>
                 <td className="py-2">Same card, every time</td>

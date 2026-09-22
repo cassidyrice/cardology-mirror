@@ -109,7 +109,7 @@ export default function HowToReadPlayingCards() {
           Methodology
         </Link>
       </p>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A playing card meaning is suit plus rank: the suit is the arena of life,

@@ -97,7 +97,7 @@ function CardCell({ code, highlight }: { code: string; highlight?: boolean }) {
   const suit = parseCard(code)?.suit;
   return (
     <td
-      className={`border border-white/10 px-1 py-1.5 text-center font-mono text-[0.72rem] sm:text-sm ${
+      className={`border border-brand-line px-1 py-1.5 text-center font-mono text-[0.72rem] sm:text-sm ${
         highlight ? "bg-brand-oxblood font-bold" : ""
       }`}
       style={{ color: highlight ? "#fff" : suit ? SUIT_COLOR_PAPER[suit] : undefined }}
@@ -200,7 +200,7 @@ function AllYearlySpreads({ highlight }: { highlight: string }) {
           if (!spread) return null;
           const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
           return (
-            <details key={n} className="rounded-xl border border-white/10 bg-brand-ivory/70">
+            <details key={n} className="rounded-xl border border-brand-line bg-brand-ivory/70">
               <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
                 Spread {n}
                 <span className="text-brand-ink-soft"> \u2014 the board at age {n}{alias}</span>
@@ -274,7 +274,7 @@ export default function PlayingCardSpreads() {
       <SeoHeroFan className="mb-5" />
       <p className="eyebrow mb-3 !text-brand-bronze">The playing board · no shuffle</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
-      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Think of a board game. The deck has two fixed boards — the{" "}
@@ -300,7 +300,7 @@ export default function PlayingCardSpreads() {
 
       <nav className="mb-8 flex flex-wrap gap-2" aria-label="The three boards">
         {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
+          <Link key={s.slug} href={s.path} className="rounded-full border border-brand-line px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
             {s.name}
           </Link>
         ))}
@@ -308,7 +308,7 @@ export default function PlayingCardSpreads() {
 
       <div className="grid gap-4 sm:grid-cols-3">
         {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4 transition hover:border-gold/40">
+          <Link key={s.slug} href={s.path} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 transition ">
             <p className="font-serif text-lg text-brand-ink">{s.name}</p>
             <p className="mt-1 text-xs text-brand-ink-soft">{s.positions}</p>
             <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{s.oneLine}</p>
@@ -404,25 +404,25 @@ export default function PlayingCardSpreads() {
           <table className="w-full min-w-[24rem] border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Period</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Card</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">The filter</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Period</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Card</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">The filter</th>
               </tr>
             </thead>
             <tbody>
               {ex.yearPeriods.map((p) => (
                 <tr key={p.planet} className={p.active ? "bg-brand-ivory/70" : ""}>
-                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
+                  <td className="border-b border-brand-line px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{p.glyph}</span>
                     {p.planet}
                     {p.active && (
                       <span className="ml-2 rounded bg-brand-oxblood px-1.5 py-0.5 text-[0.65rem] font-bold uppercase tracking-wide text-white">now</span>
                     )}
                   </td>
-                  <td className="border-b border-white/10 px-2 py-2 font-mono" style={{ color: SUIT_COLOR_PAPER[parseCard(p.card)?.suit ?? "spades"] }}>
+                  <td className="border-b border-brand-line px-2 py-2 font-mono" style={{ color: SUIT_COLOR_PAPER[parseCard(p.card)?.suit ?? "spades"] }}>
                     {p.card}
                   </td>
-                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{p.filter}</td>
+                  <td className="border-b border-brand-line px-2 py-2 text-brand-ink-soft">{p.filter}</td>
                 </tr>
               ))}
             </tbody>
@@ -499,20 +499,20 @@ export default function PlayingCardSpreads() {
           <table className="w-full min-w-[24rem] border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Sign</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Dates</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Ruling planet</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Sign</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Dates</th>
+                <th className="border-b-2 border-brand-line px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Ruling planet</th>
               </tr>
             </thead>
             <tbody>
               {ZODIAC_TABLE.map((z) => (
                 <tr key={z.sign} className={z.sign === ex.zodiac ? "bg-brand-ivory/70" : ""}>
-                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
+                  <td className="border-b border-brand-line px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{z.glyph}</span>
                     {z.sign}
                   </td>
-                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{z.dates}</td>
-                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{z.planet}</td>
+                  <td className="border-b border-brand-line px-2 py-2 text-brand-ink-soft">{z.dates}</td>
+                  <td className="border-b border-brand-line px-2 py-2 text-brand-ink-soft">{z.planet}</td>
                 </tr>
               ))}
             </tbody>
@@ -542,7 +542,7 @@ export default function PlayingCardSpreads() {
         </p>
         <div className="mt-5 space-y-3">
           {PLANET_FILTERS.map((p) => (
-            <div key={p.planet} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={p.planet} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <p className="font-serif text-lg text-brand-ink">
                 <span aria-hidden="true" className="mr-2 text-brand-bronze">{p.glyph}</span>
                 {p.planet}
@@ -565,7 +565,7 @@ export default function PlayingCardSpreads() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Spreads FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

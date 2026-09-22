@@ -119,8 +119,8 @@ export default function BondsPage() {
             {!ready ? null : (
               <div className="pt-6 text-center">
                 <div className="mx-auto mb-5 flex items-center justify-center gap-3 opacity-60">
-                  <div className="h-20 w-14 rotate-[-8deg] rounded-lg border border-white/10 bg-gradient-to-br from-haze to-cosmos" />
-                  <div className="h-20 w-14 rotate-[8deg] rounded-lg border border-white/10 bg-gradient-to-br from-haze to-cosmos" />
+                  <div className="h-20 w-14 rotate-[-8deg] rounded-lg border border-brand-line bg-gradient-to-br from-haze to-cosmos" />
+                  <div className="h-20 w-14 rotate-[8deg] rounded-lg border border-brand-line bg-gradient-to-br from-haze to-cosmos" />
                 </div>
                 <p className="prose-reading text-sm text-brand-ink-soft">
                   Enter two birthdates to lay the cards side by side. Cardology
@@ -175,12 +175,14 @@ export default function BondsPage() {
                 subtitle={effectiveAName || "You"}
                 title={readingA.data!.archetype.description.title}
                 className="animate-drift"
+                frameBorder="border-brand-line"
               />
               <PlayingCard
                 code={readingB.data!.archetype.birth_card}
                 size="lg"
                 subtitle={bName || "Them"}
                 title={readingB.data!.archetype.description.title}
+                frameBorder="border-brand-line"
               />
             </div>
 
@@ -229,7 +231,7 @@ export default function BondsPage() {
             <button
               type="button"
               onClick={reset}
-              className="w-full rounded-full border border-white/10 py-3 text-center font-serif text-sm text-brand-ink-soft transition active:scale-[0.99]"
+              className="w-full rounded-full border border-brand-line py-3 text-center font-serif text-sm text-brand-ink-soft transition active:scale-[0.99]"
             >
               Compare a different pair
             </button>
@@ -263,13 +265,13 @@ function PersonInputs({
         value={name}
         onChange={(e) => onName(e.target.value)}
         placeholder={namePlaceholder}
-        className="w-full rounded-lg border border-white/10 bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink placeholder:text-brand-ink-soft focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-brand-line bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink placeholder:text-brand-ink-soft focus:outline-none"
       />
       <input
         type="date"
         value={birthdate}
         onChange={(e) => onBirth(e.target.value)}
-        className="w-full rounded-lg border border-white/10 bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-brand-line bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink focus:outline-none"
       />
     </div>
   );

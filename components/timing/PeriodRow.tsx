@@ -46,8 +46,8 @@ export function PeriodRow({
       <span
         className={`absolute left-0 top-[18px] h-[15px] w-[15px] rounded-full border ${
           isCurrent
-            ? "border-gold bg-gold shadow-[0_0_14px_2px_rgba(217,178,106,0.7)]"
-            : "border-white/25 bg-brand-ivory/70"
+            ? "border-brand-line bg-gold shadow-[0_0_14px_2px_rgba(217,178,106,0.7)]"
+            : "border-brand-line bg-brand-ivory/70"
         }`}
         aria-hidden
       />
@@ -58,8 +58,8 @@ export function PeriodRow({
         whileTap={{ scale: 0.99 }}
         className={`w-full rounded-2xl border px-4 py-3 text-left transition-colors ${
           isCurrent
-            ? "border-gold/40 bg-gold/5"
-            : "border-white/[0.06] bg-brand-ivory/70 hover:border-white/15"
+            ? "border-brand-line bg-gold/5"
+            : "border-brand-line bg-brand-ivory/70"
         }`}
         aria-expanded={expanded}
       >
@@ -82,10 +82,10 @@ export function PeriodRow({
 
           <div className="flex shrink-0 items-end gap-2">
             <div className="text-center">
-              <PlayingCard code={bcDetail.card} size="sm" />
+              <PlayingCard code={bcDetail.card} size="sm" frameBorder="border-brand-line" />
             </div>
             <div className="text-center">
-              <PlayingCard code={prcDetail.card} size="sm" />
+              <PlayingCard code={prcDetail.card} size="sm" frameBorder="border-brand-line" />
             </div>
           </div>
 

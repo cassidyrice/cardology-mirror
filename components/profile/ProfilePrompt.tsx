@@ -27,7 +27,7 @@ export function ProfilePrompt({
         </Link>
         <Link
           href="/birth-card-calculator"
-          className="rounded-full border border-white/15 px-6 py-3 text-sm text-brand-ink-soft transition hover:border-gold hover:text-brand-ink"
+          className="rounded-full border border-brand-line px-6 py-3 text-sm text-brand-ink-soft transition hover:text-brand-ink"
         >
           Find your birth card first
         </Link>

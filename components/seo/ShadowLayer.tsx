@@ -11,7 +11,7 @@ export function ShadowLayer({ code }: { code: string }) {
   if (!s) return null;
   return (
     <section
-      className="mt-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5"
+      className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5"
       aria-labelledby="shadow-archetype"
       data-shadow-layer={s.code}
     >
@@ -19,14 +19,14 @@ export function ShadowLayer({ code }: { code: string }) {
       <h2 id="shadow-archetype" className="mt-2 font-serif text-2xl text-brand-ink">
         {s.label}: {s.archetype}
       </h2>
-      <blockquote className="mt-4 border-l-2 border-gold/60 pl-4 font-serif text-xl leading-snug text-brand-ink">
+      <blockquote className="mt-4 border-l-2 border-brand-line pl-4 font-serif text-xl leading-snug text-brand-ink">
         &ldquo;{s.worldview}&rdquo;
       </blockquote>
       <p className="prose-reading mt-4 text-brand-ink-soft">{s.coreShadow}</p>
       {s.keywords && s.keywords.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-2" aria-label="Shadow keywords">
           {s.keywords.map((k) => (
-            <li key={k} className="rounded-full border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-brand-ink-soft">
+            <li key={k} className="rounded-full border border-brand-line px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-brand-ink-soft">
               {k}
             </li>
           ))}
@@ -59,7 +59,7 @@ export function ShadowPrompts({ code }: { code: string }) {
       </p>
       <ol className="space-y-3">
         {s.prompts.map((p, i) => (
-          <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+          <li key={i} className="flex gap-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
             <span className="font-serif text-2xl leading-none text-brand-bronze">{String(i + 1).padStart(2, "0")}</span>
             <p className="prose-reading text-brand-ink-soft">{p}</p>
           </li>

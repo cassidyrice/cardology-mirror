@@ -34,7 +34,7 @@ export function PlayingCardsBirthdayChart() {
                 <a
                   key={d.slug}
                   href={`/born-on/${d.slug}`}
-                  className="rounded-xl border border-white/10 bg-brand-ivory/70 px-2 py-2 text-center transition hover:border-gold/40"
+                  className="rounded-xl border border-brand-line bg-brand-ivory/70 px-2 py-2 text-center transition"
                 >
                   <span className="block text-[0.7rem] uppercase tracking-[0.12em] text-brand-ink-soft">
                     {d.day}

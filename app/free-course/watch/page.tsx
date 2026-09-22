@@ -33,7 +33,7 @@ export default async function FreeCourseWatchPage({
 
       <div className="space-y-10">
         {FREE_COURSE_MODULES.map((module) => (
-          <section key={module.number} className="card-surface overflow-hidden rounded-3xl border border-white/10">
+          <section key={module.number} className="card-surface overflow-hidden rounded-3xl border !border-brand-line">
             <div className="p-5 sm:p-7">
               <p className="eyebrow !text-brand-bronze">Module {module.number} · {module.duration}</p>
               <h2 className="mt-2 font-serif text-2xl text-brand-ink">{module.title}</h2>
@@ -47,7 +47,7 @@ export default async function FreeCourseWatchPage({
         ))}
       </div>
 
-      <section className="mt-10 rounded-2xl border border-gold/20 bg-gold/[0.06] p-6">
+      <section className="mt-10 rounded-2xl border border-brand-line bg-gold/[0.06] p-6">
         <h2 className="font-serif text-xl text-brand-ink">Ready to apply it?</h2>
         <p className="mt-2 text-sm text-brand-ink-soft">Use the calculator to find your card, then open its full meaning page and identify which expression state is most active right now.</p>
         <Link href="/birth-card-calculator" className="ink-button mt-4">Open the birth card calculator →</Link>

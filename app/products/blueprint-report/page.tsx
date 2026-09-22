@@ -146,7 +146,7 @@ export default function BlueprintReportPage() {
                 width={850}
                 height={1054}
                 loading="eager"
-                className="w-full rounded-[3px] border border-white/10 bg-[#eef3f8]"
+                className="w-full rounded-[3px] border border-brand-line bg-[#eef3f8]"
               />
               <figcaption className="mt-2 text-xs uppercase tracking-[0.16em] text-brand-ink-soft">
                 Sample page {p.n} · {p.t}
@@ -159,7 +159,7 @@ export default function BlueprintReportPage() {
       <p className="mb-6 text-sm text-brand-ink-soft">The sample has {BLUEPRINT_REPORT_PAGE_COUNT} pages. Your page count varies with your ruling cards and the boards for your year.</p>
 
       <section aria-label="Choose a tier" className="mb-10 grid gap-4 md:grid-cols-[1.15fr_1fr]">
-        <article className="rounded-[3px] border-2 border-gold p-5">
+        <article className="rounded-[3px] border-2 border-brand-line p-5">
           <p className="text-xs uppercase tracking-[0.16em] text-brand-bronze">{consult!.badge}</p>
           <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             Report + consultation · {consult!.priceLabel}
@@ -174,7 +174,7 @@ export default function BlueprintReportPage() {
             <ReportCheckoutButton slug={CONSULT_SLUG} placement="product-page-consult" />
           </div>
         </article>
-        <article className="rounded-[3px] border border-white/10 p-5">
+        <article className="rounded-[3px] border border-brand-line p-5">
           <p className="text-xs uppercase tracking-[0.16em] text-brand-ink-soft">Report only</p>
           <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             The report · {report!.priceLabel}
@@ -222,7 +222,7 @@ export default function BlueprintReportPage() {
         <h2 className="eyebrow mb-2 !text-brand-bronze">Six of the pages</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {samplePages.map((p) => (
-            <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
+            <div key={p.n} className="rounded-[3px] border border-brand-line p-4">
               <p className="text-xs uppercase tracking-[0.16em] text-brand-ink-soft">Sample page {p.n}</p>
               <p className="mt-1 font-serif text-lg text-brand-ink">{p.t}</p>
               <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{p.d}</p>
@@ -254,7 +254,7 @@ export default function BlueprintReportPage() {
         </dl>
       </section>
 
-      <section className="mt-12 border-t border-white/10 pt-8">
+      <section className="mt-12 border-t border-brand-line pt-8">
         <div className="flex max-w-md flex-col gap-3">
           <ReportCheckoutButton slug={CONSULT_SLUG} placement="product-page-bottom-consult" />
           <p className="text-sm text-brand-ink-soft">

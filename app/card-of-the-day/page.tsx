@@ -182,7 +182,7 @@ export default function CardOfTheDayPage() {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
         <div>
           <span className="eyebrow text-brand-ink-soft">{label}</span>
@@ -197,7 +197,7 @@ export default function CardOfTheDayPage() {
           )}
         </div>
       </div>
-      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">{directAnswer}</p>
       </div>
@@ -229,7 +229,7 @@ export default function CardOfTheDayPage() {
                 height={1500}
                 loading="lazy"
                 decoding="async"
-                className="w-44 shrink-0 self-start rounded-2xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+                className="w-44 shrink-0 self-start rounded-2xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
               />
               <div className="prose-reading text-brand-ink-soft">
                 {card.title && <p className="eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
@@ -325,7 +325,7 @@ export default function CardOfTheDayPage() {
               <a
                 key={note}
                 href={`/born-on/${slugOf(day)}`}
-                className="group flex flex-col items-center gap-2 rounded-2xl border border-white/10 p-3 transition hover:border-gold/40"
+                className="group flex flex-col items-center gap-2 rounded-2xl border border-brand-line p-3 transition"
               >
                 <img
                   src={`/share-cards/faces/${dayCard ? dayCard.slug : "joker"}.png`}
@@ -334,7 +334,7 @@ export default function CardOfTheDayPage() {
                   height={1500}
                   loading="lazy"
                   decoding="async"
-                  className="w-14 rounded-[5px] border border-white/10 transition-transform group-hover:-translate-y-0.5"
+                  className="w-14 rounded-[5px] border border-brand-line transition-transform group-hover:-translate-y-0.5"
                 />
                 <span className="!text-brand-bronze underline underline-offset-4">{note}</span>
               </a>

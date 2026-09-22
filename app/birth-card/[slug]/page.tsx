@@ -179,7 +179,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
         <div>
           <span className="eyebrow text-brand-ink-soft">{card.suitDomain}</span>
@@ -190,7 +190,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         </div>
       </div>
-      <div className="mt-5 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mt-5 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">{cardQuickAnswer(card, dates)}</p>
       </div>
@@ -201,7 +201,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </Link>
       </p>
       <ShadowLayer code={card.code} />
-      <div className="mt-6 rounded-2xl border border-gold/30 bg-brand-ivory/70 p-5">
+      <div className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
         <p className="eyebrow !text-brand-bronze">One question, read from this card</p>
         <h2 className="mt-2 font-serif text-2xl text-brand-ink">Ask your question as the {card.label} — $13</h2>
         <p className="mt-2 text-sm text-brand-ink-soft">
@@ -292,7 +292,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {angles.map((angle) => (
-            <div key={angle.label} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={angle.label} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-base text-brand-ink">{angle.label}</h3>
               <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{angle.body}</p>
             </div>
@@ -389,7 +389,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
               <caption className="sr-only">Birthdays that map to the {card.label}, with zodiac sign and planetary ruling card</caption>
               <thead>
-                <tr className="border-b border-white/15 text-brand-ink">
+                <tr className="border-b border-brand-line text-brand-ink">
                   <th scope="col" className="py-2 pr-3">Birthday</th>
                   <th scope="col" className="py-2 pr-3">Zodiac sign</th>
                   <th scope="col" className="py-2 pr-3">Ruling planet</th>
@@ -400,7 +400,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                 {dates.map((d) => {
                   const z = zodiacFor(d.month, d.day);
                   return (
-                    <tr key={d.slug} className="border-b border-white/10">
+                    <tr key={d.slug} className="border-b border-brand-line">
                       <th scope="row" className="py-2 pr-3 font-medium text-brand-ink">
                         {/* Plain <a> to /born-on/: birthday pages live on the Worker-served surface. */}
                         <a href={`/born-on/${d.slug}`} className="text-brand-oxblood underline underline-offset-4">{d.label}</a>
@@ -522,7 +522,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <ul className="flex flex-wrap gap-2">
           {siblings.map((c) => (
             <li key={c.slug}>
-              <Link href={`/birth-card/${c.slug}`} className="rounded-full border border-white/12 px-3 py-1 text-sm text-brand-ink-soft transition hover:border-gold/40 hover:text-brand-ink">
+              <Link href={`/birth-card/${c.slug}`} className="rounded-full border border-brand-line px-3 py-1 text-sm text-brand-ink-soft transition hover:text-brand-ink">
                 {c.code} {c.label}
               </Link>
             </li>
@@ -579,7 +579,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
         <div>
           <span className="eyebrow text-brand-ink-soft">{date.label} birth card</span>
@@ -587,7 +587,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
           <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         </div>
       </div>
-      <div className="mt-5 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mt-5 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">{dateQuickAnswer(date)}</p>
       </div>
@@ -801,7 +801,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
   return (
     <Link
       href={`/birth-card/${seo.slug}`}
-      className="card-surface flex items-center gap-4 px-4 py-3 transition hover:border-gold/40"
+      className="card-surface flex items-center gap-4 px-4 py-3 transition !border-brand-line"
     >
       <span className="font-serif text-3xl" style={{ color: SUIT_COLOR_PAPER[seo.suit] }}>
         {seo.code}
@@ -849,7 +849,7 @@ function Lens({
 
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+    <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
       <dt className="eyebrow mb-1 !text-brand-bronze">{label}</dt>
       <dd className="text-brand-ink-soft">{value}</dd>
     </div>

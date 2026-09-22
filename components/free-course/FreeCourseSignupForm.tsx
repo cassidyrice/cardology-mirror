@@ -63,7 +63,7 @@ export function FreeCourseSignupForm({
   const requiredClass = paper ? "text-brand-oxblood" : "text-brand-bronze";
   const inputClass = paper
     ? "min-h-12 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 text-brand-ink outline-none transition placeholder:text-brand-ink-faint focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
-    : "min-h-12 w-full rounded-xl border border-white/15 bg-brand-ivory/70 px-4 text-brand-ink outline-none transition placeholder:text-brand-ink-soft focus:border-gold";
+    : "min-h-12 w-full rounded-xl border border-brand-line bg-brand-ivory/70 px-4 text-brand-ink outline-none transition placeholder:text-brand-ink-soft";
   const finePrintClass = paper
     ? "text-xs leading-relaxed text-brand-ink-soft"
     : "text-xs leading-relaxed text-brand-ink-soft";

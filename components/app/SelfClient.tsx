@@ -84,12 +84,14 @@ export default function SelfPage() {
               subtitle="Birth Card"
               title={desc.title}
               className="animate-drift"
+              frameBorder="border-brand-line"
             />
             <PlayingCard
               code={archetype.prc}
               size="md"
               subtitle="Ruling Card"
               title={prcDesc.title}
+              frameBorder="border-brand-line"
             />
           </div>
         </motion.header>
