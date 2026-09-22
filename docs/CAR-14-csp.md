@@ -2,7 +2,7 @@
 
 The live header stays `Content-Security-Policy-Report-Only`. Do not rename it in a collector change.
 
-`docs/SITE-RECORD.md` is not in this repository. The audit claim was checked against `lib/security-headers.ts`, `public/_headers`, and live response headers on cardblueprints.com.
+`docs/SITE-RECORD.md` §3 records the unlock Worker webhook decision. The CSP audit claim was checked against `lib/security-headers.ts`, `public/_headers`, and live response headers on cardblueprints.com.
 
 ## Step 1 collector (CAR-19)
 
