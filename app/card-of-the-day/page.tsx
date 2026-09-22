@@ -20,6 +20,7 @@ export const dynamic = "force-dynamic";
 // names today's actual card for freshness and SERP CTR, while the OG stays
 // today-agnostic on purpose — the page content rotates daily, so a
 // card-specific OG image would be stale for anyone sharing yesterday.
+// The share title names the fixed Cardology birth-card map.
 export function generateMetadata(): Metadata {
   const now = denverToday();
   const label = labelOf(now);
@@ -30,9 +31,9 @@ export function generateMetadata(): Metadata {
   const description = card
     ? `Today's Cardology card of the day (${label}) is the ${card.label}. Every date maps to exactly one playing card — see its meaning in love and work, free.`
     : `Today, ${label}, is the Joker's day — the one date outside the 52-card map. See how the card of the day works, free.`;
-  const ogTitle = "Card of the Day: Free Daily Playing Card Reading";
+  const ogTitle = "Cardology Card of the Day: Fixed Birth-Card Map";
   const ogDescription =
-    "Every calendar date maps to exactly one of the 52 playing cards — no shuffle, no draw. See today's card and its meaning, free.";
+    "Cardology's fixed calendar: every date maps to one birth card — no shuffle, no draw. A mirror, not a forecast. Not tarot.";
   return {
     title,
     description,
@@ -150,7 +151,7 @@ export default function CardOfTheDayPage() {
       "@type": "WebPage",
       name: "Cardology Card of the Day",
       description:
-        "Free daily playing-card reading: every calendar date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. Updates daily.",
+        "Cardology's fixed birth-card calendar: every date maps to exactly one of the 52 cards, so the card of the day is the birth card of today's date. No shuffle, no draw. A mirror, not a forecast.",
       url: `${SITE_URL}/card-of-the-day`,
       dateModified: updatedIso,
       isPartOf: { "@id": `${SITE_URL}/#website` },
