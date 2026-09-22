@@ -94,10 +94,11 @@ export function DeepDiveCta({
       ) : compact ? (
         <Link
           href={DEEP_DIVE_PRODUCT_PATH}
+          data-money-path="reading"
           className={
             menu
-              ? "block min-h-11 py-3"
-              : "paper-button small-button header-offer-link shrink-0 text-center"
+              ? "money-path-offer block min-h-11 py-3 font-semibold text-brand-ink"
+              : "paper-button small-button header-offer-link money-path-offer shrink-0 text-center"
           }
           onClick={startHeaderReading}
         >

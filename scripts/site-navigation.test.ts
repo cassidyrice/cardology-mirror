@@ -3,8 +3,8 @@ import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { DEEP_DIVE_HEADER_CTA_LABEL, DEEP_DIVE_PRODUCT_PATH } from "../lib/deep-dive";
-import { PRIMARY_NAV } from "../lib/site-nav";
+import { DEEP_DIVE_HEADER_CTA_LABEL, DEEP_DIVE_PRODUCT_PATH, ONE_QUESTION_TURNAROUND } from "../lib/deep-dive";
+import { MONEY_PATHS, PRIMARY_NAV } from "../lib/site-nav";
 import { SiteFooter } from "../components/seo/SiteFooter";
 import { SiteHeader } from "../components/seo/SiteHeader";
 
@@ -88,4 +88,115 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
   expect(detailsEnd).toBeGreaterThan(detailsStart);
   expect(mobileDetails).toMatch(/className="[^"]*\blg:hidden\b[^"]*"/);
   expect(mobileDetails).not.toMatch(/className="[^"]*\bmd:hidden\b[^"]*"/);
+});
+
+const MONEY_PATH_ORDER = [
+  ["calculator", "/birth-card-calculator", "Birth Card Calculator"],
+  ["cardology", "/what-is-cardology", "What is Cardology"],
+  ["reading", "/products/one-question-reading", "One Question Reading ($13)"],
+  ["faq", "/faq", "FAQ"],
+] as const;
+
+function sliceNav(markup: string, label: string): string {
+  const start = markup.indexOf(`aria-label="${label}"`);
+  const end = markup.indexOf("</nav>", start);
+  if (start < 0 || end < 0) {
+    throw new Error(`missing nav ${label}`);
+  }
+  return markup.slice(start, end);
+}
+
+function anchorTags(html: string): string[] {
+  return html.match(/<a\b[^>]*>/g) ?? [];
+}
+
+test("desktop and mobile nav are the same flat money paths, calculator before the paid reading", () => {
+  const markup = renderToStaticMarkup(createElement(SiteHeader));
+  const desktop = sliceNav(markup, "Primary");
+  const mobile = sliceNav(markup, "Mobile primary");
+
+  expect(PRIMARY_NAV.map((link) => link.href)).toEqual(
+    MONEY_PATHS.map((link) => link.href),
+  );
+  expect(MONEY_PATHS.map((link) => link.id)).toEqual([
+    "calculator",
+    "cardology",
+    "reading",
+    "faq",
+  ]);
+  expect(desktop).not.toContain("<details");
+  expect(desktop).not.toContain("<ul");
+
+  for (const nav of [desktop, mobile]) {
+    const tags = anchorTags(nav);
+    expect(tags).toHaveLength(MONEY_PATH_ORDER.length);
+    MONEY_PATH_ORDER.forEach(([id, href, label], index) => {
+      const tag = tags[index] ?? "";
+      expect(tag).toContain(`data-money-path="${id}"`);
+      expect(tag).toContain(`href="${href}"`);
+      expect(nav).toContain(`>${label}<`);
+    });
+    expect(nav.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+      nav.indexOf('href="/products/one-question-reading"'),
+    );
+    expect(nav).not.toContain('href="/explore"');
+    expect(nav).not.toContain('href="/today"');
+    expect(nav).not.toContain('href="/products/blueprint-report"');
+    expect(nav).not.toContain("Blueprint Report");
+    expect(nav).not.toContain("Deep Dive");
+  }
+
+  expect(desktop).toContain("money-path-offer");
+  expect(mobile).toContain("money-path-offer");
+});
+
+test("footer core row leads with the same money paths and leaves the directory second", () => {
+  const markup = renderToStaticMarkup(createElement(SiteFooter));
+  const core = sliceNav(markup, "Core");
+  const more = sliceNav(markup, "More");
+  const tags = anchorTags(core);
+
+  expect(tags).toHaveLength(MONEY_PATH_ORDER.length);
+  MONEY_PATH_ORDER.forEach(([id, href, label], index) => {
+    const tag = tags[index] ?? "";
+    expect(tag).toContain(`data-money-path="${id}"`);
+    expect(tag).toContain(`href="${href}"`);
+    expect(core).toContain(`>${label}<`);
+  });
+  expect(core).toContain(">Free<");
+  expect(core).toContain(`>${ONE_QUESTION_TURNAROUND}<`);
+  expect(core).toContain("money-path-offer");
+  expect(core.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+    core.indexOf('href="/products/one-question-reading"'),
+  );
+
+  for (const href of MONEY_PATH_ORDER.map(([, href]) => href)) {
+    expect(more).not.toContain(`href="${href}"`);
+  }
+  expect(markup.indexOf('aria-label="Core"')).toBeLessThan(
+    markup.indexOf('aria-label="More"'),
+  );
+  expect(markup.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+    markup.indexOf('href="/explore"'),
+  );
+  expect(markup).toContain("mirror, not a forecast");
+  expect(markup).not.toContain("Blueprint Report");
+  expect(markup).not.toContain("Deep Dive");
+  expect(markup).not.toContain('href="/products/blueprint-report"');
+  expect(markup).not.toContain("2 business days");
+});
+
+test("money-path pages sit one crumb under home", () => {
+  for (const file of [
+    "app/birth-card-calculator/page.tsx",
+    "app/products/one-question-reading/page.tsx",
+    "app/what-is-cardology/page.tsx",
+    "app/faq/page.tsx",
+  ]) {
+    const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+    const crumb = source.match(/crumb=\{(\[[\s\S]*?\])\s*\}/);
+    expect(crumb?.[1]).toBeTruthy();
+    const hrefs = crumb?.[1].match(/href:/g) ?? [];
+    expect(hrefs.length).toBeLessThanOrEqual(2);
+  }
 });
