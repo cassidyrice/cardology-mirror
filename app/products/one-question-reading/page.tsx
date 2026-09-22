@@ -18,9 +18,9 @@ import { SITE_NAME } from "@/lib/site";
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-const TITLE = "One Question Reading ($13): Your Decision, Read From Your Birth Card";
+const TITLE = `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL} · ${ONE_QUESTION_TURNAROUND}`;
 const DESCRIPTION =
-  "Ask one question. Get a written Cardology reading built from your birth card, this year's Long Range and Pluto cards, and the card you owe. About 600 words in plain language, emailed within about a minute. $13, one payment.";
+  `Cardology ${DEEP_DIVE_PRODUCT_NAME} for ${DEEP_DIVE_PRICE_LABEL}. One question, read from your birth card and this year, written within ${ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.`;
 const OG_IMAGE = "/og/products/one-question-reading.png";
 
 export const metadata: Metadata = {
@@ -106,15 +106,26 @@ export default function OneQuestionReadingPage() {
       />
 
       <SeoHeroFan codes={["8♦", "Q♠", "7♣"]} className="mb-5" />
-      <p className="type-eyebrow mb-3 !text-brand-bronze">
-        One question · {DEEP_DIVE_PRICE_LABEL} · written within {ONE_QUESTION_TURNAROUND}
-      </p>
-      <h1 className="display mb-3 text-3xl text-brand-ink">Ask one question.</h1>
+      <p className="type-eyebrow mb-3 !text-brand-bronze">Cardology</p>
+      <h1 className="display mb-3 text-3xl text-brand-ink sm:text-4xl">
+        {DEEP_DIVE_PRODUCT_NAME}
+        <span className="mt-2 block font-sans text-base font-medium leading-snug tracking-normal text-brand-ink-soft">
+          {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND} · a mirror, not a forecast
+        </span>
+      </h1>
       <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
-        You bring the one thing you keep circling. I read it from your birth
-        card, this year&rsquo;s cards, and the card you owe. You get about 600
-        words that sound like your own thinking, only clearer, and three things
-        to keep an eye out for.
+        Ask one question. You bring the one thing you keep circling. I read it
+        from your birth card, this year&rsquo;s cards, and the card you owe. You
+        get about 600 words that sound like your own thinking, only clearer, and
+        three things to keep an eye out for.
+      </p>
+
+      <p className="mb-4 max-w-[38em] text-sm text-brand-ink-soft">
+        Don&rsquo;t know your card yet?{" "}
+        <Link href="/birth-card-calculator" className="font-medium text-brand-oxblood underline underline-offset-4">
+          Find your birth card free
+        </Link>
+        . The reading is built from that birthday.
       </p>
 
       <div className="mb-10 flex flex-col items-start gap-3">
@@ -140,7 +151,7 @@ export default function OneQuestionReadingPage() {
         </p>
       </section>
 
-      <section className="mt-10">
+      <section id="sample" className="mt-10">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">A piece of one</h2>
         <p className="mb-4 text-sm text-brand-ink-soft">
           From a reading for an Eight of Diamonds who asked about a promotion.

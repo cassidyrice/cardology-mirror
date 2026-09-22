@@ -253,13 +253,14 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(product).not.toContain("12 months");
   expect(product).not.toContain("52xSeven");
   expect(home).toContain("<LandingCalculator />");
-  expect(home).toContain("One Question Reading");
+  expect(home).toContain("DEEP_DIVE_PRODUCT_NAME");
   expect(home).toContain("home-sample-quote");
   expect(home).toContain("DEEP_DIVE_PRODUCT_PATH");
   expect(home).not.toContain("<YearPreviewApp");
   expect(home).not.toContain("buildYearBlueprint");
   expect(home).not.toContain("52xSeven");
-  expect(home.indexOf("<LandingCalculator />")).toBeLessThan(home.indexOf("One Question Reading"));
+  expect(home.indexOf('href="/birth-card-calculator"')).toBeLessThan(home.indexOf("<LandingCalculator />"));
+  expect(home.indexOf("<LandingCalculator />")).toBeLessThan(home.indexOf('id="home-reading-title"'));
   expect(home).not.toContain("/products/blueprint-report");
   expect(home).not.toContain("Blueprint Report");
   const reportPage = read("app/products/blueprint-report/page.tsx");
