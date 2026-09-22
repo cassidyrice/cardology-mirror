@@ -1,7 +1,10 @@
 import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
+import PlayingCardSpreads from "@/app/playing-card-spreads/page";
 import cardology from "../lib/engine-core/engine.js";
 
 type Spread = { grid: string[][]; crown: string[] };
@@ -38,6 +41,30 @@ test("the page renders all 90 from engine data, not authored copy", () => {
   // Board 0 and 1 double as the two fixed boards; the labels must say so.
   expect(page).toContain("the Life Spread");
   expect(page).toContain("the Spirit Spread");
+});
+
+// One decade is visible until the reader picks an age. All 90 details stay
+// in the HTML, and only the worked-example age starts open.
+test("the yearly list opens one age without dumping every board", () => {
+  expect(page).toContain(".year-boards .year-decade{display:none}");
+  expect(page).toContain("#decade-30{display:block}");
+  expect(page).toContain('id={`spread-${n}`}');
+  expect(page).toContain("open={n === exampleAge}");
+
+  const markup = renderToStaticMarkup(createElement(PlayingCardSpreads));
+  const details = Array.from(markup.matchAll(/<details\b([^>]*)>/g), (match) => match[1] ?? "")
+    .filter((attrs) => attrs.includes('id="spread-'));
+  expect(details).toHaveLength(90);
+  for (const age of [0, 1, 35, 89]) {
+    expect(markup).toContain(`id="spread-${age}"`);
+    expect(markup).toContain(`id="decade-${age < 10 ? 0 : age - (age % 10)}"`);
+  }
+  const opened = details.filter((attrs) => /(?:^|\s)open(?:\s|=|$)/.test(attrs));
+  expect(opened).toHaveLength(1);
+  expect(opened[0]).toContain('id="spread-35"');
+  expect(markup).toContain('href="#decade-0"');
+  expect(markup).toContain('href="#decade-80"');
+  expect(markup).toContain(">Open spread</button>");
 });
 
 // BoardGrid's per-cell markup built a 1.7MB page at this volume. The compact

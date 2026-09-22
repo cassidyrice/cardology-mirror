@@ -16,6 +16,15 @@ import { SITE_URL } from "@/lib/site";
 
 type JsonLd = Record<string, unknown>;
 
+function escapeHtmlText(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#x27;");
+}
+
 function jsonLdGraphs(markup: string): JsonLd[] {
   return Array.from(
     markup.matchAll(
@@ -52,6 +61,33 @@ test("spreads hub exposes its three visible spokes as an ItemList", () => {
     },
   });
   expect(graphs.some((graph) => graph["@type"] === "FAQPage")).toBeTrue();
+
+  const faq = graphs.find((graph) => graph["@type"] === "FAQPage") as {
+    mainEntity: { name: string; acceptedAnswer: { text: string } }[];
+  };
+  expect(faq.mainEntity).toHaveLength(4);
+  for (const question of faq.mainEntity) {
+    expect(markup).toContain(`>${escapeHtmlText(question.name)}</h3>`);
+    expect(markup).toContain(`>${escapeHtmlText(question.acceptedAnswer.text)}</p>`);
+  }
+  expect(String(spreadsMetadata.title)).toContain("Playing Card Spreads");
+  expect(String(spreadsMetadata.title)).toContain("Cardology");
+  expect(markup).toContain(">Playing Card Spreads in Cardology</h1>");
+
+  const headings = Array.from(markup.matchAll(/<h2\b[^>]*>(.*?)<\/h2>/g), (match) =>
+    match[1]!.replace(/<[^>]+>/g, ""),
+  );
+  expect(new Set(headings).size).toBe(headings.length);
+  for (const id of ["life-spread", "spirit-spread", "yearly-spreads", "planetary-ruling-card", "faq"]) {
+    expect(markup).toContain(`id="${id}"`);
+    expect(markup).toContain(`href="#${id}"`);
+  }
+  expect(markup).toMatch(/href="\/what-is-cardology"/);
+  expect(markup).toMatch(/href="\/birth-card-calculator"/);
+  expect(markup).toMatch(/href="\/birth-card"/);
+  expect(markup).toMatch(/href="\/birth-card\/8-of-diamonds"/);
+  expect(markup).toMatch(/href="\/planetary-ruling-card"/);
+  expect(markup).toMatch(/href="\/52-day-period-meaning-tool"/);
 
   for (const spread of SPREADS) {
     expect(markup).toContain(`href="${spread.path}"`);
