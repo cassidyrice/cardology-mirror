@@ -46,7 +46,7 @@ export function PeriodRow({
       <span
         className={`absolute left-0 top-[18px] h-[15px] w-[15px] rounded-full border ${
           isCurrent
-            ? "border-brand-line bg-gold shadow-[0_0_14px_2px_rgba(217,178,106,0.7)]"
+            ? "border-brand-line bg-brand-gold-soft shadow-[0_0_14px_2px_rgba(217,178,106,0.7)]"
             : "border-brand-line bg-brand-ivory/70"
         }`}
         aria-hidden
@@ -58,7 +58,7 @@ export function PeriodRow({
         whileTap={{ scale: 0.99 }}
         className={`w-full rounded-2xl border px-4 py-3 text-left transition-colors ${
           isCurrent
-            ? "border-brand-line bg-gold/5"
+            ? "border-brand-line bg-brand-gold-soft"
             : "border-brand-line bg-brand-ivory/70"
         }`}
         aria-expanded={expanded}
@@ -72,7 +72,7 @@ export function PeriodRow({
                 {w.planet}
               </span>
               {isCurrent && (
-                <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider2 text-brand-bronze">
+                <span className="rounded-full bg-brand-gold-soft px-2 py-0.5 text-[0.6rem] uppercase tracking-wider2 text-brand-bronze">
                   Now
                 </span>
               )}

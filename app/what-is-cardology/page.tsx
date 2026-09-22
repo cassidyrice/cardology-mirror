@@ -415,7 +415,7 @@ export default function WhatIsCardology() {
         <ol className="mt-4 space-y-3 border-l border-brand-line pl-4">
           {CARDOLOGY_TIMELINE.map((t) => (
             <li key={t.year + t.sourceLabel} className="relative pl-2">
-              <span className="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
+              <span className="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-brand-gold-soft" aria-hidden="true" />
               <p className="text-sm text-brand-ink-soft">
                 <strong className="font-serif text-base text-brand-ink">{t.year}</strong>
                 {" \u00b7 "}

@@ -12,7 +12,7 @@ const ACCENT: Record<BondObservation["kind"], string> = {
 
 const DOT: Record<BondObservation["kind"], string> = {
   shared: "bg-brand-club",
-  complement: "bg-gold",
+  complement: "bg-brand-gold-soft",
   tension: "bg-brand-bronze",
   "gift-shadow": "bg-brand-oxblood",
 };

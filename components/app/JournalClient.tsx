@@ -390,7 +390,7 @@ function WritingSheet({
             <button
               onClick={() => onSave(body)}
               disabled={!body.trim()}
-              className="rounded-full bg-gold/90 px-5 py-2 text-xs uppercase tracking-wider2 text-void disabled:opacity-30"
+              className="rounded-full bg-brand-gold-soft px-5 py-2 text-xs uppercase tracking-wider2 text-brand-ink disabled:opacity-30"
             >
               Save
             </button>
