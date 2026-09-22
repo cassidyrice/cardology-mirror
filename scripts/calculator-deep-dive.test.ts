@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import { sanitizeOfferSlug } from "../lib/analytics";
@@ -260,9 +260,10 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(home).not.toContain("buildYearBlueprint");
   expect(home).not.toContain("52xSeven");
   expect(home.indexOf("<LandingCalculator />")).toBeLessThan(home.indexOf("One Question Reading"));
-  // The retired product URL answers with an edge 301 and a redirect stub.
+  // The retired product URL answers with an edge 301. The page is not built.
   expect(middleware).toContain('"/products/52xseven-blueprint": "/products/one-question-reading"');
-  expect(read("app/products/52xseven-blueprint/page.tsx")).toContain("permanentRedirect(DEEP_DIVE_PRODUCT_PATH)");
+  expect(existsSync(join(root, "app/products/52xseven-blueprint/page.tsx"))).toBe(false);
+  expect(read("lib/generated-blog-posts.json")).not.toContain("/products/52xseven-blueprint");
   // Past buyers: the year app and its sign-in tokens keep rendering.
   expect(read("lib/elroy/widget.ts")).toContain('"/blueprint"');
   expect(read("app/blueprint/page.tsx")).toContain("FIFTY_TWO_BY_SEVEN_REPORT_SLUG");
