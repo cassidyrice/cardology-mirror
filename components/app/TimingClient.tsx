@@ -52,7 +52,7 @@ export default function TimingPage() {
     return (
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md pt-28 text-center">
-          <Eyebrow className="mb-3 text-brand-bronze">The timeline didn&apos;t load</Eyebrow>
+          <Eyebrow className="mb-3 !text-brand-bronze">The timeline didn&apos;t load</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
           <button
             onClick={() => router.refresh()}
@@ -135,7 +135,7 @@ function Timing({
             className="card-surface group flex items-center justify-between gap-3 p-4 transition hover:border-gold/30 active:scale-[0.99]"
           >
             <span>
-              <span className="eyebrow text-brand-bronze">Story Arc</span>
+              <span className="eyebrow !text-brand-bronze">Story Arc</span>
               <span className="mt-1 block text-pretty font-serif text-[0.95rem] leading-snug text-brand-ink">
                 Read your year as one arc — long-range chapter, the deep turn, the
                 horizon.

@@ -106,7 +106,7 @@ export default function PlayingCardTattooMeaning() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Questions</h2>
         <dl className="space-y-4">
           {faqs.map((item) => (
             <div key={item.q}>

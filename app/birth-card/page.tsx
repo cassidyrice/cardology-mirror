@@ -122,7 +122,7 @@ export default function BirthCardIndex() {
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
@@ -200,7 +200,7 @@ export default function BirthCardIndex() {
       </nav>
 
       <section className="mb-10 rounded-2xl border border-gold/20 bg-white/[0.04] p-5" aria-labelledby="popular-card-meanings">
-        <h2 id="popular-card-meanings" className="eyebrow mb-3 text-brand-bronze">Popular card meanings</h2>
+        <h2 id="popular-card-meanings" className="eyebrow mb-3 !text-brand-bronze">Popular card meanings</h2>
         <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
           Start with the cards people are reading most, then browse the full deck below.
         </p>
@@ -235,7 +235,7 @@ export default function BirthCardIndex() {
       <div className="space-y-12">
         {groups.map((g) => (
           <section key={g.suit} id={g.suit} className="scroll-mt-10">
-            <h2 className="eyebrow mb-4 text-brand-bronze">
+            <h2 className="eyebrow mb-4 !text-brand-bronze">
               {SUIT_GLYPHS[g.suit]} {cap(g.suit)} · {g.domain}
             </h2>
             <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -274,7 +274,7 @@ export default function BirthCardIndex() {
       </div>
 
       <section className="mt-12" id="faq">
-        <h2 className="eyebrow mb-4 text-brand-bronze">Birth card FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

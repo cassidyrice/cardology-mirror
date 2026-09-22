@@ -64,7 +64,7 @@ export default function TodayPage() {
           animate={{ opacity: 1, y: 0 }}
           className="space-y-3 pt-10"
         >
-          <Eyebrow className="text-brand-bronze">Couldn&apos;t read today</Eyebrow>
+          <Eyebrow className="!text-brand-bronze">Couldn&apos;t read today</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">
             The engine didn&apos;t return a reading. {error}
           </p>
@@ -195,7 +195,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
         className="card-surface rounded-2xl p-6"
       >
-        <Eyebrow className="text-brand-bronze">Today&apos;s reflection</Eyebrow>
+        <Eyebrow className="!text-brand-bronze">Today&apos;s reflection</Eyebrow>
         <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-brand-ink">
           {reflectionPrompt(ap)}
         </p>
@@ -211,7 +211,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-gold/20 bg-gold/[0.04] p-5 transition hover:border-gold/40 active:scale-[0.99]"
         >
           <span>
-            <span className="eyebrow text-brand-bronze">Story Arc · Your Year</span>
+            <span className="eyebrow !text-brand-bronze">Story Arc · Your Year</span>
             <span className="mt-1 block text-pretty font-serif text-base leading-snug text-brand-ink">
               Where this year is dragging you — chapter, turn, and the horizon you keep avoiding.
             </span>

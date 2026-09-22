@@ -110,7 +110,7 @@ export default function HowToReadPlayingCards() {
         </Link>
       </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A playing card meaning is suit plus rank: the suit is the arena of life,
           the rank is the move being made in it. Then either shuffle and draw a
@@ -127,7 +127,7 @@ export default function HowToReadPlayingCards() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Playing card meaning by suit and rank</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Playing card meaning by suit and rank</h2>
         <p className="prose-reading text-brand-ink-soft">
           A playing card meaning does not come from a guidebook picture. It comes
           from two facts you can see on the card: which suit, and which rank.
@@ -137,7 +137,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What do you need to start?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What do you need to start?</h2>
         <p className="prose-reading text-brand-ink-soft">
           A standard 52-card deck and something to write with. That is the
           entire kit. The meanings live in the deck&rsquo;s structure — which
@@ -154,7 +154,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What does each suit mean?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What does each suit mean?</h2>
         <p className="prose-reading mb-2 text-brand-ink-soft">
           The suit is the arena — the part of life a card is talking about.
           These four domains are the same ones every card page on this site is
@@ -182,7 +182,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What do the ranks mean, Ace through King?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What do the ranks mean, Ace through King?</h2>
         <p className="prose-reading mb-2 text-brand-ink-soft">
           The rank is the move. The thirteen ranks run one arc — a theme is
           born at the Ace, matures through the numbers, and is mastered by the
@@ -212,7 +212,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How do you do your first reading? Five steps</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How do you do your first reading? Five steps</h2>
         <ol className="prose-reading list-decimal space-y-2 pl-5 text-brand-ink-soft">
           <li>
             <strong>Settle one real question.</strong> Not &ldquo;tell me
@@ -257,7 +257,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Shuffled draws or the deterministic method?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Shuffled draws or the deterministic method?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Everything above is the shuffled branch of cartomancy: the cards fall
           where they fall, and ask the same question tomorrow and you will draw
@@ -302,7 +302,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Frequently asked questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-5">
           {faqs.map((f) => (
             <div key={f.q}>

@@ -106,7 +106,7 @@ export default function OneQuestionReadingPage() {
       />
 
       <SeoHeroFan codes={["8♦", "Q♠", "7♣"]} className="mb-5" />
-      <p className="eyebrow mb-3 text-brand-bronze">
+      <p className="eyebrow mb-3 !text-brand-bronze">
         One question · {DEEP_DIVE_PRICE_LABEL} · written within {ONE_QUESTION_TURNAROUND}
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Ask one question.</h1>
@@ -128,7 +128,7 @@ export default function OneQuestionReadingPage() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What the reading is made of</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What the reading is made of</h2>
         <p className="prose-reading text-brand-ink-soft">
           Seven pieces, always in this order. Your birth card&rsquo;s number (the
           action) and its suit (the area of life it acts in). This year&rsquo;s
@@ -141,7 +141,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">A piece of one</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">A piece of one</h2>
         <p className="mb-4 text-sm text-brand-ink-soft">
           From a reading for an Eight of Diamonds who asked about a promotion.
         </p>
@@ -155,7 +155,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How it works</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How it works</h2>
         <p className="prose-reading text-brand-ink-soft">
           You type your birth date and your question, then pay {DEEP_DIVE_PRICE_LABEL} on
           Stripe. I pull your cards. Same birthday, same cards, every time, and
@@ -166,7 +166,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What it is not</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What it is not</h2>
         <p className="prose-reading text-brand-ink-soft">
           A mirror, not a forecast. It will not tell you what to do, and it
           will not predict what happens. It shows you the pattern you are
@@ -176,7 +176,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Not sure of your card?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Not sure of your card?</h2>
         <p className="prose-reading text-brand-ink-soft">
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             Find your birth card free
@@ -187,7 +187,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-4 text-brand-bronze">Questions people ask first</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Questions people ask first</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

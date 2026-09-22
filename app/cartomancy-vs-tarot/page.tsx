@@ -59,7 +59,7 @@ export default function CartomancyVsTarot() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cartomancy vs Tarot</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cartomancy is reading meaning from cards; tarot is one branch of it
           that uses a 78-card deck. Cardology is playing-card cartomancy made
@@ -78,7 +78,7 @@ export default function CartomancyVsTarot() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What is cartomancy?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What is cartomancy?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Cartomancy is any practice that assigns meaning to cards and reads
           them for insight — an umbrella term, not a single method. Tarot,
@@ -92,7 +92,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Can you read tarot with playing cards?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Can you read tarot with playing cards?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Mostly, yes. Each tarot suit has a playing-card equivalent — Cups
           become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords
@@ -105,7 +105,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How the 52-card deck maps to tarot</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How the 52-card deck maps to tarot</h2>
         <p className="prose-reading mb-2 text-brand-ink-soft">
           Hearts correspond to Cups, Clubs to Wands, Diamonds to Pentacles,
           and Spades to Swords; Ace through Ten map one to one. Tarot&rsquo;s
@@ -129,7 +129,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Does a playing card deck have a Major Arcana?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Does a playing card deck have a Major Arcana?</h2>
         <p className="prose-reading text-brand-ink-soft">
           The 22 trumps — the Fool, the Tower, Death — have no playing-card
           equivalent, and this is where the two branches of cartomancy genuinely
@@ -145,7 +145,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Deterministic vs shuffled</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Deterministic vs shuffled</h2>
         <p className="prose-reading text-brand-ink-soft">
           The deeper split is not the deck — it is how a card gets chosen. A
           tarot reading starts with a shuffle: the cards fall where they fall,
@@ -169,7 +169,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Cartomancy vs tarot at a glance</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Cartomancy vs tarot at a glance</h2>
         <TableScroll label="Cartomancy versus tarot">
           <table className="w-full min-w-[560px] border-collapse text-left text-sm text-brand-ink-soft">
             <caption className="sr-only">Cartomancy playing cards versus tarot</caption>
@@ -222,7 +222,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Which one should you use?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Which one should you use?</h2>
         <p className="prose-reading text-brand-ink-soft">
           They are not competitors so much as different tools inside the same
           cartomancy family. If you want a reflective practice built around a
@@ -241,7 +241,7 @@ export default function CartomancyVsTarot() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Frequently asked questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-5">
           {faqs.map((f) => (
             <div key={f.q}>

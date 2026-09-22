@@ -13,7 +13,7 @@ export function ProfilePrompt({
 }) {
   return (
     <div className="card-surface rounded-2xl p-6 text-center">
-      <p className="eyebrow mb-3 text-brand-bronze">{eyebrow}</p>
+      <p className="eyebrow mb-3 !text-brand-bronze">{eyebrow}</p>
       <h2 className="display text-2xl text-brand-ink">{title}</h2>
       <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-brand-ink-soft">
         {body}

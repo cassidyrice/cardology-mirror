@@ -191,7 +191,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </div>
       </div>
       <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Quick answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">{cardQuickAnswer(card, dates)}</p>
       </div>
       <p className="mt-3 text-xs text-brand-ink-soft">
@@ -202,7 +202,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </p>
       <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
-        <p className="eyebrow text-brand-bronze">One question, read from this card</p>
+        <p className="eyebrow !text-brand-bronze">One question, read from this card</p>
         <h2 className="mt-2 font-serif text-2xl text-brand-ink">Ask your question as the {card.label} — $13</h2>
         <p className="mt-2 text-sm text-brand-ink-soft">
           One decision, read from your {card.label} birth card, this year&rsquo;s
@@ -518,7 +518,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </div>
 
       <nav aria-label={`More ${suitWord(card)} cards`} className="mt-10">
-        <h2 className="eyebrow mb-3 text-brand-bronze">More {suitWord(card)} cards</h2>
+        <h2 className="eyebrow mb-3 !text-brand-bronze">More {suitWord(card)} cards</h2>
         <ul className="flex flex-wrap gap-2">
           {siblings.map((c) => (
             <li key={c.slug}>
@@ -588,7 +588,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         </div>
       </div>
       <div className="mt-5 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Quick answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">{dateQuickAnswer(date)}</p>
       </div>
       <p className="mt-3 text-xs text-brand-ink-soft">
@@ -807,7 +807,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
         {seo.code}
       </span>
       <div className="flex flex-col">
-        <span className="eyebrow text-[0.6rem] text-brand-bronze">{label}</span>
+        <span className="eyebrow text-[0.6rem] !text-brand-bronze">{label}</span>
         <span className="font-serif text-base text-brand-ink">{seo.label}</span>
       </div>
       <span className="ml-auto text-brand-bronze">→</span>
@@ -816,7 +816,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="mt-8"><h2 className="eyebrow mb-2 text-brand-bronze">{title}</h2><div className="prose-reading text-brand-ink-soft">{children}</div></section>;
+  return <section className="mt-8"><h2 className="eyebrow mb-2 !text-brand-bronze">{title}</h2><div className="prose-reading text-brand-ink-soft">{children}</div></section>;
 }
 
 // Position label colors. Inline styles outrank the .paper-shell class remaps,
@@ -850,7 +850,7 @@ function Lens({
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-      <dt className="eyebrow mb-1 text-brand-bronze">{label}</dt>
+      <dt className="eyebrow mb-1 !text-brand-bronze">{label}</dt>
       <dd className="text-brand-ink-soft">{value}</dd>
     </div>
   );

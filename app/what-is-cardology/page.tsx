@@ -154,7 +154,7 @@ export default function WhatIsCardology() {
       <SeoHeroFan className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
-        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cardology is a birthday-to-playing-card system: your month and day map to
           one card in a standard 52-card deck (not tarot). That card is pattern
@@ -184,7 +184,7 @@ export default function WhatIsCardology() {
       </p>
 
       <section className="mt-8" id="find-your-card">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What is my birth card in Cardology?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What is my birth card in Cardology?</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
           Enter any birthday below. The free calculator returns the playing-card birth
           card and ruling card for the Cardology system.
@@ -198,7 +198,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-10" id="free-reading">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Your free Cardology reading</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Your free Cardology reading</h2>
         <p className="prose-reading text-brand-ink-soft">
           The result above is a free Cardology reading, not only a calculator answer.
           Open the returned birth card to read its personality pattern, love and
@@ -233,7 +233,7 @@ export default function WhatIsCardology() {
       </section>
 
       <nav aria-label="On this page" className="mb-8 mt-10 rounded-2xl border border-white/10 p-4">
-        <p className="eyebrow mb-3 text-brand-bronze">On this page</p>
+        <p className="eyebrow mb-3 !text-brand-bronze">On this page</p>
         <ul className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-brand-ink-soft">
           {toc.map((item) => (
             <li key={item.id}>
@@ -262,7 +262,7 @@ export default function WhatIsCardology() {
       </p>
 
       <section className="mt-8" id="how-it-works">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How does Cardology work?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How does Cardology work?</h2>
         <p className="prose-reading text-brand-ink-soft">
           A standard deck has 52 cards; the calendar has 52 weeks. Cardology links
           the two by a fixed rule. December 31 is the Joker boundary, while the leap
@@ -298,7 +298,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="benefits">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What are the benefits of Cardology?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What are the benefits of Cardology?</h2>
         <ul className="prose-reading space-y-2 text-brand-ink-soft">
           <li>
             <strong>Checkable math.</strong> Two people can verify the same birthday
@@ -320,7 +320,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-10" id="suits">
-        <h2 className="eyebrow mb-2 text-brand-bronze">The four suits</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The four suits</h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
@@ -330,7 +330,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-10" id="card-meanings">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Cardology card meanings: all 52 cards</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Cardology card meanings: all 52 cards</h2>
         <p className="prose-reading mb-5 text-brand-ink-soft">
           Every card in the deck has its own Cardology card meaning page: the drawn-card
           reading, the birth-card personality, love, money, shadow, and the exact birth
@@ -340,7 +340,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="layers">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Two layers: birth card and ruling card</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Two layers: birth card and ruling card</h2>
         <p className="prose-reading text-brand-ink-soft">
           Most people have two key cards — the birth card and a planetary ruling card
           that colors how it expresses. We break down the difference in{" "}
@@ -356,7 +356,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="which-layer">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Which layer am I reading?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Which layer am I reading?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Before you look up a meaning, check what the card actually is. A birth
           card is lifelong. A ruling card colors how it expresses. A card in a
@@ -378,7 +378,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Why it works best on real people</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Why it works best on real people</h2>
         <p className="prose-reading text-brand-ink-soft">
           The cards become useful when you apply them to actual lives: your own
           patterns, the people closest to you, public figures, family roles,
@@ -389,7 +389,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How the calculation actually works</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How the calculation actually works</h2>
         <p className="prose-reading text-brand-ink-soft">
           There is no chart to draw and no judgment call to make. Every card carries a
           fixed numeric value based on its position. A short equation on birth month
@@ -399,7 +399,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="lineage">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Where it comes from: a dated, sourced history</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Where it comes from: a dated, sourced history</h2>
         <p className="prose-reading text-brand-ink-soft">
           Most Cardology sites tell the origin story without a single citation. Here is what the
           library records and the surviving books actually show. Every entry links to the source
@@ -470,7 +470,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8" id="not">
-        <h2 className="eyebrow mb-2 text-brand-bronze">What Cardology is not</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What Cardology is not</h2>
         <p className="prose-reading text-brand-ink-soft">
           It is not a random draw, not medical or financial advice, and not a costume.
           A card cannot tell you what will happen on Tuesday. What it can do is name a
@@ -497,7 +497,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How people actually use it</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How people actually use it</h2>
         <p className="prose-reading text-brand-ink-soft">
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
@@ -510,7 +510,7 @@ export default function WhatIsCardology() {
       </section>
 
       <section className="mt-10" id="faq">
-        <h2 className="eyebrow mb-4 text-brand-bronze">Cardology FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Cardology FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

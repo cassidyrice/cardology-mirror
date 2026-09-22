@@ -106,7 +106,7 @@ export default function CompatibilityCalculatorPage() {
 
       <CompatibilityCalculator />
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Quick answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
           Life Path constitution, where the other person lands in your spectrum, and
@@ -167,7 +167,7 @@ export default function CompatibilityCalculatorPage() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How to read the result</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How to read the result</h2>
         <p className="prose-reading text-brand-ink-soft">
           Start with birth-card chemistry, then Life Path cross-reference. If the other
           person&rsquo;s birth card lands in your Venus, Mars, Saturn, Neptune, or Pluto
@@ -182,7 +182,7 @@ export default function CompatibilityCalculatorPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Frequently asked questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
             <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -194,7 +194,7 @@ export default function CompatibilityCalculatorPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-brand-bronze">Related pages</h2>
+        <h2 className="eyebrow mb-3 !text-brand-bronze">Related pages</h2>
         <ul className="grid gap-2 text-sm sm:grid-cols-2">
           {[
             ["Cardology Compatibility", "/cardology-compatibility"],

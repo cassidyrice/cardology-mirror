@@ -272,10 +272,10 @@ export default function PlayingCardSpreads() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <SeoHeroFan className="mb-5" />
-      <p className="eyebrow mb-3 text-brand-bronze">The playing board · no shuffle</p>
+      <p className="eyebrow mb-3 !text-brand-bronze">The playing board · no shuffle</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Think of a board game. The deck has two fixed boards — the{" "}
           <strong>Life Spread</strong> and the <strong>Spirit Spread</strong> —
@@ -562,7 +562,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="faq" className="mt-12 scroll-mt-10">
-        <h2 className="eyebrow mb-4 text-brand-bronze">Spreads FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Spreads FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

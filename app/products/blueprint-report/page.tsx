@@ -123,7 +123,7 @@ export default function BlueprintReportPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <SeoHeroFan codes={["8♦", "Q♠", "5♣"]} className="mb-5" />
-      <p className="eyebrow mb-3 text-brand-bronze">
+      <p className="eyebrow mb-3 !text-brand-bronze">
         Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">The math shown. Deal it yourself. Then talk it through.</h1>
@@ -199,7 +199,7 @@ export default function BlueprintReportPage() {
       </p>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">No model writes this document</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">No model writes this document</h2>
         <p className="prose-reading text-brand-ink-soft">
           Every card on every page came out of a fixed lookup table and five lines of arithmetic.
           Your report stays pinned to your purchase date. The same birthday and reading date give the same cards
@@ -210,7 +210,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Inside the report</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Inside the report</h2>
         <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           {report!.includes.map((line) => (
             <li key={line}>{line}</li>
@@ -219,7 +219,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Six of the pages</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Six of the pages</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {samplePages.map((p) => (
             <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
@@ -232,7 +232,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">How it reads</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How it reads</h2>
         <p className="prose-reading text-brand-ink-soft">
           Three labels run through the whole document. <strong className="text-brand-ink">FIXED</strong> is
           the reproducible calculation. <strong className="text-brand-ink">PATTERN</strong> is sourced
@@ -243,7 +243,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-brand-bronze">Questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Questions</h2>
         <dl className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q}>

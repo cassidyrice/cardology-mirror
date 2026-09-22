@@ -87,7 +87,7 @@ export default function JournalPage() {
       ) : (
         <section className="space-y-5">
           <div>
-            <Eyebrow className="text-brand-bronze">Questions to sit with</Eyebrow>
+            <Eyebrow className="!text-brand-bronze">Questions to sit with</Eyebrow>
             <p className="mt-1 text-xs text-brand-ink-soft">
               Drawn from your cards today. Tap one to write.
             </p>
@@ -97,7 +97,7 @@ export default function JournalPage() {
 
           {ready && profile && error && (
             <div className="card-surface rounded-2xl p-5">
-              <Eyebrow className="text-brand-bronze">Couldn&apos;t read today</Eyebrow>
+              <Eyebrow className="!text-brand-bronze">Couldn&apos;t read today</Eyebrow>
               <p className="prose-reading mt-2 text-brand-ink-soft">{error}</p>
               <button
                 onClick={() => router.refresh()}
@@ -362,7 +362,7 @@ function WritingSheet({
         <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-white/15" />
 
         <div className="flex items-center justify-between gap-3">
-          <Eyebrow className="text-brand-bronze">{prompt.label}</Eyebrow>
+          <Eyebrow className="!text-brand-bronze">{prompt.label}</Eyebrow>
           <Glyphs cards={cards} />
         </div>
         <p className="prose-reading mt-3 font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">

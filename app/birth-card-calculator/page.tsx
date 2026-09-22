@@ -167,7 +167,7 @@ export default function CalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
       <header className="max-w-3xl">
-        <p className="eyebrow mb-2 text-brand-bronze">Free · instant · no signup</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Free · instant · no signup</p>
         <h1 className="display mb-2 text-3xl text-brand-ink">
           Cardology Chart & Birth Card Calculator
         </h1>
@@ -242,7 +242,7 @@ export default function CalculatorPage() {
       </nav>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-brand-bronze">The birthday map</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">The birthday map</p>
         <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           A Cardology chart (also called the Cardology calendar or birthday
@@ -303,7 +303,7 @@ export default function CalculatorPage() {
       <section id="how-it-works" className="mt-12 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-brand-bronze">How the calculation works</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">How the calculation works</p>
             <h2 className="font-serif text-3xl text-brand-ink">
               How to find your birth card from your birthday
             </h2>
@@ -323,7 +323,7 @@ export default function CalculatorPage() {
               ["3", "Verify the meaning", "Open the card page, compare suit and rank, and test the interpretation against real patterns."],
             ].map(([n, title, body]) => (
               <li key={n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <span className="eyebrow text-brand-bronze">Step {n}</span>
+                <span className="eyebrow !text-brand-bronze">Step {n}</span>
                 <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
               </li>
@@ -347,7 +347,7 @@ export default function CalculatorPage() {
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-brand-bronze">Worked verification</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Worked verification</p>
             <h2 className="font-serif text-3xl text-brand-ink">How to calculate your birth card with playing cards</h2>
           </summary>
         <p className="prose-reading mt-4 text-brand-ink-soft">
@@ -411,7 +411,7 @@ export default function CalculatorPage() {
       <section id="birth-vs-ruling" className="mt-10 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-brand-bronze">Understand the result</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Understand the result</p>
             <h2 className="font-serif text-3xl text-brand-ink">Birth card vs. planetary ruling card</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -443,7 +443,7 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-brand-bronze">Playing cards, not tarot</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Playing cards, not tarot</p>
             <h2 className="font-serif text-3xl text-brand-ink">This is a playing-card birth calculator — not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
@@ -513,7 +513,7 @@ export default function CalculatorPage() {
       <section id="trust-and-limits" className="mt-10 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-brand-bronze">Experience, method, and trust</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Experience, method, and trust</p>
             <h2 className="font-serif text-3xl text-brand-ink">Why you can verify this Cardology calculator</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -546,7 +546,7 @@ export default function CalculatorPage() {
       </section>
 
       <section id="faq" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-4 text-brand-bronze">Birth card calculator FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card calculator FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <details key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -560,7 +560,7 @@ export default function CalculatorPage() {
       </section>
 
       <section className="mt-10" aria-labelledby="related-playing-card-cardology">
-        <h2 id="related-playing-card-cardology" className="eyebrow mb-3 text-brand-bronze">
+        <h2 id="related-playing-card-cardology" className="eyebrow mb-3 !text-brand-bronze">
           Related (playing-card Cardology)
         </h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
