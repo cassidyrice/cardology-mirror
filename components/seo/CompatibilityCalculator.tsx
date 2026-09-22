@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -16,7 +16,7 @@ import {
   type LifePathProfile,
   type LifePathSharedCard,
 } from "@/lib/life-path";
-import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { CompatShareHero } from "@/components/share/CompatShareHero";
 import { DeepDiveCta } from "./DeepDiveCta";
 
@@ -59,6 +59,14 @@ export function CompatibilityCalculator() {
   const [b, setB] = useState("");
   const [pair, setPair] = useState<{ a: LifePathProfile; b: LifePathProfile } | null>(null);
   const [err, setErr] = useState(false);
+
+  // The birth-card calculator already parks this birthday in the tab for checkout.
+  // Reuse that value so "compare with someone" continues from it. Never put it in the URL.
+  useEffect(() => {
+    const stored = readCheckoutBirthdate();
+    if (!stored) return;
+    setA((current) => current || stored);
+  }, []);
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();

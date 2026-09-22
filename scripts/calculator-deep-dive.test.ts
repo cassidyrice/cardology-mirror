@@ -295,6 +295,18 @@ test("shared calculator result keeps free links ahead of the $13 reading and doe
   expect(calculator).not.toContain("What do you want to ask about it?");
   // The card's own watch-for line is the bridge into the ask.
   expect(calculator).toContain("bible.watchFor");
+  expect(calculator).toContain("What to do next");
+  expect(calculator).toContain("Open your {bc?.label ?? \"birth card\"} meaning");
+  expect(calculator).toContain('href="/birth-card-compatibility-calculator#da"');
+  expect(calculator).toContain("Compare with someone");
+  expect(calculator).not.toContain('role="dialog"');
+  expect(calculator).not.toContain("fixed inset");
+  expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
+    calculator.indexOf('href="/birth-card-compatibility-calculator#da"'),
+  );
+  expect(calculator.indexOf('href="/birth-card-compatibility-calculator#da"')).toBeLessThan(
+    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
+  );
   expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
     calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
   );
