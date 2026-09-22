@@ -56,6 +56,11 @@ export default function Home() {
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="home-intro">
           <p className="home-kicker">Arithmetic on a fixed 52-card structure. You can check it.</p>
+          <p className="home-lead" data-ai-summary>
+            Your birthday maps to one playing card in a 52-card deck. Cardology is
+            that fixed map: a mirror you can check, not tarot, not cardiology, and
+            not a forecast. The calculator is free.
+          </p>
           <div className="home-fold-actions">
             <Link href="/birth-card-calculator" className="ink-button large-button">
               Find your card free
@@ -65,6 +70,23 @@ export default function Home() {
             </Link>
           </div>
           <LandingCalculator />
+          <section className="home-question" aria-labelledby="home-find-birth-card">
+            <h2 id="home-find-birth-card">How do I find my birth card?</h2>
+            <p>
+              Enter month, day, and year above. Month and day pick the card; the year
+              does not change it. The same birthday always returns the same playing card.
+            </p>
+            <p>
+              The full chart is on the{" "}
+              <Link href="/birth-card-calculator">birth card calculator</Link>.
+              All 52 meanings are on the{" "}
+              <Link href="/birth-card">birth card index</Link>.
+              The system is{" "}
+              <Link href="/what-is-cardology">what Cardology is</Link>.
+              Two cards together:{" "}
+              <Link href="/cardology-compatibility">Cardology compatibility</Link>.
+            </p>
+          </section>
           <div className="home-intro-links">
             <Link href="/what-is-cardology">New to Cardology?</Link>
             <span aria-hidden="true">·</span>

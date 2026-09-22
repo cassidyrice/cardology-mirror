@@ -126,8 +126,9 @@ export default function BirthCardIndex() {
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
-          playing deck — not tarot and not a paper birthday card. Each interpretation
-          combines a suit — Hearts, Clubs, Diamonds or Spades — with a rank from
+          playing deck — not tarot and not a paper birthday card. It is also not
+          cardiology, and the meaning is a mirror of a default pattern, not a forecast.
+          Each interpretation combines a suit — Hearts, Clubs, Diamonds or Spades — with a rank from
           Ace to King. Browse all 52 meanings below, or use the free calculator if
           you do not know your card. December 31 is the Joker exception and has its own{" "}
           <Link href="/birth-card/joker" className="text-brand-oxblood underline underline-offset-4">
@@ -136,6 +137,25 @@ export default function BirthCardIndex() {
           .
         </p>
       </div>
+      <section id="how-do-i-find-my-birth-card" className="mb-6">
+        <h2 className="font-serif text-2xl text-brand-ink">How do I find my birth card?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          Month and day are enough. The free calculator returns the fixed playing
+          card; the year is for timing layers, not for the birth card itself.
+        </p>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          Open the meaning on this page once you have the card. To see how two
+          cards meet, read{" "}
+          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
+            Cardology compatibility
+          </Link>
+          . The system behind the map is{" "}
+          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
+            what Cardology is
+          </Link>
+          .
+        </p>
+      </section>
       <p className="mb-3">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
           Find your birth card free →
