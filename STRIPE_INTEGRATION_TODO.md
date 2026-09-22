@@ -26,7 +26,7 @@ Set from Checkout Studio in
 | billing_address_collection | `"auto"` | already present |
 | phone_number_collection | `{ enabled: false }` | already present |
 | automatic_tax | `{ enabled: false }` | added (both branches) |
-| allow_promotion_codes | `true` | **changed** in the payment branch (was `false`, see below) |
+| allow_promotion_codes | `false` | **resolved 2026-09-22** — both branches; see decision 1 |
 | payment_method_collection | `"always"` | added (subscription branch only, per Stripe rule) |
 | submit_type | `"auto"` | added (both branches) |
 | origin_context | `"web"` | added (both branches) |
@@ -34,10 +34,10 @@ Set from Checkout Studio in
 
 ## Decisions to confirm
 
-1. **allow_promotion_codes: true on the $19 payment branch.** Cass set it to `false` on
-   2026-09-01 with the comment "No public promo code exists; the field only sends buyers
-   hunting for one" (kept through 1c5f831 on 2026-09-08). Checkout Studio says `true`, so the
-   hosted page will now show a promo-code field. Revert the one line if that was not intended.
+1. **allow_promotion_codes: false — resolved 2026-09-22.** No public promo code exists;
+   the field only sends buyers hunting for one (restoring Cass 2026-09-01 decision after
+   Checkout Studio import flipped it). Both call sites in
+   `app/checkout/[offer]/session/route.ts` are `false` again.
 2. **ui_mode omitted.** Stripe SDK is 22.3.0 (>= 21), so the value would be `"hosted_page"`,
    which is already the default and matches current behaviour (303 redirect to
    checkout.stripe.com). It was left out because `scripts/calculator-deep-dive.test.ts:154`
@@ -56,9 +56,8 @@ Set from Checkout Studio in
 
 ## Next steps
 
-1. Decide on item 1 above.
+1. Decision 1 resolved 2026-09-22: promo-code field stays off.
 2. Commit, then ship via `/ship`; afterwards run `/checkout-check`.
-3. Test cards: `4242 4242 4242 4242` (any future expiry, any CVC) in test mode;
-   promo-code field can be checked with a test coupon.
+3. Test cards: `4242 4242 4242 4242` (any future expiry, any CVC) in test mode.
 4. Resources: https://docs.stripe.com/payments/checkout, https://support.stripe.com,
    https://docs.stripe.com/mcp

@@ -253,7 +253,7 @@ export async function POST(
             phone_number_collection: {
               enabled: false,
             },
-            allow_promotion_codes: true,
+            allow_promotion_codes: false,
             billing_address_collection: "auto",
             automatic_tax: { enabled: false },
             payment_method_collection: "always",
@@ -273,7 +273,7 @@ export async function POST(
             phone_number_collection: {
               enabled: false,
             },
-            allow_promotion_codes: true,
+            allow_promotion_codes: false,
             billing_address_collection: "auto",
             automatic_tax: { enabled: false },
             submit_type: "auto",
