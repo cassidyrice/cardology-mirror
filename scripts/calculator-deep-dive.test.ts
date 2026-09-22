@@ -260,6 +260,14 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(home).not.toContain("buildYearBlueprint");
   expect(home).not.toContain("52xSeven");
   expect(home.indexOf("<LandingCalculator />")).toBeLessThan(home.indexOf("One Question Reading"));
+  expect(home).not.toContain("/products/blueprint-report");
+  expect(home).not.toContain("Blueprint Report");
+  const reportPage = read("app/products/blueprint-report/page.tsx");
+  expect(reportPage).toContain("Optional deep report");
+  expect(reportPage).toContain('href="/birth-card-calculator"');
+  expect(reportPage).toContain("ONE_QUESTION_TURNAROUND");
+  expect(reportPage).toContain("DEEP_DIVE_PRODUCT_NAME");
+  expect(reportPage).not.toContain("Deep Dive");
   // The retired product URL answers with an edge 301. The page is not built.
   expect(middleware).toContain('"/products/52xseven-blueprint": "/products/one-question-reading"');
   expect(existsSync(join(root, "app/products/52xseven-blueprint/page.tsx"))).toBe(false);
@@ -270,29 +278,31 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");
 });
 
-test("shared calculator result leads with report + consultation, then report only, then the $13 reading", () => {
-  // Primary ask is the featured tier; the two cheaper paths are text links below it.
-  expect(calculator).toContain("<ReportCheckoutButton");
-  expect(calculator).toContain("slug={CONSULT_SLUG}");
-  expect(calculator).toContain('placement="birth-card-calculator-result"');
+test("shared calculator result keeps free links ahead of the $13 reading and does not pitch the Blueprint Report", () => {
+  const resultStart = calculator.indexOf("function BirthCardResultCard");
+  const resultEnd = calculator.indexOf("type Lens");
+  const result = calculator.slice(resultStart, resultEnd).replaceAll("Card Blueprints", "");
+  expect(result).not.toMatch(/Blueprint|Deep Dive/);
+  expect(result).not.toContain("<ReportCheckoutButton");
+  expect(result).not.toContain("CONSULT_SLUG");
+  expect(result).toContain("DEEP_DIVE_PRODUCT_NAME");
+  expect(result).toContain("ONE_QUESTION_TURNAROUND");
+  expect(result).toContain("A mirror, not a forecast.");
   expect(calculator).toContain("reveal.birthdate");
   expect(calculator).toContain("date={date}");
   expect(calculator).toContain("date || reveal.birthdate");
-  expect(calculator).toContain("then {CONSULT_MINUTES} minutes with Cass to talk it through.");
-  expect(calculator).toContain("Just the report, no call?");
-  expect(calculator).toContain("Ask one question, {DEEP_DIVE_PRICE_LABEL} →");
-  expect(calculator.indexOf("slug={CONSULT_SLUG}")).toBeLessThan(calculator.indexOf('variant="link"'));
-  expect(calculator.indexOf('variant="link"')).toBeLessThan(calculator.indexOf("DEEP_DIVE_PRODUCT_PATH}"));
   expect(calculator).not.toContain("<DeepDiveCta");
   expect(calculator).not.toContain("What do you want to ask about it?");
   // The card's own watch-for line is the bridge into the ask.
   expect(calculator).toContain("bible.watchFor");
-  expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
-    calculator.indexOf('placement="birth-card-calculator-result"'),
+  expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
+    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
   );
-  // Free exits (card meaning, whole year, born-on page) sit below the offer.
-  expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
-    calculator.indexOf("`/birth-card/${slug}`"),
+  expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
+    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
+  );
+  expect(calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}")).toBeLessThan(
+    calculator.indexOf("<CurrentPeriod"),
   );
   expect(calculator).not.toContain("personal-card-blueprint");
   expect(calculator).not.toContain("personalCheckoutHref");
@@ -323,7 +333,7 @@ test("shared calculator result leads with report + consultation, then report onl
   expect(calculator).toContain("Real customer words, shared with permission.");
   // The $13 CTA follows the free one-line read; the 52-day box sits below it
   // (2026-09-01: 1,149 completions → 41 taps when the CTA was two screens down).
-  expect(calculator.indexOf('placement="birth-card-calculator-result"')).toBeLessThan(
+  expect(calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
   expect(calculator).toContain("<OneLineRead");
@@ -358,6 +368,8 @@ test("conversion chrome and card meanings use one $13 One Question Reading offer
   expect(footer).not.toContain("Deep Dive ($9)");
   expect(footer).not.toContain("Blueprint Breakdown");
   expect(footer).toContain("/products/one-question-reading");
+  expect(footer).not.toContain("/products/blueprint-report");
+  expect(footer).not.toContain("Blueprint Report");
   expect(footer).not.toContain("Content Calendar");
   expect(footer).not.toContain('href="/products/personal-card-blueprint"');
   expect(footer).not.toContain("(other product)");

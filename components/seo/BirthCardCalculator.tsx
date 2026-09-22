@@ -19,10 +19,10 @@ import { CurrentPeriod } from "./CurrentPeriod";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
   DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
-import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
-import { CONSULT_MINUTES, CONSULT_SLUG } from "@/lib/blueprint-report";
 import { cardBibleAny } from "@/lib/card-bible";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
@@ -247,59 +247,7 @@ function BirthCardResultCard({
         </div>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      {!isJoker && <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
-        {bible?.watchFor && (
-          <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
-            {bible.watchFor}
-          </p>
-        )}
-        <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
-          That is one card. The Blueprint Report is the whole year: your cards with the math shown, the boards dealt by hand, then {CONSULT_MINUTES} minutes with Cass to talk it through.
-        </p>
-        <ReportCheckoutButton
-          slug={CONSULT_SLUG}
-          className="mt-4"
-          placement="birth-card-calculator-result"
-          birthdate={date || reveal.birthdate}
-        />
-        <p className="mt-3 text-center text-xs leading-relaxed text-brand-ink-faint">
-          No model writes it. Same birthday and reading date, same cards.
-        </p>
-        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
-          Just the report, no call?{" "}
-          <ReportCheckoutButton
-            variant="link"
-            placement="birth-card-calculator-result-report-only"
-            birthdate={date || reveal.birthdate}
-            className="text-brand-ink"
-          />
-        </p>
-        <p className="mt-2 text-center text-sm leading-relaxed text-brand-ink-soft">
-          Have one specific decision instead?{" "}
-          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
-            Ask one question, {DEEP_DIVE_PRICE_LABEL} →
-          </Link>
-        </p>
-      </div>}
-      {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
-      {(() => {
-        const t = testimonialForCard(bc?.label);
-        return (
-          <figure className="mt-4 max-w-md text-center">
-            <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
-              <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
-              {testimonialByline(t)}
-            </figcaption>
-            <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
-              Real customer words, shared with permission. Individual reflections, not typical-results claims.
-            </p>
-          </figure>
-        );
-      })()}
-      <div className="mt-2 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
         {slug && (
           <Link
             href={`/birth-card/${slug}`}
@@ -323,6 +271,42 @@ function BirthCardResultCard({
         )}
         <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
       </div>
+      {!isJoker && <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
+        {bible?.watchFor && (
+          <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
+            {bible.watchFor}
+          </p>
+        )}
+        <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
+          One decision on your mind?
+        </p>
+        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
+          The {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your birth card and this year, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
+        </p>
+        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
+            {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+          </Link>
+        </p>
+      </div>}
+      {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
+      {(() => {
+        const t = testimonialForCard(bc?.label);
+        return (
+          <figure className="mt-4 max-w-md text-center">
+            <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
+              <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
+              {testimonialByline(t)}
+            </figcaption>
+            <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
+              Real customer words, shared with permission. Individual reflections, not typical-results claims.
+            </p>
+          </figure>
+        );
+      })()}
     </div>
   );
 }

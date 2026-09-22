@@ -41,6 +41,8 @@ test("bare footer keeps the single disclaimer and legal row", () => {
   expect(markup).toContain('href="/privacy-policy"');
   expect(occurrences(markup, 'href="/content-engine"')).toBe(0);
   expect(occurrences(markup, 'href="/products/one-question-reading"')).toBe(1);
+  expect(occurrences(markup, 'href="/products/blueprint-report"')).toBe(0);
+  expect(markup).not.toContain("Blueprint Report");
   expect(markup).not.toContain('href="/products/52xseven-blueprint"');
   expect(markup).not.toContain("Content Calendar (experiment)");
 });

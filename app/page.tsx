@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BLUEPRINT_REPORT_PRODUCT_PATH, BLUEPRINT_REPORT_PRICE_LABEL, CONSULT_PRICE_LABEL } from "@/lib/blueprint-report";
 
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
 import {
@@ -62,20 +61,6 @@ export default function Home() {
             <Link href="/explore">Explore the free library →</Link>
           </div>
         </div>
-
-        <section aria-labelledby="home-report-title" className="home-product">
-          <div className="home-product-copy">
-            <p className="home-kicker">Blueprint Report</p>
-            <h2 id="home-report-title">See the math.<br />Deal it yourself.</h2>
-            <p className="home-product-lead">Your birth card, your year, and the full boards behind them. See where your card comes from, then reproduce the boards with an ordinary deck. No model writes this report.</p>
-            <div className="home-offer"><span className="home-price">{BLUEPRINT_REPORT_PRICE_LABEL}</span><div>The full personal report.<small>Or {CONSULT_PRICE_LABEL} with a 45-minute consultation with Cass.</small></div></div>
-            <Link className="home-product-link" href={BLUEPRINT_REPORT_PRODUCT_PATH}>See the report and both options <span aria-hidden="true">↗</span></Link>
-            <p className="home-purchase-note">Read online or save as PDF. With the consultation option, send a short request after payment and Cass will arrange your call personally.</p>
-          </div>
-          <aside className="home-product-preview" aria-label="Blueprint Report sample">
-            <img src="/brand/report-page-20.png" alt="Sample report page showing the birthday calculation and all 52 card seats" width={850} height={1054} loading="lazy" className="h-auto w-full" />
-          </aside>
-        </section>
 
         <section aria-labelledby="home-reading-title" className="home-product">
           <div className="home-product-copy">

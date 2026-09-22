@@ -85,6 +85,12 @@ describe("application sitemap integrity", () => {
     expect(entriesByUrl.has(`${SITE_URL}/`)).toBe(false);
   });
 
+  test("omits the optional Blueprint Report so the sitemap keeps the $13 reading primary", () => {
+    expect(MARKETING_PATHS).not.toContain("/products/blueprint-report");
+    expect(entriesByUrl.has(`${SITE_URL}/products/blueprint-report`)).toBe(false);
+    expect(entriesByUrl.has(`${SITE_URL}/products/one-question-reading`)).toBe(true);
+  });
+
   test("excludes Worker-owned birthday and compatibility namespaces", () => {
     for (const entry of entries) {
       const pathname = new URL(entry.url).pathname;

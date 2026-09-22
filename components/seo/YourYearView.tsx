@@ -5,8 +5,6 @@ import Link from "next/link";
 
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
-import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
-import { CONSULT_SLUG } from "@/lib/blueprint-report";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { parseCard, todayISO } from "@/lib/cards";
 import {

@@ -15,7 +15,12 @@ import {
   CONSULT_PRICE_LABEL,
   CONSULT_SLUG,
 } from "@/lib/blueprint-report";
-import { DEEP_DIVE_PRICE_LABEL, DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
+import {
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
 import { buildProductJsonLd } from "@/lib/product-schema";
 import { publicProductBySlug } from "@/lib/products";
 import { SITE_NAME } from "@/lib/site";
@@ -25,7 +30,7 @@ const consult = publicProductBySlug(CONSULT_SLUG);
 if (!report || !consult) throw new Error("Blueprint Report tiers are missing from PUBLIC_PRODUCTS");
 
 const title = `${BLUEPRINT_REPORT_NAME}: your whole year in cards, the math shown`;
-const description = `A personal Cardology report computed from your birthday and purchase date: this year's periods, the seven-year cycle, the full boards, the derivation of your card, and how to deal every board by hand. No model writes it. ${BLUEPRINT_REPORT_PRICE_LABEL} for the report, ${CONSULT_PRICE_LABEL} with ${CONSULT_MINUTES} minutes live with Cass.`;
+const description = `Optional deep report, not the usual next step. A personal Cardology document computed from your birthday and purchase date: this year's periods, the seven-year cycle, the full boards, the derivation of your card, and how to deal every board by hand. No model writes it. ${BLUEPRINT_REPORT_PRICE_LABEL} for the report, ${CONSULT_PRICE_LABEL} with ${CONSULT_MINUTES} minutes live with Cass. The usual path is the free birth card calculator, then the ${DEEP_DIVE_PRICE_LABEL} One Question Reading.`;
 
 export const metadata: Metadata = {
   title,
@@ -124,7 +129,7 @@ export default function BlueprintReportPage() {
 
       <SeoHeroFan codes={["8♦", "Q♠", "5♣"]} className="mb-5" />
       <p className="type-eyebrow mb-3 !text-brand-bronze">
-        Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
+        Optional deep report · from {BLUEPRINT_REPORT_PRICE_LABEL} · not the usual next step
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">The math shown. Deal it yourself. Then talk it through.</h1>
       <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
@@ -134,6 +139,17 @@ export default function BlueprintReportPage() {
         formula for your own birthday. The other shows you how to deal every board with a real
         deck, so nothing here asks for your trust. Then, if you want, {CONSULT_MINUTES} minutes
         with Cass to walk the year together.
+      </p>
+      <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
+        Find your card with the{" "}
+        <Link href="/birth-card-calculator" className="text-brand-ink underline underline-offset-4">
+          free birth card calculator
+        </Link>
+        . If you have one decision, the{" "}
+        <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-ink underline underline-offset-4">
+          {DEEP_DIVE_PRODUCT_NAME}
+        </Link>{" "}
+        is {DEEP_DIVE_PRICE_LABEL}, written within {ONE_QUESTION_TURNAROUND}. Stay on this page only if you want the whole year written out.
       </p>
 
       <section aria-label="The two pages the report is built around" className="mb-8">
@@ -263,9 +279,14 @@ export default function BlueprintReportPage() {
           </p>
         </div>
         <p className="mt-4 text-sm text-brand-ink-soft">
-          Have one specific decision instead of a whole year?{" "}
+          One decision, not the whole year?{" "}
           <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-oxblood underline underline-offset-4">
-            Ask one question, {DEEP_DIVE_PRICE_LABEL} →
+            {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+          </Link>
+        </p>
+        <p className="mt-2 text-sm text-brand-ink-soft">
+          <Link href="/birth-card-calculator" className="text-brand-ink underline underline-offset-4">
+            Free birth card calculator →
           </Link>
         </p>
       </section>

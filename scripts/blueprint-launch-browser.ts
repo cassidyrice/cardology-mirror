@@ -25,9 +25,10 @@ try {
     assert.equal(await page.locator("h1").count(), 1, path); checks++;
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${path}: mobile overflow`); checks++;
     if (path === "/") {
-      assert.ok(await page.getByRole("link", { name: "See the report and both options" }).isVisible());
+      assert.equal(await page.getByRole("link", { name: "See the report and both options" }).count(), 0);
       assert.ok(await page.getByRole("link", { name: "Read a sample, then ask yours" }).isVisible());
-      assert.ok(!(await page.locator("body").innerText()).includes("Written by hand")); checks += 3;
+      assert.ok(!(await page.locator("body").innerText()).includes("Blueprint Report"));
+      assert.ok(!(await page.locator("body").innerText()).includes("Written by hand")); checks += 4;
     }
     if (path === "/products/blueprint-report") {
       const data = await page.locator('script[type="application/ld+json"]').allTextContents();

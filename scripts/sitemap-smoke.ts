@@ -53,6 +53,11 @@ for (const path of REQUIRED_PATHS) {
   }
 }
 
+const legacyReport = `${SITE_URL}/products/blueprint-report`;
+if (locs.has(legacyReport)) {
+  fail(`optional Blueprint Report must stay off the main sitemap: ${legacyReport}`);
+}
+
 console.log(
   `sitemap-smoke OK: ${entries.length} URLs, ${xml.length} bytes, urlset well-formed`,
 );

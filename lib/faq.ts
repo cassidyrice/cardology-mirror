@@ -1,4 +1,3 @@
-import { CONSULT_MINUTES, CONSULT_PRICE_LABEL } from "@/lib/blueprint-report";
 import {
   DEEP_DIVE_FULFILLMENT,
   DEEP_DIVE_PRICE_LABEL,
@@ -6,7 +5,6 @@ import {
   DEEP_DIVE_PRODUCT_PATH,
   ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
-import { INSTANT_REPORT_PRODUCTS } from "@/lib/products";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const FAQ_PATH = "/faq" as const;
@@ -30,12 +28,6 @@ export type FaqSection = {
   items: readonly FaqItem[];
 };
 
-function offer(slug: string) {
-  const found = INSTANT_REPORT_PRODUCTS.find((product) => product.slug === slug);
-  if (!found) throw new Error(`missing product ${slug}`);
-  return found;
-}
-
 function readingAnswer(): string {
   if (
     !DEEP_DIVE_FULFILLMENT.includes(ONE_QUESTION_TURNAROUND) ||
@@ -45,9 +37,6 @@ function readingAnswer(): string {
   }
   return DEEP_DIVE_FULFILLMENT;
 }
-
-const blueprintReport = offer("blueprint-report");
-const blueprintConsult = offer("blueprint-report-consult");
 
 export const FAQ_SECTIONS: readonly FaqSection[] = [
   {
@@ -190,15 +179,6 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
         answer:
           "No. It is a mirror, not a forecast. Same birthday, same cards, every time; what they mean beside your question is the part that takes a person. Nothing here predicts events, lucky days, or other people's choices.",
         links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
-      {
-        id: "other-products",
-        question: "What else is for sale?",
-        answer: `The Blueprint Report is ${blueprintReport.priceLabel}. ${blueprintReport.turnaround} The same report with a ${CONSULT_MINUTES}-minute live consultation is ${CONSULT_PRICE_LABEL}. ${blueprintConsult.turnaround} Both are one-time purchases, as is the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`,
-        links: [
-          { href: "/products/blueprint-report", label: "Blueprint Report" },
-          { href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME },
-        ],
       },
       {
         id: "order-help",
