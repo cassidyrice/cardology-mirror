@@ -41,6 +41,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
           title={cardTitle(interp.name)}
           size="md"
           active
+          surface="paper"
           frameBorder="border-brand-line"
         />
         <div className="min-w-0">
@@ -67,7 +68,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
 
       {prc.card && prc.card !== bc.card && (
         <div className="mt-6 flex items-center gap-3 border-t border-brand-line pt-5">
-          <PlayingCard code={prc.card} subtitle="Ruling" size="sm" frameBorder="border-brand-line" />
+          <PlayingCard code={prc.card} subtitle="Ruling" size="sm" surface="paper" frameBorder="border-brand-line" />
           <p className="text-[0.9rem] leading-relaxed text-brand-ink-soft">
             Your ruling line today runs through{" "}
             <span className="text-brand-ink">

@@ -84,6 +84,7 @@ export default function SelfPage() {
               subtitle="Birth Card"
               title={desc.title}
               className="animate-drift"
+              surface="paper"
               frameBorder="border-brand-line"
             />
             <PlayingCard
@@ -91,6 +92,7 @@ export default function SelfPage() {
               size="md"
               subtitle="Ruling Card"
               title={prcDesc.title}
+              surface="paper"
               frameBorder="border-brand-line"
             />
           </div>

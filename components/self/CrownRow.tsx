@@ -16,6 +16,7 @@ export function CrownRow({ crown }: { crown: string[] }) {
             size="sm"
             subtitle={c?.suit.toUpperCase()}
             title={c?.rank}
+            surface="paper"
             frameBorder="border-brand-line"
           />
         );

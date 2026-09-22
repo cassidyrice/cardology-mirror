@@ -119,8 +119,8 @@ export default function BondsPage() {
             {!ready ? null : (
               <div className="pt-6 text-center">
                 <div className="mx-auto mb-5 flex items-center justify-center gap-3 opacity-60">
-                  <div className="h-20 w-14 rotate-[-8deg] rounded-lg border border-brand-line bg-gradient-to-br from-haze to-cosmos" />
-                  <div className="h-20 w-14 rotate-[8deg] rounded-lg border border-brand-line bg-gradient-to-br from-haze to-cosmos" />
+                  <div className="h-20 w-14 rotate-[-8deg] rounded-lg border border-brand-line bg-brand-ivory" />
+                  <div className="h-20 w-14 rotate-[8deg] rounded-lg border border-brand-line bg-brand-ivory" />
                 </div>
                 <p className="prose-reading text-sm text-brand-ink-soft">
                   Enter two birthdates to lay the cards side by side. Cardology
@@ -175,6 +175,7 @@ export default function BondsPage() {
                 subtitle={effectiveAName || "You"}
                 title={readingA.data!.archetype.description.title}
                 className="animate-drift"
+                surface="paper"
                 frameBorder="border-brand-line"
               />
               <PlayingCard
@@ -182,6 +183,7 @@ export default function BondsPage() {
                 size="lg"
                 subtitle={bName || "Them"}
                 title={readingB.data!.archetype.description.title}
+                surface="paper"
                 frameBorder="border-brand-line"
               />
             </div>
