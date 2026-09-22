@@ -24,6 +24,7 @@ import {
   INSTANT_REPORT_PRODUCTS,
   PUBLIC_PRODUCTS,
   READING_OFFERS,
+  checkoutProductBySlug,
   instantReportFacts,
   productBySlug,
   publicProductBySlug,
@@ -168,14 +169,15 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
   [
-    "cardology-membership",
     "blueprint-report-consult",
     "blueprint-report",
     "analog-algorithm",
     "complete-card-blueprint",
   ],
 );
-assert.equal(publicProductBySlug("cardology-membership")?.kind, "membership");
+assert.equal(publicProductBySlug("cardology-membership"), undefined, "retired membership must not open new checkout");
+assert.equal(productBySlug("cardology-membership")?.kind, "membership", "retired membership must still resolve for historical sessions");
+assert.equal(checkoutProductBySlug("cardology-membership"), undefined, "retired membership must not open a Stripe session");
 assert.equal(publicProductBySlug("blueprint-report-consult")?.kind, "instant_report");
 assert.equal(publicProductBySlug("blueprint-report")?.kind, "instant_report");
 assert.equal(publicProductBySlug("personal-card-blueprint"), undefined, "retired $13 report must not open new checkout");
