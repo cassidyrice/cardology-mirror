@@ -82,10 +82,10 @@ export function PeriodRow({
 
           <div className="flex shrink-0 items-end gap-2">
             <div className="text-center">
-              <PlayingCard code={bcDetail.card} size="sm" frameBorder="border-brand-line" />
+              <PlayingCard code={bcDetail.card} size="sm" surface="paper" frameBorder="border-brand-line" />
             </div>
             <div className="text-center">
-              <PlayingCard code={prcDetail.card} size="sm" frameBorder="border-brand-line" />
+              <PlayingCard code={prcDetail.card} size="sm" surface="paper" frameBorder="border-brand-line" />
             </div>
           </div>
 

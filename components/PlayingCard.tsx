@@ -1,6 +1,7 @@
 "use client";
 
 // Shared card visual. Agent 9 owns/enhances this; keep the prop contract stable.
+import { useState } from "react";
 import { parseCard, suitColorOnPaper } from "@/lib/cards";
 import { CardFace } from "@/components/cards/CardFace";
 import { CardBack } from "@/components/cards/CardBack";
@@ -11,9 +12,11 @@ export interface PlayingCardProps {
   subtitle?: string;       // e.g. "Birth Card"
   size?: "sm" | "md" | "lg";
   className?: string;
+  // Paper fill and ink line. Dark (the default) keeps the haze/cosmos frame
+  // for /onboarding. The shell no longer repaints .card-frame.
   surface?: "dark" | "paper";
-  // Paper-shell mounts pass border-brand-line. The default stays the dark
-  // frame so /onboarding and the homepage hero keep border-white/10.
+  // Optional border override. Paper defaults to border-brand-line.
+  // Dark defaults to border-white/10.
   frameBorder?: string;
   // --- optional enhancements (all backward-compatible) ---
   active?: boolean;        // gold halo — marks the current period
@@ -30,8 +33,6 @@ const SIZES = {
   lg: "h-48 w-36",
 } as const;
 
-import { useState } from "react";
-
 export function PlayingCard({
   code,
   title,
@@ -39,7 +40,7 @@ export function PlayingCard({
   size = "md",
   className = "",
   surface = "dark",
-  frameBorder = "border-white/10",
+  frameBorder,
   active = false,
   glow = false,
   float = false,
@@ -58,6 +59,8 @@ export function PlayingCard({
   const showBack = flippable ? flipped : faceDown;
   const haloed = active || glow;
   const interactive = flippable || !!onClick;
+  const paper = surface === "paper";
+  const borderClass = frameBorder ?? (paper ? "border-brand-line" : "border-white/10");
 
   const handleClick = () => {
     if (flippable) setFlipped((f) => !f);
@@ -81,14 +84,15 @@ export function PlayingCard({
             : undefined
         }
         className={[
-          "card-frame relative rounded-xl border",
-          frameBorder,
-          "bg-gradient-to-br from-haze to-cosmos",
+          paper
+            ? "relative rounded-xl border bg-brand-ivory"
+            : "card-frame relative rounded-xl border bg-gradient-to-br from-haze to-cosmos",
+          borderClass,
           "shadow-lg transition-transform duration-300",
           SIZES[size],
           float ? "animate-drift" : "",
           interactive ? "cursor-pointer hover:-translate-y-0.5 active:scale-[0.98]" : "",
-          haloed ? "ring-1 ring-gold/60" : "",
+          haloed ? (paper ? "ring-1 ring-brand-gold/60" : "ring-1 ring-gold/60") : "",
         ].join(" ")}
         style={{
           boxShadow: haloed
@@ -96,7 +100,7 @@ export function PlayingCard({
             : `0 8px 30px -12px ${c.color}66`,
         }}
       >
-        {showBack ? <CardBack /> : <CardFace card={c} size={size} paper={surface === "paper"} />}
+        {showBack ? <CardBack /> : <CardFace card={c} size={size} paper={paper} />}
       </div>
 
       {(title || subtitle) && (

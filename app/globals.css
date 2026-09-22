@@ -151,12 +151,14 @@ body {
   backdrop-filter: blur(8px);
 }
 
+/* Clipped foil. The shell copy painted oxblood → copper → gold
+   (it aliased --rust to --oxblood). That gradient lives here now. */
 .foil-text {
-  background: linear-gradient(135deg, #d9b26a 0%, #f4e3b8 45%, #b8893f 100%);
+  background: linear-gradient(135deg, var(--oxblood) 0%, #c77e63 48%, var(--gold) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent !important;
 }
 
 /* star-field for cosmic backgrounds */
@@ -623,18 +625,6 @@ body {
 
 .paper-shell .hairline {
   border-color: var(--line);
-}
-
-.paper-shell .card-frame {
-  border-color: rgba(20, 17, 13, 0.25) !important;
-  background: rgba(244, 240, 231, 0.94) !important;
-}
-
-.paper-shell .foil-text {
-  background: linear-gradient(135deg, var(--rust) 0%, #c77e63 48%, var(--gold) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
 }
 
 .paper-shell input,

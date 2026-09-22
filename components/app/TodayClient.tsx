@@ -133,6 +133,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           subtitle="Birth card"
           title={cardTitle(ap.interpretation_bc.name)}
           size="md"
+          surface="paper"
           frameBorder="border-brand-line"
         />
         <PlayingCard
@@ -140,6 +141,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           subtitle="Ruling card"
           title={cardTitle(ap.interpretation_prc.name)}
           size="md"
+          surface="paper"
           frameBorder="border-brand-line"
         />
       </motion.div>
