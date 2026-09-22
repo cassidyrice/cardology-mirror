@@ -176,12 +176,24 @@ export default function WhatIsCardology() {
       <SeoHeroFan className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
       <div className="mb-4 scroll-mt-24 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary id="what-it-is">
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
-        <p className="prose-reading text-brand-ink-soft">
-          Cardology is a birthday-to-playing-card system: your month and day map to
-          one card in a standard 52-card deck (not tarot). That card is pattern
-          language for personality, compatibility, and timing. Same birthday, same
-          card — every time. Not cardiology, and not a fate prediction.
+        <h2 className="font-serif text-2xl text-brand-ink">What is Cardology?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          Cardology maps your birthday to one card in a standard 52-card playing
+          deck. Same date, same card, every time. That card is a mirror for
+          personality, compatibility, and timing — not cardiology, not tarot, and
+          not a forecast.
+        </p>
+        <p className="prose-reading mt-3 text-sm text-brand-ink-soft">
+          The free calculator on this page returns the card. The longer split with
+          tarot is{" "}
+          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
+            Cardology vs tarot
+          </Link>
+          . A guided path is{" "}
+          <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">
+            Cardology for beginners
+          </Link>
+          .
         </p>
       </div>
       <p className="mb-2 text-sm text-brand-ink-soft">

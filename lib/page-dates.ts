@@ -8,7 +8,7 @@ export const FALLBACK_PAGE_UPDATED = "2026-07-12";
  * bylines and sitemap lastmod — change here only.
  */
 export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string> = {
-  "/": "2026-09-01",
+  "/": "2026-09-22",
   "/about": "2026-08-17",
   "/videos": "2026-07-29",
   "/blog": "2026-07-12", // sitemap uses newest post date; value unused at runtime
@@ -20,7 +20,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/cardology-compatibility": "2026-09-22",
   "/products/one-question-reading": "2026-09-13",
   "/free-course": "2026-08-07",
-  "/what-is-cardology": "2026-09-15",
+  "/what-is-cardology": "2026-09-22",
   "/cardology-books": "2026-09-15",
   "/cardology-for-beginners": "2026-09-22",
   "/cardology-vs-tarot": "2026-08-07",

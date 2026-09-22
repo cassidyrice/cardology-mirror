@@ -68,21 +68,29 @@ export default function CompatibilityPage() {
 
       <SeoHeroFan codes={["Q♦", "A♥"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Compatibility: Two Birth Cards, One Map</h1>
-      <p className="mb-4 text-sm text-brand-ink-soft">
-        Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
-      </p>
-
-      <CompatibilityCalculator />
-
-      <div className="mb-6 mt-8 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
-        <p className="prose-reading text-brand-ink-soft">
+      <section id="what-is-compatibility" className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
+        <h2 className="font-serif text-2xl text-brand-ink">What is Cardology compatibility?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Cardology compatibility compares two birthday-locked playing cards and the
           Life Path roles underneath them — where you land in each other&rsquo;s map —
-          rather than a single compatibility percentage.
+          rather than a single compatibility percentage. Same date, same card.
+          Playing cards, not tarot. A mirror of how two patterns meet, not a forecast.
         </p>
-      </div>
-      <p className="prose-reading mb-6 text-brand-ink-soft">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          It is not astrology synastry. That framing lives in{" "}
+          <Link href="/52-card-astrology-explained" className="text-brand-oxblood underline underline-offset-4">
+            52-card astrology explained
+          </Link>
+          . The birthday map itself is{" "}
+          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
+            what Cardology is
+          </Link>
+          . The free calculator below takes two birthdays.
+        </p>
+      </section>
+
+      <CompatibilityCalculator />
+      <p className="prose-reading mb-6 mt-8 text-brand-ink-soft">
         Start with two birth cards, then go sharper with the Life Path. The useful
         question is not only &ldquo;are these cards compatible?&rdquo; It is: where does this
         person land in my constitution, where do I land in theirs, and which cards

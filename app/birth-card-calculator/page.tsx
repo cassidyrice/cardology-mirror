@@ -173,8 +173,9 @@ export default function CalculatorPage() {
           Cardology Chart & Birth Card Calculator
         </h1>
         <p className="prose-reading text-brand-ink-soft" data-ai-summary>
-          Enter a birthday for the playing card — 52-card system, not tarot.
-          Same date, same card. Or read the{" "}
+          Your birthday maps to one playing card in a standard 52-card deck.
+          Same date, same card — a mirror of a fixed pattern, not tarot, not
+          cardiology, and not a forecast. Enter a birthday below, or read the{" "}
           <a href="#cardology-chart" className="text-brand-oxblood underline underline-offset-4">full Cardology chart</a>{" "}
           for all 366 birthdays.
         </p>
@@ -183,6 +184,27 @@ export default function CalculatorPage() {
       <div className="mt-5">
         <BirthCardCalculator />
       </div>
+
+      <section id="what-is-a-birth-card" className="mt-8 max-w-2xl scroll-mt-10">
+        <h2 className="font-serif text-2xl text-brand-ink">What is a birth card in Cardology?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          It is the one playing card your month and day lock to for life. The year
+          does not change the card. Suit names the life domain; rank names how that
+          domain moves. The result is a mirror you can check, not a prediction.
+        </p>
+        <p className="prose-reading mt-3 text-brand-ink-soft">
+          Two people born on the same date share the card. How two cards meet is on
+          the{" "}
+          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
+            Cardology compatibility
+          </Link>{" "}
+          page. Why the word is not cardiology is on{" "}
+          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
+            what is Cardology
+          </Link>
+          .
+        </p>
+      </section>
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
         Optional paid step after the free card:{" "}
@@ -229,6 +251,7 @@ export default function CalculatorPage() {
 
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
         {[
+          ["#what-is-a-birth-card", "What is a birth card?"],
           ["#how-it-works", "How it works"],
           ["#cardology-chart", "Cardology Chart"],
           ["#worked-example", "Worked example"],
