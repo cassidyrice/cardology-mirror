@@ -2,7 +2,7 @@ import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
-import { endOfPageReads } from "../app/birth-card/[slug]/page";
+import { endOfPageReads } from "../lib/end-of-page-reads";
 import { allCardSeo, cardBySlug } from "../lib/seo-cards";
 
 const root = join(import.meta.dir, "..");
@@ -20,6 +20,8 @@ test("birth-card pages close with related reads and one soft reading line", () =
   expect(meaning).not.toContain("Deep Dive");
   expect(meaning).not.toContain("sticky");
   expect(meaning).not.toContain('role="dialog"');
+  expect(meaning).not.toMatch(/^export\s+(async\s+)?function\s+endOfPageReads\b/m);
+  expect(meaning).not.toMatch(/^export\s*\{[^}]*\bendOfPageReads\b/m);
 });
 
 test("compatibility continues from the birthday already stored in this tab", () => {

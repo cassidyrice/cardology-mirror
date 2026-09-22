@@ -36,6 +36,7 @@ import {
 } from "@/lib/seo-cards";
 import { SUIT_COLOR_PAPER, type Suit } from "@/lib/cards";
 import { compatForCard } from "@/lib/compat-pairs";
+import { endOfPageReads } from "@/lib/end-of-page-reads";
 import { famousForCard } from "@/lib/famous-birthdays";
 import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
@@ -758,36 +759,6 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
       </p>
     </Section>
   );
-}
-
-export function endOfPageReads(card: CardSeo, siblings: CardSeo[]) {
-  const sameSuit = siblings.filter((c) => c.suit === card.suit && c.slug !== card.slug).slice(0, 2);
-  return [
-    ...sameSuit.map((c) => ({
-      href: `/birth-card/${c.slug}`,
-      label: `${c.label} meaning`,
-      note: `same ${suitWord(card).toLowerCase()} suit`,
-      external: false,
-    })),
-    {
-      href: "/planetary-ruling-card",
-      label: "Planetary ruling card",
-      note: "the second layer on this birth card",
-      external: false,
-    },
-    {
-      href: compatHubHref(card),
-      label: `${card.label} compatibility`,
-      note: "how this card pairs",
-      external: true,
-    },
-    {
-      href: "/what-is-cardology",
-      label: "What is Cardology",
-      note: "the birthday-to-card map",
-      external: false,
-    },
-  ];
 }
 
 function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[] }) {
