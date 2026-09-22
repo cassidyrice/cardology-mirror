@@ -88,7 +88,7 @@ export default function JokerPage() {
         <h1 className="display mb-0 text-3xl text-brand-ink">The Joker: The December 31 Birth Card</h1>
       </div>
 
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           December 31 is the only birthday in the year that does not map to one of the 52 cards.

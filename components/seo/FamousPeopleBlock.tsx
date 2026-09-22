@@ -22,7 +22,7 @@ export function FamousPeopleBlock({
         </p>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2">
           {people.map((person) => (
-            <li key={person.qid} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-sm">
+            <li key={person.qid} className="rounded-xl border border-white/10 bg-brand-ivory/70 px-3 py-2 text-sm">
               <a
                 href={person.wikipedia}
                 rel="noopener"

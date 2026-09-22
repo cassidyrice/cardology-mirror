@@ -24,10 +24,10 @@ export default function TimingPage() {
     return (
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md space-y-4 pt-24">
-          <div className="h-5 w-32 animate-pulse rounded bg-haze/60" />
-          <div className="h-10 w-3/4 animate-pulse rounded bg-haze/60" />
+          <div className="h-5 w-32 animate-pulse rounded bg-brand-ivory/70" />
+          <div className="h-10 w-3/4 animate-pulse rounded bg-brand-ivory/70" />
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-20 animate-pulse rounded-2xl bg-haze/40" />
+            <div key={i} className="h-20 animate-pulse rounded-2xl bg-brand-ivory/70" />
           ))}
           <p className="eyebrow animate-pulse pt-2">Mapping your year…</p>
         </div>

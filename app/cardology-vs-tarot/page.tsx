@@ -93,7 +93,7 @@ export default function CardologyVsTarotPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology vs Tarot</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           <strong>Cardology</strong> maps a birthday to one card in a standard 52-card
@@ -200,7 +200,7 @@ export default function CardologyVsTarotPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

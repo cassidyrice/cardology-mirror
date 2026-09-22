@@ -132,7 +132,7 @@ export default function CardologyForBeginnersPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology for Beginners</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Start Cardology by finding the playing card locked to your birthday, reading
@@ -167,7 +167,7 @@ export default function CardologyForBeginnersPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">The 10-minute path</h2>
         <ol className="space-y-4">
           {steps.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <li key={s.n} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <p className="text-xs font-bold uppercase tracking-[0.14em] !text-brand-bronze">
                 Step {s.n}
               </p>
@@ -248,7 +248,7 @@ export default function CardologyForBeginnersPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Beginner FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

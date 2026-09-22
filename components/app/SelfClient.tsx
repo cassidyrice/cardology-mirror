@@ -21,7 +21,7 @@ export default function SelfPage() {
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md">
           <div className="flex flex-col items-center gap-4 pt-32 text-center">
-            <div className="h-48 w-36 animate-pulse rounded-xl bg-haze/60" />
+            <div className="h-48 w-36 animate-pulse rounded-xl bg-brand-ivory/70" />
             <p className="eyebrow animate-pulse">Reading your blueprint…</p>
           </div>
         </div>

@@ -200,7 +200,7 @@ function AllYearlySpreads({ highlight }: { highlight: string }) {
           if (!spread) return null;
           const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
           return (
-            <details key={n} className="rounded-xl border border-white/10 bg-white/[0.03]">
+            <details key={n} className="rounded-xl border border-white/10 bg-brand-ivory/70">
               <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
                 Spread {n}
                 <span className="text-brand-ink-soft"> \u2014 the board at age {n}{alias}</span>
@@ -274,7 +274,7 @@ export default function PlayingCardSpreads() {
       <SeoHeroFan className="mb-5" />
       <p className="eyebrow mb-3 !text-brand-bronze">The playing board · no shuffle</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
-      <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Think of a board game. The deck has two fixed boards — the{" "}
@@ -308,7 +308,7 @@ export default function PlayingCardSpreads() {
 
       <div className="grid gap-4 sm:grid-cols-3">
         {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-gold/40">
+          <Link key={s.slug} href={s.path} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4 transition hover:border-gold/40">
             <p className="font-serif text-lg text-brand-ink">{s.name}</p>
             <p className="mt-1 text-xs text-brand-ink-soft">{s.positions}</p>
             <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{s.oneLine}</p>
@@ -411,7 +411,7 @@ export default function PlayingCardSpreads() {
             </thead>
             <tbody>
               {ex.yearPeriods.map((p) => (
-                <tr key={p.planet} className={p.active ? "bg-white/[0.06]" : ""}>
+                <tr key={p.planet} className={p.active ? "bg-brand-ivory/70" : ""}>
                   <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{p.glyph}</span>
                     {p.planet}
@@ -506,7 +506,7 @@ export default function PlayingCardSpreads() {
             </thead>
             <tbody>
               {ZODIAC_TABLE.map((z) => (
-                <tr key={z.sign} className={z.sign === ex.zodiac ? "bg-white/[0.06]" : ""}>
+                <tr key={z.sign} className={z.sign === ex.zodiac ? "bg-brand-ivory/70" : ""}>
                   <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{z.glyph}</span>
                     {z.sign}
@@ -542,7 +542,7 @@ export default function PlayingCardSpreads() {
         </p>
         <div className="mt-5 space-y-3">
           {PLANET_FILTERS.map((p) => (
-            <div key={p.planet} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={p.planet} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <p className="font-serif text-lg text-brand-ink">
                 <span aria-hidden="true" className="mr-2 text-brand-bronze">{p.glyph}</span>
                 {p.planet}
@@ -565,7 +565,7 @@ export default function PlayingCardSpreads() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Spreads FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

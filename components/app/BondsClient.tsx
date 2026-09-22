@@ -137,8 +137,8 @@ export default function BondsPage() {
         {loading && (
           <div className="flex flex-col items-center gap-4 pt-16 text-center">
             <div className="flex gap-5">
-              <div className="h-44 w-32 animate-pulse rounded-xl bg-haze/60" />
-              <div className="h-44 w-32 animate-pulse rounded-xl bg-haze/60" />
+              <div className="h-44 w-32 animate-pulse rounded-xl bg-brand-ivory/70" />
+              <div className="h-44 w-32 animate-pulse rounded-xl bg-brand-ivory/70" />
             </div>
             <p className="eyebrow animate-pulse">Laying the cards…</p>
           </div>
@@ -263,13 +263,13 @@ function PersonInputs({
         value={name}
         onChange={(e) => onName(e.target.value)}
         placeholder={namePlaceholder}
-        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink placeholder:text-brand-ink-soft focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-white/10 bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink placeholder:text-brand-ink-soft focus:border-gold/40 focus:outline-none"
       />
       <input
         type="date"
         value={birthdate}
         onChange={(e) => onBirth(e.target.value)}
-        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-white/10 bg-brand-ivory/70 px-4 py-3 font-serif text-brand-ink focus:border-gold/40 focus:outline-none"
       />
     </div>
   );

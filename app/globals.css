@@ -654,14 +654,6 @@ body {
   border-color: rgba(20, 17, 13, 0.16) !important;
 }
 
-.paper-shell [class*="bg-void"],
-.paper-shell [class*="bg-haze"],
-.paper-shell [class*="bg-cosmos"],
-.paper-shell [class*="bg-white"] {
-  background-color: rgba(244, 240, 231, 0.68) !important;
-  background-image: none !important;
-}
-
 .paper-shell input,
 .paper-shell textarea,
 .paper-shell select {
