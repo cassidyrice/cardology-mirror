@@ -225,7 +225,7 @@ export default function WhatIsCardology() {
           </p>
           <Link
             href="/products/one-question-reading"
-            className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+            className="accent-button mt-4"
           >
             Ask one question — $13
           </Link>
@@ -526,7 +526,7 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/products/one-question-reading" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+          <Link href="/products/one-question-reading" className="ink-button">
             $13 One Question Reading →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-gold/30 px-5 py-2 font-serif text-sm text-brand-oxblood">

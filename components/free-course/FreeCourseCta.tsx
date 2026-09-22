@@ -44,7 +44,7 @@ export function FreeCourseCta({
         </div>
         <Link
           href={`/free-course?source=${encodeURIComponent(source)}`}
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-foil px-5 py-2.5 font-serif text-sm text-ink transition hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+          className="ink-button"
         >
           Get free access →
         </Link>

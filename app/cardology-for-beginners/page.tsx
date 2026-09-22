@@ -238,7 +238,7 @@ export default function CardologyForBeginnersPage() {
         </p>
         <Link
           href="/products/one-question-reading"
-          className="mt-4 inline-block rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:opacity-90"
+          className="accent-button mt-4"
         >
           Ask one question &mdash; $13
         </Link>

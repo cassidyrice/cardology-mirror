@@ -595,10 +595,6 @@ body {
   background: transparent !important;
 }
 
-.paper-shell .text-ink {
-  color: var(--paper) !important;
-}
-
 .paper-shell .eyebrow {
   color: var(--ink-soft);
   font-weight: 700;
@@ -645,10 +641,6 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
-}
-
-.paper-shell .bg-foil {
-  background: var(--ink) !important;
 }
 
 .paper-shell [class*="bg-gold"] {

@@ -294,7 +294,7 @@ export default function HowToReadPlayingCards() {
           picked, then use its full meaning page as your reference.
         </p>
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+          <Link href="/birth-card-calculator" className="ink-button">
             Birth Card Calculator →
           </Link>
 

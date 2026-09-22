@@ -21,7 +21,7 @@ export function ProfilePrompt({
       <div className="mt-6 flex flex-col gap-3">
         <Link
           href="/onboarding"
-          className="rounded-full bg-foil px-6 py-3 font-serif text-base text-ink transition active:scale-[0.99]"
+          className="ink-button large-button w-full"
         >
           {cta}
         </Link>

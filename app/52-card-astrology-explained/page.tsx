@@ -233,7 +233,7 @@ export default function CardAstrology() {
       <div className="card-surface mt-6 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-brand-ink">See your card in the system</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+          <Link href="/birth-card-calculator" className="ink-button">
             Calculate your birth card →
           </Link>
         </div>

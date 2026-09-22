@@ -110,7 +110,7 @@ export default function BondsPage() {
               type="button"
               onClick={onCompare}
               disabled={!canCompare}
-              className="w-full rounded-full bg-foil py-3 text-center font-serif text-base text-ink shadow-lg transition active:scale-[0.99] disabled:opacity-30"
+              className="ink-button large-button w-full disabled:opacity-30"
             >
               Compare patterns
             </button>

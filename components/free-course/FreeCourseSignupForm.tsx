@@ -73,7 +73,7 @@ export function FreeCourseSignupForm({
     : "rounded-lg border border-red-400/30 bg-red-400/10 p-3 text-sm text-red-200";
   const buttonClass = paper
     ? "accent-button large-button w-full disabled:cursor-wait disabled:opacity-60"
-    : "min-h-12 w-full rounded-full bg-foil px-6 py-3 font-serif text-base text-ink transition hover:brightness-105 disabled:cursor-wait disabled:opacity-60";
+    : "ink-button large-button w-full disabled:cursor-wait disabled:opacity-60";
 
   return (
     <form onSubmit={submit} className="mt-7 space-y-4" noValidate={false}>
