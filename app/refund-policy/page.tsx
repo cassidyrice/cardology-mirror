@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
@@ -53,15 +54,15 @@ export default function RefundPolicy() {
           <div className="mt-3 space-y-3">
             <p>
               The One Question Reading is written for the birth date and the
-              question you enter before Stripe Checkout and emailed within 2
-              business days. If the wrong birth date was entered, or you want to
+              question you enter before Stripe Checkout and emailed within{" "}
+              {ONE_QUESTION_TURNAROUND}. If the wrong birth date was entered, or you want to
               reword the question, reply to your receipt before it is written:
               we use the corrected details at no charge. December 31 is the
               Joker and sits outside the 52-card calendar; the reading says so
               up front and reads the year from the Joker's position.
             </p>
             <p>
-              If the reading does not arrive within 2 business days, the wrong
+              If the reading does not arrive within {ONE_QUESTION_TURNAROUND}, the wrong
               card was read, a corrected birth date was not used, or you were
               charged more than once for the same intended purchase, contact us.
               We will rewrite it or issue a full refund.

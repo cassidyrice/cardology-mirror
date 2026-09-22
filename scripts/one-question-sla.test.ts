@@ -7,7 +7,7 @@ import { ONE_QUESTION_TURNAROUND } from "../lib/deep-dive";
 const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
-const MARKETING_SLA_FILES = [
+const PUBLIC_SLA_FILES = [
   "app/what-is-cardology/page.tsx",
   "app/cardology-for-beginners/page.tsx",
   "app/birth-card/page.tsx",
@@ -15,20 +15,17 @@ const MARKETING_SLA_FILES = [
   "app/destiny-cards/page.tsx",
   "app/about/page.tsx",
   "app/contact/page.tsx",
-  "components/home/HomepageJourney.tsx",
-] as const;
-
-const LEGAL_SLA_FILES = [
   "app/terms-of-service/page.tsx",
   "app/refund-policy/page.tsx",
+  "components/home/HomepageJourney.tsx",
 ] as const;
 
 test("ONE_QUESTION_TURNAROUND stays the minute SLA", () => {
   expect(ONE_QUESTION_TURNAROUND).toBe("about a minute");
 });
 
-test("edu and marketing One Question Reading copy uses the minute SLA", () => {
-  for (const file of MARKETING_SLA_FILES) {
+test("public One Question Reading copy uses the minute SLA", () => {
+  for (const file of PUBLIC_SLA_FILES) {
     const source = read(file);
     expect(source.includes("ONE_QUESTION_TURNAROUND")).toBe(true);
     expect(source.includes("2 business days")).toBe(false);
@@ -36,13 +33,10 @@ test("edu and marketing One Question Reading copy uses the minute SLA", () => {
   }
 });
 
-test("legal refund and terms keep the 2-business-day window", () => {
-  for (const file of LEGAL_SLA_FILES) {
-    const source = read(file);
-    expect(source.includes("2 business days")).toBe(true);
-    expect(source.includes("ONE_QUESTION_TURNAROUND")).toBe(false);
-    expect(source.includes("about a minute")).toBe(false);
-  }
+test("refund policy keeps the bank posting window, not a reading SLA", () => {
+  const refund = read("app/refund-policy/page.tsx");
+  expect(refund).toContain("5–10 business days");
+  expect(refund).toContain("ONE_QUESTION_TURNAROUND");
 });
 
 test("generated blog posts and generator match $13 / minute offer copy", () => {
