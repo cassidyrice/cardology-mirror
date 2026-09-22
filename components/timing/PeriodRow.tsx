@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { PlayingCard } from "@/components/PlayingCard";
-import { Eyebrow, PositionStack } from "@/components/ui";
+import { Kicker, PositionStack } from "@/components/ui";
 import { parseCard } from "@/lib/cards";
 import type { PeriodDetail } from "@/lib/types";
 import { formatRange, type PeriodWindow } from "./cycle";
@@ -121,7 +121,7 @@ export function PeriodRow({
                     {cardTitle(bcDetail.interpretation.name)}
                   </span>
                 </header>
-                <Eyebrow>Birth card · {w.planet}</Eyebrow>
+                <Kicker className="!font-bold !text-brand-ink-soft">Birth card · {w.planet}</Kicker>
                 <PositionStack
                   under={bcDetail.interpretation.under}
                   sweet={bcDetail.interpretation.sweet_spot}
@@ -129,7 +129,7 @@ export function PeriodRow({
                 />
               </div>
 
-              <hr className="hairline border-t" />
+              <hr className="border-t border-brand-line" />
 
               {/* Ruling-card spread */}
               <div className="space-y-3">
@@ -141,7 +141,7 @@ export function PeriodRow({
                     {cardTitle(prcDetail.interpretation.name)}
                   </span>
                 </header>
-                <Eyebrow>Ruling card · {w.planet}</Eyebrow>
+                <Kicker className="!font-bold !text-brand-ink-soft">Ruling card · {w.planet}</Kicker>
                 <PositionStack
                   under={prcDetail.interpretation.under}
                   sweet={prcDetail.interpretation.sweet_spot}

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { Eyebrow, SectionTitle } from "@/components/ui";
+import { Kicker, SectionTitle } from "@/components/ui";
 
 // A staggered, fade-up reveal wrapper for each blueprint section.
 export function Section({
@@ -26,7 +26,7 @@ export function Section({
       transition={{ duration: 0.6, delay: Math.min(index * 0.05, 0.25), ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
-      {eyebrow && <Eyebrow className="mb-2">{eyebrow}</Eyebrow>}
+      {eyebrow && <Kicker className="mb-2 !font-bold !text-brand-ink-soft">{eyebrow}</Kicker>}
       {title && <SectionTitle className="mb-4">{title}</SectionTitle>}
       {children}
     </motion.section>

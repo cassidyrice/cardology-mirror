@@ -94,7 +94,7 @@ export default function CardologyVsTarotPage() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology vs Tarot</h1>
       <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           <strong>Cardology</strong> maps a birthday to one card in a standard 52-card
           playing deck with fixed math. <strong>Tarot</strong> uses a 78-card deck and
@@ -121,7 +121,7 @@ export default function CardologyVsTarotPage() {
       </p>
 
       <section className="mt-4">
-        <h2 className="eyebrow mb-3 !text-brand-bronze">Side-by-side</h2>
+        <h2 className="type-eyebrow mb-3 !text-brand-bronze">Side-by-side</h2>
         <TableScroll label="Cardology versus tarot">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Cardology versus tarot by deck, method, and use</caption>
@@ -146,7 +146,7 @@ export default function CardologyVsTarotPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">Suit map (minors ↔ playing cards)</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Suit map (minors ↔ playing cards)</h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
           <li><span className="text-[#14110d]">♣ Clubs</span> ↔ Wands — mind, energy &amp; communication</li>
@@ -161,7 +161,7 @@ export default function CardologyVsTarotPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">When to choose Cardology</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">When to choose Cardology</h2>
         <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           <li>You want “what is my birth card” from a birthday, checkably.</li>
           <li>You want two-birthday compatibility without a shuffle.</li>
@@ -171,7 +171,7 @@ export default function CardologyVsTarotPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">When to choose tarot</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">When to choose tarot</h2>
         <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           <li>You want Major Arcana archetypes in the spread.</li>
           <li>The question is open-ended and benefits from a fresh draw.</li>
@@ -180,7 +180,7 @@ export default function CardologyVsTarotPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">Common mix-up: “birth card calculator”</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Common mix-up: “birth card calculator”</h2>
         <p className="prose-reading text-brand-ink-soft">
           Google often ranks tarot birth-card tools for that query. Those calculators
           answer a different question. Card Blueprints&rsquo;{" "}
@@ -197,7 +197,7 @@ export default function CardologyVsTarotPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-4 !text-brand-bronze">FAQ</h2>
+        <h2 className="type-eyebrow mb-4 !text-brand-bronze">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">

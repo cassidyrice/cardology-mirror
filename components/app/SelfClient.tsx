@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useProfile } from "@/lib/profile";
 import { useReading } from "@/lib/useReading";
 import { parseCard } from "@/lib/cards";
-import { Screen, Eyebrow, Divider } from "@/components/ui";
+import { Screen, Kicker, Divider } from "@/components/ui";
 import { PlayingCard } from "@/components/PlayingCard";
 import { Section } from "@/components/self/Section";
 import { GiftList, TraitGroup } from "@/components/self/TraitList";
@@ -22,7 +22,7 @@ export default function SelfPage() {
         <div className="mx-auto max-w-md">
           <div className="flex flex-col items-center gap-4 pt-32 text-center">
             <div className="h-48 w-36 animate-pulse rounded-xl bg-brand-ivory/70" />
-            <p className="eyebrow animate-pulse">Reading your blueprint…</p>
+            <p className="type-eyebrow !font-bold !text-brand-ink-soft animate-pulse">Reading your blueprint…</p>
           </div>
         </div>
       </Screen>
@@ -46,7 +46,7 @@ export default function SelfPage() {
     return (
       <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
-          <Eyebrow className="mb-3">Something interrupted the read</Eyebrow>
+          <Kicker className="mb-3 !font-bold !text-brand-ink-soft">Something interrupted the read</Kicker>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
         </div>
       </Screen>
@@ -70,7 +70,7 @@ export default function SelfPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Eyebrow className="mb-1">Your Blueprint · {profile.name}</Eyebrow>
+          <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Your Blueprint · {profile.name}</Kicker>
           <h1 className="display mb-2 text-4xl text-brand-ink">{desc.title}</h1>
           <p className="text-sm text-brand-ink-soft">
             {archetype.suit_domain} · Solar value{" "}
@@ -136,13 +136,13 @@ export default function SelfPage() {
         <Section eyebrow="Where it costs you" title="The tension you carry" index={2}>
           <div className="space-y-5">
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
-              <p className="eyebrow mb-2">
+              <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-2">
                 <span className="text-brand-bronze">{archetype.birth_card}</span> · {desc.title}
               </p>
               <p className="prose-reading mb-0 text-brand-ink-soft">{desc.shadow}</p>
             </div>
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
-              <p className="eyebrow mb-2">
+              <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-2">
                 <span className="text-brand-bronze">{archetype.prc}</span> · {prcDesc.title}
               </p>
               <p className="prose-reading mb-0 text-brand-ink-soft">{prcDesc.shadow}</p>
@@ -166,14 +166,14 @@ export default function SelfPage() {
         <Section eyebrow="Growth edge" title="The algorithm to rewire" index={4}>
           <div className="card-surface space-y-4 p-5">
             <div>
-              <p className="eyebrow mb-2">
+              <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-2">
                 <span className="text-brand-bronze">{archetype.birth_card}</span>
               </p>
               <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">{desc.algorithm_gateway}</p>
             </div>
-            <hr className="hairline border-t" />
+            <hr className="border-t border-brand-line" />
             <div>
-              <p className="eyebrow mb-2">
+              <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-2">
                 <span className="text-brand-bronze">{archetype.prc}</span>
               </p>
               <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">

@@ -1,7 +1,7 @@
 // Shared presentational primitives. Treat as read-only from feature agents.
-// Two systems live here: the dark in-app primitives (Eyebrow, SectionTitle,
-// Screen, PositionStack) and the warm-paper marketing system (LinkButton,
-// Kicker, SectionShell, Rule).
+// Eyebrow is the dark label (/onboarding). Kicker, SectionTitle, Divider,
+// and PositionStack are the paper primitives. Screen has no palette class
+// and mounts on both. LinkButton, SectionShell, and Rule are the marketing set.
 import { ReactNode } from "react";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ export function SectionTitle({ children, className = "" }: { children: ReactNode
 }
 
 export function Divider({ className = "" }: { className?: string }) {
-  return <hr className={`hairline my-6 border-t ${className}`} />;
+  return <hr className={`my-6 border-t border-brand-line ${className}`} />;
 }
 
 export function Screen({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -138,7 +138,7 @@ export function SectionShell({
   );
 }
 
-// 1px semantic divider for paper surfaces (Divider above is the dark-app one).
+// 1px semantic divider for marketing sections. Divider above is the app-screen rule.
 export function Rule({ className = "" }: { className?: string }) {
   return <hr className={`border-t border-brand-line ${className}`} />;
 }

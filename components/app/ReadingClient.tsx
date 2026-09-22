@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useProfile } from "@/lib/profile";
 import { useGate } from "@/lib/useGate";
-import { Screen, Eyebrow, Divider } from "@/components/ui";
+import { Screen, Kicker, Divider } from "@/components/ui";
 import { StreamedMarkdown } from "@/components/reading/StreamedMarkdown";
 import { ComposingState } from "@/components/reading/ComposingState";
 import { AccessGate } from "@/components/gate/AccessGate";
@@ -92,7 +92,7 @@ export default function ReadingPage() {
     return (
       <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
-          <p className="eyebrow animate-pulse">opening the mirror…</p>
+          <p className="type-eyebrow !font-bold !text-brand-ink-soft animate-pulse">opening the mirror…</p>
         </div>
       </Screen>
     );
@@ -122,7 +122,7 @@ export default function ReadingPage() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Eyebrow className="mb-2">Deep Dive · A Mirror, Not a Forecast</Eyebrow>
+          <Kicker className="mb-2 !font-bold !text-brand-ink-soft">Deep Dive · A Mirror, Not a Forecast</Kicker>
           <h1 className="display text-3xl text-brand-ink">Your Reading</h1>
           <p className="mt-2 text-sm text-brand-ink-soft">
             For {profile.name || "you"} — drawn only from your cards.
@@ -137,7 +137,7 @@ export default function ReadingPage() {
 
         {phase === "error" && (
           <div className="animate-fade-up pt-4 text-center">
-            <Eyebrow className="mb-3">The mirror clouded over</Eyebrow>
+            <Kicker className="mb-3 !font-bold !text-brand-ink-soft">The mirror clouded over</Kicker>
             <p className="prose-reading text-brand-ink-soft">{errorMsg}</p>
             <button
               onClick={generate}

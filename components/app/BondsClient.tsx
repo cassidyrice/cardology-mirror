@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useProfile } from "@/lib/profile";
 import { useReading } from "@/lib/useReading";
 import { parseCard } from "@/lib/cards";
-import { Screen, Eyebrow, Divider } from "@/components/ui";
+import { Screen, Kicker, Divider } from "@/components/ui";
 import { PlayingCard } from "@/components/PlayingCard";
 import { compareReadings } from "@/components/bonds/compare";
 import { ObservationCard } from "@/components/bonds/ObservationCard";
@@ -71,7 +71,7 @@ export default function BondsPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Eyebrow className="mb-1">Bonds</Eyebrow>
+          <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Bonds</Kicker>
           <h1 className="display mb-2 text-4xl text-brand-ink">
             Where two patterns collide
           </h1>
@@ -140,14 +140,14 @@ export default function BondsPage() {
               <div className="h-44 w-32 animate-pulse rounded-xl bg-brand-ivory/70" />
               <div className="h-44 w-32 animate-pulse rounded-xl bg-brand-ivory/70" />
             </div>
-            <p className="eyebrow animate-pulse">Laying the cards…</p>
+            <p className="type-eyebrow !font-bold !text-brand-ink-soft animate-pulse">Laying the cards…</p>
           </div>
         )}
 
         {/* ERROR */}
         {!loading && error && (
           <div className="pt-12 text-center">
-            <Eyebrow className="mb-3">Something interrupted the read</Eyebrow>
+            <Kicker className="mb-3 !font-bold !text-brand-ink-soft">Something interrupted the read</Kicker>
             <p className="prose-reading text-brand-ink-soft">{error}</p>
             <button
               type="button"
@@ -201,7 +201,7 @@ export default function BondsPage() {
 
             {/* How your patterns meet */}
             <div>
-              <Eyebrow className="mb-1">Where you click, where you grind</Eyebrow>
+              <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Where you click, where you grind</Kicker>
               <h2 className="display mb-5 text-2xl text-brand-ink">
                 How your patterns meet
               </h2>
@@ -214,7 +214,7 @@ export default function BondsPage() {
 
             {/* Reflective questions */}
             <div>
-              <Eyebrow className="mb-4">To sit with — together</Eyebrow>
+              <Kicker className="mb-4 !font-bold !text-brand-ink-soft">To sit with — together</Kicker>
               <div className="space-y-4">
                 {analysis.questions.map((q, i) => (
                   <motion.p
@@ -261,7 +261,7 @@ function PersonInputs({
 }) {
   return (
     <div className="card-surface space-y-3 p-5">
-      <Eyebrow>{eyebrow}</Eyebrow>
+      <Kicker className="!font-bold !text-brand-ink-soft">{eyebrow}</Kicker>
       <input
         type="text"
         value={name}

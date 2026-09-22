@@ -99,7 +99,7 @@ body {
   min-height: 100dvh;
 }
 
-/* Co-Star-ish editorial heading */
+/* Dark label. Paper screens use type-eyebrow or Kicker. /onboarding keeps this. */
 .eyebrow {
   font-size: 0.68rem;
   letter-spacing: 0;
@@ -116,16 +116,27 @@ body {
   text-wrap: balance;
 }
 
+/* Reading prose. The shell override used to paint this inside .paper-shell:
+   ink on the block, and ink on em/strong so the gold emphasis did not survive.
+   Paper articles keep the class. The dark gray and gold em are gone. */
 .prose-reading {
   font-family: var(--font-serif);
   font-size: 1.05rem;
   line-height: 1.75;
-  color: #d8d6df;
+  color: var(--ink);
+}
+.prose-reading p,
+.prose-reading li {
+  color: var(--ink);
 }
 .prose-reading p { margin-bottom: 1.1rem; text-wrap: pretty; }
-.prose-reading em { color: #d9b26a; font-style: italic; }
+.prose-reading em { font-style: italic; }
+.prose-reading em,
+.prose-reading strong {
+  color: var(--ink);
+}
 
-/* hairline dividers like Co-Star */
+/* Dark divider. Paper screens use border-brand-line. No mounted caller remains. */
 .hairline { border-color: rgba(244,241,234,0.08); }
 
 /* Paper card. The shell override used to paint this inside .paper-shell.
@@ -601,30 +612,6 @@ body {
   --rust: var(--oxblood);
   background-color: var(--paper);
   color: var(--ink);
-}
-
-.paper-shell .eyebrow {
-  color: var(--ink-soft);
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.paper-shell .prose-reading {
-  color: var(--ink);
-}
-
-.paper-shell .prose-reading p,
-.paper-shell .prose-reading li {
-  color: var(--ink);
-}
-
-.paper-shell .prose-reading em,
-.paper-shell .prose-reading strong {
-  color: var(--ink);
-}
-
-.paper-shell .hairline {
-  border-color: var(--line);
 }
 
 .paper-shell input,

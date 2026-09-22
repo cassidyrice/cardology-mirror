@@ -116,7 +116,7 @@ export default function CardologyBooks() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Books &amp; Decks</h1>
 
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           The cardology literature is small: one 1893 source text, one 1947 book that
           turned it into a birthday chart, and a handful of modern treatments that
@@ -144,7 +144,7 @@ export default function CardologyBooks() {
         if (entries.length === 0) return null;
         return (
           <section className="mt-8" key={group.id} id={group.id}>
-            <h2 className="eyebrow mb-2 !text-brand-bronze">{group.heading}</h2>
+            <h2 className="type-eyebrow mb-2 !text-brand-bronze">{group.heading}</h2>
             <p className="prose-reading mb-4 text-brand-ink-soft">{group.blurb}</p>
             <ul className="space-y-4">
               {entries.map((entry) => (
@@ -156,7 +156,7 @@ export default function CardologyBooks() {
       })}
 
       <section className="mt-10" id="corrections">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">Corrections and additions</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Corrections and additions</h2>
         <p className="prose-reading text-brand-ink-soft">
           Missing a title, or holding an edition that contradicts a date here? Send
           the catalogue record and it gets added or fixed — a citation, not a claim.{" "}

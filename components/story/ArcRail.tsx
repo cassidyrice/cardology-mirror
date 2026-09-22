@@ -17,7 +17,7 @@ function Strand({
 }) {
   return (
     <div>
-      <p className="eyebrow mb-2">{label}</p>
+      <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-2">{label}</p>
       <div className="flex items-stretch justify-between gap-1.5">
         {cards.map((code, i) => (
           <div key={i} className="flex flex-1 items-center">
@@ -66,7 +66,7 @@ export function ArcRail({ reading }: { reading: Reading }) {
         cards={bc}
         delay={0.1}
       />
-      <div className="hairline border-t" />
+      <div className="border-t border-brand-line" />
       <Strand
         label={`Outer self · ${reading.archetype.prc}`}
         cards={prc}

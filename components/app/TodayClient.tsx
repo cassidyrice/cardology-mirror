@@ -9,7 +9,7 @@ import { useReading } from "@/lib/useReading";
 import { todayISO, parseCard } from "@/lib/cards";
 import {
   Screen,
-  Eyebrow,
+  Kicker,
   SectionTitle,
   Divider,
   PositionStack,
@@ -64,7 +64,7 @@ export default function TodayPage() {
           animate={{ opacity: 1, y: 0 }}
           className="space-y-3 pt-10"
         >
-          <Eyebrow className="!text-brand-bronze">Couldn&apos;t read today</Eyebrow>
+          <Kicker className="!text-brand-bronze">Couldn&apos;t read today</Kicker>
           <p className="prose-reading text-brand-ink-soft">
             The engine didn&apos;t return a reading. {error}
           </p>
@@ -111,7 +111,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
       <motion.div
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
       >
-        <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
+        <Kicker className="tnum !font-bold !text-brand-ink-soft">{PRETTY_DATE.format(new Date())}</Kicker>
         <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
           {bluntLine(ap)}
         </h1>
@@ -161,7 +161,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
             {cardTitle(ap.interpretation_bc.name)}
           </SectionTitle>
         </header>
-        <Eyebrow>Your birth card, in {ap.planet}</Eyebrow>
+        <Kicker className="!font-bold !text-brand-ink-soft">Your birth card, in {ap.planet}</Kicker>
         <PositionStack
           under={ap.interpretation_bc.under}
           sweet={ap.interpretation_bc.sweet_spot}
@@ -184,7 +184,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
             {cardTitle(ap.interpretation_prc.name)}
           </SectionTitle>
         </header>
-        <Eyebrow>Your ruling card, in {ap.planet}</Eyebrow>
+        <Kicker className="!font-bold !text-brand-ink-soft">Your ruling card, in {ap.planet}</Kicker>
         <PositionStack
           under={ap.interpretation_prc.under}
           sweet={ap.interpretation_prc.sweet_spot}
@@ -199,7 +199,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
         className="card-surface rounded-2xl p-6"
       >
-        <Eyebrow className="!text-brand-bronze">Today&apos;s reflection</Eyebrow>
+        <Kicker className="!text-brand-bronze">Today&apos;s reflection</Kicker>
         <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-brand-ink">
           {reflectionPrompt(ap)}
         </p>
@@ -215,7 +215,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-brand-line bg-brand-gold-soft p-5 transition active:scale-[0.99]"
         >
           <span>
-            <span className="eyebrow !text-brand-bronze">Story Arc · Your Year</span>
+            <span className="type-eyebrow !text-brand-bronze">Story Arc · Your Year</span>
             <span className="mt-1 block text-pretty font-serif text-base leading-snug text-brand-ink">
               Where this year is dragging you — chapter, turn, and the horizon you keep avoiding.
             </span>

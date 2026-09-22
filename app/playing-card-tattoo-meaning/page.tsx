@@ -63,7 +63,7 @@ export default function PlayingCardTattooMeaning() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLdForHtml(jsonLd) }} />
 
-      <span className="eyebrow text-brand-ink-soft">52 pip fields</span>
+      <span className="type-eyebrow !font-bold !text-brand-ink-soft">52 pip fields</span>
       <h1 className="display mt-1 text-3xl text-brand-ink">Playing card tattoo meaning</h1>
       <p className="mt-3 text-xs text-brand-ink-soft">Updated {updatedLabel(UPDATED)}</p>
       <p className="prose-reading mt-4 text-brand-ink-soft">
@@ -106,7 +106,7 @@ export default function PlayingCardTattooMeaning() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">Questions</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Questions</h2>
         <dl className="space-y-4">
           {faqs.map((item) => (
             <div key={item.q}>

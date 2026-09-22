@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useProfile } from "@/lib/profile";
 import { useReading } from "@/lib/useReading";
 import { todayISO, parseCard } from "@/lib/cards";
-import { Screen, Eyebrow, SectionTitle, Divider } from "@/components/ui";
+import { Screen, Kicker, SectionTitle, Divider } from "@/components/ui";
 import {
   Prompts,
   buildPrompts,
@@ -68,7 +68,7 @@ export default function JournalPage() {
 
   return (
     <Screen className="mx-auto max-w-md">
-      <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
+      <Kicker className="tnum !font-bold !text-brand-ink-soft">{PRETTY_DATE.format(new Date())}</Kicker>
       <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
         The Journal
       </h1>
@@ -87,7 +87,7 @@ export default function JournalPage() {
       ) : (
         <section className="space-y-5">
           <div>
-            <Eyebrow className="!text-brand-bronze">Questions to sit with</Eyebrow>
+            <Kicker className="!text-brand-bronze">Questions to sit with</Kicker>
             <p className="mt-1 text-xs text-brand-ink-soft">
               Drawn from your cards today. Tap one to write.
             </p>
@@ -97,7 +97,7 @@ export default function JournalPage() {
 
           {ready && profile && error && (
             <div className="card-surface rounded-2xl p-5">
-              <Eyebrow className="!text-brand-bronze">Couldn&apos;t read today</Eyebrow>
+              <Kicker className="!text-brand-bronze">Couldn&apos;t read today</Kicker>
               <p className="prose-reading mt-2 text-brand-ink-soft">{error}</p>
               <button
                 onClick={() => router.refresh()}
@@ -229,7 +229,7 @@ function EntryCard({
         className="w-full p-5 text-left"
       >
         <div className="flex items-center justify-between gap-3">
-          <span className="eyebrow tnum">{formatDate(entry.date)}</span>
+          <span className="type-eyebrow !font-bold !text-brand-ink-soft tnum">{formatDate(entry.date)}</span>
           <Glyphs cards={entry.cards} />
         </div>
         <p className="mt-2 font-serif text-sm italic text-brand-bronze">
@@ -362,7 +362,7 @@ function WritingSheet({
         <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-brand-ivory/70" />
 
         <div className="flex items-center justify-between gap-3">
-          <Eyebrow className="!text-brand-bronze">{prompt.label}</Eyebrow>
+          <Kicker className="!text-brand-bronze">{prompt.label}</Kicker>
           <Glyphs cards={cards} />
         </div>
         <p className="prose-reading mt-3 font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">

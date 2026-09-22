@@ -30,7 +30,7 @@ export default async function FreeCoursePage({
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Free Course", href: "/free-course" }]}>
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:items-start">
         <div>
-          <p className="eyebrow !text-brand-bronze">Free four-part video course</p>
+          <p className="type-eyebrow !text-brand-bronze">Free four-part video course</p>
           <h1 className="display mt-3 text-4xl leading-tight text-brand-ink sm:text-5xl">Read Your Birth Card</h1>
           <p className="prose-reading mt-5 max-w-2xl text-brand-ink-soft">
             Learn Cardology as a clear pattern language, not fortune-telling. In about 14 minutes you will calculate your card, combine rank and suit, recognize its three expression states, and turn it into a practical reflection.
@@ -53,7 +53,7 @@ export default async function FreeCoursePage({
         </div>
 
         <aside className="card-surface rounded-3xl border !border-brand-line p-6 sm:p-8 lg:sticky lg:top-24">
-          <p className="eyebrow !text-brand-bronze">Get instant access</p>
+          <p className="type-eyebrow !text-brand-bronze">Get instant access</p>
           <h2 className="mt-3 font-serif text-2xl text-brand-ink">Where should we send your course?</h2>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Enter your name and email to unlock all four modules now. We will also email your return link.</p>
           <FreeCourseSignupForm source={source.slice(0, 80)} />
