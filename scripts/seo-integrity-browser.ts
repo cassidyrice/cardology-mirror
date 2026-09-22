@@ -361,6 +361,35 @@ async function main(): Promise<void> {
       "1024px: header has no horizontal overflow",
     );
 
+    await page.setViewportSize({ width: 360, height: 800 });
+    await goto(page, "/");
+    assert.equal(
+      await page.locator("header").evaluate(
+        (header) => header.scrollWidth <= header.clientWidth,
+      ),
+      true,
+      "360px: header has no horizontal overflow",
+    );
+    const headerFit = await page.locator("header").evaluate((header) => {
+      const logo = header.querySelector('[aria-label$="home"]');
+      const action = header.querySelector('a[href="/checkout/deep-dive"]');
+      if (!logo || !action) return { ok: false, reason: "missing logo or header action" };
+      const a = logo.getBoundingClientRect();
+      const b = action.getBoundingClientRect();
+      const overlap = a.right > b.left + 1 && b.right > a.left + 1 && a.bottom > b.top + 1 && b.bottom > a.top + 1;
+      return {
+        ok: !overlap && b.right <= header.getBoundingClientRect().right + 1,
+        overlap,
+        logo: { right: a.right, width: a.width },
+        action: { left: b.left, right: b.right, width: b.width },
+      };
+    });
+    assert.equal(
+      headerFit.ok,
+      true,
+      `360px: wordmark and header action stay apart: ${JSON.stringify(headerFit)}`,
+    );
+
     await page.setViewportSize({ width: 390, height: 844 });
     await goto(page, "/");
     await page.getByText("Menu", { exact: true }).click();

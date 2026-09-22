@@ -1,15 +1,19 @@
 "use client";
 
+import Link from "next/link";
 import { type FormEvent, useState } from "react";
 
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
+import { storeCheckoutContext } from "@/lib/checkout-question";
 import {
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_HEADER_CTA_LABEL,
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_REVIEW_PATH,
   sanitizeDeepDiveSource,
 } from "@/lib/deep-dive";
 
@@ -46,6 +50,23 @@ export function DeepDiveCta({
   }
 
   const compact = placement === "site-header";
+  const resolvedSource = sanitizeDeepDiveSource(source);
+
+  function trackOfferClick() {
+    trackClientFunnelEvent("offer_cta_clicked", {
+      offerSlug: DEEP_DIVE_OFFER_SLUG,
+      placement,
+    });
+  }
+
+  function startHeaderReading() {
+    trackOfferClick();
+    storeCheckoutContext({
+      source: resolvedSource,
+      cardLabel,
+      cardSlug,
+    });
+  }
 
   return (
     <div
@@ -58,12 +79,21 @@ export function DeepDiveCta({
       {iso ? (
         <DeepDiveHostedCheckout
           birthdate={iso}
-          source={sanitizeDeepDiveSource(source)}
+          source={resolvedSource}
           cardLabel={cardLabel}
           cardSlug={cardSlug}
           compact={compact}
           submitLabel={ctaLabel}
         />
+      ) : compact ? (
+        <Link
+          href={DEEP_DIVE_REVIEW_PATH}
+          className="paper-button small-button shrink-0 text-center"
+          onClick={startHeaderReading}
+        >
+          <span className="sm:hidden">{DEEP_DIVE_HEADER_CTA_LABEL}</span>
+          <span className="hidden sm:inline">{DEEP_DIVE_CTA_LABEL}</span>
+        </Link>
       ) : open ? (
         <form
           onSubmit={submitDate}
@@ -93,16 +123,9 @@ export function DeepDiveCta({
       ) : (
         <button
           type="button"
-          className={
-            compact
-              ? "accent-button small-button text-center"
-              : "accent-button large-button w-full text-center"
-          }
+          className="accent-button large-button w-full text-center"
           onClick={() => {
-            trackClientFunnelEvent("offer_cta_clicked", {
-              offerSlug: DEEP_DIVE_OFFER_SLUG,
-              placement,
-            });
+            trackOfferClick();
             setOpen(true);
           }}
         >

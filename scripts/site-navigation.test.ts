@@ -28,6 +28,10 @@ test("shared header renders Explore link", () => {
   expect(markup).not.toContain("Get a Reading");
   expect(markup).not.toContain('href="/karma-reading"');
   expect(markup).not.toContain('href="/birth-card-calculator"');
+  expect(headerSource).toContain("HeaderDeepDiveCta");
+  expect(markup).toContain('href="/checkout/deep-dive"');
+  expect(markup).toContain("Ask — $13");
+  expect(markup).not.toContain("accent-button");
 });
 
 test("bare footer keeps the single disclaimer and legal row", () => {
