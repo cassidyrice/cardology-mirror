@@ -1,16 +1,54 @@
 # CAR-14 — Content-Security-Policy, from Report-Only to enforcing
 
-Investigation only (2026-09-22). The live header stays `Content-Security-Policy-Report-Only`. This file does not change it.
+The live header stays `Content-Security-Policy-Report-Only`. Do not rename it in a collector change.
 
 `docs/SITE-RECORD.md` is not in this repository. The audit claim was checked against `lib/security-headers.ts`, `public/_headers`, and live response headers on cardblueprints.com.
 
+## Step 1 collector (CAR-19)
+
+Both policies now end with `report-uri /api/csp-report`. No other directive changed. The header was not renamed.
+
+`report-to` is not set. In Chrome 148, adding `report-to` (with `Reporting-Endpoints` or the legacy `Report-To` header, relative or absolute) stopped `report-uri` from firing, and no Reporting API POST arrived within several seconds of the violation or after the page closed. `report-uri` alone delivers immediately. Do not add `report-to` until a probe shows Chrome actually POSTing it. Do not point the policy at the Cloudflare `Report-To: cf-nel` group.
+
+`POST /api/csp-report` accepts `application/csp-report` (and `application/json` for older WebKit) and `application/reports+json`, so a later `report-to` sender still has a receiver. It drops the query string and any userinfo. The stored line is directive, blocked host, document path, disposition (`report` or `enforce`), and source (`report-uri` or `report-to`). Script samples and the original policy are not stored.
+
+Workers log:
+
+```
+[csp-report] directive=script-src-elem blockedHost=js.stripe.com documentPath=/checkout/deep-dive disposition=report source=report-uri
+```
+
+Read a deployment:
+
+```
+npx wrangler pages deployment tail --project-name cardology-mirror
+```
+
+The same fields go to Analytics Engine dataset `cardblueprints_csp` (wrangler binding `CSP_REPORTS`) when the binding is present. That dataset is separate from `cardblueprints_funnel`, so a violation does not show up as a funnel event. The plan allowed the existing funnel dataset or Workers logs. Workers logs are the always-on copy. The dedicated dataset is the queryable copy, so funnel SQL keeps its column meanings.
+
+```
+CF_ACCOUNT_ID=xxx CF_ANALYTICS_TOKEN=yyy ./scripts/csp-report-query.sh
+```
+
+Columns: `index1` / `blob1` directive, `blob2` blocked host, `blob3` document path, `blob4` disposition, `blob5` source.
+
+How a blocker looks: `blockedHost=js.stripe.com` or `hooks.stripe.com` on `/checkout/deep-dive` is Stripe. `challenges.cloudflare.com` is Turnstile. `www.youtube.com` on a card or `/videos` page is the embed. `blockedHost=inline` on a card page is an inline script (JSON-LD is a data block and should not appear; if it does, the directive is `script-src-elem`). Static pages still lack `*.posthog.com` and `worker-src`; those gaps are step 2, not this change.
+
+Controlled check, without a deploy: `bun scripts/csp-report-browser.ts`. It serves `/probe` with the real Report-Only header from `lib/security-headers.ts`, loads `https://csp-probe.invalid/blocked.js`, and requires a stored line with `blockedHost=csp-probe.invalid` and `documentPath=/probe`. Verified 2026-09-22 in Chrome 148. The browser POSTed `application/csp-report` and the endpoint stored:
+
+```
+[csp-report] directive=script-src-elem blockedHost=csp-probe.invalid documentPath=/probe disposition=report source=report-uri
+```
+
+The log line and the dataset binding start on the next production deploy. This change does not deploy and does not flip the header to enforcing.
+
 ## Finding
 
-### Reports go nowhere
+### Reports went nowhere (audit, before CAR-19)
 
-The policy has no `report-uri` and no `report-to`. Checked in both sources and on live responses.
+On 2026-09-22 the policy had no `report-uri` and no `report-to`. Checked in both sources and on live responses.
 
-Browsers log a Report-Only violation in the console of whoever has devtools open. They send it nowhere. Report-only mode is collecting nothing, so the current header has no operational value as a signal.
+Browsers logged a Report-Only violation in the console of whoever had devtools open. They sent it nowhere. Report-only mode was collecting nothing.
 
 The live `Report-To` header is Cloudflare Network Error Logging (`group` `cf-nel`, endpoint `a.nel.cloudflare.com`). `NEL` on that response has `success_fraction` 0. That group is not referenced by the CSP. It does not receive CSP violations. Do not point the policy at it.
 
@@ -64,7 +102,7 @@ Hosted Checkout posts to `checkout.stripe.com`, which `form-action` already allo
 
 Each step is its own change. Step 4 is the only step that renames the header, and that commit contains the rename alone.
 
-1. **Collect reports, still Report-Only.** Add a same-origin `POST /api/csp-report` that accepts `application/csp-report` and `application/reports+json`, drops query strings, and stores a short redacted line (directive, blocked host, document path) in the existing Analytics Engine dataset or Workers logs. Append `report-uri /api/csp-report` to both Report-Only policies. Change no other directive. Do not rename the header.
+1. **Collect reports, still Report-Only.** Done in CAR-19. Same-origin `POST /api/csp-report` accepts `application/csp-report` and `application/reports+json`, drops query strings, and stores a short redacted line (directive, blocked host, document path) in Workers logs and dataset `cardblueprints_csp`. Both Report-Only policies include `report-uri /api/csp-report`. `report-to` is intentionally absent: in Chrome 148 it suppressed `report-uri` and did not deliver a report. No other directive changed. The header was not renamed.
 
 2. **Read the stream, then patch the allowlist, still Report-Only.** Cover `/birth-card-calculator`, a birth-card page after pressing play on a video, `/videos`, `/products/one-question-reading`, `/checkout/deep-dive` through hosted Checkout and back, and one page with analytics consent granted. Expect the YouTube frame and the static-page PostHog gaps above. Bring `lib/security-headers.ts` and `public/_headers` onto one directive list in that change. Leave the header name as Report-Only.
 

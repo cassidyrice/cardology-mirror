@@ -1,7 +1,14 @@
 // Shared browser security headers for every HTML/API response.
-// Kept deliberately free of a strict Content-Security-Policy for now —
-// Stripe Checkout, analytics, and next-on-pages inline scripts need a
-// measured CSP pass later so we don't brick payment.
+// Content-Security-Policy-Report-Only only. Do not rename that header to
+// Content-Security-Policy here — enforcing is its own later change
+// (docs/CAR-14-csp.md).
+//
+// report-uri only. Chrome 148 drops report-uri when report-to is also set,
+// and did not deliver a Reporting API POST for Reporting-Endpoints or the
+// legacy Report-To header in a same-origin probe. Do not add report-to here
+// until that delivery is proven. Do not point this at Cloudflare's cf-nel group.
+
+export const CSP_REPORT_PATH = "/api/csp-report";
 
 export const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
   ["Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload"],
@@ -26,6 +33,7 @@ export const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
       "worker-src 'self' blob: data:",
       "frame-src https://challenges.cloudflare.com https://js.stripe.com https://hooks.stripe.com",
       "style-src 'self' 'unsafe-inline'",
+      `report-uri ${CSP_REPORT_PATH}`,
     ].join("; "),
   ],
 ];

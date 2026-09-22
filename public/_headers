@@ -4,6 +4,9 @@
 # day. Dynamic Functions, checkout, API, and private app routes are absent.
 #
 # Security baseline for every static asset (middleware covers dynamic routes).
+# CSP stays Report-Only. report-uri points at /api/csp-report.
+# Do not add report-to: Chrome 148 then stops sending report-uri and does not
+# deliver the Reporting API POST. Do not point this at Cloudflare's cf-nel group.
 /*
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   X-Frame-Options: DENY
@@ -11,7 +14,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")
   Cross-Origin-Resource-Policy: same-site
-  Content-Security-Policy-Report-Only: default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com https://buttondown.com https://buttondown.email; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://challenges.cloudflare.com; img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://challenges.cloudflare.com https://js.stripe.com https://hooks.stripe.com; style-src 'self' 'unsafe-inline'
+  Content-Security-Policy-Report-Only: default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' https://checkout.stripe.com https://buttondown.com https://buttondown.email; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://challenges.cloudflare.com; img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://challenges.cloudflare.com https://js.stripe.com https://hooks.stripe.com; style-src 'self' 'unsafe-inline'; report-uri /api/csp-report
 
 /
   Cache-Control: public, max-age=0, s-maxage=86400, stale-while-revalidate=604800

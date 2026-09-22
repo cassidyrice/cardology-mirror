@@ -62,6 +62,7 @@ jobs:
             scripts/calculator-deep-dive.test.ts \
             scripts/one-question-sla.test.ts \
             scripts/agent-card.test.ts \
+            scripts/csp-report.test.ts \
             scripts/birth-card-meta.test.ts \
             scripts/site-navigation.test.ts \
             scripts/card-meaning-equity.test.ts \

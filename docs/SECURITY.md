@@ -8,6 +8,7 @@ Operational security checklist for the production site on Cloudflare Pages.
 |---|---|
 | HTTPS + Cloudflare edge | Cloudflare zone |
 | Security headers (HSTS, frame deny, nosniff, referrer, permissions) | `middleware.ts` + `public/_headers` + `lib/security-headers.ts` |
+| CSP report-only collector | `POST /api/csp-report` — still `Content-Security-Policy-Report-Only`, not enforcing |
 | www → apex | `middleware.ts` |
 | Stripe webhook signature verify | `app/api/checkout/webhook/route.ts` |
 | Checkout origin check | `app/checkout/[offer]/session/route.ts` |
@@ -53,9 +54,25 @@ Never commit `.env` files.
 
 Cloudflare Pages → project `cardology-mirror` → Deployments → **Rollback** to last good production ID.
 
+## CSP reports
+
+The header stays `Content-Security-Policy-Report-Only`. Both copies (`lib/security-headers.ts` for middleware and dynamic routes, `public/_headers` for static pages) send `report-uri /api/csp-report`. `report-to` is not set: Chrome 148 then stops sending `report-uri` and did not deliver a Reporting API report in a same-origin probe. The endpoint is not Cloudflare's `Report-To: cf-nel` group. The receiver still accepts `application/reports+json` if a browser sends that shape.
+
+`POST /api/csp-report` accepts `application/csp-report`, `application/json`, and `application/reports+json`. It stores directive, blocked host, and document path. The query string is dropped, so a checkout question does not land in the log. A Stripe, Turnstile, or YouTube block shows up as the blocked host (`js.stripe.com`, `challenges.cloudflare.com`, `www.youtube.com`) on the document path (`/checkout/deep-dive`, `/birth-card-calculator`). An inline or JSON-LD surprise shows up as `blockedHost=inline`.
+
+Workers log line:
+
+```
+[csp-report] directive=script-src-elem blockedHost=js.stripe.com documentPath=/checkout/deep-dive disposition=report source=report-uri
+```
+
+Read a deployment with `npx wrangler pages deployment tail --project-name cardology-mirror` and look for `[csp-report]`. The same fields are written to Analytics Engine dataset `cardblueprints_csp` (binding `CSP_REPORTS` in `wrangler.toml`) when that binding is on the deployment. Query it with `./scripts/csp-report-query.sh`. It is not the funnel dataset.
+
+The binding starts collecting on the next production deploy. This repo change does not deploy, and it does not rename the header to `Content-Security-Policy`.
+
 ## Later (not yet)
 
-- Enforcing Content-Security-Policy. The live header is still `Content-Security-Policy-Report-Only`, and that report-only policy collects nothing. Finding and the staged plan (the rename to an enforcing header is its own later change): `docs/CAR-14-csp.md`.
+- Enforcing Content-Security-Policy. Reports now have a destination; the rename is still its own later change. Finding and the staged plan: `docs/CAR-14-csp.md`.
 - Global rate limit via Durable Object / KV (stronger than isolate memory)  
 - One-time magic-link tokens if not already enforced server-side
 

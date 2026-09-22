@@ -7,6 +7,12 @@ compatibility_flags = ["nodejs_compat"]
 binding = "FUNNEL_ANALYTICS"
 dataset = "cardblueprints_funnel"
 
+# CSP report-only violations. Separate from the funnel dataset so a blocked
+# Stripe host does not show up as a purchase event. See docs/CAR-14-csp.md.
+[[analytics_engine_datasets]]
+binding = "CSP_REPORTS"
+dataset = "cardblueprints_csp"
+
 [[r2_buckets]]
 binding = "EBOOK_BUCKET"
 bucket_name = "cardblueprints-ebooks"
