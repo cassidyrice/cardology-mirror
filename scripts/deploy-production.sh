@@ -178,28 +178,9 @@ else
   yellow "Homepage title unexpected: $HOME_TITLE"
 fi
 
-echo "→ smoke: sitemap endpoints (200 + urlset XML)"
-sitemap_smoke_fail=0
-for sitemap_path in /sitemap.xml /sitemap-cardology.xml /sitemap-compatibility.xml; do
-  SITEMAP_HEADERS="$(curl -sSI "${SITE_ORIGIN}${sitemap_path}" || true)"
-  SITEMAP_CODE="$(printf '%s\n' "$SITEMAP_HEADERS" | awk 'BEGIN{c="000"} toupper($1) ~ /^HTTP/{c=$2} END{print c}')"
-  SITEMAP_TYPE="$(printf '%s\n' "$SITEMAP_HEADERS" | awk 'BEGIN{IGNORECASE=1} /^content-type:/{print $2; exit}' | tr -d '\r')"
-  SITEMAP_BODY="$(curl -sS "${SITE_ORIGIN}${sitemap_path}" || true)"
-  if [[ "$SITEMAP_CODE" != "200" || "$SITEMAP_TYPE" != application/xml* || "$SITEMAP_BODY" != *"urlset"* ]]; then
-    red "Sitemap FAILED ${sitemap_path} (HTTP ${SITEMAP_CODE}, type ${SITEMAP_TYPE:-unknown})"
-    sitemap_smoke_fail=1
-    smoke_fail=1
-  else
-    green "Sitemap OK ${sitemap_path}"
-  fi
-done
-if [[ "$sitemap_smoke_fail" -eq 0 ]]; then
-  SITEMAP="$(curl -sS "${SITE_ORIGIN}/sitemap.xml" || true)"
-  if echo "$SITEMAP" | grep -q 'products/one-question-reading'; then
-    green "Sitemap product URLs OK"
-  else
-    yellow "Sitemap missing product URLs (CDN delay or regression)"
-  fi
+echo "→ smoke: sitemap endpoints (200 + parseable XML)"
+if ! SITEMAP_BASE_URL="${SITE_ORIGIN}" bun scripts/sitemap-http-smoke.ts; then
+  smoke_fail=1
 fi
 
 echo "→ smoke: security headers (HSTS)"

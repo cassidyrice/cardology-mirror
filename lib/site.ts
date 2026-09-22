@@ -11,6 +11,15 @@ export const APP_URL = (
   process.env.NEXT_PUBLIC_APP_URL || SITE_URL
 ).replace(/\/$/, "");
 
+// Paths advertised in robots.txt. /sitemap.xml is built by this app.
+// /sitemap-cardology.xml and /sitemap-compatibility.xml are served by the
+// cardology-unlock Worker in front of Pages, not by a route in this repo.
+export const ROBOTS_SITEMAP_PATHS = [
+  "/sitemap.xml",
+  "/sitemap-cardology.xml",
+  "/sitemap-compatibility.xml",
+] as const;
+
 export const SITE_NAME = "Card Blueprints";
 export const CONTACT_EMAIL = "hello@cardblueprints.com";
 export const CONTACT_RESPONSE = "two business days";

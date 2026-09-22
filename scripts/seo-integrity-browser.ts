@@ -2,6 +2,10 @@
  * Local rendered smoke for the keyword-strategy SEO integrity pass.
  *
  * SEO_BASE_URL=http://127.0.0.1:3577 bun scripts/seo-integrity-browser.ts
+ *
+ * Also requires /sitemap.xml on that origin to be HTTP 200 with a parseable
+ * urlset. The Worker sitemaps are not on a Next-only server; check all three
+ * with `SITEMAP_BASE_URL=https://cardblueprints.com bun run test:sitemap:http`.
  */
 import assert from "node:assert/strict";
 import {
@@ -16,6 +20,10 @@ import { buildLifePathProfile } from "../lib/life-path";
 import { SITE_URL } from "../lib/site";
 import { SPREADS, SPREADS_HUB_PATH } from "../lib/spreads";
 import { compatibilityPairPath } from "../lib/worker-seo-routes";
+import {
+  assertBlueprintReportStaysOffMainSitemap,
+  checkSitemapUrl,
+} from "./sitemap-http";
 
 const base = (process.env.SEO_BASE_URL || "http://127.0.0.1:3577").replace(
   /\/$/,
@@ -204,6 +212,9 @@ async function assertArticle(
 }
 
 async function main(): Promise<void> {
+  const sitemap = await checkSitemapUrl(`${base}/sitemap.xml`, "/sitemap.xml");
+  assertBlueprintReportStaysOffMainSitemap("/sitemap.xml", sitemap.locations);
+
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
   const consoleProblems: string[] = [];

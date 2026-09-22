@@ -4,6 +4,9 @@
  * so generation crashes fail the pipeline before deploy.
  *
  * Usage: bun scripts/sitemap-smoke.ts
+ *
+ * Served routes (HTTP 200 + parseable XML) are a separate check:
+ * `bun run test:sitemap:http`
  */
 import {
   buildApplicationSitemapEntries,
