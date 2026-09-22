@@ -61,7 +61,7 @@ const GROUPS: { id: string; heading: string; blurb: string; pick: (e: LibraryEnt
 function Entry({ entry }: { entry: LibraryEntry }) {
   return (
     <li className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-      <p className="display text-lg text-bone">
+      <p className="display text-lg text-brand-ink">
         {entry.title} <span className="text-mist">({entry.year})</span>
       </p>
       <p className="mt-1 text-sm text-mist">
@@ -113,7 +113,7 @@ export default function CardologyBooks() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Cardology Books &amp; Decks</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Books &amp; Decks</h1>
 
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>

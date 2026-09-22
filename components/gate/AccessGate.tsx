@@ -33,7 +33,7 @@ export function AccessGate({
   };
 
   const field =
-    "w-full rounded-lg border border-white/10 bg-void px-3 py-3 text-bone outline-none transition placeholder:text-faint focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
+    "w-full rounded-lg border border-white/10 bg-void px-3 py-3 text-brand-ink outline-none transition placeholder:text-faint focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
 
   return (
     <motion.div
@@ -43,7 +43,7 @@ export function AccessGate({
       className="card-surface mx-auto mt-6 max-w-sm p-6"
     >
       <Eyebrow className="text-gold">Members only</Eyebrow>
-      <h2 className="display mt-2 text-2xl text-bone">{title}</h2>
+      <h2 className="display mt-2 text-2xl text-brand-ink">{title}</h2>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-mist">{blurb}</p>
 
       <form onSubmit={submit} className="mt-5 space-y-3">

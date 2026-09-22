@@ -123,7 +123,7 @@ export default function StoryArcPage() {
           className="mb-7"
         >
           <Eyebrow className="mb-2">Story Arc · Your Year</Eyebrow>
-          <h1 className="display text-3xl text-bone">
+          <h1 className="display text-3xl text-brand-ink">
             Where this year is taking you
           </h1>
           <p className="mt-2 text-sm text-faint">
@@ -160,7 +160,7 @@ export default function StoryArcPage() {
             <p className="prose-reading text-mist">{errorMsg}</p>
             <button
               onClick={generate}
-              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-bone transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
             >
               Try again
             </button>
@@ -188,7 +188,7 @@ export default function StoryArcPage() {
             </p>
             <button
               onClick={generate}
-              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm text-bone transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
             >
               Trace it again
             </button>

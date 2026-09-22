@@ -26,7 +26,7 @@ export function FamousPeopleBlock({
               <a
                 href={person.wikipedia}
                 rel="noopener"
-                className="font-medium text-bone underline underline-offset-4"
+                className="font-medium text-brand-ink underline underline-offset-4"
               >
                 {person.name}
               </a>

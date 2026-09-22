@@ -112,7 +112,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
       >
         <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
-        <h1 className="display mt-3 text-4xl leading-[1.08] text-bone">
+        <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
           {bluntLine(ap)}
         </h1>
         <p className="mt-4 text-sm uppercase tracking-wider2 text-gold">
@@ -196,7 +196,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         className="card-surface rounded-2xl p-6"
       >
         <Eyebrow className="text-gold">Today&apos;s reflection</Eyebrow>
-        <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-bone">
+        <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-brand-ink">
           {reflectionPrompt(ap)}
         </p>
         <p className="mt-4 text-xs text-faint">
@@ -212,7 +212,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         >
           <span>
             <span className="eyebrow text-gold">Story Arc · Your Year</span>
-            <span className="mt-1 block text-pretty font-serif text-base leading-snug text-bone">
+            <span className="mt-1 block text-pretty font-serif text-base leading-snug text-brand-ink">
               Where this year is dragging you — chapter, turn, and the horizon you keep avoiding.
             </span>
           </span>

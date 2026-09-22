@@ -36,7 +36,7 @@ export function FreeCourseCta({
       <p className="eyebrow text-gold">Free four-part video course</p>
       <div className="mt-3 grid gap-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <div>
-          <h2 className="font-serif text-xl text-bone">Learn to read your birth card in 14 minutes</h2>
+          <h2 className="font-serif text-xl text-brand-ink">Learn to read your birth card in 14 minutes</h2>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-mist">
             Find your card, combine rank and suit, spot balanced and shadow states, and turn the pattern into a practical reflection.
           </p>

@@ -164,7 +164,7 @@ export function Prompts({ reading, onSelect, className = "" }: PromptsProps) {
               <span className="eyebrow text-gold">{p.label}</span>
               <Glyphs cards={p.cards} />
             </div>
-            <p className="prose-reading mt-3 text-pretty font-serif text-[1.05rem] italic leading-relaxed text-bone">
+            <p className="prose-reading mt-3 text-pretty font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">
               {p.question}
             </p>
             <span className="mt-3 inline-block text-xs uppercase tracking-wider2 text-faint transition-colors group-hover:text-gold">

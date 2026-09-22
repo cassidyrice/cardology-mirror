@@ -97,7 +97,8 @@ export function PlayingCard({
       {(title || subtitle) && (
         <div className="text-center">
           {subtitle && <p className="eyebrow">{subtitle}</p>}
-          {title && <p className="font-serif text-sm text-bone">{title}</p>}
+          {/* Inherit so paper-shell titles stay ink and the dark canvas stays bone. */}
+          {title && <p className="font-serif text-sm text-inherit">{title}</p>}
         </div>
       )}
     </div>

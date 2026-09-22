@@ -69,7 +69,7 @@ export default function JournalPage() {
   return (
     <Screen className="starfield bg-cosmic mx-auto max-w-md">
       <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
-      <h1 className="display mt-3 text-4xl leading-[1.08] text-bone">
+      <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
         The Journal
       </h1>
       <p className="mt-3 text-sm text-faint">
@@ -126,7 +126,7 @@ export default function JournalPage() {
             animate={{ opacity: 1, y: 0 }}
             className="card-surface rounded-2xl p-6 text-center"
           >
-            <p className="prose-reading font-serif text-bone">
+            <p className="prose-reading font-serif text-brand-ink">
               Nothing written yet.
             </p>
             <p className="mt-2 text-sm text-faint">
@@ -264,7 +264,7 @@ function EntryCard({
                   }
                 }}
                 rows={6}
-                className="w-full resize-none rounded-xl border border-white/10 bg-void/40 p-3 font-serif text-[1.05rem] leading-relaxed text-bone outline-none focus:border-gold/40"
+                className="w-full resize-none rounded-xl border border-white/10 bg-void/40 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none focus:border-gold/40"
               />
             ) : (
               <p className="prose-reading whitespace-pre-wrap text-[1.0rem] text-mist">
@@ -290,7 +290,7 @@ function EntryCard({
                     setDraft(entry.body);
                     setEditing(true);
                   }}
-                  className="text-xs uppercase tracking-wider2 text-mist hover:text-bone"
+                  className="text-xs uppercase tracking-wider2 text-mist hover:text-brand-ink"
                 >
                   Edit
                 </button>
@@ -365,7 +365,7 @@ function WritingSheet({
           <Eyebrow className="text-gold">{prompt.label}</Eyebrow>
           <Glyphs cards={cards} />
         </div>
-        <p className="prose-reading mt-3 font-serif text-[1.05rem] italic leading-relaxed text-bone">
+        <p className="prose-reading mt-3 font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">
           {prompt.question}
         </p>
 
@@ -375,7 +375,7 @@ function WritingSheet({
           onChange={(e) => setBody(e.target.value)}
           placeholder="Write what's true, not what's tidy…"
           rows={7}
-          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-void/40 p-4 font-serif text-[1.05rem] leading-relaxed text-bone outline-none placeholder:text-faint focus:border-gold/40"
+          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-void/40 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-faint focus:border-gold/40"
         />
 
         <div className="mt-3 flex items-center justify-between">

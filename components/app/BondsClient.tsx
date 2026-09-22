@@ -72,7 +72,7 @@ export default function BondsPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Eyebrow className="mb-1">Bonds</Eyebrow>
-          <h1 className="display mb-2 text-4xl text-bone">
+          <h1 className="display mb-2 text-4xl text-brand-ink">
             Where two patterns collide
           </h1>
           <p className="text-sm text-faint">
@@ -198,7 +198,7 @@ export default function BondsPage() {
             {/* How your patterns meet */}
             <div>
               <Eyebrow className="mb-1">Where you click, where you grind</Eyebrow>
-              <h2 className="display mb-5 text-2xl text-bone">
+              <h2 className="display mb-5 text-2xl text-brand-ink">
                 How your patterns meet
               </h2>
               <div className="space-y-4">
@@ -263,13 +263,13 @@ function PersonInputs({
         value={name}
         onChange={(e) => onName(e.target.value)}
         placeholder={namePlaceholder}
-        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-bone placeholder:text-faint focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink placeholder:text-faint focus:border-gold/40 focus:outline-none"
       />
       <input
         type="date"
         value={birthdate}
         onChange={(e) => onBirth(e.target.value)}
-        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-bone focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink focus:border-gold/40 focus:outline-none"
       />
     </div>
   );

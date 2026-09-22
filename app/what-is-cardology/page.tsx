@@ -152,7 +152,7 @@ export default function WhatIsCardology() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
       <SeoHeroFan className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-bone">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary id="definition">
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -218,7 +218,7 @@ export default function WhatIsCardology() {
           (your card, this year's cards, and the card you owe, read against the one question you bring).
         </p>
         <div className="card-surface mt-5 rounded-2xl border border-gold/25 p-5">
-          <p className="font-serif text-base text-bone">After your free card</p>
+          <p className="font-serif text-base text-brand-ink">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-mist">
             The One Question Reading is $13 once: one question, read from your card and
             the year you are in, written for you within {ONE_QUESTION_TURNAROUND}. No subscription.
@@ -417,7 +417,7 @@ export default function WhatIsCardology() {
             <li key={t.year + t.sourceLabel} className="relative pl-2">
               <span className="absolute -left-[1.35rem] top-1.5 h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
               <p className="text-sm text-mist">
-                <strong className="font-serif text-base text-bone">{t.year}</strong>
+                <strong className="font-serif text-base text-brand-ink">{t.year}</strong>
                 {" \u00b7 "}
                 {t.what}{" "}
                 <a href={t.source} rel="noopener" className="text-gold underline underline-offset-4">
@@ -427,7 +427,7 @@ export default function WhatIsCardology() {
             </li>
           ))}
         </ol>
-        <h3 className="mt-6 font-serif text-xl text-bone">Claims you will read elsewhere that the sources do not support</h3>
+        <h3 className="mt-6 font-serif text-xl text-brand-ink">Claims you will read elsewhere that the sources do not support</h3>
         <ul className="prose-reading mt-2 space-y-2 text-sm text-mist">
           <li>
             <strong>Atlantis, Egypt, and a 20,000-year-old Order of the Magi.</strong> Every version of
@@ -451,7 +451,7 @@ export default function WhatIsCardology() {
             &ldquo;Perpetual Almanack&rdquo; card story by 1762, more than a century before Richmond.
           </li>
         </ul>
-        <h3 className="mt-6 font-serif text-xl text-bone">Cardology, cardiology, cartomancy, tarot</h3>
+        <h3 className="mt-6 font-serif text-xl text-brand-ink">Cardology, cardiology, cartomancy, tarot</h3>
         <p className="prose-reading mt-2 text-sm text-mist">
           <strong>Cardiology</strong> is the medicine of the heart; the words share four letters and nothing
           else. <strong>Cartomancy</strong> is reading shuffled cards for an answer, which Cardology does not
@@ -514,7 +514,7 @@ export default function WhatIsCardology() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}
@@ -524,7 +524,7 @@ export default function WhatIsCardology() {
       <FreeCourseCta source="learn" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Keep going</p>
+        <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/products/one-question-reading" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             $13 One Question Reading →

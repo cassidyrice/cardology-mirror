@@ -123,7 +123,7 @@ export default function ReadingPage() {
           className="mb-8"
         >
           <Eyebrow className="mb-2">Deep Dive · A Mirror, Not a Forecast</Eyebrow>
-          <h1 className="display text-3xl text-bone">Your Reading</h1>
+          <h1 className="display text-3xl text-brand-ink">Your Reading</h1>
           <p className="mt-2 text-sm text-faint">
             For {profile.name || "you"} — drawn only from your cards.
           </p>
@@ -141,7 +141,7 @@ export default function ReadingPage() {
             <p className="prose-reading text-mist">{errorMsg}</p>
             <button
               onClick={generate}
-              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-bone transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
             >
               Try again
             </button>
@@ -169,7 +169,7 @@ export default function ReadingPage() {
             </p>
             <button
               onClick={generate}
-              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm text-bone transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
             >
               Re-read the mirror
             </button>

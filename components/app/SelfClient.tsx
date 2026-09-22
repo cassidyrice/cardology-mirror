@@ -71,7 +71,7 @@ export default function SelfPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Eyebrow className="mb-1">Your Blueprint · {profile.name}</Eyebrow>
-          <h1 className="display mb-2 text-4xl text-bone">{desc.title}</h1>
+          <h1 className="display mb-2 text-4xl text-brand-ink">{desc.title}</h1>
           <p className="text-sm text-faint">
             {archetype.suit_domain} · Solar value{" "}
             <span className="tnum">{archetype.solar_value}</span>

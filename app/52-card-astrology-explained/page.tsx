@@ -104,7 +104,7 @@ export default function CardAstrology() {
         }}
       />
 
-      <h1 className="display mb-3 text-3xl text-bone">Playing Cards Birthday Chart &amp; 52-Card Astrology</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Playing Cards Birthday Chart &amp; 52-Card Astrology</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -221,7 +221,7 @@ export default function CardAstrology() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}
@@ -231,7 +231,7 @@ export default function CardAstrology() {
       <FreeCourseCta source="52-card-astrology" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">See your card in the system</p>
+        <p className="font-serif text-base text-brand-ink">See your card in the system</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/birth-card-calculator" className="inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
             Calculate your birth card →

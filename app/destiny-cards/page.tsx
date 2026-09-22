@@ -183,7 +183,7 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
       <p className="eyebrow mb-3 text-gold">Free lookup · not tarot · not fate</p>
-      <h1 className="display mb-3 text-3xl text-bone">Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -203,7 +203,7 @@ export default function DestinyCardsPage() {
         <BirthCardCalculator />
       </div>
       <div className="card-surface mb-6 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">After your free destiny card</p>
+        <p className="font-serif text-base text-brand-ink">After your free destiny card</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
           The calculator result already offers the $13 One Question Reading: one
           question, read from your card, this year's cards, and the card you owe.
@@ -232,7 +232,7 @@ export default function DestinyCardsPage() {
           ["#vs-tarot", "vs tarot"],
           ["#faq", "FAQ"],
         ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-bone">
+          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-brand-ink">
             {label}
           </a>
         ))}
@@ -240,7 +240,7 @@ export default function DestinyCardsPage() {
 
       <section id="destiny-chart" className="mt-4 scroll-mt-10">
         <p className="eyebrow mb-2 text-gold">Cards of Destiny chart</p>
-        <h2 className="font-serif text-3xl text-bone">Birthday → playing card</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">Birthday → playing card</h2>
         <p className="prose-reading mt-4 text-mist">
           Same map as the calculator. Pick a date, or type one above. Larger copy lives on the{" "}
           <Link href="/birth-card-calculator#cardology-chart" className="text-gold underline underline-offset-4">
@@ -276,7 +276,7 @@ export default function DestinyCardsPage() {
           <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-mist">
             <caption className="sr-only">Search names for the playing-card birth-card family</caption>
             <thead>
-              <tr className="border-b border-white/15 text-bone">
+              <tr className="border-b border-white/15 text-brand-ink">
                 <th className="py-2 pr-3 font-serif text-base" scope="col">Name people search</th>
                 <th className="py-2 font-serif text-base" scope="col">What it usually means</th>
               </tr>
@@ -284,7 +284,7 @@ export default function DestinyCardsPage() {
             <tbody>
               {nameRows.map(([name, meaning]) => (
                 <tr key={name} className="border-b border-white/10 align-top">
-                  <th className="py-3 pr-3 font-semibold text-bone" scope="row">{name}</th>
+                  <th className="py-3 pr-3 font-semibold text-brand-ink" scope="row">{name}</th>
                   <td className="py-3">{meaning}</td>
                 </tr>
               ))}
@@ -419,7 +419,7 @@ export default function DestinyCardsPage() {
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-mist">
           <caption className="sr-only">Claims versus non-claims for Cardology on Card Blueprints</caption>
           <thead>
-            <tr className="border-b border-white/15 text-bone">
+            <tr className="border-b border-white/15 text-brand-ink">
               <th className="py-2 pr-3 font-serif text-base" scope="col">We claim</th>
               <th className="py-2 font-serif text-base" scope="col">We do not claim</th>
             </tr>
@@ -449,7 +449,7 @@ export default function DestinyCardsPage() {
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
           <caption className="sr-only">Destiny Cards terms mapped to Card Blueprints tools</caption>
           <thead>
-            <tr className="border-b border-white/15 text-bone">
+            <tr className="border-b border-white/15 text-brand-ink">
               <th className="py-2 pr-3 font-serif text-base" scope="col">Idea</th>
               <th className="py-2 pr-3 font-serif text-base" scope="col">Destiny / Love Cards</th>
               <th className="py-2 font-serif text-base" scope="col">On Card Blueprints</th>
@@ -458,7 +458,7 @@ export default function DestinyCardsPage() {
           <tbody>
             {langRows.map(([idea, dest, cb]) => (
               <tr key={idea} className="border-b border-white/10 align-top">
-                <th className="py-3 pr-3 font-semibold text-bone" scope="row">{idea}</th>
+                <th className="py-3 pr-3 font-semibold text-brand-ink" scope="row">{idea}</th>
                 <td className="py-3 pr-3">{dest}</td>
                 <td className="py-3">{cb}</td>
               </tr>
@@ -479,7 +479,7 @@ export default function DestinyCardsPage() {
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
           <caption className="sr-only">Destiny Cards and Cardology versus tarot birth cards</caption>
           <thead>
-            <tr className="border-b border-white/15 text-bone">
+            <tr className="border-b border-white/15 text-brand-ink">
               <th className="py-2 pr-3 font-serif text-base" scope="col">Dimension</th>
               <th className="py-2 pr-3 font-serif text-base" scope="col">Destiny Cards / Cardology</th>
               <th className="py-2 font-serif text-base" scope="col">Tarot birth cards</th>
@@ -488,7 +488,7 @@ export default function DestinyCardsPage() {
           <tbody>
             {tarotRows.map(([dim, a, b]) => (
               <tr key={dim} className="border-b border-white/10 align-top">
-                <th className="py-3 pr-3 font-semibold text-bone" scope="row">{dim}</th>
+                <th className="py-3 pr-3 font-semibold text-brand-ink" scope="row">{dim}</th>
                 <td className="py-3 pr-3">{a}</td>
                 <td className="py-3">{b}</td>
               </tr>
@@ -509,7 +509,7 @@ export default function DestinyCardsPage() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}

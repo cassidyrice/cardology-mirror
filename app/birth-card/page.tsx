@@ -120,7 +120,7 @@ export default function BirthCardIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-bone">The 52 Cardology Birth Card Meanings</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -222,7 +222,7 @@ export default function BirthCardIndex() {
             ["3 of Clubs meaning", "/birth-card/3-of-clubs"],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-bone">
+              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-brand-oxblood">
                 {label} →
               </Link>
             </li>
@@ -254,7 +254,7 @@ export default function BirthCardIndex() {
                       decoding="async"
                       className="w-full rounded-[6px] border border-brand-line transition-transform duration-200 group-hover:-translate-y-1"
                     />
-                    <span className="mt-2 block font-serif text-sm text-bone">
+                    <span className="mt-2 block font-serif text-sm text-brand-ink">
                       {c.label}
                     </span>
                     <span className="mt-0.5 block text-[0.6rem] text-faint">
@@ -278,7 +278,7 @@ export default function BirthCardIndex() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}

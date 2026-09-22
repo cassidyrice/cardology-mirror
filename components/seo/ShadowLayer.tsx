@@ -16,10 +16,10 @@ export function ShadowLayer({ code }: { code: string }) {
       data-shadow-layer={s.code}
     >
       <p className="eyebrow text-gold">The shadow, by name</p>
-      <h2 id="shadow-archetype" className="mt-2 font-serif text-2xl text-bone">
+      <h2 id="shadow-archetype" className="mt-2 font-serif text-2xl text-brand-ink">
         {s.label}: {s.archetype}
       </h2>
-      <blockquote className="mt-4 border-l-2 border-gold/60 pl-4 font-serif text-xl leading-snug text-bone">
+      <blockquote className="mt-4 border-l-2 border-gold/60 pl-4 font-serif text-xl leading-snug text-brand-ink">
         &ldquo;{s.worldview}&rdquo;
       </blockquote>
       <p className="prose-reading mt-4 text-mist">{s.coreShadow}</p>
@@ -33,7 +33,7 @@ export function ShadowLayer({ code }: { code: string }) {
         </ul>
       ) : null}
       <p className="prose-reading mt-3 text-mist">
-        <span className="font-semibold text-bone">In the light{s.lightName ? `: ${s.lightName}` : ""}.</span>{" "}
+        <span className="font-semibold text-brand-ink">In the light{s.lightName ? `: ${s.lightName}` : ""}.</span>{" "}
         {s.inTheLight}
       </p>
       <p className="mt-4 text-xs text-faint">

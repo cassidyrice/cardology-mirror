@@ -592,12 +592,6 @@ body {
   background: transparent !important;
 }
 
-.paper-shell .display,
-.paper-shell .text-bone,
-.paper-shell .font-serif.text-bone {
-  color: var(--ink) !important;
-}
-
 .paper-shell .text-mist,
 .paper-shell [class*="text-mist"],
 .paper-shell .text-faint,

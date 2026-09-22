@@ -183,7 +183,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         />
         <div>
           <span className="eyebrow text-faint">{card.suitDomain}</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-bone">
+          <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             {card.label} Meaning{" "}
             {card.title && <span className="block text-lg text-gold">{card.title}</span>}
           </h1>
@@ -203,7 +203,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <ShadowLayer code={card.code} />
       <div className="mt-6 rounded-2xl border border-gold/30 bg-white/[0.04] p-5">
         <p className="eyebrow text-gold">One question, read from this card</p>
-        <h2 className="mt-2 font-serif text-2xl text-bone">Ask your question as the {card.label} — $13</h2>
+        <h2 className="mt-2 font-serif text-2xl text-brand-ink">Ask your question as the {card.label} — $13</h2>
         <p className="mt-2 text-sm text-mist">
           One decision, read from your {card.label} birth card, this year&rsquo;s
           cards, and the card you owe. Usually ready in {ONE_QUESTION_TURNAROUND}.
@@ -225,9 +225,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p>{generalReadingText(card)}</p>
         {readingNotes ? (
           <>
-            <h3 className="mt-4 font-serif text-base text-bone">In a reading</h3>
+            <h3 className="mt-4 font-serif text-base text-brand-ink">In a reading</h3>
             <p>{readingNotes.reading}</p>
-            <h3 className="mt-4 font-serif text-base text-bone">In love</h3>
+            <h3 className="mt-4 font-serif text-base text-brand-ink">In love</h3>
             <p>
               {dedupeAgainstPrior(readingNotes.love, priorReadingText)}{" "}
               {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
@@ -236,13 +236,13 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                 See {card.label} compatibility with all 52 cards →
               </a>
             </p>
-            <h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>
+            <h3 className="mt-4 font-serif text-base text-brand-ink">In money and work</h3>
             <p>{dedupeAgainstPrior(readingNotes.work, [...priorReadingText, readingNotes.love])}</p>
-            <h3 className="mt-4 font-serif text-base text-bone">As a 52-day period card</h3>
+            <h3 className="mt-4 font-serif text-base text-brand-ink">As a 52-day period card</h3>
             <p>{readingNotes.timing}</p>
           </>
         ) : null}
-        <h3 className="mt-4 font-serif text-base text-bone">As advice</h3>
+        <h3 className="mt-4 font-serif text-base text-brand-ink">As advice</h3>
         <p>{adviceReadingText(card)}</p>
       </Section>
 
@@ -293,7 +293,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {angles.map((angle) => (
             <div key={angle.label} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-base text-bone">{angle.label}</h3>
+              <h3 className="font-serif text-base text-brand-ink">{angle.label}</h3>
               <p className="mt-2 text-sm leading-relaxed text-mist">{angle.body}</p>
             </div>
           ))}
@@ -389,7 +389,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
               <caption className="sr-only">Birthdays that map to the {card.label}, with zodiac sign and planetary ruling card</caption>
               <thead>
-                <tr className="border-b border-white/15 text-bone">
+                <tr className="border-b border-white/15 text-brand-ink">
                   <th scope="col" className="py-2 pr-3">Birthday</th>
                   <th scope="col" className="py-2 pr-3">Zodiac sign</th>
                   <th scope="col" className="py-2 pr-3">Ruling planet</th>
@@ -401,7 +401,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                   const z = zodiacFor(d.month, d.day);
                   return (
                     <tr key={d.slug} className="border-b border-white/10">
-                      <th scope="row" className="py-2 pr-3 font-medium text-bone">
+                      <th scope="row" className="py-2 pr-3 font-medium text-brand-ink">
                         {/* Plain <a> to /born-on/: birthday pages live on the Worker-served surface. */}
                         <a href={`/born-on/${d.slug}`} className="text-gold underline underline-offset-4">{d.label}</a>
                       </th>
@@ -443,7 +443,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             has to drop by two to keep that value. That makes this card&rsquo;s birthdays a straight diagonal
             across the calendar rather than a scatter:
           </p>
-          <p className="mt-3 font-mono text-sm text-bone">
+          <p className="mt-3 font-mono text-sm text-brand-ink">
             {dates.map((d) => d.label).join(" → ")}
           </p>
           <p className="mt-3">
@@ -512,7 +512,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </Section>
 
       <div className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Not sure this is your card?</p>
+        <p className="font-serif text-base text-brand-ink">Not sure this is your card?</p>
         <p className="mt-1 text-sm text-faint">Your birth card was fixed the day you were born — no choosing, no escaping it. Find yours in seconds, then let the app handle today&rsquo;s timing, compatibility, and the reflection prompts you&rsquo;ll pretend you didn&rsquo;t need.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-gold underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
@@ -522,7 +522,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <ul className="flex flex-wrap gap-2">
           {siblings.map((c) => (
             <li key={c.slug}>
-              <Link href={`/birth-card/${c.slug}`} className="rounded-full border border-white/12 px-3 py-1 text-sm text-mist transition hover:border-gold/40 hover:text-bone">
+              <Link href={`/birth-card/${c.slug}`} className="rounded-full border border-white/12 px-3 py-1 text-sm text-mist transition hover:border-gold/40 hover:text-brand-ink">
                 {c.code} {c.label}
               </Link>
             </li>
@@ -583,7 +583,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         />
         <div>
           <span className="eyebrow text-faint">{date.label} birth card</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-bone">{date.label} Birth Card: {card.label}</h1>
+          <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">{date.label} Birth Card: {card.label}</h1>
           <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         </div>
       </div>
@@ -683,7 +683,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </Section>
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Just browsing birthdays?</p>
+        <p className="font-serif text-base text-brand-ink">Just browsing birthdays?</p>
         <p className="mt-1 text-sm text-faint">Run any birth date through the calculator to get the birth card and ruling card free — same deterministic answer, every time.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-gold underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
@@ -808,7 +808,7 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
       </span>
       <div className="flex flex-col">
         <span className="eyebrow text-[0.6rem] text-gold">{label}</span>
-        <span className="font-serif text-base text-bone">{seo.label}</span>
+        <span className="font-serif text-base text-brand-ink">{seo.label}</span>
       </div>
       <span className="ml-auto text-gold/50">→</span>
     </Link>
@@ -857,7 +857,7 @@ function InfoItem({ label, value }: { label: string; value: string }) {
 }
 
 function FaqList({ faqs }: { faqs: { q: string; a: string }[] }) {
-  return <div className="space-y-4">{faqs.map((f) => <div key={f.q}><h3 className="font-serif text-base text-bone">{f.q}</h3><p>{f.a}</p></div>)}</div>;
+  return <div className="space-y-4">{faqs.map((f) => <div key={f.q}><h3 className="font-serif text-base text-brand-ink">{f.q}</h3><p>{f.a}</p></div>)}</div>;
 }
 
 function JsonLd({ data }: { data: unknown }) {

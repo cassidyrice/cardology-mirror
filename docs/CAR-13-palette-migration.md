@@ -1,22 +1,22 @@
 # CAR-13 — Legacy dark palette off the paper-shell layer
 
-Pass 1 only: inventory, proposed mapping, batch plan. Agreed before any component edit.
+Pass 1 inventoried the layer and proposed the mapping. Cass agreed that mapping. Batch A is the first deletion.
 
-Status: proposal. No component, page, stylesheet, or Tailwind config was edited. The dark palette tokens stay. The `!important` layer stays. The only added file is this document.
+Status: batch A landed. Rule 3 (`.paper-shell .display`, `.text-bone`, `.font-serif.text-bone`) is deleted. Rules 4–23 stay. `tailwind.config.ts` dark palette keys stay.
 
 `docs/SITE-RECORD.md` is not in this repository (`docs/SECURITY.md` already records that). This file is the §1.1 tracking note until that record exists.
 
 ## Tracking
 
-Counted on `main` at `f040184` (`app/globals.css` paper-shell remap block, lines 585–747). A deletion of the blueprint-ambient rules earlier in that file moved this block up from the 739–901 range named in the issue. The rules themselves are unchanged.
+The inventory was counted on `main` at `f040184` (the paper-shell remap block was lines 585–747). A deletion of the blueprint-ambient rules earlier in that file had moved this block up from the 739–901 range named in the issue. Batch A removed rule 3, so the block now ends at line 741. Appendix counts below are the pre-batch-A inventory.
 
 | Slice | Rule groups | Remaining |
 | --- | ---: | --- |
-| Palette and surface remaps (the layer CAR-13 exists to remove) | 18 | 18 (100%) |
+| Palette and surface remaps (the layer CAR-13 exists to remove) | 18 | 17 (94%) |
 | Geometry and form chrome (radius, inputs, `.app-paper-stage`) | 5 | 5 (100%) |
-| Whole `.paper-shell` compatibility block | 23 | 23 (100%) |
+| Whole `.paper-shell` compatibility block | 23 | 22 (96%) |
 
-Migrations have not started. Update this table in the PR that deletes the first rule group. A batch that deletes no rule has not finished.
+Batch A migrated exact `text-bone` on paper-shell screens to `text-brand-ink`, and added `text-brand-ink` beside `.display` (the type class stays). Inert `hover:text-bone` on those screens moved in the same change: `hover:text-brand-ink` on mist chips, `hover:text-brand-oxblood` on the gold anchor chips in `app/birth-card/page.tsx`. Still on the dark palette: `app/layout.tsx` body, `app/access/page.tsx`, onboarding (`app/onboarding/page.tsx`, `ProfileForm`, `IntroSlide`), and unmounted `Brand` and `YearPreview`. `PlayingCard` titles no longer set `text-bone`; they inherit, so a paper-shell title stays ink and an onboarding title stays bone. The dark card frame stays for batch K. `ProfileForm`'s `hover:text-bone` stays. Update this table again in the PR that deletes the next rule group. A batch that deletes no rule has not finished.
 
 The dark palette in `tailwind.config.ts` (`ink`, `void`, `cosmos`, `haze`, `bone`, `mist`, `faint`, `gold`, `ember`, `sage`, `dusk`, plus suit aliases `hearts` / `diamonds` / `clubs` / `spades`) stays until the last consumer is gone. Suit aliases have zero class uses. `faint` is in the config and in the mist rule even though the issue's token list skipped it.
 
@@ -52,7 +52,7 @@ Dead to the router today, still a grep dependency if a batch's exit check is "no
 
 ## How the counts were taken
 
-Source scan of `app/`, `components/`, and `scripts/` (tests that assert class names). A utility counts when it appears as a class token (`text-mist`, `hover:text-gold`, `border-white/10`, `placeholder:text-faint`). A semantic class (`display`, `eyebrow`, `card-surface`, …) counts only as a whitespace-separated token inside a string, so `s.eyebrow`, `display: "swap"`, and the English word "display" do not count. Comments are skipped. The override block itself (lines 585–747) and the base dark rules it replaces (`.card-surface`, `.foil-text`, `.eyebrow`, `.display`, `.prose-reading`, `.hairline`, `.starfield` earlier in `app/globals.css`) are not counted as consumers.
+Source scan of `app/`, `components/`, and `scripts/` (tests that assert class names). A utility counts when it appears as a class token (`text-mist`, `hover:text-gold`, `border-white/10`, `placeholder:text-faint`). A semantic class (`display`, `eyebrow`, `card-surface`, …) counts only as a whitespace-separated token inside a string, so `s.eyebrow`, `display: "swap"`, and the English word "display" do not count. Comments are skipped. The override block itself (lines 585–747 at the inventory commit; 585–741 after batch A) and the base dark rules it replaces (`.card-surface`, `.foil-text`, `.eyebrow`, `.display`, `.prose-reading`, `.hairline`, `.starfield` earlier in `app/globals.css`) are not counted as consumers.
 
 CSS modules and the shorts studio stylesheet are excluded. They do not match `.paper-shell` selectors.
 
@@ -60,7 +60,7 @@ Issue round numbers were `text-bone` in 51 files, `text-mist` in 50, `card-surfa
 
 ## The layer, rule by rule
 
-Line numbers are `app/globals.css` as of this pass. "Depends" means a descendant of `.paper-shell` whose class attribute matches the selector. Outside-shell files in the appendix use the same class names and do not depend on the rule; they block deleting the Tailwind color, not the rule.
+Line numbers are `app/globals.css` after batch A deleted rule 3. "Depends" means a descendant of `.paper-shell` whose class attribute matches the selector. Outside-shell files in the appendix use the same class names and do not depend on the rule; they block deleting the Tailwind color, not the rule.
 
 Selector behavior that is easy to miss:
 
@@ -73,27 +73,27 @@ Selector behavior that is easy to miss:
 | --- | --- | --- | --- | --- | --- |
 | 1 | 585–588 | `.starfield::before` | no | starfield removed | I |
 | 2 | 590–593 | `.bg-cosmic`, `[class*="bg-cosmic"]` | yes | background transparent | I |
-| 3 | 595–599 | `.display`, `.text-bone`, `.font-serif.text-bone` | yes | `color: var(--ink)` | A |
-| 4 | 601–606 | `[class*="text-mist"]`, `[class*="text-faint"]` | yes | `color: var(--ink-soft)` | B |
-| 5 | 611–616 | `[class*="text-gold"]`, `[class*="text-ember"]` | yes | `color: var(--bronze)` | C |
-| 6 | 619–622 | `a.text-gold`, `a[class*="text-gold"]` | yes | `color: var(--oxblood)` (beats rule 5 on anchors) | C |
-| 7 | 624–627 | `.text-sage`, `.text-dusk` | yes | `color: #183f30` (same value as `.landing-oracle --club`) | D |
-| 8 | 629–631 | `.text-ink` | yes | `color: var(--paper)` | E |
-| 9 | 633–637 | `.eyebrow` | no | `var(--ink-soft)`, weight 700 | L |
-| 10 | 639–651 | `.prose-reading` and `p` / `li` / `em` / `strong` | no | `color: var(--ink)` (base rule paints `em` gold `#d9b26a`; the override flattens that to ink) | L |
-| 11 | 653–655 | `.hairline` | no | `border-color: var(--line)` | L |
-| 12 | 657–667 | `.card-surface` | no | cream grid card; replaces the dark gradient in the base rule | J |
-| 13 | 669–672 | `.card-frame` | yes | border `rgba(20,17,13,.25)`, fill `rgba(244,240,231,.94)` | K |
-| 14 | 674–679 | `.foil-text` | yes | clipped gradient `var(--rust)` → `#c77e63` → `var(--gold)`; shell sets `--rust` to `var(--oxblood)` | K |
-| 15 | 681–683 | `.bg-foil` | yes | `background: var(--ink)` | E |
-| 16 | 685–687 | `[class*="bg-gold"]` | yes | `background-color: rgba(158,61,36,.12)` (old warm red at 12%) | H |
-| 17 | 689–694 | `[class*="border-white"]`, `border-bone`, `border-haze`, `border-gold` | yes | `border-color: rgba(20,17,13,.16)` | G |
-| 18 | 696–702 | `[class*="bg-void"]`, `bg-haze`, `bg-cosmos`, `bg-white` | yes | fill `rgba(244,240,231,.68)`, image cleared | F |
-| 19 | 704–710 | `input`, `textarea`, `select` | yes | cream field, ink text, warm border | M (keep or migrate; see below) |
-| 20 | 712–715 | placeholders | yes | `rgba(20,17,13,.45)` | M |
-| 21 | 717–723 | `.rounded-2xl` … `.rounded-t-3xl` | yes | radius `0.25rem` | M |
-| 22 | 728–731 | `a.rounded-full`, `button.rounded-full` | yes | radius `0.25rem` | M |
-| 23 | 733–747 | `.app-paper-stage` and descendants | no | inset shadow, `min-height: auto`, softer `.shadow-lg` | M |
+| 3 | — | `.display`, `.text-bone`, `.font-serif.text-bone` | yes | deleted in batch A; paper screens use `text-brand-ink` | done |
+| 4 | 595–600 | `[class*="text-mist"]`, `[class*="text-faint"]` | yes | `color: var(--ink-soft)` | B |
+| 5 | 605–610 | `[class*="text-gold"]`, `[class*="text-ember"]` | yes | `color: var(--bronze)` | C |
+| 6 | 613–616 | `a.text-gold`, `a[class*="text-gold"]` | yes | `color: var(--oxblood)` (beats rule 5 on anchors) | C |
+| 7 | 618–621 | `.text-sage`, `.text-dusk` | yes | `color: #183f30` (same value as `.landing-oracle --club`) | D |
+| 8 | 623–625 | `.text-ink` | yes | `color: var(--paper)` | E |
+| 9 | 627–631 | `.eyebrow` | no | `var(--ink-soft)`, weight 700 | L |
+| 10 | 633–645 | `.prose-reading` and `p` / `li` / `em` / `strong` | no | `color: var(--ink)` (base rule paints `em` gold `#d9b26a`; the override flattens that to ink) | L |
+| 11 | 647–649 | `.hairline` | no | `border-color: var(--line)` | L |
+| 12 | 651–661 | `.card-surface` | no | cream grid card; replaces the dark gradient in the base rule | J |
+| 13 | 663–666 | `.card-frame` | yes | border `rgba(20,17,13,.25)`, fill `rgba(244,240,231,.94)` | K |
+| 14 | 668–673 | `.foil-text` | yes | clipped gradient `var(--rust)` → `#c77e63` → `var(--gold)`; shell sets `--rust` to `var(--oxblood)` | K |
+| 15 | 675–677 | `.bg-foil` | yes | `background: var(--ink)` | E |
+| 16 | 679–681 | `[class*="bg-gold"]` | yes | `background-color: rgba(158,61,36,.12)` (old warm red at 12%) | H |
+| 17 | 683–688 | `[class*="border-white"]`, `border-bone`, `border-haze`, `border-gold` | yes | `border-color: rgba(20,17,13,.16)` | G |
+| 18 | 690–696 | `[class*="bg-void"]`, `bg-haze`, `bg-cosmos`, `bg-white` | yes | fill `rgba(244,240,231,.68)`, image cleared | F |
+| 19 | 698–704 | `input`, `textarea`, `select` | yes | cream field, ink text, warm border | M (keep or migrate; see below) |
+| 20 | 706–709 | placeholders | yes | `rgba(20,17,13,.45)` | M |
+| 21 | 711–717 | `.rounded-2xl` … `.rounded-t-3xl` | yes | radius `0.25rem` | M |
+| 22 | 722–725 | `a.rounded-full`, `button.rounded-full` | yes | radius `0.25rem` | M |
+| 23 | 727–741 | `.app-paper-stage` and descendants | no | inset shadow, `min-height: auto`, softer `.shadow-lg` | M |
 
 Rules 19–23 are chrome. They are not dark-palette class names. Recommendation: leave them as the paper shell's intentional geometry, and track them separately from the 18 palette rules. Cass decides in the agreement step.
 
@@ -159,7 +159,7 @@ Rules 16, 17, 18, 12, and 13 still paint warm leftovers (cream `rgba(244,240,231
 
 5. **D5 — shared primitives.** Recommendation: paper callers of `Eyebrow` switch to `Kicker` or `type-eyebrow`; `ProfileForm` keeps `Eyebrow`. `SectionTitle`, `Divider`, and `PositionStack` are paper-shell-only and can take brand classes in batches A, D, and L. `PlayingCard` grows real paper-surface classes (`surface="paper"` today only recolors pips) and keeps a dark frame for onboarding. No blind replace across `ui.tsx`.
 
-Until those five are agreed, no component file changes.
+Batch A did not depend on D1–D5. Later batches stay blocked on the decision named in the batch plan until that decision is agreed.
 
 ## Batch plan
 
@@ -169,7 +169,7 @@ Order is hue-safe text first, then the decisions, then shared components, then s
 
 | Batch | Deletes | Scope | Notes |
 | --- | --- | --- | --- |
-| A | rule 3 | Exact `text-bone` and `.display` on paper-shell files, including `SectionTitle` (paper-only). Add `text-brand-ink` next to `.display`. | Leave `Eyebrow` callers that pass through `ProfileForm`, `PlayingCard`, `app/layout.tsx` `text-bone`, `app/access/page.tsx`, and the rest of onboarding. Include the inert `hover:text-bone` on paper links in the same PR so they do not turn bone-white once rules 4 and 6 no longer cover them. |
+| A | rule 3 (deleted) | Exact `text-bone` and `.display` on paper-shell files, including `SectionTitle` (paper-only). Add `text-brand-ink` next to `.display`. | Done. Left `Eyebrow` callers that pass through `ProfileForm`, `app/layout.tsx` `text-bone`, `app/access/page.tsx`, and the rest of onboarding. `PlayingCard` titles inherit instead of setting `text-bone`, so paper titles stay ink and onboarding titles stay bone. Inert `hover:text-bone` on paper links moved in the same PR. |
 | B | rule 4 | `text-mist`, `text-faint`, `placeholder:text-faint` on paper-shell-only files. | Largest quiet win. `text-faint` and `text-mist` leave together or the rule cannot be deleted. |
 | C | rules 5 and 6 | `text-gold` and `text-ember`. Split anchors (`text-brand-oxblood`) from labels (`text-brand-bronze`) in the same PR. | Rule 6 has to go in the same PR as rule 5. Grep `<Link` / `<a` on the same class string; about 180 gold uses share a line with an anchor tag, about 214 do not (a line can hold either). |
 | D | rule 7 | `text-sage`, `text-dusk`, plus the unmatched `bg-sage`, `bg-dusk`, `bg-ember` dots. | Blocked on D1. `PositionStack` and `components/bonds/ObservationCard.tsx`. `PositionStack` is paper-shell-only, so the whole component can take the agreed tokens. |
@@ -187,16 +187,18 @@ Final PR, separate from the 18: remove dark palette keys from `tailwind.config.t
 
 Screenshot list for a batch is the routes that import its files. App clients (`TodayClient` and the rest) mean `/today`, `/self`, `/journal`, `/timing`, `/bonds`, `/story`, `/reading`. SEO pages mean their own `app/**/page.tsx` route.
 
-Tests that quote old classes and will need a touch in the batch that renames them: `scripts/calculator-deep-dive.test.ts` (`bg-foil`), `scripts/card-meaning-depth.test.ts` (`text-bone`), `scripts/card-reading-notes.test.ts` (`text-bone`).
+Tests that quote old classes and will need a touch in the batch that renames them: `scripts/calculator-deep-dive.test.ts` (`bg-foil`). Batch A updated `scripts/card-meaning-depth.test.ts` and `scripts/card-reading-notes.test.ts` (`text-bone` → `text-brand-ink`).
 
-## What this pass did not do
+## What the inventory pass did not do
+
+This list describes the inventory commit only. Batch A renamed paper-shell classes and deleted rule 3.
 
 - No component class was renamed.
 - No override rule was deleted.
 - `tailwind.config.ts` was not edited.
 - No deploy.
 - `~/cardblueprints-ops/QUEUE.md` is not on this machine, so no claim line was appended.
-- `bun run test` was not run; the only change is this document.
+- `bun run test` was not run; the only change in that commit was this document.
 
 ## Appendix — file inventory
 

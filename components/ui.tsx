@@ -11,7 +11,7 @@ export function Eyebrow({ children, className = "" }: { children: ReactNode; cla
 
 export function SectionTitle({ children, className = "" }: { children: ReactNode; className?: string }) {
   return (
-    <h2 className={`display text-2xl text-bone ${className}`}>{children}</h2>
+    <h2 className={`display text-2xl text-brand-ink ${className}`}>{children}</h2>
   );
 }
 
