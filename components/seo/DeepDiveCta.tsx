@@ -26,6 +26,7 @@ export function DeepDiveCta({
   className = "",
   showFulfillment = true,
   variant = "button",
+  href = DEEP_DIVE_PRODUCT_PATH,
 }: {
   placement: string;
   birthdate?: string;
@@ -37,6 +38,8 @@ export function DeepDiveCta({
   showFulfillment?: boolean;
   /** Header row uses the quiet button. The mobile menu uses a full-width text row. */
   variant?: "button" | "menu";
+  /** Real destination when JavaScript is off. With JS, the click still opens the birthday field. */
+  href?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [draftDate, setDraftDate] = useState("");
@@ -131,16 +134,17 @@ export function DeepDiveCta({
           </button>
         </form>
       ) : (
-        <button
-          type="button"
+        <Link
+          href={href}
           className="accent-button large-button w-full text-center"
-          onClick={() => {
+          onClick={(event) => {
+            event.preventDefault();
             trackOfferClick();
             setOpen(true);
           }}
         >
           {ctaLabel}
-        </button>
+        </Link>
       )}
       {!compact && showFulfillment && (
         <p className="text-center text-xs leading-relaxed text-brand-ink-soft">

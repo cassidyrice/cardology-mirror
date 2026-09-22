@@ -19,7 +19,7 @@ import { BrandLogo } from "./BrandLogo";
 
 const FREE_TOOLS = [
   { label: "All 52 Cards", href: "/birth-card" },
-  { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
+  { label: "Compatibility calculator", href: "/birth-card-compatibility-calculator" },
   { label: "52-Day Period Tool", href: "/52-day-period-meaning-tool" },
   { label: "Today's Card", href: "/card-of-the-day" },
   { label: "Birthdays by Date", href: BIRTHDAY_DIRECTORY_PATH, external: true },

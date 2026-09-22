@@ -94,7 +94,7 @@ export default function CompatibilityCalculatorPage() {
     <SeoShell
       crumb={[
         { label: "Home", href: "/" },
-        { label: "Compatibility", href: "/cardology-compatibility" },
+        { label: "Compatibility guide", href: "/cardology-compatibility" },
         { label: "Calculator", href: "/birth-card-compatibility-calculator" },
       ]}
     >

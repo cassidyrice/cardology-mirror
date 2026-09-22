@@ -65,6 +65,7 @@ jobs:
             scripts/birth-card-coverage.test.ts \
             scripts/calculator-library-links.test.ts \
             scripts/second-page-poach.test.ts \
+            scripts/internal-link-hygiene.test.ts \
             scripts/ai-overview-hubs.test.ts \
             scripts/calculator-deep-dive.test.ts \
             scripts/one-question-sla.test.ts \
