@@ -56,7 +56,7 @@ export function DeepDiveHostedCheckout({
         aria-busy={pending}
         className={
           compact
-            ? "accent-button small-button text-center disabled:cursor-wait disabled:opacity-70"
+            ? "paper-button small-button text-center disabled:cursor-wait disabled:opacity-70"
             : "accent-button large-button w-full text-center disabled:cursor-wait disabled:opacity-70"
         }
       >

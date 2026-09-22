@@ -9,6 +9,7 @@ import {
   DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
   DEEP_DIVE_CTA_LABEL,
   DEEP_DIVE_FULFILLMENT,
+  DEEP_DIVE_HEADER_CTA_LABEL,
   DEEP_DIVE_JOKER_SUCCESS_COPY,
   DEEP_DIVE_OFFER_SLUG,
   DEEP_DIVE_PRODUCT_PATH,
@@ -86,6 +87,7 @@ test("One Question Reading ($13) is a Card Blueprint checkout offer on the deep-
   expect(DEEP_DIVE_PRODUCT_PATH).toBe("/products/one-question-reading");
   expect(DEEP_DIVE_REVIEW_PATH).toBe("/checkout/deep-dive");
   expect(DEEP_DIVE_CTA_LABEL).toBe("Ask your question — $13");
+  expect(DEEP_DIVE_HEADER_CTA_LABEL).toBe("Ask — $13");
   expect(ONE_QUESTION_TURNAROUND).toBe("about a minute");
   expect(DEEP_DIVE_CALCULATOR_ENTRY_LABEL).toBe("Find your card → ask one question, $13");
   expect(DEEP_DIVE_FULFILLMENT).toContain("What $13 gets you");
@@ -131,7 +133,7 @@ test("One Question Reading ($13) is a Card Blueprint checkout offer on the deep-
   expect(header).toContain("/explore");
   expect(header).not.toContain("/karma-reading");
   expect(header).not.toContain("Get a Reading");
-  expect(header).not.toContain("HeaderDeepDiveCta");
+  expect(header).toContain("HeaderDeepDiveCta");
   expect(header).not.toContain("buy.stripe.com");
 });
 
@@ -328,12 +330,17 @@ test("shared calculator result leads with report + consultation, then report onl
 });
 
 test("conversion chrome and card meanings use one $13 One Question Reading offer", () => {
-  // HeaderDeepDiveCta remains for other surfaces; home header has no Reading Day CTA.
+  // Quiet site-header action uses HeaderDeepDiveCta; no Reading Day CTA.
   const headerCta = read("components/seo/HeaderDeepDiveCta.tsx");
+  expect(header).toContain("HeaderDeepDiveCta");
   expect(headerCta).toContain('placement="site-header"');
   expect(headerCta).toContain('source="site-header"');
   expect(headerCta).toContain("<DeepDiveCta");
   expect(cta).toContain('placement === "site-header"');
+  expect(cta).toContain("paper-button small-button");
+  expect(cta).toContain("DEEP_DIVE_REVIEW_PATH");
+  expect(cta).toContain("DEEP_DIVE_HEADER_CTA_LABEL");
+  expect(cta).toContain("storeCheckoutContext");
   expect(cta).toContain("{!compact && showFulfillment && (");
   expect(header).not.toContain('label: "Deep Dive $9"');
   expect(header).not.toMatch(/Deep Dive \$9[\s\S]*href="\/birth-card-calculator"/);
