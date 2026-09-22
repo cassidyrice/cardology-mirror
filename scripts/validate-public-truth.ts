@@ -210,6 +210,8 @@ const productMarketingFiles = [
   "app/blog/page.tsx",
   "app/card-of-the-day/page.tsx",
   "app/contact/page.tsx",
+  "app/faq/page.tsx",
+  "lib/faq.ts",
   "app/how-to-read-playing-cards/page.tsx",
   "app/playing-card-spreads/page.tsx",
   "app/try/page.tsx",

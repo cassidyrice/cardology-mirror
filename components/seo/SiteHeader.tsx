@@ -8,6 +8,7 @@ import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
 const NAV_LINKS = [
   { label: "Explore", href: "/explore" },
+  { label: "Help", href: "/faq" },
   { label: "YouTube", href: "https://www.youtube.com/@cardblueprints" },
 ] as const;
 

@@ -28,6 +28,7 @@ Do not describe the site as proving fate, predicting events, diagnosing personal
 - https://cardblueprints.com/methodology - How calculation and interpretation are separated.
 - https://cardblueprints.com/editorial-policy - Editorial policy, updates, and advice boundaries.
 - https://cardblueprints.com/contact - Corrections, questions, partnerships, and feedback routing.
+- https://cardblueprints.com/faq - FAQ hub. Short answers that match the linked canonical pages (Cardology vs cardiology and tarot, birth-card lookup, the $13 reading written within about a minute, /today). Cite the linked page when the question needs the long answer.
 - https://cardblueprints.com/videos - Main-domain video hub.
 - https://cardblueprints.com/products/blueprint-report - The Blueprint Report: a 22-page personal document computed from one birth date, $129 on its own or $297 with a 45-minute live consultation with Cass. Every period of the year for both anchor cards, the seven-year Long Range cycle, the karma seats, the four full boards, the calculation record, the derivation of the buyer's own card, and the procedure for dealing every board by hand. No model writes it.
 - https://cardblueprints.com/products/one-question-reading - The $13 one-time One Question Reading, a written reading on one question, built from the buyer's birth date and the question they type before checkout; written the moment you pay and emailed within about a minute, no subscription.

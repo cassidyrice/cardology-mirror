@@ -72,6 +72,7 @@ export const MARKETING_PATHS = [
   "/methodology",
   "/editorial-policy",
   "/contact",
+  "/faq",
   "/shadow-karma-guide",
   "/karma-cards",
   "/explore",
