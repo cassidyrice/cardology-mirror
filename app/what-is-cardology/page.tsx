@@ -110,18 +110,40 @@ const faqs = [
 ];
 
 const toc = [
-  { id: "definition", label: "Definition" },
-  { id: "find-your-card", label: "Find your card" },
-  { id: "free-reading", label: "Free reading" },
+  { id: "what-it-is", label: "What it is" },
   { id: "how-it-works", label: "How it works" },
   { id: "benefits", label: "Benefits" },
-  { id: "suits", label: "Four suits" },
+  { id: "suits", label: "Suits" },
   { id: "card-meanings", label: "Card meanings" },
   { id: "layers", label: "Birth vs ruling" },
-  { id: "lineage", label: "Lineage" },
-  { id: "not", label: "What it is not" },
+  { id: "history", label: "History" },
   { id: "faq", label: "FAQ" },
 ];
+
+function QuietContinue() {
+  return (
+    <nav aria-label="Continue" className="mt-5 border-t border-brand-line pt-3">
+      <p className="text-xs uppercase tracking-[0.14em] text-brand-bronze">Continue</p>
+      <ul className="mt-2 flex flex-col gap-1 text-sm sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-1">
+        <li>
+          <Link href="/birth-card-calculator#bd" className="text-brand-oxblood underline underline-offset-4">
+            Find your card
+          </Link>
+        </li>
+        <li>
+          <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
+            Browse 52 meanings
+          </Link>
+        </li>
+        <li>
+          <Link href="/products/one-question-reading" className="text-brand-ink-soft underline underline-offset-4">
+            One question ($13), optional
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
 
 export default function WhatIsCardology() {
   const faq = {
@@ -153,7 +175,7 @@ export default function WhatIsCardology() {
 
       <SeoHeroFan className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">What Is Cardology? Find Your Birth Card from Your Birthday</h1>
-      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary id="definition">
+      <div className="mb-4 scroll-mt-24 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary id="what-it-is">
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cardology is a birthday-to-playing-card system: your month and day map to
@@ -261,7 +283,7 @@ export default function WhatIsCardology() {
         .
       </p>
 
-      <section className="mt-8" id="how-it-works">
+      <section className="mt-8 scroll-mt-24" id="how-it-works">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">How does Cardology work?</h2>
         <p className="prose-reading text-brand-ink-soft">
           A standard deck has 52 cards; the calendar has 52 weeks. Cardology links
@@ -295,9 +317,10 @@ export default function WhatIsCardology() {
           </Link>
           .
         </p>
+        <QuietContinue />
       </section>
 
-      <section className="mt-8" id="benefits">
+      <section className="mt-8 scroll-mt-24" id="benefits">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">What are the benefits of Cardology?</h2>
         <ul className="prose-reading space-y-2 text-brand-ink-soft">
           <li>
@@ -319,7 +342,7 @@ export default function WhatIsCardology() {
         </ul>
       </section>
 
-      <section className="mt-10" id="suits">
+      <section className="mt-10 scroll-mt-24" id="suits">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">The four suits</h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
@@ -329,7 +352,7 @@ export default function WhatIsCardology() {
         </ul>
       </section>
 
-      <section className="mt-10" id="card-meanings">
+      <section className="mt-10 scroll-mt-24" id="card-meanings">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Cardology card meanings: all 52 cards</h2>
         <p className="prose-reading mb-5 text-brand-ink-soft">
           Every card in the deck has its own Cardology card meaning page: the drawn-card
@@ -337,9 +360,10 @@ export default function WhatIsCardology() {
           dates that carry it. Pick a card to open its full meaning.
         </p>
         <DeckMatrix />
+        <QuietContinue />
       </section>
 
-      <section className="mt-8" id="layers">
+      <section className="mt-8 scroll-mt-24" id="layers">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Two layers: birth card and ruling card</h2>
         <p className="prose-reading text-brand-ink-soft">
           Most people have two key cards — the birth card and a planetary ruling card
@@ -398,8 +422,8 @@ export default function WhatIsCardology() {
         </p>
       </section>
 
-      <section className="mt-8" id="lineage">
-        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Where it comes from: a dated, sourced history</h2>
+      <section className="mt-8 scroll-mt-24" id="lineage">
+        <h2 id="history" className="type-eyebrow mb-2 scroll-mt-24 !text-brand-bronze">Where it comes from: a dated, sourced history</h2>
         <p className="prose-reading text-brand-ink-soft">
           Most Cardology sites tell the origin story without a single citation. Here is what the
           library records and the surviving books actually show. Every entry links to the source
@@ -509,7 +533,9 @@ export default function WhatIsCardology() {
         </p>
       </section>
 
-      <section className="mt-10" id="faq">
+      <QuietContinue />
+
+      <section className="mt-10 scroll-mt-24" id="faq">
         <h2 className="type-eyebrow mb-4 !text-brand-bronze">Cardology FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (

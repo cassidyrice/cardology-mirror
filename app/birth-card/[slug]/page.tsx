@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
+import {
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
 import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { ShadowLayer, ShadowPrompts } from "@/components/seo/ShadowLayer";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
@@ -532,6 +537,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">See how {card.label} pairs with other cards →</Link>
         </p>
       </nav>
+
+      <EndOfPageReads card={card} siblings={siblings} />
     </SeoShell>
   );
 }
@@ -750,6 +757,67 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
         </a>
       </p>
     </Section>
+  );
+}
+
+export function endOfPageReads(card: CardSeo, siblings: CardSeo[]) {
+  const sameSuit = siblings.filter((c) => c.suit === card.suit && c.slug !== card.slug).slice(0, 2);
+  return [
+    ...sameSuit.map((c) => ({
+      href: `/birth-card/${c.slug}`,
+      label: `${c.label} meaning`,
+      note: `same ${suitWord(card).toLowerCase()} suit`,
+      external: false,
+    })),
+    {
+      href: "/planetary-ruling-card",
+      label: "Planetary ruling card",
+      note: "the second layer on this birth card",
+      external: false,
+    },
+    {
+      href: compatHubHref(card),
+      label: `${card.label} compatibility`,
+      note: "how this card pairs",
+      external: true,
+    },
+    {
+      href: "/what-is-cardology",
+      label: "What is Cardology",
+      note: "the birthday-to-card map",
+      external: false,
+    },
+  ];
+}
+
+function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[] }) {
+  const reads = endOfPageReads(card, siblings);
+  return (
+    <section className="mt-10" aria-labelledby="related-reads">
+      <h2 id="related-reads" className="type-eyebrow mb-3 !text-brand-bronze">Related reads</h2>
+      <ul className="space-y-2 text-sm">
+        {reads.map((read) => (
+          <li key={read.href}>
+            {read.external ? (
+              <a href={read.href} className="text-brand-oxblood underline underline-offset-4">
+                {read.label}
+              </a>
+            ) : (
+              <Link href={read.href} className="text-brand-oxblood underline underline-offset-4">
+                {read.label}
+              </Link>
+            )}
+            <span className="text-brand-ink-soft"> — {read.note}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
+        Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your {card.label} and the year you are in, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
+        <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
+          {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+        </Link>
+      </p>
+    </section>
   );
 }
 

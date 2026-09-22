@@ -247,48 +247,58 @@ function BirthCardResultCard({
         </div>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-        {slug && (
-          <Link
-            href={`/birth-card/${slug}`}
-            className="text-sm font-medium text-brand-ink underline underline-offset-4"
-          >
-            {bc?.label} meaning
-          </Link>
-        )}
+      {!isJoker && bible?.watchFor && (
+        <p className="mt-4 text-center text-sm leading-relaxed text-brand-ink-soft">
+          {bible.watchFor}
+        </p>
+      )}
+      <nav aria-label="What to do next" className="mt-4 w-full text-left">
+        <p className="type-eyebrow text-center">What to do next</p>
+        <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-snug text-brand-ink">
+          {slug && (
+            <li>
+              <Link
+                href={`/birth-card/${slug}`}
+                className="font-semibold text-brand-ink underline underline-offset-4"
+              >
+                Open your {bc?.label ?? "birth card"} meaning
+              </Link>
+            </li>
+          )}
+          <li>
+            <Link
+              href="/birth-card-compatibility-calculator#da"
+              className="font-medium text-brand-ink underline underline-offset-4"
+            >
+              Compare with someone
+            </Link>
+          </li>
+        </ol>
+        <div className="mt-3 flex flex-col items-start gap-2 text-sm">
+          {!isJoker && (
+            <Link
+              href="/your-year"
+              className="font-medium text-brand-ink underline underline-offset-4"
+              onClick={() =>
+                trackClientFunnelEvent("year_link_clicked", {
+                  placement: "birth-card-calculator-result",
+                })
+              }
+            >
+              See your whole year →
+            </Link>
+          )}
+          <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
+        </div>
         {!isJoker && (
-          <Link
-            href="/your-year"
-            className="text-sm font-medium text-brand-ink underline underline-offset-4"
-            onClick={() =>
-              trackClientFunnelEvent("year_link_clicked", {
-                placement: "birth-card-calculator-result",
-              })
-            }
-          >
-            See your whole year →
-          </Link>
-        )}
-        <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
-      </div>
-      {!isJoker && <div className="mt-6 w-full max-w-md border border-brand-line-strong bg-brand-paper px-5 py-5">
-        {bible?.watchFor && (
-          <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
-            {bible.watchFor}
+          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
+            Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your birth card and this year, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
+            <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
+              {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+            </Link>
           </p>
         )}
-        <p className="mt-3 text-center font-serif text-2xl leading-snug text-brand-ink">
-          One decision on your mind?
-        </p>
-        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
-          The {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your birth card and this year, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
-        </p>
-        <p className="mt-3 text-center text-sm leading-relaxed text-brand-ink-soft">
-          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
-            {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
-          </Link>
-        </p>
-      </div>}
+      </nav>
       {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
       {(() => {
         const t = testimonialForCard(bc?.label);
