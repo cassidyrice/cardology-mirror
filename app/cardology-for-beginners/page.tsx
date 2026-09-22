@@ -132,7 +132,7 @@ export default function CardologyForBeginnersPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howTo) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology for Beginners</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Start Cardology by finding the playing card locked to your birthday, reading
@@ -167,7 +167,7 @@ export default function CardologyForBeginnersPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">The 10-minute path</h2>
         <ol className="space-y-4">
           {steps.map((s) => (
-            <li key={s.n} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <li key={s.n} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <p className="text-xs font-bold uppercase tracking-[0.14em] !text-brand-bronze">
                 Step {s.n}
               </p>
@@ -229,7 +229,7 @@ export default function CardologyForBeginnersPage() {
         </p>
       </section>
 
-      <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
+      <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           The One Question Reading is a one-time $13 purchase: one question, read from
@@ -248,7 +248,7 @@ export default function CardologyForBeginnersPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Beginner FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
@@ -261,16 +261,16 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Browse the library</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Every birthday
           </a>
-          <a href={COMPATIBILITY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <a href={COMPATIBILITY_DIRECTORY_PATH} className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Every pairing
           </a>
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/birth-card" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             All 52 cards
           </Link>
-          <Link href="/about" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/about" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             About Card Blueprints
           </Link>
         </div>

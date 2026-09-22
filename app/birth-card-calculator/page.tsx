@@ -209,7 +209,7 @@ export default function CalculatorPage() {
         .
       </p>
 
-      <aside className="mt-6 rounded-2xl border border-gold/25 bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
+      <aside className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
@@ -235,7 +235,7 @@ export default function CalculatorPage() {
           ["#trust-and-limits", "Method & trust"],
           ["#faq", "FAQ"],
         ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
+          <a key={href} href={href} className="rounded-full border border-brand-line px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
             {label}
           </a>
         ))}
@@ -268,12 +268,12 @@ export default function CalculatorPage() {
               key={c.slug}
               href={`/birth-card/${c.slug}`}
               title={`${c.label} birth card meaning`}
-              className={`rounded-[3px] border border-white/10 px-2 py-1 font-serif text-sm transition hover:border-gold/40 ${c.glyph === "\u2665" || c.glyph === "\u2666" ? "text-brand-oxblood" : "text-brand-ink"}`}
+              className={`rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm transition ${c.glyph === "\u2665" || c.glyph === "\u2666" ? "text-brand-oxblood" : "text-brand-ink"}`}
             >
               {c.rank}{c.glyph}
             </Link>
           ))}
-          <Link href="/birth-card/joker" className="rounded-[3px] border border-white/10 px-2 py-1 font-serif text-sm text-brand-ink hover:border-gold/40">Joker</Link>
+          <Link href="/birth-card/joker" className="rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm text-brand-ink ">Joker</Link>
         </nav>
         <h3 className="mt-8 font-serif text-xl text-brand-ink">Browse the chart by month</h3>
         <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
@@ -281,7 +281,7 @@ export default function CalculatorPage() {
             <a
               key={slug}
               href={`/born-on/${slug}`}
-              className="rounded-xl border border-white/10 bg-brand-ivory/70 px-3 py-2 text-center font-serif text-sm text-brand-ink transition hover:border-gold/40"
+              className="rounded-xl border border-brand-line bg-brand-ivory/70 px-3 py-2 text-center font-serif text-sm text-brand-ink transition "
             >
               {label}
             </a>
@@ -322,7 +322,7 @@ export default function CalculatorPage() {
               ["2", "Get the fixed card", "The month and day map to one playing card in the 52-card calendar."],
               ["3", "Verify the meaning", "Open the card page, compare suit and rank, and test the interpretation against real patterns."],
             ].map(([n, title, body]) => (
-              <li key={n} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+              <li key={n} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
                 <span className="eyebrow !text-brand-bronze">Step {n}</span>
                 <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
@@ -344,7 +344,7 @@ export default function CalculatorPage() {
         </details>
       </section>
 
-      <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-brand-ivory/70 p-5 sm:p-6">
+      <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5 sm:p-6">
         <details>
           <summary className="cursor-pointer">
             <p className="eyebrow mb-2 !text-brand-bronze">Worked verification</p>
@@ -415,14 +415,14 @@ export default function CalculatorPage() {
             <h2 className="font-serif text-3xl text-brand-ink">Birth card vs. planetary ruling card</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
+          <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
             <h3 className="font-serif text-xl text-brand-ink">Birth card: the fixed pattern</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               Your birth card comes from month and day and remains fixed. Read its
               suit as the life domain and its rank as the recurring function or role.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
+          <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
             <h3 className="font-serif text-xl text-brand-ink">Ruling card: the expression layer</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The ruling card adds style and tone through the planetary layer. It can
@@ -452,29 +452,29 @@ export default function CalculatorPage() {
               Cardology playing-card calculator versus tarot birth-card systems
             </caption>
             <thead>
-              <tr className="border-b border-white/15 text-brand-ink">
+              <tr className="border-b border-brand-line text-brand-ink">
                 <th scope="col" className="p-3">Topic</th>
                 <th scope="col" className="p-3">This calculator (Cardology)</th>
                 <th scope="col" className="p-3">Tarot birth cards</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Deck</th>
                 <td className="p-3">52 playing cards</td>
                 <td className="p-3">78-card tarot (usually Major Arcana pairs)</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Method</th>
                 <td className="p-3">Birthday → one fixed playing card</td>
                 <td className="p-3">Birth-date numerology → Major Arcana</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Shuffle?</th>
                 <td className="p-3">No — same date, same card</td>
                 <td className="p-3">Spreads usually shuffle; birth-card formulas vary</td>
               </tr>
-              <tr className="border-b border-white/10">
+              <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Example result</th>
                 <td className="p-3">Queen of Diamonds</td>
                 <td className="p-3">e.g. Death + Emperor (different system)</td>
@@ -523,7 +523,7 @@ export default function CalculatorPage() {
             ["Named publisher", "Cassidy Rice publishes and reviews the educational material, with editorial and correction standards linked publicly."],
             ["Private input", "The calculation runs in your browser. Anonymous analytics record calculator use, not the birthday entered."],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
+            <div key={title} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
               <h3 className="font-serif text-lg text-brand-ink">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
             </div>
@@ -549,7 +549,7 @@ export default function CalculatorPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card calculator FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <details key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <summary className="cursor-pointer">
                 <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               </summary>
@@ -590,28 +590,28 @@ export default function CalculatorPage() {
           into a verifiable learning path.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/birth-card" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Browse all 52 cards
           </Link>
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Playing cards birthday chart
           </a>
-          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Compatibility calculator
           </Link>
-          <Link href="/what-is-cardology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/what-is-cardology" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             What is Cardology?
           </Link>
-          <Link href="/cardology-for-beginners" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/cardology-for-beginners" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Beginners guide
           </Link>
-          <Link href="/destiny-cards" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/destiny-cards" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Destiny Cards hub
           </Link>
-          <Link href="/cardology-compatibility" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/cardology-compatibility" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Compatibility guide
           </Link>
-          <Link href="/methodology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/methodology" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Methodology
           </Link>
         </div>

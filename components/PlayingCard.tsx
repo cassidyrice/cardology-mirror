@@ -12,6 +12,9 @@ export interface PlayingCardProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   surface?: "dark" | "paper";
+  // Paper-shell mounts pass border-brand-line. The default stays the dark
+  // frame so /onboarding and the homepage hero keep border-white/10.
+  frameBorder?: string;
   // --- optional enhancements (all backward-compatible) ---
   active?: boolean;        // gold halo — marks the current period
   glow?: boolean;          // alias for active
@@ -36,6 +39,7 @@ export function PlayingCard({
   size = "md",
   className = "",
   surface = "dark",
+  frameBorder = "border-white/10",
   active = false,
   glow = false,
   float = false,
@@ -77,7 +81,8 @@ export function PlayingCard({
             : undefined
         }
         className={[
-          "card-frame relative rounded-xl border border-white/10",
+          "card-frame relative rounded-xl border",
+          frameBorder,
           "bg-gradient-to-br from-haze to-cosmos",
           "shadow-lg transition-transform duration-300",
           SIZES[size],

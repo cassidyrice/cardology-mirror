@@ -93,7 +93,7 @@ export default function CardologyVsTarotPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology vs Tarot</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           <strong>Cardology</strong> maps a birthday to one card in a standard 52-card
@@ -126,7 +126,7 @@ export default function CardologyVsTarotPage() {
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Cardology versus tarot by deck, method, and use</caption>
           <thead>
-            <tr className="border-b border-white/15 text-brand-ink">
+            <tr className="border-b border-brand-line text-brand-ink">
               <th className="py-2 pr-3 font-serif text-base" scope="col">Dimension</th>
               <th className="py-2 pr-3 font-serif text-base" scope="col">Cardology</th>
               <th className="py-2 font-serif text-base" scope="col">Tarot</th>
@@ -134,7 +134,7 @@ export default function CardologyVsTarotPage() {
           </thead>
           <tbody>
             {rows.map(([dim, c, t]) => (
-              <tr key={dim} className="border-b border-white/10 align-top">
+              <tr key={dim} className="border-b border-brand-line align-top">
                 <th className="py-3 pr-3 font-semibold text-brand-ink" scope="row">{dim}</th>
                 <td className="py-3 pr-3">{c}</td>
                 <td className="py-3">{t}</td>
@@ -200,7 +200,7 @@ export default function CardologyVsTarotPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
@@ -208,7 +208,7 @@ export default function CardologyVsTarotPage() {
         </div>
       </section>
 
-      <div className="card-surface mt-10 rounded-2xl border border-gold/25 p-5">
+      <div className="card-surface mt-10 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">Try the Cardology side in 30 seconds</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/birth-card-calculator" className="ink-button">

@@ -27,7 +27,7 @@ function Strand({
               transition={{ duration: 0.5, delay: delay + i * 0.08 }}
               className="flex flex-col items-center gap-1.5"
             >
-              <PlayingCard code={code} size="sm" active={i === 1} float={i === 1} />
+              <PlayingCard code={code} size="sm" active={i === 1} float={i === 1} frameBorder="border-brand-line" />
               <span className="text-[0.55rem] uppercase tracking-wider2 text-brand-ink-soft">
                 {BEATS[i]}
               </span>

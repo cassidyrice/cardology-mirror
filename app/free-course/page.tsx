@@ -40,7 +40,7 @@ export default async function FreeCoursePage({
             {FREE_COURSE_MODULES.map((module) => (
               <li key={module.number} className="card-surface rounded-2xl p-5">
                 <div className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/30 font-serif text-brand-bronze">{module.number}</span>
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-brand-line font-serif text-brand-bronze">{module.number}</span>
                   <div>
                     <h2 className="font-serif text-lg text-brand-ink">{module.title}</h2>
                     <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{module.description}</p>
@@ -52,7 +52,7 @@ export default async function FreeCoursePage({
           </ol>
         </div>
 
-        <aside className="card-surface rounded-3xl border border-gold/20 p-6 sm:p-8 lg:sticky lg:top-24">
+        <aside className="card-surface rounded-3xl border !border-brand-line p-6 sm:p-8 lg:sticky lg:top-24">
           <p className="eyebrow !text-brand-bronze">Get instant access</p>
           <h2 className="mt-3 font-serif text-2xl text-brand-ink">Where should we send your course?</h2>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Enter your name and email to unlock all four modules now. We will also email your return link.</p>

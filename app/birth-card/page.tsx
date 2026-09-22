@@ -121,7 +121,7 @@ export default function BirthCardIndex() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
-      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
@@ -192,14 +192,14 @@ export default function BirthCardIndex() {
           <a
             key={g.suit}
             href={`#${g.suit}`}
-            className="rounded-full border border-white/10 px-3 py-1 transition hover:border-gold text-brand-oxblood"
+            className="rounded-full border border-brand-line px-3 py-1 transition text-brand-oxblood"
           >
             {SUIT_GLYPHS[g.suit]} {g.suit}
           </a>
         ))}
       </nav>
 
-      <section className="mb-10 rounded-2xl border border-gold/20 bg-brand-ivory/70 p-5" aria-labelledby="popular-card-meanings">
+      <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="popular-card-meanings">
         <h2 id="popular-card-meanings" className="eyebrow mb-3 !text-brand-bronze">Popular card meanings</h2>
         <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
           Start with the cards people are reading most, then browse the full deck below.
@@ -222,7 +222,7 @@ export default function BirthCardIndex() {
             ["3 of Clubs meaning", "/birth-card/3-of-clubs"],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-brand-oxblood transition hover:border-gold hover:text-brand-oxblood">
+              <Link href={href} className="inline-block rounded-full border border-brand-line px-4 py-2 text-brand-oxblood transition hover:text-brand-oxblood">
                 {label} →
               </Link>
             </li>
@@ -243,7 +243,7 @@ export default function BirthCardIndex() {
                 <li key={c.slug}>
                   <Link
                     href={`/birth-card/${c.slug}`}
-                    className="card-surface group relative flex flex-col items-center overflow-hidden p-3 text-center transition-all hover:border-gold/50 hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
+                    className="card-surface group relative flex flex-col items-center overflow-hidden p-3 text-center transition-all !border-brand-line hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
                   >
                     <img
                       src={`/share-cards/faces/${c.slug}.png`}
@@ -277,7 +277,7 @@ export default function BirthCardIndex() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

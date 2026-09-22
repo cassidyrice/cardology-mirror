@@ -132,7 +132,7 @@ function Timing({
         >
           <Link
             href="/story"
-            className="card-surface group flex items-center justify-between gap-3 p-4 transition hover:border-gold/30 active:scale-[0.99]"
+            className="card-surface group flex items-center justify-between gap-3 p-4 transition !border-brand-line active:scale-[0.99]"
           >
             <span>
               <span className="eyebrow !text-brand-bronze">Story Arc</span>

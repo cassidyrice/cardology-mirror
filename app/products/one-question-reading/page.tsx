@@ -145,7 +145,7 @@ export default function OneQuestionReadingPage() {
         <p className="mb-4 text-sm text-brand-ink-soft">
           From a reading for an Eight of Diamonds who asked about a promotion.
         </p>
-        <blockquote className="space-y-4 border-l-2 border-gold/60 pl-5">
+        <blockquote className="space-y-4 border-l-2 border-brand-line pl-5">
           {SAMPLE.map((para) => (
             <p key={para.slice(0, 24)} className="prose-reading text-brand-ink">
               {para}
@@ -190,7 +190,7 @@ export default function OneQuestionReadingPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Questions people ask first</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

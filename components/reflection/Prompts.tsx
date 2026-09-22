@@ -158,7 +158,7 @@ export function Prompts({ reading, onSelect, className = "" }: PromptsProps) {
           <button
             type="button"
             onClick={() => onSelect?.(p)}
-            className="card-surface group w-full rounded-2xl p-5 text-left transition-colors hover:border-gold/30 active:scale-[0.99]"
+            className="card-surface group w-full rounded-2xl p-5 text-left transition-colors !border-brand-line active:scale-[0.99]"
           >
             <div className="flex items-center justify-between gap-3">
               <span className="eyebrow !text-brand-bronze">{p.label}</span>

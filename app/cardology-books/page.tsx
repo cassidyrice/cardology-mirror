@@ -60,7 +60,7 @@ const GROUPS: { id: string; heading: string; blurb: string; pick: (e: LibraryEnt
 
 function Entry({ entry }: { entry: LibraryEntry }) {
   return (
-    <li className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
+    <li className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
       <p className="display text-lg text-brand-ink">
         {entry.title} <span className="text-brand-ink-soft">({entry.year})</span>
       </p>
@@ -115,7 +115,7 @@ export default function CardologyBooks() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Books &amp; Decks</h1>
 
-      <div className="mb-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           The cardology literature is small: one 1893 source text, one 1947 book that

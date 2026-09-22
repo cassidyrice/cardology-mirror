@@ -105,7 +105,7 @@ export default function CompatibilityCalculatorPage() {
       </h1>
 
       <CompatibilityCalculator />
-      <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="mb-6 mt-8 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
@@ -124,7 +124,7 @@ export default function CompatibilityCalculatorPage() {
         reads one person&rsquo;s question (the first birthday) — not a couple reading.
       </p>
 
-      <aside className="mb-6 rounded-2xl border border-gold/25 bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
+      <aside className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
@@ -144,7 +144,7 @@ export default function CompatibilityCalculatorPage() {
         </p>
       </aside>
 
-      <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
+      <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">After you compare</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           Browse the full matrix of hubs and pairs, or run one birthday through the
@@ -153,13 +153,13 @@ export default function CompatibilityCalculatorPage() {
         <div className="mt-3 flex flex-wrap gap-2">
           <a
             href={COMPATIBILITY_DIRECTORY_PATH}
-            className="inline-block rounded-full border border-gold/30 px-4 py-2 text-sm text-brand-oxblood"
+            className="inline-block rounded-full border border-brand-line px-4 py-2 text-sm text-brand-oxblood"
           >
             All pairings →
           </a>
           <Link
             href="/birth-card-calculator"
-            className="inline-block rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft"
+            className="inline-block rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft"
           >
             Birth card calculator →
           </Link>
@@ -185,7 +185,7 @@ export default function CompatibilityCalculatorPage() {
         <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
+            <div key={faq.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-base text-brand-ink">{faq.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{faq.a}</p>
             </div>

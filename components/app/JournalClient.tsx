@@ -264,7 +264,7 @@ function EntryCard({
                   }
                 }}
                 rows={6}
-                className="w-full resize-none rounded-xl border border-white/10 bg-brand-ivory/70 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none focus:border-gold/40"
+                className="w-full resize-none rounded-xl border border-brand-line bg-brand-ivory/70 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none"
               />
             ) : (
               <p className="prose-reading whitespace-pre-wrap text-[1.0rem] text-brand-ink-soft">
@@ -375,7 +375,7 @@ function WritingSheet({
           onChange={(e) => setBody(e.target.value)}
           placeholder="Write what's true, not what's tidy…"
           rows={7}
-          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-brand-ivory/70 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-brand-ink-soft focus:border-gold/40"
+          className="mt-4 w-full resize-none rounded-xl border border-brand-line bg-brand-ivory/70 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-brand-ink-soft"
         />
 
         <div className="mt-3 flex items-center justify-between">

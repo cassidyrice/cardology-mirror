@@ -647,13 +647,6 @@ body {
   background-color: rgba(158, 61, 36, 0.12) !important;
 }
 
-.paper-shell [class*="border-white"],
-.paper-shell [class*="border-bone"],
-.paper-shell [class*="border-haze"],
-.paper-shell [class*="border-gold"] {
-  border-color: rgba(20, 17, 13, 0.16) !important;
-}
-
 .paper-shell input,
 .paper-shell textarea,
 .paper-shell select {
