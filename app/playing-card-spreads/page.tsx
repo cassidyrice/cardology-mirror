@@ -8,6 +8,7 @@ import { TableScroll } from "@/components/seo/TableScroll";
 import { YearlySpreadNavigator } from "@/components/seo/YearlySpreadNavigator";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, SUIT_COLOR_PAPER } from "@/lib/cards";
+import { DEEP_DIVE_PRICE_LABEL, DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -635,6 +636,23 @@ export default function PlayingCardSpreads() {
           ))}
         </div>
       </section>
+
+      <nav aria-label="Continue from the spreads" className="mt-10 border-t border-brand-line pt-5">
+        <p className="text-xs uppercase tracking-[0.14em] text-brand-bronze">Your seat on the board</p>
+        <p className="prose-reading mt-2 text-sm text-brand-ink-soft">
+          The boards above stay fixed. A birthday is what places a card.
+        </p>
+        <p className="mt-4">
+          <Link href="/birth-card-calculator" className="accent-button inline-block">
+            Find your birth card — free
+          </Link>
+        </p>
+        <p className="mt-3 text-sm text-brand-ink-soft">
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-ink-soft underline underline-offset-4">
+            One question ({DEEP_DIVE_PRICE_LABEL}), optional
+          </Link>
+        </p>
+      </nav>
 
     </SeoShell>
   );
