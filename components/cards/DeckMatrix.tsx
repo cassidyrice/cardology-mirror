@@ -34,7 +34,7 @@ export function DeckMatrix() {
   const groups = cardsBySuit();
   return (
     <section aria-labelledby="deck-matrix-heading" className="mb-12">
-      <h2 id="deck-matrix-heading" className="eyebrow mb-3 text-gold">
+      <h2 id="deck-matrix-heading" className="eyebrow mb-3 text-brand-bronze">
         The whole deck on one screen
       </h2>
       <p className="prose-reading mb-5 max-w-2xl text-brand-ink-soft">

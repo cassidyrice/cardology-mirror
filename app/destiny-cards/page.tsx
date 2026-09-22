@@ -182,10 +182,10 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
-      <p className="eyebrow mb-3 text-gold">Free lookup · not tarot · not fate</p>
+      <p className="eyebrow mb-3 text-brand-bronze">Free lookup · not tarot · not fate</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cards of Destiny and Destiny Cards are names for a birthday mapped to one
           card in a 52-card deck. Use the free calculator below. Card Blueprints calls the same
@@ -194,7 +194,7 @@ export default function DestinyCardsPage() {
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
-        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
           $13 One Question Reading
         </Link>
         {" "}— one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
@@ -219,7 +219,7 @@ export default function DestinyCardsPage() {
 
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
@@ -239,11 +239,11 @@ export default function DestinyCardsPage() {
       </nav>
 
       <section id="destiny-chart" className="mt-4 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">Cards of Destiny chart</p>
+        <p className="eyebrow mb-2 text-brand-bronze">Cards of Destiny chart</p>
         <h2 className="font-serif text-3xl text-brand-ink">Birthday → playing card</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           Same map as the calculator. Pick a date, or type one above. Larger copy lives on the{" "}
-          <Link href="/birth-card-calculator#cardology-chart" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
             Cardology chart
           </Link>
           .
@@ -254,7 +254,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section id="free-reading" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Free destiny card reading</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Free destiny card reading</h2>
         <p className="prose-reading text-brand-ink-soft">
           A destiny card reading starts with one input: a birthday. The calculator above
           returns the destiny card itself, the planetary ruling card, and a link to the
@@ -266,7 +266,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section id="names" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Same family, different names</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Same family, different names</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
           If you searched <em>Destiny Cards</em>, <em>Love Cards</em>, <em>Science of the Cards</em>, or{" "}
           <em>Cards of Your Destiny</em>, you are already in the playing-card birth-card family — not
@@ -300,18 +300,18 @@ export default function DestinyCardsPage() {
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Full definition:{" "}
-          <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
             What is Cardology?
           </Link>
           {" · "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             Methodology
           </Link>
         </p>
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-gold">What “Destiny Cards” usually includes</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">What “Destiny Cards” usually includes</h2>
         <ol className="prose-reading list-decimal space-y-1.5 pl-5 text-brand-ink-soft">
           <li>A <strong>birth card</strong> — one of 52 playing cards locked to your birthday</li>
           <li>A <strong>planetary ruling card</strong> — how that birth card tends to express</li>
@@ -326,11 +326,11 @@ export default function DestinyCardsPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-gold">How to find your destiny card</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">How to find your destiny card</h2>
         <ol className="prose-reading list-decimal space-y-1.5 pl-5 text-brand-ink-soft">
           <li>
             Enter the birthday in the free calculator on this page, or use the dedicated{" "}
-            <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+            <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
               birth card calculator
             </Link>{" "}
             (year helps the ruling-card layer).
@@ -338,7 +338,7 @@ export default function DestinyCardsPage() {
           <li>Read the fixed card — suit and rank.</li>
           <li>
             Separate layers: birth card = engine; ruling card = steering. See{" "}
-            <Link href="/birth-card-vs-ruling-card" className="text-gold underline underline-offset-4">
+            <Link href="/birth-card-vs-ruling-card" className="text-brand-oxblood underline underline-offset-4">
               birth card vs ruling card
             </Link>
             .
@@ -346,7 +346,7 @@ export default function DestinyCardsPage() {
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
           <li>
             Optional deepen: the{" "}
-            <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+            <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
               One Question Reading ($13)
             </Link>
             , one question read from your card and your year.
@@ -355,7 +355,7 @@ export default function DestinyCardsPage() {
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Example from the public method: January 15 resolves to the{" "}
           <strong>Queen of Diamonds</strong> every time. New here? Start with{" "}
-          <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">
             Cardology for beginners
           </Link>
           .
@@ -363,7 +363,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section className="mt-10" id="book">
-        <h2 className="eyebrow mb-3 text-gold">The Cards of Destiny books</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">The Cards of Destiny books</h2>
         <p className="prose-reading text-brand-ink-soft">
           Searching the phrase usually turns up books before it turns up a
           calculator, so here is the shelf in order. Robert Lee Camp&rsquo;s{" "}
@@ -377,12 +377,12 @@ export default function DestinyCardsPage() {
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Every title with its publisher, year, and catalogue record is in the{" "}
-          <Link href="/cardology-books" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-books" className="text-brand-oxblood underline underline-offset-4">
             books and decks directory
           </Link>
           . You do not need any of them to use the calculator above — the method is
           published on the{" "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology page
           </Link>
           .
@@ -390,7 +390,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section className="mt-10" id="not-caraval">
-        <h2 className="eyebrow mb-3 text-gold">Looking for the Caraval Deck of Destiny?</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Looking for the Caraval Deck of Destiny?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Different thing entirely. The Deck of Destiny in Stephanie Garber&rsquo;s
           Caraval and Once Upon a Broken Heart novels is fiction — invented cards
@@ -401,11 +401,11 @@ export default function DestinyCardsPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Love Cards and compatibility</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Love Cards and compatibility</h2>
         <p className="prose-reading text-brand-ink-soft">
           “Love Cards” is Camp’s relationship title — and how many people ask:{" "}
           <em>what do our birthdays say about us?</em> On Card Blueprints that maps to the free{" "}
-          <Link href="/birth-card-compatibility-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-compatibility-calculator" className="text-brand-oxblood underline underline-offset-4">
             compatibility calculator
           </Link>
           : two dates in, a plain-language read of suit and rank dynamics you can compare with lived
@@ -414,7 +414,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Science of the Cards (what we claim)</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Science of the Cards (what we claim)</h2>
         <TableScroll label="What Card Blueprints claims and does not claim">
         <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Claims versus non-claims for Cardology on Card Blueprints</caption>
@@ -436,7 +436,7 @@ export default function DestinyCardsPage() {
         </TableScroll>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           If two calculators disagree, open the{" "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology
           </Link>
           , re-run the date, and trust the method you can audit.
@@ -444,7 +444,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section id="vs-cardology" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Destiny Cards language vs Card Blueprints</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Destiny Cards language vs Card Blueprints</h2>
         <TableScroll label="Destiny Cards language versus Card Blueprints">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Destiny Cards terms mapped to Card Blueprints tools</caption>
@@ -474,7 +474,7 @@ export default function DestinyCardsPage() {
       </section>
 
       <section id="vs-tarot" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Destiny Cards vs tarot</h2>
+        <h2 className="eyebrow mb-3 text-brand-bronze">Destiny Cards vs tarot</h2>
         <TableScroll label="Destiny Cards versus tarot birth cards">
         <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Destiny Cards and Cardology versus tarot birth cards</caption>
@@ -498,14 +498,14 @@ export default function DestinyCardsPage() {
         </TableScroll>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Full side-by-side:{" "}
-          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             Cardology vs tarot
           </Link>
         </p>
       </section>
 
             <section id="faq" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-4 text-gold">FAQ</h2>
+        <h2 className="eyebrow mb-4 text-brand-bronze">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -520,23 +520,23 @@ export default function DestinyCardsPage() {
 
       <p className="mt-8 text-sm text-brand-ink-soft">
         Related:{" "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
           What is Cardology?
         </Link>
         {" · "}
-        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+        <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
           Free calculator
         </Link>
         {" · "}
-        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
           $13 One Question Reading
         </Link>
         {" · "}
-        <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">
+        <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">
           Cardology for beginners
         </Link>
         {" · "}
-        <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+        <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
           Cardology vs tarot
         </Link>
       </p>

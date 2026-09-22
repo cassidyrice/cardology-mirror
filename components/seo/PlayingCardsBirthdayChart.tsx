@@ -51,7 +51,7 @@ export function PlayingCardsBirthdayChart() {
       </div>
       <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
         Prefer a list?{" "}
-        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           Browse every birthday by month and day
         </a>
         .

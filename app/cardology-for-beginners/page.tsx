@@ -133,7 +133,7 @@ export default function CardologyForBeginnersPage() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology for Beginners</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Start Cardology by finding the playing card locked to your birthday, reading
           suit and rank in plain language, then testing the pattern against real life.
@@ -143,7 +143,7 @@ export default function CardologyForBeginnersPage() {
       </div>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
@@ -153,27 +153,27 @@ export default function CardologyForBeginnersPage() {
         <strong>what card am I based on my birthday</strong> and want the playing-card
         system — not tarot Major Arcana math and not baby-announcement “birth cards.”
         Arrived via Destiny Cards or Love Cards? Same family:{" "}
-        <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+        <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
           Destiny Cards &amp; Love Cards explained
         </Link>
         . For the long definition, see{" "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
           what Cardology is
         </Link>
         .
       </p>
 
       <section className="mt-4">
-        <h2 className="eyebrow mb-4 text-gold">The 10-minute path</h2>
+        <h2 className="eyebrow mb-4 text-brand-bronze">The 10-minute path</h2>
         <ol className="space-y-4">
           {steps.map((s) => (
             <li key={s.n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">
+              <p className="text-xs font-bold uppercase tracking-[0.14em] text-brand-bronze">
                 Step {s.n}
               </p>
               <h3 className="mt-1 font-serif text-xl text-brand-ink">{s.title}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{s.body}</p>
-              <Link href={s.href} className="mt-3 inline-block text-sm text-gold underline underline-offset-4">
+              <Link href={s.href} className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">
                 {s.label} →
               </Link>
             </li>
@@ -182,7 +182,7 @@ export default function CardologyForBeginnersPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Step 2 live: find your birth card</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">Step 2 live: find your birth card</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
           Enter any birthday. The result is deterministic — refresh will not change it.
         </p>
@@ -190,7 +190,7 @@ export default function CardologyForBeginnersPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">The only vocabulary you need on day one</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">The only vocabulary you need on day one</h2>
         <ul className="prose-reading space-y-2 text-brand-ink-soft">
           <li>
             <strong>Birth card</strong> — the lifelong playing card for your birthday.
@@ -208,7 +208,7 @@ export default function CardologyForBeginnersPage() {
         </ul>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           When you want spreads instead of birthday math, switch to{" "}
-          <Link href="/how-to-read-playing-cards" className="text-gold underline underline-offset-4">
+          <Link href="/how-to-read-playing-cards" className="text-brand-oxblood underline underline-offset-4">
             how to read playing cards
           </Link>
           .
@@ -216,13 +216,13 @@ export default function CardologyForBeginnersPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">How to know it is working</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">How to know it is working</h2>
         <p className="prose-reading text-brand-ink-soft">
           A useful card description names a specific behavior you can point to in the
           last month — not vague flattery. If nothing matches after an honest week,
           set it down. Cardology is a lens for self-awareness and entertainment;
           tendencies, not fate. Method transparency lives on{" "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology
           </Link>
           .
@@ -245,7 +245,7 @@ export default function CardologyForBeginnersPage() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-4 text-gold">Beginner FAQ</h2>
+        <h2 className="eyebrow mb-4 text-brand-bronze">Beginner FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

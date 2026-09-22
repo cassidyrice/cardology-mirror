@@ -272,10 +272,10 @@ export default function PlayingCardSpreads() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <SeoHeroFan className="mb-5" />
-      <p className="eyebrow mb-3 text-gold">The playing board · no shuffle</p>
+      <p className="eyebrow mb-3 text-brand-bronze">The playing board · no shuffle</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Think of a board game. The deck has two fixed boards — the{" "}
           <strong>Life Spread</strong> and the <strong>Spirit Spread</strong> —
@@ -292,7 +292,7 @@ export default function PlayingCardSpreads() {
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         New to the system? Start with{" "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
           what Cardology is
         </Link>{" "}
         — birthday to card, and what the card is for — then come back to the board.
@@ -404,9 +404,9 @@ export default function PlayingCardSpreads() {
           <table className="w-full min-w-[24rem] border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">Period</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">Card</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">The filter</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Period</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Card</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">The filter</th>
               </tr>
             </thead>
             <tbody>
@@ -470,7 +470,7 @@ export default function PlayingCardSpreads() {
         <AllYearlySpreads highlight={ex.card} />
         <p className="prose-reading mt-6 text-brand-ink-soft">
           Want your own seats and walk?{" "}
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             Find your card free
           </Link>{" "}
           — the calculator places you on the board from one birthday.
@@ -499,9 +499,9 @@ export default function PlayingCardSpreads() {
           <table className="w-full min-w-[24rem] border-collapse text-sm">
             <thead>
               <tr>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">Sign</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">Dates</th>
-                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-gold">Ruling planet</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Sign</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Dates</th>
+                <th className="border-b-2 border-gold px-2 py-2 text-left text-xs uppercase tracking-[0.14em] text-brand-bronze">Ruling planet</th>
               </tr>
             </thead>
             <tbody>
@@ -521,11 +521,11 @@ export default function PlayingCardSpreads() {
         <p className="mt-3 text-xs text-brand-ink-soft">
           Cancer (the Moon), Leo (the Sun), and Scorpio (Mars and Pluto) get
           special handling, and some birthdays carry two ruling cards — the{" "}
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             free calculator
           </Link>{" "}
           applies the right rule automatically. More detail:{" "}
-          <Link href="/planetary-ruling-card" className="text-gold underline underline-offset-4">
+          <Link href="/planetary-ruling-card" className="text-brand-oxblood underline underline-offset-4">
             the planetary ruling card, explained
           </Link>
           .
@@ -544,7 +544,7 @@ export default function PlayingCardSpreads() {
           {PLANET_FILTERS.map((p) => (
             <div key={p.planet} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <p className="font-serif text-lg text-brand-ink">
-                <span aria-hidden="true" className="mr-2 text-gold">{p.glyph}</span>
+                <span aria-hidden="true" className="mr-2 text-brand-bronze">{p.glyph}</span>
                 {p.planet}
               </p>
               <p className="prose-reading mt-1 text-sm text-brand-ink-soft">{p.filter}</p>
@@ -554,7 +554,7 @@ export default function PlayingCardSpreads() {
         <p className="prose-reading mt-5 text-brand-ink-soft">
           To see one card read through all seven of these filters side by side,
           use the{" "}
-          <Link href="/52-day-period-meaning-tool" className="text-gold underline underline-offset-4">
+          <Link href="/52-day-period-meaning-tool" className="text-brand-oxblood underline underline-offset-4">
             52-day period meaning tool
           </Link>
           .
@@ -562,7 +562,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="faq" className="mt-12 scroll-mt-10">
-        <h2 className="eyebrow mb-4 text-gold">Spreads FAQ</h2>
+        <h2 className="eyebrow mb-4 text-brand-bronze">Spreads FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

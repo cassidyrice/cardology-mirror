@@ -72,7 +72,7 @@ function Entry({ entry }: { entry: LibraryEntry }) {
       <p className="mt-3 text-sm">
         <a
           href={entry.source}
-          className="text-gold underline underline-offset-4"
+          className="text-brand-oxblood underline underline-offset-4"
           rel="noopener"
           target="_blank"
         >
@@ -116,7 +116,7 @@ export default function CardologyBooks() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Books &amp; Decks</h1>
 
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           The cardology literature is small: one 1893 source text, one 1947 book that
           turned it into a birthday chart, and a handful of modern treatments that
@@ -133,7 +133,7 @@ export default function CardologyBooks() {
         rather than listed with a guessed year or publisher, and claims that rest on
         one author&rsquo;s own word are marked <em>self-reported</em>. Dates in
         context:{" "}
-        <Link href="/what-is-cardology#lineage" className="text-gold underline underline-offset-4">
+        <Link href="/what-is-cardology#lineage" className="text-brand-oxblood underline underline-offset-4">
           the sourced lineage
         </Link>
         .
@@ -144,7 +144,7 @@ export default function CardologyBooks() {
         if (entries.length === 0) return null;
         return (
           <section className="mt-8" key={group.id} id={group.id}>
-            <h2 className="eyebrow mb-2 text-gold">{group.heading}</h2>
+            <h2 className="eyebrow mb-2 text-brand-bronze">{group.heading}</h2>
             <p className="prose-reading mb-4 text-brand-ink-soft">{group.blurb}</p>
             <ul className="space-y-4">
               {entries.map((entry) => (
@@ -156,15 +156,15 @@ export default function CardologyBooks() {
       })}
 
       <section className="mt-10" id="corrections">
-        <h2 className="eyebrow mb-2 text-gold">Corrections and additions</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">Corrections and additions</h2>
         <p className="prose-reading text-brand-ink-soft">
           Missing a title, or holding an edition that contradicts a date here? Send
           the catalogue record and it gets added or fixed — a citation, not a claim.{" "}
-          <Link href="/contact" className="text-gold underline underline-offset-4">
+          <Link href="/contact" className="text-brand-oxblood underline underline-offset-4">
             Contact
           </Link>
           . Our own method, including which of these books each step comes from, is on the{" "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology page
           </Link>
           .
@@ -173,7 +173,7 @@ export default function CardologyBooks() {
 
       <p className="mt-8 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
           Editorial policy
         </Link>
       </p>

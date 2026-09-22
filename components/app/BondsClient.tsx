@@ -152,7 +152,7 @@ export default function BondsPage() {
             <button
               type="button"
               onClick={reset}
-              className="mt-6 text-sm text-gold underline underline-offset-4"
+              className="mt-6 text-sm text-brand-bronze underline underline-offset-4"
             >
               Try again
             </button>

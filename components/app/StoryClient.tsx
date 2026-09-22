@@ -160,7 +160,7 @@ export default function StoryArcPage() {
             <p className="prose-reading text-brand-ink-soft">{errorMsg}</p>
             <button
               onClick={generate}
-              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm transition hover:border-gold text-brand-bronze active:scale-[0.97]"
             >
               Try again
             </button>
@@ -188,7 +188,7 @@ export default function StoryArcPage() {
             </p>
             <button
               onClick={generate}
-              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
+              className="mt-2 rounded-full border border-haze px-6 py-2.5 text-sm transition hover:border-gold text-brand-bronze active:scale-[0.97]"
             >
               Trace it again
             </button>

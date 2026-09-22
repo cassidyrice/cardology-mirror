@@ -123,7 +123,7 @@ export default function BlueprintReportPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <SeoHeroFan codes={["8♦", "Q♠", "5♣"]} className="mb-5" />
-      <p className="eyebrow mb-3 text-gold">
+      <p className="eyebrow mb-3 text-brand-bronze">
         Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">The math shown. Deal it yourself. Then talk it through.</h1>
@@ -160,7 +160,7 @@ export default function BlueprintReportPage() {
 
       <section aria-label="Choose a tier" className="mb-10 grid gap-4 md:grid-cols-[1.15fr_1fr]">
         <article className="rounded-[3px] border-2 border-gold p-5">
-          <p className="text-xs uppercase tracking-[0.16em] text-gold">{consult!.badge}</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-brand-bronze">{consult!.badge}</p>
           <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             Report + consultation · {consult!.priceLabel}
           </h2>
@@ -199,7 +199,7 @@ export default function BlueprintReportPage() {
       </p>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">No model writes this document</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">No model writes this document</h2>
         <p className="prose-reading text-brand-ink-soft">
           Every card on every page came out of a fixed lookup table and five lines of arithmetic.
           Your report stays pinned to your purchase date. The same birthday and reading date give the same cards
@@ -210,7 +210,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Inside the report</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">Inside the report</h2>
         <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           {report!.includes.map((line) => (
             <li key={line}>{line}</li>
@@ -219,7 +219,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Six of the pages</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">Six of the pages</h2>
         <div className="grid gap-3 sm:grid-cols-2">
           {samplePages.map((p) => (
             <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
@@ -232,7 +232,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">How it reads</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">How it reads</h2>
         <p className="prose-reading text-brand-ink-soft">
           Three labels run through the whole document. <strong className="text-brand-ink">FIXED</strong> is
           the reproducible calculation. <strong className="text-brand-ink">PATTERN</strong> is sourced
@@ -243,7 +243,7 @@ export default function BlueprintReportPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Questions</h2>
+        <h2 className="eyebrow mb-2 text-brand-bronze">Questions</h2>
         <dl className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q}>
@@ -259,12 +259,12 @@ export default function BlueprintReportPage() {
           <ReportCheckoutButton slug={CONSULT_SLUG} placement="product-page-bottom-consult" />
           <p className="text-sm text-brand-ink-soft">
             Just the report, no call?{" "}
-            <ReportCheckoutButton variant="link" placement="product-page-bottom-report" className="text-gold" />
+            <ReportCheckoutButton variant="link" placement="product-page-bottom-report" className="text-brand-bronze" />
           </p>
         </div>
         <p className="mt-4 text-sm text-brand-ink-soft">
           Have one specific decision instead of a whole year?{" "}
-          <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-gold underline underline-offset-4">
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-oxblood underline underline-offset-4">
             Ask one question, {DEEP_DIVE_PRICE_LABEL} →
           </Link>
         </p>

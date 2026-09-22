@@ -15,7 +15,7 @@ export function FamousPeopleBlock({
 
   return (
     <section className="mt-8">
-      <h2 className="eyebrow mb-2 text-gold">Famous people born under the {cardLabel}</h2>
+      <h2 className="eyebrow mb-2 text-brand-bronze">Famous people born under the {cardLabel}</h2>
       <div className="prose-reading text-brand-ink-soft">
         <p>
           Birthdays are public record and the card is fixed by the date — a calendar coordinate, not a forecast. Use the list to test the pattern against people you already know something about.

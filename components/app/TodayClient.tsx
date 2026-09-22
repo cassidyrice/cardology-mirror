@@ -64,13 +64,13 @@ export default function TodayPage() {
           animate={{ opacity: 1, y: 0 }}
           className="space-y-3 pt-10"
         >
-          <Eyebrow className="text-ember">Couldn&apos;t read today</Eyebrow>
+          <Eyebrow className="text-brand-bronze">Couldn&apos;t read today</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">
             The engine didn&apos;t return a reading. {error}
           </p>
           <button
             onClick={() => router.refresh()}
-            className="mt-2 text-sm uppercase tracking-wider2 text-gold"
+            className="mt-2 text-sm uppercase tracking-wider2 text-brand-bronze"
           >
             Try again
           </button>
@@ -115,7 +115,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
           {bluntLine(ap)}
         </h1>
-        <p className="mt-4 text-sm uppercase tracking-wider2 text-gold">
+        <p className="mt-4 text-sm uppercase tracking-wider2 text-brand-bronze">
           {chapterLabel(ap)}
         </p>
         <p className="mt-1 text-xs text-brand-ink-soft">
@@ -195,7 +195,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
         className="card-surface rounded-2xl p-6"
       >
-        <Eyebrow className="text-gold">Today&apos;s reflection</Eyebrow>
+        <Eyebrow className="text-brand-bronze">Today&apos;s reflection</Eyebrow>
         <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-brand-ink">
           {reflectionPrompt(ap)}
         </p>
@@ -211,12 +211,12 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
           className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-gold/20 bg-gold/[0.04] p-5 transition hover:border-gold/40 active:scale-[0.99]"
         >
           <span>
-            <span className="eyebrow text-gold">Story Arc · Your Year</span>
+            <span className="eyebrow text-brand-bronze">Story Arc · Your Year</span>
             <span className="mt-1 block text-pretty font-serif text-base leading-snug text-brand-ink">
               Where this year is dragging you — chapter, turn, and the horizon you keep avoiding.
             </span>
           </span>
-          <span className="shrink-0 text-gold transition-transform group-hover:translate-x-0.5">
+          <span className="shrink-0 text-brand-bronze transition-transform group-hover:translate-x-0.5">
             &rarr;
           </span>
         </Link>
