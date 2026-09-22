@@ -55,7 +55,7 @@ Cloudflare Pages → project `cardology-mirror` → Deployments → **Rollback**
 
 ## Later (not yet)
 
-- Strict Content-Security-Policy (must allow Stripe.js + needed inline)  
+- Enforcing Content-Security-Policy. The live header is still `Content-Security-Policy-Report-Only`, and that report-only policy collects nothing. Finding and the staged plan (the rename to an enforcing header is its own later change): `docs/CAR-14-csp.md`.
 - Global rate limit via Durable Object / KV (stronger than isolate memory)  
 - One-time magic-link tokens if not already enforced server-side
 
