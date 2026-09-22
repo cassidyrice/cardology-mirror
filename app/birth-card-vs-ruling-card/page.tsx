@@ -95,7 +95,7 @@ export default function BirthVsRuling() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Find both of your cards</p>
         <p className="mt-1 text-sm text-brand-ink-soft">The calculator returns your birth card and ruling card — free.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+        <Link href="/birth-card-calculator" className="ink-button mt-3">
           Birth Card Calculator →
         </Link>
       </div>

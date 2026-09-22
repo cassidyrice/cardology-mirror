@@ -256,7 +256,7 @@ export default function CartomancyVsTarot() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Find your card in the 52</p>
         <p className="mt-1 text-sm text-brand-ink-soft">No shuffle required — your birthday already picked it.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
+        <Link href="/birth-card-calculator" className="ink-button mt-3">
           Birth Card Calculator →
         </Link>
       </div>

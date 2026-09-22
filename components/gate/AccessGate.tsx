@@ -71,7 +71,7 @@ export function AccessGate({
         <button
           type="submit"
           disabled={busy || !email || !code}
-          className="w-full rounded-full bg-foil py-3 text-center font-serif text-base text-ink shadow-lg transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40 disabled:active:scale-100"
+          className="ink-button large-button w-full disabled:cursor-not-allowed disabled:opacity-40"
         >
           {busy ? "Unlocking…" : "Unlock"}
         </button>
