@@ -276,6 +276,48 @@ export default function CalculatorPage() {
           ))}
           <Link href="/birth-card/joker" className="rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm text-brand-ink ">Joker</Link>
         </nav>
+        <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
+          A few dates, and the meaning page each one opens: February 17, the{" "}
+          <Link href="/birth-card/8-of-diamonds" className="text-brand-oxblood underline underline-offset-4">
+            Eight of Diamonds meaning
+          </Link>
+          ; January 9, the{" "}
+          <Link href="/birth-card/5-of-spades" className="text-brand-oxblood underline underline-offset-4">
+            Five of Spades meaning
+          </Link>
+          ; March 30, the{" "}
+          <Link href="/birth-card/6-of-clubs" className="text-brand-oxblood underline underline-offset-4">
+            Six of Clubs meaning
+          </Link>
+          ; January 4, the{" "}
+          <Link href="/birth-card/10-of-spades" className="text-brand-oxblood underline underline-offset-4">
+            Ten of Spades meaning
+          </Link>
+          . Every card is indexed in the{" "}
+          <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
+            52 birth card meanings
+          </Link>
+          .
+        </p>
+        <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
+          Two birthdays are a separate lookup. The{" "}
+          <Link href="/birth-card-compatibility-calculator" className="text-brand-oxblood underline underline-offset-4">
+            birth card compatibility calculator
+          </Link>{" "}
+          takes both dates, and the{" "}
+          <a href="/compatibility/" className="text-brand-oxblood underline underline-offset-4">
+            card compatibility directory
+          </a>{" "}
+          lists each card and each pair. Destiny Cards and Love Cards names are lined up on the{" "}
+          <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
+            Destiny Cards synonym map
+          </Link>
+          . Read{" "}
+          <Link href="/blog/what-cardology-is-and-is-not" className="text-brand-oxblood underline underline-offset-4">
+            what Cardology is and is not
+          </Link>{" "}
+          for the boundary of the practice.
+        </p>
         <h3 className="mt-8 font-serif text-xl text-brand-ink">Browse the chart by month</h3>
         <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
           {MONTH_DIRECTORY.map(([label, slug]) => (
