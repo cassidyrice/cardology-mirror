@@ -3,15 +3,25 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
+import { SpreadPageNav } from "@/components/seo/SpreadPageNav";
 import { TableScroll } from "@/components/seo/TableScroll";
+import { YearlySpreadNavigator } from "@/components/seo/YearlySpreadNavigator";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, SUIT_COLOR_PAPER } from "@/lib/cards";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-const TITLE = "Playing Card Spreads: The Two Fixed Boards & 90 Yearly Spreads";
+const TITLE = "Playing Card Spreads in Cardology";
 const DESCRIPTION =
-  "Cardology spreads are a playing board, not a shuffle: the Life Spread, the Spirit Spread, and the 90 yearly spreads — how your card moves through them, with a real worked example.";
+  "Playing card spreads in Cardology: the Life Spread, the Spirit Spread, and 90 yearly boards. How a birth card moves, with a worked example.";
+
+const ON_THIS_PAGE = [
+  { href: "#life-spread", label: "Life Spread" },
+  { href: "#spirit-spread", label: "Spirit Spread" },
+  { href: "#yearly-spreads", label: "Yearly spreads" },
+  { href: "#planetary-ruling-card", label: "Planetary ruling card" },
+  { href: "#faq", label: "FAQ" },
+] as const;
 const OG_IMAGE = { url: "/og/playing-card-spreads.png", width: 1200, height: 630, alt: "The playing board — fanned playing cards on paper" };
 
 export const metadata: Metadata = {
@@ -40,6 +50,7 @@ export const metadata: Metadata = {
 const EXAMPLE = {
   birthdayLabel: "February 17",
   card: "8♦",
+  cardPath: "/birth-card/8-of-diamonds",
   age: 35,
   walkBoard: 36,
   yearPeriods: [
@@ -143,19 +154,40 @@ function BoardGrid({ spread, highlight, label }: { spread: Spread; highlight: st
 // All 90 boards, rendered from engine data (cardology.SPREADS). Nothing here
 // is authored: board N is the same structure the reading engine reads when it
 // resolves a person's year (year-blueprint.ts: karma spread = age mod 90).
+// Spread 90 is spread 0 (engine.js). The page publishes the 90 distinct
+// boards, ages 0–89.
 //
 // These use a compact renderer, not BoardGrid. BoardGrid's per-cell Tailwind
 // classes + inline style cost ~200 bytes a cell; at 90 boards x 52 cards that
 // built a 1.7MB page. The classes below are emitted once, which keeps the
-// same markup near ~25 bytes a cell. Collapsed <details> stays indexable.
+// same markup near ~25 bytes a cell. Every board stays in the HTML. CSS shows
+// one decade at a time so age 35 is not under a scroll of boards 0–34.
+const DECADE_STARTS = [0, 10, 20, 30, 40, 50, 60, 70, 80] as const;
+
+const decadeActiveSelectors = DECADE_STARTS.map(
+  (start) =>
+    `.year-boards:has(#decade-${start}:target, #decade-${start} :target) .year-nav a[href="#decade-${start}"]`,
+).join(",\n");
+
 const BOARD_CSS = `
-.sb-w{overflow-x:auto}
+.sb-w{overflow-x:auto;max-width:100%}
 .sb{border-collapse:collapse;width:100%;min-width:19rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem}
-.sb td{border:1px solid rgba(255,255,255,.1);padding:5px 2px;text-align:center;color:#cfd0dc}
-.sb td.r{color:#d05c72}
+.sb td{border:1px solid rgba(18,58,99,.22);padding:5px 2px;text-align:center;color:#14110d}
+.sb td.r,.sb-c .r{color:#8e321f}
 .sb td.h{background:var(--oxblood);color:#fff;font-weight:700}
-.sb-c{margin:0 0 5px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.7rem;letter-spacing:.18em;color:#a7a698}
+.sb-c{margin:0 0 5px;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.7rem;letter-spacing:.18em;color:#123a63}
 .sb-c .h{background:var(--oxblood);color:#fff;font-weight:700;border-radius:3px;padding:1px 5px}
+.year-boards{max-width:100%}
+.year-boards .year-decade{display:none}
+.year-boards .year-decade:target,
+.year-boards .year-decade:has(:target){display:block}
+.year-boards:not(:has(:target)) #decade-30{display:block}
+.year-nav{margin:0 0 1rem}
+.year-nav ul{display:flex;flex-wrap:wrap;gap:.5rem;margin:0;padding:0;list-style:none}
+.year-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:2.75rem;min-width:2.75rem;padding:0 .7rem;border:1px solid rgba(18,58,99,.28);color:#123a63;text-decoration:none;font-size:.8rem}
+.year-nav a:hover{border-color:#123a63}
+.year-boards:not(:has(:target)) .year-nav a[href="#decade-30"],
+${decadeActiveSelectors}{background:var(--oxblood);color:#fff;border-color:var(--oxblood)}
 `;
 
 const RED_SUIT = /[\u2665\u2666]/; // hearts, diamonds
@@ -166,7 +198,7 @@ function CompactBoard({ spread, highlight, caption }: { spread: Spread; highligh
       <p className="sb-c">
         crown:{" "}
         {spread.crown.map((c, i) => (
-          <span key={c} className={c === highlight ? "h" : undefined}>
+          <span key={c} className={c === highlight ? "h" : RED_SUIT.test(c) ? "r" : undefined}>
             {c}
             {i < spread.crown.length - 1 ? " \u00b7 " : ""}
           </span>
@@ -190,27 +222,57 @@ function CompactBoard({ spread, highlight, caption }: { spread: Spread; highligh
   );
 }
 
-function AllYearlySpreads({ highlight }: { highlight: string }) {
+function AllYearlySpreads({ highlight, exampleAge }: { highlight: string; exampleAge: number }) {
+  const boards = Array.from({ length: 90 }, (_, n) => {
+    const spread = ENGINE_SPREADS[String(n)];
+    if (!spread) return null;
+    return { n, spread };
+  }).filter((board): board is { n: number; spread: Spread } => board !== null);
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: BOARD_CSS }} />
-      <div className="mt-6 space-y-1.5">
-        {Array.from({ length: 90 }, (_, n) => {
-          const spread = ENGINE_SPREADS[String(n)];
-          if (!spread) return null;
-          const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
-          return (
-            <details key={n} className="rounded-xl border border-brand-line bg-brand-ivory/70">
-              <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
-                Spread {n}
-                <span className="text-brand-ink-soft"> \u2014 the board at age {n}{alias}</span>
-              </summary>
-              <div className="px-3 pb-4">
-                <CompactBoard spread={spread} highlight={highlight} caption={`Spread ${n}, the board at age ${n}: seven rows of seven seats plus a three-card crown.`} />
-              </div>
-            </details>
-          );
-        })}
+      <div className="year-boards mt-4">
+        <YearlySpreadNavigator exampleAge={exampleAge} />
+        <nav className="year-nav" aria-label="Yearly spreads by decade">
+          <ul>
+            {DECADE_STARTS.map((start) => (
+              <li key={start}>
+                <a href={`#decade-${start}`} aria-label={`Ages ${start} through ${start + 9}`}>
+                  {start}–{start + 9}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        {DECADE_STARTS.map((start) => (
+          <section key={start} id={`decade-${start}`} className="year-decade scroll-mt-36">
+            <h4 className="mb-2 font-serif text-xl text-brand-ink">
+              Ages {start}–{start + 9}
+            </h4>
+            <div className="space-y-1.5">
+              {boards.slice(start, start + 10).map(({ n, spread }) => {
+                const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
+                return (
+                  <details
+                    key={n}
+                    id={`spread-${n}`}
+                    open={n === exampleAge}
+                    className="scroll-mt-36 rounded-xl border border-brand-line bg-brand-ivory/70"
+                  >
+                    <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
+                      Spread {n}
+                      <span className="text-brand-ink-soft"> — the board at age {n}{alias}</span>
+                    </summary>
+                    <div className="px-3 pb-4">
+                      <CompactBoard spread={spread} highlight={highlight} caption={`Spread ${n}, the board at age ${n}: seven rows of seven seats plus a three-card crown.`} />
+                    </div>
+                  </details>
+                );
+              })}
+            </div>
+          </section>
+        ))}
       </div>
     </>
   );
@@ -220,7 +282,7 @@ export default function PlayingCardSpreads() {
   const faqs = [
     {
       q: "What are the playing card spreads in Cardology?",
-      a: "Three things, and none of them involve shuffling: the Life Spread (all 52 cards in their fixed calendar seats), the Spirit Spread (the deck's second fixed arrangement), and the 90 yearly spreads (one numbered re-deal of the board for every year of life, age 0 through 90). Your birthday decides your card; the boards decide where that card sits and moves.",
+      a: "Three things, and none of them involve shuffling: the Life Spread (all 52 cards in their fixed calendar seats), the Spirit Spread (the deck's second fixed arrangement), and the 90 yearly spreads (one board for each age from 0 through 89; age 90 repeats the board for age 0). Your birthday decides your card; the boards decide where that card sits and moves.",
     },
     {
       q: "How do the cards move through the spreads?",
@@ -271,40 +333,32 @@ export default function PlayingCardSpreads() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPage) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
-      <SeoHeroFan className="mb-5" />
-      <p className="type-eyebrow mb-3 !text-brand-bronze">The playing board · no shuffle</p>
-      <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
-      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
-        <p className="prose-reading text-brand-ink-soft">
-          Think of a board game. The deck has two fixed boards — the{" "}
-          <strong>Life Spread</strong> and the <strong>Spirit Spread</strong> —
-          and 90 numbered yearly boards that re-deal every birthday. Your
-          birthday gives you one card; the boards decide where that card sits,
-          what supports it, what tests it, and which seven cards run your year.
-          Nothing is shuffled. Ever.
-        </p>
-      </div>
-      <p className="mb-6">
+      <SeoHeroFan className="mb-4" />
+      <p className="type-eyebrow mb-3 !text-brand-bronze">Fixed boards · no shuffle</p>
+      <h1 className="display mb-3 text-3xl text-brand-ink sm:text-4xl">Playing Card Spreads in Cardology</h1>
+      <p className="prose-reading mb-3 text-brand-ink-soft" data-ai-summary>
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
+          Cardology
+        </Link>{" "}
+        playing card spreads are fixed boards, not a shuffled draw. The Life Spread and the Spirit Spread hold all 52 cards in permanent seats, and 90 yearly spreads re-deal the board for ages 0 through 89.
+      </p>
+      <p className="prose-reading mb-4 text-brand-ink-soft">
+        This page walks the{" "}
+        <Link href={ex.cardPath} className="text-brand-oxblood underline underline-offset-4">
+          {ex.card}
+        </Link>{" "}
+        at age {ex.age}. Meanings for every card are in the{" "}
+        <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
+          birth card library
+        </Link>
+        .
+      </p>
+      <p className="mb-5">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find your card on the board — free →
+          Find your birth card — free
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-brand-ink-soft">
-        New to the system? Start with{" "}
-        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
-          what Cardology is
-        </Link>{" "}
-        — birthday to card, and what the card is for — then come back to the board.
-      </p>
-
-      <nav className="mb-8 flex flex-wrap gap-2" aria-label="The three boards">
-        {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-full border border-brand-line px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
-            {s.name}
-          </Link>
-        ))}
-      </nav>
+      <SpreadPageNav items={ON_THIS_PAGE} />
 
       <div className="grid gap-4 sm:grid-cols-3">
         {SPREADS.map((s) => (
@@ -316,7 +370,7 @@ export default function PlayingCardSpreads() {
         ))}
       </div>
 
-      <section id="life-spread" className="mt-12 scroll-mt-10">
+      <section id="life-spread" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The Life Spread — the board at rest</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Lay all 52 cards out in calendar order and you get the Life Spread:
@@ -336,7 +390,7 @@ export default function PlayingCardSpreads() {
         </p>
       </section>
 
-      <section id="spirit-spread" className="mt-12 scroll-mt-10">
+      <section id="spirit-spread" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The Spirit Spread — the second board</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           The deck has one more fixed arrangement: the Spirit Spread. Same 49
@@ -370,13 +424,14 @@ export default function PlayingCardSpreads() {
         </div>
       </section>
 
-      <section id="yearly-spreads" className="mt-12 scroll-mt-10">
+      <section id="yearly-spreads" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The 90 Yearly Spreads — the board re-deals</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Here is the moving part. Every birthday, the whole board re-deals into
           the next numbered arrangement — spread 0, spread 1, spread 2, all the
-          way to spread 90, one for every year of life. Your card gets picked up
-          and set down on a new seat. Two copies of the board matter each year:
+          way through spread 89, one board for each age from 0 through 89. Age 90
+          uses spread 0 again. Your card gets picked up and set down on a new seat.
+          Two copies of the board matter each year:
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
@@ -392,13 +447,21 @@ export default function PlayingCardSpreads() {
           </li>
         </ul>
 
-        <h3 className="mt-8 font-serif text-2xl text-brand-ink">
-          Worked example: the {ex.card}, born {ex.birthdayLabel}, age {ex.age}
+        <h3 id="worked-example" className="mt-8 scroll-mt-36 font-serif text-2xl text-brand-ink">
+          Worked example: the{" "}
+          <Link href={ex.cardPath} className="text-brand-oxblood underline underline-offset-4">
+            {ex.card}
+          </Link>
+          , born {ex.birthdayLabel}, age {ex.age}
         </h3>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          The seven 52-day cards of this {ex.card} year, in walking order. Each
-          planet is a filter: the same person, the same year — but each ~52-day
-          stretch runs through a different lens.
+          The seven{" "}
+          <Link href="/52-day-period-meaning-tool" className="text-brand-oxblood underline underline-offset-4">
+            52-day period
+          </Link>{" "}
+          cards of this {ex.card} year, in walking order. Each planet is a filter:
+          the same person, the same year — but each ~52-day stretch runs through a
+          different lens.
         </p>
         <TableScroll label="The seven 52-day period cards" className="mt-4">
           <table className="w-full min-w-[24rem] border-collapse text-sm">
@@ -451,23 +514,23 @@ export default function PlayingCardSpreads() {
             card shows up wearing two jobs.)
           </li>
         </ul>
-        <h3 id="all-90-spreads" className="mt-10 scroll-mt-10 font-serif text-2xl text-brand-ink">
+        <h3 id="all-90-spreads" className="mt-10 scroll-mt-36 font-serif text-2xl text-brand-ink">
           All 90 spreads
         </h3>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Here are all ninety boards in full — the same arrangements the reading
-          engine uses, not redrawn by hand. Open any number to see that board&rsquo;s
-          seven rows and its crown. Board 0 is the Life Spread and board 1 is the
-          Spirit Spread, so those two do double duty: they are the deck&rsquo;s fixed
+          All ninety boards are on this page — the same arrangements the reading
+          engine uses, not redrawn by hand. The list opens one decade at a time.
+          Type an age, or pick 30–39, to reach {ex.age} without scrolling boards
+          0–{ex.age - 1}. Board 0 is the Life Spread and board 1 is the Spirit
+          Spread, so those two do double duty: they are the deck&rsquo;s fixed
           arrangements and the boards for ages 0 and 1.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           The {ex.card} is marked on every board so you can watch one card travel.
-          Open spread {ex.age}, then spread {ex.walkBoard}, and you are looking at
-          exactly what the worked example above describes: where this card stands
-          this year, and the board it walks.
+          Spread {ex.age} starts open, then spread {ex.walkBoard} is the board it
+          walks — the same year as the worked example above.
         </p>
-        <AllYearlySpreads highlight={ex.card} />
+        <AllYearlySpreads highlight={ex.card} exampleAge={ex.age} />
         <p className="prose-reading mt-6 text-brand-ink-soft">
           Want your own seats and walk?{" "}
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
@@ -477,7 +540,7 @@ export default function PlayingCardSpreads() {
         </p>
       </section>
 
-      <section id="planetary-ruling-card" className="mt-12 scroll-mt-10">
+      <section id="planetary-ruling-card" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The planetary ruling card — set by your astrology sign</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Your birthday does one more thing: it lands in an astrology sign, and
@@ -532,7 +595,7 @@ export default function PlayingCardSpreads() {
         </p>
       </section>
 
-      <section id="planet-filters" className="mt-12 scroll-mt-10">
+      <section id="planet-filters" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The planet symbols, and the filter each one provides</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           The planets here are not sky positions — they are labels for the seven
@@ -561,8 +624,8 @@ export default function PlayingCardSpreads() {
         </p>
       </section>
 
-      <section id="faq" className="mt-12 scroll-mt-10">
-        <h2 className="type-eyebrow mb-4 !text-brand-bronze">Spreads FAQ</h2>
+      <section id="faq" className="mt-12 scroll-mt-36">
+        <h2 className="mb-4 font-serif text-3xl text-brand-ink">Playing card spreads FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
