@@ -156,7 +156,7 @@ export default function ReadingPage() {
           >
             <StreamedMarkdown text={text} />
             {phase === "streaming" && (
-              <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-gold align-middle" />
+              <span className="ml-0.5 inline-block h-4 w-[2px] translate-y-0.5 animate-pulse bg-brand-gold-soft align-middle" />
             )}
           </motion.article>
         )}

@@ -210,7 +210,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
       <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
         <Link
           href="/story"
-          className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-brand-line bg-gold/[0.04] p-5 transition active:scale-[0.99]"
+          className="group mt-4 flex items-center justify-between gap-3 rounded-2xl border border-brand-line bg-brand-gold-soft p-5 transition active:scale-[0.99]"
         >
           <span>
             <span className="eyebrow !text-brand-bronze">Story Arc · Your Year</span>
