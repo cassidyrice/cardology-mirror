@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { useProfile } from "@/lib/profile";
 import { useReading } from "@/lib/useReading";
 import { useGate } from "@/lib/useGate";
-import { Screen, Eyebrow, Divider } from "@/components/ui";
+import { Screen, Kicker, Divider } from "@/components/ui";
 import { StreamedMarkdown } from "@/components/reading/StreamedMarkdown";
 import { ComposingState } from "@/components/reading/ComposingState";
 import { ArcRail } from "@/components/story/ArcRail";
@@ -93,7 +93,7 @@ export default function StoryArcPage() {
     return (
       <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
-          <p className="eyebrow animate-pulse">tracing your arc…</p>
+          <p className="type-eyebrow !font-bold !text-brand-ink-soft animate-pulse">tracing your arc…</p>
         </div>
       </Screen>
     );
@@ -122,7 +122,7 @@ export default function StoryArcPage() {
           transition={{ duration: 0.5 }}
           className="mb-7"
         >
-          <Eyebrow className="mb-2">Story Arc · Your Year</Eyebrow>
+          <Kicker className="mb-2 !font-bold !text-brand-ink-soft">Story Arc · Your Year</Kicker>
           <h1 className="display text-3xl text-brand-ink">
             Where this year is taking you
           </h1>
@@ -156,7 +156,7 @@ export default function StoryArcPage() {
 
         {phase === "error" && (
           <div className="animate-fade-up pt-4 text-center">
-            <Eyebrow className="mb-3">The thread slipped</Eyebrow>
+            <Kicker className="mb-3 !font-bold !text-brand-ink-soft">The thread slipped</Kicker>
             <p className="prose-reading text-brand-ink-soft">{errorMsg}</p>
             <button
               onClick={generate}

@@ -185,7 +185,7 @@ export default function CardOfTheDayPage() {
           className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
         <div>
-          <span className="eyebrow text-brand-ink-soft">{label}</span>
+          <span className="type-eyebrow !font-bold !text-brand-ink-soft">{label}</span>
           <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             Cardology Card of the Day
             <span className="block text-lg !text-brand-bronze">
@@ -198,7 +198,7 @@ export default function CardOfTheDayPage() {
         </div>
       </div>
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">{directAnswer}</p>
       </div>
       <p className="mb-2 text-xs text-brand-ink-soft">Updated {updatedLabel(updatedIso)}</p>
@@ -220,7 +220,7 @@ export default function CardOfTheDayPage() {
       {card && today ? (
         <>
           <section className="mt-8">
-            <h2 className="eyebrow mb-2 !text-brand-bronze">Today&rsquo;s card: the {card.label}</h2>
+            <h2 className="type-eyebrow mb-2 !text-brand-bronze">Today&rsquo;s card: the {card.label}</h2>
             <div className="flex flex-col gap-5 sm:flex-row">
               <img
                 src={`/share-cards/faces/${card.slug}.png`}
@@ -232,7 +232,7 @@ export default function CardOfTheDayPage() {
                 className="w-44 shrink-0 self-start rounded-2xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
               />
               <div className="prose-reading text-brand-ink-soft">
-                {card.title && <p className="eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
+                {card.title && <p className="type-eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
                 <p>{card.coreIdentity || card.sweetSpot}</p>
                 <p>
                   The {card.label} is a {suitWord(card)} card — the suit of {card.suitDomain.toLowerCase()} —
@@ -249,7 +249,7 @@ export default function CardOfTheDayPage() {
           </section>
 
           <section className="mt-8">
-            <h2 className="eyebrow mb-2 !text-brand-bronze">Quick reads: love, work, shadow</h2>
+            <h2 className="type-eyebrow mb-2 !text-brand-bronze">Quick reads: love, work, shadow</h2>
             <div className="space-y-4">
               <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} tends to reveal itself through ${relationshipTheme(card)}. Notice where that pull is running the room today.`} />
               <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
@@ -264,7 +264,7 @@ export default function CardOfTheDayPage() {
         </>
       ) : (
         <section className="mt-8">
-          <h2 className="eyebrow mb-2 !text-brand-bronze">Today belongs to the Joker</h2>
+          <h2 className="type-eyebrow mb-2 !text-brand-bronze">Today belongs to the Joker</h2>
           <div className="prose-reading text-brand-ink-soft">
             <p>
               The deck&rsquo;s calendar math is exact: the 52 card values sum to
@@ -300,13 +300,13 @@ export default function CardOfTheDayPage() {
 
       {faqs.map((f) => (
         <section className="mt-8" key={f.q}>
-          <h2 className="eyebrow mb-2 !text-brand-bronze">{f.q}</h2>
+          <h2 className="type-eyebrow mb-2 !text-brand-bronze">{f.q}</h2>
           <p className="prose-reading text-brand-ink-soft">{f.a}</p>
         </section>
       ))}
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 !text-brand-bronze">Yesterday, today, tomorrow</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Yesterday, today, tomorrow</h2>
         <p className="prose-reading text-brand-ink-soft">
           The card changes at midnight, Mountain Time — come back tomorrow, or
           walk the calendar yourself. Every date&rsquo;s page reads the card as a
@@ -377,7 +377,7 @@ function QuickRead({
   const { label: labelColor, tint } = QUICK_READ_TONES[facet];
   return (
     <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
-      <p className="eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
+      <p className="type-eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
       <p className="prose-reading mb-0 text-brand-ink-soft">{text}</p>
     </div>
   );

@@ -33,7 +33,7 @@ export function ObservationCard({
     >
       <div className="mb-2 flex items-center gap-2">
         <span className={`h-2 w-2 shrink-0 rounded-full ${DOT[obs.kind]}`} />
-        <span className={`eyebrow ${ACCENT[obs.kind]}`}>{obs.label}</span>
+        <span className={`type-eyebrow ${ACCENT[obs.kind]}`}>{obs.label}</span>
       </div>
       <p className="prose-reading text-[1rem] leading-relaxed text-brand-ink-soft">
         {obs.text}

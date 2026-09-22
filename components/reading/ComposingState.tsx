@@ -6,7 +6,7 @@ const WIDTHS = ["92%", "84%", "97%", "70%", "88%", "60%"];
 export function ComposingState() {
   return (
     <div className="animate-fade-up">
-      <p className="eyebrow foil-text animate-shimmer mb-8">
+      <p className="type-eyebrow foil-text animate-shimmer mb-8">
         composing your mirror…
       </p>
       <div className="space-y-7">

@@ -26,7 +26,7 @@ export default async function FreeCourseWatchPage({
   return (
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Free Course", href: "/free-course" }, { label: "Watch", href: "/free-course/watch" }]}>
       <header className="mb-10 max-w-3xl">
-        <p className="eyebrow !text-brand-bronze">Your free course</p>
+        <p className="type-eyebrow !text-brand-bronze">Your free course</p>
         <h1 className="display mt-3 text-4xl text-brand-ink">Read Your Birth Card</h1>
         <p className="prose-reading mt-4 text-brand-ink-soft">Work through the modules in order. Keep a note open for the short prompts, and test every description against your real behavior rather than treating it as a verdict.</p>
       </header>
@@ -35,7 +35,7 @@ export default async function FreeCourseWatchPage({
         {FREE_COURSE_MODULES.map((module) => (
           <section key={module.number} className="card-surface overflow-hidden rounded-3xl border !border-brand-line">
             <div className="p-5 sm:p-7">
-              <p className="eyebrow !text-brand-bronze">Module {module.number} · {module.duration}</p>
+              <p className="type-eyebrow !text-brand-bronze">Module {module.number} · {module.duration}</p>
               <h2 className="mt-2 font-serif text-2xl text-brand-ink">{module.title}</h2>
               <p className="mt-2 max-w-3xl text-sm leading-relaxed text-brand-ink-soft">{module.description}</p>
             </div>

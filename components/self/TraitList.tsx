@@ -34,7 +34,7 @@ export function TraitGroup({
 }) {
   return (
     <div className="card-surface p-5">
-      <p className="eyebrow mb-3">
+      <p className="type-eyebrow !font-bold !text-brand-ink-soft mb-3">
         <span className="text-brand-bronze">{cardCode}</span> · {cardLabel}
       </p>
       {children}

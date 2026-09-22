@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import type { DailyCard as DailyCardType } from "@/lib/types";
 import { parseCard } from "@/lib/cards";
-import { Eyebrow, PositionStack } from "@/components/ui";
+import { Kicker, PositionStack } from "@/components/ui";
 import { PlayingCard } from "@/components/PlayingCard";
 import { dailyLabel, dailyLine } from "@/components/today/reflection";
 
@@ -29,7 +29,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
       animate={{ opacity: 1, y: 0 }}
       className="card-surface rounded-2xl p-6"
     >
-      <Eyebrow className="!text-brand-bronze">Your card today</Eyebrow>
+      <Kicker className="!text-brand-bronze">Your card today</Kicker>
       <p className="mt-1 text-xs uppercase tracking-wider2 text-brand-ink-soft">
         {dailyLabel(daily)}
       </p>

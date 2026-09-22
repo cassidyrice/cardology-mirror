@@ -9,7 +9,7 @@ import { useProfile } from "@/lib/profile";
 import { useReading } from "@/lib/useReading";
 import { todayISO } from "@/lib/cards";
 import { PERIOD_DAYS, type Reading } from "@/lib/types";
-import { Screen, Eyebrow, Divider } from "@/components/ui";
+import { Screen, Kicker, Divider } from "@/components/ui";
 import { PeriodRow } from "@/components/timing/PeriodRow";
 import { buildCycle } from "@/components/timing/cycle";
 import { ProfilePrompt } from "@/components/profile/ProfilePrompt";
@@ -29,7 +29,7 @@ export default function TimingPage() {
           {Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="h-20 animate-pulse rounded-2xl bg-brand-ivory/70" />
           ))}
-          <p className="eyebrow animate-pulse pt-2">Mapping your year…</p>
+          <p className="type-eyebrow !font-bold !text-brand-ink-soft animate-pulse pt-2">Mapping your year…</p>
         </div>
       </Screen>
     );
@@ -52,7 +52,7 @@ export default function TimingPage() {
     return (
       <Screen>
         <div className="mx-auto max-w-md pt-28 text-center">
-          <Eyebrow className="mb-3 !text-brand-bronze">The timeline didn&apos;t load</Eyebrow>
+          <Kicker className="mb-3 !text-brand-bronze">The timeline didn&apos;t load</Kicker>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
           <button
             onClick={() => router.refresh()}
@@ -104,7 +104,7 @@ function Timing({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Eyebrow className="mb-1">Your year · {name}</Eyebrow>
+          <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Your year · {name}</Kicker>
           <h1 className="display text-4xl leading-[1.08] text-brand-ink">
             You&apos;re in your{" "}
             <span className="foil-text">{activePlanet}</span> chapter.
@@ -135,7 +135,7 @@ function Timing({
             className="card-surface group flex items-center justify-between gap-3 p-4 transition !border-brand-line active:scale-[0.99]"
           >
             <span>
-              <span className="eyebrow !text-brand-bronze">Story Arc</span>
+              <span className="type-eyebrow !text-brand-bronze">Story Arc</span>
               <span className="mt-1 block text-pretty font-serif text-[0.95rem] leading-snug text-brand-ink">
                 Read your year as one arc — long-range chapter, the deep turn, the
                 horizon.
