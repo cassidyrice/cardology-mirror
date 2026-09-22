@@ -86,7 +86,7 @@ export default function PlayingCardTattooMeaning() {
           <Link
             key={row.slug}
             href={`/birth-card/${row.slug}`}
-            className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
+            className="group block overflow-hidden rounded-2xl border border-white/10 bg-brand-ivory/70"
           >
             <img
               src={row.image}

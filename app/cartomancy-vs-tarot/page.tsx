@@ -58,7 +58,7 @@ export default function CartomancyVsTarot() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Cartomancy vs Tarot</h1>
-      <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
+      <div className="mb-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cartomancy is reading meaning from cards; tarot is one branch of it

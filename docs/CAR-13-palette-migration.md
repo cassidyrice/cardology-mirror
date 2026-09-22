@@ -1,20 +1,20 @@
 # CAR-13 — Legacy dark palette off the paper-shell layer
 
-Pass 1 inventoried the layer and proposed the mapping. Cass agreed that mapping, including D1 option (a) and D3 (ink-button preference). Batches A, B, C, D, and E are the deletions so far.
+Pass 1 inventoried the layer and proposed the mapping. Cass agreed that mapping, including D1 option (a), D2 (accept the warm-wash shift), and D3 (ink-button preference). Batches A, B, C, D, E, and F are the deletions so far.
 
-Status: batch E landed. Rule 3 (batch A), rule 4 (batch B), rules 5–6 (batch C: `.paper-shell [class*="text-gold"]`, `[class*="text-ember"]`, and the anchor override `a[class*="text-gold"]`), rule 7 (batch D: `.paper-shell .text-sage`, `.text-dusk`), and rules 8 and 15 (batch E: `.paper-shell .text-ink`, `.paper-shell .bg-foil`) are deleted. Rules 1–2, 9–14, and 16–23 stay. `tailwind.config.ts` dark palette keys stay. `:root` gained `--club: #183f30` and Tailwind gained `brand.club`.
+Status: batch F landed. Rule 3 (batch A), rule 4 (batch B), rules 5–6 (batch C: `.paper-shell [class*="text-gold"]`, `[class*="text-ember"]`, and the anchor override `a[class*="text-gold"]`), rule 7 (batch D: `.paper-shell .text-sage`, `.text-dusk`), rules 8 and 15 (batch E: `.paper-shell .text-ink`, `.paper-shell .bg-foil`), and rule 18 (batch F: `.paper-shell [class*="bg-void"]`, `[class*="bg-haze"]`, `[class*="bg-cosmos"]`, `[class*="bg-white"]`) are deleted. Rules 1–2, 9–14, 16–17, and 19–23 stay. `tailwind.config.ts` dark palette keys stay. `:root` gained `--club: #183f30` and Tailwind gained `brand.club`. `brand.ivory` is `color-mix` with `<alpha-value>` so `bg-brand-ivory/70` paints; a bare `var(--ivory)` drops that utility. Solid `bg-brand-ivory` stays ivory.
 
 `docs/SITE-RECORD.md` is not in this repository (`docs/SECURITY.md` already records that). This file is the §1.1 tracking note until that record exists.
 
 ## Tracking
 
-The inventory was counted on `main` at `f040184` (the paper-shell remap block was lines 585–747). A deletion of the blueprint-ambient rules earlier in that file had moved this block up from the 739–901 range named in the issue. Batch A removed rule 3. Batch B removed rule 4. Batch C removed rules 5 and 6. Batch D removed rule 7 and added `--club` on `:root`. Batch E removed rules 8 and 15. The block now ends at line 708. Appendix counts below are the pre-batch-A inventory.
+The inventory was counted on `main` at `f040184` (the paper-shell remap block was lines 585–747). A deletion of the blueprint-ambient rules earlier in that file had moved this block up from the 739–901 range named in the issue. Batch A removed rule 3. Batch B removed rule 4. Batch C removed rules 5 and 6. Batch D removed rule 7 and added `--club` on `:root`. Batch E removed rules 8 and 15. Batch F removed rule 18. The block now ends at line 700. Appendix counts below are the pre-batch-A inventory.
 
 | Slice | Rule groups | Remaining |
 | --- | ---: | --- |
-| Palette and surface remaps (the layer CAR-13 exists to remove) | 18 | 11 (61%) |
+| Palette and surface remaps (the layer CAR-13 exists to remove) | 18 | 10 (56%) |
 | Geometry and form chrome (radius, inputs, `.app-paper-stage`) | 5 | 5 (100%) |
-| Whole `.paper-shell` compatibility block | 23 | 16 (70%) |
+| Whole `.paper-shell` compatibility block | 23 | 15 (65%) |
 
 Batch A migrated exact `text-bone` on paper-shell screens to `text-brand-ink`, and added `text-brand-ink` beside `.display` (the type class stays). Inert `hover:text-bone` on those screens moved in the same change: `hover:text-brand-ink` on mist chips, `hover:text-brand-oxblood` on the gold anchor chips in `app/birth-card/page.tsx`. Still on the dark palette for bone: `app/layout.tsx` body, `app/access/page.tsx`, onboarding (`app/onboarding/page.tsx`, `ProfileForm`, `IntroSlide`), and unmounted `Brand` and `YearPreview`. `PlayingCard` titles no longer set `text-bone`; they inherit, so a paper-shell title stays ink and an onboarding title stays bone. The dark card frame stays for batch K. `ProfileForm`'s `hover:text-bone` stays.
 
@@ -24,9 +24,11 @@ Batch C migrated `text-gold` and `text-ember` on paper-shell screens in the same
 
 Batch D applied D1 option (a). `:root` defines `--club: #183f30` (the value rule 7 forced, and the value `.landing-oracle` already set locally). `brand.club` maps to that variable. `text-sage` and `text-dusk` on `PositionStack` and `ObservationCard` are `text-brand-club`. ObservationCard labels sit on `.eyebrow`. Rule 9 is more specific than a utility and is emitted after Tailwind, so those labels use `!text-brand-club` or rule 9 paints ink-soft. Complement and tension were `text-brand-bronze` without `!` after batch C, which let the same rule paint them ink-soft; this batch adds `!text-brand-bronze` so they stay the bronze rule 5 forced. PositionStack labels are not eyebrows, so a plain `text-brand-club` holds. Dots stay three distinct colors: sage (`bg-sage`, the balanced position) is `bg-brand-club`; ember (`bg-ember`, the over position) is `bg-brand-bronze`; dusk (`bg-dusk`, the under position) is `bg-brand-oxblood`. Mapping sage and dusk dots both to club would collapse under and balanced. Option (a) names club and bronze-for-ember and requires three dots; oxblood is the remaining color named in option (b) and in the agreed note. `ObservationCard`'s complement dot stays `bg-gold` for batch H (rule 16). `SelfClient`'s `bg-ember/5` and `border-ember/20` warning wash is not a position dot and stays. No paper-shell screen still uses `text-sage`, `text-dusk`, `bg-sage`, or `bg-dusk`. Dark palette keys, including unused `sage` and `dusk`, stay until the last consumer of the set is gone. `ember` still has the SelfClient wash.
 
-Batch E applied D3. Paper-shell `text-ink` + `bg-foil` buttons are `ink-button` (the foil sibling pattern: calculator chips, free-course card CTA, the shell branch of `FreeCourseSignupForm`, `AccessGate`, `BondsClient` compare, `ProfilePrompt`). The three `bg-gold` + `text-ink` pairs (`what-is-cardology`, `cardology-for-beginners`, `destiny-cards`) are the $13 One Question Reading control, so they are `accent-button`. `what-is-cardology` also has a foil "$13 One Question Reading" chip in the keep-going row; that chip is one of several siblings, so it is `ink-button`, and the dedicated card above it stays the single accent. `FreeCourseSignupForm`'s paper branch (homepage, outside the shell) was already `accent-button` and is unchanged. Its default `surface="ink"` branch renders inside `/free-course` and was the foil button; that branch is `ink-button`. Field classes on that branch stay for later batches. `AccessLink` (`/access`) and `ProfileForm` (`/onboarding`) stay on `text-ink`. No paper-shell screen still uses `text-ink`. Decorative `bg-foil` remains on `FoilSheen` and `CardBack` (batch K). Those are not buttons. Rule 15 had flattened them to `background: var(--ink)` inside the shell, so paper cards now paint the Tailwind foil gradient. Onboarding and the homepage never matched the rule, so their foil is unchanged. `bg-gold` washes that are not the three buttons stay for batch H (rule 16). Update this table again in the PR that deletes the next rule group. A batch that deletes no rule has not finished.
+Batch E applied D3. Paper-shell `text-ink` + `bg-foil` buttons are `ink-button` (the foil sibling pattern: calculator chips, free-course card CTA, the shell branch of `FreeCourseSignupForm`, `AccessGate`, `BondsClient` compare, `ProfilePrompt`). The three `bg-gold` + `text-ink` pairs (`what-is-cardology`, `cardology-for-beginners`, `destiny-cards`) are the $13 One Question Reading control, so they are `accent-button`. `what-is-cardology` also has a foil "$13 One Question Reading" chip in the keep-going row; that chip is one of several siblings, so it is `ink-button`, and the dedicated card above it stays the single accent. `FreeCourseSignupForm`'s paper branch (homepage, outside the shell) was already `accent-button` and is unchanged. Its default `surface="ink"` branch renders inside `/free-course` and was the foil button; that branch is `ink-button`. Field classes on that branch stay for later batches. `AccessLink` (`/access`) and `ProfileForm` (`/onboarding`) stay on `text-ink`. No paper-shell screen still uses `text-ink`. Decorative `bg-foil` remains on `FoilSheen` and `CardBack` (batch K). Those are not buttons. Rule 15 had flattened them to `background: var(--ink)` inside the shell, so paper cards now paint the Tailwind foil gradient. Onboarding and the homepage never matched the rule, so their foil is unchanged. `bg-gold` washes that are not the three buttons stay for batch H (rule 16).
 
-The dark palette in `tailwind.config.ts` (`ink`, `void`, `cosmos`, `haze`, `bone`, `mist`, `faint`, `gold`, `ember`, `sage`, `dusk`, plus suit aliases `hearts` / `diamonds` / `clubs` / `spades`) stays until the last consumer is gone. Suit aliases have zero class uses. `faint` stays in the config because onboarding, access, and unmounted files still use it. `sage` and `dusk` have no class uses after batch D; the keys stay until that final removal. `brand.club` is an addition, not a deletion of a dark key. The issue's token list skipped `faint`.
+Batch F applied D2 to rule 18 only. Paper-shell `bg-void`, `bg-haze`, and `bg-white`, including every opacity, are `bg-brand-ivory/70`. Rule 18's attribute selector forced cream `rgba(244,240,231,.68)` and cleared `background-image`, so the written opacities (`bg-white/[0.03]`, `bg-white/[0.04]`, `bg-white/[0.06]`, `bg-white/[0.015]`, `bg-white/10`, `bg-white/15`, `bg-void/40`, `bg-void/60`, `bg-void/70`, `bg-haze/40`, `bg-haze/60`, and plain `bg-void` / `bg-haze` / `bg-white`) already painted that one fill. `bg-cosmos` had zero consumers; the dead selector went with the rule. `to-cosmos` does not contain `bg-cosmos` and stays for batch K. Inputs, textareas, and selects that carried these classes still take rule 19 (`background: rgba(244,240,231,.9)` on `.paper-shell input`, `textarea`, `select`). That rule is more specific than a utility and is emitted after Tailwind, so those fields stay cream until batch M. Panels, skeleton bars, the journal sheet, and the timing rail are not form controls, so they shift from warm cream to ivory. Still on the dark palette: `ProfileForm` `bg-void` (`/onboarding`), `app/onboarding/page.tsx` `bg-white/10`, and unmounted `Brand` (`hover:bg-haze/60`), `CompareBand` (`bg-white/5`), and `YearPreview` (`bg-white/[0.04]`). No paper-shell screen still uses `bg-void`, `bg-haze`, `bg-cosmos`, or `bg-white`. Rules 12, 13, 16, and 17 stay on the warm leftovers until batches J, K, H, and G. `tailwind.config.ts` dark keys are not edited. `brand.ivory` uses `color-mix` and `<alpha-value>` so the `/70` utility is emitted; without that, Tailwind drops `bg-brand-ivory/70` and the panel is transparent. Solid `bg-brand-ivory` stays ivory. `void`, `haze`, and `cosmos` stay until the last consumer of the set is gone. Update this table again in the PR that deletes the next rule group. A batch that deletes no rule has not finished.
+
+The dark palette in `tailwind.config.ts` (`ink`, `void`, `cosmos`, `haze`, `bone`, `mist`, `faint`, `gold`, `ember`, `sage`, `dusk`, plus suit aliases `hearts` / `diamonds` / `clubs` / `spades`) stays until the last consumer is gone. Suit aliases have zero class uses. `faint` stays in the config because onboarding, access, and unmounted files still use it. `sage` and `dusk` have no class uses after batch D; the keys stay until that final removal. `brand.club` is an addition, not a deletion of a dark key. Batch F changed `brand.ivory` from `var(--ivory)` to a `color-mix` that takes `<alpha-value>`. The hue is still `--ivory`. The issue's token list skipped `faint`.
 
 ## What renders
 
@@ -60,7 +62,7 @@ Dead to the router today, still a grep dependency if a batch's exit check is "no
 
 ## How the counts were taken
 
-Source scan of `app/`, `components/`, and `scripts/` (tests that assert class names). A utility counts when it appears as a class token (`text-mist`, `hover:text-gold`, `border-white/10`, `placeholder:text-faint`). A semantic class (`display`, `eyebrow`, `card-surface`, …) counts only as a whitespace-separated token inside a string, so `s.eyebrow`, `display: "swap"`, and the English word "display" do not count. Comments are skipped. The override block itself (lines 585–747 at the inventory commit; 585–741 after batch A; 585–734 after batch B; 585–718 after batch C; 589–717 after batch D; 588–708 after batch E) and the base dark rules it replaces (`.card-surface`, `.foil-text`, `.eyebrow`, `.display`, `.prose-reading`, `.hairline`, `.starfield` earlier in `app/globals.css`) are not counted as consumers.
+Source scan of `app/`, `components/`, and `scripts/` (tests that assert class names). A utility counts when it appears as a class token (`text-mist`, `hover:text-gold`, `border-white/10`, `placeholder:text-faint`). A semantic class (`display`, `eyebrow`, `card-surface`, …) counts only as a whitespace-separated token inside a string, so `s.eyebrow`, `display: "swap"`, and the English word "display" do not count. Comments are skipped. The override block itself (lines 585–747 at the inventory commit; 585–741 after batch A; 585–734 after batch B; 585–718 after batch C; 589–717 after batch D; 588–708 after batch E; 588–700 after batch F) and the base dark rules it replaces (`.card-surface`, `.foil-text`, `.eyebrow`, `.display`, `.prose-reading`, `.hairline`, `.starfield` earlier in `app/globals.css`) are not counted as consumers.
 
 CSS modules and the shorts studio stylesheet are excluded. They do not match `.paper-shell` selectors.
 
@@ -68,14 +70,14 @@ Issue round numbers were `text-bone` in 51 files, `text-mist` in 50, `card-surfa
 
 ## The layer, rule by rule
 
-Line numbers are `app/globals.css` after batch E deleted rules 8 and 15. "Depends" means a descendant of `.paper-shell` whose class attribute matches the selector. Outside-shell files in the appendix use the same class names and do not depend on the rule; they block deleting the Tailwind color, not the rule.
+Line numbers are `app/globals.css` after batch F deleted rule 18. "Depends" means a descendant of `.paper-shell` whose class attribute matches the selector. Outside-shell files in the appendix use the same class names and do not depend on the rule; they block deleting the Tailwind color, not the rule.
 
 Selector behavior that is easy to miss:
 
-- Rule 8's exact `.text-ink` selector and rule 7's exact `.text-sage` and `.text-dusk` selectors are deleted. `hover:text-bone` does not match `.text-bone`.
-- `text-mist`, `text-faint`, `text-gold`, `text-ember`, `bg-gold`, `bg-void`, `bg-haze`, `bg-cosmos`, `bg-white`, `border-white`, `border-bone`, `border-haze`, and `border-gold` use `[class*="…"]`, so variants and opacities match.
+- Rule 8's exact `.text-ink` selector, rule 7's exact `.text-sage` and `.text-dusk` selectors, and rule 18's `[class*="bg-void"]`, `[class*="bg-haze"]`, `[class*="bg-cosmos"]`, and `[class*="bg-white"]` selectors are deleted. `hover:text-bone` does not match `.text-bone`.
+- `text-mist`, `text-faint`, `text-gold`, `text-ember`, `bg-gold`, `border-white`, `border-bone`, `border-haze`, and `border-gold` use `[class*="…"]`, so variants and opacities match.
 - `border-t-gold` does not contain the substring `border-gold`, so side-specific borders do not match. This pass found no side-specific palette borders.
-- `from-haze`, `to-cosmos`, `via-cosmos`, `ring-gold`, `bg-ink`, `bg-ember`, `bg-bone`, `text-void`, `text-white` match no rule. Inside the shell they paint the dark palette on paper. `bg-sage` and `bg-dusk` left the paper screens in batch D.
+- `from-haze`, `to-cosmos`, `via-cosmos`, `ring-gold`, `bg-ink`, `bg-ember`, `bg-bone`, `text-void`, `text-white` match no rule. Inside the shell they paint the dark palette on paper. `bg-sage` and `bg-dusk` left the paper screens in batch D. `bg-void`, `bg-haze`, and `bg-white` left the paper screens in batch F.
 
 | # | Lines | Selector (abbreviated) | `!important` | What the visitor sees inside the shell | Delete with batch |
 | --- | --- | --- | --- | --- | --- |
@@ -96,12 +98,12 @@ Selector behavior that is easy to miss:
 | 15 | — | `.bg-foil` | yes | deleted in batch E; paper buttons use `ink-button`. Decorative foil on cards is batch K | done |
 | 16 | 646–648 | `[class*="bg-gold"]` | yes | `background-color: rgba(158,61,36,.12)` (old warm red at 12%) | H |
 | 17 | 650–655 | `[class*="border-white"]`, `border-bone`, `border-haze`, `border-gold` | yes | `border-color: rgba(20,17,13,.16)` | G |
-| 18 | 657–663 | `[class*="bg-void"]`, `bg-haze`, `bg-cosmos`, `bg-white` | yes | fill `rgba(244,240,231,.68)`, image cleared | F |
-| 19 | 665–671 | `input`, `textarea`, `select` | yes | cream field, ink text, warm border | M (keep or migrate; see below) |
-| 20 | 673–676 | placeholders | yes | `rgba(20,17,13,.45)` | M |
-| 21 | 678–684 | `.rounded-2xl` … `.rounded-t-3xl` | yes | radius `0.25rem` | M |
-| 22 | 689–692 | `a.rounded-full`, `button.rounded-full` | yes | radius `0.25rem` | M |
-| 23 | 694–708 | `.app-paper-stage` and descendants | no | inset shadow, `min-height: auto`, softer `.shadow-lg` | M |
+| 18 | — | `[class*="bg-void"]`, `bg-haze`, `bg-cosmos`, `bg-white` | yes | deleted in batch F; paper fills use `bg-brand-ivory/70` | done |
+| 19 | 657–663 | `input`, `textarea`, `select` | yes | cream field, ink text, warm border | M (keep or migrate; see below) |
+| 20 | 665–668 | placeholders | yes | `rgba(20,17,13,.45)` | M |
+| 21 | 670–676 | `.rounded-2xl` … `.rounded-t-3xl` | yes | radius `0.25rem` | M |
+| 22 | 681–684 | `a.rounded-full`, `button.rounded-full` | yes | radius `0.25rem` | M |
+| 23 | 686–700 | `.app-paper-stage` and descendants | no | inset shadow, `min-height: auto`, softer `.shadow-lg` | M |
 
 Rules 19–23 are chrome. They are not dark-palette class names. Recommendation: leave them as the paper shell's intentional geometry, and track them separately from the 18 palette rules. Cass decides in the agreement step.
 
@@ -130,7 +132,7 @@ Rules 16, 17, 18, 12, and 13 still paint warm leftovers (cream `rgba(244,240,231
 | `bg-foil` on `FoilSheen` / `CardBack` | rule 15 forced `var(--ink)`; the utility is the gold foil gradient | left for batch K. After rule 15, paper cards show that gradient. | shifts on paper cards |
 | `bg-gold`, `hover:bg-gold`, `bg-gold/15` and other opacities | `rgba(158,61,36,.12)` | `bg-brand-gold-soft` | shifts from old red wash to current gold wash |
 | `border-white/*`, `border-bone/*`, `border-haze`, `border-gold/*`, `hover:border-gold`, `focus:border-gold` | `rgba(20,17,13,.16)` | `border-brand-line` | shifts from warm black to ink-blue line |
-| `bg-void`, `bg-haze`, `bg-cosmos`, `bg-white` and opacities | cream `rgba(244,240,231,.68)` | `bg-brand-ivory/70` | shifts from warm cream to ivory |
+| `bg-void`, `bg-haze`, `bg-cosmos`, `bg-white` and opacities | cream `rgba(244,240,231,.68)` | `bg-brand-ivory/70` (batch F). Form controls still take rule 19's cream field. | shifts from warm cream to ivory |
 | `.card-surface` | cream grid, 1px ink-ish border, soft shadow | Keep one class. Move the shell rule's declarations onto the base `.card-surface` when no dark screen still needs the indigo gradient. Dark screens that still need the gradient get an explicit `card-surface-dark`. | shifts if any dark caller remains |
 | `.card-frame` | cream fill, warm border | Paper `PlayingCard` (`surface="paper"`) gets explicit paper frame classes. Dark `PlayingCard` keeps a dark frame class with no shell override. | dual component; do not global-replace |
 | `.foil-text` | oxblood-to-gold clip | Keep the class; point the base gradient at `var(--oxblood)` / `var(--gold)` and delete the shell copy in batch K. | small |
@@ -154,13 +156,13 @@ Rules 16, 17, 18, 12, and 13 still paint warm leftovers (cream `rgba(244,240,231
 | `from-gold/50`, `to-gold/10` | 1 line | `components/story/ArcRail.tsx` | `from-brand-gold/50 to-brand-gold/10` |
 | `focus-visible:outline-gold` | 1 | `FreeCourseCta` | `focus-visible:outline-brand-oxblood` (matches the paper focus ring) |
 
-`bg-cosmos` appears in rule 18 and has zero `bg-cosmos` consumers. `to-cosmos` does not match `[class*="bg-cosmos"]`.
+`bg-cosmos` had zero consumers. Batch F deleted that selector with rule 18. `to-cosmos` does not match `[class*="bg-cosmos"]` and stays for batch K.
 
 ## Decisions to agree before pass 2
 
 1. **D1 — sage / dusk / ember dots.** Agreed: option (a). Applied in batch D. Both labels are `text-brand-club` (`#183f30`). Dots stay three colors: balanced/sage `bg-brand-club`, over/ember `bg-brand-bronze`, under/dusk `bg-brand-oxblood`. Option (b) was to collapse labels to `text-brand-ink` and dots to `bg-brand-ink` / `bg-brand-bronze` / `bg-brand-oxblood`.
 
-2. **D2 — warm washes vs cyanotype.** Agree the shift on rules 12, 13, 16, 17, 18 (cream, warm border, old red `bg-gold`) onto `bg-brand-ivory`, `border-brand-line`, and `bg-brand-gold-soft`. Recommendation: accept the shift.
+2. **D2 — warm washes vs cyanotype.** Agreed: accept the shift on rules 12, 13, 16, 17, and 18 (cream, warm border, old red `bg-gold`) onto `bg-brand-ivory`, `border-brand-line`, and `bg-brand-gold-soft`. Rule 18 is applied in batch F (`bg-brand-ivory/70`). Rules 12, 13, 16, and 17 are still the warm leftovers until batches J, K, H, and G.
 
 3. **D3 — `bg-gold` + `text-ink` buttons.** Agreed and applied in batch E. `ink-button` where the shell's `bg-foil` sibling buttons are the pattern. `accent-button` only for the single conversion action: the three $13 links on `what-is-cardology`, `cardology-for-beginners`, and `destiny-cards`.
 
@@ -168,7 +170,7 @@ Rules 16, 17, 18, 12, and 13 still paint warm leftovers (cream `rgba(244,240,231
 
 5. **D5 — shared primitives.** Recommendation: paper callers of `Eyebrow` switch to `Kicker` or `type-eyebrow`; `ProfileForm` keeps `Eyebrow`. `SectionTitle`, `Divider`, and `PositionStack` are paper-shell-only and can take brand classes in batches A, D, and L. `PlayingCard` grows real paper-surface classes (`surface="paper"` today only recolors pips) and keeps a dark frame for onboarding. No blind replace across `ui.tsx`.
 
-D1 and D3 are agreed and applied. Cass agreed the rest of the mapping as well. D2, D4, and D5 are agreed and not applied. Batches F and later are not this change.
+D1, D3, and the rule 18 part of D2 are agreed and applied. D2 for rules 12, 13, 16, and 17 is agreed and not applied. D4 and D5 are agreed and not applied. Batch G and later are not this change.
 
 ## Batch plan
 
@@ -183,11 +185,11 @@ Order is hue-safe text first, then the decisions, then shared components, then s
 | C | rules 5 and 6 (deleted) | `text-gold` and `text-ember`. Split anchors (`text-brand-oxblood`) from labels (`text-brand-bronze`) in the same PR. | Done. Left `/onboarding` and unmounted `BottomNav`, `Brand`, and `YearPreview` on the dark palette. Sage/dusk labels and `bg-ember` dots stay for batch D. |
 | D | rule 7 (deleted) | `text-sage`, `text-dusk`, plus the unmatched `bg-sage`, `bg-dusk`, `bg-ember` dots. | Done, D1 option (a). `PositionStack` and `components/bonds/ObservationCard.tsx`. Under dot is `bg-brand-oxblood`, balanced/sage dot is `bg-brand-club`, over/ember dot is `bg-brand-bronze`. `ObservationCard` complement `bg-gold` stays for batch H. `SelfClient`'s ember wash stays. |
 | E | rules 8 and 15 (deleted) | `text-ink` + `bg-foil` buttons, and the three `bg-gold text-ink` buttons. | Done, D3. Foil-pattern buttons are `ink-button`. The three $13 buttons are `accent-button`. `FreeCourseSignupForm` paper branch stayed `accent-button`; its shell branch is `ink-button`. `AccessGate` included. `AccessLink` and `ProfileForm` left outside the shell. `FoilSheen` and `CardBack` still use decorative `bg-foil` (batch K). |
-| F | rule 18 | `bg-void`, `bg-haze`, `bg-white` (and the dead `bg-cosmos` selector). | Blocked on D2. `bg-void` also appears on `ProfileForm`; leave that file. |
-| G | rule 17 | `border-white`, `border-gold`, `border-haze`, `border-bone`. | Blocked on D2. Biggest visual sweep after text. `border-bone/10` is only unmounted `BottomNav`. |
-| H | rule 16 | `bg-gold` washes that are not the D3 buttons. | Blocked on D2. Do after E so the button pairs are already gone. |
+| F | rule 18 (deleted) | `bg-void`, `bg-haze`, `bg-white` (and the dead `bg-cosmos` selector). | Done, D2. Paper fills are `bg-brand-ivory/70`. Left `ProfileForm`, `/onboarding`, and unmounted `Brand`, `CompareBand`, and `YearPreview`. Form controls still take rule 19's cream field. |
+| G | rule 17 | `border-white`, `border-gold`, `border-haze`, `border-bone`. | D2 agreed. Biggest visual sweep after text. `border-bone/10` is only unmounted `BottomNav`. |
+| H | rule 16 | `bg-gold` washes that are not the D3 buttons. | D2 agreed. Do after E so the button pairs are already gone. E has landed. |
 | I | rules 1 and 2 | `bg-cosmic`, `starfield` | Small. `app/onboarding/page.tsx` uses both outside the shell; leave it, and the rules can still die because they only match inside the shell. |
-| J | rule 12 | `.card-surface` | 31 files, all paper or unmounted (`Brand`). Move the cream card onto the base class, or replace with `border border-brand-line bg-brand-ivory`. Do this only after D2. |
+| J | rule 12 | `.card-surface` | 31 files, all paper or unmounted (`Brand`). Move the cream card onto the base class, or replace with `border border-brand-line bg-brand-ivory`. D2 is agreed. |
 | K | rules 13 and 14 | `PlayingCard`, `CardFace`, `CardBack`, `FoilSheen` | Blocked on D5. One file owns `card-frame`. Foil gradient base rule gets the shell colors, then the shell copy goes. |
 | L | rules 9, 10, 11 | `.eyebrow`, `.prose-reading`, `.hairline` | After paper callers of `Eyebrow` have moved and `ProfileForm` is the remaining `.eyebrow` mount (D5). `Divider` is paper-only and can move here. Retarget the base `.prose-reading` rule, then delete the shell copy. That class is 233 uses in 38 files, almost all paper articles; the work is the base rule, not 233 renames. |
 | M | rules 19–23 only if D4 says migrate | radius utilities, form controls, `.app-paper-stage` | Recommendation is to keep these and close them out of CAR-13. |
@@ -200,7 +202,7 @@ Tests that quote old classes and will need a touch in the batch that renames the
 
 ## What the inventory pass did not do
 
-This list describes the inventory commit only. Batch A renamed paper-shell `text-bone` and deleted rule 3. Batch B renamed paper-shell `text-mist` and `text-faint` and deleted rule 4. Batch C renamed paper-shell `text-gold` and `text-ember` and deleted rules 5 and 6. Batch D renamed paper-shell sage, dusk, and the position dots and deleted rule 7. Batch E moved paper-shell foil and gold text-ink buttons onto `ink-button` or `accent-button` and deleted rules 8 and 15.
+This list describes the inventory commit only. Batch A renamed paper-shell `text-bone` and deleted rule 3. Batch B renamed paper-shell `text-mist` and `text-faint` and deleted rule 4. Batch C renamed paper-shell `text-gold` and `text-ember` and deleted rules 5 and 6. Batch D renamed paper-shell sage, dusk, and the position dots and deleted rule 7. Batch E moved paper-shell foil and gold text-ink buttons onto `ink-button` or `accent-button` and deleted rules 8 and 15. Batch F renamed paper-shell `bg-void`, `bg-haze`, and `bg-white` to `bg-brand-ivory/70` and deleted rule 18.
 
 - No component class was renamed.
 - No override rule was deleted.

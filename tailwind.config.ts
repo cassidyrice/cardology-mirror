@@ -28,7 +28,9 @@ const config: Config = {
         brand: {
           paper: "var(--paper)",
           "paper-deep": "var(--paper-deep)",
-          ivory: "var(--ivory)",
+          // A bare var() cannot take /70 — Tailwind drops the utility. <alpha-value>
+          // keeps solid ivory and lets bg-brand-ivory/70 paint.
+          ivory: "color-mix(in srgb, var(--ivory) calc(<alpha-value> * 100%), transparent)",
           ink: "var(--ink)",
           "ink-soft": "var(--ink-soft)",
           "ink-faint": "var(--ink-faint)",

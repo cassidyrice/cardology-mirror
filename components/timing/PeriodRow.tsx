@@ -40,14 +40,14 @@ export function PeriodRow({
     <div className="relative pl-8">
       {/* Timeline rail */}
       {!isLast && (
-        <span className="absolute left-[7px] top-6 bottom-0 w-px bg-white/10" aria-hidden />
+        <span className="absolute left-[7px] top-6 bottom-0 w-px bg-brand-ivory/70" aria-hidden />
       )}
       {/* Node dot */}
       <span
         className={`absolute left-0 top-[18px] h-[15px] w-[15px] rounded-full border ${
           isCurrent
             ? "border-gold bg-gold shadow-[0_0_14px_2px_rgba(217,178,106,0.7)]"
-            : "border-white/25 bg-haze"
+            : "border-white/25 bg-brand-ivory/70"
         }`}
         aria-hidden
       />
@@ -59,7 +59,7 @@ export function PeriodRow({
         className={`w-full rounded-2xl border px-4 py-3 text-left transition-colors ${
           isCurrent
             ? "border-gold/40 bg-gold/5"
-            : "border-white/[0.06] bg-white/[0.015] hover:border-white/15"
+            : "border-white/[0.06] bg-brand-ivory/70 hover:border-white/15"
         }`}
         aria-expanded={expanded}
       >

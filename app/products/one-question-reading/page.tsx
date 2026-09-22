@@ -190,7 +190,7 @@ export default function OneQuestionReadingPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Questions people ask first</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <div key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>

@@ -75,11 +75,11 @@ export function PlanetaryRulingCardChart({ rows }: { rows: RulingCardReferenceRo
           <div className="grid gap-4 sm:grid-cols-[1fr_12rem]">
             <div>
               <label htmlFor="ruling-search" className="block text-sm font-semibold">Search a birthday or card</label>
-              <input id="ruling-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="January 15, 10/23, Queen of Hearts…" className="mt-2 min-h-12 w-full border border-brand-line-strong bg-white px-3 text-base text-brand-ink focus:outline-2 focus:outline-offset-2 focus:outline-brand-oxblood" aria-controls="ruling-chart-results" autoComplete="off" />
+              <input id="ruling-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="January 15, 10/23, Queen of Hearts…" className="mt-2 min-h-12 w-full border border-brand-line-strong bg-brand-ivory/70 px-3 text-base text-brand-ink focus:outline-2 focus:outline-offset-2 focus:outline-brand-oxblood" aria-controls="ruling-chart-results" autoComplete="off" />
             </div>
             <div>
               <label htmlFor="ruling-month" className="block text-sm font-semibold">Month</label>
-              <select id="ruling-month" value={month} onChange={(e) => setMonth(e.target.value)} className="mt-2 min-h-12 w-full border border-brand-line-strong bg-white px-3 text-base text-brand-ink focus:outline-2 focus:outline-offset-2 focus:outline-brand-oxblood" aria-controls="ruling-chart-results">
+              <select id="ruling-month" value={month} onChange={(e) => setMonth(e.target.value)} className="mt-2 min-h-12 w-full border border-brand-line-strong bg-brand-ivory/70 px-3 text-base text-brand-ink focus:outline-2 focus:outline-offset-2 focus:outline-brand-oxblood" aria-controls="ruling-chart-results">
                 <option value="all">All months</option>
                 {MONTHS.map((name, index) => <option key={name} value={index + 1}>{name}</option>)}
               </select>

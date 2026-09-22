@@ -11,7 +11,7 @@ export function ShadowLayer({ code }: { code: string }) {
   if (!s) return null;
   return (
     <section
-      className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5"
+      className="mt-6 rounded-2xl border border-white/10 bg-brand-ivory/70 p-5"
       aria-labelledby="shadow-archetype"
       data-shadow-layer={s.code}
     >
@@ -59,7 +59,7 @@ export function ShadowPrompts({ code }: { code: string }) {
       </p>
       <ol className="space-y-3">
         {s.prompts.map((p, i) => (
-          <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+          <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
             <span className="font-serif text-2xl leading-none text-brand-bronze">{String(i + 1).padStart(2, "0")}</span>
             <p className="prose-reading text-brand-ink-soft">{p}</p>
           </li>

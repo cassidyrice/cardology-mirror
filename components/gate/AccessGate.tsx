@@ -33,7 +33,7 @@ export function AccessGate({
   };
 
   const field =
-    "w-full rounded-lg border border-white/10 bg-void px-3 py-3 text-brand-ink outline-none transition placeholder:text-brand-ink-soft focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
+    "w-full rounded-lg border border-white/10 bg-brand-ivory/70 px-3 py-3 text-brand-ink outline-none transition placeholder:text-brand-ink-soft focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
 
   return (
     <motion.div

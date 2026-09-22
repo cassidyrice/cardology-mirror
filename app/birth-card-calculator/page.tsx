@@ -209,7 +209,7 @@ export default function CalculatorPage() {
         .
       </p>
 
-      <aside className="mt-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
+      <aside className="mt-6 rounded-2xl border border-gold/25 bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
@@ -281,7 +281,7 @@ export default function CalculatorPage() {
             <a
               key={slug}
               href={`/born-on/${slug}`}
-              className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-center font-serif text-sm text-brand-ink transition hover:border-gold/40"
+              className="rounded-xl border border-white/10 bg-brand-ivory/70 px-3 py-2 text-center font-serif text-sm text-brand-ink transition hover:border-gold/40"
             >
               {label}
             </a>
@@ -322,7 +322,7 @@ export default function CalculatorPage() {
               ["2", "Get the fixed card", "The month and day map to one playing card in the 52-card calendar."],
               ["3", "Verify the meaning", "Open the card page, compare suit and rank, and test the interpretation against real patterns."],
             ].map(([n, title, body]) => (
-              <li key={n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+              <li key={n} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
                 <span className="eyebrow !text-brand-bronze">Step {n}</span>
                 <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
@@ -344,7 +344,7 @@ export default function CalculatorPage() {
         </details>
       </section>
 
-      <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
+      <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-brand-ivory/70 p-5 sm:p-6">
         <details>
           <summary className="cursor-pointer">
             <p className="eyebrow mb-2 !text-brand-bronze">Worked verification</p>
@@ -415,14 +415,14 @@ export default function CalculatorPage() {
             <h2 className="font-serif text-3xl text-brand-ink">Birth card vs. planetary ruling card</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
             <h3 className="font-serif text-xl text-brand-ink">Birth card: the fixed pattern</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               Your birth card comes from month and day and remains fixed. Read its
               suit as the life domain and its rank as the recurring function or role.
             </p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <div className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
             <h3 className="font-serif text-xl text-brand-ink">Ruling card: the expression layer</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The ruling card adds style and tone through the planetary layer. It can
@@ -523,7 +523,7 @@ export default function CalculatorPage() {
             ["Named publisher", "Cassidy Rice publishes and reviews the educational material, with editorial and correction standards linked publicly."],
             ["Private input", "The calculation runs in your browser. Anonymous analytics record calculator use, not the birthday entered."],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+            <div key={title} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-5">
               <h3 className="font-serif text-lg text-brand-ink">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
             </div>
@@ -549,7 +549,7 @@ export default function CalculatorPage() {
         <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card calculator FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+            <details key={f.q} className="rounded-2xl border border-white/10 bg-brand-ivory/70 p-4">
               <summary className="cursor-pointer">
                 <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               </summary>

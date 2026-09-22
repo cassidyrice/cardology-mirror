@@ -12,11 +12,11 @@ export function ComposingState() {
       <div className="space-y-7">
         {[0, 1].map((block) => (
           <div key={block} className="space-y-3">
-            <div className="h-5 w-2/5 animate-pulse rounded bg-haze/60" />
+            <div className="h-5 w-2/5 animate-pulse rounded bg-brand-ivory/70" />
             {WIDTHS.map((w, i) => (
               <div
                 key={i}
-                className="h-3.5 animate-pulse rounded bg-haze/40"
+                className="h-3.5 animate-pulse rounded bg-brand-ivory/70"
                 style={{ width: w, animationDelay: `${(block * 6 + i) * 90}ms` }}
               />
             ))}

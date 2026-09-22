@@ -264,7 +264,7 @@ function EntryCard({
                   }
                 }}
                 rows={6}
-                className="w-full resize-none rounded-xl border border-white/10 bg-void/40 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none focus:border-gold/40"
+                className="w-full resize-none rounded-xl border border-white/10 bg-brand-ivory/70 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none focus:border-gold/40"
               />
             ) : (
               <p className="prose-reading whitespace-pre-wrap text-[1.0rem] text-brand-ink-soft">
@@ -348,7 +348,7 @@ function WritingSheet({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end justify-center bg-void/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end justify-center bg-brand-ivory/70 backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
@@ -359,7 +359,7 @@ function WritingSheet({
         onClick={(e) => e.stopPropagation()}
         className="card-surface mx-auto w-full max-w-md rounded-t-3xl p-6"
       >
-        <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-white/15" />
+        <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-brand-ivory/70" />
 
         <div className="flex items-center justify-between gap-3">
           <Eyebrow className="!text-brand-bronze">{prompt.label}</Eyebrow>
@@ -375,7 +375,7 @@ function WritingSheet({
           onChange={(e) => setBody(e.target.value)}
           placeholder="Write what's true, not what's tidy…"
           rows={7}
-          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-void/40 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-brand-ink-soft focus:border-gold/40"
+          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-brand-ivory/70 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-brand-ink-soft focus:border-gold/40"
         />
 
         <div className="mt-3 flex items-center justify-between">
