@@ -90,6 +90,14 @@ export default function CompatibilityPage() {
         <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           Browse every card pairing
         </a>
+        . The same two-birthday form on its own page is the{" "}
+        <Link href="/birth-card-compatibility-calculator" className="text-brand-oxblood underline underline-offset-4">
+          birth card compatibility calculator
+        </Link>
+        . One hub in that directory is{" "}
+        <a href="/compatibility/10-of-hearts" className="text-brand-oxblood underline underline-offset-4">
+          10 of Hearts compatibility
+        </a>
         .
       </p>
 
@@ -127,6 +135,10 @@ export default function CompatibilityPage() {
           record in the{" "}
           <Link href="/cardology-books" className="text-brand-oxblood underline underline-offset-4">
             books and decks directory
+          </Link>
+          . The public name map for Destiny Cards, Love Cards, and Cards of Destiny is the{" "}
+          <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
+            Destiny Cards synonym map
           </Link>
           .
         </p>
