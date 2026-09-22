@@ -1,7 +1,7 @@
 {
   "protocolVersion": "1.0",
   "name": "Card Blueprints",
-  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. The optional paid next steps are the $13 One Question Reading — one question, read from the birth card and the year, written within about a minute — and the 22-page computed Blueprint Report, $129 alone or $297 with a 45-minute consultation. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
+  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. The paid next step is the $13 One Question Reading — one question, read from the birth card and the year, written within about a minute. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
   "url": "https://cardblueprints.com/birth-card-calculator",
   "version": "1.0.0",
   "documentationUrl": "https://cardblueprints.com/what-is-cardology",
@@ -29,7 +29,7 @@
     {
       "id": "birth-card-from-dob",
       "name": "Birth card from date of birth",
-      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. Optional paid next steps: the $13 One Question Reading at https://cardblueprints.com/products/one-question-reading (one question, read from the birth card and the year, written within about a minute), or the Blueprint Report at https://cardblueprints.com/products/blueprint-report (22 pages computed from the birth date, $129, or $297 with a 45-minute consultation).",
+      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. The paid next step is the $13 One Question Reading at https://cardblueprints.com/products/one-question-reading (one question, read from the birth card and the year, written within about a minute).",
       "tags": [
         "cardology",
         "birth-card",
@@ -41,7 +41,7 @@
       "examples": [
         "What is the Cardology birth card for 1991-02-17?",
         "Open https://cardblueprints.com/birth-card-calculator and enter a birthday.",
-        "After the free birth card, ask one question with the $13 One Question Reading at https://cardblueprints.com/products/one-question-reading, or get the 22-page computed Blueprint Report at https://cardblueprints.com/products/blueprint-report ($129, or $297 with a 45-minute consultation)."
+        "After the free birth card, ask one question with the $13 One Question Reading at https://cardblueprints.com/products/one-question-reading."
       ],
       "inputModes": ["text/plain"],
       "outputModes": ["text/html", "text/plain"]

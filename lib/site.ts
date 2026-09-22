@@ -54,7 +54,9 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
-  "/products/blueprint-report",
+  // The Blueprint Report stays buyable at /products/blueprint-report for people
+  // who already have the link. It is omitted from the main sitemap so it does
+  // not compete with the $13 One Question Reading.
   "/products/one-question-reading",
   "/free-course",
   "/what-is-cardology",

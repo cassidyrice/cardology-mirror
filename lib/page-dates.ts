@@ -18,7 +18,6 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/52-day-period-meaning-tool": "2026-07-30",
   "/birth-card-compatibility-calculator": "2026-09-22",
   "/cardology-compatibility": "2026-09-22",
-  "/products/blueprint-report": "2026-09-20",
   "/products/one-question-reading": "2026-09-13",
   "/free-course": "2026-08-07",
   "/what-is-cardology": "2026-09-15",
