@@ -15,6 +15,8 @@ const PUBLIC_SLA_FILES = [
   "app/destiny-cards/page.tsx",
   "app/about/page.tsx",
   "app/contact/page.tsx",
+  "lib/faq.ts",
+  "app/faq/page.tsx",
   "app/terms-of-service/page.tsx",
   "app/refund-policy/page.tsx",
   "components/home/HomepageJourney.tsx",

@@ -30,6 +30,7 @@
 
 ## Learn the System
 - [What Is Cardology?](https://cardblueprints.com/what-is-cardology): Plain-English definition and claim boundary.
+- [FAQ](https://cardblueprints.com/faq): Short answers on Cardology vs cardiology and tarot, the free birth-card lookup, the $13 reading written within about a minute, and /today. Each answer links to the page that owns the full explanation.
 - [Cartomancy vs Tarot](https://cardblueprints.com/cartomancy-vs-tarot): Contrast page — shuffled cartomancy and tarot vs Cardology's fixed birthday coordinates (no shuffle).
 - [How to Read Playing Cards](https://cardblueprints.com/how-to-read-playing-cards): Suit and rank primer for the 52-card deck; Cardology itself is coordinates, not a shuffled three-card reading.
 - [Playing Card Spreads](https://cardblueprints.com/playing-card-spreads): Spread layouts for shuffled decks, and why a deterministic Cardology reading needs no spread.

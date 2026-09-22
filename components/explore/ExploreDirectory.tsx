@@ -74,6 +74,7 @@ const GROUPS: ExploreGroup[] = [
       { label: "About", href: "/about" },
       { label: "Methodology", href: "/methodology" },
       { label: "Editorial policy", href: "/editorial-policy" },
+      { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],
   },
