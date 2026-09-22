@@ -364,6 +364,7 @@ export const DEEP_DIVE_PRODUCT: DigitalDownloadOffer = {
   href: "/products/one-question-reading",
 };
 
+/** Retired from public sale (no page). Record stays in ALL_PRODUCTS so historical sessions and entitlements still resolve. */
 export const MEMBERSHIP_SLUG = "cardology-membership";
 
 export const MEMBERSHIP_PRODUCT: MembershipOffer = {
@@ -409,7 +410,6 @@ export const PERSONAL_CARD_BLUEPRINT_SLUG = "personal-card-blueprint";
 
 /** Products currently purchasable and safe to advertise as live offers. */
 export const PUBLIC_PRODUCTS: ActiveProduct[] = [
-  MEMBERSHIP_PRODUCT,
   ...INSTANT_REPORT_PRODUCTS.filter((product) => product.slug !== PERSONAL_CARD_BLUEPRINT_SLUG),
   ...DIGITAL_PRODUCTS.filter((product) => product.available),
 ];
