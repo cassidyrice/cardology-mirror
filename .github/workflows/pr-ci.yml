@@ -32,6 +32,10 @@ jobs:
       #   scripts/seo-integrity-browser.ts (Playwright + a running local app)
       # - scripts/worker-production-contract.ts
       #   (explicit opt-in check that requires production network access)
+      # The sitemap HTTP guard below is the exception: generator unit tests
+      # stayed green while /sitemap.xml, /sitemap-cardology.xml, and
+      # /sitemap-compatibility.xml returned HTTP 500. That step curls the
+      # live origin. Local handler coverage is scripts/sitemap-routes.test.ts.
       # - bun run build
       #   (Next.js build may require env vars unavailable in PR CI)
       #
@@ -57,6 +61,7 @@ jobs:
             scripts/newsletter-signup-form.test.ts \
             scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
+            scripts/sitemap-routes.test.ts \
             scripts/birth-card-coverage.test.ts \
             scripts/calculator-library-links.test.ts \
             scripts/calculator-deep-dive.test.ts \
@@ -76,6 +81,12 @@ jobs:
 
       - name: Sitemap generator smoke
         run: bun scripts/sitemap-smoke.ts
+
+      # Live check for the three robots.txt sitemap URLs. Re-run after a
+      # sitemap-touching change with:
+      #   SITEMAP_BASE_URL=https://cardblueprints.com bun run test:sitemap:http
+      - name: Sitemap route HTTP guard
+        run: SITEMAP_BASE_URL=https://cardblueprints.com bun run test:sitemap:http
 
   pipeline:
     runs-on: ubuntu-latest
