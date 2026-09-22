@@ -107,6 +107,8 @@
 .home-kicker { font-size: .68rem; font-weight: 600; letter-spacing: .17em; text-transform: uppercase; color: var(--bronze); }
 .home-intro-links { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; margin-top: 1.4rem; font-size: .8rem; color: var(--ink-soft); }
 .home-intro-links a { text-decoration: underline; text-underline-offset: 4px; }
+.home-fold-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .85rem 1.25rem; margin: 1.15rem auto .35rem; }
+.home-fold-reading { font-size: .84rem; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .home-product { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 410px); align-items: start; gap: clamp(2rem, 6vw, 6rem); width: calc(100% - 3rem); max-width: 68rem; margin: 0 auto; padding: 4rem 0 5rem; border-top: 1px solid var(--line); }
 .home-product-copy { padding-top: 1.8rem; }
 .home-product h2, .home-start h2 { font-family: var(--font-serif), Georgia, serif; font-weight: 500; letter-spacing: -.035em; }

@@ -4,7 +4,9 @@ import Link from "next/link";
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
 import {
   DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
@@ -43,9 +45,9 @@ export const metadata: Metadata = {
 /** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
 export const revalidate = 86_400;
 
-/** From a real reading for an Eight of Diamonds who asked about a promotion. */
-const SAMPLE_EXCERPT =
-  "The 8 of Diamonds in you wants proof before it moves, the Queen of Spades in you wants to stay in the grind because you've earned mastery there, and the 7 of Clubs in you already knows some of that caution is just fear wearing a practical coat. The promotion matches what Pluto is asking for, a new value project, untested ground. Staying matches the comfort of a role where your worth is already proven. Which one sounds like growth to you, and which one sounds like hiding in a job well done?";
+/** Short teaser. The full Eight of Diamonds promotion sample lives on the product page. */
+const SAMPLE_TEASER =
+  "An Eight of Diamonds asked about a promotion. The reading set the new ground beside the role they had already mastered, and left the choice with them.";
 
 export default function Home() {
   return (
@@ -54,6 +56,14 @@ export default function Home() {
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="home-intro">
           <p className="home-kicker">Arithmetic on a fixed 52-card structure. You can check it.</p>
+          <div className="home-fold-actions">
+            <Link href="/birth-card-calculator" className="ink-button large-button">
+              Find your card free
+            </Link>
+            <Link href={DEEP_DIVE_PRODUCT_PATH} className="home-fold-reading">
+              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
+            </Link>
+          </div>
           <LandingCalculator />
           <div className="home-intro-links">
             <Link href="/what-is-cardology">New to Cardology?</Link>
@@ -64,30 +74,35 @@ export default function Home() {
 
         <section aria-labelledby="home-reading-title" className="home-product">
           <div className="home-product-copy">
-            <p className="home-kicker">One Question Reading</p>
+            <p className="home-kicker">
+              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
+            </p>
             <h2 id="home-reading-title">Ask the one thing<br />you keep circling.</h2>
             <p className="home-product-lead">
               Your birthday picks the cards. Your question picks the reading.
               About 600 words on where you are standing, written so plainly
               you will think you wrote it, and three things to keep an eye out
-              for in the next few weeks.
+              for in the next few weeks. A mirror, not a forecast.
             </p>
             <div className="home-offer">
               <span className="home-price">{DEEP_DIVE_PRICE_LABEL}</span>
-              <div>One question, written for you.<small>Usually ready in about a minute · no subscription</small></div>
+              <div>One question, written for you.<small>{ONE_QUESTION_TURNAROUND} · no subscription</small></div>
             </div>
             <ol className="home-benefits">
               <li><span>01</span><div><h3>Your card, on your question</h3><p>The number is the action, the suit is the area. How your card tends to handle this exact kind of decision, and where it slips.</p></div></li>
               <li><span>02</span><div><h3>This year&rsquo;s cards</h3><p>The Long Range card that keeps pulling your attention. The Pluto card, what the year asks, and what it pays.</p></div></li>
               <li><span>03</span><div><h3>Three things to watch for</h3><p>Concrete signals for the next few weeks, each tied to a card. You check them off yourself.</p></div></li>
             </ol>
-            <Link className="home-product-link" href={DEEP_DIVE_PRODUCT_PATH}>Read a sample, then ask yours <span aria-hidden="true">↗</span></Link>
-            <p className="home-purchase-note">Prepared automatically from your cards and question. Usually ready in about a minute. Reply to your receipt if you need help.</p>
+            <Link className="home-product-link" href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample, then ask yours <span aria-hidden="true">↗</span></Link>
+            <p className="home-purchase-note">Prepared automatically from your cards and question. Usually ready in {ONE_QUESTION_TURNAROUND}. Reply to your receipt if you need help.</p>
           </div>
-          <aside className="home-product-preview home-sample" aria-label="A piece of one reading">
-            <p className="home-kicker">A piece of one reading</p>
-            <blockquote className="home-sample-quote">{SAMPLE_EXCERPT}</blockquote>
-            <p className="home-sample-note">From a reading for an Eight of Diamonds who asked about a promotion.</p>
+          <aside className="home-product-preview home-sample" aria-label="A short look at one reading">
+            <p className="home-kicker">A short look</p>
+            <blockquote className="home-sample-quote">{SAMPLE_TEASER}</blockquote>
+            <p className="home-sample-note">
+              Eight of Diamonds, one question about a promotion.{" "}
+              <Link href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample</Link>
+            </p>
           </aside>
         </section>
 
