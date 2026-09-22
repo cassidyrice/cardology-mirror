@@ -243,21 +243,27 @@ assert.doesNotMatch(
 );
 assert.match(
   productSurfaceText,
-  /One Question Reading is a \$47 written reading built from a single birth date and one question/i,
+  /One Question Reading is a \$13 written reading built from a single birth date and one question/i,
 );
 assert.match(
   readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /One Question Reading is a \$47 written reading built from a single birth date and one question/i,
+  /One Question Reading is a \$\{DEEP_DIVE_PRICE_LABEL\} written reading built from a single birth date and one question/i,
 );
-// The $13 Personal Card Blueprint is retired. Neither the archive of generated
-// posts nor the generator that writes new ones may pitch it again. (The
-// historical order record in lib/products.ts still resolves the old slug for
-// past buyers, so this gate covers the blog surfaces only.)
+// The $13 Personal Card Blueprint is retired. Generated posts now pitch the
+// live $13 One Question Reading; they must not resurrect the retired report
+// slug or product name. (lib/products.ts still resolves the old slug for
+// past buyers.)
 for (const file of ["lib/generated-blog-posts.json", "scripts/generate_daily_blog_post.ts"]) {
+  const text = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
   assert.doesNotMatch(
-    readFileSync(new URL(`../${file}`, import.meta.url), "utf8"),
-    /\$13|personal-card-blueprint/i,
+    text,
+    /personal-card-blueprint|Personal Card Blueprint/i,
     `${file} must not pitch the retired $13 Personal Card Blueprint`,
+  );
+  assert.doesNotMatch(
+    text,
+    /2 business days/,
+    `${file} must use the minute SLA, not 2 business days`,
   );
 }
 assert.doesNotMatch(
@@ -470,6 +476,11 @@ assert.match(
 );
 assert.match(productSurfaceText, /One Question Reading/);
 assert.match(productSurfaceText, /about a minute/i);
+assert.doesNotMatch(
+  productSurfaceText,
+  /2 business days/,
+  "marketing surfaces must not advertise the retired 2-business-day reading SLA",
+);
 assert.doesNotMatch(productSurfaceText, /Blueprint Breakdown Video/);
 // The $19 year app is retired from sale: no public marketing surface may still pitch it.
 assert.doesNotMatch(productSurfaceText, /\$19 52xSeven|52xSeven Blueprint \(\$19\)|Unlock my full year/);

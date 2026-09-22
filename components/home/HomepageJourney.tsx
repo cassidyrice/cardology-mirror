@@ -1,12 +1,13 @@
 'use client';
 
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { ScrollScrub, type ScrollScrubScene } from "./ScrollScrub";
 
 const JOURNEY_SCENES: ScrollScrubScene[] = [
   {
     id: "the-deck",
     label: "The Deck",
-    kicker: "One Question Reading · written within 2 business days",
+    kicker: `One Question Reading · written within ${ONE_QUESTION_TURNAROUND}`,
     title: "Your birthday carries a pattern.",
     body: "Every birthday maps to exactly one card in a fixed 52-card order. Find yours free, then unlock your whole year.",
     clip: "/brand/journey/scene-01.mp4",

@@ -19,3 +19,8 @@ test("accuracy and card-meanings FAQs exist", () => {
   expect(source).toContain("Is Cardology accurate?");
   expect(source).toContain("What are Cardology card meanings?");
 });
+
+test("what-is-cardology uses the minute One Question Reading SLA", () => {
+  expect(source).toContain("ONE_QUESTION_TURNAROUND");
+  expect(source).not.toContain("2 business days");
+});

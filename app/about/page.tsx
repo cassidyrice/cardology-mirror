@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -87,7 +88,7 @@ export default function AboutPage() {
         <p>
           The paid product is the $13 One Question Reading: you bring one question,
           I read it from your birth card, this year's cards, and the card you owe,
-          and it lands in your inbox within 2 business days.
+          and it lands in your inbox within {ONE_QUESTION_TURNAROUND}.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -196,8 +197,8 @@ export default function AboutPage() {
           The free calculator answers “what is my card?” The reading answers “what does
           my card say about this one decision?” The One Question Reading is a one-time
           $13 purchase: your birth card, this year's Long Range and Pluto cards, and the
-          card you owe, read against the question you bring, written for you within 2
-          business days. Read it once, then watch the next few weeks. Historical phone
+          card you owe, read against the question you bring, written for you within{" "}
+          {ONE_QUESTION_TURNAROUND}. Read it once, then watch the next few weeks. Historical phone
           fulfillment still works for people who already purchased access; new public
           SEO pages point to the reading.
         </p>

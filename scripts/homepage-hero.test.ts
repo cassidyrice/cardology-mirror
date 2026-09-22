@@ -106,6 +106,13 @@ describe("Homepage landing contract", () => {
     expect(footer).not.toContain("/content-engine");
     expect(footer).toContain("One Question Reading ($13)");
     expect(footer).not.toContain("Reading Day waitlist");
+
+    const journey = readFileSync(
+      new URL("../components/home/HomepageJourney.tsx", import.meta.url),
+      "utf8",
+    );
+    expect(journey).toContain("ONE_QUESTION_TURNAROUND");
+    expect(journey).not.toContain("2 business days");
   });
 });
 

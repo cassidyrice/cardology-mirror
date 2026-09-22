@@ -12,6 +12,7 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -167,7 +168,7 @@ export default function WhatIsCardology() {
           $13 One Question Reading
         </Link>
         {" "}
-        — one decision, read from your card and your year, written within 2 business days.
+        — one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -220,7 +221,7 @@ export default function WhatIsCardology() {
           <p className="font-serif text-base text-bone">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-mist">
             The One Question Reading is $13 once: one question, read from your card and
-            the year you are in, written for you within 2 business days. No subscription.
+            the year you are in, written for you within {ONE_QUESTION_TURNAROUND}. No subscription.
           </p>
           <Link
             href="/products/one-question-reading"

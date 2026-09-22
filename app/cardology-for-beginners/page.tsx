@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 import {
@@ -69,7 +70,7 @@ const steps = [
   {
     n: "6",
     title: "Deepen only if it earns it",
-    body: "If the free tools keep matching real life, the One Question Reading ($13) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within 2 business days.",
+    body: `If the free tools keep matching real life, the One Question Reading ($13) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. Written for you within ${ONE_QUESTION_TURNAROUND}.`,
     href: "/products/one-question-reading",
     label: "One Question Reading",
   },
@@ -233,7 +234,7 @@ export default function CardologyForBeginnersPage() {
         <p className="mt-2 text-sm leading-relaxed text-mist">
           The One Question Reading is a one-time $13 purchase: one question, read from
           your birth card, this year's Long Range and Pluto cards, and the card you owe.
-          About 600 words, emailed within 2 business days. No subscription.
+          About 600 words, emailed within {ONE_QUESTION_TURNAROUND}. No subscription.
         </p>
         <Link
           href="/products/one-question-reading"

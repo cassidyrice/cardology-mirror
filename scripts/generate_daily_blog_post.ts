@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { DEEP_DIVE_PRICE_LABEL, ONE_QUESTION_TURNAROUND } from "../lib/deep-dive";
 import { buildReading } from "../lib/reading";
 import type { BlogFaq, BlogLink, BlogPost, BlogPillarSlug, BlogSection } from "../lib/blog";
 
@@ -305,7 +306,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "How to use this profile",
         body: [
           `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
-          "Got one question about your own life? The One Question Reading is a $47 written reading built from a single birth date and one question — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the one decision you bring. Written for you and emailed within 2 business days. No phone call, no subscription.",
+          `Got one question about your own life? The One Question Reading is a ${DEEP_DIVE_PRICE_LABEL} written reading built from a single birth date and one question — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the one decision you bring. Written for you and emailed within ${ONE_QUESTION_TURNAROUND}. No phone call, no subscription.`,
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
@@ -331,7 +332,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
     coreLinks: [
       { label: `${cardLabel} Birth Card Meaning`, href: `/birth-card/${cardSlug}` },
       { label: "Birth Card Calculator", href: "/birth-card-calculator" },
-      { label: "One Question Reading", href: "/products/one-question-reading", note: "$47 — one question, read from your card and your year." },
+      { label: "One Question Reading", href: "/products/one-question-reading", note: `${DEEP_DIVE_PRICE_LABEL} — one question, read from your card and your year.` },
     ],
   };
 }
@@ -469,7 +470,7 @@ function enrichEat(post: BlogPost): BlogPost {
   );
   ensureFaq(
     "What is the One Question Reading?",
-    "A $47 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within 2 business days. No phone call and no subscription.",
+    `A ${DEEP_DIVE_PRICE_LABEL} written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within ${ONE_QUESTION_TURNAROUND}. No phone call and no subscription.`,
   );
   ensureFaq(
     "Who publishes Card Blueprints?",
@@ -481,7 +482,7 @@ function enrichEat(post: BlogPost): BlogPost {
     if (!coreLinks.some((l) => l.href === href)) coreLinks.push(note ? { label, href, note } : { label, href });
   };
   ensureLink("Birth Card Calculator", "/birth-card-calculator");
-  ensureLink("One Question Reading", "/products/one-question-reading", "$47 — one question, read from your card and your year.");
+  ensureLink("One Question Reading", "/products/one-question-reading", `${DEEP_DIVE_PRICE_LABEL} — one question, read from your card and your year.`);
   ensureLink("Methodology", "/methodology");
   ensureLink("Editorial policy", "/editorial-policy");
   ensureLink("What Is Cardology?", "/what-is-cardology");
