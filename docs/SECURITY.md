@@ -57,4 +57,15 @@ Cloudflare Pages → project `cardology-mirror` → Deployments → **Rollback**
 
 - Strict Content-Security-Policy (must allow Stripe.js + needed inline)  
 - Global rate limit via Durable Object / KV (stronger than isolate memory)  
-- One-time magic-link tokens if not already enforced server-side  
+- One-time magic-link tokens if not already enforced server-side
+
+## Checkout session fields fulfilment depends on
+
+Hosted Checkout is created in `app/checkout/[offer]/session/route.ts`. Checkout Studio does not list the fields below. They stay because delivery reads them. `docs/SITE-RECORD.md` is not in this repository, so this is the home for that warning (retired from `STRIPE_INTEGRATION_TODO.md`, 2026-09-22).
+
+- `metadata`, and the copy on `payment_intent_data.metadata` (payment) or `subscription_data.metadata` (subscription), carry the SKU, birthday, and question. The webhook and past-buyer SKU lookup read that metadata. Stripping it breaks delivery.
+- `branding_settings` and `customer_creation` (`"always"` on the payment branch) stay as written.
+- Leave `custom_text` off the session. Managed Payments rejects it (live error 2026-09-02).
+- Leave `ui_mode` out of the route file. The SDK default is hosted Checkout on checkout.stripe.com, and `scripts/calculator-deep-dive.test.ts` asserts the file never contains `ui_mode`.
+- `allow_promotion_codes` is `false` on both branches (resolved 2026-09-22, CAR-7). No public promo code exists; the field sends buyers hunting for one.
+- The One Question Reading line item uses `deepDivePriceId()` (`lib/deep-dive.ts`), which reads the Pages secret `STRIPE_PRICE_BLUEPRINT_BREAKDOWN`. The public price is $13.
