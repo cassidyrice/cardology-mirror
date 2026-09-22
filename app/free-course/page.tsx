@@ -31,7 +31,7 @@ export default async function FreeCoursePage({
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:items-start">
         <div>
           <p className="eyebrow text-gold">Free four-part video course</p>
-          <h1 className="display mt-3 text-4xl leading-tight text-bone sm:text-5xl">Read Your Birth Card</h1>
+          <h1 className="display mt-3 text-4xl leading-tight text-brand-ink sm:text-5xl">Read Your Birth Card</h1>
           <p className="prose-reading mt-5 max-w-2xl text-mist">
             Learn Cardology as a clear pattern language, not fortune-telling. In about 14 minutes you will calculate your card, combine rank and suit, recognize its three expression states, and turn it into a practical reflection.
           </p>
@@ -42,7 +42,7 @@ export default async function FreeCoursePage({
                 <div className="flex gap-4">
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gold/30 font-serif text-gold">{module.number}</span>
                   <div>
-                    <h2 className="font-serif text-lg text-bone">{module.title}</h2>
+                    <h2 className="font-serif text-lg text-brand-ink">{module.title}</h2>
                     <p className="mt-1 text-sm leading-relaxed text-mist">{module.description}</p>
                     <p className="mt-2 text-xs uppercase tracking-[0.12em] text-faint">{module.duration}</p>
                   </div>
@@ -54,7 +54,7 @@ export default async function FreeCoursePage({
 
         <aside className="card-surface rounded-3xl border border-gold/20 p-6 sm:p-8 lg:sticky lg:top-24">
           <p className="eyebrow text-gold">Get instant access</p>
-          <h2 className="mt-3 font-serif text-2xl text-bone">Where should we send your course?</h2>
+          <h2 className="mt-3 font-serif text-2xl text-brand-ink">Where should we send your course?</h2>
           <p className="mt-2 text-sm leading-relaxed text-mist">Enter your name and email to unlock all four modules now. We will also email your return link.</p>
           <FreeCourseSignupForm source={source.slice(0, 80)} />
         </aside>

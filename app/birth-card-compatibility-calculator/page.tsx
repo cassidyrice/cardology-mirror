@@ -100,7 +100,7 @@ export default function CompatibilityCalculatorPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <h1 className="display mb-4 text-3xl text-bone">
+      <h1 className="display mb-4 text-3xl text-brand-ink">
         Birth Card Compatibility Calculator
       </h1>
 
@@ -125,7 +125,7 @@ export default function CompatibilityCalculatorPage() {
       </p>
 
       <aside className="mb-6 rounded-2xl border border-gold/25 bg-white/[0.03] p-4 sm:p-5" aria-label="Playing cards, not tarot">
-        <p className="font-serif text-base text-bone">
+        <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
@@ -145,7 +145,7 @@ export default function CompatibilityCalculatorPage() {
       </aside>
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
-        <p className="font-serif text-base text-bone">After you compare</p>
+        <p className="font-serif text-base text-brand-ink">After you compare</p>
         <p className="mt-2 text-sm leading-relaxed text-mist">
           Browse the full matrix of hubs and pairs, or run one birthday through the
           birth card calculator if you only know one person so far.
@@ -186,7 +186,7 @@ export default function CompatibilityCalculatorPage() {
         <div className="space-y-4">
           {faqs.map((faq) => (
             <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-base text-bone">{faq.q}</h3>
+              <h3 className="font-serif text-base text-brand-ink">{faq.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{faq.a}</p>
             </div>
           ))}

@@ -201,7 +201,7 @@ function AllYearlySpreads({ highlight }: { highlight: string }) {
           const alias = n === 0 ? " \u00b7 the Life Spread" : n === 1 ? " \u00b7 the Spirit Spread" : "";
           return (
             <details key={n} className="rounded-xl border border-white/10 bg-white/[0.03]">
-              <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-bone">
+              <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
                 Spread {n}
                 <span className="text-faint"> \u2014 the board at age {n}{alias}</span>
               </summary>
@@ -273,7 +273,7 @@ export default function PlayingCardSpreads() {
 
       <SeoHeroFan className="mb-5" />
       <p className="eyebrow mb-3 text-gold">The playing board · no shuffle</p>
-      <h1 className="display mb-3 text-3xl text-bone">Playing Card Spreads: The Playing Board</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -300,7 +300,7 @@ export default function PlayingCardSpreads() {
 
       <nav className="mb-8 flex flex-wrap gap-2" aria-label="The three boards">
         {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-bone">
+          <Link key={s.slug} href={s.path} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-brand-ink">
             {s.name}
           </Link>
         ))}
@@ -309,7 +309,7 @@ export default function PlayingCardSpreads() {
       <div className="grid gap-4 sm:grid-cols-3">
         {SPREADS.map((s) => (
           <Link key={s.slug} href={s.path} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-gold/40">
-            <p className="font-serif text-lg text-bone">{s.name}</p>
+            <p className="font-serif text-lg text-brand-ink">{s.name}</p>
             <p className="mt-1 text-xs text-faint">{s.positions}</p>
             <p className="prose-reading mt-2 text-sm text-mist">{s.oneLine}</p>
           </Link>
@@ -317,7 +317,7 @@ export default function PlayingCardSpreads() {
       </div>
 
       <section id="life-spread" className="mt-12 scroll-mt-10">
-        <h2 className="font-serif text-3xl text-bone">The Life Spread — the board at rest</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The Life Spread — the board at rest</h2>
         <p className="prose-reading mt-3 text-mist">
           Lay all 52 cards out in calendar order and you get the Life Spread:
           seven rows of seven seats, plus three raised seats on top called the{" "}
@@ -337,7 +337,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="spirit-spread" className="mt-12 scroll-mt-10">
-        <h2 className="font-serif text-3xl text-bone">The Spirit Spread — the second board</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The Spirit Spread — the second board</h2>
         <p className="prose-reading mt-3 text-mist">
           The deck has one more fixed arrangement: the Spirit Spread. Same 49
           seats, same crown — different tenants. Between the two boards, cards
@@ -345,16 +345,16 @@ export default function PlayingCardSpreads() {
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-mist">
           <li>
-            <strong className="text-bone">The stretch:</strong> the card whose seat
+            <strong className="text-brand-ink">The stretch:</strong> the card whose seat
             yours takes. That energy presses exactly where your card grips too
             hard — the pressure is the curriculum.
           </li>
           <li>
-            <strong className="text-bone">The steady:</strong> the card that takes
+            <strong className="text-brand-ink">The steady:</strong> the card that takes
             your seat. That energy shows up as support when you need it.
           </li>
           <li>
-            <strong className="text-bone">Environment &amp; Displacement:</strong>{" "}
+            <strong className="text-brand-ink">Environment &amp; Displacement:</strong>{" "}
             the same trade read for a lifetime. For the {ex.card}: Environment{" "}
             <strong>{ex.environment}</strong> (the energy that carries you) and
             Displacement <strong>{ex.displacement}</strong> (the seat your card
@@ -371,7 +371,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="yearly-spreads" className="mt-12 scroll-mt-10">
-        <h2 className="font-serif text-3xl text-bone">The 90 Yearly Spreads — the board re-deals</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The 90 Yearly Spreads — the board re-deals</h2>
         <p className="prose-reading mt-3 text-mist">
           Here is the moving part. Every birthday, the whole board re-deals into
           the next numbered arrangement — spread 0, spread 1, spread 2, all the
@@ -380,19 +380,19 @@ export default function PlayingCardSpreads() {
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-mist">
           <li>
-            <strong className="text-bone">Where you stand:</strong> the board
+            <strong className="text-brand-ink">Where you stand:</strong> the board
             numbered with your age. Turned {ex.age}? Open spread {ex.age} and
             find your card — that seat is your position this year.
           </li>
           <li>
-            <strong className="text-bone">Where you walk:</strong> the next board
+            <strong className="text-brand-ink">Where you walk:</strong> the next board
             (number {ex.walkBoard}). Reading forward from your card&rsquo;s seat
             gives the seven cards your year moves through — one for each planet,
             about 52 days each, starting on your birthday.
           </li>
         </ul>
 
-        <h3 className="mt-8 font-serif text-2xl text-bone">
+        <h3 className="mt-8 font-serif text-2xl text-brand-ink">
           Worked example: the {ex.card}, born {ex.birthdayLabel}, age {ex.age}
         </h3>
         <p className="prose-reading mt-3 text-mist">
@@ -434,24 +434,24 @@ export default function PlayingCardSpreads() {
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-mist">
           <li>
-            <strong className="text-bone">Pluto ♇ · {ex.pluto}:</strong> the
+            <strong className="text-brand-ink">Pluto ♇ · {ex.pluto}:</strong> the
             year&rsquo;s pressure card — the one deep challenge this year keeps
             circling back to.
           </li>
           <li>
-            <strong className="text-bone">Result ✦ · {ex.result}:</strong> where
+            <strong className="text-brand-ink">Result ✦ · {ex.result}:</strong> where
             the pressure pays off — what the year is building toward if the
             Pluto work gets done.
           </li>
           <li>
-            <strong className="text-bone">Long Range · {ex.longRange}:</strong>{" "}
+            <strong className="text-brand-ink">Long Range · {ex.longRange}:</strong>{" "}
             one more signal, picked from the seven-year cycle instead of the
             yearly board: the through-line theme of the whole year. (Notice{" "}
             {ex.longRange} is also this card&rsquo;s Displacement — sometimes one
             card shows up wearing two jobs.)
           </li>
         </ul>
-        <h3 id="all-90-spreads" className="mt-10 scroll-mt-10 font-serif text-2xl text-bone">
+        <h3 id="all-90-spreads" className="mt-10 scroll-mt-10 font-serif text-2xl text-brand-ink">
           All 90 spreads
         </h3>
         <p className="prose-reading mt-3 text-mist">
@@ -478,7 +478,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="planetary-ruling-card" className="mt-12 scroll-mt-10">
-        <h2 className="font-serif text-3xl text-bone">The planetary ruling card — set by your astrology sign</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The planetary ruling card — set by your astrology sign</h2>
         <p className="prose-reading mt-3 text-mist">
           Your birthday does one more thing: it lands in an astrology sign, and
           every sign answers to a ruling planet. Find that planet&rsquo;s seat in
@@ -533,7 +533,7 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="planet-filters" className="mt-12 scroll-mt-10">
-        <h2 className="font-serif text-3xl text-bone">The planet symbols, and the filter each one provides</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The planet symbols, and the filter each one provides</h2>
         <p className="prose-reading mt-3 text-mist">
           The planets here are not sky positions — they are labels for the seven
           seats every walk passes through, plus the two signal seats at the end.
@@ -543,7 +543,7 @@ export default function PlayingCardSpreads() {
         <div className="mt-5 space-y-3">
           {PLANET_FILTERS.map((p) => (
             <div key={p.planet} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <p className="font-serif text-lg text-bone">
+              <p className="font-serif text-lg text-brand-ink">
                 <span aria-hidden="true" className="mr-2 text-gold">{p.glyph}</span>
                 {p.planet}
               </p>
@@ -566,7 +566,7 @@ export default function PlayingCardSpreads() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}

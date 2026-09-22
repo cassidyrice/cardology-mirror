@@ -45,7 +45,7 @@ export default function BirthVsRuling() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth vs Ruling Card", href: "/birth-card-vs-ruling-card" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Birth Card vs Ruling Card</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Birth Card vs Ruling Card</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -93,7 +93,7 @@ export default function BirthVsRuling() {
 
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Find both of your cards</p>
+        <p className="font-serif text-base text-brand-ink">Find both of your cards</p>
         <p className="mt-1 text-sm text-faint">The calculator returns your birth card and ruling card — free.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →

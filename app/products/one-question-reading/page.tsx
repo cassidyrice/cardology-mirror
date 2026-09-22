@@ -109,7 +109,7 @@ export default function OneQuestionReadingPage() {
       <p className="eyebrow mb-3 text-gold">
         One question · {DEEP_DIVE_PRICE_LABEL} · written within {ONE_QUESTION_TURNAROUND}
       </p>
-      <h1 className="display mb-3 text-3xl text-bone">Ask one question.</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Ask one question.</h1>
       <p className="prose-reading mb-6 max-w-[38em] text-mist">
         You bring the one thing you keep circling. I read it from your birth
         card, this year&rsquo;s cards, and the card you owe. You get about 600
@@ -147,7 +147,7 @@ export default function OneQuestionReadingPage() {
         </p>
         <blockquote className="space-y-4 border-l-2 border-gold/60 pl-5">
           {SAMPLE.map((para) => (
-            <p key={para.slice(0, 24)} className="prose-reading text-bone">
+            <p key={para.slice(0, 24)} className="prose-reading text-brand-ink">
               {para}
             </p>
           ))}
@@ -191,7 +191,7 @@ export default function OneQuestionReadingPage() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}

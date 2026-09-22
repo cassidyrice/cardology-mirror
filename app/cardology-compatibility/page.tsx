@@ -67,7 +67,7 @@ export default function CompatibilityPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <SeoHeroFan codes={["Q♦", "A♥"]} className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-bone">Cardology Compatibility: Two Birth Cards, One Map</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Compatibility: Two Birth Cards, One Map</h1>
       <p className="mb-4 text-sm text-faint">
         Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
@@ -176,7 +176,7 @@ export default function CompatibilityPage() {
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-              <h3 className="font-serif text-lg text-bone">{f.q}</h3>
+              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
             </div>
           ))}

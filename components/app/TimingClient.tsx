@@ -105,7 +105,7 @@ function Timing({
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Eyebrow className="mb-1">Your year · {name}</Eyebrow>
-          <h1 className="display text-4xl leading-[1.08] text-bone">
+          <h1 className="display text-4xl leading-[1.08] text-brand-ink">
             You&apos;re in your{" "}
             <span className="foil-text">{activePlanet}</span> chapter.
           </h1>
@@ -136,7 +136,7 @@ function Timing({
           >
             <span>
               <span className="eyebrow text-gold">Story Arc</span>
-              <span className="mt-1 block text-pretty font-serif text-[0.95rem] leading-snug text-bone">
+              <span className="mt-1 block text-pretty font-serif text-[0.95rem] leading-snug text-brand-ink">
                 Read your year as one arc — long-range chapter, the deep turn, the
                 horizon.
               </span>

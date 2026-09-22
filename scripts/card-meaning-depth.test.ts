@@ -8,8 +8,8 @@ const source = readFileSync(
 );
 
 test("drawn-card money and advice sections render on all card pages", () => {
-  expect(source).toContain('<h3 className="mt-4 font-serif text-base text-bone">In money and work</h3>');
-  expect(source).toContain('<h3 className="mt-4 font-serif text-base text-bone">As advice</h3>');
+  expect(source).toContain('<h3 className="mt-4 font-serif text-base text-brand-ink">In money and work</h3>');
+  expect(source).toContain('<h3 className="mt-4 font-serif text-base text-brand-ink">As advice</h3>');
   expect(source).toContain("function moneyReadingText(card: CardSeo): string");
   expect(source).toContain("function adviceReadingText(card: CardSeo): string");
 });

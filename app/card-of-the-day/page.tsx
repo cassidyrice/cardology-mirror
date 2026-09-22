@@ -186,7 +186,7 @@ export default function CardOfTheDayPage() {
         />
         <div>
           <span className="eyebrow text-faint">{label}</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-bone">
+          <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             Cardology Card of the Day
             <span className="block text-lg text-gold">
               {card ? `Today: the ${card.label}${card.title ? ` — ${card.title}` : ""}` : "Today: the Joker"}
@@ -286,7 +286,7 @@ export default function CardOfTheDayPage() {
       )}
 
       <section className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Get YOUR card</p>
+        <p className="font-serif text-base text-brand-ink">Get YOUR card</p>
         <p className="mt-1 text-sm text-faint">
           Today&rsquo;s card belongs to everyone; yours was fixed the day you
           were born. Look it up free, then explore the written interpretation.

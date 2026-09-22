@@ -67,7 +67,7 @@ export function PeriodRow({
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <span
-                className={`font-serif text-lg ${isCurrent ? "text-gold" : "text-bone"}`}
+                className={`font-serif text-lg ${isCurrent ? "text-gold" : "text-brand-ink"}`}
               >
                 {w.planet}
               </span>
@@ -117,7 +117,7 @@ export function PeriodRow({
                   <span style={{ color: bc?.color }} className="font-serif text-base">
                     {bcDetail.card}
                   </span>
-                  <span className="font-serif text-sm text-bone">
+                  <span className="font-serif text-sm text-brand-ink">
                     {cardTitle(bcDetail.interpretation.name)}
                   </span>
                 </header>
@@ -137,7 +137,7 @@ export function PeriodRow({
                   <span style={{ color: prc?.color }} className="font-serif text-base">
                     {prcDetail.card}
                   </span>
-                  <span className="font-serif text-sm text-bone">
+                  <span className="font-serif text-sm text-brand-ink">
                     {cardTitle(prcDetail.interpretation.name)}
                   </span>
                 </header>

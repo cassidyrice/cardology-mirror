@@ -126,7 +126,7 @@ export default function BlueprintReportPage() {
       <p className="eyebrow mb-3 text-gold">
         Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
       </p>
-      <h1 className="display mb-3 text-3xl text-bone">The math shown. Deal it yourself. Then talk it through.</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">The math shown. Deal it yourself. Then talk it through.</h1>
       <p className="prose-reading mb-6 max-w-[38em] text-mist">
         Your birth card is one seat on a board. This report is the board: every 52-day period of
         your year, the seven-year cycle you are inside, the two seats that describe your
@@ -161,7 +161,7 @@ export default function BlueprintReportPage() {
       <section aria-label="Choose a tier" className="mb-10 grid gap-4 md:grid-cols-[1.15fr_1fr]">
         <article className="rounded-[3px] border-2 border-gold p-5">
           <p className="text-xs uppercase tracking-[0.16em] text-gold">{consult!.badge}</p>
-          <h2 className="mt-1 font-serif text-2xl text-bone">
+          <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             Report + consultation · {consult!.priceLabel}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-mist">{consult!.oneLine}</p>
@@ -176,7 +176,7 @@ export default function BlueprintReportPage() {
         </article>
         <article className="rounded-[3px] border border-white/10 p-5">
           <p className="text-xs uppercase tracking-[0.16em] text-faint">Report only</p>
-          <h2 className="mt-1 font-serif text-2xl text-bone">
+          <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             The report · {report!.priceLabel}
           </h2>
           <p className="mt-2 text-sm leading-relaxed text-mist">
@@ -224,7 +224,7 @@ export default function BlueprintReportPage() {
           {samplePages.map((p) => (
             <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
               <p className="text-xs uppercase tracking-[0.16em] text-faint">Sample page {p.n}</p>
-              <p className="mt-1 font-serif text-lg text-bone">{p.t}</p>
+              <p className="mt-1 font-serif text-lg text-brand-ink">{p.t}</p>
               <p className="mt-1 text-sm leading-relaxed text-mist">{p.d}</p>
             </div>
           ))}
@@ -234,10 +234,10 @@ export default function BlueprintReportPage() {
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">How it reads</h2>
         <p className="prose-reading text-mist">
-          Three labels run through the whole document. <strong className="text-bone">FIXED</strong> is
-          the reproducible calculation. <strong className="text-bone">PATTERN</strong> is sourced
+          Three labels run through the whole document. <strong className="text-brand-ink">FIXED</strong> is
+          the reproducible calculation. <strong className="text-brand-ink">PATTERN</strong> is sourced
           interpretation: a possible tendency, never a verdict.{" "}
-          <strong className="text-bone">YOURS</strong> is ruled space to compare the language with
+          <strong className="text-brand-ink">YOURS</strong> is ruled space to compare the language with
           your own experience. Cards are coordinates. You choose the meaning.
         </p>
       </section>
@@ -247,7 +247,7 @@ export default function BlueprintReportPage() {
         <dl className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q}>
-              <dt className="font-serif text-lg text-bone">{f.q}</dt>
+              <dt className="font-serif text-lg text-brand-ink">{f.q}</dt>
               <dd className="prose-reading mt-1 text-mist">{f.a}</dd>
             </div>
           ))}

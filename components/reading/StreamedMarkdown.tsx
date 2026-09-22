@@ -90,7 +90,7 @@ function renderInline(text: string): ReactNode {
     if (m.index > last) out.push(<Fragment key={k++}>{text.slice(last, m.index)}</Fragment>);
     if (m[2] != null) {
       out.push(
-        <strong key={k++} className="font-semibold text-bone">
+        <strong key={k++} className="font-semibold text-brand-ink">
           {m[2]}
         </strong>,
       );
@@ -113,7 +113,7 @@ export function StreamedMarkdown({ text }: { text: string }) {
             return (
               <h2
                 key={i}
-                className="display mb-3 mt-9 text-xl text-bone first:mt-0"
+                className="display mb-3 mt-9 text-xl text-brand-ink first:mt-0"
               >
                 {renderInline(b.text)}
               </h2>

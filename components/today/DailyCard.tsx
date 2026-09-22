@@ -49,7 +49,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
           >
             {bc.card}
           </span>
-          <h2 className="display mt-1 text-2xl leading-tight text-bone">
+          <h2 className="display mt-1 text-2xl leading-tight text-brand-ink">
             {dailyLine(daily)}
           </h2>
           <p className="mt-2 text-xs text-faint">{daily.domain}</p>
@@ -69,7 +69,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
           <PlayingCard code={prc.card} subtitle="Ruling" size="sm" />
           <p className="text-[0.9rem] leading-relaxed text-mist">
             Your ruling line today runs through{" "}
-            <span className="text-bone">
+            <span className="text-brand-ink">
               {prc.interpretation
                 ? cardTitle(prc.interpretation.name)
                 : prc.card}

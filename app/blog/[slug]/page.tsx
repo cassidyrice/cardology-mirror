@@ -250,7 +250,7 @@ export default async function BlogPostPage({
 
         <section className="mt-12 grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="card-surface rounded-2xl p-5">
-            <p className="font-serif text-base text-bone">Core pages to use next</p>
+            <p className="font-serif text-base text-brand-ink">Core pages to use next</p>
             <ul className="mt-3 space-y-2 text-sm">
               {post.coreLinks.map((link) => (
                 <li key={link.href}>

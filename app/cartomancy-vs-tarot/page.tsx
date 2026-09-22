@@ -57,7 +57,7 @@ export default function CartomancyVsTarot() {
     <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Cartomancy vs Tarot", href: "/cartomancy-vs-tarot" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
 
-      <h1 className="display mb-3 text-3xl text-bone">Cartomancy vs Tarot</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">Cartomancy vs Tarot</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
         <p className="prose-reading text-mist">
@@ -175,9 +175,9 @@ export default function CartomancyVsTarot() {
             <caption className="sr-only">Cartomancy playing cards versus tarot</caption>
             <thead>
               <tr className="border-b border-white/15">
-                <th className="py-2 pr-4 font-serif text-bone" scope="col">Dimension</th>
-                <th className="py-2 pr-4 font-serif text-bone" scope="col">Tarot</th>
-                <th className="py-2 font-serif text-bone" scope="col">Cardology (playing cards)</th>
+                <th className="py-2 pr-4 font-serif text-brand-ink" scope="col">Dimension</th>
+                <th className="py-2 pr-4 font-serif text-brand-ink" scope="col">Tarot</th>
+                <th className="py-2 font-serif text-brand-ink" scope="col">Cardology (playing cards)</th>
               </tr>
             </thead>
             <tbody>
@@ -245,7 +245,7 @@ export default function CartomancyVsTarot() {
         <div className="space-y-5">
           {faqs.map((f) => (
             <div key={f.q}>
-              <h3 className="prose-reading mb-1 font-serif text-bone">{f.q}</h3>
+              <h3 className="prose-reading mb-1 font-serif text-brand-ink">{f.q}</h3>
               <p className="prose-reading text-mist">{f.a}</p>
             </div>
           ))}
@@ -254,7 +254,7 @@ export default function CartomancyVsTarot() {
 
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Find your card in the 52</p>
+        <p className="font-serif text-base text-brand-ink">Find your card in the 52</p>
         <p className="mt-1 text-sm text-faint">No shuffle required — your birthday already picked it.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →

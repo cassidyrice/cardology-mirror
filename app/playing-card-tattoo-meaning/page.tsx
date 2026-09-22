@@ -64,7 +64,7 @@ export default function PlayingCardTattooMeaning() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLdForHtml(jsonLd) }} />
 
       <span className="eyebrow text-faint">52 pip fields</span>
-      <h1 className="display mt-1 text-3xl text-bone">Playing card tattoo meaning</h1>
+      <h1 className="display mt-1 text-3xl text-brand-ink">Playing card tattoo meaning</h1>
       <p className="mt-3 text-xs text-faint">Updated {updatedLabel(UPDATED)}</p>
       <p className="prose-reading mt-4 text-mist">
         A playing-card tattoo is often a full card, a skull, or a lucky ace. These are none of those.
@@ -98,7 +98,7 @@ export default function PlayingCardTattooMeaning() {
               className="aspect-[3/4] w-full object-cover"
             />
             <div className="p-3">
-              <p className="font-serif text-base text-bone group-hover:text-gold">{row.label}</p>
+              <p className="font-serif text-base text-brand-ink group-hover:text-gold">{row.label}</p>
               <p className="text-xs text-faint">{row.bodyLabel}</p>
             </div>
           </Link>
@@ -110,7 +110,7 @@ export default function PlayingCardTattooMeaning() {
         <dl className="space-y-4">
           {faqs.map((item) => (
             <div key={item.q}>
-              <dt className="font-serif text-base text-bone">{item.q}</dt>
+              <dt className="font-serif text-base text-brand-ink">{item.q}</dt>
               <dd className="mt-1 text-sm leading-relaxed text-mist">{item.a}</dd>
             </div>
           ))}

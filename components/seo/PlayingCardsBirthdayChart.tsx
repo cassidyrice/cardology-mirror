@@ -28,7 +28,7 @@ export function PlayingCardsBirthdayChart() {
       <div className="space-y-8">
         {byMonth.map((month) => (
           <div key={month.name}>
-            <h3 className="mb-3 font-serif text-xl text-bone">{month.name}</h3>
+            <h3 className="mb-3 font-serif text-xl text-brand-ink">{month.name}</h3>
             <div className="grid grid-cols-4 gap-2 sm:grid-cols-7">
               {month.days.map((d) => (
                 <a
@@ -39,7 +39,7 @@ export function PlayingCardsBirthdayChart() {
                   <span className="block text-[0.7rem] uppercase tracking-[0.12em] text-faint">
                     {d.day}
                   </span>
-                  <span className="mt-1 block font-serif text-sm text-bone">
+                  <span className="mt-1 block font-serif text-sm text-brand-ink">
                     {d.card.rank}
                     {d.card.glyph}
                   </span>

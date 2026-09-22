@@ -85,7 +85,7 @@ export default function JokerPage() {
           decoding="async"
           className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
-        <h1 className="display mb-0 text-3xl text-bone">The Joker: The December 31 Birth Card</h1>
+        <h1 className="display mb-0 text-3xl text-brand-ink">The Joker: The December 31 Birth Card</h1>
       </div>
 
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
@@ -157,12 +157,12 @@ export default function JokerPage() {
       </section>
 
       <div className="card-surface mt-8 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Not born December 31?</p>
+        <p className="font-serif text-base text-brand-ink">Not born December 31?</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+          <Link href="/birth-card-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
             Find your birth card
           </Link>
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-bone">
+          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
             Browse all 52 cards
           </Link>
         </div>

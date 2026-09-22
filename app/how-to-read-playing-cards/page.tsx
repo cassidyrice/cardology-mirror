@@ -98,7 +98,7 @@ export default function HowToReadPlayingCards() {
         }}
       />
 
-      <h1 className="display mb-3 text-3xl text-bone">How to Read Playing Cards</h1>
+      <h1 className="display mb-3 text-3xl text-brand-ink">How to Read Playing Cards</h1>
       <p className="mb-4 text-xs text-faint">
         By{" "}
         <Link href="/about" className="text-gold underline underline-offset-4">
@@ -288,7 +288,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-bone">Skip the learning curve</p>
+        <p className="font-serif text-base text-brand-ink">Skip the learning curve</p>
         <p className="mt-1 text-sm text-faint">
           Learning the 52 takes time. Start with the card your birthday already
           picked, then use its full meaning page as your reference.
@@ -306,7 +306,7 @@ export default function HowToReadPlayingCards() {
         <div className="space-y-5">
           {faqs.map((f) => (
             <div key={f.q}>
-              <h3 className="prose-reading mb-1 font-serif text-bone">{f.q}</h3>
+              <h3 className="prose-reading mb-1 font-serif text-brand-ink">{f.q}</h3>
               <p className="prose-reading text-mist">{f.a}</p>
             </div>
           ))}
