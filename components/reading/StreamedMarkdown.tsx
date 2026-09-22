@@ -106,7 +106,7 @@ function renderInline(text: string): ReactNode {
 export function StreamedMarkdown({ text }: { text: string }) {
   const blocks = parseBlocks(text);
   return (
-    <div className="prose-reading text-mist">
+    <div className="prose-reading text-brand-ink-soft">
       {blocks.map((b, i) => {
         switch (b.kind) {
           case "h2":

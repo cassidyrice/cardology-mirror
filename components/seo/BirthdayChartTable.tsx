@@ -114,7 +114,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
           </tbody>
         </table>
       </TableScroll>
-      <p className="prose-reading mt-3 text-sm text-mist">
+      <p className="prose-reading mt-3 text-sm text-brand-ink-soft">
         Red is Hearts and Diamonds, black is Clubs and Spades. Every cell links to that birthday&rsquo;s page.
         December 31 is the Joker, the one date the 52-card map leaves unassigned. The full list with card names is at{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
@@ -134,7 +134,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
               className="h-auto w-full max-w-md rounded-[3px] border border-white/10"
             />
           </a>
-          <figcaption className="mt-2 text-sm text-mist">
+          <figcaption className="mt-2 text-sm text-brand-ink-soft">
             Printable version of the same chart.{" "}
             <a href={BIRTHDAY_CHART_IMAGE.src} download="cardology-birthday-chart.png" className="text-gold underline underline-offset-4">
               Download the PNG

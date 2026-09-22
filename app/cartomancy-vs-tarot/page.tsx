@@ -60,14 +60,14 @@ export default function CartomancyVsTarot() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Cartomancy vs Tarot</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Cartomancy is reading meaning from cards; tarot is one branch of it
           that uses a 78-card deck. Cardology is playing-card cartomancy made
           deterministic: a fixed formula maps a birthday to one of the 52
           cards, with no shuffle and no draw.
         </p>
       </div>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         If you searched &ldquo;cartomancy vs tarot,&rdquo; you are really asking two
         questions: what counts as cartomancy, and whether an ordinary deck of
         playing cards can do what a tarot deck does. The short version:
@@ -79,7 +79,7 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What is cartomancy?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Cartomancy is any practice that assigns meaning to cards and reads
           them for insight — an umbrella term, not a single method. Tarot,
           Lenormand, oracle decks, and plain playing-card reading are all
@@ -93,7 +93,7 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Can you read tarot with playing cards?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Mostly, yes. Each tarot suit has a playing-card equivalent — Cups
           become Hearts, Wands become Clubs, Pentacles become Diamonds, Swords
           become Spades — so the 56 minor arcana translate to the 52-card deck
@@ -106,19 +106,19 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How the 52-card deck maps to tarot</h2>
-        <p className="prose-reading mb-2 text-mist">
+        <p className="prose-reading mb-2 text-brand-ink-soft">
           Hearts correspond to Cups, Clubs to Wands, Diamonds to Pentacles,
           and Spades to Swords; Ace through Ten map one to one. Tarot&rsquo;s
           minor arcana are a costume over the deck you already own — the four
           suits translate directly:
         </p>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
           <li><span className="text-[#14110d]">♣ Clubs</span> ↔ Wands — energy, mind &amp; communication</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> ↔ Pentacles — money, values &amp; resources</li>
           <li><span className="text-[#14110d]">♠ Spades</span> ↔ Swords — work, will &amp; transformation</li>
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Ace through Ten line up one to one. The courts almost do: tarot
           carries four court cards per suit where the playing deck carries
           three, which is why the minor arcana count 56 cards to the deck&rsquo;s
@@ -130,7 +130,7 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Does a playing card deck have a Major Arcana?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The 22 trumps — the Fool, the Tower, Death — have no playing-card
           equivalent, and this is where the two branches of cartomancy genuinely
           part ways. Tarot uses the Major Arcana to carry the big archetypal
@@ -146,7 +146,7 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Deterministic vs shuffled</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The deeper split is not the deck — it is how a card gets chosen. A
           tarot reading starts with a shuffle: the cards fall where they fall,
           and the reader interprets the spread. Ask the same question tomorrow
@@ -154,7 +154,7 @@ export default function CartomancyVsTarot() {
           method. Tarot is built for open questions, and the randomness is the
           doorway.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Cardology removes the shuffle entirely. Your birthday maps to exactly
           one card — your birth card — through a fixed formula, and the same
           math produces your yearly and daily cards. Same input, same output,
@@ -171,7 +171,7 @@ export default function CartomancyVsTarot() {
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Cartomancy vs tarot at a glance</h2>
         <TableScroll label="Cartomancy versus tarot">
-          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-mist">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-brand-ink-soft">
             <caption className="sr-only">Cartomancy playing cards versus tarot</caption>
             <thead>
               <tr className="border-b border-white/15">
@@ -182,37 +182,37 @@ export default function CartomancyVsTarot() {
             </thead>
             <tbody>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Deck</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Deck</th>
                 <td className="py-2 pr-4">78 cards</td>
                 <td className="py-2">52 cards + Joker</td>
               </tr>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Suits</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Suits</th>
                 <td className="py-2 pr-4">Cups, Wands, Pentacles, Swords</td>
                 <td className="py-2">Hearts, Clubs, Diamonds, Spades</td>
               </tr>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Major Arcana</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Major Arcana</th>
                 <td className="py-2 pr-4">22 trumps</td>
                 <td className="py-2">None — calendar structure &amp; timing math instead</td>
               </tr>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Court cards</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Court cards</th>
                 <td className="py-2 pr-4">4 per suit</td>
                 <td className="py-2">3 per suit</td>
               </tr>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">How a card is chosen</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">How a card is chosen</th>
                 <td className="py-2 pr-4">Shuffle and draw</td>
                 <td className="py-2">Fixed formula on the birthday</td>
               </tr>
               <tr className="border-b border-white/10">
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Same question twice</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Same question twice</th>
                 <td className="py-2 pr-4">Different spread</td>
                 <td className="py-2">Same card, every time</td>
               </tr>
               <tr>
-                <th className="py-2 pr-4 font-normal text-faint" scope="row">Built for</th>
+                <th className="py-2 pr-4 font-normal text-brand-ink-soft" scope="row">Built for</th>
                 <td className="py-2 pr-4">Open-ended question reading</td>
                 <td className="py-2">People, compatibility &amp; timing patterns</td>
               </tr>
@@ -223,7 +223,7 @@ export default function CartomancyVsTarot() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Which one should you use?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           They are not competitors so much as different tools inside the same
           cartomancy family. If you want a reflective practice built around a
           question and a moment, tarot&rsquo;s shuffle is the point. If you want a
@@ -246,7 +246,7 @@ export default function CartomancyVsTarot() {
           {faqs.map((f) => (
             <div key={f.q}>
               <h3 className="prose-reading mb-1 font-serif text-brand-ink">{f.q}</h3>
-              <p className="prose-reading text-mist">{f.a}</p>
+              <p className="prose-reading text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>
@@ -255,7 +255,7 @@ export default function CartomancyVsTarot() {
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Find your card in the 52</p>
-        <p className="mt-1 text-sm text-faint">No shuffle required — your birthday already picked it.</p>
+        <p className="mt-1 text-sm text-brand-ink-soft">No shuffle required — your birthday already picked it.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →
         </Link>

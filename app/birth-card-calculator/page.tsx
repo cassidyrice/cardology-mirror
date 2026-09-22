@@ -171,7 +171,7 @@ export default function CalculatorPage() {
         <h1 className="display mb-2 text-3xl text-brand-ink">
           Cardology Chart & Birth Card Calculator
         </h1>
-        <p className="prose-reading text-mist" data-ai-summary>
+        <p className="prose-reading text-brand-ink-soft" data-ai-summary>
           Enter a birthday for the playing card — 52-card system, not tarot.
           Same date, same card. Or read the{" "}
           <a href="#cardology-chart" className="text-gold underline underline-offset-4">full Cardology chart</a>{" "}
@@ -183,7 +183,7 @@ export default function CalculatorPage() {
         <BirthCardCalculator />
       </div>
 
-      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-mist">
+      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
         Optional paid step after the free card:{" "}
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
           One Question Reading — $13
@@ -193,7 +193,7 @@ export default function CalculatorPage() {
         The free calculator never stores your birthday.
       </p>
 
-      <p className="mt-6 text-sm leading-relaxed text-faint">
+      <p className="mt-6 text-sm leading-relaxed text-brand-ink-soft">
         Written and reviewed by{" "}
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
@@ -213,7 +213,7 @@ export default function CalculatorPage() {
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
+        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           This tool maps your birthday to one card in a standard 52-card deck — Hearts,
           Clubs, Diamonds, Spades. It is <strong>not</strong> a tarot birth-card calculator
           (those use Major Arcana pairs from a different formula). Same birthday always
@@ -235,7 +235,7 @@ export default function CalculatorPage() {
           ["#trust-and-limits", "Method & trust"],
           ["#faq", "FAQ"],
         ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-brand-ink">
+          <a key={href} href={href} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
             {label}
           </a>
         ))}
@@ -244,7 +244,7 @@ export default function CalculatorPage() {
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
         <p className="eyebrow mb-2 text-gold">The birthday map</p>
         <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           A Cardology chart (also called the Cardology calendar or birthday
           chart) is the birthday-to-playing-card map: every calendar date
           resolves to one card in a standard 52-card deck. Month and day are
@@ -252,7 +252,7 @@ export default function CalculatorPage() {
           Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
           date always yields the same card.
         </p>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           The free calculator above runs that same formula for one birthday. The
           chart below is the whole map, so you can check a friend, a parent, or a
           family at a glance. Find your month across the top and your day down
@@ -261,7 +261,7 @@ export default function CalculatorPage() {
         </p>
         <BirthdayChartTable />
         <h3 className="mt-8 font-serif text-xl text-brand-ink">Card meanings</h3>
-        <p className="prose-reading mt-2 text-sm text-mist">Found your card in the chart? Open its meaning.</p>
+        <p className="prose-reading mt-2 text-sm text-brand-ink-soft">Found your card in the chart? Open its meaning.</p>
         <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="All 52 birth card meanings">
           {allCardSeo().map((c) => (
             <Link
@@ -287,7 +287,7 @@ export default function CalculatorPage() {
             </a>
           ))}
         </nav>
-        <p className="prose-reading mt-4 text-sm text-mist">
+        <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
           All 366 dates with card names:{" "}
           <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
             /born-on/
@@ -309,7 +309,7 @@ export default function CalculatorPage() {
             </h2>
           </summary>
         <div className="mt-4 space-y-4">
-          <p className="prose-reading text-mist">
+          <p className="prose-reading text-brand-ink-soft">
             Cardology maps the calendar to a standard deck: 52 cards, four suits,
             and thirteen ranks. Your month and day resolve to one lifelong birth
             card through a fixed formula. The same date always produces the same
@@ -325,11 +325,11 @@ export default function CalculatorPage() {
               <li key={n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                 <span className="eyebrow text-gold">Step {n}</span>
                 <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-mist">{body}</p>
+                <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
               </li>
             ))}
           </ol>
-          <p className="prose-reading text-mist">
+          <p className="prose-reading text-brand-ink-soft">
             Want the calendar view instead of typing a date? Open the{" "}
             <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
               birthday directory
@@ -350,7 +350,7 @@ export default function CalculatorPage() {
             <p className="eyebrow mb-2 text-gold">Worked verification</p>
             <h2 className="font-serif text-3xl text-brand-ink">How to calculate your birth card with playing cards</h2>
           </summary>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           You can check the calculator by hand, then find the matching card in an
           ordinary playing-card deck. For a valid birthday other than December 31,
           double the month number, add the day, and subtract the total from 55:
@@ -358,13 +358,13 @@ export default function CalculatorPage() {
         <p className="mt-4 text-lg font-semibold leading-relaxed text-brand-ink">
           55 − (2 × month number + day number)
         </p>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Read the result in this suit order: Hearts 1–13, Clubs 14–26,
           Diamonds 27–39, Spades 40–52. Within each suit, Ace is 1, Jack 11,
           Queen 12, and King 13. Subtract 13 for Clubs, 26 for Diamonds,
           or 39 for Spades to get the rank.
         </p>
-        <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-mist">
+        <ol className="mt-4 list-decimal space-y-3 pl-5 text-sm leading-relaxed text-brand-ink-soft">
           <li>
             <strong>January 15:</strong> 55 − (2 × 1 + 15) = 38.
             Then 38 − 26 = 12: the{" "}
@@ -387,13 +387,13 @@ export default function CalculatorPage() {
             </Link>.
           </li>
         </ol>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Try your birthday, then someone else’s. This is a lookup, not a random
           draw. <strong>December 31 is the Joker exception</strong>; do not turn
           its zero into the King of Spades. February 29 gives the Nine of Clubs.
           Use a real calendar date: February 30 is not valid.
         </p>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           The arithmetic checks the card, not whether its symbolic meaning fits a
           person or predicts an event. Explore the{" "}
           <Link href="/birth-card" className="text-gold underline underline-offset-4">
@@ -417,20 +417,20 @@ export default function CalculatorPage() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <h3 className="font-serif text-xl text-brand-ink">Birth card: the fixed pattern</h3>
-            <p className="mt-2 text-sm leading-relaxed text-mist">
+            <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               Your birth card comes from month and day and remains fixed. Read its
               suit as the life domain and its rank as the recurring function or role.
             </p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
             <h3 className="font-serif text-xl text-brand-ink">Ruling card: the expression layer</h3>
-            <p className="mt-2 text-sm leading-relaxed text-mist">
+            <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The ruling card adds style and tone through the planetary layer. It can
               explain why two people with the same birth card express it differently.
             </p>
           </div>
         </div>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           For a deeper comparison, read the full{" "}
           <Link href="/birth-card-vs-ruling-card" className="text-gold underline underline-offset-4">
             birth card vs. ruling card guide
@@ -447,7 +447,7 @@ export default function CalculatorPage() {
             <h2 className="font-serif text-3xl text-brand-ink">This is a playing-card birth calculator — not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
-          <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-mist">
+          <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-brand-ink-soft">
             <caption className="sr-only">
               Cardology playing-card calculator versus tarot birth-card systems
             </caption>
@@ -487,11 +487,11 @@ export default function CalculatorPage() {
             </tbody>
           </table>
         </TableScroll>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Baby / stationery &ldquo;birth cards&rdquo; are also unrelated — those are printed
           announcements, not a calculation.
         </p>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Came from a tarot birth-card tool and want the playing-card system instead?
           You&rsquo;re in the right place. Full side-by-side:{" "}
           <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
@@ -499,7 +499,7 @@ export default function CalculatorPage() {
           </Link>
           .
         </p>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Some sites call related birthday-to-playing-card systems{" "}
           <strong>Destiny Cards</strong> or <strong>Love Cards</strong>. We use{" "}
           <strong>Cardology</strong> and publish the method so you can check the math.{" "}
@@ -525,11 +525,11 @@ export default function CalculatorPage() {
           ].map(([title, body]) => (
             <div key={title} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <h3 className="font-serif text-lg text-brand-ink">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-mist">{body}</p>
+              <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
             </div>
           ))}
         </div>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           <strong>Important limit:</strong> Cardology is a pattern-recognition system
           for self-awareness and entertainment. It describes tendencies, not fate,
           and it is not medical, legal, financial, or mental-health advice. Check the
@@ -553,7 +553,7 @@ export default function CalculatorPage() {
               <summary className="cursor-pointer">
                 <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
               </summary>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </details>
           ))}
         </div>
@@ -563,7 +563,7 @@ export default function CalculatorPage() {
         <h2 id="related-playing-card-cardology" className="eyebrow mb-3 text-gold">
           Related (playing-card Cardology)
         </h2>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           {[
             ["What is Cardology?", "/what-is-cardology"],
             ["Cardology vs tarot", "/cardology-vs-tarot"],
@@ -584,34 +584,34 @@ export default function CalculatorPage() {
 
       <div className="card-surface mt-8 rounded-2xl p-5">
         <h2 className="font-serif text-2xl text-brand-ink">Continue your Cardology birth chart</h2>
-        <p className="prose-reading mt-2 text-sm text-mist">
+        <p className="prose-reading mt-2 text-sm text-brand-ink-soft">
           Browse the full 52-card meanings, open the playing-cards birthday chart, or compare
           two birth cards. These supporting pages help turn one calculator result
           into a verifiable learning path.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Browse all 52 cards
           </Link>
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Playing cards birthday chart
           </a>
-          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Compatibility calculator
           </Link>
-          <Link href="/what-is-cardology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/what-is-cardology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             What is Cardology?
           </Link>
-          <Link href="/cardology-for-beginners" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/cardology-for-beginners" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Beginners guide
           </Link>
-          <Link href="/destiny-cards" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/destiny-cards" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Destiny Cards hub
           </Link>
-          <Link href="/cardology-compatibility" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/cardology-compatibility" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Compatibility guide
           </Link>
-          <Link href="/methodology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/methodology" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Methodology
           </Link>
         </div>

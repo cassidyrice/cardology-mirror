@@ -30,7 +30,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
       className="card-surface rounded-2xl p-6"
     >
       <Eyebrow className="text-gold">Your card today</Eyebrow>
-      <p className="mt-1 text-xs uppercase tracking-wider2 text-faint">
+      <p className="mt-1 text-xs uppercase tracking-wider2 text-brand-ink-soft">
         {dailyLabel(daily)}
       </p>
 
@@ -52,7 +52,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
           <h2 className="display mt-1 text-2xl leading-tight text-brand-ink">
             {dailyLine(daily)}
           </h2>
-          <p className="mt-2 text-xs text-faint">{daily.domain}</p>
+          <p className="mt-2 text-xs text-brand-ink-soft">{daily.domain}</p>
         </div>
       </div>
 
@@ -67,7 +67,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
       {prc.card && prc.card !== bc.card && (
         <div className="mt-6 flex items-center gap-3 border-t border-white/5 pt-5">
           <PlayingCard code={prc.card} subtitle="Ruling" size="sm" />
-          <p className="text-[0.9rem] leading-relaxed text-mist">
+          <p className="text-[0.9rem] leading-relaxed text-brand-ink-soft">
             Your ruling line today runs through{" "}
             <span className="text-brand-ink">
               {prc.interpretation

@@ -111,7 +111,7 @@ function BoardGrid({ spread, highlight, label }: { spread: Spread; highlight: st
   return (
     <TableScroll label={label}>
       <div>
-        <p className="mb-1 text-center font-mono text-xs tracking-[0.2em] text-faint">
+        <p className="mb-1 text-center font-mono text-xs tracking-[0.2em] text-brand-ink-soft">
           crown:{" "}
           {spread.crown.map((c, i) => (
             <span
@@ -203,7 +203,7 @@ function AllYearlySpreads({ highlight }: { highlight: string }) {
             <details key={n} className="rounded-xl border border-white/10 bg-white/[0.03]">
               <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
                 Spread {n}
-                <span className="text-faint"> \u2014 the board at age {n}{alias}</span>
+                <span className="text-brand-ink-soft"> \u2014 the board at age {n}{alias}</span>
               </summary>
               <div className="px-3 pb-4">
                 <CompactBoard spread={spread} highlight={highlight} caption={`Spread ${n}, the board at age ${n}: seven rows of seven seats plus a three-card crown.`} />
@@ -276,7 +276,7 @@ export default function PlayingCardSpreads() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Card Spreads: The Playing Board</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Think of a board game. The deck has two fixed boards — the{" "}
           <strong>Life Spread</strong> and the <strong>Spirit Spread</strong> —
           and 90 numbered yearly boards that re-deal every birthday. Your
@@ -290,7 +290,7 @@ export default function PlayingCardSpreads() {
           Find your card on the board — free →
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         New to the system? Start with{" "}
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
           what Cardology is
@@ -300,7 +300,7 @@ export default function PlayingCardSpreads() {
 
       <nav className="mb-8 flex flex-wrap gap-2" aria-label="The three boards">
         {SPREADS.map((s) => (
-          <Link key={s.slug} href={s.path} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-mist hover:text-brand-ink">
+          <Link key={s.slug} href={s.path} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
             {s.name}
           </Link>
         ))}
@@ -310,15 +310,15 @@ export default function PlayingCardSpreads() {
         {SPREADS.map((s) => (
           <Link key={s.slug} href={s.path} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition hover:border-gold/40">
             <p className="font-serif text-lg text-brand-ink">{s.name}</p>
-            <p className="mt-1 text-xs text-faint">{s.positions}</p>
-            <p className="prose-reading mt-2 text-sm text-mist">{s.oneLine}</p>
+            <p className="mt-1 text-xs text-brand-ink-soft">{s.positions}</p>
+            <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{s.oneLine}</p>
           </Link>
         ))}
       </div>
 
       <section id="life-spread" className="mt-12 scroll-mt-10">
         <h2 className="font-serif text-3xl text-brand-ink">The Life Spread — the board at rest</h2>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Lay all 52 cards out in calendar order and you get the Life Spread:
           seven rows of seven seats, plus three raised seats on top called the{" "}
           <strong>crown</strong>. Every card owns exactly one seat here, forever.
@@ -329,7 +329,7 @@ export default function PlayingCardSpreads() {
         <div className="mt-5">
           <BoardGrid spread={ENGINE_SPREADS["0"]} highlight={ex.card} label="The Life Spread" />
         </div>
-        <p className="mt-2 text-xs text-faint">
+        <p className="mt-2 text-xs text-brand-ink-soft">
           The Life Spread, with the {ex.card}&rsquo;s fixed seat marked. The
           seven columns carry the planet seats, Mercury → Neptune reading right
           to left — which is what puts the {ex.card} on the Uranus seat.
@@ -338,12 +338,12 @@ export default function PlayingCardSpreads() {
 
       <section id="spirit-spread" className="mt-12 scroll-mt-10">
         <h2 className="font-serif text-3xl text-brand-ink">The Spirit Spread — the second board</h2>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           The deck has one more fixed arrangement: the Spirit Spread. Same 49
           seats, same crown — different tenants. Between the two boards, cards
           trade seats, and those trades are not decoration:
         </p>
-        <ul className="prose-reading mt-3 space-y-2 text-mist">
+        <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">The stretch:</strong> the card whose seat
             yours takes. That energy presses exactly where your card grips too
@@ -361,7 +361,7 @@ export default function PlayingCardSpreads() {
             pushes out of place).
           </li>
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           On this board the {ex.card} sits on the crown — one of the raised
           seats above the grid.
         </p>
@@ -372,13 +372,13 @@ export default function PlayingCardSpreads() {
 
       <section id="yearly-spreads" className="mt-12 scroll-mt-10">
         <h2 className="font-serif text-3xl text-brand-ink">The 90 Yearly Spreads — the board re-deals</h2>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Here is the moving part. Every birthday, the whole board re-deals into
           the next numbered arrangement — spread 0, spread 1, spread 2, all the
           way to spread 90, one for every year of life. Your card gets picked up
           and set down on a new seat. Two copies of the board matter each year:
         </p>
-        <ul className="prose-reading mt-3 space-y-2 text-mist">
+        <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">Where you stand:</strong> the board
             numbered with your age. Turned {ex.age}? Open spread {ex.age} and
@@ -395,7 +395,7 @@ export default function PlayingCardSpreads() {
         <h3 className="mt-8 font-serif text-2xl text-brand-ink">
           Worked example: the {ex.card}, born {ex.birthdayLabel}, age {ex.age}
         </h3>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           The seven 52-day cards of this {ex.card} year, in walking order. Each
           planet is a filter: the same person, the same year — but each ~52-day
           stretch runs through a different lens.
@@ -412,7 +412,7 @@ export default function PlayingCardSpreads() {
             <tbody>
               {ex.yearPeriods.map((p) => (
                 <tr key={p.planet} className={p.active ? "bg-white/[0.06]" : ""}>
-                  <td className="border-b border-white/10 px-2 py-2 text-mist">
+                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{p.glyph}</span>
                     {p.planet}
                     {p.active && (
@@ -422,17 +422,17 @@ export default function PlayingCardSpreads() {
                   <td className="border-b border-white/10 px-2 py-2 font-mono" style={{ color: SUIT_COLOR_PAPER[parseCard(p.card)?.suit ?? "spades"] }}>
                     {p.card}
                   </td>
-                  <td className="border-b border-white/10 px-2 py-2 text-mist">{p.filter}</td>
+                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{p.filter}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </TableScroll>
-        <p className="prose-reading mt-4 text-mist">
+        <p className="prose-reading mt-4 text-brand-ink-soft">
           Walk two more seats past Neptune and the year&rsquo;s last two cards
           are waiting:
         </p>
-        <ul className="prose-reading mt-3 space-y-2 text-mist">
+        <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">Pluto ♇ · {ex.pluto}:</strong> the
             year&rsquo;s pressure card — the one deep challenge this year keeps
@@ -454,21 +454,21 @@ export default function PlayingCardSpreads() {
         <h3 id="all-90-spreads" className="mt-10 scroll-mt-10 font-serif text-2xl text-brand-ink">
           All 90 spreads
         </h3>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Here are all ninety boards in full — the same arrangements the reading
           engine uses, not redrawn by hand. Open any number to see that board&rsquo;s
           seven rows and its crown. Board 0 is the Life Spread and board 1 is the
           Spirit Spread, so those two do double duty: they are the deck&rsquo;s fixed
           arrangements and the boards for ages 0 and 1.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           The {ex.card} is marked on every board so you can watch one card travel.
           Open spread {ex.age}, then spread {ex.walkBoard}, and you are looking at
           exactly what the worked example above describes: where this card stands
           this year, and the board it walks.
         </p>
         <AllYearlySpreads highlight={ex.card} />
-        <p className="prose-reading mt-6 text-mist">
+        <p className="prose-reading mt-6 text-brand-ink-soft">
           Want your own seats and walk?{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             Find your card free
@@ -479,14 +479,14 @@ export default function PlayingCardSpreads() {
 
       <section id="planetary-ruling-card" className="mt-12 scroll-mt-10">
         <h2 className="font-serif text-3xl text-brand-ink">The planetary ruling card — set by your astrology sign</h2>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Your birthday does one more thing: it lands in an astrology sign, and
           every sign answers to a ruling planet. Find that planet&rsquo;s seat in
           your birth card&rsquo;s own walk, and the card sitting there is your{" "}
           <strong>planetary ruling card</strong> — the style layer people meet
           first, on top of the birth card underneath.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Worked example: {ex.birthdayLabel} falls in {ex.zodiac}{" "}
           <span aria-hidden="true">{ex.zodiacGlyph}</span>, and {ex.zodiac}{" "}
           answers to {ex.rulingPlanet}{" "}
@@ -507,18 +507,18 @@ export default function PlayingCardSpreads() {
             <tbody>
               {ZODIAC_TABLE.map((z) => (
                 <tr key={z.sign} className={z.sign === ex.zodiac ? "bg-white/[0.06]" : ""}>
-                  <td className="border-b border-white/10 px-2 py-2 text-mist">
+                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">
                     <span aria-hidden="true" className="mr-1.5">{z.glyph}</span>
                     {z.sign}
                   </td>
-                  <td className="border-b border-white/10 px-2 py-2 text-mist">{z.dates}</td>
-                  <td className="border-b border-white/10 px-2 py-2 text-mist">{z.planet}</td>
+                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{z.dates}</td>
+                  <td className="border-b border-white/10 px-2 py-2 text-brand-ink-soft">{z.planet}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </TableScroll>
-        <p className="mt-3 text-xs text-faint">
+        <p className="mt-3 text-xs text-brand-ink-soft">
           Cancer (the Moon), Leo (the Sun), and Scorpio (Mars and Pluto) get
           special handling, and some birthdays carry two ruling cards — the{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
@@ -534,7 +534,7 @@ export default function PlayingCardSpreads() {
 
       <section id="planet-filters" className="mt-12 scroll-mt-10">
         <h2 className="font-serif text-3xl text-brand-ink">The planet symbols, and the filter each one provides</h2>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           The planets here are not sky positions — they are labels for the seven
           seats every walk passes through, plus the two signal seats at the end.
           Each one filters the card sitting in it, like colored glass over the
@@ -547,11 +547,11 @@ export default function PlayingCardSpreads() {
                 <span aria-hidden="true" className="mr-2 text-gold">{p.glyph}</span>
                 {p.planet}
               </p>
-              <p className="prose-reading mt-1 text-sm text-mist">{p.filter}</p>
+              <p className="prose-reading mt-1 text-sm text-brand-ink-soft">{p.filter}</p>
             </div>
           ))}
         </div>
-        <p className="prose-reading mt-5 text-mist">
+        <p className="prose-reading mt-5 text-brand-ink-soft">
           To see one card read through all seven of these filters side by side,
           use the{" "}
           <Link href="/52-day-period-meaning-tool" className="text-gold underline underline-offset-4">
@@ -567,7 +567,7 @@ export default function PlayingCardSpreads() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

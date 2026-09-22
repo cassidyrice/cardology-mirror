@@ -68,7 +68,7 @@ export default function CompatibilityPage() {
 
       <SeoHeroFan codes={["Q♦", "A♥"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology Compatibility: Two Birth Cards, One Map</h1>
-      <p className="mb-4 text-sm text-faint">
+      <p className="mb-4 text-sm text-brand-ink-soft">
         Free Cardology compatibility calculator: two birthdays, two birth cards, Life Path roles. Playing cards, not tarot.
       </p>
 
@@ -76,13 +76,13 @@ export default function CompatibilityPage() {
 
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Cardology compatibility compares two birthday-locked playing cards and the
           Life Path roles underneath them — where you land in each other&rsquo;s map —
           rather than a single compatibility percentage.
         </p>
       </div>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         Start with two birth cards, then go sharper with the Life Path. The useful
         question is not only &ldquo;are these cards compatible?&rdquo; It is: where does this
         person land in my constitution, where do I land in theirs, and which cards
@@ -95,7 +95,7 @@ export default function CompatibilityPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">What a connection actually means</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Two cards in the same suit tend to share a first instinct — both lead from
           relationships, values, mind, or will. Different suits lead from different
           places, which can be friction or balance depending on awareness. The Life
@@ -106,7 +106,7 @@ export default function CompatibilityPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The Life Path layer</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The Life Path is a constitution, not a single label. It includes Moon support
           plus 13 cards: Primary, Mercury, Venus, Mars, Jupiter, Saturn, Uranus,
           Neptune, Pluto, Princess, Prince, Queen, and King. Compatibility gets more
@@ -116,7 +116,7 @@ export default function CompatibilityPage() {
 
       <section className="mt-8" id="love-cards">
         <h2 className="eyebrow mb-2 text-gold">Is this the same as Love Cards?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Largely, yes — and the book is worth naming. <em>Love Cards</em> (Robert Lee
           Camp, Sourcebooks, 1997) is where most people first meet birth-card
           compatibility: connection types read card by card, mutual and one-way
@@ -130,7 +130,7 @@ export default function CompatibilityPage() {
           </Link>
           .
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           What is different here: the comparison runs on your two birthdays rather
           than on a lookup table, it shows every position rather than one verdict, and
           it says when a pairing is simply unremarkable — which a book chapter cannot
@@ -140,7 +140,7 @@ export default function CompatibilityPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The four suits, four instincts</h2>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
           <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
@@ -150,7 +150,7 @@ export default function CompatibilityPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Start with yourself</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Compatibility makes more sense once you understand your own card first.{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             Find your birth card
@@ -177,7 +177,7 @@ export default function CompatibilityPage() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

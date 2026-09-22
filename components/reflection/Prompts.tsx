@@ -167,7 +167,7 @@ export function Prompts({ reading, onSelect, className = "" }: PromptsProps) {
             <p className="prose-reading mt-3 text-pretty font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">
               {p.question}
             </p>
-            <span className="mt-3 inline-block text-xs uppercase tracking-wider2 text-faint transition-colors group-hover:text-gold">
+            <span className="mt-3 inline-block text-xs uppercase tracking-wider2 text-brand-ink-soft transition-colors group-hover:text-gold">
               Sit with this &rarr;
             </span>
           </button>

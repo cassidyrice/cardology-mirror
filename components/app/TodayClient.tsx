@@ -65,7 +65,7 @@ export default function TodayPage() {
           className="space-y-3 pt-10"
         >
           <Eyebrow className="text-ember">Couldn&apos;t read today</Eyebrow>
-          <p className="prose-reading text-mist">
+          <p className="prose-reading text-brand-ink-soft">
             The engine didn&apos;t return a reading. {error}
           </p>
           <button
@@ -118,7 +118,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         <p className="mt-4 text-sm uppercase tracking-wider2 text-gold">
           {chapterLabel(ap)}
         </p>
-        <p className="mt-1 text-xs text-faint">
+        <p className="mt-1 text-xs text-brand-ink-soft">
           {ap.domain}
         </p>
       </motion.div>
@@ -199,7 +199,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         <p className="prose-reading mt-3 font-serif text-lg leading-relaxed text-brand-ink">
           {reflectionPrompt(ap)}
         </p>
-        <p className="mt-4 text-xs text-faint">
+        <p className="mt-4 text-xs text-brand-ink-soft">
           No forecast — just the pattern you&apos;re running today, whether you cop to it or not. Sit with whatever stings.
         </p>
       </motion.div>

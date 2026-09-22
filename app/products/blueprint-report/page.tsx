@@ -127,7 +127,7 @@ export default function BlueprintReportPage() {
         Personal report · from {BLUEPRINT_REPORT_PRICE_LABEL} · ready the moment you pay
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">The math shown. Deal it yourself. Then talk it through.</h1>
-      <p className="prose-reading mb-6 max-w-[38em] text-mist">
+      <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
         Your birth card is one seat on a board. This report is the board: every 52-day period of
         your year, the seven-year cycle you are inside, the two seats that describe your
         surroundings, and every exact repeat. Two teaching pages near the end are the point. One works the
@@ -148,7 +148,7 @@ export default function BlueprintReportPage() {
                 loading="eager"
                 className="w-full rounded-[3px] border border-white/10 bg-[#eef3f8]"
               />
-              <figcaption className="mt-2 text-xs uppercase tracking-[0.16em] text-faint">
+              <figcaption className="mt-2 text-xs uppercase tracking-[0.16em] text-brand-ink-soft">
                 Sample page {p.n} · {p.t}
               </figcaption>
             </figure>
@@ -156,7 +156,7 @@ export default function BlueprintReportPage() {
         </div>
       </section>
 
-      <p className="mb-6 text-sm text-mist">The sample has {BLUEPRINT_REPORT_PAGE_COUNT} pages. Your page count varies with your ruling cards and the boards for your year.</p>
+      <p className="mb-6 text-sm text-brand-ink-soft">The sample has {BLUEPRINT_REPORT_PAGE_COUNT} pages. Your page count varies with your ruling cards and the boards for your year.</p>
 
       <section aria-label="Choose a tier" className="mb-10 grid gap-4 md:grid-cols-[1.15fr_1fr]">
         <article className="rounded-[3px] border-2 border-gold p-5">
@@ -164,8 +164,8 @@ export default function BlueprintReportPage() {
           <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             Report + consultation · {consult!.priceLabel}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-mist">{consult!.oneLine}</p>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-mist">
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{consult!.oneLine}</p>
+          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-brand-ink-soft">
             {consult!.includes.map((line) => (
               <li key={line}>{line}</li>
             ))}
@@ -175,15 +175,15 @@ export default function BlueprintReportPage() {
           </div>
         </article>
         <article className="rounded-[3px] border border-white/10 p-5">
-          <p className="text-xs uppercase tracking-[0.16em] text-faint">Report only</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-brand-ink-soft">Report only</p>
           <h2 className="mt-1 font-serif text-2xl text-brand-ink">
             The report · {report!.priceLabel}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-mist">
+          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
             Your full report, the derivation and the dealing procedure
             included. No call.
           </p>
-          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-mist">
+          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-brand-ink-soft">
             <li>Where your card comes from, worked for your birthday</li>
             <li>Deal it yourself, every board with a real deck</li>
             <li>Every period, cycle and board, with the calculation record</li>
@@ -193,14 +193,14 @@ export default function BlueprintReportPage() {
           </div>
         </article>
       </section>
-      <p className="mb-10 text-sm text-mist">
+      <p className="mb-10 text-sm text-brand-ink-soft">
         Either way, enter your birthday on the next page. A cover name is optional. Wrong date:
         reply to the receipt and it is regenerated.
       </p>
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">No model writes this document</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Every card on every page came out of a fixed lookup table and five lines of arithmetic.
           Your report stays pinned to your purchase date. The same birthday and reading date give the same cards
           each time. The report ends with the calculation record, the
@@ -211,7 +211,7 @@ export default function BlueprintReportPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">Inside the report</h2>
-        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-mist">
+        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           {report!.includes.map((line) => (
             <li key={line}>{line}</li>
           ))}
@@ -223,9 +223,9 @@ export default function BlueprintReportPage() {
         <div className="grid gap-3 sm:grid-cols-2">
           {samplePages.map((p) => (
             <div key={p.n} className="rounded-[3px] border border-white/10 p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-faint">Sample page {p.n}</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-brand-ink-soft">Sample page {p.n}</p>
               <p className="mt-1 font-serif text-lg text-brand-ink">{p.t}</p>
-              <p className="mt-1 text-sm leading-relaxed text-mist">{p.d}</p>
+              <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{p.d}</p>
             </div>
           ))}
         </div>
@@ -233,7 +233,7 @@ export default function BlueprintReportPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">How it reads</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Three labels run through the whole document. <strong className="text-brand-ink">FIXED</strong> is
           the reproducible calculation. <strong className="text-brand-ink">PATTERN</strong> is sourced
           interpretation: a possible tendency, never a verdict.{" "}
@@ -248,7 +248,7 @@ export default function BlueprintReportPage() {
           {faqs.map((f) => (
             <div key={f.q}>
               <dt className="font-serif text-lg text-brand-ink">{f.q}</dt>
-              <dd className="prose-reading mt-1 text-mist">{f.a}</dd>
+              <dd className="prose-reading mt-1 text-brand-ink-soft">{f.a}</dd>
             </div>
           ))}
         </dl>
@@ -257,12 +257,12 @@ export default function BlueprintReportPage() {
       <section className="mt-12 border-t border-white/10 pt-8">
         <div className="flex max-w-md flex-col gap-3">
           <ReportCheckoutButton slug={CONSULT_SLUG} placement="product-page-bottom-consult" />
-          <p className="text-sm text-mist">
+          <p className="text-sm text-brand-ink-soft">
             Just the report, no call?{" "}
             <ReportCheckoutButton variant="link" placement="product-page-bottom-report" className="text-gold" />
           </p>
         </div>
-        <p className="mt-4 text-sm text-mist">
+        <p className="mt-4 text-sm text-brand-ink-soft">
           Have one specific decision instead of a whole year?{" "}
           <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-gold underline underline-offset-4">
             Ask one question, {DEEP_DIVE_PRICE_LABEL} →

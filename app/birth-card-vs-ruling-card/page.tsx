@@ -48,13 +48,13 @@ export default function BirthVsRuling() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Birth Card vs Ruling Card</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           In Cardology, the birth card is the fixed core card assigned to a
           birthday. The ruling card is a second layer selected through the birthday&rsquo;s
           planetary/zodiac context, and it colors how the birth card expresses.
         </p>
       </div>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         In Cardology you run on two cards, not one. Your <strong>birth card</strong>{" "}
         is the core — who you are when no one&rsquo;s watching. Your{" "}
         <strong>planetary ruling card</strong> is the second layer that colors how
@@ -64,7 +64,7 @@ export default function BirthVsRuling() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The birth card — your core</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Set purely by your birthday, the birth card is your clearest lifelong
           significator. It describes your fundamental temperament — the way you
           tend to operate before anything else shapes it. It never changes.
@@ -73,7 +73,7 @@ export default function BirthVsRuling() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The ruling card — your tuning</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Your planetary ruling card is tied to your astrological sign. It acts
           like a lens over the birth card: same core, but expressed with a
           different flavor. Two people can share a birth card yet come across
@@ -84,7 +84,7 @@ export default function BirthVsRuling() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How to read them together</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Start with the birth card to understand your base pattern, then read
           the ruling card as the &ldquo;how&rdquo; — the style in which that pattern shows
           up day to day. When the two are clear, most of the picture is in place.
@@ -94,7 +94,7 @@ export default function BirthVsRuling() {
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Find both of your cards</p>
-        <p className="mt-1 text-sm text-faint">The calculator returns your birth card and ruling card — free.</p>
+        <p className="mt-1 text-sm text-brand-ink-soft">The calculator returns your birth card and ruling card — free.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block rounded-full bg-foil px-5 py-2 font-serif text-sm text-ink">
           Birth Card Calculator →
         </Link>

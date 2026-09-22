@@ -72,7 +72,7 @@ export default function JournalPage() {
       <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
         The Journal
       </h1>
-      <p className="mt-3 text-sm text-faint">
+      <p className="mt-3 text-sm text-brand-ink-soft">
         A mirror, not a forecast. Write toward whatever stings.
       </p>
 
@@ -88,7 +88,7 @@ export default function JournalPage() {
         <section className="space-y-5">
           <div>
             <Eyebrow className="text-gold">Questions to sit with</Eyebrow>
-            <p className="mt-1 text-xs text-faint">
+            <p className="mt-1 text-xs text-brand-ink-soft">
               Drawn from your cards today. Tap one to write.
             </p>
           </div>
@@ -98,7 +98,7 @@ export default function JournalPage() {
           {ready && profile && error && (
             <div className="card-surface rounded-2xl p-5">
               <Eyebrow className="text-ember">Couldn&apos;t read today</Eyebrow>
-              <p className="prose-reading mt-2 text-mist">{error}</p>
+              <p className="prose-reading mt-2 text-brand-ink-soft">{error}</p>
               <button
                 onClick={() => router.refresh()}
                 className="mt-3 text-sm uppercase tracking-wider2 text-gold"
@@ -129,7 +129,7 @@ export default function JournalPage() {
             <p className="prose-reading font-serif text-brand-ink">
               Nothing written yet.
             </p>
-            <p className="mt-2 text-sm text-faint">
+            <p className="mt-2 text-sm text-brand-ink-soft">
               Pick a question above and answer it honestly — even one sentence
               is a start. Your entries stay private on this device.
             </p>
@@ -236,7 +236,7 @@ function EntryCard({
           {entry.prompt}
         </p>
         {!open && (
-          <p className="prose-reading mt-2 text-[0.95rem] text-mist">
+          <p className="prose-reading mt-2 text-[0.95rem] text-brand-ink-soft">
             {preview}
           </p>
         )}
@@ -267,7 +267,7 @@ function EntryCard({
                 className="w-full resize-none rounded-xl border border-white/10 bg-void/40 p-3 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none focus:border-gold/40"
               />
             ) : (
-              <p className="prose-reading whitespace-pre-wrap text-[1.0rem] text-mist">
+              <p className="prose-reading whitespace-pre-wrap text-[1.0rem] text-brand-ink-soft">
                 {entry.body}
               </p>
             )}
@@ -290,7 +290,7 @@ function EntryCard({
                     setDraft(entry.body);
                     setEditing(true);
                   }}
-                  className="text-xs uppercase tracking-wider2 text-mist hover:text-brand-ink"
+                  className="text-xs uppercase tracking-wider2 text-brand-ink-soft hover:text-brand-ink"
                 >
                   Edit
                 </button>
@@ -306,7 +306,7 @@ function EntryCard({
                   </button>
                   <button
                     onClick={() => setConfirmDelete(false)}
-                    className="text-xs uppercase tracking-wider2 text-faint"
+                    className="text-xs uppercase tracking-wider2 text-brand-ink-soft"
                   >
                     Keep
                   </button>
@@ -314,7 +314,7 @@ function EntryCard({
               ) : (
                 <button
                   onClick={() => setConfirmDelete(true)}
-                  className="text-xs uppercase tracking-wider2 text-faint hover:text-ember"
+                  className="text-xs uppercase tracking-wider2 text-brand-ink-soft hover:text-ember"
                 >
                   Delete
                 </button>
@@ -375,15 +375,15 @@ function WritingSheet({
           onChange={(e) => setBody(e.target.value)}
           placeholder="Write what's true, not what's tidy…"
           rows={7}
-          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-void/40 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-faint focus:border-gold/40"
+          className="mt-4 w-full resize-none rounded-xl border border-white/10 bg-void/40 p-4 font-serif text-[1.05rem] leading-relaxed text-brand-ink outline-none placeholder:text-brand-ink-soft focus:border-gold/40"
         />
 
         <div className="mt-3 flex items-center justify-between">
-          <span className="text-xs text-faint tnum">{formatDate(date)}</span>
+          <span className="text-xs text-brand-ink-soft tnum">{formatDate(date)}</span>
           <div className="flex items-center gap-5">
             <button
               onClick={onClose}
-              className="text-xs uppercase tracking-wider2 text-faint hover:text-mist"
+              className="text-xs uppercase tracking-wider2 text-brand-ink-soft hover:text-brand-ink-soft"
             >
               Cancel
             </button>

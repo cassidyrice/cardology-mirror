@@ -77,7 +77,7 @@ export function PeriodRow({
                 </span>
               )}
             </div>
-            <p className="mt-0.5 text-xs text-faint tnum">{formatRange(w)}</p>
+            <p className="mt-0.5 text-xs text-brand-ink-soft tnum">{formatRange(w)}</p>
           </div>
 
           <div className="flex shrink-0 items-end gap-2">
@@ -92,7 +92,7 @@ export function PeriodRow({
           <motion.span
             animate={{ rotate: expanded ? 180 : 0 }}
             transition={{ duration: 0.25 }}
-            className="ml-1 shrink-0 text-faint"
+            className="ml-1 shrink-0 text-brand-ink-soft"
             aria-hidden
           >
             ▾

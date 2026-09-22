@@ -123,7 +123,7 @@ export default function BirthCardIndex() {
       <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
           playing deck — not tarot and not a paper birthday card. Browse all 52 meanings
@@ -140,7 +140,7 @@ export default function BirthCardIndex() {
           Find your birth card free →
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-sm text-mist">
+      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
         After you have the card, the{" "}
         <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-gold underline underline-offset-4">
           {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
@@ -148,7 +148,7 @@ export default function BirthCardIndex() {
         reads one decision from it — your card, this year&rsquo;s cards, and the card
         you owe, usually ready in {ONE_QUESTION_TURNAROUND}. One payment, no renewal.
       </p>
-      <p className="mb-4 text-xs text-faint">
+      <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
@@ -162,7 +162,7 @@ export default function BirthCardIndex() {
           Calculation method
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         Every birthday maps to exactly one of the 52 playing cards — your{" "}
         <strong>birth card</strong>. No quiz, no choosing: a fixed vocabulary for how you
         operate, whether you&rsquo;ve noticed it or not. Pick a card below, or{" "}
@@ -175,7 +175,7 @@ export default function BirthCardIndex() {
         </Link>
         .
       </p>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         Prefer to browse another way? Explore{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
           birthdays by date
@@ -192,7 +192,7 @@ export default function BirthCardIndex() {
           <a
             key={g.suit}
             href={`#${g.suit}`}
-            className="rounded-full border border-white/10 px-3 py-1 text-faint transition hover:border-gold hover:text-gold"
+            className="rounded-full border border-white/10 px-3 py-1 text-brand-ink-soft transition hover:border-gold hover:text-gold"
           >
             {SUIT_GLYPHS[g.suit]} {g.suit}
           </a>
@@ -201,7 +201,7 @@ export default function BirthCardIndex() {
 
       <section className="mb-10 rounded-2xl border border-gold/20 bg-white/[0.04] p-5" aria-labelledby="popular-card-meanings">
         <h2 id="popular-card-meanings" className="eyebrow mb-3 text-gold">Popular card meanings</h2>
-        <p className="prose-reading mb-4 text-sm text-mist">
+        <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
           Start with the cards people are reading most, then browse the full deck below.
         </p>
         <ul className="flex flex-wrap gap-2 text-sm">
@@ -257,11 +257,11 @@ export default function BirthCardIndex() {
                     <span className="mt-2 block font-serif text-sm text-brand-ink">
                       {c.label}
                     </span>
-                    <span className="mt-0.5 block text-[0.6rem] text-faint">
+                    <span className="mt-0.5 block text-[0.6rem] text-brand-ink-soft">
                       {c.label} meaning
                     </span>
                     {c.title && (
-                      <span className="mt-0.5 block text-[0.6rem] uppercase tracking-wider text-faint">
+                      <span className="mt-0.5 block text-[0.6rem] uppercase tracking-wider text-brand-ink-soft">
                         {c.title}
                       </span>
                     )}
@@ -279,7 +279,7 @@ export default function BirthCardIndex() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

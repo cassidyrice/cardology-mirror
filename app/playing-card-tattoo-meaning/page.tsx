@@ -63,16 +63,16 @@ export default function PlayingCardTattooMeaning() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLdForHtml(jsonLd) }} />
 
-      <span className="eyebrow text-faint">52 pip fields</span>
+      <span className="eyebrow text-brand-ink-soft">52 pip fields</span>
       <h1 className="display mt-1 text-3xl text-brand-ink">Playing card tattoo meaning</h1>
-      <p className="mt-3 text-xs text-faint">Updated {updatedLabel(UPDATED)}</p>
-      <p className="prose-reading mt-4 text-mist">
+      <p className="mt-3 text-xs text-brand-ink-soft">Updated {updatedLabel(UPDATED)}</p>
+      <p className="prose-reading mt-4 text-brand-ink-soft">
         A playing-card tattoo is often a full card, a skull, or a lucky ace. These are none of those.
         Each image is the pip field a real French-suited deck uses for that rank — the same count, the
         same placement, lower pips inverted — photographed as a mark on skin. No border. No index.
         Court cards are one suit pip, because the face is the card, not the tattoo.
       </p>
-      <p className="prose-reading mt-3 text-mist">
+      <p className="prose-reading mt-3 text-brand-ink-soft">
         They live on the existing birth-card pages, not as 52 extra URLs. This hub is the index.
         Generated references, not client work. If you are inking a birth card,{" "}
         <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
@@ -99,7 +99,7 @@ export default function PlayingCardTattooMeaning() {
             />
             <div className="p-3">
               <p className="font-serif text-base text-brand-ink group-hover:text-gold">{row.label}</p>
-              <p className="text-xs text-faint">{row.bodyLabel}</p>
+              <p className="text-xs text-brand-ink-soft">{row.bodyLabel}</p>
             </div>
           </Link>
         ))}
@@ -111,7 +111,7 @@ export default function PlayingCardTattooMeaning() {
           {faqs.map((item) => (
             <div key={item.q}>
               <dt className="font-serif text-base text-brand-ink">{item.q}</dt>
-              <dd className="mt-1 text-sm leading-relaxed text-mist">{item.a}</dd>
+              <dd className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{item.a}</dd>
             </div>
           ))}
         </dl>

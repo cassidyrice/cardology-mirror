@@ -90,7 +90,7 @@ export default function JokerPage() {
 
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           December 31 is the only birthday in the year that does not map to one of the 52 cards.
           The formula resolves it to zero, and zero is the Joker — the card outside the deck&rsquo;s
           ordered sequence.
@@ -99,13 +99,13 @@ export default function JokerPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The arithmetic</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Every date runs through the same formula:{" "}
           <strong>Solar Value = 55 − (2 × Month + Day)</strong>. For December 31 that is
           55 − (2 × 12 + 31) = 55 − 55 = <strong>0</strong>. The cards occupy values 1 through 52,
           so zero has nowhere to land in the standard deck.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           You can see it clearly by looking at the last two days of the year side by side. December 30
           gives 55 − (24 + 30) = 1, the Ace of Hearts — the first card in the sequence. One day later
           the value steps down again, and there is nothing below the Ace. That is the edge of the system.
@@ -114,7 +114,7 @@ export default function JokerPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Why this is the honest number</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           In a common year, <strong>364</strong> dates map to one of the 52 cards and December 31
           resolves to the Joker. A leap year adds February 29, which maps normally to the
           <strong> 9 of Clubs</strong>. We state both edge cases plainly — the system is more
@@ -124,12 +124,12 @@ export default function JokerPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What a Joker birthday means here</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           It means the standard card structure does not describe you, and we are not going to pretend
           otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility
           by position — is all built on values 1 through 52. None of it resolves for a value of zero.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           If you were born on December 31 and you want a reading,{" "}
           <Link href="/contact" className="text-gold underline underline-offset-4">
             get in touch first
@@ -143,7 +143,7 @@ export default function JokerPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">The two rarest ordinary birthdays</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The Joker sits just past the two rarest cards in the system. January 1 computes to 52 — the{" "}
           <Link href="/birth-card/king-of-spades" className="text-gold underline underline-offset-4">
             King of Spades
@@ -159,10 +159,10 @@ export default function JokerPage() {
       <div className="card-surface mt-8 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Not born December 31?</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/birth-card-calculator" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Find your birth card
           </Link>
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Browse all 52 cards
           </Link>
         </div>
