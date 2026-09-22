@@ -130,6 +130,18 @@ export function middleware(request: NextRequest) {
     response.headers.set("Cross-Origin-Resource-Policy", "cross-origin");
   }
 
+  // Crawler discovery documents are fetched cross-origin by search engines and
+  // AI agents. Keep the rest of the site same-site; let these travel.
+  if (
+    request.nextUrl.pathname === "/sitemap.xml" ||
+    request.nextUrl.pathname === "/robots.txt" ||
+    request.nextUrl.pathname === "/feed.xml" ||
+    request.nextUrl.pathname === "/llms.txt" ||
+    request.nextUrl.pathname === "/llms-full.txt"
+  ) {
+    response.headers.set("Cross-Origin-Resource-Policy", "cross-origin");
+  }
+
   if (request.nextUrl.pathname === "/card-of-the-day") {
     response.headers.set("Cache-Control", "no-store, must-revalidate");
   }

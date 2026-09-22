@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 
-import sitemap from "../app/sitemap";
+import { buildApplicationSitemapEntries } from "../lib/application-sitemap";
 import { allCardSlugs } from "../lib/seo-cards";
 
 const ROOT = join(import.meta.dir, "..");
@@ -199,7 +199,7 @@ function assertOgPng(url: string, context: string) {
 }
 
 function sitemapPathnames(): string[] {
-  return sitemap().map((entry) => {
+  return buildApplicationSitemapEntries().map((entry) => {
     const pathname = new URL(entry.url).pathname;
     return pathname === "/" ? "/" : pathname.replace(/\/$/, "");
   });

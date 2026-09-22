@@ -3,7 +3,7 @@ import { join, relative } from "node:path";
 
 import { describe, expect, test } from "bun:test";
 
-import sitemap from "../app/sitemap";
+import { buildApplicationSitemapEntries } from "../lib/application-sitemap";
 import { allCardSlugs, cardsBySuit } from "../lib/seo-cards";
 import { SITE_URL } from "../lib/site";
 
@@ -101,7 +101,7 @@ describe("birth-card GSC coverage", () => {
   });
 
   test("sitemap lists every /birth-card/{card} URL including GSC samples", () => {
-    const urls = new Set(sitemap().map((entry) => entry.url));
+    const urls = new Set(buildApplicationSitemapEntries().map((entry) => entry.url));
     const cardUrls = allCardSlugs().map((slug) => `${SITE_URL}/birth-card/${slug}`);
     expect(cardUrls).toHaveLength(52);
     for (const url of cardUrls) {

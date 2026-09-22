@@ -72,6 +72,9 @@ jobs:
             scripts/product-schema.test.ts \
             scripts/worker-production-contract-lib.test.ts
 
+      - name: Sitemap generator smoke
+        run: bun scripts/sitemap-smoke.ts
+
   pipeline:
     runs-on: ubuntu-latest
     steps:

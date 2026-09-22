@@ -1,6 +1,9 @@
 import { describe, expect, test } from "bun:test";
 
-import sitemap from "../app/sitemap";
+import {
+  buildApplicationSitemapEntries,
+  renderApplicationSitemapXml,
+} from "../lib/application-sitemap";
 import {
   allBlogPillars,
   allBlogPosts,
@@ -17,6 +20,7 @@ import { MARKETING_PATHS, SITE_URL } from "../lib/site";
 import { sitemapDate } from "../lib/sitemap-date";
 
 const CANONICAL_ORIGIN = "https://cardblueprints.com";
+const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 
 function postModified(post: BlogPost): string {
   return post.dateModified || post.datePublished;
@@ -30,9 +34,16 @@ function urlFor(path: string): string {
   return path === "/" ? SITE_URL : `${SITE_URL}${path}`;
 }
 
-function isoDay(value: string | Date | undefined): string {
-  expect(value).toBeInstanceOf(Date);
-  return (value as Date).toISOString().slice(0, 10);
+function sitemapLocations(xml: string): string[] {
+  return [...xml.matchAll(/<loc\b[^>]*>([\s\S]*?)<\/loc>/gi)].map((match) =>
+    match[1]
+      .trim()
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&apos;/g, "'"),
+  );
 }
 
 describe("sitemapDate", () => {
@@ -50,7 +61,12 @@ describe("sitemapDate", () => {
 });
 
 describe("application sitemap integrity", () => {
-  const entries = sitemap();
+  test("generator does not throw", () => {
+    expect(() => buildApplicationSitemapEntries()).not.toThrow();
+    expect(() => renderApplicationSitemapXml()).not.toThrow();
+  });
+
+  const entries = buildApplicationSitemapEntries();
   const entriesByUrl = new Map(entries.map((entry) => [entry.url, entry]));
 
   test("uses unique URLs on the canonical origin and includes every marketing route", () => {
@@ -58,6 +74,7 @@ describe("application sitemap integrity", () => {
 
     for (const entry of entries) {
       expect(new URL(entry.url).origin).toBe(CANONICAL_ORIGIN);
+      expect(entry.lastModified).toMatch(ISO_DAY);
     }
 
     for (const path of MARKETING_PATHS) {
@@ -68,7 +85,7 @@ describe("application sitemap integrity", () => {
     expect(entriesByUrl.has(`${SITE_URL}/`)).toBe(false);
   });
 
-  test("excludes Worker-owned birthday and compatibility directories", () => {
+  test("excludes Worker-owned birthday and compatibility namespaces", () => {
     for (const entry of entries) {
       const pathname = new URL(entry.url).pathname;
       expect(pathname === "/born-on" || pathname.startsWith("/born-on/")).toBe(false);
@@ -76,11 +93,22 @@ describe("application sitemap integrity", () => {
     }
   });
 
-  test("omits change-frequency and priority hints", () => {
-    for (const entry of entries) {
-      expect(entry.changeFrequency).toBeUndefined();
-      expect(entry.priority).toBeUndefined();
-    }
+  test("renders well-formed urlset XML without changefreq or priority hints", () => {
+    const xml = renderApplicationSitemapXml();
+    expect(xml.startsWith('<?xml version="1.0" encoding="UTF-8"?>')).toBe(true);
+    expect(xml).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+    expect(xml.trimEnd().endsWith("</urlset>")).toBe(true);
+    expect(xml).not.toContain("<changefreq>");
+    expect(xml).not.toContain("<priority>");
+    expect((xml.match(/<url>/g) || []).length).toBe(entries.length);
+    expect((xml.match(/<\/url>/g) || []).length).toBe(entries.length);
+
+    const locs = sitemapLocations(xml);
+    expect(locs).toHaveLength(entries.length);
+    expect(new Set(locs).size).toBe(entries.length);
+    expect(locs).toContain(SITE_URL);
+    expect(locs).toContain(`${SITE_URL}/what-is-cardology`);
+    expect(locs).toContain(`${SITE_URL}/birth-card/ace-of-hearts`);
   });
 
   test("lastmod matches each page Updated constant for every marketing route except the blog index", () => {
@@ -90,9 +118,7 @@ describe("application sitemap integrity", () => {
     );
 
     for (const path of datedPaths) {
-      expect(isoDay(entriesByUrl.get(urlFor(path))?.lastModified), path).toBe(
-        PAGE_UPDATED_DATES[path],
-      );
+      expect(entriesByUrl.get(urlFor(path))?.lastModified, path).toBe(PAGE_UPDATED_DATES[path]);
     }
   });
 
@@ -103,7 +129,7 @@ describe("application sitemap integrity", () => {
 
     for (const slug of cardSlugs) {
       const entry = entriesByUrl.get(`${SITE_URL}/birth-card/${slug}`);
-      expect(isoDay(entry?.lastModified), slug).toBe(CARD_MEANING_PAGES_UPDATED);
+      expect(entry?.lastModified, slug).toBe(CARD_MEANING_PAGES_UPDATED);
     }
 
     for (const slug of ["10-of-clubs", "2-of-hearts", "3-of-clubs"] as const) {
@@ -112,7 +138,7 @@ describe("application sitemap integrity", () => {
   });
 
   test("uses the Joker page's explicit reviewed date", () => {
-    expect(isoDay(entriesByUrl.get(`${SITE_URL}/birth-card/joker`)?.lastModified)).toBe(
+    expect(entriesByUrl.get(`${SITE_URL}/birth-card/joker`)?.lastModified).toBe(
       CARD_MEANING_PAGES_UPDATED,
     );
   });
@@ -121,7 +147,7 @@ describe("application sitemap integrity", () => {
     const posts = allBlogPosts();
     const newestPostDate = newest(posts.map(postModified));
 
-    expect(isoDay(entriesByUrl.get(`${SITE_URL}/blog`)?.lastModified)).toBe(newestPostDate);
+    expect(entriesByUrl.get(`${SITE_URL}/blog`)?.lastModified).toBe(newestPostDate);
   });
 
   test("retains content-derived dates for blog pillars and posts", () => {
@@ -133,14 +159,14 @@ describe("application sitemap integrity", () => {
         newest(posts.filter((post) => post.pillar === pillar.slug).map(postModified)) ||
         newestPostDate;
       expect(
-        isoDay(entriesByUrl.get(`${SITE_URL}${blogPillarPath(pillar)}`)?.lastModified),
+        entriesByUrl.get(`${SITE_URL}${blogPillarPath(pillar)}`)?.lastModified,
         pillar.slug,
       ).toBe(pillarDate);
     }
 
     for (const post of posts) {
       expect(
-        isoDay(entriesByUrl.get(`${SITE_URL}${blogPostPath(post)}`)?.lastModified),
+        entriesByUrl.get(`${SITE_URL}${blogPostPath(post)}`)?.lastModified,
         post.slug,
       ).toBe(postModified(post));
     }
