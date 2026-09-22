@@ -257,7 +257,7 @@ export default async function BlogPostPage({
                   <Link href={link.href} className="text-gold underline underline-offset-4">
                     {link.label}
                   </Link>
-                  {link.note && <span className="text-faint"> — {link.note}</span>}
+                  {link.note && <span className="text-brand-ink-soft"> — {link.note}</span>}
                 </li>
               ))}
             </ul>

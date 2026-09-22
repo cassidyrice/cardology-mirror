@@ -62,13 +62,13 @@ function Entry({ entry }: { entry: LibraryEntry }) {
   return (
     <li className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
       <p className="display text-lg text-brand-ink">
-        {entry.title} <span className="text-mist">({entry.year})</span>
+        {entry.title} <span className="text-brand-ink-soft">({entry.year})</span>
       </p>
-      <p className="mt-1 text-sm text-mist">
+      <p className="mt-1 text-sm text-brand-ink-soft">
         {entry.author}
         {entry.publisher ? ` · ${entry.publisher}` : ""}
       </p>
-      <p className="prose-reading mt-3 text-mist">{entry.covers}</p>
+      <p className="prose-reading mt-3 text-brand-ink-soft">{entry.covers}</p>
       <p className="mt-3 text-sm">
         <a
           href={entry.source}
@@ -117,7 +117,7 @@ export default function CardologyBooks() {
 
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The cardology literature is small: one 1893 source text, one 1947 book that
           turned it into a birthday chart, and a handful of modern treatments that
           rearrange both. {CARDOLOGY_LIBRARY.length} titles are listed below, each with its publisher, year,
@@ -127,7 +127,7 @@ export default function CardologyBooks() {
         </p>
       </div>
 
-      <p className="mb-6 text-sm text-mist">
+      <p className="mb-6 text-sm text-brand-ink-soft">
         Every record here was resolved against a public catalogue on{" "}
         {updatedLabel(LIBRARY_VERIFIED_ON)}. Titles we could not verify are left out
         rather than listed with a guessed year or publisher, and claims that rest on
@@ -145,7 +145,7 @@ export default function CardologyBooks() {
         return (
           <section className="mt-8" key={group.id} id={group.id}>
             <h2 className="eyebrow mb-2 text-gold">{group.heading}</h2>
-            <p className="prose-reading mb-4 text-mist">{group.blurb}</p>
+            <p className="prose-reading mb-4 text-brand-ink-soft">{group.blurb}</p>
             <ul className="space-y-4">
               {entries.map((entry) => (
                 <Entry entry={entry} key={entry.title} />
@@ -157,7 +157,7 @@ export default function CardologyBooks() {
 
       <section className="mt-10" id="corrections">
         <h2 className="eyebrow mb-2 text-gold">Corrections and additions</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Missing a title, or holding an edition that contradicts a date here? Send
           the catalogue record and it gets added or fixed — a citation, not a claim.{" "}
           <Link href="/contact" className="text-gold underline underline-offset-4">
@@ -171,7 +171,7 @@ export default function CardologyBooks() {
         </p>
       </section>
 
-      <p className="mt-8 text-xs text-faint">
+      <p className="mt-8 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy

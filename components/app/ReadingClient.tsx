@@ -124,7 +124,7 @@ export default function ReadingPage() {
         >
           <Eyebrow className="mb-2">Deep Dive · A Mirror, Not a Forecast</Eyebrow>
           <h1 className="display text-3xl text-brand-ink">Your Reading</h1>
-          <p className="mt-2 text-sm text-faint">
+          <p className="mt-2 text-sm text-brand-ink-soft">
             For {profile.name || "you"} — drawn only from your cards.
           </p>
         </motion.header>
@@ -138,7 +138,7 @@ export default function ReadingPage() {
         {phase === "error" && (
           <div className="animate-fade-up pt-4 text-center">
             <Eyebrow className="mb-3">The mirror clouded over</Eyebrow>
-            <p className="prose-reading text-mist">{errorMsg}</p>
+            <p className="prose-reading text-brand-ink-soft">{errorMsg}</p>
             <button
               onClick={generate}
               className="mt-6 rounded-full border border-haze px-6 py-2.5 text-sm text-brand-ink transition hover:border-gold hover:text-gold active:scale-[0.97]"
@@ -164,7 +164,7 @@ export default function ReadingPage() {
         {phase === "done" && (
           <div className="animate-fade-up mt-12 flex flex-col items-center gap-3 text-center">
             <Divider className="w-full" />
-            <p className="text-xs uppercase tracking-wider2 text-faint">
+            <p className="text-xs uppercase tracking-wider2 text-brand-ink-soft">
               None of this is destiny. It is data to work with.
             </p>
             <button

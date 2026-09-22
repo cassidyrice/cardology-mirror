@@ -37,7 +37,7 @@ export function DeckMatrix() {
       <h2 id="deck-matrix-heading" className="eyebrow mb-3 text-gold">
         The whole deck on one screen
       </h2>
-      <p className="prose-reading mb-5 max-w-2xl text-mist">
+      <p className="prose-reading mb-5 max-w-2xl text-brand-ink-soft">
         Rows are suits, columns are ranks. Every birthday resolves to one
         intersection. (December 31 stands apart as the Joker.)
       </p>
@@ -49,7 +49,7 @@ export function DeckMatrix() {
               <span
                 key={r}
                 aria-hidden
-                className="text-center text-[9px] font-semibold uppercase tracking-wider text-faint"
+                className="text-center text-[9px] font-semibold uppercase tracking-wider text-brand-ink-soft"
               >
                 {r}
               </span>

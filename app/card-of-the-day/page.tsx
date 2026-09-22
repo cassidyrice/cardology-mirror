@@ -185,7 +185,7 @@ export default function CardOfTheDayPage() {
           className="w-24 shrink-0 rounded-xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
         />
         <div>
-          <span className="eyebrow text-faint">{label}</span>
+          <span className="eyebrow text-brand-ink-soft">{label}</span>
           <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             Cardology Card of the Day
             <span className="block text-lg text-gold">
@@ -199,15 +199,15 @@ export default function CardOfTheDayPage() {
       </div>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">{directAnswer}</p>
+        <p className="prose-reading text-brand-ink-soft">{directAnswer}</p>
       </div>
-      <p className="mb-2 text-xs text-faint">Updated {updatedLabel(updatedIso)}</p>
+      <p className="mb-2 text-xs text-brand-ink-soft">Updated {updatedLabel(updatedIso)}</p>
       <p className="mb-6">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
           Find YOUR birth card free →
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         This is a daily reading with no shuffle in it. The deck is built like a
         calendar — 52 cards for 52 weeks, 4 suits for 4 seasons — and a fixed
         Cardology formula assigns every month-and-day to exactly one card. So
@@ -231,7 +231,7 @@ export default function CardOfTheDayPage() {
                 decoding="async"
                 className="w-44 shrink-0 self-start rounded-2xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
               />
-              <div className="prose-reading text-mist">
+              <div className="prose-reading text-brand-ink-soft">
                 {card.title && <p className="eyebrow mb-2 text-gold">{card.title}</p>}
                 <p>{card.coreIdentity || card.sweetSpot}</p>
                 <p>
@@ -255,7 +255,7 @@ export default function CardOfTheDayPage() {
               <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
               <QuickRead label="Shadow" facet="shadow" text={card.shadow || card.over} />
             </div>
-            <p className="mt-4 text-sm text-faint">
+            <p className="mt-4 text-sm text-brand-ink-soft">
               A mirror, not a forecast: today&rsquo;s card describes a pattern in
               play, not events on a schedule. If it clarifies nothing real,
               discard it.
@@ -265,7 +265,7 @@ export default function CardOfTheDayPage() {
       ) : (
         <section className="mt-8">
           <h2 className="eyebrow mb-2 text-gold">Today belongs to the Joker</h2>
-          <div className="prose-reading text-mist">
+          <div className="prose-reading text-brand-ink-soft">
             <p>
               The deck&rsquo;s calendar math is exact: the 52 card values sum to
               364, one short of the solar year, and December 31 is the day left
@@ -287,7 +287,7 @@ export default function CardOfTheDayPage() {
 
       <section className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Get YOUR card</p>
-        <p className="mt-1 text-sm text-faint">
+        <p className="mt-1 text-sm text-brand-ink-soft">
           Today&rsquo;s card belongs to everyone; yours was fixed the day you
           were born. Look it up free, then explore the written interpretation.
         </p>
@@ -301,13 +301,13 @@ export default function CardOfTheDayPage() {
       {faqs.map((f) => (
         <section className="mt-8" key={f.q}>
           <h2 className="eyebrow mb-2 text-gold">{f.q}</h2>
-          <p className="prose-reading text-mist">{f.a}</p>
+          <p className="prose-reading text-brand-ink-soft">{f.a}</p>
         </section>
       ))}
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Yesterday, today, tomorrow</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The card changes at midnight, Mountain Time — come back tomorrow, or
           walk the calendar yourself. Every date&rsquo;s page reads the card as a
           birthday:
@@ -378,7 +378,7 @@ function QuickRead({
   return (
     <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
       <p className="eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
-      <p className="prose-reading mb-0 text-mist">{text}</p>
+      <p className="prose-reading mb-0 text-brand-ink-soft">{text}</p>
     </div>
   );
 }

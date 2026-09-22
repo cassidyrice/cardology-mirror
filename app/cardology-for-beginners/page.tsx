@@ -134,20 +134,20 @@ export default function CardologyForBeginnersPage() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology for Beginners</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Start Cardology by finding the playing card locked to your birthday, reading
           suit and rank in plain language, then testing the pattern against real life.
           Use free tools first; buy a written Blueprint only if the system keeps earning
           your attention.
         </p>
       </div>
-      <p className="mb-6 text-xs text-faint">
+      <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
-      <p className="prose-reading mb-8 text-mist">
+      <p className="prose-reading mb-8 text-brand-ink-soft">
         This path is for people who searched <strong>cardology for beginners</strong>,{" "}
         <strong>how to find my birth card</strong>, or{" "}
         <strong>what card am I based on my birthday</strong> and want the playing-card
@@ -172,7 +172,7 @@ export default function CardologyForBeginnersPage() {
                 Step {s.n}
               </p>
               <h3 className="mt-1 font-serif text-xl text-brand-ink">{s.title}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{s.body}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{s.body}</p>
               <Link href={s.href} className="mt-3 inline-block text-sm text-gold underline underline-offset-4">
                 {s.label} →
               </Link>
@@ -183,7 +183,7 @@ export default function CardologyForBeginnersPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">Step 2 live: find your birth card</h2>
-        <p className="prose-reading mb-4 text-mist">
+        <p className="prose-reading mb-4 text-brand-ink-soft">
           Enter any birthday. The result is deterministic — refresh will not change it.
         </p>
         <BirthCardCalculator />
@@ -191,7 +191,7 @@ export default function CardologyForBeginnersPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">The only vocabulary you need on day one</h2>
-        <ul className="prose-reading space-y-2 text-mist">
+        <ul className="prose-reading space-y-2 text-brand-ink-soft">
           <li>
             <strong>Birth card</strong> — the lifelong playing card for your birthday.
           </li>
@@ -206,7 +206,7 @@ export default function CardologyForBeginnersPage() {
             <strong>Ruling card</strong> — expression style layered on the birth card.
           </li>
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           When you want spreads instead of birthday math, switch to{" "}
           <Link href="/how-to-read-playing-cards" className="text-gold underline underline-offset-4">
             how to read playing cards
@@ -217,7 +217,7 @@ export default function CardologyForBeginnersPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How to know it is working</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A useful card description names a specific behavior you can point to in the
           last month — not vague flattery. If nothing matches after an honest week,
           set it down. Cardology is a lens for self-awareness and entertainment;
@@ -231,7 +231,7 @@ export default function CardologyForBeginnersPage() {
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
+        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           The One Question Reading is a one-time $13 purchase: one question, read from
           your birth card, this year's Long Range and Pluto cards, and the card you owe.
           About 600 words, emailed within {ONE_QUESTION_TURNAROUND}. No subscription.
@@ -250,7 +250,7 @@ export default function CardologyForBeginnersPage() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>
@@ -261,16 +261,16 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Browse the library</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Every birthday
           </a>
-          <a href={COMPATIBILITY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <a href={COMPATIBILITY_DIRECTORY_PATH} className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Every pairing
           </a>
-          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/birth-card" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             All 52 cards
           </Link>
-          <Link href="/about" className="rounded-full border border-white/15 px-4 py-2 text-sm text-mist hover:text-brand-ink">
+          <Link href="/about" className="rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             About Card Blueprints
           </Link>
         </div>

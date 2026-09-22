@@ -15,7 +15,7 @@ export function GiftList({ gifts, accent }: { gifts: string; accent?: string }) 
             className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
             style={{ background: color }}
           />
-          <span className="text-[0.97rem] leading-relaxed text-mist">{line}</span>
+          <span className="text-[0.97rem] leading-relaxed text-brand-ink-soft">{line}</span>
         </li>
       ))}
     </ul>

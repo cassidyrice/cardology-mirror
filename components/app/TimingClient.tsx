@@ -53,7 +53,7 @@ export default function TimingPage() {
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md pt-28 text-center">
           <Eyebrow className="mb-3 text-ember">The timeline didn&apos;t load</Eyebrow>
-          <p className="prose-reading text-mist">{error}</p>
+          <p className="prose-reading text-brand-ink-soft">{error}</p>
           <button
             onClick={() => router.refresh()}
             className="mt-4 text-sm uppercase tracking-wider2 text-gold"
@@ -109,7 +109,7 @@ function Timing({
             You&apos;re in your{" "}
             <span className="foil-text">{activePlanet}</span> chapter.
           </h1>
-          <p className="mt-4 text-sm leading-relaxed text-mist">
+          <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
             {data.active_period.domain
               ? capitalize(data.active_period.domain) + "."
               : null}
@@ -117,7 +117,7 @@ function Timing({
           <p className="mt-3 text-sm uppercase tracking-wider2 text-gold">
             Day <span className="tnum">{daysIn + 1}</span> into {activePlanet}
           </p>
-          <p className="mt-1 text-xs text-faint">
+          <p className="mt-1 text-xs text-brand-ink-soft">
             About <span className="tnum">{daysLeft}</span> day{daysLeft === 1 ? "" : "s"} left before the cycle turns ·
             seven {PERIOD_DAYS}-day periods, Mercury through Neptune
           </p>
@@ -141,7 +141,7 @@ function Timing({
                 horizon.
               </span>
             </span>
-            <span className="shrink-0 text-faint transition-colors group-hover:text-gold">
+            <span className="shrink-0 text-brand-ink-soft transition-colors group-hover:text-gold">
               &rarr;
             </span>
           </Link>
@@ -179,7 +179,7 @@ function Timing({
 
         <Divider />
 
-        <p className="pb-4 text-center text-sm leading-relaxed text-faint">
+        <p className="pb-4 text-center text-sm leading-relaxed text-brand-ink-soft">
           The cards don&apos;t move you — they name the weather. Each period is a
           lens for noticing what&apos;s already asking for your attention.
         </p>

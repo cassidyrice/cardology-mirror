@@ -16,7 +16,7 @@ export function TattooBlock({ slug, label }: { slug: string; label: string }) {
         decoding="async"
         className="w-full rounded-2xl border border-white/10"
       />
-      <figcaption className="mt-3 text-sm leading-relaxed text-mist">
+      <figcaption className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
         {court
           ? `A single ${tattoo.suit.replace(/s$/, "")} pip on the ${tattoo.bodyLabel} — court cards have a face on the card, not in the tattoo.`
           : `The exact ${tattoo.pipCount}-pip ${label} field on the ${tattoo.bodyLabel}. No card border, no index.`}{" "}

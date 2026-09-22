@@ -95,19 +95,19 @@ export default function CardologyVsTarotPage() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Cardology vs Tarot</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           <strong>Cardology</strong> maps a birthday to one card in a standard 52-card
           playing deck with fixed math. <strong>Tarot</strong> uses a 78-card deck and
           usually begins with a shuffle. Related roots, different jobs.
         </p>
       </div>
-      <p className="mb-6 text-xs text-faint">
+      <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
           Editorial policy
         </Link>
       </p>
-      <p className="prose-reading mb-8 text-mist">
+      <p className="prose-reading mb-8 text-brand-ink-soft">
         Search often lumps “birth cards,” cartomancy, and tarot together. This page
         separates them so you can pick the right tool. For the wider umbrella, see{" "}
         <Link href="/cartomancy-vs-tarot" className="text-gold underline underline-offset-4">
@@ -123,7 +123,7 @@ export default function CardologyVsTarotPage() {
       <section className="mt-4">
         <h2 className="eyebrow mb-3 text-gold">Side-by-side</h2>
         <TableScroll label="Cardology versus tarot">
-        <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-mist">
+        <table className="w-full min-w-[36rem] border-collapse text-left text-sm text-brand-ink-soft">
           <caption className="sr-only">Cardology versus tarot by deck, method, and use</caption>
           <thead>
             <tr className="border-b border-white/15 text-brand-ink">
@@ -147,13 +147,13 @@ export default function CardologyVsTarotPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">Suit map (minors ↔ playing cards)</h2>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> ↔ Cups — emotion &amp; relationships</li>
           <li><span className="text-[#14110d]">♣ Clubs</span> ↔ Wands — mind, energy &amp; communication</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> ↔ Pentacles — values &amp; resources</li>
           <li><span className="text-[#14110d]">♠ Spades</span> ↔ Swords — work, will &amp; transformation</li>
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           That map helps translators. It does not make a Queen of Diamonds birth card
           the same object as a tarot Queen of Pentacles pull — different deck, different
           procedure, different claim.
@@ -162,7 +162,7 @@ export default function CardologyVsTarotPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">When to choose Cardology</h2>
-        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-mist">
+        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           <li>You want “what is my birth card” from a birthday, checkably.</li>
           <li>You want two-birthday compatibility without a shuffle.</li>
           <li>You care about yearly/period language built from the same deck math.</li>
@@ -172,7 +172,7 @@ export default function CardologyVsTarotPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">When to choose tarot</h2>
-        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-mist">
+        <ul className="prose-reading list-disc space-y-1.5 pl-5 text-brand-ink-soft">
           <li>You want Major Arcana archetypes in the spread.</li>
           <li>The question is open-ended and benefits from a fresh draw.</li>
           <li>You already practice tarot and want narrative imagery first.</li>
@@ -181,7 +181,7 @@ export default function CardologyVsTarotPage() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Common mix-up: “birth card calculator”</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Google often ranks tarot birth-card tools for that query. Those calculators
           answer a different question. Card Blueprints&rsquo;{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
@@ -202,7 +202,7 @@ export default function CardologyVsTarotPage() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>
@@ -219,7 +219,7 @@ export default function CardologyVsTarotPage() {
 
       <FreeCourseCta source="cardology-vs-tarot" className="mt-10" />
 
-      <p className="mt-8 text-sm text-mist">
+      <p className="mt-8 text-sm text-brand-ink-soft">
         Related:{" "}
         <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
           What is Cardology?

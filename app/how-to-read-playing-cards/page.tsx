@@ -99,7 +99,7 @@ export default function HowToReadPlayingCards() {
       />
 
       <h1 className="display mb-3 text-3xl text-brand-ink">How to Read Playing Cards</h1>
-      <p className="mb-4 text-xs text-faint">
+      <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
         <Link href="/about" className="text-gold underline underline-offset-4">
           Cassidy Rice
@@ -111,13 +111,13 @@ export default function HowToReadPlayingCards() {
       </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A playing card meaning is suit plus rank: the suit is the arena of life,
           the rank is the move being made in it. Then either shuffle and draw a
           spread, or calculate the deterministic birth card from a birthday.
         </p>
       </div>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         Cartomancy with playing cards is older than tarot&rsquo;s fame and
         needs none of its equipment. The deck in your junk drawer already
         carries the whole system: four suits for the four arenas of a life,
@@ -128,7 +128,7 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Playing card meaning by suit and rank</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A playing card meaning does not come from a guidebook picture. It comes
           from two facts you can see on the card: which suit, and which rank.
           Suit names the arena. Rank names the move. That is the whole grammar
@@ -138,7 +138,7 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What do you need to start?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A standard 52-card deck and something to write with. That is the
           entire kit. The meanings live in the deck&rsquo;s structure — which
           suit, which rank — not in special artwork, so a casino deck reads as
@@ -155,12 +155,12 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What does each suit mean?</h2>
-        <p className="prose-reading mb-2 text-mist">
+        <p className="prose-reading mb-2 text-brand-ink-soft">
           The suit is the arena — the part of life a card is talking about.
           These four domains are the same ones every card page on this site is
           built from:
         </p>
-        <ul className="prose-reading space-y-2 text-mist">
+        <ul className="prose-reading space-y-2 text-brand-ink-soft">
           {SUITS.map((suit) => (
             <li key={suit}>
               <span style={{ color: SUIT_COLOR_PAPER[suit] }}>
@@ -170,7 +170,7 @@ export default function HowToReadPlayingCards() {
             </li>
           ))}
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Every suit-and-rank combination has its own full page —{" "}
           <Link href="/birth-card" className="text-gold underline underline-offset-4">
             all 52 card meanings
@@ -183,19 +183,19 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">What do the ranks mean, Ace through King?</h2>
-        <p className="prose-reading mb-2 text-mist">
+        <p className="prose-reading mb-2 text-brand-ink-soft">
           The rank is the move. The thirteen ranks run one arc — a theme is
           born at the Ace, matures through the numbers, and is mastered by the
           court cards:
         </p>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           {RANKS.map((rank) => (
             <li key={rank}>
               <strong>{RANK_LABEL[rank] ?? rank}</strong> — {rankTheme(rank)}
             </li>
           ))}
         </ul>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Suit times rank is the whole grammar. The same move lands
           differently by arena: the{" "}
           <Link href="/birth-card/ace-of-hearts" className="text-gold underline underline-offset-4">
@@ -213,7 +213,7 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">How do you do your first reading? Five steps</h2>
-        <ol className="prose-reading list-decimal space-y-2 pl-5 text-mist">
+        <ol className="prose-reading list-decimal space-y-2 pl-5 text-brand-ink-soft">
           <li>
             <strong>Settle one real question.</strong> Not &ldquo;tell me
             everything&rdquo; — one situation you actually care about. Write it
@@ -246,7 +246,7 @@ export default function HowToReadPlayingCards() {
             clarifies nothing real, discard it.
           </li>
         </ol>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           When you are ready for more layouts — a relationship spread, a
           yes-or-no draw — the{" "}
           <Link href={SPREADS_HUB_PATH} className="text-gold underline underline-offset-4">
@@ -258,13 +258,13 @@ export default function HowToReadPlayingCards() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Shuffled draws or the deterministic method?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Everything above is the shuffled branch of cartomancy: the cards fall
           where they fall, and ask the same question tomorrow and you will draw
           different cards. That is not a flaw — it is the method, and it suits
           open questions read in the moment.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           Cardology, the system this site documents, is the other branch. It
           removes the shuffle entirely: a fixed formula maps your birthday to
           exactly one of the 52 cards — your birth card — and the same birthday
@@ -289,7 +289,7 @@ export default function HowToReadPlayingCards() {
 
       <section className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Skip the learning curve</p>
-        <p className="mt-1 text-sm text-faint">
+        <p className="mt-1 text-sm text-brand-ink-soft">
           Learning the 52 takes time. Start with the card your birthday already
           picked, then use its full meaning page as your reference.
         </p>
@@ -307,7 +307,7 @@ export default function HowToReadPlayingCards() {
           {faqs.map((f) => (
             <div key={f.q}>
               <h3 className="prose-reading mb-1 font-serif text-brand-ink">{f.q}</h3>
-              <p className="prose-reading text-mist">{f.a}</p>
+              <p className="prose-reading text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

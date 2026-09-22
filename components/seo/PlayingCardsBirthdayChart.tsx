@@ -36,7 +36,7 @@ export function PlayingCardsBirthdayChart() {
                   href={`/born-on/${d.slug}`}
                   className="rounded-xl border border-white/10 bg-white/[0.03] px-2 py-2 text-center transition hover:border-gold/40"
                 >
-                  <span className="block text-[0.7rem] uppercase tracking-[0.12em] text-faint">
+                  <span className="block text-[0.7rem] uppercase tracking-[0.12em] text-brand-ink-soft">
                     {d.day}
                   </span>
                   <span className="mt-1 block font-serif text-sm text-brand-ink">
@@ -49,7 +49,7 @@ export function PlayingCardsBirthdayChart() {
           </div>
         ))}
       </div>
-      <p className="prose-reading mt-4 text-sm text-mist">
+      <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
         Prefer a list?{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
           Browse every birthday by month and day

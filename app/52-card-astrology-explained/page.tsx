@@ -107,19 +107,19 @@ export default function CardAstrology() {
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Cards Birthday Chart &amp; 52-Card Astrology</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Direct answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           52-card astrology (Cardology) reads a standard deck as calendar structure:
           each birthday maps to one playing card. Use the chart below or the free
           calculator — same math, checkable results.
         </p>
       </div>
-      <p className="mb-4 text-xs text-faint">
+      <p className="mb-4 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
         <Link href="/methodology" className="text-gold underline underline-offset-4">
           Methodology
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         People search <strong>playing cards birthday chart</strong>,{" "}
         <strong>playing card astrology</strong>, <strong>birthday playing cards</strong>,{" "}
         <strong>52 destiny cards</strong>, and <strong>birth card chart</strong>{" "}
@@ -137,11 +137,11 @@ export default function CardAstrology() {
           ].map(([left, right]) => (
             <div key={left} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
               <p className="eyebrow mb-1 text-gold">{left}</p>
-              <p className="text-mist">{right}</p>
+              <p className="text-brand-ink-soft">{right}</p>
             </div>
           ))}
         </div>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           There are 52 cards in a deck and 52 weeks in a year. There are 13 ranks per
           suit and roughly 13 weeks per season. These alignments are the backbone: the
           deck is treated as a calendar in disguise. December 31 maps to the Joker;
@@ -151,7 +151,7 @@ export default function CardAstrology() {
 
       <section className="mt-8" id="calendar">
         <h2 className="eyebrow mb-2 text-gold">The Cardology calendar</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           The Cardology calendar is the deck-to-year mapping at the core of the system:
           52 cards for 52 weeks, four suits for four seasons, 13 ranks for the 13 weeks
           of a season, and 12 court cards echoing the 12 months. Add the value of every
@@ -159,7 +159,7 @@ export default function CardAstrology() {
           completes the 365-day year. That arithmetic is why readers treat a deck of
           playing cards as a calendar you can hold in one hand.
         </p>
-        <p className="prose-reading mt-3 text-mist">
+        <p className="prose-reading mt-3 text-brand-ink-soft">
           To see where your own birthday sits on the Cardology calendar, use the{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             free birth card calculator
@@ -170,7 +170,7 @@ export default function CardAstrology() {
 
       <section className="mt-10" id="birthday-chart">
         <h2 className="eyebrow mb-2 text-gold">Playing cards birthday chart</h2>
-        <p className="prose-reading mb-4 text-mist">
+        <p className="prose-reading mb-4 text-brand-ink-soft">
           Each cell is a birthday. Open it for the full Cardology page (birth card,
           ruling card, karma links). Prefer typing a date? Use the{" "}
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
@@ -187,7 +187,7 @@ export default function CardAstrology() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">Suits: four domains of life</h2>
-        <ul className="prose-reading space-y-1.5 text-mist">
+        <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
           <li><span className="text-[#14110d]">♣ Clubs</span> — mind &amp; communication</li>
@@ -197,7 +197,7 @@ export default function CardAstrology() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Ranks: a developmental arc</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Ranks read loosely as a progression — Aces begin, number cards develop the
           theme, and court cards mature it. Rank is the stage; suit is the arena.
         </p>
@@ -205,7 +205,7 @@ export default function CardAstrology() {
 
       <section className="mt-8">
         <h2 className="eyebrow mb-2 text-gold">Timing: the cards move</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Beyond the fixed birth card, yearly spreads rotate themes as you age. Birth
           card stays; surrounding cards shift. That is timing as chapter language, not
           event prophecy. See also the{" "}
@@ -222,7 +222,7 @@ export default function CardAstrology() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

@@ -45,7 +45,7 @@ export function PositionStack({
       {rows.map((r) => (
         <div key={r.label} className="flex gap-3">
           <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${r.dot}`} />
-          <p className="text-[0.95rem] leading-relaxed text-mist">
+          <p className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
             <span className={`mr-2 text-xs uppercase tracking-wider2 ${r.color}`}>
               {r.label}
             </span>

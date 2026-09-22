@@ -33,7 +33,7 @@ export function AccessGate({
   };
 
   const field =
-    "w-full rounded-lg border border-white/10 bg-void px-3 py-3 text-brand-ink outline-none transition placeholder:text-faint focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
+    "w-full rounded-lg border border-white/10 bg-void px-3 py-3 text-brand-ink outline-none transition placeholder:text-brand-ink-soft focus:border-gold/60 focus:ring-1 focus:ring-gold/40";
 
   return (
     <motion.div
@@ -44,7 +44,7 @@ export function AccessGate({
     >
       <Eyebrow className="text-gold">Members only</Eyebrow>
       <h2 className="display mt-2 text-2xl text-brand-ink">{title}</h2>
-      <p className="mt-2 text-pretty text-sm leading-relaxed text-mist">{blurb}</p>
+      <p className="mt-2 text-pretty text-sm leading-relaxed text-brand-ink-soft">{blurb}</p>
 
       <form onSubmit={submit} className="mt-5 space-y-3">
         <input
@@ -77,7 +77,7 @@ export function AccessGate({
         </button>
       </form>
 
-      <p className="mt-4 text-xs text-faint">
+      <p className="mt-4 text-xs text-brand-ink-soft">
         A mirror, not a forecast. Your reading is drawn only from your cards.
       </p>
     </motion.div>

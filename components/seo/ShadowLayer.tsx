@@ -22,21 +22,21 @@ export function ShadowLayer({ code }: { code: string }) {
       <blockquote className="mt-4 border-l-2 border-gold/60 pl-4 font-serif text-xl leading-snug text-brand-ink">
         &ldquo;{s.worldview}&rdquo;
       </blockquote>
-      <p className="prose-reading mt-4 text-mist">{s.coreShadow}</p>
+      <p className="prose-reading mt-4 text-brand-ink-soft">{s.coreShadow}</p>
       {s.keywords && s.keywords.length > 0 ? (
         <ul className="mt-4 flex flex-wrap gap-2" aria-label="Shadow keywords">
           {s.keywords.map((k) => (
-            <li key={k} className="rounded-full border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+            <li key={k} className="rounded-full border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-brand-ink-soft">
               {k}
             </li>
           ))}
         </ul>
       ) : null}
-      <p className="prose-reading mt-3 text-mist">
+      <p className="prose-reading mt-3 text-brand-ink-soft">
         <span className="font-semibold text-brand-ink">In the light{s.lightName ? `: ${s.lightName}` : ""}.</span>{" "}
         {s.inTheLight}
       </p>
-      <p className="mt-4 text-xs text-faint">
+      <p className="mt-4 text-xs text-brand-ink-soft">
         From <em>The Shadow Deck</em> by Cassidy Rice. Your birthday fixes the card; the shadow is the
         part of it you were taught to keep in the basement. A mirror, not a forecast.
       </p>
@@ -54,14 +54,14 @@ export function ShadowPrompts({ code }: { code: string }) {
       <h2 id="shadow-prompts" className="eyebrow mb-2 text-gold">
         Three questions for {s.archetype}
       </h2>
-      <p className="prose-reading mb-4 text-mist">
+      <p className="prose-reading mb-4 text-brand-ink-soft">
         Five minutes and a notebook. Answer honestly; nobody reads it but you.
       </p>
       <ol className="space-y-3">
         {s.prompts.map((p, i) => (
           <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
             <span className="font-serif text-2xl leading-none text-gold">{String(i + 1).padStart(2, "0")}</span>
-            <p className="prose-reading text-mist">{p}</p>
+            <p className="prose-reading text-brand-ink-soft">{p}</p>
           </li>
         ))}
       </ol>

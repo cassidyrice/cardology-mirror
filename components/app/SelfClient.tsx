@@ -47,7 +47,7 @@ export default function SelfPage() {
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md pt-32 text-center">
           <Eyebrow className="mb-3">Something interrupted the read</Eyebrow>
-          <p className="prose-reading text-mist">{error}</p>
+          <p className="prose-reading text-brand-ink-soft">{error}</p>
         </div>
       </Screen>
     );
@@ -72,7 +72,7 @@ export default function SelfPage() {
         >
           <Eyebrow className="mb-1">Your Blueprint · {profile.name}</Eyebrow>
           <h1 className="display mb-2 text-4xl text-brand-ink">{desc.title}</h1>
-          <p className="text-sm text-faint">
+          <p className="text-sm text-brand-ink-soft">
             {archetype.suit_domain} · Solar value{" "}
             <span className="tnum">{archetype.solar_value}</span>
           </p>
@@ -107,7 +107,7 @@ export default function SelfPage() {
               Layered on top is your <span className="text-gold">{archetype.prc}</span> ruling
               pattern — <em>{prcDesc.title.replace(/^The /, "").toLowerCase()}</em>. {prcDesc.core_identity}
             </p>
-            <p className="text-mist">
+            <p className="text-brand-ink-soft">
               Two engines run at once: a {bc?.domain.toLowerCase()} instinct from{" "}
               {archetype.birth_card}, threaded through a {prc?.domain.toLowerCase()} temperament from{" "}
               {archetype.prc}. This isn&rsquo;t a vibe. Same birthday, same cards, every time — this
@@ -135,15 +135,15 @@ export default function SelfPage() {
               <p className="eyebrow mb-2">
                 <span className="text-ember">{archetype.birth_card}</span> · {desc.title}
               </p>
-              <p className="prose-reading mb-0 text-mist">{desc.shadow}</p>
+              <p className="prose-reading mb-0 text-brand-ink-soft">{desc.shadow}</p>
             </div>
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
               <p className="eyebrow mb-2">
                 <span className="text-ember">{archetype.prc}</span> · {prcDesc.title}
               </p>
-              <p className="prose-reading mb-0 text-mist">{prcDesc.shadow}</p>
+              <p className="prose-reading mb-0 text-brand-ink-soft">{prcDesc.shadow}</p>
             </div>
-            <p className="text-sm leading-relaxed text-faint">
+            <p className="text-sm leading-relaxed text-brand-ink-soft">
               These started as protection. They&rsquo;ve long since stopped earning their keep, and
               you&rsquo;ve kept paying rent on them anyway — noticing that is the part only you can do.
             </p>
@@ -165,14 +165,14 @@ export default function SelfPage() {
               <p className="eyebrow mb-2">
                 <span className="text-gold">{archetype.birth_card}</span>
               </p>
-              <p className="text-[0.97rem] leading-relaxed text-mist">{desc.algorithm_gateway}</p>
+              <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">{desc.algorithm_gateway}</p>
             </div>
             <hr className="hairline border-t" />
             <div>
               <p className="eyebrow mb-2">
                 <span className="text-gold">{archetype.prc}</span>
               </p>
-              <p className="text-[0.97rem] leading-relaxed text-mist">
+              <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">
                 {prcDesc.algorithm_gateway}
               </p>
             </div>
@@ -182,12 +182,12 @@ export default function SelfPage() {
         {/* CROWN — LIFE THEMES */}
         <Section eyebrow="The cards that crown your life" title="Your life themes" index={5}>
           <CrownRow crown={timing.crown} />
-          <p className="prose-reading mt-6 text-center text-mist">{crownFraming(timing.crown)}</p>
+          <p className="prose-reading mt-6 text-center text-brand-ink-soft">{crownFraming(timing.crown)}</p>
         </Section>
 
         <Divider />
 
-        <p className="pb-4 text-center text-sm leading-relaxed text-faint">
+        <p className="pb-4 text-center text-sm leading-relaxed text-brand-ink-soft">
           None of this is destiny — it&rsquo;s the pattern you already run. Seeing it clearly is the
           only part that was ever up to you.
         </p>

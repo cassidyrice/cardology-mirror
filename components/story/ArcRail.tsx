@@ -28,7 +28,7 @@ function Strand({
               className="flex flex-col items-center gap-1.5"
             >
               <PlayingCard code={code} size="sm" active={i === 1} float={i === 1} />
-              <span className="text-[0.55rem] uppercase tracking-wider2 text-faint">
+              <span className="text-[0.55rem] uppercase tracking-wider2 text-brand-ink-soft">
                 {BEATS[i]}
               </span>
             </motion.div>

@@ -592,13 +592,6 @@ body {
   background: transparent !important;
 }
 
-.paper-shell .text-mist,
-.paper-shell [class*="text-mist"],
-.paper-shell .text-faint,
-.paper-shell [class*="text-faint"] {
-  color: var(--ink-soft) !important;
-}
-
 /* Legacy dark-palette label colors, remapped for paper. Bronze — not oxblood —
    carries eyebrows and small labels here: oxblood stays reserved for the
    focal conversion action, and gold alone fails AA on cream. */

@@ -75,7 +75,7 @@ export default function BondsPage() {
           <h1 className="display mb-2 text-4xl text-brand-ink">
             Where two patterns collide
           </h1>
-          <p className="text-sm text-faint">
+          <p className="text-sm text-brand-ink-soft">
             Not a compatibility score. Two birth cards, read for where they
             speak the same language — and where they quietly grind each other down.
           </p>
@@ -122,7 +122,7 @@ export default function BondsPage() {
                   <div className="h-20 w-14 rotate-[-8deg] rounded-lg border border-white/10 bg-gradient-to-br from-haze to-cosmos" />
                   <div className="h-20 w-14 rotate-[8deg] rounded-lg border border-white/10 bg-gradient-to-br from-haze to-cosmos" />
                 </div>
-                <p className="prose-reading text-sm text-faint">
+                <p className="prose-reading text-sm text-brand-ink-soft">
                   Enter two birthdates to lay the cards side by side. Cardology
                   reads <em>compatibility</em> as the collision of two operating
                   systems — what you speak fluently together, and what&rsquo;s
@@ -148,7 +148,7 @@ export default function BondsPage() {
         {!loading && error && (
           <div className="pt-12 text-center">
             <Eyebrow className="mb-3">Something interrupted the read</Eyebrow>
-            <p className="prose-reading text-mist">{error}</p>
+            <p className="prose-reading text-brand-ink-soft">{error}</p>
             <button
               type="button"
               onClick={reset}
@@ -184,7 +184,7 @@ export default function BondsPage() {
               />
             </div>
 
-            <p className="text-center text-sm text-faint">
+            <p className="text-center text-sm text-brand-ink-soft">
               <span style={{ color: cardA.color }}>{cardA.label}</span>
               {" meets "}
               <span style={{ color: cardB.color }}>{cardB.label}</span>
@@ -229,7 +229,7 @@ export default function BondsPage() {
             <button
               type="button"
               onClick={reset}
-              className="w-full rounded-full border border-white/10 py-3 text-center font-serif text-sm text-mist transition active:scale-[0.99]"
+              className="w-full rounded-full border border-white/10 py-3 text-center font-serif text-sm text-brand-ink-soft transition active:scale-[0.99]"
             >
               Compare a different pair
             </button>
@@ -263,7 +263,7 @@ function PersonInputs({
         value={name}
         onChange={(e) => onName(e.target.value)}
         placeholder={namePlaceholder}
-        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink placeholder:text-faint focus:border-gold/40 focus:outline-none"
+        className="w-full rounded-lg border border-white/10 bg-void/60 px-4 py-3 font-serif text-brand-ink placeholder:text-brand-ink-soft focus:border-gold/40 focus:outline-none"
       />
       <input
         type="date"

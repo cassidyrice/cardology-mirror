@@ -110,7 +110,7 @@ export default function OneQuestionReadingPage() {
         One question · {DEEP_DIVE_PRICE_LABEL} · written within {ONE_QUESTION_TURNAROUND}
       </p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Ask one question.</h1>
-      <p className="prose-reading mb-6 max-w-[38em] text-mist">
+      <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
         You bring the one thing you keep circling. I read it from your birth
         card, this year&rsquo;s cards, and the card you owe. You get about 600
         words that sound like your own thinking, only clearer, and three things
@@ -119,7 +119,7 @@ export default function OneQuestionReadingPage() {
 
       <div className="mb-10 flex flex-col items-start gap-3">
         <DeepDiveCta placement="product-page" source="product-page" showFulfillment={false} />
-        <p className="text-sm text-mist">
+        <p className="text-sm text-brand-ink-soft">
           Know your birthday, obviously. Have the question ready in one sentence.{" "}
           <Link href={DEEP_DIVE_REVIEW_PATH} className="text-gold underline underline-offset-4">
             Or type both on the next page →
@@ -129,7 +129,7 @@ export default function OneQuestionReadingPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">What the reading is made of</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Seven pieces, always in this order. Your birth card&rsquo;s number (the
           action) and its suit (the area of life it acts in). This year&rsquo;s
           Long Range card, the thing that keeps pulling your attention. This
@@ -142,7 +142,7 @@ export default function OneQuestionReadingPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">A piece of one</h2>
-        <p className="mb-4 text-sm text-mist">
+        <p className="mb-4 text-sm text-brand-ink-soft">
           From a reading for an Eight of Diamonds who asked about a promotion.
         </p>
         <blockquote className="space-y-4 border-l-2 border-gold/60 pl-5">
@@ -156,7 +156,7 @@ export default function OneQuestionReadingPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">How it works</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           You type your birth date and your question, then pay {DEEP_DIVE_PRICE_LABEL} on
           Stripe. I pull your cards. Same birthday, same cards, every time, and
           you can check the math yourself. I write the reading and send it to
@@ -167,7 +167,7 @@ export default function OneQuestionReadingPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">What it is not</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           A mirror, not a forecast. It will not tell you what to do, and it
           will not predict what happens. It shows you the pattern you are
           already running, where you are standing in the year, and the two ways
@@ -177,7 +177,7 @@ export default function OneQuestionReadingPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">Not sure of your card?</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
             Find your birth card free
           </Link>
@@ -192,7 +192,7 @@ export default function OneQuestionReadingPage() {
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{f.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
             </div>
           ))}
         </div>

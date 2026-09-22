@@ -107,13 +107,13 @@ export default function CompatibilityCalculatorPage() {
       <CompatibilityCalculator />
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
         <p className="eyebrow mb-2 text-gold">Quick answer</p>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
           Life Path constitution, where the other person lands in your spectrum, and
           which Life Path cards you share. Free, deterministic, not a tarot shuffle.
         </p>
       </div>
-      <p className="prose-reading mb-6 text-mist">
+      <p className="prose-reading mb-6 text-brand-ink-soft">
         Two birthdays, one map. Enter both dates to compare playing-card birth
         cards, each Life Path constitution, where the other person lands in your
         spectrum, and which Life Path cards you share. After the result, open the
@@ -128,7 +128,7 @@ export default function CompatibilityCalculatorPage() {
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
+        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           Compare two birthdays in a standard 52-card deck — Hearts, Clubs, Diamonds,
           Spades. This is <strong>not</strong> a tarot love spread or Major Arcana pair
           tool. Same two dates always return the same birth cards and Life Path map.
@@ -146,7 +146,7 @@ export default function CompatibilityCalculatorPage() {
 
       <div className="card-surface mt-8 rounded-2xl border border-gold/25 p-5">
         <p className="font-serif text-base text-brand-ink">After you compare</p>
-        <p className="mt-2 text-sm leading-relaxed text-mist">
+        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
           Browse the full matrix of hubs and pairs, or run one birthday through the
           birth card calculator if you only know one person so far.
         </p>
@@ -159,7 +159,7 @@ export default function CompatibilityCalculatorPage() {
           </a>
           <Link
             href="/birth-card-calculator"
-            className="inline-block rounded-full border border-white/15 px-4 py-2 text-sm text-mist"
+            className="inline-block rounded-full border border-white/15 px-4 py-2 text-sm text-brand-ink-soft"
           >
             Birth card calculator →
           </Link>
@@ -168,7 +168,7 @@ export default function CompatibilityCalculatorPage() {
 
       <section className="mt-10">
         <h2 className="eyebrow mb-2 text-gold">How to read the result</h2>
-        <p className="prose-reading text-mist">
+        <p className="prose-reading text-brand-ink-soft">
           Start with birth-card chemistry, then Life Path cross-reference. If the other
           person&rsquo;s birth card lands in your Venus, Mars, Saturn, Neptune, or Pluto
           position, the relationship will feel different than if it lands nowhere in
@@ -187,7 +187,7 @@ export default function CompatibilityCalculatorPage() {
           {faqs.map((faq) => (
             <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
               <h3 className="font-serif text-base text-brand-ink">{faq.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-mist">{faq.a}</p>
+              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{faq.a}</p>
             </div>
           ))}
         </div>
