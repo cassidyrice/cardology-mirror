@@ -149,4 +149,12 @@ assert.equal(resolvePosthogHost("https://us.i.posthog.com/"), "https://us.i.post
 
 assert.equal(PERSONAL_CHECKOUT_PATH, "/checkout/personal-card-blueprint");
 
+// Period tools stay in the browser. A period-change email would need the
+// birthday stored, which /privacy-policy and the calculator microcopy forbid.
+const yearView = readFileSync("components/seo/YourYearView.tsx", "utf8");
+assert.doesNotMatch(yearView, /TODO\(privacy\)/);
+assert.doesNotMatch(yearView, /type="email"/);
+assert.doesNotMatch(yearView, /free-course\/signup|buttondown\.com/);
+assert.match(yearView, /Your birthday is never stored on our servers/);
+
 console.log("PASS: audit privacy leak — no birth dates in URLs or GA locations");
