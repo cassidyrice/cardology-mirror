@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 import type { BondObservation } from "./compare";
 
 const ACCENT: Record<BondObservation["kind"], string> = {
-  shared: "text-sage",
-  complement: "text-brand-bronze",
-  tension: "text-brand-bronze",
-  "gift-shadow": "text-dusk",
+  shared: "!text-brand-club",
+  complement: "!text-brand-bronze",
+  tension: "!text-brand-bronze",
+  "gift-shadow": "!text-brand-club",
 };
 
 const DOT: Record<BondObservation["kind"], string> = {
-  shared: "bg-sage",
+  shared: "bg-brand-club",
   complement: "bg-gold",
-  tension: "bg-ember",
-  "gift-shadow": "bg-dusk",
+  tension: "bg-brand-bronze",
+  "gift-shadow": "bg-brand-oxblood",
 };
 
 export function ObservationCard({

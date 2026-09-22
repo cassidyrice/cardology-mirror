@@ -39,6 +39,7 @@ const config: Config = {
           "gold-soft": "var(--gold-soft)",
           oxblood: "var(--oxblood)",
           "oxblood-deep": "var(--oxblood-deep)",
+          club: "var(--club)",
           "on-dark": "var(--on-dark)",
           "on-dark-soft": "var(--on-dark-soft)",
           "on-dark-line": "var(--on-dark-line)",

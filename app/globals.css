@@ -39,6 +39,9 @@
   --oxblood: #0c4275;
   --oxblood-deep: #0a3159;
 
+  /* Same club green .landing-oracle already names. */
+  --club: #183f30;
+
   --on-dark: #e8f1fa;
   --on-dark-soft: #a9c2da;
   --on-dark-line: rgba(232, 241, 250, 0.18);
@@ -590,11 +593,6 @@ body {
 .paper-shell .bg-cosmic,
 .paper-shell [class*="bg-cosmic"] {
   background: transparent !important;
-}
-
-.paper-shell .text-sage,
-.paper-shell .text-dusk {
-  color: #183f30 !important;
 }
 
 .paper-shell .text-ink {
