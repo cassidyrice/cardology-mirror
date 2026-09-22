@@ -128,9 +128,25 @@ body {
 /* hairline dividers like Co-Star */
 .hairline { border-color: rgba(244,241,234,0.08); }
 
+/* Paper card. The shell override used to paint this inside .paper-shell.
+   Fill is ivory, the edge is the ink line, and the grid is ink at the old
+   hairline weight. Dark chrome that still wants the indigo gradient uses
+   .card-surface-dark. */
 .card-surface {
-  background: linear-gradient(180deg, rgba(26,28,48,0.9), rgba(17,19,39,0.6));
-  border: 1px solid rgba(244,241,234,0.07);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
+    color-mix(in srgb, var(--ivory) 78%, transparent);
+  background-size: 28px 28px, 28px 28px, auto;
+  box-shadow: 0 1.1rem 3rem color-mix(in srgb, var(--ink) 8%, transparent);
+  backdrop-filter: none;
+}
+
+.card-surface-dark {
+  background: linear-gradient(180deg, rgba(26, 28, 48, 0.9), rgba(17, 19, 39, 0.6));
+  border: 1px solid rgba(244, 241, 234, 0.07);
   border-radius: 18px;
   backdrop-filter: blur(8px);
 }
@@ -607,18 +623,6 @@ body {
 
 .paper-shell .hairline {
   border-color: var(--line);
-}
-
-.paper-shell .card-surface {
-  border: 1px solid rgba(20, 17, 13, 0.18);
-  border-radius: 0.25rem;
-  background:
-    linear-gradient(90deg, rgba(20, 17, 13, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(20, 17, 13, 0.035) 1px, transparent 1px),
-    rgba(244, 240, 231, 0.78);
-  background-size: 28px 28px, 28px 28px, auto;
-  box-shadow: 0 1.1rem 3rem rgba(20, 17, 13, 0.08);
-  backdrop-filter: none;
 }
 
 .paper-shell .card-frame {

@@ -59,7 +59,7 @@ export default function Brand({ label }: BrandProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18 }}
-            className="card-surface absolute right-0 top-full z-30 mt-1 w-44 overflow-hidden p-1"
+            className="card-surface-dark absolute right-0 top-full z-30 mt-1 w-44 overflow-hidden p-1"
           >
             <button
               type="button"
