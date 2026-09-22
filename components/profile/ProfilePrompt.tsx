@@ -5,11 +5,17 @@ export function ProfilePrompt({
   title,
   body,
   cta = "Create your profile",
+  primaryHref = "/onboarding",
+  secondaryHref = "/birth-card-calculator",
+  secondaryCta = "Find your birth card first",
 }: {
   eyebrow?: string;
   title: string;
   body: string;
   cta?: string;
+  primaryHref?: string;
+  secondaryHref?: string;
+  secondaryCta?: string;
 }) {
   return (
     <div className="card-surface rounded-2xl p-6 text-center">
@@ -20,16 +26,16 @@ export function ProfilePrompt({
       </p>
       <div className="mt-6 flex flex-col gap-3">
         <Link
-          href="/onboarding"
+          href={primaryHref}
           className="ink-button large-button w-full"
         >
           {cta}
         </Link>
         <Link
-          href="/birth-card-calculator"
+          href={secondaryHref}
           className="rounded-full border border-brand-line px-6 py-3 text-sm text-brand-ink-soft transition hover:text-brand-ink"
         >
-          Find your birth card first
+          {secondaryCta}
         </Link>
       </div>
     </div>

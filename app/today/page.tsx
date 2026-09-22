@@ -4,20 +4,27 @@ import TodayClient from "@/components/app/TodayClient";
 import { AppFeaturePage } from "@/components/seo/AppFeaturePage";
 import { SITE_NAME } from "@/lib/site";
 
-const title = "Daily Card Reading";
+const title = "Today's Cardology Calendar";
 const description =
-  "Use Card Blueprints's daily card reading to understand today's active card, birth-card lens, ruling-card lens, pressure pattern, and grounded prompt.";
+  "Cardology birth-card calendar for today: one of 52 playing cards. Same date → same card. Planetary timing, not a shuffle. Not tarot. A mirror, not a forecast.";
 
 export const metadata: Metadata = {
-  title: "Daily Card Reading: Your Cardology Card for Today",
+  title: "Today's Cardology Calendar: Fixed Birth-Card Map",
   description,
   alternates: { canonical: "/today" },
   openGraph: {
     siteName: SITE_NAME,
-    title: "Daily Card Reading: Your Cardology Card for Today",
+    title: "Today's Cardology Calendar: Fixed Birth-Card Map",
     description,
     url: "/today",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
+    images: [
+      {
+        url: "/og/default.png",
+        width: 1200,
+        height: 630,
+        alt: "Today on the Cardology birth-card calendar",
+      },
+    ],
   },
   robots: { index: false, follow: true },
 };
@@ -28,11 +35,14 @@ export default function TodayPage() {
       title={title}
       description={description}
       canonicalPath="/today"
-      eyebrow="Personalized tool"
+      eyebrow="Fixed birth-card map"
+      note="Same date → same card."
+      calculatorLabel="Free birth card calculator"
+      showOffer={false}
       points={[
-        "A daily timing view for the card pattern active right now.",
-        "A personalized daily card view when a local profile exists on this device.",
-        "A direct path from today's card into your birth-card and ruling-card pattern.",
+        "Same date → same card. A birthday lands on one of 52 playing cards, every year.",
+        "Planetary timing for today sits on that card. A mirror, not a forecast. Not tarot.",
+        "No birthday saved here? The free calculator names the card. A saved birthday adds today's timing.",
       ]}
     >
       <TodayClient />

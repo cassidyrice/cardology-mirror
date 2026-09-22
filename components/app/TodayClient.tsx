@@ -23,6 +23,12 @@ import {
   reflectionPrompt,
 } from "@/components/today/reflection";
 import { ProfilePrompt } from "@/components/profile/ProfilePrompt";
+import {
+  DEEP_DIVE_PRICE_LABEL,
+  DEEP_DIVE_PRODUCT_NAME,
+  DEEP_DIVE_PRODUCT_PATH,
+  ONE_QUESTION_TURNAROUND,
+} from "@/lib/deep-dive";
 
 const PRETTY_DATE = new Intl.DateTimeFormat("en-US", {
   weekday: "long",
@@ -52,8 +58,13 @@ export default function TodayPage() {
       {ready && !profile && (
         <div className="pt-12">
           <ProfilePrompt
-            title="Your daily card needs a birth date."
-            body="The public page explains the daily-card method. Create a local profile when you want Card Blueprints to calculate today's cards for you."
+            eyebrow="Fixed map"
+            title="Name the card for a birthday."
+            body="Same date → same card. The free calculator maps any birthday to one of 52 playing cards. Not tarot. Save a birthday on this device only when you want today's planetary timing on your own card."
+            cta="Free birth card calculator"
+            primaryHref="/birth-card-calculator"
+            secondaryHref="/onboarding"
+            secondaryCta="Or save a birthday on this device"
           />
         </div>
       )}
@@ -112,9 +123,9 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
       >
         <Kicker className="tnum !font-bold !text-brand-ink-soft">{PRETTY_DATE.format(new Date())}</Kicker>
-        <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
+        <h2 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
           {bluntLine(ap)}
-        </h1>
+        </h2>
         <p className="mt-4 text-sm uppercase tracking-wider2 text-brand-bronze">
           {chapterLabel(ap)}
         </p>
@@ -208,7 +219,6 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
         </p>
       </motion.div>
 
-      {/* ---- Story-arc deep dive CTA ---- */}
       <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
         <Link
           href="/story"
@@ -224,6 +234,15 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
             &rarr;
           </span>
         </Link>
+      </motion.div>
+
+      <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
+        <p className="px-1 pt-4 text-sm leading-relaxed text-brand-ink-soft">
+          Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from the birth card and the year on this page, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
+          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
+            {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+          </Link>
+        </p>
       </motion.div>
     </motion.div>
   );

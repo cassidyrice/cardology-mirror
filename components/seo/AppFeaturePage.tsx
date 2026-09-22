@@ -13,6 +13,9 @@ export function AppFeaturePage({
   eyebrow,
   points,
   children,
+  note,
+  calculatorLabel = "Find your birth card",
+  showOffer = true,
 }: {
   title: string;
   description: string;
@@ -20,6 +23,11 @@ export function AppFeaturePage({
   eyebrow: string;
   points: string[];
   children: ReactNode;
+  /** Short line beside the free calculator, for pages that need the fixed-map escape. */
+  note?: string;
+  calculatorLabel?: string;
+  /** Shared end-of-page offer. Off when this page places a quieter ask after context. */
+  showOffer?: boolean;
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -47,12 +55,17 @@ export function AppFeaturePage({
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink-soft sm:text-2xl">
           {description}
         </p>
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+        {note ? (
+          <p className="mt-4 text-sm font-medium leading-relaxed text-brand-ink">
+            {note}
+          </p>
+        ) : null}
+        <div className={`flex flex-col gap-3 sm:flex-row ${note ? "mt-4" : "mt-6"}`}>
           <Link
             href="/birth-card-calculator"
             className="ink-button large-button"
           >
-            Find your birth card
+            {calculatorLabel}
           </Link>
           <Link
             href="/onboarding"
@@ -78,7 +91,7 @@ export function AppFeaturePage({
         {children}
       </section>
 
-      <OfferCta className="mt-10" />
+      {showOffer ? <OfferCta className="mt-10" /> : null}
     </SeoShell>
   );
 }
