@@ -21,7 +21,7 @@ export function TattooBlock({ slug, label }: { slug: string; label: string }) {
           ? `A single ${tattoo.suit.replace(/s$/, "")} pip on the ${tattoo.bodyLabel} — court cards have a face on the card, not in the tattoo.`
           : `The exact ${tattoo.pipCount}-pip ${label} field on the ${tattoo.bodyLabel}. No card border, no index.`}{" "}
         Generated reference, not a client&rsquo;s skin.{" "}
-        <Link href="/playing-card-tattoo-meaning" className="text-gold underline underline-offset-4">
+        <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
           All 52 pip tattoos
         </Link>
         .

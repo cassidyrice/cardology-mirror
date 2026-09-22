@@ -167,14 +167,14 @@ export default function CalculatorPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
       <header className="max-w-3xl">
-        <p className="eyebrow mb-2 text-gold">Free · instant · no signup</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Free · instant · no signup</p>
         <h1 className="display mb-2 text-3xl text-brand-ink">
           Cardology Chart & Birth Card Calculator
         </h1>
         <p className="prose-reading text-brand-ink-soft" data-ai-summary>
           Enter a birthday for the playing card — 52-card system, not tarot.
           Same date, same card. Or read the{" "}
-          <a href="#cardology-chart" className="text-gold underline underline-offset-4">full Cardology chart</a>{" "}
+          <a href="#cardology-chart" className="text-brand-oxblood underline underline-offset-4">full Cardology chart</a>{" "}
           for all 366 birthdays.
         </p>
       </header>
@@ -185,7 +185,7 @@ export default function CalculatorPage() {
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
         Optional paid step after the free card:{" "}
-        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
           One Question Reading — $13
         </Link>{" "}
         (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
@@ -195,15 +195,15 @@ export default function CalculatorPage() {
 
       <p className="mt-6 text-sm leading-relaxed text-brand-ink-soft">
         Written and reviewed by{" "}
-        <Link href="/about" className="text-gold underline underline-offset-4">
+        <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
         · Updated {updatedLabel(REVIEWED_DATE)} ·{" "}
-        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
           Editorial standards
         </Link>
         . New to the method?{" "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
           How Cardology works
         </Link>
         .
@@ -220,7 +220,7 @@ export default function CalculatorPage() {
           returns the same playing card.
         </p>
         <p className="mt-3 text-sm">
-          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             How Cardology differs from tarot →
           </Link>
         </p>
@@ -242,7 +242,7 @@ export default function CalculatorPage() {
       </nav>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="eyebrow mb-2 text-gold">The birthday map</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">The birthday map</p>
         <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           A Cardology chart (also called the Cardology calendar or birthday
@@ -289,11 +289,11 @@ export default function CalculatorPage() {
         </nav>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
           All 366 dates with card names:{" "}
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
             /born-on/
           </a>
           . How the chart is built, suit by suit:{" "}
-          <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
+          <Link href="/52-card-astrology-explained#birthday-chart" className="text-brand-oxblood underline underline-offset-4">
             the 52-card calendar explained
           </Link>
           .
@@ -303,7 +303,7 @@ export default function CalculatorPage() {
       <section id="how-it-works" className="mt-12 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">How the calculation works</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">How the calculation works</p>
             <h2 className="font-serif text-3xl text-brand-ink">
               How to find your birth card from your birthday
             </h2>
@@ -323,7 +323,7 @@ export default function CalculatorPage() {
               ["3", "Verify the meaning", "Open the card page, compare suit and rank, and test the interpretation against real patterns."],
             ].map(([n, title, body]) => (
               <li key={n} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-                <span className="eyebrow text-gold">Step {n}</span>
+                <span className="eyebrow !text-brand-bronze">Step {n}</span>
                 <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
               </li>
@@ -331,11 +331,11 @@ export default function CalculatorPage() {
           </ol>
           <p className="prose-reading text-brand-ink-soft">
             Want the calendar view instead of typing a date? Open the{" "}
-            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
               birthday directory
             </a>{" "}
             or the{" "}
-            <Link href="/52-card-astrology-explained#birthday-chart" className="text-gold underline underline-offset-4">
+            <Link href="/52-card-astrology-explained#birthday-chart" className="text-brand-oxblood underline underline-offset-4">
               full playing-cards birthday chart
             </Link>
             . Same date, same card.
@@ -347,7 +347,7 @@ export default function CalculatorPage() {
       <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-gold/20 bg-white/[0.03] p-5 sm:p-6">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Worked verification</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Worked verification</p>
             <h2 className="font-serif text-3xl text-brand-ink">How to calculate your birth card with playing cards</h2>
           </summary>
         <p className="prose-reading mt-4 text-brand-ink-soft">
@@ -368,21 +368,21 @@ export default function CalculatorPage() {
           <li>
             <strong>January 15:</strong> 55 − (2 × 1 + 15) = 38.
             Then 38 − 26 = 12: the{" "}
-            <Link href="/birth-card/queen-of-diamonds" className="text-gold underline underline-offset-4">
+            <Link href="/birth-card/queen-of-diamonds" className="text-brand-oxblood underline underline-offset-4">
               Queen of Diamonds
             </Link>.
           </li>
           <li>
             <strong>February 17:</strong> 55 − (2 × 2 + 17) = 34.
             Then 34 − 26 = 8: the{" "}
-            <Link href="/birth-card/8-of-diamonds" className="text-gold underline underline-offset-4">
+            <Link href="/birth-card/8-of-diamonds" className="text-brand-oxblood underline underline-offset-4">
               Eight of Diamonds
             </Link>.
           </li>
           <li>
             <strong>January 1:</strong> 55 − (2 × 1 + 1) = 52.
             Then 52 − 39 = 13: the{" "}
-            <Link href="/birth-card/king-of-spades" className="text-gold underline underline-offset-4">
+            <Link href="/birth-card/king-of-spades" className="text-brand-oxblood underline underline-offset-4">
               King of Spades
             </Link>.
           </li>
@@ -396,11 +396,11 @@ export default function CalculatorPage() {
         <p className="prose-reading mt-4 text-brand-ink-soft">
           The arithmetic checks the card, not whether its symbolic meaning fits a
           person or predicts an event. Explore the{" "}
-          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
             meanings of all 52 playing cards
           </Link>{" "}
           or inspect the calculation and interpretation boundary on our{" "}
-          <Link href="/methodology" className="text-gold underline underline-offset-4">
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             published methodology page
           </Link>
           .
@@ -411,7 +411,7 @@ export default function CalculatorPage() {
       <section id="birth-vs-ruling" className="mt-10 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Understand the result</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Understand the result</p>
             <h2 className="font-serif text-3xl text-brand-ink">Birth card vs. planetary ruling card</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -432,7 +432,7 @@ export default function CalculatorPage() {
         </div>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           For a deeper comparison, read the full{" "}
-          <Link href="/birth-card-vs-ruling-card" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-vs-ruling-card" className="text-brand-oxblood underline underline-offset-4">
             birth card vs. ruling card guide
           </Link>
           .
@@ -443,7 +443,7 @@ export default function CalculatorPage() {
       <section className="mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Playing cards, not tarot</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Playing cards, not tarot</p>
             <h2 className="font-serif text-3xl text-brand-ink">This is a playing-card birth calculator — not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
@@ -494,7 +494,7 @@ export default function CalculatorPage() {
         <p className="prose-reading mt-4 text-brand-ink-soft">
           Came from a tarot birth-card tool and want the playing-card system instead?
           You&rsquo;re in the right place. Full side-by-side:{" "}
-          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             Cardology vs tarot
           </Link>
           .
@@ -503,7 +503,7 @@ export default function CalculatorPage() {
           Some sites call related birthday-to-playing-card systems{" "}
           <strong>Destiny Cards</strong> or <strong>Love Cards</strong>. We use{" "}
           <strong>Cardology</strong> and publish the method so you can check the math.{" "}
-          <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+          <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
             Cards of Destiny &amp; Love Cards explained →
           </Link>
         </p>
@@ -513,7 +513,7 @@ export default function CalculatorPage() {
       <section id="trust-and-limits" className="mt-10 scroll-mt-10">
         <details>
           <summary className="cursor-pointer">
-            <p className="eyebrow mb-2 text-gold">Experience, method, and trust</p>
+            <p className="eyebrow mb-2 !text-brand-bronze">Experience, method, and trust</p>
             <h2 className="font-serif text-3xl text-brand-ink">Why you can verify this Cardology calculator</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -537,16 +537,16 @@ export default function CalculatorPage() {
           experience.
         </p>
         <div className="mt-4 flex flex-wrap gap-3 text-sm">
-          <Link href="/methodology" className="text-gold underline underline-offset-4">Methodology</Link>
-          <Link href="/about" className="text-gold underline underline-offset-4">About Cassidy Rice</Link>
-          <Link href="/editorial-policy" className="text-gold underline underline-offset-4">Editorial policy</Link>
-          <Link href="/privacy-policy" className="text-gold underline underline-offset-4">Privacy policy</Link>
+          <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">Methodology</Link>
+          <Link href="/about" className="text-brand-oxblood underline underline-offset-4">About Cassidy Rice</Link>
+          <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">Editorial policy</Link>
+          <Link href="/privacy-policy" className="text-brand-oxblood underline underline-offset-4">Privacy policy</Link>
         </div>
         </details>
       </section>
 
       <section id="faq" className="mt-10 scroll-mt-10">
-        <h2 className="eyebrow mb-4 text-gold">Birth card calculator FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card calculator FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <details key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -560,7 +560,7 @@ export default function CalculatorPage() {
       </section>
 
       <section className="mt-10" aria-labelledby="related-playing-card-cardology">
-        <h2 id="related-playing-card-cardology" className="eyebrow mb-3 text-gold">
+        <h2 id="related-playing-card-cardology" className="eyebrow mb-3 !text-brand-bronze">
           Related (playing-card Cardology)
         </h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
@@ -572,7 +572,7 @@ export default function CalculatorPage() {
             ["Destiny Cards synonym map", "/destiny-cards"],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="text-gold underline underline-offset-4">
+              <Link href={href} className="text-brand-oxblood underline underline-offset-4">
                 {label}
               </Link>
             </li>

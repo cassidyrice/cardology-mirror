@@ -188,7 +188,7 @@ export default function CardOfTheDayPage() {
           <span className="eyebrow text-brand-ink-soft">{label}</span>
           <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             Cardology Card of the Day
-            <span className="block text-lg text-gold">
+            <span className="block text-lg !text-brand-bronze">
               {card ? `Today: the ${card.label}${card.title ? ` — ${card.title}` : ""}` : "Today: the Joker"}
             </span>
           </h1>
@@ -198,7 +198,7 @@ export default function CardOfTheDayPage() {
         </div>
       </div>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">{directAnswer}</p>
       </div>
       <p className="mb-2 text-xs text-brand-ink-soft">Updated {updatedLabel(updatedIso)}</p>
@@ -220,7 +220,7 @@ export default function CardOfTheDayPage() {
       {card && today ? (
         <>
           <section className="mt-8">
-            <h2 className="eyebrow mb-2 text-gold">Today&rsquo;s card: the {card.label}</h2>
+            <h2 className="eyebrow mb-2 !text-brand-bronze">Today&rsquo;s card: the {card.label}</h2>
             <div className="flex flex-col gap-5 sm:flex-row">
               <img
                 src={`/share-cards/faces/${card.slug}.png`}
@@ -232,7 +232,7 @@ export default function CardOfTheDayPage() {
                 className="w-44 shrink-0 self-start rounded-2xl border border-white/10 shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
               />
               <div className="prose-reading text-brand-ink-soft">
-                {card.title && <p className="eyebrow mb-2 text-gold">{card.title}</p>}
+                {card.title && <p className="eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
                 <p>{card.coreIdentity || card.sweetSpot}</p>
                 <p>
                   The {card.label} is a {suitWord(card)} card — the suit of {card.suitDomain.toLowerCase()} —
@@ -240,7 +240,7 @@ export default function CardOfTheDayPage() {
                   best today, that pattern looks like this: {card.sweetSpot}
                 </p>
                 <p className="text-sm">
-                  <Link href={`/birth-card/${card.slug}`} className="text-gold underline underline-offset-4">
+                  <Link href={`/birth-card/${card.slug}`} className="text-brand-oxblood underline underline-offset-4">
                     Read the full {card.label} meaning →
                   </Link>
                 </p>
@@ -249,7 +249,7 @@ export default function CardOfTheDayPage() {
           </section>
 
           <section className="mt-8">
-            <h2 className="eyebrow mb-2 text-gold">Quick reads: love, work, shadow</h2>
+            <h2 className="eyebrow mb-2 !text-brand-bronze">Quick reads: love, work, shadow</h2>
             <div className="space-y-4">
               <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} tends to reveal itself through ${relationshipTheme(card)}. Notice where that pull is running the room today.`} />
               <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
@@ -264,7 +264,7 @@ export default function CardOfTheDayPage() {
         </>
       ) : (
         <section className="mt-8">
-          <h2 className="eyebrow mb-2 text-gold">Today belongs to the Joker</h2>
+          <h2 className="eyebrow mb-2 !text-brand-bronze">Today belongs to the Joker</h2>
           <div className="prose-reading text-brand-ink-soft">
             <p>
               The deck&rsquo;s calendar math is exact: the 52 card values sum to
@@ -276,7 +276,7 @@ export default function CardOfTheDayPage() {
             </p>
             <p>
               Tomorrow the grid starts over:{" "}
-              <a href={`/born-on/${slugOf(tomorrow)}`} className="text-gold underline underline-offset-4">
+              <a href={`/born-on/${slugOf(tomorrow)}`} className="text-brand-oxblood underline underline-offset-4">
                 January 1
               </a>{" "}
               opens the year with its own fixed card.
@@ -300,13 +300,13 @@ export default function CardOfTheDayPage() {
 
       {faqs.map((f) => (
         <section className="mt-8" key={f.q}>
-          <h2 className="eyebrow mb-2 text-gold">{f.q}</h2>
+          <h2 className="eyebrow mb-2 !text-brand-bronze">{f.q}</h2>
           <p className="prose-reading text-brand-ink-soft">{f.a}</p>
         </section>
       ))}
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Yesterday, today, tomorrow</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Yesterday, today, tomorrow</h2>
         <p className="prose-reading text-brand-ink-soft">
           The card changes at midnight, Mountain Time — come back tomorrow, or
           walk the calendar yourself. Every date&rsquo;s page reads the card as a
@@ -336,7 +336,7 @@ export default function CardOfTheDayPage() {
                   decoding="async"
                   className="w-14 rounded-[5px] border border-white/10 transition-transform group-hover:-translate-y-0.5"
                 />
-                <span className="text-gold underline underline-offset-4">{note}</span>
+                <span className="!text-brand-bronze underline underline-offset-4">{note}</span>
               </a>
             );
           })}
@@ -345,11 +345,11 @@ export default function CardOfTheDayPage() {
 
 
       <p className="mt-6 text-sm">
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
-        <Link href="/cartomancy-vs-tarot" className="text-gold underline underline-offset-4">Cartomancy vs tarot →</Link>
+        <Link href="/cartomancy-vs-tarot" className="text-brand-oxblood underline underline-offset-4">Cartomancy vs tarot →</Link>
         {"  ·  "}
-        <Link href="/birth-card" className="text-gold underline underline-offset-4">All 52 card meanings →</Link>
+        <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">All 52 card meanings →</Link>
       </p>
     </SeoShell>
   );

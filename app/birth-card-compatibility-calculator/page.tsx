@@ -106,7 +106,7 @@ export default function CompatibilityCalculatorPage() {
 
       <CompatibilityCalculator />
       <div className="mb-6 mt-8 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Quick answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Quick answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
           Life Path constitution, where the other person lands in your spectrum, and
@@ -118,7 +118,7 @@ export default function CompatibilityCalculatorPage() {
         cards, each Life Path constitution, where the other person lands in your
         spectrum, and which Life Path cards you share. After the result, open the
         matching pair page in the directory for the full write-up. The{" "}
-        <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
+        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
           $13 One Question Reading
         </Link>{" "}
         reads one person&rsquo;s question (the first birthday) — not a couple reading.
@@ -134,11 +134,11 @@ export default function CompatibilityCalculatorPage() {
           tool. Same two dates always return the same birth cards and Life Path map.
         </p>
         <p className="mt-3 text-sm">
-          <Link href="/cardology-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             How Cardology differs from tarot →
           </Link>
           {" · "}
-          <Link href="/destiny-cards" className="text-gold underline underline-offset-4">
+          <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
             Destiny Cards &amp; Love Cards explained →
           </Link>
         </p>
@@ -153,7 +153,7 @@ export default function CompatibilityCalculatorPage() {
         <div className="mt-3 flex flex-wrap gap-2">
           <a
             href={COMPATIBILITY_DIRECTORY_PATH}
-            className="inline-block rounded-full border border-gold/30 px-4 py-2 text-sm text-gold"
+            className="inline-block rounded-full border border-gold/30 px-4 py-2 text-sm text-brand-oxblood"
           >
             All pairings →
           </a>
@@ -167,14 +167,14 @@ export default function CompatibilityCalculatorPage() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">How to read the result</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How to read the result</h2>
         <p className="prose-reading text-brand-ink-soft">
           Start with birth-card chemistry, then Life Path cross-reference. If the other
           person&rsquo;s birth card lands in your Venus, Mars, Saturn, Neptune, or Pluto
           position, the relationship will feel different than if it lands nowhere in
           the first spectrum. Shared Life Path cards show where both people carry the
           same card in different roles. Method overview:{" "}
-          <Link href="/cardology-compatibility" className="text-gold underline underline-offset-4">
+          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
             how Cardology compatibility works
           </Link>
           .
@@ -182,7 +182,7 @@ export default function CompatibilityCalculatorPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Frequently asked questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
             <div key={faq.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -194,7 +194,7 @@ export default function CompatibilityCalculatorPage() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-3 text-gold">Related pages</h2>
+        <h2 className="eyebrow mb-3 !text-brand-bronze">Related pages</h2>
         <ul className="grid gap-2 text-sm sm:grid-cols-2">
           {[
             ["Cardology Compatibility", "/cardology-compatibility"],
@@ -206,18 +206,18 @@ export default function CompatibilityCalculatorPage() {
             ["Cardology Videos", VIDEO_PATH],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="text-gold underline underline-offset-4">
+              <Link href={href} className="text-brand-oxblood underline underline-offset-4">
                 {label}
               </Link>
             </li>
           ))}
           <li>
-            <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
               Browse every card pairing
             </a>
           </li>
           <li>
-            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
               Birthdays by date
             </a>
           </li>

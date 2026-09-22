@@ -101,16 +101,16 @@ export default function HowToReadPlayingCards() {
       <h1 className="display mb-3 text-3xl text-brand-ink">How to Read Playing Cards</h1>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
-        <Link href="/about" className="text-gold underline underline-offset-4">
+        <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
         · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/methodology" className="text-gold underline underline-offset-4">
+        <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
           Methodology
         </Link>
       </p>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A playing card meaning is suit plus rank: the suit is the arena of life,
           the rank is the move being made in it. Then either shuffle and draw a
@@ -127,7 +127,7 @@ export default function HowToReadPlayingCards() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Playing card meaning by suit and rank</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Playing card meaning by suit and rank</h2>
         <p className="prose-reading text-brand-ink-soft">
           A playing card meaning does not come from a guidebook picture. It comes
           from two facts you can see on the card: which suit, and which rank.
@@ -137,7 +137,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What do you need to start?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What do you need to start?</h2>
         <p className="prose-reading text-brand-ink-soft">
           A standard 52-card deck and something to write with. That is the
           entire kit. The meanings live in the deck&rsquo;s structure — which
@@ -146,7 +146,7 @@ export default function HowToReadPlayingCards() {
           Cardology the Joker belongs only to people born on December 31). If
           you are wondering how this relates to tarot, the suits map one to
           one; the full comparison lives at{" "}
-          <Link href="/cartomancy-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cartomancy-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             cartomancy vs tarot
           </Link>
           .
@@ -154,7 +154,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What does each suit mean?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What does each suit mean?</h2>
         <p className="prose-reading mb-2 text-brand-ink-soft">
           The suit is the arena — the part of life a card is talking about.
           These four domains are the same ones every card page on this site is
@@ -172,7 +172,7 @@ export default function HowToReadPlayingCards() {
         </ul>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Every suit-and-rank combination has its own full page —{" "}
-          <Link href="/birth-card" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
             all 52 card meanings
           </Link>{" "}
           — each written in three ranges: balanced, under-expressed, and
@@ -182,7 +182,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What do the ranks mean, Ace through King?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What do the ranks mean, Ace through King?</h2>
         <p className="prose-reading mb-2 text-brand-ink-soft">
           The rank is the move. The thirteen ranks run one arc — a theme is
           born at the Ace, matures through the numbers, and is mastered by the
@@ -198,11 +198,11 @@ export default function HowToReadPlayingCards() {
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Suit times rank is the whole grammar. The same move lands
           differently by arena: the{" "}
-          <Link href="/birth-card/ace-of-hearts" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card/ace-of-hearts" className="text-brand-oxblood underline underline-offset-4">
             Ace of Hearts
           </Link>{" "}
           is initiation in relationships and emotion, while the{" "}
-          <Link href="/birth-card/king-of-spades" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card/king-of-spades" className="text-brand-oxblood underline underline-offset-4">
             King of Spades
           </Link>{" "}
           is mature command in work, will, and transformation. Read any card by
@@ -212,7 +212,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">How do you do your first reading? Five steps</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How do you do your first reading? Five steps</h2>
         <ol className="prose-reading list-decimal space-y-2 pl-5 text-brand-ink-soft">
           <li>
             <strong>Settle one real question.</strong> Not &ldquo;tell me
@@ -228,7 +228,7 @@ export default function HowToReadPlayingCards() {
             <strong>Draw three cards, left to right, face up.</strong> Give
             each a job before you look: past, present, future. This layout is
             the{" "}
-            <Link href="/playing-card-spreads" className="text-gold underline underline-offset-4">
+            <Link href="/playing-card-spreads" className="text-brand-oxblood underline underline-offset-4">
               playing board guide
             </Link>
             , the one beginners should learn first.
@@ -249,7 +249,7 @@ export default function HowToReadPlayingCards() {
         <p className="prose-reading mt-3 text-brand-ink-soft">
           When you are ready for more layouts — a relationship spread, a
           yes-or-no draw — the{" "}
-          <Link href={SPREADS_HUB_PATH} className="text-gold underline underline-offset-4">
+          <Link href={SPREADS_HUB_PATH} className="text-brand-oxblood underline underline-offset-4">
             playing card spreads guide
           </Link>{" "}
           covers the three worth knowing.
@@ -257,7 +257,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Shuffled draws or the deterministic method?</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Shuffled draws or the deterministic method?</h2>
         <p className="prose-reading text-brand-ink-soft">
           Everything above is the shuffled branch of cartomancy: the cards fall
           where they fall, and ask the same question tomorrow and you will draw
@@ -271,16 +271,16 @@ export default function HowToReadPlayingCards() {
           returns the same card every time, for any reader. No spread, no
           draw, nothing to learn before you start. The full split is explained
           in{" "}
-          <Link href="/cartomancy-vs-tarot" className="text-gold underline underline-offset-4">
+          <Link href="/cartomancy-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             cartomancy vs tarot
           </Link>
           ; the fastest way to feel the difference is to run your own birthday
           through the{" "}
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             birth card calculator
           </Link>{" "}
           — or see which card sits on today&rsquo;s date at the{" "}
-          <Link href="/card-of-the-day" className="text-gold underline underline-offset-4">
+          <Link href="/card-of-the-day" className="text-brand-oxblood underline underline-offset-4">
             card of the day
           </Link>
           .
@@ -302,7 +302,7 @@ export default function HowToReadPlayingCards() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Frequently asked questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
         <div className="space-y-5">
           {faqs.map((f) => (
             <div key={f.q}>
@@ -315,13 +315,13 @@ export default function HowToReadPlayingCards() {
 
 
       <p className="mt-6 text-sm">
-        <Link href={SPREADS_HUB_PATH} className="text-gold underline underline-offset-4">Playing card spreads →</Link>
+        <Link href={SPREADS_HUB_PATH} className="text-brand-oxblood underline underline-offset-4">Playing card spreads →</Link>
         {"  ·  "}
-        <Link href="/cartomancy-vs-tarot" className="text-gold underline underline-offset-4">Cartomancy vs tarot →</Link>
+        <Link href="/cartomancy-vs-tarot" className="text-brand-oxblood underline underline-offset-4">Cartomancy vs tarot →</Link>
         {"  ·  "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
-        <Link href="/birth-card" className="text-gold underline underline-offset-4">All 52 card meanings →</Link>
+        <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">All 52 card meanings →</Link>
       </p>
     </SeoShell>
   );

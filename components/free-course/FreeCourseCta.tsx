@@ -33,7 +33,7 @@ export function FreeCourseCta({
 
   return (
     <section className={`card-surface rounded-2xl border border-gold/20 p-5 sm:p-6 ${className}`} aria-label="Free Cardology course">
-      <p className="eyebrow text-gold">Free four-part video course</p>
+      <p className="eyebrow !text-brand-bronze">Free four-part video course</p>
       <div className="mt-3 grid gap-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
         <div>
           <h2 className="font-serif text-xl text-brand-ink">Learn to read your birth card in 14 minutes</h2>

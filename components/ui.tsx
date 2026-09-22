@@ -38,7 +38,7 @@ export function PositionStack({
   const rows = [
     { label: "Under", text: under, color: "text-dusk", dot: "bg-dusk" },
     { label: "Balanced", text: sweet, color: "text-sage", dot: "bg-sage" },
-    { label: "Over", text: over, color: "text-ember", dot: "bg-ember" },
+    { label: "Over", text: over, color: "text-brand-bronze", dot: "bg-ember" },
   ];
   return (
     <div className="space-y-4">

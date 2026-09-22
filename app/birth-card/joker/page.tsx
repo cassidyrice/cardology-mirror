@@ -89,7 +89,7 @@ export default function JokerPage() {
       </div>
 
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           December 31 is the only birthday in the year that does not map to one of the 52 cards.
           The formula resolves it to zero, and zero is the Joker — the card outside the deck&rsquo;s
@@ -98,7 +98,7 @@ export default function JokerPage() {
       </div>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">The arithmetic</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The arithmetic</h2>
         <p className="prose-reading text-brand-ink-soft">
           Every date runs through the same formula:{" "}
           <strong>Solar Value = 55 − (2 × Month + Day)</strong>. For December 31 that is
@@ -113,7 +113,7 @@ export default function JokerPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Why this is the honest number</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Why this is the honest number</h2>
         <p className="prose-reading text-brand-ink-soft">
           In a common year, <strong>364</strong> dates map to one of the 52 cards and December 31
           resolves to the Joker. A leap year adds February 29, which maps normally to the
@@ -123,7 +123,7 @@ export default function JokerPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">What a Joker birthday means here</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">What a Joker birthday means here</h2>
         <p className="prose-reading text-brand-ink-soft">
           It means the standard card structure does not describe you, and we are not going to pretend
           otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility
@@ -131,7 +131,7 @@ export default function JokerPage() {
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           If you were born on December 31 and you want a reading,{" "}
-          <Link href="/contact" className="text-gold underline underline-offset-4">
+          <Link href="/contact" className="text-brand-oxblood underline underline-offset-4">
             get in touch first
           </Link>{" "}
           rather than buying one. We will tell you plainly what can and cannot be done with a Joker
@@ -142,14 +142,14 @@ export default function JokerPage() {
       <FamousPeopleBlock cardLabel="Joker" people={famousForCard("Joker")} />
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">The two rarest ordinary birthdays</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The two rarest ordinary birthdays</h2>
         <p className="prose-reading text-brand-ink-soft">
           The Joker sits just past the two rarest cards in the system. January 1 computes to 52 — the{" "}
-          <Link href="/birth-card/king-of-spades" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card/king-of-spades" className="text-brand-oxblood underline underline-offset-4">
             King of Spades
           </Link>
           , held by that one date alone. December 30 computes to 1 — the{" "}
-          <Link href="/birth-card/ace-of-hearts" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card/ace-of-hearts" className="text-brand-oxblood underline underline-offset-4">
             Ace of Hearts
           </Link>
           , also a single date. Every other card covers between 2 and 12 birthdays.

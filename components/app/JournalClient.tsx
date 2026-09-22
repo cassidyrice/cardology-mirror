@@ -87,7 +87,7 @@ export default function JournalPage() {
       ) : (
         <section className="space-y-5">
           <div>
-            <Eyebrow className="text-gold">Questions to sit with</Eyebrow>
+            <Eyebrow className="!text-brand-bronze">Questions to sit with</Eyebrow>
             <p className="mt-1 text-xs text-brand-ink-soft">
               Drawn from your cards today. Tap one to write.
             </p>
@@ -97,11 +97,11 @@ export default function JournalPage() {
 
           {ready && profile && error && (
             <div className="card-surface rounded-2xl p-5">
-              <Eyebrow className="text-ember">Couldn&apos;t read today</Eyebrow>
+              <Eyebrow className="!text-brand-bronze">Couldn&apos;t read today</Eyebrow>
               <p className="prose-reading mt-2 text-brand-ink-soft">{error}</p>
               <button
                 onClick={() => router.refresh()}
-                className="mt-3 text-sm uppercase tracking-wider2 text-gold"
+                className="mt-3 text-sm uppercase tracking-wider2 text-brand-bronze"
               >
                 Try again
               </button>
@@ -232,7 +232,7 @@ function EntryCard({
           <span className="eyebrow tnum">{formatDate(entry.date)}</span>
           <Glyphs cards={entry.cards} />
         </div>
-        <p className="mt-2 font-serif text-sm italic text-gold/90">
+        <p className="mt-2 font-serif text-sm italic text-brand-bronze">
           {entry.prompt}
         </p>
         {!open && (
@@ -280,7 +280,7 @@ function EntryCard({
                     if (t) onSave({ id: entry.id, body: t });
                     setEditing(false);
                   }}
-                  className="text-xs uppercase tracking-wider2 text-gold"
+                  className="text-xs uppercase tracking-wider2 text-brand-bronze"
                 >
                   Done
                 </button>
@@ -300,7 +300,7 @@ function EntryCard({
                 <span className="flex items-center gap-3">
                   <button
                     onClick={() => onDelete(entry.id)}
-                    className="text-xs uppercase tracking-wider2 text-ember"
+                    className="text-xs uppercase tracking-wider2 text-brand-bronze"
                   >
                     Delete for good
                   </button>
@@ -314,7 +314,7 @@ function EntryCard({
               ) : (
                 <button
                   onClick={() => setConfirmDelete(true)}
-                  className="text-xs uppercase tracking-wider2 text-brand-ink-soft hover:text-ember"
+                  className="text-xs uppercase tracking-wider2 text-brand-bronze"
                 >
                   Delete
                 </button>
@@ -362,7 +362,7 @@ function WritingSheet({
         <div className="mx-auto mb-5 h-1 w-10 rounded-full bg-white/15" />
 
         <div className="flex items-center justify-between gap-3">
-          <Eyebrow className="text-gold">{prompt.label}</Eyebrow>
+          <Eyebrow className="!text-brand-bronze">{prompt.label}</Eyebrow>
           <Glyphs cards={cards} />
         </div>
         <p className="prose-reading mt-3 font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">

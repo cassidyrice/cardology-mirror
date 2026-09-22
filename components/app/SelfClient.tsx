@@ -100,11 +100,11 @@ export default function SelfPage() {
         <Section eyebrow="No forecast — just what you already are" title="Who you are at core" index={0}>
           <div className="prose-reading">
             <p>
-              <span className="text-gold">{archetype.birth_card}</span> is the card of{" "}
+              <span className="text-brand-bronze">{archetype.birth_card}</span> is the card of{" "}
               <em>{desc.title.replace(/^The /, "").toLowerCase()}</em>. {desc.core_identity}
             </p>
             <p>
-              Layered on top is your <span className="text-gold">{archetype.prc}</span> ruling
+              Layered on top is your <span className="text-brand-bronze">{archetype.prc}</span> ruling
               pattern — <em>{prcDesc.title.replace(/^The /, "").toLowerCase()}</em>. {prcDesc.core_identity}
             </p>
             <p className="text-brand-ink-soft">
@@ -133,13 +133,13 @@ export default function SelfPage() {
           <div className="space-y-5">
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
               <p className="eyebrow mb-2">
-                <span className="text-ember">{archetype.birth_card}</span> · {desc.title}
+                <span className="text-brand-bronze">{archetype.birth_card}</span> · {desc.title}
               </p>
               <p className="prose-reading mb-0 text-brand-ink-soft">{desc.shadow}</p>
             </div>
             <div className="rounded-2xl border border-ember/20 bg-ember/5 p-5">
               <p className="eyebrow mb-2">
-                <span className="text-ember">{archetype.prc}</span> · {prcDesc.title}
+                <span className="text-brand-bronze">{archetype.prc}</span> · {prcDesc.title}
               </p>
               <p className="prose-reading mb-0 text-brand-ink-soft">{prcDesc.shadow}</p>
             </div>
@@ -163,14 +163,14 @@ export default function SelfPage() {
           <div className="card-surface space-y-4 p-5">
             <div>
               <p className="eyebrow mb-2">
-                <span className="text-gold">{archetype.birth_card}</span>
+                <span className="text-brand-bronze">{archetype.birth_card}</span>
               </p>
               <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">{desc.algorithm_gateway}</p>
             </div>
             <hr className="hairline border-t" />
             <div>
               <p className="eyebrow mb-2">
-                <span className="text-gold">{archetype.prc}</span>
+                <span className="text-brand-bronze">{archetype.prc}</span>
               </p>
               <p className="text-[0.97rem] leading-relaxed text-brand-ink-soft">
                 {prcDesc.algorithm_gateway}

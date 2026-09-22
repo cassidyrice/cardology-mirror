@@ -134,7 +134,7 @@ export function StreamedMarkdown({ text }: { text: string }) {
               <ol key={i} className="my-4 space-y-3 pl-1">
                 {b.items.map((it, j) => (
                   <li key={j} className="flex gap-3">
-                    <span className="mt-0.5 font-mono text-sm text-gold/80">
+                    <span className="mt-0.5 font-mono text-sm text-brand-bronze">
                       {j + 1}.
                     </span>
                     <span>{renderInline(it)}</span>

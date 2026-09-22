@@ -106,7 +106,7 @@ export default function CardAstrology() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Playing Cards Birthday Chart &amp; 52-Card Astrology</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           52-card astrology (Cardology) reads a standard deck as calendar structure:
           each birthday maps to one playing card. Use the chart below or the free
@@ -115,7 +115,7 @@ export default function CardAstrology() {
       </div>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/methodology" className="text-gold underline underline-offset-4">
+        <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
           Methodology
         </Link>
       </p>
@@ -128,7 +128,7 @@ export default function CardAstrology() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">The deck and the calendar</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The deck and the calendar</h2>
         <div className="mb-4 grid gap-3 text-sm sm:grid-cols-3">
           {[
             ["52 cards", "52 weeks in a year"],
@@ -136,7 +136,7 @@ export default function CardAstrology() {
             ["13 ranks", "13 weeks in a season"],
           ].map(([left, right]) => (
             <div key={left} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-              <p className="eyebrow mb-1 text-gold">{left}</p>
+              <p className="eyebrow mb-1 !text-brand-bronze">{left}</p>
               <p className="text-brand-ink-soft">{right}</p>
             </div>
           ))}
@@ -150,7 +150,7 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-8" id="calendar">
-        <h2 className="eyebrow mb-2 text-gold">The Cardology calendar</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The Cardology calendar</h2>
         <p className="prose-reading text-brand-ink-soft">
           The Cardology calendar is the deck-to-year mapping at the core of the system:
           52 cards for 52 weeks, four suits for four seasons, 13 ranks for the 13 weeks
@@ -161,7 +161,7 @@ export default function CardAstrology() {
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           To see where your own birthday sits on the Cardology calendar, use the{" "}
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             free birth card calculator
           </Link>{" "}
           or open your date directly in the birthday chart above.
@@ -169,15 +169,15 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-10" id="birthday-chart">
-        <h2 className="eyebrow mb-2 text-gold">Playing cards birthday chart</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Playing cards birthday chart</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
           Each cell is a birthday. Open it for the full Cardology page (birth card,
           ruling card, karma links). Prefer typing a date? Use the{" "}
-          <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             birth card calculator
           </Link>
           {" "}or the{" "}
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
             birthday index
           </a>
           .
@@ -186,7 +186,7 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Suits: four domains of life</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Suits: four domains of life</h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           <li><span className="text-[#8e321f]">♥ Hearts</span> — relationships &amp; emotion</li>
           <li><span className="text-[#8e321f]">♦ Diamonds</span> — values &amp; resources</li>
@@ -196,7 +196,7 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Ranks: a developmental arc</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Ranks: a developmental arc</h2>
         <p className="prose-reading text-brand-ink-soft">
           Ranks read loosely as a progression — Aces begin, number cards develop the
           theme, and court cards mature it. Rank is the stage; suit is the arena.
@@ -204,12 +204,12 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">Timing: the cards move</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Timing: the cards move</h2>
         <p className="prose-reading text-brand-ink-soft">
           Beyond the fixed birth card, yearly spreads rotate themes as you age. Birth
           card stays; surrounding cards shift. That is timing as chapter language, not
           event prophecy. See also the{" "}
-          <Link href="/52-day-period-meaning-tool" className="text-gold underline underline-offset-4">
+          <Link href="/52-day-period-meaning-tool" className="text-brand-oxblood underline underline-offset-4">
             52-day period tool
           </Link>
           .
@@ -217,7 +217,7 @@ export default function CardAstrology() {
       </section>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-4 text-gold">FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
@@ -240,11 +240,11 @@ export default function CardAstrology() {
       </div>
 
       <p className="mt-6 text-sm">
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
-        <Link href="/cardology-for-beginners" className="text-gold underline underline-offset-4">Beginners →</Link>
+        <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">Beginners →</Link>
         {"  ·  "}
-        <Link href="/birth-card" className="text-gold underline underline-offset-4">Browse all 52 cards →</Link>
+        <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">Browse all 52 cards →</Link>
       </p>
     </SeoShell>
   );

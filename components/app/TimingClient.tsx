@@ -52,11 +52,11 @@ export default function TimingPage() {
     return (
       <Screen className="bg-cosmic starfield">
         <div className="mx-auto max-w-md pt-28 text-center">
-          <Eyebrow className="mb-3 text-ember">The timeline didn&apos;t load</Eyebrow>
+          <Eyebrow className="mb-3 !text-brand-bronze">The timeline didn&apos;t load</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
           <button
             onClick={() => router.refresh()}
-            className="mt-4 text-sm uppercase tracking-wider2 text-gold"
+            className="mt-4 text-sm uppercase tracking-wider2 text-brand-bronze"
           >
             Try again
           </button>
@@ -114,7 +114,7 @@ function Timing({
               ? capitalize(data.active_period.domain) + "."
               : null}
           </p>
-          <p className="mt-3 text-sm uppercase tracking-wider2 text-gold">
+          <p className="mt-3 text-sm uppercase tracking-wider2 text-brand-bronze">
             Day <span className="tnum">{daysIn + 1}</span> into {activePlanet}
           </p>
           <p className="mt-1 text-xs text-brand-ink-soft">
@@ -135,13 +135,13 @@ function Timing({
             className="card-surface group flex items-center justify-between gap-3 p-4 transition hover:border-gold/30 active:scale-[0.99]"
           >
             <span>
-              <span className="eyebrow text-gold">Story Arc</span>
+              <span className="eyebrow !text-brand-bronze">Story Arc</span>
               <span className="mt-1 block text-pretty font-serif text-[0.95rem] leading-snug text-brand-ink">
                 Read your year as one arc — long-range chapter, the deep turn, the
                 horizon.
               </span>
             </span>
-            <span className="shrink-0 text-brand-ink-soft transition-colors group-hover:text-gold">
+            <span className="shrink-0 transition-colors text-brand-bronze">
               &rarr;
             </span>
           </Link>

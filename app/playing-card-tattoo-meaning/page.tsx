@@ -75,7 +75,7 @@ export default function PlayingCardTattooMeaning() {
       <p className="prose-reading mt-3 text-brand-ink-soft">
         They live on the existing birth-card pages, not as 52 extra URLs. This hub is the index.
         Generated references, not client work. If you are inking a birth card,{" "}
-        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+        <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
           find yours first
         </Link>
         .
@@ -98,7 +98,7 @@ export default function PlayingCardTattooMeaning() {
               className="aspect-[3/4] w-full object-cover"
             />
             <div className="p-3">
-              <p className="font-serif text-base text-brand-ink group-hover:text-gold">{row.label}</p>
+              <p className="font-serif text-base text-brand-bronze">{row.label}</p>
               <p className="text-xs text-brand-ink-soft">{row.bodyLabel}</p>
             </div>
           </Link>
@@ -106,7 +106,7 @@ export default function PlayingCardTattooMeaning() {
       </div>
 
       <section className="mt-10">
-        <h2 className="eyebrow mb-2 text-gold">Questions</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">Questions</h2>
         <dl className="space-y-4">
           {faqs.map((item) => (
             <div key={item.q}>

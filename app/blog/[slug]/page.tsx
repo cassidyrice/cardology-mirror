@@ -254,7 +254,7 @@ export default async function BlogPostPage({
             <ul className="mt-3 space-y-2 text-sm">
               {post.coreLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-gold underline underline-offset-4">
+                  <Link href={link.href} className="text-brand-oxblood underline underline-offset-4">
                     {link.label}
                   </Link>
                   {link.note && <span className="text-brand-ink-soft"> — {link.note}</span>}

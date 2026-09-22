@@ -42,7 +42,7 @@ export function AccessGate({
       transition={{ duration: 0.5 }}
       className="card-surface mx-auto mt-6 max-w-sm p-6"
     >
-      <Eyebrow className="text-gold">Members only</Eyebrow>
+      <Eyebrow className="!text-brand-bronze">Members only</Eyebrow>
       <h2 className="display mt-2 text-2xl text-brand-ink">{title}</h2>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-brand-ink-soft">{blurb}</p>
 
@@ -67,7 +67,7 @@ export function AccessGate({
           className={field}
           aria-label="Access code"
         />
-        {error && <p className="text-sm text-ember">{error}</p>}
+        {error && <p className="text-sm text-brand-bronze">{error}</p>}
         <button
           type="submit"
           disabled={busy || !email || !code}

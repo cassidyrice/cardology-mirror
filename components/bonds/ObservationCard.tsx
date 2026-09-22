@@ -5,8 +5,8 @@ import type { BondObservation } from "./compare";
 
 const ACCENT: Record<BondObservation["kind"], string> = {
   shared: "text-sage",
-  complement: "text-gold",
-  tension: "text-ember",
+  complement: "text-brand-bronze",
+  tension: "text-brand-bronze",
   "gift-shadow": "text-dusk",
 };
 

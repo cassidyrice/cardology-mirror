@@ -161,13 +161,13 @@ export function Prompts({ reading, onSelect, className = "" }: PromptsProps) {
             className="card-surface group w-full rounded-2xl p-5 text-left transition-colors hover:border-gold/30 active:scale-[0.99]"
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="eyebrow text-gold">{p.label}</span>
+              <span className="eyebrow !text-brand-bronze">{p.label}</span>
               <Glyphs cards={p.cards} />
             </div>
             <p className="prose-reading mt-3 text-pretty font-serif text-[1.05rem] italic leading-relaxed text-brand-ink">
               {p.question}
             </p>
-            <span className="mt-3 inline-block text-xs uppercase tracking-wider2 text-brand-ink-soft transition-colors group-hover:text-gold">
+            <span className="mt-3 inline-block text-xs uppercase tracking-wider2 transition-colors text-brand-bronze">
               Sit with this &rarr;
             </span>
           </button>

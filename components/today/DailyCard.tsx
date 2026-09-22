@@ -29,7 +29,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
       animate={{ opacity: 1, y: 0 }}
       className="card-surface rounded-2xl p-6"
     >
-      <Eyebrow className="text-gold">Your card today</Eyebrow>
+      <Eyebrow className="!text-brand-bronze">Your card today</Eyebrow>
       <p className="mt-1 text-xs uppercase tracking-wider2 text-brand-ink-soft">
         {dailyLabel(daily)}
       </p>

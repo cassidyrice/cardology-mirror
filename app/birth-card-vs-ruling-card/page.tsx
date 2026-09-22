@@ -47,7 +47,7 @@ export default function BirthVsRuling() {
 
       <h1 className="display mb-3 text-3xl text-brand-ink">Birth Card vs Ruling Card</h1>
       <div className="mb-6 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           In Cardology, the birth card is the fixed core card assigned to a
           birthday. The ruling card is a second layer selected through the birthday&rsquo;s
@@ -63,7 +63,7 @@ export default function BirthVsRuling() {
       </p>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">The birth card — your core</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The birth card — your core</h2>
         <p className="prose-reading text-brand-ink-soft">
           Set purely by your birthday, the birth card is your clearest lifelong
           significator. It describes your fundamental temperament — the way you
@@ -72,7 +72,7 @@ export default function BirthVsRuling() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">The ruling card — your tuning</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">The ruling card — your tuning</h2>
         <p className="prose-reading text-brand-ink-soft">
           Your planetary ruling card is tied to your astrological sign. It acts
           like a lens over the birth card: same core, but expressed with a
@@ -83,7 +83,7 @@ export default function BirthVsRuling() {
       </section>
 
       <section className="mt-8">
-        <h2 className="eyebrow mb-2 text-gold">How to read them together</h2>
+        <h2 className="eyebrow mb-2 !text-brand-bronze">How to read them together</h2>
         <p className="prose-reading text-brand-ink-soft">
           Start with the birth card to understand your base pattern, then read
           the ruling card as the &ldquo;how&rdquo; — the style in which that pattern shows
@@ -101,11 +101,11 @@ export default function BirthVsRuling() {
       </div>
 
       <p className="mt-6 text-sm">
-        <Link href="/planetary-ruling-card" className="text-gold underline underline-offset-4">Planetary ruling card chart: all 366 birthdays →</Link>
+        <Link href="/planetary-ruling-card" className="text-brand-oxblood underline underline-offset-4">Planetary ruling card chart: all 366 birthdays →</Link>
         {"  ·  "}
-        <Link href="/what-is-cardology" className="text-gold underline underline-offset-4">What is Cardology? →</Link>
+        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">What is Cardology? →</Link>
         {"  ·  "}
-        <Link href="/cardology-compatibility" className="text-gold underline underline-offset-4">Compatibility →</Link>
+        <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">Compatibility →</Link>
       </p>
     </SeoShell>
   );

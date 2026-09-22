@@ -15,7 +15,7 @@ export function ShadowLayer({ code }: { code: string }) {
       aria-labelledby="shadow-archetype"
       data-shadow-layer={s.code}
     >
-      <p className="eyebrow text-gold">The shadow, by name</p>
+      <p className="eyebrow !text-brand-bronze">The shadow, by name</p>
       <h2 id="shadow-archetype" className="mt-2 font-serif text-2xl text-brand-ink">
         {s.label}: {s.archetype}
       </h2>
@@ -51,7 +51,7 @@ export function ShadowPrompts({ code }: { code: string }) {
   if (!s || s.prompts.length === 0) return null;
   return (
     <section className="mt-10" aria-labelledby="shadow-prompts" data-shadow-prompts={s.code}>
-      <h2 id="shadow-prompts" className="eyebrow mb-2 text-gold">
+      <h2 id="shadow-prompts" className="eyebrow mb-2 !text-brand-bronze">
         Three questions for {s.archetype}
       </h2>
       <p className="prose-reading mb-4 text-brand-ink-soft">
@@ -60,7 +60,7 @@ export function ShadowPrompts({ code }: { code: string }) {
       <ol className="space-y-3">
         {s.prompts.map((p, i) => (
           <li key={i} className="flex gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
-            <span className="font-serif text-2xl leading-none text-gold">{String(i + 1).padStart(2, "0")}</span>
+            <span className="font-serif text-2xl leading-none text-brand-bronze">{String(i + 1).padStart(2, "0")}</span>
             <p className="prose-reading text-brand-ink-soft">{p}</p>
           </li>
         ))}

@@ -122,14 +122,14 @@ export default function BirthCardIndex() {
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.04] p-5" data-ai-summary>
-        <p className="eyebrow mb-2 text-gold">Direct answer</p>
+        <p className="eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
           playing deck — not tarot and not a paper birthday card. Browse all 52 meanings
           below or use the free calculator to find yours. Each card also has a pip-only
           tattoo reference — the exact French-deck layout, on skin.{" "}
-          <Link href="/playing-card-tattoo-meaning" className="text-gold underline underline-offset-4">
+          <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
             All 52 pip tattoos
           </Link>
           .
@@ -142,7 +142,7 @@ export default function BirthCardIndex() {
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
         After you have the card, the{" "}
-        <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-gold underline underline-offset-4">
+        <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-brand-oxblood underline underline-offset-4">
           {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
         </Link>{" "}
         reads one decision from it — your card, this year&rsquo;s cards, and the card
@@ -150,15 +150,15 @@ export default function BirthCardIndex() {
       </p>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
-        <Link href="/about" className="text-gold underline underline-offset-4">
+        <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
           Cassidy Rice
         </Link>{" "}
         · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-gold underline underline-offset-4">
+        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
           Editorial policy
         </Link>{" "}
         ·{" "}
-        <Link href="/methodology" className="text-gold underline underline-offset-4">
+        <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
           Calculation method
         </Link>
       </p>
@@ -166,22 +166,22 @@ export default function BirthCardIndex() {
         Every birthday maps to exactly one of the 52 playing cards — your{" "}
         <strong>birth card</strong>. No quiz, no choosing: a fixed vocabulary for how you
         operate, whether you&rsquo;ve noticed it or not. Pick a card below, or{" "}
-        <Link href="/birth-card-calculator" className="text-gold underline underline-offset-4">
+        <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
           calculate yours
         </Link>
         {" "}or open the{" "}
-        <Link href="/birth-card-calculator#cardology-chart" className="text-gold underline underline-offset-4">
+        <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
           Cardology chart
         </Link>
         .
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         Prefer to browse another way? Explore{" "}
-        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           birthdays by date
         </a>{" "}
         or{" "}
-        <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-gold underline underline-offset-4">
+        <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           every two-card pairing
         </a>
         .
@@ -192,7 +192,7 @@ export default function BirthCardIndex() {
           <a
             key={g.suit}
             href={`#${g.suit}`}
-            className="rounded-full border border-white/10 px-3 py-1 text-brand-ink-soft transition hover:border-gold hover:text-gold"
+            className="rounded-full border border-white/10 px-3 py-1 transition hover:border-gold text-brand-oxblood"
           >
             {SUIT_GLYPHS[g.suit]} {g.suit}
           </a>
@@ -200,7 +200,7 @@ export default function BirthCardIndex() {
       </nav>
 
       <section className="mb-10 rounded-2xl border border-gold/20 bg-white/[0.04] p-5" aria-labelledby="popular-card-meanings">
-        <h2 id="popular-card-meanings" className="eyebrow mb-3 text-gold">Popular card meanings</h2>
+        <h2 id="popular-card-meanings" className="eyebrow mb-3 !text-brand-bronze">Popular card meanings</h2>
         <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
           Start with the cards people are reading most, then browse the full deck below.
         </p>
@@ -222,7 +222,7 @@ export default function BirthCardIndex() {
             ["3 of Clubs meaning", "/birth-card/3-of-clubs"],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-gold transition hover:border-gold hover:text-brand-oxblood">
+              <Link href={href} className="inline-block rounded-full border border-gold/30 px-4 py-2 text-brand-oxblood transition hover:border-gold hover:text-brand-oxblood">
                 {label} →
               </Link>
             </li>
@@ -235,7 +235,7 @@ export default function BirthCardIndex() {
       <div className="space-y-12">
         {groups.map((g) => (
           <section key={g.suit} id={g.suit} className="scroll-mt-10">
-            <h2 className="eyebrow mb-4 text-gold">
+            <h2 className="eyebrow mb-4 !text-brand-bronze">
               {SUIT_GLYPHS[g.suit]} {cap(g.suit)} · {g.domain}
             </h2>
             <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -274,7 +274,7 @@ export default function BirthCardIndex() {
       </div>
 
       <section className="mt-12" id="faq">
-        <h2 className="eyebrow mb-4 text-gold">Birth card FAQ</h2>
+        <h2 className="eyebrow mb-4 !text-brand-bronze">Birth card FAQ</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">

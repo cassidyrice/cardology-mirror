@@ -67,12 +67,12 @@ export function PeriodRow({
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
               <span
-                className={`font-serif text-lg ${isCurrent ? "text-gold" : "text-brand-ink"}`}
+                className={`font-serif text-lg ${isCurrent ? "text-brand-bronze" : "text-brand-ink"}`}
               >
                 {w.planet}
               </span>
               {isCurrent && (
-                <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider2 text-gold">
+                <span className="rounded-full bg-gold/15 px-2 py-0.5 text-[0.6rem] uppercase tracking-wider2 text-brand-bronze">
                   Now
                 </span>
               )}
