@@ -5,7 +5,7 @@
  */
 import { chromium, type Page } from "playwright";
 
-import sitemap from "../app/sitemap";
+import { buildApplicationSitemapEntries } from "../lib/application-sitemap";
 
 const VIEWPORT_WIDTH = 390;
 const VIEWPORT_HEIGHT = 844;
@@ -15,7 +15,7 @@ const base = (process.env.SEO_BASE_URL || "http://127.0.0.1:3577").replace(
 );
 
 function sitemapPathnames(): string[] {
-  return sitemap()
+  return buildApplicationSitemapEntries()
     .map((entry) => {
       const pathname = new URL(entry.url).pathname;
       return pathname === "/" ? "/" : pathname.replace(/\/$/, "");

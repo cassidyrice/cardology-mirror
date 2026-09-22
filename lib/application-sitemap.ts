@@ -1,4 +1,3 @@
-import type { MetadataRoute } from "next";
 import { allBlogPillars, allBlogPosts, blogPillarPath, blogPostPath, type BlogPost } from "@/lib/blog";
 import {
   CARD_MEANING_PAGES_UPDATED,
@@ -7,9 +6,9 @@ import {
 import { allCardSlugs } from "@/lib/seo-cards";
 import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
 import { sitemapDate } from "@/lib/sitemap-date";
-import { normalizeSitemapUrl } from "@/lib/sitemap-xml";
+import { normalizeSitemapUrl, renderSitemapUrlset, type SitemapLoc } from "@/lib/sitemap-xml";
 
-export const dynamic = "force-static";
+export type ApplicationSitemapEntry = SitemapLoc;
 
 function postModified(post: BlogPost): string {
   return post.dateModified || post.datePublished;
@@ -19,16 +18,26 @@ function latestOf(values: string[]): string {
   return values.reduce((max, value) => (value > max ? value : max), "");
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+/**
+ * Build the application sitemap as plain {url, lastModified} rows with
+ * YYYY-MM-DD lastmod strings. Validates every date through sitemapDate so a
+ * bad input fails at generation time (caught by unit tests / CI) instead of
+ * during Next's Date.toISOString() serialization on the edge.
+ */
+export function buildApplicationSitemapEntries(): ApplicationSitemapEntry[] {
   const posts = allBlogPosts();
   const latestPostDate = latestOf(posts.map(postModified)) || pageUpdatedForPath("/blog");
 
-  const entries: MetadataRoute.Sitemap = MARKETING_PATHS.map((p) => ({
+  // Touch every date through sitemapDate so invalid ISO days throw here with a
+  // clear RangeError rather than later as Invalid Date → toISOString().
+  const day = (value: string): string => sitemapDate(value).toISOString().slice(0, 10);
+
+  const entries: ApplicationSitemapEntry[] = MARKETING_PATHS.map((p) => ({
     url: normalizeSitemapUrl(`${SITE_URL}${p}`),
     // /blog is an index of the posts, so its truthful lastmod is the newest
     // post date (the daily generator moves it); every other marketing page
     // only changes when a deploy actually changes it.
-    lastModified: sitemapDate(p === "/blog" ? latestPostDate : pageUpdatedForPath(p)),
+    lastModified: day(p === "/blog" ? latestPostDate : pageUpdatedForPath(p)),
   }));
 
   // The 52 card pages are the site's core SEO asset. This is their ONLY
@@ -37,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of allCardSlugs()) {
     entries.push({
       url: normalizeSitemapUrl(`${SITE_URL}/birth-card/${slug}`),
-      lastModified: sitemapDate(CARD_MEANING_PAGES_UPDATED),
+      lastModified: day(CARD_MEANING_PAGES_UPDATED),
     });
   }
 
@@ -46,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // answer we have for "december 31 birth card".
   entries.push({
     url: normalizeSitemapUrl(`${SITE_URL}/birth-card/joker`),
-    lastModified: sitemapDate(CARD_MEANING_PAGES_UPDATED),
+    lastModified: day(CARD_MEANING_PAGES_UPDATED),
   });
 
   // The 366 birthday routes are deliberately NOT listed (and no longer
@@ -62,7 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const pillarDates = posts.filter((post) => post.pillar === pillar.slug).map(postModified);
     entries.push({
       url: normalizeSitemapUrl(`${SITE_URL}${blogPillarPath(pillar)}`),
-      lastModified: sitemapDate(latestOf(pillarDates) || latestPostDate),
+      lastModified: day(latestOf(pillarDates) || latestPostDate),
     });
   }
 
@@ -72,9 +81,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const post of posts) {
     entries.push({
       url: normalizeSitemapUrl(`${SITE_URL}${blogPostPath(post)}`),
-      lastModified: sitemapDate(postModified(post)),
+      lastModified: day(postModified(post)),
     });
   }
 
   return entries;
+}
+
+export function renderApplicationSitemapXml(): string {
+  return renderSitemapUrlset(buildApplicationSitemapEntries());
 }
