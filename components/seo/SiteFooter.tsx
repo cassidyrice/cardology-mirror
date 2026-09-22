@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -9,14 +10,14 @@ import {
 import {
   BIRTH_CARD_CALCULATOR_LABEL,
   BIRTH_CARD_CALCULATOR_PATH,
+  MONEY_PATHS,
+  moneyPathLinkClass,
   ONE_QUESTION_NAV,
-  WHAT_IS_CARDOLOGY_LABEL,
-  WHAT_IS_CARDOLOGY_PATH,
+  type MoneyPath,
 } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 
 const FREE_TOOLS = [
-  { label: BIRTH_CARD_CALCULATOR_LABEL, href: BIRTH_CARD_CALCULATOR_PATH },
   { label: "All 52 Cards", href: "/birth-card" },
   { label: "Compatibility", href: "/birth-card-compatibility-calculator" },
   { label: "52-Day Period Tool", href: "/52-day-period-meaning-tool" },
@@ -29,25 +30,34 @@ const READ = [
   { label: "Blog", href: "/blog" },
   { label: "Videos", href: VIDEO_PATH },
   { label: "Beginners", href: "/cardology-for-beginners" },
-  { label: WHAT_IS_CARDOLOGY_LABEL, href: WHAT_IS_CARDOLOGY_PATH },
   { label: "Cardology vs Tarot", href: "/cardology-vs-tarot" },
   { label: "Karma Cards", href: "/karma-cards" },
   { label: "Spreads", href: "/playing-card-spreads" },
 ] as const;
 
 const GET = [
-  { label: "My purchases", href: "/my-purchases" },
-  { label: ONE_QUESTION_NAV.label, href: ONE_QUESTION_NAV.href },
   { label: "Free course", href: "/free-course" },
+  { label: "My purchases", href: "/my-purchases" },
 ] as const;
 
 const ABOUT = [
   { label: "About", href: "/about" },
   { label: "Methodology", href: "/methodology" },
   { label: "Editorial policy", href: "/editorial-policy" },
-  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ] as const;
+
+function coreHref(item: MoneyPath): string {
+  if (item.id === "reading") return ONE_QUESTION_NAV.href;
+  if (item.id === "calculator") return BIRTH_CARD_CALCULATOR_PATH;
+  return item.href;
+}
+
+function coreLabel(item: MoneyPath): string {
+  if (item.id === "calculator") return BIRTH_CARD_CALCULATOR_LABEL;
+  if (item.id === "reading") return ONE_QUESTION_NAV.label;
+  return item.label;
+}
 
 function FooterLink({
   href,
@@ -87,12 +97,30 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
             <BrandLogo compact />
           </Link>
         </p>
-        <p className="mb-8 text-sm">
-          <Link href="/explore" className="editorial-link text-brand-ink-soft">
-            Explore →
-          </Link>
-        </p>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <nav aria-label="Core" className="mb-10">
+          <ul className="flex flex-col gap-3 text-base sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-3">
+            {MONEY_PATHS.map((item) => (
+              <li key={item.id} className="flex items-baseline gap-2">
+                <Link
+                  href={coreHref(item)}
+                  data-money-path={item.id}
+                  className={moneyPathLinkClass(item.weight)}
+                >
+                  <strong className="font-semibold">{coreLabel(item)}</strong>
+                </Link>
+                {item.id === "calculator" ? (
+                  <span className="text-xs text-brand-ink-soft">Free</span>
+                ) : null}
+                {item.id === "reading" ? (
+                  <span className="text-xs text-brand-ink-soft">
+                    {ONE_QUESTION_TURNAROUND}
+                  </span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <nav aria-label="More" className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Free tools</p>
             <ul className="space-y-2">
@@ -113,6 +141,11 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                   <FooterLink href={item.href}>{item.label}</FooterLink>
                 </li>
               ))}
+              <li>
+                <Link href="/explore" className="hover:text-brand-ink">
+                  Explore →
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
@@ -135,7 +168,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
               ))}
             </ul>
           </div>
-        </div>
+        </nav>
         <div className="mt-10 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-line pt-5 text-xs">
           <Link href="/privacy-policy" className="hover:text-brand-ink">
             Privacy

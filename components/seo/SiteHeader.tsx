@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
-import { PRIMARY_NAV } from "@/lib/site-nav";
+import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
@@ -30,7 +30,8 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="whitespace-nowrap transition hover:text-brand-ink"
+                  data-money-path={moneyPathByHref(link.href).id}
+                  className="money-path whitespace-nowrap font-semibold text-brand-ink transition hover:text-brand-ink"
                 >
                   {link.label}
                 </Link>
@@ -55,7 +56,8 @@ export function SiteHeader() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="block min-h-11 py-3"
+                        data-money-path={moneyPathByHref(link.href).id}
+                        className="money-path block min-h-11 py-3 font-semibold text-brand-ink"
                       >
                         {link.label}
                       </Link>

@@ -353,6 +353,52 @@ async function main(): Promise<void> {
       0,
       "header does not send people to the deep-dive checkout slug",
     );
+    assert.deepEqual(
+      await page.locator('nav[aria-label="Primary"] a').evaluateAll((nodes) =>
+        nodes.map((node) => [
+          node.getAttribute("data-money-path"),
+          node.getAttribute("href"),
+        ]),
+      ),
+      [
+        ["calculator", "/birth-card-calculator"],
+        ["cardology", "/what-is-cardology"],
+        ["reading", "/products/one-question-reading"],
+        ["faq", "/faq"],
+      ],
+      "desktop primary nav is the four money paths, free calculator before the $13 reading",
+    );
+    assert.deepEqual(
+      await page.locator('footer nav[aria-label="Core"] a').evaluateAll((nodes) =>
+        nodes.map((node) => [
+          node.getAttribute("data-money-path"),
+          node.getAttribute("href"),
+        ]),
+      ),
+      [
+        ["calculator", "/birth-card-calculator"],
+        ["cardology", "/what-is-cardology"],
+        ["reading", "/products/one-question-reading"],
+        ["faq", "/faq"],
+      ],
+      "footer core row repeats the same money paths",
+    );
+    const footerText = await page.locator("footer").innerText();
+    assert.match(footerText, /Free/);
+    assert.match(footerText, /about a minute/);
+    assert.match(footerText, /mirror, not a forecast/);
+    assert.equal(
+      await page.locator('footer a[href="/products/blueprint-report"]').count(),
+      0,
+      "footer does not pitch the Blueprint Report",
+    );
+    assert.equal(await page.locator("footer").getByText("Deep Dive").count(), 0);
+    const footerHtml = await page.locator("footer").innerHTML();
+    assert.ok(
+      footerHtml.indexOf('href="/birth-card-calculator"') <
+        footerHtml.indexOf('href="/explore"'),
+      "footer money path comes before the explore directory",
+    );
 
     await page.setViewportSize({ width: 820, height: 800 });
     await goto(page, "/");
@@ -414,6 +460,21 @@ async function main(): Promise<void> {
       const clipped = await link.evaluate((node) => node.scrollWidth > node.clientWidth + 1);
       assert.equal(clipped, false, `390px: ${label} is not clipped`);
     }
+    assert.deepEqual(
+      await page.locator('nav[aria-label="Mobile primary"] a').evaluateAll((nodes) =>
+        nodes.map((node) => [
+          node.getAttribute("data-money-path"),
+          node.getAttribute("href"),
+        ]),
+      ),
+      [
+        ["calculator", "/birth-card-calculator"],
+        ["cardology", "/what-is-cardology"],
+        ["reading", "/products/one-question-reading"],
+        ["faq", "/faq"],
+      ],
+      "mobile nav destinations match desktop money paths",
+    );
     await page.screenshot({ path: screenshotPath, fullPage: false });
 
     // Retired marketing URLs must still reach the current offer.
