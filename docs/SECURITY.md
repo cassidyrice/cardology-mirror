@@ -78,7 +78,7 @@ The binding starts collecting on the next production deploy. This repo change do
 
 ## Checkout session fields fulfilment depends on
 
-Hosted Checkout is created in `app/checkout/[offer]/session/route.ts`. Checkout Studio does not list the fields below. They stay because delivery reads them. `docs/SITE-RECORD.md` is not in this repository, so this is the home for that warning (retired from `STRIPE_INTEGRATION_TODO.md`, 2026-09-22).
+Hosted Checkout is created in `app/checkout/[offer]/session/route.ts`. Checkout Studio does not list the fields below. They stay because delivery reads them. `docs/SITE-RECORD.md` is not in this repository, so this is the home for that warning (retired from `STRIPE_INTEGRATION_TODO.md`, 2026-09-22). CAR-13 §1.1 palette tracking stays in `docs/CAR-13-palette-migration.md`: the 18 remaps are done, and rules 19–23 stay as paper-shell chrome (D4).
 
 - `metadata`, and the copy on `payment_intent_data.metadata` (payment) or `subscription_data.metadata` (subscription), carry the SKU, birthday, and question. The webhook and past-buyer SKU lookup read that metadata. Stripping it breaks delivery.
 - `branding_settings` and `customer_creation` (`"always"` on the payment branch) stay as written.
