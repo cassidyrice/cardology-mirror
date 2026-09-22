@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
@@ -62,7 +63,7 @@ export default function TermsOfService() {
               <strong>One Question Reading ($13)</strong> — a written reading on one
               question, built from the birth card your birthday maps to, this year's
               Long Range and Pluto cards, and the card you owe. Delivered by email as
-              plain text within 2 business days. One payment, no renewal. It is
+              plain text within {ONE_QUESTION_TURNAROUND}. One payment, no renewal. It is
               interpretive, not advice: it does not predict events and does not
               replace a professional.
             </li>

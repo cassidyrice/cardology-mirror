@@ -53,7 +53,9 @@ test("birth-card hub sells the $13 One Question Reading without gutting free val
   expect(page).toContain("Find your birth card free");
   expect(page).toContain("<FreeCourseCta");
   expect(page).toContain("One Question Reading ($13)");
+  expect(page).toContain("ONE_QUESTION_TURNAROUND");
   expect(page).toContain("One payment, no renewal");
+  expect(page).not.toContain("2 business days");
   expect(page).not.toContain("$9");
   expect(page).not.toContain("$47");
   expect(page).not.toContain("personal-card-blueprint");

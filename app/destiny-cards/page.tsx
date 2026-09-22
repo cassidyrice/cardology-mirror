@@ -5,6 +5,7 @@ import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -196,7 +197,7 @@ export default function DestinyCardsPage() {
         <Link href="/products/one-question-reading" className="text-gold underline underline-offset-4">
           $13 One Question Reading
         </Link>
-        {" "}— one decision, read from your card and your year, written within 2 business days.
+        {" "}— one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -206,7 +207,7 @@ export default function DestinyCardsPage() {
         <p className="mt-2 text-sm leading-relaxed text-mist">
           The calculator result already offers the $13 One Question Reading: one
           question, read from your card, this year's cards, and the card you owe.
-          Written for you within 2 business days. One payment.
+          Written for you within {ONE_QUESTION_TURNAROUND}. One payment.
         </p>
         <Link
           href="/products/one-question-reading"

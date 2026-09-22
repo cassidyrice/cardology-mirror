@@ -13,6 +13,8 @@ test("destiny hub title stays under 60 and leads with Cards of Destiny", () => {
   expect(source).toContain("Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>");
   expect(source).toContain('id="destiny-chart"');
   expect(source).toContain("$13");
+  expect(source).toContain("ONE_QUESTION_TURNAROUND");
+  expect(source).not.toContain("2 business days");
   expect(source).not.toContain("$29");
 });
 

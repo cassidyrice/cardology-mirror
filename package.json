@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "test": "bun run test:cardology && bun test scripts/agent-card.test.ts scripts/even-agent.test.ts scripts/compatibility-api.test.ts scripts/token-compatibility.test.ts scripts/api-body-validation.test.ts && bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/audit-privacy-leak.test.ts && bun scripts/free-course-media.test.ts && bun run test:ruling-card-reference && bun run test:fulfillment && bun test scripts/deploy-lock.test.ts && bun scripts/blueprint-launch.integration.tsx",
+    "test": "bun run test:cardology && bun test scripts/agent-card.test.ts scripts/one-question-sla.test.ts scripts/even-agent.test.ts scripts/compatibility-api.test.ts scripts/token-compatibility.test.ts scripts/api-body-validation.test.ts && bun scripts/validate-public-truth.ts && bun scripts/checkout-abandon-friction.test.ts && bun scripts/audit-privacy-leak.test.ts && bun scripts/free-course-media.test.ts && bun run test:ruling-card-reference && bun run test:fulfillment && bun test scripts/deploy-lock.test.ts && bun scripts/blueprint-launch.integration.tsx",
     "test:cardology": "bun test scripts/cardology-system.test.ts scripts/karma-golden.test.ts scripts/card-bible.test.ts",
     "test:homepage-hero": "bun test scripts/homepage-hero.test.ts",
     "test:homepage-hero:browser": "bun scripts/homepage-hero-browser.ts",

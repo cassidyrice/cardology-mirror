@@ -28,6 +28,15 @@ test("methodology publishes formula, exceptions, history, and vectors", () => {
   expect(methodology).toContain("They do not change this public formula");
 });
 
+test("about and contact sell the minute One Question Reading SLA", () => {
+  expect(about).toContain("ONE_QUESTION_TURNAROUND");
+  expect(about).not.toContain("2 business days");
+  expect(contact).toContain("ONE_QUESTION_TURNAROUND");
+  expect(contact).toContain("CONTACT_RESPONSE");
+  expect(contact).not.toContain("2 business days");
+  expect(contact).not.toMatch(/2-business-day/i);
+});
+
 test("about names sources and business identity without overclaiming", () => {
   expect(about).toContain("Business identity");
   expect(about).toContain("Olney Richmond");

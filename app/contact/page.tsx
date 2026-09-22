@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
+import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { CONTACT_EMAIL, CONTACT_RESPONSE, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -39,8 +40,8 @@ export default function ContactPage() {
             <Link href="/products/one-question-reading" className="editorial-link text-brand-ink">
               Review what is included
             </Link>
-            . Your reading is written for you and emailed within 2 business
-            days of successful checkout.
+            . Your reading is written for you and emailed within{" "}
+            {ONE_QUESTION_TURNAROUND} of successful checkout.
           </p>
         </div>
       </header>
@@ -61,7 +62,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["One Question Reading questions", "Ask what the $13 One Question Reading includes, how the 2-business-day turnaround works, how the birth date and question are used, or how to reword a question before it is written."],
+          ["One Question Reading questions", `Ask what the $13 One Question Reading includes, how the ${ONE_QUESTION_TURNAROUND} turnaround works, how the birth date and question are used, or how to reword a question before it is written.`],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],
