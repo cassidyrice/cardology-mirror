@@ -67,7 +67,7 @@ export default function JournalPage() {
   const showLoading = !ready || (profile && (loading || (!data && !error)));
 
   return (
-    <Screen className="starfield bg-cosmic mx-auto max-w-md">
+    <Screen className="mx-auto max-w-md">
       <Eyebrow className="tnum">{PRETTY_DATE.format(new Date())}</Eyebrow>
       <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
         The Journal

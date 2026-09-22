@@ -18,7 +18,7 @@ export default function SelfPage() {
 
   if (!ready || (profile && loading && !data)) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md">
           <div className="flex flex-col items-center gap-4 pt-32 text-center">
             <div className="h-48 w-36 animate-pulse rounded-xl bg-brand-ivory/70" />
@@ -31,7 +31,7 @@ export default function SelfPage() {
 
   if (!profile) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-12">
           <ProfilePrompt
             title="Your blueprint is calculated from your birthday."
@@ -44,7 +44,7 @@ export default function SelfPage() {
 
   if (error) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
           <Eyebrow className="mb-3">Something interrupted the read</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
@@ -62,7 +62,7 @@ export default function SelfPage() {
   const prcDesc = archetype.prc_description;
 
   return (
-    <Screen className="bg-cosmic starfield">
+    <Screen>
       <div className="relative z-10 mx-auto max-w-md space-y-12">
         {/* HERO */}
         <motion.header
