@@ -322,14 +322,25 @@ async function main(): Promise<void> {
       true,
       "footer exposes the current Spreads hub",
     );
+    for (const [href, label] of [
+      ["/birth-card-calculator", "Birth Card Calculator"],
+      ["/what-is-cardology", "What is Cardology"],
+      ["/products/one-question-reading", "One Question Reading ($13)"],
+      ["/faq", "FAQ"],
+    ] as const) {
+      const link = page.locator(`nav[aria-label="Primary"] a[href="${href}"]`);
+      assert.equal(await link.count(), 1, `desktop primary nav exposes ${label}`);
+      assert.equal((await link.innerText()).replace(/\s+/g, " ").trim(), label);
+    }
     assert.equal(
-      await page
-        .locator(
-          'nav[aria-label="Primary"] a[href="/explore"]',
-        )
-        .count(),
-      1,
-      "desktop primary nav exposes Explore",
+      await page.locator('nav[aria-label="Primary"] a[href="/today"]').count(),
+      0,
+      "desktop primary nav does not lead with the gated today tool",
+    );
+    assert.equal(
+      await page.locator('header a[href="/checkout/deep-dive"]').count(),
+      0,
+      "header does not send people to the deep-dive checkout slug",
     );
 
     await page.setViewportSize({ width: 820, height: 800 });
@@ -370,38 +381,28 @@ async function main(): Promise<void> {
       true,
       "360px: header has no horizontal overflow",
     );
-    const headerFit = await page.locator("header").evaluate((header) => {
-      const logo = header.querySelector('[aria-label$="home"]');
-      const action = header.querySelector('a[href="/checkout/deep-dive"]');
-      if (!logo || !action) return { ok: false, reason: "missing logo or header action" };
-      const a = logo.getBoundingClientRect();
-      const b = action.getBoundingClientRect();
-      const overlap = a.right > b.left + 1 && b.right > a.left + 1 && a.bottom > b.top + 1 && b.bottom > a.top + 1;
-      return {
-        ok: !overlap && b.right <= header.getBoundingClientRect().right + 1,
-        overlap,
-        logo: { right: a.right, width: a.width },
-        action: { left: b.left, right: b.right, width: b.width },
-      };
-    });
     assert.equal(
-      headerFit.ok,
-      true,
-      `360px: wordmark and header action stay apart: ${JSON.stringify(headerFit)}`,
+      await page.getByText("Ask — $13", { exact: true }).count(),
+      0,
+      "360px: header does not use the truncated offer label",
     );
 
     await page.setViewportSize({ width: 390, height: 844 });
     await goto(page, "/");
     await page.getByText("Menu", { exact: true }).click();
-    assert.equal(
-      await page
-        .locator(
-          'nav[aria-label="Mobile primary"] a[href="/explore"]',
-        )
-        .isVisible(),
-      true,
-      "390px: mobile nav exposes Explore",
-    );
+    for (const [href, label] of [
+      ["/birth-card-calculator", "Birth Card Calculator"],
+      ["/what-is-cardology", "What is Cardology"],
+      ["/products/one-question-reading", "One Question Reading ($13)"],
+      ["/faq", "FAQ"],
+    ] as const) {
+      const link = page.locator(`nav[aria-label="Mobile primary"] a[href="${href}"]`);
+      assert.equal(await link.isVisible(), true, `390px: mobile nav exposes ${label}`);
+      const text = (await link.innerText()).replace(/\s+/g, " ").trim();
+      assert.equal(text, label, `390px: mobile nav label is the full offer name for ${href}`);
+      const clipped = await link.evaluate((node) => node.scrollWidth > node.clientWidth + 1);
+      assert.equal(clipped, false, `390px: ${label} is not clipped`);
+    }
     await page.screenshot({ path: screenshotPath, fullPage: false });
 
     // Retired marketing URLs must still reach the current offer.

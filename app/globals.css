@@ -381,6 +381,14 @@ body {
 }
 
 .small-button { padding: 0.55rem 1rem; }
+/* Header offer keeps the live product name in sentence case so it fits the row. */
+.paper-button.header-offer-link {
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  white-space: nowrap;
+  padding-inline: 0.85rem;
+}
 .large-button { min-height: 3.25rem; padding: 0 1.6rem; }
 
 .skip-link {
