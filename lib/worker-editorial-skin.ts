@@ -1,8 +1,11 @@
-// The /compatibility/ and /born-on/ HTML is rendered by the cardology-unlock
-// Worker, which inlines one editorial skin. Live pages still paint the cream
-// paper and oxblood accent (#8e321f). This rewrites that override onto the
-// cyanotype tokens in app/globals.css (:root). Suit pips stay card colors:
-// hearts and diamonds keep #8e321f, clubs and spades keep #14110d.
+// /born-on/ and /compatibility/ are rendered by the cardology-unlock Worker.
+// Hub and nested pages inline one editorial skin (verified 2026-09-22: the
+// same stylesheet bytes on /born-on/, /born-on/may-2, /born-on/december-31,
+// /compatibility/, /compatibility/ace-of-hearts, and a pair page).
+//
+// The applied skin is scripts/fixtures/worker-editorial-skin.css. The next
+// unlock deploy inlines that file in place of the cream override. Pages
+// deploy does not serve these routes. Suit pips stay card colors.
 
 const CREAM_MARKER =
   "/* Current Card Blueprints cream editorial skin. Keep this override last. */";
@@ -16,6 +19,18 @@ const SUIT_BLACK_HOLD = ".bs{color:__SUIT_BLACK__}";
 
 const THEME_COLOR =
   /(<meta\s+name="theme-color"\s+content=")#f6f1e8(")/g;
+
+export const WORKER_THEME_COLOR = "#eef3f8";
+
+// Primary tree is /born-on/. /compatibility/ uses the same skin string.
+export const WORKER_EDITORIAL_ROUTES = [
+  "/born-on/",
+  "/born-on/may-2",
+  "/born-on/december-31",
+  "/compatibility/",
+  "/compatibility/ace-of-hearts",
+  "/compatibility/ace-of-hearts-and-queen-of-diamonds",
+] as const;
 
 // Longer literals first so #fffcf7 is not partly eaten by a shorter hex.
 const SKIN_REPLACEMENTS: ReadonlyArray<readonly [string, string]> = [
@@ -39,17 +54,17 @@ const SKIN_REPLACEMENTS: ReadonlyArray<readonly [string, string]> = [
   ["#14110d", "#123a63"],
 ];
 
-export function recolorCompatibilityEditorialSkin(source: string): string {
+export function recolorWorkerEditorialSkin(source: string): string {
   if (source.includes(CYANOTYPE_MARKER) && !source.includes(CREAM_MARKER)) {
     return source;
   }
 
   const start = source.indexOf(CREAM_MARKER);
   if (start < 0) {
-    throw new Error("compatibility editorial skin marker missing");
+    throw new Error("worker editorial skin marker missing");
   }
 
-  const head = source.slice(0, start).replace(THEME_COLOR, "$1#eef3f8$2");
+  const head = source.slice(0, start).replace(THEME_COLOR, `$1${WORKER_THEME_COLOR}$2`);
   let skin = source.slice(start);
   skin = skin.replaceAll(SUIT_RED, SUIT_RED_HOLD);
   skin = skin.replaceAll(SUIT_BLACK, SUIT_BLACK_HOLD);
