@@ -22,7 +22,8 @@ const CALCULATOR_LINKS: Array<[string, string]> = [
   ["/birth-card-compatibility-calculator", "birth card compatibility calculator"],
   ["/compatibility/", "card compatibility directory"],
   ["/destiny-cards", "Destiny Cards synonym map"],
-  ["/blog/what-cardology-is-and-is-not", "what Cardology is and is not"],
+  // The blog URL 301s to the evergreen guide. Link the canonical page.
+  ["/what-is-cardology", "what Cardology is and is not"],
   ["/birth-card/8-of-diamonds", "Eight of Diamonds meaning"],
   ["/birth-card/5-of-spades", "Five of Spades meaning"],
   ["/birth-card/6-of-clubs", "Six of Clubs meaning"],

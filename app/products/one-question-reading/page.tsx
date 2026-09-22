@@ -129,7 +129,12 @@ export default function OneQuestionReadingPage() {
       </p>
 
       <div className="mb-10 flex flex-col items-start gap-3">
-        <DeepDiveCta placement="product-page" source="product-page" showFulfillment={false} />
+        <DeepDiveCta
+          placement="product-page"
+          source="product-page"
+          showFulfillment={false}
+          href={DEEP_DIVE_REVIEW_PATH}
+        />
         <p className="text-sm text-brand-ink-soft">
           Know your birthday, obviously. Have the question ready in one sentence.{" "}
           <Link href={DEEP_DIVE_REVIEW_PATH} className="text-brand-oxblood underline underline-offset-4">
@@ -210,7 +215,7 @@ export default function OneQuestionReadingPage() {
       </section>
 
       <div className="mt-10">
-        <DeepDiveCta placement="product-page-bottom" source="product-page" />
+        <DeepDiveCta placement="product-page-bottom" source="product-page" href={DEEP_DIVE_REVIEW_PATH} />
       </div>
     </SeoShell>
   );

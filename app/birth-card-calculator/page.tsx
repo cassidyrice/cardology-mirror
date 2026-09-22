@@ -336,7 +336,8 @@ export default function CalculatorPage() {
             Destiny Cards synonym map
           </Link>
           . Read{" "}
-          <Link href="/blog/what-cardology-is-and-is-not" className="text-brand-oxblood underline underline-offset-4">
+          {/* /blog/what-cardology-is-and-is-not 301s here. */}
+          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
             what Cardology is and is not
           </Link>{" "}
           for the boundary of the practice.

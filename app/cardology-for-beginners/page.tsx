@@ -48,7 +48,7 @@ const steps = [
     title: "Find your birth card",
     body: "Use the free calculator with month, day, and year. You get the lifelong birth card plus the planetary ruling card layer.",
     href: "/birth-card-calculator",
-    label: "Open calculator page",
+    label: "Birth card calculator",
   },
   {
     n: "3",

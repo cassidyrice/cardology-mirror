@@ -63,7 +63,7 @@ export default function CompatibilityPage() {
   };
 
   return (
-    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility", href: "/cardology-compatibility" }]}>
+    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Compatibility guide", href: "/cardology-compatibility" }]}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
 
       <SeoHeroFan codes={["Q♦", "A♥"]} className="mb-5" />

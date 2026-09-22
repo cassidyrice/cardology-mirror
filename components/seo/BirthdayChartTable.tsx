@@ -81,6 +81,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
                           title="December 31: the Joker"
                           className="inline-block min-w-[2.4rem] rounded-[3px] border border-transparent px-1 py-1 font-serif text-[0.8rem] text-brand-ink transition hover:border-brand-line-strong hover:bg-brand-paper"
                         >
+                          <span className="sr-only">December 31: </span>
                           Joker
                         </a>
                       </td>
@@ -103,6 +104,10 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
                           isRed ? "text-brand-oxblood" : "text-brand-ink"
                         }`}
                       >
+                        {/* Date stays in the anchor text so "8♦" is not the
+                            same phrase for every birthday of that card, or for
+                            the meaning chip below the chart. */}
+                        <span className="sr-only">{d.label}: </span>
                         {d.card.rank}
                         {d.card.glyph}
                       </a>
