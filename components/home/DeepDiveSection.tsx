@@ -7,7 +7,7 @@ const TIFFANY = TESTIMONIALS.find((t) => t.author === "Tiffany")!;
 
 /** Spec quote is the short Tiffany line; full review stays in testimonials.ts. */
 const TIFFANY_HOME_QUOTE =
-  "I bought the Deep Dive, found out I was the Five of Clubs, and a lot of my life stopped looking random.";
+  "I bought the reading, found out I was the Five of Clubs, and a lot of my life stopped looking random.";
 
 export function DeepDiveSection() {
   return (
