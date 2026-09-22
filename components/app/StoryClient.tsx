@@ -91,7 +91,7 @@ export default function StoryArcPage() {
 
   if (!ready) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
           <p className="eyebrow animate-pulse">tracing your arc…</p>
         </div>
@@ -100,7 +100,7 @@ export default function StoryArcPage() {
   }
   if (!profile) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-12">
           <ProfilePrompt
             title="Your story arc starts with your birth date."
@@ -114,7 +114,7 @@ export default function StoryArcPage() {
   const showComposing = phase === "streaming" && text.length === 0;
 
   return (
-    <Screen className="bg-cosmic starfield">
+    <Screen>
       <div className="mx-auto max-w-md">
         <motion.header
           initial={{ opacity: 0, y: 8 }}

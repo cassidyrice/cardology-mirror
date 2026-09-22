@@ -63,7 +63,7 @@ export default function BondsPage() {
     : null;
 
   return (
-    <Screen className="bg-cosmic starfield">
+    <Screen>
       <div className="relative z-10 mx-auto max-w-md space-y-10">
         {/* HEADER */}
         <motion.header

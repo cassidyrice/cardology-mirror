@@ -90,7 +90,7 @@ export default function ReadingPage() {
 
   if (!ready) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-32 text-center">
           <p className="eyebrow animate-pulse">opening the mirror…</p>
         </div>
@@ -99,7 +99,7 @@ export default function ReadingPage() {
   }
   if (!profile) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-12">
           <ProfilePrompt
             title="A deep reading starts with your birth card."
@@ -114,7 +114,7 @@ export default function ReadingPage() {
   const showGate = gateReady && !unlocked;
 
   return (
-    <Screen className="bg-cosmic starfield">
+    <Screen>
       <div className="mx-auto max-w-md">
         <motion.header
           initial={{ opacity: 0, y: 8 }}

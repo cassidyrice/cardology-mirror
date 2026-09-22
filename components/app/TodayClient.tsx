@@ -46,7 +46,7 @@ export default function TodayPage() {
   const showSkeleton = !ready || (profile && (loading || (!data && !error)));
 
   return (
-    <Screen className="starfield bg-cosmic mx-auto max-w-md">
+    <Screen className="mx-auto max-w-md">
       {showSkeleton && <TodaySkeleton />}
 
       {ready && !profile && (

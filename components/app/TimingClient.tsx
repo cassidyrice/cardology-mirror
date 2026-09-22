@@ -22,7 +22,7 @@ export default function TimingPage() {
 
   if (!ready || (profile && loading && !data)) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md space-y-4 pt-24">
           <div className="h-5 w-32 animate-pulse rounded bg-brand-ivory/70" />
           <div className="h-10 w-3/4 animate-pulse rounded bg-brand-ivory/70" />
@@ -37,7 +37,7 @@ export default function TimingPage() {
 
   if (!profile) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-12">
           <ProfilePrompt
             title="Your yearly spread needs a birthday."
@@ -50,7 +50,7 @@ export default function TimingPage() {
 
   if (error) {
     return (
-      <Screen className="bg-cosmic starfield">
+      <Screen>
         <div className="mx-auto max-w-md pt-28 text-center">
           <Eyebrow className="mb-3 !text-brand-bronze">The timeline didn&apos;t load</Eyebrow>
           <p className="prose-reading text-brand-ink-soft">{error}</p>
@@ -96,7 +96,7 @@ function Timing({
   const daysLeft = Math.max(0, PERIOD_DAYS - daysIn);
 
   return (
-    <Screen className="bg-cosmic starfield">
+    <Screen>
       <div className="relative z-10 mx-auto max-w-md">
         {/* HEADER */}
         <motion.header
