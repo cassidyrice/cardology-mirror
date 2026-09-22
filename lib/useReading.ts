@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { readingApiRequest } from "./reading-request";
 import type { Reading } from "./types";
 
 export function useReading(birthdate?: string, date?: string) {
@@ -13,9 +14,8 @@ export function useReading(birthdate?: string, date?: string) {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    const params = new URLSearchParams({ birthdate });
-    if (date) params.set("date", date);
-    fetch(`/api/reading?${params}`)
+    const { url, init } = readingApiRequest(birthdate, date);
+    fetch(url, init)
       .then(async (r) => {
         const json = await r.json();
         if (!r.ok) throw new Error(json.error || "failed");
