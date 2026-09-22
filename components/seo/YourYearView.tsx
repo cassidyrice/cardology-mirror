@@ -272,10 +272,6 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
         Same birthday, same sequence every year; the cards change with the calendar.
       </p>
 
-      {/* TODO(privacy): Email form "Email me when my period changes" — email + consent
-          checkbox to store birthday for timing. Gate on Cass privacy decision
-          (plans/year-in-cards.md Phase 0 step 3). Do not ship until approved. */}
-
       <div className="flex flex-col items-center gap-3">
         <DeepDiveCta
           placement="your-year"
