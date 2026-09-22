@@ -8,6 +8,7 @@
 // domains, three-lens interpretations, long-range cards, crown, deep dive) using
 // the generated static tables under lib/engine-data/ + lib/card-meanings.json.
 
+import { canonicalCalendarDate } from "./birthdate";
 import { cardology } from "./engine-core/engine.js";
 import type {
   Archetype,
@@ -60,25 +61,23 @@ export class JokerNotSupportedError extends ReadingError {
 
 // --- date parsing (mirrors cardology_cli.parse_birthdate) -------------------
 
-const ISO = /^(\d{4})-(\d{1,2})-(\d{1,2})$/;
-const US = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-const US_DASH = /^(\d{1,2})[ -](\d{1,2})[ -](\d{4})$/;
-
 interface MDY {
   month: number;
   day: number;
   year: number;
 }
 
+function partsFromCanonical(value: string, label: "birthdate" | "target date"): MDY {
+  const iso = canonicalCalendarDate(value);
+  if (!iso) {
+    throw new ReadingError(`invalid ${label}: ${value}`);
+  }
+  const [year, month, day] = iso.split("-").map(Number);
+  return { month, day, year };
+}
+
 function parseBirthdate(value: string): MDY {
-  const v = value.trim();
-  let m = US.exec(v);
-  if (m) return { month: +m[1], day: +m[2], year: +m[3] };
-  m = ISO.exec(v);
-  if (m) return { month: +m[2], day: +m[3], year: +m[1] };
-  m = US_DASH.exec(v);
-  if (m) return { month: +m[1], day: +m[2], year: +m[3] };
-  throw new ReadingError(`invalid birthdate: ${value}`);
+  return partsFromCanonical(value, "birthdate");
 }
 
 // Build a JS Date for a calendar date in local time so the core's day math
@@ -101,11 +100,7 @@ function parseTargetDate(value?: string): { date: Date; iso: string } {
     const d = localDate(now.getFullYear(), now.getMonth() + 1, now.getDate());
     return { date: d, iso: toISO(d) };
   }
-  const m = ISO.exec(value.trim());
-  if (!m) throw new ReadingError(`invalid target date: ${value}`);
-  const year = +m[1];
-  const month = +m[2];
-  const day = +m[3];
+  const { year, month, day } = partsFromCanonical(value, "target date");
   return { date: localDate(year, month, day), iso: pad4(year) + "-" + pad2(month) + "-" + pad2(day) };
 }
 

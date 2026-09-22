@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useMemo, useState } from "react";
 import { Eyebrow } from "@/components/ui";
 import { PlayingCard } from "@/components/PlayingCard";
+import { readingApiRequest } from "@/lib/reading-request";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -74,8 +75,8 @@ export function ProfileForm({ onSubmit, back }: ProfileFormProps) {
     return iso;
   }, [month, day, year, now]);
 
-  const dateIncomplete = month !== "" || day !== "" || year !== "";
-  const dateInvalid = dateIncomplete && birthdate === null;
+  const dateFilled = month !== "" && day !== "" && year !== "";
+  const dateInvalid = dateFilled && birthdate === null;
 
   async function reveal() {
     if (!birthdate) return;
@@ -83,7 +84,8 @@ export function ProfileForm({ onSubmit, back }: ProfileFormProps) {
     setPreviewLoading(true);
     setPreviewFor(birthdate);
     try {
-      const r = await fetch(`/api/reading?birthdate=${birthdate}`);
+      const { url, init } = readingApiRequest(birthdate);
+      const r = await fetch(url, init);
       const json = await r.json();
       if (!r.ok) throw new Error(json.error || "Could not read that date.");
       setPreview({

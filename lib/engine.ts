@@ -1,7 +1,6 @@
+import { canonicalCalendarDate } from "./birthdate";
 import type { Reading } from "./types";
 import { buildReading, JokerNotSupportedError, ReadingError } from "./reading";
-
-const ISO = /^\d{4}-\d{2}-\d{2}$/;
 
 export class EngineError extends Error {
   // Machine-readable refusal code preserved for API routes. Contract for
@@ -48,7 +47,8 @@ export function engineErrorResponse(e: unknown): EngineErrorResponse {
 
 /**
  * Run the deterministic engine for a birthdate (and optional target date).
- * Both dates are ISO `YYYY-MM-DD`. Returns the parsed structured Reading.
+ * Dates may be ISO `YYYY-MM-DD` or US month/day/year (`2/17/1991`). Both are
+ * checked as real calendar dates, then canonicalized to ISO before the core.
  *
  * This is now a pure-JS port of the former Python CLI engine (no child_process,
  * no fs at request time) so the app deploys to Cloudflare. The card math lives
@@ -59,15 +59,21 @@ export function getReading(
   birthdate: string,
   targetDate?: string,
 ): Promise<Reading> {
-  if (!ISO.test(birthdate)) {
+  const birth = canonicalCalendarDate(birthdate);
+  if (!birth) {
     return Promise.reject(new EngineError(`invalid birthdate: ${birthdate}`));
   }
-  if (targetDate && !ISO.test(targetDate)) {
-    return Promise.reject(new EngineError(`invalid target date: ${targetDate}`));
+  let target: string | undefined;
+  if (targetDate) {
+    const parsedTarget = canonicalCalendarDate(targetDate);
+    if (!parsedTarget) {
+      return Promise.reject(new EngineError(`invalid target date: ${targetDate}`));
+    }
+    target = parsedTarget;
   }
 
   try {
-    return Promise.resolve(buildReading(birthdate, targetDate));
+    return Promise.resolve(buildReading(birth, target));
   } catch (e) {
     const msg = e instanceof ReadingError || e instanceof Error ? e.message : String(e);
     const code = e instanceof JokerNotSupportedError ? e.code : undefined;
