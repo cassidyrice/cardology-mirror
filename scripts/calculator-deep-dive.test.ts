@@ -114,12 +114,14 @@ test("One Question Reading ($13) is a Card Blueprint checkout offer on the deep-
   expect(cta).toContain('type="date"');
   expect(cta).not.toContain("disabled={!iso}");
   expect(cta).not.toContain("buy.stripe.com");
-  // The CTA no longer posts straight to Stripe: it parks the birth date in the
-  // tab and opens the review page where the question is typed.
-  expect(hosted).toContain("DEEP_DIVE_REVIEW_PATH");
+  // The CTA parks the birth date in the tab and opens the review page where
+  // the question is typed. After a birthday is present that control is a real
+  // link to the same review path, with the date kept out of the URL.
+  expect(hosted).toContain("href={DEEP_DIVE_REVIEW_PATH}");
   expect(hosted).toContain("storeCheckoutBirthdate(birthdate)");
   expect(hosted).toContain("storeCheckoutContext");
-  expect(hosted).toContain("router.push(DEEP_DIVE_REVIEW_PATH)");
+  expect(hosted).not.toContain("router.push");
+  expect(hosted).not.toContain("<button");
   expect(hosted).not.toContain('method="post"');
   expect(hosted).not.toContain("buy.stripe.com");
   expect(hosted).not.toContain("createEmbeddedCheckoutPage");
