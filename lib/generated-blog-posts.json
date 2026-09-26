@@ -13968,5 +13968,143 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "reading-your-yearly-spread",
+    "pillar": "timing-and-spreads",
+    "title": "Reading Your Yearly Spread",
+    "description": "A step-by-step order for reading a Cardology yearly spread: Long Range first, then the seven period cards, then Pluto, Result, environment, and…",
+    "dek": "A yearly spread is a table of contents for the year, best read in a fixed order.",
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26",
+    "readTime": "6 min read",
+    "keywords": [
+      "yearly spread reading order",
+      "how to read year cards",
+      "annual card spread",
+      "birthday spread guide",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "A yearly spread is the set of cards assigned to one year of your life, calculated from your birth card and age. A clean reading order: start with the Long Range card for the year's headline theme, walk the seven planetary period cards in order, then read the Pluto card as the year's challenge and the Result card as what engaging it tends to produce.",
+    "sections": [
+      {
+        "heading": "Get the spread, then slow down",
+        "body": [
+          "The spread is deterministic: birth card plus age yields the same cards for everyone with that combination. The reading skill is entirely in the order and restraint you bring.",
+          "Resist reading all the cards as one blended fortune. Each card holds a position, and the position is most of the meaning."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "The reading order",
+        "body": [
+          "First the Long Range card: the theme that colors the whole year regardless of period. Second, the seven period cards in planetary order, each owning its 52 days.",
+          "Then the depth pair: the Pluto card names the year's challenge or transformation pressure, and the Result card names what working that challenge tends to produce. Environment and displacement round out the year's supportive and demanding zones."
+        ]
+      },
+      {
+        "heading": "Keep it as a mirror",
+        "body": [
+          "A yearly spread is a set of reflection frames, not a forecast. The Long Range card will not make anything happen; it names a theme worth watching for.",
+          "A practical habit: write the year's cards on one page, revisit it at each period boundary, and note what actually occurred. The spread earns exactly as much trust as those notes justify."
+        ],
+        "links": [
+          {
+            "label": "Planetary Periods Without Prediction",
+            "href": "/blog/planetary-periods-without-prediction"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is in a Cardology yearly spread?",
+        "a": "Commonly a Long Range card, seven 52-day period cards, a Pluto card, a Result card, and yearly environment and displacement cards."
+      },
+      {
+        "q": "Do two people ever share a yearly spread?",
+        "a": "Yes. The spread depends only on birth card and age, so people with the same card and age share the same yearly cards."
+      },
+      {
+        "q": "Which card in the spread matters most?",
+        "a": "Start with the Long Range card for the year's theme. The current period card matters most day to day."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-is-a-long-range-card",
+      "pluto-and-result-cards-in-the-yearly-spread",
+      "how-52-day-periods-divide-your-year"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
