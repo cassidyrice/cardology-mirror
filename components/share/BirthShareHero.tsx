@@ -1,11 +1,19 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { CardBack } from "@/components/cards/CardBack";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
 import { parseCard } from "@/lib/cards";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 
-export function BirthShareHero({ birthCard }: { birthCard?: string }) {
+export function BirthShareHero({
+  birthCard,
+  action,
+}: {
+  birthCard?: string;
+  /** Rendered between the card name and Share (the calculator's $13 button). */
+  action?: ReactNode;
+}) {
   const isJoker = birthCard === "Joker";
   const label = isJoker
     ? "The Joker"
@@ -48,6 +56,7 @@ export function BirthShareHero({ birthCard }: { birthCard?: string }) {
           <p className="mt-1 font-serif text-3xl leading-tight text-brand-ink [text-wrap:balance]">
             {label}
           </p>
+          {action ? <div className="mt-4 w-full">{action}</div> : null}
           <div className="mt-4 w-full">
             <ShareBirthResultButton
               birthCard={birthCard!}

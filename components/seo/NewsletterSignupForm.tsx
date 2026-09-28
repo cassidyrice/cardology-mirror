@@ -18,6 +18,8 @@ export function NewsletterSignupForm({
   buttonLabel = "Send me Monday's card",
   finePrint = "Unsubscribe anytime.",
   hideHeading = false,
+  tags = [],
+  quietButton = false,
 }: {
   source: NewsletterSource;
   compact?: boolean;
@@ -26,6 +28,10 @@ export function NewsletterSignupForm({
   buttonLabel?: string;
   finePrint?: string;
   hideHeading?: boolean;
+  /** Buttondown tags (hidden `tag` inputs; Buttondown creates missing ones). Never a birthday. */
+  tags?: string[];
+  /** Outline button, for spots where a paid button sits right above. */
+  quietButton?: boolean;
 }) {
   const emailId = `newsletter-email-${source}`;
 
@@ -52,6 +58,9 @@ export function NewsletterSignupForm({
         data-newsletter-source={source}
         className="mt-4 flex flex-col gap-3 sm:flex-row"
       >
+        {tags.map((tag) => (
+          <input key={tag} type="hidden" name="tag" value={tag} />
+        ))}
         <label htmlFor={emailId} className="sr-only">
           Email address
         </label>
@@ -66,7 +75,10 @@ export function NewsletterSignupForm({
           placeholder="you@example.com"
           className="min-h-11 min-w-0 flex-1 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 text-brand-ink outline-none placeholder:text-brand-ink-faint focus:border-brand-oxblood focus:ring-2 focus:ring-brand-oxblood/20"
         />
-        <button type="submit" className="accent-button min-h-11 px-5 py-2.5 text-sm">
+        <button
+          type="submit"
+          className={`${quietButton ? "paper-button" : "accent-button"} min-h-11 px-5 py-2.5 text-sm`}
+        >
           {buttonLabel}
         </button>
       </form>
