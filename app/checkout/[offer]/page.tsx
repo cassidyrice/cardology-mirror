@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm";
 import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
+import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
@@ -52,6 +53,7 @@ export default async function CheckoutReviewPage({
 
   const isDigital = isDigitalDownload(product);
   const isReport = isInstantReport(product) || isMembership(product);
+  const isApp = isInstantReport(product) && product.reportSlug === CARD_APP_SLUG;
   const isReading = isDeepDive(product);
   const unavailable = isDigital && !product.available;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
@@ -159,13 +161,15 @@ export default async function CheckoutReviewPage({
           ) : (
             <>
               <p>
-                Stripe collects payment and the birth date your Blueprint
-                should be built from. If you came from the calculator, that
-                date is kept in this browser tab — never in the address bar.
+                Stripe collects payment and the birth date your{" "}
+                {isApp ? "app" : "Blueprint"} should be built from. If you came
+                from the calculator, that date is kept in this browser tab —
+                never in the address bar.
               </p>
               <p>
-                After payment, the written report opens immediately on the
-                confirmation page, and a return link is emailed to you.
+                {isApp
+                  ? "After payment, your app opens on the confirmation page, and its link is emailed to you."
+                  : "After payment, the written report opens immediately on the confirmation page, and a return link is emailed to you."}
               </p>
             </>
           )}

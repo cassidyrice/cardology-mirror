@@ -21,7 +21,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 /* ---------- playing card ---------- */
 
-function Pc({ card, size }: { card: YearCard; size?: "sm" | "xs" }) {
+export function Pc({ card, size }: { card: YearCard; size?: "sm" | "xs" }) {
   const cls = cx(s.pc, card.red && s.pcRed, size === "sm" && s.pcSm, size === "xs" && s.pcXs);
   if (size === "xs") {
     return (

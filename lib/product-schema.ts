@@ -14,6 +14,7 @@ const PRODUCT_IMAGE_BY_SLUG: Record<string, string> = {
   "personal-card-blueprint": "/og/products/personal-card-blueprint.png",
   "complete-card-blueprint": "/og/products/complete-card-blueprint.png",
   "analog-algorithm": "/og/products/analog-algorithm.png",
+  "card-blueprint-app": "/og/products/card-blueprint-app.png",
 };
 export const MERCHANT_RETURN_POLICY_ID = `${SITE_URL}/refund-policy#merchant-return-policy`;
 

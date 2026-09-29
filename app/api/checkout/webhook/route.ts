@@ -5,6 +5,7 @@ import type Stripe from "stripe";
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
+import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
 import { deliverReading } from "@/lib/reading-fulfill";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
@@ -425,6 +426,7 @@ export async function POST(req: NextRequest) {
             product.reportSlug,
             session.id,
             birthdate,
+            product.linkDays,
           );
           const reportUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
           // Bundled download: The 90 Spreads PDF ships with the Blueprint.
@@ -437,18 +439,21 @@ export async function POST(req: NextRequest) {
           } catch (e) {
             console.error("[webhook] 90 spreads token mint failed", e);
           }
+          const isApp = product.reportSlug === CARD_APP_SLUG;
           await sendIntakeEmail({
             to: email,
             subject: `Your ${product.name} is ready`,
             text: [
               `Thank you. Your ${product.name} is confirmed.`,
               "",
-              "Your personalized report is ready right now:",
+              isApp ? "Your app is ready right now. Open it on your phone:" : "Your personalized report is ready right now:",
               reportUrl,
               "",
               `My purchases: ${SITE_URL}/my-purchases?session_id=${encodeURIComponent(session.id)}`,
               "",
-              "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
+              isApp
+                ? "Keep this link: the app is yours for life. Add it to your home screen so your card for today is one tap away."
+                : "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
               ...(spreadsLine
                 ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]
                 : []),
