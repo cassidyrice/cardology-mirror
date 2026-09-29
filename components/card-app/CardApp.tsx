@@ -25,6 +25,11 @@ function firstSentence(text: string): string {
   return text.split(/(?<=[.!?])\s/)[0] ?? text;
 }
 
+/** The ruling card the app times: the first one that isn't the birth card (lib/card-app.ts). */
+function timedRuler(data: CardApp): string {
+  return data.identity.ruling.find((r) => r.card.code !== data.identity.birth.card.code)?.card.code ?? "ruling card";
+}
+
 /* ---------- shared bits ---------- */
 
 function CardLine({ label, item, blurb, shadow = true }: { label: string; item: AppCardNote; blurb?: string; shadow?: boolean }) {
@@ -80,7 +85,7 @@ function TodayScreen({ data, go }: { data: CardApp; go: (id: ScreenId) => void }
       </div>
       {d.ruling && (
         <Section eyebrow="Your ruling card's day">
-          <CardLine label={`Today for your ${data.identity.ruling[0]?.card.code ?? "ruling card"}`} item={d.ruling} />
+          <CardLine label={`Today for your ${timedRuler(data)}`} item={d.ruling} />
         </Section>
       )}
 
@@ -184,7 +189,7 @@ function YearScreen({ data }: { data: CardApp }) {
       </Section>
 
       {yr.ruling && (
-        <Section eyebrow={`Your ruling card's year · ${data.identity.ruling[0]?.card.code ?? ""}`}>
+        <Section eyebrow={`Your ruling card's year · ${timedRuler(data)}`}>
           <CardLine label="Long Range" item={yr.ruling.longRange} shadow={false} />
           <CardLine label="Pluto" item={yr.ruling.pluto} shadow={false} />
           <CardLine label="Result" item={yr.ruling.result} shadow={false} />
@@ -292,9 +297,9 @@ function MeScreen({ data }: { data: CardApp }) {
       )}
       {data.identity.ruling
         .filter((r) => r.card.code !== data.identity.birth.card.code)
-        .map((r) => (
+        .map((r, i) => (
           <Section key={r.card.code} eyebrow="Ruling card">
-            <CardLine label={r.title || "Ruling card"} item={r} blurb={data.copy.ruling} />
+            <CardLine label={r.title || "Ruling card"} item={r} blurb={i === 0 ? data.copy.ruling : data.copy.rulingSecond} />
             <p className={cx(y.p, y.small)}>{r.coreIdentity}</p>
           </Section>
         ))}
@@ -511,7 +516,8 @@ function PeopleScreen({ token }: { token: string }) {
       <div className={y.eyebrow}>People · compatibility</div>
       <h2 className={y.h1}>How you two connect</h2>
       <p className={y.p}>Add anyone. We compare both birth cards and both ruling cards, in both directions. Birthdays stay on this device.</p>
-      <form onSubmit={add} className={y.stack}>
+      {/* ph-no-capture: PostHog autocapture must never record the names people add. */}
+      <form onSubmit={add} className={cx(y.stack, "ph-no-capture")}>
         <div className={cx(y.field, s.fieldCol)}>
           <label htmlFor="person-name">Name</label>
           <input id="person-name" className={y.input} value={name} maxLength={40} onChange={(e) => setName(e.target.value)} placeholder="Their name" />
@@ -525,7 +531,7 @@ function PeopleScreen({ token }: { token: string }) {
       {error && !openId && <p className={s.error} role="alert">{error}</p>}
 
       {people.length > 0 && (
-        <div className={y.card} style={{ padding: "2px 16px" }}>
+        <div className={cx(y.card, "ph-no-capture")} style={{ padding: "2px 16px" }}>
           {people.map((p) => (
             <div key={p.id} className={cx(y.row, y.between, s.personRow)}>
               <button type="button" className={s.rowBtn} onClick={() => compare(p)} aria-expanded={openId === p.id}>
@@ -539,7 +545,7 @@ function PeopleScreen({ token }: { token: string }) {
       )}
 
       {openId && (
-        <div className={cx(y.card, y.stack)} style={{ gap: 14 }} aria-live="polite">
+        <div className={cx(y.card, y.stack, "ph-no-capture")} style={{ gap: 14 }} aria-live="polite">
           {busy && <p className={y.p}>Reading both boards…</p>}
           {error && <p className={s.error} role="alert">{error}</p>}
           {result && <ConnectionResult result={result} />}

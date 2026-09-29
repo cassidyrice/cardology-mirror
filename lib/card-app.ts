@@ -42,6 +42,7 @@ const PLANET_DOMAIN = PLANET_DOMAINS as Record<string, string>;
 export const POSITION_COPY = {
   birth: "Your birth card: the core pattern you play all your life.",
   ruling: "Your ruling card: the part of you that you identify with most. It runs its own year next to your birth card.",
+  rulingSecond: "Your second ruling card: also part of who you are. The app times your first ruling card.",
   karmaGift: "A gift you bring in. It tends to show up easily and help.",
   karmaChallenge: "The pattern you're here to make conscious. It repeats until you see it.",
   pluto: "What this year asks you to change. The hard work of the year.",
@@ -539,7 +540,10 @@ export function buildCardApp(birthdate: string, todayIso?: string): CardApp {
   const [bc] = cardology.getBirthCard(bm, bd);
   const prcRaw = cardology.getPlanetaryRulingCard(bm, bd);
   const prcList = (Array.isArray(prcRaw) ? prcRaw : prcRaw ? [prcRaw] : []).filter(Boolean) as string[];
-  const prc = prcList[0] ?? null;
+  // The timed ruling card is the first one that isn't the birth card. For Leos the
+  // ruler IS the birth card, so there's no second stream (and Aug 22/23 time their
+  // other ruler, 2♦ / 3♠, instead of repeating the birth card).
+  const prc = prcList.find((c) => c !== bc) ?? null;
 
   let startYear = today.getUTCFullYear();
   if (birthdayIn(startYear, bm, bd) > today) startYear -= 1;

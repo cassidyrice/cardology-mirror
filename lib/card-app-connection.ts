@@ -47,7 +47,8 @@ function sideFor(birthdate: string): Side {
   if (m === 12 && d === 31) throw new JokerNotSupportedError();
   const [birth] = cardology.getBirthCard(m, d);
   const prc = cardology.getPlanetaryRulingCard(m, d);
-  const ruling = (Array.isArray(prc) ? prc[0] : prc) ?? null;
+  // Same rule as the app: the first ruler that isn't the birth card.
+  const ruling = ((Array.isArray(prc) ? prc : [prc]) as Array<string | null>).find((c) => c && c !== birth) ?? null;
   return { birth, ruling };
 }
 

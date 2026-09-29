@@ -36,15 +36,20 @@ describe("parity with the shipped reading", () => {
     expect(app.karma.gift?.card.code ?? null).toBe(r.karma.bc_lifetime?.environment ?? null);
     expect(app.karma.challenge?.card.code ?? null).toBe(r.karma.bc_lifetime?.displacement ?? null);
 
+    // The reading times prc[0]; the app skips a ruler that is the birth card
+    // (Leos, Aug 22/23), so ruling streams match only when those agree. The
+    // "ruling card equal to the birth card" block covers the rest.
+    const sameRuler = r.archetype.prc !== r.archetype.birth_card;
+
     // Year: period cards, Pluto, Result, Long Range.
     app.year.periods.forEach((p) => {
       expect(p.birth.card.code).toBe(r.birth_card_spread.periods[p.planet]);
-      expect(p.ruling?.card.code).toBe(r.prc_spread.periods[p.planet]);
+      if (sameRuler) expect(p.ruling?.card.code).toBe(r.prc_spread.periods[p.planet]);
     });
     expect(app.year.birth.pluto.card.code).toBe(r.birth_card_spread.pluto);
     expect(app.year.birth.result.card.code).toBe(r.birth_card_spread.result);
     expect(app.year.birth.longRange.card.code).toBe(r.long_range.bc.card);
-    expect(app.year.ruling?.longRange.card.code).toBe(r.long_range.prc.card);
+    if (sameRuler) expect(app.year.ruling?.longRange.card.code).toBe(r.long_range.prc.card);
 
     // Life Spread (spread 1).
     expect(app.lifeSpread.periods.map((p) => p.card.code)).toEqual(r.deep_dive.life_path.cards);
@@ -56,8 +61,38 @@ describe("parity with the shipped reading", () => {
       // Weekly = the ~7.4-day sub-period card inside the active period.
       expect(app.week.current.planet).toBe(r.daily.sub_planet);
       expect(app.week.current.birth.card.code).toBe(r.daily.bc.card);
-      expect(app.week.current.ruling?.card.code).toBe(r.daily.prc.card);
+      if (sameRuler) expect(app.week.current.ruling?.card.code).toBe(r.daily.prc.card);
     }
+  });
+});
+
+describe("ruling card equal to the birth card", () => {
+  test("a Leo whose ruler is the birth card gets no second stream and no echo repeats", () => {
+    const app = buildCardApp("1985-08-05", "2026-09-29");
+    expect(app.identity.ruling.map((r) => r.card.code)).toEqual([app.identity.birth.card.code]);
+    expect(app.day.today.ruling).toBeNull();
+    expect(app.day.next.every((d) => d.ruling === null)).toBe(true);
+    expect(app.week.all.every((w) => w.ruling === null)).toBe(true);
+    expect(app.year.periods.every((p) => p.ruling === null)).toBe(true);
+    expect(app.year.ruling).toBeNull();
+    expect(app.life.every((row) => row.ruling === null)).toBe(true);
+    expect(app.year.signals.some((s) => s.detail.includes("ruling-card"))).toBe(false);
+  });
+
+  test.each([
+    ["1971-08-22", "2♦"],
+    ["1990-08-23", "3♠"],
+  ])("%s times its other ruler, %s", (birth, ruler) => {
+    const target = "2026-09-29";
+    const app = buildCardApp(birth, target);
+    const [by, bm, bd] = birth.split("-").map(Number);
+    const nine = cardology.extractCards(ruler, cardology.SPREADS[String(app.age + 1)], 9);
+    expect(app.year.periods.map((p) => p.ruling?.card.code)).toEqual(nine.slice(0, 7));
+    expect(app.year.ruling?.pluto.card.code).toBe(nine[7]);
+    expect(app.year.ruling?.result.card.code).toBe(nine[8]);
+    const w = cardology.getWeekly(ruler, by, bm, bd, new Date(2026, 8, 29, 12));
+    expect(app.day.today.ruling?.card.code).toBe(w!.current_card);
+    expect(buildConnection("1965-03-16", birth, "X").ruling.map((c) => c.code)).toEqual([ruler]);
   });
 });
 
