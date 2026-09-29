@@ -4,12 +4,12 @@
 // this is its parity contract.
 import { describe, expect, test } from "bun:test";
 
-import { buildCardApp, CARD_APP_SLUG } from "../lib/card-app";
+import { appDateParam, buildCardApp, CARD_APP_SLUG } from "../lib/card-app";
 import { buildConnection } from "../lib/card-app-connection";
 import { cardology } from "../lib/engine-core/engine.js";
 import { buildReading, JokerNotSupportedError } from "../lib/reading";
 import { buildYearBlueprint } from "../lib/year-blueprint";
-import { CARD_APP_PRODUCT, CARD_APP_ON_SALE, checkoutProductBySlug, LIFETIME_LINK_DAYS, productBySlug } from "../lib/products";
+import { CARD_APP_PRODUCT, CARD_APP_ON_SALE, checkoutProductBySlug, instantReportFacts, LIFETIME_LINK_DAYS, productBySlug } from "../lib/products";
 
 // A spread of birthdays across every month, leap day, fixed and semi-fixed cards.
 const BIRTHDAYS = [
@@ -191,6 +191,17 @@ describe("structure", () => {
     expect(app.life).toHaveLength(90);
   });
 
+  test("the Long Range strip highlights the theme card at every age, 0 to 120", () => {
+    for (let age = 0; age <= 120; age++) {
+      const lr = buildCardApp(`${1906 + (120 - age)}-01-01`, "2026-09-29").year.birth.longRange;
+      expect(lr.cycle[lr.yearInCycle - 1].code).toBe(lr.card.code);
+      expect(lr.cycleStartAge + lr.yearInCycle - 1).toBe(age); // chips carry real ages
+      expect(lr.cycleEndAge - lr.cycleStartAge + 1).toBe(lr.cycle.length);
+      expect(lr.cycle).toHaveLength(age % 90 >= 84 ? 6 : 7); // cycle 12 holds six years (§9)
+      expect(lr.projection).toBe(age >= 90); // §10
+    }
+  });
+
   test("December 31 refuses with the Joker error", () => {
     expect(() => buildCardApp("1990-12-31", "2026-09-29")).toThrow(JokerNotSupportedError);
   });
@@ -275,7 +286,7 @@ describe("product page", () => {
   test("renders one H1, the live sample, and no buy button while off sale", async () => {
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: Page, metadata } = await import("../app/products/card-blueprint-app/page");
-    const html = renderToStaticMarkup(Page());
+    const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({}) }));
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html).toContain("Card Blueprint App");
     expect(html).toContain("Your card today");
@@ -288,5 +299,24 @@ describe("product page", () => {
       expect(html).toContain("Opening soon");
       expect(metadata.robots).toEqual({ index: false, follow: true });
     }
+  });
+
+  test("the sample shows the visitor's own date, within a day of the server's", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: Page } = await import("../app/products/card-blueprint-app/page");
+    const iso = (days: number) => new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
+    expect(appDateParam(iso(1))).toBe(iso(1));
+    expect(appDateParam(iso(-1))).toBe(iso(-1));
+    expect(appDateParam(iso(2))).toBeUndefined();
+    expect(appDateParam("not-a-date")).toBeUndefined();
+    const tomorrow = buildCardApp("1988-07-14", iso(1));
+    const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ date: iso(1) }) }));
+    expect(html).toContain(tomorrow.todayLabel);
+  });
+
+  test("checkout facts describe an app, not a written report", () => {
+    const text = instantReportFacts(CARD_APP_PRODUCT).map((f) => f.value).join(" ");
+    expect(text).toContain("Your app opens");
+    expect(text).not.toMatch(/report/i);
   });
 });

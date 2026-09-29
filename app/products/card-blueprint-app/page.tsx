@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CardAppView } from "@/components/card-app/CardApp";
 import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { buildCardApp } from "@/lib/card-app";
+import { appDateParam, buildCardApp } from "@/lib/card-app";
 import { buildConnection } from "@/lib/card-app-connection";
 import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { DEEP_DIVE_PRICE_LABEL, DEEP_DIVE_PRODUCT_NAME, DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
@@ -63,7 +63,7 @@ const faqs = [
   },
   {
     q: "What happens to the birthdays I add for other people?",
-    a: "They stay on your phone. We use them only to compare the two of you and don't keep them.",
+    a: "Your list is saved only on your phone. When you compare, the birthday goes to our server to work out the cards, and we don't keep it.",
   },
   {
     q: "Is any of it written by AI?",
@@ -83,8 +83,14 @@ const faqs = [
   },
 ];
 
-export default function CardBlueprintAppPage() {
-  const sample = buildCardApp(SAMPLE_BIRTHDATE);
+export default async function CardBlueprintAppPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ date?: string }>;
+}) {
+  // "Today" is the visitor's own date: the sample syncs ?date= like a buyer's app.
+  const { date } = await searchParams;
+  const sample = buildCardApp(SAMPLE_BIRTHDATE, appDateParam(date));
   const connection = buildConnection(SAMPLE_BIRTHDATE, SAMPLE_OTHER.birthdate, SAMPLE_OTHER.name);
 
   const jsonLd = [

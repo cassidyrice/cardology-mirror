@@ -525,11 +525,17 @@ export function digitalOfferFacts(offer: DigitalDownloadOffer): DigitalOfferFact
 export function instantReportFacts(
   offer: InstantReportOffer | MembershipOffer,
 ): InstantReportFact[] {
+  const app = offer.kind === "instant_report" && offer.reportSlug === CARD_APP_SLUG;
   return [
     { label: "Deliverable", value: offer.deliverable },
     { label: "Input", value: "Your birth date, collected securely at checkout." },
-    { label: "Access", value: "Instant report on the confirmation page, plus an emailed return link." },
-    { label: "Timing", value: "Generated immediately after payment." },
+    {
+      label: "Access",
+      value: app
+        ? "Your app opens on the confirmation page, and its link is emailed to you. The link works for life."
+        : "Instant report on the confirmation page, plus an emailed return link.",
+    },
+    { label: "Timing", value: app ? "Built the moment payment lands." : "Generated immediately after payment." },
     {
       label: "Renewal",
       value:

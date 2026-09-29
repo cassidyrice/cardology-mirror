@@ -97,6 +97,7 @@ export default async function CheckoutSuccessPage({
     product && isDigitalDownload(product) && !deepDive;
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
+  const appPurchase = Boolean(product && isInstantReport(product) && product.reportSlug === CARD_APP_SLUG);
 
   // Instant report: birth date from our review picker (session metadata)
   // or an older Stripe custom field. Then mint the report token.
@@ -211,7 +212,9 @@ export default async function CheckoutSuccessPage({
             : confirmed && digital
             ? "Your e-book is ready for download."
             : confirmed && instantReport
-              ? "Payment confirmed. Your Blueprint is ready."
+              ? appPurchase
+                ? "Payment confirmed. Your app is ready."
+                : "Payment confirmed. Your Blueprint is ready."
               : confirmed && voice
                 ? "Payment confirmed. Your access is being activated."
                 : "We could not confirm this purchase yet."}
@@ -227,8 +230,10 @@ export default async function CheckoutSuccessPage({
             ? `"${product!.name}" — ${product!.priceLabel}. Your download link is below. Save the PDF somewhere safe.`
             : confirmed && instantReport
               ? reportToken
-                ? `"${product!.name}" — ${product!.priceLabel}. Your personalized report is generated and ready to read. A return link was also emailed to you.`
-                : "Payment is confirmed, but we could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we'll finish your Blueprint."
+                ? appPurchase
+                  ? `"${product!.name}" — ${product!.priceLabel}. Your app is built and ready to open. Its link was also emailed to you.`
+                  : `"${product!.name}" — ${product!.priceLabel}. Your personalized report is generated and ready to read. A return link was also emailed to you.`
+                : `Payment is confirmed, but we could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we'll ${appPurchase ? "build your app" : "finish your Blueprint"}.`
               : confirmed && voice
                 ? activationInstructions(product!)
                 : "No paid access was verified. Return to the Blueprint page or contact support so we can verify the payment."}
@@ -267,7 +272,7 @@ export default async function CheckoutSuccessPage({
               token={downloadToken}
             />
           ) : instantReport ? (
-            <><ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} app={isInstantReport(product!) && product!.reportSlug === CARD_APP_SLUG} />
+            <><ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} app={appPurchase} />
             {product!.slug === CONSULT_SLUG && session2?.payment_status === "paid" && (
               <div className="mt-8 text-center">
                 <p className="mb-4">Share what you want to explore and your time zone. Cass will contact you to arrange your 45-minute call.</p>
@@ -315,7 +320,7 @@ export default async function CheckoutSuccessPage({
             : digital
             ? "If your download link doesn't work, reply to your receipt email or"
             : instantReport
-              ? "If your Blueprint link doesn't work or the birth date is wrong, reply to your receipt email or"
+              ? `If your ${appPurchase ? "app" : "Blueprint"} link doesn't work or the birth date is wrong, reply to your receipt email or`
               : "If the line doesn&rsquo;t recognize your number or a call drops, reply to your receipt email or"}{" "}
           <Link
             href="/contact"

@@ -152,7 +152,8 @@ function PeriodRow({ p }: { p: AppPeriod }) {
 function YearScreen({ data }: { data: CardApp }) {
   const yr = data.year;
   const lr = yr.birth.longRange;
-  const [age, setAge] = useState(Math.min(data.age, data.life.length - 1));
+  // Ages past 89 read from the canonical age (mod 90), like every other card.
+  const [age, setAge] = useState(data.age % data.life.length);
   const row = data.life[age];
   return (
     <>
@@ -163,8 +164,11 @@ function YearScreen({ data }: { data: CardApp }) {
         {yr.periods.map((p) => <PeriodRow key={p.planet} p={p} />)}
       </div>
 
-      <Section eyebrow={`Long Range · ages ${lr.cycleStartAge}–${lr.cycleEndAge}, year ${lr.yearInCycle} of 7`}>
+      <Section eyebrow={`Long Range · ages ${lr.cycleStartAge}–${lr.cycleEndAge}, year ${lr.yearInCycle} of ${lr.cycle.length}`}>
         <CardLine label="Theme of the year" item={lr} blurb={data.copy.longRange} />
+        {lr.projection && (
+          <p className={cx(y.p, y.small)}>Past 89 the cycles start again from age 0, so this is a projection.</p>
+        )}
         <div className={s.chips} aria-label="Your seven-year cycle">
           {lr.cycle.map((c, i) => (
             <span key={i} className={cx(y.pill, i === lr.yearInCycle - 1 && y.pillGold)}>{lr.cycleStartAge + i}: {c.code}</span>
@@ -515,7 +519,7 @@ function PeopleScreen({ token }: { token: string }) {
     <>
       <div className={y.eyebrow}>People · compatibility</div>
       <h2 className={y.h1}>How you two connect</h2>
-      <p className={y.p}>Add anyone. We compare both birth cards and both ruling cards, in both directions. Birthdays stay on this device.</p>
+      <p className={y.p}>Add anyone. We compare both birth cards and both ruling cards, in both directions. Your list is saved only on this device; to compare, we send the birthday to our server and don&rsquo;t keep it.</p>
       {/* ph-no-capture: PostHog autocapture must never record the names people add. */}
       <form onSubmit={add} className={cx(y.stack, "ph-no-capture")}>
         <div className={cx(y.field, s.fieldCol)}>
@@ -571,18 +575,36 @@ const TABS: ScreenId[] = ["today", "year", "me", "days", "people"];
 /**
  * The server builds "today" in UTC. If the buyer's own calendar date differs
  * (evenings in the Americas, mornings in Asia), rebuild for their date once.
+ * Checked again when the app comes back to the screen and at local midnight,
+ * so an app left open or resumed from the home screen never shows yesterday.
  */
 function LocalDateSync({ today }: { today: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
   useEffect(() => {
-    const local = localIso();
-    if (local !== today && params.get("date") !== local) {
-      const next = new URLSearchParams(params.toString());
-      next.set("date", local);
-      router.replace(`${pathname}?${next.toString()}`);
-    }
+    const sync = () => {
+      if (document.visibilityState === "hidden") return;
+      const local = localIso();
+      if (local !== today && params.get("date") !== local) {
+        const next = new URLSearchParams(params.toString());
+        next.set("date", local);
+        router.replace(`${pathname}?${next.toString()}`);
+      }
+    };
+    sync();
+    const now = new Date();
+    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 5);
+    const timer = window.setTimeout(sync, midnight.getTime() - now.getTime());
+    document.addEventListener("visibilitychange", sync);
+    window.addEventListener("pageshow", sync);
+    window.addEventListener("focus", sync);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", sync);
+      window.removeEventListener("pageshow", sync);
+      window.removeEventListener("focus", sync);
+    };
   }, [today, params, pathname, router]);
   return null;
 }
@@ -593,7 +615,7 @@ type CardAppViewProps =
 
 /**
  * The buyer's app (`token`), or a fixed sample for the product page (`sample`):
- * the sample skips the local-date sync and shows one precomputed comparison.
+ * the sample shows one precomputed comparison. Both sync to the viewer's date.
  */
 export function CardAppView({ data, token, sample, framed = false }: CardAppViewProps) {
   const [screen, setScreen] = useState<ScreenId>("today");
@@ -615,11 +637,9 @@ export function CardAppView({ data, token, sample, framed = false }: CardAppView
   })();
   return (
     <div className={y.root}>
-      {!sample && (
-        <Suspense fallback={null}>
-          <LocalDateSync today={data.today} />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <LocalDateSync today={data.today} />
+      </Suspense>
       {!sample && <h1 className="sr-only">Your Card Blueprint App</h1>}
       <div className={framed ? y.phone : y.full}>
         {framed && <div className={y.notch} />}

@@ -170,7 +170,7 @@ export interface CardApp {
     spreads: { period: number; karma: number; longRange: number };
     periods: AppPeriod[];
     current: AppPeriod;
-    birth: { pluto: AppCardNote; result: AppCardNote; longRange: AppCardNote & { cycleStartAge: number; cycleEndAge: number; yearInCycle: number; cycle: YearCard[] } };
+    birth: { pluto: AppCardNote; result: AppCardNote; longRange: AppCardNote & { cycleStartAge: number; cycleEndAge: number; yearInCycle: number; cycle: YearCard[]; projection: boolean } };
     ruling: { pluto: AppCardNote; result: AppCardNote; longRange: AppCardNote } | null;
     environment: AppCardNote | null;
     displacement: AppCardNote | null;
@@ -521,6 +521,13 @@ function buildSignals(
 
 // --- main builder -------------------------------------------------------------
 
+/** A `?date=` from the viewer's browser, accepted only within a day of the server's UTC date. */
+export function appDateParam(date: string | undefined): string | undefined {
+  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return undefined;
+  const offset = Math.abs(Date.parse(`${date}T00:00:00Z`) - Date.parse(`${new Date().toISOString().slice(0, 10)}T00:00:00Z`));
+  return Number.isFinite(offset) && offset <= 86_400_000 ? date : undefined;
+}
+
 /**
  * Build the whole app for one birthdate. `todayIso` defaults to today (UTC);
  * the page passes the buyer's local date when it has one.
@@ -601,7 +608,11 @@ export function buildCardApp(birthdate: string, todayIso?: string): CardApp {
   const next = Array.from({ length: 6 }, (_, i) => dayOn(addDays(today, i + 1)));
 
   const lr = longRangeFor(bc, age);
-  const cycleStartAge = Math.floor(age / 7) * 7;
+  // The strip follows the same canonical age as the card (mod 90, doctrine §10),
+  // labelled with real ages. Cycle 12 (ages 84–89) holds six years, not seven (§9).
+  const canonAge = mod90(age);
+  const cycleYears = canonAge >= 84 ? 6 : 7;
+  const cycleStartAge = Math.floor(canonAge / 7) * 7 + (age - canonAge);
   const prcLr = prc ? longRangeFor(prc, age) : null;
 
   const life: AppLifeYear[] = Array.from({ length: 90 }, (_, a) => {
@@ -655,9 +666,10 @@ export function buildCardApp(birthdate: string, todayIso?: string): CardApp {
         longRange: {
           ...note(lr.card),
           cycleStartAge,
-          cycleEndAge: cycleStartAge + 6,
-          yearInCycle: (age % 7) + 1,
-          cycle: lr.cycle.map(toYearCard),
+          cycleEndAge: cycleStartAge + cycleYears - 1,
+          yearInCycle: (canonAge % 7) + 1,
+          cycle: lr.cycle.slice(0, cycleYears).map(toYearCard),
+          projection: age >= 90,
         },
       },
       ruling: f.ruling9 && prcLr
