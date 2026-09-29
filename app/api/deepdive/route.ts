@@ -4,6 +4,7 @@ import { getReading, engineErrorResponse } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
 import { READING_INTERPRETATION_GUIDE } from "@/lib/interpretation-guidance";
 import { bearerFrom, verifyToken } from "@/lib/gate";
+import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import type { Reading, Interpretation, PlanetName } from "@/lib/types";
 
 export const runtime = "edge";
@@ -130,7 +131,7 @@ export async function POST(req: NextRequest) {
   const body = await readJsonObject(req);
   const birthdate = typeof body?.birthdate === "string" ? body.birthdate.trim() : "";
   const date = typeof body?.date === "string" ? body.date.trim() || undefined : undefined;
-  const focus = typeof body?.focus === "string" ? body.focus.trim() : undefined;
+  const focus = typeof body?.focus === "string" ? body.focus.trim().slice(0, 300) : undefined;
 
   if (!birthdate) {
     return NextResponse.json({ error: "missing birthdate" }, { status: 400 });
@@ -143,6 +144,11 @@ export async function POST(req: NextRequest) {
       { error: "This deep dive is locked.", gate: true },
       { status: 402 },
     );
+  }
+  // Each call is a paid model generation; cap per token and per IP.
+  if (!rateLimit(`deepdive:${gate.email}`, { limit: 5, windowMs: 3_600_000 }).ok ||
+      !rateLimit(rateLimitKey(req, "deepdive"), { limit: 10, windowMs: 3_600_000 }).ok) {
+    return NextResponse.json({ error: "Please wait a while, then retry." }, { status: 429 });
   }
 
   // Graceful handling when the gateway key is absent.

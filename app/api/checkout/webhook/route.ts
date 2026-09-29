@@ -129,6 +129,8 @@ export async function POST(req: NextRequest) {
     // Every fulfillment branch requires confirmed payment, including delayed methods.
     if (!paymentSatisfied) return NextResponse.json({ received: true });
     if (isOneQuestionSession(session)) {
+      // Terminal = a Stripe retry cannot fix it; only the operator can.
+      let terminal = false;
       try {
         const reading = await deliverReading({
           sessionId: session.id, sessionCreated: session.created,
@@ -138,13 +140,19 @@ export async function POST(req: NextRequest) {
         });
         // Stripe retries storage/delivery failures; the durable reservation prevents
         // a second generation. A stuck generation needs operator reconciliation.
-        if (reading.status === "failed" || reading.delivery === "review") throw new Error("operator review required");
+        if (reading.status === "failed" || reading.delivery === "review") {
+          terminal = true;
+          throw new Error("operator review required");
+        }
         if (reading.status !== "ready" || reading.delivery !== "sent") {
           return NextResponse.json({ error: "fulfillment pending" }, { status: 503 });
         }
         return NextResponse.json({ received: true });
-      } catch {
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "";
+        if (/invalid fulfillment input|predates automatic fulfillment/.test(message)) terminal = true;
         console.error("[webhook] reading requires retry or operator review");
+        let operatorAlerted = false;
         if (process.env.INTAKE_EMAIL) {
           const birthday = birthdateFromCheckoutSession(session);
           const question = questionFromCheckoutSession(session);
@@ -168,10 +176,14 @@ export async function POST(req: NextRequest) {
                   : "Ask the buyer for missing details before using reading.",
               ].join("\n"),
             });
+            operatorAlerted = true;
           } catch {
             console.error("[webhook] review notification not sent; webhook remains retryable");
           }
         }
+        // Retrying a terminal order for 3 days only re-alerts and counts toward
+        // Stripe disabling the endpoint. Stop once a human has been told.
+        if (terminal && operatorAlerted) return NextResponse.json({ received: true, review: true });
         return NextResponse.json({ error: "fulfillment unavailable" }, { status: 503 });
       }
     }
@@ -506,6 +518,10 @@ export async function POST(req: NextRequest) {
       }
       return NextResponse.json({ received: true });
     }
+
+    // Payment Link sales (e.g. the $20 Reading Day link) are fulfilled off-site;
+    // without this they fall through to the voice-reading email below.
+    if (!offerSlug && session.payment_link) return NextResponse.json({ received: true });
 
     // ---- BRANCH: voice reading (existing flow) ----
     const accessDays =

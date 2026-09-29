@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getReading, engineErrorResponse } from "@/lib/engine";
 import { chatStream, getLLMConfig, type ChatMessage } from "@/lib/llm";
 import { bearerFrom, verifyToken } from "@/lib/gate";
+import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import type { Reading } from "@/lib/types";
 import MEANINGS from "@/lib/card-meanings.json";
 
@@ -108,6 +109,11 @@ export async function POST(req: NextRequest) {
       { error: "This deep dive is locked.", gate: true },
       { status: 402 },
     );
+  }
+  // Each call is a paid model generation; cap per token and per IP.
+  if (!rateLimit(`storyarc:${gate.email}`, { limit: 5, windowMs: 3_600_000 }).ok ||
+      !rateLimit(rateLimitKey(req, "storyarc"), { limit: 10, windowMs: 3_600_000 }).ok) {
+    return NextResponse.json({ error: "Please wait a while, then retry." }, { status: 429 });
   }
 
   const { key } = getLLMConfig();

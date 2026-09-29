@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { mintDownloadToken } from "@/lib/download-token";
 import { sendIntakeEmail } from "@/lib/email";
+import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import {
   addCourseContact,
   FREE_COURSE_SLUG,
@@ -14,6 +15,14 @@ export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
+  // The form posts from our own pages; anything else is a script using us as a mailer.
+  if (request.headers.get("origin") !== request.nextUrl.origin) {
+    return NextResponse.json({ error: "Please sign up from our site." }, { status: 403 });
+  }
+  // ponytail: per-isolate soft brake; a Cloudflare WAF rule on /api/* is the real quota.
+  if (!rateLimit(rateLimitKey(request, "free-course"), { limit: 5, windowMs: 600_000 }).ok) {
+    return NextResponse.json({ error: "Please wait a few minutes, then retry." }, { status: 429 });
+  }
   const raw = await readJsonObject(request);
   if (!raw) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });

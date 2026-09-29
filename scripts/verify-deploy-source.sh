@@ -119,6 +119,18 @@ else
   fi
 fi
 
+# --- Probe 5: /version.txt, stamped by deploy-production.sh (exact commit) ---
+echo "→ probe 5: /version.txt"
+live_commit="$("${CURL[@]}" -f "${SITE_ORIGIN}/version.txt" 2>/dev/null | tr -d '[:space:]' || true)"
+if [[ -z "$live_commit" ]]; then
+  yellow "  NOTE: no /version.txt (deploys before 2026-09-29 lack it); probes 1-3 are only a floor."
+elif [[ "$live_commit" == "$DEPLOY_COMMIT" ]]; then
+  green "  OK: live build is exactly ${DEPLOY_COMMIT:0:7}"
+else
+  red "  FAIL: live build is ${live_commit:0:7}, record is ${DEPLOY_COMMIT:0:7}"
+  fail=1
+fi
+
 # --- Probe 4: live Worker version vs the record (wrangler CLI; no tokens printed) ---
 echo "→ probe 4: Worker $WORKER_NAME version"
 worker_pair="$(npx wrangler deployments list --name "$WORKER_NAME" --json 2>/dev/null | python3 -c '

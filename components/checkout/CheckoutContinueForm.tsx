@@ -47,6 +47,14 @@ export function CheckoutContinueForm({
   const [question, setQuestion] = useState("");
   const [questionError, setQuestionError] = useState("");
 
+  // Back from Stripe restores this page from bfcache with the button still
+  // disabled ("Redirecting…"); re-enable it so the buyer can retry.
+  useEffect(() => {
+    const reset = (e: PageTransitionEvent) => { if (e.persisted) setPending(false); };
+    window.addEventListener("pageshow", reset);
+    return () => window.removeEventListener("pageshow", reset);
+  }, []);
+
   useEffect(() => {
     const fromProp = sanitizeBirthdateISO(birthdate);
     const fromStore = readCheckoutBirthdate();

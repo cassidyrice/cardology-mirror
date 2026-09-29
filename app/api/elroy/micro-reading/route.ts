@@ -5,6 +5,7 @@ import { sendEmail } from "@/lib/email";
 import { addResendContact } from "@/lib/resend-contacts";
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SITE_URL } from "@/lib/site";
+import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 
 export const runtime = "edge";
 
@@ -25,7 +26,8 @@ function json(
 
 function sameOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
-  if (!origin) return true; // same-origin navigation / non-browser
+  // Browsers always send Origin on POST; a missing one is a script.
+  if (!origin) return false;
   try {
     return new URL(origin).origin === new URL(request.url).origin;
   } catch {
@@ -49,6 +51,10 @@ export async function POST(request: Request): Promise<Response> {
   if (!sameOrigin(request)) {
     return json(403, { error: "Forbidden" });
   }
+  // ponytail: per-isolate soft brake; a Cloudflare WAF rule on /api/* is the real quota.
+  if (!rateLimit(rateLimitKey(request, "elroy"), { limit: 5, windowMs: 600_000 }).ok) {
+    return json(429, { error: "Please wait a few minutes, then retry." });
+  }
 
   const contentLength = Number(request.headers.get("content-length") || "0");
   if (contentLength > MAX_BODY) {
@@ -65,6 +71,10 @@ export async function POST(request: Request): Promise<Response> {
     payload = JSON.parse(rawText) as Record<string, unknown>;
   } catch {
     return json(400, { error: "Invalid JSON" });
+  }
+  const emailKey = typeof payload.email === "string" ? payload.email.trim().toLowerCase() : "";
+  if (emailKey && !rateLimit(`elroy-email:${emailKey}`, { limit: 3, windowMs: 86_400_000 }).ok) {
+    return json(429, { error: "Please wait a few minutes, then retry." });
   }
 
   const runtimeEnv = await resolveRuntimeEnv();

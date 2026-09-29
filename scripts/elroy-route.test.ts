@@ -7,9 +7,14 @@ function makeRequest(
 ): Request {
   return new Request(url, {
     method: "POST",
-    headers: { "content-type": "application/json", ...(init.headers || {}) },
     body: "{}",
     ...init,
+    headers: {
+      "content-type": "application/json",
+      origin: new URL(url).origin,
+      "cf-connecting-ip": `route-test-${Math.random()}`,
+      ...(init.headers || {}),
+    },
   });
 }
 
@@ -42,9 +47,21 @@ describe("Elroy micro-reading route boundary", () => {
     expect(await response.json()).toEqual({ error: "Invalid JSON" });
   });
 
-  test("allows server requests without an Origin header", async () => {
-    const response = await POST(makeRequest(undefined, { body: "not-json" }));
-    expect(response.status).toBe(400);
+  test("rejects scripted requests without an Origin header", async () => {
+    const response = await POST(
+      new Request("https://cardblueprints.com/api/elroy/micro-reading", { method: "POST", body: "{}" }),
+    );
+    expect(response.status).toBe(403);
+  });
+
+  test("caps emails to one address per day", async () => {
+    const body = (d: string) => JSON.stringify({ birthdate: d, email: "cap@example.com", consent: true, source: "/t" });
+    const statuses = [];
+    for (const d of ["2001-01-11", "2001-01-12", "2001-01-13", "2001-01-14"]) {
+      statuses.push((await POST(makeRequest(undefined, { body: body(d) }))).status);
+    }
+    expect(statuses.slice(0, 3)).not.toContain(429);
+    expect(statuses[3]).toBe(429);
   });
 
   test("rejects methods other than POST", async () => {
