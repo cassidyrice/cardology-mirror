@@ -235,3 +235,23 @@ describe("POST /api/card-app/connection", () => {
     expect(data.youOnThem.some((s: { position: string }) => s.position === "Mars")).toBe(true);
   });
 });
+
+describe("product page", () => {
+  test("renders one H1, the live sample, and no buy button while off sale", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { default: Page, metadata } = await import("../app/products/card-blueprint-app/page");
+    const html = renderToStaticMarkup(Page());
+    expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
+    expect(html).toContain("Card Blueprint App");
+    expect(html).toContain("Your card today");
+    expect(html).toContain("/birth-card-calculator");
+    expect(html).toContain("/birth-card-compatibility-calculator");
+    expect(html).not.toMatch(/personal-card-blueprint|Personal Card Blueprint/);
+    expect(String(metadata.title).length).toBeLessThanOrEqual(60);
+    expect(String(metadata.description).length).toBeLessThanOrEqual(155);
+    if (!CARD_APP_ON_SALE) {
+      expect(html).toContain("Opening soon");
+      expect(metadata.robots).toEqual({ index: false, follow: true });
+    }
+  });
+});

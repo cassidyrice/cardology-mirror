@@ -10,7 +10,7 @@ import {
   CONSULT_PRICE_LABEL,
   CONSULT_SLUG,
 } from "@/lib/blueprint-report";
-import { CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
 
 export type ProductKind =
   | "voice_reading"
@@ -441,6 +441,7 @@ export const CARD_APP_PRODUCT: InstantReportOffer = {
     "One payment, yours for life. No subscription. You enter your birth date on the next page; the app is built the moment payment lands and the link is emailed to you.",
   reportSlug: CARD_APP_SLUG,
   linkDays: LIFETIME_LINK_DAYS,
+  href: CARD_APP_PRODUCT_PATH,
 };
 
 export const ALL_PRODUCTS: SiteProduct[] = [

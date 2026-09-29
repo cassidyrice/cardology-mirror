@@ -69,7 +69,7 @@ function TodayScreen({ data, go }: { data: CardApp; go: (id: ScreenId) => void }
         <Pc card={d.birth.card} />
         <div className={y.stack}>
           <span className={y.planet}>Your card today</span>
-          <h1 className={y.h1} style={{ fontSize: 30 }}>{d.birth.card.name}</h1>
+          <h2 className={y.h1} style={{ fontSize: 30 }}>{d.birth.card.name}</h2>
           <p className={cx(y.p, y.small)}>{d.birth.note.light}</p>
         </div>
       </div>
@@ -152,7 +152,7 @@ function YearScreen({ data }: { data: CardApp }) {
   return (
     <>
       <div className={y.eyebrow}>My year · age {data.age}</div>
-      <h1 className={y.h1}>{yr.startLabel} → {yr.endLabel}</h1>
+      <h2 className={y.h1}>{yr.startLabel} → {yr.endLabel}</h2>
 
       <div className={y.card} style={{ padding: "4px 16px" }}>
         {yr.periods.map((p) => <PeriodRow key={p.planet} p={p} />)}
@@ -346,7 +346,7 @@ function DaysScreen({ data }: { data: CardApp }) {
   return (
     <>
       <div className={y.eyebrow}>Good days · next 12 months</div>
-      <h1 className={y.h1}>When your cards line up</h1>
+      <h2 className={y.h1}>When your cards line up</h2>
       <p className={y.p}>Days your daily card matches one of your key cards, plus your blessing window and every turning point. A mirror, not a forecast.</p>
       <div className={s.chips} role="group" aria-label="Filter">
         {(["good", "watch", "turn", "all"] as const).map((k) => (
@@ -440,7 +440,7 @@ function SamplePeopleScreen({ connection }: { connection: AppConnection }) {
   return (
     <>
       <div className={y.eyebrow}>People · compatibility</div>
-      <h1 className={y.h1}>How you two connect</h1>
+      <h2 className={y.h1}>How you two connect</h2>
       <p className={y.p}>In your app you add anyone by name and birthday. Here&rsquo;s one example.</p>
       <div className={cx(y.card, y.stack)} style={{ gap: 14 }}>
         <ConnectionResult result={connection} />
@@ -509,7 +509,7 @@ function PeopleScreen({ token }: { token: string }) {
   return (
     <>
       <div className={y.eyebrow}>People · compatibility</div>
-      <h1 className={y.h1}>How you two connect</h1>
+      <h2 className={y.h1}>How you two connect</h2>
       <p className={y.p}>Add anyone. We compare both birth cards and both ruling cards, in both directions. Birthdays stay on this device.</p>
       <form onSubmit={add} className={y.stack}>
         <div className={cx(y.field, s.fieldCol)}>
@@ -614,6 +614,7 @@ export function CardAppView({ data, token, sample, framed = false }: CardAppView
           <LocalDateSync today={data.today} />
         </Suspense>
       )}
+      {!sample && <h1 className="sr-only">Your Card Blueprint App</h1>}
       <div className={framed ? y.phone : y.full}>
         {framed && <div className={y.notch} />}
         {framed && <div className={y.status}><span>{data.day.today.weekday}</span><span>{data.day.today.label}</span></div>}
