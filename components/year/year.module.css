@@ -14,7 +14,9 @@
   --yb-gold-2: #f1cb7e;
   --yb-ember: #c0453c;
   --yb-ember-soft: #d98a83;
-  --yb-display: var(--font-year-display), var(--font-serif), Georgia, serif;
+  /* --font-year-display is never set, and an undefined var() voids the whole
+     declaration, so the serif fallback lives inside the var(). */
+  --yb-display: var(--font-year-display, var(--font-serif, Georgia)), Georgia, serif;
   --yb-body: var(--font-sans), system-ui, sans-serif;
   --yb-mono: ui-monospace, "SF Mono", Menlo, monospace;
   color: var(--yb-bone);

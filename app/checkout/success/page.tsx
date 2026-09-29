@@ -32,6 +32,7 @@ import { mintDownloadToken } from "@/lib/download-token";
 import { ALL_90_SPREADS_FILE, isJokerBirthdate } from "@/lib/deep-dive";
 import { getStripe } from "@/lib/stripe";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
+import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -265,7 +266,7 @@ export default async function CheckoutSuccessPage({
               token={downloadToken}
             />
           ) : instantReport ? (
-            <><ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} />
+            <><ReportFulfillment reportToken={reportToken} spreadsHref={spreadsDownloadHref} app={isInstantReport(product!) && product!.reportSlug === CARD_APP_SLUG} />
             {product!.slug === CONSULT_SLUG && session2?.payment_status === "paid" && (
               <div className="mt-8 text-center">
                 <p className="mb-4">Share what you want to explore and your time zone. Cass will contact you to arrange your 45-minute call.</p>
@@ -543,9 +544,11 @@ function activationInstructions(product: SiteProduct): string {
 function ReportFulfillment({
   reportToken,
   spreadsHref,
+  app = false,
 }: {
   reportToken: string;
   spreadsHref?: string;
+  app?: boolean;
 }) {
   if (!reportToken) {
     return (
@@ -556,6 +559,27 @@ function ReportFulfillment({
           Your payment went through, but the birth date from checkout
           didn&rsquo;t reach us. Reply to your receipt email with your birth
           date (YYYY-MM-DD) and we&rsquo;ll send your report link.
+        </p>
+      </div>
+    );
+  }
+  if (app) {
+    return (
+      <div className="text-center">
+        <Kicker className="mb-4">Your app</Kicker>
+        <h2 className="type-h2 text-brand-ink">It&rsquo;s ready.</h2>
+        <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
+          Your app was built from the birth date you entered at checkout. Open
+          it on your phone and add it to your home screen. The same link is in
+          your email.
+        </p>
+        <div className="mt-6">
+          <LinkButton href={`/blueprint?token=${reportToken}`} variant="accent" size="large">
+            Open my app
+          </LinkButton>
+        </div>
+        <p className="mt-3 text-xs text-brand-ink-soft">
+          Keep the emailed link: it opens your app for 12 months.
         </p>
       </div>
     );
