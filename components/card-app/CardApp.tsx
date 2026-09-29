@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import type { AppConnection, ConnectionSeat } from "@/lib/card-app-connection";
@@ -416,6 +416,39 @@ function SeatList({ title, seats, empty }: { title: string; seats: ConnectionSea
   );
 }
 
+function ConnectionResult({ result }: { result: AppConnection }) {
+  return (
+    <>
+      <div className={y.hero}>
+        <Pc card={result.birthCard} size="sm" />
+        <div className={y.stack} style={{ gap: 4 }}>
+          <span className={y.planet}>{result.name}</span>
+          <h3 className={y.h3}>{result.birthCard.name}</h3>
+          {result.ruling[0] && <span className={y.note}>Ruling card: {result.ruling[0].name}</span>}
+        </div>
+      </div>
+      <p className={y.p}>{result.summary}</p>
+      <SeatList title={`${result.name} on your boards`} seats={result.theyOnYou} empty="Their cards don't land on your boards." />
+      <div className={y.divider} />
+      <SeatList title={`You on ${result.name}'s boards`} seats={result.youOnThem} empty="Your cards don't land on their boards." />
+    </>
+  );
+}
+
+/** Product-page sample: one precomputed comparison, no form and no API call. */
+function SamplePeopleScreen({ connection }: { connection: AppConnection }) {
+  return (
+    <>
+      <div className={y.eyebrow}>People · compatibility</div>
+      <h1 className={y.h1}>How you two connect</h1>
+      <p className={y.p}>In your app you add anyone by name and birthday. Here&rsquo;s one example.</p>
+      <div className={cx(y.card, y.stack)} style={{ gap: 14 }}>
+        <ConnectionResult result={connection} />
+      </div>
+    </>
+  );
+}
+
 function PeopleScreen({ token }: { token: string }) {
   const [people, setPeople] = useState<Person[]>([]);
   const [name, setName] = useState("");
@@ -509,22 +542,7 @@ function PeopleScreen({ token }: { token: string }) {
         <div className={cx(y.card, y.stack)} style={{ gap: 14 }} aria-live="polite">
           {busy && <p className={y.p}>Reading both boards…</p>}
           {error && <p className={s.error} role="alert">{error}</p>}
-          {result && (
-            <>
-              <div className={y.hero}>
-                <Pc card={result.birthCard} size="sm" />
-                <div className={y.stack} style={{ gap: 4 }}>
-                  <span className={y.planet}>{result.name}</span>
-                  <h3 className={y.h3}>{result.birthCard.name}</h3>
-                  {result.ruling[0] && <span className={y.note}>Ruling card: {result.ruling[0].name}</span>}
-                </div>
-              </div>
-              <p className={y.p}>{result.summary}</p>
-              <SeatList title={`${result.name} on your boards`} seats={result.theyOnYou} empty="Their cards don't land on your boards." />
-              <div className={y.divider} />
-              <SeatList title={`You on ${result.name}'s boards`} seats={result.youOnThem} empty="Your cards don't land on their boards." />
-            </>
-          )}
+          {result && <ConnectionResult result={result} />}
         </div>
       )}
     </>
@@ -544,26 +562,41 @@ const ICONS: Record<ScreenId, React.ReactNode> = {
 const LABELS: Record<ScreenId, string> = { today: "Today", year: "Year", me: "Me", days: "Good days", people: "People" };
 const TABS: ScreenId[] = ["today", "year", "me", "days", "people"];
 
-export function CardAppView({ data, token }: { data: CardApp; token: string }) {
-  const [screen, setScreen] = useState<ScreenId>("today");
+/**
+ * The server builds "today" in UTC. If the buyer's own calendar date differs
+ * (evenings in the Americas, mornings in Asia), rebuild for their date once.
+ */
+function LocalDateSync({ today }: { today: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();
-
-  // The server builds "today" in UTC. If the buyer's own calendar date differs
-  // (evenings in the Americas, mornings in Asia), rebuild for their date once.
   useEffect(() => {
     const local = localIso();
-    if (local !== data.today && params.get("date") !== local) {
+    if (local !== today && params.get("date") !== local) {
       const next = new URLSearchParams(params.toString());
       next.set("date", local);
       router.replace(`${pathname}?${next.toString()}`);
     }
-  }, [data.today, params, pathname, router]);
+  }, [today, params, pathname, router]);
+  return null;
+}
+
+type CardAppViewProps =
+  | { data: CardApp; token: string; sample?: undefined; framed?: boolean }
+  | { data: CardApp; token?: undefined; sample: { connection: AppConnection }; framed?: boolean };
+
+/**
+ * The buyer's app (`token`), or a fixed sample for the product page (`sample`):
+ * the sample skips the local-date sync and shows one precomputed comparison.
+ */
+export function CardAppView({ data, token, sample, framed = false }: CardAppViewProps) {
+  const [screen, setScreen] = useState<ScreenId>("today");
+  const screenRef = useRef<HTMLElement>(null);
 
   const go = (id: ScreenId) => {
     setScreen(id);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0 });
+    if (framed) screenRef.current?.scrollTo({ top: 0 });
+    else if (typeof window !== "undefined") window.scrollTo({ top: 0 });
   };
   const inner = (() => {
     switch (screen) {
@@ -571,13 +604,20 @@ export function CardAppView({ data, token }: { data: CardApp; token: string }) {
       case "year": return <YearScreen data={data} />;
       case "me": return <MeScreen data={data} />;
       case "days": return <DaysScreen data={data} />;
-      case "people": return <PeopleScreen token={token} />;
+      case "people": return sample ? <SamplePeopleScreen connection={sample.connection} /> : <PeopleScreen token={token} />;
     }
   })();
   return (
     <div className={y.root}>
-      <div className={y.full}>
-        <section className={y.screen} key={screen}>{inner}</section>
+      {!sample && (
+        <Suspense fallback={null}>
+          <LocalDateSync today={data.today} />
+        </Suspense>
+      )}
+      <div className={framed ? y.phone : y.full}>
+        {framed && <div className={y.notch} />}
+        {framed && <div className={y.status}><span>{data.day.today.weekday}</span><span>{data.day.today.label}</span></div>}
+        <section className={y.screen} key={screen} ref={screenRef}>{inner}</section>
         <nav className={cx(y.tabs, s.tabs5)} aria-label="Sections">
           {TABS.map((id) => (
             <button key={id} type="button" className={cx(y.tab, screen === id && y.tabOn)} onClick={() => go(id)} aria-current={screen === id ? "page" : undefined}>
