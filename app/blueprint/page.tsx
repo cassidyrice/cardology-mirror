@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { BlueprintReportView } from "@/components/blueprint/BlueprintReportView";
+import { CardAppView } from "@/components/card-app/CardApp";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton } from "@/components/ui";
@@ -13,6 +14,7 @@ import {
 import { redirect } from "next/navigation";
 
 import { BLUEPRINT_REPORT_SLUG, BLUEPRINT_REPORT_VIEW_PATH } from "@/lib/blueprint-report";
+import { appDateParam, buildCardApp, CARD_APP_SLUG } from "@/lib/card-app";
 import { verifyReportToken } from "@/lib/report-token";
 import { buildYearBlueprint } from "@/lib/year-blueprint";
 
@@ -25,14 +27,14 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-type SearchParams = Promise<{ token?: string }>;
+type SearchParams = Promise<{ token?: string; date?: string }>;
 
 export default async function BlueprintPage({
   searchParams,
 }: {
   searchParams: SearchParams;
 }) {
-  const { token } = await searchParams;
+  const { token, date } = await searchParams;
   const payload = await verifyReportToken(token);
 
   if (!payload) {
@@ -71,6 +73,27 @@ export default async function BlueprintPage({
   // so it is served by app/report/route.ts rather than inside the app shell.
   if (payload.slug === BLUEPRINT_REPORT_SLUG) {
     redirect(`${BLUEPRINT_REPORT_VIEW_PATH}?token=${encodeURIComponent(token ?? "")}`);
+  }
+
+  // Card Blueprint App: every card, position and timing layer, rebuilt from the
+  // token's birthdate on each visit. The client passes its own calendar date so
+  // "today" is the buyer's today, not the server's UTC day.
+  if (payload.slug === CARD_APP_SLUG) {
+    let app = null;
+    let appError = "";
+    try {
+      app = buildCardApp(payload.birthdate, appDateParam(date, payload.birthdate));
+    } catch (e) {
+      appError = e instanceof Error ? e.message : "unknown engine error";
+    }
+    if (app) {
+      return (
+        <div style={{ background: "#0b0910", minHeight: "100dvh" }}>
+          <CardAppView data={app} token={token ?? ""} />
+        </div>
+      );
+    }
+    return <EngineErrorPage reference={appError} />;
   }
 
   // The 52xSeven Blueprint (retired from sale 2026-09-13) still renders for past buyers: a phone-shaped year app.

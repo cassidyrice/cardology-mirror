@@ -13819,5 +13819,716 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "cardology-vs-astrology-what-each-system-reads",
+    "pillar": "cardology-foundations",
+    "title": "Cardology vs Astrology: What Each System Reads",
+    "seoTitle": "Cardology vs Astrology",
+    "description": "How Cardology differs from astrology: playing-card birthday math versus planetary chart positions, and where the two systems overlap.",
+    "dek": "Both start with a birth date. Only one needs the sky.",
+    "datePublished": "2026-09-25",
+    "dateModified": "2026-09-25",
+    "readTime": "6 min read",
+    "keywords": [
+      "cardology vs astrology",
+      "birth card vs zodiac sign",
+      "52 card system comparison",
+      "astrology alternative",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Astrology reads the positions of planets at the moment of birth and usually needs time and location. Cardology maps the birth month and day to one playing card through fixed deck-calendar math. The systems overlap in vocabulary, since Cardology borrows planetary names for its timing and ruling layers, but the machinery is different.",
+    "sections": [
+      {
+        "heading": "Different inputs, different outputs",
+        "body": [
+          "A natal chart needs date, time, and place, and it produces a whole map: sun, moon, rising, houses, aspects. A birth card needs month and day, and it produces one card.",
+          "That difference in scale is a feature, not a shortcoming. One card is easy to learn, easy to compare, and hard to hide behind."
+        ],
+        "links": [
+          {
+            "label": "52-Card Astrology Explained",
+            "href": "/52-card-astrology-explained"
+          }
+        ]
+      },
+      {
+        "heading": "Where the vocabulary overlaps",
+        "body": [
+          "Cardology borrows planetary names. The ruling card is tied to zodiac rulership, and the timing system names its periods after Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.",
+          "The names are shorthand for life themes, not live sky calculations. A Saturn period in Cardology is a fixed segment of your year, not a transit."
+        ],
+        "links": [
+          {
+            "label": "Birth Card vs Ruling Card",
+            "href": "/birth-card-vs-ruling-card"
+          }
+        ]
+      },
+      {
+        "heading": "Using both without confusing them",
+        "body": [
+          "Plenty of people read both systems. The clean way to do it is to keep the layers separate: the chart describes one map, the card describes another, and agreement between them is interesting rather than required.",
+          "If you are new to both, start with the card. It is one fixed pattern you can test against yourself before adding anything else."
+        ],
+        "links": [
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is my birth card related to my zodiac sign?",
+        "a": "Indirectly. The planetary ruling card is derived from your sign's rulership, so two people with the same birth card but different signs can carry different ruling cards."
+      },
+      {
+        "q": "Which is more accurate, Cardology or astrology?",
+        "a": "They are different lenses rather than competing measurements. The useful test for either is whether the description helps you name real, repeating behavior."
+      },
+      {
+        "q": "Do I need to know astrology to use Cardology?",
+        "a": "No. The planetary names in Cardology are theme labels. You can read the system without ever casting a chart."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-cardology-is-and-is-not",
+      "cardology-vs-tarot-what-is-the-difference",
+      "birth-card-vs-ruling-card-how-to-read-both"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Card Astrology Explained",
+        "href": "/52-card-astrology-explained"
+      },
+      {
+        "label": "Birth Card vs Ruling Card",
+        "href": "/birth-card-vs-ruling-card"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
+  },
+  {
+    "slug": "reading-your-yearly-spread",
+    "pillar": "timing-and-spreads",
+    "title": "Reading Your Yearly Spread",
+    "description": "A step-by-step order for reading a Cardology yearly spread: Long Range first, then the seven period cards, then Pluto, Result, environment, and…",
+    "dek": "A yearly spread is a table of contents for the year, best read in a fixed order.",
+    "datePublished": "2026-09-26",
+    "dateModified": "2026-09-26",
+    "readTime": "6 min read",
+    "keywords": [
+      "yearly spread reading order",
+      "how to read year cards",
+      "annual card spread",
+      "birthday spread guide",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "A yearly spread is the set of cards assigned to one year of your life, calculated from your birth card and age. A clean reading order: start with the Long Range card for the year's headline theme, walk the seven planetary period cards in order, then read the Pluto card as the year's challenge and the Result card as what engaging it tends to produce.",
+    "sections": [
+      {
+        "heading": "Get the spread, then slow down",
+        "body": [
+          "The spread is deterministic: birth card plus age yields the same cards for everyone with that combination. The reading skill is entirely in the order and restraint you bring.",
+          "Resist reading all the cards as one blended fortune. Each card holds a position, and the position is most of the meaning."
+        ],
+        "links": [
+          {
+            "label": "52-Day Period Meaning Tool",
+            "href": "/52-day-period-meaning-tool"
+          }
+        ]
+      },
+      {
+        "heading": "The reading order",
+        "body": [
+          "First the Long Range card: the theme that colors the whole year regardless of period. Second, the seven period cards in planetary order, each owning its 52 days.",
+          "Then the depth pair: the Pluto card names the year's challenge or transformation pressure, and the Result card names what working that challenge tends to produce. Environment and displacement round out the year's supportive and demanding zones."
+        ]
+      },
+      {
+        "heading": "Keep it as a mirror",
+        "body": [
+          "A yearly spread is a set of reflection frames, not a forecast. The Long Range card will not make anything happen; it names a theme worth watching for.",
+          "A practical habit: write the year's cards on one page, revisit it at each period boundary, and note what actually occurred. The spread earns exactly as much trust as those notes justify."
+        ],
+        "links": [
+          {
+            "label": "Planetary Periods Without Prediction",
+            "href": "/blog/planetary-periods-without-prediction"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "What is in a Cardology yearly spread?",
+        "a": "Commonly a Long Range card, seven 52-day period cards, a Pluto card, a Result card, and yearly environment and displacement cards."
+      },
+      {
+        "q": "Do two people ever share a yearly spread?",
+        "a": "Yes. The spread depends only on birth card and age, so people with the same card and age share the same yearly cards."
+      },
+      {
+        "q": "Which card in the spread matters most?",
+        "a": "Start with the Long Range card for the year's theme. The current period card matters most day to day."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-is-a-long-range-card",
+      "pluto-and-result-cards-in-the-yearly-spread",
+      "how-52-day-periods-divide-your-year"
+    ],
+    "coreLinks": [
+      {
+        "label": "52-Day Period Meaning Tool",
+        "href": "/52-day-period-meaning-tool"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
+  },
+  {
+    "slug": "why-some-birth-cards-clash",
+    "pillar": "relationships-and-practice",
+    "title": "Why Some Birth Cards Clash",
+    "description": "The structural reasons two birth cards create friction in Cardology: suit translation gaps, rank collisions, and hard spread positions.",
+    "dek": "Most card clashes are translation problems wearing a costume of incompatibility.",
+    "datePublished": "2026-09-27",
+    "dateModified": "2026-09-27",
+    "readTime": "6 min read",
+    "keywords": [
+      "birth cards clash",
+      "card friction reasons",
+      "incompatible cards myth",
+      "why we fight cards",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Birth cards clash for structural reasons: the suits speak different domain languages, the ranks want different kinds of movement, or one card occupies a demanding position in the other's Life Spread, such as Mars or Saturn. None of these makes a relationship impossible. They name where the friction lives, which is the first step to handling it.",
+    "sections": [
+      {
+        "heading": "Suit clashes are translation gaps",
+        "body": [
+          "A Heart leads with feeling and a Spade leads with work; a Club processes out loud and a Diamond keeps score of value. When suits differ, each person can be genuinely giving in a currency the other does not count.",
+          "The clash dissolves surprisingly often when both people learn the exchange rate: this is what care looks like from inside that suit."
+        ],
+        "links": [
+          {
+            "label": "The Four Suits in Cardology",
+            "href": "/blog/four-suits-in-cardology"
+          }
+        ]
+      },
+      {
+        "heading": "Rank clashes are speed collisions",
+        "body": [
+          "Ranks want different movement. Fives need change and Fours need stability; Aces start things and Nines end them; Kings hold authority and Jacks dodge it.",
+          "These collisions are real but symmetrical: neither person is wrong, they are running different programs at different speeds. Naming the collision as structure takes the moral sting out of it."
+        ],
+        "links": [
+          {
+            "label": "Card Rank Meanings",
+            "href": "/blog/card-rank-meanings-aces-through-kings"
+          }
+        ]
+      },
+      {
+        "heading": "Position clashes are role assignments",
+        "body": [
+          "The Life Spread adds the deepest layer. When one card falls in the other's Mars position, the connection carries heat and competition; in Saturn, it carries criticism and lesson energy, often felt as heaviness.",
+          "These roles are directional and fixed, so the friction has a shape you can learn. A Saturn connection that is understood as a teaching dynamic wears very differently from one that is experienced as random disapproval."
+        ],
+        "links": [
+          {
+            "label": "Compatibility Calculator",
+            "href": "/birth-card-compatibility-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Are some birth card pairs simply incompatible?",
+        "a": "No pair is doomed by the system. Cards name where friction concentrates: domain translation, movement speed, or spread role. What a couple does with that map is theirs."
+      },
+      {
+        "q": "Is friction always a bad sign?",
+        "a": "No. Mars-style friction often powers attraction and shared drive, and Saturn-style friction often accompanies the relationships people later call formative."
+      },
+      {
+        "q": "Can two easy cards still clash?",
+        "a": "Yes. Structure names tendencies, and people bring their card's shadow range as well as its gifts to any relationship."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "cardology-compatibility-beginner-guide",
+      "saturn-card-connections-in-cardology",
+      "mars-card-connections-in-cardology"
+    ],
+    "coreLinks": [
+      {
+        "label": "Compatibility Calculator",
+        "href": "/birth-card-compatibility-calculator"
+      },
+      {
+        "label": "Cardology Compatibility",
+        "href": "/cardology-compatibility"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
+  },
+  {
+    "slug": "fixed-and-semi-fixed-cards-in-cardology",
+    "pillar": "cardology-foundations",
+    "title": "Fixed and Semi-Fixed Cards in Cardology",
+    "description": "Why the King of Spades, Jack of Hearts, and Eight of Clubs are called fixed cards, what the two semi-fixed pairs are, and how it changes a reading.",
+    "dek": "Three cards never move in the spreads. Four more only trade places with a partner.",
+    "datePublished": "2026-09-28",
+    "dateModified": "2026-09-28",
+    "readTime": "6 min read",
+    "keywords": [
+      "fixed cards cardology",
+      "king of spades jack of hearts eight of clubs",
+      "semi fixed cards",
+      "ace of clubs two of hearts pair",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "Three cards occupy the same position in both of Cardology's master arrangements: the Jack of Hearts, the Eight of Clubs, and the King of Spades. These are the fixed cards. Two pairs, the Ace of Clubs with the Two of Hearts and the Seven of Diamonds with the Nine of Hearts, simply exchange places, making them semi-fixed. People born to these cards are traditionally read as more constant in nature.",
+    "sections": [
+      {
+        "heading": "What fixed means mechanically",
+        "body": [
+          "Cardology uses two master arrangements of the deck, and most cards sit in different positions in each. Three do not move at all: the Jack of Hearts, the Eight of Clubs, and the King of Spades.",
+          "The traditional reading is one fixed card per domain: fixed love (Jack of Hearts), fixed mind (Eight of Clubs), and fixed will (King of Spades)."
+        ]
+      },
+      {
+        "heading": "The semi-fixed pairs",
+        "body": [
+          "Two pairs of cards swap positions with each other and with no one else: the Ace of Clubs with the Two of Hearts, and the Seven of Diamonds with the Nine of Hearts.",
+          "Each semi-fixed card is read as carrying a strong echo of its partner, so a Seven of Diamonds reading usually checks the Nine of Hearts pattern too."
+        ],
+        "links": [
+          {
+            "label": "All 52 Birth Cards",
+            "href": "/birth-card"
+          }
+        ]
+      },
+      {
+        "heading": "How it changes interpretation",
+        "body": [
+          "Fixed and semi-fixed cards have unusual karma-card structure: instead of the usual pair of karma cards, the fixed cards stand alone and the semi-fixed cards point at their partners.",
+          "In practice, people with these birth cards are often described as consistent, sometimes to the point of immovability. As always, treat that as a hypothesis to check against the actual person."
+        ],
+        "links": [
+          {
+            "label": "Shadow and Karma Guide",
+            "href": "/shadow-karma-guide"
+          },
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "Method, limits, and how to verify",
+        "body": [
+          "Cardology on Card Blueprints is a deterministic birthday-to-card map plus interpretation language for self-awareness and entertainment. The birth card is fixed math: the same public birth date always returns the same card in our engine.",
+          "Interpretation is a lens, not a biography and not a forecast. Do not treat a card as medical, legal, financial, or fate advice. Prefer claims you can check: recalculate the date, compare suit and rank language with real behavior, and discard what does not fit."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          },
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Cardology for beginners",
+            "href": "/cardology-for-beginners"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Which cards are fixed in Cardology?",
+        "a": "The Jack of Hearts, the Eight of Clubs, and the King of Spades. They hold the same position in both master arrangements of the deck."
+      },
+      {
+        "q": "What are the semi-fixed cards?",
+        "a": "Two pairs that exchange places: the Ace of Clubs with the Two of Hearts, and the Seven of Diamonds with the Nine of Hearts."
+      },
+      {
+        "q": "Do fixed cards have karma cards?",
+        "a": "Not in the usual sense. The three fixed cards stand alone, and each semi-fixed card treats its partner as its karmic counterpart."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-is-the-life-spread-in-cardology",
+      "karma-cards-environment-and-displacement",
+      "how-a-birthday-becomes-a-card"
+    ],
+    "coreLinks": [
+      {
+        "label": "All 52 Birth Cards",
+        "href": "/birth-card"
+      },
+      {
+        "label": "Shadow and Karma Guide",
+        "href": "/shadow-karma-guide"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
+  },
+  {
+    "slug": "cardology-daily-card-explained",
+    "pillar": "timing-and-spreads",
+    "title": "Cardology Daily Card Explained",
+    "seoTitle": "Cardology Daily Card: What It Means",
+    "description": "What a Cardology daily card is, how it differs from your birth card, and how to use daily timing language without treating it as a forecast.",
+    "dek": "A daily card names the chapter of the day — not a prophecy.",
+    "datePublished": "2026-09-29",
+    "dateModified": "2026-09-29",
+    "readTime": "6 min read",
+    "keywords": [
+      "cardology daily card",
+      "daily card cardology",
+      "playing card of the day meaning",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "In Cardology, a daily card is a timing card for the day drawn from the same 52-card calendar mathematics as the birth card. Your birth card stays fixed for life; the daily card changes and describes themes and pressure for that day only. Use it as reflection language, not a schedule of events.",
+    "sections": [
+      {
+        "heading": "Birth card vs daily card",
+        "body": [
+          "The birth card is the lifelong significator locked to your birthday. The daily card is a moving layer: it describes what kind of day the calendar mathematics emphasizes.",
+          "Confusing the two is the most common beginner mistake. A hard daily card does not rewrite who you are; a sweet daily card does not cancel a difficult season."
+        ],
+        "links": [
+          {
+            "label": "Card of the Day tool",
+            "href": "/card-of-the-day"
+          },
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "How to read a daily card usefully",
+        "body": [
+          "Name the suit domain first (hearts, clubs, diamonds, spades), then the rank movement. Ask what arena is loud today and what move the rank suggests.",
+          "Write one sentence you can test by evening: if nothing matched, the card taught you less than the day did — keep the day."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          }
+        ]
+      },
+      {
+        "heading": "Limits",
+        "body": [
+          "Daily cards are entertainment and self-awareness tools. They are not medical, legal, or financial advice and not a guarantee of outcomes.",
+          "Card Blueprints publishes method and editorial standards publicly so you can see what is calculation and what is interpretation."
+        ],
+        "links": [
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "One Question Reading",
+            "href": "/products/one-question-reading"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is a Cardology daily card the same as a tarot card of the day?",
+        "a": "No. Tarot daily draws are usually shuffled. Cardology daily cards come from calendar mathematics in the 52-card system."
+      },
+      {
+        "q": "Does a bad daily card mean a bad day is guaranteed?",
+        "a": "No. It names themes and pressure to watch, not scheduled events."
+      },
+      {
+        "q": "Should I ignore my birth card when reading the daily card?",
+        "a": "No. Read the daily card as weather and the birth card as climate."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-cardology-is-and-is-not",
+      "birth-card-vs-ruling-card-how-to-read-both"
+    ],
+    "coreLinks": [
+      {
+        "label": "Card of the Day",
+        "href": "/card-of-the-day"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
