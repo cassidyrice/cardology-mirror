@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-20** (deployed `main` @ `c274362` — Connect missing card videos and keep the play control visible; previous record `caa686a`)
+**Last verified: 2026-09-29** (deployed `main` @ `e0ce843` — Merge remote-tracking branch 'origin/main'; previous record `c274362`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `c2743621e5cd8b496cb0414a0aaaa9bbc56c9fd8` |
+| **Deployed commit** | `e0ce8431970d8eb219e03f8d50d4e6db457a0705` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
