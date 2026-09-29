@@ -9,7 +9,7 @@ import { buildConnection } from "../lib/card-app-connection";
 import { cardology } from "../lib/engine-core/engine.js";
 import { buildReading, JokerNotSupportedError } from "../lib/reading";
 import { buildYearBlueprint } from "../lib/year-blueprint";
-import { CARD_APP_PRODUCT, CARD_APP_ON_SALE, checkoutProductBySlug, productBySlug } from "../lib/products";
+import { CARD_APP_PRODUCT, CARD_APP_ON_SALE, checkoutProductBySlug, LIFETIME_LINK_DAYS, productBySlug } from "../lib/products";
 
 // A spread of birthdays across every month, leap day, fixed and semi-fixed cards.
 const BIRTHDAYS = [
@@ -146,6 +146,16 @@ describe("structure", () => {
     }
   });
 
+  test("lifetime buyers past 89 still get a full app (ages wrap mod 90)", () => {
+    const app = buildCardApp("1930-07-14", "2026-09-29");
+    expect(app.age).toBe(96);
+    expect(app.year.periods).toHaveLength(7);
+    expect(app.year.spreads.period).toBe(7);
+    expect(app.year.spreads.karma).toBe(6);
+    expect(app.day.today.birth.card.code).toBeTruthy();
+    expect(app.life).toHaveLength(90);
+  });
+
   test("December 31 refuses with the Joker error", () => {
     expect(() => buildCardApp("1990-12-31", "2026-09-29")).toThrow(JokerNotSupportedError);
   });
@@ -173,6 +183,21 @@ describe("compatibility", () => {
 });
 
 describe("product", () => {
+  test("$69, one payment, lifetime link", async () => {
+    expect(CARD_APP_PRODUCT.price).toBe(69);
+    expect(CARD_APP_PRODUCT.priceLabel).toBe("$69");
+    expect(CARD_APP_PRODUCT.cta).toContain("$69");
+    expect(CARD_APP_PRODUCT.linkDays).toBe(LIFETIME_LINK_DAYS);
+    expect(CARD_APP_PRODUCT.deliverable).not.toMatch(/12 months/);
+
+    process.env.REPORT_TOKEN_SECRET ||= "test-secret-card-app";
+    const { mintReportToken, verifyReportToken } = await import("../lib/report-token");
+    const token = await mintReportToken("a@example.com", CARD_APP_SLUG, "cs_test", "1988-07-14", CARD_APP_PRODUCT.linkDays);
+    const payload = await verifyReportToken(token);
+    expect(payload?.slug).toBe(CARD_APP_SLUG);
+    expect(payload!.exp - Date.now()).toBeGreaterThan(99 * 365 * 86_400_000);
+  });
+
   test("record resolves for fulfillment; checkout only when on sale", () => {
     expect(productBySlug(CARD_APP_SLUG)).toBe(CARD_APP_PRODUCT);
     expect(CARD_APP_PRODUCT.kind === "instant_report" && CARD_APP_PRODUCT.reportSlug).toBe(CARD_APP_SLUG);

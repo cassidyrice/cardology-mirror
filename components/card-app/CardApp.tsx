@@ -147,7 +147,7 @@ function PeriodRow({ p }: { p: AppPeriod }) {
 function YearScreen({ data }: { data: CardApp }) {
   const yr = data.year;
   const lr = yr.birth.longRange;
-  const [age, setAge] = useState(data.age);
+  const [age, setAge] = useState(Math.min(data.age, data.life.length - 1));
   const row = data.life[age];
   return (
     <>

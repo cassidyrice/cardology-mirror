@@ -426,6 +426,7 @@ export async function POST(req: NextRequest) {
             product.reportSlug,
             session.id,
             birthdate,
+            product.linkDays,
           );
           const reportUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
           // Bundled download: The 90 Spreads PDF ships with the Blueprint.
@@ -451,7 +452,7 @@ export async function POST(req: NextRequest) {
               `My purchases: ${SITE_URL}/my-purchases?session_id=${encodeURIComponent(session.id)}`,
               "",
               isApp
-                ? "Keep this link: it opens your app for 12 months. Add it to your home screen so your card for today is one tap away."
+                ? "Keep this link: the app is yours for life. Add it to your home screen so your card for today is one tap away."
                 : "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
               ...(spreadsLine
                 ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]

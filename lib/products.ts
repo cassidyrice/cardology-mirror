@@ -72,6 +72,8 @@ export type InstantReportOffer = ProductBase & {
   reportSlug: string;
   /** Set on the featured tier: a live call with Cass, set by email after purchase. */
   consultation?: { minutes: number };
+  /** How long the emailed link works. Unset = the report-token default (365 days). */
+  linkDays?: number;
 };
 
 export type MembershipOffer = ProductBase & {
@@ -400,41 +402,45 @@ export const MEMBERSHIP_PRODUCT: MembershipOffer = {
 
 /**
  * Card Blueprint App: a personal web app built from the buyer's birthday.
- * Not on sale until Cass sets the price: flip CARD_APP_ON_SALE, set `price`
- * and `priceLabel`, and add the Pages secret STRIPE_PRICE_CARD_BLUEPRINT_APP.
- * The record is in ALL_PRODUCTS either way, so fulfillment always resolves.
+ * $69 once, lifetime access. Goes on sale when CARD_APP_ON_SALE is flipped,
+ * after the Pages secret STRIPE_PRICE_CARD_BLUEPRINT_APP holds a $69 price id
+ * on the Card Blueprint Stripe account. The record is in ALL_PRODUCTS either
+ * way, so fulfillment always resolves.
  */
 export const CARD_APP_ON_SALE = false;
+
+/** "Lifetime": the signed link is valid for 100 years. */
+export const LIFETIME_LINK_DAYS = 36_500;
 
 export const CARD_APP_PRODUCT: InstantReportOffer = {
   kind: "instant_report",
   slug: CARD_APP_SLUG,
   stripePriceEnv: "STRIPE_PRICE_CARD_BLUEPRINT_APP",
   name: "Card Blueprint App",
-  // Placeholder until Cass sets the price. Stripe charges the configured price id.
-  price: 0,
-  priceLabel: "TBD",
+  price: 69,
+  priceLabel: "$69",
   badge: "App",
   oneLine:
     "Your own card app: today's card, this week, your 52-day period, your year, your karma cards, good days and the people in your life.",
   bestFor:
     "Anyone who wants to check their cards every day, not read about them once.",
   deliverable:
-    "A private web app built from your birthday. Open the emailed link on your phone and add it to your home screen. The link works for 12 months.",
+    "A private web app built from your birthday. Open the emailed link on your phone and add it to your home screen. Pay once; it's yours for life and updates every day.",
   turnaround: "Ready the moment you pay. No call, no wait, no model in the loop.",
   includes: [
     "Your card for today, the next six days, and this week's card",
     "All seven 52-day periods of your year, dated, for your birth card and ruling card",
     "Long Range, Pluto, Result, and this year's Environment and Displacement",
     "Your birth card, ruling card, karma cards and Life Spread, in plain words",
-    "Good days for the next 12 months: when your daily card lines up with your key cards",
+    "Good days for the 12 months ahead, always rolling forward: when your daily card lines up with your key cards",
     "Compatibility with anyone: both birth cards and both ruling cards, both directions",
     "Every year of your life, ages 0 to 89, every seat",
   ],
-  cta: "Get my app",
+  cta: "Get my app — $69",
   checkoutNote:
-    "One-time purchase. You enter your birth date on the next page; the app is built the moment payment lands and the link is emailed to you.",
+    "One payment, yours for life. No subscription. You enter your birth date on the next page; the app is built the moment payment lands and the link is emailed to you.",
   reportSlug: CARD_APP_SLUG,
+  linkDays: LIFETIME_LINK_DAYS,
 };
 
 export const ALL_PRODUCTS: SiteProduct[] = [

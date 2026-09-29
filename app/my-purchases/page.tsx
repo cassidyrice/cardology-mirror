@@ -25,7 +25,7 @@ export default async function MyPurchasesPage({ searchParams }: { searchParams: 
         let reportHref = `/checkout/success?session_id=${encodeURIComponent(sessionId)}`;
         if (isInstantReport(product)) {
           // A receipt opens only this purchase; the browser never chooses its owner or tier.
-          const token = await mintReportToken(email, product.reportSlug, sessionId, birthdateFromCheckoutSession(session));
+          const token = await mintReportToken(email, product.reportSlug, sessionId, birthdateFromCheckoutSession(session), product.linkDays);
           reportHref = `/blueprint?token=${encodeURIComponent(token)}`;
         }
         order = { name: product.name, reportHref, consultation: product.slug === CONSULT_SLUG, blueprint: isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG };

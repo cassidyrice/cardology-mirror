@@ -110,6 +110,7 @@ export default async function CheckoutSuccessPage({
           product.reportSlug,
           sessionId,
           birthdate,
+          product.linkDays,
         );
       } catch (e) {
         console.error("[checkout/success] report token mint failed", e);
@@ -579,7 +580,7 @@ function ReportFulfillment({
           </LinkButton>
         </div>
         <p className="mt-3 text-xs text-brand-ink-soft">
-          Keep the emailed link: it opens your app for 12 months.
+          Keep the emailed link: the app is yours for life.
         </p>
       </div>
     );
