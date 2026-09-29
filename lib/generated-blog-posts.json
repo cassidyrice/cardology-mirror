@@ -14400,5 +14400,135 @@
         "href": "/what-is-cardology"
       }
     ]
+  },
+  {
+    "slug": "cardology-daily-card-explained",
+    "pillar": "timing-and-spreads",
+    "title": "Cardology Daily Card Explained",
+    "seoTitle": "Cardology Daily Card: What It Means",
+    "description": "What a Cardology daily card is, how it differs from your birth card, and how to use daily timing language without treating it as a forecast.",
+    "dek": "A daily card names the chapter of the day — not a prophecy.",
+    "datePublished": "2026-09-29",
+    "dateModified": "2026-09-29",
+    "readTime": "6 min read",
+    "keywords": [
+      "cardology daily card",
+      "daily card cardology",
+      "playing card of the day meaning",
+      "cardology",
+      "birth card",
+      "playing card astrology"
+    ],
+    "answer": "In Cardology, a daily card is a timing card for the day drawn from the same 52-card calendar mathematics as the birth card. Your birth card stays fixed for life; the daily card changes and describes themes and pressure for that day only. Use it as reflection language, not a schedule of events.",
+    "sections": [
+      {
+        "heading": "Birth card vs daily card",
+        "body": [
+          "The birth card is the lifelong significator locked to your birthday. The daily card is a moving layer: it describes what kind of day the calendar mathematics emphasizes.",
+          "Confusing the two is the most common beginner mistake. A hard daily card does not rewrite who you are; a sweet daily card does not cancel a difficult season."
+        ],
+        "links": [
+          {
+            "label": "Card of the Day tool",
+            "href": "/card-of-the-day"
+          },
+          {
+            "label": "Birth Card Calculator",
+            "href": "/birth-card-calculator"
+          }
+        ]
+      },
+      {
+        "heading": "How to read a daily card usefully",
+        "body": [
+          "Name the suit domain first (hearts, clubs, diamonds, spades), then the rank movement. Ask what arena is loud today and what move the rank suggests.",
+          "Write one sentence you can test by evening: if nothing matched, the card taught you less than the day did — keep the day."
+        ],
+        "links": [
+          {
+            "label": "Methodology",
+            "href": "/methodology"
+          }
+        ]
+      },
+      {
+        "heading": "Limits",
+        "body": [
+          "Daily cards are entertainment and self-awareness tools. They are not medical, legal, or financial advice and not a guarantee of outcomes.",
+          "Card Blueprints publishes method and editorial standards publicly so you can see what is calculation and what is interpretation."
+        ],
+        "links": [
+          {
+            "label": "Editorial policy",
+            "href": "/editorial-policy"
+          },
+          {
+            "label": "Personal Card Blueprint",
+            "href": "/products/personal-card-blueprint"
+          }
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "q": "Is a Cardology daily card the same as a tarot card of the day?",
+        "a": "No. Tarot daily draws are usually shuffled. Cardology daily cards come from calendar mathematics in the 52-card system."
+      },
+      {
+        "q": "Does a bad daily card mean a bad day is guaranteed?",
+        "a": "No. It names themes and pressure to watch, not scheduled events."
+      },
+      {
+        "q": "Should I ignore my birth card when reading the daily card?",
+        "a": "No. Read the daily card as weather and the birth card as climate."
+      },
+      {
+        "q": "Is Cardology fortune-telling?",
+        "a": "No. Card Blueprints treats Cardology as pattern language for reflection and entertainment — tendencies you can test, not guaranteed events."
+      },
+      {
+        "q": "How do I verify a birth card myself?",
+        "a": "Enter the same public birth date in the free birth card calculator. The engine is deterministic: matching inputs must return the same card."
+      },
+      {
+        "q": "What is the One Question Reading?",
+        "a": "A $13 written reading on one question, built from one birth date — your birth card, this year's Long Range and Pluto cards, and the card you owe, read against the decision you bring. About 600 words, emailed within about a minute. No phone call and no subscription."
+      },
+      {
+        "q": "Who publishes Card Blueprints?",
+        "a": "Card Blueprints is published by Cassidy Rice. Method and editorial standards are public on the methodology and editorial policy pages."
+      }
+    ],
+    "related": [
+      "what-cardology-is-and-is-not",
+      "birth-card-vs-ruling-card-how-to-read-both"
+    ],
+    "coreLinks": [
+      {
+        "label": "Card of the Day",
+        "href": "/card-of-the-day"
+      },
+      {
+        "label": "Birth Card Calculator",
+        "href": "/birth-card-calculator"
+      },
+      {
+        "label": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "label": "One Question Reading",
+        "href": "/products/one-question-reading",
+        "note": "$13 — one question, read from your card and your year."
+      },
+      {
+        "label": "Editorial policy",
+        "href": "/editorial-policy"
+      },
+      {
+        "label": "What Is Cardology?",
+        "href": "/what-is-cardology"
+      }
+    ]
   }
 ]
