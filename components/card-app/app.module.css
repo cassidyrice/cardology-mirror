@@ -8,8 +8,10 @@
 .mini { background: var(--yb-surface); border: 1px solid var(--yb-line); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .mini .h3 { font-size: 17px; }
 
-.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
-.stripDay { display: flex; flex-direction: column; align-items: center; gap: 4px; font: 500 10px var(--yb-mono); color: var(--yb-mute); text-align: center; }
+.strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
+.stripDay { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0; font: 500 10px var(--yb-mono); color: var(--yb-mute); text-align: center; }
+/* The six mini cards shrink with the phone instead of spilling past the card edge. */
+.stripDay > div { width: 100%; max-width: 40px; height: auto; aspect-ratio: 40 / 56; }
 
 .chips { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { background: var(--yb-raised); border: 1px solid var(--yb-line); color: var(--yb-bone-2); border-radius: 999px; padding: 7px 12px; font: 600 12px var(--yb-body); cursor: pointer; }

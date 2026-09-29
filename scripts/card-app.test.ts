@@ -126,6 +126,56 @@ describe("daily card follows getWeekly (cardology-system.md §8)", () => {
     expect(app.day.spreadUsed).toBe(w!.spread_used);
     expect(app.day.next).toHaveLength(6);
     expect(app.day.next[0].date > app.day.today.date).toBe(true);
+    // Each of the next six days is its own getWeekly lookup (crosses week and birthday lines).
+    for (const n of app.day.next) {
+      const [ny, nm, nd] = n.date.split("-").map(Number);
+      const nw = cardology.getWeekly(app.identity.birth.card.code, by, bm, bd, new Date(ny, nm - 1, nd, 12));
+      expect(n.birth.card.code).toBe(nw!.current_card);
+    }
+  });
+
+  test("the next six days switch to the new year's spread across a birthday", () => {
+    const app = buildCardApp("1988-10-01", "2026-09-29"); // birthday is day 2 of the strip
+    for (const n of app.day.next) {
+      const [ny, nm, nd] = n.date.split("-").map(Number);
+      const nw = cardology.getWeekly(app.identity.birth.card.code, 1988, 10, 1, new Date(ny, nm - 1, nd, 12));
+      expect(n.birth.card.code).toBe(nw!.current_card);
+    }
+  });
+});
+
+describe("good days", () => {
+  test("every good-day and watch-day rule can fire", () => {
+    const titles = new Set<string>();
+    for (let doy = 0; doy < 365; doy += 5) {
+      const d = new Date(Date.UTC(1985, 0, 1 + doy)).toISOString().slice(0, 10);
+      if (d.endsWith("-12-31")) continue;
+      for (const e of buildCardApp(d, "2026-09-29").events) titles.add(e.title);
+    }
+    for (const t of ["Result card day", "Support card day", "Jupiter card day", "Gift card day", "Ruling card day", "Challenge card day", "Saturn card day", "Pluto card day"]) {
+      expect(titles.has(t)).toBe(true);
+    }
+  });
+
+  test("future events never say 'today'", () => {
+    const app = buildCardApp("1985-01-01", "2026-09-29");
+    for (const e of app.events) {
+      if (e.date > app.today) expect(e.detail).not.toMatch(/\btoday\b/i);
+    }
+  });
+
+  test("the Today screen's 'Coming up' tile shows a good day, never a watch day", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { CardAppView } = await import("../components/card-app/CardApp");
+    // 1985-01-01 on 2026-09-29: the first upcoming non-turn event is a Pluto watch day.
+    const app = buildCardApp("1985-01-01", "2026-09-29");
+    const firstNonTurn = app.events.find((e) => e.kind !== "turn" && e.date > app.today)!;
+    expect(firstNonTurn.kind).toBe("watch");
+    const firstGood = app.events.find((e) => e.kind === "good" && e.date > app.today)!;
+    const html = renderToStaticMarkup(createElement(CardAppView, { data: app, token: "t" }));
+    expect(html).toContain(`Coming up · ${firstGood.label}`);
+    expect(html).not.toContain(`${firstNonTurn.title}.`);
   });
 });
 

@@ -428,15 +428,17 @@ function buildEvents(
     const jupiter = f.birth9[3];
     const saturn = f.birth9[4];
     const matches: Array<[AppEventKind, string, string]> = [];
-    if (code === f.birth9[8]) matches.push(["good", "Result card day", "Today's card is this year's Result card: what the year pays. A good day to ask, close, or finish."]);
-    if (code === f.environment) matches.push(["good", "Support card day", "Today's card is this year's Environment card. Help tends to come easier."]);
-    if (code === jupiter) matches.push(["good", "Jupiter card day", "Today's card is this year's Jupiter card. A good day to grow something."]);
-    if (code === lifetime.gift) matches.push(["good", "Gift card day", "Today's card is your karma gift card. Lean on what comes naturally."]);
-    if (code === bc) matches.push(["good", "Your own card day", "Today's card is your birth card. You're most yourself today; act from your strengths."]);
-    if (prc && prc !== bc && code === prc) matches.push(["good", "Ruling card day", "Today's card is your ruling card. A strong day for the part of you that leads."]);
-    if (code === lifetime.challenge) matches.push(["watch", "Challenge card day", "Today's card is your karma challenge card. Notice the old pattern before it runs you."]);
-    if (code === saturn) matches.push(["watch", "Saturn card day", "Today's card is this year's Saturn card. Slow down, do the work, skip the shortcut."]);
-    if (code === f.birth9[7]) matches.push(["watch", "Pluto card day", "Today's card is this year's Pluto card. Change pushes hardest today; don't force it."]);
+    // Events are dated, often weeks ahead, so the copy says "that day", not "today".
+    // (No birth-card day: a daily card is drawn from the birth card's own spread,
+    // so it is never the birth card itself.)
+    if (code === f.birth9[8]) matches.push(["good", "Result card day", "Your card that day is this year's Result card: what the year pays. A good day to ask, close, or finish."]);
+    if (code === f.environment) matches.push(["good", "Support card day", "Your card that day is this year's Environment card. Help tends to come easier."]);
+    if (code === jupiter) matches.push(["good", "Jupiter card day", "Your card that day is this year's Jupiter card. A good day to grow something."]);
+    if (code === lifetime.gift) matches.push(["good", "Gift card day", "Your card that day is your karma gift card. Lean on what comes naturally."]);
+    if (prc && prc !== bc && code === prc) matches.push(["good", "Ruling card day", "Your card that day is your ruling card. A strong day for the part of you that leads."]);
+    if (code === lifetime.challenge) matches.push(["watch", "Challenge card day", "Your card that day is your karma challenge card. Notice the old pattern before it runs you."]);
+    if (code === saturn) matches.push(["watch", "Saturn card day", "Your card that day is this year's Saturn card. Slow down, do the work, skip the shortcut."]);
+    if (code === f.birth9[7]) matches.push(["watch", "Pluto card day", "Your card that day is this year's Pluto card. Change pushes hardest then; don't force it."]);
     for (const [kind, title, detail] of matches) {
       events.push({ kind, date: isoOf(d), label: shortLabel(d), title, detail, card: toYearCard(code) });
     }

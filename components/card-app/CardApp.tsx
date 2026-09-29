@@ -66,7 +66,8 @@ function TodayScreen({ data, go }: { data: CardApp; go: (id: ScreenId) => void }
   const p = data.year.current;
   const periodDay = Math.floor((Date.parse(data.today) - Date.parse(p.start)) / 86_400_000) + 1;
   const progress = Math.round((periodDay / p.lengthDays) * 100);
-  const nextEvent = data.events.find((e) => e.kind !== "turn" && e.date > data.today) ?? data.events[0];
+  // The tile links to "all good days", so it only ever shows a good day.
+  const nextEvent = data.events.find((e) => e.kind === "good" && e.date > data.today);
   return (
     <>
       <div className={y.eyebrow}>Today · {data.todayLabel}</div>
@@ -516,6 +517,7 @@ function PeopleScreen({ token }: { token: string }) {
       latest.current = null;
       setOpenId(null);
       setResult(null);
+      setError("");
       setBusy(false);
     }
   }
