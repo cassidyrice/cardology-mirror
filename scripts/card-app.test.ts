@@ -191,6 +191,33 @@ describe("structure", () => {
     expect(app.life).toHaveLength(90);
   });
 
+  test("Environment = Displacement is one seat, not a repeat", () => {
+    // 1981-03-10 at 45: karma spread 45 pairs K♦ with itself.
+    const app = buildCardApp("1981-03-10", "2026-09-29");
+    expect(app.year.environment?.card.code).toBe("K♦");
+    expect(app.year.displacement?.card.code).toBe("K♦");
+    expect(app.year.signals.some((s) => s.detail.includes("Year Environment, Year Displacement"))).toBe(false);
+    // Sweep: whenever the pair is one card, no signal counts it twice.
+    for (let doy = 0; doy < 365; doy += 3) {
+      const d = new Date(Date.UTC(1970, 0, 1 + doy)).toISOString().slice(0, 10);
+      if (d.endsWith("-12-31")) continue;
+      for (const target of ["2026-09-29", "2015-03-01"]) {
+        const a = buildCardApp(d, target);
+        if (a.year.environment && a.year.environment.card.code === a.year.displacement?.card.code) {
+          expect(a.year.signals.some((s) => s.detail.includes("Year Environment, Year Displacement"))).toBe(false);
+        }
+      }
+    }
+  });
+
+  test("a buyer whose local date is the day before a same-day birth still gets the app", () => {
+    const iso = (days: number) => new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
+    const born = iso(0);
+    expect(appDateParam(iso(-1), born)).toBe(born);
+    expect(appDateParam(iso(1), born)).toBe(iso(1));
+    expect(() => buildCardApp(born, appDateParam(iso(-1), born))).not.toThrow();
+  });
+
   test("the Long Range strip highlights the theme card at every age, 0 to 120", () => {
     for (let age = 0; age <= 120; age++) {
       const lr = buildCardApp(`${1906 + (120 - age)}-01-01`, "2026-09-29").year.birth.longRange;
@@ -318,5 +345,10 @@ describe("product page", () => {
     const text = instantReportFacts(CARD_APP_PRODUCT).map((f) => f.value).join(" ");
     expect(text).toContain("Your app opens");
     expect(text).not.toMatch(/report/i);
+  });
+
+  test("app sales keep their offer name in analytics", async () => {
+    const { sanitizeOfferSlug } = await import("../lib/analytics");
+    expect(sanitizeOfferSlug(CARD_APP_SLUG)).toBe(CARD_APP_SLUG);
   });
 });

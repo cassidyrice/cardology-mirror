@@ -504,7 +504,9 @@ function buildSignals(
   put(f.birth9[8], "Result");
   put(f.longRange, "Long Range");
   put(f.environment, "Year Environment");
-  put(f.displacement, "Year Displacement");
+  // The engine pairs a card with itself at karma spreads 0/45 and for Semi-Fixed
+  // cards; that's one seat, not a repeat.
+  if (f.displacement !== f.environment) put(f.displacement, "Year Displacement");
   if (f.ruling9) {
     PLANETS.forEach((p, i) => put(f.ruling9![i], `ruling-card ${p} period`));
     put(f.ruling9[7], "ruling-card Pluto");
@@ -521,11 +523,16 @@ function buildSignals(
 
 // --- main builder -------------------------------------------------------------
 
-/** A `?date=` from the viewer's browser, accepted only within a day of the server's UTC date. */
-export function appDateParam(date: string | undefined): string | undefined {
+/**
+ * A `?date=` from the viewer's browser, accepted only within a day of the
+ * server's UTC date, and never before `birthdate` (a baby born "today" in UTC
+ * can still be "tomorrow" on a buyer's clock west of UTC).
+ */
+export function appDateParam(date: string | undefined, birthdate?: string): string | undefined {
   if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return undefined;
   const offset = Math.abs(Date.parse(`${date}T00:00:00Z`) - Date.parse(`${new Date().toISOString().slice(0, 10)}T00:00:00Z`));
-  return Number.isFinite(offset) && offset <= 86_400_000 ? date : undefined;
+  if (!Number.isFinite(offset) || offset > 86_400_000) return undefined;
+  return birthdate && date < birthdate ? birthdate : date;
 }
 
 /**

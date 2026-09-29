@@ -466,10 +466,13 @@ function PeopleScreen({ token }: { token: string }) {
   const [result, setResult] = useState<AppConnection | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  // The person whose comparison is on screen; a slower, older reply is dropped.
+  const latest = useRef<string | null>(null);
 
   useEffect(() => setPeople(loadPeople()), []);
 
   async function compare(person: Person) {
+    latest.current = person.id;
     setOpenId(person.id);
     setResult(null);
     setError("");
@@ -482,11 +485,11 @@ function PeopleScreen({ token }: { token: string }) {
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body?.error ?? "Could not compare.");
-      setResult(body as AppConnection);
+      if (latest.current === person.id) setResult(body as AppConnection);
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Could not compare.");
+      if (latest.current === person.id) setError(e instanceof Error ? e.message : "Could not compare.");
     } finally {
-      setBusy(false);
+      if (latest.current === person.id) setBusy(false);
     }
   }
 
@@ -510,8 +513,10 @@ function PeopleScreen({ token }: { token: string }) {
     setPeople(next);
     savePeople(next);
     if (openId === id) {
+      latest.current = null;
       setOpenId(null);
       setResult(null);
+      setBusy(false);
     }
   }
 

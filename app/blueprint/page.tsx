@@ -82,7 +82,7 @@ export default async function BlueprintPage({
     let app = null;
     let appError = "";
     try {
-      app = buildCardApp(payload.birthdate, appDateParam(date));
+      app = buildCardApp(payload.birthdate, appDateParam(date, payload.birthdate));
     } catch (e) {
       appError = e instanceof Error ? e.message : "unknown engine error";
     }
