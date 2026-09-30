@@ -385,7 +385,8 @@ describe("product page", () => {
     const { createElement } = await import("react");
     const { PeriodAppView } = await import("../components/card-app/PeriodApp");
     const data = buildCardApp("1988-07-14", "2026-09-29");
-    const html = renderToStaticMarkup(createElement(PeriodAppView, { data, token: "t" }));
+    const { appReadingLibrary } = await import("../lib/period-library");
+    const html = renderToStaticMarkup(createElement(PeriodAppView, { data, readings: appReadingLibrary(data), token: "t" }));
     expect(html.match(/<main[\s>]/g)).toHaveLength(1);
   });
 

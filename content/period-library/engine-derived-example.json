@@ -1,0 +1,89 @@
+{
+  "label": "Synthetic example computed by the unchanged engine",
+  "birthdate": "1988-07-17",
+  "targetDate": "2026-09-30",
+  "birthCard": "J♣",
+  "age": 38,
+  "yearStart": "2026-07-17",
+  "yearEnd": "2027-07-16",
+  "yearly": {
+    "Long Range": {
+      "cardCode": "7♣",
+      "readingId": "7-of-clubs.long-range"
+    },
+    "Pluto": {
+      "cardCode": "8♠",
+      "readingId": "8-of-spades.pluto"
+    },
+    "Result": {
+      "cardCode": "A♠",
+      "readingId": "ace-of-spades.result"
+    },
+    "Environment": {
+      "cardCode": "4♥",
+      "readingId": "4-of-hearts.environment"
+    },
+    "Displacement": {
+      "cardCode": "6♥",
+      "readingId": "6-of-hearts.displacement"
+    }
+  },
+  "periods": [
+    {
+      "planet": "Mercury",
+      "cardCode": "J♦",
+      "start": "2026-07-17",
+      "end": "2026-09-06",
+      "lengthDays": 52,
+      "readingId": "jack-of-diamonds.mercury"
+    },
+    {
+      "planet": "Venus",
+      "cardCode": "K♥",
+      "start": "2026-09-07",
+      "end": "2026-10-28",
+      "lengthDays": 52,
+      "readingId": "king-of-hearts.venus"
+    },
+    {
+      "planet": "Mars",
+      "cardCode": "A♥",
+      "start": "2026-10-29",
+      "end": "2026-12-19",
+      "lengthDays": 52,
+      "readingId": "ace-of-hearts.mars"
+    },
+    {
+      "planet": "Jupiter",
+      "cardCode": "8♣",
+      "start": "2026-12-20",
+      "end": "2027-02-09",
+      "lengthDays": 52,
+      "readingId": "8-of-clubs.jupiter"
+    },
+    {
+      "planet": "Saturn",
+      "cardCode": "J♠",
+      "start": "2027-02-10",
+      "end": "2027-04-02",
+      "lengthDays": 52,
+      "readingId": "jack-of-spades.saturn"
+    },
+    {
+      "planet": "Uranus",
+      "cardCode": "Q♣",
+      "start": "2027-04-03",
+      "end": "2027-05-24",
+      "lengthDays": 52,
+      "readingId": "queen-of-clubs.uranus"
+    },
+    {
+      "planet": "Neptune",
+      "cardCode": "10♠",
+      "start": "2027-05-25",
+      "end": "2027-07-16",
+      "lengthDays": 53,
+      "readingId": "10-of-spades.neptune"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { AppCardNote, AppEvent, CardApp } from "@/lib/card-app";
 import type { AppConnection } from "@/lib/card-app-connection";
-import { PERIOD_FILTERS } from "@/lib/period-meanings";
+import type { AppReadingLibrary, YearlyArtifact } from "@/lib/period-library-types";
 import { eventsInPeriod, eventPeriod, periodProgress } from "@/lib/period-experience";
 import { Pc } from "@/components/year/YearBlueprintApp";
 import { CardAppView, LocalDateSync } from "./CardApp";
@@ -21,17 +21,17 @@ const TABS: { id: Screen; label: string; symbol: string }[] = [
 const STATUS = { done: "Past period", now: "Current period", next: "Ahead" };
 const KIND = { good: "Support", watch: "Watch for", turn: "Transition" };
 
-type Props = { data: CardApp; framed?: boolean } & (
+type Props = { data: CardApp; readings: AppReadingLibrary; framed?: boolean } & (
   | { token: string; sample?: undefined }
   | { token?: undefined; sample: { connection: AppConnection } }
 );
 
-function Note({ label, item }: { label: string; item: AppCardNote }) {
-  return <div className={s.noteRow}><Pc card={item.card} size="sm" /><div><p className={s.kicker}>{label}</p><h3 className={s.cardName}>{item.card.name}</h3><p className={s.body}>{item.note.light}</p></div></div>;
+function Note({ label, item, reading }: { label: string; item: AppCardNote; reading?: YearlyArtifact }) {
+  return <div className={s.noteRow}><Pc card={item.card} size="sm" /><div><p className={s.kicker}>{label}</p><h3 className={s.cardName}>{item.card.name}</h3><p className={s.body}>{reading?.reading ?? item.note.light}</p>{reading && <p className={s.prompt}>{reading.reflection}</p>}</div></div>;
 }
 
 export function PeriodAppView(props: Props) {
-  const { data, framed = false } = props;
+  const { data, readings, framed = false } = props;
   const [screen, setScreen] = useState<Screen>("period");
   const [selected, setSelected] = useState(data.year.current.index);
   const [filter, setFilter] = useState<"all" | AppEvent["kind"]>("all");
@@ -44,7 +44,7 @@ export function PeriodAppView(props: Props) {
   useEffect(() => setSelected(data.year.current.index), [data.year.start, data.year.current.index]);
   const period = data.year.periods[selected] ?? data.year.current;
   const progress = periodProgress(period, data.today);
-  const lens = PERIOD_FILTERS.find((item) => item.planet === period.planet)!;
+  const reading = readings.periods.find((entry) => entry.cardCode === period.birth.card.code && entry.planet === period.planet)!;
   const marked = eventsInPeriod(data.year.events, period);
   const upcoming = marked.filter((event) => (event.end ?? event.date) >= data.today);
   const next = data.year.periods[period.index + 1];
@@ -77,9 +77,9 @@ export function PeriodAppView(props: Props) {
           <div className={s.progressMeta}><span>{period.state === "now" ? `Day ${progress.day} of ${progress.total}` : `${progress.total} days`}</span><span>{period.state === "done" ? "Complete" : period.domain}</span></div>
           <div className={s.progress} role="progressbar" aria-label="Period progress" aria-valuenow={progress.day} aria-valuemin={0} aria-valuemax={progress.total}><i style={{ width: `${progress.percent}%` }} /></div>
           <div className={s.controls}><button disabled={selected === 0} onClick={() => navigate("period", selected - 1)}>← Previous</button><button onClick={() => navigate("period", data.year.current.index)}>Current</button><button disabled={selected === 6} onClick={() => navigate("period", selected + 1)}>Next →</button></div>
-          <section className={s.section}><p className={s.kicker}>These {period.lengthDays} days</p><p className={s.lead}>{period.birth.note.light}</p><p className={s.body}>{period.pressure}</p><p className={s.caption}>Existing card and planet interpretations, brought together for reflection.</p></section>
-          <section className={`${s.section} ${s.shadow}`}><p className={s.kicker}>Watch the pattern</p><p className={s.body}>{period.birth.note.shadow}</p><div className={s.rule} /><p className={s.kicker}>A practice to try</p><p className={s.body}>{period.birth.note.dare}</p><p className={s.prompt}>{lens.prompt}</p></section>
-          <section className={s.section}><p className={s.kicker}>Where it sits in your year</p><Note label="Long Range · the year's theme" item={data.year.birth.longRange} /><div className={s.rule} /><Note label="Pluto · the year's challenge" item={data.year.birth.pluto} /><Note label="Result · the year's payoff" item={data.year.birth.result} /><button className={s.textButton} onClick={() => navigate("year")}>See all seven periods →</button></section>
+          <section className={s.section} aria-label="Period reading"><p className={s.kicker}>These {period.lengthDays} days</p><h3 className={s.readingTitle}>{reading.title}</h3><p className={s.lead}>{reading.omenLine}</p><details key={reading.id} className={s.reading}><summary>Read the full period</summary>{reading.longReading.map((paragraph, i) => <p key={i} className={s.body}>{paragraph}</p>)}{reading.personOrPosture && <p className={s.body}>{reading.personOrPosture}</p>}</details></section>
+          <section className={`${s.section} ${s.shadow}`}><p className={s.kicker}>Watch the pattern</p><p className={s.body}>{reading.shadowWatch}</p><div className={s.rule} /><p className={s.kicker}>A practice to try</p><p className={s.body}>{reading.practice}</p><p className={s.prompt}>{reading.reflection}</p></section>
+          <section className={s.section}><p className={s.kicker}>Where it sits in your year</p><p className={s.body}>{reading.yearlyContext}</p><Note label="Long Range · the year's theme" item={data.year.birth.longRange} reading={readings.year["Long Range"]} /><div className={s.rule} /><Note label="Pluto · the year's challenge" item={data.year.birth.pluto} reading={readings.year["Pluto"]} /><Note label="Result · a resource to develop" item={data.year.birth.result} reading={readings.year["Result"]} /><button className={s.textButton} onClick={() => navigate("year")}>See all seven periods →</button></section>
           <section className={s.section}><p className={s.kicker}>Marked days in this period</p><p className={s.caption}>Calculated card matches and period changes. Use them as prompts, never promises.</p>{(period.state === "now" ? upcoming : marked).slice(0, 4).map(showEvent)}{(period.state === "now" ? upcoming : marked).length === 0 && <p className={s.body}>No remaining marked dates in this period.</p>}<button className={s.textButton} onClick={() => navigate("days")}>See the year's marked days →</button></section>
           <button className={s.nextPeriod} onClick={() => next ? navigate("period", next.index) : navigate("year")}><span className={s.kicker}>{next ? "Next chapter" : "Year's closing chapter"}</span><strong>{next ? `${next.planet} · ${next.birth.card.name}` : "A new set begins on your birthday"}</strong><span>{next ? `${next.startLabel} — ${next.endLabel} →` : "See this year's arc →"}</span></button>
         </>}
@@ -92,9 +92,9 @@ export function PeriodAppView(props: Props) {
         {screen === "year" && <>
           <p className={s.caption}>{data.year.startLabel} — {data.year.endLabel} · Age {data.age}</p><p className={s.lead}>Seven chapters. One birthday year.</p>
           <div className={s.timeline}>{data.year.periods.map((item) => <button key={item.index} className={`${s.timelineRow} ${item.state === "now" ? s.currentRow : ""}`} onClick={() => navigate("period", item.index)}><span className={s.number}>{String(item.index + 1).padStart(2, "0")}</span><span><span className={s.kicker}>{item.planet} · {STATUS[item.state]}</span><strong>{item.birth.card.name}</strong><span className={s.caption}>{item.startLabel} — {item.endLabel}</span></span><span aria-hidden="true">↗</span></button>)}</div>
-          <section className={s.section}><Note label="Long Range · the year's theme" item={data.year.birth.longRange} />{data.year.birth.longRange.projection && <p className={s.caption}>After age 89 the card cycles repeat from age 0. This is a projection.</p>}<div className={s.cycle}>{data.year.birth.longRange.cycle.map((card, i) => <span key={i} className={i === data.year.birth.longRange.yearInCycle - 1 ? s.activeCycle : ""}>{data.year.birth.longRange.cycleStartAge + i}<strong>{card.code}</strong></span>)}</div></section>
-          <section className={s.section}><Note label="Pluto · the year's challenge" item={data.year.birth.pluto} /><Note label="Result · the year's payoff" item={data.year.birth.result} /></section>
-          <section className={s.section}>{data.year.environment && <Note label="Environment · support" item={data.year.environment} />}{data.year.displacement && <Note label="Displacement · your seat" item={data.year.displacement} />}{data.identity.fixed && <p className={s.body}>Your card is fixed. It has no Environment or Displacement card.</p>}{data.year.signals.map((signal, i) => <p key={i} className={s.body}><strong>{signal.title}.</strong> {signal.detail}</p>)}</section>
+          <section className={s.section}><Note label="Long Range · the year's theme" item={data.year.birth.longRange} reading={readings.year["Long Range"]} />{data.year.birth.longRange.projection && <p className={s.caption}>After age 89 the card cycles repeat from age 0. This is a projection.</p>}<div className={s.cycle}>{data.year.birth.longRange.cycle.map((card, i) => <span key={i} className={i === data.year.birth.longRange.yearInCycle - 1 ? s.activeCycle : ""}>{data.year.birth.longRange.cycleStartAge + i}<strong>{card.code}</strong></span>)}</div></section>
+          <section className={s.section}><Note label="Pluto · the year's challenge" item={data.year.birth.pluto} reading={readings.year["Pluto"]} /><Note label="Result · a resource to develop" item={data.year.birth.result} reading={readings.year["Result"]} /></section>
+          <section className={s.section}>{data.year.environment && <Note label="Environment · support" item={data.year.environment} reading={readings.year.Environment} />}{data.year.displacement && <Note label="Displacement · your seat" item={data.year.displacement} reading={readings.year.Displacement} />}{data.identity.fixed && <p className={s.body}>Your card is fixed. It has no Environment or Displacement card.</p>}{data.year.signals.map((signal, i) => <p key={i} className={s.body}><strong>{signal.title}.</strong> {signal.detail}</p>)}</section>
         </>}
         {screen === "days" && <>
           <p className={s.lead}>Dates to notice.</p><p className={s.body}>Card matches and chapter changes across this birthday year. These are reflection markers, not predictions of events.</p><p className={s.caption}>{data.year.startLabel} — {data.year.endLabel}</p>

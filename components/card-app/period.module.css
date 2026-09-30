@@ -53,6 +53,12 @@
 .eventDate { color:var(--yb-bone-2); font:11px/1.6 var(--yb-mono); }
 .eventLink { display:block; color:var(--yb-gold-2); font-size:11px; margin-top:8px; }
 .footer { font:11px/1.7 var(--yb-body); color:var(--yb-mute); margin:6px 0 12px; }
+.readingTitle { font:500 29px/1.16 var(--yb-display); margin:10px 0 18px; }
+.reading { margin-top:22px; }
+.reading summary { cursor:pointer; color:var(--yb-gold-2); font:13px/1.6 var(--yb-mono); padding:12px 0; }
+.reading summary:focus-visible { outline:2px solid var(--yb-gold-2); outline-offset:4px; }
+.reading[open] summary { margin-bottom:16px; }
+.reading .body + .body { margin-top:18px; }
 .legacy { max-width:520px; margin:auto; background:#0b0910; }
 .back { display:block; padding:16px 24px; }
 .root button:focus-visible,.back:focus-visible { outline:2px solid var(--yb-gold-2); outline-offset:3px; }

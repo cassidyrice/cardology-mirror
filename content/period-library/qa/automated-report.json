@@ -1,0 +1,2245 @@
+{
+  "generatedAt": "2026-09-30T13:55:19.231Z",
+  "passed": true,
+  "counts": {
+    "readings": 364,
+    "uniquePairs": 364,
+    "cards": 52,
+    "planets": 7,
+    "yearly": 260,
+    "notifications": 56,
+    "chapters": 7
+  },
+  "words": {
+    "longReadingTotal": 93306,
+    "min": 163,
+    "max": 452
+  },
+  "tierCoverage": [
+    {
+      "tier": "threshold",
+      "count": 28
+    },
+    {
+      "tier": "karmic",
+      "count": 56
+    },
+    {
+      "tier": "structural",
+      "count": 84
+    },
+    {
+      "tier": "standard",
+      "count": 196
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "id": "ace-of-diamonds.mercury",
+      "field": "longReading[3]",
+      "issue": "Review health/endings term: treatment"
+    },
+    {
+      "id": "3-of-clubs.jupiter",
+      "field": "longReading[1]",
+      "issue": "Review health/endings term: treatment"
+    }
+  ],
+  "duplicatedParagraphs": [],
+  "templateParagraphs": [],
+  "duplicatedFields": [],
+  "repeatedPassages": [],
+  "lengths": [
+    {
+      "id": "ace-of-hearts.mercury",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.venus",
+      "words": 428,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.mars",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.jupiter",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.saturn",
+      "words": 438,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.uranus",
+      "words": 432,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-hearts.neptune",
+      "words": 438,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "2-of-hearts.mercury",
+      "words": 267,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.venus",
+      "words": 270,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.mars",
+      "words": 269,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.jupiter",
+      "words": 266,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.saturn",
+      "words": 262,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.uranus",
+      "words": 275,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-hearts.neptune",
+      "words": 259,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "3-of-hearts.mercury",
+      "words": 165,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.venus",
+      "words": 166,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.mars",
+      "words": 168,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.jupiter",
+      "words": 166,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.saturn",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.uranus",
+      "words": 166,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-hearts.neptune",
+      "words": 165,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "4-of-hearts.mercury",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.venus",
+      "words": 267,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.mars",
+      "words": 262,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.jupiter",
+      "words": 268,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.saturn",
+      "words": 270,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.uranus",
+      "words": 267,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-hearts.neptune",
+      "words": 266,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "5-of-hearts.mercury",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.venus",
+      "words": 166,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.mars",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.jupiter",
+      "words": 168,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.saturn",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.uranus",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-hearts.neptune",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "6-of-hearts.mercury",
+      "words": 434,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.venus",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.mars",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.jupiter",
+      "words": 434,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.saturn",
+      "words": 435,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.uranus",
+      "words": 425,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-hearts.neptune",
+      "words": 440,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "7-of-hearts.mercury",
+      "words": 163,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.venus",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.mars",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.jupiter",
+      "words": 168,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.saturn",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.uranus",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-hearts.neptune",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.mercury",
+      "words": 165,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.venus",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.mars",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.jupiter",
+      "words": 167,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.saturn",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.uranus",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-hearts.neptune",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "9-of-hearts.mercury",
+      "words": 436,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.venus",
+      "words": 435,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.mars",
+      "words": 422,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.jupiter",
+      "words": 432,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.saturn",
+      "words": 434,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.uranus",
+      "words": 434,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-hearts.neptune",
+      "words": 447,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "10-of-hearts.mercury",
+      "words": 269,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.venus",
+      "words": 263,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.mars",
+      "words": 254,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.jupiter",
+      "words": 263,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.saturn",
+      "words": 254,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.uranus",
+      "words": 258,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-hearts.neptune",
+      "words": 253,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "jack-of-hearts.mercury",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.venus",
+      "words": 166,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.mars",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.jupiter",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.saturn",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.uranus",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-hearts.neptune",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.mercury",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.venus",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.mars",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.jupiter",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.saturn",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.uranus",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-hearts.neptune",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.mercury",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.venus",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.mars",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.jupiter",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.saturn",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.uranus",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-hearts.neptune",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "ace-of-diamonds.mercury",
+      "words": 405,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.venus",
+      "words": 436,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.mars",
+      "words": 438,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.jupiter",
+      "words": 416,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.saturn",
+      "words": 425,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.uranus",
+      "words": 413,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-diamonds.neptune",
+      "words": 424,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "2-of-diamonds.mercury",
+      "words": 279,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.venus",
+      "words": 273,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.mars",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.jupiter",
+      "words": 282,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.saturn",
+      "words": 268,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.uranus",
+      "words": 275,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-diamonds.neptune",
+      "words": 271,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "3-of-diamonds.mercury",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.venus",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.mars",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.jupiter",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.saturn",
+      "words": 192,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.uranus",
+      "words": 185,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-diamonds.neptune",
+      "words": 186,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "4-of-diamonds.mercury",
+      "words": 264,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.venus",
+      "words": 271,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.mars",
+      "words": 280,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.jupiter",
+      "words": 267,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.saturn",
+      "words": 280,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.uranus",
+      "words": 265,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-diamonds.neptune",
+      "words": 277,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "5-of-diamonds.mercury",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.venus",
+      "words": 187,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.mars",
+      "words": 186,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.jupiter",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.saturn",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.uranus",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-diamonds.neptune",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "6-of-diamonds.mercury",
+      "words": 407,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.venus",
+      "words": 405,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.mars",
+      "words": 412,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.jupiter",
+      "words": 414,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.saturn",
+      "words": 405,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.uranus",
+      "words": 413,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-diamonds.neptune",
+      "words": 417,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "7-of-diamonds.mercury",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.venus",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.mars",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.jupiter",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.saturn",
+      "words": 185,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.uranus",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-diamonds.neptune",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.mercury",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.venus",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.mars",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.jupiter",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.saturn",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.uranus",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-diamonds.neptune",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "9-of-diamonds.mercury",
+      "words": 424,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.venus",
+      "words": 424,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.mars",
+      "words": 420,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.jupiter",
+      "words": 428,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.saturn",
+      "words": 427,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.uranus",
+      "words": 411,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-diamonds.neptune",
+      "words": 411,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "10-of-diamonds.mercury",
+      "words": 270,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.venus",
+      "words": 262,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.mars",
+      "words": 258,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.jupiter",
+      "words": 269,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.saturn",
+      "words": 281,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.uranus",
+      "words": 259,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-diamonds.neptune",
+      "words": 259,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "jack-of-diamonds.mercury",
+      "words": 168,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.venus",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.mars",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.jupiter",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.saturn",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.uranus",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-diamonds.neptune",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.mercury",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.venus",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.mars",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.jupiter",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.saturn",
+      "words": 169,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.uranus",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-diamonds.neptune",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.mercury",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.venus",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.mars",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.jupiter",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.saturn",
+      "words": 178,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.uranus",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-diamonds.neptune",
+      "words": 171,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "ace-of-clubs.mercury",
+      "words": 417,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.venus",
+      "words": 415,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.mars",
+      "words": 429,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.jupiter",
+      "words": 423,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.saturn",
+      "words": 435,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.uranus",
+      "words": 425,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-clubs.neptune",
+      "words": 430,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "2-of-clubs.mercury",
+      "words": 280,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.venus",
+      "words": 276,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.mars",
+      "words": 282,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.jupiter",
+      "words": 275,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.saturn",
+      "words": 299,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.uranus",
+      "words": 280,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-clubs.neptune",
+      "words": 284,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "3-of-clubs.mercury",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.venus",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.mars",
+      "words": 189,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.jupiter",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.saturn",
+      "words": 194,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.uranus",
+      "words": 187,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-clubs.neptune",
+      "words": 194,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "4-of-clubs.mercury",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.venus",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.mars",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.jupiter",
+      "words": 271,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.saturn",
+      "words": 279,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.uranus",
+      "words": 271,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-clubs.neptune",
+      "words": 290,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "5-of-clubs.mercury",
+      "words": 187,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.venus",
+      "words": 196,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.mars",
+      "words": 196,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.jupiter",
+      "words": 189,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.saturn",
+      "words": 192,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.uranus",
+      "words": 192,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-clubs.neptune",
+      "words": 191,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "6-of-clubs.mercury",
+      "words": 432,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.venus",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.mars",
+      "words": 430,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.jupiter",
+      "words": 436,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.saturn",
+      "words": 432,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.uranus",
+      "words": 416,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-clubs.neptune",
+      "words": 452,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "7-of-clubs.mercury",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.venus",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.mars",
+      "words": 186,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.jupiter",
+      "words": 190,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.saturn",
+      "words": 186,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.uranus",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-clubs.neptune",
+      "words": 189,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.mercury",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.venus",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.mars",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.jupiter",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.saturn",
+      "words": 192,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.uranus",
+      "words": 185,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-clubs.neptune",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "9-of-clubs.mercury",
+      "words": 426,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.venus",
+      "words": 428,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.mars",
+      "words": 419,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.jupiter",
+      "words": 416,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.saturn",
+      "words": 413,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.uranus",
+      "words": 418,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-clubs.neptune",
+      "words": 425,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "10-of-clubs.mercury",
+      "words": 272,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.venus",
+      "words": 285,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.mars",
+      "words": 278,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.jupiter",
+      "words": 272,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.saturn",
+      "words": 273,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.uranus",
+      "words": 272,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-clubs.neptune",
+      "words": 274,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "jack-of-clubs.mercury",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.venus",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.mars",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.jupiter",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.saturn",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.uranus",
+      "words": 189,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-clubs.neptune",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.mercury",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.venus",
+      "words": 190,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.mars",
+      "words": 196,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.jupiter",
+      "words": 191,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.saturn",
+      "words": 200,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.uranus",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-clubs.neptune",
+      "words": 185,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.mercury",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.venus",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.mars",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.jupiter",
+      "words": 188,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.saturn",
+      "words": 198,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.uranus",
+      "words": 187,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-clubs.neptune",
+      "words": 190,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "ace-of-spades.mercury",
+      "words": 409,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.venus",
+      "words": 422,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.mars",
+      "words": 413,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.jupiter",
+      "words": 418,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.saturn",
+      "words": 431,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.uranus",
+      "words": 424,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "ace-of-spades.neptune",
+      "words": 425,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "2-of-spades.mercury",
+      "words": 276,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.venus",
+      "words": 275,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.mars",
+      "words": 263,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.jupiter",
+      "words": 269,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.saturn",
+      "words": 268,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.uranus",
+      "words": 262,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "2-of-spades.neptune",
+      "words": 264,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "3-of-spades.mercury",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.venus",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.mars",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.jupiter",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.saturn",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.uranus",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "3-of-spades.neptune",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "4-of-spades.mercury",
+      "words": 273,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.venus",
+      "words": 271,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.mars",
+      "words": 270,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.jupiter",
+      "words": 267,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.saturn",
+      "words": 276,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.uranus",
+      "words": 260,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "4-of-spades.neptune",
+      "words": 264,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "5-of-spades.mercury",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.venus",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.mars",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.jupiter",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.saturn",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.uranus",
+      "words": 170,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "5-of-spades.neptune",
+      "words": 182,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "6-of-spades.mercury",
+      "words": 434,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.venus",
+      "words": 420,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.mars",
+      "words": 421,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.jupiter",
+      "words": 414,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.saturn",
+      "words": 415,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.uranus",
+      "words": 406,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "6-of-spades.neptune",
+      "words": 410,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "7-of-spades.mercury",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.venus",
+      "words": 184,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.mars",
+      "words": 178,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.jupiter",
+      "words": 178,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.saturn",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.uranus",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "7-of-spades.neptune",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.mercury",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.venus",
+      "words": 178,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.mars",
+      "words": 187,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.jupiter",
+      "words": 183,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.saturn",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.uranus",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "8-of-spades.neptune",
+      "words": 181,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "9-of-spades.mercury",
+      "words": 422,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.venus",
+      "words": 412,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.mars",
+      "words": 411,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.jupiter",
+      "words": 413,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.saturn",
+      "words": 421,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.uranus",
+      "words": 419,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "9-of-spades.neptune",
+      "words": 418,
+      "min": 400,
+      "max": 600
+    },
+    {
+      "id": "10-of-spades.mercury",
+      "words": 272,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.venus",
+      "words": 264,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.mars",
+      "words": 260,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.jupiter",
+      "words": 254,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.saturn",
+      "words": 269,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.uranus",
+      "words": 260,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "10-of-spades.neptune",
+      "words": 270,
+      "min": 250,
+      "max": 350
+    },
+    {
+      "id": "jack-of-spades.mercury",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.venus",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.mars",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.jupiter",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.saturn",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.uranus",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "jack-of-spades.neptune",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.mercury",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.venus",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.mars",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.jupiter",
+      "words": 177,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.saturn",
+      "words": 176,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.uranus",
+      "words": 179,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "queen-of-spades.neptune",
+      "words": 172,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.mercury",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.venus",
+      "words": 173,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.mars",
+      "words": 178,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.jupiter",
+      "words": 175,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.saturn",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.uranus",
+      "words": 174,
+      "min": 150,
+      "max": 250
+    },
+    {
+      "id": "king-of-spades.neptune",
+      "words": 180,
+      "min": 150,
+      "max": 250
+    }
+  ],
+  "fileHashes": {
+    "content/period-library/hearts.json": "836a06e8a8c38c89471c2c12fdd68a7663ba3328d58e5eb17b15de02eaa78724",
+    "content/period-library/diamonds.json": "b79ca03fcb00df0b91758419da7ca5620de80a12a48d6de86568b3809fe71414",
+    "content/period-library/clubs.json": "0da60f9ed2301cfb01ac747020286a160d81dac83f5115f4dfd7710c3277b1b0",
+    "content/period-library/spades.json": "5f8192ea197ed6c96d878abe049b0bbc387ed29e905a09c1630fc53036f8d39a"
+  }
+}

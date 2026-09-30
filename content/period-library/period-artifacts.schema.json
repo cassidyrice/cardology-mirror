@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Card Blueprints period artifacts",
+  "type": "array",
+  "minItems": 364,
+  "maxItems": 364,
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "cardCode",
+      "planet",
+      "title",
+      "omenLine",
+      "longReading",
+      "shadowWatch",
+      "practice",
+      "reflection",
+      "yearlyContext",
+      "personOrPosture",
+      "significance",
+      "sourceReferences"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+\\.(mercury|venus|mars|jupiter|saturn|uranus|neptune)$"
+      },
+      "cardCode": {
+        "enum": [
+          "A♥",
+          "2♥",
+          "3♥",
+          "4♥",
+          "5♥",
+          "6♥",
+          "7♥",
+          "8♥",
+          "9♥",
+          "10♥",
+          "J♥",
+          "Q♥",
+          "K♥",
+          "A♣",
+          "2♣",
+          "3♣",
+          "4♣",
+          "5♣",
+          "6♣",
+          "7♣",
+          "8♣",
+          "9♣",
+          "10♣",
+          "J♣",
+          "Q♣",
+          "K♣",
+          "A♦",
+          "2♦",
+          "3♦",
+          "4♦",
+          "5♦",
+          "6♦",
+          "7♦",
+          "8♦",
+          "9♦",
+          "10♦",
+          "J♦",
+          "Q♦",
+          "K♦",
+          "A♠",
+          "2♠",
+          "3♠",
+          "4♠",
+          "5♠",
+          "6♠",
+          "7♠",
+          "8♠",
+          "9♠",
+          "10♠",
+          "J♠",
+          "Q♠",
+          "K♠"
+        ]
+      },
+      "planet": {
+        "enum": [
+          "Mercury",
+          "Venus",
+          "Mars",
+          "Jupiter",
+          "Saturn",
+          "Uranus",
+          "Neptune"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "omenLine": {
+        "type": "string",
+        "minLength": 1
+      },
+      "longReading": {
+        "type": "array",
+        "minItems": 2,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "shadowWatch": {
+        "type": "string",
+        "minLength": 1
+      },
+      "practice": {
+        "type": "string",
+        "minLength": 1
+      },
+      "reflection": {
+        "type": "string",
+        "minLength": 1
+      },
+      "yearlyContext": {
+        "type": "string",
+        "minLength": 1
+      },
+      "personOrPosture": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "significance": {
+        "enum": [
+          "threshold",
+          "karmic",
+          "structural",
+          "standard"
+        ]
+      },
+      "sourceReferences": {
+        "type": "array",
+        "minItems": 2,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
