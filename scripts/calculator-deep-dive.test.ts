@@ -319,7 +319,7 @@ test("calculator result leads with the $13 reading under the card name, then the
   );
   expect(result).toContain('source="calculator-result"');
   // Free reads follow: the card's own watch-for line, then the free links.
-  expect(calculator).toContain("bible.watchFor");
+  expect(calculator).toContain("{!isJoker && watchFor && (");
   expect(calculator).toContain("What to do next");
   expect(calculator).toContain("Open your {bc?.label ?? \"birth card\"} meaning");
   expect(calculator).toContain('href="/birth-card-compatibility-calculator#da"');
@@ -327,12 +327,12 @@ test("calculator result leads with the $13 reading under the card name, then the
   expect(calculator).not.toContain('role="dialog"');
   expect(calculator).not.toContain("fixed inset");
   expect(calculator.indexOf("<NewsletterSignupForm")).toBeLessThan(
-    calculator.indexOf("bible.watchFor"),
+    calculator.indexOf("{!isJoker && watchFor && ("),
   );
   expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
     calculator.indexOf('href="/birth-card-compatibility-calculator#da"'),
   );
-  expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
+  expect(calculator.indexOf("{!isJoker && watchFor && (")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
   expect(calculator).not.toContain("personal-card-blueprint");
