@@ -366,7 +366,8 @@ describe("product page", () => {
     const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({}) }));
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html).toContain("Card Blueprint App");
-    expect(html).toContain("Your card today");
+    expect(html).toContain("Current period");
+    expect(html).toContain("More cards");
     expect(html).toContain("/birth-card-calculator");
     expect(html).toContain("/birth-card-compatibility-calculator");
     expect(html).not.toMatch(/personal-card-blueprint|Personal Card Blueprint/);

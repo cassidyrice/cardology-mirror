@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CardAppView } from "@/components/card-app/CardApp";
+import { PeriodAppView } from "@/components/card-app/PeriodApp";
 import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { appDateParam, buildCardApp } from "@/lib/card-app";
@@ -137,7 +137,7 @@ export default async function CardBlueprintAppPage({
           This is the real app for a made-up person born {sample.birthdateDisplay}, showing
           today. Tap the tabs at the bottom. Yours is built from your birthday.
         </p>
-        <CardAppView data={sample} sample={{ connection }} framed />
+        <PeriodAppView data={sample} sample={{ connection }} framed />
       </section>
 
       <section className="mt-10">

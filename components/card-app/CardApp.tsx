@@ -585,7 +585,7 @@ const TABS: ScreenId[] = ["today", "year", "me", "days", "people"];
  * Checked again when the app comes back to the screen and at local midnight,
  * so an app left open or resumed from the home screen never shows yesterday.
  */
-function LocalDateSync({ today }: { today: string }) {
+export function LocalDateSync({ today }: { today: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useSearchParams();

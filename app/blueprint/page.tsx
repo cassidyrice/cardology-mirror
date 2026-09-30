@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { BlueprintReportView } from "@/components/blueprint/BlueprintReportView";
-import { CardAppView } from "@/components/card-app/CardApp";
+import { PeriodAppView } from "@/components/card-app/PeriodApp";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton } from "@/components/ui";
@@ -89,7 +89,7 @@ export default async function BlueprintPage({
     if (app) {
       return (
         <div style={{ background: "#0b0910", minHeight: "100dvh" }}>
-          <CardAppView data={app} token={token ?? ""} />
+          <PeriodAppView data={app} token={token ?? ""} />
         </div>
       );
     }
