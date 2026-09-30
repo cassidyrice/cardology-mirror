@@ -360,10 +360,11 @@ describe("POST /api/card-app/connection", () => {
 });
 
 describe("product page", () => {
-  test("renders one H1, the live sample, and no buy button while off sale", async () => {
+  test("renders one main, one H1, the live sample, and no buy button while off sale", async () => {
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: Page, metadata } = await import("../app/products/card-blueprint-app/page");
     const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({}) }));
+    expect(html.match(/<main[\s>]/g)).toHaveLength(1);
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html).toContain("Card Blueprint App");
     expect(html).toContain("Current period");
@@ -377,6 +378,15 @@ describe("product page", () => {
       expect(html).toContain("Opening soon");
       expect(metadata.robots).toEqual({ index: false, follow: true });
     }
+  });
+
+  test("the direct buyer period app renders one main", async () => {
+    const { renderToStaticMarkup } = await import("react-dom/server");
+    const { createElement } = await import("react");
+    const { PeriodAppView } = await import("../components/card-app/PeriodApp");
+    const data = buildCardApp("1988-07-14", "2026-09-29");
+    const html = renderToStaticMarkup(createElement(PeriodAppView, { data, token: "t" }));
+    expect(html.match(/<main[\s>]/g)).toHaveLength(1);
   });
 
   test("the sample shows the visitor's own date, within a day of the server's", async () => {

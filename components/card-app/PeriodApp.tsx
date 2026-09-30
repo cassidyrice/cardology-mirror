@@ -38,6 +38,7 @@ export function PeriodAppView(props: Props) {
   const [more, setMore] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const Heading = props.sample ? "h2" : "h1";
+  const Panel = props.sample ? "section" : "main";
   const panel = useRef<HTMLElement>(null);
   // A new birthday-year must not leave the previous year's period selected.
   useEffect(() => setSelected(data.year.current.index), [data.year.start, data.year.current.index]);
@@ -67,7 +68,7 @@ export function PeriodAppView(props: Props) {
     <Suspense fallback={null}><LocalDateSync today={data.today} /></Suspense>
     <div className={`${s.shell} ${framed ? s.framed : ""}`}>
       <header className={s.header}><span>CB / CARD BLUEPRINTS</span><span>{data.todayLabel}</span></header>
-      <main ref={panel} className={s.panel}>
+      <Panel ref={panel} className={s.panel}>
         <div className={s.screenLabel}><span>{props.sample ? "Sample · July 14, 1988" : data.identity.birth.card.name}</span><button onClick={() => setMore(true)}>More cards ↗</button></div>
         <Heading ref={heading} tabIndex={-1} className={s.title}>{screen === "period" ? `${period.planet} period` : TABS.find((tab) => tab.id === screen)?.label}</Heading>
         {screen === "period" && <>
@@ -101,7 +102,7 @@ export function PeriodAppView(props: Props) {
           <div className={s.section}>{months.map((month) => <section key={month} aria-label={month}><h3 className={s.kicker}>{new Date(`${month}-01T00:00:00Z`).toLocaleDateString("en-US", { month: "long", year: "numeric", timeZone: "UTC" })}</h3>{visibleEvents.filter((event) => event.date.startsWith(month)).map(showEvent)}</section>)}{months.length === 0 && <p className={s.body}>No marked dates match this filter.</p>}</div>
         </>}
         <p className={s.footer}>A mirror, not a forecast. Notice what fits. You choose what to do with it.</p>
-      </main>
+      </Panel>
       <nav className={s.tabs} aria-label="App sections">{TABS.map((tab) => <button key={tab.id} aria-current={screen === tab.id ? "page" : undefined} onClick={() => navigate(tab.id)}><span aria-hidden="true">{tab.symbol}</span>{tab.label}</button>)}</nav>
     </div>
   </div>;
