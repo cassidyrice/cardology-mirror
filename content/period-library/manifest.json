@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "sourceDate": "2026-09-30",
+  "authorship": "AI-assisted writing with independent AI editorial review; no claim of human approval",
+  "interpretation": "Symbolic reflection, not event prediction",
+  "runtime": "Card assignments and period dates come exclusively from the existing engine. No model calls.",
+  "counts": {
+    "readings": 364,
+    "uniquePairs": 364,
+    "cards": 52,
+    "planets": 7,
+    "yearly": 260,
+    "notifications": 56,
+    "chapters": 7
+  },
+  "longReadingWords": 93306,
+  "periodFile": "period-artifacts.json",
+  "yearlyFile": "yearly-artifacts.json",
+  "supportingFile": "supporting-copy.json",
+  "sourceFiles": [
+    {
+      "file": "sources/august18-report.md",
+      "sha256": "5fca51070602e5a27c8dbc87fe283886e47d1bab3e19007d56fbc2e7ecd0b6b9"
+    },
+    {
+      "file": "sources/august18-prototype-period-meanings.ts.txt",
+      "sha256": "12de4f1ae63a4b0f3d281c562018ca15c2ff5e164e60b617caad447184c05ed0"
+    },
+    {
+      "file": "sources/READING_VOICE.md",
+      "sha256": "e1901bcc5076480ab05335c7d039870b792845a6a129be4c0b8723e0643376a1"
+    },
+    {
+      "file": "sources/READING_RUBRIC.md",
+      "sha256": "f60becd3d91181cd782347b32ba3d9a4eef190993a05dbb58102cab5d149744f"
+    },
+    {
+      "file": "sources/september29-draft.md",
+      "sha256": "eef5d4e58356a7e5e9db97a7105fb3208aa76e892068c3426439d1743c7a0ea5"
+    }
+  ],
+  "contentHashes": {
+    "content/period-library/hearts.json": "836a06e8a8c38c89471c2c12fdd68a7663ba3328d58e5eb17b15de02eaa78724",
+    "content/period-library/diamonds.json": "b79ca03fcb00df0b91758419da7ca5620de80a12a48d6de86568b3809fe71414",
+    "content/period-library/clubs.json": "0da60f9ed2301cfb01ac747020286a160d81dac83f5115f4dfd7710c3277b1b0",
+    "content/period-library/spades.json": "5f8192ea197ed6c96d878abe049b0bbc387ed29e905a09c1630fc53036f8d39a"
+  },
+  "documents": {
+    "markdown": "MANUSCRIPT.md",
+    "html": "MANUSCRIPT.html",
+    "docx": null,
+    "limitation": "Workspace document dependency loader returned unsupported for this delegated thread. No DOCX was generated or represented as render-verified."
+  }
+}

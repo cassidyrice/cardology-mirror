@@ -175,6 +175,7 @@ export interface CardApp {
     environment: AppCardNote | null;
     displacement: AppCardNote | null;
     signals: AppYearSignal[];
+    events: AppEvent[];
   };
   week: {
     current: AppWeek;
@@ -378,10 +379,12 @@ function buildEvents(
   frames: YearFrame[],
   lifetime: { gift: string | null; challenge: string | null },
   today: Date,
+  window?: { start: Date; end: Date },
 ): AppEvent[] {
   const events: AppEvent[] = [];
-  const windowEnd = addDays(today, EVENT_WINDOW_DAYS - 1);
-  const inWindow = (d: Date) => d >= today && d <= windowEnd;
+  const windowStart = window?.start ?? today;
+  const windowEnd = window?.end ?? addDays(today, EVENT_WINDOW_DAYS - 1);
+  const inWindow = (d: Date) => d >= windowStart && d <= windowEnd;
 
   for (const f of frames) {
     if (inWindow(f.start)) {
@@ -406,7 +409,7 @@ function buildEvents(
           card: toYearCard(card),
         });
       }
-      if (p.planet === "Jupiter" && p.end >= today && p.start <= windowEnd) {
+      if (p.planet === "Jupiter" && p.end >= windowStart && p.start <= windowEnd) {
         events.push({
           kind: "good",
           date: isoOf(p.start),
@@ -421,7 +424,7 @@ function buildEvents(
   }
 
   // Daily-card matches: the day your daily card is one of your key cards.
-  for (let d = today; d <= windowEnd; d = addDays(d, 1)) {
+  for (let d = windowStart; d <= windowEnd; d = addDays(d, 1)) {
     const f = frameFor(d, frames);
     if (!f) continue;
     const code = dailyCard(bc, by, bm, bd, d).current_card;
@@ -686,6 +689,7 @@ export function buildCardApp(birthdate: string, todayIso?: string): CardApp {
         : null,
       environment: f.environment ? note(f.environment) : null,
       displacement: f.displacement ? note(f.displacement) : null,
+      events: buildEvents(bc, prc, by, bm, bd, frames, lifetime, today, { start: f.start, end: f.end }),
       signals: buildSignals(f, bc, prc, life9, lifetime),
     },
     week: { current: currentWeek, all: weeks },

@@ -46,3 +46,6 @@ ops/audit/cardology-ops-audit-tmp/
 
 # Finder metadata (blocks clean-tree deploys)
 .DS_Store
+
+# Local writing preview downloads, generated from the committed library.
+content/period-library/deliverables/

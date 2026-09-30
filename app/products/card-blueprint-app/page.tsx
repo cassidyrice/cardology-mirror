@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CardAppView } from "@/components/card-app/CardApp";
+import { PeriodAppView } from "@/components/card-app/PeriodApp";
+import { appReadingLibrary } from "@/lib/period-library";
 import { ReportCheckoutButton } from "@/components/checkout/ReportCheckoutButton";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { appDateParam, buildCardApp } from "@/lib/card-app";
@@ -67,7 +68,7 @@ const faqs = [
   },
   {
     q: "Is any of it written by AI?",
-    a: "No model writes it. Every card comes from the same fixed math and lookup tables as the free calculator, and the meanings come from a fixed, reviewed library. Same birthday, same cards, every time.",
+    a: "Yes. The reading library was written with AI assistance and checked through an independent AI editorial review. No model generates a new reading when you open the app. Your cards come from the same fixed calculations as the free calculator, and the app selects the matching text. These are symbolic interpretations for reflection, not scientific predictions.",
   },
   {
     q: "Will it tell me what's going to happen?",
@@ -137,7 +138,7 @@ export default async function CardBlueprintAppPage({
           This is the real app for a made-up person born {sample.birthdateDisplay}, showing
           today. Tap the tabs at the bottom. Yours is built from your birthday.
         </p>
-        <CardAppView data={sample} sample={{ connection }} framed />
+        <PeriodAppView data={sample} readings={appReadingLibrary(sample)} sample={{ connection }} framed />
       </section>
 
       <section className="mt-10">
