@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { PlayingCard } from "@/components/PlayingCard";
+
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
@@ -174,16 +176,64 @@ export default function CalculatorPage() {
         </h1>
         <p className="prose-reading text-brand-ink-soft" data-ai-summary>
           Your birthday maps to one playing card in a standard 52-card deck.
-          Same date, same card — a mirror of a fixed pattern, not tarot, not
-          cardiology, and not a forecast. Enter a birthday below, or read the{" "}
-          <a href="#cardology-chart" className="text-brand-oxblood underline underline-offset-4">full Cardology chart</a>{" "}
-          for all 366 birthdays.
+          Enter your birthday to find your card and explore its meaning.
+          Your birth card stays the same for life; use it for reflection, not prediction.
         </p>
       </header>
 
       <div className="mt-5">
         <BirthCardCalculator />
       </div>
+
+      <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
+        {[
+          ["#use-your-card", "Try your first exercise"],
+          ["#what-is-a-birth-card", "Understand your card"],
+          ["#how-it-works", "How it works"],
+          ["#cardology-chart", "Cardology Chart"],
+          ["#worked-example", "Worked example"],
+          ["#birth-vs-ruling", "Birth vs ruling card"],
+          ["#trust-and-limits", "Method & trust"],
+          ["#faq", "FAQ"],
+        ].map(([href, label]) => (
+          <a key={href} href={href} className="rounded-full border border-brand-line inline-flex min-h-11 items-center px-3 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <section id="use-your-card" aria-labelledby="use-your-card-heading" className="mt-8 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5 sm:p-6 scroll-mt-10">
+        <p className="type-eyebrow mb-2 !text-brand-bronze">Your first exercise · free</p>
+        <h2 id="use-your-card-heading" className="font-serif text-2xl text-brand-ink">You found your card. What can you do with it?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft">Take a physical deck of playing cards and a moment to reflect. You can do this without buying anything.</p>
+        <figure className="mt-5 rounded-xl border border-brand-line bg-brand-paper p-4 sm:p-5">
+          <figcaption className="mb-4 text-sm font-medium text-brand-ink">An example: January 15 → Queen of Diamonds → one reflection</figcaption>
+          <div className="grid items-center gap-5 text-center sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
+            <div className="rounded-xl border border-brand-line bg-brand-ivory p-4"><span className="type-eyebrow block">Birthday</span><span className="mt-2 block font-serif text-3xl text-brand-ink">January 15</span><span className="mt-2 block text-xs text-brand-ink-soft">Enter it in the calculator</span></div>
+            <span aria-hidden="true" className="text-2xl text-brand-bronze"><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></span>
+            <div><PlayingCard code="Q♦" size="md" surface="paper" /><p className="mt-3 text-sm font-medium text-brand-ink">Queen of Diamonds</p><p className="mt-1 text-xs text-brand-ink-soft">Find the matching card in your deck</p></div>
+            <span aria-hidden="true" className="text-2xl text-brand-bronze"><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></span>
+            <div className="rounded-xl border border-brand-line bg-brand-ivory p-4"><span className="type-eyebrow block">Reflect</span><p className="mt-2 font-serif text-xl text-brand-ink">What do I value?</p><p className="mt-2 text-xs text-brand-ink-soft">Write one example from your own life</p></div>
+          </div>
+          <p className="mt-4 text-xs text-brand-ink-soft">This is an example birthday. Use your own result and its card meaning for your exercise.</p>
+        </figure>
+        <ol className="mt-5 grid gap-5 sm:grid-cols-3">
+          <li><h3 className="font-serif text-lg text-brand-ink">1. Find it in your deck</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Use your calculator result to find the matching rank and suit. Place that card face up. December 31 is the Joker exception; use a Joker if your deck includes one.</p></li>
+          <li><h3 className="font-serif text-lg text-brand-ink">2. Read its meaning</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Open the card meaning linked in your result. Choose one theme that connects with something you have experienced.</p></li>
+          <li><h3 className="font-serif text-lg text-brand-ink">3. Ask one question</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Where do I notice this pattern in my life? Write down one example and one small choice you could make. Leave interpretations that do not fit.</p></li>
+        </ol>
+        <p className="mt-5 text-sm leading-relaxed text-brand-ink-soft">Want to keep exploring? Your result links to the app sample for daily cards and 52-day periods. The sample is free to try; your personal app is $69 once. Your free card meaning is always available.</p>
+      </section>
+
+      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
+        Optional paid step after the free card:{" "}
+        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
+          One Question Reading — $13
+        </Link>{" "}
+        (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
+        on your screen and in your inbox within about a minute).
+        The free calculator never stores your birthday.
+      </p>
 
       <section id="what-is-a-birth-card" className="mt-8 max-w-2xl scroll-mt-10">
         <h2 className="font-serif text-2xl text-brand-ink">What is a birth card in Cardology?</h2>
@@ -206,16 +256,6 @@ export default function CalculatorPage() {
         </p>
       </section>
 
-      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
-        Optional paid step after the free card:{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          One Question Reading — $13
-        </Link>{" "}
-        (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
-        on your screen and in your inbox within about a minute).
-        The free calculator never stores your birthday.
-      </p>
-
       <p className="mt-6 text-sm leading-relaxed text-brand-ink-soft">
         Written and reviewed by{" "}
         <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
@@ -231,6 +271,26 @@ export default function CalculatorPage() {
         </Link>
         .
       </p>
+
+      <section aria-labelledby="suit-guide-heading" className="mt-8">
+        <h2 id="suit-guide-heading" className="font-serif text-2xl text-brand-ink">Four suits. Four themes to explore.</h2>
+        <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">Look at the symbol on your card. The suit is a starting point for its symbolic meaning; the rank adds another layer.</p>
+        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {[
+            ["A♥", "Hearts", "Relationships & emotion"],
+            ["A♣", "Clubs", "Mind & communication"],
+            ["A♦", "Diamonds", "Values & resources"],
+            ["A♠", "Spades", "Work, will & transformation"],
+          ].map(([code, suit, theme]) => (
+            <div key={suit} className="rounded-xl border border-brand-line bg-brand-ivory/70 p-4 text-center">
+              <PlayingCard code={code} size="sm" surface="paper" />
+              <h3 className="mt-3 font-serif text-lg text-brand-ink">{suit}</h3>
+              <p className="mt-1 text-xs leading-relaxed text-brand-ink-soft">{theme}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-3 text-sm"><Link href="/52-card-astrology-explained" className="text-brand-oxblood underline underline-offset-4">Explore suits and ranks →</Link></p>
+      </section>
 
       <aside className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-brand-ink">
@@ -248,22 +308,6 @@ export default function CalculatorPage() {
           </Link>
         </p>
       </aside>
-
-      <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
-        {[
-          ["#what-is-a-birth-card", "What is a birth card?"],
-          ["#how-it-works", "How it works"],
-          ["#cardology-chart", "Cardology Chart"],
-          ["#worked-example", "Worked example"],
-          ["#birth-vs-ruling", "Birth vs ruling card"],
-          ["#trust-and-limits", "Method & trust"],
-          ["#faq", "FAQ"],
-        ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-full border border-brand-line px-3 py-1.5 text-xs text-brand-ink-soft hover:text-brand-ink">
-            {label}
-          </a>
-        ))}
-      </nav>
 
       <section id="cardology-chart" className="mt-10 scroll-mt-10">
         <p className="type-eyebrow mb-2 !text-brand-bronze">The birthday map</p>
