@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-29** (deployed `main` @ `e0ce843` — Merge remote-tracking branch 'origin/main'; previous record `c274362`)
+**Last verified: 2026-09-30** (deployed `main` @ `9e83651` — Show completed period readings in the Card Blueprint App; previous record `e0ce843`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `e0ce8431970d8eb219e03f8d50d4e6db457a0705` |
+| **Deployed commit** | `9e8365161c744b6d09a7d606404f3b9f34b2de41` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
