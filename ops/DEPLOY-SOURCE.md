@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-09-30** (deployed `main` @ `5bd4639` — Launch $69 app funnel with durable fulfillment and revenue reconciliation; previous record `687bc78`)
+**Last verified: 2026-09-30** (deployed `main` @ `04ec8ec` — Make calculator guidance visual with a free deck exercise; previous record `5bd4639`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `5bd46399f38822dc0058aa856f16bddbbc50cbdc` |
+| **Deployed commit** | `04ec8ec450fb705d2b9245382d38d99bcb035aa1` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
 | **Worker rollback** | `7bcb1504-572f-4a9c-9334-5bd9941bbe9d` |
