@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
+import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 import { SITE_NAME } from "@/lib/site";
 import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
@@ -37,6 +38,9 @@ export function SiteHeader() {
                 </Link>
               ),
             )}
+            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="whitespace-nowrap font-semibold text-brand-oxblood hover:underline">
+              Open app sample
+            </Link>
           </nav>
           <details className="relative ml-auto shrink-0 lg:ml-0 lg:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
@@ -64,6 +68,11 @@ export function SiteHeader() {
                     </li>
                   ),
                 )}
+                <li>
+                  <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="block min-h-11 py-3 font-semibold text-brand-oxblood">
+                    Open app sample
+                  </Link>
+                </li>
               </ul>
             </nav>
           </details>

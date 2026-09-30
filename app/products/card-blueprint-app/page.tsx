@@ -116,30 +116,28 @@ export default async function CardBlueprintAppPage({
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <p className="type-eyebrow mb-3 !text-brand-bronze">Cardology · your own app</p>
+      <p className="type-eyebrow mb-2 !text-brand-bronze">Cardology · a look inside</p>
       <h1 className="display mb-3 text-3xl text-brand-ink sm:text-4xl">
         {product.name}
-        <span className="mt-2 block font-sans text-base font-medium leading-snug tracking-normal text-brand-ink-soft">
-          {product.priceLabel} once · yours for life · a mirror, not a forecast
-        </span>
       </h1>
+
+      <section id="sample" aria-labelledby="sample-heading" className="mb-10 scroll-mt-4">
+        <h2 id="sample-heading" className="type-eyebrow mb-2 !text-brand-bronze">Open the app sample</h2>
+        <p className="mb-4 max-w-[38em] text-sm text-brand-ink-soft">
+          Explore the real app with a made-up birthday ({sample.birthdateDisplay}).
+          These are the sample person&rsquo;s cards, not yours. Scroll inside to read; use the tabs at the bottom to explore.
+          {CARD_APP_ON_SALE ? " Your personal app is built after purchase." : " Personal access is not on sale yet."}
+        </p>
+        <PeriodAppView data={sample} readings={appReadingLibrary(sample)} sample={{ connection }} framed />
+      </section>
+
       <p className="prose-reading mb-6 max-w-[38em] text-brand-ink-soft">
         Your birth card is the start. This is everything after it: your card for today, this
         week, the 52-day period you&rsquo;re in, your whole year, your karma cards, the days your
         cards line up, and how you connect with the people in your life. Built from your
-        birthday, on your phone, updated every day.
+        birthday, on your phone, updated every day. {product.priceLabel} once, yours for life.
       </p>
-
       <BuyBlock placement="product-page" />
-
-      <section aria-labelledby="sample-heading" className="mb-10">
-        <h2 id="sample-heading" className="type-eyebrow mb-2 !text-brand-bronze">Try it</h2>
-        <p className="mb-4 max-w-[38em] text-sm text-brand-ink-soft">
-          This is the real app for a made-up person born {sample.birthdateDisplay}, showing
-          today. Tap the tabs at the bottom. Yours is built from your birthday.
-        </p>
-        <PeriodAppView data={sample} readings={appReadingLibrary(sample)} sample={{ connection }} framed />
-      </section>
 
       <section className="mt-10">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">What&rsquo;s inside</h2>
@@ -222,7 +220,7 @@ function BuyBlock({ placement }: { placement: string }) {
       <div className="mb-10 max-w-md rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
         <p className="font-serif text-lg text-brand-ink">Opening soon</p>
         <p className="mt-1 text-sm text-brand-ink-soft">
-          The app isn&rsquo;t on sale yet. Try the sample below in the meantime.
+          The app isn&rsquo;t on sale yet. Explore the sample above in the meantime.
         </p>
       </div>
     );

@@ -10,6 +10,7 @@ import {
 } from "@/lib/deep-dive";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
+import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 
 import "./landing.css";
 
@@ -64,6 +65,9 @@ export default function Home() {
           <div className="home-fold-actions">
             <Link href="/birth-card-calculator" className="ink-button large-button">
               Find your card free
+            </Link>
+            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="home-fold-app">
+              Open app sample <span aria-hidden="true">↗</span>
             </Link>
             <Link href={DEEP_DIVE_PRODUCT_PATH} className="home-fold-reading">
               {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}

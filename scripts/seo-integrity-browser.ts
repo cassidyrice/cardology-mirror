@@ -354,7 +354,7 @@ async function main(): Promise<void> {
       "header does not send people to the deep-dive checkout slug",
     );
     assert.deepEqual(
-      await page.locator('nav[aria-label="Primary"] a').evaluateAll((nodes) =>
+      await page.locator('nav[aria-label="Primary"] a[data-money-path]').evaluateAll((nodes) =>
         nodes.map((node) => [
           node.getAttribute("data-money-path"),
           node.getAttribute("href"),
@@ -366,7 +366,12 @@ async function main(): Promise<void> {
         ["reading", "/products/one-question-reading"],
         ["faq", "/faq"],
       ],
-      "desktop primary nav is the four money paths, free calculator before the $13 reading",
+      "desktop primary nav keeps the four money paths, free calculator before the $13 reading",
+    );
+    assert.equal(
+      await page.locator('nav[aria-label="Primary"] a[href="/products/card-blueprint-app#sample"]').innerText(),
+      "Open app sample",
+      "desktop primary nav exposes the labeled app sample",
     );
     assert.deepEqual(
       await page.locator('footer nav[aria-label="Core"] a').evaluateAll((nodes) =>
@@ -461,7 +466,7 @@ async function main(): Promise<void> {
       assert.equal(clipped, false, `390px: ${label} is not clipped`);
     }
     assert.deepEqual(
-      await page.locator('nav[aria-label="Mobile primary"] a').evaluateAll((nodes) =>
+      await page.locator('nav[aria-label="Mobile primary"] a[data-money-path]').evaluateAll((nodes) =>
         nodes.map((node) => [
           node.getAttribute("data-money-path"),
           node.getAttribute("href"),
@@ -473,7 +478,12 @@ async function main(): Promise<void> {
         ["reading", "/products/one-question-reading"],
         ["faq", "/faq"],
       ],
-      "mobile nav destinations match desktop money paths",
+      "mobile nav retains the four money paths",
+    );
+    assert.equal(
+      await page.locator('nav[aria-label="Mobile primary"] a[href="/products/card-blueprint-app#sample"]').innerText(),
+      "Open app sample",
+      "mobile primary nav exposes the labeled app sample",
     );
     await page.screenshot({ path: screenshotPath, fullPage: false });
 

@@ -369,6 +369,9 @@ describe("product page", () => {
     expect(html).toContain("Card Blueprint App");
     expect(html).toContain("Current period");
     expect(html).toContain("More cards");
+    expect(html).toContain('id="sample"');
+    expect(html).toContain("These are the sample person");
+    expect(html.indexOf('id="sample"')).toBeLessThan(html.indexOf("Opening soon"));
     expect(html).toContain("/birth-card-calculator");
     expect(html).toContain("/birth-card-compatibility-calculator");
     expect(html).not.toMatch(/personal-card-blueprint|Personal Card Blueprint/);
