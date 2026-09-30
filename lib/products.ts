@@ -10,6 +10,7 @@ import {
   CONSULT_PRICE_LABEL,
   CONSULT_SLUG,
 } from "@/lib/blueprint-report";
+import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
 
 export type ProductKind =
   | "voice_reading"
@@ -30,7 +31,8 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_52XSEVEN_BLUEPRINT"
   | "STRIPE_PRICE_MEMBERSHIP"
   | "STRIPE_PRICE_BLUEPRINT_REPORT"
-  | "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT";
+  | "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT"
+  | "STRIPE_PRICE_CARD_BLUEPRINT_APP";
 
 type ProductBase = {
   slug: string;
@@ -70,6 +72,8 @@ export type InstantReportOffer = ProductBase & {
   reportSlug: string;
   /** Set on the featured tier: a live call with Cass, set by email after purchase. */
   consultation?: { minutes: number };
+  /** How long the emailed link works. Unset = the report-token default (365 days). */
+  linkDays?: number;
 };
 
 export type MembershipOffer = ProductBase & {
@@ -396,12 +400,57 @@ export const MEMBERSHIP_PRODUCT: MembershipOffer = {
   href: `/checkout/${MEMBERSHIP_SLUG}`,
 };
 
+/**
+ * Card Blueprint App: a personal web app built from the buyer's birthday.
+ * $69 once, lifetime access. Goes on sale when CARD_APP_ON_SALE is flipped,
+ * after the Pages secret STRIPE_PRICE_CARD_BLUEPRINT_APP holds a $69 price id
+ * on the Card Blueprint Stripe account. The record is in ALL_PRODUCTS either
+ * way, so fulfillment always resolves.
+ */
+export const CARD_APP_ON_SALE = false;
+
+/** "Lifetime": the signed link is valid for 100 years. */
+export const LIFETIME_LINK_DAYS = 36_500;
+
+export const CARD_APP_PRODUCT: InstantReportOffer = {
+  kind: "instant_report",
+  slug: CARD_APP_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_CARD_BLUEPRINT_APP",
+  name: "Card Blueprint App",
+  price: 69,
+  priceLabel: "$69",
+  badge: "App",
+  oneLine:
+    "Your own card app: today's card, this week, your 52-day period, your year, your karma cards, good days and the people in your life.",
+  bestFor:
+    "Anyone who wants to check their cards every day, not read about them once.",
+  deliverable:
+    "A private web app built from your birthday. Open the emailed link on your phone and add it to your home screen. Pay once; it's yours for life and updates every day.",
+  turnaround: "Ready the moment you pay. No call, no wait, no model in the loop.",
+  includes: [
+    "Your card for today, the next six days, and this week's card",
+    "All seven 52-day periods of your year, dated, for your birth card and ruling card",
+    "Long Range, Pluto, Result, and this year's Environment and Displacement",
+    "Your birth card, ruling card, karma cards and Life Spread, in plain words",
+    "Good days for the 12 months ahead, always rolling forward: when your daily card lines up with your key cards",
+    "Compatibility with anyone: both birth cards and both ruling cards, both directions",
+    "Every year of your life, ages 0 to 89, every seat",
+  ],
+  cta: "Get my app — $69",
+  checkoutNote:
+    "One payment, yours for life. No subscription. You enter your birth date on the next page; the app is built the moment payment lands and the link is emailed to you.",
+  reportSlug: CARD_APP_SLUG,
+  linkDays: LIFETIME_LINK_DAYS,
+  href: CARD_APP_PRODUCT_PATH,
+};
+
 export const ALL_PRODUCTS: SiteProduct[] = [
   ...INSTANT_REPORT_PRODUCTS,
   ...READING_OFFERS,
   ...DIGITAL_PRODUCTS,
   DEEP_DIVE_PRODUCT,
   MEMBERSHIP_PRODUCT,
+  CARD_APP_PRODUCT,
 ];
 
 /** Retired 2026-09-20 in favour of the Blueprint Report. The record stays in
@@ -439,11 +488,12 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
-/** Active checkout: public products plus the live reading on the deep-dive slug. */
+/** Active checkout: public products, the live reading on the deep-dive slug, and the app once on sale. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??
-    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined)
+    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
+    (CARD_APP_ON_SALE && slug === CARD_APP_SLUG ? CARD_APP_PRODUCT : undefined)
   );
 }
 
@@ -475,11 +525,17 @@ export function digitalOfferFacts(offer: DigitalDownloadOffer): DigitalOfferFact
 export function instantReportFacts(
   offer: InstantReportOffer | MembershipOffer,
 ): InstantReportFact[] {
+  const app = offer.kind === "instant_report" && offer.reportSlug === CARD_APP_SLUG;
   return [
     { label: "Deliverable", value: offer.deliverable },
     { label: "Input", value: "Your birth date, collected securely at checkout." },
-    { label: "Access", value: "Instant report on the confirmation page, plus an emailed return link." },
-    { label: "Timing", value: "Generated immediately after payment." },
+    {
+      label: "Access",
+      value: app
+        ? "Your app opens on the confirmation page, and its link is emailed to you. The link works for life."
+        : "Instant report on the confirmation page, plus an emailed return link.",
+    },
+    { label: "Timing", value: app ? "Built the moment payment lands." : "Generated immediately after payment." },
     {
       label: "Renewal",
       value:

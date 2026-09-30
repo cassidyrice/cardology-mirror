@@ -24,7 +24,8 @@ import {
   DEEP_DIVE_PRODUCT_NAME,
   ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
-import { cardBibleAny } from "@/lib/card-bible";
+// The 7KB authored source of card-bible watchFor lines, not the 271KB bible (client bundle).
+import CARD_VOICE from "@/scripts/card-bible-voice.json";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
@@ -285,7 +286,7 @@ function BirthCardResultCard({
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
-  const bible = cardBibleAny(result.birthCard);
+  const watchFor = slug ? (CARD_VOICE.watchFor as Record<string, string>)[slug] : undefined;
 
   return (
     <div className="mt-6 flex w-full flex-col items-center gap-3">
@@ -301,9 +302,9 @@ function BirthCardResultCard({
         </div>
       )}
       {!isJoker && <OneLineRead code={result.birthCard} />}
-      {!isJoker && bible?.watchFor && (
+      {!isJoker && watchFor && (
         <p className="mt-4 text-center text-sm leading-relaxed text-brand-ink-soft">
-          {bible.watchFor}
+          {watchFor}
         </p>
       )}
       <nav aria-label="What to do next" className="mt-4 w-full text-left">

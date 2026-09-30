@@ -17,7 +17,7 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
-DEPLOY_COMMIT="c2743621e5cd8b496cb0414a0aaaa9bbc56c9fd8"
+DEPLOY_COMMIT="e0ce8431970d8eb219e03f8d50d4e6db457a0705"
 WORKER_NAME="cardology-unlock"
 WORKER_VERSION="9290cd0e-e2f0-4f6e-ad16-bf23ac169e34"
 WORKER_ROLLBACK="7bcb1504-572f-4a9c-9334-5bd9941bbe9d"
@@ -117,6 +117,18 @@ else
     red "    live     ${og_sha}"
     fail=1
   fi
+fi
+
+# --- Probe 5: /version.txt, stamped by deploy-production.sh (exact commit) ---
+echo "→ probe 5: /version.txt"
+live_commit="$("${CURL[@]}" -f "${SITE_ORIGIN}/version.txt" 2>/dev/null | tr -d '[:space:]' || true)"
+if [[ -z "$live_commit" ]]; then
+  yellow "  NOTE: no /version.txt (deploys before 2026-09-29 lack it); probes 1-3 are only a floor."
+elif [[ "$live_commit" == "$DEPLOY_COMMIT" ]]; then
+  green "  OK: live build is exactly ${DEPLOY_COMMIT:0:7}"
+else
+  red "  FAIL: live build is ${live_commit:0:7}, record is ${DEPLOY_COMMIT:0:7}"
+  fail=1
 fi
 
 # --- Probe 4: live Worker version vs the record (wrangler CLI; no tokens printed) ---

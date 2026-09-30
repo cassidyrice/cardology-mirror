@@ -5,6 +5,7 @@ import type Stripe from "stripe";
 import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
+import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
 import { deliverReading } from "@/lib/reading-fulfill";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
@@ -129,6 +130,8 @@ export async function POST(req: NextRequest) {
     // Every fulfillment branch requires confirmed payment, including delayed methods.
     if (!paymentSatisfied) return NextResponse.json({ received: true });
     if (isOneQuestionSession(session)) {
+      // Terminal = a Stripe retry cannot fix it; only the operator can.
+      let terminal = false;
       try {
         const reading = await deliverReading({
           sessionId: session.id, sessionCreated: session.created,
@@ -138,13 +141,19 @@ export async function POST(req: NextRequest) {
         });
         // Stripe retries storage/delivery failures; the durable reservation prevents
         // a second generation. A stuck generation needs operator reconciliation.
-        if (reading.status === "failed" || reading.delivery === "review") throw new Error("operator review required");
+        if (reading.status === "failed" || reading.delivery === "review") {
+          terminal = true;
+          throw new Error("operator review required");
+        }
         if (reading.status !== "ready" || reading.delivery !== "sent") {
           return NextResponse.json({ error: "fulfillment pending" }, { status: 503 });
         }
         return NextResponse.json({ received: true });
-      } catch {
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "";
+        if (/invalid fulfillment input|predates automatic fulfillment/.test(message)) terminal = true;
         console.error("[webhook] reading requires retry or operator review");
+        let operatorAlerted = false;
         if (process.env.INTAKE_EMAIL) {
           const birthday = birthdateFromCheckoutSession(session);
           const question = questionFromCheckoutSession(session);
@@ -168,10 +177,14 @@ export async function POST(req: NextRequest) {
                   : "Ask the buyer for missing details before using reading.",
               ].join("\n"),
             });
+            operatorAlerted = true;
           } catch {
             console.error("[webhook] review notification not sent; webhook remains retryable");
           }
         }
+        // Retrying a terminal order for 3 days only re-alerts and counts toward
+        // Stripe disabling the endpoint. Stop once a human has been told.
+        if (terminal && operatorAlerted) return NextResponse.json({ received: true, review: true });
         return NextResponse.json({ error: "fulfillment unavailable" }, { status: 503 });
       }
     }
@@ -425,6 +438,7 @@ export async function POST(req: NextRequest) {
             product.reportSlug,
             session.id,
             birthdate,
+            product.linkDays,
           );
           const reportUrl = `${SITE_URL}/blueprint?token=${encodeURIComponent(token)}`;
           // Bundled download: The 90 Spreads PDF ships with the Blueprint.
@@ -437,18 +451,21 @@ export async function POST(req: NextRequest) {
           } catch (e) {
             console.error("[webhook] 90 spreads token mint failed", e);
           }
+          const isApp = product.reportSlug === CARD_APP_SLUG;
           await sendIntakeEmail({
             to: email,
             subject: `Your ${product.name} is ready`,
             text: [
               `Thank you. Your ${product.name} is confirmed.`,
               "",
-              "Your personalized report is ready right now:",
+              isApp ? "Your app is ready right now. Open it on your phone:" : "Your personalized report is ready right now:",
               reportUrl,
               "",
               `My purchases: ${SITE_URL}/my-purchases?session_id=${encodeURIComponent(session.id)}`,
               "",
-              "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
+              isApp
+                ? "Keep this link: the app is yours for life. Add it to your home screen so your card for today is one tap away."
+                : "Keep this link — it re-opens your report for 12 months. Save a PDF to keep it.",
               ...(spreadsLine
                 ? ["", "Your bundled download — every yearly map, ages 0–89:", spreadsLine]
                 : []),
@@ -506,6 +523,10 @@ export async function POST(req: NextRequest) {
       }
       return NextResponse.json({ received: true });
     }
+
+    // Payment Link sales (e.g. the $20 Reading Day link) are fulfilled off-site;
+    // without this they fall through to the voice-reading email below.
+    if (!offerSlug && session.payment_link) return NextResponse.json({ received: true });
 
     // ---- BRANCH: voice reading (existing flow) ----
     const accessDays =

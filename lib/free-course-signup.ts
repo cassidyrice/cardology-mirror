@@ -21,6 +21,10 @@ export function normalizeCourseSignup(input: Record<string, unknown>): CourseSig
   if (name.length < 2 || name.length > 80) {
     throw new Error("Name is required");
   }
+  // Letters only: the name is echoed into an email, so no URLs or markup.
+  if (!/^[\p{L}\p{M}'’ .-]+$/u.test(name)) {
+    throw new Error("Use letters only in your name");
+  }
 
   const email = valueOf(input.email).toLowerCase();
   if (email.length > 254 || !EMAIL_PATTERN.test(email)) {

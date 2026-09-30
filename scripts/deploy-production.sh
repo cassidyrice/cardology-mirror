@@ -94,14 +94,22 @@ echo " Subject: $SUBJECT"
 echo " Dirty:   $DIRTY"
 echo "=========================================="
 
+# --- Tests: nothing ships red ---
+echo "→ bun run test"
+bun run test || die "Tests failed. Fix them before deploying."
+
 # --- Build ---
 if [[ "${SKIP_BUILD:-}" == "1" ]]; then
   yellow "SKIP_BUILD=1 — reusing existing artifact"
+  [[ "$(cat "$ARTIFACT_DIR/version.txt" 2>/dev/null)" == "$COMMIT" ]] \
+    || die "Artifact was not built from ${SHORT}. Run without SKIP_BUILD."
 else
   echo "→ next build"
   bun run build
   echo "→ pages:build (next-on-pages)"
   bun run pages:build
+  # Served at /version.txt so verify-deploy-source.sh can read the live commit.
+  printf '%s\n' "$COMMIT" > "$ARTIFACT_DIR/version.txt"
 fi
 
 if [[ ! -d "$ARTIFACT_DIR" ]]; then
@@ -199,7 +207,7 @@ for video in \
 do
   VIDEO_HEADERS="$(curl -sSI "${SITE_ORIGIN}${video}" || true)"
   VIDEO_CODE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'BEGIN{c="000"} toupper($1) ~ /^HTTP/{c=$2} END{print c}')"
-  VIDEO_TYPE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'BEGIN{IGNORECASE=1} /^content-type:/{print $2; exit}' | tr -d '\r')"
+  VIDEO_TYPE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'tolower($1)=="content-type:"{print $2; exit}' | tr -d '\r')"
   if [[ "$VIDEO_CODE" != "200" || "$VIDEO_TYPE" != video/mp4* ]]; then
     red "Course video FAILED ${video} (HTTP ${VIDEO_CODE}, type ${VIDEO_TYPE:-unknown})"
     smoke_fail=1

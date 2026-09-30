@@ -50,8 +50,9 @@ for(const question of ["", "Should I take the promotion?"]) {
 }
 session.id="cs_test_stale";
 sql.query("INSERT INTO reading_orders(session_id,status,created_at,expires_at) VALUES (?,'writing',?,?)").run(session.id,Date.now()-301_000,Date.now()+86400_000);
+assert.equal((await event("checkout.session.completed")).status,503); // no operator address: keep Stripe retrying
 process.env.INTAKE_EMAIL="operator@example.test";
-assert.equal((await event("checkout.session.completed")).status,503);
+assert.equal((await event("checkout.session.completed")).status,200); // operator told: stop retry loop
 assert.equal(writes,1);
 assert.equal(notifications.at(-1).subject,"Reading fulfillment needs review");
 assert.ok(notifications.at(-1).text.includes("reading 2/17/1991"));
@@ -75,4 +76,8 @@ assert.equal(writes,writesBefore+1);assert.equal(sends,sendsBefore+2);
 assert.deepEqual(notifications.at(-1),failedEmail);
 const delivered=sql.query("SELECT status,reading,delivery,delivery_payload,delivery_started FROM reading_orders WHERE session_id=?").get(session.id) as any;
 assert.deepEqual(delivered,{...pending,delivery:"sent"});
-console.log("Passed: signed unpaid webhook + retrieval denied; delayed payment fulfills; duplicate event does not regenerate/resend; paid success retrieval; checkout question validation and Stripe metadata; API exposes ready text after email failure and webhook retries the stored payload without regeneration. Mock HTTP only.");
+session={id:"cs_test_payment_link",created:100,status:"complete",payment_status:"paid",amount_total:2000,payment_link:"plink_synthetic",customer_details:{email:"walkin@example.test"},metadata:{}};
+const sendsBeforeLink=sends;
+assert.equal((await event("checkout.session.completed")).status,200);
+assert.equal(sends,sendsBeforeLink);
+console.log("Passed: Payment Link sale sends no site email; signed unpaid webhook + retrieval denied; delayed payment fulfills; duplicate event does not regenerate/resend; paid success retrieval; checkout question validation and Stripe metadata; API exposes ready text after email failure and webhook retries the stored payload without regeneration. Mock HTTP only.");

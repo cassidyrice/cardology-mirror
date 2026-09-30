@@ -15,6 +15,7 @@ import {
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
+import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { isJokerBirthdate } from "@/lib/deep-dive";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
@@ -33,6 +34,9 @@ import {
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
+
+// Reports built from the engine: refuse future birthdays and December 31 (the Joker) before payment.
+const DATE_CHECKED_REPORTS = new Set([BLUEPRINT_REPORT_SLUG, CARD_APP_SLUG]);
 
 export const runtime = "edge";
 
@@ -160,13 +164,13 @@ export async function POST(
     );
   }
 
-  if (isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG && formBirthdate > new Date().toISOString().slice(0, 10)) {
+  if (isInstantReport(product) && DATE_CHECKED_REPORTS.has(product.reportSlug) && formBirthdate > new Date().toISOString().slice(0, 10)) {
     if (wantsJson) return NextResponse.json({ error: "need-date" }, { status: 400 });
     return NextResponse.redirect(new URL(`/checkout/${product.slug}?status=need-date`, req.url), 303);
   }
 
-  if (isInstantReport(product) && product.reportSlug === BLUEPRINT_REPORT_SLUG && isJokerBirthdate(formBirthdate)) {
-    if (wantsJson) return NextResponse.json({ error: "unsupported-date", message: "The Blueprint Report does not support December 31. No payment was started." }, { status: 400 });
+  if (isInstantReport(product) && DATE_CHECKED_REPORTS.has(product.reportSlug) && isJokerBirthdate(formBirthdate)) {
+    if (wantsJson) return NextResponse.json({ error: "unsupported-date", message: `The ${product.name} does not support December 31. No payment was started.` }, { status: 400 });
     return NextResponse.redirect(new URL(`/checkout/${product.slug}?status=unsupported-date`, req.url), 303);
   }
 

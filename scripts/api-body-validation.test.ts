@@ -11,7 +11,7 @@ for (const [name, handler] of [["gate",gate],["deepdive",deepdive],["storyarc",s
   test(`${name}: invalid JSON shapes return 400 without throwing`, async () => {
     let index=0;
     for (const body of ["null", "[]", '"text"', "42", '{"email":42,"code":{},"birthdate":42,"date":[],"focus":{}}', "{", "{}"] ) {
-      const req = new NextRequest(`https://example.test/api/${name}`, {method:"POST", headers:{"content-type":"application/json", "cf-connecting-ip":`body-test-${name}-${index++}`}, body});
+      const req = new NextRequest(`https://example.test/api/${name}`, {method:"POST", headers:{"content-type":"application/json", "origin":"https://example.test", "cf-connecting-ip":`body-test-${name}-${index++}`}, body});
       const response = await handler(req);
       expect(response.status).toBe(400);
       expect(typeof (await response.json()).error).toBe("string");

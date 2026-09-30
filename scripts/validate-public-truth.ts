@@ -255,9 +255,10 @@ assert.match(
 );
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
 // live $13 One Question Reading; they must not resurrect the retired report
-// slug or product name. (lib/products.ts still resolves the old slug for
+// slug or product name. The queue is checked too, so a bad queued post fails
+// here before the daily bot publishes it. (lib/products.ts still resolves the old slug for
 // past buyers.)
-for (const file of ["lib/generated-blog-posts.json", "scripts/generate_daily_blog_post.ts"]) {
+for (const file of ["lib/generated-blog-posts.json", "content/daily-blog/definitional-queue.json", "scripts/generate_daily_blog_post.ts"]) {
   const text = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
   assert.doesNotMatch(
     text,
