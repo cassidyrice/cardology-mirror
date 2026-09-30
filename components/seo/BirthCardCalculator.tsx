@@ -15,12 +15,13 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
+import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
 import { CurrentPeriod } from "./CurrentPeriod";
+import { NewsletterSignupForm } from "./NewsletterSignupForm";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
   DEEP_DIVE_PRICE_LABEL,
   DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
   ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
 // The 7KB authored source of card-bible watchFor lines, not the 271KB bible (client bundle).
@@ -124,7 +125,14 @@ export function BirthCardCalculator() {
   return (
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
       <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
-      {birthCard ? <BirthShareHero birthCard={birthCard} /> : <CalculatorPreviewFan />}
+      {reveal && birthCard ? (
+        <BirthShareHero
+          birthCard={birthCard}
+          action={<CalculatorNextStep reveal={reveal} date={date} />}
+        />
+      ) : (
+        <CalculatorPreviewFan />
+      )}
 
       <form
         onSubmit={onSubmit}
@@ -221,6 +229,52 @@ export function BirthdayWorkerAnchor({
   );
 }
 
+/**
+ * Under the card name: the $13 reading first, then the Monday email for anyone
+ * not ready to buy. The birthday is already known, so the button opens the
+ * question page directly (no second birthday field). The Joker has no year to
+ * read, so it gets the email only.
+ */
+function CalculatorNextStep({
+  reveal,
+  date,
+}: {
+  reveal: BirthCardReveal;
+  date: string;
+}) {
+  const code = reveal.result.birthCard;
+  const isJoker = code === "Joker";
+  const label = parseCard(code)?.label ?? code;
+  const slug = birthCardSlug(code);
+  const cardTag = isJoker ? "card-joker" : slug ? `card-${slug}` : null;
+
+  return (
+    <div className="flex w-full flex-col items-center gap-2">
+      {!isJoker && (
+        <>
+          <DeepDiveHostedCheckout
+            birthdate={date || reveal.birthdate}
+            source="birth-card-calculator-result"
+            cardLabel={label}
+            cardSlug={slug ?? undefined}
+            submitLabel={`Ask your question as the ${label} — ${DEEP_DIVE_PRICE_LABEL}`}
+          />
+          <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
+            The {DEEP_DIVE_PRODUCT_NAME}: your question, read from your birth card and this year. In your inbox within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
+          </p>
+        </>
+      )}
+      <NewsletterSignupForm
+        source="calculator-result"
+        compact
+        quietButton={!isJoker}
+        heading={isJoker ? "Your card, every Monday." : "Not ready to ask yet?"}
+        tags={cardTag ? ["calculator-result", cardTag] : ["calculator-result"]}
+      />
+    </div>
+  );
+}
+
 function BirthCardResultCard({
   reveal,
   date,
@@ -291,14 +345,6 @@ function BirthCardResultCard({
           )}
           <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
         </div>
-        {!isJoker && (
-          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
-            Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your birth card and this year, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
-            <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
-              {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
-            </Link>
-          </p>
-        )}
       </nav>
       {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
       {(() => {
@@ -325,7 +371,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free one-line read of the card's pattern, shown before the $13 CTA. */
+/** Free one-line read of the card's pattern, shown under the $13 CTA. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

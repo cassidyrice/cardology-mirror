@@ -283,10 +283,11 @@ test("product page and homepage sell one reading, show a sample, and never previ
   expect(read("app/blueprint/page.tsx")).toContain("<YearBlueprintApp");
 });
 
-test("shared calculator result keeps free links ahead of the $13 reading and does not pitch the Blueprint Report", () => {
-  const resultStart = calculator.indexOf("function BirthCardResultCard");
+test("calculator result leads with the $13 reading under the card name, then the Monday email, and does not pitch the Blueprint Report", () => {
+  const resultStart = calculator.indexOf("function CalculatorNextStep");
   const resultEnd = calculator.indexOf("type Lens");
   const result = calculator.slice(resultStart, resultEnd).replaceAll("Card Blueprints", "");
+  const birthHero = read("components/share/BirthShareHero.tsx");
   expect(result).not.toMatch(/Blueprint|Deep Dive/);
   expect(result).not.toContain("<ReportCheckoutButton");
   expect(result).not.toContain("CONSULT_SLUG");
@@ -298,27 +299,40 @@ test("shared calculator result keeps free links ahead of the $13 reading and doe
   expect(calculator).toContain("date || reveal.birthdate");
   expect(calculator).not.toContain("<DeepDiveCta");
   expect(calculator).not.toContain("What do you want to ask about it?");
-  // The card's own watch-for line is the bridge into the ask.
-  expect(calculator).toContain("bible.watchFor");
+  // The $13 button sits right under the card name (before Share) and opens the
+  // question page with the birthday already known: no product page, no second
+  // birthday field. The Joker has no year to read and gets the email only.
+  expect(calculator).toContain("action={<CalculatorNextStep");
+  expect(birthHero).toContain("action?: ReactNode");
+  expect(birthHero.indexOf("{action ?")).toBeGreaterThan(birthHero.indexOf("{label}"));
+  expect(birthHero.indexOf("{action ?")).toBeLessThan(birthHero.indexOf("<ShareBirthResultButton"));
+  expect(result).toContain("<DeepDiveHostedCheckout");
+  expect(result).toContain("birthdate={date || reveal.birthdate}");
+  expect(result).toContain('source="birth-card-calculator-result"');
+  expect(result).toContain("Ask your question as the ${label} — ${DEEP_DIVE_PRICE_LABEL}");
+  expect(result).toContain("{!isJoker && (");
+  expect(calculator).not.toContain("Optional: the");
+  expect(calculator).not.toContain("href={DEEP_DIVE_PRODUCT_PATH}");
+  // Anyone not ready to buy gets the Monday email right under the button.
+  expect(result.indexOf("<DeepDiveHostedCheckout")).toBeLessThan(
+    result.indexOf("<NewsletterSignupForm"),
+  );
+  expect(result).toContain('source="calculator-result"');
+  // Free reads follow: the card's own watch-for line, then the free links.
+  expect(calculator).toContain("{!isJoker && watchFor && (");
   expect(calculator).toContain("What to do next");
   expect(calculator).toContain("Open your {bc?.label ?? \"birth card\"} meaning");
   expect(calculator).toContain('href="/birth-card-compatibility-calculator#da"');
   expect(calculator).toContain("Compare with someone");
   expect(calculator).not.toContain('role="dialog"');
   expect(calculator).not.toContain("fixed inset");
+  expect(calculator.indexOf("<NewsletterSignupForm")).toBeLessThan(
+    calculator.indexOf("{!isJoker && watchFor && ("),
+  );
   expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
     calculator.indexOf('href="/birth-card-compatibility-calculator#da"'),
   );
-  expect(calculator.indexOf('href="/birth-card-compatibility-calculator#da"')).toBeLessThan(
-    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
-  );
-  expect(calculator.indexOf("`/birth-card/${slug}`")).toBeLessThan(
-    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
-  );
-  expect(calculator.indexOf("bible.watchFor")).toBeLessThan(
-    calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}"),
-  );
-  expect(calculator.indexOf("href={DEEP_DIVE_PRODUCT_PATH}")).toBeLessThan(
+  expect(calculator.indexOf("{!isJoker && watchFor && (")).toBeLessThan(
     calculator.indexOf("<CurrentPeriod"),
   );
   expect(calculator).not.toContain("personal-card-blueprint");
@@ -326,7 +340,6 @@ test("shared calculator result keeps free links ahead of the $13 reading and doe
   expect(calculator).not.toContain("instantReportBySlug");
   expect(calculator).not.toContain("Get My Blueprint");
   expect(calculator).not.toContain("What's inside the Blueprint");
-  expect(calculator).not.toContain("<NewsletterSignupForm");
   // Link-only ShareCard stays out of the funnel; PNG share lives on the hero.
   expect(calculator).not.toMatch(/<ShareCard[\s/>]/);
   expect(calculator).toContain("<BirthShareHero");
