@@ -120,6 +120,8 @@ export default async function CardBlueprintAppPage({
       <h1 className="display mb-3 text-3xl text-brand-ink sm:text-4xl">
         {product.name}
       </h1>
+      <p className="mb-4 text-brand-ink-soft">Your daily cards, your 52-day periods, and your year. $69 once. No subscription.</p>
+      <BuyBlock placement="product-page-top" />
 
       <section id="sample" aria-labelledby="sample-heading" className="mb-10 scroll-mt-4">
         <h2 id="sample-heading" className="type-eyebrow mb-2 !text-brand-bronze">Open the app sample</h2>
@@ -150,6 +152,7 @@ export default async function CardBlueprintAppPage({
 
       <section className="mt-10">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">How it works</h2>
+        <p className="prose-reading mb-3 text-brand-ink-soft">Bring a physical deck of cards. Use your app to find the cards and dates, then lay them out and work with the system yourself.</p>
         <p className="prose-reading text-brand-ink-soft">
           You type your birth date on the next page and pay {product.priceLabel} on Stripe. Your
           app is ready the moment payment goes through: on the page you land on and in your

@@ -407,7 +407,7 @@ export const MEMBERSHIP_PRODUCT: MembershipOffer = {
  * on the Card Blueprint Stripe account. The record is in ALL_PRODUCTS either
  * way, so fulfillment always resolves.
  */
-export const CARD_APP_ON_SALE = false;
+export const CARD_APP_ON_SALE = true;
 
 /** "Lifetime": the signed link is valid for 100 years. */
 export const LIFETIME_LINK_DAYS = 36_500;

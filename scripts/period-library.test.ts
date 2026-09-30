@@ -82,7 +82,5 @@ describe("completed static writing library", () => {
     expect(client).toContain("<CardAppView");
     const route = readFileSync("app/blueprint/page.tsx", "utf8");
     expect(route.indexOf("verifyReportToken")).toBeLessThan(route.indexOf("appReadingLibrary(app)"));
-    const products = readFileSync("lib/products.ts", "utf8");
-    expect(products).toContain("CARD_APP_ON_SALE = false");
   });
 });

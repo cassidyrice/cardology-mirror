@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
+import { CardAppCta } from "@/components/seo/CardAppCta";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
@@ -90,6 +91,7 @@ export default function CompatibilityPage() {
       </section>
 
       <CompatibilityCalculator />
+      <CardAppCta placement="cardology-compatibility-app" connections />
       <p className="prose-reading mb-6 mt-8 text-brand-ink-soft">
         Start with two birth cards, then go sharper with the Life Path. The useful
         question is not only &ldquo;are these cards compatible?&rdquo; It is: where does this

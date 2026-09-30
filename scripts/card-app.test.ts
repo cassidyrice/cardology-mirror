@@ -3,6 +3,8 @@
 // docs/cardology-system.md. The app model is rebuilt from engine primitives, so
 // this is its parity contract.
 import { describe, expect, test } from "bun:test";
+import { createElement } from "react";
+import { AppRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 import { appDateParam, buildCardApp, CARD_APP_SLUG } from "../lib/card-app";
 import { buildConnection } from "../lib/card-app-connection";
@@ -360,10 +362,10 @@ describe("POST /api/card-app/connection", () => {
 });
 
 describe("product page", () => {
-  test("renders one main, one H1, the live sample, and no buy button while off sale", async () => {
+  test("renders one main, one H1, the labeled sample and the configured sale state", async () => {
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { default: Page, metadata } = await import("../app/products/card-blueprint-app/page");
-    const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({}) }));
+    const html = renderToStaticMarkup(createElement(AppRouterContext.Provider, { value: { push() {} } as any }, await Page({ searchParams: Promise.resolve({}) })));
     expect(html.match(/<main[\s>]/g)).toHaveLength(1);
     expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
     expect(html).toContain("Card Blueprint App");
@@ -371,7 +373,6 @@ describe("product page", () => {
     expect(html).toContain("More cards");
     expect(html).toContain('id="sample"');
     expect(html).toContain("These are the sample person");
-    expect(html.indexOf('id="sample"')).toBeLessThan(html.indexOf("Opening soon"));
     expect(html).toContain("/birth-card-calculator");
     expect(html).toContain("/birth-card-compatibility-calculator");
     expect(html).not.toMatch(/personal-card-blueprint|Personal Card Blueprint/);
@@ -380,6 +381,10 @@ describe("product page", () => {
     if (!CARD_APP_ON_SALE) {
       expect(html).toContain("Opening soon");
       expect(metadata.robots).toEqual({ index: false, follow: true });
+    } else {
+      expect(html).toContain("Get my app — $69");
+      expect(html).not.toContain("Opening soon");
+      expect(metadata.robots).toBeUndefined();
     }
   });
 
@@ -402,7 +407,7 @@ describe("product page", () => {
     expect(appDateParam(iso(2))).toBeUndefined();
     expect(appDateParam("not-a-date")).toBeUndefined();
     const tomorrow = buildCardApp("1988-07-14", iso(1));
-    const html = renderToStaticMarkup(await Page({ searchParams: Promise.resolve({ date: iso(1) }) }));
+    const html = renderToStaticMarkup(createElement(AppRouterContext.Provider, { value: { push() {} } as any }, await Page({ searchParams: Promise.resolve({ date: iso(1) }) })));
     expect(html).toContain(tomorrow.todayLabel);
   });
 

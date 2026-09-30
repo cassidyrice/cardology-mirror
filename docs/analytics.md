@@ -34,6 +34,7 @@ codes, or Stripe session tokens.
 | `offer_cta_clicked` | A Blueprint / offer CTA was clicked (calc result, ReadingBridge, etc.) | Browser click |
 | `checkout_started` | Stripe returned a usable Checkout Session URL | Server checkout route |
 | `purchase_completed` | A signed Stripe webhook confirmed paid or no-payment-required completion | Stripe webhook |
+| `app_access_delivered` | App email provider accepted the stored delivery payload | Server webhook; not proof of inbox receipt |
 
 `offer_selected` fires once per offer slug per tab for:
 
@@ -64,7 +65,7 @@ The ordered fields written by `lib/analytics-server.ts` are:
 | `index1` | Traffic channel |
 | `blob1` | Event name |
 | `blob2` | Anonymous tab session ID |
-| `blob3` | Event ID; Stripe webhook events use the Stripe event ID |
+| `blob3` | Event ID; purchase events use `stripe:<checkout session ID>` after the 2026-09-30 cutover |
 | `blob4` | Current path |
 | `blob5` | Landing path |
 | `blob6` | Referrer hostname only |
@@ -151,6 +152,23 @@ Analytics Engine does not support joins and may sample high-volume data. The
 event-ID distinct count prevents Stripe webhook retries from inflating the
 purchase total. Keep the `blob16 = 'main'` filter in production reports so
 preview and QA traffic do not enter the live funnel.
+
+## Revenue launch cutover — 2026-09-30
+
+App invitations on the calculator and two compatibility pages use the existing
+`offer_cta_clicked` event with distinct placements. The app product page uses
+`offer_selected`; these are tab sessions, not distinct people. Historical
+purchase events used event IDs and can count completed and delayed-payment
+events for the same order separately. New purchase IDs identify the checkout
+session instead. Raw event totals remain subject to retries and sampling.
+
+`python3 scripts/revenue-report.py --days 30` is the monetary authority: it
+checks the CLI account, paginates charges, refunds and session lookups, counts
+only positive paid charges, removes sales tax and reports charge fees. Pass
+`--exclude-session` for owner test purchases, or configure `REVENUE_OWNER_EMAILS`.
+Unattributed account payments and unknown operating costs remain separate.
+The report counts cash in the window; it does not prove a repeatable monthly
+income or distinguish unmarked owner tests automatically.
 
 ## Metric cutover — 2026-08-01
 

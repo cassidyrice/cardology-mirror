@@ -29,6 +29,7 @@ export const CLIENT_FUNNEL_EVENTS = [
 export const SERVER_FUNNEL_EVENTS = [
   "checkout_started",
   "purchase_completed",
+  "app_access_delivered",
 ] as const;
 
 export const FUNNEL_EVENTS = [

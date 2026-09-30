@@ -17,6 +17,7 @@ import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
 import { CurrentPeriod } from "./CurrentPeriod";
+import { CardAppCta } from "./CardAppCta";
 import { NewsletterSignupForm } from "./NewsletterSignupForm";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
@@ -252,6 +253,7 @@ function CalculatorNextStep({
     <div className="flex w-full flex-col items-center gap-2">
       {!isJoker && (
         <>
+          <CardAppCta placement="birth-card-calculator-app" birthdate={date || reveal.birthdate} />
           <DeepDiveHostedCheckout
             birthdate={date || reveal.birthdate}
             source="birth-card-calculator-result"

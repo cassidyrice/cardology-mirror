@@ -8,6 +8,7 @@ import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
 import { deliverReading } from "@/lib/reading-fulfill";
+import { deliverApp } from "@/lib/app-delivery";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
   ALL_90_SPREADS_FILE,
@@ -118,7 +119,7 @@ export async function POST(req: NextRequest) {
         name: "purchase_completed",
         source: "server",
         ...funnelContextFromMetadata(session.metadata),
-        eventId: `stripe:${event.id}`,
+        eventId: `stripe:${session.id}`,
         path: "/api/checkout/webhook",
         offerSlug,
         outcome: "payment-confirmed",
@@ -129,6 +130,37 @@ export async function POST(req: NextRequest) {
 
     // Every fulfillment branch requires confirmed payment, including delayed methods.
     if (!paymentSatisfied) return NextResponse.json({ received: true });
+    if (product && isInstantReport(product) && product.reportSlug === CARD_APP_SLUG) {
+      let review = false;
+      try {
+        const delivery = await deliverApp({ sessionId: session.id, email,
+          birthdate: birthdateFromCheckoutSession(session) });
+        if (delivery === "sent") {
+          recordFunnelEvent({ name: "app_access_delivered", source: "server",
+            ...funnelContextFromMetadata(session.metadata), eventId: `app:${session.id}`,
+            path: "/api/checkout/webhook", offerSlug, outcome: "email-accepted" });
+          return NextResponse.json({ received: true });
+        }
+        review = true;
+      } catch (error) {
+        review = error instanceof Error && error.message === "invalid app delivery input";
+        console.error("[webhook] app delivery requires retry or review");
+      }
+      if (process.env.INTAKE_EMAIL) {
+        try {
+          await sendIntakeEmail({ to: process.env.INTAKE_EMAIL,
+            subject: "Card Blueprint App delivery needs review",
+            text: [`Stripe session: ${session.id}`,
+              "ACTION: inspect app_deliveries and provider history. Recover access from My purchases.",
+              "Retry the stored payload only after reconciling provider acceptance; never issue duplicate deliveries."].join("\n"),
+            idempotencyKey: `card-app-review/${session.id}` });
+          if (review) return NextResponse.json({ received: true, review: true });
+        } catch {
+          console.error("[webhook] app review notification not sent");
+        }
+      }
+      return NextResponse.json({ error: "app fulfillment pending" }, { status: 503 });
+    }
     if (isOneQuestionSession(session)) {
       // Terminal = a Stripe retry cannot fix it; only the operator can.
       let terminal = false;
