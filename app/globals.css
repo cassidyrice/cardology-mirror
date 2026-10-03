@@ -626,7 +626,7 @@ body {
 .paper-shell textarea,
 .paper-shell select {
   border-color: rgba(20, 17, 13, 0.18) !important;
-  background: rgba(244, 240, 231, 0.9) !important;
+  background: var(--ivory) !important;
   color: var(--ink) !important;
 }
 

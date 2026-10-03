@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
+    <div className="min-h-dvh bg-brand-paper">
     <main
       id="main-content"
       tabIndex={-1}
@@ -37,5 +38,6 @@ export default function NotFound() {
         </li>
       </ul>
     </main>
+    </div>
   );
 }

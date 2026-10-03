@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
+import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { SITE_NAME } from "@/lib/site";
 import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
@@ -16,13 +16,13 @@ export function SiteHeader() {
         Skip to content
       </a>
       <header className="relative z-10 border-b border-brand-line bg-brand-paper">
-        <div className="mx-auto flex w-full max-w-6xl flex-nowrap items-center gap-2 px-3 py-4 sm:gap-4 sm:px-8 lg:px-10">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-2 px-3 py-4 sm:gap-4 sm:px-8 lg:px-10">
           <Link href="/" className="min-w-0 shrink text-brand-ink max-[360px]:[&_.brand-logo-wordmark]:text-[16px] max-[360px]:[&_.brand-logo-mark]:w-6" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
           </Link>
           <nav
             aria-label="Primary"
-            className="ml-auto hidden items-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft lg:flex lg:gap-5"
+            className="ml-auto hidden items-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft xl:flex xl:gap-5"
           >
             {PRIMARY_NAV.map((link) =>
               link.href === DEEP_DIVE_PRODUCT_PATH ? (
@@ -42,7 +42,7 @@ export function SiteHeader() {
               Open app sample
             </Link>
           </nav>
-          <details className="relative ml-auto shrink-0 lg:ml-0 lg:hidden">
+          <details className="relative ml-auto shrink-0 xl:ml-0 xl:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
@@ -76,6 +76,9 @@ export function SiteHeader() {
               </ul>
             </nav>
           </details>
+          <Link href={`/checkout/${CARD_APP_SLUG}`} className="ink-button small-button shrink-0 whitespace-nowrap" aria-label="Buy Card Blueprint App">
+            Buy app
+          </Link>
           <a
             href="https://www.tiktok.com/@52xseven"
             target="_blank"
