@@ -41,7 +41,6 @@ import { famousForCard } from "@/lib/famous-birthdays";
 import { readingNotesFor } from "@/lib/card-reading-notes";
 import { CARD_MEANING_PAGES_UPDATED } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
-import { TattooBlock } from "@/components/seo/TattooBlock";
 import { TableScroll } from "@/components/seo/TableScroll";
 
 const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
@@ -281,7 +280,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           The pip field of the {card.label}, on skin. No card rectangle, no corner index.
           If you ink this card, ink the layout a real deck uses — then check it is actually yours.
         </p>
-        <TattooBlock slug={card.slug} label={card.label} />
         <p className="mt-3">
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             Find your birth card free
@@ -1074,7 +1072,7 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
     { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on the relationship between both people's birth cards, ruling cards, and timing. Use the compatibility calculator to compare ${card.label} with another card.` },
-    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the pip reference on this page, or the full 52 on the playing-card tattoo meaning hub.` },
+    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the full 52 pip references on the playing-card tattoo meaning hub.` },
   ];
 }
 
