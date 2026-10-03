@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-10-03** (deployed `main` @ `fe00b91` — Give every public header a direct app checkout link; previous record `04ec8ec`)
+**Last verified: 2026-10-03** (deployed `main` @ `7a59ace` — Remove tattoo images from birth-card pages; previous record `fe00b91`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,7 +16,7 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `fe00b91de7ced8dc27caf578d77e7fe46383fcd5` |
+| **Deployed commit** | `7a59acef3f56b826b054fde1245447ca316c1e57` |
 | **Worker** | `cardology-unlock` |
 | **Worker version** | `b00af6b4-5851-4907-8170-c4b7833bb358` |
 | **Worker rollback** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
