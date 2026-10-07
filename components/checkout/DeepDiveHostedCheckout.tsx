@@ -27,6 +27,7 @@ export function DeepDiveHostedCheckout({
   cardLabel,
   cardSlug,
   compact = false,
+  secondary = false,
   submitLabel,
 }: {
   birthdate: string;
@@ -34,6 +35,8 @@ export function DeepDiveHostedCheckout({
   cardLabel?: string;
   cardSlug?: string;
   compact?: boolean;
+  /** Outline button, for spots where a bigger offer sits right above (calculator result). */
+  secondary?: boolean;
   submitLabel?: string;
 }) {
   const pendingRef = useRef(false);
@@ -71,7 +74,7 @@ export function DeepDiveHostedCheckout({
         className={
           compact
             ? `paper-button small-button text-center${pending ? " cursor-wait opacity-70" : ""}`
-            : `accent-button large-button w-full text-center${pending ? " cursor-wait opacity-70" : ""}`
+            : `${secondary ? "paper-button" : "accent-button"} large-button w-full text-center${pending ? " cursor-wait opacity-70" : ""}`
         }
       >
         {pending

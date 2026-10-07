@@ -67,6 +67,7 @@ export const MARKETING_PATHS = [
   // who already have the link. It is omitted from the main sitemap so it does
   // not compete with the $13 One Question Reading.
   "/products/one-question-reading",
+  "/products/year-ahead",
   "/free-course",
   "/what-is-cardology",
   "/cardology-books",

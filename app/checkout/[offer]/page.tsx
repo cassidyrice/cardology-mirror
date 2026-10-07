@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { CheckoutContinueForm } from "@/components/checkout/CheckoutContinueForm";
 import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
 import { CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { yearAheadPriceId } from "@/lib/year-ahead";
 import { CheckoutShell } from "@/components/checkout/CheckoutShell";
 import { Kicker } from "@/components/ui";
 import {
@@ -23,6 +24,7 @@ import {
   isDigitalDownload,
   isInstantReport,
   isMembership,
+  isYearAhead,
 } from "@/lib/products";
 
 export const dynamic = "force-dynamic";
@@ -55,7 +57,10 @@ export default async function CheckoutReviewPage({
   const isReport = isInstantReport(product) || isMembership(product);
   const isApp = isInstantReport(product) && product.reportSlug === CARD_APP_SLUG;
   const isReading = isDeepDive(product);
-  const unavailable = isDigital && !product.available;
+  const isYear = isYearAhead(product);
+  // Your Year Ahead fails closed until its Stripe price secret exists.
+  const yearClosed = isYear && !yearAheadPriceId();
+  const unavailable = (isDigital && !product.available) || yearClosed;
   const facts: (DigitalOfferFact | InstantReportFact)[] =
     isReading
       ? [
@@ -110,7 +115,9 @@ export default async function CheckoutReviewPage({
           </h2>
           <p className="mt-2 max-w-[42rem] text-sm leading-relaxed text-brand-ink-soft">
             {unavailable
-              ? "No checkout session was created. Secure download fulfillment must be live before sales open."
+              ? yearClosed
+                ? "No checkout session was created and nothing was charged. Checkout for this one opens soon."
+                : "No checkout session was created. Secure download fulfillment must be live before sales open."
               : status === "unsupported-date"
                 ? "December 31 is not supported by this report. No payment was started."
               : status === "need-date"
@@ -162,13 +169,15 @@ export default async function CheckoutReviewPage({
             <>
               <p>
                 Stripe collects payment and the birth date your{" "}
-                {isApp ? "app" : "Blueprint"} should be built from. If you came
+                {isApp ? "app" : isYear ? "year" : "Blueprint"} should be built from. If you came
                 from the calculator, that date is kept in this browser tab —
                 never in the address bar.
               </p>
               <p>
                 {isApp
                   ? "After payment, your app opens on the confirmation page, and its link is emailed to you."
+                  : isYear
+                  ? "After payment, your year opens on the confirmation page, and its link is emailed to you. It works for 12 months."
                   : "After payment, the written report opens immediately on the confirmation page, and a return link is emailed to you."}
               </p>
             </>

@@ -78,6 +78,7 @@ const OFFER_SLUGS = new Set([
   "deep-dive",
   "karma-reading",
   "card-blueprint-app",
+  "year-ahead",
   // Historical purchases can still emit completion events for retired offers.
   "quick-question",
   "complete-reading",

@@ -11,6 +11,17 @@ import {
   CONSULT_SLUG,
 } from "@/lib/blueprint-report";
 import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
+import {
+  YEAR_AHEAD_CTA_LABEL,
+  YEAR_AHEAD_LINK_DAYS,
+  YEAR_AHEAD_ON_SALE,
+  YEAR_AHEAD_PRICE,
+  YEAR_AHEAD_PRICE_LABEL,
+  YEAR_AHEAD_PRODUCT_NAME,
+  YEAR_AHEAD_PRODUCT_PATH,
+  YEAR_AHEAD_REPORT_SLUG,
+  YEAR_AHEAD_SLUG,
+} from "@/lib/year-ahead";
 
 export type ProductKind =
   | "voice_reading"
@@ -32,7 +43,8 @@ export type StripePriceEnv =
   | "STRIPE_PRICE_MEMBERSHIP"
   | "STRIPE_PRICE_BLUEPRINT_REPORT"
   | "STRIPE_PRICE_BLUEPRINT_REPORT_CONSULT"
-  | "STRIPE_PRICE_CARD_BLUEPRINT_APP";
+  | "STRIPE_PRICE_CARD_BLUEPRINT_APP"
+  | "STRIPE_PRICE_YEAR_AHEAD";
 
 type ProductBase = {
   slug: string;
@@ -444,6 +456,43 @@ export const CARD_APP_PRODUCT: InstantReportOffer = {
   href: CARD_APP_PRODUCT_PATH,
 };
 
+/**
+ * Your Year Ahead: the buyer's current card year (birthday to birthday) from the
+ * deterministic year engine. $19 once. Price id lives in the Pages secret
+ * STRIPE_PRICE_YEAR_AHEAD; unset = the review page shows checkout closed.
+ * Record stays in ALL_PRODUCTS either way so fulfillment always resolves.
+ */
+export const YEAR_AHEAD_PRODUCT: InstantReportOffer = {
+  kind: "instant_report",
+  slug: YEAR_AHEAD_SLUG,
+  stripePriceEnv: "STRIPE_PRICE_YEAR_AHEAD",
+  name: YEAR_AHEAD_PRODUCT_NAME,
+  price: YEAR_AHEAD_PRICE,
+  priceLabel: YEAR_AHEAD_PRICE_LABEL,
+  badge: "Your year",
+  oneLine:
+    "Your card year, birthday to birthday: the Long Range card, the Pluto card and its Result, and all seven 52-day periods, dated. Read from your birth card.",
+  bestFor:
+    "Anyone who just found their card and wants to know what this year of it looks like, in order, with dates.",
+  deliverable:
+    "A personal year for your birth card, opened on the confirmation page the moment you pay. The link is emailed and works for 12 months.",
+  turnaround: "Ready the moment you pay. No call, no wait, no model in the loop.",
+  includes: [
+    "Your birth card, light and shadow, in plain words",
+    "This year's Long Range card and where you are in its seven-year cycle",
+    "This year's Pluto card, what the year asks, and its Result, what it pays",
+    "All seven 52-day periods of your card year, dated, with the card for each",
+    "The period you are in right now, and the one coming next",
+    "This year's Environment and Displacement cards",
+  ],
+  cta: YEAR_AHEAD_CTA_LABEL,
+  checkoutNote:
+    "One payment. No subscription. You confirm your birth date on the next page; your year is built the moment payment lands and the link is emailed to you.",
+  reportSlug: YEAR_AHEAD_REPORT_SLUG,
+  linkDays: YEAR_AHEAD_LINK_DAYS,
+  href: YEAR_AHEAD_PRODUCT_PATH,
+};
+
 export const ALL_PRODUCTS: SiteProduct[] = [
   ...INSTANT_REPORT_PRODUCTS,
   ...READING_OFFERS,
@@ -451,6 +500,7 @@ export const ALL_PRODUCTS: SiteProduct[] = [
   DEEP_DIVE_PRODUCT,
   MEMBERSHIP_PRODUCT,
   CARD_APP_PRODUCT,
+  YEAR_AHEAD_PRODUCT,
 ];
 
 /** Retired 2026-09-20 in favour of the Blueprint Report. The record stays in
@@ -488,17 +538,22 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
-/** Active checkout: public products, the live reading on the deep-dive slug, and the app once on sale. */
+/** Active checkout: public products, the live reading on the deep-dive slug, the app once on sale, and Your Year Ahead. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
   return (
     publicProductBySlug(slug) ??
     (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
-    (CARD_APP_ON_SALE && slug === CARD_APP_SLUG ? CARD_APP_PRODUCT : undefined)
+    (CARD_APP_ON_SALE && slug === CARD_APP_SLUG ? CARD_APP_PRODUCT : undefined) ??
+    (YEAR_AHEAD_ON_SALE && slug === YEAR_AHEAD_SLUG ? YEAR_AHEAD_PRODUCT : undefined)
   );
 }
 
 export function isDeepDive(product: { slug: string } | null | undefined): boolean {
   return product?.slug === DEEP_DIVE_SLUG;
+}
+
+export function isYearAhead(product: { slug: string } | null | undefined): boolean {
+  return product?.slug === YEAR_AHEAD_SLUG;
 }
 
 export function digitalBySlug(slug: string): DigitalDownloadOffer | undefined {
@@ -526,6 +581,7 @@ export function instantReportFacts(
   offer: InstantReportOffer | MembershipOffer,
 ): InstantReportFact[] {
   const app = offer.kind === "instant_report" && offer.reportSlug === CARD_APP_SLUG;
+  const year = offer.kind === "instant_report" && offer.reportSlug === YEAR_AHEAD_REPORT_SLUG;
   return [
     { label: "Deliverable", value: offer.deliverable },
     { label: "Input", value: "Your birth date, collected securely at checkout." },
@@ -533,7 +589,9 @@ export function instantReportFacts(
       label: "Access",
       value: app
         ? "Your app opens on the confirmation page, and its link is emailed to you. The link works for life."
-        : "Instant report on the confirmation page, plus an emailed return link.",
+        : year
+          ? "Your year opens on the confirmation page, and its link is emailed to you. The link works for 12 months."
+          : "Instant report on the confirmation page, plus an emailed return link.",
     },
     { label: "Timing", value: app ? "Built the moment payment lands." : "Generated immediately after payment." },
     {

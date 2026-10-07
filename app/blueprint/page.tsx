@@ -17,6 +17,7 @@ import { redirect } from "next/navigation";
 import { BLUEPRINT_REPORT_SLUG, BLUEPRINT_REPORT_VIEW_PATH } from "@/lib/blueprint-report";
 import { appDateParam, buildCardApp, CARD_APP_SLUG } from "@/lib/card-app";
 import { verifyReportToken } from "@/lib/report-token";
+import { YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 import { buildYearBlueprint } from "@/lib/year-blueprint";
 
 export const dynamic = "force-dynamic";
@@ -98,7 +99,8 @@ export default async function BlueprintPage({
   }
 
   // The 52xSeven Blueprint (retired from sale 2026-09-13) still renders for past buyers: a phone-shaped year app.
-  if (payload.slug === FIFTY_TWO_BY_SEVEN_REPORT_SLUG) {
+  // Your Year Ahead ($19) renders the same year model for its buyers.
+  if (payload.slug === FIFTY_TWO_BY_SEVEN_REPORT_SLUG || payload.slug === YEAR_AHEAD_REPORT_SLUG) {
     let year = null;
     let yearError = "";
     try {

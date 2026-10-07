@@ -6,6 +6,7 @@ import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
 import { deliverReading } from "@/lib/reading-fulfill";
 import { deliverApp } from "@/lib/app-delivery";
@@ -484,13 +485,20 @@ export async function POST(req: NextRequest) {
             console.error("[webhook] 90 spreads token mint failed", e);
           }
           const isApp = product.reportSlug === CARD_APP_SLUG;
+          const isYear = product.reportSlug === YEAR_AHEAD_REPORT_SLUG;
+          // "Your Year Ahead" already starts with "Your".
+          const yourName = /^your\b/i.test(product.name) ? product.name : `Your ${product.name}`;
           await sendIntakeEmail({
             to: email,
-            subject: `Your ${product.name} is ready`,
+            subject: `${yourName} is ready`,
             text: [
-              `Thank you. Your ${product.name} is confirmed.`,
+              `Thank you. ${yourName} is confirmed.`,
               "",
-              isApp ? "Your app is ready right now. Open it on your phone:" : "Your personalized report is ready right now:",
+              isApp
+                ? "Your app is ready right now. Open it on your phone:"
+                : isYear
+                  ? "Your year is ready right now, built from your birth date. Open it on your phone:"
+                  : "Your personalized report is ready right now:",
               reportUrl,
               "",
               `My purchases: ${SITE_URL}/my-purchases?session_id=${encodeURIComponent(session.id)}`,

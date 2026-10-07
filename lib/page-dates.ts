@@ -19,6 +19,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/birth-card-compatibility-calculator": "2026-09-22",
   "/cardology-compatibility": "2026-09-22",
   "/products/one-question-reading": "2026-09-13",
+  "/products/year-ahead": "2026-10-07",
   "/free-course": "2026-08-07",
   "/what-is-cardology": "2026-09-22",
   "/cardology-books": "2026-09-15",

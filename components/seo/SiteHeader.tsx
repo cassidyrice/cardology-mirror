@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 import { SITE_NAME } from "@/lib/site";
 import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
@@ -76,9 +76,6 @@ export function SiteHeader() {
               </ul>
             </nav>
           </details>
-          <Link href={`/checkout/${CARD_APP_SLUG}`} className="ink-button small-button shrink-0 whitespace-nowrap" aria-label="Buy Card Blueprint App">
-            Buy app
-          </Link>
           <a
             href="https://www.tiktok.com/@52xseven"
             target="_blank"

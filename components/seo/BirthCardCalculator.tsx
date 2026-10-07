@@ -19,6 +19,8 @@ import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedChec
 import { CurrentPeriod } from "./CurrentPeriod";
 import { CardAppCta } from "./CardAppCta";
 import { NewsletterSignupForm } from "./NewsletterSignupForm";
+import { YearAheadResultOffer } from "./YearAheadCta";
+import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
   DEEP_DIVE_PRICE_LABEL,
@@ -231,10 +233,10 @@ export function BirthdayWorkerAnchor({
 }
 
 /**
- * Under the card name: the $13 reading first, then the Monday email for anyone
- * not ready to buy. The birthday is already known, so the button opens the
- * question page directly (no second birthday field). The Joker has no year to
- * read, so it gets the email only.
+ * Under the card name: "Your year ahead as a {card}" ($19) first, then the $13
+ * reading as the secondary option, then the free email preview for anyone not
+ * ready to buy. The birthday is already known, so both buttons skip a second
+ * birthday field. The Joker has no year to read, so it gets the email only.
  */
 function CalculatorNextStep({
   reveal,
@@ -256,25 +258,34 @@ function CalculatorNextStep({
       </a>
       {!isJoker && (
         <>
-          <CardAppCta placement="birth-card-calculator-app" birthdate={date || reveal.birthdate} />
+          <YearAheadResultOffer
+            cardLabel={label}
+            birthdate={date || reveal.birthdate}
+            placement="birth-card-calculator-result"
+          />
+          <p className="type-eyebrow mt-2 text-center">Or one question</p>
           <DeepDiveHostedCheckout
             birthdate={date || reveal.birthdate}
             source="birth-card-calculator-result"
             cardLabel={label}
             cardSlug={slug ?? undefined}
+            secondary={YEAR_AHEAD_ON_SALE}
             submitLabel={`Ask your question as the ${label} — ${DEEP_DIVE_PRICE_LABEL}`}
           />
           <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
             The {DEEP_DIVE_PRODUCT_NAME}: your question, read from your birth card and this year. In your inbox within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
           </p>
+          <CardAppCta placement="birth-card-calculator-app" birthdate={date || reveal.birthdate} />
         </>
       )}
       <NewsletterSignupForm
         source="calculator-result"
         compact
         quietButton={!isJoker}
-        heading={isJoker ? "Your card, every Monday." : "Not ready to ask yet?"}
-        tags={cardTag ? ["calculator-result", cardTag] : ["calculator-result"]}
+        heading={isJoker ? "Your card, every Monday." : "Get a free preview by email"}
+        body={isJoker ? undefined : `A short preview of the year ahead for the ${label}, then your card every Monday.`}
+        buttonLabel={isJoker ? undefined : "Send my free preview"}
+        tags={cardTag ? (isJoker ? ["calculator-result", cardTag] : ["calculator-result", YEAR_AHEAD_PREVIEW_TAG, cardTag]) : ["calculator-result"]}
       />
     </div>
   );

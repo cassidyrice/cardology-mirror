@@ -93,6 +93,11 @@ export function priceValidUntil(): string {
 export const OFFER_VALID_FROM =
   PAGE_UPDATED_DATES["/products/one-question-reading"];
 
+/** Offers that launched later than the One Question Reading start on their own launch day. */
+const OFFER_VALID_FROM_BY_SLUG: Record<string, string> = {
+  "year-ahead": PAGE_UPDATED_DATES["/products/year-ahead"],
+};
+
 export function buildProductJsonLd(product: ActiveProduct) {
   const path = productCanonicalPath(product);
   const url = `${SITE_URL}${path}`;
@@ -141,7 +146,7 @@ export function buildProductJsonLd(product: ActiveProduct) {
       url,
       price: product.price.toFixed(2),
       priceCurrency: "USD",
-      validFrom: OFFER_VALID_FROM,
+      validFrom: OFFER_VALID_FROM_BY_SLUG[product.slug] ?? OFFER_VALID_FROM,
       priceValidUntil: priceValidUntil(),
       availability: available
         ? "https://schema.org/InStock"

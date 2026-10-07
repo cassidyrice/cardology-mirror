@@ -25,6 +25,8 @@ import {
   isInstantReport,
   isVoiceReading,
   isDeepDive,
+  CARD_APP_ON_SALE,
+  CARD_APP_PRODUCT,
   type SiteProduct,
 } from "@/lib/products";
 import { mintReportToken } from "@/lib/report-token";
@@ -32,7 +34,8 @@ import { mintDownloadToken } from "@/lib/download-token";
 import { ALL_90_SPREADS_FILE, isJokerBirthdate } from "@/lib/deep-dive";
 import { getStripe } from "@/lib/stripe";
 import { birthdateFromCheckoutSession } from "@/lib/birthdate";
-import { CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { YEAR_AHEAD_PRODUCT_NAME, YEAR_AHEAD_PRODUCT_PATH, YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 
 export const dynamic = "force-dynamic";
 export const runtime = "edge";
@@ -98,6 +101,9 @@ export default async function CheckoutSuccessPage({
   const voice = product && isVoiceReading(product);
   const instantReport = product && isInstantReport(product);
   const appPurchase = Boolean(product && isInstantReport(product) && product.reportSlug === CARD_APP_SLUG);
+  const yearAheadPurchase = Boolean(
+    product && isInstantReport(product) && product.reportSlug === YEAR_AHEAD_REPORT_SLUG,
+  );
 
   // Instant report: birth date from our review picker (session metadata)
   // or an older Stripe custom field. Then mint the report token.
@@ -116,6 +122,18 @@ export default async function CheckoutSuccessPage({
       } catch (e) {
         console.error("[checkout/success] report token mint failed", e);
       }
+    }
+  }
+
+  // Your Year Ahead: build the year so it renders right here, under the same
+  // link the webhook emails. Engine failure falls back to the link alone.
+  let yearAheadData: YearBlueprint | null = null;
+  if (yearAheadPurchase && reportToken) {
+    try {
+      yearAheadData = await buildYearBlueprint(birthdateFromCheckoutSession(session2));
+    } catch (e) {
+      console.error("[checkout/success] year-ahead build failed", e);
+      yearAheadData = null;
     }
   }
 
@@ -185,12 +203,18 @@ export default async function CheckoutSuccessPage({
       crumb={[
         { label: "Home", href: "/" },
         {
-          label: voice ? "Legacy order support" : DEEP_DIVE_PRODUCT_NAME,
+          label: voice
+            ? "Legacy order support"
+            : yearAheadPurchase
+              ? YEAR_AHEAD_PRODUCT_NAME
+              : DEEP_DIVE_PRODUCT_NAME,
           href: digital
             ? "/products/analog-algorithm"
             : voice
               ? "/contact"
-              : DEEP_DIVE_PRODUCT_PATH,
+              : yearAheadPurchase
+                ? YEAR_AHEAD_PRODUCT_PATH
+                : DEEP_DIVE_PRODUCT_PATH,
         },
         {
           label: "Purchase status",
@@ -214,7 +238,9 @@ export default async function CheckoutSuccessPage({
             : confirmed && instantReport
               ? appPurchase
                 ? "Payment confirmed. Your app is ready."
-                : "Payment confirmed. Your Blueprint is ready."
+                : yearAheadPurchase
+                  ? "Payment confirmed. Your year is ready."
+                  : "Payment confirmed. Your Blueprint is ready."
               : confirmed && voice
                 ? "Payment confirmed. Your access is being activated."
                 : "We could not confirm this purchase yet."}
@@ -232,8 +258,10 @@ export default async function CheckoutSuccessPage({
               ? reportToken
                 ? appPurchase
                   ? `"${product!.name}" — ${product!.priceLabel}. Your app is built and ready to open. Its link was also emailed to you.`
+                  : yearAheadPurchase
+                  ? `"${product!.name}" — ${product!.priceLabel}. Your card year is below: the Long Range card, Pluto and its Result, and all seven 52-day periods, dated. The link was also emailed to you and works for 12 months.`
                   : `"${product!.name}" — ${product!.priceLabel}. Your personalized report is generated and ready to read. A return link was also emailed to you.`
-                : `Payment is confirmed, but we could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we'll ${appPurchase ? "build your app" : "finish your Blueprint"}.`
+                : `Payment is confirmed, but we could not read a birth date from this checkout. Reply to your receipt email with your birth date (YYYY-MM-DD) and we'll ${appPurchase ? "build your app" : yearAheadPurchase ? "unlock your year" : "finish your Blueprint"}.`
               : confirmed && voice
                 ? activationInstructions(product!)
                 : "No paid access was verified. Return to the Blueprint page or contact support so we can verify the payment."}
@@ -256,6 +284,7 @@ export default async function CheckoutSuccessPage({
             <>
               <QuestionFulfillment question={question} email={customerEmail} />
               <OneQuestionReadingLive sessionId={sessionId} email={customerEmail} />
+              <AppUpsell />
             </>
           ) : deepDive ? (
             <YearFulfillment
@@ -265,6 +294,18 @@ export default async function CheckoutSuccessPage({
               extra={yearExtra}
               email={customerEmail}
             />
+          ) : yearAheadPurchase && reportToken ? (
+            <>
+              <YearFulfillment
+                birthday={birthdateFromCheckoutSession(session2)}
+                token={reportToken}
+                year={yearAheadData}
+                extra=""
+                email={customerEmail}
+                productName={YEAR_AHEAD_PRODUCT_NAME}
+              />
+              <AppUpsell />
+            </>
           ) : digital ? (
             <DigitalFulfillment
               product={product!}
@@ -320,7 +361,7 @@ export default async function CheckoutSuccessPage({
             : digital
             ? "If your download link doesn't work, reply to your receipt email or"
             : instantReport
-              ? `If your ${appPurchase ? "app" : "Blueprint"} link doesn't work or the birth date is wrong, reply to your receipt email or`
+              ? `If your ${appPurchase ? "app" : yearAheadPurchase ? "year" : "Blueprint"} link doesn't work or the birth date is wrong, reply to your receipt email or`
               : "If the line doesn&rsquo;t recognize your number or a call drops, reply to your receipt email or"}{" "}
           <Link
             href="/contact"
@@ -399,12 +440,15 @@ function YearFulfillment({
   year,
   extra,
   email,
+  productName,
 }: {
   birthday: string;
   token: string;
   year: YearBlueprint | null;
   extra: string;
   email: string;
+  /** Past 52xSeven buyers keep their name; Your Year Ahead buyers see theirs. */
+  productName?: string;
 }) {
   const yearHref = token ? `/blueprint?token=${encodeURIComponent(token)}` : "";
   return (
@@ -412,10 +456,12 @@ function YearFulfillment({
       <Kicker className="mb-4">Your year</Kicker>
       {yearHref ? (
         <>
-          <DeepDiveDeliveredBeacon placement="checkout-success" />
+          {!productName ? (
+            <DeepDiveDeliveredBeacon placement="checkout-success" />
+          ) : null}
           <h2 className="type-h2 text-brand-ink">It&rsquo;s unlocked.</h2>
           <p className="mx-auto mt-2 max-w-[32em] text-sm leading-relaxed text-brand-ink-soft">
-            Your 52xSeven Blueprint was built from the birth date you entered at
+            {productName ?? <>Your 52xSeven Blueprint</>} was built from the birth date you entered at
             checkout. Open it full-screen and save it to your phone — the same
             sign-in link is in your email.
           </p>
@@ -619,5 +665,28 @@ function ReportFulfillment({
         {spreadsHref ? " The 90 Spreads link is good for 30 days; a backup copy is in your email." : ""}
       </p>
     </div>
+  );
+}
+
+/** After a $13 reading or the $19 year: the $69 app as the next step, never in the nav. */
+function AppUpsell() {
+  if (!CARD_APP_ON_SALE) return null;
+  return (
+    <aside
+      className="mx-auto mt-10 max-w-[32em] border border-brand-line bg-brand-ivory p-5 text-center"
+      aria-label="The Card Blueprint App"
+    >
+      <Kicker className="mb-2">Want it every day?</Kicker>
+      <p className="text-sm leading-relaxed text-brand-ink-soft">
+        The {CARD_APP_PRODUCT.name} keeps your cards open on your phone: today&rsquo;s
+        card, the 52-day period you are in, good days ahead, and the people in your
+        life. {CARD_APP_PRODUCT.priceLabel} once, no subscription.
+      </p>
+      <div className="mt-4 flex flex-col items-center gap-2">
+        <LinkButton href={`${CARD_APP_PRODUCT_PATH}#sample`} variant="outline">
+          See the app sample
+        </LinkButton>
+      </div>
+    </aside>
   );
 }

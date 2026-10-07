@@ -8,7 +8,8 @@ export type NewsletterSource =
   | "methodology-dataset"
   | "site-footer"
   | "home-monday"
-  | "home-reading-waitlist";
+  | "home-reading-waitlist"
+  | "home-reveal";
 
 export function NewsletterSignupForm({
   source,

@@ -16,6 +16,7 @@ import {
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import { BLUEPRINT_REPORT_SLUG } from "@/lib/blueprint-report";
 import { CARD_APP_SLUG } from "@/lib/card-app-slug";
+import { YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 import { isJokerBirthdate } from "@/lib/deep-dive";
 import { sanitizeBirthdateISO } from "@/lib/birthdate";
 import {
@@ -36,7 +37,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
 
 // Reports built from the engine: refuse future birthdays and December 31 (the Joker) before payment.
-const DATE_CHECKED_REPORTS = new Set([BLUEPRINT_REPORT_SLUG, CARD_APP_SLUG]);
+const DATE_CHECKED_REPORTS = new Set([BLUEPRINT_REPORT_SLUG, CARD_APP_SLUG, YEAR_AHEAD_REPORT_SLUG]);
 
 export const runtime = "edge";
 

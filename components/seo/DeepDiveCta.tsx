@@ -27,6 +27,7 @@ export function DeepDiveCta({
   showFulfillment = true,
   variant = "button",
   href = DEEP_DIVE_PRODUCT_PATH,
+  secondary = false,
 }: {
   placement: string;
   birthdate?: string;
@@ -40,6 +41,8 @@ export function DeepDiveCta({
   variant?: "button" | "menu";
   /** Real destination when JavaScript is off. With JS, the click still opens the birthday field. */
   href?: string;
+  /** Outline button when a bigger offer sits above it (home reveal). */
+  secondary?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [draftDate, setDraftDate] = useState("");
@@ -92,6 +95,7 @@ export function DeepDiveCta({
           cardLabel={cardLabel}
           cardSlug={cardSlug}
           compact={compact}
+          secondary={secondary}
           submitLabel={ctaLabel}
         />
       ) : compact ? (
