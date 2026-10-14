@@ -10,7 +10,6 @@ import {
 } from "@/lib/deep-dive";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
-import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 
 import "./landing.css";
 
@@ -46,33 +45,16 @@ export const metadata: Metadata = {
 /** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
 export const revalidate = 86_400;
 
-/** Short teaser. The full Eight of Diamonds promotion sample lives on the product page. */
-const SAMPLE_TEASER =
-  "An Eight of Diamonds asked about a promotion. The reading set the new ground beside the role they had already mastered, and left the choice with them.";
-
 export default function Home() {
   return (
     <div className="flex min-h-svh flex-col bg-brand-paper text-brand-ink">
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="home-intro">
-          <p className="home-kicker">Arithmetic on a fixed 52-card structure. You can check it.</p>
           <p className="home-lead" data-ai-summary>
-            Your birthday maps to one playing card in a 52-card deck. Cardology is
-            that fixed map: a mirror you can check, not tarot, not cardiology, and
-            not a forecast. The calculator is free.
+            Your birthday maps to one playing card in a 52-card deck.
+            Use it as a mirror, not a forecast. Find yours free below.
           </p>
-          <div className="home-fold-actions">
-            <Link href="/birth-card-calculator" className="ink-button large-button">
-              Find your card free
-            </Link>
-            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="home-fold-app">
-              Open app sample <span aria-hidden="true">↗</span>
-            </Link>
-            <Link href={DEEP_DIVE_PRODUCT_PATH} className="home-fold-reading">
-              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
-            </Link>
-          </div>
           <LandingCalculator />
           <section className="home-question" aria-labelledby="home-find-birth-card">
             <h2 id="home-find-birth-card">How do I find my birth card?</h2>
@@ -91,11 +73,6 @@ export default function Home() {
               <Link href="/cardology-compatibility">Cardology compatibility</Link>.
             </p>
           </section>
-          <div className="home-intro-links">
-            <Link href="/what-is-cardology">New to Cardology?</Link>
-            <span aria-hidden="true">·</span>
-            <Link href="/explore">Explore the free library →</Link>
-          </div>
         </div>
 
         <section aria-labelledby="home-reading-title" className="home-product">
@@ -106,30 +83,16 @@ export default function Home() {
             <h2 id="home-reading-title">Ask the one thing<br />you keep circling.</h2>
             <p className="home-product-lead">
               Your birthday picks the cards. Your question picks the reading.
-              About 600 words on where you are standing, written so plainly
-              you will think you wrote it, and three things to keep an eye out
-              for in the next few weeks. A mirror, not a forecast.
+              About 600 words on your decision, your birth card, and this year’s
+              cards. A mirror, not a forecast.
             </p>
             <div className="home-offer">
               <span className="home-price">{DEEP_DIVE_PRICE_LABEL}</span>
               <div>One question, written for you.<small>{ONE_QUESTION_TURNAROUND} · no subscription</small></div>
             </div>
-            <ol className="home-benefits">
-              <li><span>01</span><div><h3>Your card, on your question</h3><p>The number is the action, the suit is the area. How your card tends to handle this exact kind of decision, and where it slips.</p></div></li>
-              <li><span>02</span><div><h3>This year&rsquo;s cards</h3><p>The Long Range card that keeps pulling your attention. The Pluto card, what the year asks, and what it pays.</p></div></li>
-              <li><span>03</span><div><h3>Three things to watch for</h3><p>Concrete signals for the next few weeks, each tied to a card. You check them off yourself.</p></div></li>
-            </ol>
             <Link className="home-product-link" href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample, then ask yours <span aria-hidden="true">↗</span></Link>
             <p className="home-purchase-note">Prepared automatically from your cards and question. Usually ready in {ONE_QUESTION_TURNAROUND}. Reply to your receipt if you need help.</p>
           </div>
-          <aside className="home-product-preview home-sample" aria-label="A short look at one reading">
-            <p className="home-kicker">A short look</p>
-            <blockquote className="home-sample-quote">{SAMPLE_TEASER}</blockquote>
-            <p className="home-sample-note">
-              Eight of Diamonds, one question about a promotion.{" "}
-              <Link href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample</Link>
-            </p>
-          </aside>
         </section>
 
         <section className="home-articles" aria-labelledby="home-articles-title">
@@ -139,16 +102,7 @@ export default function Home() {
             <Link className="home-article" href="/blog/52-day-periods-in-cardology"><span className="home-article-label">02 / Your year</span><h3>How your 52-day chapters work</h3><p>Get to know the seven planetary periods that give your birthday year its structure.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
             <Link className="home-article" href="/blog/birth-card-vs-ruling-card-how-to-read-both"><span className="home-article-label">03 / Another perspective</span><h3>Birth Card or Ruling Card?</h3><p>Understand what each brings to a reading and how to read the two together.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
           </div>
-          <Link className="home-articles-all" href="/blog">Browse all articles <span aria-hidden="true">→</span></Link>
-        </section>
-
-        <section className="home-start" aria-labelledby="home-start-title">
-          <div><p className="home-kicker">Keep exploring</p><h2 id="home-start-title">Follow your curiosity.</h2><p>Start with one card, a connection, or the basics. There’s plenty to discover for free.</p></div>
-          <div className="home-reading-links">
-            <Link href="/birth-card"><span>01 / The library</span><strong>Explore all 52 birth cards ↗</strong></Link>
-            <Link href="/birth-card-compatibility-calculator"><span>02 / Your connections</span><strong>Compare two birth cards ↗</strong></Link>
-            <Link href="/cardology-for-beginners"><span>03 / The foundations</span><strong>Learn how Cardology works ↗</strong></Link>
-          </div>
+          <Link className="home-articles-all" href="/explore">Explore the learning library <span aria-hidden="true">→</span></Link>
         </section>
       </main>
       <SiteFooter />

@@ -9,6 +9,7 @@ export function HeaderDeepDiveCta({
 }) {
   return (
     <DeepDiveCta
+      headerLabel="Full reading"
       placement="site-header"
       source="site-header"
       variant={variant}

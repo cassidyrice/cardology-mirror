@@ -3,9 +3,8 @@
 import Link from "next/link";
 
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 import { SITE_NAME } from "@/lib/site";
-import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
+import { PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 
@@ -22,7 +21,7 @@ export function SiteHeader() {
           </Link>
           <nav
             aria-label="Primary"
-            className="ml-auto hidden items-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft xl:flex xl:gap-5"
+            className="ml-auto hidden items-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft lg:flex lg:gap-5"
           >
             {PRIMARY_NAV.map((link) =>
               link.href === DEEP_DIVE_PRODUCT_PATH ? (
@@ -31,18 +30,18 @@ export function SiteHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  data-money-path={moneyPathByHref(link.href).id}
+                  data-money-path={link.id}
                   className="money-path whitespace-nowrap font-semibold text-brand-ink transition hover:text-brand-ink"
                 >
                   {link.label}
                 </Link>
               ),
             )}
-            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="whitespace-nowrap font-semibold text-brand-oxblood hover:underline">
-              Open app sample
+            <Link href="/my-purchases" className="whitespace-nowrap font-semibold text-brand-oxblood hover:underline">
+              My purchases
             </Link>
           </nav>
-          <details className="relative ml-auto shrink-0 xl:ml-0 xl:hidden">
+          <details className="relative ml-auto shrink-0 lg:ml-0 lg:hidden">
             <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
               Menu
             </summary>
@@ -60,7 +59,7 @@ export function SiteHeader() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        data-money-path={moneyPathByHref(link.href).id}
+                        data-money-path={link.id}
                         className="money-path block min-h-11 py-3 font-semibold text-brand-ink"
                       >
                         {link.label}
@@ -69,23 +68,13 @@ export function SiteHeader() {
                   ),
                 )}
                 <li>
-                  <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="block min-h-11 py-3 font-semibold text-brand-oxblood">
-                    Open app sample
+                  <Link href="/my-purchases" className="block min-h-11 py-3 font-semibold text-brand-oxblood">
+                    My purchases
                   </Link>
                 </li>
               </ul>
             </nav>
           </details>
-          <a
-            href="https://www.tiktok.com/@52xseven"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Follow 52xseven on TikTok (opens in a new tab)"
-            title="Follow @52xseven on TikTok"
-            className="hidden h-11 w-11 shrink-0 items-center justify-center rounded-full text-brand-ink-soft transition hover:bg-brand-ink/5 hover:text-brand-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink min-[420px]:flex"
-          >
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M16.6 2c.3 2.5 1.7 4 4.1 4.2v3.3a8.3 8.3 0 0 1-4.1-1.2v6.8a6.1 6.1 0 1 1-5.3-6v3.4a2.8 2.8 0 1 0 2 2.6V2h3.3Z" /></svg>
-          </a>
         </div>
       </header>
     </>

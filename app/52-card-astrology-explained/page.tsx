@@ -119,14 +119,6 @@ export default function CardAstrology() {
           Methodology
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-brand-ink-soft">
-        People search <strong>playing cards birthday chart</strong>,{" "}
-        <strong>playing card astrology</strong>, <strong>birthday playing cards</strong>,{" "}
-        <strong>52 destiny cards</strong>, and <strong>birth card chart</strong>{" "}
-        for the same underlying map. This page explains the structure, then links every
-        date into the full birthday directory.
-      </p>
-
       <section className="mt-8">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">The deck and the calendar</h2>
         <div className="mb-4 grid gap-3 text-sm sm:grid-cols-3">
@@ -142,10 +134,8 @@ export default function CardAstrology() {
           ))}
         </div>
         <p className="prose-reading text-brand-ink-soft">
-          There are 52 cards in a deck and 52 weeks in a year. There are 13 ranks per
-          suit and roughly 13 weeks per season. These alignments are the backbone: the
-          deck is treated as a calendar in disguise. December 31 maps to the Joker;
-          the leap day, February 29, maps normally to the 9 of Clubs.
+          December 31 maps to the Joker; the leap day, February 29, maps normally
+          to the 9 of Clubs. Your birth card stays the same throughout your life.
         </p>
       </section>
 
@@ -164,7 +154,7 @@ export default function CardAstrology() {
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             free birth card calculator
           </Link>{" "}
-          or open your date directly in the birthday chart above.
+          or open your date directly in the birthday chart below.
         </p>
       </section>
 

@@ -28,6 +28,7 @@ export function DeepDiveCta({
   variant = "button",
   href = DEEP_DIVE_PRODUCT_PATH,
   secondary = false,
+  headerLabel = DEEP_DIVE_HEADER_CTA_LABEL,
 }: {
   placement: string;
   birthdate?: string;
@@ -43,6 +44,7 @@ export function DeepDiveCta({
   href?: string;
   /** Outline button when a bigger offer sits above it (home reveal). */
   secondary?: boolean;
+  headerLabel?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [draftDate, setDraftDate] = useState("");
@@ -109,7 +111,7 @@ export function DeepDiveCta({
           }
           onClick={startHeaderReading}
         >
-          {DEEP_DIVE_HEADER_CTA_LABEL}
+          {headerLabel}
         </Link>
       ) : open ? (
         <form

@@ -52,13 +52,13 @@ export const MONEY_PATHS = [
 
 export type MoneyPath = (typeof MONEY_PATHS)[number];
 
-/** Shared by the desktop header and the mobile menu. Same destinations as
- *  MONEY_PATHS, in that order. /today stays off this list — it asks for a
- *  local profile, so it is not the free hook. */
-export const PRIMARY_NAV = MONEY_PATHS.map(({ label, href }) => ({
-  label,
-  href,
-}));
+/** Four visitor tasks, shared by desktop and mobile navigation. */
+export const PRIMARY_NAV = [
+  { label: "Find your card", href: BIRTH_CARD_CALCULATOR_PATH, id: "calculator" },
+  { label: "Compatibility", href: "/birth-card-compatibility-calculator", id: "compatibility" },
+  { label: "Learn", href: "/explore", id: "learn" },
+  { label: "Full reading", href: DEEP_DIVE_PRODUCT_PATH, id: "reading" },
+] as const;
 
 export function moneyPathByHref(href: string): MoneyPath {
   const match = MONEY_PATHS.find((item) => item.href === href);

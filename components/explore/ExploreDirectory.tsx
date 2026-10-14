@@ -22,60 +22,47 @@ type ExploreGroup = {
 
 const GROUPS: ExploreGroup[] = [
   {
-    title: "Find your card",
+    title: "Find a card",
     links: [
       { label: "Birth card calculator", href: "/birth-card-calculator" },
+      { label: "All 52 cards and the Joker", href: "/birth-card" },
       { label: "Birthdays by date", href: BIRTHDAY_DIRECTORY_PATH, external: true },
-    ],
-  },
-  {
-    title: "Understand your card",
-    links: [
-      { label: "All 52 cards", href: "/birth-card" },
       { label: "Planetary ruling card chart", href: "/planetary-ruling-card" },
-      { label: "Karma cards", href: "/karma-cards" },
       { label: "Birth card vs ruling card", href: "/birth-card-vs-ruling-card" },
     ],
   },
   {
-    title: "Compare two people",
+    title: "Compare cards",
     links: [
       { label: "Compatibility calculator", href: "/birth-card-compatibility-calculator" },
       { label: "Compatibility guide", href: "/cardology-compatibility" },
       { label: "All pairings", href: COMPATIBILITY_DIRECTORY_PATH, external: true },
+      { label: "Karma cards", href: "/karma-cards" },
+      { label: "Karma cards in relationships", href: "/blog/karma-cards-in-relationships" },
     ],
   },
   {
-    title: "Timing and daily reflection",
+    title: "Understand timing",
     links: [
-      { label: "Card of the day", href: "/card-of-the-day" },
       { label: "52-day period tool", href: "/52-day-period-meaning-tool" },
       { label: "Your year in cards", href: "/your-year" },
+      { label: "Card of the day", href: "/card-of-the-day" },
       { label: "Today", href: "/today" },
     ],
   },
   {
-    title: "Articles and videos",
+    title: "Learn the method",
     links: [
-      { label: "Blog", href: "/blog" },
-      { label: "Videos", href: VIDEO_PATH },
+      { label: "What is Cardology?", href: "/what-is-cardology" },
       { label: "Cardology for beginners", href: "/cardology-for-beginners" },
-    ],
-  },
-  {
-    title: "Paid reports",
-    links: [
-      { label: "One Question Reading ($13)", href: "/products/one-question-reading" },
-    ],
-  },
-  {
-    title: "About and method",
-    links: [
-      { label: "About", href: "/about" },
+      { label: "Free course", href: "/free-course" },
+      { label: "52-card astrology explained", href: "/52-card-astrology-explained" },
+      { label: "Playing-card spreads", href: "/playing-card-spreads" },
+      { label: "Cardology vs Tarot", href: "/cardology-vs-tarot" },
+      { label: "Articles", href: "/blog" },
+      { label: "Video library", href: VIDEO_PATH },
       { label: "Methodology", href: "/methodology" },
-      { label: "Editorial policy", href: "/editorial-policy" },
       { label: "FAQ", href: "/faq" },
-      { label: "Contact", href: "/contact" },
     ],
   },
 ];
@@ -131,7 +118,7 @@ export function ExploreDirectory() {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Calculator, compatibility, One Question Reading…"
+        placeholder="Calculator, compatibility, timing…"
         className="mt-2 min-h-11 w-full border border-brand-ink bg-brand-paper px-4 font-serif text-brand-ink outline-none"
       />
 

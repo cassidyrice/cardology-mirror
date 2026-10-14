@@ -1,0 +1,2 @@
+- [~] 2026-10-14 Codex · website cleanup · claimed locally; ~/cardblueprints-ops/QUEUE.md absent on this Mac
+- [x] 2026-10-14 Codex · website cleanup · validated locally; ready for review, no deployment

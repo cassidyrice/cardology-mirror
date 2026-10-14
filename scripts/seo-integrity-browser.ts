@@ -215,8 +215,10 @@ async function main(): Promise<void> {
   const sitemap = await checkSitemapUrl(`${base}/sitemap.xml`, "/sitemap.xml");
   assertBlueprintReportStaysOffMainSitemap("/sitemap.xml", sitemap.locations);
 
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH, timeout: 20_000 });
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  page.setDefaultTimeout(15_000);
+  page.setDefaultNavigationTimeout(30_000);
   const consoleProblems: string[] = [];
 
   page.on("console", (message) => {
@@ -328,16 +330,17 @@ async function main(): Promise<void> {
     );
     assert.equal(
       await page
-        .locator('footer a[href="/playing-card-spreads"]')
+        .locator('footer a[href="/explore"]')
         .isVisible(),
       true,
-      "footer exposes the current Spreads hub",
+      "footer exposes the learning directory",
     );
     for (const [href, label] of [
-      ["/birth-card-calculator", "Birth Card Calculator"],
-      ["/what-is-cardology", "What is Cardology"],
-      ["/products/one-question-reading", "One Question Reading ($13)"],
-      ["/faq", "FAQ"],
+      ["/birth-card-calculator", "Find your card"],
+      ["/birth-card-compatibility-calculator", "Compatibility"],
+      ["/explore", "Learn"],
+      ["/products/one-question-reading", "Full reading"],
+      ["/my-purchases", "My purchases"],
     ] as const) {
       const link = page.locator(`nav[aria-label="Primary"] a[href="${href}"]`);
       assert.equal(await link.count(), 1, `desktop primary nav exposes ${label}`);
@@ -362,35 +365,20 @@ async function main(): Promise<void> {
       ),
       [
         ["calculator", "/birth-card-calculator"],
-        ["cardology", "/what-is-cardology"],
+        ["compatibility", "/birth-card-compatibility-calculator"],
+        ["learn", "/explore"],
         ["reading", "/products/one-question-reading"],
-        ["faq", "/faq"],
       ],
       "desktop primary nav keeps the four money paths, free calculator before the $13 reading",
     );
     assert.equal(
-      await page.locator('nav[aria-label="Primary"] a[href="/products/card-blueprint-app#sample"]').innerText(),
-      "Open app sample",
-      "desktop primary nav exposes the labeled app sample",
-    );
-    assert.deepEqual(
-      await page.locator('footer nav[aria-label="Core"] a').evaluateAll((nodes) =>
-        nodes.map((node) => [
-          node.getAttribute("data-money-path"),
-          node.getAttribute("href"),
-        ]),
-      ),
-      [
-        ["calculator", "/birth-card-calculator"],
-        ["cardology", "/what-is-cardology"],
-        ["reading", "/products/one-question-reading"],
-        ["faq", "/faq"],
-      ],
-      "footer core row repeats the same money paths",
+      await page.locator('nav[aria-label="Primary"] a[href="/my-purchases"]').innerText(),
+      "My purchases",
+      "desktop primary nav exposes purchase access",
     );
     const footerText = await page.locator("footer").innerText();
-    assert.match(footerText, /Free/);
-    assert.match(footerText, /about a minute/);
+    assert.match(footerText, /Free course/);
+    assert.match(footerText, /My purchases/);
     assert.match(footerText, /mirror, not a forecast/);
     assert.equal(
       await page.locator('footer a[href="/products/blueprint-report"]').count(),
@@ -453,10 +441,11 @@ async function main(): Promise<void> {
     await goto(page, "/");
     await page.getByText("Menu", { exact: true }).click();
     for (const [href, label] of [
-      ["/birth-card-calculator", "Birth Card Calculator"],
-      ["/what-is-cardology", "What is Cardology"],
-      ["/products/one-question-reading", "One Question Reading ($13)"],
-      ["/faq", "FAQ"],
+      ["/birth-card-calculator", "Find your card"],
+      ["/birth-card-compatibility-calculator", "Compatibility"],
+      ["/explore", "Learn"],
+      ["/products/one-question-reading", "Full reading"],
+      ["/my-purchases", "My purchases"],
     ] as const) {
       const link = page.locator(`nav[aria-label="Mobile primary"] a[href="${href}"]`);
       assert.equal(await link.isVisible(), true, `390px: mobile nav exposes ${label}`);
@@ -474,16 +463,16 @@ async function main(): Promise<void> {
       ),
       [
         ["calculator", "/birth-card-calculator"],
-        ["cardology", "/what-is-cardology"],
+        ["compatibility", "/birth-card-compatibility-calculator"],
+        ["learn", "/explore"],
         ["reading", "/products/one-question-reading"],
-        ["faq", "/faq"],
       ],
       "mobile nav retains the four money paths",
     );
     assert.equal(
-      await page.locator('nav[aria-label="Mobile primary"] a[href="/products/card-blueprint-app#sample"]').innerText(),
-      "Open app sample",
-      "mobile primary nav exposes the labeled app sample",
+      await page.locator('nav[aria-label="Mobile primary"] a[href="/my-purchases"]').innerText(),
+      "My purchases",
+      "mobile primary nav exposes purchase access",
     );
     await page.screenshot({ path: screenshotPath, fullPage: false });
 
@@ -574,6 +563,42 @@ async function main(): Promise<void> {
       "/52-card-astrology-explained",
       "Playing Cards Birthday Chart & 52-Card Astrology",
     );
+
+    // Homepage calculator and the reorganized library remain usable on a phone.
+    for (const width of [390, 1280]) {
+      await page.setViewportSize({ width, height: 844 });
+      await goto(page, "/");
+      assert.equal(await page.locator("h1").count(), 1);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+      await page.screenshot({ path: `/tmp/cardblueprints-cleanup-home-${width}.png`, fullPage: true });
+      await page.locator("#home-birthdate").fill("1991-02-17");
+      await page.getByRole("button", { name: "Show my card", exact: true }).click();
+      await page.locator("[data-reveal]").getByRole("heading", { name: "8 of Diamonds", exact: true }).waitFor();
+      if (width === 390) await page.getByText("Menu", { exact: true }).click();
+      const nav = page.getByRole("navigation", { name: width === 390 ? "Mobile primary" : "Primary", exact: true });
+      await nav.getByRole("link", { name: "Learn", exact: true }).click();
+      await page.waitForURL(`${base}/explore`);
+      await assertHealthyPage(page, "/explore");
+      assert.equal(await page.locator("main h2").count(), 4);
+      assert.equal(await page.locator('main a[href="/playing-card-spreads"]').count(), 1);
+      assert.equal(await page.locator('main a[href="/videos"]').count(), 1);
+      await page.getByLabel("Filter", { exact: true }).fill("timing");
+      assert.equal(await page.locator("main h2").count(), 1);
+      await page.getByLabel("Filter", { exact: true }).fill("zzzzzz");
+      await page.getByText("No matches. Try a shorter word.", { exact: true }).waitFor();
+      await page.getByLabel("Filter", { exact: true }).fill("");
+      await page.screenshot({ path: `/tmp/cardblueprints-cleanup-explore-${width}.png`, fullPage: true });
+      await page.locator('footer a[href="/my-purchases"]').click();
+      await page.waitForURL(`${base}/my-purchases`);
+      await assertHealthyPage(page, "/my-purchases");
+      assert.match(await page.locator('[role="status"]').innerText(), /private My purchases link/);
+    }
+
+    for (const alias of ["/readings", "/products/personal-card-blueprint", "/products/complete-card-blueprint"]) {
+      const redirect = await page.request.get(`${base}${alias}`, { maxRedirects: 0 });
+      assert.ok([301, 308].includes(redirect.status()), `${alias}: permanent redirect`);
+      assert.equal(new URL(redirect.headers().location!, base).pathname, "/products/one-question-reading", `${alias}: direct destination`);
+    }
 
     assert.deepEqual(
       consoleProblems,
