@@ -103,6 +103,48 @@ export function birthdayWorkerLinkForReveal(
   return { href, label };
 }
 
+const BIRTHDAY_SITEMAP_DAYS = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] as const;
+
+/** Deck order shared with the compatibility pair paths and the Worker sitemap. */
+export function orderedCardSlugs(): string[] {
+  return SUIT_SLUGS.flatMap((suit) =>
+    RANK_SLUGS.map((rank) => `${rank}-of-${suit}`),
+  );
+}
+
+/**
+ * `/born-on/` plus every month-day page, including February 29.
+ * 1 + 366 = 367, matching the live cardology sitemap.
+ */
+export function birthdaySitemapPaths(): string[] {
+  const paths = ["/born-on/"];
+  MONTH_SLUGS.forEach((month, index) => {
+    const days = BIRTHDAY_SITEMAP_DAYS[index];
+    for (let day = 1; day <= days; day += 1) {
+      paths.push(`/born-on/${month}-${day}`);
+    }
+  });
+  return paths;
+}
+
+/**
+ * `/compatibility/`, one page per card, then every unordered pair including
+ * a card with itself. 1 + 52 + 1,378 = 1,431, matching the live sitemap.
+ */
+export function compatibilitySitemapPaths(): string[] {
+  const cards = orderedCardSlugs();
+  const paths = [
+    "/compatibility/",
+    ...cards.map((slug) => `/compatibility/${slug}`),
+  ];
+  for (let i = 0; i < cards.length; i += 1) {
+    for (let j = i; j < cards.length; j += 1) {
+      paths.push(`/compatibility/${cards[i]}-and-${cards[j]}`);
+    }
+  }
+  return paths;
+}
+
 export function compatibilityPairPath(
   firstSlug: string,
   secondSlug: string,

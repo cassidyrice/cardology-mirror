@@ -26,14 +26,13 @@
       "pattern": "cardblueprints.com/born-on/*",
       "zone_name": "cardblueprints.com"
     },
-    {
-      "pattern": "cardblueprints.com/sitemap-cardology.xml*",
-      "zone_name": "cardblueprints.com"
-    },
-    {
-      "pattern": "cardblueprints.com/sitemap-compatibility.xml*",
-      "zone_name": "cardblueprints.com"
-    },
+    // sitemap-cardology.xml and sitemap-compatibility.xml are prerendered by
+    // Pages (app/sitemap-cardology.xml, app/sitemap-compatibility.xml).
+    // Do not add Worker routes back for those paths: the Worker generated
+    // them on every request with no edge cache, and that was the intermittent
+    // HTTP 500. Deploy Pages first, then apply this manifest:
+    //   npx wrangler triggers deploy --config ops/cardology-unlock-routes.jsonc
+    // Until that triggers deploy, the previous Worker routes still shadow Pages.
 
     // Cloudflare routes only support a trailing wildcard, not regex or infix
     // wildcards. Month-specific prefixes reach the Worker's legacy date 301
