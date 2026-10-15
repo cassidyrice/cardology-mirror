@@ -5,13 +5,17 @@ import {
 } from "@/lib/page-dates";
 import { allCardSlugs } from "@/lib/seo-cards";
 import { MARKETING_PATHS, SITE_URL } from "@/lib/site";
-import { sitemapDate } from "@/lib/sitemap-date";
+import { sitemapDayOrFallback } from "@/lib/sitemap-date";
 import { normalizeSitemapUrl, renderSitemapUrlset, type SitemapLoc } from "@/lib/sitemap-xml";
 
 export type ApplicationSitemapEntry = SitemapLoc;
 
 function postModified(post: BlogPost): string {
-  return post.dateModified || post.datePublished;
+  // A blank or impossible date must not throw. Prefer dateModified when it
+  // is a real day, otherwise datePublished, otherwise the shared fallback.
+  const modified = post.dateModified;
+  if (modified && sitemapDayOrFallback(modified) === modified) return modified;
+  return sitemapDayOrFallback(post.datePublished);
 }
 
 function latestOf(values: string[]): string {
@@ -20,17 +24,17 @@ function latestOf(values: string[]): string {
 
 /**
  * Build the application sitemap as plain {url, lastModified} rows with
- * YYYY-MM-DD lastmod strings. Validates every date through sitemapDate so a
- * bad input fails at generation time (caught by unit tests / CI) instead of
- * during Next's Date.toISOString() serialization on the edge.
+ * YYYY-MM-DD lastmod strings. A bad date becomes the shared fallback day
+ * instead of throwing. An uncaught throw here is an HTTP 500 on the edge.
  */
-export function buildApplicationSitemapEntries(): ApplicationSitemapEntry[] {
-  const posts = allBlogPosts();
+export function buildApplicationSitemapEntries(
+  posts: BlogPost[] = allBlogPosts(),
+): ApplicationSitemapEntry[] {
   const latestPostDate = latestOf(posts.map(postModified)) || pageUpdatedForPath("/blog");
 
-  // Touch every date through sitemapDate so invalid ISO days throw here with a
-  // clear RangeError rather than later as Invalid Date → toISOString().
-  const day = (value: string): string => sitemapDate(value).toISOString().slice(0, 10);
+  // Invalid ISO days become the fallback day. They used to throw, and an
+  // uncaught throw on this route is an HTTP 500 for every crawler.
+  const day = (value: string): string => sitemapDayOrFallback(value);
 
   const entries: ApplicationSitemapEntry[] = MARKETING_PATHS.map((p) => ({
     url: normalizeSitemapUrl(`${SITE_URL}${p}`),
@@ -88,6 +92,16 @@ export function buildApplicationSitemapEntries(): ApplicationSitemapEntry[] {
   return entries;
 }
 
+// Built once per isolate so a crawler burst does not rebuild the urlset.
+let applicationSitemapXml: string | null = null;
+
 export function renderApplicationSitemapXml(): string {
-  return renderSitemapUrlset(buildApplicationSitemapEntries());
+  if (!applicationSitemapXml) {
+    const body = renderSitemapUrlset(buildApplicationSitemapEntries());
+    if (!body.includes("<url>") || !body.includes("</urlset>")) {
+      throw new Error("application sitemap XML is empty or malformed");
+    }
+    applicationSitemapXml = body;
+  }
+  return applicationSitemapXml;
 }

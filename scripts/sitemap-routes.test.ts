@@ -1,13 +1,17 @@
 import { describe, expect, test } from "bun:test";
 
-import { GET } from "../app/sitemap.xml/route";
+import { GET as getApplicationSitemap } from "../app/sitemap.xml/route";
+import { GET as getCardologySitemap } from "../app/sitemap-cardology.xml/route";
+import { GET as getCompatibilitySitemap } from "../app/sitemap-compatibility.xml/route";
 import robots from "../app/robots";
 import { ROBOTS_SITEMAP_PATHS, SITE_URL } from "../lib/site";
+import { SITEMAP_CACHE_CONTROL } from "../lib/sitemap-xml";
 import {
   assertBlueprintReportStaysOffMainSitemap,
   assertRobotsAdvertisesSitemapPaths,
   assertSitemapResponse,
   parseSitemapXml,
+  SITEMAP_PROBE_USER_AGENTS,
   sitemapPathsFromRobots,
 } from "./sitemap-http";
 
@@ -28,7 +32,7 @@ describe("sitemap route guard", () => {
   test("GET /sitemap.xml returns 200 parseable urlset XML and keeps the Blueprint Report off", async () => {
     let response: Response;
     try {
-      response = GET();
+      response = getApplicationSitemap();
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       throw new Error(`sitemap route FAILED /sitemap.xml: handler threw (${message})`);
@@ -47,6 +51,67 @@ describe("sitemap route guard", () => {
     assertBlueprintReportStaysOffMainSitemap("/sitemap.xml", parsed.locations);
     expect(parsed.locations).toContain(`${SITE_URL}/products/one-question-reading`);
     expect(parsed.locations).not.toContain(`${SITE_URL}/products/blueprint-report`);
+    expect(response.headers.get("cache-control")).toBe(SITEMAP_CACHE_CONTROL);
+    expect(response.headers.get("cache-control")).not.toContain("must-revalidate");
+  });
+
+  test("birthday and compatibility sitemap routes return 200 cached XML", async () => {
+    const cases = [
+      {
+        path: "/sitemap-cardology.xml",
+        response: getCardologySitemap(),
+        count: 367,
+        required: [
+          `${SITE_URL}/born-on/`,
+          `${SITE_URL}/born-on/january-1`,
+          `${SITE_URL}/born-on/february-29`,
+          `${SITE_URL}/born-on/december-31`,
+        ],
+        forbidden: `${SITE_URL}/born-on/february-30`,
+      },
+      {
+        path: "/sitemap-compatibility.xml",
+        response: getCompatibilitySitemap(),
+        count: 1431,
+        required: [
+          `${SITE_URL}/compatibility/`,
+          `${SITE_URL}/compatibility/ace-of-hearts`,
+          `${SITE_URL}/compatibility/ace-of-hearts-and-ace-of-hearts`,
+          `${SITE_URL}/compatibility/queen-of-hearts-and-ace-of-clubs`,
+          `${SITE_URL}/compatibility/king-of-spades-and-king-of-spades`,
+        ],
+        forbidden: `${SITE_URL}/compatibility/ace-of-clubs-and-ace-of-hearts`,
+      },
+    ] as const;
+
+    for (const item of cases) {
+      const body = await item.response.text();
+      const parsed = assertSitemapResponse({
+        path: item.path,
+        status: item.response.status,
+        contentType: item.response.headers.get("content-type"),
+        body,
+      });
+      expect(parsed.kind, item.path).toBe("urlset");
+      expect(parsed.locations, item.path).toHaveLength(item.count);
+      expect(new Set(parsed.locations).size, item.path).toBe(item.count);
+      for (const loc of item.required) {
+        expect(parsed.locations, loc).toContain(loc);
+      }
+      expect(parsed.locations, item.forbidden).not.toContain(item.forbidden);
+      expect(item.response.headers.get("cache-control"), item.path).toBe(
+        SITEMAP_CACHE_CONTROL,
+      );
+      expect(parsed.locations[0], item.path).toBe(item.required[0]);
+      expect(parsed.locations.at(-1), item.path).toBe(
+        item.required[item.required.length - 1],
+      );
+    }
+  });
+
+  test("the HTTP probe covers Googlebot and Bingbot", () => {
+    expect(SITEMAP_PROBE_USER_AGENTS.join("\n")).toContain("Googlebot");
+    expect(SITEMAP_PROBE_USER_AGENTS.join("\n")).toContain("bingbot");
   });
 
   test("robots.txt advertises the three sitemap routes and nothing else", () => {

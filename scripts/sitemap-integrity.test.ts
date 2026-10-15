@@ -13,11 +13,12 @@ import {
 } from "../lib/blog";
 import {
   CARD_MEANING_PAGES_UPDATED,
+  FALLBACK_PAGE_UPDATED,
   PAGE_UPDATED_DATES,
 } from "../lib/page-dates";
 import { allCardSlugs } from "../lib/seo-cards";
 import { MARKETING_PATHS, SITE_URL } from "../lib/site";
-import { sitemapDate } from "../lib/sitemap-date";
+import { sitemapDate, sitemapDayOrFallback, SITEMAP_DAY_FALLBACK } from "../lib/sitemap-date";
 
 const CANONICAL_ORIGIN = "https://cardblueprints.com";
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -58,11 +59,45 @@ describe("sitemapDate", () => {
   test("rejects calendar rollovers", () => {
     expect(() => sitemapDate("2026-02-30")).toThrow();
   });
+
+  test("a bad lastmod falls back instead of throwing", () => {
+    expect(SITEMAP_DAY_FALLBACK).toBe(FALLBACK_PAGE_UPDATED);
+    expect(sitemapDayOrFallback("2026-02-30")).toBe(SITEMAP_DAY_FALLBACK);
+    expect(sitemapDayOrFallback("not-a-date")).toBe(SITEMAP_DAY_FALLBACK);
+    expect(sitemapDayOrFallback("")).toBe(SITEMAP_DAY_FALLBACK);
+    expect(sitemapDayOrFallback(null)).toBe(SITEMAP_DAY_FALLBACK);
+    expect(sitemapDayOrFallback("2026-10-03")).toBe("2026-10-03");
+  });
 });
 
 describe("application sitemap integrity", () => {
   test("generator does not throw", () => {
     expect(() => buildApplicationSitemapEntries()).not.toThrow();
+    expect(() => renderApplicationSitemapXml()).not.toThrow();
+  });
+
+  test("one bad post date does not throw and does not blank the map", () => {
+    const entries = buildApplicationSitemapEntries([
+      {
+        slug: "bad-date-post",
+        pillar: "cardology-foundations",
+        title: "Bad date",
+        description: "Bad date",
+        dek: "Bad date",
+        datePublished: "2026-02-30",
+        dateModified: "nope",
+        readTime: "1 min",
+        keywords: [],
+        answer: "Bad date",
+        sections: [],
+        faqs: [],
+        related: [],
+        coreLinks: [],
+      },
+    ]);
+    const bad = entries.find((entry) => entry.url.endsWith("/blog/bad-date-post"));
+    expect(bad?.lastModified).toBe(SITEMAP_DAY_FALLBACK);
+    expect(entries.length).toBeGreaterThan(50);
     expect(() => renderApplicationSitemapXml()).not.toThrow();
   });
 

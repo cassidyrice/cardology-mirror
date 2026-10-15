@@ -40,10 +40,16 @@ function workerSitemapHint(path: string, status: number): string {
     status === 404 &&
     (path === "/sitemap-cardology.xml" || path === "/sitemap-compatibility.xml")
   ) {
-    return " This route is served by the cardology-unlock Worker in front of Pages, so a Next-only origin returns 404. Re-run with SITEMAP_BASE_URL=https://cardblueprints.com.";
+    return " This route is built by Pages. A 404 means the cardology-unlock Worker is still shadowing it, or this deploy does not include the route. Deploy Pages first, then `npx wrangler triggers deploy --config ops/cardology-unlock-routes.jsonc`, and re-run with SITEMAP_BASE_URL=https://cardblueprints.com.";
   }
   return "";
 }
+
+/** Crawlers that have been seen receiving the intermittent sitemap 500. */
+export const SITEMAP_PROBE_USER_AGENTS = [
+  "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+  "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+] as const;
 
 /** Parse a sitemap urlset or index. Returns null when the body is not one. */
 export function parseSitemapXml(body: string): ParsedSitemap | null {
@@ -180,7 +186,11 @@ export function assertRobotsAdvertisesSitemapPaths(
   }
 }
 
-export async function checkSitemapUrl(url: string, path: string): Promise<ParsedSitemap> {
+export async function checkSitemapUrl(
+  url: string,
+  path: string,
+  userAgent: string = SITEMAP_PROBE_USER_AGENTS[0],
+): Promise<ParsedSitemap> {
   let response: Response;
   try {
     response = await fetch(url, {
@@ -189,23 +199,28 @@ export async function checkSitemapUrl(url: string, path: string): Promise<Parsed
       headers: {
         accept: "application/xml,text/xml,*/*;q=0.8",
         "cache-control": "no-cache",
-        "user-agent": "CardBlueprints-Sitemap-Guard/1.0 (+https://cardblueprints.com)",
+        "user-agent": userAgent,
       },
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     throw sitemapRouteError(
       path,
-      `request to ${url} did not complete within ${REQUEST_TIMEOUT_MS}ms (${message}).`,
+      `request to ${url} as ${userAgent} did not complete within ${REQUEST_TIMEOUT_MS}ms (${message}).`,
     );
   }
 
   const body = await response.text();
-  return assertSitemapResponse({
-    path,
-    status: response.status,
-    contentType: response.headers.get("content-type"),
-    body,
-    location: response.headers.get("location"),
-  });
+  try {
+    return assertSitemapResponse({
+      path,
+      status: response.status,
+      contentType: response.headers.get("content-type"),
+      body,
+      location: response.headers.get("location"),
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`${message} User-Agent: ${userAgent}`);
+  }
 }

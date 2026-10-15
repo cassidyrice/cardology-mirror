@@ -134,6 +134,8 @@ export function middleware(request: NextRequest) {
   // AI agents. Keep the rest of the site same-site; let these travel.
   if (
     request.nextUrl.pathname === "/sitemap.xml" ||
+    request.nextUrl.pathname === "/sitemap-cardology.xml" ||
+    request.nextUrl.pathname === "/sitemap-compatibility.xml" ||
     request.nextUrl.pathname === "/robots.txt" ||
     request.nextUrl.pathname === "/feed.xml" ||
     request.nextUrl.pathname === "/llms.txt" ||

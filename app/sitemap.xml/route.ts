@@ -1,25 +1,17 @@
 // Application sitemap. Statically generated at build time (same pattern as
-// app/feed.xml/route.ts). We own the XML serialization here — string YYYY-MM-DD
-// lastmod values — so a bad Date never reaches Next's MetadataRoute resolver
-// (which calls Date.toISOString() and turns Invalid Date into an uncaught 500).
+// app/feed.xml/route.ts). The XML string is built once per isolate from
+// YYYY-MM-DD lastmod values. A bad date falls back instead of throwing, so
+// it cannot become the uncaught Invalid Date → HTTP 500 from CAR-20 / CAR-58.
+//
+// Cache-Control includes s-maxage. `max-age=0, must-revalidate` made
+// Cloudflare skip the cache (`cf-cache-status: DYNAMIC`) and run this
+// function for every crawler. A transient failure was then a 500.
 
 import { renderApplicationSitemapXml } from "@/lib/application-sitemap";
+import { sitemapXmlResponse } from "@/lib/sitemap-xml";
 
 export const dynamic = "force-static";
 
 export function GET(): Response {
-  // Force evaluation before Response construction so a generation throw fails
-  // the build / request loudly instead of producing a half-written body.
-  const body = renderApplicationSitemapXml();
-  if (!body.includes("<url>") || !body.includes("</urlset>")) {
-    throw new Error("application sitemap XML is empty or malformed");
-  }
-
-  return new Response(body, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=0, must-revalidate",
-    },
-  });
+  return sitemapXmlResponse(renderApplicationSitemapXml());
 }
