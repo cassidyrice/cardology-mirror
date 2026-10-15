@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 
@@ -15,7 +9,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $13 written reading on the one question you're deciding.";
+  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then hand-written readings for you and the people in your life.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -74,26 +68,6 @@ export default function Home() {
             </p>
           </section>
         </div>
-
-        <section aria-labelledby="home-reading-title" className="home-product">
-          <div className="home-product-copy">
-            <p className="home-kicker">
-              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
-            </p>
-            <h2 id="home-reading-title">Ask the one thing<br />you keep circling.</h2>
-            <p className="home-product-lead">
-              Your birthday picks the cards. Your question picks the reading.
-              About 600 words on your decision, your birth card, and this year’s
-              cards. A mirror, not a forecast.
-            </p>
-            <div className="home-offer">
-              <span className="home-price">{DEEP_DIVE_PRICE_LABEL}</span>
-              <div>One question, written for you.<small>{ONE_QUESTION_TURNAROUND} · no subscription</small></div>
-            </div>
-            <Link className="home-product-link" href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample, then ask yours <span aria-hidden="true">↗</span></Link>
-            <p className="home-purchase-note">Prepared automatically from your cards and question. Usually ready in {ONE_QUESTION_TURNAROUND}. Reply to your receipt if you need help.</p>
-          </div>
-        </section>
 
         <section className="home-articles" aria-labelledby="home-articles-title">
           <div className="home-articles-heading"><div><p className="home-kicker">From the journal</p><h2 id="home-articles-title">Get to know your cards.</h2></div><p>A few good places to start. Read a little, then bring it back to your own life.</p></div>

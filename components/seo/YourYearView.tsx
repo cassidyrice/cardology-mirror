@@ -4,7 +4,6 @@ import { type FormEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
-import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { parseCard, todayISO } from "@/lib/cards";
 import {
@@ -271,11 +270,6 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
       </p>
 
       <div className="flex flex-col items-center gap-3">
-        <DeepDiveCta
-          placement="your-year"
-          birthdate={birthdate}
-          source="birth-card-calculator"
-        />
         <button
           type="button"
           className="text-xs text-brand-ink-soft underline underline-offset-4"

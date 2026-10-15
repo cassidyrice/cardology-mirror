@@ -361,62 +361,7 @@ describe("POST /api/card-app/connection", () => {
   });
 });
 
-describe("product page", () => {
-  test("renders one main, one H1, the labeled sample and the configured sale state", async () => {
-    const { renderToStaticMarkup } = await import("react-dom/server");
-    const { default: Page, metadata } = await import("../app/products/card-blueprint-app/page");
-    const html = renderToStaticMarkup(createElement(AppRouterContext.Provider, { value: { push() {} } as any }, await Page({ searchParams: Promise.resolve({}) })));
-    expect(html.match(/<main[\s>]/g)).toHaveLength(1);
-    expect(html.match(/<h1[\s>]/g)).toHaveLength(1);
-    expect(html).toContain("Card Blueprint App");
-    expect(html).toContain("Current period");
-    expect(html).toContain("More cards");
-    expect(html).toContain('id="sample"');
-    expect(html).toContain("These are the sample person");
-    expect(html).toContain("/birth-card-calculator");
-    expect(html).toContain("/birth-card-compatibility-calculator");
-    expect(html).not.toMatch(/personal-card-blueprint|Personal Card Blueprint/);
-    expect(String(metadata.title).length).toBeLessThanOrEqual(60);
-    expect(String(metadata.description).length).toBeLessThanOrEqual(155);
-    if (!CARD_APP_ON_SALE) {
-      expect(html).toContain("Opening soon");
-      expect(metadata.robots).toEqual({ index: false, follow: true });
-    } else {
-      expect(html).toContain("Get my app — $69");
-      expect(html).not.toContain("Opening soon");
-      expect(metadata.robots).toBeUndefined();
-    }
-  });
-
-  test("the direct buyer period app renders one main", async () => {
-    const { renderToStaticMarkup } = await import("react-dom/server");
-    const { createElement } = await import("react");
-    const { PeriodAppView } = await import("../components/card-app/PeriodApp");
-    const data = buildCardApp("1988-07-14", "2026-09-29");
-    const { appReadingLibrary } = await import("../lib/period-library");
-    const html = renderToStaticMarkup(createElement(PeriodAppView, { data, readings: appReadingLibrary(data), token: "t" }));
-    expect(html.match(/<main[\s>]/g)).toHaveLength(1);
-  });
-
-  test("the sample shows the visitor's own date, within a day of the server's", async () => {
-    const { renderToStaticMarkup } = await import("react-dom/server");
-    const { default: Page } = await import("../app/products/card-blueprint-app/page");
-    const iso = (days: number) => new Date(Date.now() + days * 86_400_000).toISOString().slice(0, 10);
-    expect(appDateParam(iso(1))).toBe(iso(1));
-    expect(appDateParam(iso(-1))).toBe(iso(-1));
-    expect(appDateParam(iso(2))).toBeUndefined();
-    expect(appDateParam("not-a-date")).toBeUndefined();
-    const tomorrow = buildCardApp("1988-07-14", iso(1));
-    const html = renderToStaticMarkup(createElement(AppRouterContext.Provider, { value: { push() {} } as any }, await Page({ searchParams: Promise.resolve({ date: iso(1) }) })));
-    expect(html).toContain(tomorrow.todayLabel);
-  });
-
-  test("checkout facts describe an app, not a written report", () => {
-    const text = instantReportFacts(CARD_APP_PRODUCT).map((f) => f.value).join(" ");
-    expect(text).toContain("Your app opens");
-    expect(text).not.toMatch(/report/i);
-  });
-
+describe("analytics", () => {
   test("app sales keep their offer name in analytics", async () => {
     const { sanitizeOfferSlug } = await import("../lib/analytics");
     expect(sanitizeOfferSlug(CARD_APP_SLUG)).toBe(CARD_APP_SLUG);

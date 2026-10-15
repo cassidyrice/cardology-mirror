@@ -1,6 +1,5 @@
 // Real customer words, supplied by the owner 2026-09-01.
-// Public quotes say "the reading" where the owner named the retired offer,
-// so page copy and Product JSON-LD match the live One Question Reading.
+// Public quotes say "the reading" generically rather than naming a product.
 // The owner confirmed every review was five-star (2026-09-01), so each
 // carries rating: 5 for display and schema.org reviewRating/aggregateRating.
 
@@ -12,7 +11,7 @@ export type Testimonial = {
   quote: string;
   /** Star rating the reviewer gave (owner-confirmed). */
   rating: 5;
-  /** Product slugs this review speaks to. */
+  /** Internal grouping keys ("deep-dive" is a legacy key name, not a live offer). */
   products: ("deep-dive" | "personal-card-blueprint")[];
   /** Founder/owner voice — displayed with that label, never in Product schema. */
   founder?: boolean;

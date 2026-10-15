@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the One Question Reading, past digital purchases, and legacy orders.",
+    "Refund terms for the hand-written readings, past digital purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -39,18 +39,17 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
         <section className="border border-brand-line bg-brand-paper-deep p-5">
           <p className="font-serif text-lg text-brand-ink">
-            Card Blueprints sells the $13 One Question Reading, a written reading
-            built from the birth date and the question entered before checkout.
-            Reply to your receipt before it is written and we fix a wrong date
-            or reword the question at no charge. Once it has been sent, we
-            refund in full if the reading did not use the date and question you
-            gave us. The digital-download policy applies only when an e-book
-            sale is explicitly open.
+            Card Blueprints now sells three hand-written readings (The Chemistry
+            Check, Your 12-Month Timing Map and The Family Snapshot) through Stan
+            Store. Each is a custom-written PDF delivered within 7 days. If a
+            reading used the wrong birth dates, reply to your receipt and we
+            rewrite it at no charge. The sections below also cover past orders
+            of offers that are no longer sold.
           </p>
         </section>
 
         <section>
-          <h2 className="font-serif text-2xl text-brand-ink">One Question Reading</h2>
+          <h2 className="font-serif text-2xl text-brand-ink">One Question Reading (past orders)</h2>
           <div className="mt-3 space-y-3">
             <p>
               The One Question Reading is written for the birth date and the
@@ -113,8 +112,8 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-brand-line pt-6">
-          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-            ← Back to the One Question Reading
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
+            ← Back to the birth card calculator
           </Link>
         </div>
       </div>

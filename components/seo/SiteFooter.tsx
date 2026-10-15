@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { BrandLogo } from "./BrandLogo";
 
@@ -12,7 +11,6 @@ const FREE_TOOLS = [
 ] as const;
 
 const GET = [
-  { label: "Full reading", href: DEEP_DIVE_PRODUCT_PATH },
   { label: "My purchases", href: "/my-purchases" },
   { label: "Free course", href: "/free-course" },
   { label: "FAQ", href: "/faq" },

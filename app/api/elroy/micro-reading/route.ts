@@ -3,8 +3,6 @@ import { buildElroyMicroReading } from "@/lib/elroy/micro-reading";
 import { renderElroyReadingEmail } from "@/lib/elroy/email";
 import { sendEmail } from "@/lib/email";
 import { addResendContact } from "@/lib/resend-contacts";
-import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { SITE_URL } from "@/lib/site";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
 
 export const runtime = "edge";
@@ -109,7 +107,7 @@ export async function POST(request: Request): Promise<Response> {
     sendReadingEmail: async (email, reading, idempotencyKey) => {
       const rendered = renderElroyReadingEmail(
         reading,
-        `${SITE_URL}${DEEP_DIVE_PRODUCT_PATH}`,
+        "https://cardblueprints.com/birth-card-calculator",
       );
       await sendEmail(
         {

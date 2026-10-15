@@ -6,7 +6,6 @@ import OneQuestionReadingLive from "@/components/checkout/OneQuestionReadingLive
 import { DeepDiveDeliveredBeacon } from "@/components/checkout/DeepDiveDeliveredBeacon";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
-import { READER_PHONE_DISPLAY, READER_PHONE_TEL } from "@/lib/offers";
 import {
   DEEP_DIVE_PRODUCT_NAME,
   DEEP_DIVE_PRODUCT_PATH,
@@ -339,8 +338,8 @@ export default async function CheckoutSuccessPage({
             name.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href={DEEP_DIVE_PRODUCT_PATH} variant="primary">
-              Ask one question
+            <LinkButton href="/birth-card-calculator" variant="primary">
+              Find a birth card
             </LinkButton>
             <LinkButton href="/contact" variant="outline">
               Contact Support

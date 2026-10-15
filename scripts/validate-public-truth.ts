@@ -245,14 +245,9 @@ assert.doesNotMatch(
   productSurfaceText,
   /birth dates and the actual question/i,
 );
-assert.match(
-  productSurfaceText,
-  /One Question Reading is a \$13 written reading built from a single birth date and one question/i,
-);
-assert.match(
-  readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /One Question Reading is a \$\{DEEP_DIVE_PRICE_LABEL\} written reading built from a single birth date and one question/i,
-);
+// All earlier offers were retired in Oct 2026; the three Stan Store readings are the only paid offers.
+assert.doesNotMatch(productSurfaceText, /One Question Reading is a \$13 written reading/i);
+assert.doesNotMatch(readFileSync("scripts/generate_daily_blog_post.ts", "utf8"), /DEEP_DIVE_PRICE_LABEL/);
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
 // live $13 One Question Reading; they must not resurrect the retired report
 // slug or product name. The queue is checked too, so a bad queued post fails
@@ -317,17 +312,14 @@ assert.doesNotMatch(productSurfaceText, /Quick Question/i);
 assert.doesNotMatch(productSurfaceText, /Complete Reading/i);
 assert.doesNotMatch(productSurfaceText, /90-Day Season Pass/i);
 assert.doesNotMatch(productSurfaceText, /quick-question|complete-reading|season-pass-90/i);
-assert.match(
-  readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
-  /checkoutProductBySlug\(slug\)/,
-);
+assert.match(readFileSync("app/checkout/[offer]/session/route.ts", "utf8"), /status: 410/);
 assert.doesNotMatch(
   readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
   /productBySlug\(slug\)/,
 );
 assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/one-question-reading"\)/,
+  /permanentRedirect\("\/birth-card-calculator"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -337,7 +329,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["'](\/readings)["']\s*:\s*["']\/products\/one-question-reading["']/,
+  /["'](\/readings)["']\s*:\s*["']\/birth-card-calculator["']/,
 );
 assert.match(
   middlewareText,
@@ -379,7 +371,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/one-question-reading?utm_source=legacy",
+      "https://cardblueprints.com/birth-card-calculator?utm_source=legacy",
   },
 );
 assert.deepEqual(
@@ -423,7 +415,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/one-question-reading?a=1",
+    location: "https://cardblueprints.com/birth-card-calculator?a=1",
   },
 );
 assert.deepEqual(
@@ -433,34 +425,34 @@ assert.deepEqual(
   ),
   { status: 301, location: "https://cardblueprints.com/birth-card/ace-of-hearts" },
 );
-assert.equal(
+assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/one-question-reading",
     "cardblueprints.com",
-  ).status,
-  200,
+  ),
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
 );
-// The $9 Deep Dive, $47 Blueprint Breakdown and $19 52xSeven URLs 301 to the $47 One Question Reading (2026-09-13).
+// Every retired product URL 301s to the calculator, where the three readings appear (Oct 2026).
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/birth-card-deep-dive",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
 );
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/blueprint-breakdown-video",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
 );
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/52xseven-blueprint?utm_source=old-email",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading?utm_source=old-email" },
+  { status: 301, location: "https://cardblueprints.com/birth-card-calculator?utm_source=old-email" },
 );
 // The retired catalog 301s to the one live product.
 assert.equal(
@@ -479,8 +471,9 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-assert.match(productSurfaceText, /One Question Reading/);
-assert.match(productSurfaceText, /about a minute/i);
+for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
+  assert.match(productSurfaceText, new RegExp(`stan\\.store/mycardblueprint/p/${url}`));
+}
 assert.doesNotMatch(
   productSurfaceText,
   /2 business days/,

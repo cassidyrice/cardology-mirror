@@ -59,14 +59,10 @@ async function event() {
   return webhook(new NextRequest("https://example.test/api/checkout/webhook", { method: "POST", body, headers: { "stripe-signature": `t=${t},v1=${signature}` } }));
 }
 for (const slug of ["blueprint-report", "blueprint-report-consult"]) {
-  for (const date of ["1990-12-31", new Date(Date.now() + 86_400_000).toISOString().slice(0, 10)]) {
-    created = undefined;
-    const result = await checkout(req(`/checkout/${slug}/session`, { birthdate: date }), { params: Promise.resolve({ offer: slug }) });
-    ok(result.status === 400 && !created, `${slug}: refuse unsupported/future date before Stripe`);
-  }
+  // New checkouts are retired (Oct 2026); past-buyer fulfillment below still runs.
+  created = undefined;
   const result = await checkout(req(`/checkout/${slug}/session`, { birthdate: "1991-02-17" }), { params: Promise.resolve({ offer: slug }) });
-  ok(result.status === 200 && created?.get("metadata[offer_slug]") === slug, `${slug}: checkout uses its own tier`);
-  ok(created?.get("line_items[0][price]") === (slug.endsWith("consult") ? "price_consult_synthetic" : "price_report_synthetic"), "configured price used");
+  ok(result.status === 410 && !created, `${slug}: retired checkout refuses before Stripe`);
   session.metadata.offer_slug = slug;
   emails.length = 0;
   ok((await event()).status === 200, "signed paid webhook accepted");

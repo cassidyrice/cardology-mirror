@@ -1,10 +1,3 @@
-import {
-  DEEP_DIVE_FULFILLMENT,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const FAQ_PATH = "/faq" as const;
@@ -27,16 +20,6 @@ export type FaqSection = {
   title: string;
   items: readonly FaqItem[];
 };
-
-function readingAnswer(): string {
-  if (
-    !DEEP_DIVE_FULFILLMENT.includes(ONE_QUESTION_TURNAROUND) ||
-    !DEEP_DIVE_FULFILLMENT.includes(DEEP_DIVE_PRICE_LABEL)
-  ) {
-    throw new Error("One Question Reading fulfillment drifted from the public price and minute SLA");
-  }
-  return DEEP_DIVE_FULFILLMENT;
-}
 
 export const FAQ_SECTIONS: readonly FaqSection[] = [
   {
@@ -158,32 +141,19 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
   },
   {
     id: "products",
-    title: "The reading, pricing, and turnaround",
+    title: "Readings and orders",
     items: [
       {
-        id: "one-question-reading",
-        question: `What do I get for ${DEEP_DIVE_PRICE_LABEL}, and how fast does it arrive?`,
-        answer: readingAnswer(),
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
-      {
-        id: "good-question",
-        question: "What makes a good question for the reading?",
+        id: "readings",
+        question: "Is there a paid reading?",
         answer:
-          "One decision, in real words. \"Should I take the job in Denver or stay put?\" reads better than \"career.\" \"Do I keep pushing this business or wind it down?\" reads better than \"money.\" A yes-or-no question is fine. The reading will not answer yes or no for you; it shows you which yes and which no you have been circling, and lets you pick.",
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
-      {
-        id: "reading-is-not-a-forecast",
-        question: "Will the reading tell me what to do, or what will happen?",
-        answer:
-          "No. It is a mirror, not a forecast. Same birthday, same cards, every time; what they mean beside your question is the part that takes a person. Nothing here predicts events, lucky days, or other people's choices.",
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
+          "Find your card with the free calculator; three hand-written readings appear with your result.",
+        links: [{ href: "/birth-card-calculator", label: "Birth card calculator" }],
       },
       {
         id: "order-help",
         question: "How do I get help with an order?",
-        answer: `Email ${CONTACT_EMAIL} for a purchase, a refund, or a correction, and include the purchase email. The contact page states how soon those emails are answered. The ${DEEP_DIVE_PRODUCT_NAME} itself is written within ${ONE_QUESTION_TURNAROUND} of payment.`,
+        answer: `Email ${CONTACT_EMAIL} for a purchase, a refund, or a correction, and include the purchase email. The contact page states how soon those emails are answered.`,
         links: [
           { href: "/contact", label: "Contact" },
           { href: "/refund-policy", label: "Refund policy" },

@@ -81,14 +81,14 @@ for (const date of ["not-a-date", "1990-12-31", "2099-01-01", "1988-07-14"]) {
   const result = await checkout(new NextRequest("https://example.test/checkout/card-blueprint-app/session", {
     method: "POST", headers: {"content-type":"application/json", origin:"https://example.test", "cf-connecting-ip":`app-${n++}`},
     body: JSON.stringify({birthdate:date}) }), {params:Promise.resolve({offer:"card-blueprint-app"})});
-  assert.equal(result.status, date === "1988-07-14" ? 200 : 400);
-  if (date === "1988-07-14") assert.equal(created!.get("line_items[0][price]"), "price_app_synthetic");
-  else assert.equal(created, undefined);
+  // Retired offer (Oct 2026): every request is refused before Stripe.
+  assert.equal(result.status, 410);
+  assert.equal(created, undefined);
 }
 // A persistence failure before send cannot leak a buyer email.
 const oldAttempts = sendAttempts;
 await assert.rejects(deliverApp({sessionId:"cs_test_storage_fail",email:"buyer@example.test",birthdate:"1988-07-14"},
   {db:{prepare:()=>({bind:()=>({first:async()=>{throw new Error("database unavailable");}})})}}));
 assert.equal(sendAttempts, oldAttempts);
-console.log("PASS: app checkout validation, signed paid/unpaid/delayed webhooks, persistent retry, ambiguous acceptance, replay/concurrency, old-attempt review, private token and storage failure; no real emails or charges.");
+console.log("PASS: retired app checkout refused, signed paid/unpaid/delayed webhooks, persistent retry, ambiguous acceptance, replay/concurrency, old-attempt review, private token and storage failure; no real emails or charges.");
 sqlite.close();

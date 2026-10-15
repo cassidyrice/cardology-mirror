@@ -122,7 +122,7 @@ export default function ReadingPage() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <Kicker className="mb-2 !font-bold !text-brand-ink-soft">Deep Dive · A Mirror, Not a Forecast</Kicker>
+          <Kicker className="mb-2 !font-bold !text-brand-ink-soft">A Mirror, Not a Forecast</Kicker>
           <h1 className="display text-3xl text-brand-ink">Your Reading</h1>
           <p className="mt-2 text-sm text-brand-ink-soft">
             For {profile.name || "you"} — drawn only from your cards.

@@ -340,7 +340,7 @@ export async function POST(req: NextRequest) {
               `Your download window: ${product.redownloadDays} days.`,
               `Save the PDF somewhere safe after downloading.`,
               "",
-              `Ask one question: ${SITE_URL}/products/one-question-reading`,
+              `Find another birth card: ${SITE_URL}/birth-card-calculator`,
               "",
               "If anything doesn't work, just reply to this email.",
             ].join("\n"),

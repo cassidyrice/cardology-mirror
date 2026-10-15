@@ -4,7 +4,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
-import { CardAppCta } from "@/components/seo/CardAppCta";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -117,11 +116,7 @@ export default function CompatibilityCalculatorPage() {
       <p className="prose-reading mb-6 text-brand-ink-soft">
         Read each person&rsquo;s result in both directions, then open the matching
         pair guide. The interpretation offers questions for reflection; it does
-        not measure the quality or future of your relationship. The{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
-        </Link>{" "}
-        reads one person&rsquo;s question (the first birthday) — not a couple reading.
+        not measure the quality or future of your relationship. For a written couple reading, The Chemistry Check appears with your result.
       </p>
 
       <aside className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
@@ -224,7 +219,6 @@ export default function CompatibilityCalculatorPage() {
         </ul>
       </section>
 
-      <CardAppCta placement="compatibility-calculator-app" connections />
       <FreeCourseCta source="compatibility-calculator" className="mt-10" />
     </SeoShell>
   );

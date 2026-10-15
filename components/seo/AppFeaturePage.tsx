@@ -26,7 +26,7 @@ export function AppFeaturePage({
   /** Short line beside the free calculator, for pages that need the fixed-map escape. */
   note?: string;
   calculatorLabel?: string;
-  /** Shared end-of-page offer. Off when this page places a quieter ask after context. */
+  /** Shared end-of-page pointer to the calculator. Off when the page already places one. */
   showOffer?: boolean;
 }) {
   const jsonLd = {

@@ -1,39 +1,19 @@
 import Link from "next/link";
 
-import {
-  DEEP_DIVE_CALCULATOR_ENTRY_LABEL,
-  DEEP_DIVE_CALCULATOR_FORM_HREF,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-} from "@/lib/deep-dive";
-
-// Quiet contextual funnel block for educational pages that used to dead-end.
-// Paid path: calculator → $13 One Question Reading.
+// Quiet end-of-page pointer for educational pages. The only paid offers are the
+// three hand-written readings (lib/readings.ts), shown with the calculator result.
 export function OfferCta({ className = "" }: { className?: string }) {
-
   return (
     <aside className={`shell-ink border border-brand-on-dark-line p-6 sm:p-7 ${className}`}>
-      <p className="type-eyebrow-dark">Free card name → one question, answered from it</p>
-      <h2 className="mt-3 max-w-2xl font-serif text-3xl leading-tight sm:text-4xl">
-        Ask one question.
-      </h2>
-      <p className="mt-3 max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
-        The free calculator stops at the card name. The {DEEP_DIVE_PRODUCT_NAME} ({DEEP_DIVE_PRICE_LABEL})
-        takes the one thing you keep circling and reads it from your card, this
-        year&rsquo;s cards, and the card you owe. Written for you the moment you pay — on your screen and in your inbox within about a minute.
+      <p className="max-w-[38em] text-sm leading-relaxed text-brand-on-dark-soft sm:text-base">
+        Find your birth card free. Three hand-written readings appear with your result.
       </p>
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+      <div className="mt-5">
         <Link
-          href={DEEP_DIVE_CALCULATOR_FORM_HREF}
+          href="/birth-card-calculator"
           className="accent-button large-button inline-flex text-center"
         >
-          {DEEP_DIVE_CALCULATOR_ENTRY_LABEL}
-        </Link>
-        <Link
-          href={DEEP_DIVE_CALCULATOR_FORM_HREF}
-          className="text-sm font-medium text-brand-on-dark-soft underline underline-offset-4"
-        >
-          Or find the free card name first →
+          Find your birth card
         </Link>
       </div>
     </aside>

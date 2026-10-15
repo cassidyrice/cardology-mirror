@@ -125,12 +125,11 @@ export default function PeriodMeaningToolPage() {
           .
         </p>
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
-          Want one decision read from your own cards instead of looking them up by hand?
-          That is the{" "}
-          <Link href="/products/one-question-reading" className="underline underline-offset-4">
-            One Question Reading
+          Want your own seasons read for you instead of looking them up by hand?{" "}
+          <Link href="/birth-card-calculator" className="underline underline-offset-4">
+            Find your card free
           </Link>
-          .
+          ; three hand-written readings appear with your result.
         </p>
       </section>
 

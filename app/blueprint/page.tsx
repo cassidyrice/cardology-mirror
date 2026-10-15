@@ -8,10 +8,7 @@ import { SiteHeader } from "@/components/seo/SiteHeader";
 import { Kicker, LinkButton } from "@/components/ui";
 import { YearBlueprintApp } from "@/components/year/YearBlueprintApp";
 import { buildBlueprint } from "@/lib/blueprint";
-import {
-  DEEP_DIVE_PRODUCT_PATH,
-  FIFTY_TWO_BY_SEVEN_REPORT_SLUG,
-} from "@/lib/deep-dive";
+import { FIFTY_TWO_BY_SEVEN_REPORT_SLUG } from "@/lib/deep-dive";
 import { redirect } from "next/navigation";
 
 import { BLUEPRINT_REPORT_SLUG, BLUEPRINT_REPORT_VIEW_PATH } from "@/lib/blueprint-report";
@@ -56,8 +53,8 @@ export default async function BlueprintPage({
                 email and we&rsquo;ll resend your sign-in link.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <LinkButton href={DEEP_DIVE_PRODUCT_PATH} variant="accent" size="large">
-                  Ask one question
+                <LinkButton href="/birth-card-calculator" variant="accent" size="large">
+                  Find a birth card
                 </LinkButton>
                 <LinkButton href="/contact" variant="outline" size="large">
                   Contact Support

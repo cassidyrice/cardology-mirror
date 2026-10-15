@@ -23,12 +23,6 @@ import {
   reflectionPrompt,
 } from "@/components/today/reflection";
 import { ProfilePrompt } from "@/components/profile/ProfilePrompt";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 
 const PRETTY_DATE = new Intl.DateTimeFormat("en-US", {
   weekday: "long",
@@ -238,9 +232,9 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
 
       <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
         <p className="px-1 pt-4 text-sm leading-relaxed text-brand-ink-soft">
-          Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from the birth card and the year on this page, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
-          <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
-            {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+          Three hand-written readings appear with your result on the{" "}
+          <Link href="/birth-card-calculator" className="font-medium text-brand-ink underline underline-offset-4">
+            birth card calculator →
           </Link>
         </p>
       </motion.div>

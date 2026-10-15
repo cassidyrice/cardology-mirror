@@ -5,12 +5,6 @@ import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
-import {
-  DEEP_DIVE_CALCULATOR_FORM_HREF,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -42,10 +36,6 @@ const faqs = [
   {
     q: "What do the 52 birth cards mean?",
     a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
-  },
-  {
-    q: "What is the One Question Reading?",
-    a: `The free pages name your birth card and its pattern. The One Question Reading ($13) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, usually ready in ${ONE_QUESTION_TURNAROUND}. One payment, no renewal.`,
   },
 ];
 
@@ -162,12 +152,7 @@ export default function BirthCardIndex() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        After you have the card, the{" "}
-        <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-brand-oxblood underline underline-offset-4">
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
-        </Link>{" "}
-        reads one decision from it — your card, this year&rsquo;s cards, and the card
-        you owe, usually ready in {ONE_QUESTION_TURNAROUND}. One payment, no renewal.
+        Three hand-written readings appear with your result.
       </p>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}

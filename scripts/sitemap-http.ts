@@ -123,20 +123,22 @@ function pathnameOf(loc: string): string {
   }
 }
 
-/** Main sitemap keeps the $13 reading primary and leaves the Blueprint Report off. */
+/** Retired offer pages (Oct 2026) redirect, so they must stay off the main sitemap. */
+const RETIRED_PRODUCT_PATHS = [
+  "/products/blueprint-report",
+  "/products/one-question-reading",
+  "/products/year-ahead",
+  "/products/card-blueprint-app",
+];
 export function assertBlueprintReportStaysOffMainSitemap(
   path: string,
   locations: readonly string[],
 ): void {
   const pathnames = locations.map(pathnameOf);
-  if (pathnames.includes("/products/blueprint-report")) {
-    throw sitemapRouteError(
-      path,
-      "lists /products/blueprint-report. That page stays off the main sitemap so the $13 One Question Reading stays primary.",
-    );
-  }
-  if (!pathnames.includes("/products/one-question-reading")) {
-    throw sitemapRouteError(path, "is missing /products/one-question-reading.");
+  for (const retired of RETIRED_PRODUCT_PATHS) {
+    if (pathnames.includes(retired)) {
+      throw sitemapRouteError(path, `lists ${retired}. Retired offers redirect and stay off the sitemap.`);
+    }
   }
 }
 

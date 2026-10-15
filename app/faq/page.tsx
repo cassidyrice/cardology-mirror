@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { buildFaqPageJsonLd, FAQ_PATH, FAQ_SECTIONS } from "@/lib/faq";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -13,7 +12,7 @@ const UPDATED = PAGE_UPDATED_DATES[FAQ_PATH];
 
 const TITLE = "Cardology FAQ";
 const DESCRIPTION =
-  "Cardology vs cardiology and tarot, the free birth-card lookup, the $13 reading's minute turnaround, and how /today works. Each answer links to the page that owns it.";
+  "Cardology vs cardiology and tarot, the free birth-card lookup, readings and orders, and how /today works. Each answer links to the page that owns it.";
 const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" };
 
 export const dynamic = "force-static";
@@ -50,8 +49,8 @@ export default function FaqPage() {
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
           Cardology maps a birthday to one playing card. Same date, same card. It is not
-          cardiology and not tarot. The free calculator returns the card. The $13 One
-          Question Reading is written within {ONE_QUESTION_TURNAROUND} of payment. This page
+          cardiology and not tarot. The free calculator returns the card, and three
+          hand-written readings appear with your result. This page
           repeats those answers and links to the page that owns each one.
         </p>
       </div>

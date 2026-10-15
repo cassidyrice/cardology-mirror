@@ -31,7 +31,7 @@ const nextConfig = {
       },
       {
         source: "/products",
-        destination: "/products/one-question-reading",
+        destination: "/birth-card-calculator",
         statusCode: 301,
       },
       {
@@ -42,7 +42,7 @@ const nextConfig = {
       // Marketing aliases (P0)
       {
         source: "/personal-card-blueprint",
-        destination: "/products/one-question-reading",
+        destination: "/birth-card-calculator",
         statusCode: 301,
       },
       {

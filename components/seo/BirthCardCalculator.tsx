@@ -229,10 +229,8 @@ export function BirthdayWorkerAnchor({
 }
 
 /**
- * Under the card name: "Your year ahead as a {card}" ($19) first, then the $13
- * reading as the secondary option, then the free email preview for anyone not
- * ready to buy. The birthday is already known, so both buttons skip a second
- * birthday field. The Joker has no year to read, so it gets the email only.
+ * Under the card name: the free exercise link and the free email preview.
+ * The three paid readings render as columns below the calculator box.
  */
 function CalculatorNextStep({
   reveal,
@@ -361,7 +359,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free one-line read of the card's pattern, shown under the $13 CTA. */
+/** Free one-line read of the card's pattern. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

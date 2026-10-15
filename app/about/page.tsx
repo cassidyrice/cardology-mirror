@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -14,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and write the $13 One Question Reading — one decision, read from your card and your year.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and write hand-written readings.",
   alternates: { canonical: "/about" },
 };
 
@@ -72,8 +71,8 @@ export default function AboutPage() {
           <p className="text-base leading-relaxed text-brand-ink">
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
-            and repeated dynamics. Free tools come first; the paid product is the $13
-            One Question Reading, one question written up from your card and your year — not a phone reading.
+            and repeated dynamics. Free tools come first; three hand-written readings
+            appear with your result in the free calculator.
           </p>
         </div>
       </header>
@@ -84,11 +83,6 @@ export default function AboutPage() {
           I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
           Blueprints is the site I built so you can look up your card, read the
           library, and check the math yourself.
-        </p>
-        <p>
-          The paid product is the $13 One Question Reading: you bring one question,
-          I read it from your birth card, this year's cards, and the card you owe,
-          and it lands in your inbox within {ONE_QUESTION_TURNAROUND}.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -120,7 +114,7 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Experience on this site means shipping the tools people actually use: the free
           birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and the One Question Reading pipeline. Expertise means
+          meanings. Expertise means
           publishing the method in public — see{" "}
           <Link href="/methodology" className="underline">
             methodology
@@ -192,22 +186,14 @@ export default function AboutPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <h2 className="font-serif text-3xl text-brand-ink">Why a written reading</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">Written readings</h2>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          The free calculator answers “what is my card?” The reading answers “what does
-          my card say about this one decision?” The One Question Reading is a one-time
-          $13 purchase: your birth card, this year's Long Range and Pluto cards, and the
-          card you owe, read against the question you bring, written for you within{" "}
-          {ONE_QUESTION_TURNAROUND}. Read it once, then watch the next few weeks. Historical phone
-          fulfillment still works for people who already purchased access; new public
-          SEO pages point to the reading.
+          Find your card with the{" "}
+          <Link href="/birth-card-calculator" className="underline">
+            free calculator
+          </Link>
+          ; three hand-written readings appear with your result.
         </p>
-        <Link
-          href="/products/one-question-reading"
-          className="inline-block rounded-full border border-brand-ink bg-brand-ink px-5 py-2.5 text-sm font-semibold text-brand-on-dark"
-        >
-          One Question Reading — $13
-        </Link>
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">

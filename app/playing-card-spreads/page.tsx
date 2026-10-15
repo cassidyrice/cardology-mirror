@@ -8,7 +8,6 @@ import { TableScroll } from "@/components/seo/TableScroll";
 import { YearlySpreadNavigator } from "@/components/seo/YearlySpreadNavigator";
 import cardology from "@/lib/engine-core/engine.js";
 import { parseCard, SUIT_COLOR_PAPER } from "@/lib/cards";
-import { DEEP_DIVE_PRICE_LABEL, DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
 import { SPREADS, SPREADS_HUB_PATH } from "@/lib/spreads";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -648,9 +647,7 @@ export default function PlayingCardSpreads() {
           </Link>
         </p>
         <p className="mt-3 text-sm text-brand-ink-soft">
-          <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-ink-soft underline underline-offset-4">
-            One question ({DEEP_DIVE_PRICE_LABEL}), optional
-          </Link>
+          Three hand-written readings appear with your result.
         </p>
       </nav>
 

@@ -12,7 +12,6 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -135,11 +134,6 @@ function QuietContinue() {
             Browse 52 meanings
           </Link>
         </li>
-        <li>
-          <Link href="/products/one-question-reading" className="text-brand-ink-soft underline underline-offset-4">
-            One question ($13), optional
-          </Link>
-        </li>
       </ul>
     </nav>
   );
@@ -197,12 +191,7 @@ export default function WhatIsCardology() {
         </p>
       </div>
       <p className="mb-2 text-sm text-brand-ink-soft">
-        Free first: reveal your birth card below. Optional next: the{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
-        </Link>
-        {" "}
-        — one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
+        Free first: reveal your birth card below. Three hand-written readings appear with your result.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -245,25 +234,8 @@ export default function WhatIsCardology() {
           <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
             all 52 Cardology card meanings
           </Link>
-          . Optional next step: the{" "}
-          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-            $13 One Question Reading
-          </Link>{" "}
-          (your card, this year's cards, and the card you owe, read against the one question you bring).
+          .
         </p>
-        <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
-          <p className="font-serif text-base text-brand-ink">After your free card</p>
-          <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            The One Question Reading is $13 once: one question, read from your card and
-            the year you are in, written for you within {ONE_QUESTION_TURNAROUND}. No subscription.
-          </p>
-          <Link
-            href="/products/one-question-reading"
-            className="accent-button mt-4"
-          >
-            Ask one question — $13
-          </Link>
-        </div>
       </section>
 
       <nav aria-label="On this page" className="mb-8 mt-10 rounded-2xl border border-brand-line p-4">
@@ -537,11 +509,11 @@ export default function WhatIsCardology() {
         <p className="prose-reading text-brand-ink-soft">
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
-          the pattern written out, start with the{" "}
-          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-            $13 One Question Reading
+          the pattern written out,{" "}
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
+            find your card with the free calculator
           </Link>
-          — one question, read from your card, this year's cards, and the card you owe.
+          ; three hand-written readings appear with your result.
         </p>
       </section>
 
@@ -564,9 +536,6 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/products/one-question-reading" className="ink-button">
-            $13 One Question Reading →
-          </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →
           </Link>

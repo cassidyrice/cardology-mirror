@@ -11,9 +11,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
-      {/* Funnel exit below the onboarding flow: this surface previously had
-          zero commerce links. It sits under the min-h-dvh screens, so it never
-          interrupts the slides — it is there when a visitor scrolls. */}
+      {/* Calculator pointer below the onboarding flow. It sits under the
+          min-h-dvh screens, so it never interrupts the slides — it is there
+          when a visitor scrolls. */}
       <div className="mx-auto w-full max-w-3xl px-5 pb-16">
         <OfferCta />
       </div>

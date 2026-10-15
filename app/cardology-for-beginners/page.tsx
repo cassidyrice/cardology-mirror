@@ -4,12 +4,6 @@ import Link from "next/link";
 import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 import {
@@ -20,7 +14,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`;
+const DESCRIPTION = `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, and compatibility.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -73,10 +67,10 @@ const steps = [
   },
   {
     n: "6",
-    title: "Ask one question only if it earns it",
-    body: `If the free tools keep matching real life, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. A mirror, not a forecast. Written for you within ${ONE_QUESTION_TURNAROUND}.`,
-    href: DEEP_DIVE_PRODUCT_PATH,
-    label: `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL}`,
+    title: "Go deeper only if it earns it",
+    body: "Find your card with the free calculator; three hand-written readings appear with your result.",
+    href: "/birth-card-calculator",
+    label: "Free calculator",
   },
 ];
 
@@ -95,7 +89,7 @@ const faqs = [
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one decision is still circling, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) reads it from your birth card, this year's Long Range and Pluto cards, and the card you owe. It is a mirror, not a forecast, written within ${ONE_QUESTION_TURNAROUND}.`,
+    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. Three hand-written readings appear with your calculator result.`,
   },
 ];
 
@@ -151,12 +145,7 @@ export default function CardologyForBeginnersPage() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        If that card keeps matching real life, the{" "}
-        <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-oxblood underline underline-offset-4">
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
-        </Link>{" "}
-        reads one decision from your birth card, this year&apos;s Long Range and Pluto
-        cards, and the card you owe. A mirror, not a forecast. Written within {ONE_QUESTION_TURNAROUND}.
+        Three hand-written readings appear with your result.
       </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
@@ -249,17 +238,11 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The {DEEP_DIVE_PRODUCT_NAME} is a one-time {DEEP_DIVE_PRICE_LABEL} purchase: one
-          question, read from your birth card, this year&apos;s Long Range and Pluto cards,
-          and the card you owe. About 600 words, emailed within {ONE_QUESTION_TURNAROUND}.
-          A mirror, not a forecast. No subscription.
+          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
+            Find your card with the free calculator
+          </Link>
+          ; three hand-written readings appear with your result.
         </p>
-        <Link
-          href={DEEP_DIVE_PRODUCT_PATH}
-          className="accent-button mt-4"
-        >
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
-        </Link>
       </div>
 
       <section className="mt-10">
@@ -273,7 +256,7 @@ export default function CardologyForBeginnersPage() {
           ))}
         </div>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
-          Price, turnaround, and what the reading will not do are also on the{" "}
+          More answers are on the{" "}
           <Link href="/faq" className="text-brand-oxblood underline underline-offset-4">
             FAQ
           </Link>

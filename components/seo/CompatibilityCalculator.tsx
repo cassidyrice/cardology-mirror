@@ -1,5 +1,6 @@
 "use client";
 
+import { OfferColumns } from "@/components/offers/OfferColumns";
 import { useEffect, useMemo, useState, type FormEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import {
@@ -18,7 +19,6 @@ import {
 } from "@/lib/life-path";
 import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { CompatShareHero } from "@/components/share/CompatShareHero";
-import { DeepDiveCta } from "./DeepDiveCta";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -287,15 +287,9 @@ function PairResult({
         onPick={(position) => setSelected(position)}
       />
 
+      <OfferColumns placement="compatibility-result" className="mt-8" />
+
       <div className="mt-8 flex w-full flex-col items-center gap-3">
-        <DeepDiveCta
-          placement="compatibility-calculator-result"
-          birthdate={birthdateA}
-          source="birth-card-compatibility-calculator"
-        />
-        <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          This $13 One Question Reading is for the first birthday only — that person’s question, not a couple’s.
-        </p>
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}
           secondSlug={bSlug}

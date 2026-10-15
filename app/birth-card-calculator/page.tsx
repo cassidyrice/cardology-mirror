@@ -222,18 +222,9 @@ export default function CalculatorPage() {
           <li><h3 className="font-serif text-lg text-brand-ink">2. Read its meaning</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Open the card meaning linked in your result. Choose one theme that connects with something you have experienced.</p></li>
           <li><h3 className="font-serif text-lg text-brand-ink">3. Ask one question</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Where do I notice this pattern in my life? Write down one example and one small choice you could make. Leave interpretations that do not fit.</p></li>
         </ol>
-        <p className="mt-5 text-sm leading-relaxed text-brand-ink-soft">Want to keep exploring? Your result links to the app sample for daily cards and 52-day periods. The sample is free to try; your personal app is $69 once. Your free card meaning is always available.</p>
+        <p className="mt-5 text-sm leading-relaxed text-brand-ink-soft">Want to keep exploring? Your result links to the app sample for daily cards and 52-day periods. Your free card meaning is always available.</p>
       </section>
 
-      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
-        Optional paid step after the free card:{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          One Question Reading — $13
-        </Link>{" "}
-        (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
-        on your screen and in your inbox within about a minute).
-        The free calculator never stores your birthday.
-      </p>
 
       <section id="what-is-a-birth-card" className="mt-8 max-w-2xl scroll-mt-10">
         <h2 className="font-serif text-2xl text-brand-ink">What is a birth card in Cardology?</h2>

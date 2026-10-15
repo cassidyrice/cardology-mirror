@@ -30,7 +30,7 @@ export function renderElroyReadingEmail(
     "",
     reading.reading.disclaimer,
     "",
-    `One Question Reading ($13): ${blueprintUrl}`,
+    `Three hand-written readings appear with your result: ${blueprintUrl}`,
     "",
     "You are on the Card Blueprints list for occasional educational and product emails. Unsubscribe links appear on future marketing messages.",
   ].join("\n");
@@ -46,7 +46,7 @@ export function renderElroyReadingEmail(
     `<h2 style="font-size:16px">Reflection</h2>`,
     `<p>${escapeHtml(reading.reading.reflection)}</p>`,
     `<p style="font-size:13px;color:#5b5148">${escapeHtml(reading.reading.disclaimer)}</p>`,
-    `<p><a href="${escapeHtml(blueprintUrl)}">Ask my question ($13)</a></p>`,
+    `<p>Three hand-written readings appear with your result on the <a href="${escapeHtml(blueprintUrl)}">birth card calculator</a>.</p>`,
     `<p style="font-size:12px;color:#5b5148">You are on the Card Blueprints list for occasional educational and product emails. Unsubscribe links appear on future marketing messages.</p>`,
     `</div>`,
   ].join("");

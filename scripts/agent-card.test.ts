@@ -61,20 +61,17 @@ test("A2A agent card is valid JSON at the well-known public path", () => {
   expect(card.skills.length).toBeGreaterThan(0);
 });
 
-test("skill takes a DOB and deep-links the free calculator, then the $13 reading", () => {
+test("skill takes a DOB and deep-links the free calculator; no retired offers", () => {
   const skill = card.skills.find((item) => item.id === "birth-card-from-dob");
   expect(skill).toBeDefined();
   if (!skill) return;
 
   expect(skill.description).toMatch(/date of birth|DOB/i);
   expect(skill.description).toContain("https://cardblueprints.com/birth-card-calculator");
-  expect(skill.description).toContain("https://cardblueprints.com/products/one-question-reading");
-  expect(skill.description).toContain("$13");
+  expect(skill.description).not.toContain("/products/one-question-reading");
+  expect(skill.description).not.toMatch(/\$13\b/);
   expect(skill.description).not.toContain("/products/blueprint-report");
-  expect(skill.description).toMatch(/one question/i);
-  // The reading is written in about a minute now, not 2 business days.
-  expect(skill.description).toMatch(/about a minute/i);
-  expect(skill.description).not.toMatch(/2 business days/i);
+  expect(skill.description).toMatch(/hand-written readings/i);
   expect(skill.description).toMatch(/not fortune-telling/i);
   expect(skill.description).toMatch(/not tarot/i);
   expect(skill.examples?.join("\n")).not.toContain("/products/blueprint-report");
@@ -84,32 +81,30 @@ test("skill takes a DOB and deep-links the free calculator, then the $13 reading
   );
 });
 
-test("agent card sells the $13 One Question Reading as the paid next step", () => {
-  expect(cardText).toContain("$13");
-  expect(cardText).toContain("One Question Reading");
+test("agent card points to the hand-written readings, not retired offers", () => {
+  expect(cardText).not.toMatch(/\$13\b/);
+  expect(cardText).not.toContain("One Question Reading");
+  expect(cardText).toMatch(/hand-written readings/i);
   expect(cardText).not.toContain("52xSeven Blueprint");
   expect(cardText).not.toContain("/products/blueprint-report");
   expect(cardText).not.toMatch(/\$129\b/);
   expect(cardText).not.toMatch(/\$297\b/);
   expect(cardText).not.toMatch(/\$19\b/);
   expect(cardText).not.toMatch(/\$9\b/);
-  // The reading is $13 (CLAUDE.md non-negotiable); $47 is the retired SKU price.
-  expect(cardText).toMatch(/\$13\b/);
+  // All site offers were retired in Oct 2026; only the three Stan Store readings remain.
   expect(cardText).not.toMatch(/\$47\b/);
   expect(cardText).not.toContain("Deep Dive $9");
   expect(cardText).not.toContain("Personal Card Blueprint");
   expect(llms).toContain("https://cardblueprints.com/.well-known/agent-card.json");
-  expect(llms).toContain("$13 One Question Reading");
+  expect(llms).not.toContain("One Question Reading");
   expect(llms).not.toMatch(/\$47\b/);
   expect(llms).not.toContain("52xSeven Blueprint");
   expect(llms).not.toMatch(/\$9\b/);
-  // The report stays documented as optional and off the default next step.
-  expect(llms).toContain("not the default offer");
-  expect(llms.indexOf("/products/one-question-reading")).toBeLessThan(
-    llms.indexOf("/products/blueprint-report"),
-  );
-  expect(llms).toMatch(/\$129\b/);
-  expect(llms).toMatch(/\$297\b/);
+  expect(llms).not.toContain("/products/one-question-reading");
+  expect(llms).not.toContain("/products/blueprint-report");
+  for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
+    expect(llms).toContain(`https://stan.store/mycardblueprint/p/${url}`);
+  }
 });
 
 test("Pages _headers serve the card as public JSON with CORS", () => {
