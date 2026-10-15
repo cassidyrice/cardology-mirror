@@ -178,3 +178,14 @@ describe("application sitemap integrity", () => {
     }
   });
 });
+
+describe("sitemap excludes redirected URLs", () => {
+  test("no sitemap entry is a source of a middleware 301", async () => {
+    const { RETIRED_PUBLIC_REDIRECTS } = await import("../middleware");
+    const redirected = new Set(Object.keys(RETIRED_PUBLIC_REDIRECTS));
+    const offenders = buildApplicationSitemapEntries()
+      .map((entry) => new URL(entry.url).pathname)
+      .filter((path) => redirected.has(path));
+    expect(offenders).toEqual([]);
+  });
+});

@@ -1066,7 +1066,13 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
 // The original Cardology explainer now 301s to the comprehensive evergreen guide.
 // Keep its source copy for history, but remove it from listings, feeds, related
 // modules, static generation, and the sitemap so search engines get one clear URL.
-const RETIRED_BLOG_SLUGS = new Set(["what-cardology-is-and-is-not"]);
+// Keep in sync with RETIRED_PUBLIC_REDIRECTS in middleware.ts: a redirected post
+// must not be listed in the sitemap (Search Console flags "Page with redirect").
+const RETIRED_BLOG_SLUGS = new Set([
+  "what-cardology-is-and-is-not",
+  "reading-your-yearly-spread",
+  "why-some-birth-cards-clash",
+]);
 
 export const BLOG_POSTS: BlogPost[] = [...CORE_BLOG_POSTS, ...GENERATED_POSTS].filter(
   (post) => !RETIRED_BLOG_SLUGS.has(post.slug),

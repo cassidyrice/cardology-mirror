@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 import { applySecurityHeaders } from "@/lib/security-headers";
 
-const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
+export const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/content-engine": "/explore",
   "/content-calendar": "/explore",
   "/content-engine/video/order": "/explore",
