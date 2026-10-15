@@ -30,16 +30,26 @@ die() {
   exit 1
 }
 
-# --- Guard: canonical path ---
-base="$(basename "$ROOT")"
-if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
-  die "Production deploys are only allowed from ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+# --- Guard: deploy context ---
+# Allowed contexts:
+#   1. GitHub Actions on refs/heads/main (.github/workflows/deploy.yml), which
+#      serializes deploys with a workflow concurrency group instead of the lock.
+#   2. The canonical local checkout ~/cardology-elroy-qa (legacy manual path).
+CI_DEPLOY=0
+if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+  [[ "${GITHUB_REF:-}" == "refs/heads/main" ]] \
+    || die "CI deploys are only allowed from refs/heads/main (got ${GITHUB_REF:-unset})."
+  CI_DEPLOY=1
+else
+  base="$(basename "$ROOT")"
+  if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
+    die "Production deploys are only allowed from GitHub Actions on main or ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+  fi
+  # Canonical path must be exact, not merely a directory with the same basename.
+  [[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
+  source "$ROOT/scripts/deploy-lock.sh"
+  acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
 fi
-
-# Canonical path must be exact, not merely a directory with the same basename.
-[[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
-source "$ROOT/scripts/deploy-lock.sh"
-acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
 # Placeholder validation happens while holding our own lock.
 if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then
   die "wrangler.toml has an unresolved release binding"
@@ -55,6 +65,8 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+# actions/checkout leaves a detached HEAD; use the ref name the guard verified.
+if [[ "$CI_DEPLOY" -eq 1 ]]; then BRANCH="${GITHUB_REF_NAME:-main}"; fi
 COMMIT="$(git rev-parse HEAD)"
 SHORT="$(git rev-parse --short HEAD)"
 SUBJECT="$(git log -1 --pretty=%s)"
