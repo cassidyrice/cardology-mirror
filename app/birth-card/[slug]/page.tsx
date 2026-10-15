@@ -134,9 +134,7 @@ function dedupeAgainstPrior(text: string, priorTexts: string[]): string {
 function CardMeaningPage({ card }: { card: CardSeo }) {
   const siblings = allCardSeo().filter((c) => c.suit === card.suit && c.slug !== card.slug);
   const dates = birthDatesForCard(card);
-  const related = relatedCards(card);
   const faqs = cardFaqs(card, dates);
-  const angles = interpretiveAngles(card);
   const videos = videosForCard(card.slug);
   const birthdayVideo = BIRTHDAY_REVEAL_VIDEOS[card.slug];
   const famous = famousForCard(card.code);
@@ -226,6 +224,11 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
       </div>
 
+      <Section title={`What does the ${card.label} mean as a birth card?`}>
+        <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
+        <p>When the {card.label} is balanced: {card.sweetSpot}</p>
+      </Section>
+
       <Section title="In a general reading">
         <p>{generalReadingText(card)}</p>
         {readingNotes ? (
@@ -251,12 +254,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <p>{adviceReadingText(card)}</p>
       </Section>
 
-      <Section title={`What does the ${card.label} mean as your birth card?`}>
-        <p>
-          A drawn card reads the moment; the birth card is the standing version — the {card.label} as a Cardology birth card in the {suitWord(card)} suit is the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
-        </p>
-      </Section>
-
       <Section title="At a glance">
         <dl className="grid gap-3 text-sm sm:grid-cols-2">
           <InfoItem label="Card" value={card.label} />
@@ -266,51 +263,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <InfoItem label="Shadow" value={card.shadow || card.over} />
           <InfoItem label="Birth dates" value={dates.map((d) => d.label).join(", ")} />
         </dl>
-      </Section>
-
-      <Section title="Quick meaning">
-        <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
-        <p>
-          In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card)} has to offer: {card.sweetSpot}
-        </p>
-      </Section>
-
-      <Section title={`As a tattoo`}>
-        <p>
-          The pip field of the {card.label}, on skin. No card rectangle, no corner index.
-          If you ink this card, ink the layout a real deck uses — then check it is actually yours.
-        </p>
-        <p className="mt-3">
-          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
-            Find your birth card free
-          </Link>
-          {" "}before you sit down.
-        </p>
-      </Section>
-
-      <Section title="Interpretive variations to compare">
-        <p>
-          Different Cardology readers tend to emphasize different facets of the same card.
-          Use these original comparison lenses to broaden the {card.label} meaning without
-          turning the card into a fixed personality label.
-        </p>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
-          {angles.map((angle) => (
-            <div key={angle.label} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-              <h3 className="font-serif text-base text-brand-ink">{angle.label}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{angle.body}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section title={`${card.label} personality`}>
-        <p>
-          People with the {card.label} birth card often learn through {suitDomainPlain(card)}. The rank adds the tone of {rankTheme(card.rank).toLowerCase()}, while the {suitWord(card)} suit points the pattern toward {card.suitDomain.toLowerCase()}. That combination can feel natural from the inside but very visible to others: the card tends to show up in decisions, attractions, work style, emotional rhythm, and the kind of problems a person repeatedly tries to solve.
-        </p>
-        <p>
-          The healthiest expression is not about becoming more intense or more mystical. It is about noticing the card&rsquo;s middle lane. For the {card.label}, the middle lane is: {card.sweetSpot} When this is active, the card reads less like a label and more like a useful compass.
-        </p>
       </Section>
 
       <Section title="The pattern, in three positions">
@@ -340,28 +292,15 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="Shadow and growth edge">
         <p>{card.shadow || card.over}</p>
-        <p>
-          The growth edge is almost always a return to proportion — unglamorous, but it works. Under-expressed? The medicine is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The medicine is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
-        </p>
-      </Section>
-
-            <Section title="Love and relationships">
-        <p>
-          In relationships, the {card.label} tends to reveal itself through {relationshipTheme(card)}. It can be deeply compelling when the person is centered, because the card brings a recognizable emotional signature. The shadow usually appears when the card tries to get safety through its over-expressed pattern instead of direct honesty.
-        </p>
-        <p>
-          For compatibility, compare the {card.label} with a partner&rsquo;s birth card and ruling card. The birth card shows the core pattern; the ruling card can show how the person expresses that pattern through personality, attraction, and day-to-day choices.
-        </p>
       </Section>
 
       <CompatPairsSection card={card} />
 
-      <Section title="Career, work, and purpose">
-        <p>
-          At work, the {card.label} often wants roles where {workTheme(card)}. The best fit depends on the whole chart, but the birth card alone can show what kind of contribution feels meaningful and what kind of pressure creates distortion. If this card is repeatedly burned out, scattered, or controlling, the work may be asking for a cleaner expression of its suit and rank.
-        </p>
-        {card.lifeDirection && <p>{card.lifeDirection}</p>}
-      </Section>
+      {card.lifeDirection && (
+        <Section title="Life direction">
+          <p>{card.lifeDirection}</p>
+        </Section>
+      )}
 
       {card.karma && (
         <Section title="Karma connections">
@@ -457,17 +396,6 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           </p>
         </Section>
       )}
-
-      <Section title="Related cards to compare">
-        <ul className="grid grid-cols-1 gap-2 text-sm">
-          {related.map((c) => (
-            <li key={c.slug}>
-              <Link href={`/birth-card/${c.slug}`} className="text-brand-oxblood underline underline-offset-4">{c.code} {c.label}</Link>
-              <span className="text-brand-ink-soft"> — compare another {suitWord(c).toLowerCase()} expression</span>
-            </li>
-          ))}
-        </ul>
-      </Section>
 
       {videos.length > 0 ? (
         <Section title={`Watch: ${card.label} shadow reading`}>
@@ -1068,19 +996,10 @@ function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
     { q: `What does the ${card.label} mean for money and career?`, a: moneyReadingText(card) },
     { q: `Is the ${card.label} a tarot card?`, a: tarotFaqText(card) },
     { q: `Does the ${card.label} have a reversed meaning?`, a: reversedFaqText(card) },
-    { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern connected with ${card.suitDomain.toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
     { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
     { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on the relationship between both people's birth cards, ruling cards, and timing. Use the compatibility calculator to compare ${card.label} with another card.` },
-    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the full 52 pip references on the playing-card tattoo meaning hub.` },
   ];
-}
-
-function relatedCards(card: CardSeo): CardSeo[] {
-  const all = allCardSeo();
-  const sameRank = all.filter((c) => c.rank === card.rank && c.slug !== card.slug).slice(0, 3);
-  const sameSuit = all.filter((c) => c.suit === card.suit && c.slug !== card.slug).slice(0, 3);
-  return [...sameRank, ...sameSuit].slice(0, 6);
 }
 
 function suitWord(card: CardSeo): string {
@@ -1149,33 +1068,6 @@ function rankTheme(rank: string): string {
     K: "leadership, command, and mature stewardship",
   };
   return themes[rank] ?? "card expression";
-}
-
-function interpretiveAngles(card: CardSeo): { label: string; body: string }[] {
-  const special = specialCardAngle(card);
-  return [
-    {
-      label: "Traditional birth-card lens",
-      body:
-        special ||
-        `Read the ${card.label} as ${rankTheme(card.rank).toLowerCase()} moving through ${card.suitDomain.toLowerCase()}. This is the stable, birth-date layer: it does not change with mood, age, or a random card draw.`,
-    },
-    {
-      label: "Modern personality lens",
-      body:
-        `In modern language, the ${card.label} describes a repeatable operating pattern: how someone tends to seek safety, power, connection, value, or meaning through ${suitDomainPlain(card)}.`,
-    },
-    {
-      label: "Relationship and work lens",
-      body:
-        `In relationships, this card often shows ${relationshipTheme(card)}. At work, it wants environments where ${workTheme(card)}. The same pattern can be magnetic when centered and exhausting when overused.`,
-    },
-    {
-      label: "Shadow-integration lens",
-      body:
-        `The shadow is not a flaw to dramatize; it is the card losing proportion. For the ${card.label}, integration means noticing when the gift becomes too quiet, too loud, or too hungry for control.`,
-    },
-  ];
 }
 
 function specialCardAngle(card: CardSeo): string | null {
