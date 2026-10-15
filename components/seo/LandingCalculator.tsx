@@ -13,6 +13,7 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { Reveal } from "@/components/seo/Reveal";
+import { OfferColumns } from "@/components/offers/OfferColumns";
 import {
   calculateBirthCardRevealFromIsoDate,
   type BirthCardReveal,
@@ -158,6 +159,11 @@ export function LandingCalculator() {
               Not your birthday? Change it
             </button>
           </p>
+          {reveal.result.birthCard !== "Joker" ? (
+            <div className="mx-auto mt-10 w-full max-w-5xl">
+              <OfferColumns placement="home-reveal" />
+            </div>
+          ) : null}
         </div>
       )}
     </section>

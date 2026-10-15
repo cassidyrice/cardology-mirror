@@ -1,5 +1,6 @@
 "use client";
 
+import { OfferColumns } from "@/components/offers/OfferColumns";
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
@@ -15,18 +16,10 @@ import {
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { BirthShareHero } from "@/components/share/BirthShareHero";
-import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
 import { CurrentPeriod } from "./CurrentPeriod";
-import { CardAppCta } from "./CardAppCta";
 import { NewsletterSignupForm } from "./NewsletterSignupForm";
-import { YearAheadResultOffer } from "./YearAheadCta";
-import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
-import {
-  CALCULATOR_PRIVACY_MICROCOPY,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
+import { YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
+import { CALCULATOR_PRIVACY_MICROCOPY } from "@/lib/deep-dive";
 // The 7KB authored source of card-bible watchFor lines, not the 271KB bible (client bundle).
 import CARD_VOICE from "@/scripts/card-bible-voice.json";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
@@ -205,6 +198,9 @@ export function BirthCardCalculator() {
         />
       )}
       </div>
+      {reveal && reveal.result.birthCard !== "Joker" ? (
+        <OfferColumns placement="calculator-result" className="mt-8" />
+      ) : null}
     </div>
   );
 }
@@ -256,28 +252,6 @@ function CalculatorNextStep({
       <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
         Try a free exercise with your card →
       </a>
-      {!isJoker && (
-        <>
-          <YearAheadResultOffer
-            cardLabel={label}
-            birthdate={date || reveal.birthdate}
-            placement="birth-card-calculator-result"
-          />
-          <p className="type-eyebrow mt-2 text-center">Or one question</p>
-          <DeepDiveHostedCheckout
-            birthdate={date || reveal.birthdate}
-            source="birth-card-calculator-result"
-            cardLabel={label}
-            cardSlug={slug ?? undefined}
-            secondary={YEAR_AHEAD_ON_SALE}
-            submitLabel={`Ask your question as the ${label} — ${DEEP_DIVE_PRICE_LABEL}`}
-          />
-          <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
-            The {DEEP_DIVE_PRODUCT_NAME}: your question, read from your birth card and this year. In your inbox within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
-          </p>
-          <CardAppCta placement="birth-card-calculator-app" birthdate={date || reveal.birthdate} />
-        </>
-      )}
       <NewsletterSignupForm
         source="calculator-result"
         compact

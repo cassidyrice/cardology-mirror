@@ -144,26 +144,29 @@ test("sitemap lists the year-ahead product page beside the reading", () => {
   expect(xml).toContain(`<loc>${SITE_URL}/products/one-question-reading</loc>`);
 });
 
-test("calculator result leads with the card-specific $19 year, keeps the $13 reading second", () => {
+test("calculator results show the three Stan Store readings, not the retired $19/$13 offers", () => {
   const calculator = read("components/seo/BirthCardCalculator.tsx");
   const result = calculator.slice(
     calculator.indexOf("function CalculatorNextStep"),
     calculator.indexOf("function BirthCardResultCard"),
   );
-  expect(result).toContain("<YearAheadResultOffer");
-  expect(result).toContain("cardLabel={label}");
-  expect(result.indexOf("<YearAheadResultOffer")).toBeLessThan(result.indexOf("<DeepDiveHostedCheckout"));
-  expect(result.indexOf("<DeepDiveHostedCheckout")).toBeLessThan(result.indexOf("<NewsletterSignupForm"));
-  // Same birthday handoff as the reading CTA: tab storage, never a URL.
-  expect(result).toMatch(/<YearAheadResultOffer[\s\S]*?birthdate=\{date \|\| reveal\.birthdate\}/);
+  expect(result).not.toContain("<YearAheadResultOffer");
+  expect(result).not.toContain("<DeepDiveHostedCheckout");
   expect(result).toContain("YEAR_AHEAD_PREVIEW_TAG");
   expect(result).toContain("Get a free preview by email");
+  expect(calculator).toContain('<OfferColumns placement="calculator-result"');
 
   const reveal = read("components/seo/Reveal.tsx");
-  expect(reveal).toContain("<YearAheadResultOffer");
-  expect(reveal.indexOf("<YearAheadResultOffer")).toBeLessThan(reveal.indexOf("Got one question? Ask it. $13."));
-  expect(reveal).toContain("birthdate={birthdate}");
+  expect(reveal).not.toContain("<YearAheadResultOffer");
+  expect(reveal).not.toContain("Got one question? Ask it. $13.");
   expect(reveal).toContain("YEAR_AHEAD_PREVIEW_TAG");
+  expect(read("components/seo/LandingCalculator.tsx")).toContain('<OfferColumns placement="home-reveal"');
+
+  const readings = read("lib/readings.ts");
+  for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
+    expect(readings).toContain(`https://stan.store/mycardblueprint/p/${url}`);
+  }
+  for (const price of ['"$97"', '"$137"', '"$179"']) expect(readings).toContain(price);
 
   const cta = read("components/seo/YearAheadCta.tsx");
   expect(cta).toContain("storeCheckoutBirthdate(birthdate)");
