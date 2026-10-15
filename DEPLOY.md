@@ -1,5 +1,24 @@
 # Production deploy policy (cardblueprints.com)
 
+## Primary path: GitHub Actions (auto-deploy)
+
+Every push to `main` (and manual **Run workflow** on "Deploy to Cloudflare Pages")
+runs `.github/workflows/deploy.yml`, which calls `bun run pages:deploy`
+(`scripts/deploy-production.sh`): tests → `next build` → `next-on-pages` →
+guarded `wrangler pages deploy --branch main --commit-hash <sha>` → live smoke.
+
+Required repo secrets:
+
+| Secret | Value |
+| --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Cloudflare API token with **Account → Cloudflare Pages → Edit** |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID that owns the `cardology-mirror` Pages project |
+
+The guard allows CI only when `GITHUB_ACTIONS=true` and `GITHUB_REF=refs/heads/main`.
+Deploys are serialized by the `production-deploy` concurrency group.
+
+The local manual path below is legacy and no longer required.
+
 ## Canonical source
 
 | Item | Value |
@@ -9,7 +28,7 @@
 | **Only deploy from** | `~/cardology-elroy-qa` |
 | Command | `bun run pages:deploy` |
 
-Pushing to GitHub does **not** deploy. Production is always:
+Legacy manual deploy (only if CI is unavailable):
 
 ```bash
 cd ~/cardology-elroy-qa
