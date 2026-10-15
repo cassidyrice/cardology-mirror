@@ -175,7 +175,7 @@ export default function BirthCardIndex() {
           calculate yours
         </Link>
         {" "}or open the{" "}
-        <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
+        <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
           Cardology chart
         </Link>
         .

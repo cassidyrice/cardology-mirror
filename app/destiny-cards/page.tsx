@@ -222,11 +222,7 @@ export default function DestinyCardsPage() {
         <p className="type-eyebrow mb-2 !text-brand-bronze">Cards of Destiny chart</p>
         <h2 className="font-serif text-3xl text-brand-ink">Birthday → playing card</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
-          Same map as the calculator. Pick a date, or type one above. Larger copy lives on the{" "}
-          <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
-            Cardology chart
-          </Link>
-          .
+          Same map as the calculator. Pick a date, or type one above.
         </p>
         <div className="mt-6">
           <PlayingCardsBirthdayChart />

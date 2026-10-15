@@ -7,7 +7,6 @@ import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import { BirthdayChartTable } from "@/components/seo/BirthdayChartTable";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   SITE_NAME,
@@ -190,7 +189,7 @@ export default function CalculatorPage() {
           ["#use-your-card", "Try your first exercise"],
           ["#what-is-a-birth-card", "Understand your card"],
           ["#how-it-works", "How it works"],
-          ["#cardology-chart", "Cardology Chart"],
+          ["#card-meanings", "All 52 cards"],
           ["#worked-example", "Worked example"],
           ["#birth-vs-ruling", "Birth vs ruling card"],
           ["#trust-and-limits", "Method & trust"],
@@ -300,27 +299,9 @@ export default function CalculatorPage() {
         </p>
       </aside>
 
-      <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="type-eyebrow mb-2 !text-brand-bronze">The birthday map</p>
-        <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
-        <p className="prose-reading mt-4 text-brand-ink-soft">
-          A Cardology chart (also called the Cardology calendar or birthday
-          chart) is the birthday-to-playing-card map: each calendar date
-          maps to a playing card, with December 31 set apart as the Joker.
-          Month and day are coordinates in a fixed pattern language — Hearts, Clubs, Diamonds,
-          Spades — not a shuffled draw, not tarot, and not fortune-telling. Same
-          date always yields the same card.
-        </p>
-        <p className="prose-reading mt-4 text-brand-ink-soft">
-          The free calculator above runs that same formula for one birthday. The
-          chart below is the whole map, so you can check a friend, a parent, or a
-          family at a glance. Find your month across the top and your day down
-          the side; the cell is your birth card. Tap any card to open that
-          birthday&rsquo;s page.
-        </p>
-        <BirthdayChartTable />
-        <h3 className="mt-8 font-serif text-xl text-brand-ink">Card meanings</h3>
-        <p className="prose-reading mt-2 text-sm text-brand-ink-soft">Found your card in the chart? Open its meaning.</p>
+      <section id="card-meanings" className="mt-10 scroll-mt-10">
+        <h2 className="font-serif text-3xl text-brand-ink">Card meanings</h2>
+        <p className="prose-reading mt-2 text-sm text-brand-ink-soft">Open any of the 52 birth card meanings.</p>
         <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="All 52 birth card meanings">
           {allCardSeo().map((c) => (
             <Link

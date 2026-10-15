@@ -41,7 +41,7 @@ const CALCULATOR_LINKS: Array<[string, string]> = [
 
 test("the birth card calculator links every CAR-62 hub and band meaning in open body copy", () => {
   const source = read("app/birth-card-calculator/page.tsx");
-  const chart = source.slice(source.indexOf('id="cardology-chart"'));
+  const chart = source.slice(source.indexOf('id="card-meanings"'));
   expect(chart.indexOf("Card meanings")).toBeGreaterThan(0);
 
   for (const [href, anchor] of CALCULATOR_LINKS) {
