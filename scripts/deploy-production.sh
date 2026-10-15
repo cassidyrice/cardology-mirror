@@ -18,7 +18,9 @@ cd "$ROOT"
 
 PROJECT_NAME="cardology-mirror"
 SITE_ORIGIN="https://cardblueprints.com"
-CANONICAL_DIR_NAME="cardology-elroy-qa"
+CANONICAL_DIR_NAME="cardology-mirror"
+# The Mac was factory-reset in Oct 2026; ~/cardology-elroy-qa is gone for good. This checkout replaced it.
+CANONICAL_DIR="$HOME/Documents/ChatGPT/Card Blueprints/cardology-mirror"
 ARTIFACT_DIR=".vercel/output/static"
 
 red() { printf '\033[31m%s\033[0m\n' "$*"; }
@@ -33,13 +35,14 @@ die() {
 # --- Guard: canonical path ---
 base="$(basename "$ROOT")"
 if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
-  die "Production deploys are only allowed from ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+  die "Production deploys are only allowed from ${CANONICAL_DIR} (cwd is $ROOT)."
 fi
 
 # Canonical path must be exact, not merely a directory with the same basename.
-[[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
+[[ "$(cd "$ROOT" && pwd -P)" == "$(cd "$CANONICAL_DIR" && pwd -P)" ]] || die "Not the canonical checkout"
 source "$ROOT/scripts/deploy-lock.sh"
-acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
+mkdir -p "$HOME/.cardblueprints"
+acquire_deploy_lock "$HOME/.cardblueprints/.deploy-lock" || exit 1
 # Placeholder validation happens while holding our own lock.
 if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then
   die "wrangler.toml has an unresolved release binding"

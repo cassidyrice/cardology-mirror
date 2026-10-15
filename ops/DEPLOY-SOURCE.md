@@ -14,7 +14,7 @@ dashboard.
 |---|---|
 | Site | https://cardblueprints.com |
 | Cloudflare Pages project | `cardology-mirror` |
-| **Canonical worktree** | `~/cardology-elroy-qa` |
+| **Canonical worktree** | `~/Documents/ChatGPT/Card Blueprints/cardology-mirror` (since the Oct 2026 factory reset; `~/cardology-elroy-qa` no longer exists) |
 | **Branch** | `main` |
 | **Deployed commit** | `7a59acef3f56b826b054fde1245447ca316c1e57` |
 | **Worker** | `cardology-unlock` |

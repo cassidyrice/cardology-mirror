@@ -8,7 +8,7 @@ ERROR: Production deploy blocked in this worktree.
 cardblueprints.com is the Cloudflare Pages project "cardology-mirror".
 Only the canonical tree may publish to it:
 
-  ~/cardology-elroy-qa
+  ~/Documents/ChatGPT/Card Blueprints/cardology-mirror
   bun run pages:deploy
   # → scripts/deploy-production.sh (clean tree + smoke checks)
 
