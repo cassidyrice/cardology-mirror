@@ -8,8 +8,6 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
-import { NewsletterSignupForm } from "@/components/seo/NewsletterSignupForm";
-import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { birthCardSlug } from "@/lib/birth-card-calculator";
 import { parseCard, todayISO } from "@/lib/cards";
@@ -110,19 +108,6 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
             </div>
           ) : null}
 
-          {YEAR_AHEAD_ON_SALE ? (
-            <div className="mt-4 text-left">
-              <NewsletterSignupForm
-                source="home-reveal"
-                compact
-                quietButton
-                heading="Get a free preview by email"
-                body={`A short preview of the year ahead for the ${label}, then your card every Monday.`}
-                buttonLabel="Send my free preview"
-                tags={cardSlug ? ["home-reveal", YEAR_AHEAD_PREVIEW_TAG, `card-${cardSlug}`] : ["home-reveal", YEAR_AHEAD_PREVIEW_TAG]}
-              />
-            </div>
-          ) : null}
         </>
       )}
 

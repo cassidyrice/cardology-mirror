@@ -18,6 +18,7 @@ test("calculator results show the three Stan Store readings, not the retired $19
   const reveal = read("components/seo/Reveal.tsx");
   expect(reveal).not.toContain("<YearAheadResultOffer");
   expect(reveal).not.toContain("Got one question? Ask it. $13.");
+  expect(reveal).not.toContain("free preview");
   expect(read("components/seo/LandingCalculator.tsx")).toContain('<OfferColumns placement="home-reveal"');
 
   const readings = read("lib/readings.ts");
