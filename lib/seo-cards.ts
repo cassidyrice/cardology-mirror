@@ -195,10 +195,18 @@ export function cardMeta(card: CardSeo): { title: string; description: string } 
   const title = `${card.label} Meaning: Birth Card, Love & Cartomancy`;
   const nickname = archetypeNickname(card.title);
   const range = birthDateRange(card);
-  const description =
+  // Google truncates snippets past ~160 chars; trim the longest templates step by step.
+  const fit = (d: string) =>
+    [
+      d,
+      d.replace(" pattern, shadow", ", shadow"),
+      d.replace(" pattern, shadow", ", shadow").replace(" as a birth card and in a reading:", " as a birth card:"),
+    ].find((v) => v.length <= 160) ?? d;
+  const description = fit(
     nickname && range
       ? `${card.label} meaning as a birth card and in a reading: ${nickname} pattern, shadow, love/work, dates ${range}. Playing cards, not tarot. Free calculator.`
-      : `${card.label} meaning as a birth card and in a reading: pattern, shadow, love/work, and exact birth dates. Playing cards, not tarot. Free calculator.`;
+      : `${card.label} meaning as a birth card and in a reading: pattern, shadow, love/work, and exact birth dates. Playing cards, not tarot. Free calculator.`,
+  );
   return { title, description };
 }
 

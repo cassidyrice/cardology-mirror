@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and write the $13 One Question Reading — one decision, read from your card and your year.",
+    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards and write the $13 One Question Reading, read from your card and your year.",
   alternates: { canonical: "/about" },
 };
 

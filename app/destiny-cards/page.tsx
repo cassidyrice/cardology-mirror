@@ -12,7 +12,7 @@ import { updatedLabel } from "@/lib/page-updated";
 
 const TITLE = "Cards of Destiny: Free Birth Card Calculator (Destiny Cards)";
 const DESCRIPTION =
-  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, full meaning, and the books the system comes from. Not tarot.";
+  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, meaning, and the source books. Not tarot.";
 const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {

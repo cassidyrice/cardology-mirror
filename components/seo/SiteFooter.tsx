@@ -4,7 +4,6 @@ import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
-  SITE_NAME,
   VIDEO_PATH,
 } from "@/lib/site";
 import {
@@ -93,7 +92,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
     >
       <div className={bare ? "" : "mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 lg:px-10"}>
         <p className="mb-10">
-          <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
+          <Link href="/" aria-label="Card blueprint home" className="inline-block">
             <BrandLogo compact />
           </Link>
         </p>

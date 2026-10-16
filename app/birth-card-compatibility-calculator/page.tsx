@@ -15,7 +15,7 @@ import {
 
 const TITLE = "Birth Card Compatibility Calculator (Destiny Cards, Free)";
 const DESCRIPTION =
-  "Free birth card compatibility calculator. Enter two birthdays for both Destiny Cards birth cards and the Life Path map — playing cards, not a tarot love reading.";
+  "Free birth card compatibility calculator. Enter two birthdays for both Destiny Cards birth cards and the Life Path map. Playing cards, not a tarot love reading.";
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -20,7 +20,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`;
+const DESCRIPTION = `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`;
 
 export const metadata: Metadata = {
   title: TITLE,
