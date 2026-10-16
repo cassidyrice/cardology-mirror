@@ -11,7 +11,7 @@ const UPDATED = PAGE_UPDATED_DATES["/cardology-books"];
 
 const TITLE = "Cardology Books & Decks: Every Title and Catalogue Record";
 const DESCRIPTION =
-  "The cardology bibliography, 1762 to today — Richmond 1893, Randall & Campbell 1947, Lein 1978, Camp 1992 — each with publisher, year, scope and a library record link.";
+  "The cardology bibliography, 1762 to today — Richmond 1893, Randall & Campbell 1947, Lein 1978, Camp 1992 — with publisher, year, scope and library record.";
 
 export const metadata: Metadata = {
   title: TITLE,
