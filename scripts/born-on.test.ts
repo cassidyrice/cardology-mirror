@@ -19,7 +19,7 @@ test("URL parity with the Worker: 366 day pages plus the index", () => {
   expect(bornOnPage("february-30")).toBeNull();
 });
 
-test("sample born-on pages keep Worker metadata and render inside the shared header with Readings", () => {
+test("sample born-on pages keep Worker metadata and render inside the shared header (readings are supplied by the root layout)", () => {
   for (const [slug, title] of [
     ["march-14", "March 14 Birthday Meaning: Personality & Birth Card"],
     ["december-31", "December 31 Birthday Meaning: Personality & Birth Card"],
@@ -31,8 +31,8 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
     expect(meta.title).toEqual({ absolute: title });
     expect(meta.alternates?.canonical).toBe(page.canonical);
     const html = renderToStaticMarkup(createElement(BornOnPageView, { page }));
-    expect(html).toContain("data-readings-menu");
-    expect(html).toContain("https://stan.store/mycardblueprint/p/the-chemistry-check");
+    expect(html).toContain('aria-label="Primary"');
+    expect(html).not.toContain("data-readings-menu");
     expect(html).toContain('type="application/ld+json"');
     expect(html).toContain(page.body.slice(0, 200));
   }
