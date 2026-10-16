@@ -204,3 +204,29 @@ test("money-path pages sit one crumb under home", () => {
     expect(hrefs.length).toBeLessThanOrEqual(2);
   }
 });
+
+test("header has one centered Readings menu: title + price only, linking to Stan", async () => {
+  const { READINGS_NAV } = await import("../lib/readings-nav");
+  expect(READINGS_NAV.map((r) => [r.title, r.price, r.href])).toEqual([
+    ["The Chemistry Check", "$97", "https://stan.store/mycardblueprint/p/the-chemistry-check"],
+    ["Your 12-Month Timing Map", "$137", "https://stan.store/mycardblueprint/p/your-12month-timing-map"],
+    ["The Family Snapshot", "$179", "https://stan.store/mycardblueprint/p/the-family-snapshot"],
+  ]);
+  const markup = renderToStaticMarkup(createElement(SiteHeader));
+  expect(occurrences(markup, "data-readings-menu")).toBe(1);
+  const start = markup.indexOf("data-readings-menu");
+  const menu = markup.slice(start, markup.indexOf("</details>", start));
+  // Centered in the bar and never hidden at any breakpoint.
+  expect(menu).toMatch(/class="[^"]*\babsolute\b[^"]*\bleft-1\/2\b[^"]*-translate-x-1\/2/);
+  expect(menu).not.toMatch(/class="[^"]*\b(hidden|sm:hidden|md:hidden|lg:hidden|xl:hidden)\b[^"]*"[^>]*>\s*<summary/);
+  expect(menu).toContain(">Readings<");
+  const links = anchorTags(menu);
+  expect(links).toHaveLength(3);
+  for (const r of READINGS_NAV) {
+    expect(menu).toContain(`href="${r.href}"`);
+    expect(menu).toContain(`<span>${r.title}</span><span>${r.price}</span>`);
+  }
+  // Title + price only: strip tags and the summary; nothing else in the panel.
+  const panelText = menu.slice(menu.indexOf("<nav")).replace(/<[^>]+>/g, "|").split("|").filter((t) => t.trim());
+  expect(panelText).toEqual(READINGS_NAV.flatMap((r) => [r.title, r.price]));
+});
