@@ -87,6 +87,17 @@ export function middleware(request: NextRequest) {
     shouldRedirect = true;
   }
 
+  // /born-on (ported from the cardology-unlock Worker) keeps the Worker's URL
+  // shape: the index is canonical WITH a slash, day pages WITHOUT one.
+  if (rawPath === "/born-on") {
+    redirectUrl.pathname = "/born-on/";
+    shouldRedirect = true;
+  } else if (rawPath.startsWith("/born-on/") && rawPath !== "/born-on/" && rawPath.endsWith("/")) {
+    pathname = rawPath.replace(/\/+$/, "");
+    redirectUrl.pathname = pathname;
+    shouldRedirect = true;
+  }
+
   const retiredDestination = RETIRED_PUBLIC_REDIRECTS[pathname];
   if (retiredDestination) {
     redirectUrl.pathname = retiredDestination;
@@ -120,7 +131,10 @@ export function middleware(request: NextRequest) {
   // headers collected before the middleware runs (verified against the
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
-  const response = NextResponse.next();
+  const response =
+    rawPath === "/born-on/"
+      ? NextResponse.rewrite(new URL("/born-on", request.url))
+      : NextResponse.next();
   applySecurityHeaders(response.headers);
 
   // A2A clients fetch this from other origins. Middleware header merge wins
