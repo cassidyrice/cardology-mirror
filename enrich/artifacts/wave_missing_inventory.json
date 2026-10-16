@@ -1,0 +1,238 @@
+{
+  "kind": "inventory_only",
+  "job_submitted": false,
+  "main_sha": "29dae81d57c7791bff3df8962e1b5f62a64518ea",
+  "main_tip": "feat: isolated /time-person-of-the-year birth-card pack (#98)",
+  "counted_at": "2026-09-06",
+  "people_enriched_path": "pipeline/data/people_enriched.jsonl",
+  "people_enriched_rows": 2133,
+  "people_enriched_unique_qids": 2133,
+  "match_key": "qid",
+  "totals": {
+    "unique_people_across_wave_catalogs": 2894,
+    "already_in_people_enriched": 149,
+    "missing_need_vertex": 2745,
+    "missing_vertex_ready_source_card_qid": 2745,
+    "missing_not_ready": 0,
+    "sum_kept_pages_before_dedupe": 3090,
+    "cross_pack_overlap_among_unique": 196,
+    "note": "Governors (49/49 already in hub enrich) excluded from unique/missing totals so they are not double-counted. Including governors: unique 2943 / already 198 / missing still 2745."
+  },
+  "excluded_from_missing_as_already_hub_or_seed": {
+    "celeb_seed_people_jsonl": {"rows": 1058, "already": 1058, "missing": 0},
+    "presidents": {"rows": 45, "already": 45, "missing": 0},
+    "governors": {"rows": 49, "already": 49, "missing": 0},
+    "scotus": {"rows": 9, "already": 9, "missing": 0},
+    "nobel": {
+      "rows": 954,
+      "already": 950,
+      "missing": 4,
+      "note": "Same 4 hub-job card_in_life shorts already documented in enrich/README.md — not wave-new."
+    },
+    "signers": {"rows": 44, "already": 44, "missing": 0},
+    "born_on": {"rows": 1058, "already": 1058, "missing": 0, "note": "Same celeb seed catalog grouped by day."}
+  },
+  "not_people_packs": {
+    "mlb": {
+      "rows": 30,
+      "reason": "Franchise first-game date pack, not people. Same date-only hold as hub_inventory excluded_from_submit.date_only_hubs.mlb."
+    }
+  },
+  "other_person_catalog_not_in_wave_missing": {
+    "celebs_blog": {
+      "rows": 56,
+      "already": 27,
+      "missing_from_enriched": 29,
+      "also_in_wave_missing": 11,
+      "blog_only_not_in_wave_catalogs": 18,
+      "note": "Existing /blog/{name}-birth-card-profile grounding, not a wave SEO pack. Not added to 2745. Blog-only names include Kendrick Lamar, Olivia Rodrigo, Simone Biles, LeBron James, Lionel Messi, Emmanuel Macron, Narendra Modi, The Weeknd, Scarlett Johansson, Drake, Snoop Dogg, Rihanna, Tom Holland, Post Malone, Doja Cat, Emma Watson, Justin Bieber, SZA."
+    }
+  },
+  "by_pack": {
+    "senators": {
+      "wave": "2",
+      "kept_pages": 99,
+      "prov_excluded": 1,
+      "already_enriched": 5,
+      "missing": 94,
+      "notes": "Sitting senators. Katie Boyd Britt held for dob_conflict."
+    },
+    "cabinet": {
+      "wave": "2",
+      "kept_pages": 16,
+      "prov_excluded": 0,
+      "already_enriched": 6,
+      "missing": 10,
+      "notes": "Same 10 QIDs hub_inventory.cabinet_new_not_submitted (held from prior hub job)."
+    },
+    "governors": {
+      "wave": "2-hub",
+      "kept_pages": 49,
+      "prov_excluded": 1,
+      "already_enriched": 49,
+      "missing": 0,
+      "notes": "Already Vertex-enriched in hub job. Excluded from unique/missing totals."
+    },
+    "olympics_summer": {
+      "wave": "3",
+      "kept_pages": 541,
+      "prov_excluded": 160,
+      "already_enriched": 2,
+      "missing": 539,
+      "notes": "2+ Summer Olympic golds."
+    },
+    "olympics_winter": {
+      "wave": "3",
+      "kept_pages": 30,
+      "prov_excluded": 0,
+      "already_enriched": 0,
+      "missing": 30,
+      "notes": "8+ Winter Olympic medals."
+    },
+    "astronauts": {
+      "wave": "3",
+      "kept_pages": 221,
+      "prov_excluded": 150,
+      "already_enriched": 1,
+      "missing": 220,
+      "notes": "NASA corps + Group 24. Many catalog drops are missing_birth on NASA bios."
+    },
+    "oscars": {
+      "wave": "3",
+      "kept_pages": 166,
+      "prov_excluded": 2,
+      "already_enriched": 34,
+      "missing": 132,
+      "notes": "Best Actor / Best Actress."
+    },
+    "emmys": {
+      "wave": "3",
+      "kept_pages": 159,
+      "prov_excluded": 3,
+      "already_enriched": 17,
+      "missing": 142,
+      "notes": "Primetime Lead Actor / Actress."
+    },
+    "tonys": {
+      "wave": "3",
+      "kept_pages": 256,
+      "prov_excluded": 7,
+      "already_enriched": 10,
+      "missing": 246,
+      "notes": "Leading acting winners."
+    },
+    "nfl_hof": {
+      "wave": "5",
+      "kept_pages": 308,
+      "prov_excluded": 25,
+      "already_enriched": 1,
+      "missing": 307,
+      "notes": "Pro Football Hall of Fame."
+    },
+    "grammys_aoty": {
+      "wave": "5",
+      "kept_pages": 89,
+      "prov_excluded": 11,
+      "already_enriched": 14,
+      "missing": 75,
+      "notes": "Album of the Year billed winners / expanded members."
+    },
+    "rock_hall": {
+      "wave": "5",
+      "kept_pages": 753,
+      "prov_excluded": 80,
+      "already_enriched": 32,
+      "missing": 721,
+      "notes": "Largest missing pack. Performers + listed members."
+    },
+    "pulitzer_fiction": {
+      "wave": "6",
+      "kept_pages": 90,
+      "prov_excluded": 6,
+      "already_enriched": 7,
+      "missing": 83,
+      "notes": "Fiction winners / joint recipients."
+    },
+    "house_chairs": {
+      "wave": "7",
+      "kept_pages": 29,
+      "prov_excluded": 1,
+      "already_enriched": 0,
+      "missing": 29,
+      "notes": "Leadership + standing chairs. All missing."
+    },
+    "kennedy_center_honors": {
+      "wave": "7",
+      "kept_pages": 259,
+      "prov_excluded": 9,
+      "already_enriched": 24,
+      "missing": 235,
+      "notes": "Person-scope honorees. Heavy overlap with rock_hall / oscars / tonys."
+    },
+    "time_poty": {
+      "wave": "7",
+      "kept_pages": 74,
+      "prov_excluded": 24,
+      "already_enriched": 32,
+      "missing": 42,
+      "notes": "Named humans only. Many presidents already in hub/seed."
+    }
+  },
+  "sample_missing": [
+    {"name": "Michael Phelps", "qid": "Q39562", "card": "K♥", "packs": ["olympics_summer"]},
+    {"name": "Adrien Brody", "qid": "Q104514", "card": "7♦", "packs": ["oscars"]},
+    {"name": "Tom Hanks", "qid": "Q34012", "card": "5♠", "packs": ["oscars"]},
+    {"name": "Leonardo DiCaprio", "qid": "Q38111", "card": "9♣", "packs": ["oscars"]},
+    {"name": "Alan B. Shepard Jr.", "qid": "Q174979", "card": "2♣", "packs": ["astronauts"]},
+    {"name": "Adam B. Schiff", "qid": "Q350843", "card": "8♣", "packs": ["senators"]},
+    {"name": "Mike Johnson", "qid": "Q19880665", "card": "10♣", "packs": ["house_chairs"]},
+    {"name": "Scott Bessent", "qid": "Q7435987", "card": "5♣", "packs": ["cabinet"]},
+    {"name": "Alan Alda", "qid": "Q310394", "card": "Q♣", "packs": ["emmys"]},
+    {"name": "Adam Clayton", "qid": "Q175907", "card": "10♦", "packs": ["grammys_aoty", "kennedy_center_honors", "rock_hall"]}
+  ],
+  "vertex_cost_estimate": {
+    "label": "estimate_not_invoice",
+    "job_submitted": false,
+    "method": "enrich/estimate.py + enrich/make_batch.py (local JSONL only). Same Gemini 3.1 Pro Preview Flex/Batch HIGH/LOW band as prior hub/retry jobs.",
+    "model": "gemini-3.1-pro-preview",
+    "thinking_level_in_jsonl": "LOW",
+    "requests": 2745,
+    "input_chars": 7824736,
+    "input_tokens_est": 1956184,
+    "output_tokens_est": 1372500,
+    "thinking_low_tokens_est": 2196000,
+    "thinking_high_tokens_est": 6862500,
+    "usd_batch_no_thinking": 10.1912,
+    "usd_batch_thinking_low": 23.3672,
+    "usd_batch_with_thinking_upper": 43.1312,
+    "prior_target_usd_band": 16.0,
+    "prior_hub_target_usd_band": 20.0,
+    "within_prior_16_band": false,
+    "within_prior_20_band": false,
+    "rates_usd_per_million": {
+      "input": 1.0,
+      "output": 6.0,
+      "source": "Vertex Flex/Batch Gemini 3.1 Pro Preview, ≤200K tokens/request"
+    },
+    "method_notes": [
+      "Thinking cannot be turned off on gemini-3.1-pro-preview.",
+      "Retry/make_batch JSONL sets thinkingLevel=LOW.",
+      "no_thinking is a theoretical floor (output JSON only).",
+      "thinking_low assumes 800 thought tokens/row (unpublished).",
+      "thinking_upper uses the same 2500/row HIGH band as the 1058-row celeb job and the 1079-row hub job.",
+      "Prior hub job 1079 rows HIGH-upper $16.9557 (~$0.01571/row). This 2745-row HIGH-upper $43.1312 is the same per-row band.",
+      "A hub-sized slice (~1079 rows) would stay near the prior ~$17 HIGH upper. 2745/1079 ≈ 2.54 slices; 3× ~915-row jobs ≈ $14.38 HIGH each (estimate)."
+    ]
+  },
+  "confirm": {
+    "vertex_job_submitted": false,
+    "merged": false,
+    "deployed": false,
+    "commands_run": [
+      "git fetch/pull origin main → 29dae81",
+      "local python inventory vs pipeline/data/*/people.jsonl and people_enriched.jsonl",
+      "python3 -m enrich.make_batch --people /tmp/wave_missing_people.jsonl (writes JSONL only; prints 'No batch job was submitted.')",
+      "python3 -m enrich.estimate --input /tmp/wave_missing_vertex_batch.jsonl"
+    ]
+  }
+}
