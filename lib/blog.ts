@@ -144,7 +144,7 @@ export const BLOG_PILLARS: BlogPillar[] = [
     title: "What Is a Birth Card? Meanings",
     shortTitle: "Birth Cards",
     description:
-      "What is a birth card? In Cardology it is the playing card locked to your birthday. Guides to ruling cards, suits, and reading a card without making it a fixed identity.",
+      "What is a birth card? In Cardology it is the playing card locked to your birthday. Guides to ruling cards, suits, and reading your card well.",
     searchIntent: "People asking what is a birth card, or searching card-by-card meanings and birthday meanings.",
     answer:
       "A birth card is the one playing card assigned to a birthday in Cardology. Its meaning is rank plus suit, read as a range: balanced, under-expressed, and over-expressed. It is not a tarot birth card and not a government birth-registration card.",
