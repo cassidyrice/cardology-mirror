@@ -2,6 +2,7 @@
 
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
@@ -14,12 +15,6 @@ import {
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
-import { BirthShareHero } from "@/components/share/BirthShareHero";
-import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
-import { CurrentPeriod } from "./CurrentPeriod";
-import { CardAppCta } from "./CardAppCta";
-import { NewsletterSignupForm } from "./NewsletterSignupForm";
-import { YearAheadResultOffer } from "./YearAheadCta";
 import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
@@ -33,14 +28,24 @@ import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
 
+// Result-only UI: loaded on demand so it stays out of the first-paint bundle.
+const BirthShareHero = dynamic(() => import("@/components/share/BirthShareHero").then((m) => m.BirthShareHero));
+const DeepDiveHostedCheckout = dynamic(() => import("@/components/checkout/DeepDiveHostedCheckout").then((m) => m.DeepDiveHostedCheckout));
+const CurrentPeriod = dynamic(() => import("./CurrentPeriod").then((m) => m.CurrentPeriod));
+const CardAppCta = dynamic(() => import("./CardAppCta").then((m) => m.CardAppCta));
+const NewsletterSignupForm = dynamic(() => import("./NewsletterSignupForm").then((m) => m.NewsletterSignupForm));
+const YearAheadResultOffer = dynamic(() => import("./YearAheadCta").then((m) => m.YearAheadResultOffer));
+
 const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
 
 function CalculatorPreviewFan() {
   return (
     <div className="flex h-28 items-end justify-center" aria-hidden="true">
       {PREVIEW_CODES.map((code, i) => {
-        const src = shareFacePathFromCode(code);
-        if (!src) return null;
+        const full = shareFacePathFromCode(code);
+        if (!full) return null;
+        // 144x216 WebP thumbs (~5KB) instead of the 1000x1500 share PNGs (up to 440KB).
+        const src = full.replace("/share-cards/faces/", "/share-cards/thumbs/").replace(/\.png$/, ".webp");
         const rotate = i === 0 ? "-rotate-12" : i === 2 ? "rotate-12" : "rotate-0";
         const z = i === 1 ? "z-10" : "z-0";
         const overlap = i === 0 ? "translate-x-3" : i === 2 ? "-translate-x-3" : "";
@@ -51,6 +56,8 @@ function CalculatorPreviewFan() {
             alt=""
             width={72}
             height={108}
+            decoding="async"
+            fetchPriority="low"
             className={`relative ${z} ${rotate} ${overlap} rounded-[6px] border border-brand-line bg-brand-paper shadow-sm`}
           />
         );
