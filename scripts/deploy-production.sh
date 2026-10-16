@@ -116,12 +116,17 @@ if [[ "${SKIP_BUILD:-}" == "1" ]]; then
   [[ "$(cat "$ARTIFACT_DIR/version.txt" 2>/dev/null)" == "$COMMIT" ]] \
     || die "Artifact was not built from ${SHORT}. Run without SKIP_BUILD."
 else
+  # Stamp the commit into public/ BEFORE building. next-on-pages' _worker.js
+  # routes every request and only serves static files it saw at build time, so
+  # a file dropped into the artifact afterwards 404s live. (gitignored)
+  printf '%s\n' "$COMMIT" > public/version.txt
   echo "→ next build"
   bun run build
   echo "→ pages:build (next-on-pages)"
   bun run pages:build
   # Served at /version.txt so verify-deploy-source.sh can read the live commit.
-  printf '%s\n' "$COMMIT" > "$ARTIFACT_DIR/version.txt"
+  [[ "$(tr -d '[:space:]' < "$ARTIFACT_DIR/version.txt" 2>/dev/null)" == "$COMMIT" ]] \
+    || die "Artifact is missing version.txt for ${SHORT}"
 fi
 
 if [[ ! -d "$ARTIFACT_DIR" ]]; then

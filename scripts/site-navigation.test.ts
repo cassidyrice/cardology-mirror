@@ -71,7 +71,7 @@ test("bare footer keeps the single disclaimer and legal row", () => {
   expect(markup).not.toContain("Content Calendar (experiment)");
 });
 
-test("header waits until lg to switch between mobile and desktop navigation", () => {
+test("header waits until xl to switch between mobile and desktop navigation", () => {
   const primaryStart = headerSource.indexOf('aria-label="Primary"');
   const primaryEnd = headerSource.indexOf("</nav>", primaryStart);
   const primaryNav = headerSource.slice(primaryStart, primaryEnd);
@@ -81,12 +81,12 @@ test("header waits until lg to switch between mobile and desktop navigation", ()
 
   expect(primaryStart).toBeGreaterThan(0);
   expect(primaryEnd).toBeGreaterThan(primaryStart);
-  expect(primaryNav).toMatch(/className="[^"]*\blg:flex\b[^"]*"/);
+  expect(primaryNav).toMatch(/className="[^"]*\bxl:flex\b[^"]*"/);
   expect(primaryNav).not.toMatch(/className="[^"]*\bmd:flex\b[^"]*"/);
 
   expect(detailsStart).toBeGreaterThan(0);
   expect(detailsEnd).toBeGreaterThan(detailsStart);
-  expect(mobileDetails).toMatch(/className="[^"]*\blg:hidden\b[^"]*"/);
+  expect(mobileDetails).toMatch(/className="[^"]*\bxl:hidden\b[^"]*"/);
   expect(mobileDetails).not.toMatch(/className="[^"]*\bmd:hidden\b[^"]*"/);
 });
 
@@ -128,8 +128,12 @@ test("desktop and mobile nav are the same flat money paths, calculator before th
   expect(desktop).not.toContain("<ul");
 
   for (const nav of [desktop, mobile]) {
+    // The four money paths come first; the only extra link is the trailing
+    // Card Blueprint App sample (687bc78 / fe00b91), never a fifth money path.
     const tags = anchorTags(nav);
-    expect(tags).toHaveLength(MONEY_PATH_ORDER.length);
+    expect(tags).toHaveLength(MONEY_PATH_ORDER.length + 1);
+    expect(tags[MONEY_PATH_ORDER.length]).toContain("#sample");
+    expect(tags[MONEY_PATH_ORDER.length]).not.toContain("data-money-path");
     MONEY_PATH_ORDER.forEach(([id, href, label], index) => {
       const tag = tags[index] ?? "";
       expect(tag).toContain(`data-money-path="${id}"`);
