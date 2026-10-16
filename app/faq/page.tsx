@@ -13,7 +13,7 @@ const UPDATED = PAGE_UPDATED_DATES[FAQ_PATH];
 
 const TITLE = "Cardology FAQ";
 const DESCRIPTION =
-  "Cardology vs cardiology and tarot, the free birth-card lookup, the $13 reading's minute turnaround, and how /today works. Each answer links to the page that owns it.";
+  "Cardology vs cardiology and tarot, the free birth-card lookup, the $13 reading's minute turnaround, and how /today works. Each answer links to its full page.";
 const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" };
 
 export const dynamic = "force-static";

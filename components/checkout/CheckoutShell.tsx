@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { BrandLogo } from "@/components/seo/BrandLogo";
 import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { SITE_NAME } from "@/lib/site";
 
 export function CheckoutShell({
   children,
@@ -15,7 +14,7 @@ export function CheckoutShell({
   return (
     <div className="min-h-dvh bg-brand-paper text-brand-ink">
       <header className="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-5 sm:px-8">
-        <Link href="/" aria-label={`${SITE_NAME} home`}>
+        <Link href="/" aria-label="Card blueprint home">
           <BrandLogo compact />
         </Link>
         <Link

@@ -22,7 +22,7 @@ export const dynamic = "force-dynamic";
 
 const TITLE = `${YEAR_AHEAD_PRODUCT_NAME} · ${YEAR_AHEAD_PRICE_LABEL} · your card year, birthday to birthday`;
 const DESCRIPTION =
-  `Cardology ${YEAR_AHEAD_PRODUCT_NAME} for ${YEAR_AHEAD_PRICE_LABEL}: your Long Range card, your Pluto card and its Result, and all seven 52-day periods of your card year, dated. Ready the moment you pay. A mirror, not a forecast.`;
+  `Cardology ${YEAR_AHEAD_PRODUCT_NAME} for ${YEAR_AHEAD_PRICE_LABEL}: your Long Range card, your Pluto card and its Result, and all seven 52-day periods of your card year, dated. Ready the moment you pay.`;
 const OG_IMAGE = "/og/default.png";
 
 export const metadata: Metadata = {

@@ -45,7 +45,7 @@ test("beginners page sells the $13 One Question Reading after the free calculato
   const paidAt = markup.indexOf(`href="${DEEP_DIVE_PRODUCT_PATH}"`);
 
   expect(metadata.description).toBe(
-    `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`,
+    `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`,
   );
   expect(markup).toContain("Find your birth card free");
   expect(markup).toContain(offer);

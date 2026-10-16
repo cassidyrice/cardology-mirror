@@ -12,7 +12,7 @@ const UPDATED = PAGE_UPDATED_DATES["/52-card-astrology-explained"];
 
 const TITLE = "Playing Cards Birthday Chart & 52-Card Astrology";
 const DESCRIPTION =
-  "Playing cards birthday chart explained: how the 52-card deck maps to the calendar, what each suit and rank means, and free links to every birthday’s Cardology birth card.";
+  "Playing cards birthday chart explained: how the 52-card deck maps to the calendar, what each suit and rank means, and every birthday’s Cardology birth card.";
 
 export const metadata: Metadata = {
   title: TITLE,
