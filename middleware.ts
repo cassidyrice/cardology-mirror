@@ -1,3 +1,4 @@
+import { canonicalCompatPairPath, compatPathFromForm } from "@/lib/compat-routing";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
@@ -65,6 +66,18 @@ function isWorkerDirectory(pathname: string): boolean {
 // Canonical host enforcement: 301 any www.* request to the apex domain,
 // preserving path and query. Everything else passes through with a shared
 // security-header baseline (HSTS, frame deny, nosniff, etc.).
+async function compatFormRedirect(request: NextRequest, origin: string): Promise<NextResponse> {
+  let dest: string | null = null;
+  try {
+    dest = compatPathFromForm(await request.formData());
+  } catch {
+    dest = null;
+  }
+  const response = NextResponse.redirect(new URL(dest ?? "/compatibility/", origin), 303);
+  applySecurityHeaders(response.headers);
+  return response;
+}
+
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const redirectUrl = new URL(request.url);
@@ -87,15 +100,33 @@ export function middleware(request: NextRequest) {
     shouldRedirect = true;
   }
 
-  // /born-on (ported from the cardology-unlock Worker) keeps the Worker's URL
-  // shape: the index is canonical WITH a slash, day pages WITHOUT one.
-  if (rawPath === "/born-on") {
-    redirectUrl.pathname = "/born-on/";
-    shouldRedirect = true;
-  } else if (rawPath.startsWith("/born-on/") && rawPath !== "/born-on/" && rawPath.endsWith("/")) {
-    pathname = rawPath.replace(/\/+$/, "");
-    redirectUrl.pathname = pathname;
-    shouldRedirect = true;
+  // /born-on and /compatibility (ported from the cardology-unlock Worker) keep
+  // the Worker's URL shape: each index is canonical WITH a slash, child pages
+  // WITHOUT one.
+  for (const prefix of WORKER_SLASH_PREFIXES) {
+    if (rawPath === prefix) {
+      redirectUrl.pathname = `${prefix}/`;
+      shouldRedirect = true;
+    } else if (rawPath.startsWith(`${prefix}/`) && rawPath !== `${prefix}/` && rawPath.endsWith("/")) {
+      pathname = rawPath.replace(/\/+$/, "");
+      redirectUrl.pathname = pathname;
+      shouldRedirect = true;
+    }
+  }
+
+  // Worker parity: the no-JS compatibility calculator POSTs two dates to the
+  // index and gets a 303 to the canonical pair (or the Joker birthday page).
+  if (!shouldRedirect && rawPath === "/compatibility/" && request.method === "POST") {
+    return compatFormRedirect(request, redirectUrl.origin);
+  }
+
+  // Pair pages have one canonical order; the reverse order 301s to it.
+  if (!shouldRedirect && rawPath.startsWith("/compatibility/") && rawPath.includes("-and-")) {
+    const canonicalPair = canonicalCompatPairPath(rawPath.slice("/compatibility/".length));
+    if (canonicalPair && canonicalPair !== rawPath) {
+      redirectUrl.pathname = canonicalPair;
+      shouldRedirect = true;
+    }
   }
 
   const retiredDestination = RETIRED_PUBLIC_REDIRECTS[pathname];
@@ -132,8 +163,8 @@ export function middleware(request: NextRequest) {
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
   const response =
-    rawPath === "/born-on/"
-      ? NextResponse.rewrite(new URL("/born-on", request.url))
+    rawPath === "/born-on/" || rawPath === "/compatibility/"
+      ? NextResponse.rewrite(new URL(rawPath.slice(0, -1), request.url))
       : NextResponse.next();
   applySecurityHeaders(response.headers);
 
