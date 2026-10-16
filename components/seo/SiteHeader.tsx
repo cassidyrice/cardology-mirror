@@ -8,7 +8,6 @@ import { SITE_NAME } from "@/lib/site";
 import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
 import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
-import { HeaderReadingsMenu } from "./HeaderReadingsMenu";
 
 export function SiteHeader() {
   return (
@@ -21,7 +20,6 @@ export function SiteHeader() {
           <Link href="/" className="min-w-0 shrink text-brand-ink max-[479px]:[&_.brand-logo-wordmark]:sr-only" aria-label={`${SITE_NAME} home`}>
             <BrandLogo />
           </Link>
-          <HeaderReadingsMenu />
           <nav
             aria-label="Primary"
             className="order-last hidden w-full basis-full items-center justify-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft xl:flex xl:gap-5"

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { HeaderReadingsMenu } from "@/components/seo/HeaderReadingsMenu";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
@@ -168,6 +169,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <HeaderReadingsMenu />
         <div className="min-h-dvh w-full">{children}</div>
         <ElroyLauncher />
       </body>

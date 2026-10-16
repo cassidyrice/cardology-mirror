@@ -1,5 +1,5 @@
 // Custom readings sold on Stan (https://stan.store/mycardblueprint).
-// Header "Readings" menu shows ONLY title + price; prices confirmed by Cass 2026-10-15.
+// Sitewide readings bar shows ONLY title + price; prices confirmed by Cass 2026-10-15.
 export const STAN_STORE_URL = "https://stan.store/mycardblueprint";
 
 export const READINGS_NAV = [

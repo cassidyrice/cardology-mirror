@@ -57,10 +57,11 @@ test("no-JS calculator POST 303s like the Worker", async () => {
   expect(res.headers.get("location")).toBe("https://cardblueprints.com/compatibility/9-of-diamonds-and-jack-of-diamonds");
 });
 
-test("sample compatibility pages render inside the shared header with Readings", () => {
+test("sample compatibility pages render inside the shared header (readings are supplied by the root layout)", () => {
   for (const page of [compatIndexPage(), compatPage("ace-of-hearts")!, compatPage("ace-of-hearts-and-2-of-hearts")!]) {
     const html = renderToStaticMarkup(createElement(WorkerPageView, { page, kind: "compatibility" }));
-    expect(html).toContain("data-readings-menu");
+    expect(html).toContain('aria-label="Primary"');
+    expect(html).not.toContain("data-readings-menu");
     expect(html).toContain(page.body.slice(0, 200));
   }
   expect(compatPage("ace-of-hearts-and-2-of-hearts")!.title).toBe("Ace of Hearts & 2 of Hearts Compatibility: Chosen Bond");
