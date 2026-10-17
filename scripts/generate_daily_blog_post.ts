@@ -312,7 +312,7 @@ function buildPublicFigurePost(topic: PublicFigureTopic): BlogPost {
         heading: "How to use this profile",
         body: [
           `Use ${topic.name}'s profile as a learning example for the ${cardLabel}, then compare it with your own birth card and the cards of people close to you. This is where Cardology gets relatable: you start seeing why some people feel familiar, why others create friction, and why certain dynamics repeat.`,
-          "Find your card free; three hand-written readings appear with your result.",
+          "Find your card free; two readings appear with your result.",
         ],
         links: [
           { label: "Birth Card Calculator", href: "/birth-card-calculator" },
@@ -474,7 +474,7 @@ function enrichEat(post: BlogPost): BlogPost {
   );
   ensureFaq(
     "How do I get a personal reading?",
-    "Find your card free with the birth card calculator; three hand-written readings appear with your result.",
+    "Find your card free with the birth card calculator; two readings appear with your result.",
   );
   ensureFaq(
     "Who publishes Card Blueprints?",

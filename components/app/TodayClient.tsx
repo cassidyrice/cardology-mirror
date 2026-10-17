@@ -232,7 +232,7 @@ function Today({ data }: { data: import("@/lib/types").Reading }) {
 
       <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
         <p className="px-1 pt-4 text-sm leading-relaxed text-brand-ink-soft">
-          Three hand-written readings appear with your result on the{" "}
+          Two readings appear with your result on the{" "}
           <Link href="/birth-card-calculator" className="font-medium text-brand-ink underline underline-offset-4">
             birth card calculator →
           </Link>

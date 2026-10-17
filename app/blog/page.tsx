@@ -104,7 +104,7 @@ export default function BlogIndexPage() {
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
           ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
-          ["Want it personalized?", "Find your card; three hand-written readings appear with your result.", "/birth-card-calculator#bd", false],
+          ["Want it personalized?", "Find your card; two readings appear with your result.", "/birth-card-calculator#bd", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a

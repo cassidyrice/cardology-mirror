@@ -245,7 +245,7 @@ assert.doesNotMatch(
   productSurfaceText,
   /birth dates and the actual question/i,
 );
-// All earlier offers were retired in Oct 2026; the three Stan Store readings are the only paid offers.
+// All earlier offers were retired in Oct 2026; the two Stan Store readings are the only paid offers.
 assert.doesNotMatch(productSurfaceText, /One Question Reading is a \$13 written reading/i);
 assert.doesNotMatch(readFileSync("scripts/generate_daily_blog_post.ts", "utf8"), /DEEP_DIVE_PRICE_LABEL/);
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
@@ -432,7 +432,7 @@ assert.deepEqual(
   ),
   { status: 301, location: "https://cardblueprints.com/birth-card-calculator" },
 );
-// Every retired product URL 301s to the calculator, where the three readings appear (Oct 2026).
+// Every retired product URL 301s to the calculator, where the readings appear (Oct 2026).
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/birth-card-deep-dive",
@@ -471,9 +471,9 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
-  assert.match(productSurfaceText, new RegExp(`stan\\.store/mycardblueprint/p/${url}`));
-}
+assert.match(productSurfaceText, /https:\/\/stan\.store\/mycardblueprint/);
+// The old three Stan offers are hidden (Oct 2026); no surface may still sell them.
+assert.doesNotMatch(productSurfaceText, /stan\.store\/mycardblueprint\/p\/|12-Month Timing Map|Family Snapshot/);
 assert.doesNotMatch(
   productSurfaceText,
   /2 business days/,

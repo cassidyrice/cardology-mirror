@@ -129,7 +129,7 @@ export default function PeriodMeaningToolPage() {
           <Link href="/birth-card-calculator" className="underline underline-offset-4">
             Find your card free
           </Link>
-          ; three hand-written readings appear with your result.
+          ; two readings appear with your result.
         </p>
       </section>
 

@@ -39,7 +39,7 @@ export default function ContactPage() {
             <Link href="/birth-card-calculator" className="editorial-link text-brand-ink">
               free calculator
             </Link>
-            ; three hand-written readings appear with your result.
+            ; two readings appear with your result.
           </p>
         </div>
       </header>

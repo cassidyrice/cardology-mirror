@@ -68,7 +68,7 @@ const steps = [
   {
     n: "6",
     title: "Go deeper only if it earns it",
-    body: "Find your card with the free calculator; three hand-written readings appear with your result.",
+    body: "Find your card with the free calculator; two readings appear with your result.",
     href: "/birth-card-calculator",
     label: "Free calculator",
   },
@@ -89,7 +89,7 @@ const faqs = [
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. Three hand-written readings appear with your calculator result.`,
+    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. Two readings appear with your calculator result.`,
   },
 ];
 
@@ -145,7 +145,7 @@ export default function CardologyForBeginnersPage() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        Three hand-written readings appear with your result.
+        Two readings appear with your result.
       </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
@@ -241,7 +241,7 @@ export default function CardologyForBeginnersPage() {
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             Find your card with the free calculator
           </Link>
-          ; three hand-written readings appear with your result.
+          ; two readings appear with your result.
         </p>
       </div>
 

@@ -147,7 +147,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
         id: "readings",
         question: "Is there a paid reading?",
         answer:
-          "Find your card with the free calculator; three hand-written readings appear with your result.",
+          "Find your card with the free calculator; two readings appear with your result.",
         links: [{ href: "/birth-card-calculator", label: "Birth card calculator" }],
       },
       {

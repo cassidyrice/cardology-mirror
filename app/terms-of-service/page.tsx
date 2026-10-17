@@ -48,7 +48,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            three hand-written readings sold through Stan Store, and digital
+            two readings sold through Stan Store, and digital
             products when explicitly marked available. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
@@ -60,9 +60,9 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-brand-line pt-2">
-              <strong>Hand-written readings</strong> — The Chemistry Check ($97), Your
-              12-Month Timing Map ($137) and The Family Snapshot ($179), sold and paid
-              through Stan Store and delivered as a custom-written PDF within 7 days.
+              <strong>Readings</strong> — The Card Blueprint Reading ($300) and The
+              Chemistry Check ($27), sold and paid through Stan Store and delivered by
+              email as a PDF within 3 days.
               They are interpretive, not advice: they do not predict events and do not
               replace a professional.
             </li>

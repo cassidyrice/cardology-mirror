@@ -3,14 +3,14 @@
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 import { READINGS } from "@/lib/readings";
 
-/** The three readings, side by side. Shown once a visitor's card is revealed. */
+/** The readings, side by side. Shown once a visitor's card is revealed. */
 export function OfferColumns({ placement, className = "" }: { placement: string; className?: string }) {
   return (
     <section aria-labelledby={`offers-${placement}`} className={`w-full text-left ${className}`}>
       <h2 id={`offers-${placement}`} className="type-eyebrow mb-4 text-center !text-brand-bronze">
         Go deeper with a reading
       </h2>
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {READINGS.map((o) => (
           <li key={o.id} className="flex flex-col rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
             <h3 className="font-serif text-xl leading-snug text-brand-ink">{o.name}</h3>

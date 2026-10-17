@@ -91,7 +91,7 @@ test("agent card points to the hand-written readings, not retired offers", () =>
   expect(cardText).not.toMatch(/\$297\b/);
   expect(cardText).not.toMatch(/\$19\b/);
   expect(cardText).not.toMatch(/\$9\b/);
-  // All site offers were retired in Oct 2026; only the three Stan Store readings remain.
+  // All site offers were retired in Oct 2026; only the two Stan Store readings remain.
   expect(cardText).not.toMatch(/\$47\b/);
   expect(cardText).not.toContain("Deep Dive $9");
   expect(cardText).not.toContain("Personal Card Blueprint");
@@ -102,9 +102,9 @@ test("agent card points to the hand-written readings, not retired offers", () =>
   expect(llms).not.toMatch(/\$9\b/);
   expect(llms).not.toContain("/products/one-question-reading");
   expect(llms).not.toContain("/products/blueprint-report");
-  for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
-    expect(llms).toContain(`https://stan.store/mycardblueprint/p/${url}`);
-  }
+  expect(llms).toContain("https://stan.store/mycardblueprint");
+  expect(llms).not.toContain("stan.store/mycardblueprint/p/");
+  expect(llms).not.toMatch(/\$(97|137|179)\b/);
 });
 
 test("Pages _headers serve the card as public JSON with CORS", () => {

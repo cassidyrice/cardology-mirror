@@ -152,7 +152,7 @@ export default function BirthCardIndex() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        Three hand-written readings appear with your result.
+        Two readings appear with your result.
       </p>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}

@@ -63,7 +63,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "Three hand-written readings, shown with your calculator result"],
+  ["Paid deepen", "Books, software, readings", "Two readings, shown with your calculator result"],
 ] as const;
 
 const tarotRows = [
@@ -76,7 +76,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. Three hand-written readings appear with your result; none is a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. Two readings appear with your result; none is a prerequisite.",
   },
   {
     q: "What are Destiny Cards?",
@@ -128,7 +128,7 @@ const faqs = [
   },
   {
     q: "What is a Cards of Destiny reading?",
-    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; three hand-written readings appear with your result.",
+    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; two readings appear with your result.",
   },
   {
     q: "What are Robert Camp's Destiny Cards?",
@@ -192,7 +192,7 @@ export default function DestinyCardsPage() {
         </p>
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
-        Free first: reveal your destiny card on this page. Three hand-written readings appear with your result.
+        Free first: reveal your destiny card on this page. Two readings appear with your result.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />

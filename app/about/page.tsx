@@ -71,7 +71,7 @@ export default function AboutPage() {
           <p className="text-base leading-relaxed text-brand-ink">
             {SITE_NAME} starts with a birth date, calculates the card with a deterministic
             engine, and turns the card into language for people, relationships, timing,
-            and repeated dynamics. Free tools come first; three hand-written readings
+            and repeated dynamics. Free tools come first; two readings
             appear with your result in the free calculator.
           </p>
         </div>
@@ -192,7 +192,7 @@ export default function AboutPage() {
           <Link href="/birth-card-calculator" className="underline">
             free calculator
           </Link>
-          ; three hand-written readings appear with your result.
+          ; two readings appear with your result.
         </p>
       </section>
 

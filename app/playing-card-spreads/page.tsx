@@ -647,7 +647,7 @@ export default function PlayingCardSpreads() {
           </Link>
         </p>
         <p className="mt-3 text-sm text-brand-ink-soft">
-          Three hand-written readings appear with your result.
+          Two readings appear with your result.
         </p>
       </nav>
 

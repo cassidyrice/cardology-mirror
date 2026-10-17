@@ -39,9 +39,9 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
         <section className="border border-brand-line bg-brand-paper-deep p-5">
           <p className="font-serif text-lg text-brand-ink">
-            Card Blueprints now sells three hand-written readings (The Chemistry
-            Check, Your 12-Month Timing Map and The Family Snapshot) through Stan
-            Store. Each is a custom-written PDF delivered within 7 days. If a
+            Card Blueprints now sells two readings (The Card Blueprint
+            Reading and The Chemistry Check) through Stan Store. Each is a PDF
+            emailed within 3 days of purchase. If a
             reading used the wrong birth dates, reply to your receipt and we
             rewrite it at no charge. The sections below also cover past orders
             of offers that are no longer sold.

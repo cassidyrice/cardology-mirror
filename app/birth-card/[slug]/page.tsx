@@ -686,7 +686,7 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
         <Link href="/birth-card-calculator" className="font-medium text-brand-ink underline underline-offset-4">
           birth card calculator
         </Link>
-        ; three hand-written readings appear with your result.
+        ; two readings appear with your result.
       </p>
     </section>
   );

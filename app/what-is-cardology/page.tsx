@@ -191,7 +191,7 @@ export default function WhatIsCardology() {
         </p>
       </div>
       <p className="mb-2 text-sm text-brand-ink-soft">
-        Free first: reveal your birth card below. Three hand-written readings appear with your result.
+        Free first: reveal your birth card below. Two readings appear with your result.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -513,7 +513,7 @@ export default function WhatIsCardology() {
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             find your card with the free calculator
           </Link>
-          ; three hand-written readings appear with your result.
+          ; two readings appear with your result.
         </p>
       </section>
 

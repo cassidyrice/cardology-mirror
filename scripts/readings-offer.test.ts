@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const read = (p: string) => readFileSync(join(import.meta.dir, "..", p), "utf8");
 
-test("calculator results show the three Stan Store readings, not the retired $19/$13 offers", () => {
+test("calculator results show the two Stan Store readings, not the retired $19/$13 offers", () => {
   const calculator = read("components/seo/BirthCardCalculator.tsx");
   const result = calculator.slice(
     calculator.indexOf("function CalculatorNextStep"),
@@ -22,10 +22,13 @@ test("calculator results show the three Stan Store readings, not the retired $19
   expect(read("components/seo/LandingCalculator.tsx")).toContain('<OfferColumns placement="home-reveal"');
 
   const readings = read("lib/readings.ts");
-  for (const url of ["the-chemistry-check", "your-12month-timing-map", "the-family-snapshot"]) {
-    expect(readings).toContain(`https://stan.store/mycardblueprint/p/${url}`);
+  expect(readings).toContain('STAN_STORE_URL = "https://stan.store/mycardblueprint"');
+  expect(readings).not.toContain("stan.store/mycardblueprint/p/");
+  for (const name of ['"The Card Blueprint Reading"', '"The Chemistry Check"']) expect(readings).toContain(name);
+  for (const price of ['"$300"', '"$27"']) expect(readings).toContain(price);
+  for (const retired of ["Timing Map", "Family Snapshot", '"$97"', '"$137"', '"$179"']) {
+    expect(readings).not.toContain(retired);
   }
-  for (const price of ['"$97"', '"$137"', '"$179"']) expect(readings).toContain(price);
 
 });
 

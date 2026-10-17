@@ -26,7 +26,7 @@ test("spreads close with a free calculator and a soft $13 line", () => {
   expect(zone).toContain("Find your birth card — free");
   expect(zone).toContain("accent-button");
   expect(zone).not.toContain("DEEP_DIVE_PRODUCT_PATH");
-  expect(zone).toContain("Three hand-written readings appear with your result.");
+  expect(zone).toContain("Two readings appear with your result.");
   expect(zone).not.toContain("<DeepDiveCta");
   expect(zone.match(/accent-button/g)).toHaveLength(1);
 
@@ -55,7 +55,7 @@ test("the closing row renders after the FAQ, calculator first", () => {
   expect(calculator).toBeGreaterThan(-1);
   expect(zone).not.toContain("/products/one-question-reading");
   expect(zone).toContain("Find your birth card — free");
-  expect(zone).toContain("Three hand-written readings appear with your result.");
+  expect(zone).toContain("Two readings appear with your result.");
   expect(zone).toContain("The boards above stay fixed.");
   expect(zone).not.toMatch(/Deep Dive|Blueprint/);
   expect(zone).not.toMatch(/\bfortune\b/i);
