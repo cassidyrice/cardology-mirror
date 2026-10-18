@@ -26,8 +26,10 @@ test("footer preserves library, support, policy and purchase-access destinations
   for (const path of ['/birth-card-calculator','/what-is-cardology','/birth-card','/born-on/','/compatibility/','/faq','/contact','/my-purchases','/privacy-policy','/terms-of-service','/refund-policy']) expect(html).toContain(`href="${path}"`);
   for (const offer of READINGS_NAV) expect(html).toContain(`href="${offer.href}"`);
 });
-test("offer prices, family limit and follow-up are explicit and consistent", () => {
+test("offer prices, one-person Timing scope, family limit and follow-up are explicit and consistent", () => {
   expect(READINGS_NAV.map(x=>x.price)).toEqual(['$39','$49','$59']);
+  expect(READINGS_NAV[1].who).toBe('For one person');
+  expect(READINGS_NAV[1].checkoutHref).toBeNull(); // Published Stan intake still requests three people.
   expect(READINGS_NAV[2].who).toBe('Up to three people total');
   const html = render(ManualReadingOffers);
   for (const offer of READINGS_NAV) {
@@ -39,5 +41,8 @@ test("offer prices, family limit and follow-up are explicit and consistent", () 
   expect(html).toContain(READING_FOLLOW_UP);
   expect(html).toContain(`mailto:${READING_SUPPORT_EMAIL}`);
   expect(html).not.toContain('$79');
+  expect(html).not.toContain('two key people');
+  expect(html).not.toContain('two important people');
+  expect(html).toContain('timing-map-availability');
   expect(html).not.toContain('Seven dated personal seasons');
 });

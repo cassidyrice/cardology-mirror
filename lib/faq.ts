@@ -164,7 +164,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       {
         id: "personal-readings",
         question: "Which personal reading should I choose?",
-        answer: "The Chemistry Check ($39) explores two people. Your 12-Month Timing Map ($49) follows your year. The Family Snapshot ($59) focuses on the main dynamics among up to three people total, including you. Cass personally prepares each reading and delivers it by email.",
+        answer: "The Chemistry Check ($39) explores two people. Your 12-Month Timing Map ($49) follows one person’s year. The Family Snapshot ($59) focuses on the main dynamics among up to three people total, including you. Cass personally prepares each reading and delivers it by email.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {

@@ -1,6 +1,7 @@
-// Manual reading prices and Family scope approved by Cass on 2026-10-18.
-// Chemistry and Family URLs/prices were verified on the published Stan pages.
-// Timing remains disabled while the approved number of people is reconciled.
+// Manual reading prices and scope approved by Cass on 2026-10-18.
+// The latest owner decision confirms Timing is for one person.
+// All three URLs/prices were verified on their published Stan pages.
+// Timing ordering stays disabled until Stan's one-person scope/intake update is approved.
 export const STAN_STORE_URL = "https://stan.store/mycardblueprint";
 
 export const READING_FOLLOW_UP = "Includes seven days of email follow-up. Every response is personally reviewed and approved by Cass.";
@@ -35,9 +36,9 @@ export const READINGS_NAV: readonly ManualReading[] = [
     price: "$49",
     href: "/#timing-map",
     checkoutHref: null,
-    who: "Your year and two key people",
-    description: "Your next twelve months, laid out in dated seasons, with the themes to reflect on and the people whose cards connect with yours.",
-    includes: ["Your core cards and yearly themes", "Dated seasons across the next twelve months", "Connections with two important people in your life"],
+    who: "For one person",
+    description: "Your next twelve months, laid out in dated seasons, with your core cards, yearly themes, and questions to bring into your own life.",
+    includes: ["Your core cards and yearly themes", "Dated seasons across the next twelve months", "Reflection prompts for the year ahead"],
   },
   {
     id: "family-snapshot",
