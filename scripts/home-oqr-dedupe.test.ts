@@ -19,13 +19,13 @@ const product = readFileSync("app/products/one-question-reading/page.tsx", "utf8
 const PRODUCT_PROOF = "The 8 of Diamonds in you wants proof before it moves";
 const RETIRED_OFFER = /\bDeep Dive\b|\bBlueprint\b|\$19/;
 
-test("home leads with a free calculator link and keeps the $13 reading beside it", () => {
-  expect(home).toContain('href="/birth-card-calculator"');
+test("home leads with the free calculator and points to the personal reading offers", () => {
+  expect(home).toContain('href="#home-birthdate"');
   expect(home).toContain("Find your card free");
-  expect(home).toContain("DEEP_DIVE_PRODUCT_PATH");
-  expect(home).toContain("ONE_QUESTION_TURNAROUND");
-  expect(home).toContain("A mirror, not a forecast.");
-  expect(home.indexOf('href="/birth-card-calculator"')).toBeLessThan(
+  expect(home).toContain('href="#readings"');
+  expect(home).toContain("<ManualReadingOffers />");
+  expect(home).not.toContain("Prepared automatically");
+  expect(home.indexOf('href="#home-birthdate"')).toBeLessThan(
     home.indexOf("<LandingCalculator />"),
   );
   expect(home.indexOf("<LandingCalculator />")).toBeLessThan(
@@ -34,32 +34,31 @@ test("home leads with a free calculator link and keeps the $13 reading beside it
   expect(home).not.toMatch(RETIRED_OFFER);
 
   const markup = renderToStaticMarkup(createElement(Home));
-  const free = markup.indexOf('href="/birth-card-calculator"');
-  const reading = markup.indexOf('href="/products/one-question-reading"');
+  const free = markup.indexOf('href="#home-birthdate"');
+  const reading = markup.indexOf('href="#readings"');
   expect(free).toBeGreaterThan(-1);
   expect(reading).toBeGreaterThan(free);
   expect(markup).toContain("Find your card free");
-  expect(markup).toContain(
-    `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL} · ${ONE_QUESTION_TURNAROUND}`,
-  );
-  expect(markup).toContain("A mirror, not a forecast.");
+  expect(markup).toContain("Choose a personal reading");
+  expect(markup).toContain('id="readings"');
+  expect(markup).toContain("The Chemistry Check");
+  expect(markup).toContain("Your 12-Month Timing Map");
+  expect(markup).toContain("The Family Snapshot");
   expect(markup).not.toMatch(RETIRED_OFFER);
 });
 
-test("home teases the sample and the product page owns the full proof", () => {
+test("the existing product page retains its full sample independently of the manual offers", () => {
   expect(product).toContain(PRODUCT_PROOF);
   expect(product).toContain('id="sample"');
   expect(product).toContain("You're an 8 of Diamonds. Eights are power");
   expect(home).not.toContain(PRODUCT_PROOF);
   expect(home).not.toContain("Eights are power, mastery");
-  expect(home).toContain("Read the full sample");
-  expect(home).toContain("#sample");
 
   const homeMarkup = renderToStaticMarkup(createElement(Home));
   const productMarkup = renderToStaticMarkup(createElement(OneQuestionReadingPage));
   expect(homeMarkup).not.toContain(PRODUCT_PROOF);
   expect(productMarkup).toContain(PRODUCT_PROOF);
-  expect(homeMarkup).toContain('href="/products/one-question-reading#sample"');
+  expect(homeMarkup).toContain('data-order-reading="chemistry-check"');
 });
 
 test("One Question Reading title, meta, and H1 name the $13 minute mirror", () => {

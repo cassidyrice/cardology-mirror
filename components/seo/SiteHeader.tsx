@@ -1,95 +1,72 @@
 "use client";
 
 import Link from "next/link";
-
-import { DEEP_DIVE_PRODUCT_PATH } from "@/lib/deep-dive";
-import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
+import { useEffect, useRef, type KeyboardEvent, type MouseEvent } from "react";
 import { SITE_NAME } from "@/lib/site";
-import { moneyPathByHref, PRIMARY_NAV } from "@/lib/site-nav";
+import { READINGS_NAV } from "@/lib/readings-nav";
 import { BrandLogo } from "./BrandLogo";
-import { HeaderDeepDiveCta } from "./HeaderDeepDiveCta";
 import { HeaderReadingsMenu } from "./HeaderReadingsMenu";
 
+export const WEBSITE_NAV = [
+  { href: "/birth-card-calculator", label: "Find your card" },
+  { href: "/birth-card", label: "The card library" },
+  { href: "/cardology-for-beginners", label: "Learn" },
+  { href: "/explore", label: "Explore" },
+] as const;
+
 export function SiteHeader() {
-  return (
-    <>
-      <a href="#main-content" className="skip-link">
-        Skip to content
-      </a>
-      <header className="relative z-10 border-b border-brand-line bg-brand-paper">
-        <div className="relative mx-auto flex w-full max-w-6xl flex-wrap items-center gap-2 px-3 py-4 sm:gap-4 sm:px-8 lg:px-10">
-          <Link href="/" className="min-w-0 shrink text-brand-ink max-[479px]:[&_.brand-logo-wordmark]:sr-only" aria-label={`${SITE_NAME} home`}>
-            <BrandLogo />
-          </Link>
+  const header = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => {
+      if (header.current && !header.current.contains(event.target as Node))
+        header.current.querySelectorAll("details[open]").forEach(item => item.removeAttribute("open"));
+    };
+    document.addEventListener("pointerdown", closeOutside);
+    return () => document.removeEventListener("pointerdown", closeOutside);
+  }, []);
+  function closeOnEscape(event: KeyboardEvent<HTMLElement>) {
+    if (event.key !== "Escape") return;
+    const disclosure = (event.target as HTMLElement).closest("details[open]");
+    if (disclosure) {
+      disclosure.removeAttribute("open");
+      disclosure.querySelector("summary")?.focus();
+      event.preventDefault();
+    }
+  }
+  function closeAfterLink(event: MouseEvent<HTMLElement>) {
+    const link = (event.target as HTMLElement).closest("a");
+    if (!link) return;
+    link.closest("details")?.removeAttribute("open");
+    // Same-page offer anchors become the keyboard continuation point.
+    const url = new URL(link.href, window.location.href);
+    if (url.pathname === window.location.pathname && url.hash) {
+      const target = document.getElementById(url.hash.slice(1));
+      if (target) { target.tabIndex = -1; target.focus({ preventScroll: true }); }
+    }
+  }
+  return <>
+    <a href="#main-content" className="skip-link">Skip to content</a>
+    <header ref={header} className="blueprint-header" onKeyDown={closeOnEscape} onClick={closeAfterLink}>
+      <div className="blueprint-header-inner">
+        <Link href="/" className="blueprint-brand" aria-label={`${SITE_NAME} home`}><BrandLogo /></Link>
+        <nav aria-label="Primary" className="blueprint-desktop-nav">
+          {WEBSITE_NAV.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
           <HeaderReadingsMenu />
-          <nav
-            aria-label="Primary"
-            className="order-last hidden w-full basis-full items-center justify-center gap-4 text-[0.8rem] font-semibold text-brand-ink-soft xl:flex xl:gap-5"
-          >
-            {PRIMARY_NAV.map((link) =>
-              link.href === DEEP_DIVE_PRODUCT_PATH ? (
-                <HeaderDeepDiveCta key={link.href} />
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  data-money-path={moneyPathByHref(link.href).id}
-                  className="money-path whitespace-nowrap font-semibold text-brand-ink transition hover:text-brand-ink"
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
-            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="whitespace-nowrap font-semibold text-brand-oxblood hover:underline">
-              Open app sample
-            </Link>
+        </nav>
+        {/* Native disclosure may open before hydration; preserve that user choice. */}
+        <details className="blueprint-mobile-menu" suppressHydrationWarning>
+          <summary>Menu <span aria-hidden="true">+</span></summary>
+          <nav aria-label="Mobile primary">
+            {WEBSITE_NAV.map(link => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+            <div className="blueprint-menu-readings"><p>Personal readings</p>
+              {READINGS_NAV.map(reading => <a href={reading.href} key={reading.id} data-reading-link><span>{reading.title}</span><strong>{reading.price}</strong></a>)}
+            </div>
+            <Link href="/faq">Questions & answers</Link>
+            <Link href="/contact">Contact Cass</Link>
+            <Link href="/my-purchases">My purchases</Link>
           </nav>
-          <details className="relative ml-auto shrink-0 xl:ml-0 xl:hidden">
-            <summary className="paper-button small-button cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-              Menu
-            </summary>
-            <nav
-              aria-label="Mobile primary"
-              className="absolute right-0 top-[calc(100%+0.5rem)] z-30 w-72 max-w-[calc(100vw-2rem)] border border-brand-line bg-brand-ivory p-4 shadow-[0_8px_30px_rgba(20,17,13,0.12)]"
-            >
-              <ul className="divide-y divide-brand-line text-sm text-brand-ink">
-                {PRIMARY_NAV.map((link) =>
-                  link.href === DEEP_DIVE_PRODUCT_PATH ? (
-                    <li key={link.href}>
-                      <HeaderDeepDiveCta variant="menu" />
-                    </li>
-                  ) : (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        data-money-path={moneyPathByHref(link.href).id}
-                        className="money-path block min-h-11 py-3 font-semibold text-brand-ink"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ),
-                )}
-                <li>
-                  <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="block min-h-11 py-3 font-semibold text-brand-oxblood">
-                    Open app sample
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </details>
-          <a
-            href="https://www.tiktok.com/@52xseven"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Follow 52xseven on TikTok (opens in a new tab)"
-            title="Follow @52xseven on TikTok"
-            className="hidden h-11 w-11 shrink-0 xl:ml-auto items-center justify-center rounded-full text-brand-ink-soft transition hover:bg-brand-ink/5 hover:text-brand-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ink min-[420px]:flex"
-          >
-            <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor" aria-hidden="true"><path d="M16.6 2c.3 2.5 1.7 4 4.1 4.2v3.3a8.3 8.3 0 0 1-4.1-1.2v6.8a6.1 6.1 0 1 1-5.3-6v3.4a2.8 2.8 0 1 0 2 2.6V2h3.3Z" /></svg>
-          </a>
-        </div>
-      </header>
-    </>
-  );
+        </details>
+      </div>
+    </header>
+  </>;
 }

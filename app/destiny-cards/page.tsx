@@ -5,7 +5,6 @@ import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -64,7 +63,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "One Question Reading — $13"],
+  ["Paid deepen", "Books, software, readings", "Personal readings from $39"],
 ] as const;
 
 const tarotRows = [
@@ -77,7 +76,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $13 One Question Reading is a written reading on one decision, not a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. Personal readings start at $39 and are optional.",
   },
   {
     q: "What are Destiny Cards?",
@@ -129,7 +128,7 @@ const faqs = [
   },
   {
     q: "What is a Cards of Destiny reading?",
-    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; the paid One Question Reading answers one specific question from the same cards.",
+    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; a personal reading explores those cards alongside your chosen focus.",
   },
   {
     q: "What are Robert Camp's Destiny Cards?",
@@ -194,10 +193,10 @@ export default function DestinyCardsPage() {
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          personal readings from $39
         </Link>
-        {" "}— one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
+        {" "}— a relationship, your year, or your family, personally read by Cass.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -205,15 +204,13 @@ export default function DestinyCardsPage() {
       <div className="card-surface mb-6 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">After your free destiny card</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The calculator result already offers the $13 One Question Reading: one
-          question, read from your card, this year's cards, and the card you owe.
-          Written for you within {ONE_QUESTION_TURNAROUND}. One payment.
+          The free result gives you a card and a starting point. A personal reading brings those patterns into your relationships, your year, or your family, with Cass’s interpretation and questions for reflection.
         </p>
         <Link
-          href="/products/one-question-reading"
+          href="/#readings"
           className="accent-button mt-4"
         >
-          Ask one question — $13
+          Explore personal readings
         </Link>
       </div>
 
@@ -296,7 +293,7 @@ export default function DestinyCardsPage() {
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
           What we own here is the published method, the free tools, and the{" "}
-          <strong>One Question Reading</strong>.
+          <strong>personal readings</strong>.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Full definition:{" "}
@@ -346,8 +343,8 @@ export default function DestinyCardsPage() {
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
           <li>
             Optional deepen: the{" "}
-            <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-              One Question Reading ($13)
+            <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+              Personal readings from $39
             </Link>
             , one question read from your card and your year.
           </li>
@@ -528,8 +525,8 @@ export default function DestinyCardsPage() {
           Free calculator
         </Link>
         {" · "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          personal readings from $39
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

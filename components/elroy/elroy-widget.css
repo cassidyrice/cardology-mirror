@@ -4,16 +4,16 @@
   bottom: max(1rem, env(safe-area-inset-bottom));
   z-index: 60;
   font-family: inherit;
-  color: #14110d;
+  color: var(--ink);
 }
 
 .elroy-launcher {
   width: 3.25rem;
   height: 3.25rem;
   border-radius: 999px;
-  border: 1px solid rgba(20, 17, 13, 0.18);
-  background: #f4efe6;
-  box-shadow: 0 10px 30px rgba(20, 17, 13, 0.16);
+  border: 1px solid rgba(18, 58, 99, 0.18);
+  background: var(--paper);
+  box-shadow: 0 10px 30px rgba(18, 58, 99, 0.16);
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -31,11 +31,11 @@
   right: 0;
   bottom: calc(100% + 0.65rem);
   width: min(18rem, calc(100vw - 2rem));
-  background: #fbf7ef;
-  border: 1px solid rgba(20, 17, 13, 0.14);
-  border-radius: 0.9rem;
+  background: var(--ivory);
+  border: 1px solid rgba(18, 58, 99, 0.14);
+  border-radius: 3px;
   padding: 0.8rem 0.9rem;
-  box-shadow: 0 12px 32px rgba(20, 17, 13, 0.14);
+  box-shadow: 0 12px 32px rgba(18, 58, 99, 0.14);
 }
 
 .elroy-teaser p {
@@ -52,7 +52,7 @@
   min-height: 2rem;
   border: 0;
   background: transparent;
-  color: #5b5148;
+  color: var(--ink-soft);
   cursor: pointer;
   font-size: 1.1rem;
   line-height: 1;
@@ -71,18 +71,18 @@
 }
 
 .elroy-panel::backdrop {
-  background: rgba(20, 17, 13, 0.28);
+  background: rgba(18, 58, 99, 0.28);
 }
 
 .elroy-panel-shell {
   display: flex;
   flex-direction: column;
   height: min(34rem, calc(100dvh - 1.5rem));
-  background: #fbf7ef;
-  border: 1px solid rgba(20, 17, 13, 0.16);
-  border-radius: 1rem;
+  background: var(--ivory);
+  border: 1px solid rgba(18, 58, 99, 0.16);
+  border-radius: 3px;
   overflow: hidden;
-  box-shadow: 0 18px 48px rgba(20, 17, 13, 0.2);
+  box-shadow: 0 18px 48px rgba(18, 58, 99, 0.2);
 }
 
 .elroy-panel-header {
@@ -90,8 +90,8 @@
   align-items: center;
   gap: 0.65rem;
   padding: 0.85rem 0.95rem;
-  border-bottom: 1px solid rgba(20, 17, 13, 0.1);
-  background: #f4efe6;
+  border-bottom: 1px solid rgba(18, 58, 99, 0.1);
+  background: var(--paper);
 }
 
 .elroy-panel-header img {
@@ -109,7 +109,7 @@
 .elroy-panel-header p {
   margin: 0.1rem 0 0;
   font-size: 0.78rem;
-  color: #5b5148;
+  color: var(--ink-soft);
 }
 
 .elroy-panel-close {
@@ -120,7 +120,7 @@
   background: transparent;
   font-size: 1.25rem;
   cursor: pointer;
-  color: #5b5148;
+  color: var(--ink-soft);
 }
 
 .elroy-messages {
@@ -144,36 +144,36 @@
 .elroy-bubble-elroy {
   align-self: flex-start;
   background: #fff;
-  border: 1px solid rgba(20, 17, 13, 0.1);
+  border: 1px solid rgba(18, 58, 99, 0.1);
 }
 
 .elroy-bubble-user {
   align-self: flex-end;
-  background: #1b3a2a;
-  color: #fbf7ef;
+  background: var(--ink);
+  color: var(--ivory);
 }
 
 .elroy-composer {
-  border-top: 1px solid rgba(20, 17, 13, 0.1);
+  border-top: 1px solid rgba(18, 58, 99, 0.1);
   padding: 0.8rem;
   display: grid;
   gap: 0.55rem;
-  background: #f4efe6;
+  background: var(--paper);
 }
 
 .elroy-composer label {
   font-size: 0.78rem;
-  color: #5b5148;
+  color: var(--ink-soft);
 }
 
 .elroy-composer input[type="date"],
 .elroy-composer input[type="email"] {
   width: 100%;
-  border: 1px solid rgba(20, 17, 13, 0.18);
+  border: 1px solid rgba(18, 58, 99, 0.18);
   border-radius: 0.55rem;
   padding: 0.55rem 0.65rem;
   background: #fff;
-  color: #14110d;
+  color: var(--ink);
 }
 
 .elroy-composer button,
@@ -182,11 +182,11 @@
   border: 0;
   border-radius: 3px;
   background: var(--oxblood, #8e321f);
-  color: var(--on-dark, #fbf7ef);
+  color: var(--on-dark, var(--ivory));
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
   padding: 0.65rem 0.9rem;
   cursor: pointer;
   text-align: center;
@@ -203,7 +203,7 @@
   gap: 0.5rem;
   align-items: flex-start;
   font-size: 0.8rem;
-  color: #3d352d;
+  color: var(--ink-soft);
 }
 
 .elroy-error {
@@ -229,6 +229,7 @@
 }
 
 @media (max-width: 640px) {
+  .elroy-teaser { display: none; }
   .elroy-root {
     right: 0.75rem;
     left: auto;

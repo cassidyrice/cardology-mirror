@@ -32,8 +32,21 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
     expect(meta.alternates?.canonical).toBe(page.canonical);
     const html = renderToStaticMarkup(createElement(BornOnPageView, { page }));
     expect(html).toContain("data-readings-menu");
-    expect(html).toContain("https://stan.store/mycardblueprint/p/the-chemistry-check");
+    expect(html).toContain('href="/#chemistry-check"');
     expect(html).toContain('type="application/ld+json"');
     expect(html).toContain(page.body.slice(0, 200));
+  }
+});
+
+test("all 367 birthday pages show current manual offers without an invented delivery deadline", () => {
+  for (const slug of ["", ...bornOnSlugs()]) {
+    const body = bornOnPage(slug)!.body;
+    for (const offer of ["The Chemistry Check — $39", "Your 12-Month Timing Map — $49", "The Family Snapshot — $59"])
+      expect(body).toContain(offer);
+    expect(body).toContain("up to three people total, including you");
+    expect(body).toContain("Includes seven days of email follow-up.");
+    expect(body).toContain("within 24 hours");
+    expect(body).not.toMatch(/\$(97|137|179)\b|you \+ 3 family|inbox within 7 days/);
+    expect(body).not.toContain('href="https://stan.store/mycardblueprint/p/the-chemistry-check"');
   }
 });

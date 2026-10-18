@@ -104,7 +104,7 @@ export default function BlogIndexPage() {
           ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
           ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
-          ["Want it personalized?", "Ask one question, read from your card. $13.", "/products/one-question-reading", false],
+          ["Bring it back to your life", "Personal readings about your relationships, your year, or your family.", "/#readings", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a

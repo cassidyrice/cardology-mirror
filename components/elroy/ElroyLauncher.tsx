@@ -83,6 +83,7 @@ export function ElroyLauncher() {
     if (
       !eligible ||
       open ||
+      isSmallScreen ||
       !teaserEligibleRef.current ||
       !shouldScheduleElroyTeaser(pathname, isSmallScreen)
     ) {
@@ -119,7 +120,7 @@ export function ElroyLauncher() {
     <div className="elroy-root">
       {teaser && !open ? (
         <div className="elroy-teaser" role="status">
-          <p>Want the pattern behind your birth card?</p>
+          <p>Start with your card and a question to reflect on.</p>
           <button
             type="button"
             className="elroy-teaser-close"

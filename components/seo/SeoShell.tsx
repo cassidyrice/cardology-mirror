@@ -10,8 +10,7 @@ import {
 
 // Shared content shell for public SEO pages. It borrows the homepage's
 // editorial paper/ink visual system while keeping article pages readable.
-// Header and footer are the shared site chrome (calculator, Cardology,
-// the $13 One Question Reading, and FAQ up top; long-tail navigation below).
+// Shared navigation and reading-paper typography across public page families.
 export function SeoShell({
   children,
   crumb,
@@ -64,7 +63,7 @@ export function SeoShell({
           </nav>
         )}
 
-        <article className="flex-1">{children}</article>
+        <article className="blueprint-content flex-1">{children}</article>
       </main>
 
       <div className="relative z-10 mx-auto w-full max-w-5xl px-5 pb-16 sm:px-8 lg:px-10">
