@@ -8,6 +8,7 @@ const worst = {...fields('family'), people: people.slice(0, 3).map((p, i) => ({.
 const cases = [
   ['spread', '/api/spread', {birthday: '1900-02-17', targetDate: '2026-10-15'}],
   ...['professional', 'chemistry', 'timing-map', 'family'].map(offer => [offer, '/api/report', fields(offer)]),
+  ['family-two', '/api/report', {...fields('family'), people: people.slice(0, 2)}],
   ['family-three-maximum-writing', '/api/report', worst],
 ];
 const results = [];

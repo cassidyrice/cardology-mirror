@@ -7,23 +7,26 @@ import {root} from '../build.mjs';
 import {APP_ORIGIN} from '../src/auth.mjs';
 
 const require = createRequire(import.meta.url);
-const {Miniflare, Log, LogLevel} = require(require.resolve('miniflare', {paths: [require.resolve('wrangler')]}));
+const {Miniflare, Log, LogLevel, convertV4MiniflareOptions} = require(require.resolve('miniflare', {paths: [require.resolve('wrangler')]}));
 
 export async function runtime() {
   const f = await fixture();
   const config = JSON.parse(await readFile(`${root}/wrangler.json`, 'utf8'));
   const {ASSETS, ...bindings} = f.env;
-  const mf = new Miniflare({
-    modules: true, scriptPath: `${root}/dist/worker.mjs`, compatibilityDate: config.compatibility_date,
-    bindings, cf: false, log: new Log(LogLevel.ERROR),
-    assets: {directory: `${root}/dist/assets`, binding: 'ASSETS',
-      routerConfig: {invoke_user_worker_ahead_of_assets: config.assets.run_worker_first, has_user_worker: true},
-      assetConfig: {html_handling: config.assets.html_handling, not_found_handling: config.assets.not_found_handling}},
-    outboundService: async request => {
-      if (request.url !== `https://${f.env.ACCESS_TEAM_DOMAIN}/cdn-cgi/access/certs`) throw Error('Unexpected network request in local test');
-      return Response.json({keys: [f.jwk]});
-    },
-  });
+  const mf = new Miniflare({...convertV4MiniflareOptions({
+    cf: false, log: new Log(LogLevel.ERROR),
+    workers: [{
+      name: 'private-tools-test', modules: true, scriptPath: `${root}/dist/worker.mjs`, compatibilityDate: config.compatibility_date,
+      bindings,
+      assets: {directory: `${root}/dist/assets`, binding: 'ASSETS',
+        routerConfig: {invoke_user_worker_ahead_of_assets: config.assets.run_worker_first, has_user_worker: true},
+        assetConfig: {html_handling: config.assets.html_handling, not_found_handling: config.assets.not_found_handling}},
+      outboundService: async request => {
+        if (request.url !== `https://${f.env.ACCESS_TEAM_DOMAIN}/cdn-cgi/access/certs`) throw Error('Unexpected network request in local test');
+        return Response.json({keys: [f.jwk]});
+      },
+    }],
+  }), telemetry: {enabled: false}});
   await mf.ready;
   return {mf, f, close: () => mf.dispose()};
 }

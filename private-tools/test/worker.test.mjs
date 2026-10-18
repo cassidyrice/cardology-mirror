@@ -5,7 +5,7 @@ import {generateKeyPair} from 'jose';
 import {fixture, fields, people} from './fixtures.mjs';
 import {root} from '../build.mjs';
 import {APP_ORIGIN} from '../src/auth.mjs';
-import {calculate, buildDocument, buildEngineData, readDraft} from '../.test-build/reference.mjs';
+import {calculate, buildDocument, buildEngineData, readDraft, renderOfferReport, OFFERS} from '../.test-build/reference.mjs';
 
 const f = await fixture();
 const paths = ['/', '/index.html', '/report.html', '/app.js', '/report-app.js', '/style.css', '/report.css', '/private.css', '/meanings.json', '/api/config', '/api/session', '/api/report', '/api/spread', '/api/draft', '/app.js.map', '/.env', '/dist/worker.mjs'];
@@ -93,17 +93,21 @@ test('report calculations preserve shared engine facts and existing templates', 
   assert.deepEqual(migrated.draft, readDraft(legacy)); assert.equal(migrated.draft.html, undefined);
 });
 
-test('private Family is exactly three people and retains the existing unfiltered template', async () => {
+test('private Family supports two or three people with the unchanged engine and template', async () => {
   const input = fields('family');
-  const response = await f.request('/api/report', input); assert.equal(response.status, 200);
-  const output = await response.json();
-  assert.equal(output.draft.version, 3); assert.equal(output.engine.people.length, 3);
-  assert.deepEqual(output.engine, JSON.parse(JSON.stringify(buildEngineData(output.draft))));
-  assert.equal((await f.request('/api/draft', output.draft)).status, 200);
-  for (const person of input.people) assert.ok(output.html.includes(person.name));
+  for (const count of [2, 3]) {
+    const response = await f.request('/api/report', {...input, people: people.slice(0, count)}); assert.equal(response.status, 200);
+    const output = await response.json(), engine = buildEngineData(output.draft);
+    assert.equal(output.draft.version, 3); assert.equal(output.engine.people.length, count);
+    assert.deepEqual(output.engine, JSON.parse(JSON.stringify(engine)));
+    assert.equal(output.html, renderOfferReport(output.draft, engine, OFFERS.family));
+    const imported = await f.request('/api/draft', output.draft); assert.equal(imported.status, 200);
+    assert.deepEqual((await imported.json()).draft, output.draft);
+    for (const person of people.slice(0, count)) assert.ok(output.html.includes(person.name));
+  }
   const old = {format: 'card-blueprints-report', version: 2, ...input, people};
   assert.equal((await f.request('/api/draft', old)).status, 400);
-  for (const list of [[], people.slice(0, 1), people.slice(0, 2), people, [...people, people[0]]]) assert.equal((await f.request('/api/report', {...input, people: list})).status, 400);
+  for (const list of [[], people.slice(0, 1), people, [...people, people[0]]]) assert.equal((await f.request('/api/report', {...input, people: list})).status, 400);
 });
 
 test('a body arriving after token expiry is rejected before generation validation', async () => {

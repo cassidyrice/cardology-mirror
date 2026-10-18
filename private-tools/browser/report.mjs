@@ -6,8 +6,9 @@ const createDraft=fields=>({format:'card-blueprints-report',version:fields.offer
 const $=id=>document.getElementById(id);
 let documentResult=null,dirty=false,busy=false,sections=['','','',''],people=[],writingIndex=0,activeOffer='timing-map',sectionCache={};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+const peopleCount=()=>$('offer').value==='family'?Number($('family-size').value):OFFERS[$('offer').value].people;
 function collectPeople(){
-  const count=OFFERS[$('offer').value].people;
+  const count=peopleCount();
   const list=[{name:$('client-name').value,birthdate:$('report-birthdate').value,relation:'Buyer'}];
   for(let i=1;i<count;i++)list.push({name:$(`person-${i}-name`).value,birthdate:$(`person-${i}-birthdate`).value,relation:$(`person-${i}-relation`).value});
   return list;
@@ -30,8 +31,9 @@ function addInput(container,id,label,type,value){
   container.append(caption,input);
 }
 function renderPeople(){
+  $('family-size-field').hidden=$('offer').value!=='family';
   const area=$('additional-people');area.replaceChildren();
-  for(let i=1;i<OFFERS[$('offer').value].people;i++){
+  for(let i=1;i<peopleCount();i++){
     const p=people[i]||{},group=document.createElement('div');group.className='person-fields';
     const title=document.createElement('h3');title.textContent=`Person ${i+1}`;group.append(title);
     addInput(group,`person-${i}-name`,'Name','text',p.name);
@@ -50,11 +52,15 @@ function selectTab(writing){
 $('details-tab').onclick=()=>selectTab(false);$('writing-tab').onclick=()=>selectTab(true);
 $('section-copy').oninput=()=>{sections[writingIndex]=$('section-copy').value;};
 $('writing-section').onchange=()=>{writingIndex=Number($('writing-section').value);$('section-copy').value=sections[writingIndex];};
-$('offer').onchange=()=>{
-  // Preserve existing people across offer changes; new slots remain blank.
+function rememberPeople(){
+  // Preserve filled slots across offer and Family size changes.
   const current=[{name:$('client-name').value,birthdate:$('report-birthdate').value,relation:'Buyer'}];
   for(let i=1;$(`person-${i}-name`);i++)current.push({name:$(`person-${i}-name`).value,birthdate:$(`person-${i}-birthdate`).value,relation:$(`person-${i}-relation`).value});
-  current.forEach((person,index)=>people[index]=person);sectionCache[activeOffer]=[...sections];activeOffer=$('offer').value;sections=sectionCache[activeOffer]||['','','',''];renderPeople();invalidate();
+  current.forEach((person,index)=>people[index]=person);
+}
+$('family-size').onchange=()=>{rememberPeople();renderPeople();invalidate();};
+$('offer').onchange=()=>{
+  rememberPeople();sectionCache[activeOffer]=[...sections];activeOffer=$('offer').value;sections=sectionCache[activeOffer]||['','','',''];renderPeople();invalidate();
 };
 async function preview(){
   const version=++revision;
@@ -88,6 +94,7 @@ $('report-form').onsubmit=event=>{event.preventDefault();if(OFFERS)void preview(
 async function fill(draft){
   revision++;
   $('offer').value=draft.offer;activeOffer=draft.offer;sectionCache={};people=draft.people;sections=[...draft.sections];
+  if(draft.offer==='family')$('family-size').value=String(people.length);
   $('client-name').value=people[0].name;$('report-birthdate').value=people[0].birthdate;$('report-date').value=draft.readingDate;
   $('reader-notes').value=draft.notes;$('include-notes').checked=draft.includeNotes;$('reviewed').checked=draft.reviewed;
   $('notes-count').textContent=draft.notes.length.toLocaleString();renderPeople();selectTab(false);await preview();

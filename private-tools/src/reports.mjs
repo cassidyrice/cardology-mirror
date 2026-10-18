@@ -4,13 +4,13 @@ export {fileStem};
 
 export const OFFERS = {...DESKTOP_OFFERS, family: {...DESKTOP_OFFERS.family, people: 3}};
 
-// Private Family uses exactly three people. Its v3 drafts are explicit about the
+// Private Family supports two or three people. Its v3 drafts are explicit about the
 // incompatibility with the unchanged desktop v2 four-person Family format.
 export function readDraft(value) {
   if (value?.offer !== 'family') return readDesktop(value);
-  if (value.version === 2) throw Error('This desktop Family draft uses four people. The private Family Snapshot requires a new three-person draft.');
+  if (value.version === 2) throw Error('This desktop Family draft uses four people. Start a new private Family Snapshot with two or three people.');
   if (value.format !== 'card-blueprints-report' || value.version !== 3 ||
-      !Array.isArray(value.people) || value.people.length !== 3) throw Error('Family Snapshot requires exactly three people.');
+      !Array.isArray(value.people) || ![2, 3].includes(value.people.length)) throw Error('Family Snapshot supports two or three people.');
   const text = (value, max, label) => { if (typeof value !== 'string' || value.length > max) throw Error(`Invalid ${label}.`); return value; };
   if (!Array.isArray(value.sections) || value.sections.length !== 4 || typeof value.includeNotes !== 'boolean' || typeof value.reviewed !== 'boolean') throw Error('Invalid report settings.');
   return {

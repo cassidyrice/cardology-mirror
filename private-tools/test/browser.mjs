@@ -52,25 +52,38 @@ try {
   assert.ok(pdf.length > 10000); await pdfPage.close();
   checks.push('Report preview, escaped writing, page navigation, draft round-trip, JSON/HTML downloads, print action and A4 PDF');
 
-  for (const longNames of [false, true]) {
-    const family = {format: 'card-blueprints-report', version: 3, ...fields('family'), people: people.slice(0, 3).map((p, i) => longNames ? {...p, name: String(i + 1).repeat(60), relation: 'Relationship'.repeat(5)} : p)};
+  for (const count of [2, 3]) for (const longNames of [false, true]) {
+    const family = {format: 'card-blueprints-report', version: 3, ...fields('family'), people: people.slice(0, count).map((p, i) => longNames ? {...p, name: String(i + 1).repeat(60), relation: 'Relationship'.repeat(5)} : p)};
     await page.locator('#draft-file').setInputFiles({name: 'family.draft.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(family))});
     await page.waitForFunction(() => document.getElementById('report-status').textContent.startsWith('Draft opened.'));
-    assert.equal(await page.locator('#person-2-name').inputValue(), family.people[2].name);
-    assert.equal(await page.locator('#person-3-name').count(), 0);
+    assert.equal(await page.locator('#family-size').inputValue(), String(count));
+    assert.equal(await page.locator(`#person-${count - 1}-name`).inputValue(), family.people[count - 1].name);
+    assert.equal(await page.locator(`#person-${count}-name`).count(), 0);
     const familyHtml = await downloaded('#export-html');
     const printPage = await context.newPage(); await printPage.setViewportSize({width: 794, height: 1123});
     await printPage.setContent(familyHtml); await printPage.emulateMedia({media: 'print'});
     const logical = await printPage.locator('.page').count();
-    const file = await printPage.pdf({path: `${evidence}/family-three${longNames ? '-long' : ''}.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true});
+    const label = count === 2 ? 'two' : 'three';
+    const file = await printPage.pdf({path: `${evidence}/family-${label}${longNames ? '-long' : ''}.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true});
     const physical = (file.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
-    assert.equal(physical, logical, `Three-person family ${longNames ? 'long-name' : 'normal'} print pages`);
+    assert.equal(physical, logical, `${count}-person family ${longNames ? 'long-name' : 'normal'} print pages`);
     const overflow = await printPage.locator('.page').evaluateAll(pages => pages.filter(p => p.getBoundingClientRect().height > 1123).map(p => p.id));
     assert.deepEqual(overflow, []);
-    if (longNames) await printPage.screenshot({path: `${evidence}/family-three-long-cover.png`});
+    if (longNames) await printPage.screenshot({path: `${evidence}/family-${label}-long-cover.png`});
     await printPage.close();
   }
-  checks.push('Three-person Family normal and 60-character names: draft import, three-person UI and numbered A4/PDF page parity');
+  await page.locator('#family-size').selectOption('2');
+  assert.equal(await page.locator('#person-2-name').count(), 0);
+  assert.equal(await page.locator('#export-html').isDisabled(), true);
+  await page.locator('#update-preview').click();
+  await page.waitForFunction(() => !document.getElementById('export-html').disabled);
+  assert.equal(JSON.parse(await downloaded('#export-engine')).people.length, 2);
+  assert.equal(JSON.parse(await downloaded('#save-draft')).people.length, 2);
+  await page.locator('#family-size').selectOption('3');
+  assert.equal(await page.locator('#person-2-name').inputValue(), '3'.repeat(60));
+  await page.locator('#update-preview').click();
+  await page.waitForFunction(() => !document.getElementById('export-html').disabled);
+  checks.push('Two- and three-person Family: draft round-trip, size switching without losing inputs, normal/60-character names and numbered A4/PDF page parity');
 
   await page.setViewportSize({width: 390, height: 844});
   await page.screenshot({path: `${evidence}/report-mobile.png`, fullPage: true});

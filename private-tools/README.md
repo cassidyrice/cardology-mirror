@@ -6,27 +6,29 @@ All source changes are under `private-tools/`. The desktop application, calculat
 
 ## Behavior and boundaries
 
-- Report Builder supports the existing Timing Map, Chemistry and Professional reports, plus **exactly three people** for the private Family Snapshot. It uses the existing Family template and full shared calculation output; there is no five-person mode or filtered subset of family facts.
+- Report Builder supports the existing Timing Map, Chemistry and Professional reports, plus **two or three people, including the buyer**, for the private Family Snapshot. Choose the count in the Family form; switching temporarily to two preserves the third person's inputs in the tab. It uses the existing Family template and full shared calculation output.
 - Spread Explorer provides all six existing views, all 90 boards, card details and JSON export.
 - Calculations and report rendering run in the Worker. Browser bundles contain UI code only. `build.mjs` imports the existing engine and renderer into the Worker and rejects calculation/data imports in browser assets.
 - Draft JSON, generated HTML and engine JSON download through the browser. PDF uses the report iframe's browser print dialog; select Save as PDF. There is no server file store, database, object storage or email integration.
 - Unsaved inputs live in the current tab. Session expiry clears generated content and disables exports but keeps inputs so the draft can be downloaded before signing in in a new tab. Sign out clears the workspace and broadcasts to other open tool tabs. Previously downloaded files remain on the computer.
-- Private Family drafts use format `card-blueprints-report`, **version 3**, with exactly three people. The unchanged desktop Family format is version 2 with four people. Importing that desktop Family draft is rejected with an explanatory error; nobody is silently removed. Other offer drafts retain existing version 2 behavior and supported legacy migration. Desktop cannot read the new Family v3 draft without a separate future change.
+- Private Family drafts use format `card-blueprints-report`, **version 3**, with two or three people. The unchanged desktop Family format is version 2 with four people. Importing that desktop Family draft is rejected with an explanatory error; nobody is silently removed. Other offer drafts retain existing version 2 behavior and supported legacy migration. Desktop cannot read the new Family v3 draft without a separate future change.
 
 ## Local commands
 
-Run from `private-tools/`. Prerequisites are Node 22 or newer and the versions in `package.json`: jose 5.9.6, esbuild 0.25.12, Playwright 1.60.0 and Wrangler 4.115.0. Browser checks use an already installed Google Chrome (`channel: 'chrome'`). Tests use the Miniflare bundled with Wrangler.
+Run from `private-tools/`. Prerequisites are Node 22 or newer and npm. Direct dependencies are pinned in `package.json`: jose 5.9.6, esbuild 0.25.12, Playwright 1.60.0 and Wrangler 4.151.1. `package-lock.json` pins the complete dependency tree with registry integrity hashes. Browser checks use an already installed Google Chrome (`channel: 'chrome'`). Tests use the Miniflare bundled with Wrangler.
 
 ```sh
+npm ci --ignore-scripts --no-audit --no-fund --registry=https://registry.npmjs.org/
+npm audit --registry=https://registry.npmjs.org/
 npm run build
 npm test
 npm run test:timezones
 npm run test:browser
 npm run profile
-CLOUDFLARE_SEND_METRICS=false npm run check:worker
+npm run check:worker
 ```
 
-`check:worker` is a packaging dry-run; it does not deploy. Runtime/browser tests need permission to listen on loopback. They intercept external network requests and use ephemeral signed test tokens and fictional data. Generated builds and test logs are ignored.
+`check:worker` is a packaging dry-run with Wrangler telemetry disabled; it does not deploy. Runtime/browser tests need permission to listen on loopback. They intercept external application requests and use ephemeral signed test tokens and fictional data; fixture telemetry is disabled. Dependency install/audit use the npm registry. Generated builds and test logs are ignored.
 
 For a manual local preview:
 
@@ -36,7 +38,7 @@ npm run preview:fixture
 
 Open the printed loopback URL. This uses a **synthetic local session**, not the real Access service; it is for fictional-data UI review only. Stop with Ctrl-C. It binds only to `127.0.0.1`. The fixture is excluded from the production build, and production has no development-auth environment switch.
 
-No dependencies were installed during implementation. This checkout reuses existing packages through ignored `node_modules` symlinks. A fresh checkout requires those dependencies to be provisioned separately. No private-tools lockfile was created; capture and audit the resolved dependency tree before an approved production release. Do not copy the ignored local links into an artifact or treat the borrowed installation as a reproducible release install.
+The final verification used a fresh `npm ci` installation from this lockfile, with lifecycle scripts disabled, after removing the borrowed dependency links. No source package resolves to a local path. The initially pinned Wrangler 4.115.0 tool chain had npm audit findings through Sharp and Undici; Wrangler 4.151.1 resolves them, and the final full-tree audit reported zero advisories. This does not require a Cloudflare account or paid service. See QA.md for exact installation evidence.
 
 The root repository's `bun run test` is a separate storefront regression check. This work ran it successfully against the unchanged root sources using the existing root dependency installation.
 
