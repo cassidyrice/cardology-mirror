@@ -71,7 +71,7 @@ export default function SelfPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Your Blueprint · {profile.name}</Kicker>
-          <h1 className="display mb-2 text-4xl text-brand-ink">{desc.title}</h1>
+          <h2 className="display mb-2 text-4xl text-brand-ink">{desc.title}</h2>
           <p className="text-sm text-brand-ink-soft">
             {archetype.suit_domain} · Solar value{" "}
             <span className="tnum">{archetype.solar_value}</span>

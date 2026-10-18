@@ -40,81 +40,22 @@ describe("birthCardSlug", () => {
 });
 
 describe("Homepage landing contract", () => {
-  test("home is the calculator landing; explore is the directory", () => {
+  test("home offers a free calculator, a labeled fictional sample, and personal readings", () => {
     const home = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
-    const explore = readFileSync(new URL("../app/explore/page.tsx", import.meta.url), "utf8");
-    const header = readFileSync(
-      new URL("../components/seo/SiteHeader.tsx", import.meta.url),
-      "utf8",
-    );
-    const footer = readFileSync(
-      new URL("../components/seo/SiteFooter.tsx", import.meta.url),
-      "utf8",
-    );
-    const reveal = readFileSync(
-      new URL("../components/seo/Reveal.tsx", import.meta.url),
-      "utf8",
-    );
-    const landing = readFileSync(
-      new URL("../components/seo/LandingCalculator.tsx", import.meta.url),
-      "utf8",
-    );
-
-    expect(home).toContain("LandingCalculator");
-    expect(home).not.toContain("HomeContentCue");
-    expect(home).not.toContain("TodaysCardSection");
-    expect(home).not.toContain("DeepDiveSection");
-    expect(home).toContain('href="/explore"');
-    expect(home).toContain("Explore the free library →");
-    expect(home).toContain('absolute: HOME_TITLE');
-    expect(home).toContain('const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints"');
-    expect(home).toContain(
-      'const HOME_DESCRIPTION =\n  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $13 written reading on the one question you\'re deciding."',
-    );
-
-    expect(explore).toContain("ExploreDirectory");
-    expect(explore).toContain("Explore Card Blueprints");
-
-    expect(landing).toContain("Which card were you born under?");
-    expect(landing).toContain("Your birthday adds up to one card. Same date, same card, every time.");
-    expect(landing).toContain("Show my card");
-    expect(landing).toContain("Never stored");
-
-    expect(reveal).toContain("Your strength");
-    expect(reveal).toContain("Where it trips you");
-    expect(reveal).toContain("Right now");
-    expect(reveal).toContain("Read my card →");
-    expect(reveal).toContain("Compare with someone →");
-    expect(reveal).toContain("Got one question? Ask it. $13.");
-    expect(reveal).not.toContain("<DeepDiveSample");
-    expect(reveal).toContain("<DeepDiveCta");
-    expect(reveal).toContain("Explore →");
+    const landing = readFileSync(new URL("../components/seo/LandingCalculator.tsx", import.meta.url), "utf8");
+    const reveal = readFileSync(new URL("../components/seo/Reveal.tsx", import.meta.url), "utf8");
+    expect(home).toContain("<LandingCalculator />");
+    expect(home).toContain("<ReadingSample />");
+    expect(home).toContain("fictional Chemistry Check sample");
+    expect(home).toContain("<ManualReadingOffers />");
+    expect(home.match(/<h1\b/g)).toHaveLength(1);
+    expect(landing).not.toContain("<h1");
+    expect(landing).toContain("Your birthday is kept in this tab");
+    expect(landing).not.toContain("Never stored");
+    expect(reveal).toContain("<OfferCta");
+    expect(reveal).not.toContain("Got one question? Ask it. $13.");
     expect(reveal).toContain("result_card_clicked");
     expect(reveal).toContain("result_compare_clicked");
-    expect(reveal).not.toContain("/content-engine");
-    expect(reveal).not.toContain("See 7 days free");
-
-    expect(header).toContain("PRIMARY_NAV");
-    expect(header).toContain("DEEP_DIVE_PRODUCT_PATH");
-    expect(header).not.toContain('href="/explore"');
-    expect(header).not.toContain("Create content");
-    expect(header).not.toContain("/content-engine");
-    expect(header).not.toContain("/karma-reading");
-
-    expect(footer).toContain("Explore →");
-    expect(footer).toContain("/explore");
-    expect(footer).not.toContain("Content Calendar (experiment)");
-    expect(footer).not.toContain("/content-engine");
-    expect(footer).toContain("ONE_QUESTION_NAV");
-    expect(footer).toContain("BIRTH_CARD_CALCULATOR_LABEL");
-    expect(footer).not.toContain("Reading Day waitlist");
-
-    const journey = readFileSync(
-      new URL("../components/home/HomepageJourney.tsx", import.meta.url),
-      "utf8",
-    );
-    expect(journey).toContain("ONE_QUESTION_TURNAROUND");
-    expect(journey).not.toContain("2 business days");
   });
 });
 

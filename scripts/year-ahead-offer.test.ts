@@ -144,27 +144,13 @@ test("sitemap lists the year-ahead product page beside the reading", () => {
   expect(xml).toContain(`<loc>${SITE_URL}/products/one-question-reading</loc>`);
 });
 
-test("calculator result leads with the card-specific $19 year, keeps the $13 reading second", () => {
+test("calculator discovery offers manual readings while existing year checkout remains intact", () => {
   const calculator = read("components/seo/BirthCardCalculator.tsx");
-  const result = calculator.slice(
-    calculator.indexOf("function CalculatorNextStep"),
-    calculator.indexOf("function BirthCardResultCard"),
-  );
-  expect(result).toContain("<YearAheadResultOffer");
-  expect(result).toContain("cardLabel={label}");
-  expect(result.indexOf("<YearAheadResultOffer")).toBeLessThan(result.indexOf("<DeepDiveHostedCheckout"));
-  expect(result.indexOf("<DeepDiveHostedCheckout")).toBeLessThan(result.indexOf("<NewsletterSignupForm"));
-  // Same birthday handoff as the reading CTA: tab storage, never a URL.
-  expect(result).toMatch(/<YearAheadResultOffer[\s\S]*?birthdate=\{date \|\| reveal\.birthdate\}/);
-  expect(result).toContain("YEAR_AHEAD_PREVIEW_TAG");
-  expect(result).toContain("Get a free preview by email");
-
-  const reveal = read("components/seo/Reveal.tsx");
-  expect(reveal).toContain("<YearAheadResultOffer");
-  expect(reveal.indexOf("<YearAheadResultOffer")).toBeLessThan(reveal.indexOf("Got one question? Ask it. $13."));
-  expect(reveal).toContain("birthdate={birthdate}");
-  expect(reveal).toContain("YEAR_AHEAD_PREVIEW_TAG");
-
+  const result = calculator.slice(calculator.indexOf("function CalculatorNextStep"), calculator.indexOf("function BirthCardResultCard"));
+  expect(result).toContain("<OfferCta");
+  expect(result).not.toContain("<YearAheadResultOffer");
+  expect(result).toContain("<NewsletterSignupForm");
+  expect(read("components/seo/Reveal.tsx")).toContain("<OfferCta");
   const cta = read("components/seo/YearAheadCta.tsx");
   expect(cta).toContain("storeCheckoutBirthdate(birthdate)");
   expect(cta).toContain("href={YEAR_AHEAD_REVIEW_PATH}");

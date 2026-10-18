@@ -164,8 +164,9 @@ test("money paths are real anchors, including the offer when no birthday is stor
   const footer = renderToStaticMarkup(createElement(SiteFooter));
   for (const markup of [header, footer]) {
     expect(markup).toContain('href="/birth-card-calculator"');
-    expect(markup).toContain('href="/what-is-cardology"');
-    expect(markup).toContain(`href="${DEEP_DIVE_PRODUCT_PATH}"`);
+    expect(markup).toContain('href="/#chemistry-check"');
+    expect(markup).toContain('href="/#timing-map"');
+    expect(markup).toContain('href="/#family-snapshot"');
     expect(markup).toContain('href="/faq"');
     expect(markup).not.toContain("router.push");
   }

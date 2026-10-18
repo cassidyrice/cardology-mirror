@@ -1,232 +1,43 @@
 import { expect, test } from "bun:test";
-import { readFileSync } from "node:fs";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-
-import { DEEP_DIVE_HEADER_CTA_LABEL, DEEP_DIVE_PRODUCT_PATH, ONE_QUESTION_TURNAROUND } from "../lib/deep-dive";
-import { MONEY_PATHS, PRIMARY_NAV } from "../lib/site-nav";
+import { SiteHeader, WEBSITE_NAV } from "../components/seo/SiteHeader";
 import { SiteFooter } from "../components/seo/SiteFooter";
-import { SiteHeader } from "../components/seo/SiteHeader";
+import { ManualReadingOffers } from "../components/offers/ManualReadingOffers";
+import { READINGS_NAV, READING_FOLLOW_UP, READING_SUPPORT_EMAIL } from "../lib/readings-nav";
 
-const headerSource = readFileSync(
-  new URL("../components/seo/SiteHeader.tsx", import.meta.url),
-  "utf8",
-);
-
-function occurrences(source: string, value: string): number {
-  return source.split(value).length - 1;
-}
-
-test("shared header names the calculator, Cardology, the $13 reading, and FAQ", () => {
-  const markup = renderToStaticMarkup(createElement(SiteHeader));
-
-  expect(markup).toContain('aria-label="Primary"');
-  expect(markup).toContain('aria-label="Mobile primary"');
-  for (const link of PRIMARY_NAV) {
-    expect(occurrences(markup, `href="${link.href}"`)).toBe(2);
-    expect(occurrences(markup, link.label)).toBeGreaterThanOrEqual(2);
+const render = (component: Parameters<typeof createElement>[0]) => renderToStaticMarkup(createElement(component));
+test("desktop and mobile navigation expose real links to the library, tools and approved readings", () => {
+  const html = render(SiteHeader);
+  expect(html).toContain('aria-label="Primary"');
+  expect(html).toContain('aria-label="Mobile primary"');
+  for (const link of WEBSITE_NAV) expect(html.split(`href="${link.href}"`).length - 1).toBe(2);
+  for (const offer of READINGS_NAV) {
+    expect(html.split(`href="${offer.href}"`).length - 1).toBe(2);
+    expect(html).toContain(offer.price);
   }
-  expect(markup).toContain(DEEP_DIVE_HEADER_CTA_LABEL);
-  expect(markup).toContain(`href="${DEEP_DIVE_PRODUCT_PATH}"`);
-  expect(markup).not.toContain("Create content");
-  expect(markup).not.toContain("/content-engine");
-  expect(markup).not.toContain("Learn more");
-  expect(markup).not.toContain("Get a Reading");
-  expect(markup).not.toContain('href="/karma-reading"');
-  expect(markup).not.toContain('href="/explore"');
-  expect(markup).not.toContain('href="/checkout/deep-dive"');
-  expect(markup).not.toContain('href="/today"');
-  expect(markup).not.toContain("Ask — $13");
-  expect(markup).not.toContain("Deep Dive");
-  expect(markup).not.toContain("Blueprint Report");
-  expect(markup).not.toContain("accent-button");
-  expect(headerSource).toContain("HeaderDeepDiveCta");
-  expect(headerSource).toContain("PRIMARY_NAV");
+  expect(html).not.toContain('/checkout/');
+  expect(html).not.toContain('$13');
+  expect(html).toContain('href="/my-purchases"');
+  expect(html).toContain('href="#main-content"');
 });
-
-test("bare footer keeps the single disclaimer and legal row", () => {
-  const markup = renderToStaticMarkup(createElement(SiteFooter, { bare: true }));
-
-  expect(markup).toContain("Playing cards, not tarot");
-  expect(markup).toContain('href="/privacy-policy"');
-  expect(occurrences(markup, 'href="/content-engine"')).toBe(0);
-  expect(occurrences(markup, 'href="/products/one-question-reading"')).toBe(1);
-  expect(occurrences(markup, 'href="/birth-card-calculator"')).toBe(1);
-  expect(occurrences(markup, 'href="/faq"')).toBe(1);
-  expect(occurrences(markup, 'href="/what-is-cardology"')).toBe(1);
-  expect(markup).toContain("Birth Card Calculator");
-  expect(markup).toContain("One Question Reading ($13)");
-  expect(markup).toContain(">FAQ<");
-  expect(markup.indexOf('href="/birth-card-calculator"')).toBeLessThan(
-    markup.indexOf('href="/birth-card"'),
-  );
-  expect(markup.indexOf('href="/birth-card"')).toBeLessThan(
-    markup.indexOf('href="/card-of-the-day"'),
-  );
-  expect(occurrences(markup, 'href="/today"')).toBe(0);
-  expect(occurrences(markup, 'href="/products/blueprint-report"')).toBe(0);
-  expect(markup).not.toContain("Blueprint Report");
-  expect(markup).not.toContain("Deep Dive");
-  expect(markup).not.toContain('href="/products/52xseven-blueprint"');
-  expect(markup).not.toContain("Content Calendar (experiment)");
+test("footer preserves library, support, policy and purchase-access destinations", () => {
+  const html = render(SiteFooter);
+  for (const path of ['/birth-card-calculator','/what-is-cardology','/birth-card','/born-on/','/compatibility/','/faq','/contact','/my-purchases','/privacy-policy','/terms-of-service','/refund-policy']) expect(html).toContain(`href="${path}"`);
+  for (const offer of READINGS_NAV) expect(html).toContain(`href="${offer.href}"`);
 });
-
-test("header waits until xl to switch between mobile and desktop navigation", () => {
-  const primaryStart = headerSource.indexOf('aria-label="Primary"');
-  const primaryEnd = headerSource.indexOf("</nav>", primaryStart);
-  const primaryNav = headerSource.slice(primaryStart, primaryEnd);
-  const detailsStart = headerSource.indexOf("<details");
-  const detailsEnd = headerSource.indexOf("</details>", detailsStart);
-  const mobileDetails = headerSource.slice(detailsStart, detailsEnd);
-
-  expect(primaryStart).toBeGreaterThan(0);
-  expect(primaryEnd).toBeGreaterThan(primaryStart);
-  expect(primaryNav).toMatch(/className="[^"]*\bxl:flex\b[^"]*"/);
-  expect(primaryNav).not.toMatch(/className="[^"]*\bmd:flex\b[^"]*"/);
-
-  expect(detailsStart).toBeGreaterThan(0);
-  expect(detailsEnd).toBeGreaterThan(detailsStart);
-  expect(mobileDetails).toMatch(/className="[^"]*\bxl:hidden\b[^"]*"/);
-  expect(mobileDetails).not.toMatch(/className="[^"]*\bmd:hidden\b[^"]*"/);
-});
-
-const MONEY_PATH_ORDER = [
-  ["calculator", "/birth-card-calculator", "Birth Card Calculator"],
-  ["cardology", "/what-is-cardology", "What is Cardology"],
-  ["reading", "/products/one-question-reading", "One Question Reading ($13)"],
-  ["faq", "/faq", "FAQ"],
-] as const;
-
-function sliceNav(markup: string, label: string): string {
-  const start = markup.indexOf(`aria-label="${label}"`);
-  const end = markup.indexOf("</nav>", start);
-  if (start < 0 || end < 0) {
-    throw new Error(`missing nav ${label}`);
+test("offer prices, family limit and follow-up are explicit and consistent", () => {
+  expect(READINGS_NAV.map(x=>x.price)).toEqual(['$39','$49','$59']);
+  expect(READINGS_NAV[2].who).toBe('Up to three people total');
+  const html = render(ManualReadingOffers);
+  for (const offer of READINGS_NAV) {
+    expect(html).toContain(`id="${offer.id}"`);
+    expect(html).toContain(`data-order-reading="${offer.id}"`);
+    if (offer.checkoutHref) expect(html).toContain(`href="${offer.checkoutHref}"`);
+    else expect(html).toContain(`id="${offer.id}-availability"`);
   }
-  return markup.slice(start, end);
-}
-
-function anchorTags(html: string): string[] {
-  return html.match(/<a\b[^>]*>/g) ?? [];
-}
-
-test("desktop and mobile nav are the same flat money paths, calculator before the paid reading", () => {
-  const markup = renderToStaticMarkup(createElement(SiteHeader));
-  const desktop = sliceNav(markup, "Primary");
-  const mobile = sliceNav(markup, "Mobile primary");
-
-  expect(PRIMARY_NAV.map((link) => link.href)).toEqual(
-    MONEY_PATHS.map((link) => link.href),
-  );
-  expect(MONEY_PATHS.map((link) => link.id)).toEqual([
-    "calculator",
-    "cardology",
-    "reading",
-    "faq",
-  ]);
-  expect(desktop).not.toContain("<details");
-  expect(desktop).not.toContain("<ul");
-
-  for (const nav of [desktop, mobile]) {
-    // The four money paths come first; the only extra link is the trailing
-    // Card Blueprint App sample (687bc78 / fe00b91), never a fifth money path.
-    const tags = anchorTags(nav);
-    expect(tags).toHaveLength(MONEY_PATH_ORDER.length + 1);
-    expect(tags[MONEY_PATH_ORDER.length]).toContain("#sample");
-    expect(tags[MONEY_PATH_ORDER.length]).not.toContain("data-money-path");
-    MONEY_PATH_ORDER.forEach(([id, href, label], index) => {
-      const tag = tags[index] ?? "";
-      expect(tag).toContain(`data-money-path="${id}"`);
-      expect(tag).toContain(`href="${href}"`);
-      expect(nav).toContain(`>${label}<`);
-    });
-    expect(nav.indexOf('href="/birth-card-calculator"')).toBeLessThan(
-      nav.indexOf('href="/products/one-question-reading"'),
-    );
-    expect(nav).not.toContain('href="/explore"');
-    expect(nav).not.toContain('href="/today"');
-    expect(nav).not.toContain('href="/products/blueprint-report"');
-    expect(nav).not.toContain("Blueprint Report");
-    expect(nav).not.toContain("Deep Dive");
-  }
-
-  expect(desktop).toContain("money-path-offer");
-  expect(mobile).toContain("money-path-offer");
-});
-
-test("footer core row leads with the same money paths and leaves the directory second", () => {
-  const markup = renderToStaticMarkup(createElement(SiteFooter));
-  const core = sliceNav(markup, "Core");
-  const more = sliceNav(markup, "More");
-  const tags = anchorTags(core);
-
-  expect(tags).toHaveLength(MONEY_PATH_ORDER.length);
-  MONEY_PATH_ORDER.forEach(([id, href, label], index) => {
-    const tag = tags[index] ?? "";
-    expect(tag).toContain(`data-money-path="${id}"`);
-    expect(tag).toContain(`href="${href}"`);
-    expect(core).toContain(`>${label}<`);
-  });
-  expect(core).toContain(">Free<");
-  expect(core).toContain(`>${ONE_QUESTION_TURNAROUND}<`);
-  expect(core).toContain("money-path-offer");
-  expect(core.indexOf('href="/birth-card-calculator"')).toBeLessThan(
-    core.indexOf('href="/products/one-question-reading"'),
-  );
-
-  for (const href of MONEY_PATH_ORDER.map(([, href]) => href)) {
-    expect(more).not.toContain(`href="${href}"`);
-  }
-  expect(markup.indexOf('aria-label="Core"')).toBeLessThan(
-    markup.indexOf('aria-label="More"'),
-  );
-  expect(markup.indexOf('href="/birth-card-calculator"')).toBeLessThan(
-    markup.indexOf('href="/explore"'),
-  );
-  expect(markup).toContain("mirror, not a forecast");
-  expect(markup).not.toContain("Blueprint Report");
-  expect(markup).not.toContain("Deep Dive");
-  expect(markup).not.toContain('href="/products/blueprint-report"');
-  expect(markup).not.toContain("2 business days");
-});
-
-test("money-path pages sit one crumb under home", () => {
-  for (const file of [
-    "app/birth-card-calculator/page.tsx",
-    "app/products/one-question-reading/page.tsx",
-    "app/what-is-cardology/page.tsx",
-    "app/faq/page.tsx",
-  ]) {
-    const source = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
-    const crumb = source.match(/crumb=\{(\[[\s\S]*?\])\s*\}/);
-    expect(crumb?.[1]).toBeTruthy();
-    const hrefs = crumb?.[1].match(/href:/g) ?? [];
-    expect(hrefs.length).toBeLessThanOrEqual(2);
-  }
-});
-
-test("header has one centered Readings menu: title + price only, linking to Stan", async () => {
-  const { READINGS_NAV } = await import("../lib/readings-nav");
-  expect(READINGS_NAV.map((r) => [r.title, r.price, r.href])).toEqual([
-    ["The Chemistry Check", "$97", "https://stan.store/mycardblueprint/p/the-chemistry-check"],
-    ["Your 12-Month Timing Map", "$137", "https://stan.store/mycardblueprint/p/your-12month-timing-map"],
-    ["The Family Snapshot", "$179", "https://stan.store/mycardblueprint/p/the-family-snapshot"],
-  ]);
-  const markup = renderToStaticMarkup(createElement(SiteHeader));
-  expect(occurrences(markup, "data-readings-menu")).toBe(1);
-  const start = markup.indexOf("data-readings-menu");
-  const menu = markup.slice(start, markup.indexOf("</details>", start));
-  // Centered in the bar and never hidden at any breakpoint.
-  expect(menu).toMatch(/class="[^"]*\babsolute\b[^"]*\bleft-1\/2\b[^"]*-translate-x-1\/2/);
-  expect(menu).not.toMatch(/class="[^"]*\b(hidden|sm:hidden|md:hidden|lg:hidden|xl:hidden)\b[^"]*"[^>]*>\s*<summary/);
-  expect(menu).toContain(">Readings<");
-  const links = anchorTags(menu);
-  expect(links).toHaveLength(3);
-  for (const r of READINGS_NAV) {
-    expect(menu).toContain(`href="${r.href}"`);
-    expect(menu).toContain(`<span>${r.title}</span><span>${r.price}</span>`);
-  }
-  // Title + price only: strip tags and the summary; nothing else in the panel.
-  const panelText = menu.slice(menu.indexOf("<nav")).replace(/<[^>]+>/g, "|").split("|").filter((t) => t.trim());
-  expect(panelText).toEqual(READINGS_NAV.flatMap((r) => [r.title, r.price]));
+  expect(html).toContain(READING_FOLLOW_UP);
+  expect(html).toContain(`mailto:${READING_SUPPORT_EMAIL}`);
+  expect(html).not.toContain('$79');
+  expect(html).not.toContain('Seven dated personal seasons');
 });

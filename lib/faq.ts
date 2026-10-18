@@ -5,6 +5,7 @@ import {
   DEEP_DIVE_PRODUCT_PATH,
   ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
+import { READINGS_NAV, READING_FOLLOW_UP, READING_RESPONSE_TIME, READING_SUPPORT_EMAIL } from "./readings-nav";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 export const FAQ_PATH = "/faq" as const;
@@ -158,8 +159,20 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
   },
   {
     id: "products",
-    title: "The reading, pricing, and turnaround",
+    title: "Personal readings and support",
     items: [
+      {
+        id: "personal-readings",
+        question: "Which personal reading should I choose?",
+        answer: "The Chemistry Check ($39) explores two people. Your 12-Month Timing Map ($49) follows your year. The Family Snapshot ($59) focuses on the main dynamics among up to three people total, including you. Cass personally prepares each reading and delivers it by email.",
+        links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
+      },
+      {
+        id: "personal-reading-follow-up",
+        question: "Can I ask questions after my personal reading?",
+        answer: `${READING_FOLLOW_UP} Email ${READING_SUPPORT_EMAIL} with questions about your reading. ${READING_RESPONSE_TIME}`,
+        links: [{ href: "/contact", label: "Reading support" }],
+      },
       {
         id: "one-question-reading",
         question: `What do I get for ${DEEP_DIVE_PRICE_LABEL}, and how fast does it arrive?`,

@@ -8,9 +8,8 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
-import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { OfferCta } from "@/components/seo/OfferCta";
 import { NewsletterSignupForm } from "@/components/seo/NewsletterSignupForm";
-import { YearAheadResultOffer } from "@/components/seo/YearAheadCta";
 import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
 import { birthCardSlug } from "@/lib/birth-card-calculator";
@@ -112,31 +111,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
             </div>
           ) : null}
 
-          <YearAheadResultOffer
-            cardLabel={label}
-            birthdate={birthdate}
-            placement="home-reveal-year-ahead"
-            className="mt-8"
-          />
-
-          <div className={`${YEAR_AHEAD_ON_SALE ? "mt-4" : "mt-8"} border border-brand-line bg-brand-ivory p-5 text-left`}>
-            <p className="font-serif text-xl text-brand-ink">Got one question? Ask it. $13.</p>
-            <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-              The job, the move, the person, the money. I read the one thing
-              you keep circling from this card and the year you are in, and
-              send it to you written the moment you pay — on your screen and in your inbox within about a minute.
-            </p>
-            <DeepDiveCta
-              placement="home-reveal"
-              birthdate={birthdate}
-              source="home-reveal"
-              cardLabel={label}
-              cardSlug={cardSlug ?? undefined}
-              className="mt-4"
-              showFulfillment={false}
-              secondary={YEAR_AHEAD_ON_SALE}
-            />
-          </div>
+          <OfferCta className="mt-8 text-left" />
 
           {YEAR_AHEAD_ON_SALE ? (
             <div className="mt-4 text-left">

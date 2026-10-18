@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { Kicker, LinkButton } from "@/components/ui";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
+import { READING_FOLLOW_UP, READING_RESPONSE_TIME, READING_SUPPORT_EMAIL } from "@/lib/readings-nav";
 import { CONTACT_EMAIL, CONTACT_RESPONSE, SITE_URL, VIDEO_URL } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -31,23 +31,18 @@ export default function ContactPage() {
       <header className="max-w-3xl pb-8">
         <Kicker className="mb-4">Contact</Kicker>
         <h1 className="type-display text-brand-ink">
-          Get help with a One Question Reading order, correction, or partnership.
+          A question about your reading? Start here.
         </h1>
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            Buying the $13 One Question Reading?{" "}
-            <Link href="/products/one-question-reading" className="editorial-link text-brand-ink">
-              Review what is included
-            </Link>
-            . Your reading is written for you and emailed within{" "}
-            {ONE_QUESTION_TURNAROUND} of successful checkout.
+            {READING_FOLLOW_UP} For questions about a Chemistry Check, Timing Map, or Family Snapshot, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="editorial-link">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}
           </p>
         </div>
       </header>
 
       <section className="mb-10 border border-brand-line-strong bg-brand-ivory p-5 sm:p-6">
-        <h2 className="type-h2 text-brand-ink">Email Card Blueprints</h2>
+        <h2 className="type-h2 text-brand-ink">Other orders, corrections &amp; questions</h2>
         <p className="mt-3 max-w-[42rem] text-base leading-relaxed text-brand-ink-soft">
           For purchase support, include the purchase email, offer name, and
           what happened. Never send payment card details. For a correction,
@@ -62,7 +57,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["One Question Reading questions", `Ask what the $13 One Question Reading includes, how the ${ONE_QUESTION_TURNAROUND} turnaround works, how the birth date and question are used, or how to reword a question before it is written.`],
+          ["Choosing a reading", "The Chemistry Check focuses on two people. Your 12-Month Timing Map follows your year. The Family Snapshot looks at the main dynamics among up to three people total."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

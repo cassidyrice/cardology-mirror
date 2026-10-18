@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { READINGS_NAV } from "@/lib/readings-nav";
 
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -63,10 +64,8 @@ const GROUPS: ExploreGroup[] = [
     ],
   },
   {
-    title: "Paid reports",
-    links: [
-      { label: "One Question Reading ($13)", href: "/products/one-question-reading" },
-    ],
+    title: "Personal readings",
+    links: READINGS_NAV.map(reading => ({ label: `${reading.title} (${reading.price})`, href: reading.href })),
   },
   {
     title: "About and method",
@@ -119,7 +118,7 @@ export function ExploreDirectory() {
         </h1>
         <p className="mt-4 text-base leading-relaxed text-brand-ink-soft">
           Your card, the library, compatibility, timing, and the rest of the deck.
-          Pick a door below.
+          Choose a starting point, or search for what you need.
         </p>
       </header>
 
@@ -131,7 +130,7 @@ export function ExploreDirectory() {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="Calculator, compatibility, One Question Reading…"
+        placeholder="A card, a relationship, a reading…"
         className="mt-2 min-h-11 w-full border border-brand-ink bg-brand-paper px-4 font-serif text-brand-ink outline-none"
       />
 

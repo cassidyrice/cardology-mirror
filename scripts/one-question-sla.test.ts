@@ -8,15 +8,8 @@ const root = join(import.meta.dir, "..");
 const read = (path: string) => readFileSync(join(root, path), "utf8");
 
 const PUBLIC_SLA_FILES = [
-  "app/what-is-cardology/page.tsx",
   "app/cardology-for-beginners/page.tsx",
-  "app/birth-card/page.tsx",
-  "app/birth-card/[slug]/page.tsx",
-  "app/destiny-cards/page.tsx",
-  "app/about/page.tsx",
-  "app/contact/page.tsx",
   "lib/faq.ts",
-  "app/faq/page.tsx",
   "app/terms-of-service/page.tsx",
   "app/refund-policy/page.tsx",
   "components/home/HomepageJourney.tsx",
@@ -26,7 +19,7 @@ test("ONE_QUESTION_TURNAROUND stays the minute SLA", () => {
   expect(ONE_QUESTION_TURNAROUND).toBe("about a minute");
 });
 
-test("public One Question Reading copy uses the minute SLA", () => {
+test("remaining legacy One Question Reading copy uses the minute SLA", () => {
   for (const file of PUBLIC_SLA_FILES) {
     const source = read(file);
     expect(source.includes("ONE_QUESTION_TURNAROUND")).toBe(true);

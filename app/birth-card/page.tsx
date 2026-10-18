@@ -5,12 +5,6 @@ import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
-import {
-  DEEP_DIVE_CALCULATOR_FORM_HREF,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -44,8 +38,8 @@ const faqs = [
     a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
   },
   {
-    q: "What is the One Question Reading?",
-    a: `The free pages name your birth card and its pattern. The One Question Reading ($13) takes one decision you are circling and reads it from that card, this year's Long Range and Pluto cards, and the card you owe. About 600 words, usually ready in ${ONE_QUESTION_TURNAROUND}. One payment, no renewal.`,
+    q: "Can I get a personal reading?",
+    a: "Yes. Cass prepares personal readings about a relationship ($39), your next twelve months ($49), or your family’s main dynamics for up to three people ($59). Explore your free card meaning first, then choose a focus.",
   },
 ];
 
@@ -161,14 +155,7 @@ export default function BirthCardIndex() {
           Find your birth card free →
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        After you have the card, the{" "}
-        <Link href={DEEP_DIVE_CALCULATOR_FORM_HREF} className="text-brand-oxblood underline underline-offset-4">
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
-        </Link>{" "}
-        reads one decision from it — your card, this year&rsquo;s cards, and the card
-        you owe, usually ready in {ONE_QUESTION_TURNAROUND}. One payment, no renewal.
-      </p>
+      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">Read the card as a set of possible patterns: a strength, a pitfall, a question. For a closer look at your own relationships or year, <Link href="/#readings" className="editorial-link">choose a personal reading with Cass</Link>.</p>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
         <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
