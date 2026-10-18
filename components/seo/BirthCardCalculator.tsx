@@ -3,6 +3,7 @@
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { OfferCta } from "./OfferCta";
+import { StanReadingCta } from "./StanReadingCta";
 import dynamic from "next/dynamic";
 import {
   trackClientFunnelEvent,
@@ -248,6 +249,7 @@ function CalculatorNextStep({
 
   return (
     <div className="flex w-full flex-col items-center gap-2">
+      <StanReadingCta className="mb-3" />
       <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
         Try a free exercise with your card →
       </a>
