@@ -50,6 +50,10 @@ Reviewed the redesigned pages again, this time against the question: does every 
 
 Checked after the pass: print layout QA on all five fixtures (overflow, page height, footer collisions), the app UI QA (preview, writing, exports, no console errors, no network requests), and the unit tests.
 
+## Third pass: one visual system
+
+The three offers used a navy-and-gold design while the professional reference report used paper, ink and bronze. Two brands in one product. The offers now use the professional report's system exactly: its colour tokens, type stack, running heads (`CARD BLUEPRINTS / <offer>` and `+ 01 +`), the ink top bar, the Life Spread brand lockup on the cover, the FIXED / PATTERN / YOURS vocabulary, `YOURS · question` reflection blocks with a writing line, bordered tables, and the "Cards are coordinates" footer. The chaptered structure, the timeline, the dossiers, the questions and the real card faces are unchanged; they just sit on paper now. Dropping the embedded Cormorant file also takes about 1 MB off every report.
+
 ## Rules for the rewrite
 
 1. Address the buyer as "you". Name other people by first name.

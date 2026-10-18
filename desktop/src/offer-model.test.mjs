@@ -15,8 +15,8 @@ test('each current offer covers a complete year with contiguous engine-derived p
       for(const cycle of person.cycles)for(const anchor of cycle.anchors)assert.deepEqual(anchor.walk,core.cardsFrom(anchor.card,cycle.indexes.period,9));
       assert.ok(html.includes(person.name));
     }
-    assert.ok(html.includes('MY CARD BLUEPRINT'));assert.ok(html.includes('Reader review draft'));
-    assert.ok(html.includes('data:font/ttf;base64,'));
+    assert.ok(html.includes('CARD BLUEPRINTS / '));assert.ok(html.includes('card blueprint'));assert.ok(html.includes('Reader review draft'));
+    assert.ok(html.includes('data:image/png;base64,'));
   }
 });
 test('cross-person facts are exact matches with genuine date intersections',()=>{
