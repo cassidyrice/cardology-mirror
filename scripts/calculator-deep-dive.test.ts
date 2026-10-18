@@ -285,7 +285,8 @@ test("existing product keeps its sample while home presents manual readings with
 
 test("calculator and card-meaning discovery use the personal readings without changing calculations", () => {
   const result = calculator.slice(calculator.indexOf("function CalculatorNextStep"), calculator.indexOf("function BirthCardResultCard"));
-  expect(result).toContain("<OfferCta");
+  expect(result).toContain("<StanReadingCta");
+  expect(result).not.toContain("<OfferCta");
   expect(result).toContain("<NewsletterSignupForm");
   expect(result).not.toContain("<DeepDiveHostedCheckout");
   expect(calculator).toContain("<BirthShareHero");

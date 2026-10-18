@@ -147,7 +147,8 @@ test("sitemap lists the year-ahead product page beside the reading", () => {
 test("calculator discovery offers manual readings while existing year checkout remains intact", () => {
   const calculator = read("components/seo/BirthCardCalculator.tsx");
   const result = calculator.slice(calculator.indexOf("function CalculatorNextStep"), calculator.indexOf("function BirthCardResultCard"));
-  expect(result).toContain("<OfferCta");
+  expect(result).toContain("<StanReadingCta");
+  expect(result).not.toContain("<OfferCta");
   expect(result).not.toContain("<YearAheadResultOffer");
   expect(result).toContain("<NewsletterSignupForm");
   expect(read("components/seo/Reveal.tsx")).toContain("<OfferCta");
