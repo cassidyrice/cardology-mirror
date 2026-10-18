@@ -2,7 +2,7 @@
 import {api, download, fileStem} from './session.mjs';
 let OFFERS;
 let revision=0;
-const createDraft=fields=>({format:'card-blueprints-report',version:fields.offer==='family'?3:2,...fields});
+const createDraft=fields=>({format:'card-blueprints-report',version:['timing-map','family'].includes(fields.offer)?3:2,...fields});
 const $=id=>document.getElementById(id);
 let documentResult=null,dirty=false,busy=false,sections=['','','',''],people=[],writingIndex=0,activeOffer='timing-map',sectionCache={};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
@@ -53,7 +53,8 @@ $('details-tab').onclick=()=>selectTab(false);$('writing-tab').onclick=()=>selec
 $('section-copy').oninput=()=>{sections[writingIndex]=$('section-copy').value;};
 $('writing-section').onchange=()=>{writingIndex=Number($('writing-section').value);$('section-copy').value=sections[writingIndex];};
 function rememberPeople(){
-  // Preserve filled slots across offer and Family size changes.
+  // Preserve filled slots across offer and Family size changes. collectPeople
+  // includes only the active offer's count in requests and saved drafts.
   const current=[{name:$('client-name').value,birthdate:$('report-birthdate').value,relation:'Buyer'}];
   for(let i=1;$(`person-${i}-name`);i++)current.push({name:$(`person-${i}-name`).value,birthdate:$(`person-${i}-birthdate`).value,relation:$(`person-${i}-relation`).value});
   current.forEach((person,index)=>people[index]=person);
@@ -99,7 +100,7 @@ async function fill(draft){
   $('reader-notes').value=draft.notes;$('include-notes').checked=draft.includeNotes;$('reviewed').checked=draft.reviewed;
   $('notes-count').textContent=draft.notes.length.toLocaleString();renderPeople();selectTab(false);await preview();
 }
-async function sample(){dirty=false;await fill({offer:'timing-map',readingDate:today(),people:[{name:'Sample Client',birthdate:'1991-02-17',relation:'Buyer'},{name:'Sample Partner',birthdate:'1990-06-12',relation:'Partner'},{name:'Sample Friend',birthdate:'1988-09-23',relation:'Friend'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false});if(!dirty)status('Fictional sample. Replace every person’s details before preparing a client reading.');}
+async function sample(){dirty=false;await fill({offer:'timing-map',readingDate:today(),people:[{name:'Sample Client',birthdate:'1991-02-17',relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false});if(!dirty)status('Fictional sample. Replace the client’s details before preparing a reading.');}
 $('load-sample').onclick=async()=>{if(dirty&&!confirm('Discard unsaved changes and load the sample?'))return;await sample();};
 async function action(callback){if(busy)return;busy=true;exportState();try{await callback();}catch(error){status(`Could not complete the action: ${error.message}`);}finally{busy=false;exportState();}}
 $('save-draft').onclick=()=>action(async()=>{

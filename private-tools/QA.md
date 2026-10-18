@@ -1,5 +1,7 @@
 # Verification report — 18 October 2026
 
+This records the preceding hosted baseline through `6c1f088`. Its three-person Timing behavior and performance figures are historical. The separate one-person Timing follow-up, guarded shared-renderer change and newly executed checks are recorded in [TIMING-QA.md](TIMING-QA.md).
+
 **Status: local implementation verified; not deployed.** All committed changes are confined to `private-tools/` on `feat/private-report-tools`, based on `aa16fed`. Shared engine, desktop report renderer/CSS and public storefront sources are unchanged. Family supports **two or three people, including the buyer**, with the existing template and complete shared engine output. Reproducible dependencies are resolved locally.
 
 ## Executed checks

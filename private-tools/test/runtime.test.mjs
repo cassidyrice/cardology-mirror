@@ -14,11 +14,14 @@ test('actual workerd asset routing and remote-JWKS verification preserve the aut
       assert.equal(response.status, 200, path); assert.equal(response.headers.get('Location'), null);
       assert.match(response.headers.get('Cache-Control'), /no-store/); assert.ok((await response.text()).length > 10);
     }
-    for (const count of [2, 3]) {
-      const input = fields('family'); input.people = input.people.slice(0, count);
+    for (const [offer, count] of [['timing-map', 1], ['family', 2], ['family', 3]]) {
+      const input = fields(offer); input.people = input.people.slice(0, count);
       const response = await run.mf.dispatchFetch(`${APP_ORIGIN}/api/report`, {method: 'POST', headers: {'Cf-Access-Jwt-Assertion': await run.f.token(), Origin: APP_ORIGIN, 'Content-Type': 'application/json'}, body: JSON.stringify(input)});
       assert.equal(response.status, 200); assert.equal((await response.json()).engine.people.length, count);
     }
+    const legacyTiming = {...fields(), people: [...fields().people, ...fields().people]};
+    const invalid = await run.mf.dispatchFetch(`${APP_ORIGIN}/api/report`, {method: 'POST', headers: {'Cf-Access-Jwt-Assertion': await run.f.token(), Origin: APP_ORIGIN, 'Content-Type': 'application/json'}, body: JSON.stringify(legacyTiming)});
+    assert.equal(invalid.status, 400); assert.match(await invalid.text(), /exactly one person/);
     const expired = await run.mf.dispatchFetch(`${APP_ORIGIN}/api/session`, {headers: {'Cf-Access-Jwt-Assertion': await run.f.token({exp: 1})}});
     assert.equal(expired.status, 401); await expired.text();
     const alternate = await run.mf.dispatchFetch('https://preview.example.workers.dev/app.js', {headers: {'Cf-Access-Jwt-Assertion': await run.f.token()}});

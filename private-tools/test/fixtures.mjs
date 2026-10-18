@@ -11,7 +11,7 @@ export const people = [
   {name: 'Sample Relative', birthdate: '2000-02-29', relation: 'Sibling'},
 ];
 export const fields = (offer = 'timing-map') => ({
-  offer, readingDate: '2026-10-15', people: people.slice(0, {'timing-map': 3, chemistry: 2, family: 3, professional: 1}[offer]),
+  offer, readingDate: '2026-10-15', people: people.slice(0, {'timing-map': 1, chemistry: 2, family: 3, professional: 1}[offer]),
   sections: ['', '', '', ''], notes: '', includeNotes: true, reviewed: false,
 });
 
