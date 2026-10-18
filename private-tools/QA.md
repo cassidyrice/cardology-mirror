@@ -6,15 +6,17 @@
 
 | Check | Result and scope |
 | --- | --- |
-| `npm test` | **29 passed, 0 failed**, including 11 existing desktop engine/model tests rerun during this task. Unit tests plus actual local workerd, Static Assets routing and signed JWKS verification. |
+| `npm test` | **30 passed, 0 failed**, including 11 existing desktop engine/model tests rerun during this task. Unit tests plus actual local workerd, Static Assets routing and signed JWKS verification. Rerun after pinning the confirmed sole email. |
 | `npm run test:timezones` | Identical output hashes in UTC, America/Los_Angeles, Europe/London and Pacific/Auckland: 12 spread plus 12 Professional report cases per zone, digest prefix `22959e91259e`. Covers leap day, fixed cards, age 126 and DST boundary reading dates. |
 | `npm run test:browser` | Passed in installed Google Chrome via Playwright; 1440×1000 and 390×844; **0 captured console/page errors**. Latest fixture URL was `http://127.0.0.1:61525` and was closed after the run. |
 | Root `bun run test` | Exit 0 during the initial local verification: **409 Bun tests passed** across its six test batches, plus public-truth/privacy/media checks, mocked checkout/fulfillment/app flows, actual local D1 concurrency tests, revenue self-test and 199-URL sitemap smoke. All payment/email providers were synthetic. This unchanged root suite was not rerun for the private-only Family/dependency follow-through. |
 | Fresh locked install and audit | `npm ci --ignore-scripts` passed with 42 packages installed from npmjs.org; `npm ls --all` passed; final `npm audit` reported **0 advisories** across the locked tree. Private unit/runtime, timezone, browser and dry-run checks above were rerun with this installation. |
-| `npm run check:worker` | Dry-run passed with 7 asset files; reported Worker upload **2478.64 KiB**, gzip **1676.55 KiB**. Identity variables remain blank; no domain routes; no upload/deploy occurred. |
+| `npm run check:worker` | Rerun after the identity update. Dry-run passed with 7 asset files; reported Worker upload **2478.64 KiB**, gzip **1676.55 KiB**. `ALLOWED_EMAIL` is the confirmed address; Access team/audience remain blank; no domain routes; no upload/deploy occurred. |
 | `npm run profile` | Completed 20 local CPU samples per case after two warmups. Results below. |
 
 Environment: macOS on Apple M4, Node v26.12.0, npm 11.20.0, Bun 1.4.3, Wrangler 4.151.1, Playwright 1.60.0, installed Google Chrome. Unit test timezone is UTC; browser context is America/Los_Angeles; CPU profile inherited the Mac's America/Denver timezone. The approved follow-through installed npm dependencies locally; no browser binaries, system software or paid services were installed. No paid API calls were used.
+
+The later exact-email/configuration and account-plan follow-through reran only the unit/runtime suite and Worker packaging dry-run. Timezone, browser/PDF, CPU and root regression evidence above remains from the preceding implementation verification; those checks were not rerun for this configuration/documentation change.
 
 Initial root attempts failed because Bun could not resolve the borrowed root dependencies and then because the sandbox denied local port binding. The final successful root run used a temporary dependency symlink outside the cloned repository and approved localhost access. The symlink was removed afterward. These initial runs are not counted as passes. The private engine tests emit the existing Node module-type warning for `lib/engine-core/engine.js`; it is not a test failure, and the root package was left unchanged.
 
@@ -30,6 +32,7 @@ The first locked tree exposed four high-severity npm audit entries in the old Wr
 
 - Every known page, asset and API rejects missing assertions before accessing assets or generating results. Missing/malformed identity configuration fails closed.
 - Valid exact-user tokens succeed. Wrong signer, email, issuer or audience; missing claims; malformed tokens; expired tokens; future issue time; and email-header-only attempts fail.
+- The committed config pins Cass's confirmed `therealcassrice@gmail.com`. Even a correctly signed token for that email receives 503 while Access configuration is blank. With synthetic Access settings, the exact email and uppercase spelling succeed; plus-address, googlemail alias, another Gmail address, the old fictional fixture email and email-header-only attempts fail. The test uses ephemeral local signatures, not a real user's credentials.
 - Alternate workers.dev/preview hosts, the public hostname, HTTP and a nonstandard port fail. No source-map, raw data, environment file or Worker source route is exposed.
 - Browser artifacts contain only UI modules; the build metadata confirms engine/model imports are in the Worker. Production artifacts contain no fixture identity.
 - Methods, cross-origin requests, unsupported media/encoding, invalid JSON, oversized streamed bodies, unsupported offers and writing limits are checked. Expiry after body streaming is rejected before generation.
@@ -83,7 +86,9 @@ The maximum-writing case uses 60-character names/relationships, four 6,000-chara
 
 ## Release blockers and scope
 
-1. Confirm Cloudflare account/zone/plan and exact allowed identity; create and verify Worker-level Access coverage before exposing the custom domain. Test actual expiry/revocation and alternate-host protection.
+The exact identity and existing CLI account are now confirmed. Read-only Cloudflare inspection found account `ed56f6f3b938abe4f3f024a53a789d4f`, no Worker named `cardblueprints-private-tools` (API code 10007), and public DNS NXDOMAIN for `reports.cardblueprints.com`. The dashboard is signed out, with the confirmed Google profile available in a preserved Chrome tab. Wrangler used its existing credential internally; no credential values were exposed or copied into task files. [ACCOUNT-SETUP.md](ACCOUNT-SETUP.md) records the minimum scope, current published costs and concrete approval steps.
+
+1. Complete the dashboard sign-in handoff and confirm zone ownership, current Workers/Zero Trust plan, existing organization/provider and matching Access policies. Create and verify the exact-email Worker-level Access coverage before exposing the custom domain. Test actual expiry/revocation and alternate-host protection.
 2. Obtain separate approval for any provisioning, Access grant, DNS change or deployment. Public Pages bindings and environment must remain untouched.
 3. Verify Cloudflare billed CPU under cold and warm conditions; investigate or obtain a separate plan decision if the 10 ms free limit is not met.
 4. Review integration deliberately: the public deploy workflow runs on pushes to `main` with no path filter, even if the diff contains only private-tools files.

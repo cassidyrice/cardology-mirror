@@ -42,6 +42,20 @@ test('only a valid, signed exact-user Access assertion is accepted', async () =>
   assert.equal((await f.request('/api/session', undefined, {token: null, headers: {'Cf-Access-Authenticated-User-Email': f.env.ALLOWED_EMAIL}})).status, 401);
 });
 
+test('confirmed sole identity stays closed until Access is configured and rejects aliases', async () => {
+  const {vars} = JSON.parse(await readFile(`${root}/wrangler.json`, 'utf8'));
+  assert.equal(vars.ALLOWED_EMAIL, 'therealcassrice@gmail.com');
+  const token = await f.token({email: vars.ALLOWED_EMAIL});
+  assert.equal((await f.request('/api/session', undefined, {token, env: {...f.env, ...vars}})).status, 503);
+  const env = {...f.env, ALLOWED_EMAIL: vars.ALLOWED_EMAIL};
+  assert.equal((await f.request('/api/session', undefined, {token, env})).status, 200);
+  assert.equal((await f.request('/api/session', undefined, {env, token: await f.token({email: vars.ALLOWED_EMAIL.toUpperCase()})})).status, 200);
+  for (const email of ['cass@example.test', 'therealcassrice+reports@gmail.com', 'therealcassrice@googlemail.com', 'other@gmail.com']) {
+    assert.equal((await f.request('/api/session', undefined, {env, token: await f.token({email})})).status, 401);
+  }
+  assert.equal((await f.request('/api/session', undefined, {env, token: null, headers: {'Cf-Access-Authenticated-User-Email': vars.ALLOWED_EMAIL}})).status, 401);
+});
+
 test('alternate hostnames and previews cannot bypass the origin guard', async () => {
   for (const origin of ['https://cardblueprints-private-tools.example.workers.dev', 'https://version-cardblueprints-private-tools.example.workers.dev', 'https://preview.reports.cardblueprints.com', 'https://cardblueprints.com', 'http://reports.cardblueprints.com', 'https://reports.cardblueprints.com:444']) {
     assert.equal((await f.request('/api/report', fields(), {origin})).status, 421, origin);
@@ -49,7 +63,7 @@ test('alternate hostnames and previews cannot bypass the origin guard', async ()
   const config = JSON.parse(await readFile(`${root}/wrangler.json`, 'utf8'));
   assert.equal(config.workers_dev, false); assert.equal(config.preview_urls, false);
   assert.deepEqual(config.routes, []); assert.equal(config.assets.run_worker_first, true);
-  assert.deepEqual(Object.values(config.vars), ['', '', '']);
+  assert.equal(config.vars.ACCESS_TEAM_DOMAIN, ''); assert.equal(config.vars.ACCESS_AUD, '');
 });
 
 test('assets are allowlisted, protected and never receive auth credentials', async () => {

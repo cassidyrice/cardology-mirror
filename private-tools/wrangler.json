@@ -16,7 +16,7 @@
   "vars": {
     "ACCESS_TEAM_DOMAIN": "",
     "ACCESS_AUD": "",
-    "ALLOWED_EMAIL": ""
+    "ALLOWED_EMAIL": "therealcassrice@gmail.com"
   },
   "observability": { "enabled": false }
 }
