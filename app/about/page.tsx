@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
+import { READING_RESPONSE_TIME, READING_SUPPORT_EMAIL } from "@/lib/readings-nav";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -112,14 +113,13 @@ export default function AboutPage() {
           and labeled as interpretation, not fact.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Experience on this site means shipping the tools people actually use: the free
-          birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and personal readings. The method is documented by
-          publishing the calculations in public — see{" "}
+          Start with the free birth card calculator, then explore the birthday
+          directory, compare two people, or read any of the 52 card meanings.
+          The calculations and sources are published in the{" "}
           <Link href="/methodology" className="underline">
             methodology
           </Link>{" "}
-          — and refusing fortune-telling claims that the math cannot support.
+          so you can understand where your cards come from and form your own interpretation.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Corrections and questions are welcome at{" "}
@@ -130,8 +130,11 @@ export default function AboutPage() {
           <Link href="/contact" className="underline">
             contact page
           </Link>
-          . Purchase support is answered within {CONTACT_RESPONSE}. Cardology is
-          a lens for self-awareness — it describes patterns, not fate.
+          . General questions, corrections, and support for other purchases receive a reply within {CONTACT_RESPONSE}.
+        </p>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
+          Follow-up questions about a Chemistry Check, Timing Map, or Family Snapshot go to{" "}
+          <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="underline">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME} Every response is personally reviewed and approved by Cass.
         </p>
       </section>
 
@@ -149,8 +152,7 @@ export default function AboutPage() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
             {CONTACT_EMAIL}
           </a>
-          . Expect a reply within {CONTACT_RESPONSE} for purchase, refund, and
-          delivery issues. Editorial corrections are logged on the{" "}
+          . For general order administration, refunds, and delivery issues, expect a reply within {CONTACT_RESPONSE}. The personal-reading follow-up service above has its own 24-hour response commitment. Editorial corrections are logged on the{" "}
           <Link href="/editorial-policy" className="underline">
             editorial policy
           </Link>{" "}

@@ -173,30 +173,36 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
         answer: `${READING_FOLLOW_UP} Email ${READING_SUPPORT_EMAIL} with questions about your reading. ${READING_RESPONSE_TIME}`,
         links: [{ href: "/contact", label: "Reading support" }],
       },
+    ],
+  },
+  {
+    id: "other-reading-products",
+    title: "One Question Reading and other purchases",
+    items: [
       {
         id: "one-question-reading",
-        question: `What do I get for ${DEEP_DIVE_PRICE_LABEL}, and how fast does it arrive?`,
-        answer: readingAnswer(),
+        question: `What is the separate ${DEEP_DIVE_PRICE_LABEL} One Question Reading?`,
+        answer: `The One Question Reading is a separate product with its own delivery and support terms. ${readingAnswer()}`,
         links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
       },
       {
         id: "good-question",
-        question: "What makes a good question for the reading?",
+        question: "What makes a good question for the One Question Reading?",
         answer:
           "One decision, in real words. \"Should I take the job in Denver or stay put?\" reads better than \"career.\" \"Do I keep pushing this business or wind it down?\" reads better than \"money.\" A yes-or-no question is fine. The reading will not answer yes or no for you; it shows you which yes and which no you have been circling, and lets you pick.",
         links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
       },
       {
         id: "reading-is-not-a-forecast",
-        question: "Will the reading tell me what to do, or what will happen?",
+        question: "Will the One Question Reading tell me what to do, or what will happen?",
         answer:
           "No. It is a mirror, not a forecast. Same birthday, same cards, every time; what they mean beside your question is the part that takes a person. Nothing here predicts events, lucky days, or other people's choices.",
         links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
       },
       {
         id: "order-help",
-        question: "How do I get help with an order?",
-        answer: `Email ${CONTACT_EMAIL} for a purchase, a refund, or a correction, and include the purchase email. The contact page states how soon those emails are answered. The ${DEEP_DIVE_PRODUCT_NAME} itself is written within ${ONE_QUESTION_TURNAROUND} of payment.`,
+        question: "How do I get help with a One Question Reading or another purchase?",
+        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. The contact page gives the response time. Questions about the content of your Chemistry Check, Timing Map, or Family Snapshot use the separate personal-reading follow-up service at ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
         links: [
           { href: "/contact", label: "Contact" },
           { href: "/refund-policy", label: "Refund policy" },

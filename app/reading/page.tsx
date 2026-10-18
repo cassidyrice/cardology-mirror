@@ -30,9 +30,9 @@ export default function ReadingPage() {
       canonicalPath="/reading"
       eyebrow="Deep reading"
       points={[
-        "A secondary deep-reading page after the public calculator and card meaning pages.",
-        "A profile-aware report area that stays on the website instead of acting like a separate app.",
-        "Clear access-gate handling for paid or code-unlocked readings.",
+        "Return to the reading connected to your saved birthday.",
+        "Use the access link or code from your purchase to open eligible readings.",
+        "Keep your cards beside the text and take time with the reflection questions.",
       ]}
     >
       <ReadingClient />
