@@ -1,0 +1,18 @@
+{
+  "name": "cardblueprints-private-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test/run.mjs",
+    "test:browser": "node build.mjs && node test/browser.mjs",
+    "preview:fixture": "node build.mjs && node test/preview.mjs",
+    "profile": "node build.mjs && node test/profile.mjs",
+    "test:timezones": "node test/timezones.mjs",
+    "check:worker": "node build.mjs && node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config wrangler.json --outdir .test-build/wrangler"
+  },
+  "dependencies": { "jose": "5.9.6" },
+  "devDependencies": { "esbuild": "0.25.12", "playwright": "1.60.0", "wrangler": "4.115.0" }
+}

@@ -1,0 +1,125 @@
+import {chromium} from 'playwright';
+import assert from 'node:assert/strict';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
+import {root} from '../build.mjs';
+import {localServer} from './runtime.mjs';
+import {fields, people} from './fixtures.mjs';
+
+const evidence = '/tmp/cardblueprints-private-tools-qa';
+await mkdir(evidence, {recursive: true});
+const server = await localServer();
+const browser = await chromium.launch({channel: 'chrome', headless: true});
+const context = await browser.newContext({viewport: {width: 1440, height: 1000}, timezoneId: 'America/Los_Angeles'});
+const page = await context.newPage();
+const errors = [], checks = [];
+page.on('pageerror', error => errors.push(error.message));
+page.on('console', message => { if (message.type() === 'error' && !/status of (401|403|404)/.test(message.text())) errors.push(message.text()); });
+page.on('dialog', dialog => dialog.accept());
+await context.route('**/*', route => route.request().url().startsWith(server.url) || route.request().url().startsWith('data:') ? route.continue() : route.abort());
+const downloaded = async id => {
+  const pending = page.waitForEvent('download'); await page.locator(id).click();
+  const file = await pending; return readFile(await file.path(), 'utf8');
+};
+try {
+  await page.goto(`${server.url}/report.html`);
+  assert.match(await page.title(), /Report builder/);
+  await page.waitForFunction(() => !document.getElementById('load-sample').disabled);
+  assert.ok((await page.locator('body').innerText()).includes('Report builder'));
+  assert.equal(await page.locator('iframe').getAttribute('sandbox'), 'allow-same-origin allow-modals');
+  await page.screenshot({path: `${evidence}/report-empty-desktop.png`});
+  await page.locator('#load-sample').click();
+  await page.waitForFunction(() => !document.getElementById('export-html').disabled);
+  await page.locator('#writing-tab').click();
+  await page.locator('#section-copy').fill('<script>fixture()</script> A private plain-text reading.');
+  assert.equal(await page.locator('#export-html').isDisabled(), true);
+  await page.locator('#update-preview').click();
+  await page.waitForFunction(() => !document.getElementById('export-html').disabled);
+  const reportFrame = page.frameLocator('#report-frame');
+  assert.equal(await reportFrame.locator('script').count(), 0);
+  assert.ok((await reportFrame.locator('body').innerText()).includes('<script>fixture()</script>'));
+  await page.screenshot({path: `${evidence}/report-preview-desktop.png`});
+  const html = await downloaded('#export-html'); assert.ok(html.includes('&lt;script&gt;'));
+  const engine = JSON.parse(await downloaded('#export-engine')); assert.equal(engine.offer, 'timing-map');
+  const draft = JSON.parse(await downloaded('#save-draft')); assert.equal(draft.version, 2); assert.equal(draft.sections[0], '<script>fixture()</script> A private plain-text reading.');
+  await page.locator('#draft-file').setInputFiles({name: 'fixture.draft.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(draft))});
+  await page.waitForFunction(() => document.getElementById('report-status').textContent.startsWith('Draft opened.'));
+  await page.locator('#report-page').selectOption({index: 2});
+  await page.locator('#report-frame').evaluate(frame => { frame.contentWindow.print = () => frame.dataset.printed = 'yes'; });
+  await page.locator('#save-pdf').click();
+  assert.equal(await page.locator('#report-frame').getAttribute('data-printed'), 'yes');
+  const pdfPage = await context.newPage(); await pdfPage.setContent(html); await pdfPage.emulateMedia({media: 'print'});
+  const pdf = await pdfPage.pdf({path: `${evidence}/sample-timing-map.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true});
+  assert.ok(pdf.length > 10000); await pdfPage.close();
+  checks.push('Report preview, escaped writing, page navigation, draft round-trip, JSON/HTML downloads, print action and A4 PDF');
+
+  for (const longNames of [false, true]) {
+    const family = {format: 'card-blueprints-report', version: 3, ...fields('family'), people: people.slice(0, 3).map((p, i) => longNames ? {...p, name: String(i + 1).repeat(60), relation: 'Relationship'.repeat(5)} : p)};
+    await page.locator('#draft-file').setInputFiles({name: 'family.draft.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(family))});
+    await page.waitForFunction(() => document.getElementById('report-status').textContent.startsWith('Draft opened.'));
+    assert.equal(await page.locator('#person-2-name').inputValue(), family.people[2].name);
+    assert.equal(await page.locator('#person-3-name').count(), 0);
+    const familyHtml = await downloaded('#export-html');
+    const printPage = await context.newPage(); await printPage.setViewportSize({width: 794, height: 1123});
+    await printPage.setContent(familyHtml); await printPage.emulateMedia({media: 'print'});
+    const logical = await printPage.locator('.page').count();
+    const file = await printPage.pdf({path: `${evidence}/family-three${longNames ? '-long' : ''}.pdf`, format: 'A4', printBackground: true, preferCSSPageSize: true});
+    const physical = (file.toString('latin1').match(/\/Type\s*\/Page\b/g) || []).length;
+    assert.equal(physical, logical, `Three-person family ${longNames ? 'long-name' : 'normal'} print pages`);
+    const overflow = await printPage.locator('.page').evaluateAll(pages => pages.filter(p => p.getBoundingClientRect().height > 1123).map(p => p.id));
+    assert.deepEqual(overflow, []);
+    if (longNames) await printPage.screenshot({path: `${evidence}/family-three-long-cover.png`});
+    await printPage.close();
+  }
+  checks.push('Three-person Family normal and 60-character names: draft import, three-person UI and numbered A4/PDF page parity');
+
+  await page.setViewportSize({width: 390, height: 844});
+  await page.screenshot({path: `${evidence}/report-mobile.png`, fullPage: true});
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+  await page.setViewportSize({width: 1440, height: 1000});
+  const pending = server.delayNext('/api/report');
+  await page.locator('#load-sample').click(); await pending.seen;
+  await page.locator('#client-name').fill('New unsaved edit'); pending.release();
+  await page.waitForTimeout(150);
+  assert.equal(await page.locator('#client-name').inputValue(), 'New unsaved edit');
+  assert.equal(await page.locator('#export-html').isDisabled(), true);
+  assert.equal(await page.evaluate(() => { const e = new Event('beforeunload', {cancelable: true}); window.dispatchEvent(e); return e.defaultPrevented; }), true);
+  checks.push('Late report response cannot replace edited inputs or clear the unsaved-draft guard');
+  await downloaded('#save-draft');
+
+  await page.goto(`${server.url}/index.html`);
+  assert.match(await page.title(), /Card Blueprints/);
+  await page.locator('#birthday').fill('1991-02-17'); await page.locator('#target').fill('2026-10-15');
+  await page.getByRole('button', {name: 'Generate spread', exact: true}).click();
+  await page.waitForFunction(() => !document.getElementById('export').disabled);
+  for (const name of ['Annual spread', 'Life spread', 'Spirit spread', 'Seven-year cycle', 'Weekly spread', 'Full board']) {
+    await page.getByRole('button', {name, exact: true}).click(); assert.ok((await page.locator('#content').innerText()).length > 50);
+  }
+  await page.getByLabel('Board number').selectOption('89');
+  assert.equal(await page.locator('.full-board .card').count(), 52);
+  await page.locator('.full-board .card').first().click(); assert.equal(await page.locator('#detail').isVisible(), true); await page.locator('#close-detail').click();
+  const spread = JSON.parse(await downloaded('#export')); assert.equal(spread.boards.length, 90);
+  await page.screenshot({path: `${evidence}/explorer-desktop.png`});
+  await page.setViewportSize({width: 390, height: 844});
+  await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+  await page.screenshot({path: `${evidence}/explorer-mobile.png`});
+  assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+  await page.locator('.full-board').scrollIntoViewIfNeeded();
+  await page.screenshot({path: `${evidence}/explorer-mobile-board.png`});
+  assert.equal(await page.locator('.full-board .card').count(), 52);
+  await page.locator('#target').fill('2026-10-16'); assert.equal(await page.locator('#export').isDisabled(), true);
+  checks.push('Explorer six views, all 52 seats on board 89, card details, export, input invalidation and mobile layout');
+
+  server.setSession('expired'); await page.getByRole('button', {name: 'Generate spread', exact: true}).click();
+  await page.waitForFunction(() => !document.getElementById('reauth').hidden);
+  assert.equal(await page.locator('#export').isDisabled(), true);
+  assert.equal(await page.locator('#birthday').inputValue(), '1991-02-17');
+  checks.push('Expired server session blocks generation and preserves entered dates');
+  server.setSession('valid');
+  await page.locator('#logout').click(); await page.waitForURL('**/cdn-cgi/access/logout');
+  assert.ok(!(await page.locator('body').innerText()).includes('1991-02-17'));
+  checks.push('Sign out clears visible personal data');
+  assert.deepEqual(errors, []);
+  const result = {status: 'passed', url: server.url, browser: 'installed Google Chrome via Playwright', viewports: ['1440×1000', '390×844'], checks, consoleErrors: errors, screenshots: evidence, limitations: 'Synthetic local Access issuer; real Cloudflare account, DNS and revocation propagation not exercised.'};
+  await mkdir(`${root}/test-results`, {recursive: true}); await writeFile(`${root}/test-results/browser.json`, JSON.stringify(result, null, 2));
+  console.log(JSON.stringify(result, null, 2));
+} finally { await browser.close(); await server.close(); }
