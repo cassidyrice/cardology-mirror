@@ -13,8 +13,11 @@ const tile=(code,size='')=>{
   return `<span class="tile ${size}${red(code)?' red':''}" aria-label="${escape(code)}"><i>${rank}<br>${suit}</i><b>${suit}</b><i class="flip">${rank}<br>${suit}</i></span>`;
 };
 const role=code=>code==='BC'?'birth card':code==='PRC1'?'ruling card':`ruling card ${code.slice(3)}`;
-const date=value=>new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(`${value}T12:00:00Z`));
-const short=value=>new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'}).format(new Date(`${value}T12:00:00Z`));
+// Reuse the fixed UTC formatters across report dates and requests.
+const dateFormat=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
+const shortFormat=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'});
+const date=value=>dateFormat.format(new Date(`${value}T12:00:00Z`));
+const short=value=>shortFormat.format(new Date(`${value}T12:00:00Z`));
 const range=item=>`${date(item.start)} – ${date(item.end)}`;
 const days=(a,b)=>Math.round((Date.parse(`${b}T00:00:00Z`)-Date.parse(`${a}T00:00:00Z`))/86400000)+1;
 const chunks=(items,size)=>Array.from({length:Math.ceil(items.length/size)},(_,i)=>items.slice(i*size,(i+1)*size));

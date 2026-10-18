@@ -111,3 +111,26 @@ test('default renderer preserves all ten legacy Timing, Chemistry and Family HTM
     assert.equal(hash, baseline[label], label);
   }
 });
+
+// Captured from deployed source 6df7f30 before reusing the UTC formatters.
+// Cover complete hosted output, including the individual layout and long writing.
+test('formatter reuse preserves complete hosted reports from the deployed version', () => {
+  const hashes = [
+    ['timing-map', false, 'd2d112f192ef2ba43e91c41298ca5fb5d8f0ce24d33b6fdfdd57854b88aeb762'],
+    ['timing-map', true, '7767676193f4817086c9d9ba075026f6aa63af958e47fbfe972cc233ad9e0aad'],
+    ['chemistry', false, '58f1f9fb65d34c1e30c19cc20ad075bac38e0dff65a7644f0876cba57ed9746b'],
+    ['family', false, 'e045255d73cb46e8057e0a2f0854aa1a1ad6e30e17457f7260cf9dc3c4fdbc84'],
+    ['family', true, '2ad26275f9f42af5b71421788f2f90df0c6c1b30c317dd13cef4a674522cace6'],
+    ['professional', false, '3863e32d1f336be936ebe163243e5aa4c14cca22aae1590e697236ec2d25801b'],
+  ];
+  for (const [offer, maximal, expected] of hashes) {
+    const input = {...fields(offer), readingDate: '2026-10-18'};
+    if (maximal) {
+      input.people = input.people.map((person, index) => ({...person, name: `Fictional ${index + 1} `.padEnd(60, 'N'), relation: 'Relation '.padEnd(60, 'R')}));
+      input.sections = Array(4).fill('<script>fictional</script> & '.repeat(300).slice(0, 6000));
+      input.notes = 'Fictional notes. '.repeat(800).slice(0, 12000);
+    }
+    const hash = createHash('sha256').update(JSON.stringify(buildHostedDocument(input))).digest('hex');
+    assert.equal(hash, expected, `${offer}/${maximal ? 'maximum' : 'normal'}`);
+  }
+});
