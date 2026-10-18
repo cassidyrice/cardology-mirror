@@ -1,0 +1,18 @@
+{
+  "name": "card-blueprints-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "main.cjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node build.mjs && electron .",
+    "test": "node --test src/engine.test.mjs && node test-report.mjs",
+    "package": "node build.mjs && node package.mjs"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.3.6",
+    "electron": "^41.0.0",
+    "esbuild": "^0.25.0"
+  }
+}
