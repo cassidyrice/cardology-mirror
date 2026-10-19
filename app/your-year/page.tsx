@@ -8,7 +8,7 @@ import { SITE_NAME } from "@/lib/site";
 const canonicalPath = "/your-year";
 const title = "Your year in cards";
 const description =
-  "See the seven 52-day periods of your Cardology year — current stretch, upcoming cards, and today's card — free, from your birthday.";
+  "See the seven planetary seasons of your Cardology year — current stretch, upcoming cards, and today's card — free, from your birthday.";
 
 export const dynamic = "force-static";
 
@@ -49,7 +49,7 @@ export default function YourYearPage() {
           Your year in cards
         </h1>
         <p className="mt-3 font-serif text-lg leading-relaxed text-brand-ink-soft">
-          Seven 52-day stretches from birthday to birthday.
+          Six 52-day seasons, then Neptune through the eve of your next birthday.
         </p>
       </header>
 

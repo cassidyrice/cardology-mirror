@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { SeoShell } from "@/components/seo/SeoShell";
 import { AccessLink } from "@/components/gate/AccessLink";
 
 export const metadata: Metadata = {
@@ -10,9 +11,9 @@ export const metadata: Metadata = {
 
 export default function AccessPage() {
   return (
-    <main className="mx-auto min-h-[60vh] max-w-lg px-6 pt-24">
-      <h1 className="display text-center text-3xl text-bone">Card Blueprints</h1>
+    <SeoShell crumb={[{label:"Home",href:"/"},{label:"Reading access",href:"/access"}]}><div className="blueprint-access mx-auto max-w-lg py-12">
+      <h1 className="display text-center text-3xl text-brand-ink">Card Blueprints</h1>
       <AccessLink />
-    </main>
+    </div></SeoShell>
   );
 }

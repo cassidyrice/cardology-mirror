@@ -69,11 +69,11 @@ export default function JournalPage() {
   return (
     <Screen className="mx-auto max-w-md">
       <Kicker className="tnum !font-bold !text-brand-ink-soft">{PRETTY_DATE.format(new Date())}</Kicker>
-      <h1 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
+      <h2 className="display mt-3 text-4xl leading-[1.08] text-brand-ink">
         The Journal
-      </h1>
+      </h2>
       <p className="mt-3 text-sm text-brand-ink-soft">
-        A mirror, not a forecast. Write toward whatever stings.
+        Choose a question from your cards. Write about what you notice in your life.
       </p>
 
       <Divider />
