@@ -113,7 +113,7 @@ export function BirthdateChartDownload({
           : `A one-page chart for ${chart.dateLabel}: your ${chart.birth.label}, ruling card, and karma cards. Free. Enter your email and it downloads right away.`}
       </p>
       {status !== "ready" ? (
-        <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-3 sm:flex-row" noValidate>
+        <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-3" noValidate>
           <label htmlFor={`chart-email-${source}`} className="sr-only">
             Email address
           </label>
