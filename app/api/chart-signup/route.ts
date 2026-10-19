@@ -40,6 +40,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true }, { headers: { "cache-control": "no-store" } });
   } catch (cause) {
     console.error("[chart-signup] save failed", cause);
-    return NextResponse.json({ error: "save_failed" }, { status: 502 });
+    const message = cause instanceof Error ? cause.message : "";
+    const reason = message.includes("not set")
+      ? "config"
+      : message.includes("subscriber_blocked")
+        ? "blocked"
+        : "upstream";
+    return NextResponse.json({ error: "save_failed", reason }, { status: 502 });
   }
 }
