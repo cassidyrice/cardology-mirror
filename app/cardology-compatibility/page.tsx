@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
-import { CardAppCta } from "@/components/seo/CardAppCta";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
+import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
@@ -91,7 +90,7 @@ export default function CompatibilityPage() {
       </section>
 
       <CompatibilityCalculator />
-      <CardAppCta placement="cardology-compatibility-app" connections />
+      <StanReadingCta />
       <p className="prose-reading mb-6 mt-8 text-brand-ink-soft">
         Start with two birth cards, then go sharper with the Life Path. The useful
         question is not only &ldquo;are these cards compatible?&rdquo; It is: where does this
@@ -216,8 +215,6 @@ export default function CompatibilityPage() {
           ))}
         </div>
       </section>
-
-            <FreeCourseCta source="compatibility" className="mt-10" />
     </SeoShell>
   );
 }

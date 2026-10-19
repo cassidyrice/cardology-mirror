@@ -123,12 +123,12 @@ export default function StoryArcPage() {
           className="mb-7"
         >
           <Kicker className="mb-2 !font-bold !text-brand-ink-soft">Story Arc · Your Year</Kicker>
-          <h1 className="display text-3xl text-brand-ink">
-            Where this year is taking you
-          </h1>
+          <h2 className="display text-3xl text-brand-ink">
+            Themes to consider this year
+          </h2>
           <p className="mt-2 text-sm text-brand-ink-soft">
-            For {profile.name || "you"} — your long-range chapter, the deep turn
-            beneath it, and the horizon it points toward.
+            For {profile.name || "you"} — your yearly cards, the themes they suggest,
+            and questions to reflect on as the year unfolds.
           </p>
         </motion.header>
 

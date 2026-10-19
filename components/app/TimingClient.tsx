@@ -105,10 +105,10 @@ function Timing({
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Your year · {name}</Kicker>
-          <h1 className="display text-4xl leading-[1.08] text-brand-ink">
+          <h2 className="display text-4xl leading-[1.08] text-brand-ink">
             You&apos;re in your{" "}
             <span className="foil-text">{activePlanet}</span> chapter.
-          </h1>
+          </h2>
           <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
             {data.active_period.domain
               ? capitalize(data.active_period.domain) + "."
@@ -119,7 +119,7 @@ function Timing({
           </p>
           <p className="mt-1 text-xs text-brand-ink-soft">
             About <span className="tnum">{daysLeft}</span> day{daysLeft === 1 ? "" : "s"} left before the cycle turns ·
-            seven {PERIOD_DAYS}-day periods, Mercury through Neptune
+            seven planetary seasons, Mercury through Neptune
           </p>
         </motion.header>
 

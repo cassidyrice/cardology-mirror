@@ -6,7 +6,7 @@ import { SITE_NAME } from "@/lib/site";
 
 const title = "Cardology Yearly Spread";
 const description =
-  "Explore the Cardology yearly spread, seven 52-day periods, current planetary chapter, and timing cards as pattern language for choices and recurring themes.";
+  "Explore the Cardology yearly spread, seven planetary seasons, your current chapter, and timing cards as prompts for choices and recurring themes.";
 
 export const metadata: Metadata = {
   title: "Cardology Yearly Spread and 52-Day Periods",
@@ -30,9 +30,9 @@ export default function TimingPage() {
       canonicalPath="/timing"
       eyebrow="Timing page"
       points={[
-        "A secondary timing view after the public 52-day period meaning tool.",
-        "A personalized timing map when a visitor creates a local profile.",
-        "A mobile-first timeline that keeps the app experience on the main website.",
+        "See the dated seasons of your birthday year.",
+        "Create a local profile to see the cards for your birthday.",
+        "Read each card as a theme to consider, with your own experience in view.",
       ]}
     >
       <TimingClient />

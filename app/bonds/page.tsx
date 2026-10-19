@@ -30,9 +30,9 @@ export default function BondsPage() {
       canonicalPath="/bonds"
       eyebrow="Compatibility tool"
       points={[
-        "A secondary relationship-pattern view after the public compatibility calculator and guide.",
-        "A working comparison tool for two birthdays, with or without a saved profile.",
-        "Internal links back to the birth-card calculator and core Cardology explainers.",
+        "Compare two birthdays, with or without a saved profile.",
+        "Read where your cards share strengths and where they suggest different needs.",
+        "Try a question together, then explore either person’s full card meaning.",
       ]}
     >
       <BondsClient />

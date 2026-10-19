@@ -22,7 +22,7 @@ export const YEAR_AHEAD_PRICE_LABEL = "$19";
 export const YEAR_AHEAD_PRICE_ENV = "STRIPE_PRICE_YEAR_AHEAD";
 /** Build-time kill switch for every Year Ahead CTA (calculator, home reveal,
  *  product page, success-page cross-sell). Same pattern as CARD_APP_ON_SALE. */
-export const YEAR_AHEAD_ON_SALE = true;
+export const YEAR_AHEAD_ON_SALE = false; // retired 2026-10-18: the Chemistry Check is the only offer
 /** How long the emailed link re-opens the year. */
 export const YEAR_AHEAD_LINK_DAYS = 365;
 /** Buttondown tag for the free email preview (calculator result + home reveal). */
