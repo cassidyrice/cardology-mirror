@@ -287,7 +287,7 @@ test("calculator and card-meaning discovery use the personal readings without ch
   const result = calculator.slice(calculator.indexOf("function CalculatorNextStep"), calculator.indexOf("function BirthCardResultCard"));
   expect(result).toContain("<StanReadingCta");
   expect(result).not.toContain("<OfferCta");
-  expect(result).toContain("<NewsletterSignupForm");
+  expect(result).toContain("<BirthdateChartDownload");
   expect(result).not.toContain("<DeepDiveHostedCheckout");
   expect(calculator).toContain("<BirthShareHero");
   expect(calculator).toContain("<CurrentPeriod");

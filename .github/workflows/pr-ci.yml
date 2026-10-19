@@ -59,6 +59,7 @@ jobs:
             scripts/authority-publication-links.test.ts \
             scripts/celeb-profile-citations.test.ts \
             scripts/newsletter-signup-form.test.ts \
+            scripts/birthdate-chart.test.ts \
             scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
             scripts/sitemap-routes.test.ts \

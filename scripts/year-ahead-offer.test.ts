@@ -150,7 +150,8 @@ test("calculator discovery offers manual readings while existing year checkout r
   expect(result).toContain("<StanReadingCta");
   expect(result).not.toContain("<OfferCta");
   expect(result).not.toContain("<YearAheadResultOffer");
-  expect(result).toContain("<NewsletterSignupForm");
+  expect(result).toContain("<BirthdateChartDownload");
+  expect(result).not.toContain("<NewsletterSignupForm");
   expect(read("components/seo/Reveal.tsx")).toContain("<OfferCta");
   const cta = read("components/seo/YearAheadCta.tsx");
   expect(cta).toContain("storeCheckoutBirthdate(birthdate)");

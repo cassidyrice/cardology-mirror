@@ -32,21 +32,10 @@ test("newsletter form states the Monday-card promise and privacy boundary", () =
   expect(component).not.toContain("trackClientFunnelEvent");
 });
 
-test("newsletter form catches non-buyers right under the $13 button on the calculator result", () => {
-  expect(calculator).toContain("<NewsletterSignupForm");
-  expect(calculator).toContain('source="calculator-result"');
-  expect(calculator.indexOf("<DeepDiveHostedCheckout")).toBeLessThan(
-    calculator.indexOf("<NewsletterSignupForm"),
-  );
-});
-
-test("newsletter tags carry the card, never the birthday", () => {
-  expect(component).toContain('type="hidden" name="tag"');
-  expect(calculator).toContain('"calculator-result"');
-  expect(calculator).toContain("`card-${slug}`");
-  expect(calculator).toContain('"card-joker"');
-  const tagsLine = calculator.split("\n").find((line) => line.includes("tags={")) ?? "";
-  expect(tagsLine).not.toMatch(/date|birthdate/i);
+test("calculator result offers the birthdate chart download instead of the email preview form", () => {
+  expect(calculator).not.toContain("<NewsletterSignupForm");
+  expect(calculator).not.toContain("Get a free preview by email");
+  expect(calculator).toContain('<BirthdateChartDownload birthdate={reveal.birthdate} source="calculator-result" />');
 });
 
 test("newsletter form appears in methodology; home stays calculator-only", () => {
