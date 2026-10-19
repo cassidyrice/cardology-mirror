@@ -7,10 +7,8 @@ const ROOT = join(import.meta.dir, "..");
 const COPY_SCOPE = [
   "lib/card-meanings.json",
   "lib/engine-data/card-descriptions.json",
-  "lib/elroy/copy-overrides.ts",
   "lib/products.ts",
   "lib/blueprint.ts",
-  "lib/blueprint-sample.ts",
   "components/seo/OfferCta.tsx",
   "components/seo/BirthCardCalculator.tsx",
   "app/birth-card-calculator/page.tsx",

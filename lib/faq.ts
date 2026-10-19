@@ -1,10 +1,3 @@
-import {
-  DEEP_DIVE_FULFILLMENT,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { READINGS_NAV, READING_FOLLOW_UP, READING_RESPONSE_TIME, READING_SUPPORT_EMAIL } from "./readings-nav";
 import { CONTACT_EMAIL } from "@/lib/site";
 
@@ -28,16 +21,6 @@ export type FaqSection = {
   title: string;
   items: readonly FaqItem[];
 };
-
-function readingAnswer(): string {
-  if (
-    !DEEP_DIVE_FULFILLMENT.includes(ONE_QUESTION_TURNAROUND) ||
-    !DEEP_DIVE_FULFILLMENT.includes(DEEP_DIVE_PRICE_LABEL)
-  ) {
-    throw new Error("One Question Reading fulfillment drifted from the public price and minute SLA");
-  }
-  return DEEP_DIVE_FULFILLMENT;
-}
 
 export const FAQ_SECTIONS: readonly FaqSection[] = [
   {
@@ -163,8 +146,8 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
     items: [
       {
         id: "personal-readings",
-        question: "Which personal reading should I choose?",
-        answer: "The Chemistry Check ($39) explores two people. Your 12-Month Timing Map ($49) follows one person’s year. The Family Snapshot ($59) focuses on the main dynamics among up to three people total, including you. Cass personally prepares each reading and delivers it by email.",
+        question: "What personal reading do you offer?",
+        answer: "There is one: the Chemistry Check ($39), a reading of two people’s cards: shared strengths, recurring friction, and where your years cross. Cass prepares it personally and delivers it by email.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {
@@ -173,36 +156,10 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
         answer: `${READING_FOLLOW_UP} Email ${READING_SUPPORT_EMAIL} with questions about your reading. ${READING_RESPONSE_TIME}`,
         links: [{ href: "/contact", label: "Reading support" }],
       },
-    ],
-  },
-  {
-    id: "other-reading-products",
-    title: "One Question Reading and other purchases",
-    items: [
-      {
-        id: "one-question-reading",
-        question: `What is the separate ${DEEP_DIVE_PRICE_LABEL} One Question Reading?`,
-        answer: `The One Question Reading is a separate product with its own delivery and support terms. ${readingAnswer()}`,
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
-      {
-        id: "good-question",
-        question: "What makes a good question for the One Question Reading?",
-        answer:
-          "One decision, in real words. \"Should I take the job in Denver or stay put?\" reads better than \"career.\" \"Do I keep pushing this business or wind it down?\" reads better than \"money.\" A yes-or-no question is fine. The reading will not answer yes or no for you; it shows you which yes and which no you have been circling, and lets you pick.",
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
-      {
-        id: "reading-is-not-a-forecast",
-        question: "Will the One Question Reading tell me what to do, or what will happen?",
-        answer:
-          "No. It is a mirror, not a forecast. Same birthday, same cards, every time; what they mean beside your question is the part that takes a person. Nothing here predicts events, lucky days, or other people's choices.",
-        links: [{ href: DEEP_DIVE_PRODUCT_PATH, label: DEEP_DIVE_PRODUCT_NAME }],
-      },
       {
         id: "order-help",
-        question: "How do I get help with a One Question Reading or another purchase?",
-        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. The contact page gives the response time. Questions about the content of your Chemistry Check, Timing Map, or Family Snapshot use the separate personal-reading follow-up service at ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
+        question: "How do I get help with an order or a past purchase?",
+        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. Questions about the content of your Chemistry Check go to ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
         links: [
           { href: "/contact", label: "Contact" },
           { href: "/refund-policy", label: "Refund policy" },

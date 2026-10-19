@@ -45,22 +45,10 @@ jobs:
       - name: Fast unit tests
         run: |
           bun test \
-            scripts/elroy-analytics.test.ts \
-            scripts/elroy-api.test.ts \
-            scripts/elroy-contact.test.ts \
-            scripts/elroy-email.test.ts \
-            scripts/elroy-idempotency.test.ts \
-            scripts/elroy-input.test.ts \
-            scripts/elroy-reading.test.ts \
-            scripts/elroy-route.test.ts \
-            scripts/elroy-widget.test.ts \
             scripts/shorts/studio-core.test.ts \
-            scripts/analog-algorithm-launch.test.ts \
             scripts/authority-publication-links.test.ts \
             scripts/celeb-profile-citations.test.ts \
-            scripts/newsletter-signup-form.test.ts \
             scripts/birthdate-chart.test.ts \
-            scripts/complete-card-blueprint-launch.test.ts \
             scripts/sitemap-integrity.test.ts \
             scripts/sitemap-routes.test.ts \
             scripts/birth-card-coverage.test.ts \
@@ -68,8 +56,7 @@ jobs:
             scripts/second-page-poach.test.ts \
             scripts/internal-link-hygiene.test.ts \
             scripts/ai-overview-hubs.test.ts \
-            scripts/calculator-deep-dive.test.ts \
-            scripts/one-question-sla.test.ts \
+            scripts/retired-offers.test.ts \
             scripts/cardology-for-beginners.test.ts \
             scripts/playing-card-spreads-cta.test.ts \
             scripts/agent-card.test.ts \
@@ -80,8 +67,6 @@ jobs:
             scripts/famous-birthdays-grounding.test.ts \
             scripts/structured-data.test.ts \
             scripts/page-schema.test.ts \
-            scripts/product-schema.test.ts \
-            scripts/year-ahead-offer.test.ts \
             scripts/worker-production-contract-lib.test.ts
 
       - name: Sitemap generator smoke

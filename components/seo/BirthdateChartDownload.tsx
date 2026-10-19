@@ -7,8 +7,14 @@ import {
   birthdateChartFromIsoDate,
 } from "@/lib/birthdate-chart";
 import { renderBirthdateChartPng } from "@/lib/birthdate-chart-render";
+import { CHEMISTRY_CHECK_URL } from "@/lib/readings-nav";
 
 export type BirthdateChartSource = "calculator-result" | "home-reveal";
+
+/** After the download: the one paid next step, the Chemistry Check on Stan. */
+export function chemistryCheckHrefAfterChart(source: BirthdateChartSource): string {
+  return `${CHEMISTRY_CHECK_URL}?utm_source=cardblueprints&utm_medium=birthdate_chart&utm_campaign=${source}`;
+}
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -147,13 +153,25 @@ export function BirthdateChartDownload({
           </p>
           {lead === "failed" ? (
             <p className="text-center text-xs text-brand-ink-soft" data-birthdate-chart-save-failed>
-              Your chart is yours to keep. We couldn&apos;t save your email just now, so Monday&apos;s card won&apos;t arrive yet.
+              Your chart is yours to keep. We couldn&apos;t save your email just now, but nothing else is needed from you.
             </p>
           ) : null}
+          <div className="mt-2 w-full border-t-2 border-brand-gold pt-4 text-center" data-birthdate-chart-next>
+            <p className="font-serif text-base leading-snug text-brand-ink">
+              Next: see how your card meets someone else&rsquo;s.
+            </p>
+            <a
+              href={chemistryCheckHrefAfterChart(source)}
+              className="ink-button large-button mt-3 w-full"
+              style={{ borderColor: "#d9b26a", boxShadow: "inset 0 0 0 1px #d9b26a" }}
+            >
+              Get the Chemistry Check · $39
+            </a>
+          </div>
         </div>
       ) : null}
       <p className="mt-3 text-xs leading-relaxed text-brand-ink-soft">
-        Your birthday stays on this page. We keep your email to send your card on Mondays. Unsubscribe anytime.{" "}
+        Your birthday stays on this page. We save your email to the Card Blueprints list. Unsubscribe anytime.{" "}
         <Link href="/privacy-policy" className="text-brand-oxblood underline underline-offset-4">
           Privacy policy
         </Link>

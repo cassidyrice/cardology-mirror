@@ -111,6 +111,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
           ) : null}
 
           <OfferCta className="mt-8 text-left" />
+
         </>
       )}
 

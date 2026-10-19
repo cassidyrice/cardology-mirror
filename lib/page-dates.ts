@@ -18,9 +18,6 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/52-day-period-meaning-tool": "2026-07-30",
   "/birth-card-compatibility-calculator": "2026-09-22",
   "/cardology-compatibility": "2026-09-22",
-  "/products/one-question-reading": "2026-09-13",
-  "/products/year-ahead": "2026-10-07",
-  "/free-course": "2026-08-07",
   "/what-is-cardology": "2026-09-22",
   "/cardology-books": "2026-09-15",
   "/cardology-for-beginners": "2026-09-22",
@@ -40,7 +37,7 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/shadow-karma-guide": "2026-07-02",
   "/karma-cards": "2026-09-01",
   "/explore": "2026-09-17",
-  "/privacy-policy": "2026-09-01",
+  "/privacy-policy": "2026-10-18",
   "/refund-policy": "2026-08-06",
   "/terms-of-service": "2026-08-06",
 };

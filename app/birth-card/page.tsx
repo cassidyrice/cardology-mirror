@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
@@ -39,7 +38,7 @@ const faqs = [
   },
   {
     q: "Can I get a personal reading?",
-    a: "Yes. Cass prepares personal readings about a relationship ($39), your next twelve months ($49), or your family’s main dynamics for up to three people ($59). Explore your free card meaning first, then choose a focus.",
+    a: "Yes. Cass prepares the Chemistry Check ($39), a reading of two people’s cards. Explore your free card meaning first.",
   },
 ];
 
@@ -309,8 +308,6 @@ export default function BirthCardIndex() {
       </p>
 
       <OfferCta className="mt-12" />
-
-      <FreeCourseCta source="card-meanings" className="mt-8" />
     </SeoShell>
   );
 }

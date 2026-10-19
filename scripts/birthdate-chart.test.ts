@@ -53,7 +53,6 @@ test("the download component saves the lead through our own API, without leaving
   expect(c).not.toContain("buttondown.com");
   expect(c).not.toContain("action={");
   expect(c).toContain("JSON.stringify({ email, source, slug })");
-  expect(c).not.toMatch(/\$\d/);
   expect(read("components/seo/Reveal.tsx")).toContain('<BirthdateChartDownload birthdate={birthdate} source="home-reveal" />');
 });
 
@@ -79,4 +78,18 @@ test("chart signup validates input and posts tags to the same Buttondown list wi
   const failing = (async () => new Response("bad", { status: 400 })) as unknown as typeof fetch;
   await expect(subscribeChartLead(signup, "k", "x", failing)).rejects.toThrow();
   expect(read("app/api/chart-signup/route.ts")).toContain("process.env.BUTTONDOWN_API_KEY");
+});
+
+test("after the download the next step is the Chemistry Check on Stan, with UTM tags", async () => {
+  const c = read("components/seo/BirthdateChartDownload.tsx");
+  const { chemistryCheckHrefAfterChart } = await import("../components/seo/BirthdateChartDownload");
+  const { CHEMISTRY_CHECK_URL } = await import("../lib/readings-nav");
+  expect(chemistryCheckHrefAfterChart("home-reveal")).toBe(
+    `${CHEMISTRY_CHECK_URL}?utm_source=cardblueprints&utm_medium=birthdate_chart&utm_campaign=home-reveal`,
+  );
+  expect(c).toContain("Get the Chemistry Check · $39");
+  expect(c).not.toMatch(/Monday/);
+  // The only price on the chart flow is the $39 Chemistry Check (13 × 3).
+  expect([...c.matchAll(/\$(\d+)/g)].map((m) => m[1])).toEqual(["39"]);
+  expect(read("components/seo/BirthCardCalculator.tsx")).toContain('<BirthdateChartDownload birthdate={reveal.birthdate} source="calculator-result" />');
 });

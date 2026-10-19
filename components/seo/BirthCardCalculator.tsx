@@ -233,7 +233,7 @@ export function BirthdayWorkerAnchor({
   );
 }
 
-/** The result continues to a free exercise, personal readings, or the free birthdate chart download. */
+/** The result continues to the Chemistry Check, a free exercise, or the free birthdate chart download. */
 function CalculatorNextStep({
   reveal,
 }: {

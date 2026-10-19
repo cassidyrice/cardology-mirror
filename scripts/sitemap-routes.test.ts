@@ -45,7 +45,7 @@ describe("sitemap route guard", () => {
     expect(parsed.kind).toBe("urlset");
     expect(parsed.locations.length).toBeGreaterThan(50);
     assertBlueprintReportStaysOffMainSitemap("/sitemap.xml", parsed.locations);
-    expect(parsed.locations).toContain(`${SITE_URL}/products/one-question-reading`);
+    expect(parsed.locations).not.toContain(`${SITE_URL}/products/one-question-reading`);
     expect(parsed.locations).not.toContain(`${SITE_URL}/products/blueprint-report`);
   });
 

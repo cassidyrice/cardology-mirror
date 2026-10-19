@@ -1,8 +1,3 @@
-import {
-  DEEP_DIVE_HEADER_CTA_LABEL,
-  DEEP_DIVE_PRODUCT_PATH,
-} from "@/lib/deep-dive";
-
 export const BIRTH_CARD_CALCULATOR_LABEL = "Birth Card Calculator";
 export const BIRTH_CARD_CALCULATOR_PATH = "/birth-card-calculator";
 export const WHAT_IS_CARDOLOGY_LABEL = "What is Cardology";
@@ -10,13 +5,8 @@ export const WHAT_IS_CARDOLOGY_PATH = "/what-is-cardology";
 export const FAQ_NAV_LABEL = "FAQ";
 export const FAQ_NAV_PATH = "/faq";
 
-export const ONE_QUESTION_NAV = {
-  label: DEEP_DIVE_HEADER_CTA_LABEL,
-  href: DEEP_DIVE_PRODUCT_PATH,
-} as const;
-
 /** How loud a money-path link is. lead = free calculator (first). offer = the
- *  $13 reading (the heavy control). guide and help stay in the same row. */
+ *  Chemistry Check (the heavy control). guide and help stay in the same row. */
 export const MONEY_PATH_WEIGHTS = ["lead", "guide", "offer", "help"] as const;
 export type MoneyPathWeight = (typeof MONEY_PATH_WEIGHTS)[number];
 
@@ -38,8 +28,8 @@ export const MONEY_PATHS = [
   },
   {
     id: "reading",
-    label: ONE_QUESTION_NAV.label,
-    href: ONE_QUESTION_NAV.href,
+    label: "Chemistry Check · $39",
+    href: "/#chemistry-check",
     weight: "offer",
   },
   {

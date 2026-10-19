@@ -58,9 +58,21 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-brand-ink">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">One Question Reading information</h3>
+              <h3 className="font-bold text-brand-ink">Chemistry Check orders</h3>
               <p className="mt-1">
-                Stripe Checkout collects the buyer&rsquo;s email address. The birth
+                The Chemistry Check is sold through Stan Store. Stan collects the
+                buyer&rsquo;s name, email address and the birth dates you enter,
+                and processes the payment. Cass uses those details to prepare your
+                reading and email it to you, and to answer your follow-up
+                questions. Stan&rsquo;s own privacy policy governs its checkout.
+              </p>
+            </div>
+            <div className="border-t border-brand-line pt-4">
+              <h3 className="font-bold text-brand-ink">Past orders placed on this site</h3>
+              <p className="mt-1">
+                Orders placed on this site before October 2026 (including the One
+                Question Reading) used Stripe Checkout, which collected the
+                buyer&rsquo;s email address. The birth
                 date and the question you type before checkout travel with the
                 Stripe session as metadata and are used to write your reading
                 and to email it to you. Past 52xSeven Blueprint sign-in links
@@ -113,14 +125,16 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">Free course and email list</h3>
+              <h3 className="font-bold text-brand-ink">Free birthdate chart</h3>
               <p className="mt-1">
-                When you request the free Read Your Birth Card course, we collect
-                the name and email address you submit. We use them to create a
-                Resend contact, deliver your signed course access link, and send
-                occasional Card Blueprints educational or product emails under
-                the consent shown on the signup form. You can unsubscribe from
-                marketing emails at any time.
+                When you ask for your free birthdate chart, the chart is drawn in
+                your browser and your birth date is never sent to us. We save your
+                email address, and which card your chart shows, to our Buttondown
+                list. Buttondown sends one confirmation email; only people who
+                confirm hear from us again, and you can unsubscribe anytime. If you
+                signed up before October 2026 (the free course, the Elroy chat or
+                the newsletter), your name and email stay with Resend or Buttondown
+                until you ask us to delete them.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
@@ -191,21 +205,6 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">Elroy micro-reading</h3>
-              <p className="mt-1">
-                Elroy is an on-site chat guide. After you see your free birth
-                card, you may choose to request a short personalized micro-reading.
-                That request sends the birth date you enter to our server for one
-                response only so the reading can be built. We do not keep an
-                application birth-date database. We collect the email you submit,
-                with your consent, to add you to the Card Blueprints contact list,
-                show the reading in chat, and email you a copy. Resend delivers
-                that message and future educational or product emails you opt into.
-                Analytics events for Elroy do not include birth date, card, or
-                email.
-              </p>
-            </div>
-            <div className="border-t border-brand-line pt-4">
               <h3 className="font-bold text-brand-ink">On-site reading pages</h3>
               <p className="mt-1">
                 The on-site reading, story, and deep-dive pages are different:
@@ -231,9 +230,8 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-brand-line pt-2">To write your One Question Reading from the birth date and question you enter and to email it to you (and to keep past report, sign-in, and download links working).</li>
+            <li className="border-t border-brand-line pt-2">To prepare your Chemistry Check from the birth dates you enter and email it to you (and to keep past report, sign-in, and download links working).</li>
             <li className="border-t border-brand-line pt-2">To send your purchase confirmation and start-here instructions by email.</li>
-            <li className="border-t border-brand-line pt-2">To deliver the free course and, when you explicitly request it, send occasional Card Blueprints educational and product emails.</li>
             <li className="border-t border-brand-line pt-2">To support and honor legacy phone orders during their original access windows.</li>
             <li className="border-t border-brand-line pt-2">To follow up on questions or support requests about a purchase, if you ask.</li>
           </ul>
@@ -257,7 +255,13 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-brand-line pt-2">
-              <strong>Resend</strong> — transactional email delivery and management of contacts who request the free course.{" "}
+              <strong>Stan Store</strong> — checkout and payment for the Chemistry Check.{" "}
+              <a href="https://assets.stanwith.me/legal/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
+                Stan Privacy Policy
+              </a>
+            </li>
+            <li className="border-t border-brand-line pt-2">
+              <strong>Resend</strong> — email delivery for past purchases, and contacts who signed up before October 2026.{" "}
               <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
                 Resend Privacy Policy
               </a>
@@ -294,7 +298,7 @@ export default function PrivacyPolicy() {
               </a>
             </li>
             <li className="border-t border-brand-line pt-2">
-              <strong>Buttondown</strong> — newsletter delivery when a form posts to Buttondown.{" "}
+              <strong>Buttondown</strong> — holds our email list: free birthdate chart signups and people who subscribed before October 2026.{" "}
               <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
                 Buttondown Privacy Policy
               </a>
@@ -343,7 +347,7 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-brand-ink">Your rights</h2>
           <p className="mt-3">
             You can request that we delete the information tied to your
-            purchase or free-course signup at any time by emailing{" "}
+            purchase or past email signup at any time by emailing{" "}
             <a href={`mailto:${CONTACT_EMAIL}`} className="text-brand-oxblood underline underline-offset-4">
               {CONTACT_EMAIL}
             </a>{" "}
