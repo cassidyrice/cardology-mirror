@@ -1,9 +1,9 @@
 import { expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import { chartSignupTags, normalizeChartSignup, subscribeChartLead } from "../lib/chart-signup";
 import {
   BIRTHDATE_CHART_TAG,
-  BUTTONDOWN_EMBED_SUBSCRIBE,
   birthdateChartFilename,
   birthdateChartFromIsoDate,
   birthdateChartTags,
@@ -46,15 +46,35 @@ test("tags never carry the birthday; invalid dates give no chart", () => {
   expect(birthdateChartFromIsoDate("1990-02-30")).toBeNull();
 });
 
-test("the download component saves the lead to the same Buttondown list without leaving the page", () => {
+test("the download component saves the lead through our own API, without leaving the page", () => {
   const c = read("components/seo/BirthdateChartDownload.tsx");
-  expect(BUTTONDOWN_EMBED_SUBSCRIBE).toBe("https://buttondown.com/api/emails/embed-subscribe/cardblueprint");
   expect(c).toContain("e.preventDefault()");
-  expect(c).toContain('redirect: "manual"');
-  expect(c).not.toContain('name="birthdate"');
-  // The only Buttondown form is the opt-in "finish signing up" fallback, in a new tab.
-  expect(c.match(/action=\{/g)?.length ?? 0).toBe(1);
-  expect(c).toContain('target="_blank"');
+  expect(c).toContain('fetch("/api/chart-signup"');
+  expect(c).not.toContain("buttondown.com");
+  expect(c).not.toContain("action={");
+  expect(c).toContain("JSON.stringify({ email, source, slug })");
   expect(c).not.toMatch(/\$\d/);
   expect(read("components/seo/Reveal.tsx")).toContain('<BirthdateChartDownload birthdate={birthdate} source="home-reveal" />');
+});
+
+test("chart signup validates input and posts tags to the same Buttondown list with the server key", async () => {
+  expect(() => normalizeChartSignup({ email: "nope", source: "home-reveal", slug: "joker" })).toThrow();
+  expect(() => normalizeChartSignup({ email: "a@b.co", source: "elsewhere", slug: "joker" })).toThrow();
+  expect(() => normalizeChartSignup({ email: "a@b.co", source: "home-reveal", slug: "1990-06-15" })).toThrow();
+  const signup = normalizeChartSignup({ email: " A@B.co ", source: "calculator-result", slug: "2-of-diamonds" });
+  expect(chartSignupTags(signup)).toEqual([BIRTHDATE_CHART_TAG, "calculator-result", "card-2-of-diamonds"]);
+  let seen: { url: string; init: RequestInit } | null = null;
+  const fake = (async (url: string, init: RequestInit) => {
+    seen = { url, init };
+    return new Response("{}", { status: 201 });
+  }) as unknown as typeof fetch;
+  await subscribeChartLead(signup, "k", "https://cardblueprints.com/", fake);
+  expect(seen!.url).toBe("https://api.buttondown.com/v1/subscribers");
+  expect((seen!.init.headers as Record<string, string>).Authorization).toBe("Token k");
+  const body = JSON.parse(String(seen!.init.body));
+  expect(body).toEqual({ email_address: "a@b.co", tags: [BIRTHDATE_CHART_TAG, "calculator-result", "card-2-of-diamonds"], referrer_url: "https://cardblueprints.com/" });
+  await expect(subscribeChartLead(signup, "", "x", fake)).rejects.toThrow();
+  const failing = (async () => new Response("bad", { status: 400 })) as unknown as typeof fetch;
+  await expect(subscribeChartLead(signup, "k", "x", failing)).rejects.toThrow();
+  expect(read("app/api/chart-signup/route.ts")).toContain("process.env.BUTTONDOWN_API_KEY");
 });

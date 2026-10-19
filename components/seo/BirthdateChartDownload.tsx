@@ -3,10 +3,8 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
 import {
-  BUTTONDOWN_EMBED_SUBSCRIBE,
   birthdateChartFilename,
   birthdateChartFromIsoDate,
-  birthdateChartTags,
 } from "@/lib/birthdate-chart";
 import { renderBirthdateChartPng } from "@/lib/birthdate-chart-render";
 
@@ -14,29 +12,19 @@ export type BirthdateChartSource = "calculator-result" | "home-reveal";
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type LeadStatus = "pending" | "saved" | "verify";
+type LeadStatus = "pending" | "saved" | "failed";
 
-/**
- * Saves the lead to Buttondown in the background. The download never waits on it.
- * Buttondown's spam firewall sometimes answers with a human check (HTTP 400)
- * instead of subscribing; then we offer a one-click "finish" link that opens
- * Buttondown's check in a new tab. A redirect (opaqueredirect) or 2xx = saved.
- */
-async function saveLead(email: string, tags: string[]): Promise<LeadStatus> {
+/** Saves the lead through our own API (Buttondown key stays on the server). The download never waits on it. */
+async function saveLead(email: string, source: BirthdateChartSource, slug: string): Promise<LeadStatus> {
   try {
-    const body = new FormData();
-    body.append("email", email);
-    for (const tag of tags) body.append("tag", tag);
-    body.append("referrer_url", window.location.href);
-    const res = await fetch(BUTTONDOWN_EMBED_SUBSCRIBE, {
+    const res = await fetch("/api/chart-signup", {
       method: "POST",
-      body,
-      redirect: "manual",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, source, slug }),
     });
-    if (res.type === "opaqueredirect" || res.ok) return "saved";
-    return "verify";
+    return res.ok ? "saved" : "failed";
   } catch {
-    return "verify";
+    return "failed";
   }
 }
 
@@ -67,7 +55,6 @@ export function BirthdateChartDownload({
   const [error, setError] = useState("");
   const [url, setUrl] = useState<string | null>(null);
   const [lead, setLead] = useState<LeadStatus>("pending");
-  const [savedEmail, setSavedEmail] = useState("");
 
   useEffect(() => () => {
     if (url) URL.revokeObjectURL(url);
@@ -86,8 +73,7 @@ export function BirthdateChartDownload({
     }
     setError("");
     setStatus("busy");
-    setSavedEmail(clean);
-    void saveLead(clean, birthdateChartTags(chart, source)).then(setLead);
+    void saveLead(clean, source, chart.slug).then(setLead);
     try {
       const blob = await renderBirthdateChartPng(chart);
       const next = URL.createObjectURL(blob);
@@ -159,24 +145,10 @@ export function BirthdateChartDownload({
           <p className="text-xs text-brand-ink-soft">
             Your download should start on its own. If it didn&apos;t, tap the button above.
           </p>
-          {lead === "verify" ? (
-            <form
-              method="post"
-              action={BUTTONDOWN_EMBED_SUBSCRIBE}
-              target="_blank"
-              className="text-center text-xs text-brand-ink-soft"
-              data-birthdate-chart-verify
-            >
-              <input type="hidden" name="email" value={savedEmail} />
-              {birthdateChartTags(chart, source).map((tag) => (
-                <input key={tag} type="hidden" name="tag" value={tag} />
-              ))}
-              Want your card on Mondays too?{" "}
-              <button type="submit" className="text-brand-oxblood underline underline-offset-4">
-                Finish signing up
-              </button>{" "}
-              (one quick check, opens in a new tab).
-            </form>
+          {lead === "failed" ? (
+            <p className="text-center text-xs text-brand-ink-soft" data-birthdate-chart-save-failed>
+              Your chart is yours to keep. We couldn&apos;t save your email just now, so Monday&apos;s card won&apos;t arrive yet.
+            </p>
           ) : null}
         </div>
       ) : null}

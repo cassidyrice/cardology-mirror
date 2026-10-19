@@ -1,7 +1,8 @@
 /**
  * Free birthdate chart (lead magnet on the calculator + homepage result).
  * Pure data, client-safe: the chart is drawn in the visitor's browser and the
- * birthday never leaves the page. Only the email + tags go to Buttondown.
+ * birthday never leaves the page. Only the email + tags go to Buttondown
+ * (via /api/chart-signup, lib/chart-signup.ts).
  * Dec 31 is the Joker — never a silent King of Spades.
  */
 import { calculateBirthCardFromIsoDate, birthCardSlug } from "@/lib/birth-card-calculator";
@@ -12,8 +13,6 @@ import THREE_LENS from "@/lib/card-meanings.json";
 import CARD_VOICE from "@/scripts/card-bible-voice.json";
 
 export const BIRTHDATE_CHART_TAG = "birthdate-chart";
-export const BUTTONDOWN_EMBED_SUBSCRIBE =
-  "https://buttondown.com/api/emails/embed-subscribe/cardblueprint";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
