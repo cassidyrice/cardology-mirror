@@ -169,21 +169,20 @@ for (const offer of INSTANT_REPORT_PRODUCTS) {
 assert.deepEqual(
   PUBLIC_PRODUCTS.map((product) => product.slug),
   [
-    "blueprint-report-consult",
-    "blueprint-report",
-    "analog-algorithm",
-    "complete-card-blueprint",
   ],
 );
 assert.equal(publicProductBySlug("cardology-membership"), undefined, "retired membership must not open new checkout");
 assert.equal(productBySlug("cardology-membership")?.kind, "membership", "retired membership must still resolve for historical sessions");
 assert.equal(checkoutProductBySlug("cardology-membership"), undefined, "retired membership must not open a Stripe session");
-assert.equal(publicProductBySlug("blueprint-report-consult")?.kind, "instant_report");
-assert.equal(publicProductBySlug("blueprint-report")?.kind, "instant_report");
+assert.equal(publicProductBySlug("blueprint-report-consult"), undefined, "retired 2026-10-18");
+assert.equal(publicProductBySlug("blueprint-report"), undefined, "retired 2026-10-18");
 assert.equal(publicProductBySlug("personal-card-blueprint"), undefined, "retired $13 report must not open new checkout");
 assert.equal(productBySlug("personal-card-blueprint")?.kind, "instant_report", "retired $13 report must still resolve for past buyers");
-assert.equal(publicProductBySlug("analog-algorithm")?.kind, "digital_download");
-assert.equal(publicProductBySlug("complete-card-blueprint")?.kind, "digital_download");
+assert.equal(publicProductBySlug("analog-algorithm"), undefined);
+assert.equal(publicProductBySlug("complete-card-blueprint"), undefined);
+assert.equal(checkoutProductBySlug("deep-dive"), undefined, "the $13 reading is retired");
+assert.equal(checkoutProductBySlug("year-ahead"), undefined, "Your Year Ahead is retired");
+assert.equal(checkoutProductBySlug("card-blueprint-app"), undefined, "the app is retired");
 assert.equal(sanitizeOfferSlug("personal-card-blueprint"), "personal-card-blueprint");
 assert.equal(sanitizeOfferSlug("analog-algorithm"), "analog-algorithm");
 assert.equal(sanitizeOfferSlug("complete-card-blueprint"), "complete-card-blueprint");
@@ -223,8 +222,6 @@ const productMarketingFiles = [
   "components/seo/OfferCta.tsx",
   "components/seo/BirthCardCalculator.tsx",
   "components/analytics/AnalyticsCapture.tsx",
-  "app/checkout/[offer]/page.tsx",
-  "app/products/one-question-reading/page.tsx",
   "lib/generated-blog-posts.json",
   "public/llms.txt",
   "public/llms-full.txt",
@@ -245,20 +242,14 @@ assert.doesNotMatch(
   productSurfaceText,
   /birth dates and the actual question/i,
 );
-assert.match(
-  productSurfaceText,
-  /One Question Reading is a \$13 written reading built from a single birth date and one question/i,
-);
-assert.match(
-  readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /One Question Reading is a \$\{DEEP_DIVE_PRICE_LABEL\} written reading built from a single birth date and one question/i,
-);
+assert.doesNotMatch(productSurfaceText, /\$13\b|one-question-reading/, "the $13 reading is retired");
+assert.match(productSurfaceText, /Chemistry Check/);
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
 // live $13 One Question Reading; they must not resurrect the retired report
 // slug or product name. The queue is checked too, so a bad queued post fails
 // here before the daily bot publishes it. (lib/products.ts still resolves the old slug for
 // past buyers.)
-for (const file of ["lib/generated-blog-posts.json", "content/daily-blog/definitional-queue.json", "scripts/generate_daily_blog_post.ts"]) {
+for (const file of ["lib/generated-blog-posts.json"]) {
   const text = readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
   assert.doesNotMatch(
     text,
@@ -271,10 +262,6 @@ for (const file of ["lib/generated-blog-posts.json", "content/daily-blog/definit
     `${file} must use the minute SLA, not 2 business days`,
   );
 }
-assert.doesNotMatch(
-  readFileSync("scripts/generate_daily_blog_post.ts", "utf8"),
-  /For a personal reading, start with the birth dates and the actual question/i,
-);
 assert.doesNotMatch(
   productSurfaceText,
   /READER_PHONE|Call the AI reader|free first-card|free AI voice preview|free voice preview|free preview line|free reading line|free-call|free_call_clicked|FREE_PREVIEW|tel:\+/i,
@@ -318,16 +305,8 @@ assert.doesNotMatch(productSurfaceText, /Complete Reading/i);
 assert.doesNotMatch(productSurfaceText, /90-Day Season Pass/i);
 assert.doesNotMatch(productSurfaceText, /quick-question|complete-reading|season-pass-90/i);
 assert.match(
-  readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
-  /checkoutProductBySlug\(slug\)/,
-);
-assert.doesNotMatch(
-  readFileSync("app/checkout/[offer]/session/route.ts", "utf8"),
-  /productBySlug\(slug\)/,
-);
-assert.match(
   readFileSync("app/readings/page.tsx", "utf8"),
-  /permanentRedirect\("\/products\/one-question-reading"\)/,
+  /permanentRedirect\("\/#readings"\)/,
 );
 assert.match(
   readFileSync("app/try/page.tsx", "utf8"),
@@ -337,7 +316,7 @@ assert.equal(MARKETING_PATHS.includes("/try"), false);
 const middlewareText = readFileSync("middleware.ts", "utf8");
 assert.match(
   middlewareText,
-  /["'](\/readings)["']\s*:\s*["']\/products\/one-question-reading["']/,
+  /["'](\/readings)["']\s*:\s*["']\/#readings["']/,
 );
 assert.match(
   middlewareText,
@@ -379,7 +358,7 @@ assert.deepEqual(
   {
     status: 301,
     location:
-      "https://cardblueprints.com/products/one-question-reading?utm_source=legacy",
+      "https://cardblueprints.com/?utm_source=legacy#readings",
   },
 );
 assert.deepEqual(
@@ -423,7 +402,7 @@ assert.deepEqual(
   middlewareResult("https://www.cardblueprints.com/readings?a=1", "www.cardblueprints.com"),
   {
     status: 301,
-    location: "https://cardblueprints.com/products/one-question-reading?a=1",
+    location: "https://cardblueprints.com/?a=1#readings",
   },
 );
 assert.deepEqual(
@@ -433,34 +412,34 @@ assert.deepEqual(
   ),
   { status: 301, location: "https://cardblueprints.com/birth-card/ace-of-hearts" },
 );
-assert.equal(
+assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/one-question-reading",
     "cardblueprints.com",
-  ).status,
-  200,
+  ),
+  { status: 301, location: "https://cardblueprints.com/#readings" },
 );
-// The $9 Deep Dive, $47 Blueprint Breakdown and $19 52xSeven URLs 301 to the $47 One Question Reading (2026-09-13).
+// Every retired offer URL 301s to the Chemistry Check on the homepage (2026-10-18).
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/birth-card-deep-dive",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
+  { status: 301, location: "https://cardblueprints.com/#readings" },
 );
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/blueprint-breakdown-video",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading" },
+  { status: 301, location: "https://cardblueprints.com/#readings" },
 );
 assert.deepEqual(
   middlewareResult(
     "https://cardblueprints.com/products/52xseven-blueprint?utm_source=old-email",
     "cardblueprints.com",
   ),
-  { status: 301, location: "https://cardblueprints.com/products/one-question-reading?utm_source=old-email" },
+  { status: 301, location: "https://cardblueprints.com/?utm_source=old-email#readings" },
 );
 // The retired catalog 301s to the one live product.
 assert.equal(
@@ -479,8 +458,6 @@ assert.match(
   privacyPolicyText,
   /xAI[\s\S]{0,160}legacy voice orders[\s\S]{0,160}original access windows/i,
 );
-assert.match(productSurfaceText, /One Question Reading/);
-assert.match(productSurfaceText, /about a minute/i);
 assert.doesNotMatch(
   productSurfaceText,
   /2 business days/,

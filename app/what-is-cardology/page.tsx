@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CARDOLOGY_TIMELINE } from "@/lib/cardology-timeline";
@@ -198,10 +197,10 @@ export default function WhatIsCardology() {
       <p className="mb-2 text-sm text-brand-ink-soft">
         Free first: reveal your birth card below. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          personal readings from $39
+          Chemistry Check ($39)
         </Link>
         {" "}
-        — a relationship, your year, or your family, personally read by Cass.
+        — your card beside one other person’s, personally read by Cass.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -246,20 +245,20 @@ export default function WhatIsCardology() {
           </Link>
           . Optional next step: the{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            personal readings from $39
+            Chemistry Check ($39)
           </Link>{" "}
-          (choose a relationship, your next twelve months, or your family).
+          (two people’s cards, read together).
         </p>
         <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
           <p className="font-serif text-base text-brand-ink">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            Choose a focus: the Chemistry Check ($39), Your 12-Month Timing Map ($49), or the Family Snapshot ($59). Your reading is prepared privately and delivered by email.
+            The Chemistry Check ($39) reads your card beside one other person’s. It is prepared privately and delivered by email.
           </p>
           <Link
             href="/#readings"
             className="accent-button mt-4"
           >
-            Explore personal readings
+            See the Chemistry Check
           </Link>
         </div>
       </section>
@@ -537,7 +536,7 @@ export default function WhatIsCardology() {
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            personal readings from $39
+            the Chemistry Check ($39)
           </Link>
           — one question, read from your card, this year's cards, and the card you owe.
         </p>
@@ -557,13 +556,11 @@ export default function WhatIsCardology() {
         </div>
       </section>
 
-      <FreeCourseCta source="learn" className="mt-10" />
-
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/#readings" className="ink-button">
-            personal readings from $39 →
+            the Chemistry Check, $39 →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →

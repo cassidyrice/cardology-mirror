@@ -11,7 +11,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Find your birth card free, then choose a personal reading about your relationships, your year, or your family. Readings from $39, prepared by Cass.";
+  "Find your birth card free, then see how it meets someone else’s with the Chemistry Check ($39), prepared by Cass.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -64,9 +64,9 @@ export default function Home() {
 
         <section id="readings" aria-labelledby="home-reading-title" className="mx-auto w-full max-w-6xl scroll-mt-8 border-t border-brand-line px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
           <div className="home-offers-heading">
-            <p className="home-kicker">Personal readings · prepared by Cass</p>
+            <p className="home-kicker">Personal reading · prepared by Cass</p>
             <h2 id="home-reading-title" className="mt-3 font-serif text-4xl leading-tight tracking-tight sm:text-5xl">Where would you like to begin?</h2>
-            <p className="mt-4 leading-relaxed text-brand-ink-soft">Choose a focus: a relationship, your next twelve months, or your family. Your reading is prepared privately and delivered by email.</p>
+            <p className="mt-4 leading-relaxed text-brand-ink-soft">Two people’s cards, read together. Your reading is prepared privately and delivered by email.</p>
           </div>
           <ManualReadingOffers />
         </section>

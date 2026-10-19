@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { SeoShell } from "@/components/seo/SeoShell";
@@ -63,7 +62,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "Personal readings from $39"],
+  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $39"],
 ] as const;
 
 const tarotRows = [
@@ -194,9 +193,9 @@ export default function DestinyCardsPage() {
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          personal readings from $39
+          Chemistry Check ($39)
         </Link>
-        {" "}— a relationship, your year, or your family, personally read by Cass.
+        {" "}— your card beside one other person’s, personally read by Cass.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -204,13 +203,13 @@ export default function DestinyCardsPage() {
       <div className="card-surface mb-6 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">After your free destiny card</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The free result gives you a card and a starting point. A personal reading brings those patterns into your relationships, your year, or your family, with Cass’s interpretation and questions for reflection.
+          The free result gives you a card and a starting point. The Chemistry Check brings those patterns into one relationship, with Cass’s interpretation and questions for reflection.
         </p>
         <Link
           href="/#readings"
           className="accent-button mt-4"
         >
-          Explore personal readings
+          See the Chemistry Check
         </Link>
       </div>
 
@@ -344,7 +343,7 @@ export default function DestinyCardsPage() {
           <li>
             Optional deepen: the{" "}
             <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-              Personal readings from $39
+              The Chemistry Check, $39
             </Link>
             , one question read from your card and your year.
           </li>
@@ -513,8 +512,6 @@ export default function DestinyCardsPage() {
         </div>
       </section>
 
-      <FreeCourseCta source="destiny-cards" className="mt-10" />
-
       <p className="mt-8 text-sm text-brand-ink-soft">
         Related:{" "}
         <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
@@ -526,7 +523,7 @@ export default function DestinyCardsPage() {
         </Link>
         {" · "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          personal readings from $39
+          the Chemistry Check ($39)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

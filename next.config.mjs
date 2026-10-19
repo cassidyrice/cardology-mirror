@@ -33,21 +33,11 @@ const nextConfig = {
         statusCode: 301,
       },
       {
-        source: "/products",
-        destination: "/products/one-question-reading",
-        statusCode: 301,
-      },
-      {
         source: "/cardology-agent-instructions",
         destination: "/shadow-karma-guide",
         statusCode: 301,
       },
       // Marketing aliases (P0)
-      {
-        source: "/personal-card-blueprint",
-        destination: "/products/one-question-reading",
-        statusCode: 301,
-      },
       {
         source: "/52-card-astrology",
         destination: "/52-card-astrology-explained",

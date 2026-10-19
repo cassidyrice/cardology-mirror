@@ -11,17 +11,13 @@ import BirthCardIndex from "../app/birth-card/page";
 import BirthCardPage from "../app/birth-card/[slug]/page";
 import JokerPage from "../app/birth-card/joker/page";
 import PlayingCardSpreads from "../app/playing-card-spreads/page";
-import OneQuestionReadingPage from "../app/products/one-question-reading/page";
 import FaqPage from "../app/faq/page";
 import CardologyForBeginnersPage from "../app/cardology-for-beginners/page";
 import CompatibilityCalculatorPage from "../app/birth-card-compatibility-calculator/page";
 import CompatibilityPage from "../app/cardology-compatibility/page";
 import DestinyCardsPage from "../app/destiny-cards/page";
-import { DeepDiveHostedCheckout } from "../components/checkout/DeepDiveHostedCheckout";
-import { DeepDiveCta } from "../components/seo/DeepDiveCta";
 import { SiteFooter } from "../components/seo/SiteFooter";
 import { SiteHeader } from "../components/seo/SiteHeader";
-import { DEEP_DIVE_PRODUCT_PATH, DEEP_DIVE_REVIEW_PATH } from "../lib/deep-dive";
 
 const root = join(import.meta.dir, "..");
 
@@ -37,7 +33,6 @@ const SCOPED_SOURCES = [
   "app/birth-card/[slug]/page.tsx",
   "app/birth-card/joker/page.tsx",
   "app/playing-card-spreads/page.tsx",
-  "app/products/one-question-reading/page.tsx",
   "app/faq/page.tsx",
   "app/cardology-for-beginners/page.tsx",
   "app/birth-card-compatibility-calculator/page.tsx",
@@ -46,7 +41,6 @@ const SCOPED_SOURCES = [
   "components/seo/SiteHeader.tsx",
   "components/seo/SiteFooter.tsx",
   "components/seo/BirthdayChartTable.tsx",
-  "components/seo/DeepDiveCta.tsx",
 ];
 
 function decode(value: string): string {
@@ -108,7 +102,6 @@ async function scopedMarkup(): Promise<Array<{ name: string; html: string }>> {
     { name: "/birth-card/queen-of-hearts", html: renderToStaticMarkup(queen as ReactElement) },
     { name: "/birth-card/joker", html: renderToStaticMarkup(createElement(JokerPage)) },
     { name: "/playing-card-spreads", html: renderToStaticMarkup(createElement(PlayingCardSpreads)) },
-    { name: "/products/one-question-reading", html: renderToStaticMarkup(createElement(OneQuestionReadingPage)) },
     { name: "/faq", html: renderToStaticMarkup(createElement(FaqPage)) },
     { name: "/cardology-for-beginners", html: renderToStaticMarkup(createElement(CardologyForBeginnersPage)) },
     { name: "/birth-card-compatibility-calculator", html: renderToStaticMarkup(createElement(CompatibilityCalculatorPage)) },
@@ -159,68 +152,14 @@ test("identical anchor text on one scoped page points at one path", async () => 
   }
 });
 
-test("money paths are real anchors, including the offer when no birthday is stored", () => {
+test("money paths are real anchors, including the Chemistry Check", () => {
   const header = renderToStaticMarkup(createElement(SiteHeader));
   const footer = renderToStaticMarkup(createElement(SiteFooter));
   for (const markup of [header, footer]) {
     expect(markup).toContain('href="/birth-card-calculator"');
     expect(markup).toContain('href="/#chemistry-check"');
-    expect(markup).toContain('href="/#timing-map"');
-    expect(markup).toContain('href="/#family-snapshot"');
     expect(markup).toContain('href="/faq"');
     expect(markup).not.toContain("router.push");
   }
 
-  const offer = renderToStaticMarkup(
-    createElement(DeepDiveCta, { placement: "birth-card-meaning-above-fold", source: "birth-card-meaning" }),
-  );
-  expect(offer).toContain(`href="${DEEP_DIVE_PRODUCT_PATH}"`);
-  expect(offer).not.toContain("router.push");
-
-  const product = read("app/products/one-question-reading/page.tsx");
-  expect(product).toContain("href={DEEP_DIVE_REVIEW_PATH}");
-});
-
-test("post-birthday continue control is a real checkout anchor", () => {
-  const hosted = read("components/checkout/DeepDiveHostedCheckout.tsx");
-  expect(hosted).toContain("href={DEEP_DIVE_REVIEW_PATH}");
-  expect(hosted).toContain("storeCheckoutBirthdate(birthdate)");
-  expect(hosted).toContain("storeCheckoutContext");
-  expect(hosted).not.toContain("router.push");
-  expect(hosted).not.toContain("<button");
-  expect(hosted).not.toMatch(/href=\{[^}]*birthdate/);
-  expect(hosted).not.toContain("?birthdate");
-
-  const direct = renderToStaticMarkup(
-    createElement(DeepDiveHostedCheckout, {
-      birthdate: "1991-02-17",
-      source: "birth-card-calculator-result",
-      submitLabel: "Ask your question — $13",
-    }),
-  );
-  expect(direct).toContain(`href="${DEEP_DIVE_REVIEW_PATH}"`);
-  expect(direct).not.toContain("<button");
-  expect(direct).not.toContain("1991-02-17");
-  expect(direct).not.toContain("router.push");
-  expect(direct).toContain("Ask your question — $13");
-  expect(direct).not.toContain("Deep Dive");
-  expect(direct).not.toContain("Blueprint");
-
-  const withBirthday = renderToStaticMarkup(
-    createElement(DeepDiveCta, {
-      placement: "home-reveal",
-      source: "home-reveal",
-      birthdate: "1991-02-17",
-      cardLabel: "Queen of Hearts",
-      cardSlug: "queen-of-hearts",
-      showFulfillment: false,
-    }),
-  );
-  expect(withBirthday).toContain(`href="${DEEP_DIVE_REVIEW_PATH}"`);
-  expect(withBirthday).toContain("Ask your question as the Queen of Hearts — $13");
-  expect(withBirthday).not.toContain("<button");
-  expect(withBirthday).not.toContain("1991-02-17");
-  expect(withBirthday).not.toContain("queen-of-hearts");
-  expect(withBirthday).not.toContain("Deep Dive");
-  expect(withBirthday).not.toContain("Blueprint");
 });

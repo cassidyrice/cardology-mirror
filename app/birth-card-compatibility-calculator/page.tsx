@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
-import { CardAppCta } from "@/components/seo/CardAppCta";
+import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -224,8 +223,7 @@ export default function CompatibilityCalculatorPage() {
         </ul>
       </section>
 
-      <CardAppCta placement="compatibility-calculator-app" connections />
-      <FreeCourseCta source="compatibility-calculator" className="mt-10" />
+      <StanReadingCta />
     </SeoShell>
   );
 }

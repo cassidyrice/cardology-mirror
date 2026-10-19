@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { SITE_NAME } from "@/lib/site";
@@ -216,8 +215,6 @@ export default function CardologyVsTarotPage() {
           </Link>
         </div>
       </div>
-
-      <FreeCourseCta source="cardology-vs-tarot" className="mt-10" />
 
       <p className="mt-8 text-sm text-brand-ink-soft">
         Related:{" "}

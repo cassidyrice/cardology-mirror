@@ -11,7 +11,7 @@ export function BirthShareHero({
   action,
 }: {
   birthCard?: string;
-  /** Rendered between the card name and Share (the calculator's $13 button). */
+  /** Rendered between the card name and Share (the calculator's reading button). */
   action?: ReactNode;
 }) {
   const isJoker = birthCard === "Joker";

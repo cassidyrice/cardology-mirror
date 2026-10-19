@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: free card tools, the published method, and personal readings about relationships, timing, and family.",
+    "About Card Blueprints and founder Cassidy Rice: free card tools, the published method, and the Chemistry Check, a personal reading about two people.",
   alternates: { canonical: "/about" },
 };
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          I prepare readings about relationships, the year ahead, and family dynamics. Each one pairs calculated cards and dates with interpretation and questions you can come back to. The Chemistry Check is $39, Your 12-Month Timing Map is $49, and The Family Snapshot is $59.
+          I prepare one reading, the Chemistry Check ($39), about two people. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -133,7 +133,7 @@ export default function AboutPage() {
           . General questions, corrections, and support for other purchases receive a reply within {CONTACT_RESPONSE}.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Follow-up questions about a Chemistry Check, Timing Map, or Family Snapshot go to{" "}
+          Follow-up questions about a Chemistry Check go to{" "}
           <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="underline">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME} Every response is personally reviewed and approved by Cass.
         </p>
       </section>

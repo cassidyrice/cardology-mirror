@@ -1,13 +1,12 @@
 import { expect, test } from "bun:test";
 import { NextRequest } from "next/server";
-import { POST as course } from "../app/api/free-course/signup/route";
 import { POST as gate } from "../app/api/gate/route";
 import { POST as deepdive } from "../app/api/deepdive/route";
 import { POST as reading } from "../app/api/reading/route";
 import { POST as compatibility } from "../app/api/compatibility/route";
 import { POST as storyarc } from "../app/api/storyarc/route";
 
-for (const [name, handler] of [["gate",gate],["deepdive",deepdive],["storyarc",storyarc],["free-course",course]] as const) {
+for (const [name, handler] of [["gate",gate],["deepdive",deepdive],["storyarc",storyarc]] as const) {
   test(`${name}: invalid JSON shapes return 400 without throwing`, async () => {
     let index=0;
     for (const body of ["null", "[]", '"text"', "42", '{"email":42,"code":{},"birthdate":42,"date":[],"focus":{}}', "{", "{}"] ) {

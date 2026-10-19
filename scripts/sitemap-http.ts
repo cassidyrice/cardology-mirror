@@ -135,9 +135,6 @@ export function assertBlueprintReportStaysOffMainSitemap(
       "lists /products/blueprint-report. That page stays off the main sitemap so the $13 One Question Reading stays primary.",
     );
   }
-  if (!pathnames.includes("/products/one-question-reading")) {
-    throw sitemapRouteError(path, "is missing /products/one-question-reading.");
-  }
 }
 
 export function sitemapPathsFromRobots(body: string): string[] {
