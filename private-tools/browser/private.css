@@ -1,0 +1,2 @@
+.session-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid #cdd5d1}.session-bar p{margin:0;flex:1;font-size:13px}.session-bar a{font-size:13px;color:#12675b}.session-bar button{font-size:13px}.session-bar [hidden]{display:none!important}
+@media print{.session-bar{display:none!important}}
