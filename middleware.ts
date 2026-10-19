@@ -1,10 +1,11 @@
+import { canonicalCompatPairPath, compatPathFromForm } from "@/lib/compat-routing";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { legacyCardDestination } from "@/lib/legacy-card-redirects";
 import { applySecurityHeaders } from "@/lib/security-headers";
 
-const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
+export const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/content-engine": "/explore",
   "/content-calendar": "/explore",
   "/content-engine/video/order": "/explore",
@@ -13,7 +14,7 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/checkout/video-weekly-7": "/explore",
   "/checkout/video-daily-52": "/explore",
   "/checkout/video-voice-addon": "/explore",
-  "/readings": "/products/one-question-reading",
+  "/readings": "/#readings",
   "/try": "/birth-card-calculator",
   "/cardology-chart": "/birth-card-calculator",
   "/birth-card-chart": "/birth-card-calculator",
@@ -28,16 +29,31 @@ const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   // the $19 52xSeven Blueprint year app (2026-09-08), then the $47 One Question
   // Reading (2026-09-13).
   // Fulfillment for past purchases (/blueprint, downloads, success) is untouched.
-  "/products/52xseven-blueprint": "/products/one-question-reading",
-  "/products/birth-card-deep-dive": "/products/one-question-reading",
-  "/products/blueprint-breakdown-video": "/products/one-question-reading",
-  "/products/personal-card-blueprint": "/products/one-question-reading",
-  "/products/complete-card-blueprint": "/products/one-question-reading",
-  "/products/analog-algorithm": "/products/one-question-reading",
+  "/products/52xseven-blueprint": "/#readings",
+  "/products/birth-card-deep-dive": "/#readings",
+  "/products/blueprint-breakdown-video": "/#readings",
+  "/products/personal-card-blueprint": "/#readings",
+  "/products/complete-card-blueprint": "/#readings",
+  "/products/analog-algorithm": "/#readings",
   "/membership": "/birth-card-calculator",
-  "/checkout/personal-card-blueprint": "/products/one-question-reading",
-  "/checkout/complete-card-blueprint": "/products/one-question-reading",
-  "/checkout/analog-algorithm": "/products/one-question-reading",
+  // Stripped down to the one Stan reading, the Chemistry Check (2026-10-18).
+  "/products": "/#readings",
+  "/personal-card-blueprint": "/#readings",
+  "/products/one-question-reading": "/#readings",
+  "/products/year-ahead": "/#readings",
+  "/products/blueprint-report": "/#readings",
+  "/products/card-blueprint-app": "/#readings",
+  "/checkout/deep-dive": "/#readings",
+  "/checkout/year-ahead": "/#readings",
+  "/checkout/blueprint-report": "/#readings",
+  "/checkout/blueprint-report-consult": "/#readings",
+  "/checkout/card-blueprint-app": "/#readings",
+  "/free-course": "/cardology-for-beginners",
+  "/free-course/watch": "/cardology-for-beginners",
+  "/karma-reading": "/karma-cards",
+  "/checkout/personal-card-blueprint": "/#readings",
+  "/checkout/complete-card-blueprint": "/#readings",
+  "/checkout/analog-algorithm": "/#readings",
   "/checkout/cardology-membership": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
@@ -65,6 +81,18 @@ function isWorkerDirectory(pathname: string): boolean {
 // Canonical host enforcement: 301 any www.* request to the apex domain,
 // preserving path and query. Everything else passes through with a shared
 // security-header baseline (HSTS, frame deny, nosniff, etc.).
+async function compatFormRedirect(request: NextRequest, origin: string): Promise<NextResponse> {
+  let dest: string | null = null;
+  try {
+    dest = compatPathFromForm(await request.formData());
+  } catch {
+    dest = null;
+  }
+  const response = NextResponse.redirect(new URL(dest ?? "/compatibility/", origin), 303);
+  applySecurityHeaders(response.headers);
+  return response;
+}
+
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const redirectUrl = new URL(request.url);
@@ -87,9 +115,40 @@ export function middleware(request: NextRequest) {
     shouldRedirect = true;
   }
 
+  // /born-on and /compatibility (ported from the cardology-unlock Worker) keep
+  // the Worker's URL shape: each index is canonical WITH a slash, child pages
+  // WITHOUT one.
+  for (const prefix of WORKER_SLASH_PREFIXES) {
+    if (rawPath === prefix) {
+      redirectUrl.pathname = `${prefix}/`;
+      shouldRedirect = true;
+    } else if (rawPath.startsWith(`${prefix}/`) && rawPath !== `${prefix}/` && rawPath.endsWith("/")) {
+      pathname = rawPath.replace(/\/+$/, "");
+      redirectUrl.pathname = pathname;
+      shouldRedirect = true;
+    }
+  }
+
+  // Worker parity: the no-JS compatibility calculator POSTs two dates to the
+  // index and gets a 303 to the canonical pair (or the Joker birthday page).
+  if (!shouldRedirect && rawPath === "/compatibility/" && request.method === "POST") {
+    return compatFormRedirect(request, redirectUrl.origin);
+  }
+
+  // Pair pages have one canonical order; the reverse order 301s to it.
+  if (!shouldRedirect && rawPath.startsWith("/compatibility/") && rawPath.includes("-and-")) {
+    const canonicalPair = canonicalCompatPairPath(rawPath.slice("/compatibility/".length));
+    if (canonicalPair && canonicalPair !== rawPath) {
+      redirectUrl.pathname = canonicalPair;
+      shouldRedirect = true;
+    }
+  }
+
   const retiredDestination = RETIRED_PUBLIC_REDIRECTS[pathname];
   if (retiredDestination) {
-    redirectUrl.pathname = retiredDestination;
+    const [destPath, destHash] = retiredDestination.split("#");
+    redirectUrl.pathname = destPath;
+    if (destHash) redirectUrl.hash = destHash;
     shouldRedirect = true;
   }
 
@@ -120,7 +179,10 @@ export function middleware(request: NextRequest) {
   // headers collected before the middleware runs (verified against the
   // compiled next-on-pages worker 2026-07-12) — headers set on the
   // middleware response itself are merged after that reset and do land.
-  const response = NextResponse.next();
+  const response =
+    rawPath === "/born-on/" || rawPath === "/compatibility/"
+      ? NextResponse.rewrite(new URL(rawPath.slice(0, -1), request.url))
+      : NextResponse.next();
   applySecurityHeaders(response.headers);
 
   // A2A clients fetch this from other origins. Middleware header merge wins
@@ -134,8 +196,6 @@ export function middleware(request: NextRequest) {
   // AI agents. Keep the rest of the site same-site; let these travel.
   if (
     request.nextUrl.pathname === "/sitemap.xml" ||
-    request.nextUrl.pathname === "/sitemap-cardology.xml" ||
-    request.nextUrl.pathname === "/sitemap-compatibility.xml" ||
     request.nextUrl.pathname === "/robots.txt" ||
     request.nextUrl.pathname === "/feed.xml" ||
     request.nextUrl.pathname === "/llms.txt" ||

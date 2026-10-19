@@ -2,6 +2,8 @@
 
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { StanReadingCta } from "./StanReadingCta";
+import dynamic from "next/dynamic";
 import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
@@ -14,18 +16,8 @@ import {
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
-import { BirthShareHero } from "@/components/share/BirthShareHero";
-import { DeepDiveHostedCheckout } from "@/components/checkout/DeepDiveHostedCheckout";
-import { CurrentPeriod } from "./CurrentPeriod";
-import { CardAppCta } from "./CardAppCta";
-import { NewsletterSignupForm } from "./NewsletterSignupForm";
-import { YearAheadResultOffer } from "./YearAheadCta";
-import { YEAR_AHEAD_ON_SALE, YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  ONE_QUESTION_TURNAROUND,
 } from "@/lib/deep-dive";
 // The 7KB authored source of card-bible watchFor lines, not the 271KB bible (client bundle).
 import CARD_VOICE from "@/scripts/card-bible-voice.json";
@@ -33,14 +25,20 @@ import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
 
+// Result-only UI: loaded on demand so it stays out of the first-paint bundle.
+const BirthShareHero = dynamic(() => import("@/components/share/BirthShareHero").then((m) => m.BirthShareHero));
+const CurrentPeriod = dynamic(() => import("./CurrentPeriod").then((m) => m.CurrentPeriod));
+
 const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
 
 function CalculatorPreviewFan() {
   return (
     <div className="flex h-28 items-end justify-center" aria-hidden="true">
       {PREVIEW_CODES.map((code, i) => {
-        const src = shareFacePathFromCode(code);
-        if (!src) return null;
+        const full = shareFacePathFromCode(code);
+        if (!full) return null;
+        // 144x216 WebP thumbs (~5KB) instead of the 1000x1500 share PNGs (up to 440KB).
+        const src = full.replace("/share-cards/faces/", "/share-cards/thumbs/").replace(/\.png$/, ".webp");
         const rotate = i === 0 ? "-rotate-12" : i === 2 ? "rotate-12" : "rotate-0";
         const z = i === 1 ? "z-10" : "z-0";
         const overlap = i === 0 ? "translate-x-3" : i === 2 ? "-translate-x-3" : "";
@@ -51,6 +49,8 @@ function CalculatorPreviewFan() {
             alt=""
             width={72}
             height={108}
+            decoding="async"
+            fetchPriority="low"
             className={`relative ${z} ${rotate} ${overlap} rounded-[6px] border border-brand-line bg-brand-paper shadow-sm`}
           />
         );
@@ -131,7 +131,7 @@ export function BirthCardCalculator() {
       {reveal && birthCard ? (
         <BirthShareHero
           birthCard={birthCard}
-          action={<CalculatorNextStep reveal={reveal} date={date} />}
+          action={<CalculatorNextStep />}
         />
       ) : (
         <CalculatorPreviewFan />
@@ -232,61 +232,14 @@ export function BirthdayWorkerAnchor({
   );
 }
 
-/**
- * Under the card name: "Your year ahead as a {card}" ($19) first, then the $13
- * reading as the secondary option, then the free email preview for anyone not
- * ready to buy. The birthday is already known, so both buttons skip a second
- * birthday field. The Joker has no year to read, so it gets the email only.
- */
-function CalculatorNextStep({
-  reveal,
-  date,
-}: {
-  reveal: BirthCardReveal;
-  date: string;
-}) {
-  const code = reveal.result.birthCard;
-  const isJoker = code === "Joker";
-  const label = parseCard(code)?.label ?? code;
-  const slug = birthCardSlug(code);
-  const cardTag = isJoker ? "card-joker" : slug ? `card-${slug}` : null;
-
+/** The result continues to the Chemistry Check or a free exercise. */
+function CalculatorNextStep() {
   return (
     <div className="flex w-full flex-col items-center gap-2">
+      <StanReadingCta className="mb-3" />
       <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
         Try a free exercise with your card →
       </a>
-      {!isJoker && (
-        <>
-          <YearAheadResultOffer
-            cardLabel={label}
-            birthdate={date || reveal.birthdate}
-            placement="birth-card-calculator-result"
-          />
-          <p className="type-eyebrow mt-2 text-center">Or one question</p>
-          <DeepDiveHostedCheckout
-            birthdate={date || reveal.birthdate}
-            source="birth-card-calculator-result"
-            cardLabel={label}
-            cardSlug={slug ?? undefined}
-            secondary={YEAR_AHEAD_ON_SALE}
-            submitLabel={`Ask your question as the ${label} — ${DEEP_DIVE_PRICE_LABEL}`}
-          />
-          <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
-            The {DEEP_DIVE_PRODUCT_NAME}: your question, read from your birth card and this year. In your inbox within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.
-          </p>
-          <CardAppCta placement="birth-card-calculator-app" birthdate={date || reveal.birthdate} />
-        </>
-      )}
-      <NewsletterSignupForm
-        source="calculator-result"
-        compact
-        quietButton={!isJoker}
-        heading={isJoker ? "Your card, every Monday." : "Get a free preview by email"}
-        body={isJoker ? undefined : `A short preview of the year ahead for the ${label}, then your card every Monday.`}
-        buttonLabel={isJoker ? undefined : "Send my free preview"}
-        tags={cardTag ? (isJoker ? ["calculator-result", cardTag] : ["calculator-result", YEAR_AHEAD_PREVIEW_TAG, cardTag]) : ["calculator-result"]}
-      />
     </div>
   );
 }
@@ -387,7 +340,7 @@ function BirthCardResultCard({
 type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
-/** Free one-line read of the card's pattern, shown under the $13 CTA. */
+/** Free one-line read of the card's pattern, shown with the card result. */
 function OneLineRead({ code }: { code: string }) {
   const lens = LENSES[code];
   if (!lens) return null;

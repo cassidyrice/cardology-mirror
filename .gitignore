@@ -49,3 +49,4 @@ ops/audit/cardology-ops-audit-tmp/
 
 # Local writing preview downloads, generated from the committed library.
 content/period-library/deliverables/
+public/version.txt

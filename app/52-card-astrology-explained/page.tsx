@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoShell } from "@/components/seo/SeoShell";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { BIRTHDAY_DIRECTORY_PATH, SITE_NAME, SITE_URL } from "@/lib/site";
 import { serializeJsonLdForHtml } from "@/lib/structured-data";
@@ -12,7 +11,7 @@ const UPDATED = PAGE_UPDATED_DATES["/52-card-astrology-explained"];
 
 const TITLE = "Playing Cards Birthday Chart & 52-Card Astrology";
 const DESCRIPTION =
-  "Playing cards birthday chart explained: how the 52-card deck maps to the calendar, what each suit and rank means, and free links to every birthday’s Cardology birth card.";
+  "Playing cards birthday chart explained: how the 52-card deck maps to the calendar, what each suit and rank means, and every birthday’s Cardology birth card.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -227,8 +226,6 @@ export default function CardAstrology() {
           ))}
         </div>
       </section>
-
-      <FreeCourseCta source="52-card-astrology" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">See your card in the system</p>

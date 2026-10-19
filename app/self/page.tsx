@@ -30,9 +30,9 @@ export default function SelfPage() {
       canonicalPath="/self"
       eyebrow="Birth-card profile"
       points={[
-        "A secondary profile view after the public birth-card calculator and meaning pages.",
-        "A personalized birth-card and ruling-card reading when a local profile is present.",
-        "Clear language that frames the result as reflective structure rather than destiny.",
+        "See your birth card and planetary ruling card together.",
+        "Use your saved birthday to return to the same personal card map.",
+        "Read the traditional meanings, then consider what fits your experience.",
       ]}
     >
       <SelfClient />

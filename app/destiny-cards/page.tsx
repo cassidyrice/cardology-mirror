@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
 import { PlayingCardsBirthdayChart } from "@/components/seo/PlayingCardsBirthdayChart";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME } from "@/lib/site";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
 const TITLE = "Cards of Destiny: Free Birth Card Calculator (Destiny Cards)";
 const DESCRIPTION =
-  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, full meaning, and the books the system comes from. Not tarot.";
+  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, meaning, and the source books. Not tarot.";
 const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
@@ -64,7 +62,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "One Question Reading — $13"],
+  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $39"],
 ] as const;
 
 const tarotRows = [
@@ -77,7 +75,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. The paid $13 One Question Reading is a written reading on one decision, not a prerequisite.",
+    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. Personal readings start at $39 and are optional.",
   },
   {
     q: "What are Destiny Cards?",
@@ -129,7 +127,7 @@ const faqs = [
   },
   {
     q: "What is a Cards of Destiny reading?",
-    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; the paid One Question Reading answers one specific question from the same cards.",
+    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; a personal reading explores those cards alongside your chosen focus.",
   },
   {
     q: "What are Robert Camp's Destiny Cards?",
@@ -194,10 +192,10 @@ export default function DestinyCardsPage() {
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          Chemistry Check ($39)
         </Link>
-        {" "}— one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
+        {" "}— your card beside one other person’s, personally read by Cass.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -205,15 +203,13 @@ export default function DestinyCardsPage() {
       <div className="card-surface mb-6 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">After your free destiny card</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The calculator result already offers the $13 One Question Reading: one
-          question, read from your card, this year's cards, and the card you owe.
-          Written for you within {ONE_QUESTION_TURNAROUND}. One payment.
+          The free result gives you a card and a starting point. The Chemistry Check brings those patterns into one relationship, with Cass’s interpretation and questions for reflection.
         </p>
         <Link
-          href="/products/one-question-reading"
+          href="/#readings"
           className="accent-button mt-4"
         >
-          Ask one question — $13
+          See the Chemistry Check
         </Link>
       </div>
 
@@ -296,7 +292,7 @@ export default function DestinyCardsPage() {
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
           What we own here is the published method, the free tools, and the{" "}
-          <strong>One Question Reading</strong>.
+          <strong>personal readings</strong>.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Full definition:{" "}
@@ -346,8 +342,8 @@ export default function DestinyCardsPage() {
           <li>Test for a week. Keep language that names a behavior you can point to.</li>
           <li>
             Optional deepen: the{" "}
-            <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-              One Question Reading ($13)
+            <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+              The Chemistry Check, $39
             </Link>
             , one question read from your card and your year.
           </li>
@@ -516,8 +512,6 @@ export default function DestinyCardsPage() {
         </div>
       </section>
 
-      <FreeCourseCta source="destiny-cards" className="mt-10" />
-
       <p className="mt-8 text-sm text-brand-ink-soft">
         Related:{" "}
         <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
@@ -528,8 +522,8 @@ export default function DestinyCardsPage() {
           Free calculator
         </Link>
         {" · "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          the Chemistry Check ($39)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

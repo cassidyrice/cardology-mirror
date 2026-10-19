@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import "./blueprint.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
 import { PostHogBoundary } from "@/components/analytics/PostHogBoundary";
-import { ElroyLauncher } from "@/components/elroy/ElroyLauncher";
 import { resolveGaMeasurementId } from "@/lib/ga4";
 import { resolvePosthogHost, resolvePosthogKey } from "@/lib/posthog";
 import { merchantReturnPolicy } from "@/lib/product-schema";
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   // suffix pushed 74 sitemap titles beyond 60 characters.
   title: "Card Blueprints | Birth Cards & Cardology",
   description:
-    "Free birth card calculator (playing cards, not tarot), 52 meanings, compatibility, and the $13 One Question Reading.",
+    "Find your birth card, explore the 52 card meanings, and see how your card meets someone else’s with the Chemistry Check.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "Card Blueprints — Birth Cards & Cardology",
     description:
-      "Find your playing-card birth card free (not tarot). Optional $13 One Question Reading — a mirror, not a forecast.",
+      "Find your birth card free. Explore your cards and your relationships with the Chemistry Check, prepared by Cass.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   // No title/description here on purpose. A page that sets its own openGraph
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#05060a",
+  themeColor: "#123a63",
   width: "device-width",
   initialScale: 1,
 };
@@ -169,7 +169,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="min-h-dvh w-full">{children}</div>
-        <ElroyLauncher />
       </body>
     </html>
   );

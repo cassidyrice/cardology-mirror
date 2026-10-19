@@ -1,10 +1,8 @@
 /**
  * HTTP guard for the three sitemap routes advertised in robots.txt.
  *
- * All three are Pages route handlers. Until the cardology-unlock Worker
- * triggers are redeployed, production still serves the two Worker sitemaps
- * from the previous routes. This probe uses Googlebot and Bingbot, the
- * crawlers that received the intermittent HTTP 500.
+ * All three have static app route handlers. This probe uses Googlebot and
+ * Bingbot to check the HTTP responses crawlers receive.
  *
  *   bun run test:sitemap:http
  *   SITEMAP_BASE_URL=http://127.0.0.1:3577 bun run test:sitemap:http

@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // middleware.ts owns trailing-slash policy (301s), incl. the canonical
+  // /born-on/ index that must keep its slash.
+  skipTrailingSlashRedirect: true,
   // NOTE: do not add headers() rules for pages here expecting them to reach
   // responses — the compiled middleware route in the build output has
   // override:true and wipes config-route headers for every path it matches
@@ -30,21 +33,11 @@ const nextConfig = {
         statusCode: 301,
       },
       {
-        source: "/products",
-        destination: "/products/one-question-reading",
-        statusCode: 301,
-      },
-      {
         source: "/cardology-agent-instructions",
         destination: "/shadow-karma-guide",
         statusCode: 301,
       },
       // Marketing aliases (P0)
-      {
-        source: "/personal-card-blueprint",
-        destination: "/products/one-question-reading",
-        statusCode: 301,
-      },
       {
         source: "/52-card-astrology",
         destination: "/52-card-astrology-explained",

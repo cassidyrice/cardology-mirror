@@ -1,10 +1,9 @@
 import Link from "next/link";
 
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
+import { READINGS_NAV } from "@/lib/readings-nav";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
-  SITE_NAME,
   VIDEO_PATH,
 } from "@/lib/site";
 import {
@@ -12,7 +11,6 @@ import {
   BIRTH_CARD_CALCULATOR_PATH,
   MONEY_PATHS,
   moneyPathLinkClass,
-  ONE_QUESTION_NAV,
   type MoneyPath,
 } from "@/lib/site-nav";
 import { BrandLogo } from "./BrandLogo";
@@ -36,7 +34,6 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Free course", href: "/free-course" },
   { label: "My purchases", href: "/my-purchases" },
 ] as const;
 
@@ -48,14 +45,14 @@ const ABOUT = [
 ] as const;
 
 function coreHref(item: MoneyPath): string {
-  if (item.id === "reading") return ONE_QUESTION_NAV.href;
+  if (item.id === "reading") return "/#readings";
   if (item.id === "calculator") return BIRTH_CARD_CALCULATOR_PATH;
   return item.href;
 }
 
 function coreLabel(item: MoneyPath): string {
   if (item.id === "calculator") return BIRTH_CARD_CALCULATOR_LABEL;
-  if (item.id === "reading") return ONE_QUESTION_NAV.label;
+  if (item.id === "reading") return "Personal readings";
   return item.label;
 }
 
@@ -93,7 +90,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
     >
       <div className={bare ? "" : "mx-auto w-full max-w-6xl px-5 py-14 sm:px-8 lg:px-10"}>
         <p className="mb-10">
-          <Link href="/" aria-label={`${SITE_NAME} home`} className="inline-block">
+          <Link href="/" aria-label="Card blueprint home" className="inline-block">
             <BrandLogo compact />
           </Link>
         </p>
@@ -113,7 +110,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                 ) : null}
                 {item.id === "reading" ? (
                   <span className="text-xs text-brand-ink-soft">
-                    {ONE_QUESTION_TURNAROUND}
+                    From $39 · prepared by Cass
                   </span>
                 ) : null}
               </li>
@@ -151,6 +148,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           <div>
             <p className="mb-3 font-serif text-base text-brand-ink">Get</p>
             <ul className="space-y-2">
+              {READINGS_NAV.map((reading) => <li key={reading.id}><FooterLink href={reading.href}>{reading.title} · {reading.price}</FooterLink></li>)}
               {GET.map((item) => (
                 <li key={item.href}>
                   <FooterLink href={item.href}>{item.label}</FooterLink>
@@ -184,7 +182,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           </Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          Playing cards, not tarot. It&rsquo;s a mirror, not a forecast.
+          Cards are coordinates. You choose the meaning. Playing-card calculations, traditional interpretations, and space for your own reflection.
         </p>
       </div>
     </footer>

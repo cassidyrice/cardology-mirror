@@ -46,7 +46,7 @@ const HUBS = [
     file: "app/page.tsx",
     answer: "Your birthday maps to one playing card in a 52-card deck.",
     question: "How do I find my birth card?",
-    before: "<LandingCalculator />",
+    before: '<section className="home-reading-desk"',
   },
 ] as const;
 

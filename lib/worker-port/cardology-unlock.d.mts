@@ -1,0 +1,14 @@
+export type WorkerPage = { title: string; desc: string; canonical: string; body: string; jsonld: unknown };
+export function renderPairPage(a: string, b: string): WorkerPage;
+export function renderCardHub(card: string): WorkerPage;
+export function renderCompatIndex(): WorkerPage;
+export function renderCompatSitemap(): string;
+export function renderBornOnSitemap(): string;
+export function canonicalPair(a: string, b: string): [string, string];
+export function pairSlug(a: string, b: string): string;
+export function cardSlug(card: string): string;
+export const SLUG_TO_CARD: Record<string, string>;
+export const ORDER: string[];
+export const ORIGIN: string;
+export function birthCardFor(m: number, d: number): string;
+export function daySlug(m: number, d: number): string;

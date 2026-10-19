@@ -40,7 +40,7 @@ function workerSitemapHint(path: string, status: number): string {
     status === 404 &&
     (path === "/sitemap-cardology.xml" || path === "/sitemap-compatibility.xml")
   ) {
-    return " This route is built by Pages. A 404 means the cardology-unlock Worker is still shadowing it, or this deploy does not include the route. Deploy Pages first, then `npx wrangler triggers deploy --config ops/cardology-unlock-routes.jsonc`, and re-run with SITEMAP_BASE_URL=https://cardblueprints.com.";
+    return " This route has a static app handler. Verify the tested origin includes the route and inspect any upstream routing separately.";
   }
   return "";
 }
@@ -140,9 +140,6 @@ export function assertBlueprintReportStaysOffMainSitemap(
       path,
       "lists /products/blueprint-report. That page stays off the main sitemap so the $13 One Question Reading stays primary.",
     );
-  }
-  if (!pathnames.includes("/products/one-question-reading")) {
-    throw sitemapRouteError(path, "is missing /products/one-question-reading.");
   }
 }
 

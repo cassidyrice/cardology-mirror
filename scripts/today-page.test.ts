@@ -50,7 +50,7 @@ test("/today puts the free calculator above the fold and withholds the shared of
   }
 });
 
-test("anonymous /today escapes to the calculator; the $13 line waits for a reading", () => {
+test("anonymous /today escapes to the calculator; no retired offer anywhere", () => {
   const gateStart = client.indexOf("ready && !profile");
   const gateEnd = client.indexOf("ready && profile && error");
   const gate = client.slice(gateStart, gateEnd);
@@ -64,9 +64,8 @@ test("anonymous /today escapes to the calculator; the $13 line waits for a readi
   expect(gate).not.toContain("One Question");
 
   const personalized = client.slice(client.indexOf("function Today("));
-  expect(personalized).toContain("DEEP_DIVE_PRODUCT_PATH");
-  expect(personalized).toContain("DEEP_DIVE_PRICE_LABEL");
-  expect(personalized).toContain("A mirror, not a forecast.");
+  expect(personalized).not.toContain("DEEP_DIVE");
+  expect(personalized).not.toContain("$13");
   expect(personalized).not.toMatch(/<h1[\s>]/);
   expect(personalized).not.toContain("Deep Dive");
   expect(personalized).not.toContain("Blueprint");

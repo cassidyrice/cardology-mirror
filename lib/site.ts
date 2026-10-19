@@ -11,10 +11,8 @@ export const APP_URL = (
   process.env.NEXT_PUBLIC_APP_URL || SITE_URL
 ).replace(/\/$/, "");
 
-// Paths advertised in robots.txt. All three are route handlers in this app.
-// The cardology and compatibility maps used to be served by the
-// cardology-unlock Worker. Those Worker routes have to be removed (see
-// ops/cardology-unlock-routes.jsonc) or they keep shadowing Pages.
+// Paths advertised in robots.txt. All three have static app route handlers;
+// directory sitemaps reuse the existing cardology-unlock Worker-port renderers.
 export const ROBOTS_SITEMAP_PATHS = [
   "/sitemap.xml",
   "/sitemap-cardology.xml",
@@ -38,7 +36,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Free birth card calculator, 52 meanings, compatibility, and the $13 One Question Reading.";
+  "Free birth card calculator, 52 meanings, compatibility, and the $39 Chemistry Check.";
 
 export const APP_PATHS = [
   "/today",
@@ -50,7 +48,6 @@ export const APP_PATHS = [
   "/journal",
   "/onboarding",
   "/access",
-  "/free-course/watch",
 ];
 
 export const MARKETING_PATHS = [
@@ -64,12 +61,6 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
-  // The Blueprint Report stays buyable at /products/blueprint-report for people
-  // who already have the link. It is omitted from the main sitemap so it does
-  // not compete with the $13 One Question Reading.
-  "/products/one-question-reading",
-  "/products/year-ahead",
-  "/free-course",
   "/what-is-cardology",
   "/cardology-books",
   "/cardology-for-beginners",

@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OfferCta } from "@/components/seo/OfferCta";
 import { notFound } from "next/navigation";
 import { SeoShell } from "@/components/seo/SeoShell";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
-import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
 import { ShadowLayer, ShadowPrompts } from "@/components/seo/ShadowLayer";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
@@ -206,25 +200,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </Link>
       </p>
       <ShadowLayer code={card.code} />
-      <div className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
-        <p className="type-eyebrow !text-brand-bronze">One question, read from this card</p>
-        <h2 className="mt-2 font-serif text-2xl text-brand-ink">Ask your question as the {card.label} — $13</h2>
-        <p className="mt-2 text-sm text-brand-ink-soft">
-          One decision, read from your {card.label} birth card, this year&rsquo;s
-          cards, and the card you owe. Usually ready in {ONE_QUESTION_TURNAROUND}.
-        </p>
-        <ul className="mb-4 mt-3 space-y-1 text-sm text-brand-ink-soft">
-          <li>✓ How the {card.label} tends to handle your kind of question, and where it slips</li>
-          <li>✓ This year&rsquo;s Long Range card: the thing that keeps pulling your attention</li>
-          <li>✓ This year&rsquo;s Pluto card and its payoff: what the year asks, what it pays</li>
-          <li>✓ The card you owe and the card you&rsquo;re owed, on your question</li>
-          <li>✓ Three things to keep an eye out for, then one closing line</li>
-        </ul>
-        <DeepDiveCta placement="birth-card-meaning-above-fold" source="birth-card-meaning" cardLabel={card.label} cardSlug={card.slug} showFulfillment={false} />
-        <p className="mt-3 text-xs leading-relaxed text-brand-ink-soft">
-          $13 one time · usually ready in {ONE_QUESTION_TURNAROUND} · no subscription
-        </p>
-      </div>
+      <OfferCta className="mt-8" />
 
       <Section title="In a general reading">
         <p>{generalReadingText(card)}</p>
@@ -253,7 +229,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title={`What does the ${card.label} mean as your birth card?`}>
         <p>
-          A drawn card reads the moment; the birth card is the standing version — the {card.label} as a Cardology birth card in the {suitWord(card)} suit is the pattern you&rsquo;ve been running without ever reading the manual. It describes how you move when you&rsquo;re centered, what you can&rsquo;t help noticing, and exactly where you overreach or go quiet. Consider this the plain-language guide to the {card.label} personality, strengths, shadow, relationships, career themes, and birth dates — minus the horoscope fog.
+          In Cardology, your birthday maps to a fixed card. The {card.label} belongs to the {suitWord(card)} suit. Its traditional meanings offer a way to reflect on strengths, habits, relationships, and work. Read the patterns below as possibilities to consider against your experience, rather than a fixed account of who you are.
         </p>
       </Section>
 
@@ -517,7 +493,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <div className="card-surface mt-10 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Not sure this is your card?</p>
-        <p className="mt-1 text-sm text-brand-ink-soft">Your birth card was fixed the day you were born — no choosing, no escaping it. Find yours in seconds, then let the app handle today&rsquo;s timing, compatibility, and the reflection prompts you&rsquo;ll pretend you didn&rsquo;t need.</p>
+        <p className="mt-1 text-sm text-brand-ink-soft">Your birthday identifies a card in the calendar. Find yours, read its traditional meaning, and decide which questions are useful to you.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
 
@@ -781,9 +757,9 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
         ))}
       </ul>
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
-        Optional: the {DEEP_DIVE_PRODUCT_NAME} is {DEEP_DIVE_PRICE_LABEL}. One question, read from your {card.label} and the year you are in, written within {ONE_QUESTION_TURNAROUND}. A mirror, not a forecast.{" "}
-        <Link href={DEEP_DIVE_PRODUCT_PATH} className="font-medium text-brand-ink underline underline-offset-4">
-          {DEEP_DIVE_PRODUCT_NAME}, {DEEP_DIVE_PRICE_LABEL} →
+        For a closer look at one relationship, Cass prepares the Chemistry Check from both people’s cards.{" "}
+        <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
+          The Chemistry Check, $39 →
         </Link>
       </p>
     </section>

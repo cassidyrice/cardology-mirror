@@ -120,10 +120,12 @@ describe("application sitemap integrity", () => {
     expect(entriesByUrl.has(`${SITE_URL}/`)).toBe(false);
   });
 
-  test("omits the optional Blueprint Report so the sitemap keeps the $13 reading primary", () => {
+  test("omits every retired offer page", () => {
     expect(MARKETING_PATHS).not.toContain("/products/blueprint-report");
     expect(entriesByUrl.has(`${SITE_URL}/products/blueprint-report`)).toBe(false);
-    expect(entriesByUrl.has(`${SITE_URL}/products/one-question-reading`)).toBe(true);
+    expect(entriesByUrl.has(`${SITE_URL}/products/one-question-reading`)).toBe(false);
+    expect(entriesByUrl.has(`${SITE_URL}/products/year-ahead`)).toBe(false);
+    expect(entriesByUrl.has(`${SITE_URL}/free-course`)).toBe(false);
   });
 
   test("excludes Worker-owned birthday and compatibility namespaces", () => {
@@ -211,5 +213,16 @@ describe("application sitemap integrity", () => {
         post.slug,
       ).toBe(postModified(post));
     }
+  });
+});
+
+describe("sitemap excludes redirected URLs", () => {
+  test("no sitemap entry is a source of a middleware 301", async () => {
+    const { RETIRED_PUBLIC_REDIRECTS } = await import("../middleware");
+    const redirected = new Set(Object.keys(RETIRED_PUBLIC_REDIRECTS));
+    const offenders = buildApplicationSitemapEntries()
+      .map((entry) => new URL(entry.url).pathname)
+      .filter((path) => redirected.has(path));
+    expect(offenders).toEqual([]);
   });
 });

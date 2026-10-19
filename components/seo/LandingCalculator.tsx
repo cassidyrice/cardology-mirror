@@ -85,14 +85,14 @@ export function LandingCalculator() {
       aria-labelledby="home-calculator-title"
     >
       <div className="mx-auto max-w-lg px-5 text-center">
-        <h1
+        <h2
           id="home-calculator-title"
           className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl"
         >
-          Which card were you born under?
-        </h1>
+          Find your birth card.
+        </h2>
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft sm:text-base">
-          Your birthday adds up to one card. Same date, same card, every time.
+          Start with your birthday. Your card and a first reflection are free.
         </p>
       </div>
 
@@ -127,7 +127,7 @@ export function LandingCalculator() {
             </div>
           </div>
           <p id="landing-privacy" className="mt-2 text-center text-xs text-brand-ink-soft">
-            Calculated here. Never stored.
+            Calculated in your browser. Your birthday is kept in this tab to continue between tools.
           </p>
           {error ? (
             <p role="alert" className="mt-2 text-center text-sm text-brand-oxblood">

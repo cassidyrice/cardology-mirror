@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { PlayingCard } from "@/components/PlayingCard";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
@@ -225,15 +224,7 @@ export default function CalculatorPage() {
         <p className="mt-5 text-sm leading-relaxed text-brand-ink-soft">Want to keep exploring? Your result links to the app sample for daily cards and 52-day periods. The sample is free to try; your personal app is $69 once. Your free card meaning is always available.</p>
       </section>
 
-      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">
-        Optional paid step after the free card:{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          One Question Reading — $13
-        </Link>{" "}
-        (one decision, read from your card, this year's cards, and the card you owe; written for you the moment you pay,
-        on your screen and in your inbox within about a minute).
-        The free calculator never stores your birthday.
-      </p>
+      <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">Your card is a starting point. Read its meaning, try a reflection, or <Link href="/#readings" className="editorial-link">choose a personal reading with Cass</Link>. The calculation runs in your browser; your birthday is kept in this tab to continue between tools.</p>
 
       <section id="what-is-a-birth-card" className="mt-8 max-w-2xl scroll-mt-10">
         <h2 className="font-serif text-2xl text-brand-ink">What is a birth card in Cardology?</h2>
@@ -690,8 +681,6 @@ export default function CalculatorPage() {
           ))}
         </ul>
       </section>
-
-      <FreeCourseCta source="birth-card-calculator" className="mt-10" />
 
       <div className="card-surface mt-8 rounded-2xl p-5">
         <h2 className="font-serif text-2xl text-brand-ink">Continue your Cardology birth chart</h2>

@@ -49,7 +49,7 @@ describe("sitemap route guard", () => {
     expect(parsed.kind).toBe("urlset");
     expect(parsed.locations.length).toBeGreaterThan(50);
     assertBlueprintReportStaysOffMainSitemap("/sitemap.xml", parsed.locations);
-    expect(parsed.locations).toContain(`${SITE_URL}/products/one-question-reading`);
+    expect(parsed.locations).not.toContain(`${SITE_URL}/products/one-question-reading`);
     expect(parsed.locations).not.toContain(`${SITE_URL}/products/blueprint-report`);
     expect(response.headers.get("cache-control")).toBe(SITEMAP_CACHE_CONTROL);
     expect(response.headers.get("cache-control")).not.toContain("must-revalidate");
@@ -100,7 +100,7 @@ describe("sitemap route guard", () => {
       }
       expect(parsed.locations, item.forbidden).not.toContain(item.forbidden);
       expect(item.response.headers.get("cache-control"), item.path).toBe(
-        SITEMAP_CACHE_CONTROL,
+        "public, max-age=3600, s-maxage=86400",
       );
       expect(parsed.locations[0], item.path).toBe(item.required[0]);
       expect(parsed.locations.at(-1), item.path).toBe(
@@ -142,7 +142,7 @@ describe("sitemap route guard", () => {
     );
   });
 
-  test("a Next-only 404 on a Worker sitemap names the missing Worker", () => {
+  test("a directory sitemap 404 points to the app handler and upstream routing", () => {
     expect(() =>
       assertSitemapResponse({
         path: "/sitemap-compatibility.xml",
@@ -150,7 +150,7 @@ describe("sitemap route guard", () => {
         contentType: "text/html",
         body: "Not Found",
       }),
-    ).toThrow(/cardology-unlock Worker/);
+    ).toThrow(/static app handler.*upstream routing/);
   });
 
   test("200 with a non-XML content type fails", () => {

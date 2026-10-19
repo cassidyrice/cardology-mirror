@@ -14,7 +14,6 @@ import { CARD_APP_PRODUCT_PATH, CARD_APP_SLUG } from "@/lib/card-app-slug";
 import {
   YEAR_AHEAD_CTA_LABEL,
   YEAR_AHEAD_LINK_DAYS,
-  YEAR_AHEAD_ON_SALE,
   YEAR_AHEAD_PRICE,
   YEAR_AHEAD_PRICE_LABEL,
   YEAR_AHEAD_PRODUCT_NAME,
@@ -419,7 +418,7 @@ export const MEMBERSHIP_PRODUCT: MembershipOffer = {
  * on the Card Blueprint Stripe account. The record is in ALL_PRODUCTS either
  * way, so fulfillment always resolves.
  */
-export const CARD_APP_ON_SALE = true;
+export const CARD_APP_ON_SALE = false; // retired 2026-10-18: the Chemistry Check is the only offer
 
 /** "Lifetime": the signed link is valid for 100 years. */
 export const LIFETIME_LINK_DAYS = 36_500;
@@ -508,10 +507,8 @@ export const ALL_PRODUCTS: SiteProduct[] = [
 export const PERSONAL_CARD_BLUEPRINT_SLUG = "personal-card-blueprint";
 
 /** Products currently purchasable and safe to advertise as live offers. */
-export const PUBLIC_PRODUCTS: ActiveProduct[] = [
-  ...INSTANT_REPORT_PRODUCTS.filter((product) => product.slug !== PERSONAL_CARD_BLUEPRINT_SLUG),
-  ...DIGITAL_PRODUCTS.filter((product) => product.available),
-];
+// 2026-10-18: nothing is sold on this site; the one offer is the Chemistry Check on Stan.
+export const PUBLIC_PRODUCTS: ActiveProduct[] = [];
 
 export function isVoiceReading(p: SiteProduct): p is ReadingOffer {
   return p.kind === "voice_reading";
@@ -538,14 +535,9 @@ export function publicProductBySlug(slug: string): ActiveProduct | undefined {
   return PUBLIC_PRODUCTS.find((product) => product.slug === slug);
 }
 
-/** Active checkout: public products, the live reading on the deep-dive slug, the app once on sale, and Your Year Ahead. */
+/** Active checkout. Empty since 2026-10-18: the one offer, the Chemistry Check, sells on Stan. */
 export function checkoutProductBySlug(slug: string): ActiveProduct | undefined {
-  return (
-    publicProductBySlug(slug) ??
-    (slug === DEEP_DIVE_SLUG ? DEEP_DIVE_PRODUCT : undefined) ??
-    (CARD_APP_ON_SALE && slug === CARD_APP_SLUG ? CARD_APP_PRODUCT : undefined) ??
-    (YEAR_AHEAD_ON_SALE && slug === YEAR_AHEAD_SLUG ? YEAR_AHEAD_PRODUCT : undefined)
-  );
+  return publicProductBySlug(slug);
 }
 
 export function isDeepDive(product: { slug: string } | null | undefined): boolean {

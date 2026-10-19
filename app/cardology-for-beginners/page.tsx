@@ -1,15 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 import {
@@ -20,7 +13,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: what the 52-card system is, how to find your birth card with playing cards, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`;
+const DESCRIPTION = `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $39 Chemistry Check.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -73,10 +66,10 @@ const steps = [
   },
   {
     n: "6",
-    title: "Ask one question only if it earns it",
-    body: `If the free tools keep matching real life, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) takes one decision you are circling and reads it from your card, this year's cards, and the card you owe. A mirror, not a forecast. Written for you within ${ONE_QUESTION_TURNAROUND}.`,
-    href: DEEP_DIVE_PRODUCT_PATH,
-    label: `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL}`,
+    title: "Get a reading only if it earns it",
+    body: "If the free tools keep matching real life, the Chemistry Check ($39) reads your card beside one other person's: shared strengths, recurring friction, and where your years cross. A mirror, not a forecast. Prepared by Cass.",
+    href: "/#chemistry-check",
+    label: "The Chemistry Check · $39",
   },
 ];
 
@@ -95,7 +88,7 @@ const faqs = [
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one decision is still circling, the ${DEEP_DIVE_PRODUCT_NAME} (${DEEP_DIVE_PRICE_LABEL}) reads it from your birth card, this year's Long Range and Pluto cards, and the card you owe. It is a mirror, not a forecast, written within ${ONE_QUESTION_TURNAROUND}.`,
+    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($39) reads both people's cards together. It is a mirror, not a forecast.`,
   },
 ];
 
@@ -152,11 +145,10 @@ export default function CardologyForBeginnersPage() {
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
         If that card keeps matching real life, the{" "}
-        <Link href={DEEP_DIVE_PRODUCT_PATH} className="text-brand-oxblood underline underline-offset-4">
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
+        <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
+          Chemistry Check · $39
         </Link>{" "}
-        reads one decision from your birth card, this year&apos;s Long Range and Pluto
-        cards, and the card you owe. A mirror, not a forecast. Written within {ONE_QUESTION_TURNAROUND}.
+        reads it beside one other person&apos;s card. A mirror, not a forecast.
       </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
@@ -249,16 +241,15 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The {DEEP_DIVE_PRODUCT_NAME} is a one-time {DEEP_DIVE_PRICE_LABEL} purchase: one
-          question, read from your birth card, this year&apos;s Long Range and Pluto cards,
-          and the card you owe. About 600 words, emailed within {ONE_QUESTION_TURNAROUND}.
-          A mirror, not a forecast. No subscription.
+          The Chemistry Check is a one-time $39 purchase: two people&apos;s cards, read
+          together by Cass: shared strengths, recurring friction, and where your years cross.
+          Delivered by email. A mirror, not a forecast. No subscription.
         </p>
         <Link
-          href={DEEP_DIVE_PRODUCT_PATH}
+          href="/#chemistry-check"
           className="accent-button mt-4"
         >
-          {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL}
+          The Chemistry Check · $39
         </Link>
       </div>
 
@@ -280,8 +271,6 @@ export default function CardologyForBeginnersPage() {
           .
         </p>
       </section>
-
-      <FreeCourseCta source="beginners" className="mt-10" />
 
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Browse the library</p>

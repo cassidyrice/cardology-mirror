@@ -22,8 +22,7 @@ export default function robots(): MetadataRoute.Robots {
     //   the 52 card URLs with a conflicting lastmod.
     // - sitemap-cardology.xml (367 /born-on/ pages) and
     //   sitemap-compatibility.xml (1,431 /compatibility/ pages) are prerendered
-    //   by this app. Until the cardology-unlock Worker routes for those two
-    //   paths are removed, the Worker still answers them in production.
+    //   by this app using the existing Worker-port renderers.
     sitemap: ROBOTS_SITEMAP_PATHS.map((path) => `${SITE_URL}${path}`),
   };
 }

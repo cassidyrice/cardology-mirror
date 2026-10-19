@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { suitColorOnPaper } from "@/lib/cards";
@@ -13,7 +13,7 @@ import { updatedLabel } from "@/lib/page-updated";
 const UPDATED = PAGE_UPDATED_DATES["/karma-cards"];
 
 const TITLE =
-  "Cardology Karma Cards: Gift and Challenge Card for All 52 Birth Cards";
+  "Cardology Karma Cards for All 52 Birth Cards";
 const DESCRIPTION =
   "Every Cardology birth card's Lifetime Gift (Environment) and Lifetime Challenge (Displacement), in one table. Three Fixed cards have neither — here's why.";
 const OG_IMAGE = {
@@ -103,7 +103,7 @@ export default function KarmaCardsPage() {
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      headline: "Cardology Karma Cards: Gift and Challenge Card for All 52 Birth Cards",
+      headline: "Cardology Karma Cards for All 52 Birth Cards",
       description: DESCRIPTION,
       author: { "@type": "Person", name: "Cassidy Rice", url: `${SITE_URL}/about` },
       publisher: { "@id": `${SITE_URL}/#organization` },
@@ -137,7 +137,7 @@ export default function KarmaCardsPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">Cardology meanings</p>
         <h1 className="display text-4xl leading-none text-brand-ink sm:text-6xl">
-          Cardology Karma Cards: Gift and Challenge Card for All 52 Birth Cards
+          Cardology Karma Cards for All 52 Birth Cards
         </h1>
         <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5" data-ai-summary>
           <p className="oracle-eyebrow mb-2">Quick answer</p>
@@ -302,7 +302,7 @@ export default function KarmaCardsPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <DeepDiveCta placement="karma-cards" />
+        <StanReadingCta />
       </section>
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">

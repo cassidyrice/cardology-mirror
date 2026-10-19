@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CARDOLOGY_TIMELINE } from "@/lib/cardology-timeline";
@@ -12,7 +11,6 @@ import {
   COMPATIBILITY_DIRECTORY_PATH,
   SITE_NAME,
 } from "@/lib/site";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -136,8 +134,8 @@ function QuietContinue() {
           </Link>
         </li>
         <li>
-          <Link href="/products/one-question-reading" className="text-brand-ink-soft underline underline-offset-4">
-            One question ($13), optional
+          <Link href="/#readings" className="text-brand-ink-soft underline underline-offset-4">
+            Personal readings, optional
           </Link>
         </li>
       </ul>
@@ -198,11 +196,11 @@ export default function WhatIsCardology() {
       </div>
       <p className="mb-2 text-sm text-brand-ink-soft">
         Free first: reveal your birth card below. Optional next: the{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          Chemistry Check ($39)
         </Link>
         {" "}
-        — one decision, read from your card and your year, written within {ONE_QUESTION_TURNAROUND}.
+        — your card beside one other person’s, personally read by Cass.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -246,22 +244,21 @@ export default function WhatIsCardology() {
             all 52 Cardology card meanings
           </Link>
           . Optional next step: the{" "}
-          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-            $13 One Question Reading
+          <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+            Chemistry Check ($39)
           </Link>{" "}
-          (your card, this year's cards, and the card you owe, read against the one question you bring).
+          (two people’s cards, read together).
         </p>
         <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
           <p className="font-serif text-base text-brand-ink">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            The One Question Reading is $13 once: one question, read from your card and
-            the year you are in, written for you within {ONE_QUESTION_TURNAROUND}. No subscription.
+            The Chemistry Check ($39) reads your card beside one other person’s. It is prepared privately and delivered by email.
           </p>
           <Link
-            href="/products/one-question-reading"
+            href="/#readings"
             className="accent-button mt-4"
           >
-            Ask one question — $13
+            See the Chemistry Check
           </Link>
         </div>
       </section>
@@ -538,8 +535,8 @@ export default function WhatIsCardology() {
           Birth card as baseline. Other people&rsquo;s cards for comparison. Compatibility
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
-          <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-            $13 One Question Reading
+          <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+            the Chemistry Check ($39)
           </Link>
           — one question, read from your card, this year's cards, and the card you owe.
         </p>
@@ -559,13 +556,11 @@ export default function WhatIsCardology() {
         </div>
       </section>
 
-      <FreeCourseCta source="learn" className="mt-10" />
-
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/products/one-question-reading" className="ink-button">
-            $13 One Question Reading →
+          <Link href="/#readings" className="ink-button">
+            the Chemistry Check, $39 →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →

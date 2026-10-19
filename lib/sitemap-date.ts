@@ -1,7 +1,9 @@
+import { FALLBACK_PAGE_UPDATED } from "@/lib/page-dates";
+
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 
-/** Reviewed-date fallback. Matches `FALLBACK_PAGE_UPDATED` in page-dates.ts. */
-export const SITEMAP_DAY_FALLBACK = "2026-07-12";
+/** Use the same reviewed-date fallback as page metadata. */
+export const SITEMAP_DAY_FALLBACK = FALLBACK_PAGE_UPDATED;
 
 export function sitemapDate(value: string): Date {
   if (!ISO_DAY.test(value)) {

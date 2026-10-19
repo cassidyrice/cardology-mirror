@@ -144,7 +144,7 @@ export const BLOG_PILLARS: BlogPillar[] = [
     title: "What Is a Birth Card? Meanings",
     shortTitle: "Birth Cards",
     description:
-      "What is a birth card? In Cardology it is the playing card locked to your birthday. Guides to life cards, ruling cards, suits, and how to read a card without turning it into a fixed identity.",
+      "What is a birth card? In Cardology it is the playing card locked to your birthday. Guides to ruling cards, suits, and reading your card well.",
     searchIntent: "People asking what is a birth card, or searching card-by-card meanings and birthday meanings.",
     answer:
       "A birth card is the one playing card assigned to a birthday in Cardology. Its meaning is rank plus suit, read as a range: balanced, under-expressed, and over-expressed. It is not a tarot birth card and not a government birth-registration card.",
@@ -1066,7 +1066,13 @@ export const CORE_BLOG_POSTS: BlogPost[] = [
 // The original Cardology explainer now 301s to the comprehensive evergreen guide.
 // Keep its source copy for history, but remove it from listings, feeds, related
 // modules, static generation, and the sitemap so search engines get one clear URL.
-const RETIRED_BLOG_SLUGS = new Set(["what-cardology-is-and-is-not"]);
+// Keep in sync with RETIRED_PUBLIC_REDIRECTS in middleware.ts: a redirected post
+// must not be listed in the sitemap (Search Console flags "Page with redirect").
+const RETIRED_BLOG_SLUGS = new Set([
+  "what-cardology-is-and-is-not",
+  "reading-your-yearly-spread",
+  "why-some-birth-cards-clash",
+]);
 
 export const BLOG_POSTS: BlogPost[] = [...CORE_BLOG_POSTS, ...GENERATED_POSTS].filter(
   (post) => !RETIRED_BLOG_SLUGS.has(post.slug),

@@ -30,16 +30,26 @@ die() {
   exit 1
 }
 
-# --- Guard: canonical path ---
-base="$(basename "$ROOT")"
-if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
-  die "Production deploys are only allowed from ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+# --- Guard: deploy context ---
+# Allowed contexts:
+#   1. GitHub Actions on refs/heads/main (.github/workflows/deploy.yml), which
+#      serializes deploys with a workflow concurrency group instead of the lock.
+#   2. The canonical local checkout ~/cardology-elroy-qa (legacy manual path).
+CI_DEPLOY=0
+if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+  [[ "${GITHUB_REF:-}" == "refs/heads/main" ]] \
+    || die "CI deploys are only allowed from refs/heads/main (got ${GITHUB_REF:-unset})."
+  CI_DEPLOY=1
+else
+  base="$(basename "$ROOT")"
+  if [[ "$base" != "$CANONICAL_DIR_NAME" ]]; then
+    die "Production deploys are only allowed from GitHub Actions on main or ~/${CANONICAL_DIR_NAME} (cwd is $ROOT)."
+  fi
+  # Canonical path must be exact, not merely a directory with the same basename.
+  [[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
+  source "$ROOT/scripts/deploy-lock.sh"
+  acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
 fi
-
-# Canonical path must be exact, not merely a directory with the same basename.
-[[ "$ROOT" == "$(cd "$HOME/cardology-elroy-qa" && pwd -P)" ]] || die "Not the canonical checkout"
-source "$ROOT/scripts/deploy-lock.sh"
-acquire_deploy_lock "$HOME/cardblueprints-ops/.deploy-lock" || exit 1
 # Placeholder validation happens while holding our own lock.
 if grep -qE 'id = "0{32}"|_PLACEHOLDER' wrangler.toml; then
   die "wrangler.toml has an unresolved release binding"
@@ -55,6 +65,8 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
 fi
 
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+# actions/checkout leaves a detached HEAD; use the ref name the guard verified.
+if [[ "$CI_DEPLOY" -eq 1 ]]; then BRANCH="${GITHUB_REF_NAME:-main}"; fi
 COMMIT="$(git rev-parse HEAD)"
 SHORT="$(git rev-parse --short HEAD)"
 SUBJECT="$(git log -1 --pretty=%s)"
@@ -104,12 +116,17 @@ if [[ "${SKIP_BUILD:-}" == "1" ]]; then
   [[ "$(cat "$ARTIFACT_DIR/version.txt" 2>/dev/null)" == "$COMMIT" ]] \
     || die "Artifact was not built from ${SHORT}. Run without SKIP_BUILD."
 else
+  # Stamp the commit into public/ BEFORE building. next-on-pages' _worker.js
+  # routes every request and only serves static files it saw at build time, so
+  # a file dropped into the artifact afterwards 404s live. (gitignored)
+  printf '%s\n' "$COMMIT" > public/version.txt
   echo "→ next build"
   bun run build
   echo "→ pages:build (next-on-pages)"
   bun run pages:build
   # Served at /version.txt so verify-deploy-source.sh can read the live commit.
-  printf '%s\n' "$COMMIT" > "$ARTIFACT_DIR/version.txt"
+  [[ "$(tr -d '[:space:]' < "$ARTIFACT_DIR/version.txt" 2>/dev/null)" == "$COMMIT" ]] \
+    || die "Artifact is missing version.txt for ${SHORT}"
 fi
 
 if [[ ! -d "$ARTIFACT_DIR" ]]; then
@@ -153,29 +170,13 @@ sleep 5
 
 smoke_fail=0
 
-echo "→ smoke: Elroy API (no Turnstile)"
-ELROY_BODY="$(curl -sS -X POST "${SITE_ORIGIN}/api/elroy/micro-reading" \
-  -H 'content-type: application/json' \
-  -H "origin: ${SITE_ORIGIN}" \
-  --data '{"birthdate":"2001-01-15","email":"deploy-smoke@example.test","consent":true,"source":"/deploy-smoke"}' \
-  || true)"
-ELROY_CODE="$(curl -sS -o /dev/null -w '%{http_code}' -X POST "${SITE_ORIGIN}/api/elroy/micro-reading" \
-  -H 'content-type: application/json' \
-  -H "origin: ${SITE_ORIGIN}" \
-  --data '{"birthdate":"2001-01-15","email":"deploy-smoke@example.test","consent":true,"source":"/deploy-smoke"}' \
-  || echo 000)"
-
-if [[ "$ELROY_CODE" != "200" ]]; then
-  red "Elroy smoke FAILED (HTTP ${ELROY_CODE}): ${ELROY_BODY:0:200}"
-  smoke_fail=1
-elif echo "$ELROY_BODY" | grep -qi 'Verification is required'; then
-  red "Elroy still requires Turnstile verification — wrong/stale build?"
-  smoke_fail=1
-elif ! echo "$ELROY_BODY" | grep -q '"birthCard"'; then
-  red "Elroy response missing birthCard: ${ELROY_BODY:0:200}"
-  smoke_fail=1
+echo "→ smoke: retired offers redirect to the Chemistry Check"
+RETIRED_LOC="$(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "${SITE_ORIGIN}/products/one-question-reading" || true)"
+if [[ "$RETIRED_LOC" == "301 "*"/#readings" ]]; then
+  green "Retired offer redirect OK: $RETIRED_LOC"
 else
-  green "Elroy OK (HTTP 200)"
+  red "Retired offer redirect FAILED: $RETIRED_LOC"
+  smoke_fail=1
 fi
 
 echo "→ smoke: homepage title"
@@ -197,24 +198,6 @@ if curl -sSI "${SITE_ORIGIN}/" | grep -qi 'strict-transport-security'; then
 else
   yellow "HSTS header not observed"
 fi
-
-echo "→ smoke: free-course videos"
-for video in \
-  /free-course/media/01-foundations.mp4 \
-  /free-course/media/02-rank-and-suit.mp4 \
-  /free-course/media/03-states.mp4 \
-  /free-course/media/04-pattern-builder.mp4
-do
-  VIDEO_HEADERS="$(curl -sSI "${SITE_ORIGIN}${video}" || true)"
-  VIDEO_CODE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'BEGIN{c="000"} toupper($1) ~ /^HTTP/{c=$2} END{print c}')"
-  VIDEO_TYPE="$(printf '%s\n' "$VIDEO_HEADERS" | awk 'tolower($1)=="content-type:"{print $2; exit}' | tr -d '\r')"
-  if [[ "$VIDEO_CODE" != "200" || "$VIDEO_TYPE" != video/mp4* ]]; then
-    red "Course video FAILED ${video} (HTTP ${VIDEO_CODE}, type ${VIDEO_TYPE:-unknown})"
-    smoke_fail=1
-  else
-    green "Course video OK ${video}"
-  fi
-done
 
 if [[ "$smoke_fail" -ne 0 ]]; then
   red "Deploy finished but smoke checks FAILED. Production may be bad — investigate before further deploys."

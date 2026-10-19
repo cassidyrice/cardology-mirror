@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { SITE_NAME, SITE_URL, VIDEO_PATH, CONTACT_EMAIL, CONTACT_RESPONSE } from "@/lib/site";
+import { READING_RESPONSE_TIME, READING_SUPPORT_EMAIL } from "@/lib/readings-nav";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: how we calculate birth cards, publish free Cardology tools, and write the $13 One Question Reading — one decision, read from your card and your year.",
+    "About Card Blueprints and founder Cassidy Rice: free card tools, the published method, and the Chemistry Check, a personal reading about two people.",
   alternates: { canonical: "/about" },
 };
 
@@ -64,16 +64,13 @@ export default function AboutPage() {
       <header className="max-w-3xl pb-8">
         <p className="oracle-eyebrow mb-4">About the reference</p>
         <h1 className="display text-5xl leading-none text-brand-ink sm:text-6xl">
-          Card Blueprints reads birth cards, timing, and compatibility through the 52-card system.
+          Cards are a starting point. Your life is the context.
         </h1>
         <p className="mt-3 text-sm text-brand-ink-soft">Updated {updatedLabel(UPDATED)}</p>
         <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-brand-ink">
-            {SITE_NAME} starts with a birth date, calculates the card with a deterministic
-            engine, and turns the card into language for people, relationships, timing,
-            and repeated dynamics. Free tools come first; the paid product is the $13
-            One Question Reading, one question written up from your card and your year — not a phone reading.
+            {SITE_NAME} brings together a free birth-card calculator, a library of traditional card meanings, and personal readings prepared by Cass. Use the cards to explore a pattern, then bring your own experience to the conversation.
           </p>
         </div>
       </header>
@@ -86,9 +83,7 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          The paid product is the $13 One Question Reading: you bring one question,
-          I read it from your birth card, this year's cards, and the card you owe,
-          and it lands in your inbox within {ONE_QUESTION_TURNAROUND}.
+          I prepare one reading, the Chemistry Check ($39), about two people. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -98,10 +93,10 @@ export default function AboutPage() {
         <p>
           The birthday mapping is fixed. The interpretation is where the system comes
           alive: the suit shows the life domain, the rank shows the movement, and the
-          card shows the pattern that keeps trying to express through real behavior.
+          card offers a traditional pattern to compare with real behavior.
         </p>
         <p>
-          One card is not the whole person. It is the repeating shape: how someone
+          One card is not the whole person. It can suggest questions about how someone
           loves, thinks, values, works, avoids, reaches, gives, withholds, or takes
           command when pressure rises.
         </p>
@@ -118,14 +113,13 @@ export default function AboutPage() {
           and labeled as interpretation, not fact.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Experience on this site means shipping the tools people actually use: the free
-          birth card calculator, the birthday and compatibility directories, the 52 card
-          meanings, and the One Question Reading pipeline. Expertise means
-          publishing the method in public — see{" "}
+          Start with the free birth card calculator, then explore the birthday
+          directory, compare two people, or read any of the 52 card meanings.
+          The calculations and sources are published in the{" "}
           <Link href="/methodology" className="underline">
             methodology
           </Link>{" "}
-          — and refusing fortune-telling claims that the math cannot support.
+          so you can understand where your cards come from and form your own interpretation.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Corrections and questions are welcome at{" "}
@@ -136,8 +130,11 @@ export default function AboutPage() {
           <Link href="/contact" className="underline">
             contact page
           </Link>
-          . Purchase support is answered within {CONTACT_RESPONSE}. Cardology is
-          a lens for self-awareness — it describes patterns, not fate.
+          . General questions, corrections, and support for other purchases receive a reply within {CONTACT_RESPONSE}.
+        </p>
+        <p className="font-serif text-lg leading-relaxed text-brand-ink">
+          Follow-up questions about a Chemistry Check go to{" "}
+          <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="underline">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME} Every response is personally reviewed and approved by Cass.
         </p>
       </section>
 
@@ -155,8 +152,7 @@ export default function AboutPage() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
             {CONTACT_EMAIL}
           </a>
-          . Expect a reply within {CONTACT_RESPONSE} for purchase, refund, and
-          delivery issues. Editorial corrections are logged on the{" "}
+          . For general order administration, refunds, and delivery issues, expect a reply within {CONTACT_RESPONSE}. The personal-reading follow-up service above has its own 24-hour response commitment. Editorial corrections are logged on the{" "}
           <Link href="/editorial-policy" className="underline">
             editorial policy
           </Link>{" "}
@@ -194,20 +190,9 @@ export default function AboutPage() {
       <section className="mt-12 max-w-3xl space-y-4">
         <h2 className="font-serif text-3xl text-brand-ink">Why a written reading</h2>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          The free calculator answers “what is my card?” The reading answers “what does
-          my card say about this one decision?” The One Question Reading is a one-time
-          $13 purchase: your birth card, this year's Long Range and Pluto cards, and the
-          card you owe, read against the question you bring, written for you within{" "}
-          {ONE_QUESTION_TURNAROUND}. Read it once, then watch the next few weeks. Historical phone
-          fulfillment still works for people who already purchased access; new public
-          SEO pages point to the reading.
+          A written reading gives you something to return to. Underline what fits, question what does not, and notice what changes in a real conversation. Cass personally prepares your reading and reviews every follow-up response.
         </p>
-        <Link
-          href="/products/one-question-reading"
-          className="inline-block rounded-full border border-brand-ink bg-brand-ink px-5 py-2.5 text-sm font-semibold text-brand-on-dark"
-        >
-          One Question Reading — $13
-        </Link>
+        <Link href="/#readings" className="ink-button large-button">Choose your reading</Link>
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
