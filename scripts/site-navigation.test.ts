@@ -31,7 +31,7 @@ test("the one offer is the $39 Chemistry Check, linked straight to Stan, with fo
   const html = render(ManualReadingOffers);
   expect(html).toContain('id="chemistry-check"');
   expect(html).toContain('data-order-reading="chemistry-check"');
-  expect(html).toContain(`href="${READINGS_NAV[0].checkoutHref}"`);
+  expect(html).toContain(`href="${READINGS_NAV[0].checkoutHref!.replaceAll("&", "&amp;")}"`);
   expect(html).toContain(READING_FOLLOW_UP);
   expect(html).toContain(`mailto:${READING_SUPPORT_EMAIL}`);
   expect(html).not.toMatch(/Timing Map|Family Snapshot|\$49|\$59|availability/);
