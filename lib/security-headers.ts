@@ -26,7 +26,7 @@ export const SECURITY_HEADERS: ReadonlyArray<readonly [string, string]> = [
       "object-src 'none'",
       "base-uri 'self'",
       "frame-ancestors 'none'",
-      "form-action 'self' https://checkout.stripe.com https://buttondown.com https://buttondown.email",
+      "form-action 'self'",
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com https://*.posthog.com",
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com https://challenges.cloudflare.com https://*.posthog.com",
       "img-src 'self' data: https://img.youtube.com https://i.ytimg.com https://www.google-analytics.com https://www.googletagmanager.com https://*.posthog.com",

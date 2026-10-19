@@ -16,7 +16,6 @@ import {
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
-import { YEAR_AHEAD_PREVIEW_TAG } from "@/lib/year-ahead";
 import {
   CALCULATOR_PRIVACY_MICROCOPY,
 } from "@/lib/deep-dive";
@@ -29,7 +28,6 @@ import THREE_LENS from "@/lib/card-meanings.json";
 // Result-only UI: loaded on demand so it stays out of the first-paint bundle.
 const BirthShareHero = dynamic(() => import("@/components/share/BirthShareHero").then((m) => m.BirthShareHero));
 const CurrentPeriod = dynamic(() => import("./CurrentPeriod").then((m) => m.CurrentPeriod));
-const NewsletterSignupForm = dynamic(() => import("./NewsletterSignupForm").then((m) => m.NewsletterSignupForm));
 
 const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
 
@@ -133,7 +131,7 @@ export function BirthCardCalculator() {
       {reveal && birthCard ? (
         <BirthShareHero
           birthCard={birthCard}
-          action={<CalculatorNextStep reveal={reveal} />}
+          action={<CalculatorNextStep />}
         />
       ) : (
         <CalculatorPreviewFan />
@@ -234,33 +232,14 @@ export function BirthdayWorkerAnchor({
   );
 }
 
-/** The result continues to a free exercise, personal readings, or an email preview. */
-function CalculatorNextStep({
-  reveal,
-}: {
-  reveal: BirthCardReveal;
-}) {
-  const code = reveal.result.birthCard;
-  const isJoker = code === "Joker";
-  const label = parseCard(code)?.label ?? code;
-  const slug = birthCardSlug(code);
-  const cardTag = isJoker ? "card-joker" : slug ? `card-${slug}` : null;
-
+/** The result continues to the Chemistry Check or a free exercise. */
+function CalculatorNextStep() {
   return (
     <div className="flex w-full flex-col items-center gap-2">
       <StanReadingCta className="mb-3" />
       <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
         Try a free exercise with your card →
       </a>
-      <NewsletterSignupForm
-        source="calculator-result"
-        compact
-        quietButton={!isJoker}
-        heading={isJoker ? "Your card, every Monday." : "Get a free preview by email"}
-        body={isJoker ? undefined : `A short preview of the year ahead for the ${label}, then your card every Monday.`}
-        buttonLabel={isJoker ? undefined : "Send my free preview"}
-        tags={cardTag ? (isJoker ? ["calculator-result", cardTag] : ["calculator-result", YEAR_AHEAD_PREVIEW_TAG, cardTag]) : ["calculator-result"]}
-      />
     </div>
   );
 }

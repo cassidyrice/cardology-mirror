@@ -34,7 +34,6 @@ const READ = [
 ] as const;
 
 const GET = [
-  { label: "Free course", href: "/free-course" },
   { label: "My purchases", href: "/my-purchases" },
 ] as const;
 

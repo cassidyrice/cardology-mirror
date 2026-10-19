@@ -148,7 +148,7 @@ export default function PlanetaryRulingCard() {
         <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-sm">
           <Link href="/birth-card" className={linkClass}>All 52 card meanings</Link>
           <Link href="/cardology-compatibility" className={linkClass}>Cardology compatibility</Link>
-          <Link href="/#readings" className={linkClass}>Explore personal readings</Link>
+          <Link href="/#readings" className={linkClass}>See the Chemistry Check</Link>
         </div>
       </aside>
     </SeoShell>

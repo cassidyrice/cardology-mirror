@@ -38,12 +38,12 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
   }
 });
 
-test("all 367 birthday pages show current manual offers without an invented delivery deadline", () => {
+test("all 367 birthday pages show only the Chemistry Check without an invented delivery deadline", () => {
   for (const slug of ["", ...bornOnSlugs()]) {
     const body = bornOnPage(slug)!.body;
-    for (const offer of ["The Chemistry Check — $39", "Your 12-Month Timing Map — $49", "The Family Snapshot — $59"])
+    for (const offer of ["The Chemistry Check — $39"])
       expect(body).toContain(offer);
-    expect(body).toContain("up to three people total, including you");
+    expect(body).not.toMatch(/Timing Map|Family Snapshot|free-course/);
     expect(body).toContain("Includes seven days of email follow-up.");
     expect(body).toContain("within 24 hours");
     expect(body).not.toMatch(/\$(97|137|179)\b|you \+ 3 family|inbox within 7 days/);

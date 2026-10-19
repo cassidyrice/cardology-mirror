@@ -18,7 +18,6 @@ const REQUIRED_PATHS = [
   "/",
   "/what-is-cardology",
   "/birth-card/ace-of-hearts",
-  "/products/one-question-reading",
   "/birth-card-calculator",
   "/card-of-the-day",
   "/blog",

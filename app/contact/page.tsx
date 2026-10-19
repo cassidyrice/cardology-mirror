@@ -36,7 +36,7 @@ export default function ContactPage() {
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            {READING_FOLLOW_UP} For questions about a Chemistry Check, Timing Map, or Family Snapshot, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="editorial-link">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}
+            {READING_FOLLOW_UP} For questions about a Chemistry Check, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="editorial-link">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}
           </p>
         </div>
       </header>
@@ -57,7 +57,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened."],
-          ["Choosing a reading", "The Chemistry Check focuses on two people. Your 12-Month Timing Map follows your year. The Family Snapshot looks at the main dynamics among up to three people total."],
+          ["The reading", "The Chemistry Check reads two people’s cards: shared strengths, recurring friction, and where your years cross."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed."],
           ["Content questions", "Share the card, birthday, calculator, blog guide, or video topic your question is about."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video."],

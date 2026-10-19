@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { PlayingCard } from "@/components/PlayingCard";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
@@ -682,8 +681,6 @@ export default function CalculatorPage() {
           ))}
         </ul>
       </section>
-
-      <FreeCourseCta source="birth-card-calculator" className="mt-10" />
 
       <div className="card-surface mt-8 rounded-2xl p-5">
         <h2 className="font-serif text-2xl text-brand-ink">Continue your Cardology birth chart</h2>
