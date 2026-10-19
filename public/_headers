@@ -105,3 +105,6 @@
   Cache-Control: public, max-age=0, s-maxage=3600
   Access-Control-Allow-Origin: *
   Cross-Origin-Resource-Policy: cross-origin
+
+/video/*
+  Cache-Control: public, max-age=604800
