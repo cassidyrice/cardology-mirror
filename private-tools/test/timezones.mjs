@@ -13,6 +13,7 @@ const values=[];
 for(const birthday of birthdays)for(const readingDate of dates){
  values.push(calculate(birthday,readingDate));
  values.push(buildHostedDocument({offer:'professional',readingDate,people:[{name:'Sample',birthdate:birthday,relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false}));
+ values.push(buildHostedDocument({offer:'timing-map',readingDate,people:[{name:'Sample',birthdate:birthday,relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false}));
 }
 console.log(createHash('sha256').update(JSON.stringify(values)).digest('hex'));`;
 let expected;
@@ -20,5 +21,5 @@ for (const timezone of ['UTC', 'America/Los_Angeles', 'Europe/London', 'Pacific/
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', source], {cwd: root, encoding: 'utf8', env: {...process.env, TZ: timezone}});
   assert.equal(result.status, 0, result.stderr);
   const digest = result.stdout.trim(); expected ??= digest; assert.equal(digest, expected, timezone);
-  console.log(`${timezone}: identical 12 spread and 12 professional-report cases (${digest.slice(0, 12)})`);
+  console.log(`${timezone}: identical 12 spread, 12 Professional and 12 individual Timing cases (${digest.slice(0, 12)})`);
 }

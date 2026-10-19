@@ -98,7 +98,7 @@ test('report calculations preserve shared engine facts and existing templates', 
     const response = await f.request('/api/report', input);
     assert.equal(response.status, 200);
     const output = await response.json();
-    if (offer === 'family') assert.deepEqual(output.engine, JSON.parse(JSON.stringify(buildEngineData(output.draft))));
+    if (offer === 'family' || offer === 'timing-map') assert.deepEqual(output.engine, JSON.parse(JSON.stringify(buildEngineData(output.draft))));
     else assert.deepEqual(output, JSON.parse(JSON.stringify(buildDocument(input))));
     assert.ok(!output.html.includes('<script>'));
   }

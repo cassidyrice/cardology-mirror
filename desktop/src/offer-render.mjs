@@ -55,14 +55,20 @@ const COPY={
   'timing-map':{hook:'Your year, mapped. What it asks of you, and who walks into it.',parts:[
     {glyph:'♠',line:'Before anyone else shows up, there is you. Your build, your year, your seven seasons.',asks:['What are you built to do?','What is this birthday year really about?','When does each season start, and what is it for?']},
     {glyph:'♣',line:'Nobody’s year is a solo act. Here is who walks into yours, and when.',asks:['Who is built like you, and who is built against you?','Where do they land in your calendar?','Which dates are worth planning around?']}]},
+  'individual-timing':{hook:'Your core cards, yearly themes, and dated seasons across the next twelve months.',parts:[
+    {glyph:'♠',line:'Start with your core cards, then follow the themes and dated seasons of the year ahead.',asks:['What patterns do you return to?','Which themes frame your birthday year?','When does each season begin and end?']},
+    {glyph:'♣',line:'Reflect on the season you are in, then choose what you want to carry into the year ahead.',asks:['What deserves your attention now?','Which habits help you use this season well?','What will you revisit as the year unfolds?']}]},
   family:{hook:'Same house. Different cards. Here is how everyone is built.',parts:[
     {glyph:'♣',line:'Every family runs on a system. Nobody wrote it down. Until now.',asks:['How is each person built?','Where does the family move as one?','Where does it crack?']},
     {glyph:'♦',line:'Where everyone is this year, and where they land in yours.',asks:['What is each person going through right now?','Who shows up in your year, and as what?','Which pattern is ready to stop with you?']}]}
 };
 
-export function renderOfferReport(draft,engine,offer){
+export function renderOfferReport(draft,engine,offer,variant='default'){
+  const individual=variant==='individual-timing';
+  if(variant!=='default'&&!individual)throw Error('Unsupported report presentation.');
+  if(individual&&(draft.offer!=='timing-map'||draft.version!==3||draft.people.length!==1||engine.offer!=='timing-map'||engine.people.length!==1))throw Error('Individual Timing requires a version 3 draft and exactly one person.');
   usedFaces=new Set();
-  const pages=[],toc=[],people=engine.people,buyer=people[0],copy=COPY[draft.offer];
+  const pages=[],toc=[],people=engine.people,buyer=people[0],copy=COPY[individual?'individual-timing':draft.offer];
   const person=id=>people.find(p=>p.id===id);
   const firsts=people.map(p=>p.name.split(/\s+/)[0]);
   const nameOf=p=>{const i=people.indexOf(p);return firsts.filter(n=>n===firsts[i]).length>1?p.name:firsts[i];};
@@ -118,9 +124,9 @@ export function renderOfferReport(draft,engine,offer){
     const total=days(engine.window.start,engine.window.end);
     const months=[];for(let d=new Date(`${engine.window.start}T12:00:00Z`);months.length<12;d.setUTCMonth(d.getUTCMonth()+1,1))months.push(new Date(d));
     const pct=value=>(days(engine.window.start,value)-1)/total*100;
-    page('The year on one page',`${kicker(index)}<p class="lead">Twelve months, ${people.length>1?'one band per person':'seven seasons'}. Each colour is a season. Each card is what that season is about.</p>
+    page('The year on one page',`${kicker(index)}<p class="lead">Twelve months, ${people.length>1?'one band per person':`${buyer.windows.length} dated seasons`}. Each colour is a season. Each card is what that season is about.${individual?' Short bands are labelled in the dated season pages.':''}</p>
       <div class="timeline${longLabels?' long-labels':''}"><div class="months">${months.map(m=>({left:pct(m.toISOString().slice(0,10)),label:m.toLocaleString('en-US',{month:'short',timeZone:'UTC'})})).filter((m,i,all)=>!all[i+1]||all[i+1].left-m.left>5).map(m=>`<span style="left:${m.left.toFixed(2)}%">${m.label}</span>`).join('')}</div>
-      ${people.map(p=>`<div class="lane"><p>${who(p)} <small>${escape(p.identity[0].card)}</small></p><div class="band">${p.windows.map(w=>`<span class="${days(w.start,w.end)/total<0.07?'narrow':''}" style="width:${(days(w.start,w.end)/total*100).toFixed(2)}%;background:${PLANET_COLOR[w.planet]}" title="${escape(w.planet)} ${escape(w.cards[0].card)}"><b>${escape(w.cards[0].card)}</b><i>${escape(w.planet.slice(0,3))}</i></span>`).join('')}</div></div>`).join('')}
+      ${people.map(p=>`<div class="lane"><p>${who(p)} <small>${escape(p.identity[0].card)}</small></p><div class="band">${p.windows.map(w=>`<span class="${days(w.start,w.end)/total<0.07?'narrow':''}" style="width:${(days(w.start,w.end)/total*100).toFixed(2)}%;background:${PLANET_COLOR[w.planet]}" title="${escape(w.planet)} ${escape(w.cards[0].card)}">${individual&&days(w.start,w.end)/total<0.07?'':`<b>${escape(w.cards[0].card)}</b><i>${escape(w.planet.slice(0,3))}</i>`}</span>`).join('')}</div></div>`).join('')}
       <div class="today">Today · ${short(engine.window.start)}</div></div>
       <div class="legend">${Object.entries(PLANET_COLOR).map(([planet,color])=>`<span><i style="background:${color}"></i>${planet} <small>${POSITION[planet][0]}</small></span>`).join('')}</div>
       ${ask(people.length>1?'Find the stretch where everyone changes season within a few weeks of each other. What usually happens in your life when that many things shift at once?':'Twelve months from now, what will you wish you had started today?')}`);
@@ -129,7 +135,7 @@ export function renderOfferReport(draft,engine,offer){
   const season=(w,n)=>`<article class="season"><div class="season-no" style="color:${PLANET_COLOR[w.planet]}">${String(n).padStart(2,'0')}</div><div><h3>${escape(w.planet)} <small>${escape(POSITION[w.planet][0])}</small></h3><p class="meta">${range(w)} · ${days(w.start,w.end)} days${w.start!==w.fullStart||w.end!==w.fullEnd?` · full season ${short(w.fullStart)} – ${short(w.fullEnd)}`:''}</p><p><b>Best use.</b> ${meaning(w.cards[0].card)}</p><p><b>Watch for.</b> ${meaning(w.cards[0].card,'under')}</p><p class="q">${escape(SEASON_QUESTION[w.planet])}</p></div>${tile(w.cards[0].card)}</article>`;
 
   const rightNow=index=>{
-    for(const [i,group] of chunks(people,longLabels?3:4).entries())page(i?'Right now / continued':'Right now',`${kicker(index)}${i?'':`<p class="lead">As of ${date(engine.readingDate)}. This is the season each of you is standing in today.</p>`}${group.map(p=>{const w=p.windows.find(item=>item.start<=engine.readingDate&&item.end>=engine.readingDate);return `<article class="now${people.length>3?' compact':''}">${tile(w.cards[0].card,people.length>3?'':'lg')}<div><h3>${who(p)} <small>· ${escape(w.planet)}, ${escape(POSITION[w.planet][0])}</small></h3><p class="meta">Started ${date(w.fullStart)} · ${days(engine.readingDate,w.fullEnd)} days left</p><p><b>Best use.</b> ${meaning(w.cards[0].card)}</p><p><b>Watch for.</b> ${meaning(w.cards[0].card,'under')}</p></div></article>`;}).join('')}${i===0?ask('Read these together. Is anyone in a season that makes the others harder to live with right now?'):''}`);
+    for(const [i,group] of chunks(people,longLabels?3:4).entries())page(i?'Right now / continued':'Right now',`${kicker(index)}${i?'':`<p class="lead">As of ${date(engine.readingDate)}. ${individual?'This is the season you are in today.':'This is the season each of you is standing in today.'}</p>`}${group.map(p=>{const w=p.windows.find(item=>item.start<=engine.readingDate&&item.end>=engine.readingDate);return `<article class="now${people.length>3?' compact':''}">${tile(w.cards[0].card,people.length>3?'':'lg')}<div><h3>${who(p)} <small>· ${escape(w.planet)}, ${escape(POSITION[w.planet][0])}</small></h3><p class="meta">Started ${date(w.fullStart)} · ${days(engine.readingDate,w.fullEnd)} days left</p><p><b>Best use.</b> ${meaning(w.cards[0].card)}</p><p><b>Watch for.</b> ${meaning(w.cards[0].card,'under')}</p></div></article>`;}).join('')}${i===0?ask(individual?'What would using this season well look like in your ordinary week?':'Read these together. Is anyone in a season that makes the others harder to live with right now?'):''}`);
   };
 
   const yearly=index=>{
@@ -177,8 +183,15 @@ export function renderOfferReport(draft,engine,offer){
     mark(offer.sections[1]);timeline(1);
     let n=0;for(const group of chunks(buyer.windows,3))page(offer.sections[1],`${group.map(w=>season(w,++n)).join('')}`);
     section(1);
-    opener(1);mark(offer.sections[2]);people.slice(1).forEach(p=>dossier(p,2));sideBySide(2);section(2);
-    mark(offer.sections[3]);crossings(3,offer.sections[3]);section(3);
+    if(individual){
+      opener(1);mark(offer.sections[2]);rightNow(2);section(2);
+      mark(offer.sections[3]);
+      page(offer.sections[3],`${kicker(3)}<p class="lead">Keep the calendar nearby. Return to these questions as your seasons change.</p>${ask('Which yearly theme deserves your attention, and what would acting on it look like?')}${ask('Which dated transition will you use as a moment to pause and review?')}${ask('What do you want to practise now, and what will you check again at your next birthday?')}`);
+      section(3);
+    }else{
+      opener(1);mark(offer.sections[2]);people.slice(1).forEach(p=>dossier(p,2));sideBySide(2);section(2);
+      mark(offer.sections[3]);crossings(3,offer.sections[3]);section(3);
+    }
   }else{
     opener(0);mark(offer.sections[0]);people.forEach(p=>dossier(p,0));section(0);
     sideBySide(1);section(1);
@@ -192,9 +205,9 @@ export function renderOfferReport(draft,engine,offer){
   }
   if(draft.includeNotes)writing('Reader notes',draft.notes);
   mark('The fine print');
-  page('The fine print',`<h3>How the cards were calculated</h3><p>${escape(engine.method.periods)}</p><p>${escape(engine.method.connections)}</p><p>The complete engine JSON export contains every person, birthday cycle, period, card, connection, and sourced card meaning used here. Tables and section facts are generated from that same data.</p><h3>Reader review</h3><p>${draft.reviewed?'The reader marked this draft reviewed in the builder.':'This is a preparation draft. Review the sourced language, add the personal reading in the Writing tab, and check every date and card against the engine JSON before delivery.'}</p><h3>What this is, and is not</h3><p>Interpretations describe patterns for reflection. The card matches do not establish relationship outcomes. The questions are there to be argued with.</p><p class="meta">${escape(engine.method.source)}</p>`);
+  page('The fine print',`<h3>How the cards were calculated</h3><p>${escape(engine.method.periods)}</p>${individual?'':`<p>${escape(engine.method.connections)}</p>`}<p>The complete engine JSON export contains ${individual?'your birthday cycles, periods, cards, and sourced card meanings':'every person, birthday cycle, period, card, connection, and sourced card meaning'} used here. Tables and section facts are generated from that same data.</p><h3>Reader review</h3><p>${draft.reviewed?'The reader marked this draft reviewed in the builder.':'This is a preparation draft. Review the sourced language, add the personal reading in the Writing tab, and check every date and card against the engine JSON before delivery.'}</p><h3>What this is, and is not</h3><p>Interpretations describe patterns for reflection. ${individual?'They do not predict events or decide what you should do.':'The card matches do not establish relationship outcomes.'} The questions are there to be argued with.</p><p class="meta">${escape(engine.method.source)}</p>`);
 
-  pages[contents-1].body=`<div class="contents"><div><p class="eyebrow">Inside</p><ol class="toc">${toc.map(item=>`<li class="${/^Part/.test(item.label)?'part':''}"><span>${escape(item.label)}</span><i></i><b>${String(item.number).padStart(2,'0')}</b></li>`).join('')}</ol></div><div><p class="eyebrow">The positions, decoded</p><dl class="key">${['Long Range','Pluto','Result','Environment','Displacement'].map(k=>`<dt>${escape(k)} <small>${escape(POSITION[k][0])}</small></dt><dd>${escape(POSITION[k][1])}</dd>`).join('')}</dl><p class="eyebrow">The seven seasons</p><p class="small">Every birthday starts six 52-day seasons, then Neptune continues through the eve of the next birthday. Each season is run by a planet: ${Object.keys(PLANET_COLOR).map(planet=>`<span class="nowrap"><i class="dot" style="background:${PLANET_COLOR[planet]}"></i>${planet} (${POSITION[planet][0].toLowerCase()})</span>`).join(', ')}.</p></div></div><p class="howto">Read it straight through once. Then go back to the dates.</p>`;
+  pages[contents-1].body=`<div class="contents"><div><p class="eyebrow">Inside</p><ol class="toc">${toc.map(item=>`<li class="${/^Part/.test(item.label)?'part':''}"><span>${escape(item.label)}</span><i></i><b>${String(item.number).padStart(2,'0')}</b></li>`).join('')}</ol></div><div><p class="eyebrow">The positions, decoded</p><dl class="key">${['Long Range','Pluto','Result','Environment','Displacement'].map(k=>`<dt>${escape(k)} <small>${escape(POSITION[k][0])}</small></dt><dd>${escape(POSITION[k][1])}</dd>`).join('')}</dl><p class="eyebrow">${individual?'Birthday seasons':'The seven seasons'}</p><p class="small">Every birthday starts six 52-day seasons, then Neptune continues through the eve of the next birthday. ${individual?'The rolling report window can cross a birthday, so a season may appear twice. ':''}Each season is run by a planet: ${Object.keys(PLANET_COLOR).map(planet=>`<span class="nowrap"><i class="dot" style="background:${PLANET_COLOR[planet]}"></i>${planet} (${POSITION[planet][0].toLowerCase()})</span>`).join(', ')}.</p></div></div><p class="howto">Read it straight through once. Then go back to the dates.</p>`;
 
   const html=pages.map((item,index)=>`<section class="page ${item.extra}" id="page-${index+1}"><header><span>CARD BLUEPRINTS / ${escape(offer.name.toUpperCase())}</span><span>+ ${String(index+1).padStart(2,'0')} +</span></header><h2>${escape(item.title)}</h2>${item.body}<footer><span>${FOOTER}</span><span>${escape(draft.reviewed?'Reader reviewed':'Reader review draft')} · ${escape(draft.readingDate)}</span></footer></section>`);
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"><title>${escape(buyer.name)} · ${escape(offer.name)}</title><style>
