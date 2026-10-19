@@ -138,7 +138,7 @@ export async function renderBirthdateChartPng(chart: BirthdateChart): Promise<Bl
   ctx.fillText(chart.birth.label, tx, faceY + 96);
   let ty = faceY + 150;
   if (chart.strength) {
-    eyebrow(ctx, "Your strength", tx, ty);
+    eyebrow(ctx, chart.isJoker ? "About your card" : "Your strength", tx, ty);
     ctx.font = `400 28px ${SERIF}`;
     ctx.fillStyle = INK;
     ty += paragraph(ctx, chart.strength, tx, ty + 40, tw, 38) + 50;
@@ -188,7 +188,7 @@ export async function renderBirthdateChartPng(chart: BirthdateChart): Promise<Bl
   if (chart.isJoker) {
     ctx.font = `400 34px ${SERIF}`;
     ctx.fillStyle = INK;
-    bottomY += paragraph(ctx, chart.strength, W / 2, rowY + 90, W - 280, 46, "center") + 60;
+    bottomY += paragraph(ctx, "The Joker stands apart from the 52 cards, so it carries no ruling card and no karma cards. It can play any card in the deck.", W / 2, rowY + 90, W - 280, 46, "center") + 60;
   }
 
   if (chart.watchFor) {
