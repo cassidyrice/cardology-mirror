@@ -72,12 +72,12 @@ export default function BondsPage() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <Kicker className="mb-1 !font-bold !text-brand-ink-soft">Bonds</Kicker>
-          <h1 className="display mb-2 text-4xl text-brand-ink">
-            Where two patterns collide
-          </h1>
+          <h2 className="display mb-2 text-4xl text-brand-ink">
+            What do your cards have in common?
+          </h2>
           <p className="text-sm text-brand-ink-soft">
-            Not a compatibility score. Two birth cards, read for where they
-            speak the same language — and where they quietly grind each other down.
+            Compare two birth cards. Look at the strengths you share, the places
+            you differ, and a question to bring into your next conversation.
           </p>
         </motion.header>
 

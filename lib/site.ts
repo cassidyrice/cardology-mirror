@@ -37,7 +37,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Free birth card calculator, 52 meanings, compatibility, and the $13 One Question Reading.";
+  "Free birth card calculator, 52 meanings, compatibility, and the $39 Chemistry Check.";
 
 export const APP_PATHS = [
   "/today",
@@ -49,7 +49,6 @@ export const APP_PATHS = [
   "/journal",
   "/onboarding",
   "/access",
-  "/free-course/watch",
 ];
 
 export const MARKETING_PATHS = [
@@ -63,12 +62,6 @@ export const MARKETING_PATHS = [
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",
-  // The Blueprint Report stays buyable at /products/blueprint-report for people
-  // who already have the link. It is omitted from the main sitemap so it does
-  // not compete with the $13 One Question Reading.
-  "/products/one-question-reading",
-  "/products/year-ahead",
-  "/free-course",
   "/what-is-cardology",
   "/cardology-books",
   "/cardology-for-beginners",

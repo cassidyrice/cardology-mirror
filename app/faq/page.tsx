@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { buildFaqPageJsonLd, FAQ_PATH, FAQ_SECTIONS } from "@/lib/faq";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
@@ -13,7 +12,7 @@ const UPDATED = PAGE_UPDATED_DATES[FAQ_PATH];
 
 const TITLE = "Cardology FAQ";
 const DESCRIPTION =
-  "Cardology vs cardiology and tarot, the free birth-card lookup, the $13 reading's minute turnaround, and how /today works. Each answer links to its full page.";
+  "Answers about birth cards, free calculators, personal readings with Cass, follow-up support, and the difference between calculation and interpretation.";
 const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" };
 
 export const dynamic = "force-static";
@@ -49,10 +48,7 @@ export default function FaqPage() {
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
-          Cardology maps a birthday to one playing card. Same date, same card. It is not
-          cardiology and not tarot. The free calculator returns the card. The $13 One
-          Question Reading is written within {ONE_QUESTION_TURNAROUND} of payment. This page
-          repeats those answers and links to the page that owns each one.
+          Start with your birthday, explore the card it maps to, and decide what the interpretation brings to your own experience. Here are answers about the tools, personal readings, support, and the limits of the system.
         </p>
       </div>
       <p className="mb-8 text-xs text-brand-ink-soft">

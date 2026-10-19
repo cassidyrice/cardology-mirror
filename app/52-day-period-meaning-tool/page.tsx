@@ -9,7 +9,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 const canonicalPath = "/52-day-period-meaning-tool";
 const title = "52-Day Period Meaning Tool";
 const description =
-  "Explore all 52 card meanings through the seven Cardology 52-day period filters: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.";
+  "Explore all 52 card meanings through the seven Cardology planetary filters: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.";
 
 export const metadata: Metadata = {
   title,
@@ -64,13 +64,13 @@ export default function PeriodMeaningToolPage() {
       <header className="max-w-4xl pb-8">
         <p className="oracle-eyebrow mb-4">card meaning × period filter</p>
         <h1 className="display text-5xl leading-none text-brand-ink sm:text-7xl">
-          Every card meaning, through each 52-day lens.
+          One card. Seven ways to read the season.
         </h1>
         <p className="mt-5 max-w-3xl font-serif text-xl leading-relaxed text-brand-ink sm:text-2xl">
           Pick any card and run it through the seven yearly period filters. The card stays the same; the filter changes the context: mind, love, action, growth, discipline, disruption, or surrender.
         </p>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink-soft sm:text-base">
-          This tool is a structured mirror, not a forecast. It gives a reusable language layer for reading the same card differently depending on which 52-day chapter is active.
+          This tool is a way to explore an interpretation. Read the same card in the context of relationships, action, or another theme, then test the language against your experience.
         </p>
       </header>
 
@@ -81,12 +81,7 @@ export default function PeriodMeaningToolPage() {
       <section className="mt-10 max-w-3xl" id="monthly">
         <h2 className="oracle-eyebrow mb-3">Looking for a monthly card?</h2>
         <p className="text-base leading-relaxed text-brand-ink">
-          This system does not run on months. The year divides into <strong>seven
-          52-day periods</strong>, not twelve, and each one starts on your birthday
-          rather than on the first of a month — so a &ldquo;monthly Destiny Cards&rdquo;
-          reading is really a question about which period a given month falls inside.
-          Seven periods across 364 days means most months straddle two of them, and
-          the handover, not the month, is what changes the reading.
+          Your birthday year has seven planetary seasons. Mercury through Uranus each last 52 days; Neptune continues through the day before your next birthday. Calendar months can cross more than one season, so use the dated boundaries when reading a particular month.
         </p>
         <p className="mt-3 text-base leading-relaxed text-brand-ink">
           To place any month: count 52-day blocks forward from your last birthday.
@@ -127,8 +122,8 @@ export default function PeriodMeaningToolPage() {
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
           Want one decision read from your own cards instead of looking them up by hand?
           That is the{" "}
-          <Link href="/products/one-question-reading" className="underline underline-offset-4">
-            One Question Reading
+          <Link href="/#readings" className="underline underline-offset-4">
+            Personal readings
           </Link>
           .
         </p>
