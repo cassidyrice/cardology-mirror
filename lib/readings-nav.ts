@@ -2,6 +2,11 @@
 // 2026-10-18: stripped down to the Chemistry Check, the one reading the report builder can make.
 export const CHEMISTRY_CHECK_URL = "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u";
 
+/** Chemistry Check link tagged with where on the site the click came from, so Stan sales can be traced. */
+export function chemistryCheckUrl(medium: string, campaign: string): string {
+  return `${CHEMISTRY_CHECK_URL}?utm_source=cardblueprints&utm_medium=${medium}&utm_campaign=${campaign}`;
+}
+
 export const READING_FOLLOW_UP = "Includes seven days of email follow-up. Every response is personally reviewed and approved by Cass.";
 export const READING_SUPPORT_EMAIL = "52xseven@mail.grokbot.com";
 export const READING_RESPONSE_TIME = "You’ll receive a response within 24 hours.";
@@ -23,7 +28,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
     title: "The Chemistry Check",
     price: "$39",
     href: "/#chemistry-check",
-    checkoutHref: CHEMISTRY_CHECK_URL,
+    checkoutHref: chemistryCheckUrl("homepage", "offer_card"),
     who: "For two people",
     description: "Explore both people’s cards: shared strengths, recurring friction, and a question worth bringing into your next conversation.",
     includes: ["Both people’s core cards", "Shared strengths and recurring friction", "Your current seasons and where your years cross"],

@@ -1,6 +1,6 @@
-import { CHEMISTRY_CHECK_URL } from "@/lib/readings-nav";
+import { chemistryCheckUrl } from "@/lib/readings-nav";
 
-export const CALCULATOR_STAN_CTA_HREF = `${CHEMISTRY_CHECK_URL}?utm_source=cardblueprints&utm_medium=calculator&utm_campaign=result_cta`;
+export const CALCULATOR_STAN_CTA_HREF = chemistryCheckUrl("calculator", "result_cta");
 
 /** The one paid next step: the $39 Chemistry Check on Stan. */
 export function StanReadingCta({ className = "" }: { className?: string }) {
