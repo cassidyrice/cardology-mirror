@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { DeepDiveCta } from "@/components/seo/DeepDiveCta";
+import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
 import { suitColorOnPaper } from "@/lib/cards";
@@ -302,7 +302,7 @@ export default function KarmaCardsPage() {
       </section>
 
       <section className="mt-12 max-w-3xl space-y-4">
-        <DeepDiveCta placement="karma-cards" />
+        <StanReadingCta />
       </section>
 
       <section className="mt-12 grid gap-4 sm:grid-cols-3">

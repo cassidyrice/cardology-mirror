@@ -77,8 +77,8 @@ test("footer and header link to /faq", () => {
 
   expect(footer.match(/href="\/faq"/g)).toHaveLength(1);
   expect(footer).toContain(">FAQ<");
-  expect(header.match(/href="\/faq"/g)).toHaveLength(2);
-  expect(header).toContain(">FAQ<");
+  expect(header.match(/href="\/faq"/g)).toHaveLength(1);
+  expect(header).toContain("Questions &amp; answers");
 });
 
 test("application sitemap lists /faq on its reviewed date", () => {

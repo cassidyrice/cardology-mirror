@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { FreeCourseCta } from "@/components/free-course/FreeCourseCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
-import { CardAppCta } from "@/components/seo/CardAppCta";
+import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import {
   BIRTHDAY_DIRECTORY_PATH,
   COMPATIBILITY_DIRECTORY_PATH,
@@ -118,10 +117,10 @@ export default function CompatibilityCalculatorPage() {
         Read each person&rsquo;s result in both directions, then open the matching
         pair guide. The interpretation offers questions for reflection; it does
         not measure the quality or future of your relationship. The{" "}
-        <Link href="/products/one-question-reading" className="text-brand-oxblood underline underline-offset-4">
-          $13 One Question Reading
+        <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
+          Chemistry Check · $39
         </Link>{" "}
-        reads one person&rsquo;s question (the first birthday) — not a couple reading.
+        is a personal reading of both people’s cards, shared strengths, and recurring friction.
       </p>
 
       <aside className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
@@ -224,8 +223,7 @@ export default function CompatibilityCalculatorPage() {
         </ul>
       </section>
 
-      <CardAppCta placement="compatibility-calculator-app" connections />
-      <FreeCourseCta source="compatibility-calculator" className="mt-10" />
+      <StanReadingCta />
     </SeoShell>
   );
 }

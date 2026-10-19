@@ -18,7 +18,7 @@ import {
 } from "@/lib/life-path";
 import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import { CompatShareHero } from "@/components/share/CompatShareHero";
-import { DeepDiveCta } from "./DeepDiveCta";
+import { OfferCta } from "./OfferCta";
 
 const RANK_SLUG: Record<string, string> = { A: "ace", J: "jack", Q: "queen", K: "king" };
 function slugOf(code: string): string | null {
@@ -138,7 +138,6 @@ export function CompatibilityCalculator() {
           key={`${pair.a.birthdate}:${pair.b.birthdate}`}
           a={pair.a}
           b={pair.b}
-          birthdateA={pair.a.birthdate}
         />
       )}
       </div>
@@ -153,11 +152,9 @@ function defaultSeat(hit: LifePathCard | null): number {
 function PairResult({
   a,
   b,
-  birthdateA,
 }: {
   a: LifePathProfile;
   b: LifePathProfile;
-  birthdateA: string;
 }) {
   const pa = parseCard(a.birthCard);
   const pb = parseCard(b.birthCard);
@@ -288,14 +285,7 @@ function PairResult({
       />
 
       <div className="mt-8 flex w-full flex-col items-center gap-3">
-        <DeepDiveCta
-          placement="compatibility-calculator-result"
-          birthdate={birthdateA}
-          source="birth-card-compatibility-calculator"
-        />
-        <p className="max-w-md text-center text-xs leading-relaxed text-brand-ink-soft">
-          This $13 One Question Reading is for the first birthday only — that person’s question, not a couple’s.
-        </p>
+        <OfferCta className="w-full" />
         <CompatibilityWorkerAnchor
           firstSlug={aSlug}
           secondSlug={bSlug}

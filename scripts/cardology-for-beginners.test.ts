@@ -5,12 +5,6 @@ import { renderToStaticMarkup } from "react-dom/server";
 import CardologyForBeginners, {
   metadata,
 } from "@/app/cardology-for-beginners/page";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { updatedLabel } from "@/lib/page-updated";
 
@@ -38,27 +32,24 @@ test("beginners page reviewed date is the September 22 offer refresh", () => {
   expect(markup).not.toContain("August 7, 2026");
 });
 
-test("beginners page sells the $13 One Question Reading after the free calculator", () => {
+test("beginners page offers the $39 Chemistry Check after the free calculator", () => {
   const markup = renderToStaticMarkup(createElement(CardologyForBeginners));
-  const offer = `${DEEP_DIVE_PRODUCT_NAME} · ${DEEP_DIVE_PRICE_LABEL}`;
   const freeAt = markup.indexOf('href="/birth-card-calculator"');
-  const paidAt = markup.indexOf(`href="${DEEP_DIVE_PRODUCT_PATH}"`);
+  const paidAt = markup.indexOf('href="/#chemistry-check"');
 
   expect(metadata.description).toBe(
-    `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the ${DEEP_DIVE_PRICE_LABEL} ${DEEP_DIVE_PRODUCT_NAME}.`,
+    "Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $39 Chemistry Check.",
   );
   expect(markup).toContain("Find your birth card free");
-  expect(markup).toContain(offer);
+  expect(markup).toContain("The Chemistry Check · $39");
   expect(markup).toContain("A mirror, not a forecast");
-  expect(markup).toContain(ONE_QUESTION_TURNAROUND);
   expect(markup).toContain('href="/faq"');
   expect(freeAt).toBeGreaterThan(-1);
   expect(paidAt).toBeGreaterThan(freeAt);
 
   const article = articleHtml(markup).replaceAll("Card Blueprints", "");
-  expect(article).not.toMatch(/Blueprint|Deep Dive/);
-  expect(article).not.toContain("2 business days");
-  expect(article).not.toMatch(/\$19|\$47|\$9\b/);
+  expect(article).not.toMatch(/Blueprint|Deep Dive|One Question/);
+  expect(article).not.toMatch(/\$13|\$19|\$47|\$9\b/);
 });
 
 test("beginners FAQ and HowTo schema match the visible answers", () => {
@@ -84,15 +75,12 @@ test("beginners FAQ and HowTo schema match the visible answers", () => {
   const afterCard = faq.mainEntity.find(
     (question) => question.name === "What should I do after I know my birth card?",
   );
-  expect(afterCard?.acceptedAnswer.text).toContain(DEEP_DIVE_PRODUCT_NAME);
-  expect(afterCard?.acceptedAnswer.text).toContain(DEEP_DIVE_PRICE_LABEL);
+  expect(afterCard?.acceptedAnswer.text).toContain("Chemistry Check ($39)");
   expect(afterCard?.acceptedAnswer.text).toContain("mirror, not a forecast");
-  expect(afterCard?.acceptedAnswer.text).toContain(ONE_QUESTION_TURNAROUND);
 
   expect(howTo.description).toBe(metadata.description);
   expect(howTo.step).toHaveLength(6);
   expect(howTo.step[1]?.url).toBe("https://cardblueprints.com/birth-card-calculator");
-  expect(howTo.step[5]?.url).toBe(`https://cardblueprints.com${DEEP_DIVE_PRODUCT_PATH}`);
+  expect(howTo.step[5]?.url).toBe("https://cardblueprints.com/#chemistry-check");
   expect(howTo.step[5]?.text).toContain("A mirror, not a forecast");
-  expect(howTo.step[5]?.text).toContain(ONE_QUESTION_TURNAROUND);
 });

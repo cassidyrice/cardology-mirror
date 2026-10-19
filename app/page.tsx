@@ -2,21 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { LandingCalculator } from "@/components/seo/LandingCalculator";
-import {
-  DEEP_DIVE_PRICE_LABEL,
-  DEEP_DIVE_PRODUCT_NAME,
-  DEEP_DIVE_PRODUCT_PATH,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
+import { ReadingSample } from "@/components/offers/ReadingSample";
+import { ManualReadingOffers } from "@/components/offers/ManualReadingOffers";
 import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
-import { CARD_APP_PRODUCT_PATH } from "@/lib/card-app-slug";
 
 import "./landing.css";
 
 const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Your birthday maps to one playing card. Same date, same card. Free Cardology calculator, then a $13 written reading on the one question you're deciding.";
+  "Find your birth card free, then see how it meets someone else’s with the Chemistry Check ($39), prepared by Cass.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -46,97 +41,41 @@ export const metadata: Metadata = {
 /** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
 export const revalidate = 86_400;
 
-/** Short teaser. The full Eight of Diamonds promotion sample lives on the product page. */
-const SAMPLE_TEASER =
-  "An Eight of Diamonds asked about a promotion. The reading set the new ground beside the role they had already mastered, and left the choice with them.";
-
 export default function Home() {
   return (
     <div className="flex min-h-svh flex-col bg-brand-paper text-brand-ink">
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
-        <div className="home-intro">
-          <p className="home-kicker">Arithmetic on a fixed 52-card structure. You can check it.</p>
-          <p className="home-lead" data-ai-summary>
-            Your birthday maps to one playing card in a 52-card deck. Cardology is
-            that fixed map: a mirror you can check, not tarot, not cardiology, and
-            not a forecast. The calculator is free.
-          </p>
-          <div className="home-fold-actions">
-            <Link href="/birth-card-calculator" className="ink-button large-button">
-              Find your card free
-            </Link>
-            <Link href={`${CARD_APP_PRODUCT_PATH}#sample`} className="home-fold-app">
-              Open app sample <span aria-hidden="true">↗</span>
-            </Link>
-            <Link href={DEEP_DIVE_PRODUCT_PATH} className="home-fold-reading">
-              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
-            </Link>
-          </div>
-          <LandingCalculator />
-          <section className="home-question" aria-labelledby="home-find-birth-card">
-            <h2 id="home-find-birth-card">How do I find my birth card?</h2>
-            <p>
-              Enter month, day, and year above. Month and day pick the card; the year
-              does not change it. The same birthday always returns the same playing card.
-            </p>
-            <p>
-              The full chart is on the{" "}
-              <Link href="/birth-card-calculator">birth card calculator</Link>.
-              All 52 meanings are on the{" "}
-              <Link href="/birth-card">birth card index</Link>.
-              The system is{" "}
-              <Link href="/what-is-cardology">what Cardology is</Link>.
-              Two cards together:{" "}
-              <Link href="/cardology-compatibility">Cardology compatibility</Link>.
-            </p>
+        <div className="home-blueprint-grid">
+          <section className="home-purpose" aria-labelledby="home-purpose-title">
+            <h1 id="home-purpose-title">A little more clarity.<br /><em>A different conversation.</em></h1>
+            <p className="home-purpose-lead" data-ai-summary>Explore the patterns you bring to your relationships, your choices, and the year ahead. Start with the playing card connected to your birthday.</p>
+            <a href="#home-birthdate" className="ink-button large-button">Find your card free</a>
+            <Link href="#readings" className="editorial-link home-secondary">Choose a personal reading</Link>
+            <p className="home-purpose-note">A traditional card system. Space for your own judgment.</p>
           </section>
-          <div className="home-intro-links">
-            <Link href="/what-is-cardology">New to Cardology?</Link>
-            <span aria-hidden="true">·</span>
-            <Link href="/explore">Explore the free library →</Link>
-          </div>
+          <div className="home-calculator-panel"><LandingCalculator /></div>
         </div>
+        <section className="home-question home-method" aria-labelledby="home-find-birth-card"><h2 id="home-find-birth-card">How do I find my birth card?</h2><p>Your birthday maps to one playing card in a 52-card deck. Enter your month, day, and year in the free calculator. Month and day set the birth card; the year is used for timing. Read the traditional meaning as a prompt for reflection, not a forecast.</p><Link href="/methodology" className="editorial-link">See the calculation and its sources</Link></section>
+        <section className="home-reading-desk" aria-labelledby="home-sample-title">
+          <div><p className="home-kicker">From the reading desk</p><h2 id="home-sample-title">Something to recognize.<br />Something to question.</h2><p>A reading gives you a place to begin: strengths you rely on, habits that cause friction, and questions you can take into your own life.</p><p>The cards and dates are calculated. Their meanings come from the Cardology tradition. You decide what fits your experience.</p><a className="editorial-link" href="/samples/chemistry-check-fictional-sample.pdf">Open a fictional Chemistry Check sample (PDF)</a><p className="home-sample-note">Sample people and dates. Shows the calculated report pages; your personal reading also includes Cass’s written interpretation.</p></div>
+          <ReadingSample />
+        </section>
 
-        <section aria-labelledby="home-reading-title" className="home-product">
-          <div className="home-product-copy">
-            <p className="home-kicker">
-              {DEEP_DIVE_PRODUCT_NAME} · {DEEP_DIVE_PRICE_LABEL} · {ONE_QUESTION_TURNAROUND}
-            </p>
-            <h2 id="home-reading-title">Ask the one thing<br />you keep circling.</h2>
-            <p className="home-product-lead">
-              Your birthday picks the cards. Your question picks the reading.
-              About 600 words on where you are standing, written so plainly
-              you will think you wrote it, and three things to keep an eye out
-              for in the next few weeks. A mirror, not a forecast.
-            </p>
-            <div className="home-offer">
-              <span className="home-price">{DEEP_DIVE_PRICE_LABEL}</span>
-              <div>One question, written for you.<small>{ONE_QUESTION_TURNAROUND} · no subscription</small></div>
-            </div>
-            <ol className="home-benefits">
-              <li><span>01</span><div><h3>Your card, on your question</h3><p>The number is the action, the suit is the area. How your card tends to handle this exact kind of decision, and where it slips.</p></div></li>
-              <li><span>02</span><div><h3>This year&rsquo;s cards</h3><p>The Long Range card that keeps pulling your attention. The Pluto card, what the year asks, and what it pays.</p></div></li>
-              <li><span>03</span><div><h3>Three things to watch for</h3><p>Concrete signals for the next few weeks, each tied to a card. You check them off yourself.</p></div></li>
-            </ol>
-            <Link className="home-product-link" href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample, then ask yours <span aria-hidden="true">↗</span></Link>
-            <p className="home-purchase-note">Prepared automatically from your cards and question. Usually ready in {ONE_QUESTION_TURNAROUND}. Reply to your receipt if you need help.</p>
+        <section id="readings" aria-labelledby="home-reading-title" className="mx-auto w-full max-w-6xl scroll-mt-8 border-t border-brand-line px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
+          <div className="home-offers-heading">
+            <p className="home-kicker">Personal reading · prepared by Cass</p>
+            <h2 id="home-reading-title" className="mt-3 font-serif text-4xl leading-tight tracking-tight sm:text-5xl">Where would you like to begin?</h2>
+            <p className="mt-4 leading-relaxed text-brand-ink-soft">Two people’s cards, read together. Your reading is prepared privately and delivered by email.</p>
           </div>
-          <aside className="home-product-preview home-sample" aria-label="A short look at one reading">
-            <p className="home-kicker">A short look</p>
-            <blockquote className="home-sample-quote">{SAMPLE_TEASER}</blockquote>
-            <p className="home-sample-note">
-              Eight of Diamonds, one question about a promotion.{" "}
-              <Link href={`${DEEP_DIVE_PRODUCT_PATH}#sample`}>Read the full sample</Link>
-            </p>
-          </aside>
+          <ManualReadingOffers />
         </section>
 
         <section className="home-articles" aria-labelledby="home-articles-title">
           <div className="home-articles-heading"><div><p className="home-kicker">From the journal</p><h2 id="home-articles-title">Get to know your cards.</h2></div><p>A few good places to start. Read a little, then bring it back to your own life.</p></div>
           <div className="home-article-grid">
             <Link className="home-article" href="/blog/how-to-read-birth-card-meaning"><span className="home-article-label">01 / Your Birth Card</span><h3>How to read your Birth Card</h3><p>Explore its themes as questions to reflect on, with room for your own experience.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
-            <Link className="home-article" href="/blog/52-day-periods-in-cardology"><span className="home-article-label">02 / Your year</span><h3>How your 52-day chapters work</h3><p>Get to know the seven planetary periods that give your birthday year its structure.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
+            <Link className="home-article" href="/blog/52-day-periods-in-cardology"><span className="home-article-label">02 / Your year</span><h3>How your 52-day chapters work</h3><p>Follow the seasons of your birthday year, from Mercury through Neptune.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
             <Link className="home-article" href="/blog/birth-card-vs-ruling-card-how-to-read-both"><span className="home-article-label">03 / Another perspective</span><h3>Birth Card or Ruling Card?</h3><p>Understand what each brings to a reading and how to read the two together.</p><span className="home-article-read">Read the article <span aria-hidden="true">↗</span></span></Link>
           </div>
           <Link className="home-articles-all" href="/blog">Browse all articles <span aria-hidden="true">→</span></Link>

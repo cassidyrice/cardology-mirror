@@ -30,9 +30,9 @@ export default function StoryPage() {
       canonicalPath="/story"
       eyebrow="Annual arc page"
       points={[
-        "A year-reading view that follows the current chapter, Pluto turn, and result horizon.",
-        "A profile-aware arc rail and written reading for the birth-card and ruling-card strands.",
-        "Plain-language timing that names the pressure, choice, release, and direction of the year.",
+        "Explore the long-range, Pluto, and result cards in your yearly spread.",
+        "Read themes from both your birth card and ruling card.",
+        "Reflect on what you want to continue, change, or leave behind this year.",
       ]}
     >
       <StoryClient />

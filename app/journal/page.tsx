@@ -30,9 +30,9 @@ export default function JournalPage() {
       canonicalPath="/journal"
       eyebrow="Reflection page"
       points={[
-        "A secondary reflection page after the public daily, timing, and meaning content.",
-        "Private on-device writing once a visitor creates a local profile.",
-        "Mobile-first prompt and entry surfaces that remain part of the main website.",
+        "Choose a prompt from your cards or begin with your own question.",
+        "Save private journal entries on this device.",
+        "Return to earlier entries and notice what has changed.",
       ]}
     >
       <JournalClient />
