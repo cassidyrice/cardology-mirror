@@ -20,7 +20,7 @@ export const ROBOTS_SITEMAP_PATHS = [
 ] as const;
 
 export const SITE_NAME = "Card Blueprints";
-export const CONTACT_EMAIL = "hello@cardblueprints.com";
+export const CONTACT_EMAIL = "52xseven@mail.grokbot.com";
 export const CONTACT_RESPONSE = "two business days";
 
 export const VIDEO_URL = (
