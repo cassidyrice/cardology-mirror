@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
-import { ONE_QUESTION_TURNAROUND } from "@/lib/deep-dive";
 import { CONTACT_EMAIL } from "@/lib/site";
 
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
@@ -13,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the One Question Reading, digital products, and free Cardology tools.",
+    "Terms for the Chemistry Check, past purchases, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -48,8 +47,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            the One Question Reading, and digital products when explicitly
-            marked available. Card lookups use fixed formulas and tables — the
+            and one paid reading, the Chemistry Check, sold through Stan Store. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
             you.
@@ -60,18 +58,17 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-brand-line pt-2">
-              <strong>One Question Reading ($13)</strong> — a written reading on one
-              question, built from the birth card your birthday maps to, this year's
-              Long Range and Pluto cards, and the card you owe. Delivered by email as
-              plain text within {ONE_QUESTION_TURNAROUND}. One payment, no renewal. It is
-              interpretive, not advice: it does not predict events and does not
-              replace a professional.
+              <strong>The Chemistry Check ($39)</strong> — a personal reading of two
+              people's cards, prepared by Cass and delivered by email. One payment, no
+              renewal. It is interpretive, not advice: it does not predict events and
+              does not replace a professional.
             </li>
             <li className="border-t border-brand-line pt-2">
               Sign-in links and past report links use private signed URLs. Do not
               share paid access or try to bypass payment or security checks.
-              Purchases of retired products (the Personal Card Blueprint, the
-              earlier video offer, and others) keep their existing access links.
+              Purchases of retired products (the One Question Reading, the Blueprint
+              Report, Your Year Ahead, the Personal Card Blueprint and others) keep
+              their existing access links.
             </li>
           </ul>
         </section>

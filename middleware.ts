@@ -14,7 +14,7 @@ export const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/checkout/video-weekly-7": "/explore",
   "/checkout/video-daily-52": "/explore",
   "/checkout/video-voice-addon": "/explore",
-  "/readings": "/products/one-question-reading",
+  "/readings": "/#readings",
   "/try": "/birth-card-calculator",
   "/cardology-chart": "/birth-card-calculator",
   "/birth-card-chart": "/birth-card-calculator",
@@ -29,16 +29,31 @@ export const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   // the $19 52xSeven Blueprint year app (2026-09-08), then the $47 One Question
   // Reading (2026-09-13).
   // Fulfillment for past purchases (/blueprint, downloads, success) is untouched.
-  "/products/52xseven-blueprint": "/products/one-question-reading",
-  "/products/birth-card-deep-dive": "/products/one-question-reading",
-  "/products/blueprint-breakdown-video": "/products/one-question-reading",
-  "/products/personal-card-blueprint": "/products/one-question-reading",
-  "/products/complete-card-blueprint": "/products/one-question-reading",
-  "/products/analog-algorithm": "/products/one-question-reading",
+  "/products/52xseven-blueprint": "/#readings",
+  "/products/birth-card-deep-dive": "/#readings",
+  "/products/blueprint-breakdown-video": "/#readings",
+  "/products/personal-card-blueprint": "/#readings",
+  "/products/complete-card-blueprint": "/#readings",
+  "/products/analog-algorithm": "/#readings",
   "/membership": "/birth-card-calculator",
-  "/checkout/personal-card-blueprint": "/products/one-question-reading",
-  "/checkout/complete-card-blueprint": "/products/one-question-reading",
-  "/checkout/analog-algorithm": "/products/one-question-reading",
+  // Stripped down to the one Stan reading, the Chemistry Check (2026-10-18).
+  "/products": "/#readings",
+  "/personal-card-blueprint": "/#readings",
+  "/products/one-question-reading": "/#readings",
+  "/products/year-ahead": "/#readings",
+  "/products/blueprint-report": "/#readings",
+  "/products/card-blueprint-app": "/#readings",
+  "/checkout/deep-dive": "/#readings",
+  "/checkout/year-ahead": "/#readings",
+  "/checkout/blueprint-report": "/#readings",
+  "/checkout/blueprint-report-consult": "/#readings",
+  "/checkout/card-blueprint-app": "/#readings",
+  "/free-course": "/cardology-for-beginners",
+  "/free-course/watch": "/cardology-for-beginners",
+  "/karma-reading": "/karma-cards",
+  "/checkout/personal-card-blueprint": "/#readings",
+  "/checkout/complete-card-blueprint": "/#readings",
+  "/checkout/analog-algorithm": "/#readings",
   "/checkout/cardology-membership": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
@@ -131,7 +146,9 @@ export function middleware(request: NextRequest) {
 
   const retiredDestination = RETIRED_PUBLIC_REDIRECTS[pathname];
   if (retiredDestination) {
-    redirectUrl.pathname = retiredDestination;
+    const [destPath, destHash] = retiredDestination.split("#");
+    redirectUrl.pathname = destPath;
+    if (destHash) redirectUrl.hash = destHash;
     shouldRedirect = true;
   }
 

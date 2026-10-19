@@ -1,6 +1,6 @@
 // Real customer words, supplied by the owner 2026-09-01.
 // Public quotes say "the reading" where the owner named the retired offer,
-// so page copy and Product JSON-LD match the live One Question Reading.
+// so the quotes stay accurate whatever is for sale.
 // The owner confirmed every review was five-star (2026-09-01), so each
 // carries rating: 5 for display and schema.org reviewRating/aggregateRating.
 

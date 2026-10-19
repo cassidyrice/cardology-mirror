@@ -12,6 +12,21 @@ import { middleware } from "../middleware";
 
 const locs = (xml: string) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
+test("all 1431 compatibility pages offer only the Chemistry Check, with follow-up", () => {
+  const pages = [compatIndexPage(), ...compatSlugs().map(slug => compatPage(slug)!)];
+  expect(pages).toHaveLength(1431);
+  for (const page of pages) {
+    for (const offer of ["The Chemistry Check — $39"])
+      expect(page.body).toContain(offer);
+    expect(page.body).toContain('href="/#chemistry-check"');
+    expect(page.body).not.toMatch(/Timing Map|Family Snapshot|free-course/);
+    expect(page.body).toContain("Includes seven days of email follow-up.");
+    expect(page.body).toContain("within 24 hours");
+    expect(page.body).not.toMatch(/\$(97|137|179)\b|you \+ 3 family|inbox within 7 days/);
+    expect(page.body).not.toContain('href="https://stan.store/mycardblueprint/p/the-chemistry-check"');
+  }
+});
+
 test("URL parity: app serves exactly the Worker's sitemap-compatibility.xml set", () => {
   const expected = locs(renderCompatSitemap());
   expect(expected).toHaveLength(1431);
