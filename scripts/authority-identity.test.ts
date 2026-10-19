@@ -12,7 +12,7 @@ const site = readFileSync(join(root, "lib/site.ts"), "utf8");
 const layout = readFileSync(join(root, "app/layout.tsx"), "utf8");
 
 test("public contact is the domain mailbox, not Gmail", () => {
-  expect(CONTACT_EMAIL).toBe("hello@cardblueprints.com");
+  expect(CONTACT_EMAIL).toBe("52xseven@mail.grokbot.com");
   expect(site).not.toContain("therealcassrice@gmail.com");
   expect(contact).toContain("CONTACT_EMAIL");
   expect(contact).toContain("CONTACT_RESPONSE");
