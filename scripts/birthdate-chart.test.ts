@@ -50,9 +50,11 @@ test("the download component saves the lead to the same Buttondown list without 
   const c = read("components/seo/BirthdateChartDownload.tsx");
   expect(BUTTONDOWN_EMBED_SUBSCRIBE).toBe("https://buttondown.com/api/emails/embed-subscribe/cardblueprint");
   expect(c).toContain("e.preventDefault()");
-  expect(c).toContain('mode: "no-cors"');
+  expect(c).toContain('redirect: "manual"');
   expect(c).not.toContain('name="birthdate"');
-  expect(c).not.toContain("action={");
+  // The only Buttondown form is the opt-in "finish signing up" fallback, in a new tab.
+  expect(c.match(/action=\{/g)?.length ?? 0).toBe(1);
+  expect(c).toContain('target="_blank"');
   expect(c).not.toMatch(/\$\d/);
   expect(read("components/seo/Reveal.tsx")).toContain('<BirthdateChartDownload birthdate={birthdate} source="home-reveal" />');
 });
