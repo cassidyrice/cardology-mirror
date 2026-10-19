@@ -15,6 +15,20 @@ export function normalizeSitemapUrl(url: string): string {
   return url.replace(/\/$/, "");
 }
 
+/** Shared-cache policy for the application sitemap; CDN behavior needs live verification. */
+export const SITEMAP_CACHE_CONTROL =
+  "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
+
+export function sitemapXmlResponse(body: string): Response {
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": SITEMAP_CACHE_CONTROL,
+    },
+  });
+}
+
 function escapeXml(value: string): string {
   return value
     .replace(/&/g, "&amp;")

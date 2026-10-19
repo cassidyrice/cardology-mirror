@@ -11,9 +11,8 @@ export const APP_URL = (
   process.env.NEXT_PUBLIC_APP_URL || SITE_URL
 ).replace(/\/$/, "");
 
-// Paths advertised in robots.txt. /sitemap.xml is built by this app.
-// /sitemap-cardology.xml and /sitemap-compatibility.xml are served by the
-// cardology-unlock Worker in front of Pages, not by a route in this repo.
+// Paths advertised in robots.txt. All three have static app route handlers;
+// directory sitemaps reuse the existing cardology-unlock Worker-port renderers.
 export const ROBOTS_SITEMAP_PATHS = [
   "/sitemap.xml",
   "/sitemap-cardology.xml",

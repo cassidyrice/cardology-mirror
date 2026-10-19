@@ -1,19 +1,20 @@
 /**
  * HTTP guard for the three sitemap routes advertised in robots.txt.
  *
- * Production (Worker in front of Pages) serves all three. A local `next dev`
- * serves /sitemap.xml only, so the Worker routes 404 there.
+ * All three have static app route handlers. This probe uses Googlebot and
+ * Bingbot to check the HTTP responses crawlers receive.
  *
  *   bun run test:sitemap:http
  *   SITEMAP_BASE_URL=http://127.0.0.1:3577 bun run test:sitemap:http
  *
- * `bun run test:sitemap` checks the app handler without a server.
+ * `bun run test:sitemap` checks the app handlers without a server.
  */
 import { ROBOTS_SITEMAP_PATHS } from "../lib/site";
 import {
   assertBlueprintReportStaysOffMainSitemap,
   assertRobotsAdvertisesSitemapPaths,
   checkSitemapUrl,
+  SITEMAP_PROBE_USER_AGENTS,
   sitemapRouteError,
 } from "./sitemap-http";
 
@@ -36,7 +37,7 @@ async function readRobots(url: string): Promise<{ status: number; body: string }
       headers: {
         accept: "text/plain,*/*",
         "cache-control": "no-cache",
-        "user-agent": "CardBlueprints-Sitemap-Guard/1.0 (+https://cardblueprints.com)",
+        "user-agent": SITEMAP_PROBE_USER_AGENTS[0],
       },
     });
   } catch (error) {
@@ -67,17 +68,19 @@ async function main(): Promise<void> {
     failures.push(failureMessage(error));
   }
 
-  for (const path of ROBOTS_SITEMAP_PATHS) {
-    try {
-      const parsed = await checkSitemapUrl(`${base}${path}`, path);
-      if (path === "/sitemap.xml") {
-        assertBlueprintReportStaysOffMainSitemap(path, parsed.locations);
+  for (const userAgent of SITEMAP_PROBE_USER_AGENTS) {
+    for (const path of ROBOTS_SITEMAP_PATHS) {
+      try {
+        const parsed = await checkSitemapUrl(`${base}${path}`, path, userAgent);
+        if (path === "/sitemap.xml") {
+          assertBlueprintReportStaysOffMainSitemap(path, parsed.locations);
+        }
+        report(
+          `sitemap route OK ${path}: HTTP 200 ${parsed.kind}, ${parsed.locations.length} locs (${userAgent})`,
+        );
+      } catch (error) {
+        failures.push(failureMessage(error));
       }
-      report(
-        `sitemap route OK ${path}: HTTP 200 ${parsed.kind}, ${parsed.locations.length} locs`,
-      );
-    } catch (error) {
-      failures.push(failureMessage(error));
     }
   }
 
