@@ -27,12 +27,18 @@ export function chartSignupTags(signup: ChartSignup): string[] {
   return [BIRTHDATE_CHART_TAG, signup.source, `card-${signup.slug}`];
 }
 
-/** Creates the subscriber, or adds the tags if they already exist. */
+/**
+ * Creates the subscriber, or adds the tags if they already exist.
+ * Passes the visitor's IP so Buttondown's firewall judges the visitor, not
+ * Cloudflare's shared egress IPs (Buttondown docs: server-side signups from a
+ * small set of IPs otherwise look like one spammer).
+ */
 export async function subscribeChartLead(
   signup: ChartSignup,
   apiKey: string,
   referrerUrl: string,
   fetcher: typeof fetch = fetch,
+  ipAddress = "",
 ): Promise<void> {
   if (!apiKey) throw new Error("BUTTONDOWN_API_KEY is not set");
   const res = await fetcher(BUTTONDOWN_SUBSCRIBERS_API, {
@@ -46,6 +52,7 @@ export async function subscribeChartLead(
       email_address: signup.email,
       tags: chartSignupTags(signup),
       referrer_url: referrerUrl.slice(0, 500),
+      ...(ipAddress ? { ip_address: ipAddress } : {}),
     }),
   });
   if (!res.ok) {

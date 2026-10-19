@@ -34,6 +34,8 @@ export async function POST(request: NextRequest) {
       signup,
       process.env.BUTTONDOWN_API_KEY || "",
       request.headers.get("referer") || request.nextUrl.origin,
+      fetch,
+      request.headers.get("cf-connecting-ip") || "",
     );
     return NextResponse.json({ ok: true }, { headers: { "cache-control": "no-store" } });
   } catch (cause) {

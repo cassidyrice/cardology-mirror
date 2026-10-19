@@ -73,6 +73,8 @@ test("chart signup validates input and posts tags to the same Buttondown list wi
   expect((seen!.init.headers as Record<string, string>).Authorization).toBe("Token k");
   const body = JSON.parse(String(seen!.init.body));
   expect(body).toEqual({ email_address: "a@b.co", tags: [BIRTHDATE_CHART_TAG, "calculator-result", "card-2-of-diamonds"], referrer_url: "https://cardblueprints.com/" });
+  await subscribeChartLead(signup, "k", "https://cardblueprints.com/", fake, "203.0.113.9");
+  expect(JSON.parse(String(seen!.init.body)).ip_address).toBe("203.0.113.9");
   await expect(subscribeChartLead(signup, "", "x", fake)).rejects.toThrow();
   const failing = (async () => new Response("bad", { status: 400 })) as unknown as typeof fetch;
   await expect(subscribeChartLead(signup, "k", "x", failing)).rejects.toThrow();
