@@ -11,7 +11,7 @@ const bible = JSON.parse(await readFile(new URL('../../lib/card-bible.json', imp
 const DAYS = [];
 for (const date = new Date(Date.UTC(2000, 0, 1)); date.getUTCFullYear() === 2000; date.setUTCDate(date.getUTCDate() + 1)) DAYS.push([date.getUTCMonth() + 1, date.getUTCDate()]);
 const iso = (month, day, year = 1996) => `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-const SECTIONS = ['Your birth card', 'The Meaning of Your Birth Card', 'Your strengths', 'Your shadow', 'Strengths &amp; Shadow', '<h2>Love</h2>', '<h2>Work</h2>', 'Love &amp; Work', 'Your ruling card', 'Your Ruling Card', 'Going further', 'The Timing Map · $39', 'The Card Blueprint Reading · $299', 'The fine print'];
+const SECTIONS = ['Your birth card', 'The Meaning of Your Birth Card', 'Your strengths', 'Your shadow', 'Strengths &amp; Shadow', '<h2>Love</h2>', '<h2>Work</h2>', 'Love &amp; Work', 'Your ruling card', 'Your Ruling Card', 'Using your blueprint', 'Go back to the YOURS questions', 'Share it with a friend', 'The fine print'];
 const blueprint = (birthdate, extra = {}) => ({...fields('birth-card-blueprint'), people: [{name: 'Sample Reader', birthdate, relation: 'Buyer'}], ...extra});
 
 test('all 366 birthdays match the public calculator for birth and ruling cards', () => {
@@ -67,6 +67,16 @@ test('every one of the 366 reports generates with every section, deterministical
     assert.doesNotMatch(first.html.split('</style>')[1], /undefined|\bnull\b|NaN|\[object/);
     const text = first.html + JSON.stringify(first.engine);
     for (const name of famous) assert.ok(!text.includes(name), `${month}/${day} contains a real person's name`);
+  }
+});
+
+test('no report offers anything but the $13 Birth Card Blueprint', () => {
+  for (const [month, day] of DAYS) {
+    const {html, engine} = buildHostedDocument(blueprint(iso(month, day)));
+    // Only the body: the stylesheet embeds base64 card faces.
+    const text = html.split('</style>')[1] + JSON.stringify(engine);
+    for (const banned of ['299', '$39', 'Timing Map', 'Card Blueprint Reading']) assert.ok(!text.includes(banned), `${month}/${day} mentions ${banned}`);
+    assert.deepEqual([...new Set(text.match(/\$\s*\d+(?:[.,]\d+)*/g))], ['$13'], `${month}/${day} prices`);
   }
 });
 
