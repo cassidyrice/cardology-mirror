@@ -146,8 +146,8 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
     items: [
       {
         id: "personal-readings",
-        question: "What personal reading do you offer?",
-        answer: "There is one: the Chemistry Check ($39), a reading of two people’s cards: shared strengths, recurring friction, and where your years cross. Cass prepares it personally and delivers it by email.",
+        question: "What personal readings do you offer?",
+        answer: "There are three: the 12-Month Timing Map ($39) for just you, the Chemistry Check ($52) for you plus one person, and the Family Snapshot ($65) for you plus two people. Cass prepares it personally and delivers it by email.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {

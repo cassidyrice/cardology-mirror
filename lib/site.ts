@@ -36,7 +36,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Free birth card calculator, 52 meanings, compatibility, and the $39 Chemistry Check.";
+  "Free birth card calculator, 52 meanings, compatibility, and the $52 Chemistry Check.";
 
 export const APP_PATHS = [
   "/today",

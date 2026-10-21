@@ -58,7 +58,7 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-brand-line pt-2">
-              <strong>The Chemistry Check ($39)</strong> — a personal reading of two
+              <strong>The Chemistry Check ($52)</strong> — a personal reading of two
               people's cards, prepared by Cass and delivered by email. One payment, no
               renewal. It is interpretive, not advice: it does not predict events and
               does not replace a professional.

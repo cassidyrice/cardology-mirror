@@ -62,7 +62,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $39"],
+  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $52"],
 ] as const;
 
 const tarotRows = [
@@ -193,7 +193,7 @@ export default function DestinyCardsPage() {
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: reveal your destiny card on this page. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($39)
+          Chemistry Check ($52)
         </Link>
         {" "}— your card beside one other person’s, personally read by Cass.
       </p>
@@ -343,7 +343,7 @@ export default function DestinyCardsPage() {
           <li>
             Optional deepen: the{" "}
             <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-              The Chemistry Check, $39
+              The Chemistry Check, $52
             </Link>
             , one question read from your card and your year.
           </li>
@@ -523,7 +523,7 @@ export default function DestinyCardsPage() {
         </Link>
         {" · "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          the Chemistry Check ($39)
+          the Chemistry Check ($52)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

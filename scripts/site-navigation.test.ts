@@ -26,13 +26,13 @@ test("footer preserves library, support, policy and purchase-access destinations
   for (const path of ['/birth-card-calculator','/what-is-cardology','/birth-card','/born-on/','/compatibility/','/faq','/contact','/my-purchases','/privacy-policy','/terms-of-service','/refund-policy']) expect(html).toContain(`href="${path}"`);
   for (const offer of READINGS_NAV) expect(html).toContain(`href="${offer.href}"`);
 });
-test("the one offer is the $39 Chemistry Check, linked straight to Stan, with follow-up", () => {
-  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["chemistry-check", "$39"]]);
+test("three offers, Chemistry Check linked straight to Stan, with follow-up", () => {
+  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["timing-map", "$39"], ["chemistry-check", "$52"], ["family-snapshot", "$65"]]);
   const html = render(ManualReadingOffers);
   expect(html).toContain('id="chemistry-check"');
   expect(html).toContain('data-order-reading="chemistry-check"');
-  expect(html).toContain(`href="${READINGS_NAV[0].checkoutHref!.replaceAll("&", "&amp;")}"`);
+  expect(html).toContain(`href="${READINGS_NAV[1].checkoutHref!.replaceAll("&", "&amp;")}"`);
   expect(html).toContain(READING_FOLLOW_UP);
   expect(html).toContain(`mailto:${READING_SUPPORT_EMAIL}`);
-  expect(html).not.toMatch(/Timing Map|Family Snapshot|\$49|\$59|availability/);
+  expect(html).not.toMatch(/\$49|\$59|availability/);
 });

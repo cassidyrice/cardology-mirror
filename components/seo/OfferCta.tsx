@@ -6,7 +6,7 @@ export function OfferCta({ className = "" }: { className?: string }) {
     <h2>Bring your cards into the conversation.</h2>
     <p>The Chemistry Check reads your card beside one other person’s: shared strengths, recurring friction, and questions to make it your own. Prepared by Cass.</p>
     <div className="flex flex-wrap items-center gap-5">
-      <Link href="/#readings" className="ink-button large-button">The Chemistry Check · $39</Link>
+      <Link href="/#readings" className="ink-button large-button">The Chemistry Check · $52</Link>
       <Link href="/birth-card-calculator" className="editorial-link text-sm">Find your card free</Link>
     </div>
   </aside>;

@@ -759,7 +759,7 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
         For a closer look at one relationship, Cass prepares the Chemistry Check from both people’s cards.{" "}
         <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
-          The Chemistry Check, $39 →
+          The Chemistry Check, $52 →
         </Link>
       </p>
     </section>

@@ -12,6 +12,7 @@ export function ManualReadingOffers() {
       <ul className="reading-offer-grid">
         {READINGS_NAV.map((reading) => (
           <li id={reading.id} key={reading.id} className="reading-offer">
+            {reading.image ? <img src={reading.image} alt={`${reading.title} preview`} width={1600} height={1000} loading="lazy" className="mb-5 aspect-[16/10] w-full object-cover" /> : null}
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand-bronze">{reading.who}</p>
             <h3 className="mt-3 font-serif text-3xl leading-tight text-brand-ink">{reading.title}</h3>
             <p className="mt-4 font-serif text-4xl text-brand-ink">{reading.price}</p>

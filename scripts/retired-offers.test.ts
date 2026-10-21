@@ -12,7 +12,7 @@ const PUBLIC_FILES = [
   "public/llms.txt", "public/llms-full.txt", "public/.well-known/agent-card.json",
 ];
 const RETIRED = [
-  /\$13\b/, /one-question-reading/, /Timing Map/, /Family Snapshot/, /#timing-map|#family-snapshot/,
+  /\$13\b/, /one-question-reading/,
   /\/products\/(year-ahead|blueprint-report|card-blueprint-app)/, /free-course/,
   /NewsletterSignupForm|FreeCourseCta|ElroyLauncher|buttondown\.com\/api/,
 ];
@@ -26,9 +26,9 @@ test("retired offers and email capture stay off public pages", () => {
   expect(hits).toEqual([]);
 });
 
-test("the only offer is the Chemistry Check", async () => {
+test("the offers are the Timing Map, Chemistry Check and Family Snapshot", async () => {
   const { READINGS_NAV } = await import("../lib/readings-nav");
-  expect(READINGS_NAV.map((r) => r.id)).toEqual(["chemistry-check"]);
+  expect(READINGS_NAV.map((r) => r.id)).toEqual(["timing-map", "chemistry-check", "family-snapshot"]);
   const { CARD_APP_ON_SALE } = await import("../lib/products");
   const { YEAR_AHEAD_ON_SALE } = await import("../lib/year-ahead");
   expect([CARD_APP_ON_SALE, YEAR_AHEAD_ON_SALE]).toEqual([false, false]);

@@ -12,7 +12,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Find your birth card free, then see how it meets someone else’s with the Chemistry Check ($39), prepared by Cass.";
+  "Find your birth card free, then see how it meets someone else’s with the Chemistry Check ($52), prepared by Cass.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },

@@ -83,7 +83,7 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          I prepare one reading, the Chemistry Check ($39), about two people. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to.
+          I prepare three readings: the 12-Month Timing Map ($39) for one person, the Chemistry Check ($52) for two, and the Family Snapshot ($65) for three. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
