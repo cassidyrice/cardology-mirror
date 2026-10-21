@@ -1,10 +1,10 @@
-// Renders a Chemistry Check, Timing Map, or Family Snapshot as one standalone HTML document.
+// Renders a Chemistry Check, Timing Map, Family Snapshot, or Birth Card Blueprint as one standalone HTML document.
 // Every card, date, and card meaning comes from the engine data; the copy here only frames it.
 import {cardFace} from './card-faces.mjs';
 const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const red=code=>/[♥♦]/.test(code||'');
 const card=code=>code?`<span class="card-code">${escape(code.slice(0,-1))}<span class="${red(code)?'suit-red':'suit-ink'}">${escape(code.slice(-1))}</span></span>`:'<span class="card-code">None</span>';
-const faceClass=code=>`f-${code.slice(0,-1)}${'shdc'['♠♥♦♣'.indexOf(code.slice(-1))]}`;
+const faceClass=code=>code==='Joker'?'f-joker':`f-${code.slice(0,-1)}${'shdc'['♠♥♦♣'.indexOf(code.slice(-1))]}`;
 let usedFaces=new Set();
 const tile=(code,size='')=>{
   if(!code)return card(code);
@@ -61,17 +61,21 @@ const COPY={
   'individual-timing':{hook:'Your core cards, yearly themes, and dated seasons across the next twelve months.',parts:[
     {glyph:'♠',line:'Start with your core cards, then follow the themes and dated seasons of the year ahead.',asks:['What patterns do you return to?','Which themes frame your birthday year?','When does each season begin and end?']},
     {glyph:'♣',line:'Reflect on the season you are in, then choose what you want to carry into the year ahead.',asks:['What deserves your attention now?','Which habits help you use this season well?','What will you revisit as the year unfolds?']}]},
+  'birth-card-blueprint':{hook:'Your birth card, your ruling card, and how the two work together.',parts:[
+    {glyph:'♠',line:'One card for the day you were born. Here is what it means, what it gives you, and where it trips you up.',asks:['What does your birth card mean?','What are you built to do well?','Where does it work against you?']},
+    {glyph:'♥',line:'The same card in love, at work, and in the colours of your ruling card.',asks:['How does it show up in love?','How does it show up at work?','How does your ruling card colour it?']}]},
   family:{hook:'Same house. Different cards. Here is how everyone is built.',parts:[
     {glyph:'♣',line:'Every family runs on a system. Nobody wrote it down. Until now.',asks:['How is each person built?','Where does the family move as one?','Where does it crack?']},
     {glyph:'♦',line:'Where everyone is this year, and where they land in yours.',asks:['What is each person going through right now?','Who shows up in your year, and as what?','Which pattern is ready to stop with you?']}]}
 };
 
 export function renderOfferReport(draft,engine,offer,variant='default'){
-  const individual=variant==='individual-timing';
-  if(variant!=='default'&&!individual)throw Error('Unsupported report presentation.');
+  const individual=variant==='individual-timing',blueprint=variant==='birth-card-blueprint';
+  if(variant!=='default'&&!individual&&!blueprint)throw Error('Unsupported report presentation.');
+  if(blueprint&&(draft.offer!=='birth-card-blueprint'||draft.version!==3||draft.people.length!==1||engine.offer!=='birth-card-blueprint'))throw Error('Birth Card Blueprint requires a version 3 draft and exactly one person.');
   if(individual&&(draft.offer!=='timing-map'||draft.version!==3||draft.people.length!==1||engine.offer!=='timing-map'||engine.people.length!==1))throw Error('Individual Timing requires a version 3 draft and exactly one person.');
   usedFaces=new Set();
-  const pages=[],toc=[],people=engine.people,buyer=people[0],copy=COPY[individual?'individual-timing':draft.offer];
+  const pages=[],toc=[],people=blueprint?[]:engine.people,buyer=blueprint?{name:draft.people[0].name.trim()}:people[0],copy=COPY[individual?'individual-timing':draft.offer];
   const person=id=>people.find(p=>p.id===id);
   const firsts=people.map(p=>p.name.split(/\s+/)[0]);
   const nameOf=p=>{const i=people.indexOf(p);return firsts.filter(n=>n===firsts[i]).length>1?p.name:firsts[i];};
@@ -83,6 +87,7 @@ export function renderOfferReport(draft,engine,offer,variant='default'){
   const cap=text=>text.charAt(0).toUpperCase()+text.slice(1);
   const meaning=(code,key='sweet_spot')=>escape(engine.meanings[code]?.[key]||'No sourced meaning is available for this card.');
   const ask=text=>`<div class="reflection"><b>YOURS</b> · ${escape(text)}<div class="writing-line"></div></div>`;
+  const tocList=()=>`<ol class="toc">${toc.map(item=>`<li class="${/^Part/.test(item.label)?'part':''}"><span>${escape(item.label)}</span><i></i><b>${String(item.number).padStart(2,'0')}</b></li>`).join('')}</ol>`;
   const page=(title,body,extra='')=>{pages.push({title,body,extra});return pages.length;};
   const mark=(label,number=pages.length+1)=>toc.push({label,number});
   const writing=(title,text,glyph='✦')=>{
@@ -172,11 +177,62 @@ export function renderOfferReport(draft,engine,offer,variant='default'){
     for(const [i,group] of groups.entries())page(i?'The pattern, and the way out / continued':'The pattern, and the way out',`${kicker(index)}<p class="lead">Every card has a shadow it falls back on and a direction it is learning toward. Line them up and the family script shows.</p><div class="rows tight">${group.map(p=>{const d=p.identity[0].description||{};return `<div class="row">${tile(p.identity[0].card,'sm')}<div><h3>${who(p)} <small>· ${escape(d.title||p.identity[0].card)}</small></h3><p><b>The pattern.</b> ${escape(d.shadow||'No sourced shadow available.')}</p><p><b>The way out.</b> ${escape(d.life_direction||'No sourced direction available.')}</p></div></div>`;}).join('')}</div>${i===groups.length-1?ask('Which of these patterns did you inherit, and which one is ready to stop with you?'):''}`);
   };
 
+  // Birth Card Blueprint chapters. No timing: every card line is a sourced field of the engine record.
+  const bp=engine,bc=bp.birthCard;
+  const RULING_LINE='Your birth card is your core, set by your birthday. Your planetary ruling card is a second card, tied to your astrological sign, that colours how the birth card expresses itself. Birth card is the engine; ruling card is the paint job everyone meets first.';
+  const rulers=blueprint?bp.rulingCards:[],ownRulers=rulers.filter(r=>!r.sameAsBirthCard);
+  const rulerLabel=r=>rulers.length>1?`Ruling card ${rulers.indexOf(r)+1}`:'Ruling card';
+  const list=items=>`<ul class="gifts">${items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`;
+  const blueprintCover=()=>{
+    const cards=[{code:bc.code,name:bc.name,label:'Birth card'},...ownRulers.map(r=>({code:r.code,name:r.name,label:rulerLabel(r)}))];
+    return `${BRAND}<h2>Your private reading</h2><p class="eyebrow">Private · Prepared for</p><p class="prepared">${escape(buyer.name)}</p><h1>${escape(offer.name)}</h1><p class="subtitle">${escape(copy.hook)}</p><dl class="facts"><dt>Reading date</dt><dd>${escape(draft.readingDate)}</dd><dt>Birthday</dt><dd>${escape(bp.birthday.label)}</dd><dt>Birth card</dt><dd>${escape(bc.name)}</dd><dt>Ruling card${rulers.length>1?'s':''}</dt><dd>${bp.joker?'None separate from the Joker':rulers.map(r=>escape(r.name)).join(' / ')}</dd></dl><div class="anchors cover-people" style="--people:${cards.length}">${cards.map(c=>`<div>${tile(c.code,'lg')}<h3>${escape(c.name)}</h3><p>${escape(c.label)}</p></div>`).join('')}</div><h3>How to read this document</h3><p><b>FIXED</b> is the reproducible calculation: every card here comes from your birthday alone. <b>PATTERN</b> is sourced interpretation: a possible tendency, never a verdict. <b>YOURS</b> is a question with space to answer it.</p>`;
+  };
+  const blueprintArea=(title,item,detailLabel,question)=>page(title,`${kicker(2)}<div class="headline">${tile(bc.code,'lg')}<div><p class="eyebrow">${escape(title)} · ${escape(bc.name)}</p><p class="big">${escape(item.text)}</p></div></div>${item.composed?`<p class="meta">${escape(item.note)}</p><p><b>Watch for.</b> ${escape(item.detail)}</p>`:item.detail?`<p class="eyebrow">${escape(detailLabel)}</p><p>${escape(item.detail)}</p>`:''}${ask(question)}`);
+  const blueprintChapters=()=>{
+    opener(0);mark(offer.sections[0]);
+    page('Your birth card',`${kicker(0)}<div class="dossier-head"><div class="tiles"><figure>${tile(bc.code,'lg')}<figcaption>birth card</figcaption></figure>${ownRulers.map(r=>`<figure>${tile(r.code)}<figcaption>${escape(rulerLabel(r).toLowerCase())}</figcaption></figure>`).join('')}</div><div><p class="meta">Born ${escape(bp.birthday.label)} · Solar value ${bp.solarValue} · ${escape(bc.name)}</p><h3 class="archetype">${escape(bc.title||bc.name)}</h3><p>${escape(bc.coreIdentity)}</p></div></div>
+      ${bc.reading?`<p class="eyebrow">The card in one paragraph</p><p class="lead">${escape(bc.reading)}</p>`:''}<div class="two">${bc.lifeDirection?`<div><p class="eyebrow">Life direction</p><p>${escape(bc.lifeDirection)}</p></div>`:''}<div><p class="eyebrow">Keywords</p>${list(bc.keywords)}</div></div>
+      ${ask('Which of these lines would the people closest to you recognise first?')}`);
+    section(0);
+    mark(offer.sections[1]);
+    page('Your strengths',`${kicker(1)}<div class="headline">${tile(bc.code,'lg')}<div><p class="eyebrow">At your best</p><p class="big">${escape(bc.sweetSpot)}</p>${bc.surfaceTruth?`<p class="gloss">In your own words: “${escape(bc.surfaceTruth)}”</p>`:''}</div></div>
+      ${bc.gifts.length||bc.inTheLight?`<div class="two">${bc.gifts.length?`<div><p class="eyebrow">Built-in gifts</p>${list(bc.gifts)}</div>`:''}${bc.inTheLight?`<div><p class="eyebrow">In the light${bc.lightName?` · ${escape(bc.lightName)}`:''}</p><p>${escape(bc.inTheLight)}</p></div>`:''}</div>`:`<p class="meta">The card data lists no separate gifts for ${escape(bc.name)}; the line above is its strength.</p>`}
+      ${ask('Where does this strength get used least in your life right now?')}`);
+    page('Your shadow',`${kicker(1)}${bc.under?`<p class="eyebrow">The dial</p><div class="dial"><div><small>Under stress</small><p>${escape(bc.under)}</p></div><div class="best"><small>At your best</small><p>${escape(bc.sweetSpot)}</p></div><div><small>Pushed too far</small><p>${escape(bc.over)}</p></div></div>`:''}
+      <div class="two"><div><p class="eyebrow">The shadow</p><p>${escape(bc.shadow)}</p></div><div><p class="eyebrow">What it costs</p><p>${escape(bc.cost)}</p></div></div>
+      ${bc.archetype?`<p class="eyebrow">The shadow archetype</p><h3>${escape(bc.archetype)}</h3><p>${escape(bc.coreShadow)}</p>`:''}<div class="verdict"><b>Watch for</b><p>${escape(bc.watchFor)}</p></div>
+      ${ask(bc.prompts[0]||'Which end of this card did the people closest to you get this past month?')}`);
+    section(1);
+    opener(1);mark(offer.sections[2]);
+    blueprintArea('Love',bp.love,'What you need from a partner','Who gets the best version of this card from you, and who gets the shadow?');
+    blueprintArea('Work',bp.work,'Where it fits','Which part of your work uses this card on purpose, and which part fights it?');
+    section(2);
+    mark(offer.sections[3]);
+    const intro=`<p class="lead">${escape(RULING_LINE)}</p>${rulers.length>1?`<p>Your birthday lists ${rulers.length} ruling cards, in table order. Each one adds nuance to how the birth card shows up.</p>`:''}`;
+    rulers.forEach((r,i)=>{
+      const last=i===rulers.length-1,title=rulers.length>1?`Your ruling cards · ${i+1} of ${rulers.length}`:'Your ruling card';
+      if(r.sameAsBirthCard){
+        page(title,`${kicker(3)}${i?'':intro}<div class="headline">${tile(r.code,'lg')}<div><p class="eyebrow">${escape(rulerLabel(r))} · ${escape(r.name)}</p><p class="big">${bp.joker?'The Joker has no separate ruling card.':'Your ruling card is your birth card.'}</p></div></div><div class="verdict"><b>${bp.joker?'Read from the Joker alone':'One card, twice'}</b><p>${bp.joker?'The ruling-card table lists the Joker itself for December 31. The 52-card material is built on solar values 1 through 52 and does not resolve for zero, so no other card colours yours.':`The ruling-card table lists ${escape(r.name)} for your birthday, the same card as your birth card. The way you come across is the way you are built.`}</p></div>${last?ask('Where do you get read correctly on first meeting, and where does that surprise people?'):''}`);
+        return;
+      }
+      page(title,`${kicker(3)}${i?'':intro}<div class="dossier-head"><div class="tiles"><figure>${tile(r.code,'lg')}<figcaption>${escape(rulerLabel(r).toLowerCase())}</figcaption></figure><figure>${tile(bc.code,'sm')}<figcaption>birth card</figcaption></figure></div><div><p class="meta">${escape(r.name)}</p><h3 class="archetype">${escape(r.title||r.name)}</h3><p>${escape(r.coreIdentity)}</p></div></div>
+        <p class="eyebrow">How it colours your birth card</p><div class="rows"><div class="row">${tile(bc.code,'sm')}<div><h3>The engine <small>· birth card, ${escape(bc.name)}</small></h3><p>${escape(bc.sweetSpot)}</p><p><b>Watch for.</b> ${escape(bc.watchFor)}</p></div></div><div class="row">${tile(r.code,'sm')}<div><h3>The paint job <small>· ${escape(rulerLabel(r).toLowerCase())}, ${escape(r.name)}</small></h3><p>${escape(r.sweetSpot)}</p><p><b>Watch for.</b> ${escape(r.watchFor)}</p></div></div></div>
+        ${last?ask('When people first meet you, which of these cards do they see?'):''}`);
+    });
+    section(3);
+    mark('Going further');
+    page('Going further',`<p class="lead">This blueprint shows how you are built. Two readings take it further.</p><div class="verdict"><b>The Timing Map · $39</b><p>Your cards laid across the next twelve months: your yearly themes, dated seasons, and the season you are in now.</p></div><div class="verdict"><b>The Card Blueprint Reading · $299</b><p>The complete reading: this blueprint and your timing, read together and written for you by your reader.</p></div>${ask('Which part of this blueprint do you want to understand next?')}`);
+  };
+  const blueprintFinePrint=()=>`<h3>How the cards were calculated</h3><p>${escape(bp.method.birthCard)}</p><p>${escape(bp.method.rulingCard)}</p><p>${escape(bp.method.year)}</p><p>The complete engine JSON export contains both cards and every sourced line used here.${bp.love.composed||bp.work.composed?' Love and Work use the card’s own core lines because the reading notes have no separate entry for it.':''}</p><h3>Reader review</h3><p>${draft.reviewed?'The reader marked this draft reviewed in the builder.':'This is a preparation draft. Review the sourced language, add the personal reading in the Writing tab, and check both cards against the engine JSON before delivery.'}</p><h3>What this is, and is not</h3><p>Interpretations describe patterns for reflection. They do not predict events or decide what you should do. The questions are there to be argued with.</p><p class="meta">${escape(bp.method.source)}</p>`;
+  const blueprintContents=()=>`<div class="contents"><div><p class="eyebrow">Inside</p>${tocList()}</div><div><p class="eyebrow">The cards, decoded</p><dl class="key"><dt>Birth card <small>The engine</small></dt><dd>Solar value 55 − (2 × month + day) picks one of the 52 cards, or the Joker for December 31.</dd><dt>Ruling card <small>The paint job</small></dt><dd>A second card tied to your astrological sign. It colours how the birth card expresses itself. Some birthdays have two or three.</dd><dt>Birth year <small>Not used</small></dt><dd>Neither card depends on the year you were born.</dd></dl><p class="eyebrow">Your cards</p><p class="small">${escape(bc.name)}${bc.title?` · ${escape(bc.title)}`:''}, solar value ${bp.solarValue}. ${bp.joker?'No separate ruling card.':`Ruling: ${rulers.map(r=>escape(r.name)).join(' / ')}.`}</p></div></div><p class="howto">Read it straight through once. Then go back to the card that surprised you.</p>`;
+
   // Cover and contents. The contents body is filled in once every page number is known.
-  page('Your private reading',`${BRAND}<h2>Your private reading</h2><p class="eyebrow">Private · Prepared for</p><p class="prepared">${escape(buyer.name)}</p><h1>${escape(offer.name)}</h1><p class="subtitle">${escape(copy.hook)}</p><dl class="facts"><dt>Reading date</dt><dd>${escape(engine.readingDate)}</dd><dt>Window</dt><dd>${escape(engine.window.start)} through ${escape(engine.window.end)}</dd><dt>People</dt><dd>${people.length}</dd></dl><div class="anchors cover-people" style="--people:${people.length}">${people.map(p=>`<div>${tile(p.identity[0].card,'lg')}<h3>${escape(p.name)}</h3><p>${escape(p.relation)}<br>${date(p.birthdate)}</p></div>`).join('')}</div><h3>How to read this document</h3><p><b>FIXED</b> is the reproducible calculation: every card and date here comes from the engine. <b>PATTERN</b> is sourced interpretation: a possible tendency, never a verdict. <b>YOURS</b> is a question with space to answer it.</p>`,compactCover?'cover compact':'cover');
+  page('Your private reading',blueprint?blueprintCover():`${BRAND}<h2>Your private reading</h2><p class="eyebrow">Private · Prepared for</p><p class="prepared">${escape(buyer.name)}</p><h1>${escape(offer.name)}</h1><p class="subtitle">${escape(copy.hook)}</p><dl class="facts"><dt>Reading date</dt><dd>${escape(engine.readingDate)}</dd><dt>Window</dt><dd>${escape(engine.window.start)} through ${escape(engine.window.end)}</dd><dt>People</dt><dd>${people.length}</dd></dl><div class="anchors cover-people" style="--people:${people.length}">${people.map(p=>`<div>${tile(p.identity[0].card,'lg')}<h3>${escape(p.name)}</h3><p>${escape(p.relation)}<br>${date(p.birthdate)}</p></div>`).join('')}</div><h3>How to read this document</h3><p><b>FIXED</b> is the reproducible calculation: every card and date here comes from the engine. <b>PATTERN</b> is sourced interpretation: a possible tendency, never a verdict. <b>YOURS</b> is a question with space to answer it.</p>`,compactCover?'cover compact':'cover');
   const contents=page('How to read this','');
 
-  if(draft.offer==='chemistry'){
+  if(blueprint){
+    blueprintChapters();
+  }else if(draft.offer==='chemistry'){
     opener(0);mark(offer.sections[0]);people.forEach(p=>dossier(p,0));section(0);
     sideBySide(1);section(1);
     opener(1);mark(offer.sections[2]);timeline(2);rightNow(2);yearly(2);section(2);
@@ -202,15 +258,15 @@ export function renderOfferReport(draft,engine,offer,variant='default'){
     pattern(3);section(3);
   }
 
-  mark('The full calendar');
+  if(!blueprint)mark('The full calendar');
   for(const p of people){
     page(`The full calendar / ${nameOf(p)}`,`<p class="meta">${range(engine.window)} · each row is clipped to the report window</p><table><thead><tr><th>Dates</th><th>Season</th><th>Birth card</th><th>Ruling card(s)</th></tr></thead><tbody>${p.windows.map(w=>`<tr><td>${range(w)}</td><td><i class="dot" style="background:${PLANET_COLOR[w.planet]}"></i>${escape(w.planet)}<br><small>Age ${w.cycleAge}</small></td><td>${card(w.cards[0].card)}</td><td>${w.cards.slice(1).map(c=>card(c.card)).join(' / ')||'None'}</td></tr>`).join('')}</tbody></table>`);
   }
   if(draft.includeNotes)writing('Reader notes',draft.notes);
   mark('The fine print');
-  page('The fine print',`<h3>How the cards were calculated</h3><p>${escape(engine.method.periods)}</p>${individual?'':`<p>${escape(engine.method.connections)}</p>`}<p>The complete engine JSON export contains ${individual?'your birthday cycles, periods, cards, and sourced card meanings':'every person, birthday cycle, period, card, connection, and sourced card meaning'} used here. Tables and section facts are generated from that same data.</p><h3>Reader review</h3><p>${draft.reviewed?'The reader marked this draft reviewed in the builder.':'This is a preparation draft. Review the sourced language, add the personal reading in the Writing tab, and check every date and card against the engine JSON before delivery.'}</p><h3>What this is, and is not</h3><p>Interpretations describe patterns for reflection. ${individual?'They do not predict events or decide what you should do.':'The card matches do not establish relationship outcomes.'} The questions are there to be argued with.</p><p class="meta">${escape(engine.method.source)}</p>`);
+  page('The fine print',blueprint?blueprintFinePrint():`<h3>How the cards were calculated</h3><p>${escape(engine.method.periods)}</p>${individual?'':`<p>${escape(engine.method.connections)}</p>`}<p>The complete engine JSON export contains ${individual?'your birthday cycles, periods, cards, and sourced card meanings':'every person, birthday cycle, period, card, connection, and sourced card meaning'} used here. Tables and section facts are generated from that same data.</p><h3>Reader review</h3><p>${draft.reviewed?'The reader marked this draft reviewed in the builder.':'This is a preparation draft. Review the sourced language, add the personal reading in the Writing tab, and check every date and card against the engine JSON before delivery.'}</p><h3>What this is, and is not</h3><p>Interpretations describe patterns for reflection. ${individual?'They do not predict events or decide what you should do.':'The card matches do not establish relationship outcomes.'} The questions are there to be argued with.</p><p class="meta">${escape(engine.method.source)}</p>`);
 
-  pages[contents-1].body=`<div class="contents"><div><p class="eyebrow">Inside</p><ol class="toc">${toc.map(item=>`<li class="${/^Part/.test(item.label)?'part':''}"><span>${escape(item.label)}</span><i></i><b>${String(item.number).padStart(2,'0')}</b></li>`).join('')}</ol></div><div><p class="eyebrow">The positions, decoded</p><dl class="key">${['Long Range','Pluto','Result','Environment','Displacement'].map(k=>`<dt>${escape(k)} <small>${escape(POSITION[k][0])}</small></dt><dd>${escape(POSITION[k][1])}</dd>`).join('')}</dl><p class="eyebrow">${individual?'Birthday seasons':'The seven seasons'}</p><p class="small">Every birthday starts six 52-day seasons, then Neptune continues through the eve of the next birthday. ${individual?'The rolling report window can cross a birthday, so a season may appear twice. ':''}Each season is run by a planet: ${Object.keys(PLANET_COLOR).map(planet=>`<span class="nowrap"><i class="dot" style="background:${PLANET_COLOR[planet]}"></i>${planet} (${POSITION[planet][0].toLowerCase()})</span>`).join(', ')}.</p></div></div><p class="howto">Read it straight through once. Then go back to the dates.</p>`;
+  pages[contents-1].body=blueprint?blueprintContents():`<div class="contents"><div><p class="eyebrow">Inside</p>${tocList()}</div><div><p class="eyebrow">The positions, decoded</p><dl class="key">${['Long Range','Pluto','Result','Environment','Displacement'].map(k=>`<dt>${escape(k)} <small>${escape(POSITION[k][0])}</small></dt><dd>${escape(POSITION[k][1])}</dd>`).join('')}</dl><p class="eyebrow">${individual?'Birthday seasons':'The seven seasons'}</p><p class="small">Every birthday starts six 52-day seasons, then Neptune continues through the eve of the next birthday. ${individual?'The rolling report window can cross a birthday, so a season may appear twice. ':''}Each season is run by a planet: ${Object.keys(PLANET_COLOR).map(planet=>`<span class="nowrap"><i class="dot" style="background:${PLANET_COLOR[planet]}"></i>${planet} (${POSITION[planet][0].toLowerCase()})</span>`).join(', ')}.</p></div></div><p class="howto">Read it straight through once. Then go back to the dates.</p>`;
 
   const html=pages.map((item,index)=>`<section class="page ${item.extra}" id="page-${index+1}"><header><span>CARD BLUEPRINTS / ${escape(offer.name.toUpperCase())}</span><span>+ ${String(index+1).padStart(2,'0')} +</span></header><h2>${escape(item.title)}</h2>${item.body}<footer><span>${FOOTER}</span><span>${escape(draft.reviewed?'Reader reviewed':'Reader review draft')} · ${escape(draft.readingDate)}</span></footer></section>`);
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; font-src data:; img-src data:; base-uri 'none'; form-action 'none'"><title>${escape(buyer.name)} · ${escape(offer.name)}</title><style>
