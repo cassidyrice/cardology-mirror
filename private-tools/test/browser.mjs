@@ -175,6 +175,23 @@ try {
   await page.waitForFunction(() => !document.getElementById('export-html').disabled);
   checks.push('Family→Timing excludes cached extra people from requests/drafts/exports; switching back preserves them; rejected legacy Timing import preserves current inputs and generated HTML');
 
+  await page.locator('#offer').selectOption('birth-card-blueprint');
+  assert.equal(await page.locator('#additional-people input').count(), 0);
+  assert.equal(await page.locator('#family-size-field').isVisible(), false);
+  for (const [label, birthdate, name] of [['march-14', '1990-03-14', 'Sample Reader'], ['joker', '1988-12-31', 'Sample Joker Reader'], ['three-rulers-long-name', '1990-10-23', 'W'.repeat(60)]]) {
+    await page.locator('#client-name').fill(name); await page.locator('#report-birthdate').fill(birthdate);
+    const request = page.waitForRequest(r => new URL(r.url()).pathname === '/api/report');
+    await page.locator('#update-preview').click();
+    const sent = (await request).postDataJSON(); assert.equal(sent.offer, 'birth-card-blueprint'); assert.equal(sent.people.length, 1);
+    await page.waitForFunction(() => !document.getElementById('export-html').disabled);
+    const bpEngine = JSON.parse(await downloaded('#export-engine')); assert.equal(bpEngine.offer, 'birth-card-blueprint');
+    const bpDraft = JSON.parse(await downloaded('#save-draft')); assert.equal(bpDraft.version, 3); assert.equal(bpDraft.people.length, 1);
+    const bpHtml = await downloaded('#export-html');
+    await openFixture(bpDraft); assert.equal(await downloaded('#export-html'), bpHtml);
+    await printReport(bpHtml, `blueprint-${label}`, label === 'march-14' ? [['cover', null], ['ruling', 'Your ruling card']] : []);
+  }
+  checks.push('Birth Card Blueprint: offer picker, one-person request, v3 draft round-trip, HTML/JSON downloads, Joker and three-ruler cases, long name, A4 page parity');
+
   await page.setViewportSize({width: 390, height: 844});
   await page.screenshot({path: `${evidence}/report-mobile.png`, fullPage: true});
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));

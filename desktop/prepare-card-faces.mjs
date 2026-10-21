@@ -7,7 +7,7 @@ import {join} from 'node:path';
 const source='../public/share-cards/faces',target='ui/cards';
 await mkdir(target,{recursive:true});
 for(const file of await readdir(source)){
-  if(!file.endsWith('.png')||file==='joker.png')continue;
+  if(!file.endsWith('.png'))continue;
   const result=spawnSync('sips',['-Z','360','-s','format','png',join(source,file),'--out',join(target,file)],{stdio:'pipe'});
   if(result.status!==0)throw Error(`sips failed for ${file}: ${result.stderr}`);
 }

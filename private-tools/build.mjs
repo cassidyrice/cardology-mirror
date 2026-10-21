@@ -21,6 +21,7 @@ export async function buildApp() {
     html = html.replace('</head>', '<link rel="stylesheet" href="private.css"></head>');
     html = html.replace('● Engine ready · offline', 'Private workspace · Cass only');
     html = html.replace('Drafts stay on this Mac. No autosave.', 'Drafts stay in this tab until you download them. No autosave.');
+    if (file === 'report.html') html = html.replace('<option value="professional">', '<option value="birth-card-blueprint">Birth Card Blueprint</option><option value="professional">');
     if (file === 'report.html') html = html.replace('<label for="report-date">', '<div id="family-size-field" hidden><label for="family-size">People, including the buyer</label><select id="family-size"><option value="2">2 people</option><option value="3" selected>3 people</option></select></div><label for="report-date">');
     html = html.replace('<main>', '<main><div class="session-bar"><p id="session-status" role="status" aria-live="polite">Checking private session…</p><a id="reauth" href="' + file + '" target="_blank" rel="noopener noreferrer" hidden>Sign in again in a new tab</a><button id="logout" type="button">Sign out</button></div>');
     await writeFile(join(output, 'assets', file), html);

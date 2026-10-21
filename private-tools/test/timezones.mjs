@@ -15,11 +15,12 @@ for(const birthday of birthdays)for(const readingDate of dates){
  values.push(buildHostedDocument({offer:'professional',readingDate,people:[{name:'Sample',birthdate:birthday,relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false}));
  values.push(buildHostedDocument({offer:'timing-map',readingDate,people:[{name:'Sample',birthdate:birthday,relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false}));
 }
+for(const birthdate of ['1990-03-14','2000-02-29','1988-12-31','1990-10-23'])values.push(buildHostedDocument({offer:'birth-card-blueprint',readingDate:'2026-10-21',people:[{name:'Sample',birthdate,relation:'Buyer'}],sections:['','','',''],notes:'',includeNotes:true,reviewed:false}));
 console.log(createHash('sha256').update(JSON.stringify(values)).digest('hex'));`;
 let expected;
 for (const timezone of ['UTC', 'America/Los_Angeles', 'Europe/London', 'Pacific/Auckland']) {
   const result = spawnSync(process.execPath, ['--input-type=module', '-e', source], {cwd: root, encoding: 'utf8', env: {...process.env, TZ: timezone}});
   assert.equal(result.status, 0, result.stderr);
   const digest = result.stdout.trim(); expected ??= digest; assert.equal(digest, expected, timezone);
-  console.log(`${timezone}: identical 12 spread, 12 Professional and 12 individual Timing cases (${digest.slice(0, 12)})`);
+  console.log(`${timezone}: identical 12 spread, 12 Professional and 12 individual Timing and 4 Birth Card Blueprint cases (${digest.slice(0, 12)})`);
 }
