@@ -40,6 +40,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
     who: "Just you",
     description: "Your card’s next twelve months: the seasons ahead, when to push and when to wait, and the dates worth circling.",
     includes: ["Your core cards", "Your seasons across the next 12 months", "Key dates and a question for each season"],
+    image: "/brand/mockups/timing-map-wide.webp",
   },
   {
     id: "chemistry-check",
@@ -50,6 +51,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
     who: "You plus one person",
     description: "Explore both people’s cards: shared strengths, recurring friction, and a question worth bringing into your next conversation.",
     includes: ["Both people’s core cards", "Shared strengths and recurring friction", "Your current seasons and where your years cross"],
+    image: "/brand/mockups/chemistry-check-wide.webp",
   },
   {
     id: "family-snapshot",
@@ -60,5 +62,6 @@ export const READINGS_NAV: readonly ManualReading[] = [
     who: "You plus two people",
     description: "Three people’s cards side by side: who steadies whom, where friction repeats, and how your years line up together.",
     includes: ["All three people’s core cards", "Pairwise strengths and friction", "Where the three of your years cross"],
+    image: "/brand/mockups/family-snapshot-wide.webp",
   },
 ];

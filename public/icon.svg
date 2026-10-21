@@ -1,14 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="3" fill="#eef3f8"/>
-  <g fill="none" stroke-width="1.1">
-    <rect x="3.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="12.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="21.5" y="2" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="3.5" y="12" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="12.5" y="12" width="7" height="8" rx="1" stroke="#b8893d"/>
-    <rect x="21.5" y="12" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="3.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="12.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-    <rect x="21.5" y="22" width="7" height="8" rx="1" stroke="#123a63" stroke-opacity="0.45"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"><rect width="32" height="32" rx="3" fill="#eef3f8"/><rect x="2.73" y="1.55" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="12.28" y="1.55" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="21.84" y="1.55" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="2.73" y="11.74" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="12.28" y="11.74" width="7.43" height="8.49" rx="1.17" fill="#b8893d" stroke="#b8893d" stroke-width="1.70"/>
+<rect x="21.84" y="11.74" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="2.73" y="21.93" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="12.28" y="21.93" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/>
+<rect x="21.84" y="21.93" width="7.43" height="8.49" rx="1.17" fill="none" stroke="#123a63" stroke-opacity="0.62" stroke-width="1.70"/></svg>

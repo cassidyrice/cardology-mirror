@@ -4,8 +4,6 @@ html { scroll-padding-top: 2rem; }
 .blueprint-header { position:relative; z-index:40; border-top:5px solid var(--ink); border-bottom:1px solid var(--line-strong); background:var(--paper); color:var(--ink); }
 .blueprint-header-inner { display:flex; align-items:center; justify-content:space-between; gap:2rem; max-width:80rem; min-height:88px; padding:1rem 3rem; margin:auto; }
 .blueprint-brand { flex:none; }
-.brand-logo-mark { width:1.8rem; height:1.8rem; }
-.brand-logo-wordmark { font-size:1.2rem; }
 .blueprint-desktop-nav { display:flex; align-items:center; gap:2rem; font-size:.875rem; }
 .blueprint-desktop-nav>a { min-height:44px; display:flex; align-items:center; text-decoration-thickness:1px; text-underline-offset:6px; }
 .blueprint-desktop-nav>a:hover { text-decoration:underline; }
@@ -82,5 +80,5 @@ html { scroll-padding-top: 2rem; }
  .reading-sample-identity { gap:1rem; }
  .reading-sample h3 { font-size:1.5rem; }
 }
-@media(max-width:359px) { .blueprint-header-inner { padding:.8rem 1rem; gap:.75rem; }.brand-logo-wordmark {font-size:1rem;}.brand-logo-mark{width:1.3rem;height:1.3rem;} .blueprint-mobile-menu summary{gap:.5rem;} }
+@media(max-width:359px) { .blueprint-header-inner { padding:.8rem 1rem; gap:.75rem; }.blueprint-mobile-menu summary{gap:.5rem;} }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; } }

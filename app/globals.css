@@ -247,43 +247,35 @@ body {
   white-space: nowrap;
 }
 
-/* Brand lockup — plexus mark (oxblood) + lowercase geometric wordmark (ink).
-   Adapts the approved dark logo concept to the warm-paper palette. */
+/* Brand lockup C — Life Spread grid + serif "Card Blueprint" + tagline.
+   Header: horizontal arrangement; footer (compact): stacked lockup. */
 .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  line-height: 1;
-  white-space: nowrap;
-  color: var(--oxblood); /* the SVG mark inherits this via currentColor */
+  line-height: 0;
 }
 
-.brand-logo-mark {
-  width: 1.5rem;
-  height: 1.5rem;
-  flex: none;
+.brand-logo img {
+  display: block;
+  max-width: none;
 }
 
-.brand-logo-wordmark {
-  font-family: var(--font-logo, "Avenir Next", Futura, "Century Gothic", Montserrat, "Segoe UI", system-ui, sans-serif);
-  font-weight: 500;
-  font-size: 1.2rem;
-  letter-spacing: 0.005em;
-  text-transform: lowercase;
-  color: var(--ink);
+.brand-logo-horizontal {
+  height: 3.5rem;
+  width: auto;
 }
 
-.brand-logo-compact {
-  gap: 0.45rem;
+.brand-logo-stacked {
+  height: auto;
+  width: 15rem;
 }
 
-.brand-logo-compact .brand-logo-mark {
-  width: 1.15rem;
-  height: 1.15rem;
+@media (max-width: 639px) {
+  .brand-logo-horizontal { height: 2.75rem; }
 }
 
-.brand-logo-compact .brand-logo-wordmark {
-  font-size: 0.95rem;
+@media (max-width: 359px) {
+  .brand-logo-horizontal { height: 2.4rem; }
 }
 
 .oracle-eyebrow {
