@@ -83,7 +83,7 @@ test("skill takes a DOB and deep-links the free calculator, then the Chemistry C
 test("agent card and llms.txt sell the $52 Chemistry Check", () => {
   for (const text of [cardText, llms]) {
     expect(text).toContain("$52 Chemistry Check");
-    expect(text).not.toMatch(/\$(9|13|19|47|129|297)\b/);
+    expect(text).not.toMatch(/\$(9|19|47|129|297)\b/);
     expect(text).not.toMatch(/One Question Reading|one-question-reading|blueprint-report|52xSeven Blueprint|Personal Card Blueprint/);
   }
   expect(llms).toContain("https://cardblueprints.com/.well-known/agent-card.json");

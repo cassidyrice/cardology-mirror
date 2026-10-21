@@ -1,5 +1,7 @@
 // Manual reading prices and scope approved by Cass on 2026-10-18.
 // 2026-10-20: three offers — Timing Map $39, Chemistry Check $52, Family Snapshot $65.
+// 2026-10-21: Cass added the $13 Birth Card Blueprint as the entry-level offer (a generated 7-page PDF).
+export const BIRTH_CARD_BLUEPRINT_URL = "https://stan.store/mycardblueprint/p/birth-card-blueprint";
 export const CHEMISTRY_CHECK_URL = "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u";
 export const TIMING_MAP_URL = "https://stan.store/mycardblueprint/p/your-12month-timing-map";
 export const FAMILY_SNAPSHOT_URL = "https://stan.store/mycardblueprint/p/the-family-snapshot";
@@ -28,9 +30,26 @@ type ManualReading = {
   includes: readonly string[];
   /** Optional wide product mockup (1600x1000), shown above the card text when set. */
   image?: string;
+  /** Delivery line under the includes list. Defaults to the personally prepared reading line. */
+  delivery?: string;
+  /** Optional sample PDF linked from the offer card. */
+  sampleHref?: string;
 };
 
 export const READINGS_NAV: readonly ManualReading[] = [
+  {
+    id: "birth-card-blueprint",
+    title: "Birth Card Blueprint",
+    price: "$13",
+    href: "/#birth-card-blueprint",
+    checkoutHref: stanUrl(BIRTH_CARD_BLUEPRINT_URL, "homepage", "offer_card"),
+    who: "Just you · Start here",
+    description: "Your birth card and your ruling card, in plain words: what you run on, where it slips, and one thing to do about it this week.",
+    includes: ["Your birth card and your planetary ruling card", "Your strengths, your shadow, and notes on love and work", "A seven-day practice and three questions to sit with"],
+    image: "/brand/mockups/birth-card-blueprint-wide.webp",
+    delivery: "A 7-page PDF made from your birth date and emailed to you.",
+    sampleHref: "/samples/birth-card-blueprint-sample.pdf",
+  },
   {
     id: "timing-map",
     title: "The 12-Month Timing Map",

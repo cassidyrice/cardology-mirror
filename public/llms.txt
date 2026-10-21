@@ -1,15 +1,16 @@
 # Card Blueprints
 
-> Card Blueprints (cardblueprints.com) turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card deterministic pattern language. This is not fortune-telling, not tarot, and not shuffled cartomancy. Free calculator first. Paid readings: the $39 12-Month Timing Map (just you), the $65 Family Snapshot (three people), and the $52 Chemistry Check (two people's cards read together by Cass, sold on Stan Store: https://cardblueprints.com/#chemistry-check).
+> Card Blueprints (cardblueprints.com) turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card deterministic pattern language. This is not fortune-telling, not tarot, and not shuffled cartomancy. Free calculator first. Paid readings: the $13 Birth Card Blueprint (a 7-page PDF of your birth card and ruling card: https://cardblueprints.com/#birth-card-blueprint), the $39 12-Month Timing Map (just you), the $65 Family Snapshot (three people), and the $52 Chemistry Check (two people's cards read together by Cass, sold on Stan Store: https://cardblueprints.com/#chemistry-check).
 
 ## Key Facts
 - Cardology is playing-card coordinates: the birth card is fixed by month and day — deterministic calculation, no shuffle, quiz, or random draw. Not fortune-telling, not tarot, not shuffled cartomancy.
 - Every card meaning is written in three ranges: balanced, under-expressed, and over-expressed, plus shadow and karma context.
-- Paid readings are one-time purchases, no subscription: $39 Timing Map, $65 Family Snapshot, and the $52 Chemistry Check (two people's cards read together by Cass, sold on Stan Store: https://cardblueprints.com/#chemistry-check).
+- Paid readings are one-time purchases, no subscription: $13 Birth Card Blueprint (7-page PDF), $39 Timing Map, $65 Family Snapshot, and the $52 Chemistry Check (two people's cards read together by Cass, sold on Stan Store: https://cardblueprints.com/#chemistry-check).
 
 - The site frames Cardology as a pattern language for people, relationships, and timing — not prediction, fate, fortune-telling, or medical/legal/financial advice.
 
 ## Paid Products
+- [Birth Card Blueprint](https://cardblueprints.com/#birth-card-blueprint): $13 one-time, sold on Stan Store. A 7-page PDF of your birth card and planetary ruling card, made from your birth date and emailed to you.
 - [The Chemistry Check](https://cardblueprints.com/#chemistry-check): $52 one-time, sold on Stan Store. A personal reading of two people's cards: shared strengths, recurring friction, and where their years cross. Prepared by Cass and delivered by email.
 
 - [Refund Policy](https://cardblueprints.com/refund-policy): Refund terms by product and delivery state.

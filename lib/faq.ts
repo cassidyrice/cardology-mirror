@@ -147,7 +147,7 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       {
         id: "personal-readings",
         question: "What personal readings do you offer?",
-        answer: "There are three: the 12-Month Timing Map ($39) for just you, the Chemistry Check ($52) for you plus one person, and the Family Snapshot ($65) for you plus two people. Cass prepares it personally and delivers it by email.",
+        answer: "There are four. The Birth Card Blueprint ($13) is a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you. Cass personally prepares the other three: the 12-Month Timing Map ($39) for just you, the Chemistry Check ($52) for you plus one person, and the Family Snapshot ($65) for you plus two people, all delivered by email.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {

@@ -110,7 +110,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                 ) : null}
                 {item.id === "reading" ? (
                   <span className="text-xs text-brand-ink-soft">
-                    From $39 · prepared by Cass
+                    From $13 · delivered by email
                   </span>
                 ) : null}
               </li>

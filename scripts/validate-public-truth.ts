@@ -242,7 +242,11 @@ assert.doesNotMatch(
   productSurfaceText,
   /birth dates and the actual question/i,
 );
-assert.doesNotMatch(productSurfaceText, /\$13\b|one-question-reading/, "the $13 reading is retired");
+assert.doesNotMatch(productSurfaceText, /one-question-reading|One Question Reading/, "the One Question Reading is retired");
+// 2026-10-21: $13 is the Birth Card Blueprint (Cass approved). Any other $13 on a product surface is a stale offer.
+for (const line of productSurfaceText.split("\n")) {
+  if (/\$13\b/.test(line)) assert.match(line, /Birth Card Blueprint|[Ff]rom \$13|start at \$13/, `stray $13 outside the Birth Card Blueprint: ${line.trim().slice(0, 120)}`);
+}
 assert.match(productSurfaceText, /Chemistry Check/);
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
 // live $13 One Question Reading; they must not resurrect the retired report

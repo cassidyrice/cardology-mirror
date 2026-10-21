@@ -12,7 +12,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
 const HOME_DESCRIPTION =
-  "Find your birth card free, then read your year, a pair, or your whole family in a personal reading from $39, prepared by Cass.";
+  "Find your birth card free, then get your $13 Birth Card Blueprint, or read your year, a pair, or your whole family with Cass.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -68,15 +68,15 @@ export default function Home() {
           </video>
         </section>
         <section className="home-reading-desk" aria-labelledby="home-sample-title">
-          <div><p className="home-kicker">From the reading desk</p><h2 id="home-sample-title">Something to recognize.<br />Something to question.</h2><p>A reading gives you a place to begin: strengths you rely on, habits that cause friction, and questions you can take into your own life.</p><p>The cards and dates are calculated. Their meanings come from the Cardology tradition. You decide what fits your experience.</p><a className="editorial-link" href="/samples/chemistry-check-fictional-sample.pdf">Open a fictional Chemistry Check sample (PDF)</a><p className="home-sample-note">Sample people and dates. Shows the calculated report pages; your personal reading also includes Cass’s written interpretation.</p></div>
+          <div><p className="home-kicker">From the reading desk</p><h2 id="home-sample-title">Something to recognize.<br />Something to question.</h2><p>A reading gives you a place to begin: strengths you rely on, habits that cause friction, and questions you can take into your own life.</p><p>The cards and dates are calculated. Their meanings come from the Cardology tradition. You decide what fits your experience.</p><a className="editorial-link" href="/samples/chemistry-check-fictional-sample.pdf">Open a fictional Chemistry Check sample (PDF)</a><br /><a className="editorial-link" href="/samples/birth-card-blueprint-sample.pdf">Open a sample Birth Card Blueprint (PDF)</a><p className="home-sample-note">Sample people and dates. Shows the calculated report pages; your personal reading also includes Cass’s written interpretation.</p></div>
           <ReadingSample />
         </section>
 
         <section id="readings" aria-labelledby="home-reading-title" className="mx-auto w-full max-w-6xl scroll-mt-8 border-t border-brand-line px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
           <div className="home-offers-heading">
-            <p className="home-kicker">Personal reading · prepared by Cass</p>
+            <p className="home-kicker">Personal readings · from $13</p>
             <h2 id="home-reading-title" className="mt-3 font-serif text-4xl leading-tight tracking-tight sm:text-5xl">Where would you like to begin?</h2>
-            <p className="mt-4 leading-relaxed text-brand-ink-soft">Read your year, a pair, or your whole family. Your reading is prepared privately and delivered by email.</p>
+            <p className="mt-4 leading-relaxed text-brand-ink-soft">Start with your own Birth Card Blueprint, or have Cass read your year, a pair, or your whole family. Everything is delivered privately by email.</p>
           </div>
           <ManualReadingOffers />
         </section>

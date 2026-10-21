@@ -22,7 +22,7 @@ export function ManualReadingOffers() {
                 <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-brand-bronze">✦</span><span>{item}</span></li>
               ))}
             </ul>
-            <p className="mb-6 mt-5 flex-1 text-sm leading-relaxed text-brand-ink-soft">A private reading, personally prepared and delivered by email.</p>
+            <p className="mb-6 mt-5 flex-1 text-sm leading-relaxed text-brand-ink-soft">{reading.delivery ?? "A private reading, personally prepared and delivered by email."}{reading.sampleHref ? <>{" "}<a href={reading.sampleHref} className="underline underline-offset-4">See a sample (PDF)</a></> : null}</p>
             {reading.checkoutHref ? (
               <a href={reading.checkoutHref} data-order-reading={reading.id} className="inline-flex min-h-12 w-full items-center justify-center gap-3 bg-brand-ink px-4 py-4 text-center text-sm font-semibold text-brand-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-ink">
                 Order {reading.title} — {reading.price}<span aria-hidden="true">↗</span>

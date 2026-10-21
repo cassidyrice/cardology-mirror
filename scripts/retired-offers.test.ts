@@ -12,7 +12,7 @@ const PUBLIC_FILES = [
   "public/llms.txt", "public/llms-full.txt", "public/.well-known/agent-card.json",
 ];
 const RETIRED = [
-  /\$13\b/, /one-question-reading/,
+  /one-question-reading/,
   /\/products\/(year-ahead|blueprint-report|card-blueprint-app)/, /free-course/,
   /NewsletterSignupForm|FreeCourseCta|ElroyLauncher|buttondown\.com\/api/,
 ];
@@ -26,9 +26,16 @@ test("retired offers and email capture stay off public pages", () => {
   expect(hits).toEqual([]);
 });
 
-test("the offers are the Timing Map, Chemistry Check and Family Snapshot", async () => {
+test("$13 on public pages only ever means the Birth Card Blueprint", () => {
+  const hits = PUBLIC_FILES.flatMap((file) =>
+    readFileSync(file, "utf8").split("\n").filter((line) => /\$13\b/.test(line) && !/Birth Card Blueprint|[Ff]rom \$13|start at \$13|^\s*price: "\$13",$/.test(line)).map((line) => `${file}: ${line.trim().slice(0, 120)}`),
+  );
+  expect(hits).toEqual([]);
+});
+
+test("the offers are the Birth Card Blueprint, Timing Map, Chemistry Check and Family Snapshot", async () => {
   const { READINGS_NAV } = await import("../lib/readings-nav");
-  expect(READINGS_NAV.map((r) => r.id)).toEqual(["timing-map", "chemistry-check", "family-snapshot"]);
+  expect(READINGS_NAV.map((r) => r.id)).toEqual(["birth-card-blueprint", "timing-map", "chemistry-check", "family-snapshot"]);
   const { CARD_APP_ON_SALE } = await import("../lib/products");
   const { YEAR_AHEAD_ON_SALE } = await import("../lib/year-ahead");
   expect([CARD_APP_ON_SALE, YEAR_AHEAD_ON_SALE]).toEqual([false, false]);
