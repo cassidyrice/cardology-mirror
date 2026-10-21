@@ -2,7 +2,7 @@
 import {api, download, fileStem} from './session.mjs';
 let OFFERS;
 let revision=0;
-const createDraft=fields=>({format:'card-blueprints-report',version:['timing-map','family'].includes(fields.offer)?3:2,...fields});
+const createDraft=fields=>({format:'card-blueprints-report',version:['timing-map','family','birth-card-blueprint'].includes(fields.offer)?3:2,...fields});
 const $=id=>document.getElementById(id);
 let documentResult=null,dirty=false,busy=false,sections=['','','',''],people=[],writingIndex=0,activeOffer='timing-map',sectionCache={};
 const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
