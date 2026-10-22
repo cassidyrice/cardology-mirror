@@ -26,7 +26,7 @@ Responsible tasks: **A** — storefront/desktop integration and Stan task `01a14
 
 | Surface | Verified live revision / state | Rollback revision | Evidence time (UTC) |
 | --- | --- | --- | --- |
-| Public Pages site | `81d065575b5a2f82a7b6f9a610a83ec6d77d61a6` | **Unverified** | 2026-10-18T16:25:44Z |
+| Public Pages site | `e48a1dbde6caf45233e9ff5f0b284f608f73b47a` | `550221b656fb6d4459303c86d19edbf587e70cc1` (main before PR #196) | 2026-10-22T23:00:49Z |
 | Separate `cardology-unlock` Worker | **Unverified** | **Unverified** | Not verified in this update |
 | Private hosted tools | Not deployed by these workstreams; live revision **unverified** | **Unverified** | 2026-10-18T16:27:44Z |
 
