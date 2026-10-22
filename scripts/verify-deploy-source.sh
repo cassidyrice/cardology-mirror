@@ -17,10 +17,10 @@ SITE_ORIGIN="${SITE_ORIGIN:-https://cardblueprints.com}"
 
 # --- The record. Keep in sync with ops/DEPLOY-SOURCE.md ---
 DEPLOY_BRANCH="main"
-DEPLOY_COMMIT="7a59acef3f56b826b054fde1245447ca316c1e57"
+DEPLOY_COMMIT="e48a1dbde6caf45233e9ff5f0b284f608f73b47a"
 WORKER_NAME="cardology-unlock"
-WORKER_VERSION="b00af6b4-5851-4907-8170-c4b7833bb358"
-WORKER_ROLLBACK="9290cd0e-e2f0-4f6e-ad16-bf23ac169e34"
+WORKER_VERSION="fad05289-c043-4556-8159-344ff332e37f"
+WORKER_ROLLBACK="8bc9e9db-a625-485d-90e9-76581396b66d"
 
 WELLKNOWN_PATH="/.well-known/apple-developer-merchantid-domain-association"
 WELLKNOWN_REPO_PATH="public/.well-known/apple-developer-merchantid-domain-association"

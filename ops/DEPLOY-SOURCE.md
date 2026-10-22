@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-10-03** (deployed `main` @ `7a59ace` — Remove tattoo images from birth-card pages; previous record `fe00b91`)
+**Last verified: 2026-10-22** (deployed `main` @ `e48a1db` — Rewrite the whole site in anxiety style and match Stan Store prices (#196); previous record `7a59ace`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,10 +16,10 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `7a59acef3f56b826b054fde1245447ca316c1e57` |
+| **Deployed commit** | `e48a1dbde6caf45233e9ff5f0b284f608f73b47a` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `b00af6b4-5851-4907-8170-c4b7833bb358` |
-| **Worker rollback** | `9290cd0e-e2f0-4f6e-ad16-bf23ac169e34` |
+| **Worker version** | `fad05289-c043-4556-8159-344ff332e37f` |
+| **Worker rollback** | `8bc9e9db-a625-485d-90e9-76581396b66d` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
