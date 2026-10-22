@@ -83,7 +83,7 @@ export default function AboutPage() {
           library, and check the math yourself.
         </p>
         <p>
-          I prepare three readings: the 12-Month Timing Map ($39) for one person, the Chemistry Check ($52) for two, and the Family Snapshot ($65) for three. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to. There is also the $13 Birth Card Blueprint, a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you.
+          I prepare three readings: the 12-Month Timing Map ($19) for one person, the Chemistry Check ($24) for two, and the Family Snapshot ($30) for three. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to. There is also the $13 Birth Card Blueprint, a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards

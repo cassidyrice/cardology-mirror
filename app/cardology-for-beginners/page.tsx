@@ -13,7 +13,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $39 Chemistry Check.`;
+const DESCRIPTION = `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $24 Chemistry Check.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -67,9 +67,9 @@ const steps = [
   {
     n: "6",
     title: "Get a reading only if it earns it",
-    body: "If the free tools keep matching real life, the Chemistry Check ($39) reads your card beside one other person's: shared strengths, recurring friction, and where your years cross. A mirror, not a forecast. Prepared by Cass.",
+    body: "If the free tools keep matching real life, the Chemistry Check ($24) reads your card beside one other person's: shared strengths, recurring friction, and where your years cross. A mirror, not a forecast. Prepared by Cass.",
     href: "/#chemistry-check",
-    label: "The Chemistry Check · $39",
+    label: "The Chemistry Check · $24",
   },
 ];
 
@@ -88,7 +88,7 @@ const faqs = [
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($39) reads both people's cards together. It is a mirror, not a forecast.`,
+    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($24) reads both people's cards together. It is a mirror, not a forecast.`,
   },
 ];
 
@@ -146,7 +146,7 @@ export default function CardologyForBeginnersPage() {
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
         If that card keeps matching real life, the{" "}
         <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check · $39
+          Chemistry Check · $24
         </Link>{" "}
         reads it beside one other person&apos;s card. A mirror, not a forecast.
       </p>
@@ -241,7 +241,7 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The Chemistry Check is a one-time $39 purchase: two people&apos;s cards, read
+          The Chemistry Check is a one-time $24 purchase: two people&apos;s cards, read
           together by Cass: shared strengths, recurring friction, and where your years cross.
           Delivered by email. A mirror, not a forecast. No subscription.
         </p>
@@ -249,7 +249,7 @@ export default function CardologyForBeginnersPage() {
           href="/#chemistry-check"
           className="accent-button mt-4"
         >
-          The Chemistry Check · $39
+          The Chemistry Check · $24
         </Link>
       </div>
 

@@ -118,7 +118,7 @@ export default function CompatibilityCalculatorPage() {
         pair guide. The interpretation offers questions for reflection; it does
         not measure the quality or future of your relationship. The{" "}
         <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check · $52
+          Chemistry Check · $24
         </Link>{" "}
         is a personal reading of both people’s cards, shared strengths, and recurring friction.
       </p>

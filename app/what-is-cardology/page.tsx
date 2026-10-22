@@ -197,7 +197,7 @@ export default function WhatIsCardology() {
       <p className="mb-2 text-sm text-brand-ink-soft">
         Free first: reveal your birth card below. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($52)
+          Chemistry Check ($24)
         </Link>
         {" "}
         — your card beside one other person’s, personally read by Cass.
@@ -245,14 +245,14 @@ export default function WhatIsCardology() {
           </Link>
           . Optional next step: the{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            Chemistry Check ($52)
+            Chemistry Check ($24)
           </Link>{" "}
           (two people’s cards, read together).
         </p>
         <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
           <p className="font-serif text-base text-brand-ink">After your free card</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            The Chemistry Check ($52) reads your card beside one other person’s. It is prepared privately and delivered by email.
+            The Chemistry Check ($24) reads your card beside one other person’s. It is prepared privately and delivered by email.
           </p>
           <Link
             href="/#readings"
@@ -536,7 +536,7 @@ export default function WhatIsCardology() {
           between two birthdays. Timing cards for the chapter you are in. When you want
           the pattern written out, start with the{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            the Chemistry Check ($52)
+            the Chemistry Check ($24)
           </Link>
           — one question, read from your card, this year's cards, and the card you owe.
         </p>
@@ -560,7 +560,7 @@ export default function WhatIsCardology() {
         <p className="font-serif text-base text-brand-ink">Keep going</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/#readings" className="ink-button">
-            the Chemistry Check, $52 →
+            the Chemistry Check, $24 →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →

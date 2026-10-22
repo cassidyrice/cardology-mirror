@@ -1,5 +1,5 @@
 // Manual reading prices and scope approved by Cass on 2026-10-18.
-// 2026-10-20: three offers — Timing Map $39, Chemistry Check $52, Family Snapshot $65.
+// 2026-10-20: three offers — Timing Map $19, Chemistry Check $24, Family Snapshot $30.
 // 2026-10-21: Cass added the $13 Birth Card Blueprint as the entry-level offer (a generated 7-page PDF).
 export const BIRTH_CARD_BLUEPRINT_URL = "https://stan.store/mycardblueprint/p/birth-card-blueprint";
 export const CHEMISTRY_CHECK_URL = "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u";
@@ -53,7 +53,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
   {
     id: "timing-map",
     title: "The 12-Month Timing Map",
-    price: "$39",
+    price: "$19",
     href: "/#timing-map",
     checkoutHref: stanUrl(TIMING_MAP_URL, "homepage", "offer_card"),
     who: "Just you",
@@ -64,7 +64,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
   {
     id: "chemistry-check",
     title: "The Chemistry Check",
-    price: "$52",
+    price: "$24",
     href: "/#chemistry-check",
     checkoutHref: chemistryCheckUrl("homepage", "offer_card"),
     who: "You plus one person",
@@ -75,7 +75,7 @@ export const READINGS_NAV: readonly ManualReading[] = [
   {
     id: "family-snapshot",
     title: "The Family Snapshot",
-    price: "$65",
+    price: "$30",
     href: "/#family-snapshot",
     checkoutHref: stanUrl(FAMILY_SNAPSHOT_URL, "homepage", "offer_card"),
     who: "You plus two people",
