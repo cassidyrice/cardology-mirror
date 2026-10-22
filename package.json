@@ -6,7 +6,7 @@
     "test": "bun run test:cardology && bun test scripts/agent-card.test.ts scripts/second-page-poach.test.ts scripts/internal-link-hygiene.test.ts scripts/ai-overview-hubs.test.ts scripts/retired-offers.test.ts scripts/even-agent.test.ts scripts/compatibility-api.test.ts scripts/card-app.test.ts scripts/period-experience.test.ts scripts/period-library.test.ts scripts/worker-editorial-skin.test.ts scripts/token-compatibility.test.ts scripts/api-body-validation.test.ts scripts/csp-report.test.ts scripts/today-birthdate.test.ts scripts/today-page.test.ts scripts/ruling-card-cotd.test.ts scripts/playing-card-spreads-cta.test.ts scripts/card-meaning-equity.test.ts scripts/born-on.test.ts scripts/compatibility-pages.test.ts scripts/calculator-stan-cta.test.ts && bun scripts/validate-public-truth.ts && bun scripts/audit-privacy-leak.test.ts && bun run test:ruling-card-reference && bun run test:fulfillment && bun test scripts/deploy-lock.test.ts && python3 scripts/revenue-report.py --self-test && bun test scripts/sitemap-routes.test.ts && bun scripts/sitemap-smoke.ts",
     "test:sitemap": "bun test scripts/sitemap-integrity.test.ts scripts/sitemap-routes.test.ts && bun scripts/sitemap-smoke.ts",
     "test:sitemap:http": "bun scripts/sitemap-http-smoke.ts",
-    "test:cardology": "bun test scripts/cardology-system.test.ts scripts/karma-golden.test.ts scripts/card-bible.test.ts",
+    "test:cardology": "bun test scripts/cardology-system.test.ts scripts/karma-golden.test.ts scripts/card-bible.test.ts scripts/anxiety-style-voice.test.ts",
     "test:seo:browser": "bun scripts/seo-integrity-browser.ts",
     "test:worker-contract": "bun scripts/worker-production-contract.ts",
     "dev": "next dev -p 3577",

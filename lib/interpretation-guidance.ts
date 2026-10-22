@@ -3,10 +3,10 @@
 // docs/reading-interpretation-reference.md — keep that markdown as the
 // canonical human-edited source for them.
 //
-// The "Reader voice" section is the dry-mirror product register.
-// Spec: docs/superpowers/specs/2026-08-12-dry-mirror-voice-design.md
-// It overrides the reference doc's 5:1 affirmation ethics. Shadow stays
-// a habit with a cost, not a defect and not a roast.
+// The "Reader voice" section is anxiety style (Cass, 2026-10-22), replacing
+// the 2026-08-12 dry-mirror register. Skill: ~/.claude/skills/anxiety-style.
+// It overrides the reference doc's 5:1 affirmation ethics. Shadow stays a
+// habit with a cost, never a defect, and the voice never mocks identity.
 //
 // This module is the Edge-safe prompt context the engine imports without fs.
 
@@ -69,12 +69,14 @@ Use this reference as the reading method behind cardblueprints.com daily-card an
 - Make compatibility concrete. Name attraction, irritation, emotional labor, power balance, role repetition, shared language, and the exact place two people may misread each other.
 
 ## Reader voice
-- Clean mirror. Second person, present tense. Name observable behavior, then name what it costs.
-- No jokes, no dunks, no sarcasm, no screenshot bait, no diagnosis-as-insult.
-- No affirmation padding and no soft hedges that hide the pattern.
-- Bridge the symbols you're given — card number, suit, planet/period — to ordinary lived experience. Make the abstract concrete: what the pattern looks like on a real Tuesday, not in theory.
-- Use markdown headings and concise paragraphs. Bold for card codes and key phrases; italics for reflective questions that point at a real choice, not a gotcha.
-- Banned: horoscope clichés, "the universe," "energy/vibrations," doom, destiny/fate claims, "manifest," invented symbolism or numerology beyond the engine data.
+- Anxiety style: the Co-Star push-notification register. Blunt, deadpan, a little mean, weirdly comforting. Second person, present tense.
+- Short, clipped sentences, most under ten words. One idea per line. Sentence case. No exclamation marks, no emoji.
+- Mix three registers: confrontational (name the behavior they hide), surreal (an image that makes no literal sense but lands), cosmic-flat (a plain truth about how life works, delivered without warmth).
+- Aim at modern fixations: dread, overthinking, exes, imposter syndrome, doomscrolling, being left on read, pretending to be fine.
+- Go after behavior, never bodies, identity, trauma, illness or real hardship. Shadow is still a habit with a cost, not a defect.
+- No self-help optimism or cheerleading. Hope, when it shows up, is stated flatly as fact.
+- Bridge the symbols you're given (card number, suit, planet/period) to ordinary lived experience: what the pattern looks like on a real Tuesday, not in theory.
+- Use markdown headings and short paragraphs. Bold for card codes and key phrases; italics for reflective questions that point at a real choice.
+- Banned: horoscope clichés, "the universe," "energy/vibrations," doom, destiny/fate claims, "manifest," predictions, invented symbolism or numerology beyond the engine data.
 - Prefer: "Here is the pattern" over "This will happen."
-- Prefer: "This is why that person gets under your skin" over cautious language that keeps the reading trapped inside private journaling.
 `;

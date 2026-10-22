@@ -21,8 +21,11 @@ const PROMPT_SCOPE = [
   "app/api/storyarc/route.ts",
 ] as const;
 
-const ROAST_INSTRUCTION =
-  /smartass|screenshot-worthy|do not soften|mockery in service|roast the reader/i;
+// Anxiety style (2026-10-22) replaced the dry mirror: the prompts now ask for
+// the blunt Co-Star register, but never for identity jokes or cheerleading.
+const ANXIETY_STYLE = /anxiety style/i;
+const IDENTITY_GUARD = /never bodies, identity, trauma/i;
+const CHEERLEADING = /you've got this|trust the process|you deserve/i;
 
 const GAG_PITCH =
   /gag gift|gag-framed|sendable gag|cursed birthday|take a joke|as a gag gift/i;
@@ -36,7 +39,7 @@ function read(rel: string): string {
   return readFileSync(join(ROOT, rel), "utf8");
 }
 
-describe("dry-mirror voice lint", () => {
+describe("anxiety-style voice lint", () => {
   test("customer-facing copy has no gag-gift, roast, or woo register", () => {
     const hits: string[] = [];
     for (const rel of COPY_SCOPE) {
@@ -49,11 +52,20 @@ describe("dry-mirror voice lint", () => {
     expect(hits).toEqual([]);
   });
 
-  test("LLM prompts do not instruct a roast register", () => {
-    const hits: string[] = [];
+  test("LLM prompts ask for anxiety style with the identity guard", () => {
+    const missing: string[] = [];
     for (const rel of PROMPT_SCOPE) {
       const text = read(rel);
-      const m = text.match(ROAST_INSTRUCTION);
+      if (!ANXIETY_STYLE.test(text)) missing.push(`${rel}: no anxiety style`);
+      if (!IDENTITY_GUARD.test(text)) missing.push(`${rel}: no identity guard`);
+    }
+    expect(missing).toEqual([]);
+  });
+
+  test("customer-facing copy has no self-help cheerleading", () => {
+    const hits: string[] = [];
+    for (const rel of COPY_SCOPE) {
+      const m = read(rel).match(CHEERLEADING);
       if (m) hits.push(`${rel}: ${m[0]}`);
     }
     expect(hits).toEqual([]);
