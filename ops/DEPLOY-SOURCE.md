@@ -1,6 +1,6 @@
 # Deploy source of truth — cardblueprints.com
 
-**Last verified: 2026-10-22** (deployed `main` @ `e48a1db` — Rewrite the whole site in anxiety style and match Stan Store prices (#196); previous record `7a59ace`)
+**Last verified: 2026-10-22** (deployed `main` @ `1597aa4` — Merge pull request #197 from cassidyrice/chore/record-deploy-e48a1db; previous record `e48a1db`)
 
 This file exists because for several weeks the answer to "which branch is live?"
 was only obtainable by probing production. Read the WARNING before trusting any
@@ -16,10 +16,10 @@ dashboard.
 | Cloudflare Pages project | `cardology-mirror` |
 | **Canonical worktree** | `~/cardology-elroy-qa` |
 | **Branch** | `main` |
-| **Deployed commit** | `e48a1dbde6caf45233e9ff5f0b284f608f73b47a` |
+| **Deployed commit** | `1597aa4cfed9656eef64875bae0fffc138d6d92c` |
 | **Worker** | `cardology-unlock` |
-| **Worker version** | `fad05289-c043-4556-8159-344ff332e37f` |
-| **Worker rollback** | `8bc9e9db-a625-485d-90e9-76581396b66d` |
+| **Worker version** | `ffa21869-023a-4bf9-9de2-4007efdf186b` |
+| **Worker rollback** | `fad05289-c043-4556-8159-344ff332e37f` |
 | Deploy mode | **direct upload** (not git-connected) |
 
 `~/cardology-elroy-qa` is a *worktree* of `~/cardology-mirror`, not a separate
