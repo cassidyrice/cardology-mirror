@@ -10,7 +10,7 @@ export function StanReadingCta({ className = "" }: { className?: string }) {
       data-testid="calculator-stan-cta"
     >
       <p className="font-serif text-base leading-snug text-brand-ink">
-        Your birth card is just the start. See how it meets someone else&rsquo;s.
+        That&rsquo;s just you. Now see what happens when you meet someone else.
       </p>
       <a
         href={CALCULATOR_STAN_CTA_HREF}

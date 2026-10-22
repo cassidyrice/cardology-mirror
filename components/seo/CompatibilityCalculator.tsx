@@ -99,7 +99,7 @@ export function CompatibilityCalculator() {
 
       <form onSubmit={onSubmit} className="mt-5 w-full space-y-4">
         <div>
-          <label htmlFor="da" className="type-eyebrow block">First birthday</label>
+          <label htmlFor="da" className="type-eyebrow block">First birthday (probably yours)</label>
           <input id="da" type="date" value={a}
             onFocus={() =>
               trackClientFunnelEventOnce("calculator_started", {
@@ -110,7 +110,7 @@ export function CompatibilityCalculator() {
             className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <div>
-          <label htmlFor="db" className="type-eyebrow block">Second birthday</label>
+          <label htmlFor="db" className="type-eyebrow block">Second birthday (theirs)</label>
           <input id="db" type="date" value={b}
             onFocus={() =>
               trackClientFunnelEventOnce("calculator_started", {
@@ -121,18 +121,18 @@ export function CompatibilityCalculator() {
             className="mt-2 w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink" />
         </div>
         <button type="submit" className="accent-button large-button w-full">
-          Compare
+          Show me the friction
         </button>
       </form>
 
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {err
-          ? "Enter two full birthdays to compare."
+          ? "Two full birthdays. Not one, not a guess."
           : pair
-            ? "Compatibility comparison ready. Tap a Life Path seat."
+            ? "Comparison ready. Tap a Life Path seat. Brace yourself."
             : ""}
       </p>
-      {err && <p className="mt-4 text-sm text-brand-oxblood">Enter two full birthdays to compare.</p>}
+      {err && <p className="mt-4 text-sm text-brand-oxblood">Two full birthdays. Not one, not a guess.</p>}
       {pair && (
         <PairResult
           key={`${pair.a.birthdate}:${pair.b.birthdate}`}
@@ -201,13 +201,13 @@ function PairResult({
       <div className="text-center">
         <p className="font-serif text-base leading-relaxed text-brand-ink">
           {sameSuit
-            ? `Same suit - ${pa?.domain.toLowerCase()}`
+            ? `Same suit: ${pa?.domain.toLowerCase()}`
             : `${pa?.domain.toLowerCase()} meets ${pb?.domain.toLowerCase()}`}
         </p>
         <p className="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-brand-ink-soft">
           {sameSuit
-            ? "You share a first instinct and speak a similar language. Communication tends to feel familiar."
-            : "You lead from different instincts. This can create a powerful balance or a recurring friction depending on awareness."}
+            ? "You share a first instinct and speak a similar language. It feels easy. That is also how you both miss the same thing."
+            : "You lead from different instincts. One of you is already annoyed by how the other one decides. That is balance or a recurring fight, depending on whether anyone notices."}
         </p>
       </div>
 
@@ -296,7 +296,7 @@ function PairResult({
           href="/cardology-compatibility"
           className="text-sm font-medium text-brand-ink underline underline-offset-4"
         >
-          Read the compatibility guide →
+          Read the compatibility guide. All of it →
         </Link>
         <div className="flex flex-wrap justify-center gap-2">
           {aSlug && pa?.label && (
@@ -340,7 +340,7 @@ function SeatDetail({
       <p className="mt-3 text-sm leading-relaxed text-brand-ink">
         {isHit
           ? relationshipSentence(ownerName, otherName, seat)
-          : `${otherBirthLabel} does not sit in this seat on the ${ownerName}’s path.`}
+          : `${otherBirthLabel} does not sit in this seat on the ${ownerName}’s path. Nothing to see here. Try another seat.`}
       </p>
     </section>
   );
@@ -359,8 +359,8 @@ function SharedList({
     <section className="mt-8">
       <h3 className="font-serif text-lg text-brand-ink">Shared Life Path cards</h3>
       <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
-        Cards that appear in both paths. Shared does not mean easy. It marks the same
-        pattern in different roles.
+        Cards that appear in both paths. Shared does not mean easy. It means the same
+        pattern in different roles. Usually the one you argue about.
       </p>
       {sharedCards.length > 0 ? (
         <div className="mt-4 flex flex-wrap gap-2">
@@ -381,7 +381,8 @@ function SharedList({
       ) : (
         <p className="mt-4 rounded-[3px] border border-brand-line bg-brand-ivory p-4 text-sm leading-relaxed text-brand-ink-soft">
           No direct shared cards appear inside the Moon-plus-13 Life Path spectrum.
-          Read the suit/rank chemistry and ruling cards first.
+          Not a red flag. Just less overlap. Read the suit/rank chemistry and ruling
+          cards first.
         </p>
       )}
     </section>

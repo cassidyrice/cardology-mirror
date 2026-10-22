@@ -95,7 +95,7 @@ export function PeriodMeaningTool({ cards, filters }: PeriodMeaningToolProps) {
                 52 cards × 7 filters = 364 lenses
               </p>
               <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
-                This is not a random draw or a forecast. It is a reusable language layer: pick a card, then read the same card through Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.
+                This is not a random draw. It is not a forecast. It is a reusable language layer. Pick a card, then read the same card through Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune. Watch it get uncomfortable in at least one.
               </p>
             </div>
           </section>
@@ -115,7 +115,7 @@ export function PeriodMeaningTool({ cards, filters }: PeriodMeaningToolProps) {
               href={`/birth-card/${selected.card.slug}`}
               className="editorial-link text-sm font-bold uppercase tracking-[0.18em] text-brand-on-dark"
             >
-              open card page →
+              open the whole card →
             </Link>
           </div>
 

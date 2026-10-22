@@ -43,7 +43,7 @@ export const MONEY_PATHS = [
 export type MoneyPath = (typeof MONEY_PATHS)[number];
 
 /** Shared by the desktop header and the mobile menu. Same destinations as
- *  MONEY_PATHS, in that order. /today stays off this list — it asks for a
+ *  MONEY_PATHS, in that order. /today stays off this list: it asks for a
  *  local profile, so it is not the free hook. */
 export const PRIMARY_NAV = MONEY_PATHS.map(({ label, href }) => ({
   label,

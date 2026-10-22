@@ -15,10 +15,10 @@ export function FamousPeopleBlock({
 
   return (
     <section className="mt-8">
-      <h2 className="type-eyebrow mb-2 !text-brand-bronze">Famous people born under the {cardLabel}</h2>
+      <h2 className="type-eyebrow mb-2 !text-brand-bronze">Famous people born under the {cardLabel}, for comparison</h2>
       <div className="prose-reading text-brand-ink-soft">
         <p>
-          Birthdays are public record and the card is fixed by the date — a calendar coordinate, not a forecast. Use the list to test the pattern against people you already know something about.
+          Birthdays are public record. The card is fixed by the date. A calendar coordinate, not a forecast. Use the list to test the pattern against people you already have strong opinions about. You do have opinions.
         </p>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2">
           {people.map((person) => (
@@ -30,7 +30,7 @@ export function FamousPeopleBlock({
               >
                 {person.name}
               </a>
-              <span className="text-brand-ink-soft"> — {person.known_for}</span>
+              <span className="text-brand-ink-soft">: {person.known_for}</span>
               <span className="block text-xs text-brand-ink-soft">born {famousBirthdayLabel(person.born)}</span>
               <span className="block text-xs text-brand-ink-soft">
                 <a

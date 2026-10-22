@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/seo/SiteHeader";
 
 const EXPLORE_TITLE = "Explore Card Blueprints";
 const EXPLORE_DESCRIPTION =
-  "Find your birth card, read all 52 meanings, compare two people, check timing tools, and see what is free vs paid.";
+  "Find your birth card, read all 52 meanings, compare two people, check timing tools, and see what is free vs paid. Then close some tabs.";
 
 export const metadata: Metadata = {
   title: { absolute: EXPLORE_TITLE },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
         url: "/og/default.png",
         width: 1200,
         height: 630,
-        alt: "Card Blueprints — explore the library",
+        alt: "Card Blueprints, explore the library",
       },
     ],
   },

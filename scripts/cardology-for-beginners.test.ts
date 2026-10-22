@@ -38,7 +38,7 @@ test("beginners page offers the $24 Chemistry Check after the free calculator", 
   const paidAt = markup.indexOf('href="/#chemistry-check"');
 
   expect(metadata.description).toBe(
-    "Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $24 Chemistry Check.",
+    "Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then the $24 Chemistry Check. Stop overthinking.",
   );
   expect(markup).toContain("Find your birth card free");
   expect(markup).toContain("The Chemistry Check · $24");

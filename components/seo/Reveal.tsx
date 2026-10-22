@@ -43,10 +43,10 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
       const dailySeo = dailyCode ? getCardSeo(dailyCode) : null;
       const today = todayISO();
       return {
-        periodLabel: periodSeo?.label ?? periodCode ?? "—",
+        periodLabel: periodSeo?.label ?? periodCode ?? "n/a",
         periodPlanet: reading.active_period.planet,
         periodRange: window ? formatRange(window) : "",
-        dailyLabel: dailySeo?.label ?? dailyCode ?? "—",
+        dailyLabel: dailySeo?.label ?? dailyCode ?? "n/a",
         todayLabel: formatIsoShort(today),
       };
     } catch (error) {
@@ -83,12 +83,12 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
 
       {isJoker ? (
         <p className="mt-6 font-serif text-lg leading-snug text-brand-ink">
-          December 31 sits outside the 52. No fixed card — the wild edge of the year.
+          December 31 sits outside the 52. No fixed card. You are the wild edge of the year, and people can tell.
         </p>
       ) : (
         <>
           <div className="mt-6 grid gap-3 text-left">
-            <RevealLine kicker="Your strength" body={seo?.sweetSpot ?? ""} />
+            <RevealLine kicker="What you’re good at" body={seo?.sweetSpot ?? ""} />
             <RevealLine kicker="Where it trips you" body={seo?.over ?? ""} />
           </div>
 
@@ -125,7 +125,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
               })
             }
           >
-            Read my card →
+            Read my card. All of it →
           </Link>
         ) : null}
         <Link
@@ -137,7 +137,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
             })
           }
         >
-          Compare with someone →
+          Compare with the person you’re thinking about →
         </Link>
         <ShareBirthResultButton
           birthCard={result.birthCard}
@@ -149,7 +149,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
             href="/explore"
             className="text-brand-ink-soft underline underline-offset-4"
           >
-            Explore →
+            Keep poking around →
           </Link>
         </p>
       </div>

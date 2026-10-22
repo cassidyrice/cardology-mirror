@@ -11,7 +11,7 @@ test("calculator title stays under 60 and names both intents", () => {
   expect(match?.[1]).toBe("Cardology Chart & Birth Card Calculator (Free)");
   expect(match?.[1].length).toBeLessThanOrEqual(60);
   expect(source).toContain(
-    "Free Cardology chart + birth card calculator — all 366 birthdays → one playing card. Same date, same card. Not tarot.",
+    "Free Cardology chart and birth card calculator. All 366 birthdays, one playing card each. Same date, same card. Not tarot. No shuffling.",
   );
   expect(source).toContain("Cardology Chart & Birth Card Calculator");
   expect(source).toContain(">Cardology Chart</h2>");

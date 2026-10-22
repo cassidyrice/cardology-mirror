@@ -123,7 +123,7 @@ export default async function BlogPillarPage({
       </section>
 
       <section>
-        <h2 className="oracle-eyebrow mb-4 mt-12">Guides in this pillar</h2>
+        <h2 className="oracle-eyebrow mb-4 mt-12">Guides in this pillar. Read them in order. You will not.</h2>
         <div className="grid gap-4">
           {posts.map((post) => (
             <article key={post.slug} className="border border-brand-line bg-brand-paper p-5 transition hover:bg-brand-ivory">
@@ -142,7 +142,7 @@ export default async function BlogPillarPage({
       </section>
 
       <section className="mt-12">
-        <h2 className="oracle-eyebrow mb-4">Related tools</h2>
+        <h2 className="oracle-eyebrow mb-4">Related tools. Free. Use them.</h2>
         <div className="grid gap-3 sm:grid-cols-3">
           {pillar.relatedTools.map((link) => (
             <Link

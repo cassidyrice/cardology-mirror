@@ -24,25 +24,25 @@ export function endOfPageReads(card: CardSeo, siblings: CardSeo[]): EndOfPageRea
     ...sameSuit.map((c) => ({
       href: `/birth-card/${c.slug}`,
       label: `${c.label} meaning`,
-      note: `same ${suitWord(card).toLowerCase()} suit`,
+      note: `same ${suitWord(card).toLowerCase()} suit, different habits`,
       external: false,
     })),
     {
       href: "/planetary-ruling-card",
       label: "Planetary ruling card",
-      note: "the second layer on this birth card",
+      note: "the second layer on this birth card, the one you skipped",
       external: false,
     },
     {
       href: compatHubHref(card),
       label: `${card.label} compatibility`,
-      note: "how this card pairs",
+      note: "who this card keeps choosing",
       external: true,
     },
     {
       href: "/what-is-cardology",
       label: "What is Cardology",
-      note: "the birthday-to-card map",
+      note: "the birthday-to-card map, minus the mysticism",
       external: false,
     },
   ];

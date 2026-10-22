@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: free card tools, the published method, and the Chemistry Check, a personal reading about two people.",
+    "About Card Blueprints and founder Cassidy Rice: free card tools, a published method you can check, and the Chemistry Check, a reading about two people.",
   alternates: { canonical: "/about" },
 };
 
@@ -70,7 +70,7 @@ export default function AboutPage() {
         <div className="mt-6 border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-brand-ink">
-            {SITE_NAME} brings together a free birth-card calculator, a library of traditional card meanings, and personal readings prepared by Cass. Use the cards to explore a pattern, then bring your own experience to the conversation.
+            {SITE_NAME} is three things. A free birth-card calculator. A library of traditional card meanings. Personal readings prepared by Cass. Use the cards to look at a pattern. Then bring your own life to it. The cards cannot do that part for you.
           </p>
         </div>
       </header>
@@ -80,25 +80,29 @@ export default function AboutPage() {
         <p>
           I&apos;m Cass. I was told at five I was the Eight of Diamonds. Card
           Blueprints is the site I built so you can look up your card, read the
-          library, and check the math yourself.
+          library, and check the math yourself. Don&apos;t take my word for it.
+          Do the math.
         </p>
         <p>
-          I prepare three readings: the 12-Month Timing Map ($19) for one person, the Chemistry Check ($24) for two, and the Family Snapshot ($30) for three. It pairs both people’s calculated cards and dates with interpretation and questions you can come back to. There is also the $13 Birth Card Blueprint, a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you.
+          I prepare three readings. The 12-Month Timing Map ($19), for one person. The Chemistry Check ($24), for two. The Family Snapshot ($30), for three. The Chemistry Check pairs both people’s calculated cards and dates with interpretation and questions you can come back to. There is also the $13 Birth Card Blueprint: a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
-          of the people around you: partners, parents, friends, coworkers, public
-          figures, and the relationships that keep teaching you the same lesson.
+          of the people around you. Partners. Parents. Friends. Coworkers. Public
+          figures. The relationship that keeps teaching you the same lesson,
+          because you keep not learning it.
         </p>
         <p>
-          The birthday mapping is fixed. The interpretation is where the system comes
-          alive: the suit shows the life domain, the rank shows the movement, and the
-          card offers a traditional pattern to compare with real behavior.
+          The birthday mapping is fixed. The interpretation is where it gets
+          uncomfortable. The suit shows the life domain. The rank shows the movement.
+          The card offers a traditional pattern. You hold it up against real behavior
+          and see what flinches.
         </p>
         <p>
-          One card is not the whole person. It can suggest questions about how someone
-          loves, thinks, values, works, avoids, reaches, gives, withholds, or takes
-          command when pressure rises.
+          One card is not the whole person. It can raise questions. How someone loves,
+          thinks, values, works. What they avoid. Where they reach. What they give and
+          what they withhold. Who takes command when the pressure rises. Sometimes
+          it&apos;s you.
         </p>
       </section>
 
@@ -107,19 +111,20 @@ export default function AboutPage() {
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Card Blueprints is built and maintained by <strong>Cassidy Rice</strong>, its
           founder. Cassidy built the deterministic calculation engine behind every page
-          on this site — the same birthday always produces the same card, the same
-          spread, and the same timing math, so every reading can be checked by hand.
-          The interpretation layer is curated from the published cardology tradition
-          and labeled as interpretation, not fact.
+          on this site. Same birthday, same card. Same spread. Same timing math. Every
+          reading can be checked by hand, and you should. The interpretation layer is
+          curated from the published cardology tradition and labeled as
+          interpretation, not fact.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Start with the free birth card calculator, then explore the birthday
-          directory, compare two people, or read any of the 52 card meanings.
-          The calculations and sources are published in the{" "}
+          Start with the free birth card calculator. Then the birthday directory.
+          Compare two people. Read any of the 52 card meanings. The calculations
+          and sources are published in the{" "}
           <Link href="/methodology" className="underline">
             methodology
           </Link>{" "}
-          so you can understand where your cards come from and form your own interpretation.
+          so you can see where your cards come from and form your own interpretation.
+          You are allowed to disagree.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Corrections and questions are welcome at{" "}
@@ -145,7 +150,7 @@ export default function AboutPage() {
           reports at {SITE_URL.replace("https://", "")}. It is not a clinic,
           church, licensed counseling practice, or accredited school. Cassidy
           Rice is the founder and the named author of the public method. There
-          is no staff of readers behind the calculator.
+          is no staff of readers behind the calculator. It is math.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           Public mail is{" "}
@@ -163,8 +168,9 @@ export default function AboutPage() {
       <section className="mt-12 max-w-3xl space-y-5">
         <h2 className="font-serif text-3xl text-brand-ink">Named sources</h2>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Card Blueprints did not invent the deck-to-calendar idea. The lineage
-          we name in public is Olney Richmond&rsquo;s{" "}
+          Card Blueprints did not invent the deck-to-calendar idea. Nobody here
+          is pretending otherwise. The lineage we name in public is
+          Olney Richmond&rsquo;s{" "}
           <em>The Mystic Test Book</em> (1893), later work by Florence Campbell
           and Edith Randall, and contemporary Destiny Cards / Love Cards /
           Science of the Cards teaching associated with Robert Lee Camp. Chart
@@ -172,7 +178,7 @@ export default function AboutPage() {
           <Link href="/methodology" className="underline">
             published formula
           </Link>{" "}
-          and the 366-row map.
+          and the 366-row map. Not whichever answer you liked better.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
           See the synonym map on{" "}
@@ -190,7 +196,7 @@ export default function AboutPage() {
       <section className="mt-12 max-w-3xl space-y-4">
         <h2 className="font-serif text-3xl text-brand-ink">Why a written reading</h2>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          A written reading gives you something to return to. Underline what fits, question what does not, and notice what changes in a real conversation. Cass personally prepares your reading and reviews every follow-up response.
+          A written reading gives you something to come back to. Underline what fits. Argue with what does not. Notice what changes in a real conversation. I personally prepare your reading and review every follow-up response.
         </p>
         <Link href="/#readings" className="ink-button large-button">Choose your reading</Link>
       </section>
@@ -198,10 +204,10 @@ export default function AboutPage() {
       <section className="mt-12 max-w-3xl space-y-4">
         <h2 className="font-serif text-3xl text-brand-ink">Research and data</h2>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Card Blueprints publishes the calculation layer so readers can inspect the
-          work instead of trusting a black-box result. The complete birthday map covers
-          all 366 month-and-day combinations, including leap day and the December 31
-          Joker boundary.
+          Card Blueprints publishes the calculation layer so you can inspect the work.
+          No black box. No trust me. The complete birthday map covers all 366
+          month-and-day combinations, including leap day and the December 31 Joker
+          boundary.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
@@ -225,14 +231,14 @@ export default function AboutPage() {
           <li>
             <Link href="/editorial-policy" className="underline">
               Editorial policy
-            </Link>{" "}
-            — how pages are maintained and labeled.
+            </Link>
+            : how pages are maintained and labeled.
           </li>
           <li>
             <Link href="/methodology" className="underline">
               Methodology
-            </Link>{" "}
-            — how calculation works, with a worked example.
+            </Link>
+            : how calculation works, with a worked example. Show your work.
           </li>
           <li>
             <Link href="/privacy-policy" className="underline">
@@ -255,25 +261,25 @@ export default function AboutPage() {
         <Link href="/methodology" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
           <p className="font-serif text-2xl text-brand-ink">Methodology</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            How fixed birthday math becomes a card reading.
+            How fixed birthday math turns into a card reading. No magic. Arithmetic.
           </p>
         </Link>
         <Link href="/cardology-for-beginners" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
           <p className="font-serif text-2xl text-brand-ink">Beginners path</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            Ten-minute path from first card to first comparison.
+            Ten minutes from first card to first comparison. You have spent longer on worse.
           </p>
         </Link>
         <Link href={VIDEO_PATH} className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
           <p className="font-serif text-2xl text-brand-ink">Videos</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            Watch the multimedia companion to the written Cardology guide.
+            The written Cardology guide, out loud. For when reading feels like homework.
           </p>
         </Link>
         <Link href="/contact" className="border border-brand-line bg-brand-paper-deep p-5 transition hover:bg-brand-ivory">
           <p className="font-serif text-2xl text-brand-ink">Contact</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            Send corrections, questions, or partnership requests.
+            Corrections, questions, partnership requests. Be specific.
           </p>
         </Link>
       </section>

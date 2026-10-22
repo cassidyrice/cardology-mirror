@@ -15,15 +15,15 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Methodology: How Birth Cards Are Calculated",
   description:
-    "How Cardology birth-card calculation works, with a worked birthday example: 52-card structure, suits, ranks, ruling cards, timing, and interpretation limits.",
+    "How Cardology birth-card calculation works. One formula, one worked birthday, the exceptions, and the limits. Check the math yourself. Nothing is hidden.",
   alternates: { canonical: "/methodology" },
 };
 
 const principles = [
-  ["52 cards", "The deck is treated as a calendar-like structure with one card for each week of the year."],
-  ["4 suits", "Hearts, Diamonds, Clubs, and Spades describe domains of life: feeling, value, mind, and work."],
-  ["13 ranks", "Aces through Kings describe movement inside a suit, from initiation through mastery."],
-  ["Fixed birthday map", "A birth card is calculated from the birthday. It is not chosen by a quiz or random draw."],
+  ["52 cards", "The deck is read as a calendar. One card for each week of the year. You have been carrying a calendar in your junk drawer."],
+  ["4 suits", "Hearts, Diamonds, Clubs, and Spades are domains of life: feeling, value, mind, and work. Pick the one you avoid."],
+  ["13 ranks", "Aces through Kings are movement inside a suit. Initiation at one end. Mastery at the other. You are somewhere in the middle, pretending."],
+  ["Fixed birthday map", "A birth card is calculated from the birthday. No quiz. No random draw. You do not get to retake it."],
 ];
 
 export default function MethodologyPage() {
@@ -77,8 +77,8 @@ export default function MethodologyPage() {
           <p className="text-base leading-relaxed text-brand-ink">
             The birthday gives the card. The suit gives the life domain. The rank gives
             the movement. The ruling card, timing card, and relationship context show
-            how the pattern expresses in a real person. Same birthday always produces
-            the same birth card.
+            how the pattern plays out in an actual person, probably you. Same birthday
+            always produces the same birth card. Asking twice changes nothing.
           </p>
         </div>
       </header>
@@ -99,31 +99,34 @@ export default function MethodologyPage() {
         <h2 className="font-serif text-3xl text-brand-ink">Worked example</h2>
         <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
           Take a public calendar date: <strong>January 15</strong>. In this system the
-          date resolves to the <strong>Queen of Diamonds</strong> as birth card — the
-          same result every time the math is run. The year is not required for the birth
-          card itself; year feeds timing layers when you ask about a specific chapter.
+          date resolves to the <strong>Queen of Diamonds</strong> as birth card. Same
+          result every time the math runs. The math does not have moods. The year is not
+          required for the birth card itself. Year only feeds the timing layers, when you
+          ask about a specific chapter.
         </p>
         <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
-            <strong>Input.</strong> Month and day only for the birth card; optional year
-            for ruling-card context and periods.
+            <strong>Input.</strong> Month and day only for the birth card. Year is
+            optional, for ruling-card context and periods. Keep your birth time. Nobody asked.
           </li>
           <li>
             <strong>Map.</strong> The date lands on one of 52 fixed deck positions. December
-            31 is the Joker boundary; February 29 maps normally to the 9 of Clubs.
+            31 is the Joker boundary. February 29 maps normally to the 9 of Clubs.
           </li>
           <li>
             <strong>Read structure.</strong> Suit = diamonds (values &amp; resources).
-            Rank = Queen (stewardship, refinement, influence inside that suit).
+            Rank = Queen (stewardship, refinement, influence inside that suit). That is the
+            whole skeleton.
           </li>
           <li>
             <strong>Add ruling card.</strong> Zodiac-linked planetary rulership colors
-            how the Queen of Diamonds tends to express for that birth chart layer.
+            how the Queen of Diamonds tends to show up for that birth chart layer. Same
+            card, different accent.
           </li>
           <li>
             <strong>Test in life.</strong> Compare the language to real behavior. Keep
-            what matches; drop what does not. The card is a hypothesis generator, not a
-            verdict.
+            what matches. Drop what does not. The card is a hypothesis generator. It is
+            not a verdict, and you are not on trial.
           </li>
         </ol>
         <p className="mt-5 font-serif text-lg leading-relaxed text-brand-ink">
@@ -135,18 +138,18 @@ export default function MethodologyPage() {
           <Link href="/birth-card-calculator" className="underline">
             birth card calculator
           </Link>
-          . If two tools disagree on the same system rules, trust the one you can audit —
-          and tell us on the contact page.
+          . If two tools disagree on the same system rules, trust the one you can audit.
+          Then tell us on the contact page. We like being checked.
         </p>
       </section>
 
       <section className="mt-12 max-w-3xl" id="birth-card-formula">
         <h2 className="font-serif text-3xl text-brand-ink">Birth-card formula</h2>
         <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
-          The live calculator uses this mapping. You can check the math by hand,
-          then confirm the card in the 366-row CSV. Year is not used for the
-          birth card. Paid books teach permutation history, yearly spreads, and
-          interpretation. They do not change this public formula.
+          The live calculator uses this mapping. Check the math by hand. Then
+          confirm the card in the 366-row CSV. It takes four minutes and one pen.
+          Year is not used for the birth card. Paid books teach permutation history,
+          yearly spreads, and interpretation. They do not change this public formula.
         </p>
         <ol className="mt-5 list-decimal space-y-3 pl-5 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
@@ -158,31 +161,32 @@ export default function MethodologyPage() {
           </li>
           <li>
             <strong>Lookup.</strong> Map <code>sv</code> through the fixed 52-card
-            solar table. The CSV is the complete table.
+            solar table. The CSV is the complete table. No secret second table.
           </li>
           <li>
             <strong>Public exception.</strong> December 31 is the Joker (solar
             value 0). The wrap would otherwise collide with January 1 (King of
             Spades). We do not force December 31 into a standard 52-card result.
+            It would not fit anyway.
           </li>
         </ol>
         <h3 className="mt-8 font-serif text-2xl text-brand-ink">Exception rules</h3>
         <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
             February 29 maps normally to the 9 of Clubs. Leap day is in the
-            table, not skipped.
+            table. Nobody skipped you.
           </li>
           <li>December 31 is the Joker boundary, not King of Spades.</li>
-          <li>Invalid calendar dates are rejected. They are not remapped.</li>
+          <li>Invalid calendar dates are rejected. They are not remapped. February 30 is not a birthday.</li>
         </ul>
         <h3 className="mt-8 font-serif text-2xl text-brand-ink">Version history</h3>
         <ul className="mt-4 list-disc space-y-2 pl-6 font-serif text-lg leading-relaxed text-brand-ink">
           <li>
-            <strong>2026-08-15</strong> — Dataset version 2026-08-15. Full
+            <strong>2026-08-15</strong>: Dataset version 2026-08-15. Full
             366-row CSV published.
           </li>
           <li>
-            <strong>2026-08-17</strong> — Formula, exception rules, and test
+            <strong>2026-08-17</strong>: Formula, exception rules, and test
             vectors published on this page. Birth-card results unchanged.
           </li>
         </ul>
@@ -197,9 +201,10 @@ export default function MethodologyPage() {
           Download the 366-date Cardology map
         </h2>
         <p className="mt-4 font-serif text-lg leading-relaxed text-brand-ink">
-          The CSV contains 366 rows, one for every month-and-day combination. Each row
-          includes the card code, rank, suit, solar value, canonical card URL, birthday
-          URL, exception rule, claim classification, and dataset version. February 29 maps to the 9 of Clubs.
+          The CSV contains 366 rows. One for every month-and-day combination. Each row
+          has the card code, rank, suit, solar value, canonical card URL, birthday URL,
+          exception rule, claim classification, and dataset version. Open it in a
+          spreadsheet. Find your row. Stare at it. February 29 maps to the 9 of Clubs.
           December 31 is preserved as the Joker boundary rather than being forced into a standard 52-card result.
         </p>
         <a
@@ -217,13 +222,12 @@ export default function MethodologyPage() {
           </p>
           <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
             The table publishes deterministic date-to-card mappings used by the live
-            calculator. Personality, relationship, and life-pattern interpretations are
-            separate: interpretive meanings are Cardology pattern language, not
-            experimentally established facts.
+            calculator. Personality, relationship, and life-pattern readings are a
+            separate thing. The interpretive meanings are Cardology pattern language,
+            not experimentally established facts. We know. You should too.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
-            For the public release notes, exceptional-date checks, and explanation of why
-            the table is auditable, read{" "}
+            Release notes, the odd-date checks, and why the table is auditable at all:{" "}
             <a
               href="https://buttondown.com/cardblueprint/archive/i-published-the-full-366-date-cardology-map/"
               className="underline"
@@ -238,19 +242,20 @@ export default function MethodologyPage() {
       <section className="mt-10 space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <h2 className="font-serif text-3xl text-brand-ink">Interpretation order</h2>
         <p>
-          Start with what is fixed: the birthday, the card, the suit, and the rank.
+          Start with what is fixed. The birthday, the card, the suit, the rank.
           Then read the range: balanced expression, under-expression, over-expression,
-          gift, shadow, timing, and the person or relationship involved.
+          gift, shadow, timing, and the person or relationship involved. Skipping to
+          the shadow first is a choice. A revealing one.
         </p>
         <p>
           The ruling card colors how the birth card comes through. A period card names
-          the chapter. Compatibility adds another person&rsquo;s pattern, which is where
-          attraction, friction, support, and repetition become easier to see.
+          the chapter. Compatibility adds another person&rsquo;s pattern. That is where
+          attraction, friction, support, and repetition get hard to unsee.
         </p>
         <p>
-          A strong reading moves in that order: calculate the card, read the structure,
-          compare it with the person, then test whether it explains the behavior or
-          dynamic in front of you.
+          A strong reading moves in that order. Calculate the card. Read the structure.
+          Compare it with the person. Then test whether it explains the behavior or the
+          dynamic in front of you. If it does not, the card loses. Not you.
         </p>
       </section>
 
@@ -258,7 +263,7 @@ export default function MethodologyPage() {
         <h2 className="font-serif text-3xl text-brand-ink">What we do not claim</h2>
         <p>
           Cardology on Card Blueprints is a pattern-recognition system for self-awareness
-          and entertainment. It describes tendencies, not fate. It is not medical,
+          and entertainment. It describes tendencies. It does not write your script. It is not medical,
           psychological diagnosis, legal, or financial advice. Paid reports use the same
           deterministic engine as the free tools; interpretation prose is labeled as
           interpretation.
@@ -269,7 +274,8 @@ export default function MethodologyPage() {
         <h2 className="font-serif text-3xl text-brand-ink">Test vectors and corrections</h2>
         <p>
           The public birthday map is the formula. Same month and day always return
-          the same birth card. Check these known rows against the calculator:
+          the same birth card. Do not take our word for it. Check these rows against
+          the calculator:
         </p>
         <ul className="list-disc space-y-2 pl-6 text-base">
           <li>January 1 → King of Spades (solar 52)</li>
@@ -283,12 +289,12 @@ export default function MethodologyPage() {
           <li>December 31 → Joker (year-end boundary; public override)</li>
         </ul>
         <p>
-          Dataset version is dated on this page. If a mapping is wrong, email{" "}
+          Dataset version is dated on this page. If a mapping is wrong, tell us. Email{" "}
           <Link href="/contact" className="underline">
             contact
           </Link>{" "}
-          with the date and expected card. We correct the CSV and this page
-          rather than silently changing live reports.
+          with the date and the card you expected. We correct the CSV and this page
+          in public. We do not quietly edit live reports and hope you missed it.
         </p>
       </section>
 

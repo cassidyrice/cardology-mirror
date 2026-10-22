@@ -13,7 +13,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $24 Chemistry Check.`;
+const DESCRIPTION = `Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then the $24 Chemistry Check. Stop overthinking.`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -32,42 +32,42 @@ const steps = [
   {
     n: "1",
     title: "Learn what Cardology is",
-    body: "It is a fixed map from birthday to one playing card — not a shuffled tarot draw and not astrology planets. Same birthday always returns the same card.",
+    body: "A fixed map from your birthday to one playing card. Not a shuffled tarot draw. Not astrology planets. Same birthday, same card, every time. You cannot reroll it.",
     href: "/what-is-cardology",
     label: "What is Cardology?",
   },
   {
     n: "2",
     title: "Find your birth card",
-    body: "Use the free calculator with month, day, and year. You get the lifelong birth card plus the planetary ruling card layer.",
+    body: "Month, day, year. The free calculator does the math you were about to do wrong. You get the lifelong birth card plus the planetary ruling card layer.",
     href: "/birth-card-calculator",
     label: "Birth card calculator",
   },
   {
     n: "3",
     title: "Separate birth card from ruling card",
-    body: "Birth card is the engine. Ruling card is the steering. If one description fits and the other explains the tone, you are reading it correctly.",
+    body: "Birth card is the engine. Ruling card is the steering. One describes you. The other explains why you said it like that. If both land, you are reading it right.",
     href: "/birth-card-vs-ruling-card",
     label: "Birth vs ruling",
   },
   {
     n: "4",
     title: "Read one real day",
-    body: "Pull today’s card of the day or notice which suit domain is loud in your week — hearts, clubs, diamonds, or spades.",
+    body: "Pull today’s card of the day. Or notice which suit is loud in your week: hearts, clubs, diamonds, or spades. It is usually the one you are pretending is fine.",
     href: "/card-of-the-day",
     label: "Card of the day",
   },
   {
     n: "5",
     title: "Compare two people",
-    body: "Run two birthdays through the compatibility calculator, then open the pair page for the deeper dynamic.",
+    body: "Run two birthdays through the compatibility calculator. Then open the pair page and read the part you were hoping it would not say.",
     href: "/birth-card-compatibility-calculator",
     label: "Compatibility calculator",
   },
   {
     n: "6",
     title: "Get a reading only if it earns it",
-    body: "If the free tools keep matching real life, the Chemistry Check ($24) reads your card beside one other person's: shared strengths, recurring friction, and where your years cross. A mirror, not a forecast. Prepared by Cass.",
+    body: "If the free tools keep hitting a little too close, the Chemistry Check ($24) reads your card beside one other person's. Shared strengths. Recurring friction. Where your years cross. A mirror, not a forecast. Prepared by Cass.",
     href: "/#chemistry-check",
     label: "The Chemistry Check · $24",
   },
@@ -76,19 +76,19 @@ const steps = [
 const faqs = [
   {
     q: "What do I need to start Cardology as a beginner?",
-    a: "A birthday. You do not need a special deck to calculate a birth card; the free calculator does the math. After that, read the card meaning, then the ruling card, and test the language against a real week.",
+    a: "A birthday. That is it. You do not need a special deck to calculate a birth card. The free calculator does the math. Then read the card meaning. Then the ruling card. Then hold the language up against a real week and see what flinches.",
   },
   {
     q: "Is Cardology hard to learn?",
-    a: "The entry point is simple: one birthday, one card. The cards are coordinates, pattern language, not fortune-telling. Depth comes from suits, ranks, ruling cards, timing, and relationships. Start with your card, then add one layer at a time.",
+    a: "The entry point is simple. One birthday, one card. The cards are coordinates, pattern language, not fortune-telling. Depth comes from suits, ranks, ruling cards, timing, and relationships. Start with your card. Add one layer at a time. You do not have to learn all of it tonight.",
   },
   {
-    q: "Should beginners start with tarot or Cardology?",
-    a: "Cardology uses a 52-card playing deck and locks your birth card to your birthday with fixed math. Tarot uses a 78-card deck and usually starts with a shuffle. If you want the fixed birthday card, start here. They are different tools.",
+    q: "Should beginners start with Cardology instead of tarot?",
+    a: "Cardology uses a 52-card playing deck and locks your birth card to your birthday with fixed math, unlike tarot, which uses a 78-card deck and usually starts with a shuffle. If you want the card that cannot change its mind, start here. They are different tools.",
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning, check your ruling card, look up one important person in your life, and test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($24) reads both people's cards together. It is a mirror, not a forecast.`,
+    a: `Read the full card meaning. Check your ruling card. Look up one person you think about too much. Test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($24) reads both people's cards together. It is a mirror, not a forecast.`,
   },
 ];
 
@@ -132,10 +132,10 @@ export default function CardologyForBeginnersPage() {
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
-          Start Cardology by finding the playing card locked to your birthday, reading
-          suit and rank in plain language, then testing the pattern against real life.
-          The cards are coordinates: pattern language, not fortune-telling. Find your
-          card free before anything paid.
+          Start Cardology by finding the playing card locked to your birthday. Read
+          suit and rank in plain language. Then test the pattern against your actual life,
+          not the one you describe on first dates. The cards are coordinates: pattern
+          language, not fortune-telling. Find your card free before anything paid.
         </p>
       </div>
       <p className="mb-3">
@@ -144,11 +144,11 @@ export default function CardologyForBeginnersPage() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        If that card keeps matching real life, the{" "}
+        If that card keeps describing you a little too well, the{" "}
         <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
           Chemistry Check · $24
         </Link>{" "}
-        reads it beside one other person&apos;s card. A mirror, not a forecast.
+        reads it beside one other person&apos;s card. The one you keep checking. A mirror, not a forecast.
       </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
@@ -160,8 +160,8 @@ export default function CardologyForBeginnersPage() {
         This path is for people who searched <strong>cardology for beginners</strong>,{" "}
         <strong>how to find my birth card</strong>, or{" "}
         <strong>what card am I based on my birthday</strong> and want the playing-card
-        system — not tarot Major Arcana math and not baby-announcement “birth cards.”
-        Arrived via Destiny Cards or Love Cards? Same family:{" "}
+        system. Not tarot Major Arcana math. Not baby-announcement “birth cards.”
+        You are in the right place. Came here from one of the older books? Same family:{" "}
         <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
           Destiny Cards &amp; Love Cards explained
         </Link>
@@ -193,7 +193,7 @@ export default function CardologyForBeginnersPage() {
       <section className="mt-10">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Step 2 live: find your birth card</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
-          Enter any birthday. The result is deterministic — refresh will not change it.
+          Enter any birthday. The result is deterministic. Refreshing will not change it. Neither will refreshing again.
         </p>
         <BirthCardCalculator />
       </section>
@@ -202,21 +202,21 @@ export default function CardologyForBeginnersPage() {
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">The only vocabulary you need on day one</h2>
         <ul className="prose-reading space-y-2 text-brand-ink-soft">
           <li>
-            <strong>Birth card</strong> — the lifelong playing card for your birthday.
+            <strong>Birth card</strong>: the lifelong playing card for your birthday. You do not get a new one.
           </li>
           <li>
-            <strong>Suit</strong> — hearts (feeling), clubs (mind), diamonds (value),
-            spades (work/will).
+            <strong>Suit</strong>: hearts (feeling), clubs (mind), diamonds (value),
+            spades (work/will). Pick which one you avoid.
           </li>
           <li>
-            <strong>Rank</strong> — Ace through King as movement inside that suit.
+            <strong>Rank</strong>: Ace through King, as movement inside that suit.
           </li>
           <li>
-            <strong>Ruling card</strong> — expression style layered on the birth card.
+            <strong>Ruling card</strong>: expression style layered on the birth card. The accent you did not know you had.
           </li>
         </ul>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          When you want spreads instead of birthday math, switch to{" "}
+          When you want spreads instead of birthday math, you are allowed to switch to{" "}
           <Link href="/how-to-read-playing-cards" className="text-brand-oxblood underline underline-offset-4">
             how to read playing cards
           </Link>
@@ -228,9 +228,10 @@ export default function CardologyForBeginnersPage() {
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">How to know it is working</h2>
         <p className="prose-reading text-brand-ink-soft">
           A useful card description names a specific behavior you can point to in the
-          last month — not vague flattery. If nothing matches after an honest week,
-          set it down. Cardology is a lens for self-awareness and entertainment;
-          tendencies, not fate. Method transparency lives on{" "}
+          last month. Not vague flattery. Not a compliment you screenshot. If nothing
+          matches after an honest week, set it down. Honest means you did not skip the
+          parts you disliked. Cardology is a lens for self-awareness and entertainment:
+          tendencies, not a verdict. Method transparency lives on{" "}
           <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology
           </Link>
@@ -239,11 +240,11 @@ export default function CardologyForBeginnersPage() {
       </section>
 
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
-        <p className="font-serif text-base text-brand-ink">When free tools are not enough</p>
+        <p className="font-serif text-base text-brand-ink">When the free tools stop being enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The Chemistry Check is a one-time $24 purchase: two people&apos;s cards, read
-          together by Cass: shared strengths, recurring friction, and where your years cross.
-          Delivered by email. A mirror, not a forecast. No subscription.
+          The Chemistry Check is a one-time $24 purchase. Two people&apos;s cards, read
+          together by Cass. Shared strengths. Recurring friction. Where your years cross.
+          Delivered by email. A mirror, not a forecast. No subscription to forget about.
         </p>
         <Link
           href="/#chemistry-check"
@@ -264,7 +265,7 @@ export default function CardologyForBeginnersPage() {
           ))}
         </div>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
-          Price, turnaround, and what the reading will not do are also on the{" "}
+          Price, turnaround, and what the reading will not do for you are also on the{" "}
           <Link href="/faq" className="text-brand-oxblood underline underline-offset-4">
             FAQ
           </Link>

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SITE_URL } from "@/lib/site";
 import { trackClientFunnelEvent } from "@/components/analytics/AnalyticsCapture";
 
-// "Share your card" — turns a calculator result into distribution. Uses the
+// "Share your card": turns a calculator result into distribution. Uses the
 // native share sheet where available (mobile), clipboard copy otherwise.
 // The shared URL is the card meaning page, which already has per-card OG art.
 export function ShareCard({
@@ -18,7 +18,7 @@ export function ShareCard({
   if (!slug) return null;
 
   const url = `${SITE_URL}/birth-card/${slug}`;
-  const text = `My birth card is the ${cardLabel}. What's yours?`;
+  const text = `My birth card is the ${cardLabel}. Apparently that explains a lot. What's yours?`;
 
   async function onShare() {
     trackClientFunnelEvent("card_shared", { placement: "calculator-result" });
@@ -27,7 +27,7 @@ export function ShareCard({
       try {
         await nav.share({ title: `${cardLabel} birth card`, text, url });
       } catch {
-        // Sheet dismissed or share failed — stay quiet, no clipboard surprise.
+        // Sheet dismissed or share failed: stay quiet, no clipboard surprise.
       }
       return;
     }
@@ -37,7 +37,7 @@ export function ShareCard({
         setCopied(true);
         window.setTimeout(() => setCopied(false), 2000);
       } catch {
-        // Clipboard unavailable (permissions) — fail quiet.
+        // Clipboard unavailable (permissions): fail quiet.
       }
     }
   }
@@ -48,7 +48,7 @@ export function ShareCard({
       onClick={onShare}
       className="text-xs text-brand-ink-soft underline underline-offset-4 transition hover:text-brand-ink"
     >
-      {copied ? "Link copied" : "Share your card →"}
+      {copied ? "Link copied. No take-backs" : "Share your card, make it everyone's problem →"}
     </button>
   );
 }

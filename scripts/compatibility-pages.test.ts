@@ -16,7 +16,7 @@ test("all 1431 compatibility pages offer only the Chemistry Check, with follow-u
   const pages = [compatIndexPage(), ...compatSlugs().map(slug => compatPage(slug)!)];
   expect(pages).toHaveLength(1431);
   for (const page of pages) {
-    for (const offer of ["The Chemistry Check — $24"])
+    for (const offer of ["The Chemistry Check: $24"])
       expect(page.body).toContain(offer);
     expect(page.body).toContain('href="/#chemistry-check"');
     expect(page.body).not.toMatch(/Timing Map|Family Snapshot|free-course/);

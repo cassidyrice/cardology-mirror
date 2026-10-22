@@ -77,7 +77,7 @@ export function DailyCardBlock({ daily }: { daily: DailyCardType }) {
                 : prc.card}
             </span>
             {prc.interpretation
-              ? ` — ${prc.interpretation.sweet_spot
+              ? `: ${prc.interpretation.sweet_spot
                   .trim()
                   .split(/[,.]/)[0]
                   .replace(/^you'?re\s+/i, "")

@@ -15,12 +15,12 @@ const UPDATED = PAGE_UPDATED_DATES["/karma-cards"];
 const TITLE =
   "Cardology Karma Cards for All 52 Birth Cards";
 const DESCRIPTION =
-  "Every Cardology birth card's Lifetime Gift (Environment) and Lifetime Challenge (Displacement), in one table. Three Fixed cards have neither — here's why.";
+  "Every Cardology birth card's Lifetime Gift (Environment) and Lifetime Challenge (Displacement), in one table. Three Fixed cards get neither. Here's why.";
 const OG_IMAGE = {
   url: "/og/karma-cards.png",
   width: 1200,
   height: 630,
-  alt: "Cardology karma cards — three playing cards fanned on paper",
+  alt: "Cardology karma cards, three playing cards fanned on paper",
 };
 
 export const metadata: Metadata = {
@@ -44,19 +44,19 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What are karma cards in Cardology?",
-    a: "Each birth card sits in a fixed position in the Life Spread. Reading that position against the next spread returns two related cards: the Lifetime Gift, also called the Environment card, and the Lifetime Challenge, also called the Displacement card. They describe two standing relationships to your own pattern — one that tends to come easily, one that tends to ask for maturity.",
+    a: "Each birth card sits in a fixed position in the Life Spread. Reading that position against the next spread returns two related cards: the Lifetime Gift, also called the Environment card, and the Lifetime Challenge, also called the Displacement card. They describe two standing relationships to your own pattern. One tends to come easily. The other keeps asking you to grow up about it.",
   },
   {
     q: "What is the difference between the Environment and Displacement card?",
-    a: "The Lifetime Gift (Environment) is the pattern you tend to have access to without working for it. The Lifetime Challenge (Displacement) is the pattern you tend to grow into by handling it badly first. Neither is a reward or a punishment; both are card relationships that make your own habits easier to notice.",
+    a: "The Lifetime Gift (Environment) is the pattern you tend to have access to without working for it. The Lifetime Challenge (Displacement) is the pattern you tend to grow into by handling it badly first. Neither is a reward. Neither is a punishment. Both are card relationships that make your own habits harder to ignore.",
   },
   {
     q: "Why do the Jack of Hearts, 8 of Clubs and King of Spades have no karma cards?",
-    a: "Those three are the Fixed cards. They hold the same position in every spread, so there is no displacement to read and no environment card to return. In practice a Fixed card carries its own lesson rather than trading it with a neighbour.",
+    a: "Those three are the Fixed cards. They hold the same position in every spread, so there is no displacement to read and no environment card to return. In practice a Fixed card carries its own lesson instead of trading it with a neighbour. Nobody to blame. Just you.",
   },
   {
     q: "Why do some cards show the same card as both gift and challenge?",
-    a: "The 2 of Hearts, 9 of Hearts, Ace of Clubs and 7 of Diamonds are the Semi-Fixed cards. They pair off with one partner in both roles — 2 of Hearts with Ace of Clubs, 9 of Hearts with 7 of Diamonds — so the same card shows up as both the gift and the challenge, in both directions.",
+    a: "The 2 of Hearts, 9 of Hearts, Ace of Clubs and 7 of Diamonds are the Semi-Fixed cards. They pair off with one partner in both roles: 2 of Hearts with Ace of Clubs, 9 of Hearts with 7 of Diamonds. So the same card shows up as both the gift and the challenge, in both directions. Same person, two jobs.",
   },
 ];
 
@@ -147,7 +147,7 @@ export default function KarmaCardsPage() {
             <strong>Lifetime Challenge (Displacement)</strong>. Both come from the
             card&rsquo;s fixed position in the Life Spread, so the same birth card
             always returns the same pair. The three Fixed cards carry neither. The
-            full table is below.
+            full table is below. Find yours. Try not to take it personally.
           </p>
         </div>
         <p className="mt-4 text-xs text-brand-ink-soft">
@@ -164,10 +164,10 @@ export default function KarmaCardsPage() {
 
       <section className="max-w-3xl space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <p>
-          Your birth card is not read in isolation. It sits at a fixed address in
+          Your birth card does not get read alone. It sits at a fixed address in
           the Life Spread, and that address has neighbours. Read your card&rsquo;s
-          position against the next spread and two cards come back every time: the
-          one sitting in your environment, and the one sitting where your card was
+          position against the next spread and two cards come back every time. One
+          is sitting in your environment. The other is sitting where your card was
           displaced. Cardology calls the first your <strong>Lifetime Gift</strong>{" "}
           and the second your <strong>Lifetime Challenge</strong>. Older tables
           call them the Environment card and the Displacement card. Same two
@@ -175,22 +175,22 @@ export default function KarmaCardsPage() {
         </p>
         <p>
           The <strong>Lifetime Gift (Environment)</strong> is the pattern you tend
-          to have on hand without having earned it. It shows up as the thing
-          people thank you for that cost you nothing, the room you are comfortable
-          in before anyone explains it. Its risk is that untrained ease stays
-          untrained: a gift you never examine is a gift you cannot aim.
+          to have on hand without having earned it. It is the thing people thank
+          you for that cost you nothing. The room you are comfortable in before
+          anyone explains it. The risk is that untrained ease stays untrained. A
+          gift you never examine is a gift you cannot aim.
         </p>
         <p>
           The <strong>Lifetime Challenge (Displacement)</strong> is the opposite
-          motion. It is the pattern you tend to meet by handling it badly first,
-          then better, then well. It usually arrives through other people who
-          embody the card you are still learning to use. Reading it as punishment
-          misses the point; it describes where your maturing happens, not a verdict
-          on your character.
+          motion. It is the pattern you tend to meet by handling it badly first.
+          Then better. Then well. It usually arrives through other people who
+          embody the card you are still learning to use. Yes, that person. Reading
+          it as punishment misses the point. It describes where your maturing
+          happens. It is not a verdict on your character.
         </p>
         <p>
-          Two structural exceptions are worth knowing before you read the table.
-          The three <strong>Fixed cards</strong> &mdash;{" "}
+          Two structural exceptions, before you go hunting for yourself in the
+          table. The three <strong>Fixed cards</strong>,{" "}
           {fixed.map((r, i) => (
             <span key={r.card.slug}>
               {i > 0 ? (i === fixed.length - 1 ? " and " : ", ") : ""}
@@ -202,22 +202,23 @@ export default function KarmaCardsPage() {
                 {r.card.label}
               </Link>
             </span>
-          ))}{" "}
-          &mdash; hold the same seat in every spread. Nothing displaces them, so
-          they return no karma cards at all and carry their own lesson instead. The
+          ))}
+          , hold the same seat in every spread. Nothing displaces them. They
+          return no karma cards at all and carry their own lesson instead. The
           four <strong>Semi-Fixed cards</strong> pair off with a single partner in
-          both roles, which is why their gift and challenge are the same card: the
-          2 of Hearts and Ace of Clubs trade with each other, and so do the 9 of
+          both roles. That is why their gift and challenge are the same card. The
+          2 of Hearts and Ace of Clubs trade with each other. So do the 9 of
           Hearts and 7 of Diamonds.
         </p>
         <p>
           These are card relationships, not forecasts. They describe tendencies you
-          can check against your own history &mdash; and the check is the useful
-          part. If you want the conceptual background first, read the{" "}
+          can check against your own history. The checking is the useful part. The
+          reading is just the excuse. If you want the conceptual background first,
+          read the{" "}
           <Link href="/shadow-karma-guide" className="underline underline-offset-4">
             shadow and karma guide
           </Link>
-          ; this page is the lookup table that guide points at.
+          . This page is the lookup table that guide points at.
         </p>
       </section>
 
@@ -226,9 +227,9 @@ export default function KarmaCardsPage() {
           Karma cards for all 52 birth cards
         </h2>
         <p className="mt-3 max-w-3xl text-base leading-relaxed text-brand-ink-soft">
-          Every card links to its full meaning. Red is Hearts and Diamonds, black
+          Every card links to its full meaning. Red is Hearts and Diamonds. Black
           is Clubs and Spades. A dash means the card is Fixed and has no karma
-          card.
+          card. It is not missing. It is just like that.
         </p>
         <TableScroll
           label="Karma cards for all 52 birth cards"

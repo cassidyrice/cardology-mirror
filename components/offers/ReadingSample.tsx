@@ -10,10 +10,10 @@ export function ReadingSample() {
       <div><p className="type-eyebrow">Birth card · February 17</p><h3>Eight of Diamonds</h3><p>{card?.title}</p></div>
     </div>
     <div className="reading-sample-dial">
-      <div><h4>At your best</h4><p>{card?.sweetSpot}</p></div>
+      <div><h4>When it works</h4><p>{card?.sweetSpot}</p></div>
       <div><h4>Pushed too far</h4><p>{card?.over}</p></div>
     </div>
-    <div className="reading-sample-question"><span>Your reflection</span><p>Which end of the dial did the people closest to you get this past month?</p></div>
-    <figcaption>Calculated card. Traditional interpretation. Your answer.</figcaption>
+    <div className="reading-sample-question"><span>Your homework</span><p>Which end of the dial did the people closest to you get this past month? Not the one you wish.</p></div>
+    <figcaption>Calculated card. Traditional meaning. Your move.</figcaption>
   </figure>;
 }

@@ -41,7 +41,7 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
 test("all 367 birthday pages show only the Chemistry Check without an invented delivery deadline", () => {
   for (const slug of ["", ...bornOnSlugs()]) {
     const body = bornOnPage(slug)!.body;
-    for (const offer of ["The Chemistry Check — $24"])
+    for (const offer of ["The Chemistry Check: $24"])
       expect(body).toContain(offer);
     expect(body).not.toMatch(/Timing Map|Family Snapshot|free-course/);
     expect(body).toContain("Includes seven days of email follow-up.");

@@ -44,7 +44,7 @@ export function KarmaOriginLab({
         Find where Environment and Displacement come from
       </h3>
       <p className="mx-auto mt-2 max-w-md text-center text-sm leading-relaxed text-brand-ink-soft [text-wrap:pretty]">
-        Same date, same card. Coordinates. You choose the meaning.
+        Same date, same card. It's coordinates, not a personality test. You pick the meaning.
       </p>
       {beat !== 3 && (
         <div
@@ -89,7 +89,7 @@ export function KarmaOriginLab({
       {beat === 3 && (
         <p className="mt-6 rounded-[3px] border border-brand-line bg-brand-paper p-4 text-sm leading-relaxed text-brand-ink-soft [text-wrap:pretty]">
           {birthCard} is a Fixed card. It has no Environment or Displacement pair.
-          The rest of the map still stands.
+          Nothing to trade, nobody to blame. The rest of the map still stands.
         </p>
       )}
     </section>
@@ -118,7 +118,7 @@ function EquationBeat({
           55 − (2 × {preview.month} + {preview.day}) = {raw}
           {raw <= 0 ? ` → ${raw} + 52 = ${preview.solarValue}` : ""}.
         </span>{" "}
-        That solar value is one playing card.
+        That solar value is one playing card. Just one. No wiggle room.
       </p>
       <p className="mt-4 text-xs font-bold uppercase tracking-wider text-brand-bronze">
         Which card is solar value {preview.solarValue}?
@@ -137,7 +137,7 @@ function EquationBeat({
       </div>
       {wrong && (
         <p role="status" className="mt-3 text-sm text-brand-oxblood">
-          Not that card. Same date, same card.
+          Not that card. Same date, same card. Do the math again.
         </p>
       )}
     </div>
@@ -173,7 +173,7 @@ function SpiritBeat({
       />
       {wrong && (
         <p role="status" className="mt-3 text-sm text-brand-oxblood">
-          Not that coordinate.
+          Not that coordinate. Close is not a coordinate.
         </p>
       )}
     </div>
@@ -209,8 +209,8 @@ function LifeKarmaBeat({ birthCard }: { birthCard: string }) {
             <MeaningLink code={karma.displacement} />.
           </p>
           <p className="mt-2 text-brand-ink-soft [text-wrap:pretty]">
-            These cards come from reading spirit against spread 1. Coordinates.
-            You choose the meaning.
+            These cards come from reading spirit against spread 1. That&rsquo;s it.
+            Coordinates. You choose what they mean. Probably dramatically.
           </p>
         </div>
       )}

@@ -182,7 +182,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
           </Link>
         </div>
         <p className="mt-4 max-w-[38em] text-xs leading-relaxed">
-          Cards are coordinates. You choose the meaning. Playing-card calculations, traditional interpretations, and space for your own reflection.
+          Cards are coordinates. You choose the meaning. Playing-card math, traditional interpretations, and room for you to disagree.
         </p>
       </div>
     </footer>

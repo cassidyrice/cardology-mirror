@@ -14,13 +14,13 @@ import { SITE_NAME, SITE_URL, BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_P
 export const metadata: Metadata = {
   title: "Cardology Blog: Birth Cards and 52-Card Astrology",
   description:
-    "Read Card Blueprints guides on birth cards, suits, ranks, compatibility, karma cards, famous-person profiles, 52-day periods, and real-life dynamics.",
+    "Card Blueprints guides on birth cards, suits, ranks, compatibility, karma cards, famous people, 52-day periods, and the dynamics you keep repeating.",
   alternates: { canonical: "/blog" },
   openGraph: {
     siteName: SITE_NAME,
     title: "Cardology Blog: Birth Cards and 52-Card Astrology",
     description:
-      "Educational Cardology articles organized by pillars: foundations, birth-card meanings, timing, spreads, compatibility, and practice.",
+      "Cardology articles by pillar: foundations, birth-card meanings, timing, spreads, compatibility, practice. Start with the one you are avoiding.",
     url: "/blog",
     type: "website",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
@@ -33,15 +33,15 @@ export default function BlogIndexPage() {
   const faqs = [
     {
       q: "Where should beginners start on the Cardology blog?",
-      a: "Start with the Cardology Foundations pillar, then calculate your birth card and read the matching card meaning page.",
+      a: "Start with the Cardology Foundations pillar. Then calculate your birth card. Then read the matching card meaning page. Skip ahead and you end up rereading it anyway.",
     },
     {
       q: "Are Card Blueprints articles predictions?",
-      a: "The guides read cards as pattern language for people, relationships, timing, and repeated behavior.",
+      a: "No. The guides read cards as pattern language for people, relationships, timing, and repeated behavior. They describe. They do not schedule.",
     },
     {
       q: "How are the Cardology guides organized?",
-      a: "The blog is organized into pillars for foundations, birth-card meanings, timing and spreads, and relationships and practice.",
+      a: "Four pillars. Foundations. Birth-card meanings. Timing and spreads. Relationships and practice. Very organized. Unlike your camera roll.",
     },
   ];
   const jsonLd = [
@@ -87,24 +87,24 @@ export default function BlogIndexPage() {
           Cardology Blog
         </h1>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink sm:text-2xl">
-          Guides for birth cards, suits, ranks, timing, famous-person profiles, compatibility, karma cards, and the dynamics people keep repeating.
+          Guides for birth cards, suits, ranks, timing, famous-person profiles, compatibility, and karma cards. Plus the dynamics people keep repeating. You know which one is yours.
         </p>
         <div className="mt-6 rounded-2xl border border-brand-line bg-brand-paper-deep p-5">
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-brand-ink">
-            Start with the basics, then follow the pattern into real life: what a card means, how two cards interact, what a timing card is pressing on, and why the same relationship dynamic keeps showing up.
+            Start with the basics. Then follow the pattern into real life. What a card means. How two cards interact. What a timing card is pressing on. Why the same relationship dynamic keeps showing up. It is not the other person every time.
           </p>
         </div>
       </header>
 
       <section className="mb-10 grid gap-3 sm:grid-cols-2">
         {[
-          ["New to Cardology?", "Start with the beginners path.", "/cardology-for-beginners", false],
-          ["Find your birth card", "Free calculator — playing cards, not tarot.", "/birth-card-calculator", false],
-          ["Know your birthday?", "Look up any date in the calendar.", BIRTHDAY_DIRECTORY_PATH, true],
-          ["Comparing two people?", "Browse every card pairing.", COMPATIBILITY_DIRECTORY_PATH, true],
-          ["Playing cards birthday chart", "52-card astrology + full date grid.", "/52-card-astrology-explained", false],
-          ["Bring it back to your life", "The Chemistry Check: two people’s cards, read together.", "/#readings", false],
+          ["New to Cardology?", "Start with the beginners path. No shame.", "/cardology-for-beginners", false],
+          ["Find your birth card", "Free calculator. Playing cards, not tarot.", "/birth-card-calculator", false],
+          ["Know your birthday?", "Look up any date. Yes, theirs too.", BIRTHDAY_DIRECTORY_PATH, true],
+          ["Comparing two people?", "Browse every card pairing. Including that one.", COMPATIBILITY_DIRECTORY_PATH, true],
+          ["Playing cards birthday chart", "52-card astrology and the full date grid.", "/52-card-astrology-explained", false],
+          ["Bring it back to your life", "The Chemistry Check: two people’s cards, read together, by Cass.", "/#readings", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a
@@ -129,7 +129,7 @@ export default function BlogIndexPage() {
       </section>
 
       <section className="mt-4">
-        <h2 className="oracle-eyebrow mb-4">Pillar pages</h2>
+        <h2 className="oracle-eyebrow mb-4">Pillar pages. Start with one.</h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {pillars.map((pillar) => (
             <Link
@@ -148,7 +148,7 @@ export default function BlogIndexPage() {
       </section>
 
       <section className="mt-12">
-        <h2 className="oracle-eyebrow mb-4">Educational articles</h2>
+        <h2 className="oracle-eyebrow mb-4">Every guide. Pick the one that stings.</h2>
         <div className="grid gap-4">
           {posts.map((post) => (
             <article key={post.slug} className="border-t border-brand-line pt-5">
@@ -167,7 +167,7 @@ export default function BlogIndexPage() {
                   </p>
                 </div>
                 <Link href={blogPostPath(post)} className="paper-button small-button shrink-0">
-                  Read guide
+                  Read this one
                 </Link>
               </div>
             </article>

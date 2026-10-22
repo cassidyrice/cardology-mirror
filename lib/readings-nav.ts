@@ -1,5 +1,5 @@
 // Manual reading prices and scope approved by Cass on 2026-10-18.
-// 2026-10-20: three offers — Timing Map $19, Chemistry Check $24, Family Snapshot $30.
+// 2026-10-20: three offers: Timing Map $19, Chemistry Check $24, Family Snapshot $30.
 // 2026-10-21: Cass added the $13 Birth Card Blueprint as the entry-level offer (a generated 7-page PDF).
 export const BIRTH_CARD_BLUEPRINT_URL = "https://stan.store/mycardblueprint/p/birth-card-blueprint";
 export const CHEMISTRY_CHECK_URL = "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u";
@@ -44,10 +44,10 @@ export const READINGS_NAV: readonly ManualReading[] = [
     href: "/#birth-card-blueprint",
     checkoutHref: stanUrl(BIRTH_CARD_BLUEPRINT_URL, "homepage", "offer_card"),
     who: "Just you · Start here",
-    description: "Your birth card and your ruling card, in plain words: what you run on, where it slips, and one thing to do about it this week.",
-    includes: ["Your birth card and your planetary ruling card", "Your strengths, your shadow, and notes on love and work", "A seven-day practice and three questions to sit with"],
+    description: "Your birth card and your ruling card, in plain words. What you run on. Where it slips. One thing to actually do about it this week.",
+    includes: ["Your birth card and your planetary ruling card", "Your strengths. Your shadow. Notes on love and work.", "A seven-day practice and three questions you can’t scroll past"],
     image: "/brand/mockups/birth-card-blueprint-wide.webp",
-    delivery: "A 7-page PDF made from your birth date and emailed to you.",
+    delivery: "A 7-page PDF built from your birth date. Emailed to you. No small talk.",
     sampleHref: "/samples/birth-card-blueprint-sample.pdf",
   },
   {
@@ -57,8 +57,8 @@ export const READINGS_NAV: readonly ManualReading[] = [
     href: "/#timing-map",
     checkoutHref: stanUrl(TIMING_MAP_URL, "homepage", "offer_card"),
     who: "Just you",
-    description: "Your card’s next twelve months: the seasons ahead, when to push and when to wait, and the dates worth circling.",
-    includes: ["Your core cards", "Your seasons across the next 12 months", "Key dates and a question for each season"],
+    description: "Your card’s next twelve months. The seasons ahead. When to push. When to sit down. The dates worth circling.",
+    includes: ["Your core cards", "Your seasons across the next 12 months", "Key dates, and one question per season you’ll want to dodge"],
     image: "/brand/mockups/timing-map-wide.webp",
   },
   {
@@ -67,9 +67,9 @@ export const READINGS_NAV: readonly ManualReading[] = [
     price: "$24",
     href: "/#chemistry-check",
     checkoutHref: chemistryCheckUrl("homepage", "offer_card"),
-    who: "You plus one person",
-    description: "Explore both people’s cards: shared strengths, recurring friction, and a question worth bringing into your next conversation.",
-    includes: ["Both people’s core cards", "Shared strengths and recurring friction", "Your current seasons and where your years cross"],
+    who: "You plus the one you keep thinking about",
+    description: "Both people’s cards, side by side. What you’re good at together. The fight you keep having. One question worth asking out loud next time.",
+    includes: ["Both people’s core cards", "Shared strengths and the friction that keeps coming back", "Your current seasons and where your years cross"],
     image: "/brand/mockups/chemistry-check-wide.webp",
   },
   {
@@ -78,9 +78,9 @@ export const READINGS_NAV: readonly ManualReading[] = [
     price: "$30",
     href: "/#family-snapshot",
     checkoutHref: stanUrl(FAMILY_SNAPSHOT_URL, "homepage", "offer_card"),
-    who: "You plus two people",
-    description: "Three people’s cards side by side: who steadies whom, where friction repeats, and how your years line up together.",
-    includes: ["All three people’s core cards", "Pairwise strengths and friction", "Where the three of your years cross"],
+    who: "You plus two people (yes, those two)",
+    description: "Three people’s cards side by side. Who steadies whom. Where the same argument repeats. How your years line up, like it or not.",
+    includes: ["All three people’s core cards", "Every pair: strengths and friction", "Where the three of your years cross"],
     image: "/brand/mockups/family-snapshot-wide.webp",
   },
 ];

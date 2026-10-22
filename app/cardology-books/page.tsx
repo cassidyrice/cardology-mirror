@@ -11,7 +11,7 @@ const UPDATED = PAGE_UPDATED_DATES["/cardology-books"];
 
 const TITLE = "Cardology Books & Decks: Every Title and Catalogue Record";
 const DESCRIPTION =
-  "The cardology bibliography, 1762 to today — Richmond 1893, Randall & Campbell 1947, Lein 1978, Camp 1992 — with publisher, year, scope and library record.";
+  "The cardology bibliography, 1762 to today. Richmond 1893, Randall & Campbell 1947, Lein 1978, Camp 1992. Publisher, year, scope, library record.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -32,28 +32,28 @@ const GROUPS: { id: string; heading: string; blurb: string; pick: (e: LibraryEnt
     id: "before",
     heading: "Before cardology (1762)",
     blurb:
-      "The deck-as-calendar arithmetic predates the practice by 130 years. Any history that starts in 1893 starts late.",
+      "The deck-as-calendar arithmetic is 130 years older than the practice. Any history that starts in 1893 is late. Like you, to most things.",
     pick: (e) => e.kind === "ephemera",
   },
   {
     id: "foundational",
-    heading: "The foundational texts (1892–1947)",
+    heading: "The foundational texts (1892 to 1947)",
     blurb:
-      "Three books contain everything later authors rearrange: the solar calendar, the birthday chart, and the Life Spread.",
+      "Three books hold everything later authors rearrange. The solar calendar. The birthday chart. The Life Spread. Everyone after is moving the furniture.",
     pick: (e) => e.kind === "book" && e.year < "1970",
   },
   {
     id: "modern",
-    heading: "The modern system (1978–2006)",
+    heading: "The modern system (1978 to 2006)",
     blurb:
-      "Where the practice got its popular names — metasymbology, then Destiny Cards — and its yearly-spread machinery.",
+      "Where the practice got its popular names, first metasymbology and then Destiny Cards. Also its yearly-spread machinery.",
     pick: (e) => e.kind === "book" && e.year >= "1970",
   },
   {
     id: "adjacent",
     heading: "Decks and adjacent cartomancy",
     blurb:
-      "Shuffled-draw decks are a different practice from birth-card work. They are listed here because they are the titles most often mistaken for it.",
+      "Shuffled-draw decks are a different practice from birth-card work. They are listed because people mistake them for it constantly. Now you won't.",
     pick: (e) => e.kind === "deck",
   },
 ];
@@ -118,20 +118,20 @@ export default function CardologyBooks() {
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
-          The cardology literature is small: one 1893 source text, one 1947 book that
-          turned it into a birthday chart, and a handful of modern treatments that
+          The cardology literature is small. One 1893 source text. One 1947 book that
+          turned it into a birthday chart. A handful of modern treatments that
           rearrange both. {CARDOLOGY_LIBRARY.length} titles are listed below, each with its publisher, year,
           what it actually contains, and a link to its Library of Congress,
-          archive.org or Open Library record — so you can check any claim against the
-          book rather than against another website.
+          archive.org or Open Library record. Check any claim against the book.
+          Not against another website quoting another website.
         </p>
       </div>
 
       <p className="mb-6 text-sm text-brand-ink-soft">
         Every record here was resolved against a public catalogue on{" "}
-        {updatedLabel(LIBRARY_VERIFIED_ON)}. Titles we could not verify are left out
-        rather than listed with a guessed year or publisher, and claims that rest on
-        one author&rsquo;s own word are marked <em>self-reported</em>. Dates in
+        {updatedLabel(LIBRARY_VERIFIED_ON)}. Titles we could not verify are left out.
+        No guessed years. No guessed publishers. Claims that rest on one
+        author&rsquo;s own word are marked <em>self-reported</em>. Dates in
         context:{" "}
         <Link href="/what-is-cardology#lineage" className="text-brand-oxblood underline underline-offset-4">
           the sourced lineage
@@ -158,8 +158,9 @@ export default function CardologyBooks() {
       <section className="mt-10" id="corrections">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Corrections and additions</h2>
         <p className="prose-reading text-brand-ink-soft">
-          Missing a title, or holding an edition that contradicts a date here? Send
-          the catalogue record and it gets added or fixed — a citation, not a claim.{" "}
+          Missing a title? Holding an edition that contradicts a date here? Send
+          the catalogue record and it gets added or fixed. A citation, not a claim.
+          Your memory of a bookshop in 2009 does not count.{" "}
           <Link href="/contact" className="text-brand-oxblood underline underline-offset-4">
             Contact
           </Link>

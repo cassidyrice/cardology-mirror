@@ -5,14 +5,14 @@ import { BIRTHDAY_DIRECTORY_PATH } from "@/lib/site";
 
 const START_LINKS = [
   {
-    label: "New here? Ten-minute beginner path",
+    label: "New here? Ten minutes. Beginner path",
     href: "/cardology-for-beginners",
     external: false,
   },
   { label: "All 52 cards", href: "/birth-card", external: false },
-  { label: "Look up a birthday", href: BIRTHDAY_DIRECTORY_PATH, external: true },
+  { label: "Look up someone’s birthday", href: BIRTHDAY_DIRECTORY_PATH, external: true },
   {
-    label: "What's your 52-day period?",
+    label: "Which 52-day period are you in right now?",
     href: "/52-day-period-meaning-tool",
     external: false,
   },

@@ -89,11 +89,11 @@ export function PlanetaryRulingCardChart({ rows }: { rows: RulingCardReferenceRo
             <p role="status" aria-live="polite" aria-atomic="true">{filtered.length} of {rows.length} birthdays{query.trim() ? " match your search" : " shown"}.</p>
             {activeFilter && <button type="button" onClick={() => { setQuery(""); setMonth("all"); }} className="min-h-11 px-2 font-semibold text-brand-oxblood underline underline-offset-4">Clear filters</button>}
           </div>
-          <p className="text-xs leading-relaxed text-brand-ink-soft">Card searches match both the birth card and ruling cards.</p>
+          <p className="text-xs leading-relaxed text-brand-ink-soft">Card searches match both the birth card and ruling cards. Yes, you can look up your ex&rsquo;s card. We can&rsquo;t stop you.</p>
         </div>
       )}
       <div id="ruling-chart-results" className="mt-5 space-y-3">
-        {filtered.length === 0 && <p className="border border-brand-line p-5">No birthdays match. Try a date such as 1/15, a card such as 7 of Clubs, or clear the filters.</p>}
+        {filtered.length === 0 && <p className="border border-brand-line p-5">Nothing matches. That&rsquo;s a typo, not a sign. Try a date such as 1/15, a card such as 7 of Clubs, or clear the filters.</p>}
         {MONTHS.map((name, index) => {
           const monthRows = filtered.filter((row) => row.month === index + 1);
           if (!monthRows.length) return null;

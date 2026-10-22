@@ -184,7 +184,7 @@ export function ScrollScrub({
 
   // Keep the latest callback reachable from the scroll loop without making it a
   // dependency of the controller effect. Synced in an effect, never during
-  // render — a render-phase ref write breaks under React Compiler.
+  // render: a render-phase ref write breaks under React Compiler.
   useEffect(() => {
     onActiveRef.current = onActiveSectionChange;
   }, [onActiveSectionChange]);

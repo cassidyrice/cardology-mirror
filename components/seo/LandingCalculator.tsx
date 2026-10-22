@@ -92,7 +92,7 @@ export function LandingCalculator() {
           Find your birth card.
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft sm:text-base">
-          Start with your birthday. Your card and a first reflection are free.
+          Start with your birthday. The card is free. So is the first uncomfortable thought.
         </p>
       </div>
 
@@ -135,7 +135,7 @@ export function LandingCalculator() {
             </p>
           ) : null}
           <button type="submit" className="accent-button large-button mt-4 w-full">
-            Show my card
+            Show me my card
           </button>
         </form>
       ) : (
@@ -155,7 +155,7 @@ export function LandingCalculator() {
                 setTimeout(() => dateRef.current?.focus(), 0);
               }}
             >
-              Not your birthday? Change it
+              Wrong birthday? Change it
             </button>
           </p>
         </div>

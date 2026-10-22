@@ -5,7 +5,7 @@ import { allCardSeo, cardBySlug, cardMeta } from "../lib/seo-cards";
 
 const NINE_OF_HEARTS_TITLE = "9 of Hearts Meaning: Birth Card, Love & Cartomancy";
 const NINE_OF_HEARTS_DESCRIPTION =
-  "9 of Hearts meaning as a birth card and in a reading: compassionate idealist, shadow, love/work, dates Aug 30–Dec 22. Playing cards, not tarot. Free calculator.";
+  "9 of Hearts meaning as a birth card: compassionate idealist, the shadow, love, work, Aug 30 to Dec 22. Playing cards, not tarot. Free calculator.";
 
 test("9 of Hearts uses the approved GSC title and meta", () => {
   const card = cardBySlug("9-of-hearts");
