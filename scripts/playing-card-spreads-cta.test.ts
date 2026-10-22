@@ -23,7 +23,7 @@ test("spreads close with the free calculator only", () => {
 
   const zone = page.slice(close);
   expect(zone).toContain('href="/birth-card-calculator"');
-  expect(zone).toContain("Find your birth card — free");
+  expect(zone).toContain("Find your birth card, free");
   expect(zone).toContain("accent-button");
   expect(zone).not.toContain("DEEP_DIVE");
   expect(zone).not.toContain("<DeepDiveCta");
@@ -53,7 +53,7 @@ test("the closing row renders after the FAQ, calculator first", () => {
   const calculator = zone.indexOf('href="/birth-card-calculator"');
   expect(calculator).toBeGreaterThan(-1);
   expect(zone).not.toContain("one-question-reading");
-  expect(zone).toContain("Find your birth card — free");
+  expect(zone).toContain("Find your birth card, free");
   expect(zone).toContain("The boards above stay fixed.");
   expect(zone).not.toMatch(/Deep Dive|Blueprint/);
   expect(zone).not.toMatch(/\bfortune\b/i);

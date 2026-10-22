@@ -137,7 +137,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
   if (!hydrated) {
     return (
       <p className="text-sm text-brand-ink-soft" aria-live="polite">
-        Loading your year…
+        Loading your year. Act casual…
       </p>
     );
   }
@@ -149,7 +149,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
         className="mx-auto flex w-full max-w-md flex-col items-center gap-3"
       >
         <label htmlFor="your-year-bd" className="type-eyebrow block w-full text-center">
-          Enter your birthday
+          Enter your birthday. The real one.
         </label>
         <input
           id="your-year-bd"
@@ -160,7 +160,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
           required
         />
         <button type="submit" className="accent-button large-button w-full text-center sm:w-auto">
-          See your year
+          Show me the year
         </button>
         <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
           Calculated on this page. Your birthday is never stored on our servers.
@@ -176,9 +176,9 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
           December 31 is the Joker boundary, sometimes called the Day Out of Time.
         </p>
         <p className="text-sm leading-relaxed text-brand-ink-soft">
-          The formula leaves this date outside the 52-card map, so there is no yearly
-          period sequence to show. The System Guide still covers how the rest of the
-          deck works.
+          The formula leaves this date outside the 52-card map. No yearly period
+          sequence to show. You are off the grid, technically. The System Guide still
+          covers how the rest of the deck works.
         </p>
         <button
           type="button"
@@ -197,7 +197,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
   if (!year || year.kind !== "year") {
     return (
       <p className="text-sm text-brand-oxblood">
-        Enter a full date (year, month, and day) to see your year.
+        That isn&rsquo;t a full date. Year, month, and day, then we can talk.
       </p>
     );
   }
@@ -239,7 +239,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
 
       <section aria-labelledby="year-periods-heading">
         <h2 id="year-periods-heading" className="type-eyebrow mb-3">
-          The rest of your year
+          The rest of your year, whether you&rsquo;re ready or not
         </h2>
         <ol className="flex flex-col gap-3">
           {upcoming.map((period) => (
@@ -267,7 +267,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
       </section>
 
       <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
-        Same birthday, same sequence every year; the cards change with the calendar.
+        Same birthday, same sequence every year. The cards move with the calendar. You can&rsquo;t reschedule them.
       </p>
 
       <div className="flex flex-col items-center gap-3">

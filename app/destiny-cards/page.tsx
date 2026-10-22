@@ -10,7 +10,7 @@ import { updatedLabel } from "@/lib/page-updated";
 
 const TITLE = "Cards of Destiny: Free Birth Card Calculator (Destiny Cards)";
 const DESCRIPTION =
-  "Cards of Destiny — also written Destiny Cards — lock your birthday to one playing card. Free calculator, ruling card, meaning, and the source books. Not tarot.";
+  "Cards of Destiny, also written Destiny Cards, lock your birthday to one playing card. Free calculator, ruling card, meaning, source books. Not tarot.";
 const UPDATED = PAGE_UPDATED_DATES["/destiny-cards"];
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     url: "/destiny-cards",
-    images: [{ url: "/og/destiny-cards.png", width: 1200, height: 630, alt: "Cards of Destiny — three playing cards fanned on paper" }],
+    images: [{ url: "/og/destiny-cards.png", width: 1200, height: 630, alt: "Cards of Destiny: three playing cards fanned on paper" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -43,30 +43,30 @@ export const metadata: Metadata = {
 };
 
 const nameRows = [
-  ["Destiny Cards / Cards of Your Destiny", "Birthday-to-playing-card work popularized in Robert Lee Camp’s books"],
-  ["Love Cards", "Camp’s relationship book — and the phrase people use for birth-card compatibility"],
-  ["Science of the Cards", "Treating the deck as a calendar-linked system, not a shuffle"],
+  ["Destiny Cards / Cards of Your Destiny", "Birthday-to-playing-card work made famous by Robert Lee Camp’s books. You have seen the spine"],
+  ["Love Cards", "Camp’s relationship book. Also what people type at 2am when they mean birth-card compatibility"],
+  ["Science of the Cards", "The deck treated as a calendar-linked system. No shuffle. No take-backs"],
   ["Cardology", "Card Blueprints’ name for the same family: birth card, ruling layer, timing, two-person maps"],
 ] as const;
 
 const claimRows = [
-  ["Month + day resolve to one lifelong birth card", "Guaranteed events on a date"],
+  ["Month + day resolve to one lifelong birth card", "Events scheduled for a date"],
   ["Same birthday → same card, every time", "Medical, legal, or financial advice"],
   ["Ruling card colors expression", "That Card Blueprints invented the tradition"],
-  ["Timing names focus and pressure", "Fate locked in"],
+  ["Timing names focus and pressure", "An ending you are stuck with"],
 ] as const;
 
 const langRows = [
-  ["Core card", "Birth Card / Destiny Card", "Birth card — calculator"],
-  ["Expression", "Planetary Ruling Card (PRC)", "Ruling card — birth vs ruling"],
+  ["Core card", "Birth Card / Destiny Card", "Birth card, via the calculator"],
+  ["Expression", "Planetary Ruling Card (PRC)", "Ruling card, see birth vs ruling"],
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $52"],
+  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $24"],
 ] as const;
 
 const tarotRows = [
-  ["Deck", "52 playing cards", "78-card tarot (usually Major Arcana pairs)"],
+  ["Deck", "52 playing cards", "78 cards. Tarot birth cards are usually Major Arcana pairs, not one card"],
   ["Method", "Birthday → fixed playing card", "Numerology-style reduction"],
   ["Shuffle?", "Not for the birth significator", "Usually yes for spreads"],
   ["Best for", "Birthday identity, chapters, two-date maps", "Archetypal narrative, open questions"],
@@ -75,63 +75,63 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free destiny card reading on this page is the calculator plus chart: enter a birthday and you get the destiny card (birth card), the planetary ruling card, and a full meaning page — no email required. Personal readings start at $13 and are optional.",
+    a: "Yes. The free reading here is the calculator plus the chart. Enter a birthday. You get the birth card, the planetary ruling card, and a full meaning page. No email. Nobody chasing you afterward. The Chemistry Check ($24) is optional, and you are allowed to leave without it.",
   },
   {
     q: "What are Destiny Cards?",
-    a: "A common name for the playing-card birth-card tradition: your birthday maps to one card in a 52-card deck, often with a ruling card and timing layers. Card Blueprints practices the same family as Cardology.",
+    a: "A common name for the playing-card birth-card tradition. Your birthday maps to one card in a 52-card deck, often with a ruling card and timing layers on top. Card Blueprints practices the same family and calls it Cardology. Different label. Same deck.",
   },
   {
     q: "Are Destiny Cards the same as Cardology?",
-    a: "Same family, different labels and products. Destiny Cards, Love Cards, and Science of the Cards are widely associated with Robert Lee Camp’s books. Cardology is what Card Blueprints calls its deterministic birth-card work, free calculators, and written Blueprint. Chart footnotes can differ by teacher — compare methods when results disagree.",
+    a: "Same family. Different labels, different products. Those titles, along with Love Cards and Science of the Cards, are widely associated with Robert Lee Camp’s books. Cardology is what Card Blueprints calls its deterministic birth-card work and free calculators. Chart footnotes can differ by teacher. When two results disagree, compare methods instead of keeping the one you liked.",
   },
   {
     q: "What does Love Cards mean?",
-    a: "Camp’s relationship-focused book, and the search phrase for birth-card compatibility. Here that maps to the free compatibility calculator.",
+    a: "Camp’s relationship book, and the search phrase for birth-card compatibility. Here it maps to the free compatibility calculator. Yes, you can run their birthday. You were going to anyway.",
   },
   {
     q: "What is the Science of the Cards?",
-    a: "Treating the playing-card deck as a calendar-linked, calculable system (birthdays in, significators out) rather than a shuffled draw. Cardology shares that framing and does not promise fate.",
+    a: "Treating the playing-card deck as a calendar-linked, calculable system: birthdays in, significators out, no shuffled draw. Cardology shares that framing. It does not promise you an ending.",
   },
   {
     q: "How do I find my destiny card?",
-    a: "Enter your birthday in the free birth card calculator. Same date always returns the same birth card.",
+    a: "Enter your birthday in the free birth card calculator. Same date, same birth card, every time. Asking twice does not help.",
   },
   {
-    q: "Are Destiny Cards the same as tarot?",
-    a: "No. Destiny Cards and Cardology use 52 playing cards locked to the birthday. Tarot uses 78 cards and usually shuffles; tarot birth cards are typically Major Arcana pairs from another formula.",
+    q: "Destiny Cards vs tarot: are they the same?",
+    a: "No. This system and Cardology use 52 playing cards locked to the birthday, unlike tarot, which uses 78 cards and usually shuffles. Tarot birth cards are not single playing cards; they are typically Major Arcana pairs from another formula.",
   },
   {
     q: "Can this show relationship compatibility?",
-    a: "Yes, as a two-birthday pattern map — not a decision about whether a relationship should continue. Use the compatibility calculator, then check the language against real behavior.",
+    a: "Yes, as a two-birthday pattern map. Not a ruling on whether the relationship should continue. Use the compatibility calculator, then check the language against how they actually behave, not how they text.",
   },
   {
     q: "What are Cards of Destiny?",
-    a: "Another search name for Destiny Cards: your birthday maps to one playing card in a 52-card deck. Use the calculator on this page.",
+    a: "Another search name for the same thing. Your birthday maps to one playing card in a 52-card deck. The calculator on this page does it in one step.",
   },
   {
     q: "Is Cards of Destiny the same as Destiny Cards?",
-    a: "Yes in search. Books and sites mix the labels. Same deck family here — not tarot.",
+    a: "In search, yes. Books and sites mix the labels like it costs nothing. Same deck family here. Playing cards, not tarot.",
   },
   {
     q: "Do I need the Robert Lee Camp books to use this?",
-    a: "No. The free calculator and published method are enough. The books are one doorway into the family, not a requirement.",
+    a: "No. The free calculator and the published method are enough. The books are one doorway into the family, not a requirement. You can take them out of your cart.",
   },
   {
     q: "Is there a Cards of Destiny compatibility chart?",
-    a: "Yes — but a chart is the slow way. A compatibility chart lists how each of the 52 cards reads against the others; the free compatibility calculator does the same lookup from two birthdays and shows the positions behind the answer rather than a single score.",
+    a: "Yes, but a chart is the slow way. A compatibility chart lists how each of the 52 cards reads against the others. The free compatibility calculator does the same lookup from two birthdays and shows the positions behind the answer rather than a single score to obsess over.",
   },
   {
     q: "Is there a Cards of Destiny app?",
-    a: "The calculator on this page works in any phone browser with no install and no account — enter a birthday and it returns the card, the ruling card, and the full meaning page.",
+    a: "The calculator on this page works in any phone browser. No install. No account. Enter a birthday and it returns the card, the ruling card, and the full meaning page. One less app on your home screen.",
   },
   {
     q: "What is a Cards of Destiny reading?",
-    a: "A reading built from the card your birthday lands on rather than from a shuffle: the birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page; a personal reading explores those cards alongside your chosen focus.",
+    a: "A reading built from the card your birthday lands on, not from a shuffle. The birth card, the ruling card behind it, and the yearly spread that says which 52-day period you are in. Start free with the calculator on this page. A personal reading looks at those cards next to the thing you keep circling.",
   },
   {
     q: "What are Robert Camp's Destiny Cards?",
-    a: "Robert Lee Camp published The Cards of Your Destiny in 1992 and the trade editions Destiny Cards and Love Cards in 1997, which is how the name reached bookshops. The system he writes about traces back to Olney Richmond's 1893 Mystic Test Book and the 1947 birthday chart in Sacred Symbols of the Ancients — publishers and catalogue records are in the books directory.",
+    a: "Robert Lee Camp published The Cards of Your Destiny in 1992 and the trade editions Destiny Cards and Love Cards in 1997. That is how the name reached bookshops. The system he writes about traces back to Olney Richmond's 1893 Mystic Test Book and the 1947 birthday chart from Florence Campbell and Edith Randall. Publishers and catalogue records are in the books directory.",
   },
 ];
 
@@ -180,36 +180,37 @@ export default function DestinyCardsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(article) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
 
-      <p className="type-eyebrow mb-3 !text-brand-bronze">Free lookup · not tarot · not fate</p>
+      <p className="type-eyebrow mb-3 !text-brand-bronze">Free lookup · not tarot · not a prophecy</p>
       <h1 className="display mb-3 text-3xl text-brand-ink">Cards of Destiny: Find Your Birth Card (Free Calculator)</h1>
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
-          Cards of Destiny and Destiny Cards are names for a birthday mapped to one
+          Cards of Destiny and Destiny Cards are two names for one thing: your birthday mapped to one
           card in a 52-card deck. Use the free calculator below. Card Blueprints calls the same
-          family <strong>Cardology</strong>. Pattern language — not tarot, not fortune-telling.
+          family <strong>Cardology</strong>. Pattern language. Not tarot. Not fortune-telling.
+          Just a card that keeps describing you.
         </p>
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
-        Free first: reveal your destiny card on this page. Optional next: the{" "}
+        Free first: find your birth card on this page. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($52)
+          Chemistry Check ($24)
         </Link>
-        {" "}— your card beside one other person’s, personally read by Cass.
+        {", "}your card beside one other person’s, read personally by Cass. Yes, that person.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
       </div>
       <div className="card-surface mb-6 rounded-2xl border !border-brand-line p-5">
-        <p className="font-serif text-base text-brand-ink">After your free destiny card</p>
+        <p className="font-serif text-base text-brand-ink">After your free birth card</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The free result gives you a card and a starting point. The Chemistry Check brings those patterns into one relationship, with Cass’s interpretation and questions for reflection.
+          The free result gives you a card and a place to start. That is all it promises. The Chemistry Check drags those patterns into one relationship, with Cass’s interpretation and questions you would rather dodge.
         </p>
         <Link
           href="/#readings"
           className="accent-button mt-4"
         >
-          See the Chemistry Check
+          Look at the Chemistry Check
         </Link>
       </div>
 
@@ -238,7 +239,7 @@ export default function DestinyCardsPage() {
         <p className="type-eyebrow mb-2 !text-brand-bronze">Cards of Destiny chart</p>
         <h2 className="font-serif text-3xl text-brand-ink">Birthday → playing card</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
-          Same map as the calculator. Pick a date, or type one above. Larger copy lives on the{" "}
+          Same map as the calculator. Pick a date or type one above. Yes, you can look up theirs too. The bigger version lives on the{" "}
           <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
             Cardology chart
           </Link>
@@ -252,11 +253,11 @@ export default function DestinyCardsPage() {
       <section id="free-reading" className="mt-10 scroll-mt-10">
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">Free destiny card reading</h2>
         <p className="prose-reading text-brand-ink-soft">
-          A destiny card reading starts with one input: a birthday. The calculator above
-          returns the destiny card itself, the planetary ruling card, and a link to the
-          card&rsquo;s full meaning — personality, love, money, shadow, and every birth date
-          that carries it. That is the complete free reading; nothing is gated behind an
-          email form.
+          It starts with one input: a birthday. The calculator above returns the birth
+          card itself, the planetary ruling card, and a link to the card&rsquo;s full meaning.
+          Personality, love, money, shadow, and every birth date that carries it. That is the
+          whole free reading. Nothing is hiding behind an email form. Nobody here is collecting
+          you.
         </p>
 
       </section>
@@ -265,8 +266,8 @@ export default function DestinyCardsPage() {
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">Same family, different names</h2>
         <p className="prose-reading mb-4 text-brand-ink-soft">
           If you searched <em>Destiny Cards</em>, <em>Love Cards</em>, <em>Science of the Cards</em>, or{" "}
-          <em>Cards of Your Destiny</em>, you are already in the playing-card birth-card family — not
-          tarot Major Arcana math.
+          <em>Cards of Your Destiny</em>, you are already in the playing-card birth-card family.
+          Not tarot Major Arcana math. You can close the other tabs.
         </p>
         <TableScroll label="Destiny Cards family names">
           <table className="w-full min-w-[32rem] border-collapse text-left text-sm text-brand-ink-soft">
@@ -288,10 +289,11 @@ export default function DestinyCardsPage() {
           </table>
         </TableScroll>
         <p className="prose-reading mt-4 text-brand-ink-soft">
-          Card Blueprints did not invent the deck-to-calendar idea. That lineage runs through Olney
+          Card Blueprints did not invent the deck-to-calendar idea. Nobody here is pretending otherwise.
+          That lineage runs through Olney
           Richmond’s <em>The Mystic Test Book</em> (1893), Florence Campbell and Edith Randall, and
           contemporary teachers such as Camp. The books are documentation. The deck is the system.
-          What we own here is the published method, the free tools, and the{" "}
+          What we own is the published method, the free tools, and the{" "}
           <strong>personal readings</strong>.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
@@ -309,15 +311,15 @@ export default function DestinyCardsPage() {
       <section className="mt-10">
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">What “Destiny Cards” usually includes</h2>
         <ol className="prose-reading list-decimal space-y-1.5 pl-5 text-brand-ink-soft">
-          <li>A <strong>birth card</strong> — one of 52 playing cards locked to your birthday</li>
-          <li>A <strong>planetary ruling card</strong> — how that birth card tends to express</li>
-          <li>Sometimes yearly or period cards — the chapter you are in</li>
-          <li>Sometimes two-person maps — attraction, friction, ease</li>
+          <li>A <strong>birth card</strong>: one of 52 playing cards locked to your birthday. Permanently.</li>
+          <li>A <strong>planetary ruling card</strong>: how that birth card tends to express. Its tone of voice.</li>
+          <li>Sometimes yearly or period cards: the chapter you are in, whether you like it or not</li>
+          <li>Sometimes two-person maps: attraction, friction, ease. The friction is usually why you came.</li>
         </ol>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           That is the same job Cardology does on this site. Branding and product differ. The deck
-          does not. The math is checkable. The prose is interpretation. We describe tendencies, not
-          fate.
+          does not care what the cover says. The math is checkable. The prose is interpretation.
+          We describe tendencies. Not an ending you are stuck with.
         </p>
       </section>
 
@@ -329,9 +331,9 @@ export default function DestinyCardsPage() {
             <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
               birth card calculator
             </Link>{" "}
-            (year helps the ruling-card layer).
+            (the year helps the ruling-card layer, so do not round it).
           </li>
-          <li>Read the fixed card — suit and rank.</li>
+          <li>Read the fixed card: suit and rank. It is not going to change for you.</li>
           <li>
             Separate layers: birth card = engine; ruling card = steering. See{" "}
             <Link href="/birth-card-vs-ruling-card" className="text-brand-oxblood underline underline-offset-4">
@@ -339,18 +341,18 @@ export default function DestinyCardsPage() {
             </Link>
             .
           </li>
-          <li>Test for a week. Keep language that names a behavior you can point to.</li>
+          <li>Test it for a week. Keep the language that names a behavior you can point to. Drop the parts that only flatter you.</li>
           <li>
-            Optional deepen: the{" "}
+            Optional, if it keeps landing:{" "}
             <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-              The Chemistry Check, $52
+              The Chemistry Check, $24
             </Link>
-            , one question read from your card and your year.
+            , your card read beside one other person’s.
           </li>
         </ol>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Example from the public method: January 15 resolves to the{" "}
-          <strong>Queen of Diamonds</strong> every time. New here? Start with{" "}
+          <strong>Queen of Diamonds</strong>. Every time. No exceptions for good behavior. New here? Start with{" "}
           <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">
             Cardology for beginners
           </Link>
@@ -361,23 +363,23 @@ export default function DestinyCardsPage() {
       <section className="mt-10" id="book">
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">The Cards of Destiny books</h2>
         <p className="prose-reading text-brand-ink-soft">
-          Searching the phrase usually turns up books before it turns up a
-          calculator, so here is the shelf in order. Robert Lee Camp&rsquo;s{" "}
+          Search the phrase and you get books before you get a calculator. So here
+          is the shelf, in order. Robert Lee Camp&rsquo;s{" "}
           <em>The Cards of Your Destiny</em> (Seven Thunders, 1992) carries the
-          yearly spread; his <em>Destiny Cards</em> and <em>Love Cards</em>
+          yearly spread. His <em>Destiny Cards</em> and <em>Love Cards</em>
           (Sourcebooks, 1997) are the trade editions that put the name in
           bookshops. Sharon Jeffers&rsquo; <em>Cards of Destiny</em> (2006) is a
           different author working the same birthday system. All three rest on
-          Olney Richmond&rsquo;s <em>Mystic Test Book</em> (1893) and the birthday
-          chart in <em>Sacred Symbols of the Ancients</em> (1947).
+          Olney Richmond&rsquo;s <em>Mystic Test Book</em> (1893) and Florence Campbell and
+          Edith Randall&rsquo;s <em>Sacred Symbols of the Ancients</em> (1947).
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Every title with its publisher, year, and catalogue record is in the{" "}
           <Link href="/cardology-books" className="text-brand-oxblood underline underline-offset-4">
             books and decks directory
           </Link>
-          . You do not need any of them to use the calculator above — the method is
-          published on the{" "}
+          . You do not need any of them to use the calculator above. Put the card
+          down. The method is published on the{" "}
           <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology page
           </Link>
@@ -388,24 +390,25 @@ export default function DestinyCardsPage() {
       <section className="mt-10" id="not-caraval">
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">Looking for the Caraval Deck of Destiny?</h2>
         <p className="prose-reading text-brand-ink-soft">
-          Different thing entirely. The Deck of Destiny in Stephanie Garber&rsquo;s
-          Caraval and Once Upon a Broken Heart novels is fiction — invented cards
-          with invented Fates. The Cards of Destiny on this page are a 52-card
-          playing deck mapped to calendar dates, in print since 1893. If you came
-          here for the novels, this page will not help.
+          Different thing entirely. The deck in Stephanie Garber&rsquo;s Caraval
+          and Once Upon a Broken Heart novels is fiction. Invented cards. Invented
+          immortals with opinions. The cards on this page are a 52-card playing deck
+          mapped to calendar dates, in print since 1893. If you came here for the
+          novels, this page cannot help you. Go finish the chapter.
         </p>
       </section>
 
       <section className="mt-10">
         <h2 className="type-eyebrow mb-3 !text-brand-bronze">Love Cards and compatibility</h2>
         <p className="prose-reading text-brand-ink-soft">
-          “Love Cards” is Camp’s relationship title — and how many people ask:{" "}
-          <em>what do our birthdays say about us?</em> On Card Blueprints that maps to the free{" "}
+          “Love Cards” is Camp’s relationship title. It is also how many people ask{" "}
+          <em>what do our birthdays say about us?</em>, usually about someone who has not texted back.
+          On Card Blueprints that maps to the free{" "}
           <Link href="/birth-card-compatibility-calculator" className="text-brand-oxblood underline underline-offset-4">
             compatibility calculator
           </Link>
-          : two dates in, a plain-language read of suit and rank dynamics you can compare with lived
-          experience. It is a map of friction and ease, not a verdict to marry or leave.
+          : two dates in, a plain-language read of suit and rank dynamics you can hold up against
+          what actually happened. It is a map of friction and ease. Not a verdict to marry or leave.
         </p>
       </section>
 
@@ -435,7 +438,7 @@ export default function DestinyCardsPage() {
           <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
             methodology
           </Link>
-          , re-run the date, and trust the method you can audit.
+          . Re-run the date. Trust the method you can audit, not the one that gave you the card you wanted.
         </p>
       </section>
 
@@ -463,9 +466,9 @@ export default function DestinyCardsPage() {
         </table>
         </TableScroll>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Camp’s books remain a major doorway into this family. Card Blueprints is Cassidy Rice’s
-          Cardology practice: free checkable tools, a published method, and one written report.
-          Related tradition. Distinct product.
+          Camp’s books are still a major doorway into this family. Card Blueprints is Cassidy Rice’s
+          Cardology practice: free tools you can check, a published method, and one paid reading.
+          Related tradition. Distinct product. Nobody is copying anyone&rsquo;s homework.
         </p>
       </section>
 
@@ -493,7 +496,7 @@ export default function DestinyCardsPage() {
         </table>
         </TableScroll>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Full side-by-side:{" "}
+          Full side-by-side, for whoever is still not sure:{" "}
           <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
             Cardology vs tarot
           </Link>
@@ -523,7 +526,7 @@ export default function DestinyCardsPage() {
         </Link>
         {" · "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          the Chemistry Check ($52)
+          the Chemistry Check ($24)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

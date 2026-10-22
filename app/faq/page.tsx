@@ -12,7 +12,7 @@ const UPDATED = PAGE_UPDATED_DATES[FAQ_PATH];
 
 const TITLE = "Cardology FAQ";
 const DESCRIPTION =
-  "Answers about birth cards, free calculators, personal readings with Cass, follow-up support, and the difference between calculation and interpretation.";
+  "Cardology FAQ: birth cards, free calculators, readings with Cass, follow-up support. What the math says, and what you keep reading into it.";
 const OG_IMAGE = { url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" };
 
 export const dynamic = "force-static";
@@ -48,7 +48,7 @@ export default function FaqPage() {
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
         <p className="prose-reading text-brand-ink-soft">
-          Start with your birthday, explore the card it maps to, and decide what the interpretation brings to your own experience. Here are answers about the tools, personal readings, support, and the limits of the system.
+          Start with your birthday. Look at the card it maps to. Then decide what the interpretation has to do with your actual life. Probably more than you wanted. Below: the tools, the personal readings, support, and where the system stops.
         </p>
       </div>
       <p className="mb-8 text-xs text-brand-ink-soft">

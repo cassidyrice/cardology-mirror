@@ -18,8 +18,8 @@ export function TattooBlock({ slug, label }: { slug: string; label: string }) {
       />
       <figcaption className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
         {court
-          ? `A single ${tattoo.suit.replace(/s$/, "")} pip on the ${tattoo.bodyLabel} — court cards have a face on the card, not in the tattoo.`
-          : `The exact ${tattoo.pipCount}-pip ${label} field on the ${tattoo.bodyLabel}. No card border, no index.`}{" "}
+          ? `A single ${tattoo.suit.replace(/s$/, "")} pip on the ${tattoo.bodyLabel}. Court cards keep their face on the card, not on you.`
+          : `The exact ${tattoo.pipCount}-pip ${label} field on the ${tattoo.bodyLabel}. No card border. No index. No regrets, probably.`}{" "}
         Generated reference, not a client&rsquo;s skin.{" "}
         <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
           All 52 pip tattoos

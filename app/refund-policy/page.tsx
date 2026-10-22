@@ -38,7 +38,7 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
         <section className="border border-brand-line bg-brand-paper-deep p-5">
           <p className="font-serif text-lg text-brand-ink">
-            Card Blueprints sells the $13 Birth Card Blueprint (a 7-page PDF) and three readings, the $39 12-Month Timing Map, the $52 Chemistry Check and the $65 Family Snapshot, through
+            Card Blueprints sells the $13 Birth Card Blueprint (a 7-page PDF) and three readings, the $19 12-Month Timing Map, the $24 Chemistry Check and the $30 Family Snapshot, through
             Stan Store. If something is wrong with your order or your reading,
             email us with the address you used at checkout and we will review it
             personally.

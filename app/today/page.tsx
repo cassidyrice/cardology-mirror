@@ -40,9 +40,9 @@ export default function TodayPage() {
       calculatorLabel="Free birth card calculator"
       showOffer={false}
       points={[
-        "Same date → same card. A birthday lands on one of 52 playing cards, every year.",
-        "Planetary timing for today sits on that card. A mirror, not a forecast. Not tarot.",
-        "No birthday saved here? The free calculator names the card. A saved birthday adds today's timing.",
+        "Same date → same card. A birthday lands on one of 52 playing cards, every year. It does not take requests.",
+        "Planetary timing for today sits on that card. A mirror, not a forecast. Not tarot. No candles.",
+        "No birthday saved here? The free calculator names the card in seconds. A saved birthday adds today's timing. Then you can stop guessing.",
       ]}
     >
       <TodayClient />

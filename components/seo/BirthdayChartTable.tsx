@@ -120,8 +120,9 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
         </table>
       </TableScroll>
       <p className="prose-reading mt-3 text-sm text-brand-ink-soft">
-        Red is Hearts and Diamonds, black is Clubs and Spades. Every cell links to that birthday&rsquo;s page.
-        December 31 is the Joker, the one date the 52-card map leaves unassigned. The full list with card names is at{" "}
+        Red is Hearts and Diamonds. Black is Clubs and Spades. Every cell links to that birthday&rsquo;s page,
+        including the ones you are about to look up for other people. December 31 is the Joker, the one date the
+        52-card map leaves unassigned. The full list with card names lives at{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           /born-on/
         </a>
@@ -144,7 +145,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
             <a href={BIRTHDAY_CHART_IMAGE.src} download="cardology-birthday-chart.png" className="text-brand-oxblood underline underline-offset-4">
               Download the PNG
             </a>{" "}
-            or pin it. Generated from the same calculation as the tool above.
+            or pin it, then stare at it. Same calculation as the tool above.
           </figcaption>
         </figure>
       ) : null}

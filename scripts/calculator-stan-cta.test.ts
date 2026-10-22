@@ -8,7 +8,7 @@ test("calculator result CTA goes straight to the Chemistry Check with result_cta
     "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u?utm_source=cardblueprints&utm_medium=calculator&utm_campaign=result_cta",
   );
   const src = readFileSync("components/seo/StanReadingCta.tsx", "utf8");
-  expect(src).toContain("Chemistry Check · $52");
+  expect(src).toContain("Chemistry Check · $24");
   expect(src).not.toMatch(/<h[1-6]/);
 });
 

@@ -18,13 +18,13 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Videos - Shadow Reading Films and Explainers",
   description:
-    "Watch Card Blueprints video explainers and shadow-reading films for birth cards, famous-person patterns, timing, compatibility, and relationship dynamics.",
+    "Cardology videos: explainers and shadow-reading films on birth cards, famous-person patterns, timing, compatibility. Your relationship dynamics, out loud.",
   alternates: { canonical: "/videos" },
   openGraph: {
     siteName: SITE_NAME,
     title: "Cardology Videos - Shadow Reading Films and Explainers",
     description:
-      "Card Blueprints videos on birth-card shadow readings, explainers, timing, compatibility, famous-person patterns, and relationship dynamics.",
+      "Card Blueprints videos on birth-card shadow readings, timing, compatibility, famous-person patterns, and relationship dynamics. Headphones on.",
     url: "/videos",
     type: "website",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
@@ -75,25 +75,26 @@ export default function VideosPage() {
           <p className="oracle-eyebrow mb-2">Quick answer</p>
           <p className="text-base leading-relaxed text-brand-ink">
             Card Blueprints videos explain birth-card meanings, shadow patterns, timing,
-            compatibility, famous-person examples, and practical relationship dynamics.
-            Start with the card that is active in your life, then watch how the shadow
-            pattern shows up in choices, timing, and relationships.
+            compatibility, famous-person examples, and how relationships actually go.
+            Start with the card that is active in your life. Then watch the shadow
+            pattern show up in your choices, your timing, your relationships.
+            Uncomfortable. Useful.
           </p>
         </div>
         <p className="mt-5 max-w-2xl font-serif text-xl leading-relaxed text-brand-ink">
-          The videos are for the moments when a written meaning is not enough: when
-          you want to hear the card named out loud, with the gift, distortion, and
-          real-life behavior made obvious.
+          The videos are for when a written meaning is not enough. When you need
+          to hear the card named out loud. The gift. The distortion. The real-life
+          behavior, made obvious. Like listening to your own voice memo.
         </p>
         <p className="mt-5">
           <a href={CARDOLOGY_VIDEO_CHANNEL} className="ink-button large-button inline-flex">
-            Open the hosted video channel
+            Open the video channel
           </a>
         </p>
       </header>
 
       <section>
-        <h2 className="oracle-eyebrow mb-4">Recent shadow-reading films</h2>
+        <h2 className="oracle-eyebrow mb-4">Recent shadow-reading films. Yours might be here.</h2>
         <div className="grid gap-4">
           {CARDOLOGY_VIDEOS.map((video) => {
             const cardSlug = videoCardSlug(video);

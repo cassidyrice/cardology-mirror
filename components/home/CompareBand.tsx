@@ -50,8 +50,8 @@ export function CompareBand() {
         <Kicker className="text-brand-gold">Compare</Kicker>
         <h2 className="type-h2 mt-3">Who are you dealing with?</h2>
         <p className="mt-4 text-brand-on-dark-soft">
-          Put in two birthdays. See where their card lands in your spread, and where yours lands in
-          theirs.
+          Two birthdays. See where their card lands in your spread. Then where yours lands in
+          theirs. You were going to check anyway.
         </p>
         <form onSubmit={onSubmit} className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5">
           <div className="text-left">
@@ -93,7 +93,7 @@ export function CompareBand() {
         ) : null}
         <p className="mt-6 text-sm">
           <a href="/compatibility/" className="editorial-link text-brand-on-dark-soft">
-            Browse every card pairing →
+            Browse every card pairing. Yes, all of them →
           </a>
         </p>
       </div>

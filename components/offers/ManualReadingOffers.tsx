@@ -22,17 +22,17 @@ export function ManualReadingOffers() {
                 <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-brand-bronze">✦</span><span>{item}</span></li>
               ))}
             </ul>
-            <p className="mb-6 mt-5 flex-1 text-sm leading-relaxed text-brand-ink-soft">{reading.delivery ?? "A private reading, personally prepared and delivered by email."}{reading.sampleHref ? <>{" "}<a href={reading.sampleHref} className="underline underline-offset-4">See a sample (PDF)</a></> : null}</p>
+            <p className="mb-6 mt-5 flex-1 text-sm leading-relaxed text-brand-ink-soft">{reading.delivery ?? "Personally prepared. Private. Delivered by email."}{reading.sampleHref ? <>{" "}<a href={reading.sampleHref} className="underline underline-offset-4">See a sample first (PDF)</a></> : null}</p>
             {reading.checkoutHref ? (
               <a href={reading.checkoutHref} data-order-reading={reading.id} className="inline-flex min-h-12 w-full items-center justify-center gap-3 bg-brand-ink px-4 py-4 text-center text-sm font-semibold text-brand-paper focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand-ink">
-                Order {reading.title} — {reading.price}<span aria-hidden="true">↗</span>
+                Order {reading.title} · {reading.price}<span aria-hidden="true">↗</span>
               </a>
             ) : (
               <>
                 <button type="button" disabled data-order-reading={reading.id} aria-describedby={`${reading.id}-availability`} className="min-h-12 w-full cursor-not-allowed bg-brand-ink px-4 py-4 text-center text-sm font-semibold text-brand-paper">
-                  Order {reading.title} — {reading.price}
+                  Order {reading.title} · {reading.price}
                 </button>
-                <p id={`${reading.id}-availability`} className="mt-2 text-center text-xs text-brand-ink-soft">Ordering opens soon.</p>
+                <p id={`${reading.id}-availability`} className="mt-2 text-center text-xs text-brand-ink-soft">Ordering opens soon. Sit tight.</p>
               </>
             )}
           </li>
@@ -40,7 +40,7 @@ export function ManualReadingOffers() {
       </ul>
       <div className="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-ink-soft">
         <p>{READING_FOLLOW_UP}</p>
-        <p className="mt-2">For questions about your reading, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="break-words underline underline-offset-4">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}</p>
+        <p className="mt-2">Questions about your reading? Email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="break-words underline underline-offset-4">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}</p>
       </div>
     </>
   );

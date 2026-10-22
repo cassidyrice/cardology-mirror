@@ -16,15 +16,15 @@ export function AboutCassSection() {
           className="mx-auto w-16 rounded-[3px] border border-brand-line sm:mx-0 sm:w-full"
         />
         <div>
-          <h2 className="type-h2">Who&rsquo;s behind this</h2>
+          <h2 className="type-h2">Who did this</h2>
           <p className="mt-4 max-w-[38em] text-[0.95rem] leading-relaxed text-brand-ink-soft">
-            I&rsquo;m Cass. I was told at five years old that I was the Eight of Diamonds. I&rsquo;ve spent
-            the years since figuring out how the deck actually works, then building the math so anyone
-            can check it. The calculation is fixed. The reading is the craft.
+            I&rsquo;m Cass. At five, someone told me I was the Eight of Diamonds. I never let it go.
+            I spent the years since figuring out how the deck actually works, then built the math so
+            anyone can check it. The calculation is fixed. The reading is the craft.
           </p>
           <p className="mt-4">
             <Link href="/about" className="editorial-link text-brand-ink">
-              More about me →
+              More about me, if you&rsquo;re curious →
             </Link>
           </p>
         </div>

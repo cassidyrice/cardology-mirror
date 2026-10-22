@@ -13,7 +13,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const TITLE = "Playing Card Spreads in Cardology";
 const DESCRIPTION =
-  "Playing card spreads in Cardology: the Life Spread, the Spirit Spread, and 90 yearly boards. How a birth card moves, with a worked example.";
+  "Playing card spreads in Cardology: the Life Spread, the Spirit Spread, 90 yearly boards. No shuffle. Watch one birth card move, worked example included.";
 
 const ON_THIS_PAGE = [
   { href: "#life-spread", label: "Life Spread" },
@@ -22,7 +22,7 @@ const ON_THIS_PAGE = [
   { href: "#planetary-ruling-card", label: "Planetary ruling card" },
   { href: "#faq", label: "FAQ" },
 ] as const;
-const OG_IMAGE = { url: "/og/playing-card-spreads.png", width: 1200, height: 630, alt: "The playing board — fanned playing cards on paper" };
+const OG_IMAGE = { url: "/og/playing-card-spreads.png", width: 1200, height: 630, alt: "The playing board: fanned playing cards on paper" };
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 // The example everything below walks through: born February 17 → the 8♦,
 // age 35 on 2026-09-01. Every value verified against lib/engine-core
 // (getReading("1991-02-17", "2026-09-01")). If the engine changes, these
-// go stale — scripts/cardology-system.test.ts pins the underlying walks.
+// go stale. scripts/cardology-system.test.ts pins the underlying walks.
 const EXAMPLE = {
   birthdayLabel: "February 17",
   card: "8♦",
@@ -75,30 +75,30 @@ const EXAMPLE = {
 };
 
 const ZODIAC_TABLE = [
-  { glyph: "♈", sign: "Aries", dates: "Mar 21 – Apr 19", planet: "Mars ♂" },
-  { glyph: "♉", sign: "Taurus", dates: "Apr 20 – May 20", planet: "Venus ♀" },
-  { glyph: "♊", sign: "Gemini", dates: "May 21 – Jun 20", planet: "Mercury ☿" },
-  { glyph: "♋", sign: "Cancer", dates: "Jun 21 – Jul 22", planet: "the Moon ☽" },
-  { glyph: "♌", sign: "Leo", dates: "Jul 23 – Aug 22", planet: "the Sun ☉" },
-  { glyph: "♍", sign: "Virgo", dates: "Aug 23 – Sep 22", planet: "Mercury ☿" },
-  { glyph: "♎", sign: "Libra", dates: "Sep 23 – Oct 22", planet: "Venus ♀" },
-  { glyph: "♏", sign: "Scorpio", dates: "Oct 23 – Nov 21", planet: "Pluto ♇ (with Mars ♂)" },
-  { glyph: "♐", sign: "Sagittarius", dates: "Nov 22 – Dec 21", planet: "Jupiter ♃" },
-  { glyph: "♑", sign: "Capricorn", dates: "Dec 22 – Jan 19", planet: "Saturn ♄" },
-  { glyph: "♒", sign: "Aquarius", dates: "Jan 20 – Feb 18", planet: "Uranus ♅" },
-  { glyph: "♓", sign: "Pisces", dates: "Feb 19 – Mar 20", planet: "Neptune ♆" },
+  { glyph: "♈", sign: "Aries", dates: "Mar 21 to Apr 19", planet: "Mars ♂" },
+  { glyph: "♉", sign: "Taurus", dates: "Apr 20 to May 20", planet: "Venus ♀" },
+  { glyph: "♊", sign: "Gemini", dates: "May 21 to Jun 20", planet: "Mercury ☿" },
+  { glyph: "♋", sign: "Cancer", dates: "Jun 21 to Jul 22", planet: "the Moon ☽" },
+  { glyph: "♌", sign: "Leo", dates: "Jul 23 to Aug 22", planet: "the Sun ☉" },
+  { glyph: "♍", sign: "Virgo", dates: "Aug 23 to Sep 22", planet: "Mercury ☿" },
+  { glyph: "♎", sign: "Libra", dates: "Sep 23 to Oct 22", planet: "Venus ♀" },
+  { glyph: "♏", sign: "Scorpio", dates: "Oct 23 to Nov 21", planet: "Pluto ♇ (with Mars ♂)" },
+  { glyph: "♐", sign: "Sagittarius", dates: "Nov 22 to Dec 21", planet: "Jupiter ♃" },
+  { glyph: "♑", sign: "Capricorn", dates: "Dec 22 to Jan 19", planet: "Saturn ♄" },
+  { glyph: "♒", sign: "Aquarius", dates: "Jan 20 to Feb 18", planet: "Uranus ♅" },
+  { glyph: "♓", sign: "Pisces", dates: "Feb 19 to Mar 20", planet: "Neptune ♆" },
 ];
 
 const PLANET_FILTERS = [
-  { glyph: "☿", planet: "Mercury", filter: "The thinking filter: how the card talks, learns, and connects ideas." },
-  { glyph: "♀", planet: "Venus", filter: "The wanting filter: what the card loves, values, and attracts." },
-  { glyph: "♂", planet: "Mars", filter: "The doing filter: how the card pushes, fights, and gets things started." },
-  { glyph: "♃", planet: "Jupiter", filter: "The growing filter: where things open up, expand, and get lucky." },
-  { glyph: "♄", planet: "Saturn", filter: "The testing filter: where life applies pressure until the lesson sticks." },
-  { glyph: "♅", planet: "Uranus", filter: "The surprise filter: where life swerves, breaks routine, and innovates." },
-  { glyph: "♆", planet: "Neptune", filter: "The dreaming filter: what the card imagines, longs for, and dissolves into." },
-  { glyph: "♇", planet: "Pluto", filter: "The pressure card of a year: the one deep challenge the year keeps returning to." },
-  { glyph: "✦", planet: "Result", filter: "Where the Pluto pressure resolves: the payoff seat at the end of the year's walk." },
+  { glyph: "☿", planet: "Mercury", filter: "The thinking filter. How the card talks, learns and connects ideas, out loud or at 2am." },
+  { glyph: "♀", planet: "Venus", filter: "The wanting filter. What the card loves, values and attracts. Not always the same list." },
+  { glyph: "♂", planet: "Mars", filter: "The doing filter. How the card pushes, fights and gets things started." },
+  { glyph: "♃", planet: "Jupiter", filter: "The growing filter. Where things open up, expand and get lucky. Don't get smug." },
+  { glyph: "♄", planet: "Saturn", filter: "The testing filter. Where life applies pressure until the lesson sticks. It repeats itself until then." },
+  { glyph: "♅", planet: "Uranus", filter: "The surprise filter. Where life swerves, breaks routine and innovates. The routine was boring anyway." },
+  { glyph: "♆", planet: "Neptune", filter: "The dreaming filter. What the card imagines, longs for and dissolves into." },
+  { glyph: "♇", planet: "Pluto", filter: "The pressure card of a year. The one deep challenge the year keeps returning to." },
+  { glyph: "✦", planet: "Result", filter: "Where the Pluto pressure resolves. The payoff seat at the end of the year's walk." },
 ];
 
 type Spread = { grid: string[][]; crown: string[] };
@@ -155,13 +155,13 @@ function BoardGrid({ spread, highlight, label }: { spread: Spread; highlight: st
 // is authored: board N is the same structure the reading engine reads when it
 // resolves a person's year (year-blueprint.ts: karma spread = age mod 90).
 // Spread 90 is spread 0 (engine.js). The page publishes the 90 distinct
-// boards, ages 0–89.
+// boards, ages 0 to 89.
 //
 // These use a compact renderer, not BoardGrid. BoardGrid's per-cell Tailwind
 // classes + inline style cost ~200 bytes a cell; at 90 boards x 52 cards that
 // built a 1.7MB page. The classes below are emitted once, which keeps the
 // same markup near ~25 bytes a cell. Every board stays in the HTML. CSS shows
-// one decade at a time so age 35 is not under a scroll of boards 0–34.
+// one decade at a time so age 35 is not under a scroll of boards 0 to 34.
 const DECADE_STARTS = [0, 10, 20, 30, 40, 50, 60, 70, 80] as const;
 
 const decadeActiveSelectors = DECADE_STARTS.map(
@@ -239,7 +239,7 @@ function AllYearlySpreads({ highlight, exampleAge }: { highlight: string; exampl
             {DECADE_STARTS.map((start) => (
               <li key={start}>
                 <a href={`#decade-${start}`} aria-label={`Ages ${start} through ${start + 9}`}>
-                  {start}–{start + 9}
+                  {start}-{start + 9}
                 </a>
               </li>
             ))}
@@ -248,7 +248,7 @@ function AllYearlySpreads({ highlight, exampleAge }: { highlight: string; exampl
         {DECADE_STARTS.map((start) => (
           <section key={start} id={`decade-${start}`} className="year-decade scroll-mt-36">
             <h4 className="mb-2 font-serif text-xl text-brand-ink">
-              Ages {start}–{start + 9}
+              Ages {start} to {start + 9}
             </h4>
             <div className="space-y-1.5">
               {boards.slice(start, start + 10).map(({ n, spread }) => {
@@ -262,7 +262,7 @@ function AllYearlySpreads({ highlight, exampleAge }: { highlight: string; exampl
                   >
                     <summary className="cursor-pointer px-4 py-2.5 font-serif text-sm text-brand-ink">
                       Spread {n}
-                      <span className="text-brand-ink-soft"> — the board at age {n}{alias}</span>
+                      <span className="text-brand-ink-soft">: the board at age {n}{alias}</span>
                     </summary>
                     <div className="px-3 pb-4">
                       <CompactBoard spread={spread} highlight={highlight} caption={`Spread ${n}, the board at age ${n}: seven rows of seven seats plus a three-card crown.`} />
@@ -282,19 +282,19 @@ export default function PlayingCardSpreads() {
   const faqs = [
     {
       q: "What are the playing card spreads in Cardology?",
-      a: "Three things, and none of them involve shuffling: the Life Spread (all 52 cards in their fixed calendar seats), the Spirit Spread (the deck's second fixed arrangement), and the 90 yearly spreads (one board for each age from 0 through 89; age 90 repeats the board for age 0). Your birthday decides your card; the boards decide where that card sits and moves.",
+      a: "Three things. None of them involve shuffling. The Life Spread: all 52 cards in their fixed calendar seats. The Spirit Spread: the deck's second fixed arrangement. The 90 yearly spreads: one board for each age from 0 through 89, and age 90 repeats the board for age 0. Your birthday decides your card. The boards decide where that card sits and moves. You don't get a vote.",
     },
     {
       q: "How do the cards move through the spreads?",
-      a: "Every birthday the board re-deals to the next numbered spread, and your birth card lands in a new seat. Reading forward from that seat gives the seven ~52-day period cards of your year (Mercury through Neptune), and the two seats after them give the year's Pluto and Result cards. The Long Range card comes from your seven-year cycle, and Environment/Displacement come from seat trades between boards.",
+      a: "Every birthday the board re-deals to the next numbered spread. Your birth card lands in a new seat, ready or not. Read forward from that seat and you get the seven ~52-day period cards of your year, Mercury through Neptune. The two seats after them hold the year's Pluto and Result cards. The Long Range card comes from your seven-year cycle. Environment and Displacement come from seat trades between boards.",
     },
     {
       q: "What is a planetary ruling card?",
-      a: "Your birthday's astrology sign has a ruling planet — Aquarius answers to Uranus, Taurus to Venus, and so on. Find that planet's seat in your birth card's own walk and the card sitting there is your planetary ruling card: the style layer on top of your birth card. Cancer (the Moon), Leo (the Sun), and Scorpio (Mars and Pluto) get special handling, and some birthdays carry two ruling cards.",
+      a: "Your birthday's astrology sign has a ruling planet. Aquarius answers to Uranus, Taurus to Venus, and so on. Find that planet's seat in your birth card's own walk. The card sitting there is your planetary ruling card: the style layer on top of your birth card. The outfit people see before they meet you. Cancer (the Moon), Leo (the Sun) and Scorpio (Mars and Pluto) get special handling. Some birthdays carry two ruling cards.",
     },
     {
       q: "Can I still do a three-card or yes-or-no reading with playing cards?",
-      a: "You can deal any layout from any deck, but that isn't what this system is. Cardology never shuffles: the same birthday always produces the same card, the same boards, and the same yearly walk. The structure is the reading.",
+      a: "You can deal any layout from any deck. Nobody is stopping you. That just isn't this system. Cardology never shuffles. The same birthday always produces the same card, the same boards and the same yearly walk. Asking again won't change the answer. The structure is the reading.",
     },
   ];
 
@@ -340,14 +340,14 @@ export default function PlayingCardSpreads() {
         <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
           Cardology
         </Link>{" "}
-        playing card spreads are fixed boards, not a shuffled draw. The Life Spread and the Spirit Spread hold all 52 cards in permanent seats, and 90 yearly spreads re-deal the board for ages 0 through 89.
+        playing card spreads are fixed boards, not a shuffled draw. The Life Spread and the Spirit Spread hold all 52 cards in permanent seats. 90 yearly spreads re-deal the board for ages 0 through 89. Nothing here is random. Sorry.
       </p>
       <p className="prose-reading mb-4 text-brand-ink-soft">
         This page walks the{" "}
         <Link href={ex.cardPath} className="text-brand-oxblood underline underline-offset-4">
           {ex.card}
         </Link>{" "}
-        at age {ex.age}. Meanings for every card are in the{" "}
+        at age {ex.age}. One card, one year, every seat. Meanings for every card are in the{" "}
         <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
           birth card library
         </Link>
@@ -355,7 +355,7 @@ export default function PlayingCardSpreads() {
       </p>
       <p className="mb-5">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find your birth card — free
+          Find your birth card, free
         </Link>
       </p>
       <SpreadPageNav items={ON_THIS_PAGE} />
@@ -371,53 +371,55 @@ export default function PlayingCardSpreads() {
       </div>
 
       <section id="life-spread" className="mt-12 scroll-mt-36">
-        <h2 className="font-serif text-3xl text-brand-ink">The Life Spread — the board at rest</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The Life Spread: the board at rest</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Lay all 52 cards out in calendar order and you get the Life Spread:
-          seven rows of seven seats, plus three raised seats on top called the{" "}
+          Lay all 52 cards out in calendar order and you get the Life Spread.
+          Seven rows of seven seats. Three raised seats on top, called the{" "}
           <strong>crown</strong>. Every card owns exactly one seat here, forever.
-          It works like the starting position in chess — before anything moves,
-          every piece has a home square. The {ex.card} lives in row 5, on the
-          Uranus seat. That seat never changes.
+          Think of the starting position in chess: before anyone moves, every
+          piece has a home square. The {ex.card} lives in row 5, on the Uranus
+          seat. That seat never changes. Unlike your plans.
         </p>
         <div className="mt-5">
           <BoardGrid spread={ENGINE_SPREADS["0"]} highlight={ex.card} label="The Life Spread" />
         </div>
         <p className="mt-2 text-xs text-brand-ink-soft">
           The Life Spread, with the {ex.card}&rsquo;s fixed seat marked. The
-          seven columns carry the planet seats, Mercury → Neptune reading right
-          to left — which is what puts the {ex.card} on the Uranus seat.
+          seven columns carry the planet seats, Mercury → Neptune, reading right
+          to left. That is what puts the {ex.card} on the Uranus seat.
         </p>
       </section>
 
       <section id="spirit-spread" className="mt-12 scroll-mt-36">
-        <h2 className="font-serif text-3xl text-brand-ink">The Spirit Spread — the second board</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The Spirit Spread: the second board</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           The deck has one more fixed arrangement: the Spirit Spread. Same 49
-          seats, same crown — different tenants. Between the two boards, cards
-          trade seats, and those trades are not decoration:
+          seats. Same crown. Different tenants. Between the two boards, cards
+          trade seats. The trades are not decoration:
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">The stretch:</strong> the card whose seat
-            yours takes. That energy presses exactly where your card grips too
-            hard — the pressure is the curriculum.
+            yours takes. It presses exactly where your card grips too hard.
+            The pressure is the curriculum. You keep failing the same quiz for
+            a reason.
           </li>
           <li>
             <strong className="text-brand-ink">The steady:</strong> the card that takes
-            your seat. That energy shows up as support when you need it.
+            your seat. It shows up as support when you need it, usually right
+            after you insist you don&rsquo;t.
           </li>
           <li>
             <strong className="text-brand-ink">Environment &amp; Displacement:</strong>{" "}
-            the same trade read for a lifetime. For the {ex.card}: Environment{" "}
-            <strong>{ex.environment}</strong> (the energy that carries you) and
+            the same trade, read for a lifetime. For the {ex.card}: Environment{" "}
+            <strong>{ex.environment}</strong> (what carries you) and
             Displacement <strong>{ex.displacement}</strong> (the seat your card
             pushes out of place).
           </li>
         </ul>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          On this board the {ex.card} sits on the crown — one of the raised
-          seats above the grid.
+          On this board the {ex.card} sits on the crown. One of the raised
+          seats above the grid. Of course it does.
         </p>
         <div className="mt-5">
           <BoardGrid spread={ENGINE_SPREADS["1"]} highlight={ex.card} label="The Spirit Spread" />
@@ -425,25 +427,26 @@ export default function PlayingCardSpreads() {
       </section>
 
       <section id="yearly-spreads" className="mt-12 scroll-mt-36">
-        <h2 className="font-serif text-3xl text-brand-ink">The 90 Yearly Spreads — the board re-deals</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The 90 Yearly Spreads: the board re-deals</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Here is the moving part. Every birthday, the whole board re-deals into
-          the next numbered arrangement — spread 0, spread 1, spread 2, all the
-          way through spread 89, one board for each age from 0 through 89. Age 90
-          uses spread 0 again. Your card gets picked up and set down on a new seat.
-          Two copies of the board matter each year:
+          the next numbered arrangement. Spread 0, spread 1, spread 2, all the
+          way through spread 89: one board for each age from 0 through 89. Age 90
+          uses spread 0 again. Your card gets picked up and set down on a new
+          seat. Nobody asks. Two copies of the board matter each year:
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">Where you stand:</strong> the board
             numbered with your age. Turned {ex.age}? Open spread {ex.age} and
-            find your card — that seat is your position this year.
+            find your card. That seat is your position this year, whether you
+            RSVP&rsquo;d or not.
           </li>
           <li>
             <strong className="text-brand-ink">Where you walk:</strong> the next board
-            (number {ex.walkBoard}). Reading forward from your card&rsquo;s seat
-            gives the seven cards your year moves through — one for each planet,
-            about 52 days each, starting on your birthday.
+            (number {ex.walkBoard}). Read forward from your card&rsquo;s seat
+            and you get the seven cards your year moves through. One for each
+            planet. About 52 days each. The clock starts on your birthday.
           </li>
         </ul>
 
@@ -459,9 +462,9 @@ export default function PlayingCardSpreads() {
           <Link href="/52-day-period-meaning-tool" className="text-brand-oxblood underline underline-offset-4">
             52-day period
           </Link>{" "}
-          cards of this {ex.card} year, in walking order. Each planet is a filter:
-          the same person, the same year — but each ~52-day stretch runs through a
-          different lens.
+          cards of this {ex.card} year, in walking order. Each planet is a
+          filter. Same person, same year. Each ~52-day stretch just runs through
+          a different lens. You are not inconsistent. You are filtered.
         </p>
         <TableScroll label="The seven 52-day period cards" className="mt-4">
           <table className="w-full min-w-[24rem] border-collapse text-sm">
@@ -492,62 +495,65 @@ export default function PlayingCardSpreads() {
           </table>
         </TableScroll>
         <p className="prose-reading mt-4 text-brand-ink-soft">
-          Walk two more seats past Neptune and the year&rsquo;s last two cards
-          are waiting:
+          Walk two more seats past Neptune. The year&rsquo;s last two cards are
+          waiting there:
         </p>
         <ul className="prose-reading mt-3 space-y-2 text-brand-ink-soft">
           <li>
             <strong className="text-brand-ink">Pluto ♇ · {ex.pluto}:</strong> the
-            year&rsquo;s pressure card — the one deep challenge this year keeps
-            circling back to.
+            year&rsquo;s pressure card. The one deep challenge this year keeps
+            circling back to, like a text you still haven&rsquo;t answered.
           </li>
           <li>
             <strong className="text-brand-ink">Result ✦ · {ex.result}:</strong> where
-            the pressure pays off — what the year is building toward if the
-            Pluto work gets done.
+            the pressure pays off. What the year is building toward, if the
+            Pluto work actually gets done.
           </li>
           <li>
             <strong className="text-brand-ink">Long Range · {ex.longRange}:</strong>{" "}
-            one more signal, picked from the seven-year cycle instead of the
-            yearly board: the through-line theme of the whole year. (Notice{" "}
-            {ex.longRange} is also this card&rsquo;s Displacement — sometimes one
-            card shows up wearing two jobs.)
+            one more signal, pulled from the seven-year cycle instead of the
+            yearly board. The through-line theme of the whole year. (Notice{" "}
+            {ex.longRange} is also this card&rsquo;s Displacement. Sometimes one
+            card shows up working two jobs.)
           </li>
         </ul>
         <h3 id="all-90-spreads" className="mt-10 scroll-mt-36 font-serif text-2xl text-brand-ink">
           All 90 spreads
         </h3>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          All ninety boards are on this page — the same arrangements the reading
+          All ninety boards are on this page. Same arrangements the reading
           engine uses, not redrawn by hand. The list opens one decade at a time.
-          Type an age, or pick 30–39, to reach {ex.age} without scrolling boards
-          0–{ex.age - 1}. Board 0 is the Life Spread and board 1 is the Spirit
-          Spread, so those two do double duty: they are the deck&rsquo;s fixed
-          arrangements and the boards for ages 0 and 1.
+          Type an age, or pick 30-39, to reach {ex.age} without scrolling boards
+          0 to {ex.age - 1}. Board 0 is the Life Spread and board 1 is the Spirit
+          Spread, so those two work double shifts: they are the deck&rsquo;s
+          fixed arrangements and the boards for ages 0 and 1.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          The {ex.card} is marked on every board so you can watch one card travel.
-          Spread {ex.age} starts open, then spread {ex.walkBoard} is the board it
-          walks — the same year as the worked example above.
+          The {ex.card} is marked on every board so you can watch one card
+          travel. It does not stay put. Spread {ex.age} starts open. Spread{" "}
+          {ex.walkBoard} is the board it walks. Same year as the worked example
+          above.
         </p>
         <AllYearlySpreads highlight={ex.card} exampleAge={ex.age} />
         <p className="prose-reading mt-6 text-brand-ink-soft">
           Want your own seats and walk?{" "}
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             Find your card free
-          </Link>{" "}
-          — the calculator places you on the board from one birthday.
+          </Link>
+          . The calculator places you on the board from one birthday. Faster
+          than rereading that text.
         </p>
       </section>
 
       <section id="planetary-ruling-card" className="mt-12 scroll-mt-36">
-        <h2 className="font-serif text-3xl text-brand-ink">The planetary ruling card — set by your astrology sign</h2>
+        <h2 className="font-serif text-3xl text-brand-ink">The planetary ruling card: set by your astrology sign</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Your birthday does one more thing: it lands in an astrology sign, and
+          Your birthday does one more thing. It lands in an astrology sign, and
           every sign answers to a ruling planet. Find that planet&rsquo;s seat in
-          your birth card&rsquo;s own walk, and the card sitting there is your{" "}
-          <strong>planetary ruling card</strong> — the style layer people meet
-          first, on top of the birth card underneath.
+          your birth card&rsquo;s own walk. The card sitting there is your{" "}
+          <strong>planetary ruling card</strong>: the style layer people meet
+          first, on top of the birth card underneath. The outfit, not the
+          person.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Worked example: {ex.birthdayLabel} falls in {ex.zodiac}{" "}
@@ -555,7 +561,7 @@ export default function PlayingCardSpreads() {
           answers to {ex.rulingPlanet}{" "}
           <span aria-hidden="true">{ex.rulingPlanetGlyph}</span>. The{" "}
           {ex.rulingPlanet} seat of the {ex.card}&rsquo;s walk holds the{" "}
-          <strong>{ex.prc}</strong> — so a {ex.birthdayLabel} birthday is the{" "}
+          <strong>{ex.prc}</strong>. So a {ex.birthdayLabel} birthday is the{" "}
           {ex.card} expressed through the {ex.prc}.
         </p>
         <TableScroll label="Zodiac signs and their ruling planets" className="mt-5">
@@ -582,12 +588,13 @@ export default function PlayingCardSpreads() {
           </table>
         </TableScroll>
         <p className="mt-3 text-xs text-brand-ink-soft">
-          Cancer (the Moon), Leo (the Sun), and Scorpio (Mars and Pluto) get
-          special handling, and some birthdays carry two ruling cards — the{" "}
+          Cancer (the Moon), Leo (the Sun) and Scorpio (Mars and Pluto) get
+          special handling. Some birthdays carry two ruling cards. The{" "}
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
             free calculator
           </Link>{" "}
-          applies the right rule automatically. More detail:{" "}
+          applies the right rule automatically, so you don&rsquo;t have to.
+          More detail:{" "}
           <Link href="/planetary-ruling-card" className="text-brand-oxblood underline underline-offset-4">
             the planetary ruling card, explained
           </Link>
@@ -598,10 +605,9 @@ export default function PlayingCardSpreads() {
       <section id="planet-filters" className="mt-12 scroll-mt-36">
         <h2 className="font-serif text-3xl text-brand-ink">The planet symbols, and the filter each one provides</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          The planets here are not sky positions — they are labels for the seven
+          The planets here are not sky positions. They are labels for the seven
           seats every walk passes through, plus the two signal seats at the end.
-          Each one filters the card sitting in it, like colored glass over the
-          same lamp.
+          Each one filters the card sitting in it. Colored glass. Same lamp.
         </p>
         <div className="mt-5 space-y-3">
           {PLANET_FILTERS.map((p) => (
@@ -615,8 +621,8 @@ export default function PlayingCardSpreads() {
           ))}
         </div>
         <p className="prose-reading mt-5 text-brand-ink-soft">
-          To see one card read through all seven of these filters side by side,
-          use the{" "}
+          To watch one card get read through all seven of these filters side by
+          side, use the{" "}
           <Link href="/52-day-period-meaning-tool" className="text-brand-oxblood underline underline-offset-4">
             52-day period meaning tool
           </Link>
@@ -639,11 +645,12 @@ export default function PlayingCardSpreads() {
       <nav aria-label="Continue from the spreads" className="mt-10 border-t border-brand-line pt-5">
         <p className="text-xs uppercase tracking-[0.14em] text-brand-bronze">Your seat on the board</p>
         <p className="prose-reading mt-2 text-sm text-brand-ink-soft">
-          The boards above stay fixed. A birthday is what places a card.
+          The boards above stay fixed. They were here before you. A birthday is
+          what places a card.
         </p>
         <p className="mt-4">
           <Link href="/birth-card-calculator" className="accent-button inline-block">
-            Find your birth card — free
+            Find your birth card, free
           </Link>
         </p>
       </nav>

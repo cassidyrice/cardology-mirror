@@ -19,7 +19,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/sqVZCoe6a4Q",
     uploadDate: "2026-06-25",
     description:
-      "A deterministic Cardology shadow reading for the Five of Clubs.",
+      "A deterministic Cardology shadow reading for the Five of Clubs. Same card, every time. Watch the part you would rather skip.",
   },
   {
     title: "The Shadow of the 6♣ - The Nurturing Creator",
@@ -27,7 +27,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/tGs6j465Hss",
     uploadDate: "2026-06-24",
     description:
-      "A deterministic Cardology shadow reading for the Six of Clubs.",
+      "A deterministic Cardology shadow reading for the Six of Clubs. The gift and the distortion, said out loud.",
   },
   {
     title: "The Shadow of the 7♣ - The Analytical Creator",
@@ -35,7 +35,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/ZXNxnQdSR-s",
     uploadDate: "2026-06-23",
     description:
-      "A deterministic Cardology shadow reading for the Seven of Clubs.",
+      "A deterministic Cardology shadow reading for the Seven of Clubs. Press play before you research it for three weeks.",
   },
   {
     title: "The Shadow of the 8♣ - The Ambitious Builder",
@@ -43,7 +43,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/yqms4NwKgvo",
     uploadDate: "2026-06-22",
     description:
-      "A deterministic Cardology shadow reading for the Eight of Clubs.",
+      "A deterministic Cardology shadow reading for the Eight of Clubs. The pattern, minus the flattering lighting.",
   },
   {
     title: "The Shadow of the 9♣ - The Humanitarian Builder",
@@ -51,7 +51,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/yHwMLTWkRrY",
     uploadDate: "2026-06-21",
     description:
-      "A deterministic Cardology shadow reading for the Nine of Clubs.",
+      "A deterministic Cardology shadow reading for the Nine of Clubs. Someone in here is familiar. Possibly you.",
   },
   {
     title: "The Shadow of the 10♣ - The Master Builder",
@@ -59,7 +59,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/hqppnuXTk1A",
     uploadDate: "2026-06-20",
     description:
-      "A deterministic Cardology shadow reading for the Ten of Clubs.",
+      "A deterministic Cardology shadow reading for the Ten of Clubs. Fixed math, uncomfortable mirror.",
   },
   {
     title: "The Shadow of the J♣ - The Creative Messenger",
@@ -67,7 +67,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/963srdoLwm0",
     uploadDate: "2026-06-19",
     description:
-      "A deterministic Cardology shadow reading for the Jack of Clubs.",
+      "A deterministic Cardology shadow reading for the Jack of Clubs. Same birthday, same card, same blind spot.",
   },
   {
     title: "The Shadow of the Q♣ - The Nurturing Leader",
@@ -75,7 +75,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/eee6fabWwEo",
     uploadDate: "2026-06-18",
     description:
-      "A deterministic Cardology shadow reading for the Queen of Clubs.",
+      "A deterministic Cardology shadow reading for the Queen of Clubs. Watch it once. Then watch it about someone else.",
   },
   {
     title: "The Shadow of the K♣ - The Master Leader",
@@ -83,7 +83,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/IuAwNUL_8I8",
     uploadDate: "2026-06-17",
     description:
-      "A deterministic Cardology shadow reading for the King of Clubs, focused on clear thinking, leadership, certainty, and collaborative wisdom.",
+      "A deterministic Cardology shadow reading for the King of Clubs. Clear thinking, leadership, certainty, collaborative wisdom. Also what happens when you are sure and wrong.",
   },
   {
     title: "The Shadow of the 4♦ - The Financial Foundation Builder",
@@ -91,7 +91,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/J0dYBMytdz0",
     uploadDate: "2026-06-13",
     description:
-      "A Cardology shadow reading for the Four of Diamonds, focused on security, value, control, and learning to enjoy what has already been built.",
+      "A Cardology shadow reading for the Four of Diamonds. Security, value, control. And learning to enjoy what is already built instead of checking it again.",
   },
   {
     title: "The Shadow of the 5♦ - The Dynamic Entrepreneur",
@@ -99,7 +99,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/RkVJan1QOjE",
     uploadDate: "2026-06-12",
     description:
-      "A Cardology shadow reading for the Five of Diamonds, focused on freedom, money, restlessness, and material change.",
+      "A Cardology shadow reading for the Five of Diamonds. Freedom, money, restlessness, material change. The tab you keep open.",
   },
   {
     title: "The Shadow of the 6♦ - The Generous Provider",
@@ -107,7 +107,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/5T_5HaxwljY",
     uploadDate: "2026-06-11",
     description:
-      "A Cardology shadow reading for the Six of Diamonds, focused on generosity, responsibility, values, and balance.",
+      "A Cardology shadow reading for the Six of Diamonds. Generosity, responsibility, values, balance. Mostly balance.",
   },
   {
     title: "The Shadow of the 8♦ - The Businessman",
@@ -115,7 +115,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/tk0AwQ7ByEs",
     uploadDate: "2026-06-09",
     description:
-      "A Cardology shadow reading for the Eight of Diamonds, focused on ambition, power, money, and responsible material influence.",
+      "A Cardology shadow reading for the Eight of Diamonds. Ambition, power, money, responsible material influence. The responsible part is the hard part.",
   },
   {
     title: "The Shadow of the 9♦ - The Universal Provider",
@@ -123,7 +123,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/U8dP2OOh-BU",
     uploadDate: "2026-06-08",
     description:
-      "A Cardology shadow reading for the Nine of Diamonds, focused on generosity, release, value, and the cost of holding on too long.",
+      "A Cardology shadow reading for the Nine of Diamonds. Generosity, release, value. The cost of holding on too long. You know what you are holding.",
   },
   {
     title: "The Shadow of the 10♦ - The Wealthy Master",
@@ -131,7 +131,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/3seQUWVkxnw",
     uploadDate: "2026-06-07",
     description:
-      "A Cardology shadow reading for the Ten of Diamonds, focused on public success, money, scale, and material visibility.",
+      "A Cardology shadow reading for the Ten of Diamonds. Public success, money, scale, material visibility. Being seen, and what it costs.",
   },
   {
     title: "The Shadow of the J♦ - The Successful Messenger",
@@ -139,7 +139,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/Cfsv_D_tyXg",
     uploadDate: "2026-06-06",
     description:
-      "A Cardology shadow reading for the Jack of Diamonds, focused on charm, value, persuasion, and integrated material truth.",
+      "A Cardology shadow reading for the Jack of Diamonds. Charm, value, persuasion, integrated material truth. Charm is not a plan.",
   },
   {
     title: "The Shadow of the Q♦ - The Prosperous Nurturer",
@@ -147,7 +147,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/z4Yba6H-0Ug",
     uploadDate: "2026-06-05",
     description:
-      "A Cardology shadow reading for the Queen of Diamonds, focused on stewardship, prosperity, care, and values.",
+      "A Cardology shadow reading for the Queen of Diamonds. Stewardship, prosperity, care, values. Take care of the thing, not just the look of it.",
   },
   {
     title: "The Shadow of the K♦ - The Wealthy King",
@@ -155,7 +155,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/Bl4Vw0SGAw0",
     uploadDate: "2026-06-04",
     description:
-      "A Cardology shadow reading for the King of Diamonds, focused on authority, money, control, and collaborative stewardship.",
+      "A Cardology shadow reading for the King of Diamonds. Authority, money, control, collaborative stewardship. Control is not the same as stewardship.",
   },
   {
     title: "The Shadow of the A♠ - The Truth Pioneer",
@@ -163,7 +163,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/FLGmz0XRVQQ",
     uploadDate: "2026-06-03",
     description:
-      "A Cardology shadow reading for the Ace of Spades, focused on truth, initiation, identity, and transformation.",
+      "A Cardology shadow reading for the Ace of Spades. Truth, initiation, identity, transformation. Watch with the lights on.",
   },
   {
     title: "The Shadow of the 2♠ - The Skeptical Partner",
@@ -171,7 +171,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/Cu4ao274PuQ",
     uploadDate: "2026-06-02",
     description:
-      "A Cardology shadow reading for the Two of Spades, focused on partnership, skepticism, work, and shared pressure.",
+      "A Cardology shadow reading for the Two of Spades. Partnership, skepticism, work, shared pressure. Split the load. Out loud.",
   },
   {
     title: "The Shadow of the 3♠ - The Sorrowful Truth",
@@ -179,7 +179,7 @@ export const CARDOLOGY_VIDEOS: CardologyVideo[] = [
     url: "https://youtu.be/TASV4HUtzPw",
     uploadDate: "2026-06-01T22:11:42-07:00",
     description:
-      "A Cardology shadow reading for the Three of Spades. Includes time-specific examples; the written card meaning provides lasting context.",
+      "A Cardology shadow reading for the Three of Spades. Includes time-specific examples. The written card meaning is the part that keeps.",
   },
 ];
 
@@ -195,7 +195,7 @@ export function youtubeEmbed(url: string): string {
   return `https://www.youtube.com/embed/${youtubeId(url)}`;
 }
 
-// NOTE: keep the helpers below AFTER youtubeId — scripts/sync_videos.ts
+// NOTE: keep the helpers below AFTER youtubeId: scripts/sync_videos.ts
 // preserves everything from "export function youtubeId(" onward when it
 // rewrites this file; anything between the array and that marker is lost.
 
@@ -228,12 +228,12 @@ export const BIRTHDAY_REVEAL_VIDEOS: Record<
     title: "August 30 birth card: Nine of Hearts",
     url: "https://youtu.be/qjTBs9y7Q5k",
     description:
-      "A short birthday reveal for August 30, one of the Nine of Hearts birthdays. Read the full card meaning above.",
+      "A short birthday reveal for August 30, one of the Nine of Hearts birthdays. The full card meaning is above. Scroll up. It is right there.",
   },
   "jack-of-hearts": {
     title: "August 28 birth card: Jack of Hearts",
     url: "https://youtu.be/TWKKzFRC36o",
     description:
-      "A short birthday reveal for August 28, one of the Jack of Hearts birthdays. Read the full card meaning above.",
+      "A short birthday reveal for August 28, one of the Jack of Hearts birthdays. The full card meaning is above. You scrolled past it.",
   },
 };

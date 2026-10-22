@@ -1,7 +1,7 @@
 {
   "protocolVersion": "1.0",
   "name": "Card Blueprints",
-  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. Paid readings: the $13 Birth Card Blueprint (a 7-page PDF), the $39 12-Month Timing Map (just you), the $52 Chemistry Check and the $65 Family Snapshot (three people). The Chemistry Check is — two people's cards read together by Cass. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
+  "description": "Card Blueprints, published by Cassidy Rice, turns a date of birth into Cardology coordinates: the fixed playing-card birth card in a 52-card pattern language. This is not fortune-telling and not tarot. The free skill is a deep-link calculator. Paid readings: the $13 Birth Card Blueprint (a 7-page PDF), the $19 12-Month Timing Map (just you), the $24 Chemistry Check and the $30 Family Snapshot (three people). The Chemistry Check is — two people's cards read together by Cass. This card is a discovery manifest; skills are public HTTPS pages, not an A2A JSON-RPC task server.",
   "url": "https://cardblueprints.com/birth-card-calculator",
   "version": "1.0.0",
   "documentationUrl": "https://cardblueprints.com/what-is-cardology",
@@ -29,7 +29,7 @@
     {
       "id": "birth-card-from-dob",
       "name": "Birth card from date of birth",
-      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. The paid next step is the $52 Chemistry Check at https://cardblueprints.com/#chemistry-check (two people's cards read together by Cass).",
+      "description": "Input a date of birth (DOB). Output the fixed Cardology birth card and coordinates — a playing-card pattern language, not fortune-telling and not tarot. Deep-link the free calculator at https://cardblueprints.com/birth-card-calculator. The paid next step is the $24 Chemistry Check at https://cardblueprints.com/#chemistry-check (two people's cards read together by Cass).",
       "tags": [
         "cardology",
         "birth-card",
@@ -41,7 +41,7 @@
       "examples": [
         "What is the Cardology birth card for 1991-02-17?",
         "Open https://cardblueprints.com/birth-card-calculator and enter a birthday.",
-        "After the free birth card, compare it with someone else's in the $52 Chemistry Check at https://cardblueprints.com/#chemistry-check."
+        "After the free birth card, compare it with someone else's in the $24 Chemistry Check at https://cardblueprints.com/#chemistry-check."
       ],
       "inputModes": ["text/plain"],
       "outputModes": ["text/html", "text/plain"]

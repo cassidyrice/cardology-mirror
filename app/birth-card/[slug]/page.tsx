@@ -68,9 +68,9 @@ export async function generateMetadata({
         description,
         url: `/birth-card/${card.slug}`,
         type: "article",
-        images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }],
+        images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning: Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning — Cardology Birth Card` }] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${card.slug}.png`, width: 1200, height: 630, alt: `${card.label} Meaning: Cardology Birth Card` }] },
     };
   }
 
@@ -87,9 +87,9 @@ export async function generateMetadata({
         description,
         url: `/born-on/${date.slug}`,
         type: "article",
-        images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }],
+        images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning: Cardology Birth Card` }],
       },
-      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning — Cardology Birth Card` }] },
+      twitter: { card: "summary_large_image", title, description, images: [{ url: `/og/birth-card/${date.card.slug}.png`, width: 1200, height: 630, alt: `${date.card.label} Meaning: Cardology Birth Card` }] },
     };
   }
 
@@ -154,7 +154,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         url: `${SITE_URL}/og/birth-card/${card.slug}.png`,
         width: 1200,
         height: 630,
-        caption: `${card.label} Meaning — Cardology Birth Card`,
+        caption: `${card.label} Meaning: Cardology Birth Card`,
       },
     }),
     ...videos.map(videoJsonLd),
@@ -190,7 +190,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </div>
       </div>
       <div className="mt-5 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Quick answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">{cardQuickAnswer(card, dates)}</p>
       </div>
       <p className="mt-3 text-xs text-brand-ink-soft">
@@ -202,7 +202,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       <ShadowLayer code={card.code} />
       <OfferCta className="mt-8" />
 
-      <Section title="In a general reading">
+      <Section title="When it shows up in a reading">
         <p>{generalReadingText(card)}</p>
         {readingNotes ? (
           <>
@@ -212,9 +212,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             <p>
               {dedupeAgainstPrior(readingNotes.love, priorReadingText)}{" "}
               {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
-                  not this Next app — plain <a>, hub href from the generated index. */}
+                  not this Next app: plain <a>, hub href from the generated index. */}
               <a href={compatHubHref(card)} className="text-brand-oxblood underline underline-offset-4">
-                See {card.label} compatibility with all 52 cards →
+                See {card.label} compatibility with all 52 cards, if you must →
               </a>
             </p>
             <h3 className="mt-4 font-serif text-base text-brand-ink">In money and work</h3>
@@ -223,38 +223,39 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             <p>{readingNotes.timing}</p>
           </>
         ) : null}
-        <h3 className="mt-4 font-serif text-base text-brand-ink">As advice</h3>
+        <h3 className="mt-4 font-serif text-base text-brand-ink">As advice, if you take advice</h3>
         <p>{adviceReadingText(card)}</p>
       </Section>
 
       <Section title={`What does the ${card.label} mean as your birth card?`}>
         <p>
-          In Cardology, your birthday maps to a fixed card. The {card.label} belongs to the {suitWord(card)} suit. Its traditional meanings offer a way to reflect on strengths, habits, relationships, and work. Read the patterns below as possibilities to consider against your experience, rather than a fixed account of who you are.
+          In Cardology, your birthday maps to one fixed card. It did not ask how you feel about that. The {card.label} belongs to the {suitWord(card)} suit. Its traditional meanings are a way to look at your strengths, your habits, your relationships and your work. Read the patterns below as things to hold up against your actual life. They are not a full account of who you are. Nobody gets one of those.
         </p>
       </Section>
 
-      <Section title="At a glance">
+      <Section title="The receipts">
         <dl className="grid gap-3 text-sm sm:grid-cols-2">
           <InfoItem label="Card" value={card.label} />
           <InfoItem label="Suit domain" value={card.suitDomain} />
           <InfoItem label="Rank theme" value={rankTheme(card.rank)} />
-          <InfoItem label="Balanced expression" value={card.sweetSpot} />
-          <InfoItem label="Shadow" value={card.shadow || card.over} />
+          <InfoItem label="On a good day" value={card.sweetSpot} />
+          <InfoItem label="On a bad day" value={card.shadow || card.over} />
           <InfoItem label="Birth dates" value={dates.map((d) => d.label).join(", ")} />
         </dl>
       </Section>
 
-      <Section title="Quick meaning">
+      <Section title="The card, minus the small talk">
         <p>{card.coreIdentity || `The ${card.label} expresses ${card.suitDomain.toLowerCase()} through the lens of ${rankTheme(card.rank).toLowerCase()}.`}</p>
         <p>
-          In practical terms, this card isn&rsquo;t fate and it isn&rsquo;t a prediction — it&rsquo;s a mirror for the choices you keep making on repeat. When the {card.label} is balanced, you get the best of what {suitWord(card)} has to offer: {card.sweetSpot}
+          This card is not a prediction. It is a mirror for the choices you keep making on repeat, like an app you swear you deleted. When the {card.label} is balanced, you get the best of what {suitWord(card)} has to offer: {card.sweetSpot}
         </p>
       </Section>
 
-      <Section title={`As a tattoo`}>
+      <Section title={`If you are getting it tattooed`}>
         <p>
-          The pip field of the {card.label}, on skin. No card rectangle, no corner index.
-          If you ink this card, ink the layout a real deck uses — then check it is actually yours.
+          The pip field of the {card.label}, on skin. No card rectangle. No corner index.
+          If you ink this card, ink the layout a real deck uses. Then check it is actually yours.
+          People skip that part.
         </p>
         <p className="mt-3">
           <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
@@ -264,11 +265,11 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
       </Section>
 
-      <Section title="Interpretive variations to compare">
+      <Section title="Four ways to read the same card">
         <p>
-          Different Cardology readers tend to emphasize different facets of the same card.
-          Use these original comparison lenses to broaden the {card.label} meaning without
-          turning the card into a fixed personality label.
+          Different Cardology readers lean on different parts of the same card.
+          These four lenses widen the {card.label} meaning. None of them turns the card
+          into a personality label you get to hide behind.
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {angles.map((angle) => (
@@ -282,67 +283,67 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title={`${card.label} personality`}>
         <p>
-          People with the {card.label} birth card often learn through {suitDomainPlain(card)}. The rank adds the tone of {rankTheme(card.rank).toLowerCase()}, while the {suitWord(card)} suit points the pattern toward {card.suitDomain.toLowerCase()}. That combination can feel natural from the inside but very visible to others: the card tends to show up in decisions, attractions, work style, emotional rhythm, and the kind of problems a person repeatedly tries to solve.
+          People with the {card.label} birth card tend to learn through {suitDomainPlain(card)}. The rank adds the tone of {rankTheme(card.rank).toLowerCase()}. The {suitWord(card)} suit points the whole pattern at {card.suitDomain.toLowerCase()}. From the inside it feels normal. From the outside it is extremely visible. It shows up in your decisions, your attractions, your work style, your emotional rhythm, and the one problem you keep solving in a new font.
         </p>
         <p>
-          The healthiest expression is not about becoming more intense or more mystical. It is about noticing the card&rsquo;s middle lane. For the {card.label}, the middle lane is: {card.sweetSpot} When this is active, the card reads less like a label and more like a useful compass.
+          The healthy version is not about getting more intense or more mystical. It is about finding the card&rsquo;s middle lane and staying in it. For the {card.label}, the middle lane is: {card.sweetSpot} When that is running, the card stops being a label. It turns into a compass you actually use.
         </p>
       </Section>
 
-      <Section title="The pattern, in three positions">
+      <Section title="The pattern, at three volumes">
         <div className="space-y-4">
           <Lens label="Balanced" position="balanced" text={card.sweetSpot} />
           <Lens label="Under-expressed" position="under" text={card.under} />
           <Lens label="Over-expressed" position="over" text={card.over} />
         </div>
         <p className="mt-4 text-sm text-brand-ink-soft">
-          Three positions, not a verdict. The birth card is a range, not a box — so the honest question isn&rsquo;t “am I this card?” but “which end of the range am I parked at today?”
+          Three positions. Not a verdict. The birth card is a range, not a box. So the honest question is not &ldquo;am I this card?&rdquo; It is &ldquo;which end of the range am I parked at today?&rdquo; You already know.
         </p>
       </Section>
 
       <ShadowPrompts code={card.code} />
 
-      <Section title="Strengths">
+      <Section title="What you are actually good at">
         {card.gifts.length > 0 ? (
           <ul className="space-y-1.5">
             {card.gifts.map((g, i) => <li key={i} className="flex gap-2 text-brand-ink-soft"><span className="text-brand-bronze">·</span><span>{g}</span></li>)}
           </ul>
         ) : (
           <p>
-            The {card.label}&rsquo;s strength is its ability to bring {rankTheme(card.rank).toLowerCase()} into {suitDomainPlain(card)}. Others may experience this as a distinctive way of loving, thinking, building value, or carrying responsibility, depending on how centered the card is in the moment.
+            The {card.label}&rsquo;s strength is bringing {rankTheme(card.rank).toLowerCase()} into {suitDomainPlain(card)}. Other people feel it as a specific way of loving, thinking, building value, or carrying weight. How well it lands depends on how centered you are that day.
           </p>
         )}
       </Section>
 
-      <Section title="Shadow and growth edge">
+      <Section title="The shadow, and the way out">
         <p>{card.shadow || card.over}</p>
         <p>
-          The growth edge is almost always a return to proportion — unglamorous, but it works. Under-expressed? The medicine is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The medicine is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
+          The way out is almost always a return to proportion. Unglamorous. Works anyway. Under-expressed? The fix is participation: say the true thing, make the choice, ask for what matters, take the next clean step. Over-expressed? The fix is restraint: listen longer, loosen the grip, drop half the agenda, and let the pattern breathe instead of running the room.
         </p>
       </Section>
 
-            <Section title="Love and relationships">
+      <Section title="Love and relationships, honestly">
         <p>
-          In relationships, the {card.label} tends to reveal itself through {relationshipTheme(card)}. It can be deeply compelling when the person is centered, because the card brings a recognizable emotional signature. The shadow usually appears when the card tries to get safety through its over-expressed pattern instead of direct honesty.
+          In relationships, the {card.label} gives itself away through {relationshipTheme(card)}. Centered, it is magnetic. People clock the emotional signature from across the room. The shadow shows up when the card tries to buy safety with its over-expressed pattern instead of just being honest. You know the move. You did it recently.
         </p>
         <p>
-          For compatibility, compare the {card.label} with a partner&rsquo;s birth card and ruling card. The birth card shows the core pattern; the ruling card can show how the person expresses that pattern through personality, attraction, and day-to-day choices.
+          For compatibility, put the {card.label} next to a partner&rsquo;s birth card and ruling card. The birth card shows the core pattern. The ruling card shows how that person runs it: personality, attraction, and the small daily choices that quietly add up.
         </p>
       </Section>
 
       <CompatPairsSection card={card} />
 
-      <Section title="Career, work, and purpose">
+      <Section title="Work, and what you think it is for">
         <p>
-          At work, the {card.label} often wants roles where {workTheme(card)}. The best fit depends on the whole chart, but the birth card alone can show what kind of contribution feels meaningful and what kind of pressure creates distortion. If this card is repeatedly burned out, scattered, or controlling, the work may be asking for a cleaner expression of its suit and rank.
+          At work, the {card.label} wants roles where {workTheme(card)}. The full fit depends on the whole chart. The birth card alone still shows which kind of contribution feels meaningful, and which kind of pressure bends you out of shape. If this card keeps ending up burned out, scattered, or controlling, the work is asking for a cleaner version of its suit and rank. Not a new planner.
         </p>
         {card.lifeDirection && <p>{card.lifeDirection}</p>}
       </Section>
 
       {card.karma && (
-        <Section title="Karma connections">
+        <Section title="Your karma cards">
           <p className="mb-4">
-            In the Life Spread, the {card.label} has two primary karma connections. These are cards that represent shared energy, past-life patterns, or lessons the {card.label} is here to integrate.
+            In the Life Spread, the {card.label} has two primary karma connections. These cards stand for past-life patterns and the lessons the {card.label} is here to finally integrate. You probably know someone carrying one already.
           </p>
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {card.karma.environment && (
@@ -353,7 +354,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             )}
           </div>
           <p className="mt-4 text-sm text-brand-ink-soft">
-            The <strong>Lifetime Gift (Environment)</strong> represents a natural blessing or ease you bring into this life. The <strong>Lifetime Challenge (Displacement)</strong> represents a lesson or energy you are here to mature and integrate.
+            The <strong>Lifetime Gift (Environment)</strong> is a natural blessing, an ease you brought into this life. The <strong>Lifetime Challenge (Displacement)</strong> is a lesson you are here to grow up into and integrate. Slowly. Probably with complaints.
           </p>
         </Section>
       )}
@@ -361,9 +362,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       {dates.length > 0 && (
         <Section title={`${card.label} birth dates and ruling cards by zodiac sign`}>
           <p>
-            The {card.label} appears for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`}.
-            Every one of them shares the birth card, but the zodiac sign of the date picks a different
-            planetary ruling card, which is why two people with the same {card.label} birth card can feel so different in person.
+            The {card.label} shows up for {dates.length === 1 ? "one birthday" : `${dates.length} of the 365 calendar dates`}.
+            Every one of them shares the birth card. The zodiac sign of the date picks a different
+            planetary ruling card. That is why two people with the same {card.label} birth card can feel nothing alike in person. Same card. Different problems.
           </p>
           <TableScroll className="mt-3" label={`${card.label} birthdays with zodiac sign and ruling card`}>
             <table className="w-full min-w-[28rem] border-collapse text-left text-sm">
@@ -395,7 +396,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                                 <Link href={`/birth-card/${r.slug}`} className="text-brand-oxblood underline underline-offset-4">{r.label}</Link>
                               </span>
                             ))
-                          : "—"}
+                          : "·"}
                       </td>
                     </tr>
                   );
@@ -404,7 +405,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             </table>
           </TableScroll>
           <p className="mt-3 text-sm text-brand-ink-soft">
-            Read the ruling card as the style the {card.label} pattern is expressed through. Same engine, different steering.
+            Read the ruling card as the style the {card.label} pattern runs through. Same engine, different steering. Different bad habits.
           </p>
         </Section>
       )}
@@ -413,33 +414,33 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       {/* The diagonal is the system's most legible proof that this is a
           structure and not a lookup table, so it is derived here rather than
-          authored per card: value = 55 - 2M - D, so holding the value fixed
+          authored per card: value = 55 minus 2M minus D, so holding the value fixed
           drops the day by exactly 2 for every month advanced. */}
       {dates.length > 1 && (
-        <Section title="The calendar walk">
+        <Section title="The calendar walk (it is just math)">
           <p>
-            Every date resolves through one formula: <strong>Solar Value = 55 − (2 × Month + Day)</strong>,
-            and each card holds one fixed value. Advance one month and 2 × Month grows by two, so the day
+            Every date runs through one formula: <strong>Solar Value = 55 − (2 × Month + Day)</strong>.
+            Each card holds one fixed value. Move forward one month and 2 × Month grows by two, so the day
             has to drop by two to keep that value. That makes this card&rsquo;s birthdays a straight diagonal
-            across the calendar rather than a scatter:
+            across the calendar. Not a scatter. Not a vibe:
           </p>
           <p className="mt-3 font-mono text-sm text-brand-ink">
             {dates.map((d) => d.label).join(" → ")}
           </p>
           <p className="mt-3">
             The walk runs {dates.length} step{dates.length === 1 ? "" : "s"} and then stops, because the next
-            month would need a day number the calendar does not have. Every card in the deck traces its own
-            diagonal this way — which is why the cards cover between 1 and 12 dates each rather than an even share.
+            month would need a day number the calendar does not have. Every card in the deck draws its own
+            diagonal like this. That is why the cards cover between 1 and 12 dates each instead of an even share. Math does not do fairness.
           </p>
         </Section>
       )}
 
-      <Section title="Related cards to compare">
+      <Section title="Other cards to compare yourself to">
         <ul className="grid grid-cols-1 gap-2 text-sm">
           {related.map((c) => (
             <li key={c.slug}>
               <Link href={`/birth-card/${c.slug}`} className="text-brand-oxblood underline underline-offset-4">{c.code} {c.label}</Link>
-              <span className="text-brand-ink-soft"> — compare another {suitWord(c).toLowerCase()} expression</span>
+              <span className="text-brand-ink-soft">: another {suitWord(c).toLowerCase()} version of the same story</span>
             </li>
           ))}
         </ul>
@@ -448,9 +449,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       {videos.length > 0 ? (
         <Section title={`Watch: ${card.label} shadow reading`}>
           <p>
-            The same {card.label} pattern, read out loud — the gift, the distortion, and the
-            behavior it produces. The video is a companion to this page, not a replacement:
-            still a mirror, not a forecast.
+            The same {card.label} pattern, read out loud. The gift, the distortion, and the
+            behavior it produces. The video sits next to this page. It does not replace it.
+            A mirror, not a forecast.
           </p>
           <div className="mt-4 space-y-4">
             {videos.map((v) => (
@@ -476,8 +477,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       ) : (
         <Section title="Related videos">
           <p>
-            Watch Card Blueprints shadow-reading films and explainers in the video library,
-            then return to this {card.label} meaning page for stable written context.
+            Watch the Card Blueprints shadow readings and explainers in the video library.
+            Then come back to this {card.label} meaning page for the written version. It holds still while you reread it.
           </p>
           <Link href={VIDEO_PATH} className="mt-3 inline-block text-brand-oxblood underline underline-offset-4">
             Open Cardology videos →
@@ -492,8 +493,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
       </Section>
 
       <div className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Not sure this is your card?</p>
-        <p className="mt-1 text-sm text-brand-ink-soft">Your birthday identifies a card in the calendar. Find yours, read its traditional meaning, and decide which questions are useful to you.</p>
+        <p className="font-serif text-base text-brand-ink">Not sure this is even your card?</p>
+        <p className="mt-1 text-sm text-brand-ink-soft">Your birthday picks one card off the calendar. Find yours. Read its traditional meaning. Keep the questions that sting and ignore the rest, like your inbox.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
 
@@ -529,9 +530,9 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
     { q: `What is the birth card for ${date.label}?`, a: `The birth card for ${date.label} is ${card.label}${card.title ? `, known as ${card.title}` : ""}.` },
     { q: `What is the ruling card for ${date.label}?`, a: ruling
         ? `The planetary ruling card for ${date.label} is ${ruling.label}. ${date.label} falls in ${zodiac.sign}, ruled by ${zodiac.planet}, and that planetary position is what selects ${ruling.label} as the ruling card for this birthday.`
-        : `${date.label} births carry the ${card.label} as both birth card and primary expression. Use the calculator for the complete context.` },
-    { q: `What does ${card.label} mean for a ${date.label} birthday?`, a: `${card.label} points to ${card.suitDomain.toLowerCase()} and the pattern of ${rankTheme(card.rank).toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
-    { q: `Is the ${date.label} birth card the same every year?`, a: `Yes. The birth card is calculated from month and day only, so ${date.label} maps to ${card.label} every year, for every birth year.` },
+        : `${date.label} births carry the ${card.label} as both birth card and primary expression. Use the calculator for the full picture.` },
+    { q: `What does ${card.label} mean for a ${date.label} birthday?`, a: `${card.label} points at ${card.suitDomain.toLowerCase()} and the pattern of ${rankTheme(card.rank).toLowerCase()}. On a good day it looks like this: ${card.sweetSpot}` },
+    { q: `Is the ${date.label} birth card the same every year?`, a: `Yes. The birth card is calculated from month and day only, so ${date.label} maps to ${card.label} every year, for every birth year. It does not care what kind of year you had.` },
     { q: `What zodiac sign is ${date.label}?`, a: `${date.label} falls in ${zodiac.sign}. In Cardology, the sign matters because its ruling planet, ${zodiac.planet}, determines which card in the ${card.label}'s life spread becomes the planetary ruling card.` },
   ];
 
@@ -556,7 +557,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       <div className="mb-4 flex items-center gap-5">
         <img
           src={`/share-cards/faces/${card.slug}.png`}
-          alt={`${card.label} playing card — the ${date.label} birth card`}
+          alt={`${card.label} playing card, the ${date.label} birth card`}
           width={1000}
           height={1500}
           loading="eager"
@@ -570,7 +571,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         </div>
       </div>
       <div className="mt-5 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Quick answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">{dateQuickAnswer(date)}</p>
       </div>
       <p className="mt-3 text-xs text-brand-ink-soft">
@@ -581,26 +582,26 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </p>
       <p className="prose-reading mt-3 text-brand-ink-soft">
         Born on {date.label}? Your Cardology birth card is the {card.label}
-        {card.title ? `, ${card.title}` : ""} — same answer every year, no negotiation. {date.label} sits in {zodiac.sign}, so
+        {card.title ? `, ${card.title}` : ""}. Same answer every year. No negotiation. {date.label} sits in {zodiac.sign}, so
         this birthday carries a second layer: {zodiac.planet} selects {ruling ? `the ${ruling.label}` : "a planetary ruling card"}
-        as the lens the {card.label} expresses through. This page breaks down both layers and what makes a {date.label}
-        birthday distinct from the other {card.label} dates.
+        as the lens the {card.label} runs through. This page takes apart both layers, and what makes a {date.label}
+        birthday different from the other {card.label} dates. Spoiler: it is the second layer.
       </p>
 
-      <Section title="At a glance">
+      <Section title="The receipts">
         <dl className="grid gap-3 text-sm sm:grid-cols-2">
           <InfoItem label="Birthday" value={date.label} />
           <InfoItem label="Birth card" value={card.label} />
           <InfoItem label="Suit domain" value={card.suitDomain} />
           <InfoItem label="Rank theme" value={rankTheme(card.rank)} />
-          <InfoItem label="Ruling card" value={ruling ? ruling.label : "Use the calculator for full context"} />
+          <InfoItem label="Ruling card" value={ruling ? ruling.label : "Use the calculator for the full picture"} />
           <InfoItem label="Zodiac layer" value={`${zodiac.sign}, ruled by ${zodiac.planet}`} />
         </dl>
       </Section>
 
-      <Section title="Birthday card meaning">
+      <Section title="What this birthday card means">
         <p>
-          The {date.label} birth card is {card.label}, a {suitWord(card)} card connected with {card.suitDomain.toLowerCase()}. The rank adds the theme of {rankTheme(card.rank).toLowerCase()}, so this birthday often learns through the way those two forces meet.
+          The {date.label} birth card is {card.label}, a {suitWord(card)} card tied to {card.suitDomain.toLowerCase()}. The rank adds the theme of {rankTheme(card.rank).toLowerCase()}. This birthday tends to learn wherever those two collide.
         </p>
         <p>{card.coreIdentity || card.sweetSpot}</p>
       </Section>
@@ -615,14 +616,14 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 
       <Section title={`The ${zodiac.sign} layer: why ${date.label} differs from other ${card.label} birthdays`}>
         <p>
-          Several birthdays share the {card.label} birth card, but they do not share a ruling card. The ruling card
-          is selected by the birthday&rsquo;s zodiac position: {date.label} falls in {zodiac.sign}, ruled by {zodiac.planet},
+          Several birthdays share the {card.label} birth card. They do not share a ruling card. The ruling card
+          is picked by the birthday&rsquo;s zodiac position: {date.label} falls in {zodiac.sign}, ruled by {zodiac.planet},
           the planet of {zodiac.planetMeaning}. That planetary position in the {card.label}&rsquo;s life spread is what
-          singles out this birthday&rsquo;s expression.
+          singles this birthday out.
         </p>
         {ruling && (
           <p>
-            For {date.label}, that makes <Link href={`/birth-card/${ruling.slug}`} className="text-brand-oxblood underline underline-offset-4">{ruling.label}</Link>{ruling.title ? ` (${ruling.title})` : ""} the primary ruling card. The birth card is the engine; the ruling card is the steering. A {date.label} {card.label} tends to express the core pattern through {ruling.suitDomain.toLowerCase()} and the tone of {rankTheme(ruling.rank).toLowerCase()}.
+            For {date.label}, that makes <Link href={`/birth-card/${ruling.slug}`} className="text-brand-oxblood underline underline-offset-4">{ruling.label}</Link>{ruling.title ? ` (${ruling.title})` : ""} the primary ruling card. The birth card is the engine. The ruling card is the steering. A {date.label} {card.label} tends to run the core pattern through {ruling.suitDomain.toLowerCase()} and the tone of {rankTheme(ruling.rank).toLowerCase()}.
           </p>
         )}
       </Section>
@@ -633,26 +634,26 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
             When this birthday is centered, the ruling card adds: {ruling.sweetSpot}
           </p>
           <p>
-            Under pressure, the same lens can slide toward its over-expression: {ruling.over} If you were born {date.label} and the {card.label} description feels almost right but not quite, the {ruling.label} layer is usually the missing piece.
+            Under pressure, the same lens slides toward its over-expression: {ruling.over} If you were born {date.label} and the {card.label} description feels almost right but not quite, the {ruling.label} layer is usually the missing piece. That itch has a name.
           </p>
         </Section>
       )}
 
-      <Section title="How to read this birthday pattern">
+      <Section title="How to read this birthday without spiraling">
         <p>
-          Start with the birth card as the anchor, not a verdict. Ask where the {card.label} is centered in your life right now, where it is under-used, and where it becomes too loud. Then check whether the {ruling ? ruling.label : "ruling card"} layer explains the style you bring to that pattern. The two cards together are a more honest mirror than either one alone.
+          Start with the birth card as the anchor. Not a verdict. Ask where the {card.label} is centered in your life right now, where it is under-used, and where it gets too loud. Then check whether the {ruling ? ruling.label : "ruling card"} layer explains the style you bring to that pattern. The two cards together make a more honest mirror than either one alone. Brighter lighting, too.
         </p>
       </Section>
 
       {shared.length > 0 && (
         <Section title={`Other ${card.label} birthdays`}>
-          <p>These birthdays share the {card.label} birth card, each with its own ruling-card layer:</p>
+          <p>These birthdays share the {card.label} birth card. Each one gets its own ruling-card layer:</p>
           <ul className="mt-3 grid grid-cols-2 gap-2 text-sm sm:grid-cols-3">
             {shared.map((d) => (
               <li key={d.slug}>
                 {/* Plain <a> to /born-on/: birthday pages live on the
                     Worker-served surface (the Worker 301s /birth-card/[date]
-                    there — link direct to skip the redirect hop). */}
+                    there; link direct to skip the redirect hop). */}
                 <a href={`/born-on/${d.slug}`} className="text-brand-oxblood underline underline-offset-4">{d.label}</a>
               </li>
             ))}
@@ -665,13 +666,13 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       </Section>
 
       <div className="card-surface mt-6 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Just browsing birthdays?</p>
-        <p className="mt-1 text-sm text-brand-ink-soft">Run any birth date through the calculator to get the birth card and ruling card free — same deterministic answer, every time.</p>
+        <p className="font-serif text-base text-brand-ink">Just browsing other people&rsquo;s birthdays?</p>
+        <p className="mt-1 text-sm text-brand-ink-soft">Run any birth date through the calculator to get the birth card and ruling card free. Same answer every time. It is math, not a mood.</p>
         <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">Need the calculator to identify your card first →</Link>
       </div>
 
       <nav aria-label="Nearby birthdays" className="mt-8 flex items-center justify-between text-sm">
-        {/* Prev/next birthdays live on the Worker-served /born-on/ surface —
+        {/* Prev/next birthdays live on the Worker-served /born-on/ surface;
             link direct instead of /birth-card/[date], which 301s there. */}
         <a href={`/born-on/${prev.slug}`} className="text-brand-oxblood underline underline-offset-4">← {prev.label}</a>
         <Link href={`/birth-card/${card.slug}`} className="text-brand-ink-soft hover:text-brand-ink-soft">{card.label} guide</Link>
@@ -685,32 +686,32 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
 // /compatibility/ pair library (1,378 pages + 52 per-card hubs, edge-rendered
 // by cardology-unlock). Pair selection is deterministic per card: its six
 // planetary life-path cards (Venus/Moon/Mars/Jupiter/Saturn/Mercury) plus the
-// two karma cards (Lifetime Gift/Challenge) plus its mirror pair — 7-9 links,
+// two karma cards (Lifetime Gift/Challenge) plus its mirror pair: 7-9 links,
 // no editorial picks. Data comes from lib/compat-pairs.json, generated from
 // the Worker's own report_data.json, so every href is the canonical pair URL
 // (wrong-order slugs 301). Plain <a> instead of next/link: these routes are
 // not part of this Next app.
 const PAIR_NOTES: Record<string, string> = {
-  Venus: "the Venus bond — attraction that feels pre-arranged",
-  Moon: "the Moon bond — support, intimacy, and emotional home base",
-  Mars: "the Mars bond — sparks, stimulation, and productive friction",
-  Jupiter: "the Jupiter bond — the pairing that expands your life",
-  Saturn: "the Saturn bond — the teacher, with the resistance to match",
-  Mercury: "the Mercury bond — matched minds and easy conversation",
-  "Lifetime Gift": "your karmic gift card — ease you didn't have to earn",
-  "Lifetime Challenge": "your karmic challenge card — the lesson that matures you",
-  Mirror: "two of the same card — a mirror, for better and worse",
+  Venus: "the Venus bond: attraction that feels pre-arranged, which is suspicious",
+  Moon: "the Moon bond: support, intimacy, and an emotional home base",
+  Mars: "the Mars bond: sparks, stimulation, and productive friction. Mostly friction",
+  Jupiter: "the Jupiter bond: the pairing that makes your life bigger",
+  Saturn: "the Saturn bond: the teacher, with the resistance to match",
+  Mercury: "the Mercury bond: matched minds, and conversations that run past 2am",
+  "Lifetime Gift": "your karmic gift card: ease you did not have to earn",
+  "Lifetime Challenge": "your karmic challenge card: the lesson that makes you grow up",
+  Mirror: "two of the same card: a mirror, for better and worse",
 };
 
 function CompatPairsSection({ card }: { card: CardSeo }) {
   const compat = compatForCard(card.slug);
   if (!compat) return null;
   return (
-    <Section title="Compatibility with other cards">
+    <Section title="Compatibility, or who keeps showing up">
       <p>
         Some pairings are structural. A fixed set of cards sits in the {card.label}&rsquo;s
-        life path, and the people who carry them tend to show up as the loves, teachers,
-        and mirrors of a lifetime. Each link opens the full two-card reading — suit
+        life path, and the people carrying them tend to show up as the loves, teachers,
+        and mirrors of a lifetime. Sometimes all three at once. Each link opens the full two-card reading: suit
         dynamics, number dynamics, and what the connection is actually for.
       </p>
       <ul className="mt-4 space-y-2">
@@ -721,7 +722,7 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
               <a href={p.href} className="text-brand-oxblood underline underline-offset-4">
                 {card.label} + {p.label}
               </a>
-              <span className="text-brand-ink-soft"> — {PAIR_NOTES[p.pos] ?? "a fixed connection in the life path"}</span>
+              <span className="text-brand-ink-soft">: {PAIR_NOTES[p.pos] ?? "a fixed connection in the life path"}</span>
             </span>
           </li>
         ))}
@@ -739,7 +740,7 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
   const reads = endOfPageReads(card, siblings);
   return (
     <section className="mt-10" aria-labelledby="related-reads">
-      <h2 id="related-reads" className="type-eyebrow mb-3 !text-brand-bronze">Related reads</h2>
+      <h2 id="related-reads" className="type-eyebrow mb-3 !text-brand-bronze">More to read instead of sleeping</h2>
       <ul className="space-y-2 text-sm">
         {reads.map((read) => (
           <li key={read.href}>
@@ -752,14 +753,14 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
                 {read.label}
               </Link>
             )}
-            <span className="text-brand-ink-soft"> — {read.note}</span>
+            <span className="text-brand-ink-soft">: {read.note}</span>
           </li>
         ))}
       </ul>
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
-        For a closer look at one relationship, Cass prepares the Chemistry Check from both people’s cards.{" "}
+        One relationship living in your head rent-free? Cass prepares the Chemistry Check from both people’s cards.{" "}
         <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
-          The Chemistry Check, $52 →
+          The Chemistry Check, $24 →
         </Link>
       </p>
     </section>
@@ -767,13 +768,13 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
 }
 
 // Cross-links for crawl depth: karma row, top three life-path pairs (Venus /
-// Moon / Mars — first three from compatForCard), and the first three calendar
+// Moon / Mars, first three from compatForCard), and the first three calendar
 // dates that resolve to this card. Worker routes use plain <a>.
 function ReadNextSection({ card }: { card: CardSeo }) {
   const bestPairs = (compatForCard(card.slug)?.pairs ?? []).slice(0, 3);
   const dates = birthDatesForCard(card).slice(0, 3);
   return (
-    <Section title="Read next">
+    <Section title="Read this next">
       <ul className="mt-4 space-y-2">
         <li className="flex gap-2 text-sm text-brand-ink-soft">
           <span className="text-brand-bronze">·</span>
@@ -833,8 +834,8 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 }
 
 // Position label colors. Inline styles outrank the .paper-shell class remaps,
-// so these hexes are what actually paint on cream — the dark palette's sage,
-// gold, and ember read at 1.7–3:1 there. These pass AA on paper (7.3 / 5.3 /
+// so these hexes are what actually paint on cream: the dark palette's sage,
+// gold, and ember read at 1.7 to 3:1 there. These pass AA on paper (7.3 / 5.3 /
 // 7.1) while keeping the three positions distinguishable by hue.
 const LENS_TONES = {
   balanced: { label: "#2c5740", tint: "#7fae8f" },
@@ -931,48 +932,48 @@ function videoJsonLd(video: CardologyVideo) {
 }
 
 // First sentence answers the general "{card} meaning" query; the birth-card
-// layer is named second — mirroring the page's new section order.
+// layer is named second, mirroring the page's new section order.
 function cardQuickAnswer(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
-  return `The ${card.label} means ${card.suitDomain.toLowerCase().replace(/\s*&\s*/g, " and ")} expressed through ${rankTheme(card.rank).toLowerCase()}. Drawn in a reading, its balanced message is: ${lensClause(card.sweetSpot)} In shadow, ${lensClause(card.over)} In Cardology it is also the birth card of people born on ${dateText}.`;
+  return `The ${card.label} means ${card.suitDomain.toLowerCase().replace(/\s*&\s*/g, " and ")} expressed through ${rankTheme(card.rank).toLowerCase()}. Pull it in a reading and the balanced version says: ${lensClause(card.sweetSpot)} The shadow version: ${lensClause(card.over)} In Cardology it is also the birth card of people born on ${dateText}.`;
 }
 
 // --- Drawn-card copy (the general "{card} meaning" intent) ---
-// Both helpers compose ONLY existing data-layer strings — the card's title,
-// suit domain, rank theme, and three-lens meanings — reframed as drawn-card
+// Both helpers compose ONLY existing data-layer strings (the card's title,
+// suit domain, rank theme, and three-lens meanings) reframed as drawn-card
 // language. No card meaning is authored here (same discipline as
 // lib/spreads.ts, which carries verbatim copies of this file's vocabulary).
 
 function generalReadingText(card: CardSeo): string {
-  const epithet = card.title ? ` — ${card.title} —` : "";
+  const epithet = card.title ? `, ${card.title},` : "";
   return (
-    `Drawn in a general reading, the ${card.label}${epithet} turns the question toward ${suitDomainPlain(card)}, with the tone of ${rankTheme(card.rank).toLowerCase()}. ` +
-    `At its best, the draw describes a moment where ${lensClause(card.sweetSpot)} ` +
-    `If the reading feels strained, check the card's over-expression first: ${lensClause(card.over)}`
+    `Pulled in a general reading, the ${card.label}${epithet} drags the question toward ${suitDomainPlain(card)}. The tone is ${rankTheme(card.rank).toLowerCase()}. ` +
+    `At its best, the draw marks a moment where ${lensClause(card.sweetSpot)} ` +
+    `If the reading feels off, check the over-expression first. It is usually this: ${lensClause(card.over)}`
   );
 }
 
 function loveReadingText(card: CardSeo): string {
-  return `In a love reading, the ${card.label} speaks to ${relationshipTheme(card)}.`;
+  return `In a love reading, the ${card.label} points at ${relationshipTheme(card)}. Usually the part you have been avoiding.`;
 }
 
 function moneyReadingText(card: CardSeo): string {
   return (
-    `In a money or career reading, the ${card.label} points to ${moneyTheme(card)}, colored by ${rankTheme(card.rank).toLowerCase()}. ` +
-    `At its best the draw marks a moment where the work and the reward line up; when it reads strained, check the shadow first: ${lensClause(card.over)}`
+    `In a money or career reading, the ${card.label} points at ${moneyTheme(card)}, tinted by ${rankTheme(card.rank).toLowerCase()}. ` +
+    `At its best, the work and the reward finally line up. When it reads strained, check the shadow first: ${lensClause(card.over)}`
   );
 }
 
 function adviceReadingText(card: CardSeo): string {
   return (
     `As advice, the ${card.label} asks you to ${adviceTheme(card)}. ` +
-    `As an obstacle, it is the same pattern overplayed — the gift turning into the very thing that blocks the reading.`
+    `As an obstacle, it is the same pattern turned up too loud. The gift becomes the thing standing in your way. You already knew that.`
   );
 }
 
 // Standard cartomancy suit correspondence, used only to disambiguate this
-// playing-card system from tarot for "…in tarot" queries. Cardology meanings
-// on this page come from the 52-card system, not the tarot deck.
+// playing-card system from the 78-card deck for "in tarot" queries (not a source).
+// Cardology meanings on this page come from the 52-card system, not the tarot deck.
 const TAROT_SUIT: Record<Suit, string> = {
   hearts: "Cups",
   clubs: "Wands",
@@ -992,24 +993,25 @@ function spiritualReadingText(card: CardSeo): string {
   // lifeDirection (the card's curriculum) so nothing here is invented.
   const curriculum = card.lifeDirection || card.coreIdentity || card.sweetSpot;
   return (
-    `Read spiritually, the ${card.label} is a curriculum rather than an omen: ${lensClause(curriculum)} ` +
-    `Cardology fixes the card to a birthday, so it never arrives as a message about what is coming — the same date returns the same card every year. ` +
-    `The card is a coordinate; what you do with the pattern is the work.`
+    `Read spiritually, the ${card.label} is a curriculum, not an omen: ${lensClause(curriculum)} ` +
+    `Cardology fixes the card to a birthday, so it never shows up as a message about what is coming. The same date returns the same card every year. ` +
+    `The card is a coordinate. What you do with the pattern is the work. Sorry.`
   );
 }
 
 function reversedFaqText(card: CardSeo): string {
   return (
-    `No. Reversals belong to tarot, where a card can land upside down in a spread. A Cardology birth card is fixed by a birthday, so the ${card.label} is never reversed. ` +
+    `No. Reversals are a tarot thing, not a Cardology thing: in tarot a card can land upside down in a spread. ` +
+    `A Cardology birth card is fixed by a birthday, so the ${card.label} is never reversed, however upside down your week feels. ` +
     `The equivalent here is expression, not direction. Under-expressed, ${lensClause(card.under)} Over-expressed, ${lensClause(card.over)}`
   );
 }
 
 function tarotFaqText(card: CardSeo): string {
   return (
-    `No. The ${card.label} is a playing card, not a tarot card. Tarot readers sometimes map it to the ${TAROT_SUIT[card.suit]} suit ` +
-    `(the rough analogue is the ${tarotAnalogue(card)}), but Cardology reads the standard 52-card deck as its own birthday-and-pattern system. ` +
-    `Everything on this page comes from that playing-card system.`
+    `No. The ${card.label} is a playing card, not a tarot card. ` +
+    `People who read tarot sometimes map it to the ${TAROT_SUIT[card.suit]} suit (the rough analogue is the ${tarotAnalogue(card)}), but that is not how this works. ` +
+    `Cardology reads the standard 52-card deck as its own birthday-and-pattern system. Everything on this page comes from that playing-card system. Nothing is borrowed.`
   );
 }
 
@@ -1036,19 +1038,19 @@ function dateQuickAnswer(date: BirthdateSeo) {
 function cardFaqs(card: CardSeo, dates: BirthdateSeo[]) {
   const dateText = dates.length ? dates.map((d) => d.label).join(", ") : "the birthdays returned by the calculator";
   return [
-    // The first two mirror the visible "In a general reading" / "In love"
-    // sections — same helper output, so page copy and FAQ never drift.
+    // The first two mirror the visible general-reading / "In love"
+    // sections: same helper output, so page copy and FAQ never drift.
     { q: `What does the ${card.label} mean in a reading?`, a: generalReadingText(card) },
-    { q: `What does the ${card.label} mean in love?`, a: `${loveReadingText(card)} For two specific people, compatibility depends on both birth cards — the ${card.label} compatibility hub compares it with all 52 cards.` },
+    { q: `What does the ${card.label} mean in love?`, a: `${loveReadingText(card)} For two specific people, compatibility depends on both birth cards. The ${card.label} compatibility hub compares it with all 52 cards.` },
     { q: `What does the ${card.label} mean spiritually?`, a: spiritualReadingText(card) },
     { q: `What does the ${card.label} mean for money and career?`, a: moneyReadingText(card) },
-    { q: `Is the ${card.label} a tarot card?`, a: tarotFaqText(card) },
+    { q: `Is the ${card.label} a tarot card or not?`, a: tarotFaqText(card) },
     { q: `Does the ${card.label} have a reversed meaning?`, a: reversedFaqText(card) },
-    { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern connected with ${card.suitDomain.toLowerCase()}. Its balanced expression is: ${card.sweetSpot}` },
-    { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system are: ${dateText}.` },
+    { q: `What does ${card.label} mean in Cardology?`, a: `${card.label} is a birth-card pattern tied to ${card.suitDomain.toLowerCase()}. On a good day it looks like this: ${card.sweetSpot}` },
+    { q: `What are ${card.label} birth dates?`, a: `${card.label} birth dates in this system, no exceptions: ${dateText}.` },
     { q: `What is the shadow of ${card.label}?`, a: card.shadow || card.over },
-    { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on the relationship between both people's birth cards, ruling cards, and timing. Use the compatibility calculator to compare ${card.label} with another card.` },
-    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only — the same layout as a French-suited playing card, with no border and no index. Court cards use a single suit pip. It marks the card, not a prediction. See the full 52 pip references on the playing-card tattoo meaning hub.` },
+    { q: `Is ${card.label} compatible with other birth cards?`, a: `Yes. Compatibility depends on both people's birth cards, ruling cards, and timing. Not on how fast they text back. Use the compatibility calculator to compare ${card.label} with another card.` },
+    { q: `What would a ${card.label} tattoo look like?`, a: `A ${card.label} tattoo in this system is the pip field only. Same layout as a French-suited playing card, no border, no index. Court cards use a single suit pip. It marks the card. It is not a prediction. See all 52 pip references on the playing-card tattoo meaning hub.` },
   ];
 }
 
@@ -1092,19 +1094,19 @@ function workTheme(card: CardSeo): string {
 
 function moneyTheme(card: CardSeo): string {
   switch (card.suit) {
-    case "hearts": return "income that moves through people — care, hospitality, taste, trust, and the relationships that quietly carry opportunity";
-    case "clubs": return "income that moves through mind — writing, teaching, analysis, communication, and ideas packaged clearly enough to sell";
-    case "diamonds": return "the direct mechanics of value — pricing, earning, spending, assets, and whether self-worth and net worth are being confused";
-    case "spades": return "income that moves through discipline — systems, craft, health, operations, and the unglamorous work that compounds";
+    case "hearts": return "income that moves through people: care, hospitality, taste, trust, and the relationships that quietly carry opportunity";
+    case "clubs": return "income that moves through the mind: writing, teaching, analysis, communication, and ideas packaged clearly enough to sell";
+    case "diamonds": return "the direct mechanics of value: pricing, earning, spending, assets, and whether you have confused self-worth with net worth again";
+    case "spades": return "income that moves through discipline: systems, craft, health, operations, and the unglamorous work that compounds";
   }
 }
 
 function adviceTheme(card: CardSeo): string {
   switch (card.suit) {
-    case "hearts": return "lead with the honest feeling and stay open a beat longer than is comfortable";
-    case "clubs": return "say the true thing clearly, study before you speak, and let the idea survive being tested";
-    case "diamonds": return "name the real price, respect your own value, and keep the exchange clean";
-    case "spades": return "do the disciplined thing first, tend the body and the system, and let pressure refine you instead of hardening you";
+    case "hearts": return "lead with the honest feeling and stay open one beat longer than feels survivable";
+    case "clubs": return "say the true thing plainly, study before you speak, and let the idea get poked without sulking";
+    case "diamonds": return "name the real price, stop discounting yourself, and keep the exchange clean";
+    case "spades": return "do the disciplined thing first, tend the body and the system, and let pressure sharpen you instead of setting you like concrete";
   }
 }
 
@@ -1119,7 +1121,7 @@ function rankTheme(rank: string): string {
     "7": "faith, refinement, and inner testing",
     "8": "power, influence, and mastery",
     "9": "completion and release",
-    "10": "public expression and full-cycle manifestation",
+    "10": "public expression and full-cycle achievement",
     J: "youthful mastery, experimentation, and cleverness",
     Q: "inner authority, nurturance, and magnetic intelligence",
     K: "leadership, command, and mature stewardship",
@@ -1134,22 +1136,22 @@ function interpretiveAngles(card: CardSeo): { label: string; body: string }[] {
       label: "Traditional birth-card lens",
       body:
         special ||
-        `Read the ${card.label} as ${rankTheme(card.rank).toLowerCase()} moving through ${card.suitDomain.toLowerCase()}. This is the stable, birth-date layer: it does not change with mood, age, or a random card draw.`,
+        `Read the ${card.label} as ${rankTheme(card.rank).toLowerCase()} moving through ${card.suitDomain.toLowerCase()}. This is the stable, birth-date layer. It does not change with your mood, your age, or a random card draw. It was here before your opinions about it.`,
     },
     {
       label: "Modern personality lens",
       body:
-        `In modern language, the ${card.label} describes a repeatable operating pattern: how someone tends to seek safety, power, connection, value, or meaning through ${suitDomainPlain(card)}.`,
+        `In plain language, the ${card.label} is a repeatable operating pattern. It is how you go looking for safety, power, connection, value, or meaning through ${suitDomainPlain(card)}. You run it on autopilot. Everyone else can see it running.`,
     },
     {
       label: "Relationship and work lens",
       body:
-        `In relationships, this card often shows ${relationshipTheme(card)}. At work, it wants environments where ${workTheme(card)}. The same pattern can be magnetic when centered and exhausting when overused.`,
+        `In relationships, this card shows up as ${relationshipTheme(card)}. At work, it wants rooms where ${workTheme(card)}. The same pattern is magnetic when you are centered. It is exhausting when you lean on it for everything.`,
     },
     {
       label: "Shadow-integration lens",
       body:
-        `The shadow is not a flaw to dramatize; it is the card losing proportion. For the ${card.label}, integration means noticing when the gift becomes too quiet, too loud, or too hungry for control.`,
+        `The shadow is not a flaw to dramatize. It is the card losing proportion. For the ${card.label}, integration means catching the moment the gift goes too quiet, too loud, or too hungry for control. Usually around 2am.`,
     },
   ];
 }
@@ -1157,21 +1159,21 @@ function interpretiveAngles(card: CardSeo): { label: string; body: string }[] {
 function specialCardAngle(card: CardSeo): string | null {
   const special: Record<string, string> = {
     "ace-of-spades":
-      "The Ace of Spades is often treated as a threshold card: identity, transformation, mystery, ambition, and the pressure to make meaning out of intensity. Read it as initiation into deeper responsibility, not as automatic heaviness.",
+      "The Ace of Spades gets treated as a threshold card: identity, transformation, mystery, ambition, and the pressure to make meaning out of intensity. Read it as initiation into deeper responsibility, not automatic heaviness. Stop wearing it like a cape.",
     "queen-of-hearts":
-      "The Queen of Hearts is often read through emotional authority: care, devotion, charisma, family feeling, and the skill of holding people without owning them. The mature form nurtures without building dependency.",
+      "The Queen of Hearts gets read through emotional authority: care, devotion, charisma, family feeling, and the skill of holding people without owning them. The mature version nurtures without building dependency. Nobody needs to need you that much.",
     "king-of-diamonds":
-      "The King of Diamonds is often read as mastery of value: business judgment, resource stewardship, pricing power, and the challenge of using authority without reducing people to assets.",
+      "The King of Diamonds gets read as mastery of value: business judgment, resource stewardship, pricing power. The test is using authority without turning people into rows on a spreadsheet.",
     "8-of-diamonds":
-      "The Eight of Diamonds is often read as concentrated value power: ambition, financial visibility, brand magnetism, and the lesson of using influence without becoming controlled by status.",
+      "The Eight of Diamonds gets read as concentrated value power: ambition, financial visibility, brand magnetism. The lesson is using influence without letting status hold the leash.",
     "jack-of-diamonds":
-      "The Jack of Diamonds is often read as the messenger of value: sales, taste, charm, opportunity, and the need to mature from clever exchange into honest worth.",
+      "The Jack of Diamonds gets read as the messenger of value: sales, taste, charm, opportunity. The work is growing out of the clever trade and into honest worth. The pitch is not the product.",
     "queen-of-spades":
-      "The Queen of Spades is often read as inner discipline and self-mastery: spiritual labor, restraint, precision, and the ability to transform pressure into embodied wisdom.",
+      "The Queen of Spades gets read as inner discipline and self-mastery: spiritual labor, restraint, precision, and the ability to turn pressure into wisdom you actually live in. Not wisdom you just quote.",
     "king-of-clubs":
-      "The King of Clubs is often read as command of thought: teaching, strategy, mental authority, and the responsibility to use certainty in service of truth instead of dominance.",
+      "The King of Clubs gets read as command of thought: teaching, strategy, mental authority. The responsibility is using certainty to serve the truth, not to win the argument.",
     "10-of-hearts":
-      "The Ten of Hearts is often read as social and emotional visibility: family, audience, belonging, celebration, and the pressure to carry the feeling of the room.",
+      "The Ten of Hearts gets read as social and emotional visibility: family, audience, belonging, celebration, and the pressure to carry the mood of the whole room. The room did not ask you to.",
   };
   return special[card.slug] ?? null;
 }

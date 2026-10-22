@@ -64,45 +64,45 @@ export const LIFE_PATH_ROLES: LifePathRole[] = [
     key: "moon",
     title: "Moon Influence",
     shortTitle: "Moon",
-    phrase: "This supports the life.",
-    constitution: "The ground note: what nourishes, steadies, and quietly energizes the person.",
-    relationship: "A person with this card can feel nurturing, familiar, intimate, and emotionally close.",
+    phrase: "This holds you up. You rarely notice.",
+    constitution: "The ground note: what feeds you, steadies you, and quietly keeps you running.",
+    relationship: "A person with this card feels nurturing, familiar, intimate, and close. Like home, with the same arguments.",
   },
   {
     position: 1,
     key: "birth",
-    title: "Primary Energy",
+    title: "Primary Card",
     shortTitle: "Birth",
-    phrase: "You shine this light.",
-    constitution: "The visible core: the primary gift, default pattern, and main card a person is here to play.",
-    relationship: "A person with this card mirrors the self. The connection can feel like kinship or like an uncomfortable reflection.",
+    phrase: "You shine this light. Everyone sees it.",
+    constitution: "The visible core: the main gift, the default pattern, and the main card you are here to play.",
+    relationship: "A person with this card is your mirror. It feels like kinship, or like catching yourself in a shop window.",
   },
   {
     position: 2,
     key: "mercury",
     title: "Mercury Influence",
     shortTitle: "Mercury",
-    phrase: "You think like this.",
-    constitution: "The mental channel: speech, thought loops, curiosity, argument style, and what the mind keeps returning to.",
-    relationship: "A person with this card can become a confidant, conversation partner, or mental mirror.",
+    phrase: "You think like this. Loudly.",
+    constitution: "The mental channel: speech, thought loops, curiosity, argument style, and the thing your mind keeps reopening.",
+    relationship: "A person with this card becomes a confidant, a conversation partner, or a mental mirror. Sometimes the 2am text.",
   },
   {
     position: 3,
     key: "venus",
     title: "Venus Influence",
     shortTitle: "Venus",
-    phrase: "You love like this.",
-    constitution: "The love channel: attraction, beauty, softness, pleasure, affection, and relational taste.",
-    relationship: "A person with this card can feel magnetic, romantic, beloved, or emotionally desirable.",
+    phrase: "You love like this. Obviously.",
+    constitution: "The love channel: attraction, beauty, softness, pleasure, affection, and your taste in people.",
+    relationship: "A person with this card feels magnetic, romantic, beloved, or hard to stop thinking about.",
   },
   {
     position: 4,
     key: "mars",
     title: "Mars Influence",
     shortTitle: "Mars",
-    phrase: "You act like this.",
-    constitution: "The action channel: desire, pursuit, anger, drive, competition, and the way goals are attacked.",
-    relationship: "A person with this card can spark passion, heat, confrontation, competition, or physical chemistry.",
+    phrase: "You act like this. Fast.",
+    constitution: "The action channel: desire, pursuit, anger, drive, competition, and the way you attack a goal.",
+    relationship: "A person with this card sparks passion, heat, confrontation, competition, or physical chemistry. Often in that order.",
   },
   {
     position: 5,
@@ -111,61 +111,61 @@ export const LIFE_PATH_ROLES: LifePathRole[] = [
     shortTitle: "Jupiter",
     phrase: "You grow from this.",
     constitution: "The expansion channel: opportunity, generosity, prosperity, confidence, and the place life gets bigger.",
-    relationship: "A person with this card can expand the world, open doors, bring luck, or inflate appetite.",
+    relationship: "A person with this card expands your world, opens doors, brings luck, or makes you want more of everything.",
   },
   {
     position: 6,
     key: "saturn",
     title: "Saturn Influence",
     shortTitle: "Saturn",
-    phrase: "You learn from this.",
-    constitution: "The lesson channel: discipline, limits, maturity, health, repetition, and the pattern that will not be skipped.",
-    relationship: "A person with this card can teach, test, frustrate, stabilize, or force maturity.",
+    phrase: "You learn from this. Eventually.",
+    constitution: "The lesson channel: discipline, limits, maturity, health, repetition, and the pattern that refuses to be skipped.",
+    relationship: "A person with this card teaches, tests, frustrates, stabilizes, or forces you to grow up.",
   },
   {
     position: 7,
     key: "uranus",
     title: "Uranus Influence",
     shortTitle: "Uranus",
-    phrase: "This pivots the life.",
+    phrase: "This turns the whole thing sideways.",
     constitution: "The pivot channel: freedom, friendship, surprise, genius, disruption, and the strange turn that changes direction.",
-    relationship: "A person with this card can feel friendly, electric, unpredictable, liberating, or uneven.",
+    relationship: "A person with this card feels friendly, electric, unpredictable, liberating, or uneven. Rarely boring.",
   },
   {
     position: 8,
     key: "neptune",
     title: "Neptune Influence",
     shortTitle: "Neptune",
-    phrase: "You dream through this.",
+    phrase: "You dream through this. Mostly at night.",
     constitution: "The dream channel: fantasy, longing, projection, vision, glamour, spiritual hunger, and the fog around desire.",
-    relationship: "A person with this card can become an ideal, a fantasy, a confusion, or a dream that must be made real.",
+    relationship: "A person with this card becomes an ideal, a fantasy, a confusion, or a dream you have to make real. Check the fog.",
   },
   {
     position: 9,
     key: "pluto",
     title: "Pluto Influence",
     shortTitle: "Pluto",
-    phrase: "This is the shadow to integrate.",
-    constitution: "The shadow channel: what the person fears, hides, resists, projects, and eventually has to reclaim.",
-    relationship: "A person with this card can expose shadow, obsession, discomfort, deep transformation, or the truth nobody wanted named.",
+    phrase: "This is the shadow you have to integrate.",
+    constitution: "The shadow channel: what you fear, hide, resist, project onto other people, and eventually have to take back.",
+    relationship: "A person with this card exposes shadow, obsession, discomfort, deep transformation, or the truth nobody wanted said out loud.",
   },
   {
     position: 10,
     key: "princess",
     title: "The Princess",
     shortTitle: "Princess",
-    phrase: "This is the reward to receive.",
-    constitution: "The reward channel: the gift a person longs to receive once the earlier cards are handled cleanly.",
-    relationship: "A person with this card can feel like grace, reward, sweetness, or the gift the person is learning to accept.",
+    phrase: "This is the reward. Let yourself have it.",
+    constitution: "The reward channel: the gift you want once the earlier cards are handled cleanly.",
+    relationship: "A person with this card feels like grace, reward, sweetness, or a gift you are still learning to accept without flinching.",
   },
   {
     position: 11,
     key: "prince",
     title: "The Prince",
     shortTitle: "Prince",
-    phrase: "This is the responsibility to take.",
-    constitution: "The responsibility channel: what a person must generate on purpose instead of waiting for someone else to carry it.",
-    relationship: "A person with this card can call forward responsibility, ownership, courage, and the work that cannot be outsourced.",
+    phrase: "This is the responsibility. Pick it up.",
+    constitution: "The responsibility channel: what you have to make on purpose instead of waiting for someone else to carry it.",
+    relationship: "A person with this card calls up responsibility, ownership, courage, and the work you cannot outsource.",
   },
   {
     position: 12,
@@ -173,17 +173,17 @@ export const LIFE_PATH_ROLES: LifePathRole[] = [
     title: "The Queen",
     shortTitle: "Queen",
     phrase: "This is what you learn to embody.",
-    constitution: "The embodiment channel: the mature quality a person is learning to live as their own nature.",
-    relationship: "A person with this card can model refinement, emotional maturity, stewardship, or the quality being learned.",
+    constitution: "The embodiment channel: the mature quality you are learning to live as your own nature.",
+    relationship: "A person with this card models refinement, emotional maturity, stewardship, or the exact quality you are still practicing.",
   },
   {
     position: 13,
     key: "king",
     title: "The King",
     shortTitle: "King",
-    phrase: "This is the commanding power.",
+    phrase: "This is the commanding power. Earn it.",
     constitution: "The command channel: the far horizon of mastery, authority, creative power, and earned self-command.",
-    relationship: "A person with this card can feel powerful, distant, aspirational, intimidating, or like the future self calling.",
+    relationship: "A person with this card feels powerful, distant, aspirational, intimidating, or like your future self calling. Pick up.",
   },
 ];
 
@@ -245,11 +245,11 @@ export function buildLifePathProfile(date: string, label: string): LifePathProfi
 
 // --- Public Life Spread export (indexable surfaces) --------------------------
 //
-// Doc-sourced positions only (docs/reading-interpretation-reference.md §6–§7):
+// Doc-sourced positions only (docs/reading-interpretation-reference.md §6 to §7):
 // Moon + Mercury→Result (birth card is the page subject / root birthCard field,
 // not a positions[] row) + Environment/Displacement karma pair.
 // The Princess/Prince/Queen/King extension in LIFE_PATH_ROLES is calculator-only
-// pending a doctrine ruling — it must never appear in this export.
+// pending a doctrine ruling; it must never appear in this export.
 // Vocabulary: "Result / Cosmic Reward" (doc), never "Princess".
 
 export type LifeSpreadRole =
@@ -294,7 +294,7 @@ export type PublicLifeSpread = {
   // the root rather than as a self-linking row inside positions[].
   birthCardSlug: string | null;
   positions: PublicLifeSpreadPosition[]; // moon first, then Mercury→Result
-  // Same derivation the card pages already use via CardSeo.karma — owned here
+  // Same derivation the card pages already use via CardSeo.karma, owned here
   // so one page never renders spread data from two different builders.
   karma: { environment: string; displacement: string } | null;
 };
@@ -330,13 +330,13 @@ export function buildPublicLifeSpread(birthCard: string): PublicLifeSpread | nul
     suit: moon.suit,
     gift: moon.gift,
     shadow: moon.shadow,
-    // Doc §9 sources Moon as a relationship connection — public copy leads
+    // Doc §9 sources Moon as a relationship connection; public copy leads
     // with the relationship line, not the self "constitution" line.
     relationship: moon.relationship,
   });
 
-  // Positions 2–9 in LIFE_PATH_ROLES are Mercury→Pluto; their walk cards are
-  // line[0..7]. line[8] is Result/Cosmic Reward (doc vocabulary — the
+  // Positions 2 to 9 in LIFE_PATH_ROLES are Mercury→Pluto; their walk cards are
+  // line[0..7]. line[8] is Result/Cosmic Reward (doc vocabulary; the
   // LIFE_PATH_ROLES "Princess" copy is quarantined and not used here).
   for (let index = 0; index < 8; index++) {
     const role = LIFE_PATH_ROLES[index + 2];
@@ -370,10 +370,10 @@ export function buildPublicLifeSpread(birthCard: string): PublicLifeSpread | nul
     gift: resultBuilt.gift,
     shadow: resultBuilt.shadow,
     // Paraphrase of docs/reading-interpretation-reference.md §6 (Result /
-    // Cosmic Reward — the reward available once the Pluto transformation is
+    // Cosmic Reward: the reward available once the Pluto transformation is
     // met). Engine-authored connective prose, not doc verbatim; app copy may
     // override it.
-    relationship: `The ${resultBuilt.label} is the reward position: the gift available after the Pluto card's transformation is handled honestly.`,
+    relationship: `The ${resultBuilt.label} is the reward position: the gift waiting after the Pluto card's transformation is handled honestly. Not skipped. Handled.`,
   });
 
   const karmaRaw = cardology.getEnvironmentDisplacement(birthCard, 1);
@@ -427,12 +427,12 @@ export function constitutionSummary(profile: LifePathProfile): string {
   const king = role(profile, 13);
   const suitPhrase = profile.dominantSuits.map((suit) => suitNoun(suit)).join(" and ");
 
-  return `${profile.label} leans ${suitPhrase || "mixed"} across the Life Path. ${primary.label} is the core note; ${mercury.label} colors the mind, ${venus.label} colors love, and ${mars.label} shows how action heats up. ${saturn.label} names the lesson, ${pluto.label} names the shadow to integrate, and ${king.label} is the command line the path grows toward.`;
+  return `${profile.label} leans ${suitPhrase || "mixed"} across the Life Path. ${primary.label} is the core note. ${mercury.label} colors the mind, ${venus.label} colors love, and ${mars.label} shows how action heats up. ${saturn.label} names the lesson you keep repeating. ${pluto.label} names the shadow to integrate. ${king.label} is the command line the path grows toward, slowly.`;
 }
 
 export function relationshipSentence(ownerLabel: string, otherLabel: string, roleCard: LifePathCard | null): string {
   if (!roleCard) {
-    return `${otherLabel}'s birth card does not land inside ${ownerLabel}'s Moon-plus-13 Life Path spectrum. That does not mean there is no connection; it means the first read should come through suits, ruling cards, shared cards, and timing rather than a direct Life Path role.`;
+    return `${otherLabel}'s birth card does not land inside ${ownerLabel}'s Moon-plus-13 Life Path spectrum. That does not mean there is no connection. It means the first read comes through suits, ruling cards, shared cards, and timing instead of a direct Life Path role. Calm down.`;
   }
   return `${otherLabel}'s birth card lands in ${ownerLabel}'s ${roleCard.shortTitle} position: ${roleCard.relationship}`;
 }
@@ -470,7 +470,7 @@ function buildLifePathCard(role: LifePathRole, code: string): LifePathCard {
     domain: parsed?.domain ?? "Card pattern",
     titleText: description?.title ?? lens?.name ?? cardLabel(code),
     gift: firstLine(description?.gifts) || lens?.sweet_spot || role.constitution,
-    shadow: firstLine(description?.shadow) || lens?.under || "Watch where this pattern slips out of proportion.",
+    shadow: firstLine(description?.shadow) || lens?.under || "Watch where this pattern slips out of proportion. It already has.",
     sweetSpot: lens?.sweet_spot ?? firstLine(description?.gifts) ?? role.constitution,
   };
 }

@@ -9,31 +9,31 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Cardology Shadow and Karma Guide",
   description:
-    "Plain-English Cardology guide to shadow, alignment, support karma, challenge karma, environment cards, and displacement cards.",
+    "Plain-English Cardology guide to shadow, alignment, support karma, challenge karma, environment cards, and displacement cards. No incense required.",
   alternates: { canonical: "/shadow-karma-guide" },
 };
 
 const glossary = [
-  ["Shadow", "A protective pattern that once helped but now costs clarity, connection, or proportion."],
-  ["Alignment", "The centered expression of a card: the useful middle lane between under-expression and over-expression."],
-  ["Support karma", "A card relationship that can feel like a gift, resource, or familiar strength when handled cleanly."],
-  ["Challenge karma", "A card relationship that can surface pressure, repetition, or a lesson asking for maturity."],
-  ["Environment card", "A Life Spread connection often read as an available gift or supportive atmosphere."],
-  ["Displacement card", "A Life Spread connection often read as a challenge, friction point, or integration task."],
+  ["Shadow", "A protective pattern that once helped. Now it costs you clarity, connection, or proportion, and you keep paying."],
+  ["Alignment", "The centered expression of a card. The useful middle lane between under-expression and over-expression. Rarer than it should be."],
+  ["Support karma", "A card relationship that can feel like a gift, resource, or familiar strength. When you handle it cleanly. Big if."],
+  ["Challenge karma", "A card relationship that can surface pressure, repetition, or a lesson asking for maturity. It will keep asking."],
+  ["Environment card", "A Life Spread connection often read as an available gift or supportive atmosphere. The room that was already warm."],
+  ["Displacement card", "A Life Spread connection often read as a challenge, friction point, or integration task. The chore with your name on it."],
 ];
 
 const faqs = [
   {
     q: "Is shadow work in Cardology a prediction?",
-    a: "Shadow language names where a card pattern gets distorted in real behavior, relationships, choices, and timing.",
+    a: "No. Shadow language names where a card pattern gets distorted in real behavior, relationships, choices, and timing. It describes what you already do. Not what happens to you next.",
   },
   {
     q: "Are challenge karma cards bad?",
-    a: "No. A challenge card names friction or repetition. It can become useful when the pattern is handled with awareness and proportion.",
+    a: "No. A challenge card names friction or repetition. The same argument, different person. It becomes useful once you handle the pattern with awareness and proportion.",
   },
   {
     q: "What is the difference between support karma and challenge karma?",
-    a: "Support karma tends to feel like an accessible gift or familiar resource. Challenge karma tends to reveal where a person must mature the way they use a card pattern.",
+    a: "Support karma tends to feel like an accessible gift or familiar resource. Challenge karma shows where you have to grow up about how you use a card pattern. One is easy. One is homework.",
   },
 ];
 
@@ -78,22 +78,24 @@ export default function ShadowKarmaGuidePage() {
           <p className="text-base leading-relaxed text-brand-ink">
             In Cardology, shadow describes a card pattern when it slips out of
             proportion. Alignment is the centered expression. Support karma and
-            challenge karma describe card relationships that can feel like gifts,
-            pressure, repetition, or lessons to integrate.
+            challenge karma describe card relationships. Some feel like gifts.
+            Some feel like pressure, repetition, or lessons you keep failing to
+            integrate.
           </p>
         </div>
       </header>
 
       <section className="space-y-5 font-serif text-lg leading-relaxed text-brand-ink">
         <p>
-          Shadow language is useful only when it stays practical. It should help a
-          person notice where a gift becomes too loud, too quiet, too controlling, or
-          too evasive. It should not become a label that freezes someone in place.
+          Shadow language is only useful when it stays practical. It should help
+          you notice where a gift gets too loud, too quiet, too controlling, or too
+          evasive. It should not become a label you hide behind. &ldquo;Sorry,
+          it&rsquo;s my shadow&rdquo; is not an apology.
         </p>
         <p>
-          Karma language works the same way. A support card is not automatic rescue;
-          a challenge card is not punishment. Both are symbolic relationships inside
-          the spread that can make a pattern easier to see.
+          Karma language works the same way. A support card is not a rescue. A
+          challenge card is not a punishment. Both are symbolic relationships inside
+          the spread. They make a pattern easier to see. Seeing it is on you.
         </p>
       </section>
 

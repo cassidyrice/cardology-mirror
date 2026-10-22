@@ -167,7 +167,7 @@ export default async function BlogPostPage({
               href="/birth-card-calculator"
               className="mt-4 inline-flex min-h-11 items-center justify-center bg-brand-oxblood px-5 py-2.5 text-sm font-bold text-brand-on-dark transition hover:bg-brand-oxblood-deep"
             >
-              Find Your Birth Card Free
+              Find your birth card, free
             </Link>
           </div>
         </header>
@@ -250,21 +250,21 @@ export default async function BlogPostPage({
 
         <section className="mt-12 grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="card-surface rounded-2xl p-5">
-            <p className="font-serif text-base text-brand-ink">Core pages to use next</p>
+            <p className="font-serif text-base text-brand-ink">Where to go next. Do not wander.</p>
             <ul className="mt-3 space-y-2 text-sm">
               {post.coreLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-brand-oxblood underline underline-offset-4">
                     {link.label}
                   </Link>
-                  {link.note && <span className="text-brand-ink-soft"> — {link.note}</span>}
+                  {link.note && <span className="text-brand-ink-soft">: {link.note}</span>}
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="border border-brand-line bg-brand-paper-deep p-5">
-            <p className="oracle-eyebrow mb-3">Related guides</p>
+            <p className="oracle-eyebrow mb-3">Related guides, since you are still here</p>
             <ul className="space-y-3">
               {related.map((item) => (
                 <li key={item.slug}>

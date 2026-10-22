@@ -168,7 +168,7 @@ export function BirthCardCalculator() {
           type="submit"
           className="accent-button large-button w-full"
         >
-          Reveal my birth card
+          Show me my birth card
         </button>
       </form>
 
@@ -182,7 +182,7 @@ export function BirthCardCalculator() {
           }}
           className="mt-3 text-xs text-brand-ink-soft underline underline-offset-4"
         >
-          Not your birthday? Change it
+          Wrong birthday? Change it
         </button>
       )}
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
@@ -238,7 +238,7 @@ function CalculatorNextStep() {
     <div className="flex w-full flex-col items-center gap-2">
       <StanReadingCta className="mb-3" />
       <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
-        Try a free exercise with your card →
+        Try a free exercise before you screenshot this →
       </a>
     </div>
   );
@@ -277,7 +277,7 @@ function BirthCardResultCard({
         </p>
       )}
       <nav aria-label="What to do next" className="mt-4 w-full text-left">
-        <p className="type-eyebrow text-center">What to do next</p>
+        <p className="type-eyebrow text-center">Now what</p>
         <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-snug text-brand-ink">
           {slug && (
             <li>
@@ -285,7 +285,7 @@ function BirthCardResultCard({
                 href={`/birth-card/${slug}`}
                 className="font-semibold text-brand-ink underline underline-offset-4"
               >
-                Open your {bc?.label ?? "birth card"} meaning
+                Read your {bc?.label ?? "birth card"} meaning. It knows things
               </Link>
             </li>
           )}
@@ -294,7 +294,7 @@ function BirthCardResultCard({
               href="/birth-card-compatibility-calculator#da"
               className="font-medium text-brand-ink underline underline-offset-4"
             >
-              Compare with someone
+              Compare with the person you keep checking
             </Link>
           </li>
         </ol>
@@ -309,7 +309,7 @@ function BirthCardResultCard({
                 })
               }
             >
-              See your whole year →
+              See your whole year. Plan accordingly →
             </Link>
           )}
           <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
@@ -346,7 +346,7 @@ function OneLineRead({ code }: { code: string }) {
   if (!lens) return null;
   return (
     <div className="w-full max-w-md border border-brand-line bg-brand-paper px-4 py-3 text-center">
-      <p className="type-eyebrow mb-2">Your card in one line</p>
+      <p className="type-eyebrow mb-2">Your card, no context</p>
       <p className="font-serif text-lg leading-snug text-brand-ink">
         {lens.sweet_spot}
       </p>

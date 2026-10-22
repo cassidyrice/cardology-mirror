@@ -11,7 +11,7 @@ import { serializeJsonLdForHtml } from "@/lib/structured-data";
 const UPDATED = PAGE_UPDATED_DATES["/playing-card-tattoo-meaning"];
 const TITLE = "Playing Card Tattoo Meaning: Pip Patterns for All 52 Cards";
 const DESCRIPTION =
-  "Playing card tattoos as pip fields only — the exact French-deck layout of each card, on skin, with no border and no index. 52 references, one hub.";
+  "Playing card tattoo meaning, pip fields only. The exact French-deck layout of each card, on skin. No border, no index. 52 references. Choose carefully.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -29,15 +29,15 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What does a playing card tattoo mean?",
-    a: "A playing-card tattoo is usually read as luck, risk, or identity. On this site it is more specific: the pip field of one card in the 52-card deck, which is also a Cardology birth card for a set of dates. The layout is the card. It is not fortune-telling.",
+    a: "A playing-card tattoo usually gets read as luck, risk, or identity. Here it is more specific. It is the pip field of one card in the 52-card deck, which is also a Cardology birth card for a set of dates. The layout is the card. It is not fortune-telling. It is just permanent.",
   },
   {
     q: "Should I tattoo the whole card or just the pips?",
-    a: "These references are pip-only: no rectangle, no corner index, no face. Number cards use the exact French-deck pip count and placement. Ace, Jack, Queen, and King use a single suit pip — the face lives on the card, not in the tattoo.",
+    a: "These references are pip-only. No rectangle. No corner index. No face. Number cards use the exact French-deck pip count and placement. Ace, Jack, Queen, and King use a single suit pip. The face lives on the card, not in the tattoo. Nobody needs a king on their forearm.",
   },
   {
     q: "How do I know which card to tattoo?",
-    a: "If you want the card that maps to your birthday, use the birth card calculator. The same month and day always return the same card. Then open that card's meaning page for the pip reference.",
+    a: "If you want the card that maps to your birthday, use the birth card calculator before the needle, not after. The same month and day always return the same card. Then open that card's meaning page for the pip reference.",
   },
 ];
 
@@ -67,16 +67,16 @@ export default function PlayingCardTattooMeaning() {
       <h1 className="display mt-1 text-3xl text-brand-ink">Playing card tattoo meaning</h1>
       <p className="mt-3 text-xs text-brand-ink-soft">Updated {updatedLabel(UPDATED)}</p>
       <p className="prose-reading mt-4 text-brand-ink-soft">
-        A playing-card tattoo is often a full card, a skull, or a lucky ace. These are none of those.
-        Each image is the pip field a real French-suited deck uses for that rank — the same count, the
-        same placement, lower pips inverted — photographed as a mark on skin. No border. No index.
+        A playing-card tattoo is usually a full card, a skull, or a lucky ace. You have seen them.
+        These are none of those. Each image is the pip field a real French-suited deck uses for that
+        rank. Same count. Same placement. Lower pips inverted. Shown as a mark on skin. No border. No index.
         Court cards are one suit pip, because the face is the card, not the tattoo.
       </p>
       <p className="prose-reading mt-3 text-brand-ink-soft">
         They live on the existing birth-card pages, not as 52 extra URLs. This hub is the index.
-        Generated references, not client work. If you are inking a birth card,{" "}
+        Generated references, not client work. If you are about to ink a birth card at 1am,{" "}
         <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
-          find yours first
+          find yours first. Sober
         </Link>
         .
       </p>

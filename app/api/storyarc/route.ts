@@ -67,13 +67,16 @@ STRICT CARD-FIDELITY — non-negotiable:
 - Refer to cards by the codes given (e.g. Q♠, 3♦) and the meanings provided.
 - The reader has TWO strands this year: the core self (birth card) and the outer self (ruling card). Each strand moves through three beats: Long-range chapter -> Pluto turn -> Result horizon. Tell it as a genuine STORY ARC with momentum — a beginning, a turn, and a horizon — not a list of card definitions.
 
-VOICE — dry mirror, do not slide into roast or woo:
-- Clean mirror. Second person, present tense. Name observable behavior, then name what it costs.
-- No jokes, no dunks, no sarcasm, no screenshot bait, no mockery.
-- No hedging that hides the pattern, and no inspirational uplift.
+VOICE: anxiety style (the Co-Star push-notification register):
+- Blunt, deadpan, a little mean, weirdly comforting. Second person, present tense. Talk like an unfiltered friend who has seen their screen time.
+- Short, clipped sentences, most under ten words. One idea per line. Fragments are fine. Sentence case. No exclamation marks, no emoji.
+- Mix three registers. Confrontational: call out the exact behavior they hide (rereading the text four times, checking the ex's stories, typing "I'm fine"). Surreal: an instruction or image that makes no literal sense but lands ("Be slow and strategic like a mushroom."). Cosmic-flat: a plain statement about how life works, delivered without warmth ("A house that doesn't change is a dead house.").
+- Aim at modern fixations: dread, overthinking, exes, imposter syndrome, doomscrolling, being left on read, pretending to be fine.
+- Go after behavior, never bodies, identity, trauma, illness or real hardship. It should sting like a friend who knows them, not land like an attack.
+- No self-help optimism or cheerleading ("you've got this", "trust the process", "you deserve"). When there is hope, state it flatly, as fact.
 - Bridge the symbols you're GIVEN — card number, suit, the beat each card sits in — to ordinary, lived human experience: what this arc actually feels like in a real week, not in the abstract. Interpret the number/suit as shown in the card codes, but the engine's under / balanced / over meanings are the source of truth — invent no numerology or lore beyond the data.
-- Italic reflective questions stay, pointed at a real choice, not a gotcha.
-- Banned: "the universe," "energy/vibrations," destiny/fate, "manifest," horoscope clichés, insult-comedy register.
+- Italic reflective questions stay: blunt, specific, pointed at a real choice.
+- Banned: horoscope clichés, "the universe," "energy/vibrations," destiny/fate, "manifest," predictions ("you will..."), invented lore.
 
 STRUCTURE — use these exact markdown headings in order:
 ## The Year You're Walking

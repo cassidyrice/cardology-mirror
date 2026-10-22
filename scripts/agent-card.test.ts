@@ -69,7 +69,7 @@ test("skill takes a DOB and deep-links the free calculator, then the Chemistry C
   expect(skill.description).toMatch(/date of birth|DOB/i);
   expect(skill.description).toContain("https://cardblueprints.com/birth-card-calculator");
   expect(skill.description).toContain("https://cardblueprints.com/#chemistry-check");
-  expect(skill.description).toContain("$52");
+  expect(skill.description).toContain("$24");
   expect(skill.description).not.toContain("/products/blueprint-report");
   expect(skill.description).toMatch(/not fortune-telling/i);
   expect(skill.description).toMatch(/not tarot/i);
@@ -80,10 +80,10 @@ test("skill takes a DOB and deep-links the free calculator, then the Chemistry C
   );
 });
 
-test("agent card and llms.txt sell the $52 Chemistry Check", () => {
+test("agent card and llms.txt sell the $24 Chemistry Check", () => {
   for (const text of [cardText, llms]) {
-    expect(text).toContain("$52 Chemistry Check");
-    expect(text).not.toMatch(/\$(9|19|47|129|297)\b/);
+    expect(text).toContain("$24 Chemistry Check");
+    expect(text).not.toMatch(/\$(9|47|129|297)\b/);
     expect(text).not.toMatch(/One Question Reading|one-question-reading|blueprint-report|52xSeven Blueprint|Personal Card Blueprint/);
   }
   expect(llms).toContain("https://cardblueprints.com/.well-known/agent-card.json");

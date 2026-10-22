@@ -32,16 +32,16 @@ test("beginners page reviewed date is the September 22 offer refresh", () => {
   expect(markup).not.toContain("August 7, 2026");
 });
 
-test("beginners page offers the $39 Chemistry Check after the free calculator", () => {
+test("beginners page offers the $24 Chemistry Check after the free calculator", () => {
   const markup = renderToStaticMarkup(createElement(CardologyForBeginners));
   const freeAt = markup.indexOf('href="/birth-card-calculator"');
   const paidAt = markup.indexOf('href="/#chemistry-check"');
 
   expect(metadata.description).toBe(
-    "Cardology for beginners: the 52-card system, finding your birth card, birth vs ruling card, compatibility, and the $39 Chemistry Check.",
+    "Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then the $24 Chemistry Check. Stop overthinking.",
   );
   expect(markup).toContain("Find your birth card free");
-  expect(markup).toContain("The Chemistry Check · $39");
+  expect(markup).toContain("The Chemistry Check · $24");
   expect(markup).toContain("A mirror, not a forecast");
   expect(markup).toContain('href="/faq"');
   expect(freeAt).toBeGreaterThan(-1);
@@ -75,7 +75,7 @@ test("beginners FAQ and HowTo schema match the visible answers", () => {
   const afterCard = faq.mainEntity.find(
     (question) => question.name === "What should I do after I know my birth card?",
   );
-  expect(afterCard?.acceptedAnswer.text).toContain("Chemistry Check ($39)");
+  expect(afterCard?.acceptedAnswer.text).toContain("Chemistry Check ($24)");
   expect(afterCard?.acceptedAnswer.text).toContain("mirror, not a forecast");
 
   expect(howTo.description).toBe(metadata.description);

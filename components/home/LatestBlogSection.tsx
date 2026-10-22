@@ -9,9 +9,9 @@ export function LatestBlogSection() {
   return (
     <SectionShell tone="paper">
       <div className="flex flex-wrap items-baseline justify-between gap-3">
-        <h2 className="type-h2">Read</h2>
+        <h2 className="type-h2">Read something</h2>
         <Link href="/blog" className="editorial-link text-sm text-brand-ink">
-          All articles →
+          Every article →
         </Link>
       </div>
       <ul className="mt-8 grid gap-8 sm:grid-cols-3">

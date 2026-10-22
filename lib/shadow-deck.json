@@ -4,14 +4,14 @@
     "slug": "ace-of-hearts",
     "label": "Ace of Hearts",
     "archetype": "The Torrent",
-    "coreShadow": "Raw, overwhelming emotion without a container. It's the flash flood of love, grief, or joy that drowns both the self and others. It is neediness disguised as love.",
-    "worldview": "My feelings are a tsunami, and I must let them crash into someone. I feel everything so intensely that I cannot be contained. My love will fix you, and your attention will complete me. We must merge.",
-    "inTheLight": "The Torrent's energy, when channeled, becomes The Wellspring. It is the source of pure, unconditional love and radical empathy. It is the ability to connect deeply and authentically, to love freely without expectation, and to be a fountain of compassion for others.",
+    "coreShadow": "Raw emotion with no container. A flash flood of love, grief or joy that takes you and whoever is standing nearby. Neediness wearing love's jacket.",
+    "worldview": "My feelings are a tsunami and someone has to stand in the water. Being contained is for people who feel less. My love fixes you. Your attention finishes me. We merge or nothing.",
+    "inTheLight": "Channeled, The Torrent becomes The Wellspring. Love without the invoice. Empathy that does not need to drown anyone to prove it is real. A fountain, not a flood.",
     "lightName": "The Wellspring",
     "prompts": [
-      "Describe a time your emotions felt like a flood you couldn't control. What was the outcome?",
-      "Are you currently pouring your feelings onto someone in the hope they will \"fix\" or \"complete\" you?",
-      "What is one small, healthy way you can express a powerful emotion today without overwhelming yourself or someone else?"
+      "When did a feeling flood you so hard you could not steer? What did it wreck, and what did it water?",
+      "Who are you pouring yourself into right now, hoping they fix you or finish you?",
+      "What is one small way to say a big feeling today without drowning yourself or anyone else?"
     ],
     "keywords": [
       "emotional overwhelm",
@@ -25,14 +25,14 @@
     "slug": "2-of-hearts",
     "label": "Two of Hearts",
     "archetype": "The Codependent",
-    "coreShadow": "The complete loss of self in another person. The inability to distinguish one's own feelings and needs from a partner's, creating a fragile and unhealthy union.",
-    "worldview": "I am nothing without you. Your moods are my moods. Your dreams are my dreams. I only exist in the reflection of your eyes. Please don't leave me, for I will cease to be.",
-    "inTheLight": "This deep desire for union transforms into The Soulmate. It is a sacred, balanced partnership built on mutual respect and interdependence. It is the ability to see the divine in another while remaining a whole and sovereign individual.",
+    "coreShadow": "Total loss of self in another person. Your feelings and theirs become one pile, and the union gets fragile. A relationship with one occupant.",
+    "worldview": "Without you I am a blank page. When you are sad, I am sad. Your plans turn into my plans. I only show up in your reflection. If you leave, there is nobody left here.",
+    "inTheLight": "Channeled, The Codependent becomes The Soulmate. Two whole people who lean on each other and still stand up alone. You can see the best in someone and keep your own face.",
     "lightName": "The Soulmate",
     "prompts": [
-      "In which relationship (past or present) has your identity most completely merged with the other person’s?",
-      "What part of yourself are you afraid of facing alone, without a partner's validation?",
-      "What is one decision you can make this week that is purely for your own well-being, without considering a partner’s preference?"
+      "Which relationship swallowed your whole personality? Whose taste do you have now?",
+      "What part of yourself are you scared to meet alone, with nobody approving?",
+      "What is one decision this week that is only yours, made without checking their face first?"
     ],
     "keywords": [
       "codependency",
@@ -46,14 +46,14 @@
     "slug": "3-of-hearts",
     "label": "Three of Hearts",
     "archetype": "The Betrayer",
-    "coreShadow": "The celebration turned sour by jealousy, gossip, or social exclusion. It is the friend who secretly resents your success or the third person who drives a wedge between a happy couple.",
-    "worldview": "Their shared joy makes me feel my own lack more acutely. If I am not the center of the celebration, then the celebration is a threat. I must either insert myself or subtly spoil their happiness to feel secure.",
-    "inTheLight": "This social energy becomes The Confidante. It is the archetype of true community, shared joy, and deep, platonic friendship. It is the ability to celebrate the successes of others as if they were your own and to create a circle of trust and mutual support.",
+    "coreShadow": "The party soured by jealousy, gossip or a quiet freeze out. The friend who resents your good news, or the third person who pries a happy pair apart.",
+    "worldview": "Your happiness is a spotlight I am not standing in. A party I am not the center of feels like an attack. So I make it about me, or I quietly let the air out of it.",
+    "inTheLight": "Channeled, The Betrayer becomes The Confidante. Real community and shared joy. A friend who cheers for your win like it is theirs, keeps your secrets in a drawer, and builds a circle of trust with no knife in it.",
     "lightName": "The Confidante",
     "prompts": [
-      "Recall a time when a friend's success sparked a feeling of jealousy or resentment in you. What was that feeling trying to tell you about your own desires?",
-      "When have you felt like the \"third wheel,\" and how did you react to that feeling of exclusion?",
-      "Is there a current friendship where you are withholding praise or support? What are you afraid of?"
+      "When did a friend's success make your stomach drop? What was that drop trying to tell you about what you want?",
+      "When were you the third wheel, and what did you do with that feeling of being left out?",
+      "Which friend are you withholding a compliment or support from right now, and what is the actual fear?"
     ],
     "keywords": [
       "emotional inconsistency",
@@ -67,14 +67,14 @@
     "slug": "4-of-hearts",
     "label": "Four of Hearts",
     "archetype": "The Apathetic",
-    "coreShadow": "Willful emotional numbness and withdrawal. It is the refusal of new connections or opportunities for joy out of a deep-seated fear of being disappointed again.",
-    "worldview": "I've been offered this before, and it always leads to pain. It is safer to want nothing and feel nothing. I will protect my heart by pretending it doesn't exist. Leave me alone in my discontent.",
-    "inTheLight": "This emotional retreat becomes The Contemplative Heart. It is a necessary and healing period of introspection. It's the wisdom to pull back, assess one's true emotional needs, and rest the heart before it can open again, stronger and more discerning than before.",
+    "coreShadow": "Chosen numbness. Pulling back from new connection and new joy because you are sure of being let down again. A heart on airplane mode.",
+    "worldview": "I have wanted things before and it went badly every time. Wanting nothing is cheaper. If I act like my heart is not here, nobody can break it. Let me stay unhappy in peace.",
+    "inTheLight": "Channeled, The Apathetic becomes The Contemplative Heart. A pause that heals: you pull back, work out what you need, and rest until the heart can open again, pickier and stronger. Quiet that is on purpose.",
     "lightName": "The Contemplative Heart",
     "prompts": [
-      "What offers of connection or joy have you recently turned down? What was the reason you gave, and what was the *real* reason?",
-      "Describe the emotional \"wall\" you have built. What is it made of?",
-      "If you were to let one new person or experience into your heart today, what would be your biggest fear?"
+      "Which offers of connection or joy did you turn down lately? What reason did you give, and what was the actual one?",
+      "What is your emotional wall made of? Be specific about the bricks.",
+      "If you let one new person in today, what is the biggest fear that speaks up first?"
     ],
     "keywords": [
       "emotional rigidity",
@@ -88,14 +88,14 @@
     "slug": "5-of-hearts",
     "label": "Five of Hearts",
     "archetype": "The Grief-Collector",
-    "coreShadow": "Defining oneself by past hurts and disappointments. It is the act of focusing only on what has been lost while ignoring any blessings that remain.",
-    "worldview": "You don't understand my pain. The good things don't matter because the bad thing happened. My identity is now forged in this loss, and I must constantly revisit the wound to remember who I am.",
-    "inTheLight": "The Grief-Collector evolves into The Survivor. This archetype understands how to honor loss and grieve authentically without letting sorrow become their entire identity. It is the resilience to acknowledge pain while still being able to see and appreciate the love and hope that endures.",
+    "coreShadow": "An identity built from old hurts. You stare at what was lost and walk past what is still standing. The wound keeps a seat at every table.",
+    "worldview": "You could never get how much this hurts. Nothing good counts because of what happened. The loss is my name tag now, so I keep pressing on the bruise to remember who I am.",
+    "inTheLight": "Channeled, The Grief-Collector becomes The Survivor. Someone who can mourn properly without turning sorrow into a personality. You admit the hurt, honor the loss, and still notice the love and hope that stayed.",
     "lightName": "The Survivor",
     "prompts": [
-      "What past hurt or loss do you find yourself replaying most often? What comfort do you get from holding onto this story?",
-      "Look at a current challenge. Are you focusing entirely on what has been lost, while ignoring what remains?",
-      "Write down one good thing that still exists in your life, despite a recent hardship. Allow yourself to feel gratitude for it for two full minutes."
+      "Which old hurt do you replay most? What comfort do you get from the replay?",
+      "In the thing you are dealing with now, what are you ignoring because you are busy counting what is gone?",
+      "Name one good thing still here despite the bad stretch. Sit with it for two full minutes, phone face down."
     ],
     "keywords": [
       "fear of commitment",
@@ -109,14 +109,14 @@
     "slug": "6-of-hearts",
     "label": "Six of Hearts",
     "archetype": "The Sentimentalist",
-    "coreShadow": "Being trapped in an idealized, romanticized past. This shadow uses nostalgia as a drug to avoid the challenges and responsibilities of the present moment.",
-    "worldview": "Nothing will ever be as pure, simple, or good as it was back then. The present is a constant disappointment. If I could just go back, everything would be okay.",
-    "inTheLight": "Nostalgia becomes a source of wisdom and joy, transforming this archetype into The Storykeeper. They honor their roots and cherish memories without being imprisoned by them. They use the lessons of the past to build a better future and find gratitude for the entire journey.",
+    "coreShadow": "Living inside a polished, romanticized past. You use nostalgia like a sedative to dodge whatever is due in the present.",
+    "worldview": "Nothing now is as sweet as it used to be. Today keeps letting me down. If I could rewind to back then, everything would be fine again.",
+    "inTheLight": "Channeled, The Sentimentalist becomes The Storykeeper. You honor where you came from and keep the good memories without moving in. The past becomes a reference book, and you are grateful for the whole trip.",
     "lightName": "The Storykeeper",
     "prompts": [
-      "What period from your past do you idealize the most? How does this idealized memory prevent you from enjoying the present?",
-      "When you feel dissatisfied today, is your first instinct to retreat into memories of \"the good old days\"?",
-      "What is one new, positive memory you can create for yourself this week?"
+      "Which stretch of your past do you polish the most? What does the polish cost you today?",
+      "When you feel let down now, is your first move a retreat into the good old days?",
+      "What is one new good memory you can make this week, on purpose, with your phone out of reach?"
     ],
     "keywords": [
       "martyrdom",
@@ -130,14 +130,14 @@
     "slug": "7-of-hearts",
     "label": "Seven of Hearts",
     "archetype": "The Fantasist",
-    "coreShadow": "Falling in love with an idea, not a person; living in a state of romantic delusion to avoid the complexities of real connection.",
-    "worldview": "The movie in my head is better and safer than reality. I will build a person up into my perfect ideal, and when they fail to meet that impossible standard, I will feel beautifully, tragically disappointed.",
-    "inTheLight": "The Fantasist's powerful imagination, when grounded, becomes the gift of The Visionary. They are the artist, poet, and innovator who can see potential and beauty everywhere. They use their imagination not to escape reality, but to transform it.",
+    "coreShadow": "Love for an idea, not a person. A private movie you refuse to leave the theater of, because real connection is messier.",
+    "worldview": "The version in my head is better and nobody can ruin it. I build someone into a perfect person, and when they turn out human, I get to be gorgeously, tragically let down.",
+    "inTheLight": "Channeled, The Fantasist becomes The Visionary. The artist or poet who sees potential and beauty in unlikely places. You use imagination to change reality instead of leaving it.",
     "lightName": "The Visionary",
     "prompts": [
-      "Where are you currently in love with the *idea* of a person or situation, rather than the reality of it?",
-      "What comforting fantasy are you replaying in your mind, and what truth might you be avoiding by staying there?",
-      "Describe a time you were disappointed by someone. Was the disappointment caused by their actions, or by their failure to live up to a role you secretly created for them?"
+      "Where are you in love with the idea of a person or situation, not the real one?",
+      "Which comforting fantasy keeps replaying, and what true thing is it standing in front of?",
+      "Think of someone who disappointed you. Was it what they did, or the role you quietly assigned them?"
     ],
     "keywords": [
       "emotional avoidance",
@@ -151,14 +151,14 @@
     "slug": "8-of-hearts",
     "label": "Eight of Hearts",
     "archetype": "The Drifter",
-    "coreShadow": "The fear of commitment that leads to abandoning people or situations at the first sign of deepening intimacy. It is the preemptive strike against being hurt.",
-    "worldview": "This is getting too real, too deep. I have to get out before I get trapped or rejected. It is easier to walk away now than to be forced out later. Nothing good lasts.",
-    "inTheLight": "This energy of moving on becomes the courage of The Pilgrim. It is the wisdom to know when something is no longer spiritually or emotionally aligned and the strength to walk away from a good situation in search of one's true path. It is a quest for emotional authenticity.",
+    "coreShadow": "Fear of commitment that bolts at the first sign of real closeness. Hurt them first, so nobody gets the chance to hurt you.",
+    "worldview": "This is getting too close. I need to leave before I get stuck or dumped. Walking out now beats being shown the door later. Good things always end anyway.",
+    "inTheLight": "Channeled, The Drifter becomes The Pilgrim. The courage to leave something that stopped fitting, and to walk toward your own road on purpose. A quest for the real thing, not an escape from a Tuesday.",
     "lightName": "The Pilgrim",
     "prompts": [
-      "What good thing (a relationship, a project, a feeling) did you walk away from because it started to feel \"too real\" or \"too deep\"?",
-      "Is there a situation right now where you feel the urge to flee? What is the specific feeling you are running from?",
-      "What might happen if, instead of leaving, you chose to stay and communicate your fear?"
+      "Which good thing did you walk away from because it started to feel too real or too deep?",
+      "Where do you feel the urge to flee right now? What exact feeling are you running from?",
+      "What happens if you stay and say the fear out loud instead of packing a bag?"
     ],
     "keywords": [
       "emotional manipulation",
@@ -172,14 +172,14 @@
     "slug": "9-of-hearts",
     "label": "Nine of Hearts",
     "archetype": "The Sybarite",
-    "coreShadow": "Using sensual pleasure and material comfort to numb emotional emptiness. It is gluttony of the senses—comfort eating, retail therapy, addiction to feeling good to avoid feeling at all.",
-    "worldview": "An empty feeling inside can be filled with something from the outside. If I eat this, buy this, or experience this, the bad feeling will go away, at least for a little while.",
-    "inTheLight": "The Sybarite becomes The Epicurean. This archetype has a deep and healthy appreciation for the pleasures of life. They practice gratitude, live in the moment, and enjoy the sensual world as a manifestation of self-love and abundance, not as an escape.",
+    "coreShadow": "Using pleasure and comfort to numb an empty feeling. Snacks, carts, one more episode. Gluttony for the senses, so nothing has to be felt.",
+    "worldview": "The empty feeling can be filled from outside. One more bite, one more order, one more night out, and the bad feeling goes quiet for a while.",
+    "inTheLight": "Channeled, The Sybarite becomes The Epicurean. You enjoy the good things in life on purpose, with gratitude, and in the moment. Pleasure is a form of self-love here, not a place to hide.",
     "lightName": "The Epicurean",
     "prompts": [
-      "What is your go-to \"comfort\" activity (eating, shopping, etc.) when you feel emotionally empty or sad?",
-      "Describe a time you used pleasure or consumption to numb a difficult feeling. Did it work? For how long?",
-      "The next time you feel a negative emotion, what could you do to *feel* it instead of immediately trying to *fix* it with a distraction?"
+      "What is your go-to comfort when you feel empty? Be specific about the snack, the cart, the app.",
+      "When did you use pleasure to numb a hard feeling? Did it work, and for how long?",
+      "Next time a bad feeling shows up, what happens if you feel it for ten minutes before reaching for the fix?"
     ],
     "keywords": [
       "unfulfilled longing",
@@ -193,14 +193,14 @@
     "slug": "10-of-hearts",
     "label": "Ten of Hearts",
     "archetype": "The Martyr",
-    "coreShadow": "Enforcing a façade of perfect family harmony at the cost of one's own needs and truth. It is the \"keeping up appearances\" that breeds deep, unspoken resentment.",
-    "worldview": "The happiness of the group depends on my silent sacrifice. I must suppress my own desires for the 'greater good.' They must see us as a perfect, happy family, no matter how I feel inside.",
-    "inTheLight": "This archetype evolves into the true Patriarch/Matriarch. They are the center of a thriving, authentic community built on genuine love and emotional honesty. They create a legacy of lasting happiness and a safe harbor where everyone feels they truly belong.",
+    "coreShadow": "Staging perfect family harmony at the cost of your own needs and truth. Keeping up appearances until the resentment grows quietly in the walls.",
+    "worldview": "Everyone stays happy as long as I quietly give things up. My own wants can wait for the good of all of us. From the outside we have to look perfect, whatever is happening in here.",
+    "inTheLight": "Channeled, The Martyr becomes the person at the center of a community that is actually warm and honest. Love that does not need a performance, and a place where everyone belongs without a cost to you.",
     "lightName": null,
     "prompts": [
-      "In your family or close circle, whose needs do you consistently place above your own? What unspoken resentment do you hold because of it?",
-      "What does the \"perfect, happy family\" look like in your mind? What truths are being suppressed to maintain that image?",
-      "If you were to state one of your own needs clearly to your family, what are you afraid would happen?"
+      "In your family or close circle, whose needs go above yours every time? What resentment is that feeding?",
+      "What does the perfect, happy family look like in your head? Which truths are being kept out of the frame?",
+      "If you named one of your own needs to your family, what do you think happens? Say the real fear."
     ],
     "keywords": [
       "family enmeshment",
@@ -214,14 +214,14 @@
     "slug": "jack-of-hearts",
     "label": "Jack of Hearts",
     "archetype": "The Seducer",
-    "coreShadow": "The emotionally immature charmer who loves the chase but fears the catch. They play with the feelings of others to validate themselves, with no intention of real commitment.",
-    "worldview": "I love the feeling of making someone fall for me. It proves I'm desirable. But a real relationship is a cage. I must get the validation and then move on before it gets complicated.",
-    "inTheLight": "This youthful emotional energy matures into that of The Romantic. They are open-hearted, curious, and willing to be vulnerable. They approach connection with a poetic and sincere desire to understand both their own heart and the heart of another.",
+    "coreShadow": "The charming kid who loves the chase and dreads the catch. You play with people's feelings to prove you are wanted, with no plan to stay.",
+    "worldview": "Making someone fall for me is the best feeling there is. It proves I am wanted. Actual commitment is a locked room. Get the yes, then leave before it gets messy.",
+    "inTheLight": "Channeled, The Seducer becomes The Romantic. Open hearted, curious, willing to be seen. You approach someone with a poetic, sincere wish to understand your own heart and theirs, and you stay for the answer.",
     "lightName": "The Romantic",
     "prompts": [
-      "Recall a time you used your charm to get emotional validation from someone you had no real intention of committing to.",
-      "What is more exciting to you: the thrill of the chase, or the security of a stable relationship? Be honest.",
-      "What does true intimacy mean to you, and what about it feels like a threat?"
+      "When did you use charm to get validation from someone you never planned to commit to?",
+      "Which one thrills you more, the chase or the stable thing? Answer without a smirk.",
+      "What does real intimacy mean to you, and which part of it feels like a threat?"
     ],
     "keywords": [
       "romantic delusion",
@@ -235,14 +235,14 @@
     "slug": "queen-of-hearts",
     "label": "Queen of Hearts",
     "archetype": "The Emotional Tyrant",
-    "coreShadow": "Using a mastery of emotion and intuition as a tool for control. This is the archetype of guilt trips, passive-aggression, and making others responsible for her feelings.",
-    "worldview": "I feel everything, and therefore, my feelings are law. I know exactly what to say to make you feel guilty. If I am not happy, it is your fault, and you must fix it.",
-    "inTheLight": "The Tyrant's deep understanding of emotion transforms her into The Empath. She becomes a compassionate counselor, a nurturing presence, and a safe harbor for the feelings of others. Her intuition is a tool for healing and connection, not control.",
+    "coreShadow": "Skill with feeling used as a leash. Guilt trips, passive aggression, and making other people responsible for her mood.",
+    "worldview": "My feelings are bigger than anyone's, so they make the rules. I know the one sentence that sends you spiraling into guilt. When I am unhappy, it is on you to repair it.",
+    "inTheLight": "Channeled, The Emotional Tyrant becomes The Empath. A counselor, a safe harbor, a presence people can exhale near. Her read on feeling is a tool for healing and connection, not for steering anyone.",
     "lightName": "The Empath",
     "prompts": [
-      "When was the last time you used a guilt trip or passive-aggression to get what you wanted?",
-      "Do you believe others are responsible for managing your feelings? In what situations?",
-      "Think of a recent conflict. How could you have expressed your needs directly, without manipulation?"
+      "When did you last use a guilt trip or a long silence to get what you wanted?",
+      "Do you expect other people to manage your feelings? In which situations, exactly?",
+      "Think of a recent conflict. How could you have said the need out loud, with no angle?"
     ],
     "keywords": [
       "smothering",
@@ -256,14 +256,14 @@
     "slug": "king-of-hearts",
     "label": "King of Hearts",
     "archetype": "The Possessor",
-    "coreShadow": "Emotional control disguised as benevolent protection. This archetype sees his loved ones as part of his domain and becomes jealous, withholding, or domineering when they express emotional independence.",
-    "worldview": "I know what is best for the people I love. Their happiness and security depend on my guidance. If they obey and appreciate me, I am kind. If they defy me, I will withdraw my warmth to bring them back in line.",
-    "inTheLight": "The Possessor becomes The Benevolent King. He is a mature and emotionally secure leader who commands loyalty through genuine love, tolerance, and respect. He creates a stable and warm environment where others feel safe to be their authentic selves and thrive under his compassionate watch.",
+    "coreShadow": "Control wearing the costume of protection. He treats the people he loves as territory and turns jealous, cold or bossy when they show any independence.",
+    "worldview": "I always know what my people need. They are safe because I steer. Grateful and obedient gets my warmth. Disagree with me and the heat goes off until you fall back in line.",
+    "inTheLight": "Channeled, The Possessor becomes The Benevolent King. A secure leader whose followers stay out of love, not fear. He builds a room warm enough for people to be who they are, and he watches over it without hovering.",
     "lightName": "The Benevolent King",
     "prompts": [
-      "In what relationship do you believe you \"know what's best\" for the other person?",
-      "Describe a time you felt jealous or controlling when a loved one showed emotional independence.",
-      "How can you show your love and support for someone today while also honoring their complete autonomy?"
+      "In which relationship do you believe you know what is best for the other person?",
+      "When did a loved one's independence make you jealous or bossy? Describe the moment, not the excuse.",
+      "What is one way to support someone today and leave their decision entirely to them?"
     ],
     "keywords": [
       "emotional suppression",
@@ -277,14 +277,14 @@
     "slug": "ace-of-clubs",
     "label": "Ace of Clubs",
     "archetype": "The Zealot",
-    "coreShadow": "An idea so pure and potent it becomes a weapon. It is raw, unthinking conviction that cannot tolerate dissent and seeks to conquer all other viewpoints.",
-    "worldview": "This idea is The Truth. It is a fire that must burn away all impurity and falsehood. Anyone who does not embrace it is not just wrong; they are an enemy of progress. There is no room for debate, only conversion.",
-    "inTheLight": "The Zealot's raw energy becomes The Pioneer. It is the divine spark of a new idea, a flash of genius, and the unbridled creative force to begin a new venture. It is the raw willpower that can move mountains and blaze a new trail.",
+    "coreShadow": "An idea so charged it becomes a weapon. Conviction with no thinking left in it, unable to hear dissent, out to conquer every other view.",
+    "worldview": "This idea is the truth and it needs to burn the rest down. If you disagree you are not wrong, you are in the way of progress. I do not debate. I recruit.",
+    "inTheLight": "Channeled, The Zealot becomes The Pioneer. The spark of a new idea without the scorched earth. A flash of genius with the willpower to begin, and the manners to let someone else have a thought too.",
     "lightName": "The Pioneer",
     "prompts": [
-      "What idea or belief do you hold so tightly that you instantly dismiss anyone who disagrees with it?",
-      "Describe a time your passion for a belief made you aggressive or deaf to other viewpoints.",
-      "How could you genuinely listen to an opposing viewpoint on one of your core beliefs, just for five minutes?"
+      "Which belief do you hold so tightly that you dismiss the next person who pushes back, in under a minute?",
+      "When did your passion for an idea make you loud and deaf at the same time?",
+      "Can you listen to the opposing view on your favorite idea for five minutes without drafting your reply?"
     ],
     "keywords": [
       "mental overwhelm",
@@ -298,14 +298,14 @@
     "slug": "2-of-clubs",
     "label": "Two of Clubs",
     "archetype": "The Antagonist",
-    "coreShadow": "Willful opposition and argument for the sake of it. This is the intellectual bully who plays devil's advocate not to find truth, but to assert dominance and create a stalemate.",
-    "worldview": "My mind is a fortress. By challenging every idea you present, I prove my own intellectual superiority. I don't need to be right; I just need you to be wrong. A stalemate is a victory for me because I did not yield.",
-    "inTheLight": "This clashing of wills becomes The Strategist. It is the ability to see both sides of an issue with stunning clarity, to weigh options, and to make a bold, decisive choice. It is the courage to hold a strong conviction based on careful thought.",
+    "coreShadow": "Willful opposition. Arguing because arguing is available. The devil's advocate who is not hunting for truth, just for a stalemate with a trophy.",
+    "worldview": "My mind is a fortress with arrow slits. If I attack every idea you bring, I stay the smartest one here. I do not need to be right. I need you to be wrong. A tie is a win because I never blinked.",
+    "inTheLight": "Channeled, The Antagonist becomes The Strategist. Both sides of the issue, seen clearly. Options weighed, then one chosen out loud. A strong conviction built on actual thinking, not on being difficult.",
     "lightName": "The Strategist",
     "prompts": [
-      "When do you play devil's advocate just to be difficult or to show how smart you are?",
-      "Is there a current situation where you are resisting a plan simply because it wasn't your idea?",
-      "What would it feel like to consciously agree with and support someone else's idea in a current debate, even if it's not perfect?"
+      "When do you play devil's advocate to show how fast your brain is?",
+      "Which plan are you resisting right now only because it was not your idea?",
+      "What would it cost you to back someone else's imperfect idea in a debate you are currently in?"
     ],
     "keywords": [
       "indecision",
@@ -319,14 +319,14 @@
     "slug": "3-of-clubs",
     "label": "Three of Clubs",
     "archetype": "The Saboteur",
-    "coreShadow": "The betrayal of a plan through ego-driven action or inaction. It is the team member who agrees to a strategy and then does their own thing, undermining the group's progress.",
-    "worldview": "The group's plan is flawed, and my way is better. It is easier to ask for forgiveness than permission. I will follow the plan in word, but my own brilliant actions will save the day, and then they will all thank me.",
-    "inTheLight": "This energy of action becomes The Collaborator. It represents a well-executed plan coming to fruition through seamless teamwork. It is the initial, exciting success that proves a shared vision is working, creating momentum for the future.",
+    "coreShadow": "Ego that betrays the plan. The teammate who nods through the strategy meeting, then freelances behind everyone's back, smiling the whole time.",
+    "worldview": "The group plan is mid and my way is better. Forgiveness is cheaper than permission. I agree in the meeting, I do my own brilliant thing after, and later they all thank me.",
+    "inTheLight": "Channeled, The Saboteur becomes The Collaborator. A plan carried out well, through teamwork that does not creak. The first exciting proof that a shared vision works, and some momentum to keep it moving.",
     "lightName": "The Collaborator",
     "prompts": [
-      "Recall a time you undermined a group project or plan (even subtly) because you thought your way was better. What was the result?",
-      "When you disagree with a leader's plan, is your first instinct to confront them directly or to complain to others?",
-      "How can you better support a team goal this week, even if you don't agree with every aspect of the strategy?"
+      "When did you quietly undermine a group plan because you were sure your way was better? What did it cost?",
+      "When you disagree with the leader, do you say it to their face or to everyone else?",
+      "What would supporting the team goal look like this week, even with parts of the strategy you hate?"
     ],
     "keywords": [
       "gossip",
@@ -340,14 +340,14 @@
     "slug": "4-of-clubs",
     "label": "Four of Clubs",
     "archetype": "The Partisan",
-    "coreShadow": "A celebration of community that turns into insular tribalism. It is the \"us versus them\" mentality that finds security only within an echo chamber, viewing all outsiders with suspicion and hostility.",
-    "worldview": "We who think alike are safe here together. Our harmony depends on our shared beliefs and the rejection of all outside influence. The world out there is wrong and dangerous; our way is the only right way.",
-    "inTheLight": "The Partisan’s loyalty transforms into The Founder. This archetype creates a safe, stable, and welcoming community. It is the celebration of a shared achievement, the joy of belonging, and the establishment of a strong foundation upon which to build.",
+    "coreShadow": "Community turned into a clubhouse with a lock. Us versus them, security found only inside the echo, every outsider treated as a suspect. The group chat as a fortress, with a very small guest list.",
+    "worldview": "People who think like us are safe in here. Peace means agreeing and keeping everyone else outside. Out there is wrong and a little dangerous. Our way is the only way, and the door stays locked.",
+    "inTheLight": "Channeled, The Partisan becomes The Founder. Loyalty that builds a safe, steady place with the door actually open. The joy of belonging, and a solid foundation that others are invited to build on.",
     "lightName": "The Founder",
     "prompts": [
-      "Describe a group you belong to that has a strong \"us vs. them\" mentality. What is the \"them\"?",
-      "What topic makes you immediately shut down and refuse to engage with anyone from the \"other side\"?",
-      "Identify one belief held by an \"opposing\" group that might have a grain of truth or a valid reason behind it."
+      "Which group of yours has a strong us versus them streak? Who is the them?",
+      "What topic makes you shut down and stop talking to anyone from the other side?",
+      "What is one belief held by your opponents that might have a grain of sense in it?"
     ],
     "keywords": [
       "mental rigidity",
@@ -361,14 +361,14 @@
     "slug": "5-of-clubs",
     "label": "Five of Clubs",
     "archetype": "The Bully",
-    "coreShadow": "Conflict for the sake of conflict. It is the ego that thrives on petty arguments, verbal sparring, and intimidating others to feel a sense of power and control.",
-    "worldview": "Life is a series of dominance contests. Creating a little chaos and winning these small arguments makes me feel strong and alive. A good fight clears the air, especially when I'm the one left standing.",
-    "inTheLight": "This chaotic energy becomes The Challenger. It is the healthy friction of a brainstorming session, where diverse ideas clash to create a brilliant synthesis. It is the constructive debate that sharpens all participants and leads to innovation.",
+    "coreShadow": "Conflict for its own sake. An ego that feeds on petty arguments, verbal sparring and making other people nervous, because nervous people feel like power.",
+    "worldview": "Every room is a ring and I came to box. Some mess and a won point are how I know I exist. Nothing feels cleaner than a fight, as long as I am the last one upright.",
+    "inTheLight": "Channeled, The Bully becomes The Challenger. Friction that is useful, like a brainstorm where clashing ideas end up stronger together. Debate that sharpens everybody and pushes the work forward.",
     "lightName": "The Challenger",
     "prompts": [
-      "In what situations do you find yourself getting into petty arguments just to feel a sense of power?",
-      "Who in your life do you tend to verbally spar with? What does \"winning\" those arguments give you?",
-      "The next time you feel the urge to start a petty conflict, what could you do instead to feel powerful and in control?"
+      "In which situations do you pick petty fights to feel powerful?",
+      "Who do you spar with most? What does winning give you that lasts past dinner?",
+      "Next time you want to start a petty fight, what could you do with that urge instead?"
     ],
     "keywords": [
       "attention deficit",
@@ -382,14 +382,14 @@
     "slug": "6-of-clubs",
     "label": "Six of Clubs",
     "archetype": "The Egotist",
-    "coreShadow": "The arrogance that comes after a victory. It is the insufferable winner who alienates their allies, refuses to listen to advice, and believes their recent success makes them infallible.",
-    "worldview": "I won. This victory is proof of my inherent superiority. My methods are now beyond question. I deserve this praise, and I will not entertain any critique or warning about the future.",
-    "inTheLight": "The Egotist becomes The Victor. This is an archetype of earned success and public recognition. They use the momentum from their win to inspire their team, graciously share the credit, and set their sights on the next, greater objective.",
+    "coreShadow": "Arrogance after a win. The insufferable winner who loses their allies, ignores advice, and decides one success made them unable to be wrong.",
+    "worldview": "I won, which proves I am better. My methods are beyond question now. I earned the praise, and I am not taking notes on whatever could go wrong next.",
+    "inTheLight": "Channeled, The Egotist becomes The Victor. Success that was earned and publicly recognized. The momentum of a win used to lift the team, the credit shared out loud, and the next goal already chosen.",
     "lightName": "The Victor",
     "prompts": [
-      "Describe a victory or success that made you feel arrogant and superior. How did you treat people afterward?",
-      "Are you currently resting on your laurels from a past win, refusing to see the next challenge ahead?",
-      "Who on your \"team\" deserves credit for a recent success? Take a moment to acknowledge them."
+      "Which win made you feel superior? How did you treat people afterward?",
+      "Are you resting on an old win and refusing to look at the next problem?",
+      "Who on your team deserves credit for a recent success? Say it to their face today."
     ],
     "keywords": [
       "intellectual superiority",
@@ -403,14 +403,14 @@
     "slug": "7-of-clubs",
     "label": "Seven of Clubs",
     "archetype": "The Cynic",
-    "coreShadow": "A defensive and paranoid struggle against imagined threats. It's the person who fights ferociously for their position, using their intellect to tear down every potential challenger, real or imagined.",
-    "worldview": "I am the underdog, holding my ground against a hostile world. Everyone wants to take what I have. I must be constantly vigilant and fight off all comers to protect my small patch of turf.",
-    "inTheLight": "The Cynic's defensiveness becomes the courage of The Champion. This is the bravery to stand up for one's beliefs, even when outnumbered. It is the perseverance to fight for a just cause and the moral courage to hold your ground under immense pressure.",
+    "coreShadow": "Fighting enemies that might not exist. Guarding a tiny patch of turf and using a sharp brain to knock down every challenger, real or invented.",
+    "worldview": "It is me against a world that wants my stuff. I keep one eye open at all times. Every visitor is a raider and my little plot of ground is the last fort on earth.",
+    "inTheLight": "Channeled, The Cynic becomes The Champion. The courage to stand for what you believe even when outnumbered. The stamina to fight for a fair cause and hold your ground when the pressure shows up.",
     "lightName": "The Champion",
     "prompts": [
-      "What idea or project have you recently shot down (in your own mind or out loud)? Was it from a place of genuine critique or fear?",
-      "In what area of your life do you feel like you are \"one against many,\" fighting a defensive battle? Is the threat real?",
-      "What would it take for you to lower your defenses and trust one other person's input on a current struggle?"
+      "Which idea or project did you shoot down lately, in your head or out loud? Was that critique or fear?",
+      "Where do you feel like one against many? Is the threat real, or is it a draft you keep rewriting?",
+      "What would it take to trust one other person's input on something you are struggling with?"
     ],
     "keywords": [
       "paranoia",
@@ -424,14 +424,14 @@
     "slug": "8-of-clubs",
     "label": "Eight of Clubs",
     "archetype": "The Propagandist",
-    "coreShadow": "The use of swift communication to create chaos and spread misinformation. It is the whirlwind of rumors, half-truths, and panicked messages designed to manipulate a situation for personal gain.",
-    "worldview": "The first story wins. If I can move faster than the truth, I can control the narrative. Speed and confidence are more persuasive than facts. A little chaos benefits those who are prepared for it.",
-    "inTheLight": "This rapid energy becomes The Messenger. It represents swift, decisive, and effective action. It is the ability to think on your feet, communicate clearly under pressure, and mobilize resources quickly to achieve a goal.",
+    "coreShadow": "Speed turned into a weapon. Rumors, half-truths and panicked group texts, fired off before anyone can check them, all quietly steering the mess toward whoever hit send first.",
+    "worldview": "Whoever tells it first owns it. Truth is slow, so I lap it. A confident voice beats a citation, and a little panic pays off for whoever packed a bag beforehand.",
+    "inTheLight": "Channeled, The Propagandist becomes The Messenger. Swift, decisive, useful action. Thinking on your feet, speaking clearly under pressure, and getting people and resources moving toward a goal.",
     "lightName": "The Messenger",
     "prompts": [
-      "Recall a time you spread a rumor or a piece of information before you knew if it was 100% true.",
-      "When you are in a conflict, is your first instinct to control the narrative by telling your side of the story to as many people as possible?",
-      "Commit to a \"fact-check\" today: before you share a piece of information, take 30 seconds to verify it."
+      "When did you pass along information before you knew it was true?",
+      "In a conflict, is your first move telling your side to as many people as possible?",
+      "Fact-check today: before you share one thing, spend 30 seconds finding out if it is true."
     ],
     "keywords": [
       "mental control",
@@ -445,14 +445,14 @@
     "slug": "9-of-clubs",
     "label": "Nine of Clubs",
     "archetype": "The Paranoid",
-    "coreShadow": "The battle-weary defender who is so used to fighting that they cannot stand down. It is a state of constant, exhausting vigilance and the expectation of attack from all sides.",
-    "worldview": "I have built a wall around myself, and I must patrol it endlessly. I've been burned before, and I will not be burned again. I cannot rest, I cannot trust, I can only prepare for the next assault.",
-    "inTheLight": "The Paranoid's vigilance matures into The Guardian. This archetype possesses immense resilience, stamina, and a strong sense of personal boundaries forged through experience. They have the wisdom to know which threats are real and the strength to endure any challenge.",
+    "coreShadow": "A soldier who missed the memo that the war ended. So used to fighting that rest feels like a trap, braced for attack from every direction, all night.",
+    "worldview": "I built a wall and I patrol it all night. I got burned once and I am not doing that again. I do not rest, I do not trust, I just get ready for the next hit.",
+    "inTheLight": "Channeled, The Paranoid becomes The Guardian. Stamina and firm boundaries earned the hard way. The sense to tell which threats are real, the strength to meet the ones that are, and permission to sleep through the rest. A sentry who knows when the shift is over.",
     "lightName": "The Guardian",
     "prompts": [
-      "What past battle are you still fighting in your head, long after it has ended?",
-      "Describe the \"wall\" you have built around yourself. What specific threat is it meant to protect you from?",
-      "What is one small way you could let your guard down for a short period of time today?"
+      "Which old battle are you still fighting in your head, long after it ended?",
+      "Describe the wall. What specific threat does it protect you from, and when was the last time that threat showed up?",
+      "What is one small way to lower your guard for a short while today?"
     ],
     "keywords": [
       "intellectual burnout",
@@ -466,14 +466,14 @@
     "slug": "10-of-clubs",
     "label": "Ten of Clubs",
     "archetype": "The Burdened",
-    "coreShadow": "Being completely crushed by the weight of ambition and responsibility. It is the burnout that comes from a stubborn refusal to delegate, ask for help, or admit one's own limits.",
-    "worldview": "It all rests on my shoulders. If I stop, everything collapses. No one else can do this. The pressure is unbearable, but the shame of failure would be even worse. I must carry it all, alone.",
-    "inTheLight": "This sense of duty evolves into The Mentor. They learn that true strength lies not in carrying every burden, but in building a team strong enough to share the load. They lead by empowering others, delegating effectively, and ensuring the mission can continue beyond themself.",
+    "coreShadow": "Flattened by ambition and responsibility. Burnout built by hand from refusing to delegate, refusing help, and refusing to say that is my limit.",
+    "worldview": "Everything is on my shoulders. If I stop, it all falls down. Nobody else can do it right. The pressure is a lot, but failing would be worse, so I carry it alone and quietly.",
+    "inTheLight": "Channeled, The Burdened becomes The Mentor. Duty that learns strength is not carrying everything but building a team that can share the load. Leading by empowering people, delegating well, and making sure the work outlasts you.",
     "lightName": "The Mentor",
     "prompts": [
-      "List all the responsibilities you are currently carrying. Which ones truly belong to you, and which have you taken on from others?",
-      "What are you afraid would happen if you asked for help or delegated a task?",
-      "Who is one person you could ask for support this week, and what is the one specific thing you could ask them to do?"
+      "List everything you are carrying. Which parts are yours, and which did you pick up from other people?",
+      "What do you think happens if you ask for help or hand something off?",
+      "Who could you ask for support this week, and what is the one specific thing you would ask?"
     ],
     "keywords": [
       "fear of success",
@@ -487,14 +487,14 @@
     "slug": "jack-of-clubs",
     "label": "Jack of Clubs",
     "archetype": "The Agitator",
-    "coreShadow": "The intellectual rebel without a cause. This is the troll or contrarian who loves to stir up arguments with half-formed ideas, seeking the thrill of debate and the attention it brings.",
-    "worldview": "Challenging authority is fun. Tearing down established ideas is easy and makes me look smart. I don't need to have a solution; I just enjoy poking holes in theirs. A good argument is a form of entertainment.",
-    "inTheLight": "The Agitator’s raw energy matures into The Apprentice. They possess a brilliant, curious mind and a thirst for knowledge. Their desire to challenge becomes a desire to learn, asking the insightful questions that others overlook and bringing a fresh, innovative perspective.",
+    "coreShadow": "The rebel with no cause and great wifi. A contrarian living in the replies, tossing half-formed takes into a crowd for the rush of the fight and the eyes it brings.",
+    "worldview": "Poking the people in charge is my cardio. Wrecking a big idea takes five minutes and makes me look brilliant. I bring no plan of my own, only a pin for your balloon. Fights are my streaming service.",
+    "inTheLight": "Channeled, The Agitator becomes The Apprentice. A curious mind with a thirst for knowledge. The urge to challenge turns into the urge to learn, asking the sharp questions others skip and bringing a fresh angle.",
     "lightName": "The Apprentice",
     "prompts": [
-      "What authority figure or established idea do you love to challenge, even if you don't have a better alternative?",
-      "Do you sometimes start debates online or in person for the entertainment value of the conflict?",
-      "Instead of just critiquing, what is one small, constructive idea you can offer to a problem you care about?"
+      "Which authority or established idea do you love to challenge, even with no better option to offer?",
+      "Do you start debates online or in person because the conflict is entertaining?",
+      "Instead of critiquing, what is one small constructive idea you can offer to a problem you care about?"
     ],
     "keywords": [
       "scattered learning",
@@ -508,14 +508,14 @@
     "slug": "queen-of-clubs",
     "label": "Queen of Clubs",
     "archetype": "The Gossiper",
-    "coreShadow": "The master social strategist who uses information as a currency for power and control. She is the keeper of secrets and the subtle architect of social reputations, both good and bad.",
-    "worldview": "Knowledge of people is power. By understanding the social web and controlling the flow of secrets, I can ensure my place at the center of it. My words can build you up or tear you down.",
-    "inTheLight": "The Gossiper becomes The Ambassador. She is a charismatic and intelligent communicator who uses her social mastery to bring people together. She can articulate a complex vision with clarity, foster collaboration, and build a vibrant, positive community.",
+    "coreShadow": "The social strategist who spends information like money. Keeper of secrets, quiet architect of reputations, good and bad. Everyone is a little careful around her, and she likes that.",
+    "worldview": "Gossip is currency and I run the bank. I know who said what and when it gets released, so I stay at the center of the web. One sentence from me can lift you or sink you.",
+    "inTheLight": "Channeled, The Gossiper becomes The Ambassador. A charming, sharp communicator who uses social skill to bring people together. She can explain a big idea clearly, build teamwork and grow a community worth being in.",
     "lightName": "The Ambassador",
     "prompts": [
-      "Recall a time you shared a piece of information about someone that was not yours to share. What was your motivation?",
-      "How does being \"in the know\" about other people's lives make you feel?",
-      "Make a conscious effort for one day not to speak about anyone who is not present in the room, unless it is to praise them."
+      "When did you share something about someone that was not yours to share? What did you want out of it?",
+      "How does being in the know about other people's lives make you feel?",
+      "For one day, do not talk about anyone who is not in the room unless it is to praise them. What did that day feel like?"
     ],
     "keywords": [
       "overthinking",
@@ -529,14 +529,14 @@
     "slug": "king-of-clubs",
     "label": "King of Clubs",
     "archetype": "The Inquisitor",
-    "coreShadow": "The intellectual tyrant whose authority has become rigid dogma. He cannot tolerate dissent and uses his position to enforce his worldview, punishing those who dare to think differently.",
-    "worldview": "My vision is law. My thoughts are facts. Order and progress depend on absolute intellectual alignment with my authority. A challenge to my idea is a challenge to me, and it will not be tolerated.",
-    "inTheLight": "The Inquisitor becomes The Commander. He is a decisive and visionary leader who possesses true intellectual authority. He commands respect not through fear, but through his competence, clarity, and fair-mindedness. He can confidently direct his team to achieve a common goal. Of course. Here is the breakdown for each of the 13 cards in the Suit of Diamonds, continuing with the established structure of the ebook. ---",
+    "coreShadow": "The head of the thought police. Authority hardened into dogma, zero tolerance for dissent, and a title used to punish anyone who thinks off script.",
+    "worldview": "My vision is law and my thoughts are facts. Order depends on everyone lining up behind my thinking. Challenge the idea and you challenge me, and that is not on the agenda.",
+    "inTheLight": "Channeled, The Inquisitor becomes The Commander. A decisive leader with real intellectual authority. He earns respect through competence, clarity and fair-mindedness, and he can point a team at a goal without fear in the room.",
     "lightName": "The Commander",
     "prompts": [
-      "What is your area of expertise where you believe your \"way\" is the only right way?",
-      "Describe a time you shut down someone's idea because it didn't align with your vision.",
-      "How could you actively solicit and listen to a dissenting opinion on one of your current projects?"
+      "In which area of expertise do you believe your way is the only right way?",
+      "When did you shut down someone's idea because it did not fit your vision?",
+      "How could you ask for a dissenting opinion on one of your current projects, and then actually listen to it?"
     ],
     "keywords": [
       "intellectual arrogance",
@@ -550,14 +550,14 @@
     "slug": "ace-of-diamonds",
     "label": "Ace of Diamonds",
     "archetype": "The Miser",
-    "coreShadow": "Hoarding a new opportunity or resource out of a deep-seated fear of lack. It is the seed of potential that is never planted because the fear of losing it is greater than the hope of its growth.",
-    "worldview": "This resource is finite and precious. If I spend it, invest it, or share it, it will be gone forever. True security lies in clutching what I have, not in risking it for some uncertain future gain.",
-    "inTheLight": "The Miser's fearful grip loosens, and they become The Seed-Planter. This archetype represents a tangible new beginning—a job offer, a financial gift, a promising business idea. It is the wisdom to invest a resource with the faith that it will grow into real-world prosperity.",
+    "coreShadow": "Hoarding a new chance out of a fear of lack. The seed sits in your pocket for months because losing it feels worse than never growing it.",
+    "worldview": "This is finite and precious. If I spend it, invest it or share it, it is gone for good. Safety means a closed fist. A closed fist cannot be robbed, and I check that daily.",
+    "inTheLight": "The Miser opens one finger at a time and becomes The Seed-Planter. A job offer, a gift, a business idea, and the nerve to put it in the ground. Plant it. Water it. Stop pulling it up to measure the root.",
     "lightName": "The Seed-Planter",
     "prompts": [
-      "What tangible resource or opportunity (money, an offer, an idea) are you currently hoarding out of fear?",
-      "Describe a time you were too afraid to invest time or money in your own growth. What was the result?",
-      "What is one \"safe\" risk you can take with a resource today to promote its growth?"
+      "What chance or resource are you sitting on out of fear? Say how long it has been in your pocket.",
+      "When did you skip investing in yourself because the number looked scary? What did the skipping cost?",
+      "What is one safe risk with money or time you can take today, small enough that you cannot talk yourself out of it?"
     ],
     "keywords": [
       "greed",
@@ -571,14 +571,14 @@
     "slug": "2-of-diamonds",
     "label": "Two of Diamonds",
     "archetype": "The Workaholic",
-    "coreShadow": "Frantic, stressful, and unproductive multitasking. This is the act of juggling responsibilities not with grace, but with a desperate anxiety, believing that being constantly busy is the same as being effective.",
-    "worldview": "I must keep all the plates spinning at all times. If I slow down for even a second, everything will crash. Stress is the engine of my success. Rest is a luxury I cannot afford.",
-    "inTheLight": "The frantic energy calms, and the Workaholic becomes The Juggler. This is an archetype of adaptability, flexibility, and skillful prioritization. They manage multiple projects and demands with a light touch, finding a rhythm in the ebb and flow of their responsibilities.",
+    "coreShadow": "Frantic, jittery multitasking. You juggle everything with dread instead of skill, and you believe being busy and being effective are the same thing.",
+    "worldview": "Every plate stays in the air or I am nothing. One second sitting down and the kitchen burns. Panic is what powers me. A nap is a thing other people get to have.",
+    "inTheLight": "The frantic buzz settles and The Workaholic becomes The Juggler. Flexible, adaptable, good at deciding what drops first. Many things in the air, one light touch, and a rhythm that does not feel like a siren.",
     "lightName": "The Juggler",
     "prompts": [
-      "At what point does your \"productive multitasking\" turn into frantic, stressful anxiety?",
-      "What are you afraid will happen if you completely unplug from all your work and responsibilities for one evening?",
-      "Schedule 30 minutes of intentional, unproductive rest into your calendar this week. What feelings come up when you do it?"
+      "Where does your productive multitasking tip into plain panic? Name the exact hour it happens.",
+      "What do you think breaks if you unplug for one full evening? Be specific, it is probably a plate.",
+      "Put 30 minutes of useless rest in your calendar this week. What shows up when you sit there?"
     ],
     "keywords": [
       "financial anxiety",
@@ -592,14 +592,14 @@
     "slug": "3-of-diamonds",
     "label": "Three of Diamonds",
     "archetype": "The Pedant",
-    "coreShadow": "Perfectionism that sabotages progress. This is the skilled worker who obsesses over insignificant details, alienating their team and preventing a project from ever being \"finished\" because it's never flawless in their eyes.",
-    "worldview": "My worth is proven by the absolute flawlessness of my work. This tiny detail, which no one else even sees, is the difference between mediocrity and mastery. I cannot sign off on this until it is perfect.",
-    "inTheLight": "The Pedant’s eye for detail becomes the mastery of The Craftsman. This archetype represents the pride and recognition that comes from doing high-quality, skilled work. It is the successful collaboration where every member's skill contributes to a beautiful and functional result.",
+    "coreShadow": "Perfectionism that blocks the finish. A skilled person fusses over details nobody sees until the team gives up and the project never ships.",
+    "worldview": "My worth is proven by flawless work. This tiny detail nobody else notices is the line between mediocre and masterful. I cannot sign off until it is perfect, and I have not been perfect since Tuesday.",
+    "inTheLight": "The Pedant's eye for detail turns into the pride of The Craftsman. Quality work, finished, with a team that is still speaking to you. Every skill in the room lands in one thing that works and looks right.",
     "lightName": "The Craftsman",
     "prompts": [
-      "Describe a project where your perfectionism prevented it from being completed on time or caused stress for others.",
-      "What is one detail you are currently obsessing over that, in the grand scheme of things, does not matter?",
-      "How can you practice \"good enough\" on a current task and declare it finished?"
+      "Name a project your perfectionism kept from finishing. Who paid for the delay?",
+      "What detail are you obsessing over right now that nobody has asked about?",
+      "Pick one task today and call it good enough. Ship it. What did you do with the extra hour?"
     ],
     "keywords": [
       "superficial values",
@@ -613,14 +613,14 @@
     "slug": "4-of-diamonds",
     "label": "Four of Diamonds",
     "archetype": "The Scavenger",
-    "coreShadow": "Stinginess and a white-knuckled grip on possessions. This archetype builds a fortress around their material world, defining their identity and security by what they own and fearing any form of loss or sharing.",
-    "worldview": "What I have is who I am. To lose any of it is to lose a piece of myself. The world is a dangerous place that wants to take what is mine. I must guard it all and trust no one.",
-    "inTheLight": "The Scavenger’s fear-based hoarding becomes the wisdom of The Steward. This is the archetype of financial stability, responsible planning, and building a secure foundation for the future. They protect their assets not from fear, but from a place of prudence and respect for what they have built.",
+    "coreShadow": "A white-knuckle grip on stuff. A fortress gets built around possessions, identity gets tied to the inventory, and any sharing counts as a loss.",
+    "worldview": "What I have is who I am. Losing any of it means losing a piece of me. The world wants what is mine. I guard it all, I check the locks twice, and I trust no one with the spare key.",
+    "inTheLight": "The Scavenger's panic hoarding becomes the calm of The Steward. Stable, prudent, planning ahead. You protect what you built out of respect for it, not because you are bracing for a break-in.",
     "lightName": "The Steward",
     "prompts": [
-      "What possession do you own that makes you feel the most secure? What would it mean to lose it?",
-      "When was the last time you felt resistant to sharing something (time, money, a possession)? What was the fear underneath?",
-      "Identify one thing you have an excess of (books, clothes, etc.) and make a plan to donate it this week."
+      "Which thing you own makes you feel safest? What would losing it say about you?",
+      "When did you last refuse to share time, money or an object? What was the fear underneath?",
+      "Pick one thing you own too many of and move it out of the house this week. Name where it goes."
     ],
     "keywords": [
       "scarcity mindset",
@@ -634,14 +634,14 @@
     "slug": "5-of-diamonds",
     "label": "Five of Diamonds",
     "archetype": "The Outcast",
-    "coreShadow": "A victim mentality during a period of hardship. It is the tendency to identify so strongly with one's lack—of money, health, or status—that one actively pushes away help and opportunities for recovery.",
-    "worldview": "I have been left out in the cold, and this is who I am now. No one can understand or help me. There is a strange comfort in this rock bottom, because now I don't have to try and risk failing again.",
-    "inTheLight": "The Outcast looks up and becomes The Humble Seeker. This is the turning point where one finds the courage to ask for help. It is the realization that a period of material hardship does not define one's worth, and that community and support are available to those willing to receive them.",
+    "coreShadow": "A victim story during a hard stretch. You tie yourself so tightly to what is missing that you wave away every hand held out to help.",
+    "worldview": "I got left out in the cold and that is who I am now. Nobody can help me. There is a weird comfort at rock bottom: I cannot fail from the floor, so I stay on it.",
+    "inTheLight": "The Outcast looks up and becomes The Humble Seeker. This is the turn: asking for help out loud. A rough patch is not a ruling on your worth, and the people with warm hands are real and nearby.",
     "lightName": "The Humble Seeker",
     "prompts": [
-      "Recall a time of hardship where you refused help because of pride or a feeling of unworthiness.",
-      "In what area of your life do you feel \"left out in the cold\" right now? Are you actively pushing away any \"warmth\" being offered?",
-      "Who is one person you could reach out to for support or advice, even if it feels difficult?"
+      "Remember a hard stretch where you turned help away out of pride. What did you tell yourself?",
+      "Where do you feel left out in the cold right now? Is anyone offering a coat?",
+      "Who is one person you could ask for advice this week? Say their name and send the message."
     ],
     "keywords": [
       "instability",
@@ -655,14 +655,14 @@
     "slug": "6-of-diamonds",
     "label": "Six of Diamonds",
     "archetype": "The Debtor",
-    "coreShadow": "An unhealthy imbalance in giving and receiving. This manifests as either the condescending benefactor who uses gifts to create dependency, or the resentful recipient who feels trapped and powerless in a cycle of debt.",
-    "worldview": "(As the giver): \"My generosity proves I am superior and makes them owe me.\" (As the receiver): \"I hate that I need this. This 'gift' is a chain around my neck.",
-    "inTheLight": "The dynamic of debt becomes one of gracious exchange, embodied by The Philanthropist. It is the joy of giving without expectation and the grace of receiving with genuine gratitude. It represents a healthy, flowing economy of resources within a community.",
+    "coreShadow": "Giving and getting, badly out of balance. One version is the smug benefactor whose presents are secretly leashes. The other is the person on the receiving end, stuck in a debt that compounds every holiday.",
+    "worldview": "When I give, it proves I am the bigger person, and now you owe me. When I take, I hate it. Your present sits on my chest like a car payment.",
+    "inTheLight": "The ledger of debt turns into gracious exchange as The Debtor becomes The Philanthropist. Giving without a receipt. Receiving without flinching. A plain, healthy flow of resources between people who are not keeping score.",
     "lightName": "The Philanthropist",
     "prompts": [
-      "Describe a time you gave a gift and secretly expected something (gratitude, loyalty, a favor) in return.",
-      "Who in your life do you feel indebted to? Does that feeling empower you or make you feel resentful?",
-      "How can you give something (a compliment, a small favor) to someone today with absolutely no expectation of anything in return?"
+      "Describe a gift you gave while quietly expecting thanks, loyalty or a favor back.",
+      "Who do you feel you owe? Does it make you stronger or just resentful?",
+      "Give someone a small thing today, a compliment or a favor, with no expectation and no follow-up text."
     ],
     "keywords": [
       "over-giving",
@@ -676,14 +676,14 @@
     "slug": "7-of-diamonds",
     "label": "Seven of Diamonds",
     "archetype": "The Impatient Gardener",
-    "coreShadow": "The anxiety-driven need for immediate results from long-term efforts. It's the person who pulls up their seeds to see if they're growing, thereby ensuring their failure out of a fear of it.",
-    "worldview": "I've been pouring so much effort into this, and I see nothing happening on the surface. It must be a waste of time. I should cut my losses now before I invest any more in this fruitless endeavor.",
-    "inTheLight": "Impatience transforms into the quiet faith of The Watchful Farmer. This archetype trusts the process. They understand that long-term projects require patience and consistent nurturing. They pause to assess their work, make adjustments, and have faith in a future harvest.",
+    "coreShadow": "Needing instant results from slow work. This is the person who digs up the seeds to see if they are growing and then reports the failure as a finding.",
+    "worldview": "I have poured so much into this and the surface shows nothing. It must be a waste. I should cut my losses before I spend one more minute on this pointless garden.",
+    "inTheLight": "Impatience turns into the quiet faith of The Watchful Farmer. Slow work gets slow care. The Impatient Gardener learns to check, adjust, and then leave the dirt alone long enough for something to happen.",
     "lightName": "The Watchful Farmer",
     "prompts": [
-      "What long-term project are you currently feeling anxious about because you aren't seeing immediate results?",
-      "When you get frustrated with a lack of progress, is your first instinct to abandon the project?",
-      "What is one small, consistent action you can take on a long-term goal today, and trust that it is enough for now?"
+      "Which long project are you anxious about because nothing has shown up yet?",
+      "When progress stalls, is your first move to quit? Say how many times that has happened.",
+      "What is one small, repeatable action you can take on a slow goal today and then not check on?"
     ],
     "keywords": [
       "value confusion",
@@ -697,14 +697,14 @@
     "slug": "8-of-diamonds",
     "label": "Eight of Diamonds",
     "archetype": "The Grinder",
-    "coreShadow": "Diligence without passion; soulless repetition for a paycheck. This is the master craftsman who has lost all joy in their craft, becoming a human machine going through the motions.",
-    "worldview": "My job is to perform this task with precision. My feelings about it are irrelevant. I show up, I do the work, I get paid. That is the deal. Passion is for hobbies.",
-    "inTheLight": "The Grinder rediscovers their purpose and becomes The Artisan. This archetype finds deep satisfaction and a state of flow in the pursuit of mastery. They are committed to their craft not just for the reward, but for the inherent joy of creating something of quality and skill.",
+    "coreShadow": "Diligence with no pulse. A master of the craft who lost the joy and now clocks in like a machine going through the motions for a paycheck.",
+    "worldview": "I do the task exactly right and I do not ask how I feel about it. Badge in, work, direct deposit. That is the contract. Joy is something I schedule for retirement.",
+    "inTheLight": "The Grinder finds the point again and becomes The Artisan. Deep satisfaction in getting good at something, working for the craft and not only the check. Quality made with skill, and a flow that does not feel like punching a clock.",
     "lightName": "The Artisan",
     "prompts": [
-      "What skill do you have that you perform with excellence but with little to no joy?",
-      "Describe your daily \"grind.\" What part of it feels most like you are a cog in a machine?",
-      "How could you inject one small moment of creativity or personal flair into a repetitive task this week?"
+      "What skill do you perform well and feel nothing about?",
+      "Describe your grind. Which part makes you feel like a cog?",
+      "Add one small personal touch to a repetitive task this week. What is it, and who might notice?"
     ],
     "keywords": [
       "financial control",
@@ -718,14 +718,14 @@
     "slug": "9-of-diamonds",
     "label": "Nine of Diamonds",
     "archetype": "The Nouveau Riche",
-    "coreShadow": "Gaudy materialism used to mask deep insecurity. It is the flaunting of wealth, status, and luxury goods in a desperate attempt to prove one's worth and feel superior to others.",
-    "worldview": "I earned this, and now everyone must see it. The price tag on my life validates my existence. I look down on those with less because they remind me of the poverty I fear.",
-    "inTheLight": "This need for external validation matures into the quiet confidence of The Connoisseur. This archetype enjoys the fruits of their labor with grace and sophistication. They appreciate quality, beauty, and comfort for their own sake, not for the impression it makes on others. They are self-sufficient and secure.",
+    "coreShadow": "Loud materialism covering a quiet insecurity. Wealth, status and luxury get displayed like a résumé written in handbags.",
+    "worldview": "I worked for this, so you are going to look at it. The receipts are proof I exist. I sneer at people with less because they look like the version of me I am running from.",
+    "inTheLight": "The Nouveau Riche settles down and becomes The Connoisseur. Enjoys the results of the work with taste and no audience. Appreciates quality, beauty and comfort for their own sake, not for how it reads on a feed. Secure, self-sufficient, quiet.",
     "lightName": "The Connoisseur",
     "prompts": [
-      "What purchase have you made primarily to impress other people or signal a certain status?",
-      "When you achieve something, how important is it that other people notice and validate it?",
-      "What is something you can do or enjoy this week that feels luxurious and fulfilling to *you*, even if no one else ever knows about it?"
+      "What did you buy mainly so other people would notice? What did they say?",
+      "When you achieve something, how much does it count if nobody sees it?",
+      "What can you do or enjoy this week that feels luxurious to you, with nobody told and nothing posted?"
     ],
     "keywords": [
       "over-generosity",
@@ -739,14 +739,14 @@
     "slug": "10-of-diamonds",
     "label": "Ten of Diamonds",
     "archetype": "The Dynast",
-    "coreShadow": "Being imprisoned by the burdens of legacy and inherited wealth. This is the person whose life path is dictated by the need to maintain the family empire, sacrificing their own dreams in the process.",
-    "worldview": "This wealth is not a gift; it is a gilded cage. My life is not my own. I am a steward of a legacy, and I am crushed by the weight of the expectations that come with it.",
-    "inTheLight": "The Dynast embraces their role and becomes The Benefactor. They use their immense resources to establish lasting security and create generational abundance not just for their own family, but for their wider community. They manage their legacy with wisdom and a sense of greater purpose.",
+    "coreShadow": "Locked inside the weight of a legacy. A life gets steered by the need to keep the family empire running, with personal dreams quietly sold off in the process.",
+    "worldview": "This money is not a gift. It is a gold cage. My life is not mine. I am the steward of a legacy and the expectations are very heavy and very well decorated.",
+    "inTheLight": "The Dynast accepts the role and becomes The Benefactor. Uses real resources to build lasting security, not only for the family but for the wider community. Manages the legacy with wisdom and a purpose bigger than the surname.",
     "lightName": "The Benefactor",
     "prompts": [
-      "What family or career legacy do you feel burdened by?",
-      "If you were free from all expectations regarding your wealth or career, what path would you choose for yourself?",
-      "What is one small action you can take that honors your own personal dream, separate from your family or professional duties?"
+      "Which family or career legacy feels heavy? Say whose voice you hear when you think about letting it go.",
+      "If nobody had expectations about your money or your career, what would you pick?",
+      "What is one small action this week that honors your own dream and has nothing to do with family or title?"
     ],
     "keywords": [
       "wealth pressure",
@@ -760,14 +760,14 @@
     "slug": "jack-of-diamonds",
     "label": "Jack of Diamonds",
     "archetype": "The Grifter",
-    "coreShadow": "The charming, fast-talking schemer whose ambitious ideas lack ethics, substance, or a realistic plan. They are obsessed with the idea of getting rich quick and cutting corners.",
-    "worldview": "I have a million-dollar idea! Don't get bogged down in the boring details or the hard work—that's for other people. Just trust my vision and my charisma. We'll be rich before you know it.",
-    "inTheLight": "The Grifter’s raw ambition is channeled into productive action, becoming The Entrepreneur. This archetype is the promising apprentice or intern with a brilliant, practical idea. They are eager to learn the skills, do the work, and build something of real, tangible value.",
+    "coreShadow": "The charming fast talker with the big idea and no plan. Rich quick is the whole strategy, and corners are cut with a smile.",
+    "worldview": "My idea is worth a million dollars, minimum. The tedious parts are for interns. Believe in me and my smile. We get rich soon, details pending.",
+    "inTheLight": "The Grifter's raw hustle gets pointed at real work and becomes The Entrepreneur. The apprentice with a practical idea who actually shows up to learn the skills, do the work and build something with weight.",
     "lightName": "The Entrepreneur",
     "prompts": [
-      "Describe an idea you had that was more about the exciting prospect of a shortcut to success than about a solid, workable plan.",
-      "Where in your life are you putting more energy into \"talking the talk\" than \"walking the walk\"?",
-      "What is one small, \"un-glamorous\" task you can complete today that will bring you one real step closer to a goal?"
+      "Describe an idea that was more about the shortcut than the plan. Who did you pitch it to?",
+      "Where are you spending more effort sounding like you can do it than doing it?",
+      "What is one boring task you can finish today that moves a real goal one real inch?"
     ],
     "keywords": [
       "financial immaturity",
@@ -781,14 +781,14 @@
     "slug": "queen-of-diamonds",
     "label": "Queen of Diamonds",
     "archetype": "The Socialite",
-    "coreShadow": "The transactional and materialistic social climber. She measures everyone's worth by their wealth and status, using her own resources and generosity only to advance her position.",
-    "worldview": "To be secure, I must surround myself with the right people and the right things. Every invitation is a transaction. My home is a stage, and my possessions are props to demonstrate my value. I am unsentimental about this; it is simply practical.",
-    "inTheLight": "The Socialite’s pragmatism becomes the nurturing wisdom of The Matron. She is a masterful provider who uses her resources to create security, comfort, and beauty for her community. She is a gracious host, a shrewd manager, and a patron who helps others prosper.",
+    "coreShadow": "The transactional social climber. Everyone's worth gets measured by their wealth and status, and generosity is a tool for moving up the guest list.",
+    "worldview": "Safety means the right guest list and the right sofa. An invite is a deal. My living room is a set and my things are props that prove my rating. I feel nothing about this. It is logistics.",
+    "inTheLight": "The Socialite's pragmatism turns into the warm wisdom of The Matron. A real provider who uses resources to build security, comfort and beauty for her people. Gracious host, shrewd manager, a patron who helps others do well and does not post about it.",
     "lightName": "The Matron",
     "prompts": [
-      "Recall a time you made a decision about a friendship or relationship based on practical or status-related reasons rather than genuine connection.",
-      "In what ways is your home or lifestyle designed to impress others?",
-      "How can you offer your resources or hospitality to someone this week in a way that is purely about providing comfort and warmth, not about networking?"
+      "Recall a friendship you decided on for practical or status reasons. What did you tell yourself?",
+      "In what ways is your home or lifestyle built to impress someone?",
+      "Offer your resources or hospitality to someone this week with no networking attached. What would that look like?"
     ],
     "keywords": [
       "self-worth distortion",
@@ -802,14 +802,14 @@
     "slug": "king-of-diamonds",
     "label": "King of Diamonds",
     "archetype": "The Plutocrat",
-    "coreShadow": "The ruthless captain of industry who views people as numbers on a balance sheet. His success has convinced him that wealth gives him the right to be detached from the human cost of his ambition.",
-    "worldview": "The bottom line is the only truth. My empire's success justifies my methods. People are cogs in the machine—replaceable and to be managed for maximum efficiency. Sentiment is a liability.",
-    "inTheLight": "The Plutocrat becomes The Emperor. He is the master of a prosperous and stable empire. A competent, reliable, and often generous leader, he uses his wealth and influence to create jobs, security, and abundance for his entire community, ruling with authority and business acumen. Of course. Here is the final suit, the Spades, written in the established format for the ebook. ---",
+    "coreShadow": "The cold executive who reads humans as cells in a spreadsheet. Winning taught him that money buys an exemption from caring what his ambition breaks.",
+    "worldview": "The bottom line is the only truth. My empire's success justifies my methods. People are parts, replaceable and managed for efficiency. Sentiment is a liability, and I have a spreadsheet that agrees.",
+    "inTheLight": "The Plutocrat becomes The Emperor. He runs a prosperous and stable empire: competent, reliable, often generous. He uses wealth and influence to create jobs, security and abundance for the whole community, ruling with authority and sound business sense.",
     "lightName": "The Emperor",
     "prompts": [
-      "When have you made a decision based purely on \"the bottom line,\" ignoring the human or emotional cost?",
-      "In what situation do you see the people you manage or work with as resources to be optimized rather than as whole human beings?",
-      "What is one way you can show a colleague or employee that you value them as a person, not just for their output?"
+      "When did you decide on the bottom line alone and ignore the human cost?",
+      "Where do you treat the people you work with as resources to be optimized and not as people?",
+      "What is one way to show a colleague you value them as a person, not for their output?"
     ],
     "keywords": [
       "material control",
@@ -823,14 +823,14 @@
     "slug": "ace-of-spades",
     "label": "Ace of Spades",
     "archetype": "The Executioner",
-    "coreShadow": "A truth delivered with such brutal force that it destroys rather than liberates. It is the use of pure, cold fact as a weapon to wound, shatter illusions, and end a situation without a shred of compassion.",
-    "worldview": "The truth is a sword, and its only purpose is to cut. Sentiment is a lie. This illusion must be destroyed now, regardless of the carnage it leaves behind. The pain of the truth is a necessary price.",
-    "inTheLight": "The Executioner's sword becomes the scalpel of The Truth-Bearer. This is a moment of profound, undeniable clarity that cuts through all confusion and deceit. It is the power to make a difficult but absolutely necessary decision with focus and conviction, paving the way for a new, more authentic reality.",
+    "coreShadow": "Honesty as demolition. The fact gets swung so hard it flattens what it was supposed to free. A cold truth used to end things, with nobody checking for survivors.",
+    "worldview": "Truth exists to cut and I am the one holding it. Feelings are a cover story. This illusion comes down today, mess included. If it hurts, it was overdue.",
+    "inTheLight": "Channeled, The Executioner trades the axe for a scalpel and becomes The Truth-Bearer. Clarity sharp enough to cut through the fog and careful enough to miss the person. A hard call made with a steady hand, so something more honest has room to grow.",
     "lightName": "The Truth-Bearer",
     "prompts": [
-      "Describe a time you used the \"brutal truth\" as a weapon to win an argument or hurt someone.",
-      "What difficult truth are you currently avoiding telling yourself or someone else?",
-      "How could you deliver a necessary truth to someone this week with more compassion and care?"
+      "When did you win an argument with the brutal truth and lose the person? What was the trophy worth?",
+      "Which truth have you been leaving on read, from yourself or someone else?",
+      "What is one hard thing you could say this week with the edges sanded down?"
     ],
     "keywords": [
       "resistance to change",
@@ -844,14 +844,14 @@
     "slug": "2-of-spades",
     "label": "Two of Spades",
     "archetype": "The Denier",
-    "coreShadow": "A mental stalemate born of terror. It is the willful ignorance of refusing to face a terrible truth or make an impossible choice, creating a fragile, self-imposed peace that is really a state of paralysis.",
-    "worldview": "If I do not acknowledge the problem, it does not exist. Both paths forward lead to pain, so I will choose neither. I will stand perfectly still, balanced on this knife's edge of indecision, and pretend I have a choice.",
-    "inTheLight": "The Denier’s paralysis becomes the centered calm of The Arbiter. This is the ability to hold two opposing, powerful truths in the mind without breaking. It is the patient, impartial wisdom to weigh all sides before passing judgment or taking action, ensuring the final decision is a just one.",
+    "coreShadow": "A standoff in your own head, powered by dread. You look away from a truth or a choice too heavy to face. The quiet that follows is not peace. It is a freeze with good posture.",
+    "worldview": "If I never name the problem, it cannot touch me. Every road hurts, so I take none of them. I balance on the blade and tell myself I am keeping my options open.",
+    "inTheLight": "The Denier stops freezing and becomes The Arbiter. Two heavy, opposite truths held in one mind without the mind splitting. Slow, fair weighing of every side, then a judgment that lands, so the outcome is just and not merely late.",
     "lightName": "The Arbiter",
     "prompts": [
-      "What impossible choice are you currently refusing to make? What are you afraid of losing?",
-      "What difficult reality in your life (in your health, finances, or relationships) are you actively pretending not to see?",
-      "Write down the two painful paths of a current dilemma. What is the real cost of standing still and choosing neither?"
+      "Which choice are you dodging right now? What do you think it would take from you?",
+      "Where in your money, plans or relationships are you looking at the wall instead of the problem?",
+      "Write down both bad options in one dilemma. Then write what doing nothing costs you every week."
     ],
     "keywords": [
       "inner conflict",
@@ -865,14 +865,14 @@
     "slug": "3-of-spades",
     "label": "Three of Spades",
     "archetype": "The Sadist",
-    "coreShadow": "Cruelty born from one's own heartbreak. It is the lashing out of a deeply wounded heart, finding a perverse relief or distraction in inflicting the same pain on others.",
-    "worldview": "My heart has been shattered, and this pain has given me a terrible clarity. The world is cruel, and I will be crueler. If I can make you feel a fraction of what I feel, then I am not alone in my misery.",
-    "inTheLight": "The Sadist's pain transforms into the wisdom of The Alchemist. This archetype represents the heartbreaking truth that is necessary for healing. It is the act of bravely facing betrayal or loss, and allowing the sorrow to carve away falsehoods, leaving only a stronger, more authentic self.",
+    "coreShadow": "Your own broken heart turned into a weapon. The hurt part of you swings outward and finds a twisted comfort in passing the pain along.",
+    "worldview": "My heart got smashed and now I see clearly. The world is cruel, so I will match it and raise. If you feel even a slice of this, at least I have company.",
+    "inTheLight": "The Sadist's pain gets refined into the wisdom of The Alchemist. The sad truth that healing actually needs. Loss and betrayal looked in the eye, grief stripping off what was fake, and a sturdier, more honest you left behind.",
     "lightName": "The Alchemist",
     "prompts": [
-      "Recall a time you were deeply hurt and lashed out by saying something intentionally cruel to someone else.",
-      "When you are in pain, do you sometimes want others to feel pain too?",
-      "The next time someone hurts you, what is one healthy way you could process the pain instead of immediately wanting to hurt them back?"
+      "When did your hurt turn into a sentence you aimed at someone on purpose?",
+      "When you are in pain, do you want company in it? Who did you recruit last time?",
+      "Next time someone hurts you, what could you do with the sting besides send it back?"
     ],
     "keywords": [
       "scattered healing",
@@ -886,14 +886,14 @@
     "slug": "4-of-spades",
     "label": "Four of Spades",
     "archetype": "The Exile",
-    "coreShadow": "Forced stillness that festers into resentment. It is the feeling of being unfairly outcast, silenced, or imprisoned by circumstances, leading to a bitter refusal to heal or find peace.",
-    "worldview": "I have been locked away from the world, and it is an injustice. I will not use this time to rest; I will use it to nurse my grievances. My life is on hold until the world apologizes and comes to rescue me.",
-    "inTheLight": "The Exile embraces their situation and becomes The Hermit. The forced pause becomes a sacred period of deep contemplation, healing, and strategic retreat. It is the wisdom to use solitude to gather immense inner strength and clarity before re-engaging with the world on one's own terms.",
+    "coreShadow": "Being stuck on the bench until it curdles into a grudge. You feel shut out and silenced by circumstance, and you refuse to heal out of spite.",
+    "worldview": "They locked me out and it is unfair. I will not rest in here. I will polish every grievance until it shines. Nothing moves until the world says sorry and comes to get me.",
+    "inTheLight": "The Exile stops pacing the cell and becomes The Hermit. The forced timeout turns into deep thinking, repair and a deliberate retreat. Solitude used as a charging station, so you come back to the world stronger, clearer and on your own schedule.",
     "lightName": "The Hermit",
     "prompts": [
-      "In what area of your life do you currently feel unfairly \"benched\" or put on pause?",
-      "Are you using this period of forced stillness to rest and heal, or to fester and plot revenge?",
-      "If you cannot change your external situation right now, what is one thing you *can* change about your inner response to it?"
+      "Where in your life do you feel benched for no good reason?",
+      "Is this pause for recovering, or for rehearsing your revenge speech?",
+      "If the situation cannot change yet, what is one thing you can change in how you hold it?"
     ],
     "keywords": [
       "stagnation",
@@ -907,14 +907,14 @@
     "slug": "5-of-spades",
     "label": "Five of Spades",
     "archetype": "The Humiliated",
-    "coreShadow": "A defeat that annihilates one's integrity. It is the 'win at all costs' mentality that leads to dishonorable actions, or conversely, the complete surrender that allows one to be walked over and humiliated.",
-    "worldview": "I must not lose this fight, even if I have to destroy my opponent and myself in the process. OR: This fight is lost, and I will accept any shameful terms just to make the pain stop. My dignity is a fair price to end this conflict.",
-    "inTheLight": "The Humiliated finds the strength to become The Pragmatist. This is the wisdom to recognize a no-win situation and the courage to strategically retreat. It is understanding that not every battle must be fought, and that preserving one's energy and integrity is a victory in itself.",
+    "coreShadow": "A loss that costs you your integrity. Either winning by any means, including the shameful ones, or folding so completely that people walk across you like a doormat.",
+    "worldview": "I cannot lose this, even if I burn myself down with them. Or: it is already lost, so I will sign anything to make it stop. My dignity is cheap if it ends the fight.",
+    "inTheLight": "The Humiliated gets back up as The Pragmatist. The wisdom to spot a rigged game and the nerve to leave the table on purpose. Knowing which fights to skip, and counting your own integrity, intact, as the win.",
     "lightName": "The Pragmatist",
     "prompts": [
-      "Describe a conflict you \"won\" but felt bad about afterward because of the tactics you used.",
-      "Recall a time you surrendered your integrity or self-respect just to make a painful confrontation stop.",
-      "What is one \"battle\" you are currently fighting that you could choose to walk away from?"
+      "Which fight did you win and still feel gross about? What did you do to win it?",
+      "When did you trade away your self-respect just to make a confrontation end?",
+      "Which battle could you walk away from this week without losing anything that matters?"
     ],
     "keywords": [
       "chaos addiction",
@@ -928,14 +928,14 @@
     "slug": "6-of-spades",
     "label": "Six of Spades",
     "archetype": "The Ghost",
-    "coreShadow": "Physically moving on from a trauma but remaining emotionally and mentally chained to it. This archetype is haunted by the past, unable to ever feel truly safe or present.",
-    "worldview": "I may have left that place, but it has not left me. I am a ghost in my own life, just passing through. I cannot connect to the present because the past is always right behind me, waiting to happen again.",
-    "inTheLight": "The Ghost begins the long journey toward healing and becomes The Traveler. This represents a rite of passage. It is the slow, arduous, but hopeful journey away from a great sorrow. It is the conscious choice to move towards a better future, even while still carrying the scars of the past.",
+    "coreShadow": "Leaving a hard past behind on the map while part of you stays parked there. The past keeps setting a place at the table, and the present never feels quite safe.",
+    "worldview": "I left that place but it came with me. I drift through my own life like a guest. The past stands right behind me, so I cannot land in the present.",
+    "inTheLight": "The Ghost starts walking and becomes The Traveler. A rite of passage. A slow, hard, hopeful walk away from an old sorrow. Choosing a better road on purpose, with the old marks still visible and no longer steering.",
     "lightName": "The Traveler",
     "prompts": [
-      "What past event still haunts you and prevents you from feeling safe in the present?",
-      "When you move to a new stage of life, do you bring \"ghosts\" of old fears and traumas with you?",
-      "What is one small ritual you could perform to consciously honor a past difficulty and then give yourself permission to take a step forward?"
+      "What part of your past still follows you into rooms where you should feel safe?",
+      "When you start a new chapter, which old fears do you pack without noticing?",
+      "What small ritual could mark an old hard thing as done, so you can take one step past it?"
     ],
     "keywords": [
       "martyrdom",
@@ -949,14 +949,14 @@
     "slug": "7-of-spades",
     "label": "Seven of Spades",
     "archetype": "The Thief",
-    "coreShadow": "Deception, subterfuge, and acting against one's own integrity. It is the belief that one must cheat, lie, or steal to get what they need, because the direct and honest path is blocked.",
-    "worldview": "The rules are for other people. To get what I want, I must be clever and operate in the shadows. What I can take without being caught is rightfully mine. A direct confrontation would be foolish.",
-    "inTheLight": "The Thief’s cunning becomes the strength of The Soloist. This archetype represents strategic independence and the ability to rely on one's own wits. It is the tactical brilliance of the lone wolf who forges their own path, unafraid to use unconventional methods to achieve a noble goal.",
+    "coreShadow": "Sneaking around your own integrity. The belief that lying, cheating or taking is the only way to get what you need, because the honest door looks locked.",
+    "worldview": "Rules are for other people. To get what I want I have to be clever and stay out of sight. Whatever I can take quietly is mine. Asking directly is for suckers.",
+    "inTheLight": "The Thief's cleverness grows into the strength of The Soloist. Independence with a plan. The lone operator who trusts their own wits and cuts their own path. Strange methods, used in daylight, for a goal you would happily say out loud.",
     "lightName": "The Soloist",
     "prompts": [
-      "Recall a time you acted deceptively or took a shortcut because you believed the \"honest\" path was blocked for you.",
-      "In what situation do you feel you have to hide your true actions or intentions to get what you want?",
-      "What would a direct, honest approach to that same situation look like, even if it's scarier?"
+      "When did you take a shortcut or bend the truth because the honest route looked blocked to you? What did it save you?",
+      "Where are you hiding what you are actually up to so you can get what you want?",
+      "What would the direct, honest, slightly terrifying version of that same situation look like?"
     ],
     "keywords": [
       "isolation",
@@ -970,14 +970,14 @@
     "slug": "8-of-spades",
     "label": "Eight of Spades",
     "archetype": "The Victim",
-    "coreShadow": "The paralyzing belief that one is completely trapped by external forces. It is the total relinquishment of personal power and responsibility, finding a strange comfort in being helpless.",
-    "worldview": "There is nothing I can do. My hands are tied. My situation is impossible. I am a prisoner of my fate, and my only choice is how I suffer it. It is not my fault, so it is not my responsibility to fix it.",
-    "inTheLight": "The Victim experiences a profound shift and becomes The Awakened. This is the powerful realization that one's prison is at least partially self-imposed. It is the first, crucial step toward reclaiming agency by understanding that even if you can't control your circumstances, you can always control your response.",
+    "coreShadow": "Believing outside forces have you fully pinned. You hand over your power and your part in it, then find an odd comfort in having no options.",
+    "worldview": "Nothing I do matters. My hands are tied. The situation is rigged and I am stuck inside it, so all I get to pick is how I suffer. Not my fault, not my job to fix.",
+    "inTheLight": "The Victim wakes up mid-sentence and becomes The Awakened. The jolt of seeing that some of the bars on the cell were installed by you. The first real move toward taking your agency back: you may not run the weather, but you run what you do in it.",
     "lightName": "The Awakened",
     "prompts": [
-      "Describe a situation where you feel completely powerless. List all the reasons you believe you are trapped.",
-      "Now, challenge that list. What is one small aspect of that situation that you *do* have control over? (Even if it’s just your attitude).",
-      "Finish this sentence: \"If I were not the victim in this situation, I would...\""
+      "Where do you feel totally stuck right now? List every reason you think you cannot move.",
+      "Now argue with that list. Which small piece of the situation is still yours to steer, even if it is only your attitude?",
+      "Finish the sentence: if I stopped being the victim here, I would..."
     ],
     "keywords": [
       "power struggles",
@@ -991,14 +991,14 @@
     "slug": "9-of-spades",
     "label": "Nine of Spades",
     "archetype": "The Phoenix",
-    "coreShadow": "The dark night of the soul; all-consuming anxiety, guilt, and despair. This archetype is tormented by their own mind, endlessly replaying worst-case scenarios and living in a state of mental anguish.",
-    "worldview": "My mind is my torture chamber. Everything is wrong, and it is all my fault. There is no hope, no light, only this endless cycle of fear and regret. The worst is yet to come.",
-    "inTheLight": "The Phoenix endures the crucible and emerges with immense strength and resilience. Having faced their absolute deepest fears and survived, they understand that the dawn always follows the darkest night, and they are no longer afraid of the dark.",
+    "coreShadow": "The 3am spiral. Worry, guilt and dread on repeat, the mind running every worst case like a playlist stuck on shuffle. Your own thoughts become the hardest room to be in.",
+    "worldview": "My head is the worst place I could be. Everything is broken and I broke it. No exit, no light, just the same loop of fear and regret. The bad part has not even started.",
+    "inTheLight": "The Phoenix goes all the way through the fire and comes out with serious strength and staying power. Having stood in front of the worst fears and walked out, it knows morning keeps showing up after the longest night. The dark stops being scary.",
     "lightName": null,
     "prompts": [
-      "What is the worst-case scenario that plays on a loop in your mind late at night?",
-      "Write down your greatest current fear. What is the evidence for it, and what is the evidence against it?",
-      "How can you introduce a small moment of peace or beauty into your day to counteract a feeling of despair?"
+      "Which worst case plays on loop in your head at night? Describe the rerun.",
+      "Write your biggest fear right now. Next to it, list the evidence for and the evidence against.",
+      "What small piece of calm or beauty could you put into today to argue with the dread?"
     ],
     "keywords": [
       "despair",
@@ -1012,14 +1012,14 @@
     "slug": "10-of-spades",
     "label": "Ten of Spades",
     "archetype": "The Blank Slate",
-    "coreShadow": "The dramatic finality of rock bottom. It is the ultimate betrayal, the final stab in the back, the complete and utter destruction of a situation with no hope of recovery.",
-    "worldview": "It is over. Everything has been destroyed. There is nothing left to salvage. This is not a chapter ending; this is the end of the entire book.",
-    "inTheLight": "This archetype represents the painful liberation that comes from having nothing left to lose. It is the absolute surrender that clears the ground completely, allowing for a totally new and unforeseen path to begin. It is the freedom of zero.",
+    "coreShadow": "Rock bottom with the lights on. The final betrayal, the knife you did not see coming, a situation flattened so hard there is nothing left to save.",
+    "worldview": "It is finished. All of it is wrecked. Nothing to recover. This is not the end of a chapter. Someone burned the whole book.",
+    "inTheLight": "The Blank Slate is the strange freedom of having nothing left to lose. Full surrender that clears the lot down to dirt, so a path nobody saw coming can start. The freedom of zero. An empty room is also a room with space.",
     "lightName": null,
     "prompts": [
-      "Describe a time in your life that felt like a \"rock bottom\" ending.",
-      "What new beginning eventually grew out of that ending, which you couldn't have predicted at the time?",
-      "If you are facing an ending now, what is the one thing you are now free from?"
+      "When did your life hit a rock bottom kind of ending? Describe the floor.",
+      "What started growing out of that ending that you could not have guessed back then?",
+      "If something is ending now, what is the one thing it frees you from?"
     ],
     "keywords": [
       "fear of endings",
@@ -1033,14 +1033,14 @@
     "slug": "jack-of-spades",
     "label": "Jack of Spades",
     "archetype": "The Investigator",
-    "coreShadow": "The cynical and destructive use of a sharp intellect. Having glimpsed a harsh truth about the world, this archetype believes that nothing matters and uses their insight as a destructive weapon.",
-    "worldview": "Everyone's hopes are illusions. All efforts are futile. I am smart because I see the pointlessness of it all, and I will prove it by dismantling your beliefs.",
-    "inTheLight": "The Investigator's sharp mind finds purpose. They use their incisive intellect to cut through lies, expose corruption, and reveal hidden truths. They are a powerful and fearless agent for uncovering what is real, no matter how uncomfortable.",
+    "coreShadow": "A sharp mind gone sour. You saw one ugly truth about the world, decided nothing matters, and started using your insight as a wrecking ball.",
+    "worldview": "Everybody's hope is a costume. Every effort is pointless. I am the smart one because I see it, and I will take your beliefs apart to show you.",
+    "inTheLight": "The Investigator's sharp mind finds a reason to exist. A brain like a scalpel cutting through lies, exposing the rot and dragging hidden facts into daylight. Fearless at finding what is real, even when what is real is awkward.",
     "lightName": null,
     "prompts": [
-      "What belief or institution do you hold the most cynicism towards? Why?",
-      "When was the last time you shot down someone's hopeful idea? What was your motivation?",
-      "Instead of just pointing out a flaw, what is one small, constructive suggestion you could offer to a problem you see in the world?"
+      "Which belief or institution gets your biggest eye roll? What is the story behind it?",
+      "When did you last shoot down someone's hopeful idea? What were you getting out of it?",
+      "Next time you spot a flaw, what is one small, useful fix you could offer along with the critique?"
     ],
     "keywords": [
       "spiritual immaturity",
@@ -1054,14 +1054,14 @@
     "slug": "queen-of-spades",
     "label": "Queen of Spades",
     "archetype": "The Wise Woman",
-    "coreShadow": "The ruthless pragmatist whose heart has been frozen by past sorrow. She wields truth and boundaries like weapons, expecting the worst from humanity and offering no compassion.",
-    "worldview": "I have seen the truth of the world, and it is harsh. I have cut away my own sentimentality to survive, and I have no time for yours. I will give you the cold, hard truth for your own good.",
-    "inTheLight": "The Wise Woman cannot be deceived, manipulated, or intimidated. Her wisdom, born from surviving immense hardship, allows her to offer radically honest counsel and the freedom that comes from cutting away all illusions.",
+    "coreShadow": "The cold operator who iced over after old grief. Truth and boundaries used like blades, the worst expected from everyone, and compassion left off the menu.",
+    "worldview": "The world showed me its teeth. I trimmed off my soft parts to make it through, and yours bore me. Here is the cold version, for your own good.",
+    "inTheLight": "The Wise Woman cannot be fooled, worked or scared off. Wisdom earned the hard way lets her give blunt, clean counsel. The freedom of seeing through every illusion, offered to whoever asks.",
     "lightName": null,
     "prompts": [
-      "Describe a time you cut off your emotions to make a difficult decision.",
-      "In what situations do you find it difficult to show compassion for the struggles of others?",
-      "What is one personal boundary you have that is absolutely non-negotiable? Why is it so important to you?"
+      "When did you switch your feelings off to make a hard decision? What did it cost later?",
+      "Where do you find it hard to feel for people who are struggling?",
+      "What is one boundary of yours that is not up for negotiation? Why does it matter so much?"
     ],
     "keywords": [
       "emotional detachment",
@@ -1075,14 +1075,14 @@
     "slug": "king-of-spades",
     "label": "King of Spades",
     "archetype": "The Sovereign",
-    "coreShadow": "The absolute authority who wields immense power without compassion or morality. He is the judge, jury, and executioner, completely detached from the human cost of his 'necessary' decisions.",
-    "worldview": "My judgment is final. My authority is absolute. For the greater good to be served, hard decisions must be made, and sentiment cannot be a factor. The mission is all that matters.",
-    "inTheLight": "The Sovereign's authority is tempered with integrity. He is the master of truth and discipline. He is the ethical surgeon, the just judge, the leader who makes the toughest calls with unwavering clarity and a profound sense of responsibility for the power he holds.",
+    "coreShadow": "Power with the conscience unplugged. Judge, jury and executioner in one chair, blind to what his necessary decisions cost the people under them.",
+    "worldview": "My verdict stands. My word is final. The greater good needs hard choices, and feelings do not get a vote. Only the mission counts.",
+    "inTheLight": "The Sovereign keeps the authority and adds a backbone of integrity. Master of truth and discipline. The ethical surgeon, the fair judge, the leader who makes the hardest call with steady eyes and takes full responsibility for the power in their hands.",
     "lightName": null,
     "prompts": [
-      "Recall a time you made a decision based on cold logic, completely dismissing the emotional impact on others.",
-      "In what area of your life do you act as the ultimate authority, where your word is final?",
-      "How could you invite feedback on a decision you are about to make, showing that you value other perspectives even if the final choice is yours?"
+      "When did you decide something on pure logic and ignore how it would land on people?",
+      "Where in your life is your word the final word? Who stopped arguing with you?",
+      "How could you ask for input on your next decision, even if the final call stays yours?"
     ],
     "keywords": [
       "spiritual arrogance",

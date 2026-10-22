@@ -74,9 +74,9 @@ export interface BirthdateSeo {
   // Primary ruling card, kept for existing call sites. Always rulingCards[0].
   rulingCard: CardSeo | null;
   // Full planetary-ruling set: 47 dates carry more than one (45 dual, 2
-  // triple — 10/23, 10/24). The client calculator already renders the full
+  // triple: 10/23, 10/24). The client calculator already renders the full
   // array (BirthCardCalculator.tsx); indexable records must agree with it.
-  // Copy rule: multiple ruling cards are a fact of the PRC table — never
+  // Copy rule: multiple ruling cards are a fact of the PRC table; never
   // present them as a zodiac-cusp claim.
   rulingCards: CardSeo[];
 }
@@ -166,7 +166,7 @@ const MONTH_ABBR = [
 
 function archetypeNickname(title: string | null): string | null {
   if (!title) return null;
-  // lens.name fallbacks look like "9 OF HEARTS" — not an archetype nickname.
+  // lens.name fallbacks look like "9 OF HEARTS", not an archetype nickname.
   if (/\bof\s+(hearts|clubs|diamonds|spades)\b/i.test(title)) return null;
   const nickname = title.replace(/^the\s+/i, "").trim().toLowerCase();
   return nickname || null;
@@ -184,7 +184,7 @@ function birthDateRange(card: CardSeo): string | null {
   if (first.month === last.month && first.day === last.day) {
     return formatBirthDate(first);
   }
-  return `${formatBirthDate(first)}–${formatBirthDate(last)}`;
+  return `${formatBirthDate(first)} to ${formatBirthDate(last)}`;
 }
 
 export function cardMeta(card: CardSeo): { title: string; description: string } {
@@ -199,13 +199,13 @@ export function cardMeta(card: CardSeo): { title: string; description: string } 
   const fit = (d: string) =>
     [
       d,
-      d.replace(" pattern, shadow", ", shadow"),
-      d.replace(" pattern, shadow", ", shadow").replace(" as a birth card and in a reading:", " as a birth card:"),
+      d.replace(" you avoid,", ","),
+      d.replace(" you avoid,", ",").replace(" as a birth card and in a reading:", " as a birth card:"),
     ].find((v) => v.length <= 160) ?? d;
   const description = fit(
     nickname && range
-      ? `${card.label} meaning as a birth card and in a reading: ${nickname} pattern, shadow, love/work, dates ${range}. Playing cards, not tarot. Free calculator.`
-      : `${card.label} meaning as a birth card and in a reading: pattern, shadow, love/work, and exact birth dates. Playing cards, not tarot. Free calculator.`,
+      ? `${card.label} meaning as a birth card and in a reading: ${nickname}, the shadow you avoid, love, work, ${range}. Playing cards, not tarot. Free calculator.`
+      : `${card.label} meaning as a birth card and in a reading: the pattern, the shadow you avoid, love, work, exact birth dates. Playing cards, not tarot. Free calculator.`,
   );
   return { title, description };
 }
@@ -256,7 +256,7 @@ export function dateMeta(date: BirthdateSeo): { title: string; description: stri
   return {
     title: `${date.label} Birth Card: ${date.card.label}`,
     description: clamp(
-      `Born on ${date.label}? Your Cardology birth card is the ${date.card.label}${date.card.title ? ` (${date.card.title})` : ""}. Meaning, ruling card, strengths, and shadow — playing cards, not tarot.`,
+      `Born on ${date.label}? Your Cardology birth card is the ${date.card.label}${date.card.title ? ` (${date.card.title})` : ""}. Meaning, ruling card, the shadow you avoid. Not tarot.`,
       155,
     ),
   };

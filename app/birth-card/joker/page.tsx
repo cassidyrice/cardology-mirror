@@ -8,19 +8,19 @@ import { SITE_NAME } from "@/lib/site";
 export const metadata: Metadata = {
   title: "The Joker: The December 31 Birth Card",
   description:
-    "December 31 is the only birthday that does not map to one of the 52 cards. The formula resolves it to zero — the Joker. Here is why, and what it means.",
+    "December 31 is the only birthday that does not map to one of the 52 cards. The formula resolves it to zero. The Joker. Here is why, and what it means.",
   alternates: { canonical: "/birth-card/joker" },
   openGraph: {
     siteName: SITE_NAME,
     title: "The Joker: The December 31 Birth Card",
-    description: "December 31 resolves to zero — the one date outside the 52-card cycle.",
+    description: "December 31 resolves to zero. The one date outside the 52-card cycle. Of course it is.",
     url: "/birth-card/joker",
-    images: [{ url: "/og/joker.png", width: 1200, height: 630, alt: "The Joker playing card — the December 31 birth card" }],
+    images: [{ url: "/og/joker.png", width: 1200, height: 630, alt: "The Joker playing card, the December 31 birth card" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "The Joker: The December 31 Birth Card",
-    description: "December 31 resolves to zero — the one date outside the 52-card cycle.",
+    description: "December 31 resolves to zero. The one date outside the 52-card cycle. Of course it is.",
     images: ["/og/joker.png"],
   },
 };
@@ -35,7 +35,7 @@ export default function JokerPage() {
         name: "What is the birth card for December 31?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "December 31 is the Joker. The formula Solar Value = 55 − (2 × Month + Day) gives 55 − (24 + 31) = 0, and zero sits outside the 1–52 range that maps to the standard deck. It is the only calendar date that resolves this way.",
+          text: "December 31 is the Joker. The formula Solar Value = 55 − (2 × Month + Day) gives 55 − (24 + 31) = 0, and zero sits outside the 1 to 52 range that maps to the standard deck. It is the only calendar date that resolves this way. Nobody else gets to be this specific.",
         },
       },
       {
@@ -43,7 +43,7 @@ export default function JokerPage() {
         name: "Why doesn't December 31 get one of the 52 cards?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Because the arithmetic runs out. The values descend across the year — December 30 resolves to 1, the Ace of Hearts, the lowest card in the sequence. December 31 is one step further, which is zero. There is no fifty-third card to assign, so the date falls outside the cycle.",
+          text: "Because the arithmetic runs out. The values descend across the year. December 30 resolves to 1, the Ace of Hearts, the lowest card in the sequence. December 31 is one step further, which is zero. There is no fifty-third card to assign, so the date falls outside the cycle. Not personal. Just math.",
         },
       },
       {
@@ -51,7 +51,7 @@ export default function JokerPage() {
         name: "How many days actually map to a card?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "In a common year, 364 dates map to the 52 cards and December 31 resolves to the Joker. In a leap year, February 29 also maps normally to the 9 of Clubs.",
+          text: "In a common year, 364 dates map to the 52 cards and December 31 resolves to the Joker. In a leap year, February 29 maps normally to the 9 of Clubs. That is the whole list of exceptions.",
         },
       },
       {
@@ -59,7 +59,7 @@ export default function JokerPage() {
         name: "Can I get a reading if I was born on December 31?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The standard card readings are built on the 52-card structure, so they do not apply to a Joker birthday. Contact us before purchasing and we will tell you exactly what we can and cannot do with a December 31 birthdate.",
+          text: "The standard card readings are built on the 52-card structure, so they do not apply to a Joker birthday. Contact us before purchasing and we will tell you exactly what we can and cannot do with a December 31 birthdate. No surprise charges, no vague answers.",
         },
       },
     ],
@@ -78,7 +78,7 @@ export default function JokerPage() {
       <div className="mb-4 flex items-center gap-5">
         <img
           src="/share-cards/faces/joker.png"
-          alt="The Joker playing card — the December 31 birth card"
+          alt="The Joker playing card, the December 31 birth card"
           width={1000}
           height={1500}
           loading="eager"
@@ -89,26 +89,26 @@ export default function JokerPage() {
       </div>
 
       <div className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">
           December 31 is the only birthday in the year that does not map to one of the 52 cards.
-          The formula resolves it to zero, and zero is the Joker — the card outside the deck&rsquo;s
-          ordered sequence.
+          The formula resolves it to zero. Zero is the Joker: the card that sits outside the deck&rsquo;s
+          ordered sequence. You were always going to be difficult.
         </p>
       </div>
 
       <section className="mt-8">
-        <h2 className="type-eyebrow mb-2 !text-brand-bronze">The arithmetic</h2>
+        <h2 className="type-eyebrow mb-2 !text-brand-bronze">The arithmetic, since you asked</h2>
         <p className="prose-reading text-brand-ink-soft">
           Every date runs through the same formula:{" "}
           <strong>Solar Value = 55 − (2 × Month + Day)</strong>. For December 31 that is
-          55 − (2 × 12 + 31) = 55 − 55 = <strong>0</strong>. The cards occupy values 1 through 52,
-          so zero has nowhere to land in the standard deck.
+          55 − (2 × 12 + 31) = 55 − 55 = <strong>0</strong>. The cards occupy values 1 through 52.
+          Zero has nowhere to land in the standard deck.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          You can see it clearly by looking at the last two days of the year side by side. December 30
-          gives 55 − (24 + 30) = 1, the Ace of Hearts — the first card in the sequence. One day later
-          the value steps down again, and there is nothing below the Ace. That is the edge of the system.
+          Put the last two days of the year side by side and it is obvious. December 30
+          gives 55 − (24 + 30) = 1, the Ace of Hearts, the first card in the sequence. One day later
+          the value steps down again, and there is nothing below the Ace. That is the edge of the system. You live there.
         </p>
       </section>
 
@@ -116,26 +116,26 @@ export default function JokerPage() {
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Why this is the honest number</h2>
         <p className="prose-reading text-brand-ink-soft">
           In a common year, <strong>364</strong> dates map to one of the 52 cards and December 31
-          resolves to the Joker. A leap year adds February 29, which maps normally to the
-          <strong> 9 of Clubs</strong>. We state both edge cases plainly — the system is more
-          useful when the public explanation matches the calculator.
+          resolves to the Joker. A leap year adds February 29. February 29 maps normally to the 9 of Clubs.
+          We say both edge cases out loud. A system is only useful when the explanation matches
+          the calculator. Rounding it off to sound tidier would be lying.
         </p>
       </section>
 
       <section className="mt-8">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">What a Joker birthday means here</h2>
         <p className="prose-reading text-brand-ink-soft">
-          It means the standard card structure does not describe you, and we are not going to pretend
-          otherwise. The 52-card material — birth card, ruling card, life spread positions, compatibility
-          by position — is all built on values 1 through 52. None of it resolves for a value of zero.
+          It means the standard card structure does not describe you. We are not going to pretend
+          otherwise to make you feel included. The 52-card material (birth card, ruling card, life spread positions, compatibility
+          by position) is all built on values 1 through 52. None of it resolves for a value of zero.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           If you were born on December 31 and you want a reading,{" "}
           <Link href="/contact" className="text-brand-oxblood underline underline-offset-4">
             get in touch first
           </Link>{" "}
-          rather than buying one. We will tell you plainly what can and cannot be done with a Joker
-          birthdate before any money changes hands.
+          instead of buying one. We will tell you plainly what can and cannot be done with a Joker
+          birthdate before any money changes hands. Then you decide.
         </p>
       </section>
 
@@ -144,20 +144,20 @@ export default function JokerPage() {
       <section className="mt-8">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">The two rarest ordinary birthdays</h2>
         <p className="prose-reading text-brand-ink-soft">
-          The Joker sits just past the two rarest cards in the system. January 1 computes to 52 — the{" "}
+          The Joker sits just past the two rarest cards in the system. January 1 computes to 52: the{" "}
           <Link href="/birth-card/king-of-spades" className="text-brand-oxblood underline underline-offset-4">
             King of Spades
           </Link>
-          , held by that one date alone. December 30 computes to 1 — the{" "}
+          , held by that one date alone. December 30 computes to 1: the{" "}
           <Link href="/birth-card/ace-of-hearts" className="text-brand-oxblood underline underline-offset-4">
             Ace of Hearts
           </Link>
-          , also a single date. Every other card covers between 2 and 12 birthdays.
+          , also a single date. Every other card covers between 2 and 12 birthdays. Crowded in there.
         </p>
       </section>
 
       <div className="card-surface mt-8 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Not born December 31?</p>
+        <p className="font-serif text-base text-brand-ink">Not born December 31? Just curious?</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link href="/birth-card-calculator" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
             Find your birth card

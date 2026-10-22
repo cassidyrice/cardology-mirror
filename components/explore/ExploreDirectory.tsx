@@ -117,8 +117,9 @@ export function ExploreDirectory() {
           Explore Card Blueprints
         </h1>
         <p className="mt-4 text-base leading-relaxed text-brand-ink-soft">
-          Your card, the library, compatibility, timing, and the rest of the deck.
-          Choose a starting point, or search for what you need.
+          Your card. The library. Compatibility. Timing. The rest of the deck.
+          Pick a starting point, or search for the thing you came here to check.
+          You were going to anyway.
         </p>
       </header>
 
@@ -130,7 +131,7 @@ export function ExploreDirectory() {
         type="search"
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder="A card, a relationship, a reading…"
+        placeholder="A card, a person, a reading…"
         className="mt-2 min-h-11 w-full border border-brand-ink bg-brand-paper px-4 font-serif text-brand-ink outline-none"
       />
 
@@ -153,7 +154,7 @@ export function ExploreDirectory() {
           </section>
         ))}
         {filtered.length === 0 ? (
-          <p className="text-sm text-brand-ink-soft">No matches. Try a shorter word.</p>
+          <p className="text-sm text-brand-ink-soft">No matches. Try a shorter word. Or fewer feelings.</p>
         ) : null}
       </div>
     </div>

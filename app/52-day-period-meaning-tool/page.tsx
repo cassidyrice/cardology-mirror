@@ -9,7 +9,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 const canonicalPath = "/52-day-period-meaning-tool";
 const title = "52-Day Period Meaning Tool";
 const description =
-  "Explore all 52 card meanings through the seven Cardology planetary filters: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune.";
+  "All 52 card meanings, run through the seven Cardology planetary filters: Mercury, Venus, Mars, Jupiter, Saturn, Uranus, and Neptune. Same card, new problem.";
 
 export const metadata: Metadata = {
   title,
@@ -67,10 +67,10 @@ export default function PeriodMeaningToolPage() {
           One card. Seven ways to read the season.
         </h1>
         <p className="mt-5 max-w-3xl font-serif text-xl leading-relaxed text-brand-ink sm:text-2xl">
-          Pick any card and run it through the seven yearly period filters. The card stays the same; the filter changes the context: mind, love, action, growth, discipline, disruption, or surrender.
+          Pick any card. Run it through the seven yearly period filters. The card stays the same. The filter changes the context: mind, love, action, growth, discipline, disruption, or surrender. At least one of them is about you.
         </p>
         <p className="mt-4 max-w-2xl text-sm leading-relaxed text-brand-ink-soft sm:text-base">
-          This tool is a way to explore an interpretation. Read the same card in the context of relationships, action, or another theme, then test the language against your experience.
+          This tool is for exploring an interpretation, not obeying one. Read the same card through relationships, action, or another theme. Then hold the words up against your actual life and see what sticks.
         </p>
       </header>
 
@@ -81,7 +81,7 @@ export default function PeriodMeaningToolPage() {
       <section className="mt-10 max-w-3xl" id="monthly">
         <h2 className="oracle-eyebrow mb-3">Looking for a monthly card?</h2>
         <p className="text-base leading-relaxed text-brand-ink">
-          Your birthday year has seven planetary seasons. Mercury through Uranus each last 52 days; Neptune continues through the day before your next birthday. Calendar months can cross more than one season, so use the dated boundaries when reading a particular month.
+          Your birthday year has seven planetary seasons. Mercury through Uranus each last 52 days. Neptune continues through the day before your next birthday. Calendar months don&rsquo;t care and can cross more than one season. Use the dated boundaries when reading a particular month.
         </p>
         <p className="mt-3 text-base leading-relaxed text-brand-ink">
           To place any month: count 52-day blocks forward from your last birthday.
@@ -89,15 +89,16 @@ export default function PeriodMeaningToolPage() {
           <Link href="/timing" className="underline underline-offset-4">
             yearly spread tool
           </Link>{" "}
-          does the counting and names the period you are in today; the filters above
-          then show how your card reads inside it.
+          does the counting and names the period you are in today. You don&rsquo;t
+          have to do math. The filters above then show how your card reads inside it.
         </p>
       </section>
 
       <section className="mt-10 max-w-3xl">
         <h2 className="oracle-eyebrow mb-3">Where to go next</h2>
         <p className="text-base leading-relaxed text-brand-ink">
-          A period card is only one layer. Read the card on its own on its{" "}
+          A period card is only one layer. Don&rsquo;t build a whole personality on it.
+          Read the card on its own on its{" "}
           <Link href="/birth-card" className="underline underline-offset-4">
             card meaning page
           </Link>
@@ -112,15 +113,15 @@ export default function PeriodMeaningToolPage() {
           .
         </p>
         <p className="mt-3 text-base leading-relaxed text-brand-ink">
-          To see where the seven periods actually come from — the board your card
-          moves across each year — read{" "}
+          To see where the seven periods actually come from, the board your card
+          moves across each year, read{" "}
           <Link href="/playing-card-spreads" className="underline underline-offset-4">
             playing card spreads
           </Link>
           .
         </p>
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">
-          Want one decision read from your own cards instead of looking them up by hand?
+          Would rather have a human read your cards than look them up by hand at 1am?
           That is the{" "}
           <Link href="/#readings" className="underline underline-offset-4">
             Personal readings

@@ -15,7 +15,7 @@ export function ShadowLayer({ code }: { code: string }) {
       aria-labelledby="shadow-archetype"
       data-shadow-layer={s.code}
     >
-      <p className="type-eyebrow !text-brand-bronze">The shadow, by name</p>
+      <p className="type-eyebrow !text-brand-bronze">Your shadow has a name</p>
       <h2 id="shadow-archetype" className="mt-2 font-serif text-2xl text-brand-ink">
         {s.label}: {s.archetype}
       </h2>
@@ -37,8 +37,8 @@ export function ShadowLayer({ code }: { code: string }) {
         {s.inTheLight}
       </p>
       <p className="mt-4 text-xs text-brand-ink-soft">
-        From <em>The Shadow Deck</em> by Cassidy Rice. Your birthday fixes the card; the shadow is the
-        part of it you were taught to keep in the basement. A mirror, not a forecast.
+        From <em>The Shadow Deck</em> by Cassidy Rice. Your birthday fixes the card. The shadow is the
+        part of it you were taught to keep in the basement. It got out. A mirror, not a forecast.
       </p>
     </section>
   );
@@ -52,10 +52,10 @@ export function ShadowPrompts({ code }: { code: string }) {
   return (
     <section className="mt-10" aria-labelledby="shadow-prompts" data-shadow-prompts={s.code}>
       <h2 id="shadow-prompts" className="type-eyebrow mb-2 !text-brand-bronze">
-        Three questions for {s.archetype}
+        Three questions for {s.archetype}. Answer them.
       </h2>
       <p className="prose-reading mb-4 text-brand-ink-soft">
-        Five minutes and a notebook. Answer honestly; nobody reads it but you.
+        Five minutes. A notebook. Answer honestly. Nobody reads it but you, and you already know the answers.
       </p>
       <ol className="space-y-3">
         {s.prompts.map((p, i) => (

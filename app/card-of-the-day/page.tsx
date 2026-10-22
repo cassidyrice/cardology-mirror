@@ -10,7 +10,7 @@ import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-card
 // Deploys are manual and infrequent, so "today" can never be baked in at
 // build time. This page is edge-rendered per request (same pattern as
 // /checkout/success) and computes the date in America/Denver on every hit.
-// Cache-Control for this route is pinned to no-store in middleware.ts —
+// Cache-Control for this route is pinned to no-store in middleware.ts.
 // next.config headers() never reach page responses here (the compiled
 // next-on-pages middleware route carries override:true and wipes them).
 export const runtime = "edge";
@@ -18,7 +18,7 @@ export const dynamic = "force-dynamic";
 
 // Metadata is computed per request (the page is force-dynamic): the title
 // names today's actual card for freshness and SERP CTR, while the OG stays
-// today-agnostic on purpose — the page content rotates daily, so a
+// today-agnostic on purpose: the page content rotates daily, so a
 // card-specific OG image would be stale for anyone sharing yesterday.
 // The share title names the fixed Cardology birth-card map.
 export function generateMetadata(): Metadata {
@@ -26,14 +26,14 @@ export function generateMetadata(): Metadata {
   const label = labelOf(now);
   const card = birthdateBySlug(slugOf(now))?.card ?? null;
   const title = card
-    ? `Card of the Day: ${card.label} — ${label}`
-    : `Card of the Day: The Joker — ${label}`;
+    ? `Card of the Day: ${card.label} (${label})`
+    : `Card of the Day: The Joker (${label})`;
   const description = card
-    ? `Today's Cardology card of the day (${label}) is the ${card.label}. Every date maps to exactly one playing card — see its meaning in love and work, free.`
-    : `Today, ${label}, is the Joker's day — the one date outside the 52-card map. See how the card of the day works, free.`;
+    ? `Today's Cardology card of the day (${label}) is the ${card.label}. One date, one playing card. Read it for love and work, free.`
+    : `Today, ${label}, belongs to the Joker. The one date outside the 52-card map. See how the card of the day works, free.`;
   const ogTitle = "Cardology Card of the Day: Fixed Birth-Card Map";
   const ogDescription =
-    "Cardology's fixed calendar: every date maps to one birth card — no shuffle, no draw. A mirror, not a forecast. Not tarot.";
+    "Cardology's fixed calendar: every date maps to one birth card: no shuffle, no draw. A mirror, not a forecast. Not tarot.";
   return {
     title,
     description,
@@ -43,7 +43,7 @@ export function generateMetadata(): Metadata {
       title: ogTitle,
       description: ogDescription,
       url: "/card-of-the-day",
-      images: [{ url: "/og/card-of-the-day.png", width: 1200, height: 630, alt: "Card of the Day — three playing cards fanned on paper" }],
+      images: [{ url: "/og/card-of-the-day.png", width: 1200, height: 630, alt: "Card of the Day, three playing cards fanned on paper" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -79,7 +79,7 @@ function denverToday(): CalendarDay {
   return { year: get("year"), month: get("month"), day: get("day") };
 }
 
-// Real calendar neighbor of a date (UTC-noon arithmetic — leap years and
+// Real calendar neighbor of a date (UTC-noon arithmetic: leap years and
 // month/year boundaries resolve exactly like the actual calendar year).
 function shiftDay({ year, month, day }: CalendarDay, delta: number): CalendarDay {
   const d = new Date(Date.UTC(year, month - 1, day, 12));
@@ -97,7 +97,7 @@ function labelOf(d: CalendarDay): string {
 
 // One-line essence for the direct-answer sentence: the card's Cardology title
 // when it has a real one, otherwise a suit + rank construction. Same fallback
-// test as the daily shorts script — lens fallback titles are just the card
+// test as the daily shorts script. Lens fallback titles are just the card
 // name in caps and add nothing.
 function essence(card: CardSeo): string {
   const t = (card.title ?? "").trim();
@@ -121,27 +121,27 @@ export default function CardOfTheDayPage() {
   const tomorrow = shiftDay(now, 1);
 
   const directAnswer = card
-    ? `Today, ${label}, the card of the day is the ${card.label} — ${essence(card)}. In playing-card cartomancy every calendar date maps to one of the 52 cards; today's card is the birth card of anyone born on ${label}.`
-    : `Today, ${label}, is the Joker's day — the one calendar date that maps to no card in the 52. In playing-card cartomancy every other date maps to exactly one card; December 31 belongs to the deck's wild 53rd card instead.`;
+    ? `Today, ${label}, the card of the day is the ${card.label}: ${essence(card)}. In playing-card cartomancy every calendar date maps to one of the 52 cards. Today's card is the birth card of anyone born on ${label}. Nobody drew it. It was already there.`
+    : `Today, ${label}, is the Joker's day. It is the one calendar date that maps to no card in the 52. In playing-card cartomancy every other date maps to exactly one card. December 31 belongs to the deck's wild 53rd card instead.`;
 
   const faqs = [
     {
       q: "What is the Cardology card of the day?",
       a: card
-        ? `The Cardology card of the day for ${label} is the ${card.label}. Cardology maps every calendar date to exactly one playing card, so the day's card is the birth card of that date — the same card for every reader, every year.`
-        : `The Cardology card of the day is the playing card a calendar date maps to — every date except one resolves to exactly one card. Today, ${label}, is the exception: December 31 belongs to the Joker, the deck's wild 53rd card.`,
+        ? `The Cardology card of the day for ${label} is the ${card.label}. Cardology maps every calendar date to exactly one playing card. So the day's card is the birth card of that date. Same card for every reader. Every year. It does not care how your week is going.`
+        : `The Cardology card of the day is the playing card a calendar date maps to. Every date except one resolves to exactly one card. Today, ${label}, is the exception. December 31 belongs to the Joker, the deck's wild 53rd card.`,
     },
     {
       q: "What is the card of the day?",
       a: card
-        ? `The card of the day for ${label} is the ${card.label}. In playing-card cartomancy every calendar date maps to exactly one of the 52 cards, so the day's card is simply the birth card of that date — the ${card.label} is the card of everyone born on ${label}.`
-        : `Today, ${label}, is the Joker's day — the one date in the calendar that maps to no card in the 52. Every other date maps to exactly one card, its birth card; December 31 sits outside the grid as the deck's wild card.`,
+        ? `The card of the day for ${label} is the ${card.label}. In playing-card cartomancy every calendar date maps to exactly one of the 52 cards. So the day's card is just the birth card of that date. The ${card.label} is the card of everyone born on ${label}. You are sharing it with strangers.`
+        : `Today, ${label}, is the Joker's day. It is the one date in the calendar that maps to no card in the 52. Every other date maps to exactly one card, its birth card. December 31 sits outside the grid as the deck's wild card.`,
     },
     {
       q: "How is the card of the day chosen?",
       a: card
-        ? `It is calculated, not drawn: a fixed Cardology formula maps each month and day to one card, so the same date returns the same card every year, for every reader. No shuffle and no randomness — ${label} maps to the ${card.label} this year, next year, and every year.`
-        : `It is calculated, not drawn: a fixed Cardology formula maps each month and day to one card, so the same date returns the same card every year, for every reader. December 31 is the formula's single exception — its value falls outside the 52 cards, which is why the date belongs to the Joker.`,
+        ? `It is calculated, not drawn. A fixed Cardology formula maps each month and day to one card. Same date, same card, every year, every reader. No shuffle. No randomness. No second opinion. ${label} maps to the ${card.label} this year, next year, and every year after that.`
+        : `It is calculated, not drawn. A fixed Cardology formula maps each month and day to one card. Same date, same card, every year, every reader. December 31 is the formula's single exception. Its value falls outside the 52 cards, which is why the date belongs to the Joker.`,
     },
   ];
 
@@ -178,7 +178,7 @@ export default function CardOfTheDayPage() {
       <div className="mb-4 flex items-center gap-5">
         <img
           src={`/share-cards/faces/${card ? card.slug : "joker"}.png`}
-          alt={card ? `${card.label} playing card — the card of the day for ${label}` : `The Joker playing card — ${label}`}
+          alt={card ? `${card.label} playing card, the card of the day for ${label}` : `The Joker playing card, ${label}`}
           width={1000}
           height={1500}
           loading="eager"
@@ -190,7 +190,7 @@ export default function CardOfTheDayPage() {
           <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
             Cardology Card of the Day
             <span className="block text-lg !text-brand-bronze">
-              {card ? `Today: the ${card.label}${card.title ? ` — ${card.title}` : ""}` : "Today: the Joker"}
+              {card ? `Today: the ${card.label}${card.title ? `, ${card.title}` : ""}` : "Today: the Joker"}
             </span>
           </h1>
           {card && (
@@ -205,17 +205,18 @@ export default function CardOfTheDayPage() {
       <p className="mb-2 text-xs text-brand-ink-soft">Updated {updatedLabel(updatedIso)}</p>
       <p className="mb-6">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find YOUR birth card free →
+          Find the card your birthday stuck you with →
         </Link>
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         This is a daily reading with no shuffle in it. The deck is built like a
-        calendar — 52 cards for 52 weeks, 4 suits for 4 seasons — and a fixed
+        calendar: 52 cards for 52 weeks, 4 suits for 4 seasons. A fixed
         Cardology formula assigns every month-and-day to exactly one card. So
-        the card of the day isn&rsquo;t drawn; it&rsquo;s already on the calendar,
+        the card of the day isn&rsquo;t drawn. It&rsquo;s already on the calendar,
         the same way {card ? `the ${card.label} sits on ${label}` : `the Joker sits on ${label}`}{" "}
-        every single year. Read today&rsquo;s pattern below, then find the card
-        your own birthday pinned on you.
+        every single year. You can refresh. It won&rsquo;t change. Read
+        today&rsquo;s pattern below, then find the card your own birthday
+        pinned on you.
       </p>
 
       {card && today ? (
@@ -225,7 +226,7 @@ export default function CardOfTheDayPage() {
             <div className="flex flex-col gap-5 sm:flex-row">
               <img
                 src={`/share-cards/faces/${card.slug}.png`}
-                alt={`${card.label} playing card — the card of the day for ${label}`}
+                alt={`${card.label} playing card, the card of the day for ${label}`}
                 width={1000}
                 height={1500}
                 loading="lazy"
@@ -236,9 +237,9 @@ export default function CardOfTheDayPage() {
                 {card.title && <p className="type-eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
                 <p>{card.coreIdentity || card.sweetSpot}</p>
                 <p>
-                  The {card.label} is a {suitWord(card)} card — the suit of {card.suitDomain.toLowerCase()} —
-                  carrying the rank theme of {rankTheme(card.rank).toLowerCase()}. At its
-                  best today, that pattern looks like this: {card.sweetSpot}
+                  The {card.label} is a {suitWord(card)} card, the suit of {card.suitDomain.toLowerCase()},
+                  carrying the rank theme of {rankTheme(card.rank).toLowerCase()}. On a
+                  good day, the pattern looks like this: {card.sweetSpot}
                 </p>
                 <p className="text-sm">
                   <Link href={`/birth-card/${card.slug}`} className="text-brand-oxblood underline underline-offset-4">
@@ -252,14 +253,14 @@ export default function CardOfTheDayPage() {
           <section className="mt-8">
             <h2 className="type-eyebrow mb-2 !text-brand-bronze">Quick reads: love, work, shadow</h2>
             <div className="space-y-4">
-              <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} tends to reveal itself through ${relationshipTheme(card)}. Notice where that pull is running the room today.`} />
-              <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Days like this reward giving the pattern one clean outlet.`} />
+              <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} shows up as ${relationshipTheme(card)}. Notice where that pull is running the room today. It probably is.`} />
+              <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Give the pattern one clean outlet today. Not five.`} />
               <QuickRead label="Shadow" facet="shadow" text={card.shadow || card.over} />
             </div>
             <p className="mt-4 text-sm text-brand-ink-soft">
-              A mirror, not a forecast: today&rsquo;s card describes a pattern in
+              A mirror, not a forecast. Today&rsquo;s card describes a pattern in
               play, not events on a schedule. If it clarifies nothing real,
-              discard it.
+              throw it out. It won&rsquo;t be offended.
             </p>
           </section>
         </>
@@ -268,15 +269,15 @@ export default function CardOfTheDayPage() {
           <h2 className="type-eyebrow mb-2 !text-brand-bronze">Today belongs to the Joker</h2>
           <div className="prose-reading text-brand-ink-soft">
             <p>
-              The deck&rsquo;s calendar math is exact: the 52 card values sum to
-              364, one short of the solar year, and December 31 is the day left
-              over. It maps to the Joker — the wild card outside every suit and
+              The deck&rsquo;s calendar math is exact. The 52 card values sum to
+              364, one short of the solar year. December 31 is the day left
+              over. It maps to the Joker, the wild card outside every suit and
               rank. People born today are the one birthday the formula
-              can&rsquo;t pin down, traditionally read as carrying a little of
-              every card in the deck.
+              can&rsquo;t pin down. Traditionally they carry a little of every
+              card in the deck. Which explains a lot.
             </p>
             <p>
-              Tomorrow the grid starts over:{" "}
+              Tomorrow the grid starts over. Like nothing happened.{" "}
               <a href={`/born-on/${slugOf(tomorrow)}`} className="text-brand-oxblood underline underline-offset-4">
                 January 1
               </a>{" "}
@@ -287,14 +288,15 @@ export default function CardOfTheDayPage() {
       )}
 
       <section className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Get YOUR card</p>
+        <p className="font-serif text-base text-brand-ink">Now do yours</p>
         <p className="mt-1 text-sm text-brand-ink-soft">
-          Today&rsquo;s card belongs to everyone; yours was fixed the day you
-          were born. Look it up free, then explore the written interpretation.
+          Today&rsquo;s card belongs to everyone. Yours was fixed the day you
+          were born and has been quietly explaining you ever since. Look it up
+          free, then read the written interpretation.
         </p>
         <div className="mt-3">
           <Link href="/birth-card-calculator" className="accent-button inline-block w-full text-center sm:w-auto">
-            Find your birth card free →
+            Look up your birth card free →
           </Link>
         </div>
       </section>
@@ -309,12 +311,12 @@ export default function CardOfTheDayPage() {
       <section className="mt-8">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">Yesterday, today, tomorrow</h2>
         <p className="prose-reading text-brand-ink-soft">
-          The card changes at midnight, Mountain Time — come back tomorrow, or
-          walk the calendar yourself. Every date&rsquo;s page reads the card as a
-          birthday:
+          The card changes at midnight, Mountain Time. Come back tomorrow, or
+          walk the calendar yourself like someone with nowhere to be. Every
+          date&rsquo;s page reads the card as a birthday:
         </p>
         {/* /born-on/ pages are edge-rendered by the cardology-unlock Worker,
-            not this Next app — plain <a>, same as the card pages. */}
+            not this Next app. Plain <a>, same as the card pages. */}
         <nav className="mt-4 grid grid-cols-3 gap-3 text-center text-sm">
           {[
             { day: yesterday, prefix: "←", note: labelOf(yesterday) },
@@ -356,7 +358,7 @@ export default function CardOfTheDayPage() {
   );
 }
 
-// Label colors are inline, which outranks the .paper-shell class remaps — so
+// Label colors are inline, which outranks the .paper-shell class remaps, so
 // these are what actually paint on cream. The dark palette's sage/gold/ember
 // read at 2.2/1.7/3.0:1 there; these pass AA (7.3 / 5.3 / 7.1) and keep the
 // three facets distinguishable by hue. The tint keeps the original color.
@@ -420,7 +422,7 @@ function rankTheme(rank: string): string {
     "7": "faith, refinement, and inner testing",
     "8": "power, influence, and mastery",
     "9": "completion and release",
-    "10": "public expression and full-cycle manifestation",
+    "10": "public expression and full-cycle realization",
     J: "youthful mastery, experimentation, and cleverness",
     Q: "inner authority, nurturance, and magnetic intelligence",
     K: "leadership, command, and mature stewardship",

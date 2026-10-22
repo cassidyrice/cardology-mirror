@@ -18,34 +18,34 @@ const UPDATED = PAGE_UPDATED_DATES["/birth-card"];
 const faqs = [
   {
     q: "What is a birth card?",
-    a: "In Cardology, a birth card is the one playing card your month and day map to in a fixed 52-card calendar system. The same birthday always returns the same card. It is not a greeting card and not a tarot Major Arcana calculation.",
+    a: "In Cardology, a birth card is the one playing card your month and day map to in a fixed 52-card calendar system. Same birthday, same card, every time. It is not a greeting card. It is not a tarot Major Arcana calculation either. Nobody is singing.",
   },
   {
     q: "How do I find my birth card?",
-    a: "Use the free birth card calculator, or scan the Cardology chart. Entering your birthday returns the fixed birth card plus its planetary ruling card, with a link to the full meaning.",
+    a: "Use the free birth card calculator, or scan the Cardology chart. Type in your birthday. You get the fixed birth card, its planetary ruling card, and a link to the full meaning. Then you get to sit with it.",
   },
   {
-    q: "Are Cardology birth cards the same as tarot birth cards?",
-    a: "No. Cardology uses a standard 52-card playing deck — Hearts, Clubs, Diamonds, and Spades. Tarot birth-card systems usually calculate Major Arcana cards from a 78-card tarot deck.",
+    q: "Are Cardology birth cards the same as tarot birth cards? Not even close.",
+    a: "No. Cardology uses a standard 52-card playing deck: Hearts, Clubs, Diamonds, and Spades. Birth-card systems built on tarot, not playing cards, usually calculate Major Arcana cards from a 78-card deck. Different deck. Different math.",
   },
   {
     q: "Does a birth card ever change?",
-    a: "No. The birth card is fixed by month and day and stays the same for life. Timing cards and yearly periods can change, but the birth card remains the baseline pattern.",
+    a: "No. The birth card is fixed by month and day and stays the same for life. Timing cards and yearly periods change. The birth card stays the baseline pattern, no matter how many times you rebrand.",
   },
   {
     q: "What do the 52 birth cards mean?",
-    a: "Each meaning combines suit and rank. Hearts emphasize relationships and emotion; Diamonds values and resources; Clubs mind and communication; Spades work, will, and transformation. Rank describes how that life domain moves.",
+    a: "Each meaning combines suit and rank. Hearts are relationships and emotion. Diamonds are values and resources. Clubs are mind and communication. Spades are work, will, and transformation. Rank describes how that part of your life moves, or refuses to.",
   },
   {
     q: "Can I get a personal reading?",
-    a: "Yes. Cass prepares the Chemistry Check ($52), a reading of two people’s cards. Explore your free card meaning first.",
+    a: "Yes. Cass prepares the Chemistry Check ($24), a reading of two people’s cards. Read your free card meaning first. Then decide who you are curious about.",
   },
 ];
 
 const TITLE = "52 Cardology Card Meanings | All Birth Cards";
 const DESCRIPTION =
-  "Browse all 52 Cardology birth card meanings — suit, rank, shadow, exact birth dates. Playing cards, not tarot. Find yours free, then open the card.";
-const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards — three aces fanned on paper" };
+  "All 52 Cardology birth card meanings: suit, rank, shadow, exact birth dates. Playing cards, not tarot. Find yours free. Open it. Feel seen.";
+const OG_IMAGE = { url: "/og/birth-card.png", width: 1200, height: 630, alt: "All 52 birth cards: three aces fanned on paper" };
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -115,15 +115,15 @@ export default function BirthCardIndex() {
       <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
       <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
       <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
+        <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
           fixed 52-card system. Same birthday, same card for life. This is a standard
-          playing deck — not tarot and not a paper birthday card. It is also not
-          cardiology, and the meaning is a mirror of a default pattern, not a forecast.
-          Each interpretation combines a suit — Hearts, Clubs, Diamonds or Spades — with a rank from
+          playing deck. Not tarot. Not a paper birthday card. Not cardiology either,
+          so your heart is fine. The meaning is a mirror of your default pattern, not a forecast.
+          Each interpretation combines a suit (Hearts, Clubs, Diamonds or Spades) with a rank from
           Ace to King. Browse all 52 meanings below, or use the free calculator if
-          you do not know your card. December 31 is the Joker exception and has its own{" "}
+          you do not know your card yet. December 31 is the Joker exception and gets its own{" "}
           <Link href="/birth-card/joker" className="text-brand-oxblood underline underline-offset-4">
             Joker birth card guide
           </Link>
@@ -134,11 +134,11 @@ export default function BirthCardIndex() {
         <h2 className="font-serif text-2xl text-brand-ink">How do I find my birth card?</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Month and day are enough. The free calculator returns the fixed playing
-          card; the year is for timing layers, not for the birth card itself.
+          card. The year is for timing layers, not the birth card. Keep your birth year to yourself.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Open the meaning on this page once you have the card. To see how two
-          cards meet, read{" "}
+          cards collide, read{" "}
           <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
             Cardology compatibility
           </Link>
@@ -154,7 +154,7 @@ export default function BirthCardIndex() {
           Find your birth card free →
         </Link>
       </p>
-      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">Read the card as a set of possible patterns: a strength, a pitfall, a question. For a closer look at your own relationships or year, <Link href="/#readings" className="editorial-link">choose a personal reading with Cass</Link>.</p>
+      <p className="prose-reading mb-6 text-sm text-brand-ink-soft">Read the card as a set of possible patterns. A strength. A pitfall. A question you keep dodging. For a closer look at one of your relationships, <Link href="/#readings" className="editorial-link">choose a personal reading with Cass</Link>.</p>
       <p className="mb-4 text-xs text-brand-ink-soft">
         By{" "}
         <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
@@ -170,8 +170,8 @@ export default function BirthCardIndex() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
-        Your month and day determine your <strong>birth card</strong>; the
-        interpretation is a starting point for reflection. Pick a card below, or{" "}
+        Your month and day determine your <strong>birth card</strong>. The
+        interpretation is where the thinking starts, not where it ends. Pick a card below, or{" "}
         <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
           calculate yours
         </Link>
@@ -182,7 +182,7 @@ export default function BirthCardIndex() {
         .
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
-        Prefer to browse another way? Explore{" "}
+        Would rather snoop another way? Explore{" "}
         <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
           birthdays by date
         </a>{" "}
@@ -208,7 +208,7 @@ export default function BirthCardIndex() {
       <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="popular-card-meanings">
         <h2 id="popular-card-meanings" className="type-eyebrow mb-3 !text-brand-bronze">Popular card meanings</h2>
         <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
-          Start with the cards people are reading most, then browse the full deck below.
+          The cards people are reading most, probably about someone else. The full deck is below.
         </p>
         <ul className="flex flex-wrap gap-2 text-sm">
           {[
@@ -239,11 +239,11 @@ export default function BirthCardIndex() {
       <DeckMatrix />
 
       <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="read-card-meaning">
-        <h2 id="read-card-meaning" className="font-serif text-xl text-brand-ink">How to read a card meaning</h2>
+        <h2 id="read-card-meaning" className="font-serif text-xl text-brand-ink">How to read a card meaning without making it your whole personality</h2>
         <ol className="prose-reading mt-4 list-decimal space-y-2 pl-5 text-brand-ink-soft">
-          <li>Start with the suit: Hearts for emotion, Clubs for mind and communication, Diamonds for values, and Spades for work and transformation.</li>
-          <li>Read the rank alongside the suit. For example, an Ace introduces a beginning in that area; a King asks how you lead in it.</li>
-          <li>Compare the interpretation with one recent experience. Keep the question that helps you understand your choices, and set aside what does not fit.</li>
+          <li>Start with the suit. Hearts for emotion. Clubs for mind and communication. Diamonds for values. Spades for work and transformation.</li>
+          <li>Read the rank next to the suit. An Ace starts something in that area. A King asks how you lead in it, or whether you just like the chair.</li>
+          <li>Hold the interpretation up to one thing that happened this week. Keep the question that explains your choices. Drop what does not fit. Do not argue with the part that does.</li>
         </ol>
       </section>
 
@@ -289,7 +289,7 @@ export default function BirthCardIndex() {
       </div>
 
       <section className="mt-12" id="faq">
-        <h2 className="type-eyebrow mb-4 !text-brand-bronze">Birth card FAQ</h2>
+        <h2 className="type-eyebrow mb-4 !text-brand-bronze">Birth card FAQ, asked at 2am</h2>
         <div className="space-y-4">
           {faqs.map((f) => (
             <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
@@ -301,7 +301,7 @@ export default function BirthCardIndex() {
       </section>
 
       <p className="prose-reading mt-8 text-sm text-brand-ink-soft">
-        Exploring a card as a tattoo?{" "}
+        Thinking about putting a card on your body permanently?{" "}
         <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
           Browse the playing-card tattoo references
         </Link>.

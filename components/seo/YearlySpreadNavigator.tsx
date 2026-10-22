@@ -33,12 +33,12 @@ export function YearlySpreadNavigator({ exampleAge }: { exampleAge: number }) {
     event.preventDefault();
     const trimmed = age.trim();
     if (!/^\d{1,2}$/.test(trimmed)) {
-      setError("Enter a whole number from 0 to 89.");
+      setError("A whole number from 0 to 89. Not a vibe, a number.");
       return;
     }
     const n = Number(trimmed);
     if (n < MIN_AGE || n > MAX_AGE) {
-      setError("Enter a whole number from 0 to 89.");
+      setError("0 to 89. Pick an age inside the deck.");
       return;
     }
     setError("");
@@ -79,7 +79,7 @@ export function YearlySpreadNavigator({ exampleAge }: { exampleAge: number }) {
         </p>
       ) : (
         <p className="mt-2 text-sm text-brand-ink-soft">
-          Ages 0–89. One decade shows at a time. Age 90 uses the same board as age 0.
+          Ages 0 to 89. One decade shows at a time. Age 90 uses the same board as age 0. The deck starts over. You don&rsquo;t.
         </p>
       )}
     </form>
