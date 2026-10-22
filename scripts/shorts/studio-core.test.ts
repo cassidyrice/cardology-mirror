@@ -47,7 +47,7 @@ describe("Card Blueprints Script Studio", () => {
       cardSlug: "7-of-clubs",
     });
     expect(output.subjectLabel).toContain("The Analytical Creator");
-    expect(output.voiceover).toMatch(/penetrating analysis and pattern recognition/i);
+    expect(output.voiceover).toMatch(/pattern recognition that makes people uneasy/i);
   });
 
   test("treats a same-card pair equally", () => {
