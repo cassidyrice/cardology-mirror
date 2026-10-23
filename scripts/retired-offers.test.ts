@@ -33,9 +33,9 @@ test("$13 on public pages only ever means the Birth Card Blueprint", () => {
   expect(hits).toEqual([]);
 });
 
-test("the offers are the Birth Card Blueprint, Timing Map, Chemistry Check and Family Snapshot", async () => {
+test("the offers are the Birth Card Blueprint, Timing Map, Chemistry Check, Family Snapshot and 5-Medium Collector Pack", async () => {
   const { READINGS_NAV } = await import("../lib/readings-nav");
-  expect(READINGS_NAV.map((r) => r.id)).toEqual(["birth-card-blueprint", "timing-map", "chemistry-check", "family-snapshot"]);
+  expect(READINGS_NAV.map((r) => r.id)).toEqual(["birth-card-blueprint", "timing-map", "chemistry-check", "family-snapshot", "collector-pack"]);
   const { CARD_APP_ON_SALE } = await import("../lib/products");
   const { YEAR_AHEAD_ON_SALE } = await import("../lib/year-ahead");
   expect([CARD_APP_ON_SALE, YEAR_AHEAD_ON_SALE]).toEqual([false, false]);

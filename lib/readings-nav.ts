@@ -5,6 +5,7 @@ export const BIRTH_CARD_BLUEPRINT_URL = "https://stan.store/mycardblueprint/p/bi
 export const CHEMISTRY_CHECK_URL = "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u";
 export const TIMING_MAP_URL = "https://stan.store/mycardblueprint/p/your-12month-timing-map";
 export const FAMILY_SNAPSHOT_URL = "https://stan.store/mycardblueprint/p/the-family-snapshot";
+export const COLLECTOR_PACK_URL = "https://stan.store/mycardblueprint/p/the-5medium-birth-card-collector-pack";
 
 /** Chemistry Check link tagged with where on the site the click came from, so Stan sales can be traced. */
 export function stanUrl(base: string, medium: string, campaign: string): string {
@@ -82,5 +83,17 @@ export const READINGS_NAV: readonly ManualReading[] = [
     description: "Three people’s cards side by side. Who steadies whom. Where the same argument repeats. How your years line up, like it or not.",
     includes: ["All three people’s core cards", "Every pair: strengths and friction", "Where the three of your years cross"],
     image: "/brand/mockups/family-snapshot-wide.webp",
+  },
+  {
+    id: "collector-pack",
+    title: "The 5-Medium Birth Card Collector Pack",
+    price: "$39",
+    href: "/#collector-pack",
+    checkoutHref: stanUrl(COLLECTOR_PACK_URL, "homepage", "offer_card"),
+    who: "Just you · All 5 formats",
+    description: "Your birth card and ruling card across five mediums: illustrated e-book, chaptered audiobook, spoken MP3, vertical video short, and 300-DPI archival wall print.",
+    includes: ["6-page PDF + EPUB 3.0 digital book & chaptered .M4B audiobook", "Mastered 192kbps spoken MP3 + 1080×1920 vertical video (.MP4)", "2400×3200 300-DPI gallery wall print (.PNG + .PDF + .SVG)"],
+    image: "/brand/mockups/birth-card-blueprint-wide.webp",
+    delivery: "Instant Collector Vault Pass at checkout, plus your full 5-medium ZIP bundle by email.",
   },
 ];
