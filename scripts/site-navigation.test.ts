@@ -26,12 +26,15 @@ test("footer preserves library, support, policy and purchase-access destinations
   for (const path of ['/birth-card-calculator','/what-is-cardology','/birth-card','/born-on/','/compatibility/','/faq','/contact','/my-purchases','/privacy-policy','/terms-of-service','/refund-policy']) expect(html).toContain(`href="${path}"`);
   for (const offer of READINGS_NAV) expect(html).toContain(`href="${offer.href}"`);
 });
-test("four offers, Chemistry Check linked straight to Stan, with follow-up", () => {
-  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["birth-card-blueprint", "$13"], ["timing-map", "$19"], ["chemistry-check", "$24"], ["family-snapshot", "$30"]]);
+test("five offers, Chemistry Check and Collector Pack linked straight to Stan, with follow-up", () => {
+  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["birth-card-blueprint", "$13"], ["timing-map", "$19"], ["chemistry-check", "$24"], ["family-snapshot", "$30"], ["collector-pack", "$39"]]);
   const html = render(ManualReadingOffers);
   expect(html).toContain('id="chemistry-check"');
   expect(html).toContain('data-order-reading="chemistry-check"');
+  expect(html).toContain('id="collector-pack"');
+  expect(html).toContain('data-order-reading="collector-pack"');
   expect(html).toContain(`href="${READINGS_NAV[2].checkoutHref!.replaceAll("&", "&amp;")}"`);
+  expect(html).toContain(`href="${READINGS_NAV[4].checkoutHref!.replaceAll("&", "&amp;")}"`);
   expect(html).toContain('id="birth-card-blueprint"');
   expect(html).toContain('href="/samples/birth-card-blueprint-sample.pdf"');
   expect(html).toContain(READING_FOLLOW_UP);
