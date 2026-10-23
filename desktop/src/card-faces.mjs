@@ -1,0 +1,58 @@
+// Real card faces for the report, embedded as data URLs by esbuild's dataurl loader.
+// Files come from prepare-card-faces.mjs (CC0, see ui/cards/ATTRIBUTION.txt).
+
+import c1 from '../ui/cards/ace-of-spades.png';
+import c2 from '../ui/cards/2-of-spades.png';
+import c3 from '../ui/cards/3-of-spades.png';
+import c4 from '../ui/cards/4-of-spades.png';
+import c5 from '../ui/cards/5-of-spades.png';
+import c6 from '../ui/cards/6-of-spades.png';
+import c7 from '../ui/cards/7-of-spades.png';
+import c8 from '../ui/cards/8-of-spades.png';
+import c9 from '../ui/cards/9-of-spades.png';
+import c10 from '../ui/cards/10-of-spades.png';
+import c11 from '../ui/cards/jack-of-spades.png';
+import c12 from '../ui/cards/queen-of-spades.png';
+import c13 from '../ui/cards/king-of-spades.png';
+import c14 from '../ui/cards/ace-of-hearts.png';
+import c15 from '../ui/cards/2-of-hearts.png';
+import c16 from '../ui/cards/3-of-hearts.png';
+import c17 from '../ui/cards/4-of-hearts.png';
+import c18 from '../ui/cards/5-of-hearts.png';
+import c19 from '../ui/cards/6-of-hearts.png';
+import c20 from '../ui/cards/7-of-hearts.png';
+import c21 from '../ui/cards/8-of-hearts.png';
+import c22 from '../ui/cards/9-of-hearts.png';
+import c23 from '../ui/cards/10-of-hearts.png';
+import c24 from '../ui/cards/jack-of-hearts.png';
+import c25 from '../ui/cards/queen-of-hearts.png';
+import c26 from '../ui/cards/king-of-hearts.png';
+import c27 from '../ui/cards/ace-of-diamonds.png';
+import c28 from '../ui/cards/2-of-diamonds.png';
+import c29 from '../ui/cards/3-of-diamonds.png';
+import c30 from '../ui/cards/4-of-diamonds.png';
+import c31 from '../ui/cards/5-of-diamonds.png';
+import c32 from '../ui/cards/6-of-diamonds.png';
+import c33 from '../ui/cards/7-of-diamonds.png';
+import c34 from '../ui/cards/8-of-diamonds.png';
+import c35 from '../ui/cards/9-of-diamonds.png';
+import c36 from '../ui/cards/10-of-diamonds.png';
+import c37 from '../ui/cards/jack-of-diamonds.png';
+import c38 from '../ui/cards/queen-of-diamonds.png';
+import c39 from '../ui/cards/king-of-diamonds.png';
+import c40 from '../ui/cards/ace-of-clubs.png';
+import c41 from '../ui/cards/2-of-clubs.png';
+import c42 from '../ui/cards/3-of-clubs.png';
+import c43 from '../ui/cards/4-of-clubs.png';
+import c44 from '../ui/cards/5-of-clubs.png';
+import c45 from '../ui/cards/6-of-clubs.png';
+import c46 from '../ui/cards/7-of-clubs.png';
+import c47 from '../ui/cards/8-of-clubs.png';
+import c48 from '../ui/cards/9-of-clubs.png';
+import c49 from '../ui/cards/10-of-clubs.png';
+import c50 from '../ui/cards/jack-of-clubs.png';
+import c51 from '../ui/cards/queen-of-clubs.png';
+import c52 from '../ui/cards/king-of-clubs.png';
+
+const FACES={'A♠':c1,'2♠':c2,'3♠':c3,'4♠':c4,'5♠':c5,'6♠':c6,'7♠':c7,'8♠':c8,'9♠':c9,'10♠':c10,'J♠':c11,'Q♠':c12,'K♠':c13,'A♥':c14,'2♥':c15,'3♥':c16,'4♥':c17,'5♥':c18,'6♥':c19,'7♥':c20,'8♥':c21,'9♥':c22,'10♥':c23,'J♥':c24,'Q♥':c25,'K♥':c26,'A♦':c27,'2♦':c28,'3♦':c29,'4♦':c30,'5♦':c31,'6♦':c32,'7♦':c33,'8♦':c34,'9♦':c35,'10♦':c36,'J♦':c37,'Q♦':c38,'K♦':c39,'A♣':c40,'2♣':c41,'3♣':c42,'4♣':c43,'5♣':c44,'6♣':c45,'7♣':c46,'8♣':c47,'9♣':c48,'10♣':c49,'J♣':c50,'Q♣':c51,'K♣':c52};
+export const cardFace=code=>FACES[code]||null;
