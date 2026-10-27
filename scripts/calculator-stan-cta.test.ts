@@ -2,6 +2,7 @@ import { expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { CALCULATOR_STAN_CTA_HREF } from "../components/seo/StanReadingCta";
 import { BIRTH_CARD_BLUEPRINT_URL, CHEMISTRY_CHECK_URL, TIMING_MAP_URL, FAMILY_SNAPSHOT_URL, COLLECTOR_PACK_URL, READINGS_NAV } from "../lib/readings-nav";
+import { REVIEW_STORE_URL } from "../lib/review-offer";
 
 test("calculator result CTA goes straight to the Chemistry Check with result_cta UTM tags", () => {
   expect(CALCULATOR_STAN_CTA_HREF).toBe(
@@ -24,7 +25,7 @@ test("homepage order link carries UTM tags, and no Stan link bypasses chemistryC
   );
   const links = files.flatMap((f) => readFileSync(f, "utf8").match(/https:\/\/stan\.store\/[^"'`\s]*/g) ?? []);
   expect(links.length).toBeGreaterThan(0);
-  for (const link of links) expect([BIRTH_CARD_BLUEPRINT_URL, CHEMISTRY_CHECK_URL, TIMING_MAP_URL, FAMILY_SNAPSHOT_URL, COLLECTOR_PACK_URL]).toContain(link);
+  for (const link of links) expect([BIRTH_CARD_BLUEPRINT_URL, CHEMISTRY_CHECK_URL, TIMING_MAP_URL, FAMILY_SNAPSHOT_URL, COLLECTOR_PACK_URL, REVIEW_STORE_URL]).toContain(link);
   expect(READINGS_NAV[0].checkoutHref).toBe(
     "https://stan.store/mycardblueprint/p/birth-card-blueprint?utm_source=cardblueprints&utm_medium=homepage&utm_campaign=offer_card",
   );
