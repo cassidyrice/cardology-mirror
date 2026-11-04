@@ -9,6 +9,7 @@ import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
 import { deliverReading } from "@/lib/reading-fulfill";
+import { readingDb } from "@/lib/reading-service";
 import { deliverApp } from "@/lib/app-delivery";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
 import {
@@ -90,14 +91,48 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
+  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded" || event.type === "checkout.session.expired") {
     const session = event.data.object as Stripe.Checkout.Session;
+    const offerSlug = session.metadata?.offer_slug ?? "";
+    const orderId = session.metadata?.blueprint_order_id;
+    if (offerSlug === "birth-card-blueprint" || orderId) {
+      if (offerSlug !== "birth-card-blueprint" || !orderId) {
+        return NextResponse.json({ error: "invalid Blueprint order reference" }, { status: 422 });
+      }
+      try {
+        if (event.type === "checkout.session.expired") {
+          const db = await readingDb();
+          await db.prepare("DELETE FROM blueprint_checkout_orders WHERE id=? AND stripe_session_id=? AND paid_at IS NULL RETURNING id")
+            .bind(orderId, session.id).first();
+          return NextResponse.json({ received: true });
+        }
+        if (session.payment_status === "unpaid") return NextResponse.json({ received: true });
+        if (session.mode !== "payment" || session.payment_status !== "paid" || session.amount_total !== 1300 || session.currency !== "usd") {
+          return NextResponse.json({ error: "unexpected Blueprint payment" }, { status: 422 });
+        }
+        const db = await readingDb();
+        const queued = await db.prepare("UPDATE blueprint_checkout_orders SET paid_at=unixepoch() WHERE id=? AND stripe_session_id=? AND paid_at IS NULL RETURNING id")
+          .bind(orderId, session.id).first();
+        if (!queued) {
+          const previous = await db.prepare("SELECT id FROM blueprint_checkout_orders WHERE id=? AND stripe_session_id=? AND paid_at IS NOT NULL")
+            .bind(orderId, session.id).first();
+          if (!previous) return NextResponse.json({ error: "Blueprint order unavailable" }, { status: 503 });
+        } else {
+          recordFunnelEvent({ name: "purchase_completed", source: "server",
+            ...funnelContextFromMetadata(session.metadata), eventId: `stripe:${session.id}`,
+            path: "/api/checkout/webhook", offerSlug, outcome: "payment-confirmed", currency: "usd", valueCents: 1300 });
+        }
+        return NextResponse.json({ received: true });
+      } catch {
+        return NextResponse.json({ error: "Blueprint fulfillment storage unavailable" }, { status: 503 });
+      }
+    }
+    if (event.type === "checkout.session.expired") return NextResponse.json({ received: true });
     const email =
       session.customer_details?.email ??
       session.customer_email ??
       "(no email)";
     const phone = session.customer_details?.phone ?? "(no phone)";
-    const offerSlug = session.metadata?.offer_slug ?? "";
     const product = productBySlug(offerSlug);
     const offerName =
       product?.name ??
