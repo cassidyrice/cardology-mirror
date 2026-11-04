@@ -110,12 +110,15 @@ const sent = order();
 assert.equal((await event("checkout.session.completed")).status, 200);
 assert.equal((await event("checkout.session.expired")).status, 200);
 assert.deepEqual(order(), sent);
-const expired = crypto.randomUUID();
-session.id = "cs_test_expired";
-session.metadata.blueprint_order_id = expired;
-reserve.run(expired, crypto.randomUUID(), session.id, 12, 31);
-assert.equal((await event("checkout.session.expired")).status, 200);
-assert.equal(sql.query("SELECT id FROM blueprint_checkout_orders WHERE id=?").get(expired), null);
+for (const type of ["checkout.session.expired", "checkout.session.async_payment_failed"]) {
+  const abandoned = crypto.randomUUID();
+  session.id = `cs_test_${abandoned}`;
+  session.payment_status = "unpaid";
+  session.metadata.blueprint_order_id = abandoned;
+  reserve.run(abandoned, crypto.randomUUID(), session.id, 12, 31);
+  assert.equal((await event(type)).status, 200);
+  assert.equal(sql.query("SELECT id FROM blueprint_checkout_orders WHERE id=?").get(abandoned), null);
+}
 assert.equal(sends, sendsBeforeBlueprint);
 assert.equal(analytics.length, salesBefore + 1);
 console.log("Passed: Blueprint needs a matching session and paid USD 13.00; duplicate events queue one sale, preserve sent orders and never send a legacy email; expiration removes only pending attempts.");

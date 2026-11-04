@@ -91,7 +91,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: msg }, { status: 400 });
   }
 
-  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded" || event.type === "checkout.session.expired") {
+  const abandoned = event.type === "checkout.session.expired" || event.type === "checkout.session.async_payment_failed";
+  if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded" || abandoned) {
     const session = event.data.object as Stripe.Checkout.Session;
     const offerSlug = session.metadata?.offer_slug ?? "";
     const orderId = session.metadata?.blueprint_order_id;
@@ -100,7 +101,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "invalid Blueprint order reference" }, { status: 422 });
       }
       try {
-        if (event.type === "checkout.session.expired") {
+        if (abandoned) {
           const db = await readingDb();
           await db.prepare("DELETE FROM blueprint_checkout_orders WHERE id=? AND stripe_session_id=? AND paid_at IS NULL RETURNING id")
             .bind(orderId, session.id).first();
@@ -120,14 +121,14 @@ export async function POST(req: NextRequest) {
         } else {
           recordFunnelEvent({ name: "purchase_completed", source: "server",
             ...funnelContextFromMetadata(session.metadata), eventId: `stripe:${session.id}`,
-            path: "/api/checkout/webhook", offerSlug, outcome: "payment-confirmed", currency: "usd", valueCents: 1300 });
+            path: "/api/checkout/webhook", offerSlug, placement: "birth-card-calculator-result", outcome: "payment-confirmed", currency: "usd", valueCents: 1300 });
         }
         return NextResponse.json({ received: true });
       } catch {
         return NextResponse.json({ error: "Blueprint fulfillment storage unavailable" }, { status: 503 });
       }
     }
-    if (event.type === "checkout.session.expired") return NextResponse.json({ received: true });
+    if (abandoned) return NextResponse.json({ received: true });
     const email =
       session.customer_details?.email ??
       session.customer_email ??

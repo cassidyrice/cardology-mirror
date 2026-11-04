@@ -9,6 +9,7 @@ export const CLIENT_FUNNEL_EVENTS = [
   "card_shared",
   "offer_selected",
   "offer_cta_clicked",
+  "offer_viewed",
   "sample_viewed",
   "reading_cta_clicked",
   "reveal_shown",
@@ -67,6 +68,7 @@ const CLIENT_EVENT_NAMES = new Set(CLIENT_FUNNEL_EVENTS as readonly string[]);
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const OFFER_SLUGS = new Set([
+  "birth-card-blueprint",
   "blueprint-report-consult",
   "blueprint-report",
   "personal-card-blueprint",

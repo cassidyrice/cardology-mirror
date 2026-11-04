@@ -68,6 +68,15 @@ export default function PrivacyPolicy() {
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
+              <h3 className="font-bold text-brand-ink">Birth Card Blueprint orders on this site</h3>
+              <p className="mt-1">
+                When you open the Birth Card Blueprint checkout, Card Blueprints saves the birth month and day
+                from your result to prepare your PDF. Stripe collects the payment and delivery
+                email. We link the payment to the reading using an order reference and clear
+                the month and day from our order queue after delivery.
+              </p>
+            </div>
+            <div className="border-t border-brand-line pt-4">
               <h3 className="font-bold text-brand-ink">Past orders placed on this site</h3>
               <p className="mt-1">
                 Orders placed on this site before October 2026 (including the One
@@ -78,7 +87,7 @@ export default function PrivacyPolicy() {
                 and to email it to you. Past 52xSeven Blueprint sign-in links
                 keep working; that signed token carries your email address, the
                 birth date, and an expiry. We do not maintain a separate
-                customer database of birth dates or questions, but Stripe
+                customer database for those past birth dates or questions, but Stripe
                 keeps them on the checkout record, and Stripe, Resend,
                 and Cloudflare may process the checkout field, email link, or
                 request URL under their retention and logging policies.
@@ -120,8 +129,8 @@ export default function PrivacyPolicy() {
               <h3 className="font-bold text-brand-ink">Free tools</h3>
               <p className="mt-1">
                 The birth card calculator, compatibility calculator, and period
-                tools run entirely in your browser. No birth date you enter into
-                these tools is transmitted to our servers or stored.
+                calculate results in your browser. Your birthday stays in this tab for
+                free lookups. If you open a paid Blueprint checkout, the order process described above applies.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">

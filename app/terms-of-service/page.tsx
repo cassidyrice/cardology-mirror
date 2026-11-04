@@ -46,8 +46,7 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">What the service is</h2>
           <p className="mt-3">
-            Card Blueprints offers free Cardology tools and educational pages,
-            and one paid reading, the Chemistry Check, sold through Stan Store. Card lookups use fixed formulas and tables — the
+            Card Blueprints offers free Cardology tools, educational pages and paid personal readings. Card lookups use fixed formulas and tables — the
             same birthday always produces the same card. Cardology is an
             esoteric reflection framework; interpretations are not facts about
             you.
@@ -57,6 +56,11 @@ export default function TermsOfService() {
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
+            <li className="border-t border-brand-line pt-2">
+              <strong>Birth Card Blueprint ($13)</strong> is a personal seven-page PDF
+              prepared from your birth month and day and delivered by email.
+              The calculator offers a one-time payment through Stripe when checkout is available.
+            </li>
             <li className="border-t border-brand-line pt-2">
               <strong>The Chemistry Check ($24)</strong> — a personal reading of two
               people's cards, prepared by Cass and delivered by email. One payment, no

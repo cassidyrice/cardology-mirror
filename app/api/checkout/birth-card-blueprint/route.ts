@@ -1,3 +1,4 @@
+import { recordFunnelEvent } from "@/lib/analytics-server";
 import { canonicalCalendarDate } from "@/lib/birthdate";
 import { stripePublishableKey } from "@/lib/deep-dive";
 import { rateLimit, rateLimitKey } from "@/lib/rate-limit";
@@ -84,7 +85,7 @@ export async function POST(req: Request) {
       ? await stripe.checkout.sessions.retrieve(order.stripe_session_id)
       : await stripe.checkout.sessions.create({
           mode: "payment", ui_mode: "embedded_page", redirect_on_completion: "never",
-          payment_method_types: ["card"], adaptive_pricing: { enabled: false },
+          integration_identifier: "birth_card_blueprint_qhrntkfa", adaptive_pricing: { enabled: false },
           line_items: [{ price: price.id, quantity: 1 }],
           metadata: { offer_slug: "birth-card-blueprint", blueprint_order_id: order.id },
         }, { idempotencyKey: `blueprint-order-${order.id}` });
@@ -95,9 +96,17 @@ export async function POST(req: Request) {
         session.metadata?.blueprint_order_id !== order.id || session.metadata.offer_slug !== "birth-card-blueprint") return unavailable();
     if (!order.stripe_session_id) {
       const bound = await db.prepare(`UPDATE blueprint_checkout_orders SET stripe_session_id = ?
-        WHERE id = ? AND (stripe_session_id IS NULL OR stripe_session_id = ?) AND paid_at IS NULL RETURNING id`)
-        .bind(session.id, order.id, session.id).first();
-      if (!bound) return unavailable();
+        WHERE id = ? AND stripe_session_id IS NULL AND paid_at IS NULL RETURNING id`)
+        .bind(session.id, order.id).first();
+      if (bound) {
+        recordFunnelEvent({ name: "checkout_started", source: "server", eventId: `checkout:${session.id}`,
+          path: "/birth-card-calculator", placement: "birth-card-calculator-result", offerSlug: "birth-card-blueprint",
+          currency: "usd", valueCents: 1300 });
+      } else {
+        const sameSession = await db.prepare("SELECT id FROM blueprint_checkout_orders WHERE id=? AND stripe_session_id=? AND paid_at IS NULL")
+          .bind(order.id, session.id).first();
+        if (!sameSession) return unavailable();
+      }
     }
     return reply({ clientSecret: session.client_secret, publishableKey });
   } catch {

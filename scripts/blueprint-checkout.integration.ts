@@ -41,6 +41,8 @@ globalThis.fetch = (async (url: string, init: RequestInit) => {
     assert.equal(body.get("metadata[offer_slug]"), "birth-card-blueprint");
     assert.equal(body.get("ui_mode"), "embedded_page");
     assert.equal(body.get("redirect_on_completion"), "never");
+    assert.equal(body.get("adaptive_pricing[enabled]"), "false");
+    assert.equal(body.get("integration_identifier"), "birth_card_blueprint_qhrntkfa");
     assert.equal(body.get("line_items[0][price]"), price.id);
     assert.equal(body.get("line_items[0][quantity]"), "1");
     assert.equal(body.get("customer_email"), null);

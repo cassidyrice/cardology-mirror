@@ -181,7 +181,7 @@ export default function CalculatorPage() {
       </header>
 
       <div className="mt-5">
-        <BirthCardCalculator />
+        <BirthCardCalculator embeddedCheckout={process.env.CARD_BLUEPRINT_EMBEDDED_CHECKOUT === "1"} />
       </div>
 
       <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">

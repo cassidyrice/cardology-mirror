@@ -4,7 +4,9 @@ Orders from the embedded calculator checkout are queued in the site's `READING_O
 
 ## Before accepting orders
 
-Apply migration `0004_birth_card_blueprint_orders.sql` to the intended environment before enabling checkout. In the **Card Blueprint** Stripe account, enable `checkout.session.completed`, `checkout.session.async_payment_succeeded` and `checkout.session.expired` for the site's existing signed webhook. Assign an operator to check the queue daily and prove one test-mode order through PDF receipt. The older fulfillment Worker's generated Blueprint uses a different layout. The exact seven-page generator is on Cassidys-Mini.
+Apply migration `0004_birth_card_blueprint_orders.sql` to the intended environment before enabling checkout. In the **Card Blueprint** Stripe account, enable `checkout.session.completed`, `checkout.session.async_payment_succeeded`, `checkout.session.async_payment_failed` and `checkout.session.expired` for the site's existing signed webhook. Assign an operator to check the queue daily and prove one test-mode order through PDF receipt. The older fulfillment Worker's generated Blueprint uses a different layout. The exact seven-page generator is on Cassidys-Mini.
+
+In the sandbox, configure a dedicated active one-time USD 13.00 Price for the Birth Card Blueprint, the matching publishable and restricted/secret keys, the webhook signing secret, the sandbox merchant ID and the preview origin. The credential must be able to identify its account, read Prices, and create/read Checkout Sessions. See `.env.example` for names. Set `CARD_BLUEPRINT_EMBEDDED_CHECKOUT=1` for both the build and server runtime in that environment. The main deploy workflow reads a GitHub Actions repository variable of that name for the static calculator build. The Pages runtime reads its own environment variable of the same name for the session endpoint. Keep the flag off in production until the order queue, receipt and manual PDF delivery have been verified. Only the site's Card Blueprint merchant can create live Sessions on cardblueprints.com.
 
 ## Work the queue
 

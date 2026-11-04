@@ -2,6 +2,7 @@
 
 import { startTransition, useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
+import { BirthCardCheckout } from "./BirthCardCheckout";
 import { StanReadingCta } from "./StanReadingCta";
 import dynamic from "next/dynamic";
 import {
@@ -59,7 +60,7 @@ function CalculatorPreviewFan() {
   );
 }
 
-export function BirthCardCalculator() {
+export function BirthCardCalculator({ embeddedCheckout = false }: { embeddedCheckout?: boolean }) {
   const [date, setDate] = useState("");
   const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
   const [touched, setTouched] = useState(false);
@@ -127,11 +128,14 @@ export function BirthCardCalculator() {
 
   return (
     <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
-      <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
+      <div className={`mx-auto flex w-full flex-col items-center ${embeddedCheckout && reveal ? "max-w-xl" : "max-w-[17.5rem]"}`}>
       {reveal && birthCard ? (
         <BirthShareHero
           birthCard={birthCard}
-          action={<CalculatorNextStep />}
+          compact={embeddedCheckout}
+          action={embeddedCheckout ? (
+            <BirthCardCheckout key={reveal.birthdate} birthdate={reveal.birthdate} cardName={parseCard(birthCard)?.label || "The Joker"} />
+          ) : <CalculatorNextStep />}
         />
       ) : (
         <CalculatorPreviewFan />
@@ -162,7 +166,7 @@ export function BirthCardCalculator() {
           required
         />
         <p id="calculator-privacy" className="text-xs leading-relaxed text-brand-ink-soft">
-          {CALCULATOR_PRIVACY_MICROCOPY}
+          {embeddedCheckout ? "The free calculation runs in this tab. Starting a paid order shares only the month and day from this field." : CALCULATOR_PRIVACY_MICROCOPY}
         </p>
         <button
           type="submit"
