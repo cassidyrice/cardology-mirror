@@ -24,7 +24,7 @@
     "pages:deploy:preview": "wrangler pages deploy .vercel/output/static --project-name cardology-mirror --branch preview --commit-dirty=true",
     "test:ruling-card-reference": "bun test scripts/ruling-card-reference.test.ts scripts/ruling-card-chart.test.ts",
     "test:ruling-card-reference:browser": "bun scripts/ruling-card-reference-browser.ts",
-    "test:fulfillment": "bun test scripts/reading-fulfill.test.ts scripts/reading-writer.test.ts && bun scripts/fulfillment-integration.ts && bun scripts/reading-d1.integration.ts",
+    "test:fulfillment": "bun test scripts/reading-fulfill.test.ts scripts/reading-writer.test.ts && bun scripts/fulfillment-integration.ts && bun scripts/reading-d1.integration.ts && bun scripts/blueprint-checkout.integration.ts",
     "test:period-library": "bun scripts/validate-period-library.ts && bun test scripts/period-library.test.ts",
     "test:app:browser": "bun scripts/app-launch-browser.ts"
   },

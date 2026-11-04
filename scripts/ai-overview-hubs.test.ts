@@ -18,7 +18,7 @@ const HUBS = [
     file: "app/birth-card-calculator/page.tsx",
     answer: "Your birthday maps to one playing card in a standard 52-card deck.",
     question: "What is a birth card in Cardology?",
-    before: "<BirthCardCalculator />",
+    before: "<BirthCardCalculator ",
   },
   {
     path: "/birth-card",
@@ -32,7 +32,7 @@ const HUBS = [
     file: "app/what-is-cardology/page.tsx",
     answer: "Cardology maps your birthday to one card in a standard 52-card playing",
     question: "What is Cardology?",
-    before: "<BirthCardCalculator />",
+    before: "<BirthCardCalculator ",
   },
   {
     path: "/cardology-compatibility",

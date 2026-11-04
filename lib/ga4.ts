@@ -125,6 +125,7 @@ export function mapFunnelEventToGa4(
       };
     case "card_shared":
       return { eventName: "share", params: { content_type: "birth_card" } };
+    case "offer_viewed":
     case "offer_selected":
       return { eventName: "view_item", params: { item_category: "offer" } };
     case "offer_cta_clicked":
