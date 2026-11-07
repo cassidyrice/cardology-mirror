@@ -13,14 +13,8 @@ export function CurrentPeriod({ birthdate }: { birthdate: string }) {
   if (!period) return null;
 
   return (
-    <div className="w-full max-w-md border border-brand-line bg-brand-paper px-4 py-3 text-center">
-      <p className="type-eyebrow mb-2">This 52-day stretch</p>
-      <p className="font-serif text-lg text-brand-ink">
-        {period.planet}. {period.cardLabel}.
-      </p>
-      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        The card you are living through right now. Yes, that explains the week.
-      </p>
-    </div>
+    <p className="calc-period">
+      <strong>This 52-day stretch.</strong> {period.planet}. {period.cardLabel}. The card you are living through right now. Yes, that explains the week.
+    </p>
   );
 }

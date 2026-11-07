@@ -8,6 +8,7 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
+import { BirthShareHero } from "@/components/share/BirthShareHero";
 import { parseCard, todayISO } from "@/lib/cards";
 import {
   birthdayWorkerLinkForReveal,
@@ -22,41 +23,31 @@ import {
 // The 7KB authored source of card-bible watchFor lines, not the 271KB bible (client bundle).
 import CARD_VOICE from "@/scripts/card-bible-voice.json";
 import { testimonialByline, testimonialForCard } from "@/lib/testimonials";
-import { shareFacePathFromCode } from "@/lib/share-cards";
 import THREE_LENS from "@/lib/card-meanings.json";
 
 // Result-only UI: loaded on demand so it stays out of the first-paint bundle.
-const BirthShareHero = dynamic(() => import("@/components/share/BirthShareHero").then((m) => m.BirthShareHero));
 const CurrentPeriod = dynamic(() => import("./CurrentPeriod").then((m) => m.CurrentPeriod));
 
-const PREVIEW_CODES = ["Q♦", "8♦", "A♠"] as const;
+/** The card in the shell's rail follows the calculator through this event. */
+const CALC_EVENT = "cb:calculator-card";
 
-function CalculatorPreviewFan() {
-  return (
-    <div className="flex h-28 items-end justify-center" aria-hidden="true">
-      {PREVIEW_CODES.map((code, i) => {
-        const full = shareFacePathFromCode(code);
-        if (!full) return null;
-        // 144x216 WebP thumbs (~5KB) instead of the 1000x1500 share PNGs (up to 440KB).
-        const src = full.replace("/share-cards/faces/", "/share-cards/thumbs/").replace(/\.png$/, ".webp");
-        const rotate = i === 0 ? "-rotate-12" : i === 2 ? "rotate-12" : "rotate-0";
-        const z = i === 1 ? "z-10" : "z-0";
-        const overlap = i === 0 ? "translate-x-3" : i === 2 ? "-translate-x-3" : "";
-        return (
-          <img
-            key={code}
-            src={src}
-            alt=""
-            width={72}
-            height={108}
-            decoding="async"
-            fetchPriority="low"
-            className={`relative ${z} ${rotate} ${overlap} rounded-[6px] border border-brand-line bg-brand-paper shadow-sm`}
-          />
-        );
-      })}
-    </div>
-  );
+function announceCard(birthCard: string | null) {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new CustomEvent<string | null>(CALC_EVENT, { detail: birthCard }));
+}
+
+/**
+ * The pinned card beside the reading on desktop (SeoShell's `stage`). It is
+ * face down until the calculator reports a birthday, then it turns.
+ */
+export function CalculatorStage() {
+  const [birthCard, setBirthCard] = useState<string | null>(null);
+  useEffect(() => {
+    const onCard = (event: Event) => setBirthCard((event as CustomEvent<string | null>).detail);
+    window.addEventListener(CALC_EVENT, onCard);
+    return () => window.removeEventListener(CALC_EVENT, onCard);
+  }, []);
+  return <BirthShareHero birthCard={birthCard ?? undefined} compact />;
 }
 
 export function BirthCardCalculator() {
@@ -83,6 +74,7 @@ export function BirthCardCalculator() {
     setDate(q);
     setReveal(calculated);
     setTouched(true);
+    announceCard(calculated.result.birthCard);
     trackClientFunnelEventOnce("calculator_started", {
       placement: "search-prefill",
     });
@@ -107,6 +99,7 @@ export function BirthCardCalculator() {
     // INP: paint the click feedback first; the result subtree renders in a
     // transition and the elroy listener runs in its own task.
     startTransition(() => setReveal(calculated));
+    announceCard(calculated?.result.birthCard ?? null);
     if (calculated) {
       storeCheckoutBirthdate(date);
       trackClientFunnelEvent("calculator_completed", {
@@ -126,65 +119,49 @@ export function BirthCardCalculator() {
   const birthCard = reveal?.result.birthCard;
 
   return (
-    <div className="rounded-[3px] border border-brand-line bg-brand-ivory px-4 py-6">
-      <div className="mx-auto flex w-full max-w-[17.5rem] flex-col items-center">
-      {reveal && birthCard ? (
+    <div className="calc">
+      {/* The same card, inline, where the rail is not shown (below 1024px). */}
+      <div className="calc-inline-card" data-has-card={birthCard ? "true" : "false"}>
         <BirthShareHero
           birthCard={birthCard}
-          action={<CalculatorNextStep />}
+          action={reveal && birthCard ? <CalculatorNextStep /> : undefined}
         />
-      ) : (
-        <CalculatorPreviewFan />
-      )}
+      </div>
 
       <form
         onSubmit={onSubmit}
-        className="mt-4 w-full space-y-3"
+        className="calc-form"
         hidden={Boolean(reveal)}
         aria-hidden={reveal ? true : undefined}
       >
-        <label htmlFor="bd" className="type-eyebrow block">
+        <label htmlFor="bd" className="calc-label">
           Enter your birthday
         </label>
-        <input
-          ref={dateRef}
-          id="bd"
-          type="date"
-          value={date}
-          onFocus={() =>
-            trackClientFunnelEventOnce("calculator_started", {
-              placement: "calculator-input",
-            })
-          }
-          onChange={(e) => setDate(e.target.value)}
-          aria-describedby="calculator-privacy"
-          className="w-full scroll-mt-24 rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
-          required
-        />
-        <p id="calculator-privacy" className="text-xs leading-relaxed text-brand-ink-soft">
+        <div className="calc-row">
+          <input
+            ref={dateRef}
+            id="bd"
+            type="date"
+            value={date}
+            onFocus={() =>
+              trackClientFunnelEventOnce("calculator_started", {
+                placement: "calculator-input",
+              })
+            }
+            onChange={(e) => setDate(e.target.value)}
+            aria-describedby="calculator-privacy"
+            className="calc-field scroll-mt-24"
+            required
+          />
+          <button type="submit" className="accent-button calc-submit">
+            Show me my birth card
+          </button>
+        </div>
+        <p id="calculator-privacy" className="calc-privacy">
           {CALCULATOR_PRIVACY_MICROCOPY}
         </p>
-        <button
-          type="submit"
-          className="accent-button large-button w-full"
-        >
-          Show me my birth card
-        </button>
       </form>
 
-      {reveal && (
-        <button
-          type="button"
-          onClick={() => {
-            setReveal(null);
-            setTouched(false);
-            setTimeout(() => dateRef.current?.focus(), 0);
-          }}
-          className="mt-3 text-xs text-brand-ink-soft underline underline-offset-4"
-        >
-          Wrong birthday? Change it
-        </button>
-      )}
       <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
         {touched && !reveal
           ? "Enter a full date, including year, month, and day."
@@ -193,7 +170,7 @@ export function BirthCardCalculator() {
             : ""}
       </p>
       {touched && !reveal && (
-        <p className="mt-4 text-sm text-brand-oxblood">
+        <p className="calc-error">
           Enter a full date (year, month, and day) to calculate your card.
         </p>
       )}
@@ -202,9 +179,14 @@ export function BirthCardCalculator() {
           key={`${reveal.result.birthCard}|${reveal.result.rulingCards.join(",")}`}
           reveal={reveal}
           date={date}
+          onReset={() => {
+            setReveal(null);
+            setTouched(false);
+            announceCard(null);
+            setTimeout(() => dateRef.current?.focus(), 0);
+          }}
         />
       )}
-      </div>
     </div>
   );
 }
@@ -223,11 +205,8 @@ export function BirthdayWorkerAnchor({
   if (!birthdayLink) return null;
 
   return (
-    <a
-      href={birthdayLink.href}
-      className="text-sm font-medium text-brand-ink underline underline-offset-4"
-    >
-      Read the {birthdayLink.label} birth-card page →
+    <a href={birthdayLink.href} className="editorial-link">
+      Read the {birthdayLink.label} birth-card page
     </a>
   );
 }
@@ -235,10 +214,10 @@ export function BirthdayWorkerAnchor({
 /** The result continues to the Chemistry Check or a free exercise. */
 function CalculatorNextStep() {
   return (
-    <div className="flex w-full flex-col items-center gap-2">
-      <StanReadingCta className="mb-3" />
-      <a href="#use-your-card" className="inline-flex min-h-11 items-center text-center text-sm font-medium text-brand-ink underline underline-offset-4">
-        Try a free exercise before you screenshot this →
+    <div className="calc-next">
+      <StanReadingCta />
+      <a href="#use-your-card" className="editorial-link">
+        Try a free exercise before you screenshot this
       </a>
     </div>
   );
@@ -247,92 +226,94 @@ function CalculatorNextStep() {
 function BirthCardResultCard({
   reveal,
   date,
+  onReset,
 }: {
   reveal: BirthCardReveal;
   date: string;
+  onReset: () => void;
 }) {
   const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const bc = parseCard(result.birthCard);
   const slug = birthCardSlug(result.birthCard);
   const watchFor = slug ? (CARD_VOICE.watchFor as Record<string, string>)[slug] : undefined;
+  const t = testimonialForCard(bc?.label);
+  let i = 0;
+  const rise = () => ({ "data-rise": "", style: { "--rise-i": i++ } as React.CSSProperties });
 
   return (
-    <div className="mt-6 flex w-full flex-col items-center gap-3">
-      {result.rulingCards.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs text-brand-ink-soft">
-          <span className="uppercase tracking-widest text-brand-bronze">Ruling:</span>
-          {result.rulingCards.map((c) => (
-            <span key={c} className="flex items-center gap-1.5">
-              <span className={paperSuitClass(c)}>{c}</span>
-              {parseCard(c)?.label}
-            </span>
-          ))}
-        </div>
-      )}
-      {!isJoker && <OneLineRead code={result.birthCard} />}
+    <div className="calc-result" data-in-view="true">
+      {/* On desktop the rail shows the card; the name and the paid step live here. */}
+      <div className="calc-result-head">
+        <h2 className="calc-result-name" {...rise()}>{bc?.label ?? (isJoker ? "The Joker" : result.birthCard)}</h2>
+        {result.rulingCards.length > 0 && (
+          <p className="calc-ruling" {...rise()}>
+            Ruling card{result.rulingCards.length > 1 ? "s" : ""}:{" "}
+            {result.rulingCards.map((c, index) => (
+              <span key={c}>
+                {index > 0 ? ", " : ""}
+                <span className={paperSuitClass(c)}>{parseCard(c)?.label ?? c}</span>
+              </span>
+            ))}
+          </p>
+        )}
+      </div>
+      {!isJoker && <OneLineRead code={result.birthCard} rise={rise} />}
       {!isJoker && watchFor && (
-        <p className="mt-4 text-center text-sm leading-relaxed text-brand-ink-soft">
-          {watchFor}
-        </p>
+        <p className="calc-watch" {...rise()}>{watchFor}</p>
       )}
-      <nav aria-label="What to do next" className="mt-4 w-full text-left">
-        <p className="type-eyebrow text-center">Now what</p>
-        <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-snug text-brand-ink">
+      <div className="calc-desktop-next" {...rise()}>
+        <CalculatorNextStep />
+      </div>
+      <nav aria-label="What to do next" className="calc-now" {...rise()}>
+        <p className="calc-now-title">Now what</p>
+        <ol>
           {slug && (
             <li>
-              <Link
-                href={`/birth-card/${slug}`}
-                className="font-semibold text-brand-ink underline underline-offset-4"
-              >
+              <Link href={`/birth-card/${slug}`} className="editorial-link">
                 Read your {bc?.label ?? "birth card"} meaning. It knows things
               </Link>
             </li>
           )}
           <li>
-            <Link
-              href="/birth-card-compatibility-calculator#da"
-              className="font-medium text-brand-ink underline underline-offset-4"
-            >
+            <Link href="/birth-card-compatibility-calculator#da" className="editorial-link">
               Compare with the person you keep checking
             </Link>
           </li>
-        </ol>
-        <div className="mt-3 flex flex-col items-start gap-2 text-sm">
           {!isJoker && (
-            <Link
-              href="/your-year"
-              className="font-medium text-brand-ink underline underline-offset-4"
-              onClick={() =>
-                trackClientFunnelEvent("year_link_clicked", {
-                  placement: "birth-card-calculator-result",
-                })
-              }
-            >
-              See your whole year. Plan accordingly →
-            </Link>
+            <li>
+              <Link
+                href="/your-year"
+                className="editorial-link"
+                data-placement="birth-card-calculator-result"
+                onClick={() =>
+                  trackClientFunnelEvent("year_link_clicked", {
+                    placement: "birth-card-calculator-result",
+                  })
+                }
+              >
+                See your whole year. Plan accordingly
+              </Link>
+            </li>
           )}
-          <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
-        </div>
+          <li>
+            <BirthdayWorkerAnchor reveal={reveal} todayIso={todayISO()} />
+          </li>
+        </ol>
       </nav>
-      {!isJoker && <CurrentPeriod birthdate={date || reveal.birthdate} />}
-      {(() => {
-        const t = testimonialForCard(bc?.label);
-        return (
-          <figure className="mt-4 max-w-md text-center">
-            <blockquote className="text-sm leading-relaxed text-brand-ink-soft">
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-bronze">
-              <span aria-label="5 out of 5 stars" className="mr-2 tracking-normal">★★★★★</span>
-              {testimonialByline(t)}
-            </figcaption>
-            <p className="mt-2 text-xs leading-relaxed text-brand-ink-faint">
-              Real customer words, shared with permission. Individual reflections, not typical-results claims.
-            </p>
-          </figure>
-        );
-      })()}
+      {!isJoker && <div {...rise()}><CurrentPeriod birthdate={date || reveal.birthdate} /></div>}
+      <figure className="calc-quote" {...rise()}>
+        <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
+        <figcaption>
+          <span aria-label="5 out of 5 stars">★★★★★</span> {testimonialByline(t)}
+          <span className="calc-quote-note">Real customer words, shared with permission. Individual reflections, not typical-results claims.</span>
+        </figcaption>
+      </figure>
+      <p className="calc-reset" {...rise()}>
+        <button type="button" className="editorial-link" onClick={onReset}>
+          Wrong birthday? Change it
+        </button>
+      </p>
     </div>
   );
 }
@@ -341,19 +322,13 @@ type Lens = { name: string; under: string; sweet_spot: string; over: string };
 const LENSES = THREE_LENS as Record<string, Lens>;
 
 /** Free one-line read of the card's pattern, shown with the card result. */
-function OneLineRead({ code }: { code: string }) {
+function OneLineRead({ code, rise }: { code: string; rise: () => Record<string, unknown> }) {
   const lens = LENSES[code];
   if (!lens) return null;
   return (
-    <div className="w-full max-w-md border border-brand-line bg-brand-paper px-4 py-3 text-center">
-      <p className="type-eyebrow mb-2">Your card, no context</p>
-      <p className="font-serif text-lg leading-snug text-brand-ink">
-        {lens.sweet_spot}
-      </p>
-      <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-        <span className="font-semibold text-brand-oxblood">Shadow:</span>{" "}
-        {lens.under}
-      </p>
+    <div className="calc-read" {...rise()}>
+      <p className="calc-read-line">{lens.sweet_spot}</p>
+      <p className="calc-read-shadow"><strong>Shadow.</strong> {lens.under}</p>
     </div>
   );
 }

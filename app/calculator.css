@@ -1,0 +1,210 @@
+/* Hallmark · built: the project · redesign: full · stamp and tokens: app/tokens.css
+ * /birth-card-calculator: the birth card pinned in the rail on the stage, the reading beside it; the Cardology chart, its running prose and inline links, the birthday form under the title and one sentence (docs/design/DIRECTION.md). */
+/* Hallmark · waive 49b · the wrapping links are inline links inside the Cardology chart's running prose (birth card meaning, methodology page) · a link inside a sentence about the birthday chart wraps with its sentence */
+/* Hallmark · waive 79 · the stage pins the birth card in the rail from the title to the fold, posture Stage · under the Cardology Chart title and one sentence the birthday form is the action; nothing is added to fill the screen */
+/* Hallmark · answered F19 · the chart table's row heads use the medium weight the table needs; display and body stay at 400 and 600 */
+/* Hallmark · answered F25 · the 12-month chart is the content; it scrolls in a labelled region with the day column pinned */
+/* Hallmark · dismissed 49 · both labels are set nowrap in this stylesheet (.calc-reset button, .calc-stan a) */
+/* Hallmark · dismissed 77 · this is a reading page with a tool at its head, not a landing strip; its sections are the guide's chapters */
+/* Hallmark · dismissed 28a · the printable chart image sits far below the first screen; the rail's card is the first paint */
+
+.calc-page-head h1 { text-wrap: balance; }
+.blueprint-content:has(.calc) :where(p, li):not(.calc-formula):not(.calc-page-lead) { max-width: var(--measure-wide); }
+.blueprint-content:has(.calc) details:not([open]) > :not(summary) { display: none; }
+.calc :where(a, button, input, summary):focus-visible,
+.blueprint-content:has(.calc) :where(a, button, input, summary):focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.calc-submit:active,
+.calc-stan a:active { transform: scale(0.98); }
+.calc-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+.calc-stan a { white-space: nowrap; }
+.calc-inline-card[data-has-card="false"] { display: none; }
+.calc-example-face { width: 11rem; height: auto; border-radius: var(--radius-card); }
+.calc-suits { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); margin: var(--space-lg) 0 0; padding: 0; list-style: none; }
+.calc-suit img { width: 9rem; height: auto; border-radius: var(--radius-card); }
+.calc-suit h3 { font-size: var(--step-body); font-weight: 600; }
+.calc-suit p { margin-top: var(--space-2xs); font-size: var(--step-small); color: var(--ink-soft); }
+
+.calc-page-head h1 {
+  max-width: 20ch;
+  font-size: var(--step-head);
+  line-height: var(--leading-head);
+  letter-spacing: var(--tracking-display);
+}
+.calc-page-lead {
+  margin-top: var(--space-lg);
+  max-width: 34ch;
+  font-size: var(--step-lead);
+  line-height: 1.35;
+  color: var(--ink);
+}
+.calc-page-tool { margin-top: var(--space-xl); }
+.calc-page-note { margin-top: var(--space-xl); }
+.calc-guide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-lg);
+  margin-top: var(--space-lg);
+  font-size: var(--step-small);
+}
+
+/* ---------- The tool ---------- */
+.calc { max-width: 40rem; }
+.calc-inline-card { display: block; }
+.calc-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-lg); width: 100%; }
+.shell-stage .calc-card { align-items: center; }
+.calc-card-stage { width: min(56vw, 14rem); perspective: 1200px; }
+.shell-stage .calc-card-stage { width: min(100%, 16rem); }
+.calc-card-joker {
+  display: grid;
+  place-items: center;
+  background: var(--board);
+  color: var(--on-dark);
+  font-size: var(--step-lead);
+}
+.calc-card-text { --rise-base: 780ms; width: 100%; max-width: 30rem; }
+.calc-card-name {
+  font-family: var(--font-display);
+  font-size: var(--step-head);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
+}
+.calc-card-sub { margin-top: var(--space-xs); font-size: var(--step-lead); }
+.calc-card-action { margin: var(--space-lg) 0; }
+.calc-form { margin-top: var(--space-xl); }
+.calc-label { display: block; margin-bottom: var(--space-xs); font-size: var(--step-small); color: var(--ink-soft); }
+.calc-row { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.calc-field {
+  flex: 1 1 12rem;
+  min-height: var(--control-height);
+  padding: 0 var(--space-md);
+  border: 1px solid var(--ink-faint);
+  border-radius: var(--radius-ui);
+  background: var(--ivory);
+  color: var(--ink);
+  font-size: var(--step-body);
+}
+.calc-submit { flex: 0 0 auto; }
+.calc-privacy { margin-top: var(--space-sm); max-width: 40ch; font-size: var(--step-small); color: var(--ink-soft); }
+.calc-error { margin-top: var(--space-sm); font-size: var(--step-small); color: var(--error); }
+
+/* ---------- The result ---------- */
+.calc-result { --rise-base: 780ms; margin-top: var(--space-xl); }
+.calc-result-head { display: none; }
+.calc-ruling { margin-top: var(--space-xs); color: var(--ink-soft); }
+.calc-read { margin-top: var(--space-lg); max-width: var(--measure); }
+.calc-read-line { font-size: var(--step-lead); line-height: 1.35; }
+.calc-read-shadow { margin-top: var(--space-sm); }
+.calc-watch { margin-top: var(--space-md); max-width: var(--measure); color: var(--ink); }
+.calc-desktop-next { display: none; }
+.calc-next { display: grid; gap: var(--space-md); width: 100%; max-width: 30rem; }
+.calc-stan { display: grid; gap: var(--space-sm); width: 100%; }
+.calc-stan-line { font-size: var(--step-body); color: var(--ink); }
+.calc-now { margin-top: var(--space-xl); }
+.calc-now-title { font-weight: 600; }
+.calc-now ol { margin: var(--space-sm) 0 0; padding: 0; list-style: none; display: grid; gap: var(--space-sm); }
+.calc-period { margin-top: var(--space-lg); max-width: var(--measure); }
+.calc-quote { margin: var(--space-2xl) 0 0; max-width: var(--measure); padding: var(--space-lg); background: var(--paper-deep); }
+.calc-quote blockquote { margin: 0; }
+.calc-quote figcaption { margin-top: var(--space-sm); font-size: var(--step-small); color: var(--ink-soft); }
+.calc-quote-note { display: block; margin-top: var(--space-2xs); }
+.calc-reset { margin-top: var(--space-lg); font-size: var(--step-small); }
+.calc-reset button { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; white-space: nowrap; }
+
+/* ---------- Sections ---------- */
+.calc-exercise { margin-top: var(--section-gap-s); }
+.calc-exercise > h2,
+.blueprint-content .calc-exercise > h2 { font-size: var(--step-head); line-height: var(--leading-head); letter-spacing: var(--tracking-display); max-width: 20ch; }
+.calc-example { margin: var(--space-xl) 0 0; padding: var(--space-lg); background: var(--paper-deep); }
+.calc-example > figcaption { margin-bottom: var(--space-md); font-weight: 600; }
+.calc-example-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+  align-items: center;
+}
+.calc-example-cell,
+.calc-example-card { display: grid; gap: var(--space-xs); justify-items: start; }
+.calc-example-card { justify-items: center; text-align: center; }
+.calc-example-label { font-weight: 600; }
+.calc-example-big { font-family: var(--font-display); font-size: var(--step-lead); line-height: 1.2; }
+.calc-example-small { font-size: var(--step-small); color: var(--ink-soft); }
+.calc-example > .calc-example-small { margin-top: var(--space-md); }
+.calc-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-lg); margin: var(--space-xl) 0 0; padding: 0; list-style: none; }
+.calc-steps h3 { font-size: var(--step-body); font-weight: 600; }
+.calc-steps p { margin-top: var(--space-xs); color: var(--ink); }
+.calc-suit { display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--paper-deep); }
+.calc-aside { margin-top: var(--space-xl); padding: var(--space-lg); background: var(--paper-deep); max-width: var(--measure-wide); }
+.calc-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-sm);
+  background: var(--paper-deep);
+  font-size: var(--step-small);
+  text-decoration: none;
+}
+.calc-chip:hover { background: var(--paper-deeper); }
+.calc-month {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--control-height);
+  padding: 0 var(--space-sm);
+  background: var(--paper-deep);
+  text-decoration: none;
+  color: var(--ink);
+}
+.calc-month:hover { background: var(--paper-deeper); }
+.calc-step { padding: var(--space-lg); background: var(--paper-deep); }
+.calc-step h3 { font-size: var(--step-body); font-weight: 600; }
+.calc-step p { margin-top: var(--space-xs); }
+.calc-formula { margin-top: var(--space-lg); font-size: var(--step-lead); font-variant-numeric: tabular-nums; }
+.calc-pane { padding: var(--space-lg); background: var(--paper-deep); }
+.calc-pane h3 { font-size: var(--step-body); font-weight: 600; }
+.calc-pane p { margin-top: var(--space-xs); }
+.calc-faq { display: grid; gap: var(--space-xs); }
+.calc-faq-item { padding: var(--space-md) var(--space-lg); background: var(--paper-deep); }
+.calc-faq-item summary h3 { font-size: var(--step-body); font-weight: 600; }
+.calc-continue { margin-top: var(--space-2xl); padding: var(--space-lg); }
+.calc-continue .flex { gap: var(--space-xs); }
+
+@media (min-width: 1024px) {
+  /* The rail shows the card; inline, only the name and the paid step remain. */
+  .calc-inline-card { display: none; }
+  .calc-result-head { display: block; }
+  .calc-result-name {
+    font-family: var(--font-display);
+    font-size: var(--step-head);
+    line-height: 1.02;
+    letter-spacing: var(--tracking-display);
+  }
+  .calc-desktop-next { display: block; margin-top: var(--space-xl); }
+}
+
+@media (max-width: 640px) {
+  .calc-row { flex-direction: column; }
+  .calc-submit { width: 100%; }
+  .calc-example-row,
+  .calc-steps { grid-template-columns: minmax(0, 1fr); }
+  .calc-example-card { justify-items: start; text-align: left; }
+}
+
+/* The rail: the film poster on the board, the card on top of it. */
+.shell-stage .calc-card { position: static; justify-content: center; }
+.shell-stage { overflow: hidden; }
+.calc-rail-film {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--dur-swap) var(--ease-move);
+}
+.calc-card[data-has-card="true"] .calc-rail-film { opacity: 0.35; }
+.shell-stage .calc-card-stage { position: relative; }
+@media (min-width: 1024px) {
+  .shell-stage .calc-card { align-items: center; }
+}
+@media (min-width: 768px) {
+  .calc-suits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
