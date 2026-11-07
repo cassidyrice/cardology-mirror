@@ -489,29 +489,6 @@ html[data-js] .landing-shell[data-phase="leaving"] .landing-form {
 .closing-button:hover { background: var(--accent-deep); }
 .closing-button:active { transform: scale(0.98); }
 
-/* ---------- 404 ---------- */
-.not-found {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
-  gap: var(--space-2xl);
-  align-items: center;
-  width: 100%;
-  max-width: var(--container);
-  min-height: calc(100svh - var(--header-height));
-  margin: 0 auto;
-  padding: var(--space-2xl) var(--gutter);
-}
-.not-found h1 { font-size: var(--step-head); line-height: 1.02; letter-spacing: var(--tracking-display); }
-.not-found p { margin-top: var(--space-lg); max-width: var(--measure); }
-.not-found-links { display: grid; gap: var(--space-xs); margin: var(--space-xl) 0 0; padding: 0; list-style: none; max-width: 24rem; }
-.not-found-links a { width: 100%; }
-.not-found-stage {
-  display: grid;
-  place-items: center;
-  min-height: min(70svh, 40rem);
-  background: var(--paper-deep);
-}
-
 /* ---------- Breakpoints ---------- */
 @media (max-width: 1023px) {
   .split { display: block; }
@@ -565,8 +542,6 @@ html[data-js] .landing-shell[data-phase="leaving"] .landing-form {
   .sample-actions { grid-template-columns: minmax(0, 1fr); }
   .sample-cell { min-height: 60px; }
   .closing-text { padding: var(--space-xl) var(--gutter); }
-  .not-found { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-  .not-found-stage { min-height: 50svh; }
 }
 
 @media (max-width: 640px) {

@@ -308,6 +308,30 @@ html { scroll-padding-top: var(--space-2xl); }
   to { transform: scale(1); }
 }
 
+/* ---------- 404: the one address outside the map ---------- */
+.not-found {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 40%);
+  gap: var(--space-2xl);
+  align-items: center;
+  width: 100%;
+  max-width: var(--container);
+  min-height: calc(100svh - var(--header-height));
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--gutter);
+}
+.not-found h1 { font-size: var(--step-head); line-height: 1.02; letter-spacing: var(--tracking-display); }
+.not-found p { margin-top: var(--space-lg); max-width: var(--measure); }
+.not-found-links { display: grid; gap: var(--space-xs); margin: var(--space-xl) 0 0; padding: 0; list-style: none; max-width: 24rem; }
+.not-found-links a { width: 100%; }
+.not-found-stage {
+  display: grid;
+  place-items: center;
+  min-height: min(70svh, 40rem);
+  background: var(--paper-deep);
+}
+
+
 /* ---------- Access and legacy ---------- */
 .blueprint-access { background: var(--paper); color: var(--ink); min-height: 100dvh; }
 .blueprint-access :where(.text-bone, .text-mist) { color: var(--ink); }
@@ -350,6 +374,11 @@ html { scroll-padding-top: var(--space-2xl); }
   .blueprint-menu-readings { padding: var(--space-md) 0 var(--space-xs); }
   .blueprint-menu-readings > p { color: var(--ink-soft); font-size: var(--step-small); margin-bottom: var(--space-2xs); }
   .footer-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1023px) {
+  .not-found { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+  .not-found-stage { min-height: 50svh; }
 }
 
 @media (max-width: 640px) {

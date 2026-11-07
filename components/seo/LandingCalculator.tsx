@@ -103,8 +103,14 @@ export function LandingCalculator() {
     setTimeout(() => dateRef.current?.focus(), 0);
   }
 
+  const announced =
+    phase === "shown" && reveal
+      ? `Your birth card is ${reveal.result.birthCard === "Joker" ? "the Joker" : parseCard(reveal.result.birthCard)?.label ?? reveal.result.birthCard}.`
+      : error;
+
   return (
     <div className="landing-shell" data-phase={phase}>
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">{announced}</p>
       {phase !== "shown" || !reveal ? (
         <form
           onSubmit={onSubmit}
