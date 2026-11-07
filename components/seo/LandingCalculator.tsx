@@ -114,6 +114,10 @@ export function LandingCalculator() {
           className="landing-form"
           aria-labelledby="home-purpose-title"
         >
+          <p className="landing-note">
+            The card is free. So is the first uncomfortable thought.{" "}
+            <a href="#readings" className="editorial-link">Skip ahead to a personal reading</a>
+          </p>
           <label htmlFor="home-birthdate" className="landing-label">
             Your birthday
           </label>
@@ -144,10 +148,6 @@ export function LandingCalculator() {
           </p>
           <p id="landing-error" role="alert" className="landing-error" aria-live="assertive">
             {error}
-          </p>
-          <p className="landing-note">
-            The card is free. So is the first uncomfortable thought.{" "}
-            <a href="#readings" className="editorial-link">Skip ahead to a personal reading</a>
           </p>
         </form>
       ) : (

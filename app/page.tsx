@@ -55,6 +55,8 @@ export const revalidate = 86_400;
 export default function Home() {
   return (
     <div className="home paper-shell flex min-h-svh flex-col bg-brand-paper text-brand-ink">
+      {/* The stage film's poster is the first screen's largest paint. */}
+      <link rel="preload" as="image" href="/video/hero-loop-poster-9x16.webp" fetchPriority="high" />
       <SiteHeader />
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
         <div className="split">
@@ -63,19 +65,21 @@ export default function Home() {
           </div>
           <div className="split-column">
             <InView as="section" className="hero" aria-labelledby="home-purpose-title">
-              <h1 id="home-purpose-title" className="rise">
-                A little more clarity.<br />A different conversation.
-              </h1>
-              <p className="hero-lead rise-2" data-ai-summary>
-                Start with the playing card your birthday gave you.
-              </p>
-              <div className="hero-form rise-3">
-                <LandingCalculator />
+              <div className="hero-block">
+                <h1 id="home-purpose-title" className="rise">
+                  A little more clarity.<br />A different conversation.
+                </h1>
+                <p className="hero-lead rise-2" data-ai-summary>
+                  Start with the playing card your birthday gave you.
+                </p>
+                <div className="hero-form rise-3">
+                  <LandingCalculator />
+                </div>
               </div>
+              <p className="hero-name" aria-hidden="true">
+                <span>card</span> <span>blueprints</span>
+              </p>
             </InView>
-            <p className="hero-name" aria-hidden="true">
-              <span>card</span> <span>blueprints</span>
-            </p>
 
             <InView as="section" id="how-it-works" className="slip-section" aria-labelledby="home-find-birth-card">
               <Slip />

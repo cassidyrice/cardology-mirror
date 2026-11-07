@@ -45,8 +45,8 @@ const BARS = [
     name: "Three articles to start",
     lead: "Read a little. Then put the phone down and catch it happening in your own life.",
     links: [
-      { href: "/blog/how-to-read-birth-card-meaning", label: "How to read your Birth Card. Its themes, written as questions.", internal: true },
-      { href: "/blog/birth-card-vs-ruling-card-how-to-read-both", label: "Birth Card or Ruling Card? How to read the two together without spiraling.", internal: true },
+      { href: "/blog/how-to-read-birth-card-meaning", label: "How to read your Birth Card", note: "Its themes, written as questions. Answer them honestly, for once.", internal: true },
+      { href: "/blog/birth-card-vs-ruling-card-how-to-read-both", label: "Birth Card or Ruling Card?", note: "How to read the two together without spiraling.", internal: true },
       { href: "/blog", label: "Browse every article", internal: true },
     ],
   },
@@ -87,6 +87,7 @@ export function FreeBars() {
                     ) : (
                       <a href={link.href} className="editorial-link">{link.label}</a>
                     )}
+                    {"note" in link && link.note ? <span className="free-bar-note"> {link.note}</span> : null}
                   </li>
                 ))}
               </ul>

@@ -31,6 +31,7 @@ html { scroll-padding-top: var(--space-2xl); }
 }
 .blueprint-desktop-nav > a {
   min-height: 44px;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   color: var(--ink);
@@ -67,8 +68,8 @@ html { scroll-padding-top: var(--space-2xl); }
   width: 22rem;
   padding: var(--space-xs) var(--space-lg);
   background: var(--ivory);
-  box-shadow: var(--shadow-float);
 }
+.blueprint-readings-menu[open] nav { box-shadow: var(--shadow-float); }
 .blueprint-readings-menu a,
 .blueprint-menu-readings a {
   display: flex;
@@ -86,6 +87,9 @@ html { scroll-padding-top: var(--space-2xl); }
 .blueprint-readings-menu strong,
 .blueprint-menu-readings strong { font-weight: 400; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink-soft); }
 .blueprint-mobile-menu { display: none; }
+/* Chrome keeps a closed disclosure's box in layout; take it out so no hidden row can scroll. */
+.blueprint-readings-menu:not([open]) > nav,
+.blueprint-mobile-menu:not([open]) > nav { display: none; }
 
 /* ---------- Public page shell ---------- */
 .blueprint-content { padding-bottom: var(--space-2xl); }
@@ -183,7 +187,6 @@ html { scroll-padding-top: var(--space-2xl); }
   padding: var(--space-lg) 0;
   scroll-margin-top: var(--space-xl);
 }
-.offer-row + .offer-row { border-top: 1px solid var(--paper-deeper); }
 .offer-row:target { background: var(--paper-deep); padding-inline: var(--space-md); margin-inline: calc(-1 * var(--space-md)); }
 .offer-line {
   display: flex;
@@ -227,7 +230,7 @@ html { scroll-padding-top: var(--space-2xl); }
   font-size: var(--step-lead);
   letter-spacing: -0.01em;
 }
-.blueprint-next-step p { margin: var(--space-sm) 0 var(--space-lg); max-width: 44ch; color: var(--ink); }
+.blueprint-next-step p { margin: var(--space-sm) 0 var(--space-lg); max-width: 46ch; color: var(--ink); }
 
 /* ---------- Footer: the name returns, then the links, then one quiet line ---------- */
 .site-footer {
@@ -339,6 +342,7 @@ html { scroll-padding-top: var(--space-2xl); }
     display: flex;
     align-items: center;
     min-height: 48px;
+    white-space: nowrap;
     color: var(--ink);
     text-decoration: none;
     font-size: var(--step-body);
@@ -355,7 +359,7 @@ html { scroll-padding-top: var(--space-2xl); }
   .footer-quiet-right { text-align: left; }
   .footer-mast { font-size: clamp(2.75rem, 12vw, 4.5rem); margin-bottom: var(--space-2xl); }
   .offer-line { flex-wrap: wrap; gap: var(--space-xs) var(--space-md); }
-  .blueprint-readings-menu nav { width: min(22rem, calc(100vw - 2 * var(--gutter))); }
+  .blueprint-readings-menu nav { width: 22rem; max-width: calc(100dvw - 2 * var(--gutter)); }
 }
 
 @media (max-width: 359px) {

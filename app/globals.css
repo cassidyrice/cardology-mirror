@@ -306,7 +306,7 @@ button, input, select, textarea { font: inherit; }
   background: var(--paper);
   transition: background-color var(--dur-micro) var(--ease-arrive), border-color var(--dur-micro) var(--ease-arrive), transform var(--dur-micro) var(--ease-arrive);
 }
-.life-seat { min-height: 2.75rem; padding: 0.7rem 0.5rem; text-align: left; }
+.life-seat { min-height: 2.75rem; padding: var(--space-sm) var(--space-xs); text-align: left; }
 .spread-cell {
   display: grid;
   min-height: 2.5rem;
@@ -378,7 +378,7 @@ html[data-js] [data-in-view="true"] [data-rise] {
 .paper-shell input,
 .paper-shell textarea,
 .paper-shell select {
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--ink-faint);
   border-radius: var(--radius-ui);
   background: var(--ivory);
   color: var(--ink);
@@ -426,7 +426,7 @@ html[data-js] [data-in-view="true"] [data-rise] {
 .paper-shell .text-\[0\.62rem\] { font-size: var(--step-small) !important; }
 
 .paper-shell .app-paper-stage .min-h-dvh { min-height: auto; }
-.paper-shell .app-paper-stage > .relative { padding-bottom: 2.5rem; }
+.paper-shell .app-paper-stage > .relative { padding-bottom: var(--space-xl); }
 
 @media (min-width: 480px) { .brand-mark { font-size: 1.5rem; } }
 @media (min-width: 1024px) { .brand-mark { font-size: 1.9rem; } }
@@ -486,6 +486,7 @@ html[data-js] [data-in-view="true"] [data-rise] {
   height: 100%;
   padding: 6%;
   background: var(--board);
+  color: var(--on-dark);
   border-radius: inherit;
 }
 .card-back-frame {
@@ -541,7 +542,7 @@ html[data-js] [data-in-view="true"] [data-rise] {
 @media (max-width: 640px) {
   .ce-table thead { display: none; }
   .ce-table, .ce-table tbody, .ce-table tr, .ce-table td { display: block; width: 100%; }
-  .ce-table tr { padding: 0.75rem 0.85rem; border-top: 1px solid var(--line); }
+  .ce-table tr { padding: var(--space-sm) var(--space-sm); border-top: 1px solid var(--line); }
   .ce-table td { padding: 0.15rem 0 !important; }
   .ce-table td::before { content: attr(data-label); display: block; font-size: var(--step-small); color: var(--ink-faint); margin-top: 0.4rem; }
   .ce-table td[data-label="Day"]::before { display: none; }

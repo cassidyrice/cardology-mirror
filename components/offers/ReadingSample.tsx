@@ -43,8 +43,8 @@ export function ReadingSample() {
           A reading is a place to start. The strengths you lean on too hard. The habits that keep starting the same fight. Questions you can take back into your actual life.
         </p>
         <div className="sample-actions" data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
-          <a className="sample-cell is-ink" href="/samples/birth-card-blueprint-sample.pdf">Read a sample Birth Card Blueprint (PDF)</a>
-          <a className="sample-cell" href="/samples/chemistry-check-fictional-sample.pdf">Read a fictional Chemistry Check sample (PDF)</a>
+          <a className="sample-cell is-ink" href="/samples/birth-card-blueprint-sample.pdf">Sample Birth Card Blueprint (PDF)</a>
+          <a className="sample-cell" href="/samples/chemistry-check-fictional-sample.pdf">Sample Chemistry Check, fictional (PDF)</a>
         </div>
         <p className="sample-note">
           Sample people. Sample dates. The cards and dates are math; the meanings come from the Cardology tradition. Your real reading also has Cass&rsquo;s written interpretation, which is the part you&rsquo;ll reread.

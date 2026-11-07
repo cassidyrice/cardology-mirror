@@ -27,11 +27,11 @@ export function StartHereSection() {
           <li key={item.href} className="border-t border-brand-line pt-4">
             {item.external ? (
               <a href={item.href} className="editorial-link text-sm text-brand-ink">
-                {item.label} →
+                {item.label}
               </a>
             ) : (
               <Link href={item.href} className="editorial-link text-sm text-brand-ink">
-                {item.label} →
+                {item.label}
               </Link>
             )}
           </li>

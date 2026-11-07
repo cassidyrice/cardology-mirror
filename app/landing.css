@@ -102,19 +102,21 @@
   z-index: 1;
   min-width: 0;
   background: var(--paper);
-  padding: 0 var(--gutter-stage);
+  padding: 0 max(var(--gutter-stage), calc((100dvw - var(--container)) / 2 + var(--gutter))) 0 var(--gutter-stage);
 }
+.slip-section,
+.readings { margin-inline: auto; width: 100%; }
 .hero {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100svh - var(--header-height) - var(--hero-name-size) * 0.9 - var(--space-xl));
-  max-width: 34rem;
+  min-height: calc(100svh - var(--header-height));
   padding: var(--space-2xl) 0 var(--space-xl);
 }
+.hero-block { width: 100%; max-width: 40rem; margin: auto; }
 .hero h1 {
-  max-width: 14ch;
-  font-size: var(--step-head);
+  max-width: 22ch;
+  font-size: clamp(1.9rem, 0.9rem + 2.6vw, 3.4rem);
   line-height: 1.02;
   letter-spacing: var(--tracking-display);
 }
@@ -131,7 +133,7 @@
 .hero-name {
   position: relative;
   z-index: 2;
-  margin: 0 0 var(--space-xl) calc(-1 * (var(--gutter-stage) + 10vw));
+  margin: var(--space-xl) 0 0 calc(-1 * (var(--gutter-stage) + 10vw));
   font-family: var(--font-display);
   font-size: var(--hero-name-size);
   font-weight: 400;
@@ -166,7 +168,7 @@
   flex: 1 1 12rem;
   min-height: var(--control-height);
   padding: 0 var(--space-md);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--ink-faint);
   border-radius: var(--radius-ui);
   background: var(--ivory);
   color: var(--ink);
@@ -187,12 +189,12 @@
   color: var(--error);
 }
 .landing-note {
-  margin-top: var(--space-md);
+  margin-bottom: var(--space-md);
   max-width: 40ch;
   font-size: var(--step-small);
   color: var(--ink);
 }
-.landing-shell[data-phase="leaving"] .landing-form {
+html[data-js] .landing-shell[data-phase="leaving"] .landing-form {
   opacity: 0;
   transform: translateY(-8px);
   transition: opacity var(--dur-exit) var(--ease-exit), transform var(--dur-exit) var(--ease-exit);
@@ -237,7 +239,7 @@
   margin-top: var(--space-xl);
   font-size: var(--step-small);
 }
-.verdict-reset button { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+.verdict-reset button { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; white-space: nowrap; }
 
 /* ---------- How a reading happens: the slip ---------- */
 .slip-section { max-width: 40rem; padding-top: var(--section-gap); }
@@ -247,11 +249,12 @@
   margin-top: var(--space-xl);
   padding: var(--space-xl) var(--space-lg);
   background: var(--ink);
+  color: var(--on-dark);
 }
 .slip {
   max-width: 30rem;
   margin: 0 auto;
-  padding: var(--space-lg) var(--space-lg) calc(var(--space-lg) + 14px);
+  padding: var(--space-lg) var(--space-lg) var(--space-xl);
   background: var(--ivory);
   color: var(--ink);
   clip-path: polygon(0 0, 100% 0, 100.000% calc(100% - 10px), 95.833% 100%, 91.667% calc(100% - 10px), 87.500% 100%, 83.333% calc(100% - 10px), 79.167% 100%, 75.000% calc(100% - 10px), 70.833% 100%, 66.667% calc(100% - 10px), 62.500% 100%, 58.333% calc(100% - 10px), 54.167% 100%, 50.000% calc(100% - 10px), 45.833% 100%, 41.667% calc(100% - 10px), 37.500% 100%, 33.333% calc(100% - 10px), 29.167% 100%, 25.000% calc(100% - 10px), 20.833% 100%, 16.667% calc(100% - 10px), 12.500% 100%, 8.333% calc(100% - 10px), 4.167% 100%, 0.000% calc(100% - 10px));
@@ -291,22 +294,23 @@
 .readings { max-width: 44rem; padding: var(--section-gap) 0 var(--section-gap-l); }
 .readings-lead { margin-top: var(--space-lg); max-width: var(--measure); }
 .readings .offer-menu { margin-top: var(--space-2xl); }
-.offer-image { display: none; }
+.offer-image { width: 14rem; height: auto; margin: var(--space-sm) 0 0; }
 
 /* ---------- The sample: square plate, spare text ---------- */
 .sample {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   min-height: 88svh;
+  padding-inline: max(0px, calc((100dvw - var(--container)) / 2));
   background: var(--paper-deep);
 }
 .sample-plate {
   position: relative;
   display: grid;
   place-items: center;
-  width: calc(100% - 80px);
+  width: calc(100% - 2 * var(--space-xl));
   aspect-ratio: 1;
-  margin: auto 40px;
+  margin: auto var(--space-xl);
   background: var(--paper-deeper);
 }
 .sample-plate img {
@@ -360,9 +364,9 @@
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.sample-title {
+.home .sample-title {
   margin-top: var(--space-xl);
-  font-size: clamp(2rem, 2.8vw, 2.5rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
   line-height: 1.05;
   letter-spacing: var(--tracking-display);
 }
@@ -406,7 +410,7 @@
   letter-spacing: var(--tracking-giant);
 }
 .free-lead { max-width: var(--measure); margin-bottom: var(--space-lg); }
-.free-bars { display: grid; gap: 6px; }
+.free-bars { display: grid; gap: var(--space-xs); }
 .free-bar { background: var(--paper-deep); }
 .free-bar-name {
   display: flex;
@@ -414,7 +418,7 @@
   align-items: center;
   gap: var(--space-md);
   min-height: 56px;
-  padding: 0 18px;
+  padding: 0 var(--space-lg) 0 var(--space-md);
   font-weight: 600;
   list-style: none;
   cursor: pointer;
@@ -427,8 +431,10 @@
   transition: transform var(--dur-micro) var(--ease-arrive);
 }
 .free-bar[open] .free-bar-plus { transform: rotate(45deg); }
-.free-bar-panel { padding: 0 18px 20px; }
+.free-bar-panel { padding: 0 var(--space-md) var(--space-lg); }
+.free-bar:not([open]) > .free-bar-panel { display: none; }
 .free-bar-panel p { max-width: var(--measure); }
+.free-bar-note { color: var(--ink-soft); }
 .free-bar-panel ul {
   display: grid;
   gap: var(--space-sm);
@@ -443,6 +449,7 @@
 .closing {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  padding-inline: max(0px, calc((100dvw - var(--container)) / 2));
   background: var(--paper-deep);
   color: var(--ink);
 }
@@ -467,7 +474,7 @@
   line-height: 1;
   letter-spacing: var(--tracking-display);
 }
-.closing-text p { max-width: 36ch; }
+.closing-text p { max-width: 46ch; }
 .closing-button {
   display: inline-flex;
   align-items: center;
@@ -509,20 +516,18 @@
 @media (max-width: 1023px) {
   .split { display: block; }
   .stage-wrap {
-    position: sticky;
-    top: 0;
     height: 58svh;
-    padding: 12px;
+    padding: var(--space-sm);
     background: var(--paper);
   }
   .split-column { padding: 0 var(--gutter); }
   .hero {
     min-height: 0;
-    max-width: none;
     padding: var(--space-xl) 0 var(--space-lg);
   }
+  .hero-block { max-width: none; }
   .hero-name {
-    margin: 0 0 var(--space-xl);
+    margin: var(--space-xl) 0 0;
     font-size: clamp(2.75rem, 16vw, 5rem);
     line-height: 0.9;
     white-space: normal;
@@ -552,10 +557,10 @@
     background: var(--board);
     color: var(--on-dark);
   }
-  .offer-image { display: block; width: 100%; height: auto; margin: var(--space-md) 0; }
+  .offer-image { width: 100%; margin: var(--space-md) 0; }
   .sample,
   .closing { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-  .sample-plate { width: calc(100% - 32px); margin: 16px auto 0; }
+  .sample-plate { width: calc(100% - 2 * var(--space-md)); margin: var(--space-md) auto 0; }
   .sample-text { padding: var(--space-xl) var(--gutter); }
   .sample-actions { grid-template-columns: minmax(0, 1fr); }
   .sample-cell { min-height: 60px; }
@@ -569,13 +574,14 @@
   .landing-submit { width: 100%; }
   .verdict-actions > * { width: 100%; white-space: normal; }
   .slip-band { margin-inline: calc(-1 * var(--gutter)); padding: var(--space-lg) var(--gutter); }
-  .slip { padding: var(--space-md) var(--space-md) calc(var(--space-md) + 14px); }
+  .slip { padding: var(--space-md) var(--space-md) var(--space-lg); }
   .slip-total { margin-inline: calc(-1 * var(--space-md)); padding-inline: var(--space-md); }
   .free { width: calc(100% - 2 * var(--gutter)); }
+  .free-word { margin-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-name { animation: none !important; transform: none !important; }
   .stage-card-scene::before { animation: none !important; opacity: 0; }
-  .landing-shell[data-phase="leaving"] .landing-form { opacity: 1; transform: none; }
+  html[data-js] .landing-shell[data-phase="leaving"] .landing-form { opacity: 1; transform: none; }
 }
