@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat } from "next/font/google";
+import { Archivo } from "next/font/google";
+import "./tokens.css";
 import "./globals.css";
 import "./blueprint.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
@@ -10,11 +11,12 @@ import { resolvePosthogHost, resolvePosthogKey } from "@/lib/posthog";
 import { merchantReturnPolicy } from "@/lib/product-schema";
 import { CONTACT_EMAIL, SITE_URL, SITE_NAME, SITE_TAGLINE } from "@/lib/site";
 
-// Geometric sans for the brand wordmark only (--font-logo in globals.css).
-const logoFont = Montserrat({
+// One family for display and text, self-hosted and subset at build by next/font
+// (docs/design/DIRECTION.md). --font-archivo feeds every font token in app/tokens.css.
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: "500",
-  variable: "--font-logo",
+  weight: ["400", "600"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
@@ -138,8 +140,8 @@ export default function RootLayout({
   const posthogHost = resolvePosthogHost();
 
   return (
-    <html lang="en" className={logoFont.variable}>
-      <body className="bg-ink text-bone antialiased">
+    <html lang="en" className={archivo.variable}>
+      <body className="antialiased">
         <GoogleAnalyticsBoundary measurementId={gaMeasurementId} />
         <PostHogBoundary apiKey={posthogKey} host={posthogHost} />
         <AnalyticsCapture />

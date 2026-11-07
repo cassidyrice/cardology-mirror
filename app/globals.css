@@ -1,615 +1,376 @@
+/* Hallmark · built: the project · redesign: full · stamp and tokens: app/tokens.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-serif: "Iowan Old Style", "Palatino Linotype", "Georgia", serif;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+/* The drafting sheet. Every colour and face is a token (app/tokens.css). Class
+   names are the ones 80 routes already use; only their look changed. */
 
-  /* Semantic brand tokens — the blueprint system. Cyanotype paper and ink:
-     the product is arithmetic on a fixed 52-card structure, so the surfaces are
-     drafting paper, not candlelight. Marketing surfaces read from these; the dark
-     in-app screens keep their own Tailwind palette. Bronze and gold below are
-     unchanged — both are contrast-tuned, and gold is the one accent the social
-     video carries onto the site. AA verified on the new paper: ink 10.39:1,
-     ink-soft 5.83, ink-faint 4.96 (4.56 on paper-deep). */
-  --paper: #eef3f8;
-  --paper-deep: #e2eaf3;
-  --ivory: #f8fbfd;
+*, *::before, *::after { box-sizing: border-box; }
 
-  --ink: #123a63;
-  --ink-soft: #3c6089;
-  --ink-faint: #4a6b8f;
-
-  --line: rgba(18, 58, 99, 0.14);
-  --line-strong: rgba(18, 58, 99, 0.24);
-
-  /* Deeper than the #87662c the palette was specced at. That value clears AA
-     on flat paper (4.71:1) but not on the tinted quick-answer and callout
-     panels these eyebrows actually sit on, where it fell to 3.56–4.46:1. This
-     clears 4.5:1 on every light surface in use: paper 6.05, paper-deep 5.59,
-     ivory 6.65, and both panel tints. One value, no per-surface variant.
-     Gold is the Life Spread mark accent only; eyebrows on ink use bronze-on-dark
-     (4.71:1), because gold on the new ink is 3.69:1. */
-  --bronze: #735624;
-  --bronze-on-dark: #c4a05a;
-  --gold: #b8893d;
-  --gold-soft: rgba(184, 137, 61, 0.14);
-
-  --oxblood: #0c4275;
-  --oxblood-deep: #0a3159;
-
-  /* Same club green .landing-oracle already names. */
-  --club: #183f30;
-
-  --on-dark: #e8f1fa;
-  --on-dark-soft: #a9c2da;
-  --on-dark-line: rgba(232, 241, 250, 0.18);
-
-  /* Marketing type scale */
-  --text-display: clamp(3rem, 6.5vw, 5.25rem);
-  --text-h2: clamp(2rem, 4vw, 3.25rem);
-  --text-h3: clamp(1.35rem, 2vw, 1.75rem);
-  --text-body-large: clamp(1.125rem, 1.5vw, 1.35rem);
-  --text-body: 1.0625rem;
-  --text-small: 0.875rem;
-  --text-eyebrow: 0.75rem;
+html, body {
+  overflow-x: clip;
 }
 
-/* Selection stays inside the warm palette on paper surfaces; dark in-app
-   screens keep the adaptive browser default. */
-:where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper) ::selection {
-  background: rgba(184, 137, 61, 0.32);
-  color: var(--ink);
-}
-
-/* Visible focus rings per surface: oxblood on paper, paper on ink. Dark
-   in-app screens keep the browser's adaptive default ring. The dark rule
-   comes second so ink asides nested in paper shells resolve correctly. */
-:where(.shell-paper, .shell-paper-deep, .paper-shell, .bg-brand-paper)
-  :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
-  outline: 2px solid var(--oxblood);
-  outline-offset: 3px;
-}
-
-:where(.shell-ink, .bg-brand-ink)
-  :where(a, button, input, select, textarea, summary, .table-scroll):focus-visible {
-  outline: 2px solid var(--on-dark);
-  outline-offset: 3px;
-}
-
-.table-scroll:focus-visible {
-  outline: 2px solid var(--on-dark);
-  outline-offset: 3px;
+html {
+  scroll-padding-top: var(--space-2xl);
+  scrollbar-color: var(--ink-faint) var(--paper);
+  -webkit-text-size-adjust: 100%;
 }
 
 html, body {
-  background-color: #05060a;
-  color: #f4f1ea;
+  background-color: var(--paper);
+  color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Updating numbers (ages, day counts, dates, solar values) shouldn't reflow. */
-.tnum { font-variant-numeric: tabular-nums; }
-
 body {
-  font-family: var(--font-sans);
+  margin: 0;
   min-height: 100dvh;
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: var(--leading-body);
+  font-optical-sizing: auto;
+  caret-color: var(--accent);
 }
 
-/* Dark label. Paper screens use type-eyebrow or Kicker. /onboarding keeps this. */
-.eyebrow {
-  font-size: 0.68rem;
-  letter-spacing: 0;
-  text-transform: uppercase;
-  color: #6b6a78;
-  font-weight: 500;
+::selection {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--ink);
 }
 
-.display {
-  font-family: var(--font-serif);
+/* Focus: one ring, instantly. Paper surfaces take the accent, ink surfaces take paper. */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  transition: none;
+}
+
+:where(.shell-ink, .bg-brand-ink, .on-ink, .bg-ink) :focus-visible,
+.table-scroll:focus-visible {
+  outline-color: var(--focus-on-dark);
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-display);
   font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: 0;
+  font-synthesis: none;
+  overflow-wrap: break-word;
+  min-width: 0;
   text-wrap: balance;
 }
 
-/* Reading prose. The shell override used to paint this inside .paper-shell:
-   ink on the block, and ink on em/strong so the gold emphasis did not survive.
-   Paper articles keep the class. The dark gray and gold em are gone. */
+p { text-wrap: pretty; }
+
+img, video { max-width: 100%; height: auto; }
+
+button, input, select, textarea { font: inherit; }
+
+[hidden] { display: none !important; }
+
+.tnum, .eq-nums { font-variant-numeric: tabular-nums; }
+
+/* ---------- Type ---------- */
+
+/* Every label that used to be an eyebrow: the body face, one step smaller,
+   sentence case as written, untracked. */
+.eyebrow,
+.type-eyebrow,
+.type-eyebrow-dark,
+.shell-ink .type-eyebrow,
+.oracle-eyebrow,
+.oracle-eyebrow-accent,
+.oracle-eyebrow-on-ink,
+.home-kicker {
+  font-family: var(--font-body);
+  font-size: var(--step-small);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
+
+.shell-ink .type-eyebrow,
+.type-eyebrow-dark,
+.oracle-eyebrow-on-ink {
+  color: var(--on-dark-soft);
+}
+
+.display,
+.type-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-head);
+  line-height: var(--leading-head);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-head);
+  line-height: var(--leading-head);
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--step-lead);
+  line-height: 1.25;
+}
+
+.type-body-lg {
+  font-size: var(--step-lead);
+  line-height: 1.45;
+}
+
 .prose-reading {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-family: var(--font-body);
+  font-size: var(--step-body);
+  line-height: 1.6;
   color: var(--ink);
+  max-width: var(--measure-wide);
 }
 .prose-reading p,
-.prose-reading li {
-  color: var(--ink);
-}
-.prose-reading p { margin-bottom: 1.1rem; text-wrap: pretty; }
+.prose-reading li { color: var(--ink); }
+.prose-reading p { margin-bottom: 1.1em; text-wrap: pretty; }
 .prose-reading em { font-style: italic; }
 .prose-reading em,
-.prose-reading strong {
-  color: var(--ink);
-}
+.prose-reading strong { color: var(--ink); }
 
-/* Dark divider. Paper screens use border-brand-line. No mounted caller remains. */
-.hairline { border-color: rgba(244,241,234,0.08); }
+.hairline { border-color: var(--on-dark-line); }
 
-/* Paper card. The shell override used to paint this inside .paper-shell.
-   Fill is ivory, the edge is the ink line, and the grid is ink at the old
-   hairline weight. Dark chrome that still wants the indigo gradient uses
-   .card-surface-dark. */
+/* ---------- Surfaces ---------- */
+
+/* A panel is a step in tone. No edge, no shadow, no radius. */
 .card-surface {
-  border: 1px solid var(--line);
-  border-radius: 0.25rem;
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, var(--ink) 3.5%, transparent) 1px, transparent 1px),
-    color-mix(in srgb, var(--ivory) 78%, transparent);
-  background-size: 28px 28px, 28px 28px, auto;
-  box-shadow: 0 1.1rem 3rem color-mix(in srgb, var(--ink) 8%, transparent);
-  backdrop-filter: none;
+  border: 0;
+  border-radius: var(--radius-ui);
+  background: var(--paper-deep);
+  box-shadow: none;
 }
 
 .card-surface-dark {
-  background: linear-gradient(180deg, rgba(26, 28, 48, 0.9), rgba(17, 19, 39, 0.6));
-  border: 1px solid rgba(244, 241, 234, 0.07);
-  border-radius: 18px;
-  backdrop-filter: blur(8px);
+  background: var(--board);
+  border: 0;
+  border-radius: var(--radius-ui);
+  color: var(--on-dark);
 }
 
-/* Clipped foil. The shell copy painted oxblood → copper → gold
-   (it aliased --rust to --oxblood). That gradient lives here now. */
+/* Once a clipped foil gradient; now the one solid gold the card art keeps. */
 .foil-text {
-  background: linear-gradient(135deg, var(--oxblood) 0%, #c77e63 48%, var(--gold) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
+  color: var(--gold);
 }
 
-/* star-field for cosmic backgrounds */
-.starfield::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 85% 20%, rgba(217,178,106,0.4), transparent);
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: 0;
-}
+.starfield::before { content: none; }
 
-/* Cardology Pro product hero: editorial, forensic, playing-card inspired. */
-.landing-oracle {
-  --paper: #eef3f8;
-  --paper-deep: #e2eaf3;
-  --ink: #123a63;
-  --rust: var(--oxblood);
-  --club: #183f30;
-  isolation: isolate;
-}
+.landing-oracle { isolation: isolate; }
+.oracle-grid,
+.oracle-noise { display: none; }
 
-.oracle-grid {
-  position: absolute;
-  inset: -12% -10% auto -10%;
-  height: 76vh;
-  pointer-events: none;
-  opacity: 0.55;
-  background-image:
-    linear-gradient(72deg, transparent 49.85%, rgba(20, 17, 13, 0.13) 50%, transparent 50.15%),
-    linear-gradient(108deg, transparent 49.85%, rgba(20, 17, 13, 0.11) 50%, transparent 50.15%),
-    linear-gradient(0deg, transparent 31px, rgba(20, 17, 13, 0.06) 32px),
-    radial-gradient(circle at 50% 46%, transparent 0 108px, rgba(20, 17, 13, 0.1) 109px, transparent 110px);
-  background-size: 100% 100%, 100% 100%, 100% 32px, 520px 520px;
-  background-position: center top;
-  mix-blend-mode: multiply;
-}
-
-.oracle-grid::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 47%;
-  width: min(52vw, 640px);
-  aspect-ratio: 1;
-  border: 1px solid rgba(20, 17, 13, 0.14);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.oracle-noise {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.16;
-  mix-blend-mode: multiply;
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(20, 17, 13, 0.6) 0 0.5px, transparent 0.8px),
-    radial-gradient(circle at 70% 70%, rgba(20, 17, 13, 0.38) 0 0.5px, transparent 0.8px);
-  background-size: 5px 7px, 8px 6px;
-}
-
-/* The wordmark is the flexible element in the header row, so it scales down at
-   widths where the navigation and primary action would otherwise not fit. */
 .brand-mark {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: 1.3rem;
   line-height: 1;
-  letter-spacing: 0;
   white-space: nowrap;
 }
 
-/* Brand lockup C — Life Spread grid + serif "Card Blueprint" + tagline.
-   Header: horizontal arrangement; footer (compact): stacked lockup. */
 .brand-logo {
   display: inline-flex;
   align-items: center;
   line-height: 0;
 }
+.brand-logo img { display: block; max-width: none; }
+.brand-logo-horizontal { height: 3rem; width: auto; }
+.brand-logo-stacked { height: auto; width: 13rem; }
+@media (max-width: 639px) { .brand-logo-horizontal { height: 2.5rem; } }
+@media (max-width: 359px) { .brand-logo-horizontal { height: 2.25rem; } }
 
-.brand-logo img {
-  display: block;
-  max-width: none;
-}
+/* ---------- Controls ---------- */
 
-.brand-logo-horizontal {
-  height: 3.5rem;
-  width: auto;
-}
-
-.brand-logo-stacked {
-  height: auto;
-  width: 15rem;
-}
-
-@media (max-width: 639px) {
-  .brand-logo-horizontal { height: 2.75rem; }
-}
-
-@media (max-width: 359px) {
-  .brand-logo-horizontal { height: 2.4rem; }
-}
-
-.oracle-eyebrow {
-  font-size: 0.74rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  line-height: 1.6;
-  text-transform: uppercase;
-  color: var(--bronze);
-}
-
-/* Surface variants for .oracle-eyebrow. These must live after the base rule:
-   globals.css is emitted after @tailwind utilities, so a text-[#...] utility
-   on an .oracle-eyebrow element loses at equal specificity. Use these. */
-.oracle-eyebrow-accent {
-  color: var(--oxblood);
-}
-
-.oracle-eyebrow-on-ink {
-  color: var(--bronze-on-dark);
-}
-
-/* Buttons — one calm system. Primary = ink, accent = oxblood (the single
-   conversion color), outline = quiet. No gradients, no lift, no pill chrome. */
+/* One filled primary. The quiet action is a filled cell one tone off the field. */
 .ink-button,
 .paper-button,
-.accent-button {
+.accent-button,
+.on-dark-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding: 0.6rem 1.5rem;
-  border: 1px solid var(--ink);
-  border-radius: 3px;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
+  gap: var(--space-xs);
+  min-height: var(--control-height);
+  padding: 0 var(--space-lg);
+  border: 0;
+  border-radius: var(--radius-ui);
+  font-family: var(--font-body);
+  font-size: var(--step-body);
   font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-wrap: balance;
-  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-arrive), color var(--dur-micro) var(--ease-arrive), transform var(--dur-micro) var(--ease-arrive);
 }
 
-.ink-button {
-  background: var(--ink);
-  color: var(--on-dark);
-}
-
-.ink-button:hover {
-  background: #2a241c;
-  border-color: #2a241c;
-}
-
+.ink-button,
 .accent-button {
-  background: var(--oxblood);
-  border-color: var(--oxblood);
+  background: var(--accent);
   color: var(--on-dark);
 }
-
+.ink-button:hover,
 .accent-button:hover {
-  background: var(--oxblood-deep);
-  border-color: var(--oxblood-deep);
+  background: var(--accent-deep);
+  color: var(--on-dark);
 }
 
 .paper-button {
-  background: transparent;
-  border-color: var(--line-strong);
+  background: var(--paper-deep);
+  color: var(--ink);
+}
+.paper-button:hover {
+  background: var(--paper-deeper);
   color: var(--ink);
 }
 
-.paper-button:hover {
-  border-color: var(--ink);
-  background: rgba(20, 17, 13, 0.04);
-}
-
-/* Outline button that sits on the ink surface. */
 .shell-ink .paper-button,
 .on-dark-button {
-  border-color: var(--on-dark-line);
+  background: color-mix(in srgb, var(--on-dark) 12%, transparent);
   color: var(--on-dark);
-  background: transparent;
 }
-
 .shell-ink .paper-button:hover,
 .on-dark-button:hover {
-  border-color: var(--on-dark);
-  background: rgba(246, 241, 232, 0.06);
+  background: color-mix(in srgb, var(--on-dark) 20%, transparent);
+  color: var(--on-dark);
 }
 
-.ink-button:hover,
-.paper-button:hover,
-.accent-button:hover {
-  transform: translateY(-1px);
+.ink-button:active,
+.paper-button:active,
+.accent-button:active,
+.on-dark-button:active {
+  transform: scale(0.98);
 }
 
-.small-button { padding: 0.55rem 1rem; }
-/* Header offer keeps the live product name in sentence case so it fits the row. */
-.paper-button.header-offer-link {
-  font-size: 0.8125rem;
-  letter-spacing: 0.01em;
-  text-transform: none;
-  white-space: nowrap;
-  padding-inline: 0.85rem;
+.ink-button:disabled,
+.paper-button:disabled,
+.accent-button:disabled,
+[aria-disabled="true"].ink-button,
+[aria-disabled="true"].accent-button {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
 }
-.large-button { min-height: 3.25rem; padding: 0 1.6rem; }
+
+.small-button { min-height: 40px; padding: 0 var(--space-md); font-size: var(--step-small); }
+.large-button { min-height: 52px; padding: 0 var(--space-lg); }
+.paper-button.header-offer-link { white-space: nowrap; }
 
 .skip-link {
   position: fixed;
-  left: 1rem;
-  top: 1rem;
-  z-index: 100;
+  left: var(--space-md);
+  top: var(--space-md);
+  z-index: var(--z-toast);
   transform: translateY(-200%);
-  border: 2px solid var(--oxblood);
-  border-radius: 3px;
-  background: var(--ivory);
-  color: var(--ink);
-  padding: 0.75rem 1rem;
-  font-weight: 700;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
-/* Inline editorial link — underline, no button chrome. */
-.editorial-link {
-  color: inherit;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: var(--line-strong);
-  transition: color 160ms ease, text-decoration-color 160ms ease;
-}
-
-.editorial-link:hover {
-  color: var(--oxblood);
-  text-decoration-color: var(--oxblood);
-}
-
-.shell-ink .editorial-link:hover {
+  background: var(--accent);
   color: var(--on-dark);
-  text-decoration-color: var(--on-dark);
-}
-
-/* Marketing type scale — size/leading only; color comes from the surface. */
-.type-display {
-  font-family: var(--font-serif);
-  font-size: var(--text-display);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  text-wrap: balance;
-}
-
-.type-h2 {
-  font-family: var(--font-serif);
-  font-size: var(--text-h2);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.005em;
-  text-wrap: balance;
-}
-
-.type-h3 {
-  font-family: var(--font-serif);
-  font-size: var(--text-h3);
-  font-weight: 400;
-  line-height: 1.25;
-}
-
-.type-body-lg {
-  font-size: var(--text-body-large);
-  line-height: 1.65;
-}
-
-.type-eyebrow {
-  font-size: var(--text-eyebrow);
+  padding: var(--space-sm) var(--space-md);
   font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bronze);
+  text-decoration: none;
 }
+.skip-link:focus { transform: translateY(0); }
 
-.shell-ink .type-eyebrow,
-.type-eyebrow-dark {
-  font-size: var(--text-eyebrow);
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--bronze-on-dark);
+.editorial-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--dur-micro) var(--ease-arrive);
 }
+.editorial-link:hover { color: var(--accent-deep); }
+.shell-ink .editorial-link,
+.on-ink .editorial-link { color: var(--on-dark); }
 
-/* Life Path seats + 7x7 spread cells. Nested radius stays 3px (no inner padding
-   that would need concentric math). Hit area 40px min. Motion is press/focus only. */
+/* Life Spread seats and the 7x7 cells keep their own small grid: these are a table of positions. */
 .life-seat,
 .spread-cell {
   border: 1px solid var(--line);
-  border-radius: 3px;
+  border-radius: var(--radius-ui);
   background: var(--paper);
-  transition-property: background-color, border-color, box-shadow, transform;
-  transition-duration: 150ms;
-  transition-timing-function: ease-out;
+  transition: background-color var(--dur-micro) var(--ease-arrive), border-color var(--dur-micro) var(--ease-arrive), transform var(--dur-micro) var(--ease-arrive);
 }
-.life-seat {
-  min-height: 2.75rem;
-  padding: 0.7rem 0.5rem;
-  text-align: left;
-}
+.life-seat { min-height: 2.75rem; padding: 0.7rem 0.5rem; text-align: left; }
 .spread-cell {
   display: grid;
   min-height: 2.5rem;
   min-width: 0;
   place-items: center;
   padding: 0.2rem 0;
-  font-family: var(--font-serif);
-  font-size: 0.7rem;
+  font-family: var(--font-body);
+  font-size: var(--step-small);
   line-height: 1;
 }
 .life-seat:hover,
-.spread-cell:hover:not(.is-static) {
-  border-color: var(--gold);
-}
+.spread-cell:hover:not(.is-static) { border-color: var(--accent); }
 .life-seat:active,
-.spread-cell:active:not(.is-static) {
-  transform: scale(0.98);
-}
-.life-seat:focus-visible,
-.spread-cell:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 1px;
-}
+.spread-cell:active:not(.is-static) { transform: scale(0.98); }
 .life-seat[aria-pressed="true"],
-.life-seat[aria-selected="true"] {
-  background: var(--ivory);
-  border-color: var(--gold);
-}
-.spread-cell.is-lit {
-  border-color: var(--gold);
-  background: var(--ivory);
-  box-shadow: 0 0 0 1px var(--gold);
-}
-.spread-cell.is-static {
-  cursor: default;
-  pointer-events: none;
-}
+.life-seat[aria-selected="true"] { background: var(--paper-deep); border-color: var(--accent); }
+.spread-cell.is-lit { border-color: var(--accent); background: var(--paper-deep); }
+.spread-cell.is-static { cursor: default; pointer-events: none; }
 .spread-crown {
   display: flex;
   justify-content: center;
-  gap: 0.25rem;
+  gap: var(--space-2xs);
   margin-bottom: 0.35rem;
   padding-bottom: 0.4rem;
-  border-bottom: 1px solid var(--line);
 }
-.beat-rail {
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-top: 0.85rem;
-}
-.beat-rail span {
-  width: 1.75rem;
-  height: 2px;
-  background: var(--line-strong);
-}
-.beat-rail span[data-current="true"] {
-  background: var(--gold);
-}
-.eq-nums {
-  font-variant-numeric: tabular-nums;
-}
-@media (prefers-reduced-motion: reduce) {
-  .life-seat,
-  .spread-cell {
-    transition: none;
-  }
-  .life-seat:active,
-  .spread-cell:active {
-    transform: none;
-  }
-}
+.beat-rail { display: flex; justify-content: center; gap: 0.4rem; margin-top: 0.85rem; }
+.beat-rail span { width: 1.75rem; height: 2px; background: var(--line-strong); }
+.beat-rail span[data-current="true"] { background: var(--accent); }
 
-/* Section shells — tone + vertical rhythm in one place. */
-.shell-paper {
-  background: var(--paper);
-  color: var(--ink);
-}
+/* ---------- Section shells ---------- */
 
-.shell-paper-deep {
-  background: var(--paper-deep);
-  color: var(--ink);
-}
+.shell-paper { background: var(--paper); color: var(--ink); }
+.shell-paper-deep { background: var(--paper-deep); color: var(--ink); }
+.shell-ink { background: var(--ink); color: var(--on-dark); }
+.shell-pad { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+.shell-pad-sm { padding-top: var(--section-gap-s); padding-bottom: var(--section-gap-s); }
 
-.shell-ink {
-  background: var(--ink);
-  color: var(--on-dark);
-}
+/* ---------- Motion ---------- */
 
-.shell-pad {
-  padding-top: clamp(4.5rem, 9vw, 8rem);
-  padding-bottom: clamp(4.5rem, 9vw, 8rem);
-}
-
-.shell-pad-sm {
-  padding-top: clamp(3rem, 6vw, 5rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
-}
-
-/* Hero entrance — the one permitted animation. Fades and rises 20px, eased,
-   staggered by class. Killed entirely under prefers-reduced-motion. */
+/* The arrival: rises and settles. Visible by default; the travel only runs once scripting marks the page. */
 @keyframes rise-in {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(16px); }
   to { opacity: 1; transform: translateY(0); }
 }
+.rise { animation: rise-in var(--dur-arrive) var(--ease-arrive) both; }
+.rise-2 { animation: rise-in var(--dur-arrive) var(--ease-arrive) 180ms both; }
+.rise-3 { animation: rise-in var(--dur-arrive) var(--ease-arrive) 360ms both; }
+.rise-4 { animation: rise-in var(--dur-arrive) var(--ease-arrive) 540ms both; }
 
-.rise { animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.rise-2 { animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
-.rise-3 { animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both; }
-.rise-4 { animation: rise-in 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both; }
-
-@media (prefers-reduced-motion: reduce) {
-  .rise, .rise-2, .rise-3, .rise-4,
-  [class*="animate-"] {
-    animation: none !important;
-  }
+/* Section parts arrive once as the section enters (components/motion/InView.tsx). */
+html[data-js] [data-in-view] [data-rise] {
+  opacity: 0;
+  transform: translateY(16px);
+}
+html[data-js] [data-in-view="true"] [data-rise] {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--dur-arrive) var(--ease-arrive), transform var(--dur-arrive) var(--ease-arrive);
+  transition-delay: calc(var(--rise-base, 0ms) + var(--stagger) * var(--rise-i, 0));
 }
 
-/* Public article/app pages use the homepage editorial system. The overrides are
-   scoped so profile-first screens can keep their darker in-app mood. */
+/* ---------- Public page shell ---------- */
+
 .paper-shell {
-  --paper: #eef3f8;
-  --paper-deep: #e2eaf3;
-  --paper-wash: #f1ead9;
-  --ink: #123a63;
-  --rust: var(--oxblood);
   background-color: var(--paper);
   color: var(--ink);
 }
@@ -617,78 +378,72 @@ body {
 .paper-shell input,
 .paper-shell textarea,
 .paper-shell select {
-  border-color: rgba(20, 17, 13, 0.18) !important;
-  background: var(--ivory) !important;
-  color: var(--ink) !important;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-ui);
+  background: var(--ivory);
+  color: var(--ink);
+  min-height: var(--control-height);
 }
-
 .paper-shell input::placeholder,
-.paper-shell textarea::placeholder {
-  color: rgba(20, 17, 13, 0.45) !important;
-}
+.paper-shell textarea::placeholder { color: var(--ink-faint); }
 
+/* Panels across the public pages: a step in tone instead of a box. Tables keep their lines. */
 .paper-shell .rounded-2xl,
 .paper-shell .rounded-xl,
 .paper-shell .rounded-lg,
 .paper-shell .rounded-3xl,
-.paper-shell .rounded-t-3xl {
-  border-radius: 0.25rem !important;
-}
-
-/* Pill CTAs and chips inherited from the dark app read as SaaS on paper. Only
-   links and buttons are squared — bare .rounded-full stays round so small
-   decorative dots and avatars keep their shape. */
+.paper-shell .rounded-t-3xl,
+.paper-shell .rounded-md,
 .paper-shell a.rounded-full,
-.paper-shell button.rounded-full {
-  border-radius: 0.25rem !important;
+.paper-shell button.rounded-full,
+.paper-shell li.rounded-full,
+.paper-shell .rounded-\[3px\],
+.paper-shell .rounded-\[5px\],
+.paper-shell .rounded-\[6px\] {
+  border-radius: var(--radius-ui) !important;
 }
-
-.paper-shell .app-paper-stage {
-  box-shadow: inset 0 1px 0 rgba(20, 17, 13, 0.05);
+.paper-shell :is(div, section, aside, details, li, figure, a, blockquote, ol, ul, nav, dl, dd, p).border-brand-line:not(table *),
+.paper-shell :is(div, section, aside, details, li, figure, a, blockquote, ol, ul, nav, dl, dd, p).border-brand-line-strong:not(table *),
+.paper-shell :is(div, section, aside, details, li, figure, a, blockquote).\!border-brand-line {
+  border-color: transparent !important;
 }
-
-.paper-shell .app-paper-stage .min-h-dvh {
-  min-height: auto;
+.paper-shell .bg-brand-ivory\/70,
+.paper-shell .bg-brand-ivory {
+  background-color: var(--paper-deep) !important;
 }
+.paper-shell table .border-brand-line { border-color: var(--line) !important; }
+.paper-shell :is(div, a, li, figure, img, blockquote)[class*="shadow-"]:not(.allow-shadow) { box-shadow: none !important; }
+.paper-shell img[class*="rounded"] { border-radius: var(--radius-card) !important; }
+.paper-shell [class*="font-mono"] { font-family: var(--font-body) !important; letter-spacing: 0 !important; text-transform: none !important; }
+.paper-shell [class*="tracking-"] { letter-spacing: 0 !important; }
+.paper-shell [class*="uppercase"]:not(abbr) { text-transform: none !important; }
+.paper-shell .text-\[0\.6rem\],
+.paper-shell .text-\[0\.65rem\],
+.paper-shell .text-\[0\.68rem\],
+.paper-shell .text-\[0\.7rem\],
+.paper-shell .text-\[0\.72rem\],
+.paper-shell .text-\[11px\],
+.paper-shell .text-\[0\.62rem\] { font-size: var(--step-small) !important; }
 
-.paper-shell .app-paper-stage > .relative {
-  padding-bottom: 2.5rem;
-}
+.paper-shell .app-paper-stage .min-h-dvh { min-height: auto; }
+.paper-shell .app-paper-stage > .relative { padding-bottom: 2.5rem; }
 
-.paper-shell .app-paper-stage .shadow-lg {
-  box-shadow: 0 1rem 2.5rem rgba(20, 17, 13, 0.12);
-}
+@media (min-width: 480px) { .brand-mark { font-size: 1.5rem; } }
+@media (min-width: 1024px) { .brand-mark { font-size: 1.9rem; } }
 
-@media (min-width: 480px) {
-  .brand-mark {
-    font-size: 1.5rem;
-  }
-}
+/* ---------- The card ---------- */
 
-@media (min-width: 1024px) {
-  .brand-mark {
-    font-size: 1.9rem;
-  }
-}
-
-/* Calculator card flip reveal. The static state is the revealed face; the
-   animation performs the back-to-face turn with a small physical settle.
-   Killed under prefers-reduced-motion (front face simply appears). */
-.flip-scene {
-  perspective: 1200px;
-}
-
+/* The turn: back to face with one small settle. The static state is the face. */
+.flip-scene { perspective: 1200px; }
 .flip-inner {
   position: relative;
   transform-style: preserve-3d;
-  animation: flip-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+  animation: flip-reveal var(--dur-turn) var(--ease-settle) var(--stage-hold) both;
 }
-
 .flip-face {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-
 .flip-back {
   position: absolute;
   inset: 0;
@@ -697,122 +452,79 @@ body {
   justify-content: center;
   transform: rotateY(180deg);
 }
-
 @keyframes flip-reveal {
-  0% {
-    transform: rotateY(180deg);
-  }
-  55% {
-    transform: rotateY(-14deg);
-  }
-  78% {
-    transform: rotateY(7deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
+  from { transform: rotateY(180deg) scale(0.96); }
+  to { transform: rotateY(0deg) scale(1); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .flip-inner {
-    animation: none !important;
-  }
-}
-
-/* On-page calculator hero: large card, not the 9:16 share poster. */
 .compat-hero-row {
   display: flex;
   width: 100%;
   align-items: flex-end;
   justify-content: center;
-  gap: 0.75rem;
+  gap: var(--space-sm);
 }
-
-.compat-hero-stage {
-  width: min(42vw, 8.75rem);
-  aspect-ratio: 2 / 3;
-}
-
-.hero-card-stage {
-  width: min(72vw, 17.5rem);
-  aspect-ratio: 2 / 3;
-}
+.compat-hero-stage { width: min(42vw, 8.75rem); aspect-ratio: 2 / 3; }
+.hero-card-stage { width: min(72vw, 17.5rem); aspect-ratio: 2 / 3; }
 
 .hero-card-face,
 .hero-card-back {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 12px;
-  outline: 1px solid rgba(20, 17, 13, 0.12);
-  outline-offset: -1px;
-  box-shadow: 0 14px 28px -16px rgba(20, 17, 13, 0.4);
+  border-radius: var(--radius-card);
 }
+.hero-card-face { object-fit: cover; }
+.hero-card-back { overflow: hidden; background: var(--board); color: var(--on-dark); }
 
-.hero-card-face {
-  object-fit: cover;
-}
+/* The card no longer floats at rest. The class stays for the share-card test and older markup. */
+.hero-card-float { animation: none; }
 
-.hero-card-back {
-  overflow: hidden;
-  background: #1c1914;
+/* The back of the real deck: a navy field with a gold-edged inner frame. */
+.card-back {
+  width: 100%;
+  height: 100%;
+  padding: 6%;
+  background: var(--board);
+  border-radius: inherit;
 }
+.card-back-frame {
+  width: 100%;
+  height: 100%;
+  border: 1.5px solid var(--board-edge);
+  outline: 1px solid var(--board-edge);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.playing-card { border-radius: var(--radius-card); }
 
 .home-life-spread-crown {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.2rem;
   padding-bottom: 0.4rem;
   margin-bottom: 0.4rem;
-  border-bottom: 1px solid var(--line);
 }
-
 .home-life-spread-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.2rem;
 }
-
 .home-life-spread img {
   display: block;
   width: 100%;
   height: auto;
   aspect-ratio: 2 / 3;
   object-fit: cover;
-  border-radius: 3px;
-  outline: 1px solid rgba(20, 17, 13, 0.12);
-  outline-offset: -1px;
+  border-radius: var(--radius-card);
 }
 
-.hero-card-float {
-  animation: hero-card-float 4.8s ease-in-out infinite;
-}
-
-@keyframes hero-card-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-card-float {
-    animation: none !important;
-  }
-}
-
-/* Sample report presented as a physical artifact: two offset sheets peek
-   behind the main page. Static, print-editorial, no motion. */
+/* Sample report as a stack of sheets: two offset sheets, flat, behind the page. */
 .report-stack {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  box-shadow: 0 18px 44px -28px rgba(20, 17, 13, 0.35);
 }
-
 .report-stack::before,
 .report-stack::after {
   content: "";
@@ -820,28 +532,35 @@ body {
   inset: 0;
   z-index: -1;
   max-width: 100%;
-  border: 1px solid var(--line);
-  border-radius: inherit;
   background: var(--paper-deep);
 }
+.report-stack::before { transform: translate(7px, 8px) rotate(0.45deg); }
+.report-stack::after { transform: translate(14px, 16px) rotate(-0.4deg); opacity: 0.65; }
 
-.report-stack::before {
-  transform: translate(7px, 8px) rotate(0.45deg);
-}
-
-.report-stack::after {
-  transform: translate(14px, 16px) rotate(-0.4deg);
-  opacity: 0.65;
-}
-
-/* Content Engine sample table: five columns on wide screens, stacked day blocks on phones. */
+/* Content Engine sample table: five columns wide, stacked day blocks on phones. */
 @media (max-width: 640px) {
   .ce-table thead { display: none; }
   .ce-table, .ce-table tbody, .ce-table tr, .ce-table td { display: block; width: 100%; }
   .ce-table tr { padding: 0.75rem 0.85rem; border-top: 1px solid var(--line); }
   .ce-table td { padding: 0.15rem 0 !important; }
-  .ce-table td::before { content: attr(data-label); display: block; font-family: var(--font-mono, ui-monospace, monospace); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.4rem; }
+  .ce-table td::before { content: attr(data-label); display: block; font-size: var(--step-small); color: var(--ink-faint); margin-top: 0.4rem; }
   .ce-table td[data-label="Day"]::before { display: none; }
-  .ce-table td[data-label="Day"] { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+  .ce-table td[data-label="Day"] { font-size: var(--step-small); color: var(--ink-soft); }
   .ce-table td[data-label="Day"]::after { content: ""; }
+}
+
+/* ---------- Reduced motion: keep the content, drop the travel ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .flip-inner { animation: none !important; transform: none !important; }
+  html[data-js] [data-in-view] [data-rise] { opacity: 1; transform: none; }
+  .life-seat:active,
+  .spread-cell:active { transform: none; }
 }

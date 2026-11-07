@@ -12,26 +12,38 @@ import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
+import { setStage } from "@/components/home/Stage";
 import { Reveal } from "@/components/seo/Reveal";
 import {
   calculateBirthCardRevealFromIsoDate,
   type BirthCardReveal,
 } from "@/lib/birth-card-calculator";
+import { parseCard } from "@/lib/cards";
+import { shareFacePathFromCode } from "@/lib/share-cards";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 
 /**
- * Home landing calculator: birthday in, reveal out. Flip only; no river.
+ * The live thing on the homepage (docs/design/MOTION.md, "The card turns to
+ * face you"). Birthday in; the form leaves, the stage holds, the card turns,
+ * the verdict lands. With scripting off the same form opens the calculator page
+ * with the birthday, which already reads ?birthdate=.
  */
+type Phase = "idle" | "leaving" | "shown";
+
 export function LandingCalculator() {
   const [date, setDate] = useState("");
   const [reveal, setReveal] = useState<BirthCardReveal | null>(null);
-  const [phase, setPhase] = useState<"idle" | "fold" | "shown">("idle");
+  const [phase, setPhase] = useState<Phase>("idle");
   const [error, setError] = useState("");
   const dateRef = useRef<HTMLInputElement>(null);
   const reduceRef = useRef(false);
+  const timer = useRef<number | null>(null);
 
   useEffect(() => {
     reduceRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    return () => {
+      if (timer.current) window.clearTimeout(timer.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -56,6 +68,9 @@ export function LandingCalculator() {
     trackClientFunnelEvent("calculator_completed", { placement: "home-landing" });
     window.__cardBlueprintsElroyBirthdate = date;
 
+    const code = calculated.result.birthCard;
+    const label = code === "Joker" ? "The Joker" : parseCard(code)?.label ?? code;
+
     const finish = () => {
       startTransition(() => {
         setReveal(calculated);
@@ -70,45 +85,43 @@ export function LandingCalculator() {
       }, 0);
     };
 
+    // The stage turns the card; the column follows once the form has left.
+    setStage({ kind: "card", face: shareFacePathFromCode(code), label });
+
     if (reduceRef.current) {
       finish();
       return;
     }
+    setPhase("leaving");
+    timer.current = window.setTimeout(finish, 180);
+  }
 
-    setPhase("fold");
-    window.setTimeout(finish, 420);
+  function reset() {
+    setReveal(null);
+    setPhase("idle");
+    setStage({ kind: "film" });
+    setTimeout(() => dateRef.current?.focus(), 0);
   }
 
   return (
-    <section
-      className={`landing-shell ${phase === "fold" ? "is-fold" : ""} ${phase === "shown" ? "is-shown" : ""}`}
-      aria-labelledby="home-calculator-title"
-    >
-      <div className="mx-auto max-w-lg px-5 text-center">
-        <h2
-          id="home-calculator-title"
-          className="font-serif text-3xl leading-tight text-brand-ink sm:text-4xl"
-        >
-          Find your birth card.
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft sm:text-base">
-          Start with your birthday. The card is free. So is the first uncomfortable thought.
-        </p>
-      </div>
-
-      {!reveal ? (
+    <div className="landing-shell" data-phase={phase}>
+      {phase !== "shown" || !reveal ? (
         <form
           onSubmit={onSubmit}
           noValidate
-          className="landing-form mx-auto mt-6 w-full max-w-sm px-5"
+          action="/birth-card-calculator"
+          method="get"
+          className="landing-form"
+          aria-labelledby="home-purpose-title"
         >
-          <div className="landing-field-wrap">
-            <label htmlFor="home-birthdate" className="sr-only">
-              Birthday
-            </label>
+          <label htmlFor="home-birthdate" className="landing-label">
+            Your birthday
+          </label>
+          <div className="landing-row">
             <input
               ref={dateRef}
               id="home-birthdate"
+              name="birthdate"
               type="date"
               value={date}
               onFocus={() =>
@@ -117,49 +130,34 @@ export function LandingCalculator() {
                 })
               }
               onChange={(e) => setDate(e.target.value)}
-              aria-describedby="landing-privacy"
+              aria-describedby={error ? "landing-privacy landing-error" : "landing-privacy"}
               aria-invalid={Boolean(error)}
               required
-              className="landing-field min-h-12 w-full border border-brand-ink bg-brand-paper px-4 font-serif text-brand-ink outline-none focus:ring-0"
+              className="landing-field"
             />
-            <div className="landing-field-back" aria-hidden>
-              <span className="landing-field-back-mark">CB</span>
-            </div>
+            <button type="submit" className="accent-button landing-submit">
+              Show me my card
+            </button>
           </div>
-          <p id="landing-privacy" className="mt-2 text-center text-xs text-brand-ink-soft">
+          <p id="landing-privacy" className="landing-privacy">
             Calculated in your browser. Your birthday is kept in this tab to continue between tools.
           </p>
-          {error ? (
-            <p role="alert" className="mt-2 text-center text-sm text-brand-oxblood">
-              {error}
-            </p>
-          ) : null}
-          <button type="submit" className="accent-button large-button mt-4 w-full">
-            Show me my card
-          </button>
+          <p id="landing-error" role="alert" className="landing-error" aria-live="assertive">
+            {error}
+          </p>
+          <p className="landing-note">
+            The card is free. So is the first uncomfortable thought.{" "}
+            <a href="#readings" className="editorial-link">Skip ahead to a personal reading</a>
+          </p>
         </form>
       ) : (
-        <div className="mt-8 px-5">
-          <Reveal
-            key={`${reveal.result.birthCard}|${reveal.birthdate}`}
-            reveal={reveal}
-            birthdate={date || reveal.birthdate}
-          />
-          <p className="mt-4 text-center">
-            <button
-              type="button"
-              className="text-xs text-brand-ink-soft underline underline-offset-4"
-              onClick={() => {
-                setReveal(null);
-                setPhase("idle");
-                setTimeout(() => dateRef.current?.focus(), 0);
-              }}
-            >
-              Wrong birthday? Change it
-            </button>
-          </p>
-        </div>
+        <Reveal
+          key={`${reveal.result.birthCard}|${reveal.birthdate}`}
+          reveal={reveal}
+          birthdate={date || reveal.birthdate}
+          onReset={reset}
+        />
       )}
-    </section>
+    </div>
   );
 }

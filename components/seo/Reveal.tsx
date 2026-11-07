@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 
 import {
   trackClientFunnelEvent,
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
+import { CardBack } from "@/components/cards/CardBack";
 import { ShareBirthResultButton } from "@/components/share/ShareCardCanvas";
 import { OfferCta } from "@/components/seo/OfferCta";
 import { buildCycle, formatRange } from "@/components/timing/cycle";
@@ -20,9 +21,15 @@ import { shareFacePathFromCode } from "@/lib/share-cards";
 type RevealProps = {
   reveal: BirthCardReveal;
   birthdate: string;
+  onReset?: () => void;
 };
 
-export function Reveal({ reveal, birthdate }: RevealProps) {
+/**
+ * The verdict. Lands in the place the form left, part by part, after the card
+ * on the stage has turned (docs/design/MOTION.md). Below 1024px the stage is
+ * behind the first screen, so the turned card is repeated here.
+ */
+export function Reveal({ reveal, birthdate, onReset }: RevealProps) {
   const { result } = reveal;
   const isJoker = result.birthCard === "Joker";
   const seo = isJoker ? null : getCardSeo(result.birthCard);
@@ -30,6 +37,7 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
   const title = seo?.title ?? null;
   const face = shareFacePathFromCode(result.birthCard);
   const cardSlug = isJoker ? null : birthCardSlug(result.birthCard);
+  const heading = useRef<HTMLHeadingElement>(null);
 
   const rightNow = useMemo(() => {
     if (isJoker) return null;
@@ -41,13 +49,12 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
       const periodSeo = periodCode ? getCardSeo(periodCode) : null;
       const dailyCode = reading.daily.bc.card;
       const dailySeo = dailyCode ? getCardSeo(dailyCode) : null;
-      const today = todayISO();
       return {
         periodLabel: periodSeo?.label ?? periodCode ?? "n/a",
         periodPlanet: reading.active_period.planet,
         periodRange: window ? formatRange(window) : "",
         dailyLabel: dailySeo?.label ?? dailyCode ?? "n/a",
-        todayLabel: formatIsoShort(today),
+        todayLabel: formatIsoShort(todayISO()),
       };
     } catch (error) {
       if (error instanceof JokerNotSupportedError) return null;
@@ -57,114 +64,112 @@ export function Reveal({ reveal, birthdate }: RevealProps) {
 
   useEffect(() => {
     trackClientFunnelEventOnce("reveal_shown", { placement: "home-landing" });
+    // The keyboard continues from the verdict, not from where the form was.
+    heading.current?.focus({ preventScroll: true });
   }, []);
 
+  let i = 0;
+  const rise = () => ({ "data-rise": "", style: { "--rise-i": i++ } as React.CSSProperties });
+
   return (
-    <div className="landing-reveal mx-auto w-full max-w-md text-center" data-reveal>
-      <div className="landing-reveal-face mx-auto">
-        {face ? (
-          <img
-            src={face}
-            alt={label}
-            width={624}
-            height={936}
-            className="landing-reveal-img"
-          />
-        ) : (
-          <div className="landing-reveal-joker" aria-hidden>
-            ★
+    <div className="verdict" data-reveal data-in-view="true">
+      <div className="verdict-card" aria-hidden="true">
+        <div className="flip-scene verdict-card-scene">
+          <div className="flip-inner verdict-card-inner">
+            <div className="flip-face">
+              {face ? (
+                <img src={face} alt="" width={624} height={936} className="verdict-card-face" />
+              ) : (
+                <div className="verdict-card-face verdict-card-joker">Joker</div>
+              )}
+            </div>
+            <div className="flip-face flip-back">
+              <div className="verdict-card-face hero-card-back"><CardBack /></div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
 
-      <p className="type-eyebrow mt-5 text-brand-bronze">Your birth card</p>
-      <h2 className="mt-1 font-serif text-3xl leading-tight text-brand-ink">{label}</h2>
-      {title ? <p className="mt-1 text-sm text-brand-ink-soft">{title}</p> : null}
+      <h2 ref={heading} tabIndex={-1} className="verdict-title" {...rise()}>
+        {label}
+      </h2>
+      <p className="verdict-lead" {...rise()}>
+        Your birth card{title ? `. ${title}` : ""}.
+      </p>
 
       {isJoker ? (
-        <p className="mt-6 font-serif text-lg leading-snug text-brand-ink">
+        <p className="verdict-line" {...rise()}>
           December 31 sits outside the 52. No fixed card. You are the wild edge of the year, and people can tell.
         </p>
       ) : (
         <>
-          <div className="mt-6 grid gap-3 text-left">
-            <RevealLine kicker="What you’re good at" body={seo?.sweetSpot ?? ""} />
-            <RevealLine kicker="Where it trips you" body={seo?.over ?? ""} />
-          </div>
-
-          {rightNow ? (
-            <div className="mt-5 border border-brand-ink bg-brand-paper p-4 text-left">
-              <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-brand-ink-soft">
-                Right now
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-brand-ink">
-                <span className="font-semibold">{rightNow.periodPlanet}</span>
-                {" · "}
-                {rightNow.periodLabel}
-                {rightNow.periodRange ? ` · ${rightNow.periodRange}` : ""}
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
-                Today&rsquo;s card: {rightNow.dailyLabel} · {rightNow.todayLabel}
-              </p>
-            </div>
+          {seo?.sweetSpot ? (
+            <p className="verdict-line" {...rise()}>
+              <strong>What you&rsquo;re good at.</strong> {seo.sweetSpot}
+            </p>
           ) : null}
-
-          <OfferCta className="mt-8 text-left" />
-
+          {seo?.over ? (
+            <p className="verdict-line" {...rise()}>
+              <strong>Where it trips you.</strong> {seo.over}
+            </p>
+          ) : null}
+          {rightNow ? (
+            <p className="verdict-now" {...rise()}>
+              Right now you are in a {rightNow.periodPlanet} period, the {rightNow.periodLabel}
+              {rightNow.periodRange ? `, ${rightNow.periodRange}` : ""}. Today&rsquo;s card is the {rightNow.dailyLabel}, {rightNow.todayLabel}.
+            </p>
+          ) : null}
         </>
       )}
 
-      <div className="mt-8 flex flex-col items-stretch gap-3">
+      <div className="verdict-actions" {...rise()}>
         {cardSlug ? (
           <Link
             href={`/birth-card/${cardSlug}`}
-            className="accent-button large-button w-full text-center"
+            className="accent-button large-button"
             onClick={() =>
               trackClientFunnelEvent("result_card_clicked", {
                 placement: "home-reveal",
               })
             }
           >
-            Read my card. All of it →
+            Read my card. All of it
           </Link>
         ) : null}
         <Link
           href="/birth-card-compatibility-calculator"
-          className="paper-button large-button w-full text-center"
+          className="paper-button large-button"
           onClick={() =>
             trackClientFunnelEvent("result_compare_clicked", {
               placement: "home-reveal",
             })
           }
         >
-          Compare with the person you’re thinking about →
+          Compare it with theirs
         </Link>
         <ShareBirthResultButton
           birthCard={result.birthCard}
           placement="home-reveal-share"
-          className="paper-button large-button w-full"
+          className="paper-button large-button"
         />
-        <p className="text-center text-sm">
-          <Link
-            href="/explore"
-            className="text-brand-ink-soft underline underline-offset-4"
-          >
-            Keep poking around →
-          </Link>
-        </p>
       </div>
-    </div>
-  );
-}
 
-function RevealLine({ kicker, body }: { kicker: string; body: string }) {
-  if (!body) return null;
-  return (
-    <div className="border border-brand-ink bg-brand-paper p-4">
-      <p className="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-brand-ink-soft">
-        {kicker}
+      {!isJoker ? (
+        <div {...rise()}>
+          <OfferCta className="verdict-offer" />
+        </div>
+      ) : null}
+
+      <p className="verdict-reset" {...rise()}>
+        {onReset ? (
+          <button type="button" className="editorial-link" onClick={onReset}>
+            Wrong birthday? Change it
+          </button>
+        ) : null}
+        <Link href="/explore" className="editorial-link">
+          Keep poking around
+        </Link>
       </p>
-      <p className="mt-2 font-serif text-lg leading-snug text-brand-ink">{body}</p>
     </div>
   );
 }

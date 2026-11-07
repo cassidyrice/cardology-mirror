@@ -49,11 +49,14 @@ const config: Config = {
           "on-dark": "var(--on-dark)",
           "on-dark-soft": "var(--on-dark-soft)",
           "on-dark-line": "var(--on-dark-line)",
+          accent: "var(--accent)",
+          "accent-deep": "var(--accent-deep)",
         },
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        // One family. --font-display and --font-body both resolve to Archivo (app/tokens.css).
+        serif: ["var(--font-display)", "Helvetica Neue", "Arial", "sans-serif"],
+        sans: ["var(--font-body)", "Helvetica Neue", "Arial", "sans-serif"],
       },
       letterSpacing: {
         wider2: "0.18em",

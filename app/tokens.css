@@ -1,0 +1,173 @@
+/* Hallmark · shape: Split stage (a pinned card beside a scrolling reading column) · genre: editorial · theme: custom (tasteskill split-stage, seed 835131915) · redesign: full · job: try · idea: "The one card your birthday pins to the drafting sheet is the half of the screen that never moves; everything you read is the annotation beside it." · vibe: "drafting sheet, deadpan, one card, no ornament"
+ * paper: oklch(96% 0.012 240) · accent: oklch(36% 0.1 252) · display: Archivo · body: Archivo · hero: the real deck face down on film in a sticky left stage; the headline, one sentence and the birthday form in the right column; the name along the bottom of the first screen · nav: plain bar, lockup left, four links and the readings menu right · footer: the name at full width on ink, four link groups, one quiet line · imagery: the project's own film, explainer, product shots and card faces · signature: your card turns to face you on the stage when you enter your birthday
+ * axes: light/grotesk-sans/cool · posture: Stage · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V4 · weakest: R, the long card pages still carry a dozen content sections; kept every fact and separated them by space and one tone step instead of boxes */
+/* Hallmark · waive 47b · one frame, the real explainer film inside · the film is the project's own closing picture */
+
+:root {
+  /* Colour: sheet and biro, in the subject's own colours (docs/design/DIRECTION.md). */
+  --paper: #eef3f8;
+  --paper-deep: #e2eaf3;
+  --paper-deeper: #d3dfeb;
+  --ivory: #f8fbfd;
+  --ink: #123a63;
+  --ink-soft: #3c6089;
+  --ink-faint: #4a6b8f;
+  --accent: #0c4275;
+  --accent-deep: #0a3159;
+  --on-dark: #e8f1fa;
+  --on-dark-soft: #a9c2da;
+  --suit-red: #8e321f;
+  --suit-black: #14110d;
+  --line: rgba(18, 58, 99, 0.14);
+  --line-strong: rgba(18, 58, 99, 0.24);
+  --on-dark-line: rgba(232, 241, 250, 0.18);
+  --focus: var(--accent);
+  --focus-on-dark: var(--on-dark);
+  --error: #8e321f;
+  --scrim: rgba(18, 58, 99, 0.55);
+  --board: #0f1f33;
+  --board-edge: #c4a05a;
+
+  /* Legacy names other pages still read. Same values, one source. */
+  --oxblood: var(--accent);
+  --oxblood-deep: var(--accent-deep);
+  --bronze: var(--ink-soft);
+  --bronze-on-dark: var(--on-dark-soft);
+  --gold: #b8893d;
+  --gold-soft: rgba(184, 137, 61, 0.14);
+  --club: #183f30;
+
+  /* Hallmark role names. */
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-deep);
+  --color-paper-3: var(--paper-deeper);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-soft);
+  --color-muted: var(--ink-faint);
+  --color-rule: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--on-dark);
+  --color-focus: var(--focus);
+  --color-error: var(--error);
+  --color-success: var(--club);
+
+  /* Type: one family, five steps. --font-archivo is set by next/font in app/layout.tsx. */
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-outlier: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-body);
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(4.5rem, 9vw, 11rem);
+  --text-xs: var(--step-small);
+  --text-sm: var(--step-small);
+  --text-md: var(--step-body);
+  --text-lg: var(--step-lead);
+  --text-xl: 1.5625rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-display: var(--step-display);
+  --text-display-s: var(--step-head);
+  --text-section: var(--step-head);
+  --text-title: var(--step-lead);
+  --text-lead: var(--step-lead);
+  --text-h2: var(--step-head);
+  --text-h3: var(--step-lead);
+  --text-body-large: var(--step-lead);
+  --text-body: var(--step-body);
+  --text-small: var(--step-small);
+  --text-eyebrow: var(--step-small);
+  --tracking-display: -0.02em;
+  --tracking-giant: -0.035em;
+  --leading-display: 1;
+  --leading-head: 1.04;
+  --leading-body: 1.5;
+
+  /* Space. */
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+  --gutter: 48px;
+  --gutter-stage: 64px;
+  --measure: 46ch;
+  --measure-wide: 64ch;
+  --container: 1440px;
+  --gap-columns: 32px;
+  --section-gap-s: 120px;
+  --section-gap: 144px;
+  --section-gap-l: 176px;
+  --header-height: 80px;
+  --control-height: 48px;
+  --stage-width: 47%;
+
+  /* Shape. */
+  --radius-ui: 0px;
+  --radius-card: 4.5%;
+  --radius-pill: 999px;
+  --rule-hair: 1px;
+  --shadow-card: none;
+  --shadow-float: 0 24px 48px -24px rgba(18, 58, 99, 0.35);
+  --shadow-turning: 0 32px 64px -28px rgba(15, 31, 51, 0.6);
+
+  /* Motion (docs/design/MOTION.md). */
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-arrive: 480ms;
+  --dur-turn: 720ms;
+  --dur-swap: 400ms;
+  --dur-exit: 180ms;
+  --dur-long: var(--dur-arrive);
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-move: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-settle: cubic-bezier(0.34, 1.28, 0.64, 1);
+  --ease-out: var(--ease-arrive);
+  --ease-in: var(--ease-exit);
+  --ease-in-out: var(--ease-move);
+  --stagger: 80ms;
+  --stage-hold: 350ms;
+
+  /* Layers. */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-sticky-nav: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+}
+
+@media (max-width: 60rem) {
+  :root {
+    --gutter: 24px;
+    --gutter-stage: 24px;
+    --section-gap-s: 80px;
+    --section-gap: 96px;
+    --section-gap-l: 120px;
+    --header-height: 72px;
+  }
+}
+
+@media (max-width: 40rem) {
+  :root {
+    --gutter: 16px;
+    --gutter-stage: 16px;
+    --section-gap-s: 56px;
+    --section-gap: 72px;
+    --section-gap-l: 96px;
+    --gap-columns: 16px;
+  }
+}
