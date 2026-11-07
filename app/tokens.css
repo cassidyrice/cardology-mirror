@@ -9,6 +9,8 @@
 /* Hallmark · answered F15 · the stage grid, the sample and the footer groups are three compositions with their own gaps */
 /* Hallmark · dropped /blog/how-to-read-birth-card-meaning, /blog/52-day-periods-in-cardology, /blog/birth-card-vs-ruling-card-how-to-read-both, /cardology-for-beginners, #home-articles-title · from app/page.tsx only; every one is linked from components/home/FreeBars.tsx, the free bars that open in place on the same page */
 /* Hallmark · dropped #home-articles-title · the three articles live under #home-free-title now, inside the free bars */
+/* Hallmark · waive 44c · Stage posture: the name along the bottom is the first screen's last element and the next section starts under it · the gate reads the text block alone */
+/* Hallmark · waive 59 · the hero and the slip section are one column; the slip opens with 144px of its own padding (--section-gap) · the gate measures box edges, not the gap it sees */
 /* Hallmark · waive 79 · the name along the bottom of the first screen is the dealt hero's last element and reaches the fold · the gate reads only the text block above it */
 /* Hallmark · dismissed 28a · the lazy images sit below the first screen; the LCP is the stage film's poster, preloaded in app/page.tsx */
 /* Hallmark · dismissed 42 · footer: Mast is named in the stamp; the four groups carry the routes the crawl and three tests depend on */
