@@ -48,7 +48,7 @@ body {
   transition: none;
 }
 
-:where(.shell-ink, .bg-brand-ink, .on-ink, .bg-ink) :focus-visible,
+:where(.shell-ink, .bg-brand-ink, .on-ink, .bg-ink, .site-footer:not(.is-bare), .slip-band, .slip-total) :focus-visible,
 .table-scroll:focus-visible {
   outline-color: var(--focus-on-dark);
 }

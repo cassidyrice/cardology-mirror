@@ -36,22 +36,16 @@ export function PositionStack({
   over: string;
 }) {
   const rows = [
-    { label: "Under", text: under, color: "text-brand-club", dot: "bg-brand-oxblood" },
-    { label: "Balanced", text: sweet, color: "text-brand-club", dot: "bg-brand-club" },
-    { label: "Over", text: over, color: "text-brand-bronze", dot: "bg-brand-bronze" },
+    { label: "Under.", text: under },
+    { label: "Balanced.", text: sweet },
+    { label: "Over.", text: over },
   ];
   return (
     <div className="space-y-4">
       {rows.map((r) => (
-        <div key={r.label} className="flex gap-3">
-          <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${r.dot}`} />
-          <p className="text-[0.95rem] leading-relaxed text-brand-ink-soft">
-            <span className={`mr-2 text-xs uppercase tracking-wider2 ${r.color}`}>
-              {r.label}
-            </span>
-            {r.text}
-          </p>
-        </div>
+        <p key={r.label} className="leading-relaxed text-brand-ink">
+          <strong className="font-semibold">{r.label}</strong> {r.text}
+        </p>
       ))}
     </div>
   );
@@ -105,8 +99,8 @@ export function LinkButton({
   );
 }
 
-// Eyebrow label for paper/ink surfaces (bronze on paper, gold on ink via
-// .shell-ink). The dark in-app screens keep the original Eyebrow above.
+// A plain small line on paper or ink surfaces: the body face, sentence case,
+// untracked. The dark in-app screens keep the original Eyebrow above.
 export function Kicker({ children, className = "" }: { children: ReactNode; className?: string }) {
   return <p className={`type-eyebrow ${className}`}>{children}</p>;
 }
@@ -140,5 +134,5 @@ export function SectionShell({
 
 // 1px semantic divider for marketing sections. Divider above is the app-screen rule.
 export function Rule({ className = "" }: { className?: string }) {
-  return <hr className={`border-t border-brand-line ${className}`} />;
+  return <hr className={`border-0 h-0 my-0 ${className}`} aria-hidden="true" />;
 }
