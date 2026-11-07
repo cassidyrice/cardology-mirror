@@ -144,7 +144,7 @@ html { scroll-padding-top: var(--space-2xl); }
 .shell-with-stage { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xl); }
 .shell-stage { display: none; }
 @media (min-width: 1024px) {
-  .shell-with-stage { grid-template-columns: minmax(0, 1fr) minmax(18rem, 30%); gap: var(--space-2xl); align-items: start; }
+  .shell-with-stage { grid-template-columns: minmax(0, 1fr) minmax(22rem, 38%); gap: var(--space-2xl); align-items: start; }
   .shell-stage {
     display: flex;
     position: sticky;
@@ -157,13 +157,13 @@ html { scroll-padding-top: var(--space-2xl); }
   }
 }
 .shell-stage-card {
-  width: min(100%, 16rem);
+  width: min(100%, 24rem);
   aspect-ratio: 2 / 3;
   border-radius: var(--radius-card);
   object-fit: cover;
 }
 .shell-stage-pair { display: flex; gap: var(--space-md); align-items: center; justify-content: center; }
-.shell-stage-pair .shell-stage-card { width: min(46%, 11rem); }
+.shell-stage-pair .shell-stage-card { width: min(47%, 13rem); }
 
 /* Breadcrumb: a byline, not a label. */
 .blueprint-crumb {

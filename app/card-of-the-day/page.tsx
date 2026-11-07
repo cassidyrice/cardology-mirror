@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { SeoShell } from "@/components/seo/SeoShell";
+import { SeoShell, StageCard } from "@/components/seo/SeoShell";
+
+import "./daily.css";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { updatedLabel } from "@/lib/page-updated";
-import { SUIT_COLOR_PAPER } from "@/lib/cards";
 import { birthdateBySlug, type BirthdateSeo, type CardSeo } from "@/lib/seo-cards";
 
 // Deploys are manual and infrequent, so "today" can never be baked in at
@@ -172,10 +173,13 @@ export default function CardOfTheDayPage() {
   ];
 
   return (
-    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Card of the Day", href: "/card-of-the-day" }]}>
+    <SeoShell
+      crumb={[{ label: "Home", href: "/" }, { label: "Card of the Day", href: "/card-of-the-day" }]}
+      stage={<StageCard slug={card ? card.slug : "joker"} label={card ? card.label : "The Joker"} />}
+    >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <div className="mb-4 flex items-center gap-5">
+      <header className="daily-title">
         <img
           src={`/share-cards/faces/${card ? card.slug : "joker"}.png`}
           alt={card ? `${card.label} playing card, the card of the day for ${label}` : `The Joker playing card, ${label}`}
@@ -183,31 +187,22 @@ export default function CardOfTheDayPage() {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="daily-title-face rise"
         />
-        <div>
-          <span className="type-eyebrow !font-bold !text-brand-ink-soft">{label}</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
-            Cardology Card of the Day
-            <span className="block text-lg !text-brand-bronze">
-              {card ? `Today: the ${card.label}${card.title ? `, ${card.title}` : ""}` : "Today: the Joker"}
-            </span>
-          </h1>
-          {card && (
-            <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
-          )}
-        </div>
+        <h1 className="daily-h1 rise">Cardology Card of the Day</h1>
+        <p className="daily-lead rise-2">
+          {card ? `Today, ${label}: the ${card.label}${card.title ? `, ${card.title}` : ""}.` : `Today, ${label}: the Joker.`}
+        </p>
+        <p className="daily-cta rise-3">
+          <Link href="/birth-card-calculator" className="accent-button">
+            Look up your card free
+          </Link>
+        </p>
+      </header>
+      <div className="daily-answer" data-ai-summary>
+        <p className="prose-reading">{directAnswer}</p>
       </div>
-      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Direct answer</p>
-        <p className="prose-reading text-brand-ink-soft">{directAnswer}</p>
-      </div>
-      <p className="mb-2 text-xs text-brand-ink-soft">Updated {updatedLabel(updatedIso)}</p>
-      <p className="mb-6">
-        <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find the card your birthday stuck you with →
-        </Link>
-      </p>
+      <p className="daily-updated">Updated {updatedLabel(updatedIso)}</p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         This is a daily reading with no shuffle in it. The deck is built like a
         calendar: 52 cards for 52 weeks, 4 suits for 4 seasons. A fixed
@@ -222,7 +217,7 @@ export default function CardOfTheDayPage() {
       {card && today ? (
         <>
           <section className="mt-8">
-            <h2 className="type-eyebrow mb-2 !text-brand-bronze">Today&rsquo;s card: the {card.label}</h2>
+            <h2 className="daily-h2">Today&rsquo;s card: the {card.label}</h2>
             <div className="flex flex-col gap-5 sm:flex-row">
               <img
                 src={`/share-cards/faces/${card.slug}.png`}
@@ -231,10 +226,10 @@ export default function CardOfTheDayPage() {
                 height={1500}
                 loading="lazy"
                 decoding="async"
-                className="w-44 shrink-0 self-start rounded-2xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+                className="daily-body-face"
               />
-              <div className="prose-reading text-brand-ink-soft">
-                {card.title && <p className="type-eyebrow mb-2 !text-brand-bronze">{card.title}</p>}
+              <div className="prose-reading">
+                {card.title && <p><strong>{card.title}.</strong></p>}
                 <p>{card.coreIdentity || card.sweetSpot}</p>
                 <p>
                   The {card.label} is a {suitWord(card)} card, the suit of {card.suitDomain.toLowerCase()},
@@ -243,7 +238,7 @@ export default function CardOfTheDayPage() {
                 </p>
                 <p className="text-sm">
                   <Link href={`/birth-card/${card.slug}`} className="text-brand-oxblood underline underline-offset-4">
-                    Read the full {card.label} meaning →
+                    Read the full {card.label} meaning
                   </Link>
                 </p>
               </div>
@@ -251,8 +246,8 @@ export default function CardOfTheDayPage() {
           </section>
 
           <section className="mt-8">
-            <h2 className="type-eyebrow mb-2 !text-brand-bronze">Quick reads: love, work, shadow</h2>
-            <div className="space-y-4">
+            <h2 className="daily-h2">Quick reads: love, work, shadow</h2>
+            <div className="daily-reads">
               <QuickRead label="Love" facet="love" text={`In relationships, the ${card.label} shows up as ${relationshipTheme(card)}. Notice where that pull is running the room today. It probably is.`} />
               <QuickRead label="Work" facet="work" text={`At work, the ${card.label} wants roles and hours where ${workTheme(card)}. Give the pattern one clean outlet today. Not five.`} />
               <QuickRead label="Shadow" facet="shadow" text={card.shadow || card.over} />
@@ -266,8 +261,8 @@ export default function CardOfTheDayPage() {
         </>
       ) : (
         <section className="mt-8">
-          <h2 className="type-eyebrow mb-2 !text-brand-bronze">Today belongs to the Joker</h2>
-          <div className="prose-reading text-brand-ink-soft">
+          <h2 className="daily-h2">Today belongs to the Joker</h2>
+          <div className="prose-reading">
             <p>
               The deck&rsquo;s calendar math is exact. The 52 card values sum to
               364, one short of the solar year. December 31 is the day left
@@ -287,48 +282,48 @@ export default function CardOfTheDayPage() {
         </section>
       )}
 
-      <section className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Now do yours</p>
-        <p className="mt-1 text-sm text-brand-ink-soft">
+      <section className="daily-yours">
+        <h2 className="daily-h2">Now do yours</h2>
+        <p className="daily-yours-text">
           Today&rsquo;s card belongs to everyone. Yours was fixed the day you
           were born and has been quietly explaining you ever since. Look it up
           free, then read the written interpretation.
         </p>
         <div className="mt-3">
-          <Link href="/birth-card-calculator" className="accent-button inline-block w-full text-center sm:w-auto">
-            Look up your birth card free →
+          <Link href="/birth-card-calculator" className="accent-button">
+            Look up your card free
           </Link>
         </div>
       </section>
 
       {faqs.map((f) => (
         <section className="mt-8" key={f.q}>
-          <h2 className="type-eyebrow mb-2 !text-brand-bronze">{f.q}</h2>
-          <p className="prose-reading text-brand-ink-soft">{f.a}</p>
+          <h2 className="daily-h2">{f.q}</h2>
+          <p className="prose-reading">{f.a}</p>
         </section>
       ))}
 
       <section className="mt-8">
-        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Yesterday, today, tomorrow</h2>
-        <p className="prose-reading text-brand-ink-soft">
+        <h2 className="daily-h2">Yesterday, today, tomorrow</h2>
+        <p className="prose-reading">
           The card changes at midnight, Mountain Time. Come back tomorrow, or
           walk the calendar yourself like someone with nowhere to be. Every
           date&rsquo;s page reads the card as a birthday:
         </p>
         {/* /born-on/ pages are edge-rendered by the cardology-unlock Worker,
             not this Next app. Plain <a>, same as the card pages. */}
-        <nav className="mt-4 grid grid-cols-3 gap-3 text-center text-sm">
+        <nav className="daily-days" aria-label="Yesterday, today, tomorrow">
           {[
-            { day: yesterday, prefix: "←", note: labelOf(yesterday) },
-            { day: now, prefix: "", note: `Born on ${label}?` },
-            { day: tomorrow, prefix: "", note: `${labelOf(tomorrow)} →` },
+            { day: yesterday, note: `Yesterday, ${labelOf(yesterday)}` },
+            { day: now, note: `Born on ${label}?` },
+            { day: tomorrow, note: `Tomorrow, ${labelOf(tomorrow)}` },
           ].map(({ day, note }) => {
             const dayCard = birthdateBySlug(slugOf(day))?.card ?? null;
             return (
               <a
                 key={note}
                 href={`/born-on/${slugOf(day)}`}
-                className="group flex flex-col items-center gap-2 rounded-2xl border border-brand-line p-3 transition"
+                className="daily-day"
               >
                 <img
                   src={`/share-cards/faces/${dayCard ? dayCard.slug : "joker"}.png`}
@@ -337,9 +332,9 @@ export default function CardOfTheDayPage() {
                   height={1500}
                   loading="lazy"
                   decoding="async"
-                  className="w-14 rounded-[5px] border border-brand-line transition-transform group-hover:-translate-y-0.5"
+                  className="daily-day-face"
                 />
-                <span className="!text-brand-bronze underline underline-offset-4">{note}</span>
+                <span>{note}</span>
               </a>
             );
           })}
@@ -347,42 +342,29 @@ export default function CardOfTheDayPage() {
       </section>
 
 
-      <p className="mt-6 text-sm">
-        <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">What is Cardology? →</Link>
-        {"  ·  "}
-        <Link href="/cartomancy-vs-tarot" className="text-brand-oxblood underline underline-offset-4">Cartomancy vs tarot →</Link>
-        {"  ·  "}
-        <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">All 52 card meanings →</Link>
-      </p>
+      <ul className="daily-more">
+        <li><Link href="/what-is-cardology" className="editorial-link">What is Cardology?</Link></li>
+        <li><Link href="/cartomancy-vs-tarot" className="editorial-link">Cartomancy vs tarot</Link></li>
+        <li><Link href="/birth-card" className="editorial-link">All 52 card meanings</Link></li>
+      </ul>
     </SeoShell>
   );
 }
 
-// Label colors are inline, which outranks the .paper-shell class remaps, so
-// these are what actually paint on cream. The dark palette's sage/gold/ember
-// read at 2.2/1.7/3.0:1 there; these pass AA (7.3 / 5.3 / 7.1) and keep the
-// three facets distinguishable by hue. The tint keeps the original color.
-const QUICK_READ_TONES = {
-  love: { label: "#2c5740", tint: "#7fae8f" },
-  work: { label: "#7e5f29", tint: "#d9b26a" },
-  shadow: { label: "#8e321f", tint: "#e0654a" },
-} as const;
-
+// One ink. The facet name is a run-in strong, not a tinted box (docs/design/DIRECTION.md).
 function QuickRead({
   label,
   facet,
   text,
 }: {
   label: string;
-  facet: keyof typeof QUICK_READ_TONES;
+  facet: "love" | "work" | "shadow";
   text: string;
 }) {
-  const { label: labelColor, tint } = QUICK_READ_TONES[facet];
   return (
-    <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
-      <p className="type-eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
-      <p className="prose-reading mb-0 text-brand-ink-soft">{text}</p>
-    </div>
+    <p className="daily-read prose-reading" data-facet={facet}>
+      <strong>{label}.</strong> {text}
+    </p>
   );
 }
 

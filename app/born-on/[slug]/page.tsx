@@ -28,5 +28,5 @@ export default async function BornOnDayPage({
   const { slug } = await params;
   const page = bornOnPage(slug);
   if (!page) notFound();
-  return <BornOnPageView page={page} />;
+  return <BornOnPageView page={page} slug={slug} />;
 }

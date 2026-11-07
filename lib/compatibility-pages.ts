@@ -12,6 +12,7 @@ import {
   type WorkerPage,
 } from "@/lib/worker-port/cardology-unlock.mjs";
 import { bornOnMetadata } from "@/lib/born-on";
+import { cardBySlug } from "@/lib/seo-cards";
 
 // /compatibility pages, rendered at build time by the verbatim port of the
 // cardology-unlock Worker's compatibility.js (same body, title, description,
@@ -50,3 +51,10 @@ export function compatPage(slug: string): CompatPage | null {
 }
 
 export const compatMetadata = (page: CompatPage): Metadata => bornOnMetadata(page);
+
+/** The card (hub) or pair of cards (pair page) a /compatibility slug names, for the pinned stage. */
+export function compatCards(slug: string): { slug: string; label: string }[] {
+  const slugs = slug.includes("-and-") ? slug.split("-and-") : [slug];
+  const cards = slugs.map((part) => cardBySlug(part)).filter((c): c is NonNullable<typeof c> => Boolean(c));
+  return cards.length === slugs.length ? cards.map((c) => ({ slug: c.slug, label: c.label })) : [];
+}
