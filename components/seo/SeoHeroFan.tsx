@@ -14,7 +14,7 @@ export function SeoHeroFan({
 }) {
   return (
     <div
-      className={`flex h-32 items-end justify-center ${className}`}
+      className={`seo-fan flex h-32 items-end justify-center ${className}`}
       aria-hidden="true"
     >
       {codes.map((code, i) => {
@@ -31,7 +31,7 @@ export function SeoHeroFan({
             width={84}
             height={126}
             loading="eager"
-            className={`relative ${z} ${rotate} ${overlap} rounded-[6px] border border-brand-line bg-brand-paper shadow-[0_6px_18px_rgba(20,17,13,0.18)]`}
+            className={`seo-fan-card relative ${z} ${rotate} ${overlap}`}
           />
         );
       })}

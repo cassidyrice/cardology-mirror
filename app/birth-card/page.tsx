@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
-import { SeoShell } from "@/components/seo/SeoShell";
+import { SeoShell, StageCard } from "@/components/seo/SeoShell";
+import "@/app/card-pages.css";
+import { InView } from "@/components/motion/InView";
 import { DeckMatrix } from "@/components/cards/DeckMatrix";
 import { cardsBySuit } from "@/lib/seo-cards";
 import {
@@ -65,10 +67,6 @@ export const metadata: Metadata = {
   },
 };
 
-const SUIT_GLYPHS: Record<string, string> = {
-  hearts: "♥", diamonds: "♦", clubs: "♣", spades: "♠",
-};
-
 export default function BirthCardIndex() {
   const groups = cardsBySuit();
   const cards = groups.flatMap((group) => group.cards);
@@ -108,13 +106,20 @@ export default function BirthCardIndex() {
     mainEntityOfPage: `${SITE_URL}/birth-card`,
   };
   return (
-    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth Cards", href: "/birth-card" }]}>
+    <SeoShell
+      crumb={[{ label: "Home", href: "/" }, { label: "Birth Cards", href: "/birth-card" }]}
+      stage={<StageCard slug="ace-of-hearts" label="Ace of Hearts" />}
+    >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
-      <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="mb-5" />
-      <h1 className="display mb-3 text-3xl text-brand-ink">The 52 Cardology Birth Card Meanings</h1>
-      <div className="mb-4 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
+      <div className="card-page">
+      <header className="card-title">
+        <SeoHeroFan codes={["A♥", "A♣", "A♠"]} className="card-title-fan" />
+        <h1 className="rise">The 52 Cardology Birth Card Meanings</h1>
+        <p className="card-title-lead rise-2">Playing cards, not tarot. One card per birthday, for life.</p>
+      </header>
+      <div className="card-answer rise-3" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">
           A Cardology birth card is the one playing card your birthday maps to in a
@@ -124,14 +129,14 @@ export default function BirthCardIndex() {
           Each interpretation combines a suit (Hearts, Clubs, Diamonds or Spades) with a rank from
           Ace to King. Browse all 52 meanings below, or use the free calculator if
           you do not know your card yet. December 31 is the Joker exception and gets its own{" "}
-          <Link href="/birth-card/joker" className="text-brand-oxblood underline underline-offset-4">
+          <Link href="/birth-card/joker" className="editorial-link">
             Joker birth card guide
           </Link>
           .
         </p>
       </div>
-      <section id="how-do-i-find-my-birth-card" className="mb-6">
-        <h2 className="font-serif text-2xl text-brand-ink">How do I find my birth card?</h2>
+      <section id="how-do-i-find-my-birth-card" className="card-section">
+        <h2 className="card-h2">How do I find my birth card?</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Month and day are enough. The free calculator returns the fixed playing
           card. The year is for timing layers, not the birth card. Keep your birth year to yourself.
@@ -139,78 +144,73 @@ export default function BirthCardIndex() {
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Open the meaning on this page once you have the card. To see how two
           cards collide, read{" "}
-          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
+          <Link href="/cardology-compatibility" className="editorial-link">
             Cardology compatibility
           </Link>
           . The system behind the map is{" "}
-          <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
+          <Link href="/what-is-cardology" className="editorial-link">
             what Cardology is
           </Link>
           .
         </p>
       </section>
-      <p className="mb-3">
+      <p className="mb-3 mt-6">
         <Link href="/birth-card-calculator" className="accent-button inline-block">
-          Find your birth card free →
+          Find your birth card free
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">Read the card as a set of possible patterns. A strength. A pitfall. A question you keep dodging. For a closer look at one of your relationships, <Link href="/#readings" className="editorial-link">choose a personal reading with Cass</Link>.</p>
-      <p className="mb-4 text-xs text-brand-ink-soft">
+      <p className="card-byline">
         By{" "}
-        <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
+        <Link href="/about" className="editorial-link">
           Cassidy Rice
-        </Link>{" "}
-        · Updated {updatedLabel(UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
+        </Link>. Updated {updatedLabel(UPDATED)}.{" "}
+        <Link href="/editorial-policy" className="editorial-link">
           Editorial policy
-        </Link>{" "}
-        ·{" "}
-        <Link href="/methodology" className="text-brand-oxblood underline underline-offset-4">
-          Calculation method
         </Link>
+        {" and "}
+        <Link href="/methodology" className="editorial-link">
+          calculation method
+        </Link>.
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         Your month and day determine your <strong>birth card</strong>. The
         interpretation is where the thinking starts, not where it ends. Pick a card below, or{" "}
-        <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
+        <Link href="/birth-card-calculator" className="editorial-link">
           calculate yours
         </Link>
         {" "}or open the{" "}
-        <Link href="/birth-card-calculator#cardology-chart" className="text-brand-oxblood underline underline-offset-4">
+        <Link href="/birth-card-calculator#cardology-chart" className="editorial-link">
           Cardology chart
         </Link>
         .
       </p>
       <p className="prose-reading mb-6 text-brand-ink-soft">
         Would rather snoop another way? Explore{" "}
-        <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
+        <a href={BIRTHDAY_DIRECTORY_PATH} className="editorial-link">
           birthdays by date
         </a>{" "}
         or{" "}
-        <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
+        <a href={COMPATIBILITY_DIRECTORY_PATH} className="editorial-link">
           every two-card pairing
         </a>
         .
       </p>
 
-      <nav className="mb-10 flex flex-wrap gap-2 text-[0.65rem] uppercase tracking-wider2">
+      <nav className="card-suit-nav" aria-label="Jump to a suit">
         {groups.map((g) => (
-          <a
-            key={g.suit}
-            href={`#${g.suit}`}
-            className="rounded-full border border-brand-line px-3 py-1 transition text-brand-oxblood"
-          >
-            {SUIT_GLYPHS[g.suit]} {g.suit}
+          <a key={g.suit} href={`#${g.suit}`} className="editorial-link">
+            {cap(g.suit)}
           </a>
         ))}
       </nav>
 
-      <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="popular-card-meanings">
-        <h2 id="popular-card-meanings" className="type-eyebrow mb-3 !text-brand-bronze">Popular card meanings</h2>
-        <p className="prose-reading mb-4 text-sm text-brand-ink-soft">
+      <section className="card-section" aria-labelledby="popular-card-meanings">
+        <h2 id="popular-card-meanings" className="card-h2">Popular card meanings</h2>
+        <p className="prose-reading mb-4">
           The cards people are reading most, probably about someone else. The full deck is below.
         </p>
-        <ul className="flex flex-wrap gap-2 text-sm">
+        <ul className="card-popular">
           {[
             ["Joker birth card", "/birth-card/joker"],
             ["Ace of Hearts meaning", "/birth-card/ace-of-hearts"],
@@ -228,8 +228,8 @@ export default function BirthCardIndex() {
             ["3 of Clubs meaning", "/birth-card/3-of-clubs"],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="inline-block rounded-full border border-brand-line px-4 py-2 text-brand-oxblood transition hover:text-brand-oxblood">
-                {label} →
+              <Link href={href} className="editorial-link">
+                {label}
               </Link>
             </li>
           ))}
@@ -238,28 +238,25 @@ export default function BirthCardIndex() {
 
       <DeckMatrix />
 
-      <section className="mb-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" aria-labelledby="read-card-meaning">
-        <h2 id="read-card-meaning" className="font-serif text-xl text-brand-ink">How to read a card meaning without making it your whole personality</h2>
-        <ol className="prose-reading mt-4 list-decimal space-y-2 pl-5 text-brand-ink-soft">
+      <section className="card-section" aria-labelledby="read-card-meaning">
+        <h2 id="read-card-meaning" className="card-h2">How to read a card meaning without making it your whole personality</h2>
+        <ol className="prose-reading mt-4 list-decimal space-y-2 pl-5">
           <li>Start with the suit. Hearts for emotion. Clubs for mind and communication. Diamonds for values. Spades for work and transformation.</li>
           <li>Read the rank next to the suit. An Ace starts something in that area. A King asks how you lead in it, or whether you just like the chair.</li>
           <li>Hold the interpretation up to one thing that happened this week. Keep the question that explains your choices. Drop what does not fit. Do not argue with the part that does.</li>
         </ol>
       </section>
 
-      <div className="space-y-12">
+      <div className="card-suits">
         {groups.map((g) => (
-          <section key={g.suit} id={g.suit} className="scroll-mt-10">
-            <h2 className="type-eyebrow mb-4 !text-brand-bronze">
-              {SUIT_GLYPHS[g.suit]} {cap(g.suit)} · {g.domain}
+          <InView as="section" key={g.suit} id={g.suit} className="card-section scroll-mt-10">
+            <h2 className="card-h2" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
+              {cap(g.suit)}: {g.domain}
             </h2>
-            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <ul className="card-grid">
               {g.cards.map((c) => (
                 <li key={c.slug}>
-                  <Link
-                    href={`/birth-card/${c.slug}`}
-                    className="card-surface group relative flex flex-col items-center overflow-hidden p-3 text-center transition-all !border-brand-line hover:shadow-[0_0_20px_-5px_rgba(217,178,106,0.3)]"
-                  >
+                  <Link href={`/birth-card/${c.slug}`} className="card-tile">
                     <img
                       src={`/share-cards/faces/${c.slug}.png`}
                       alt={`${c.label} playing card`}
@@ -267,34 +264,24 @@ export default function BirthCardIndex() {
                       height={1500}
                       loading="lazy"
                       decoding="async"
-                      className="w-full rounded-[6px] border border-brand-line transition-transform duration-200 group-hover:-translate-y-1"
                     />
-                    <span className="mt-2 block font-serif text-sm text-brand-ink">
-                      {c.label}
-                    </span>
-                    <span className="mt-0.5 block text-[0.6rem] text-brand-ink-soft">
-                      {c.label} meaning
-                    </span>
-                    {c.title && (
-                      <span className="mt-0.5 block text-[0.6rem] uppercase tracking-wider text-brand-ink-soft">
-                        {c.title}
-                      </span>
-                    )}
+                    <span className="card-tile-name">{c.label} meaning</span>
+                    {c.title && <span className="card-tile-title">{c.title}</span>}
                   </Link>
                 </li>
               ))}
             </ul>
-          </section>
+          </InView>
         ))}
       </div>
 
-      <section className="mt-12" id="faq">
-        <h2 className="type-eyebrow mb-4 !text-brand-bronze">Birth card FAQ, asked at 2am</h2>
-        <div className="space-y-4">
+      <section className="card-section" id="faq">
+        <h2 className="card-h2">Birth card FAQ, asked at 2am</h2>
+        <div className="card-faq">
           {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-              <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
+            <div key={f.q}>
+              <h3>{f.q}</h3>
+              <p className="prose-reading mt-2">{f.a}</p>
             </div>
           ))}
         </div>
@@ -302,12 +289,13 @@ export default function BirthCardIndex() {
 
       <p className="prose-reading mt-8 text-sm text-brand-ink-soft">
         Thinking about putting a card on your body permanently?{" "}
-        <Link href="/playing-card-tattoo-meaning" className="text-brand-oxblood underline underline-offset-4">
+        <Link href="/playing-card-tattoo-meaning" className="editorial-link">
           Browse the playing-card tattoo references
         </Link>.
       </p>
 
       <OfferCta className="mt-12" />
+      </div>
     </SeoShell>
   );
 }
