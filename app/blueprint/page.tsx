@@ -46,11 +46,10 @@ export default async function BlueprintPage({
         <main id="main-content" tabIndex={-1}>
           <section className="shell-paper">
             <div className="mx-auto max-w-[42rem] px-5 py-24 sm:px-8">
-              <Kicker className="mb-4">Sign-in link</Kicker>
               <h1 className="type-display text-brand-ink">
-                This link isn&rsquo;t valid.
+                This sign-in link isn&rsquo;t valid.
               </h1>
-              <p className="type-body-lg mt-5 text-brand-ink-soft">
+              <p className="type-body-lg mt-5 text-brand-ink">
                 The link may be expired, mistyped, or from an unfinished
                 checkout. If you completed a purchase, reply to your receipt
                 email and we&rsquo;ll resend your sign-in link.
@@ -90,7 +89,7 @@ export default async function BlueprintPage({
     }
     if (app) {
       return (
-        <div style={{ background: "#0b0910", minHeight: "100dvh" }}>
+        <div style={{ background: "var(--board)", minHeight: "100dvh" }}>
           <PeriodAppView data={app} readings={appReadingLibrary(app)} token={token ?? ""} />
         </div>
       );
@@ -110,7 +109,7 @@ export default async function BlueprintPage({
     }
     if (year) {
       return (
-        <div style={{ background: "#0b0910", minHeight: "100dvh" }}>
+        <div style={{ background: "var(--board)", minHeight: "100dvh" }}>
           <YearBlueprintApp data={year} mode="full" framed={false} />
         </div>
       );
@@ -154,16 +153,15 @@ function EngineErrorPage({ reference }: { reference: string }) {
       <main id="main-content" tabIndex={-1}>
         <section className="shell-paper">
           <div className="mx-auto max-w-[42rem] px-5 py-24 sm:px-8">
-            <Kicker className="mb-4">Your year</Kicker>
             <h1 className="type-display text-brand-ink">
               We couldn&rsquo;t build this year.
             </h1>
-            <p className="type-body-lg mt-5 text-brand-ink-soft">
+            <p className="type-body-lg mt-5 text-brand-ink">
               The birth date on this purchase isn&rsquo;t one the Cardology
               engine can read. Reply to your receipt email with a corrected
               date and we&rsquo;ll unlock the right year.
             </p>
-            <p className="mt-4 text-xs text-brand-ink-faint">
+            <p className="mt-4 text-sm text-brand-ink-soft">
               Reference: {reference}
             </p>
             <div className="mt-8">

@@ -15,7 +15,7 @@ export function VideoEmbed({
   frameClassName?: string;
 }) {
   const [playing, setPlaying] = useState(false);
-  const frame = frameClassName ?? "rounded-2xl border border-brand-line";
+  const frame = frameClassName ?? "video-frame";
 
   if (playing) {
     return (
@@ -48,7 +48,7 @@ export function VideoEmbed({
         className="h-full w-full object-cover opacity-85 transition group-hover:opacity-100"
       />
       <span className="absolute inset-0 flex items-center justify-center">
-        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-brand-line bg-black/70 transition group-hover:bg-black/85">
+        <span className="flex h-14 w-14 items-center justify-center video-play">
           <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6 fill-current text-white" aria-hidden="true">
             <path d="M8 5v14l11-7z" />
           </svg>

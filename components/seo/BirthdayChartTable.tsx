@@ -22,7 +22,7 @@ const MONTHS = [
   ["December", "Dec"],
 ] as const;
 
-const RED_SUITS = new Set(["♥", "♦"]);
+const RED_SUITS = new Set(["\u2665", "\u2666"]);
 
 export const BIRTHDAY_CHART_IMAGE = {
   src: "/og/cardology-birthday-chart.png",
@@ -42,20 +42,20 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
   return (
     <div>
       <TableScroll label="Cardology birthday chart, months across and days down" className="mt-6">
-        <table className="birthday-chart w-full border-collapse text-center text-[0.8rem] leading-none">
+        <table className="birthday-chart w-full border-collapse text-center text-sm leading-none">
           <caption className="sr-only">
             Cardology birthday chart. Rows are days of the month, columns are months. Each cell is the playing card for that birthday and links to its page.
           </caption>
           <thead>
             <tr>
-              <th scope="col" className="sticky left-0 z-10 bg-brand-ivory px-2 py-2 text-left text-[0.65rem] uppercase tracking-[0.12em] text-brand-ink-soft">
+              <th scope="col" className="sticky left-0 z-10 bg-brand-paper px-2 py-2 text-left text-sm text-brand-ink-soft">
                 Day
               </th>
               {MONTHS.map(([full, short]) => (
                 <th
                   key={full}
                   scope="col"
-                  className="px-1 py-2 text-[0.65rem] uppercase tracking-[0.12em] text-brand-ink-soft"
+                  className="px-1 py-2 text-sm text-brand-ink-soft"
                 >
                   <abbr title={full} className="no-underline">{short}</abbr>
                 </th>
@@ -67,7 +67,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
               <tr key={day} className="border-t border-brand-line">
                 <th
                   scope="row"
-                  className="sticky left-0 z-10 bg-brand-ivory px-2 py-1.5 text-left font-medium tabular-nums text-brand-ink-soft"
+                  className="sticky left-0 z-10 bg-brand-paper px-2 py-1.5 text-left font-medium tabular-nums text-brand-ink-soft"
                 >
                   {day}
                 </th>
@@ -79,7 +79,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
                         <a
                           href="/born-on/december-31"
                           title="December 31: the Joker"
-                          className="inline-block min-w-[2.4rem] rounded-[3px] border border-transparent px-1 py-1 font-serif text-[0.8rem] text-brand-ink transition hover:border-brand-line-strong hover:bg-brand-paper"
+                          className="inline-block min-w-[2.4rem] rounded-[3px] border border-transparent px-1 py-1 font-serif text-sm text-brand-ink transition hover:border-brand-line-strong hover:bg-brand-paper"
                         >
                           <span className="sr-only">December 31: </span>
                           Joker
@@ -100,7 +100,7 @@ export function BirthdayChartTable({ showImage = true }: { showImage?: boolean }
                       <a
                         href={`/born-on/${d.slug}`}
                         title={`${d.label}: ${d.card.label}`}
-                        className={`inline-block min-w-[2.4rem] rounded-[3px] border border-transparent px-1 py-1 font-serif text-[0.9rem] transition hover:border-brand-line-strong hover:bg-brand-paper ${
+                        className={`inline-block min-w-[2.4rem] rounded-[3px] border border-transparent px-1 py-1 font-serif text-sm transition hover:border-brand-line-strong hover:bg-brand-paper ${
                           isRed ? "text-brand-oxblood" : "text-brand-ink"
                         }`}
                       >

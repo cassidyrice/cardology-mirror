@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { PlayingCard } from "@/components/PlayingCard";
+import { InView } from "@/components/motion/InView";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { TableScroll } from "@/components/seo/TableScroll";
-import { BirthCardCalculator } from "@/components/seo/BirthCardCalculator";
+import { BirthCardCalculator, CalculatorStage } from "@/components/seo/BirthCardCalculator";
+
+import "../calculator.css";
 import { BirthdayChartTable } from "@/components/seo/BirthdayChartTable";
 import {
   BIRTHDAY_DIRECTORY_PATH,
@@ -163,28 +165,30 @@ export default function CalculatorPage() {
   };
 
   return (
-    <SeoShell crumb={[{ label: "Home", href: "/" }, { label: "Birth Card Calculator", href: "/birth-card-calculator" }]}>
+    <SeoShell
+      crumb={[{ label: "Home", href: "/" }, { label: "Birth Card Calculator", href: "/birth-card-calculator" }]}
+      stage={<CalculatorStage />}
+    >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faq) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
 
-      <header className="max-w-3xl">
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Free · instant · no signup · no small talk</p>
-        <h1 className="display mb-2 text-3xl text-brand-ink">
-          Cardology Chart & Birth Card Calculator
-        </h1>
-        <p className="prose-reading text-brand-ink-soft" data-ai-summary>
-          Your birthday maps to one playing card in a standard 52-card deck.
-          Enter it. Find your card. Read what it says about you.
-          Your birth card stays the same for life, so use it to look at yourself, not to guess the future.
+      <header className="calc-page-head">
+        <h1>Cardology Chart & Birth Card Calculator</h1>
+        <p className="calc-page-lead" data-ai-summary>
+          Your birthday maps to one playing card in a standard 52-card deck. Free, instant, no signup, no small talk.
         </p>
       </header>
 
-      <div className="mt-5">
+      <div className="calc-page-tool">
         <BirthCardCalculator />
       </div>
 
-      <nav className="mt-5 flex flex-wrap gap-2" aria-label="Calculator guide sections">
+      <p className="prose-reading calc-page-note">
+        Enter it. Find your card. Read what it says about you. Your birth card stays the same for life, so use it to look at yourself, not to guess the future.
+      </p>
+
+      <nav className="calc-guide" aria-label="Calculator guide sections">
         {[
           ["#use-your-card", "Try the free exercise"],
           ["#what-is-a-birth-card", "What your card is"],
@@ -195,39 +199,36 @@ export default function CalculatorPage() {
           ["#trust-and-limits", "Method & trust"],
           ["#faq", "FAQ"],
         ].map(([href, label]) => (
-          <a key={href} href={href} className="rounded-full border border-brand-line inline-flex min-h-11 items-center px-3 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <a key={href} href={href} className="editorial-link">
             {label}
           </a>
         ))}
       </nav>
 
-      <section id="use-your-card" aria-labelledby="use-your-card-heading" className="mt-8 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5 sm:p-6 scroll-mt-10">
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Your first exercise · free</p>
-        <h2 id="use-your-card-heading" className="font-serif text-2xl text-brand-ink">You found your card. Now what? Don’t just screenshot it.</h2>
-        <p className="prose-reading mt-3 text-brand-ink-soft">Get a real deck of playing cards. Take five minutes. You can do this without buying anything. We checked.</p>
-        <figure className="mt-5 rounded-xl border border-brand-line bg-brand-paper p-4 sm:p-5">
-          <figcaption className="mb-4 text-sm font-medium text-brand-ink">An example: January 15 → Queen of Diamonds → one reflection</figcaption>
-          <div className="grid items-center gap-5 text-center sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            <div className="rounded-xl border border-brand-line bg-brand-ivory p-4"><span className="type-eyebrow block">Birthday</span><span className="mt-2 block font-serif text-3xl text-brand-ink">January 15</span><span className="mt-2 block text-xs text-brand-ink-soft">Enter it in the calculator</span></div>
-            <span aria-hidden="true" className="text-2xl text-brand-bronze"><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></span>
-            <div><PlayingCard code="Q♦" size="md" surface="paper" /><p className="mt-3 text-sm font-medium text-brand-ink">Queen of Diamonds</p><p className="mt-1 text-xs text-brand-ink-soft">Dig the matching card out of your deck</p></div>
-            <span aria-hidden="true" className="text-2xl text-brand-bronze"><span className="sm:hidden">↓</span><span className="hidden sm:inline">→</span></span>
-            <div className="rounded-xl border border-brand-line bg-brand-ivory p-4"><span className="type-eyebrow block">Reflect</span><p className="mt-2 font-serif text-xl text-brand-ink">What do I value?</p><p className="mt-2 text-xs text-brand-ink-soft">Write one real example. Not the flattering one.</p></div>
+      <InView as="section" id="use-your-card" aria-labelledby="use-your-card-heading" className="calc-exercise scroll-mt-10">
+        <h2 id="use-your-card-heading" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>You found your card. Now what?</h2>
+        <p className="prose-reading mt-3 text-brand-ink-soft" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>Don’t just screenshot it. Get a real deck of playing cards. Take five minutes. You can do this without buying anything. We checked.</p>
+        <figure className="calc-example" data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
+          <figcaption>An example: January 15, the Queen of Diamonds, one reflection</figcaption>
+          <div className="calc-example-row">
+            <div className="calc-example-cell"><span className="calc-example-label">Birthday</span><span className="calc-example-big">January 15</span><span className="calc-example-small">Enter it in the calculator</span></div>
+            <div className="calc-example-card"><img src="/share-cards/faces/queen-of-diamonds.png" alt="Queen of Diamonds playing card" width={1000} height={1500} loading="lazy" decoding="async" className="calc-example-face" /><p className="calc-example-label">Queen of Diamonds</p><p className="calc-example-small">Dig the matching card out of your deck</p></div>
+            <div className="calc-example-cell"><span className="calc-example-label">Reflect</span><span className="calc-example-big">What do I value?</span><span className="calc-example-small">Write one real example. Not the flattering one.</span></div>
           </div>
-          <p className="mt-4 text-xs text-brand-ink-soft">This is an example birthday. Use your own result and its card meaning. Not your crush’s.</p>
+          <p className="calc-example-small">This is an example birthday. Use your own result and its card meaning. Not your crush’s.</p>
         </figure>
-        <ol className="mt-5 grid gap-5 sm:grid-cols-3">
-          <li><h3 className="font-serif text-lg text-brand-ink">1. Find it in your deck</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Match the rank and suit from your result. Put that card face up where you have to look at it. December 31 is the Joker exception. Use a Joker if your deck has one.</p></li>
-          <li><h3 className="font-serif text-lg text-brand-ink">2. Read its meaning</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Open the card meaning linked in your result. Pick one theme that made you flinch a little. That one.</p></li>
-          <li><h3 className="font-serif text-lg text-brand-ink">3. Ask one question</h3><p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">Where does this pattern show up in my life? Write one example and one small choice you could make instead. Leave what does not fit. Be honest about what does.</p></li>
+        <ol className="calc-steps" data-rise style={{ "--rise-i": 3 } as React.CSSProperties}>
+          <li><h3>Find it in your deck</h3><p>Match the rank and suit from your result. Put that card face up where you have to look at it. December 31 is the Joker exception. Use a Joker if your deck has one.</p></li>
+          <li><h3>Read its meaning</h3><p>Open the card meaning linked in your result. Pick one theme that made you flinch a little. That one.</p></li>
+          <li><h3>Ask one question</h3><p>Where does this pattern show up in my life? Write one example and one small choice you could make instead. Leave what does not fit. Be honest about what does.</p></li>
         </ol>
         <p className="mt-5 text-sm leading-relaxed text-brand-ink-soft">Want more? Your result links to your current 52-day period and your whole year. Your free card meaning is always there. It is not going anywhere, unlike some people.</p>
-      </section>
+      </InView>
 
       <p className="mt-6 max-w-2xl text-sm leading-relaxed text-brand-ink-soft">Your card is a starting point. Read its meaning. Try the exercise. Or <Link href="/#readings" className="editorial-link">get a personal reading from Cass</Link>. The calculation runs in your browser; your birthday is kept in this tab to continue between tools.</p>
 
       <section id="what-is-a-birth-card" className="mt-8 max-w-2xl scroll-mt-10">
-        <h2 className="font-serif text-2xl text-brand-ink">What is a birth card in Cardology?</h2>
+        <h2>What is a birth card in Cardology?</h2>
         <p className="prose-reading mt-3 text-brand-ink-soft">
           It is the one playing card your month and day lock to for life. The year
           does not change the card. Suit names the life domain. Rank names how that
@@ -251,10 +252,10 @@ export default function CalculatorPage() {
         Written and reviewed by{" "}
         <Link href="/about" className="text-brand-oxblood underline underline-offset-4">
           Cassidy Rice
-        </Link>{" "}
-        · Updated {updatedLabel(REVIEWED_DATE)} ·{" "}
+        </Link>
+        . Updated {updatedLabel(REVIEWED_DATE)}. Read the{" "}
         <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
-          Editorial standards
+          editorial standards
         </Link>
         . New to the method?{" "}
         <Link href="/what-is-cardology" className="text-brand-oxblood underline underline-offset-4">
@@ -263,27 +264,29 @@ export default function CalculatorPage() {
         .
       </p>
 
-      <section aria-labelledby="suit-guide-heading" className="mt-8">
-        <h2 id="suit-guide-heading" className="font-serif text-2xl text-brand-ink">Four suits. Four kinds of trouble.</h2>
+      <InView as="section" aria-labelledby="suit-guide-heading" className="mt-8">
+        <h2 id="suit-guide-heading" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>Four suits. Four kinds of trouble.</h2>
         <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">Look at the symbol on your card. The suit is where its meaning starts. The rank adds another layer, as if you needed one.</p>
-        <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <ul className="calc-suits" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
           {[
-            ["A♥", "Hearts", "Relationships & emotion"],
-            ["A♣", "Clubs", "Mind & communication"],
-            ["A♦", "Diamonds", "Values & resources"],
-            ["A♠", "Spades", "Work, will & transformation"],
-          ].map(([code, suit, theme]) => (
-            <div key={suit} className="rounded-xl border border-brand-line bg-brand-ivory/70 p-4 text-center">
-              <PlayingCard code={code} size="sm" surface="paper" />
-              <h3 className="mt-3 font-serif text-lg text-brand-ink">{suit}</h3>
-              <p className="mt-1 text-xs leading-relaxed text-brand-ink-soft">{theme}</p>
-            </div>
+            ["ace-of-hearts", "Hearts", "Relationships and emotion"],
+            ["ace-of-clubs", "Clubs", "Mind and communication"],
+            ["ace-of-diamonds", "Diamonds", "Values and resources"],
+            ["ace-of-spades", "Spades", "Work, will and transformation"],
+          ].map(([slug, suit, theme]) => (
+            <li key={suit} className="calc-suit">
+              <img src={`/share-cards/faces/${slug}.png`} alt={`Ace of ${suit} playing card`} width={1000} height={1500} loading="lazy" decoding="async" />
+              <div>
+                <h3>{suit}</h3>
+                <p>{theme}</p>
+              </div>
+            </li>
           ))}
-        </div>
-        <p className="mt-3 text-sm"><Link href="/52-card-astrology-explained" className="text-brand-oxblood underline underline-offset-4">Go deeper on suits and ranks →</Link></p>
-      </section>
+        </ul>
+        <p className="mt-3 text-sm"><Link href="/52-card-astrology-explained" className="text-brand-oxblood underline underline-offset-4">Go deeper on suits and ranks</Link></p>
+      </InView>
 
-      <aside className="mt-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
+      <aside className="calc-aside" aria-label="Playing cards, not tarot">
         <p className="font-serif text-base text-brand-ink">
           <strong>Playing cards, not tarot.</strong>
         </p>
@@ -295,14 +298,13 @@ export default function CalculatorPage() {
         </p>
         <p className="mt-3 text-sm">
           <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
-            Why Cardology is not tarot →
+            Why Cardology is not tarot
           </Link>
         </p>
       </aside>
 
-      <section id="cardology-chart" className="mt-10 scroll-mt-10">
-        <p className="type-eyebrow mb-2 !text-brand-bronze">The birthday map</p>
-        <h2 className="font-serif text-3xl text-brand-ink">Cardology Chart</h2>
+      <InView as="section" id="cardology-chart" className="mt-10 scroll-mt-10">
+        <h2 data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>The Cardology chart: the birthday map</h2>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           A Cardology chart (also called the Cardology calendar or birthday
           chart) is the birthday-to-playing-card map. Each calendar date
@@ -319,7 +321,7 @@ export default function CalculatorPage() {
           to open that birthday&rsquo;s page.
         </p>
         <BirthdayChartTable />
-        <h3 className="mt-8 font-serif text-xl text-brand-ink">Card meanings</h3>
+        <h3 className="mt-8">Card meanings</h3>
         <p className="prose-reading mt-2 text-sm text-brand-ink-soft">Found your card in the chart? Open its meaning. Read it twice.</p>
         <nav className="mt-3 flex flex-wrap gap-1.5" aria-label="All 52 birth card meanings">
           {allCardSeo().map((c) => (
@@ -327,12 +329,12 @@ export default function CalculatorPage() {
               key={c.slug}
               href={`/birth-card/${c.slug}`}
               title={`${c.label} birth card meaning`}
-              className={`rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm transition ${c.glyph === "\u2665" || c.glyph === "\u2666" ? "text-brand-oxblood" : "text-brand-ink"}`}
+              className={`calc-chip ${c.glyph === "\u2665" || c.glyph === "\u2666" ? "text-brand-oxblood" : "text-brand-ink"}`}
             >
               {c.rank}{c.glyph}
             </Link>
           ))}
-          <Link href="/birth-card/joker" className="rounded-[3px] border border-brand-line px-2 py-1 font-serif text-sm text-brand-ink ">Joker</Link>
+          <Link href="/birth-card/joker" className="calc-chip text-brand-ink">Joker</Link>
         </nav>
         <p className="prose-reading mt-4 text-sm text-brand-ink-soft">
           The chart cell is the card. These dates open that card&rsquo;s meaning page.
@@ -377,13 +379,13 @@ export default function CalculatorPage() {
           </Link>{" "}
           for where the practice stops.
         </p>
-        <h3 className="mt-8 font-serif text-xl text-brand-ink">Browse the chart by month</h3>
+        <h3 className="mt-8">Browse the chart by month</h3>
         <nav className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-4" aria-label="Birthday directory by month">
           {MONTH_DIRECTORY.map(([label, slug]) => (
             <a
               key={slug}
               href={`/born-on/${slug}`}
-              className="rounded-xl border border-brand-line bg-brand-ivory/70 px-3 py-2 text-center font-serif text-sm text-brand-ink transition "
+              className="calc-month"
             >
               {label}
             </a>
@@ -400,15 +402,12 @@ export default function CalculatorPage() {
           </Link>
           .
         </p>
-      </section>
+      </InView>
 
       <section id="how-it-works" className="mt-12 scroll-mt-10">
         <details>
-          <summary className="cursor-pointer">
-            <p className="type-eyebrow mb-2 !text-brand-bronze">How the calculation works</p>
-            <h2 className="font-serif text-3xl text-brand-ink">
-              How to find your birth card from your birthday
-            </h2>
+          <summary>
+            <h2>How to find your birth card from your birthday</h2>
           </summary>
         <div className="mt-4 space-y-4">
           <p className="prose-reading text-brand-ink-soft">
@@ -424,10 +423,9 @@ export default function CalculatorPage() {
               ["2", "Get the fixed card", "Month and day map to one playing card in the 52-card calendar. No rerolls."],
               ["3", "Verify the meaning", "Open the card page. Compare suit and rank. Test the meaning against how you actually behave, not your ideal self."],
             ].map(([n, title, body]) => (
-              <li key={n} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-                <span className="type-eyebrow !text-brand-bronze">Step {n}</span>
-                <h3 className="mt-2 font-serif text-lg text-brand-ink">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
+              <li key={n} className="calc-step">
+                <h3>{title}</h3>
+                <p>{body}</p>
               </li>
             ))}
           </ol>
@@ -446,18 +444,17 @@ export default function CalculatorPage() {
         </details>
       </section>
 
-      <section id="worked-example" className="mt-10 scroll-mt-10 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5 sm:p-6">
+      <section id="worked-example" className="mt-10 scroll-mt-10">
         <details>
-          <summary className="cursor-pointer">
-            <p className="type-eyebrow mb-2 !text-brand-bronze">Worked verification</p>
-            <h2 className="font-serif text-3xl text-brand-ink">How to calculate your birth card with playing cards</h2>
+          <summary>
+            <h2>How to calculate your birth card with playing cards</h2>
           </summary>
         <p className="prose-reading mt-4 text-brand-ink-soft">
           Do not take our word for it. Check the calculator by hand, then find the
           matching card in an ordinary playing-card deck. For any valid birthday except
           December 31, double the month number, add the day, and subtract the total from 55:
         </p>
-        <p className="mt-4 text-lg font-semibold leading-relaxed text-brand-ink">
+        <p className="calc-formula">
           55 − (2 × month number + day number)
         </p>
         <p className="prose-reading mt-4 text-brand-ink-soft">
@@ -512,20 +509,19 @@ export default function CalculatorPage() {
 
       <section id="birth-vs-ruling" className="mt-10 scroll-mt-10">
         <details>
-          <summary className="cursor-pointer">
-            <p className="type-eyebrow mb-2 !text-brand-bronze">Understand the result</p>
-            <h2 className="font-serif text-3xl text-brand-ink">Birth card vs. planetary ruling card</h2>
+          <summary>
+            <h2>Birth card vs. planetary ruling card</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
-            <h3 className="font-serif text-xl text-brand-ink">Birth card: the fixed pattern</h3>
+          <div className="calc-pane">
+            <h3>Birth card: the fixed pattern</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               Your birth card comes from month and day. It does not move. Read its
               suit as the life domain and its rank as the role you keep playing.
             </p>
           </div>
-          <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
-            <h3 className="font-serif text-xl text-brand-ink">Ruling card: the expression layer</h3>
+          <div className="calc-pane">
+            <h3>Ruling card: the expression layer</h3>
             <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
               The ruling card adds style and tone through the planetary layer. It can
               explain why two people with the same birth card act nothing alike.
@@ -544,9 +540,8 @@ export default function CalculatorPage() {
 
       <section className="mt-10">
         <details>
-          <summary className="cursor-pointer">
-            <p className="type-eyebrow mb-2 !text-brand-bronze">Playing cards, not tarot</p>
-            <h2 className="font-serif text-3xl text-brand-ink">This is a playing-card birth calculator, not tarot</h2>
+          <summary>
+            <h2>This is a playing-card birth calculator, not tarot</h2>
           </summary>
         <TableScroll className="mt-4" label="Cardology versus tarot birth cards">
           <table className="w-full min-w-[36rem] max-w-full border-collapse text-left text-sm text-brand-ink-soft">
@@ -568,8 +563,8 @@ export default function CalculatorPage() {
               </tr>
               <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Method</th>
-                <td className="p-3">Birthday → one fixed playing card</td>
-                <td className="p-3">Birth-date numerology → Major Arcana</td>
+                <td className="p-3">Birthday  one fixed playing card</td>
+                <td className="p-3">Birth-date numerology  Major Arcana</td>
               </tr>
               <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Shuffle?</th>
@@ -607,7 +602,7 @@ export default function CalculatorPage() {
           <strong>Cardology</strong> and publish the method so you can check the math
           instead of trusting a vibe.{" "}
           <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
-            Cards of Destiny &amp; Love Cards explained →
+            Cards of Destiny &amp; Love Cards explained
           </Link>
         </p>
         </details>
@@ -615,9 +610,8 @@ export default function CalculatorPage() {
 
       <section id="trust-and-limits" className="mt-10 scroll-mt-10">
         <details>
-          <summary className="cursor-pointer">
-            <p className="type-eyebrow mb-2 !text-brand-bronze">Experience, method, and trust</p>
-            <h2 className="font-serif text-3xl text-brand-ink">Why you can verify this Cardology calculator</h2>
+          <summary>
+            <h2>Why you can verify this Cardology calculator</h2>
           </summary>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           {[
@@ -626,9 +620,9 @@ export default function CalculatorPage() {
             ["Named publisher", "Cassidy Rice publishes and reviews the educational material. Editorial and correction standards are public. Someone is accountable here."],
             ["Private input", "The calculation runs in your browser. Anonymous analytics record calculator use, not the birthday entered."],
           ].map(([title, body]) => (
-            <div key={title} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-5">
-              <h3 className="font-serif text-lg text-brand-ink">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{body}</p>
+            <div key={title} className="calc-pane">
+              <h3>{title}</h3>
+              <p>{body}</p>
             </div>
           ))}
         </div>
@@ -649,22 +643,22 @@ export default function CalculatorPage() {
       </section>
 
       <section id="faq" className="mt-10 scroll-mt-10">
-        <h2 className="type-eyebrow mb-4 !text-brand-bronze">Birth card calculator FAQ</h2>
-        <div className="space-y-4">
+        <h2 className="mb-4">Birth card calculator FAQ</h2>
+        <div className="calc-faq">
           {faqs.map((f) => (
-            <details key={f.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-              <summary className="cursor-pointer">
-                <h3 className="font-serif text-lg text-brand-ink">{f.q}</h3>
+            <details key={f.q} className="calc-faq-item">
+              <summary>
+                <h3>{f.q}</h3>
               </summary>
-              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{f.a}</p>
+              <p className="prose-reading mt-2">{f.a}</p>
             </details>
           ))}
         </div>
       </section>
 
       <section className="mt-10" aria-labelledby="related-playing-card-cardology">
-        <h2 id="related-playing-card-cardology" className="type-eyebrow mb-3 !text-brand-bronze">
-          Related (playing-card Cardology)
+        <h2 id="related-playing-card-cardology" className="mb-3">
+          Related playing-card Cardology
         </h2>
         <ul className="prose-reading space-y-1.5 text-brand-ink-soft">
           {[
@@ -683,36 +677,36 @@ export default function CalculatorPage() {
         </ul>
       </section>
 
-      <div className="card-surface mt-8 rounded-2xl p-5">
-        <h2 className="font-serif text-2xl text-brand-ink">Continue your Cardology birth chart</h2>
+      <div className="card-surface calc-continue">
+        <h2>Continue your Cardology birth chart</h2>
         <p className="prose-reading mt-2 text-sm text-brand-ink-soft">
           Browse the full 52-card meanings. Open the playing-cards birthday chart. Compare
           two birth cards. One calculator result turns into something you can check,
           instead of something you just screenshot.
         </p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/birth-card" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/birth-card" className="calc-chip text-brand-ink">
             Browse all 52 cards
           </Link>
-          <a href={BIRTHDAY_DIRECTORY_PATH} className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <a href={BIRTHDAY_DIRECTORY_PATH} className="calc-chip text-brand-ink">
             Playing cards birthday chart
           </a>
-          <Link href="/birth-card-compatibility-calculator" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/birth-card-compatibility-calculator" className="calc-chip text-brand-ink">
             Compatibility calculator
           </Link>
-          <Link href="/what-is-cardology" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/what-is-cardology" className="calc-chip text-brand-ink">
             What is Cardology?
           </Link>
-          <Link href="/cardology-for-beginners" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/cardology-for-beginners" className="calc-chip text-brand-ink">
             Beginners guide
           </Link>
-          <Link href="/destiny-cards" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/destiny-cards" className="calc-chip text-brand-ink">
             Destiny Cards hub
           </Link>
-          <Link href="/cardology-compatibility" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/cardology-compatibility" className="calc-chip text-brand-ink">
             Compatibility guide
           </Link>
-          <Link href="/methodology" className="rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft hover:text-brand-ink">
+          <Link href="/methodology" className="calc-chip text-brand-ink">
             Methodology
           </Link>
         </div>

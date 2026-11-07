@@ -1,0 +1,106 @@
+/* Hallmark · built: the project · redesign: full · stamp and tokens: app/tokens.css */
+/* Hallmark · waive 49b · the pair and offer links carry card and product names from the data · they wrap whole on a 320px phone */
+/* Hallmark · waive 79 · title block with the card pinned beside it · a reading page's first screen is a title and its card, not a hero that must fill the fold */
+/* Hallmark · answered F20 · thirteen ranks in a suit; the thirteenth tile is the King, alone by arithmetic */
+/* Hallmark · answered F19 · the extra weights are Tailwind font-medium on table rows kept from the page's own markup */
+/* Hallmark · answered 26a 26b · focus and active states are set once in app/globals.css for every control, and repeated below for this page */
+/* Hallmark · dismissed 77 · these are reading pages of ten or more sections, not landing strips; the gate counts the stage grid as one */
+/* Hallmark · dismissed 28a · the first image is the eager title face; the deck faces below the fold are lazy on purpose */
+/* The card meaning pages and the 52-card library: the page's card pinned beside the reading
+   (components/seo/SeoShell.tsx stage), sections separated by space and one tone step. */
+
+.card-page { max-width: var(--measure-wide); }
+.card-title { display: grid; gap: var(--space-md); padding-bottom: var(--space-lg); }
+.card-title h1 {
+  max-width: 20ch;
+  text-wrap: balance;
+  font-size: var(--step-head);
+  line-height: var(--leading-head);
+  letter-spacing: var(--tracking-display);
+}
+.card-title-lead { max-width: 40ch; font-size: var(--step-lead); line-height: 1.35; color: var(--ink); }
+.card-title-face { width: min(40vw, 9rem); height: auto; border-radius: var(--radius-card); }
+.card-title-fan { margin-bottom: var(--space-xs); }
+@media (min-width: 1024px) {
+  .card-title-face,
+  .card-title-fan { display: none; }
+}
+.card-answer { background: var(--paper-deep); padding: var(--space-lg); margin-top: var(--space-md); }
+.card-byline { margin-top: var(--space-md); font-size: var(--step-small); color: var(--ink-soft); }
+.card-section { margin-top: var(--space-2xl); }
+.card-h2 {
+  margin-bottom: var(--space-sm);
+  font-size: var(--step-lead);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-weight: 400;
+}
+.card-page .prose-reading { color: var(--ink); }
+.card-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
+.card-note { margin-top: var(--space-md); font-size: var(--step-small); color: var(--ink-soft); }
+
+.card-lens { padding: var(--space-xs) 0; }
+.card-lens-label { margin-bottom: var(--space-2xs); font-size: var(--step-small); font-weight: 600; }
+.card-info { padding: var(--space-xs) 0; }
+.card-info-label { font-size: var(--step-small); color: var(--ink-soft); margin-bottom: var(--space-2xs); }
+.card-angle { padding: 0; }
+.card-angle h3 { font-weight: 600; }
+.card-karma {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--paper-deep);
+  color: var(--ink);
+  text-decoration: none;
+}
+.card-karma:hover { background: var(--paper-deeper); }
+.card-karma-face { width: 3.5rem; height: auto; border-radius: var(--radius-card); }
+.card-karma-text { display: flex; flex-direction: column; }
+.card-karma-label { font-size: var(--step-small); color: var(--ink-soft); }
+.card-shadow { margin-top: var(--space-2xl); padding: var(--space-lg); background: var(--paper-deep); }
+.card-shadow-quote { margin: var(--space-md) 0 0; font-size: var(--step-lead); line-height: 1.35; color: var(--ink); }
+.card-shadow-keywords { margin-top: var(--space-md); font-size: var(--step-small); color: var(--ink-soft); }
+.card-prompts { margin: 0; padding-left: 1.25em; display: grid; gap: var(--space-sm); }
+.card-aside { margin-top: var(--space-2xl); padding: var(--space-lg); background: var(--paper-deep); }
+.card-aside-title { font-size: var(--step-lead); line-height: 1.25; }
+.card-aside .accent-button { display: inline-flex; }
+.card-siblings { display: flex; flex-wrap: wrap; gap: var(--space-xs) var(--space-lg); margin: 0; padding: 0; list-style: none; }
+.card-walk { color: var(--ink); }
+.card-person { padding: var(--space-xs) 0; }
+.card-small { font-size: var(--step-small); color: var(--ink-soft); }
+.card-page .text-xs { font-size: var(--step-small) !important; }
+.card-page :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.card-page :is(a, button):active { transform: scale(0.98); }
+.card-page :disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Library */
+.card-suit-nav { display: flex; flex-wrap: wrap; gap: var(--space-md) var(--space-lg); margin: var(--space-lg) 0; }
+.card-popular { display: grid; gap: var(--space-xs); margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.card-tile { display: block; color: var(--ink); text-decoration: none; }
+.card-grid-small { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card-tile img { width: 100%; height: auto; border-radius: var(--radius-card); }
+.card-tile-name { display: block; margin-top: var(--space-xs); font-size: var(--step-small); }
+.card-tile-title { display: block; font-size: var(--step-small); color: var(--ink-soft); }
+.card-tile:hover .card-tile-name { text-decoration: underline; text-underline-offset: 0.2em; }
+.card-faq { display: grid; gap: var(--space-lg); }
+.card-faq h3 { font-weight: 600; }
+.deck-face { display: block; aspect-ratio: 2.5 / 3.5; overflow: hidden; border-radius: 2px; background: var(--ivory); }
+.deck-rank { text-align: center; font-size: var(--step-small); color: var(--ink-soft); }
+.seo-fan-card { border-radius: var(--radius-card); }
+
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.deck-suit { text-align: center; font-size: var(--step-small); font-weight: 600; }
+.video-frame { background: var(--board); }
+.video-play { display: flex; height: 3.5rem; width: 3.5rem; align-items: center; justify-content: center; border-radius: var(--radius-pill); background: var(--scrim); }

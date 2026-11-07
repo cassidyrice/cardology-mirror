@@ -8,33 +8,33 @@ import {
   serializeJsonLdForHtml,
 } from "@/lib/structured-data";
 
-// Shared content shell for public SEO pages. It borrows the homepage's
-// editorial paper/ink visual system while keeping article pages readable.
-// Shared navigation and reading-paper typography across public page families.
+/**
+ * Shared shell for the public reading pages. The same drafting sheet as the
+ * homepage; when a page has a card, `stage` pins it beside the reading on
+ * desktop (docs/design/DIRECTION.md, "Composition").
+ */
 export function SeoShell({
   children,
   crumb,
+  stage,
 }: {
   children: ReactNode;
   crumb?: { label: string; href: string }[];
+  /** The page's card (or pair), pinned in a rail at the right on desktop. */
+  stage?: ReactNode;
 }) {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(
     crumb?.map(({ label, href }) => ({ name: label, href })) ?? [],
   );
 
   return (
-    <div className="paper-shell landing-oracle relative min-h-dvh overflow-hidden bg-brand-paper text-brand-ink">
-      <div className="oracle-grid" aria-hidden="true" />
-      <div className="oracle-noise" aria-hidden="true" />
-
-      <div className="relative z-20">
-        <SiteHeader />
-      </div>
+    <div className="paper-shell landing-oracle relative min-h-dvh bg-brand-paper text-brand-ink">
+      <SiteHeader />
 
       <main
         id="main-content"
         tabIndex={-1}
-        className="relative z-10 mx-auto min-h-[calc(100dvh-69px)] w-full max-w-5xl px-5 pt-8 sm:px-8 sm:pt-12 lg:px-10"
+        className={`relative mx-auto min-h-[calc(100dvh-69px)] w-full px-5 pt-6 sm:px-8 sm:pt-10 lg:px-12 ${stage ? "max-w-[var(--container)]" : "max-w-5xl"}`}
       >
         {breadcrumbJsonLd && (
           <script
@@ -47,15 +47,11 @@ export function SeoShell({
         )}
 
         {crumb && crumb.length > 0 && (
-          <nav aria-label="Breadcrumb" className="mb-7 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-brand-ink-faint">
+          <nav aria-label="Breadcrumb" className="blueprint-crumb">
             {crumb.map((c, i) => (
               <span key={c.href}>
-                {i > 0 && <span aria-hidden="true" className="px-2 text-brand-line-strong">/</span>}
-                <Link
-                  href={c.href}
-                  aria-current={i === crumb.length - 1 ? "page" : undefined}
-                  className="transition hover:text-brand-ink"
-                >
+                {i > 0 && <span aria-hidden="true">/</span>}
+                <Link href={c.href} aria-current={i === crumb.length - 1 ? "page" : undefined}>
                   {c.label}
                 </Link>
               </span>
@@ -63,12 +59,35 @@ export function SeoShell({
           </nav>
         )}
 
-        <article className="blueprint-content flex-1">{children}</article>
+        {stage ? (
+          <div className="shell-with-stage">
+            <article className="blueprint-content min-w-0 flex-1">{children}</article>
+            <aside className="shell-stage" aria-label="The card">{stage}</aside>
+          </div>
+        ) : (
+          <article className="blueprint-content flex-1">{children}</article>
+        )}
       </main>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-5 pb-16 sm:px-8 lg:px-10">
+      <div className={`relative mx-auto w-full px-5 pb-16 sm:px-8 lg:px-12 ${stage ? "max-w-[var(--container)]" : "max-w-5xl"}`}>
         <SiteFooter bare />
       </div>
     </div>
+  );
+}
+
+/** One card face pinned in the shell's stage. */
+export function StageCard({ slug, label }: { slug: string; label: string }) {
+  return (
+    <img
+      src={`/share-cards/faces/${slug}.png`}
+      alt={`${label} playing card`}
+      width={1000}
+      height={1500}
+      loading="eager"
+      fetchPriority="high"
+      decoding="async"
+      className="shell-stage-card"
+    />
   );
 }

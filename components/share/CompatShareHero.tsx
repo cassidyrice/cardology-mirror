@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { CardBack } from "@/components/cards/CardBack";
 import { ShareCompatDuelButton } from "@/components/share/ShareCardCanvas";
 import { parseCard } from "@/lib/cards";
@@ -39,7 +40,7 @@ function FaceCard({ code }: { code?: string }) {
         )}
       </div>
       {label ? (
-        <p className="mt-3 font-serif text-xl leading-tight text-brand-ink [text-wrap:balance]">
+        <p className="mt-3 text-brand-ink [text-wrap:balance]">
           {label}
         </p>
       ) : null}
@@ -51,26 +52,31 @@ export function CompatShareHero({
   firstBirthCard,
   secondBirthCard,
   firstLifePathSeatCodes,
+  stage,
 }: {
   firstBirthCard?: string;
   secondBirthCard?: string;
   firstLifePathSeatCodes?: string[];
+  /** The two cards on their board, when the page draws them elsewhere; otherwise the duel renders here. */
+  stage?: ReactNode;
 }) {
   const ready = Boolean(firstBirthCard && secondBirthCard);
 
   return (
-    <div className="mx-auto flex w-full max-w-sm flex-col items-center text-center">
-      <div className="compat-hero-row">
-        <FaceCard code={firstBirthCard} />
-        <FaceCard code={secondBirthCard} />
-      </div>
+    <div className="compat-duel">
+      {stage ?? (
+        <div className="compat-hero-row">
+          <FaceCard code={firstBirthCard} />
+          <FaceCard code={secondBirthCard} />
+        </div>
+      )}
       {ready && firstLifePathSeatCodes ? (
-        <div className="mt-4 w-full">
+        <div className="compat-duel-share">
           <ShareCompatDuelButton
             firstBirthCard={firstBirthCard!}
             secondBirthCard={secondBirthCard!}
             firstLifePathSeatCodes={firstLifePathSeatCodes}
-            className="accent-button large-button w-full"
+            className="paper-button large-button"
           />
         </div>
       ) : null}

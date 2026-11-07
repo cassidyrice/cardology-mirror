@@ -93,7 +93,7 @@ export function CompareBand() {
         ) : null}
         <p className="mt-6 text-sm">
           <a href="/compatibility/" className="editorial-link text-brand-on-dark-soft">
-            Browse every card pairing. Yes, all of them →
+            Browse every card pairing. Yes, all of them
           </a>
         </p>
       </div>

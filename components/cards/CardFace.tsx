@@ -1,7 +1,6 @@
 "use client";
 
 import type { ParsedCard } from "@/lib/cards";
-import { FoilSheen } from "./FoilSheen";
 
 type SizeKey = "sm" | "md" | "lg";
 
@@ -96,13 +95,6 @@ export function CardFace({
       className="relative flex h-full w-full flex-col overflow-hidden rounded-[inherit]"
       style={{ color: card.color }}
     >
-      {/* suit-tinted radial glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-60"
-        style={{ background: `radial-gradient(75% 60% at 50% 45%, ${card.color}22, transparent 70%)` }}
-      />
-
       {/* top-left rank+suit */}
       <div className={`absolute left-0 top-0 z-10 ${s.pad}`}>
         <Corner rank={card.rank} glyph={card.glyph} cls={s.corner} glyphCls={s.cornerGlyph} />
@@ -129,10 +121,7 @@ export function CardFace({
       ) : isAce ? (
         // Ace: one large ornamental center pip.
         <div className="absolute inset-0 z-[5] flex items-center justify-center">
-          <span
-            className={`${s.ace} leading-none`}
-            style={{ filter: `drop-shadow(0 0 14px ${card.color}88)` }}
-          >
+          <span className={`${s.ace} leading-none`}>
             {card.glyph}
           </span>
         </div>
@@ -150,8 +139,6 @@ export function CardFace({
         <Corner rank={card.rank} glyph={card.glyph} cls={s.corner} glyphCls={s.cornerGlyph} rotated />
       </div>
 
-      {/* foil sheen — full sweep for face cards, edge sheen for numbers */}
-      <FoilSheen variant={isCourt || isAce ? "full" : "border"} />
     </div>
   );
 }

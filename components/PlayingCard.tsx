@@ -85,20 +85,15 @@ export function PlayingCard({
         }
         className={[
           paper
-            ? "relative rounded-xl border bg-brand-ivory"
-            : "card-frame relative rounded-xl border bg-gradient-to-br from-haze to-cosmos",
+            ? "playing-card relative border bg-brand-ivory"
+            : "card-frame playing-card relative border bg-cosmos",
           borderClass,
-          "shadow-lg transition-transform duration-300",
+          "transition-transform duration-300",
           SIZES[size],
           float ? "animate-drift" : "",
-          interactive ? "cursor-pointer hover:-translate-y-0.5 active:scale-[0.98]" : "",
-          haloed ? (paper ? "ring-1 ring-brand-gold/60" : "ring-1 ring-gold/60") : "",
+          interactive ? "cursor-pointer active:scale-[0.98]" : "",
+          haloed ? (paper ? "ring-1 ring-brand-accent" : "ring-1 ring-gold/60") : "",
         ].join(" ")}
-        style={{
-          boxShadow: haloed
-            ? `0 0 0 1px #d9b26a55, 0 0 26px -4px #d9b26a99, 0 10px 34px -14px ${c.color}66`
-            : `0 8px 30px -12px ${c.color}66`,
-        }}
       >
         {showBack ? <CardBack /> : <CardFace card={c} size={size} paper={paper} />}
       </div>

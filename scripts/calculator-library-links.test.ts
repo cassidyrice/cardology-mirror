@@ -69,7 +69,7 @@ test("the birthday result renders its Worker anchor only for an eligible reveal"
     }),
   );
   expect(firstReveal).toMatch(
-    /^<a\b(?=[^>]*\bhref="\/born-on\/february-29")[^>]*>Read the February 29 birth-card page →<\/a>$/,
+    /^<a\b(?=[^>]*\bhref="\/born-on\/february-29")[^>]*>Read the February 29 birth-card page<\/a>$/,
   );
 
   liveInput = "2000-03-01";
@@ -89,7 +89,7 @@ test("the birthday result renders its Worker anchor only for an eligible reveal"
     }),
   );
   expect(afterSubmit).toMatch(
-    /^<a\b(?=[^>]*\bhref="\/born-on\/march-1")[^>]*>Read the March 1 birth-card page →<\/a>$/,
+    /^<a\b(?=[^>]*\bhref="\/born-on\/march-1")[^>]*>Read the March 1 birth-card page<\/a>$/,
   );
 
   const nextDay = renderToStaticMarkup(
@@ -111,7 +111,7 @@ test("the compatibility result renders one canonical Worker pair anchor", () => 
     }),
   );
   expect(markup).toMatch(
-    /^<a\b(?=[^>]*\bhref="\/compatibility\/king-of-hearts-and-ace-of-clubs")[^>]*>Read the full Ace of Clubs \+ King of Hearts pairing →<\/a>$/,
+    /^<a\b(?=[^>]*\bhref="\/compatibility\/king-of-hearts-and-ace-of-clubs")[^>]*>Read the full Ace of Clubs and King of Hearts pairing<\/a>$/,
   );
 
   const unknown = renderToStaticMarkup(

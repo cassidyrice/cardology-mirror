@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OfferCta } from "@/components/seo/OfferCta";
 import { notFound } from "next/navigation";
-import { SeoShell } from "@/components/seo/SeoShell";
+import { SeoShell, StageCard } from "@/components/seo/SeoShell";
+import "@/app/card-pages.css";
+import { InView } from "@/components/motion/InView";
 import { ShadowLayer, ShadowPrompts } from "@/components/seo/ShadowLayer";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
@@ -167,10 +169,12 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         { label: "Birth Cards", href: "/birth-card" },
         { label: card.label, href: `/birth-card/${card.slug}` },
       ]}
+      stage={<StageCard slug={card.slug} label={card.label} />}
     >
       <JsonLd data={jsonLd} />
+      <div className="card-page">
 
-      <div className="mb-4 flex items-center gap-5">
+      <header className="card-title">
         <img
           src={`/share-cards/faces/${card.slug}.png`}
           alt={`${card.label} playing card`}
@@ -178,24 +182,20 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="card-title-face"
         />
-        <div>
-          <span className="type-eyebrow !font-bold !text-brand-ink-soft">{card.suitDomain}</span>
-          <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">
-            {card.label} Meaning{" "}
-            {card.title && <span className="block text-lg text-brand-bronze">{card.title}</span>}
-          </h1>
-          <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
-        </div>
-      </div>
-      <div className="mt-5 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
+        <h1 className="rise">{card.label} Meaning</h1>
+        <p className="card-title-lead rise-2">
+          {card.title ? `${card.title}. ` : ""}A {suitWord(card)} card: {card.suitDomain.toLowerCase()}.
+        </p>
+      </header>
+      <div className="card-answer rise-3" data-ai-summary>
         <p className="type-eyebrow mb-2 !text-brand-bronze">The short answer</p>
         <p className="prose-reading text-brand-ink-soft">{cardQuickAnswer(card, dates)}</p>
       </div>
-      <p className="mt-3 text-xs text-brand-ink-soft">
-        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
+      <p className="card-byline">
+        By Cassidy Rice. Updated {updatedLabel(SEO_UPDATED)}.{" "}
+        <Link href="/editorial-policy" className="editorial-link">
           Editorial policy
         </Link>
       </p>
@@ -213,8 +213,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
               {dedupeAgainstPrior(readingNotes.love, priorReadingText)}{" "}
               {/* /compatibility/ is edge-rendered by the cardology-unlock Worker,
                   not this Next app: plain <a>, hub href from the generated index. */}
-              <a href={compatHubHref(card)} className="text-brand-oxblood underline underline-offset-4">
-                See {card.label} compatibility with all 52 cards, if you must →
+              <a href={compatHubHref(card)} className="editorial-link">
+                See {card.label} compatibility with all 52 cards, if you must
               </a>
             </p>
             <h3 className="mt-4 font-serif text-base text-brand-ink">In money and work</h3>
@@ -258,7 +258,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           People skip that part.
         </p>
         <p className="mt-3">
-          <Link href="/birth-card-calculator" className="text-brand-oxblood underline underline-offset-4">
+          <Link href="/birth-card-calculator" className="editorial-link">
             Find your birth card free
           </Link>
           {" "}before you sit down.
@@ -273,9 +273,9 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {angles.map((angle) => (
-            <div key={angle.label} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-              <h3 className="font-serif text-base text-brand-ink">{angle.label}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">{angle.body}</p>
+            <div key={angle.label} className="card-angle">
+              <h3>{angle.label}</h3>
+              <p className="mt-2">{angle.body}</p>
             </div>
           ))}
         </div>
@@ -305,8 +305,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
 
       <Section title="What you are actually good at">
         {card.gifts.length > 0 ? (
-          <ul className="space-y-1.5">
-            {card.gifts.map((g, i) => <li key={i} className="flex gap-2 text-brand-ink-soft"><span className="text-brand-bronze">·</span><span>{g}</span></li>)}
+          <ul className="card-list">
+            {card.gifts.map((g, i) => <li key={i}>{g}</li>)}
           </ul>
         ) : (
           <p>
@@ -384,7 +384,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                     <tr key={d.slug} className="border-b border-brand-line">
                       <th scope="row" className="py-2 pr-3 font-medium text-brand-ink">
                         {/* Plain <a> to /born-on/: birthday pages live on the Worker-served surface. */}
-                        <a href={`/born-on/${d.slug}`} className="text-brand-oxblood underline underline-offset-4">{d.label}</a>
+                        <a href={`/born-on/${d.slug}`} className="editorial-link">{d.label}</a>
                       </th>
                       <td className="py-2 pr-3">{z.sign}</td>
                       <td className="py-2 pr-3">{z.planet}</td>
@@ -393,7 +393,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
                           ? d.rulingCards.map((r, i) => (
                               <span key={r.slug}>
                                 {i > 0 ? " or " : ""}
-                                <Link href={`/birth-card/${r.slug}`} className="text-brand-oxblood underline underline-offset-4">{r.label}</Link>
+                                <Link href={`/birth-card/${r.slug}`} className="editorial-link">{r.label}</Link>
                               </span>
                             ))
                           : "·"}
@@ -424,8 +424,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             has to drop by two to keep that value. That makes this card&rsquo;s birthdays a straight diagonal
             across the calendar. Not a scatter. Not a vibe:
           </p>
-          <p className="mt-3 font-mono text-sm text-brand-ink">
-            {dates.map((d) => d.label).join(" → ")}
+          <p className="mt-3 card-walk tnum">
+            {dates.map((d) => d.label).join(", then ")}
           </p>
           <p className="mt-3">
             The walk runs {dates.length} step{dates.length === 1 ? "" : "s"} and then stops, because the next
@@ -439,7 +439,7 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <ul className="grid grid-cols-1 gap-2 text-sm">
           {related.map((c) => (
             <li key={c.slug}>
-              <Link href={`/birth-card/${c.slug}`} className="text-brand-oxblood underline underline-offset-4">{c.code} {c.label}</Link>
+              <Link href={`/birth-card/${c.slug}`} className="editorial-link">{c.label}</Link>
               <span className="text-brand-ink-soft">: another {suitWord(c).toLowerCase()} version of the same story</span>
             </li>
           ))}
@@ -459,8 +459,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             ))}
           </div>
           <p className="mt-3 text-sm">
-            <Link href={VIDEO_PATH} className="text-brand-oxblood underline underline-offset-4">
-              Browse all Cardology videos →
+            <Link href={VIDEO_PATH} className="editorial-link">
+              Browse all Cardology videos
             </Link>
           </p>
         </Section>
@@ -470,8 +470,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
           <div className="mt-4">
             <VideoEmbed videoId={youtubeId(birthdayVideo.url)} title={birthdayVideo.title} />
           </div>
-          <a href={birthdayVideo.url} className="mt-3 inline-block text-brand-oxblood underline underline-offset-4">
-            Watch {birthdayVideo.title} on YouTube →
+          <a href={birthdayVideo.url} className="mt-3 inline-block editorial-link">
+            Watch {birthdayVideo.title} on YouTube
           </a>
         </Section>
       ) : (
@@ -480,8 +480,8 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
             Watch the Card Blueprints shadow readings and explainers in the video library.
             Then come back to this {card.label} meaning page for the written version. It holds still while you reread it.
           </p>
-          <Link href={VIDEO_PATH} className="mt-3 inline-block text-brand-oxblood underline underline-offset-4">
-            Open Cardology videos →
+          <Link href={VIDEO_PATH} className="mt-3 inline-block editorial-link">
+            Open Cardology videos
           </Link>
         </Section>
       )}
@@ -492,29 +492,31 @@ function CardMeaningPage({ card }: { card: CardSeo }) {
         <FaqList faqs={faqs} />
       </Section>
 
-      <div className="card-surface mt-10 rounded-2xl p-5">
-        <p className="font-serif text-base text-brand-ink">Not sure this is even your card?</p>
-        <p className="mt-1 text-sm text-brand-ink-soft">Your birthday picks one card off the calendar. Find yours. Read its traditional meaning. Keep the questions that sting and ignore the rest, like your inbox.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">Need the calculator to identify your card first →</Link>
-      </div>
+      <aside className="card-aside">
+        <p className="card-aside-title">Not sure this is even your card?</p>
+        <p className="mt-1">Your birthday picks one card off the calendar. Find yours. Read its traditional meaning. Keep the questions that sting and ignore the rest, like your inbox.</p>
+        <Link href="/birth-card-calculator" className="accent-button mt-4">Find your birth card free</Link>
+      </aside>
 
-      <nav aria-label={`More ${suitWord(card)} cards`} className="mt-10">
-        <h2 className="type-eyebrow mb-3 !text-brand-bronze">More {suitWord(card)} cards</h2>
-        <ul className="flex flex-wrap gap-2">
+      <nav aria-label={`More ${suitWord(card)} cards`} className="card-section">
+        <h2 className="card-h2">More {suitWord(card)} cards</h2>
+        <ul className="card-grid card-grid-small">
           {siblings.map((c) => (
             <li key={c.slug}>
-              <Link href={`/birth-card/${c.slug}`} className="rounded-full border border-brand-line px-3 py-1 text-sm text-brand-ink-soft transition hover:text-brand-ink">
-                {c.code} {c.label}
+              <Link href={`/birth-card/${c.slug}`} className="card-tile">
+                <img src={`/share-cards/faces/${c.slug}.png`} alt="" width={1000} height={1500} loading="lazy" decoding="async" />
+                <span className="card-tile-name">{c.label}</span>
               </Link>
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-sm">
-          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">See how {card.label} pairs with other cards →</Link>
+        <p className="mt-4">
+          <Link href="/cardology-compatibility" className="editorial-link">How it pairs with other cards</Link>
         </p>
       </nav>
 
       <EndOfPageReads card={card} siblings={siblings} />
+      </div>
     </SeoShell>
   );
 }
@@ -562,10 +564,9 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
           height={1500}
           loading="eager"
           decoding="async"
-          className="w-24 shrink-0 rounded-xl border border-brand-line shadow-[0_6px_18px_rgba(20,17,13,0.18)]"
+          className="card-title-face"
         />
         <div>
-          <span className="type-eyebrow !font-bold !text-brand-ink-soft">{date.label} birth card</span>
           <h1 className="display mb-0 mt-1 text-3xl text-brand-ink">{date.label} Birth Card: {card.label}</h1>
           <span className="font-serif text-2xl" style={{ color: SUIT_COLOR_PAPER[card.suit] }}>{card.code}</span>
         </div>
@@ -575,8 +576,8 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         <p className="prose-reading text-brand-ink-soft">{dateQuickAnswer(date)}</p>
       </div>
       <p className="mt-3 text-xs text-brand-ink-soft">
-        By Cassidy Rice · Updated {updatedLabel(SEO_UPDATED)} ·{" "}
-        <Link href="/editorial-policy" className="text-brand-oxblood underline underline-offset-4">
+        By Cassidy Rice. Updated {updatedLabel(SEO_UPDATED)}.{" "}
+        <Link href="/editorial-policy" className="editorial-link">
           Editorial policy
         </Link>
       </p>
@@ -623,7 +624,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
         </p>
         {ruling && (
           <p>
-            For {date.label}, that makes <Link href={`/birth-card/${ruling.slug}`} className="text-brand-oxblood underline underline-offset-4">{ruling.label}</Link>{ruling.title ? ` (${ruling.title})` : ""} the primary ruling card. The birth card is the engine. The ruling card is the steering. A {date.label} {card.label} tends to run the core pattern through {ruling.suitDomain.toLowerCase()} and the tone of {rankTheme(ruling.rank).toLowerCase()}.
+            For {date.label}, that makes <Link href={`/birth-card/${ruling.slug}`} className="editorial-link">{ruling.label}</Link>{ruling.title ? ` (${ruling.title})` : ""} the primary ruling card. The birth card is the engine. The ruling card is the steering. A {date.label} {card.label} tends to run the core pattern through {ruling.suitDomain.toLowerCase()} and the tone of {rankTheme(ruling.rank).toLowerCase()}.
           </p>
         )}
       </Section>
@@ -654,7 +655,7 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
                 {/* Plain <a> to /born-on/: birthday pages live on the
                     Worker-served surface (the Worker 301s /birth-card/[date]
                     there; link direct to skip the redirect hop). */}
-                <a href={`/born-on/${d.slug}`} className="text-brand-oxblood underline underline-offset-4">{d.label}</a>
+                <a href={`/born-on/${d.slug}`} className="editorial-link">{d.label}</a>
               </li>
             ))}
           </ul>
@@ -668,15 +669,15 @@ function BirthdatePage({ date }: { date: BirthdateSeo }) {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">Just browsing other people&rsquo;s birthdays?</p>
         <p className="mt-1 text-sm text-brand-ink-soft">Run any birth date through the calculator to get the birth card and ruling card free. Same answer every time. It is math, not a mood.</p>
-        <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm text-brand-oxblood underline underline-offset-4">Need the calculator to identify your card first →</Link>
+        <Link href="/birth-card-calculator" className="mt-3 inline-block text-sm editorial-link">Need the calculator to identify your card first</Link>
       </div>
 
       <nav aria-label="Nearby birthdays" className="mt-8 flex items-center justify-between text-sm">
         {/* Prev/next birthdays live on the Worker-served /born-on/ surface;
             link direct instead of /birth-card/[date], which 301s there. */}
-        <a href={`/born-on/${prev.slug}`} className="text-brand-oxblood underline underline-offset-4">← {prev.label}</a>
+        <a href={`/born-on/${prev.slug}`} className="editorial-link">← {prev.label}</a>
         <Link href={`/birth-card/${card.slug}`} className="text-brand-ink-soft hover:text-brand-ink-soft">{card.label} guide</Link>
-        <a href={`/born-on/${next.slug}`} className="text-brand-oxblood underline underline-offset-4">{next.label} →</a>
+        <a href={`/born-on/${next.slug}`} className="editorial-link">{next.label}</a>
       </nav>
     </SeoShell>
   );
@@ -714,12 +715,11 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
         and mirrors of a lifetime. Sometimes all three at once. Each link opens the full two-card reading: suit
         dynamics, number dynamics, and what the connection is actually for.
       </p>
-      <ul className="mt-4 space-y-2">
+      <ul className="card-list mt-4">
         {compat.pairs.map((p) => (
-          <li key={p.href} className="flex gap-2 text-sm text-brand-ink-soft">
-            <span className="text-brand-bronze">·</span>
+          <li key={p.href}>
             <span>
-              <a href={p.href} className="text-brand-oxblood underline underline-offset-4">
+              <a href={p.href} className="editorial-link">
                 {card.label} + {p.label}
               </a>
               <span className="text-brand-ink-soft">: {PAIR_NOTES[p.pos] ?? "a fixed connection in the life path"}</span>
@@ -728,8 +728,8 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
         ))}
       </ul>
       <p className="mt-4 text-sm">
-        <a href={compat.hub} className="text-brand-oxblood underline underline-offset-4">
-          See how {card.label} pairs with all 52 cards →
+        <a href={compat.hub} className="editorial-link">
+          See how {card.label} pairs with all 52 cards
         </a>
       </p>
     </Section>
@@ -739,17 +739,17 @@ function CompatPairsSection({ card }: { card: CardSeo }) {
 function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[] }) {
   const reads = endOfPageReads(card, siblings);
   return (
-    <section className="mt-10" aria-labelledby="related-reads">
-      <h2 id="related-reads" className="type-eyebrow mb-3 !text-brand-bronze">More to read instead of sleeping</h2>
+    <section className="card-section" aria-labelledby="related-reads">
+      <h2 id="related-reads" className="card-h2">More to read instead of sleeping</h2>
       <ul className="space-y-2 text-sm">
         {reads.map((read) => (
           <li key={read.href}>
             {read.external ? (
-              <a href={read.href} className="text-brand-oxblood underline underline-offset-4">
+              <a href={read.href} className="editorial-link">
                 {read.label}
               </a>
             ) : (
-              <Link href={read.href} className="text-brand-oxblood underline underline-offset-4">
+              <Link href={read.href} className="editorial-link">
                 {read.label}
               </Link>
             )}
@@ -760,7 +760,7 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
         One relationship living in your head rent-free? Cass prepares the Chemistry Check from both people’s cards.{" "}
         <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
-          The Chemistry Check, $24 →
+          The Chemistry Check, $24
         </Link>
       </p>
     </section>
@@ -775,30 +775,27 @@ function ReadNextSection({ card }: { card: CardSeo }) {
   const dates = birthDatesForCard(card).slice(0, 3);
   return (
     <Section title="Read this next">
-      <ul className="mt-4 space-y-2">
-        <li className="flex gap-2 text-sm text-brand-ink-soft">
-          <span className="text-brand-bronze">·</span>
+      <ul className="card-list">
+        <li>
           <Link
             href={`/karma-cards#${card.slug}`}
-            className="text-brand-oxblood underline underline-offset-4"
+            className="editorial-link"
           >
             Karma cards for the {card.label}
           </Link>
         </li>
         {bestPairs.map((p) => (
-          <li key={p.href} className="flex gap-2 text-sm text-brand-ink-soft">
-            <span className="text-brand-bronze">·</span>
-            <a href={p.href} className="text-brand-oxblood underline underline-offset-4">
+          <li key={p.href}>
+            <a href={p.href} className="editorial-link">
               {card.label} + {p.label} compatibility
             </a>
           </li>
         ))}
         {dates.map((d) => (
-          <li key={d.slug} className="flex gap-2 text-sm text-brand-ink-soft">
-            <span className="text-brand-bronze">·</span>
+          <li key={d.slug}>
             <a
               href={`/born-on/${d.slug}`}
-              className="text-brand-oxblood underline underline-offset-4"
+              className="editorial-link"
             >
               Born on {d.label}
             </a>
@@ -813,24 +810,23 @@ function KarmaLink({ label, code }: { label: string; code: string }) {
   const seo = allCardSeo().find((c) => c.code === code);
   if (!seo) return null;
   return (
-    <Link
-      href={`/birth-card/${seo.slug}`}
-      className="card-surface flex items-center gap-4 px-4 py-3 transition !border-brand-line"
-    >
-      <span className="font-serif text-3xl" style={{ color: SUIT_COLOR_PAPER[seo.suit] }}>
-        {seo.code}
+    <Link href={`/birth-card/${seo.slug}`} className="card-karma">
+      <img src={`/share-cards/faces/${seo.slug}.png`} alt="" width={1000} height={1500} loading="lazy" decoding="async" className="card-karma-face" />
+      <span className="card-karma-text">
+        <span className="card-karma-label">{label}</span>
+        <span>{seo.label}</span>
       </span>
-      <div className="flex flex-col">
-        <span className="type-eyebrow text-[0.6rem] !text-brand-bronze">{label}</span>
-        <span className="font-serif text-base text-brand-ink">{seo.label}</span>
-      </div>
-      <span className="ml-auto text-brand-bronze">→</span>
     </Link>
   );
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return <section className="mt-8"><h2 className="type-eyebrow mb-2 !text-brand-bronze">{title}</h2><div className="prose-reading text-brand-ink-soft">{children}</div></section>;
+  return (
+    <InView as="section" className="card-section">
+      <h2 className="card-h2" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>{title}</h2>
+      <div className="prose-reading">{children}</div>
+    </InView>
+  );
 }
 
 // Position label colors. Inline styles outrank the .paper-shell class remaps,
@@ -854,18 +850,18 @@ function Lens({
 }) {
   const { label: labelColor, tint } = LENS_TONES[position];
   return (
-    <div className="rounded-2xl border p-4" style={{ borderColor: `${tint}33`, background: `${tint}0d` }}>
-      <p className="type-eyebrow mb-1" style={{ color: labelColor }}>{label}</p>
-      <p className="mb-0 text-brand-ink-soft">{text}</p>
+    <div className="card-lens" style={{ borderColor: tint }}>
+      <p className="card-lens-label" style={{ color: labelColor }}>{label}</p>
+      <p className="mb-0">{text}</p>
     </div>
   );
 }
 
 function InfoItem({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-      <dt className="type-eyebrow mb-1 !text-brand-bronze">{label}</dt>
-      <dd className="text-brand-ink-soft">{value}</dd>
+    <div className="card-info">
+      <dt className="card-info-label">{label}</dt>
+      <dd>{value}</dd>
     </div>
   );
 }

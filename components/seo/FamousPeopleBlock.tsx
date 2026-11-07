@@ -14,15 +14,15 @@ export function FamousPeopleBlock({
   if (people.length === 0) return null;
 
   return (
-    <section className="mt-8">
-      <h2 className="type-eyebrow mb-2 !text-brand-bronze">Famous people born under the {cardLabel}, for comparison</h2>
-      <div className="prose-reading text-brand-ink-soft">
+    <section className="card-section">
+      <h2 className="card-h2">Famous people born under the {cardLabel}, for comparison</h2>
+      <div className="prose-reading">
         <p>
           Birthdays are public record. The card is fixed by the date. A calendar coordinate, not a forecast. Use the list to test the pattern against people you already have strong opinions about. You do have opinions.
         </p>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2">
           {people.map((person) => (
-            <li key={person.qid} className="rounded-xl border border-brand-line bg-brand-ivory/70 px-3 py-2 text-sm">
+            <li key={person.qid} className="card-person">
               <a
                 href={person.wikipedia}
                 rel="noopener"
@@ -31,8 +31,8 @@ export function FamousPeopleBlock({
                 {person.name}
               </a>
               <span className="text-brand-ink-soft">: {person.known_for}</span>
-              <span className="block text-xs text-brand-ink-soft">born {famousBirthdayLabel(person.born)}</span>
-              <span className="block text-xs text-brand-ink-soft">
+              <span className="block card-small">born {famousBirthdayLabel(person.born)}</span>
+              <span className="block card-small">
                 <a
                   href={wikidataUrl(person.qid)}
                   rel="noopener"
@@ -40,7 +40,7 @@ export function FamousPeopleBlock({
                 >
                   {person.qid}
                 </a>
-                {" · "}
+                {" "}
                 <a href={person.wikipedia} rel="noopener" className="underline underline-offset-4">
                   Wikipedia
                 </a>
@@ -48,7 +48,7 @@ export function FamousPeopleBlock({
             </li>
           ))}
         </ul>
-        <p className="mt-3 text-xs text-brand-ink-soft" data-slot="sources">
+        <p className="card-note" data-slot="sources">
           Sources: Wikidata CC0 (P569 day precision) + Wikipedia CC BY-SA 4.0.
           Year-only dates, source conflicts, minors, and D3 descriptions are dropped, not guessed.
         </p>

@@ -24,7 +24,7 @@ export function AboutCassSection() {
           </p>
           <p className="mt-4">
             <Link href="/about" className="editorial-link text-brand-ink">
-              More about me, if you&rsquo;re curious →
+              More about me, if you&rsquo;re curious
             </Link>
           </p>
         </div>

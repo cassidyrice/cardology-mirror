@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
+
+import "@/app/compat.css";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
 import { StanReadingCta } from "@/components/seo/StanReadingCta";
 import {
@@ -100,105 +102,94 @@ export default function CompatibilityCalculatorPage() {
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <h1 className="display mb-4 text-3xl text-brand-ink">
-        Birth Card Compatibility Calculator
-      </h1>
+      <div className="compat-page">
+      <h1 className="display">Birth Card Compatibility Calculator</h1>
+      <p className="compat-lead mt-4 mb-8">
+        Two birthdays in. Both playing-card birth cards, each Life Path, and where the other person lands in yours.
+      </p>
 
       <CompatibilityCalculator />
-      <div className="mb-6 mt-8 rounded-2xl border border-brand-line bg-brand-ivory/70 p-5" data-ai-summary>
-        <p className="type-eyebrow mb-2 !text-brand-bronze">Quick answer</p>
-        <p className="prose-reading text-brand-ink-soft">
+
+      <section className="compat-panel" aria-label="Quick answer">
+        <p data-ai-summary>
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
           Life Path constitution, where the other person lands in your spectrum, and
           which Life Path cards you share. Free. Deterministic. Not a tarot shuffle.
           Same two dates, same answer, no matter how many times you check.
         </p>
-      </div>
-      <p className="prose-reading mb-6 text-brand-ink-soft">
-        Read each person&rsquo;s result in both directions. Then open the matching
-        pair guide. The interpretation offers questions for reflection. It does
-        not grade your relationship or tell you how it ends. The{" "}
-        <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check · $24
-        </Link>{" "}
-        is a personal reading of both people’s cards, shared strengths, and recurring friction. The specific friction. The fight you keep having about plans.
-      </p>
-
-      <aside className="mb-6 rounded-2xl border border-brand-line bg-brand-ivory/70 p-4 sm:p-5" aria-label="Playing cards, not tarot">
-        <p className="font-serif text-base text-brand-ink">
-          <strong>Playing cards, not tarot.</strong>
+        <p>
+          Read each person&rsquo;s result in both directions. Then open the matching
+          pair guide. The interpretation offers questions for reflection. It does
+          not grade your relationship or tell you how it ends. The{" "}
+          <Link href="/#chemistry-check" className="editorial-link">
+            Chemistry Check, $24,
+          </Link>{" "}
+          is a personal reading of both people’s cards, shared strengths, and recurring friction. The specific friction. The fight you keep having about plans.
         </p>
-        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+      </section>
+
+      <section aria-labelledby="not-tarot">
+        <h2 id="not-tarot">Playing cards, not tarot.</h2>
+        <p className="prose-reading mt-3">
           Compare two birthdays in a standard 52-card deck: Hearts, Clubs, Diamonds,
           Spades. This is <strong>not</strong> a tarot love spread or Major Arcana pair
           tool. Same two dates always return the same birth cards and Life Path map.
           No reshuffling until you like it.
         </p>
-        <p className="mt-3 text-sm">
-          <Link href="/cardology-vs-tarot" className="text-brand-oxblood underline underline-offset-4">
-            How Cardology differs from tarot →
+        <p className="mt-3 compat-links">
+          <Link href="/cardology-vs-tarot" className="editorial-link">
+            How Cardology differs from tarot
           </Link>
-          {" · "}
-          <Link href="/destiny-cards" className="text-brand-oxblood underline underline-offset-4">
-            Destiny Cards &amp; Love Cards explained →
+          <Link href="/destiny-cards" className="editorial-link">
+            Destiny Cards &amp; Love Cards explained
           </Link>
         </p>
-      </aside>
+      </section>
 
-      <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
-        <p className="font-serif text-base text-brand-ink">After you compare</p>
-        <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
+      <section aria-labelledby="after-compare">
+        <h2 id="after-compare">After you compare</h2>
+        <p className="prose-reading mt-3">
           Browse the full matrix of hubs and pairs. Or run one birthday through the
           birth card calculator if you only know one person so far. That person is
           usually you.
         </p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          <a
-            href={COMPATIBILITY_DIRECTORY_PATH}
-            className="inline-block rounded-full border border-brand-line px-4 py-2 text-sm text-brand-oxblood"
-          >
-            All pairings →
-          </a>
-          <Link
-            href="/birth-card-calculator"
-            className="inline-block rounded-full border border-brand-line px-4 py-2 text-sm text-brand-ink-soft"
-          >
-            Birth card calculator →
-          </Link>
+        <div className="mt-4 compat-links">
+          <a href={COMPATIBILITY_DIRECTORY_PATH} className="paper-button">All pairings</a>
+          <Link href="/birth-card-calculator" className="paper-button">Birth card calculator</Link>
         </div>
-      </div>
+      </section>
 
-      <section className="mt-10">
-        <h2 className="type-eyebrow mb-2 !text-brand-bronze">How to read the result</h2>
-        <p className="prose-reading text-brand-ink-soft">
+      <section aria-labelledby="how-to-read">
+        <h2 id="how-to-read">How to read the result</h2>
+        <p className="prose-reading mt-3">
           Start with birth-card chemistry. Then the Life Path cross-reference. If the
           other person&rsquo;s birth card lands in your Venus, Mars, Saturn, Neptune, or
           Pluto position, the relationship feels different than if it lands nowhere in
           the first spectrum. Saturn feels like homework. Mars feels like a debate you
           didn&rsquo;t schedule. Shared Life Path cards show where both people carry the
           same card in different roles. Method overview:{" "}
-          <Link href="/cardology-compatibility" className="text-brand-oxblood underline underline-offset-4">
+          <Link href="/cardology-compatibility" className="editorial-link">
             how Cardology compatibility works
           </Link>
           .
         </p>
       </section>
 
-      <section className="mt-10">
-        <h2 className="type-eyebrow mb-2 !text-brand-bronze">Frequently asked questions</h2>
-        <div className="space-y-4">
+      <section aria-labelledby="compat-faq">
+        <h2 id="compat-faq">Frequently asked questions</h2>
+        <div className="compat-faq mt-4">
           {faqs.map((faq) => (
-            <div key={faq.q} className="rounded-2xl border border-brand-line bg-brand-ivory/70 p-4">
-              <h3 className="font-serif text-base text-brand-ink">{faq.q}</h3>
-              <p className="prose-reading mt-2 text-sm text-brand-ink-soft">{faq.a}</p>
+            <div key={faq.q}>
+              <h3>{faq.q}</h3>
+              <p>{faq.a}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="mt-10">
-        <h2 className="type-eyebrow mb-3 !text-brand-bronze">Related pages</h2>
-        <ul className="grid gap-2 text-sm sm:grid-cols-2">
+      <section aria-labelledby="compat-related">
+        <h2 id="compat-related">Related pages</h2>
+        <ul className="compat-related mt-4">
           {[
             ["Cardology Compatibility", "/cardology-compatibility"],
             ["Birth Card Calculator", "/birth-card-calculator"],
@@ -209,25 +200,28 @@ export default function CompatibilityCalculatorPage() {
             ["Cardology Videos", VIDEO_PATH],
           ].map(([label, href]) => (
             <li key={href}>
-              <Link href={href} className="text-brand-oxblood underline underline-offset-4">
+              <Link href={href} className="editorial-link">
                 {label}
               </Link>
             </li>
           ))}
           <li>
-            <a href={COMPATIBILITY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
+            <a href={COMPATIBILITY_DIRECTORY_PATH} className="editorial-link">
               Browse every card pairing
             </a>
           </li>
           <li>
-            <a href={BIRTHDAY_DIRECTORY_PATH} className="text-brand-oxblood underline underline-offset-4">
+            <a href={BIRTHDAY_DIRECTORY_PATH} className="editorial-link">
               Birthdays by date
             </a>
           </li>
         </ul>
       </section>
 
+      <section aria-label="Next step">
       <StanReadingCta />
+      </section>
+      </div>
     </SeoShell>
   );
 }
