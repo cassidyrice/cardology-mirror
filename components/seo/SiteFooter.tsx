@@ -79,7 +79,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
   return (
     <footer className={bare ? "site-footer is-bare" : "site-footer"}>
       <div className="site-footer-inner">
-        <Link href="/" aria-label="Card blueprint home" className="footer-mast">
+        <Link href="/" aria-label="card blueprints home" className="footer-mast">
           card blueprints
         </Link>
         <nav aria-label="Core">

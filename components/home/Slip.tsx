@@ -28,12 +28,6 @@ const STAGES = [
 export function Slip() {
   return (
     <>
-      <h2 id="home-find-birth-card" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
-        How do I find my birth card?
-      </h2>
-      <p className="slip-intro" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-        You bring the same patterns to your relationships, your choices, and your year. You just haven&rsquo;t looked. Your birthday maps to one playing card in a 52-card deck. Month and day set the birth card. The year handles timing. Read the meaning as a prompt, not a forecast. It has no idea what happens Thursday.
-      </p>
       <p className="slip-link" data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
         <Link href="/methodology" className="editorial-link">Check the math. We show our work</Link>
       </p>

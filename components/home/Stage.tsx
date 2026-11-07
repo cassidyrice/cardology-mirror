@@ -50,7 +50,25 @@ export function Stage() {
     if (conn?.saveData || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       v.removeAttribute("autoplay");
       v.pause();
+      return;
     }
+    // The poster is the first paint; the film starts once the page is idle.
+    const start = () => {
+      v.querySelectorAll("source").forEach((s) => {
+        const src = s.getAttribute("data-src");
+        if (src) s.setAttribute("src", src);
+      });
+      v.load();
+      void v.play().catch(() => {});
+    };
+    const hasIdle = typeof window.requestIdleCallback === "function";
+    const handle = hasIdle
+      ? window.requestIdleCallback(start, { timeout: 2500 })
+      : window.setTimeout(start, 1200);
+    return () => {
+      if (hasIdle) window.cancelIdleCallback(handle);
+      else window.clearTimeout(handle);
+    };
   }, []);
 
   const card = picture.kind === "card" ? picture : null;
@@ -61,11 +79,10 @@ export function Stage() {
       <video
         ref={video}
         className="stage-film"
-        autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
         tabIndex={-1}
         disablePictureInPicture
@@ -73,8 +90,8 @@ export function Stage() {
         width={720}
         height={1280}
       >
-        <source src="/video/hero-loop-9x16.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"' />
-        <source src="/video/hero-loop-9x16.mp4" type="video/mp4" />
+        <source data-src="/video/hero-loop-9x16.av1.mp4" type='video/mp4; codecs="av01.0.05M.08"' />
+        <source data-src="/video/hero-loop-9x16.mp4" type="video/mp4" />
       </video>
 
       <div className="stage-card" data-shown={card ? "true" : "false"} aria-live="off">

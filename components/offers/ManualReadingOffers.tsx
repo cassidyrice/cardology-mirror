@@ -69,7 +69,7 @@ export function ManualReadingOffers() {
                           href={reading.checkoutHref}
                           data-order-reading={reading.id}
                           className="accent-button offer-order"
-                          aria-label={`Order ${reading.title} on Stan`}
+                          aria-label={`Order on Stan: ${reading.title}`}
                         >
                           Order on Stan
                         </a>
@@ -81,7 +81,7 @@ export function ManualReadingOffers() {
                             data-order-reading={reading.id}
                             aria-describedby={`${reading.id}-availability`}
                             className="accent-button offer-order"
-                            aria-label={`Order ${reading.title}`}
+                            aria-label={`Order on Stan: ${reading.title}`}
                           >
                             Order on Stan
                           </button>

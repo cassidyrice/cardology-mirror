@@ -219,7 +219,7 @@ html { scroll-padding-top: var(--space-2xl); }
 .offer-order { min-height: var(--control-height); }
 .offer-sample { font-size: var(--step-small); }
 .offer-footnote { margin-top: var(--space-xl); max-width: var(--measure); font-size: var(--step-small); color: var(--ink-soft); }
-.offer-footnote a { color: var(--accent); overflow-wrap: anywhere; }
+.offer-footnote a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.18em; overflow-wrap: anywhere; }
 
 /* ---------- Next step aside ---------- */
 .blueprint-next-step {

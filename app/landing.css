@@ -297,7 +297,7 @@ html[data-js] .landing-shell[data-phase="leaving"] .landing-form {
 .offer-image { width: 14rem; height: auto; margin: var(--space-sm) 0 0; }
 
 /* ---------- The sample: square plate, spare text ---------- */
-.sample {
+.home-reading-desk {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   min-height: 88svh;
@@ -535,7 +535,7 @@ html[data-js] .landing-shell[data-phase="leaving"] .landing-form {
     color: var(--on-dark);
   }
   .offer-image { width: 100%; margin: var(--space-md) 0; }
-  .sample,
+  .home-reading-desk,
   .closing { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .sample-plate { width: calc(100% - 2 * var(--space-md)); margin: var(--space-md) auto 0; }
   .sample-text { padding: var(--space-xl) var(--gutter); }

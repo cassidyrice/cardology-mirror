@@ -13,7 +13,7 @@ import {
   trackClientFunnelEventOnce,
 } from "@/components/analytics/AnalyticsCapture";
 import { setStage } from "@/components/home/Stage";
-import { Reveal } from "@/components/seo/Reveal";
+import dynamic from "next/dynamic";
 import {
   calculateBirthCardRevealFromIsoDate,
   type BirthCardReveal,
@@ -28,6 +28,9 @@ import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
  * the verdict lands. With scripting off the same form opens the calculator page
  * with the birthday, which already reads ?birthdate=.
  */
+// The verdict and its share/reading code load only once a birthday is entered.
+const Reveal = dynamic(() => import("@/components/seo/Reveal").then((m) => m.Reveal));
+
 type Phase = "idle" | "leaving" | "shown";
 
 export function LandingCalculator() {
