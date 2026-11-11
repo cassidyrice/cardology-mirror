@@ -7,7 +7,7 @@ export const REVIEW_NAME_MAX = 40;
 
 export type ReviewInput = { firstName: string; rating: number; comment: string; reading: string; consent: boolean };
 
-const READINGS = ["Chemistry Check", "12-Month Timing Map", "Other"];
+const READINGS = ["The Card Blueprint Reading", "Chemistry Check", "12-Month Timing Map", "Other"];
 export const REVIEW_READINGS = READINGS;
 
 /** Returns a clean review or an error string. Strips anything that looks like contact info. */

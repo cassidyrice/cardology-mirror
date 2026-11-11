@@ -33,11 +33,10 @@ test("$13 on public pages only ever means the Birth Card Blueprint", () => {
   expect(hits).toEqual([]);
 });
 
-test("the active offers are the $26 Timing Map and $39 Chemistry Check, with retired instant apps off sale", async () => {
+test("the active offer is the $99 Card Blueprint Reading, with retired instant apps off sale", async () => {
   const { READINGS_NAV } = await import("../lib/readings-nav");
   expect(READINGS_NAV.map((r) => [r.id, r.price])).toEqual([
-    ["timing-map", "$26"],
-    ["chemistry-check", "$39"],
+    ["card-blueprint-reading", "$99"],
   ]);
   const { CARD_APP_ON_SALE } = await import("../lib/products");
   const { YEAR_AHEAD_ON_SALE } = await import("../lib/year-ahead");

@@ -267,7 +267,8 @@ export function Reveal({ reveal, birthdate, onReset }: RevealProps) {
         <div className="verdict-offer" {...rise()}>
           <QuestionReadingComposer
             key={secondReveal ? `pair-${secondDate}` : "solo"}
-            defaultTrack={secondReveal ? "chemistry-check" : "timing-map"}
+            defaultTrack="card-blueprint-reading"
+            defaultWithPartner={Boolean(secondReveal)}
             initialBirth1={birthdate}
             initialBirth2={secondReveal ? secondDate : ""}
             placement="home-reveal-inline"

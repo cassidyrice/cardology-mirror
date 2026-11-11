@@ -1,6 +1,6 @@
-// Service layer for On-Page Question Readings ($26 Timing Map · $39 Chemistry Check).
-// Coordinates D1 persistence, HMAC magic-link signing for /ops/inbox, idempotent Stripe
-// fulfillment, 3-angle AI drafting, operator notifications, and Email / Hybrid SMS delivery.
+// Service layer for The Card Blueprint Reading ($99 · Suggested Questions PDF + 48h pass for up to 3 questions).
+// Coordinates D1 persistence, HMAC magic-link signing for /ops/inbox and /reading-pass,
+// idempotent Stripe fulfillment, 3-angle AI drafting, operator notifications, and Email / Hybrid SMS delivery.
 
 import { sanitizeAnalyticsPath, type FunnelContext } from "./analytics";
 import { recordFunnelEvent } from "./analytics-server";
@@ -14,14 +14,22 @@ import {
 } from "./question-reading-facts";
 import {
   generateThreeReadingAngles,
+  type PriorQuestionContext,
   type ReadingAngleDraft,
 } from "./question-reading-writer";
+import { JokerNotSupportedError } from "./reading";
 import { SITE_URL } from "./site";
 import { buildOperatorSmsHref, normalizePhoneE164, sendSms } from "./sms";
+import { SUGGESTED_QUESTIONS_PDF_PATH } from "./suggested-questions";
 import { b64urlDecode, b64urlEncode, hmac, randomJti, safeEqual } from "./token-crypto";
 
 import {
+  CARD_BLUEPRINT_READING_SPEC,
   CARD_BLUEPRINTS_STRIPE_ACCOUNT,
+  MAX_QUESTIONS_PER_ORDER,
+  PRIMARY_QUESTION_TRACK,
+  QUESTION_ACCESS_WINDOW_HOURS,
+  QUESTION_ACCESS_WINDOW_MS,
   QUESTION_READING_TRACKS,
   QUESTION_SLA_PROSE,
   QUESTION_SLA_SHORT,
@@ -32,10 +40,16 @@ import {
 } from "./question-reading-tracks";
 
 export {
+  CARD_BLUEPRINT_READING_SPEC,
   CARD_BLUEPRINTS_STRIPE_ACCOUNT,
+  MAX_QUESTIONS_PER_ORDER,
+  PRIMARY_QUESTION_TRACK,
+  QUESTION_ACCESS_WINDOW_HOURS,
+  QUESTION_ACCESS_WINDOW_MS,
   QUESTION_READING_TRACKS,
   QUESTION_SLA_PROSE,
   QUESTION_SLA_SHORT,
+  SUGGESTED_QUESTIONS_PDF_PATH,
   isQuestionTrack,
   type DeliveryChannel,
   type QuestionOrderStatus,
@@ -79,6 +93,9 @@ export interface QuestionOrderRow {
 
 export interface HydratedQuestionOrder {
   id: string;
+  parentOrderId: string;
+  questionNumber: 1 | 2 | 3;
+  maxQuestions: number;
   attemptId: string;
   stripeSessionId: string | null;
   track: QuestionTrack;
@@ -108,9 +125,68 @@ export interface HydratedQuestionOrder {
   deliveryLog: Record<string, unknown> | null;
   createdAt: number;
   paidAt: number | null;
+  accessExpiresAt: number | null;
   anglesReadyAt: number | null;
   sentAt: number | null;
   manualSmsHref: string | null;
+}
+
+export interface BuyerPassQuestionItem {
+  questionNumber: 1 | 2 | 3;
+  orderId: string;
+  question: string;
+  birth1: string;
+  name1: string;
+  birth2: string;
+  name2: string;
+  rel2: string;
+  status: QuestionOrderStatus;
+  submittedAt: number;
+  sentAt: number | null;
+  approvedSubject: string | null;
+  approvedBody: string | null;
+  approvedSmsBody: string | null;
+}
+
+export interface ReadingPassState {
+  orderId: string;
+  trackTitle: string;
+  priceDollars: number;
+  birth1: string;
+  name1: string;
+  defaultBirth2: string;
+  defaultName2: string;
+  defaultRel2: string;
+  deliveryChannel: DeliveryChannel;
+  destination: string;
+  paidAt: number;
+  accessExpiresAt: number;
+  windowHours: number;
+  windowOpen: boolean;
+  maxQuestions: number;
+  questionsUsed: number;
+  questionsRemaining: number;
+  canSubmitQuestion: boolean;
+  suggestedQuestionsUrl: string;
+  passUrl: string;
+  turnaround: string;
+  questions: BuyerPassQuestionItem[];
+}
+
+export class ReadingPassError extends Error {
+  status: 400 | 401 | 402 | 404 | 409 | 410 | 422;
+  code: string;
+
+  constructor(
+    status: 400 | 401 | 402 | 404 | 409 | 410 | 422,
+    code: string,
+    message: string,
+  ) {
+    super(message);
+    this.name = "ReadingPassError";
+    this.status = status;
+    this.code = code;
+  }
 }
 
 export interface QuestionOrderStatement {
@@ -160,7 +236,7 @@ const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS question_reading_orders (
   sent_at INTEGER
 )`;
 
-let schemaEnsuredForDb = new WeakSet<object>();
+const schemaEnsuredForDb = new WeakSet<object>();
 
 // Fallback process-local memory DB for local `next dev` when D1 binding isn't attached,
 // and exported factory for deterministic isolated tests.
@@ -192,10 +268,13 @@ export function createMemoryQuestionOrderDb(): QuestionOrderDB {
             },
             async all<T = QuestionOrderRow>(): Promise<{ results: T[] }> {
               let list = Array.from(rows.values());
-              if (normalized.includes("WHERE status != 'pending_payment'")) {
+              if (normalized.includes("WHERE status NOT IN ('pending_payment', 'awaiting_question')")) {
+                list = list.filter(
+                  (r) => r.status !== "pending_payment" && r.status !== "awaiting_question",
+                );
+              } else if (normalized.includes("WHERE status != 'pending_payment'")) {
                 list = list.filter((r) => r.status !== "pending_payment");
-              }
-              if (normalized.includes("WHERE status = ?")) {
+              } else if (normalized.includes("WHERE status = ?")) {
                 list = list.filter((r) => r.status === String(values[0]));
               }
               list.sort((a, b) => (b.paid_at ?? b.created_at) - (a.paid_at ?? a.created_at));
@@ -206,6 +285,76 @@ export function createMemoryQuestionOrderDb(): QuestionOrderDB {
                 return { success: true };
               }
               if (normalized.startsWith("INSERT INTO question_reading_orders")) {
+                const isChildInsert = normalized.includes("paid_at, status");
+                if (isChildInsert) {
+                  const [
+                    id,
+                    attempt_id,
+                    track,
+                    amount_cents,
+                    currency,
+                    birth1,
+                    name1,
+                    birth2,
+                    name2,
+                    rel2,
+                    question,
+                    delivery_channel,
+                    buyer_email,
+                    buyer_phone,
+                    sms_consent,
+                    placement,
+                    source_path,
+                    attribution_json,
+                    engine_facts_json,
+                    angles_json,
+                    created_at,
+                    paid_at,
+                    status,
+                    angles_ready_at,
+                  ] = values;
+                  for (const existing of rows.values()) {
+                    if (existing.attempt_id === String(attempt_id)) {
+                      throw new Error("UNIQUE constraint failed: question_reading_orders.attempt_id");
+                    }
+                  }
+                  rows.set(String(id), {
+                    id: String(id),
+                    attempt_id: String(attempt_id),
+                    stripe_session_id: null,
+                    track: track as QuestionTrack,
+                    amount_cents: Number(amount_cents),
+                    currency: String(currency),
+                    birth1: String(birth1),
+                    name1: String(name1),
+                    birth2: String(birth2),
+                    name2: String(name2),
+                    rel2: String(rel2),
+                    question: String(question),
+                    delivery_channel: delivery_channel as DeliveryChannel,
+                    buyer_email: String(buyer_email),
+                    buyer_phone: String(buyer_phone),
+                    sms_consent: Number(sms_consent),
+                    placement: String(placement),
+                    source_path: String(source_path),
+                    attribution_json: String(attribution_json),
+                    engine_facts_json: engine_facts_json ? String(engine_facts_json) : null,
+                    angles_json: angles_json ? String(angles_json) : null,
+                    steering_note: "",
+                    status: status as QuestionOrderStatus,
+                    approved_angle: null,
+                    approved_subject: null,
+                    approved_body: null,
+                    approved_sms_body: null,
+                    delivery_log_json: null,
+                    created_at: Number(created_at),
+                    paid_at: Number(paid_at),
+                    angles_ready_at: angles_ready_at ? Number(angles_ready_at) : null,
+                    sent_at: null,
+                  });
+                  return { success: true };
+                }
+
                 const [
                   id,
                   attempt_id,
@@ -227,6 +376,11 @@ export function createMemoryQuestionOrderDb(): QuestionOrderDB {
                   attribution_json,
                   created_at,
                 ] = values;
+                for (const existing of rows.values()) {
+                  if (existing.attempt_id === String(attempt_id)) {
+                    throw new Error("UNIQUE constraint failed: question_reading_orders.attempt_id");
+                  }
+                }
                 rows.set(String(id), {
                   id: String(id),
                   attempt_id: String(attempt_id),
@@ -276,6 +430,21 @@ export function createMemoryQuestionOrderDb(): QuestionOrderDB {
                   row.status = status as QuestionOrderStatus;
                   row.paid_at = row.paid_at ?? Number(paidAt);
                   if (buyerEmail && !row.buyer_email) row.buyer_email = String(buyerEmail);
+                }
+                return { success: true };
+              }
+              if (normalized.startsWith("UPDATE question_reading_orders SET question = ?, birth2 = ?, name2 = ?, rel2 = ?")) {
+                const [qText, b2, n2, r2, factsJson, anglesJson, status, readyAt, id] = values;
+                const row = rows.get(String(id));
+                if (row) {
+                  row.question = String(qText);
+                  row.birth2 = String(b2);
+                  row.name2 = String(n2);
+                  row.rel2 = String(r2);
+                  row.engine_facts_json = String(factsJson);
+                  row.angles_json = String(anglesJson);
+                  row.status = status as QuestionOrderStatus;
+                  row.angles_ready_at = Number(readyAt);
                 }
                 return { success: true };
               }
@@ -351,7 +520,7 @@ export async function getQuestionOrderDb(): Promise<QuestionOrderDB> {
   return devFallbackDb;
 }
 
-// --- Operator Auth & Magic Links ---
+// --- Operator & Buyer Reading Pass HMAC Tokens ---
 
 function getOpsSigningSecret(): string {
   return (
@@ -396,6 +565,43 @@ export async function verifyOpsOrderToken(
     if (decoded.scope !== "ops_question_order" || typeof decoded.orderId !== "string") return null;
     if (typeof decoded.exp !== "number" || decoded.exp < Date.now()) return null;
     if (expectedOrderId && decoded.orderId !== expectedOrderId) return null;
+    return { orderId: decoded.orderId };
+  } catch {
+    return null;
+  }
+}
+
+export async function signReadingPassToken(rootOrderId: string, ttlDays = 90): Promise<string> {
+  const secret = getOpsSigningSecret();
+  if (!secret) throw new Error("missing OPS_INBOX_SECRET / GATE_SECRET");
+  const payload = {
+    scope: "buyer_reading_pass",
+    orderId: rootOrderId,
+    exp: Date.now() + ttlDays * 86_400_000,
+  };
+  const payloadB64 = b64urlEncode(new TextEncoder().encode(JSON.stringify(payload)));
+  const sig = await hmac(payloadB64, secret);
+  return `${payloadB64}.${sig}`;
+}
+
+export async function verifyReadingPassToken(
+  token: string | null | undefined,
+): Promise<{ orderId: string } | null> {
+  if (!token) return null;
+  const secret = getOpsSigningSecret();
+  if (!secret) return null;
+  const [payloadB64, sig] = token.split(".");
+  if (!payloadB64 || !sig) return null;
+  const expectedSig = await hmac(payloadB64, secret);
+  if (!safeEqual(sig, expectedSig)) return null;
+  try {
+    const decoded = JSON.parse(new TextDecoder().decode(b64urlDecode(payloadB64))) as {
+      scope?: string;
+      orderId?: string;
+      exp?: number;
+    };
+    if (decoded.scope !== "buyer_reading_pass" || typeof decoded.orderId !== "string") return null;
+    if (typeof decoded.exp !== "number" || decoded.exp < Date.now()) return null;
     return { orderId: decoded.orderId };
   } catch {
     return null;
@@ -476,33 +682,22 @@ function checkBirthdateOrJoker(
   return { ok: true, iso };
 }
 
-export function validateQuestionIntake(
-  body: Record<string, unknown>,
-): { ok: true; value: ValidatedQuestionIntake } | { ok: false; err: IntakeValidationError } {
-  const track = body.track;
-  if (!isQuestionTrack(track)) {
+function validateQuestionText(
+  raw: unknown,
+  allowEmpty: boolean,
+): { ok: true; question: string } | { ok: false; err: IntakeValidationError } {
+  const question = typeof raw === "string" ? raw.replace(/\s+/g, " ").trim() : "";
+  if (!question) {
+    if (allowEmpty) return { ok: true, question: "" };
     return {
       ok: false,
-      err: { status: 400, code: "INVALID_TRACK", error: "Choose either the $26 Timing Map or $39 Chemistry Check." },
+      err: {
+        status: 400,
+        code: "QUESTION_TOO_SHORT",
+        error: "Write at least a full sentence so Cass can answer your actual question.",
+      },
     };
   }
-  const spec = QUESTION_READING_TRACKS[track];
-
-  const b1 = checkBirthdateOrJoker(body.birth1, "birth date");
-  if (!b1.ok) return b1;
-
-  let b2Iso = "";
-  if (spec.requiresSecondBirthdate) {
-    const b2 = checkBirthdateOrJoker(body.birth2, "second person's birth date");
-    if (!b2.ok) return b2;
-    b2Iso = b2.iso;
-  } else if (typeof body.birth2 === "string" && body.birth2.trim()) {
-    const b2 = checkBirthdateOrJoker(body.birth2, "second person's birth date");
-    if (!b2.ok) return b2;
-    b2Iso = b2.iso;
-  }
-
-  const question = typeof body.question === "string" ? body.question.replace(/\s+/g, " ").trim() : "";
   if (question.length < 12) {
     return {
       ok: false,
@@ -523,6 +718,36 @@ export function validateQuestionIntake(
       },
     };
   }
+  return { ok: true, question };
+}
+
+export function validateQuestionIntake(
+  body: Record<string, unknown>,
+): { ok: true; value: ValidatedQuestionIntake } | { ok: false; err: IntakeValidationError } {
+  const rawTrack = body.track;
+  if (rawTrack !== undefined && rawTrack !== null && rawTrack !== "" && !isQuestionTrack(rawTrack)) {
+    return {
+      ok: false,
+      err: { status: 400, code: "INVALID_TRACK", error: "Select The Card Blueprint Reading ($99)." },
+    };
+  }
+  // All new checkouts purchase the single unified $99 offer (The Card Blueprint Reading).
+  const track: QuestionTrack = PRIMARY_QUESTION_TRACK;
+
+  const b1 = checkBirthdateOrJoker(body.birth1, "birth date");
+  if (!b1.ok) return b1;
+
+  let b2Iso = "";
+  if (typeof body.birth2 === "string" && body.birth2.trim()) {
+    const b2 = checkBirthdateOrJoker(body.birth2, "second person's birth date");
+    if (!b2.ok) return b2;
+    b2Iso = b2.iso;
+  }
+
+  // Question #1 is optional at checkout — the buyer can either ask Question #1 right now
+  // OR pay first, download the Suggested Questions Guide, and submit Questions 1–3 within 48 hours.
+  const qChecked = validateQuestionText(body.question, true);
+  if (!qChecked.ok) return qChecked;
 
   const deliveryChannel: DeliveryChannel = body.deliveryChannel === "sms" ? "sms" : "email";
   const rawEmail = typeof body.buyerEmail === "string" ? body.buyerEmail.trim().toLowerCase() : "";
@@ -592,7 +817,7 @@ export function validateQuestionIntake(
       birth2: b2Iso,
       name2: cleanShort(body.name2, 60),
       rel2: cleanShort(body.rel2, 80),
-      question,
+      question: qChecked.question,
       deliveryChannel,
       buyerEmail,
       buyerPhone,
@@ -604,6 +829,34 @@ export function validateQuestionIntake(
 }
 
 // --- Hydrate Row ---
+
+function parseRowAttributionMeta(row: QuestionOrderRow): {
+  parentOrderId: string;
+  questionNumber: 1 | 2 | 3;
+  funnel: FunnelContext;
+} {
+  let raw: Record<string, unknown> = {};
+  try {
+    raw = JSON.parse(row.attribution_json || "{}") as Record<string, unknown>;
+  } catch {
+    raw = {};
+  }
+  const parentOrderId =
+    typeof raw.parentOrderId === "string" && raw.parentOrderId.trim()
+      ? raw.parentOrderId.trim()
+      : row.id;
+  const qNum: 1 | 2 | 3 =
+    raw.questionNumber === 2 || row.attempt_id.endsWith(":q2")
+      ? 2
+      : raw.questionNumber === 3 || row.attempt_id.endsWith(":q3")
+        ? 3
+        : 1;
+  return {
+    parentOrderId,
+    questionNumber: qNum,
+    funnel: raw as FunnelContext,
+  };
+}
 
 export function hydrateQuestionOrder(row: QuestionOrderRow): HydratedQuestionOrder {
   let facts: QuestionReadingFacts | null = null;
@@ -625,19 +878,23 @@ export function hydrateQuestionOrder(row: QuestionOrderRow): HydratedQuestionOrd
     deliveryLog = null;
   }
 
-  const spec = QUESTION_READING_TRACKS[row.track] ?? QUESTION_READING_TRACKS["timing-map"];
+  const meta = parseRowAttributionMeta(row);
+  const spec = QUESTION_READING_TRACKS[row.track] ?? CARD_BLUEPRINT_READING_SPEC;
   const preferredSmsText =
     row.approved_sms_body ||
     angles[0]?.smsBody ||
-    `Hi${row.name1 ? ` ${row.name1}` : ""}, here is your ${spec.title} reading from Card Blueprints.`;
+    `Hi${row.name1 ? ` ${row.name1}` : ""}, here is Question ${meta.questionNumber} of ${MAX_QUESTIONS_PER_ORDER} from your ${spec.title} at Card Blueprints.`;
 
   return {
     id: row.id,
+    parentOrderId: meta.parentOrderId,
+    questionNumber: meta.questionNumber,
+    maxQuestions: MAX_QUESTIONS_PER_ORDER,
     attemptId: row.attempt_id,
     stripeSessionId: row.stripe_session_id,
     track: row.track,
     trackTitle: spec.title,
-    amountCents: row.amount_cents,
+    amountCents: row.amount_cents || CARD_BLUEPRINT_READING_SPEC.amountCents,
     currency: row.currency,
     birth1: row.birth1,
     name1: row.name1,
@@ -662,6 +919,7 @@ export function hydrateQuestionOrder(row: QuestionOrderRow): HydratedQuestionOrd
     deliveryLog,
     createdAt: row.created_at,
     paidAt: row.paid_at,
+    accessExpiresAt: row.paid_at ? row.paid_at + QUESTION_ACCESS_WINDOW_MS : null,
     anglesReadyAt: row.angles_ready_at,
     sentAt: row.sent_at,
     manualSmsHref: row.buyer_phone ? buildOperatorSmsHref(row.buyer_phone, preferredSmsText) : null,
@@ -714,7 +972,9 @@ export async function listQuestionOrdersForInbox(
         .bind(statusFilter)
         .all<QuestionOrderRow>()
     : await store
-        .prepare("SELECT * FROM question_reading_orders WHERE status != 'pending_payment' ORDER BY created_at DESC LIMIT 50")
+        .prepare(
+          "SELECT * FROM question_reading_orders WHERE status NOT IN ('pending_payment', 'awaiting_question') ORDER BY created_at DESC LIMIT 50",
+        )
         .bind()
         .all<QuestionOrderRow>();
   return (res.results ?? []).map(hydrateQuestionOrder);
@@ -729,7 +989,7 @@ export async function createPendingQuestionOrder(
   const existing = await findOrderByAttempt(intake.attemptId, store);
   if (existing) return existing;
 
-  const spec = QUESTION_READING_TRACKS[intake.track];
+  const spec = CARD_BLUEPRINT_READING_SPEC;
   const id = `qro_${randomJti()}`;
   const now = Date.now();
 
@@ -745,7 +1005,7 @@ export async function createPendingQuestionOrder(
     .bind(
       id,
       intake.attemptId,
-      intake.track,
+      PRIMARY_QUESTION_TRACK,
       spec.amountCents,
       "usd",
       intake.birth1,
@@ -760,7 +1020,7 @@ export async function createPendingQuestionOrder(
       intake.smsConsent ? 1 : 0,
       intake.placement,
       intake.sourcePath,
-      JSON.stringify(attribution ?? {}),
+      JSON.stringify({ ...(attribution ?? {}), questionNumber: 1 }),
       now,
     )
     .run();
@@ -793,11 +1053,94 @@ export async function markQuestionOrderExpired(
     .run();
 }
 
+async function notifyOperatorOfQuestion(args: {
+  row: QuestionOrderRow;
+  facts: QuestionReadingFacts;
+  angles: ReadingAngleDraft[];
+  source: string;
+  questionNumber: 1 | 2 | 3;
+  emailSender?: typeof sendEmail;
+  smsSender?: typeof sendSms;
+}): Promise<void> {
+  const { row, facts, angles, source, questionNumber } = args;
+  const spec = CARD_BLUEPRINT_READING_SPEC;
+  const magicToken = await signOpsOrderToken(row.id);
+  const approvalUrl = `${SITE_URL}/ops/inbox?order=${encodeURIComponent(row.id)}&sig=${encodeURIComponent(magicToken)}`;
+
+  const operatorEmail = process.env.INTAKE_EMAIL;
+  if (operatorEmail) {
+    const emailText = [
+      `PAID CARD BLUEPRINT READING ($${spec.priceDollars} · Question ${questionNumber} of ${MAX_QUESTIONS_PER_ORDER})`,
+      `Approve & send in 1 tap: ${approvalUrl}`,
+      "",
+      `Order ID: ${row.id}`,
+      `Delivery requested: ${row.delivery_channel.toUpperCase()} ${
+        row.delivery_channel === "sms" ? `(${row.buyer_phone})` : `(${row.buyer_email})`
+      }`,
+      row.buyer_email ? `Buyer email: ${row.buyer_email}` : "",
+      row.buyer_phone ? `Buyer phone: ${row.buyer_phone}` : "",
+      `Question ${questionNumber} of ${MAX_QUESTIONS_PER_ORDER}: "${row.question}"`,
+      "",
+      "SPREAD SUMMARY:",
+      ...facts.summaryBullets.map((b) => `- ${b}`),
+      "",
+      ...angles.flatMap((a) => [
+        `--- ANGLE ${a.angle}: ${a.label} (${source}) ---`,
+        `Thesis: ${a.thesis}`,
+        `Subject: ${a.subject}`,
+        "",
+        a.emailBody,
+        "",
+        `[SMS version]: ${a.smsBody}`,
+        "",
+      ]),
+    ]
+      .filter((l) => l !== undefined)
+      .join("\n");
+
+    const subject = `[Approve Reading · Q${questionNumber}/${MAX_QUESTIONS_PER_ORDER}] $${spec.priceDollars} ${spec.shortTitle} — ${
+      row.name1 || row.buyer_email || row.buyer_phone
+    }`;
+
+    try {
+      if (args.emailSender) {
+        await args.emailSender({
+          to: operatorEmail,
+          subject,
+          text: emailText,
+          replyTo: row.buyer_email || undefined,
+          idempotencyKey: `qro-ops/${row.id}`,
+        });
+      } else {
+        await sendIntakeEmail({
+          to: operatorEmail,
+          subject,
+          text: emailText,
+          replyTo: row.buyer_email || undefined,
+        });
+      }
+    } catch (err) {
+      console.warn("[question-reading] operator notification email failed", err);
+    }
+  }
+
+  const cassPhone = process.env.CASS_NOTIFY_PHONE;
+  if (cassPhone) {
+    const smsFn = args.smsSender ?? sendSms;
+    await smsFn({
+      to: cassPhone,
+      body: `Card Blueprints: Q${questionNumber}/${MAX_QUESTIONS_PER_ORDER} $${spec.priceDollars} ${spec.shortTitle} (${row.delivery_channel.toUpperCase()}). "${row.question.slice(0, 85)}" — Approve & send: ${approvalUrl}`,
+    }).catch(() => null);
+  }
+}
+
 /**
  * Idempotent paid-order fulfillment:
  * 1. Marks order paid and stores fallback Stripe email if buyer checked out in SMS mode without typing email.
- * 2. Computes deterministic spread facts + generates 3 AI angles if not already generated.
- * 3. Sends buyer confirmation receipt + emails/texts Cass a 1-tap HMAC magic link to /ops/inbox.
+ * 2. Mints the buyer's 48-hour Reading Pass link + Suggested Questions PDF link and emails their receipt.
+ * 3. If Question #1 was provided at checkout, computes spread facts + 3 AI angles and alerts Cass;
+ *    if Question #1 was left blank so the buyer could read the Suggested Questions Guide first,
+ *    parks status at 'awaiting_question' ready for /reading-pass or inline post-checkout submission.
  */
 export async function fulfillPaidQuestionOrder(args: {
   orderId: string;
@@ -815,8 +1158,11 @@ export async function fulfillPaidQuestionOrder(args: {
   }
   if (!row) throw new Error(`question order not found: ${args.orderId}`);
 
-  // Already awaiting approval or already sent -> idempotent return!
-  if ((row.status === "awaiting_approval" || row.status === "sent") && row.angles_json) {
+  // Already fulfilled -> idempotent return!
+  if (
+    row.status === "awaiting_question" ||
+    ((row.status === "awaiting_approval" || row.status === "sent") && row.angles_json)
+  ) {
     return hydrateQuestionOrder(row);
   }
 
@@ -824,179 +1170,455 @@ export async function fulfillPaidQuestionOrder(args: {
     await attachStripeSessionToOrder(row.id, args.stripeSessionId, store);
   }
 
+  const hasInitialQuestion = row.question.trim().length >= 12;
   const paidAt = Date.now();
   const stripeEmail = (args.stripeBuyerEmail || "").trim().toLowerCase();
+  const interimStatus: QuestionOrderStatus = hasInitialQuestion
+    ? "generating_angles"
+    : "awaiting_question";
+
   await store
     .prepare(
       "UPDATE question_reading_orders SET status = ?, paid_at = COALESCE(paid_at, ?), buyer_email = CASE WHEN buyer_email = '' THEN ? ELSE buyer_email END WHERE id = ?",
     )
-    .bind("generating_angles", paidAt, EMAIL_RE.test(stripeEmail) ? stripeEmail : "", row.id)
+    .bind(interimStatus, paidAt, EMAIL_RE.test(stripeEmail) ? stripeEmail : "", row.id)
     .run();
 
   row = (await getQuestionOrderById(row.id, store))!;
 
-  const facts = await buildQuestionReadingFacts({
-    track: row.track,
-    birth1: row.birth1,
-    name1: row.name1,
-    birth2: row.birth2,
-    name2: row.name2,
-    rel2: row.rel2,
-    question: row.question,
-  });
+  const spec = CARD_BLUEPRINT_READING_SPEC;
+  const passToken = await signReadingPassToken(row.id);
+  const passUrl = `${SITE_URL}/reading-pass?token=${encodeURIComponent(passToken)}`;
+  const guideUrl = `${SITE_URL}${SUGGESTED_QUESTIONS_PDF_PATH}`;
 
-  const drafted = await generateThreeReadingAngles(facts, {
-    steeringNote: row.steering_note,
-    llmChat: args.llmChat,
-  });
+  let facts: QuestionReadingFacts | null = null;
+  let draftedAngles: ReadingAngleDraft[] = [];
+  let draftedSource = "deterministic-fallback";
 
-  const readyAt = Date.now();
-  await store
-    .prepare(
-      "UPDATE question_reading_orders SET engine_facts_json = ?, angles_json = ?, steering_note = ?, status = ?, angles_ready_at = ? WHERE id = ?",
-    )
-    .bind(
-      JSON.stringify(facts),
-      JSON.stringify(drafted.angles),
-      row.steering_note,
-      "awaiting_approval",
-      readyAt,
-      row.id,
-    )
-    .run();
+  if (hasInitialQuestion) {
+    facts = await buildQuestionReadingFacts({
+      track: row.track,
+      birth1: row.birth1,
+      name1: row.name1,
+      birth2: row.birth2,
+      name2: row.name2,
+      rel2: row.rel2,
+      question: row.question,
+    });
+
+    const drafted = await generateThreeReadingAngles(facts, {
+      steeringNote: row.steering_note,
+      questionNumber: 1,
+      llmChat: args.llmChat,
+    });
+    draftedAngles = drafted.angles;
+    draftedSource = drafted.source;
+
+    const readyAt = Date.now();
+    await store
+      .prepare(
+        "UPDATE question_reading_orders SET engine_facts_json = ?, angles_json = ?, steering_note = ?, status = ?, angles_ready_at = ? WHERE id = ?",
+      )
+      .bind(
+        JSON.stringify(facts),
+        JSON.stringify(drafted.angles),
+        row.steering_note,
+        "awaiting_approval",
+        readyAt,
+        row.id,
+      )
+      .run();
+  }
 
   const updated = (await getQuestionOrderById(row.id, store))!;
   const hydrated = hydrateQuestionOrder(updated);
-  const spec = QUESTION_READING_TRACKS[updated.track];
 
-  // Best-effort buyer receipt email (so buyer has immediate written confirmation in inbox too)
+  // Send buyer receipt + Suggested Questions PDF + private 48h 3-question Reading Pass link
   const effectiveEmail = updated.buyer_email;
+  const receiptLines = [
+    updated.name1 ? `Hi ${updated.name1},` : "Hi,",
+    "",
+    `Your ${spec.title} ($${spec.priceDollars}) is confirmed.`,
+    "",
+    "1. DOWNLOAD YOUR SUGGESTED QUESTIONS GUIDE (PDF):",
+    guideUrl,
+    "",
+    `2. YOUR 48-HOUR READING PASS (UP TO ${MAX_QUESTIONS_PER_ORDER} QUESTIONS):`,
+    passUrl,
+    "",
+    hasInitialQuestion
+      ? `Question 1 of ${MAX_QUESTIONS_PER_ORDER} received: "${updated.question}"\nYou still have ${MAX_QUESTIONS_PER_ORDER - 1} questions remaining on your pass over the next ${QUESTION_ACCESS_WINDOW_HOURS} hours — ask any follow-up or bring a second birthday anytime at the link above.`
+      : `You have ${QUESTION_ACCESS_WINDOW_HOURS} hours from purchase to ask up to ${MAX_QUESTIONS_PER_ORDER} questions (pick from the guide or ask anything in your own words, solo or with a second birthday).`,
+    "",
+    `Delivery method: ${
+      updated.delivery_channel === "sms"
+        ? `Text message to ${updated.buyer_phone}${effectiveEmail ? ` (with email copy here)` : ""}`
+        : `Email to ${effectiveEmail}`
+    }`,
+    `Turnaround per question: ${QUESTION_SLA_PROSE}.`,
+    "",
+    "If you need anything at all, just reply to this email.",
+    "",
+    "— Card Blueprints",
+  ].join("\n");
+
   if (effectiveEmail) {
+    const receiptSubject = hasInitialQuestion
+      ? `Your Card Blueprint Reading Pass + Question 1 received`
+      : `Your Card Blueprint Reading Pass + Suggested Questions Guide`;
     try {
       if (args.emailSender) {
         await args.emailSender({
           to: effectiveEmail,
-          subject: `Got your question — ${spec.title}`,
-          text: [
-            updated.name1 ? `Hi ${updated.name1},` : "Hi,",
-            "",
-            `Your ${spec.title} ($${spec.priceDollars}) is confirmed and your spread is on Cass's desk.`,
-            "",
-            `Your question: "${updated.question}"`,
-            `Delivery method: ${
-              updated.delivery_channel === "sms"
-                ? `Text message to ${updated.buyer_phone} (with email copy here)`
-                : `Email to ${effectiveEmail}`
-            }`,
-            `Turnaround: ${QUESTION_SLA_PROSE}.`,
-            "",
-            "If you forgot a detail you want Cass to know, just reply to this email.",
-            "",
-            "— Card Blueprints",
-          ].join("\n"),
+          subject: receiptSubject,
+          text: receiptLines,
           replyTo: process.env.INTAKE_EMAIL || undefined,
           idempotencyKey: `qro-receipt/${updated.id}`,
         });
       } else {
         await sendIntakeEmail({
           to: effectiveEmail,
-          subject: `Got your question — ${spec.title}`,
-          text: [
-            updated.name1 ? `Hi ${updated.name1},` : "Hi,",
-            "",
-            `Your ${spec.title} ($${spec.priceDollars}) is confirmed and your spread is on Cass's desk.`,
-            "",
-            `Your question: "${updated.question}"`,
-            `Delivery method: ${
-              updated.delivery_channel === "sms"
-                ? `Text message to ${updated.buyer_phone} (with email copy here)`
-                : `Email to ${effectiveEmail}`
-            }`,
-            `Turnaround: ${QUESTION_SLA_PROSE}.`,
-            "",
-            "If you forgot a detail you want Cass to know, just reply to this email.",
-            "",
-            "— Card Blueprints",
-          ].join("\n"),
+          subject: receiptSubject,
+          text: receiptLines,
           replyTo: process.env.INTAKE_EMAIL || undefined,
         });
       }
     } catch (err) {
       console.warn("[question-reading] buyer receipt email skipped", err);
     }
-  }
-
-  // Notify Cass with 1-tap HMAC magic link to /ops/inbox + all 3 angles inline
-  const magicToken = await signOpsOrderToken(updated.id);
-  const approvalUrl = `${SITE_URL}/ops/inbox?order=${encodeURIComponent(updated.id)}&sig=${encodeURIComponent(magicToken)}`;
-
-  const operatorEmail = process.env.INTAKE_EMAIL;
-  if (operatorEmail) {
-    const emailText = [
-      `NEW PAID QUESTION READING ($${spec.priceDollars} · ${spec.title})`,
-      `Approve & send in 1 tap: ${approvalUrl}`,
-      "",
-      `Order ID: ${updated.id}`,
-      `Delivery requested: ${updated.delivery_channel.toUpperCase()} ${
-        updated.delivery_channel === "sms" ? `(${updated.buyer_phone})` : `(${updated.buyer_email})`
-      }`,
-      updated.buyer_email ? `Buyer email: ${updated.buyer_email}` : "",
-      updated.buyer_phone ? `Buyer phone: ${updated.buyer_phone}` : "",
-      `Question: "${updated.question}"`,
-      "",
-      "SPREAD SUMMARY:",
-      ...facts.summaryBullets.map((b) => `- ${b}`),
-      "",
-      ...drafted.angles.flatMap((a) => [
-        `--- ANGLE ${a.angle}: ${a.label} (${drafted.source}) ---`,
-        `Thesis: ${a.thesis}`,
-        `Subject: ${a.subject}`,
-        "",
-        a.emailBody,
-        "",
-        `[SMS version]: ${a.smsBody}`,
-        "",
-      ]),
-    ]
-      .filter((l) => l !== undefined)
-      .join("\n");
-
-    try {
-      if (args.emailSender) {
-        await args.emailSender({
-          to: operatorEmail,
-          subject: `[Approve Reading] $${spec.priceDollars} ${spec.shortTitle} — ${
-            updated.name1 || updated.buyer_email || updated.buyer_phone
-          }`,
-          text: emailText,
-          replyTo: updated.buyer_email || undefined,
-          idempotencyKey: `qro-ops/${updated.id}`,
-        });
-      } else {
-        await sendIntakeEmail({
-          to: operatorEmail,
-          subject: `[Approve Reading] $${spec.priceDollars} ${spec.shortTitle} — ${
-            updated.name1 || updated.buyer_email || updated.buyer_phone
-          }`,
-          text: emailText,
-          replyTo: updated.buyer_email || undefined,
-        });
-      }
-    } catch (err) {
-      console.warn("[question-reading] operator notification email failed", err);
-    }
-  }
-
-  const cassPhone = process.env.CASS_NOTIFY_PHONE;
-  if (cassPhone) {
+  } else if (updated.delivery_channel === "sms" && updated.buyer_phone) {
+    // SMS-only checkout with no email on file: text the pass + PDF links so buyer never loses access.
     const smsFn = args.smsSender ?? sendSms;
     await smsFn({
-      to: cassPhone,
-      body: `Card Blueprints: New $${spec.priceDollars} ${spec.shortTitle} (${updated.delivery_channel.toUpperCase()}). "${updated.question.slice(0, 90)}" — Review 3 angles & send: ${approvalUrl}`,
+      to: updated.buyer_phone,
+      body: `Card Blueprints: Your $${spec.priceDollars} Reading Pass is live (${QUESTION_ACCESS_WINDOW_HOURS}h · up to ${MAX_QUESTIONS_PER_ORDER} questions). Suggested Questions PDF: ${guideUrl} — Ask questions here: ${passUrl}`,
     }).catch(() => null);
   }
 
+  if (hasInitialQuestion && facts && draftedAngles.length === 3) {
+    await notifyOperatorOfQuestion({
+      row: updated,
+      facts,
+      angles: draftedAngles,
+      source: draftedSource,
+      questionNumber: 1,
+      emailSender: args.emailSender,
+      smsSender: args.smsSender,
+    });
+  }
+
   return hydrated;
+}
+
+// --- 48-Hour 3-Question Reading Pass State & Submissions ---
+
+function toBuyerPassQuestionItem(
+  row: QuestionOrderRow,
+  questionNumber: 1 | 2 | 3,
+): BuyerPassQuestionItem {
+  return {
+    questionNumber,
+    orderId: row.id,
+    question: row.question,
+    birth1: row.birth1,
+    name1: row.name1,
+    birth2: row.birth2,
+    name2: row.name2,
+    rel2: row.rel2,
+    status: row.status,
+    submittedAt: row.angles_ready_at ?? row.paid_at ?? row.created_at,
+    sentAt: row.sent_at,
+    approvedSubject: row.status === "sent" ? row.approved_subject : null,
+    approvedBody: row.status === "sent" ? row.approved_body : null,
+    approvedSmsBody: row.status === "sent" ? row.approved_sms_body : null,
+  };
+}
+
+export async function getReadingPassState(
+  rootOrderId: string,
+  opts: { db?: QuestionOrderDB; nowMs?: number } = {},
+): Promise<ReadingPassState> {
+  const store = opts.db ?? (await getQuestionOrderDb());
+  const rootRow = await getQuestionOrderById(rootOrderId, store);
+  if (!rootRow) {
+    throw new ReadingPassError(404, "ORDER_NOT_FOUND", "Reading Pass not found.");
+  }
+  if (!rootRow.paid_at || rootRow.status === "pending_payment" || rootRow.status === "expired") {
+    throw new ReadingPassError(402, "ORDER_NOT_PAID", "This Reading Pass has not completed payment yet.");
+  }
+
+  const q2Row = await findOrderByAttempt(`${rootRow.id}:q2`, store);
+  const q3Row = await findOrderByAttempt(`${rootRow.id}:q3`, store);
+
+  const questions: BuyerPassQuestionItem[] = [];
+  if (rootRow.question.trim().length >= 12 && rootRow.status !== "awaiting_question") {
+    questions.push(toBuyerPassQuestionItem(rootRow, 1));
+  }
+  if (q2Row && q2Row.question.trim().length >= 12) {
+    questions.push(toBuyerPassQuestionItem(q2Row, 2));
+  }
+  if (q3Row && q3Row.question.trim().length >= 12) {
+    questions.push(toBuyerPassQuestionItem(q3Row, 3));
+  }
+
+  const now = opts.nowMs ?? Date.now();
+  const accessExpiresAt = rootRow.paid_at + QUESTION_ACCESS_WINDOW_MS;
+  const windowOpen = now <= accessExpiresAt;
+  const questionsUsed = questions.length;
+  const questionsRemaining = Math.max(0, MAX_QUESTIONS_PER_ORDER - questionsUsed);
+  const passToken = await signReadingPassToken(rootRow.id);
+
+  return {
+    orderId: rootRow.id,
+    trackTitle: CARD_BLUEPRINT_READING_SPEC.title,
+    priceDollars: CARD_BLUEPRINT_READING_SPEC.priceDollars,
+    birth1: rootRow.birth1,
+    name1: rootRow.name1,
+    defaultBirth2: rootRow.birth2,
+    defaultName2: rootRow.name2,
+    defaultRel2: rootRow.rel2,
+    deliveryChannel: rootRow.delivery_channel,
+    destination:
+      rootRow.delivery_channel === "sms"
+        ? rootRow.buyer_phone || rootRow.buyer_email
+        : rootRow.buyer_email || rootRow.buyer_phone,
+    paidAt: rootRow.paid_at,
+    accessExpiresAt,
+    windowHours: QUESTION_ACCESS_WINDOW_HOURS,
+    windowOpen,
+    maxQuestions: MAX_QUESTIONS_PER_ORDER,
+    questionsUsed,
+    questionsRemaining,
+    canSubmitQuestion: windowOpen && questionsRemaining > 0,
+    suggestedQuestionsUrl: SUGGESTED_QUESTIONS_PDF_PATH,
+    passUrl: `${SITE_URL}/reading-pass?token=${encodeURIComponent(passToken)}`,
+    turnaround: QUESTION_SLA_PROSE,
+    questions,
+  };
+}
+
+export async function submitReadingPassQuestion(args: {
+  rootOrderId: string;
+  question: unknown;
+  birth2?: unknown;
+  name2?: unknown;
+  rel2?: unknown;
+  nowMs?: number;
+  db?: QuestionOrderDB;
+  llmChat?: Parameters<typeof generateThreeReadingAngles>[1] extends { llmChat?: infer F } ? F : never;
+  emailSender?: typeof sendEmail;
+  smsSender?: typeof sendSms;
+}): Promise<{
+  state: ReadingPassState;
+  submittedQuestionNumber: 1 | 2 | 3;
+  submittedOrderId: string;
+}> {
+  const store = args.db ?? (await getQuestionOrderDb());
+  const rootRow = await getQuestionOrderById(args.rootOrderId, store);
+  if (!rootRow) {
+    throw new ReadingPassError(404, "ORDER_NOT_FOUND", "Reading Pass not found.");
+  }
+  if (!rootRow.paid_at || rootRow.status === "pending_payment" || rootRow.status === "expired") {
+    throw new ReadingPassError(402, "ORDER_NOT_PAID", "This Reading Pass has not completed payment yet.");
+  }
+
+  const now = args.nowMs ?? Date.now();
+  const accessExpiresAt = rootRow.paid_at + QUESTION_ACCESS_WINDOW_MS;
+  if (now > accessExpiresAt) {
+    throw new ReadingPassError(
+      410,
+      "WINDOW_EXPIRED",
+      "Your 48-hour question window after purchase has closed. Your Suggested Questions PDF and delivered readings remain available below.",
+    );
+  }
+
+  const q2Row = await findOrderByAttempt(`${rootRow.id}:q2`, store);
+  const q3Row = await findOrderByAttempt(`${rootRow.id}:q3`, store);
+
+  const q1Taken = rootRow.question.trim().length >= 12 && rootRow.status !== "awaiting_question";
+  let slotNumber: 1 | 2 | 3;
+  if (!q1Taken) {
+    slotNumber = 1;
+  } else if (!q2Row) {
+    slotNumber = 2;
+  } else if (!q3Row) {
+    slotNumber = 3;
+  } else {
+    throw new ReadingPassError(
+      409,
+      "QUESTION_LIMIT_REACHED",
+      `All ${MAX_QUESTIONS_PER_ORDER} questions included with this Reading Pass have been used.`,
+    );
+  }
+
+  const qChecked = validateQuestionText(args.question, false);
+  if (!qChecked.ok) {
+    throw new ReadingPassError(qChecked.err.status, qChecked.err.code, qChecked.err.error);
+  }
+
+  let b2Iso = "";
+  if (typeof args.birth2 === "string" && args.birth2.trim()) {
+    const b2 = checkBirthdateOrJoker(args.birth2, "second person's birth date");
+    if (!b2.ok) {
+      throw new ReadingPassError(b2.err.status, b2.err.code, b2.err.error);
+    }
+    b2Iso = b2.iso;
+  }
+
+  const cleanShort = (v: unknown, max = 80) =>
+    typeof v === "string" ? v.replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, max) : "";
+  const name2 = b2Iso ? cleanShort(args.name2, 60) || rootRow.name2 : "";
+  const rel2 = b2Iso ? cleanShort(args.rel2, 80) || rootRow.rel2 : "";
+
+  const priorQuestions: PriorQuestionContext[] = [];
+  if (q1Taken) {
+    priorQuestions.push({
+      number: 1,
+      question: rootRow.question,
+      answer: rootRow.approved_body,
+    });
+  }
+  if (q2Row && q2Row.question.trim().length >= 12) {
+    priorQuestions.push({
+      number: 2,
+      question: q2Row.question,
+      answer: q2Row.approved_body,
+    });
+  }
+
+  let facts: QuestionReadingFacts;
+  try {
+    facts = await buildQuestionReadingFacts({
+      track: PRIMARY_QUESTION_TRACK,
+      birth1: rootRow.birth1,
+      name1: rootRow.name1,
+      birth2: b2Iso,
+      name2,
+      rel2,
+      question: qChecked.question,
+    });
+  } catch (err) {
+    if (err instanceof JokerNotSupportedError) {
+      throw new ReadingPassError(
+        422,
+        "JOKER_UNSUPPORTED",
+        "December 31 resolves to the Joker — outside the 52-card spread.",
+      );
+    }
+    throw err;
+  }
+
+  const drafted = await generateThreeReadingAngles(facts, {
+    questionNumber: slotNumber,
+    priorQuestions,
+    llmChat: args.llmChat,
+  });
+
+  let targetRow: QuestionOrderRow;
+  const readyAt = Date.now();
+
+  if (slotNumber === 1) {
+    await store
+      .prepare(
+        "UPDATE question_reading_orders SET question = ?, birth2 = ?, name2 = ?, rel2 = ?, engine_facts_json = ?, angles_json = ?, status = ?, angles_ready_at = ? WHERE id = ?",
+      )
+      .bind(
+        qChecked.question,
+        b2Iso,
+        name2,
+        rel2,
+        JSON.stringify(facts),
+        JSON.stringify(drafted.angles),
+        "awaiting_approval",
+        readyAt,
+        rootRow.id,
+      )
+      .run();
+    targetRow = (await getQuestionOrderById(rootRow.id, store))!;
+  } else {
+    const childId = `qro_${randomJti()}`;
+    const childAttemptId = `${rootRow.id}:q${slotNumber}`;
+    let baseAttr: Record<string, unknown> = {};
+    try {
+      baseAttr = JSON.parse(rootRow.attribution_json || "{}") as Record<string, unknown>;
+    } catch {
+      baseAttr = {};
+    }
+    const childAttr = {
+      ...baseAttr,
+      parentOrderId: rootRow.id,
+      questionNumber: slotNumber,
+    };
+
+    try {
+      await store
+        .prepare(
+          `INSERT INTO question_reading_orders (
+            id, attempt_id, track, amount_cents, currency,
+            birth1, name1, birth2, name2, rel2, question,
+            delivery_channel, buyer_email, buyer_phone, sms_consent,
+            placement, source_path, attribution_json,
+            engine_facts_json, angles_json, created_at, paid_at, status, angles_ready_at
+          ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .bind(
+          childId,
+          childAttemptId,
+          PRIMARY_QUESTION_TRACK,
+          0,
+          rootRow.currency || "usd",
+          rootRow.birth1,
+          rootRow.name1,
+          b2Iso,
+          name2,
+          rel2,
+          qChecked.question,
+          rootRow.delivery_channel,
+          rootRow.buyer_email,
+          rootRow.buyer_phone,
+          rootRow.sms_consent,
+          `${rootRow.placement}:pass-q${slotNumber}`.slice(0, 60),
+          rootRow.source_path,
+          JSON.stringify(childAttr),
+          JSON.stringify(facts),
+          JSON.stringify(drafted.angles),
+          readyAt,
+          rootRow.paid_at,
+          "awaiting_approval",
+          readyAt,
+        )
+        .run();
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "";
+      if (/UNIQUE constraint/i.test(msg)) {
+        throw new ReadingPassError(
+          409,
+          "QUESTION_LIMIT_REACHED",
+          `Question ${slotNumber} was already submitted for this Reading Pass.`,
+        );
+      }
+      throw err;
+    }
+
+    targetRow = (await getQuestionOrderById(childId, store))!;
+  }
+
+  await notifyOperatorOfQuestion({
+    row: targetRow,
+    facts,
+    angles: drafted.angles,
+    source: drafted.source,
+    questionNumber: slotNumber,
+    emailSender: args.emailSender,
+    smsSender: args.smsSender,
+  });
+
+  const state = await getReadingPassState(rootRow.id, { db: store, nowMs: now });
+  return {
+    state,
+    submittedQuestionNumber: slotNumber,
+    submittedOrderId: targetRow.id,
+  };
 }
 
 export async function regenerateQuestionOrderAngles(args: {
@@ -1009,6 +1631,7 @@ export async function regenerateQuestionOrderAngles(args: {
   const row = await getQuestionOrderById(args.orderId, store);
   if (!row) throw new Error("order not found");
 
+  const meta = parseRowAttributionMeta(row);
   const facts =
     row.engine_facts_json
       ? (JSON.parse(row.engine_facts_json) as QuestionReadingFacts)
@@ -1025,6 +1648,7 @@ export async function regenerateQuestionOrderAngles(args: {
   const note = typeof args.steeringNote === "string" ? args.steeringNote.trim().slice(0, 500) : row.steering_note;
   const drafted = await generateThreeReadingAngles(facts, {
     steeringNote: note,
+    questionNumber: meta.questionNumber,
     llmChat: args.llmChat,
   });
 
@@ -1106,13 +1730,24 @@ export async function approveAndSendQuestionOrder(args: {
     }
   }
 
-  // 2. Send email whenever email is primary OR as backup on SMS orders when buyer supplied email
-  if (row.buyer_email && finalEmailBody) {
+  // 2. Append private 48h Reading Pass footer to the email body when questions remain so the buyer can ask Q2/Q3 effortlessly
+  let emailBodyWithPass = finalEmailBody;
+  try {
+    const passState = await getReadingPassState(hydrated.parentOrderId, { db: store });
+    if (passState.canSubmitQuestion) {
+      emailBodyWithPass = `${finalEmailBody}\n\n---\nReading Pass (${passState.questionsRemaining} of ${passState.maxQuestions} questions remaining in your 48-hour window):\n${passState.passUrl}`;
+    }
+  } catch {
+    // Keep plain emailBody if parent pass lookup is unavailable
+  }
+
+  // 3. Send email whenever email is primary OR as backup on SMS orders when buyer supplied email
+  if (row.buyer_email && emailBodyWithPass) {
     try {
       await sendMailFn({
         to: row.buyer_email,
         subject: finalSubject,
-        text: finalEmailBody,
+        text: emailBodyWithPass,
         replyTo: process.env.INTAKE_EMAIL || undefined,
         idempotencyKey: `qro-deliver/${row.id}/a${args.angle}`,
       });
@@ -1144,6 +1779,7 @@ export async function approveAndSendQuestionOrder(args: {
   const logPayload = {
     sentAtIso: new Date(sentAt).toISOString(),
     angle: args.angle,
+    questionNumber: hydrated.questionNumber,
     emailSent,
     smsSent,
     manualSmsDispatched: Boolean(args.manualSmsDispatched),
@@ -1165,22 +1801,16 @@ export async function approveAndSendQuestionOrder(args: {
     )
     .run();
 
-  let attr: FunnelContext = {};
-  try {
-    attr = JSON.parse(row.attribution_json || "{}") as FunnelContext;
-  } catch {
-    attr = {};
-  }
-
+  const meta = parseRowAttributionMeta(row);
   recordFunnelEvent({
     name: "reading_delivered",
     source: "server",
-    ...attr,
+    ...meta.funnel,
     eventId: `qro_sent:${row.id}`,
     path: "/api/ops/inbox",
     offerSlug: row.track,
     placement: row.placement,
-    outcome: `${row.delivery_channel}:angle-${args.angle}`,
+    outcome: `${row.delivery_channel}:q${hydrated.questionNumber}:angle-${args.angle}`,
     currency: row.currency,
     valueCents: row.amount_cents,
   });

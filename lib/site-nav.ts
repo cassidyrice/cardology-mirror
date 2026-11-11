@@ -5,8 +5,8 @@ export const WHAT_IS_CARDOLOGY_PATH = "/what-is-cardology";
 export const FAQ_NAV_LABEL = "FAQ";
 export const FAQ_NAV_PATH = "/faq";
 
-/** How loud a money-path link is. lead = free calculator (first). offer = the
- *  Chemistry Check (the heavy control). guide and help stay in the same row. */
+/** How loud a money-path link is. lead = free calculator (first). offer = The
+ *  Card Blueprint Reading (the heavy control). guide and help stay in the same row. */
 export const MONEY_PATH_WEIGHTS = ["lead", "guide", "offer", "help"] as const;
 export type MoneyPathWeight = (typeof MONEY_PATH_WEIGHTS)[number];
 
@@ -28,8 +28,8 @@ export const MONEY_PATHS = [
   },
   {
     id: "reading",
-    label: "Chemistry Check · $39",
-    href: "/#chemistry-check",
+    label: "Card Blueprint Reading · $99",
+    href: "/#readings",
     weight: "offer",
   },
   {

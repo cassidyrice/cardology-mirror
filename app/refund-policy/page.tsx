@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the 12-Month Timing Question, the Chemistry Check, past purchases, and legacy orders.",
+    "Refund terms for The Card Blueprint Reading, past purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -38,13 +38,15 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
         <section className="border border-brand-line bg-brand-paper-deep p-5">
           <p className="font-serif text-lg text-brand-ink">
-            Card Blueprints offers two personal question readings directly on
-            this site via Stripe: the $26 12-Month Timing Question and the $39
-            Chemistry Check, delivered by email or text message within 48 hours
-            (almost all in under 24 hours). If your reading is not delivered
-            within 48 hours, or if something is wrong with your order, email us
-            with the address you used at checkout and we will review it
-            personally and make it right or refund you in full.
+            Card Blueprints offers one personal written reading directly on this
+            site via Stripe: The Card Blueprint Reading ($99), which includes an
+            instant Suggested Questions download after payment and 48 hours of
+            access to submit up to 3 questions, delivered by email or text
+            message within 48 hours of each submission (almost all in under 24
+            hours). If an answer is not delivered within 48 hours of submission,
+            or if something is wrong with your order, email us with the address
+            you used at checkout and we will review it personally and make it
+            right or refund you in full.
           </p>
         </section>
 
@@ -101,8 +103,8 @@ export default function RefundPolicy() {
         </section>
 
         <div className="border-t border-brand-line pt-6">
-          <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
-            ← Back to the Chemistry Check
+          <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+            ← Back to The Card Blueprint Reading
           </Link>
         </div>
       </div>

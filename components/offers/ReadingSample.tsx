@@ -3,7 +3,7 @@ import { getCardSeo } from "@/lib/seo-cards";
 
 /**
  * Notes from the reading desk: shows what an actual Email or Text Message
- * question reading sounds like — zero PDF filler, real spread dates, Cass's voice.
+ * answer from The Card Blueprint Reading ($99) sounds like — real spread dates, Cass's voice.
  */
 export function ReadingSample() {
   const card = getCardSeo("8♦");
@@ -43,31 +43,23 @@ export function ReadingSample() {
       <div className="sample-text">
         <SampleTabs panels={panels} />
         <h2 id="home-sample-title" className="sample-title" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
-          No 19-page PDF.<br />Just the answer, with dates.
+          Suggested Questions download.<br />48 hours to ask up to 3.
         </h2>
         <p className="sample-desc" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-          You type your actual question and pick email or text message. Our spread engine maps every permanent seat and 52-day planetary window, drafts three distinct angles, and Cass personally reviews and approves the one that goes to your inbox or phone.
+          Once you book <strong>The Card Blueprint Reading ($99)</strong>, you immediately get our Suggested Questions Guide (.pdf) plus a 48-hour Reading Pass to ask up to 3 questions — your own timing, career, blind spots, or two-person chemistry. Cass reviews your exact spread and sends each answer by email or text.
         </p>
         <div className="sample-actions" data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
           <a
             className="sample-cell is-ink"
-            href="/#timing-map"
-            data-open-question-track="timing-map"
-            data-placement="sample-timing"
+            href="/#readings"
+            data-open-question-track="card-blueprint-reading"
+            data-placement="sample-primary"
           >
-            Solo Timing Question · $26
-          </a>
-          <a
-            className="sample-cell"
-            href="/#chemistry-check"
-            data-open-question-track="chemistry-check"
-            data-placement="sample-chemistry"
-          >
-            Compatibility Question · $39
+            The Card Blueprint Reading · $99
           </a>
         </div>
         <p className="sample-note">
-          48-hour response window — almost all readings arrive in under 24 hours.
+          Up to 3 questions within 48 hours of purchase · Answered within 48h (almost all under 24h).
         </p>
       </div>
     </>

@@ -1,24 +1,35 @@
 "use client";
 
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 
 import {
   getClientAttributionContext,
   trackClientFunnelEvent,
 } from "@/components/analytics/AnalyticsCapture";
+import {
+  ReadingPassInteractivePanel,
+  type ClientPassQuestionItem,
+  type ClientReadingPassState,
+} from "@/components/checkout/ReadingPassPortal";
 import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 import type { QuestionTrack } from "@/lib/question-reading-facts";
 import {
-  QUESTION_READING_TRACKS,
+  CARD_BLUEPRINT_READING_SPEC,
+  PRIMARY_QUESTION_TRACK,
   QUESTION_SLA_SHORT,
   type DeliveryChannel,
 } from "@/lib/question-reading-tracks";
+import {
+  SUGGESTED_QUESTIONS_FILENAME,
+  SUGGESTED_QUESTIONS_PDF_PATH,
+} from "@/lib/suggested-questions";
 
 export const OPEN_QUESTION_CHECKOUT_EVENT = "cb:open-question-checkout";
 
 export interface OpenQuestionCheckoutDetail {
   track?: QuestionTrack;
+  withPartner?: boolean;
   birth1?: string;
   birth2?: string;
   name1?: string;
@@ -63,6 +74,7 @@ function makeAttemptId(): string {
 
 export interface QuestionReadingComposerProps {
   defaultTrack?: QuestionTrack;
+  defaultWithPartner?: boolean;
   initialBirth1?: string;
   initialBirth2?: string;
   monthDayHint?: { month: number; day: number; label: string };
@@ -74,7 +86,8 @@ export interface QuestionReadingComposerProps {
 }
 
 export function QuestionReadingComposer({
-  defaultTrack = "chemistry-check",
+  defaultTrack = PRIMARY_QUESTION_TRACK,
+  defaultWithPartner,
   initialBirth1 = "",
   initialBirth2 = "",
   monthDayHint,
@@ -85,7 +98,11 @@ export function QuestionReadingComposer({
   onSuccess,
 }: QuestionReadingComposerProps) {
   const uid = useId();
-  const [track, setTrack] = useState<QuestionTrack>(defaultTrack);
+  const spec = CARD_BLUEPRINT_READING_SPEC;
+
+  const initialPartnerMode =
+    defaultWithPartner ?? (defaultTrack === "chemistry-check" || Boolean(initialBirth2));
+  const [includePartner, setIncludePartner] = useState<boolean>(initialPartnerMode);
   const [birth1, setBirth1] = useState(initialBirth1);
   const [birthYearForHint, setBirthYearForHint] = useState("");
   const [name1, setName1] = useState("");
@@ -108,15 +125,18 @@ export function QuestionReadingComposer({
     deliveryChannel: DeliveryChannel;
     destination: string;
     turnaround: string;
+    passToken: string;
+    initialPass: ClientReadingPassState | null;
   } | null>(null);
 
   const mountRef = useRef<HTMLDivElement | null>(null);
   const embeddedRef = useRef<EmbeddedInstance | null>(null);
 
-  // Sync props or tab-stored birthday on mount
   useEffect(() => {
-    setTrack(defaultTrack);
-  }, [defaultTrack]);
+    setIncludePartner(
+      defaultWithPartner ?? (defaultTrack === "chemistry-check" || Boolean(initialBirth2)),
+    );
+  }, [defaultTrack, defaultWithPartner, initialBirth2]);
 
   useEffect(() => {
     if (initialBirth1) {
@@ -132,6 +152,7 @@ export function QuestionReadingComposer({
   useEffect(() => {
     if (initialBirth2) {
       setBirth2(initialBirth2);
+      setIncludePartner(true);
     }
   }, [initialBirth2]);
 
@@ -164,8 +185,6 @@ export function QuestionReadingComposer({
     return () => destroyEmbedded();
   }, [destroyEmbedded]);
 
-  const spec = useMemo(() => QUESTION_READING_TRACKS[track], [track]);
-
   async function handleStartPayment(e: React.FormEvent) {
     e.preventDefault();
     setError(null);
@@ -181,11 +200,11 @@ export function QuestionReadingComposer({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
           attemptId,
-          track,
+          track: PRIMARY_QUESTION_TRACK,
           birth1,
           name1,
-          birth2: track === "chemistry-check" ? birth2 : "",
-          name2: track === "chemistry-check" ? name2 : "",
+          birth2: includePartner ? birth2 : "",
+          name2: includePartner ? name2 : "",
           question,
           deliveryChannel,
           buyerEmail,
@@ -212,7 +231,7 @@ export function QuestionReadingComposer({
         }
         setError(data.error || "Check your details and try again.");
         trackClientFunnelEvent("checkout_error", {
-          offerSlug: track,
+          offerSlug: PRIMARY_QUESTION_TRACK,
           placement,
           outcome: data.code || `http_${res.status}`,
         });
@@ -236,7 +255,7 @@ export function QuestionReadingComposer({
           void (async () => {
             destroyEmbedded();
             trackClientFunnelEvent("inline_checkout_completed", {
-              offerSlug: track,
+              offerSlug: PRIMARY_QUESTION_TRACK,
               placement,
               outcome: deliveryChannel,
             });
@@ -252,17 +271,63 @@ export function QuestionReadingComposer({
                 deliveryChannel?: DeliveryChannel;
                 destination?: string;
                 turnaround?: string;
+                passToken?: string;
+                passUrl?: string;
+                suggestedQuestionsUrl?: string;
+                accessExpiresAt?: number;
+                windowHours?: number;
+                maxQuestions?: number;
+                questionsUsed?: number;
+                questionsRemaining?: number;
+                canSubmitQuestion?: boolean;
+                questions?: ClientPassQuestionItem[];
               };
+
+              const finalOrderId = confirmJson.orderId || orderId;
+              const finalDestination =
+                confirmJson.destination || (deliveryChannel === "sms" ? buyerPhone : buyerEmail);
+              const finalTurnaround =
+                confirmJson.turnaround ||
+                "within 48 hours, with almost all delivered in under 24 hours";
+              const passToken = confirmJson.passToken || "";
+
+              const initialPass: ClientReadingPassState | null = passToken
+                ? {
+                    orderId: finalOrderId,
+                    trackTitle: confirmJson.trackTitle || spec.title,
+                    priceDollars: spec.priceDollars,
+                    birth1,
+                    name1,
+                    defaultBirth2: includePartner ? birth2 : "",
+                    defaultName2: includePartner ? name2 : "",
+                    defaultRel2: "",
+                    deliveryChannel: confirmJson.deliveryChannel || deliveryChannel,
+                    destination: finalDestination,
+                    paidAt: Date.now(),
+                    accessExpiresAt: confirmJson.accessExpiresAt || Date.now() + 48 * 3_600_000,
+                    windowHours: confirmJson.windowHours || 48,
+                    windowOpen: true,
+                    maxQuestions: confirmJson.maxQuestions || 3,
+                    questionsUsed: confirmJson.questionsUsed ?? (question.trim().length >= 12 ? 1 : 0),
+                    questionsRemaining:
+                      confirmJson.questionsRemaining ?? (question.trim().length >= 12 ? 2 : 3),
+                    canSubmitQuestion: confirmJson.canSubmitQuestion ?? true,
+                    suggestedQuestionsUrl:
+                      confirmJson.suggestedQuestionsUrl || SUGGESTED_QUESTIONS_PDF_PATH,
+                    passUrl: confirmJson.passUrl || `/reading-pass?token=${encodeURIComponent(passToken)}`,
+                    turnaround: finalTurnaround,
+                    questions: confirmJson.questions ?? [],
+                  }
+                : null;
+
               setConfirmation({
-                orderId: confirmJson.orderId || orderId,
+                orderId: finalOrderId,
                 trackTitle: confirmJson.trackTitle || spec.title,
                 deliveryChannel: confirmJson.deliveryChannel || deliveryChannel,
-                destination:
-                  confirmJson.destination ||
-                  (deliveryChannel === "sms" ? buyerPhone : buyerEmail),
-                turnaround:
-                  confirmJson.turnaround ||
-                  "within 48 hours, with almost all delivered in under 24 hours",
+                destination: finalDestination,
+                turnaround: finalTurnaround,
+                passToken,
+                initialPass,
               });
             } catch {
               setConfirmation({
@@ -271,6 +336,8 @@ export function QuestionReadingComposer({
                 deliveryChannel,
                 destination: deliveryChannel === "sms" ? buyerPhone : buyerEmail,
                 turnaround: "within 48 hours, with almost all delivered in under 24 hours",
+                passToken: "",
+                initialPass: null,
               });
             }
             setStep("confirmed");
@@ -283,7 +350,7 @@ export function QuestionReadingComposer({
       if (mountRef.current) {
         embedded.mount(mountRef.current);
         trackClientFunnelEvent("inline_checkout_mounted", {
-          offerSlug: track,
+          offerSlug: PRIMARY_QUESTION_TRACK,
           placement,
           outcome: deliveryChannel,
         });
@@ -303,71 +370,43 @@ export function QuestionReadingComposer({
     setError(null);
   }
 
-  function handleAskAnother() {
-    destroyEmbedded();
-    setAttemptId(makeAttemptId());
-    setQuestion("");
-    setConfirmation(null);
-    setStep("intake");
-    setError(null);
-  }
-
   return (
     <section
       className={`qr-composer ${compact ? "qr-composer--compact" : ""}`}
       data-question-composer
-      data-track={track}
-      aria-label="Ask Cass a personal question"
+      data-track={PRIMARY_QUESTION_TRACK}
+      aria-label="Book The Card Blueprint Reading"
     >
       <div className="qr-head">
         <div className="qr-eyebrow-row">
-          <span className="qr-eyebrow">Personal Reading · Never Leave This Page</span>
+          <span className="qr-eyebrow">The Card Blueprint Reading · Never Leave This Page</span>
           <span className="qr-sla-pill">{QUESTION_SLA_SHORT}</span>
         </div>
         <h3 className="qr-title">
-          {heading ?? "Ask your actual question. Get Cass’s answer by email or text."}
+          {heading ?? "The Card Blueprint Reading — $99"}
         </h3>
         <p className="qr-sub">
           {subheading ??
-            "Calculated from your exact Cardology spread, drafted from three angles, and personally reviewed and approved by Cass before it’s sent."}
+            "Includes an instant Suggested Questions Guide (.pdf) right after payment plus 48 hours of access to ask up to 3 questions (solo timing, work, blind spots, or two-person chemistry), personally reviewed by Cass and delivered by email or text."}
         </p>
       </div>
 
-      {/* Track Switcher ($26 Solo Timing vs $39 Chemistry Check) */}
+      {/* Unified $99 Offer Strip */}
       {step === "intake" && (
-        <div className="qr-tracks" role="tablist" aria-label="Choose reading type">
-          {(["timing-map", "chemistry-check"] as const).map((t) => {
-            const item = QUESTION_READING_TRACKS[t];
-            const active = track === t;
-            return (
-              <button
-                key={t}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                onClick={() => {
-                  setTrack(t);
-                  setError(null);
-                  setAttemptId(makeAttemptId());
-                }}
-                className={`qr-track-tab ${active ? "is-active" : ""}`}
-              >
-                <span className="qr-track-top">
-                  <span className="qr-track-name">{item.title}</span>
-                  <strong className="qr-track-price tnum">${item.priceDollars}</strong>
-                </span>
-                <span className="qr-track-meta">
-                  {t === "timing-map" ? "Just you · 12-month timing" : "Two birthdays · Compatibility"}
-                </span>
-              </button>
-            );
-          })}
+        <div className="qr-offer-strip">
+          <div className="qr-track-top">
+            <span className="qr-track-name">{spec.title}</span>
+            <strong className="qr-track-price tnum">${spec.priceDollars}</strong>
+          </div>
+          <p className="qr-track-meta">
+            Instant Suggested Questions download · Up to 3 questions within 48 hours of purchase · Email or Text delivery
+          </p>
         </div>
       )}
 
       {step === "intake" && (
         <form onSubmit={handleStartPayment} className="qr-form">
-          <div className={`qr-grid ${track === "chemistry-check" ? "qr-grid--two" : ""}`}>
+          <div className="qr-grid">
             <div className="qr-field">
               <label htmlFor={`${uid}-b1`}>Your birth date</label>
               {monthDayHint && !birth1 ? (
@@ -408,15 +447,30 @@ export function QuestionReadingComposer({
                 className="qr-input"
               />
             </div>
+          </div>
 
-            {track === "chemistry-check" && (
-              <>
+          <div className="qr-partner-toggle-box">
+            <button
+              type="button"
+              onClick={() => {
+                setIncludePartner((prev) => !prev);
+                setAttemptId(makeAttemptId());
+              }}
+              className="editorial-link qr-edit-btn"
+            >
+              {includePartner
+                ? "− Remove second person’s birthday (you can still add one on any of your 3 questions later)"
+                : "+ Include a second person’s birthday (relationship / compatibility)"}
+            </button>
+
+            {includePartner && (
+              <div className="qr-grid qr-mt-3">
                 <div className="qr-field">
-                  <label htmlFor={`${uid}-b2`}>Their birth date</label>
+                  <label htmlFor={`${uid}-b2`}>Second person’s birth date</label>
                   <input
                     id={`${uid}-b2`}
                     type="date"
-                    required
+                    required={includePartner}
                     value={birth2}
                     onChange={(e) => setBirth2(e.target.value)}
                     className="qr-input"
@@ -434,21 +488,22 @@ export function QuestionReadingComposer({
                     className="qr-input"
                   />
                 </div>
-              </>
+              </div>
             )}
           </div>
 
           <div className="qr-field">
-            <label htmlFor={`${uid}-q`}>Your question for Cass</label>
+            <label htmlFor={`${uid}-q`}>
+              Question 1 of 3 (optional now — or pay first &amp; download the Suggested Questions Guide)
+            </label>
             <textarea
               id={`${uid}-q`}
-              required
               rows={compact ? 3 : 4}
               maxLength={1200}
               placeholder={
-                track === "chemistry-check"
-                  ? "What is actually going on between you two, and what do you want a straight answer on?"
-                  : "What decision, timing window, career move, or shift in the next 12 months are you weighing?"
+                includePartner
+                  ? "Ask Question 1 right now if you already know it — or leave blank to download the Suggested Questions Guide immediately after payment and ask up to 3 questions over 48 hours."
+                  : "Type Question 1 now if it’s already on your mind — or leave blank, get the Suggested Questions download right after checkout, and submit up to 3 questions within 48 hours."
               }
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
@@ -458,7 +513,7 @@ export function QuestionReadingComposer({
 
           {/* Delivery Toggle: Email vs Text Message */}
           <div className="qr-delivery-box">
-            <span className="qr-delivery-label">Where should we send your reading?</span>
+            <span className="qr-delivery-label">Where should we send your reading pass &amp; answers?</span>
             <div className="qr-channel-toggle" role="radiogroup" aria-label="Delivery method">
               <button
                 type="button"
@@ -496,7 +551,7 @@ export function QuestionReadingComposer({
               </div>
             ) : (
               <div className="qr-sms-fields qr-mt-3">
-                <div className="qr-grid qr-grid--two">
+                <div className="qr-grid">
                   <div className="qr-field">
                     <label htmlFor={`${uid}-phone`}>Your mobile number</label>
                     <input
@@ -511,12 +566,12 @@ export function QuestionReadingComposer({
                     />
                   </div>
                   <div className="qr-field">
-                    <label htmlFor={`${uid}-email-backup`}>Backup email (optional)</label>
+                    <label htmlFor={`${uid}-email-backup`}>Email for your pass link &amp; written copy (optional)</label>
                     <input
                       id={`${uid}-email-backup`}
                       type="email"
                       autoComplete="email"
-                      placeholder="For your full written copy"
+                      placeholder="For your Suggested Questions PDF + backup"
                       value={buyerEmail}
                       onChange={(e) => setBuyerEmail(e.target.value)}
                       className="qr-input"
@@ -531,7 +586,7 @@ export function QuestionReadingComposer({
                     onChange={(e) => setSmsConsent(e.target.checked)}
                   />
                   <span>
-                    Send my personal reading to this mobile number by text message. One-time reading delivery only — never marketing texts.
+                    Send my personal reading answers to this mobile number by text message. Reading delivery only — never marketing texts.
                   </span>
                 </label>
               </div>
@@ -558,7 +613,7 @@ export function QuestionReadingComposer({
                 : `Continue to payment — $${spec.priceDollars}`}
             </button>
             <p className="qr-micro">
-              Inline Stripe checkout · Apple Pay, Link & cards · Stay right on this page.
+              Inline Stripe checkout · Instant Suggested Questions PDF · 48h pass for up to 3 questions · Stay right on this page.
             </p>
           </div>
         </form>
@@ -570,11 +625,12 @@ export function QuestionReadingComposer({
             <div>
               <strong>{spec.title}</strong> · <span className="tnum">${spec.priceDollars}</span>
               <p className="qr-payment-sub">
-                Delivering via {deliveryChannel === "sms" ? `text to ${buyerPhone}` : `email to ${buyerEmail}`}
+                Suggested Questions PDF + 48h pass (up to 3 questions) · Delivering via{" "}
+                {deliveryChannel === "sms" ? `text to ${buyerPhone}` : `email to ${buyerEmail}`}
               </p>
             </div>
             <button type="button" onClick={handleEditDetails} className="editorial-link qr-edit-btn">
-              Edit question or dates
+              Edit details
             </button>
           </div>
           <div ref={mountRef} className="qr-stripe-mount" />
@@ -582,23 +638,36 @@ export function QuestionReadingComposer({
       )}
 
       {step === "confirmed" && confirmation && (
-        <div className="qr-confirmed" role="status" aria-live="polite">
-          <p className="qr-eyebrow">Order Confirmed · In Cass’s Queue</p>
-          <h4 className="qr-confirmed-title">
-            Your question is in. You don’t need to do anything else.
-          </h4>
-          <p className="qr-confirmed-body">
-            We’ve pulled the spread for your <strong>{confirmation.trackTitle}</strong> and drafted
-            three angles on your question for Cass. She will review, edit, and send your reading to{" "}
-            <strong>{confirmation.destination}</strong> {confirmation.turnaround}.
-          </p>
-          <p className="qr-confirmed-meta">
-            Reference: <code>{confirmation.orderId}</code>
-          </p>
-          <button type="button" onClick={handleAskAnother} className="editorial-link qr-mt-3">
-            Ask another question
-          </button>
-        </div>
+        confirmation.passToken ? (
+          <ReadingPassInteractivePanel
+            passToken={confirmation.passToken}
+            initialPass={confirmation.initialPass}
+            compact={compact}
+          />
+        ) : (
+          <div className="qr-confirmed" role="status" aria-live="polite">
+            <p className="qr-eyebrow">Order Confirmed · 48-Hour Reading Pass Active</p>
+            <h4 className="qr-confirmed-title">
+              Your Card Blueprint Reading ($99) is confirmed.
+            </h4>
+            <p className="qr-confirmed-body">
+              Download your Suggested Questions Guide right now below, and check{" "}
+              <strong>{confirmation.destination}</strong> for your private 48-hour Reading Pass link to submit up to 3 questions.
+            </p>
+            <div className="qr-pass-actions qr-mt-3">
+              <a
+                href={SUGGESTED_QUESTIONS_PDF_PATH}
+                download={SUGGESTED_QUESTIONS_FILENAME}
+                className="accent-button"
+              >
+                Download Suggested Questions (.pdf)
+              </a>
+            </div>
+            <p className="qr-confirmed-meta">
+              Reference: <code>{confirmation.orderId}</code>
+            </p>
+          </div>
+        )
       )}
     </section>
   );
@@ -607,12 +676,13 @@ export function QuestionReadingComposer({
 /**
  * Global zero-leave slide-over modal mounted once in SiteHeader so clicking ANY
  * `[data-open-question-track]` link or calling `openQuestionCheckout()` on any page
- * opens inline checkout without ever leaving the current URL.
+ * opens inline checkout for The Card Blueprint Reading ($99) without ever leaving the current URL.
  */
 export function GlobalQuestionCheckoutModal() {
   const [open, setOpen] = useState(false);
   const [detail, setDetail] = useState<OpenQuestionCheckoutDetail>({
-    track: "chemistry-check",
+    track: PRIMARY_QUESTION_TRACK,
+    withPartner: false,
     placement: "header-modal",
   });
 
@@ -620,8 +690,11 @@ export function GlobalQuestionCheckoutModal() {
     function onCustomOpen(event: Event) {
       const custom = event as CustomEvent<OpenQuestionCheckoutDetail>;
       const next = custom.detail ?? {};
+      const withPartner =
+        next.withPartner ?? (next.track === "chemistry-check" || Boolean(next.birth2));
       setDetail({
-        track: next.track ?? "chemistry-check",
+        track: PRIMARY_QUESTION_TRACK,
+        withPartner,
         birth1: next.birth1,
         birth2: next.birth2,
         monthDayHint: next.monthDayHint,
@@ -629,7 +702,7 @@ export function GlobalQuestionCheckoutModal() {
       });
       setOpen(true);
       trackClientFunnelEvent("drawer_opened", {
-        offerSlug: next.track ?? "chemistry-check",
+        offerSlug: PRIMARY_QUESTION_TRACK,
         placement: next.placement ?? "modal",
       });
     }
@@ -643,8 +716,7 @@ export function GlobalQuestionCheckoutModal() {
       const trigger = target.closest("[data-open-question-track]");
       if (!trigger) return;
       const attrTrack = trigger.getAttribute("data-open-question-track");
-      const track: QuestionTrack =
-        attrTrack === "timing-map" ? "timing-map" : "chemistry-check";
+      const withPartner = attrTrack === "chemistry-check" || attrTrack === "with-partner";
       const placement = trigger.getAttribute("data-placement") || "cta-trigger";
 
       event.preventDefault();
@@ -652,10 +724,10 @@ export function GlobalQuestionCheckoutModal() {
       const openDetails = trigger.closest("details[open]") as HTMLDetailsElement | null;
       if (openDetails) openDetails.open = false;
 
-      setDetail({ track, placement });
+      setDetail({ track: PRIMARY_QUESTION_TRACK, withPartner, placement });
       setOpen(true);
       trackClientFunnelEvent("drawer_opened", {
-        offerSlug: track,
+        offerSlug: PRIMARY_QUESTION_TRACK,
         placement,
       });
     }
@@ -681,14 +753,14 @@ export function GlobalQuestionCheckoutModal() {
       className="qr-modal-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label="Ask a personal Cardology question"
+      aria-label="Book The Card Blueprint Reading"
       onClick={(e) => {
         if (e.target === e.currentTarget) setOpen(false);
       }}
     >
       <div className="qr-modal-sheet">
         <div className="qr-modal-topbar">
-          <span className="qr-modal-brand">card blueprints · personal reading</span>
+          <span className="qr-modal-brand">card blueprints · $99 reading pass</span>
           <button
             type="button"
             onClick={() => setOpen(false)}
@@ -699,7 +771,8 @@ export function GlobalQuestionCheckoutModal() {
           </button>
         </div>
         <QuestionReadingComposer
-          defaultTrack={detail.track}
+          defaultTrack={PRIMARY_QUESTION_TRACK}
+          defaultWithPartner={detail.withPartner}
           initialBirth1={detail.birth1}
           initialBirth2={detail.birth2}
           monthDayHint={detail.monthDayHint}

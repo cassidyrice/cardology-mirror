@@ -104,7 +104,7 @@ export default function BlogIndexPage() {
           ["Know your birthday?", "Look up any date. Yes, theirs too.", BIRTHDAY_DIRECTORY_PATH, true],
           ["Comparing two people?", "Browse every card pairing. Including that one.", COMPATIBILITY_DIRECTORY_PATH, true],
           ["Playing cards birthday chart", "52-card astrology and the full date grid.", "/52-card-astrology-explained", false],
-          ["Bring it back to your life", "The Chemistry Check: two people’s cards, read together, by Cass.", "/#readings", false],
+          ["Bring it back to your life", "The Card Blueprint Reading ($99): Suggested Questions + up to 3 questions over 48 hours.", "/#readings", false],
         ].map(([label, text, href, external]) =>
           external ? (
             <a

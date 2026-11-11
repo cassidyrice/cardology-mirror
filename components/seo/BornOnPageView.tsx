@@ -29,7 +29,7 @@ export function BornOnPageView({ page, slug }: { page: BornOnPage; slug?: string
         {!isJokerDay ? (
           <div className="wrap">
             <QuestionReadingComposer
-              defaultTrack="timing-map"
+              defaultTrack="card-blueprint-reading"
               monthDayHint={
                 dateInfo
                   ? { month: dateInfo.month, day: dateInfo.day, label: dateInfo.label }

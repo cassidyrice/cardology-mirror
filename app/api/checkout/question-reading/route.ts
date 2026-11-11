@@ -13,7 +13,7 @@ import {
 } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import {
-  QUESTION_READING_TRACKS,
+  CARD_BLUEPRINT_READING_SPEC,
   attachStripeSessionToOrder,
   createPendingQuestionOrder,
   validateQuestionIntake,
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
     );
   }
   const intake = checked.value;
-  const spec = QUESTION_READING_TRACKS[intake.track];
+  const spec = CARD_BLUEPRINT_READING_SPEC;
 
   const publishableKey = (
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ||
@@ -157,10 +157,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  const configuredPriceId =
-    intake.track === "timing-map"
-      ? (process.env.STRIPE_PRICE_TIMING_QUESTION || "").trim()
-      : (process.env.STRIPE_PRICE_COMPATIBILITY_QUESTION || "").trim();
+  const configuredPriceId = (process.env.STRIPE_PRICE_CARD_BLUEPRINT_READING || "").trim();
 
   const lineItem: Stripe.Checkout.SessionCreateParams.LineItem = configuredPriceId
     ? { price: configuredPriceId, quantity: 1 }
@@ -173,8 +170,8 @@ export async function POST(req: NextRequest) {
             name: spec.title,
             description:
               intake.deliveryChannel === "sms"
-                ? `Personal Cardology reading for your question — delivered by text message within 48h (almost all under 24h).`
-                : `Personal Cardology reading for your question — delivered by email within 48h (almost all under 24h).`,
+                ? `Instant Suggested Questions Guide (.pdf) + 48-hour Reading Pass (up to 3 questions) — delivered by text message within 48h (almost all under 24h).`
+                : `Instant Suggested Questions Guide (.pdf) + 48-hour Reading Pass (up to 3 questions) — delivered by email within 48h (almost all under 24h).`,
           },
         },
       };

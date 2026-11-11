@@ -130,12 +130,12 @@ export function LandingCalculator() {
           <p className="landing-note">
             Free lookup first — or{" "}
             <a
-              href="/#chemistry-check"
-              data-open-question-track="chemistry-check"
+              href="/#readings"
+              data-open-question-track="card-blueprint-reading"
               data-placement="home-hero-skip"
               className="editorial-link"
             >
-              ask Cass a personal question right on this page
+              book The Card Blueprint Reading right on this page
             </a>
             .
           </p>

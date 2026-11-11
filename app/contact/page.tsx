@@ -36,7 +36,7 @@ export default function ContactPage() {
         <div className="mt-7 border border-brand-line bg-brand-paper-deep p-5 sm:p-6">
           <Kicker className="mb-2">Quick answer</Kicker>
           <p className="text-base leading-relaxed text-brand-ink-soft">
-            {READING_FOLLOW_UP} For questions about a Timing Map or Chemistry Check reading, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="editorial-link">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}
+            {READING_FOLLOW_UP} For questions about The Card Blueprint Reading, email <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="editorial-link">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME}
           </p>
         </div>
       </header>
@@ -57,7 +57,7 @@ export default function ContactPage() {
       <section className="grid gap-4 sm:grid-cols-2">
         {[
           ["Legacy phone-order support", "If access from an earlier purchase is not recognized, include the original checkout email, phone number, and a short description of what happened. Short. Nobody needs the saga."],
-          ["Personal readings", "The 12-Month Timing Map ($26) reads your active 52-day windows on one solo question. The Chemistry Check ($39) reads two people’s cards, permanent spread seats, and crossing dates. Delivered by email or text message."],
+          ["Personal readings", "The Card Blueprint Reading ($99) includes an instant Suggested Questions download after payment and 48 hours of access to submit up to 3 questions—solo timing or two-person compatibility—delivered by email or text message."],
           ["Corrections", "Send the page URL, the sentence or section in question, and the correction or clarification needed. Finally, a use for being right online."],
           ["Content questions", "Name the card, birthday, calculator, blog guide, or video topic your question is about. Vague questions get vague answers."],
           ["Partnerships", "Describe the collaboration, audience, timeline, and whether it concerns written guides, tools, or video. Skip the pitch deck."],

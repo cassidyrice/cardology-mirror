@@ -58,21 +58,23 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-brand-ink">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">Personal question readings (12-Month Timing Question &amp; Chemistry Check)</h3>
+              <h3 className="font-bold text-brand-ink">The Card Blueprint Reading &amp; 48-hour Reading Pass</h3>
               <p className="mt-1">
-                Personal question readings are purchased directly on this site
+                The Card Blueprint Reading ($99) is purchased directly on this site
                 through embedded Stripe Checkout without leaving the page. We
-                collect your birth date(s), optional first name(s), the question
-                you ask, your email address, and—only if you choose text message
-                delivery—your mobile phone number and explicit consent to receive
-                transactional SMS messages about your reading. Those order
-                details are stored in our Cloudflare D1 order record and attached
-                as minimal session references in Stripe so we can calculate your
-                deterministic Cardology spread, draft candidate reading angles
-                with an AI writing model, review and approve your final reading
-                personally, and deliver it by email (via Resend) and/or text
-                message (via Twilio or direct operator SMS). Reply STOP to any
-                text message to opt out of SMS delivery.
+                collect your birth date(s), optional first name(s), any questions
+                you submit at checkout or during your 48-hour Reading Pass window
+                (up to 3 questions per order), your email address, and—only if
+                you choose text message delivery—your mobile phone number and
+                explicit consent to receive transactional SMS messages about
+                your reading. Those order details are stored in our Cloudflare D1
+                order record and attached as minimal session references in Stripe
+                so we can provide your Suggested Questions download, calculate
+                your deterministic Cardology spread, draft candidate reading
+                angles with an AI writing model, review and approve each final
+                answer personally, and deliver it by email (via Resend) and/or
+                text message (via Twilio or direct operator SMS). Reply STOP to
+                any text message to opt out of SMS delivery.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
@@ -230,7 +232,7 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-brand-line pt-2">To prepare your 12-Month Timing Question or Chemistry Check from the birth dates and question you submit, review and approve the reading, and deliver it by email or text message (and to keep past report, sign-in, and download links working).</li>
+            <li className="border-t border-brand-line pt-2">To prepare The Card Blueprint Reading from the birth dates and questions you submit (up to 3 questions within 48 hours of purchase), review and approve each answer, and deliver it by email or text message (and to keep your Reading Pass, Suggested Questions download, and past purchase links working).</li>
             <li className="border-t border-brand-line pt-2">To send your purchase confirmation and delivery updates by email or opted-in SMS.</li>
             <li className="border-t border-brand-line pt-2">To support and honor legacy phone orders during their original access windows.</li>
             <li className="border-t border-brand-line pt-2">To follow up on questions or support requests about a purchase, if you ask.</li>

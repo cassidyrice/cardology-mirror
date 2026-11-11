@@ -16,7 +16,7 @@ export function ManualReadingOffers() {
   return (
     <>
       <div className="offer-menu">
-        <section className="offer-group" aria-label="Personal question readings">
+        <section className="offer-group" aria-label="The Card Blueprint Reading">
           <ul className="offer-list">
             {READINGS_NAV.map((reading) => (
               <li
@@ -42,9 +42,7 @@ export function ManualReadingOffers() {
                     data-order-reading={reading.id}
                     className="accent-button offer-order"
                   >
-                    {reading.id === "timing-map"
-                      ? "Ask a timing question · $26"
-                      : "Ask a compatibility question · $39"}
+                    Book The Card Blueprint Reading · $99
                   </a>
                 </div>
               </li>
@@ -55,10 +53,10 @@ export function ManualReadingOffers() {
 
       <div id="ask-question-inline" className="qr-home-inline">
         <QuestionReadingComposer
-          defaultTrack="chemistry-check"
+          defaultTrack="card-blueprint-reading"
           placement="homepage-readings-section"
-          heading="Write your question right here."
-          subheading="Pick Email or Text delivery, complete payment inline without leaving this page, and Cass sends your personal read within 48 hours (almost always under 24h)."
+          heading="Book The Card Blueprint Reading — $99"
+          subheading="Pay inline without leaving this page, get your Suggested Questions Guide (.pdf) immediately, and use your 48-hour Reading Pass to ask up to 3 questions (solo timing or two-person chemistry) by email or text."
         />
       </div>
 

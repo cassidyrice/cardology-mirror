@@ -221,9 +221,16 @@ export function middleware(request: NextRequest) {
   }
 
   if (
-    ["/my-purchases", "/consultation", "/report", "/blueprint", "/checkout/success", "/review", "/access"].includes(
-      request.nextUrl.pathname,
-    ) ||
+    [
+      "/my-purchases",
+      "/consultation",
+      "/report",
+      "/blueprint",
+      "/checkout/success",
+      "/review",
+      "/access",
+      "/reading-pass",
+    ].includes(request.nextUrl.pathname) ||
     request.nextUrl.pathname === "/ops" ||
     request.nextUrl.pathname.startsWith("/ops/")
   ) {

@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Terms of Service | Card Blueprints",
   description:
-    "Terms for the 12-Month Timing Question, the Chemistry Check, past purchases, and free Cardology tools.",
+    "Terms for The Card Blueprint Reading, 48-hour Reading Pass, past purchases, and free Cardology tools.",
   alternates: { canonical: "/terms-of-service" },
   robots: { index: true, follow: true },
 };
@@ -47,12 +47,11 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">What the service is</h2>
           <p className="mt-3">
             Card Blueprints offers free Cardology tools and educational pages,
-            plus two personal written question readings—the 12-Month Timing
-            Question and the Chemistry Check—sold directly on this site through
-            embedded Stripe Checkout. Card lookups use fixed formulas and
-            tables: the same birthday always produces the same card. Cardology is
-            an esoteric reflection framework; interpretations are not facts about
-            you.
+            plus one personal written reading—The Card Blueprint Reading—sold
+            directly on this site through embedded Stripe Checkout. Card lookups
+            use fixed formulas and tables: the same birthday always produces the
+            same card. Cardology is an esoteric reflection framework;
+            interpretations are not facts about you.
           </p>
         </section>
 
@@ -60,26 +59,23 @@ export default function TermsOfService() {
           <h2 className="font-serif text-2xl text-brand-ink">Paid products</h2>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-brand-line pt-2">
-              <strong>12-Month Timing Question ($26)</strong> — a private written
-              reading on one solo question built from your birth card, planetary
-              ruling card, and active 52-day periods, reviewed and approved by
-              Cass and delivered by email or text message within 48 hours (almost
-              all in under 24 hours). One payment, no renewal.
+              <strong>The Card Blueprint Reading ($99)</strong> — a one-time
+              purchase with no renewal. Immediately after payment you receive a
+              download of the Suggested Questions Guide plus a 48-hour Reading
+              Pass window from purchase to submit up to 3 questions per order
+              (solo timing or two-person compatibility with a second birthday).
+              Every submitted question is personally reviewed and approved by
+              Cass and delivered privately by email or text message within 48
+              hours (almost all in under 24 hours). Interpretive, not advice: it
+              does not predict events and does not replace a professional.
             </li>
             <li className="border-t border-brand-line pt-2">
-              <strong>The Chemistry Check ($39)</strong> — a private written
-              reading on your question about two people&rsquo;s cards, reviewed
-              and approved by Cass and delivered by email or text message within
-              48 hours (almost all in under 24 hours). One payment, no renewal.
-              Interpretive, not advice: it does not predict events and does not
-              replace a professional.
-            </li>
-            <li className="border-t border-brand-line pt-2">
-              Sign-in links and past report links use private signed URLs. Do not
-              share paid access or try to bypass payment or security checks.
-              Purchases of retired products (the Blueprint Report, Your Year
-              Ahead, the Personal Card Blueprint, and earlier written readings)
-              keep their existing access links.
+              Reading Pass links, sign-in links, and past report links use
+              private signed URLs. Do not share paid access or try to bypass
+              payment or security checks. Purchases of earlier or retired
+              products (the Blueprint Report, Your Year Ahead, the Personal Card
+              Blueprint, and earlier written readings) keep their existing access
+              links and original terms.
             </li>
           </ul>
         </section>

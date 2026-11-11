@@ -272,7 +272,7 @@ export function ApprovalStudio() {
           <div className="rounded-2xl border border-[#171512]/10 bg-white p-8 text-center">
             <p className="text-base font-medium">Inbox zero.</p>
             <p className="mt-1 text-sm text-[#6E675F]">
-              Paid $26 Timing and $39 Chemistry Check questions will land here automatically with 3 drafted angles.
+              Paid $99 Card Blueprint Reading questions (up to 3 per order within 48h) land here automatically with 3 drafted angles.
             </p>
           </div>
         ) : (
@@ -308,7 +308,7 @@ export function ApprovalStudio() {
                         {order.status === "sent" ? "Sent" : "Needs Approval"}
                       </span>
                       <span className="text-xs font-medium">
-                        ${(order.amountCents / 100).toFixed(0)} · {order.deliveryChannel.toUpperCase()}
+                        Q{order.questionNumber}/{order.maxQuestions} · ${(order.amountCents / 100).toFixed(0)} · {order.deliveryChannel.toUpperCase()}
                       </span>
                     </div>
                     <p className="mt-2 line-clamp-2 text-sm font-medium text-[#171512]">
@@ -337,7 +337,7 @@ export function ApprovalStudio() {
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="rounded-full bg-[#171512] px-2.5 py-0.5 text-[11px] font-medium text-white">
-                        {currentOrder.trackTitle} · ${(currentOrder.amountCents / 100).toFixed(0)}
+                        {currentOrder.trackTitle} · Question {currentOrder.questionNumber} of {currentOrder.maxQuestions} · ${(currentOrder.amountCents / 100).toFixed(0)}
                       </span>
                       <span className="rounded-full border border-[#171512]/15 px-2.5 py-0.5 text-[11px] font-medium">
                         Deliver via {currentOrder.deliveryChannel === "sms" ? "Text Message (SMS)" : "Email"}

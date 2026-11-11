@@ -36,7 +36,8 @@ export function WorkerPageView({
         <div className="wrap" dangerouslySetInnerHTML={{ __html: page.body }} />
         <div className="wrap">
           <QuestionReadingComposer
-            defaultTrack="chemistry-check"
+            defaultTrack="card-blueprint-reading"
+            defaultWithPartner={cards.length === 2}
             placement={`worker-${kind}`}
             compact
           />

@@ -109,5 +109,10 @@
   Access-Control-Allow-Origin: *
   Cross-Origin-Resource-Policy: cross-origin
 
+/downloads/card-blueprint-suggested-questions.pdf
+  Content-Type: application/pdf
+  Content-Disposition: attachment; filename="Card-Blueprint-Suggested-Questions.pdf"
+  Cache-Control: public, max-age=86400
+
 /video/*
   Cache-Control: public, max-age=604800

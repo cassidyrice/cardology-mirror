@@ -76,7 +76,7 @@ export function SiteFooter({ bare = false }: { bare?: boolean }) {
                   {coreLabel(item)}
                 </Link>
                 {item.id === "calculator" ? <small>Free</small> : null}
-                {item.id === "reading" ? <small>From $26 · email or text</small> : null}
+                {item.id === "reading" ? <small>$99 · up to 3 questions</small> : null}
               </li>
             ))}
           </ul>

@@ -32,24 +32,26 @@ test("beginners page reviewed date is the September 22 offer refresh", () => {
   expect(markup).not.toContain("August 7, 2026");
 });
 
-test("beginners page offers the $39 Chemistry Check after the free calculator", () => {
+test("beginners page offers the $99 Card Blueprint Reading after the free calculator", () => {
   const markup = renderToStaticMarkup(createElement(CardologyForBeginners));
   const freeAt = markup.indexOf('href="/birth-card-calculator"');
-  const paidAt = markup.indexOf('href="/#chemistry-check"');
+  const paidAt = markup.indexOf('href="/#readings"');
 
   expect(metadata.description).toBe(
-    "Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then the $39 Chemistry Check. Stop overthinking.",
+    "Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then The Card Blueprint Reading ($99).",
   );
   expect(markup).toContain("Find your birth card free");
-  expect(markup).toContain("The Chemistry Check · $39");
+  expect(markup).toContain("The Card Blueprint Reading · $99");
   expect(markup).toContain("A mirror, not a forecast");
   expect(markup).toContain('href="/faq"');
   expect(freeAt).toBeGreaterThan(-1);
   expect(paidAt).toBeGreaterThan(freeAt);
 
-  const article = articleHtml(markup).replaceAll("Card Blueprints", "");
+  const article = articleHtml(markup)
+    .replaceAll("Card Blueprints", "")
+    .replaceAll("Card Blueprint Reading", "");
   expect(article).not.toMatch(/Blueprint|Deep Dive|One Question/);
-  expect(article).not.toMatch(/\$13|\$19|\$24|\$47|\$9\b/);
+  expect(article).not.toMatch(/\$13|\$19|\$24|\$26|\$39|\$47|\$9\b/);
 });
 
 test("beginners FAQ and HowTo schema match the visible answers", () => {
@@ -67,7 +69,7 @@ test("beginners FAQ and HowTo schema match the visible answers", () => {
   for (const question of faq.mainEntity) {
     expect(markup).toContain(question.name);
     expect(markup).toContain(question.acceptedAnswer.text);
-    expect(question.acceptedAnswer.text).not.toMatch(/Blueprint|Deep Dive/);
+    expect(question.acceptedAnswer.text.replaceAll("Card Blueprint Reading", "")).not.toMatch(/Blueprint|Deep Dive/);
   }
   expect(faq.mainEntity.map((question) => question.name)).toContain(
     "What should I do after I know my birth card?",
@@ -75,12 +77,12 @@ test("beginners FAQ and HowTo schema match the visible answers", () => {
   const afterCard = faq.mainEntity.find(
     (question) => question.name === "What should I do after I know my birth card?",
   );
-  expect(afterCard?.acceptedAnswer.text).toContain("Chemistry Check ($39)");
+  expect(afterCard?.acceptedAnswer.text).toContain("The Card Blueprint Reading ($99)");
   expect(afterCard?.acceptedAnswer.text).toContain("mirror, not a forecast");
 
   expect(howTo.description).toBe(metadata.description);
   expect(howTo.step).toHaveLength(6);
   expect(howTo.step[1]?.url).toBe("https://cardblueprints.com/birth-card-calculator");
-  expect(howTo.step[5]?.url).toBe("https://cardblueprints.com/#chemistry-check");
+  expect(howTo.step[5]?.url).toBe("https://cardblueprints.com/#readings");
   expect(howTo.step[5]?.text).toContain("A mirror, not a forecast");
 });
