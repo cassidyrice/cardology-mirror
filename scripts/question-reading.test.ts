@@ -10,6 +10,7 @@ mock.module("@cloudflare/next-on-pages", () => ({
 
 const { POST: checkoutPost } = await import("../app/api/checkout/question-reading/route");
 const { POST: confirmPost } = await import("../app/api/checkout/question-reading/confirm/route");
+const { GET: passGet, POST: passPost } = await import("../app/api/reading-pass/route");
 const { setQuestionTestStripe } = await import("../lib/stripe");
 const {
   GET: inboxGet,
@@ -18,8 +19,10 @@ const {
 const { buildQuestionReadingFacts } = await import("../lib/question-reading-facts");
 const {
   CARD_BLUEPRINTS_STRIPE_ACCOUNT,
+  ReadingPassError,
   setQuestionOrderTestDb,
   signOpsOrderToken,
+  submitReadingPassQuestion,
 } = await import("../lib/question-reading-service");
 const {
   generateThreeReadingAngles,
@@ -189,7 +192,7 @@ describe("3-angle AI reading writer & deterministic fallback", () => {
                       key: "verdict",
                       label: "Direct Verdict & Date Window",
                       thesis: "4♦ lands in his Mars and Venus while Dec 24 – Jan 24 opens 10♣.",
-                      subject: "Your 4♦ + 8♦ Chemistry Check",
+                      subject: "Your 4♦ + 8♦ Card Blueprint Reading",
                       emailBody:
                         "Hi Candice,\n\nThe universe says wait until Dec 24 – Jan 24 when you both sit in 10♣ while your 4♦ holds Mars and Venus in his spread. Make one clean ask inside that window and watch what he actually does.\n\nCass",
                       smsBody:
@@ -318,7 +321,7 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
             const lineItems = params.line_items as Array<{
               price_data?: { unit_amount?: number };
             }>;
-            const amountTotal = lineItems?.[0]?.price_data?.unit_amount ?? 3900;
+            const amountTotal = lineItems?.[0]?.price_data?.unit_amount ?? 9900;
             const session = {
               id,
               client_secret: `${id}_secret_xyz`,
@@ -407,17 +410,17 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
     expect(missingConsentRes.status).toBe(400);
   });
 
-  test("full lifecycle: $26 & $39 embedded checkout -> confirm -> 3 angles -> /ops/inbox approve -> SMS + Email sent", async () => {
+  test("full lifecycle: $99 embedded checkout with Question 1 -> confirm -> 3 angles -> /ops/inbox approve -> SMS + Email sent", async () => {
     const stripe = buildMockStripe(CARD_BLUEPRINTS_STRIPE_ACCOUNT);
     setQuestionTestStripe(stripe);
 
-    // 1. $26 Solo Timing Question (email)
+    // 1. $99 Solo Question #1 at checkout (email)
     const soloRes = await checkoutPost(
       new NextRequest("https://cardblueprints.com/api/checkout/question-reading", {
         method: "POST",
         headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
         body: JSON.stringify({
-          track: "timing-map",
+          track: "card-blueprint-reading",
           birth1: "1991-02-17",
           name1: "Maya",
           question: "When is the cleanest window to launch my studio this year?",
@@ -433,20 +436,20 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
       orderId: string;
       amountCents: number;
     };
-    expect(soloJson.amountCents).toBe(2600);
+    expect(soloJson.amountCents).toBe(9900);
     expect(soloJson.clientSecret).toContain("_secret_");
     const soloSession = createdSessions.get(soloJson.sessionId)!;
     expect(soloSession.ui_mode).toBe("embedded_page");
     expect(soloSession.redirect_on_completion).toBe("never");
     expect(soloSession.allow_promotion_codes).toBe(true);
 
-    // 2. $39 Chemistry Check (SMS + backup email)
+    // 2. $99 Card Blueprint Reading with 2nd person birthday included (SMS + backup email)
     const compatRes = await checkoutPost(
       new NextRequest("https://cardblueprints.com/api/checkout/question-reading", {
         method: "POST",
         headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
         body: JSON.stringify({
-          track: "chemistry-check",
+          track: "card-blueprint-reading",
           birth1: "1981-03-19",
           name1: "Candice",
           birth2: "1971-09-11",
@@ -467,7 +470,7 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
       orderId: string;
       amountCents: number;
     };
-    expect(compatJson.amountCents).toBe(3900);
+    expect(compatJson.amountCents).toBe(9900);
 
     // 3. Confirm inline checkout completion (and verify idempotency on duplicate call)
     const confirm1 = await confirmPost(
@@ -484,16 +487,32 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
       track: string;
       deliveryChannel: string;
       turnaround: string;
+      passToken: string;
+      passUrl: string;
+      suggestedQuestionsUrl: string;
+      questionsUsed: number;
+      questionsRemaining: number;
+      maxQuestions: number;
     };
     expect(confirmBody.orderId).toBe(compatJson.orderId);
     expect(confirmBody.status).toBe("awaiting_approval");
     expect(confirmBody.deliveryChannel).toBe("sms");
     expect(confirmBody.turnaround).toContain("48 hours");
     expect(confirmBody.turnaround).toContain("24 hours");
+    expect(confirmBody.passToken).toBeTruthy();
+    expect(confirmBody.passUrl).toContain("/reading-pass?token=");
+    expect(confirmBody.suggestedQuestionsUrl).toBe(
+      "/downloads/card-blueprint-suggested-questions.pdf",
+    );
+    expect(confirmBody.questionsUsed).toBe(1);
+    expect(confirmBody.questionsRemaining).toBe(2);
+    expect(confirmBody.maxQuestions).toBe(3);
 
     // Buyer receipt + operator alert email with signed /ops/inbox magic link
     expect(sentEmails).toHaveLength(2);
     expect(sentEmails[0].to).toBe("candice@example.com");
+    expect(sentEmails[0].text).toContain("/downloads/card-blueprint-suggested-questions.pdf");
+    expect(sentEmails[0].text).toContain("/reading-pass?token=");
     expect(sentEmails[1].to).toBe("cass@cardblueprints.com");
     expect(sentEmails[1].text).toContain("/ops/inbox?order=");
 
@@ -524,11 +543,15 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
       orders: Array<{
         id: string;
         status: string;
+        questionNumber: number;
+        maxQuestions: number;
         angles: Array<{ angle: number; subject: string; emailBody: string; smsBody: string }>;
         manualSmsHref: string | null;
       }>;
     };
     expect(inboxData.mode).toBe("single");
+    expect(inboxData.orders[0].questionNumber).toBe(1);
+    expect(inboxData.orders[0].maxQuestions).toBe(3);
     expect(inboxData.orders[0].angles).toHaveLength(3);
     expect(inboxData.orders[0].manualSmsHref).toContain("sms:+14065550199");
 
@@ -582,5 +605,210 @@ describe("Zero-leave embedded checkout, confirmation, and /ops/inbox approval + 
     expect(sentTwilioSms[0].to).toBe("+14065550199");
     expect(sentEmails).toHaveLength(3);
     expect(sentEmails[2].to).toBe("candice@example.com");
+    expect(sentEmails[2].text).toContain("2 of 3 questions remaining in your 48-hour window");
+  });
+
+  test("48-hour Reading Pass: pay first without typing Q1 -> Suggested Questions PDF -> submit Q1, Q2 (pair), Q3 -> reject Q4 (409) & expired window (410)", async () => {
+    const pdfBytes = readFileSync("public/downloads/card-blueprint-suggested-questions.pdf");
+    expect(pdfBytes.byteLength).toBeGreaterThan(5000);
+    expect(pdfBytes.subarray(0, 8).toString("latin1")).toContain("%PDF-1.4");
+
+    const stripe = buildMockStripe(CARD_BLUEPRINTS_STRIPE_ACCOUNT);
+    setQuestionTestStripe(stripe);
+
+    // 1. Buyer pays $99 first with question left blank
+    const checkoutRes = await checkoutPost(
+      new NextRequest("https://cardblueprints.com/api/checkout/question-reading", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
+        body: JSON.stringify({
+          birth1: "1991-02-17",
+          name1: "Maya",
+          question: "",
+          deliveryChannel: "email",
+          buyerEmail: "maya@example.com",
+        }),
+      }),
+    );
+    expect(checkoutRes.status).toBe(200);
+    const checkoutJson = (await checkoutRes.json()) as {
+      sessionId: string;
+      orderId: string;
+      amountCents: number;
+    };
+    expect(checkoutJson.amountCents).toBe(9900);
+
+    // 2. Confirm sets status = awaiting_question, 0 of 3 questions used
+    const confirmRes = await confirmPost(
+      new NextRequest("https://cardblueprints.com/api/checkout/question-reading/confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId: checkoutJson.sessionId }),
+      }),
+    );
+    expect(confirmRes.status).toBe(200);
+    const confirmJson = (await confirmRes.json()) as {
+      status: string;
+      passToken: string;
+      suggestedQuestionsUrl: string;
+      accessExpiresAt: string;
+      questionsUsed: number;
+      questionsRemaining: number;
+      maxQuestions: number;
+    };
+    expect(confirmJson.status).toBe("awaiting_question");
+    expect(confirmJson.questionsUsed).toBe(0);
+    expect(confirmJson.questionsRemaining).toBe(3);
+    expect(confirmJson.maxQuestions).toBe(3);
+    expect(confirmJson.suggestedQuestionsUrl).toBe(
+      "/downloads/card-blueprint-suggested-questions.pdf",
+    );
+
+    // Only receipt email sent so far (no operator approval alert until Q1 is submitted)
+    expect(sentEmails).toHaveLength(1);
+    expect(sentEmails[0].to).toBe("maya@example.com");
+
+    // 3. Submit Question 1 (solo), Question 2 (2-person compatibility), and Question 3 via /api/reading-pass
+    const q1Res = await passPost(
+      new NextRequest("https://cardblueprints.com/api/reading-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
+        body: JSON.stringify({
+          token: confirmJson.passToken,
+          question: "Which 52-day window this year favors raising my studio rates?",
+        }),
+      }),
+    );
+    expect(q1Res.status).toBe(200);
+    const q1Json = (await q1Res.json()) as {
+      submittedQuestionNumber: number;
+      submittedOrderId: string;
+      pass: { questionsUsed: number; questionsRemaining: number };
+    };
+    expect(q1Json.submittedQuestionNumber).toBe(1);
+    expect(q1Json.submittedOrderId).toBe(checkoutJson.orderId);
+    expect(q1Json.pass.questionsUsed).toBe(1);
+    expect(q1Json.pass.questionsRemaining).toBe(2);
+
+    // Approve Q1 in /ops/inbox so Q2 gets prior answered Q&A context
+    const sig1 = await signOpsOrderToken(q1Json.submittedOrderId);
+    const inbox1Res = await inboxGet(
+      new NextRequest(
+        `https://cardblueprints.com/api/ops/inbox?order=${encodeURIComponent(q1Json.submittedOrderId)}&sig=${encodeURIComponent(sig1)}`,
+      ),
+    );
+    const inbox1 = (await inbox1Res.json()) as {
+      orders: Array<{ angles: Array<{ subject: string; emailBody: string; smsBody: string }> }>;
+    };
+    await inboxPost(
+      new NextRequest("https://cardblueprints.com/api/ops/inbox", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          action: "approve",
+          orderId: q1Json.submittedOrderId,
+          sig: sig1,
+          angle: 1,
+          subject: inbox1.orders[0].angles[0].subject,
+          emailBody: inbox1.orders[0].angles[0].emailBody,
+          smsBody: inbox1.orders[0].angles[0].smsBody,
+        }),
+      }),
+    );
+
+    const q2Res = await passPost(
+      new NextRequest("https://cardblueprints.com/api/reading-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
+        body: JSON.stringify({
+          token: confirmJson.passToken,
+          birth2: "1989-10-04",
+          name2: "Devon",
+          question: "Why do Devon and I stall out every time we talk about moving in together?",
+        }),
+      }),
+    );
+    expect(q2Res.status).toBe(200);
+    const q2Json = (await q2Res.json()) as {
+      submittedQuestionNumber: number;
+      submittedOrderId: string;
+      pass: { questionsUsed: number; questionsRemaining: number };
+    };
+    expect(q2Json.submittedQuestionNumber).toBe(2);
+    expect(q2Json.pass.questionsUsed).toBe(2);
+    expect(q2Json.pass.questionsRemaining).toBe(1);
+
+    // Verify expired 48h window check BEFORE using question #3 slot
+    const after48hMs = new Date(confirmJson.accessExpiresAt).getTime() + 1_000;
+    let expiredErr: unknown = null;
+    try {
+      await submitReadingPassQuestion({
+        rootOrderId: checkoutJson.orderId,
+        question: "Trying to ask after 48 hours have elapsed since purchase.",
+        nowMs: after48hMs,
+      });
+    } catch (err) {
+      expiredErr = err;
+    }
+    expect(expiredErr).toBeInstanceOf(ReadingPassError);
+    expect((expiredErr as InstanceType<typeof ReadingPassError>).status).toBe(410);
+    expect((expiredErr as InstanceType<typeof ReadingPassError>).code).toBe("WINDOW_EXPIRED");
+
+    // Submit Question 3 within window
+    const q3Res = await passPost(
+      new NextRequest("https://cardblueprints.com/api/reading-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
+        body: JSON.stringify({
+          token: confirmJson.passToken,
+          question: "What blind spot in my 8♦ spread keeps making me overwork through Saturn?",
+        }),
+      }),
+    );
+    expect(q3Res.status).toBe(200);
+    const q3Json = (await q3Res.json()) as {
+      submittedQuestionNumber: number;
+      pass: { questionsUsed: number; questionsRemaining: number; canSubmitQuestion: boolean };
+    };
+    expect(q3Json.submittedQuestionNumber).toBe(3);
+    expect(q3Json.pass.questionsUsed).toBe(3);
+    expect(q3Json.pass.questionsRemaining).toBe(0);
+    expect(q3Json.pass.canSubmitQuestion).toBe(false);
+
+    // 4. Question 4 MUST be rejected with HTTP 409 QUESTION_LIMIT_REACHED
+    const q4Res = await passPost(
+      new NextRequest("https://cardblueprints.com/api/reading-pass", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Origin: "https://cardblueprints.com" },
+        body: JSON.stringify({
+          token: confirmJson.passToken,
+          question: "Can I sneak in a fourth question on the same order?",
+        }),
+      }),
+    );
+    expect(q4Res.status).toBe(409);
+    const q4Json = (await q4Res.json()) as { code?: string };
+    expect(q4Json.code).toBe("QUESTION_LIMIT_REACHED");
+
+    // 5. GET /api/reading-pass?token=... returns delivered Q1 answer + pending Q2/Q3
+    const stateRes = await passGet(
+      new NextRequest(
+        `https://cardblueprints.com/api/reading-pass?token=${encodeURIComponent(confirmJson.passToken)}`,
+      ),
+    );
+    expect(stateRes.status).toBe(200);
+    const stateJson = (await stateRes.json()) as {
+      ok: boolean;
+      pass: {
+        questionsUsed: number;
+        questions: Array<{ questionNumber: number; status: string; approvedBody: string | null }>;
+      };
+    };
+    expect(stateJson.ok).toBe(true);
+    expect(stateJson.pass.questionsUsed).toBe(3);
+    expect(stateJson.pass.questions[0].status).toBe("sent");
+    expect(stateJson.pass.questions[0].approvedBody).toBeTruthy();
+    expect(stateJson.pass.questions[1].status).toBe("awaiting_approval");
+    expect(stateJson.pass.questions[2].status).toBe("awaiting_approval");
   });
 });

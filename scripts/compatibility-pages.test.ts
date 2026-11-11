@@ -12,19 +12,19 @@ import { middleware } from "../middleware";
 
 const locs = (xml: string) => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 
-test("all 1431 compatibility pages offer the $39 Chemistry Check and $26 Timing Question inline with zero Stan Store", () => {
+test("all 1431 compatibility pages offer the $99 Card Blueprint Reading inline with zero Stan Store", () => {
   const pages = [compatIndexPage(), ...compatSlugs().map(slug => compatPage(slug)!)];
   expect(pages).toHaveLength(1431);
   for (const page of pages) {
-    expect(page.body).toContain("The Chemistry Check: $39");
-    expect(page.body).toContain("12-Month Timing Question: $26");
-    expect(page.body).toContain('href="/#chemistry-check"');
-    expect(page.body).toContain('href="/#timing-map"');
+    expect(page.body).toContain("The Card Blueprint Reading · $99");
+    expect(page.body).toContain("Suggested Questions");
+    expect(page.body).toContain('href="/#readings"');
+    expect(page.body).toContain('data-open-question-track="card-blueprint-reading"');
     expect(page.body).not.toMatch(/Family Snapshot|Collector Pack|free-course/);
-    expect(page.body).toContain("Includes seven days of follow-up.");
+    expect(page.body).toContain("limit 3 questions per order");
     expect(page.body).toContain("within 48 hours");
     expect(page.body).toContain("under 24 hours");
-    expect(page.body).not.toMatch(/\$(24|97|137|179)\b|you \+ 3 family|inbox within 7 days/);
+    expect(page.body).not.toMatch(/\$(24|26|39|97|137|179)\b|you \+ 3 family|inbox within 7 days/);
     expect(page.body).not.toContain("stan.store");
   }
 });

@@ -146,19 +146,19 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       {
         id: "personal-readings",
         question: "What personal readings do you offer?",
-        answer: "Two private question readings, ordered directly on the page with no PDF filler. The 12-Month Timing Map ($26) is for one solo timing or decision question. The Chemistry Check ($39) is for you plus one person—both cards, permanent spread seats, and overlapping 52-day timing windows. You choose email or text message delivery at checkout. Cass personally reviews and approves every reading within 48 hours, with almost all delivered in under 24 hours.",
+        answer: "One unified reading ordered directly on the page: The Card Blueprint Reading ($99). Right after payment you get an instant download of Suggested Questions, plus 48 hours of access from purchase to submit up to 3 questions of your own—solo timing or two-person compatibility with a second birthday. You choose email or text message delivery at checkout. Cass personally reviews and approves every answer within 48 hours, with almost all delivered in under 24 hours.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {
         id: "personal-reading-follow-up",
         question: "How does delivery work after I order a reading?",
-        answer: `${READING_FOLLOW_UP} ${READING_RESPONSE_TIME} If you need to correct a birth date or ask a question about your reading, reply directly or email ${READING_SUPPORT_EMAIL}.`,
+        answer: `${READING_FOLLOW_UP} ${READING_RESPONSE_TIME} If you need to correct a birth date or ask a question about your order, reply directly or email ${READING_SUPPORT_EMAIL}.`,
         links: [{ href: "/contact", label: "Reading support" }],
       },
       {
         id: "order-help",
         question: "How do I get help with an order or a past purchase?",
-        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. Questions about your 12-Month Timing Map or Chemistry Check go to ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
+        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. Questions about The Card Blueprint Reading go to ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
         links: [
           { href: "/contact", label: "Contact" },
           { href: "/refund-policy", label: "Refund policy" },

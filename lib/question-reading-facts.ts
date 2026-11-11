@@ -1,4 +1,4 @@
-// Deterministic Cardology spread fact builder for $26 Timing Map and $39 Chemistry Check readings.
+// Deterministic Cardology spread fact builder for The Card Blueprint Reading ($99 · up to 3 questions / 48h).
 // Every card, ruling card, permanent Life Spread seat, yearly spread card, and 52-day calendar
 // date window comes straight from lib/engine-core/engine.js + lib/reading.ts + lib/year-blueprint.ts.
 // Zero invented symbolism; December 31 (Joker) throws JokerNotSupportedError so no buyer is ever
@@ -14,7 +14,7 @@ import { getCardSeo } from "./seo-cards";
 import type { PlanetName } from "./types";
 import { buildYearBlueprint } from "./year-blueprint";
 
-export type QuestionTrack = "timing-map" | "chemistry-check";
+export type QuestionTrack = "card-blueprint-reading" | "timing-map" | "chemistry-check";
 
 export interface PeriodWindowFact {
   planet: PlanetName;
@@ -573,7 +573,7 @@ export async function buildQuestionReadingFacts(args: {
     ];
 
     return {
-      track: "timing-map",
+      track: args.track,
       targetDateIso: nowIso,
       question: args.question.trim(),
       relationshipContext: "",
@@ -630,7 +630,7 @@ export async function buildQuestionReadingFacts(args: {
   ];
 
   return {
-    track: "chemistry-check",
+    track: args.track,
     targetDateIso: nowIso,
     question: args.question.trim(),
     relationshipContext: (args.rel2 ?? "").trim(),

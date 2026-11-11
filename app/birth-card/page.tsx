@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Can I get a personal reading?",
-    a: "Yes. Cass prepares the Chemistry Check ($39) for two people’s cards and the 12-Month Timing Map ($26) for one solo timing question, delivered by email or text message. Read your free card meaning first. Then decide what you actually want to ask.",
+    a: "Yes. The Card Blueprint Reading ($99) includes an instant Suggested Questions download after payment and 48 hours of access to submit up to 3 questions of your own—solo timing or two-person compatibility—personally reviewed by Cass and delivered by email or text message.",
   },
 ];
 

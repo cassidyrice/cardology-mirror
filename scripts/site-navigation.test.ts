@@ -29,15 +29,15 @@ test("footer preserves library disclosure, support, policy and purchase-access d
   for (const path of ['/birth-card-calculator','/what-is-cardology','/birth-card','/born-on/','/compatibility/','/faq','/contact','/my-purchases','/privacy-policy','/terms-of-service','/refund-policy']) expect(html).toContain(`href="${path}"`);
   for (const offer of READINGS_NAV) expect(html).toContain(`href="${offer.href}"`);
 });
-test("two on-page question reading offers ($26 Timing Map and $39 Chemistry Check) with email or text delivery and follow-up", () => {
-  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["timing-map", "$26"], ["chemistry-check", "$39"]]);
+test("one unified on-page offer ($99 Card Blueprint Reading) with Suggested Questions, 48h 3-question pass, and email/text delivery", () => {
+  expect(READINGS_NAV.map(x => [x.id, x.price])).toEqual([["card-blueprint-reading", "$99"]]);
   const html = render(ManualReadingOffers);
-  expect(html).toContain('id="timing-map"');
-  expect(html).toContain('id="chemistry-check"');
-  expect(html).toContain('data-order-reading="timing-map"');
-  expect(html).toContain('data-order-reading="chemistry-check"');
+  expect(html).toContain('id="card-blueprint-reading"');
+  expect(html).toContain('data-order-reading="card-blueprint-reading"');
+  expect(html).toContain("Suggested Questions Guide (.pdf)");
+  expect(html).not.toContain("/downloads/card-blueprint-suggested-questions.pdf");
   expect(html).toContain(READING_FOLLOW_UP);
   expect(html).toContain(`mailto:${READING_SUPPORT_EMAIL}`);
   expect(html).not.toContain("stan.store");
-  expect(html).not.toMatch(/\$49|\$59|availability/);
+  expect(html).not.toMatch(/\$26|\$39|\$49|\$59|availability/);
 });

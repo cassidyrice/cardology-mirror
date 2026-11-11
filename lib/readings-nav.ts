@@ -1,22 +1,26 @@
-// Canonical on-page personal question readings (Cass, 2026-11).
-// Zero external Stan Store redirects; zero PDF products.
-// Buyer submits their birth date(s) + real question inline, chooses Email or Text delivery,
-// pays on-page via Stripe Embedded Checkout, and Cass personally approves 1 of 3 drafted angles.
+// Canonical on-page personal reading offer (Cass, 2026-11):
+// Single unified product: The Card Blueprint Reading ($99).
+// Zero external Stan Store redirects. Once paid on-page via Stripe Embedded Checkout,
+// the buyer receives an instant Suggested Questions Guide download plus 48-hour access
+// to ask up to 3 questions (solo timing, work, blind spots, or two-person compatibility),
+// each personally reviewed by Cass and delivered by email or text message.
 
-export const TIMING_MAP_HREF = "/#timing-map";
-export const CHEMISTRY_CHECK_HREF = "/#chemistry-check";
+export const CARD_BLUEPRINT_READING_HREF = "/#readings";
+// Aliases kept so any caller importing these constants lands on the unified reading section.
+export const TIMING_MAP_HREF = CARD_BLUEPRINT_READING_HREF;
+export const CHEMISTRY_CHECK_HREF = CARD_BLUEPRINT_READING_HREF;
 
 export const READING_FOLLOW_UP =
-  "Every reading is drafted against your exact Cardology spread, personally reviewed and approved by Cass, and delivered privately by email or text message.";
+  "Every question is drafted against your exact Cardology spread, personally reviewed and approved by Cass, and delivered privately by email or text message.";
 export const READING_SUPPORT_EMAIL = "52xseven@mail.grokbot.com";
 export const READING_RESPONSE_TIME =
-  "48-hour response window — almost all readings arrive in under 24 hours.";
+  "48-hour response window per question — almost all readings arrive in under 24 hours.";
 
 export type ManualReading = {
-  id: "timing-map" | "chemistry-check";
+  id: "card-blueprint-reading";
   title: string;
   price: string;
-  amountCents: 2600 | 3900;
+  amountCents: 9900;
   href: string;
   checkoutHref: string;
   who: string;
@@ -27,37 +31,19 @@ export type ManualReading = {
 
 export const READINGS_NAV: readonly ManualReading[] = [
   {
-    id: "timing-map",
-    title: "The 12-Month Timing Map",
-    price: "$26",
-    amountCents: 2600,
-    href: TIMING_MAP_HREF,
-    checkoutHref: TIMING_MAP_HREF,
-    who: "Just you · One real question on your year",
+    id: "card-blueprint-reading",
+    title: "The Card Blueprint Reading",
+    price: "$99",
+    amountCents: 9900,
+    href: CARD_BLUEPRINT_READING_HREF,
+    checkoutHref: CARD_BLUEPRINT_READING_HREF,
+    who: "Up to 3 questions over 48 hours · Solo or two birthdays",
     description:
-      "Bring your birth date and the decision, move, or timing question you keep circling. Cass reads your active 52-day planetary windows, Pluto pressure card, and Result card, then answers you directly.",
+      "Pay once on this page, get an instant download of Suggested Questions, and ask any question you want — right at checkout or anytime during your 48-hour Reading Pass (up to 3 questions per order). Bring your own birthday for timing and career, or add a second birthday on any question for relationship chemistry.",
     includes: [
-      "Your birth card, ruling card, and current age spread",
-      "Your active and next 52-day planetary date windows",
-      "A direct answer to your question with exact dates to circle",
-    ],
-    delivery:
-      "Delivered by email or text message within 48 hours — almost all under 24 hours.",
-  },
-  {
-    id: "chemistry-check",
-    title: "The Chemistry Check",
-    price: "$39",
-    amountCents: 3900,
-    href: CHEMISTRY_CHECK_HREF,
-    checkoutHref: CHEMISTRY_CHECK_HREF,
-    who: "You plus the person you keep thinking about",
-    description:
-      "Bring both birthdays and what you actually want to know. Cass maps where each of you sits in the other’s permanent spread, whether the pull runs one way or both, and the exact calendar dates your charts cross.",
-    includes: [
-      "Permanent Life & Ruling Spread seats in both directions",
-      "Shared cards and overlapping 52-day timing windows",
-      "A plain-spoken answer to your question — no destiny fluff",
+      "Instant Suggested Questions Guide (.pdf) right after payment",
+      "48-hour access pass after purchase to ask up to 3 questions (any topic or second person)",
+      "Cass personally reviews your Life, Ruling, and 52-day spreads for every answer",
     ],
     delivery:
       "Delivered by email or text message within 48 hours — almost all under 24 hours.",

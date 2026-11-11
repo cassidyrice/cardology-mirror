@@ -32,22 +32,22 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
     expect(meta.alternates?.canonical).toBe(page.canonical);
     const html = renderToStaticMarkup(createElement(BornOnPageView, { page }));
     expect(html).toContain("data-readings-menu");
-    expect(html).toContain('href="/#chemistry-check"');
+    expect(html).toContain('href="/#readings"');
     expect(html).toContain('type="application/ld+json"');
     expect(html).toContain(page.body.slice(0, 200));
   }
 });
 
-test("all 367 birthday pages offer the $26 Timing Question and $39 Chemistry Check inline with zero Stan Store", () => {
+test("all 367 birthday pages offer the $99 Card Blueprint Reading inline with zero Stan Store", () => {
   for (const slug of ["", ...bornOnSlugs()]) {
     const body = bornOnPage(slug)!.body;
-    expect(body).toContain("12-Month Timing Question: $26");
-    expect(body).toContain("The Chemistry Check: $39");
+    expect(body).toContain("The Card Blueprint Reading · $99");
+    expect(body).toContain("Suggested Questions");
+    expect(body).toContain("limit 3 questions per order");
     expect(body).toContain("within 48 hours");
     expect(body).toContain("under 24 hours");
-    expect(body).toContain("Includes seven days of follow-up.");
     expect(body).not.toMatch(/Family Snapshot|Collector Pack|free-course/);
-    expect(body).not.toMatch(/\$(24|97|137|179)\b|you \+ 3 family|inbox within 7 days/);
+    expect(body).not.toMatch(/\$(24|26|39|97|137|179)\b|you \+ 3 family|inbox within 7 days/);
     expect(body).not.toContain("stan.store");
   }
 });

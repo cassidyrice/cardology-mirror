@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: free card tools, a published method you can check, and personal Timing ($26) and Chemistry Check ($39) readings.",
+    "About Card Blueprints and founder Cassidy Rice: free card tools, a published method you can check, and The Card Blueprint Reading ($99).",
   alternates: { canonical: "/about" },
 };
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
           Do the math.
         </p>
         <p>
-          I offer two personal written question readings directly on this site—no PDF filler and no leaving the page. The 12-Month Timing Map ($26) answers one real question on your year using your active 52-day planetary windows and yearly karma. The Chemistry Check ($39) pairs both people&rsquo;s calculated cards, permanent spread seats, and overlapping timing windows to answer what is actually happening between you. You choose email or text message delivery at checkout, and every reading is personally reviewed and approved by me within 48 hours—almost all in under 24 hours.
+          I offer one personal written reading directly on this site—no leaving the page. The Card Blueprint Reading ($99) gives you an instant download of Suggested Questions right after payment, plus 48 hours of access from purchase to submit up to 3 questions of your own—whether solo timing on your active 52-day planetary windows or two-person compatibility with both people&rsquo;s birthdays. You choose email or text message delivery at checkout, and every answer is personally reviewed and approved by me within 48 hours—almost all in under 24 hours.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -138,7 +138,7 @@ export default function AboutPage() {
           . General questions, corrections, and support for other purchases receive a reply within {CONTACT_RESPONSE}.
         </p>
         <p className="font-serif text-lg leading-relaxed text-brand-ink">
-          Follow-up questions about a Chemistry Check go to{" "}
+          Questions about your Card Blueprint Reading go to{" "}
           <a href={`mailto:${READING_SUPPORT_EMAIL}`} className="underline">{READING_SUPPORT_EMAIL}</a>. {READING_RESPONSE_TIME} Every response is personally reviewed and approved by Cass.
         </p>
       </section>

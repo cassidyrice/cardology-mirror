@@ -211,7 +211,7 @@ export function BirthdayWorkerAnchor({
   );
 }
 
-/** The result continues to the Chemistry Check or a free exercise. */
+/** The result continues to The Card Blueprint Reading or a free exercise. */
 function CalculatorNextStep() {
   return (
     <div className="calc-next">

@@ -16,7 +16,7 @@ import "./landing.css";
 
 const HOME_TITLE = "Card Blueprints: Free Birth Card Lookup & Personal Cardology Readings";
 const HOME_DESCRIPTION =
-  "Find your playing-card birth card free in seconds. Ask a solo 12-Month Timing Question ($26) or two-person Chemistry Check ($39) inline—delivered by email or text within 48 hours.";
+  "Find your playing-card birth card free in seconds. Order The Card Blueprint Reading ($99) inline—Suggested Questions plus up to 3 questions over 48 hours.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -92,10 +92,10 @@ export default function Home() {
 
             <InView as="section" id="readings" className="readings" aria-labelledby="home-reading-title">
               <h2 id="home-reading-title" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
-                Two readings. Zero leaving the page.
+                One reading. Zero leaving the page.
               </h2>
               <p className="readings-lead" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-                Pick your track—<strong>The 12-Month Timing Map ($26)</strong> for your own year, or <strong>The Chemistry Check ($39)</strong> for two people. Cass reviews three angles on your spread and sends the sharpest one to your inbox or phone within 48 hours—almost all in under 24 hours.
+                <strong>The Card Blueprint Reading ($99)</strong> gives you an instant download of Suggested Questions right after payment, plus a 48-hour Reading Pass to ask up to 3 questions of your own—solo timing or two-person compatibility. Cass reviews three angles on every question and sends the sharpest one to your inbox or phone within 48 hours, almost all in under 24 hours.
               </p>
               <div data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
                 <StageCue>

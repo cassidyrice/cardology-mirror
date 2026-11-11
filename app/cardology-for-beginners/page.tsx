@@ -13,7 +13,7 @@ import {
 
 const UPDATED = PAGE_UPDATED_DATES["/cardology-for-beginners"];
 const TITLE = "Cardology for Beginners: Find Your Birth Card in 10 Minutes";
-const DESCRIPTION = `Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then the $39 Chemistry Check. Stop overthinking.`;
+const DESCRIPTION = `Cardology for beginners: one birthday, one card from a 52-card deck. Birth vs ruling card, compatibility, then The Card Blueprint Reading ($99).`;
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -67,9 +67,9 @@ const steps = [
   {
     n: "6",
     title: "Get a reading only if it earns it",
-    body: "If the free tools keep hitting a little too close, the Chemistry Check ($39) reads your card beside one other person's. Shared strengths. Recurring friction. Where your years cross. A mirror, not a forecast. Prepared by Cass.",
-    href: "/#chemistry-check",
-    label: "The Chemistry Check · $39",
+    body: "If the free tools keep hitting a little too close, The Card Blueprint Reading ($99) gives you an instant Suggested Questions download plus 48 hours of access to ask up to 3 questions—solo timing or two people's cards. A mirror, not a forecast. Prepared by Cass.",
+    href: "/#readings",
+    label: "The Card Blueprint Reading · $99",
   },
 ];
 
@@ -88,7 +88,7 @@ const faqs = [
   },
   {
     q: "What should I do after I know my birth card?",
-    a: `Read the full card meaning. Check your ruling card. Look up one person you think about too much. Test the language against a real week. If one relationship keeps coming up, the Chemistry Check ($39) reads both people's cards together. It is a mirror, not a forecast.`,
+    a: `Read the full card meaning. Check your ruling card. Look up one person you think about too much. Test the language against a real week. If real questions keep coming up, The Card Blueprint Reading ($99) includes Suggested Questions and up to 3 questions over 48 hours. It is a mirror, not a forecast.`,
   },
 ];
 
@@ -144,11 +144,11 @@ export default function CardologyForBeginnersPage() {
         </Link>
       </p>
       <p className="prose-reading mb-6 text-sm text-brand-ink-soft">
-        If that card keeps describing you a little too well, the{" "}
-        <Link href="/#chemistry-check" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check · $39
+        If that card keeps describing you a little too well,{" "}
+        <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
+          The Card Blueprint Reading · $99
         </Link>{" "}
-        reads it beside one other person&apos;s card. The one you keep checking. A mirror, not a forecast.
+        includes an instant Suggested Questions download and 48 hours to ask up to 3 questions—solo or beside one other person&apos;s card. A mirror, not a forecast.
       </p>
       <p className="mb-6 text-xs text-brand-ink-soft">
         By Cassidy Rice · Updated {updatedLabel(UPDATED)} ·{" "}
@@ -242,15 +242,13 @@ export default function CardologyForBeginnersPage() {
       <div className="card-surface mt-8 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">When the free tools stop being enough</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The Chemistry Check is a one-time $39 purchase. Two people&apos;s cards, read
-          together by Cass. Shared strengths. Recurring friction. Where your years cross.
-          Delivered by email or text message. A mirror, not a forecast. No subscription to forget about.
+          The Card Blueprint Reading is a one-time $99 purchase. Right after payment you get the Suggested Questions Guide, plus 48 hours of access to submit up to 3 questions of your own—solo timing or two people&apos;s cards. Delivered by email or text message. A mirror, not a forecast. No subscription to forget about.
         </p>
         <Link
-          href="/#chemistry-check"
+          href="/#readings"
           className="accent-button mt-4"
         >
-          The Chemistry Check · $39
+          The Card Blueprint Reading · $99
         </Link>
       </div>
 

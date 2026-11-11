@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
     // Every fulfillment branch requires confirmed payment, including delayed methods.
     if (!paymentSatisfied) return NextResponse.json({ received: true });
 
-    // ---- BRANCH: on-page Question Readings ($26 Timing Map · $39 Chemistry Check) ----
+    // ---- BRANCH: on-page Card Blueprint Reading ($99 · 48h 3-question pass) ----
     const questionOrderId = session.metadata?.question_order_id ?? "";
     if (questionOrderId) {
       recordFunnelEvent({
@@ -145,7 +145,7 @@ export async function POST(req: NextRequest) {
         ...funnelContextFromMetadata(session.metadata),
         eventId: `stripe:${session.id}`,
         path: "/api/checkout/webhook",
-        offerSlug: offerSlug || "chemistry-check",
+        offerSlug: offerSlug || "card-blueprint-reading",
         placement: session.metadata?.placement ?? "inline-drawer",
         outcome: "payment-confirmed",
         currency: session.currency ?? "usd",

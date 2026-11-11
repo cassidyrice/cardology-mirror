@@ -195,11 +195,11 @@ export default function WhatIsCardology() {
         </p>
       </div>
       <p className="mb-2 text-sm text-brand-ink-soft">
-        Free first. Your birth card is below. Optional next: the{" "}
+        Free first. Your birth card is below. Optional next:{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($39)
+          The Card Blueprint Reading ($99)
         </Link>
-        . Your card beside one other person’s, personally read by Cass. Yes, that person.
+        . Instant Suggested Questions plus up to 3 questions over 48 hours, personally read by Cass.
       </p>
       <p className="mb-6">
         <Link href="#find-your-card" className="accent-button inline-block">
@@ -243,22 +243,22 @@ export default function WhatIsCardology() {
           <Link href="/birth-card" className="text-brand-oxblood underline underline-offset-4">
             all 52 Cardology card meanings
           </Link>
-          . Optional next step, for when one card is not enough drama: the{" "}
+          . Optional next step, when you want real questions answered in writing:{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            Chemistry Check ($39)
+            The Card Blueprint Reading ($99)
           </Link>{" "}
-          (two people’s cards, read together, honestly).
+          (instant Suggested Questions plus up to 3 questions over 48 hours).
         </p>
         <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
-          <p className="font-serif text-base text-brand-ink">You looked at your card. Now you want to look at theirs.</p>
+          <p className="font-serif text-base text-brand-ink">You looked at your card. Now ask what you actually came here to ask.</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            The Chemistry Check ($39) reads your card beside one other person’s. It is prepared privately and delivered by email or text message. They never have to know you asked.
+            The Card Blueprint Reading ($99) gives you the Suggested Questions Guide immediately after payment and 48 hours of access to submit up to 3 questions—solo timing or beside one other person’s birthday. Delivered privately by email or text message.
           </p>
           <Link
             href="/#readings"
             className="accent-button mt-4"
           >
-            See the Chemistry Check
+            See The Card Blueprint Reading
           </Link>
         </div>
       </section>
@@ -536,15 +536,14 @@ export default function WhatIsCardology() {
           for evidence. Compatibility between two birthdays. Timing cards for the chapter
           you are in. When you want the pattern written out by a person, start with{" "}
           <Link
-            href="/#chemistry-check"
-            data-open-question-track="chemistry-check"
+            href="/#readings"
+            data-open-question-track="card-blueprint-reading"
             data-placement="what-is-cardology-body"
             className="text-brand-oxblood underline underline-offset-4"
           >
-            The Chemistry Check ($39)
+            The Card Blueprint Reading ($99)
           </Link>
-          . Your card beside one other person&rsquo;s, read together. The thing you have been
-          pretending not to wonder about.
+          . Instant Suggested Questions plus up to 3 questions over 48 hours—solo timing or two people&rsquo;s cards read together.
         </p>
       </section>
 
@@ -566,12 +565,12 @@ export default function WhatIsCardology() {
         <p className="font-serif text-base text-brand-ink">You are still here. Keep going.</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <Link
-            href="/#chemistry-check"
-            data-open-question-track="chemistry-check"
+            href="/#readings"
+            data-open-question-track="card-blueprint-reading"
             data-placement="what-is-cardology-footer"
             className="ink-button"
           >
-            The Chemistry Check, $39 →
+            The Card Blueprint Reading, $99 →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →

@@ -5,8 +5,11 @@ import { funnelContextFromMetadata } from "@/lib/analytics";
 import { recordFunnelEvent } from "@/lib/analytics-server";
 import {
   QUESTION_SLA_PROSE,
+  SUGGESTED_QUESTIONS_PDF_PATH,
   fulfillPaidQuestionOrder,
   getQuestionOrderBySessionId,
+  getReadingPassState,
+  signReadingPassToken,
 } from "@/lib/question-reading-service";
 import { readJsonObject } from "@/lib/request-body";
 import { getStripe } from "@/lib/stripe";
@@ -17,8 +20,9 @@ export const dynamic = "force-dynamic";
 /**
  * POST /api/checkout/question-reading/confirm
  * Called immediately by Embedded Checkout's client-side `onComplete()` callback so
- * D1 fulfillment + 3-angle AI drafting starts right away without waiting on webhook latency,
- * and returns in-place confirmation details so the buyer never leaves the page.
+ * D1 fulfillment + Reading Pass token minting (+ 3-angle AI drafting when Q1 was entered)
+ * starts right away without waiting on webhook latency, returning the Suggested Questions PDF
+ * download URL and 48-hour 3-question Reading Pass state inline without leaving the page.
  */
 export async function POST(req: NextRequest) {
   const body = await readJsonObject(req);
@@ -63,7 +67,7 @@ export async function POST(req: NextRequest) {
     ...funnelContextFromMetadata(session.metadata),
     eventId: `stripe:${session.id}`,
     path: "/api/checkout/question-reading/confirm",
-    offerSlug: session.metadata?.offer_slug ?? "",
+    offerSlug: session.metadata?.offer_slug ?? "card-blueprint-reading",
     placement: session.metadata?.placement ?? "inline-drawer",
     outcome: "embedded-confirmed",
     currency: session.currency ?? "usd",
@@ -75,6 +79,9 @@ export async function POST(req: NextRequest) {
     stripeSessionId: session.id,
     stripeBuyerEmail: stripeEmail,
   });
+
+  const passToken = await signReadingPassToken(hydrated.id);
+  const passState = await getReadingPassState(hydrated.id);
 
   return NextResponse.json(
     {
@@ -89,6 +96,16 @@ export async function POST(req: NextRequest) {
           : hydrated.buyerEmail || stripeEmail,
       turnaround: QUESTION_SLA_PROSE,
       status: hydrated.status,
+      passToken,
+      passUrl: passState.passUrl,
+      suggestedQuestionsUrl: SUGGESTED_QUESTIONS_PDF_PATH,
+      accessExpiresAt: passState.accessExpiresAt,
+      windowHours: passState.windowHours,
+      maxQuestions: passState.maxQuestions,
+      questionsUsed: passState.questionsUsed,
+      questionsRemaining: passState.questionsRemaining,
+      canSubmitQuestion: passState.canSubmitQuestion,
+      questions: passState.questions,
     },
     { headers: { "Cache-Control": "private, no-store" } },
   );

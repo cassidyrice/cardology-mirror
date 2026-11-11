@@ -1,4 +1,4 @@
-// 3-Angle AI reading writer for Card Blueprints personal question readings ($26 Timing / $39 Chemistry).
+// 3-Angle AI reading writer for The Card Blueprint Reading ($99 · up to 3 questions / 48h).
 // Grounded strictly in QuestionReadingFacts from lib/question-reading-facts.ts and Cass's voice:
 // - Direct, warm-deadpan, behavioral, specific ("anxiety style" sharpness without cruelty:
 //   roast behavior and defense mechanisms, never bodies, identity, trauma, or real hardship).
@@ -11,6 +11,12 @@ import type {
   PersonSpreadFacts,
   QuestionReadingFacts,
 } from "./question-reading-facts";
+
+export interface PriorQuestionContext {
+  number: number;
+  question: string;
+  answer?: string | null;
+}
 
 export interface ReadingAngleDraft {
   angle: 1 | 2 | 3;
@@ -106,17 +112,38 @@ function formatSeatsList(hits: PermanentSeatHit[], ownerName: string): string {
     .join("; ");
 }
 
-function buildUserPrompt(facts: QuestionReadingFacts, steeringNote?: string): string {
+function buildUserPrompt(
+  facts: QuestionReadingFacts,
+  opts: {
+    steeringNote?: string;
+    questionNumber?: number;
+    priorQuestions?: PriorQuestionContext[];
+  } = {},
+): string {
+  const qTag = opts.questionNumber ? `Question ${opts.questionNumber} of 3` : "Question 1 of 3";
+  const modeLabel =
+    facts.person2 && facts.compatibility
+      ? "Two-Person Compatibility & Timing Spread"
+      : "Solo Birth, Ruling & 52-Day Timing Spread";
   const lines: string[] = [
-    `TRACK: ${facts.track === "chemistry-check" ? "The Chemistry Check ($39 two-person compatibility question)" : "The 12-Month Timing Map ($26 solo timing question)"}`,
+    `OFFER: The Card Blueprint Reading ($99 · ${qTag} · ${modeLabel})`,
     `READING DATE: ${facts.targetDateIso}`,
-    `BUYER QUESTION: "${facts.question}"`,
+    `BUYER QUESTION (${qTag}): "${facts.question}"`,
   ];
   if (facts.relationshipContext) {
     lines.push(`RELATIONSHIP CONTEXT: ${facts.relationshipContext}`);
   }
-  if (steeringNote?.trim()) {
-    lines.push(`OPERATOR STEERING NOTE FROM CASS: ${steeringNote.trim()}`);
+  if (opts.priorQuestions && opts.priorQuestions.length > 0) {
+    lines.push("", "=== PRIOR QUESTIONS ON THIS 48-HOUR READING PASS (DO NOT REPEAT YOURSELF; BUILD ON THIS) ===");
+    for (const pq of opts.priorQuestions) {
+      lines.push(`- Question ${pq.number}: "${pq.question}"`);
+      if (pq.answer) {
+        lines.push(`  Prior answer summary: ${pq.answer.slice(0, 420)}`);
+      }
+    }
+  }
+  if (opts.steeringNote?.trim()) {
+    lines.push(`OPERATOR STEERING NOTE FROM CASS: ${opts.steeringNote.trim()}`);
   }
 
   const describePerson = (label: string, p: PersonSpreadFacts) => {
@@ -190,13 +217,19 @@ function greetingFor(name: string): string {
 
 export function buildDeterministicThreeAngles(
   facts: QuestionReadingFacts,
+  opts: { questionNumber?: number; priorQuestions?: PriorQuestionContext[] } = {},
 ): [ReadingAngleDraft, ReadingAngleDraft, ReadingAngleDraft] {
   const p1 = facts.person1;
   const cy1 = p1.currentYear;
   const greet = greetingFor(p1.name);
   const upcoming1 = cy1.periods.filter((p) => p.state !== "done").slice(0, 3);
+  const qBadge = opts.questionNumber ? ` (Question ${opts.questionNumber} of 3)` : "";
+  const followUpLead =
+    opts.questionNumber && opts.questionNumber > 1
+      ? `Picking right up on Question ${opts.questionNumber} of 3 from your Card Blueprint Reading.\n\n`
+      : "";
 
-  if (facts.track === "chemistry-check" && facts.person2 && facts.compatibility) {
+  if (facts.person2 && facts.compatibility) {
     const p2 = facts.person2;
     const cy2 = p2.currentYear;
     const comp = facts.compatibility;
@@ -230,11 +263,11 @@ export function buildDeterministicThreeAngles(
 
     const subjectBase =
       p1.name !== "You"
-        ? `Your Chemistry Check: ${p1.name} & ${p2.name}`
-        : `Your Chemistry Check (${p1.birthCard} & ${p2.birthCard})`;
+        ? `Your Card Blueprint Reading${qBadge}: ${p1.name} & ${p2.name}`
+        : `Your Card Blueprint Reading${qBadge} (${p1.birthCard} & ${p2.birthCard})`;
 
     const angle1Email = sanitizeBannedPhrases(
-      `${greet}Short answer to your question first, straight off the spreads.\n\n` +
+      `${greet}${followUpLead}Short answer to your question first, straight off the spreads.\n\n` +
         `You are a ${p1.birthCard} with a ${p1.rulingCard} ruling card. ${p2.name} is a ${p2.birthCard} with a ${p2.rulingCard} ruling card. On the permanent board, ${p1SeatsText}. Going the other way, ${p2SeatsText}.\n\n` +
         `${comp.directionSummary} ${
           comp.hasMoonConnection
@@ -331,18 +364,18 @@ export function buildDeterministicThreeAngles(
     ];
   }
 
-  // Solo $26 Timing Map deterministic 3 angles
+  // Solo spread deterministic 3 angles
   const subjectSolo =
     p1.name !== "You"
-      ? `Your 12-Month Timing Reading, ${p1.name} (${p1.birthCard})`
-      : `Your 12-Month Timing Reading (${p1.birthCard})`;
+      ? `Your Card Blueprint Reading${qBadge}, ${p1.name} (${p1.birthCard})`
+      : `Your Card Blueprint Reading${qBadge} (${p1.birthCard})`;
 
   const nextWindowText = cy1.nextPeriod
     ? `${cy1.nextPeriod.rangeLabel} (${cy1.nextPeriod.planet} on the ${cy1.nextPeriod.bcCard})`
     : `${p1.nextYear.opensLabel} (when age ${p1.nextYear.age} opens on Long Range ${p1.nextYear.longRangeCard})`;
 
   const solo1Email = sanitizeBannedPhrases(
-    `${greet}Direct answer on your timing question first.\n\n` +
+    `${greet}${followUpLead}Direct answer on your question first.\n\n` +
       `You are a ${p1.birthCard} (${p1.birthCardLabel}) with a ${p1.rulingCard} ruling card, currently in your age-${cy1.age} chart (${cy1.yearRangeLabel}). Your headline Long Range card this year is the ${cy1.longRangeCard}, your Pluto pressure card is the ${cy1.plutoCard}, and your Result payoff card is the ${cy1.resultCard}.\n\n` +
       `Right now (${cy1.activePeriod.rangeLabel}) you are inside your 52-day ${cy1.activePeriod.planet} period running the ${cy1.activePeriod.bcCard}. That card rewards one specific posture: ${cy1.activePeriod.sweetSpot} What stalls this window is ${cy1.activePeriod.under.toLowerCase()}\n\n` +
       `Use the rest of ${cy1.activePeriod.rangeLabel} to strip away the side noise around "${facts.question}", and use ${nextWindowText} as your execution marker. By the time your chart turns on ${p1.nextYear.opensLabel} (Result ${p1.nextYear.resultCard}), the decision you make in this window becomes the floor you stand on.\n\nCass`,
@@ -449,10 +482,15 @@ export async function generateThreeReadingAngles(
   facts: QuestionReadingFacts,
   opts: {
     steeringNote?: string;
+    questionNumber?: number;
+    priorQuestions?: PriorQuestionContext[];
     llmChat?: (messages: ChatMessage[], options?: { temperature?: number; max_tokens?: number }) => Promise<string>;
   } = {},
 ): Promise<ThreeAnglesResult> {
-  const fallback = buildDeterministicThreeAngles(facts);
+  const fallback = buildDeterministicThreeAngles(facts, {
+    questionNumber: opts.questionNumber,
+    priorQuestions: opts.priorQuestions,
+  });
   const cfg = getLLMConfig();
   const caller = opts.llmChat ?? (cfg.key ? chat : null);
 
@@ -468,7 +506,14 @@ export async function generateThreeReadingAngles(
     const raw = await caller(
       [
         { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: buildUserPrompt(facts, opts.steeringNote) },
+        {
+          role: "user",
+          content: buildUserPrompt(facts, {
+            steeringNote: opts.steeringNote,
+            questionNumber: opts.questionNumber,
+            priorQuestions: opts.priorQuestions,
+          }),
+        },
       ],
       { temperature: 0.65, max_tokens: 3000 },
     );

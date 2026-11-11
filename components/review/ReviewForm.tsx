@@ -67,7 +67,7 @@ export function ReviewForm() {
         <p className="mt-2 text-sm text-brand-ink-soft">{copied ? "Copied. It's on your clipboard." : "Tap the code to copy it."}</p>
         <a
           href={REVIEW_STORE_URL}
-          data-open-question-track="chemistry-check"
+          data-open-question-track="card-blueprint-reading"
           data-placement="review-thankyou"
           onClick={copyCode}
           className="mt-5 block w-full bg-brand-ink px-5 py-4 text-center text-base font-semibold text-brand-ivory"
@@ -76,7 +76,7 @@ export function ReviewForm() {
         </a>
         <ol className="mt-5 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-brand-ink-soft">
           <li>The button copies your code and opens the inline reading drawer right here.</li>
-          <li>Pick either the $26 Timing Map or $39 Chemistry Check.</li>
+          <li>Complete your intake for The Card Blueprint Reading ($99).</li>
           <li>In inline checkout, tap &ldquo;Add promotion code&rdquo; and paste {code}.</li>
           <li>Lost it? Come back here. The code stays on this page until you close it.</li>
         </ol>

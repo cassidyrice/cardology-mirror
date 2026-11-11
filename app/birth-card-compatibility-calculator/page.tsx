@@ -119,7 +119,8 @@ export default function CompatibilityCalculatorPage() {
 
       <div className="my-8">
         <QuestionReadingComposer
-          defaultTrack="chemistry-check"
+          defaultTrack="card-blueprint-reading"
+          defaultWithPartner
           placement="compat-calculator-inline"
           compact
         />
@@ -135,16 +136,16 @@ export default function CompatibilityCalculatorPage() {
         <p>
           Read each person&rsquo;s result in both directions. Then open the matching
           pair guide. The interpretation offers questions for reflection. It does
-          not grade your relationship or tell you how it ends. The{" "}
+          not grade your relationship or tell you how it ends.{" "}
           <a
-            href="/#chemistry-check"
-            data-open-question-track="chemistry-check"
+            href="/#readings"
+            data-open-question-track="card-blueprint-reading"
             data-placement="compat-calculator-copy"
             className="editorial-link"
           >
-            Chemistry Check, $39,
+            The Card Blueprint Reading, $99,
           </a>{" "}
-          is a personal written reading of both people&rsquo;s cards, permanent spread seats, and recurring friction—delivered by email or text within 48 hours.
+          lets you include both birthdays, download Suggested Questions immediately after payment, and ask up to 3 questions over 48 hours—delivered by email or text.
         </p>
       </section>
 

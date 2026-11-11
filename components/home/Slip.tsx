@@ -10,11 +10,11 @@ const STAGES = [
     ],
   },
   {
-    when: "When you ask a personal question",
+    when: "The Card Blueprint Reading ($99)",
     rows: [
-      { what: "Type your question & pay inline without leaving the page", value: "$26 or $39" },
-      { what: "3 angles drafted from your spread; Cass approves 1", value: "almost all <24h" },
-      { what: "Delivered straight to your email or text messages", value: "48h max" },
+      { what: "Pay inline on this page & download Suggested Questions (.pdf)", value: "instant" },
+      { what: "48-hour pass after purchase to ask any questions you want", value: "up to 3" },
+      { what: "Cass reviews your spread & delivers by email or text message", value: "almost all <24h" },
     ],
   },
 ] as const;
@@ -42,8 +42,8 @@ export function Slip() {
             </div>
           ))}
           <p className="slip-total">
-            <span>No generic PDF. A real answer with exact dates</span>
-            <span className="tnum">$26 · $39</span>
+            <span>Suggested Questions Guide + up to 3 questions over 48h</span>
+            <span className="tnum">$99</span>
           </p>
         </div>
       </div>

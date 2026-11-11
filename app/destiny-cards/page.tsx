@@ -62,7 +62,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $39"],
+  ["Paid deepen", "Books, software, readings", "The Card Blueprint Reading, $99"],
 ] as const;
 
 const tarotRows = [
@@ -75,7 +75,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free reading here is the calculator plus the chart. Enter a birthday. You get the birth card, the planetary ruling card, and a full meaning page. No email. Nobody chasing you afterward. The Chemistry Check ($39) is optional, and you are allowed to leave without it.",
+    a: "Yes. The free reading here is the calculator plus the chart. Enter a birthday. You get the birth card, the planetary ruling card, and a full meaning page. No email. Nobody chasing you afterward. The Card Blueprint Reading ($99) is optional, and you are allowed to leave without it.",
   },
   {
     q: "What are Destiny Cards?",
@@ -192,11 +192,11 @@ export default function DestinyCardsPage() {
         </p>
       </div>
       <p className="mb-4 text-sm text-brand-ink-soft">
-        Free first: find your birth card on this page. Optional next: the{" "}
+        Free first: find your birth card on this page. Optional next:{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($39)
+          The Card Blueprint Reading ($99)
         </Link>
-        {", "}your card beside one other person’s, read personally by Cass. Yes, that person.
+        {" — "}instant Suggested Questions plus up to 3 questions over 48 hours, read personally by Cass.
       </p>
       <div className="mb-4">
         <BirthCardCalculator />
@@ -204,13 +204,13 @@ export default function DestinyCardsPage() {
       <div className="card-surface mb-6 rounded-2xl border !border-brand-line p-5">
         <p className="font-serif text-base text-brand-ink">After your free birth card</p>
         <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-          The free result gives you a card and a place to start. That is all it promises. The Chemistry Check drags those patterns into one relationship, with Cass’s interpretation and questions you would rather dodge.
+          The free result gives you a card and a place to start. That is all it promises. The Card Blueprint Reading brings those patterns into your real year or relationship—with Suggested Questions right after payment and 48 hours to ask up to 3 questions of your own.
         </p>
         <Link
           href="/#readings"
           className="accent-button mt-4"
         >
-          Look at the Chemistry Check
+          See The Card Blueprint Reading
         </Link>
       </div>
 
@@ -345,9 +345,9 @@ export default function DestinyCardsPage() {
           <li>
             Optional, if it keeps landing:{" "}
             <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-              The Chemistry Check, $39
+              The Card Blueprint Reading, $99
             </Link>
-            , your card read beside one other person’s.
+            , with Suggested Questions and up to 3 questions over 48 hours.
           </li>
         </ol>
         <p className="prose-reading mt-3 text-brand-ink-soft">
@@ -526,7 +526,7 @@ export default function DestinyCardsPage() {
         </Link>
         {" · "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          the Chemistry Check ($39)
+          The Card Blueprint Reading ($99)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

@@ -59,8 +59,8 @@ test("/faq renders every question and an FAQPage graph with the same answers", (
   expect(markup).not.toContain("stan.store");
   expect(markup).toContain(READING_RESPONSE_TIME);
   expect(markup).toContain(READING_FOLLOW_UP);
-  expect(markup).toContain("The 12-Month Timing Map ($26)");
-  expect(markup).toContain("The Chemistry Check ($39)");
+  expect(markup).toContain("The Card Blueprint Reading ($99)");
+  expect(markup).toContain("Suggested Questions");
 
   const answers = visibleAnswers(markup);
   expect(answers.size).toBe(items.length);

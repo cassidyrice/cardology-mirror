@@ -152,12 +152,12 @@ test("identical anchor text on one scoped page points at one path", async () => 
   }
 });
 
-test("money paths are real anchors, including the Chemistry Check", () => {
+test("money paths are real anchors, including The Card Blueprint Reading", () => {
   const header = renderToStaticMarkup(createElement(SiteHeader));
   const footer = renderToStaticMarkup(createElement(SiteFooter));
   for (const markup of [header, footer]) {
     expect(markup).toContain('href="/birth-card-calculator"');
-    expect(markup).toContain('href="/#chemistry-check"');
+    expect(markup).toContain('href="/#readings"');
     expect(markup).toContain('href="/faq"');
     expect(markup).not.toContain("router.push");
   }

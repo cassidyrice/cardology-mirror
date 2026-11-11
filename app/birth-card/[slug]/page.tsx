@@ -760,9 +760,9 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
         ))}
       </ul>
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
-        One relationship living in your head rent-free? Cass prepares the Chemistry Check from both people’s cards.{" "}
+        Want your real question answered in writing? Order The Card Blueprint Reading right on the page—instant Suggested Questions plus up to 3 questions over 48 hours.{" "}
         <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
-          The Chemistry Check, $39
+          The Card Blueprint Reading, $99
         </Link>
       </p>
     </section>

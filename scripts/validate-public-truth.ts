@@ -247,7 +247,7 @@ assert.doesNotMatch(productSurfaceText, /one-question-reading|One Question Readi
 for (const line of productSurfaceText.split("\n")) {
   if (/\$13\b/.test(line)) assert.match(line, /Birth Card Blueprint|[Ff]rom \$13|start at \$13/, `stray $13 outside the Birth Card Blueprint: ${line.trim().slice(0, 120)}`);
 }
-assert.match(productSurfaceText, /Chemistry Check/);
+assert.match(productSurfaceText, /Card Blueprint Reading/);
 // The $13 Personal Card Blueprint is retired. Generated posts now pitch the
 // live $13 One Question Reading; they must not resurrect the retired report
 // slug or product name. The queue is checked too, so a bad queued post fails
