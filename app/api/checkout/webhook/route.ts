@@ -8,6 +8,10 @@ import { birthdateFromCheckoutSession } from "@/lib/birthdate";
 import { CARD_APP_SLUG } from "@/lib/card-app-slug";
 import { YEAR_AHEAD_REPORT_SLUG } from "@/lib/year-ahead";
 import { sendEmail as sendIntakeEmail } from "@/lib/email";
+import {
+  fulfillPaidQuestionOrder,
+  markQuestionOrderExpired,
+} from "@/lib/question-reading-service";
 import { deliverReading } from "@/lib/reading-fulfill";
 import { deliverApp } from "@/lib/app-delivery";
 import { READER_PHONE_DISPLAY } from "@/lib/offers";
@@ -131,6 +135,35 @@ export async function POST(req: NextRequest) {
 
     // Every fulfillment branch requires confirmed payment, including delayed methods.
     if (!paymentSatisfied) return NextResponse.json({ received: true });
+
+    // ---- BRANCH: on-page Question Readings ($26 Timing Map · $39 Chemistry Check) ----
+    const questionOrderId = session.metadata?.question_order_id ?? "";
+    if (questionOrderId) {
+      recordFunnelEvent({
+        name: "purchase_completed",
+        source: "server",
+        ...funnelContextFromMetadata(session.metadata),
+        eventId: `stripe:${session.id}`,
+        path: "/api/checkout/webhook",
+        offerSlug: offerSlug || "chemistry-check",
+        placement: session.metadata?.placement ?? "inline-drawer",
+        outcome: "payment-confirmed",
+        currency: session.currency ?? "usd",
+        valueCents: session.amount_total ?? 0,
+      });
+      try {
+        await fulfillPaidQuestionOrder({
+          orderId: questionOrderId,
+          stripeSessionId: session.id,
+          stripeBuyerEmail: email !== "(no email)" ? email : "",
+        });
+        return NextResponse.json({ received: true });
+      } catch (err) {
+        console.error("[webhook] question reading fulfillment failed", err);
+        return NextResponse.json({ error: "question fulfillment pending" }, { status: 503 });
+      }
+    }
+
     if (product && isInstantReport(product) && product.reportSlug === CARD_APP_SLUG) {
       let review = false;
       try {
@@ -673,6 +706,18 @@ export async function POST(req: NextRequest) {
       } catch (e) {
         console.error("[webhook] membership renewal token mint failed", e);
       }
+    }
+    return NextResponse.json({ received: true });
+  }
+
+  if (
+    event.type === "checkout.session.expired" ||
+    event.type === "checkout.session.async_payment_failed"
+  ) {
+    const session = event.data.object as Stripe.Checkout.Session;
+    const questionOrderId = session.metadata?.question_order_id ?? "";
+    if (questionOrderId) {
+      await markQuestionOrderExpired(questionOrderId).catch(() => null);
     }
     return NextResponse.json({ received: true });
   }

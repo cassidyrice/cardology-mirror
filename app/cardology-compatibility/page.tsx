@@ -7,7 +7,7 @@ import { SeoHeroFan } from "@/components/seo/SeoHeroFan";
 import { SeoShell } from "@/components/seo/SeoShell";
 import { BIRTHDAY_DIRECTORY_PATH, COMPATIBILITY_DIRECTORY_PATH, SITE_NAME } from "@/lib/site";
 
-const TITLE = "Cardology Compatibility Calculator: 1,378 Birth Card Pairs";
+const TITLE = "Cardology Compatibility Guide: All 1,378 Birth Card Pairs";
 const DESCRIPTION =
   "Cardology compatibility for two birth cards: suits, Life Path roles, shared cards. Where you clash and why. Compare two birthdays free. Not tarot.";
 

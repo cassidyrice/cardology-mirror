@@ -133,8 +133,10 @@ export function mapFunnelEventToGa4(
         params: { content_type: "offer_cta" },
       };
     case "checkout_started":
+    case "inline_checkout_mounted":
       return { eventName: "begin_checkout" };
     case "purchase_completed":
+    case "inline_checkout_completed":
       return { eventName: "purchase" };
     case "elroy_teaser_shown":
       return { eventName: "elroy_teaser_shown" };

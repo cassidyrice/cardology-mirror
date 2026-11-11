@@ -2,10 +2,7 @@
 // is Edge/Cloudflare-safe (no node:fs). Locally these come from .env.local; in
 // production they're Cloudflare secrets/vars (OPENAI_API_KEY, OPENAI_BASE_URL,
 // OPENAI_MODEL). NOTE: the gateway is chat-only (no audio/TTS/whisper).
-let cached: { key: string; baseURL: string; model: string } | null = null;
-
 export function getLLMConfig() {
-  if (cached) return cached;
   // Prefer app-specific MIRROR_LLM_* vars so a shell-exported OPENAI_API_KEY
   // (a different account) can't collide with the gateway base URL. Fall back to
   // OPENAI_* for convenience. Set these as Cloudflare secrets in production.
@@ -16,8 +13,7 @@ export function getLLMConfig() {
     "https://api.openai.com/v1";
   const model =
     process.env.MIRROR_LLM_MODEL || process.env.OPENAI_MODEL || "gpt-4o-mini";
-  cached = { key, baseURL, model };
-  return cached;
+  return { key, baseURL, model };
 }
 
 export interface ChatMessage {

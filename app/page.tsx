@@ -14,9 +14,9 @@ import { SiteHeader } from "@/components/seo/SiteHeader";
 
 import "./landing.css";
 
-const HOME_TITLE = "Cardology Chart: Find Your Birth Card Free | Card Blueprints";
+const HOME_TITLE = "Card Blueprints: Free Birth Card Lookup & Personal Cardology Readings";
 const HOME_DESCRIPTION =
-  "Find your birth card free. Then get the $13 Birth Card Blueprint, or let Cass read your year, a pair, or the whole family.";
+  "Find your playing-card birth card free in seconds. Ask a solo 12-Month Timing Question ($26) or two-person Chemistry Check ($39) inline—delivered by email or text within 48 hours.";
 
 export const metadata: Metadata = {
   title: { absolute: HOME_TITLE },
@@ -46,12 +46,6 @@ export const metadata: Metadata = {
 /** Today's card rotates daily; revalidate so HTML stays fresh for crawlers. */
 export const revalidate = 86_400;
 
-/**
- * The split stage (docs/design/DIRECTION.md). The left half never moves: the
- * real deck on film, then your card. The right half is the reading: the hero,
- * how a reading happens, the readings as a menu. Below the split, three
- * full-width sections: the sample, everything free, and the last picture.
- */
 export default function Home() {
   return (
     <div className="home paper-shell flex min-h-svh flex-col bg-brand-paper text-brand-ink">
@@ -66,11 +60,16 @@ export default function Home() {
           <div className="split-column">
             <InView as="section" className="hero" aria-labelledby="home-purpose-title">
               <div className="hero-block">
+                <p className="hero-micro-signal rise">
+                  <span>52 cards · fixed by birth date</span>
+                  <span aria-hidden="true">·</span>
+                  <span>Email or text readings</span>
+                </p>
                 <h1 id="home-purpose-title" className="rise">
                   A little more clarity.<br />A different conversation.
                 </h1>
                 <p className="hero-lead rise-2" data-ai-summary>
-                  Start with the playing card your birthday gave you.
+                  Start with the playing card your birthday gave you—or bring your real question and never leave this page.
                 </p>
                 <div className="hero-form rise-3">
                   <LandingCalculator />
@@ -82,19 +81,21 @@ export default function Home() {
             </InView>
 
             <InView as="section" id="how-it-works" className="slip-section" aria-labelledby="home-find-birth-card">
-              <h2 id="home-find-birth-card" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>How do I find my birth card?</h2>
+              <h2 id="home-find-birth-card" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
+                How do I find my birth card?
+              </h2>
               <p className="slip-intro" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-                You bring the same patterns to your relationships, your choices, and your year. You just haven&rsquo;t looked. Your birthday maps to one playing card in a 52-card deck. Month and day set the birth card. The year handles timing. Read the meaning as a prompt, not a forecast. It has no idea what happens Thursday.
+                Your birthday maps to one playing card in a 52-card deck. It is a fixed mirror, not a prediction. Month and day set the permanent card; your birth year unlocks your active 52-day planetary windows. Bring one real question, pay inline without leaving the page, and get a sharp written answer by email or text message.
               </p>
               <Slip />
             </InView>
 
             <InView as="section" id="readings" className="readings" aria-labelledby="home-reading-title">
               <h2 id="home-reading-title" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
-                Where do you start? Be honest.
+                Two readings. Zero leaving the page.
               </h2>
               <p className="readings-lead" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-                Start with your own Birth Card Blueprint. Or have Cass read your year, a pair, or your whole family. Everything arrives privately by email. Nobody has to know you asked.
+                Pick your track—<strong>The 12-Month Timing Map ($26)</strong> for your own year, or <strong>The Chemistry Check ($39)</strong> for two people. Cass reviews three angles on your spread and sends the sharpest one to your inbox or phone within 48 hours—almost all in under 24 hours.
               </p>
               <div data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
                 <StageCue>

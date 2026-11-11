@@ -1,5 +1,6 @@
 import "@/app/born-on/born-on.css";
 
+import { QuestionReadingComposer } from "@/components/checkout/QuestionReadingDrawer";
 import { SeoShell, StageCard } from "@/components/seo/SeoShell";
 import { serializeJsonLdForHtml } from "@/lib/structured-data";
 
@@ -33,6 +34,13 @@ export function WorkerPageView({
       ) : null}
       <div className="bo" data-worker-page={kind} data-staged={stage ? "true" : undefined}>
         <div className="wrap" dangerouslySetInnerHTML={{ __html: page.body }} />
+        <div className="wrap">
+          <QuestionReadingComposer
+            defaultTrack="chemistry-check"
+            placement={`worker-${kind}`}
+            compact
+          />
+        </div>
       </div>
     </SeoShell>
   );

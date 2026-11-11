@@ -271,7 +271,7 @@ export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
       </p>
 
       <div className="flex flex-col items-center gap-3">
-        <StanReadingCta />
+        <StanReadingCta defaultTrack="timing-map" />
         <button
           type="button"
           className="text-xs text-brand-ink-soft underline underline-offset-4"

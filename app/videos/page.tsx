@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { SeoShell } from "@/components/seo/SeoShell";
 import { VideoEmbed } from "@/components/seo/VideoEmbed";
-import { SITE_NAME, SITE_URL, VIDEO_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import {
   CARDOLOGY_VIDEO_CHANNEL,
   CARDOLOGY_VIDEOS,
@@ -143,9 +143,9 @@ export default function VideosPage() {
         <Link href="/blog/pillar/birth-card-meanings" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
           Birth-card meaning guides
         </Link>
-        <a href={VIDEO_URL} className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
-          Hosted video subdomain
-        </a>
+        <Link href="/birth-card-calculator" className="border border-brand-line bg-brand-paper-deep p-4 text-sm font-bold uppercase text-brand-ink transition hover:bg-brand-ivory">
+          Birth card calculator
+        </Link>
       </section>
     </SeoShell>
   );

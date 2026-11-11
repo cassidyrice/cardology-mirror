@@ -58,30 +58,33 @@ export default function PrivacyPolicy() {
           <h2 className="font-serif text-2xl text-brand-ink">What we collect and why</h2>
           <div className="mt-3 space-y-4">
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">Chemistry Check orders</h3>
+              <h3 className="font-bold text-brand-ink">Personal question readings (12-Month Timing Question &amp; Chemistry Check)</h3>
               <p className="mt-1">
-                The Chemistry Check is sold through Stan Store. Stan collects the
-                buyer&rsquo;s name, email address and the birth dates you enter,
-                and processes the payment. Cass uses those details to prepare your
-                reading and email it to you, and to answer your follow-up
-                questions. Stan&rsquo;s own privacy policy governs its checkout.
+                Personal question readings are purchased directly on this site
+                through embedded Stripe Checkout without leaving the page. We
+                collect your birth date(s), optional first name(s), the question
+                you ask, your email address, and—only if you choose text message
+                delivery—your mobile phone number and explicit consent to receive
+                transactional SMS messages about your reading. Those order
+                details are stored in our Cloudflare D1 order record and attached
+                as minimal session references in Stripe so we can calculate your
+                deterministic Cardology spread, draft candidate reading angles
+                with an AI writing model, review and approve your final reading
+                personally, and deliver it by email (via Resend) and/or text
+                message (via Twilio or direct operator SMS). Reply STOP to any
+                text message to opt out of SMS delivery.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
-              <h3 className="font-bold text-brand-ink">Past orders placed on this site</h3>
+              <h3 className="font-bold text-brand-ink">Past orders placed on this site or Stan Store</h3>
               <p className="mt-1">
-                Orders placed on this site before October 2026 (including the One
-                Question Reading) used Stripe Checkout, which collected the
-                buyer&rsquo;s email address. The birth
-                date and the question you type before checkout travel with the
-                Stripe session as metadata and are used to write your reading
-                and to email it to you. Past 52xSeven Blueprint sign-in links
-                keep working; that signed token carries your email address, the
-                birth date, and an expiry. We do not maintain a separate
-                customer database of birth dates or questions, but Stripe
-                keeps them on the checkout record, and Stripe, Resend,
-                and Cloudflare may process the checkout field, email link, or
-                request URL under their retention and logging policies.
+                Earlier orders placed on this site or through Stan Store remain
+                supported under their original delivery and access terms. Past
+                52xSeven Blueprint sign-in links keep working; that signed token
+                carries your email address, the birth date, and an expiry.
+                Stripe, Resend, and Cloudflare may process checkout records,
+                email links, or request URLs under their retention and logging
+                policies.
               </p>
             </div>
             <div className="border-t border-brand-line pt-4">
@@ -227,14 +230,15 @@ export default function PrivacyPolicy() {
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">How we use your information</h2>
           <ul className="mt-3 space-y-2">
-            <li className="border-t border-brand-line pt-2">To prepare your Chemistry Check from the birth dates you enter and email it to you (and to keep past report, sign-in, and download links working).</li>
-            <li className="border-t border-brand-line pt-2">To send your purchase confirmation and start-here instructions by email.</li>
+            <li className="border-t border-brand-line pt-2">To prepare your 12-Month Timing Question or Chemistry Check from the birth dates and question you submit, review and approve the reading, and deliver it by email or text message (and to keep past report, sign-in, and download links working).</li>
+            <li className="border-t border-brand-line pt-2">To send your purchase confirmation and delivery updates by email or opted-in SMS.</li>
             <li className="border-t border-brand-line pt-2">To support and honor legacy phone orders during their original access windows.</li>
             <li className="border-t border-brand-line pt-2">To follow up on questions or support requests about a purchase, if you ask.</li>
           </ul>
           <p className="mt-4">
-            We do not send marketing emails unless you explicitly opt in, build
-            advertising profiles, or share data with data brokers.
+            We do not send marketing emails or promotional text messages unless
+            you explicitly opt in, build advertising profiles, or share data with
+            data brokers.
           </p>
         </section>
 
@@ -246,21 +250,21 @@ export default function PrivacyPolicy() {
           </p>
           <ul className="mt-3 space-y-2">
             <li className="border-t border-brand-line pt-2">
-              <strong>Stripe</strong> — payment processing.{" "}
+              <strong>Stripe</strong> — embedded on-page payment processing.{" "}
               <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
                 Stripe Privacy Policy
               </a>
             </li>
             <li className="border-t border-brand-line pt-2">
-              <strong>Stan Store</strong> — checkout and payment for the Chemistry Check.{" "}
-              <a href="https://assets.stanwith.me/legal/privacy-policy.pdf" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
-                Stan Privacy Policy
+              <strong>Resend</strong> — transactional email delivery for readings, receipts, and contacts who signed up before October 2026.{" "}
+              <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
+                Resend Privacy Policy
               </a>
             </li>
             <li className="border-t border-brand-line pt-2">
-              <strong>Resend</strong> — email delivery for past purchases, and contacts who signed up before October 2026.{" "}
-              <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
-                Resend Privacy Policy
+              <strong>Twilio</strong> — transactional SMS delivery when you request text message delivery at checkout.{" "}
+              <a href="https://www.twilio.com/en-us/legal/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-oxblood underline underline-offset-4">
+                Twilio Privacy Policy
               </a>
             </li>
             <li className="border-t border-brand-line pt-2">

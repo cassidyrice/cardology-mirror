@@ -6,7 +6,7 @@ import { allPeriodCardSeeds } from "@/lib/period-card-seeds";
 import { SITE_NAME } from "@/lib/site";
 
 const canonicalPath = "/your-year";
-const title = "Your year in cards";
+const title = "Your Year in Cards: Free 52-Day Planetary Timing Spread";
 const description =
   "The seven planetary seasons of your Cardology year. Where you are, what's next, today's card. Free, from your birthday. No spoilers, just cards.";
 
@@ -15,7 +15,6 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title,
   description,
-  robots: { index: false },
   alternates: { canonical: canonicalPath },
   openGraph: {
     siteName: SITE_NAME,

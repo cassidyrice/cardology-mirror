@@ -13,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
         // App and checkout pages publish route-level `noindex` metadata. They
         // must remain crawlable so search engines can read that directive;
         // robots.txt is not an access-control boundary.
-        disallow: ["/api/"],
+        disallow: ["/api/", "/ops/"],
       },
     ],
     // Exactly the sitemaps that exist in production, nothing else:

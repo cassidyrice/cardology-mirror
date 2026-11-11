@@ -1,26 +1,20 @@
 import Link from "next/link";
 
-/**
- * How a reading happens, printed as an itinerary on a slip
- * (docs/design/DIRECTION.md §2). Every value is something the site already
- * states: free, from $13, within 24 hours, seven days of follow-up.
- */
 const STAGES = [
   {
-    when: "Now",
+    when: "Free on this site",
     rows: [
-      { what: "Enter your birthday", value: "free" },
-      { what: "Read your card's free meaning", value: "free" },
-      { what: "Compare it with one other card", value: "free" },
+      { what: "Calculate your birth card & ruling card", value: "free" },
+      { what: "Read all 52 cards, 366 birthdays & 1,378 pairings", value: "free" },
+      { what: "Compare your card beside one other person", value: "free" },
     ],
   },
   {
-    when: "If you order a reading",
+    when: "When you ask a personal question",
     rows: [
-      { what: "Pick one of the readings below, on Stan", value: "from $13" },
-      { what: "Cass reviews and approves every reading", value: "within 24 hours" },
-      { what: "The PDF arrives by email, privately", value: "included" },
-      { what: "Email follow-up", value: "seven days" },
+      { what: "Type your question & pay inline without leaving the page", value: "$26 or $39" },
+      { what: "3 angles drafted from your spread; Cass approves 1", value: "almost all <24h" },
+      { what: "Delivered straight to your email or text messages", value: "48h max" },
     ],
   },
 ] as const;
@@ -48,8 +42,8 @@ export function Slip() {
             </div>
           ))}
           <p className="slip-total">
-            <span>You hold one PDF about you, in plain words</span>
-            <span className="tnum">from $13</span>
+            <span>No generic PDF. A real answer with exact dates</span>
+            <span className="tnum">$26 · $39</span>
           </p>
         </div>
       </div>
