@@ -9,7 +9,13 @@ cd "$(dirname "$0")/.."
 DAYS="${1:-14}"
 [[ "$DAYS" =~ ^[0-9]+$ ]] && (( DAYS >= 1 && DAYS <= 90 )) || { echo "days must be 1..90" >&2; exit 2; }
 CF_ACCOUNT_ID="${CF_ACCOUNT_ID:-ed56f6f3b938abe4f3f024a53a789d4f}"
-WRANGLER_LIVE_CONFIG="${WRANGLER_LIVE_CONFIG:-${HOME}/.wrangler/config/default.toml}"
+if [[ -z "${WRANGLER_LIVE_CONFIG:-}" ]]; then
+  if [[ -f "${HOME}/Library/Preferences/.wrangler/config/default.toml" ]]; then
+    WRANGLER_LIVE_CONFIG="${HOME}/Library/Preferences/.wrangler/config/default.toml"
+  else
+    WRANGLER_LIVE_CONFIG="${HOME}/.wrangler/config/default.toml"
+  fi
+fi
 WRANGLER_CONFIG="${WRANGLER_CONFIG:-$WRANGLER_LIVE_CONFIG}"
 
 # Return 0 if expiration is still in the future (ISO-8601, optional fractional seconds + Z).
@@ -68,9 +74,9 @@ print("  "+"  ".join(c.ljust(w[c]) for c in cols))
 for r in rows: print("  "+"  ".join(str(r[c]).ljust(w[c]) for c in cols))'
 }
 echo "== funnel, last ${DAYS}d"
-q "SELECT blob1 AS step, SUM(_sample_interval) AS n FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1 IN ('organic_landing','calculator_completed','offer_cta_clicked','checkout_started','checkout_error','purchase_completed') GROUP BY step ORDER BY n DESC"
+q "SELECT blob1 AS step, SUM(_sample_interval) AS n FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob1 IN ('organic_landing','calculator_completed','offer_cta_clicked','drawer_opened','inline_checkout_mounted','checkout_started','checkout_error','inline_checkout_completed','purchase_completed','reading_delivered') GROUP BY step ORDER BY n DESC"
 echo "== production tab sessions (not people; do not mix with raw event counts)"
-q "SELECT blob1 AS step, COUNT(DISTINCT blob2) AS tab_sessions FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob16='main' AND blob2!='' AND blob1 IN ('organic_landing','calculator_completed','offer_selected','offer_cta_clicked','checkout_started','purchase_completed','app_access_delivered') GROUP BY step ORDER BY tab_sessions DESC"
+q "SELECT blob1 AS step, COUNT(DISTINCT blob2) AS tab_sessions FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY AND blob16='main' AND blob2!='' AND blob1 IN ('organic_landing','calculator_completed','offer_selected','offer_cta_clicked','drawer_opened','inline_checkout_mounted','checkout_started','inline_checkout_completed','purchase_completed','reading_delivered','app_access_delivered') GROUP BY step ORDER BY tab_sessions DESC"
 echo "== by day"
 q "SELECT toDate(timestamp) AS day, SUM(IF(blob1='calculator_completed',_sample_interval,0)) AS calc, SUM(IF(blob1='offer_cta_clicked',_sample_interval,0)) AS cta, SUM(IF(blob1='checkout_started',_sample_interval,0)) AS checkout, SUM(IF(blob1='purchase_completed',_sample_interval,0)) AS paid FROM cardblueprints_funnel WHERE timestamp > NOW() - INTERVAL '${DAYS}' DAY GROUP BY day ORDER BY day"
 echo "== CTA placement"

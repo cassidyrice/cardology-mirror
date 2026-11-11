@@ -47,6 +47,8 @@ const SEO_UPDATED = CARD_MEANING_PAGES_UPDATED;
 // (curl-verified in production 2026-07-12), so building them shipped 366
 // unreachable shadow pages per deploy. The date-rendering branch below is kept
 // only as a fallback in case that Worker redirect is ever removed.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return allCardSeo().map((c) => ({ slug: c.slug }));
 }
@@ -760,7 +762,7 @@ function EndOfPageReads({ card, siblings }: { card: CardSeo; siblings: CardSeo[]
       <p className="mt-4 text-sm leading-relaxed text-brand-ink-soft">
         One relationship living in your head rent-free? Cass prepares the Chemistry Check from both people’s cards.{" "}
         <Link href="/#readings" className="font-medium text-brand-ink underline underline-offset-4">
-          The Chemistry Check, $24
+          The Chemistry Check, $39
         </Link>
       </p>
     </section>

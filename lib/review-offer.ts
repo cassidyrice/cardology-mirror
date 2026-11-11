@@ -1,15 +1,13 @@
-// Review thank-you offer (Cass, 2026-10-26).
-// The code must exist on Stan (product > Checkout Page > Advanced > Add Discount Code, Creator Pro).
+// Review thank-you offer — 50% off promo code usable directly in on-page Stripe Embedded Checkout.
 export const REVIEW_DISCOUNT_CODE = "THANKYOU50";
 export const REVIEW_DISCOUNT_PERCENT = 50;
-export const REVIEW_STORE_URL =
-  "https://stan.store/mycardblueprint?utm_source=cardblueprints&utm_medium=review&utm_campaign=thank-you-50";
+export const REVIEW_STORE_URL = "/#readings";
 export const REVIEW_COMMENT_MAX = 280;
 export const REVIEW_NAME_MAX = 40;
 
 export type ReviewInput = { firstName: string; rating: number; comment: string; reading: string; consent: boolean };
 
-const READINGS = ["Chemistry Check", "12-Month Timing Map", "Family Snapshot", "Birth Card Blueprint", "Other"];
+const READINGS = ["Chemistry Check", "12-Month Timing Map", "Other"];
 export const REVIEW_READINGS = READINGS;
 
 /** Returns a clean review or an error string. Strips anything that looks like contact info. */

@@ -2,20 +2,26 @@ import { SampleTabs } from "@/components/home/SampleTabs";
 import { getCardSeo } from "@/lib/seo-cards";
 
 /**
- * Notes from the reading desk: a fictional birthday, the interpretation from the
- * same card library as the tools, set as the square plate and spare text
- * (docs/design/DIRECTION.md §4). The card on the plate and the three tabs are
- * the sample; the two action cells open the sample PDFs.
+ * Notes from the reading desk: shows what an actual Email or Text Message
+ * question reading sounds like — zero PDF filler, real spread dates, Cass's voice.
  */
 export function ReadingSample() {
   const card = getCardSeo("8♦");
   const panels = [
-    { id: "works", label: "When it works", text: card?.sweetSpot ?? "" },
-    { id: "far", label: "Pushed too far", text: card?.over ?? "" },
     {
-      id: "homework",
-      label: "Your homework",
-      text: "Which end of the dial did the people closest to you get this past month? Not the one you wish.",
+      id: "email-sample",
+      label: "Sample email excerpt",
+      text: "Your 4♦ sits in his Mars seat, and in his ruling spread it sits in his Venus seat — magnetic and hard to ignore. Going the other way, his cards don’t land in your spread, so the pull runs one way. Dec 24 to Jan 24 you’re both on the 10♣. Ask your question plainly inside that window instead of carrying a maybe into your Neptune season on Jan 25. — Cass",
+    },
+    {
+      id: "sms-sample",
+      label: "Sample text message",
+      text: "4♦ (8♦) + K♣ (J♦): One-way pull from him toward you — your 4♦ sits in his Mars & Venus seats, zero Moon tie back. He’s in 7♥ Venus through Dec 23 (analyzing, not acting). Your shared 10♣ window opens Dec 24–Jan 24: ask once in plain words before Jan 25 fog hits. — Cass",
+    },
+    {
+      id: "card-lens",
+      label: "How we read a card",
+      text: card?.sweetSpot ?? "",
     },
   ].filter((p) => p.text);
 
@@ -31,23 +37,37 @@ export function ReadingSample() {
           decoding="async"
         />
         <figcaption className="sample-caption">
-          Birth card for February 17. {card?.title ? `${card.title}.` : ""} A fictional example.
+          Birth card for February 17. {card?.title ? `${card.title}.` : ""} Standard 52-card math, not tarot.
         </figcaption>
       </figure>
       <div className="sample-text">
         <SampleTabs panels={panels} />
         <h2 id="home-sample-title" className="sample-title" data-rise style={{ "--rise-i": 0 } as React.CSSProperties}>
-          Something you&rsquo;ll recognize.<br />Something you&rsquo;ll argue with.
+          No 19-page PDF.<br />Just the answer, with dates.
         </h2>
         <p className="sample-desc" data-rise style={{ "--rise-i": 1 } as React.CSSProperties}>
-          A reading is a place to start. The strengths you lean on too hard. The habits that keep starting the same fight. Questions you can take back into your actual life.
+          You type your actual question and pick email or text message. Our spread engine maps every permanent seat and 52-day planetary window, drafts three distinct angles, and Cass personally reviews and approves the one that goes to your inbox or phone.
         </p>
         <div className="sample-actions" data-rise style={{ "--rise-i": 2 } as React.CSSProperties}>
-          <a className="sample-cell is-ink" href="/samples/birth-card-blueprint-sample.pdf">Sample Birth Card Blueprint (PDF)</a>
-          <a className="sample-cell" href="/samples/chemistry-check-fictional-sample.pdf">Sample Chemistry Check, fictional (PDF)</a>
+          <a
+            className="sample-cell is-ink"
+            href="/#timing-map"
+            data-open-question-track="timing-map"
+            data-placement="sample-timing"
+          >
+            Solo Timing Question · $26
+          </a>
+          <a
+            className="sample-cell"
+            href="/#chemistry-check"
+            data-open-question-track="chemistry-check"
+            data-placement="sample-chemistry"
+          >
+            Compatibility Question · $39
+          </a>
         </div>
         <p className="sample-note">
-          Sample people. Sample dates. The cards and dates are math; the meanings come from the Cardology tradition. Your real reading also has Cass&rsquo;s written interpretation, which is the part you&rsquo;ll reread.
+          48-hour response window — almost all readings arrive in under 24 hours.
         </p>
       </div>
     </>

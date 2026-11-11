@@ -17,7 +17,7 @@ import { sendPosthogEvent } from "@/components/analytics/PostHogBoundary";
 const ENDPOINT = "/api/analytics";
 const SESSION_ID_KEY = "cardblueprints.analytics.session";
 const ATTRIBUTION_KEY = "cardblueprints.analytics.attribution";
-/** First-party cookie mirror of sessionStorage attribution for checkout POST fallback. */
+/** Retired first-party funnel cookie name, cleared on boot so attribution stays sessionStorage-only. */
 export const FUNNEL_COOKIE = FUNNEL_COOKIE_NAME;
 const ONCE_KEY_PREFIX = "cardblueprints.analytics.once.";
 // Active public offers: checkout review + product-page intent.
@@ -85,7 +85,7 @@ export function AnalyticsCapture() {
   return null;
 }
 
-/** Hidden-field payload for checkout session POST (also mirrored to a cookie). */
+/** Hidden-field payload for checkout session POST (read from sessionStorage attribution). */
 export function getCheckoutAnalyticsFields(): Record<string, string> {
   const attribution = getAttribution();
   return {
@@ -96,6 +96,20 @@ export function getCheckoutAnalyticsFields(): Record<string, string> {
     analytics_utm_source: attribution.utmSource,
     analytics_utm_medium: attribution.utmMedium,
     analytics_utm_campaign: attribution.utmCampaign,
+  };
+}
+
+/** Structured attribution payload for JSON inline checkout POSTs. */
+export function getClientAttributionContext(): FunnelContext {
+  const attribution = getAttribution();
+  return {
+    sessionId: attribution.sessionId,
+    landingPath: attribution.landingPath,
+    referrerHost: attribution.referrerHost,
+    trafficChannel: attribution.trafficChannel,
+    utmSource: attribution.utmSource,
+    utmMedium: attribution.utmMedium,
+    utmCampaign: attribution.utmCampaign,
   };
 }
 

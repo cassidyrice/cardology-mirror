@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { SeoShell } from "@/components/seo/SeoShell";
+import { QuestionReadingComposer } from "@/components/checkout/QuestionReadingDrawer";
+import { SeoShell, StageCard } from "@/components/seo/SeoShell";
 
 import "@/app/compat.css";
 import { CompatibilityCalculator } from "@/components/seo/CompatibilityCalculator";
@@ -94,6 +95,12 @@ export default function CompatibilityCalculatorPage() {
 
   return (
     <SeoShell
+      stage={
+        <div className="shell-stage-pair">
+          <StageCard slug="queen-of-hearts" label="Queen of Hearts" />
+          <StageCard slug="8-of-diamonds" label="8 of Diamonds" />
+        </div>
+      }
       crumb={[
         { label: "Home", href: "/" },
         { label: "Compatibility guide", href: "/cardology-compatibility" },
@@ -110,6 +117,14 @@ export default function CompatibilityCalculatorPage() {
 
       <CompatibilityCalculator />
 
+      <div className="my-8">
+        <QuestionReadingComposer
+          defaultTrack="chemistry-check"
+          placement="compat-calculator-inline"
+          compact
+        />
+      </div>
+
       <section className="compat-panel" aria-label="Quick answer">
         <p data-ai-summary>
           Enter two birthdays to compare <strong>playing-card birth cards</strong>, each
@@ -121,10 +136,15 @@ export default function CompatibilityCalculatorPage() {
           Read each person&rsquo;s result in both directions. Then open the matching
           pair guide. The interpretation offers questions for reflection. It does
           not grade your relationship or tell you how it ends. The{" "}
-          <Link href="/#chemistry-check" className="editorial-link">
-            Chemistry Check, $24,
-          </Link>{" "}
-          is a personal reading of both people’s cards, shared strengths, and recurring friction. The specific friction. The fight you keep having about plans.
+          <a
+            href="/#chemistry-check"
+            data-open-question-track="chemistry-check"
+            data-placement="compat-calculator-copy"
+            className="editorial-link"
+          >
+            Chemistry Check, $39,
+          </a>{" "}
+          is a personal written reading of both people&rsquo;s cards, permanent spread seats, and recurring friction—delivered by email or text within 48 hours.
         </p>
       </section>
 

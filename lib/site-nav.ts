@@ -28,7 +28,7 @@ export const MONEY_PATHS = [
   },
   {
     id: "reading",
-    label: "Chemistry Check · $24",
+    label: "Chemistry Check · $39",
     href: "/#chemistry-check",
     weight: "offer",
   },

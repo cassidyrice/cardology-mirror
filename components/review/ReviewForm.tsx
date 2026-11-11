@@ -67,17 +67,17 @@ export function ReviewForm() {
         <p className="mt-2 text-sm text-brand-ink-soft">{copied ? "Copied. It's on your clipboard." : "Tap the code to copy it."}</p>
         <a
           href={REVIEW_STORE_URL}
-          target="_blank"
-          rel="noopener"
+          data-open-question-track="chemistry-check"
+          data-placement="review-thankyou"
           onClick={copyCode}
           className="mt-5 block w-full bg-brand-ink px-5 py-4 text-center text-base font-semibold text-brand-ivory"
         >
-          Copy code and pick my next reading
+          Copy code and ask my next question
         </a>
         <ol className="mt-5 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-brand-ink-soft">
-          <li>The button copies your code and opens the store in a new tab.</li>
-          <li>Pick any report. Same reading, same care.</li>
-          <li>At checkout, find &ldquo;Discount code.&rdquo; Paste. Price drops by half.</li>
+          <li>The button copies your code and opens the inline reading drawer right here.</li>
+          <li>Pick either the $26 Timing Map or $39 Chemistry Check.</li>
+          <li>In inline checkout, tap &ldquo;Add promotion code&rdquo; and paste {code}.</li>
           <li>Lost it? Come back here. The code stays on this page until you close it.</li>
         </ol>
       </section>

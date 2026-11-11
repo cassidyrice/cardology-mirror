@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
+import { OfferCta } from "@/components/seo/OfferCta";
 import { SeoShell } from "@/components/seo/SeoShell";
 import {
   allBlogPosts,
@@ -132,7 +133,7 @@ export default async function BlogPostPage({
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <article>
+      <div>
         <header className="max-w-3xl pb-8">
           <p className="oracle-eyebrow mb-4">
             {pillar.title} · {post.readTime}
@@ -248,6 +249,8 @@ export default async function BlogPostPage({
           <FaqList faqs={post.faqs} />
         </section>
 
+        <OfferCta className="mt-12" />
+
         <section className="mt-12 grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="card-surface rounded-2xl p-5">
             <p className="font-serif text-base text-brand-ink">Where to go next. Do not wander.</p>
@@ -277,7 +280,7 @@ export default async function BlogPostPage({
             </ul>
           </div>
         </section>
-      </article>
+      </div>
     </SeoShell>
   );
 }

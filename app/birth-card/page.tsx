@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     q: "Can I get a personal reading?",
-    a: "Yes. Cass prepares the Chemistry Check ($24), a reading of two people’s cards. Read your free card meaning first. Then decide who you are curious about.",
+    a: "Yes. Cass prepares the Chemistry Check ($39) for two people’s cards and the 12-Month Timing Map ($26) for one solo timing question, delivered by email or text message. Read your free card meaning first. Then decide what you actually want to ask.",
   },
 ];
 

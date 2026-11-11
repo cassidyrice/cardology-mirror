@@ -38,15 +38,16 @@ test("sample born-on pages keep Worker metadata and render inside the shared hea
   }
 });
 
-test("all 367 birthday pages show only the Chemistry Check without an invented delivery deadline", () => {
+test("all 367 birthday pages offer the $26 Timing Question and $39 Chemistry Check inline with zero Stan Store", () => {
   for (const slug of ["", ...bornOnSlugs()]) {
     const body = bornOnPage(slug)!.body;
-    for (const offer of ["The Chemistry Check: $24"])
-      expect(body).toContain(offer);
-    expect(body).not.toMatch(/Timing Map|Family Snapshot|free-course/);
-    expect(body).toContain("Includes seven days of email follow-up.");
-    expect(body).toContain("within 24 hours");
-    expect(body).not.toMatch(/\$(97|137|179)\b|you \+ 3 family|inbox within 7 days/);
-    expect(body).not.toContain('href="https://stan.store/mycardblueprint/p/the-chemistry-check"');
+    expect(body).toContain("12-Month Timing Question: $26");
+    expect(body).toContain("The Chemistry Check: $39");
+    expect(body).toContain("within 48 hours");
+    expect(body).toContain("under 24 hours");
+    expect(body).toContain("Includes seven days of follow-up.");
+    expect(body).not.toMatch(/Family Snapshot|Collector Pack|free-course/);
+    expect(body).not.toMatch(/\$(24|97|137|179)\b|you \+ 3 family|inbox within 7 days/);
+    expect(body).not.toContain("stan.store");
   }
 });

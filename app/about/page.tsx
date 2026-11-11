@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "About Card Blueprints & Cassidy Rice",
   description:
-    "About Card Blueprints and founder Cassidy Rice: free card tools, a published method you can check, and the Chemistry Check, a reading about two people.",
+    "About Card Blueprints and founder Cassidy Rice: free card tools, a published method you can check, and personal Timing ($26) and Chemistry Check ($39) readings.",
   alternates: { canonical: "/about" },
 };
 
@@ -84,7 +84,7 @@ export default function AboutPage() {
           Do the math.
         </p>
         <p>
-          I prepare three readings. The 12-Month Timing Map ($19), for one person. The Chemistry Check ($24), for two. The Family Snapshot ($30), for three. The Chemistry Check pairs both people’s calculated cards and dates with interpretation and questions you can come back to. There is also the $13 Birth Card Blueprint: a 7-page PDF of your birth card and ruling card, made from your birth date and emailed to you.
+          I offer two personal written question readings directly on this site—no PDF filler and no leaving the page. The 12-Month Timing Map ($26) answers one real question on your year using your active 52-day planetary windows and yearly karma. The Chemistry Check ($39) pairs both people&rsquo;s calculated cards, permanent spread seats, and overlapping timing windows to answer what is actually happening between you. You choose email or text message delivery at checkout, and every reading is personally reviewed and approved by me within 48 hours—almost all in under 24 hours.
         </p>
         <p>
           Start with the card your birthday maps to. Then compare it with the cards
@@ -157,7 +157,7 @@ export default function AboutPage() {
           <a href={`mailto:${CONTACT_EMAIL}`} className="underline">
             {CONTACT_EMAIL}
           </a>
-          . For general order administration, refunds, and delivery issues, expect a reply within {CONTACT_RESPONSE}. The personal-reading follow-up service above has its own 24-hour response commitment. Editorial corrections are logged on the{" "}
+          . For general order administration, refunds, and delivery issues, expect a reply within {CONTACT_RESPONSE}. Personal question readings carry a 48-hour delivery window, with almost all delivered in under 24 hours. Editorial corrections are logged on the{" "}
           <Link href="/editorial-policy" className="underline">
             editorial policy
           </Link>{" "}

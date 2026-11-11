@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Refund Policy | Card Blueprints",
   description:
-    "Refund terms for the Chemistry Check, past purchases, and legacy orders.",
+    "Refund terms for the 12-Month Timing Question, the Chemistry Check, past purchases, and legacy orders.",
   alternates: { canonical: "/refund-policy" },
   robots: { index: true, follow: true },
 };
@@ -38,18 +38,21 @@ export default function RefundPolicy() {
       <div className="max-w-3xl space-y-8 text-base leading-relaxed text-brand-ink">
         <section className="border border-brand-line bg-brand-paper-deep p-5">
           <p className="font-serif text-lg text-brand-ink">
-            Card Blueprints sells the $13 Birth Card Blueprint (a 7-page PDF) and three readings, the $19 12-Month Timing Map, the $24 Chemistry Check and the $30 Family Snapshot, through
-            Stan Store. If something is wrong with your order or your reading,
-            email us with the address you used at checkout and we will review it
-            personally.
+            Card Blueprints offers two personal question readings directly on
+            this site via Stripe: the $26 12-Month Timing Question and the $39
+            Chemistry Check, delivered by email or text message within 48 hours
+            (almost all in under 24 hours). If your reading is not delivered
+            within 48 hours, or if something is wrong with your order, email us
+            with the address you used at checkout and we will review it
+            personally and make it right or refund you in full.
           </p>
         </section>
 
         <section>
           <h2 className="font-serif text-2xl text-brand-ink">Past purchases</h2>
           <p className="mt-3">
-            Products we no longer sell (including the One Question Reading, the
-            Blueprint Report and Your Year Ahead) keep the refund and service
+            Products we no longer sell (including earlier PDF reports, the
+            Blueprint Report, and Your Year Ahead) keep the refund and service
             terms they were sold under. Contact us with the checkout email and
             we will locate the order.
           </p>

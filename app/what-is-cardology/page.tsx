@@ -197,7 +197,7 @@ export default function WhatIsCardology() {
       <p className="mb-2 text-sm text-brand-ink-soft">
         Free first. Your birth card is below. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($24)
+          Chemistry Check ($39)
         </Link>
         . Your card beside one other person’s, personally read by Cass. Yes, that person.
       </p>
@@ -245,14 +245,14 @@ export default function WhatIsCardology() {
           </Link>
           . Optional next step, for when one card is not enough drama: the{" "}
           <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            Chemistry Check ($24)
+            Chemistry Check ($39)
           </Link>{" "}
           (two people’s cards, read together, honestly).
         </p>
         <div className="card-surface mt-5 rounded-2xl border !border-brand-line p-5">
           <p className="font-serif text-base text-brand-ink">You looked at your card. Now you want to look at theirs.</p>
           <p className="mt-2 text-sm leading-relaxed text-brand-ink-soft">
-            The Chemistry Check ($24) reads your card beside one other person’s. It is prepared privately and delivered by email. They never have to know you asked.
+            The Chemistry Check ($39) reads your card beside one other person’s. It is prepared privately and delivered by email or text message. They never have to know you asked.
           </p>
           <Link
             href="/#readings"
@@ -534,9 +534,14 @@ export default function WhatIsCardology() {
         <p className="prose-reading text-brand-ink-soft">
           Birth card as baseline. Other people&rsquo;s cards for comparison, and
           for evidence. Compatibility between two birthdays. Timing cards for the chapter
-          you are in. When you want the pattern written out by a person, start with the{" "}
-          <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-            the Chemistry Check ($24)
+          you are in. When you want the pattern written out by a person, start with{" "}
+          <Link
+            href="/#chemistry-check"
+            data-open-question-track="chemistry-check"
+            data-placement="what-is-cardology-body"
+            className="text-brand-oxblood underline underline-offset-4"
+          >
+            The Chemistry Check ($39)
           </Link>
           . Your card beside one other person&rsquo;s, read together. The thing you have been
           pretending not to wonder about.
@@ -560,8 +565,13 @@ export default function WhatIsCardology() {
       <div className="card-surface mt-6 rounded-2xl p-5">
         <p className="font-serif text-base text-brand-ink">You are still here. Keep going.</p>
         <div className="mt-3 flex flex-wrap gap-2">
-          <Link href="/#readings" className="ink-button">
-            the Chemistry Check, $24 →
+          <Link
+            href="/#chemistry-check"
+            data-open-question-track="chemistry-check"
+            data-placement="what-is-cardology-footer"
+            className="ink-button"
+          >
+            The Chemistry Check, $39 →
           </Link>
           <Link href="/birth-card-calculator" className="inline-block rounded-full border border-brand-line px-5 py-2 font-serif text-sm text-brand-oxblood">
             Calculator page →

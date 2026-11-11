@@ -18,6 +18,10 @@ export const CLIENT_FUNNEL_EVENTS = [
   "year_link_clicked",
   "year_viewed",
   "checkout_error",
+  "drawer_opened",
+  "inline_checkout_mounted",
+  "inline_checkout_completed",
+  "library_menu_opened",
   "elroy_teaser_shown",
   "elroy_opened",
   "elroy_birthdate_entered",
@@ -30,6 +34,7 @@ export const SERVER_FUNNEL_EVENTS = [
   "checkout_started",
   "purchase_completed",
   "app_access_delivered",
+  "reading_delivered",
 ] as const;
 
 export const FUNNEL_EVENTS = [
@@ -67,6 +72,8 @@ const CLIENT_EVENT_NAMES = new Set(CLIENT_FUNNEL_EVENTS as readonly string[]);
 const UUID_PATTERN =
   /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const OFFER_SLUGS = new Set([
+  "timing-map",
+  "chemistry-check",
   "blueprint-report-consult",
   "blueprint-report",
   "personal-card-blueprint",

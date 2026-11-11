@@ -52,7 +52,6 @@ const GROUPS: ExploreGroup[] = [
       { label: "Card of the day", href: "/card-of-the-day" },
       { label: "52-day period tool", href: "/52-day-period-meaning-tool" },
       { label: "Your year in cards", href: "/your-year" },
-      { label: "Today", href: "/today" },
     ],
   },
   {

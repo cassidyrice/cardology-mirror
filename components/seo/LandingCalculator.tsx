@@ -22,13 +22,7 @@ import { parseCard } from "@/lib/cards";
 import { shareFacePathFromCode } from "@/lib/share-cards";
 import { storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
 
-/**
- * The live thing on the homepage (docs/design/MOTION.md, "The card turns to
- * face you"). Birthday in; the form leaves, the stage holds, the card turns,
- * the verdict lands. With scripting off the same form opens the calculator page
- * with the birthday, which already reads ?birthdate=.
- */
-// The verdict and its share/reading code load only once a birthday is entered.
+// The verdict and inline question checkout load only once a birthday is entered.
 const Reveal = dynamic(() => import("@/components/seo/Reveal").then((m) => m.Reveal));
 
 type Phase = "idle" | "leaving" | "shown";
@@ -73,6 +67,9 @@ export function LandingCalculator() {
 
     const code = calculated.result.birthCard;
     const label = code === "Joker" ? "The Joker" : parseCard(code)?.label ?? code;
+    const rulingCode = calculated.result.rulingCards[0] ?? null;
+    const rulingLabel =
+      rulingCode && rulingCode !== "Joker" ? parseCard(rulingCode)?.label ?? rulingCode : null;
 
     const finish = () => {
       startTransition(() => {
@@ -88,8 +85,13 @@ export function LandingCalculator() {
       }, 0);
     };
 
-    // The stage turns the card; the column follows once the form has left.
-    setStage({ kind: "card", face: shareFacePathFromCode(code), label });
+    setStage({
+      kind: "card",
+      face: shareFacePathFromCode(code),
+      label,
+      rulingFace: rulingCode ? shareFacePathFromCode(rulingCode) : null,
+      rulingLabel,
+    });
 
     if (reduceRef.current) {
       finish();
@@ -113,7 +115,9 @@ export function LandingCalculator() {
 
   return (
     <div className="landing-shell" data-phase={phase}>
-      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">{announced}</p>
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {announced}
+      </p>
       {phase !== "shown" || !reveal ? (
         <form
           onSubmit={onSubmit}
@@ -124,8 +128,16 @@ export function LandingCalculator() {
           aria-labelledby="home-purpose-title"
         >
           <p className="landing-note">
-            The card is free. So is the first uncomfortable thought.{" "}
-            <a href="#readings" className="editorial-link">Skip ahead to a personal reading</a>
+            Free lookup first — or{" "}
+            <a
+              href="/#chemistry-check"
+              data-open-question-track="chemistry-check"
+              data-placement="home-hero-skip"
+              className="editorial-link"
+            >
+              ask Cass a personal question right on this page
+            </a>
+            .
           </p>
           <label htmlFor="home-birthdate" className="landing-label">
             Your birthday
@@ -153,7 +165,7 @@ export function LandingCalculator() {
             </button>
           </div>
           <p id="landing-privacy" className="landing-privacy">
-            Calculated in your browser. Your birthday is kept in this tab to continue between tools.
+            Calculated in your browser · Reference library tucked under &ldquo;The Library&rdquo; above.
           </p>
           <p id="landing-error" role="alert" className="landing-error" aria-live="assertive">
             {error}

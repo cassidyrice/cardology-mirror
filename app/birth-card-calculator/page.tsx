@@ -563,8 +563,8 @@ export default function CalculatorPage() {
               </tr>
               <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Method</th>
-                <td className="p-3">Birthday  one fixed playing card</td>
-                <td className="p-3">Birth-date numerology  Major Arcana</td>
+                <td className="p-3">Birthday → one fixed playing card</td>
+                <td className="p-3">Birth-date numerology → Major Arcana</td>
               </tr>
               <tr className="border-b border-brand-line">
                 <th scope="row" className="p-3 font-semibold text-brand-ink">Shuffle?</th>

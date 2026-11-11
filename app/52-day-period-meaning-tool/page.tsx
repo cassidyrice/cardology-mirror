@@ -86,7 +86,7 @@ export default function PeriodMeaningToolPage() {
         <p className="mt-3 text-base leading-relaxed text-brand-ink">
           To place any month: count 52-day blocks forward from your last birthday.
           The{" "}
-          <Link href="/timing" className="underline underline-offset-4">
+          <Link href="/your-year" className="underline underline-offset-4">
             yearly spread tool
           </Link>{" "}
           does the counting and names the period you are in today. You don&rsquo;t

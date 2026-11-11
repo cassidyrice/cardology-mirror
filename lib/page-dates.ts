@@ -8,16 +8,17 @@ export const FALLBACK_PAGE_UPDATED = "2026-07-12";
  * bylines and sitemap lastmod — change here only.
  */
 export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string> = {
-  "/": "2026-09-22",
-  "/about": "2026-08-17",
-  "/videos": "2026-07-29",
+  "/": "2026-11-10",
+  "/about": "2026-11-10",
+  "/videos": "2026-11-10",
   "/blog": "2026-07-12", // sitemap uses newest post date; value unused at runtime
   "/birth-card": "2026-09-22",
-  "/birth-card-calculator": "2026-09-30",
+  "/birth-card-calculator": "2026-11-10",
   "/card-of-the-day": "2026-09-01",
-  "/52-day-period-meaning-tool": "2026-07-30",
-  "/birth-card-compatibility-calculator": "2026-09-22",
-  "/cardology-compatibility": "2026-09-22",
+  "/52-day-period-meaning-tool": "2026-11-10",
+  "/your-year": "2026-11-10",
+  "/birth-card-compatibility-calculator": "2026-11-10",
+  "/cardology-compatibility": "2026-11-10",
   "/what-is-cardology": "2026-09-22",
   "/cardology-books": "2026-09-15",
   "/cardology-for-beginners": "2026-09-22",
@@ -32,14 +33,14 @@ export const PAGE_UPDATED_DATES: Record<(typeof MARKETING_PATHS)[number], string
   "/planetary-ruling-card": "2026-09-17",
   "/methodology": "2026-08-17",
   "/editorial-policy": "2026-08-06",
-  "/contact": "2026-08-17",
+  "/contact": "2026-11-10",
   "/faq": "2026-09-22",
   "/shadow-karma-guide": "2026-07-02",
   "/karma-cards": "2026-09-01",
-  "/explore": "2026-09-17",
-  "/privacy-policy": "2026-09-01",
-  "/refund-policy": "2026-08-06",
-  "/terms-of-service": "2026-08-06",
+  "/explore": "2026-11-10",
+  "/privacy-policy": "2026-11-10",
+  "/refund-policy": "2026-11-10",
+  "/terms-of-service": "2026-11-10",
 };
 
 /** Shared reviewed date for all 52 birth-card meaning pages (and Joker). */

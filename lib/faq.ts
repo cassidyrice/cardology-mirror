@@ -129,13 +129,12 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       },
       {
         id: "how-to-use-today",
-        question: "How do I use /today?",
+        question: "How do I read my active timing periods?",
         answer:
-          "Open /today. No saved birth date on this device? The page asks you to create a local profile. With a profile, it calculates today's cards for that birthday: the active card, the birth-card lens, the ruling-card lens, the pressure pattern, and one grounded prompt. Read the prompt. Then actually do it. The public card of the day needs no profile. It is a different page.",
+          "Start with the public Card of the Day for today's shared calendar card, or open Your Year to enter your full birth date and see your seven 52-day planetary windows, Long Range card, Pluto card, and Result card for your current age.",
         links: [
-          { href: "/today", label: "Today" },
-          { href: "/onboarding", label: "Create a local profile" },
           { href: "/card-of-the-day", label: "Card of the day" },
+          { href: "/your-year", label: "Your year timing spread" },
         ],
       },
     ],
@@ -147,19 +146,19 @@ export const FAQ_SECTIONS: readonly FaqSection[] = [
       {
         id: "personal-readings",
         question: "What personal readings do you offer?",
-        answer: "There are four. The Birth Card Blueprint ($13) is a 7-page PDF of your birth card and ruling card. It is made from your birth date and emailed to you. Cass personally prepares the other three. The 12-Month Timing Map ($19): just you. The Chemistry Check ($24): you plus one person. The Family Snapshot ($30): you plus two people. All delivered by email. Check the spam folder before you panic.",
+        answer: "Two private question readings, ordered directly on the page with no PDF filler. The 12-Month Timing Map ($26) is for one solo timing or decision question. The Chemistry Check ($39) is for you plus one person—both cards, permanent spread seats, and overlapping 52-day timing windows. You choose email or text message delivery at checkout. Cass personally reviews and approves every reading within 48 hours, with almost all delivered in under 24 hours.",
         links: READINGS_NAV.map(reading => ({ href: reading.href, label: `${reading.title} · ${reading.price}` })),
       },
       {
         id: "personal-reading-follow-up",
-        question: "Can I ask questions after my personal reading?",
-        answer: `${READING_FOLLOW_UP} Email ${READING_SUPPORT_EMAIL} with questions about your reading. Even the one you think is dumb. ${READING_RESPONSE_TIME}`,
+        question: "How does delivery work after I order a reading?",
+        answer: `${READING_FOLLOW_UP} ${READING_RESPONSE_TIME} If you need to correct a birth date or ask a question about your reading, reply directly or email ${READING_SUPPORT_EMAIL}.`,
         links: [{ href: "/contact", label: "Reading support" }],
       },
       {
         id: "order-help",
         question: "How do I get help with an order or a past purchase?",
-        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. Questions about the content of your Chemistry Check go to ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
+        answer: `For order administration, refunds, delivery issues, or corrections, email ${CONTACT_EMAIL} and include the purchase email. Questions about your 12-Month Timing Map or Chemistry Check go to ${READING_SUPPORT_EMAIL}. ${READING_RESPONSE_TIME}`,
         links: [
           { href: "/contact", label: "Contact" },
           { href: "/refund-policy", label: "Refund policy" },

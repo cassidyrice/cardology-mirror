@@ -36,7 +36,7 @@ export const BIRTHDAY_DIRECTORY_PATH = "/born-on/";
 export const COMPATIBILITY_DIRECTORY_PATH = "/compatibility/";
 
 export const SITE_TAGLINE =
-  "Free birth card calculator. All 52 meanings. Compatibility. The $24 Chemistry Check, for when guessing stops working.";
+  "Free birth card calculator. All 52 meanings. Compatibility. Private Timing ($26) and Chemistry Check ($39) readings delivered by email or text.";
 
 export const APP_PATHS = [
   "/today",
@@ -58,6 +58,7 @@ export const MARKETING_PATHS = [
   "/birth-card",
   "/birth-card-calculator",
   "/card-of-the-day",
+  "/your-year",
   "/52-day-period-meaning-tool",
   "/birth-card-compatibility-calculator",
   "/cardology-compatibility",

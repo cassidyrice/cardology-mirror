@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   // suffix pushed 74 sitemap titles beyond 60 characters.
   title: "Card Blueprints | Birth Cards & Cardology",
   description:
-    "Find your birth card, explore the 52 card meanings, and see how your card meets someone else’s with the Chemistry Check.",
+    "Find your birth card free, explore the 52 card meanings, or ask a personal 12-Month Timing Question ($26) or Chemistry Check ($39)—delivered by email or text.",
   icons: {
     icon: [
       { url: "/icon.svg", type: "image/svg+xml" },
@@ -49,16 +49,13 @@ export const metadata: Metadata = {
     "cardology compatibility",
     "ruling card",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
     url: SITE_URL,
     title: "Card Blueprints — Birth Cards & Cardology",
     description:
-      "Find your birth card free. Explore your cards and your relationships with the Chemistry Check, prepared by Cass.",
+      "Find your birth card free. Ask a solo 12-Month Timing Question ($26) or two-person Chemistry Check ($39)—prepared by Cass and delivered by email or text.",
     images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Card Blueprints" }],
   },
   // No title/description here on purpose. A page that sets its own openGraph

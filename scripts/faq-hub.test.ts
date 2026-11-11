@@ -7,9 +7,9 @@ import { SiteFooter } from "@/components/seo/SiteFooter";
 import { SiteHeader } from "@/components/seo/SiteHeader";
 import { buildApplicationSitemapEntries } from "@/lib/application-sitemap";
 import {
-  DEEP_DIVE_FULFILLMENT,
-  ONE_QUESTION_TURNAROUND,
-} from "@/lib/deep-dive";
+  READING_FOLLOW_UP,
+  READING_RESPONSE_TIME,
+} from "@/lib/readings-nav";
 import { buildFaqPageJsonLd, FAQ_PATH, faqItems } from "@/lib/faq";
 import { PAGE_UPDATED_DATES } from "@/lib/page-dates";
 import { SITE_URL } from "@/lib/site";
@@ -56,8 +56,11 @@ test("/faq renders every question and an FAQPage graph with the same answers", (
   expect(markup).toContain(">Cardology FAQ</h1>");
   expect(markup).toContain(`Updated September 22, 2026`);
   expect(markup).not.toContain("2 business days");
-  expect(markup).toContain(ONE_QUESTION_TURNAROUND);
-  expect(markup).toContain(DEEP_DIVE_FULFILLMENT);
+  expect(markup).not.toContain("stan.store");
+  expect(markup).toContain(READING_RESPONSE_TIME);
+  expect(markup).toContain(READING_FOLLOW_UP);
+  expect(markup).toContain("The 12-Month Timing Map ($26)");
+  expect(markup).toContain("The Chemistry Check ($39)");
 
   const answers = visibleAnswers(markup);
   expect(answers.size).toBe(items.length);

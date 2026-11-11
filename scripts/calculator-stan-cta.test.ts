@@ -1,32 +1,29 @@
 import { expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
-import { CALCULATOR_STAN_CTA_HREF } from "../components/seo/StanReadingCta";
-import { BIRTH_CARD_BLUEPRINT_URL, CHEMISTRY_CHECK_URL, TIMING_MAP_URL, FAMILY_SNAPSHOT_URL, COLLECTOR_PACK_URL, READINGS_NAV } from "../lib/readings-nav";
-import { REVIEW_STORE_URL } from "../lib/review-offer";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { StanReadingCta } from "../components/seo/StanReadingCta";
+import { READINGS_NAV } from "../lib/readings-nav";
 
-test("calculator result CTA goes straight to the Chemistry Check with result_cta UTM tags", () => {
-  expect(CALCULATOR_STAN_CTA_HREF).toBe(
-    "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u?utm_source=cardblueprints&utm_medium=calculator&utm_campaign=result_cta",
-  );
-  const src = readFileSync("components/seo/StanReadingCta.tsx", "utf8");
-  expect(src).toContain("Chemistry Check · $24");
-  expect(src).not.toMatch(/<h[1-6]/);
+test("calculator result CTA opens on-page question reading modal for $26 Timing Map and $39 Chemistry Check", () => {
+  const html = renderToStaticMarkup(createElement(StanReadingCta));
+  expect(html).toContain("$26");
+  expect(html).toContain("$39");
+  expect(html).toContain("Chemistry Check");
+  expect(html).not.toMatch(/<h[1-6]/);
+  expect(html).not.toContain("stan.store");
 });
 
-test("homepage order link carries UTM tags, and no Stan link bypasses chemistryCheckUrl", () => {
-  expect(READINGS_NAV[2].checkoutHref).toBe(
-    "https://stan.store/mycardblueprint/p/the-chemistry-check-6dqvxn8u?utm_source=cardblueprints&utm_medium=homepage&utm_campaign=offer_card",
-  );
-  expect(READINGS_NAV[4].checkoutHref).toBe(
-    "https://stan.store/mycardblueprint/p/the-5medium-birth-card-collector-pack?utm_source=cardblueprints&utm_medium=homepage&utm_campaign=offer_card",
-  );
+test("zero stan.store URLs remain anywhere in app, components, or lib", () => {
+  expect(READINGS_NAV.map((r) => [r.id, r.price, r.href])).toEqual([
+    ["timing-map", "$26", "/#timing-map"],
+    ["chemistry-check", "$39", "/#chemistry-check"],
+  ]);
   const files = ["app", "components", "lib"].flatMap((dir) =>
-    readdirSync(dir, { recursive: true, encoding: "utf8" }).filter((f) => /\.tsx?$/.test(f) && !f.includes(".test.")).map((f) => `${dir}/${f}`),
+    readdirSync(dir, { recursive: true, encoding: "utf8" })
+      .filter((f) => /\.(?:ts|tsx|mjs)$/.test(f) && !f.includes(".test."))
+      .map((f) => `${dir}/${f}`),
   );
   const links = files.flatMap((f) => readFileSync(f, "utf8").match(/https:\/\/stan\.store\/[^"'`\s]*/g) ?? []);
-  expect(links.length).toBeGreaterThan(0);
-  for (const link of links) expect([BIRTH_CARD_BLUEPRINT_URL, CHEMISTRY_CHECK_URL, TIMING_MAP_URL, FAMILY_SNAPSHOT_URL, COLLECTOR_PACK_URL, REVIEW_STORE_URL]).toContain(link);
-  expect(READINGS_NAV[0].checkoutHref).toBe(
-    "https://stan.store/mycardblueprint/p/birth-card-blueprint?utm_source=cardblueprints&utm_medium=homepage&utm_campaign=offer_card",
-  );
+  expect(links).toEqual([]);
 });

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SeoShell } from "@/components/seo/SeoShell";
+import { SeoShell, StageCard } from "@/components/seo/SeoShell";
 import { FamousPeopleBlock } from "@/components/seo/FamousPeopleBlock";
 import { famousForCard } from "@/lib/famous-birthdays";
 import { SITE_NAME } from "@/lib/site";
@@ -67,6 +67,7 @@ export default function JokerPage() {
 
   return (
     <SeoShell
+      stage={<StageCard slug="joker" label="The Joker" />}
       crumb={[
         { label: "Home", href: "/" },
         { label: "Birth Cards", href: "/birth-card" },

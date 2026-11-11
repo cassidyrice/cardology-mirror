@@ -251,12 +251,11 @@ export default function HowToReadPlayingCards() {
           </li>
         </ol>
         <p className="prose-reading mt-3 text-brand-ink-soft">
-          Ready for more layouts? A relationship spread, a yes-or-no draw.
-          The{" "}
+          Ready for the Cardology boards behind the calendar? The{" "}
           <Link href={SPREADS_HUB_PATH} className="text-brand-oxblood underline underline-offset-4">
             playing card spreads guide
           </Link>{" "}
-          covers the three worth knowing. The rest are decoration.
+          covers the Life Spread, Spirit Spread, and yearly spreads.
         </p>
       </section>
 

@@ -62,7 +62,7 @@ const langRows = [
   ["Relationship", "Love Cards / connections", "Compatibility calculator"],
   ["Year / chapter", "Yearly spreads, period cards", "The 90 yearly spreads, published free"],
   ["System name", "Science of the Cards, Destiny Cards", "Cardology"],
-  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $24"],
+  ["Paid deepen", "Books, software, readings", "The Chemistry Check, $39"],
 ] as const;
 
 const tarotRows = [
@@ -75,7 +75,7 @@ const tarotRows = [
 const faqs = [
   {
     q: "Can I get a free destiny card reading?",
-    a: "Yes. The free reading here is the calculator plus the chart. Enter a birthday. You get the birth card, the planetary ruling card, and a full meaning page. No email. Nobody chasing you afterward. The Chemistry Check ($24) is optional, and you are allowed to leave without it.",
+    a: "Yes. The free reading here is the calculator plus the chart. Enter a birthday. You get the birth card, the planetary ruling card, and a full meaning page. No email. Nobody chasing you afterward. The Chemistry Check ($39) is optional, and you are allowed to leave without it.",
   },
   {
     q: "What are Destiny Cards?",
@@ -194,7 +194,7 @@ export default function DestinyCardsPage() {
       <p className="mb-4 text-sm text-brand-ink-soft">
         Free first: find your birth card on this page. Optional next: the{" "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          Chemistry Check ($24)
+          Chemistry Check ($39)
         </Link>
         {", "}your card beside one other person’s, read personally by Cass. Yes, that person.
       </p>
@@ -345,7 +345,7 @@ export default function DestinyCardsPage() {
           <li>
             Optional, if it keeps landing:{" "}
             <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-              The Chemistry Check, $24
+              The Chemistry Check, $39
             </Link>
             , your card read beside one other person’s.
           </li>
@@ -526,7 +526,7 @@ export default function DestinyCardsPage() {
         </Link>
         {" · "}
         <Link href="/#readings" className="text-brand-oxblood underline underline-offset-4">
-          the Chemistry Check ($24)
+          the Chemistry Check ($39)
         </Link>
         {" · "}
         <Link href="/cardology-for-beginners" className="text-brand-oxblood underline underline-offset-4">

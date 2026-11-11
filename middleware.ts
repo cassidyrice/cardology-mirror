@@ -54,6 +54,9 @@ export const RETIRED_PUBLIC_REDIRECTS: Record<string, string> = {
   "/checkout/personal-card-blueprint": "/#readings",
   "/checkout/complete-card-blueprint": "/#readings",
   "/checkout/analog-algorithm": "/#readings",
+  "/checkout/quick-question": "/#readings",
+  "/checkout/complete-reading": "/#readings",
+  "/checkout/season-pass-90": "/#readings",
   "/checkout/cardology-membership": "/birth-card-calculator",
   // Consolidate the older blog explainer into the stronger evergreen guide.
   // This removes query overlap while preserving the blog URL's existing equity.
@@ -217,7 +220,13 @@ export function middleware(request: NextRequest) {
     response.headers.set("Cache-Control", "no-store, must-revalidate");
   }
 
-  if (["/my-purchases", "/consultation", "/report", "/blueprint", "/checkout/success"].includes(request.nextUrl.pathname)) {
+  if (
+    ["/my-purchases", "/consultation", "/report", "/blueprint", "/checkout/success", "/review", "/access"].includes(
+      request.nextUrl.pathname,
+    ) ||
+    request.nextUrl.pathname === "/ops" ||
+    request.nextUrl.pathname.startsWith("/ops/")
+  ) {
     response.headers.set("Cache-Control", "private, no-store");
     response.headers.set("Referrer-Policy", "no-referrer");
     response.headers.set("X-Robots-Tag", "noindex, nofollow");
