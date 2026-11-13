@@ -74,7 +74,12 @@ assert.doesNotMatch(birthCalc, /buy\.stripe\.com\/[^"'\s]+\?/);
 
 const compat = readFileSync("components/seo/CompatibilityCalculator.tsx", "utf8");
 assert.doesNotMatch(compat, /\?bd=/);
-assert.match(compat, /storeCheckoutBirthdate/);
+assert.match(compat, /storeCheckoutBirthdate|useBirthday/);
+// The shared one-birthday hook must stay on the tab-scoped checkout key: no
+// localStorage, no URL.
+const sharedBirthday = readFileSync("lib/use-birthday.ts", "utf8");
+assert.match(sharedBirthday, /storeCheckoutBirthdate/);
+assert.doesNotMatch(sharedBirthday, /localStorage|searchParams|location\.search/);
 
 const layout = readFileSync("app/layout.tsx", "utf8");
 assert.doesNotMatch(layout, /birthdate=\{birthdate\}/);

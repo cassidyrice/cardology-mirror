@@ -1,31 +1,27 @@
 "use client";
 
-import { type FormEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import Link from "next/link";
 
 import { trackClientFunnelEventOnce } from "@/components/analytics/AnalyticsCapture";
-import { StanReadingCta } from "@/components/seo/StanReadingCta";
-import { buildCycle, formatRange } from "@/components/timing/cycle";
+import { BirthdayField } from "@/components/bp/BirthdayField";
+import { CardSpecimen } from "@/components/bp/CardSpecimen";
+import { Gem, gemSuitFromCode } from "@/components/bp/Gem";
+import { PlanetGlyph } from "@/components/bp/PlanetGlyph";
+import { buildCycle } from "@/components/timing/cycle";
+import { birthCardSlug } from "@/lib/birth-card-calculator";
 import { parseCard, todayISO } from "@/lib/cards";
-import {
-  readCheckoutBirthdate,
-  storeCheckoutBirthdate,
-} from "@/lib/checkout-birthdate";
-import { isJokerBirthdate } from "@/lib/deep-dive";
 import {
   buildPeriodMeaning,
   PERIOD_FILTERS,
   type PeriodCardSeed,
 } from "@/lib/period-meanings";
 import { buildReading, JokerNotSupportedError } from "@/lib/reading";
-import { shareFacePathFromCode } from "@/lib/share-cards";
 import type { PlanetName } from "@/lib/types";
 import { PLANET_ORDER } from "@/lib/types";
+import { useBirthday } from "@/lib/use-birthday";
 
-const DATE_FMT = new Intl.DateTimeFormat("en-US", {
-  month: "short",
-  day: "numeric",
-});
+const SHORT = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
 
 function firstSentence(text: string): string {
   const trimmed = text.trim();
@@ -33,262 +29,195 @@ function firstSentence(text: string): string {
   return (match?.[0] ?? trimmed).trim();
 }
 
-function seedForCard(
-  seeds: PeriodCardSeed[],
-  code: string,
-): PeriodCardSeed | null {
-  return seeds.find((seed) => seed.code === code) ?? null;
-}
-
-function meaningLine(
-  seeds: PeriodCardSeed[],
-  card: string,
-  planet: PlanetName,
-): string | null {
-  const seed = seedForCard(seeds, card);
+function meaningLine(seeds: PeriodCardSeed[], card: string, planet: PlanetName): string | null {
+  const seed = seeds.find((s) => s.code === card);
   const filter = PERIOD_FILTERS.find((entry) => entry.planet === planet);
   if (!seed || !filter) return null;
   return firstSentence(buildPeriodMeaning(seed, filter).essence);
 }
 
-function CardFace({ code, size = "sm" }: { code: string; size?: "sm" | "md" }) {
-  const src = shareFacePathFromCode(code);
-  const label = parseCard(code)?.label ?? code;
-  if (!src) return null;
-  const dims = size === "md" ? { width: 96, height: 144 } : { width: 56, height: 84 };
-  return (
-    <img
-      src={src}
-      alt={`${label} card face`}
-      width={dims.width}
-      height={dims.height}
-      className="rounded-[3px] border border-brand-line bg-brand-paper"
-    />
+function cardLabel(code: string): string {
+  return parseCard(code)?.label ?? code;
+}
+
+function CardName({ code }: { code: string }) {
+  const suit = gemSuitFromCode(code);
+  const slug = birthCardSlug(code);
+  const inner = (
+    <>
+      {suit ? <Gem suit={suit} size={18} /> : null}
+      {cardLabel(code)}
+    </>
+  );
+  return slug ? (
+    <Link href={`/birth-card/${slug}`} className="bp-cardlink">
+      {inner}
+    </Link>
+  ) : (
+    <span className="bp-cardlink">{inner}</span>
   );
 }
 
+type Period = {
+  planet: PlanetName;
+  card: string;
+  range: string;
+  line: string | null;
+  isCurrent: boolean;
+  isPast: boolean;
+};
+
+type Year =
+  | { kind: "joker" }
+  | {
+      kind: "year";
+      periods: Period[];
+      current: Period;
+      todayPct: number;
+      todayLabel: string;
+      weekCard: string | null;
+      weekLine: string | null;
+    };
+
+/**
+ * Your year as one timeline. The birthday comes from the shared field (entered
+ * once on any tool) and the year redraws the moment the date is complete.
+ * Your birthday is never stored on our servers: everything runs on this page.
+ */
 export function YourYearView({ seeds }: { seeds: PeriodCardSeed[] }) {
-  const [birthdate, setBirthdate] = useState("");
-  const [draftDate, setDraftDate] = useState("");
-  const [hydrated, setHydrated] = useState(false);
+  const { birthdate, ready, setBirthdate } = useBirthday();
 
-  useEffect(() => {
-    const stored = readCheckoutBirthdate();
-    if (stored) setBirthdate(stored);
-    setHydrated(true);
-  }, []);
-
-  const year = useMemo(() => {
+  const year = useMemo<Year | null>(() => {
     if (!birthdate) return null;
-    if (isJokerBirthdate(birthdate)) return { kind: "joker" as const };
+    const [, m, d] = birthdate.split("-").map(Number);
+    if (m === 12 && d === 31) return { kind: "joker" };
     try {
       const today = todayISO();
       const reading = buildReading(birthdate, today);
       const cycle = buildCycle(birthdate, new Date(`${today}T12:00:00`));
-      const activePlanet = reading.active_period.planet as PlanetName;
-      const activeIndex = Math.max(0, PLANET_ORDER.indexOf(activePlanet));
-      const ordered = PLANET_ORDER.map((planet, offsetFromActive) => {
-        const index = (activeIndex + offsetFromActive) % PLANET_ORDER.length;
-        const p = PLANET_ORDER[index]!;
+      const periods = PLANET_ORDER.map((planet, index) => {
         const window = cycle.windows[index]!;
-        const card = reading.birth_card_spread.periods[p];
+        const last = new Date(window.end);
+        last.setDate(last.getDate() - 1);
+        const card = reading.birth_card_spread.periods[planet];
         return {
-          planet: p,
+          planet,
           card,
-          cardLabel: parseCard(card)?.label ?? card,
-          range: formatRange(window),
-          startLabel: DATE_FMT.format(window.start),
-          line: meaningLine(seeds, card, p),
-          isCurrent: offsetFromActive === 0,
+          range: `${SHORT.format(window.start)} – ${SHORT.format(last)}`,
+          line: meaningLine(seeds, card, planet),
+          isCurrent: index === cycle.currentIndex,
+          isPast: index < cycle.currentIndex,
         };
       });
-      const dayCard = reading.daily.bc.card;
+      const dayOfYear = cycle.currentIndex * 52 + cycle.daysIntoCurrent;
+      const weekCard = reading.daily?.bc?.card ?? null;
       return {
-        kind: "year" as const,
-        periods: ordered,
-        dayCard,
-        dayCardLabel: dayCard ? parseCard(dayCard)?.label ?? dayCard : null,
-        dayLine:
-          dayCard
-            ? meaningLine(seeds, dayCard, reading.daily.period_planet as PlanetName)
-            : null,
+        kind: "year",
+        periods,
+        current: periods[cycle.currentIndex]!,
+        todayPct: Math.min(99.5, ((dayOfYear + 0.5) / 365) * 100),
+        todayLabel: SHORT.format(new Date(`${today}T12:00:00`)),
+        weekCard,
+        weekLine: weekCard ? meaningLine(seeds, weekCard, reading.daily.period_planet as PlanetName) : null,
       };
     } catch (error) {
-      if (error instanceof JokerNotSupportedError) return { kind: "joker" as const };
+      if (error instanceof JokerNotSupportedError) return { kind: "joker" };
       return null;
     }
   }, [birthdate, seeds]);
 
   useEffect(() => {
-    if (year?.kind === "year") {
-      trackClientFunnelEventOnce("year_viewed", { placement: "your-year" });
-    }
+    if (year?.kind === "year") trackClientFunnelEventOnce("year_viewed", { placement: "your-year" });
   }, [year]);
 
-  function submitDate(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const next = storeCheckoutBirthdate(draftDate);
-    if (next) {
-      setBirthdate(next);
-      setDraftDate(next);
-    }
-  }
-
-  if (!hydrated) {
-    return (
-      <p className="text-sm text-brand-ink-soft" aria-live="polite">
-        Loading your year. Act casual…
-      </p>
-    );
-  }
-
-  if (!birthdate) {
-    return (
-      <form
-        onSubmit={submitDate}
-        className="mx-auto flex w-full max-w-md flex-col items-center gap-3"
-      >
-        <label htmlFor="your-year-bd" className="type-eyebrow block w-full text-center">
-          Enter your birthday. The real one.
-        </label>
-        <input
-          id="your-year-bd"
-          type="date"
-          value={draftDate}
-          onChange={(event) => setDraftDate(event.target.value)}
-          className="w-full rounded-[3px] border border-brand-line-strong bg-brand-paper px-4 py-3 font-serif text-brand-ink"
-          required
-        />
-        <button type="submit" className="accent-button large-button w-full text-center sm:w-auto">
-          Show me the year
-        </button>
-        <p className="text-center text-xs leading-relaxed text-brand-ink-soft">
-          Calculated on this page. Your birthday is never stored on our servers.
-        </p>
-      </form>
-    );
-  }
-
-  if (year?.kind === "joker") {
-    return (
-      <div className="mx-auto flex w-full max-w-md flex-col items-center gap-4 text-center">
-        <p className="font-serif text-xl leading-snug text-brand-ink">
-          December 31 is the Joker boundary, sometimes called the Day Out of Time.
-        </p>
-        <p className="text-sm leading-relaxed text-brand-ink-soft">
-          The formula leaves this date outside the 52-card map. No yearly period
-          sequence to show. You are off the grid, technically. The System Guide still
-          covers how the rest of the deck works.
-        </p>
-        <button
-          type="button"
-          className="text-xs text-brand-ink-soft underline underline-offset-4"
-          onClick={() => {
-            setBirthdate("");
-            setDraftDate("");
-          }}
-        >
-          Try a different birthday
-        </button>
-      </div>
-    );
-  }
-
-  if (!year || year.kind !== "year") {
-    return (
-      <p className="text-sm text-brand-oxblood">
-        That isn&rsquo;t a full date. Year, month, and day, then we can talk.
-      </p>
-    );
-  }
-
-  const current = year.periods[0]!;
-  const upcoming = year.periods.slice(1);
-
   return (
-    <div className="mx-auto flex w-full max-w-lg flex-col gap-6">
-      <section
-        aria-labelledby="current-period-heading"
-        className="border border-brand-line bg-brand-ivory px-4 py-4 text-center"
-      >
-        <p className="type-eyebrow mb-2">Now</p>
-        <h2 id="current-period-heading" className="font-serif text-2xl text-brand-ink">
-          {current.planet}. {current.cardLabel}.
-        </h2>
-        <p className="mt-1 text-sm text-brand-ink-soft">{current.range}</p>
-        <div className="mt-3 flex justify-center">
-          <CardFace code={current.card} size="md" />
+    <div className="bp-tool">
+      <div className="bp-tool-inputs">
+        <div className="bp-panel bp-reg">
+          <BirthdayField
+            id="your-year-bd"
+            label="Birthday, with the year"
+            value={ready ? birthdate : ""}
+            onValid={setBirthdate}
+            hint="Calculated on this page. Your birthday is never stored on our servers."
+          />
         </div>
-        {current.line && (
-          <p className="mt-3 text-sm leading-relaxed text-brand-ink-soft">{current.line}</p>
-        )}
-      </section>
-
-      {year.dayCard && year.dayCardLabel && (
-        <section className="flex items-center gap-3 border border-brand-line bg-brand-paper px-3 py-3">
-          <CardFace code={year.dayCard} />
-          <div className="min-w-0 text-left">
-            <p className="type-eyebrow">Today&apos;s card</p>
-            <p className="font-serif text-lg text-brand-ink">{year.dayCardLabel}</p>
-            {year.dayLine && (
-              <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">{year.dayLine}</p>
-            )}
+        {year?.kind === "year" ? (
+          <div className="bp-panel" aria-live="polite">
+            <p className="bp-label">Now</p>
+            <p className="bp-h3">
+              <span className="bp-planet is-now">
+                <PlanetGlyph planet={year.current.planet} size={22} /> {year.current.planet}
+              </span>
+            </p>
+            <p className="bp-mono bp-quiet">{year.current.range}</p>
           </div>
-        </section>
-      )}
-
-      <section aria-labelledby="year-periods-heading">
-        <h2 id="year-periods-heading" className="type-eyebrow mb-3">
-          The rest of your year, whether you&rsquo;re ready or not
-        </h2>
-        <ol className="flex flex-col gap-3">
-          {upcoming.map((period) => (
-            <li
-              key={period.planet}
-              className="flex items-start gap-3 border border-brand-line bg-brand-paper px-3 py-3"
-            >
-              <CardFace code={period.card} />
-              <div className="min-w-0 text-left">
-                <p className="font-serif text-lg leading-snug text-brand-ink">
-                  {period.planet}. {period.cardLabel}.
-                </p>
-                <p className="text-xs uppercase tracking-[0.14em] text-brand-bronze">
-                  Starts {period.startLabel}
-                </p>
-                {period.line && (
-                  <p className="mt-1 text-sm leading-relaxed text-brand-ink-soft">
-                    {period.line}
-                  </p>
-                )}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <p className="text-center text-sm leading-relaxed text-brand-ink-soft">
-        Same birthday, same sequence every year. The cards move with the calendar. You can&rsquo;t reschedule them.
-      </p>
-
-      <div className="flex flex-col items-center gap-3">
-        <StanReadingCta defaultTrack="card-blueprint-reading" />
-        <button
-          type="button"
-          className="text-xs text-brand-ink-soft underline underline-offset-4"
-          onClick={() => {
-            setBirthdate("");
-            setDraftDate("");
-          }}
-        >
-          Change birthday
-        </button>
-        <Link
-          href="/birth-card-calculator"
-          className="text-xs text-brand-ink-soft underline underline-offset-4"
-        >
-          Back to calculator
-        </Link>
+        ) : null}
       </div>
+
+      {!ready ? null : !birthdate ? (
+        <p className="bp-quiet">Enter your birthday and your seven periods appear here.</p>
+      ) : year?.kind === "joker" ? (
+        <div className="bp-panel">
+          <p className="bp-h3">December 31 is the Joker.</p>
+          <p>
+            The formula leaves this date outside the 52-card map, so there is no yearly period sequence to show.{" "}
+            <Link href="/birth-card/joker">Read the Joker</Link>.
+          </p>
+        </div>
+      ) : !year ? (
+        <p className="bp-red">That isn&rsquo;t a full date. Year, month and day.</p>
+      ) : (
+        <>
+          <section aria-labelledby="year-now-heading" className="bp-readout-head">
+            <CardSpecimen code={year.current.card} size="md" />
+            <div className="bp-readout-title">
+              <p className="bp-label">Period card now</p>
+              <h2 id="year-now-heading" className="bp-h2">
+                {cardLabel(year.current.card)}
+              </h2>
+              {year.current.line ? <p>{year.current.line}</p> : null}
+              {year.weekCard ? (
+                <p className="bp-quiet">
+                  This week: <CardName code={year.weekCard} />
+                  {year.weekLine ? ` ${year.weekLine}` : ""}
+                </p>
+              ) : null}
+            </div>
+          </section>
+
+          <section aria-labelledby="year-periods-heading">
+            <div className="bp-rule-head">
+              <h2 id="year-periods-heading" className="bp-label">
+                Your seven periods
+              </h2>
+            </div>
+            <div className="bp-timeline-wrap">
+              <div className="bp-timeline-frame">
+              <ol className="bp-timeline">
+                {year.periods.map((p) => (
+                  <li key={p.planet} className={p.isCurrent ? "is-now" : undefined} aria-current={p.isCurrent ? "true" : undefined}>
+                    <PlanetGlyph planet={p.planet} size={24} />
+                    <span>{p.planet}</span>
+                    <span className="bp-mono bp-quiet">{p.range}</span>
+                    <CardName code={p.card} />
+                    <span className="bp-label">{p.isCurrent ? "Now" : p.isPast ? "Past" : "Ahead"}</span>
+                  </li>
+                ))}
+              </ol>
+                <div className="bp-timeline-today" style={{ left: `${year.todayPct}%` }} aria-hidden="true">
+                  <span>Today · {year.todayLabel}</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <p className="bp-quiet">
+            Same birthday, same sequence every year. Want to time a decision inside one of these windows?{" "}
+            <Link href="/#readings">Ask in a reading</Link>.
+          </p>
+        </>
+      )}
     </div>
   );
 }

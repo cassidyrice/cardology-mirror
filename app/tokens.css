@@ -1,3 +1,4 @@
+/* 2026-11-13 · palette moved to white, black and one red with a graph-paper ground (docs/design/DIRECTION.md, "Blueprint, white"). The notes below describe the earlier cyanotype build. */
 /* Hallmark · shape: Split stage (a pinned card beside a scrolling reading column) · genre: editorial · theme: custom (tasteskill split-stage, seed 835131915) · redesign: full · job: try · idea: "The one card your birthday pins to the drafting sheet is the half of the screen that never moves; everything you read is the annotation beside it." · vibe: "drafting sheet, deadpan, one card, no ornament"
  * paper: oklch(96% 0.012 240) · accent: oklch(36% 0.1 252) · display: Archivo · body: Archivo · hero: the real deck face down on film in a sticky left stage; the headline, one sentence and the birthday form in the right column; the name along the bottom of the first screen · nav: Edge bar, lockup left, four links and the readings menu right · footer: Mast, the name at full width on ink, then four link groups and one quiet line · imagery: the project's own film, explainer, product shots and card faces · signature: your card turns to face you on the stage when you enter your birthday
  * axes: light/grotesk-sans/cool · posture: Stage · contrast: pass · fold: pass · v2.0.0 */
@@ -19,37 +20,43 @@
 
 :root {
   /* Colour: sheet and biro, in the subject's own colours (docs/design/DIRECTION.md). */
-  --paper: #eef3f8;
-  --paper-deep: #e2eaf3;
-  --paper-deeper: #d3dfeb;
-  --ivory: #f8fbfd;
-  --ink: #123a63;
-  --ink-soft: #3c6089;
-  --ink-faint: #4a6b8f;
-  --accent: #0c4275;
-  --accent-deep: #0a3159;
-  --on-dark: #e8f1fa;
-  --on-dark-soft: #a9c2da;
-  --suit-red: #8e321f;
-  --suit-black: #14110d;
-  --line: rgba(18, 58, 99, 0.14);
-  --line-strong: rgba(18, 58, 99, 0.24);
-  --on-dark-line: rgba(232, 241, 250, 0.18);
-  --focus: var(--accent);
+  --paper: #ffffff;
+  --paper-deep: #f5f5f6;
+  --paper-deeper: #e9e9ec;
+  --ivory: #ffffff;
+  --ink: #0e0e10;
+  --ink-soft: #3a3a40;
+  --ink-faint: #55555c;
+  --accent: #0e0e10;
+  --accent-deep: #000000;
+  --on-dark: #ffffff;
+  --on-dark-soft: #c9c9cf;
+  --suit-red: #b30d29;
+  --suit-black: #0e0e10;
+  --line: rgba(14, 14, 16, 0.14);
+  --line-strong: rgba(14, 14, 16, 0.85);
+  --on-dark-line: rgba(255, 255, 255, 0.2);
+  --focus: var(--red);
   --focus-on-dark: var(--on-dark);
-  --error: #8e321f;
-  --scrim: rgba(18, 58, 99, 0.55);
-  --board: #0f1f33;
-  --board-edge: #c4a05a;
+  --error: #b30d29;
+  --scrim: rgba(14, 14, 16, 0.55);
+  /* Red is the only colour: suit gems, the current period, focus rings, one marker per screen. */
+  --red: #b30d29;
+  --red-soft: #fff5f6;
+  /* Graph paper: a 24px minor grid with a 120px major grid, drawn on the page ground. */
+  --grid-minor: rgba(14, 14, 16, 0.035);
+  --grid-major: rgba(14, 14, 16, 0.07);
+  --board: #0e0e10;
+  --board-edge: #b30d29;
 
   /* Legacy names other pages still read. Same values, one source. */
   --oxblood: var(--accent);
   --oxblood-deep: var(--accent-deep);
   --bronze: var(--ink-soft);
   --bronze-on-dark: var(--on-dark-soft);
-  --gold: #b8893d;
-  --gold-soft: rgba(184, 137, 61, 0.14);
-  --club: #183f30;
+  --gold: #b30d29;
+  --gold-soft: rgba(179, 13, 41, 0.08);
+  --club: #0e0e10;
 
   /* Hallmark role names. */
   --color-paper: var(--paper);
@@ -71,7 +78,7 @@
   --font-outlier: var(--font-body);
   --font-serif: var(--font-display);
   --font-sans: var(--font-body);
-  --font-mono: var(--font-body);
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
   --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
   --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
   --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
@@ -131,8 +138,8 @@
   --radius-pill: 999px;
   --rule-hair: 1px;
   --shadow-card: none;
-  --shadow-float: 0 24px 48px -24px rgba(18, 58, 99, 0.35);
-  --shadow-turning: 0 32px 64px -28px rgba(15, 31, 51, 0.6);
+  --shadow-float: 0 24px 48px -24px rgba(14, 14, 16, 0.3);
+  --shadow-turning: 0 32px 64px -28px rgba(14, 14, 16, 0.45);
 
   /* Motion (docs/design/MOTION.md). */
   --dur-micro: 120ms;
