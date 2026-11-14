@@ -94,7 +94,7 @@ export default function JokerPage() {
         <p className="prose-reading text-brand-ink-soft">
           December 31 is the only birthday in the year that does not map to one of the 52 cards.
           The formula resolves it to zero. Zero is the Joker: the card that sits outside the deck&rsquo;s
-          ordered sequence. You were always going to be difficult.
+          ordered sequence and can stand in for any card.
         </p>
       </div>
 
@@ -109,7 +109,7 @@ export default function JokerPage() {
         <p className="prose-reading mt-3 text-brand-ink-soft">
           Put the last two days of the year side by side and it is obvious. December 30
           gives 55 − (24 + 30) = 1, the Ace of Hearts, the first card in the sequence. One day later
-          the value steps down again, and there is nothing below the Ace. That is the edge of the system. You live there.
+          the value steps down again, and there is nothing below the Ace. That is the edge of the system, and December 31 sits on it.
         </p>
       </section>
 
@@ -126,8 +126,8 @@ export default function JokerPage() {
       <section className="mt-8">
         <h2 className="type-eyebrow mb-2 !text-brand-bronze">What a Joker birthday means here</h2>
         <p className="prose-reading text-brand-ink-soft">
-          It means the standard card structure does not describe you. We are not going to pretend
-          otherwise to make you feel included. The 52-card material (birth card, ruling card, life spread positions, compatibility
+          It means the standard card structure does not describe you, and we won&rsquo;t stretch it to fit.
+          The 52-card material (birth card, ruling card, life spread positions, compatibility
           by position) is all built on values 1 through 52. None of it resolves for a value of zero.
         </p>
         <p className="prose-reading mt-3 text-brand-ink-soft">
@@ -153,7 +153,7 @@ export default function JokerPage() {
           <Link href="/birth-card/ace-of-hearts" className="text-brand-oxblood underline underline-offset-4">
             Ace of Hearts
           </Link>
-          , also a single date. Every other card covers between 2 and 12 birthdays. Crowded in there.
+          , also a single date. Every other card covers between 2 and 12 birthdays.
         </p>
       </section>
 
