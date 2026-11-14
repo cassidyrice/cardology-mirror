@@ -1,3 +1,4 @@
+import { CardSpecimen } from "@/components/bp/CardSpecimen";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -77,17 +78,21 @@ export function SeoShell({
 }
 
 /** One card face pinned in the shell's stage. */
+const STAGE_RANK: Record<string, string> = { ace: "A", jack: "J", queen: "Q", king: "K" };
+const STAGE_SUIT: Record<string, string> = { hearts: "♥", diamonds: "♦", clubs: "♣", spades: "♠" };
+
+/** "8-of-diamonds" → "8♦"; "joker" → "Joker". */
+function codeFromSlug(slug: string): string {
+  if (slug === "joker") return "Joker";
+  const [rank, , suit] = slug.split("-");
+  return `${STAGE_RANK[rank ?? ""] ?? rank}${STAGE_SUIT[suit ?? ""] ?? ""}`;
+}
+
+/** The page's card on the stage: a drafting specimen with the suit cut as a gem. */
 export function StageCard({ slug, label }: { slug: string; label: string }) {
   return (
-    <img
-      src={`/share-cards/faces/${slug}.png`}
-      alt={`${label} playing card`}
-      width={1000}
-      height={1500}
-      loading="eager"
-      fetchPriority="high"
-      decoding="async"
-      className="shell-stage-card"
-    />
+    <span className="shell-stage-card bp-stage-card" data-label={label}>
+      <CardSpecimen code={codeFromSlug(slug)} size="xl" />
+    </span>
   );
 }

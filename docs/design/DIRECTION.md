@@ -1,3 +1,18 @@
+# Direction: Blueprint, white (2026-11-13)
+
+Owner decision, replacing the cyanotype palette below. The split-stage composition notes further down still describe older pages; anything new or rebuilt follows this section.
+
+- **Ground:** white graph paper. A 24px minor grid and a 120px major grid on `body` (`--grid-minor`, `--grid-major`, app/bp.css). Pages leave their background transparent so the grid shows.
+- **Ink:** black (`--ink #0e0e10`), two greys for secondary text. Hairlines are black, 1px.
+- **Red:** one colour, `--red #b30d29`, used sparingly: the ruby suits, the current period, focus rings and at most one phrase per screen.
+- **Suits:** cut as gems (components/bp/Gem.tsx). Hearts and diamonds are rubies, clubs and spades are onyx. Gems mark meaning (your suit, a card name); they are not scattered for decoration.
+- **Planets:** stroke glyphs (components/bp/PlanetGlyph.tsx), never a symbol font or emoji.
+- **Labels:** small mono capitals (`.bp-label`). Section heads are a label plus a ruler with 24px ticks (`.bp-rule-head`). Key boxes carry registration marks (`.bp-reg`).
+- **Type:** Archivo stays for display and text.
+- **Interaction:** one birthday per visit (`lib/use-birthday.ts`, tab-scoped, never in a URL). Every tool fills from it and answers as soon as a date is complete. No submit buttons on calculators, no scroll animations in front of an answer.
+
+---
+
 # Direction: the split stage
 
 One direction for the whole site. Dealt by tasteskill v2 (`design-taste-frontend`), direction `split-stage`, seed 835131915, sector consumer-app, tone editorial, 2026-11-07. The sheet is saved at `.taste-skill/direction.json` (reprint with `node ~/.claude/skills/design-taste-frontend/scripts/draw.mjs --show`). Every screen built after this file obeys it; no second direction mid-build.
