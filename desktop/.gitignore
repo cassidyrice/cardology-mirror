@@ -1,0 +1,6 @@
+node_modules/
+dist/
+ui/app.js
+ui/report-app.js
+reports/
+ui/meanings.json
