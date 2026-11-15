@@ -37,7 +37,7 @@ export function ReadingSample() {
           decoding="async"
         />
         <figcaption className="sample-caption">
-          Birth card for February 17. {card?.title ? `${card.title}.` : ""} Standard 52-card math, not tarot.
+          The reader in this sample has the 4♦ birth card; this is her ruling card, the 8♦{card?.title ? `, ${card.title}` : ""}. Standard 52-card math, not tarot.
         </figcaption>
       </figure>
       <div className="sample-text">

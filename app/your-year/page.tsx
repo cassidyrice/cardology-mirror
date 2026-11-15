@@ -43,11 +43,12 @@ export default function YourYearPage() {
         { label: "Your year", href: canonicalPath },
       ]}
     >
-      <header className="mx-auto max-w-lg pb-6 text-center">
-        <h1 className="display text-4xl leading-none text-brand-ink sm:text-5xl">
-          Your year in cards
+      <header className="flex flex-col gap-4 pb-2">
+        <p className="bp-label">Your year · seven 52-day periods</p>
+        <h1 className="bp-display">
+          Which period are you in <span className="bp-red">right now?</span>
         </h1>
-        <p className="mt-3 font-serif text-lg leading-relaxed text-brand-ink-soft">
+        <p className="bp-lead">
           Six 52-day seasons, then Neptune through the eve of your next birthday.
           You are somewhere in there. Let&rsquo;s find out where.
         </p>

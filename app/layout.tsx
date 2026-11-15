@@ -3,6 +3,7 @@ import { Archivo } from "next/font/google";
 import "./tokens.css";
 import "./globals.css";
 import "./blueprint.css";
+import "./bp.css";
 import { AnalyticsCapture } from "@/components/analytics/AnalyticsCapture";
 import { GoogleAnalyticsBoundary } from "@/components/analytics/GoogleAnalyticsBoundary";
 import { PostHogBoundary } from "@/components/analytics/PostHogBoundary";
@@ -70,7 +71,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#123a63",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };

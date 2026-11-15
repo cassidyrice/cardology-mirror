@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type FormEvent, type KeyboardEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import {
   trackClientFunnelEvent,
@@ -16,7 +16,7 @@ import {
   type LifePathProfile,
   type LifePathSharedCard,
 } from "@/lib/life-path";
-import { readCheckoutBirthdate, storeCheckoutBirthdate } from "@/lib/checkout-birthdate";
+import { useBirthday } from "@/lib/use-birthday";
 import { CompatShareHero } from "@/components/share/CompatShareHero";
 import { CardBack } from "@/components/cards/CardBack";
 import { shareFacePathFromCode } from "@/lib/share-cards";
@@ -57,37 +57,34 @@ export function CompatibilityWorkerAnchor({
 }
 
 export function CompatibilityCalculator() {
+  const shared = useBirthday();
   const [a, setA] = useState("");
   const [b, setB] = useState("");
-  const [pair, setPair] = useState<{ a: LifePathProfile; b: LifePathProfile } | null>(null);
-  const [err, setErr] = useState(false);
+  const tracked = useRef(false);
 
-  // The birth-card calculator already parks this birthday in the tab for checkout.
-  // Reuse that value so "compare with someone" continues from it. Never put it in the URL.
+  // Person A starts from the birthday already entered on any other tool in this
+  // tab (shared, tab-scoped, never in the URL). Editing A updates that birthday.
   useEffect(() => {
-    const stored = readCheckoutBirthdate();
-    if (!stored) return;
-    setA((current) => current || stored);
-  }, []);
+    if (shared.ready && shared.birthdate) setA((current) => current || shared.birthdate);
+  }, [shared.ready, shared.birthdate]);
+
+  // No submit button: the pair is read the moment both dates are complete.
+  const pair = useMemo(() => {
+    const first = buildLifePathProfile(a, "First person");
+    const second = buildLifePathProfile(b, "Second person");
+    return first && second ? { a: first, b: second } : null;
+  }, [a, b]);
+  const err = false;
+
+  useEffect(() => {
+    if (pair && !tracked.current) {
+      tracked.current = true;
+      trackClientFunnelEvent("calculator_completed", { placement: "compatibility-calculator" });
+    }
+  }, [pair]);
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
-    trackClientFunnelEventOnce("calculator_started", {
-      placement: "compatibility-calculator",
-    });
-    const first = buildLifePathProfile(a, "First person");
-    const second = buildLifePathProfile(b, "Second person");
-    if (!first || !second) {
-      setErr(true);
-      setPair(null);
-      return;
-    }
-    setErr(false);
-    setPair({ a: first, b: second });
-    storeCheckoutBirthdate(a);
-    trackClientFunnelEvent("calculator_completed", {
-      placement: "compatibility-calculator",
-    });
   }
 
   const stage = (
@@ -120,7 +117,10 @@ export function CompatibilityCalculator() {
                   placement: "compatibility-calculator",
                 })
               }
-              onChange={(e) => setA(e.target.value)} required />
+              onChange={(e) => {
+                setA(e.target.value);
+                if (e.target.value) shared.setBirthdate(e.target.value);
+              }} required />
           </div>
           <div className="compat-field">
             <label htmlFor="db">Second birthday (theirs)</label>
@@ -133,9 +133,7 @@ export function CompatibilityCalculator() {
               onChange={(e) => setB(e.target.value)} required />
           </div>
         </div>
-        <button type="submit" className="accent-button large-button compat-submit">
-          Show me the friction
-        </button>
+        <p className="bp-hint">The pair appears as soon as both dates are complete. Nothing is saved or sent.</p>
         <p className="compat-error" role="alert" aria-live="assertive">
           {err ? "Two full birthdays. Not one, not a guess." : ""}
         </p>
